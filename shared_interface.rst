@@ -84,41 +84,66 @@ and forth between application boundaries.
 `table_title <#table.si.transfer.rules>`__ describes the rules applied
 depending on the element to be transferred.
 
-.. table:: Shared Interface Types Transfer Rules
+.. list-table:: Shared Interface Types Transfer Rules
+   :widths: 19 14 10 29
+   :header-rows: 1
 
-   +------------------+-------------+--------+---------------------------+
-   | Type             | Owner       | Instan | Rule                      |
-   |                  |             | ce     |                           |
-   |                  |             | Owner  |                           |
-   +==================+=============+========+===========================+
-   | Base type        | N/A         | N/A    | Passing by value.         |
-   |                  |             |        | (``boolean``, ``byte``,   |
-   |                  |             |        | ``short``, ``char``,      |
-   |                  |             |        | ``int``, ``long``,        |
-   |                  |             |        | ``double``, ``float``)    |
-   +------------------+-------------+--------+---------------------------+
-   | Any Class, Array | MicroEJ     | MicroE | Passing by reference      |
-   | or Interface     | Firmware    | J      |                           |
-   |                  |             | Firmwa |                           |
-   |                  |             | re     |                           |
-   +------------------+-------------+--------+---------------------------+
-   | Any Class, Array | MicroEJ     | Applic | MicroEJ Firmware specific |
-   | or Interface     | Firmware    | ation  | or forbidden              |
-   +------------------+-------------+--------+---------------------------+
-   | Array of base    | Any         | Applic | Clone by copy             |
-   | types            |             | ation  |                           |
-   +------------------+-------------+--------+---------------------------+
-   | Arrays of        | Any         | Applic | Clone and transfer rules  |
-   | references       |             | ation  | applied again on each     |
-   |                  |             |        | element                   |
-   +------------------+-------------+--------+---------------------------+
-   | Shared Interface | Application | Applic | Passing by indirect       |
-   |                  |             | ation  | reference (Proxy          |
-   |                  |             |        | creation)                 |
-   +------------------+-------------+--------+---------------------------+
-   | Any Class, Array | Application | Applic | Forbidden                 |
-   | or Interface     |             | ation  |                           |
-   +------------------+-------------+--------+---------------------------+
+   - 
+
+      - Type
+      - Owner
+      - Instance Owner
+      - Rule
+
+   - 
+
+      - Base type
+      - N/A
+      - N/A
+      - Passing by value. (``boolean``, ``byte``, ``short``, ``char``,
+         ``int``, ``long``, ``double``, ``float``)
+
+   - 
+
+      - Any Class, Array or Interface
+      - MicroEJ Firmware
+      - MicroEJ Firmware
+      - Passing by reference
+
+   - 
+
+      - Any Class, Array or Interface
+      - MicroEJ Firmware
+      - Application
+      - MicroEJ Firmware specific or forbidden
+
+   - 
+
+      - Array of base types
+      - Any
+      - Application
+      - Clone by copy
+
+   - 
+
+      - Arrays of references
+      - Any
+      - Application
+      - Clone and transfer rules applied again on each element
+
+   - 
+
+      - Shared Interface
+      - Application
+      - Application
+      - Passing by indirect reference (Proxy creation)
+
+   - 
+
+      - Any Class, Array or Interface
+      - Application
+      - Application
+      - Forbidden
 
 Objects created by an application which class is owned by MicroEJ
 Firmware can be transferred to another application if this has been
@@ -130,15 +155,28 @@ call. When an argument transfer is forbidden, the call is abruptly
 stopped and a ``java.lang.IllegalAccessError`` is thrown by MicroEJ Core
 Engine.
 
-.. table:: MicroEJ Evaluation Firmware Example of Transfer Types
+.. list-table:: MicroEJ Evaluation Firmware Example of Transfer Types
+   :header-rows: 1
 
-   ================================ ========================
-   Type                             Rule
-   ================================ ========================
-   ``java.lang.String``             Clone by copy
-   ``java.io.InputStream``          Proxy reference creation
-   ``java.util.Map<String,String>`` Clone by deep copy
-   ================================ ========================
+   - 
+
+      - Type
+      - Rule
+
+   - 
+
+      - ``java.lang.String``
+      - Clone by copy
+
+   - 
+
+      - ``java.io.InputStream``
+      - Proxy reference creation
+
+   - 
+
+      - ``java.util.Map<String,String>``
+      - Clone by deep copy
 
 .. _section.proxy.implementation:
 
@@ -188,23 +226,30 @@ is part of the application, the application developer has the full
 control on the Proxy implementation and is free to insert additional
 code such as logging calls and errors for example.
 
-.. table:: Proxy Remote Invocation Built-in Methods
+.. list-table:: Proxy Remote Invocation Built-in Methods
+   :widths: 31 41
+   :header-rows: 1
 
-   +-----------------------------+----------------------------------------+
-   | Invocation Method           | Usage                                  |
-   +=============================+========================================+
-   | void invoke()               | Remote invocation for a proxy method   |
-   |                             | that returns void                      |
-   +-----------------------------+----------------------------------------+
-   | Object invokeRef()          | Remote invocation for a proxy method   |
-   |                             | that returns a reference               |
-   +-----------------------------+----------------------------------------+
-   | boolean invokeBoolean(),    | Remote invocation for a proxy method   |
-   | byte invokeByte(), char     | that returns a base type               |
-   | invokeChar(), short         |                                        |
-   | invokeShort(), int          |                                        |
-   | invokeInt(), long           |                                        |
-   | invokeLong(), double        |                                        |
-   | invokeDouble(), float       |                                        |
-   | invokeFloat()               |                                        |
-   +-----------------------------+----------------------------------------+
+   - 
+
+      - Invocation Method
+      - Usage
+
+   - 
+
+      - void invoke()
+      - Remote invocation for a proxy method that returns void
+
+   - 
+
+      - Object invokeRef()
+      - Remote invocation for a proxy method that returns a reference
+
+   - 
+
+      - boolean invokeBoolean(), byte invokeByte(), char invokeChar(),
+         short invokeShort(), int invokeInt(), long invokeLong(), double
+         invokeDouble(), float invokeFloat()
+      - Remote invocation for a proxy method that returns a base type
+
+

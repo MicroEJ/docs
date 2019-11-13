@@ -1,3 +1,10 @@
+# You can set these variables from the command line
+SPHINXOPTS    ?=
+SPHINXBUILD   ?= sphinx-build
+SOURCEDIR     = .
+BUILDDIR      = _build
+PANDOC        ?= pandoc
+
 # For the docbook to reST conversion
 sources := $(wildcard *.dbk)
 targets := $(patsubst %.dbk, %.rst, $(sources))
@@ -5,19 +12,9 @@ targets := $(patsubst %.dbk, %.rst, $(sources))
 source_format := docbook
 target_format := rst+simple_tables-grid_tables
 
-# Enable list tables extension from development pandoc
+# List tables is on a development version of pandoc
 # https://github.com/jgm/pandoc/pull/4780
-has_list_tables_ext := $(shell pandoc --list-extensions | grep list_tables && echo "True")
-ifdef has_list_tables_ext
-	target_format := $(target_format)+list_tables
-endif
-
-# You can set these variables from the command line
-SPHINXOPTS    ?=
-SPHINXBUILD   ?= sphinx-build
-SOURCEDIR     = .
-BUILDDIR      = _build
-PANDOC        ?= pandoc
+pandoc_options = --list-tables
 
 # Put it first so that "make" without argument is like "make help".
 help:
