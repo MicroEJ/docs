@@ -5,7 +5,6 @@ MicroEJ
     :maxdepth: 2
     :caption: Contents:
 
-    shared_interface
 
 Indices and tables
 ==================
