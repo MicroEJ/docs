@@ -26,7 +26,7 @@ convert: $(targets)
 
 format:
 	echo $(sources) | tr ' ' '\n' | xargs -t -I% \
-		xmlformat --preserve "pre,literal,programlisting" --outfile % %
+		xmlformat --preserve "pre,literal,programlisting,code" --outfile % %
 
 clean-convert:
 	rm $(targets)

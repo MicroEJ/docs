@@ -4,25 +4,15 @@
 
 	Copyright 2013-2019 IS2T. All rights reserved.
 	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
--->
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+--><!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <book xmlns:xi="http://www.w3.org/2001/XInclude">
-	<title>&docTitle;</title>
-	
-	<xi:include href="bookinfo.dbk"/>
-		
-	<xi:include href="chapterMicroEJOverview.dbk"/>
-		
-	<xi:include href="chapterMicroEJGettingStarted.dbk"/>
-	
-	<xi:include href="chapterApplicationStructure.dbk"/>
-	
-	<xi:include href="chapterSharedInterface.dbk"/>
-	
-	<xi:include href="chapterMicroEJClasspath.dbk"/>
-
-	<xi:include href="chapterMicroEJTools.dbk"/>
-	
-	<xi:include href="reference.xml"/>
-	
+  <title></title>
+  <xi:include href="bookinfo.dbk"></xi:include>
+  <xi:include href="chapterMicroEJOverview.dbk"></xi:include>
+  <xi:include href="chapterMicroEJGettingStarted.dbk"></xi:include>
+  <xi:include href="chapterApplicationStructure.dbk"></xi:include>
+  <xi:include href="chapterSharedInterface.dbk"></xi:include>
+  <xi:include href="chapterMicroEJClasspath.dbk"></xi:include>
+  <xi:include href="chapterMicroEJTools.dbk"></xi:include>
+  <xi:include href="reference.xml"></xi:include>
 </book>

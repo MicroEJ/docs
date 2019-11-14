@@ -3,121 +3,70 @@
 
 	Copyright 2013-2019 IS2T. All rights reserved.
 	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
--->
-<chapter id="chapter.application.structure" >
-    <title>Sandboxed Application Structure</title>
-    
-	
-		<section id="section.application.template" >
-		<title>Application Skeleton Creation</title>
-		    <para>The first step to explore a Sandboxed Application structure is to create a new
-			project.</para>
-		<para>First select <code>File > New > MicroEJ Sandboxed Application Project</code>:
-				<mediaobject id="struct_new">
-				<imageobject>
-					<imagedata align="center" format="PNG" fileref="png/AS1_new.png" scalefit="1"
-						width="100%" contentdepth="80%"/>
-				</imageobject>
-			</mediaobject>
-		</para>
-			<para>Fill in the application template fields, the <code>Project name</code> field will
-			automatically duplicate in the following fields. <mediaobject id="struct_project">
-				<imageobject>
-					<imagedata align="center" format="PNG" fileref="png/AS2_proj.png" scalefit="1"
-						width="100%" contentdepth="80%"/>
-				</imageobject>
-			</mediaobject>
-		</para>
-			<para>A template project is automatically created and ready to use, this project already contains
-			all folders wherein developers need to put content: <itemizedlist>
-				<listitem>
-					<para><code>src/main/java</code>: Folder for future sources;</para>
-				</listitem>
-				<listitem>
-					<para><code>src/main/resources</code>: Folder for future resources (images,
-						fonts etc.);</para>
-				</listitem>
-				<listitem>
-					<para><code>META-INF</code>: Sandboxed Application configuration and
-						resources;</para>
-				</listitem>
-				<listitem>
-					<para><code>module.ivy</code>: Ivy input file, dependencies description for the
-						current project.</para>
-				</listitem>
-			</itemizedlist>
-			<mediaobject id="structure">
-				<imageobject>
-					<imagedata align="center" format="PNG" fileref="png/AS3_structure.png"
-						scalefit="1" width="100%" contentdepth="80%"/>
-				</imageobject>
-			</mediaobject>
-		</para>
-		</section>
-		
-		<section id="section.java.sources.folder" >
-		<title>Sources Folder</title>
-		    <para> The project source folder (<code>src/main</code>) contains two subfolders: <code>java</code> and <code>resources</code>.
-			<code>java</code> folder will contain all <code>*.java</code> files of the project, whereas
-			<code>resources</code> folder will contain elements that the application needs at runtime like raw
-			resources, images or character fonts.</para>
-		</section>
-		
-		<section id="section.metainf" >
-		<title>META-INF Folder</title>
-			<para> The <code>META-INF</code> folder contains several folders and a manifest file. They are described hereafter. </para>
-			
-			<itemizedlist>
-			  <listitem>
-			    <para>
-			    <code>certificate</code> (folder):
-			    Contains certificate information used during the application deployment.
-			    </para>
-			  </listitem>
-			  <listitem>
-			    <para>
-			    <code>libraries</code> (folder):
-			    Contains a list of additional libraries useful to the application and not resolved through
-			    the regular transitive dependency check.
-			    </para>
-			  </listitem>
-			  <listitem>
-			    <para>
-			    <code>properties</code> (folder):
-			    Contains an <code>application.properties</code> file which contains application specific
-			    properties that can be accessed at runtime.
-			    </para>
-			  </listitem>
-			  <listitem>
-			    <para>
-			    <code>services</code> (folder):
-			    Contains a list of files that describe local services provided by the application. Each file name represents a service
-			    class fully qualified name, and each file contains the fully qualified name of the
-			    provided service implementation.
-			    </para>
-			  </listitem>
-			<listitem>
-				<para><code>wpk</code> (folder): Contains a set of applications (<code>.wpk</code>
-					files) that will be started when the application is executed on the
-					Simulator.</para>
-			</listitem>
-			  <listitem>
-			    <para>
-			    <code>MANIFEST.MF</code> (file):
-			    Contains the information given at project creation, extra information can be added to this file to declare the entry
-			    points of the application.
-			    </para>
-			  </listitem>
-			</itemizedlist>
-		</section>
-		
-		<section id="section.module.ivy">
-		<title><code>module.ivy</code> File</title>
-		    <para>The <code>module.ivy</code> file describes all the libraries required by the application
-			at runtime. The Ivy classpath container lists all the modules that have been
-			automatically resolved from the content of <code>module.ivy</code>. See <xref
-				linkend="section.ivy.dependency.manager"/> for more informations about MicroEJ
-			Module Manager.</para>
-		</section>
-	
+--><chapter id="chapter.application.structure">
+  <title>Sandboxed Application Structure</title>
+  <section id="section.application.template">
+    <title>Application Skeleton Creation</title>
+    <para>The first step to explore a Sandboxed Application structure is to create a new project.</para>
+    <para>First select <code>File > New > MicroEJ Sandboxed Application Project</code>: <mediaobject id="struct_new">
+        <imageobject>
+          <imagedata align="center" contentdepth="80%" fileref="png/AS1_new.png" format="PNG" scalefit="1" width="100%"></imagedata>
+        </imageobject>
+      </mediaobject></para>
+    <para>Fill in the application template fields, the <code>Project name</code> field will automatically duplicate in the following fields. <mediaobject id="struct_project">
+        <imageobject>
+          <imagedata align="center" contentdepth="80%" fileref="png/AS2_proj.png" format="PNG" scalefit="1" width="100%"></imagedata>
+        </imageobject>
+      </mediaobject></para>
+    <para>A template project is automatically created and ready to use, this project already contains all folders wherein developers need to put content: <itemizedlist>
+        <listitem>
+          <para><code>src/main/java</code>: Folder for future sources;</para>
+        </listitem>
+        <listitem>
+          <para><code>src/main/resources</code>: Folder for future resources (images, fonts etc.);</para>
+        </listitem>
+        <listitem>
+          <para><code>META-INF</code>: Sandboxed Application configuration and resources;</para>
+        </listitem>
+        <listitem>
+          <para><code>module.ivy</code>: Ivy input file, dependencies description for the current project.</para>
+        </listitem>
+      </itemizedlist> <mediaobject id="structure">
+        <imageobject>
+          <imagedata align="center" contentdepth="80%" fileref="png/AS3_structure.png" format="PNG" scalefit="1" width="100%"></imagedata>
+        </imageobject>
+      </mediaobject></para>
+  </section>
+  <section id="section.java.sources.folder">
+    <title>Sources Folder</title>
+    <para>The project source folder (<code>src/main</code>) contains two subfolders: <code>java</code> and <code>resources</code>. <code>java</code> folder will contain all <code>*.java</code> files of the project, whereas <code>resources</code> folder will contain elements that the application needs at runtime like raw resources, images or character fonts.</para>
+  </section>
+  <section id="section.metainf">
+    <title>META-INF Folder</title>
+    <para>The <code>META-INF</code> folder contains several folders and a manifest file. They are described hereafter.</para>
+    <itemizedlist>
+      <listitem>
+        <para><code>certificate</code> (folder): Contains certificate information used during the application deployment.</para>
+      </listitem>
+      <listitem>
+        <para><code>libraries</code> (folder): Contains a list of additional libraries useful to the application and not resolved through the regular transitive dependency check.</para>
+      </listitem>
+      <listitem>
+        <para><code>properties</code> (folder): Contains an <code>application.properties</code> file which contains application specific properties that can be accessed at runtime.</para>
+      </listitem>
+      <listitem>
+        <para><code>services</code> (folder): Contains a list of files that describe local services provided by the application. Each file name represents a service class fully qualified name, and each file contains the fully qualified name of the provided service implementation.</para>
+      </listitem>
+      <listitem>
+        <para><code>wpk</code> (folder): Contains a set of applications (<code>.wpk</code> files) that will be started when the application is executed on the Simulator.</para>
+      </listitem>
+      <listitem>
+        <para><code>MANIFEST.MF</code> (file): Contains the information given at project creation, extra information can be added to this file to declare the entry points of the application.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section id="section.module.ivy">
+    <title><code>module.ivy</code> File</title>
+    <para>The <code>module.ivy</code> file describes all the libraries required by the application at runtime. The Ivy classpath container lists all the modules that have been automatically resolved from the content of <code>module.ivy</code>. See <xref linkend="section.ivy.dependency.manager"></xref> for more informations about MicroEJ Module Manager.</para>
+  </section>
 </chapter>

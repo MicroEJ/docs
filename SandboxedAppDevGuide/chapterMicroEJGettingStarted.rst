@@ -117,8 +117,7 @@ and select ``Build Module``.
 The WPK build process will display messages in MicroEJ console, ending
 up the following message:
 
-``[echo] project hello published locally with version
-                    0.1.0-RC201907091602``
+``[echo] project hello published locally with version 0.1.0-RC201907091602``
 
 ``BUILD SUCCESSFUL``
 
