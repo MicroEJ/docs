@@ -18,8 +18,9 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.rst']
 # HTML theme options
 html_theme = 'microej'
 html_logo = '_themes/microej/static/logo-microej-white.png'
-# Until there is a more maintainable theme, override the fonts with an include
-html_css_files = ['fonts.css']
+html_theme_options = {
+    'logo_only': True,
+}
 
 # This is required because the version of the Read the Docs Sphinx theme the
 # microej theme was forked from does not support the HTML5 writer used by
