@@ -6,7 +6,9 @@ BUILDDIR      = _build
 PANDOC        ?= pandoc
 
 # For the docbook to reST conversion
-sources := $(wildcard *.dbk)
+sources := \
+	$(wildcard SandboxedAppDevGuide/*.dbk)
+
 targets := $(patsubst %.dbk, %.rst, $(sources))
 
 source_format := docbook
@@ -23,8 +25,8 @@ help:
 convert: $(targets)
 
 format:
-	echo $(sources) | xargs -t -n 1 -I {} \
-		xmlformat --preserve "pre,literal,programlisting" --outfile {} {}
+	echo $(sources) | tr ' ' '\n' | xargs -t -I% \
+		xmlformat --preserve "pre,literal,programlisting" --outfile % %
 
 clean-convert:
 	rm $(targets)

@@ -5,6 +5,7 @@ MicroEJ
     :maxdepth: 2
     :caption: Contents:
 
+    SandboxesAppDevGuide/index
 
 Indices and tables
 ==================
