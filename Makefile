@@ -22,6 +22,10 @@ help:
 
 convert: $(targets)
 
+format:
+	echo $(sources) | xargs -t -n 1 -I {} \
+		xmlformat --preserve "pre,literal,programlisting" --outfile {} {}
+
 clean-convert:
 	rm $(targets)
 
