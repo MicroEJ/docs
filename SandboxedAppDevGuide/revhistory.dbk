@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE legalnotice PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "../../docbookUtilities/docbook-xml-4.5/docbookx.dtd">
+<!--
+	DocBook
+
+	Copyright 2013-2019 IS2T. All rights reserved.
+	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+-->
+<revhistory id="revhistory">
+	<revision>
+		<revnumber>5.1-A</revnumber>
+		<date>07/2019</date>
+		<revremark>Updated for MicroEJ 5.1, removed Wadapps related sections that are now included in the dedicated Wadapps Starter Kit documentation.</revremark>
+	</revision>
+	<revision>
+		<revnumber>4.1-C</revnumber>
+		<date>07/2017</date>
+		<revremark>Add a section for the Wadapps Firmware Customizer. Miscellaneous minor updates and fixed typos.</revremark>
+	</revision>
+	<revision>
+		<revnumber>4.1-B</revnumber>
+		<date>05/2017</date>
+		<revremark>Alignment with online Getting Started. Removed board specific content. Updated some schematics.</revremark>
+	</revision>
+	<revision>
+		<revnumber>4.1-A</revnumber>
+		<date>04/2017</date>
+		<revremark>Updates for MicroEJ 4.1, new schematics and new screenshots according to firmwares and virtual devices naming convention. Added a JUnit testsuite section and Wadapps Administration Console tool section.</revremark>
+	</revision>
+	<revision>
+		<revnumber>4.0-C</revnumber>
+		<date>07/2016</date>
+		<revremark>Added instructions related to the required differentiation of Application-Id fields in MANIFEST.MF files for both Shared Interface provider and user applications</revremark>
+	</revision>
+	<revision>
+		<revnumber>4.0-B</revnumber>
+		<date>07/2016</date>
+		<revremark>MicroEJ Classpath chapter review.</revremark>
+	</revision>
+	<revision>
+		<revnumber>4.0-A</revnumber>
+		<date>06/2016</date>
+		<revremark>Initial release.</revremark>
+	</revision>
+</revhistory>

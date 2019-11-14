@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	DocBook
+
+	Copyright 2013-2019 IS2T. All rights reserved.
+	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+-->
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>&docTitle;</title>
+	
+	<xi:include href="bookinfo.dbk"/>
+		
+	<xi:include href="chapterMicroEJOverview.dbk"/>
+		
+	<xi:include href="chapterMicroEJGettingStarted.dbk"/>
+	
+	<xi:include href="chapterApplicationStructure.dbk"/>
+	
+	<xi:include href="chapterSharedInterface.dbk"/>
+	
+	<xi:include href="chapterMicroEJClasspath.dbk"/>
+
+	<xi:include href="chapterMicroEJTools.dbk"/>
+	
+	<xi:include href="reference.xml"/>
+	
+</book>
