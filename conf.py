@@ -10,6 +10,7 @@ extensions = [
 
 templates_path = ['_templates']
 html_theme_path = ['_themes']
+master_doc = 'index'
 
 # Generic options
 exclude_patterns = [
