@@ -25,6 +25,7 @@ html_logo = '_themes/microej/static/logo-microej-white.png'
 html_theme_options = {
     'logo_only': True,
 }
+html_show_sphinx = False
 
 # This is required because the version of the Read the Docs Sphinx theme the
 # microej theme was forked from does not support the HTML5 writer used by
