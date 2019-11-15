@@ -1,6 +1,8 @@
 Additional Tools
 ================
 
+.. include:: sectionMicroEJTestsuite.rst
+
 .. _section.tool.fontdesigner:
 
 Font Designer
@@ -8,6 +10,7 @@ Font Designer
 
 MicroEJ Font Designer allows to create embedded fonts files (see
 `??? <#section.classpath.Fonts>`__) from standard font files formats.
-The Font Designer documentation is available at:
-``Help > Help Contents > Font Designer User
-                Guide``.
+The Font Designer documentation is available at: :guilabel:`Help` >
+:guilabel:`Help Contents` > :guilabel:`Font Designer User Guide`.
+
+.. include:: sectionStackTraceReader.rst

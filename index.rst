@@ -5,7 +5,10 @@ MicroEJ
     :maxdepth: 2
     :caption: Contents:
 
+    ApplicationDeveloperGuide/index
     SandboxedAppDevGuide/index
+    StandaloneAppDevGuide/index
+
 
 Indices and tables
 ==================

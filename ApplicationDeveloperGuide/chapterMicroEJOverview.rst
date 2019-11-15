@@ -103,7 +103,7 @@ Before an application is locally deployed on device, MicroEJ Studio
 ensures that it does not depend on any API that is unavailable on the
 device.
 
-.. figure:: png/virtual-device.png
+.. figure:: ../SandboxedAppDevGuide/png/virtual-device.png
    :alt: MicroEJ Virtual Device Architecture
    :width: 100.0%
 
@@ -116,10 +116,10 @@ Runtime Environment
 
 The set of MicroEJ APIs exposed by a Virtual Device (and therefore
 provided by its associated firwmare) is documented in Javadoc format in
-the MicroEJ Resource Center (``Window > Show
-                    View > MicroEJ Resource Center``).
+the MicroEJ Resource Center (:guilabel:`Window` > :guilabel:`Show View` >
+:guilabel:`MicroEJ Resource Center`).
 
-.. figure:: png/Overview_resourcecenter.png
+.. figure:: ../SandboxedAppDevGuide/png/Overview_resourcecenter.png
    :alt: MicroEJ Resource Center APIs
    :width: 100.0%
 

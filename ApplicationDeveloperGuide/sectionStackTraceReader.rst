@@ -13,7 +13,7 @@ Trace Reader tool.
 Write a new line to dump the currently executed stack trace on the
 standard output.
 
-.. figure:: png/STR_stacktracedump.png
+.. figure:: ../SandboxedAppDevGuide/png/STR_stacktracedump.png
    :alt: Code to Dump a Stack Trace
    :width: 100.0%
 
@@ -22,7 +22,7 @@ standard output.
 Write a new line to dump the currently executed stack trace on the
 standard output.
 
-.. figure:: png/trace1.png
+.. figure:: ../StandaloneAppDevGuide/png/trace1.png
    :alt: Code to Dump a Stack Trace
 
    Code to Dump a Stack Trace
@@ -33,7 +33,7 @@ tool requires the application binary file with debug information
 is uploaded on the device is ``application.fo`` (stripped version
 without debug information).
 
-.. figure:: png/STR_debugfofile.png
+.. figure:: ../SandboxedAppDevGuide/png/STR_debugfofile.png
    :alt: Application Binary File with Debug Information
    :width: 100.0%
 
@@ -42,7 +42,7 @@ without debug information).
 On successful deployment, the application is started on the device and
 the following trace is dumped on standard output.
 
-.. figure:: png/STR_tracetermite.png
+.. figure:: ../SandboxedAppDevGuide/png/STR_tracetermite.png
    :alt: Stack Trace Output
    :width: 100.0%
 
@@ -62,7 +62,7 @@ In ``Execution`` tab, select the ``Stack Trace Reader`` tool.
 In ``Configuration`` tab, browse the previously generated application
 binary file with debug information (``application.fodbg``)
 
-.. figure:: png/STR_selectfile.png
+.. figure:: ../SandboxedAppDevGuide/png/STR_selectfile.png
    :alt: Stack Trace Reader Tool Configuration
    :width: 100.0%
 
@@ -71,7 +71,7 @@ binary file with debug information (``application.fodbg``)
 In ``Configuration`` tab, browse the previously generated application
 binary file with debug information (``application.out``)
 
-.. figure:: png/trace3.png
+.. figure:: ../StandaloneAppDevGuide/png/trace3.png
    :alt: Stack Trace Reader Tool Configuration
    :width: 100.0%
 
@@ -81,7 +81,7 @@ Click on ``Run`` button and copy/paste the trace into the Eclipse
 console. The decoded trace is dumped and the line corresponding to the
 application hook is now readable.
 
-.. figure:: png/STR_console.png
+.. figure:: ../SandboxedAppDevGuide/png/STR_console.png
    :alt: Read the Stack Trace
    :width: 100.0%
 

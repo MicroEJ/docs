@@ -58,6 +58,8 @@ detailed in the following sections of this chapter :
 Setup MicroEJ SDK
 =================
 
+.. include:: sectionPlatform.rst
+
 Build and Run an Application
 ============================
 
@@ -91,9 +93,8 @@ Create a MicroEJ Standalone Application
    -  ``module.ivy``: Ivy input file, dependencies description for the
       current project
 
--  Right click on the source folder ``src/main/java`` and select ``New >
-                                   Package``. Give a name:
-   ``com.mycompany``. Click on ``Finish``.
+-  Right click on the source folder ``src/main/java`` and select ``New > Package``.
+   Give a name: ``com.mycompany``. Click on ``Finish``.
 
    .. figure:: png/newApp8.png
       :alt: New Package
@@ -103,9 +104,8 @@ Create a MicroEJ Standalone Application
 
 -  The package ``com.mycompany`` is available under ``src/main/java``
    folder. Right click on this package and select ``New > Class``. Give
-   a name: ``Test`` and check the box ``public static
-                                   void main(String[] args)``. Click on
-   ``Finish``.
+   a name: ``Test`` and check the box ``public static void main(String[] args)``.
+   Click on ``Finish``.
 
    .. figure:: png/newApp9.png
       :alt: New Class
