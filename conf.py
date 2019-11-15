@@ -9,7 +9,6 @@ extensions = [
 ]
 
 templates_path = ['_templates']
-html_static_path = ['_static']
 html_theme_path = ['_themes']
 
 # Generic options
