@@ -248,7 +248,7 @@ transparent).
 
    -  Second 16-bit word is the pixels' color.
 
--  Several consecutive pixels have their own color  (1 + n words):
+-  Several consecutive pixels have their own color (1 + n words):
 
    -  First 16-bit word specifies how many consecutive pixels have their
       own color;

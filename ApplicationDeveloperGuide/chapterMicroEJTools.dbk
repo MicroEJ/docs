@@ -3,18 +3,13 @@
 
 	Copyright 2016 IS2T. All rights reserved.
 	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
--->
-<chapter>
-    <title>Additional Tools</title>
-    
-	<xi:include href="sectionMicroEJTestsuite.dbk" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-	
-	<section id="section.tool.fontdesigner" >
-	    <title>Font Designer</title>
-	    <para>MicroEJ Font Designer allows to create embedded fonts files (see <xref
-				linkend="section.classpath.Fonts"/>) from standard font files formats. The Font
-			Designer documentation is available at: <code>Help > Help Contents > Font Designer User
+--><chapter>
+  <title>Additional Tools</title>
+  <xi:include href="sectionMicroEJTestsuite.dbk" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  <section id="section.tool.fontdesigner">
+    <title>Font Designer</title>
+    <para>MicroEJ Font Designer allows to create embedded fonts files (see <xref linkend="section.classpath.Fonts"></xref>) from standard font files formats. The Font Designer documentation is available at: <code>Help > Help Contents > Font Designer User
 				Guide</code>.</para>
-	  </section>
-	<xi:include href="sectionStackTraceReader.dbk" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
+  <xi:include href="sectionStackTraceReader.dbk" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
 </chapter>

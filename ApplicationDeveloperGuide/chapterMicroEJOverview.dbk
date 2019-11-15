@@ -3,154 +3,104 @@
 
 	Copyright 2013-2019 IS2T. All rights reserved.
 	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
--->
-<chapter>
-    <title>MicroEJ Overview</title>
-    
-	<section id="section.microej.studio" >
-	    <title>MicroEJ Editions</title>
-	    <para>MicroEJ offers a comprehensive toolset to build the embedded software of a device. The
-			toolset covers two levels in device software development: <itemizedlist>
-				<listitem>
-					<para>MicroEJ SDK for device firmware development</para>
-				</listitem>
-				<listitem>
-					<para>MicroEJ Studio for application development</para>
-				</listitem>
-			</itemizedlist>The firmware will generally be produced by the device OEM, it includes
-			all device drivers and a specific set of MicroEJ functionalities useful for
-			application developers targeting this device.
-			<figure>
-				<title>MicroEJ Development Tools Overview</title>
-			<mediaobject id="general_view">
-				<imageobject>
-					<imagedata align="center" format="PNG" fileref="png/toolchain.png" scalefit="1"
-						width="100%" contentdepth="100%"/>
-				</imageobject>
-			</mediaobject>
-			</figure>
-		</para>
-		<para>Using the MicroEJ SDK tool, a firmware developer will produce two versions of the
-			MicroEJ binary, each one able to run applications created with the MicroEJ Studio tool: <itemizedlist>
-			<listitem>
-				<para>A MicroEJ Firmware binary to be flashed on OEM devices;</para>
-			</listitem>
-			<listitem>
-				<para>A Virtual Device which will be used as a device simulator by application developers.</para>
-			</listitem>
-			</itemizedlist>
-		</para>
-		<para>Using the MicroEJ Studio tool, an application developer will be able to:
-			<itemizedlist>
-			 <listitem>
-			 <para>
-			 	Import Virtual Devices matching his target hardware in order to develop and test applications
-				on the simulator;
-			</para>
-			</listitem>
-			 <listitem>
-			 <para>
-				Deploy the application locally on an hardware device equipped with the MicroEJ firmware;
-			</para>
-			</listitem>
-			 <listitem>
-			 <para> Package and publish the application on a MicroEJ Forge Instance, enabling remote end
-						users to install it on their devices. For more information about MicroEJ
-						Forge, please consult
-						<code>https://www.microej.com/product/forge</code>.</para>
-			</listitem>
-			</itemizedlist>
-		</para>
-	</section>
-    
-	<section id="section.firmware" >
-	    <title>MicroEJ Firmware</title>
-		<section id="section.bootable.binary" >
-		    <title>Bootable Binary with Core Services</title>
-		    <para>A MicroEJ Firmware is a binary software program that can be programmed into the flash
-				memory of a device. A MicroEJ Firmware includes an instance of a MicroEJ runtime
-				linked to: <itemizedlist>
-					<listitem>
-						<para> underlying native libraries and BSP + RTOS, </para>
-					</listitem>
-					<listitem>
-						<para> MicroEJ libraries and application code (C and Java code). </para>
-					</listitem>
-				</itemizedlist>
-				<figure id="figure.microej.architecture">
-					<title>MicroEJ Firmware Architecture</title>
-					<mediaobject id="firmware_view">
-						<imageobject>
-							<imagedata align="center" format="PNG" fileref="png/firmware.png"
-								scalefit="1" width="100%" contentdepth="100%"/>
-						</imageobject>
-					</mediaobject>
-				</figure>
-			</para>
-		</section>
-		<section id="section.javadoc" >
-			<title>Specification</title>
-			<para>The set of libraries included in the firmware and its dimensioning limitations (maximum
-				number of simultaneous threads, open connections, …) are firmware specific. Please
-				refer to <code>https://developer.microej.com/5/getting-started-studio.html</code>
-				for evaluation firmware release notes.</para>
-		</section>
-	</section>
-    
-	<section id="section.virtual.device" condition="isSandbox">
-	    <title>Virtual Device</title>
-		<section id="section.virtual.device.simulation" >
-		    <title>Using a Virtual Device for Simulation</title>
-		    <para>The Virtual Device includes the same custom MicroEJ Core, libraries and system
-				applications as the real device. The Virtual Device allows developers to run their
-				applications either on the Simulator, or directly on the real device through local
-				deployment.</para>
-			<para>The Simulator runs a mockup board support package (BSP Mock) that mimics the hardware
-				functionality. An application on the Simulator is run as a standalone
-				application.</para>				
-			<para>Before an application is locally deployed on device, MicroEJ Studio ensures that it does
-				not depend on any API that is unavailable on the device. <figure>
-					<title>MicroEJ Virtual Device Architecture</title>
-					<mediaobject id="virtual_view">
-						<imageobject>
-							<imagedata align="center" format="PNG" fileref="png/virtual-device.png"
-								scalefit="1" width="100%" contentdepth="100%"/>
-						</imageobject>
-					</mediaobject>
-				</figure>
-			</para>
-		</section>
-		<section id="section.javadoc.specification" >
-		    <title>Runtime Environment</title>
-		    <para>The set of MicroEJ APIs exposed by a Virtual Device (and therefore provided by its
-				associated firwmare) is documented in <trademark class="registered"
-					>Javadoc</trademark> format in the MicroEJ Resource Center (<code>Window > Show
+--><chapter>
+  <title>MicroEJ Overview</title>
+  <section id="section.microej.studio">
+    <title>MicroEJ Editions</title>
+    <para>MicroEJ offers a comprehensive toolset to build the embedded software of a device. The toolset covers two levels in device software development: <itemizedlist>
+        <listitem>
+          <para>MicroEJ SDK for device firmware development</para>
+        </listitem>
+        <listitem>
+          <para>MicroEJ Studio for application development</para>
+        </listitem>
+      </itemizedlist>The firmware will generally be produced by the device OEM, it includes all device drivers and a specific set of MicroEJ functionalities useful for application developers targeting this device. <figure>
+        <title>MicroEJ Development Tools Overview</title>
+        <mediaobject id="general_view">
+          <imageobject>
+            <imagedata align="center" contentdepth="100%" fileref="png/toolchain.png" format="PNG" scalefit="1" width="100%"></imagedata>
+          </imageobject>
+        </mediaobject>
+      </figure></para>
+    <para>Using the MicroEJ SDK tool, a firmware developer will produce two versions of the MicroEJ binary, each one able to run applications created with the MicroEJ Studio tool: <itemizedlist>
+        <listitem>
+          <para>A MicroEJ Firmware binary to be flashed on OEM devices;</para>
+        </listitem>
+        <listitem>
+          <para>A Virtual Device which will be used as a device simulator by application developers.</para>
+        </listitem>
+      </itemizedlist></para>
+    <para>Using the MicroEJ Studio tool, an application developer will be able to: <itemizedlist>
+        <listitem>
+          <para>Import Virtual Devices matching his target hardware in order to develop and test applications on the simulator;</para>
+        </listitem>
+        <listitem>
+          <para>Deploy the application locally on an hardware device equipped with the MicroEJ firmware;</para>
+        </listitem>
+        <listitem>
+          <para>Package and publish the application on a MicroEJ Forge Instance, enabling remote end users to install it on their devices. For more information about MicroEJ Forge, please consult <code>https://www.microej.com/product/forge</code>.</para>
+        </listitem>
+      </itemizedlist></para>
+  </section>
+  <section id="section.firmware">
+    <title>MicroEJ Firmware</title>
+    <section id="section.bootable.binary">
+      <title>Bootable Binary with Core Services</title>
+      <para>A MicroEJ Firmware is a binary software program that can be programmed into the flash memory of a device. A MicroEJ Firmware includes an instance of a MicroEJ runtime linked to: <itemizedlist>
+          <listitem>
+            <para>underlying native libraries and BSP + RTOS,</para>
+          </listitem>
+          <listitem>
+            <para>MicroEJ libraries and application code (C and Java code).</para>
+          </listitem>
+        </itemizedlist> <figure id="figure.microej.architecture">
+          <title>MicroEJ Firmware Architecture</title>
+          <mediaobject id="firmware_view">
+            <imageobject>
+              <imagedata align="center" contentdepth="100%" fileref="png/firmware.png" format="PNG" scalefit="1" width="100%"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </figure></para>
+    </section>
+    <section id="section.javadoc">
+      <title>Specification</title>
+      <para>The set of libraries included in the firmware and its dimensioning limitations (maximum number of simultaneous threads, open connections, …) are firmware specific. Please refer to <code>https://developer.microej.com/5/getting-started-studio.html</code> for evaluation firmware release notes.</para>
+    </section>
+  </section>
+  <section condition="isSandbox" id="section.virtual.device">
+    <title>Virtual Device</title>
+    <section id="section.virtual.device.simulation">
+      <title>Using a Virtual Device for Simulation</title>
+      <para>The Virtual Device includes the same custom MicroEJ Core, libraries and system applications as the real device. The Virtual Device allows developers to run their applications either on the Simulator, or directly on the real device through local deployment.</para>
+      <para>The Simulator runs a mockup board support package (BSP Mock) that mimics the hardware functionality. An application on the Simulator is run as a standalone application.</para>
+      <para>Before an application is locally deployed on device, MicroEJ Studio ensures that it does not depend on any API that is unavailable on the device. <figure>
+          <title>MicroEJ Virtual Device Architecture</title>
+          <mediaobject id="virtual_view">
+            <imageobject>
+              <imagedata align="center" contentdepth="100%" fileref="png/virtual-device.png" format="PNG" scalefit="1" width="100%"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </figure></para>
+    </section>
+    <section id="section.javadoc.specification">
+      <title>Runtime Environment</title>
+      <para>The set of MicroEJ APIs exposed by a Virtual Device (and therefore provided by its associated firwmare) is documented in <trademark class="registered">Javadoc</trademark> format in the MicroEJ Resource Center (<code>Window > Show
 					View > MicroEJ Resource Center</code>).</para>
-			<figure>
-				<title>MicroEJ Resource Center APIs</title>
-				<mediaobject id="resource_center">
-					<imageobject>
-						<imagedata align="center" format="PNG" fileref="png/Overview_resourcecenter.png"
-							scalefit="1" width="100%" contentdepth="100%"/>
-					</imageobject>
-				</mediaobject>
-			</figure>
-		</section>
-	</section>
-	<section id="Standalone_vs_Sandboxed">
-		<title>MicroEJ Applications</title>
-		<para>Two kinds of applications can be developed on MicroEJ: MicroEJ Standalone Applications and
-			MicroEJ Sanboxed Applications.</para>
-		<para>A MicroEJ Standalone Application is a MicroEJ application that is directly linked to
-			the C code to produce a MicroEJ Firmware. Such application must define a main entry
-			point, i.e. a class containing a <code>public static void main(String[])</code> method.
-			MicroEJ Standalone Applications are developed using MicroEJ SDK.</para>
-		<para>A MicroEJ Sandboxed Application is a MicroEJ application that can run over a Multi-Sandbox
-			Firmware. It can be linked either statically or dynamically. If it is statically linked,
-			it is then called a System Application as it is part of the initial image and cannot
-			be removed. MicroEJ Sandboxed Applications are developed using MicroEJ Studio. </para>
-		<para>A MicroEJ Multi-Sandbox Firmware is a MicroEJ Firmware that implements the ability to be
-			extended by exposing a set of APIs and a memory space to link MicroEJ Sandboxed
-			Applications. It can host several MicroEJ Sandboxed applications. </para>
-	</section>
+      <figure>
+        <title>MicroEJ Resource Center APIs</title>
+        <mediaobject id="resource_center">
+          <imageobject>
+            <imagedata align="center" contentdepth="100%" fileref="png/Overview_resourcecenter.png" format="PNG" scalefit="1" width="100%"></imagedata>
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+  </section>
+  <section id="Standalone_vs_Sandboxed">
+    <title>MicroEJ Applications</title>
+    <para>Two kinds of applications can be developed on MicroEJ: MicroEJ Standalone Applications and MicroEJ Sanboxed Applications.</para>
+    <para>A MicroEJ Standalone Application is a MicroEJ application that is directly linked to the C code to produce a MicroEJ Firmware. Such application must define a main entry point, i.e. a class containing a <code>public static void main(String[])</code> method. MicroEJ Standalone Applications are developed using MicroEJ SDK.</para>
+    <para>A MicroEJ Sandboxed Application is a MicroEJ application that can run over a Multi-Sandbox Firmware. It can be linked either statically or dynamically. If it is statically linked, it is then called a System Application as it is part of the initial image and cannot be removed. MicroEJ Sandboxed Applications are developed using MicroEJ Studio.</para>
+    <para>A MicroEJ Multi-Sandbox Firmware is a MicroEJ Firmware that implements the ability to be extended by exposing a set of APIs and a memory space to link MicroEJ Sandboxed Applications. It can host several MicroEJ Sandboxed applications.</para>
+  </section>
 </chapter>

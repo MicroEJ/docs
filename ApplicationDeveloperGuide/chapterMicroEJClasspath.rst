@@ -311,7 +311,7 @@ composed of sub ranges that have a unique id.
 
 -  ``myfont:basic_latin``: Embed all *Basic Latin* characters;
 
--  ``myfont:basic_latin;arabic``:  Embed all *Basic Latin* characters,
+-  ``myfont:basic_latin;arabic``: Embed all *Basic Latin* characters,
    and all *Arabic* characters.
 
 Transparency
@@ -424,7 +424,7 @@ MicroEJ application created.
        <dependencies>
          <dependency org="[dep_organisation]" name="[dep_name]" rev="[dep_version]"/>
        </dependencies>
-   </ivy-module>     
+   </ivy-module>        
 
 MicroEJ Central Repository
 ==========================

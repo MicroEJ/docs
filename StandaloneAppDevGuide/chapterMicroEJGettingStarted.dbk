@@ -3,241 +3,155 @@
 
 	Copyright 2013-2019 IS2T. All rights reserved.
 	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
--->
-<chapter id="chapter.microej.getting.started" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <title>MicroEJ SDK Getting Started</title>
-    
-	<section id="microej.introduction">
-		<title>Introducing MicroEJ SDK</title>
-		<para>
-			MicroEJ SDK provides tools based on Eclipse to develop software applications for
-			MicroEJ-ready devices. MicroEJ SDK allows application developers to write MicroEJ
-			applications and run them on a virtual (simulated) or real device. 
-		</para>
-		<para>
-			This document is a step-by-step introduction to application development with MicroEJ
-			SDK. The purpose of MicroEJ SDK is to develop for targeted MCU/MPU computers
-			(IoT, wearable, etc.) and it is therefore a cross-development tool.
-		</para>
-		<para>
-			Unlike standard low-level cross-development tools, MicroEJ SDK offers unique services
-			like hardware simulation and local deployment to the target hardware.
-		</para>
-		<para>
-			Application development is based on the following elements:
-		</para>
-		<itemizedlist>
-			<listitem>
-				<para> MicroEJ SDK, the integrated development environment for writing applications. It is based
-					on Eclipse and is relies on the integrated Java compiler (JDT). It also provides
-					a dependency manager for managing MicroEJ Libraries (see <xref
-						linkend="section.ivy.dependency.manager"/>). The current version of MicroEJ
-					SDK is built on top of Eclipse Oxygen
-						(<code>https://www.eclipse.org/oxygen/</code>). </para>
-			</listitem>
-			<listitem>
-				<para>
-					MicroEJ Platform, a software package including the resources and tools required
-					for building and testing an application for a specific MicroEJ-ready device.
-					MicroEJ platforms are imported into MicroEJ SDK within a local folder
-					called MicroEJ Platforms repository. Once a MicroEJ platform is imported, an
-					application can be launched and tested on simulator. It also provides a means
-					to locally deploy the application on a MicroEJ-ready device.
-				</para>
-			</listitem>
-			<listitem>
-				<para>
-					MicroEJ-ready device, an hardware device that will be programmed with a
-					MicroEJ firmware. A MicroEJ firmware is a binary instance of MicroEJ runtime for a target hardware board.
-				</para>
-			</listitem>
-		</itemizedlist> 
-		<para> 
-			Starting from scratch, the steps to go through the whole process are detailed in the
-			following sections of this chapter : 
-			<itemizedlist>
-				<listitem>
-					<para>Download and install a MicroEJ Platform</para>
-				</listitem>
-				<listitem>
-					<para>Build and run your first application on simulator</para>
-				</listitem>
-				<listitem>
-					<para>Build and run your first application on target hardware</para>
-				</listitem>
-			</itemizedlist>
-		</para>
-	</section>
- 
-    <section id="section.install.and.setup.studio">
-	    <title>Setup MicroEJ SDK</title>
-
-		<xi:include href="sectionPlatform.dbk"/>
-	</section>
-	    	
-	<section>
-		<title>Build and Run an Application</title>
-		<section id="microej.sample.applications">
-	    	<title>Create a MicroEJ Standalone Application</title>
-			<para>
-				<itemizedlist>
-					<listitem>
-						<para>
-							Create a project in your workspace. Select <code>File > New > MicroEJ Standalone Application Project</code>. 
-							<figure>
-								<title>New MicroEJ Standalone Application Project</title>
-								<mediaobject id="sampleapp1"><imageobject>
-									<imagedata align="center" format="PNG" fileref="png/newApp1.png" scalefit="1" width="80%" contentdepth="100%"/>
-								</imageobject></mediaobject>
-							</figure>
-						</para>
-					</listitem>
-					<listitem>
-						<para> Fill in the application template fields, the Project name field will automatically
-							duplicate in the following fields. Click on <code>Finish</code>. A
-							template project is automatically created and ready to use, this project
-							already contains all folders wherein developers need to put content: <itemizedlist>
-								<listitem>
-									<para><code>src/main/java</code>: Folder for future
-										sources</para>
-								</listitem>
-								<listitem>
-									<para><code>src/main/resources</code>: Folder for future
-										resources (images, fonts etc.)</para>
-								</listitem>
-								<listitem>
-									<para><code>META-INF</code>: Sandboxed Application configuration
-										and resources</para>
-								</listitem>
-								<listitem>
-									<para><code>module.ivy</code>: Ivy input file, dependencies
-										description for the current project</para>
-								</listitem>
-							</itemizedlist>
-						</para>
-					</listitem>
-					<listitem>
-						<para> Right click on the source folder <code>src/main/java</code> and select <code>New >
-								Package</code>. Give a name: <code>com.mycompany</code>. Click on
-								<code>Finish</code>. <figure>
-								<title>New Package</title>
-								<mediaobject id="sampleapp8">
-									<imageobject>
-										<imagedata align="center" format="PNG"
-											fileref="png/newApp8.png" scalefit="1" width="80%"
-											contentdepth="100%"/>
-									</imageobject>
-								</mediaobject>
-							</figure>
-						</para>
-					</listitem>
-
-					<listitem>
-						<para> The package <code>com.mycompany</code> is available under <code>src/main/java</code>
-							folder. Right click on this package and select <code>New > Class</code>.
-							Give a name: <code>Test</code> and check the box <code>public static
+--><chapter id="chapter.microej.getting.started" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>MicroEJ SDK Getting Started</title>
+  <section id="microej.introduction">
+    <title>Introducing MicroEJ SDK</title>
+    <para>MicroEJ SDK provides tools based on Eclipse to develop software applications for MicroEJ-ready devices. MicroEJ SDK allows application developers to write MicroEJ applications and run them on a virtual (simulated) or real device.</para>
+    <para>This document is a step-by-step introduction to application development with MicroEJ SDK. The purpose of MicroEJ SDK is to develop for targeted MCU/MPU computers (IoT, wearable, etc.) and it is therefore a cross-development tool.</para>
+    <para>Unlike standard low-level cross-development tools, MicroEJ SDK offers unique services like hardware simulation and local deployment to the target hardware.</para>
+    <para>Application development is based on the following elements:</para>
+    <itemizedlist>
+      <listitem>
+        <para>MicroEJ SDK, the integrated development environment for writing applications. It is based on Eclipse and is relies on the integrated Java compiler (JDT). It also provides a dependency manager for managing MicroEJ Libraries (see <xref linkend="section.ivy.dependency.manager"></xref>). The current version of MicroEJ SDK is built on top of Eclipse Oxygen (<code>https://www.eclipse.org/oxygen/</code>).</para>
+      </listitem>
+      <listitem>
+        <para>MicroEJ Platform, a software package including the resources and tools required for building and testing an application for a specific MicroEJ-ready device. MicroEJ platforms are imported into MicroEJ SDK within a local folder called MicroEJ Platforms repository. Once a MicroEJ platform is imported, an application can be launched and tested on simulator. It also provides a means to locally deploy the application on a MicroEJ-ready device.</para>
+      </listitem>
+      <listitem>
+        <para>MicroEJ-ready device, an hardware device that will be programmed with a MicroEJ firmware. A MicroEJ firmware is a binary instance of MicroEJ runtime for a target hardware board.</para>
+      </listitem>
+    </itemizedlist>
+    <para>Starting from scratch, the steps to go through the whole process are detailed in the following sections of this chapter : <itemizedlist>
+        <listitem>
+          <para>Download and install a MicroEJ Platform</para>
+        </listitem>
+        <listitem>
+          <para>Build and run your first application on simulator</para>
+        </listitem>
+        <listitem>
+          <para>Build and run your first application on target hardware</para>
+        </listitem>
+      </itemizedlist></para>
+  </section>
+  <section id="section.install.and.setup.studio">
+    <title>Setup MicroEJ SDK</title>
+    <xi:include href="sectionPlatform.dbk"></xi:include>
+  </section>
+  <section>
+    <title>Build and Run an Application</title>
+    <section id="microej.sample.applications">
+      <title>Create a MicroEJ Standalone Application</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>Create a project in your workspace. Select <code>File > New > MicroEJ Standalone Application Project</code>. <figure>
+                <title>New MicroEJ Standalone Application Project</title>
+                <mediaobject id="sampleapp1">
+                  <imageobject>
+                    <imagedata align="center" contentdepth="100%" fileref="png/newApp1.png" format="PNG" scalefit="1" width="80%"></imagedata>
+                  </imageobject>
+                </mediaobject>
+              </figure></para>
+          </listitem>
+          <listitem>
+            <para>Fill in the application template fields, the Project name field will automatically duplicate in the following fields. Click on <code>Finish</code>. A template project is automatically created and ready to use, this project already contains all folders wherein developers need to put content: <itemizedlist>
+                <listitem>
+                  <para><code>src/main/java</code>: Folder for future sources</para>
+                </listitem>
+                <listitem>
+                  <para><code>src/main/resources</code>: Folder for future resources (images, fonts etc.)</para>
+                </listitem>
+                <listitem>
+                  <para><code>META-INF</code>: Sandboxed Application configuration and resources</para>
+                </listitem>
+                <listitem>
+                  <para><code>module.ivy</code>: Ivy input file, dependencies description for the current project</para>
+                </listitem>
+              </itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>Right click on the source folder <code>src/main/java</code> and select <code>New >
+								Package</code>. Give a name: <code>com.mycompany</code>. Click on <code>Finish</code>. <figure>
+                <title>New Package</title>
+                <mediaobject id="sampleapp8">
+                  <imageobject>
+                    <imagedata align="center" contentdepth="100%" fileref="png/newApp8.png" format="PNG" scalefit="1" width="80%"></imagedata>
+                  </imageobject>
+                </mediaobject>
+              </figure></para>
+          </listitem>
+          <listitem>
+            <para>The package <code>com.mycompany</code> is available under <code>src/main/java</code> folder. Right click on this package and select <code>New > Class</code>. Give a name: <code>Test</code> and check the box <code>public static
 								void main(String[] args)</code>. Click on <code>Finish</code>. <figure>
-								<title>New Class</title>
-								<mediaobject id="sampleapp9">
-									<imageobject>
-										<imagedata align="center" format="PNG"
-											fileref="png/newApp9.png" scalefit="1" width="80%"
-											contentdepth="100%"/>
-									</imageobject>
-								</mediaobject>
-							</figure>
-						</para>
-					</listitem>
-
-					<listitem>
-						<para> The new class has been created with an empty <code>main()</code> method. Fill the
-							method body with the following lines:
-							<programlisting>System.out.println("hello world!");</programlisting>. <figure>
-								<title>MicroEJ Application Content</title>
-								<mediaobject id="sampleapp10">
-									<imageobject>
-										<imagedata align="center" format="PNG"
-											fileref="png/newApp10.png" scalefit="1" width="80%"
-											contentdepth="100%"/>
-									</imageobject>
-								</mediaobject>
-							</figure> The test application is now ready to be executed. See next
-							sections. </para>
-					</listitem>
-
-				</itemizedlist>
-			</para>
-		</section>
-	
-		<section id="section.run.on.simulator">
-	    <title>Run on the Simulator</title>
-			<para>
-				To run the sample project on Simulator, select it in the left panel then right-click and select
-				<code>Run > Run as > MicroEJ Application</code>.
-				<figure>
-					<title>MicroEJ Development Tools Overview</title>
-					<mediaobject id="test-simulator2"><imageobject>
-						<imagedata align="center" format="PNG" fileref="png/sim1.png" scalefit="1" width="80%" contentdepth="100%"/>
-					</imageobject></mediaobject>
-				</figure>
-			</para>
-			<para>
-				MicroEJ SDK console will display Launch steps messages.
-				<programlisting>
+                <title>New Class</title>
+                <mediaobject id="sampleapp9">
+                  <imageobject>
+                    <imagedata align="center" contentdepth="100%" fileref="png/newApp9.png" format="PNG" scalefit="1" width="80%"></imagedata>
+                  </imageobject>
+                </mediaobject>
+              </figure></para>
+          </listitem>
+          <listitem>
+            <para>The new class has been created with an empty <code>main()</code> method. Fill the method body with the following lines: <programlisting>System.out.println("hello world!");</programlisting>. <figure>
+                <title>MicroEJ Application Content</title>
+                <mediaobject id="sampleapp10">
+                  <imageobject>
+                    <imagedata align="center" contentdepth="100%" fileref="png/newApp10.png" format="PNG" scalefit="1" width="80%"></imagedata>
+                  </imageobject>
+                </mediaobject>
+              </figure> The test application is now ready to be executed. See next sections.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+    <section id="section.run.on.simulator">
+      <title>Run on the Simulator</title>
+      <para>To run the sample project on Simulator, select it in the left panel then right-click and select <code>Run > Run as > MicroEJ Application</code>. <figure>
+          <title>MicroEJ Development Tools Overview</title>
+          <mediaobject id="test-simulator2">
+            <imageobject>
+              <imagedata align="center" contentdepth="100%" fileref="png/sim1.png" format="PNG" scalefit="1" width="80%"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </figure></para>
+      <para>MicroEJ SDK console will display Launch steps messages. <programlisting>
 					=============== [ Initialization Stage ] ===============
 					=============== [ Launching on Simulator ] ===============
 					hello world!
 					=============== [ Completed Successfully ] ===============
 					
 					SUCCESS
-				</programlisting>
-			</para>
-		</section>
-		
-		<section id="section.run.on.emb">
-	    	<title>Run on the Hardware Device</title>
-			<para>
-				Compile an application, connect the hardware device and deploy on it is hardware dependant. These steps are described in dedicated documentation
-				available inside the MicroEJ Platform. This documentation is accessible from the MicroEJ Resources Center view.
-				<note>
-					<para>
-						MicroEJ Resources Center view may have been closed. Click on <code>Help > MicroEJ Resources Center</code> to reopen it.
-					</para>
-				</note>
-				Open the menu <code>Manual</code> and select the documentation <code>[hardware device] MicroEJ Platform</code>, where <code>[hardware device]</code>
-				is the name of the hardware device. This documentation features a guide to run a built-in application on MicroEJ Simulator and on hardware device. 
-				<figure>
-					<title>MicroEJ Platform Guide</title>
-					<mediaobject id="test-emb1"><imageobject>
-						<imagedata align="center" format="PNG" fileref="png/emb1.png" scalefit="1" width="80%" contentdepth="100%"/>
-					</imageobject></mediaobject>
-				</figure>
-				
-			</para>
-		</section>
-	</section>
-    
-	<section id="section.application.development">
-	<title>Application Development</title>
-		<para>The following sections of this document shall prove useful as a reference when
-			developing applications for MicroEJ. They cover concepts essential to MicroEJ
-			applications design. </para>
-		<para>In addition to these sections, by going to
-			<code>https://developer.microej.com/</code>, you can access a number of helpful
-			resources such as: <itemizedlist>
-				<listitem>
-					<para>Libraries from the MicroEJ Central Repository
-							(<code>https://repository.microej.com/</code>)</para>
-				</listitem>
-				<listitem>
-					<para>Application Examples as source code from MicroEJ Github Repositories
-							(<code>https://github.com/MicroEJ</code>) </para>
-				</listitem>
-				<listitem>
-					<para>Documentation (HOWTOs, Reference Manuals, APIs javadoc...) </para>
-				</listitem>
-			</itemizedlist></para>
-
-		<para> </para>
-	</section>
+				</programlisting></para>
+    </section>
+    <section id="section.run.on.emb">
+      <title>Run on the Hardware Device</title>
+      <para>Compile an application, connect the hardware device and deploy on it is hardware dependant. These steps are described in dedicated documentation available inside the MicroEJ Platform. This documentation is accessible from the MicroEJ Resources Center view. <note>
+          <para>MicroEJ Resources Center view may have been closed. Click on <code>Help > MicroEJ Resources Center</code> to reopen it.</para>
+        </note> Open the menu <code>Manual</code> and select the documentation <code>[hardware device] MicroEJ Platform</code>, where <code>[hardware device]</code> is the name of the hardware device. This documentation features a guide to run a built-in application on MicroEJ Simulator and on hardware device. <figure>
+          <title>MicroEJ Platform Guide</title>
+          <mediaobject id="test-emb1">
+            <imageobject>
+              <imagedata align="center" contentdepth="100%" fileref="png/emb1.png" format="PNG" scalefit="1" width="80%"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </figure></para>
+    </section>
+  </section>
+  <section id="section.application.development">
+    <title>Application Development</title>
+    <para>The following sections of this document shall prove useful as a reference when developing applications for MicroEJ. They cover concepts essential to MicroEJ applications design.</para>
+    <para>In addition to these sections, by going to <code>https://developer.microej.com/</code>, you can access a number of helpful resources such as: <itemizedlist>
+        <listitem>
+          <para>Libraries from the MicroEJ Central Repository (<code>https://repository.microej.com/</code>)</para>
+        </listitem>
+        <listitem>
+          <para>Application Examples as source code from MicroEJ Github Repositories (<code>https://github.com/MicroEJ</code>)</para>
+        </listitem>
+        <listitem>
+          <para>Documentation (HOWTOs, Reference Manuals, APIs javadoc...)</para>
+        </listitem>
+      </itemizedlist></para>
+    <para></para>
+  </section>
 </chapter>
