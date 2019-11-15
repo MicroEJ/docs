@@ -68,8 +68,8 @@ Press ``Next``. Fill out project settings and select the
 ``microej-javalib`` skeleton A new project named ``mylibrary`` is
 created in the workspace.
 
-Right-click on the ``src/test/java`` folder and select ``New >
-                Other...`` menu item.
+Right-click on the ``src/test/java`` folder and select ``New > Other...``
+menu item.
 
 Select the ``Java > JUnit > New JUnit Test Case`` wizard. Enter a test
 name and press ``Finish``.A new JUnit test case class is created with a
@@ -78,10 +78,9 @@ default failing test case.
 Build and Run a JUnit Testsuite
 -------------------------------
 
-Right-click on the ``mylibrary`` project and select ``Build with
-                EasyAnt``. After the library is built, the testsuite
-engine launches available test cases and the build process fails in the
-console view.
+Right-click on the ``mylibrary`` project and select ``Build with EasyAnt``.
+After the library is built, the testsuite engine launches available test cases
+and the build process fails in the console view.
 
 On the ``mylibrary`` project, right-click and select ``Refresh``.
 
@@ -100,12 +99,11 @@ with
 
 ::
 
-   Assert.assertTrue(true); 
+   Assert.assertTrue(true);
 
-Right-click again on the ``mylibrary`` project and select ``Build with
-                EasyAnt``. The test is now successfully executed on the
-target platform so the MicroEJ add-on library is fully built and
-published without errors.
+Right-click again on the ``mylibrary`` project and select ``Build with EasyAnt``.
+The test is now successfully executed on the target platform so the MicroEJ
+add-on library is fully built and published without errors.
 
 Double-click on the JUnit testsuite report to see the test has been
 successfully executed.

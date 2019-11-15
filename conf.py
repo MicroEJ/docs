@@ -13,7 +13,11 @@ html_static_path = ['_static']
 html_theme_path = ['_themes']
 
 # Generic options
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.rst']
+exclude_patterns = [
+    '_build',
+    'README.rst',
+    '**/section*.rst',
+]
 
 # HTML theme options
 html_theme = 'microej'

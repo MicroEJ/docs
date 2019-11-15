@@ -5,7 +5,5 @@ Application Developer Guide
     :maxdepth: 2
 
     chapterMicroEJOverview
-    chapterMicroEJGettingStarted
     chapterMicroEJClasspath
     chapterMicroEJTools
-

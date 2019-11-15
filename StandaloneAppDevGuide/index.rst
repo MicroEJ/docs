@@ -4,7 +4,7 @@ Standalone Application Developer Guide
 .. toctree::
     :maxdepth: 2
 
-    chapterMicroEJOverview
+    ../ApplicationDeveloperGuide/chapterMicroEJOverview
     chapterMicroEJGettingStarted
-    chapterMicroEJClasspath
-    chapterMicroEJTools
+    ../ApplicationDeveloperGuide/chapterMicroEJClasspath
+    ../ApplicationDeveloperGuide/chapterMicroEJTools
