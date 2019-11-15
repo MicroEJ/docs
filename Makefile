@@ -7,8 +7,8 @@ PANDOC        ?= pandoc
 
 # For the docbook to reST conversion
 sources := \
-	$(wildcard ApplicationDeveloperGuide/*.dbk) /
-	$(wildcard SandboxedAppDevGuide/*.dbk) /
+	$(wildcard ApplicationDeveloperGuide/*.dbk) \
+	$(wildcard SandboxedAppDevGuide/*.dbk) \
 	$(wildcard StandaloneAppDevGuide/*.dbk)
 
 targets := $(patsubst %.dbk, %.rst, $(sources))
