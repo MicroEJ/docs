@@ -97,6 +97,12 @@ Starting from scratch, the steps to go through the whole process are:
 The following figure gives an overview of the MicroEJ software
 components required for both host computer and target hardware:
 
+.. figure:: png/2_download.png
+   :alt: MicroEJ Studio Development Imported Elements
+   :width: 100.0%
+
+   MicroEJ Studio Development Imported Elements
+
 .. _section.application.publication:
 
 Application Publication

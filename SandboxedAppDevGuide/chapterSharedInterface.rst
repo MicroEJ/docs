@@ -25,6 +25,12 @@ The basic schema:
    registry and directly calls the methods defined by the shared
    interface.
 
+.. figure:: png/SI_1.png
+   :alt: Shared Interface Call Mechanism
+   :width: 70.0%
+
+   Shared Interface Call Mechanism
+
 .. _section.shared.interfaces.element:
 
 Shared Interface Creation
@@ -81,6 +87,13 @@ Transferable Types
 In the process of a cross-application method call, parameters and return
 value of methods declared in a shared interface must be transferred back
 and forth between application boundaries.
+
+.. figure:: png/SI_3.png
+   :alt: Shared Interface Parameters Transfer
+   :width: 70.0%
+
+   Shared Interface Parameters Transfer
+
 `table_title <#table.si.transfer.rules>`__ describes the rules applied
 depending on the element to be transferred.
 
@@ -196,9 +209,17 @@ implementation regarding the interface contract even if the remote
 application fails to fulfill its contract (unexpected exceptions,
 application killed...). The MicroEJ Core Engine will allocate instances
 of this class when an implementation owned by another application is
-being transferred to this application. A proxy class is implemented and
-executed on the client side, each method of the implemented interface
-must be defined according to the following pattern:
+being transferred to this application.
+
+.. figure:: png/SI_4.png
+   :alt: Shared Interfaces Proxy Overview
+   :width: 70.0%
+
+   Shared Interfaces Proxy Overview
+
+A proxy class is implemented and executed on the client side, each
+method of the implemented interface must be defined according to the
+following pattern:
 
 .. code:: java
 

@@ -4,7 +4,9 @@ Sandboxed Application Dev Guide
 .. toctree::
     :maxdepth: 2
 
-    chapterApplicationStructure
+    chapterMicroEJOverview
     chapterMicroEJGettingStarted
-    documentation
-    revhistory
+    chapterApplicationStructure
+    chapterSharedInterface
+    chapterMicroEJClasspath
+    chapterMicroEJTools

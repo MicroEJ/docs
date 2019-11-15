@@ -82,14 +82,15 @@
           </itemizedlist>
         </listitem>
       </orderedlist></para>
-    <para>The following figure gives an overview of the MicroEJ software components required for both host computer and target hardware: <figure>
+    <para>The following figure gives an overview of the MicroEJ software components required for both host computer and target hardware:</para>
+    <figure>
         <title>MicroEJ Studio Development Imported Elements</title>
         <mediaobject id="download">
           <imageobject>
             <imagedata align="center" contentdepth="100%" fileref="png/2_download.png" format="PNG" scalefit="1" width="100%"></imagedata>
           </imageobject>
         </mediaobject>
-      </figure></para>
+      </figure>
   </section>
   <section id="section.application.publication">
     <title>Application Publication</title>

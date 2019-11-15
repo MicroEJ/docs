@@ -15,14 +15,16 @@
         <listitem>
           <para>A user application retrieves the implementation from the system registry and directly calls the methods defined by the shared interface.</para>
         </listitem>
-      </itemizedlist><figure>
+      </itemizedlist>
+      </para>
+      <figure>
         <title>Shared Interface Call Mechanism</title>
         <mediaobject id="shared_interface">
           <imageobject>
             <imagedata align="center" contentdepth="100%" fileref="png/SI_1.png" format="PNG" scalefit="1" width="70%"></imagedata>
           </imageobject>
         </mediaobject>
-      </figure></para>
+      </figure>
   </section>
   <section id="section.shared.interfaces.element">
     <title>Shared Interface Creation</title>
@@ -57,14 +59,17 @@ public interface MyInterface{
     </section>
     <section id="section.transferable.types">
       <title>Transferable Types</title>
-      <para>In the process of a cross-application method call, parameters and return value of methods declared in a shared interface must be transferred back and forth between application boundaries. <figure>
+      <para>In the process of a cross-application method call, parameters and return value of methods declared in a shared interface must be transferred back and forth between application boundaries.</para>
+      <figure>
           <title>Shared Interface Parameters Transfer</title>
           <mediaobject id="SI_parameters">
             <imageobject>
               <imagedata align="center" contentdepth="100%" fileref="png/SI_3.png" format="PNG" scalefit="1" width="70%"></imagedata>
             </imageobject>
           </mediaobject>
-        </figure> <xref linkend="table.si.transfer.rules"></xref> describes the rules applied depending on the element to be transferred.<table colsep="1" frame="all" id="table.si.transfer.rules">
+        </figure>
+        <para><xref linkend="table.si.transfer.rules"></xref> describes the rules applied depending on the element to be transferred.</para>
+        <table colsep="1" frame="all" id="table.si.transfer.rules">
           <title>Shared Interface Types Transfer Rules</title>
           <tgroup cols="4">
             <colspec colwidth="2*"></colspec>
@@ -124,7 +129,7 @@ public interface MyInterface{
               </row>
             </tbody>
           </tgroup>
-        </table></para>
+        </table>
       <para>Objects created by an application which class is owned by MicroEJ Firmware can be transferred to another application if this has been authorized by the firwmare. The list of eligible types that can be transferred is firwmare specific, so you have to consult the firmware specification. <xref linkend="table.si.transfer.firmware"></xref> lists firmware types allowed to be transferred through a shared interface call. When an argument transfer is forbidden, the call is abruptly stopped and a <code>java.lang.IllegalAccessError</code> is thrown by MicroEJ Core Engine.<table colsep="1" frame="all" id="table.si.transfer.firmware">
           <title>MicroEJ Evaluation Firmware Example of Transfer Types</title>
           <tgroup cols="2">
@@ -162,14 +167,16 @@ public interface MyInterface{
     <section id="section.proxy.implementation">
       <title>Proxy Class Implementation</title>
       <para>The Shared Interface mechanism is based on automatic proxy objects created by the underlying MicroEJ Core Engine, so that each application can still be dynamically stopped and uninstalled. This offers a reliable way for users and providers to handle the relationship in case of a broken link.</para>
-      <para>Once a Java interface has been declared as Shared Interface, a dedicated implementation is required (called the Proxy class implementation). Its main goal is to perform the remote invocation and provide a reliable implementation regarding the interface contract even if the remote application fails to fulfill its contract (unexpected exceptions, application killed...). The MicroEJ Core Engine will allocate instances of this class when an implementation owned by another application is being transferred to this application. <figure>
+      <para>Once a Java interface has been declared as Shared Interface, a dedicated implementation is required (called the Proxy class implementation). Its main goal is to perform the remote invocation and provide a reliable implementation regarding the interface contract even if the remote application fails to fulfill its contract (unexpected exceptions, application killed...). The MicroEJ Core Engine will allocate instances of this class when an implementation owned by another application is being transferred to this application.</para>
+      <figure>
           <title>Shared Interfaces Proxy Overview</title>
           <mediaobject id="SI_proxy">
             <imageobject>
               <imagedata align="center" contentdepth="100%" fileref="png/SI_4.png" format="PNG" scalefit="1" width="70%"></imagedata>
             </imageobject>
           </mediaobject>
-        </figure>A proxy class is implemented and executed on the client side, each method of the implemented interface must be defined according to the following pattern: <programlisting language="java">package mypackage;
+        </figure>
+        <para>A proxy class is implemented and executed on the client side, each method of the implemented interface must be defined according to the following pattern: <programlisting language="java">package mypackage;
 
 public class MyInterfaceProxy extends Proxy&lt;MyInterface> implements MyInterface {
 
