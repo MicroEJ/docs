@@ -1,12 +1,10 @@
-Sandboxed Application Developer Guide
-=====================================
+Standalone Application Developer Guide
+======================================
 
 .. toctree::
     :maxdepth: 2
 
     chapterMicroEJOverview
     chapterMicroEJGettingStarted
-    chapterApplicationStructure
-    chapterSharedInterface
     chapterMicroEJClasspath
     chapterMicroEJTools

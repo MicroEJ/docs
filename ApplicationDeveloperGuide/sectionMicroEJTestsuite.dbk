@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+                         "http://docbook.org/xml/4.5/docbookx.dtd">
+<!--
+	DocBook
+
+	Copyright 2013-2019 IS2T. All rights reserved.
+	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+-->
+<section>
+<title>Testsuite with JUnit</title>
+	<para>MicroEJ allows to run unit tests using the standard JUnit API during the build process of a
+		MicroEJ library or a MicroEJ application. The MicroEJ testsuite engine runs tests on a target
+		Platform and outputs a JUnit XML report.</para>
+	<section>
+		<title>Principle</title>
+		<para>JUnit testing can be enabled when using the <code>microej-javalib</code> (MicroEJ Add-On
+			library) or the <code>microej-application</code> (MicroEJ Applications) build type.
+			JUnit test cases processing is automatically enabled when the following dependency is
+			declared in the <code>module.ivy</code> file of the project.
+			<programlisting>&lt;dependency conf="test->*" org="ej.library.test" name="junit" rev="1.5.0"/></programlisting>When
+			a new JUnit test case class is created in the <code>src/test/java</code> folder, a JUnit
+			processor generates MicroEJ compliant classes into a specific source folder named
+				<code>src-adpgenerated/junit/java</code>. These files are automatically managed and
+			must not be edited manually.</para>
+	</section>
+		<section><title>JUnit Compliance</title>
+		<para>MicroEJ is compliant with a subset of JUnit version 4. MicroEJ JUnit processor supports the
+			following annotations: <code>@After</code>, <code>@AfterClass</code>,
+				<code>@Before</code>, <code>@BeforeClass</code>, <code>@Ignore</code>,
+				<code>@Test</code>. </para>
+		<para>Each test case entry point must be declared using the <code>org.junit.Test</code> annotation
+				(<code>@Test</code> before a method declaration). Please refer to JUnit
+			documentation to get details on usage of other annotations.</para>
+		</section>
+	<section>
+		<title>Setup a Platform for Tests</title>
+	<para>Before running tests, a target platform must be configured in the MicroEJ workspace. The
+			following steps assume that a platform has been previously imported into the MicroEJ
+			Platform repository. </para>
+		<para>Go to <code>Window > Preferences > MicroEJ > Platforms</code> and select the desired
+			platform on which to run the tests.</para>
+		<para>Press <code>F2</code> to expand the details. </para>
+		<para>Select the the platform path and copy it to the clipboard.<mediaobject>
+				<imageobject>
+					<imagedata align="center" format="PNG" fileref="png/Testsuite_GetPath.png"
+						scalefit="1" width="100%" contentdepth="100%"/>
+				</imageobject>
+			</mediaobject>
+		</para>
+		<para>Go to <code>Window > Preferences > Ant > Runtime</code> and select the
+				<code>Properties</code> tab.</para>
+		<para>Click on <code>Add Property...</code> button and set a new property named
+				<code>target.platform.dir</code> with the platform path pasted from the clipboard.<mediaobject>
+				<imageobject>
+					<imagedata align="center" format="PNG"
+						fileref="png/Testsuite_SetAntProperty.png" scalefit="1" width="100%"
+						contentdepth="100%"/>
+				</imageobject>
+			</mediaobject>
+		</para>
+	</section>
+	<section>
+		<title>Setup a Project with a JUnit Test Case</title>
+		<para>This section describes how to create a new JUnit Test Case starting from a new MicroEJ
+			library project. </para>
+		<para>Select <code>File > New > Project... > EasyAnt > EasyAnt Project</code>.
+			<mediaobject>
+			<imageobject>
+				<imagedata align="center" format="PNG"
+					fileref="png/Testsuite_NewEasyAnt.png" scalefit="1" width="100%"
+					contentdepth="100%"/>
+			</imageobject>
+			</mediaobject>
+		</para>
+		<para>Press <code>Next</code>. Fill out project settings and select the
+				<code>microej-javalib</code> skeleton <mediaobject>
+				<imageobject>
+					<imagedata align="center" format="PNG"
+						fileref="png/Testsuite_NewEasyAntProjectConfiguration.png" scalefit="1"
+						width="100%" contentdepth="100%"/>
+				</imageobject>
+			</mediaobject>A new project named <code>mylibrary</code> is created in the
+			workspace.</para>
+		<para>Right-click on the <code>src/test/java</code> folder and select <code>New >
+				Other...</code> menu item.</para>
+		<para>Select the <code>Java > JUnit > New JUnit Test Case</code> wizard.<mediaobject>
+				<imageobject>
+					<imagedata align="center" format="PNG"
+						fileref="png/Testsuite_NewJunitTestCase.png" scalefit="1" width="100%"
+						contentdepth="100%"/>
+				</imageobject>
+			</mediaobject> Enter a test name and press <code>Finish</code>.<mediaobject>
+				<imageobject>
+					<imagedata align="center" format="PNG"
+						fileref="png/Testsuite_NewJunitTestCaseConfiguration.png" scalefit="1"
+						width="100%" contentdepth="100%"/>
+				</imageobject>
+			</mediaobject>A new JUnit test case class is created with a default failing test case.<mediaobject>
+				<imageobject>
+					<imagedata align="center" format="PNG"
+						fileref="png/Testsuite_NewJunitTestCaseEditor.png" scalefit="1" width="100%"
+						contentdepth="100%"/>
+				</imageobject>
+			</mediaobject></para>
+	</section>
+	
+	<section>
+		<title>Build and Run a JUnit Testsuite</title>
+		<para>Right-click on the <code>mylibrary</code> project and select <code>Build with
+				EasyAnt</code>. After the library is built, the testsuite engine launches available
+			test cases and the build process fails in the console view. </para>
+		<para>On the <code>mylibrary</code> project, right-click and select
+			<code>Refresh</code>.</para>
+		<para>A <code>target~</code> folder appears with intermediate build files. The JUnit report
+			is available at <code>target~\test\xml\TEST-test-report.xml</code>.</para>
+		<para>Double-click on the file to open the JUnit testsuite report.<mediaobject>
+				<imageobject>
+					<imagedata align="center" format="PNG" fileref="png/Testsuite_ReportFAIL.png"
+						scalefit="1" width="100%" contentdepth="100%"/>
+				</imageobject>
+			</mediaobject></para>
+		<para>Modify the test case by replacing</para>
+		<programlisting>fail("Not yet implemented");</programlisting>
+		<para>with</para>
+		<programlisting>Assert.assertTrue(true); </programlisting>
+
+	<para>Right-click again on the <code>mylibrary</code> project and select <code>Build with
+				EasyAnt</code>. The test is now successfully executed on the target platform so the
+			MicroEJ add-on library is fully built and published without errors. </para>
+		<para>Double-click on the JUnit testsuite report to see the test has been successfully
+			executed. <mediaobject>
+				<imageobject>
+					<imagedata align="center" format="PNG" fileref="png/Testsuite_ReportPASS.png"
+						scalefit="1" width="100%" contentdepth="100%"/>
+				</imageobject>
+			</mediaobject>
+		</para>
+	</section>
+	
+	<section>
+		<title>Advanced Configurations</title>
+		<section><title>Autogenerated Test Classes</title><para>The JUnit processor generates test classes into the <code>src-adpgenerated/junit/java</code>
+				folder. <mediaobject>
+					<imageobject>
+						<imagedata align="center" format="PNG"
+							fileref="png/Testsuite_ADPGeneratedFolder.png" scalefit="1" width="100%"
+							contentdepth="100%"/>
+					</imageobject>
+				</mediaobject>This folder contains:</para>
+			<para>
+				<itemizedlist>
+					<listitem>
+						<para><code>_AllTestClasses.java</code> file: a single class with a main enty point that
+							sequentially calls all declared test methods of all JUnit test case
+							classes.</para>
+					</listitem>
+					<listitem><para><code>_AllTests_[TestCase].java</code> files: for each JUnit test case class, a class with a
+							main entry point that sequentially calls all declared test
+							methods.</para></listitem>
+					<listitem><para><code>_SingleTest_[TestCase]_[TestMethod].java</code> files: for each test method of each
+							JUnit test case class, a class with a main entry point that calls the
+							test method.</para></listitem>
+				</itemizedlist>
+			</para></section>
+		<section><title>JUnit Test Case to MicroEJ Test Case</title><para>The MicroEJ testsuite engine allows to select the classes that will be executed, by setting
+				the following property in the project <code>module.ivy</code> file.
+				<programlisting>&lt;ea:property name="test.run.includes.pattern" value="[MicroEJ Test Case Include Pattern]"/&gt;</programlisting>The
+				following line consider all JUnit test methods of the same class as a single MicroEJ
+				test case (default behaviour). If at least one JUnit test method fails, the whole
+				test case fails in the JUnit
+				report.<programlisting>&lt;ea:property name="test.run.includes.pattern" value="**/_AllTests_*.class"/&gt;</programlisting>The
+				following line consider each JUnit test method as a dedicated MicroEJ test case.
+				Each test method is viewed independently in the JUnit report, but this may slow down
+				the testsuite execution because a new deployment is done for each test
+				method.<programlisting>&lt;ea:property name="test.run.includes.pattern" value="**/_SingleTest_*.class"/&gt;</programlisting></para>
+		</section>
+		<section><title>Run a Single Test Manually</title><para>Each test can be run independently as each class contains a main entry point. </para>
+			<para>In the <code>src-adpgenerated/junit/java</code> folder, right-click on the desired
+				autogenerated class (<code>_SingleTest_[TestCase]_[TestMethod].java</code>) and
+				select <code>Run As > MicroEJ Application</code>. </para>
+			<para>
+				<mediaobject>
+					<imageobject>
+						<imagedata align="center" format="PNG"
+							fileref="png/Testsuite_RunManualTest.png" scalefit="1" width="100%"
+							contentdepth="100%"/>
+					</imageobject>
+				</mediaobject>
+				The test is executed on the selected Platform and the output result is dumped into the console.
+			</para>
+			</section>
+		<section>
+			<title>Test Specific Options</title>
+			<para>The MicroEJ testsuite engine allows to define MicroEJ Launch options specific to
+				each test case. This can be done by defining a file with the same name as the
+				generated test case file with the <code>.properties</code> extension instead of the
+					<code>.java</code> extension. The file must be put in the
+					<code>src/test/resources</code> folder and within the same package than the test
+				case file. </para>
+			<para>Consult the Application Launch Options Appendix of the Device Developer's Guide to
+				get the list of available options properties.<mediaobject>
+					<imageobject>
+						<imagedata align="center" format="PNG"
+							fileref="png/Testsuite_TestSpecificProperties.png" scalefit="1"
+							width="100%" contentdepth="100%"/>
+					</imageobject>
+				</mediaobject></para>
+		</section>
+	</section>
+	
+</section>
