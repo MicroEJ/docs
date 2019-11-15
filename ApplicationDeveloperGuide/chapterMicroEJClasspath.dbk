@@ -29,14 +29,15 @@
   </para>
   <section id="application.classpath.mapping">
     <title>Application Classpath</title>
-    <para>The following schema shows the classpath mapping from a MicroEJ application project to the MicroEJ Classpath ordered list of folders and JAR files. The classpath resolution order (left to right) follows the project appearance order (top to bottom).<figure id="sandboxed.project.classpath.mapping">
-        <title>MicroEJ Application Classpath Mapping</title>
-        <mediaobject>
-          <imageobject>
-            <imagedata align="center" contentdepth="100%" fileref="png/ClassPath_4.png" format="PNG" scalefit="1" width="100%"></imagedata>
-          </imageobject>
-        </mediaobject>
-      </figure></para>
+    <para>The following schema shows the classpath mapping from a MicroEJ application project to the MicroEJ Classpath ordered list of folders and JAR files. The classpath resolution order (left to right) follows the project appearance order (top to bottom).</para>
+    <figure id="sandboxed.project.classpath.mapping">
+      <title>MicroEJ Application Classpath Mapping</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata align="center" contentdepth="100%" fileref="png/ClassPath_4.png" format="PNG" scalefit="1" width="100%"></imagedata>
+        </imageobject>
+      </mediaobject>
+    </figure>
   </section>
   <section id="section.microej.link.and.load.model">
     <title>Classpath Load Model</title>
@@ -49,16 +50,14 @@
         </listitem>
       </itemizedlist></para>
     <para>The different elements that constitute an application are described in <xref linkend="section.classpath.elements"></xref>. They are searched within MicroEJ Classpath from left to right (the first file found is loaded). Types referenced by previously loaded MicroEJ Classpath elements are loaded transitively.</para>
-    <para>
-      <figure>
-        <title>Classpath Load Principle</title>
-        <mediaobject id="dependencies">
-          <imageobject>
-            <imagedata align="center" contentdepth="100%" fileref="png/ClassPath_1.png" format="PNG" scalefit="1" width="100%"></imagedata>
-          </imageobject>
-        </mediaobject>
-      </figure>
-    </para>
+    <figure>
+      <title>Classpath Load Principle</title>
+      <mediaobject id="dependencies">
+        <imageobject>
+          <imagedata align="center" contentdepth="100%" fileref="png/ClassPath_1.png" format="PNG" scalefit="1" width="100%"></imagedata>
+        </imageobject>
+      </mediaobject>
+    </figure>
   </section>
   <section id="section.classpath.elements">
     <title>Classpath Elements</title>

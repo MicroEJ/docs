@@ -11,37 +11,40 @@
   <para>A MicroEJ Platform is a software package including the resources and tools required for building and testing an application for a specific MicroEJ-ready device. MicroEJ Platforms are available at <code>https://developer.microej.com/5/getting-started-sdk.html</code>.</para>
   <para>After downloading the MicroEJ Platform, launch MicroEJ SDK on your desktop to start the process of Platform installation : <itemizedlist>
       <listitem>
-        <para>Open the Platform view in MicroEJ SDK, select <code>Window > Preferences > MicroEJ > Platforms</code>. The view should be empty on a fresh install of the tool <figure>
-            <title>MicroEJ Platform Import</title>
-            <mediaobject id="mp-install-1">
-              <imageobject>
-                <imagedata align="center" contentdepth="100%" fileref="png/platformImport.png" format="PNG" scalefit="1" width="80%"></imagedata>
-              </imageobject>
-            </mediaobject>
-          </figure></para>
+        <para>Open the Platform view in MicroEJ SDK, select <code>Window > Preferences > MicroEJ > Platforms</code>. The view should be empty on a fresh install of the tool</para>
+        <figure>
+          <title>MicroEJ Platform Import</title>
+          <mediaobject id="mp-install-1">
+            <imageobject>
+              <imagedata align="center" contentdepth="100%" fileref="png/platformImport.png" format="PNG" scalefit="1" width="80%"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </figure>
       </listitem>
       <listitem>
         <para>Press <code>Import...</code> button.</para>
       </listitem>
       <listitem>
-        <para>Choose <code>Select File...</code> and use the <code>Browse</code> option to navigate to the <code>.jpf</code> file containing your MicroEJ Platform, then read and accept the license agreement to proceed. <figure>
-            <title>MicroEJ Platform Selection</title>
-            <mediaobject id="mp-install-2">
-              <imageobject>
-                <imagedata align="center" contentdepth="100%" fileref="png/platformSelect.png" format="PNG" scalefit="1" width="80%"></imagedata>
-              </imageobject>
-            </mediaobject>
-          </figure></para>
+        <para>Choose <code>Select File...</code> and use the <code>Browse</code> option to navigate to the <code>.jpf</code> file containing your MicroEJ Platform, then read and accept the license agreement to proceed.</para>
+        <figure>
+          <title>MicroEJ Platform Selection</title>
+          <mediaobject id="mp-install-2">
+            <imageobject>
+              <imagedata align="center" contentdepth="100%" fileref="png/platformSelect.png" format="PNG" scalefit="1" width="80%"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </figure>
       </listitem>
       <listitem>
-        <para>The MicroEJ Platform should now appear in the <code>Platforms</code> view, with a green valid mark. <figure>
-            <title>MicroEJ Platform List</title>
-            <mediaobject id="mp-install-3">
-              <imageobject>
-                <imagedata align="center" contentdepth="100%" fileref="png/platformList.png" format="PNG" scalefit="1" width="80%"></imagedata>
-              </imageobject>
-            </mediaobject>
-          </figure></para>
+        <para>The MicroEJ Platform should now appear in the <code>Platforms</code> view, with a green valid mark.</para>
+        <figure>
+          <title>MicroEJ Platform List</title>
+          <mediaobject id="mp-install-3">
+            <imageobject>
+              <imagedata align="center" contentdepth="100%" fileref="png/platformList.png" format="PNG" scalefit="1" width="80%"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </figure>
       </listitem>
     </itemizedlist></para>
 </section>

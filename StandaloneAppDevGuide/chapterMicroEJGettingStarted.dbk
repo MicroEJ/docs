@@ -45,14 +45,15 @@
       <para>
         <itemizedlist>
           <listitem>
-            <para>Create a project in your workspace. Select <code>File > New > MicroEJ Standalone Application Project</code>. <figure>
-                <title>New MicroEJ Standalone Application Project</title>
-                <mediaobject id="sampleapp1">
-                  <imageobject>
-                    <imagedata align="center" contentdepth="100%" fileref="png/newApp1.png" format="PNG" scalefit="1" width="80%"></imagedata>
-                  </imageobject>
-                </mediaobject>
-              </figure></para>
+            <para>Create a project in your workspace. Select <code>File > New > MicroEJ Standalone Application Project</code>.</para>
+            <figure>
+              <title>New MicroEJ Standalone Application Project</title>
+              <mediaobject id="sampleapp1">
+                <imageobject>
+                  <imagedata align="center" contentdepth="100%" fileref="png/newApp1.png" format="PNG" scalefit="1" width="80%"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure>
           </listitem>
           <listitem>
             <para>Fill in the application template fields, the Project name field will automatically duplicate in the following fields. Click on <code>Finish</code>. A template project is automatically created and ready to use, this project already contains all folders wherein developers need to put content: <itemizedlist>
@@ -72,49 +73,54 @@
           </listitem>
           <listitem>
             <para>Right click on the source folder <code>src/main/java</code> and select <code>New >
-								Package</code>. Give a name: <code>com.mycompany</code>. Click on <code>Finish</code>. <figure>
-                <title>New Package</title>
-                <mediaobject id="sampleapp8">
-                  <imageobject>
-                    <imagedata align="center" contentdepth="100%" fileref="png/newApp8.png" format="PNG" scalefit="1" width="80%"></imagedata>
-                  </imageobject>
-                </mediaobject>
-              </figure></para>
+								Package</code>. Give a name: <code>com.mycompany</code>. Click on <code>Finish</code>.</para>
+            <figure>
+              <title>New Package</title>
+              <mediaobject id="sampleapp8">
+                <imageobject>
+                  <imagedata align="center" contentdepth="100%" fileref="png/newApp8.png" format="PNG" scalefit="1" width="80%"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure>
           </listitem>
           <listitem>
             <para>The package <code>com.mycompany</code> is available under <code>src/main/java</code> folder. Right click on this package and select <code>New > Class</code>. Give a name: <code>Test</code> and check the box <code>public static
-								void main(String[] args)</code>. Click on <code>Finish</code>. <figure>
-                <title>New Class</title>
-                <mediaobject id="sampleapp9">
-                  <imageobject>
-                    <imagedata align="center" contentdepth="100%" fileref="png/newApp9.png" format="PNG" scalefit="1" width="80%"></imagedata>
-                  </imageobject>
-                </mediaobject>
-              </figure></para>
+								void main(String[] args)</code>. Click on <code>Finish</code>.</para>
+            <figure>
+              <title>New Class</title>
+              <mediaobject id="sampleapp9">
+                <imageobject>
+                  <imagedata align="center" contentdepth="100%" fileref="png/newApp9.png" format="PNG" scalefit="1" width="80%"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure>
           </listitem>
           <listitem>
-            <para>The new class has been created with an empty <code>main()</code> method. Fill the method body with the following lines: <programlisting>System.out.println("hello world!");</programlisting>. <figure>
-                <title>MicroEJ Application Content</title>
-                <mediaobject id="sampleapp10">
-                  <imageobject>
-                    <imagedata align="center" contentdepth="100%" fileref="png/newApp10.png" format="PNG" scalefit="1" width="80%"></imagedata>
-                  </imageobject>
-                </mediaobject>
-              </figure> The test application is now ready to be executed. See next sections.</para>
+            <para>The new class has been created with an empty <code>main()</code> method. Fill the method body with the following lines: <programlisting>System.out.println("hello world!");</programlisting>.</para>
+            <figure>
+              <title>MicroEJ Application Content</title>
+              <mediaobject id="sampleapp10">
+                <imageobject>
+                  <imagedata align="center" contentdepth="100%" fileref="png/newApp10.png" format="PNG" scalefit="1" width="80%"></imagedata>
+                </imageobject>
+              </mediaobject>
+            </figure>
+            <para>The test application is now ready to be executed. See next sections.</para>
           </listitem>
         </itemizedlist>
       </para>
     </section>
     <section id="section.run.on.simulator">
       <title>Run on the Simulator</title>
-      <para>To run the sample project on Simulator, select it in the left panel then right-click and select <code>Run > Run as > MicroEJ Application</code>. <figure>
-          <title>MicroEJ Development Tools Overview</title>
-          <mediaobject id="test-simulator2">
-            <imageobject>
-              <imagedata align="center" contentdepth="100%" fileref="png/sim1.png" format="PNG" scalefit="1" width="80%"></imagedata>
-            </imageobject>
-          </mediaobject>
-        </figure></para>
+      <para>To run the sample project on Simulator, select it in the left panel then right-click and select <code>Run > Run as > MicroEJ Application</code>.</para>
+      <figure>
+        <title>MicroEJ Development Tools Overview</title>
+        <mediaobject id="test-simulator2">
+          <imageobject>
+            <imagedata align="center" contentdepth="100%" fileref="png/sim1.png" format="PNG" scalefit="1" width="80%"></imagedata>
+          </imageobject>
+        </mediaobject>
+      </figure>
       <para>MicroEJ SDK console will display Launch steps messages. <programlisting>
 					=============== [ Initialization Stage ] ===============
 					=============== [ Launching on Simulator ] ===============
@@ -128,14 +134,15 @@
       <title>Run on the Hardware Device</title>
       <para>Compile an application, connect the hardware device and deploy on it is hardware dependant. These steps are described in dedicated documentation available inside the MicroEJ Platform. This documentation is accessible from the MicroEJ Resources Center view. <note>
           <para>MicroEJ Resources Center view may have been closed. Click on <code>Help > MicroEJ Resources Center</code> to reopen it.</para>
-        </note> Open the menu <code>Manual</code> and select the documentation <code>[hardware device] MicroEJ Platform</code>, where <code>[hardware device]</code> is the name of the hardware device. This documentation features a guide to run a built-in application on MicroEJ Simulator and on hardware device. <figure>
-          <title>MicroEJ Platform Guide</title>
-          <mediaobject id="test-emb1">
-            <imageobject>
-              <imagedata align="center" contentdepth="100%" fileref="png/emb1.png" format="PNG" scalefit="1" width="80%"></imagedata>
-            </imageobject>
-          </mediaobject>
-        </figure></para>
+        </note> Open the menu <code>Manual</code> and select the documentation <code>[hardware device] MicroEJ Platform</code>, where <code>[hardware device]</code> is the name of the hardware device. This documentation features a guide to run a built-in application on MicroEJ Simulator and on hardware device.</para>
+      <figure>
+        <title>MicroEJ Platform Guide</title>
+        <mediaobject id="test-emb1">
+          <imageobject>
+            <imagedata align="center" contentdepth="100%" fileref="png/emb1.png" format="PNG" scalefit="1" width="80%"></imagedata>
+          </imageobject>
+        </mediaobject>
+      </figure>
     </section>
   </section>
   <section id="section.application.development">

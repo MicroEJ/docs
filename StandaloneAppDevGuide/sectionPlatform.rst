@@ -22,11 +22,29 @@ desktop to start the process of Platform installation :
    ``Window > Preferences > MicroEJ > Platforms``. The view should be
    empty on a fresh install of the tool
 
+   .. figure:: png/platformImport.png
+      :alt: MicroEJ Platform Import
+      :width: 80.0%
+
+      MicroEJ Platform Import
+
 -  Press ``Import...`` button.
 
 -  Choose ``Select File...`` and use the ``Browse`` option to navigate
    to the ``.jpf`` file containing your MicroEJ Platform, then read and
    accept the license agreement to proceed.
 
+   .. figure:: png/platformSelect.png
+      :alt: MicroEJ Platform Selection
+      :width: 80.0%
+
+      MicroEJ Platform Selection
+
 -  The MicroEJ Platform should now appear in the ``Platforms`` view,
    with a green valid mark.
+
+   .. figure:: png/platformList.png
+      :alt: MicroEJ Platform List
+      :width: 80.0%
+
+      MicroEJ Platform List

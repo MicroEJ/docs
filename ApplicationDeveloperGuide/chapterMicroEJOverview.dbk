@@ -14,14 +14,15 @@
         <listitem>
           <para>MicroEJ Studio for application development</para>
         </listitem>
-      </itemizedlist>The firmware will generally be produced by the device OEM, it includes all device drivers and a specific set of MicroEJ functionalities useful for application developers targeting this device. <figure>
-        <title>MicroEJ Development Tools Overview</title>
-        <mediaobject id="general_view">
-          <imageobject>
-            <imagedata align="center" contentdepth="100%" fileref="png/toolchain.png" format="PNG" scalefit="1" width="100%"></imagedata>
-          </imageobject>
-        </mediaobject>
-      </figure></para>
+      </itemizedlist>The firmware will generally be produced by the device OEM, it includes all device drivers and a specific set of MicroEJ functionalities useful for application developers targeting this device.</para>
+    <figure>
+      <title>MicroEJ Development Tools Overview</title>
+      <mediaobject id="general_view">
+        <imageobject>
+          <imagedata align="center" contentdepth="100%" fileref="png/toolchain.png" format="PNG" scalefit="1" width="100%"></imagedata>
+        </imageobject>
+      </mediaobject>
+    </figure>
     <para>Using the MicroEJ SDK tool, a firmware developer will produce two versions of the MicroEJ binary, each one able to run applications created with the MicroEJ Studio tool: <itemizedlist>
         <listitem>
           <para>A MicroEJ Firmware binary to be flashed on OEM devices;</para>
@@ -53,14 +54,15 @@
           <listitem>
             <para>MicroEJ libraries and application code (C and Java code).</para>
           </listitem>
-        </itemizedlist> <figure id="figure.microej.architecture">
-          <title>MicroEJ Firmware Architecture</title>
-          <mediaobject id="firmware_view">
-            <imageobject>
-              <imagedata align="center" contentdepth="100%" fileref="png/firmware.png" format="PNG" scalefit="1" width="100%"></imagedata>
-            </imageobject>
-          </mediaobject>
-        </figure></para>
+        </itemizedlist></para>
+      <figure id="figure.microej.architecture">
+        <title>MicroEJ Firmware Architecture</title>
+        <mediaobject id="firmware_view">
+          <imageobject>
+            <imagedata align="center" contentdepth="100%" fileref="png/firmware.png" format="PNG" scalefit="1" width="100%"></imagedata>
+          </imageobject>
+        </mediaobject>
+      </figure>
     </section>
     <section id="section.javadoc">
       <title>Specification</title>
@@ -73,14 +75,15 @@
       <title>Using a Virtual Device for Simulation</title>
       <para>The Virtual Device includes the same custom MicroEJ Core, libraries and system applications as the real device. The Virtual Device allows developers to run their applications either on the Simulator, or directly on the real device through local deployment.</para>
       <para>The Simulator runs a mockup board support package (BSP Mock) that mimics the hardware functionality. An application on the Simulator is run as a standalone application.</para>
-      <para>Before an application is locally deployed on device, MicroEJ Studio ensures that it does not depend on any API that is unavailable on the device. <figure>
-          <title>MicroEJ Virtual Device Architecture</title>
-          <mediaobject id="virtual_view">
-            <imageobject>
-              <imagedata align="center" contentdepth="100%" fileref="png/virtual-device.png" format="PNG" scalefit="1" width="100%"></imagedata>
-            </imageobject>
-          </mediaobject>
-        </figure></para>
+      <para>Before an application is locally deployed on device, MicroEJ Studio ensures that it does not depend on any API that is unavailable on the device.</para>
+      <figure>
+        <title>MicroEJ Virtual Device Architecture</title>
+        <mediaobject id="virtual_view">
+          <imageobject>
+            <imagedata align="center" contentdepth="100%" fileref="png/virtual-device.png" format="PNG" scalefit="1" width="100%"></imagedata>
+          </imageobject>
+        </mediaobject>
+      </figure>
     </section>
     <section id="section.javadoc.specification">
       <title>Runtime Environment</title>

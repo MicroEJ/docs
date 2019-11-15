@@ -69,6 +69,12 @@ Create a MicroEJ Standalone Application
 -  Create a project in your workspace. Select
    ``File > New > MicroEJ Standalone Application Project``.
 
+   .. figure:: png/newApp1.png
+      :alt: New MicroEJ Standalone Application Project
+      :width: 80.0%
+
+      New MicroEJ Standalone Application Project
+
 -  Fill in the application template fields, the Project name field will
    automatically duplicate in the following fields. Click on ``Finish``.
    A template project is automatically created and ready to use, this
@@ -89,11 +95,23 @@ Create a MicroEJ Standalone Application
                                    Package``. Give a name:
    ``com.mycompany``. Click on ``Finish``.
 
+   .. figure:: png/newApp8.png
+      :alt: New Package
+      :width: 80.0%
+
+      New Package
+
 -  The package ``com.mycompany`` is available under ``src/main/java``
    folder. Right click on this package and select ``New > Class``. Give
    a name: ``Test`` and check the box ``public static
                                    void main(String[] args)``. Click on
    ``Finish``.
+
+   .. figure:: png/newApp9.png
+      :alt: New Class
+      :width: 80.0%
+
+      New Class
 
 -  The new class has been created with an empty ``main()`` method. Fill
    the method body with the following lines:
@@ -102,8 +120,15 @@ Create a MicroEJ Standalone Application
 
       System.out.println("hello world!");
 
-   . The test application is now ready to be executed. See next
-   sections.
+   .
+
+   .. figure:: png/newApp10.png
+      :alt: MicroEJ Application Content
+      :width: 80.0%
+
+      MicroEJ Application Content
+
+   The test application is now ready to be executed. See next sections.
 
 .. _section.run.on.simulator:
 
@@ -112,6 +137,12 @@ Run on the Simulator
 
 To run the sample project on Simulator, select it in the left panel then
 right-click and select ``Run > Run as > MicroEJ Application``.
+
+.. figure:: png/sim1.png
+   :alt: MicroEJ Development Tools Overview
+   :width: 80.0%
+
+   MicroEJ Development Tools Overview
 
 MicroEJ SDK console will display Launch steps messages.
 
@@ -144,6 +175,12 @@ Open the menu ``Manual`` and select the documentation
 ``[hardware device] MicroEJ Platform``, where ``[hardware device]`` is
 the name of the hardware device. This documentation features a guide to
 run a built-in application on MicroEJ Simulator and on hardware device.
+
+.. figure:: png/emb1.png
+   :alt: MicroEJ Platform Guide
+   :width: 80.0%
+
+   MicroEJ Platform Guide
 
 .. _section.application.development:
 

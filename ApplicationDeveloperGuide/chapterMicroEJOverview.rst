@@ -17,6 +17,12 @@ The firmware will generally be produced by the device OEM, it includes
 all device drivers and a specific set of MicroEJ functionalities useful
 for application developers targeting this device.
 
+.. figure:: png/toolchain.png
+   :alt: MicroEJ Development Tools Overview
+   :width: 100.0%
+
+   MicroEJ Development Tools Overview
+
 Using the MicroEJ SDK tool, a firmware developer will produce two
 versions of the MicroEJ binary, each one able to run applications
 created with the MicroEJ Studio tool:
@@ -57,6 +63,12 @@ instance of a MicroEJ runtime linked to:
 
 -  MicroEJ libraries and application code (C and Java code).
 
+.. figure:: png/firmware.png
+   :alt: MicroEJ Firmware Architecture
+   :width: 100.0%
+
+   MicroEJ Firmware Architecture
+
 .. _section.javadoc:
 
 Specification
@@ -90,6 +102,12 @@ standalone application.
 Before an application is locally deployed on device, MicroEJ Studio
 ensures that it does not depend on any API that is unavailable on the
 device.
+
+.. figure:: png/virtual-device.png
+   :alt: MicroEJ Virtual Device Architecture
+   :width: 100.0%
+
+   MicroEJ Virtual Device Architecture
 
 .. _section.javadoc.specification:
 

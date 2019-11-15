@@ -48,6 +48,12 @@ application project to the MicroEJ Classpath ordered list of folders and
 JAR files. The classpath resolution order (left to right) follows the
 project appearance order (top to bottom).
 
+.. figure:: png/ClassPath_4.png
+   :alt: MicroEJ Application Classpath Mapping
+   :width: 100.0%
+
+   MicroEJ Application Classpath Mapping
+
 .. _section.microej.link.and.load.model:
 
 Classpath Load Model
@@ -64,6 +70,12 @@ The different elements that constitute an application are described in
 within MicroEJ Classpath from left to right (the first file found is
 loaded). Types referenced by previously loaded MicroEJ Classpath
 elements are loaded transitively.
+
+.. figure:: png/ClassPath_1.png
+   :alt: Classpath Load Principle
+   :width: 100.0%
+
+   Classpath Load Principle
 
 .. _section.classpath.elements:
 
