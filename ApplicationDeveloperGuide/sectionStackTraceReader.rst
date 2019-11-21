@@ -53,7 +53,7 @@ application project and click on ``Run As... > Run Configurations...``.
 
 In ``Execution`` tab, select the ``Stack Trace Reader`` tool.
 
-.. figure:: png/STR_selecttool.png
+.. figure:: /ApplicationDeveloperGuide/png/STR_selecttool.png
    :alt: Select Stack Trace Reader Tool
    :width: 100.0%
 

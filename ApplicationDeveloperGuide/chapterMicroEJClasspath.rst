@@ -18,25 +18,20 @@ files to be embedded in the final application binary. MicroEJ Classpath
 is made up of an ordered list of paths. A path is either a folder or a
 zip file, called a JAR file (JAR stands for Java ARchive).
 
--  `Application Classpath <#application.classpath.mapping>`__ explains
-   how the MicroEJ classpath is built from a MicroEJ application
-   project.
+-  `Application Classpath`_ explains how the MicroEJ classpath is built from a
+   MicroEJ application project.
 
--  `Classpath Load Model <#section.microej.link.and.load.model>`__
-   explains how the application contents is loaded from MicroEJ
-   Classpath.
+-  `Classpath Load Model`_ explains how the application contents is loaded from
+   MicroEJ Classpath.
 
--  `Classpath Elements <#section.classpath.elements>`__ specifies the
-   different elements that can be declared in MicroEJ Classpath to
-   describe the application contents.
+-  `Classpath Elements`_ specifies the different elements that can be declared
+   in MicroEJ Classpath to describe the application contents.
 
--  `Foundation Libraries vs Add-On
-   Libraries <#section.foundation.library.versus.add.on.library>`__
-   explains the different kind of libraries that can be added to MicroEJ
-   Classpath.
+-  `Foundation Libraries vs Add-On Libraries`_ explains the different kind of
+   libraries that can be added to MicroEJ Classpath.
 
--  Finally, `MicroEJ Module Manager <#section.ivy.dependency.manager>`__
-   shows how to manage libraries dependencies in MicroEJ.
+-  Finally, `MicroEJ Module Manager`_ shows how to manage libraries dependencies
+   in MicroEJ.
 
 .. _application.classpath.mapping:
 
@@ -48,7 +43,7 @@ application project to the MicroEJ Classpath ordered list of folders and
 JAR files. The classpath resolution order (left to right) follows the
 project appearance order (top to bottom).
 
-.. figure:: png/ClassPath_4.png
+.. figure:: /ApplicationDeveloperGuide/png/ClassPath_4.png
    :alt: MicroEJ Application Classpath Mapping
    :width: 100.0%
 
@@ -71,7 +66,7 @@ within MicroEJ Classpath from left to right (the first file found is
 loaded). Types referenced by previously loaded MicroEJ Classpath
 elements are loaded transitively.
 
-.. figure:: png/ClassPath_1.png
+.. figure:: /ApplicationDeveloperGuide/png/ClassPath_1.png
    :alt: Classpath Load Principle
    :width: 100.0%
 
@@ -84,17 +79,13 @@ Classpath Elements
 
 The MicroEJ Classpath contains the following elements:
 
--  An entrypoint described in section `Application Entry
-   Points <#section.classpath.elements.entrypoints>`__;
+-  An entrypoint described in section `Application Entry Points`_;
 
--  Types in ``.class`` files, described in section
-   `Types <#section.classpath.elements.types>`__;
+-  Types in ``.class`` files, described in section `Types`_;
 
--  Raw resources, described in section `Raw
-   Resources <#section.classpath.elements.resources>`__;
+-  Raw resources, described in section `Raw Resources`_;
 
--  Immutables Object data files, described in Section `Immutable
-   Objects <#section.classpath.elements.immutables>`__;
+-  Immutables Object data files, described in Section `Immutable Objects`_;
 
 -  Images and Fonts resources;
 
@@ -135,6 +126,8 @@ following usages:
 
 -  to retrieve its fully qualified name (with a call to
    ``Class.getName()``).
+
+.. TODO fix the ??? here. Refer to the existing docs
 
 A type that is not declared as a *Required type* may not have its fully
 qualified name (FQN) embedded. Its FQN can be retrieved using the stack
@@ -245,7 +238,7 @@ behavior explicit). Example:
    # as a 16 bits format with transparency (decoded at build-time)
    com/mycompany/MyImage3.png:ARGB1555
 
-.. include:: sectionImageFormats.rst
+.. include:: /ApplicationDeveloperGuide/sectionImageFormats.rst
 
 .. _section.classpath.Fonts:
 
@@ -286,6 +279,8 @@ embedded, and the pixel depth is ``1`` (i.e 1 bit-per-pixel). Example:
    # The following font is embedded with all characters
    # with 2 levels of transparency
    com/mycompany/MyFont2.ejf::2
+
+.. TODO fix ??? link here
 
 MicroEJ font files conventionally end with the ``.ejf`` suffix and are
 created using the Font Designer (see
@@ -350,7 +345,7 @@ A MicroEJ Foundation Library is a MicroEJ Core library that provides
 core runtime APIs or hardware-dependent functionality. A Foundation
 library is divided into an API and an implementation. A Foundation
 library API is composed of a name and a 2 digits version (e.g.
-``EDC-1.3``) and follows the semantic versioning (``http://semver.org``)
+``EDC-1.3``) and follows the semantic versioning (<http://semver.org>)
 specification. A Foundation library API only contains prototypes without
 code. Foundation library implementations are provided by MicroEJ
 Platforms. From a MicroEJ Classpath, Foundation library APIs
@@ -367,7 +362,7 @@ Foundation and Add-on libraries are added to MicroEJ Classpath by the
 application developer as module dependencies (see `MicroEJ Module
 Manager <#section.ivy.dependency.manager>`__).
 
-.. figure:: png/ClassPath_2.png
+.. figure:: /ApplicationDeveloperGuide/png/ClassPath_2.png
    :alt: MicroEJ Foundation Libraries and Add-On Libraries
    :width: 100.0%
 
@@ -397,23 +392,23 @@ requirements.
 
 MMM is based on of the following tools:
 
--  Apache Ivy (``http://ant.apache.org/ivy``) for dependencies
+-  Apache Ivy (<http://ant.apache.org/ivy>) for dependencies
    resolution and module publication;
 
 -  Apache EasyAnt
-   (``https://ant.apache.org/easyant/history/trunk/reference.html``) for
+   (<https://ant.apache.org/easyant/history/trunk/reference.html>) for
    module build from source code.
 
 In addition, MMM provides a non ambiguous semantic for dependencies
 resolution. Please consult the MMM specification available on
-``https://developer.microej.com``.
+<https://developer.microej.com>.
 
 An Ivy configuration file (``module.ivy``) must be provided at the root
 of each MicroEJ project to solve classpath dependencies. Multiple Ivy
 configuration file templates are available depending on the kind of
 MicroEJ application created.
 
-::
+.. code:: xml
 
    <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:m="http://ant.apache.org/ivy/extra" 
                              xmlns:ej="https://developer.microej.com" ej:version="2.0.0"> 
@@ -448,7 +443,7 @@ MicroEJ. It contains Foundation library APIs and numerous Add-On
 Libraries. Foundation libraries APIs are distributed under the
 organization ``ej.api``. All other artifacts are Add-On libraries.
 
-For more information, please visit ``https://repository.microej.com``.
+For more information, please visit <https://repository.microej.com>.
 
 Offline Repository
 ==================
@@ -456,4 +451,4 @@ Offline Repository
 By default, MicroEJ is configured to connect online MicroEJ Central
 Repository. The MicroEJ Central Repository can be downloaded locally for
 offline use. Please follow the steps described at
-``https://repository.microej.com``.
+<https://repository.microej.com>.

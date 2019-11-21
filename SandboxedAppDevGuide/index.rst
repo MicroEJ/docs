@@ -4,9 +4,9 @@ Sandboxed Application Developer Guide
 .. toctree::
     :maxdepth: 2
 
-    ../ApplicationDeveloperGuide/chapterMicroEJOverview
+    chapterMicroEJOverview
     chapterMicroEJGettingStarted
     chapterApplicationStructure
     chapterSharedInterface
-    ../ApplicationDeveloperGuide/chapterMicroEJClasspath
-    ../ApplicationDeveloperGuide/chapterMicroEJTools
+    chapterMicroEJClasspath
+    chapterMicroEJTools

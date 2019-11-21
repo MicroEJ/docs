@@ -17,7 +17,7 @@ The firmware will generally be produced by the device OEM, it includes
 all device drivers and a specific set of MicroEJ functionalities useful
 for application developers targeting this device.
 
-.. figure:: png/toolchain.png
+.. figure:: /ApplicationDeveloperGuide/png/toolchain.png
    :alt: MicroEJ Development Tools Overview
    :width: 100.0%
 
@@ -63,7 +63,7 @@ instance of a MicroEJ runtime linked to:
 
 -  MicroEJ libraries and application code (C and Java code).
 
-.. figure:: png/firmware.png
+.. figure:: /ApplicationDeveloperGuide/png/firmware.png
    :alt: MicroEJ Firmware Architecture
    :width: 100.0%
 
