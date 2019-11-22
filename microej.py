@@ -2,6 +2,13 @@ from docutils import nodes
 from sphinx.util.docutils import ReferenceRole, SphinxRole
 
 
+LATEX_FONTPKG = r'''
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+'''
+
+
 class HttpCodeRef(ReferenceRole):
 
     """A custom role to format external links as code/literals"""

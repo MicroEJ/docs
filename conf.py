@@ -42,6 +42,11 @@ html_show_sphinx = False
 # default by Sphinx 2+
 html4_writer = True
 
+# LaTeX customizations
+latex_elements = {
+    'fontpkg': microej.LATEX_FONTPKG
+}
+
 
 def setup(app):
     # Because there are multiple, interconnected docsets in these sources,
