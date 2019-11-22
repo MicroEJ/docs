@@ -3,18 +3,6 @@ SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = .
 BUILDDIR      = _build
-PANDOC        ?= pandoc
-
-# For the docbook to reST conversion
-sources := \
-	$(wildcard ApplicationDeveloperGuide/*.dbk) \
-	$(wildcard SandboxedAppDevGuide/*.dbk) \
-	$(wildcard StandaloneAppDevGuide/*.dbk)
-
-targets := $(patsubst %.dbk, %.rst, $(sources))
-
-source_format := docbook
-target_format := rst+simple_tables-grid_tables
 
 # List tables is on a development version of pandoc
 # https://github.com/jgm/pandoc/pull/4780
@@ -24,22 +12,9 @@ pandoc_options = --list-tables
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-convert: $(targets)
-
-format:
-	echo $(sources) | tr ' ' '\n' | xargs -t -I% \
-		xmlformat --preserve "pre,literal,programlisting,code" --outfile % %
-
-clean-convert:
-	rm $(targets)
-
-%.rst: %.dbk
-	$(PANDOC) -f $(source_format) -t $(target_format) -o $@ $(pandoc_options) < $?
-
-.PHONY: help Makefile convert clean-convert html
+.PHONY: help Makefile
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-#%: Makefile
-clean html: Makefile $(targets)
+%: Makefile
 	$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)

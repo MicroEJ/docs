@@ -13,6 +13,15 @@ copyright = '2019, MicroEJ'
 author = 'MicroEJ'
 release = '1.0'
 
+# Conditional docset
+docset = os.environ.get('MICROEJ_DOCSET', None)
+if docset == 'SandboxedAppDevGuide':
+    project = 'Sandboxed Application Developer Guide'
+elif docset == 'StandaloneAppDevGuide':
+    project = 'Standalone Application Developer Guide'
+elif docset == 'ApplicationDeveloperGuide':
+    project = 'Application Developer Guide'
+
 extensions = [
     'microej',
 ]
@@ -42,6 +51,17 @@ html_show_sphinx = False
 # default by Sphinx 2+
 html4_writer = True
 
+# LaTeX customizations
+latex_elements = {
+    'preamble': r'\usepackage{microej}',
+}
+latex_additional_files = ['microej.sty']
+latex_logo = '_themes/microej/static/mascot-xl.png'
+
+# This isn't picked up from the theme, and is required to get the LaTeX
+# pygments bridge working
+pygments_style = 'microej.MicroEJStyle'
+
 
 def setup(app):
     # Because there are multiple, interconnected docsets in these sources,
@@ -50,6 +70,5 @@ def setup(app):
     # projects in the same doc source.
     # TODO if/when this project is restructured as a single document, without
     # included sections between the docs, this likely won't be need.
-    docset = os.environ.get('MICROEJ_DOCSET', None)
     if docset:
         app.srcdir += '/' + docset
