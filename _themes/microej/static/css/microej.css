@@ -527,3 +527,11 @@ footer span.commit .rst-content tt,
 .rst-content .guilabel {
   background: #a4eaf55e;
 }
+
+.wy-nav-content-wrap {
+  background: none;
+}
+
+.wy-nav-content {
+  max-width: 1200px;
+}
