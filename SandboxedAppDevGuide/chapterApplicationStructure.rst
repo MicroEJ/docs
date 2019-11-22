@@ -11,9 +11,10 @@ Application Skeleton Creation
 The first step to explore a Sandboxed Application structure is to create
 a new project.
 
-First select ``File > New > MicroEJ Sandboxed Application Project``:
+First select :guilabel:`File` > :guilabel:`New` >
+:guilabel:`MicroEJ Sandboxed Application Project`:
 
-Fill in the application template fields, the ``Project name`` field will
+Fill in the application template fields, the :guilabel:`Project name` field will
 automatically duplicate in the following fields.
 
 A template project is automatically created and ready to use, this

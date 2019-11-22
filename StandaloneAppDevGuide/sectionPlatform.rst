@@ -18,9 +18,9 @@ MicroEJ-ready device. MicroEJ Platforms are available at
 After downloading the MicroEJ Platform, launch MicroEJ SDK on your
 desktop to start the process of Platform installation :
 
--  Open the Platform view in MicroEJ SDK, select
-   ``Window > Preferences > MicroEJ > Platforms``. The view should be
-   empty on a fresh install of the tool
+-  Open the Platform view in MicroEJ SDK, select :guilabel:`Window` >
+   :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms`. The
+   view should be empty on a fresh install of the tool
 
    .. figure:: png/platformImport.png
       :alt: MicroEJ Platform Import
@@ -28,11 +28,11 @@ desktop to start the process of Platform installation :
 
       MicroEJ Platform Import
 
--  Press ``Import...`` button.
+-  Press :guilabel:`Import...` button.
 
--  Choose ``Select File...`` and use the ``Browse`` option to navigate
-   to the ``.jpf`` file containing your MicroEJ Platform, then read and
-   accept the license agreement to proceed.
+-  Choose :guilabel:`Select File...` and use the :guilabel:`Browse` option to
+    navigate to the ``.jpf`` file containing your MicroEJ Platform, then read and
+    accept the license agreement to proceed.
 
    .. figure:: png/platformSelect.png
       :alt: MicroEJ Platform Selection
@@ -40,7 +40,7 @@ desktop to start the process of Platform installation :
 
       MicroEJ Platform Selection
 
--  The MicroEJ Platform should now appear in the ``Platforms`` view,
+-  The MicroEJ Platform should now appear in the :guilabel:`Platforms` view,
    with a green valid mark.
 
    .. figure:: png/platformList.png

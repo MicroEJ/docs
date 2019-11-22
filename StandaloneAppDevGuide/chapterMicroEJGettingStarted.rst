@@ -67,8 +67,8 @@ Build and Run an Application
 Create a MicroEJ Standalone Application
 ---------------------------------------
 
--  Create a project in your workspace. Select
-   ``File > New > MicroEJ Standalone Application Project``.
+-  Create a project in your workspace. Select :guilabel:`File` > :guilabel:`New` >
+   :guilabel:`MicroEJ Standalone Application Project`.
 
    .. figure:: png/newApp1.png
       :alt: New MicroEJ Standalone Application Project
@@ -77,7 +77,7 @@ Create a MicroEJ Standalone Application
       New MicroEJ Standalone Application Project
 
 -  Fill in the application template fields, the Project name field will
-   automatically duplicate in the following fields. Click on ``Finish``.
+   automatically duplicate in the following fields. Click on :guilabel:`Finish`.
    A template project is automatically created and ready to use, this
    project already contains all folders wherein developers need to put
    content:
@@ -92,8 +92,9 @@ Create a MicroEJ Standalone Application
    -  ``module.ivy``: Ivy input file, dependencies description for the
       current project
 
--  Right click on the source folder ``src/main/java`` and select ``New > Package``.
-   Give a name: ``com.mycompany``. Click on ``Finish``.
+-  Right click on the source folder ``src/main/java`` and select
+   :guilabel:`New` > :guilabel:`Package`. Give a name: ``com.mycompany``.
+   Click on :guilabel:`Finish`.
 
    .. figure:: png/newApp8.png
       :alt: New Package
@@ -101,10 +102,10 @@ Create a MicroEJ Standalone Application
 
       New Package
 
--  The package ``com.mycompany`` is available under ``src/main/java``
-   folder. Right click on this package and select ``New > Class``. Give
-   a name: ``Test`` and check the box ``public static void main(String[] args)``.
-   Click on ``Finish``.
+-  The package ``com.mycompany`` is available under ``src/main/java`` folder.
+   Right click on this package and select :guilabel:`New` > :guilabel:`Class`.
+   Give a name: ``Test`` and check the box ``public static void main(String[]
+   args)``. Click on :guilabel:`Finish`.
 
    .. figure:: png/newApp9.png
       :alt: New Class
@@ -133,8 +134,8 @@ Create a MicroEJ Standalone Application
 Run on the Simulator
 --------------------
 
-To run the sample project on Simulator, select it in the left panel then
-right-click and select ``Run > Run as > MicroEJ Application``.
+To run the sample project on Simulator, select it in the left panel then right-click
+and select :guilabel:`Run` > :guilabel:`Run as` > :guilabel:`MicroEJ Application`.
 
 .. figure:: png/sim1.png
    :alt: MicroEJ Development Tools Overview
@@ -167,9 +168,9 @@ from the MicroEJ Resources Center view.
 .. note::
 
    MicroEJ Resources Center view may have been closed. Click on
-   ``Help > MicroEJ Resources Center`` to reopen it.
+   :guilabel:`Help` > :guilabel:`MicroEJ Resources Center` to reopen it.
 
-Open the menu ``Manual`` and select the documentation
+Open the menu :guilabel:`Manual` and select the documentation
 ``[hardware device] MicroEJ Platform``, where ``[hardware device]`` is
 the name of the hardware device. This documentation features a guide to
 run a built-in application on MicroEJ Simulator and on hardware device.

@@ -48,10 +48,10 @@ the following trace is dumped on standard output.
 
    Stack Trace Output
 
-To create a new MicroEJ Tool configuration, right-click on the
-application project and click on ``Run As... > Run Configurations...``.
+To create a new MicroEJ Tool configuration, right-click on the application
+project and click on :guilabel:`Run As...` > :guilabel:`Run Configurations...`.
 
-In ``Execution`` tab, select the ``Stack Trace Reader`` tool.
+In :guilabel:`Execution` tab, select the :guilabel:`Stack Trace Reader` tool.
 
 .. figure:: ../ApplicationDeveloperGuide/png/STR_selecttool.png
    :alt: Select Stack Trace Reader Tool
@@ -59,7 +59,7 @@ In ``Execution`` tab, select the ``Stack Trace Reader`` tool.
 
    Select Stack Trace Reader Tool
 
-In ``Configuration`` tab, browse the previously generated application
+In :guilabel:`Configuration` tab, browse the previously generated application
 binary file with debug information (``application.fodbg``)
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_selectfile.png
@@ -68,7 +68,7 @@ binary file with debug information (``application.fodbg``)
 
    Stack Trace Reader Tool Configuration
 
-In ``Configuration`` tab, browse the previously generated application
+In :guilabel:`Configuration` tab, browse the previously generated application
 binary file with debug information (``application.out``)
 
 .. figure:: ../StandaloneAppDevGuide/png/trace3.png
@@ -77,7 +77,7 @@ binary file with debug information (``application.out``)
 
    Stack Trace Reader Tool Configuration
 
-Click on ``Run`` button and copy/paste the trace into the Eclipse
+Click on :guilabel:`Run` button and copy/paste the trace into the Eclipse
 console. The decoded trace is dumped and the line corresponding to the
 application hook is now readable.
 
@@ -90,6 +90,6 @@ application hook is now readable.
 The stack trace reader can simultaneously decode heterogeneous stack
 traces with lines owned by different applications and the firmware.
 Other debug information files can be appended using the
-``Additional object files`` option. Lines owned by the firmware can be
+:guilabel:`Additional object files` option. Lines owned by the firmware can be
 decoded with the firwmare debug information file (optionally made
 available by your firmware provider).
