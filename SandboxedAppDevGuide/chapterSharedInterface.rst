@@ -1,7 +1,7 @@
 .. _chapter.shared.interfaces:
 
 Shared Interfaces
-=================
+#################
 
 .. _section.shared.interfaces.contract:
 

@@ -1,5 +1,5 @@
 MicroEJ Overview
-================
+################
 
 .. _section.microej.studio:
 

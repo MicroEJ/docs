@@ -1,7 +1,7 @@
 .. _chapter.application.structure:
 
 Sandboxed Application Structure
-===============================
+###############################
 
 .. _section.application.template:
 

@@ -1,7 +1,7 @@
 .. _chapter.microej.classpath:
 
 MicroEJ Classpath
-=================
+#################
 
 MicroEJ applications run on a target device and their footprint is
 optimized to fulfill embedded constraints. The final execution context

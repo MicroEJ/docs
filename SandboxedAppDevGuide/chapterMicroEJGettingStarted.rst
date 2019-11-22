@@ -1,7 +1,7 @@
 .. _chapter.microej.getting.started:
 
 MicroEJ Studio Getting Started
-==============================
+##############################
 
 .. _microej.introduction:
 
