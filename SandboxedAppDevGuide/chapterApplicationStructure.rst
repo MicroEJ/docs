@@ -81,5 +81,5 @@ They are described hereafter.
 The ``module.ivy`` file describes all the libraries required by the
 application at runtime. The Ivy classpath container lists all the
 modules that have been automatically resolved from the content of
-``module.ivy``. See `??? <#section.ivy.dependency.manager>`__ for more
+``module.ivy``. See :ref:`section.ivy.dependency.manager` for more
 informations about MicroEJ Module Manager.

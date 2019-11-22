@@ -5,7 +5,7 @@ Stack Trace Reader
 
 When an application is deployed on a device, stack traces dumped on
 standard output are not directly readable: non required types (see
-`??? <#section.classpath.elements.types>`__) names, methods names and
+:ref:`section.classpath.elements.types`) names, methods names and
 methods line numbers may not have been embedded to save code space. A
 stack trace dumped on the standard output can be decoded using the Stack
 Trace Reader tool.

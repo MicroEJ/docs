@@ -28,10 +28,9 @@ Application development is based on the following elements:
 -  MicroEJ Studio, the integrated development environment for writing
    applications. It is based on Eclipse and relies on the integrated
    Java compiler (JDT). It also provides a dependency manager for
-   managing MicroEJ Libraries (see
-   `??? <#section.ivy.dependency.manager>`__). The current version of
-   MicroEJ Studio is built on top of Eclipse Oxygen
-   (``https://www.eclipse.org/oxygen/``).
+   managing MicroEJ Libraries (see :ref:`section.ivy.dependency.manager`).
+   The current version of MicroEJ Studio is built on top of Eclipse Oxygen
+   (:http:`https://www.eclipse.org/oxygen/`).
 
 -  MicroEJ Virtual Device, a software package including the resources
    and tools required for building and testing an application for a
@@ -71,11 +70,11 @@ Perform Online Getting Started
 ==============================
 
 MicroEJ Studio Getting Started is available on
-``https://developer.microej.com/5/getting-started-studio.html``.
+:http:`https://developer.microej.com/5/getting-started-studio.html`.
 
 Starting from scratch, the steps to go through the whole process are:
 
-1. Setup a board and test a MicroEJ Firmware:
+#. Setup a board and test a MicroEJ Firmware:
 
    -  Select between one of the available boards;
 
@@ -83,7 +82,7 @@ Starting from scratch, the steps to go through the whole process are:
 
    -  Deploy and run a MicroEJ demo on board.
 
-2. Setup and learn to use development tools:
+#. Setup and learn to use development tools:
 
    -  Download and install MicroEJ Studio;
 
@@ -123,11 +122,14 @@ and select ``Build Module``.
 The WPK build process will display messages in MicroEJ console, ending
 up the following message:
 
-``[echo] project hello published locally with version 0.1.0-RC201907091602``
+::
 
-``BUILD SUCCESSFUL``
+    [echo] project hello published locally with version 0.1.0-RC201907091602
 
-``Total time: 1 minute 6 seconds``
+    BUILD SUCCESSFUL
+
+    Total time: 1 minute 6 seconds
+
 
 .. _section.publish.on.a.microej.store:
 
@@ -138,7 +140,7 @@ The WPK file produced by the build process is located in a dedicated
 ``target~/artifacts`` folder in the project.
 
 The ``.wpk`` file is ready to be uploaded to a MicroEJ Forge instance.
-Please consult ``https://community.microej.com`` for more information.
+Please consult :http:`https://community.microej.com` for more information.
 
 .. _section.install.and.setup.studio:
 
@@ -169,13 +171,14 @@ reference when developing applications for MicroEJ. They cover concepts
 essential to MicroEJ applications design.
 
 In addition to these sections, by going to
-``https://developer.microej.com/``, you can access a number of helpful
+:http:`https://developer.microej.com/`, you can access a number of helpful
 resources such as:
 
 -  Libraries from the MicroEJ Central Repository
-   (``https://repository.microej.com/``);
+   (:http:`https://repository.microej.com/`);
 
 -  Application Examples as source code from MicroEJ Github Repositories
-   (``https://github.com/MicroEJ``);
+   (:http:`https://github.com/MicroEJ`);
 
 -  Documentation (HOWTOs, Reference Manuals, APIs javadoc...).
+

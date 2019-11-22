@@ -127,11 +127,9 @@ following usages:
 -  to retrieve its fully qualified name (with a call to
    ``Class.getName()``).
 
-.. TODO fix the ??? here. Refer to the existing docs
-
 A type that is not declared as a *Required type* may not have its fully
 qualified name (FQN) embedded. Its FQN can be retrieved using the stack
-trace reader tool (see `??? <#section.stacktrace.reader.tool>`__).
+trace reader tool (see :ref:`section.stacktrace.reader.tool`).
 
 Required Types are declared in MicroEJ Classpath using ``*.types.list``
 files. The file format is a standard Java properties file, each line
@@ -169,7 +167,7 @@ Immutable Objects
 Immutables objects are regular read-only objects that can be retrieved
 with a call to ``ej.bon.Immutables.get(String)``. Immutables objects are
 declared in files called *immutable objects data files*, which format is
-described in the ``[B-ON]`` specification (``http://e-s-r.net``).
+described in the ``[B-ON]`` specification (:http:`http://e-s-r.net`).
 Immutables objects data files are declared in MicroEJ Classpath using
 ``*.immutables.list`` files. The file format is a standard Java
 properties file, each line is a ``/`` separated name of a relative file
@@ -280,11 +278,8 @@ embedded, and the pixel depth is ``1`` (i.e 1 bit-per-pixel). Example:
    # with 2 levels of transparency
    com/mycompany/MyFont2.ejf::2
 
-.. TODO fix ??? link here
-
 MicroEJ font files conventionally end with the ``.ejf`` suffix and are
-created using the Font Designer (see
-`??? <#section.tool.fontdesigner>`__).
+created using the Font Designer (see :ref:`section.tool.fontdesigner`).
 
 Font Range
 ~~~~~~~~~~
@@ -315,7 +310,7 @@ Known Range
 ^^^^^^^^^^^
 
 A known range is a range defined by the "Unicode Character Database"
-version 9.0.0 available on ``http://www.unicode.org/``. Each range is
+version 9.0.0 available on :http:`http://www.unicode.org/`. Each range is
 composed of sub ranges that have a unique id.
 
 -  ``myfont:basic_latin``: Embed all *Basic Latin* characters;
@@ -345,7 +340,7 @@ A MicroEJ Foundation Library is a MicroEJ Core library that provides
 core runtime APIs or hardware-dependent functionality. A Foundation
 library is divided into an API and an implementation. A Foundation
 library API is composed of a name and a 2 digits version (e.g.
-``EDC-1.3``) and follows the semantic versioning (<http://semver.org>)
+``EDC-1.3``) and follows the semantic versioning (:http:`http://semver.org`)
 specification. A Foundation library API only contains prototypes without
 code. Foundation library implementations are provided by MicroEJ
 Platforms. From a MicroEJ Classpath, Foundation library APIs
@@ -392,16 +387,16 @@ requirements.
 
 MMM is based on of the following tools:
 
--  Apache Ivy (<http://ant.apache.org/ivy>) for dependencies
+-  Apache Ivy (:http:`http://ant.apache.org/ivy`) for dependencies
    resolution and module publication;
 
 -  Apache EasyAnt
-   (<https://ant.apache.org/easyant/history/trunk/reference.html>) for
+   (:http:`https://ant.apache.org/easyant/history/trunk/reference.html`) for
    module build from source code.
 
 In addition, MMM provides a non ambiguous semantic for dependencies
 resolution. Please consult the MMM specification available on
-<https://developer.microej.com>.
+:http:`https://developer.microej.com`.
 
 An Ivy configuration file (``module.ivy``) must be provided at the root
 of each MicroEJ project to solve classpath dependencies. Multiple Ivy
@@ -443,7 +438,7 @@ MicroEJ. It contains Foundation library APIs and numerous Add-On
 Libraries. Foundation libraries APIs are distributed under the
 organization ``ej.api``. All other artifacts are Add-On libraries.
 
-For more information, please visit <https://repository.microej.com>.
+For more information, please visit :http:`https://repository.microej.com`.
 
 Offline Repository
 ==================
@@ -451,4 +446,4 @@ Offline Repository
 By default, MicroEJ is configured to connect online MicroEJ Central
 Repository. The MicroEJ Central Repository can be downloaded locally for
 offline use. Please follow the steps described at
-<https://repository.microej.com>.
+:http:`https://repository.microej.com`.

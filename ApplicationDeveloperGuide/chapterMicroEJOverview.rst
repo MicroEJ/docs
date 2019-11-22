@@ -43,7 +43,7 @@ Using the MicroEJ Studio tool, an application developer will be able to:
 -  Package and publish the application on a MicroEJ Forge Instance,
    enabling remote end users to install it on their devices. For more
    information about MicroEJ Forge, please consult
-   ``https://www.microej.com/product/forge``.
+   :http:`https://www.microej.com/product/forge`.
 
 .. _section.firmware:
 
@@ -77,7 +77,7 @@ Specification
 The set of libraries included in the firmware and its dimensioning
 limitations (maximum number of simultaneous threads, open connections,
 …) are firmware specific. Please refer to
-``https://developer.microej.com/5/getting-started-studio.html`` for
+:http:`https://developer.microej.com/5/getting-started-studio.html` for
 evaluation firmware release notes.
 
 .. _section.virtual.device:

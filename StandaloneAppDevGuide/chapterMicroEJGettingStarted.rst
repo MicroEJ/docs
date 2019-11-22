@@ -27,10 +27,9 @@ Application development is based on the following elements:
 -  MicroEJ SDK, the integrated development environment for writing
    applications. It is based on Eclipse and is relies on the integrated
    Java compiler (JDT). It also provides a dependency manager for
-   managing MicroEJ Libraries (see
-   `??? <#section.ivy.dependency.manager>`__). The current version of
-   MicroEJ SDK is built on top of Eclipse Oxygen
-   (``https://www.eclipse.org/oxygen/``).
+   managing MicroEJ Libraries (see :ref:`section.ivy.dependency.manager`).
+   The current version of MicroEJ SDK is built on top of Eclipse Oxygen
+   (:http:`https://www.eclipse.org/oxygen/`).
 
 -  MicroEJ Platform, a software package including the resources and
    tools required for building and testing an application for a specific
@@ -120,7 +119,6 @@ Create a MicroEJ Standalone Application
 
       System.out.println("hello world!");
 
-   .
 
    .. figure:: png/newApp10.png
       :alt: MicroEJ Application Content
@@ -148,13 +146,13 @@ MicroEJ SDK console will display Launch steps messages.
 
 ::
 
-                       =============== [ Initialization Stage ] ===============
-                       =============== [ Launching on Simulator ] ===============
-                       hello world!
-                       =============== [ Completed Successfully ] ===============
-                       
-                       SUCCESS
-                   
+    =============== [ Initialization Stage ] ===============
+    =============== [ Launching on Simulator ] ===============
+    hello world!
+    =============== [ Completed Successfully ] ===============
+
+    SUCCESS
+
 
 .. _section.run.on.emb:
 
@@ -166,7 +164,7 @@ hardware dependant. These steps are described in dedicated documentation
 available inside the MicroEJ Platform. This documentation is accessible
 from the MicroEJ Resources Center view.
 
-   **Note**
+.. note::
 
    MicroEJ Resources Center view may have been closed. Click on
    ``Help > MicroEJ Resources Center`` to reopen it.
@@ -192,13 +190,14 @@ reference when developing applications for MicroEJ. They cover concepts
 essential to MicroEJ applications design.
 
 In addition to these sections, by going to
-``https://developer.microej.com/``, you can access a number of helpful
+:http:`https://developer.microej.com/`, you can access a number of helpful
 resources such as:
 
 -  Libraries from the MicroEJ Central Repository
-   (``https://repository.microej.com/``)
+   (:http:`https://repository.microej.com/`)
 
 -  Application Examples as source code from MicroEJ Github Repositories
-   (``https://github.com/MicroEJ``)
+   (:http:`https://github.com/MicroEJ`)
 
 -  Documentation (HOWTOs, Reference Manuals, APIs javadoc...)
+

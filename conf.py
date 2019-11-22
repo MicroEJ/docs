@@ -1,6 +1,11 @@
 # MicroEJ
 
 import os
+import sys
+
+sys.path.insert(0, os.path.dirname(__file__))
+
+import microej
 
 
 project = 'MicroEJ'
@@ -9,6 +14,7 @@ author = 'MicroEJ'
 release = '1.0'
 
 extensions = [
+    'microej',
 ]
 
 templates_path = ['_templates']

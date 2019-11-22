@@ -13,7 +13,7 @@ these boards with the help of a MicroEJ Simulator.
 A MicroEJ Platform is a software package including the resources and
 tools required for building and testing an application for a specific
 MicroEJ-ready device. MicroEJ Platforms are available at
-``https://developer.microej.com/5/getting-started-sdk.html``.
+:http:`https://developer.microej.com/5/getting-started-sdk.html`.
 
 After downloading the MicroEJ Platform, launch MicroEJ SDK on your
 desktop to start the process of Platform installation :
