@@ -2,5 +2,4 @@
    will be dropped into the application developer guide document tree. This
    could also be a symlink.
 
-.. include:: /ApplicationDeveloperGuide/chapterMicroEJTools.rst
-
+.. include:: ../ApplicationDeveloperGuide/chapterMicroEJTools.rst

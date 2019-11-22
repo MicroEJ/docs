@@ -1,5 +1,8 @@
 # MicroEJ
 
+import os
+
+
 project = 'MicroEJ'
 copyright = '2019, MicroEJ'
 author = 'MicroEJ'
@@ -16,6 +19,7 @@ master_doc = 'index'
 exclude_patterns = [
     '_build',
     'README.rst',
+    'section*.rst',
     '**/section*.rst',
 ]
 
@@ -31,3 +35,15 @@ html_show_sphinx = False
 # microej theme was forked from does not support the HTML5 writer used by
 # default by Sphinx 2+
 html4_writer = True
+
+
+def setup(app):
+    # Because there are multiple, interconnected docsets in these sources,
+    # there will be a number of errors about duplicate section labels, and
+    # links will not resolve as expected. This allows for multiple, independent
+    # projects in the same doc source.
+    # TODO if/when this project is restructured as a single document, without
+    # included sections between the docs, this likely won't be need.
+    docset = os.environ.get('MICROEJ_DOCSET', None)
+    if docset:
+        app.srcdir += '/' + docset
