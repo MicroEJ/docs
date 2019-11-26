@@ -164,6 +164,18 @@ def get_project_name():
         return 'MicroEJ Documentation'
 
 
+def set_project_version(app):
+    """
+    Event listener to replace the project's release with changeset.
+
+    This will only work on Read the Docs currently, it uses information passed
+    into the project's build to obtain the commit id.
+    """
+    commit_id = app.config.html_context.get('commit', None)
+    if commit_id:
+        app.config.release = f'Revision {commit_id}'
+
+
 def setup(app):
     from docutils.parsers.rst import roles
 
@@ -172,6 +184,8 @@ def setup(app):
     if can_build_independent_docs():
         docset = os.environ.get('MICROEJ_DOCSET', None)
         app.srcdir += '/' + docset
+
+    app.connect('builder-inited', set_project_version)
 
     return {
         'version': '1.0.0',

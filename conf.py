@@ -50,6 +50,10 @@ html_show_sphinx = False
 # default by Sphinx 2+
 html4_writer = True
 
+# The default Sphinx HTML title includes the release number and some other
+# unwanted bits.
+html_title = project
+
 # LaTeX customizations
 latex_elements = {
     'preamble': r'\usepackage{microej}',
