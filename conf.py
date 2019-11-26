@@ -21,6 +21,8 @@ elif docset == 'StandaloneAppDevGuide':
     project = 'Standalone Application Developer Guide'
 elif docset == 'ApplicationDeveloperGuide':
     project = 'Application Developer Guide'
+elif docset == 'Landing':
+    project = 'MicroEJ Documentation'
 
 extensions = [
     'microej',
