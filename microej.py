@@ -178,7 +178,7 @@ def set_project_version(app, config):
     if commit_id:
         config.release = f'Commit {commit_id}'
         config.latex_elements['preamble'] += (
-            r'\renewcommand{\microejversion}{Commit \texttt ' + commit_id + "}"
+            r'\renewcommand{\microejversion}{Revision \texttt ' + commit_id + "}"
         )
 
 
