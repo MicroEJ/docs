@@ -164,16 +164,22 @@ def get_project_name():
         return 'MicroEJ Documentation'
 
 
-def set_project_version(app):
+def set_project_version(app, config):
     """
     Event listener to replace the project's release with changeset.
 
     This will only work on Read the Docs currently, it uses information passed
-    into the project's build to obtain the commit id.
+    into the project's build to obtain the commit id. This sets some additional
+    variables in the tex output. See ``microej.sty`` for more information.
     """
-    commit_id = app.config.html_context.get('commit', None)
+    # We have to do this here, as Read the Docs appends this to the end of the
+    # config file. It's not ready until we're in the build.
+    commit_id = config.html_context.get('commit', None)
     if commit_id:
-        app.config.release = f'Revision {commit_id}'
+        config.release = f'Commit {commit_id}'
+        config.latex_elements['preamble'] += (
+            r'\renewcommand{\microejversion}{Commit \texttt ' + commit_id + "}"
+        )
 
 
 def setup(app):
@@ -185,7 +191,7 @@ def setup(app):
         docset = os.environ.get('MICROEJ_DOCSET', None)
         app.srcdir += '/' + docset
 
-    app.connect('builder-inited', set_project_version)
+    app.connect('config-inited', set_project_version)
 
     return {
         'version': '1.0.0',

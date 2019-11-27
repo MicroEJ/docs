@@ -1,15 +1,63 @@
 \ProvidesPackage{microej}[2019/11/21 package microej]
+
+% Set up Source Sans Pro as the default font, and Inconsolata as the default
+% monospace font.
 \usepackage[default]{sourcesanspro}
 \usepackage{inconsolata}
 \usepackage[T1]{fontenc}
 
-\usepackage{sphinx}
+% Redefine some colors used outside highlighting
 \usepackage{xcolor}
 \sphinxsetup{
     TitleColor={RGB}{0,0,0},
     InnerLinkColor={HTML}{E74C3C},
     OuterLinkColor={HTML}{E74C3C},
     VerbatimHighlightColor={RGB}{0,0,0},
+}
+
+% Used to set a commit id over the release version. Sphinx makes it difficult to
+% override release/version commands directly
+\newcommand{\microejversion}{}
+\renewcommand{\py@release}{\microejversion}
+
+% Title page forked from Sphinx title page. Override the base sphinxmaketitle
+% command to make a centered title page with more spacing
+\renewcommand{\sphinxmaketitle}{%
+  \let\sphinxrestorepageanchorsetting\relax
+  \ifHy@pageanchor\def\sphinxrestorepageanchorsetting{\Hy@pageanchortrue}\fi
+  \hypersetup{pageanchor=false}% avoid duplicate destination warnings
+  \begin{titlepage}%
+    \let\footnotesize\small
+    \let\footnoterule\relax
+      \begingroup % for PDF information dictionary
+       \def\endgraf{ }\def\and{\& }%
+       \pdfstringdefDisableCommands{\def\\{, }}% overwrite hyperref setup
+       \hypersetup{pdfauthor={\@author}, pdftitle={\@title}}%
+      \endgroup
+    \begin{center}%
+      \vfill
+      {\Huge \@title \par}
+      \vfill
+      \sphinxincludegraphics[height=2in]{mascot.pdf}\par
+      \vfill
+      {\LARGE
+        \begin{tabular}[t]{c}
+          \@author
+        \end{tabular}\kern-\tabcolsep
+        \par}
+      \vfill
+      {\large \py@release \par}
+      {\large \@date \par}
+    \end{center}%\par
+    \@thanks
+  \end{titlepage}%
+  \setcounter{footnote}{0}%
+  \let\thanks\relax\let\maketitle\relax
+  %\gdef\@thanks{}\gdef\@author{}\gdef\@title{}
+  \clearpage
+  \ifdefined\sphinxbackoftitlepage\sphinxbackoftitlepage\fi
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \sphinxrestorepageanchorsetting
 }
 
 \endinput

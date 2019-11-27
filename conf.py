@@ -59,7 +59,7 @@ latex_elements = {
     'preamble': r'\usepackage{microej}',
 }
 latex_additional_files = ['microej.sty']
-latex_logo = '_themes/microej/static/mascot-xl.png'
+latex_logo = '_themes/microej/static/mascot.pdf'
 
 # This is defined in the theme, but the LaTeX builder does not honor the theme
 # setting for pygments. This is the same style class used by the HTML builder.
