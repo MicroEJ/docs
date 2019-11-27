@@ -1,9 +1,5 @@
-.. _chapter.microej.getting.started:
-
 MicroEJ Studio Getting Started
 ##############################
-
-.. _microej.introduction:
 
 Introducing MicroEJ Studio and Virtual Devices
 ==============================================
@@ -142,8 +138,6 @@ The WPK file produced by the build process is located in a dedicated
 The ``.wpk`` file is ready to be uploaded to a MicroEJ Forge instance.
 Please consult :http:`https://community.microej.com` for more information.
 
-.. _section.install.and.setup.studio:
-
 Workspaces and Virtual Devices Repositories
 ===========================================
 
@@ -160,8 +154,6 @@ alternative location. Another common practice is to define a local
 repository relative to the workspace, so that the workspace is
 self-contained, without external file system links and can be shared
 within a zip file.
-
-.. _section.application.development:
 
 Application Development
 =======================

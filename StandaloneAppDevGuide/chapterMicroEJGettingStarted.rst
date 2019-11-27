@@ -1,9 +1,5 @@
-.. _chapter.microej.getting.started:
-
 MicroEJ SDK Getting Started
 ###########################
-
-.. _microej.introduction:
 
 Introducing MicroEJ SDK
 =======================
@@ -51,8 +47,6 @@ detailed in the following sections of this chapter :
 -  Build and run your first application on simulator
 
 -  Build and run your first application on target hardware
-
-.. _section.install.and.setup.studio:
 
 Setup MicroEJ SDK
 =================
@@ -186,8 +180,6 @@ run a built-in application on MicroEJ Simulator and on hardware device.
    :align: center
 
    MicroEJ Platform Guide
-
-.. _section.application.development:
 
 Application Development
 =======================
