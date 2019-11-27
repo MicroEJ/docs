@@ -27,7 +27,6 @@ extensions = [
 
 templates_path = ['_templates']
 html_theme_path = ['_themes']
-html_static_path = ['_static']
 master_doc = 'index'
 
 # Generic options
