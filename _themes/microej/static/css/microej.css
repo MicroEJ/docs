@@ -535,3 +535,59 @@ footer span.commit .rst-content tt,
 .wy-nav-content {
   max-width: 1200px;
 }
+
+/* Fixes for flyout menu */
+body > .rst-versions > .rst-current-version {
+  background-color: #efefef;
+  color: #4b5357;
+}
+
+.rst-versions .rst-current-version .fa-book {
+  font-size: 0rem;
+  color: transparent;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/*.rst-versions .rst-current-version .fa-book::before,
+.rst-versions .rst-current-version .fa-book::after {*/
+.rst-versions .rst-current-version .fa::before,
+.rst-versions .rst-current-version .fa::after {
+  font-size: 1rem;
+  color: #4b5357;
+}
+
+/* Replace text on menu */
+/*
+.rst-versions .rst-current-version .fa-book::after {
+  content: "MicroEJ";
+  font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif;
+  padding-left: .5rem;
+}
+*/
+
+div.rst-versions div.rst-other-versions {
+  background: #efefef;
+  color: #4b5357;
+}
+
+div.rst-versions div.rst-other-versions a {
+  color: #ee502e;
+}
+
+div.rst-other-versions > div.injected > dl:nth-child(3) {
+  display: none;
+}
+
+div.rst-other-versions > div.injected {
+  visibility: hidden;
+}
+
+div.rst-other-versions > div.injected > hr {
+  display: none;
+}
+
+div.rst-other-versions > div.injected > dl {
+  visibility: visible;
+}
