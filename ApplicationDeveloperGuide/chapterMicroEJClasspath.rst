@@ -46,6 +46,7 @@ project appearance order (top to bottom).
 .. figure:: ../ApplicationDeveloperGuide/png/ClassPath_4.png
    :alt: MicroEJ Application Classpath Mapping
    :width: 100.0%
+   :align: center
 
    MicroEJ Application Classpath Mapping
 
@@ -69,6 +70,7 @@ elements are loaded transitively.
 .. figure:: ../ApplicationDeveloperGuide/png/ClassPath_1.png
    :alt: Classpath Load Principle
    :width: 100.0%
+   :align: center
 
    Classpath Load Principle
 
@@ -360,6 +362,7 @@ Manager <#section.ivy.dependency.manager>`__).
 .. figure:: ../ApplicationDeveloperGuide/png/ClassPath_2.png
    :alt: MicroEJ Foundation Libraries and Add-On Libraries
    :width: 100.0%
+   :align: center
 
    MicroEJ Foundation Libraries and Add-On Libraries
 

@@ -25,6 +25,7 @@ desktop to start the process of Platform installation :
    .. figure:: png/platformImport.png
       :alt: MicroEJ Platform Import
       :width: 80.0%
+      :align: center
 
       MicroEJ Platform Import
 
@@ -37,6 +38,7 @@ desktop to start the process of Platform installation :
    .. figure:: png/platformSelect.png
       :alt: MicroEJ Platform Selection
       :width: 80.0%
+      :align: center
 
       MicroEJ Platform Selection
 
@@ -46,5 +48,6 @@ desktop to start the process of Platform installation :
    .. figure:: png/platformList.png
       :alt: MicroEJ Platform List
       :width: 80.0%
+      :align: center
 
       MicroEJ Platform List

@@ -16,6 +16,7 @@ standard output.
 .. figure:: ../SandboxedAppDevGuide/png/STR_stacktracedump.png
    :alt: Code to Dump a Stack Trace
    :width: 100.0%
+   :align: center
 
    Code to Dump a Stack Trace
 
@@ -24,6 +25,8 @@ standard output.
 
 .. figure:: ../StandaloneAppDevGuide/png/trace1.png
    :alt: Code to Dump a Stack Trace
+   :width: 80.0%
+   :align: center
 
    Code to Dump a Stack Trace
 
@@ -36,17 +39,29 @@ without debug information).
 .. figure:: ../SandboxedAppDevGuide/png/STR_debugfofile.png
    :alt: Application Binary File with Debug Information
    :width: 100.0%
+   :align: center
 
    Application Binary File with Debug Information
 
 On successful deployment, the application is started on the device and
 the following trace is dumped on standard output.
 
+.. TODO this was controled with isSandbox/isStandalone conditionals
+
 .. figure:: ../SandboxedAppDevGuide/png/STR_tracetermite.png
    :alt: Stack Trace Output
    :width: 100.0%
+   :align: center
 
    Stack Trace Output
+
+.. This was controlled by a conditional depending on isSandbox or isStandalone
+    .. figure:: ../StandaloneAppDevGuide/png/trace2.png
+       :alt: Stack Trace Output
+       :width: 80.0%
+       :align: center
+       
+       Stack Trace Output
 
 To create a new MicroEJ Tool configuration, right-click on the application
 project and click on :guilabel:`Run As...` > :guilabel:`Run Configurations...`.
@@ -56,6 +71,7 @@ In :guilabel:`Execution` tab, select the :guilabel:`Stack Trace Reader` tool.
 .. figure:: ../ApplicationDeveloperGuide/png/STR_selecttool.png
    :alt: Select Stack Trace Reader Tool
    :width: 100.0%
+   :align: center
 
    Select Stack Trace Reader Tool
 
@@ -64,9 +80,12 @@ binary file with debug information (``application.fodbg``)
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_selectfile.png
    :alt: Stack Trace Reader Tool Configuration
-   :width: 100.0%
+   :width: 80.0%
+   :align: center
 
    Stack Trace Reader Tool Configuration
+
+.. TODO isStandalone condition was used on the following paragraph
 
 In :guilabel:`Configuration` tab, browse the previously generated application
 binary file with debug information (``application.out``)
@@ -74,6 +93,7 @@ binary file with debug information (``application.out``)
 .. figure:: ../StandaloneAppDevGuide/png/trace3.png
    :alt: Stack Trace Reader Tool Configuration
    :width: 100.0%
+   :align: center
 
    Stack Trace Reader Tool Configuration
 
@@ -81,11 +101,23 @@ Click on :guilabel:`Run` button and copy/paste the trace into the Eclipse
 console. The decoded trace is dumped and the line corresponding to the
 application hook is now readable.
 
+.. TODO isSandbox and isStandalone conditions were used here. isSandbox is
+   showing
+
 .. figure:: ../SandboxedAppDevGuide/png/STR_console.png
    :alt: Read the Stack Trace
    :width: 100.0%
+   :align: center
 
    Read the Stack Trace
+
+.. This is shown with isStandalone
+    .. figure:: ../StandaloneAppDevGuide/png/trace4.png
+       :alt: Read the Stack Trace
+       :width: 100.0%
+       :align: center
+       
+       Read the Stack Trace
 
 The stack trace reader can simultaneously decode heterogeneous stack
 traces with lines owned by different applications and the firmware.

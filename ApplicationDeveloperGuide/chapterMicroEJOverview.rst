@@ -20,6 +20,7 @@ for application developers targeting this device.
 .. figure:: ../ApplicationDeveloperGuide/png/toolchain.png
    :alt: MicroEJ Development Tools Overview
    :width: 100.0%
+   :align: center
 
    MicroEJ Development Tools Overview
 
@@ -66,6 +67,7 @@ instance of a MicroEJ runtime linked to:
 .. figure:: ../ApplicationDeveloperGuide/png/firmware.png
    :alt: MicroEJ Firmware Architecture
    :width: 100.0%
+   :align: center
 
    MicroEJ Firmware Architecture
 
@@ -81,6 +83,8 @@ limitations (maximum number of simultaneous threads, open connections,
 evaluation firmware release notes.
 
 .. _section.virtual.device:
+
+.. TODO this section had the conditional isSandbox
 
 Virtual Device
 ==============
@@ -106,6 +110,7 @@ device.
 .. figure:: ../SandboxedAppDevGuide/png/virtual-device.png
    :alt: MicroEJ Virtual Device Architecture
    :width: 100.0%
+   :align: center
 
    MicroEJ Virtual Device Architecture
 
@@ -122,8 +127,11 @@ the MicroEJ Resource Center (:guilabel:`Window` > :guilabel:`Show View` >
 .. figure:: ../SandboxedAppDevGuide/png/Overview_resourcecenter.png
    :alt: MicroEJ Resource Center APIs
    :width: 100.0%
+   :align: center
 
    MicroEJ Resource Center APIs
+
+.. end of conditional section for isSandbox
 
 .. _Standalone_vs_Sandboxed:
 
