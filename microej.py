@@ -126,7 +126,17 @@ class HttpCodeRef(ReferenceRole):
     """
 
     def run(self):
-        reference = nodes.reference('', '', internal=False, refuri=self.target)
+        attrs = {}
+        if self.target.startswith('http'):
+            attrs['target'] = '_blank'
+
+        reference = nodes.reference(
+            '',
+            '',
+            internal=False,
+            refuri=self.target,
+            **attrs,
+        )
 
         if self.has_explicit_title:
             reference += nodes.literal(self.title, self.title)
