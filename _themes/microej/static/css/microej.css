@@ -352,6 +352,10 @@ code,
   font-family: Consolas, monospace;
 }
 
+.wy-menu-vertical {
+  width: 325px;
+}
+
 .wy-menu-vertical header,
 .wy-menu-vertical p.caption {
   color: #262a2c;
@@ -432,6 +436,11 @@ code,
 
 .wy-nav-side {
   background: #ffffff;
+  width: 325px;
+}
+
+.wy-side-scroll {
+  width: 345px;
 }
 
 .wy-nav-top {
@@ -530,6 +539,7 @@ footer span.commit .rst-content tt,
 
 .wy-nav-content-wrap {
   background: none;
+  margin-left: 325px;
 }
 
 .wy-nav-content {
