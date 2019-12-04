@@ -487,6 +487,13 @@ footer span.commit .rst-content tt,
   font-family: Consolas, monospace;
 }
 
+.rst-content pre.literal-block,
+.rst-content div[class^="highlight"] pre,
+.rst-content .linenodiv pre,
+.rst-content code.literal {
+  font-size: 14px;
+}
+
 .rst-content h1 .headerlink:after,
 .rst-content h2 .headerlink:after,
 .rst-content .toctree-wrapper p.caption .headerlink:after,
