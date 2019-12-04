@@ -541,7 +541,8 @@ footer span.commit .rst-content tt,
 }
 
 .rst-content .guilabel {
-  background: #a4eaf55e;
+  background: #cbd3d7;
+  border: 1px solid #cbd3d7;
 }
 
 .wy-nav-content-wrap {
