@@ -62,10 +62,9 @@ A MicroEJ Application classpath is created via the loading of :
 -  all ``*.[extension].list`` files declared in a MicroEJ Classpath.
 
 The different elements that constitute an application are described in
-`Classpath Elements <#section.classpath.elements>`__. They are searched
-within MicroEJ Classpath from left to right (the first file found is
-loaded). Types referenced by previously loaded MicroEJ Classpath
-elements are loaded transitively.
+`Classpath Elements`_. They are searched within MicroEJ Classpath from left to
+right (the first file found is loaded). Types referenced by previously loaded
+MicroEJ Classpath elements are loaded transitively.
 
 .. figure:: ../ApplicationDeveloperGuide/png/ClassPath_1.png
    :alt: Classpath Load Principle
@@ -356,8 +355,7 @@ Library is distributed in a single JAR file, with a 3 digits version and
 provides its associated source code.
 
 Foundation and Add-on libraries are added to MicroEJ Classpath by the
-application developer as module dependencies (see `MicroEJ Module
-Manager <#section.ivy.dependency.manager>`__).
+application developer as module dependencies (see `MicroEJ Module Manager`_).
 
 .. figure:: ../ApplicationDeveloperGuide/png/ClassPath_2.png
    :alt: MicroEJ Foundation Libraries and Add-On Libraries

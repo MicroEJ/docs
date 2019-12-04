@@ -96,8 +96,10 @@ and forth between application boundaries.
 
    Shared Interface Parameters Transfer
 
-`table_title <#table.si.transfer.rules>`__ describes the rules applied
-depending on the element to be transferred.
+:ref:`table.si.transfer.rules` describes the rules applied depending on the
+element to be transferred.
+
+.. _table.si.transfer.rules:
 
 .. list-table:: Shared Interface Types Transfer Rules
    :widths: 19 14 10 29
@@ -164,11 +166,13 @@ Objects created by an application which class is owned by MicroEJ
 Firmware can be transferred to another application if this has been
 authorized by the firwmare. The list of eligible types that can be
 transferred is firwmare specific, so you have to consult the firmware
-specification. `table_title <#table.si.transfer.firmware>`__ lists
+specification. :ref:`table.si.transfer.firmware` lists
 firmware types allowed to be transferred through a shared interface
 call. When an argument transfer is forbidden, the call is abruptly
 stopped and a ``java.lang.IllegalAccessError`` is thrown by MicroEJ Core
 Engine.
+
+.. _table.si.transfer.firmware:
 
 .. list-table:: MicroEJ Evaluation Firmware Example of Transfer Types
    :header-rows: 1
