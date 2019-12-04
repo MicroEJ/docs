@@ -9,7 +9,7 @@ import microej
 
 
 project = 'MicroEJ Documentation'
-copyright = '2019, MicroEJ'
+copyright = '2019, MicroEJ Corp.'
 author = 'MicroEJ'
 release = '1.0'
 
