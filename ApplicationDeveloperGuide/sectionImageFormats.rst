@@ -1,8 +1,8 @@
 Output Formats
-==============
+~~~~~~~~~~~~~~
 
 No Compression
---------------
+^^^^^^^^^^^^^^
 
 When no output format is set in the images list file, the image is
 embedded without any conversion / compression. This allows you to embed
@@ -25,7 +25,7 @@ Disadvantages:
    image1
 
 Display Output Format
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 This format encodes the image into the exact display memory
 representation. If the image to encode contains some transparent pixels,
@@ -50,7 +50,7 @@ Disadvantages:
    image1:display
 
 Generic Output Formats
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 Depending on the target hardware, several generic output formats are
 available. Some formats may be directly managed by the BSP display
@@ -233,7 +233,7 @@ Select one the following format to use a generic format:
    image3:A4
 
 RLE1 Output Format
-------------------
+^^^^^^^^^^^^^^^^^^
 
 The image engine can display embedded images that are encoded into a
 compressed format which encodes several consecutive pixels into one or
