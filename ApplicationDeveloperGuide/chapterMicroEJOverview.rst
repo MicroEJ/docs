@@ -82,57 +82,6 @@ limitations (maximum number of simultaneous threads, open connections,
 :http:`https://developer.microej.com/5/getting-started-studio.html` for
 evaluation firmware release notes.
 
-.. _section.virtual.device:
-
-.. TODO this section had the conditional isSandbox
-
-Virtual Device
-==============
-
-.. _section.virtual.device.simulation:
-
-Using a Virtual Device for Simulation
--------------------------------------
-
-The Virtual Device includes the same custom MicroEJ Core, libraries and
-system applications as the real device. The Virtual Device allows
-developers to run their applications either on the Simulator, or
-directly on the real device through local deployment.
-
-The Simulator runs a mockup board support package (BSP Mock) that mimics
-the hardware functionality. An application on the Simulator is run as a
-standalone application.
-
-Before an application is locally deployed on device, MicroEJ Studio
-ensures that it does not depend on any API that is unavailable on the
-device.
-
-.. figure:: ../SandboxedAppDevGuide/png/virtual-device.png
-   :alt: MicroEJ Virtual Device Architecture
-   :width: 100.0%
-   :align: center
-
-   MicroEJ Virtual Device Architecture
-
-.. _section.javadoc.specification:
-
-Runtime Environment
--------------------
-
-The set of MicroEJ APIs exposed by a Virtual Device (and therefore
-provided by its associated firwmare) is documented in Javadoc format in
-the MicroEJ Resource Center (:guilabel:`Window` > :guilabel:`Show View` >
-:guilabel:`MicroEJ Resource Center`).
-
-.. figure:: ../SandboxedAppDevGuide/png/Overview_resourcecenter.png
-   :alt: MicroEJ Resource Center APIs
-   :width: 100.0%
-   :align: center
-
-   MicroEJ Resource Center APIs
-
-.. end of conditional section for isSandbox
-
 .. _Standalone_vs_Sandboxed:
 
 MicroEJ Applications
