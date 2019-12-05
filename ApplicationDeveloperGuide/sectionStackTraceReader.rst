@@ -46,7 +46,8 @@ without debug information).
 On successful deployment, the application is started on the device and
 the following trace is dumped on standard output.
 
-.. TODO this was controled with isSandbox/isStandalone conditionals
+.. TODO this figure was controled by a conditional, isSandbox
+   is showing
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_tracetermite.png
    :alt: Stack Trace Output
@@ -55,7 +56,7 @@ the following trace is dumped on standard output.
 
    Stack Trace Output
 
-.. This was controlled by a conditional depending on isSandbox or isStandalone
+.. TODO This figure was controlled by a conditional, isStandalone
     .. figure:: ../StandaloneAppDevGuide/png/trace2.png
        :alt: Stack Trace Output
        :width: 80.0%
@@ -85,24 +86,29 @@ binary file with debug information (``application.fodbg``)
 
    Stack Trace Reader Tool Configuration
 
-.. TODO isStandalone condition was used on the following paragraph
-
 In :guilabel:`Configuration` tab, browse the previously generated application
-binary file with debug information (``application.out``)
+binary file with debug information (``application.fodbg`` in case of a Sandboxed
+Application or ``application.out`` in case of a Standalone Application)
 
-.. figure:: ../StandaloneAppDevGuide/png/trace3.png
-   :alt: Stack Trace Reader Tool Configuration
+.. figure:: ../SandboxedAppDevGuide/png/STR_selectfile.png
+   :alt: Stack Trace Reader Tool Configuration (Sandboxed Application)
    :width: 100.0%
    :align: center
 
-   Stack Trace Reader Tool Configuration
+   Stack Trace Reader Tool Configuration (Sandboxed Application)
+
+.. figure:: ../StandaloneAppDevGuide/png/trace3.png
+   :alt: Stack Trace Reader Tool Configuration (Standalone Application)
+   :width: 100.0%
+   :align: center
+
+   Stack Trace Reader Tool Configuration (Standalone Application)
 
 Click on :guilabel:`Run` button and copy/paste the trace into the Eclipse
 console. The decoded trace is dumped and the line corresponding to the
 application hook is now readable.
 
-.. TODO isSandbox and isStandalone conditions were used here. isSandbox is
-   showing
+.. TODO this figure was controlled with a conditional, isSandbox
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_console.png
    :alt: Read the Stack Trace
@@ -111,7 +117,7 @@ application hook is now readable.
 
    Read the Stack Trace
 
-.. This is shown with isStandalone
+.. TODO this figure was controlled with a conditional, isStandalone
     .. figure:: ../StandaloneAppDevGuide/png/trace4.png
        :alt: Read the Stack Trace
        :width: 100.0%
