@@ -8,11 +8,29 @@
 
 % Redefine some colors used outside highlighting
 \usepackage{xcolor}
+\definecolor{code}{HTML}{E74C3C}
+\definecolor{codebg}{RGB}{248,248,248}
+\definecolor{codeborder}{HTML}{E1E4E5}
+\definecolor{guilabel}{HTML}{000000}
+\definecolor{guilabelbg}{HTML}{cbd3d7}
+\definecolor{guilabelborder}{HTML}{cbd3d7}
+\definecolor{link}{HTML}{E74C3C}
 \sphinxsetup{
     TitleColor={RGB}{0,0,0},
-    InnerLinkColor={HTML}{E74C3C},
-    OuterLinkColor={HTML}{E74C3C},
-    VerbatimHighlightColor={RGB}{0,0,0},
+    InnerLinkColor={named}{link},
+    OuterLinkColor={named}{link},
+    VerbatimColor={named}{codebg},
+    VerbatimBorderColor={named}{codeborder},
+}
+
+% Restyle code elements to border boxes with color, not just \emph (default)
+\renewcommand{\sphinxcode}[1]{
+  {\fcolorbox{codeborder}{codebg}{\color{code}\texttt{#1}}}
+}
+
+% Restyle gui label elements to border boxes with color, not just \emph (default)
+\renewcommand{\sphinxguilabel}[1]{
+  {\fcolorbox{guilabelborder}{guilabelbg}{\color{guilabel}#1}}
 }
 
 % Used to set a commit id over the release version. Sphinx makes it difficult to
