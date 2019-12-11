@@ -550,7 +550,7 @@ footer span.commit .rst-content tt,
   margin-left: 325px;
 }
 
-.rst-versions {
+body > .rst-versions {
   width: 325px;
 }
 
