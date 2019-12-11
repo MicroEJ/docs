@@ -550,6 +550,10 @@ footer span.commit .rst-content tt,
   margin-left: 325px;
 }
 
+.rst-versions {
+  width: 325px;
+}
+
 .wy-nav-content {
   max-width: 1200px;
 }
