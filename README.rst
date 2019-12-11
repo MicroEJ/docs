@@ -3,6 +3,21 @@ MicroEJ Documentation
 
 This repository holds the official MicroEJ documentation available at https://docs.microej.com/.
 
+Building
+--------
+
+First, you will need to install the documentation dependencies locally::
+
+    pip install -r requirements.txt
+
+With dependencies installed, you can build the HTML docs::
+
+    make html
+
+To perform a link check for all links and references::
+
+    make linkcheck
+
 Components
 ----------
 
