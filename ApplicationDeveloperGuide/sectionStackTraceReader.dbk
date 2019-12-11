@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://docbook.org/xml/4.5/docbookx.dtd">
+<!--
+	DocBook
+	
+	Copyright 2016-2019 IS2T. All rights reserved.
+	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+--><section id="section.stacktrace.reader.tool">
+  <title>Stack Trace Reader</title>
+  <para>When an application is deployed on a device, stack traces dumped on standard output are not directly readable: non required types (see <xref linkend="section.classpath.elements.types"></xref>) names, methods names and methods line numbers may not have been embedded to save code space. A stack trace dumped on the standard output can be decoded using the Stack Trace Reader tool.</para>
+  <para condition="isSandbox">Write a new line to dump the currently executed stack trace on the standard output.</para>
+  <figure>
+    <title>Code to Dump a Stack Trace</title>
+    <mediaobject>
+      <imageobject>
+        <imagedata align="center" contentdepth="100%" fileref="png/STR_stacktracedump.png" format="PNG" scalefit="1" width="100%"></imagedata>
+      </imageobject>
+    </mediaobject>
+  </figure>
+  <para condition="isStandalone">Write a new line to dump the currently executed stack trace on the standard output.</para>
+  <figure>
+    <title>Code to Dump a Stack Trace</title>
+    <mediaobject>
+      <imageobject>
+        <imagedata align="center" contentwidth="80%" fileref="png/trace1.png" format="PNG"></imagedata>
+      </imageobject>
+    </mediaobject>
+  </figure>
+  <para condition="isSandbox">To be able to decode an application stack trace, the stack trace reader tool requires the application binary file with debug information (<code>application.fodbg</code> in the output folder). Note that the file which is uploaded on the device is <code>application.fo</code> (stripped version without debug information).</para>
+  <figure>
+    <title>Application Binary File with Debug Information</title>
+    <mediaobject>
+      <imageobject>
+        <imagedata align="center" contentdepth="100%" fileref="png/STR_debugfofile.png" format="PNG" scalefit="1" width="100%"></imagedata>
+      </imageobject>
+    </mediaobject>
+  </figure>
+  <para>On successful deployment, the application is started on the device and the following trace is dumped on standard output.</para>
+  <figure>
+    <title>Stack Trace Output</title>
+    <mediaobject>
+      <imageobject condition="isSandbox">
+        <imagedata align="center" contentdepth="100%" fileref="png/STR_tracetermite.png" format="PNG" scalefit="1" width="100%"></imagedata>
+      </imageobject>
+      <imageobject condition="isStandalone">
+        <imagedata align="center" contentwidth="80%" fileref="png/trace2.png" format="PNG"></imagedata>
+      </imageobject>
+    </mediaobject>
+  </figure>
+  <para>To create a new MicroEJ Tool configuration, right-click on the application project and click on <code>Run As... > Run Configurations...</code>.</para>
+  <para>In <code>Execution</code> tab, select the <code>Stack Trace Reader</code> tool.</para>
+  <figure>
+    <title>Select Stack Trace Reader Tool</title>
+    <mediaobject>
+      <imageobject>
+        <imagedata align="center" fileref="png/STR_selecttool.png" format="PNG" width="100%"></imagedata>
+      </imageobject>
+    </mediaobject>
+  </figure>
+  <para condition="isSandbox">In <code>Configuration</code> tab, browse the previously generated application binary file with debug information (<code>application.fodbg</code>)</para>
+  <figure>
+    <title>Stack Trace Reader Tool Configuration</title>
+    <mediaobject>
+      <imageobject>
+        <imagedata align="center" contentdepth="80%" fileref="png/STR_selectfile.png" format="PNG" scalefit="1" width="100%"></imagedata>
+      </imageobject>
+    </mediaobject>
+  </figure>
+  <para condition="isStandalone">In <code>Configuration</code> tab, browse the previously generated application binary file with debug information (<code>application.out</code>)</para>
+  <figure>
+    <title>Stack Trace Reader Tool Configuration</title>
+    <mediaobject>
+      <imageobject>
+        <imagedata align="center" fileref="png/trace3.png" format="PNG" width="100%"></imagedata>
+      </imageobject>
+    </mediaobject>
+  </figure>
+  <para>Click on <code>Run</code> button and copy/paste the trace into the Eclipse console. The decoded trace is dumped and the line corresponding to the application hook is now readable.</para>
+  <figure>
+    <title>Read the Stack Trace</title>
+    <mediaobject>
+      <imageobject condition="isSandbox">
+        <imagedata align="center" contentdepth="100%" fileref="png/STR_console.png" format="PNG" scalefit="1" width="100%"></imagedata>
+      </imageobject>
+      <imageobject condition="isStandalone">
+        <imagedata align="center" fileref="png/trace4.png" format="PNG" width="100%"></imagedata>
+      </imageobject>
+    </mediaobject>
+  </figure>
+  <para>The stack trace reader can simultaneously decode heterogeneous stack traces with lines owned by different applications and the firmware. Other debug information files can be appended using the <code>Additional object files</code> option. Lines owned by the firmware can be decoded with the firwmare debug information file (optionally made available by your firmware provider).</para>
+</section>

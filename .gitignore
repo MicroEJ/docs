@@ -1,0 +1,6 @@
+.python-version
+/_build/
+.envrc
+.ropeproject/
+__pycache__/
+*.pyc

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://docbook.org/xml/4.5/docbookx.dtd">
+<!--
+	DocBook
+
+	Copyright 2016-2019 IS2T. All rights reserved.
+	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+--><section id="download.hardware.simulator">
+  <title>Download and Install a MicroEJ Platform</title>
+  <para>MicroEJ SDK being a cross development tool, it does not build software targeted to your host desktop platform. In order to run MicroEJ applications, a target hardware is required. Several commercial targets boards from main MCU/MPU chip manufacturers can be prepared to run MicroEJ applications, you can also run your applications without one of these boards with the help of a MicroEJ Simulator.</para>
+  <para>A MicroEJ Platform is a software package including the resources and tools required for building and testing an application for a specific MicroEJ-ready device. MicroEJ Platforms are available at <code>https://developer.microej.com/5/getting-started-sdk.html</code>.</para>
+  <para>After downloading the MicroEJ Platform, launch MicroEJ SDK on your desktop to start the process of Platform installation : <itemizedlist>
+      <listitem>
+        <para>Open the Platform view in MicroEJ SDK, select <code>Window > Preferences > MicroEJ > Platforms</code>. The view should be empty on a fresh install of the tool</para>
+        <figure>
+          <title>MicroEJ Platform Import</title>
+          <mediaobject id="mp-install-1">
+            <imageobject>
+              <imagedata align="center" contentdepth="100%" fileref="png/platformImport.png" format="PNG" scalefit="1" width="80%"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </listitem>
+      <listitem>
+        <para>Press <code>Import...</code> button.</para>
+      </listitem>
+      <listitem>
+        <para>Choose <code>Select File...</code> and use the <code>Browse</code> option to navigate to the <code>.jpf</code> file containing your MicroEJ Platform, then read and accept the license agreement to proceed.</para>
+        <figure>
+          <title>MicroEJ Platform Selection</title>
+          <mediaobject id="mp-install-2">
+            <imageobject>
+              <imagedata align="center" contentdepth="100%" fileref="png/platformSelect.png" format="PNG" scalefit="1" width="80%"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </listitem>
+      <listitem>
+        <para>The MicroEJ Platform should now appear in the <code>Platforms</code> view, with a green valid mark.</para>
+        <figure>
+          <title>MicroEJ Platform List</title>
+          <mediaobject id="mp-install-3">
+            <imageobject>
+              <imagedata align="center" contentdepth="100%" fileref="png/platformList.png" format="PNG" scalefit="1" width="80%"></imagedata>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </listitem>
+    </itemizedlist></para>
+</section>
