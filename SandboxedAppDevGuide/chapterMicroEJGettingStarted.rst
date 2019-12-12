@@ -1,6 +1,3 @@
-MicroEJ Studio Getting Started
-##############################
-
 Introducing MicroEJ Studio and Virtual Devices
 ==============================================
 
