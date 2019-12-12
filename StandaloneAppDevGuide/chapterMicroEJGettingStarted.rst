@@ -1,6 +1,3 @@
-MicroEJ SDK Getting Started
-###########################
-
 Introducing MicroEJ SDK
 =======================
 

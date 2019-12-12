@@ -31,9 +31,9 @@ desktop to start the process of Platform installation :
 
 -  Press :guilabel:`Import...` button.
 
--  Choose :guilabel:`Select File...` and use the :guilabel:`Browse` option to
-    navigate to the ``.jpf`` file containing your MicroEJ Platform, then read and
-    accept the license agreement to proceed.
+-  Choose :guilabel:`Select File...` and use the :guilabel:`Browse` option
+   to navigate to the ``.jpf`` file containing your MicroEJ Platform, 
+   then read and accept the license agreement to proceed.
 
    .. figure:: png/platformSelect.png
       :alt: MicroEJ Platform Selection
