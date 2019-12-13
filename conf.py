@@ -40,6 +40,7 @@ exclude_patterns = [
 # HTML theme options
 html_theme = 'microej'
 html_logo = '_themes/microej/static/logo-microej-white.png'
+html_favicon = '_themes/microej/static/logo-small.png'
 html_theme_options = {
     'logo_only': True,
 }
@@ -58,6 +59,7 @@ html_title = project
 latex_elements = {
     'preamble': r'\usepackage{microej}',
     'figure_align': 'H',
+    'extraclassoptions': 'oneside',
 }
 latex_additional_files = ['microej.sty']
 latex_logo = '_themes/microej/static/mascot.pdf'
