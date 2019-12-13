@@ -443,12 +443,22 @@ code,
   width: 345px;
 }
 
+@media screen and (max-width: 768px) {
+    .wy-nav-side {
+        left: -325px;
+    }
+}
+
 .wy-nav-top {
   background: #ffffff;
 }
 
 .wy-nav-top img {
   background-color: #ffffff;
+}
+
+.wy-nav-top .fa {
+  color: rgb(64, 64, 64);
 }
 
 footer span.commit code,
@@ -545,9 +555,11 @@ footer span.commit .rst-content tt,
   border: 1px solid #cbd3d7;
 }
 
-.wy-nav-content-wrap {
-  background: none;
-  margin-left: 325px;
+@media screen and (min-width: 767px) {
+  .wy-nav-content-wrap {
+    background: none;
+    margin-left: 325px;
+  }
 }
 
 body > .rst-versions {
