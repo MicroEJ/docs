@@ -58,6 +58,7 @@ html_title = project
 latex_elements = {
     'preamble': r'\usepackage{microej}',
     'figure_align': 'H',
+    'extraclassoptions': 'oneside',
 }
 latex_additional_files = ['microej.sty']
 latex_logo = '_themes/microej/static/mascot.pdf'
