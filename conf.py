@@ -32,6 +32,7 @@ master_doc = 'index'
 # Generic options
 exclude_patterns = [
     '_build',
+    '_tools',
     'README.rst',
     'section*.rst',
     '**/section*.rst',
