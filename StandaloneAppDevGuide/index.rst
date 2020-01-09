@@ -5,3 +5,4 @@ Standalone Application Developer Guide
     :maxdepth: 2
 
     chapterMicroEJGettingStarted
+    chapterMicroEJOptions
