@@ -8,3 +8,4 @@ MicroEJ
     ApplicationDeveloperGuide/index
     SandboxedAppDevGuide/index
     StandaloneAppDevGuide/index
+    DeviceDeveloperGuide/index

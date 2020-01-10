@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<!--
+	SVG
+
+	Copyright 2018 IS2T. All rights reserved.
+	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+-->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1179.125"
+   height="1216.9688"
+   id="svg15868"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="low-level-2c.svg">
+  <defs
+     id="defs15870">
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend"
+       style="overflow:visible">
+      <path
+         id="path12648"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#ffffff"
+     borderopacity="0.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="0"
+     inkscape:zoom="0.35"
+     inkscape:cx="-261.95509"
+     inkscape:cy="801.20812"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1031"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata15873">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(1082.3125,445.21875)">
+    <rect
+       style="fill:#00aec7;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect16807"
+       width="1177.1234"
+       height="451.40912"
+       x="-1081.3252"
+       y="-444.20905" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m -530.2744,-268.03174 0,219.210598 -497.822,0 0,-307.821998 440.3348,0 17.0762,28.08 z"
+       id="rect2985-2-3-39"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0"
+       d="m -585.1508,-354.42834 54.2108,87.3842 -54.2866,-0.05 z"
+       id="rect3847-87"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.99999905px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-1007.7913"
+       y="-316.43561"
+       id="text5430"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5432"
+         x="-1007.7913"
+         y="-316.43561"
+         style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold">LLXXX.h</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12.99999905px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-998.1947"
+       y="-202.33192"
+       id="text5434"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5436"
+         x="-998.1947"
+         y="-202.33192"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New">void LLXXX_init(LLXXX* env);</tspan></text>
+    <g
+       id="g16837">
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="rect2985-2-3-39-2"
+         d="m 39.004697,-268.03174 0,219.210597 -497.821997,0 0,-307.821997 440.334797,0 17.0762003,28.08 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="rect3847-87-1"
+         d="m -15.871703,-354.42834 54.2108,87.3842 -54.2866,-0.05 z"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5430-1"
+         y="-316.43558"
+         x="-438.51218"
+         style="font-size:12.99999905px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="-316.43558"
+           x="-438.51218"
+           id="tspan5432-3"
+           sodipodi:role="line">LLXXX_impl.h</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5434-2"
+         y="-204.38048"
+         x="-439.01709"
+         style="font-size:12.99999905px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="-204.38048"
+           x="-439.01709"
+           id="tspan5436-5"
+           sodipodi:role="line">void LLXXX_IMPL_init(LLXXX* env);</tspan></text>
+    </g>
+    <g
+       id="g16853"
+       transform="translate(0,-5.7178955)">
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="rect2985-2-3-39-3"
+         d="m -247.43171,147.46506 0,219.2106 -497.822,0 0,-307.822003 440.3348,0 17.0762,28.08 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="rect3847-87-5"
+         d="m -302.30811,61.068457 54.2108,87.384203 -54.2866,-0.05 z"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5430-12"
+         y="99.061218"
+         x="-724.94861"
+         style="font-size:12.99999905px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="99.061218"
+           x="-724.94861"
+           id="tspan5432-2"
+           sodipodi:role="line">MYIMPL.h</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5434-26"
+         y="162.65724"
+         x="-731.5144"
+         style="font-size:12.99999905px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="162.65724"
+           x="-731.5144"
+           id="tspan5436-4"
+           sodipodi:role="line">#include &quot;LLXXX.h&quot;</tspan><tspan
+           id="tspan16579"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="192.65724"
+           x="-731.5144"
+           sodipodi:role="line"></tspan><tspan
+           id="tspan16581"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="222.65724"
+           x="-731.5144"
+           sodipodi:role="line">typedef struct MYIMPL{</tspan><tspan
+           id="tspan16583"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="252.65724"
+           x="-731.5144"
+           sodipodi:role="line">  struct LLXXX header;</tspan><tspan
+           id="tspan16585"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="282.65723"
+           x="-731.5144"
+           sodipodi:role="line">  // specific fields defined here</tspan><tspan
+           id="tspan16587"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="312.65723"
+           x="-731.5144"
+           sodipodi:role="line">} MYIMPL;</tspan><tspan
+           id="tspan16589"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="342.65723"
+           x="-731.5144"
+           sodipodi:role="line">void MYIMPL_new(MYIMPL* env);</tspan></text>
+    </g>
+    <g
+       id="g16809">
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="rect2985-2-3-39-0"
+         d="m -530.27442,551.52607 0,219.2106 -497.82198,0 0,-307.822 440.33478,0 17.0762,28.08 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="rect3847-87-7"
+         d="m -585.15082,465.12947 54.2108,87.3842 -54.2866,-0.05 z"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5430-0"
+         y="503.12222"
+         x="-1007.7913"
+         style="font-size:12.99999905px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="503.12222"
+           x="-1007.7913"
+           id="tspan5432-34"
+           sodipodi:role="line">application.c</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5434-0"
+         y="564.698"
+         x="-1010.3165"
+         style="font-size:12.99999905px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="564.698"
+           x="-1010.3165"
+           id="tspan5436-0"
+           sodipodi:role="line">#include &quot;MYIMPL.h&quot;</tspan><tspan
+           id="tspan16591"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="594.698"
+           x="-1010.3165"
+           sodipodi:role="line"></tspan><tspan
+           id="tspan16593"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="624.698"
+           x="-1010.3165"
+           sodipodi:role="line">MYIMPL instance;</tspan><tspan
+           id="tspan16595"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="654.698"
+           x="-1010.3165"
+           sodipodi:role="line">main(){</tspan><tspan
+           id="tspan16597"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="684.698"
+           x="-1010.3165"
+           sodipodi:role="line">   MYIMPL_new(&amp;instance);</tspan><tspan
+           id="tspan16599"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="714.698"
+           x="-1010.3165"
+           sodipodi:role="line">   LLXXX_init(&amp;instance);</tspan><tspan
+           id="tspan16601"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="744.698"
+           x="-1010.3165"
+           sodipodi:role="line">}</tspan></text>
+    </g>
+    <g
+       id="g16823"
+       transform="translate(-48.93424,-4.04061)">
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="rect2985-2-3-39-5"
+         d="m 87.938939,555.56668 0,219.2106 -497.821999,0 0,-307.822 440.334796,0 17.076203,28.08 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="rect3847-87-3"
+         d="m 33.062536,469.17008 54.210803,87.3842 -54.286603,-0.05 z"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5430-10"
+         y="507.16284"
+         x="-389.57794"
+         style="font-size:12.99999905px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Bold"
+           y="507.16284"
+           x="-389.57794"
+           id="tspan5432-6"
+           sodipodi:role="line">MYIMPL.c</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5434-7"
+         y="558.63702"
+         x="-396.14377"
+         style="font-size:12.99999905px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="558.63702"
+           x="-396.14377"
+           id="tspan5436-50"
+           sodipodi:role="line">#include &quot;MYIMPL.h&quot;</tspan><tspan
+           id="tspan16603"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="588.63702"
+           x="-396.14377"
+           sodipodi:role="line">#define LLXXX_IMPL MYIMPL</tspan><tspan
+           id="tspan16605"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="618.63702"
+           x="-396.14377"
+           sodipodi:role="line">#include &quot;LLXXX_impl.h&quot;</tspan><tspan
+           id="tspan16607"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="648.63702"
+           x="-396.14377"
+           sodipodi:role="line"></tspan><tspan
+           id="tspan16609"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="678.63702"
+           x="-396.14377"
+           sodipodi:role="line">void LLXXX_IMPL_init(LLXXX* env){</tspan><tspan
+           id="tspan16611"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="708.63702"
+           x="-396.14377"
+           sodipodi:role="line"> // implementation code</tspan><tspan
+           id="tspan16613"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier New;-inkscape-font-specification:Courier New"
+           y="738.63702"
+           x="-396.14377"
+           sodipodi:role="line">}</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)"
+       d="m -644.32986,52.901797 0,-99.332755"
+       id="path16615"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)"
+       d="m -663.67095,462.26323 0,-98.24113"
+       id="path16617"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.99999261;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)"
+       d="m -314.51525,462.74093 0,-98.99479"
+       id="path16619"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend)"
+       d="m -102.76341,461.85855 0,-507.889504"
+       id="path16621"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.99999905px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-1067.3192"
+       y="-404.19421"
+       id="text5430-04"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5432-5"
+         x="-1067.3192"
+         y="-404.19421"
+         style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">Low Level API</tspan></text>
+  </g>
+</svg>

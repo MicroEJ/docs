@@ -1,0 +1,4 @@
+.. _core-multiapp:
+
+MULTIAPP
+========

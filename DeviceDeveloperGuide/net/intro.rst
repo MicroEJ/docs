@@ -1,0 +1,23 @@
+Principle
+=========
+
+MicroEJ provides some foundation libraries to initiate raw TCP/IP
+protocol-oriented communications and secure this communication by using
+Secure Socket Layer (SSL) or Transport Layer Security (TLS)
+cryptographic protocols.
+
+The diagram below shows a simplified view of the components involved in
+the provisioning of a Java network interface.
+
+.. figure:: net/images/java-c-net-interface.svg
+   :alt: Overview
+   :width: 100.0%
+
+   Overview
+
+Net and SSL low level parts connects the Net and SSL libraries to the
+user-supplied drivers code (coded in C).
+
+The MicroEJ simulator provides all features of Net and SSL libraries.
+This one takes part of the network settings stored in the operating
+system on which the simulator will be launched.

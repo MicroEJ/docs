@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	DocBook
+	
+	Copyright 2014-2018 IS2T. All rights reserved.
+	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+-->
+<!DOCTYPE para PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+	<!-- 
+		/!\ WARNING /!\ 
+
+		Update ${workspace_image_gen}/microUIImageGenerator-product/fragments/default/buildFragment.xml
+		if you change something here!  
+
+		/!\ WARNING /!\ 
+	-->
+	
+	<para>
+		The properties file have to / can contain the following properties:
+	</para>
+	<itemizedlist>
+		<listitem>
+			<para>
+				<code>project.name</code> [mandatory]: Defines the name 
+				image generator extension project. This project must be available
+				in same workspace as the current project. It must contains a 
+				source folder called "src". This source folder must contain the 
+				Java class "com.is2t.microui.generators.extension.MicroUIGeneratorExtension".  
+			</para>
+		</listitem>
+	</itemizedlist>
