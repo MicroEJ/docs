@@ -44,6 +44,7 @@ html_logo = '_themes/microej/static/logo-microej-white.png'
 html_favicon = '_themes/microej/static/logo-small.png'
 html_theme_options = {
     'logo_only': True,
+    'collapse_navigation': False,
 }
 html_show_sphinx = False
 
