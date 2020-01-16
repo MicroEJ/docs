@@ -610,7 +610,8 @@ div.rst-versions div.rst-other-versions a {
   color: #ee502e;
 }
 
-div.rst-other-versions > div.injected > dl:nth-child(3) {
+div.rst-other-versions > div.injected > dl:nth-child(3),
+div.rst-other-versions > div.injected > dl:nth-child(4) {
   display: none;
 }
 
