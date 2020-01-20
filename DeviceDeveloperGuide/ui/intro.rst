@@ -6,7 +6,7 @@ engines, associated with a unique int-based event management system. It
 provides [MUI] library implementation. The following diagram depicts the
 components involved in its design, along with the provided tools:
 
-.. figure:: ui/images/overview2.svg
+.. figure:: images/overview2.svg
    :alt: The User Interface Extension Components along with a Platform
    :width: 80.0%
 
@@ -15,7 +15,7 @@ components involved in its design, along with the provided tools:
 The diagram below shows a simplified view of the components involved in
 the provisioning of a Java user interface.
 
-.. figure:: ui/images/java-c-ui-interface2.svg
+.. figure:: images/java-c-ui-interface2.svg
    :alt: Overview
    :width: 100.0%
 
@@ -43,15 +43,15 @@ decoupling has two major benefits:
 -  The listener can translate the notification; so, for example, a
    joystick could generate pointer events.
 
-For the SIMJPF, the platform is supplied with a set of software widgets
-that generically support a range of input devices, such as buttons,
-joysticks and touchscreens, and output devices such as pixelated
-displays and LEDs. With the help of the Front Panel Designer tool that
-forms part of the MicroEJ workbench the user must define a front panel
-mock-up using these widgets. The user must provide a set of listeners
-that connects the input widgets to event generators. The user may choose
-to simulate events that will ultimately come from a special-purpose
-input device using one of the standard input widgets; the listener will
-do the necessary translation. The user must also supply, in Java, a
-display extension that adapts the supplied display widget to the
-specifics of the hardware being simulated.
+For the MicroEJ simulator, the platform is supplied with a set of
+software widgets that generically support a range of input devices, such
+as buttons, joysticks and touchscreens, and output devices such as
+pixelated displays and LEDs. With the help of the Front Panel Designer
+tool that forms part of the MicroEJ workbench the user must define a
+front panel mock-up using these widgets. The user must provide a set of
+listeners that connects the input widgets to event generators. The user
+may choose to simulate events that will ultimately come from a
+special-purpose input device using one of the standard input widgets;
+the listener will do the necessary translation. The user must also
+supply, in Java, a display extension that adapts the supplied display
+widget to the specifics of the hardware being simulated.

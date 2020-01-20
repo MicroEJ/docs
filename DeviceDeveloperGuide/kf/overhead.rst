@@ -1,10 +1,10 @@
 Memory Considerations
 =====================
 
-MULTIAPP memory overhead of MJVM runtime elements are described in
-`table_title <#kf-overhead>`__.
+Multi applications memory overhead of MicroEJ core engine runtime
+elements are described in `table_title <#kf-overhead>`__.
 
-.. table:: MULTIAPP Memory Overhead
+.. table:: Multi applications Memory Overhead
 
    +-----------+-----------+-----------------------------------------------+
    | Runtime   | Memory    | Description                                   |

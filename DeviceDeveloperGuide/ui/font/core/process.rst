@@ -3,7 +3,7 @@
 Functional Description
 ======================
 
-.. figure:: ui/font/core/images/font-process2.svg
+.. figure:: font/core/images/font-process2.svg
    :alt: Font Generation
    :width: 80.0%
 

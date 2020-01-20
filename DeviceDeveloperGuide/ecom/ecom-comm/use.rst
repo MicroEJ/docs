@@ -1,8 +1,8 @@
 Use
 ===
 
-A classpath variable named ``ECOM-COMM-ECOMCOMM.VERSION`` is available.
-This foundation library is always required when developing a MicroEJ
+A classpath variable named ``ECOM-COMM-1.1`` is available. This
+foundation library is always required when developing a MicroEJ
 application which communicates with some external devices using the
 serial communication mode.
 

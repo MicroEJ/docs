@@ -3,4 +3,5 @@
 .envrc
 .ropeproject/
 __pycache__/
-*.pyc
+*.pyc.
+/.vscode/

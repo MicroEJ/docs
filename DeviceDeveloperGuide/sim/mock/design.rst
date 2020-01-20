@@ -4,8 +4,8 @@ Mocks Design Support
 Interface
 ---------
 
-The SIMJPF interface is defined by static methods on the Java class
-``com.is2t.hil.NativeInterface``.
+The MicroEJ simulator interface is defined by static methods on the Java
+class ``com.is2t.hil.NativeInterface``.
 
 Array Type Arguments
 --------------------
@@ -15,16 +15,17 @@ default the contents of an array are NOT sent over to the mock. An
 "empty copy" is sent by the HIL engine, and the contents of the array
 must be explicitly fetched by the mock. The array within the mock can be
 modified using a regular assignment. Then to apply these changes in the
-SIMJPF, the modifications must be flushed back. There are two methods
-provided to support fetch and flush between the SIMJPF and the HIL:
+MicroEJ simulator, the modifications must be flushed back. There are two
+methods provided to support fetch and flush between the MicroEJ
+simulator and the HIL:
 
 -  ``refreshContent``: initializes the array argument from the contents
-   of its SIMJPF counterpart.
+   of its MicroEJ simulator counterpart.
 
--  ``flushContent``: propagates (to the SIMJPF) the contents of the
-   array that is used within the HIL engine.
+-  ``flushContent``: propagates (to the MicroEJ simulator) the contents
+   of the array that is used within the HIL engine.
 
-.. figure:: sim/mock/images/hil4.svg
+.. figure:: mock/images/hil4.svg
    :alt: An Array and Its Counterpart in the HIL Engine.
    :width: 80.0%
 
@@ -48,11 +49,12 @@ Blocking Native Methods
 Some native methods block until an event has arrived [SNI]. Such
 behavior is implemented in a mock using the following three methods:
 
--  ``suspendCurrentJavaThread(long timeout)``: Tells the SIMJPF that the
-   green thread should block after returning from the current native.
-   This method does not block the mock execution. The green thread is
-   suspended until either a mock thread calls ``resumeJavaThread`` or
-   the specified amount of milliseconds has elapsed.
+-  ``suspendCurrentJavaThread(long timeout)``: Tells the MicroEJ
+   simulator that the green thread should block after returning from the
+   current native. This method does not block the mock execution. The
+   green thread is suspended until either a mock thread calls
+   ``resumeJavaThread`` or the specified amount of milliseconds has
+   elapsed.
 
 -  ``resumeJavaThread(int id)``: Resumes the green thread with the given
    ID. If the thread is not suspended, the resume stays pending, and the
@@ -92,8 +94,8 @@ In Java, every class can play the role of a small read-only file system
 root: The stored files are called "Java resources" and are accessible
 using a path as a String.
 
-The SIMJPF interface allows the retrieval of any resource from the
-original Java world, using the ``getResourceContent`` method.
+The MicroEJ simulator interface allows the retrieval of any resource
+from the original Java world, using the ``getResourceContent`` method.
 
 ::
 
@@ -108,8 +110,8 @@ original Java world, using the ``getResourceContent`` method.
 Synchronous Terminations
 ------------------------
 
-To terminate the whole simulation (SIMJPF and HIL), use the stop()
-method.
+To terminate the whole simulation (MicroEJ simulator and HIL), use the
+stop() method.
 
 ::
 

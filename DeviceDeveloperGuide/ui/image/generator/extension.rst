@@ -67,7 +67,7 @@ Follow the steps below to create an Image Generator extension:
 
 The Java project should now look like this:
 
-.. figure:: ui/image/generator/images/imagen.png
+.. figure:: image/generator/images/imagen.png
    :alt: Image Generator Extension Project
 
    Image Generator Extension Project

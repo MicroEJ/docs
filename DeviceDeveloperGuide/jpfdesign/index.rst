@@ -1,2 +1,2 @@
-PLATFORM
-========
+MicroEJ Platform
+================

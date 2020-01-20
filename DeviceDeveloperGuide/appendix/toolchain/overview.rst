@@ -37,4 +37,4 @@ There are three ABIs:
 
 It is important to note that code compiled with a particular ABI might
 not be compatible with code compiled with another ABI. MicroEJ modules,
-including the MJVM, use the hard ABI.
+including the MicroEJ core engine, use the hard ABI.

@@ -10,5 +10,5 @@ embed a new font with his/her MicroEJ application. He/she will be only
 able to use the system fonts specified during the MicroUI initialization
 step (see `??? <#section_static_init>`__).
 
-In the platform configuration file, check ``GROUP.UI`` >
-``MODULE.FONTGENERATOR.PNAME`` to install the Font Generator module.
+In the platform configuration file, check ``UI`` > ``Font Generator`` to
+install the Font Generator module.

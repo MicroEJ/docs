@@ -1,7 +1,7 @@
 Functional Description
 ======================
 
-.. figure:: devtools/mma/images/process.svg
+.. figure:: mma/images/process.svg
    :alt: Memory Map Analyzer Process
    :width: 40.0%
 

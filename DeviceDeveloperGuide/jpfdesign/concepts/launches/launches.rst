@@ -8,11 +8,11 @@ The MicroEJ launch configuration sets up the
 resources, target platform, and platform-specific options), and then
 launches a MicroEJ launch script for execution.
 
-Execution is done on either the EMBJPF or the SIMJPF. The launch
-operation is platform-specific. It may depend on external tools that the
-platform requires (such as target memory programming). Refer to the
-platform-specific documentation for more information about available
-launch settings.
+Execution is done on either the MicroEJ platform or the MicroEJ
+simulator. The launch operation is platform-specific. It may depend on
+external tools that the platform requires (such as target memory
+programming). Refer to the platform-specific documentation for more
+information about available launch settings.
 
 Main Tab
 --------
@@ -32,17 +32,17 @@ The ``Main`` tab allows you to set in order:
    are usually loaded by the application using the
    ``Class.getResourceAsStream()`` method.
 
-5. Immutable objects' description files. See the [B-ON BON.VERSION] ESR
+5. Immutable objects' description files. See the [B-ON 1.2] ESR
    documentation for use of immutable objects.
 
 Execution Tab
 -------------
 
 The next tab is the ``Execution`` tab. Here the target needs to be
-selected. Choose between execution on a EMBJPF or on a SIMJPF. Each of
-them may provide multiple launch settings. This page also allows you to
-keep generated, intermediate files and to print verbose options
-(advanced debug purpose options).
+selected. Choose between execution on a MicroEJ platform or on a MicroEJ
+simulator. Each of them may provide multiple launch settings. This page
+also allows you to keep generated, intermediate files and to print
+verbose options (advanced debug purpose options).
 
 Configuration Tab
 -----------------

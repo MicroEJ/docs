@@ -11,7 +11,7 @@ wizard. Select:
 
 The wizard will appear:
 
-.. figure:: ui/simulation/images/newfp.png
+.. figure:: simulation/images/newfp.png
    :alt: New Front Panel Project Wizard
    :width: 50.0%
 
@@ -22,7 +22,7 @@ Enter the name for the new project.
 Project Contents
 ----------------
 
-.. figure:: ui/simulation/images/project-content.png
+.. figure:: simulation/images/project-content.png
    :alt: Project Contents
 
    Project Contents

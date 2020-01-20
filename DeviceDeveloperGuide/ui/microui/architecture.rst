@@ -7,7 +7,7 @@ MicroUI is not a standalone library. It requires a configuration step
 and several extensions to drive I/O devices (display, inputs, LEDs,
 etc.).
 
-.. figure:: ui/microui/images/microui-fragment-dependencies.svg
+.. figure:: microui/images/microui-fragment-dependencies.svg
    :alt: MicroUI Elements
    :width: 80.0%
 

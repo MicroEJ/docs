@@ -80,7 +80,7 @@ The preview updates each time the fp file is saved.
 
 A typical working layout is shown below.
 
-.. figure:: ui/simulation/images/working-layout.png
+.. figure:: simulation/images/working-layout.png
    :alt: Working Layout Example
 
    Working Layout Example
@@ -101,7 +101,7 @@ These skins can be associated with an additional image called a
 ``filter`` or ``mask``. This image defines the widget's active area. It
 is useful when the widget is not rectangular.
 
-.. figure:: ui/simulation/images/fp-widget-active-area.svg
+.. figure:: simulation/images/fp-widget-active-area.svg
    :alt: Active Area
    :width: 40.0%
 

@@ -1,7 +1,7 @@
 Functional Description
 ======================
 
-.. figure:: devtools/elftomap/images/process.svg
+.. figure:: elftomap/images/process.svg
    :alt: ELF To Map Process
    :width: 20.0%
 

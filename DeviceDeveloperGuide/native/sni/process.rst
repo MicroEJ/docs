@@ -13,7 +13,7 @@ native world:
 -  Manipulate (read & write) shared memory both in Java and C : the
    immortal space.
 
-.. figure:: native/sni/images/sni_flow.svg
+.. figure:: sni/images/sni_flow.svg
    :alt: SNI Processing
    :width: 60.0%
 

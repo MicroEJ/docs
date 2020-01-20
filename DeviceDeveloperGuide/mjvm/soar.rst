@@ -1,12 +1,12 @@
-SOAR (SOAR)
-===========
+Smart Linker (SOAR)
+===================
 
 Java source code is compiled by the Java compiler [1]_ into the binary
 format specified in [JVM]. This binary code needs to be linked before
-execution. The PLATFORM comes with a linker, named the SOAR. It is in
-charge of analyzing ``.class`` files, and some other application-related
-files, to produce the final application that the PLATFORM runtime can
-execute.
+execution. The MicroEJ Platform comes with a linker, named the SOAR. It
+is in charge of analyzing ``.class`` files, and some other
+application-related files, to produce the final application that the
+MicroEJ Platform runtime can execute.
 
 SOAR complies with the deterministic class initialization (``<clinit>``)
 order specified in [B-ON]. The application is statically analyzed from

@@ -9,7 +9,7 @@ cryptographic protocols.
 The diagram below shows a simplified view of the components involved in
 the provisioning of a Java network interface.
 
-.. figure:: net/images/java-c-net-interface.svg
+.. figure:: images/java-c-net-interface.svg
    :alt: Overview
    :width: 100.0%
 

@@ -14,7 +14,7 @@ collaborative components that communicate using a shared buffer:
 -  The consumer: the MicroUI ``Event Generator``. As a consumer, it
    reads (and removes) the data from the communication buffer.
 
-.. figure:: ui/inputs/images/drivers-microui-comms.svg
+.. figure:: inputs/images/drivers-microui-comms.svg
    :alt: Drivers and MicroUI Event Generators Communication
    :width: 80.0%
 
@@ -33,7 +33,7 @@ correct (according to the ID) event generator to read the received data.
 This "driver-specific-data" is then transformed into MicroUI events by
 event generators and sent to objects that listen for input activity.
 
-.. figure:: ui/inputs/images/microui-events.png
+.. figure:: inputs/images/microui-events.png
    :alt: MicroUI Events Framework
    :width: 90.0%
 

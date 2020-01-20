@@ -450,7 +450,7 @@ contain tags related to the Input component as described below.
    +------------------+------------+--------------------------------------+
 
 .. [1]
-   Exception: When using EMBJPF, where there is no equivalent to the
-   ``LLINPUT_IMPL_getInitialStateValue`` function. If no ``values``
-   array is provided, and the EMBJPF is being used, all state machines
-   take 0 as their initial state value.
+   Exception: When using MicroEJ platform, where there is no equivalent
+   to the ``LLINPUT_IMPL_getInitialStateValue`` function. If no
+   ``values`` array is provided, and the MicroEJ platform is being used,
+   all state machines take 0 as their initial state value.

@@ -2,11 +2,11 @@ Installation
 ============
 
 Device Information is an additional module. In the platform
-configuration file, check ``GROUP.DEVICE`` to install it. When checked,
-the property file ``MODULE.DEVICE.NAME
+configuration file, check ``Device Information`` to install it. When
+checked, the property file ``device
             > 
-            MODULE.DEVICE.NAME.properties`` may be defined during
-platform creation to customize the module.
+            device.properties`` may be defined during platform creation
+to customize the module.
 
 The properties file must / can contain the following properties:
 

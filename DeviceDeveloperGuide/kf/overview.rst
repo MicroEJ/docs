@@ -1,16 +1,18 @@
 Principle
 =========
 
-The MULTIAPP capability of the MJVM allows a main application (called
-STANDALONE) to install and execute at runtime additional applications
-(called APPs).
+The Multi applications capability of the MicroEJ core engine allows a
+main application (called standalone application) to install and execute
+at runtime additional applications (called sandboxed applications).
 
-The MJVM implements the [KF] specification. A Kernel is a STANDALONE
-generated on a MULTIAPP-enabled platform. A Feature is a APP generated
-against a Kernel.
+The MicroEJ core engine implements the [KF] specification. A Kernel is a
+standalone application generated on a Multi applications-enabled
+platform. A Feature is a sandboxed application generated against a
+Kernel.
 
-A APP may be dynamically downloaded at runtime or integrated at
-build-time within the executable application.
+A sandboxed application may be dynamically downloaded at runtime or
+integrated at build-time within the executable application.
 
-Note that the MULTIAPP is a capability of the MJVM. The SIMJPF always
-runs an application as a STANDALONE.
+Note that the Multi applications is a capability of the MicroEJ core
+engine. The MicroEJ simulator always runs an application as a standalone
+application.

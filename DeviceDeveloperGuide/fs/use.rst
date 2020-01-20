@@ -1,4 +1,4 @@
 Use
 ===
 
-A classpath variable named ``FS-FS.VERSION`` is available.
+A classpath variable named ``FS-2.0`` is available.

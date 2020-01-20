@@ -7,10 +7,9 @@ Front Panel is an additional module for MicroUI library. When the
 MicroUI module is installed, install this module in order to be able to
 simulate UI drawings on the simulator.
 
-In the platform configuration file, check ``GROUP.UI`` >
-``MODULE.FRONTPANEL.PNAME`` to install the Front Panel module. When
-checked, the properties file ``MODULE.FRONTPANEL.NAME`` >
-``MODULE.FRONTPANEL.NAME
+In the platform configuration file, check ``UI`` > ``Front Panel`` to
+install the Front Panel module. When checked, the properties file
+``frontpanel`` > ``frontpanel
             .properties`` is required during platform creation to
 configure the module. This configuration step is used to identify and
 configure the front panel.

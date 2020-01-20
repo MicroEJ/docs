@@ -20,10 +20,10 @@ used in the .lsc file to organize sections.
 
 A symbol is an entity made of a name and a value. A symbol may be
 absolute (link-time constant) or relative to a section: Its value is
-unknown until LINKER has assigned a definitive position to the target
-section. A symbol can be local to the relocatable file or global to the
-system. All global symbol names should be unique in the system (the name
-is the key that connects an unresolved symbol reference to a symbol
-definition). A section may need the value of symbols to be fully
+unknown until MicroEJ Linker has assigned a definitive position to the
+target section. A symbol can be local to the relocatable file or global
+to the system. All global symbol names should be unique in the system
+(the name is the key that connects an unresolved symbol reference to a
+symbol definition). A section may need the value of symbols to be fully
 resolved: the address of a function called, address of a static
 variable, etc.

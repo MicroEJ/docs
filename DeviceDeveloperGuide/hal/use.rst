@@ -1,4 +1,4 @@
 Use
 ===
 
-A classpath variable named ``HAL-HAL.VERSION`` is available.
+A classpath variable named ``HAL-1.0`` is available.

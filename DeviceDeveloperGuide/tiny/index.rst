@@ -1,4 +1,4 @@
 .. _core-tiny:
 
-TINY
-====
+Tiny application
+================

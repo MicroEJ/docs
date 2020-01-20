@@ -23,4 +23,4 @@ Functional Description
 7. Previews the front panel to check the layout of controls and the
    events they create, etc.
 
-8. Exports the Front Panel project into a PLATFORM project.
+8. Exports the Front Panel project into a MicroEJ Platform project.

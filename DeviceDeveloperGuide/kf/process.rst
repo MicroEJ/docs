@@ -1,14 +1,14 @@
 Functional Description
 ======================
 
-The MULTIAPP process extends the overall process described in
+The Multi applications process extends the overall process described in
 `??? <#processOverviewId>`__.
 
-.. figure:: kf/images/process-multiapp-overview.png
-   :alt: MULTIAPP Process
+.. figure:: images/process-multiapp-overview.png
+   :alt: Multi applications Process
    :width: 50.0%
 
-   MULTIAPP Process
+   Multi applications Process
 
 Once a Kernel has been generated, additional MicroEJ application code
 (Feature) can be built against the Kernel by :

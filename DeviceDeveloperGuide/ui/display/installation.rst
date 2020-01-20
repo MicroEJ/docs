@@ -5,12 +5,12 @@ Installation
 
 Display is a sub-part of the MicroUI library. When the MicroUI module is
 installed, the Display module must be installed in order to be able to
-connect the physical display with the PLATFORM. If not installed, the
-*stub* module will be used.
+connect the physical display with the MicroEJ Platform. If not
+installed, the *stub* module will be used.
 
-In the platform configuration file, check ``GROUP.UI`` >
-``MODULE.DISPLAY.PNAME`` to install the Display module. When checked,
-the properties file ``MODULE.DISPLAY.NAME`` > ``MODULE.DISPLAY.NAME
+In the platform configuration file, check ``UI`` > ``Display`` to
+install the Display module. When checked, the properties file
+``display`` > ``display
             .properties`` is required during platform creation to
 configure the module. This configuration step is used to choose the kind
 of implementation (see `??? <#section_display_implementation>`__).

@@ -40,7 +40,7 @@ The Static MicroUI Initializer tool is able to out until three files:
    put this file, typically in the simulator project (also called front
    panel project, see `??? <#section_simulation>`__).
 
-.. figure:: ui/static_init/images/process.svg
+.. figure:: static_init/images/process.svg
    :alt: MicroUI Process
    :width: 80.0%
 

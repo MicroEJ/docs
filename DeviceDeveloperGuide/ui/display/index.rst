@@ -49,7 +49,7 @@ modes: switch, copy and direct. The following flow chart provides a
 handy guide to selecting the appropriate buffer mode according to the
 hardware configuration.
 
-.. figure:: ui/display/images/display_modes_nocustom.svg
+.. figure:: display/images/display_modes_nocustom.svg
    :alt: Buffer Modes
    :width: 70.0%
 
@@ -241,7 +241,7 @@ used for the back buffer and the display buffer
 result in "noisy" rendering and flickering, but saves one buffer in
 runtime memory.
 
-.. figure:: ui/display/images/direct.svg
+.. figure:: display/images/direct.svg
    :alt: Display Direct Mode
    :width: 30.0%
 

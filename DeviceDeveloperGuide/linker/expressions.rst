@@ -38,8 +38,8 @@ Constants may be written in decimal (``127``) or hexadecimal form
 
 ::
 
-   value=”symbol+3” 
-   value=”((symbol1*4)-(symbol2*3)”
+   value="symbol+3" 
+   value="((symbol1*4)-(symbol2*3)"
 
 Note: Ternary expressions can be used to define selective linking
 because they are the only expressions that may remain partially
@@ -47,7 +47,7 @@ unresolved without generating an error. Example:
 
 ::
 
-   <defSymbol name=“myFunction” value=”condition ? symb1 : symb2”/>
+   <defSymbol name="myFunction" value="condition ? symb1 : symb2"/>
 
 No error will be thrown if the condition is ``true`` and ``symb1`` is
 defined, or the condition is ``false`` and ``symb2`` is defined, even if

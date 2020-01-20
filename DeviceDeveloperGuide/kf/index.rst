@@ -1,4 +1,4 @@
 .. _core-multiapp:
 
-MULTIAPP
-========
+Multi applications
+==================

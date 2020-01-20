@@ -13,8 +13,8 @@ that their names match the ``LLSP_IMPL_*`` pattern.  
 Header Files
 ------------
 
-The implementation of the SP for the PLATFORM assumes some support from
-the underlying RTOS. It is mainly related to provide some
+The implementation of the SP for the MicroEJ Platform assumes some
+support from the underlying RTOS. It is mainly related to provide some
 synchronization when reading / writing into Shielded Plug blocks.
 
 -  ``LLSP_IMPL_syncWriteBlockEnter`` and

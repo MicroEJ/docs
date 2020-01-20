@@ -1,8 +1,8 @@
 Link
 ====
 
-Several sections are defined by the MJVM. Each section must be linked by
-the third-party linker.
+Several sections are defined by the MicroEJ core engine. Each section
+must be linked by the third-party linker.
 
 .. table:: Linker Sections
 
@@ -20,8 +20,8 @@ the third-party linker.
    | ``.bss            | Application threads stack   | RW      | 8       |
    | .vm.stacks.java`` | blocks                      |         |         |
    +-------------------+-----------------------------+---------+---------+
-   | ``ICETEA_HEAP``   | MJVM internal heap          | I       | 8       |
-   |                   |                             | nternal |         |
+   | ``ICETEA_HEAP``   | MicroEJ core engine         | I       | 8       |
+   |                   | internal heap               | nternal |         |
    |                   |                             | RW      |         |
    +-------------------+-----------------------------+---------+---------+
    | ``_java_heap``    | Application heap            | RW      | 4       |

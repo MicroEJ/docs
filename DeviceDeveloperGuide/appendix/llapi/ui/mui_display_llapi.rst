@@ -135,8 +135,8 @@ The display stack calls the functions
 section. This is useful when some drawings are performed in C-side using
 the ``LLDISPLAY_UTILS`` API. This function implementation can stay empty
 when there is no call from C-side, or when the calls from C-side are
-performed in the same OS task, rather than in the MJVM task. By default
-these functions do nothing.
+performed in the same OS task, rather than in the MicroEJ core engine
+task. By default these functions do nothing.
 
 LUT
 ^^^

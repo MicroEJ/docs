@@ -1,8 +1,8 @@
 Architecture
 ============
 
-The MJVM and its components have been compiled for one specific CPU
-architecture and for use with a specific C compiler.
+The MicroEJ core engine and its components have been compiled for one
+specific CPU architecture and for use with a specific C compiler.
 
 The architecture of the platform engine is called green thread
 architecture, it runs in a single RTOS task. Its behavior consists in
@@ -10,9 +10,10 @@ scheduling MicroEJ threads. The scheduler implements a priority
 preemptive scheduling policy with round robin for the MicroEJ threads
 with the same priority. In the following explanations the term "RTOS
 task" refers to the tasks scheduled by the underlying OS; and the term
-"MicroEJ thread" refers to the thread scheduled by the MJVM.
+"MicroEJ thread" refers to the thread scheduled by the MicroEJ core
+engine.
 
-.. figure:: mjvm/images/mjvm_gt.svg
+.. figure:: images/mjvm_gt.svg
    :alt: A Green Threads Architecture Example
    :width: 60.0%
 

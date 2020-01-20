@@ -1,7 +1,7 @@
 Functional Description
 ======================
 
-.. figure:: ui/font/generator/images/static-font-gen2.svg
+.. figure:: font/generator/images/static-font-gen2.svg
    :alt: Font Generator Principle
    :width: 50.0%
 

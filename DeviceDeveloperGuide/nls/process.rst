@@ -1,7 +1,7 @@
 Functional Description
 ======================
 
-.. figure:: nls/images/process.svg
+.. figure:: images/process.svg
    :alt: Native Language Support Process
    :width: 100.0%
 

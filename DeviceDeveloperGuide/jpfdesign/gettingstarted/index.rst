@@ -1,2 +1,2 @@
-Building a PLATFORM
-===================
+Building a MicroEJ Platform
+===========================

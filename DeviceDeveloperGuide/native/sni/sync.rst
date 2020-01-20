@@ -2,8 +2,8 @@ Synchronization
 ===============
 
 A call to a native function uses the same RTOS task as the RTOS task
-used to run all Java green threads. So during this call, the MJVM cannot
-schedule other Java threads.
+used to run all Java green threads. So during this call, the MicroEJ
+core engine cannot schedule other Java threads.
 
 SNI defines C functions that provide controls for the green threads'
 activities:
@@ -26,7 +26,7 @@ activities:
    with the given ID. If the thread is not suspended, the resume stays
    pending.
 
-.. figure:: native/sni/images/sni_sync.svg
+.. figure:: sni/images/sni_sync.svg
    :alt: Green Threads and RTOS Task Synchronization
    :width: 80.0%
 

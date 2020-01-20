@@ -40,7 +40,7 @@ The ECOM Comm drivers are implemented using standard LLAPI features. The
 diagram below shows an example of the objects (both Java and C) that
 exist to support a Buffered connection.
 
-.. figure:: ecom/ecom-comm/images/architecture.svg
+.. figure:: ecom-comm/images/architecture.svg
    :alt: ECOM Comm components
    :width: 80.0%
 

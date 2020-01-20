@@ -68,17 +68,17 @@ The RTOS task that runs the MicroEJ runtime may end, especially when the
 MicroEJ application calls ``System.exit`` method [EDC]. By convention, a
 negative value indicates abnormal termination.  
 
-.. table:: PLATFORM exit codes
+.. table:: MicroEJ Platform exit codes
 
    +-------------+--------------------------------------------------------+
    | Message  ID | Meaning                                                |
    +=============+========================================================+
    | 0           | The MicroEJ application ended normally.                |
    +-------------+--------------------------------------------------------+
-   | -1          | The SOAR and the PLATFORM are not compatible.          |
+   | -1          | The SOAR and the MicroEJ Platform are not compatible.  |
    +-------------+--------------------------------------------------------+
    | -2          | Incompatible link configuration (``lsc`` file) with    |
-   |             | either the SOAR or the PLATFORM.                       |
+   |             | either the SOAR or the MicroEJ Platform.               |
    +-------------+--------------------------------------------------------+
    | -3          | Evaluation version limitations reached: termination of |
    |             | the application.                                       |
@@ -88,13 +88,13 @@ negative value indicates abnormal termination.  
    +-------------+--------------------------------------------------------+
    | -12         | Maximum number of threads reached.                     |
    +-------------+--------------------------------------------------------+
-   | -13         | Fail to start the PLATFORM because the specified       |
-   |             | MicroEJ heap is too large.                             |
+   | -13         | Fail to start the MicroEJ Platform because the         |
+   |             | specified MicroEJ heap is too large.                   |
    +-------------+--------------------------------------------------------+
    | -14         | Invalid stack space due to a link placement error.     |
    +-------------+--------------------------------------------------------+
    | -15         | The application has too many static (the requested     |
    |             | static head is too large).                             |
    +-------------+--------------------------------------------------------+
-   | -16         | The MJVM cannot be restarted.                          |
+   | -16         | The MicroEJ core engine cannot be restarted.           |
    +-------------+--------------------------------------------------------+

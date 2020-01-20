@@ -13,9 +13,8 @@ optional functions are available in ``LLDISPLAY_EXTRA.h`` file (see
 automatically call by the display module. The display module must be
 configured during the MicroEJ platform construction specifying which
 hardware accelerator to use. It uses the property
-``hardwareAccelerator`` in
-``MODULE.DISPLAY.NAME/MODULE.DISPLAY.NAME.properties`` file to select a
-hardware accelerator (see `??? <#section_display_installation>`__).
+``hardwareAccelerator`` in ``display/display.properties`` file to select
+a hardware accelerator (see `??? <#section_display_installation>`__).
 
 The following table lists the available hardware accelerators supported
 by MicroEJ, their full names, short names (used in the next tables) and

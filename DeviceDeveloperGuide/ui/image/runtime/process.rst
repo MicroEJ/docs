@@ -1,7 +1,7 @@
 Functional Description
 ======================
 
-.. figure:: ui/image/runtime/images/image-decoders2.svg
+.. figure:: image/runtime/images/image-decoders2.svg
    :alt: Image Decoder Principle
    :width: 80.0%
 

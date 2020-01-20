@@ -7,15 +7,15 @@ Principle
 ---------
 
 This LLAPI allows to use the External Resource Loader. When installed,
-the External Resource Loader is notified when the MJVM is not able to
-find a resource (an image, a file etc.) in the resources area linked
-with the MJVM.
+the External Resource Loader is notified when the MicroEJ core engine is
+not able to find a resource (an image, a file etc.) in the resources
+area linked with the MicroEJ core engine.
 
-When a resource is not available, the MJVM invokes the External Resource
-Loader in order to load an unknown resource. The External Resource
-Loader uses the LLAPI EXT_RES to let the BSP loads or not the expected
-resource. The implementation has to be able to load several files in
-parallel.
+When a resource is not available, the MicroEJ core engine invokes the
+External Resource Loader in order to load an unknown resource. The
+External Resource Loader uses the LLAPI EXT_RES to let the BSP loads or
+not the expected resource. The implementation has to be able to load
+several files in parallel.
 
 Naming Convention
 -----------------

@@ -1,5 +1,5 @@
-Device Developer Guide
-======================
+Device Developer's Guide
+========================
 
 .. toctree::
     :maxdepth: 2
@@ -7,20 +7,21 @@ Device Developer Guide
     start
     intro
     features
-    appendix/index
-    device/index
-    devtools/index
+    jpfdesign/index
+    mjvm/index
+    kf/index
+    tiny/index
+    native/index
+    loader/index
     ecom/index
+    nls/index
+    ui/index
+    net/index
     fs/index
     hal/index
-    jpfdesign/index
-    kf/index
-    linker/index
-    loader/index
-    mjvm/index
-    native/index
-    net/index
-    nls/index
+    device/index
+    devtools/index
     sim/index
-    tiny/index
-    ui/index
+    linker/index
+    limitations/index
+    appendix/index

@@ -7,7 +7,7 @@ Error Messages
 When an exception is thrown by the implementation of the Net API, the
 error message
 
-NET-NET.VERSION:E=<messageId>
+NET-1.1:E=<messageId>
 
 is issued, where <messageId> meaning is defined in the next table:
 

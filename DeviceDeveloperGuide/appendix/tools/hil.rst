@@ -11,14 +11,14 @@ Below are the HIL Engine options:
    | ``-verbose[e....e]``  | Extra messages are printed out to the console |
    |                       | (add extra e to get more messages).           |
    +-----------------------+-----------------------------------------------+
-   | ``-ip <address>``     | SIMJPF connection IP address (A.B.C.D). By    |
-   |                       | default, set to localhost.                    |
+   | ``-ip <address>``     | MicroEJ simulator connection IP address       |
+   |                       | (A.B.C.D). By default, set to localhost.      |
    +-----------------------+-----------------------------------------------+
-   | ``-port <port>``      | SIMJPF connection port. By default, set to    |
-   |                       | 8001.                                         |
+   | ``-port <port>``      | MicroEJ simulator connection port. By         |
+   |                       | default, set to 8001.                         |
    +-----------------------+-----------------------------------------------+
-   | ``-conne              | timeout in s for SIMJPF connections. By       |
-   | ctTimeout <timeout>`` | default, set to 10 seconds.                   |
+   | ``-conne              | timeout in s for MicroEJ simulator            |
+   | ctTimeout <timeout>`` | connections. By default, set to 10 seconds.   |
    +-----------------------+-----------------------------------------------+
    | ``-exclu              | Types that will be excluded from the HIL      |
    | des <name[sep]name>`` | Engine class resolution provided mocks. By    |

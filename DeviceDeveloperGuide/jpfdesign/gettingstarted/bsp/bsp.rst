@@ -2,9 +2,8 @@ Third-party C Project
 =====================
 
 The BSP tool is able to configure automatically the board C project.
-Fill the ``MODULE.BSP.NAME`` > ``MODULE.BSP.NAME.properties`` properties
-file to enable the third-party C project configuration during the
-MicroEJ platform build.
+Fill the ``bsp`` > ``bsp.properties`` properties file to enable the
+third-party C project configuration during the MicroEJ platform build.
 
 The properties file can contain the following properties:
 

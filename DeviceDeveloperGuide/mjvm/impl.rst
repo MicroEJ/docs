@@ -17,10 +17,10 @@ defines platform-specific exit code constants. (See
 Initialization
 --------------
 
-The Low Level MJVM API deals with two objects: the structure that
-represents the platform, and the RTOS task that runs the platform. Two
-callbacks allow engineers to interact with the initialization of both
-objects:
+The Low Level MicroEJ core engine API deals with two objects: the
+structure that represents the platform, and the RTOS task that runs the
+platform. Two callbacks allow engineers to interact with the
+initialization of both objects:
 
 -  ``LLMJVM_IMPL_initialize``: Called once the structure representing
    the platform is initialized.
@@ -80,9 +80,9 @@ to the MicroEJ world:
 Example
 -------
 
-The following example shows how to create and launch the MJVM from the C
-world. This function (``mjvm_main``) should be called from a dedicated
-RTOS task.
+The following example shows how to create and launch the MicroEJ core
+engine from the C world. This function (``mjvm_main``) should be called
+from a dedicated RTOS task.
 
 .. code:: c
 
@@ -136,10 +136,10 @@ RTOS task.
 Debugging
 ---------
 
-The internal MJVM function called ``LLMJVM_dump`` allows you to dump the
-state of all MicroEJ threads: name, priority, stack trace, etc. This
-function can be called at any time and from an interrupt routine (for
-instance from a button interrupt).
+The internal MicroEJ core engine function called ``LLMJVM_dump`` allows
+you to dump the state of all MicroEJ threads: name, priority, stack
+trace, etc. This function can be called at any time and from an
+interrupt routine (for instance from a button interrupt).
 
 This is an example of a dump:
 

@@ -20,7 +20,7 @@ Standard [U61]. ``The .ejf`` files hold font properties:
    'w' will be wider than a '!'. No width is specified for a
    proportional font.
 
-   .. figure:: ui/font/core/images/font-height.svg
+   .. figure:: font/core/images/font-height.svg
       :alt: Font Height
       :height: 2cm
 
@@ -32,7 +32,7 @@ Standard [U61]. ``The .ejf`` files hold font properties:
    number of pixels specified is the number of pixels above the
    baseline.
 
-   .. figure:: ui/font/core/images/font-baseline.svg
+   .. figure:: font/core/images/font-baseline.svg
       :alt: Font baseline
       :height: 2cm
 
@@ -57,7 +57,7 @@ Standard [U61]. ``The .ejf`` files hold font properties:
    the required character, a rectangle is displayed instead. For
    proportional fonts, the width is one third of the height of the font.
 
-   .. figure:: ui/font/core/images/font-default-char.svg
+   .. figure:: font/core/images/font-default-char.svg
       :alt: Default Character
       :height: 2cm
 

@@ -57,7 +57,7 @@ A font has a fixed height. This height includes the white pixels at the
 top and at the bottom of each character simulating line spacing in
 paragraphs.
 
-.. figure:: ui/font/designer/images/font-height.png
+.. figure:: font/designer/images/font-height.png
    :alt: Font Height
 
    Font Height
@@ -83,7 +83,7 @@ Characters have a baseline: an imaginary line on top of which the
 characters seem to stand. Note that characters can be partly under the
 line, for example, 'g' or '}'.
 
-.. figure:: ui/font/designer/images/baseline.png
+.. figure:: font/designer/images/baseline.png
    :alt: The Baseline
 
    The Baseline
@@ -205,7 +205,7 @@ Character Editor
 When a single character is selected in the list, the character editor is
 opened.
 
-.. figure:: ui/font/designer/images/char-editor.png
+.. figure:: font/designer/images/char-editor.png
    :alt: Character Editor
 
    Character Editor
@@ -271,7 +271,7 @@ and select a text file which contains text that you want to see rendered
 using your font. Characters that are in the selected text file but not
 available in the font will be shown as red rectangles.
 
-.. figure:: ui/font/designer/images/font-preview.png
+.. figure:: font/designer/images/font-preview.png
    :alt: Font Preview
 
    Font Preview

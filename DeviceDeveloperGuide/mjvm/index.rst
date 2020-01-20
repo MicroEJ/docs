@@ -1,2 +1,2 @@
-MJVM
-====
+MicroEJ core engine
+===================

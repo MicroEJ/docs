@@ -1,4 +1,4 @@
 Use
 ===
 
-A classpath variable named ``DEVICE-DEVICE.VERSION`` is available.
+A classpath variable named ``DEVICE-1.0`` is available.

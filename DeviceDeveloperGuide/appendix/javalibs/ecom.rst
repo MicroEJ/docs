@@ -7,7 +7,7 @@ Error Messages
 When an exception is thrown by the implementation of the ECOM API, the
 error message
 
-ECOM-ECOM.VERSION:E=<messageId>
+ECOM-1.1:E=<messageId>
 
 is issued, where <messageId> meaning is defined in the next table:
 

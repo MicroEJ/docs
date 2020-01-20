@@ -7,7 +7,7 @@ Error Messages
 When an exception is thrown by the implementation of the SSL API, the
 error message
 
-SSL-SSL.VERSION:E=<messageId>
+SSL-2.0:E=<messageId>
 
 is issued, where <messageId> meaning is defined in the next table:
 

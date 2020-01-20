@@ -1,9 +1,10 @@
 Installation
 ============
 
-TINY is an option disabled by default. To enable TINY of the MJVM, set
-the property ``mjvm.standalone.configuration`` in ``configuration.xml``
-file as follows:
+Tiny application is an option disabled by default. To enable Tiny
+application of the MicroEJ core engine, set the property
+``mjvm.standalone.configuration`` in ``configuration.xml`` file as
+follows:
 
 ``<property name="mjvm.standalone.configuration" value="tiny"/>``
 

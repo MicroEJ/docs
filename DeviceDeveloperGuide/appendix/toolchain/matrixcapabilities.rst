@@ -1,18 +1,22 @@
 .. _appendix_matrixcapabilities:
 
-Supported MJVM Capabilities by Architecture Matrix
-==================================================
+Supported MicroEJ core engine Capabilities by Architecture Matrix
+=================================================================
 
-The following table lists the supported MJVM capabilities by XPFs.
+The following table lists the supported MicroEJ core engine capabilities
+by MicroEJ architectures.
 
-.. table:: Supported MJVM Capabilities by XPF Matrix
+.. table:: Supported MicroEJ core engine Capabilities by MicroEJ
+architecture Matrix
 
    +-----------------+--------------------------+--------+--------+--------+
-   | MJVM            | Capabilities             |        |        |        |
+   | MicroEJ core    | Capabilities             |        |        |        |
+   | engine          |                          |        |        |        |
    | Architectures   |                          |        |        |        |
    +-----------------+--------------------------+--------+--------+--------+
-   | MCU             | Compiler                 | ST     | TINY   | MU     |
-   |                 |                          | ANDARD |        | LTIAPP |
+   | MCU             | Compiler                 | Single | Tiny   | Multi  |
+   |                 |                          | appli  | appli  | applic |
+   |                 |                          | cation | cation | ations |
    +-----------------+--------------------------+--------+--------+--------+
    | ARM Cortex-M0+  | IAR Embedded Workbench   | YES    | YES    | NO     |
    |                 | for ARM                  |        |        |        |

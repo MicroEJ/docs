@@ -1,8 +1,8 @@
 Execution
 =========
 
-LINKER can be invoked through an ANT task. The task is installed by
-inserting the following code in an ANT script
+MicroEJ Linker can be invoked through an ANT task. The task is installed
+by inserting the following code in an ANT script
 
 ::
 

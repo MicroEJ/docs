@@ -16,12 +16,14 @@ MicroEJ properties can also be defined in the launch configuration. This
 can be done by setting the properties in the launcher with a specific
 prefix in their name:
 
--  Properties for both the EMBJPF and the SIMJPF: name starts with
-   ``microej.java.property.*``
+-  Properties for both the MicroEJ platform and the MicroEJ simulator:
+   name starts with ``microej.java.property.*``
 
--  Properties for the SIMJPF: name starts with ``sim.java.property.*``
+-  Properties for the MicroEJ simulator: name starts with
+   ``sim.java.property.*``
 
--  Properties for the EMBJPF: name starts with ``emb.java.property.*``
+-  Properties for the MicroEJ platform: name starts with
+   ``emb.java.property.*``
 
 For example, to define the property ``myProp`` with the value
 ``theValue``, set the following option in the ``VM arguments`` field of

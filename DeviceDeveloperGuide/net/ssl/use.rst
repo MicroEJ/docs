@@ -1,4 +1,4 @@
 Use
 ===
 
-A classpath variable named ``SSL-SSL.VERSION`` is available.
+A classpath variable named ``SSL-2.0`` is available.

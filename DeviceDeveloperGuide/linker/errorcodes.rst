@@ -1,7 +1,7 @@
 Error Messages
 ==============
 
-This section lists LINKER error messages.
+This section lists MicroEJ Linker error messages.
 
 .. table:: Linker-Specific Configuration Tags
 

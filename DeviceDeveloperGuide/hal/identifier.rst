@@ -6,9 +6,9 @@ Basic Rule
 
 MicroEJ application manipulates anonymous identifiers used to identify a
 specific GPIO (port and pin). The identifiers are fixed by the HAL
-implementation made for each PLATFORM, and so this implementation is
-able to make the link between the MicroEJ application identifiers and
-the physical GPIOs.
+implementation made for each MicroEJ Platform, and so this
+implementation is able to make the link between the MicroEJ application
+identifiers and the physical GPIOs.
 
 -  A ``port`` is a value between ``0`` and ``n - 1``, where ``n`` is the
    available number of ports.

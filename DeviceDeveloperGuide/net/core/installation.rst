@@ -2,8 +2,8 @@ Installation
 ============
 
 Network is an additional module. In the platform configuration file,
-check ``GROUP.NET`` to install this module. When checked, the properties
-file ``net > net.properties`` is required during platform creation to
+check ``NET`` to install this module. When checked, the properties file
+``net > net.properties`` is required during platform creation to
 configure the module. This configuration step is used to customize the
 kind of TCP/IP native stack used and the Domain Name System (DNS)
 implementation.

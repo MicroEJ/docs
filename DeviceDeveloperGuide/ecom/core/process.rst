@@ -4,7 +4,7 @@ Functional Description
 `figure_title <#ecom_flow>`__ shows the overall process to open a
 connection on a hardware device.
 
-.. figure:: ecom/core/images/process.svg
+.. figure:: core/images/process.svg
    :alt: ECOM Flow
    :width: 80.0%
 

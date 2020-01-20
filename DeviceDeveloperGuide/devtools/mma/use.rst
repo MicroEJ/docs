@@ -4,7 +4,7 @@ Use
 The map file is available in the MicroEJ application project output
 directory.
 
-.. figure:: devtools/mma/images/whereMapIs.png
+.. figure:: mma/images/whereMapIs.png
    :alt: Retrieve Map File
    :width: 100.0%
 
@@ -15,7 +15,7 @@ the right. Select "All" to show the memory used by all items. This
 special item performs the same action as selecting all items in the
 list.
 
-.. figure:: devtools/mma/images/RI1.png
+.. figure:: mma/images/RI1.png
    :alt: Consult Full Memory
    :width: 100.0%
 
@@ -24,7 +24,7 @@ list.
 Select an item in the list, and expand it to see all symbols used by the
 item. This view is useful in understanding why a symbol is embedded.
 
-.. figure:: devtools/mma/images/RIDetailedView.png
+.. figure:: mma/images/RIDetailedView.png
    :alt: Detailed View
    :width: 100.0%
 

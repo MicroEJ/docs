@@ -47,9 +47,9 @@ Glossary
 | Architecture      | a target instruction set architecture (ISA) and  |
 |                   | native compiler.                                 |
 +-------------------+--------------------------------------------------+
-| MicroEJ Platform  | MicroEJ Platform is the MJVM and Libraries       |
-|                   | running on a specific target board support       |
-|                   | package (BSP, with or without RTOS).             |
+| MicroEJ Platform  | MicroEJ Platform is the MicroEJ core engine and  |
+|                   | Libraries running on a specific target board     |
+|                   | support package (BSP, with or without RTOS).     |
 +-------------------+--------------------------------------------------+
 | MicroEJ Firmware  | MicroEJ Firmware is a binary instance of MicroEJ |
 |                   | Vee for a target hardware board.                 |

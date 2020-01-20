@@ -6,7 +6,7 @@ MicroEJ Java H tool takes as input one or several Java class files
 methods declared in these class files, and generates a skeleton(s) of
 the C file(s).
 
-.. figure:: native/javah/images/javah_process.svg
+.. figure:: javah/images/javah_process.svg
    :alt: MicroEJ Java H Process
    :width: 60.0%
 

@@ -1,14 +1,14 @@
 .. _LLMJVM-API-SECTION:
 
-LLMJVM: MJVM
-============
+LLMJVM: MicroEJ core engine
+===========================
 
 Naming Convention
 -----------------
 
-The Low Level MJVM API, the ``LLMJVM`` API, relies on functions that
-need to be implemented. The naming convention for such functions is that
-their names match the ``LLMJVM_IMPL_*`` pattern.
+The Low Level MicroEJ core engine API, the ``LLMJVM`` API, relies on
+functions that need to be implemented. The naming convention for such
+functions is that their names match the ``LLMJVM_IMPL_*`` pattern.
 
 Header Files
 ------------

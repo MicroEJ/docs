@@ -2,11 +2,10 @@ Installation
 ============
 
 FS is an additional module. In the platform configuration file, check
-``GROUP.FS`` to install it. When checked, the properties file
-``MODULE.FS.NAME
+``FS`` to install it. When checked, the properties file ``fs
             > 
-            MODULE.FS.NAME.properties`` are required during platform
-creation in order to configure the module.
+            fs.properties`` are required during platform creation in
+order to configure the module.
 
 The properties file must / can contain the following properties:
 

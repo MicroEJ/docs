@@ -3,7 +3,7 @@
 Functional Description
 ======================
 
-.. figure:: ui/image/core/images/process.svg
+.. figure:: image/core/images/process.svg
    :alt: Image Engine Core Principle
    :width: 80.0%
 

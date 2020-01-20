@@ -3,4 +3,4 @@
 Java Language
 =============
 
-The MJVM is compatible with the Java language version 7.
+The MicroEJ core engine is compatible with the Java language version 7.

@@ -3,7 +3,7 @@ Functional Description
 
 XXX TODO
 
-.. figure:: devtools/testsuite/images/process.png
+.. figure:: testsuite/images/process.png
    :alt: Test Suite Process
    :width: 80.0%
 

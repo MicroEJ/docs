@@ -22,8 +22,8 @@ Memory
 ------
 
 The threads are always running. The user has to count them to determine
-the number of concurrent threads the MJVM can run (see Memory options in
-`??? <#workbenchLaunchOptions>`__).
+the number of concurrent threads the MicroEJ core engine can run (see
+Memory options in `??? <#workbenchLaunchOptions>`__).
 
 Exceptions
 ----------

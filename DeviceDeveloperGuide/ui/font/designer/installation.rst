@@ -11,5 +11,5 @@ platform user to create new fonts.
    provides the Font Designer module, he/she will able to create a new
    font even if the platform does not provide the Font Designer module.
 
-In the platform configuration file, check ``GROUP.UI`` >
-``MODULE.FONTDESIGNER.PNAME`` to install the Font Designer module.
+In the platform configuration file, check ``UI`` > ``Font Designer`` to
+install the Font Designer module.

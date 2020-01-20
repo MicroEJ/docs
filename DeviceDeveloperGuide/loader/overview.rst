@@ -4,8 +4,8 @@ Principle
 A *resource* is, for a MicroEJ application, the contents of a file. This
 file is known by its path (its relative path from the MicroEJ
 application classpath) and its name. The file may be stored in RAM,
-flash, or external flash; and it is the responsibility of the MJVM
-and/or the BSP to retrieve and load it.
+flash, or external flash; and it is the responsibility of the MicroEJ
+core engine and/or the BSP to retrieve and load it.
 
 MicroEJ platform makes the distinction between two kinds of resources:
 

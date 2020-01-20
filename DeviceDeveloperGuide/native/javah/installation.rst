@@ -2,4 +2,4 @@ Installation
 ============
 
 This is an additional tool. In the platform configuration file, check
-``GROUP.NATIVE`` > ``MODULE.JAVAH.PNAME`` to install the tool.
+``Java to C Interface`` > ``MicroEJ Java H`` to install the tool.

@@ -1,7 +1,7 @@
 Functional Description
 ======================
 
-.. figure:: ui/image/generator/images/static-image-gen2.svg
+.. figure:: image/generator/images/static-image-gen2.svg
    :alt: Image Generator Principle
    :width: 80.0%
 

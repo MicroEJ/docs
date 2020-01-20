@@ -3,7 +3,7 @@
 Auto-generated Sections
 =======================
 
-The LINKER allows you to define sections that are automatically
+The MicroEJ Linker allows you to define sections that are automatically
 generated with symbol values. This is commonly used to generate tables
 whose contents depends on the linked symbols. Symbols eligible to be
 embedded in an auto-generated section are of the form:
