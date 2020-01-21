@@ -9,7 +9,7 @@ configurations, and created using the Run Configurations dialog of the
 workbench. A configuration must be created for the tool before it can be
 used.
 
-.. figure:: concepts/launches/images/tool-launch.png
+.. figure:: images/tool-launch.png
    :alt: MicroEJ Tool Configuration
    :width: 80.0%
 

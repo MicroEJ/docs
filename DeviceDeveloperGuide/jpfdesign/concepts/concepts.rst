@@ -38,7 +38,7 @@ MicroEJ Platform configuration project called ``[name]-configuration``.
 The configuration file is recognized by the MicroEJ platform builder.
 The MicroEJ platform builder offers a visualization with two tabs:
 
-.. figure:: concepts/images/jpf_conf_overview.png
+.. figure:: images/jpf_conf_overview.png
    :alt: MicroEJ Platform Configuration Overview Tab
    :width: 80.0%
 
@@ -47,7 +47,7 @@ The MicroEJ platform builder offers a visualization with two tabs:
 This tab groups the basic platform information used to identify it: its
 name, its version, etc. These tags can be updated at any time.
 
-.. figure:: concepts/images/jpf_conf_modules.png
+.. figure:: images/jpf_conf_modules.png
    :alt: MicroEJ Platform Configuration Content Tab
    :width: 80.0%
 
@@ -100,7 +100,7 @@ The user creates *implementations* of the interfaces, each captured in a
 separate C source file. In the simplest form of this pattern, only one
 implementation is permitted, as shown in the illustration below.
 
-.. figure:: concepts/images/low-level-1c.svg
+.. figure:: images/low-level-1c.svg
    :alt: Low Level API Pattern (single implementation)
    :width: 80.0%
 
@@ -110,7 +110,7 @@ The following figure shows a concrete example of an LLAPI. The C world
 (the board support package) has to implement a ``send`` function and
 must notify the library using a ``receive`` function.
 
-.. figure:: concepts/images/low-level-3c.svg
+.. figure:: images/low-level-3c.svg
    :alt: Low Level API Example
    :width: 80.0%
 
@@ -130,7 +130,7 @@ implementation.
 The illustration below shows this form of the pattern, but with only a
 single instance of a single implementation.
 
-.. figure:: concepts/images/low-level-2c.svg
+.. figure:: images/low-level-2c.svg
    :alt: Low Level API Pattern (multiple implementations/instances)
    :width: 80.0%
 

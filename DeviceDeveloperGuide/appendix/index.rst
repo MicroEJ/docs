@@ -4,8 +4,8 @@ Appendices
 .. toctree::
     :maxdepth: 2
 
-    llapi/index
+    llapi/llapi
     javalibs/index
     tools/index
-    toolchain/index
+    toolchain/toolchain
     workbench/index

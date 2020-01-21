@@ -57,68 +57,68 @@ structured events to the predefined event generators:
 
 .. table:: LLINPUT API for predefined event generators
 
-   +-----------------------------+---------+-----------------------------+
-   | Function name               | Default | Comments                    |
-   |                             | event   |                             |
-   |                             | ge      |                             |
-   |                             | nerator |                             |
-   |                             | ki      |                             |
-   |                             | nd [1]_ |                             |
-   +=============================+=========+=============================+
-   | `                           | Command | Constants are provided that |
-   | `LLINPUT_sendCommandEvent`` |         | define all standard MicroUI |
-   |                             |         | commands [MUI].             |
-   +-----------------------------+---------+-----------------------------+
-   | ``LLINP                     | Buttons | In the case of              |
-   | UT_sendButtonPressedEvent`` |         | chronological sequences     |
-   |                             |         | (for example, a RELEASE     |
-   | ``LLINPU                    |         | that may occur only after a |
-   | T_sendButtonReleasedEvent`` |         | PRESSED), it is the         |
-   |                             |         | responsibility of the       |
-   | ``LLINPU                    |         | driver to ensure the        |
-   | T_sendButtonRepeatedEvent`` |         | integrity of such           |
-   |                             |         | sequences.                  |
-   +-----------------------------+---------+-----------------------------+
-   | ``LLINPU                    | Pointer | In the case of              |
-   | T_sendPointerPressedEvent`` |         | chronological sequences     |
-   |                             |         | (for example, a RELEASE     |
-   | ``LLINPUT                   |         | that may occur only after a |
-   | _sendPointerReleasedEvent`` |         | PRESSED), it is the         |
-   |                             |         | responsibility of the       |
-   | ``LLIN                      |         | driver to ensure the        |
-   | PUT_sendPointerMovedEvent`` |         | integrity of such           |
-   |                             |         | sequences. Depending on     |
-   |                             |         | whether a button of the     |
-   |                             |         | pointer is pressed while    |
-   |                             |         | moving, a DRAG and/or a     |
-   |                             |         | MOVE MicroUI event is       |
-   |                             |         | generated.                  |
-   +-----------------------------+---------+-----------------------------+
-   | ``LLINPUT_sendStateEvent``  | States  | The initial value of each   |
-   |                             |         | state machine (of a States) |
-   |                             |         | is retrieved by a call to   |
-   |                             |         | ``LLINPUT_                  |
-   |                             |         | IMPL_getInitialStateValue`` |
-   |                             |         | that must be implemented by |
-   |                             |         | the device. Alternatively,  |
-   |                             |         | the initial value can be    |
-   |                             |         | specified in the XML static |
-   |                             |         | configuration.              |
-   +-----------------------------+---------+-----------------------------+
-   | ``LLIN                      | Pointer | In the case of              |
-   | PUT_sendTouchPressedEvent`` |         | chronological sequences     |
-   |                             |         | (for example, a RELEASE     |
-   | ``LLINP                     |         | that may only occur after a |
-   | UT_sendTouchReleasedEvent`` |         | PRESSED), it is the         |
-   |                             |         | responsibility of the       |
-   | ``LL                        |         | driver to ensure the        |
-   | INPUT_sendTouchMovedEvent`` |         | integrity of such           |
-   |                             |         | sequences. These APIs will  |
-   |                             |         | generate a DRAG MicroUI     |
-   |                             |         | event instead of a MOVE     |
-   |                             |         | while they represent a      |
-   |                             |         | touch pad over a display.   |
-   +-----------------------------+---------+-----------------------------+
+   +--------------------------------------+-----------+-----------------------------+
+   | Function name                        | Default   | Comments                    |
+   |                                      | event     |                             |
+   |                                      | generator |                             |
+   |                                      | kind [1]_ |                             |
+   |                                      |           |                             |
+   |                                      |           |                             |
+   +======================================+===========+=============================+
+   | ``LLINPUT_sendCommandEvent``         | Command   | Constants are provided that |
+   |                                      |           | define all standard MicroUI |
+   |                                      |           | commands [MUI].             |
+   +--------------------------------------+-----------+-----------------------------+
+   | ``LLINPUT_sendButtonPressedEvent``   | Buttons   | In the case of              |
+   |                                      |           | chronological sequences     |
+   |                                      |           | (for example, a RELEASE     |
+   | ``LLINPUT_sendButtonReleasedEvent``  |           | that may occur only after a |
+   |                                      |           | PRESSED), it is the         |
+   |                                      |           | responsibility of the       |
+   | ``LLINPUT_sendButtonRepeatedEvent``  |           | driver to ensure the        |
+   |                                      |           | integrity of such           |
+   |                                      |           | sequences.                  |
+   +--------------------------------------+-----------+-----------------------------+
+   | ``LLINPUT_sendPointerPressedEvent``  | Pointer   | In the case of              |
+   |                                      |           | chronological sequences     |
+   |                                      |           | (for example, a RELEASE     |
+   | ``LLINPUT_sendPointerReleasedEvent`` |           | that may occur only after a |
+   |                                      |           | PRESSED), it is the         |
+   |                                      |           | responsibility of the       |
+   | ``LLINPUT_sendPointerMovedEvent``    |           | driver to ensure the        |
+   |                                      |           | integrity of such           |
+   |                                      |           | sequences. Depending on     |
+   |                                      |           | whether a button of the     |
+   |                                      |           | pointer is pressed while    |
+   |                                      |           | moving, a DRAG and/or a     |
+   |                                      |           | MOVE MicroUI event is       |
+   |                                      |           | generated.                  |
+   +--------------------------------------+-----------+-----------------------------+
+   | ``LLINPUT_sendStateEvent``           | States    | The initial value of each   |
+   |                                      |           | state machine (of a States) |
+   |                                      |           | is retrieved by a call to   |
+   |                                      |           | ``LLINPUT_                  |
+   |                                      |           | IMPL_getInitialStateValue`` |
+   |                                      |           | that must be implemented by |
+   |                                      |           | the device. Alternatively,  |
+   |                                      |           | the initial value can be    |
+   |                                      |           | specified in the XML static |
+   |                                      |           | configuration.              |
+   +--------------------------------------+-----------+-----------------------------+
+   | ``LLINPUT_sendTouchPressedEvent``    | Pointer   | In the case of              |
+   |                                      |           | chronological sequences     |
+   |                                      |           | (for example, a RELEASE     |
+   | ``LLINPUT_sendTouchReleasedEvent``   |           | that may only occur after a |
+   |                                      |           | PRESSED), it is the         |
+   |                                      |           | responsibility of the       |
+   | ``LLINPUT_sendTouchMovedEvent``      |           | driver to ensure the        |
+   |                                      |           | integrity of such           |
+   |                                      |           | sequences. These APIs will  |
+   |                                      |           | generate a DRAG MicroUI     |
+   |                                      |           | event instead of a MOVE     |
+   |                                      |           | while they represent a      |
+   |                                      |           | touch pad over a display.   |
+   +--------------------------------------+-----------+-----------------------------+
 
 Event Buffer
 ------------

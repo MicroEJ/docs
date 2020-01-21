@@ -2,14 +2,14 @@ Device Developer's Guide
 ========================
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
 
     start
     intro
     features
     jpfdesign/index
     mjvm/index
-    kf/index
+    kf/kf
     tiny/index
     native/index
     loader/index
@@ -17,9 +17,9 @@ Device Developer's Guide
     nls/index
     ui/index
     net/index
-    fs/index
-    hal/index
-    device/index
+    fs/fs
+    hal/hal
+    device/device
     devtools/index
     sim/index
     linker/index
