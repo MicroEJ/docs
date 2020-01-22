@@ -25,3 +25,10 @@ The Font Designer module and Font Generator module options are the
 direct consequence of the Font Engine Core capacities. You must
 understand the Font Engine Core capacities in order to correctly use the
 modules.
+
+.. toctree::
+    :maxdepth: 2
+
+    core/core
+    designer/designer
+    generator/generator

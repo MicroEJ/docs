@@ -3,9 +3,14 @@
 Serial Communications
 =====================
 
-.. toctree::
-    :maxdepth: 2
+MicroEJ provides some foundation libraries to instantiate some
+communications with external devices. Each communication method has its
+own library. A global library called ECOM provides support for abstract
+communication streams (communication framework only), and a generic
+devices manager.
 
-    overview
+
+.. toctree::
+
     core/core
     ecom-comm/ecom-comm

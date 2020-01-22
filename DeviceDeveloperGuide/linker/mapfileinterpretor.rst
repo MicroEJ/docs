@@ -69,8 +69,7 @@ Commands:
 
       inter graphResult g1 ... gn
 
-   Creates a graph which is the intersection of ``g1/\ ... /\
-                       gn``.
+   Creates a graph which is the intersection of ``g1/\ ... /\gn``.
 
 -  ::
 

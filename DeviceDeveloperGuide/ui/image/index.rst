@@ -12,3 +12,10 @@ The Image Engine is composed of:
 -  A set of "Image Decoder" modules, for converting standard image
    formats into the display image format at runtime. Each Image Decoder
    is an additional module of the main module "Image Engine".
+
+.. toctree::
+    :maxdepth: 2
+
+    core/core
+    generator/generator
+    runtime/runtime

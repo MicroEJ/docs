@@ -7,9 +7,8 @@ operators supported in the Java language, and follow Java semantics:
 
 -  Unary operators: ``+ , - , ~ , !``
 
--  Binary operators: ``+ , - , * , / , % , << , >>> ,
-                       >> , < , > , <= , >= , == , != , &, | , ^ , && ,
-                       ||``
+-  Binary operators: ``+ , - , * , / , % , << , >>> , >> , < , 
+   > , <= , >= , == , != , &, | , ^ , && , ||``
 
 -  Ternary operator: ``cond ? ifTrue : ifFalse``
 
