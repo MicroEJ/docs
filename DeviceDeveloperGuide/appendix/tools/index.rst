@@ -13,5 +13,6 @@ Appendix C: Tools Options and Error Codes
     ui/mui_font
     ui/mui_image
     ui/mui_frontpanelmock
+    ui/lldisplayextra
     hil
-    heapbump
+    heapdump

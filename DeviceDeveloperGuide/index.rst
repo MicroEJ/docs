@@ -14,7 +14,7 @@ Device Developer's Guide
     native/index
     loader/loader
     ecom/index
-    nls/index
+    nls/nls
     ui/index
     net/index
     fs/fs
@@ -23,5 +23,5 @@ Device Developer's Guide
     devtools/index
     sim/index
     linker/linker
-    limitations/index
+    limitations
     appendix/index

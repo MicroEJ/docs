@@ -125,15 +125,33 @@ contents can be divided into two principal categories:
 
 -  Memory layout definitions.
 
-<?xml version="1.0" encoding="UTF-8"?> <!-- An example of linker
-specific configuration file --> <lsc name="MyAppInFlash"> <include
-name="subfile.lscf"/> <!-- Define symbols with arithmetical and logical
-expressions --> <defSymbol name="FlashStart" value="0"/> <defSymbol
-name="FlashSize" value="0x10000"/> <defSymbol name="FlashEnd"
-value="FlashStart+FlashSize-1"/> <!-- Define FLASH memory interval -->
-<defSection name="FLASH" start="FlashStart" size="FlashSize"/> <!-- Some
-memory layout directives --> <memoryLayout ranges ="FLASH"> <sectionRef
-name ="*.text"/> <sectionRef name ="*.data"/> </memoryLayout> </lsc>
+::
+
+   <?xml version="1.0" encoding="UTF-8"?>
+   <!--
+      An example of linker specific configuration file
+   -->
+   <lsc name="MyAppInFlash">
+      <include name="subfile.lscf"/>
+      <!--
+         Define symbols with arithmetical and logical expressions
+      -->
+      <defSymbol name="FlashStart" value="0"/>
+      <defSymbol name="FlashSize"  value="0x10000"/>
+      <defSymbol name="FlashEnd"   value="FlashStart+FlashSize-1"/>
+      <!--
+         Define FLASH memory interval
+      -->
+      <defSection name="FLASH" start="FlashStart" size="FlashSize"/>
+      
+      <!-- 
+         Some memory layout directives
+      -->
+      <memoryLayout ranges ="FLASH">
+         <sectionRef name ="*.text"/>
+         <sectionRef name ="*.data"/>
+      </memoryLayout> 
+   </lsc>
 
 File Fragments
 --------------
@@ -191,13 +209,18 @@ in the relocated space. To perform the copy, the program needs both the
 start address in ``FLASH`` where the data has been put, and the start
 address in ``RAM`` where the data shall be copied.
 
-<memoryLayout ranges="FLASH" relocation="RAM" image="true"> <defSymbol
-name="DataFlashStart" value="."/> <defSymbol name="DataRamStart" value="
-." relocation="true"/> <sectionRef name=".data"/> <defSymbol
-name="DataFlashLimit" value="."/> </memoryLayout>
+::
 
-Note: the symbol ``DataRamStart`` is defined to the start address where
-``.data`` sections will be inserted in ``RAM`` memory.
+   <memoryLayout ranges="FLASH" relocation="RAM" image="true"> 
+      <defSymbol name="DataFlashStart" value="."/>    
+      <defSymbol name="DataRamStart" value=" ." relocation="true"/>    	 
+      <sectionRef name=".data"/> 
+      <defSymbol name="DataFlashLimit" value="."/> 
+   </memoryLayout>
+
+.. note::
+   the symbol ``DataRamStart`` is defined to the start address where
+   ``.data`` sections will be inserted in ``RAM`` memory.
 
 
 Tags Specification

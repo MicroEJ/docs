@@ -188,10 +188,11 @@ fill:
       -  ``TITLE``: the comment that is displayed in the title of the
          HTML report.
 
-``Tip:`` It is advised to set the format to ``noframes`` if your test
-suite is not a Java test suite. If the format is set to ``frames``, with
-a non-Java MicroEJ Test-Suite, the name of the links will not be
-relevant because of the non-existency of packages.
+.. note::
+   **Tip :** It is advised to set the format to ``noframes`` if your test
+   suite is not a Java test suite. If the format is set to ``frames``, with
+   a non-Java MicroEJ Test-Suite, the name of the links will not be
+   relevant because of the non-existency of packages.
 
 
 .. _testsuite-trace-analyzer:

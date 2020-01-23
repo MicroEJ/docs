@@ -3,6 +3,7 @@
 Serial Communications
 =====================
 
+
 MicroEJ provides some foundation libraries to instantiate some
 communications with external devices. Each communication method has its
 own library. A global library called ECOM provides support for abstract

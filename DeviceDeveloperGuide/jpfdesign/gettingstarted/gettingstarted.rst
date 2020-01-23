@@ -1,7 +1,3 @@
-===========================
-Building a MicroEJ Platform
-===========================
-
 
 Create a New MicroEJ Platform Configuration
 ===========================================

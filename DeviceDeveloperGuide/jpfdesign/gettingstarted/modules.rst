@@ -1,7 +1,6 @@
 Groups / Modules Selection
 ==========================
 
-Group
 From the platform description editor, select the Content tab to access
 the platform modules selection. Modules can be selected/deselected from
 the Modules frame.

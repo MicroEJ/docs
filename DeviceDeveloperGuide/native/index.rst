@@ -9,6 +9,6 @@ be used at the same time.
 
 .. toctree::
 
-    javah/javah
     sni/sni
     sp/sp
+    javah/javah

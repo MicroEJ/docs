@@ -3,11 +3,11 @@ MicroEJ Platform
 ================
 
 .. toctree::
+    :maxdepth: 2
 
-    jpfdesign
+    overview
     concepts/concepts
-    concepts/launches/application
+    concepts/launches/applications
     concepts/launches/launches
     concepts/launches/tools
-    gettingstarted/gettingstarted
-    gettingstarted/bsp/bsp_section
+    gettingstarted/index
