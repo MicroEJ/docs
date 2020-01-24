@@ -23,19 +23,19 @@ follows:
 
 ``<property name="mjvm.standalone.configuration" value="tiny"/>``
 
-See section `??? <#platformCustomization>`__ for more info on the
+See section :ref:`platformCustomization` for more info on the
 ``configuration.xml`` file.
 
 
 Limitations
 ===========
 
-In addition to general `??? <#limitations>`__:
+In addition to general :ref:`limitations`:
 
 -  The maximum application code size (classes and methods) cannot exceed
    ``256KB``. This does not include application resources, immutable
    objects and internal strings which are not limited.
 
--  The option ``SOAR > Debug > Embed all type names`` has no effect.
+-  The option :guilabel:`SOAR` > :guilabel:`Debug` > :guilabel:`Embed all type names` has no effect.
    Only the fully qualified names of types marked as required types are
    embedded.

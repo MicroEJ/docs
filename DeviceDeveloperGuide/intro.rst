@@ -42,11 +42,13 @@ foundation libraries :
 
 -  [SP]
 
-`figure_title <#overviewFigure1>`__ shows the components involved.
+:ref:`The following figure <fig_jpf-runtime-components>` shows the components involved.
 
+.. _fig_jpf-runtime-components:
 .. figure:: images/jpf-runtime-components.svg
    :alt: MicroEJ architecture Runtime Modules: Tools, Libraries and APIs
-   :width: 80.0%
+   :width: 100.0%
+   :align: center
 
    MicroEJ architecture Runtime Modules: Tools, Libraries and APIs
 

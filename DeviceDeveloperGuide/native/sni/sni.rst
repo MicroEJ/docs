@@ -43,13 +43,15 @@ native world:
 -  Manipulate (read & write) shared memory both in Java and C : the
    immortal space.
 
+.. _fig_sni-flow:
 .. figure:: images/sni_flow.svg
    :alt: SNI Processing
-   :width: 60.0%
+   :width: 100.0%
+   :align: center
 
    SNI Processing
 
-`figure_title <#sni_flow>`__ illustration shows both Java and C code
+:ref:`The above illustration <fig_sni-flow>` shows both Java and C code
 accesses to shared objects in the immortal space, while also accessing
 their respective memory.
 
@@ -139,13 +141,15 @@ activities:
    with the given ID. If the thread is not suspended, the resume stays
    pending.
 
+.. _fig_sni-sync:
 .. figure:: images/sni_sync.svg
    :alt: Green Threads and RTOS Task Synchronization
-   :width: 80.0%
+   :width: 100.0%
+   :align: center
 
    Green Threads and RTOS Task Synchronization
 
-`figure_title <#sni_sync>`__ shows a green thread (GT3) which has called
+:ref:`The above illustration <fig_sni-sync>` shows a green thread (GT3) which has called
 a native method that executes in C. The C code suspends the thread after
 having provisioned its ID (e.g. 3). Another RTOS task may later resume
 the Java green thread.
@@ -162,7 +166,7 @@ Installation
 
 The SNI library is a built-in feature of the platform, so there is no
 additional dependency to call native code from Java. In the platform
-configuration file, check ``Java to C Interface`` > ``SNI API`` to
+configuration file, check :guilabel:`Java to C Interface` > :guilabel:`SNI API` to
 install the additional Java APIs in order to manipulate the data arrays.
 
 

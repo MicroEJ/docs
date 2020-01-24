@@ -3,8 +3,8 @@
 MicroEJ Launch
 ==============
 
-The MicroEJ launch configuration sets up the
-`??? <#concepts-microejapplications>`__ environment (main class,
+The MicroEJ launch configuration sets up the 
+:ref:`concepts-microejapplications` environment (main class,
 resources, target platform, and platform-specific options), and then
 launches a MicroEJ launch script for execution.
 
@@ -17,7 +17,7 @@ information about available launch settings.
 Main Tab
 --------
 
-The ``Main`` tab allows you to set in order:
+The :guilabel:`Main` tab allows you to set in order:
 
 1. The main project of the application.
 
@@ -35,25 +35,47 @@ The ``Main`` tab allows you to set in order:
 5. Immutable objects' description files. See the [B-ON 1.2] ESR
    documentation for use of immutable objects.
 
+.. figure:: images/mainTab.png
+    :alt: MicroEJ Launch Application Main Tab
+    :width: 100.0%
+    :align: center
+
+    MicroEJ Launch Application Main Tab
+
+
 Execution Tab
 -------------
 
-The next tab is the ``Execution`` tab. Here the target needs to be
+The next tab is the :guilabel:`Execution` tab. Here the target needs to be
 selected. Choose between execution on a MicroEJ platform or on a MicroEJ
 simulator. Each of them may provide multiple launch settings. This page
 also allows you to keep generated, intermediate files and to print
 verbose options (advanced debug purpose options).
 
+.. figure:: images/executionTab.png
+    :alt: MicroEJ Launch Application Execution Tab
+    :width: 100.0%
+    :align: center
+
+    MicroEJ Launch Application Execution Tab
+
 Configuration Tab
 -----------------
 
-The next tab is the ``Configuration`` tab. This tab contains all
+The next tab is the :guilabel:`Configuration` tab. This tab contains all
 platform-specific options.
+
+.. figure:: images/configurationTab.png
+    :alt: Configuration Tab
+    :width: 100.0%
+    :align: center
+
+    Configuration Tab
 
 JRE Tab
 -------
 
-The next tab is the ``JRE`` tab. This tab allows you to configure the
+The next tab is the :guilabel:`JRE` tab. This tab allows you to configure the
 Java Runtime Environment used for running the underlying launch script.
 It does not configure the MicroEJ application execution. The
 ``VM Arguments`` text field allows you to set vm-specific options, which
@@ -69,6 +91,6 @@ are typically used to increase memory spaces:
 Other Tabs
 ----------
 
-The next tabs (``Source`` and ``Common`` tabs) are the default Eclipse
+The next tabs (:guilabel:`Source` and :guilabel:`Common` tabs) are the default Eclipse
 launch tabs. Refer to Eclipse help for more details on how to use these
 launch tabs.

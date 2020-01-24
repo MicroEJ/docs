@@ -11,13 +11,15 @@ execute at runtime the MicroEJ application code.
 Functional Description
 ======================
 
-`figure_title <#mjvm_flow>`__ shows the overall process. The first two
+:ref:`The following diagram <fig_mjvm_flow2>` shows the overall process. The first two
 steps are performed within the MicroEJ Workbench. The remaining steps
 are performed within the C IDE.
 
+.. _fig_mjvm_flow2:
 .. figure:: images/mjvm_flow2.svg
    :alt: MicroEJ core engine Flow
    :width: 100.0%
+   :align: center
 
    MicroEJ core engine Flow
 
@@ -49,7 +51,8 @@ engine.
 
 .. figure:: images/mjvm_gt.svg
    :alt: A Green Threads Architecture Example
-   :width: 60.0%
+   :width: 100.0%
+   :align: center
 
    A Green Threads Architecture Example
 
@@ -72,13 +75,13 @@ MicroEJ core engine defines 3 exclusive capabilities:
 
 -  Multi applications: capability to produce a extensible firmware on
    which new applications can be dynamically installed. See section
-   `??? <#core-multiapp>`__.
+   :ref:`core-multiapp`.
 
 -  Tiny application: capability to produce a compacted firmware
-   (optimized for size). See section `??? <#core-tiny>`__.
+   (optimized for size). See section :ref:`core-tiny`.
 
 All MicroEJ core engine capabilities may not be available on all
-architectures. Refer to section `??? <#appendix_matrixcapabilities>`__
+architectures. Refer to section :ref:`appendix_matrixcapabilities`
 for more details.
 
 
@@ -96,7 +99,7 @@ function ``SNI_destroyVM`` handles the platform termination.
 The file ``LLMJVM_impl.h`` that comes with the platform defines the API
 to be implemented. The file ``LLMJVM.h`` that comes with the platform
 defines platform-specific exit code constants. (See
-`??? <#LLMJVM-API-SECTION>`__.)
+:ref:`LLMJVM-API-SECTION`.)
 
 Initialization
 --------------
@@ -275,7 +278,7 @@ This is an example of a dump:
     [0x0800DB6F]
    =================================
 
-See `??? <#stack_trace_reader>`__ for additional info related to working
+See :ref:`stack_trace_reader` for additional info related to working
 with VM dumps.
 
 
@@ -384,7 +387,8 @@ file must match with ``*.system.properties`` and must be located in the
 ``properties`` package of the application classpath. These files follow
 the MicroEJ property list specification: key/value pairs.
 
-::
+.. code-block:: xml
+   :caption: Example of Contents of a MicroEJ Properties File
 
    microedition.encoding=ISO-8859-1
 
@@ -404,7 +408,11 @@ prefix in their name:
 For example, to define the property ``myProp`` with the value
 ``theValue``, set the following option in the ``VM arguments`` field of
 the ``JRE`` tab of the launch configuration:
--Dmicroej.java.property.myProp=theValue
+
+.. code-block:: xml
+   :caption: Example of MicroEJ Property Definition in Launch Configuration
+
+   -Dmicroej.java.property.myProp=theValue
 
 
 Generic Output
@@ -422,47 +430,44 @@ must be linked by the third-party linker.
 
 .. table:: Linker Sections
 
-   +-----------------------------+-----------------------------+---------+---------+
-   | Section name                | Aim                         | L       | Al      |
-   |                             |                             | ocation | ignment |
-   |                             |                             |         | (in     |
-   |                             |                             |         | bytes)  |
-   +=============================+=============================+=========+=========+
-   | ``.bss.features.installed`` | Resident applications       | RW      | 4       |
-   |                             | statics                     |         |         |
-   +-----------------------------+-----------------------------+---------+---------+
-   | ``.bss.soar``               | Application static          | RW      | 8       |
-   +-----------------------------+-----------------------------+---------+---------+
-   | ``.bss.vm.stacks.java``     | Application threads stack   | RW      | 8       |
-   |                             | blocks                      |         |         |
-   +-----------------------------+-----------------------------+---------+---------+
-   | ``ICETEA_HEAP``             | MicroEJ core engine         | I       | 8       |
-   |                             | internal heap               | nternal |         |
-   |                             |                             | RW      |         |
-   +-----------------------------+-----------------------------+---------+---------+
-   | ``_java_heap``              | Application heap            | RW      | 4       |
-   +-----------------------------+-----------------------------+---------+---------+
-   | ``_java_immortals``         | Application immortal heap   | RW      | 4       |
-   |                             |                             |         |         |
-   +-----------------------------+-----------------------------+---------+---------+
-   | ``.rodata.resources``       | Application resources       | RO      | 16      |
-   |                             |                             |         |         |
-   +-----------------------------+-----------------------------+---------+---------+
-   | ``.rodata.soar.features``   | Resident applications code  | RO      | 4       |
-   |                             | and resources               |         |         |
-   +-----------------------------+-----------------------------+---------+---------+
-   | ``.shieldedplug``           | Shielded Plug data          | RO      | 4       |
-   +-----------------------------+-----------------------------+---------+---------+
-   | ``.text.soar``              | Application and library     | RO      | 16      |
-   |                             | code                        |         |         |
-   +-----------------------------+-----------------------------+---------+---------+
+   +-----------------------------+-----------------------------+-------------+------------+
+   | Section name                | Aim                         | Location    | Alignment  |
+   |                             |                             |             | (in bytes) |
+   +=============================+=============================+=============+============+
+   | ``.bss.features.installed`` | Resident applications       | RW          | 4          |
+   |                             | statics                     |             |            |
+   +-----------------------------+-----------------------------+-------------+------------+
+   | ``.bss.soar``               | Application static          | RW          | 8          |
+   +-----------------------------+-----------------------------+-------------+------------+
+   | ``.bss.vm.stacks.java``     | Application threads stack   | RW          | 8          |
+   |                             | blocks                      |             |            |
+   +-----------------------------+-----------------------------+-------------+------------+
+   | ``ICETEA_HEAP``             | MicroEJ core engine         | Internal RW | 8          |
+   |                             | internal heap               |             |            |
+   +-----------------------------+-----------------------------+-------------+------------+
+   | ``_java_heap``              | Application heap            | RW          | 4          |
+   +-----------------------------+-----------------------------+-------------+------------+
+   | ``_java_immortals``         | Application immortal heap   | RW          | 4          |
+   |                             |                             |             |            |
+   +-----------------------------+-----------------------------+-------------+------------+
+   | ``.rodata.resources``       | Application resources       | RO          | 16         |
+   |                             |                             |             |            |
+   +-----------------------------+-----------------------------+-------------+------------+
+   | ``.rodata.soar.features``   | Resident applications code  | RO          | 4          |
+   |                             | and resources               |             |            |
+   +-----------------------------+-----------------------------+-------------+------------+
+   | ``.shieldedplug``           | Shielded Plug data          | RO          | 4          |
+   +-----------------------------+-----------------------------+-------------+------------+
+   | ``.text.soar``              | Application and library     | RO          | 16         |
+   |                             | code                        |             |            |
+   +-----------------------------+-----------------------------+-------------+------------+
 
 
 Dependencies
 ============
 
 The MicroEJ core engine requires an implementation of its low level APIs
-in order to run. Refer to the chapter `??? <#mjvm_impl>`__ for more
+in order to run. Refer to the chapter :ref:`mjvm_impl` for more
 information.
 
 
@@ -482,7 +487,7 @@ A MicroEJ classpath variable named ``EDC-1.2`` is available, according
 to the selected foundation core library. This MicroEJ classpath variable
 is always required in the build path of a MicroEJ project; and all
 others libraries depend on it. This library provides a set of options.
-Refer to the chapter `??? <#workbenchLaunchOptions>`__ which lists all
+Refer to the chapter :ref:`workbenchLaunchOptions` which lists all
 available options.
 
 Another classpath variable named ``BON-1.2`` is available. This variable

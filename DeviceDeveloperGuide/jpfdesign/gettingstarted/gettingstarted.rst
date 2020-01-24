@@ -1,10 +1,14 @@
+===========================
+Building a MicroEJ Platform
+===========================
+
 
 Create a New MicroEJ Platform Configuration
 ===========================================
 
 The first step is to create a MicroEJ Platform configuration:
 
--  Select ``File > New > Project…``, open MicroEJ category and select
+-  Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project…`, open MicroEJ category and select
    MicroEJ Platform Project.
 
 -  Click on Next. The Configure Target Architecture page allows to
@@ -106,4 +110,7 @@ platform configuration Overview.
 
 It will create a MicroEJ Platform in the workspace available for the
 MicroEJ project to run on. The MicroEJ Platform will be available in:
-``Window > Preferences > MicroEJ > Platforms in workspace``.
+:guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
+
+
+.. include:: bsp/bsp_section.rst

@@ -10,4 +10,4 @@ MicroEJ Platform
     concepts/launches/applications
     concepts/launches/launches
     concepts/launches/tools
-    gettingstarted/index
+    gettingstarted/gettingstarted

@@ -1,10 +1,9 @@
-========
 BSP Tool
 ========
 
 
 Principle
-=========
+---------
 
 When the MicroEJ platform is built, the user can compile a MicroEJ
 application on that platform. However, the result of this compilation is
@@ -23,7 +22,7 @@ header directories.
 
 
 Third-party C Project
-=====================
+---------------------
 
 The BSP tool is able to configure automatically the board C project.
 Fill the ``bsp`` > ``bsp.properties`` properties file to enable the
@@ -49,7 +48,7 @@ The properties file can contain the following properties:
 .. _section_bsp_xml:
 
 BSP Files
-=========
+---------
 
 The MicroEJ platform needs some information about the board project (the
 BSP). This information is required for building a MicroEJ application
@@ -85,7 +84,7 @@ MicroEJ platform build.
 
 
 Dependencies
-============
+------------
 
 No dependency.
 
@@ -93,6 +92,6 @@ No dependency.
 .. _section_bsp_installation:
 
 Installation
-============
+------------
 
 The BSP tool is automatically called during the MicroEJ platform build.

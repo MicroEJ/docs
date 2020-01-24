@@ -1,16 +1,20 @@
+.. _processOverviewId:
+
 Process Overview
 ================
 
 This section summarizes the steps required to build a MicroEJ Platform
 and obtain a binary file to deploy on a board.
 
-`figure_title <#jpfdesignFig1>`__ shows the overall process. The first
+:ref:`The following figure <fig_overall-process>` shows the overall process. The first
 three steps are performed within the MicroEJ platform builder. The
 remaining steps are performed within the C IDE.
 
+.. _fig_overall-process:
 .. figure:: images/process-overview5.svg
    :alt: Overall Process
-   :width: 80.0%
+   :width: 100.0%
+   :align: center
 
    Overall Process
 

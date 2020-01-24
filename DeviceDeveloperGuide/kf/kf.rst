@@ -29,11 +29,12 @@ Functional Description
 ======================
 
 The Multi applications process extends the overall process described in
-`??? <#processOverviewId>`__.
+:ref:`the overview of the platform process <processOverviewId>`.
 
 .. figure:: images/process-multiapp-overview.png
    :alt: Multi applications Process
-   :width: 50.0%
+   :width: 100.0%
+   :align: center
 
    Multi applications Process
 
@@ -42,11 +43,11 @@ Once a Kernel has been generated, additional MicroEJ application code
 
 -  Creating one launch configuration per feature.
 
--  Setting the ``Settings`` field in the ``Execution`` tab of each
-   feature launch configuration to ``Build Dynamic Feature``.
+-  Setting the :guilabel:`Settings` field in the :guilabel:`Execution` tab of each
+   feature launch configuration to :guilabel:`Build Dynamic Feature`.
 
--  Setting the ``Kernel`` field in the ``Configuration`` tab of each
-   feature launch configuration to the .
+-  Setting the :guilabel:`Kernel` field in the :guilabel:`Configuration` tab of each
+   feature launch configuration to the :guilabel:`...`.
 
 using the MicroEJ application launch named Build Dynamic Feature. The
 binary application file produced (``application.fo``) is compatible only
@@ -81,8 +82,9 @@ Memory Considerations
 =====================
 
 Multi applications memory overhead of MicroEJ core engine runtime
-elements are described in `table_title <#kf-overhead>`__.
+elements are described in :ref:`the table below <table_kf-overhead>`.
 
+.. _table_kf-overhead:
 .. table:: Multi applications Memory Overhead
 
    +-----------+-----------+-----------------------------------------------+
@@ -107,7 +109,7 @@ elements are described in `table_title <#kf-overhead>`__.
 Dependencies
 ============
 
--  ``LLKERNEL_impl.h`` implementation (see `??? <#LLKF-API-SECTION>`__).
+-  ``LLKERNEL_impl.h`` implementation (see :ref:`LLKF-API-SECTION`).
 
 
 Installation
@@ -116,7 +118,7 @@ Installation
 Multi applications is an additional module, disabled by default.
 
 To enable Multi applications of the MicroEJ core engine, in the platform
-configuration file, check ``Multi Applications.``
+configuration file, check :guilabel:`Multi Applications`.
 
 
 Use
@@ -125,4 +127,4 @@ Use
 A classpath variable named ``KF-1.4`` is available.
 
 This library provides a set of options. Refer to the chapter
-`??? <#workbenchLaunchOptions>`__ which lists all available options.
+:ref:`workbenchLaunchOptions` which lists all available options.
