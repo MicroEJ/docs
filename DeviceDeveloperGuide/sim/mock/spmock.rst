@@ -8,9 +8,10 @@ The Shielded Plug Mock simulates a Shielded Plug [SP] on desktop
 computer. This mock can be accessed from the MicroEJ simulator, the
 hardware platform or a Java J2SE application.
 
-.. figure:: mock/images/hil5.svg
+.. figure:: images/hil5.svg
    :alt: Shielded Plug Mock General Architecture
    :width: 80.0%
+   :align: center
 
    Shielded Plug Mock General Architecture
 

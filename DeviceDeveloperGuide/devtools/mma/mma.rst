@@ -20,6 +20,7 @@ Functional Description
 .. figure:: images/process.svg
    :alt: Memory Map Analyzer Process
    :width: 40.0%
+   :align: center
 
    Memory Map Analyzer Process
 
@@ -48,6 +49,7 @@ directory.
 .. figure:: images/whereMapIs.png
    :alt: Retrieve Map File
    :width: 100.0%
+   :align: center
 
    Retrieve Map File
 
@@ -59,6 +61,7 @@ list.
 .. figure:: images/RI1.png
    :alt: Consult Full Memory
    :width: 100.0%
+   :align: center
 
    Consult Full Memory
 
@@ -68,5 +71,6 @@ item. This view is useful in understanding why a symbol is embedded.
 .. figure:: images/RIDetailedView.png
    :alt: Detailed View
    :width: 100.0%
+   :align: center
 
    Detailed View

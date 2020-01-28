@@ -14,7 +14,7 @@ which manages input devices. This module is composed of two elements:
 -  the C part of MicroUI input API (a built-in C archive)
 
 -  an implementation of a low level API for the input devices (LLINPUT)
-   that must be provided by the BSP (see `??? <#LLINPUT-API-SECTION>`__)
+   that must be provided by the BSP (see :ref:`LLINPUT-API-SECTION`)
 
 
 Functional Description
@@ -36,6 +36,7 @@ collaborative components that communicate using a shared buffer:
 .. figure:: images/drivers-microui-comms.svg
    :alt: Drivers and MicroUI Event Generators Communication
    :width: 80.0%
+   :align: center
 
    Drivers and MicroUI Event Generators Communication
 
@@ -55,6 +56,7 @@ event generators and sent to objects that listen for input activity.
 .. figure:: images/microui-events.png
    :alt: MicroUI Events Framework
    :width: 90.0%
+   :align: center
 
    MicroUI Events Framework
 
@@ -72,7 +74,7 @@ drivers.
 The LLAPI to implement are listed in the header file ``LLINPUT_impl.h``.
 It allows events to be sent to the MicroUI implementation. The input
 drivers are allowed to add events directly using the event generator's
-unique ID (see `??? <#section_static_init>`__). The drivers are fully
+unique ID (see :ref:`section_static_init`). The drivers are fully
 dependent on the MicroEJ framework (a driver cannot be developed without
 MicroEJ because it uses the header file generated during the MicroUI
 initialization step).
@@ -99,7 +101,7 @@ Two abstract methods must be implemented by subclasses:
    several ``int``\ s.
 
 -  ``setProperty``: Handle a generic property (key/value pair) set from
-   the static initialization file (see `??? <#muiStaticInit>`__)
+   the static initialization file (see :ref:`muiStaticInit`)
 
 The event generator is responsible for converting incoming data into a
 MicroUI event and sending the event to its listener.
@@ -108,16 +110,16 @@ MicroUI event and sending the event to its listener.
 Dependencies
 ============
 
--  MicroUI module (see `??? <#section_microui>`__)
+-  MicroUI module (see :ref:`section_microui`)
 
 -  Static MicroUI initialization step (see
-   `??? <#section_static_init>`__). This step generates a header file
+   `section_static_init`). This step generates a header file
    which contains some unique event generator IDs. These IDs must be
    used in the BSP to make the link between the input devices drivers
    and the MicroUI ``Event Generator``\ s.
 
 -  ``LLINPUT_impl.h`` implementation (see
-   `??? <#LLINPUT-API-SECTION>`__).
+   :ref:`LLINPUT-API-SECTION`).
 
 
 .. _section_inputs_installation:
@@ -129,7 +131,7 @@ Inputs is a sub-part of the MicroUI library. When the MicroUI module is
 installed, the Inputs module must be installed in order to be able to
 connect physical input devices with MicroEJ Platform. If not installed,
 the *stub* module will be used. In the platform configuration file,
-check ``UI`` > ``Inputs`` to install Inputs.
+check :guilabel:`UI` > :guilabel:`Inputs` to install Inputs.
 
 
 Use

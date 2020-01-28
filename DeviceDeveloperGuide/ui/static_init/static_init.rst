@@ -10,7 +10,7 @@ Principle
 
 MicroUI requires a configuration step (also called extension step) to
 customize itself before MicroEJ application startup (see
-`??? <#section_architecture>`__). This configuration step uses an XML
+:ref:`section_architecture`). This configuration step uses an XML
 file. In order to save both runtime execution time and flash memory, the
 file is processed by the Static MicroUI Initializer tool, avoiding the
 need to process the XML configuration file at runtime. The tool
@@ -22,7 +22,7 @@ This XML file (also called the initialization file) defines:
 
 -  The MicroUI event generators that will exist in the application in
    relation to low level drivers that provide data to these event
-   generators (see `??? <#section_input>`__).
+   generators (see :ref:`section_input`).
 
 -  Whether the application has a display; and if so, it provides its
    logical name.
@@ -36,7 +36,7 @@ Functional Description
 The Static MicroUI Initializer tool takes as entry point the
 initialization file which describes the MicroUI library extension. This
 tool is automatically launched during the MicroUI module installation
-(see `??? <#section_microui_installation>`__ ).
+(see :ref:`section_microui_installation` ).
 
 The Static MicroUI Initializer tool is able to out until three files:
 
@@ -50,9 +50,9 @@ The Static MicroUI Initializer tool is able to out until three files:
    This MicroUI extension library is always generated and MicroUI
    library cannot run without this extension.
 
--  A C header file (*.h) file. This H file contains some IDs which are
+-  A C header file (\*.h) file. This H file contains some IDs which are
    used to make a link between an input device (buttons, touch) and its
-   MicroUI event generator (see `??? <#section_input>`__).
+   MicroUI event generator (see :ref:`section_input`).
 
    This file is useless if the BSP does not provide any input device and
    the Static MicroUI Initializer tool is able to not generate this
@@ -61,7 +61,7 @@ The Static MicroUI Initializer tool is able to out until three files:
 
 -  A Java interface file. This Java file contains the same IDs which are
    used to make a link between an input device (buttons, touch) and its
-   MicroUI event generator (see `??? <#section_input>`__).
+   MicroUI event generator (see :ref:`section_input`).
 
    This Java file is used to configure the simulator with the same
    characteristics as the BSP.
@@ -70,11 +70,12 @@ The Static MicroUI Initializer tool is able to out until three files:
    the Static MicroUI Initializer tool is able to not generate this
    file. Otherwise the MicroUI configuration file has to specify where
    put this file, typically in the simulator project (also called front
-   panel project, see `??? <#section_simulation>`__).
+   panel project, see :ref:`section_simulation`).
 
 .. figure:: images/process.svg
    :alt: MicroUI Process
    :width: 80.0%
+   :align: center
 
    MicroUI Process
 
@@ -205,7 +206,7 @@ Installation
 ============
 
 The Static Initialization tool is part of the MicroUI module (see
-`??? <#section_microui>`__). Install the MicroUI module to install the
+:ref:`section_microui`). Install the MicroUI module to install the
 Static Initialization tool and fill all properties in MicroUI module
 configuration file (which must specify the name of the initialization
 file).

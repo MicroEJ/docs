@@ -52,7 +52,7 @@ This task have some mandatory attributes to fill:
       the report. Default value is the relative path of the test. It can
       be manually set by the user. More details on the output name are
       available in the section
-      `??? <#testsuite-various-customproperties>`__.
+      :ref:`testsuite-various-customproperties`.
 
    -  ``testsuite.test.path``: The current test absolute path in the
       filesystem.

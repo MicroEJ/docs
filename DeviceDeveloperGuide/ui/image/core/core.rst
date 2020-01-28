@@ -9,8 +9,8 @@ Principle
 =========
 
 The Image Engine Core module is a built-in module of the MicroUI module
-(see `??? <#section_microui>`__) for the application side, and a
-built-in module of the Display module (see `??? <#section_display>`__)
+(see :ref:`section_microui`) for the application side, and a
+built-in module of the Display module (see :ref:`section_display`)
 for the C side.
 
 
@@ -22,22 +22,23 @@ Functional Description
 .. figure:: images/process.svg
    :alt: Image Engine Core Principle
    :width: 80.0%
+   :align: center
 
    Image Engine Core Principle
 
 Process overview:
 
 1. The user specifies the pre-generated images to embed (see
-   `??? <#section_image_generator>`__) and / or the images to embed as
-   regular resources (see `??? <#section_image_runtime>`__)
+   :ref:`section_image_generator`) and / or the images to embed as
+   regular resources (see :ref:`section_image_runtime`)
 
 2. The files are embedded as resources with the MicroEJ application. The
    files' data are linked into the FLASH memory.
 
 3. When the MicroEJ application creates a MicroUI Image object, the
    Image Engine Core loads the image, calling the right sub Image Engine
-   module (see `??? <#section_image_generator>`__ and
-   `??? <#section_image_runtime>`__) to decode the specified image.
+   module (see :ref:`section_image_generator` and
+   :ref:`section_image_runtime`) to decode the specified image.
 
 4. When the MicroEJ application draws this MicroUI Image on the display
    (or on another image), the decoded image data is used, and no more
@@ -45,8 +46,8 @@ Process overview:
 
 5. When the MicroUI Image is no longer needed, it is garbage-collected
    by the platform; and the Image Engine Core asks the right sub Image
-   Engine module (see `??? <#section_image_generator>`__ and
-   `??? <#section_image_runtime>`__) to free the image working area.
+   Engine module (see :ref:`section_image_generator` and
+   :ref:`section_image_runtime`) to free the image working area.
 
 
 Image Identifier
@@ -84,8 +85,8 @@ CPU addresses' space range. It uses the External Resource Loader.
 
 When an image is located in such memory, the Image Engine Core copies it
 into RAM (into the CPU address space range). Then it calls the right sub
-Image Engine module (see `??? <#section_image_generator>`__ and
-`??? <#section_image_runtime>`__) to decode the specified image.
+Image Engine module (see :ref:`section_image_generator` and
+:ref:`section_image_runtime`) to decode the specified image.
 
 The RAM section used to load the external image is automatically freed
 when the Image Engine Core and its modules do not need it again.
@@ -94,9 +95,9 @@ when the Image Engine Core and its modules do not need it again.
 Dependencies
 ============
 
--  MicroUI module (see `??? <#section_microui>`__)
+-  MicroUI module (see :ref:`section_microui`)
 
--  Display module (see `??? <#section_display>`__)
+-  Display module (see :ref:`section_display`)
 
 
 Installation

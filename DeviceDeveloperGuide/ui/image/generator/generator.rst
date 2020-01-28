@@ -25,10 +25,11 @@ Functional Description
 .. figure:: images/static-image-gen2.svg
    :alt: Image Generator Principle
    :width: 80.0%
+   :align: center
 
    Image Generator Principle
 
-Process overview (see too `??? <#section_image_core_process>`__)
+Process overview (see too :ref:`section_image_core_process`)
 
 1. The user defines, in a text file, the images to load.
 
@@ -54,7 +55,7 @@ Extensions Purpose
 ==================
 
 The output representation of the images in the same format as the LCD
-(same pixel representation, see `??? <#imagen_lcd_format>`__) is
+(same pixel representation, see :ref:`imagen_lcd_format`) is
 dependent on the drivers that run the underlying screen. Indeed, the
 output raw format is specific to each display device. The Image
 Generator tool provided is expandable by extensions, each extension
@@ -64,17 +65,17 @@ Standard Extension
 ------------------
 
 When the LCD pixels representation is standard (``ARGB8888`` or
-``RGB565`` etc., see `??? <#display_pixel_structure>`__) the image
+``RGB565`` etc., see :ref:`display_pixel_structure`) the image
 generator does not need an extension. The formulas of conversions
 ``ARGB8888`` to RAW formats are the same as described in the chapter
-`??? <#display_pixel_structure>`__.
+:ref:`display_pixel_structure`.
 
 Generic Extension
 -----------------
 
 When the LCD pixel representation is generic
 (``1 | 2 | 4 | 8 | 16 | 24 | 32``, see
-`??? <#display_pixel_structure>`__) the image generator requires an
+:ref:`display_pixel_structure`) the image generator requires an
 extension in order to understand how to convert ARGB pixels into LCD
 pixel representations.
 
@@ -121,6 +122,7 @@ The Java project should now look like this:
 
 .. figure:: images/imagen.png
    :alt: Image Generator Extension Project
+   :align: center
 
    Image Generator Extension Project
 
@@ -144,6 +146,10 @@ With a Java class like this:
    }
 
 
+.. [1]
+   Package com.is2t.microej.microui.image
+
+
 Configuration File
 ==================
 
@@ -156,7 +162,7 @@ application classpath.
 .. note::
 
    The list file must be specified in the MicroEJ application launcher
-   (see `??? <#workbenchLaunchOptions>`__). However, all files in
+   (see :ref:`workbenchLaunchOptions`). However, all files in
    application classpath with suffix ``.images.list`` are automatically
    parsed by the Image Generator tool.
 
@@ -166,11 +172,12 @@ specified, the image is converted into the default format.
 
 .. note::
 
-   See `??? <#image_gen_tool>`__ to understand the list file grammar.
+   See :ref:`image_gen_tool` to understand the list file grammar.
 
 Below is an example of a list file for the Image Generator:
 
-::
+.. code-block:: txt
+   :caption: Image Generator Configuration File Example
 
    image1
    image2:RGB565
@@ -354,7 +361,8 @@ Select one the following format to use a generic format:
               ;
       }
 
-::
+.. code-block:: txt
+   :caption: Generic Output Format Examples
 
    image1:ARGB8888
    image2:RGB565
@@ -385,7 +393,8 @@ Disadvantages:
 -  No compression: the image size in bytes is proportional to the number
    of pixels.
 
-::
+.. code-block:: txt
+   :caption: Display Output Format Example
 
    image1:display
 
@@ -428,7 +437,8 @@ Disadvantages:
 
 -  Drawing an image is slightly slower than when using Display format.
 
-::
+.. code-block:: txt
+   :caption: RLE1 Output Format Example
 
    image1:RLE1
 
@@ -452,7 +462,8 @@ Disadvantages:
 
 -  Requires some RAM in which to store the decoded image
 
-::
+.. code-block:: txt
+   :caption: Unchanged Image Example
 
    image1
 
@@ -472,9 +483,9 @@ external memory.
 Dependencies
 ============
 
--  Image Engine Core module (see `??? <#section_image_core>`__).
+-  Image Engine Core module (see :ref:`section_image_core`).
 
--  Display module (see `??? <#section_display>`__): This module gives
+-  Display module (see :ref:`section_display`): This module gives
    the characteristics of the graphical display that are useful in
    configuring the Image Generator.
 
@@ -488,13 +499,13 @@ The Image Generator is an additional module for the MicroUI library.
 When the MicroUI module is installed, also install this module in order
 to be able to target pre-generated images.
 
-In the platform configuration file, check ``UI`` > ``Image Generator``
+In the platform configuration file, check :guilabel:`UI` > :guilabel:`Image Generator`
 to install the Image Generator module. When checked, the properties file
 ``imageGenerator`` > ``imageGenerator.properties`` is required during
 platform creation to configure the module, only when the LCD pixel
-representation is not standard (see `??? <#display_pixel_structure>`__).
+representation is not standard (see :ref:`display_pixel_structure`).
 This configuration step is used to identify the extension class name
-(see `??? <#section_image_extension>`__).
+(see :ref:`section_image_extension`).
 
 
 Use
@@ -505,10 +516,7 @@ The MicroUI Image APIs are available in the class
 pre-generated image. When an image has been pre-processed, the MicroUI
 Image APIs ``createImage*`` will load the image.
 
-Refer to the chapter `??? <#workbenchLaunchOptions>`__ (``Libraries`` >
+Refer to the chapter :ref:`workbenchLaunchOptions` (``Libraries`` >
 ``MicroUI`` > ``Image``) for more information about specifying the image
 configuration file.
 
-
-.. [1]
-   Package com.is2t.microej.microui.image

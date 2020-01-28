@@ -35,15 +35,15 @@ Dependencies
    ``LLNET_STREAMSOCKETCHANNEL_impl.h``,
    ``LLNET_DATAGRAMSOCKETCHANNEL_impl.h``, ``LLNET_DNS_impl.h``,
    ``LLNET_NETWORKADDRESS_impl.h``, ``LLNET_NETWORKINTERFACE_impl.h``
-   (see `??? <#LLNET-API-SECTION>`__).
+   (see :ref:`LLNET-API-SECTION`).
 
 
 Installation
 ============
 
 Network is an additional module. In the platform configuration file,
-check ``NET`` to install this module. When checked, the properties file
-``net > net.properties`` is required during platform creation to
+check :guilabel:`NET` to install this module. When checked, the properties file
+``net`` > ``net.properties`` is required during platform creation to
 configure the module. This configuration step is used to customize the
 kind of TCP/IP native stack used and the Domain Name System (DNS)
 implementation.
@@ -81,5 +81,5 @@ Use
 A classpath variable named ``NET-1.1`` is available.
 
 This library provides a set of options. Refer to the chapter
-`??? <#workbenchLaunchOptions>`__ which lists all available options.
+:ref:`workbenchLaunchOptions` which lists all available options.
 

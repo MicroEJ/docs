@@ -26,12 +26,14 @@ method if needed.
 Functional Description
 ======================
 
-`figure_title <#ecom_flow>`__ shows the overall process to open a
+:ref:`The diagram below <fig_ecom-flow>` shows the overall process to open a
 connection on a hardware device.
 
+.. _fig_ecom-flow:
 .. figure:: images/process.svg
    :alt: ECOM Flow
    :width: 80.0%
+   :align: center
 
    ECOM Flow
 
@@ -72,7 +74,7 @@ A device registration listener is defined by implementing
 unregistered from the device manager, listeners registered for the
 device type are notified. The notification mechanism is done in a
 dedicated MicroEJ thread. The mechanism can be enabled or disabled (see
-`??? <#workbenchLaunchOptions>`__).
+:ref:`workbenchLaunchOptions`).
 
 
 Dependencies
@@ -85,7 +87,7 @@ Installation
 ============
 
 ECOM foundation library is an additional library. In the platform
-configuration file, check ``Serial Communication`` > ``ECOM`` to install
+configuration file, check :guilabel:`Serial Communication` > :guilabel:`ECOM` to install
 the library.
 
 

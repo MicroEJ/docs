@@ -37,7 +37,8 @@ Functional Description
 
 .. figure:: images/process.svg
    :alt: Native Language Support Process
-   :width: 100.0%
+   :width: 70.0%
+   :align: center
 
    Native Language Support Process
 
@@ -136,5 +137,5 @@ Use
 A classpath variable named ``NLS-2.0`` is available.
 
 This library provides a set of options. Refer to the chapter
-`??? <#workbenchLaunchOptions>`__ which lists all available options.
+:ref:`workbenchLaunchOptions` which lists all available options.
 

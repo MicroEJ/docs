@@ -19,7 +19,7 @@ required front panel, and is displayed in a window on the user's
 development machine when the application is executed in the simulator.
 The mockFP is the equivalent of the three embedded modules (Display,
 Inputs and LED) of the MicroEJ platform (see
-`??? <#section_microui>`__).
+:ref:`section_microui`).
 
 The Front Panel mock enhances the development environment by allowing
 User Interface  applications to be designed and tested on the computer
@@ -42,7 +42,7 @@ Functional Description
 3. Defines the contents and layout of the front panel by editing an XML
    file (called an fp file). Full details about the structure and
    contents of fp files can be found in chapter
-   `??? <#front_panel_file>`__.
+   :ref:`front_panel_file`.
 
 4. Creates images to animate the operation of the controls (for example
    button down image).
@@ -75,6 +75,7 @@ The wizard will appear:
 .. figure:: images/newfp.png
    :alt: New Front Panel Project Wizard
    :width: 50.0%
+   :align: center
 
    New Front Panel Project Wizard
 
@@ -85,6 +86,7 @@ Project Contents
 
 .. figure:: images/project-content.png
    :alt: Project Contents
+   :align: center
 
    Project Contents
 
@@ -177,7 +179,7 @@ position of the widget within the front panel (0,0 is top left). There
 may be other attributes depending on the type of the widget.
 
 The file and tags specifications are available in chapter
-`??? <#front_panel_file>`__.
+:ref:`front_panel_file`.
 
 Working with fp Files
 ---------------------
@@ -201,6 +203,7 @@ A typical working layout is shown below.
 
 .. figure:: images/working-layout.png
    :alt: Working Layout Example
+   :align: center
 
    Working Layout Example
 
@@ -223,6 +226,7 @@ is useful when the widget is not rectangular.
 .. figure:: images/fp-widget-active-area.svg
    :alt: Active Area
    :width: 40.0%
+   :align: center
 
    Active Area
 
@@ -259,7 +263,8 @@ within the ``.fp`` file.
 As an example, consider this snippet of an ``.fp`` file for defining a
 push button:
 
-::
+.. code-block:: xml
+   :caption: .fp File - Push Example
 
    <push id="0" x="54" y="117"
        skin="square-normal.png"                
@@ -326,14 +331,14 @@ Image Decoders
 
 Front Panel uses its own internal image decoders when the internal image
 decoders related modules have been selected (see
-`??? <#image_internal_decoder>`__).
+:ref:`image_internal_decoder`).
 
 Front Panel can add some additional decoders like the C-side for the
-embedded platform (see `??? <#image_external_decoder>`__). However, the
+embedded platform (see :ref:`image_external_decoder`). However, the
 exhaustive list of additional decoders is limited (Front Panel is using
 the Java AWT ``ImageIO`` API). To add an additional decoder, specify the
 property ``hardwareImageDecoders.list`` in front panel configuration
-properties file (see `??? <#fp_installation>`__) with one or several
+properties file (see :ref:`fp_installation`) with one or several
 property values:
 
 .. table:: Front Panel Additional Image Decoders
@@ -360,9 +365,9 @@ The decoders list is comma (*,*) separated. Example:
 Dependencies
 ============
 
--  MicroUI module (see `??? <#section_microui>`__).
+-  MicroUI module (see :ref:`section_microui`).
 
--  Display module (see `??? <#section_display>`__): This module gives
+-  Display module (see :ref:`section_display`): This module gives
    the characteristics of the graphical display that are useful for
    configuring the Front Panel.
 
@@ -376,7 +381,7 @@ Front Panel is an additional module for MicroUI library. When the
 MicroUI module is installed, install this module in order to be able to
 simulate UI drawings on the simulator.
 
-In the platform configuration file, check ``UI`` > ``Front Panel`` to
+In the platform configuration file, check :guilabel:`UI` > :guilabel:`Front Panel` to
 install the Front Panel module. When checked, the properties file
 ``frontpanel`` > ``frontpanel.properties`` is required during platform creation to
 configure the module. This configuration step is used to identify and

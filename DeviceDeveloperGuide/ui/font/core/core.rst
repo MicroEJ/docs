@@ -9,8 +9,8 @@ Principle
 =========
 
 The Font Engine Core module is a built-in module of the MicroUI module
-(see `??? <#section_microui>`__) for the application side; and is a
-built=in module of the Display module (see `??? <#section_display>`__)
+(see :ref:`section_microui`) for the application side; and is a
+built=in module of the Display module (see :ref:`section_display`)
 for the C side.
 
 
@@ -22,6 +22,7 @@ Functional Description
 .. figure:: images/font-process2.svg
    :alt: Font Generation
    :width: 80.0%
+   :align: center
 
    Font Generation
 
@@ -61,7 +62,7 @@ Font Format
 -----------
 
 The font engine module provides fonts that conform to the Unicode
-Standard [U61]. ``The .ejf`` files hold font properties:
+Standard [U61]. The ``.ejf`` files hold font properties:
 
 -  Identifiers: Fonts hold at least one identifier that can be one of
    the predefined Unicode scripts [U61] or a user-specified identifier.
@@ -79,6 +80,7 @@ Standard [U61]. ``The .ejf`` files hold font properties:
    .. figure:: images/font-height.svg
       :alt: Font Height
       :height: 2cm
+      :align: center
 
       Font Height
 
@@ -91,6 +93,7 @@ Standard [U61]. ``The .ejf`` files hold font properties:
    .. figure:: images/font-baseline.svg
       :alt: Font baseline
       :height: 2cm
+      :align: center
 
       Font baseline
 
@@ -116,6 +119,7 @@ Standard [U61]. ``The .ejf`` files hold font properties:
    .. figure:: images/font-default-char.svg
       :alt: Default Character
       :height: 2cm
+      :align: center
 
       Default Character
 
@@ -182,8 +186,8 @@ If n is the number of bits-per-pixel, then the maximum value of a pixel
 (pmax) is 2^n – 1. The value of each color component of the final pixel
 is equal to:
 
-foreground \* pixelValue / pmax + background \* (pmax - pixelValue) /
-pmax + adjustment
+``foreground \* pixelValue / pmax + background \* (pmax - pixelValue) /
+pmax + adjustment``
 
 where adjustment is an adjustment factor specified in the board support
 package of the platform.
@@ -202,7 +206,7 @@ until eight DisplayFont inside. To prevent some C allocation at runtime,
 the number of identifiers is allocated at compile-time. By consequence,
 the available number of identifiers is limited. The MicroEJ launcher of
 the MicroEJ application has to specify the number of identifiers (refer
-to the chapter `??? <#workbenchLaunchOptions>`__ (``Target`` >
+to the chapter :ref:`workbenchLaunchOptions` (``Target`` >
 ``Memory``) to have more information where specify this number of
 identifiers.)
 
@@ -210,7 +214,7 @@ identifiers.)
 
    This number has to include the number of system fonts. A system font
    is a font file specified during the MicroUI static initialization
-   step (see `??? <#section_static_init>`__).
+   step (see :ref:`section_static_init`).
 
 When the limit of identifiers is reached, the MicroUI library throws an
 error, and the non-loaded fonts are unusable.
@@ -245,7 +249,11 @@ To render an Arabic text, the font engine requires several points:
 -  The application string and its rendering are always performed from
    left to right. However the string contents are managed by the
    application itself, and so can be filled from right to left. To write
-   the text: the string characters must be :
+   the text: 
+
+   .. image:: images/arabic.svg
+
+   the string characters must be :
    '``\ufee2\ufedc\ufe91\u0020\ufe8e\ufe92\ufea3\ufeae\ufee3``'. The
    font engine will first render the character '``\ufee2``', then
    '``\ufedc``,' and so on.
@@ -275,9 +283,9 @@ the Font Engine Core no longer needs them.
 Dependencies
 ============
 
--  MicroUI module (see `??? <#section_microui>`__)
+-  MicroUI module (see :ref:`section_microui`)
 
--  Display module (see `??? <#section_display>`__)
+-  Display module (see :ref:`section_display`)
 
 
 Installation

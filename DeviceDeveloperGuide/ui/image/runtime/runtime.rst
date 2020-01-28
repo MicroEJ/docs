@@ -10,7 +10,7 @@ Principle
 
 The Image Engine provides runtime decoders which allow the dynamic
 loading of images without using the Image Generator (see
-`??? <#section_image_generator>`__). The two main advantages are:
+:ref:`section_image_generator`). The two main advantages are:
 
 -  The original image is embedded as a resource with the MicroEJ
    application.
@@ -25,10 +25,11 @@ Functional Description
 .. figure:: images/image-decoders2.svg
    :alt: Image Decoder Principle
    :width: 80.0%
+   :align: center
 
    Image Decoder Principle
 
-Process overview (see too `??? <#section_image_core_process>`__)
+Process overview (see too :ref:`section_image_core_process`)
 
 1. The user specifies the images to embed as regular resources.
 
@@ -70,7 +71,7 @@ External Decoders
 
 Some additional decoders can be added. Implement the function
 ``LLDISPLAY_EXTRA_IMPL_decodeImage`` to add a new decoder (see
-`??? <#LLDISPLAY-EXTRA-API-SECTION>`__).
+:ref:`LLDISPLAY-EXTRA-API-SECTION`).
 
 The implementation must respect the following rules:
 
@@ -98,7 +99,7 @@ The implementation must respect the following rules:
 Dependencies
 ============
 
--  Image Engine Core module (see `??? <#section_image_core>`__)
+-  Image Engine Core module (see :ref:`section_image_core`)
 
 
 .. _section_decoder_installation:
@@ -110,9 +111,9 @@ The Image Decoders modules are some additional modules to the Display
 module. The decoders belong to distinct modules, and either or several
 may be installed.
 
-In the platform configuration file, check ``UI`` > ``Image PNG Decoder``
-to install the runtime PNG decoder. Check ``UI`` >
-``Image BMP Monochrome Decoder`` to install the runtime BMP monochrom
+In the platform configuration file, check :guilabel:`UI` > :guilabel:`Image PNG Decoder`
+to install the runtime PNG decoder. Check :guilabel:`UI` >
+:guilabel:`Image BMP Monochrome Decoder` to install the runtime BMP monochrom
 decoder.
 
 
@@ -122,5 +123,5 @@ Use
 The MicroUI Image APIs are available in the class
 ``ej.microui.display.Image``. There is no specific API that uses a
 runtime image. When an image has not been pre-processed (see
-`??? <#section_image_generator>`__), the MicroUI Image APIs
+:ref:`section_image_generator`), the MicroUI Image APIs
 ``createImage*`` will load this image.

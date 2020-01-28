@@ -19,6 +19,7 @@ Functional Description
 .. figure:: images/static-font-gen2.svg
    :alt: Font Generator Principle
    :width: 50.0%
+   :align: center
 
    Font Generator Principle
 
@@ -130,7 +131,7 @@ application classpath.
 .. note::
 
    The list file must be specified in the MicroEJ application launcher
-   (see `??? <#workbenchLaunchOptions>`__). However, all files in
+   (see :ref:`workbenchLaunchOptions`). However, all files in
    application classpath with suffix ``.fonts.list`` are automatically
    parsed by the Font Generator tool.
 
@@ -141,7 +142,7 @@ font file are embedded, and the pixel depth is 1 (i.e 1 bit-per-pixel).
 
 .. note::
 
-   See `??? <#font_gen_tool>`__ to understand the list file grammar.
+   See :ref:`font_gen_tool` to understand the list file grammar.
 
 Selecting only a specific set of characters to embed reduces the memory
 footprint. There are two ways to specify a character range: the custom
@@ -150,7 +151,8 @@ range and the known range. Several ranges can be specified, separated by
 
 Below is an example of a list file for the Font Generator:
 
-::
+.. code-block:: txt
+   :caption: Fonts Configuration File Example
 
    myfont
    myfont1:latin
@@ -173,7 +175,7 @@ memory.
 Dependencies
 ============
 
--  Font Engine Core module (see `??? <#section_font_core>`__)
+-  Font Engine Core module (see :ref:`section_font_core`)
 
 
 Installation
@@ -186,9 +188,9 @@ able to embed some additional fonts with the MicroEJ application.
 If the module is not installed, the platform user will not be able to
 embed a new font with his/her MicroEJ application. He/she will be only
 able to use the system fonts specified during the MicroUI initialization
-step (see `??? <#section_static_init>`__).
+step (see :ref:`section_static_init`).
 
-In the platform configuration file, check ``UI`` > ``Font Generator`` to
+In the platform configuration file, check :guilabel:`UI` > :guilabel:`Font Generator` to
 install the Font Generator module.
 
 
@@ -199,6 +201,6 @@ In order to be able to embed ready-to-be-displayed fonts, you must
 activate the fonts conversion feature and specify the fonts
 configuration file.
 
-Refer to the chapter `??? <#workbenchLaunchOptions>`__ (``Libraries`` >
+Refer to the chapter :ref:`workbenchLaunchOptions` (``Libraries`` >
 ``MicroUI`` > ``Font``) for more information about specifying the fonts
 configuration file.

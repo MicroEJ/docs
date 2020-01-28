@@ -139,14 +139,14 @@ A GPIO can be configured in any of five modes:
 Dependencies
 ============
 
--  ``LLHAL_impl.h`` implementation (see `??? <#LLHAL-API-SECTION>`__).
+-  ``LLHAL_impl.h`` implementation (see :ref:`LLHAL-API-SECTION`).
 
 
 Installation
 ============
 
 HAL is an additional module. In the platform configuration file, check
-``HAL`` to install the module.
+:guilabel:`HAL` to install the module.
 
 
 Use

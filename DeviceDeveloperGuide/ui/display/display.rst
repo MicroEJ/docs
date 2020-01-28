@@ -15,7 +15,7 @@ elements:
 -  the C part of MicroUI Display API (a built-in C archive)
 
 -  an implementation of a low level API for the displays (LLDISPLAY)
-   that the BSP must provide (see `??? <#LLDISPLAY-API-SECTION>`__)
+   that the BSP must provide (see :ref:`LLDISPLAY-API-SECTION`)
 
 
 .. _section_display_modes:
@@ -67,6 +67,7 @@ hardware configuration.
 .. figure:: images/display_modes_nocustom.svg
    :alt: Buffer Modes
    :width: 70.0%
+   :align: center
 
    Buffer Modes
 
@@ -99,31 +100,39 @@ function is called before starting the next set of draw operations, and
 must wait until the driver has switched to the new buffer.
 
 Synchronization steps are described in
-`table_title <#switchModeSyncSteps>`__.
+:ref:`the table below <table_switchModeSyncSteps>`.
 
+.. _table_switchModeSyncSteps :
 .. table:: Switch Mode Synchronization Steps
+    :widths: 100 100
 
-    +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
-    | *Step 1:* Drawing                                                                                                                                                                                                                                                                                                                                                                                                                           | .. image:: images/switch-step1.svg |
-    | MicroUI is drawing in buffer 0 (back buffer) and the display is reading its contents from buffer 1 (display buffer).                                                                                                                                                                                                                                                                                                                        |                                    |
-    +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
-    | *Step 2:* Switch                                                                                                                                                                                                                                                                                                                                                                                                                            | .. image:: images/switch-step2.svg |
-    | The drawing is done. Set that the next read will be done from buffer 0.                                                                                                                                                                                                                                                                                                                                                                     |                                    |
-    | Note that the display "hardware component" asynchronously continues to read data from buffer 1.                                                                                                                                                                                                                                                                                                                                             |                                    |
-    +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
-    | *Step 3:* Copy                                                                                                                                                                                                                                                                                                                                                                                                                              |                                    |
-    | A copy from the buffer 0 (new display buffer) to the buffer 1 (new back buffer) must be done to keep the contents of the current drawing. The copy routine must wait until the display has finished the switch, and start asynchronously by comparison with the MicroUI drawing routine (see next step).                                                                                                                                    | .. image:: images/switch-step3.svg |
-    | This copy routine can be done in a dedicated RTOS task or in an interrupt routine. The copy should start after the display "hardware component" has finished a full buffer  read to avoid flickering. Usually a tearing signal from the LCD at the end of the  read of the previous buffer (buffer 1) or at the beginning of the read of the new  buffer (buffer 0) throws an interrupt. The interrupt routine starts the copy using a DMA. |                                    |
-    | If it is not possible to start an asynchronous copy, the copy must be performed in the MicroUI drawing routine, at the beginning of the next step.                                                                                                                                                                                                                                                                                          |                                    |
-    | Note that the copy is partial: only the parts that have changed need to be copied, lowering the CPU load.                                                                                                                                                                                                                                                                                                                                   |                                    |
-    +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
-    | *Step 4:* Synchronisation                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |
-    | Waits until the copy routine has finished the full copy.                                                                                                                                                                                                                                                                                                                                                                                    |                                    |
-    | If the copy has not been done asynchronously, the copy must start after the display has finished the switch. It is a blocking copy because the next drawing operation has to wait until this copy is done.                                                                                                                                                                                                                                  |                                    |
-    +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
-    | *Step 4:* Next draw operation                                                                                                                                                                                                                                                                                                                                                                                                               | .. image:: images/switch-step4.svg |
-    | Same behavior as step 1 with buffers reversed.                                                                                                                                                                                                                                                                                                                                                                                              |                                    |
-    +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
+    +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
+    | *Step 1:* Drawing                                                                                                                                                                                                                                                                                          | .. image:: images/switch-step1.svg |
+    |                                                                                                                                                                                                                                                                                                            |                                    |
+    | MicroUI is drawing in buffer 0 (back buffer) and the display is reading its contents from buffer 1 (display buffer).                                                                                                                                                                                       |                                    |
+    +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
+    | *Step 2:* Switch                                                                                                                                                                                                                                                                                           | .. image:: images/switch-step2.svg |
+    |                                                                                                                                                                                                                                                                                                            |                                    |
+    | The drawing is done. Set that the next read will be done from buffer 0.                                                                                                                                                                                                                                    |                                    |
+    | Note that the display "hardware component" asynchronously continues to read data from buffer 1.                                                                                                                                                                                                            |                                    |
+    +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
+    | *Step 3:* Copy                                                                                                                                                                                                                                                                                             |                                    |
+    |                                                                                                                                                                                                                                                                                                            |                                    |
+    | A copy from the buffer 0 (new display buffer) to the buffer 1 (new back buffer) must be done to keep the contents of the current drawing. The copy routine must wait until the display has finished the switch, and start asynchronously by comparison with the MicroUI drawing routine (see next step).   | .. image:: images/switch-step3.svg |
+    | This copy routine can be done in a dedicated RTOS task or in an interrupt routine. The copy should start after the display "hardware component" has finished a full buffer read to avoid flickering.                                                                                                       |                                    |
+    | Usually a tearing signal from the LCD at the end of the  read of the previous buffer (buffer 1) or at the beginning of the read of the new  buffer (buffer 0) throws an interrupt. The interrupt routine starts the copy using a DMA.                                                                      |                                    |
+    | If it is not possible to start an asynchronous copy, the copy must be performed in the MicroUI drawing routine, at the beginning of the next step.                                                                                                                                                         |                                    |
+    | Note that the copy is partial: only the parts that have changed need to be copied, lowering the CPU load.                                                                                                                                                                                                  |                                    |
+    +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
+    | *Step 4:* Synchronisation                                                                                                                                                                                                                                                                                  |                                    |
+    |                                                                                                                                                                                                                                                                                                            |                                    |
+    | Waits until the copy routine has finished the full copy.                                                                                                                                                                                                                                                   |                                    |
+    | If the copy has not been done asynchronously, the copy must start after the display has finished the switch. It is a blocking copy because the next drawing operation has to wait until this copy is done.                                                                                                 |                                    |
+    +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
+    | *Step 4:* Next draw operation                                                                                                                                                                                                                                                                              | .. image:: images/switch-step4.svg |
+    |                                                                                                                                                                                                                                                                                                            |                                    |
+    | Same behavior as step 1 with buffers reversed.                                                                                                                                                                                                                                                             |                                    |
+    +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
 
 .. _copyBufferMode:
 
@@ -136,8 +145,9 @@ display buffer. This can be done either by a memory copy or by sending
 bytes using a bus, such as SPI or I2C.
 
 Synchronization steps are described in
-`table_title <#copyModeSyncSteps>`__.
+:ref:`the table below <table_copyModeSyncSteps>`.
 
+.. _table_copyModeSyncSteps:
 .. table:: Display Copy Mode
 
    +---------------------------+------------------------------------------+
@@ -185,13 +195,15 @@ Direct
 
 The direct mode is a single-buffered mode where the same memory area is
 used for the back buffer and the display buffer
-(`figure_title <#directMode>`__). Use of the direct mode is likely to
+(:ref:`See illustration below <fig_directMode>`). Use of the direct mode is likely to
 result in "noisy" rendering and flickering, but saves one buffer in
 runtime memory.
 
-.. figure:: display/images/direct.svg
+.. _fig_directMode:
+.. figure:: images/direct.svg
    :alt: Display Direct Mode
    :width: 30.0%
+   :align: center
 
    Display Direct Mode
 
@@ -217,7 +229,7 @@ Two layouts are available:
 
 When installing the display module, a property ``byteLayout`` is
 required to specify the kind of pixels representation (see
-`??? <#section_display_installation>`__).
+:ref:`section_display_installation`).
 
 .. table:: Byte Layout: line
 
@@ -291,10 +303,9 @@ display module supports the both memory organizations: line by line
 (pixels are laid out from left to right within a line, starting with the
 top line) and column by column (pixels are laid out from top to bottom
 within a line, starting with the left line). These byte organizations
-concern until 8 consecutive pixels (see `Byte
-Layout <#section_display_layout_byte>`__). When installing the display
+concern until 8 consecutive pixels (see :ref:`section_display_layout_byte`). When installing the display
 module, a property ``memoryLayout`` is required to specify the kind of
-pixels representation (see `??? <#section_display_installation>`__).
+pixels representation (see :ref:`section_display_installation`).
 
 .. table:: Memory Layout 'line' for BPP < 8 and byte layout 'line'
 
@@ -366,7 +377,7 @@ standard pixel memory layout. The layout of the bits within the pixel
 may be standard (see MicroUI GraphicsContext pixel formats) or
 driver-specific. When installing the display module, a property ``bpp``
 is required to specify the kind of pixel representation (see
-`??? <#section_display_installation>`__).
+:ref:`section_display_installation`).
 
 When the value is one among this list:
 ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the
@@ -514,7 +525,7 @@ When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``,
 the display module considers the LCD pixel representation as generic but
 not standard. In this case, the driver must implement functions that
 convert MicroUI's standard 32 bits ARGB colors to LCD color
-representation (see `??? <#LLDISPLAY-API-SECTION>`__). This mode is
+representation (see :ref:`LLDISPLAY-API-SECTION`). This mode is
 often used when the pixel representation is not ``ARGB`` or ``RGB`` but
 ``BGRA`` or ``BGR`` instead. This mode can also be used when the number
 of bits for a color component (alpha, red, green or blue) is not
@@ -529,7 +540,7 @@ Fonts
 -----
 
 The antialiasing mode for the fonts concerns only the fonts with more
-than 1 bit per pixel (see `??? <#section_fontgen>`__).
+than 1 bit per pixel (see :ref:`section_fontgen`).
 
 Background Color
 ----------------
@@ -555,9 +566,9 @@ LUT
 
 The display module allows to target LCD which uses a pixel indirection
 table (LUT). This kind of LCD are considered as generic but not standard
-(see `??? <#display_pixel_structure>`__). By consequence, the driver
+(see :ref:`display_pixel_structure`). By consequence, the driver
 must implement functions that convert MicroUI's standard 32 bits ARGB
-colors (see `??? <#LLDISPLAY-API-SECTION>`__) to LCD color
+colors (see :ref:`LLDISPLAY-API-SECTION`) to LCD color
 representation. For each application ARGB8888 color, the display driver
 has to find the corresponding color in the table. The display module
 will store the index of the color in the table instead of using the
@@ -624,17 +635,17 @@ Overview
 The display module allows to use an hardware accelerator to perform some
 drawings: fill a rectangle, draw an image, rotate an image etc. Some
 optional functions are available in ``LLDISPLAY_EXTRA.h`` file (see
-`??? <#LLDISPLAY-EXTRA-API-SECTION>`__). These functions are not
+:ref:`LLDISPLAY-EXTRA-API-SECTION`). These functions are not
 automatically call by the display module. The display module must be
 configured during the MicroEJ platform construction specifying which
 hardware accelerator to use. It uses the property
 ``hardwareAccelerator`` in ``display/display.properties`` file to select
-a hardware accelerator (see `??? <#section_display_installation>`__).
+a hardware accelerator (see :ref:`section_display_installation`).
 
 The following table lists the available hardware accelerators supported
 by MicroEJ, their full names, short names (used in the next tables) and
 the ``hardwareAccelerator`` property value (see
-`??? <#section_display_installation>`__).
+:ref:`section_display_installation`).
 
 .. table:: Hardware Accelerators
 
@@ -730,6 +741,12 @@ display stack according ``bpp``, an hardware accelerator can be used.
    +-----------------------------+---------+---------+---------+---------+
    | ARGB8888                    | •       | •       | •       | •       |
    +-----------------------------+---------+---------+---------+---------+
+
+.. [1]
+   hardware or software implementation
+
+.. [2]
+   see next note
 
 Features and Limits
 -------------------
@@ -840,6 +857,15 @@ asks to draw the pixels which are outside the software area. The
 hardware size is only useful to be compatible with the hardware
 accelerator restrictions about memory alignment.
 
+.. [3]
+   maximum size <= display width
+
+.. [4]
+   maximum size <= display width
+
+.. [5]
+   maximum size <= display width
+
 
 .. _section_display_implementation:
 
@@ -847,7 +873,7 @@ Implementations
 ===============
 
 The implementation of the MicroUI ``Display`` API targets a generic
-display (see `??? <#section_display_modes>`__): Switch, Copy and Direct.
+display (see :ref:`section_display_modes`): Switch, Copy and Direct.
 It provides some low level API. The BSP has to implement these LLAPI,
 making the link between the MicroUI C library ``display`` and the BSP
 display driver. The LLAPI to implement are listed in the header file
@@ -861,12 +887,12 @@ IDE when MicroUI module is installed in the MicroEJ platform.
 Dependencies
 ============
 
--  MicroUI module (see `??? <#section_microui>`__)
+-  MicroUI module (see :ref:`section_microui`)
 
 -  ``LLDISPLAY_impl.h`` implementation if standard or custom
    implementation is chosen (see
-   `??? <#section_display_implementation>`__ and
-   `??? <#LLDISPLAY-API-SECTION>`__).
+   :ref:`section_display_implementation` and
+   :ref:`LLDISPLAY-API-SECTION`).
 
 
 .. _section_display_installation:
@@ -879,11 +905,11 @@ installed, the Display module must be installed in order to be able to
 connect the physical display with the MicroEJ Platform. If not
 installed, the *stub* module will be used.
 
-In the platform configuration file, check ``UI`` > ``Display`` to
+In the platform configuration file, check :guilabel:`UI` > :guilabel:`Display` to
 install the Display module. When checked, the properties file
-``display`` > ``display.properties`` is required during platform creation to
+:guilabel:`display` > :guilabel:`display.properties` is required during platform creation to
 configure the module. This configuration step is used to choose the kind
-of implementation (see `??? <#section_display_implementation>`__).
+of implementation (see :ref:`section_display_implementation`).
 
 The properties file must / can contain the following properties:
 
@@ -992,18 +1018,3 @@ Use
 The MicroUI Display APIs are available in the class
 ``ej.microui.display.Display``.
 
-
-.. [1]
-   hardware or software implementation
-
-.. [2]
-   see next note
-
-.. [3]
-   maximum size <= display width
-
-.. [4]
-   maximum size <= display width
-
-.. [5]
-   maximum size <= display width

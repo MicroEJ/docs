@@ -13,7 +13,8 @@ blocks: chunks of RAM.
 
 .. figure:: images/sp1.svg
    :alt: A Shielded Plug Between Two Application (Java/C) Modules.
-   :width: 80.0%
+   :width: 100.0%
+   :align: center
 
    A Shielded Plug Between Two Application (Java/C) Modules.
 
@@ -160,7 +161,7 @@ controller task.
 Dependencies
 ============
 
--  ``LLSP_impl.h`` implmentation (see `??? <#LLSP-API-SECTION>`__).
+-  ``LLSP_impl.h`` implmentation (see :ref:`LLSP-API-SECTION`).
 
 
 Installation
@@ -168,7 +169,7 @@ Installation
 
 The SP library and its relative tools are an optional feature of the
 platform. In the platform configuration file, check
-``Java to C Interface`` > ``Shielded Plug`` to install the library and
+:guilabel:`Java to C Interface` > :guilabel:`Shielded Plug` to install the library and
 its relative tools.
 
 
@@ -180,4 +181,4 @@ to the build path of the MicroEJ application project in order to access
 the SP library.
 
 This library provides a set of options. Refer to the chapter
-`??? <#workbenchLaunchOptions>`__ which lists all available options.
+:ref:`workbenchLaunchOptions` which lists all available options.

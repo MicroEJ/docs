@@ -26,6 +26,7 @@ etc.).
 .. figure:: images/microui-fragment-dependencies.svg
    :alt: MicroUI Elements
    :width: 80.0%
+   :align: center
 
    MicroUI Elements
 
@@ -40,7 +41,7 @@ you to access these internal objects:
 
 First, MicroUI requires a configuration step in order to create these
 internal objects before the call to the ``main()`` method. The chapter
-`??? <#section_static_init>`__ explains how to perform the configuration
+:ref:`section_static_init` explains how to perform the configuration
 step.
 
 .. note::
@@ -58,17 +59,17 @@ device.
    +-----------------------------------------+-----------------+----------------------------+
    | I/O devices                             | Extension Name  | Chapter                    |
    +=========================================+=================+============================+
-   | Graphical / pixelated display (LCD      | Display         | `??? <#section_display>`__ |
+   | Graphical / pixelated display (LCD      | Display         | :ref:`section_display`     |
    | screen)                                 |                 |                            |
    +-----------------------------------------+-----------------+----------------------------+
-   | Inputs (buttons, joystick, touch,       | Input           | `??? <#section_input>`__   |
+   | Inputs (buttons, joystick, touch,       | Input           | :ref:`section_input`       |
    | pointers etc.)                          |                 |                            |
    +-----------------------------------------+-----------------+----------------------------+
-   | LEDs                                    | LEDs            | `??? <#section_leds>`__    |
+   | LEDs                                    | LEDs            | :ref:`section_leds`        |
    +-----------------------------------------+-----------------+----------------------------+
 
 The simulation platform uses a mock which simulates all I/O devices.
-Refer to the chapter `??? <#section_simulation>`__
+Refer to the chapter :ref:`section_simulation`
 
 
 Threads
@@ -96,7 +97,7 @@ Memory
 
 The threads are always running. The user has to count them to determine
 the number of concurrent threads the MicroEJ core engine can run (see
-Memory options in `??? <#workbenchLaunchOptions>`__).
+Memory options in :ref:`workbenchLaunchOptions`).
 
 Exceptions
 ----------
@@ -154,7 +155,7 @@ Fonts
 
 A font holds only a transparency level (alpha). This fixed alpha level
 is defined during the pre-generation of a font (see
-`??? <#section_fonts>`__).
+:ref:`section_fonts`).
 
 -  ``1`` means 2 levels are managed: fully opaque and fully transparent.
 
@@ -171,9 +172,9 @@ is defined during the pre-generation of a font (see
 Dependencies
 ============
 
--  MicroUI initialization step (see `??? <#section_static_init>`__).
+-  MicroUI initialization step (see `section_static_init`).
 
--  MicroUI C libraries (see `??? <#section_architecture>`__).
+-  MicroUI C libraries (see :ref:`section_architecture`).
 
 
 .. _section_microui_installation:
@@ -182,11 +183,11 @@ Installation
 ============
 
 The MicroUI library is an additional module. In the platform
-configuration file, check ``UI`` > ``MicroUI`` to install the library.
-When checked, the XML file ``microui`` > ``microui.xml`` is required
+configuration file, check :guilabel:`UI` > :guilabel:`MicroUI` to install the library.
+When checked, the XML file :guilabel:`microui` > :guilabel:`microui.xml` is required
 during platform creation in order to configure the module. This
 configuration step is used to extend the MicroUI library. Refer to the
-chapter `??? <#section_static_init>`__ for more information about the
+chapter :ref:`section_static_init` for more information about the
 MicroUI Initialization step.
 
 
@@ -196,5 +197,5 @@ Use
 The classpath variable named ``MICROUI-2.0`` is available.
 
 This library provides a set of options. Refer to the chapter
-`??? <#workbenchLaunchOptions>`__ which lists all available options.
+:ref:`workbenchLaunchOptions` which lists all available options.
 

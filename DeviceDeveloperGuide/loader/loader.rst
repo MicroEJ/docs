@@ -128,14 +128,14 @@ Dependencies
 ============
 
 -  ``LLEXT_RES_impl.h`` implementation (see
-   `??? <#LLEXT_RES-API-SECTION>`__).
+   :ref:`LLEXT_RES-API-SECTION`).
 
 
 Installation
 ============
 
 The External Resources Loader is an additional module. In the platform
-configuration file, check ``External Resources Loader`` to install this
+configuration file, check :guilabel:`External Resources Loader` to install this
 module.
 
 

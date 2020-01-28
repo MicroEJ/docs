@@ -20,6 +20,7 @@ replacement for the [SNI] interface.
 .. figure:: images/hil1.svg
    :alt: The HIL Connects the MicroEJ simulator to the Workstation.
    :width: 80.0%
+   :align: center
 
    The HIL Connects the MicroEJ simulator to the Workstation.
 
@@ -35,6 +36,7 @@ connection. Mocks run inside the process that runs the HIL engine.
 .. figure:: images/hil2.svg
    :alt: A MicroEJ simulator connected to its HIL Engine via a socket.
    :width: 80.0%
+   :align: center
 
    A MicroEJ simulator connected to its HIL Engine via a socket.
 

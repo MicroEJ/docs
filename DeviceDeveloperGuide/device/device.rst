@@ -15,14 +15,14 @@ Dependencies
 ============
 
 -  ``LLDEVICE_impl.h`` implementation (see
-   `??? <#LLDEVICE-API-SECTION>`__).
+   :ref:`LLDEVICE-API-SECTION`).
 
 
 Installation
 ============
 
 Device Information is an additional module. In the platform
-configuration file, check ``Device Information`` to install it. When
+configuration file, check :guilabel:`Device Information` to install it. When
 checked, the property file ``device > device.properties`` may be 
 defined during platform creation to customize the module.
 

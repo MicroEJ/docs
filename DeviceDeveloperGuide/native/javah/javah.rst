@@ -16,13 +16,14 @@ Functional Description
 ======================
 
 MicroEJ Java H tool takes as input one or several Java class files 
-(*.class) from directories and / or JAR files. It looks for Java native
+(\*.class) from directories and / or JAR files. It looks for Java native
 methods declared in these class files, and generates a skeleton(s) of
 the C file(s).
 
 .. figure:: images/javah_process.svg
    :alt: MicroEJ Java H Process
    :width: 60.0%
+   :align: center
 
    MicroEJ Java H Process
 
@@ -37,7 +38,7 @@ Installation
 ============
 
 This is an additional tool. In the platform configuration file, check
-``Java to C Interface`` > ``MicroEJ Java H`` to install the tool.
+:guilabel:`Java to C Interface` > :guilabel:`MicroEJ Java H` to install the tool.
 
 
 Use

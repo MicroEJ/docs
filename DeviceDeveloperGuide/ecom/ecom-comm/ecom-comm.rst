@@ -33,7 +33,7 @@ Functional Description
 ======================
 
 The ECOM Comm process respects the ECOM process. Please refer to the
-illustration `??? <#ecom_flow>`__.
+illustration :ref:`"ECOM flow" <fig_ecom-flow>`.
 
 
 Component architecture
@@ -81,6 +81,7 @@ exist to support a Buffered connection.
 .. figure:: images/architecture.svg
    :alt: ECOM Comm components
    :width: 80.0%
+   :align: center
 
    ECOM Comm components
 
@@ -121,6 +122,10 @@ three ways:
 When the Comm Port is identified by a number, its string identifier is
 the concatenation of "com" and the number (e.g. com11).
 
+.. [2]
+   Some drivers may reuse the same UART device for different ECOM ports
+   with a hardware multiplexer. Drivers can even treat the platform port
+   number as a logical id and map the ids to various I/O channels.
 
 .. _section_ecomcomm_mapping:
 
@@ -142,10 +147,12 @@ Opening Sequence
 The following flow chart explains Comm Port opening sequence according
 to the given Comm Port identifier.
 
-.. [2]
-   Some drivers may reuse the same UART device for different ECOM ports
-   with a hardware multiplexer. Drivers can even treat the platform port
-   number as a logical id and map the ids to various I/O channels.
+.. figure:: images/comm_open.svg
+    :alt: Comm Port Open Sequence
+    :width: 80.0%
+    :align: center
+
+    Comm Port Open Sequence
 
 
 .. _section_ecomcomm_dynamic_connections:
@@ -154,15 +161,15 @@ Dynamic Connections
 ===================
 
 The ECOM Comm stack allows to dynamically add and remove connections
-from the `??? <#section_ecomcomm_driver>`__. When a connection is added,
+from the :ref:`section_ecomcomm_driver`. When a connection is added,
 it can be immediately open by the application. When a connection is
 removed, the connection cannot be open anymore and
 ``java.io.IOException`` is thrown in threads that are using it.
 
 In addition, a dynamic connection can be registered and unregistered in
-ECOM device manager (see `??? <#section_ecom_dm>`__). The registration
+ECOM device manager (see :ref:`section_ecom_dm`). The registration
 mechanism is done in dedicated thread. It can be enabled or disabled,
-see `??? <#workbenchLaunchOptions>`__.
+see :ref:`workbenchLaunchOptions`.
 
 A removed connection is alive until it is closed by the application and,
 if enabled, unregistered from ECOM device manager. A connection is
@@ -171,6 +178,13 @@ released by the stack.
 
 The following sequence diagram shows the lifecycle of a dynamic
 connection with ECOM registration mechanism enabled.
+
+.. figure:: images/dyn_sequence.svg
+    :alt: Dynamic Connection Lifecycle
+    :width: 100.0%
+    :align: center
+
+    Dynamic Connection Lifecycle
 
 
 Java API
@@ -271,6 +285,10 @@ important to remember that the transmit and receive sides of the
 connection are separate Java stream objects, thus, they may have a
 different life cycle and one side may be closed long before the other.
 
+.. [3]
+   The following examples use Buffered connections, but Custom
+   connections follow the same pattern.
+
 The Buffered Comm stream
 ------------------------
 
@@ -354,11 +372,6 @@ In Custom mode flow control (eg. RTS/CTS or XON/XOFF) can be used to
 notify the device connected to the serial line and so avoid losing
 characters.
 
-.. [3]
-   The following examples use Buffered connections, but Custom
-   connections follow the same pattern.
-
-
 
 BSP File
 ========
@@ -370,7 +383,8 @@ written in the ECOM comm module configuration folder (near the
 ``ecom-comm.xml`` file). In previous example the ``bsp.xml`` file would
 contain:
 
-::
+.. code-block:: xml
+   :caption: ECOM Comm Driver Declaration (bsp.xml)
 
    <bsp>
        <nativeImplementation
@@ -378,6 +392,7 @@ contain:
            nativeName="LLCOMM_BUFFERED_CONNECTION"
        />
    </bsp>
+
 
 where ``nativeName`` is the name of the interface, and ``name`` is the
 name of the implementation.
@@ -393,18 +408,18 @@ be managed by the ECOM Comm stack. It also has to know each Comm port
 that can be mapped from an application port number. Such Comm port is
 identified by its platform port number and by an optional nickname (The
 port and its nickname will be visible in the MicroEJ launcher options,
-see `??? <#workbenchLaunchOptions>`__ ).
+see :ref:`workbenchLaunchOptions` ).
 
 A XML file is so required to configure the Java platform. The name of
 this file must be ``ecom-comm.xml``. It has to be stored in the module
-configuration folder (see `??? <#section_ecomcomm_installation>`__).
+configuration folder (see :ref:`section_ecomcomm_installation`).
 
 This file must start with the node ``<ecom>`` and the sub node
 ``<comms>``. It can contain several time this kind of line:
 ``<comm platformId="A_COMM_PORT_NUMBER" nickname="A_NICKNAME"/>`` where:
 
 -  ``A_COMM_PORT_NUMBER`` refers the Comm port the Java platform user
-   will be able to use (see `??? <#section_ecomcomm_mapping>`__).
+   will be able to use (see :ref:`section_ecomcomm_mapping`).
 
 -  ``A_NICKNAME`` is optional. It allows to fix a printable name of the
    Comm port.
@@ -414,8 +429,19 @@ connections allowed, including static and dynamic connections. This
 attribute is optional. By default, it is the number of declared Comm
 Ports.
 
-Example: <ecom> <comms maxConnections="20"> <comm platformId="2"/> <comm
-platformId="3" nickname="DB9"/> <comm platformId="5"/> </comms> </ecom>
+Example: 
+
+.. code-block:: xml
+    :caption: ECOM Comm Module Configuration (ecom-comm.xml)
+
+    <ecom>
+        <comms maxConnections="20">
+            <comm platformId="2"/>
+            <comm platformId="3" nickname="DB9"/>
+            <comm platformId="5"/>
+        </comms>
+    </ecom>
+
 First Comm port holds the port 2, second "3" and last "5". Only the
 second Comm port holds a nickname "DB9".
 
@@ -448,10 +474,10 @@ reach the maximal speed allowed by the network interface.
 Dependencies
 ============
 
--  ECOM (see `??? <#ecom>`__ ).
+-  ECOM (see :ref:`ecom` ).
 
 -  ``LLCOMM_impl.h`` and ``LLCOMM_xxx_CONNECTION_impl.h`` implmentations
-   (see `??? <#LLCOMM-API-SECTION>`__).
+   (see :ref:`LLCOMM-API-SECTION`).
 
 
 .. _section_ecomcomm_installation:
@@ -460,10 +486,10 @@ Installation
 ============
 
 ECOM-Comm Java library is an additional library. In the platform
-configuration file, check ``Serial Communication`` > ``ECOM-COMM`` to
-install it. When checked, the xml file ``ecom-comm`` > ``ecom-comm.xml``
+configuration file, check :guilabel:`Serial Communication` > :guilabel:`ECOM-COMM` to
+install it. When checked, the xml file :guilabel:`ecom-comm` > :guilabel:`ecom-comm.xml`
 is required during platform creation to configure the module (see
-`??? <#section_ecomcomm_xml>`__).
+:ref:`section_ecomcomm_xml`).
 
 
 Use
@@ -475,4 +501,4 @@ application which communicates with some external devices using the
 serial communication mode.
 
 This library provides a set of options. Refer to the chapter
-`??? <#workbenchLaunchOptions>`__ which lists all available options.
+:ref:`workbenchLaunchOptions` which lists all available options.

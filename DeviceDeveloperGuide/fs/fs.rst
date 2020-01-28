@@ -24,14 +24,14 @@ Dependencies
 ============
 
 -  ``LLFS_impl.h`` and ``LLFS_File_impl.h`` implementations (see
-   `??? <#LLFS-API-SECTION>`__).
+   :ref:`LLFS-API-SECTION`).
 
 
 Installation
 ============
 
 FS is an additional module. In the platform configuration file, check
-``FS`` to install it. When checked, the properties file ``fs > fs.properties`` are required during platform creation in
+:guilabel:`FS` to install it. When checked, the properties file ``fs`` > ``fs.properties`` are required during platform creation in
 order to configure the module.
 
 The properties file must / can contain the following properties:

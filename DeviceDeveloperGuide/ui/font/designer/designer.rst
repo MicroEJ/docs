@@ -19,6 +19,7 @@ Functional Description
 .. figure:: images/font-process2.svg
    :alt: Font Generation
    :width: 60.0%
+   :align: center
 
    Font Generation
 
@@ -84,6 +85,7 @@ paragraphs.
 
 .. figure:: images/font-height.png
    :alt: Font Height
+   :align: center
 
    Font Height
 
@@ -110,6 +112,7 @@ line, for example, 'g' or '}'.
 
 .. figure:: images/baseline.png
    :alt: The Baseline
+   :align: center
 
    The Baseline
 
@@ -232,6 +235,7 @@ opened.
 
 .. figure:: images/char-editor.png
    :alt: Character Editor
+   :align: center
 
    Character Editor
 
@@ -298,6 +302,7 @@ available in the font will be shown as red rectangles.
 
 .. figure:: images/font-preview.png
    :alt: Font Preview
+   :align: center
 
    Font Preview
 
@@ -346,7 +351,7 @@ platform user to create new fonts.
    provides the Font Designer module, he/she will able to create a new
    font even if the platform does not provide the Font Designer module.
 
-In the platform configuration file, check ``UI`` > ``Font Designer`` to
+In the platform configuration file, check :guilabel:`UI` > :guilabel:`Font Designer` to
 install the Font Designer module.
 
 

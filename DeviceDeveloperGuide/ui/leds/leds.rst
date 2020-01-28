@@ -14,7 +14,7 @@ manages LED devices. This module is composed of two elements:
 -  the C part of the MicroUI LEDs API (a built-in C archive),
 
 -  an implementation of a low level API for the LEDs (LLLEDS) which must
-   be provided by the BSP (see `??? <#LLLEDS-API-SECTION>`__).
+   be provided by the BSP (see :ref:`LLLEDS-API-SECTION`).
 
 
 .. _section_leds_implementation:
@@ -55,11 +55,11 @@ when the MicroUI module is installed in the MicroEJ platform.
 Dependencies
 ============
 
--  MicroUI module (see `??? <#section_microui>`__)
+-  MicroUI module (see :ref:`section_microui`)
 
 -  ``LLLEDS_impl.h`` implementation if standard implementation is chosen
-   (see `??? <#section_leds_implementation>`__ and
-   `??? <#LLLEDS-API-SECTION>`__).
+   (see :ref:`section_leds_implementation` and
+   :ref:`LLLEDS-API-SECTION`).
 
 
 .. _section_leds_installation:
@@ -72,7 +72,7 @@ installed, the LEDs module must be installed in order to be able to
 connect physical LEDs with MicroEJ Platform. If not installed, the
 *stub* module will be used.
 
-In the platform configuration file, check ``UI`` > ``LEDs`` to install
+In the platform configuration file, check :guilabel:`UI` > :guilabel:`LEDs` to install
 LEDs.
 
 

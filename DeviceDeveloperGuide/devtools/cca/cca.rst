@@ -22,6 +22,7 @@ files.
 .. figure:: images/process.svg
    :alt: Code Coverage Analyzer Process
    :width: 100.0%
+   :align: center
 
    Code Coverage Analyzer Process
 
