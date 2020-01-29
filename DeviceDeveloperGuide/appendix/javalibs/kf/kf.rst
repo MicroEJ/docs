@@ -1,3 +1,8 @@
+==
+KF
+==
+
+
 Definitions
 ===========
 
@@ -10,44 +15,45 @@ A Feature is a group of types, resources and [B-ON] immutables objects
 defined using two files that shall be in application classpath:
 
 -  ``[featureName].kf``, a Java properties file. Keys are described in
-   `table_title <#kf-feature-keys>`__.
+   :ref:`the "Feature definition file properties" table below <table_kf-feature-keys>`.
 
 -  ``[featureName].cert``, an X509 certificate file that uniquely
    identifies the Feature
 
+.. _table_kf-feature-keys:
 .. table:: Feature definition file properties
 
-   +-----------+-----------+-----------------------------------------------+
-   | Key       | Usage     | Description                                   |
-   +===========+===========+===============================================+
-   | e         | Mandatory | The fully qualified name of the class that    |
-   | ntryPoint |           | implements ``ej.kf.FeatureEntryPoint``        |
-   +-----------+-----------+-----------------------------------------------+
-   | i         | Optional  | Semicolon separated list of paths to [B-ON]   |
-   | mmutables |           | immutable files owned by the Feature. [B-ON]  |
-   |           |           | immutable file is defined by a ``/``          |
-   |           |           | separated path relative to application        |
-   |           |           | classpath                                     |
-   +-----------+-----------+-----------------------------------------------+
-   | resources | Optional  | Semicolon separated list of resource names    |
-   |           |           | owned by the Feature. Resource name is        |
-   |           |           | defined by                                    |
-   |           |           | ``Class.getResourceAsStream(String)``         |
-   +-----------+-----------+-----------------------------------------------+
-   | requ      | Optional  | Comma separated list of fully qualified names |
-   | iredTypes |           | of required types. (Types that may be         |
-   |           |           | dynamically loaded using                      |
-   |           |           | ``Class.forName()``).                         |
-   +-----------+-----------+-----------------------------------------------+
-   | types     | Optional  | Comma separated list of fully qualified names |
-   |           |           | of types owned by the Feature. A wildcard is  |
-   |           |           | allowed as terminal character to embed all    |
-   |           |           | types starting with the given qualified name  |
-   |           |           | (``a.b.C,x.y.*``)                             |
-   +-----------+-----------+-----------------------------------------------+
-   | version   | Mandatory | String version, that can retrieved using      |
-   |           |           | ``ej.kf.Module.getVersion()``                 |
-   +-----------+-----------+-----------------------------------------------+
+   +---------------+-----------+-----------------------------------------------+
+   | Key           | Usage     | Description                                   |
+   +===============+===========+===============================================+
+   | entryPoint    | Mandatory | The fully qualified name of the class that    |
+   |               |           | implements ``ej.kf.FeatureEntryPoint``        |
+   +---------------+-----------+-----------------------------------------------+
+   | immutables    | Optional  | Semicolon separated list of paths to [B-ON]   |
+   |               |           | immutable files owned by the Feature. [B-ON]  |
+   |               |           | immutable file is defined by a ``/``          |
+   |               |           | separated path relative to application        |
+   |               |           | classpath                                     |
+   +---------------+-----------+-----------------------------------------------+
+   | resources     | Optional  | Semicolon separated list of resource names    |
+   |               |           | owned by the Feature. Resource name is        |
+   |               |           | defined by                                    |
+   |               |           | ``Class.getResourceAsStream(String)``         |
+   +---------------+-----------+-----------------------------------------------+
+   | requiredTypes | Optional  | Comma separated list of fully qualified names |
+   |               |           | of required types. (Types that may be         |
+   |               |           | dynamically loaded using                      |
+   |               |           | ``Class.forName()``).                         |
+   +---------------+-----------+-----------------------------------------------+
+   | types         | Optional  | Comma separated list of fully qualified names |
+   |               |           | of types owned by the Feature. A wildcard is  |
+   |               |           | allowed as terminal character to embed all    |
+   |               |           | types starting with the given qualified name  |
+   |               |           | (``a.b.C,x.y.*``)                             |
+   +---------------+-----------+-----------------------------------------------+
+   | version       | Mandatory | String version, that can retrieved using      |
+   |               |           | ``ej.kf.Module.getVersion()``                 |
+   +---------------+-----------+-----------------------------------------------+
 
 Kernel Definition Files
 -----------------------
@@ -63,10 +69,12 @@ Kernel API Definition
 
 Kernel types, methods and static fields allowed to be accessed by
 Features must be declared in ``kernel.api`` file. Kernel API file is an
-XML file (see `figure_title <#kf-api-xsd>`__ and
-`table_title <#kf-api-tags>`__).
+XML file (see :ref:`example "Kernel API XML Schema" <fig_kf-api-xsd>` and
+:ref:`table "XML elements specification" <table_kf-api-tags>`).
 
-::
+.. _fig_kf-api-xsd:
+.. code-block:: xml
+   :caption: Kernel API XML Schema
 
    <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
        <xs:element name='require'>
@@ -98,129 +106,26 @@ XML file (see `figure_title <#kf-api-xsd>`__ and
        </xs:element>
    </xs:schema>
 
+.. _table_kf-api-tags:
 .. table:: XML elements specification
 
-   +--------+--------+-----------------------------------------------------+
-   | Tag    | Attr   | Description                                         |
-   |        | ibutes |                                                     |
-   +========+========+=====================================================+
-   | r      |        | The root element                                    |
-   | equire |        |                                                     |
-   +--------+--------+-----------------------------------------------------+
-   | field  |        | Static field declaration. Declaring a field as a    |
-   |        |        | Kernel API automatically sets the declaring type as |
-   |        |        | a Kernel API                                        |
-   +--------+--------+-----------------------------------------------------+
-   | name   | Fully  |                                                     |
-   |        | qua    |                                                     |
-   |        | lified |                                                     |
-   |        | name   |                                                     |
-   |        | on the |                                                     |
-   |        | form   |                                                     |
-   |        | ``[t   |                                                     |
-   |        | ype].[ |                                                     |
-   |        | fieldN |                                                     |
-   |        | ame]`` |                                                     |
-   +--------+--------+-----------------------------------------------------+
-   | method |        | Method or constructor declaration. Declaring a      |
-   |        |        | method or a constructor as a Kernel API             |
-   |        |        | automatically sets the declaring type as a Kernel   |
-   |        |        | API                                                 |
-   +--------+--------+-----------------------------------------------------+
-   | name   | Fully  |                                                     |
-   |        | qua    |                                                     |
-   |        | lified |                                                     |
-   |        | name   |                                                     |
-   |        | on the |                                                     |
-   |        | form   |                                                     |
-   |        | ``[typ |                                                     |
-   |        | e].[me |                                                     |
-   |        | thodNa |                                                     |
-   |        | me]([t |                                                     |
-   |        | ypeArg |                                                     |
-   |        | 1,..., |                                                     |
-   |        | typeAr |                                                     |
-   |        | gN)typ |                                                     |
-   |        | eRetur |                                                     |
-   |        | ned``. |                                                     |
-   |        | Types  |                                                     |
-   |        | are    |                                                     |
-   |        | fully  |                                                     |
-   |        | qua    |                                                     |
-   |        | lified |                                                     |
-   |        | names  |                                                     |
-   |        | or one |                                                     |
-   |        | of a   |                                                     |
-   |        | base   |                                                     |
-   |        | type   |                                                     |
-   |        | as     |                                                     |
-   |        | des    |                                                     |
-   |        | cribed |                                                     |
-   |        | by the |                                                     |
-   |        | Java   |                                                     |
-   |        | la     |                                                     |
-   |        | nguage |                                                     |
-   |        | (      |                                                     |
-   |        | ``bool |                                                     |
-   |        | ean``, |                                                     |
-   |        | ``b    |                                                     |
-   |        | yte``, |                                                     |
-   |        | ``c    |                                                     |
-   |        | har``, |                                                     |
-   |        | ``sh   |                                                     |
-   |        | ort``, |                                                     |
-   |        | ``     |                                                     |
-   |        | int``, |                                                     |
-   |        | ``l    |                                                     |
-   |        | ong``, |                                                     |
-   |        | ``fl   |                                                     |
-   |        | oat``, |                                                     |
-   |        | ``dou  |                                                     |
-   |        | ble``) |                                                     |
-   |        | When   |                                                     |
-   |        | dec    |                                                     |
-   |        | laring |                                                     |
-   |        | a      |                                                     |
-   |        | constr |                                                     |
-   |        | uctor, |                                                     |
-   |        | ``     |                                                     |
-   |        | method |                                                     |
-   |        | Name`` |                                                     |
-   |        | is the |                                                     |
-   |        | single |                                                     |
-   |        | type   |                                                     |
-   |        | name.  |                                                     |
-   |        | When   |                                                     |
-   |        | dec    |                                                     |
-   |        | laring |                                                     |
-   |        | a void |                                                     |
-   |        | method |                                                     |
-   |        | or a   |                                                     |
-   |        | constr |                                                     |
-   |        | uctor, |                                                     |
-   |        | ``ty   |                                                     |
-   |        | peRetu |                                                     |
-   |        | rned`` |                                                     |
-   |        | is     |                                                     |
-   |        | ``     |                                                     |
-   |        | void`` |                                                     |
-   +--------+--------+-----------------------------------------------------+
-   | type   |        | Type declaration, allowed to be loaded from a       |
-   |        |        | Feature using ``Class.forName()``                   |
-   +--------+--------+-----------------------------------------------------+
-   | name   | Fully  |                                                     |
-   |        | qua    |                                                     |
-   |        | lified |                                                     |
-   |        | name   |                                                     |
-   |        | on the |                                                     |
-   |        | form   |                                                     |
-   |        | ``[p   |                                                     |
-   |        | ackage |                                                     |
-   |        | ].[pac |                                                     |
-   |        | kage]. |                                                     |
-   |        | [typeN |                                                     |
-   |        | ame]`` |                                                     |
-   +--------+--------+-----------------------------------------------------+
+    +---------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+    | Tag     | Attributes | Description                                                                                                                                                                                                                                                                                                                                                                                                                    |
+    +=========+============+================================================================================================================================================================================================================================================================================================================================================================================================================================+
+    | require |            | The root element                                                                                                                                                                                                                                                                                                                                                                                                               |
+    +---------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+    |         |            | Static field declaration. Declaring a field as a Kernel API automatically sets the declaring type as a Kernel API                                                                                                                                                                                                                                                                                                              |
+    | field   +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+    |         | name       | Fully qualified name on the form ``[type].[fieldName]``                                                                                                                                                                                                                                                                                                                                                                        |
+    +---------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+    |         |            | Method or constructor declaration. Declaring a method or a constructor as a Kernel API automatically sets the declaring type as a Kernel API                                                                                                                                                                                                                                                                                   |
+    | method  +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+    |         | name       | Fully qualified name on the form ``[type].[methodName]([typeArg1,...,typeArgN)typeReturned``. Types are fully qualified names or one of a base type as described by the Java language (``boolean``, ``byte``, ``char``, ``short``, ``int``, ``long``, ``float``, ``double``) When declaring a constructor, ``methodName`` is the single type name. When declaring a void method or a constructor, ``typeReturned`` is ``void`` |
+    +---------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+    |         |            | Type declaration, allowed to be loaded from a Feature using ``Class.forName()``                                                                                                                                                                                                                                                                                                                                                |
+    | type    +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+    |         | name       | Fully qualified name on the form ``[package].[package].[typeName]``                                                                                                                                                                                                                                                                                                                                                            |
+    +---------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Access Error Codes
 ------------------
@@ -231,11 +136,12 @@ error code composed of two parts: ``[source][errorKind]``.
 
 -  ``source``: a single character indicating the kind of Java element on
    which the access error occurred
-   (`table_title <#kf-errorcodes-source>`__)
+   (:ref:`Table "Error codes: source" <table_kf-errorcodes-source>`)
 
 -  ``errorKind``: an error number indicating the action on which the
-   access error occurred (`table_title <#kf-errorcodes-kind>`__)
+   access error occurred (:ref:`Table "Error codes: kind" <table_kf-errorcodes-kind>`)
 
+.. _table_kf-errorcodes-source:
 .. table:: Error codes: source
 
    +---------+------------------------------------------------------------+
@@ -257,6 +163,7 @@ error code composed of two parts: ``[source][errorKind]``.
    | S       | Error thrown when accessing a static field                 |
    +---------+------------------------------------------------------------+
 
+.. _table_kf-errorcodes-kind:
 .. table:: Error codes: kind
 
    +---------+------------------------------------------------------------+
@@ -278,3 +185,15 @@ error code composed of two parts: ``[source][errorKind]``.
    | 5       | A call to a feature code occurs while owning a Kernel      |
    |         | monitor                                                    |
    +---------+------------------------------------------------------------+
+
+
+.. _kf-dyn:
+
+Loading Features Dynamically
+============================
+
+Features may be statically embedded with the Kernel or dynamically built
+against a Kernel. To build a Feature binary file, select
+``Build Dynamic Feature``\ MicroEJ platform\ ``Execution`` tab. The
+generated file can be dynamically loaded by the Kernel runtime using
+``ej.kf.Kernel.load(InputStream)``.

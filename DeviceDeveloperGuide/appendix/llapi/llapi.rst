@@ -223,15 +223,16 @@ send data to its associated event generator:
    otherwise it returns 1.
 
 Events will be dispatched to the associated event generator that will be
-responsible for decoding them (see `??? <#javaEventGenerators>`__).
+responsible for decoding them (see :ref:`javaEventGenerators`).
 
 The UI extension provides an implementation for each of MicroUI's
 built-in event generators. Each one has dedicated functions that allows
 a driver to send them structured data without needing to understand the
 underlying protocol to encode/decode the data.
-`table_title <#llinputApiEvtGen>`__ shows the functions provided to send
+:ref:`The following table <table_llinputApiEvtGen>` shows the functions provided to send
 structured events to the predefined event generators:
 
+.. _table_llinputApiEvtGen:
 .. table:: LLINPUT API for predefined event generators
 
    +--------------------------------------+-----------+---------------------------------------+
@@ -453,7 +454,7 @@ LUT
 
 The function ``LLDISPLAY_EXTRA_IMPL_prepareBlendingOfIndexedColors`` is
 called when drawing an image with indexed color. See
-`??? <#display_lut>`__ to have more information about indexed images.
+:ref:`display_lut` to have more information about indexed images.
 
 Hardware Accelerator
 ^^^^^^^^^^^^^^^^^^^^
@@ -462,9 +463,9 @@ Some functions allow you to use an hardware accelerator to perform some
 drawings: ``LLDISPLAY_EXTRA_IMPL_fillRect``,
 ``LLDISPLAY_EXTRA_IMPL_drawImage``, ``LLDISPLAY_EXTRA_IMPL_scaleImage``
 and ``LLDISPLAY_EXTRA_IMPL_rotateImage``. When called, the LLDISPLAY
-*must* perform the drawing (see `??? <#display_hard_accelerator>`__).
+*must* perform the drawing (see :ref:`display_hard_accelerator`).
 Otherwise a call to ``LLDISPLAY_EXTRA_IMPL_error`` will be performed
-with an error code as parameter (see `??? <#lldisplayextra_error>`__).
+with an error code as parameter (see :ref:`lldisplayextra_error`).
 Furthermore, the drawing will be not performed by software.
 
 A drawing may be executed directly during the call of the relative
@@ -503,7 +504,7 @@ Image Decoders
 ~~~~~~~~~~~~~~
 
 The API ``LLDISPLAY_EXTRA_IMPL_decodeImage`` allows to add some
-additional image decoders (see `??? <#image_external_decoder>`__). This
+additional image decoders (see :ref:`image_external_decoder`). This
 LLAPI uses some structures as parameter:
 
 ``int32_t LLDISPLAY_EXTRA_IMPL_decodeImage(int32_t address, int32_t length, int32_t expected_format, LLDISPLAY_SImage* image, LLDISPLAY_SRawImageData* image_data)``
@@ -577,7 +578,7 @@ Allocation
 ~~~~~~~~~~
 
 When decoding an image with an external image decoder (see
-`??? <#image_external_decoder>`__), the C-side has to allocate a RAW
+:ref:`image_external_decoder`), the C-side has to allocate a RAW
 image in the working buffer. The function
 ``LLDISPLAY_UTILS_allocateRawImage`` takes as parameter a strucutre
 which describes the image (size and format) and an output structure

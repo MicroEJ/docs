@@ -7,7 +7,7 @@ Error Messages
 --------------
 
 Display module calls the function ``LLDISPLAY_EXTRA_IMPL_error`` when
-the LLDISPLAY implementation *have to* perform a drawing but do not.
+the LLDISPLAY implementation *has to* perform a drawing but does not.
 
 .. table:: LLDISPLAY_EXTRA Error Messages
 

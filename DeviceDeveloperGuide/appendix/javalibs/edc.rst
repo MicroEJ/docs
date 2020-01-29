@@ -6,9 +6,9 @@ Error Messages
 
 When an exception is thrown by the runtime, the error message
 
-Generic:E=<messageId>
+``Generic:E=<messageId>``
 
-is issued, where <messageId> meaning is defined in the next table:
+is issued, where ``<messageId>`` meaning is defined in the next table:
 
 .. table:: Generic Error Messages
 
@@ -25,9 +25,9 @@ is issued, where <messageId> meaning is defined in the next table:
 When an exception is thrown by the implementation of the EDC API, the
 error message
 
-EDC-1.2:E=<messageId>
+``EDC-1.2:E=<messageId>``
 
-is issued, where <messageId> meaning is defined in the next table:
+is issued, where ``<messageId>`` meaning is defined in the next table:
 
 .. table:: EDC Error Messages
 

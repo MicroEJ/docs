@@ -7,15 +7,16 @@ Error Messages
 When an exception is thrown by the implementation of the MicroUI API,
 the exception ``MicroUIException`` with the error message
 
-MicroUI:E=<messageId>
+``MicroUI:E=<messageId>``
 
-is issued, where the meaning of <messageId> is defined in
-`table_title <#mui_error_msgs>`__.
+is issued, where the meaning of ``<messageId>`` is defined in
+:ref:`Table "MicroUI Error Messages" <table_mui-error-msgs>`.
 
+.. _table_mui-error-msgs:
 .. table:: MicroUI Error Messages
 
    +-------------+--------------------------------------------------------+
-   | Message  ID | Description                                            |
+   | Message ID  | Description                                            |
    +=============+========================================================+
    | 1           | Deadlock. Cannot wait for an event in the same thread  |
    |             | that runs events. ``Display.waitForEvent()`` must not  |
@@ -83,21 +84,21 @@ to the generic ``MicroUIException`` (see previous chapter).
 
 .. table:: MicroUI Exceptions
 
-   +-------------+--------------------------------------------------------+
-   | Message  ID | Description                                            |
-   +=============+========================================================+
-   | OutOfEven   | This exception is thrown when the pump of the internal |
-   | tsException | thread ``DisplayPump`` is full. In this case, no more  |
-   |             | event (such as ``repaint``, input events etc.) can be  |
-   |             | added into it.                                         |
-   |             |                                                        |
-   |             | Most of time this error occurs when:                   |
-   |             |                                                        |
-   |             | -  There is a user thread which performs too many      |
-   |             |    calls to the method ``paint`` without waiting for   |
-   |             |    the end of the previous drawing.                    |
-   |             |                                                        |
-   |             | -  Too many input events are pushed from an input      |
-   |             |    driver to the display pump (for example some touch  |
-   |             |    events).                                            |
-   +-------------+--------------------------------------------------------+
+   +----------------------+--------------------------------------------------------+
+   | Message ID           | Description                                            |
+   +======================+========================================================+
+   | OutOfEventsException | This exception is thrown when the pump of the internal |
+   |                      | thread ``DisplayPump`` is full. In this case, no more  |
+   |                      | event (such as ``repaint``, input events etc.) can be  |
+   |                      | added into it.                                         |
+   |                      |                                                        |
+   |                      | Most of time this error occurs when:                   |
+   |                      |                                                        |
+   |                      | -  There is a user thread which performs too many      |
+   |                      |    calls to the method ``paint`` without waiting for   |
+   |                      |    the end of the previous drawing.                    |
+   |                      |                                                        |
+   |                      | -  Too many input events are pushed from an input      |
+   |                      |    driver to the display pump (for example some touch  |
+   |                      |    events).                                            |
+   +----------------------+--------------------------------------------------------+

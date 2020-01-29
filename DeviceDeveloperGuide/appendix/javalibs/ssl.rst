@@ -7,14 +7,14 @@ Error Messages
 When an exception is thrown by the implementation of the SSL API, the
 error message
 
-SSL-2.0:E=<messageId>
+``SSL-2.0:E=<messageId>``
 
-is issued, where <messageId> meaning is defined in the next table:
+is issued, where ``<messageId>`` meaning is defined in the next table:
 
 .. table:: SSL Error Messages
 
    +-------------+--------------------------------------------------------+
-   | Message  ID | Description                                            |
+   | Message ID  | Description                                            |
    +=============+========================================================+
    | -2          | Connection reset by the peer.                          |
    +-------------+--------------------------------------------------------+

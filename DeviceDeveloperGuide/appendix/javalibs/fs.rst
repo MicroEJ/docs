@@ -7,14 +7,14 @@ Error Messages
 When an exception is thrown by the implementation of the FS API, the
 error message
 
-FS:E=<messageId>
+``FS:E=<messageId>``
 
-is issued, where <messageId> meaning is defined in the next table:
+is issued, where ``<messageId>`` meaning is defined in the next table:
 
 .. table:: File System Error Messages
 
    +-------------+--------------------------------------------------------+
-   | Message  ID | Description                                            |
+   | Message ID  | Description                                            |
    +=============+========================================================+
    | -1          | End of File (EOF).                                     |
    +-------------+--------------------------------------------------------+

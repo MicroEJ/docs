@@ -7,14 +7,14 @@ Error Messages
 When an exception is thrown by the implementation of the Net API, the
 error message
 
-NET-1.1:E=<messageId>
+``NET-1.1:E=<messageId>``
 
-is issued, where <messageId> meaning is defined in the next table:
+is issued, where ``<messageId>`` meaning is defined in the next table:
 
 .. table:: Net Error Messages
 
    +-------------+--------------------------------------------------------+
-   | Message  ID | Description                                            |
+   | Message ID  | Description                                            |
    +=============+========================================================+
    | -2          | Permission denied.                                     |
    +-------------+--------------------------------------------------------+

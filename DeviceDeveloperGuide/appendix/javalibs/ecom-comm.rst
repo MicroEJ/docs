@@ -7,14 +7,14 @@ Error Messages
 When an exception is thrown by the implementation of the ECOM-COMM API,
 the error message
 
-ECOM-COMM:E=<messageId>
+``ECOM-COMM:E=<messageId>``
 
-is issued, where <messageId> meaning is defined in the next table:
+is issued, where ``<messageId>`` meaning is defined in the next table:
 
 .. table:: ECOM-COMM error messages
 
    +-------------+--------------------------------------------------------+
-   | Message  ID | Description                                            |
+   | Message ID  | Description                                            |
    +=============+========================================================+
    | 1           | The connection descriptor must start with ``"comm:"``  |
    +-------------+--------------------------------------------------------+

@@ -6,7 +6,7 @@ Appendix B: Foundation Libraries
 
     edc
     sni
-    kf/index
+    kf/kf
     ecom
     ecom-comm
     ui/mui

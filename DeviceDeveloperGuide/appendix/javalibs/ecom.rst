@@ -7,14 +7,14 @@ Error Messages
 When an exception is thrown by the implementation of the ECOM API, the
 error message
 
-ECOM-1.1:E=<messageId>
+``ECOM-1.1:E=<messageId>``
 
-is issued, where <messageId> meaning is defined in the next table:
+is issued, where ``<messageId>`` meaning is defined in the next table:
 
 .. table:: ECOM Error Messages
 
    +-------------+--------------------------------------------------------+
-   | Message  ID | Description                                            |
+   | Message ID  | Description                                            |
    +=============+========================================================+
    | 1           | The connection has been closed. No more action can be  |
    |             | done on this connection.                               |
@@ -33,3 +33,4 @@ is issued, where <messageId> meaning is defined in the next table:
    |             | to close useless connections before trying to open the |
    |             | new connection.                                        |
    +-------------+--------------------------------------------------------+
+
