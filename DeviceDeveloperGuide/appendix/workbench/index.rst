@@ -1,4 +1,4 @@
-.. _workbenchLaunchOptions:
+.. _workbenchLaunchOptions-DEPRECATED:
 
 Appendix E: Application Launch Options
 ======================================

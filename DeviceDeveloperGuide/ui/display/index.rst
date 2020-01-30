@@ -86,7 +86,11 @@ must wait until the driver has switched to the new buffer.
 Synchronization steps are described in
 `table_title <#switchModeSyncSteps>`__.
 
+.. list-table:: test
+    :widths: 50 50
+
 .. table:: Switch Mode Synchronization Steps
+   :widths: 50 50
 
    +-----------------------------+----------------------------------------+
    | *Step 1:* Drawing           |                                        |

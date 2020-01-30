@@ -128,7 +128,8 @@ The Java project should now look like this:
 
 With a Java class like this:
 
-::
+.. code-block:: java
+   :caption: Image Generator Extension Implementation Example
 
    package com.is2t.microui.generators.extension;
 

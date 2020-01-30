@@ -1,3 +1,5 @@
+.. _workbenchLaunchOptions:
+
 Application Options
 ###################
 

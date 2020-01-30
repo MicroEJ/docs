@@ -8,4 +8,3 @@ Appendices
     javalibs/index
     tools/index
     toolchain/toolchain
-    workbench/index

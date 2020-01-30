@@ -6,7 +6,6 @@ Device Developer's Guide
 
     start
     intro
-    features
     jpfdesign/index
     mjvm/mjvm
     kf/kf
@@ -14,7 +13,6 @@ Device Developer's Guide
     native/index
     loader/loader
     ecom/index
-    nls/nls
     ui/index
     net/index
     fs/fs
@@ -22,6 +20,5 @@ Device Developer's Guide
     device/device
     devtools/index
     sim/index
-    linker/linker
     limitations
     appendix/index
