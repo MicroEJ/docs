@@ -15,7 +15,6 @@ standard output.
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_stacktracedump.png
    :alt: Code to Dump a Stack Trace
-   :width: 100.0%
    :align: center
 
    Code to Dump a Stack Trace
@@ -25,7 +24,6 @@ standard output.
 
 .. figure:: ../StandaloneAppDevGuide/png/trace1.png
    :alt: Code to Dump a Stack Trace
-   :width: 80.0%
    :align: center
 
    Code to Dump a Stack Trace
@@ -38,7 +36,6 @@ without debug information).
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_debugfofile.png
    :alt: Application Binary File with Debug Information
-   :width: 100.0%
    :align: center
 
    Application Binary File with Debug Information
@@ -51,7 +48,6 @@ the following trace is dumped on standard output.
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_tracetermite.png
    :alt: Stack Trace Output
-   :width: 100.0%
    :align: center
 
    Stack Trace Output
@@ -71,7 +67,6 @@ In :guilabel:`Execution` tab, select the :guilabel:`Stack Trace Reader` tool.
 
 .. figure:: ../ApplicationDeveloperGuide/png/STR_selecttool.png
    :alt: Select Stack Trace Reader Tool
-   :width: 100.0%
    :align: center
 
    Select Stack Trace Reader Tool
@@ -81,7 +76,6 @@ binary file with debug information (``application.fodbg``)
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_selectfile.png
    :alt: Stack Trace Reader Tool Configuration
-   :width: 80.0%
    :align: center
 
    Stack Trace Reader Tool Configuration
@@ -92,14 +86,12 @@ Application or ``application.out`` in case of a Standalone Application)
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_selectfile.png
    :alt: Stack Trace Reader Tool Configuration (Sandboxed Application)
-   :width: 100.0%
    :align: center
 
    Stack Trace Reader Tool Configuration (Sandboxed Application)
 
 .. figure:: ../StandaloneAppDevGuide/png/trace3.png
    :alt: Stack Trace Reader Tool Configuration (Standalone Application)
-   :width: 100.0%
    :align: center
 
    Stack Trace Reader Tool Configuration (Standalone Application)
@@ -112,7 +104,6 @@ application hook is now readable.
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_console.png
    :alt: Read the Stack Trace
-   :width: 100.0%
    :align: center
 
    Read the Stack Trace

@@ -19,7 +19,6 @@ for application developers targeting this device.
 
 .. figure:: ../ApplicationDeveloperGuide/png/toolchain.png
    :alt: MicroEJ Development Tools Overview
-   :width: 100.0%
    :align: center
 
    MicroEJ Development Tools Overview
@@ -66,7 +65,6 @@ instance of a MicroEJ runtime linked to:
 
 .. figure:: ../ApplicationDeveloperGuide/png/firmware.png
    :alt: MicroEJ Firmware Architecture
-   :width: 100.0%
    :align: center
 
    MicroEJ Firmware Architecture
