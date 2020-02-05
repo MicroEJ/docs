@@ -11,9 +11,9 @@ publish-subscribe API. The data-sharing between modules uses the concept
 of shared memory blocks, with introspection. The database is made of
 blocks: chunks of RAM.
 
-.. figure:: images/sp1.svg
+.. figure:: images/sp1.*
    :alt: A Shielded Plug Between Two Application (Java/C) Modules.
-   :width: 100.0%
+   :width: 70.0%
    :align: center
 
    A Shielded Plug Between Two Application (Java/C) Modules.

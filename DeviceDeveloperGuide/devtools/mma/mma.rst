@@ -17,9 +17,9 @@ consumption of different features in the RAM and ROM.
 Functional Description
 ======================
 
-.. figure:: images/process.svg
+.. figure:: images/process.*
    :alt: Memory Map Analyzer Process
-   :width: 40.0%
+   :width: 30.0%
    :align: center
 
    Memory Map Analyzer Process
@@ -48,7 +48,6 @@ directory.
 
 .. figure:: images/whereMapIs.png
    :alt: Retrieve Map File
-   :width: 100.0%
    :align: center
 
    Retrieve Map File
@@ -60,7 +59,6 @@ list.
 
 .. figure:: images/RI1.png
    :alt: Consult Full Memory
-   :width: 100.0%
    :align: center
 
    Consult Full Memory
@@ -69,8 +67,7 @@ Select an item in the list, and expand it to see all symbols used by the
 item. This view is useful in understanding why a symbol is embedded.
 
 .. figure:: images/RIDetailedView.png
-   :alt: Detailed View
-   :width: 100.0%
+   :alt: Detailed view
    :align: center
 
    Detailed View

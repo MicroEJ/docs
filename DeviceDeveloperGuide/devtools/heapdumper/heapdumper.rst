@@ -71,4 +71,4 @@ For each referenced class type, it records the values in the static
 fields of the class.
 
 For more information about using the Heap Analyzer plug-in, please refer
-to the menu ``Help`` > ``Help Contents`` > ``Heap Analyzer User Guide``.
+to the menu :guilabel:`Help` > :guilabel:`Help Contents` > :guilabel:`Heap Analyzer User Guide`.

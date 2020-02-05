@@ -22,9 +22,9 @@ memory. The two main advantages of this module are:
 Functional Description
 ======================
 
-.. figure:: images/static-image-gen2.svg
+.. figure:: images/static-image-gen2.*
    :alt: Image Generator Principle
-   :width: 80.0%
+   :width: 70.0%
    :align: center
 
    Image Generator Principle

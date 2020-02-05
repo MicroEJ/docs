@@ -23,7 +23,7 @@ simulator, it requests that the HIL engine execute it. The corresponding
 mock executes the method and provides the result back to the MicroEJ
 simulator.
 
-.. figure:: images/hil3.svg
+.. figure:: images/hil3.*
    :alt: The MicroEJ simulator Executes a Native Java Method ``foo()``.
    :width: 80.0%
    :align: center
@@ -142,7 +142,7 @@ simulator and the HIL:
 -  ``flushContent``: propagates (to the MicroEJ simulator) the contents
    of the array that is used within the HIL engine.
 
-.. figure:: images/hil4.svg
+.. figure:: images/hil4.*
    :alt: An Array and Its Counterpart in the HIL Engine.
    :width: 80.0%
    :align: center

@@ -1,2 +1,0 @@
-Simple Native Interface (SNI)
-=============================

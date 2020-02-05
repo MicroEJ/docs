@@ -1,2 +1,0 @@
-MicroEJ Linker
-==============

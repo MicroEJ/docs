@@ -6,18 +6,20 @@ engines, associated with a unique int-based event management system. It
 provides [MUI] library implementation. The following diagram depicts the
 components involved in its design, along with the provided tools:
 
-.. figure:: images/overview2.svg
+.. figure:: images/overview2.*
    :alt: The User Interface Extension Components along with a Platform
-   :width: 80.0%
+   :width: 70.0%
+   :align: center
 
    The User Interface Extension Components along with a Platform
 
 The diagram below shows a simplified view of the components involved in
 the provisioning of a Java user interface.
 
-.. figure:: images/java-c-ui-interface2.svg
+.. figure:: images/java-c-ui-interface2.*
    :alt: Overview
-   :width: 100.0%
+   :width: 70.0%
+   :align: center
 
    Overview
 

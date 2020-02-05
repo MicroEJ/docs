@@ -1,2 +1,0 @@
-MicroEJ core engine
-===================

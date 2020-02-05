@@ -22,7 +22,7 @@ loading of images without using the Image Generator (see
 Functional Description
 ======================
 
-.. figure:: images/image-decoders2.svg
+.. figure:: images/image-decoders2.*
    :alt: Image Decoder Principle
    :width: 80.0%
    :align: center

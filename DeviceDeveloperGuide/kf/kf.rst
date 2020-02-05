@@ -31,9 +31,9 @@ Functional Description
 The Multi applications process extends the overall process described in
 :ref:`the overview of the platform process <processOverviewId>`.
 
-.. figure:: images/process-multiapp-overview.png
+.. figure:: images/process-multiapp-overview.*
    :alt: Multi applications Process
-   :width: 100.0%
+   :width: 60.0%
    :align: center
 
    Multi applications Process

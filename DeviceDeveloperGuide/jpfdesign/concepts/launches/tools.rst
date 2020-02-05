@@ -12,7 +12,6 @@ used.
 .. _fig_tool-launch:
 .. figure:: images/tool-launch.png
    :alt: MicroEJ Tool Configuration
-   :width: 100.0%
    :align: center
 
    MicroEJ Tool Configuration

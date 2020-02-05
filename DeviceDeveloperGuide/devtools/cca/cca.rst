@@ -19,9 +19,9 @@ HTML report to ease the analysis of methods coverage. The HTML report is
 available in a folder named htmlReport in the same folder as the .cc
 files.
 
-.. figure:: images/process.svg
+.. figure:: images/process.*
    :alt: Code Coverage Analyzer Process
-   :width: 100.0%
+   :width: 70.0%
    :align: center
 
    Code Coverage Analyzer Process

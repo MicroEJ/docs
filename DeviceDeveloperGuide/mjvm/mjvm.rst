@@ -16,9 +16,9 @@ steps are performed within the MicroEJ Workbench. The remaining steps
 are performed within the C IDE.
 
 .. _fig_mjvm_flow2:
-.. figure:: images/mjvm_flow2.svg
+.. figure:: images/mjvm_flow2.*
    :alt: MicroEJ core engine Flow
-   :width: 100.0%
+   :width: 80.0%
    :align: center
 
    MicroEJ core engine Flow
@@ -49,9 +49,9 @@ task" refers to the tasks scheduled by the underlying OS; and the term
 "MicroEJ thread" refers to the thread scheduled by the MicroEJ core
 engine.
 
-.. figure:: images/mjvm_gt.svg
+.. figure:: images/mjvm_gt.*
    :alt: A Green Threads Architecture Example
-   :width: 100.0%
+   :width: 70.0%
    :align: center
 
    A Green Threads Architecture Example

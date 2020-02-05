@@ -19,7 +19,7 @@ for the C side.
 Functional Description
 ======================
 
-.. figure:: images/font-process2.svg
+.. figure:: images/font-process2.*
    :alt: Font Generation
    :width: 80.0%
    :align: center
@@ -77,7 +77,7 @@ Standard [U61]. The ``.ejf`` files hold font properties:
    'w' will be wider than a '!'. No width is specified for a
    proportional font.
 
-   .. figure:: images/font-height.svg
+   .. figure:: images/font-height.*
       :alt: Font Height
       :height: 2cm
       :align: center
@@ -90,7 +90,7 @@ Standard [U61]. The ``.ejf`` files hold font properties:
    number of pixels specified is the number of pixels above the
    baseline.
 
-   .. figure:: images/font-baseline.svg
+   .. figure:: images/font-baseline.*
       :alt: Font baseline
       :height: 2cm
       :align: center
@@ -116,7 +116,7 @@ Standard [U61]. The ``.ejf`` files hold font properties:
    the required character, a rectangle is displayed instead. For
    proportional fonts, the width is one third of the height of the font.
 
-   .. figure:: images/font-default-char.svg
+   .. figure:: images/font-default-char.*
       :alt: Default Character
       :height: 2cm
       :align: center
@@ -154,16 +154,16 @@ are:
    +------------+-------------------------------+---------------------------------------------+
    | Name       | Description                   | Rendering sample                            |
    +============+===============================+=============================================+
-   | ITALIC     | Pixels on upper rows are      | .. image:: images/font-filter-italic.svg    |
+   | ITALIC     | Pixels on upper rows are      | .. image:: images/font-filter-italic.*      |
    |            | shifted right. The higher a   |                                             |
    |            | pixel is relative to the base |                                             |
    |            | line, the more it is          |                                             |
    |            | right-shifted.                |                                             |
    +------------+-------------------------------+---------------------------------------------+
-   | BOLD       | 1 pixel is added to the right | .. image:: images/font-filter-bold.svg      |
+   | BOLD       | 1 pixel is added to the right | .. image:: images/font-filter-bold.*        |
    |            | of each original pixel.       |                                             |
    +------------+-------------------------------+---------------------------------------------+
-   | UNDERLINED | A line is displayed two       | .. image:: images/font-filter-underline.svg |
+   | UNDERLINED | A line is displayed two       | .. image:: images/font-filter-underline.*   |
    |            | pixels below the baseline     |                                             |
    |            | position.                     |                                             |
    +------------+-------------------------------+---------------------------------------------+
@@ -251,7 +251,7 @@ To render an Arabic text, the font engine requires several points:
    application itself, and so can be filled from right to left. To write
    the text: 
 
-   .. image:: images/arabic.svg
+   .. image:: images/arabic.*
 
    the string characters must be :
    '``\ufee2\ufedc\ufe91\u0020\ufe8e\ufe92\ufea3\ufeae\ufee3``'. The

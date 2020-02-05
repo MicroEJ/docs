@@ -6,10 +6,10 @@ Appendix B: Foundation Libraries
 
     edc
     sni
-    kf/kf
+    kf
     ecom
     ecom-comm
-    ui/mui
+    mui
     fs
     net
     ssl

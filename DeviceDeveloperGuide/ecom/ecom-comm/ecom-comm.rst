@@ -78,7 +78,7 @@ The ECOM Comm drivers are implemented using standard LLAPI features. The
 diagram below shows an example of the objects (both Java and C) that
 exist to support a Buffered connection.
 
-.. figure:: images/architecture.svg
+.. figure:: images/architecture.*
    :alt: ECOM Comm components
    :width: 80.0%
    :align: center
@@ -147,7 +147,7 @@ Opening Sequence
 The following flow chart explains Comm Port opening sequence according
 to the given Comm Port identifier.
 
-.. figure:: images/comm_open.svg
+.. figure:: images/comm_open.*
     :alt: Comm Port Open Sequence
     :width: 80.0%
     :align: center
@@ -179,7 +179,7 @@ released by the stack.
 The following sequence diagram shows the lifecycle of a dynamic
 connection with ECOM registration mechanism enabled.
 
-.. figure:: images/dyn_sequence.svg
+.. figure:: images/dyn_sequence.*
     :alt: Dynamic Connection Lifecycle
     :width: 100.0%
     :align: center

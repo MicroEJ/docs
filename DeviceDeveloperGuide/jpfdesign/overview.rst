@@ -11,9 +11,9 @@ three steps are performed within the MicroEJ platform builder. The
 remaining steps are performed within the C IDE.
 
 .. _fig_overall-process:
-.. figure:: images/process-overview5.svg
+.. figure:: images/process-overview5.*
    :alt: Overall Process
-   :width: 100.0%
+   :width: 80.0%
    :align: center
 
    Overall Process

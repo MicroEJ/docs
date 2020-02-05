@@ -19,7 +19,7 @@ for the C side.
 Functional Description
 ======================
 
-.. figure:: images/process.svg
+.. figure:: images/process.*
    :alt: Image Engine Core Principle
    :width: 80.0%
    :align: center

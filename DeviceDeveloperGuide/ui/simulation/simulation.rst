@@ -74,7 +74,6 @@ The wizard will appear:
 
 .. figure:: images/newfp.png
    :alt: New Front Panel Project Wizard
-   :width: 50.0%
    :align: center
 
    New Front Panel Project Wizard
@@ -223,9 +222,9 @@ These skins can be associated with an additional image called a
 ``filter`` or ``mask``. This image defines the widget's active area. It
 is useful when the widget is not rectangular.
 
-.. figure:: images/fp-widget-active-area.svg
+.. figure:: images/fp-widget-active-area.*
    :alt: Active Area
-   :width: 40.0%
+   :width: 50.0%
    :align: center
 
    Active Area

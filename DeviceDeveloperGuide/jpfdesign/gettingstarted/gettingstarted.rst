@@ -113,4 +113,4 @@ MicroEJ project to run on. The MicroEJ Platform will be available in:
 :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
 
 
-.. include:: bsp/bsp_section.rst
+.. include:: bsp/bsp.rst

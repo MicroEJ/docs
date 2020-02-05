@@ -17,7 +17,7 @@ Loop interface, HIL, which performs the simulation of Java-to-C calls.
 All Java-to-C calls are rerouted to an HIL engine. Indeed HIL is a
 replacement for the [SNI] interface.
 
-.. figure:: images/hil1.svg
+.. figure:: images/hil1.*
    :alt: The HIL Connects the MicroEJ simulator to the Workstation.
    :width: 80.0%
    :align: center
@@ -33,7 +33,7 @@ The MicroEJ simulator and the HIL are two processes that run in
 parallel:  the communication between them is through a socket
 connection. Mocks run inside the process that runs the HIL engine.
 
-.. figure:: images/hil2.svg
+.. figure:: images/hil2.*
    :alt: A MicroEJ simulator connected to its HIL Engine via a socket.
    :width: 80.0%
    :align: center

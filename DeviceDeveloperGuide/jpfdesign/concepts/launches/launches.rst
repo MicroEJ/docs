@@ -37,7 +37,6 @@ The :guilabel:`Main` tab allows you to set in order:
 
 .. figure:: images/mainTab.png
     :alt: MicroEJ Launch Application Main Tab
-    :width: 100.0%
     :align: center
 
     MicroEJ Launch Application Main Tab
@@ -54,7 +53,6 @@ verbose options (advanced debug purpose options).
 
 .. figure:: images/executionTab.png
     :alt: MicroEJ Launch Application Execution Tab
-    :width: 100.0%
     :align: center
 
     MicroEJ Launch Application Execution Tab
@@ -67,7 +65,6 @@ platform-specific options.
 
 .. figure:: images/configurationTab.png
     :alt: Configuration Tab
-    :width: 100.0%
     :align: center
 
     Configuration Tab

@@ -16,7 +16,7 @@ outputs a raw file for each converted font.
 Functional Description
 ======================
 
-.. figure:: images/static-font-gen2.svg
+.. figure:: images/static-font-gen2.*
    :alt: Font Generator Principle
    :width: 50.0%
    :align: center

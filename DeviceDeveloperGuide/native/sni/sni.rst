@@ -44,9 +44,9 @@ native world:
    immortal space.
 
 .. _fig_sni-flow:
-.. figure:: images/sni_flow.svg
+.. figure:: images/sni_flow.*
    :alt: SNI Processing
-   :width: 100.0%
+   :width: 60.0%
    :align: center
 
    SNI Processing
@@ -142,9 +142,9 @@ activities:
    pending.
 
 .. _fig_sni-sync:
-.. figure:: images/sni_sync.svg
+.. figure:: images/sni_sync.*
    :alt: Green Threads and RTOS Task Synchronization
-   :width: 100.0%
+   :width: 80.0%
    :align: center
 
    Green Threads and RTOS Task Synchronization

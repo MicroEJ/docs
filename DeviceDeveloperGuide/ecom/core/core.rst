@@ -30,9 +30,9 @@ Functional Description
 connection on a hardware device.
 
 .. _fig_ecom-flow:
-.. figure:: images/process.svg
+.. figure:: images/process.*
    :alt: ECOM Flow
-   :width: 80.0%
+   :width: 70.0%
    :align: center
 
    ECOM Flow
