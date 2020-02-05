@@ -63,7 +63,6 @@ Create a MicroEJ Standalone Application
 
    .. figure:: png/newApp1.png
       :alt: New MicroEJ Standalone Application Project
-      :width: 80.0%
       :align: center
 
       New MicroEJ Standalone Application Project
@@ -90,7 +89,6 @@ Create a MicroEJ Standalone Application
 
    .. figure:: png/newApp8.png
       :alt: New Package
-      :width: 80.0%
       :align: center
 
       New Package
@@ -102,7 +100,6 @@ Create a MicroEJ Standalone Application
 
    .. figure:: png/newApp9.png
       :alt: New Class
-      :width: 80.0%
       :align: center
 
       New Class
@@ -117,7 +114,6 @@ Create a MicroEJ Standalone Application
 
    .. figure:: png/newApp10.png
       :alt: MicroEJ Application Content
-      :width: 80.0%
       :align: center
 
       MicroEJ Application Content
@@ -134,7 +130,6 @@ and select :guilabel:`Run` > :guilabel:`Run as` > :guilabel:`MicroEJ Application
 
 .. figure:: png/sim1.png
    :alt: MicroEJ Development Tools Overview
-   :width: 80.0%
    :align: center
 
    MicroEJ Development Tools Overview
@@ -173,7 +168,6 @@ run a built-in application on MicroEJ Simulator and on hardware device.
 
 .. figure:: png/emb1.png
    :alt: MicroEJ Platform Guide
-   :width: 80.0%
    :align: center
 
    MicroEJ Platform Guide

@@ -55,7 +55,7 @@ The following figure gives an overview of MicroEJ Studio possibilities:
 
 .. figure:: png/1_overview.png
    :alt: MicroEJ Application Development Overview
-   :width: 100.0%
+   :align: center
 
    MicroEJ Application Development Overview
 
@@ -91,7 +91,7 @@ components required for both host computer and target hardware:
 
 .. figure:: png/2_download.png
    :alt: MicroEJ Studio Development Imported Elements
-   :width: 100.0%
+   :align: center
 
    MicroEJ Studio Development Imported Elements
 
@@ -196,7 +196,6 @@ device.
 
 .. figure:: ../SandboxedAppDevGuide/png/virtual-device.png
    :alt: MicroEJ Virtual Device Architecture
-   :width: 100.0%
    :align: center
 
    MicroEJ Virtual Device Architecture
@@ -213,7 +212,6 @@ the MicroEJ Resource Center (:guilabel:`Window` > :guilabel:`Show View` >
 
 .. figure:: ../SandboxedAppDevGuide/png/Overview_resourcecenter.png
    :alt: MicroEJ Resource Center APIs
-   :width: 40.0%
    :align: center
 
    MicroEJ Resource Center APIs

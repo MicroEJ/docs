@@ -35,7 +35,7 @@ which are available to the NLS library at runtime.
 Functional Description
 ======================
 
-.. figure:: images/process.svg
+.. figure:: images/process.*
    :alt: Native Language Support Process
    :width: 70.0%
    :align: center
