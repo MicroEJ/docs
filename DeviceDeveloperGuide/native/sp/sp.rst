@@ -161,7 +161,7 @@ controller task.
 Dependencies
 ============
 
--  ``LLSP_impl.h`` implmentation (see :ref:`LLSP-API-SECTION`).
+-  ``LLSP_impl.h`` implementation (see :ref:`LLSP-API-SECTION`).
 
 
 Installation

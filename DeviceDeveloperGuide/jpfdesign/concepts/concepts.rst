@@ -113,7 +113,7 @@ must notify the library using a ``receive`` function.
 
 .. figure:: images/low-level-3c.*
    :alt: Low Level API Example
-   :width: 70.0%
+   :width: 80.0%
    :align: center
 
    Low Level API Example

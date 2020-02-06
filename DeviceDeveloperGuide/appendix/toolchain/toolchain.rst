@@ -18,7 +18,7 @@ There are two steps to use the FPU in an application. The first step is
 to tell the compiler and the linker that the microcontroller has an FPU
 available so that they will produce compatible binary code. The second
 step is to enable the FPU during execution. This is done by writing to
-CPAR in the SystemInit() function. Even if there is an FPU in the
+CPAR in the ``SystemInit()`` function. Even if there is an FPU in the
 processor, the linker may still need to use runtime library functions to
 deal with advanced operations. A program may also define calculation
 functions with floating numbers, either as parameters or return values.
@@ -80,12 +80,12 @@ ARM Cortex-M0+
 
 .. table:: ARM Cortex-M0+ Compilers
 
-   +---------------------+-----------+-----------------------------------+
-   | Compiler            | Version   | Flags and Options                 |
-   +=====================+===========+===================================+
-   | IAR C/C++ Compiler  | 7.        | ``--cpu Cortex-M0+ --fpu None``   |
-   | for ARM             | 40.3.8902 |                                   |
-   +---------------------+-----------+-----------------------------------+
+   +---------------------+-------------+-----------------------------------+
+   | Compiler            | Version     | Flags and Options                 |
+   +=====================+=============+===================================+
+   | IAR C/C++ Compiler  | 7.40.3.8902 | ``--cpu Cortex-M0+ --fpu None``   |
+   | for ARM             |             |                                   |
+   +---------------------+-------------+-----------------------------------+
 
 
 ARM Cortex-M4

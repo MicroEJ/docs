@@ -273,8 +273,8 @@ code such as logging calls and errors for example.
    - 
 
       - boolean invokeBoolean(), byte invokeByte(), char invokeChar(),
-         short invokeShort(), int invokeInt(), long invokeLong(), double
-         invokeDouble(), float invokeFloat()
+        short invokeShort(), int invokeInt(), long invokeLong(), double
+        invokeDouble(), float invokeFloat()
       - Remote invocation for a proxy method that returns a base type
 
 

@@ -14,3 +14,5 @@ The Font Designer documentation is available at: :guilabel:`Help` >
 :guilabel:`Help Contents` > :guilabel:`Font Designer User Guide`.
 
 .. include:: ../ApplicationDeveloperGuide/sectionStackTraceReader.rst
+
+.. include:: ../ApplicationDeveloperGuide/sectionHeapAnalyzer.rst
