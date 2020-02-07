@@ -50,6 +50,9 @@ Setup MicroEJ SDK
 
 .. include:: sectionPlatform.rst
 
+.. include:: sectionLicenses.rst
+
+
 Build and Run an Application
 ============================
 

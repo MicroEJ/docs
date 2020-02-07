@@ -103,44 +103,21 @@ Synchronization steps are described in
 :ref:`the table below <table_switchModeSyncSteps>`.
 
 .. _table_switchModeSyncSteps :
-.. table:: Switch Mode Synchronization Steps test ascii table
-    :widths: 1 1
-
-    +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-    | | *Step 1:* Drawing                                                                                                                                                                                                                                                                                        | .. image:: images/switch-step1.* |
-    | | MicroUI is drawing in buffer 0 (back buffer) and the display is reading its contents from buffer 1 (display buffer).                                                                                                                                                                                     |                                  |
-    +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-    | | *Step 2:* Switch                                                                                                                                                                                                                                                                                         |                                  |
-    | | The drawing is done. Set that the next read will be done from buffer 0.                                                                                                                                                                                                                                  | .. image:: images/switch-step2.* |
-    | | Note that the display "hardware component" asynchronously continues to read data from buffer 1.                                                                                                                                                                                                          |                                  |
-    +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-    | | *Step 3:* Copy                                                                                                                                                                                                                                                                                           |                                  |
-    | | A copy from the buffer 0 (new display buffer) to the buffer 1 (new back buffer) must be done to keep the contents of the current drawing. The copy routine must wait until the display has finished the switch, and start asynchronously by comparison with the MicroUI drawing routine (see next step). |                                  |
-    | | This copy routine can be done in a dedicated RTOS task or in an interrupt routine. The copy should start after the display "hardware component" has finished a full buffer read to avoid flickering.                                                                                                     | .. image:: images/switch-step3.* |
-    | | Usually a tearing signal from the LCD at the end of the  read of the previous buffer (buffer 1) or at the beginning of the read of the new  buffer (buffer 0) throws an interrupt. The interrupt routine starts the copy using a DMA.                                                                    |                                  |
-    | | If it is not possible to start an asynchronous copy, the copy must be performed in the MicroUI drawing routine, at the beginning of the next step.                                                                                                                                                       |                                  |
-    | | Note that the copy is partial: only the parts that have changed need to be copied, lowering the CPU load.                                                                                                                                                                                                |                                  |
-    +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-    | | *Step 4:* Synchronisation                                                                                                                                                                                                                                                                                |                                  |
-    | | Waits until the copy routine has finished the full copy.                                                                                                                                                                                                                                                 |                                  |
-    | | If the copy has not been done asynchronously, the copy must start after the display has finished the switch. It is a blocking copy because the next drawing operation has to wait until this copy is done.                                                                                               |                                  |
-    +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-    | | *Step 5:* Next draw operation                                                                                                                                                                                                                                                                            | .. image:: images/switch-step4.* |
-    | | Same behavior as step 1 with buffers reversed.                                                                                                                                                                                                                                                           |                                  |
-    +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
-
-.. list-table:: test list table
-   :widths: 1 1
+.. list-table:: Switch Mode Synchronization Steps
 
    -
       - | *Step 1:* Drawing
         | MicroUI is drawing in buffer 0 (back buffer) and the display is reading its contents from buffer 1 (display buffer).
       - .. image:: images/switch-step1.*
+           :width: 284px
+           :height: 160px
    -
       - | *Step 2:* Switch
         | The drawing is done. Set that the next read will be done from buffer 0.
         | Note that the display \"hardware component\" asynchronously continues to read data from buffer 1.
       - .. image:: images/switch-step2.*
+           :width: 284px
+           :height: 160px
    -
       - | *Step 3:* Copy
         | A copy from the buffer 0 (new display buffer) to the buffer 1 (new back buffer) must be done to keep the contents of the current drawing. The copy routine must wait until the display has finished the switch, and start asynchronously by comparison with the MicroUI drawing routine (see next step).
@@ -149,6 +126,8 @@ Synchronization steps are described in
         | If it is not possible to start an asynchronous copy, the copy must be performed in the MicroUI drawing routine, at the beginning of the next step.
         | Note that the copy is partial: only the parts that have changed need to be copied, lowering the CPU load.
       - .. image:: images/switch-step3.*
+           :width: 284px
+           :height: 160px
    -
       - | *Step 4:* Synchronisation
         | Waits until the copy routine has finished the full copy.
@@ -158,6 +137,8 @@ Synchronization steps are described in
       - | *Step 5:* Next draw operation
         | Same behavior as step 1 with buffers reversed.
       - .. image:: images/switch-step4.*
+           :width: 284px
+           :height: 160px
 
 .. _copyBufferMode:
 
@@ -173,17 +154,27 @@ Synchronization steps are described in
 :ref:`the table below <table_copyModeSyncSteps>`.
 
 .. _table_copyModeSyncSteps:
-.. csv-table:: Display Copy Mode
-   :widths: 1 1
-   :escape: \
+.. list-table:: Display Copy Mode
 
-   "| *Step 1:* Drawing 
-   | MicroUI is drawing in the back buffer and the display is reading its content from the display buffer.", ".. image:: images/copy-step1.*"
-   "| *Step 2:* Copy 
-   | The drawing is done. A copy from the back buffer to the display buffer is triggered. 
-   | Note that the implementation of the copy operation may be done asynchronously – it is recommended to wait until the display \"hardware component\" has finished a full buffer read to avoid flickering. At the implementation level, the copy may be done by a DMA, a dedicated RTOS task, interrupt, etc.", ".. image:: images/copy-step2.*"
-   "| *Step 3:*  Synchronization
-   | The next drawing operation waits until the copy is complete.", ".. image:: images/copy-step3.*"
+   -
+      - | *Step 1:* Drawing 
+        | MicroUI is drawing in the back buffer and the display is reading its content from the display buffer.
+      - .. image:: images/copy-step1.*
+           :width: 284px
+           :height: 160px
+   -
+      - | *Step 2:* Copy 
+        | The drawing is done. A copy from the back buffer to the display buffer is triggered. 
+        | Note that the implementation of the copy operation may be done asynchronously – it is recommended to wait until the display "hardware component" has finished a full buffer read to avoid flickering. At the implementation level, the copy may be done by a DMA, a dedicated RTOS task, interrupt, etc.
+      - .. image:: images/copy-step2.*
+           :width: 284px
+           :height: 160px
+   -
+      - | *Step 3:*  Synchronization
+        | The next drawing operation waits until the copy is complete.
+      - .. image:: images/copy-step3.*
+           :width: 284px
+           :height: 160px
 
 
 .. _directBufferMode:

@@ -46,6 +46,8 @@ project appearance order (top to bottom).
 .. figure:: ../ApplicationDeveloperGuide/png/ClassPath_4.png
    :alt: MicroEJ Application Classpath Mapping
    :align: center
+   :width: 865px
+   :height: 550px
 
    MicroEJ Application Classpath Mapping
 
