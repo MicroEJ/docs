@@ -18,7 +18,6 @@ standard output.
    :align: center
    :width: 425px
    :height: 124px
-   :scale: 100
 
    Code to Dump a Stack Trace
 
@@ -28,7 +27,6 @@ standard output.
 .. figure:: ../StandaloneAppDevGuide/png/trace1.png
    :alt: Code to Dump a Stack Trace
    :align: center
-   :scale: 100
 
    Code to Dump a Stack Trace
 
@@ -43,7 +41,6 @@ without debug information).
    :align: center
    :width: 335px
    :height: 332px
-   :scale: 100
 
    Application Binary File with Debug Information
 

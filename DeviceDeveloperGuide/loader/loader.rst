@@ -22,8 +22,8 @@ MicroEJ platform makes the distinction between two kinds of resources:
    etc.).
 
    The available list of internal resources to embed must be specified
-   in the MicroEJ application launcher (MicroEJ launch). Under the tab
-   “Resources”, select all internal resources to embed in the final
+   in the MicroEJ application launcher (MicroEJ launch). Under the "Resources"
+   tab, select all internal resources to embed in the final
    binary file.
 
 -  External resource: The resource is not taken into consideration by
