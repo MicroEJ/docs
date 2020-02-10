@@ -162,6 +162,7 @@ Synchronization steps are described in
       - .. image:: images/copy-step1.*
            :width: 284px
            :height: 160px
+           :scale: 100
    -
       - | *Step 2:* Copy 
         | The drawing is done. A copy from the back buffer to the display buffer is triggered. 
@@ -169,13 +170,14 @@ Synchronization steps are described in
       - .. image:: images/copy-step2.*
            :width: 284px
            :height: 160px
+           :scale: 100
    -
       - | *Step 3:*  Synchronization
         | The next drawing operation waits until the copy is complete.
       - .. image:: images/copy-step3.*
            :width: 284px
            :height: 160px
-
+           :scale: 100
 
 .. _directBufferMode:
 

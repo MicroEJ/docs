@@ -18,6 +18,7 @@ standard output.
    :align: center
    :width: 425px
    :height: 124px
+   :scale: 100
 
    Code to Dump a Stack Trace
 
@@ -27,8 +28,7 @@ standard output.
 .. figure:: ../StandaloneAppDevGuide/png/trace1.png
    :alt: Code to Dump a Stack Trace
    :align: center
-   :width: 424px
-   :height: 204px
+   :scale: 100
 
    Code to Dump a Stack Trace
 
@@ -43,6 +43,7 @@ without debug information).
    :align: center
    :width: 335px
    :height: 332px
+   :scale: 100
 
    Application Binary File with Debug Information
 
@@ -140,3 +141,8 @@ Other debug information files can be appended using the
 :guilabel:`Additional object files` option. Lines owned by the firmware can be
 decoded with the firwmare debug information file (optionally made
 available by your firmware provider).
+
+--------------
+
+| Copyright 2008-2020, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval.
+| MicroEJ is a trademark of MicroEJ Corp. All other trademarks and copyrights are the property of their respective owners.

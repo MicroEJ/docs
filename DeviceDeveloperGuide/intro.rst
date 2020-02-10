@@ -35,11 +35,8 @@ runtime associated with a smart RAM optimizer. It provides four built-in
 foundation libraries :
 
 -  [B-ON]
-
 -  [EDC]
-
 -  [SNI]
-
 -  [SP]
 
 :ref:`The following figure <fig_jpf-runtime-components>` shows the components involved.
