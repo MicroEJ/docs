@@ -196,6 +196,7 @@ device.
 
 .. figure:: ../SandboxedAppDevGuide/png/virtual-device.png
    :alt: MicroEJ Virtual Device Architecture
+   :width: 90.0%
    :align: center
 
    MicroEJ Virtual Device Architecture

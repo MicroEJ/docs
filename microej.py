@@ -173,6 +173,8 @@ def get_project_name():
         return 'Standalone Application Developer Guide'
     elif docset == 'ApplicationDeveloperGuide':
         return 'Application Developer Guide'
+    elif docset == 'DeviceDeveloperGuide':
+        return 'Device Developer Guide'
     elif docset == 'Landing':
         return 'MicroEJ Documentation'
 

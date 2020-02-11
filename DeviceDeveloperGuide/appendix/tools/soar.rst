@@ -3,8 +3,9 @@ Smart Linker
 
 When a generic exception is thrown by the Smart Linker, the error
 message 
+
 ::
-    SOAR ERROR [M<messageId>] <message>
+   SOAR ERROR [M<messageId>] <message>
 
 is issued, where ``<messageId>`` and ``<message>`` meanings are defined in the
 next table.

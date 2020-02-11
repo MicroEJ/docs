@@ -125,7 +125,9 @@ contents can be divided into two principal categories:
 
 -  Memory layout definitions.
 
+.. _linker-memorylayout-example:
 .. code-block:: xml
+   :caption: Example of Relocation of Runtime Data from ``FLASH`` to ``RAM``
 
    <?xml version="1.0" encoding="UTF-8"?>
    <!--

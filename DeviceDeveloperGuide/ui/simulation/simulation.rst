@@ -393,7 +393,7 @@ The properties file must / can contain the following properties:
    the project name does not exist, a new project will be created.
 
 -  ``fpFile.name`` [optional, default value is "" (*empty*)]: Defines
-   the front panel file (*.fp) to export (in case "project.name"
+   the front panel file (\*.fp) to export (in case "project.name"
    contains several fp files). If empty or unspecified, the first ".fp"
    file found will be exported.
 

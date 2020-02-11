@@ -52,8 +52,7 @@ Supported MicroEJ core engine Capabilities by Architecture Matrix
 The following table lists the supported MicroEJ core engine capabilities
 by MicroEJ architectures.
 
-.. table:: Supported MicroEJ core engine Capabilities by MicroEJ
-architecture Matrix
+.. table:: Supported MicroEJ core engine Capabilities by MicroEJ architecture Matrix
 
    +-----------------+------------------------+-------------+-------------+--------------+
    | MicroEJ core engine Architectures        | Capabilities                             |

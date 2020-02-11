@@ -474,7 +474,7 @@ reach the maximal speed allowed by the network interface.
 Dependencies
 ============
 
--  ECOM (see :ref:`ecom` ).
+-  ECOM (see :ref:`ecom_`).
 
 -  ``LLCOMM_impl.h`` and ``LLCOMM_xxx_CONNECTION_impl.h`` implmentations
    (see :ref:`LLCOMM-API-SECTION`).

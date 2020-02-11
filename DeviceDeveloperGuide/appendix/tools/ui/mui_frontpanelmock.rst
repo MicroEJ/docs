@@ -15,17 +15,16 @@ XML Schema
    <frontpanel 
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://xml.is2t.com/ns/1.0/frontpanel" 
-       xsi:schemaLocation="http://xml.is2t.com/ns/1.0/frontpanel .fp1.0.xsd">
-               
-           
+       xsi:schemaLocation="http://xml.is2t.com/ns/1.0/frontpanel.fp1.0.xsd">
+
        <description file="widgets.desc"/>
-           
-       <device name="example" skin="example-device.png">
+
+       <device name="example" skin="example-device.png" />
            <body>
-               <init class="[fully-qualified-class-name]"/> (optional)
+               <init class="[fully-qualified-class-name]"/> <!-- (optional) -->
                <[widget-type] id="0" x="54" y="117" [widget-attributes] />
                <[widget-type] id="1" x="266" y="115" [widget-attributes] />
-               ...
+               <!-- ... -->
            </body>
        </device>
    </frontpanel>

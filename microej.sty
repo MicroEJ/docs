@@ -26,6 +26,11 @@
     VerbatimBorderColor={named}{codeborder},
 }
 
+% fancy theme for footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rfoot{test copyright footer}
+
 % Restyle code elements to border boxes with color, not just \emph (default)
 \renewcommand{\sphinxcode}[1]{
   {\fcolorbox{codeborder}{codebg}{\color{code}\texttt{#1}}}
