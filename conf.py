@@ -62,6 +62,7 @@ latex_elements = {
     'preamble': r'\usepackage{microej}',
     'figure_align': 'H',
     'extraclassoptions': 'oneside',
+    'atendofbody': 'test atendofbody'
 }
 latex_additional_files = ['microej.sty']
 latex_logo = '_themes/microej/static/mascot.pdf'
