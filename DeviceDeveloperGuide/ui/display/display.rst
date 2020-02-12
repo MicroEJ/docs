@@ -148,10 +148,9 @@ Switch Mode Synchronization Steps
    :align: center
 
 
-.. tabularcolumn:: |L|C|
+.. tabularcolumns:: |L|C|
 
 .. list-table:: test list table
-   :widths: 1 1
 
    -
       - | *Step 1:* Drawing
@@ -227,7 +226,6 @@ Display Copy Mode
 .. tabularcolumns:: |3|2|
 
 .. csv-table:: Display Copy Mode
-   :widths: 1 1
    :escape: \
 
    "| *Step 1:* Drawing 
