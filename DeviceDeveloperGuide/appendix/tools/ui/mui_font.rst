@@ -419,6 +419,8 @@ and sub-ranges (processed from the "Unicode Character Database" version
 Error Messages
 --------------
 
+.. tabularcolumns:: |L|C|L|
+
 .. table:: Static Font Generator Error Messages
 
    +--------+---------+-----------------------------------------------------+

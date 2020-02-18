@@ -114,6 +114,7 @@ ARM Cortex-M7
 =============
 
 .. table:: ARM Cortex-M7 Compilers
+   :class: longtable
 
    +-------------------+----------+----------------------------------------+
    | Compiler          | Version  | Flags and Options                      |

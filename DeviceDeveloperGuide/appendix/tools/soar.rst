@@ -4,11 +4,12 @@ Smart Linker
 When a generic exception is thrown by the Smart Linker, the error
 message 
 
-::
-   SOAR ERROR [M<messageId>] <message>
+:code:`SOAR ERROR [M<messageId>] <message>`
 
 is issued, where ``<messageId>`` and ``<message>`` meanings are defined in the
 next table.
+
+.. tabularcolumns:: |p{2cm}|p{13.1cm}|
 
 .. table:: SOAR Error Messages.
 

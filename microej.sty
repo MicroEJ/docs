@@ -9,6 +9,9 @@
 \usepackage{inconsolata}
 \usepackage[T1]{fontenc}
 
+% tcolorbox for wrapping color boxes
+\usepackage{tcolorbox}
+
 % Redefine some colors used outside highlighting
 \usepackage{xcolor}
 \definecolor{code}{HTML}{E74C3C}
@@ -29,6 +32,9 @@
 % Restyle code elements to border boxes with color, not just \emph (default)
 \renewcommand{\sphinxcode}[1]{
   {\fcolorbox{codeborder}{codebg}{\color{code}\texttt{#1}}}
+  % {\protect\begin{tcolorbox}[colback=codebg, colframe=codeborder]
+  %   \protect\color{code}\protect\texttt{#1}
+  % \protect\end{tcolorbox}}
 }
 
 % Restyle gui label elements to border boxes with color, not just \emph (default)
@@ -69,6 +75,7 @@
       \vfill
       {\large \py@release \par}
       {\large \@date \par}
+      {\small {Copyright 2008-2020, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval. MicroEJ is a trademark of MicroEJ Corp. All other trademarks and copyrights are the property of their respective owners.} \par}
     \end{center}%\par
     \@thanks
   \end{titlepage}%
@@ -84,17 +91,5 @@
 % Customize TOC tree
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{2}
-
-\makeatletter
-  \fancypagestyle{normal}{
-    \fancyhf{}
-    \fancyfoot[R]{{\py@HeaderFamily\thepage}}
-    \fancyfoot[LO]{{\py@HeaderFamily\nouppercase{\rightmark}}}
-    \fancyfoot[RE]{{\py@HeaderFamily\nouppercase{\leftmark}}}
-    \fancyhead[LE,RO]{{\py@HeaderFamily \@title, \py@release}}
-    \renewcommand{\headrulewidth}{0.4pt}
-    \renewcommand{\footrulewidth}{0.4pt}
-  }
-\makeatother
 
 \endinput

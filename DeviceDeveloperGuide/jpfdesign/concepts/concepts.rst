@@ -53,7 +53,7 @@ name, its version, etc. These tags can be updated at any time.
 
    MicroEJ Platform Configuration Content Tab
 
-This tab shows all additional modules (see `Modules <#jpf_modules>`__)
+This tab shows all additional modules (see :ref:`jpf_modules`)
 which can be installed into the platform in order to augment its
 features. The modules are sorted by groups and by functionality. When a
 module is checked, it will be installed into the platform during the
@@ -64,8 +64,7 @@ platform creation.
 Modules
 -------
 
-The primary mechanism for augmenting the capabilities of a `MicroEJ
-Platform <#concepts-jpf>`__ is to add modules to it.
+The primary mechanism for augmenting the capabilities of a :ref:`concepts-jpf` is to add modules to it.
 
 A MicroEJ module is a group of related files (Foundation Libraries,
 scripts, link files, C libraries, simulator, tools, etc.) that together

@@ -7,6 +7,7 @@ XML Schema
 Below is the XML schema for heap dumps.
 
 .. table:: XML Schema for Heap Dumps
+   :class: longtable
 
    +---------------------------------------------------------------------------------------------+
    | ::                                                                                          |
@@ -121,9 +122,10 @@ File Specification
 ------------------
 
 Types referenced in heap dumps are represented in the internal classfile
-format (`figure_title <#intClassfileFormat>`__). Fully qualified names
+format (:ref:`intClassfileFormat`). Fully qualified names
 are names separated by the / separator (For example, ``a/b/C``).
 
+.. _intClassFileFormat:
 .. code-block:: txt
    :caption: Internal classfile Format for Types
 

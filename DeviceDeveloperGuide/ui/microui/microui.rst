@@ -133,22 +133,28 @@ This pixel format contains 8 bits to store the transparency level
 transparent pixel) with the background pixel (LCD buffer opaque pixel).
 The formula to obtain the pixel is:
 
-::
+.. math::
 
-   αMult = (αFG * αBG) / 255
-   αOut = αFG + αBG - αMult
-   COut = (CFG * αFG + CBG * αBG - CBG * αMult) / αOut 
+   {\alpha}Mult = {\alpha}FG * {\alpha}BG) / 255
+
+.. math::
+
+   {\alpha}Out = {\alpha}FG + {\alpha}BG - {\alpha}Mult
+
+.. math::
+
+   COut = (CFG * {\alpha}FG + CBG * {\alpha}BG - CBG * {\alpha}Mult) / {\alpha}Out 
 
 where:
 
--  α\ *FG* is the alpha level of the foreground pixel (layer pixel)
+-  :math:`{\alpha}`\ *FG* is the alpha level of the foreground pixel (layer pixel)
 
--  α\ *BG* is the alpha level of the background pixel (working buffer
+-  :math:`{\alpha}`\ *BG* is the alpha level of the background pixel (working buffer
    pixel)
 
--  C\ *xx* is a color component of a pixel (Red, Green or Blue).
+-  :math:`{\alpha}`\ *xx* is a color component of a pixel (Red, Green or Blue).
 
--  α\ *Out* is the alpha level of the final pixel
+-  :math:`{\alpha}`\ *Out* is the alpha level of the final pixel
 
 Fonts
 -----
