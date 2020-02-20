@@ -29,12 +29,13 @@
     VerbatimBorderColor={named}{codeborder},
 }
 
-% Restyle code elements to border boxes with color, not just \emph (default)
+%Restyle code elements to border boxes with color, not just \emph (default)
 \renewcommand{\sphinxcode}[1]{
-  {\fcolorbox{codeborder}{codebg}{\color{code}\texttt{#1}}}
-  % {\protect\begin{tcolorbox}[colback=codebg, colframe=codeborder]
-  %   \protect\color{code}\protect\texttt{#1}
-  % \protect\end{tcolorbox}}
+  % {\fcolorbox{codeborder}{codebg}{\color{code}\texttt{#1}}}
+  % {\begin{tcolorbox}[colback=codebg, colframe=codeborder]
+    {\color{code}\texttt{#1}}
+    % {testimg}
+  % \end{tcolorbox}}
 }
 
 % Restyle gui label elements to border boxes with color, not just \emph (default)

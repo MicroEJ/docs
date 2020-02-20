@@ -1,47 +1,137 @@
-.. _stack_trace_reader:
-
-==================
-Stack Trace Reader
-==================
+Category: Stack Trace Reader
+============================
 
 
-Principle
-=========
+.. figure:: images/img1.png
+   :width: 100.0%
+   :align: center
 
-Stack Trace Reader is a MicroEJ tool which reads and decodes the MicroEJ
-stack traces. When an exception occurs, the MicroEJ core engine prints
-the stack trace on the standard output ``System.out``. The class names
-and method names obtained are encoded with a MicroEJ internal format.
-This internal format prevents the embedding of all class names and
-method names in the flash, in order to save some memory space. The Stack
-Trace Reader tool allows you to decode the stack traces by replacing the
-internal class names and method names with their real names. It also
-retrieves the line number in the MicroEJ application.
+Group: Application
+------------------
+
+Option(browse): Executable file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-Functional Description
-======================
+*Option Name*: ``application.file``
 
-The Stack Trace Reader reads the debug info from the fully linked ELF
-file (the ELF file that contains the MicroEJ core engine, the other
-libraries, the BSP, the OS, and the compiled MicroEJ application). It
-prints the decoded stack trace.
+*Default value*: ``(empty)``
+
+*Description*:
+
+Specify the full path of a full linked elf file.
+
+Option(list): Additional object files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``additional.application.files``
+
+*Default value*: ``(empty)``
+
+Group: "Trace port" interface for Eclipse
+------------------------------------------
+
+*Description*:
+
+This group describes the hardware link between the device and the PC.
+
+Option(combo): Connection type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``proxy.connection.connection.type``
+
+*Default value*: ``Console``
+
+*Available values: *
 
 
-Dependencies
-============
+``Uart (COM)``
 
-No dependency.
+``Socket``
 
+``File``
 
-Installation
-============
-
-This tool is a built-in platform tool.
+``Console``
 
 
-Use
-===
+*Description*:
 
-This chapter explains MicroEJ tool options.
+Specify the connection type between the device and PC.
+
+Option(text): Port
+^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``pcboardconnection.usart.pc.port``
+
+*Default value*: ``COM0``
+
+*Description*:
+
+
+*Format:* ``port name``
+
+
+Specifies the PC COM port:
+
+
+Windows - ``COM1``, ``COM2``, ``...``, ``COM*n*``
+
+
+Linux - ``/dev/ttyS0``, ``/dev/ttyS1``, ``...``, ``/dev/ttyS*n*``
+
+
+
+
+Option(combo): Baudrate
+^^^^^^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``pcboardconnection.usart.pc.baudrate``
+
+*Default value*: ``115200``
+
+*Available values: *
+
+
+``9600``
+
+``38400``
+
+``57600``
+
+``115200``
+
+
+*Description*:
+
+Defines the COM baudrate for PC-Device communication.
+
+Option(text): Port
+^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``pcboardconnection.socket.port``
+
+*Default value*: ``5555``
+
+*Description*:
+
+IP port.
+
+Option(text): Address
+^^^^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``pcboardconnection.socket.address``
+
+*Default value*: ``(empty)``
+
+*Description*:
+
+IP address, on the form A.B.C.D.
+
+Option(browse): Stack trace file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``pcboardconnection.file.path``
+
+*Default value*: ``(empty)``
+
 

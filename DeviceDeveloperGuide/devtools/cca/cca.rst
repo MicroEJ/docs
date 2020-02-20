@@ -1,56 +1,76 @@
-======================
-Code Coverage Analyzer
-======================
+Category: Code Coverage
+=======================
 
 
-Principle
-=========
-
-The MicroEJ simulator features an option to output .cc (Code Coverage)
-files that represent the use rate of functions of an application. It
-traces how the opcodes are really executed.
-
-
-Functional Description
-======================
-
-The Code Coverage Analyzer scans the output .cc files, and outputs an
-HTML report to ease the analysis of methods coverage. The HTML report is
-available in a folder named htmlReport in the same folder as the .cc
-files.
-
-.. figure:: images/process.*
-   :alt: Code Coverage Analyzer Process
-   :width: 70.0%
+.. figure:: images/img1.png
+   :width: 100.0%
    :align: center
 
-   Code Coverage Analyzer Process
+Option(browse): *.cc files folder
+---------------------------------
 
 
-Dependencies
-============
+*Option Name*: ``cc.dir``
 
-In order to work properly, the Code Coverage Analyzer should input the
-.cc files. The .cc files relay the classpath used during the execution
-of the simulator to the Code Coverage Analyzer. Therefore the classpath
-is considered to be a dependency of the Code Coverage Analyzer.
+*Default value*: ``(empty)``
+
+*Description*:
+
+Specify a folder which contains the cc files to process (*.cc).
+
+Group: Classes filter
+---------------------
+
+Option(list): Includes
+^^^^^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``cc.includes``
+
+*Default value*: ``(empty)``
+
+*Description*:
+
+List packages and classes to include to code coverage report. If no
+package/class is specified, all classes found in the project classpath will
+be analyzed.
+
+Examples:
 
 
-Installation
-============
-
-This tool is a built-in platform tool.
+``packageA.packageB.*``: includes all classes which are in package
+``packageA.packageB``
 
 
-.. _codeCoverageAnalyzerTool:
+``packageA.packageB.className``: includes the class
+``packageA.packageB.className``
 
-Use
-===
 
-A MicroEJ tool is available to launch the Code Coverage Analyzer tool.
-The tool name is Code Coverage Analyzer.
 
-Two levels of code analysis are provided, the Java level and the
-bytecode level. Also provided is a view of the fully or partially
-covered classes and methods. From the HTML report index, just use
-hyperlinks to navigate into the report and source / bytecode level code.
+
+Option(list): Excludes
+^^^^^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``cc.excludes``
+
+*Default value*: ``(empty)``
+
+*Description*:
+
+List packages and classes to exclude to code coverage report. If no
+package/class is specified, all classes found in the project classpath will
+be analyzed.
+
+Examples:
+
+
+``packageA.packageB.*``: excludes all classes which are in package
+``packageA.packageB``
+
+
+``packageA.packageB.className``: excludes the class
+``packageA.packageB.className``
+
+
+
+
+

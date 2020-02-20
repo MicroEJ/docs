@@ -1,22 +1,65 @@
-============================
-Serial to Socket Transmitter
-============================
+Category: Serial to Socket
+==========================
 
 
-Principle
-=========
+.. figure:: images/img1.png
+   :width: 100.0%
+   :align: center
 
-The MicroEJ serialToSocketTransmitter is a piece of software which
-transfers all bytes from a serial port to a tcp client or tcp server.
+Group: Serial Options
+---------------------
 
-
-Installation
-============
-
-This tool is a built-in platform tool.
+Option(text): Port
+^^^^^^^^^^^^^^^^^^
 
 
-Use
-===
+*Option Name*: ``serail.to.socket.comm.port``
 
-This chapter explains MicroEJ tool options.
+*Default value*: ``COM0``
+
+*Description*: Defines the COM port:
+
+
+Windows - ``COM1``, ``COM2``, ``...``, ``COM*n*``
+
+
+Linux - ``/dev/ttyS0``, ``/dev/ttyUSB0``, ``...``, ``/dev/ttyS*n*``,
+``/dev/ttyUSB*n*``
+
+
+
+
+Option(combo): Baudrate
+^^^^^^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``serail.to.socket.comm.baudrate``
+
+*Default value*: ``115200``
+
+*Available values: *
+
+
+``9600``
+
+``38400``
+
+``57600``
+
+``115200``
+
+
+*Description*: Defines the COM baudrate.
+
+Group: Server Options
+---------------------
+
+Option(text): Port
+^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``serail.to.socket.server.port``
+
+*Default value*: ``5555``
+
+*Description*: Defines the server IP port.
+
+

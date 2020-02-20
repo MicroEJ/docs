@@ -8,10 +8,11 @@ and for the Simulator, some others are only for one of both.
 .. toctree::
     :maxdepth: 2
 
-    mma/mma
     stacktrace/stacktrace
     cca/cca
     heapdumper/heapdumper
-    testsuite/testsuite
     elftomap/elftomap
     serialToSocketTransmitter/serialToSocketTransmitter
+    kernelAPIgenerator/kernelAPIgenerator
+    mma/mma
+    testsuite/testsuite
