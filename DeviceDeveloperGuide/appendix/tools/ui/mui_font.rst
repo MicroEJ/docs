@@ -60,6 +60,7 @@ and sub-ranges (processed from the "Unicode Character Database" version
  ``https://www.unicode.org``).
 
 .. _table_unicodeRanges:
+.. tabularcolumns:: |p{5.5cm}|p{7cm}|p{1cm}|p{1cm}|
 .. table:: Ranges
 
    +--------------------------+------------------------------------------------+--------+--------+
@@ -419,7 +420,7 @@ and sub-ranges (processed from the "Unicode Character Database" version
 Error Messages
 --------------
 
-.. tabularcolumns:: |L|C|L|
+.. tabularcolumns:: |L|p{1.5cm}|L|
 
 .. table:: Static Font Generator Error Messages
 

@@ -52,6 +52,8 @@ Supported MicroEJ core engine Capabilities by Architecture Matrix
 The following table lists the supported MicroEJ core engine capabilities
 by MicroEJ architectures.
 
+.. tabularcolumns:: |p{2.5cm}|p{4cm}|p{2.7cm}|p{2.5cm}|p{2.7cm}|
+
 .. table:: Supported MicroEJ core engine Capabilities by MicroEJ architecture Matrix
 
    +-----------------+------------------------+-------------+-------------+--------------+
@@ -90,6 +92,8 @@ ARM Cortex-M0+
 ARM Cortex-M4
 =============
 
+.. tabularcolumns:: |p{3cm}|p{2cm}|p{10.1cm}|
+
 .. table:: ARM Cortex-M4 Compilers
 
    +---------------------+-------------+-------------------------------------+
@@ -114,7 +118,6 @@ ARM Cortex-M7
 =============
 
 .. table:: ARM Cortex-M7 Compilers
-   :class: longtable
 
    +-------------------+----------+----------------------------------------+
    | Compiler          | Version  | Flags and Options                      |

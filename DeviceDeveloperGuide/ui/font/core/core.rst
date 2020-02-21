@@ -251,7 +251,8 @@ To render an Arabic text, the font engine requires several points:
    application itself, and so can be filled from right to left. To write
    the text: 
 
-   .. image:: images/arabic.*
+   .. image:: images/arabic.png
+      :width: 120px
 
    the string characters must be :
    '``\ufee2\ufedc\ufe91\u0020\ufe8e\ufe92\ufea3\ufeae\ufee3``'. The

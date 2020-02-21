@@ -21,6 +21,7 @@ defined using two files that shall be in application classpath:
    identifies the Feature
 
 .. _table_kf-feature-keys:
+.. tabularcolumns:: |p{2.5cm}|p{2cm}|p{10.5cm}|
 .. table:: Feature definition file properties
 
    +---------------+-----------+-----------------------------------------------+
@@ -107,6 +108,7 @@ XML file (see :ref:`example "Kernel API XML Schema" <fig_kf-api-xsd>` and
    </xs:schema>
 
 .. _table_kf-api-tags:
+.. tabularcolumns:: |p{1cm}|p{1.5cm}|p{12.5cm}|
 .. table:: XML elements specification
 
     +---------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

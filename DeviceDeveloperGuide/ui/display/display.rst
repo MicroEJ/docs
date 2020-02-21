@@ -693,6 +693,7 @@ available for the MicroEJ architecture for Cortex-A9. The following
 table shows in which MicroEJ architecture an hardware accelerator is
 available.
 
+.. tabularcolumns:: |p{5cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|
 .. table:: Hardware Accelerators according MicroEJ Architectures
 
     +---------------------+-----+--------+-------+--------+
@@ -720,6 +721,7 @@ All hardware accelerators are not available for each number of
 bits-per-pixel configuration. The following table illustrates in which
 display stack according ``bpp``, an hardware accelerator can be used.
 
+.. tabularcolumns:: |p{2cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|
 .. table:: Hardware Accelerators according BPP
 
    +-----------------------------+---------+---------+---------+---------+
@@ -781,6 +783,7 @@ perform the full drawing (not just a part of drawing).
 The following table lists the algorithms accelerated by each hardware
 accelerator.
 
+.. tabularcolumns:: |p{3cm}|p{1cm}|p{1cm}|p{1cm}|
 .. table:: Hardware Accelerators Algorithms
 
    +-----------------------------------+-----------+-----------+-----------+
@@ -808,6 +811,7 @@ added and no padding can be set.
 The following table illustratres the RAW image formats supported by each
 hardware accelerator.
 
+.. tabularcolumns:: |p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|
 .. table:: Hardware Accelerators RAW Image Formats
 
    +-----------------------------------+-----------+-----------+-----------+

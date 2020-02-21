@@ -19,6 +19,8 @@ Configuration File
 Error Messages
 --------------
 
+.. tabularcolumns:: |L|p{1.5cm}|L|
+
 .. table:: Static Image Generator Error Messages
 
    +--------+---------+-----------------------------------------------------+

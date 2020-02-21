@@ -42,7 +42,7 @@ contain tags related to the Input component as described below.
        <elem value="1"/>
    </array>
 
-.. tabularcolumns:: |p{3cm}|p{2cm}|p{10cm}|
+.. tabularcolumns:: |p{2.5cm}|p{1.5cm}|p{11cm}|
 
 .. table:: Event Generators Static Definition
 
@@ -148,6 +148,8 @@ The display component augments the static initialization file with:
        </font>
        <font file="C:\data\myfont.ejf"/>
    </fonts>
+
+.. tabularcolumns:: |p{2cm}|p{2cm}|p{11cm}|
 
 .. table:: Display Static Initialization XML Tags Definition
 

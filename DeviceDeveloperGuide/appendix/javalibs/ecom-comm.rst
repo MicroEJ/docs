@@ -11,6 +11,7 @@ the error message
 
 is issued, where ``<messageId>`` meaning is defined in the next table:
 
+.. tabularcolumns:: |p{2cm}|L|
 .. table:: ECOM-COMM error messages
 
    +-------------+--------------------------------------------------------+

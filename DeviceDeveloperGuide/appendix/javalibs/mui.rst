@@ -13,6 +13,7 @@ is issued, where the meaning of ``<messageId>`` is defined in
 :ref:`Table "MicroUI Error Messages" <table_mui-error-msgs>`.
 
 .. _table_mui-error-msgs:
+.. tabularcolumns:: |p{2cm}|p{13cm}|
 .. table:: MicroUI Error Messages
 
    +-------------+--------------------------------------------------------+
@@ -82,6 +83,7 @@ Exceptions
 Some other exceptions can be thrown by the MicroUI framework in addition
 to the generic ``MicroUIException`` (see previous chapter).
 
+.. tabularcolumns:: |p{3.5cm}|p{11.5cm}|
 .. table:: MicroUI Exceptions
 
    +----------------------+--------------------------------------------------------+

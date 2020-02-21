@@ -233,6 +233,7 @@ underlying protocol to encode/decode the data.
 structured events to the predefined event generators:
 
 .. _table_llinputApiEvtGen:
+.. tabularcolumns:: |p{5.5cm}|p{2cm}|p{6.5cm}|
 .. table:: LLINPUT API for predefined event generators
 
    +--------------------------------------+-----------+---------------------------------------+
