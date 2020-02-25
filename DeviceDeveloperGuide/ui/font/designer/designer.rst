@@ -305,8 +305,8 @@ available in the font will be shown as red rectangles.
 .. figure:: images/font-preview.png
    :alt: Font Preview
    :align: center
-   :width: 525px
-   :height: 885px
+   :width: 504px
+   :height: 850px
 
    Font Preview
 
