@@ -123,6 +123,8 @@ The Java project should now look like this:
 .. figure:: images/imagen.png
    :alt: Image Generator Extension Project
    :align: center
+   :width: 492px
+   :height: 218px
 
    Image Generator Extension Project
 

@@ -214,5 +214,7 @@ the MicroEJ Resource Center (:guilabel:`Window` > :guilabel:`Show View` >
 .. figure:: ../SandboxedAppDevGuide/png/Overview_resourcecenter.png
    :alt: MicroEJ Resource Center APIs
    :align: center
+   :width: 286px
+   :height: 147px
 
    MicroEJ Resource Center APIs

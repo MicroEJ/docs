@@ -1,30 +1,38 @@
-Category: ELF to Map
-====================
+=========================
+ELF to Map File Generator
+=========================
 
 
-.. figure:: images/img1.png
-   :width: 100.0%
+Principle
+=========
+
+The ELF to Map generator takes an ELF executable file and generates a
+MicroEJ compliant ``.map`` file. Thus, any ELF executable file produced
+by third party linkers can be analyzed and interpreted using the
+:ref:`memorymapanalyzer`.
+
+
+Functional Description
+======================
+
+.. figure:: images/process.*
+   :alt: ELF To Map Process
+   :width: 20.0%
    :align: center
 
-Group: Input
-------------
-
-Option(browse): ELF file
-^^^^^^^^^^^^^^^^^^^^^^^^
+   ELF To Map Process
 
 
-*Option Name*: ``input.file``
+Installation
+============
 
-*Default value*: ``(empty)``
-
-Group: Output
--------------
-
-Option(browse): Map file
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-*Option Name*: ``output.file``
-
-*Default value*: ``(empty)``
+This tool is a built-in platform tool.
 
 
+Use
+===
+
+This chapter explains MicroEJ tool options.
+
+
+.. include:: elftomap_use.rst

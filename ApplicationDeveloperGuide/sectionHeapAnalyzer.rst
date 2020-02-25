@@ -106,6 +106,8 @@ is opened.
 .. figure:: png/outline-view.png
    :alt: Outline View
    :align: center
+   :width: 882px
+   :height: 408px
 
    Outline View
 
@@ -123,12 +125,16 @@ selected instance, and the instances that refer to them, and so on.
 .. figure:: png/fields-and-ref-showing-fields.png
    :alt: Instance Browser View - Fields mode
    :align: center
+   :width: 588px
+   :height: 268px
 
    Instance Browser View - Fields mode
 
 .. figure:: png/fields-and-ref-showing-refs.png
    :alt: Instance Browser View - References mode
    :align: center
+   :width: 586px
+   :height: 248px
 
    Instance Browser View - References mode
 
@@ -161,6 +167,8 @@ during the period.
 .. figure:: png/heap-usage-tab.png
    :alt: Heap Viewer - Heap Usage Tab
    :align: center
+   :width: 709px
+   :height: 568px
 
    Heap Viewer - Heap Usage Tab
 
@@ -204,6 +212,8 @@ view.
 .. figure:: png/dominator-tree-tab.png
    :alt: Heap Viewer - Dominator Tree Tab
    :align: center
+   :width: 708px
+   :height: 566px
 
    Heap Viewer - Dominator Tree Tab
 
@@ -230,6 +240,8 @@ The page is in three parts.
 .. figure:: png/leak-suspects-tab.png
    :alt: Heap Viewer - Leak Suspects Tab
    :align: center
+   :width: 709px
+   :height: 567px
 
    Heap Viewer - Leak Suspects Tab
 
@@ -261,6 +273,8 @@ comprises three parts.
 .. figure:: png/progressive.png
    :alt: Progressive Heap Usage
    :align: center
+   :width: 710px
+   :height: 568px
 
    Progressive Heap Usage
 
@@ -289,6 +303,8 @@ instances of the selected type.
 .. figure:: png/compare-all.png
    :alt: Compare Heap Dumps
    :align: center
+   :width: 712px
+   :height: 544px
 
    Compare Heap Dumps
 
@@ -321,6 +337,8 @@ and new heap dumps, and highlights any differences between the values.
 .. figure:: png/compare-fields.png
    :alt: Instance Fields Comparison view
    :align: center
+   :width: 715px
+   :height: 480px
 
    Instance Fields Comparison view
 

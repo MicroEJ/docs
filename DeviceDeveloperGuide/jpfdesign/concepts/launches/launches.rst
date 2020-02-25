@@ -36,10 +36,12 @@ The :guilabel:`Main` tab allows you to set in order:
    documentation for use of immutable objects.
 
 .. figure:: images/mainTab.png
-    :alt: MicroEJ Launch Application Main Tab
-    :align: center
+   :alt: MicroEJ Launch Application Main Tab
+   :align: center
+   :width: 800px
+   :height: 640px
 
-    MicroEJ Launch Application Main Tab
+   MicroEJ Launch Application Main Tab
 
 
 Execution Tab
@@ -52,10 +54,12 @@ also allows you to keep generated, intermediate files and to print
 verbose options (advanced debug purpose options).
 
 .. figure:: images/executionTab.png
-    :alt: MicroEJ Launch Application Execution Tab
-    :align: center
+   :alt: MicroEJ Launch Application Execution Tab
+   :align: center
+   :width: 800px
+   :height: 640px
 
-    MicroEJ Launch Application Execution Tab
+   MicroEJ Launch Application Execution Tab
 
 Configuration Tab
 -----------------
@@ -64,10 +68,12 @@ The next tab is the :guilabel:`Configuration` tab. This tab contains all
 platform-specific options.
 
 .. figure:: images/configurationTab.png
-    :alt: Configuration Tab
-    :align: center
+   :alt: Configuration Tab
+   :align: center
+   :width: 800px
+   :height: 640px
 
-    Configuration Tab
+   Configuration Tab
 
 JRE Tab
 -------

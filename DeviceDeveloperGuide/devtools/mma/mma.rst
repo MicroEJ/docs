@@ -49,6 +49,8 @@ directory.
 .. figure:: images/whereMapIs.png
    :alt: Retrieve Map File
    :align: center
+   :width: 1176px
+   :height: 462px
 
    Retrieve Map File
 
@@ -60,6 +62,8 @@ list.
 .. figure:: images/RI1.png
    :alt: Consult Full Memory
    :align: center
+   :width: 1171px
+   :height: 457px
 
    Consult Full Memory
 
@@ -69,5 +73,7 @@ item. This view is useful in understanding why a symbol is embedded.
 .. figure:: images/RIDetailedView.png
    :alt: Detailed view
    :align: center
+   :width: 1216px
+   :height: 753px
 
    Detailed View

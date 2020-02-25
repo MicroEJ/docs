@@ -4,6 +4,8 @@ Category: Runtime
 
 .. figure:: png/architecture_options/img1.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Types
 ------------
@@ -73,6 +75,8 @@ Category: Memory
 
 .. figure:: png/architecture_options/img2.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Heaps
 ^^^^^^^^^^^^
@@ -172,6 +176,8 @@ Category: Simulator
 
 .. figure:: png/architecture_options/img3.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Options
 --------------
@@ -292,6 +298,8 @@ Category: Code Coverage
 
 .. figure:: png/architecture_options/img4.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Code Coverage
 ^^^^^^^^^^^^^^^^^^^^
@@ -329,6 +337,8 @@ Category: Debug
 
 .. figure:: png/architecture_options/img5.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Remote Debug
 ^^^^^^^^^^^^^^^^^^^
@@ -359,6 +369,8 @@ Category: Heap Dumper
 
 .. figure:: png/architecture_options/img6.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Heap Inspection
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -385,6 +397,8 @@ Category: Logs
 
 .. figure:: png/architecture_options/img7.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Logs
 ^^^^^^^^^^^
@@ -506,6 +520,8 @@ Category: Device
 
 .. figure:: png/architecture_options/img8.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Device Architecture
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -547,6 +563,8 @@ Category: Com Port
 
 .. figure:: png/architecture_options/img9.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Category: Libraries
 ===================
@@ -554,6 +572,8 @@ Category: Libraries
 
 .. figure:: png/architecture_options/img10.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Category: EDC
 -------------
@@ -561,6 +581,8 @@ Category: EDC
 
 .. figure:: png/architecture_options/img11.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Java System.out
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -634,6 +656,8 @@ Category: Shielded Plug
 
 .. figure:: png/architecture_options/img12.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Shielded Plug configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -659,6 +683,8 @@ Category: ECOM
 
 .. figure:: png/architecture_options/img13.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Device Management
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -694,6 +720,8 @@ Category: Comm Connection
 
 .. figure:: png/architecture_options/img14.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Comm Connection Options
 """"""""""""""""""""""""""""""
@@ -737,6 +765,8 @@ Category: External Resources Loader
 
 .. figure:: png/architecture_options/img15.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: External Resources Loader
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -766,6 +796,8 @@ Category: Device
 
 .. figure:: png/architecture_options/img16.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Category: Core Engine
 ---------------------
@@ -773,6 +805,8 @@ Category: Core Engine
 
 .. figure:: png/architecture_options/img17.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Memory
 ^^^^^^^^^^^^^
@@ -806,6 +840,8 @@ Category: Kernel
 
 .. figure:: png/architecture_options/img18.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Option(checkbox): Check APIs allowed by Kernel
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -872,6 +908,8 @@ Category: Watchdog
 
 .. figure:: png/architecture_options/img19.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Option(checkbox): Enable watchdog support
 """""""""""""""""""""""""""""""""""""""""
@@ -900,6 +938,8 @@ Category: Deploy
 
 .. figure:: png/architecture_options/img20.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 *Description*:
 
@@ -936,6 +976,8 @@ Category: Feature
 
 .. figure:: png/architecture_options/img21.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 *Description*:
 
@@ -947,6 +989,8 @@ Category: Dynamic Download
 
 .. figure:: png/architecture_options/img22.png
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Dynamic Download
 ^^^^^^^^^^^^^^^^^^^^^^^

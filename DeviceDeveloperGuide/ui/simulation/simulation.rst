@@ -75,6 +75,8 @@ The wizard will appear:
 .. figure:: images/newfp.png
    :alt: New Front Panel Project Wizard
    :align: center
+   :width: 700px
+   :height: 500px
 
    New Front Panel Project Wizard
 
@@ -86,6 +88,8 @@ Project Contents
 .. figure:: images/project-content.png
    :alt: Project Contents
    :align: center
+   :width: 215px
+   :height: 232px
 
    Project Contents
 
@@ -203,6 +207,8 @@ A typical working layout is shown below.
 .. figure:: images/working-layout.png
    :alt: Working Layout Example
    :align: center
+   :width: 1182px
+   :height: 690px
 
    Working Layout Example
 

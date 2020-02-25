@@ -4,5 +4,8 @@ Standalone Application Developer Guide
 .. toctree::
     :maxdepth: 2
 
-    chapterMicroEJGettingStarted
+    chapterMicroEJGettingStartedIntro
+    chapterPlatform
+    chapterLicenses
+    chapterMicroEJGettingStartedApp
     chapterMicroEJOptions

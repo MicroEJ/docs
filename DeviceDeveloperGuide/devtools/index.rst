@@ -6,7 +6,7 @@ the MicroEJ application. Some tools are common for the Embedded platform
 and for the Simulator, some others are only for one of both.
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     stacktrace/stacktrace
     cca/cca

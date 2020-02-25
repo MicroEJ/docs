@@ -1,3 +1,7 @@
+=================
+Setup MicroEJ SDK
+=================
+
 .. _download.hardware.simulator:
 
 Download and Install a MicroEJ Platform
@@ -25,6 +29,8 @@ desktop to start the process of Platform installation :
    .. figure:: png/platformImport.png
       :alt: MicroEJ Platform Import
       :align: center
+      :width: 797px
+      :height: 468px
 
       MicroEJ Platform Import
 
@@ -37,6 +43,8 @@ desktop to start the process of Platform installation :
    .. figure:: png/platformSelect.png
       :alt: MicroEJ Platform Selection
       :align: center
+      :width: 569px
+      :height: 636px
 
       MicroEJ Platform Selection
 
@@ -46,5 +54,7 @@ desktop to start the process of Platform installation :
    .. figure:: png/platformList.png
       :alt: MicroEJ Platform List
       :align: center
+      :width: 797px
+      :height: 468px
 
       MicroEJ Platform List

@@ -41,6 +41,8 @@ The MicroEJ platform builder offers a visualization with two tabs:
 .. figure:: images/jpf_conf_overview.png
    :alt: MicroEJ Platform Configuration Overview Tab
    :align: center
+   :width: 822px
+   :height: 605px
 
    MicroEJ Platform Configuration Overview Tab
 
@@ -50,6 +52,8 @@ name, its version, etc. These tags can be updated at any time.
 .. figure:: images/jpf_conf_modules.png
    :alt: MicroEJ Platform Configuration Content Tab
    :align: center
+   :width: 814px
+   :height: 605px
 
    MicroEJ Platform Configuration Content Tab
 

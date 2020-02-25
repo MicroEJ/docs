@@ -236,6 +236,8 @@ opened.
 .. figure:: images/char-editor.png
    :alt: Character Editor
    :align: center
+   :width: 452px
+   :height: 460px
 
    Character Editor
 
@@ -303,6 +305,8 @@ available in the font will be shown as red rectangles.
 .. figure:: images/font-preview.png
    :alt: Font Preview
    :align: center
+   :width: 525px
+   :height: 885px
 
    Font Preview
 

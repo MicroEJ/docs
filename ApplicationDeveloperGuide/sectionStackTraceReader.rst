@@ -27,6 +27,8 @@ standard output.
 .. figure:: ../StandaloneAppDevGuide/png/trace1.png
    :alt: Code to Dump a Stack Trace
    :align: center
+   :width: 424px
+   :height: 204px
 
    Code to Dump a Stack Trace
 

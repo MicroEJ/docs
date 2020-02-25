@@ -13,6 +13,8 @@ used.
 .. figure:: images/tool-launch.png
    :alt: MicroEJ Tool Configuration
    :align: center
+   :width: 863px
+   :height: 702px
 
    MicroEJ Tool Configuration
 
