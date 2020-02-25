@@ -205,3 +205,10 @@ The classpath variable named ``MICROUI-2.0`` is available.
 This library provides a set of options. Refer to the chapter
 :ref:`workbenchLaunchOptions` which lists all available options.
 
+
+..
+   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

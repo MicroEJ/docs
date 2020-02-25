@@ -23,3 +23,10 @@ being created. In the figure, the MicroEJ Platform has been selected,
 but the selection of which tool to run has not yet been made. That
 selection is made in the Execution Settings... box. The Configuration
 tab then contains the options relevant to the selected tool.
+
+..
+   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

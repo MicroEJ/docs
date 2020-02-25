@@ -22,3 +22,10 @@ user-supplied drivers code (coded in C).
 The MicroEJ simulator provides all features of Net and SSL libraries.
 This one takes part of the network settings stored in the operating
 system on which the simulator will be launched.
+
+..
+   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

@@ -106,3 +106,10 @@ is done transparently while the MicroEJ applications keep running.
    This protocol raises the priority of a thread (that is holding a
    resource needed by a higher priority task) to the priority of that
    task.
+
+..
+   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
