@@ -1,5 +1,5 @@
-Device Developer's Guide
-========================
+Device Developer Guide
+======================
 
 .. toctree::
     :maxdepth: 3

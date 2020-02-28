@@ -62,7 +62,7 @@ latex_elements = {
     'preamble': r'\usepackage{microej}',
     'figure_align': 'H',
     'extraclassoptions': 'oneside',
-    'sphinxsetup': 'inlineliteralwraps=false',
+    #'sphinxsetup': 'inlineliteralwraps=true, verbatimwithframe=true',
 }
 latex_additional_files = ['microej.sty']
 latex_logo = '_themes/microej/static/mascot.pdf'
