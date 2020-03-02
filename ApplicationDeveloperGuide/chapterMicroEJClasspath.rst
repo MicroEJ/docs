@@ -45,8 +45,8 @@ project appearance order (top to bottom).
 
 .. figure:: ../ApplicationDeveloperGuide/png/ClassPath_4.png
    :alt: MicroEJ Application Classpath Mapping
-   :width: 100.0%
    :align: center
+   :width: 80.0%
 
    MicroEJ Application Classpath Mapping
 
@@ -68,7 +68,6 @@ MicroEJ Classpath elements are loaded transitively.
 
 .. figure:: ../ApplicationDeveloperGuide/png/ClassPath_1.png
    :alt: Classpath Load Principle
-   :width: 100.0%
    :align: center
 
    Classpath Load Principle
@@ -359,7 +358,6 @@ application developer as module dependencies (see `MicroEJ Module Manager`_).
 
 .. figure:: ../ApplicationDeveloperGuide/png/ClassPath_2.png
    :alt: MicroEJ Foundation Libraries and Add-On Libraries
-   :width: 100.0%
    :align: center
 
    MicroEJ Foundation Libraries and Add-On Libraries
@@ -448,3 +446,10 @@ By default, MicroEJ is configured to connect online MicroEJ Central
 Repository. The MicroEJ Central Repository can be downloaded locally for
 offline use. Please follow the steps described at
 :http:`https://repository.microej.com`.
+
+..
+   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

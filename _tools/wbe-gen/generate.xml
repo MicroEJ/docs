@@ -17,15 +17,16 @@
 			</fileset>
 		</copy>
 
+		<!-- code coverage analyzer -->
 		<microbsp.buildJPFExtension 
 			titleLevel="${title.level}" 
 			imagewidth="1080" 
 			imageheight="600" 
 			verboselevel="9" 
 			maxImageWidth="150" 
-			outputdir="${basedir}/../../StandaloneAppDevGuide" 
-			imagesoutputname="png/architecture_options" 
-			outputname="sectionArchitectureOptions.rst" 
+			outputdir="${basedir}/../../DeviceDeveloperGuide/devtools/cca" 
+			imagesoutputname="images" 
+			outputname="cca_use.rst" 
 			outputConditions="${output.conditions}" 
 			outputFormat="ReStructuredText" 
 			maxnbcolumns="79">
@@ -34,7 +35,117 @@
 					For correct category merge, only the root file is provided to the generator 
 					Other extensions workbenchExtension[xxx] are automatically loaded by the workbench 
 				-->
-				<path location="${jars.dir}/workbenchExtension.jar"/>
+				<path location="${architecture.dir}/source/scripts/codeCoverageAnalyzerExtension.jar"/>
+			</extensionClasspath>
+		</microbsp.buildJPFExtension>
+
+		<!-- elf to map -->
+		<microbsp.buildJPFExtension 
+			titleLevel="${title.level}" 
+			imagewidth="1080" 
+			imageheight="600" 
+			verboselevel="9" 
+			maxImageWidth="150" 
+			outputdir="${basedir}/../../DeviceDeveloperGuide/devtools/elftomap" 
+			imagesoutputname="images" 
+			outputname="elftomap_use.rst" 
+			outputConditions="${output.conditions}" 
+			outputFormat="ReStructuredText" 
+			maxnbcolumns="79">
+			<extensionClasspath>
+				<!-- 
+					For correct category merge, only the root file is provided to the generator 
+					Other extensions workbenchExtension[xxx] are automatically loaded by the workbench 
+				-->
+				<path location="${architecture.dir}/source/scripts/elftomapExtension.jar"/>
+			</extensionClasspath>
+		</microbsp.buildJPFExtension>
+
+		<!-- heap dumper platform -->
+		<microbsp.buildJPFExtension 
+			titleLevel="${title.level}" 
+			imagewidth="1080" 
+			imageheight="600" 
+			verboselevel="9" 
+			maxImageWidth="150" 
+			outputdir="${basedir}/../../DeviceDeveloperGuide/devtools/heapdumper" 
+			imagesoutputname="images" 
+			outputname="heapdumper_use.rst" 
+			outputConditions="${output.conditions}" 
+			outputFormat="ReStructuredText" 
+			maxnbcolumns="79">
+			<extensionClasspath>
+				<!-- 
+					For correct category merge, only the root file is provided to the generator 
+					Other extensions workbenchExtension[xxx] are automatically loaded by the workbench 
+				-->
+				<path location="${architecture.dir}/source/scripts/heapDumperPlatformExtension.jar"/>
+			</extensionClasspath>
+		</microbsp.buildJPFExtension>
+
+		<!-- kernel API generator -->
+		<microbsp.buildJPFExtension 
+			titleLevel="${title.level}" 
+			imagewidth="1080" 
+			imageheight="600" 
+			verboselevel="9" 
+			maxImageWidth="150" 
+			outputdir="${basedir}/../../DeviceDeveloperGuide/devtools/kernelAPIgenerator" 
+			imagesoutputname="images" 
+			outputname="kernelAPIgenerator_use.rst" 
+			outputConditions="${output.conditions}" 
+			outputFormat="ReStructuredText" 
+			maxnbcolumns="79">
+			<extensionClasspath>
+				<!-- 
+					For correct category merge, only the root file is provided to the generator 
+					Other extensions workbenchExtension[xxx] are automatically loaded by the workbench 
+				-->
+				<path location="${architecture.dir}/source/scripts/kernelAPIGeneratorExtension.jar"/>
+			</extensionClasspath>
+		</microbsp.buildJPFExtension>
+
+		<!-- serial to socket transmitter -->
+		<microbsp.buildJPFExtension 
+			titleLevel="${title.level}" 
+			imagewidth="1080" 
+			imageheight="600" 
+			verboselevel="9" 
+			maxImageWidth="150" 
+			outputdir="${basedir}/../../DeviceDeveloperGuide/devtools/serialToSocketTransmitter" 
+			imagesoutputname="images" 
+			outputname="serialToSocketTransmitter_use.rst" 
+			outputConditions="${output.conditions}" 
+			outputFormat="ReStructuredText" 
+			maxnbcolumns="79">
+			<extensionClasspath>
+				<!-- 
+					For correct category merge, only the root file is provided to the generator 
+					Other extensions workbenchExtension[xxx] are automatically loaded by the workbench 
+				-->
+				<path location="${architecture.dir}/source/scripts/serialToSocketTransmitterExtension.jar"/>
+			</extensionClasspath>
+		</microbsp.buildJPFExtension>
+
+		<!-- stack trace decrypter -->
+		<microbsp.buildJPFExtension 
+			titleLevel="${title.level}" 
+			imagewidth="1080" 
+			imageheight="600" 
+			verboselevel="9" 
+			maxImageWidth="150" 
+			outputdir="${basedir}/../../DeviceDeveloperGuide/devtools/stacktrace" 
+			imagesoutputname="images" 
+			outputname="stacktrace_use.rst" 
+			outputConditions="${output.conditions}" 
+			outputFormat="ReStructuredText" 
+			maxnbcolumns="79">
+			<extensionClasspath>
+				<!-- 
+					For correct category merge, only the root file is provided to the generator 
+					Other extensions workbenchExtension[xxx] are automatically loaded by the workbench 
+				-->
+				<path location="${architecture.dir}/source/scripts/stackTraceDecrypterExtension.jar"/>
 			</extensionClasspath>
 		</microbsp.buildJPFExtension>
 	</target>

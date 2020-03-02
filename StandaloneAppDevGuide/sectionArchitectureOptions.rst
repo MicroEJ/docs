@@ -3,8 +3,9 @@ Category: Runtime
 
 
 .. figure:: png/architecture_options/img1.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Types
 ------------
@@ -73,8 +74,9 @@ Category: Memory
 
 
 .. figure:: png/architecture_options/img2.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Heaps
 ^^^^^^^^^^^^
@@ -173,8 +175,9 @@ Category: Simulator
 
 
 .. figure:: png/architecture_options/img3.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Options
 --------------
@@ -294,8 +297,9 @@ Category: Code Coverage
 
 
 .. figure:: png/architecture_options/img4.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Code Coverage
 ^^^^^^^^^^^^^^^^^^^^
@@ -332,8 +336,9 @@ Category: Debug
 
 
 .. figure:: png/architecture_options/img5.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Remote Debug
 ^^^^^^^^^^^^^^^^^^^
@@ -363,8 +368,9 @@ Category: Heap Dumper
 
 
 .. figure:: png/architecture_options/img6.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Heap Inspection
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -390,8 +396,9 @@ Category: Logs
 
 
 .. figure:: png/architecture_options/img7.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Logs
 ^^^^^^^^^^^
@@ -512,8 +519,9 @@ Category: Device
 
 
 .. figure:: png/architecture_options/img8.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Device Architecture
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -554,24 +562,27 @@ Category: Com Port
 
 
 .. figure:: png/architecture_options/img9.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Category: Libraries
 ===================
 
 
 .. figure:: png/architecture_options/img10.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Category: EDC
 -------------
 
 
 .. figure:: png/architecture_options/img11.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Java System.out
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -644,8 +655,9 @@ Category: Shielded Plug
 
 
 .. figure:: png/architecture_options/img12.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Shielded Plug configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -670,8 +682,9 @@ Category: ECOM
 
 
 .. figure:: png/architecture_options/img13.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Device Management
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -706,8 +719,9 @@ Category: Comm Connection
 
 
 .. figure:: png/architecture_options/img14.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Comm Connection Options
 """"""""""""""""""""""""""""""
@@ -750,8 +764,9 @@ Category: External Resources Loader
 
 
 .. figure:: png/architecture_options/img15.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: External Resources Loader
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -780,16 +795,18 @@ Category: Device
 
 
 .. figure:: png/architecture_options/img16.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Category: Core Engine
 ---------------------
 
 
 .. figure:: png/architecture_options/img17.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Memory
 ^^^^^^^^^^^^^
@@ -822,8 +839,9 @@ Category: Kernel
 
 
 .. figure:: png/architecture_options/img18.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Option(checkbox): Check APIs allowed by Kernel
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -889,8 +907,9 @@ Category: Watchdog
 
 
 .. figure:: png/architecture_options/img19.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Option(checkbox): Enable watchdog support
 """""""""""""""""""""""""""""""""""""""""
@@ -918,8 +937,9 @@ Category: Deploy
 
 
 .. figure:: png/architecture_options/img20.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 *Description*:
 
@@ -955,8 +975,9 @@ Category: Feature
 
 
 .. figure:: png/architecture_options/img21.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 *Description*:
 
@@ -967,8 +988,9 @@ Category: Dynamic Download
 
 
 .. figure:: png/architecture_options/img22.png
-   :width: 100.0%
    :align: center
+   :width: 998px
+   :height: 551px
 
 Group: Dynamic Download
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -988,3 +1010,10 @@ Option(browse): Kernel
 *Default value*: ``(empty)``
 
 
+
+..
+   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

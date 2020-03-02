@@ -1,3 +1,6 @@
+% Copyright 2008-2020, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval. 
+% MicroEJ is a trademark of MicroEJ Corp. All other trademarks and copyrights are the property of their respective owners.
+
 \ProvidesPackage{microej}[2019/11/21 package microej]
 
 % Set up Source Sans Pro as the default font, and Inconsolata as the default
@@ -5,6 +8,9 @@
 \usepackage[default]{sourcesanspro}
 \usepackage{inconsolata}
 \usepackage[T1]{fontenc}
+
+% tcolorbox for wrapping color boxes
+\usepackage{tcolorbox}
 
 % Redefine some colors used outside highlighting
 \usepackage{xcolor}
@@ -23,14 +29,30 @@
     VerbatimBorderColor={named}{codeborder},
 }
 
-% Restyle code elements to border boxes with color, not just \emph (default)
+%Restyle code elements to border boxes with color, not just \emph (default)
 \renewcommand{\sphinxcode}[1]{
-  {\fcolorbox{codeborder}{codebg}{\color{code}\texttt{#1}}}
+  % {\fcolorbox{codeborder}{codebg}{\color{code}\texttt{#1}}}
+  % {\begin{tcolorbox}[colback=codebg, colframe=codeborder]
+    {\color{code}\texttt{#1}}
+    % {testimg}
+  % \end{tcolorbox}}
 }
 
 % Restyle gui label elements to border boxes with color, not just \emph (default)
 \renewcommand{\sphinxguilabel}[1]{
   {\fcolorbox{guilabelborder}{guilabelbg}{\color{guilabel}#1}}
+}
+
+% style for URLs
+\hypersetup{%
+  % colorlinks=true,% hyperlinks will be coloured
+  % linkcolor=green,% hyperlink text will be green
+  linkbordercolor=link,% hyperlink border will be red
+}
+\Hy@AtBeginDocument{%
+  \def\@pdfborder{0 0 1}% Overrides border definition set with colorlinks=true
+  \def\@pdfborderstyle{/S/U/W 1}% Overrides border style set with colorlinks=true
+                                % Hyperlink border style will be underline of width 1pt
 }
 
 % Used to set a commit id over the release version. Sphinx makes it difficult to
@@ -66,6 +88,7 @@
       \vfill
       {\large \py@release \par}
       {\large \@date \par}
+      {\small {Copyright 2008-2020, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval. MicroEJ is a trademark of MicroEJ Corp. All other trademarks and copyrights are the property of their respective owners.} \par}
     \end{center}%\par
     \@thanks
   \end{titlepage}%

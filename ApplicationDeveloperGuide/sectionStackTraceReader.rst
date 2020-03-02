@@ -15,8 +15,9 @@ standard output.
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_stacktracedump.png
    :alt: Code to Dump a Stack Trace
-   :width: 100.0%
    :align: center
+   :width: 425px
+   :height: 124px
 
    Code to Dump a Stack Trace
 
@@ -25,8 +26,9 @@ standard output.
 
 .. figure:: ../StandaloneAppDevGuide/png/trace1.png
    :alt: Code to Dump a Stack Trace
-   :width: 80.0%
    :align: center
+   :width: 424px
+   :height: 204px
 
    Code to Dump a Stack Trace
 
@@ -38,8 +40,9 @@ without debug information).
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_debugfofile.png
    :alt: Application Binary File with Debug Information
-   :width: 100.0%
    :align: center
+   :width: 335px
+   :height: 332px
 
    Application Binary File with Debug Information
 
@@ -51,8 +54,9 @@ the following trace is dumped on standard output.
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_tracetermite.png
    :alt: Stack Trace Output
-   :width: 100.0%
    :align: center
+   :width: 995px
+   :height: 98px
 
    Stack Trace Output
 
@@ -71,8 +75,9 @@ In :guilabel:`Execution` tab, select the :guilabel:`Stack Trace Reader` tool.
 
 .. figure:: ../ApplicationDeveloperGuide/png/STR_selecttool.png
    :alt: Select Stack Trace Reader Tool
-   :width: 100.0%
    :align: center
+   :width: 926px
+   :height: 306px
 
    Select Stack Trace Reader Tool
 
@@ -81,8 +86,9 @@ binary file with debug information (``application.fodbg``)
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_selectfile.png
    :alt: Stack Trace Reader Tool Configuration
-   :width: 80.0%
    :align: center
+   :width: 910px
+   :height: 587px
 
    Stack Trace Reader Tool Configuration
 
@@ -92,15 +98,17 @@ Application or ``application.out`` in case of a Standalone Application)
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_selectfile.png
    :alt: Stack Trace Reader Tool Configuration (Sandboxed Application)
-   :width: 100.0%
    :align: center
+   :width: 910px
+   :height: 587px
 
    Stack Trace Reader Tool Configuration (Sandboxed Application)
 
 .. figure:: ../StandaloneAppDevGuide/png/trace3.png
    :alt: Stack Trace Reader Tool Configuration (Standalone Application)
-   :width: 100.0%
    :align: center
+   :width: 876px
+   :height: 648px
 
    Stack Trace Reader Tool Configuration (Standalone Application)
 
@@ -112,8 +120,9 @@ application hook is now readable.
 
 .. figure:: ../SandboxedAppDevGuide/png/STR_console.png
    :alt: Read the Stack Trace
-   :width: 100.0%
    :align: center
+   :width: 873px
+   :height: 239px
 
    Read the Stack Trace
 
@@ -131,3 +140,11 @@ Other debug information files can be appended using the
 :guilabel:`Additional object files` option. Lines owned by the firmware can be
 decoded with the firwmare debug information file (optionally made
 available by your firmware provider).
+
+
+..
+   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

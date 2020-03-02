@@ -1,4 +1,5 @@
-# MicroEJ
+# Copyright 2008-2020, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval. 
+# MicroEJ is a trademark of MicroEJ Corp. All other trademarks and copyrights are the property of their respective owners.
 
 import os
 import sys
@@ -9,7 +10,7 @@ import microej
 
 
 project = 'MicroEJ Documentation'
-copyright = '2019, MicroEJ Corp.'
+copyright = '2008-2020, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval. MicroEJ is a trademark of MicroEJ Corp. All other trademarks and copyrights are the property of their respective owners.'
 author = 'MicroEJ'
 release = '1.0'
 
@@ -62,6 +63,7 @@ latex_elements = {
     'preamble': r'\usepackage{microej}',
     'figure_align': 'H',
     'extraclassoptions': 'oneside',
+    #'sphinxsetup': 'inlineliteralwraps=true, verbatimwithframe=true',
 }
 latex_additional_files = ['microej.sty']
 latex_logo = '_themes/microej/static/mascot.pdf'

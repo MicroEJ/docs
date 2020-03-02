@@ -19,7 +19,6 @@ for application developers targeting this device.
 
 .. figure:: ../ApplicationDeveloperGuide/png/toolchain.png
    :alt: MicroEJ Development Tools Overview
-   :width: 100.0%
    :align: center
 
    MicroEJ Development Tools Overview
@@ -66,7 +65,6 @@ instance of a MicroEJ runtime linked to:
 
 .. figure:: ../ApplicationDeveloperGuide/png/firmware.png
    :alt: MicroEJ Firmware Architecture
-   :width: 100.0%
    :align: center
 
    MicroEJ Firmware Architecture
@@ -106,3 +104,10 @@ A MicroEJ Multi-Sandbox Firmware is a MicroEJ Firmware that implements
 the ability to be extended by exposing a set of APIs and a memory space
 to link MicroEJ Sandboxed Applications. It can host several MicroEJ
 Sandboxed applications.
+
+..
+   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

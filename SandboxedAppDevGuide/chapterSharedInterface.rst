@@ -27,7 +27,6 @@ The basic schema:
 
 .. figure:: png/SI_1.png
    :alt: Shared Interface Call Mechanism
-   :width: 70.0%
    :align: center
 
    Shared Interface Call Mechanism
@@ -91,7 +90,6 @@ and forth between application boundaries.
 
 .. figure:: png/SI_3.png
    :alt: Shared Interface Parameters Transfer
-   :width: 70.0%
    :align: center
 
    Shared Interface Parameters Transfer
@@ -219,7 +217,6 @@ being transferred to this application.
 
 .. figure:: png/SI_4.png
    :alt: Shared Interfaces Proxy Overview
-   :width: 70.0%
    :align: center
 
    Shared Interfaces Proxy Overview
@@ -276,8 +273,15 @@ code such as logging calls and errors for example.
    - 
 
       - boolean invokeBoolean(), byte invokeByte(), char invokeChar(),
-         short invokeShort(), int invokeInt(), long invokeLong(), double
-         invokeDouble(), float invokeFloat()
+        short invokeShort(), int invokeInt(), long invokeLong(), double
+        invokeDouble(), float invokeFloat()
       - Remote invocation for a proxy method that returns a base type
 
 
+
+..
+   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
