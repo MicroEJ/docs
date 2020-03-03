@@ -9,6 +9,7 @@ MicroEJ
     SandboxedAppDevGuide/index
     StandaloneAppDevGuide/index
     DeviceDeveloperGuide/index
+    MultiAppsFirmwareDeveloperGuide/index
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
