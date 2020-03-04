@@ -175,8 +175,8 @@ def get_project_name():
         return 'Application Developer Guide'
     elif docset == 'DeviceDeveloperGuide':
         return 'Device Developer Guide'
-    elif docset == 'MultiAppsFirmwareDeveloperGuide':
-        return 'Multi-App Firmware Developer Guide'
+    elif docset == 'KernelDeveloperGuide':
+        return 'Kernel Developer Guide'
     elif docset == 'Landing':
         return 'MicroEJ Documentation'
 

@@ -1,15 +1,16 @@
-MicroEJ
-=======
+Kernel Developer Guide
+==================================
 
 .. toctree::
-    :maxdepth: 2
-    :hidden:
+   :maxdepth: 3
 
-    ApplicationDeveloperGuide/index
-    SandboxedAppDevGuide/index
-    StandaloneAppDevGuide/index
-    DeviceDeveloperGuide/index
-    KernelDeveloperGuide/index
+   overview
+   gettingStarted
+   buildType
+   kf
+   featuresCommunication
+   apiDocumentation
+   kfEnabledLibraries
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

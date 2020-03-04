@@ -4,7 +4,7 @@ Getting Started
 Online Getting Started
 ----------------------
 
-The MicroEJ Multi-App Firmware Getting Started is available on MicroEJ
+The MicroEJ Multi-Sandbox Firmware Getting Started is available on MicroEJ
 GitHub repository, at
 :http:`https://github.com/MicroEJ/Example-MinimalMultiAppFirmware`.
 
@@ -20,7 +20,7 @@ Create a new Firmware Project
 
 MicroEJ SDK provides an EasyAnt skeleton
 (``com.is2t.easyant.skeletons#firmware-multiapp``) to create an empty
-Multi-App Firmware project.
+Multi-Sandbox Firmware project.
 
 Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Other...` > :guilabel:`Easyant` > :guilabel:`Easyant Project`, set the
 appropriate skeleton, and press the ``Finish`` button. 

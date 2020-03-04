@@ -1,26 +1,26 @@
 .. _core-multiapp:
 
-==================
-Multi applications
-==================
+=============
+Multi-Sandbox
+=============
 
 
 Principle
 =========
 
-The Multi applications capability of the MicroEJ core engine allows a
+The Multi-Sandbox capability of the MicroEJ core engine allows a
 main application (called standalone application) to install and execute
 at runtime additional applications (called sandboxed applications).
 
 The MicroEJ core engine implements the [KF] specification. A Kernel is a
-standalone application generated on a Multi applications-enabled
+standalone application generated on a Multi-Sandbox-enabled
 platform. A Feature is a sandboxed application generated against a
 Kernel.
 
 A sandboxed application may be dynamically downloaded at runtime or
 integrated at build-time within the executable application.
 
-Note that the Multi applications is a capability of the MicroEJ core
+Note that the Multi-Sandbox is a capability of the MicroEJ core
 engine. The MicroEJ simulator always runs an application as a standalone
 application.
 
@@ -28,15 +28,15 @@ application.
 Functional Description
 ======================
 
-The Multi applications process extends the overall process described in
+The Multi-Sandbox process extends the overall process described in
 :ref:`the overview of the platform process <processOverviewId>`.
 
 .. figure:: images/process-multiapp-overview.*
-   :alt: Multi applications Process
+   :alt: Multi-Sandbox Process
    :width: 60.0%
    :align: center
 
-   Multi applications Process
+   Multi-Sandbox Process
 
 Once a Kernel has been generated, additional MicroEJ application code
 (Feature) can be built against the Kernel by :
@@ -81,11 +81,11 @@ previous pass.
 Memory Considerations
 =====================
 
-Multi applications memory overhead of MicroEJ core engine runtime
+Multi-Sandbox memory overhead of MicroEJ core engine runtime
 elements are described in :ref:`the table below <table_kf-overhead>`.
 
 .. _table_kf-overhead:
-.. table:: Multi applications Memory Overhead
+.. table:: Multi-Sandbox Memory Overhead
 
    +-----------+-----------+-----------------------------------------------+
    | Runtime   | Memory    | Description                                   |
@@ -115,9 +115,9 @@ Dependencies
 Installation
 ============
 
-Multi applications is an additional module, disabled by default.
+Multi-Sandbox is an additional module, disabled by default.
 
-To enable Multi applications of the MicroEJ core engine, in the platform
+To enable Multi-Sandbox of the MicroEJ core engine, in the platform
 configuration file, check :guilabel:`Multi Applications`.
 
 

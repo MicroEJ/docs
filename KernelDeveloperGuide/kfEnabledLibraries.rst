@@ -1,19 +1,16 @@
 .. _multiapps.enabled.libraries:
 
-Multi-App Enabled Libraries
-===========================
+Multi-Sandbox Enabled Libraries
+===============================
 
-A multi-app enabled library is a foundation or add-on library which can
+A multi-Sandbox enabled library is a foundation or add-on library which can
 be embedded into the kernel and exposed as API. MicroEJ foundation
-libraries provided in MicroEJ SDK are already multi-app enabled. A
+libraries provided in MicroEJ SDK are already multi-Sandbox enabled. A
 stateless library - i.e. a library that does not contain any method
-modifying an internal global state - is multi-app enabled by default.
+modifying an internal global state - is multi-Sandbox enabled by default.
 
-Foundation Libraries Multi-App Semantic
----------------------------------------
-
-This section details the multi-app semantic that have been added to
-MicroEJ foundation libraries in order to be multi-app enabled.
+This section details the multi-Sandbox semantic that have been added to
+MicroEJ foundation libraries in order to be multi-Sandbox enabled.
 
 MicroUI
 ~~~~~~~

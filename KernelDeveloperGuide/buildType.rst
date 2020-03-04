@@ -3,6 +3,28 @@ Build Firmware
 
 Prerequisite of this chapter: minimum understanding of ivy and easyant.
 
+Workspace Build
+---------------
+
+.. _build_flow_workspace:
+.. figure:: png/build_flow_zoom_workspace.png
+   :alt: Firmware Build Flow in MicroEJ SDK Workspace
+   :align: center
+   :width: 75.0%
+
+   Firmware Build Flow in MicroEJ SDK Workspace
+
+.. _firmware_build_type:
+
+Headless Build
+--------------
+
+.. _build_flow_buildtype:
+.. figure:: png/build_flow_zoom_buildtype.png
+   :alt: Firmware Build Flow in MicroEJ SDK Workspace
+   :align: center
+   :width: 75.0%
+
 .. _runtime_environment:
 
 Runtime Environment

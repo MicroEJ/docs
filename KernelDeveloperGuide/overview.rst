@@ -1,18 +1,18 @@
-Multi-App Firmware Overview
-===========================
+Multi-Sandbox Firmware Overview
+===============================
 
 Introduction
 ------------
 
-The Multi-App Firmware Developer's Guide describes how to create a
-MicroEJ Multi-App Firmware, i.e. a firmware that can be extended
+The Multi-Sandbox Firmware Developer's Guide describes how to create a
+MicroEJ Multi-Sandbox Firmware, i.e. a firmware that can be extended
 (statically or dynamically) to run and control the execution of new
 applications (called *Sandboxed Applications*).
 
 The intended audience of this document are java developers and system
 architects who plan to design and build their own firmware.
 
-Here is a non-exhaustive list of the activities to be done by Multi-App
+Here is a non-exhaustive list of the activities to be done by Multi-Sandbox
 Firmware Developers:
 
 -  Defining a list of APIs that will be exposed to applications
@@ -54,25 +54,25 @@ A *Sandboxed Application* is an application designed in MicroEJ Studio
 with the sandboxed application structure (see chapter *Sandboxed
 Application Structure* of the `Sandboxed Application Developer's
 Guide <https://developer.microej.com/packages/appdevguide-sand-4.0-C/TLT-0788-DGI-SandboxedApplicationDeveloperGuide-MicroEJ_4.0-C.pdf>`_).
-A sandboxed application is intended to be executed by a Multi-App
+A sandboxed application is intended to be executed by a Multi-Sandbox
 Firmware.
 
 A *Resident Application* is a Sandboxed Application that is linked into
-a Multi-App Firmware.
+a Multi-Sandbox Firmware.
 
-A *Multi-App Platform* is a Platform with the Multi Applications
+A *Multi-Sandbox Platform* is a Platform with the Multi Sandbox
 capability of the MicroEJ Core Engine enabled (see the chapter
-*Multi-Applications* of the `Device Developer's
+*Multi-Sandbox* of the `Device Developer's
 Guide <https://developer.microej.com/packages/devdevguide-4.0-A/TLT-0784-MAN-DeviceDevGuide.pdf>`_).
-A Multi-App Firmware can only be built with a Multi-App Platform.
+A Multi-Sandbox Firmware can only be built with a Multi-Sandbox Platform.
 
 A *Single-App Firmware* is produced by building and linking a Standalone
 Application with a Platform.
 
-A *Virtual Device* is the Multi-App Firmware counterpart for developing
+A *Virtual Device* is the Multi-Sandbox Firmware counterpart for developing
 a Sandboxed Application in MicroEJ Studio. It provides the firmware
 functional simulation part. Usually it also provides a mean to directly
-deploy a Sandboxed Application on the target device running a Multi-App
+deploy a Sandboxed Application on the target device running a Multi-Sandbox
 Firmware (this is called *Local Deployment*). In case of dynamic
 application deployment, the Virtual Device must be published on MicroEJ
 Store in order to execute an internal batch applications build for this
@@ -95,6 +95,55 @@ Overall Architecture
 
    Firmware Input and Output Artifacts
 
+
+Firmware implementation libraries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Firmware implementations must cover the following topics:
+
+-  The firmware's kernel entry point implementation, that deals with
+   configuring the different policies, registering kernel services and
+   converters, and starting applications.
+
+-  The storage infrastructure implementation: mapping the ``Storage``
+   service on an actual data storage implementation. There are multiple
+   implementations of the data storage, provided in different artifacts
+   that will be detailed in dedicated sections.
+
+-  The applications management infrastructure: how application code is
+   stored in memory and how the lifecycle of the code is implemented.
+   Again, this has multiple alternative implementations, and the right
+   artifact must be selected at build time to cover the specific
+   firmware needs.
+
+-  The simulation support: how the virtual device implementation
+   reflects the firmware implementation, with the help of specific
+   artifacts.
+
+-  The Kernel API definition: not all the classes and methods used to
+   implement the firmware's kernel are actually exposed to the
+   applications. There are some artifacts available that expose some of
+   the libraries to the applications, these ones can be picked when the
+   firmware is assembled.
+
+-  The Kernel types conversion and other KF-related utilities: Kernel
+   types instances owned by one application can be transferred to
+   another application through a Shared Interface. For that to be
+   possible, a conversion proxy must be registered for this kernel type.
+
+-  Tools libraries: tools that plug into MicroEJ Studio or SDK,
+   extending them with feature that are specific to the firmware, like
+   deployment of an application, a management console, ...
+
+-  System applications: pre-built applications that can be embedded as
+   resident apps into a firmware. Some of them are user-land counter
+   parts of the Kernel, implementing the application lifecycle for the
+   firmware's application framework (e.g. the Wadapps Framework). These
+   "kernel system applications" rely on a dedicated set of interfaces to
+   interact with the Kernel, this interface being defined in a dedicated
+   artifact.
+
+
 Firmware Build Flow
 -------------------
 
@@ -102,7 +151,7 @@ Firmware Build Flow
 .. figure:: png/build_flow_generic.png
    :alt: Firmware Build Flow (Kernel + Resident Applications)
    :align: center
-   :height: 750px
+   :width: 75.0%
 
    Firmware Build Flow (Kernel + Resident Applications)
 

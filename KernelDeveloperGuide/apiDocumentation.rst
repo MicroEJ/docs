@@ -1,15 +1,11 @@
-Multi-App Firmware Developer Guide
-==================================
+.. _kf.api.javadoc:
 
-.. toctree::
-   :maxdepth: 3
+API Documentation
+=================
 
-   chapterOverview
-   chapterGettingStarted
-   chapterFirmwareFramework
-   chapterBuildType
-   chapterKF
-   chapterKFEnabledLibraries
+The full API documentation of the Kernel & Features foundation library
+is available in MicroEJ SDK
+(``Help > MicroEJ Resource Center > Javadoc > KF [version]``).
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
