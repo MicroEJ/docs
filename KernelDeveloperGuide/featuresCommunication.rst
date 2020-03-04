@@ -13,9 +13,6 @@ a Kernel type from one Feature to an other. To do that, the Kernel must
 register a new converter (See :ref:`kf.api.javadoc`
 ``Kernel.addConverter()`` method).
 
-See also :ref:`available.kernel.converters` for a list of existing
-converters.
-
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

@@ -80,8 +80,7 @@ This section lists different ways to help to write ``kernel.api`` files
 Default Kernel APIs Derivation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-MicroEJ provides some predefined kernel API files (see
-:ref:`default_kernel_api`).
+MicroEJ provides some predefined kernel API files.
 
 The packaged file ``kernel.api`` can be extracted from the JAR file and
 to be manually managed in order to keep only desired types, methods and
