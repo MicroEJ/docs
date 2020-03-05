@@ -47,7 +47,7 @@ A *Standalone Application* is an application, designed in MicroEJ Studio
 with the standalone application structure, that defines a main entry
 point (a class that contains a ``public static void main(String[])``
 method). A Standalone Application can be run on the simulator and is
-intended to be statically linked with a Platform to produce a Single-App
+intended to be statically linked with a Platform to produce a Mono-Sandbox
 Firmware.
 
 A *Sandboxed Application* is an application designed in MicroEJ Studio
@@ -66,7 +66,7 @@ capability of the MicroEJ Core Engine enabled (see the chapter
 Guide <https://developer.microej.com/packages/devdevguide-4.0-A/TLT-0784-MAN-DeviceDevGuide.pdf>`_).
 A Multi-Sandbox Firmware can only be built with a Multi-Sandbox Platform.
 
-A *Single-App Firmware* is produced by building and linking a Standalone
+A *Mono-Sandbox Firmware* is produced by building and linking a Standalone
 Application with a Platform.
 
 A *Virtual Device* is the Multi-Sandbox Firmware counterpart for developing
