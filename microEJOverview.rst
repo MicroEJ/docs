@@ -17,7 +17,7 @@ The firmware will generally be produced by the device OEM, it includes
 all device drivers and a specific set of MicroEJ functionalities useful
 for application developers targeting this device.
 
-.. figure:: ../ApplicationDeveloperGuide/png/toolchain.png
+.. figure:: images/toolchain.png
    :alt: MicroEJ Development Tools Overview
    :align: center
 
@@ -63,7 +63,7 @@ instance of a MicroEJ runtime linked to:
 
 -  MicroEJ libraries and application code (C and Java code).
 
-.. figure:: ../ApplicationDeveloperGuide/png/firmware.png
+.. figure:: images/firmware.png
    :alt: MicroEJ Firmware Architecture
    :align: center
 
@@ -79,31 +79,6 @@ limitations (maximum number of simultaneous threads, open connections,
 …) are firmware specific. Please refer to
 :http:`https://developer.microej.com/5/getting-started-studio.html` for
 evaluation firmware release notes.
-
-.. _Standalone_vs_Sandboxed:
-
-MicroEJ Applications
-====================
-
-Two kinds of applications can be developed on MicroEJ: MicroEJ
-Standalone Applications and MicroEJ Sanboxed Applications.
-
-A MicroEJ Standalone Application is a MicroEJ application that is
-directly linked to the C code to produce a MicroEJ Firmware. Such
-application must define a main entry point, i.e. a class containing a
-``public static void main(String[])`` method. MicroEJ Standalone
-Applications are developed using MicroEJ SDK.
-
-A MicroEJ Sandboxed Application is a MicroEJ application that can run
-over a Multi-Sandbox Firmware. It can be linked either statically or
-dynamically. If it is statically linked, it is then called a System
-Application as it is part of the initial image and cannot be removed.
-MicroEJ Sandboxed Applications are developed using MicroEJ Studio.
-
-A MicroEJ Multi-Sandbox Firmware is a MicroEJ Firmware that implements
-the ability to be extended by exposing a set of APIs and a memory space
-to link MicroEJ Sandboxed Applications. It can host several MicroEJ
-Sandboxed applications.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

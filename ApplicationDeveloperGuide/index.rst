@@ -4,9 +4,9 @@ Application Developer Guide
 .. toctree::
     :maxdepth: 2
 
-    chapterMicroEJOverview
-    chapterMicroEJClasspath
-    chapterMicroEJTools
+    introduction
+    classpath
+    tools
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
