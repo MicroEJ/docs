@@ -73,7 +73,7 @@ MicroEJ core engine defines 3 exclusive capabilities:
 -  Single application: capability to produce a monolithic firmware
    (default one).
 
--  Multi applications: capability to produce a extensible firmware on
+-  Multi-Sandbox: capability to produce a extensible firmware on
    which new applications can be dynamically installed. See section
    :ref:`core-multiapp`.
 
@@ -475,8 +475,8 @@ Installation
 ============
 
 The MicroEJ core engine and its components are mandatory. In the
-platform configuration file, check ``Multi Applications`` to install the
-MicroEJ core engine in "Multi applications" mode. Otherwise, the "Single
+platform configuration file, check :guilabel:`Multi Applications` to install the
+MicroEJ core engine in "Multi-Sandbox" mode. Otherwise, the "Single
 application" mode is installed.
 
 

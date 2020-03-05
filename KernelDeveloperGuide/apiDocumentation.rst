@@ -1,15 +1,11 @@
-MicroEJ
-=======
+.. _kf.api.javadoc:
 
-.. toctree::
-    :maxdepth: 2
-    :hidden:
+API Documentation
+=================
 
-    ApplicationDeveloperGuide/index
-    SandboxedAppDevGuide/index
-    StandaloneAppDevGuide/index
-    DeviceDeveloperGuide/index
-    KernelDeveloperGuide/index
+The full API documentation of the Kernel & Features foundation library
+is available in MicroEJ SDK
+(``Help > MicroEJ Resource Center > Javadoc > KF [version]``).
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

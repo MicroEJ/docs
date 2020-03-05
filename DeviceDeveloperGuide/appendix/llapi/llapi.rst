@@ -44,8 +44,8 @@ Three C header files are provided:
 
 .. _LLKF-API-SECTION:
 
-LLKERNEL: Multi Applications
-============================
+LLKERNEL: Multi-Sandbox
+=======================
 
 Naming Convention
 -----------------
