@@ -7,8 +7,6 @@ MicroEJ
 
     microEJOverview
     ApplicationDeveloperGuide/index
-    SandboxedAppDevGuide/index
-    StandaloneAppDevGuide/index
     DeviceDeveloperGuide/index
     KernelDeveloperGuide/index
 

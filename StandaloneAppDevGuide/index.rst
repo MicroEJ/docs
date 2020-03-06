@@ -4,11 +4,8 @@ Standalone Application Developer Guide
 .. toctree::
     :maxdepth: 2
 
-    chapterMicroEJGettingStartedIntro
     chapterPlatform
-    chapterLicenses
     chapterMicroEJGettingStartedApp
-    chapterMicroEJOptions
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
