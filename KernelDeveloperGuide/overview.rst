@@ -1,10 +1,10 @@
-Multi-Sandbox Firmware Overview
-===============================
+Overview
+========
 
 Introduction
 ------------
 
-The Multi-Sandbox Firmware Developer's Guide describes how to create a
+The Kernel Developer's Guide describes how to create a
 MicroEJ Multi-Sandbox Firmware, i.e. a firmware that can be extended
 (statically or dynamically) to run and control the execution of new
 applications (called *Sandboxed Applications*).
