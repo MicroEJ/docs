@@ -18,16 +18,16 @@ files to be embedded in the final application binary. MicroEJ Classpath
 is made up of an ordered list of paths. A path is either a folder or a
 zip file, called a JAR file (JAR stands for Java ARchive).
 
--  `Application Classpath`_ explains how the MicroEJ classpath is built from a
+-  :ref:`application.classpath.mapping` explains how the MicroEJ classpath is built from a
    MicroEJ application project.
 
--  `Classpath Load Model`_ explains how the application contents is loaded from
+-  :ref:`section.microej.link.and.load.model` explains how the application contents is loaded from
    MicroEJ Classpath.
 
--  `Classpath Elements`_ specifies the different elements that can be declared
+-  :ref:`section.classpath.elements` specifies the different elements that can be declared
    in MicroEJ Classpath to describe the application contents.
 
--  `Foundation Libraries vs Add-On Libraries`_ explains the different kind of
+-  :ref:`section.foundation.library.versus.add.on.library` explains the different kind of
    libraries that can be added to MicroEJ Classpath.
 
 -  Finally, :ref:`section.ivy.dependency.manager` shows how to manage libraries dependencies
@@ -62,7 +62,7 @@ A MicroEJ Application classpath is created via the loading of :
 -  all ``*.[extension].list`` files declared in a MicroEJ Classpath.
 
 The different elements that constitute an application are described in
-`Classpath Elements`_. They are searched within MicroEJ Classpath from left to
+:ref:`section.classpath.elements`. They are searched within MicroEJ Classpath from left to
 right (the first file found is loaded). Types referenced by previously loaded
 MicroEJ Classpath elements are loaded transitively.
 
@@ -79,13 +79,13 @@ Classpath Elements
 
 The MicroEJ Classpath contains the following elements:
 
--  An entrypoint described in section `Application Entry Points`_;
+-  An entrypoint described in section :ref:`section.classpath.elements.entrypoints`;
 
--  Types in ``.class`` files, described in section `Types`_;
+-  Types in ``.class`` files, described in section :ref:`section.classpath.elements.types`;
 
--  Raw resources, described in section `Raw Resources`_;
+-  Raw resources, described in section :ref:`section.classpath.elements.resources`;
 
--  Immutables Object data files, described in Section `Immutable Objects`_;
+-  Immutables Object data files, described in Section :ref:`section.classpath.elements.immutables`;
 
 -  Images and Fonts resources;
 
