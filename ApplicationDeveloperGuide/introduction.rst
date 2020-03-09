@@ -37,12 +37,6 @@ dynamically. If it is statically linked, it is then called a System
 Application as it is part of the initial image and cannot be removed.
 MicroEJ Sandboxed Applications are developed using MicroEJ Studio.
 
-A MicroEJ Multi-Sandbox Firmware is a MicroEJ Firmware that implements
-the ability to be extended by exposing a set of APIs and a memory space
-to link MicroEJ Sandboxed Applications. It can host several MicroEJ
-Sandboxed applications.
-
-
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
