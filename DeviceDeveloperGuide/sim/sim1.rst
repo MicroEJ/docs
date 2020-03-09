@@ -44,7 +44,7 @@ connection. Mocks run inside the process that runs the HIL engine.
 
 .. [1]
    Only the execution speed is not accurate. The simulator speed can be
-   set to match the average MicroEJ platform speed in order to adapt the
+   set to match the average MicroEJ Platform speed in order to adapt the
    simulator speed to the desktop speed.
 
 ..

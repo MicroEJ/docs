@@ -49,7 +49,7 @@ know the LEDs states.
 
 When there is no LED on the board, a *stub* implementation of C library
 is available. This C library must be linked by the third-party C IDE
-when the MicroUI module is installed in the MicroEJ platform.
+when the MicroUI module is installed in the MicroEJ Platform.
 
 
 Dependencies

@@ -110,7 +110,7 @@ Application development is based on the following elements:
    tools required for building and testing an application for a specific
    MicroEJ-ready device. MicroEJ platforms are imported into MicroEJ SDK
    within a local folder called MicroEJ Platforms repository. Once a
-   MicroEJ platform is imported, an application can be launched and
+   MicroEJ Platform is imported, an application can be launched and
    tested on simulator. It also provides a means to locally deploy the
    application on a MicroEJ-ready device.
 

@@ -80,7 +80,7 @@ initialization step).
 
 When there is no input device on the board, a *stub* implementation of C
 library is available. This C library must be linked by the third-party C
-IDE when the MicroUI module is installed in the MicroEJ platform.
+IDE when the MicroUI module is installed in the MicroEJ Platform.
 
 
 .. _javaEventGenerators:

@@ -35,8 +35,8 @@ A MicroEJ Platform is described by a ``.platform`` file. This file is
 usually called ``[name].platform``, and is stored at the root of a
 MicroEJ Platform configuration project called ``[name]-configuration``.
 
-The configuration file is recognized by the MicroEJ platform builder.
-The MicroEJ platform builder offers a visualization with two tabs:
+The configuration file is recognized by the MicroEJ Platform builder.
+The MicroEJ Platform builder offers a visualization with two tabs:
 
 .. figure:: images/jpf_conf_overview.png
    :alt: MicroEJ Platform Configuration Overview Tab

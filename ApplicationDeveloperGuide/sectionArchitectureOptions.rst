@@ -197,9 +197,9 @@ Option(checkbox): Use target characteristics
 
 When selected, this option forces the MicroEJ simulator to use the MicroEJ
 platform exact characteristics. It sets the MicroEJ simulator scheduling policy
-according to the MicroEJ platform one. It forces resources to be explicitly
+according to the MicroEJ Platform one. It forces resources to be explicitly
 specified. It enables log trace and gives information about the RAM memory size
-the MicroEJ platform uses.
+the MicroEJ Platform uses.
 
 Option(text): Slowing factor (0 means disabled)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -217,7 +217,7 @@ Option(text): Slowing factor (0 means disabled)
 
 
 This option allows the MicroEJ simulator to be slowed down in order to match
-the MicroEJ platform execution speed. The greater the slowing factor, the
+the MicroEJ Platform execution speed. The greater the slowing factor, the
 slower the MicroEJ simulator runs.
 
 Group: HIL Connection

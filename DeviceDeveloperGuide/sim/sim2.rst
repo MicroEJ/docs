@@ -7,7 +7,7 @@ No dependency.
 Installation
 ============
 
-The simulator is a built-in feature of MicroEJ platform architecture.
+The simulator is a built-in feature of MicroEJ Platform architecture.
 
 
 Use

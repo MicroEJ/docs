@@ -121,9 +121,9 @@ contain tags related to the Input component as described below.
     +---------------------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. [1]
-   Exception: When using MicroEJ platform, where there is no equivalent
+   Exception: When using MicroEJ Platform, where there is no equivalent
    to the ``LLINPUT_IMPL_getInitialStateValue`` function. If no
-   ``values`` array is provided, and the MicroEJ platform is being used,
+   ``values`` array is provided, and the MicroEJ Platform is being used,
    all state machines take 0 as their initial state value.
 
 

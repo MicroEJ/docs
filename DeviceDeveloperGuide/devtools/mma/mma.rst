@@ -24,7 +24,7 @@ Functional Description
 
    Memory Map Analyzer Process
 
-In addition to the executable file, the MicroEJ platform generates a map
+In addition to the executable file, the MicroEJ Platform generates a map
 file. Double click on this file to open the Memory Map Analyzer.
 
 
