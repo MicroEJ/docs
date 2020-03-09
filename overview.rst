@@ -38,7 +38,7 @@ Using the MicroEJ Studio tool, an application developer will be able to:
    develop and test applications on the simulator;
 
 -  Deploy the application locally on an hardware device equipped with
-   the MicroEJ firmware;
+   the MicroEJ Firmware;
 
 -  Package and publish the application on a MicroEJ Forge Instance,
    enabling remote end users to install it on their devices. For more
@@ -115,7 +115,7 @@ Application development is based on the following elements:
    application on a MicroEJ-ready device.
 
 -  MicroEJ-ready device, an hardware device that will be programmed with
-   a MicroEJ firmware. A MicroEJ firmware is a binary instance of
+   a MicroEJ Firmware. A MicroEJ Firmware is a binary instance of
    MicroEJ runtime for a target hardware board.
 
 Starting from scratch, the steps to go through the whole process are
@@ -200,7 +200,7 @@ Starting from scratch, the steps to go through the whole process are:
 
    -  Select between one of the available boards;
 
-   -  Download and install a MicroEJ firmware on the target hardware;
+   -  Download and install a MicroEJ Firmware on the target hardware;
 
    -  Deploy and run a MicroEJ demo on board.
 
