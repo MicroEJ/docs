@@ -38,20 +38,6 @@ and specifics of developing Sandboxed Applications (see :ref:`_sandboxed.applica
 Terms and Definitions
 ---------------------
 
-A *Standalone Application* is an application, designed in MicroEJ Studio
-with the standalone application structure, that defines a main entry
-point (a class that contains a ``public static void main(String[])``
-method). A Standalone Application can be run on the simulator and is
-intended to be statically linked with a Platform to produce a Mono-Sandbox
-Firmware.
-
-A *Sandboxed Application* is an application designed in MicroEJ Studio
-with the sandboxed application structure (see chapter *Sandboxed
-Application Structure* of the `Sandboxed Application Developer's
-Guide <https://developer.microej.com/packages/appdevguide-sand-4.0-C/TLT-0788-DGI-SandboxedApplicationDeveloperGuide-MicroEJ_4.0-C.pdf>`_).
-A sandboxed application is intended to be executed by a Multi-Sandbox
-Firmware.
-
 A *Resident Application* is a Sandboxed Application that is linked into
 a Multi-Sandbox Firmware.
 
