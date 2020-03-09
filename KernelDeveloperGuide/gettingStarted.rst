@@ -60,9 +60,9 @@ device may take several minutes. When the build is succeed, the folder
 -  ``mymodule.out``: The Firmware Binary to be programmed on device.
 
 -  ``mymodule.kpk``: The Firmware Package to be imported in a MicroEJ
-   Store.
+   Forge instance.
 
--  ``mymodule.jpf``: The Virtual Device to be imported in MicroEJ
+-  ``mymodule.vde``: The Virtual Device to be imported in MicroEJ
    Studio.
 
 -  ``mymodule-workingEnv.zip``: This file contains all files produced by

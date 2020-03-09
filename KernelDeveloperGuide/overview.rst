@@ -56,7 +56,7 @@ functional simulation part. Usually it also provides a mean to directly
 deploy a Sandboxed Application on the target device running a Multi-Sandbox
 Firmware (this is called *Local Deployment*). In case of dynamic
 application deployment, the Virtual Device must be published on MicroEJ
-Store in order to execute an internal batch applications build for this
+Forge instance in order to execute an internal batch applications build for this
 device.
 
 Overall Architecture
