@@ -1,6 +1,6 @@
-===================
-Sandbox Application
-===================
+=====================
+Sandboxed Application
+=====================
 
 .. _section.application.publication:
 
