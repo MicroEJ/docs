@@ -1,3 +1,5 @@
+.. _sandboxed.application:
+
 =====================
 Sandboxed Application
 =====================

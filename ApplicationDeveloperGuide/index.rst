@@ -1,3 +1,5 @@
+.. _application.developer.guide:
+
 Application Developer Guide
 ===========================
 

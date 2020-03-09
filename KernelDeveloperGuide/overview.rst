@@ -30,15 +30,10 @@ Firmware Developers:
 -  Controlling and monitoring resources
 
 This document takes as prerequisite that a MicroEJ Platform is available
-for the target device (refer to our `Device Developer's
-Guide <https://developer.microej.com/packages/devdevguide-4.0-A/TLT-0784-MAN-DeviceDevGuide.pdf>`_).
+for the target device (see :ref:`_device.developer.guide`).
 This document also assumes that the reader is familiar with the
-development and deployment of MicroEJ applications (refer to our
-`Standalone Application Developer's
-Guide <https://developer.microej.com/packages/appdevguide-stand-4.1-B/TLT-0793-DGI-StandaloneApplicationDeveloperGuide-MicroEJ_4.1-B.pdf>`_)
-and specifics of developing Sandboxed Applications (refer to our
-`Sandboxed Application Developer's
-Guide <https://developer.microej.com/packages/appdevguide-sand-4.0-C/TLT-0788-DGI-SandboxedApplicationDeveloperGuide-MicroEJ_4.0-C.pdf>`_).
+development and deployment of MicroEJ Applications (see :ref:`_application.developer.guide`)
+and specifics of developing Sandboxed Applications (see :ref:`_sandboxed.application`).
 
 Terms and Definitions
 ---------------------
