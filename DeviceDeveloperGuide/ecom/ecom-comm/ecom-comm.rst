@@ -8,7 +8,7 @@ Principle
 
 The ECOM Comm Java library provides support for serial communication.
 ECOM Comm extends ECOM to allow stream communication via serial
-communication ports (typically UARTs). In the MicroEJ application, the
+communication ports (typically UARTs). In the MicroEJ Application, the
 connection is established using the ``Connector.open()`` method. The
 returned connection is a ``ej.ecom.io.CommConnection`` , and the input
 and output streams can be used for full duplex communication.
@@ -269,7 +269,7 @@ reentrant synchronization mechanism must be implemented (see
 ``LLCOMM_IMPL_syncConnectionsEnter`` and
 ``LLCOMM_IMPL_syncConnectionsExit``).
 
-When opening a port from the MicroEJ application, each connection
+When opening a port from the MicroEJ Application, each connection
 declared in the connections pool will be asked about its platform port
 number (using the ``getPlatformId`` method) or its name (using the
 ``getName`` method) depending on the requested port identifier. The
@@ -297,7 +297,7 @@ and receiving data. The ECOM Comm C module will fill the transmit
 buffer, and get bytes from the receive buffer. There is no flow control.
 
 When the transmit buffer is full, an attempt to write more bytes from
-the MicroEJ application will block the Java thread trying to write,
+the MicroEJ Application will block the Java thread trying to write,
 until some characters are sent on the serial line and space in the
 buffer is available again.
 
@@ -376,7 +376,7 @@ characters.
 BSP File
 ========
 
-The ECOM Comm C module needs to know, when the MicroEJ application is
+The ECOM Comm C module needs to know, when the MicroEJ Application is
 built, the name of the implementation. This mapping is defined in a BSP
 definition file. The name of this file must be ``bsp.xml`` and must be
 written in the ECOM comm module configuration folder (near the

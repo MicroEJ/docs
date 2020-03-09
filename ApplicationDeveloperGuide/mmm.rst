@@ -36,7 +36,7 @@ resolution. Please consult the MMM specification available on
 An Ivy configuration file (``module.ivy``) must be provided at the root
 of each MicroEJ project to solve classpath dependencies. Multiple Ivy
 configuration file templates are available depending on the kind of
-MicroEJ application created.
+MicroEJ Application created.
 
 .. code:: xml
 

@@ -38,7 +38,7 @@ Bibliography
     |                   | allows devices to run multiple and mixed Java    |
     |                   | and C software applications.                     |
     +-------------------+--------------------------------------------------+
-    | MicroEJ           | A MicroEJ application (or app) is a software     |
+    | MicroEJ           | A MicroEJ Application (or app) is a software     |
     | Application       | program that runs on the MicroEJ Vee.            |
     +-------------------+--------------------------------------------------+
     | MicroEJ Workbench | MicroEJ Workbench is the full set of tools built |

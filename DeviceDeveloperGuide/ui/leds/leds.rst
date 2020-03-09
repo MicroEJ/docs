@@ -35,7 +35,7 @@ the LEDs on and off.
 
 The LLAPI are the same for the LED which is connected to a ``GPIO``
 (``0`` or ``1``) or via a ``PWM``. The BSP has the responsibility of
-interpreting the MicroEJ application parameter ``intensity``.
+interpreting the MicroEJ Application parameter ``intensity``.
 
 Typically, when the LED is connected to a ``GPIO``, the ``intensity``
 "0" means "OFF," and all others values "ON." When the LED is connected
@@ -44,7 +44,7 @@ must configure the ``PWM`` signal.
 
 The BSP should be able to return the state of an LED. If it is not able
 to do so (for example ``GPIO`` is not accessible in read mode), the
-returned value may be wrong. The MicroEJ application may not be able to
+returned value may be wrong. The MicroEJ Application may not be able to
 know the LEDs states.
 
 When there is no LED on the board, a *stub* implementation of C library

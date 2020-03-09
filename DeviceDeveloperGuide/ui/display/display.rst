@@ -564,7 +564,7 @@ For each pixel to draw, the antialiasing process blends the foreground
 color with a background color. This background color is static or
 dynamic:
 
--  static: The background color is fixed by the MicroEJ application
+-  static: The background color is fixed by the MicroEJ Application
    (``GraphicsContext.setBackgroundColor()``).
 
 -  dynamic: The background color is the original color of the
@@ -856,7 +856,7 @@ the size of the original image.
 
 Example for a A4 image with required alignment on 8 bits:
 
--  Original image width in pixels (== width in MicroEJ application): 47
+-  Original image width in pixels (== width in MicroEJ Application): 47
 
 -  Hardware image width in pixels (== line width in pixels in RAW image
    data): 48

@@ -19,7 +19,7 @@ is made up of an ordered list of paths. A path is either a folder or a
 zip file, called a JAR file (JAR stands for Java ARchive).
 
 -  :ref:`application.classpath.mapping` explains how the MicroEJ classpath is built from a
-   MicroEJ application project.
+   MicroEJ Application project.
 
 -  :ref:`section.microej.link.and.load.model` explains how the application contents is loaded from
    MicroEJ Classpath.
@@ -98,7 +98,7 @@ The MicroEJ Classpath contains the following elements:
 Application Entry Points
 ------------------------
 
-MicroEJ application entry point declaration differs depending on the
+MicroEJ Application entry point declaration differs depending on the
 application kind:
 
 -  In case of a MicroEJ Standalone Application, it is a class that

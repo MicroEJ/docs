@@ -2,7 +2,7 @@ Testsuite with JUnit
 ====================
 
 MicroEJ allows to run unit tests using the standard JUnit API during the
-build process of a MicroEJ library or a MicroEJ application. The MicroEJ
+build process of a MicroEJ library or a MicroEJ Application. The MicroEJ
 testsuite engine runs tests on a target Platform and outputs a JUnit XML
 report.
 

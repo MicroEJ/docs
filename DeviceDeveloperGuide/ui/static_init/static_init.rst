@@ -9,7 +9,7 @@ Principle
 =========
 
 MicroUI requires a configuration step (also called extension step) to
-customize itself before MicroEJ application startup (see
+customize itself before MicroEJ Application startup (see
 :ref:`section_architecture`). This configuration step uses an XML
 file. In order to save both runtime execution time and flash memory, the
 file is processed by the Static MicroUI Initializer tool, avoiding the
@@ -41,7 +41,7 @@ tool is automatically launched during the MicroUI module installation
 The Static MicroUI Initializer tool is able to out until three files:
 
 -  A Java library which extends MicroUI library. This library is
-   automatically added to the MicroEJ application classpath when MicroUI
+   automatically added to the MicroEJ Application classpath when MicroUI
    library is set as a classpath variable. This library is used at
    MicroUI startup to create all instances of I/O devices (``Display``,
    ``EventGenerator`` etc.) and contains the fonts described into the

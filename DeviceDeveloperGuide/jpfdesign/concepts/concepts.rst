@@ -18,7 +18,7 @@ The runtime environment consists of:
 
 The development tools are composed of:
 
--  Java APIs to compile MicroEJ application code.
+-  Java APIs to compile MicroEJ Application code.
 
 -  Documentation: this guide, library specifications, etc.
 

@@ -80,7 +80,7 @@ JRE Tab
 
 The next tab is the :guilabel:`JRE` tab. This tab allows you to configure the
 Java Runtime Environment used for running the underlying launch script.
-It does not configure the MicroEJ application execution. The
+It does not configure the MicroEJ Application execution. The
 ``VM Arguments`` text field allows you to set vm-specific options, which
 are typically used to increase memory spaces:
 

@@ -30,7 +30,7 @@ etc.).
 
    MicroUI Elements
 
-At MicroEJ application startup all MicroUI objects relative to the I/O
+At MicroEJ Application startup all MicroUI objects relative to the I/O
 devices are created and accessible. The following MicroUI methods allow
 you to access these internal objects:
 
