@@ -145,13 +145,11 @@ environment:
 Resident Applications
 ---------------------
 
-A MicroEJ Application can be embedded in the firmware binary or
-downloaded from a MicroEJ store. Embedded applications are called
-Resident Applications. (See `Sandboxed Application Developer's
-Guide <https://developer.microej.com/packages/appdevguide-sand-4.0-C/TLT-0788-DGI-SandboxedApplicationDeveloperGuide-MicroEJ_4.0-C.pdf>`_
-for more informations.)
+A MicroEJ Sandboxed Application can be dynamically installed from a MicroEJ Forge instance 
+or can be directly linked into the Firmware binary at built-time. In this case, it is called
+a Resident Application.
 
-The user can specify the resident applications in two different ways:
+The user can specify the Resident Applications in two different ways:
 
 -  Set the property ``build-systemapps.dropins.dir`` to a folder with
    contains all the resident applications.
@@ -163,8 +161,8 @@ The user can specify the resident applications in two different ways:
       <dependency org="com.microej.app.wadapps" name="management" 
       rev="[2.2.2-RC0,3.0.0-RC0[" conf="systemapp->application"/>
 
-All resident applications are also available for the virtual device, if
-a resident application should only be available for the firmware, use an
+All Resident Applications are also available for the Virtual Device, if
+a resident application should only be available for the Firmware, use an
 ivy dependency with the ivy configuration ``systemapp-fw`` instead of
 ``systemapp``, like:
 
