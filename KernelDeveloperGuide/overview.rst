@@ -97,7 +97,7 @@ Firmware implementations must cover the following topics:
    artifact must be selected at build time to cover the specific
    firmware needs.
 
--  The simulation support: how the virtual device implementation
+-  The simulation support: how the Virtual Device implementation
    reflects the firmware implementation, with the help of specific
    artifacts.
 
