@@ -21,25 +21,6 @@ repository relative to the workspace, so that the workspace is
 self-contained, without external file system links and can be shared
 within a zip file.
 
-Application Development
-=======================
-
-The following sections of this document shall prove useful as a
-reference when developing applications for MicroEJ. They cover concepts
-essential to MicroEJ applications design.
-
-In addition to these sections, by going to
-:http:`https://developer.microej.com/`, you can access a number of helpful
-resources such as:
-
--  Libraries from the MicroEJ Central Repository
-   (:http:`https://repository.microej.com/`);
-
--  Application Examples as source code from MicroEJ Github Repositories
-   (:http:`https://github.com/MicroEJ`);
-
--  Documentation (HOWTOs, Reference Manuals, APIs javadoc...).
-
 .. _chapter.application.structure:
 
 Sandboxed Application Structure
