@@ -43,7 +43,7 @@ Process overview:
 5. The raw files are embedded as (hidden) resources within the MicroEJ
    application. The raw files' data are linked into the FLASH memory.
 
-6. When the MicroEJ application creates a MicroUI DisplayFont object
+6. When the MicroEJ Application creates a MicroUI DisplayFont object
    which targets a pre-generated image, the Font Engine Core only has to
    link from the MicroUI DisplayFont object to the data in the FLASH
    memory. Therefore, the loading is very fast; only the font data from
@@ -205,7 +205,7 @@ An identifier targets a font file (an ejf raw file), which can contain
 until eight DisplayFont inside. To prevent some C allocation at runtime,
 the number of identifiers is allocated at compile-time. By consequence,
 the available number of identifiers is limited. The MicroEJ launcher of
-the MicroEJ application has to specify the number of identifiers (refer
+the MicroEJ Application has to specify the number of identifiers (refer
 to the chapter :ref:`workbenchLaunchOptions` (``Target`` >
 ``Memory``) to have more information where specify this number of
 identifiers.)
@@ -274,7 +274,7 @@ addresses' space range. It uses the External Resource Loader.
 When a font is located in such memory, the Font Engine Core copies a
 very short part of the resource (the font file) into a RAM memory (into
 CPU addresses space range): the font header. This header stays located
-in RAM during the full MicroEJ application time. Then, on MicroEJ
+in RAM during the full MicroEJ Application time. Then, on MicroEJ
 application demand, the Font Engine Core loads some extra information
 from the font into the RAM memory (the font meta data, the font pixels,
 etc.). This extra information is automatically unloaded from RAM when

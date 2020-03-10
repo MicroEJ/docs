@@ -27,7 +27,7 @@ Stacks are the native parts of MicroUI. They connect the MicroUI library
 to the user-supplied drivers code (coded in C).
 
 Drivers for input devices must generate events that are sent, via a
-MicroUI *Event Generator*, to the MicroEJ application. An event
+MicroUI *Event Generator*, to the MicroEJ Application. An event
 generator accepts notifications from devices, and generates an event in
 a standard format that can be handled by the application. Depending on
 the MicroUI configuration, there can be several different types of event

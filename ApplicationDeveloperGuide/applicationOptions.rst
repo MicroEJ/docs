@@ -20,7 +20,7 @@ Notice that some options may not be available, in the following cases:
 - Option is specific to the target (MicroEJ Core Engine on Device or Simulator).
 - Option has been introduced in a newer version of the MicroEJ Architecture which is integrated in the targeted Platform.
 
-.. include:: ../StandaloneAppDevGuide/sectionArchitectureOptions.rst
+.. include:: sectionArchitectureOptions.rst
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

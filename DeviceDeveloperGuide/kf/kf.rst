@@ -38,7 +38,7 @@ The Multi-Sandbox process extends the overall process described in
 
    Multi-Sandbox Process
 
-Once a Kernel has been generated, additional MicroEJ application code
+Once a Kernel has been generated, additional MicroEJ Application code
 (Feature) can be built against the Kernel by :
 
 -  Creating one launch configuration per feature.
@@ -49,7 +49,7 @@ Once a Kernel has been generated, additional MicroEJ application code
 -  Setting the :guilabel:`Kernel` field in the :guilabel:`Configuration` tab of each
    feature launch configuration to the :guilabel:`...`.
 
-using the MicroEJ application launch named Build Dynamic Feature. The
+using the MicroEJ Application launch named Build Dynamic Feature. The
 binary application file produced (``application.fo``) is compatible only
 for the Kernel on which it was generated. Generating a new Kernel
 requires that you generate the Features again on this Kernel.

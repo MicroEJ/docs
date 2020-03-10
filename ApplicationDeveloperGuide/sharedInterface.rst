@@ -1,12 +1,12 @@
 .. _chapter.shared.interfaces:
 
 Shared Interfaces
-#################
+=================
 
 .. _section.shared.interfaces.contract:
 
 Principle
-=========
+---------
 
 The Shared Interface mechanism provided by MicroEJ Core Engine is an
 object communication bus based on plain Java interfaces where method
@@ -25,7 +25,7 @@ The basic schema:
    registry and directly calls the methods defined by the shared
    interface.
 
-.. figure:: png/SI_1.png
+.. figure:: images/SI_1.png
    :alt: Shared Interface Call Mechanism
    :align: center
 
@@ -34,7 +34,7 @@ The basic schema:
 .. _section.shared.interfaces.element:
 
 Shared Interface Creation
-=========================
+-------------------------
 
 Creation of a shared interface follows three steps:
 
@@ -45,7 +45,7 @@ Creation of a shared interface follows three steps:
 -  Interface registration.
 
 Interface Definition
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 The definition of a shared interface starts by defining a standard Java
 interface.
@@ -82,13 +82,13 @@ interfaces:
 .. _section.transferable.types:
 
 Transferable Types
-------------------
+~~~~~~~~~~~~~~~~~~
 
 In the process of a cross-application method call, parameters and return
 value of methods declared in a shared interface must be transferred back
 and forth between application boundaries.
 
-.. figure:: png/SI_3.png
+.. figure:: images/SI_3.png
    :alt: Shared Interface Parameters Transfer
    :align: center
 
@@ -198,7 +198,7 @@ Engine.
 .. _section.proxy.implementation:
 
 Proxy Class Implementation
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Shared Interface mechanism is based on automatic proxy objects
 created by the underlying MicroEJ Core Engine, so that each application
@@ -215,7 +215,7 @@ application killed...). The MicroEJ Core Engine will allocate instances
 of this class when an implementation owned by another application is
 being transferred to this application.
 
-.. figure:: png/SI_4.png
+.. figure:: images/SI_4.png
    :alt: Shared Interfaces Proxy Overview
    :align: center
 

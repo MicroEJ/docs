@@ -22,7 +22,7 @@ The mock socket port can be customized for J2SE clients, even though
 several Shielded Plug mocks with the same socket port cannot run at the
 same time. The default socket port is 10082.
 
-The Shielded Plug mock is a standard MicroEJ application. It can be
+The Shielded Plug mock is a standard MicroEJ Application. It can be
 configured using Java properties:
 
 -  ``sp.connection.address``

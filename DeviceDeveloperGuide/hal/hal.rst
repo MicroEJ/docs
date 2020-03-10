@@ -15,14 +15,14 @@ BSP drivers.
 Functional Description
 ======================
 
-The MicroEJ application configures and uses some physical GPIOs, using
+The MicroEJ Application configures and uses some physical GPIOs, using
 one unique identifier per GPIO. The HAL implementation made for each
 MicroEJ Platform has the responsibility of verifying the veracity of the
 GPIO identifier and the valid GPIO configuration.
 
 Theoretically, a GPIO can be reconfigured at any time. For example a
 GPIO is configured in OUTPUT first, and later in ADC entry. However the
-HAL implementation can forbid the MicroEJ application from performing
+HAL implementation can forbid the MicroEJ Application from performing
 this kind of operation.
 
 
@@ -32,10 +32,10 @@ Identifier
 Basic Rule
 ----------
 
-MicroEJ application manipulates anonymous identifiers used to identify a
+MicroEJ Application manipulates anonymous identifiers used to identify a
 specific GPIO (port and pin). The identifiers are fixed by the HAL
 implementation made for each MicroEJ Platform, and so this
-implementation is able to make the link between the MicroEJ application
+implementation is able to make the link between the MicroEJ Application
 identifiers and the physical GPIOs.
 
 -  A ``port`` is a value between ``0`` and ``n - 1``, where ``n`` is the
@@ -85,11 +85,11 @@ represents one or several physical connectors, and has a *name*; for
 example ``ARDUINO_DIGITAL``.
 
 Using a unique ID to target a virtual connector allows you to make an
-abstraction between the MicroEJ application and the HAL implementation.
+abstraction between the MicroEJ Application and the HAL implementation.
 For exmaple, on a board A, the pin ``D5`` of ``ARDUINO_DIGITAL`` port
 will be connected to the MCU ``portA``, ``pin12`` (GPIO ID = ``1``,
 ``12``). And on board B, it will be connected to the MCU ``port5``,
-``pin0`` (GPIO ID = ``5``, ``0``). From the MicroEJ application point of
+``pin0`` (GPIO ID = ``5``, ``0``). From the MicroEJ Application point of
 view, this GPIO has the ID ``30``, ``5``.
 
 Standard virtual connector IDs are:
@@ -117,21 +117,21 @@ Configuration
 
 A GPIO can be configured in any of five modes:
 
--  Digital input: The MicroEJ application can read the GPIO state (for
+-  Digital input: The MicroEJ Application can read the GPIO state (for
    example a button state).
 
--  Digital input pull-up: The MicroEJ application can read the GPIO
+-  Digital input pull-up: The MicroEJ Application can read the GPIO
    state (for example a button state); the default GPIO state is driven
    by a pull-up resistor.
 
--  Digital output: The MicroEJ application can set the GPIO state (for
+-  Digital output: The MicroEJ Application can set the GPIO state (for
    example to drive an LED).
 
--  Analog input: The MicroEJ application can convert some incoming
+-  Analog input: The MicroEJ Application can convert some incoming
    analog data into digital data (ADC). The returned values are values
    between ``0`` and ``n - 1``, where ``n`` is the ADC precision.
 
--  Analog output: The MicroEJ application can convert some outgoing
+-  Analog output: The MicroEJ Application can convert some outgoing
    digital data into analog data (DAC). The digital value is a
    percentage (0 to 100%) of the duty cycle generated on selected GPIO.
 

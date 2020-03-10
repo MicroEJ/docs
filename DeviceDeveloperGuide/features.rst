@@ -63,7 +63,7 @@ Platform Characteristics
 .. table:: Platform Characteristics
 
     +---------------+-----------------+----------------------------------+-----------------------------------+-------------------+
-    | Name          | Item            | MicroEJ platform Characteristics | MicroEJ simulator Characteristics | User Configurable |
+    | Name          | Item            | MicroEJ Platform Characteristics | MicroEJ simulator Characteristics | User Configurable |
     +===============+=================+==================================+===================================+===================+
     |               | Heap Partition  | 1                                | 1                                 |                   |
     |               +-----------------+----------------------------------+-----------------------------------+-------------------+

@@ -16,7 +16,7 @@ This internal format prevents the embedding of all class names and
 method names in the flash, in order to save some memory space. The Stack
 Trace Reader tool allows you to decode the stack traces by replacing the
 internal class names and method names with their real names. It also
-retrieves the line number in the MicroEJ application.
+retrieves the line number in the MicroEJ Application.
 
 
 Functional Description
@@ -24,7 +24,7 @@ Functional Description
 
 The Stack Trace Reader reads the debug info from the fully linked ELF
 file (the ELF file that contains the MicroEJ core engine, the other
-libraries, the BSP, the OS, and the compiled MicroEJ application). It
+libraries, the BSP, the OS, and the compiled MicroEJ Application). It
 prints the decoded stack trace.
 
 

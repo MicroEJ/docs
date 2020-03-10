@@ -564,7 +564,7 @@ For each pixel to draw, the antialiasing process blends the foreground
 color with a background color. This background color is static or
 dynamic:
 
--  static: The background color is fixed by the MicroEJ application
+-  static: The background color is fixed by the MicroEJ Application
    (``GraphicsContext.setBackgroundColor()``).
 
 -  dynamic: The background color is the original color of the
@@ -652,7 +652,7 @@ drawings: fill a rectangle, draw an image, rotate an image etc. Some
 optional functions are available in ``LLDISPLAY_EXTRA.h`` file (see
 :ref:`LLDISPLAY-EXTRA-API-SECTION`). These functions are not
 automatically call by the display module. The display module must be
-configured during the MicroEJ platform construction specifying which
+configured during the MicroEJ Platform construction specifying which
 hardware accelerator to use. It uses the property
 ``hardwareAccelerator`` in ``display/display.properties`` file to select
 a hardware accelerator (see :ref:`section_display_installation`).
@@ -856,7 +856,7 @@ the size of the original image.
 
 Example for a A4 image with required alignment on 8 bits:
 
--  Original image width in pixels (== width in MicroEJ application): 47
+-  Original image width in pixels (== width in MicroEJ Application): 47
 
 -  Hardware image width in pixels (== line width in pixels in RAW image
    data): 48
@@ -899,7 +899,7 @@ display driver. The LLAPI to implement are listed in the header file
 
 When there is no display on the board, a *stub* implementation of C
 library is available. This C library must be linked by the third-party C
-IDE when MicroUI module is installed in the MicroEJ platform.
+IDE when MicroUI module is installed in the MicroEJ Platform.
 
 
 Dependencies

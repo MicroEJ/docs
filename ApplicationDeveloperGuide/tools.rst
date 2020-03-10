@@ -1,12 +1,13 @@
-Sandboxed Application Developer Guide
-=====================================
+Development Tools
+#################
 
 .. toctree::
-    :maxdepth: 2
+   :maxdepth: 2
 
-    chapterMicroEJGettingStarted
-    chapterApplicationStructure
-    chapterSharedInterface
+   testsuite
+   fontDesigner
+   stackTraceReader
+   heapAnalyzer
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

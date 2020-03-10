@@ -1,3 +1,5 @@
+.. _device.developer.guide:
+
 Device Developer Guide
 ======================
 

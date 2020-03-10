@@ -103,7 +103,7 @@ is selected it also shows a list of the instances that refer to that
 instance. The Outline view is opened automatically when an Heap Viewer
 is opened.
 
-.. figure:: png/outline-view.png
+.. figure:: images/outline-view.png
    :alt: Outline View
    :align: center
    :width: 882px
@@ -122,7 +122,7 @@ fields hold references it shows the fields of the referenced instance,
 and so on. In ‘Reference’ mode it shows the instances that refer to the
 selected instance, and the instances that refer to them, and so on.
 
-.. figure:: png/fields-and-ref-showing-fields.png
+.. figure:: images/fields-and-ref-showing-fields.png
    :alt: Instance Browser View - Fields mode
    :align: center
    :width: 588px
@@ -130,7 +130,7 @@ selected instance, and the instances that refer to them, and so on.
 
    Instance Browser View - Fields mode
 
-.. figure:: png/fields-and-ref-showing-refs.png
+.. figure:: images/fields-and-ref-showing-refs.png
    :alt: Instance Browser View - References mode
    :align: center
    :width: 586px
@@ -164,7 +164,7 @@ during the period.
    chart is displayed. This chart shows the number of instances created
    in each time period by the method that created the selected instance.
 
-.. figure:: png/heap-usage-tab.png
+.. figure:: images/heap-usage-tab.png
    :alt: Heap Viewer - Heap Usage Tab
    :align: center
    :width: 709px
@@ -209,7 +209,7 @@ Double-clicking an instance in either viewer opens the Instance Browser
 view (if not already open) and shows details of the instance in that
 view.
 
-.. figure:: png/dominator-tree-tab.png
+.. figure:: images/dominator-tree-tab.png
    :alt: Heap Viewer - Dominator Tree Tab
    :align: center
    :width: 708px
@@ -237,7 +237,7 @@ The page is in three parts.
 -  The bottom part lists the instances accumulated at an accumulation
    point.
 
-.. figure:: png/leak-suspects-tab.png
+.. figure:: images/leak-suspects-tab.png
    :alt: Heap Viewer - Leak Suspects Tab
    :align: center
    :width: 709px
@@ -270,7 +270,7 @@ comprises three parts.
    only instances created by that thread; if a method is selected the
    graph shows only instances created by that method.
 
-.. figure:: png/progressive.png
+.. figure:: images/progressive.png
    :alt: Progressive Heap Usage
    :align: center
    :width: 710px
@@ -300,7 +300,7 @@ dump. These instances were created after the old heap dump was written.
 Clicking to the right of the type name unfolds the list to show the
 instances of the selected type.
 
-.. figure:: png/compare-all.png
+.. figure:: images/compare-all.png
    :alt: Compare Heap Dumps
    :align: center
    :width: 712px
@@ -334,7 +334,7 @@ in the tool.
 The view shows the values of the fields of the instance in both the old
 and new heap dumps, and highlights any differences between the values.
 
-.. figure:: png/compare-fields.png
+.. figure:: images/compare-fields.png
    :alt: Instance Fields Comparison view
    :align: center
    :width: 715px

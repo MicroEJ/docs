@@ -145,13 +145,11 @@ environment:
 Resident Applications
 ---------------------
 
-A MicroEJ Application can be embedded in the firmware binary or
-downloaded from a MicroEJ store. Embedded applications are called
-Resident Applications. (See `Sandboxed Application Developer's
-Guide <https://developer.microej.com/packages/appdevguide-sand-4.0-C/TLT-0788-DGI-SandboxedApplicationDeveloperGuide-MicroEJ_4.0-C.pdf>`_
-for more informations.)
+A MicroEJ Sandboxed Application can be dynamically installed from a MicroEJ Forge instance 
+or can be directly linked into the Firmware binary at built-time. In this case, it is called
+a Resident Application.
 
-The user can specify the resident applications in two different ways:
+The user can specify the Resident Applications in two different ways:
 
 -  Set the property ``build-systemapps.dropins.dir`` to a folder with
    contains all the resident applications.
@@ -163,8 +161,8 @@ The user can specify the resident applications in two different ways:
       <dependency org="com.microej.app.wadapps" name="management" 
       rev="[2.2.2-RC0,3.0.0-RC0[" conf="systemapp->application"/>
 
-All resident applications are also available for the virtual device, if
-a resident application should only be available for the firmware, use an
+All Resident Applications are also available for the Virtual Device, if
+a resident application should only be available for the Firmware, use an
 ivy dependency with the ivy configuration ``systemapp-fw`` instead of
 ``systemapp``, like:
 
@@ -240,18 +238,18 @@ where a dependency line is declared:
    +===============================+===============================+=================================================================================================================================================================================+
    | ``provided->provided``        | Foundation Library (``JAR``)  | Expected to be provided by the platform. (e.g. ``ej.api.*`` artifact)                                                                                                           |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``default->default``          | Add-on Library (``JAR``)      | Embedded in the firmware only, not in the virtual device                                                                                                                        |
+   | ``default->default``          | Add-on Library (``JAR``)      | Embedded in the firmware only, not in the Virtual Device                                                                                                                        |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``vdruntime->default``        | Add-on Library (``JAR``)      | Embedded in the virtual device only, not in the firmware                                                                                                                        |
+   | ``vdruntime->default``        | Add-on Library (``JAR``)      | Embedded in the Virtual Device only, not in the firmware                                                                                                                        |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``default->default;``         | Add-on Library (``JAR``)      | Embedded in both the firmware and the virtual device                                                                                                                            |
+   | ``default->default;``         | Add-on Library (``JAR``)      | Embedded in both the firmware and the Virtual Device                                                                                                                            |
    | ``vdruntime->default``        |                               |                                                                                                                                                                                 |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``platform->platformDev``     | Platform (``JPF``)            | Platform dependency used to build the firmware and the virtual device. There are other ways to select the platform (see :ref:`platform_selection`)                              |
+   | ``platform->platformDev``     | Platform (``JPF``)            | Platform dependency used to build the firmware and the Virtual Device. There are other ways to select the platform (see :ref:`platform_selection`)                              |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | ``kernelapi->default``        | Runtime Environment (``JAR``) | See :ref:`runtime_environment`                                                                                                                                                  |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``systemapp->application``    | Application (``WPK``)         | Linked into both the firmware and the virtual device as resident application. There are other ways to select resident applications (see :ref:`resident_application_input_ways`) |
+   | ``systemapp->application``    | Application (``WPK``)         | Linked into both the firmware and the Virtual Device as resident application. There are other ways to select resident applications (see :ref:`resident_application_input_ways`) |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | ``systemapp-fw->application`` | Application (``WPK``)         | Linked into the firmware only as resident application.                                                                                                                          |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -289,10 +287,10 @@ configure the build process.
 
 .. _platform_selection:
 
-Change the platform used to build the firmware and the virtual device
+Change the platform used to build the firmware and the Virtual Device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To build a firmware and a virtual device a platform must be specified.
+To build a firmware and a Virtual Device a platform must be specified.
 Four different ways are possible to do so:
 
 -  Use an Ivy dependency.
@@ -326,7 +324,7 @@ Set the property ``skip.build.virtual.device``
 
    <ea:property name="skip.build.virtual.device" value="SET" />
 
-Build only a virtual device
+Build only a Virtual Device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Set the property ``virtual.device.sim.only``
@@ -335,7 +333,7 @@ Set the property ``virtual.device.sim.only``
 
    <ea:property name="virtual.device.sim.only" value="SET" />
 
-Build only a virtual device with a pre-existing firmware
+Build only a Virtual Device with a pre-existing firmware
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Copy/Paste the ``.kpk`` file into the folder ``dropins``

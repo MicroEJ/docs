@@ -39,7 +39,7 @@ Process overview (see too :ref:`section_image_core_process`)
 3. The raw files are embedded as (hidden) resources within the MicroEJ
    application. The raw files' data are linked into the FLASH memory.
 
-4. When the MicroEJ application creates a MicroUI Image object which
+4. When the MicroEJ Application creates a MicroUI Image object which
    targets a pre-generated image, the Image Engine Core has only to
    create a link from the MicroUI image object to the data in the FLASH
    memory. Therefore, the loading is very fast; only the image data from
@@ -164,7 +164,7 @@ application classpath.
 
 .. note::
 
-   The list file must be specified in the MicroEJ application launcher
+   The list file must be specified in the MicroEJ Application launcher
    (see :ref:`workbenchLaunchOptions`). However, all files in
    application classpath with suffix ``.images.list`` are automatically
    parsed by the Image Generator tool.

@@ -1,7 +1,3 @@
-=================
-Setup MicroEJ SDK
-=================
-
 .. _download.hardware.simulator:
 
 Download and Install a MicroEJ Platform
@@ -26,7 +22,7 @@ desktop to start the process of Platform installation :
    :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms`. The
    view should be empty on a fresh install of the tool
 
-   .. figure:: png/platformImport.png
+   .. figure:: images/platformImport.png
       :alt: MicroEJ Platform Import
       :align: center
       :width: 797px
@@ -40,7 +36,7 @@ desktop to start the process of Platform installation :
    to navigate to the ``.jpf`` file containing your MicroEJ Platform, 
    then read and accept the license agreement to proceed.
 
-   .. figure:: png/platformSelect.png
+   .. figure:: images/platformSelect.png
       :alt: MicroEJ Platform Selection
       :align: center
       :width: 569px
@@ -51,7 +47,7 @@ desktop to start the process of Platform installation :
 -  The MicroEJ Platform should now appear in the :guilabel:`Platforms` view,
    with a green valid mark.
 
-   .. figure:: png/platformList.png
+   .. figure:: images/platformList.png
       :alt: MicroEJ Platform List
       :align: center
       :width: 797px

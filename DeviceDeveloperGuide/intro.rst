@@ -5,7 +5,7 @@ Scope
 -----
 
 This document explains how the core features of MicroEJ architecture are
-accessed, configured and used by the MicroEJ platform builder. It
+accessed, configured and used by the MicroEJ Platform builder. It
 describes the process for creating and augmenting a MicroEJ
 architecture. This document is concise, but attempts to be exact and
 complete. Semantics of implemented Foundation Libraries are described in
@@ -22,7 +22,7 @@ Intended Audience
 
 The audience for this document is software engineers who need to
 understand how to create and configure a MicroEJ Platform using the
-MicroEJ platform builder. This document also explains how a MicroEJ
+MicroEJ Platform builder. This document also explains how a MicroEJ
 application can interoperate with C code on the target, and the details
 of the MicroEJ architecture modules, including their APIs, error codes
 and options.

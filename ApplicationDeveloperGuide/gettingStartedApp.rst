@@ -9,7 +9,7 @@ Create a MicroEJ Standalone Application
 -  Create a project in your workspace. Select :guilabel:`File` > :guilabel:`New` >
    :guilabel:`MicroEJ Standalone Application Project`.
 
-   .. figure:: png/newApp1.png
+   .. figure:: images/newApp1.png
       :alt: New MicroEJ Standalone Application Project
       :align: center
       :width: 719px
@@ -37,7 +37,7 @@ Create a MicroEJ Standalone Application
    :guilabel:`New` > :guilabel:`Package`. Give a name: ``com.mycompany``.
    Click on :guilabel:`Finish`.
 
-   .. figure:: png/newApp8.png
+   .. figure:: images/newApp8.png
       :alt: New Package
       :align: center
       :width: 525px
@@ -50,7 +50,7 @@ Create a MicroEJ Standalone Application
    Give a name: ``Test`` and check the box ``public static void main(String[]
    args)``. Click on :guilabel:`Finish`.
 
-   .. figure:: png/newApp9.png
+   .. figure:: images/newApp9.png
       :alt: New Class
       :align: center
       :width: 542px
@@ -66,7 +66,7 @@ Create a MicroEJ Standalone Application
       System.out.println("hello world!");
 
 
-   .. figure:: png/newApp10.png
+   .. figure:: images/newApp10.png
       :alt: MicroEJ Application Content
       :align: center
       :width: 438px
@@ -84,7 +84,7 @@ Run on the Simulator
 To run the sample project on Simulator, select it in the left panel then right-click
 and select :guilabel:`Run` > :guilabel:`Run as` > :guilabel:`MicroEJ Application`.
 
-.. figure:: png/sim1.png
+.. figure:: images/sim1.png
    :alt: MicroEJ Development Tools Overview
    :align: center
    :width: 698px
@@ -124,32 +124,13 @@ Open the menu :guilabel:`Manual` and select the documentation
 the name of the hardware device. This documentation features a guide to
 run a built-in application on MicroEJ Simulator and on hardware device.
 
-.. figure:: png/emb1.png
+.. figure:: images/emb1.png
    :alt: MicroEJ Platform Guide
    :align: center
    :width: 301px
    :height: 133px
 
    MicroEJ Platform Guide
-
-Application Development
-=======================
-
-The following sections of this document shall prove useful as a
-reference when developing applications for MicroEJ. They cover concepts
-essential to MicroEJ applications design.
-
-In addition to these sections, by going to
-:http:`https://developer.microej.com/`, you can access a number of helpful
-resources such as:
-
--  Libraries from the MicroEJ Central Repository
-   (:http:`https://repository.microej.com/`)
-
--  Application Examples as source code from MicroEJ Github Repositories
-   (:http:`https://github.com/MicroEJ`)
-
--  Documentation (HOWTOs, Reference Manuals, APIs javadoc...)
 
 
 ..

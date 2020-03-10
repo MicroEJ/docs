@@ -50,7 +50,7 @@ html_theme_options = {
 html_show_sphinx = False
 
 # remove headers permalinks
-html_add_permalinks = False
+html_add_permalinks = ''
 
 # This is required because the version of the Read the Docs Sphinx theme the
 # microej theme was forked from does not support the HTML5 writer used by

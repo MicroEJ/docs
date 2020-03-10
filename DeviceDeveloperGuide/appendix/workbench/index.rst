@@ -3,7 +3,7 @@
 Appendix E: Application Launch Options
 ======================================
 
-To run a MicroEJ application on a platform, a MicroEJ launcher is
+To run a MicroEJ Application on a platform, a MicroEJ launcher is
 required. This launcher allows to specify the platform to use, the
 execution kind, fix some options etc. The MicroEJ launcher proposes some
 several options to customize the platform: some options for each

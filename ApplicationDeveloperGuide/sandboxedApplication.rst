@@ -1,19 +1,13 @@
-.. _application.developer.guide:
+.. _sandboxed.application:
 
-Application Developer Guide
-===========================
+Sandboxed Application
+=====================
 
 .. toctree::
    :maxdepth: 2
 
-   introduction
-   licenses
-   standaloneApplication
-   sandboxedApplication
-   virtualDevice
-   mmm
-   classpath
-   tools
+   sandboxedAppDevelopment
+   sharedInterface
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

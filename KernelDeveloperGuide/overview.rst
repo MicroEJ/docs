@@ -30,40 +30,20 @@ Firmware Developers:
 -  Controlling and monitoring resources
 
 This document takes as prerequisite that a MicroEJ Platform is available
-for the target device (refer to our `Device Developer's
-Guide <https://developer.microej.com/packages/devdevguide-4.0-A/TLT-0784-MAN-DeviceDevGuide.pdf>`_).
+for the target device (see :ref:`device.developer.guide`).
 This document also assumes that the reader is familiar with the
-development and deployment of MicroEJ applications (refer to our
-`Standalone Application Developer's
-Guide <https://developer.microej.com/packages/appdevguide-stand-4.1-B/TLT-0793-DGI-StandaloneApplicationDeveloperGuide-MicroEJ_4.1-B.pdf>`_)
-and specifics of developing Sandboxed Applications (refer to our
-`Sandboxed Application Developer's
-Guide <https://developer.microej.com/packages/appdevguide-sand-4.0-C/TLT-0788-DGI-SandboxedApplicationDeveloperGuide-MicroEJ_4.0-C.pdf>`_).
+development and deployment of MicroEJ Applications (see :ref:`application.developer.guide`)
+and specifics of developing Sandboxed Applications (see :ref:`sandboxed.application`).
 
 Terms and Definitions
 ---------------------
-
-A *Standalone Application* is an application, designed in MicroEJ Studio
-with the standalone application structure, that defines a main entry
-point (a class that contains a ``public static void main(String[])``
-method). A Standalone Application can be run on the simulator and is
-intended to be statically linked with a Platform to produce a Mono-Sandbox
-Firmware.
-
-A *Sandboxed Application* is an application designed in MicroEJ Studio
-with the sandboxed application structure (see chapter *Sandboxed
-Application Structure* of the `Sandboxed Application Developer's
-Guide <https://developer.microej.com/packages/appdevguide-sand-4.0-C/TLT-0788-DGI-SandboxedApplicationDeveloperGuide-MicroEJ_4.0-C.pdf>`_).
-A sandboxed application is intended to be executed by a Multi-Sandbox
-Firmware.
 
 A *Resident Application* is a Sandboxed Application that is linked into
 a Multi-Sandbox Firmware.
 
 A *Multi-Sandbox Platform* is a Platform with the Multi Sandbox
 capability of the MicroEJ Core Engine enabled (see the chapter
-*Multi-Sandbox* of the `Device Developer's
-Guide <https://developer.microej.com/packages/devdevguide-4.0-A/TLT-0784-MAN-DeviceDevGuide.pdf>`_).
+*Multi-Sandbox* of the :ref:`device.developer.guide`).
 A Multi-Sandbox Firmware can only be built with a Multi-Sandbox Platform.
 
 A *Mono-Sandbox Firmware* is produced by building and linking a Standalone
@@ -75,7 +55,7 @@ functional simulation part. Usually it also provides a mean to directly
 deploy a Sandboxed Application on the target device running a Multi-Sandbox
 Firmware (this is called *Local Deployment*). In case of dynamic
 application deployment, the Virtual Device must be published on MicroEJ
-Store in order to execute an internal batch applications build for this
+Forge instance in order to execute an internal batch applications build for this
 device.
 
 Overall Architecture
@@ -116,7 +96,7 @@ Firmware implementations must cover the following topics:
    artifact must be selected at build time to cover the specific
    firmware needs.
 
--  The simulation support: how the virtual device implementation
+-  The simulation support: how the Virtual Device implementation
    reflects the firmware implementation, with the help of specific
    artifacts.
 

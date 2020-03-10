@@ -13,7 +13,7 @@ Trace Reader tool.
 Write a new line to dump the currently executed stack trace on the
 standard output.
 
-.. figure:: ../SandboxedAppDevGuide/png/STR_stacktracedump.png
+.. figure:: images/STR_stacktracedump.png
    :alt: Code to Dump a Stack Trace
    :align: center
    :width: 425px
@@ -24,7 +24,7 @@ standard output.
 Write a new line to dump the currently executed stack trace on the
 standard output.
 
-.. figure:: ../StandaloneAppDevGuide/png/trace1.png
+.. figure:: images/trace1.png
    :alt: Code to Dump a Stack Trace
    :align: center
    :width: 424px
@@ -38,7 +38,7 @@ tool requires the application binary file with debug information
 is uploaded on the device is ``application.fo`` (stripped version
 without debug information).
 
-.. figure:: ../SandboxedAppDevGuide/png/STR_debugfofile.png
+.. figure:: images/STR_debugfofile.png
    :alt: Application Binary File with Debug Information
    :align: center
    :width: 335px
@@ -52,7 +52,7 @@ the following trace is dumped on standard output.
 .. TODO this figure was controled by a conditional, isSandbox
    is showing
 
-.. figure:: ../SandboxedAppDevGuide/png/STR_tracetermite.png
+.. figure:: images/STR_tracetermite.png
    :alt: Stack Trace Output
    :align: center
    :width: 995px
@@ -73,7 +73,7 @@ project and click on :guilabel:`Run As...` > :guilabel:`Run Configurations...`.
 
 In :guilabel:`Execution` tab, select the :guilabel:`Stack Trace Reader` tool.
 
-.. figure:: ../ApplicationDeveloperGuide/png/STR_selecttool.png
+.. figure:: images/STR_selecttool.png
    :alt: Select Stack Trace Reader Tool
    :align: center
    :width: 926px
@@ -84,7 +84,7 @@ In :guilabel:`Execution` tab, select the :guilabel:`Stack Trace Reader` tool.
 In :guilabel:`Configuration` tab, browse the previously generated application
 binary file with debug information (``application.fodbg``)
 
-.. figure:: ../SandboxedAppDevGuide/png/STR_selectfile.png
+.. figure:: images/STR_selectfile.png
    :alt: Stack Trace Reader Tool Configuration
    :align: center
    :width: 910px
@@ -96,7 +96,7 @@ In :guilabel:`Configuration` tab, browse the previously generated application
 binary file with debug information (``application.fodbg`` in case of a Sandboxed
 Application or ``application.out`` in case of a Standalone Application)
 
-.. figure:: ../SandboxedAppDevGuide/png/STR_selectfile.png
+.. figure:: images/STR_selectfile.png
    :alt: Stack Trace Reader Tool Configuration (Sandboxed Application)
    :align: center
    :width: 910px
@@ -104,7 +104,7 @@ Application or ``application.out`` in case of a Standalone Application)
 
    Stack Trace Reader Tool Configuration (Sandboxed Application)
 
-.. figure:: ../StandaloneAppDevGuide/png/trace3.png
+.. figure:: images/trace3.png
    :alt: Stack Trace Reader Tool Configuration (Standalone Application)
    :align: center
    :width: 876px
@@ -118,7 +118,7 @@ application hook is now readable.
 
 .. TODO this figure was controlled with a conditional, isSandbox
 
-.. figure:: ../SandboxedAppDevGuide/png/STR_console.png
+.. figure:: images/STR_console.png
    :alt: Read the Stack Trace
    :align: center
    :width: 873px

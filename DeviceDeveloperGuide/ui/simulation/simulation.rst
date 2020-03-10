@@ -18,7 +18,7 @@ the *mockFP*. The mockFP generates a graphical representation of the
 required front panel, and is displayed in a window on the user's
 development machine when the application is executed in the simulator.
 The mockFP is the equivalent of the three embedded modules (Display,
-Inputs and LED) of the MicroEJ platform (see
+Inputs and LED) of the MicroEJ Platform (see
 :ref:`section_microui`).
 
 The Front Panel mock enhances the development environment by allowing

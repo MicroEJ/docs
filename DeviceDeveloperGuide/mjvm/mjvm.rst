@@ -5,7 +5,7 @@ MicroEJ core engine
 
 The MicroEJ core engine (also called the platform engine) and its
 components represent the core of the platform. It is used to compile and
-execute at runtime the MicroEJ application code.
+execute at runtime the MicroEJ Application code.
 
 
 Functional Description
@@ -23,10 +23,10 @@ are performed within the C IDE.
 
    MicroEJ core engine Flow
 
-1. Step 1 consists in writing a MicroEJ application against a set of
+1. Step 1 consists in writing a MicroEJ Application against a set of
    foundation libraries available in the platform.
 
-2. Step 2 consists in compiling the MicroEJ application code and the
+2. Step 2 consists in compiling the MicroEJ Application code and the
    required libraries in an ELF library, using the Smart Linker.
 
 3. Step 3 consists in linking the previous ELF file with the MicroEJ
@@ -56,8 +56,8 @@ engine.
 
    A Green Threads Architecture Example
 
-The activity of the platform is defined by the MicroEJ application. When
-the MicroEJ application is blocked (when all MicroEJ threads are
+The activity of the platform is defined by the MicroEJ Application. When
+the MicroEJ Application is blocked (when all MicroEJ threads are
 sleeping), the platform sleeps entirely: The RTOS task that runs the
 platform sleeps.
 
@@ -93,7 +93,7 @@ Implementation
 The platform implements the [SNI] specification. It is created and
 initialized with the C function ``SNI_createVM``. Then it is started and
 executed in the current RTOS task by calling ``SNI_startVM``. The
-function ``SNI_startVM`` returns when the MicroEJ application exits. The
+function ``SNI_startVM`` returns when the MicroEJ Application exits. The
 function ``SNI_destroyVM`` handles the platform termination.
 
 The file ``LLMJVM_impl.h`` that comes with the platform defines the API
@@ -380,7 +380,7 @@ allows:
 Properties
 ==========
 
-Properties allow the MicroEJ application to be parameterized using the
+Properties allow the MicroEJ Application to be parameterized using the
 ``System.getProperty`` API. The definition of the properties and their
 respective values can be done using files. Each filename of a properties
 file must match with ``*.system.properties`` and must be located in the
@@ -396,13 +396,13 @@ MicroEJ properties can also be defined in the launch configuration. This
 can be done by setting the properties in the launcher with a specific
 prefix in their name:
 
--  Properties for both the MicroEJ platform and the MicroEJ simulator:
+-  Properties for both the MicroEJ Platform and the MicroEJ simulator:
    name starts with ``microej.java.property.*``
 
 -  Properties for the MicroEJ simulator: name starts with
    ``sim.java.property.*``
 
--  Properties for the MicroEJ platform: name starts with
+-  Properties for the MicroEJ Platform: name starts with
    ``emb.java.property.*``
 
 For example, to define the property ``myProp`` with the value
@@ -491,7 +491,7 @@ Refer to the chapter :ref:`workbenchLaunchOptions` which lists all
 available options.
 
 Another classpath variable named ``BON-1.2`` is available. This variable
-must be added to the build path of the MicroEJ application project in
+must be added to the build path of the MicroEJ Application project in
 order to access the B-ON library.
 
 

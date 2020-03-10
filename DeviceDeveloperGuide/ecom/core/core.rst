@@ -18,7 +18,7 @@ applications.
 This library does not provide APIs to manipulate some specific options
 for each communication method, but it does provide some generic APIs
 which abstract the communication method. After the opening step, the
-MicroEJ application can use every communications method (COMM, USB etc.)
+MicroEJ Application can use every communications method (COMM, USB etc.)
 as generic communication in order to easily change the communication
 method if needed.
 
@@ -42,18 +42,18 @@ connection on a hardware device.
    ``String connectionString`` of the method ``Connection.open``.
 
 2. Step 2 consists of opening an ``InputStream`` on the connection. This
-   stream allows the MicroEJ application to access the "RX" feature of
+   stream allows the MicroEJ Application to access the "RX" feature of
    the hardware device.
 
 3. Step 3 consists of using the ``InputStream`` APIs to receive in the
-   MicroEJ application all hardware device data.
+   MicroEJ Application all hardware device data.
 
 4. Step 4 consists of opening an ``OutputStream`` on the connection.
-   This stream allows the MicroEJ application to access the "TX" feature
+   This stream allows the MicroEJ Application to access the "TX" feature
    of the hardware device.
 
 5. Step 5 consists of using the ``OutputStream`` APIs to transmit some
-   data from the MicroEJ application to the hardware device.
+   data from the MicroEJ Application to the hardware device.
 
 Note that steps 2 and 4 may be performed in parallel, and do not depend
 on each other.
@@ -95,7 +95,7 @@ Use
 ===
 
 A classpath variable named ``ECOM-1.1`` is available. This foundation
-library is always required when developing a MicroEJ application which
+library is always required when developing a MicroEJ Application which
 communicates with some external devices. It is automatically embedded as
 soon as a sub communication library is added in the classpath.
 

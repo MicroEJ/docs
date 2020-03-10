@@ -2,7 +2,7 @@ Category: Runtime
 =================
 
 
-.. figure:: png/architecture_options/img1.png
+.. figure:: images/architecture_options/img1.png
    :align: center
    :width: 998px
    :height: 551px
@@ -73,7 +73,7 @@ Category: Memory
 ----------------
 
 
-.. figure:: png/architecture_options/img2.png
+.. figure:: images/architecture_options/img2.png
    :align: center
    :width: 998px
    :height: 551px
@@ -174,7 +174,7 @@ Category: Simulator
 ===================
 
 
-.. figure:: png/architecture_options/img3.png
+.. figure:: images/architecture_options/img3.png
    :align: center
    :width: 998px
    :height: 551px
@@ -197,9 +197,9 @@ Option(checkbox): Use target characteristics
 
 When selected, this option forces the MicroEJ simulator to use the MicroEJ
 platform exact characteristics. It sets the MicroEJ simulator scheduling policy
-according to the MicroEJ platform one. It forces resources to be explicitly
+according to the MicroEJ Platform one. It forces resources to be explicitly
 specified. It enables log trace and gives information about the RAM memory size
-the MicroEJ platform uses.
+the MicroEJ Platform uses.
 
 Option(text): Slowing factor (0 means disabled)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -217,7 +217,7 @@ Option(text): Slowing factor (0 means disabled)
 
 
 This option allows the MicroEJ simulator to be slowed down in order to match
-the MicroEJ platform execution speed. The greater the slowing factor, the
+the MicroEJ Platform execution speed. The greater the slowing factor, the
 slower the MicroEJ simulator runs.
 
 Group: HIL Connection
@@ -296,7 +296,7 @@ Category: Code Coverage
 -----------------------
 
 
-.. figure:: png/architecture_options/img4.png
+.. figure:: images/architecture_options/img4.png
    :align: center
    :width: 998px
    :height: 551px
@@ -335,7 +335,7 @@ Category: Debug
 ---------------
 
 
-.. figure:: png/architecture_options/img5.png
+.. figure:: images/architecture_options/img5.png
    :align: center
    :width: 998px
    :height: 551px
@@ -367,7 +367,7 @@ Category: Heap Dumper
 ---------------------
 
 
-.. figure:: png/architecture_options/img6.png
+.. figure:: images/architecture_options/img6.png
    :align: center
    :width: 998px
    :height: 551px
@@ -395,7 +395,7 @@ Category: Logs
 --------------
 
 
-.. figure:: png/architecture_options/img7.png
+.. figure:: images/architecture_options/img7.png
    :align: center
    :width: 998px
    :height: 551px
@@ -518,7 +518,7 @@ Category: Device
 ----------------
 
 
-.. figure:: png/architecture_options/img8.png
+.. figure:: images/architecture_options/img8.png
    :align: center
    :width: 998px
    :height: 551px
@@ -561,7 +561,7 @@ Category: Com Port
 ------------------
 
 
-.. figure:: png/architecture_options/img9.png
+.. figure:: images/architecture_options/img9.png
    :align: center
    :width: 998px
    :height: 551px
@@ -570,7 +570,7 @@ Category: Libraries
 ===================
 
 
-.. figure:: png/architecture_options/img10.png
+.. figure:: images/architecture_options/img10.png
    :align: center
    :width: 998px
    :height: 551px
@@ -579,7 +579,7 @@ Category: EDC
 -------------
 
 
-.. figure:: png/architecture_options/img11.png
+.. figure:: images/architecture_options/img11.png
    :align: center
    :width: 998px
    :height: 551px
@@ -654,7 +654,7 @@ Category: Shielded Plug
 -----------------------
 
 
-.. figure:: png/architecture_options/img12.png
+.. figure:: images/architecture_options/img12.png
    :align: center
    :width: 998px
    :height: 551px
@@ -681,7 +681,7 @@ Category: ECOM
 --------------
 
 
-.. figure:: png/architecture_options/img13.png
+.. figure:: images/architecture_options/img13.png
    :align: center
    :width: 998px
    :height: 551px
@@ -718,7 +718,7 @@ Category: Comm Connection
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-.. figure:: png/architecture_options/img14.png
+.. figure:: images/architecture_options/img14.png
    :align: center
    :width: 998px
    :height: 551px
@@ -763,7 +763,7 @@ Category: External Resources Loader
 -----------------------------------
 
 
-.. figure:: png/architecture_options/img15.png
+.. figure:: images/architecture_options/img15.png
    :align: center
    :width: 998px
    :height: 551px
@@ -794,7 +794,7 @@ Category: Device
 ================
 
 
-.. figure:: png/architecture_options/img16.png
+.. figure:: images/architecture_options/img16.png
    :align: center
    :width: 998px
    :height: 551px
@@ -803,7 +803,7 @@ Category: Core Engine
 ---------------------
 
 
-.. figure:: png/architecture_options/img17.png
+.. figure:: images/architecture_options/img17.png
    :align: center
    :width: 998px
    :height: 551px
@@ -838,7 +838,7 @@ Category: Kernel
 ^^^^^^^^^^^^^^^^
 
 
-.. figure:: png/architecture_options/img18.png
+.. figure:: images/architecture_options/img18.png
    :align: center
    :width: 998px
    :height: 551px
@@ -906,7 +906,7 @@ Category: Watchdog
 ^^^^^^^^^^^^^^^^^^
 
 
-.. figure:: png/architecture_options/img19.png
+.. figure:: images/architecture_options/img19.png
    :align: center
    :width: 998px
    :height: 551px
@@ -936,7 +936,7 @@ Category: Deploy
 ----------------
 
 
-.. figure:: png/architecture_options/img20.png
+.. figure:: images/architecture_options/img20.png
    :align: center
    :width: 998px
    :height: 551px
@@ -974,7 +974,7 @@ Category: Feature
 =================
 
 
-.. figure:: png/architecture_options/img21.png
+.. figure:: images/architecture_options/img21.png
    :align: center
    :width: 998px
    :height: 551px
@@ -987,7 +987,7 @@ Category: Dynamic Download
 --------------------------
 
 
-.. figure:: png/architecture_options/img22.png
+.. figure:: images/architecture_options/img22.png
    :align: center
    :width: 998px
    :height: 551px

@@ -15,7 +15,7 @@ licenses.
 Licenses list is available in MicroEJ preferences dialog page in :guilabel:`Window`
 > :guilabel:`Preferences` > :guilabel:`MicroEJ`
 
-.. figure:: png/preferences/licenses.jpg
+.. figure:: images/preferences/licenses.jpg
    :alt: MicroEJ Licenses View
    :align: center
    :width: 995px
@@ -75,7 +75,7 @@ to the key server. This information is available from the :guilabel:`Window` >
 :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures` or :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ`
 > :guilabel:`Platforms` preferences page. Click on :guilabel:`Get UID` button to get the generated machine identifier.
 
-.. figure:: png/preferences/uid.jpg
+.. figure:: images/preferences/uid.jpg
    :alt: Generated Machine Identifier for Evaluation License
    :align: center
    :width: 532px
@@ -105,7 +105,7 @@ following conditions:
 -  Key has not been generated for one of the installed platforms (no
    license manager able to load this license)
 
-.. figure:: png/preferences/wrongkey.jpg
+.. figure:: images/preferences/wrongkey.jpg
    :alt: Invalid License Key Error Message
    :align: center
    :width: 532px
@@ -149,7 +149,7 @@ You shall ensure that the following prerequisites are met :
 You can then proceed to the dongle update by running the activation key
 executable. Just press :guilabel:`Update` (no key is required). 
 
-.. figure:: png/dongle/updateTool.png
+.. figure:: images/dongle/updateTool.png
    :alt: Dongle Update Tool
    :align: center
    :width: 271px
@@ -160,7 +160,7 @@ executable. Just press :guilabel:`Update` (no key is required).
 On success, an ``Update successfully`` message shall appear. On failure, an
 ``Error key or no proper rockey`` message may appear.
 
-.. figure:: png/dongle/updateSuccessful.png
+.. figure:: images/dongle/updateSuccessful.png
    :alt: Successful dongle update
    :align: center
    :width: 222px
@@ -174,7 +174,7 @@ license status for the platforms you installed with the ``License tag``
 matching the one on the sticker attached to your USB dongle has turned
 from a red cross to a green tick.
 
-.. figure:: png/dongle/platformLicenseDetails.png
+.. figure:: images/dongle/platformLicenseDetails.png
    :alt: Platform License Status OK
    :align: center
    :width: 926px

@@ -5,9 +5,8 @@ MicroEJ
     :maxdepth: 2
     :hidden:
 
+    overview
     ApplicationDeveloperGuide/index
-    SandboxedAppDevGuide/index
-    StandaloneAppDevGuide/index
     DeviceDeveloperGuide/index
     KernelDeveloperGuide/index
 

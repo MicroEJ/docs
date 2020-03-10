@@ -65,7 +65,7 @@ Exit Codes
 ----------
 
 The RTOS task that runs the MicroEJ runtime may end, especially when the
-MicroEJ application calls ``System.exit`` method [EDC]. By convention, a
+MicroEJ Application calls ``System.exit`` method [EDC]. By convention, a
 negative value indicates abnormal termination.  
 
 .. table:: MicroEJ Platform exit codes
@@ -73,7 +73,7 @@ negative value indicates abnormal termination.  
    +-------------+--------------------------------------------------------+
    | Message  ID | Meaning                                                |
    +=============+========================================================+
-   | 0           | The MicroEJ application ended normally.                |
+   | 0           | The MicroEJ Application ended normally.                |
    +-------------+--------------------------------------------------------+
    | -1          | The SOAR and the MicroEJ Platform are not compatible.  |
    +-------------+--------------------------------------------------------+

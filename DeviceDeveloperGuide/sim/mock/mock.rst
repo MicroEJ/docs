@@ -241,7 +241,7 @@ stop() method.
 Dependencies
 ============
 
-The MicroEJ platform architecture provides some APIs (HIL APIs) to
+The MicroEJ Platform architecture provides some APIs (HIL APIs) to
 develop a mock that will be ready to be used against the simulator. The
 classpath variable that allows you to access to the HIL Engine API is
 ``HILENGINE-2.0.1``. MicroEJ projects that build mocks should put that
@@ -263,7 +263,7 @@ Use
 ===
 
 Once installed, a mock is used automatically by the simulator when the
-MicroEJ application calls a native method which is implemented into the
+MicroEJ Application calls a native method which is implemented into the
 mock.
 
 ..

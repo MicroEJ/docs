@@ -18,19 +18,19 @@ files to be embedded in the final application binary. MicroEJ Classpath
 is made up of an ordered list of paths. A path is either a folder or a
 zip file, called a JAR file (JAR stands for Java ARchive).
 
--  `Application Classpath`_ explains how the MicroEJ classpath is built from a
-   MicroEJ application project.
+-  :ref:`application.classpath.mapping` explains how the MicroEJ classpath is built from a
+   MicroEJ Application project.
 
--  `Classpath Load Model`_ explains how the application contents is loaded from
+-  :ref:`section.microej.link.and.load.model` explains how the application contents is loaded from
    MicroEJ Classpath.
 
--  `Classpath Elements`_ specifies the different elements that can be declared
+-  :ref:`section.classpath.elements` specifies the different elements that can be declared
    in MicroEJ Classpath to describe the application contents.
 
--  `Foundation Libraries vs Add-On Libraries`_ explains the different kind of
+-  :ref:`section.foundation.library.versus.add.on.library` explains the different kind of
    libraries that can be added to MicroEJ Classpath.
 
--  Finally, `MicroEJ Module Manager`_ shows how to manage libraries dependencies
+-  Finally, :ref:`section.ivy.dependency.manager` shows how to manage libraries dependencies
    in MicroEJ.
 
 .. _application.classpath.mapping:
@@ -43,7 +43,7 @@ application project to the MicroEJ Classpath ordered list of folders and
 JAR files. The classpath resolution order (left to right) follows the
 project appearance order (top to bottom).
 
-.. figure:: ../ApplicationDeveloperGuide/png/ClassPath_4.png
+.. figure:: images/ClassPath_4.png
    :alt: MicroEJ Application Classpath Mapping
    :align: center
    :width: 80.0%
@@ -62,11 +62,11 @@ A MicroEJ Application classpath is created via the loading of :
 -  all ``*.[extension].list`` files declared in a MicroEJ Classpath.
 
 The different elements that constitute an application are described in
-`Classpath Elements`_. They are searched within MicroEJ Classpath from left to
+:ref:`section.classpath.elements`. They are searched within MicroEJ Classpath from left to
 right (the first file found is loaded). Types referenced by previously loaded
 MicroEJ Classpath elements are loaded transitively.
 
-.. figure:: ../ApplicationDeveloperGuide/png/ClassPath_1.png
+.. figure:: images/ClassPath_1.png
    :alt: Classpath Load Principle
    :align: center
 
@@ -79,13 +79,13 @@ Classpath Elements
 
 The MicroEJ Classpath contains the following elements:
 
--  An entrypoint described in section `Application Entry Points`_;
+-  An entrypoint described in section :ref:`section.classpath.elements.entrypoints`;
 
--  Types in ``.class`` files, described in section `Types`_;
+-  Types in ``.class`` files, described in section :ref:`section.classpath.elements.types`;
 
--  Raw resources, described in section `Raw Resources`_;
+-  Raw resources, described in section :ref:`section.classpath.elements.resources`;
 
--  Immutables Object data files, described in Section `Immutable Objects`_;
+-  Immutables Object data files, described in Section :ref:`section.classpath.elements.immutables`;
 
 -  Images and Fonts resources;
 
@@ -98,7 +98,7 @@ The MicroEJ Classpath contains the following elements:
 Application Entry Points
 ------------------------
 
-MicroEJ application entry point declaration differs depending on the
+MicroEJ Application entry point declaration differs depending on the
 application kind:
 
 -  In case of a MicroEJ Standalone Application, it is a class that
@@ -354,80 +354,13 @@ Library is distributed in a single JAR file, with a 3 digits version and
 provides its associated source code.
 
 Foundation and Add-on libraries are added to MicroEJ Classpath by the
-application developer as module dependencies (see `MicroEJ Module Manager`_).
+application developer as module dependencies (see :ref:`section.ivy.dependency.manager`).
 
-.. figure:: ../ApplicationDeveloperGuide/png/ClassPath_2.png
+.. figure:: images/ClassPath_2.png
    :alt: MicroEJ Foundation Libraries and Add-On Libraries
    :align: center
 
    MicroEJ Foundation Libraries and Add-On Libraries
-
-.. _section.ivy.dependency.manager:
-
-MicroEJ Module Manager
-======================
-
-Modern electronic device design involves many parts and teams to
-collaborate to finally obtain a product to be sold on its market.
-MicroEJ encourages modular design which involves various stake holders:
-hardware engineers, UX designers, graphic designers, drivers/BSP
-engineers, software engineers, etc.
-
-Modular design is a design technique that emphasizes separating the
-functionality of an application into independent, interchangeable
-modules. Each module contains everything necessary to execute only one
-aspect of the desired functionality. In order to have team members
-collaborate internally within their team and with other teams, MicroEJ
-provides a powerful modular design concept, with smart module
-dependencies, controlled by the MicroEJ Module Manager (MMM). MMM frees
-engineers from the difficult task of computing module dependencies.
-Engineers specify the bare minimum description of the module
-requirements.
-
-MMM is based on of the following tools:
-
--  Apache Ivy (:http:`http://ant.apache.org/ivy`) for dependencies
-   resolution and module publication;
-
--  Apache EasyAnt
-   (:http:`https://ant.apache.org/easyant/history/trunk/reference.html`) for
-   module build from source code.
-
-In addition, MMM provides a non ambiguous semantic for dependencies
-resolution. Please consult the MMM specification available on
-:http:`https://developer.microej.com`.
-
-An Ivy configuration file (``module.ivy``) must be provided at the root
-of each MicroEJ project to solve classpath dependencies. Multiple Ivy
-configuration file templates are available depending on the kind of
-MicroEJ application created.
-
-.. code:: xml
-
-   <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:m="http://ant.apache.org/ivy/extra" 
-                             xmlns:ej="https://developer.microej.com" ej:version="2.0.0"> 
-       <info organisation="[organisation]" module="[name]" status="integration" revision="[version]">
-           <ea:build organisation="com.is2t.easyant.buildtypes" module="[buildtype_name]" revision="[buildtype_version]">
-               <ea:property name="[buildoption_name]" value="[buildoption_value]"/>
-           </ea:build>
-       </info>
-       
-       <configurations defaultconfmapping="default->default;provided->provided">
-           <conf name="default" visibility="public"/>
-           <conf name="provided" visibility="public"/>
-           <conf name="documentation" visibility="public"/>
-           <conf name="source" visibility="public"/>
-           <conf name="dist" visibility="public"/>
-           <conf name="test" visibility="private"/>
-       </configurations>
-       
-       <publications>
-       </publications>
-       
-       <dependencies>
-         <dependency org="[dep_organisation]" name="[dep_name]" rev="[dep_version]"/>
-       </dependencies>
-   </ivy-module>        
 
 MicroEJ Central Repository
 ==========================
