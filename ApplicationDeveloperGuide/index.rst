@@ -11,7 +11,6 @@ Application Developer Guide
    standaloneApplication
    sandboxedApplication
    virtualDevice
-   sharedInterface
    mmm
    classpath
    tools

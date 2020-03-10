@@ -151,6 +151,8 @@ The WPK file produced by the build process is located in a dedicated
 The ``.wpk`` file is ready to be uploaded to a MicroEJ Forge instance.
 Please consult :http:`https://community.microej.com` for more information.
 
+.. include:: sharedInterface.inc
+
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
