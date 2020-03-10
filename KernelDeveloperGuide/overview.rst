@@ -43,8 +43,7 @@ a Multi-Sandbox Firmware.
 
 A *Multi-Sandbox Platform* is a Platform with the Multi Sandbox
 capability of the MicroEJ Core Engine enabled (see the chapter
-*Multi-Sandbox* of the `Device Developer's
-Guide <https://developer.microej.com/packages/devdevguide-4.0-A/TLT-0784-MAN-DeviceDevGuide.pdf>`_).
+*Multi-Sandbox* of the :ref:`device.developer.guide`).
 A Multi-Sandbox Firmware can only be built with a Multi-Sandbox Platform.
 
 A *Mono-Sandbox Firmware* is produced by building and linking a Standalone
