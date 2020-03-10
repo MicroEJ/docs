@@ -9,17 +9,17 @@ Device Developer Guide
     start
     intro
     jpfdesign/index
-    mjvm/mjvm
-    kf/kf
-    tiny/tiny
+    mjvm
+    kf
+    tiny
     native/index
-    loader/loader
+    loader
     ecom/index
     ui/index
     net/index
-    fs/fs
-    hal/hal
-    device/device
+    fs
+    hal
+    device
     devtools/index
     sim/index
     limitations
