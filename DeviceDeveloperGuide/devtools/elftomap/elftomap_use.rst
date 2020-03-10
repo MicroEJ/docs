@@ -3,7 +3,7 @@ Category: ELF to Map
 --------------------
 
 
-.. figure:: images/img1.png
+.. figure:: images/elftomap_img1.png
    :align: center
    :width: 1054px
    :height: 551px

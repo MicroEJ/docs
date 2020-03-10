@@ -3,7 +3,7 @@ Category: Heap Dumper
 ---------------------
 
 
-.. figure:: images/img1.png
+.. figure:: images/heapdumper_img1.png
    :align: center
    :width: 1054px
    :height: 551px

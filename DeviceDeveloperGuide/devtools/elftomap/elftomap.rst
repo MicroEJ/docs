@@ -15,7 +15,7 @@ by third party linkers can be analyzed and interpreted using the
 Functional Description
 ======================
 
-.. figure:: images/process.*
+.. figure:: images/elftomap_process.*
    :alt: ELF To Map Process
    :width: 20.0%
    :align: center
