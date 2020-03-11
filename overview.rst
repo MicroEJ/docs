@@ -224,6 +224,8 @@ components required for both host computer and target hardware:
 
    MicroEJ Studio Development Imported Elements
 
+.. include:: systemRequirements.inc
+
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
