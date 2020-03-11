@@ -8,7 +8,7 @@ Device Developer Guide
 
     start
     intro
-    jpfdesign/index
+    jpfdesign/platform
     mjvm
     kf
     tiny

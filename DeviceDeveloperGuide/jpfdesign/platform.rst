@@ -3,14 +3,14 @@ MicroEJ Platform
 ================
 
 .. toctree::
-    :maxdepth: 2
+   :maxdepth: 2
 
-    overview
-    concepts/concepts
-    concepts/launches/applications
-    concepts/launches/launches
-    concepts/launches/tools
-    gettingstarted/gettingstarted
+   overview
+   concepts
+   applications
+   launches
+   tools
+   gettingstarted
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

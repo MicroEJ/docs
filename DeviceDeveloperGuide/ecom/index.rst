@@ -13,8 +13,8 @@ devices manager.
 
 .. toctree::
 
-    core/core
-    ecom-comm/ecom-comm
+    core
+    ecom-comm
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
