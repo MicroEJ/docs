@@ -4,10 +4,10 @@ Appendices
 .. toctree::
     :maxdepth: 2
 
-    llapi/llapi
+    llapi
     javalibs/index
     tools/index
-    toolchain/toolchain
+    toolchain
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

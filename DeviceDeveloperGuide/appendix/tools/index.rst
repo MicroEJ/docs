@@ -9,11 +9,11 @@ Appendix C: Tools Options and Error Codes
     sni
     sp
     nls
-    ui/static/static
-    ui/mui_font
-    ui/mui_image
-    ui/mui_frontpanelmock
-    ui/lldisplayextra
+    static
+    mui_font
+    mui_image
+    mui_frontpanelmock
+    lldisplayextra
     hil
     heapdump
 

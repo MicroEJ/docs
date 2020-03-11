@@ -4,26 +4,26 @@ Device Developer Guide
 ======================
 
 .. toctree::
-    :maxdepth: 3
+   :maxdepth: 3
 
-    start
-    intro
-    jpfdesign/platform
-    mjvm
-    kf
-    tiny
-    native/index
-    loader
-    ecom/index
-    ui/index
-    net/index
-    fs
-    hal
-    device
-    devtools/index
-    sim/index
-    limitations
-    appendix/index
+   start
+   intro
+   platform
+   mjvm
+   kf
+   tiny
+   native/index
+   loader
+   ecom
+   ui/index
+   net/index
+   fs
+   hal
+   device
+   devtools/index
+   sim/index
+   limitations
+   appendix/index
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
