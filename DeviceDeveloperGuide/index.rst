@@ -12,16 +12,16 @@ Device Developer Guide
    mjvm
    kf
    tiny
-   native/index
+   native
    loader
    ecom
-   ui/index
-   net/index
+   ui
+   net
    fs
    hal
    device
-   devtools/index
-   sim/index
+   devtools/devtools
+   simulation
    limitations
    appendix/index
 

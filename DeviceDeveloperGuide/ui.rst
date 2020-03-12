@@ -1,16 +1,19 @@
-================
-MicroEJ Platform
-================
+=======================
+Graphics User Interface
+=======================
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   platformOverview
-   platformConcepts
-   platformApplications
-   launches
-   platformTools
-   gettingstarted
+    uiIntroduction
+    microui
+    static_init
+    leds
+    inputs
+    display
+    image
+    font
+    uiSimulation
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

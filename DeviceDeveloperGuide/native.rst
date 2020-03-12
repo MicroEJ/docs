@@ -1,16 +1,17 @@
-================
-MicroEJ Platform
-================
+Native Interface Mechanisms
+===========================
+
+
+The MicroEJ core engine provides two ways to link MicroEJ Application
+code with native C code. The two ways are fully complementary, and can
+be used at the same time.
+
 
 .. toctree::
-   :maxdepth: 2
 
-   platformOverview
-   platformConcepts
-   platformApplications
-   launches
-   platformTools
-   gettingstarted
+    sni
+    sp
+    javah
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

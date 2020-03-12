@@ -1,16 +1,11 @@
-================
-MicroEJ Platform
-================
+Simulation
+==========
 
 .. toctree::
-   :maxdepth: 2
 
-   platformOverview
-   platformConcepts
-   platformApplications
-   launches
-   platformTools
-   gettingstarted
+   simulator
+   mock
+   spmock
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
