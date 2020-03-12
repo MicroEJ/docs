@@ -8,14 +8,11 @@ and for the Simulator, some others are only for one of both.
 .. toctree::
     :maxdepth: 1
 
-    stacktrace
     cca
     heapdumper
     elftomap
     serialToSocketTransmitter
-    kernelAPIgenerator
     mma
-    testsuite
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

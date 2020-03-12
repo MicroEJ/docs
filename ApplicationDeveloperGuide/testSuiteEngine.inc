@@ -1,12 +1,11 @@
-=================
 Test Suite Engine
-=================
+-----------------
 
 
 .. _testsuite-definition:
 
 Definition
-==========
+~~~~~~~~~~
 
 The MicroEJ Test-Suite is an engine made for validating any development
 project using automatic testing. The MicroEJ Test-Suite engine allows
@@ -17,7 +16,7 @@ generic ant file.
 .. _testsuite-command-ant:
 
 Using the MicroEJ Test-Suite Ant tasks
-======================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Multiple Ant tasks are available in the testsuite-engine provided jar:
 
@@ -33,7 +32,7 @@ Multiple Ant tasks are available in the testsuite-engine provided jar:
 .. _testsuite-command-ant-runtestsuite:
 
 The test suite task
--------------------
+'''''''''''''''''''
 
 This task have some mandatory attributes to fill:
 
@@ -144,7 +143,7 @@ tests.
 .. _testsuite-command-ant-runjavatestsuite:
 
 The javaTestsuite task
-----------------------
+''''''''''''''''''''''
 
 This task extends the ``testsuite`` task, specializing the test-suite to
 only start real Java class. This task will retrieve the classname of the
@@ -160,7 +159,7 @@ script:
 .. _testsuite-command-ant-generatereport:
 
 The htmlReport task
--------------------
+'''''''''''''''''''
 
 This task allow the user to transform a given path containing a sample
 of JUnit reports to an HTML detailled report. Here is the attributes to
@@ -198,7 +197,7 @@ fill:
 .. _testsuite-trace-analyzer:
 
 Using the trace analyzer
-========================
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 This section will shortly explains how to use the ``Trace Analyzer``.
 The MicroEJ Test-Suite comes with an archive containing the
@@ -214,7 +213,7 @@ application. It can be used from different forms;
 .. _testsuite-trace-analyzer-options:
 
 The TraceAnalyzer tasks options
--------------------------------
+'''''''''''''''''''''''''''''''
 
 Here is the common options to all TraceAnalyzer tasks:
 
@@ -244,7 +243,7 @@ Here is the common options to all TraceAnalyzer tasks:
 .. _testsuite-trace-analyzer-file:
 
 The FileTraceAnalyzer task options
-----------------------------------
+''''''''''''''''''''''''''''''''''
 
 Here is the specific options of the FileTraceAnalyzer task:
 
@@ -253,7 +252,7 @@ Here is the specific options of the FileTraceAnalyzer task:
 .. _testsuite-trace-analyzer-serial:
 
 The SerialTraceAnalyzer task options
-------------------------------------
+''''''''''''''''''''''''''''''''''''
 
 Here is the specific options of the SerialTraceAnalyzer task:
 
@@ -271,7 +270,7 @@ Here is the specific options of the SerialTraceAnalyzer task:
 .. _testsuite-various:
 
 Appendix
-========
+~~~~~~~~
 
 The goal of this section is to explain some tips and tricks that might
 be useful in your usage of the test-suite engine.
@@ -279,7 +278,7 @@ be useful in your usage of the test-suite engine.
 .. _testsuite-various-customproperties:
 
 Specific custom properties
---------------------------
+''''''''''''''''''''''''''
 
 Some custom properties are specifics and retrieved from the test-suite
 engine in the custom properties file of a test.
@@ -311,13 +310,13 @@ engine in the custom properties file of a test.
 
 
 Dependencies
-============
+~~~~~~~~~~~~
 
 No dependency.
 
 
 Installation
-============
+~~~~~~~~~~~~
 
 This tool is a built-in platform tool.
 

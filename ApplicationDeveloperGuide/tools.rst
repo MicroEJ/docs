@@ -8,6 +8,11 @@ Development Tools
    fontDesigner
    stackTraceReader
    heapAnalyzer
+   cca
+   heapdumper
+   elftomap
+   serialToSocketTransmitter
+   mma
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

@@ -20,7 +20,6 @@ Device Developer Guide
    fs
    hal
    device
-   devtools/devtools
    simulation
    limitations
    appendix/index

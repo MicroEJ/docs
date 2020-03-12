@@ -184,6 +184,8 @@ test case file.
 Consult the Application Launch Options Appendix of the Device
 Developer's Guide to get the list of available options properties.
 
+.. include:: testSuiteEngine.inc
+
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
