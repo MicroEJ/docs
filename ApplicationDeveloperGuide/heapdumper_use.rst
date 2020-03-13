@@ -1,6 +1,5 @@
----------------------
 Category: Heap Dumper
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 
 .. figure:: images/heapdumper_img1.png
@@ -9,10 +8,10 @@ Category: Heap Dumper
    :height: 551px
 
 Group: Application
-------------------
+^^^^^^^^^^^^^^^^^^
 
 Option(browse): Executable file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+'''''''''''''''''''''''''''''''
 
 
 *Option Name*: ``application.filename``
@@ -24,7 +23,7 @@ Option(browse): Executable file
 Specify the full path of a full linked ELF file.
 
 Option(list): Resident application files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+''''''''''''''''''''''''''''''''''''''''
 
 *Option Name*: ``additional.application.filenames``
 
@@ -36,10 +35,10 @@ Specify the full path of resident applications ``.out`` files linked by the
 Firmware Linker.
 
 Group: Memory
--------------
+^^^^^^^^^^^^^
 
 Option(browse): Heap memory file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+''''''''''''''''''''''''''''''''
 
 *Option Name*: ``heap.filename``
 
@@ -50,10 +49,10 @@ Option(browse): Heap memory file
 Specify the full path of heap memory dump, in Intel Hex format.
 
 Group: Output
--------------
+^^^^^^^^^^^^^
 
 Option(text): Heap file name
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+''''''''''''''''''''''''''''
 
 *Option Name*: ``output.name``
 

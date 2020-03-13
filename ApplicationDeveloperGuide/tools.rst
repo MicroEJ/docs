@@ -7,9 +7,8 @@ Development Tools
    testsuite
    fontDesigner
    stackTraceReader
-   heapAnalyzer
    cca
-   heapdumper
+   heapAnalyzer
    elftomap
    serialToSocketTransmitter
    mma

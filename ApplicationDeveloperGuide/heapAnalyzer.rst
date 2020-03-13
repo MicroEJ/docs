@@ -1,11 +1,24 @@
-Heap Analyzer
-=============
+Heap Dumper & Heap Analyzer
+===========================
 
 Introduction
 ------------
 
+Heap Dumper is a tool that takes a snapshot of the heap. Generated files
+(with the ``.heap`` extension) are available on the application output
+folder. Note that it works only on simulations. It is a built-in platform tool and has no dependencies.
+
 The Heap Analyzer is a set of tools to help developers understand the
 contents of the Java heap and find problems such as memory leaks.
+For its part, the Heap Analyzer plug-in is able to open dump files. It
+helps you analyze their contents thanks to the following features:
+
+-  memory leaks detection
+
+-  objects instances browse
+
+-  heap usage optimization (using immortal or immutable objects)
+
 
 The heap
 ~~~~~~~~
@@ -70,8 +83,48 @@ MicroEJ environment.
     |                       |               | values                        |
     +-----------------------+---------------+-------------------------------+
 
+Heap Dumper
+-----------
+
+When the Heap Dumper option is activated, the garbage collector process
+ends by performing a dump file that represent a snapshot of the heap at
+this moment. Thus, to generate such dump files, you must explicitly call
+the System.gc() method in your code, or wait long enough for garbage
+collector activation.
+
+The heap dump file contains the list of all instances of both class and
+array types that exist in the heap. For each instance it records:
+
+-  the time at which the instance was created
+
+-  the thread that created it
+
+-  the method that created it
+
+For instances of class types, it also records:
+
+-  the class
+
+-  the values in the instance’s non-static fields
+
+For instances of array types, it also records:
+
+-  the type of the contents of the array
+
+-  the contents of the array
+
+For each referenced class type, it records the values in the static
+fields of the class.
+
+For more information about using the Heap Analyzer plug-in, please refer
+to the menu :guilabel:`Help` > :guilabel:`Help Contents` > :guilabel:`Heap Analyzer User Guide`.
+
+
+.. include:: heapdumper_use.rst
+
+
 Heap Viewer
-~~~~~~~~~~~
+-----------
 
 To open the Heap Viewer tool, select a heap dump XML file in the :guilabel:`Package
 Explorer`, right-click on it and select :guilabel:`Open With` > :guilabel:`Heap Viewer`
