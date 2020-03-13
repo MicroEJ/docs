@@ -116,9 +116,6 @@ For instances of array types, it also records:
 For each referenced class type, it records the values in the static
 fields of the class.
 
-For more information about using the Heap Analyzer plug-in, please refer
-to the menu :guilabel:`Help` > :guilabel:`Help Contents` > :guilabel:`Heap Analyzer User Guide`.
-
 
 .. include:: heapdumper_use.rst
 

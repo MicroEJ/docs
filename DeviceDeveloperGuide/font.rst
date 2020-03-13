@@ -30,7 +30,6 @@ modules.
     :maxdepth: 2
 
     fontCore
-    fontDesigner
     fontGenerator
 
 ..
