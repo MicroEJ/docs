@@ -3,7 +3,7 @@ Category: Kernel API Generator
 ------------------------------
 
 
-.. figure:: images/kernelAPIgenerator_img1.png
+.. figure:: png/kernelAPIgenerator_img1.png
    :align: center
    :width: 1054px
    :height: 551px

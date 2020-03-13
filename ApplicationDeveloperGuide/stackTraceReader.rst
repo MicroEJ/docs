@@ -1,5 +1,8 @@
 .. _section.stacktrace.reader.tool:
 
+.. _stack_trace_reader:
+
+==================
 Stack Trace Reader
 ==================
 
