@@ -1,6 +1,5 @@
-------------------------------
 Category: Kernel API Generator
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. figure:: png/kernelAPIgenerator_img1.png
@@ -8,22 +7,24 @@ Category: Kernel API Generator
    :width: 1054px
    :height: 551px
 
+''''''''''''''''
 Group: Classpath
-----------------
+''''''''''''''''
 
 Option(list):
-^^^^^^^^^^^^^^
+'''''''''''''
 
 
 *Option Name*: ``kernel.api.generator.classpath``
 
 *Default value*: ``(empty)``
 
+''''''''''''''''''''
 Group: Types Filters
---------------------
+''''''''''''''''''''
 
 Option(text): Includes Patterns
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+'''''''''''''''''''''''''''''''
 
 *Option Name*: ``kernel.api.generator.includes.patterns``
 
@@ -32,7 +33,7 @@ Option(text): Includes Patterns
 *Description*: Comma separated list of ANT Patterns for types to include.
 
 Option(text): Excludes Patterns
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+'''''''''''''''''''''''''''''''
 
 *Option Name*: ``kernel.api.generator.excludes.patterns``
 

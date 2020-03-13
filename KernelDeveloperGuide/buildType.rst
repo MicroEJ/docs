@@ -67,18 +67,18 @@ This runtime environment aggregate all classes, methods and fields
 defined by ``edc,kf,bon,wadapps,components`` kernel APIs.
 
 The documentation of a runtime environment is packaged into the Virtual
-Device as HTML javadoc (``Help > MicroEJ Resource Center > Javadoc``).
+Device as HTML javadoc (:guilabel:`Help` > :guilabel:`MicroEJ Resource Center` > :guilabel:`Javadoc`).
 
 .. _kernel.api:
 
 Writing Kernel APIs
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
 This section lists different ways to help to write ``kernel.api`` files
 (see XXX).
 
 Default Kernel APIs Derivation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 MicroEJ provides some predefined kernel API files.
 
@@ -87,7 +87,7 @@ to be manually managed in order to keep only desired types, methods and
 fields.
 
 Build a kernel API artifact
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -  Generates the skeleton project: Select
    :guilabel:`File` > :guilabel:`New` > :guilabel:`Other...` > :guilabel:`Easyant` > :guilabel:`Easyant Project`, select and
@@ -102,7 +102,7 @@ MicroEJ provides a tool which generates a ``kernel.api`` file based on a
 java classpath.
 
 Kernel API Generator
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Create a new MicroEJ Tool launch,
 :guilabel:`Run` > :guilabel:`Run Configurations` > :guilabel:`MicroEJ Tool`, choose your Platform,
@@ -117,16 +117,13 @@ forget to set the output folder.
 
 Define the classpath to use in the
 :guilabel:`Configuration` tab, and Press :guilabel:`Run`. 
-
-.. _kapi-classpath:
-.. image:: png/kernelapi_classpath.png
-   :align: center
-   :width: 1135px
-   :height: 702px
-
 A ``kernel.api`` file is
 generated in the output folder and it contains all classes, methods and
 fields found in the given classpath.
+
+
+.. include:: kernelAPIgenerator_use.rst
+
 
 Specify the runtime environment of the firmware
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
