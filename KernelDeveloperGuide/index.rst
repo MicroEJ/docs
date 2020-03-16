@@ -8,7 +8,6 @@ Kernel Developer Guide
    kf
    gettingStarted
    buildType
-   kernelAPIgenerator
    featuresCommunication
    apiDocumentation
    kfEnabledLibraries
