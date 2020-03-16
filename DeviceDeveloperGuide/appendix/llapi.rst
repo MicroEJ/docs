@@ -12,13 +12,13 @@ Platform at platform build time.
 
 .. _LLMJVM-API-SECTION:
 
-LLMJVM: MicroEJ core engine
+LLMJVM: MicroEJ Core Engine
 ===========================
 
 Naming Convention
 -----------------
 
-The Low Level MicroEJ core engine API, the ``LLMJVM`` API, relies on
+The Low Level MicroEJ Core Engine API, the ``LLMJVM`` API, relies on
 functions that need to be implemented. The naming convention for such
 functions is that their names match the ``LLMJVM_IMPL_*`` pattern.
 
@@ -108,11 +108,11 @@ Principle
 ---------
 
 This LLAPI allows to use the External Resource Loader. When installed,
-the External Resource Loader is notified when the MicroEJ core engine is
+the External Resource Loader is notified when the MicroEJ Core Engine is
 not able to find a resource (an image, a file etc.) in the resources
-area linked with the MicroEJ core engine.
+area linked with the MicroEJ Core Engine.
 
-When a resource is not available, the MicroEJ core engine invokes the
+When a resource is not available, the MicroEJ Core Engine invokes the
 External Resource Loader in order to load an unknown resource. The
 External Resource Loader uses the LLAPI EXT_RES to let the BSP loads or
 not the expected resource. The implementation has to be able to load
@@ -447,7 +447,7 @@ The display stack calls the functions
 section. This is useful when some drawings are performed in C-side using
 the ``LLDISPLAY_UTILS`` API. This function implementation can stay empty
 when there is no call from C-side, or when the calls from C-side are
-performed in the same OS task, rather than in the MicroEJ core engine
+performed in the same OS task, rather than in the MicroEJ Core Engine
 task. By default these functions do nothing.
 
 LUT

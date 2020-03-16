@@ -6,7 +6,7 @@ Code Coverage Analyzer
 Principle
 =========
 
-The MicroEJ simulator features an option to output .cc (Code Coverage)
+The MicroEJ Simulator features an option to output .cc (Code Coverage)
 files that represent the use rate of functions of an application. It
 traces how the opcodes are really executed.
 
@@ -32,7 +32,7 @@ Dependencies
 
 In order to work properly, the Code Coverage Analyzer should input the
 .cc files. The .cc files relay the classpath used during the execution
-of the simulator to the Code Coverage Analyzer. Therefore the classpath
+of the Simulator to the Code Coverage Analyzer. Therefore the classpath
 is considered to be a dependency of the Code Coverage Analyzer.
 
 

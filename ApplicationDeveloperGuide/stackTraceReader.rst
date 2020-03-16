@@ -10,7 +10,7 @@ Principle
 =========
 
 Stack Trace Reader is a MicroEJ tool which reads and decodes the MicroEJ
-stack traces. When an exception occurs, the MicroEJ core engine prints
+stack traces. When an exception occurs, the MicroEJ Core Engine prints
 the stack trace on the standard output ``System.out``. The class names,
 non required types (see :ref:`section.classpath.elements.types`) names
 and method names obtained are encoded with a MicroEJ internal format.
@@ -24,7 +24,7 @@ Functional Description
 ======================
 
 The Stack Trace Reader reads the debug info from the fully linked ELF
-file (the ELF file that contains the MicroEJ core engine, the other
+file (the ELF file that contains the MicroEJ Core Engine, the other
 libraries, the BSP, the OS, and the compiled MicroEJ Application). It
 prints the decoded stack trace.
 

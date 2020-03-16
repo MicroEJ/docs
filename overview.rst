@@ -35,7 +35,7 @@ created with the MicroEJ Studio tool:
 Using the MicroEJ Studio tool, an application developer will be able to:
 
 -  Import Virtual Devices matching his target hardware in order to
-   develop and test applications on the simulator;
+   develop and test applications on the Simulator;
 
 -  Deploy the application locally on an hardware device equipped with
    the MicroEJ Firmware;
@@ -85,7 +85,7 @@ Introducing MicroEJ SDK
 
 MicroEJ SDK provides tools based on Eclipse to develop software
 applications for MicroEJ-ready devices. MicroEJ SDK allows application
-developers to write MicroEJ applications and run them on a virtual
+developers to write MicroEJ Applications and run them on a virtual
 (simulated) or real device.
 
 This document is a step-by-step introduction to application development
@@ -108,10 +108,10 @@ Application development is based on the following elements:
 
 -  MicroEJ Platform, a software package including the resources and
    tools required for building and testing an application for a specific
-   MicroEJ-ready device. MicroEJ platforms are imported into MicroEJ SDK
+   MicroEJ-ready device. MicroEJ Platforms are imported into MicroEJ SDK
    within a local folder called MicroEJ Platforms repository. Once a
    MicroEJ Platform is imported, an application can be launched and
-   tested on simulator. It also provides a means to locally deploy the
+   tested on Simulator. It also provides a means to locally deploy the
    application on a MicroEJ-ready device.
 
 -  MicroEJ-ready device, an hardware device that will be programmed with
@@ -123,7 +123,7 @@ detailed in the following sections of this chapter :
 
 -  Download and install a MicroEJ Platform
 
--  Build and run your first application on simulator
+-  Build and run your first application on Simulator
 
 -  Build and run your first application on target hardware
 
@@ -132,7 +132,7 @@ Introducing MicroEJ Studio and Virtual Devices
 
 MicroEJ Studio provides tools based on Eclipse to develop software
 applications for MicroEJ-ready devices. MicroEJ Studio allows
-application developers to write MicroEJ applications, run them on a
+application developers to write MicroEJ Applications, run them on a
 virtual (simulated) or real device, and publish them to a MicroEJ Forge
 instance.
 

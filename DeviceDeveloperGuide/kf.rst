@@ -8,12 +8,12 @@ Multi-Sandbox
 Principle
 =========
 
-The Multi-Sandbox capability of the MicroEJ core engine allows a
-main application (called standalone application) to install and execute
+The Multi-Sandbox capability of the MicroEJ Core Engine allows a
+main application (called Standalone Application) to install and execute
 at runtime additional applications (called sandboxed applications).
 
-The MicroEJ core engine implements the [KF] specification. A Kernel is a
-standalone application generated on a Multi-Sandbox-enabled
+The MicroEJ Core Engine implements the [KF] specification. A Kernel is a
+Standalone Application generated on a Multi-Sandbox-enabled
 platform. A Feature is a sandboxed application generated against a
 Kernel.
 
@@ -21,8 +21,7 @@ A sandboxed application may be dynamically downloaded at runtime or
 integrated at build-time within the executable application.
 
 Note that the Multi-Sandbox is a capability of the MicroEJ core
-engine. The MicroEJ simulator always runs an application as a standalone
-application.
+engine. The MicroEJ Simulator always runs an application as a Standalone Application.
 
 
 Functional Description
@@ -81,7 +80,7 @@ previous pass.
 Memory Considerations
 =====================
 
-Multi-Sandbox memory overhead of MicroEJ core engine runtime
+Multi-Sandbox memory overhead of MicroEJ Core Engine runtime
 elements are described in :ref:`the table below <table_kf-overhead>`.
 
 .. _table_kf-overhead:
@@ -117,7 +116,7 @@ Installation
 
 Multi-Sandbox is an additional module, disabled by default.
 
-To enable Multi-Sandbox of the MicroEJ core engine, in the platform
+To enable Multi-Sandbox of the MicroEJ Core Engine, in the platform
 configuration file, check :guilabel:`Multi Applications`.
 
 

@@ -63,13 +63,13 @@ The Static MicroUI Initializer tool is able to out until three files:
    used to make a link between an input device (buttons, touch) and its
    MicroUI event generator (see :ref:`section_input`).
 
-   This Java file is used to configure the simulator with the same
+   This Java file is used to configure the Simulator with the same
    characteristics as the BSP.
 
    This file is useless if the BSP does not provide any input device and
    the Static MicroUI Initializer tool is able to not generate this
    file. Otherwise the MicroUI configuration file has to specify where
-   put this file, typically in the simulator project (also called front
+   put this file, typically in the Simulator project (also called front
    panel project, see :ref:`section_simulation`).
 
 .. figure:: images/static_init_process.*

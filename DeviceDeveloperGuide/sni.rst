@@ -118,7 +118,7 @@ Synchronization
 
 A call to a native function uses the same RTOS task as the RTOS task
 used to run all Java green threads. So during this call, the MicroEJ
-core engine cannot schedule other Java threads.
+Core Engine cannot schedule other Java threads.
 
 SNI defines C functions that provide controls for the green threads'
 activities:

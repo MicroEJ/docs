@@ -45,7 +45,7 @@ decoupling has two major benefits:
 -  The listener can translate the notification; so, for example, a
    joystick could generate pointer events.
 
-For the MicroEJ simulator, the platform is supplied with a set of
+For the MicroEJ Simulator, the platform is supplied with a set of
 software widgets that generically support a range of input devices, such
 as buttons, joysticks and touchscreens, and output devices such as
 pixelated displays and LEDs. With the help of the Front Panel Designer

@@ -5,7 +5,7 @@ General Architecture
 --------------------
 
 The Shielded Plug Mock simulates a Shielded Plug [SP] on desktop
-computer. This mock can be accessed from the MicroEJ simulator, the
+computer. This mock can be accessed from the MicroEJ Simulator, the
 hardware platform or a Java J2SE application.
 
 .. figure:: images/hil5.*

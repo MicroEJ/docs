@@ -9,14 +9,14 @@ Principle
 =========
 
 A major strength of the MicroEJ environment is that it allows
-applications to be developed and tested in a simulator rather than on
+applications to be developed and tested in a Simulator rather than on
 the target device, which might not yet be built. To make this possible
 for devices that have a display or controls operated by the user (such
-as a touch screen or buttons), the simulator must connect to a "mock" of
+as a touch screen or buttons), the Simulator must connect to a "mock" of
 the control panel (the "Front Panel") of the device. This mock is called
 the *mockFP*. The mockFP generates a graphical representation of the
 required front panel, and is displayed in a window on the user's
-development machine when the application is executed in the simulator.
+development machine when the application is executed in the Simulator.
 The mockFP is the equivalent of the three embedded modules (Display,
 Inputs and LED) of the MicroEJ Platform (see
 :ref:`section_microui`).
@@ -133,7 +133,7 @@ the panel using mock-widgets: They simulate the drivers, sensors and
 actuators of the real device. The mock engine generates the graphical
 representation of the real device, and is displayed in a window on the
 user's development machine when the application is executed in the
-simulator.
+Simulator.
 
 The following example file describes a typical board with one LCD, a
 touch panel, three buttons, a joystick and four LEDs:
@@ -384,7 +384,7 @@ Installation
 
 Front Panel is an additional module for MicroUI library. When the
 MicroUI module is installed, install this module in order to be able to
-simulate UI drawings on the simulator.
+simulate UI drawings on the Simulator.
 
 In the platform configuration file, check :guilabel:`UI` > :guilabel:`Front Panel` to
 install the Front Panel module. When checked, the properties file
@@ -413,7 +413,7 @@ The properties file must / can contain the following properties:
 Use
 ===
 
-Launch a MicroUI application on the simulator to run the Front Panel.
+Launch a MicroUI application on the Simulator to run the Front Panel.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

@@ -12,7 +12,7 @@ The first step is to create a MicroEJ Platform configuration:
    MicroEJ Platform Project.
 
 -  Click on Next. The Configure Target Architecture page allows to
-   select the MicroEJ architecture that contains a minimal MicroEJ
+   select the MicroEJ Architecture that contains a minimal MicroEJ
    Platform and a set of compatible modules targeting a processor
    architecture and a compilation toolchain. This environment can be
    changed later.

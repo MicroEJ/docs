@@ -96,7 +96,7 @@ Memory
 ------
 
 The threads are always running. The user has to count them to determine
-the number of concurrent threads the MicroEJ core engine can run (see
+the number of concurrent threads the MicroEJ Core Engine can run (see
 Memory options in :ref:`workbenchLaunchOptions`).
 
 Exceptions

@@ -687,10 +687,10 @@ the ``hardwareAccelerator`` property value (see
 
 The available list of supported hardware accelerators is MicroEJ
 architecture dependent. For instance, the STMicroelectronics Chrom-ART
-Graphics Accelerator is only available for the MicroEJ architecture for
+Graphics Accelerator is only available for the MicroEJ Architecture for
 Cortex-M4 and Cortex-M7. The Renesas Graphics Library RGA is only
-available for the MicroEJ architecture for Cortex-A9. The following
-table shows in which MicroEJ architecture an hardware accelerator is
+available for the MicroEJ Architecture for Cortex-A9. The following
+table shows in which MicroEJ Architecture an hardware accelerator is
 available.
 
 .. tabularcolumns:: |p{5cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|

@@ -30,10 +30,10 @@ The properties file must / can contain the following properties:
 
 -  ``architecture`` [optional, default value is "Virtual Device"]:
    Defines the value returned by the
-   ``ej.util.Device.getArchitecture()`` method on the simulator.
+   ``ej.util.Device.getArchitecture()`` method on the Simulator.
 
 -  ``id.length`` [optional]: Defines the size of the ID returned by the
-   ``ej.util.Device.getId()`` method on the simulator.
+   ``ej.util.Device.getId()`` method on the Simulator.
 
 
 Use

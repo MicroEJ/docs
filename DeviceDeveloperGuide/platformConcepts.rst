@@ -10,7 +10,7 @@ A MicroEJ Platform includes development tools and a runtime environment.
 
 The runtime environment consists of:
 
--  A MicroEJ core engine.
+-  A MicroEJ Core Engine.
 
 -  Some Foundation Libraries.
 
@@ -71,7 +71,7 @@ Modules
 The primary mechanism for augmenting the capabilities of a :ref:`concepts-jpf` is to add modules to it.
 
 A MicroEJ module is a group of related files (Foundation Libraries,
-scripts, link files, C libraries, simulator, tools, etc.) that together
+scripts, link files, C libraries, Simulator, tools, etc.) that together
 provide all or part of a platform capability. Generally, these files
 serve a common purpose. For example, providing an API, or providing a
 library implementation with its associated tools.

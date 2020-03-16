@@ -11,13 +11,13 @@ Below are the HIL Engine options:
    | ``-verbose[e....e]``          | Extra messages are printed out to the console |
    |                               | (add extra e to get more messages).           |
    +-------------------------------+-----------------------------------------------+
-   | ``-ip <address>``             | MicroEJ simulator connection IP address       |
+   | ``-ip <address>``             | MicroEJ Simulator connection IP address       |
    |                               | (A.B.C.D). By default, set to localhost.      |
    +-------------------------------+-----------------------------------------------+
-   | ``-port <port>``              | MicroEJ simulator connection port. By         |
+   | ``-port <port>``              | MicroEJ Simulator connection port. By         |
    |                               | default, set to 8001.                         |
    +-------------------------------+-----------------------------------------------+
-   | ``-connectTimeout <timeout>`` | timeout in s for MicroEJ simulator            |
+   | ``-connectTimeout <timeout>`` | timeout in s for MicroEJ Simulator            |
    |                               | connections. By default, set to 10 seconds.   |
    +-------------------------------+-----------------------------------------------+
    | ``-excludes <name[sep]name>`` | Types that will be excluded from the HIL      |

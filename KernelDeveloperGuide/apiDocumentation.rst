@@ -3,7 +3,7 @@
 API Documentation
 =================
 
-The full API documentation of the Kernel & Features foundation library
+The full API documentation of the Kernel & Features Foundation Library
 is available in MicroEJ SDK
 (``Help > MicroEJ Resource Center > Javadoc > KF [version]``).
 

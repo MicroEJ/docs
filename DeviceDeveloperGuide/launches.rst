@@ -9,7 +9,7 @@ resources, target platform, and platform-specific options), and then
 launches a MicroEJ launch script for execution.
 
 Execution is done on either the MicroEJ Platform or the MicroEJ
-simulator. The launch operation is platform-specific. It may depend on
+Simulator. The launch operation is platform-specific. It may depend on
 external tools that the platform requires (such as target memory
 programming). Refer to the platform-specific documentation for more
 information about available launch settings.
@@ -49,7 +49,7 @@ Execution Tab
 
 The next tab is the :guilabel:`Execution` tab. Here the target needs to be
 selected. Choose between execution on a MicroEJ Platform or on a MicroEJ
-simulator. Each of them may provide multiple launch settings. This page
+Simulator. Each of them may provide multiple launch settings. This page
 also allows you to keep generated, intermediate files and to print
 verbose options (advanced debug purpose options).
 

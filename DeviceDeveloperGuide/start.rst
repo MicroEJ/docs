@@ -48,7 +48,7 @@ Bibliography
     | Architecture      | a target instruction set architecture (ISA) and  |
     |                   | native compiler.                                 |
     +-------------------+--------------------------------------------------+
-    | MicroEJ Platform  | MicroEJ Platform is the MicroEJ core engine and  |
+    | MicroEJ Platform  | MicroEJ Platform is the MicroEJ Core Engine and  |
     |                   | Libraries running on a specific target board     |
     |                   | support package (BSP, with or without RTOS).     |
     +-------------------+--------------------------------------------------+
@@ -56,7 +56,7 @@ Bibliography
     |                   | Vee for a target hardware board.                 |
     +-------------------+--------------------------------------------------+
     | MicroEJ Simulator | MicroEJ Simulator allows running MicroEJ         |
-    |                   | Applications on a target hardware simulator      |
+    |                   | Applications on a target hardware Simulator      |
     |                   | running MicroEJ Vee on the developer’s desktop   |
     |                   | computer.                                        |
     +-------------------+--------------------------------------------------+

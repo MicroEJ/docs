@@ -10,7 +10,7 @@ A *resource* is, for a MicroEJ Application, the contents of a file. This
 file is known by its path (its relative path from the MicroEJ
 application classpath) and its name. The file may be stored in RAM,
 flash, or external flash; and it is the responsibility of the MicroEJ
-core engine and/or the BSP to retrieve and load it.
+Core Engine and/or the BSP to retrieve and load it.
 
 MicroEJ Platform makes the distinction between two kinds of resources:
 
@@ -42,7 +42,7 @@ Functional Description
 
 The External Resources Loader is an optional module. When not installed,
 only internal resources are available for the MicroEJ Application. When
-the External Resources Loader is installed, the MicroEJ core engine
+the External Resources Loader is installed, the MicroEJ Core Engine
 tries first to retrieve the expected resource from its available list of
 internal resources, before asking the BSP to load it (using
 ``LLEXT_RES_impl.h`` functions).
@@ -114,9 +114,9 @@ two roles:
    will be copied into this folder. This makes it easier to retrieve the
    exhaustive list of resources to program on the board.
 
--  This folder is taken into consideration by the simulator in order to
+-  This folder is taken into consideration by the Simulator in order to
    simulate the availability of these resources. When the resources are
-   located in another computer folder, the simulator is not able to load
+   located in another computer folder, the Simulator is not able to load
    them.
 
 If not specified, this folder is created (if it does not already exist)

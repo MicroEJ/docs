@@ -10,7 +10,7 @@ zero or more sandboxed applications called *Features*.
 The Kernel part is mandatory and is assumed to be reliable, trusted and
 cannot be modified. If there is only one application, i.e only one
 ``main`` entry point that the system starts with, then this application
-is considered as the Kernel and called a standalone application. Even if
+is considered as the Kernel and called a Standalone Application. Even if
 there are more applications in the platform, there is still only one
 entry point. This entry point is the Kernel. Applications (downloaded or
 preinstalled) are "code extensions" (called "Features"), that are called

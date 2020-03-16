@@ -1,9 +1,9 @@
 ===================
-MicroEJ core engine
+MicroEJ Core Engine
 ===================
 
 
-The MicroEJ core engine (also called the platform engine) and its
+The MicroEJ Core Engine (also called the platform engine) and its
 components represent the core of the platform. It is used to compile and
 execute at runtime the MicroEJ Application code.
 
@@ -17,27 +17,27 @@ are performed within the C IDE.
 
 .. _fig_mjvm_flow2:
 .. figure:: images/mjvm_flow2.*
-   :alt: MicroEJ core engine Flow
+   :alt: MicroEJ Core Engine Flow
    :width: 80.0%
    :align: center
 
-   MicroEJ core engine Flow
+   MicroEJ Core Engine Flow
 
 1. Step 1 consists in writing a MicroEJ Application against a set of
-   foundation libraries available in the platform.
+   Foundation Libraries available in the platform.
 
 2. Step 2 consists in compiling the MicroEJ Application code and the
    required libraries in an ELF library, using the Smart Linker.
 
 3. Step 3 consists in linking the previous ELF file with the MicroEJ
-   core engine library and a third-party BSP (OS, drivers, etc.). This
+   Core Engine library and a third-party BSP (OS, drivers, etc.). This
    step may require a third-party linker provided by a C toolchain.
 
 
 Architecture
 ============
 
-The MicroEJ core engine and its components have been compiled for one
+The MicroEJ Core Engine and its components have been compiled for one
 specific CPU architecture and for use with a specific C compiler.
 
 The architecture of the platform engine is called green thread
@@ -68,19 +68,19 @@ the precision is 1 millisecond.
 Capabilities
 ============
 
-MicroEJ core engine defines 3 exclusive capabilities:
+MicroEJ Core Engine defines 3 exclusive capabilities:
 
--  Single application: capability to produce a monolithic firmware
+-  Mono-sandbox : capability to produce a monolithic firmware
    (default one).
 
--  Multi-Sandbox: capability to produce a extensible firmware on
+-  Multi-Sandbox : capability to produce a extensible firmware on
    which new applications can be dynamically installed. See section
    :ref:`core-multiapp`.
 
--  Tiny application: capability to produce a compacted firmware
+-  Tiny application : capability to produce a compacted firmware
    (optimized for size). See section :ref:`core-tiny`.
 
-All MicroEJ core engine capabilities may not be available on all
+All MicroEJ Core Engine capabilities may not be available on all
 architectures. Refer to section :ref:`appendix_matrixcapabilities`
 for more details.
 
@@ -104,7 +104,7 @@ defines platform-specific exit code constants. (See
 Initialization
 --------------
 
-The Low Level MicroEJ core engine API deals with two objects: the
+The Low Level MicroEJ Core Engine API deals with two objects: the
 structure that represents the platform, and the RTOS task that runs the
 platform. Two callbacks allow engineers to interact with the
 initialization of both objects:
@@ -223,7 +223,7 @@ from a dedicated RTOS task.
 Debugging
 ---------
 
-The internal MicroEJ core engine function called ``LLMJVM_dump`` allows
+The internal MicroEJ Core Engine function called ``LLMJVM_dump`` allows
 you to dump the state of all MicroEJ threads: name, priority, stack
 trace, etc. This function can be called at any time and from an
 interrupt routine (for instance from a button interrupt).
@@ -287,7 +287,7 @@ with VM dumps.
 Java Language
 =============
 
-The MicroEJ core engine is compatible with the Java language version 7.
+The MicroEJ Core Engine is compatible with the Java language version 7.
 
 
 Smart Linker (SOAR)
@@ -396,10 +396,10 @@ MicroEJ properties can also be defined in the launch configuration. This
 can be done by setting the properties in the launcher with a specific
 prefix in their name:
 
--  Properties for both the MicroEJ Platform and the MicroEJ simulator:
+-  Properties for both the MicroEJ Platform and the MicroEJ Simulator:
    name starts with ``microej.java.property.*``
 
--  Properties for the MicroEJ simulator: name starts with
+-  Properties for the MicroEJ Simulator: name starts with
    ``sim.java.property.*``
 
 -  Properties for the MicroEJ Platform: name starts with
@@ -425,7 +425,7 @@ stream. See below for how to configure the destination of these streams.
 Link
 ====
 
-Several sections are defined by the MicroEJ core engine. Each section
+Several sections are defined by the MicroEJ Core Engine. Each section
 must be linked by the third-party linker.
 
 .. table:: Linker Sections
@@ -442,7 +442,7 @@ must be linked by the third-party linker.
    | ``.bss.vm.stacks.java``     | Application threads stack   | RW          | 8          |
    |                             | blocks                      |             |            |
    +-----------------------------+-----------------------------+-------------+------------+
-   | ``ICETEA_HEAP``             | MicroEJ core engine         | Internal RW | 8          |
+   | ``ICETEA_HEAP``             | MicroEJ Core Engine         | Internal RW | 8          |
    |                             | internal heap               |             |            |
    +-----------------------------+-----------------------------+-------------+------------+
    | ``_java_heap``              | Application heap            | RW          | 4          |
@@ -466,7 +466,7 @@ must be linked by the third-party linker.
 Dependencies
 ============
 
-The MicroEJ core engine requires an implementation of its low level APIs
+The MicroEJ Core Engine requires an implementation of its low level APIs
 in order to run. Refer to the chapter :ref:`mjvm_impl` for more
 information.
 
@@ -474,9 +474,9 @@ information.
 Installation
 ============
 
-The MicroEJ core engine and its components are mandatory. In the
+The MicroEJ Core Engine and its components are mandatory. In the
 platform configuration file, check :guilabel:`Multi Applications` to install the
-MicroEJ core engine in "Multi-Sandbox" mode. Otherwise, the "Single
+MicroEJ Core Engine in "Multi-Sandbox" mode. Otherwise, the "Single
 application" mode is installed.
 
 

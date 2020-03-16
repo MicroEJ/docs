@@ -4,7 +4,7 @@ Introduction
 Scope
 -----
 
-This document explains how the core features of MicroEJ architecture are
+This document explains how the core features of MicroEJ Architecture are
 accessed, configured and used by the MicroEJ Platform builder. It
 describes the process for creating and augmenting a MicroEJ
 architecture. This document is concise, but attempts to be exact and
@@ -13,7 +13,7 @@ their respective specifications. This document includes an outline of
 the required low level drivers (LLAPI) for porting the MicroEJ
 architectures to different real-time operating systems (RTOS).
 
-MicroEJ architecture is state-of-the-art, with embedded MicroEJ runtimes
+MicroEJ Architecture is state-of-the-art, with embedded MicroEJ runtimes
 for MCUs. They also provide simulated runtimes that execute on
 workstations to allow software development on "virtual hardware."
 
@@ -24,15 +24,15 @@ The audience for this document is software engineers who need to
 understand how to create and configure a MicroEJ Platform using the
 MicroEJ Platform builder. This document also explains how a MicroEJ
 application can interoperate with C code on the target, and the details
-of the MicroEJ architecture modules, including their APIs, error codes
+of the MicroEJ Architecture modules, including their APIs, error codes
 and options.
 
-MicroEJ architecture Modules Overview
+MicroEJ Architecture Modules Overview
 -------------------------------------
 
-MicroEJ architecture features the MicroEJ core engine: a tiny and fast
+MicroEJ Architecture features the MicroEJ Core Engine: a tiny and fast
 runtime associated with a smart RAM optimizer. It provides four built-in
-foundation libraries :
+Foundation Libraries :
 
 -  [B-ON]
 -  [EDC]
@@ -43,11 +43,11 @@ foundation libraries :
 
 .. _fig_jpf-runtime-components:
 .. figure:: images/jpf-runtime-components.*
-   :alt: MicroEJ architecture Runtime Modules: Tools, Libraries and APIs
+   :alt: MicroEJ Architecture Runtime Modules: Tools, Libraries and APIs
    :width: 70.0%
    :align: center
 
-   MicroEJ architecture Runtime Modules: Tools, Libraries and APIs
+   MicroEJ Architecture Runtime Modules: Tools, Libraries and APIs
 
 Three APIs allow the device architecture runtime to link with (and port
 to) external code, such as any kind of RTOS or legacy C libraries. These
@@ -55,11 +55,11 @@ three APIs are
 
 -  Simple Native Interface (SNI)
 
--  Low Level MicroEJ core engine (LLMJVM)
+-  Low Level MicroEJ Core Engine (LLMJVM)
 
 -  Low Level Shielded Plug (LLSP)
 
-MicroEJ architecture features additional Foundation Libraries and
+MicroEJ Architecture features additional Foundation Libraries and
 modules to extend the kernel:
 
 -  serial communication,
@@ -78,7 +78,7 @@ MicroEJ Platform configuration.
 Scheduler
 ---------
 
-The MicroEJ architecture features a green thread platform that can
+The MicroEJ Architecture features a green thread platform that can
 interact with the C world [SNI]. The (green) thread policy is as
 follows:
 
@@ -96,11 +96,11 @@ RAM memory.
 Smart RAM Optimizer
 -------------------
 
-The MicroEJ architecture includes a state-of-the-art memory management
+The MicroEJ Architecture includes a state-of-the-art memory management
 system, the Garbage Collector (GC). It manages a bounded piece of RAM
 memory, devoted to the Java world. The GC automatically frees dead Java
 objects, and defragments the memory in order to optimize RAM usage. This
-is done transparently while the MicroEJ applications keep running.
+is done transparently while the MicroEJ Applications keep running.
 
 .. [1]
    This protocol raises the priority of a thread (that is holding a

@@ -6,7 +6,7 @@ Licenses
 Overview
 --------
 
-MicroEJ architectures and platforms are associated with a license. The
+MicroEJ Architectures and Platforms are associated with a license. The
 license type depends on the platform usage level (license key for an
 evaluation version, hardware dongle for a development version). Refer to
 the platform specific documentation to learn more details about the

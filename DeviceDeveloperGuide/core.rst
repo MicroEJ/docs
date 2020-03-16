@@ -6,7 +6,7 @@ ECOM
 Principle
 =========
 
-The Embedded COMmunication foundation library (ECOM) is a generic
+The Embedded COMmunication Foundation Library (ECOM) is a generic
 communication library with abstract communication stream support (a
 communication framework only). It allows you to open and use streams on
 communication devices such as a COMM port.
@@ -86,7 +86,7 @@ No dependency.
 Installation
 ============
 
-ECOM foundation library is an additional library. In the platform
+ECOM Foundation Library is an additional library. In the platform
 configuration file, check :guilabel:`Serial Communication` > :guilabel:`ECOM` to install
 the library.
 

@@ -96,7 +96,7 @@ negative value indicates abnormal termination.  
    | -15         | The application has too many static (the requested     |
    |             | static head is too large).                             |
    +-------------+--------------------------------------------------------+
-   | -16         | The MicroEJ core engine cannot be restarted.           |
+   | -16         | The MicroEJ Core Engine cannot be restarted.           |
    +-------------+--------------------------------------------------------+
 
 ..

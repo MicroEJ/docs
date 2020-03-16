@@ -10,7 +10,7 @@ Principle
 ---------
 
 JUnit testing can be enabled when using the ``microej-javalib`` (MicroEJ
-Add-On library) or the ``microej-application`` (MicroEJ Applications)
+Add-On Library) or the ``microej-application`` (MicroEJ Applications)
 build type. JUnit test cases processing is automatically enabled when
 the following dependency is declared in the ``module.ivy`` file of the
 project.
@@ -103,8 +103,7 @@ with
    Assert.assertTrue(true);
 
 Right-click again on the ``mylibrary`` project and select :guilabel:`Build with EasyAnt`.
-The test is now successfully executed on the target platform so the MicroEJ
-add-on library is fully built and published without errors.
+The test is now successfully executed on the target platform so the MicroEJ Add-On Library is fully built and published without errors.
 
 Double-click on the JUnit testsuite report to see the test has been
 successfully executed.

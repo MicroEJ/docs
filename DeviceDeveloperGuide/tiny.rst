@@ -8,7 +8,7 @@ Tiny application
 Principle
 =========
 
-The Tiny application capability of the MicroEJ core engine allows to
+The Tiny application capability of the MicroEJ Core Engine allows to
 build a main application optimized for size. This capability is suitable
 for environments requiring a small memory footprint.
 
@@ -17,7 +17,7 @@ Installation
 ============
 
 Tiny application is an option disabled by default. To enable Tiny
-application of the MicroEJ core engine, set the property
+application of the MicroEJ Core Engine, set the property
 ``mjvm.standalone.configuration`` in ``configuration.xml`` file as
 follows:
 

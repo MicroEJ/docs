@@ -5,7 +5,7 @@ BSP Tool
 Principle
 ---------
 
-When the MicroEJ platform is built, the user can compile a MicroEJ
+When the MicroEJ Platform is built, the user can compile a MicroEJ
 application on that platform. However, the result of this compilation is
 not sufficient. A third-party C project is required to obtain the final
 binary file to flash on a board.
@@ -14,7 +14,7 @@ This third-party C project is usually configured to target only one
 board. It contains some C files, header directories, C libraries, etc.
 Using this C project, the user can build (compile and link) a binary
 file which contains the specific MCU and board libraries, the foundation
-libraries, and the MicroEJ application.
+libraries, and the MicroEJ Application.
 
 The BSP tool configures the third-party project, updating the
 third-party C-IDE project file, adding some C libraries and filling some
@@ -26,7 +26,7 @@ Third-party C Project
 
 The BSP tool is able to configure automatically the board C project.
 Fill the ``bsp`` > ``bsp.properties`` properties file to enable the
-third-party C project configuration during the MicroEJ platform build.
+third-party C project configuration during the MicroEJ Platform build.
 
 The properties file can contain the following properties:
 
@@ -50,8 +50,8 @@ The properties file can contain the following properties:
 BSP Files
 ---------
 
-The MicroEJ platform needs some information about the board project (the
-BSP). This information is required for building a MicroEJ application
+The MicroEJ Platform needs some information about the board project (the
+BSP). This information is required for building a MicroEJ Application
 that is compatible with the BSP.
 
 Some BSP files (XML files) are required to configure the MicroEJ
@@ -80,7 +80,7 @@ Example:
    </bsp>
 
 The BSP tool converts these files into an internal format during the
-MicroEJ platform build.
+MicroEJ Platform build.
 
 
 Dependencies
@@ -94,7 +94,7 @@ No dependency.
 Installation
 ------------
 
-The BSP tool is automatically called during the MicroEJ platform build.
+The BSP tool is automatically called during the MicroEJ Platform build.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

@@ -3,7 +3,7 @@
 MicroEJ Classpath
 #################
 
-MicroEJ applications run on a target device and their footprint is
+MicroEJ Applications run on a target device and their footprint is
 optimized to fulfill embedded constraints. The final execution context
 is an embedded device that may not even have a file system. Files
 required by the application at runtime are not directly copied to the
@@ -341,19 +341,19 @@ core runtime APIs or hardware-dependent functionality. A Foundation
 library is divided into an API and an implementation. A Foundation
 library API is composed of a name and a 2 digits version (e.g.
 ``EDC-1.3``) and follows the semantic versioning (:http:`http://semver.org`)
-specification. A Foundation library API only contains prototypes without
-code. Foundation library implementations are provided by MicroEJ
-Platforms. From a MicroEJ Classpath, Foundation library APIs
+specification. A Foundation Library API only contains prototypes without
+code. Foundation Library implementations are provided by MicroEJ
+Platforms. From a MicroEJ Classpath, Foundation Library APIs
 dependencies are automatically mapped to the associated implementations
 provided by the Platform or the Virtual Device on which the application
 is being executed.
 
 A MicroEJ Add-On Library is a MicroEJ library that is implemented on top
-of MicroEJ Foundation Libraries (100% full Java code). A MicroEJ Add-on
+of MicroEJ Foundation Libraries (100% full Java code). A MicroEJ Add-On
 Library is distributed in a single JAR file, with a 3 digits version and
 provides its associated source code.
 
-Foundation and Add-on libraries are added to MicroEJ Classpath by the
+Foundation and Add-On Libraries are added to MicroEJ Classpath by the
 application developer as module dependencies (see :ref:`section.ivy.dependency.manager`).
 
 .. figure:: images/ClassPath_2.png
@@ -366,9 +366,9 @@ MicroEJ Central Repository
 ==========================
 
 The MicroEJ Central Repository is the binary repository maintained by
-MicroEJ. It contains Foundation library APIs and numerous Add-On
-Libraries. Foundation libraries APIs are distributed under the
-organization ``ej.api``. All other artifacts are Add-On libraries.
+MicroEJ. It contains Foundation Library APIs and numerous Add-On
+Libraries. Foundation Libraries APIs are distributed under the
+organization ``ej.api``. All other artifacts are Add-On Libraries.
 
 For more information, please visit :http:`https://repository.microej.com`.
 
