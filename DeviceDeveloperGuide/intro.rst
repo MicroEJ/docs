@@ -31,7 +31,7 @@ MicroEJ Architecture Modules Overview
 -------------------------------------
 
 MicroEJ Architecture features the MicroEJ Core Engine: a tiny and fast
-runtime associated with a smart RAM optimizer. It provides four built-in
+runtime associated with a Garbage Collector. It provides four built-in
 Foundation Libraries :
 
 -  [B-ON]
@@ -93,8 +93,8 @@ sizes according to the thread requirements: Once the thread has
 finished, its associated stack is reclaimed, freeing the corresponding
 RAM memory.
 
-Smart RAM Optimizer
--------------------
+Garbage Collector
+-----------------
 
 The MicroEJ Architecture includes a state-of-the-art memory management
 system, the Garbage Collector (GC). It manages a bounded piece of RAM

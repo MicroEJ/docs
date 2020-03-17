@@ -20,8 +20,8 @@ Kernel.
 A sandboxed application may be dynamically downloaded at runtime or
 integrated at build-time within the executable application.
 
-Note that the Multi-Sandbox is a capability of the MicroEJ core
-engine. The MicroEJ Simulator always runs an application as a Standalone Application.
+Note that the Multi-Sandbox is a capability of the MicroEJ Core
+Engine. The MicroEJ Simulator always runs an application as a Standalone Application.
 
 
 Functional Description

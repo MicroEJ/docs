@@ -1,7 +1,7 @@
-Smart Linker
-============
+SOAR
+====
 
-When a generic exception is thrown by the Smart Linker, the error
+When a generic exception is thrown by the SOAR, the error
 message 
 
 :code:`SOAR ERROR [M<messageId>] <message>`

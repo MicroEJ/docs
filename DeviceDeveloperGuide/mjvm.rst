@@ -27,7 +27,7 @@ are performed within the C IDE.
    Foundation Libraries available in the platform.
 
 2. Step 2 consists in compiling the MicroEJ Application code and the
-   required libraries in an ELF library, using the Smart Linker.
+   required libraries in an ELF library, using the SOAR.
 
 3. Step 3 consists in linking the previous ELF file with the MicroEJ
    Core Engine library and a third-party BSP (OS, drivers, etc.). This
@@ -46,8 +46,7 @@ scheduling MicroEJ threads. The scheduler implements a priority
 preemptive scheduling policy with round robin for the MicroEJ threads
 with the same priority. In the following explanations the term "RTOS
 task" refers to the tasks scheduled by the underlying OS; and the term
-"MicroEJ thread" refers to the thread scheduled by the MicroEJ core
-engine.
+"MicroEJ thread" refers to the Java threads scheduled by the MicroEJ Core Engine.
 
 .. figure:: images/mjvm_gt.*
    :alt: A Green Threads Architecture Example
@@ -167,8 +166,8 @@ to the MicroEJ world:
 Example
 -------
 
-The following example shows how to create and launch the MicroEJ core
-engine from the C world. This function (``mjvm_main``) should be called
+The following example shows how to create and launch the MicroEJ Core
+Engine from the C world. This function (``mjvm_main``) should be called
 from a dedicated RTOS task.
 
 .. code:: c
@@ -290,8 +289,8 @@ Java Language
 The MicroEJ Core Engine is compatible with the Java language version 7.
 
 
-Smart Linker (SOAR)
-===================
+SOAR
+====
 
 Java source code is compiled by the Java compiler [1]_ into the binary
 format specified in [JVM]. This binary code needs to be linked before
