@@ -169,8 +169,8 @@ def get_project_name():
     docset = os.environ.get('MICROEJ_DOCSET', None)
     if docset == 'ApplicationDeveloperGuide':
         return 'Application Developer Guide'
-    elif docset == 'DeviceDeveloperGuide':
-        return 'Device Developer Guide'
+    elif docset == 'PlatformDeveloperGuide':
+        return 'Platform Developer Guide'
     elif docset == 'KernelDeveloperGuide':
         return 'Kernel Developer Guide'
     elif docset == 'overview':

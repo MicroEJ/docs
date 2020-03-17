@@ -1,7 +1,7 @@
 .. _device.developer.guide:
 
-Device Developer Guide
-======================
+Platform Developer Guide
+========================
 
 .. toctree::
    :maxdepth: 3

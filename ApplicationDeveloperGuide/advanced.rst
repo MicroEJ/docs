@@ -1,5 +1,5 @@
-Advanced Options
-================
+Advanced Tools
+==============
 
 .. toctree::
    :maxdepth: 2

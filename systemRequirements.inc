@@ -3,8 +3,7 @@
 System Requirements
 ===================
 
-MicroEJ SDK and MicroEJ Studio
-------------------------------
+.. rubric:: MicroEJ SDK and MicroEJ Studio
 
 - **Intel x64 PC with minimum :**
    - Dual-core Core i5 processor

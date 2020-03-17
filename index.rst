@@ -6,7 +6,7 @@ MicroEJ
 
     overview
     ApplicationDeveloperGuide/index
-    DeviceDeveloperGuide/index
+    PlatformDeveloperGuide/index
     KernelDeveloperGuide/index
 
 ..
