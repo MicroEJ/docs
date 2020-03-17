@@ -310,7 +310,7 @@ available in the font will be shown as red rectangles.
 
    Font Preview
 
-Removing unused characters
+Removing Unused Characters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to reduce the size of a font file, you can reduce the number of

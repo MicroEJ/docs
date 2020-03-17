@@ -36,7 +36,7 @@ The ECOM Comm process respects the ECOM process. Please refer to the
 illustration :ref:`"ECOM flow" <fig_ecom-flow>`.
 
 
-Component architecture
+Component Architecture
 ======================
 
 The ECOM Comm C module relies on a native driver to perform actual
@@ -129,7 +129,7 @@ the concatenation of "com" and the number (e.g. com11).
 
 .. _section_ecomcomm_mapping:
 
-Application port mapping
+Application Port Mapping
 ------------------------
 
 The mapping from application port numbers to platform ports is done in
@@ -289,7 +289,7 @@ different life cycle and one side may be closed long before the other.
    The following examples use Buffered connections, but Custom
    connections follow the same pattern.
 
-The Buffered Comm stream
+The Buffered Comm Stream
 ------------------------
 
 In Buffered mode, two buffers are allocated by the driver for sending
@@ -353,7 +353,7 @@ The driver must notify the C module on the following events:
 -  Space available in the transmit buffer (using the
    ``LLCOMM_BUFFERED_CONNECTION_transmitBufferReady`` function)
 
-The Custom Comm stream
+The Custom Comm Stream
 ----------------------
 
 In custom mode, the ECOM Comm C module will not do any buffering. Read

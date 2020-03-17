@@ -76,7 +76,7 @@ Overall Architecture
    Firmware Input and Output Artifacts
 
 
-Firmware implementation libraries
+Firmware Implementation Libraries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Firmware implementations must cover the following topics:

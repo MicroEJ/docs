@@ -69,7 +69,7 @@ defined by ``edc,kf,bon,wadapps,components`` kernel APIs.
 The documentation of a runtime environment is packaged into the Virtual
 Device as HTML javadoc (:guilabel:`Help` > :guilabel:`MicroEJ Resource Center` > :guilabel:`Javadoc`).
 
-Specify the runtime environment of the firmware
+Specify the Runtime Environment of the Firmware
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 While building a firmware, two ways exist to specify the runtime
@@ -220,7 +220,7 @@ and defines an API that contains all types, methods, and fields from
    </dependencies>
                            
 
-Change the set of properties used to build a firmware
+Change the set of Properties used to Build a Firmware
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The easyant build type use the file ``build/common.properties`` to
@@ -228,7 +228,7 @@ configure the build process.
 
 .. _platform_selection:
 
-Change the platform used to build the firmware and the Virtual Device
+Change the Platform used to Build the Firmware and the Virtual Device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To build a firmware and a Virtual Device a platform must be specified.
@@ -256,7 +256,7 @@ Four different ways are possible to do so:
 
       <ea:property name="platform-loader.target.platform.dir" value="/path-to-a-platform-folder/" />
 
-Build only a firmware
+Build only a Firmware
 ~~~~~~~~~~~~~~~~~~~~~
 
 Set the property ``skip.build.virtual.device``
@@ -274,7 +274,7 @@ Set the property ``virtual.device.sim.only``
 
    <ea:property name="virtual.device.sim.only" value="SET" />
 
-Build only a Virtual Device with a pre-existing firmware
+Build only a Virtual Device with a pre-existing Firmware
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Copy/Paste the ``.kpk`` file into the folder ``dropins``

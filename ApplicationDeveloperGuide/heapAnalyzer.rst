@@ -20,7 +20,7 @@ helps you analyze their contents thanks to the following features:
 -  heap usage optimization (using immortal or immutable objects)
 
 
-The heap
+The Heap
 ~~~~~~~~
 
 The heap is a memory area used to hold Java objects created at runtime.
@@ -28,7 +28,7 @@ Objects persist in the heap until they are garbage collected. An object
 becomes eligible for garbage collection when there are no longer any
 references to it from other objects.
 
-Heap dump
+Heap Dump
 ~~~~~~~~~
 
 A heap dump is an XML file that provides a snapshot of the heap contents
@@ -57,7 +57,7 @@ For instances of array types, it also records:
 For each referenced class type it records the values in the static
 fields of the class.
 
-Heap Analyzer tools
+Heap Analyzer Tools
 ~~~~~~~~~~~~~~~~~~~
 
 The Heap Analyzer is an Eclipse plugin that adds three tools to the
@@ -144,7 +144,7 @@ The Heap Viewer tool has three tabs, each described below.
    Although this is an Eclipse ‘editor’, it is not possible to edit the
    contents of the heap dump.
 
-Outline view
+Outline View
 ~~~~~~~~~~~~
 
 The Outline view shows a list of all the types in the heap dump, and for
@@ -161,7 +161,7 @@ is opened.
 
    Outline View
 
-Instance Browser view
+Instance Browser View
 ~~~~~~~~~~~~~~~~~~~~~
 
 The Instance Browser view opens automatically when a type or instance is
@@ -188,7 +188,7 @@ selected instance, and the instances that refer to them, and so on.
 
    Instance Browser View - References mode
 
-Heap usage tab
+Heap Usage Tab
 ~~~~~~~~~~~~~~
 
 The Heap usage page of the Heap Viewer displays four bar charts. Each
@@ -235,7 +235,7 @@ Usage page generates a file compatible with graphviz (www.graphviz.org).
    instances option on the drop-down menu at the top of the Outline
    view.
 
-Dominator tree tab
+Dominator Tree Tab
 ~~~~~~~~~~~~~~~~~~
 
 The Dominator tree page of the Heap Viewer allows the user to browse the
@@ -267,7 +267,7 @@ view.
 
    Heap Viewer - Dominator Tree Tab
 
-Leak suspects tab
+Leak Suspects Tab
 ~~~~~~~~~~~~~~~~~
 
 The Leak suspects page of the Heap Viewer shows the result of applying
@@ -374,7 +374,7 @@ various ways:
    that exist in both the old and new dumps and have one or more
    differences in the values of their fields.
 
-Instance Fields Comparison view
+Instance Fields Comparison View
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Compare tool works in conjunction with the Instance Fields

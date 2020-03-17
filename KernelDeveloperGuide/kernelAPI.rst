@@ -15,7 +15,7 @@ The packaged file ``kernel.api`` can be extracted from the JAR file and
 to be manually managed in order to keep only desired types, methods and
 fields.
 
-Build a kernel API artifact
+Build a Kernel API Artifact
 ---------------------------
 
 -  Generates the skeleton project: Select

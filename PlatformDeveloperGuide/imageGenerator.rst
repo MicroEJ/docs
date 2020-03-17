@@ -446,7 +446,7 @@ Disadvantages:
    image1:RLE1
 
 
-No compression
+No Compression
 ==============
 
 When no output format is set in the images list file, the image is

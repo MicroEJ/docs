@@ -339,7 +339,7 @@ Each display stack gets initialized the same way:
    ``LLDISPLAY_IMPL_getHeight`` are called to retrieve the size of the
    physical screen.
 
-Working buffer
+Working Buffer
 ~~~~~~~~~~~~~~
 
 The display driver must allocate a runtime memory buffer for creating
@@ -383,7 +383,7 @@ their names match the ``*_IMPL_*`` pattern when the functions must be
 implemented. These LLAPIs are not required. When they are not
 implemented, a default implementation is used (weak function).
 
-Display characteristics
+Display Characteristics
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Function ``LLDISPLAY_EXTRA_IMPL_isColor`` directly implements the method
@@ -425,7 +425,7 @@ default implementations don't manage the backlight.
 
 .. _colorConversions:
 
-Color conversions
+Color Conversions
 ~~~~~~~~~~~~~~~~~
 
 ``LLDISPLAY_EXTRA_IMPL_convertARGBColorToDisplayColor`` is called to
@@ -604,7 +604,7 @@ The LEDs stack provides a Low Level API for connecting LED drivers. The
 file ``LLLEDS_impl.h``, which comes with the LEDs stack, defines the API
 headers to be implemented.
 
-Naming convention
+Naming Convention
 -----------------
 
 The Low Level API relies on functions that must be implemented. The
