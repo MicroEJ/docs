@@ -1,5 +1,5 @@
 Category: Kernel API Generator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. figure:: png/kernelAPIgenerator_img1.png
@@ -7,9 +7,8 @@ Category: Kernel API Generator
    :width: 1054px
    :height: 551px
 
-''''''''''''''''
 Group: Classpath
-''''''''''''''''
+^^^^^^^^^^^^^^^^
 
 Option(list):
 '''''''''''''
@@ -19,9 +18,8 @@ Option(list):
 
 *Default value*: ``(empty)``
 
-''''''''''''''''''''
 Group: Types Filters
-''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^
 
 Option(text): Includes Patterns
 '''''''''''''''''''''''''''''''
