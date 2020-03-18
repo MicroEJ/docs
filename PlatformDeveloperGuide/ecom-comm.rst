@@ -497,7 +497,7 @@ Use
 
 A classpath variable named ``ECOM-COMM-1.1`` is available. This
 Foundation Library is always required when developing a MicroEJ
-application which communicates with some external devices using the
+Application which communicates with some external devices using the
 serial communication mode.
 
 This library provides a set of options. Refer to the chapter

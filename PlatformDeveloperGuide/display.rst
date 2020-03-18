@@ -686,7 +686,7 @@ the ``hardwareAccelerator`` property value (see
    to implement a function. If not, the software algorithm will be used.
 
 The available list of supported hardware accelerators is MicroEJ
-architecture dependent. For instance, the STMicroelectronics Chrom-ART
+Architecture dependent. For instance, the STMicroelectronics Chrom-ART
 Graphics Accelerator is only available for the MicroEJ Architecture for
 Cortex-M4 and Cortex-M7. The Renesas Graphics Library RGA is only
 available for the MicroEJ Architecture for Cortex-A9. The following

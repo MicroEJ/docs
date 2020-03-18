@@ -4,7 +4,7 @@ MicroEJ Applications
 ====================
 
 MicroEJ Applications are developed as standard Java applications on
-Eclipse JDT, using Foundation Libraries. MicroEJ workbench allows you to
+Eclipse JDT, using Foundation Libraries. MicroEJ Workbench allows you to
 run / debug / deploy MicroEJ Applications on a MicroEJ Platform.
 
 ..

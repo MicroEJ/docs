@@ -6,7 +6,7 @@ Principle
 ---------
 
 When the MicroEJ Platform is built, the user can compile a MicroEJ
-application on that platform. However, the result of this compilation is
+Application on that platform. However, the result of this compilation is
 not sufficient. A third-party C project is required to obtain the final
 binary file to flash on a board.
 
@@ -55,7 +55,7 @@ BSP). This information is required for building a MicroEJ Application
 that is compatible with the BSP.
 
 Some BSP files (XML files) are required to configure the MicroEJ
-platform modules. The name of these files must be ``bsp.xml``. They must
+Platform modules. The name of these files must be ``bsp.xml``. They must
 be stored in each module's configuration folder.
 
 This file must start with the node ``<bsp>``. It can contain several

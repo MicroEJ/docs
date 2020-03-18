@@ -18,7 +18,7 @@ files to be embedded in the final application binary. MicroEJ Classpath
 is made up of an ordered list of paths. A path is either a folder or a
 zip file, called a JAR file (JAR stands for Java ARchive).
 
--  :ref:`application.classpath.mapping` explains how the MicroEJ classpath is built from a
+-  :ref:`application.classpath.mapping` explains how the MicroEJ Classpath is built from a
    MicroEJ Application project.
 
 -  :ref:`section.microej.link.and.load.model` explains how the application contents is loaded from
@@ -39,7 +39,7 @@ Application Classpath
 =====================
 
 The following schema shows the classpath mapping from a MicroEJ
-application project to the MicroEJ Classpath ordered list of folders and
+Application project to the MicroEJ Classpath ordered list of folders and
 JAR files. The classpath resolution order (left to right) follows the
 project appearance order (top to bottom).
 

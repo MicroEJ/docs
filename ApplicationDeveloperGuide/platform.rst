@@ -5,7 +5,7 @@ Download and Install a MicroEJ Platform
 
 MicroEJ SDK being a cross development tool, it does not build software
 targeted to your host desktop platform. In order to run MicroEJ
-applications, a target hardware is required. Several commercial targets
+Applications, a target hardware is required. Several commercial targets
 boards from main MCU/MPU chip manufacturers can be prepared to run
 MicroEJ Applications, you can also run your applications without one of
 these boards with the help of a MicroEJ Simulator.

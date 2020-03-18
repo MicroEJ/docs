@@ -10,7 +10,7 @@ The Font Engine is composed of:
    Generator."
 
 -  A "Font Designer" module: a graphical tool which runs within the
-   MicroEJ workbench used to build and edit MicroUI fonts; it stores
+   MicroEJ Workbench used to build and edit MicroUI fonts; it stores
    fonts in a platform-independent format.
 
 -  A "Font Generator" module, for converting fonts from the

@@ -13,7 +13,7 @@ loading of images without using the Image Generator (see
 :ref:`section_image_generator`). The two main advantages are:
 
 -  The original image is embedded as a resource with the MicroEJ
-   application.
+   Application.
 
 -  The original image size in bytes is often smaller than a
    pre-generated image (especially in PNG mode).
@@ -34,7 +34,7 @@ Process overview (see too :ref:`section_image_core_process`)
 1. The user specifies the images to embed as regular resources.
 
 2. The original files are embedded as resources with the MicroEJ
-   application. The original files' data are linked into the FLASH
+   Application. The original files' data are linked into the FLASH
    memory.
 
 3. When the Image Engine Core calls the decoder to load an image, it

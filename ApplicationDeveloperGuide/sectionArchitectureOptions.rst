@@ -196,7 +196,7 @@ Option(checkbox): Use target characteristics
 *Description*:
 
 When selected, this option forces the MicroEJ Simulator to use the MicroEJ
-platform exact characteristics. It sets the MicroEJ Simulator scheduling policy
+Platform exact characteristics. It sets the MicroEJ Simulator scheduling policy
 according to the MicroEJ Platform one. It forces resources to be explicitly
 specified. It enables log trace and gives information about the RAM memory size
 the MicroEJ Platform uses.
