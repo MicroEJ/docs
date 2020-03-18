@@ -30,7 +30,7 @@ Headless Build
 Runtime Environment
 -------------------
 
-All firmwares define a runtime environment which is the set of classes,
+A Firmware define a runtime environment which is the set of classes,
 methods and fields all applications are allowed to use. In most of the
 cases the runtime environment is an aggregation of several kernel APIs
 built with the EasyAnt build type ``build-runtime-api``.
