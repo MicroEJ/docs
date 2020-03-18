@@ -8,8 +8,8 @@ System Requirements
 - **Intel x64 PC with minimum :**
    - Dual-core Core i5 processor
    - 4GB RAM
-   - 4GB Disk for MicroEJ SDK
-   - 1GB Disk for MicroEJ Studio
+   - 2GB Disk
+
 - **Operating Systems :**
    - Windows 10, Windows 8.1, Windows 8, Windows 7, Windows Vista or Windows XP SP3
    - Linux distributions (tested on Ubuntu 12.04 and Ubuntu 14.04)
