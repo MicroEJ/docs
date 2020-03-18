@@ -5,9 +5,10 @@ Kernel Developer Guide
    :maxdepth: 3
 
    overview
+   kf
    gettingStarted
    buildType
-   kf
+   kernelAPI
    featuresCommunication
    apiDocumentation
    kfEnabledLibraries

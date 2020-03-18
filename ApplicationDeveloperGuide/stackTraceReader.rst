@@ -1,14 +1,48 @@
 .. _section.stacktrace.reader.tool:
 
+.. _stack_trace_reader:
+
+==================
 Stack Trace Reader
 ==================
 
-When an application is deployed on a device, stack traces dumped on
-standard output are not directly readable: non required types (see
-:ref:`section.classpath.elements.types`) names, methods names and
-methods line numbers may not have been embedded to save code space. A
-stack trace dumped on the standard output can be decoded using the Stack
-Trace Reader tool.
+Principle
+=========
+
+Stack Trace Reader is a MicroEJ tool which reads and decodes the MicroEJ
+stack traces. When an exception occurs, the MicroEJ Core Engine prints
+the stack trace on the standard output ``System.out``. The class names,
+non required types (see :ref:`section.classpath.elements.types`) names
+and method names obtained are encoded with a MicroEJ internal format.
+This internal format prevents the embedding of all class names and
+method names in the flash, in order to save some memory space. The Stack
+Trace Reader tool allows you to decode the stack traces by replacing the
+internal class names and method names with their real names. It also
+retrieves the line number in the MicroEJ Application.
+
+Functional Description
+======================
+
+The Stack Trace Reader reads the debug info from the fully linked ELF
+file (the ELF file that contains the MicroEJ Core Engine, the other
+libraries, the BSP, the OS, and the compiled MicroEJ Application). It
+prints the decoded stack trace.
+
+
+Dependencies
+============
+
+No dependency.
+
+
+Installation
+============
+
+This tool is a built-in platform tool.
+
+
+Use
+===
 
 Write a new line to dump the currently executed stack trace on the
 standard output.
@@ -141,6 +175,11 @@ Other debug information files can be appended using the
 decoded with the firwmare debug information file (optionally made
 available by your firmware provider).
 
+
+The following section explains MicroEJ tool options.
+
+
+.. include:: stackTraceReader_use.rst
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

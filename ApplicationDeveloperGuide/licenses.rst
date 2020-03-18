@@ -6,7 +6,7 @@ Licenses
 Overview
 --------
 
-MicroEJ architectures and platforms are associated with a license. The
+MicroEJ Architectures and Platforms are associated with a license. The
 license type depends on the platform usage level (license key for an
 evaluation version, hardware dongle for a development version). Refer to
 the platform specific documentation to learn more details about the
@@ -190,7 +190,7 @@ USB Dongles Recognition
 This section contains instructions that will allow to check that your
 hardware dongle is actually recognized by your operating system
 
-GNU/Linux troubleshooting
+GNU/Linux Troubleshooting
 """""""""""""""""""""""""
 
 USB
@@ -220,7 +220,7 @@ command. The output of the command should contain a line similar to the
 one below for each dongle :
 ``Bus 002 Device 003: ID 096e:0006 Feitian Technologies, Inc.``
 
-Windows troubleshooting
+Windows Troubleshooting
 """""""""""""""""""""""
 
 For Windows users, each dongle shall be recognized with the following

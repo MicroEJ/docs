@@ -3,14 +3,14 @@
 Multi-Sandbox Enabled Libraries
 ===============================
 
-A multi-Sandbox enabled library is a foundation or add-on library which can
+A multi-Sandbox enabled library is a foundation or Add-On Library which can
 be embedded into the kernel and exposed as API. MicroEJ foundation
 libraries provided in MicroEJ SDK are already multi-Sandbox enabled. A
 stateless library - i.e. a library that does not contain any method
 modifying an internal global state - is multi-Sandbox enabled by default.
 
 This section details the multi-Sandbox semantic that have been added to
-MicroEJ foundation libraries in order to be multi-Sandbox enabled.
+MicroEJ Foundation Libraries in order to be multi-Sandbox enabled.
 
 MicroUI
 ~~~~~~~

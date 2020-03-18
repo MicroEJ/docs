@@ -2,12 +2,11 @@ MicroEJ
 =======
 
 .. toctree::
-    :maxdepth: 2
     :hidden:
 
     overview
     ApplicationDeveloperGuide/index
-    DeviceDeveloperGuide/index
+    PlatformDeveloperGuide/index
     KernelDeveloperGuide/index
 
 ..

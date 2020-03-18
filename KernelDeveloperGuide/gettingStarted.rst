@@ -52,7 +52,7 @@ Build the Firmware
 ~~~~~~~~~~~~~~~~~~
 
 In the Package Explorer, right-click on the firmware project and select
-:guilabel:`Build with EasyAnt`. The build of the firmware and virtual
+:guilabel:`Build Module`. The build of the firmware and virtual
 device may take several minutes. When the build is succeed, the folder
 ``myfirmware > target~ > artifacts`` contains the firmware output artifacts
 (see :ref:`in_out_artifacts`) :

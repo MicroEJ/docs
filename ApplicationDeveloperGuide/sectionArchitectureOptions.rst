@@ -184,7 +184,7 @@ Group: Options
 
 *Description*:
 
-This group specifies options for MicroEJ simulator.
+This group specifies options for MicroEJ Simulator.
 
 Option(checkbox): Use target characteristics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -195,8 +195,8 @@ Option(checkbox): Use target characteristics
 
 *Description*:
 
-When selected, this option forces the MicroEJ simulator to use the MicroEJ
-platform exact characteristics. It sets the MicroEJ simulator scheduling policy
+When selected, this option forces the MicroEJ Simulator to use the MicroEJ
+platform exact characteristics. It sets the MicroEJ Simulator scheduling policy
 according to the MicroEJ Platform one. It forces resources to be explicitly
 specified. It enables log trace and gives information about the RAM memory size
 the MicroEJ Platform uses.
@@ -216,9 +216,9 @@ Option(text): Slowing factor (0 means disabled)
 *Format:* Positive ``integer``
 
 
-This option allows the MicroEJ simulator to be slowed down in order to match
+This option allows the MicroEJ Simulator to be slowed down in order to match
 the MicroEJ Platform execution speed. The greater the slowing factor, the
-slower the MicroEJ simulator runs.
+slower the MicroEJ Simulator runs.
 
 Group: HIL Connection
 ---------------------
@@ -226,7 +226,7 @@ Group: HIL Connection
 *Description*:
 
 This group enables the control of HIL (Hardware In the Loop) connection
-parameters (connection between MicroEJ simulator and the mocks).
+parameters (connection between MicroEJ Simulator and the Mocks).
 
 Option(checkbox): Specify a port
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -256,7 +256,7 @@ Option(text): HIL connection port
 *Values:* [1024-65535]
 
 
-It specifies the port used by the MicroEJ simulator to accept HIL connections.
+It specifies the port used by the MicroEJ Simulator to accept HIL connections.
 
 Option(text): HIL connection timeout
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -271,7 +271,7 @@ Option(text): HIL connection timeout
 *Format:* Positive ``integer``
 
 
-It specifies the time the MicroEJ simulator should wait before failing when
+It specifies the time the MicroEJ Simulator should wait before failing when
 it invokes native methods.
 
 Group: Shielded Plug server configuration
@@ -317,7 +317,7 @@ Option(checkbox): Activate code coverage analysis
 
 *Description*:
 
-When selected it enables the code coverage analysis by the MicroEJ simulator.
+When selected it enables the code coverage analysis by the MicroEJ Simulator.
 Resulting files are output in the cc directory inside the output directory.
 
 Option(text): Saving coverage information period (in sec.)
@@ -389,7 +389,7 @@ Option(checkbox): Activate heap dumper
 *Description*:
 
 When selected, this option enables a dump of the heap each time the System.gc()
-method is called by the MicroEJ application.
+method is called by the MicroEJ Application.
 
 Category: Logs
 --------------
@@ -405,7 +405,7 @@ Group: Logs
 
 *Description*:
 
-This group defines parameters for MicroEJ simulator log activity. Note that
+This group defines parameters for MicroEJ Simulator log activity. Note that
 logs can only be generated if the ``Simulator > Use target characteristics``
 option is selected.
 
@@ -775,7 +775,7 @@ Group: External Resources Loader
 
 This group allows to specify the external resources input folder. The content
 of this folder will be copied in an application output folder and used by
-SOAR and the simulator. If empty, the default location will be [output
+SOAR and the Simulator. If empty, the default location will be [output
 folder]/externalResources, where [output folder] is the location defined in
 Execution tab.
 
@@ -943,20 +943,20 @@ Category: Deploy
 
 *Description*:
 
-Configures the output location where store the MicroEJ application, the MicroEJ
+Configures the output location where store the MicroEJ Application, the MicroEJ
 platform libraries and header files.
 
 Group: Configuration
 ^^^^^^^^^^^^^^^^^^^^
 
-Option(checkbox): Deploy the compiled MicroEJ application in a folder in MicroEJ application main class project
+Option(checkbox): Deploy the compiled MicroEJ Application in a folder in MicroEJ Application main class project
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 *Default value*: ``true``
 
 *Description*:
 
-Deploy the compiled MicroEJ application in a folder in MicroEJ application's
+Deploy the compiled MicroEJ Application in a folder in MicroEJ Application's
 main class project.
 
 Option(browse): Output file
@@ -968,7 +968,7 @@ Option(browse): Output file
 
 *Description*:
 
-Choose an output file location where copy the compiled MicroEJ application.
+Choose an output file location where copy the compiled MicroEJ Application.
 
 Category: Feature
 =================

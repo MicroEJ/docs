@@ -167,16 +167,14 @@ def get_project_name():
     This environment variable can also be defined on Read the Docs.
     """
     docset = os.environ.get('MICROEJ_DOCSET', None)
-    if docset == 'SandboxedAppDevGuide':
-        return 'Sandboxed Application Developer Guide'
-    elif docset == 'StandaloneAppDevGuide':
-        return 'Standalone Application Developer Guide'
-    elif docset == 'ApplicationDeveloperGuide':
+    if docset == 'ApplicationDeveloperGuide':
         return 'Application Developer Guide'
-    elif docset == 'DeviceDeveloperGuide':
-        return 'Device Developer Guide'
+    elif docset == 'PlatformDeveloperGuide':
+        return 'Platform Developer Guide'
     elif docset == 'KernelDeveloperGuide':
         return 'Kernel Developer Guide'
+    elif docset == 'overview':
+        return 'Overview'
     elif docset == 'Landing':
         return 'MicroEJ Documentation'
 

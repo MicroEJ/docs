@@ -1,13 +1,26 @@
-Heap Analyzer
-=============
+Heap Dumper & Heap Analyzer
+===========================
 
 Introduction
 ------------
 
+Heap Dumper is a tool that takes a snapshot of the heap. Generated files
+(with the ``.heap`` extension) are available on the application output
+folder. Note that it works only on simulations. It is a built-in platform tool and has no dependencies.
+
 The Heap Analyzer is a set of tools to help developers understand the
 contents of the Java heap and find problems such as memory leaks.
+For its part, the Heap Analyzer plug-in is able to open dump files. It
+helps you analyze their contents thanks to the following features:
 
-The heap
+-  memory leaks detection
+
+-  objects instances browse
+
+-  heap usage optimization (using immortal or immutable objects)
+
+
+The Heap
 ~~~~~~~~
 
 The heap is a memory area used to hold Java objects created at runtime.
@@ -15,7 +28,7 @@ Objects persist in the heap until they are garbage collected. An object
 becomes eligible for garbage collection when there are no longer any
 references to it from other objects.
 
-Heap dump
+Heap Dump
 ~~~~~~~~~
 
 A heap dump is an XML file that provides a snapshot of the heap contents
@@ -44,7 +57,7 @@ For instances of array types, it also records:
 For each referenced class type it records the values in the static
 fields of the class.
 
-Heap Analyzer tools
+Heap Analyzer Tools
 ~~~~~~~~~~~~~~~~~~~
 
 The Heap Analyzer is an Eclipse plugin that adds three tools to the
@@ -70,8 +83,45 @@ MicroEJ environment.
     |                       |               | values                        |
     +-----------------------+---------------+-------------------------------+
 
+Heap Dumper
+-----------
+
+When the Heap Dumper option is activated, the garbage collector process
+ends by performing a dump file that represent a snapshot of the heap at
+this moment. Thus, to generate such dump files, you must explicitly call
+the System.gc() method in your code, or wait long enough for garbage
+collector activation.
+
+The heap dump file contains the list of all instances of both class and
+array types that exist in the heap. For each instance it records:
+
+-  the time at which the instance was created
+
+-  the thread that created it
+
+-  the method that created it
+
+For instances of class types, it also records:
+
+-  the class
+
+-  the values in the instance’s non-static fields
+
+For instances of array types, it also records:
+
+-  the type of the contents of the array
+
+-  the contents of the array
+
+For each referenced class type, it records the values in the static
+fields of the class.
+
+
+.. include:: heapdumper_use.rst
+
+
 Heap Viewer
-~~~~~~~~~~~
+-----------
 
 To open the Heap Viewer tool, select a heap dump XML file in the :guilabel:`Package
 Explorer`, right-click on it and select :guilabel:`Open With` > :guilabel:`Heap Viewer`
@@ -94,7 +144,7 @@ The Heap Viewer tool has three tabs, each described below.
    Although this is an Eclipse ‘editor’, it is not possible to edit the
    contents of the heap dump.
 
-Outline view
+Outline View
 ~~~~~~~~~~~~
 
 The Outline view shows a list of all the types in the heap dump, and for
@@ -111,7 +161,7 @@ is opened.
 
    Outline View
 
-Instance Browser view
+Instance Browser View
 ~~~~~~~~~~~~~~~~~~~~~
 
 The Instance Browser view opens automatically when a type or instance is
@@ -138,7 +188,7 @@ selected instance, and the instances that refer to them, and so on.
 
    Instance Browser View - References mode
 
-Heap usage tab
+Heap Usage Tab
 ~~~~~~~~~~~~~~
 
 The Heap usage page of the Heap Viewer displays four bar charts. Each
@@ -185,7 +235,7 @@ Usage page generates a file compatible with graphviz (www.graphviz.org).
    instances option on the drop-down menu at the top of the Outline
    view.
 
-Dominator tree tab
+Dominator Tree Tab
 ~~~~~~~~~~~~~~~~~~
 
 The Dominator tree page of the Heap Viewer allows the user to browse the
@@ -217,7 +267,7 @@ view.
 
    Heap Viewer - Dominator Tree Tab
 
-Leak suspects tab
+Leak Suspects Tab
 ~~~~~~~~~~~~~~~~~
 
 The Leak suspects page of the Heap Viewer shows the result of applying
@@ -324,7 +374,7 @@ various ways:
    that exist in both the old and new dumps and have one or more
    differences in the values of their fields.
 
-Instance Fields Comparison view
+Instance Fields Comparison View
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Compare tool works in conjunction with the Instance Fields

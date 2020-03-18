@@ -5,7 +5,7 @@ Introduction
 
 The following sections of this document shall prove useful as a
 reference when developing applications for MicroEJ. They cover concepts
-essential to MicroEJ applications design.
+essential to MicroEJ Applications design.
 
 In addition to these sections, by going to
 :http:`https://developer.microej.com/`, you can access a number of helpful

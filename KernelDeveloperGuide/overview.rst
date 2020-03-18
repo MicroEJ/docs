@@ -76,7 +76,7 @@ Overall Architecture
    Firmware Input and Output Artifacts
 
 
-Firmware implementation libraries
+Firmware Implementation Libraries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Firmware implementations must cover the following topics:
@@ -93,7 +93,7 @@ Firmware implementations must cover the following topics:
 -  The applications management infrastructure: how application code is
    stored in memory and how the lifecycle of the code is implemented.
    Again, this has multiple alternative implementations, and the right
-   artifact must be selected at build time to cover the specific
+   module must be selected at build time to cover the specific
    firmware needs.
 
 -  The simulation support: how the Virtual Device implementation
@@ -115,13 +115,13 @@ Firmware implementations must cover the following topics:
    extending them with feature that are specific to the firmware, like
    deployment of an application, a management console, ...
 
--  System applications: pre-built applications that can be embedded as
+-  System Applications: pre-built applications that can be embedded as
    resident apps into a firmware. Some of them are user-land counter
    parts of the Kernel, implementing the application lifecycle for the
    firmware's application framework (e.g. the Wadapps Framework). These
-   "kernel system applications" rely on a dedicated set of interfaces to
+   "Kernel System Applications" rely on a dedicated set of interfaces to
    interact with the Kernel, this interface being defined in a dedicated
-   artifact.
+   module.
 
 
 Firmware Build Flow
@@ -146,7 +146,7 @@ following steps:
 -  Remove the embedded part of the platform (compiler, linker and
    runtime).
 
--  Append Add-on libraries and Resident Applications into the runtime
+-  Append Add-On Libraries and Resident Applications into the runtime
    classpath. (See :ref:`ivy_confs`) for specifying the
    dependencies).
 
