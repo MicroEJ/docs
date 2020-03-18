@@ -93,7 +93,7 @@ Firmware implementations must cover the following topics:
 -  The applications management infrastructure: how application code is
    stored in memory and how the lifecycle of the code is implemented.
    Again, this has multiple alternative implementations, and the right
-   artifact must be selected at build time to cover the specific
+   module must be selected at build time to cover the specific
    firmware needs.
 
 -  The simulation support: how the Virtual Device implementation
@@ -121,7 +121,7 @@ Firmware implementations must cover the following topics:
    firmware's application framework (e.g. the Wadapps Framework). These
    "Kernel System Applications" rely on a dedicated set of interfaces to
    interact with the Kernel, this interface being defined in a dedicated
-   artifact.
+   module.
 
 
 Firmware Build Flow

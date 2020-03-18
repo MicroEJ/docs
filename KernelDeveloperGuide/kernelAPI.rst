@@ -14,10 +14,10 @@ These files are packaged as MicroEJ modules under the `com/microej/kernelapi <ht
 The packaged file ``kernel.api`` can be extracted from the JAR file and edited
 in order to keep only desired types, methods and fields.
 
-Build a Kernel API Artifact
----------------------------
+Build a Kernel API Module
+-------------------------
 
--  Generates the skeleton project: Select
+-  Generate the skeleton project: Select
    :guilabel:`File` > :guilabel:`New` > :guilabel:`Other...` > :guilabel:`Easyant` > :guilabel:`Easyant Project`, select and
    configure the ``com.is2t.easyant.skeletons#microej-kernelapi;+``
    skeleton, and press :guilabel:`Finish` button.
@@ -26,13 +26,14 @@ Build a Kernel API Artifact
 
 -  Right-click on the project and select :guilabel:`Build with EasyAnt`.
 
-MicroEJ provides a tool which generates a ``kernel.api`` file based on a
-java classpath.
-
 Kernel API Generator
 --------------------
 
-Create a new MicroEJ Tool launch,
+MicroEJ Kernel API Generator is a tool that help to generate a ``kernel.api`` file based on a
+Java classpath.
+
+
+In MicroEJ SDK, create a new MicroEJ Tool launch,
 :guilabel:`Run` > :guilabel:`Run Configurations` > :guilabel:`MicroEJ Tool`, choose your Platform,
 select :guilabel:`Kernel API Generator` for the :guilabel:`Settings` options, and don't
 forget to set the output folder.
