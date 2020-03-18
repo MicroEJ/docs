@@ -24,7 +24,7 @@ Build a Kernel API Module
 
 -  Create the ``kernel.api`` file into the ``src`` folder.
 
--  Right-click on the project and select :guilabel:`Build with EasyAnt`.
+-  Right-click on the project and select :guilabel:`Build Module`.
 
 Kernel API Generator
 --------------------

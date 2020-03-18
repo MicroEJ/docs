@@ -79,7 +79,7 @@ class is created with a default failing test case.
 Build and Run a JUnit Testsuite
 -------------------------------
 
-Right-click on the ``mylibrary`` project and select :guilabel:`Build with EasyAnt`.
+Right-click on the ``mylibrary`` project and select :guilabel:`Build Module`.
 After the library is built, the testsuite engine launches available test cases
 and the build process fails in the console view.
 
@@ -102,7 +102,7 @@ with
 
    Assert.assertTrue(true);
 
-Right-click again on the ``mylibrary`` project and select :guilabel:`Build with EasyAnt`.
+Right-click again on the ``mylibrary`` project and select :guilabel:`Build Module`.
 The test is now successfully executed on the target platform so the MicroEJ Add-On Library is fully built and published without errors.
 
 Double-click on the JUnit testsuite report to see the test has been
