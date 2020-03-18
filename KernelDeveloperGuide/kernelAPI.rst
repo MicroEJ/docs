@@ -3,8 +3,7 @@
 Writing Kernel APIs
 ===================
 
-This section lists different ways to help to write ``kernel.api`` files
-(see XXX).
+This section lists different ways to help to write ``kernel.api`` files.
 
 Default Kernel APIs Derivation
 ------------------------------
