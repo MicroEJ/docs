@@ -17,7 +17,7 @@ preinstalled) are "code extensions" (called "Features"), that are called
 by the Kernel. These Features are fully controlled by the Kernel: they
 can be installed, started, stopped and uninstalled at any time
 independently of the system state (particularily, a Feature never
-depends on an other Feature to be stopped)!
+depends on an other Feature to be stopped).
 
 The complete KF specification is available at `<http://www.e-s-r.net/download/specification/ESR-SPE-0020-KF-1.4-F.pdf>`_
 
