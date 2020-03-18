@@ -7,11 +7,11 @@ Development Tools
    testsuite
    fontDesigner
    stackTraceReader
-   cca
+   codeCoverageAnalyzer
    heapAnalyzer
-   elftomap
+   elfToMapGenerator
    serialToSocketTransmitter
-   mma
+   memoryMapAnalyzer
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
