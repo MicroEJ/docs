@@ -18,7 +18,7 @@ The first step is to create a MicroEJ Platform configuration:
    changed later.
 
    -  Click on Browse... to select one of the installed MicroEJ
-      architecture.
+      Architecture.
 
    -  Check the Create from a platform reference implementation box to
       use one of the available implementation. Uncheck it if you want to

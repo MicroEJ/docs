@@ -2,12 +2,13 @@ MicroEJ
 =======
 
 .. toctree::
-    :hidden:
+   :hidden:
 
-    overview
-    ApplicationDeveloperGuide/index
-    PlatformDeveloperGuide/index
-    KernelDeveloperGuide/index
+   Glossary <glossary>
+   overview
+   ApplicationDeveloperGuide/index
+   PlatformDeveloperGuide/index
+   KernelDeveloperGuide/index
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

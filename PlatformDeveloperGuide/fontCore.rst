@@ -41,7 +41,7 @@ Process overview:
    raw format is display device-dependent).
 
 5. The raw files are embedded as (hidden) resources within the MicroEJ
-   application. The raw files' data are linked into the FLASH memory.
+   Application. The raw files' data are linked into the FLASH memory.
 
 6. When the MicroEJ Application creates a MicroUI DisplayFont object
    which targets a pre-generated image, the Font Engine Core only has to
@@ -275,7 +275,7 @@ When a font is located in such memory, the Font Engine Core copies a
 very short part of the resource (the font file) into a RAM memory (into
 CPU addresses space range): the font header. This header stays located
 in RAM during the full MicroEJ Application time. Then, on MicroEJ
-application demand, the Font Engine Core loads some extra information
+Application demand, the Font Engine Core loads some extra information
 from the font into the RAM memory (the font meta data, the font pixels,
 etc.). This extra information is automatically unloaded from RAM when
 the Font Engine Core no longer needs them.

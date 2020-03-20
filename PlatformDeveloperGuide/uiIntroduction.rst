@@ -49,7 +49,7 @@ For the MicroEJ Simulator, the platform is supplied with a set of
 software widgets that generically support a range of input devices, such
 as buttons, joysticks and touchscreens, and output devices such as
 pixelated displays and LEDs. With the help of the Front Panel Designer
-tool that forms part of the MicroEJ workbench the user must define a
+tool that forms part of the MicroEJ Workbench the user must define a
 front panel mock-up using these widgets. The user must provide a set of
 listeners that connects the input widgets to event generators. The user
 may choose to simulate events that will ultimately come from a

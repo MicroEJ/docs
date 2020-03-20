@@ -28,12 +28,12 @@ XML file description to describe the database; the syntax follows the
 one proposed by the SP specification [SP].
 
 Once this database is defined, it can be accessed within the MicroEJ
-application or the C application. The SP Foundation Library is
+Application or the C application. The SP Foundation Library is
 accessible from the classpath variable ``SP-2.0``. This library contains
 the classes and methods to read and write data in the database. See also
-the Java documentation from the MicroEJ workbench resources center
+the Java documentation from the MicroEJ Workbench resources center
 ("Javadoc" menu). The C header file sp.h available in the MicroEJ
-platform ``source/MICROJVM/include`` folder contains the C functions for
+Platform ``source/MICROJVM/include`` folder contains the C functions for
 accessing the database.
 
 To embed the SP database in your binary file, the XML file description

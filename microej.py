@@ -175,6 +175,8 @@ def get_project_name():
         return 'Kernel Developer Guide'
     elif docset == 'overview':
         return 'Overview'
+    elif docset == 'glossary':
+        return 'Glossary'
     elif docset == 'Landing':
         return 'MicroEJ Documentation'
 

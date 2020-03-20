@@ -23,7 +23,7 @@ remaining steps are performed within the C IDE.
    architecture, metadata, etc.).
 
 2. Step 2 allows you to select which modules available in MicroEJ
-   architecture will be installed in the MicroEJ Platform.
+   Architecture will be installed in the MicroEJ Platform.
 
 3. Step 3 builds the MicroEJ Platform according to the choices made in
    steps 1 and 2.
@@ -32,7 +32,7 @@ remaining steps are performed within the C IDE.
    order to obtain an application file to link in the BSP.
 
 5. Step 5 consists in compiling the BSP and linking it with the MicroEJ
-   application that was built previously, in step 4.
+   Application that was built previously, in step 4.
 
 6. Step 6 is the final step: Deploy the binary application onto a board.
 

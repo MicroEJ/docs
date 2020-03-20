@@ -26,8 +26,8 @@ replacement for the [SNI] interface.
 
 The "simulated C world" is made of Mocks that simulate native code (such
 as drivers and any other kind of C libraries), so that the MicroEJ
-application can behave the same as the device using the MicroEJ
-platform.
+Application can behave the same as the device using the MicroEJ
+Platform.
 
 The MicroEJ Simulator and the HIL are two processes that run in
 parallel:  the communication between them is through a socket

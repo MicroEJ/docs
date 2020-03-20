@@ -8,7 +8,7 @@ Principle
 
 A *resource* is, for a MicroEJ Application, the contents of a file. This
 file is known by its path (its relative path from the MicroEJ
-application classpath) and its name. The file may be stored in RAM,
+Application classpath) and its name. The file may be stored in RAM,
 flash, or external flash; and it is the responsibility of the MicroEJ
 Core Engine and/or the BSP to retrieve and load it.
 
@@ -34,7 +34,7 @@ MicroEJ Platform makes the distinction between two kinds of resources:
 
    The BSP must implement some specific Low Level API (LLAPI) C
    functions: ``LLEXT_RES_impl.h``. These functions allow the MicroEJ
-   application to load some external resources.
+   Application to load some external resources.
 
 
 Functional Description
@@ -143,7 +143,7 @@ Use
 ===
 
 The External Resources Loader is automatically used when the MicroEJ
-application tries to open an external resource.
+Application tries to open an external resource.
 
 
 ..
