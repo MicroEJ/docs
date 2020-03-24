@@ -1,27 +1,16 @@
-.. _device.developer.guide:
-
-Platform Developer Guide
-========================
+Overview
+========
 
 .. toctree::
-   :maxdepth: 3
 
-   intro
-   platform
-   mjvm
-   kf
-   tiny
-   native
-   loader
-   ecom
-   ui
-   net
-   fs
-   hal
-   device
-   simulation
-   limitations
-   appendix/index
+   editions
+   runtime
+   esr
+   firmware
+   sdk
+   studio
+   gettingStarted
+   systemRequirements
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

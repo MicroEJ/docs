@@ -280,24 +280,8 @@ This is an example of a dump:
 See :ref:`stack_trace_reader` for additional info related to working
 with VM dumps.
 
-
-.. _mjvm_javalanguage:
-
-Java Language
-=============
-
-The MicroEJ Core Engine is compatible with the Java language version 7.
-
-
 SOAR
 ====
-
-Java source code is compiled by the Java compiler [1]_ into the binary
-format specified in [JVM]. This binary code needs to be linked before
-execution. The MicroEJ Platform comes with a linker, named the SOAR. It
-is in charge of analyzing ``.class`` files, and some other
-application-related files, to produce the final application that the
-MicroEJ Platform runtime can execute.
 
 SOAR complies with the deterministic class initialization (``<clinit>``)
 order specified in [B-ON]. The application is statically analyzed from
@@ -331,49 +315,6 @@ beside the SOAR object file. It describes for each clinit dependency:
 
 -  the stack calls between the two types
 
-.. [1]
-   The JDT compiler from the Eclipse IDE.
-
-
-.. _mjvm_javalibs:
-
-Foundation Libraries
-====================
-
-Embedded Device Configuration (EDC)
------------------------------------
-
-The Embedded Device Configuration specification defines the minimal
-standard runtime environment for embedded devices. It defines all
-default API packages:
-
--  java.io
-
--  java.lang
-
--  java.lang.annotation
-
--  java.lang.ref
-
--  java.lang.reflect
-
--  java.util
-
-Beyond Profile (B-ON)
----------------------
-
-B-ON defines a suitable and flexible way to fully control both memory
-usage and start-up sequences on devices with limited memory resources.
-It does so within the boundaries of Java semantics. More precisely, it
-allows:
-
--  Controlling the initialization sequence in a deterministic way.
-
--  Defining persistent, immutable, read-only objects (that may be placed
-   into non-volatile memory areas), and which do not require copies to
-   be made in RAM to be manipulated.
-
--  Defining immortal, read-write objects that are always alive.
 
 
 Properties

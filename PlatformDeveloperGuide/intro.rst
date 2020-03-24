@@ -35,7 +35,7 @@ runtime associated with a Garbage Collector. It provides four built-in
 Foundation Libraries :
 
 -  [B-ON]
--  [EDC]
+-  EDC
 -  [SNI]
 -  [SP]
 
@@ -75,37 +75,6 @@ modules to extend the kernel:
 Each additional module is optional and selected on demand during the
 MicroEJ Platform configuration.
 
-Scheduler
----------
-
-The MicroEJ Architecture features a green thread platform that can
-interact with the C world [SNI]. The (green) thread policy is as
-follows:
-
--  preemptive for different priorities,
-
--  round-robin for same priorities,
-
--  "priority inheritance protocol" when priority inversion occurs.  [1]_
-
-MicroEJ stacks (associated with the threads) automatically adapt their
-sizes according to the thread requirements: Once the thread has
-finished, its associated stack is reclaimed, freeing the corresponding
-RAM memory.
-
-Garbage Collector
------------------
-
-The MicroEJ Architecture includes a state-of-the-art memory management
-system, the Garbage Collector (GC). It manages a bounded piece of RAM
-memory, devoted to the Java world. The GC automatically frees dead Java
-objects, and defragments the memory in order to optimize RAM usage. This
-is done transparently while the MicroEJ Applications keep running.
-
-.. [1]
-   This protocol raises the priority of a thread (that is holding a
-   resource needed by a higher priority task) to the priority of that
-   task.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
