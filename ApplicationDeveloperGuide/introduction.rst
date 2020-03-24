@@ -19,6 +19,15 @@ resources such as:
 
 -  Documentation (HOWTOs, Reference Manuals, APIs javadoc...).
 
+
+.. _concepts-microejapplications:
+MicroEJ Applications
+--------------------
+
+MicroEJ Applications are developed as standard Java applications on
+Eclipse JDT, using Foundation Libraries. MicroEJ SDK allows you to
+run / debug / deploy MicroEJ Applications on a MicroEJ Platform.
+
 Two kinds of applications can be developed on MicroEJ: MicroEJ
 Standalone Applications and MicroEJ Sanboxed Applications.
 

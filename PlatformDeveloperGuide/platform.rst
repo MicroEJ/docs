@@ -7,7 +7,6 @@ MicroEJ Platform
 
    platformOverview
    platformConcepts
-   platformApplications
    launches
    platformTools
    gettingstarted
