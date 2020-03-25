@@ -8,7 +8,6 @@ MicroEJ Platform
    platformOverview
    platformConcepts
    launches
-   platformTools
    gettingstarted
 
 ..
