@@ -1,4 +1,5 @@
 .. _Standalone_vs_Sandboxed:
+.. _concepts-microejapplications:
 
 Introduction
 ============
@@ -19,11 +20,6 @@ resources such as:
 
 -  Documentation (HOWTOs, Reference Manuals, APIs javadoc...).
 
-
-.. _concepts-microejapplications:
-
-MicroEJ Applications
---------------------
 
 MicroEJ Applications are developed as standard Java applications on
 Eclipse JDT, using Foundation Libraries. MicroEJ SDK allows you to

@@ -167,7 +167,7 @@ Immutable Objects
 Immutables objects are regular read-only objects that can be retrieved
 with a call to ``ej.bon.Immutables.get(String)``. Immutables objects are
 declared in files called *immutable objects data files*, which format is
-described in the ``[BON]`` specification (:http:`http://e-s-r.net`).
+described in the :ref:`[BON] specification <esr-specifications>`.
 Immutables objects data files are declared in MicroEJ Classpath using
 ``*.immutables.list`` files. The file format is a standard Java
 properties file, each line is a ``/`` separated name of a relative file
@@ -187,10 +187,36 @@ call to ``System.getProperty(String)``. System properties are declared
 in MicroEJ Classpath ``*.properties.list`` files. The file format is a
 standard Java properties file. Example:
 
-::
+.. code-block:: xml
+   :caption: Example of Contents of a MicroEJ Properties File
 
    # The following property is embedded as a System property
    com.mycompany.key=com.mycompany.value
+   microedition.encoding=ISO-8859-1
+
+MicroEJ properties can also be defined using Applications Options. This
+can be done by setting the option with a specific
+prefix in their name:
+
+-  Properties for both the MicroEJ Core Engine and the MicroEJ Simulator :
+   name starts with ``microej.java.property.*``
+
+-  Properties for the MicroEJ Simulator : name starts with
+   ``sim.java.property.*``
+
+-  Properties for the MicroEJ Core Engine : name starts with
+   ``emb.java.property.*``
+
+For example, to define the property ``myProp`` with the value
+``theValue``, set the following option :
+
+.. code-block:: xml
+   :caption: Example of MicroEJ Property Definition in Launch Configuration
+
+   microej.java.property.myProp=theValue
+
+Option can also be set in the ``VM arguments`` field of the ``JRE`` tab of the launch using the -D option (e.g. ``-Dmicroej.java.property.myProp=theValue``).
+
 
 .. _section.classpath.Images:
 

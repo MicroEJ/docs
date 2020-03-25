@@ -1,3 +1,5 @@
+.. _esr-specifications:
+
 Embedded Specification Requests
 ===============================
 

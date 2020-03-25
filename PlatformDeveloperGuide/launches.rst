@@ -4,7 +4,7 @@ MicroEJ Launch
 ==============
 
 The MicroEJ launch configuration sets up the 
-:ref:`concepts-microejapplications` environment (main class,
+:ref:`MicroEJ Applications <concepts-microejapplications>` environment (main class,
 resources, target platform, and platform-specific options), and then
 launches a MicroEJ launch script for execution.
 
