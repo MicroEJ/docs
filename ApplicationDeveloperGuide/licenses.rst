@@ -28,8 +28,8 @@ Note that :
 -  Evaluation licenses will be shown only if architectures requiring an
    evaluation license are detected in your MicroEJ repository.
 
--  Development licenses will be shown only if architectures requiring a
-   development license are detected in your MicroEJ repository.
+-  Production licenses will be shown only if architectures requiring a
+   production license are detected in your MicroEJ repository.
 
 See section :ref:`gettingstarted-installlicenses` for more
 information.
@@ -116,8 +116,8 @@ following conditions:
 
 .. _gettingstarted-installlicensesdev:
 
-Development Licenses
---------------------
+Production Licenses
+-------------------
 
 This section should be considered when using development platforms,
 which use hardware license keys.
