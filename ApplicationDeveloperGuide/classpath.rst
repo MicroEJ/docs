@@ -167,7 +167,7 @@ Immutable Objects
 Immutables objects are regular read-only objects that can be retrieved
 with a call to ``ej.bon.Immutables.get(String)``. Immutables objects are
 declared in files called *immutable objects data files*, which format is
-described in the ``[B-ON]`` specification (:http:`http://e-s-r.net`).
+described in the ``[BON]`` specification (:http:`http://e-s-r.net`).
 Immutables objects data files are declared in MicroEJ Classpath using
 ``*.immutables.list`` files. The file format is a standard Java
 properties file, each line is a ``/`` separated name of a relative file

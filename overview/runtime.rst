@@ -11,7 +11,7 @@ MicroEJ is compatible with the Java language version 7.
 Java source code is compiled by the Java compiler [1]_ into the binary format specified in the JVM specification [2]_. 
 This binary code needs to be linked before execution: .class files and some other application-related files (see MicroEJ Classpath) are compiled to produce the final application that the MicroEJ Runtime can execute.
 
-MicroEJ complies with the deterministic class initialization (<clinit>) order specified in [B-ON]. The application is statically analyzed from its entry points in order to generate a clinit dependency graph. The computed clinit sequence is the result of the topological sort of the dependency graph. An error is thrown if the clinit dependency graph contains cycles.
+MicroEJ complies with the deterministic class initialization (<clinit>) order specified in [BON]. The application is statically analyzed from its entry points in order to generate a clinit dependency graph. The computed clinit sequence is the result of the topological sort of the dependency graph. An error is thrown if the clinit dependency graph contains cycles.
 
 .. [1]
    The JDT compiler from the Eclipse IDE.
@@ -75,10 +75,10 @@ default API packages:
 
 -  java.util
 
-Beyond Profile (B-ON)
+Beyond Profile (BON)
 ~~~~~~~~~~~~~~~~~~~~~
 
-B-ON defines a suitable and flexible way to fully control both memory
+BON defines a suitable and flexible way to fully control both memory
 usage and start-up sequences on devices with limited memory resources.
 It does so within the boundaries of Java semantics. More precisely, it
 allows:

@@ -284,7 +284,7 @@ SOAR
 ====
 
 SOAR complies with the deterministic class initialization (``<clinit>``)
-order specified in [B-ON]. The application is statically analyzed from
+order specified in [BON]. The application is statically analyzed from
 its entry points in order to generate a clinit dependency graph. The
 computed clinit sequence is the result of the topological sort of the
 dependency graph. An error is thrown if the clinit dependency graph
@@ -432,7 +432,7 @@ available options.
 
 Another classpath variable named ``BON-1.2`` is available. This variable
 must be added to the build path of the MicroEJ Application project in
-order to access the B-ON library.
+order to access the BON library.
 
 
 ..
