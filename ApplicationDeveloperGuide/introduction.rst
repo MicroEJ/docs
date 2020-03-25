@@ -21,6 +21,7 @@ resources such as:
 
 
 .. _concepts-microejapplications:
+
 MicroEJ Applications
 --------------------
 
