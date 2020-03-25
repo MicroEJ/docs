@@ -1,7 +1,7 @@
 Embedded Specification Requests
 ===============================
 
-MicroEJ implements the following ESR Consortium (`<www.e-s-r.net>`_) specifications:
+MicroEJ implements the following `ESR Consortium <www.e-s-r.net>`_ specifications:
 
    +------------+------------------------------------------------------------------------+
    | [BON]      | http://e-s-r.net/download/specification/ESR-SPE-0001-BON-1.2-F.pdf     |

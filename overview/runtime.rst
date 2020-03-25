@@ -13,12 +13,6 @@ This binary code needs to be linked before execution: .class files and some othe
 
 MicroEJ complies with the deterministic class initialization (<clinit>) order specified in [BON]. The application is statically analyzed from its entry points in order to generate a clinit dependency graph. The computed clinit sequence is the result of the topological sort of the dependency graph. An error is thrown if the clinit dependency graph contains cycles.
 
-.. [1]
-   The JDT compiler from the Eclipse IDE.
-
-.. [2]
-   Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
-
 Scheduler
 ---------
 
@@ -37,10 +31,6 @@ sizes according to the thread requirements: Once the thread has
 finished, its associated stack is reclaimed, freeing the corresponding
 RAM memory.
 
-.. [3]
-   This protocol raises the priority of a thread (that is holding a
-   resource needed by a higher priority task) to the priority of that
-   task.
 
 Garbage Collector
 -----------------
@@ -92,6 +82,17 @@ allows:
 -  Defining immortal, read-write objects that are always alive.
 
 - Defining and accessing compile-time constants.
+
+.. [1]
+   The JDT compiler from the Eclipse IDE.
+
+.. [2]
+   Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
+
+.. [3]
+   This protocol raises the priority of a thread (that is holding a
+   resource needed by a higher priority task) to the priority of that
+   task.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
