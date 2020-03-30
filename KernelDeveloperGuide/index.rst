@@ -1,5 +1,7 @@
+.. _kernel-developer-guide:
+
 Kernel Developer Guide
-==================================
+======================
 
 .. toctree::
    :maxdepth: 3

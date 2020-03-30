@@ -1,4 +1,4 @@
-.. _application.developer.guide:
+.. _application-developer-guide:
 
 Application Developer Guide
 ===========================
@@ -15,6 +15,7 @@ Application Developer Guide
    classpath
    tools
    advanced
+   soar
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

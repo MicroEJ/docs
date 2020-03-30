@@ -1,4 +1,4 @@
-.. _device.developer.guide:
+.. _platform-developer-guide:
 
 Platform Developer Guide
 ========================

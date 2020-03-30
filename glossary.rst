@@ -1,3 +1,5 @@
+.. _chapter-glossary:
+
 MicroEJ Glossary
 ================
 
