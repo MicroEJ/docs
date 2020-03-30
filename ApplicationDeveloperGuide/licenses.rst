@@ -6,11 +6,10 @@ Licenses
 Overview
 --------
 
-MicroEJ Architectures and Platforms are associated with a license. The
-license type depends on the platform usage level (license key for an
-evaluation version, hardware dongle for a development version). Refer to
-the platform specific documentation to learn more details about the
-licenses.
+MicroEJ Architectures are distributed in two different versions:
+
+- Evaluation Architectures, associated with a software license key 
+- Production Architectures, associated with an hardware license key stored on a USB dongle 
 
 Licenses list is available in MicroEJ preferences dialog page in :guilabel:`Window`
 > :guilabel:`Preferences` > :guilabel:`MicroEJ`
@@ -119,7 +118,7 @@ following conditions:
 Production Licenses
 -------------------
 
-This section should be considered when using development platforms,
+This section should be considered when using production platforms,
 which use hardware license keys.
 
 .. _dongles-update:
