@@ -4,7 +4,7 @@ MicroEJ Launch
 ==============
 
 The MicroEJ launch configuration sets up the 
-:ref:`concepts-microejapplications` environment (main class,
+:ref:`MicroEJ Applications <concepts-microejapplications>` environment (main class,
 resources, target platform, and platform-specific options), and then
 launches a MicroEJ launch script for execution.
 
@@ -32,7 +32,7 @@ The :guilabel:`Main` tab allows you to set in order:
    are usually loaded by the application using the
    ``Class.getResourceAsStream()`` method.
 
-5. Immutable objects' description files. See the [B-ON 1.2] ESR
+5. Immutable objects' description files. See the [BON 1.2] ESR
    documentation for use of immutable objects.
 
 .. figure:: images/mainTab.png

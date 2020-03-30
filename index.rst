@@ -5,7 +5,7 @@ MicroEJ
    :hidden:
 
    Glossary <glossary>
-   overview
+   overview/index
    ApplicationDeveloperGuide/index
    PlatformDeveloperGuide/index
    KernelDeveloperGuide/index

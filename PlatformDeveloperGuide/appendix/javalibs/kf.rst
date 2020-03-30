@@ -11,7 +11,7 @@ Definitions
 Feature Definition Files
 ------------------------
 
-A Feature is a group of types, resources and [B-ON] immutables objects
+A Feature is a group of types, resources and [BON] immutables objects
 defined using two files that shall be in application classpath:
 
 -  ``[featureName].kf``, a Java properties file. Keys are described in
@@ -30,8 +30,8 @@ defined using two files that shall be in application classpath:
    | entryPoint    | Mandatory | The fully qualified name of the class that    |
    |               |           | implements ``ej.kf.FeatureEntryPoint``        |
    +---------------+-----------+-----------------------------------------------+
-   | immutables    | Optional  | Semicolon separated list of paths to [B-ON]   |
-   |               |           | immutable files owned by the Feature. [B-ON]  |
+   | immutables    | Optional  | Semicolon separated list of paths to [BON]    |
+   |               |           | immutable files owned by the Feature. [BON]   |
    |               |           | immutable file is defined by a ``/``          |
    |               |           | separated path relative to application        |
    |               |           | classpath                                     |

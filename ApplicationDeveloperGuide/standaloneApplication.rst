@@ -6,6 +6,7 @@ Standalone Application
 
    platform
    gettingStartedApp
+   launches
    applicationOptions
 
 ..

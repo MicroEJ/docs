@@ -6,14 +6,13 @@ Platform Developer Guide
 .. toctree::
    :maxdepth: 3
 
-   start
-   intro
+   introduction
    platform
-   mjvm
-   kf
+   coreEngine
+   multiSandbox
    tiny
    native
-   loader
+   externalResourceLoader
    ecom
    ui
    net

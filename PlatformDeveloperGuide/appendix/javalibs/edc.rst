@@ -65,7 +65,7 @@ Exit Codes
 ----------
 
 The RTOS task that runs the MicroEJ runtime may end, especially when the
-MicroEJ Application calls ``System.exit`` method [EDC]. By convention, a
+MicroEJ Application calls ``System.exit`` method. By convention, a
 negative value indicates abnormal termination.  
 
 .. table:: MicroEJ Platform exit codes

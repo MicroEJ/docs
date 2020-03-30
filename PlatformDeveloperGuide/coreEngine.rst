@@ -280,27 +280,11 @@ This is an example of a dump:
 See :ref:`stack_trace_reader` for additional info related to working
 with VM dumps.
 
-
-.. _mjvm_javalanguage:
-
-Java Language
-=============
-
-The MicroEJ Core Engine is compatible with the Java language version 7.
-
-
 SOAR
 ====
 
-Java source code is compiled by the Java compiler [1]_ into the binary
-format specified in [JVM]. This binary code needs to be linked before
-execution. The MicroEJ Platform comes with a linker, named the SOAR. It
-is in charge of analyzing ``.class`` files, and some other
-application-related files, to produce the final application that the
-MicroEJ Platform runtime can execute.
-
 SOAR complies with the deterministic class initialization (``<clinit>``)
-order specified in [B-ON]. The application is statically analyzed from
+order specified in [BON]. The application is statically analyzed from
 its entry points in order to generate a clinit dependency graph. The
 computed clinit sequence is the result of the topological sort of the
 dependency graph. An error is thrown if the clinit dependency graph
@@ -330,88 +314,6 @@ beside the SOAR object file. It describes for each clinit dependency:
 -  the kind of dependency
 
 -  the stack calls between the two types
-
-.. [1]
-   The JDT compiler from the Eclipse IDE.
-
-
-.. _mjvm_javalibs:
-
-Foundation Libraries
-====================
-
-Embedded Device Configuration (EDC)
------------------------------------
-
-The Embedded Device Configuration specification defines the minimal
-standard runtime environment for embedded devices. It defines all
-default API packages:
-
--  java.io
-
--  java.lang
-
--  java.lang.annotation
-
--  java.lang.ref
-
--  java.lang.reflect
-
--  java.util
-
-Beyond Profile (B-ON)
----------------------
-
-B-ON defines a suitable and flexible way to fully control both memory
-usage and start-up sequences on devices with limited memory resources.
-It does so within the boundaries of Java semantics. More precisely, it
-allows:
-
--  Controlling the initialization sequence in a deterministic way.
-
--  Defining persistent, immutable, read-only objects (that may be placed
-   into non-volatile memory areas), and which do not require copies to
-   be made in RAM to be manipulated.
-
--  Defining immortal, read-write objects that are always alive.
-
-
-Properties
-==========
-
-Properties allow the MicroEJ Application to be parameterized using the
-``System.getProperty`` API. The definition of the properties and their
-respective values can be done using files. Each filename of a properties
-file must match with ``*.system.properties`` and must be located in the
-``properties`` package of the application classpath. These files follow
-the MicroEJ property list specification: key/value pairs.
-
-.. code-block:: xml
-   :caption: Example of Contents of a MicroEJ Properties File
-
-   microedition.encoding=ISO-8859-1
-
-MicroEJ properties can also be defined in the launch configuration. This
-can be done by setting the properties in the launcher with a specific
-prefix in their name:
-
--  Properties for both the MicroEJ Platform and the MicroEJ Simulator:
-   name starts with ``microej.java.property.*``
-
--  Properties for the MicroEJ Simulator: name starts with
-   ``sim.java.property.*``
-
--  Properties for the MicroEJ Platform: name starts with
-   ``emb.java.property.*``
-
-For example, to define the property ``myProp`` with the value
-``theValue``, set the following option in the ``VM arguments`` field of
-the ``JRE`` tab of the launch configuration:
-
-.. code-block:: xml
-   :caption: Example of MicroEJ Property Definition in Launch Configuration
-
-   -Dmicroej.java.property.myProp=theValue
 
 
 Generic Output
@@ -491,7 +393,7 @@ available options.
 
 Another classpath variable named ``BON-1.2`` is available. This variable
 must be added to the build path of the MicroEJ Application project in
-order to access the B-ON library.
+order to access the BON library.
 
 
 ..

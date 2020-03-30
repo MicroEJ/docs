@@ -1,11 +1,16 @@
-.. _concepts-microejapplications:
+Overview
+========
 
-MicroEJ Applications
-====================
+.. toctree::
 
-MicroEJ Applications are developed as standard Java applications on
-Eclipse JDT, using Foundation Libraries. MicroEJ Workbench allows you to
-run / debug / deploy MicroEJ Applications on a MicroEJ Platform.
+   editions
+   runtime
+   esr
+   firmware
+   sdk
+   studio
+   gettingStarted
+   systemRequirements
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
