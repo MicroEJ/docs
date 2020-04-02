@@ -1,4 +1,4 @@
-.. _application.developer.guide:
+.. _application-developer-guide:
 
 Application Developer Guide
 ===========================

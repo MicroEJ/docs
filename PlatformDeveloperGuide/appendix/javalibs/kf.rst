@@ -11,7 +11,7 @@ Definitions
 Feature Definition Files
 ------------------------
 
-A Feature is a group of types, resources and [BON] immutables objects
+A Feature is a group of types, resources and :ref:`[BON] <esr-specifications>` immutables objects
 defined using two files that shall be in application classpath:
 
 -  ``[featureName].kf``, a Java properties file. Keys are described in
@@ -24,37 +24,29 @@ defined using two files that shall be in application classpath:
 .. tabularcolumns:: |p{2.5cm}|p{2cm}|p{10.5cm}|
 .. table:: Feature definition file properties
 
-   +---------------+-----------+-----------------------------------------------+
-   | Key           | Usage     | Description                                   |
-   +===============+===========+===============================================+
-   | entryPoint    | Mandatory | The fully qualified name of the class that    |
-   |               |           | implements ``ej.kf.FeatureEntryPoint``        |
-   +---------------+-----------+-----------------------------------------------+
-   | immutables    | Optional  | Semicolon separated list of paths to [BON]    |
-   |               |           | immutable files owned by the Feature. [BON]   |
-   |               |           | immutable file is defined by a ``/``          |
-   |               |           | separated path relative to application        |
-   |               |           | classpath                                     |
-   +---------------+-----------+-----------------------------------------------+
-   | resources     | Optional  | Semicolon separated list of resource names    |
-   |               |           | owned by the Feature. Resource name is        |
-   |               |           | defined by                                    |
-   |               |           | ``Class.getResourceAsStream(String)``         |
-   +---------------+-----------+-----------------------------------------------+
-   | requiredTypes | Optional  | Comma separated list of fully qualified names |
-   |               |           | of required types. (Types that may be         |
-   |               |           | dynamically loaded using                      |
-   |               |           | ``Class.forName()``).                         |
-   +---------------+-----------+-----------------------------------------------+
-   | types         | Optional  | Comma separated list of fully qualified names |
-   |               |           | of types owned by the Feature. A wildcard is  |
-   |               |           | allowed as terminal character to embed all    |
-   |               |           | types starting with the given qualified name  |
-   |               |           | (``a.b.C,x.y.*``)                             |
-   +---------------+-----------+-----------------------------------------------+
-   | version       | Mandatory | String version, that can retrieved using      |
-   |               |           | ``ej.kf.Module.getVersion()``                 |
-   +---------------+-----------+-----------------------------------------------+
+   +---------------+-----------+-------------------------------------------------------------------------+
+   | Key           | Usage     | Description                                                             |
+   +===============+===========+=========================================================================+
+   | entryPoint    | Mandatory | The fully qualified name of the class that                              |
+   |               |           | implements ``ej.kf.FeatureEntryPoint``                                  |
+   +---------------+-----------+-------------------------------------------------------------------------+
+   | immutables    | Optional  | Semicolon separated list of paths to :ref:`[BON] <esr-specifications>`  |
+   |               |           | immutable files owned by the Feature. :ref:`[BON] <esr-specifications>` |
+   |               |           | immutable file is defined by a ``/`` separated path relative to         |
+   |               |           | application classpath                                                   |
+   +---------------+-----------+-------------------------------------------------------------------------+
+   | resources     | Optional  | Semicolon separated list of resource names owned by the Feature.        |
+   |               |           | Resource name is defined by ``Class.getResourceAsStream(String)``       |
+   +---------------+-----------+-------------------------------------------------------------------------+
+   | requiredTypes | Optional  | Comma separated list of fully qualified names of required types. (Types |
+   |               |           | that may be dynamically loaded using ``Class.forName()``).              |
+   +---------------+-----------+-------------------------------------------------------------------------+
+   | types         | Optional  | Comma separated list of fully qualified names of types owned by the     |
+   |               |           | Feature. A wildcard is allowed as terminal character to embed all       |
+   |               |           | types starting with the given qualified name (``a.b.C,x.y.*``)          |
+   +---------------+-----------+-------------------------------------------------------------------------+
+   | version       | Mandatory | String version, that can retrieved using ``ej.kf.Module.getVersion()``  |
+   +---------------+-----------+-------------------------------------------------------------------------+
 
 Kernel Definition Files
 -----------------------
@@ -132,7 +124,7 @@ XML file (see :ref:`example "Kernel API XML Schema" <fig_kf-api-xsd>` and
 Access Error Codes
 ------------------
 
-When an instruction is executed that will break a [KF] insulation
+When an instruction is executed that will break a :ref:`[KF] <esr-specifications>` insulation
 semantic rule, a ``java.lang.IllegalAccessError`` is thrown, with an
 error code composed of two parts: ``[source][errorKind]``.
 

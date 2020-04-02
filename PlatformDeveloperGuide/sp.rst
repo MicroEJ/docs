@@ -6,7 +6,7 @@ Shielded Plug (SP)
 Principle
 =========
 
-The Shielded Plug [SP] provides data segregation with a clear
+The Shielded Plug :ref:`[SP] <esr-specifications>` provides data segregation with a clear
 publish-subscribe API. The data-sharing between modules uses the concept
 of shared memory blocks, with introspection. The database is made of
 blocks: chunks of RAM.
@@ -25,7 +25,7 @@ Functional Description
 The usage of the Shielded Plug (SP) starts with the definition of a
 database. The implementation of the SP for the MicroEJ Platform uses an
 XML file description to describe the database; the syntax follows the
-one proposed by the SP specification [SP].
+one proposed by the :ref:`SP specification <esr-specifications>`.
 
 Once this database is defined, it can be accessed within the MicroEJ
 Application or the C application. The SP Foundation Library is
