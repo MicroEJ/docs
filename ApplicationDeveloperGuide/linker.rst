@@ -233,6 +233,7 @@ Tags Specification
 Here is the complete syntactical and semantical description of all
 available tags of the ``.lsc`` file.
 
+.. tabularcolumns:: |p{3cm}|p{2cm}|p{10.1cm}|
 .. table:: Linker Specific Configuration Tags
 
    +---------------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -488,6 +489,7 @@ options.
                <property name="myProp" value="myValue"/>        
        </linker>
 
+.. tabularcolumns:: |p{7cm}|p{8.1cm}|
 .. table:: Linker Options Details
 
    +-------------------------------------------+----------------------------------------------+
@@ -564,6 +566,7 @@ Error Messages
 
 This section lists MicroEJ Linker error messages.
 
+.. tabularcolumns:: |p{2.1cm}|p{13cm}|
 .. table:: Linker-Specific Configuration Tags
 
    +-------------+--------------------------------------------------------+
