@@ -358,7 +358,7 @@ available options.
 
 Another classpath variable named ``BON-1.2`` is available. This variable
 must be added to the build path of the MicroEJ Application project in
-order to access the BON library.
+order to access the :ref:`[BON] library <esr-specifications>`.
 
 
 ..

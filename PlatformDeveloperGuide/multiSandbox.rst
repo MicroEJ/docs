@@ -12,7 +12,7 @@ The Multi-Sandbox capability of the MicroEJ Core Engine allows a
 main application (called Standalone Application) to install and execute
 at runtime additional applications (called sandboxed applications).
 
-The MicroEJ Core Engine implements the :ref:`KF specification <esr-specifications>`. A Kernel is a
+The MicroEJ Core Engine implements the :ref:`[KF] specification <esr-specifications>`. A Kernel is a
 Standalone Application generated on a Multi-Sandbox-enabled
 platform. A Feature is a sandboxed application generated against a
 Kernel.
@@ -55,7 +55,7 @@ requires that you generate the Features again on this Kernel.
 
 The Features built can be deployed in the following ways:
 
--  Downloaded and installed at runtime by software. Refer to the :ref:`KF
+-  Downloaded and installed at runtime by software. Refer to the :ref:`[KF]
    specification <esr-specifications>` for ``ej.kf.Kernel`` install APIs.
 
 -  Linked at build-time into the executable application. Features linked

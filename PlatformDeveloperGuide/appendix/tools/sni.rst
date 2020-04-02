@@ -3,7 +3,7 @@ SNI
 
 The following error messages are issued at SOAR time and not at runtime.
 
-.. table:: SNI Link Time Error Messages.
+.. table:: [SNI] Link Time Error Messages.
 
    +-------------+--------------------------------------------------------+
    | Message ID  | Description                                            |

@@ -68,7 +68,7 @@ default API packages:
 Beyond Profile (BON)
 ~~~~~~~~~~~~~~~~~~~~~
 
-BON defines a suitable and flexible way to fully control both memory
+:ref:`[BON] <esr-specifications>` defines a suitable and flexible way to fully control both memory
 usage and start-up sequences on devices with limited memory resources.
 It does so within the boundaries of Java semantics. More precisely, it
 allows:

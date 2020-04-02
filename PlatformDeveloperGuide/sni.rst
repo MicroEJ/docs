@@ -6,17 +6,17 @@ Simple Native Interface (SNI)
 Principle
 =========
 
-SNI provides a simple mechanism for implementing native Java methods in
+:ref:`[SNI] <esr-specifications>` provides a simple mechanism for implementing native Java methods in
 the C language.
 
-SNI allows you to:
+:ref:`[SNI] <esr-specifications>` allows you to:
 
 -  Call a C function from a Java method.
 
 -  Access an Immortal array in a C function (see the :ref:`[BON]
    specification <esr-specifications>` to learn about immortal objects).
 
-SNI does not allow you to:
+:ref:`[SNI] <esr-specifications>` does not allow you to:
 
 -  Access or create a Java object in a C function.
 
@@ -24,14 +24,14 @@ SNI does not allow you to:
 
 -  Call Java methods from a C function.
 
-SNI provides some Java APIs to manipulate some data arrays between Java
+:ref:`[SNI] <esr-specifications>` provides some Java APIs to manipulate some data arrays between Java
 and the native (C) world.
 
 
 Functional Description
 ======================
 
-SNI defines how to cross the barrier between the Java world and the
+:ref:`[SNI] <esr-specifications>` defines how to cross the barrier between the Java world and the
 native world:
 
 -  Call a C function from Java.
@@ -49,7 +49,7 @@ native world:
    :width: 60.0%
    :align: center
 
-   SNI Processing
+   :ref:`[SNI] <esr-specifications>` Processing
 
 :ref:`The above illustration <fig_sni-flow>` shows both Java and C code
 accesses to shared objects in the immortal space, while also accessing
@@ -120,7 +120,7 @@ A call to a native function uses the same RTOS task as the RTOS task
 used to run all Java green threads. So during this call, the MicroEJ
 Core Engine cannot schedule other Java threads.
 
-SNI defines C functions that provide controls for the green threads'
+:ref:`[SNI] <esr-specifications>` defines C functions that provide controls for the green threads'
 activities:
 
 -  ``int32_t SNI_suspendCurrentJavaThread(int64_t timeout)``: Suspends the
@@ -164,7 +164,7 @@ No dependency.
 Installation
 ============
 
-The SNI library is a built-in feature of the platform, so there is no
+The :ref:`[SNI] <esr-specifications>` library is a built-in feature of the platform, so there is no
 additional dependency to call native code from Java. In the platform
 configuration file, check :guilabel:`Java to C Interface` > :guilabel:`SNI API` to
 install the additional Java APIs in order to manipulate the data arrays.
@@ -175,7 +175,7 @@ Use
 
 A classpath variable named ``SNI-1.2`` is available, which must be added
 to the build path of the MicroEJ Application project, in order to allow
-access to the SNI library.
+access to the :ref:`[SNI] <esr-specifications>` library.
 
 
 ..

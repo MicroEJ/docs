@@ -23,12 +23,12 @@ Functional Description
 ======================
 
 The usage of the Shielded Plug (SP) starts with the definition of a
-database. The implementation of the SP for the MicroEJ Platform uses an
+database. The implementation of the :ref:`[SP] <esr-specifications>` for the MicroEJ Platform uses an
 XML file description to describe the database; the syntax follows the
-one proposed by the :ref:`SP specification <esr-specifications>`.
+one proposed by the :ref:`[SP] specification <esr-specifications>`.
 
 Once this database is defined, it can be accessed within the MicroEJ
-Application or the C application. The SP Foundation Library is
+Application or the C application. The :ref:`[SP] <esr-specifications>` Foundation Library is
 accessible from the classpath variable ``SP-2.0``. This library contains
 the classes and methods to read and write data in the database. See also
 the Java documentation from the MicroEJ Workbench resources center
@@ -36,8 +36,8 @@ the Java documentation from the MicroEJ Workbench resources center
 Platform ``source/MICROJVM/include`` folder contains the C functions for
 accessing the database.
 
-To embed the SP database in your binary file, the XML file description
-must be processed by the SP compiler. This compiler generates a binary
+To embed the :ref:`[SP] <esr-specifications>` database in your binary file, the XML file description
+must be processed by the :ref:`[SP] <esr-specifications>` compiler. This compiler generates a binary
 file (.o) that will be linked to the overall application by the linker.
 It also generates two descriptions of the block ID constants, one in
 Java and one in C. These constants can be used by either the Java or the
@@ -47,7 +47,7 @@ C application modules.
 Shielded Plug Compiler
 ======================
 
-A MicroEJ tool is available to launch the SP compiler tool. The tool
+A MicroEJ tool is available to launch the :ref:`[SP] <esr-specifications>` compiler tool. The tool
 name is Shielded Plug Compiler. It outputs:
 
 -  A description of the requested resources of the database as a binary
@@ -63,7 +63,7 @@ name is Shielded Plug Compiler. It outputs:
 Example
 =======
 
-Below is an example of using a database SP. The code that publishes the
+Below is an example of using a database :ref:`[SP] <esr-specifications>`. The code that publishes the
 data is written in C, and the code that receives the data is written in
 Java. The data is transferred using two memory blocks. One is a scalar
 value, the other is a more complex object representing a two-dimensional
@@ -167,7 +167,7 @@ Dependencies
 Installation
 ============
 
-The SP library and its relative tools are an optional feature of the
+The :ref:`[SP] <esr-specifications>` library and its relative tools are an optional feature of the
 platform. In the platform configuration file, check
 :guilabel:`Java to C Interface` > :guilabel:`Shielded Plug` to install the library and
 its relative tools.
@@ -178,7 +178,7 @@ Use
 
 A classpath variable named ``SP-2.0`` is available, which must be added
 to the build path of the MicroEJ Application project in order to access
-the SP library.
+the :ref:`[SP] <esr-specifications>` library.
 
 This library provides a set of options. Refer to the chapter
 :ref:`workbenchLaunchOptions` which lists all available options.
