@@ -11,13 +11,13 @@ MicroEJ is compatible with the Java language version 7.
 Java source code is compiled by the Java compiler [1]_ into the binary format specified in the JVM specification [2]_. 
 This binary code needs to be linked before execution: .class files and some other application-related files (see :ref:`MicroEJ Classpath <chapter.microej.classpath>`) are compiled to produce the final application that the MicroEJ Runtime can execute.
 
-MicroEJ complies with the deterministic class initialization (<clinit>) order specified in [BON]. The application is statically analyzed from its entry points in order to generate a clinit dependency graph. The computed clinit sequence is the result of the topological sort of the dependency graph. An error is thrown if the clinit dependency graph contains cycles.
+MicroEJ complies with the deterministic class initialization (<clinit>) order specified in :ref:`[BON] <esr-specifications>`. The application is statically analyzed from its entry points in order to generate a clinit dependency graph. The computed clinit sequence is the result of the topological sort of the dependency graph. An error is thrown if the clinit dependency graph contains cycles.
 
 Scheduler
 ---------
 
 The MicroEJ Architecture features a green thread platform that can
-interact with the C world [SNI]. The (green) thread policy is as
+interact with the C world :ref:`[SNI] <esr-specifications>`. The (green) thread policy is as
 follows:
 
 -  preemptive for different priorities,

@@ -11,7 +11,7 @@ Principle
 The MicroUI module defines a low-level UI framework for embedded
 devices. This module allows the creation of basic
 Human-Machine-Interfaces (HMI), with output on a pixelated screen. For
-more information, please consult the MUI Specification [MUI].
+more information, please consult the :ref:`MUI Specification <esr-specifications>`.
 
 
 .. _section_architecture:
@@ -80,8 +80,8 @@ Principle
 
 The MicroUI implementation for MicroEJ uses internal threads. These
 threads are created during the MicroUI initialization step, and are
-started by a call to ``MicroUI.start()``. Refer the the MicroUI
-specification [MUI] for more information about internal threads.
+started by a call to ``MicroUI.start()``. Refer to the :ref:`MicroUI
+specification <esr-specifications>` for more information about internal threads.
 
 List
 ----
@@ -178,7 +178,7 @@ is defined during the pre-generation of a font (see
 Dependencies
 ============
 
--  MicroUI initialization step (see `section_static_init`).
+-  MicroUI initialization step (see :ref:`section_static_init`).
 
 -  MicroUI C libraries (see :ref:`section_architecture`).
 

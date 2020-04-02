@@ -34,10 +34,10 @@ MicroEJ Architecture features the MicroEJ Core Engine: a tiny and fast
 runtime associated with a Garbage Collector. It provides four built-in
 Foundation Libraries :
 
--  [BON]
+-  :ref:`BON <esr-specifications>`
 -  EDC
--  [SNI]
--  [SP]
+-  :ref:`SNI <esr-specifications>`
+-  :ref:`SP <esr-specifications>`
 
 :ref:`The following figure <fig_jpf-runtime-components>` shows the components involved.
 

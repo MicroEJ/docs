@@ -3,7 +3,7 @@ Principle
 
 The User Interface Extension features one of the fastest graphical
 engines, associated with a unique int-based event management system. It
-provides [MUI] library implementation. The following diagram depicts the
+provides :ref:`[MUI] library <esr-specifications>` implementation. The following diagram depicts the
 components involved in its design, along with the provided tools:
 
 .. figure:: images/ui_overview2.*

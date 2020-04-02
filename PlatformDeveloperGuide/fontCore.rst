@@ -126,7 +126,7 @@ Standard <http://www.unicode.org/standard/standard.html>`_. The ``.ejf`` files h
 Font Selection
 --------------
 
-The font engine implements the [MUI] selection semantics, and also tries
+The font engine implements the :ref:`[MUI] selection semantics <esr-specifications>`, and also tries
 to select fonts for which styles are built in, instead of applying a
 runtime filter. The font is selected based on the following process:
 

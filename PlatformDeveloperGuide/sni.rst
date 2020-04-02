@@ -13,8 +13,8 @@ SNI allows you to:
 
 -  Call a C function from a Java method.
 
--  Access an Immortal array in a C function (see the [BON]
-   specification to learn about immortal objects).
+-  Access an Immortal array in a C function (see the :ref:`[BON]
+   specification <esr-specifications>` to learn about immortal objects).
 
 SNI does not allow you to:
 

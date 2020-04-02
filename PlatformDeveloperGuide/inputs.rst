@@ -43,7 +43,7 @@ collaborative components that communicate using a shared buffer:
 The ``LLINPUT`` API allows multiple pairs of
 ``<driver - event generator>`` to use the same buffer, and associates
 drivers and event generators using an int ID. The ID used is the event
-generator ID held within the MicroUI global registry [MUI]. Apart from
+generator ID held within the MicroUI global registry :ref:`[MUI] <esr-specifications>`. Apart from
 sharing the ID used to "connect" one driver's data to its respective
 event generator, both entities are completely decoupled.
 

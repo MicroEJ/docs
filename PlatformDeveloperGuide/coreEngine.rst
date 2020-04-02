@@ -89,7 +89,7 @@ for more details.
 Implementation
 ==============
 
-The platform implements the [SNI] specification. It is created and
+The platform implements the :ref:`[SNI] specification <esr-specifications>`. It is created and
 initialized with the C function ``SNI_createVM``. Then it is started and
 executed in the current RTOS task by calling ``SNI_startVM``. The
 function ``SNI_startVM`` returns when the MicroEJ Application exits. The
