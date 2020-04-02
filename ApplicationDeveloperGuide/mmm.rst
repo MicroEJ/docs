@@ -31,7 +31,7 @@ MMM is based on of the following tools:
 
 MMM provides a non ambiguous semantic for dependencies
 resolution. Please consult the MMM specification available on
-:http:`https://developer.microej.com/packages/documentation/TLT-0831-SPE-MicroEJModuleManager-2.0-C.pdf`.
+:http:`https://developer.microej.com/packages/documentation/TLT-0831-SPE-MicroEJModuleManager-2.0-D.pdf`.
 
 An Ivy configuration file (``module.ivy``) must be provided at the root
 of each MicroEJ project to solve classpath dependencies. Multiple Ivy
