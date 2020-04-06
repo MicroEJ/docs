@@ -34,10 +34,10 @@ MicroEJ Architecture features the MicroEJ Core Engine: a tiny and fast
 runtime associated with a Garbage Collector. It provides four built-in
 Foundation Libraries :
 
--  :ref:`BON <esr-specifications>`
+-  :ref:`[BON] <esr-specifications>`
 -  EDC
--  :ref:`SNI <esr-specifications>`
--  :ref:`SP <esr-specifications>`
+-  :ref:`[SNI] <esr-specifications>`
+-  :ref:`[SP] <esr-specifications>`
 
 :ref:`The following figure <fig_jpf-runtime-components>` shows the components involved.
 
@@ -53,7 +53,7 @@ Three APIs allow the device architecture runtime to link with (and port
 to) external code, such as any kind of RTOS or legacy C libraries. These
 three APIs are
 
--  Simple Native Interface (SNI)
+-  Simple Native Interface (:ref:`[SNI] <esr-specifications>`)
 
 -  Low Level MicroEJ Core Engine (LLMJVM)
 

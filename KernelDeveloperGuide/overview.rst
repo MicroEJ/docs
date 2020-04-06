@@ -30,9 +30,9 @@ Firmware Developers:
 -  Controlling and monitoring resources
 
 This document takes as prerequisite that a MicroEJ Platform is available
-for the target device (see :ref:`device.developer.guide`).
+for the target device (see :ref:`platform-developer-guide`).
 This document also assumes that the reader is familiar with the
-development and deployment of MicroEJ Applications (see :ref:`application.developer.guide`)
+development and deployment of MicroEJ Applications (see :ref:`application-developer-guide`)
 and specifics of developing Sandboxed Applications (see :ref:`sandboxed.application`).
 
 Terms and Definitions
@@ -43,7 +43,7 @@ a Multi-Sandbox Firmware.
 
 A *Multi-Sandbox Platform* is a Platform with the Multi Sandbox
 capability of the MicroEJ Core Engine enabled (see the chapter
-*Multi-Sandbox* of the :ref:`device.developer.guide`).
+*Multi-Sandbox* of the :ref:`platform-developer-guide`).
 A Multi-Sandbox Firmware can only be built with a Multi-Sandbox Platform.
 
 A *Mono-Sandbox Firmware* is produced by building and linking a Standalone

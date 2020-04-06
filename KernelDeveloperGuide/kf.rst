@@ -19,7 +19,7 @@ can be installed, started, stopped and uninstalled at any time
 independently of the system state (particularily, a Feature never
 depends on an other Feature to be stopped).
 
-The complete KF specification is available at `<http://www.e-s-r.net/download/specification/ESR-SPE-0020-KF-1.4-F.pdf>`_
+The complete :ref:`[KF] specification <esr-specifications>` is available at `<http://www.e-s-r.net/download/specification/ESR-SPE-0020-KF-1.4-F.pdf>`_
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

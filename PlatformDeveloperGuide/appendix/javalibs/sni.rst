@@ -6,7 +6,7 @@ Error Messages
 
 The following error messages are issued at runtime.
 
-.. table:: SNI Run Time Error Messages.
+.. table:: [SNI] Run Time Error Messages.
 
    +-------------+--------------------------------------------------------+
    | Message  ID | Description                                            |

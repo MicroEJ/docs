@@ -80,7 +80,7 @@ that their names match the ``LLSP_IMPL_*`` pattern.  
 Header Files
 ------------
 
-The implementation of the SP for the MicroEJ Platform assumes some
+The implementation of the :ref:`[SP] <esr-specifications>` for the MicroEJ Platform assumes some
 support from the underlying RTOS. It is mainly related to provide some
 synchronization when reading / writing into Shielded Plug blocks.
 
