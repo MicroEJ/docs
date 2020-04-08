@@ -612,6 +612,14 @@ code,
     .wy-nav-side {
         left: -325px;
     }
+
+  #headermicroej_DIV_1 {
+    display: none;
+  }
+
+  #toolxboxmicroejUL_1{
+    display: none;
+  }
 }
 
 .wy-nav-top {
