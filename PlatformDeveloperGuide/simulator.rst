@@ -19,7 +19,6 @@ replacement for the :ref:`[SNI] <esr-specifications>` interface.
 
 .. figure:: images/hil1.*
    :alt: The HIL Connects the MicroEJ Simulator to the Workstation.
-   :width: 80.0%
    :align: center
 
    The HIL Connects the MicroEJ Simulator to the Workstation.
@@ -35,7 +34,6 @@ connection. Mocks run inside the process that runs the HIL engine.
 
 .. figure:: images/hil2.*
    :alt: A MicroEJ Simulator connected to its HIL Engine via a socket.
-   :width: 80.0%
    :align: center
 
    A MicroEJ Simulator connected to its HIL Engine via a socket.

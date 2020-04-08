@@ -13,7 +13,6 @@ blocks: chunks of RAM.
 
 .. figure:: images/sp1.*
    :alt: A Shielded Plug Between Two Application (Java/C) Modules.
-   :width: 70.0%
    :align: center
 
    A Shielded Plug Between Two Application (Java/C) Modules.

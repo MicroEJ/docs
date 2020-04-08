@@ -10,7 +10,6 @@ Workspace Build
 .. figure:: png/build_flow_zoom_workspace.png
    :alt: Firmware Build Flow in MicroEJ SDK Workspace
    :align: center
-   :width: 75.0%
 
    Firmware Build Flow in MicroEJ SDK Workspace
 
@@ -23,7 +22,6 @@ Headless Build
 .. figure:: png/build_flow_zoom_buildtype.png
    :alt: Firmware Build Flow in MicroEJ SDK Workspace
    :align: center
-   :width: 75.0%
 
 .. _runtime_environment:
 

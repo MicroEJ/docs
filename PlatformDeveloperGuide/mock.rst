@@ -25,7 +25,6 @@ Simulator.
 
 .. figure:: images/hil3.*
    :alt: The MicroEJ Simulator Executes a Native Java Method ``foo()``.
-   :width: 80.0%
    :align: center
 
    The MicroEJ Simulator Executes a Native Java Method ``foo()``.
@@ -144,7 +143,6 @@ Simulator and the HIL:
 
 .. figure:: images/hil4.*
    :alt: An Array and Its Counterpart in the HIL Engine.
-   :width: 80.0%
    :align: center
 
    An Array and Its Counterpart in the HIL Engine.

@@ -17,7 +17,6 @@ Functional Description
 
 .. figure:: images/elftomap_process.*
    :alt: ELF To Map Process
-   :width: 20.0%
    :align: center
 
    ELF To Map Process
