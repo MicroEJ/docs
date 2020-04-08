@@ -58,6 +58,12 @@ name is Shielded Plug Compiler. It outputs:
 -  Two descriptions, one in Java and one in C, of the block ID constants
    to be used by either Java or C application modules.
 
+.. figure:: images/sp_flow.png
+   :alt: Shielded Plug Compiler Process Overview
+   :align: center
+
+   Shielded Plug Compiler Process Overview
+
 
 Example
 =======
