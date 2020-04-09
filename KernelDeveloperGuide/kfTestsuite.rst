@@ -5,7 +5,7 @@ A KF testsuite can be executed when building a Foundation Library or an Add-On l
 and usually extends the tests written for the :ref:`default library testsuite <testsuite>` to verify the behavior
 of this library when its APIs are exposed by a Kernel.
 
-A KF testsuite is composed off a set of KF tests, each KF test itself is a minimal MicroEJ Multi-Sandbox Firmware composed of a Kernel and zero or more Features.
+A KF testsuite is composed of a set of KF tests, each KF test itself is a minimal MicroEJ Multi-Sandbox Firmware composed of a Kernel and zero or more Features.
 
 
 Enable the Testsuite
@@ -37,7 +37,7 @@ A KF test is a structured directory placed in the ``src/test/projects`` director
 The names of the project directories are free, however MicroEJ suggests the following naming convention, assuming the KF test directory is ``[TestName]``:
 
 - ``[TestName]-kernel`` for the Kernel project, 
-- ``[TestName]-app[0..N]`` for Feature projects,
+- ``[TestName]-app[1..N]`` for Feature projects,
 - ``[TestName]-firmware`` for the Firmware project. 
 
 The KF Testsuite structure shall be similar to the following figure:
