@@ -13,7 +13,6 @@ blocks: chunks of RAM.
 
 .. figure:: images/sp1.*
    :alt: A Shielded Plug Between Two Application (Java/C) Modules.
-   :width: 70.0%
    :align: center
 
    A Shielded Plug Between Two Application (Java/C) Modules.
@@ -58,6 +57,12 @@ name is Shielded Plug Compiler. It outputs:
 
 -  Two descriptions, one in Java and one in C, of the block ID constants
    to be used by either Java or C application modules.
+
+.. figure:: images/sp_flow.png
+   :alt: Shielded Plug Compiler Process Overview
+   :align: center
+
+   Shielded Plug Compiler Process Overview
 
 
 Example

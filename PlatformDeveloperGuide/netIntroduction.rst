@@ -11,7 +11,6 @@ the provisioning of a Java network interface.
 
 .. figure:: images/java-c-net-interface.*
    :alt: Overview
-   :width: 70.0%
    :align: center
 
    Overview

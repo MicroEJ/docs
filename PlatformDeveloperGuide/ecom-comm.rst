@@ -80,7 +80,6 @@ exist to support a Buffered connection.
 
 .. figure:: images/architecture.*
    :alt: ECOM Comm components
-   :width: 80.0%
    :align: center
 
    ECOM Comm components
@@ -149,7 +148,6 @@ to the given Comm Port identifier.
 
 .. figure:: images/comm_open.*
     :alt: Comm Port Open Sequence
-    :width: 80.0%
     :align: center
 
     Comm Port Open Sequence

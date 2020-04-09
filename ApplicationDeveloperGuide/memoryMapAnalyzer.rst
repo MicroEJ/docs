@@ -19,7 +19,6 @@ Functional Description
 
 .. figure:: images/mma_process.*
    :alt: Memory Map Analyzer Process
-   :width: 30.0%
    :align: center
 
    Memory Map Analyzer Process

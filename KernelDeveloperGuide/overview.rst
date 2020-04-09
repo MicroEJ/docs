@@ -131,7 +131,6 @@ Firmware Build Flow
 .. figure:: png/build_flow_generic.png
    :alt: Firmware Build Flow (Kernel + Resident Applications)
    :align: center
-   :width: 75.0%
 
    Firmware Build Flow (Kernel + Resident Applications)
 

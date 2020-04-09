@@ -22,7 +22,6 @@ the C file(s).
 
 .. figure:: images/javah_process.*
    :alt: MicroEJ Java H Process
-   :width: 60.0%
    :align: center
 
    MicroEJ Java H Process

@@ -32,7 +32,6 @@ connection on a hardware device.
 .. _fig_ecom-flow:
 .. figure:: images/ecom-core_process.*
    :alt: ECOM Flow
-   :width: 70.0%
    :align: center
 
    ECOM Flow
