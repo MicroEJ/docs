@@ -12,6 +12,7 @@ Browse the following chapters to familiarize yourself with MicroEJ Technology an
 
 .. toctree::
    :maxdepth: 2
+   :hidden:
 
    Glossary <glossary>
    overview/index
