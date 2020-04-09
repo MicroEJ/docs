@@ -143,7 +143,7 @@ The WPK file produced by the build process is located in a dedicated
 ``target~/artifacts`` folder in the project.
 
 The ``.wpk`` file is ready to be uploaded to a MicroEJ Forge instance.
-Please consult :http:`https://community.microej.com` for more information.
+Please consult `<https://community.microej.com>`_ for more information.
 
 
 ..

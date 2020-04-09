@@ -336,7 +336,7 @@ Known Range
 ^^^^^^^^^^^
 
 A known range is a range defined by the "Unicode Character Database"
-version 9.0.0 available on :http:`http://www.unicode.org/`. Each range is
+version 9.0.0 available on `<http://www.unicode.org/>`_. Each range is
 composed of sub ranges that have a unique id.
 
 -  ``myfont:basic_latin``: Embed all *Basic Latin* characters;
@@ -366,7 +366,7 @@ A MicroEJ Foundation Library is a MicroEJ Core library that provides
 core runtime APIs or hardware-dependent functionality. A Foundation
 library is divided into an API and an implementation. A Foundation
 library API is composed of a name and a 2 digits version (e.g.
-``EDC-1.3``) and follows the semantic versioning (:http:`http://semver.org`)
+``EDC-1.3``) and follows the semantic versioning (`<http://semver.org>`_)
 specification. A Foundation Library API only contains prototypes without
 code. Foundation Library implementations are provided by MicroEJ
 Platforms. From a MicroEJ Classpath, Foundation Library APIs
@@ -396,7 +396,7 @@ MicroEJ. It contains Foundation Library APIs and numerous Add-On
 Libraries. Foundation Libraries APIs are distributed under the
 organization ``ej.api``. All other artifacts are Add-On Libraries.
 
-For more information, please visit :http:`https://repository.microej.com`.
+For more information, please visit `<https://developer.microej.com/central-repository/>`_.
 
 Offline Repository
 ==================
@@ -404,7 +404,7 @@ Offline Repository
 By default, MicroEJ is configured to connect online MicroEJ Central
 Repository. The MicroEJ Central Repository can be downloaded locally for
 offline use. Please follow the steps described at
-:http:`https://repository.microej.com`.
+`<https://developer.microej.com/central-repository/>`_.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
