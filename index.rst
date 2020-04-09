@@ -1,6 +1,10 @@
 MicroEJ
 =======
 
+.. only:: html
+
+   .. image:: images/header_docs.png
+
 Welcome to MicroEJ developer documentation.
 Browse the following chapters to familiarize yourself with MicroEJ Technology and understand the principles of app and platform development with MicroEJ.
 
