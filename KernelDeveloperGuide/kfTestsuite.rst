@@ -1,59 +1,60 @@
-How to setup a KF Testsuite
-===========================
+Setup a KF Testsuite
+====================
 
-All the test must me placed in the `src/test/projects` directory.
+A KF testsuite can be executed when building a Foundation Library or an Add-On library, 
+and usually extends the tests written for the :ref:`default library testsuite <testsuite>` to verify the behavior
+of this library when its APIs are exposed by a Kernel.
 
-Write a KF test
----------------
+A KF testsuite is composed off a set of KF tests, each KF test itself is a minimal MicroEJ Multi-Sandbox Firmware composed of a Kernel and zero or more Features.
 
-A KF test is composed of several projects:
 
-- A project for the kernel using the `microej-javalib` of `std-java` skeleton;
-- A project for each feature using `application` skeleton;
-- A project for the firmware using `firmware-multiapp` skeleton.
+Enable the Testsuite
+--------------------
 
-The names of the projects and directories can be whatever you want. It is however better to follow a convention such as `ProjectName-kernel` for the kernel, `ProjectName-app1` for a feature of `ProjectName-fw` for the firmware. 
+In an existing library project:
 
-The projects are grouped in directory which is itself put in `src/test/projects`.
-
-.. image:: png/kf_testsuite_project_structure.png
-   :alt: project structure
-
-All the projects will be built automatically in the right order based on their dependencies.
-
-~~~~~~~~~~~~~~~~~~~
-
-Enable testsuite
-----------------
-
-Enable the ``microej-kf-testsuite`` plugin by adding the following line to the ``module.ivy`` of your project:
+- Create the ``src/test/projects`` directory,
+- Edit the ``module.ivy`` and insert the following line within the ``<ea:build>`` XML element:
 
 ::
 
     <ea:plugin organisation="com.is2t.easyant.plugins" module="microej-kf-testsuite" revision="+" />
 
-Configure retry
-~~~~~~~~~~~~~~~
 
-The number of retries for failed test can be changed by adding the following line and change the value:
+Add a KF Test
+-------------
 
-::
+A KF test is a structured directory placed in the ``src/test/projects`` directory.
 
-    <ea:property name="microej.testsuite.retry.count" value="1"/>
+- Create a new directory for the KF test
+- Within this directory, create the sub-projects:
+  
+  - Create a project for the Kernel using the ``microej-javalib`` :ref:`skeleton <mmm_module_skeleton>`,
+  - Create a project for each Feature using the ``application`` :ref:`skeleton <mmm_module_skeleton>`,
+  - Create a project for the Firmware using the ``firmware-multiapp`` :ref:`skeleton <mmm_module_skeleton>`.
+
+
+The names of the project directories are free, however MicroEJ suggests the following naming convention, assuming the KF test directory is ``[TestName]``:
+
+- ``[TestName]-kernel`` for the Kernel project, 
+- ``[TestName]-app[0..N]`` for Feature projects,
+- ``[TestName]-firmware`` for the Firmware project. 
+
+The KF Testsuite structure shall be similar to the following figure:
+
+.. figure:: png/kf_testsuite_project_structure.png
+   :alt: KF Testsuite Structure
+   :align: center
+
+   KF Testsuite Overall Structure
+
+All the projects will be built automatically in the right order based on their dependencies.
+
+KF Testsuite Options
+--------------------
    
-Run the testsuite locally
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To run the testsuite locally, you need to add the following lines to the ``module.ivy``:
-
-::
-
-    <ea:property name="microej.kf.testsuite.properties.microejtool.deploy.name" value="stlink" />
-    <ea:property name="microej.kf.testsuite.properties.testsuite.trace.ip" value="localhost" />
-    <ea:property name="microej.kf.testsuite.properties.testsuite.trace.port" value="1234" />
-    <ea:property name="skip.test" value="SET" />
-
-and launch the Serial To Socket tool (here in port `1234`).
+It is possible to configure the same options defined by :ref:`Testsuite Options <testsuite_options>` for the KF testsuite, 
+by using the prefix ``microej.kf.testsuite.properties`` instead of ``microej.testsuite.properties``.
 
 ..
    | Copyright 2020, MicroEJ Corp. Content in this space is free 
