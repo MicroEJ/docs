@@ -73,7 +73,7 @@ A device registration listener is defined by implementing
 unregistered from the device manager, listeners registered for the
 device type are notified. The notification mechanism is done in a
 dedicated Java thread. The mechanism can be enabled or disabled (see
-:ref:`workbenchLaunchOptions`).
+:ref:`application_options`).
 
 
 Dependencies

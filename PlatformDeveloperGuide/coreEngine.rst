@@ -351,7 +351,7 @@ A MicroEJ classpath variable named ``EDC-1.2`` is available, according
 to the selected foundation core library. This MicroEJ classpath variable
 is always required in the build path of a MicroEJ project; and all
 others libraries depend on it. This library provides a set of options.
-Refer to the chapter :ref:`workbenchLaunchOptions` which lists all
+Refer to the chapter :ref:`application_options` which lists all
 available options.
 
 Another classpath variable named ``BON-1.2`` is available. This variable
