@@ -121,14 +121,14 @@ element to be transferred.
    - 
 
       - Any Class, Array or Interface
-      - MicroEJ Firmware
-      - MicroEJ Firmware
+      - Kernel
+      - Kernel
       - Passing by reference
 
    - 
 
       - Any Class, Array or Interface
-      - MicroEJ Firmware
+      - Kernel
       - Application
       - MicroEJ Firmware specific or forbidden
 
