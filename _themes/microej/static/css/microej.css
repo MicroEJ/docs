@@ -547,6 +547,18 @@ code,
   color: #ee502e;
 }
 
+.wy-menu-vertical li.toctree-l2.current li.toctree-l4 > a {  
+  background-color: #f8f9fa;
+}
+
+.wy-menu-vertical li.toctree-l2.current li.toctree-l4 > a:hover {
+  background-color: #d6d6d6;
+}
+
+.wy-menu-vertical li.toctree-l2.current li.toctree-l4 > a.current {  
+  color: #ee502e;
+}
+
 .wy-menu-vertical li ul li a {
   color: #717d83;
 }
