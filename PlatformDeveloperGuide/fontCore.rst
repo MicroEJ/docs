@@ -206,7 +206,7 @@ until eight DisplayFont inside. To prevent some C allocation at runtime,
 the number of identifiers is allocated at compile-time. By consequence,
 the available number of identifiers is limited. The MicroEJ launcher of
 the MicroEJ Application has to specify the number of identifiers (refer
-to the chapter :ref:`workbenchLaunchOptions` (``Target`` >
+to the chapter :ref:`application_options` (``Target`` >
 ``Memory``) to have more information where specify this number of
 identifiers.)
 

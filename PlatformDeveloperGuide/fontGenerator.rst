@@ -131,7 +131,7 @@ application classpath.
 .. note::
 
    The list file must be specified in the MicroEJ Application launcher
-   (see :ref:`workbenchLaunchOptions`). However, all files in
+   (see :ref:`application_options`). However, all files in
    application classpath with suffix ``.fonts.list`` are automatically
    parsed by the Font Generator tool.
 
@@ -201,7 +201,7 @@ In order to be able to embed ready-to-be-displayed fonts, you must
 activate the fonts conversion feature and specify the fonts
 configuration file.
 
-Refer to the chapter :ref:`workbenchLaunchOptions` (``Libraries`` >
+Refer to the chapter :ref:`application_options` (``Libraries`` >
 ``MicroUI`` > ``Font``) for more information about specifying the fonts
 configuration file.
 

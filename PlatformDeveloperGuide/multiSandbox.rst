@@ -125,7 +125,7 @@ Use
 A classpath variable named ``KF-1.4`` is available.
 
 This library provides a set of options. Refer to the chapter
-:ref:`workbenchLaunchOptions` which lists all available options.
+:ref:`application_options` which lists all available options.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
