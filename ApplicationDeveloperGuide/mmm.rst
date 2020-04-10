@@ -45,7 +45,7 @@ resolution. Please consult the MMM specification available on
 Module Skeleton
 ---------------
 
-In MicroEJ SDK, a new MicroEJ module project is be created as following:
+In MicroEJ SDK, a new MicroEJ module project is created as following:
 
 - Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`,
 - Select :guilabel:`EasyAnt` > :guilabel:`EasyAnt Project`,
