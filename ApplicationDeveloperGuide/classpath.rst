@@ -336,7 +336,7 @@ Known Range
 ^^^^^^^^^^^
 
 A known range is a range defined by the "Unicode Character Database"
-version 9.0.0 available on `<http://www.unicode.org/>`_. Each range is
+version 9.0.0 available on `<https://home.unicode.org/>`_. Each range is
 composed of sub ranges that have a unique id.
 
 -  ``myfont:basic_latin``: Embed all *Basic Latin* characters;
