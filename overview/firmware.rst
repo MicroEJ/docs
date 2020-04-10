@@ -30,7 +30,7 @@ Specification
 The set of libraries included in the firmware and its dimensioning
 limitations (maximum number of simultaneous threads, open connections,
 …) are firmware specific. Please refer to
-:http:`https://developer.microej.com/5/getting-started-studio.html` for
+`<https://developer.microej.com/5/getting-started-studio.html>`_ for
 evaluation firmware release notes.
 
 

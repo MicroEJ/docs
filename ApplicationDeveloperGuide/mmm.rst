@@ -25,11 +25,11 @@ requirements.
 
 MMM is based on of the following tools:
 
--  Apache Ivy (:http:`http://ant.apache.org/ivy`) for dependencies
+-  Apache Ivy (`<http://ant.apache.org/ivy>`_) for dependencies
    resolution and module publication;
 
 -  Apache EasyAnt
-   (:http:`https://ant.apache.org/easyant/history/trunk/reference.html`) for
+   (`<https://ant.apache.org/easyant/history/trunk/reference.html>`_) for
    module build from source code.
 
 Specification
@@ -37,7 +37,7 @@ Specification
 
 MMM provides a non ambiguous semantic for dependencies
 resolution. Please consult the MMM specification available on
-:http:`https://developer.microej.com/packages/documentation/TLT-0831-SPE-MicroEJModuleManager-2.0-D.pdf`.
+`<https://developer.microej.com/packages/documentation/TLT-0831-SPE-MicroEJModuleManager-2.0-D.pdf>`_.
 
 
 .. _mmm_module_skeleton:

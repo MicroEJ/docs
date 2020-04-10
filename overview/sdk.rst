@@ -22,7 +22,7 @@ Application development is based on the following elements:
    Java compiler (JDT). It also provides a dependency manager for
    managing MicroEJ Libraries (see :ref:`section.ivy.dependency.manager`).
    The current version of MicroEJ SDK is built on top of Eclipse Oxygen
-   (:http:`https://www.eclipse.org/oxygen/`).
+   (`<https://www.eclipse.org/oxygen/>`_).
 
 -  MicroEJ Platform, a software package including the resources and
    tools required for building and testing an application for a specific

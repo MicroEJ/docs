@@ -40,7 +40,7 @@ Using the MicroEJ Studio tool, an application developer will be able to:
 -  Package and publish the application on a MicroEJ Forge Instance,
    enabling remote end users to install it on their devices. For more
    information about MicroEJ Forge, please consult
-   :http:`https://www.microej.com/product/forge`.
+   `<https://www.microej.com/product/forge>`_.
 
 
 ..

@@ -9,14 +9,14 @@ reference when developing applications for MicroEJ. They cover concepts
 essential to MicroEJ Applications design.
 
 In addition to these sections, by going to
-:http:`https://developer.microej.com/`, you can access a number of helpful
+`<https://developer.microej.com/>`_, you can access a number of helpful
 resources such as:
 
 -  Libraries from the MicroEJ Central Repository
-   (:http:`https://repository.microej.com/`);
+   (`<https://developer.microej.com/central-repository/>`_);
 
 -  Application Examples as source code from MicroEJ Github Repositories
-   (:http:`https://github.com/MicroEJ`);
+   (`<https://github.com/MicroEJ>`_);
 
 -  Documentation (HOWTOs, Reference Manuals, APIs javadoc...).
 

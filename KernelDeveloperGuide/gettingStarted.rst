@@ -6,7 +6,7 @@ Online Getting Started
 
 The MicroEJ Multi-Sandbox Firmware Getting Started is available on MicroEJ
 GitHub repository, at
-:http:`https://github.com/MicroEJ/Example-MinimalMultiAppFirmware`.
+`<https://github.com/MicroEJ/Example-MinimalMultiAppFirmware>`_.
 
 The file ``README.md`` provides a step by step guide to produce a
 minimal firmware on an evaluation board on which new applications can be

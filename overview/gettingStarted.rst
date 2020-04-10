@@ -2,7 +2,7 @@ Perform Online Getting Started
 ==============================
 
 MicroEJ Studio Getting Started is available on
-:http:`https://developer.microej.com/5/getting-started-studio.html`.
+`<https://developer.microej.com/5/getting-started-studio.html>`_.
 
 Starting from scratch, the steps to go through the whole process are:
 
