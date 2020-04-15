@@ -51,7 +51,7 @@ MicroEJ Glossary
       MicroEJ Module Manager downloads, installs and controls the consistency of all the dependencies and versions required to build and publish a MicroEJ asset. It is based on `Semantic Versioning <https://semver.org>`_ specification.
 
    Platform
-      A MicroEJ Platform is a software package integrating a C board support package (BSP, with or without RTOS), a MicroEJ Architecture, adaptation layers for the target Device, and its associated MicroEJ Mocks for the MicroEJ Simulator. It is edited using MicroEJ SDK.
+      A MicroEJ Platform is a software package integrating a C board support package (BSP, with or without RTOS), a MicroEJ Architecture, abstraction layers for the target Device, and its associated MicroEJ Mocks for the MicroEJ Simulator. It is edited using MicroEJ SDK.
 
    SDK
       MicroEJ SDK allows MicroEJ Firmware developers to build a MicroEJ-ready device, by integrating a MicroEJ Architecture with both Java and C software on their device.
