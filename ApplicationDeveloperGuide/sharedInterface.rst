@@ -121,16 +121,16 @@ element to be transferred.
    - 
 
       - Any Class, Array or Interface
-      - MicroEJ Firmware
-      - MicroEJ Firmware
+      - Kernel
+      - Kernel
       - Passing by reference
 
    - 
 
       - Any Class, Array or Interface
-      - MicroEJ Firmware
+      - Kernel
       - Application
-      - MicroEJ Firmware specific or forbidden
+      - Kernel specific or forbidden
 
    - 
 
@@ -160,12 +160,12 @@ element to be transferred.
       - Application
       - Forbidden
 
-Objects created by an application which class is owned by MicroEJ
-Firmware can be transferred to another application if this has been
-authorized by the firwmare. The list of eligible types that can be
-transferred is firwmare specific, so you have to consult the firmware
+Objects created by an application which class is owned by the
+Kernel can be transferred to another application if this has been
+authorized by the Kernel. The list of eligible types that can be
+transferred is Kernel specific, so you have to consult the firmware
 specification. :ref:`table.si.transfer.firmware` lists
-firmware types allowed to be transferred through a shared interface
+Kernel types allowed to be transferred through a shared interface
 call. When an argument transfer is forbidden, the call is abruptly
 stopped and a ``java.lang.IllegalAccessError`` is thrown by MicroEJ Core
 Engine.
