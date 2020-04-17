@@ -72,7 +72,7 @@ MicroEJ Core Engine defines 3 exclusive capabilities:
 
 -  Multi-Sandbox : capability to produce a extensible firmware on
    which new applications can be dynamically installed. See section
-   :ref:`core-multiapp`.
+   :ref:`multisandbox`.
 
 -  Tiny application : capability to produce a compacted firmware
    (optimized for size). See section :ref:`core-tiny`.
