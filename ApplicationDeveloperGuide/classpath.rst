@@ -257,7 +257,7 @@ standard Java properties file. Example:
    com.mycompany.myconstantkey=com.mycompany.myconstantvalue
 
 
-Constants are resolved at binary level without having to recompile the sources.
+Constants are resolved at binary level without having to recompile the sources. 
 
 At link time, constants are directly inlined at the place of 
 ``Constants.get[Type]`` method calls with no cost. 
@@ -279,6 +279,12 @@ without having to recompile the sources.
    if (Constants.getBoolean("com.mycompany.myconstantkey")) {
           System.out.println("this code and the constant string will be fully removed when the constant is resolved to 'false'")
    }
+
+
+.. note::
+   In :ref:`Multi-Sandbox <multisandbox>` environment, constants are processed locally within each context.
+   In particular, constants defined in the Kernel are not propagated to :ref:`Sandboxed Applications <sandboxed.application>`.
+
 
 .. _section.classpath.Images:
 
