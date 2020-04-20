@@ -32,6 +32,8 @@ MMM is based on of the following tools:
    (`<https://ant.apache.org/easyant/history/trunk/reference.html>`_) for
    module build from source code.
 
+.. _mmm_specification:
+
 Specification
 -------------
 
