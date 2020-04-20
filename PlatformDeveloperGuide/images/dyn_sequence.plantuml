@@ -1,0 +1,52 @@
+@startuml
+participant "Hotplug:Task" as task
+participant Connection as co
+participant "ECOM Comm Stack" as stack
+participant "Comm Pump:Thread" as thread
+participant "DeviceManager" as dm
+participant Application as app
+
+group add
+    task -> stack : add connection
+    activate stack
+    stack -> thread : notify Connection added
+    deactivate stack
+end
+
+group use
+    app -> stack : open()
+    activate stack
+    stack -> co : configureDevice()
+    deactivate stack
+    co -> co
+
+    app -> stack : read()
+    activate app
+    activate stack
+    co -> stack : dataReceived()
+    stack --> app : returned byte
+    deactivate stack
+    deactivate app
+    thread -> dm : register Comm Port
+end
+
+group remove
+    app -> stack : read()
+    activate app
+    activate stack
+    task -> stack : remove Connection
+    stack --> app : java.io.IOException
+    stack -> thread : notify Connection removed
+    deactivate stack
+    app -> stack : close()
+    deactivate app
+
+    thread -> dm : unregister Comm Port
+    activate thread
+    thread -> stack : Comm Port unregistered
+    activate stack
+    deactivate thread
+    stack -> co : released()
+    deactivate stack
+end
+@enduml
