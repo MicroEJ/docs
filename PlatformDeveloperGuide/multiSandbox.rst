@@ -1,4 +1,4 @@
-.. _core-multiapp:
+.. _multisandbox:
 
 =============
 Multi-Sandbox

@@ -93,6 +93,9 @@ The MicroEJ Classpath contains the following elements:
    list file extensions and format is specific to declared application
    contents and is described in the appropriate section.
 
+At source level, Java types are stored in ``src/main/java`` folder of the `module project <mmm_module_skeleton>`_, 
+any other kind of resources and list files are stored in the ``src/main/resources`` folder.
+
 .. _section.classpath.elements.entrypoints:
 
 Application Entry Points
@@ -179,6 +182,9 @@ Example:
    # The following file is loaded as an Immutable objects data files
    com/mycompany/MyImmutables.data
 
+
+.. _system_properties:
+
 System Properties
 -----------------
 
@@ -194,7 +200,9 @@ standard Java properties file. Example:
    com.mycompany.key=com.mycompany.value
    microedition.encoding=ISO-8859-1
 
-MicroEJ properties can also be defined using Applications Options. This
+System Properties are resolved at runtime, and all declared keys and values are embedded as intern Strings.
+
+System Properties can also be defined using Applications Options. This
 can be done by setting the option with a specific
 prefix in their name:
 
@@ -216,6 +224,66 @@ For example, to define the property ``myProp`` with the value
    microej.java.property.myProp=theValue
 
 Option can also be set in the ``VM arguments`` field of the ``JRE`` tab of the launch using the -D option (e.g. ``-Dmicroej.java.property.myProp=theValue``).
+
+
+Constants
+---------
+
+.. note::
+   This feature require :ref:`[BON] <esr-specifications>` version ``1.4`` 
+   which is available in MicroEJ Runtime starting from MicroEJ Architecture version ``7.11.0``.
+
+Constants are key/value string pairs that can be accessed with a
+call to ``ej.bon.Constants.get[Type](String)``, where ``Type`` if one of:
+
+- Boolean,
+- Byte,
+- Char,
+- Class,
+- Double,
+- Float,
+- Int,
+- Long,
+- Short,
+- String.
+
+Constants are declared in MicroEJ Classpath ``*.constants.list`` files. The file format is a
+standard Java properties file. Example:
+
+.. code-block:: xml
+   :caption: Example of Contents of a BON constants File
+
+   # The following property is embedded as a constant
+   com.mycompany.myconstantkey=com.mycompany.myconstantvalue
+
+
+Constants are resolved at binary level without having to recompile the sources. 
+
+At link time, constants are directly inlined at the place of 
+``Constants.get[Type]`` method calls with no cost. 
+
+The String key parameter must be resolved as an inlined String:
+
+- either a String literal ``"com.mycompany.myconstantkey"``
+- or a ``static final String`` field resolved as a String constant
+
+The String value is converted to the desired type using conversion rules described by the :ref:`[BON] <esr-specifications>` API.
+
+A boolean constant declared in an ``if`` statement condition can be used to fully remove portions of code.
+This feature is similar to C pre-processors ``#ifdef`` directive with the difference that this optimization is performed at binary level
+without having to recompile the sources.
+
+.. code-block:: java
+   :caption: Example of ``if`` code removal using a BON boolean constant
+
+   if (Constants.getBoolean("com.mycompany.myconstantkey")) {
+          System.out.println("this code and the constant string will be fully removed when the constant is resolved to 'false'")
+   }
+
+
+.. note::
+   In :ref:`Multi-Sandbox <multisandbox>` environment, constants are processed locally within each context.
+   In particular, constants defined in the Kernel are not propagated to :ref:`Sandboxed Applications <sandboxed.application>`.
 
 
 .. _section.classpath.Images:
