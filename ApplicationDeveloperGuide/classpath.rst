@@ -264,7 +264,7 @@ At link time, constants are directly inlined at the place of
 
 The String key parameter must be resolved as an inlined String:
 
-- either a String literal ``"com.mycompany.myconstantkey"``:
+- either a String literal ``"com.mycompany.myconstantkey"``
 - or a ``static final String`` field resolved as a String constant
 
 The String value is converted to the desired type using conversion rules described by the :ref:`[BON] <esr-specifications>` API.
