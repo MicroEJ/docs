@@ -163,44 +163,49 @@ Blocking Native Methods
 -----------------------
 
 Some native methods block until an event has arrived :ref:`[SNI] <esr-specifications>`. Such
-behavior is implemented in a Mock using the following three methods:
+behavior is implemented in native using the following three methods:
 
--  ``suspendCurrentJavaThread(long timeout)``: Tells the MicroEJ
-   Simulator that the green thread should block after returning from the
-   current native. This method does not block the Mock execution. The
-   green thread is suspended until either a Mock thread calls
-   ``resumeJavaThread`` or the specified amount of milliseconds has
-   elapsed.
+-  ``int32_t SNI_suspendCurrentJavaThread(int64_t timeout)``
+-  ``int32_t SNI_getCurrentJavaThreadID(void)``
+-  ``int32_t SNI_resumeJavaThread(int32_t id)``
 
--  ``resumeJavaThread(int id)``: Resumes the green thread with the given
-   ID. If the thread is not suspended, the resume stays pending, and the
-   next call to ``suspendCurrentJavaThread`` will not block the thread.
+This behavior is implemented in a Mock using the following methods on a ``lock`` object:
 
--  ``getCurrentJavaThreadID()``: Retrieves the ID of the current Java
-   thread. This ID must be given to the ``resumeJavaThread`` method in
-   order to resume execution of the green thread.
+- ``Object.wait(long timeout)``: Causes the current thread to wait
+  until another thread invokes the ``notify()`` method or the
+  ``notifyAll()`` method for this object.
+
+- ``Object.notifyAll()``: Wakes up all threads that are waiting on
+  this object's monitor.
 
 ::
 
    public static byte[] Data = new byte[BUFFER_SIZE];
    public static int DataLength = 0;
+   private static Object lock = new Object();
 
    //Mock native method
    public static void waitForData(){
-         NativeInterface ni = HIL.getInstance();
-         //inside the Mock
-         //wait until the data is received
-         setWaitingThread(ni.getCurrentJavaThreadID());
-         if(DataLength == 0){
-               ni.suspendCurrentJavaThread(0);
-         }
+         //inside the Mock
+         //wait until the data is received
+         synchronized (lock) {
+            while(DataLength == 0) {
+                  try {
+                     lock.wait(); // equivalent to lock.wait(0)
+                  } catch (InterruptedException e) {
+                     // TODO Auto-generated catch block
+                     e.printStackTrace();
+                  }
+            }
+         }
    }
 
    //Mock data reader thread
-   public static void notifyDataReception()
-         NativeInterface ni = HIL.getInstance();
-         DataLength = readFromInputStream(Data);
-         ni.resumeJavaThread(getWaitingThread());
+   public static void notifyDataReception() {
+         synchronized (lock) {
+               DataLength = readFromInputStream(Data);
+               lock.notifyAll();
+         }
    }
 
 Resource Management
