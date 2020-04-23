@@ -163,7 +163,7 @@ Blocking Native Methods
 -----------------------
 
 Some native methods block until an event has arrived :ref:`[SNI] <esr-specifications>`. Such
-behavior is implemented in native using the following three methods:
+behavior is implemented in native using the following three functions:
 
 -  ``int32_t SNI_suspendCurrentJavaThread(int64_t timeout)``
 -  ``int32_t SNI_getCurrentJavaThreadID(void)``
@@ -175,7 +175,7 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
   until another thread invokes the ``notify()`` method or the
   ``notifyAll()`` method for this object.
 
-- ``Object.notifyAll()``: Wakes up all threads that are waiting on
+- ``Object.notifyAll()``: Wakes up all the threads that are waiting on
   this object's monitor.
 
 ::
