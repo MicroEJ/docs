@@ -180,8 +180,8 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
 
 ::
 
-   public static byte[] Data = new byte[BUFFER_SIZE];
-   public static int DataLength = 0;
+   public static byte[] data = new byte[BUFFER_SIZE];
+   public static int dataLength = 0;
    private static Object lock = new Object();
 
    //Mock native method
@@ -189,7 +189,7 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
          //inside the Mock
          //wait until the data is received
          synchronized (lock) {
-            while(DataLength == 0) {
+            while(dataLength == 0) {
                   try {
                      lock.wait(); // equivalent to lock.wait(0)
                   } catch (InterruptedException e) {
@@ -203,7 +203,7 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
    //Mock data reader thread
    public static void notifyDataReception() {
          synchronized (lock) {
-               DataLength = readFromInputStream(Data);
+               dataLength = readFromInputStream(data);
                lock.notifyAll();
          }
    }
