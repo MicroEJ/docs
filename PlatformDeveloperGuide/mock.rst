@@ -178,7 +178,7 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
 - ``Object.notifyAll()``: Wakes up all the threads that are waiting on
   this object's monitor.
 
-::
+.. code:: java
 
    public static byte[] data = new byte[BUFFER_SIZE];
    public static int dataLength = 0;
@@ -189,15 +189,15 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
          //inside the Mock
          //wait until the data is received
          synchronized (lock) {
-            while(dataLength == 0) {
-                  try {
-                     lock.wait(); // equivalent to lock.wait(0)
-                  } catch (InterruptedException e) {
-			            Thread.currentThread().interrupt();
-                     // Use the error code specific to your library
-			            throw new NativeException(-1, "InterruptedException", e);
-                  }
-            }
+               while(dataLength == 0) {
+                     try {
+                           lock.wait(); // equivalent to lock.wait(0)
+                     } catch (InterruptedException e) {
+                           Thread.currentThread().interrupt();
+                           // Use the error code specific to your library
+                           throw new NativeException(-1, "InterruptedException", e);
+                     }
+               }
          }
    }
 
