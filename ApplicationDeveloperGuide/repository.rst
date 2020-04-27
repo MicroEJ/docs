@@ -163,8 +163,16 @@ To only resolve a subset of projects can be resolved:
    
    - In the Package Explorer, select the desired projects
    - Right-click on a project and select :guilabel:`Ivy` > :guilabel:`Clean all caches`
+   
 3. Trigger the Add-On libraries processors for source code generation
    
    - Select :guilabel:`Project` > :guilabel:`Clean...`
    - Select :guilabel:`Clean all projects`
    - Click on the :guilabel:`Clean` button
+
+..
+   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

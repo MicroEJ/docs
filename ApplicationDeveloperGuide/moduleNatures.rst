@@ -1,21 +1,10 @@
-.. _application-developer-guide:
-
-Application Developer Guide
-===========================
+Module Natures
+==============
 
 .. toctree::
    :maxdepth: 2
 
-   introduction
-   licenses
-   standaloneApplication
-   sandboxedApplication
-   virtualDevice
-   mmm
-   moduleNatures
-   classpath
-   tools
-   advanced
+   repository
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
