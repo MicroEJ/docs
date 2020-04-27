@@ -1,34 +1,31 @@
 Modules Repository
 ==================
 
-This section describes how to build and use a MicroEJ modules repository. 
-
-A MicroEJ modules repository is a MicroEJ module that bundles a set of MicroEJ modules. 
-It is often called an offline repository as it can distributed as a zip file
-including the settings file for a local configuration of MicroEJ SDK.
-It can also be imported in `MicroEJ Forge <https://www.microej.com/product/forge/>`_.
-
-A modules repository takes its input modules from other of repositories, usually the :ref:`MicroEJ Central Repository <central_repository>` 
-which is itself built by MicroEJ Corp. as a MicroEJ modules repository.
-
-
-Create a Repository Project
----------------------------
-
-In MicroEJ SDK, first create a new project using the ``artifact-repository`` :ref:`module skeleton <mmm_module_skeleton>`.
-
-- The ``ivysettings.xml`` file describes how MicroEJ SDK will fetch the content of this repository when it is extracted locally on file system. 
-  This file will be packaged at the root of the zip file and does not need to be modified.
-
-- The ``module.ivy`` file describes how to build repository and lists the module dependencies that will be included in this repository.
-
-Once extracted, the modules repository is a tree structure where modules organization and name are mapped to folders.
+A modules repository is a module that bundles a set of modules in a portable ZIP file. 
+It is a tree structure where modules organizations and names are mapped to folders.
 
    .. figure:: images/repository-tree.*
       :alt: Example of MicroEJ Module Repository Tree
       :align: center
 
       Example of MicroEJ Module Repository Tree
+
+A modules repository takes its input modules from other of repositories, usually the :ref:`MicroEJ Central Repository <central_repository>` 
+which is itself built by MicroEJ Corp. as a modules repository.
+
+A modules repository is often called an offline repository as it includes the settings file for a local configuration in MicroEJ SDK.
+It can also be imported in `MicroEJ Forge <https://www.microej.com/product/forge/>`_.
+
+
+Create a Repository Project
+---------------------------
+
+In MicroEJ SDK, first :ref:`create a new module project <mmm_module_skeleton>` using the ``artifact-repository`` skeleton.
+
+- The ``ivysettings.xml`` file describes how MicroEJ SDK will fetch the content of this repository when it is extracted locally on file system. 
+  This file will be packaged at the root of the zip file and does not need to be modified.
+
+- The ``module.ivy`` file describes how to build repository and lists the module dependencies that will be included in this repository.
 
 Configure Resolver for Input Modules 
 ------------------------------------
@@ -42,7 +39,7 @@ provided by default in MicroEJ SDK configuration, which is connected to :ref:`Mi
 
    <ea:property name="bar.populate.from.resolver" value="MicroEJChainResolver"/>
 
-The ``MicroEJChainResolver`` defined in ``$USER_HOME\.microej\microej-ivysettings-[VERSION].xml`` is an URL resolver that points to MicroEJ Central Repository.
+The ``MicroEJChainResolver`` is an URL resolver defined defined in ``$USER_HOME\.microej\microej-ivysettings-[VERSION].xml`` that points to MicroEJ Central Repository.
 
 To ensure the repository will be compliant with the :ref:`MMM specification <mmm_specification>`, add the following option:
 
@@ -75,12 +72,12 @@ For example, to add the ``ej.api.edc`` library version ``1.2.3``, copy the follo
 
 .. note::
 
-   We recommended to manually describe each dependency of the modules repository, to keep full control
+   We recommended to manually describe each dependency of the modules repository, in order to keep full control
    of the included modules as well as included modules versions.
-   Module dependencies can still be transitively included by setting the dependency attribute to ``transitive="true"``. 
+   Module dependencies can still be transitively included by setting the dependency attribute ``transitive`` to ``true``. 
    In this case, the included module versions are those that have been resolved when the module was built.
 
-Multiple versions the same module can be included by declaring each dependency using a different configuration.
+Multiple versions of the same module can be included by declaring each dependency using a different configuration.
 The ``artifacts`` configuration has to be derived with a new name as many times as there are different versions to include.
 
 .. code-block:: xml
@@ -128,42 +125,19 @@ The build consists of two steps:
 2. Checks the repository consistency. For each module, it tries to fetch it from this repository
    and fails the build if at least one of the dependencies cannot be resolved.
 
-The repository module ``.zip`` file is built in the ``target~/artifacts/`` folder. 
+The module repository ``.zip`` file is built in the ``target~/artifacts/`` folder. 
 This is file is also published possibly with the ``CHANGELOG.md``, ``LICENSE.txt`` and ``README.md``.
 
-Configure the Offline Repository in MicroEJ SDK
------------------------------------------------
+.. _repository_offline:
+
+Use the Offline Repository
+--------------------------
 
 By default, when starting an empty workspace, MicroEJ SDK is configured to fetch dependencies
 from :ref:`MicroEJ Central Repository <central_repository>`. 
 
-It can be configured to fetch from a modules repository locally:
+To configure MicroEJ SDK to fetch dependencies from a local modules repository:
 
-1. Unzip the modules repository ``.zip`` file to the folder of your choice.
-2. In MicroEJ SDK, select ``Window > Preferences > Ivy > Settings``
-3. Set ``Ivy settings path`` to the ``ivysettings.xml`` located at the root
+1. Unzip the modules repository ``.zip`` file to the folder of your choice,
+2. :ref:`Configure MicroEJ SDK repository <mmm_repository_configuration>` using the ``ivysettings.xml`` file located at the root
    of the folder where the repository has been extracted.
-
-If the workspace is not empty, it is necessary to trigger a full resolution
-and rebuild all the projects using this new repository:
-
-1. Clean caches
-   
-   - In the Package Explorer, right-click on a project 
-   - Select :guilabel:`Ivy` > :guilabel:`Clean all caches`
-2. Resolve projects using the new repository
-   
-   To resolve all the workspace projects, click on the :guilabel:`Resolve All` button in the toolbar:
-
-   .. figure:: images/resolveAll.png
-      :align: center
-
-   To only resolve a subset of the workspace projects:
-   
-   - In the Package Explorer, select the desired projects
-   - Right-click on a project and select :guilabel:`Ivy` > :guilabel:`Clean all caches`
-3. Trigger Add-On Library processors to generate source code again
-   
-   - Select :guilabel:`Project` > :guilabel:`Clean...`
-   - Select :guilabel:`Clean all projects`
-   - Click on the :guilabel:`Clean` button
