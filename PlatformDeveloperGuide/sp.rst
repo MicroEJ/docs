@@ -69,9 +69,8 @@ Example
 
 Below is an example of using a database :ref:`[SP] <esr-specifications>`. The code that publishes the
 data is written in C, and the code that receives the data is written in
-Java. The data is transferred using two memory blocks. One is a scalar
-value, the other is a more complex object representing a two-dimensional
-vector.
+Java. The data is transferred using two memory blocks. ``TEMP`` is a scalar
+value, ``THERMOSTAT`` is a boolean.
 
 Database Description
 --------------------
