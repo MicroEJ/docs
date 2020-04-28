@@ -31,13 +31,13 @@ Application or the C application. The :ref:`[SP] <esr-specifications>` Foundatio
 accessible from the classpath variable ``SP-2.0``. This library contains
 the classes and methods to read and write data in the database. See also
 the Java documentation from the MicroEJ Workbench resources center
-("Javadoc" menu). The C header file sp.h available in the MicroEJ
+("Javadoc" menu). The C header file ``sp.h`` available in the MicroEJ
 Platform ``source/MICROJVM/include`` folder contains the C functions for
 accessing the database.
 
 To embed the :ref:`[SP] <esr-specifications>` database in your binary file, the XML file description
 must be processed by the :ref:`[SP] <esr-specifications>` compiler. This compiler generates a binary
-file (.o) that will be linked to the overall application by the linker.
+file (``.o``) that will be linked to the overall application by the linker.
 It also generates two descriptions of the block ID constants, one in
 Java and one in C. These constants can be used by either the Java or the
 C application modules.
