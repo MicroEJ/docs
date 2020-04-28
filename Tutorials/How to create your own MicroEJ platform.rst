@@ -123,6 +123,11 @@ C Compiler
 The BSP project is provided for a specific compiler (that matches the selected platform architecture).
 Start a new project with your compiler IDE that includes the LL drivers and start the MicroEJ platform in the ``main()`` function.
 
+Platform Validation
+-------------------
+
+Use the `Platform Qualification Tools <https://github.com/MicroEJ/PlatformQualificationTools>`_ to qualify the MicroEJ platform built.
+
 Further assistance needed
 -------------------------
 
