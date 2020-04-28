@@ -7,15 +7,15 @@ Introduction
 A MicroEJ Architecture is a software package that includes the MicroEJ Runtime port to a specific target Instruction Set Architecture (ISA) and C compiler.
 It contains a set of libraries, tools and C header files. The MicroEJ Architectures are provided by MicroEJ SDK.
 
-A MicroEJ platform reference implementation (RI) is a MicroEJ port for a custom board.
+A MicroEJ demo platform is a MicroEJ port for a custom board.
 It contains the MicroEJ configuration and the BSP (C source files).
-The MicroEJ platform RI can be found on https://developer.microej.com.
+The MicroEJ demo platform can be found on https://developer.microej.com.
 
 We recommend reading the :ref:`section.firmware` section to get an overview of the firmware build flow.
 
 The following document assumes the reader is familiar with the :ref:`platform-developer-guide`.
 
-Each platform reference implementation is specific to:
+Each demo platform is specific to:
 
 * a MicroEJ Architecture (MCU ISA and C compiler)
 * an optional RTOS (e.g. FreeRTOS - note: the MicroEJ OS can run bare metal)
@@ -31,7 +31,7 @@ The MicroEJ platform relies on C drivers (aka low level LL drivers) for each of 
 These drivers are implemented in the platform BSP project. This project is edited in the C compiler IDE/dev environment (e.g. KEIL, GCC, IAR).
 E.g. the MicroUI library LED feature will require a ``LLLEDS.c`` that implements the native on/off IO drive.
 
-The following sections explain how to create your own platform for a custom board from an existing platform RI.
+The following sections explain how to create your own platform for a custom board from an existing demo platform.
 In the following, we assume that the new board hardware is validated and at least a trace output is available.
 It is also a good idea to run basic hardware test like:
 
@@ -41,10 +41,10 @@ It is also a good idea to run basic hardware test like:
 
 Several use cases are presented:
 
-A MicroEJ platform Reference Implementation (RI) is already available for the same MCU/RTOS/C Compiler
-------------------------------------------------------------------------------------------------------
+A MicroEJ demo platform is already available for the same MCU/RTOS/C Compiler
+-----------------------------------------------------------------------------
 
-This is the fastest way: the RI is usually provided for a silicon vendor evaluation board.
+This is the fastest way: the demo platform is usually provided for a silicon vendor evaluation board.
 Import this platform in MicroEJ SDK.
 
 As the MCU, RTOS and compiler are the same, only the board specific code needs to be changed (external RAM, external oscillator, communication interfaces).
@@ -54,7 +54,7 @@ Platform
 
 Required actions:
 
-* modify the .platform from the RI (``xxx-configuration`` project) in MicroEJ SDK to match your board features and its associated configuration (e.g. ``UI->Display``).
+* modify the .platform from the demo platform (``xxx-configuration`` project) in MicroEJ SDK to match your board features and its associated configuration (e.g. ``UI->Display``).
   More details on which module does what may be gathered from the :ref:`platform-developer-guide`.
 
 BSP
@@ -69,7 +69,7 @@ Required actions:
 
 * create/review/change the platform Low Level C drivers. 
   They must match the board components and the MCU IO pin assignment
-  (a number of ``LL*.h`` files are referenced from the project, you will need to provide relevant implementations for the function prototypes declared there so that the JVM can delegate the relevant operations to the provided BSP C functions)
+  (a number of ``LL*.h`` files are referenced from the project, you will need to implement the function prototypes declared there so that the JVM can delegate the relevant operations to the provided BSP C functions)
 
 Simulator
 :::::::::
@@ -78,23 +78,23 @@ Required actions:
 
 * modify the existing simulator front panel in MicroEJ SDK ``xxx-fp`` project
 
-A MicroEJ platform Reference Implementation (RI) is not available
------------------------------------------------------------------
+A MicroEJ demo platform is not available
+----------------------------------------
 
-Look for an available RI that will match in order of priority:
+Look for an available demo platform that will match in order of priority:
 
 * same MCU part number
 * same RTOS
 * same C compiler
 
-At this point, consider either to modify the closest platform RI
+At this point, consider either to modify the closest demo platform
 
 * In MicroEJ SDK: modify the platform configuration.
 * in the C IDE: start from an empty project that match with your MCU.
 
 Or to start from scratch a new MicroEJ platform
 
-* In MicroEJ SDK: create your platform and edit (refer to the RI as a model for implementation)
+* In MicroEJ SDK: create your platform and edit (refer to the demo platform as a model for implementation)
 * in the C IDE: start from an empty project and implement the drivers of each of the LL drivers API. 
   
   You will need to make sure that you :
