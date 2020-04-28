@@ -94,9 +94,9 @@ From the database description we can create an interface.
 .. code:: java
 
    public interface Forecast {
-               public static final int ID = 0;
-               public static final int TEMP = 1;
-               public static final int THERMOSTAT = 2;
+   public static final int ID = 0;
+   public static final int TEMP = 1;
+   public static final int THERMOSTAT = 2;
    }
 
 Below is the task that reads the published temperature and controls the
