@@ -106,21 +106,21 @@ thermostat.
 .. code:: java
 
    public void run(){
-               ShieldedPlug database = ShieldedPlug.getDatabase(Forecast.ID);
-               while (isRunning){
-                   //reading the temperature every 30 seconds
-                   //and update thermostat status
-                   try {
-                       int temp = database.readInt(Forecast.TEMP);
-                       print(temp);
-                       //update the thermostat status
-                       database.writeInt(Forecast.THERMOSTAT,temp>tempLimit ? 0 : 1);
-                   }
-                   catch(EmptyBlockException e){
-                       print("Temperature not available");
-                   }
-                   sleep(30000);
-               }
+      ShieldedPlug database = ShieldedPlug.getDatabase(Forecast.ID);
+      while (isRunning) {
+         //reading the temperature every 30 seconds
+         //and update thermostat status
+         try {
+            int temp = database.readInt(Forecast.TEMP);
+            print(temp);
+            //update the thermostat status
+            database.writeInt(Forecast.THERMOSTAT,temp>tempLimit ? 0 : 1);
+         }
+         catch(EmptyBlockException e){
+            print("Temperature not available");
+         }
+         sleep(30000);
+      }
    }
 
 C Code
@@ -140,25 +140,25 @@ controller task.
 
 .. code:: c
 
-   void temperaturePublication(){
-               ShieldedPlug database = SP_getDatabase(Forecast_ID);
-               int32_t temp = temperature();
-               SP_write(database, Forecast_TEMP, &temp);
-           }
+   void temperaturePublication() {
+      ShieldedPlug database = SP_getDatabase(Forecast_ID);
+      int32_t temp = temperature();
+      SP_write(database, Forecast_TEMP, &temp);
+   }
 
-           void thermostatTask(){
-               int32_t thermostatOrder;
-               ShieldedPlug database = SP_getDatabase(Forecast_ID);
-               while(1){
-                   SP_waitFor(database, Forecast_THERMOSTAT);
-                   SP_read(database, Forecast_THERMOSTAT, &thermostatOrder);
-                   if(thermostatOrder == 0) {
-                       thermostatOFF();
-                   }
-                   else {
-                       thermostatON();
-                   }
-               }
+   void thermostatTask(){
+      int32_t thermostatOrder;
+      ShieldedPlug database = SP_getDatabase(Forecast_ID);
+      while(1){
+         SP_waitFor(database, Forecast_THERMOSTAT);
+         SP_read(database, Forecast_THERMOSTAT, &thermostatOrder);
+         if(thermostatOrder == 0) {
+            thermostatOFF();
+         }
+         else {
+            thermostatON();
+         }
+      }
    }
 
 
