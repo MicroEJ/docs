@@ -4,8 +4,8 @@ How to create your own MicroEJ platform on a custom board
 Introduction
 ------------
 
-A MicroEJ architecture is a software package that includes the MicroEJ Runtime port to a specific target Instruction Set Architecture (ISA) and C compiler.
-It contains a set of libraries, tools and C header files. The MicroEJ architectures are provided by MicroEJ SDK.
+A MicroEJ Architecture is a software package that includes the MicroEJ Runtime port to a specific target Instruction Set Architecture (ISA) and C compiler.
+It contains a set of libraries, tools and C header files. The MicroEJ Architectures are provided by MicroEJ SDK.
 
 A MicroEJ platform reference implementation (RI) is a MicroEJ port for a custom board.
 It contains the MicroEJ configuration and the BSP (C source files).
@@ -17,7 +17,7 @@ The following document assumes the reader is familiar with the :ref:`platform-de
 
 Each platform reference implementation is specific to:
 
-* a MicroEJ architecture (MCU ISA and C compiler)
+* a MicroEJ Architecture (MCU ISA and C compiler)
 * an optional RTOS (e.g. FreeRTOS - note: the MicroEJ OS can run bare metal)
 * a board: the OS bring up code that is board specific (e.g. the MCU specific code/IO/RAM/Clock/Middleware… configurations)
 
