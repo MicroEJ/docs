@@ -5,10 +5,10 @@ A modules repository is a module that bundles a set of modules in a portable ZIP
 It is a tree structure where modules organizations and names are mapped to folders.
 
    .. figure:: images/repository-tree.*
-      :alt: Example of MicroEJ Module Repository Tree
+      :alt: Example of MicroEJ Modules Repository Tree
       :align: center
 
-      Example of MicroEJ Module Repository Tree
+      Example of MicroEJ Modules Repository Tree
 
 A modules repository takes its input modules from other of repositories, usually the :ref:`MicroEJ Central Repository <central_repository>` 
 which is itself built by MicroEJ Corp. as a modules repository.
@@ -88,7 +88,7 @@ The ``artifacts`` configuration has to be derived with a new name as many times 
      <conf name="artifacts_1" visibility="private"/>
      <conf name="artifacts_2" visibility="private"/>
 
-     <!-- ... other configurations ... 
+     <!-- ... other configurations ... -->
    </configurations>
 
    <dependencies>
