@@ -31,13 +31,13 @@ Application or the C application. The :ref:`[SP] <esr-specifications>` Foundatio
 accessible from the classpath variable ``SP-2.0``. This library contains
 the classes and methods to read and write data in the database. See also
 the Java documentation from the MicroEJ Workbench resources center
-("Javadoc" menu). The C header file sp.h available in the MicroEJ
+("Javadoc" menu). The C header file ``sp.h`` available in the MicroEJ
 Platform ``source/MICROJVM/include`` folder contains the C functions for
 accessing the database.
 
 To embed the :ref:`[SP] <esr-specifications>` database in your binary file, the XML file description
 must be processed by the :ref:`[SP] <esr-specifications>` compiler. This compiler generates a binary
-file (.o) that will be linked to the overall application by the linker.
+file (``.o``) that will be linked to the overall application by the linker.
 It also generates two descriptions of the block ID constants, one in
 Java and one in C. These constants can be used by either the Java or the
 C application modules.
@@ -52,8 +52,7 @@ name is Shielded Plug Compiler. It outputs:
 -  A description of the requested resources of the database as a binary
    file (``.o``) that will be linked to the overall application by the
    linker. It is an ELF format description that reserves both the
-   necessary RAM and the necessary Flash memory for the database of the
-   Shielded Plug.
+   necessary RAM and the necessary Flash memory for the Shielded Plug database.
 
 -  Two descriptions, one in Java and one in C, of the block ID constants
    to be used by either Java or C application modules.
@@ -70,9 +69,8 @@ Example
 
 Below is an example of using a database :ref:`[SP] <esr-specifications>`. The code that publishes the
 data is written in C, and the code that receives the data is written in
-Java. The data is transferred using two memory blocks. One is a scalar
-value, the other is a more complex object representing a two-dimensional
-vector.
+Java. The data is transferred using two memory blocks. ``TEMP`` is a scalar
+value, ``THERMOSTAT`` is a boolean.
 
 Database Description
 --------------------
@@ -96,9 +94,9 @@ From the database description we can create an interface.
 .. code:: java
 
    public interface Forecast {
-               public static final int ID = 0;
-               public static final int TEMP = 1;
-               public static final int THERMOSTAT = 2;
+      public static final int ID = 0;
+      public static final int TEMP = 1;
+      public static final int THERMOSTAT = 2;
    }
 
 Below is the task that reads the published temperature and controls the
@@ -107,21 +105,21 @@ thermostat.
 .. code:: java
 
    public void run(){
-               ShieldedPlug database = ShieldedPlug.getDatabase(Forecast.ID);
-               while (isRunning){
-                   //reading the temperature every 30 seconds
-                   //and update thermostat status
-                   try {
-                       int temp = database.readInt(Forecast.TEMP);
-                       print(temp);
-                       //update the thermostat status
-                       database.writeInt(Forecast.THERMOSTAT,temp>tempLimit ? 0 : 1);
-                   }
-                   catch(EmptyBlockException e){
-                       print("Temperature not available");
-                   }
-                   sleep(30000);
-               }
+      ShieldedPlug database = ShieldedPlug.getDatabase(Forecast.ID);
+      while (isRunning) {
+         //reading the temperature every 30 seconds
+         //and update thermostat status
+         try {
+            int temp = database.readInt(Forecast.TEMP);
+            print(temp);
+            //update the thermostat status
+            database.writeInt(Forecast.THERMOSTAT,temp>tempLimit ? 0 : 1);
+         }
+         catch(EmptyBlockException e){
+            print("Temperature not available");
+         }
+         sleep(30000);
+      }
    }
 
 C Code
@@ -141,25 +139,25 @@ controller task.
 
 .. code:: c
 
-   void temperaturePublication(){
-               ShieldedPlug database = SP_getDatabase(Forecast_ID);
-               int32_t temp = temperature();
-               SP_write(database, Forecast_TEMP, &temp);
-           }
+   void temperaturePublication() {
+      ShieldedPlug database = SP_getDatabase(Forecast_ID);
+      int32_t temp = temperature();
+      SP_write(database, Forecast_TEMP, &temp);
+   }
 
-           void thermostatTask(){
-               int32_t thermostatOrder;
-               ShieldedPlug database = SP_getDatabase(Forecast_ID);
-               while(1){
-                   SP_waitFor(database, Forecast_THERMOSTAT);
-                   SP_read(database, Forecast_THERMOSTAT, &thermostatOrder);
-                   if(thermostatOrder == 0) {
-                       thermostatOFF();
-                   }
-                   else {
-                       thermostatON();
-                   }
-               }
+   void thermostatTask(){
+      int32_t thermostatOrder;
+      ShieldedPlug database = SP_getDatabase(Forecast_ID);
+      while(1){
+         SP_waitFor(database, Forecast_THERMOSTAT);
+         SP_read(database, Forecast_THERMOSTAT, &thermostatOrder);
+         if(thermostatOrder == 0) {
+            thermostatOFF();
+         }
+         else {
+            thermostatON();
+         }
+      }
    }
 
 
