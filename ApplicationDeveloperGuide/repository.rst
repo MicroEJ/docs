@@ -58,17 +58,23 @@ Modules bundled into the modules repository must be declared in the ``dependenci
 Include a Single Module
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-To add a module, declare the module dependency using the ``artifacts`` configuration.
+To add a module, declare the module dependency using the ``artifacts`` configuration:
 
-For example, to add the ``ej.api.edc`` library version ``1.2.3``, copy the following line:
+.. code-block:: xml
+   :emphasize-lines: 2
+
+   <dependencies>
+      <dependency conf="artifacts->*" transitive="false" org="[module_org]" name="[module_name]" rev="[module_version]" />
+        
+      <!-- ... other dependencies ... -->
+   </dependencies>
+
+
+For example, to add the ``ej.api.edc`` library version ``1.2.3``, write the following line:
 
 .. code-block:: xml
 
-    <dependencies>
-      <dependency conf="artifacts->*" transitive="false" org="ej.api" name="edc" rev="1.2.3" />
-        
-      <!-- ... other dependencies ... -->
-    </dependencies>
+   <dependency conf="artifacts->*" transitive="false" org="ej.api" name="edc" rev="1.2.3" />
 
 .. note::
 
@@ -84,34 +90,35 @@ The ``artifacts`` configuration has to be derived with a new name as many times 
    :emphasize-lines: 3,4,11,12
 
    <configurations defaultconfmapping="default->default;provided->provided">
-     <conf name="artifacts" visibility="private"/>
-     <conf name="artifacts_1" visibility="private"/>
-     <conf name="artifacts_2" visibility="private"/>
+      <conf name="artifacts" visibility="private"/>
+      <conf name="artifacts_1" visibility="private"/>
+      <conf name="artifacts_2" visibility="private"/>
 
-     <!-- ... other configurations ... -->
+      <!-- ... other configurations ... -->
    </configurations>
 
    <dependencies>
-      <dependency conf="artifacts->*" transitive="false" org="ej.api" name="edc" rev="1.0.0" />
-      <dependency conf="artifacts_1->*" transitive="false" org="ej.api" name="edc" rev="2.0.0" />
-      <dependency conf="artifacts_2->*" transitive="false" org="ej.api" name="edc" rev="3.0.0" />
+      <dependency conf="artifacts->*" transitive="false" org="[module_org]" name="[module_name]" rev="[module_version_1]" />
+      <dependency conf="artifacts_1->*" transitive="false" org="[module_org]" name="[module_name]" rev="[module_version_2]" />
+      <dependency conf="artifacts_2->*" transitive="false" org="[module_org]" name="[module_name]" rev="[module_version_3]" />
         
       <!-- ... other dependencies ... -->
-    </dependencies>
+   </dependencies>
 
 Include a Modules Repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To add all the modules already included in an other modules repository, 
-declare the modules repository dependency using the ``repository`` configuration.
+declare the modules repository dependency using the ``repository`` configuration:
 
 .. code-block:: xml
+   :emphasize-lines: 2
 
-    <dependencies>
-      <dependency conf="repository->*" transitive="false" org="ej.repository" name="microej-4.1" rev="1.10.0" />
+   <dependencies>
+      <dependency conf="repository->*" transitive="false" org="[repository_org]" name="[repository_name]" rev="[repository_version]" />
         
       <!-- ... other dependencies ... -->
-    </dependencies>
+   </dependencies>
 
 Build the Repository
 --------------------
