@@ -165,7 +165,7 @@ application classpath.
 .. note::
 
    The list file must be specified in the MicroEJ Application launcher
-   (see :ref:`workbenchLaunchOptions`). However, all files in
+   (see :ref:`application_options`). However, all files in
    application classpath with suffix ``.images.list`` are automatically
    parsed by the Image Generator tool.
 
@@ -519,7 +519,7 @@ The MicroUI Image APIs are available in the class
 pre-generated image. When an image has been pre-processed, the MicroUI
 Image APIs ``createImage*`` will load the image.
 
-Refer to the chapter :ref:`workbenchLaunchOptions` (``Libraries`` >
+Refer to the chapter :ref:`application_options` (``Libraries`` >
 ``MicroUI`` > ``Image``) for more information about specifying the image
 configuration file.
 
