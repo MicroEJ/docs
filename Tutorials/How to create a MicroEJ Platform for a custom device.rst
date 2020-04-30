@@ -55,7 +55,7 @@ Platform
 
 In MicroEJ SDK
 
-* modify the .platform from the MicroEJ Platform (``xxx-configuration`` project) to match the device features and its associated configuration (e.g. ``UI->Display``).
+* modify the ``.platform`` from the MicroEJ Platform (``xxx-configuration`` project) to match the device features and its associated configuration (e.g. ``UI->Display``).
 
   .. image:: images/tuto_microej_platform_how_to_select_modules.PNG
 
