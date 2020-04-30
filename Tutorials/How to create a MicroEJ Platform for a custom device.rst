@@ -38,6 +38,7 @@ It is also a good idea to run basic hardware test like:
 * Internal and external flash programming and verification
 * RAM 8/16/32 -bit read/write operations (internal and external if any)
 * EEMBC Coremark benchmark to verify the CPU/buses/memory/compiler configuration
+* See the `Platform Qualification Tools <https://github.com/MicroEJ/PlatformQualificationTools>`_ used to qualify MicroEJ Platforms.
 
 Several use cases are presented:
 
