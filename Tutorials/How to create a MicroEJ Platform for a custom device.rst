@@ -102,7 +102,7 @@ At this point, consider either to modify the closest MicroEJ Platform
 
 Or to start from scratch a new MicroEJ Platform
 
-* In MicroEJ SDK: create the platform and edit (refer to the MicroEJ Platform as a model for implementation)
+* In MicroEJ SDK: create the MicroEJ Platform and refer to the selected MicroEJ Platform as a model for implementation. (refer to :ref:`platform_creation`)
 * in the C IDE: start from an empty project and implement the drivers of each of the LL drivers API. 
   
   Make sure to link with:
