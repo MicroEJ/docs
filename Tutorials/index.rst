@@ -6,7 +6,7 @@ Tutorials
 .. toctree::
    :maxdepth: 1
 
-   How to create a MicroEJ Platform for a custom device
+   tutorialCreateCustomPlatform
 
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
