@@ -12,7 +12,7 @@ This project describes the components involved and the process to build a MicroE
 Requirements
 ============
 
-* MicroEJ SDK 4.x is installed with an activated license (evaluation license or production license).
+* MicroEJ SDK 5 is installed with an activated license (evaluation license or production license).
 * The reader is familiar with the :ref:`chapter-glossary`
 * The reader has run one of the MicroEJ SDK getting started https://developer.microej.com/get-started/
 * The reader has read the :ref:`platform-developer-guide`.
