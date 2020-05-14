@@ -9,7 +9,7 @@ It contains a set of libraries, tools and C header files. The MicroEJ Architectu
 
 A MicroEJ Platform is a MicroEJ Architecture port for a custom device.
 It contains the MicroEJ configuration and the BSP (C source files).
-MicroEJ Corp. provides example of MicroEJ Platforms for various evaluation boards on https://repository.microej.com/index.php?resource=JPF.
+MicroEJ Corp. provides example of MicroEJ Platforms for various evaluation boards on https://repository.microej.com/architectures/.
 
 We recommend reading the :ref:`section.firmware` section to get an overview of MicroEJ Firmware build flow.
 
