@@ -59,7 +59,7 @@ In MicroEJ SDK
 
   .. image:: images/tuto_microej_platform_how_to_select_modules.PNG
 
-  More details available modules can be found in the :ref:`platform-developer-guide`.
+  More details on available modules can be found in the :ref:`platform-developer-guide`.
 
 
 BSP
