@@ -1,4 +1,4 @@
-Create a MicroEJ Platform for a custom device
+Create a MicroEJ Platform for a Custom Device
 =============================================
 
 Introduction
@@ -9,7 +9,9 @@ It contains a set of libraries, tools and C header files. The MicroEJ Architectu
 
 A MicroEJ Platform is a MicroEJ Architecture port for a custom device.
 It contains the MicroEJ configuration and the BSP (C source files).
-MicroEJ Corp. provides example of MicroEJ Platforms for various evaluation boards on https://repository.microej.com/architectures/.
+
+MicroEJ Corp. provides MicroEJ Evaluation Architectures at https://repository.microej.com/architectures/,
+and MicroEJ Platform demo projects for various evaluation boards at https://repository.microej.com/index.php?resource=JPF.
 
 We recommend reading the :ref:`section.firmware` section to get an overview of MicroEJ Firmware build flow.
 
@@ -31,19 +33,19 @@ The MicroEJ Platform relies on C drivers (aka low level LL drivers) for each of 
 These drivers are implemented in the platform BSP project. This project is edited in the C compiler IDE/dev environment (e.g. KEIL, GCC, IAR).
 E.g. the MicroUI library LED feature will require a ``LLLEDS.c`` that implements the native on/off IO drive.
 
-The following sections explain how to create a MicroEJ Platform for a custom device starting from an existing MicroEJ Platform.
+The following sections explain how to create a MicroEJ Platform for a custom device starting from an existing MicroEJ Platform project
+whether it is configured for the same MCU/RTOS/C Compiler or not.
+
 In the following, we assume that the new device hardware is validated and at least a trace output is available.
-It is also a good idea to run basic hardware test like:
+It is also a good idea to run basic hardware tests like:
 
 * Internal and external flash programming and verification
 * RAM 8/16/32 -bit read/write operations (internal and external if any)
 * EEMBC Coremark benchmark to verify the CPU/buses/memory/compiler configuration
 * See the `Platform Qualification Tools <https://github.com/MicroEJ/PlatformQualificationTools>`_ used to qualify MicroEJ Platforms.
 
-Several use cases are presented:
-
-A MicroEJ Platform is already available for the same MCU/RTOS/C Compiler
-------------------------------------------------------------------------
+A MicroEJ Platform Project is already available for the same MCU/RTOS/C Compiler
+--------------------------------------------------------------------------------
 
 This is the fastest way: the MicroEJ Platform is usually provided for a silicon vendor evaluation board.
 Import this platform in MicroEJ SDK.
@@ -87,8 +89,8 @@ In MicroEJ SDK
 
 * modify the existing Simulator front panel ``xxx-fp`` project
 
-A MicroEJ Platform is not available
------------------------------------
+A MicroEJ Platform Project is not available for the same MCU/RTOS/C Compiler
+----------------------------------------------------------------------------
 
 Look for an available MicroEJ Platform that will match in order of priority:
 
@@ -137,7 +139,7 @@ Platform Validation
 
 Use the `Platform Qualification Tools <https://github.com/MicroEJ/PlatformQualificationTools>`_ to qualify the MicroEJ Platform built.
 
-Further assistance needed
+Further Assistance Needed
 -------------------------
 
 Please note that porting MicroEJ to a new device is also something that is part of our engineering services. Consider contacting sales@microej.com to request a quote.
