@@ -1,5 +1,5 @@
-How to create a MicroEJ Platform for a custom device
-====================================================
+Create a MicroEJ Platform for a custom device
+=============================================
 
 Introduction
 ------------
