@@ -19,6 +19,7 @@ Platform Developer Guide
    fs
    hal
    device
+   systemView
    simulation
    limitations
    appendix/index
