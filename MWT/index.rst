@@ -1,5 +1,5 @@
-Presentation
-============
+MWT
+===
 
 MWT is a toolkit that simplifies the creation and use of graphical user interface widgets on a pixelated display.
 
