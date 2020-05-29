@@ -11,14 +11,14 @@ Structure
 Widget
 ~~~~~~
 
-A widget is an object that is intended to be displayed on a screen and that can interact with the user. A Widget occupies a specific region of the display and holds a state.
+A widget is an object that is intended to be displayed on a screen. A Widget occupies a specific region of the display and holds a state. A user may interact with a widget (using a touch screen or a button for example).
 
 Widgets are arranged on a desktop. A widget can be part of only one desktop hierarchy, and can appear only once on that desktop.
 
 Container
 ~~~~~~~~~
 
-A container follows the composite pattern: it is a widget composed of other widgets. It also defines the layout policy of its children (defining their bounds). The children's locations are relative to the location of their parent.
+A container follows the composite pattern: it is a widget composed of other widgets. It also defines the layout policy of its children (defining their bounds). The children's positions are relative to the position of their parent.
 Containers can be nested to design elaborate user interfaces.
 
 Widgets added to a container are stored in a list. The order of the list defines the widgets' front-to-back stacking order within the container. By default, a Widget is added to the end of the list (so to the bottom of the stacking order).
@@ -44,18 +44,18 @@ A widget can also be rendered directly in a specific graphics context by calling
 Lay Out
 -------
 
-All widgets are laid out at once during the lay out process. This process can be started by `Desktop.requestLayOut()` and `Widget.requestLayOut()`. This process is composed of two steps, each step browses the hierarchy of widgets following a depth-first algorithm:
+All widgets are laid out at once during the lay out process. This process can be started by `Desktop.requestLayOut()`, `Widget.requestLayOut()`. The layout is also automatically done when the desktop is shown (`Desktop.onShown()`). This process is composed of two steps, each step browses the hierarchy of widgets following a depth-first algorithm:
 * compute the optimal size for each widget and container (considering the constraints of the lay out),
-* set location and size for each widget.
+* set position and size for each widget.
 
-Once the location and size of a widget is set, the widget is notified by a call to `onLaidOut()`.
+Once the position and size of a widget is set, the widget is notified by a call to `onLaidOut()`.
 
 Event Dispatch
 --------------
 
 Events generated in the hardware (touch, buttons, etc.) are sent to the event dispatcher of the desktop. It is then responsible of sending the event to one or several widgets of the hierarchy. A widget receives the event through its `handleEvent(int)` method. This method returns a boolean that indicates whether or not the event has been consumed by the widget or not.
 
-Disabled widgets cannot receive events.
+Disabled widgets cannot receive events and widget are disabled by default.
 
 Pointer Event Dispatcher
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -72,7 +72,7 @@ Once a widget has consumed an event, it will be the only one to receive the next
    :alt: Pointer Event Dispatcher Flow
    :align: center
 
-A widget can redefine its haptic area by subclassing the `contains(int x, int y)` method. It is useful when a widget does not fill fully its bounds.
+A widget can redefine its reactive area by subclassing the `contains(int x, int y)` method. It is useful when a widget does not fill fully its bounds.
 
 .. Add an example such as a circular slider or an analog watchface.
 
