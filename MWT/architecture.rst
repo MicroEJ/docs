@@ -37,7 +37,7 @@ A new rendering of a widget on the display can be requested by calling its `requ
 
 When a container is rendered, all its children are also rendered.
 
-A widget can be transparent, meaning that it does not fill its whole bounds. In this case, when this widget is asked to be rendered, its parent is asked to be rendered in the area of the widget (recursively if the parent is also transparent). Usually a widget is transparent when its background (from the style) is transparent.
+A widget can be transparent, meaning that it does not draw every pixel of its bounds. In this case, when this widget is asked to be rendered, its parent is asked to be rendered in the area of the widget (recursively if the parent is also transparent). Usually a widget is transparent when its background (from the style) is transparent.
 
 A widget can also be rendered directly in a specific graphics context by calling its `render(GraphicsContext)` method. It can be useful to render a widget (and its children) in an image for example.
 
