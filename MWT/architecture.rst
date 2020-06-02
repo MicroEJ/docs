@@ -21,7 +21,7 @@ Container
 A container follows the composite pattern: it is a widget composed of other widgets. It also defines the layout policy of its children (defining their bounds). The children's positions are relative to the position of their parent.
 Containers can be nested to design elaborate user interfaces.
 
-Widgets added to a container are stored in a list. The order of the list defines the widgets' front-to-back stacking order within the container. By default, a Widget is added to the end of the list (so to the bottom of the stacking order).
+The children are rendered in the order in which they have been added in the container. And thus if the container allows overlapping, the widgets added last will be on top of the widgets added first.
 
 Desktop
 ~~~~~~~
@@ -55,7 +55,7 @@ Event Dispatch
 
 Events generated in the hardware (touch, buttons, etc.) are sent to the event dispatcher of the desktop. It is then responsible of sending the event to one or several widgets of the hierarchy. A widget receives the event through its `handleEvent(int)` method. This method returns a boolean that indicates whether or not the event has been consumed by the widget or not.
 
-Disabled widgets cannot receive events and widget are disabled by default.
+Widgets are disabled by default and don't receive the events.
 
 Pointer Event Dispatcher
 ~~~~~~~~~~~~~~~~~~~~~~~~~
