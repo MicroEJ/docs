@@ -270,6 +270,7 @@ The following table describes Platform options, configured in ``bsp`` > ``bsp.pr
      - Specify the BSP root directory to be included to the platform.
      - ``c:\\Users\\user\\mybsp`` on Windows systems or ``/home/user/bsp`` on Unix systems.
 
+.. _bsp_connection_application_options:
 
 Application options described in the following table are configured as regular :ref:`MicroEJ Application Options <application_options>`.
 

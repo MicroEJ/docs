@@ -19,6 +19,7 @@ Notice that some options may not be available, in the following cases:
 - Option is specific to the MicroEJ Core Engine capability (*tiny*/*single*/*multi*) which is integrated in the targeted Platform.
 - Option is specific to the target (MicroEJ Core Engine on Device or Simulator).
 - Option has been introduced in a newer version of the MicroEJ Architecture which is integrated in the targeted Platform.
+- Options related to :ref:`Board Support Package (BSP) connection <bsp_connection_application_options>`.
 
 .. include:: sectionArchitectureOptions.rst
 
