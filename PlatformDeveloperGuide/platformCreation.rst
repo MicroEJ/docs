@@ -196,10 +196,10 @@ The following list describes the 3 most common integration cases:
   BSP connection can be configured when building the MicroEJ Application (options with absolute paths).
 
   .. figure:: images/bsp-connection-cases-none.png
-     :alt: MicroEJ Platform with no BSP configuration
+     :alt: MicroEJ Platform with no BSP connection
      :align: center
 
-     MicroEJ Platform with no BSP configuration
+     MicroEJ Platform with no BSP connection
 
   This case is recommended when:
 
@@ -213,10 +213,10 @@ The following list describes the 3 most common integration cases:
   and the BSP root location is configured when building the MicroEJ Application (option with absolute path).
 
   .. figure:: images/bsp-connection-cases-partial.png
-     :alt: MicroEJ Platform with partial BSP configuration
+     :alt: MicroEJ Platform with partial BSP connection
      :align: center
 
-     MicroEJ Platform with partial BSP configuration
+     MicroEJ Platform with partial BSP connection
 
   This case is recommended when:
   
@@ -229,10 +229,10 @@ The following list describes the 3 most common integration cases:
   No BSP path need to be configured when building the MicroEJ Application.
 
   .. figure:: images/bsp-connection-cases-full.png
-     :alt: MicroEJ Platform with full BSP configuration
+     :alt: MicroEJ Platform with full BSP connection
      :align: center
 
-     MicroEJ Platform with full BSP configuration
+     MicroEJ Platform with full BSP connection
 
   This case is recommended when:
 
