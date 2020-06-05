@@ -365,13 +365,10 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
 BSP Files
 ---------
 
-The MicroEJ Platform needs some information about the device project (the
-BSP). This information is required for building a MicroEJ Application
-that is compatible with the BSP.
+Some MicroEJ Architecture modules require some additional information 
+about the BSP implementation of Low Level APIs.
 
-Some BSP files (XML files) are required to configure the MicroEJ
-Platform modules. The name of these files must be ``bsp.xml``. They must
-be stored in each module's configuration folder.
+This information must be stored in each module's configuration folder, in a file named ``bsp.xml``.
 
 This file must start with the node ``<bsp>``. It can contain several
 lines like this one:
@@ -400,8 +397,8 @@ MicroEJ Platform build.
 Build MicroEJ Platform
 ======================
 
-To build the MicroEJ Platform, click on the Build Platform link on the
-platform configuration Overview.
+To build the MicroEJ Platform, click on the :guilabel:`Build Platform` link on the
+platform configuration :guilabel:`Overview` tab.
 
 It will create a MicroEJ Platform in the workspace available for the
 MicroEJ project to run on. The MicroEJ Platform will be available in:
