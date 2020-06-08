@@ -120,11 +120,6 @@ Troubleshooting
 Network Setup Errors
 ~~~~~~~~~~~~~~~~~~~~
 
-The network security key isn't correct
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Issue observed on Windows operating system, try to use a smartphone instead.
-
 I can't find the "BLE-Mock-Controller-[hexa device id]" access point
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
