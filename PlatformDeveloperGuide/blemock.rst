@@ -1,3 +1,5 @@
+.. _blemock:
+
 Bluetooth LE Simulation
 =======================
 
@@ -35,12 +37,25 @@ To simulate a Bluetooth LE application, follow these three steps:
 - Set up the network configuration
 - Run the application on the simulator
 
-If your are facing any issues, check BLEMOCKTROUBLESHOOTING_.
+If your are facing any issues, check the :ref:`Troubleshooting <blemock-troubleshooting>`.
 
 Controller setup
 ~~~~~~~~~~~~~~~~
 
-To set up the controller, flash the firmware on the device :
+To set up the controller, follow these steps:
+
+- Plug-in the ESP32-DevKitC board to your computer,
+- Find the associated COM port,
+- In the flash tool:
+
+  - select the chip "ESP32 DownloadTool"
+  - browse for the firmware file
+  - set the offset to 0x000000
+  - set the COM port
+  - set the baudrate to 921 600
+  - start the flash download
+
+With the flash download from espressif, you should end with something similar to this :
 
    |flash-download-tool|
 
@@ -49,8 +64,7 @@ Network setup
 
 To configure the network:
 
-#. Connect your computer to the Wi-Fi network "BLE-<ID>" (password :
-   ``BLEoWifi``)
+#. Connect your computer to the Wi-Fi network "BLE-Mock-Controller-[hexa device id]" mounted by the controller.
 #. Open a browser and connect to http://192.168.4.1/ to access the Wi-Fi setup
    interface :
 
@@ -78,15 +92,22 @@ The IP address of the controller is available in the logs :
 
 |controller-ip|
 
-Configure the Bluetooth LE mock settings in the simulator Run Configuration panel
-of your Bluetooth LE application before running it on the simulator.
+Before running your Bluetooth LE application on the simulator, in the
+:ref:`Run configuration <concepts-microejlaunches>` panel, set the simulation mode
+to "Controller (over net)" and configure the Bluetooth LE mock settings.
 
 |bluetooth-mock-configuration|
 
-Launching the application on the simulator will reboot the controller. The
-simulation starts once the controller is reconnected to the network.
+Launching the application on the simulator will restore the controller to its
+initial state (the BLE adapter is disabled).
 
-.. _BLEMOCKTROUBLESHOOTING: blemockTroubleshooting.rst
+Troubleshooting
+---------------
+
+.. toctree::
+
+   blemockTroubleshooting
+
 .. _firmware: resources/blemock-controller.bin
 .. |Bluetooth-mock-controller| image:: images/blemock-controller.png
 .. |flash-download-tool| image:: images/blemock-flash-download-tool.png
