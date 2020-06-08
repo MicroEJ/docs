@@ -46,7 +46,7 @@ native world:
 .. _fig_sni-flow:
 .. figure:: images/sni_flow.*
    :alt: SNI Processing
-   :width: 80.0%
+   :scale: 70%
    :align: center
 
    :ref:`[SNI] <esr-specifications>` Processing
@@ -144,6 +144,7 @@ activities:
 .. _fig_sni-sync:
 .. figure:: images/sni_sync.*
    :alt: Green Threads and RTOS Task Synchronization
+   :scale: 70%
    :align: center
 
    Green Threads and RTOS Task Synchronization
