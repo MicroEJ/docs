@@ -1,18 +1,18 @@
 .. _blemock:
 
-Bluetooth LE Simulation
-=======================
+Bluetooth LE Mock
+=================
 
 Overview
 --------
 
-To run an application that uses the Bluetooth LE foundation library on the
-simulator, a Bluetooth LE mock controller must be set up first :
+To run a MicroEJ Application that uses the Bluetooth LE Foundation Library (:ref:`ej.api.bluetooth <https://repository.microej.com/artifacts/ej/api/bluetooth/>` 
+on MicroEJ Simulator, a Bluetooth LE mock controller must be set up first:
 
    |Bluetooth-mock-controller|
 
 The Bluetooth LE mock controller is a hardware mock of the Bluetooth LE library. It
-means the simulator uses a real Bluetooth LE device to scan other devices,
+means the Simulator uses a real Bluetooth LE device to scan other devices,
 advertise, discover services, connect, pair, etc... This design enables
 testing of apps in a real-world environment.
 
@@ -35,11 +35,11 @@ To simulate a Bluetooth LE application, follow these three steps:
 
 - Set up the controller
 - Set up the network configuration
-- Run the application on the simulator
+- Run the application on the Simulator
 
-If your are facing any issues, check the :ref:`Troubleshooting <blemock-troubleshooting>`.
+If your are facing any issues, check the :ref:`Troubleshooting <blemock-troubleshooting>` section.
 
-Controller setup
+Controller Setup
 ~~~~~~~~~~~~~~~~
 
 To set up the controller, follow these steps:
@@ -59,7 +59,7 @@ With the flash download from espressif, you should end with something similar to
 
    |flash-download-tool|
 
-Network setup
+Network Setup
 ~~~~~~~~~~~~~
 
 To configure the network:
@@ -84,7 +84,7 @@ To configure the network:
 Simulation
 ~~~~~~~~~~
 
-It is possible to run the simulator as many times as necessary using the same
+It is possible to run the Simulator as many times as necessary using the same
 setup. Also, rebooting the controller will automatically set up the network with
 the saved configuration.
 
@@ -92,13 +92,13 @@ The IP address of the controller is available in the logs :
 
 |controller-ip|
 
-Before running your Bluetooth LE application on the simulator, in the
+Before running your Bluetooth LE application on the Simulator, in the
 :ref:`Run configuration <concepts-microejlaunches>` panel, set the simulation mode
 to "Controller (over net)" and configure the Bluetooth LE mock settings.
 
 |bluetooth-mock-configuration|
 
-Launching the application on the simulator will restore the controller to its
+Launching the application on the Simulator will restore the controller to its
 initial state (the BLE adapter is disabled).
 
 Troubleshooting
