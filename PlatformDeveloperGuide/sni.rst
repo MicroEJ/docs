@@ -173,9 +173,13 @@ install the additional Java APIs in order to manipulate the data arrays.
 Use
 ===
 
-A classpath variable named ``SNI-1.2`` is available, which must be added
-to the build path of the MicroEJ Application project, in order to allow
+The `SNI API module <https://repository.microej.com/artifacts/ej/api/sni/>`_ must be added 
+to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ Application project, in order to allow
 access to the :ref:`[SNI] <esr-specifications>` library.
+
+::
+
+  <dependency org="ej.api" name="sni" rev="1.3.1"/>
 
 
 ..
