@@ -6,7 +6,7 @@ Bluetooth LE Mock
 Overview
 --------
 
-To run a MicroEJ Application that uses the Bluetooth LE Foundation Library (:ref:`ej.api.bluetooth <https://repository.microej.com/artifacts/ej/api/bluetooth/>` 
+To run a MicroEJ Application that uses the Bluetooth LE Foundation Library (`ej.api.bluetooth <https://repository.microej.com/artifacts/ej/api/bluetooth/>`_) 
 on MicroEJ Simulator, a Bluetooth LE mock controller must be set up first:
 
    |Bluetooth-mock-controller|
@@ -55,9 +55,14 @@ To set up the controller, follow these steps:
   - set the baudrate to 921 600
   - start the flash download
 
-With the flash download from espressif, you should end with something similar to this :
+With the flash download tool from Espressif, you should end with something similar to this :
 
-   |flash-download-tool|
+.. figure:: images/blemock-flash-download-tool.png
+   :alt: Bluetooth LE Flash Download Tool Configuration
+   :align: center
+   :scale: 80%
+
+   Bluetooth LE Flash Download Tool Configuration
 
 Network Setup
 ~~~~~~~~~~~~~
@@ -96,24 +101,61 @@ Before running your Bluetooth LE application on the Simulator, in the
 :ref:`Run configuration <concepts-microejlaunches>` panel, set the simulation mode
 to "Controller (over net)" and configure the Bluetooth LE mock settings.
 
-|bluetooth-mock-configuration|
+.. figure:: images/blemock-configuration.png
+   :alt: Bluetooth LE Mock Configuration
+   :align: center
+   :scale: 80%
+
+   Bluetooth LE Mock Configuration
 
 Launching the application on the Simulator will restore the controller to its
 initial state (the BLE adapter is disabled).
 
+
+.. _blemock-troubleshooting:
+
 Troubleshooting
 ---------------
 
-.. toctree::
+Network Setup Errors
+~~~~~~~~~~~~~~~~~~~~
 
-   blemockTroubleshooting
+The network security key isn't correct
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _firmware: resources/blemock-controller.bin
+Issue observed on Windows operating system, try to use a smartphone instead.
+
+I can't find the "BLE-Mock-Controller-[hexa device id]" access point
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The signal of this Wi-Fi access point may be weaker than the surrounding access 
+points. Try to reduce the distance between the controller and your computer; and
+rescan. If it's not possible, try using a smartphone instead (only a browser
+will be required to set up the network configuration).
+
+I want to override the network configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If the Wi-Fi credentials are not valid anymore, the controller restarts the
+network setup phase. Yet, in case the credentials are valid but you want to
+change them, erase the flash and reflash the firmware.
+
+Simulation Errors
+~~~~~~~~~~~~~~~~~
+
+Error during the simulation : mock could not connect to controller
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This error means the mock process (Simulator) could not initialize the connection
+with the controller. Please check that the device is connected to the network
+(see logs in the serial port output) and that your computer is in the same
+network.
+
+.. _developer.microej.com: https://developer.microej.com/getting-started-sdk-esp32-wrover-5.html
+.. _firmware: http://repository.microej.com/packages/ble-mock/bluetooth-controller-ESP32WROOM-0.1.0.bin
 .. |Bluetooth-mock-controller| image:: images/blemock-controller.png
-.. |flash-download-tool| image:: images/blemock-flash-download-tool.png
 .. |wifi-setup-interface| image:: images/blemock-wifi-setup-interface.png
 .. |wifi-setup-last-screen| image:: images/blemock-wifi-setup-last-screen.png
-.. |bluetooth-mock-configuration| image:: images/blemock-configuration.png
 .. |controller-ip| image:: images/blemock-controller-ip.png
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
