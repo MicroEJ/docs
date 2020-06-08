@@ -238,13 +238,14 @@ The following list describes the 3 most common integration cases:
 
   - the MicroEJ Platform is used to build various MicroEJ Applications.
   - the MicroEJ Platform is validated using MicroEJ testsuites. 
-  - the MicroEJ Platform and BSP are delivered into as a single standalone module (same versioning), perhaps
+  - the MicroEJ Platform and BSP are delivered as a single standalone module (same versioning), perhaps
     subcontracted to a team or a company outside the application project(s).
 
 Options
 -------
 
 BSP connection options can be specified as Platform options or as Application options or a mix of both.
+
 The following table describes Platform options, configured in ``bsp`` > ``bsp.properties`` file of the Platform configuration project.
 
 .. list-table:: MicroEJ Platform Options for BSP Connection
@@ -272,7 +273,7 @@ The following table describes Platform options, configured in ``bsp`` > ``bsp.pr
 
 .. _bsp_connection_application_options:
 
-Application options described in the following table are configured as regular :ref:`MicroEJ Application Options <application_options>`.
+The following table describes Application options, configured as regular :ref:`MicroEJ Application Options <application_options>`.
 
 .. list-table:: MicroEJ Application Options for BSP Connection
    :widths: 1 5
@@ -330,7 +331,7 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
       deploy.dir.microejinc=[absolute_path]
       deploy.bsp.microejscript=[absolute_path]
 
-- Partial BSP configuration
+- Partial BSP configuration, executable file built using MicroEJ SDK
   :: 
 
     Platform Options:
@@ -346,7 +347,7 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
       deploy.bsp.microejscript=true
       deploy.bsp.root.dir=[absolute_path]
 
-- Full BSP configuration
+- Full BSP configuration, executable file built using MicroEJ SDK
   :: 
 
     Platform Options:
