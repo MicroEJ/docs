@@ -46,7 +46,7 @@ native world:
 .. _fig_sni-flow:
 .. figure:: images/sni_flow.*
    :alt: SNI Processing
-   :width: 80.0%
+   :scale: 70%
    :align: center
 
    :ref:`[SNI] <esr-specifications>` Processing
@@ -144,6 +144,7 @@ activities:
 .. _fig_sni-sync:
 .. figure:: images/sni_sync.*
    :alt: Green Threads and RTOS Task Synchronization
+   :scale: 70%
    :align: center
 
    Green Threads and RTOS Task Synchronization
@@ -172,9 +173,13 @@ install the additional Java APIs in order to manipulate the data arrays.
 Use
 ===
 
-A classpath variable named ``SNI-1.2`` is available, which must be added
-to the build path of the MicroEJ Application project, in order to allow
+The `SNI API module <https://repository.microej.com/artifacts/ej/api/sni/>`_ must be added 
+to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ Application project, in order to allow
 access to the :ref:`[SNI] <esr-specifications>` library.
+
+::
+
+  <dependency org="ej.api" name="sni" rev="1.3.1"/>
 
 
 ..
