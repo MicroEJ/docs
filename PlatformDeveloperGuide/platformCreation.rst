@@ -157,7 +157,7 @@ Principle
 Using a MicroEJ Platform, the user can compile a MicroEJ Application on that platform. 
 The result of this compilation is a ``microejapp.o`` file.
 
-This file has to be linked with the MicroEJ Platform runtime file (``microejruntime.a``, located in the platform ``lib`` folder) 
+This file has to be linked with the MicroEJ Platform runtime file (``microejruntime.a``) 
 and a third-party C project, called the Board Support Package (BSP) 
 to obtain the final binary file (MicroEJ Firmware).
 For more information, please consult the :ref:`MicroEJ build process overview <build_process_overview>`.
@@ -165,9 +165,9 @@ For more information, please consult the :ref:`MicroEJ build process overview <b
 BSP connection consists in defining the 4 folders where are located:
 
 - MicroEJ Application file (``microejapp.o``).
-- MicroEJ Platform runtime file (``microejruntime.a``).
-- MicroEJ Platform header files (``*.h``).
-- BSP project script files (``build.[bat|sh]`` and ``run.[bat|sh]``).
+- MicroEJ Platform runtime file (``microejruntime.a``, also available in the platform ``lib`` folder).
+- MicroEJ Platform header files (``*.h``, also available in the platform ``include`` folder).
+- BSP project :ref:`build script <bsp_connection_build_script>` file (``build.bat`` or ``build.sh``).
 
 Once the MicroEJ Application file (``microejapp.o``) is built, the files are then copied to these locations 
 and the ``build.bat`` or ``build.sh`` file is executed to produce the final executable file (``application.out``).
@@ -264,7 +264,7 @@ The following table describes Platform options, configured in ``bsp`` > ``bsp.pr
      - Specify where are located MicroEJ Platform header files (``*.h``) from BSP ``root.dir``. 
      - ``MicroEJ/inc``
    * - ``microejscript.relative.dir``
-     - Specify where are located BSP script files (``build.[bat|sh]`` and ``run.[bat|sh]``). 
+     - Specify where is located the BSP build script file (``build.bat`` or ``build.sh``). 
      - ``Project/MicroEJ``
    * - ``root.dir``
      - Specify the BSP root directory to be included to the platform.
@@ -362,8 +362,27 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
       deploy.bsp.microejinc=true
       deploy.bsp.microejscript=true
 
-BSP Files
----------
+.. _bsp_connection_build_script:
+
+Build Script File
+-----------------
+
+The BSP build script file is responsible to invoke the third-party C toolchain (compiler and linker)
+to produce the final executable file (``application.out``).
+
+The build script must implement the following specification:
+
+- On Windows operating system, it is a Windows batch file named ``build.bat``.
+- On Mac OS X or Linux operating systems, it is a shell script named ``build.sh``, with execution permission enabled.
+- On build error, the script must end with a non zero exit code.
+- On success, the executable must be copied to the file ``application.out`` in the directory from
+  where the script has been executed. Then the script must end with zero exit code.
+
+Many build script templates are available for most commonly used C toolchains in the 
+`Platform Qualification Tools repository <https://github.com/MicroEJ/PlatformQualificationTools/trunk/framework/platform/scripts>`_.
+
+Low Level APIs Implementation Files
+-----------------------------------
 
 Some MicroEJ Architecture modules require some additional information 
 about the BSP implementation of Low Level APIs.
