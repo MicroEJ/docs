@@ -56,13 +56,13 @@ The next step is to create a MicroEJ Platform configuration:
       provide your own implementation or if no reference implementation
       is available.
 
--  Click on :guilabel:`Next` button. The Configure platform properties contains the
+-  Click on :guilabel:`Next` button. The ``Configure platform properties`` page contains the
    identification of the MicroEJ Platform to create. Most fields are
    mandatory, you should therefore set them. Note that their values can
    be modified later on.
 
 -  Click on :guilabel:`Finish` button. A new project ``[device]-[name]-[toolchain]`` is being created
-   containing a ``[name].platform`` file. A platform description editor shall then
+   containing a ``[name].platform`` file. A Platform description editor shall then
    open.
 
 -  Install `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/trunk/framework/platform/>`_. 
@@ -83,8 +83,8 @@ Groups / Modules Selection
 ==========================
 
 Group
-From the platform description editor, select the Content tab to access
-the platform modules selection. Modules can be selected/deselected from
+From the Platform description editor, select the Content tab to access
+the Platform modules selection. Modules can be selected/deselected from
 the Modules frame.
 
 Modules are organized into groups. When a group is selected, by default,
@@ -96,7 +96,7 @@ module selection is not recommended.
 The description and contents of an item (group or module) are displayed
 beside the list on item selection.
 
-All the checked modules will be installed in the platform.
+All the checked modules will be installed in the Platform.
 
 
 Modules Customization
@@ -114,7 +114,7 @@ contain:
 
 -  Optional module specific files and folders.
 
-Modifying one of these files requires to build the platform again.
+Modifying one of these files requires to build the Platform again.
 
 
 .. _platformCustomization:
@@ -130,21 +130,21 @@ the default configuration script.
 Configuration project (the project which contains the
 ``[name].platform`` file) can contain an optional ``dropins`` folder.
 The contents of this folder will be copied integrally into the final
-platform. This feature allows to add some additional libraries, tools
-etc. into the platform.
+Platform. This feature allows to add some additional libraries, tools
+etc. into the Platform.
 
-The dropins folder organization should respect the final platform files
+The dropins folder organization should respect the final Platform files
 and folders organization. For instance, the tools are located in the
-sub-folder ``tools``. Launch a platform build without the dropins folder
-to see how the platform files and folders organization is. Then fill the
-dropins folder with additional features and build again the platform to
-obtain an advanced platform.
+sub-folder ``tools``. Launch a Platform build without the dropins folder
+to see how the Platform files and folders organization is. Then fill the
+dropins folder with additional features and build again the Platform to
+obtain an advanced Platform.
 
 The dropins folder files are kept in priority. If one file has the same
-path and name as another file already installed into the platform, the
+path and name as another file already installed into the Platform, the
 dropins folder file will be kept.
 
-Modifying one of these files requires to build the platform again.
+Modifying one of these files requires to build the Platform again.
 
 .. _bsp_connection:
 
@@ -154,7 +154,7 @@ BSP Connection
 Principle
 ---------
 
-Using a MicroEJ Platform, the user can compile a MicroEJ Application on that platform. 
+Using a MicroEJ Platform, the user can compile a MicroEJ Application on that Platform. 
 The result of this compilation is a ``microejapp.o`` file.
 
 This file has to be linked with the MicroEJ Platform runtime file (``microejruntime.a``) 
@@ -165,8 +165,8 @@ For more information, please consult the :ref:`MicroEJ build process overview <b
 BSP connection consists in defining the 4 folders where are located:
 
 - MicroEJ Application file (``microejapp.o``).
-- MicroEJ Platform runtime file (``microejruntime.a``, also available in the platform ``lib`` folder).
-- MicroEJ Platform header files (``*.h``, also available in the platform ``include`` folder).
+- MicroEJ Platform runtime file (``microejruntime.a``, also available in the Platform ``lib`` folder).
+- MicroEJ Platform header files (``*.h``, also available in the Platform ``include`` folder).
 - BSP project :ref:`build script <bsp_connection_build_script>` file (``build.bat`` or ``build.sh``).
 
 Once the MicroEJ Application file (``microejapp.o``) is built, the files are then copied to these locations 
@@ -174,14 +174,14 @@ and the ``build.bat`` or ``build.sh`` file is executed to produce the final exec
 
 .. note::
 
-   The final build stage can be done outside MicroEJ SDK, and thus 
+   The final build stage to produce the executable file can be done outside MicroEJ SDK, and thus 
    the BSP connection configuration is optional.
    
-   BSP connection configuration is required for the following cases:
+   BSP connection configuration is only required in the following cases:
 
    - Use MicroEJ SDK to produce the final executable file of a Mono-Sandbox Firmware (recommended).
+   - Use MicroEJ SDK to run a :ref:`MicroEJ Testsuite <testsuite>` on device.
    - Build a Multi-Sandbox Firmware.
-   - Run of a :ref:`MicroEJ Testsuite <testsuite>` on device.
 
 .. _bsp_connection_cases:
 
@@ -192,7 +192,7 @@ The following list describes the 3 most common integration cases:
 
 - Case 1: No BSP connection
 
-  The MicroEJ Platform does not know BSP at all.
+  The MicroEJ Platform does not know the BSP at all.
   BSP connection can be configured when building the MicroEJ Application (options with absolute paths).
 
   .. figure:: images/bsp-connection-cases-none.png
@@ -223,6 +223,7 @@ The following list describes the 3 most common integration cases:
   This case is recommended when:
   
   - the MicroEJ Platform is used to build one MicroEJ Application on top of one BSP. 
+  - the Application and BSP are slightly coupled, thus making a change in the BSP just require to rebuild the firmware.
 
 - Case 3: Full BSP connection
   
@@ -259,19 +260,19 @@ The following table describes Platform options, configured in ``bsp`` > ``bsp.pr
      - Description
      - Example
    * - ``microejapp.relative.dir``
-     - Specify where is located the MicroEJ Application file (``microejapp.o``) from BSP ``root.dir``.
+     - The path relative to BSP ``root.dir`` where to deploy the MicroEJ Application file (``microejapp.o``).
      - ``MicroEJ/lib``
    * - ``microejlib.relative.dir``
-     - Specify where is located the MicroEJ Platform runtime file (``microejruntime.a``) from BSP ``root.dir``.
+     - The path relative to BSP ``root.dir`` where to deploy the MicroEJ Platform runtime file (``microejruntime.a``).
      - ``MicroEJ/lib``
    * - ``microejinc.relative.dir``
-     - Specify where are located MicroEJ Platform header files (``*.h``) from BSP ``root.dir``. 
+     - The path relative to BSP ``root.dir`` where to deploy the MicroEJ Platform header files (``*.h``). 
      - ``MicroEJ/inc``
    * - ``microejscript.relative.dir``
-     - Specify where is located the BSP build script file (``build.bat`` or ``build.sh``). 
+     - The path relative to BSP ``root.dir`` where to execute the BSP build script file (``build.bat`` or ``build.sh``). 
      - ``Project/MicroEJ``
    * - ``root.dir``
-     - Specify the BSP root directory to be included to the platform.
+     - The 3rd-party BSP project absolute directory, to be included to the Platform.
      - ``c:\\Users\\user\\mybsp`` on Windows systems or ``/home/user/bsp`` on Unix systems.
 
 .. _bsp_connection_application_options:
@@ -285,23 +286,23 @@ The following table describes Application options, configured as regular :ref:`M
    * - Option Name   
      - Description
    * - ``deploy.bsp.microejapp``
-     - Set to ``true`` to deploy the MicroEJ Application file (``microejapp.o``) to the location defined by the Platform (require ``microejapp.relative.dir`` Platform option set).
+     - Deploy the MicroEJ Application file (``microejapp.o``) to the location defined by the Platform (defaults to ``true`` when Platform option ``microejapp.relative.dir`` is set).
    * - ``deploy.bsp.microejlib``
-     - Set to ``true`` to deploy the MicroEJ Platform runtime file (``microejruntime.a``) to the location defined by the Platform (require ``microejlib.relative.dir`` Platform option set).
+     - Deploy the MicroEJ Platform runtime file (``microejruntime.a``) to the location defined by the Platform (defaults to ``true`` when Platform option ``microejlib.relative.dir`` is set).
    * - ``deploy.bsp.microejinc``
-     - Set to ``true`` to deploy the MicroEJ Platform header files (``*.h``) to the location defined by the Platform (require ``microejinc.relative.dir`` Platform option set). 
+     - Deploy the MicroEJ Platform header files (``*.h``) to the location defined by the Platform (defaults to ``true`` when Platform option ``microejinc.relative.dir`` is set). 
    * - ``deploy.bsp.microejscript``
-     - Set to ``true`` to execute the BSP build script file (``build.bat`` or ``build.sh``) at the location defined by the Platform (require ``microejscript.relative.dir`` Platform option set). 
+     - Execute the BSP build script file (``build.bat`` or ``build.sh``) at the location defined by the Platform. This option requires ``microejscript.relative.dir`` Platform option to be set and defaults to ``false``. 
    * - ``deploy.bsp.root.dir``
-     - Set the absolute directory of the BSP root. This option is required if at least one the 4 options described above is set to ``true``.
+     - The 3rd-party BSP project absolute directory. This option is required if at least one the 4 options described above is set to ``true`` and the Platform does not includes the BSP.
    * - ``deploy.dir.microejapp``
-     - Set the absolute directory where to deploy the MicroEJ Application file (``microejapp.o``).
+     - The absolute directory where to deploy the MicroEJ Application file (``microejapp.o``). An empty value does nothing.
    * - ``deploy.dir.microejlib``
-     - Set the absolute directory where to deploy the MicroEJ Platform runtime file (``microejruntime.a``).
+     - The absolute directory where to deploy the MicroEJ Platform runtime file (``microejruntime.a``). An empty value does nothing.
    * - ``deploy.dir.microejinc``
-     - Set the absolute directory where to deploy the MicroEJ Platform header files (``*.h``). 
+     - The absolute directory where to deploy the MicroEJ Platform header files (``*.h``). An empty value does nothing.
    * - ``deploy.bsp.microejscript``
-     - Set the absolute directory where to execute the BSP build script file (``build.bat`` or ``build.sh``). 
+     - The absolute directory where to execute the BSP build script file (``build.bat`` or ``build.sh``). An empty value does nothing.
 
 
 .. note::
@@ -313,7 +314,7 @@ The following table describes Application options, configured as regular :ref:`M
 
 For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a summary of the options to set: 
 
-- No BSP configuration, executable file built outside MicroEJ SDK
+- No BSP connection, executable file built outside MicroEJ SDK
   :: 
 
     Platform Options:
@@ -322,7 +323,7 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
     Application Options:
       [NONE]
 
-- No BSP configuration, executable file built using MicroEJ SDK
+- No BSP connection, executable file built using MicroEJ SDK
   :: 
 
     Platform Options:
@@ -334,7 +335,18 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
       deploy.dir.microejinc=[absolute_path]
       deploy.bsp.microejscript=[absolute_path]
 
-- Partial BSP configuration, executable file built using MicroEJ SDK
+- Partial BSP connection, executable file built outside MicroEJ SDK
+  :: 
+
+    Platform Options:
+      microejapp.relative.dir=[relative_path]
+      microejlib.relative.dir=[relative_path]
+      microejinc.relative.dir=[relative_path]
+
+    Application Options:
+      deploy.bsp.root.dir=[absolute_path]
+
+- Partial BSP connection, executable file built using MicroEJ SDK
   :: 
 
     Platform Options:
@@ -344,13 +356,10 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
       microejscript.relative.dir=[relative_path]   
 
     Application Options:
-      deploy.bsp.microejapp=true
-      deploy.bsp.microejlib=true
-      deploy.bsp.microejinc=true
-      deploy.bsp.microejscript=true
       deploy.bsp.root.dir=[absolute_path]
+      deploy.bsp.microejscript=true
 
-- Full BSP configuration, executable file built using MicroEJ SDK
+- Full BSP connection, executable file built using MicroEJ SDK
   :: 
 
     Platform Options:
@@ -361,9 +370,6 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
       root.dir=[absolute_path]
 
     Application Options:
-      deploy.bsp.microejapp=true
-      deploy.bsp.microejlib=true
-      deploy.bsp.microejinc=true
       deploy.bsp.microejscript=true
 
 .. _bsp_connection_build_script:
@@ -421,7 +427,7 @@ Build MicroEJ Platform
 ======================
 
 To build the MicroEJ Platform, click on the :guilabel:`Build Platform` link on the
-platform configuration :guilabel:`Overview` tab.
+Platform configuration :guilabel:`Overview` tab.
 
 It will create a MicroEJ Platform in the workspace available for the
 MicroEJ project to run on. The MicroEJ Platform will be available in:
