@@ -292,17 +292,17 @@ The following table describes Application options, configured as regular :ref:`M
    * - ``deploy.bsp.microejinc``
      - Deploy the MicroEJ Platform header files (``*.h``) to the location defined by the Platform (defaults to ``true`` when Platform option ``microejinc.relative.dir`` is set). 
    * - ``deploy.bsp.microejscript``
-     - Execute the BSP build script file (``build.bat`` or ``build.sh``) at the location defined by the Platform. This option requires ``microejscript.relative.dir`` Platform option to be set and defaults to ``false``. 
+     - Execute the BSP build script file (``build.bat`` or ``build.sh``) present at the location defined by the Platform. (defaults to ``false`` and requires ``microejscript.relative.dir`` Platform option to be set). 
    * - ``deploy.bsp.root.dir``
      - The 3rd-party BSP project absolute directory. This option is required if at least one the 4 options described above is set to ``true`` and the Platform does not includes the BSP.
    * - ``deploy.dir.microejapp``
-     - The absolute directory where to deploy the MicroEJ Application file (``microejapp.o``). An empty value does nothing.
+     - Deploy the MicroEJ Application file (``microejapp.o``) to this absolute directory. An empty value means no deployment.
    * - ``deploy.dir.microejlib``
-     - The absolute directory where to deploy the MicroEJ Platform runtime file (``microejruntime.a``). An empty value does nothing.
+     - Deploy the MicroEJ Platform runtime file (``microejruntime.a``) to this absolute directory. An empty value means no deployment.
    * - ``deploy.dir.microejinc``
-     - The absolute directory where to deploy the MicroEJ Platform header files (``*.h``). An empty value does nothing.
+     - Deploy the MicroEJ Platform header files (``*.h``) to this absolute directory. An empty value means no deployment.
    * - ``deploy.bsp.microejscript``
-     - The absolute directory where to execute the BSP build script file (``build.bat`` or ``build.sh``). An empty value does nothing.
+     - Execute the BSP build script file (``build.bat`` or ``build.sh``) present in this absolute directory. An empty value means no deployment.
 
 
 .. note::
