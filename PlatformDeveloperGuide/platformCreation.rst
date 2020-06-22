@@ -82,7 +82,6 @@ You should get a MicroEJ Platform configuration project that looks like:
 Groups / Modules Selection
 ==========================
 
-Group
 From the Platform description editor, select the Content tab to access
 the Platform modules selection. Modules can be selected/deselected from
 the Modules frame.
