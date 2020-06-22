@@ -161,7 +161,7 @@ and a third-party C project, called the Board Support Package (BSP) ,
 to obtain the final binary file (MicroEJ Firmware).
 For more information, please consult the :ref:`MicroEJ build process overview <build_process_overview>`.
 
-The BSP Connection can be configured by defining 4 folders where the following files are located:
+The BSP connection can be configured by defining 4 folders where the following files are located:
 
 - MicroEJ Application file (``microejapp.o``).
 - MicroEJ Platform runtime file (``microejruntime.a``, also available in the Platform ``lib`` folder).
