@@ -157,7 +157,7 @@ Using a MicroEJ Platform, the user can compile a MicroEJ Application on that Pla
 The result of this compilation is a ``microejapp.o`` file.
 
 This file has to be linked with the MicroEJ Platform runtime file (``microejruntime.a``) 
-and a third-party C project, called the Board Support Package (BSP) 
+and a third-party C project, called the Board Support Package (BSP) ,
 to obtain the final binary file (MicroEJ Firmware).
 For more information, please consult the :ref:`MicroEJ build process overview <build_process_overview>`.
 
