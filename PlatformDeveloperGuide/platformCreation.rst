@@ -97,6 +97,12 @@ beside the list on item selection.
 
 All the checked modules will be installed in the Platform.
 
+.. figure:: images/platformConfigurationModules.png
+   :alt: MicroEJ Platform Configuration Modules Selection
+   :align: center
+
+   MicroEJ Platform Configuration Modules Selection
+
 
 Modules Customization
 =====================
