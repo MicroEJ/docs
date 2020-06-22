@@ -192,7 +192,8 @@ The 3 most common integration cases are:
 - Case 1: No BSP connection
 
   The MicroEJ Platform does not know the BSP at all.
-  BSP connection can be configured when building the MicroEJ Application (options with absolute paths).
+
+  BSP connection can be configured when building the MicroEJ Application (absolute locations).
 
   .. figure:: images/bsp-connection-cases-none.png
      :alt: MicroEJ Platform with no BSP connection
@@ -209,8 +210,9 @@ The 3 most common integration cases are:
 - Case 2: Partial BSP connection
   
   The MicroEJ Platform knows how the BSP is structured.
-  BSP connection is configured when building the MicroEJ Platform options (options with relative paths within the BSP), 
-  and the BSP root location is configured when building the MicroEJ Application (option with absolute path).
+
+  BSP connection is configured when building the MicroEJ Platform (relative locations within the BSP), 
+  and the BSP root location is configured when building the MicroEJ Application (absolute directory).
 
   .. figure:: images/bsp-connection-cases-partial.png
      :alt: MicroEJ Platform with partial BSP connection
@@ -222,13 +224,15 @@ The 3 most common integration cases are:
   This case is recommended when:
   
   - the MicroEJ Platform is used to build one MicroEJ Application on top of one BSP. 
-  - the Application and BSP are slightly coupled, thus making a change in the BSP just require to rebuild the firmware.
+  - the Application and BSP are slightly coupled, thus making a change in the BSP just require to build the firmware again.
 
 - Case 3: Full BSP connection
   
-  The MicroEJ Platform includes its BSP.
-  BSP connection is configured when building MicroEJ Platform options (options with relative paths within the Platform and the BSP), 
-  No BSP path need to be configured when building the MicroEJ Application.
+  The MicroEJ Platform includes the BSP.
+
+  BSP connection is configured when building MicroEJ Platform (relative locations within the BSP), 
+  as well as the BSP root location (absolute directory).
+  No BSP connection configuration is required when building the MicroEJ Application.
 
   .. figure:: images/bsp-connection-cases-full.png
      :alt: MicroEJ Platform with full BSP connection
@@ -386,7 +390,7 @@ The build script must implement the following specification:
 - On build error, the script must end with a non zero exit code.
 - On success
 
-  - The executable must be copied to the file ``application.out`` in the directory from
+  - The executable must be copied to the file ``application.out`` in the folder from
     where the script has been executed.
   - The script must end with zero exit code.
 
