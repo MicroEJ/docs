@@ -173,7 +173,7 @@ and the ``build.bat`` or ``build.sh`` file is executed to produce the final exec
 
 .. note::
 
-   The final build stage to produce the executable file can be done outside MicroEJ SDK, and thus 
+   The final build stage to produce the executable file can be done outside of MicroEJ SDK, and thus 
    the BSP connection configuration is optional.
    
    BSP connection configuration is only required in the following cases:
