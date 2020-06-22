@@ -184,8 +184,8 @@ and the ``build.bat`` or ``build.sh`` file is executed to produce the final exec
 
 .. _bsp_connection_cases:
 
-MicroEJ provides a flexible way to configure BSP connection to target any kind of projects, teams organizations and company build flows.
-For that, BSP connection can be configured either at MicroEJ Platform level or at MicroEJ Application level (or a mix of both). 
+MicroEJ provides a flexible way to configure the BSP connection to target any kind of projects, teams organizations and company build flows.
+To achieve this, the BSP connection can be configured either at MicroEJ Platform level or at MicroEJ Application level (or a mix of both). 
 
 The 3 most common integration cases are:
 
