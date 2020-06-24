@@ -2,6 +2,7 @@
 Building a MicroEJ Platform
 ===========================
 
+.. _platform_creation:
 
 Create a New MicroEJ Platform Configuration
 ===========================================

@@ -547,6 +547,18 @@ code,
   color: #ee502e;
 }
 
+.wy-menu-vertical li.toctree-l2.current li.toctree-l4 > a {  
+  background-color: #f8f9fa;
+}
+
+.wy-menu-vertical li.toctree-l2.current li.toctree-l4 > a:hover {
+  background-color: #d6d6d6;
+}
+
+.wy-menu-vertical li.toctree-l2.current li.toctree-l4 > a.current {  
+  color: #ee502e;
+}
+
 .wy-menu-vertical li ul li a {
   color: #717d83;
 }
@@ -742,6 +754,7 @@ body > .rst-versions {
 .wy-nav-content {
   max-width: 1300px;
   margin-top: 100px;
+  margin-right: 30px;
   background-color: #f8f9fa;
 }
 
@@ -925,7 +938,7 @@ div.rst-other-versions > div.injected > dl {
   perspective-origin: 250px 35.5px;
   transform-origin: 250px 35.5px;
   caret-color: rgb(51, 122, 183);
-  background: rgba(0, 0, 0, 0) url("https://newdev2020.microej.com/wp-content/themes/wordpress-bootstrap-master/css/bg/bg_logo.png") no-repeat scroll 50% 50% / cover padding-box border-box;
+  background: rgba(0, 0, 0, 0) url("https://developer.microej.com/wp-content/themes/wordpress-bootstrap-master/css/bg/bg_logo.png") no-repeat scroll 50% 50% / cover padding-box border-box;
   border: 0px none rgb(51, 122, 183);
   font: 300 18px / 20px "Source Sans Pro", sans-serif;
   outline: rgb(51, 122, 183) none 0px;

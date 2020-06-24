@@ -167,7 +167,7 @@ removed, the connection cannot be open anymore and
 In addition, a dynamic connection can be registered and unregistered in
 ECOM device manager (see :ref:`section_ecom_dm`). The registration
 mechanism is done in dedicated thread. It can be enabled or disabled,
-see :ref:`workbenchLaunchOptions`.
+see :ref:`application_options`.
 
 A removed connection is alive until it is closed by the application and,
 if enabled, unregistered from ECOM device manager. A connection is
@@ -406,7 +406,7 @@ be managed by the ECOM Comm stack. It also has to know each Comm port
 that can be mapped from an application port number. Such Comm port is
 identified by its platform port number and by an optional nickname (The
 port and its nickname will be visible in the MicroEJ launcher options,
-see :ref:`workbenchLaunchOptions` ).
+see :ref:`application_options` ).
 
 A XML file is so required to configure the Java platform. The name of
 this file must be ``ecom-comm.xml``. It has to be stored in the module
@@ -499,7 +499,7 @@ Application which communicates with some external devices using the
 serial communication mode.
 
 This library provides a set of options. Refer to the chapter
-:ref:`workbenchLaunchOptions` which lists all available options.
+:ref:`application_options` which lists all available options.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

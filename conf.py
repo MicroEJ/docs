@@ -42,7 +42,7 @@ exclude_patterns = [
 # HTML theme options
 html_theme = 'microej'
 html_logo = '_themes/microej/static/logo-microej-white.png'
-html_favicon = '_themes/microej/static/logo-small.png'
+html_favicon = '_themes/microej/static/favicon-16x16.png'
 html_theme_options = {
     'logo_only': True,
     'collapse_navigation': False,

@@ -12,6 +12,7 @@ Application Developer Guide
    sandboxedApplication
    virtualDevice
    mmm
+   moduleNatures
    classpath
    tools
    advanced
