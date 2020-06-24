@@ -1,18 +1,18 @@
 =============================
-Create a new MicroEJ Platform
+New MicroEJ Platform Creation
 =============================
 
 This section describes the steps to create a new MicroEJ Platform in MicroEJ SDK, 
 and options to connect it to an external Board Support Package (BSP) as well as a third-party C toolchain. 
 
-First, start MicroEJ SDK on a new empty :ref:`workspace <workspace>`.
+MicroEJ SDK must be started on a new empty :ref:`workspace <workspace>`.
 
-.. _import_architecture:
+.. _architecture_import:
 
-Import a MicroEJ Architecture
-=============================
+MicroEJ Architecture Import
+===========================
 
-The next step is to import a :ref:`MicroEJ Architecture <architecture_overview>`. 
+The first step is to choose and import a :ref:`MicroEJ Architecture <architecture_overview>`. 
 MicroEJ Architectures for most common microcontroller instructions sets and compilers
 can be downloaded from https://repository.microej.com/architectures/. 
 
@@ -35,8 +35,8 @@ Once you downloaded a MicroEJ Architecture file, proceed with the following step
 
 .. _platform_configuration_creation:
 
-Create a New MicroEJ Platform Configuration
-===========================================
+New MicroEJ Platform Configuration
+==================================
 
 The next step is to create a MicroEJ Platform configuration:
 
@@ -435,14 +435,14 @@ Example:
 These files will be converted into an internal format during the
 MicroEJ Platform build.
 
-Build MicroEJ Platform
+MicroEJ Platform Build
 ======================
 
 To build the MicroEJ Platform, click on the :guilabel:`Build Platform` link on the
 Platform configuration :guilabel:`Overview` tab.
 
 It will create a MicroEJ Platform in the workspace available for the
-MicroEJ project to run on. The MicroEJ Platform will be available in:
+MicroEJ Application project to run on. The MicroEJ Platform will be available in:
 :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
 
 
