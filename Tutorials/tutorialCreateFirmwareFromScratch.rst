@@ -1,10 +1,10 @@
-Create a MicroEJ Platform from scratch
+Create a MicroEJ Firmware from scratch
 ======================================
 
 Introduction
 ------------
 
-This tutorial explains how to create a MicroEJ Platform from scratch
+This tutorial explains how to create a MicroEJ Firmware from scratch
 using QEMU, FreeRTOS and MicroEJ.
 
 The following steps are usually followed when starting a new project:
@@ -12,13 +12,15 @@ The following steps are usually followed when starting a new project:
 #. Pick a target device (that meets the requirements of the project).
 #. Setup a RTOS and a toolchain that support the target device.
 #. Adapt the RTOS port if needed.
-#. Setup a MicroEJ Platform that matches the target
+#. Install a MicroEJ Architecture that matches the target
    device/RTOS/toolchain.
+#. Setup a MicroEJ Platform connected to the Board Support Package
+   (BSP).
 #. Implement Low Level API.
 #. Validate the resulting MicroEJ Platform with the `Platform
    Qualification Tools (PQT)
    <https://github.com/microej/PlatformQualificationTools>`_.
-#. Develop the application.
+#. Develop the a MicroEJ Application.
 
 In this tutorial:
 
@@ -29,8 +31,9 @@ This tutorial describes step by step how to go from the FreeRTOS BSP
 to a MicroEJ Application that runs on the MicroEJ Platforms and prints
 the classic ``"Hello, World!"``.
 
-The implementation of the Low Level API and validation with the PQT
-will be the topic of another tutorial.
+The implementation of the Low Level API and validation with the `PQT
+<https://github.com/microej/PlatformQualificationTools>`_ will be the
+topic of another tutorial.
 
 - https://www.qemu.org/docs/master/system/arm/stellaris.html
 - https://www.ti.com/lit/ug/spmu029a/spmu029a.pdf
@@ -46,10 +49,12 @@ Prerequisites
   <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_.
 - A Linux distribution installed on WSL (Tested on Ubuntu 19.10 eoan)
 
+A code editor such as Visual Studio Code is also recommended.
+
 Overview
 --------
 
-The next steps describes step by step how to build a MicroEJ Platform
+The next steps describes step by step how to build a MicroEJ Firmware
 that runs a HelloWorld MicroEJ Application on the emulated device.
 
 #. Setup the development environment (assuming the prerequisites are satisfied).
@@ -58,23 +63,23 @@ that runs a HelloWorld MicroEJ Application on the emulated device.
 #. Create the HelloWorld MicroEJ Application
 #. Implement the minimum Low Level API to run the application
 
-Setup the development environment
+Setup the Development Environment
 ---------------------------------
 
 This section assumes the prerequisites have been properly installed.
 
 In WSL:
 
-#. Install qemu-arm and GNU CC toolchain for ARM: ``sudo apt-get install qemu-system-arm gcc-arm-none-eabi``
+#. Install qemu-system-arm and GNU CC toolchain for ARM: ``sudo apt-get install qemu-system-arm gcc-arm-none-eabi``
 #. The rest of this tutorial will use the folder ``src/tuto-from-scratch/`` in the Windows home folder.
 #. Create the folder: ``mkdir -p /mnt/c/Users/${USER}/src/tuto-from-scratch`` (the ``-p`` option ensures all directory are created).
 #. Go into the folder: ``cd /mnt/c/Users/${USER}/src/tuto-from-scratch/``
 #. Clone FreeRTOS and its submodules: ``git clone --recursive https://github.com/FreeRTOS/FreeRTOS.git`` (this may takes some time)
 
-Get working BSP
+Get Running BSP
 ---------------
 
-This section presents how to get working BSP based on FreeRTOS that boots on the target device.
+This section presents how to get running BSP based on FreeRTOS that boots on the target device.
 
 #. Go into the target device sub-project: ``cd FreeRTOS/FreeRTOS/Demo/CORTEX_LM3S811_GCC``
 #. Build the project: ``make``
@@ -178,7 +183,7 @@ The following code implements the ``putchar(3)`` and ``puts(3)`` functions:
         return putchar('\n');
     }
 
-And here is the patch that implements both functions and prints ``"Hello World!"``.
+And here is the patch that implements both functions and prints ``Hello World``.
 
 .. code-block:: diff
 
@@ -208,7 +213,7 @@ And here is the patch that implements both functions and prints ``"Hello World!"
     
      int main( void )
      {
-    +       puts("Hello, World!");
+    +       puts("Hello, World! puts function is working.");
     +
             /* Configure the clocks, UART and GPIO. */
             prvSetupHardware();
@@ -219,7 +224,7 @@ And here is the patch that implements both functions and prints ``"Hello World!"
 .. code-block::
 
     make: Nothing to be done for 'all'.
-    Hello, World!
+    Hello, World! puts function is working.
     ssd0303: error: Unknown command: 0x80
     ssd0303: error: Unexpected byte 0xe3
     ssd0303: error: Unknown command: 0x80
@@ -257,13 +262,13 @@ With this two functions implemented, ``printf(3)`` is also available.
     +
      int main( void )
      {
-    -       puts("Hello, World!");
-    +       printf("Hello, World!\n");
+    -       puts("Hello, World! puts function is working.");
+    +       printf("Hello, World! puts function is working.\n");
     
             /* Configure the clocks, UART and GPIO. */
             prvSetupHardware();
 
-At this point, the UART is implemented in the FreeRTOS BSP. The next step is to create to add the MicroEJ Platform and MicroEJ Application.
+At this point, the character output on the UART is implemented in the FreeRTOS BSP. The next step is to create to add the MicroEJ Platform and MicroEJ Application.
 
 Create a MicroEJ Platform
 -------------------------
@@ -285,7 +290,8 @@ There is no ``CM3`` folder. This means that the MicroEJ Architectures for Cortex
 Import the MicroEJ Architecture
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This step describes how to import a MicroEJ Architecture.
+This step describes how to import a `MicroEJ Architecture
+<https://docs.microej.com/en/latest/PlatformDeveloperGuide/platformCreation.html#microej-architecture-import>`_.
 
 #. Download the latest MicroEJ Architecture for Cortex-M0 instead
 #. Import the MicroEJ Architecture in MicroEJ SDK 
@@ -294,12 +300,14 @@ This step describes how to import a MicroEJ Architecture.
     #. select the MicroEJ Architecture file downloaded
     #. Accept the license and click on ``Finish``
 
-.. image:: images/tuto_microej_plat_from_scratch_import_architecture.PNG
+.. image:: images/tuto_microej_fw_from_scratch_import_architecture.PNG
 
 Install an Evaluation License
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This step describes how to create and activate an Evaluation License for the MicroEJ Architecture previously imported.
+This step describes how to create and activate an `Evaluation License
+<https://docs.microej.com/en/latest/ApplicationDeveloperGuide/licenses.html#evaluation-licenses>`_
+for the MicroEJ Architecture previously imported.
 
 #. Select the ``Window > Preferences > MicroEJ > Architectures menu``.
 #. Click on the architectures and press ``Get UID``.
@@ -324,12 +332,14 @@ This step describes how to create and activate an Evaluation License for the Mic
 #. Microej SDK is successfully activated.
 
 
-.. image:: images/tuto_microej_plat_from_scratch_activate_license.PNG
+.. image:: images/tuto_microej_fw_from_scratch_activate_license.PNG
 
 Create the MicroEJ Platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This step describes how to create a new MicroEJ Platform using the MicroEJ Architecture previously imported.
+This step describes how to create a new `MicroEJ Platform
+<https://docs.microej.com/en/latest/PlatformDeveloperGuide/platformCreation.html>`_
+using the MicroEJ Architecture previously imported.
 
 #. Select ``File > New > MicroEJ Platform Project``.
 #. Ensure the ``Architecture`` selected is the MicroEJ Architecture previously imported.
@@ -340,20 +350,29 @@ This step describes how to create a new MicroEJ Platform using the MicroEJ Archi
     * Set ``Device:`` to ``lm3s811evb``
     * Set ``Name:`` to ``Tuto``
 
-.. image:: images/tuto_microej_plat_from_scratch_create_platform.PNG
+.. image:: images/tuto_microej_fw_from_scratch_create_platform.PNG
 
 Setup the MicroEJ Platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This step describes how to configure the MicroEJ Platform previously created.
 
-The Platform Configuration Additions provide a flexible way to configure the BSP connection between the MicroEJ Platform and MicroEJ Application to the BSP. In this tutorial, the Partial BSP connection is used. That is, the MicroEJ SDK will output all MicroEJ files (C headers, MicroEJ Application ``microejapp.o``, MicroEJ Runtime ``microejruntime.a``, ...) in a location known by the BSP. The BSP is configured to compile and link with those files.
+The `Platform Configuration Additions
+<https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform>`_
+provide a flexible way to configure the `BSP connection
+<https://docs.microej.com/en/latest/PlatformDeveloperGuide/platformCreation.html#bsp-connection>`_
+between the MicroEJ Platform and MicroEJ Application to the BSP. In
+this tutorial, the Partial BSP connection is used. That is, the
+MicroEJ SDK will output all MicroEJ files (C headers, MicroEJ
+Application ``microejapp.o``, MicroEJ Runtime ``microejruntime.a``,
+...) in a location known by the BSP. The BSP is configured to compile
+and link with those files.
 
 For this tutorial, that means that the final binary is produced by invoking ``make`` in the FreeRTOS BSP.
 
 #. Install the Platform Configuration Additions by copying all the files within the ``content`` folder in the MicroEJ Platform folder.
 
-  .. image:: images/tuto_microej_plat_from_scratch_add_platform_configuration_additions.PNG
+  .. image:: images/tuto_microej_fw_from_scratch_add_platform_configuration_additions.PNG
 
 #. Edit the file ``bsp/bsp.properties`` as follow:
 
@@ -373,7 +392,7 @@ For this tutorial, that means that the final binary is produced by invoking ``ma
 
 #. Open the ``.platform`` file and click on ``Build Platform``. The MicroEJ Platform will appear in the workspace.
 
-   .. image:: images/tuto_microej_plat_from_scratch_build_platform.PNG
+   .. image:: images/tuto_microej_fw_from_scratch_build_platform.PNG
 
 At this point, the MicroEJ Platform is ready to be used to build MicroEJ Applications.
 
@@ -383,12 +402,12 @@ Create MicroEJ Application HelloWorld
 #. Select ``File > New > MicroEJ Standalone Application Project``.
 #. Set the name to ``HelloWorld`` and click on ``Finish``
 
-  .. image:: images/tuto_microej_plat_from_scratch_new_microej_application_project.PNG
+  .. image:: images/tuto_microej_fw_from_scratch_new_microej_application_project.PNG
 
 #. Run the application in Simulator to ensure it is working properly. 
    ``Right-click on HelloWorld project > Run as > MicroEJ Application``
 
-  .. image:: images/tuto_microej_plat_from_scratch_run_as_microej_application.PNG
+  .. image:: images/tuto_microej_fw_from_scratch_run_as_microej_application.PNG
    
 The following message appears in the console:
 
@@ -401,7 +420,7 @@ The following message appears in the console:
   
   SUCCESS
 
-Configure BSP connection in MicroEJ Application
+Configure BSP Connection in MicroEJ Application
 -----------------------------------------------
 
 This step describes how to configure the BSP connection for the HelloWorld MicroEJ Application and how to build the MicroEJ Application that will run on the target device.
@@ -433,13 +452,13 @@ For a MicroEJ Application, the BSP connection is configured in the ``PROJECT-NAM
 #. Open ``Run > Run configurations...``
 #. Select the HelloWorld launcher configuration
 
-  .. image:: images/tuto_microej_plat_from_scratch_run_configurations.PNG
+  .. image:: images/tuto_microej_fw_from_scratch_run_configurations.PNG
 
 #. Select ``Execution`` tab.
 #. Change the execution mode from ``Execute on Simulator`` to ``Execute on Device``.
 #. Add the file ``build/emb.properties`` to the options files
 
-  .. image:: images/tuto_microej_plat_from_scratch_run_configurations_execute_on_device.PNG
+  .. image:: images/tuto_microej_fw_from_scratch_run_configurations_execute_on_device.PNG
 
 #. Click on ``Run``
 
@@ -462,7 +481,7 @@ For a MicroEJ Application, the BSP connection is configured in the ``PROJECT-NAM
    
 At this point, the HelloWorld MicroEJ Application is built and deployed in the FreeRTOS BSP.
 
-MicroEJ and FreeRTOS integration
+MicroEJ and FreeRTOS Integration
 --------------------------------
 
 This section describes how to finalize the integration between MicroEJ and FreeRTOS to get a working firmware that runs the HelloWorld MicroEJ Application built previously.
@@ -505,7 +524,7 @@ In the previous section, when the MicroEJ Application was built, several files w
 To summarize, the following steps remain to complete the integration between MicroEJ and the FreeRTOS BSP:
 
 - Implement minimal Low Level APIs
-- Invoke the MicroEJ VM
+- Invoke the MicroEJ Core Engine
 - Build and link the firmware with the MicroEJ Runtime and MicroEJ Application
 
 
@@ -606,10 +625,10 @@ The two headers that must be implemented are ``LLBSP_impl.h`` and ``LLMJVM_impl.
     }
 
     
-Invoke MicroEJ VM
-~~~~~~~~~~~~~~~~~
+Invoke MicroEJ Core Engine
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The MicroEJ VM is created and initialized with the C function ``SNI_createVM``. Then it is started and executed in the current RTOS task by calling ``SNI_startVM``. The function ``SNI_startVM`` returns when the MicroEJ Application exits. Both functions are declared in the C header ``sni.h``.
+The MicroEJ Core Engine is created and initialized with the C function ``SNI_createVM``. Then it is started and executed in the current RTOS task by calling ``SNI_startVM``. The function ``SNI_startVM`` returns when the MicroEJ Application exits. Both functions are declared in the C header ``sni.h``.
 
 .. code-block:: diff
 
@@ -625,24 +644,24 @@ The MicroEJ VM is created and initialized with the C function ``SNI_createVM``. 
   
    int main( void )
    {
-          printf("Hello, World!\n");
+          printf("Hello, World! puts function is working.\n");
   
   +       SNI_startVM(SNI_createVM(), 0, NULL);
   +
           /* Configure the clocks, UART and GPIO. */
           prvSetupHardware();
 
-Build and link the firmware with the MicroEJ Runtime and MicroEJ Application
+Build and Link the Firmware with the MicroEJ Runtime and MicroEJ Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To build and link the firmware with the MicroEJ Runtime and MicroEJ Application, the FreeRTOS port must be modified to:
+To build and link the firmware with the MicroEJ Runtime and MicroEJ Application, the BSP port must be modified to:
 
 #. Use the MicroEJ header files in folder ``microej/inc``
 #. Use the source files folder ``microej/src`` that contains the Low Level API implementation ``LLBSP.c`` and ``LLMJVM_stub.c``
 #. Compile and link ``LLBSP.o`` and ``LLMJVM_stub.o``
 #. Link with MicroEJ Application (``microej/lib/microejapp.o``) and MicroEJ Runtime (``microej/lib/microejruntime.a``)
 
-The following patch updates the FreeRTOS port ``Makefile`` to do it:
+The following patch updates the BSP port ``Makefile`` to do it:
 
 .. code-block:: diff
 
@@ -682,9 +701,9 @@ Then build the firmware with ``make``. The following error occurs at link time.
   arm-none-eabi-ld: region `SRAM' overflowed by 4016 bytes
   microej/lib/microejapp.o: In function `_java_internStrings_end':   
 
-The MicroEJ Application and MicroEJ Runtime don't fit in the 8k of SRAM. It is possible to shrink the footprint and run a MicroEJ Tiny Application but this is not the purpose of this tutorial. See https://docs.microej.com/en/latest/PlatformDeveloperGuide/tiny.html for more information.
+The RAM requirements of the BSP (with printf), FreeRTOS, the MicroEJ Application and MicroEJ Runtime do not fit in the 8k of SRAM. It is possible to link within 8k of RAM by cstomizing a MicroEJ Tiny Application on a baremetal device (without a RTOS) but this is not the purpose of this tutorial. See https://docs.microej.com/en/latest/PlatformDeveloperGuide/tiny.html for more information.
 
-Instead, this tutorial will switch to a larger device, the Luminary Micro Stellaris LM3S6965EVB. This device has 256k of flash memory and 64k of SRAM. Update the values in the linker script ``standalone.ld``.
+Instead, this tutorial will switch to another device, the Luminary Micro Stellaris LM3S6965EVB. This device is almost identical as the LM3S811EVB but it has 256k of flash memory and 64k of SRAM. Updating the values in the linker script ``standalone.ld`` is sufficient to create a valid BSP port for this device.
 
 .. code-block:: diff
 
@@ -909,21 +928,21 @@ Then rebuild with ``make``. There should be no error. Finally, run the firmware 
 
 .. code-block:: shell
 
-  Hello, World!
+  Hello, World! puts function is working.
   Hello World!
   QEMU: Terminated // press Ctrl-a x to end the QEMU session
 
-The first ``"Hello, World!"`` is from the ``main.c`` and the second one from the MicroEJ Application.
+The first ``Hello, World!`` is from the ``main.c`` and the second one from the MicroEJ Application.
 
 To make this more obvious:
 
 #. Update the MicroEJ Application to print ``Hello World! This is my first MicroEJ Application``
 
-  .. image:: images/tuto_microej_plat_from_scratch_hello_world_updated.PNG
+  .. image:: images/tuto_microej_fw_from_scratch_hello_world_updated.PNG
 
 #. Rebuild the MicroEJ Application
 
-  .. image:: images/tuto_microej_plat_from_scratch_hello_world_updated_run.PNG
+  .. image:: images/tuto_microej_fw_from_scratch_hello_world_updated_run.PNG
 
   On success, the following message appears in the console:
 
@@ -949,7 +968,7 @@ To make this more obvious:
     $ make && qemu-system-arm -M lm3s6965evb -nographic -kernel gcc/RTOSDemo.bin
   
       LD    gcc/RTOSDemo.axf
-    Hello, World!
+    Hello, World! puts function is working.
     Hello World! This is my first MicroEJ Application
     QEMU: Terminated
 
@@ -965,4 +984,8 @@ At this point of the tutorial:
   * compiles and links FreeRTOS with the MicroEJ Application and MicroEJ Runtime
   * runs on QEMU
 
+The next steps recommended are:
+
+- Complete the implementation of the Low Level APIs (implement all functions in ``LLMJVM_impl.h``).
+- Validate the implementation with the `PQT Core <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`_.
 
