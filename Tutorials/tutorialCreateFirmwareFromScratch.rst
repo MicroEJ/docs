@@ -24,7 +24,7 @@ The following steps are usually followed when starting a new project:
 
 In this tutorial:
 
-- The target device is a Luminary Micro Stellaris which is emulated by QEMU (LINK TO QEMU STELLARIS).
+- The target device is a Luminary Micro Stellaris which is emulated by QEMU (`QEMU Stellaris boards <https://www.qemu.org/docs/master/system/arm/stellaris.html>`_).
 - The RTOS and toolchain are FreeRTOS and the GNU CC toolchain for ARM.
 
 This tutorial describes step by step how to go from the FreeRTOS BSP
@@ -34,9 +34,6 @@ the classic ``"Hello, World!"``.
 The implementation of the Low Level API and validation with the `PQT
 <https://github.com/microej/PlatformQualificationTools>`_ will be the
 topic of another tutorial.
-
-- https://www.qemu.org/docs/master/system/arm/stellaris.html
-- https://www.ti.com/lit/ug/spmu029a/spmu029a.pdf
 
 Prerequisites
 -------------
