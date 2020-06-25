@@ -65,9 +65,9 @@ The next step is to create a MicroEJ Platform configuration:
    containing a ``[name].platform`` file. A Platform description editor shall then
    open.
 
--  Install `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/trunk/framework/platform/>`_. 
+-  Install `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/>`_. 
    Files within the ``content`` folder have to be copied to the configuration project folder,
-   by following instructions described at https://github.com/MicroEJ/PlatformQualificationTools/trunk/framework/platform/README.rst.
+   by following instructions described at https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/README.rst.
    
 You should get a MicroEJ Platform configuration project that looks like:
 
