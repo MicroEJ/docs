@@ -1,4 +1,4 @@
-Create a MicroEJ Firmware from scratch
+Create a MicroEJ Firmware From Scratch
 ======================================
 
 Introduction
