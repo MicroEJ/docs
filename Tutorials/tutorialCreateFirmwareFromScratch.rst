@@ -20,7 +20,7 @@ The following steps are usually followed when starting a new project:
 #. Validate the resulting MicroEJ Platform with the `Platform
    Qualification Tools (PQT)
    <https://github.com/microej/PlatformQualificationTools>`_.
-#. Develop the a MicroEJ Application.
+#. Develop the a `MicroEJ Application <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/standaloneApplication.html>`_.
 
 In this tutorial:
 
