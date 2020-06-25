@@ -31,7 +31,8 @@ This tutorial describes step by step how to go from the FreeRTOS BSP
 to a MicroEJ Application that runs on the MicroEJ Platforms and prints
 the classic ``"Hello, World!"``.
 
-The implementation of the Low Level API and validation with the `PQT
+The implementation of the Low Level API and validation with the
+`Platform Qualification Tools (PQT)
 <https://github.com/microej/PlatformQualificationTools>`_ will be the
 topic of another tutorial.
 
