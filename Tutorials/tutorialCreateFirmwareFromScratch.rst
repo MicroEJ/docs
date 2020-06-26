@@ -1,40 +1,58 @@
 Create a MicroEJ Firmware From Scratch
 ======================================
 
+This tutorial explains how to create a MicroEJ Firmware from scratch.
+It goes trough the typical steps followed by a Firmware developer
+integrating MicroEJ with a C Board Support Package (BSP) for a target
+device.
+
+In this tutorial, the target device is a a Luminary Micro Stellaris.
+Though this device is no longer available on the market, it has two
+advantages:
+
+- The QEMU PC System emulator can emulate the device.
+- FreeRTOS provides an official Demo BSP.
+
+Consequently, no board is required to follow this tutorial. Everything
+is emulated on the developer's PC.
+
 Introduction
 ------------
-
-This tutorial explains how to create a MicroEJ Firmware from scratch
-using QEMU, FreeRTOS and MicroEJ.
 
 The following steps are usually followed when starting a new project:
 
 #. Pick a target device (that meets the requirements of the project).
 #. Setup a RTOS and a toolchain that support the target device.
 #. Adapt the RTOS port if needed.
-#. Install a MicroEJ Architecture that matches the target
-   device/RTOS/toolchain.
-#. Setup a MicroEJ Platform connected to the Board Support Package
-   (BSP).
-#. Implement Low Level API.
+#. Install a :ref:`MicroEJ Architecture<architecture_overview>` that
+   matches the target device/RTOS/toolchain.
+#. Setup a new :ref:`MicroEJ Platform<new_platform_creation>` connected to
+   the Board Support Package (BSP).
+#. Implement :ref:`Low Level API<LLAPI-CHAPTER>`.
 #. Validate the resulting MicroEJ Platform with the `Platform
    Qualification Tools (PQT)
    <https://github.com/microej/PlatformQualificationTools>`_.
-#. Develop the a `MicroEJ Application <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/standaloneApplication.html>`_.
-
-In this tutorial:
-
-- The target device is a Luminary Micro Stellaris which is emulated by QEMU (`QEMU Stellaris boards <https://www.qemu.org/docs/master/system/arm/stellaris.html>`_).
-- The RTOS and toolchain are FreeRTOS and the GNU CC toolchain for ARM.
+#. Develop the a :ref:`MicroEJ Application
+   <microej.sample.applications>`.
 
 This tutorial describes step by step how to go from the FreeRTOS BSP
 to a MicroEJ Application that runs on the MicroEJ Platforms and prints
 the classic ``"Hello, World!"``.
 
-The implementation of the Low Level API and validation with the
-`Platform Qualification Tools (PQT)
-<https://github.com/microej/PlatformQualificationTools>`_ will be the
-topic of another tutorial.
+In this tutorial:
+
+- The target device is a Luminary Micro Stellaris which is emulated by
+  QEMU (`QEMU Stellaris boards
+  <https://www.qemu.org/docs/master/system/arm/stellaris.html>`_).
+- The RTOS and toolchain are FreeRTOS and the GNU CC toolchain for
+  ARM.
+
+.. note::
+
+  The implementation of the Low Level API and their validation with
+  the `Platform Qualification Tools (PQT)
+  <https://github.com/microej/PlatformQualificationTools>`_ will be
+  the topic of another tutorial.
 
 Prerequisites
 -------------
@@ -52,10 +70,14 @@ A code editor such as Visual Studio Code is also recommended.
 Overview
 --------
 
-The next steps describes step by step how to build a MicroEJ Firmware
-that runs a HelloWorld MicroEJ Application on the emulated device.
+The next sections describes step by step how to build a MicroEJ
+Firmware that runs a HelloWorld MicroEJ Application on the emulated
+device.
 
-#. Setup the development environment (assuming the prerequisites are satisfied).
+The steps to follow are:
+
+#. Setup the development environment (assuming the prerequisites are
+   satisfied).
 #. Get a running BSP
 #. Build the MicroEJ Platform
 #. Create the HelloWorld MicroEJ Application
@@ -68,18 +90,27 @@ This section assumes the prerequisites have been properly installed.
 
 In WSL:
 
-#. Install qemu-system-arm and GNU CC toolchain for ARM: ``sudo apt-get install qemu-system-arm gcc-arm-none-eabi``
-#. The rest of this tutorial will use the folder ``src/tuto-from-scratch/`` in the Windows home folder.
-#. Create the folder: ``mkdir -p /mnt/c/Users/${USER}/src/tuto-from-scratch`` (the ``-p`` option ensures all directory are created).
-#. Go into the folder: ``cd /mnt/c/Users/${USER}/src/tuto-from-scratch/``
-#. Clone FreeRTOS and its submodules: ``git clone --recursive https://github.com/FreeRTOS/FreeRTOS.git`` (this may takes some time)
+#. Install qemu-system-arm and GNU CC toolchain for ARM: ``sudo
+   apt-get install qemu-system-arm gcc-arm-none-eabi``
+#. The rest of this tutorial will use the folder
+   ``src/tuto-from-scratch/`` in the Windows home folder.
+#. Create the folder: ``mkdir -p
+   /mnt/c/Users/${USER}/src/tuto-from-scratch`` (the ``-p`` option
+   ensures all directory are created).
+#. Go into the folder: ``cd
+   /mnt/c/Users/${USER}/src/tuto-from-scratch/``
+#. Clone FreeRTOS and its submodules: ``git clone --recursive
+   https://github.com/FreeRTOS/FreeRTOS.git`` (this may takes some
+   time)
 
 Get Running BSP
 ---------------
 
-This section presents how to get running BSP based on FreeRTOS that boots on the target device.
+This section presents how to get running BSP based on FreeRTOS that
+boots on the target device.
 
-#. Go into the target device sub-project: ``cd FreeRTOS/FreeRTOS/Demo/CORTEX_LM3S811_GCC``
+#. Go into the target device sub-project: ``cd
+   FreeRTOS/FreeRTOS/Demo/CORTEX_LM3S811_GCC``
 #. Build the project: ``make``
 
 Ignoring the warnings, the following error appears during the link:
@@ -91,7 +122,9 @@ Ignoring the warnings, the following error appears during the link:
     arm-none-eabi-ld: section .text.startup LMA [0000000000002b24,0000000000002c8f] overlaps section .data LMA [0000000000002b24,0000000000002b27]
     make: *** [makedefs:191: gcc/RTOSDemo.axf] Error 1
 
-Insert the following fixes in the linker script file named ``standalone.ld`` (thanks to http://roboticravings.blogspot.com/2018/07/freertos-on-cortex-m3-with-qemu.html).
+Insert the following fixes in the linker script file named
+``standalone.ld`` (thanks to
+http://roboticravings.blogspot.com/2018/07/freertos-on-cortex-m3-with-qemu.html).
 
 .. note::
 
@@ -100,6 +133,7 @@ Insert the following fixes in the linker script file named ``standalone.ld`` (th
 .. code-block:: diff
 
     diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
+
     index 8ee3fe2f8..b771ff834 100644
     --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
     +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
@@ -266,30 +300,44 @@ With this two functions implemented, ``printf(3)`` is also available.
             /* Configure the clocks, UART and GPIO. */
             prvSetupHardware();
 
-At this point, the character output on the UART is implemented in the FreeRTOS BSP. The next step is to create to add the MicroEJ Platform and MicroEJ Application.
+At this point, the character output on the UART is implemented in the
+FreeRTOS BSP. The next step is to create to add the MicroEJ Platform
+and MicroEJ Application.
 
 Create a MicroEJ Platform
 -------------------------
 
-This section describes how to create and configure a MicroEJ Platform compatible with the FreeRTOS BSP and GCC toolchain.
+This section describes how to create and configure a MicroEJ Platform
+compatible with the FreeRTOS BSP and GCC toolchain.
 
-#. Start MicroEJ SDK on an empty workspace. For example, create an empty folder ``workspace`` next to the ``FreeRTOS`` git folder and select it.
+#. Start MicroEJ SDK on an empty workspace. For example, create an
+   empty folder ``workspace`` next to the ``FreeRTOS`` git folder and
+   select it.
 #. Keep the default MicroEJ Repository
 
+A MicroEJ Architecture is a software package that includes the
+:ref:`MicroEJ Runtime<mjvm_javalanguage>` port to a specific target
+Instruction Set Architecture (ISA) and C compiler. It contains a set
+of libraries, tools and C header files. The MicroEJ Architectures are
+provided by MicroEJ SDK.
 
-A MicroEJ Architecture is a software package that includes the MicroEJ Runtime port to a specific target Instruction Set Architecture (ISA) and C compiler. It contains a set of libraries, tools and C header files. The MicroEJ Architectures are provided by MicroEJ SDK.
+A MicroEJ Platform is a MicroEJ Architecture port for a custom device.
+It contains the MicroEJ configuration and the BSP (C source files).
 
-A MicroEJ Platform is a MicroEJ Architecture port for a custom device. It contains the MicroEJ configuration and the BSP (C source files).
+MicroEJ Corp. provides MicroEJ Evaluation Architectures at
+https://repository.microej.com/architectures/com/microej/architecture/.
 
-MicroEJ Corp. provides MicroEJ Evaluation Architectures at https://repository.microej.com/architectures/com/microej/architecture/.
-
-There is no ``CM3`` folder. This means that the MicroEJ Architectures for Cortex-M3 MCUs are no longer distributed. Download the latest MicroEJ Architecture for Cortex-M0 instead (the ARM architectures are binary upward compatible from ARMv6-M (Cortex-M0) to ARMv7-M (Cortex-M3)).
+There is no ``CM3`` folder. This means that the MicroEJ Architectures
+for Cortex-M3 MCUs are no longer distributed. Download the latest
+MicroEJ Architecture for Cortex-M0 instead (the ARM architectures are
+binary upward compatible from ARMv6-M (Cortex-M0) to ARMv7-M
+(Cortex-M3)).
 
 Import the MicroEJ Architecture
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This step describes how to import a `MicroEJ Architecture
-<https://docs.microej.com/en/latest/PlatformDeveloperGuide/platformCreation.html#microej-architecture-import>`_.
+This step describes how to import a :ref:`MicroEJ Architecture
+<architecture_import>`.
 
 #. Download the latest MicroEJ Architecture for Cortex-M0 instead
 #. Import the MicroEJ Architecture in MicroEJ SDK 
@@ -303,9 +351,9 @@ This step describes how to import a `MicroEJ Architecture
 Install an Evaluation License
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This step describes how to create and activate an `Evaluation License
-<https://docs.microej.com/en/latest/ApplicationDeveloperGuide/licenses.html#evaluation-licenses>`_
-for the MicroEJ Architecture previously imported.
+This step describes how to create and activate an :ref:`Evaluation
+License <gettingstarted-installlicenseseval>` for the MicroEJ Architecture previously
+imported.
 
 #. Select the ``Window > Preferences > MicroEJ > Architectures menu``.
 #. Click on the architectures and press ``Get UID``.
@@ -335,9 +383,9 @@ for the MicroEJ Architecture previously imported.
 Create the MicroEJ Platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This step describes how to create a new `MicroEJ Platform
-<https://docs.microej.com/en/latest/PlatformDeveloperGuide/platformCreation.html>`_
-using the MicroEJ Architecture previously imported.
+This step describes how to create a new :ref:`MicroEJ Platform
+<new_platform_creation>` using the MicroEJ Architecture previously
+imported.
 
 #. Select ``File > New > MicroEJ Platform Project``.
 #. Ensure the ``Architecture`` selected is the MicroEJ Architecture previously imported.
@@ -357,11 +405,10 @@ This step describes how to configure the MicroEJ Platform previously created.
 
 The `Platform Configuration Additions
 <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform>`_
-provide a flexible way to configure the `BSP connection
-<https://docs.microej.com/en/latest/PlatformDeveloperGuide/platformCreation.html#bsp-connection>`_
-between the MicroEJ Platform and MicroEJ Application to the BSP. In
-this tutorial, the Partial BSP connection is used. That is, the
-MicroEJ SDK will output all MicroEJ files (C headers, MicroEJ
+provide a flexible way to configure the :ref:`BSP connection
+<bsp_connection>` between the MicroEJ Platform and MicroEJ Application
+to the BSP. In this tutorial, the Partial BSP connection is used. That
+is, the MicroEJ SDK will output all MicroEJ files (C headers, MicroEJ
 Application ``microejapp.o``, MicroEJ Runtime ``microejruntime.a``,
 ...) in a location known by the BSP. The BSP is configured to compile
 and link with those files.
@@ -421,7 +468,10 @@ The following message appears in the console:
 Configure BSP Connection in MicroEJ Application
 -----------------------------------------------
 
-This step describes how to configure the BSP connection for the HelloWorld MicroEJ Application and how to build the MicroEJ Application that will run on the target device.
+This step describes how to configure the :ref:`BSP
+connection<bsp_connection>` for the HelloWorld MicroEJ Application and
+how to build the MicroEJ Application that will run on the target
+device.
 
 For a MicroEJ Application, the BSP connection is configured in the ``PROJECT-NAME/build/common.properties`` file.
 
@@ -688,7 +738,8 @@ The following patch updates the BSP port ``Makefile`` to do it:
    LIBS= hw_include/libdriver.a
   +LIBS+= microej/lib/microejruntime.a microej/lib/microejapp.o
 
-Then build the firmware with ``make``. The following error occurs at link time.
+Then build the firmware with ``make``. The following error occurs at
+link time.
 
 .. code-block::
 
@@ -699,9 +750,17 @@ Then build the firmware with ``make``. The following error occurs at link time.
   arm-none-eabi-ld: region `SRAM' overflowed by 4016 bytes
   microej/lib/microejapp.o: In function `_java_internStrings_end':   
 
-The RAM requirements of the BSP (with printf), FreeRTOS, the MicroEJ Application and MicroEJ Runtime do not fit in the 8k of SRAM. It is possible to link within 8k of RAM by cstomizing a MicroEJ Tiny Application on a baremetal device (without a RTOS) but this is not the purpose of this tutorial. See https://docs.microej.com/en/latest/PlatformDeveloperGuide/tiny.html for more information.
+The RAM requirements of the BSP (with printf), FreeRTOS, the MicroEJ
+Application and MicroEJ Runtime do not fit in the 8k of SRAM. It is
+possible to link within 8k of RAM by customizing a :ref:`MicroEJ Tiny
+Application<core-tiny>` on a baremetal device (without a RTOS) but
+this is not the purpose of this tutorial.
 
-Instead, this tutorial will switch to another device, the Luminary Micro Stellaris LM3S6965EVB. This device is almost identical as the LM3S811EVB but it has 256k of flash memory and 64k of SRAM. Updating the values in the linker script ``standalone.ld`` is sufficient to create a valid BSP port for this device.
+Instead, this tutorial will switch to another device, the Luminary
+Micro Stellaris LM3S6965EVB. This device is almost identical as the
+LM3S811EVB but it has 256k of flash memory and 64k of SRAM. Updating
+the values in the linker script ``standalone.ld`` is sufficient to
+create a valid BSP port for this device.
 
 .. code-block:: diff
 

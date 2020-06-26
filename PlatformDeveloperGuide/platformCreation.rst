@@ -1,3 +1,5 @@
+.. _new_platform_creation:
+
 =============================
 New MicroEJ Platform Creation
 =============================
