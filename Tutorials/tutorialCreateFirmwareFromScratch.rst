@@ -807,7 +807,14 @@ Rebuild the firmware with ``make``. The following error occurs:
   microej/lib/microejapp.o:C:\Users\user\src\tuto-from-scratch\workspace\HelloWorld\com.mycompany.Main\SOAR.o:(.rodata.TRACE_record_event_u32x5_ptr+0x0): more undefined references to `TRACE_default_stub' follow
   make: *** [makedefs:196: gcc/RTOSDemo.axf] Error 1
 
-This error occurs because ``microejruntime.a`` refers to symbols in ``microejapp.o``. To solve this issue, either invert the declaration of ``LIBS`` (put ``microejapp.o`` first) or guard the libraries delcaration with ``--start-group`` and ``--end-group`` in ``makedefs``. This tutorial uses the later.
+This error occurs because ``microejruntime.a`` refers to symbols in
+``microejapp.o`` but is declared after in the linker command line. By
+default, the GNU LD linker does not search unresolved symbols into
+archive files loaded previously (see ``man ld`` for a description of
+the ``start-group`` option). To solve this issue, either invert the
+declaration of ``LIBS`` (put ``microejapp.o`` first) or guard the
+libraries delcaration with ``--start-group`` and ``--end-group`` in
+``makedefs``. This tutorial uses the later.
 
 .. code-block:: diff
 
