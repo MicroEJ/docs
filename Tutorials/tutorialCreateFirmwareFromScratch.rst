@@ -157,7 +157,12 @@ http://roboticravings.blogspot.com/2018/07/freertos-on-cortex-m3-with-qemu.html)
 
 .. note::
 
-    This is the output of the ``git diff`` command. Lines starting with a ``-`` should be removed. Lines starting with a ``+`` should be added. Assuming all block are copied in a file named ``linker.patch`` in the working directory, the patch can be applied with the ``patch(1)`` command: ``patch -p4 < linker.patch``.
+    This is the output of the ``git diff`` command. Lines starting
+    with a ``-`` should be removed. Lines starting with a ``+`` should
+    be added. Assuming all block are copied in a file named
+    ``linker.patch`` in the working directory, the patch can be
+    applied with the ``patch(1)`` command: ``patch -p4 <
+    linker.patch``.
 
 #. Run the build again: ``make``
 #. Run the emulator with the generated kernel: ``qemu-system-arm -M lm3s811evb -nographic -kernel gcc/RTOSDemo.bin``
@@ -702,12 +707,15 @@ The MicroEJ Core Engine is created and initialized with the C function ``SNI_cre
 Build and Link the Firmware with the MicroEJ Runtime and MicroEJ Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To build and link the firmware with the MicroEJ Runtime and MicroEJ Application, the BSP port must be modified to:
+To build and link the firmware with the MicroEJ Runtime and MicroEJ
+Application, the BSP port must be modified to:
 
 #. Use the MicroEJ header files in folder ``microej/inc``
-#. Use the source files folder ``microej/src`` that contains the Low Level API implementation ``LLBSP.c`` and ``LLMJVM_stub.c``
+#. Use the source files folder ``microej/src`` that contains the Low
+   Level API implementation ``LLBSP.c`` and ``LLMJVM_stub.c``
 #. Compile and link ``LLBSP.o`` and ``LLMJVM_stub.o``
-#. Link with MicroEJ Application (``microej/lib/microejapp.o``) and MicroEJ Runtime (``microej/lib/microejruntime.a``)
+#. Link with MicroEJ Application (``microej/lib/microejapp.o``) and
+   MicroEJ Runtime (``microej/lib/microejruntime.a``)
 
 The following patch updates the BSP port ``Makefile`` to do it:
 
@@ -762,12 +770,32 @@ LM3S811EVB but it has 256k of flash memory and 64k of SRAM. Updating
 the values in the linker script ``standalone.ld`` is sufficient to
 create a valid BSP port for this device.
 
+Instead of continuing to work in the LM3S811 port, create a copy,
+named CORTEX_LM3S6965_GCC:
+
+.. code-block:: shell
+
+  $ cd ..
+  $ pwd
+  /mnt/c/Users/user/src/tuto-from-scratch/FreeRTOS/FreeRTOS/Demo
+  $ cp -r CORTEX_LM3S811_GCC/ CORTEX_LM3S6965_GCC
+  $ cd CORTEX_LM3S6965_GCC
+
+The BSP path defined by the property ``deploy.bsp.root.dir`` in the
+MicroEJ Application must be updated as well.
+
+
+The rest of the tutorial assumes that everything is done in the
+``CORTEX_LM3S6965_GCC`` folder.
+
+Then update the linker script ``standlone.ld``:  
+
 .. code-block:: diff
 
-  diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
+  diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
   index b771ff834..e3719ea30 100644
-  --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
-  +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
+  --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
+  +++ b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
   @@ -28,8 +28,8 @@
   
    MEMORY
@@ -818,10 +846,10 @@ libraries delcaration with ``--start-group`` and ``--end-group`` in
 
 .. code-block:: diff
 
-  diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/makedefs
+  diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   index 1a8f4dab5..66b482804 100644
-  --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/makedefs
-  +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/makedefs
+  --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
+  +++ b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   @@ -196,13 +196,13 @@ ifeq (${COMPILER}, gcc)
                echo ${LD} -T ${SCATTER_${notdir ${@:.axf=}}}    \
                           --entry ${ENTRY_${notdir ${@:.axf=}}} \
@@ -879,10 +907,10 @@ This error occurs because the Math library is missing. The rule for linking the 
 
 .. code-block:: diff
 
-  diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/makedefs
+  diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   index 66b482804..80f812829 100644
-  --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/makedefs
-  +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/makedefs
+  --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
+  +++ b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   @@ -102,6 +102,11 @@ LIBGCC=${shell ${CC} -mthumb -march=armv6t2 -print-libgcc-file-name}
    #
    LIBC=${shell ${CC} -mthumb -march=armv6t2 -print-file-name=libc.a}
@@ -925,10 +953,10 @@ Instead of implementing a stub ``_sbrk`` function, this tutorial uses the ``libn
 
 .. code-block:: diff
 
-  diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/makedefs
+  diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   index 80f812829..9de8150a5 100644
-  --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/makedefs
-  +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/makedefs
+  --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
+  +++ b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   @@ -107,6 +107,11 @@ LIBC=${shell ${CC} -mthumb -march=armv6t2 -print-file-name=libc.a}
    #
    LIBM=${shell ${CC} -mthumb -march=armv6t2 -print-file-name=libm.a}
@@ -971,10 +999,10 @@ The ``_sbrk`` implementation needs the ``end`` symbol to be defined. Looking at 
 
 .. code-block:: diff
 
-  diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
+  diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
   index e3719ea30..e86294b5f 100644
-  --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
-  +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
+  --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
+  +++ b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
   @@ -64,5 +64,6 @@ SECTIONS
            *(.bss)
            *(COMMON)
@@ -1013,14 +1041,14 @@ To make this more obvious:
   .. code-block::
   
     =============== [ Initialization Stage ] ===============
-    Platform connected to BSP location 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S811_GCC' using application option 'deploy.bsp.root.dir'.
+    Platform connected to BSP location 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S6965_GCC' using application option 'deploy.bsp.root.dir'.
     =============== [ Launching SOAR ] ===============
     =============== [ Launching Link ] ===============
     =============== [ Deployment ] ===============
     MicroEJ files for the 3rd-party BSP project are generated to 'C:\Users\user\src\tuto-from-scratch\workspace\HelloWorld\com.mycompany.Main\platform'.
-    The MicroEJ application (microejapp.o) has been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S811_GCC\microej\lib'.
-    The MicroEJ platform library (microejruntime.a) has been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S811_GCC\microej\lib'.
-    The MicroEJ platform header files (*.h) have been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S811_GCC\microej\inc'.
+    The MicroEJ application (microejapp.o) has been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S6965_GCC\microej\lib'.
+    The MicroEJ platform library (microejruntime.a) has been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S6965_GCC\microej\lib'.
+    The MicroEJ platform header files (*.h) have been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S6965_GCC\microej\inc'.
     =============== [ Completed Successfully ] ===============
     
     SUCCESS
