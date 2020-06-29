@@ -65,7 +65,7 @@ Prerequisites
   <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_.
 - A Linux distribution installed on WSL (Tested on Ubuntu 19.10 eoan)
 
-A code editor such as Visual Studio Code is also recommended.
+A code editor such as Visual Studio Code is also recommended to edit BSP files.
 
 Overview
 --------
