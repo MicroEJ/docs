@@ -44,7 +44,7 @@ In this tutorial:
 - The target device is a Luminary Micro Stellaris which is emulated by
   QEMU (`QEMU Stellaris boards
   <https://www.qemu.org/docs/master/system/arm/stellaris.html>`_).
-- The RTOS and toolchain are FreeRTOS and the GNU CC toolchain for
+- The RTOS is FreeRTOS and the toolchain in GNU CC for 
   ARM.
 
 .. note::
@@ -1174,4 +1174,3 @@ The next steps recommended are:
   functions in ``LLMJVM_impl.h``).
 - Validate the implementation with the `PQT Core
   <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`_.
-
