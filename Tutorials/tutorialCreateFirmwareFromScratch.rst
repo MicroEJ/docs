@@ -362,7 +362,7 @@ MicroEJ Corp. provides MicroEJ Evaluation Architectures at
 https://repository.microej.com/architectures/com/microej/architecture/.
 
 There is no ``CM3`` folder. This means that the MicroEJ Architectures
-for Cortex-M3 MCUs are no longer distributed. Download the latest
+for Cortex-M3 MCUs are no longer distributed for evaluation. Download the latest
 MicroEJ Architecture for Cortex-M0 instead (the ARM architectures are
 binary upward compatible from ARMv6-M (Cortex-M0) to ARMv7-M
 (Cortex-M3)).
