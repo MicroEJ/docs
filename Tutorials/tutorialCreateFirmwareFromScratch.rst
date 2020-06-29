@@ -362,10 +362,10 @@ MicroEJ Corp. provides MicroEJ Evaluation Architectures at
 https://repository.microej.com/architectures/com/microej/architecture/.
 
 There is no ``CM3`` folder. This means that the MicroEJ Architectures
-for Cortex-M3 MCUs are no longer distributed for evaluation. Download the latest
-MicroEJ Architecture for Cortex-M0 instead (the ARM architectures are
-binary upward compatible from ARMv6-M (Cortex-M0) to ARMv7-M
-(Cortex-M3)).
+for Arm® Cortex®-M3 MCUs are no longer distributed for evaluation.
+Download the latest MicroEJ Architecture for Arm® Cortex®-M0 instead
+(the Arm® architectures are binary upward compatible from Arm®v6-M
+(Cortex®-M0) to Arm®v7-M (Cortex®-M3)).
 
 Import the MicroEJ Architecture
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -373,7 +373,8 @@ Import the MicroEJ Architecture
 This step describes how to import a :ref:`MicroEJ Architecture
 <architecture_import>`.
 
-#. Download the latest MicroEJ Architecture for Cortex-M0 instead
+#. Download the latest MicroEJ Architecture for Arm® Cortex®-M0
+   instead
 #. Import the MicroEJ Architecture in MicroEJ SDK
 
     #. :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`
