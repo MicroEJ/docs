@@ -8,7 +8,7 @@ respected in order to build a firmware.
 .. image:: images/qa_resources-v3.png
 	:align: center
 
-This project describes the components involved and the process to
+This document describes the components involved and the process to
 build a MicroEJ Firmware.
 
 Requirements
