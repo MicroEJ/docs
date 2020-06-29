@@ -70,7 +70,7 @@ A code editor such as Visual Studio Code is also recommended to edit BSP files.
 Overview
 --------
 
-The next sections describes step by step how to build a MicroEJ
+The next sections describe step by step how to build a MicroEJ
 Firmware that runs a HelloWorld MicroEJ Application on the emulated
 device.
 
