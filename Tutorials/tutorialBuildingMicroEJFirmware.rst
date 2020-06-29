@@ -12,7 +12,7 @@ This project describes the components involved and the process to
 build a MicroEJ Firmware.
 
 Requirements
-============
+------------
 
 * MicroEJ SDK 5 is installed with an activated license (evaluation
   license or production license).
