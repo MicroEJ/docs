@@ -2,19 +2,23 @@ Building a MicroEJ Firmware
 ===========================
 
 A MicroEJ Firmware is built from several input resources and tools.
-Each resource and tool has a specific version that must be carefully respected in order to build a firmware.
+Each resource and tool has a specific version that must be carefully
+respected in order to build a firmware.
 
 .. image:: images/qa_resources-v3.png
 	:align: center
 
-This project describes the components involved and the process to build a MicroEJ Firmware.
+This project describes the components involved and the process to
+build a MicroEJ Firmware.
 
 Requirements
 ============
 
-* MicroEJ SDK 5 is installed with an activated license (evaluation license or production license).
+* MicroEJ SDK 5 is installed with an activated license (evaluation
+  license or production license).
 * The reader is familiar with the :ref:`chapter-glossary`
-* The reader has run one of the MicroEJ SDK getting started https://developer.microej.com/get-started/
+* The reader has run one of the MicroEJ SDK getting started
+  https://developer.microej.com/get-started/
 * The reader has read the :ref:`platform-developer-guide`.
 
 The MicroEJ SDK IDE [.exe or .zip].
@@ -26,20 +30,28 @@ The MicroEJ SDK IDE [.exe or .zip].
 MicroEJ Architecture [.xpf, .xpfp]
 ----------------------------------
 
-A MicroEJ Architecture contains the runtime port to a target instruction set (ISA) and a C compiler (CC) and MicroEJ Foundation Libraries.
+A MicroEJ Architecture contains the runtime port to a target
+instruction set (ISA) and a C compiler (CC) and MicroEJ Foundation
+Libraries.
 
 The MicroEJ Architectures are distributed into 2 formats:
 
-* EVAL: evaluation license with runtime limitations (explained in SDK developer guide).
-* DEV: production license (these versions are only distributed by MicroEJ sales & Customer Care team).
+* EVAL: evaluation license with runtime limitations (explained in SDK
+  developer guide).
+* DEV: production license (these versions are only distributed by
+  MicroEJ sales & Customer Care team).
 
-The list of supported MicroEJ Architectures can be found here https://developer.microej.com/mej32-embedded-runtime-architectures/#arch
+The list of supported MicroEJ Architectures can be found here
+https://developer.microej.com/mej32-embedded-runtime-architectures/#arch
 
 The MicroEJ Architecture is either provided from:
 
-* the ``/platformArchitecture`` folder in a MicroEJ Architecture (downloaded from https://developer.microej.com/).
+* the ``/platformArchitecture`` folder in a MicroEJ Architecture
+  (downloaded from https://developer.microej.com/).
 * MicroEJ sales or customer care team.
-* For DEV license only: SDK license site https://license.microej.com/ (MyProduct->Download additional products will list the downloads available).
+* For DEV license only: SDK license site https://license.microej.com/
+  (MyProduct->Download additional products will list the downloads
+  available).
 
 A MicroEJ Architecture must be imported in SDK with:
 
@@ -61,21 +73,29 @@ This package includes:
 
 The zip files contains:
 
-* ``<platform>-configuration``: The configuration of the MicroEJ Platform
-* ``<platform>-bsp``: The C code for the board-specific files (drivers).
+* ``<platform>-configuration``: The configuration of the MicroEJ
+  Platform
+* ``<platform>-bsp``: The C code for the board-specific files
+  (drivers).
 * Must be compiled with a compiler.
 * ``<platform>-fp``: Front panel mockup for the simulator.
 
 To generate the platform:
 
-* In the ``<platform>-configuration``: open the ``.platform`` file and verify the correct MicroEJ Architecture is used (see Content view).
-* Click on ``Build Platform``. This action generates a ``<platform>-<ISA>-<CC>-<VERSION>`` folder that contains the platform runtime library (``microejruntime.lib``).
-* This library is usually directly linked from the ``<platform>-bsp`` project (no manual action to do after the build). Follow the README instructions inside the platform .zip.
+* In the ``<platform>-configuration``: open the ``.platform`` file and
+  verify the correct MicroEJ Architecture is used (see Content view).
+* Click on ``Build Platform``. This action generates a
+  ``<platform>-<ISA>-<CC>-<VERSION>`` folder that contains the
+  platform runtime library (``microejruntime.lib``).
+* This library is usually directly linked from the ``<platform>-bsp``
+  project (no manual action to do after the build). Follow the README
+  instructions inside the platform .zip.
 
 Java application project (.zip)
 -------------------------------
 
-This Java project can be configured (in the ``Run configurations ...`` properties):
+This Java project can be configured (in the ``Run configurations ...``
+properties):
 
 * to either run on:
 
@@ -88,9 +108,12 @@ This Java project can be configured (in the ``Run configurations ...`` propertie
   * foundation libraries,
   * etc…
 
-This project is compiled against (and optimized for) a specific MicroEJ SDK platform:
+This project is compiled against (and optimized for) a specific
+MicroEJ SDK platform:
 
-* Generates a ``microejapp.o`` (native object code) that is usually directly linked from the ``<platform>-bsp`` project (no manual action to do after the build).
+* Generates a ``microejapp.o`` (native object code) that is usually
+  directly linked from the ``<platform>-bsp`` project (no manual
+  action to do after the build).
 
 * Go in:
 
@@ -98,25 +121,33 @@ This project is compiled against (and optimized for) a specific MicroEJ SDK plat
   * select the provided ``MicroEJ Application`` launchers
   * click on ``Run``
 
-* Must be imported in SDK with: ``File > Import… > General > Existing Projects into Workspace > Select archive file > Browse…``, choose ``x.zip`` and ``Finish`` import.
+* Must be imported in SDK with: ``File > Import… > General > Existing
+  Projects into Workspace > Select archive file > Browse…``, choose
+  ``x.zip`` and ``Finish`` import.
 
 Ivy repository
 --------------
 
-* MicroEJ Central Repository: an online repository of software artifacts (libraries, tools, …), see https://repository.microej.com/.
+* MicroEJ Central Repository: an online repository of software
+  artifacts (libraries, tools, …), see
+  https://repository.microej.com/.
 
-* (Optional) Can be extended with an offline repository (``.zip``) that can be imported in the workspace:
+* (Optional) Can be extended with an offline repository (``.zip``)
+  that can be imported in the workspace:
   
   * Unzip the ``x-repository-M.m.p.zip`` file.
   * Open MicroEJ SDK.
   * Go to ``Window > Preferences > Ivy > Settings``.
-  * Configure the ``Ivy settings`` path by clicking the ``File System...`` button.
-  * Select the ``ivysettings.xml`` file available in the unzipped directory of the ``x-repository-M.m.p.zip`` file.
+  * Configure the ``Ivy settings`` path by clicking the ``File
+    System...`` button.
+  * Select the ``ivysettings.xml`` file available in the unzipped
+    directory of the ``x-repository-M.m.p.zip`` file.
 
 C compiler (GCC, KEIL, IAR, …).
 -------------------------------
 
-Used to compile and link the following files into the final firmware (binary, hex, elf, … that will be programmed on the hardware):
+Used to compile and link the following files into the final firmware
+(binary, hex, elf, … that will be programmed on the hardware):
   
   * the ``microejapp.o`` (application),
   * the ``microejruntime.lib`` or ``microejruntime.a`` (platform),
