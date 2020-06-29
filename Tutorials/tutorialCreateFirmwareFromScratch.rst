@@ -180,7 +180,8 @@ http://roboticravings.blogspot.com/2018/07/freertos-on-cortex-m3-with-qemu.html)
     #. Press ``Ctrl-d Ctrl-d`` (press the ``Controll`` key + the letter ``d`` twice).
 
 #. Run the build again: ``make``
-#. Run the emulator with the generated kernel: ``qemu-system-arm -M lm3s811evb -nographic -kernel gcc/RTOSDemo.bin``
+#. Run the emulator with the generated kernel: ``qemu-system-arm -M
+   lm3s811evb -nographic -kernel gcc/RTOSDemo.bin``
 
 The following error appears and then nothing:
 
@@ -205,18 +206,28 @@ The following error appears and then nothing:
     ssd0303: error: Unknown command: 0x80
     ssd0303: error: Unexpected byte 0xe3
 
-To the end the QEMU session, press ``Ctrl-a x`` (press ``Control`` + the letter ``a``, release, press ``x``). The session ends with ``QEMU: Terminated``. The errors can be safely ignored. They occur because the OLED controller emulated receive incorrect commands.
+To the end the QEMU session, press ``Ctrl-a x`` (press ``Control`` +
+the letter ``a``, release, press ``x``). The session ends with ``QEMU:
+Terminated``. The errors can be safely ignored. They occur because the
+OLED controller emulated receive incorrect commands.
 
-At this point, the target device is successfully booted with the FreeRTOS kernel.
+At this point, the target device is successfully booted with the
+FreeRTOS kernel.
 
 FreeRTOS Hello World
 --------------------
 
-This section describes how to configure the BSP to print text on the QEMU console.
+This section describes how to configure the BSP to print text on the
+QEMU console.
 
-The datasheet of the target device (`LM3S811 datasheet <https://www.ti.com/lit/ds/symlink/lm3s811.pdf>`_) describe how to use the UART device and an example implementation for QEMU is available `here <https://github.com/dwelch67/qemu_arm_samples/blob/master/cortex-m/uart01/notmain.c>`_).
+The datasheet of the target device (`LM3S811 datasheet
+<https://www.ti.com/lit/ds/symlink/lm3s811.pdf>`_) describe how to use
+the UART device and an example implementation for QEMU is available
+`here
+<https://github.com/dwelch67/qemu_arm_samples/blob/master/cortex-m/uart01/notmain.c>`_).
 
-The following code implements the ``putchar(3)`` and ``puts(3)`` functions:
+The following code implements the ``putchar(3)`` and ``puts(3)``
+functions:
 
 .. code-block:: c
 
@@ -235,7 +246,8 @@ The following code implements the ``putchar(3)`` and ``puts(3)`` functions:
         return putchar('\n');
     }
 
-And here is the patch that implements both functions and prints ``Hello World``.
+And here is the patch that implements both functions and prints
+``Hello World``.
 
 .. code-block:: diff
 
@@ -271,7 +283,9 @@ And here is the patch that implements both functions and prints ``Hello World``.
             prvSetupHardware();
 
 
-#. Rebuild and run the newly generated kernel: ``make && qemu-system-arm -M lm3s811evb -nographic -kernel gcc/RTOSDemo.bin`` (press ``Ctrl-a x`` to interrupt the emulator).
+#. Rebuild and run the newly generated kernel: ``make &&
+   qemu-system-arm -M lm3s811evb -nographic -kernel gcc/RTOSDemo.bin``
+   (press ``Ctrl-a x`` to interrupt the emulator).
 
 .. code-block::
 
@@ -360,7 +374,7 @@ This step describes how to import a :ref:`MicroEJ Architecture
 <architecture_import>`.
 
 #. Download the latest MicroEJ Architecture for Cortex-M0 instead
-#. Import the MicroEJ Architecture in MicroEJ SDK 
+#. Import the MicroEJ Architecture in MicroEJ SDK
 
     #. :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`
     #. select the MicroEJ Architecture file downloaded
@@ -372,29 +386,37 @@ Install an Evaluation License
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This step describes how to create and activate an :ref:`Evaluation
-License <gettingstarted-installlicenseseval>` for the MicroEJ Architecture previously
-imported.
+License <gettingstarted-installlicenseseval>` for the MicroEJ
+Architecture previously imported.
 
-#. Select the :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures menu`.
+#. Select the :guilabel:`Window` > :guilabel:`Preferences` >
+   :guilabel:`MicroEJ` > :guilabel:`Architectures menu`.
 #. Click on the architectures and press :guilabel:`Get UID`.
 #. Copy the UID. It will be needed when requesting a license.
 #. Go to https://license.microej.com.
 #. Click on :guilabel:`Create a new account` link.
-#. Create an account with a valid email address. A confirmation email will be sent a few minutes after. Click on the confirmation link in the email and login with the account.
+#. Create an account with a valid email address. A confirmation email
+   will be sent a few minutes after. Click on the confirmation link in
+   the email and login with the account.
 #. Click on :guilabel:`Activate a License`.
 #. Set Product ``P/N:`` to ``9PEVNLDBU6IJ``.
 #. Set ``UID:`` to the UID generated before.
 #. Click on :guilabel:`Activate`.
 
-  * The license is being activated. An activation mail should be received in less than 5 minutes. If not, please contact support@microej.com.
-  * Once received by email, save the attached zip file that contains the activation key.
+  * The license is being activated. An activation mail should be
+    received in less than 5 minutes. If not, please contact
+    support@microej.com.
+  * Once received by email, save the attached zip file that contains
+    the activation key.
 
 #. Go back to Microej SDK.
-#. Select the :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` menu.
+#. Select the :guilabel:`Window` > :guilabel:`Preferences` >
+   :guilabel:`MicroEJ` menu.
 #. Press :guilabel:`Add...`.
 #. Browse the previously downloaded activation key archive file.
 #. Press :guilabel:`OK`. A new license is successfully installed.
-#. Go to :guilabel:`Architectures` sub-menu and check that all architectures are now activated (green check).
+#. Go to :guilabel:`Architectures` sub-menu and check that all
+   architectures are now activated (green check).
 #. Microej SDK is successfully activated.
 
 
@@ -407,9 +429,12 @@ This step describes how to create a new :ref:`MicroEJ Platform
 <new_platform_creation>` using the MicroEJ Architecture previously
 imported.
 
-#. Select :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Platform Project`.
-#. Ensure the :guilabel:`Architecture` selected is the MicroEJ Architecture previously imported.
-#. Ensure the :guilabel:`Create from a platform reference implementation` box is unchecked.
+#. Select :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ
+   Platform Project`.
+#. Ensure the :guilabel:`Architecture` selected is the MicroEJ
+   Architecture previously imported.
+#. Ensure the :guilabel:`Create from a platform reference
+   implementation` box is unchecked.
 #. Click on :guilabel:`Next` button.
 #. Fill the fields:
 
@@ -421,7 +446,8 @@ imported.
 Setup the MicroEJ Platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This step describes how to configure the MicroEJ Platform previously created.
+This step describes how to configure the MicroEJ Platform previously
+created.
 
 The `Platform Configuration Additions
 <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform>`_
@@ -433,9 +459,11 @@ Application ``microejapp.o``, MicroEJ Runtime ``microejruntime.a``,
 ...) in a location known by the BSP. The BSP is configured to compile
 and link with those files.
 
-For this tutorial, that means that the final binary is produced by invoking ``make`` in the FreeRTOS BSP.
+For this tutorial, that means that the final binary is produced by
+invoking ``make`` in the FreeRTOS BSP.
 
-#. Install the Platform Configuration Additions by copying all the files within the ``content`` folder in the MicroEJ Platform folder.
+#. Install the Platform Configuration Additions by copying all the
+   files within the ``content`` folder in the MicroEJ Platform folder.
 
   .. image:: images/tuto_microej_fw_from_scratch_add_platform_configuration_additions.PNG
 
@@ -455,22 +483,26 @@ For this tutorial, that means that the final binary is produced by invoking ``ma
     # This is a '/' separated directory relative to 'bsp.root.dir'.
     microejinc.relative.dir=microej/inc    
 
-#. Open the ``.platform`` file and click on ``Build Platform``. The MicroEJ Platform will appear in the workspace.
+#. Open the ``.platform`` file and click on ``Build Platform``. The
+   MicroEJ Platform will appear in the workspace.
 
    .. image:: images/tuto_microej_fw_from_scratch_build_platform.PNG
 
-At this point, the MicroEJ Platform is ready to be used to build MicroEJ Applications.
+At this point, the MicroEJ Platform is ready to be used to build
+MicroEJ Applications.
 
 Create MicroEJ Application HelloWorld
 -------------------------------------
 
-#. Select :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Standalone Application Project`.
+#. Select :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ
+   Standalone Application Project`.
 #. Set the name to ``HelloWorld`` and click on :guilabel:`Finish`
 
   .. image:: images/tuto_microej_fw_from_scratch_new_microej_application_project.PNG
 
-#. Run the application in Simulator to ensure it is working properly. 
-   Right-click on HelloWorld project > :guilabel:`Run as` > :guilabel:`MicroEJ Application`
+#. Run the application in Simulator to ensure it is working properly.
+   Right-click on HelloWorld project > :guilabel:`Run as` >
+   :guilabel:`MicroEJ Application`
 
   .. image:: images/tuto_microej_fw_from_scratch_run_as_microej_application.PNG
    
@@ -493,9 +525,11 @@ connection<bsp_connection>` for the HelloWorld MicroEJ Application and
 how to build the MicroEJ Application that will run on the target
 device.
 
-For a MicroEJ Application, the BSP connection is configured in the ``PROJECT-NAME/build/common.properties`` file.
+For a MicroEJ Application, the BSP connection is configured in the
+``PROJECT-NAME/build/common.properties`` file.
 
-#. Create a file ``HelloWorld/build/emb.properties`` with the following content:
+#. Create a file ``HelloWorld/build/emb.properties`` with the
+   following content:
 
   .. code-block:: properties
 
@@ -511,7 +545,10 @@ For a MicroEJ Application, the BSP connection is configured in the ``PROJECT-NAM
 
   .. note::
 
-    Assuming the WSL current directory is ``FreeRTOS/FreeRTOS/Demo/CORTEX_LM3S811_GCC``, use the following command to find the ``deploy.bsp.root.dir`` path with proper escaping:
+    Assuming the WSL current directory is
+    ``FreeRTOS/FreeRTOS/Demo/CORTEX_LM3S811_GCC``, use the following
+    command to find the ``deploy.bsp.root.dir`` path with proper
+    escaping:
 
     .. code-block:: shell
 
@@ -523,7 +560,8 @@ For a MicroEJ Application, the BSP connection is configured in the ``PROJECT-NAM
   .. image:: images/tuto_microej_fw_from_scratch_run_configurations.PNG
 
 #. Select :guilabel:`Execution` tab.
-#. Change the execution mode from :guilabel:`Execute on Simulator` to :guilabel:`Execute on Device`.
+#. Change the execution mode from :guilabel:`Execute on Simulator` to
+   :guilabel:`Execute on Device`.
 #. Add the file ``build/emb.properties`` to the options files
 
   .. image:: images/tuto_microej_fw_from_scratch_run_configurations_execute_on_device.PNG
@@ -547,15 +585,19 @@ For a MicroEJ Application, the BSP connection is configured in the ``PROJECT-NAM
   SUCCESS
 
    
-At this point, the HelloWorld MicroEJ Application is built and deployed in the FreeRTOS BSP.
+At this point, the HelloWorld MicroEJ Application is built and
+deployed in the FreeRTOS BSP.
 
 MicroEJ and FreeRTOS Integration
 --------------------------------
 
-This section describes how to finalize the integration between MicroEJ and FreeRTOS to get a working firmware that runs the HelloWorld MicroEJ Application built previously.
+This section describes how to finalize the integration between MicroEJ
+and FreeRTOS to get a working firmware that runs the HelloWorld
+MicroEJ Application built previously.
 
 
-In the previous section, when the MicroEJ Application was built, several files were added to a new folder named ``microej/``.
+In the previous section, when the MicroEJ Application was built,
+several files were added to a new folder named ``microej/``.
 
 .. code-block::
 
@@ -586,10 +628,15 @@ In the previous section, when the MicroEJ Application was built, several files w
   
   3 directories, 19 files
   
-- The ``microej/lib`` folder contains the HelloWorld MicroEJ Application object file (``microejapp.o``) and the MicroEJ Runtime. The final binary must be linked with these two files.
-- The ``microej/inc`` folder contains several C header files used to expose MicroEJ Low Level APIs. The functions defined in files ending with the ``_impl.h`` suffix should be implemented by the BSP.
+- The ``microej/lib`` folder contains the HelloWorld MicroEJ
+  Application object file (``microejapp.o``) and the MicroEJ Runtime.
+  The final binary must be linked with these two files.
+- The ``microej/inc`` folder contains several C header files used to
+  expose MicroEJ Low Level APIs. The functions defined in files ending
+  with the ``_impl.h`` suffix should be implemented by the BSP.
 
-To summarize, the following steps remain to complete the integration between MicroEJ and the FreeRTOS BSP:
+To summarize, the following steps remain to complete the integration
+between MicroEJ and the FreeRTOS BSP:
 
 - Implement minimal Low Level APIs
 - Invoke the MicroEJ Core Engine
@@ -599,9 +646,14 @@ To summarize, the following steps remain to complete the integration between Mic
 Minimal Low Level APIs
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The purpose of this tutorial is to demonstrate how to develop a minimal MicroEJ Architecture, it is not to develop a complete MicroEJ Architecture. Therefore this tutorial implements only the required functions and provides stub implementation for unused features. For example, the following implementation does not support scheduling.
+The purpose of this tutorial is to demonstrate how to develop a
+minimal MicroEJ Architecture, it is not to develop a complete MicroEJ
+Architecture. Therefore this tutorial implements only the required
+functions and provides stub implementation for unused features. For
+example, the following implementation does not support scheduling.
 
-The two headers that must be implemented are ``LLBSP_impl.h`` and ``LLMJVM_impl.h``.
+The two headers that must be implemented are ``LLBSP_impl.h`` and
+``LLMJVM_impl.h``.
 
 #. Create a folder named ``microej/src``.
 #. Implement ``LLBSP_impl.h`` in ``LLBSP.c``:
@@ -626,10 +678,14 @@ The two headers that must be implemented are ``LLBSP_impl.h`` and ``LLMJVM_impl.
       putchar(c);
     }
 
-  - The implementation of ``LLBSP_IMPL_putchar`` reuses the ``putchar`` implemented previously.
-  - The ``rodata`` section is defined in the linker script ``standalone.ld``. The flash memory starts at 0 and the end of the section is stored in the ``_etex`` symbol.
+  - The implementation of ``LLBSP_IMPL_putchar`` reuses the
+    ``putchar`` implemented previously.
+  - The ``rodata`` section is defined in the linker script
+    ``standalone.ld``. The flash memory starts at 0 and the end of the
+    section is stored in the ``_etex`` symbol.
 
-#. Implement ``LLMJVM_impl.h`` in ``LLMJVM_stub.c`` (all functions are stubbed with a dummy implementation):
+#. Implement ``LLMJVM_impl.h`` in ``LLMJVM_stub.c`` (all functions are
+   stubbed with a dummy implementation):
 
   .. code-block:: c
     :caption: microej/src/LLMJVM_stub.c
@@ -696,7 +752,11 @@ The two headers that must be implemented are ``LLBSP_impl.h`` and ``LLMJVM_impl.
 Invoke MicroEJ Core Engine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The MicroEJ Core Engine is created and initialized with the C function ``SNI_createVM``. Then it is started and executed in the current RTOS task by calling ``SNI_startVM``. The function ``SNI_startVM`` returns when the MicroEJ Application exits. Both functions are declared in the C header ``sni.h``.
+The MicroEJ Core Engine is created and initialized with the C function
+``SNI_createVM``. Then it is started and executed in the current RTOS
+task by calling ``SNI_startVM``. The function ``SNI_startVM`` returns
+when the MicroEJ Application exits. Both functions are declared in the
+C header ``sni.h``.
 
 .. code-block:: diff
 
@@ -823,7 +883,8 @@ Then update the linker script ``standlone.ld``:
   
    SECTIONS
 
-The new command to run the firmware with QEMU is: ``qemu-system-arm -M lm3s6965evb -nographic -kernel gcc/RTOSDemo.bin``.
+The new command to run the firmware with QEMU is: ``qemu-system-arm -M
+lm3s6965evb -nographic -kernel gcc/RTOSDemo.bin``.
 
 Rebuild the firmware with ``make``. The following error occurs:
 
@@ -918,7 +979,10 @@ Rebuild with ``make``. The following error occurs:
   microej/lib/microejruntime.a(iceTea_lang_Math.o): In function `iceTea_lang_Math___floor':
   ... skip ...
 
-This error occurs because the Math library is missing. The rule for linking the firmware is defined in the file ``makedefs``. Replicating how the libc is managed, the following patch finds the ``libm.a`` library and add it at link time:
+This error occurs because the Math library is missing. The rule for
+linking the firmware is defined in the file ``makedefs``. Replicating
+how the libc is managed, the following patch finds the ``libm.a``
+library and add it at link time:
 
 .. code-block:: diff
 
@@ -964,7 +1028,9 @@ Rebuild with ``make``. The following error occurs:
   /build/newlib-jo3xW1/newlib-2.4.0.20160527/build/arm-none-eabi/thumb/newlib/libc/reent/../../../../../../newlib/libc/reent/sbrkr.c:58: undefined reference to `_sbrk'
   make: *** [makedefs:196: gcc/RTOSDemo.axf] Error 1
 
-Instead of implementing a stub ``_sbrk`` function, this tutorial uses the ``libnosys.a`` which provides stub implementation for various functions.
+Instead of implementing a stub ``_sbrk`` function, this tutorial uses
+the ``libnosys.a`` which provides stub implementation for various
+functions.
 
 .. code-block:: diff
 
@@ -1010,7 +1076,12 @@ Rebuild with ``make``. The following error occurs:
   /build/newlib-jo3xW1/newlib-2.4.0.20160527/build/arm-none-eabi/thumb/libgloss/libnosys/../../../../../libgloss/libnosys/sbrk.c:21: undefined reference to `end'
   make: *** [makedefs:201: gcc/RTOSDemo.axf] Error 1
 
-The ``_sbrk`` implementation needs the ``end`` symbol to be defined. Looking at the ``implementation <https://chromium.googlesource.com/native_client/nacl-newlib/+/99fc6c167467b41466ec90e8260e9c49cbe3d13c/libgloss/libnosys/sbrk.c>``, the ``end`` symbol corresponds to the beginning of the C heap. This tutorial uses the end of the ``.bss`` segment as the beginning of the C heap.
+The ``_sbrk`` implementation needs the ``end`` symbol to be defined.
+Looking at the ``implementation
+<https://chromium.googlesource.com/native_client/nacl-newlib/+/99fc6c167467b41466ec90e8260e9c49cbe3d13c/libgloss/libnosys/sbrk.c>``,
+the ``end`` symbol corresponds to the beginning of the C heap. This
+tutorial uses the end of the ``.bss`` segment as the beginning of the
+C heap.
 
 .. code-block:: diff
 
@@ -1026,7 +1097,8 @@ The ``_sbrk`` implementation needs the ``end`` symbol to be defined. Looking at 
        } > SRAM
    }
 
-Then rebuild with ``make``. There should be no error. Finally, run the firmware in QEMU with the following command:
+Then rebuild with ``make``. There should be no error. Finally, run the
+firmware in QEMU with the following command:
 
 .. code-block:: shell
 
@@ -1039,11 +1111,13 @@ Then rebuild with ``make``. There should be no error. Finally, run the firmware 
   Hello World!
   QEMU: Terminated // press Ctrl-a x to end the QEMU session
 
-The first ``Hello, World!`` is from the ``main.c`` and the second one from the MicroEJ Application.
+The first ``Hello, World!`` is from the ``main.c`` and the second one
+from the MicroEJ Application.
 
 To make this more obvious:
 
-#. Update the MicroEJ Application to print ``Hello World! This is my first MicroEJ Application``
+#. Update the MicroEJ Application to print ``Hello World! This is my
+   first MicroEJ Application``
 
   .. image:: images/tuto_microej_fw_from_scratch_hello_world_updated.PNG
 
@@ -1083,16 +1157,21 @@ Congratulations!
 
 At this point of the tutorial:
 
-- The MicroEJ Platform is connected to the BSP (BSP partial connection).
-- The MicroEJ Application is deployed within a known location of the BSP (in ``microej/`` folder).
+- The MicroEJ Platform is connected to the BSP (BSP partial
+  connection).
+- The MicroEJ Application is deployed within a known location of the
+  BSP (in ``microej/`` folder).
 - The FreeRTOS LM3S6965 port:
 
   * provides the minimal Low Level API to run the MicroEJ Application
-  * compiles and links FreeRTOS with the MicroEJ Application and MicroEJ Runtime
+  * compiles and links FreeRTOS with the MicroEJ Application and
+    MicroEJ Runtime
   * runs on QEMU
 
 The next steps recommended are:
 
-- Complete the implementation of the Low Level APIs (implement all functions in ``LLMJVM_impl.h``).
-- Validate the implementation with the `PQT Core <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`_.
+- Complete the implementation of the Low Level APIs (implement all
+  functions in ``LLMJVM_impl.h``).
+- Validate the implementation with the `PQT Core
+  <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`_.
 
