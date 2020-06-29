@@ -362,9 +362,9 @@ This step describes how to import a :ref:`MicroEJ Architecture
 #. Download the latest MicroEJ Architecture for Cortex-M0 instead
 #. Import the MicroEJ Architecture in MicroEJ SDK 
 
-    #. ``File > Import > MicroEJ > Architectures``
+    #. :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`
     #. select the MicroEJ Architecture file downloaded
-    #. Accept the license and click on ``Finish``
+    #. Accept the license and click on :guilabel:`Finish`
 
 .. image:: images/tuto_microej_fw_from_scratch_import_architecture.PNG
 
@@ -375,26 +375,26 @@ This step describes how to create and activate an :ref:`Evaluation
 License <gettingstarted-installlicenseseval>` for the MicroEJ Architecture previously
 imported.
 
-#. Select the ``Window > Preferences > MicroEJ > Architectures menu``.
-#. Click on the architectures and press ``Get UID``.
+#. Select the :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures menu`.
+#. Click on the architectures and press :guilabel:`Get UID`.
 #. Copy the UID. It will be needed when requesting a license.
 #. Go to https://license.microej.com.
-#. Click on ``Create a new account`` link.
+#. Click on :guilabel:`Create a new account` link.
 #. Create an account with a valid email address. A confirmation email will be sent a few minutes after. Click on the confirmation link in the email and login with the account.
-#. Click on ``Activate a License``.
+#. Click on :guilabel:`Activate a License`.
 #. Set Product ``P/N:`` to ``9PEVNLDBU6IJ``.
 #. Set ``UID:`` to the UID generated before.
-#. Click on ``Activate``. 
+#. Click on :guilabel:`Activate`.
 
   * The license is being activated. An activation mail should be received in less than 5 minutes. If not, please contact support@microej.com.
   * Once received by email, save the attached zip file that contains the activation key.
 
 #. Go back to Microej SDK.
-#. Select the ``Window > Preferences > MicroEJ`` menu.
-#. Press ``Add...``.
+#. Select the :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` menu.
+#. Press :guilabel:`Add...`.
 #. Browse the previously downloaded activation key archive file.
-#. Press ``OK``. A new license is successfully installed.
-#. Go to ``Architectures`` sub-menu and check that all architectures are now activated (green check).
+#. Press :guilabel:`OK`. A new license is successfully installed.
+#. Go to :guilabel:`Architectures` sub-menu and check that all architectures are now activated (green check).
 #. Microej SDK is successfully activated.
 
 
@@ -407,10 +407,10 @@ This step describes how to create a new :ref:`MicroEJ Platform
 <new_platform_creation>` using the MicroEJ Architecture previously
 imported.
 
-#. Select ``File > New > MicroEJ Platform Project``.
-#. Ensure the ``Architecture`` selected is the MicroEJ Architecture previously imported.
-#. Ensure the ``Create from a platform reference implementation`` box is unchecked.
-#. Click on ``Next`` button.
+#. Select :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Platform Project`.
+#. Ensure the :guilabel:`Architecture` selected is the MicroEJ Architecture previously imported.
+#. Ensure the :guilabel:`Create from a platform reference implementation` box is unchecked.
+#. Click on :guilabel:`Next` button.
 #. Fill the fields:
 
     * Set ``Device:`` to ``lm3s811evb``
@@ -464,13 +464,13 @@ At this point, the MicroEJ Platform is ready to be used to build MicroEJ Applica
 Create MicroEJ Application HelloWorld
 -------------------------------------
 
-#. Select ``File > New > MicroEJ Standalone Application Project``.
-#. Set the name to ``HelloWorld`` and click on ``Finish``
+#. Select :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Standalone Application Project`.
+#. Set the name to ``HelloWorld`` and click on :guilabel:`Finish`
 
   .. image:: images/tuto_microej_fw_from_scratch_new_microej_application_project.PNG
 
 #. Run the application in Simulator to ensure it is working properly. 
-   ``Right-click on HelloWorld project > Run as > MicroEJ Application``
+   Right-click on HelloWorld project > :guilabel:`Run as` > :guilabel:`MicroEJ Application`
 
   .. image:: images/tuto_microej_fw_from_scratch_run_as_microej_application.PNG
    
@@ -517,18 +517,18 @@ For a MicroEJ Application, the BSP connection is configured in the ``PROJECT-NAM
 
       pwd | sed -e 's|/mnt/c/|C:\\\\|' -e 's|/|\\\\|g'
 
-#. Open ``Run > Run configurations...``
+#. Open :guilabel:`Run` > :guilabel:`Run configurations...`
 #. Select the HelloWorld launcher configuration
 
   .. image:: images/tuto_microej_fw_from_scratch_run_configurations.PNG
 
-#. Select ``Execution`` tab.
-#. Change the execution mode from ``Execute on Simulator`` to ``Execute on Device``.
+#. Select :guilabel:`Execution` tab.
+#. Change the execution mode from :guilabel:`Execute on Simulator` to :guilabel:`Execute on Device`.
 #. Add the file ``build/emb.properties`` to the options files
 
   .. image:: images/tuto_microej_fw_from_scratch_run_configurations_execute_on_device.PNG
 
-#. Click on ``Run``
+#. Click on :guilabel:`Run`
 
 
 .. code-block::
