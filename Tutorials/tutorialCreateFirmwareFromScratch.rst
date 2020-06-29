@@ -103,6 +103,12 @@ In WSL:
    https://github.com/FreeRTOS/FreeRTOS.git`` (this may takes some
    time)
 
+.. note::
+
+  Use the right-click to paste from the Windows clipboard into WSL
+  console. The right-click is also used to copy from the WSL console
+  into the Windows clipboard.
+
 Get Running BSP
 ---------------
 
