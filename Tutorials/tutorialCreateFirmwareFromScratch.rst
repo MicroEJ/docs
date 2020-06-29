@@ -41,11 +41,10 @@ the classic ``"Hello, World!"``.
 
 In this tutorial:
 
-- The target device is a Luminary Micro Stellaris which is emulated by
+* The target device is a Luminary Micro Stellaris which is emulated by
   QEMU (`QEMU Stellaris boards
   <https://www.qemu.org/docs/master/system/arm/stellaris.html>`_).
-- The RTOS is FreeRTOS and the toolchain in GNU CC for 
-  ARM.
+* The RTOS is FreeRTOS and the toolchain in GNU CC fo ARM.
 
 .. note::
 
@@ -57,13 +56,13 @@ In this tutorial:
 Prerequisites
 -------------
 
-- MicroEJ SDK version 5.1.0 or higher (distribution 19.05). Can be
+* MicroEJ SDK version 5.1.0 or higher (distribution 19.05). Can be
   downloaded from https://developer.microej.com/ (`direct link
   <https://repository.microej.com/packages/SDK/19.05/MicroEJ-SDK-Installer-Win64-19.05.exe>`_)
-- Windows 10 with Windows Subsystem for Linux (WSL). See the
+* Windows 10 with Windows Subsystem for Linux (WSL). See the
   `installation guide
   <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_.
-- A Linux distribution installed on WSL (Tested on Ubuntu 19.10 eoan)
+* A Linux distribution installed on WSL (Tested on Ubuntu 19.10 eoan)
 
 A code editor such as Visual Studio Code is also recommended to edit BSP files.
 
@@ -119,97 +118,101 @@ boots on the target device.
    FreeRTOS/FreeRTOS/Demo/CORTEX_LM3S811_GCC``
 #. Build the project: ``make``
 
-Ignoring the warnings, the following error appears during the link:
+   Ignoring the warnings, the following error appears during the link:
 
-.. code-block::
+   .. code-block::
 
-    CC    hw_include/osram96x16.c
-    LD    gcc/RTOSDemo.axf
-    arm-none-eabi-ld: section .text.startup LMA [0000000000002b24,0000000000002c8f] overlaps section .data LMA [0000000000002b24,0000000000002b27]
-    make: *** [makedefs:191: gcc/RTOSDemo.axf] Error 1
+       CC    hw_include/osram96x16.c
+       LD    gcc/RTOSDemo.axf
+       arm-none-eabi-ld: section .text.startup LMA [0000000000002b24,0000000000002c8f] overlaps section .data LMA [0000000000002b24,0000000000002b27]
+       make: *** [makedefs:191: gcc/RTOSDemo.axf] Error 1
 
-Insert the following fixes in the linker script file named
-``standalone.ld`` (thanks to
-http://roboticravings.blogspot.com/2018/07/freertos-on-cortex-m3-with-qemu.html).
+   Insert the following fixes in the linker script file named
+   ``standalone.ld`` (thanks to
+   http://roboticravings.blogspot.com/2018/07/freertos-on-cortex-m3-with-qemu.html).
 
-.. note::
+   .. note::
 
-   WSL can start the editor Visual Studio Code. type ``code .`` in WSL. ``.`` represents the current directory in Unix.
+      WSL can start the editor Visual Studio Code. type ``code .`` in WSL. ``.`` represents the current directory in Unix.
 
-.. code-block:: diff
+   .. code-block:: diff
 
-    diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
+       diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
 
-    index 8ee3fe2f8..b771ff834 100644
-    --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
-    +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
-    @@ -42,7 +42,15 @@ SECTIONS
-             _etext = .;
-         } > FLASH
-    
-    -    .data : AT (ADDR(.text) + SIZEOF(.text))
-    +    .ARM.exidx :
-    +    {
-    +        *(.ARM.exidx*)
-    +        *(.gnu.linkonce.armexidx.*)
-    +    } > FLASH
-    +
-    +    _begin_data = .;
-    +
-    +    .data : AT ( _begin_data )
-         {
-             _data = .;
-             *(vtable)
+       index 8ee3fe2f8..b771ff834 100644
+       --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
+       +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
+       @@ -42,7 +42,15 @@ SECTIONS
+                _etext = .;
+            } > FLASH
 
-.. note::
+       -    .data : AT (ADDR(.text) + SIZEOF(.text))
+       +    .ARM.exidx :
+       +    {
+       +        *(.ARM.exidx*)
+       +        *(.gnu.linkonce.armexidx.*)
+       +    } > FLASH
+       +
+       +    _begin_data = .;
+       +
+       +    .data : AT ( _begin_data )
+            {
+                _data = .;
+                *(vtable)
 
-    This is the output of the ``git diff`` command. Lines starting
-    with a ``-`` should be removed. Lines starting with a ``+`` should
-    be added. Assuming all block are copied in a file named
-    ``linker.patch`` in the working directory, the patch can be
-    applied with the ``patch(1)`` command: ``patch -p4 <
-    linker.patch``.
+   .. note::
 
-    It is also possible to paste the diff directly into the console:
+       This is the output of the ``git diff`` command. Lines starting
+       with a ``-`` should be removed. Lines starting with a ``+`` should
+       be added. Assuming all block are copied in a file named
+       ``linker.patch`` in the working directory, the patch can be
+       applied with the ``patch(1)`` command: ``patch -p4 <
+       linker.patch``.
 
-    #. In WSL, invoke ``patch -p4``. The command starts, waiting for
-       input on stdin (the standard input).
-    #. Copy the diff
-    #. Paste the diff in WSL
-    #. Press enter
-    #. Press ``Ctrl-d Ctrl-d`` (press the ``Controll`` key + the letter ``d`` twice).
+       It is also possible to paste the diff directly into the console:
+
+       #. In WSL, invoke ``patch -p4``. The command starts, waiting for
+          input on stdin (the standard input).
+       #. Copy the diff
+       #. Paste the diff in WSL
+       #. Press enter
+       #. Press ``Ctrl-d Ctrl-d`` (press the ``Controll`` key + the letter ``d`` twice).
 
 #. Run the build again: ``make``
 #. Run the emulator with the generated kernel: ``qemu-system-arm -M
    lm3s811evb -nographic -kernel gcc/RTOSDemo.bin``
 
-The following error appears and then nothing:
+   The following error appears and then nothing:
 
-.. code-block::
+   .. code-block::
 
-    ssd0303: error: Unknown command: 0x80
-    ssd0303: error: Unexpected byte 0xe3
-    ssd0303: error: Unknown command: 0x80
-    ssd0303: error: Unexpected byte 0xe3
-    ssd0303: error: Unknown command: 0x80
-    ssd0303: error: Unexpected byte 0xe3
-    ssd0303: error: Unknown command: 0x80
-    ssd0303: error: Unexpected byte 0xe3
-    ssd0303: error: Unknown command: 0x80
-    ssd0303: error: Unexpected byte 0xe3
-    ssd0303: error: Unknown command: 0x80
-    ssd0303: error: Unexpected byte 0xe3
-    ssd0303: error: Unknown command: 0x80
-    ssd0303: error: Unexpected byte 0xe3
-    ssd0303: error: Unknown command: 0x80
-    ssd0303: error: Unexpected byte 0xe3
-    ssd0303: error: Unknown command: 0x80
-    ssd0303: error: Unexpected byte 0xe3
+       ssd0303: error: Unknown command: 0x80
+       ssd0303: error: Unexpected byte 0xe3
+       ssd0303: error: Unknown command: 0x80
+       ssd0303: error: Unexpected byte 0xe3
+       ssd0303: error: Unknown command: 0x80
+       ssd0303: error: Unexpected byte 0xe3
+       ssd0303: error: Unknown command: 0x80
+       ssd0303: error: Unexpected byte 0xe3
+       ssd0303: error: Unknown command: 0x80
+       ssd0303: error: Unexpected byte 0xe3
+       ssd0303: error: Unknown command: 0x80
+       ssd0303: error: Unexpected byte 0xe3
+       ssd0303: error: Unknown command: 0x80
+       ssd0303: error: Unexpected byte 0xe3
+       ssd0303: error: Unknown command: 0x80
+       ssd0303: error: Unexpected byte 0xe3
+       ssd0303: error: Unknown command: 0x80
+       ssd0303: error: Unexpected byte 0xe3
 
-To the end the QEMU session, press ``Ctrl-a x`` (press ``Control`` +
-the letter ``a``, release, press ``x``). The session ends with ``QEMU:
-Terminated``. The errors can be safely ignored. They occur because the
-OLED controller emulated receive incorrect commands.
+#. Press ``Ctrl-a x`` (press ``Control`` + the letter ``a``, release,
+   press ``x``) to the end the QEMU session. The session ends with
+   ``QEMU: Terminated``.
+
+   .. node::
+
+     The errors can be safely ignored. They occur because the OLED
+     controller emulated receive incorrect commands.
 
 At this point, the target device is successfully booted with the
 FreeRTOS kernel.
@@ -258,7 +261,7 @@ And here is the patch that implements both functions and prints
     +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
     @@ -134,9 +134,25 @@ SemaphoreHandle_t xButtonSemaphore;
      QueueHandle_t xPrintQueue;
-    
+
      /*-----------------------------------------------------------*/
     +#define UART0BASE ((volatile int*) 0x4000C000)
     +
@@ -274,7 +277,7 @@ And here is the patch that implements both functions and prints
     +       }
     +       return putchar('\n');
     +}
-    
+
      int main( void )
      {
     +       puts("Hello, World! puts function is working.");
@@ -283,9 +286,9 @@ And here is the patch that implements both functions and prints
             prvSetupHardware();
 
 
-#. Rebuild and run the newly generated kernel: ``make &&
-   qemu-system-arm -M lm3s811evb -nographic -kernel gcc/RTOSDemo.bin``
-   (press ``Ctrl-a x`` to interrupt the emulator).
+Rebuild and run the newly generated kernel: ``make &&
+qemu-system-arm -M lm3s811evb -nographic -kernel gcc/RTOSDemo.bin``
+(press ``Ctrl-a x`` to interrupt the emulator).
 
 .. code-block::
 
@@ -323,14 +326,14 @@ With this two functions implemented, ``printf(3)`` is also available.
     @@ -149,9 +149,11 @@ int puts(const char *s) {
             return putchar('\n');
      }
-    
+
     +#include <stdio.h>
     +
      int main( void )
      {
     -       puts("Hello, World! puts function is working.");
     +       printf("Hello, World! puts function is working.\n");
-    
+
             /* Configure the clocks, UART and GPIO. */
             prvSetupHardware();
 
@@ -344,19 +347,14 @@ Create a MicroEJ Platform
 This section describes how to create and configure a MicroEJ Platform
 compatible with the FreeRTOS BSP and GCC toolchain.
 
-#. Start MicroEJ SDK on an empty workspace. For example, create an
-   empty folder ``workspace`` next to the ``FreeRTOS`` git folder and
-   select it.
-#. Keep the default MicroEJ Repository
-
-A MicroEJ Architecture is a software package that includes the
-:ref:`MicroEJ Runtime<mjvm_javalanguage>` port to a specific target
-Instruction Set Architecture (ISA) and C compiler. It contains a set
-of libraries, tools and C header files. The MicroEJ Architectures are
-provided by MicroEJ SDK.
-
-A MicroEJ Platform is a MicroEJ Architecture port for a custom device.
-It contains the MicroEJ configuration and the BSP (C source files).
+* A MicroEJ Architecture is a software package that includes the
+  :ref:`MicroEJ Runtime<mjvm_javalanguage>` port to a specific target
+  Instruction Set Architecture (ISA) and C compiler. It contains a set
+  of libraries, tools and C header files. The MicroEJ Architectures
+  are provided by MicroEJ SDK.
+* A MicroEJ Platform is a port of a MicroEJ Architecture for a custom
+  device. It contains the MicroEJ configuration and the BSP (C source
+  files).
 
 MicroEJ Corp. provides MicroEJ Evaluation Architectures at
 https://repository.microej.com/architectures/com/microej/architecture/.
@@ -373,13 +371,19 @@ Import the MicroEJ Architecture
 This step describes how to import a :ref:`MicroEJ Architecture
 <architecture_import>`.
 
+
+#. Start MicroEJ SDK on an empty workspace. For example, create an
+   empty folder ``workspace`` next to the ``FreeRTOS`` git folder and
+   select it.
+#. Keep the default MicroEJ Repository
 #. Download the latest MicroEJ Architecture for Arm® Cortex®-M0
    instead
 #. Import the MicroEJ Architecture in MicroEJ SDK
 
-    #. :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`
-    #. select the MicroEJ Architecture file downloaded
-    #. Accept the license and click on :guilabel:`Finish`
+   #. :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` >
+      :guilabel:`Architectures`
+   #. select the MicroEJ Architecture file downloaded
+   #. Accept the license and click on :guilabel:`Finish`
 
 .. image:: images/tuto_microej_fw_from_scratch_import_architecture.PNG
 
@@ -404,11 +408,11 @@ Architecture previously imported.
 #. Set ``UID:`` to the UID generated before.
 #. Click on :guilabel:`Activate`.
 
-  * The license is being activated. An activation mail should be
-    received in less than 5 minutes. If not, please contact
-    support@microej.com.
-  * Once received by email, save the attached zip file that contains
-    the activation key.
+   * The license is being activated. An activation mail should be
+     received in less than 5 minutes. If not, please contact
+     support@microej.com.
+   * Once received by email, save the attached zip file that contains
+     the activation key.
 
 #. Go back to Microej SDK.
 #. Select the :guilabel:`Window` > :guilabel:`Preferences` >
@@ -466,28 +470,28 @@ invoking ``make`` in the FreeRTOS BSP.
 #. Install the Platform Configuration Additions by copying all the
    files within the ``content`` folder in the MicroEJ Platform folder.
 
-  .. image:: images/tuto_microej_fw_from_scratch_add_platform_configuration_additions.PNG
+   .. image:: images/tuto_microej_fw_from_scratch_add_platform_configuration_additions.PNG
 
 #. Edit the file ``bsp/bsp.properties`` as follow:
 
-  .. code-block:: properties
+   .. code-block:: properties
 
-    # Specify the MicroEJ Application file ('microejapp.o') parent directory.
-    # This is a '/' separated directory relative to 'bsp.root.dir'.
-    microejapp.relative.dir=microej/lib
-    
-    # Specify the MicroEJ Platform runtime file ('microejruntime.a') parent directory.
-    # This is a '/' separated directory relative to 'bsp.root.dir'.
-    microejlib.relative.dir=microej/lib
-    
-    # Specify MicroEJ Platform header files ('*.h') parent directory.
-    # This is a '/' separated directory relative to 'bsp.root.dir'.
-    microejinc.relative.dir=microej/inc    
+     # Specify the MicroEJ Application file ('microejapp.o') parent directory.
+     # This is a '/' separated directory relative to 'bsp.root.dir'.
+     microejapp.relative.dir=microej/lib
+
+     # Specify the MicroEJ Platform runtime file ('microejruntime.a') parent directory.
+     # This is a '/' separated directory relative to 'bsp.root.dir'.
+     microejlib.relative.dir=microej/lib
+
+     # Specify MicroEJ Platform header files ('*.h') parent directory.
+     # This is a '/' separated directory relative to 'bsp.root.dir'.
+     microejinc.relative.dir=microej/inc
 
 #. Open the ``.platform`` file and click on ``Build Platform``. The
    MicroEJ Platform will appear in the workspace.
 
-   .. image:: images/tuto_microej_fw_from_scratch_build_platform.PNG
+    .. image:: images/tuto_microej_fw_from_scratch_build_platform.PNG
 
 At this point, the MicroEJ Platform is ready to be used to build
 MicroEJ Applications.
@@ -499,14 +503,14 @@ Create MicroEJ Application HelloWorld
    Standalone Application Project`.
 #. Set the name to ``HelloWorld`` and click on :guilabel:`Finish`
 
-  .. image:: images/tuto_microej_fw_from_scratch_new_microej_application_project.PNG
+   .. image:: images/tuto_microej_fw_from_scratch_new_microej_application_project.PNG
 
 #. Run the application in Simulator to ensure it is working properly.
    Right-click on HelloWorld project > :guilabel:`Run as` >
    :guilabel:`MicroEJ Application`
 
-  .. image:: images/tuto_microej_fw_from_scratch_run_as_microej_application.PNG
-   
+   .. image:: images/tuto_microej_fw_from_scratch_run_as_microej_application.PNG
+
 The following message appears in the console:
 
 .. code-block::
@@ -515,7 +519,7 @@ The following message appears in the console:
   =============== [ Launching on Simulator ] ===============
   Hello World!
   =============== [ Completed Successfully ] ===============
-  
+
   SUCCESS
 
 Configure BSP Connection in MicroEJ Application
@@ -532,40 +536,40 @@ For a MicroEJ Application, the BSP connection is configured in the
 #. Create a file ``HelloWorld/build/emb.properties`` with the
    following content:
 
-  .. code-block:: properties
+   .. code-block:: properties
 
-    core.memory.immortal.size=0
-    core.memory.javaheap.size=1024
-    core.memory.threads.pool.size=4
-    core.memory.threads.size=1
-    core.memory.thread.max.size=4
-    deploy.bsp.microejapp=true
-    deploy.bsp.microejlib=true
-    deploy.bsp.microejinc=true
-    deploy.bsp.root.dir=[absolute_path] to FreeRTOS\\FreeRTOS\\Demo\\CORTEX_LM3S811_GCC
+     core.memory.immortal.size=0
+     core.memory.javaheap.size=1024
+     core.memory.threads.pool.size=4
+     core.memory.threads.size=1
+     core.memory.thread.max.size=4
+     deploy.bsp.microejapp=true
+     deploy.bsp.microejlib=true
+     deploy.bsp.microejinc=true
+     deploy.bsp.root.dir=[absolute_path] to FreeRTOS\\FreeRTOS\\Demo\\CORTEX_LM3S811_GCC
 
-  .. note::
+   .. note::
 
-    Assuming the WSL current directory is
-    ``FreeRTOS/FreeRTOS/Demo/CORTEX_LM3S811_GCC``, use the following
-    command to find the ``deploy.bsp.root.dir`` path with proper
-    escaping:
+     Assuming the WSL current directory is
+     ``FreeRTOS/FreeRTOS/Demo/CORTEX_LM3S811_GCC``, use the following
+     command to find the ``deploy.bsp.root.dir`` path with proper
+     escaping:
 
-    .. code-block:: shell
+     .. code-block:: shell
 
-      pwd | sed -e 's|/mnt/c/|C:\\\\|' -e 's|/|\\\\|g'
+       pwd | sed -e 's|/mnt/c/|C:\\\\|' -e 's|/|\\\\|g'
 
 #. Open :guilabel:`Run` > :guilabel:`Run configurations...`
 #. Select the HelloWorld launcher configuration
 
-  .. image:: images/tuto_microej_fw_from_scratch_run_configurations.PNG
+   .. image:: images/tuto_microej_fw_from_scratch_run_configurations.PNG
 
 #. Select :guilabel:`Execution` tab.
 #. Change the execution mode from :guilabel:`Execute on Simulator` to
    :guilabel:`Execute on Device`.
 #. Add the file ``build/emb.properties`` to the options files
 
-  .. image:: images/tuto_microej_fw_from_scratch_run_configurations_execute_on_device.PNG
+   .. image:: images/tuto_microej_fw_from_scratch_run_configurations_execute_on_device.PNG
 
 #. Click on :guilabel:`Run`
 
@@ -582,10 +586,10 @@ For a MicroEJ Application, the BSP connection is configured in the
   The MicroEJ platform library (microejruntime.a) has been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S811_GCC\microej\lib'.
   The MicroEJ platform header files (*.h) have been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S811_GCC\microej\inc'.
   =============== [ Completed Successfully ] ===============
-  
+
   SUCCESS
 
-   
+
 At this point, the HelloWorld MicroEJ Application is built and
 deployed in the FreeRTOS BSP.
 
@@ -626,9 +630,9 @@ several files were added to a new folder named ``microej/``.
   └── lib
       ├── microejapp.o
       └── microejruntime.a
-  
+
   3 directories, 19 files
-  
+
 - The ``microej/lib`` folder contains the HelloWorld MicroEJ
   Application object file (``microejapp.o``) and the MicroEJ Runtime.
   The final binary must be linked with these two files.
@@ -659,97 +663,97 @@ The two headers that must be implemented are ``LLBSP_impl.h`` and
 #. Create a folder named ``microej/src``.
 #. Implement ``LLBSP_impl.h`` in ``LLBSP.c``:
 
-  .. code-block:: c
-    :caption: microej/src/LLBSP.c
+   .. code-block:: c
+     :caption: microej/src/LLBSP.c
 
-    #include "LLBSP_impl.h"
-    
-    extern void _etext(void);
-    uint8_t LLBSP_IMPL_isInReadOnlyMemory(void* ptr)
-    {
-      return ptr < &_etext;
-    }
-    
-    /**
-     * Writes the character <code>c</code>, cast to an unsigned char, to stdout stream.
-     * This function is used by the default implementation of the Java <code>System.out</code>.
-     */
-    void LLBSP_IMPL_putchar(int32_t c)
-    {
-      putchar(c);
-    }
+     #include "LLBSP_impl.h"
 
-  - The implementation of ``LLBSP_IMPL_putchar`` reuses the
-    ``putchar`` implemented previously.
-  - The ``rodata`` section is defined in the linker script
-    ``standalone.ld``. The flash memory starts at 0 and the end of the
-    section is stored in the ``_etex`` symbol.
+     extern void _etext(void);
+     uint8_t LLBSP_IMPL_isInReadOnlyMemory(void* ptr)
+     {
+       return ptr < &_etext;
+     }
+
+     /**
+      * Writes the character <code>c</code>, cast to an unsigned char, to stdout stream.
+      * This function is used by the default implementation of the Java <code>System.out</code>.
+      */
+     void LLBSP_IMPL_putchar(int32_t c)
+     {
+       putchar(c);
+     }
+
+   * The implementation of ``LLBSP_IMPL_putchar`` reuses the
+     ``putchar`` implemented previously.
+   * The ``rodata`` section is defined in the linker script
+     ``standalone.ld``. The flash memory starts at 0 and the end of
+     the section is stored in the ``_etex`` symbol.
 
 #. Implement ``LLMJVM_impl.h`` in ``LLMJVM_stub.c`` (all functions are
    stubbed with a dummy implementation):
 
-  .. code-block:: c
-    :caption: microej/src/LLMJVM_stub.c
+   .. code-block:: c
+     :caption: microej/src/LLMJVM_stub.c
 
-    #include "LLMJVM_impl.h"
-    
-    
-    int32_t LLMJVM_IMPL_initialize()
-    {
-            return LLMJVM_OK;
-    }
-    
-    int32_t LLMJVM_IMPL_vmTaskStarted()
-    {
-            return LLMJVM_OK;
-    }
-    
-    int32_t LLMJVM_IMPL_scheduleRequest(int64_t absoluteTime)
-    {
-            return LLMJVM_OK;
-    }
-    
-    int32_t LLMJVM_IMPL_idleVM()
-    {
-            return LLMJVM_OK;
-    }
-    
-    int32_t LLMJVM_IMPL_wakeupVM()
-    {
-            return  LLMJVM_OK;
-    }
-    
-    int32_t LLMJVM_IMPL_ackWakeup()
-    {
-            return LLMJVM_OK;
-    }
-    
-    int32_t LLMJVM_IMPL_getCurrentTaskID()
-    {
-            return (int32_t) 123456;
-    }
-    
-    void LLMJVM_IMPL_setApplicationTime(int64_t t)
-    {
-    
-    }
-    
-    int64_t LLMJVM_IMPL_getCurrentTime(uint8_t system)
-    {
-       return 0;
-    }
-    
-    int64_t LLMJVM_IMPL_getTimeNanos()
-    {
-            return 0;
-    }
-    
-    int32_t LLMJVM_IMPL_shutdown(void)
-    {
-            return LLMJVM_OK;
-    }
+     #include "LLMJVM_impl.h"
 
-    
+
+     int32_t LLMJVM_IMPL_initialize()
+     {
+             return LLMJVM_OK;
+     }
+
+     int32_t LLMJVM_IMPL_vmTaskStarted()
+     {
+             return LLMJVM_OK;
+     }
+
+     int32_t LLMJVM_IMPL_scheduleRequest(int64_t absoluteTime)
+     {
+             return LLMJVM_OK;
+     }
+
+     int32_t LLMJVM_IMPL_idleVM()
+     {
+             return LLMJVM_OK;
+     }
+
+     int32_t LLMJVM_IMPL_wakeupVM()
+     {
+             return  LLMJVM_OK;
+     }
+
+     int32_t LLMJVM_IMPL_ackWakeup()
+     {
+             return LLMJVM_OK;
+     }
+
+     int32_t LLMJVM_IMPL_getCurrentTaskID()
+     {
+             return (int32_t) 123456;
+     }
+
+     void LLMJVM_IMPL_setApplicationTime(int64_t t)
+     {
+
+     }
+
+     int64_t LLMJVM_IMPL_getCurrentTime(uint8_t system)
+     {
+        return 0;
+     }
+
+     int64_t LLMJVM_IMPL_getTimeNanos()
+     {
+             return 0;
+     }
+
+     int32_t LLMJVM_IMPL_shutdown(void)
+     {
+             return LLMJVM_OK;
+     }
+
+
 Invoke MicroEJ Core Engine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -767,14 +771,14 @@ C header ``sni.h``.
   +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
   @@ -150,11 +150,14 @@ int puts(const char *s) {
    }
-  
+
    #include <stdio.h>
   +#include "sni.h"
-  
+
    int main( void )
    {
           printf("Hello, World! puts function is working.\n");
-  
+
   +       SNI_startVM(SNI_createVM(), 0, NULL);
   +
           /* Configure the clocks, UART and GPIO. */
@@ -802,23 +806,23 @@ The following patch updates the BSP port ``Makefile`` to do it:
   +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/Makefile
   @@ -29,8 +29,10 @@ RTOS_SOURCE_DIR=../../Source
    DEMO_SOURCE_DIR=../Common/Minimal
-  
+
    CFLAGS+=-I hw_include -I . -I ${RTOS_SOURCE_DIR}/include -I ${RTOS_SOURCE_DIR}/portable/GCC/ARM_CM3 -I ../Common/include -D GCC_ARMCM3_LM3S102 -D inline=
   +CFLAGS+= -I microej/inc
-  
+
    VPATH=${RTOS_SOURCE_DIR}:${RTOS_SOURCE_DIR}/portable/MemMang:${RTOS_SOURCE_DIR}/portable/GCC/ARM_CM3:${DEMO_SOURCE_DIR}:init:hw_include
   +VPATH+= microej/src
-  
+
    OBJS=${COMPILER}/main.o        \
             ${COMPILER}/list.o    \
   @@ -44,9 +46,12 @@ OBJS=${COMPILER}/main.o      \
             ${COMPILER}/semtest.o \
             ${COMPILER}/osram96x16.o
-  
+
   +OBJS+= ${COMPILER}/LLBSP.o ${COMPILER}/LLMJVM_stub.o
   +
    INIT_OBJS= ${COMPILER}/startup.o
-  
+
    LIBS= hw_include/libdriver.a
   +LIBS+= microej/lib/microejruntime.a microej/lib/microejapp.o
 
@@ -832,7 +836,7 @@ link time.
   arm-none-eabi-ld: failed to merge target specific data of file microej/lib/microejruntime.a(sni_vm_startup_greenthread.o)
   arm-none-eabi-ld: gcc/RTOSDemo.axf section `ICETEA_HEAP' will not fit in region `SRAM'
   arm-none-eabi-ld: region `SRAM' overflowed by 4016 bytes
-  microej/lib/microejapp.o: In function `_java_internStrings_end':   
+  microej/lib/microejapp.o: In function `_java_internStrings_end':
 
 The RAM requirements of the BSP (with printf), FreeRTOS, the MicroEJ
 Application and MicroEJ Runtime do not fit in the 8k of SRAM. It is
@@ -864,7 +868,7 @@ MicroEJ Application must be updated as well.
 The rest of the tutorial assumes that everything is done in the
 ``CORTEX_LM3S6965_GCC`` folder.
 
-Then update the linker script ``standlone.ld``:  
+Then update the linker script ``standlone.ld``:
 
 .. code-block:: diff
 
@@ -873,7 +877,7 @@ Then update the linker script ``standlone.ld``:
   --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
   +++ b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
   @@ -28,8 +28,8 @@
-  
+
    MEMORY
    {
   -    FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 64K
@@ -881,7 +885,7 @@ Then update the linker script ``standlone.ld``:
   +    FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 256K
   +    SRAM (rwx) : ORIGIN = 0x20000000, LENGTH = 64K
    }
-  
+
    SECTIONS
 
 The new command to run the firmware with QEMU is: ``qemu-system-arm -M
@@ -994,7 +998,7 @@ library and add it at link time:
   @@ -102,6 +102,11 @@ LIBGCC=${shell ${CC} -mthumb -march=armv6t2 -print-libgcc-file-name}
    #
    LIBC=${shell ${CC} -mthumb -march=armv6t2 -print-file-name=libc.a}
-  
+
   +#
   +# Get the location of libm.a from the GCC front-end.
   +#
@@ -1042,7 +1046,7 @@ functions.
   @@ -107,6 +107,11 @@ LIBC=${shell ${CC} -mthumb -march=armv6t2 -print-file-name=libc.a}
    #
    LIBM=${shell ${CC} -mthumb -march=armv6t2 -print-file-name=libm.a}
-  
+
   +#
   +# Get the location of libnosys.a from the GCC front-end.
   +#
@@ -1120,49 +1124,49 @@ To make this more obvious:
 #. Update the MicroEJ Application to print ``Hello World! This is my
    first MicroEJ Application``
 
-  .. image:: images/tuto_microej_fw_from_scratch_hello_world_updated.PNG
+   .. image:: images/tuto_microej_fw_from_scratch_hello_world_updated.PNG
 
 #. Rebuild the MicroEJ Application
 
-  .. image:: images/tuto_microej_fw_from_scratch_hello_world_updated_run.PNG
+   .. image:: images/tuto_microej_fw_from_scratch_hello_world_updated_run.PNG
 
-  On success, the following message appears in the console:
+   On success, the following message appears in the console:
 
-  .. code-block::
-  
-    =============== [ Initialization Stage ] ===============
-    Platform connected to BSP location 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S6965_GCC' using application option 'deploy.bsp.root.dir'.
-    =============== [ Launching SOAR ] ===============
-    =============== [ Launching Link ] ===============
-    =============== [ Deployment ] ===============
-    MicroEJ files for the 3rd-party BSP project are generated to 'C:\Users\user\src\tuto-from-scratch\workspace\HelloWorld\com.mycompany.Main\platform'.
-    The MicroEJ application (microejapp.o) has been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S6965_GCC\microej\lib'.
-    The MicroEJ platform library (microejruntime.a) has been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S6965_GCC\microej\lib'.
-    The MicroEJ platform header files (*.h) have been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S6965_GCC\microej\inc'.
-    =============== [ Completed Successfully ] ===============
-    
-    SUCCESS
+   .. code-block::
+
+     =============== [ Initialization Stage ] ===============
+     Platform connected to BSP location 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S6965_GCC' using application option 'deploy.bsp.root.dir'.
+     =============== [ Launching SOAR ] ===============
+     =============== [ Launching Link ] ===============
+     =============== [ Deployment ] ===============
+     MicroEJ files for the 3rd-party BSP project are generated to 'C:\Users\user\src\tuto-from-scratch\workspace\HelloWorld\com.mycompany.Main\platform'.
+     The MicroEJ application (microejapp.o) has been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S6965_GCC\microej\lib'.
+     The MicroEJ platform library (microejruntime.a) has been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S6965_GCC\microej\lib'.
+     The MicroEJ platform header files (*.h) have been deployed to: 'C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S6965_GCC\microej\inc'.
+     =============== [ Completed Successfully ] ===============
+
+     SUCCESS
 
 #. Then rebuild and run the firmware:
 
-  .. code-block:: shell
-  
-    $ make && qemu-system-arm -M lm3s6965evb -nographic -kernel gcc/RTOSDemo.bin
-  
-      LD    gcc/RTOSDemo.axf
-    Hello, World! puts function is working.
-    Hello World! This is my first MicroEJ Application
-    QEMU: Terminated
+   .. code-block:: shell
+
+     $ make && qemu-system-arm -M lm3s6965evb -nographic -kernel gcc/RTOSDemo.bin
+
+       LD    gcc/RTOSDemo.axf
+     Hello, World! puts function is working.
+     Hello World! This is my first MicroEJ Application
+     QEMU: Terminated
 
 Congratulations!
 
 At this point of the tutorial:
 
-- The MicroEJ Platform is connected to the BSP (BSP partial
+* The MicroEJ Platform is connected to the BSP (BSP partial
   connection).
-- The MicroEJ Application is deployed within a known location of the
+* The MicroEJ Application is deployed within a known location of the
   BSP (in ``microej/`` folder).
-- The FreeRTOS LM3S6965 port:
+* The FreeRTOS LM3S6965 port:
 
   * provides the minimal Low Level API to run the MicroEJ Application
   * compiles and links FreeRTOS with the MicroEJ Application and
@@ -1171,7 +1175,7 @@ At this point of the tutorial:
 
 The next steps recommended are:
 
-- Complete the implementation of the Low Level APIs (implement all
+* Complete the implementation of the Low Level APIs (implement all
   functions in ``LLMJVM_impl.h``).
-- Validate the implementation with the `PQT Core
+* Validate the implementation with the `PQT Core
   <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`_.
