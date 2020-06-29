@@ -63,7 +63,7 @@ A MicroEJ Architecture must be imported in SDK with:
 
 MicroEJ platform source (.zip)
 ------------------------------
-  
+
 This package includes:
 
 * the build of a C board support package (BSP, with or without RTOS),
@@ -134,7 +134,7 @@ Ivy repository
 
 * (Optional) Can be extended with an offline repository (``.zip``)
   that can be imported in the workspace:
-  
+
   * Unzip the ``x-repository-M.m.p.zip`` file.
   * Open MicroEJ SDK.
   * Go to ``Window > Preferences > Ivy > Settings``.
@@ -148,7 +148,7 @@ C compiler (GCC, KEIL, IAR, …).
 
 Used to compile and link the following files into the final firmware
 (binary, hex, elf, … that will be programmed on the hardware):
-  
+
   * the ``microejapp.o`` (application),
   * the ``microejruntime.lib`` or ``microejruntime.a`` (platform),
   * the BSP C files (drivers).
