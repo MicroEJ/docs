@@ -164,6 +164,15 @@ http://roboticravings.blogspot.com/2018/07/freertos-on-cortex-m3-with-qemu.html)
     applied with the ``patch(1)`` command: ``patch -p4 <
     linker.patch``.
 
+    It is also possible to paste the diff directly into the console:
+
+    #. In WSL, invoke ``patch -p4``. The command starts, waiting for
+       input on stdin (the standard input).
+    #. Copy the diff
+    #. Paste the diff in WSL
+    #. Press enter
+    #. Press ``Ctrl-d Ctrl-d`` (press the ``Controll`` key + the letter ``d`` twice).
+
 #. Run the build again: ``make``
 #. Run the emulator with the generated kernel: ``qemu-system-arm -M lm3s811evb -nographic -kernel gcc/RTOSDemo.bin``
 
