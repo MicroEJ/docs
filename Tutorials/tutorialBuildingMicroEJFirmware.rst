@@ -50,16 +50,18 @@ The MicroEJ Architecture is either provided from:
   (downloaded from https://developer.microej.com/).
 * MicroEJ sales or customer care team.
 * For DEV license only: SDK license site https://license.microej.com/
-  (MyProduct->Download additional products will list the downloads
-  available).
+  (:guilabel:`MyProduct` > :guilabel:`Download additional products`
+  will list the downloads available).
 
 A MicroEJ Architecture must be imported in SDK with:
 
-* ``File->Import…``
-* ``MicroEJ->Platform, Virtual devices and Architectures``
-* ``Select directory -> Browse…, choose x/platformArchitecture/ > OK``
-* Accept the license (Check the ``I agree...`` box)
-* ``Finish``.
+* :guilabel:`File` > :guilabel:`Import…`
+* :guilabel:`MicroEJ` > :guilabel:`Platform, Virtual devices and
+  Architectures`
+* :guilabel:`Select directory` > :guilabel:`Browse…`, choose
+  ``x/platformArchitecture/`` > :guilabel:`OK`
+* Accept the license (Check the :guilabel:`I agree...` box)
+* :guilabel:`Finish`
 
 MicroEJ platform source (.zip)
 ------------------------------
@@ -82,9 +84,10 @@ The zip files contains:
 
 To generate the platform:
 
-* In the ``<platform>-configuration``: open the ``.platform`` file and
-  verify the correct MicroEJ Architecture is used (see Content view).
-* Click on ``Build Platform``. This action generates a
+* In the ``<platform>-configuration`` module, open the
+  :guilabel:`.platform` file and verify the correct MicroEJ
+  Architecture is used (see :guilabel:`Content` view).
+* Click on :guilabel:`Build Platform`. This action generates a
   ``<platform>-<ISA>-<CC>-<VERSION>`` folder that contains the
   platform runtime library (``microejruntime.lib``).
 * This library is usually directly linked from the ``<platform>-bsp``
@@ -94,8 +97,8 @@ To generate the platform:
 Java application project (.zip)
 -------------------------------
 
-This Java project can be configured (in the ``Run configurations ...``
-properties):
+This Java project can be configured (in the :guilabel:`Run
+configurations ...` properties):
 
 * to either run on:
 
@@ -117,13 +120,14 @@ MicroEJ SDK platform:
 
 * Go in:
 
-  * ``Run -> Run configurations``
-  * select the provided ``MicroEJ Application`` launchers
-  * click on ``Run``
+  * :guilabel:`Run` > :guilabel:`Run configurations`
+  * select the provided :guilabel:`MicroEJ Application` launchers
+  * click on :guilabel:`Run`
 
-* Must be imported in SDK with: ``File > Import… > General > Existing
-  Projects into Workspace > Select archive file > Browse…``, choose
-  ``x.zip`` and ``Finish`` import.
+* Must be imported in SDK with: :guilabel:`File` > :guilabel:`Import…`
+  > :guilabel:`General` > :guilabel:`Existing Projects into Workspace`
+  > :guilabel:`Select archive file` > :guilabel:`Browse…`, choose
+  ``x.zip`` and :guilabel:`Finish` import.
 
 Ivy repository
 --------------
@@ -137,9 +141,10 @@ Ivy repository
 
   * Unzip the ``x-repository-M.m.p.zip`` file.
   * Open MicroEJ SDK.
-  * Go to ``Window > Preferences > Ivy > Settings``.
-  * Configure the ``Ivy settings`` path by clicking the ``File
-    System...`` button.
+  * Go to :guilabel:`Window` > :guilabel:`Preferences` >
+    :guilabel:`Ivy` > :guilabel:`Settings`.
+  * Configure the ``Ivy settings`` path by clicking the
+    :guilabel:`File System...` button.
   * Select the ``ivysettings.xml`` file available in the unzipped
     directory of the ``x-repository-M.m.p.zip`` file.
 
