@@ -335,7 +335,7 @@ With this two functions implemented, ``printf(3)`` is also available.
             prvSetupHardware();
 
 At this point, the character output on the UART is implemented in the
-FreeRTOS BSP. The next step is to create to add the MicroEJ Platform
+FreeRTOS BSP. The next step is to create the MicroEJ Platform
 and MicroEJ Application.
 
 Create a MicroEJ Platform
