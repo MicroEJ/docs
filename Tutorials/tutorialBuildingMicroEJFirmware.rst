@@ -99,8 +99,8 @@ To generate the platform:
   See :ref:`BSP connection <bsp_connection>` for more information on
   how to connect the BSP with a MicroEJ Platform.
 
-Java application project (.zip)
--------------------------------
+MicroEJ Application project (.zip)
+----------------------------------
 
 This Java project can be configured (in the :guilabel:`Run
 configurations ...` properties):
