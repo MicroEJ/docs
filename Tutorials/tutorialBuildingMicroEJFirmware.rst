@@ -134,6 +134,8 @@ MicroEJ SDK platform:
   > :guilabel:`Select archive file` > :guilabel:`Browse…`, choose
   ``x.zip`` and :guilabel:`Finish` import.
 
+See :ref:`microej.sample.applications` for more information.
+
 Ivy repository
 --------------
 
@@ -142,7 +144,8 @@ Ivy repository
   https://repository.microej.com/.
 
 * (Optional) Can be extended with an offline repository (``.zip``)
-  that can be imported in the workspace:
+  that can be imported in the workspace (see
+  :ref:`repository_offline`):
 
   * Unzip the ``x-repository-M.m.p.zip`` file.
   * Open MicroEJ SDK.
