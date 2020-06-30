@@ -63,6 +63,8 @@ A MicroEJ Architecture must be imported in SDK with:
 * Accept the license (Check the :guilabel:`I agree...` box)
 * :guilabel:`Finish`
 
+See :ref:`architecture_overview` for more information.
+
 MicroEJ platform source (.zip)
 ------------------------------
 
@@ -153,6 +155,8 @@ Ivy repository
     :guilabel:`File System...` button.
   * Select the ``ivysettings.xml`` file available in the unzipped
     directory of the ``x-repository-M.m.p.zip`` file.
+
+See :ref:`chapter.module.repository` for more information.
 
 C compiler (GCC, KEIL, IAR, …).
 -------------------------------

@@ -1,3 +1,5 @@
+.. _chapter.module.repository:
+
 Modules Repository
 ==================
 
