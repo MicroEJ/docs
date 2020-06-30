@@ -44,7 +44,7 @@ A widget can also be rendered directly in a specific graphics context by calling
 Render Policy
 ~~~~~~~~~~~~~~~~~
 
-The most naive render policy would be to render the whole hierarchy of the desktop. However DefaultRenderPolicy is smarter than that: it only repaints the widget, and its ancestors if the widget is transparent. The result is correct only if there is no overlapping widget, in which case  ZIndexRenderPolicy should be used instead.
+The most naive render policy would be to render the whole hierarchy of the desktop. However `DefaultRenderPolicy` is smarter than that: it only repaints the widget, and its ancestors if the widget is transparent. The result is correct only if there is no overlapping widget, in which case  `ZIndexRenderPolicy` should be used instead.
 
 
 Lay Out
