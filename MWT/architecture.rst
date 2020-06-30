@@ -41,6 +41,12 @@ A widget can be transparent, meaning that it does not draw every pixel of its bo
 
 A widget can also be rendered directly in a specific graphics context by calling its `render(GraphicsContext)` method. It can be useful to render a widget (and its children) in an image for example.
 
+Render Policy
+~~~~~~~~~~~~~~~~~
+
+The most naive render policy would be to render the whole hierarchy of the desktop. However DefaultRenderPolicy is smarter than that: it only repaints the widget, and its ancestors if the widget is transparent. The result is correct only if there is no overlapping widget, in which case  ZIndexRenderPolicy should be used instead.
+
+
 Lay Out
 -------
 
