@@ -209,7 +209,7 @@ boots on the target device.
    press ``x``) to the end the QEMU session. The session ends with
    ``QEMU: Terminated``.
 
-   .. node::
+   .. note::
 
      The errors can be safely ignored. They occur because the OLED
      controller emulated receive incorrect commands.
