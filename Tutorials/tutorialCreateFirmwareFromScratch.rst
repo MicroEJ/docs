@@ -36,7 +36,7 @@ The following steps are usually followed when starting a new project:
    <microej.sample.applications>`.
 
 This tutorial describes step by step how to go from the FreeRTOS BSP
-to a MicroEJ Application that runs on the MicroEJ Platforms and prints
+to a MicroEJ Application that runs on the MicroEJ Platform and prints
 the classic ``"Hello, World!"``.
 
 In this tutorial:
