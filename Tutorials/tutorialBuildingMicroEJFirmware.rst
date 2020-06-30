@@ -94,6 +94,11 @@ To generate the platform:
   project (no manual action to do after the build). Follow the README
   instructions inside the platform .zip.
 
+.. note::
+
+  See :ref:`BSP connection <bsp_connection>` for more information on
+  how to connect the BSP with a MicroEJ Platform.
+
 Java application project (.zip)
 -------------------------------
 
