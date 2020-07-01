@@ -356,14 +356,24 @@ compatible with the FreeRTOS BSP and GCC toolchain.
   device. It contains the MicroEJ configuration and the BSP (C source
   files).
 
-MicroEJ Corp. provides MicroEJ Evaluation Architectures at
-https://repository.microej.com/architectures/com/microej/architecture/.
+When selecting a MicroEJ Architecture, special care must be taken to
+ensure the compatibility between the toolchain used in the BSP and the
+toolchain used to build the MicroEJ Core Engine included in the
+MicroEJ Architecture.
 
-There is no ``CM3`` folder. This means that the MicroEJ Architectures
-for Arm® Cortex®-M3 MCUs are no longer distributed for evaluation.
-Download the latest MicroEJ Architecture for Arm® Cortex®-M0 instead
-(the Arm® architectures are binary upward compatible from Arm®v6-M
-(Cortex®-M0) to Arm®v7-M (Cortex®-M3)).
+The list of MicroEJ Architectures supported is listed at
+https://docs.microej.com/en/latest/PlatformDeveloperGuide/appendix/toolchain.html.
+MicroEJ Evaluation Architectures provided by MicroEJ Corp. can be
+downloaded from `MicroEJ Artifacts Repository
+<https://repository.microej.com/architectures/com/microej/architecture/>`_.
+
+There is no ``CM3`` in MicroEJ Artifacts Repository and the Arm®
+Cortex®-M3 MCU is not mentioned in the :ref:`capabilities
+matrix<appendix_matrixcapabilities>`. This means that the MicroEJ
+Architectures for Arm® Cortex®-M3 MCUs are no longer distributed for
+evaluation. Download the latest MicroEJ Architecture for Arm®
+Cortex®-M0 instead (the Arm® architectures are binary upward
+compatible from Arm®v6-M (Cortex®-M0) to Arm®v7-M (Cortex®-M3)).
 
 Import the MicroEJ Architecture
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
