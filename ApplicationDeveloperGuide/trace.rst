@@ -86,7 +86,7 @@ Examples
       tracer.recordEvent(0);
     }
 
-  - Ouput on UART (standard ouput): 
+  - Ouput on serial port (standard ouput): 
 
   .. code-block:: xml
 
@@ -95,7 +95,6 @@ Examples
     [TRACE] [1] Event 0x0
 
 - Trace a method with a start showing the parameters of the method and an end showing the result.
-  By recording a start event and an end event, we can get the execution time for the method.
   
   .. code-block:: java
 
@@ -115,7 +114,7 @@ Examples
       return result;
     }
 
-  - Ouput on UART (standard ouput): 
+  - Ouput on serial port (standard ouput): 
 
   .. code-block:: xml
 
@@ -123,3 +122,5 @@ Examples
     [TRACE] [1] Declare group "Application"
     [TRACE] [1] Event 0x1 (14 [0xE],54 [0x36])
     [TRACE] [1] Event End 0x1 (68 [0x44])
+
+  - When using a serial port reader that can display the timestamp at each print, you can compute the execution time of the traced function.
