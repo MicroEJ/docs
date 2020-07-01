@@ -176,7 +176,7 @@ boots on the target device.
        #. Copy the diff
        #. Paste the diff in WSL
        #. Press enter
-       #. Press ``Ctrl-d Ctrl-d`` (press the ``Controll`` key + the letter ``d`` twice).
+       #. Press ``Ctrl-d Ctrl-d`` (press the ``Control`` key + the letter ``d`` twice).
 
 #. Run the build again: ``make``
 #. Run the emulator with the generated kernel: ``qemu-system-arm -M
