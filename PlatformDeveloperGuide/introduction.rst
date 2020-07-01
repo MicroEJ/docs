@@ -27,6 +27,8 @@ Application can interoperate with C code on the target, and the details
 of the MicroEJ Architecture modules, including their APIs, error codes
 and options.
 
+.. _architecture_overview:
+
 MicroEJ Architecture Modules Overview
 -------------------------------------
 
