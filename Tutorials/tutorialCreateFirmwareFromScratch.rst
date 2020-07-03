@@ -377,7 +377,7 @@ MicroEJ Evaluation Architectures provided by MicroEJ Corp. can be
 downloaded from `MicroEJ Architectures Repository
 <https://repository.microej.com/architectures/com/microej/architecture/>`_.
 
-There is no ``CM3`` in MicroEJ Artifacts Repository and the Arm®
+There is no ``CM3`` in MicroEJ Architectures Repository and the Arm®
 Cortex®-M3 MCU is not mentioned in the :ref:`capabilities
 matrix<appendix_matrixcapabilities>`. This means that the MicroEJ
 Architectures for Arm® Cortex®-M3 MCUs are no longer distributed for
