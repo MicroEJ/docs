@@ -68,6 +68,10 @@ Prerequisites
 * A Linux distribution installed on WSL (Tested on Ubuntu 19.10 eoan
   and Ubuntu 20.04 focal).
 
+    .. note::
+
+      In WSL, use the command ``lsb_release -a`` to print the current Ubuntu version.
+
 A code editor such as Visual Studio Code is also recommended to edit BSP files.
 
 Overview
