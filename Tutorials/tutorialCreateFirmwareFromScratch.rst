@@ -97,8 +97,10 @@ This section assumes the prerequisites have been properly installed.
 
 In WSL:
 
+#. Update apt's cache: ``sudo apt-get update``
 #. Install qemu-system-arm and GNU CC toolchain for ARM: ``sudo
-   apt-get install qemu-system-arm gcc-arm-none-eabi``
+   apt-get install -y qemu-system-arm gcc-arm-none-eabi
+   build-essential subversion``
 #. The rest of this tutorial will use the folder
    ``src/tuto-from-scratch/`` in the Windows home folder.
 #. Create the folder: ``mkdir -p
