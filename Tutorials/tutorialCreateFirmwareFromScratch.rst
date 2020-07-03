@@ -637,6 +637,8 @@ several files were added to a new folder named ``microej/``.
 
 .. code-block::
 
+  $ pwd
+  /mnt/c/Users/user/src/tuto-from-scratch/FreeRTOS/FreeRTOS/Demo/CORTEX_LM3S811_GCC
   $ tree microej/
   microej/
   ├── inc
@@ -691,7 +693,8 @@ example, the following implementation does not support scheduling.
 The two headers that must be implemented are ``LLBSP_impl.h`` and
 ``LLMJVM_impl.h``.
 
-#. Create a folder named ``microej/src``.
+#. In the BSP, create a folder named ``microej/src`` (next to the
+   ``microej/lib`` and ``microej/inc`` folders).
 #. Implement ``LLBSP_impl.h`` in ``LLBSP.c``:
 
    .. code-block:: c
@@ -783,6 +786,42 @@ The two headers that must be implemented are ``LLBSP_impl.h`` and
      {
              return LLMJVM_OK;
      }
+
+The ``microej`` folder in the BSP as the following structure:
+
+.. code-block:: shell
+
+  $ pwd
+  /mnt/c/Users/user/src/tuto-from-scratch/FreeRTOS/FreeRTOS/Demo/CORTEX_LM3S811_GCC
+  $ tree microej/
+  microej/
+  ├── inc
+  │   ├── BESTFIT_ALLOCATOR.h
+  │   ├── BESTFIT_ALLOCATOR_impl.h
+  │   ├── LLBSP_impl.h
+  │   ├── LLMJVM.h
+  │   ├── LLMJVM_MONITOR_impl.h
+  │   ├── LLMJVM_impl.h
+  │   ├── LLTRACE_impl.h
+  │   ├── MJVM_MONITOR.h
+  │   ├── MJVM_MONITOR_types.h
+  │   ├── intern
+  │   │   ├── BESTFIT_ALLOCATOR.h
+  │   │   ├── BESTFIT_ALLOCATOR_impl.h
+  │   │   ├── LLBSP_impl.h
+  │   │   ├── LLMJVM.h
+  │   │   ├── LLMJVM_impl.h
+  │   │   └── trace_intern.h
+  │   ├── sni.h
+  │   └── trace.h
+  ├── lib
+  │   ├── microejapp.o
+  │   └── microejruntime.a
+  └── src
+      ├── LLBSP.c
+      └── LLMJVM_stub.c
+  
+  4 directories, 21 files
 
 
 Invoke MicroEJ Core Engine
