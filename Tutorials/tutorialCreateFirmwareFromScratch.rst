@@ -374,7 +374,7 @@ MicroEJ Architecture.
 The list of MicroEJ Architectures supported is listed at
 https://docs.microej.com/en/latest/PlatformDeveloperGuide/appendix/toolchain.html.
 MicroEJ Evaluation Architectures provided by MicroEJ Corp. can be
-downloaded from `MicroEJ Artifacts Repository
+downloaded from `MicroEJ Architectures Repository
 <https://repository.microej.com/architectures/com/microej/architecture/>`_.
 
 There is no ``CM3`` in MicroEJ Artifacts Repository and the Arm®
