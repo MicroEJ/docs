@@ -65,7 +65,8 @@ Prerequisites
 * Windows 10 with Windows Subsystem for Linux (WSL). See the
   `installation guide
   <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_.
-* A Linux distribution installed on WSL (Tested on Ubuntu 19.10 eoan)
+* A Linux distribution installed on WSL (Tested on Ubuntu 19.10 eoan
+  and Ubuntu 20.04 focal).
 
 A code editor such as Visual Studio Code is also recommended to edit BSP files.
 
