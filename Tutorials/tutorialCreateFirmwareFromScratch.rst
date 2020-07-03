@@ -16,6 +16,9 @@ advantages:
 Consequently, no board is required to follow this tutorial. Everything
 is emulated on the developer's PC.
 
+The tutorial should take 1 hour to complete (excluding the
+installation time of MicroEJ SDK and Windows Subsystem Linux (WSL)).
+
 Introduction
 ------------
 
