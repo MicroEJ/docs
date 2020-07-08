@@ -40,6 +40,14 @@ Description
     This option can be accessed by right clicking on the project and going to ``Run As > Run Configurations`` then in the tab ``Configuration``.
     Select the Category ``Runtime`` and check the option ``Start execution traces automatically``.
 
+- To record an event, use the method ``recordEvent(int eventId)``. The event ID need to be in range ``0 to nbEventTypes-1``.
+
+  - The methods ``recordEvent(...)`` always need the eventID as the first parameter and can have up to ten int parameters as custom value for the event.
+
+- To record the end of an event, use the method ``recordEventEnd(int eventID)``. It will trace the duration of an event previously recorded with one of the ``recordEvent(int)`` methods.
+
+  - The ``recordEventEnd(...)`` method can also have another int parameter for a custom value for the event end.
+
 - This library gives access to a String constant ``TRACE_ENABLED_CONSTANT_PROPERTY`` representing the :ref:`BON Constant <section.classpath.elements.constants>` ``core.trace.enabled``.
 
   - By adding an if statement using this BON Constant, when set it to false, the code inside the if statement (here the tracing) will 
