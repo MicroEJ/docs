@@ -40,6 +40,17 @@ Description
     This option can be accessed by right clicking on the project and going to ``Run As > Run Configurations`` then in the tab ``Configuration``.
     Select the Category ``Runtime`` and check the option ``Start execution traces automatically``.
 
+- This library gives access to a String constant ``TRACE_ENABLED_CONSTANT_PROPERTY`` representing the :ref:`BON Constant <section.classpath.elements.constants>` ``core.trace.enabled``.
+
+  - By adding an if statement using this BON Constant, when set it to false, the code inside the if statement (here the tracing) will 
+    not be embedded with the application and thus, will not impact the performances of the application.
+
+  .. code-block:: java
+    
+    if(Constants.getBoolean(Tracer.TRACE_ENABLED_CONSTANT_PROPERTY)) {
+      tracer.recordEventEnd(0);
+    }
+
 Implementation
 ==============
 
