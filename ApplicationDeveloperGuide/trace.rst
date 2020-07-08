@@ -51,9 +51,11 @@ Implementation
 
 - An implementation of this API is mapped to **SEGGER SystemView** concepts.
 
-  - 
-
   - This allow to visualize the different trace directly in **SEGGER SystemView**.
+
+  - The **SystemView** module is added to the targetted platform and initialized in the main function of the platform.
+
+  - Then a low-level API named ``LLTRACE_sysview.c`` implements the ``LLTRACE_impl.h`` defined functions, using the functions of the **SystemView** module.
 
 Examples
 ========
