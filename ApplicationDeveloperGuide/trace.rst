@@ -17,11 +17,11 @@ Description
   - A **Java API** that can be used to trace Java application. The Javadoc is available 
     `here <https://repository.microej.com/javadoc/microej_5.x/foundation/ej/trace/Tracer.html>`_.
     
-    To add the library to your project, add the following dependency line in your module.ivy file:
+  - To add the library to your project, add the following dependency line in your module.ivy file:
       
-      .. code:: xml
-        
-        <dependency org=“ej.api” name=trace rev=“x.y.z”/>
+    .. code:: xml
+      
+      <dependency org=“ej.api” name=trace rev=“x.y.z”/>
   
   - A **C API** implemented in the file ``LLTRACE_impl.h``.
     This file is available in the ``platform-bsp`` project of the sources of the platform.
@@ -50,14 +50,14 @@ Description
 
 - This library gives access to a String constant ``TRACE_ENABLED_CONSTANT_PROPERTY`` representing the :ref:`BON Constant <section.classpath.elements.constants>` ``core.trace.enabled``.
 
-  - By adding an if statement using this BON Constant, when set it to false, the code inside the if statement (here the tracing) will 
-    not be embedded with the application and thus, will not impact the performances of the application.
+  - By adding an if statement using this **BON Constant**, when set it to false, the code inside the if statement (here the tracing) will 
+    not be embedded with the application and thus, will not impact the performances.
 
-  .. code-block:: java
-    
-    if(Constants.getBoolean(Tracer.TRACE_ENABLED_CONSTANT_PROPERTY)) {
-      tracer.recordEventEnd(0);
-    }
+    .. code-block:: java
+      
+      if(Constants.getBoolean(Tracer.TRACE_ENABLED_CONSTANT_PROPERTY)) {
+        tracer.recordEventEnd(0);
+      }
 
 Implementation
 ==============
