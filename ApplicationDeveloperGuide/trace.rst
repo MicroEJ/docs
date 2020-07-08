@@ -45,7 +45,8 @@ Implementation
 
 - By default, the Trace API displays a message in the standard output for every ``recordEvent(...)`` and ``recordEventEnd(...)`` method calls. 
 
-- It does not print a timestamp when displaying the trace message, it only print the ID of the recorded event followed by the value given in parameters.
+- It does not print a timestamp when displaying the trace message because it drastically impacts the performances.
+  It only print the ID of the recorded event followed by the value given in parameters.
 
 - The default implementation can be overridden by implementing the ``LLTRACE_impl.h`` file.
 
@@ -106,5 +107,3 @@ Examples
     [TRACE] [1] Declare group "Application"
     [TRACE] [1] Event 0x1 (14 [0xE],54 [0x36])
     [TRACE] [1] Event End 0x1 (68 [0x44])
-
-  - When using a serial port reader that can display the timestamp at each print, you can compute the execution time of the traced function.
