@@ -40,7 +40,7 @@ Initializing and disposing the dispatcher
 
 ``EventDispatcher`` subclasses may override the ``initialize()`` and ``dispose()`` methods in order to allocate and free the necessary resources.
 
-For example, the ``initialize()`` may be overridden in order to create an event generator and to add it to the system pool of MicroUI:
+For example, the ``initialize()`` may be overridden to create an event generator and to add it to the system pool of MicroUI:
 
 .. code-block:: Java
 

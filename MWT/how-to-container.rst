@@ -14,8 +14,7 @@ Computing the optimal size of the container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``computeContentOptimalSize()`` method is called by the MWT framework in order to know the optimal size of the container.
-The optimal size of the container should be big enough so that each child can be allocated a size at least as big as its own optimal size.
-For example, the optimal width of a horizontal list is the sum of the optimal width of every child, and the optimal height is the maximum optimal height of all children.
+The optimal size of the container should be big enough so that each child can be laid out with a size at least as big as its own optimal size.
 
 The container is responsible for computing the optimal size of every child. To do so, the ``computeChildOptimalSize()`` method should be called for every child.
 After this method is called, the optimal size of the child can be retrieved by calling ``getWidth()`` and ``getHeight()`` on the child widget.
@@ -23,6 +22,17 @@ After this method is called, the optimal size of the child can be retrieved by c
 The ``Size`` parameter of the ``computeContentOptimalSize()`` method initially contains the size available for the container.
 An available width or height equal to ``Widget.NO_CONSTRAINT`` means that the optimal size should be computed without considering any restriction on the respective axis.
 Before the method returns, the size object should be set to the optimal size of the container.
+
+For example, the following snippet computes the optimal size of a simple wrapper:
+
+.. code-block:: Java
+
+	@Override
+	protected void computeContentOptimalSize(Size size) {
+		Widget child = getChild(0);
+		computeChildOptimalSize(child, size.getWidth(), size.getHeight());
+		size.setSize(child.getWidth(), child.getHeight());
+	}
 
 Laying out the children of the container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,11 +46,21 @@ Before this method is called, the optimal size of the child can be retrieved by 
 When laying out a child, its bounds have to be passed as parameter. The position will be interpreted as relative to the position of the container content. This means that the position should not include the outlines of the container.
 This means that the ``(0, 0)`` coordinates represent the top-left pixel of the container content and the ``(contentWidth-1, contentHeight-1)`` coordinates represent the bottom-right pixel of the container content.
 
+For example, the following snippet lays out the children of a simple wrapper:
+
+.. code-block:: Java
+
+	@Override
+	protected void layOutChildren(int contentWidth, int contentHeight) {
+		Widget child = getChild(0);
+		layOutChild(child, 0, 0, contentWidth, contentHeight);
+	}
+
 Managing the visibility of the children of the container
 --------------------------------------------------------
 
 By default, when a container is shown, each of its children is shown too.
-This behavior can be changed by overriding the ``setShownChildren()`` method of `` Container``.
+This behavior can be changed by overriding the ``setShownChildren()`` method of ``Container``.
 When implementing this method, the ``setShownChild()`` method should be called for each child which should be shown when the container is shown.
 
 At any time while the container is visible, children may be shown or hidden by calling ``setShownChild()`` or ``setHiddenChild()``.
