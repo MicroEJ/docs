@@ -401,7 +401,7 @@ The build script must implement the following specification:
   - The script must end with zero exit code.
 
 Many build script templates are available for most commonly used C toolchains in the 
-`Platform Qualification Tools repository <https://github.com/MicroEJ/PlatformQualificationTools/trunk/framework/platform/scripts>`_.
+`Platform Qualification Tools repository <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_.
 
 Low Level APIs Implementation Files
 -----------------------------------
