@@ -33,7 +33,8 @@ For example, the following snippet dispatches every event to the widget of the d
 		}
 	}
 
-In addition to dispatching the provided events, an event dispatcher may generate custom events. This may be done by using a ``DesktopEventGenerator``.
+In addition to dispatching the provided events, an event dispatcher may generate custom events.
+This may be done by using a ``DesktopEventGenerator``. Its ``buildEvent()`` method allows to build an event which may be sent to a widget using the ``sendEventToWidget()`` method.
 
 Initializing and disposing the dispatcher
 -----------------------------------------

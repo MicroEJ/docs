@@ -53,9 +53,10 @@ Handling events
 ---------------
 
 When a widget is created, it is disabled and it will not receive any event.
-A widget may be enabled or disabled by calling ``setEnabled()``. A common practice is to enable the widget is its constructor.
+A widget may be enabled or disabled by calling ``setEnabled()``. A common practice is to enable the widget in its constructor.
  
 Enabled widgets can handle events by overriding ``handleEvent()``. MicroUI event APIs may be used in order to know more information on the event, such as its type.
+The ``handleEvent()`` method should return whether or not the event was consumed by the widget.
  
 For example, the following snippet prints a message when the widget receives an event:
 
@@ -64,6 +65,7 @@ For example, the following snippet prints a message when the widget receives an 
 	@Override
 	public boolean handleEvent(int event) {
 		System.out.println("Event type: " + Event.getType(event));
+		return false;
 	}
 
 Listening to the life-cycle hooks
@@ -93,6 +95,26 @@ Likewise, the ``onDetached()`` method may be overridden to close the image:
 	@Override
 	protected void onDetached() {
 		this.image.close();
+	}
+
+For example, the ``onShown()`` may be overridden to start an animation:
+
+.. code-block:: Java
+
+	@Override
+	protected void onShown() {
+		Animator animator = ServiceFactory.getService(Animator.class);
+		animator.startAnimation(this);
+	}
+
+Likewise, the ``onHidden()`` method may be overridden to stop an animation:
+
+.. code-block:: Java
+
+	@Override
+	protected void onHidden() {
+		Animator animator = ServiceFactory.getService(Animator.class);
+		animator.stopAnimation(this);
 	}
 
 ..

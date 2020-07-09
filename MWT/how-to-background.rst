@@ -22,7 +22,7 @@ For example, the following snippet informs that the background is completely opa
 Applying the background on a graphics context
 ---------------------------------------------
 
-The ``apply(GraphicsContext g, Size size)`` method is called by the MWT framework in order to render the background and to set the background color of subsequent drawings.
+The ``apply(GraphicsContext g, Size size)`` method is called by the MWT framework in order to render the background and to set or remove the background color of subsequent drawings.
 
 For example, the following snippet applies a white background:
 
