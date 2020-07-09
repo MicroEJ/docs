@@ -7,7 +7,7 @@ Two use cases:
 * [Handle] Overriding the desktop is used to directly trigger a behaviour. For example "BACK" command shows the previous page.
 
 To create a custom event dispatcher, a new class should be created, extending the ``EventDispatcher`` class.
-Event dispatcher subclasses have to implement the ``dispatchEvent()`` method and may override optional methods, as explained in the following sections.
+Event dispatcher subclasses have to implement a method and may override optional methods, as explained in the following sections.
 
 Dispatching the events to the widgets
 -------------------------------------
