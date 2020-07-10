@@ -11,7 +11,8 @@ The aim of this library is to be sufficient to create complex applications with 
    architecture
    how-to-widget
    how-to-container
-   how-to-custom-style-element
+   how-to-outline
+   how-to-background
    how-to-event-dispatcher
 
 ..
