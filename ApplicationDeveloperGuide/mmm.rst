@@ -103,8 +103,8 @@ of each MicroEJ module project to solve classpath dependencies.
 
 .. _mmm_repository_configuration:
 
-Modules Repository Configuration
---------------------------------
+Module Repository Configuration
+-------------------------------
 
 By default, when starting an empty workspace, MicroEJ SDK is configured to fetch dependencies
 from :ref:`MicroEJ Central Repository <central_repository>` and to publish built modules to a local folder.
