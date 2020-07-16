@@ -52,6 +52,10 @@ The `SSL API module <https://repository.microej.com/artifacts/ej/api/ssl/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
 Application project, in order to allow access to the SSL library.
 
+::
+
+  <dependency org="ej.api" name="ssl" rev="2.2.0"/>
+
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
