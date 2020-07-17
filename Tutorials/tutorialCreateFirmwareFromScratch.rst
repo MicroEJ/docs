@@ -271,36 +271,37 @@ And here is the patch that implements both functions and prints
 
 .. code-block:: diff
 
-
     diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
-    index 21440a4d7..76440e60e 100644
+    index 107517c00..3ea4c23a4 100644
     --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
     +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
     @@ -134,9 +134,25 @@ SemaphoreHandle_t xButtonSemaphore;
      QueueHandle_t xPrintQueue;
-
+     
      /*-----------------------------------------------------------*/
     +#define UART0BASE ((volatile int*) 0x4000C000)
     +
     +int putchar (int c){
-    +  (*UART0BASE) = c;
-    +  return c;
+    +    (*UART0BASE) = c;
+    +    return c;
     +}
     +
     +int puts(const char *s) {
-    +       while (*s != '\0') {
-    +               putchar(*s);
-    +               s++;
-    +       }
-    +       return putchar('\n');
+    +    while (*s) {
+    +        putchar(*s);
+    +        s++;
+    +    }
+    +    return putchar('\n');
     +}
-
+     
      int main( void )
      {
-    +       puts("Hello, World! puts function is working.");
+    +    puts("Hello, World! puts function is working.");
     +
-            /* Configure the clocks, UART and GPIO. */
-            prvSetupHardware();
+     	/* Configure the clocks, UART and GPIO. */
+     	prvSetupHardware();
+     
+ 
 
 
 Rebuild and run the newly generated kernel: ``make &&
@@ -349,7 +350,7 @@ With this two functions implemented, ``printf(3)`` is also available.
      int main( void )
      {
     -       puts("Hello, World! puts function is working.");
-    +       printf("Hello, World! puts function is working.\n");
+    +       printf("Hello, World! printf function is working.\n");
 
             /* Configure the clocks, UART and GPIO. */
             prvSetupHardware();
@@ -844,24 +845,26 @@ C header ``sni.h``.
 
 .. code-block:: diff
 
-  diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
-  index f24007597..25526e3aa 100644
-  --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
-  +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
-  @@ -150,11 +150,14 @@ int puts(const char *s) {
-   }
-
-   #include <stdio.h>
-  +#include "sni.h"
-
-   int main( void )
-   {
-          printf("Hello, World! puts function is working.\n");
-
-  +       SNI_startVM(SNI_createVM(), 0, NULL);
-  +
-          /* Configure the clocks, UART and GPIO. */
-          prvSetupHardware();
+    diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
+    index d5728f976..644710120 100644
+    --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
+    +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
+    @@ -150,11 +150,14 @@ int puts(const char *s) {
+     }
+     
+     #include <stdio.h>
+    +#include "sni.h"
+     
+     int main( void )
+     {
+            printf("Hello, World! printf function is working.\n");
+     
+    +       SNI_startVM(SNI_createVM(), 0, NULL);
+    +
+     	/* Configure the clocks, UART and GPIO. */
+     	prvSetupHardware();
+     
+        
 
 Build and Link the Firmware with the MicroEJ Runtime and MicroEJ Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1191,7 +1194,7 @@ firmware in QEMU with the following command:
 
 .. code-block:: shell
 
-  Hello, World! puts function is working.
+  Hello, World! printf function is working.
   Hello World!
   QEMU: Terminated // press Ctrl-a x to end the QEMU session
 
@@ -1233,7 +1236,7 @@ To make this more obvious:
      $ make && qemu-system-arm -M lm3s6965evb -nographic -kernel gcc/RTOSDemo.bin
 
        LD    gcc/RTOSDemo.axf
-     Hello, World! puts function is working.
+     Hello, World! printf function is working.
      Hello World! This is my first MicroEJ Application
      QEMU: Terminated
 
