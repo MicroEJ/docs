@@ -1164,8 +1164,7 @@ Rebuild with ``make``. The following error occurs:
   make: *** [makedefs:201: gcc/RTOSDemo.axf] Error 1
 
 The ``_sbrk`` implementation needs the ``end`` symbol to be defined.
-Looking at the ``implementation
-<https://chromium.googlesource.com/native_client/nacl-newlib/+/99fc6c167467b41466ec90e8260e9c49cbe3d13c/libgloss/libnosys/sbrk.c>``,
+Looking at the `implementation <https://chromium.googlesource.com/native_client/nacl-newlib/+/99fc6c167467b41466ec90e8260e9c49cbe3d13c/libgloss/libnosys/sbrk.c>`_,
 the ``end`` symbol corresponds to the beginning of the C heap. This
 tutorial uses the end of the ``.bss`` segment as the beginning of the
 C heap.
