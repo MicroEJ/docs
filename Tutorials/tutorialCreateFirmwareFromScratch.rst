@@ -35,7 +35,7 @@ The following steps are usually followed when starting a new project:
 #. Validate the resulting MicroEJ Platform with the `Platform
    Qualification Tools (PQT)
    <https://github.com/microej/PlatformQualificationTools>`_.
-#. Develop the a :ref:`MicroEJ Application
+#. Develop the :ref:`MicroEJ Application
    <microej.sample.applications>`.
 
 This tutorial describes step by step how to go from the FreeRTOS BSP
