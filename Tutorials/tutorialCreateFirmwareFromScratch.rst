@@ -522,6 +522,8 @@ invoking ``make`` in the FreeRTOS BSP.
 
    .. image:: images/tuto_microej_fw_from_scratch_add_platform_configuration_additions.PNG
 
+   |
+
    .. note::
 
      The ``content`` directory contains files that must be installed
