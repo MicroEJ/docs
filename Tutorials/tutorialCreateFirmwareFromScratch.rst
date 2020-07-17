@@ -49,6 +49,9 @@ In this tutorial:
   <https://www.qemu.org/docs/master/system/arm/stellaris.html>`_).
 * The RTOS is FreeRTOS and the toolchain in GNU CC fo ARM.
 
+All modifications to FreeRTOS BSP made for this tutorial are available
+on https://github.com/MicroEJ/FreeRTOS/tree/tuto-microej-firmware-from-scratch.
+
 .. note::
 
   The implementation of the Low Level API and their validation with
