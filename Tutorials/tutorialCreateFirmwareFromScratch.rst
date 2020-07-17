@@ -108,9 +108,9 @@ In WSL:
    ensures all directory are created).
 #. Go into the folder: ``cd
    /mnt/c/Users/${USER}/src/tuto-from-scratch/``
-#. Clone FreeRTOS and its submodules: ``git clone --recursive
-   https://github.com/FreeRTOS/FreeRTOS.git`` (this may takes some
-   time)
+#. Clone FreeRTOS and its submodules: ``git clone -b
+   V10.3.1 --recursive https://github.com/FreeRTOS/FreeRTOS.git``
+   (this may takes some time)
 
 .. note::
 
