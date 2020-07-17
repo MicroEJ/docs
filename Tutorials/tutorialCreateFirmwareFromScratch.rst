@@ -421,7 +421,7 @@ This step describes how to import a :ref:`MicroEJ Architecture
    select it.
 #. Keep the default MicroEJ Repository
 #. Download the latest MicroEJ Architecture for Arm® Cortex®-M0
-   instead
+   instead: https://repository.microej.com/architectures/com/microej/architecture/CM0/CM0_GCC48/flopi0G22/7.11.0/flopi0G22-7.11.0-eval.xpf
 #. Import the MicroEJ Architecture in MicroEJ SDK
 
    #. :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` >
