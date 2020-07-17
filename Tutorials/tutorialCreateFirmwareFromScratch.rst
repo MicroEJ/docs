@@ -63,7 +63,7 @@ In this tutorial:
 * The RTOS is FreeRTOS and the toolchain in GNU CC fo ARM.
 
 All modifications to FreeRTOS BSP made for this tutorial are available
-on https://github.com/MicroEJ/FreeRTOS/tree/tuto-microej-firmware-from-scratch.
+at https://github.com/MicroEJ/FreeRTOS/tree/tuto-microej-firmware-from-scratch.
 
 .. note::
 
