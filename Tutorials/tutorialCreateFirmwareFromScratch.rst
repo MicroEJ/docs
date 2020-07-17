@@ -19,6 +19,19 @@ is emulated on the developer's PC.
 The tutorial should take 1 hour to complete (excluding the
 installation time of MicroEJ SDK and Windows Subsystem Linux (WSL)).
 
+Who should follow this tutorial?
+--------------------------------
+
+Every Firmware developers should be familiar with the content of this
+tutorial.
+
+In addition, this tutorial should be of interest to all developers
+wishing to familiarize themselves the low level components of a
+MicroEJ Firmware such as: :ref:`MicroEJ
+Architecture<architecture_overview>`, :ref:`MicroEJ
+Platform<new_platform_creation>`, :ref:`Low Level API<LLAPI-CHAPTER>`
+and :ref:`BSP connection<bsp_connection>`.
+
 Introduction
 ------------
 
