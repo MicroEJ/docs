@@ -1,3 +1,5 @@
+.. _module_repository:
+
 Module Repository
 =================
 
@@ -20,9 +22,9 @@ It can also be imported in `MicroEJ Forge <https://www.microej.com/product/forge
 Create a Repository Project
 ---------------------------
 
-In MicroEJ SDK, first :ref:`create a new module project <mmm_module_skeleton>` using the ``artifact-repository`` skeleton.
+In MicroEJ SDK, first create a new :ref:`module project <mmm_module_skeleton>` using the ``artifact-repository`` skeleton.
 
-- The ``ivysettings.xml`` file describes how MicroEJ SDK will fetch the content of this repository when it is extracted locally on file system. 
+- The ``ivysettings.xml`` :ref:` settings file <mmm_settings_file>` describes how to import the modules of this repository when it is extracted locally on file system. 
   This file will be packaged at the root of the zip file and does not need to be modified.
 
 - The ``module.ivy`` file describes how to build repository and lists the module dependencies that will be included in this repository.
@@ -30,7 +32,7 @@ In MicroEJ SDK, first :ref:`create a new module project <mmm_module_skeleton>` u
 Configure Resolver for Input Modules 
 ------------------------------------
 
-MicroEJ Module Manager (MMM) needs to fetch dependencies to build the module repository. 
+MicroEJ Module Manager (MMM) needs to import dependencies to build the module repository. 
 The location fetched by MMM is defined by a resolver.
 The resolver is configured with the parameter ``bar.populate.from.resolver``. The preset value is the resolver
 provided by default in MicroEJ SDK configuration, which is connected to :ref:`MicroEJ Central Repository <central_repository>`.
@@ -129,7 +131,7 @@ The build consists of two steps:
 
 1. Gathers all module dependencies. The whole repository content is created
    under ``target~/mergedArtifactsRepository`` folder.
-2. Checks the repository consistency. For each module, it tries to fetch it from this repository
+2. Checks the repository consistency. For each module, it tries to import it from this repository
    and fails the build if at least one of the dependencies cannot be resolved.
 
 The module repository ``.zip`` file is built in the ``target~/artifacts/`` folder. 
@@ -140,11 +142,11 @@ This is file is also published possibly with the ``CHANGELOG.md``, ``LICENSE.txt
 Use the Offline Repository
 --------------------------
 
-By default, when starting an empty workspace, MicroEJ SDK is configured to fetch dependencies
+By default, when starting an empty workspace, MicroEJ SDK is configured to import dependencies
 from :ref:`MicroEJ Central Repository <central_repository>`. 
 
-To configure MicroEJ SDK to fetch dependencies from a local module repository:
+To configure MicroEJ SDK to import dependencies from a local module repository:
 
 1. Unzip the module repository ``.zip`` file to the folder of your choice,
-2. :ref:`Configure MicroEJ SDK repository <mmm_repository_configuration>` using the ``ivysettings.xml`` file located at the root
+2. :ref:`Configure MMM settings file <mmm_settings_file>` using the ``ivysettings.xml`` file located at the root
    of the folder where the repository has been extracted.

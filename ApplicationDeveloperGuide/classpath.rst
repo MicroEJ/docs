@@ -30,7 +30,7 @@ zip file, called a JAR file (JAR stands for Java ARchive).
 -  :ref:`section.foundation.library.versus.add.on.library` explains the different kind of
    libraries that can be added to MicroEJ Classpath.
 
--  Finally, :ref:`section.ivy.dependency.manager` shows how to manage libraries dependencies
+-  Finally, :ref:`mmm` shows how to manage libraries dependencies
    in MicroEJ.
 
 .. _application.classpath.mapping:
@@ -283,7 +283,7 @@ without having to recompile the sources.
 
 .. note::
    In :ref:`Multi-Sandbox <multisandbox>` environment, constants are processed locally within each context.
-   In particular, constants defined in the Kernel are not propagated to :ref:`Sandboxed Applications <sandboxed.application>`.
+   In particular, constants defined in the Kernel are not propagated to :ref:`Sandboxed Applications <sandboxed_application>`.
 
 
 .. _section.classpath.Images:
@@ -448,7 +448,7 @@ Library is distributed in a single JAR file, with a 3 digits version and
 provides its associated source code.
 
 Foundation and Add-On Libraries are added to MicroEJ Classpath by the
-application developer as module dependencies (see :ref:`section.ivy.dependency.manager`).
+application developer as module dependencies (see :ref:`mmm`).
 
 .. figure:: images/ClassPath_2.png
    :alt: MicroEJ Foundation Libraries and Add-On Libraries
