@@ -19,11 +19,11 @@ is emulated on the developer's PC.
 The tutorial should take 1 hour to complete (excluding the
 installation time of MicroEJ SDK and Windows Subsystem Linux (WSL)).
 
-Intented Audience
+Intended Audience
 -----------------
 
-Every Firmware engineers should be familiar with the content of this
-tutorial.
+The audience for this document is Firmware engineers who want to
+understand how MicroEJ is integrated to a C Board Support Package.
 
 In addition, this tutorial should be of interest to all developers
 wishing to familiarize themselves the low level components of a
