@@ -170,21 +170,28 @@ boots on the target device.
                 _data = .;
                 *(vtable)
 
+   This is the output of the ``git diff`` command. Lines starting with
+   a ``-`` should be removed. Lines starting with a ``+`` should be
+   added.
+
    .. note::
 
-       This is the output of the ``git diff`` command. Lines starting
-       with a ``-`` should be removed. Lines starting with a ``+`` should
-       be added. Assuming all block are copied in a file named
-       ``linker.patch`` in the working directory, the patch can be
-       applied with the ``patch(1)`` command: ``patch -p4 <
-       linker.patch``.
+       The ``patch(1)`` can be used to apply the patch. Assuming WSL shell is in ``FreeRTOS/Demo/CORTEX_LM3S811_GCC`` directory:
 
-       It is also possible to paste the diff directly into the console:
+       #. Install dos2unix utility: ``sudo apt install dos2unix``
+       #. Convert all files to unix line-ending: ``find -type f -exec
+          dos2unix {} \;``
+       #. Copy the content of the code block in a file named
+          ``linker.patch`` (every lines of the code block must be
+          copied in the file).
+       #. Apply the patch: ``patch -l -p4 < linker.patch``.
 
-       #. In WSL, invoke ``patch -p4``. The command starts, waiting for
-          input on stdin (the standard input).
-       #. Copy the diff
-       #. Paste the diff in WSL
+       It is also possible to paste the diff directly into the
+       console:
+
+       #. In WSL, invoke ``patch -l -p4``. The command starts, waiting
+          for input on stdin (the standard input).
+       #. Copy the diff and paste it in WSL
        #. Press enter
        #. Press ``Ctrl-d Ctrl-d`` (press the ``Control`` key + the letter ``d`` twice).
 
