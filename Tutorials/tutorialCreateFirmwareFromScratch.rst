@@ -19,10 +19,10 @@ is emulated on the developer's PC.
 The tutorial should take 1 hour to complete (excluding the
 installation time of MicroEJ SDK and Windows Subsystem Linux (WSL)).
 
-Who should follow this tutorial?
---------------------------------
+Intented Audience
+-----------------
 
-Every Firmware developers should be familiar with the content of this
+Every Firmware engineers should be familiar with the content of this
 tutorial.
 
 In addition, this tutorial should be of interest to all developers
