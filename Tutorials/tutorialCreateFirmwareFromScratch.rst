@@ -106,6 +106,10 @@ The steps to follow are:
 #. Create the HelloWorld MicroEJ Application
 #. Implement the minimum Low Level API to run the application
 
+This tutorial goes through trials and errors every Firmware developers
+may encounter. It provides a solution after each error rather than
+providing the full solution in one go.
+
 Setup the Development Environment
 ---------------------------------
 
