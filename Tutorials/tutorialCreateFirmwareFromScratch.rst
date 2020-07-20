@@ -26,7 +26,7 @@ The audience for this document is Firmware engineers who want to
 understand how MicroEJ is integrated to a C Board Support Package.
 
 In addition, this tutorial should be of interest to all developers
-wishing to familiarize themselves the low level components of a
+wishing to familiarize themselves with the low level components of a
 MicroEJ Firmware such as: :ref:`MicroEJ
 Architecture<architecture_overview>`, :ref:`MicroEJ
 Platform<new_platform_creation>`, :ref:`Low Level API<LLAPI-CHAPTER>`
@@ -60,7 +60,7 @@ In this tutorial:
 * The target device is a Luminary Micro Stellaris which is emulated by
   QEMU (`QEMU Stellaris boards
   <https://www.qemu.org/docs/master/system/arm/stellaris.html>`_).
-* The RTOS is FreeRTOS and the toolchain in GNU CC fo ARM.
+* The RTOS is FreeRTOS and the toolchain is GNU CC fo ARM.
 
 All modifications to FreeRTOS BSP made for this tutorial are available
 at https://github.com/MicroEJ/FreeRTOS/tree/tuto-microej-firmware-from-scratch.
@@ -125,7 +125,7 @@ In WSL:
    ``src/tuto-from-scratch/`` in the Windows home folder.
 #. Create the folder: ``mkdir -p
    /mnt/c/Users/${USER}/src/tuto-from-scratch`` (the ``-p`` option
-   ensures all directory are created).
+   ensures all the directories are created).
 #. Go into the folder: ``cd
    /mnt/c/Users/${USER}/src/tuto-from-scratch/``
 #. Clone FreeRTOS and its submodules: ``git clone -b
@@ -261,7 +261,7 @@ This section describes how to configure the BSP to print text on the
 QEMU console.
 
 The datasheet of the target device (`LM3S811 datasheet
-<https://www.ti.com/lit/ds/symlink/lm3s811.pdf>`_) describe how to use
+<https://www.ti.com/lit/ds/symlink/lm3s811.pdf>`_) describes how to use
 the UART device and an example implementation for QEMU is available
 `here
 <https://github.com/dwelch67/qemu_arm_samples/blob/master/cortex-m/uart01/notmain.c>`_).
@@ -819,7 +819,7 @@ The two headers that must be implemented are ``LLBSP_impl.h`` and
              return LLMJVM_OK;
      }
 
-The ``microej`` folder in the BSP as the following structure:
+The ``microej`` folder in the BSP has the following structure:
 
 .. code-block:: shell
 
@@ -954,7 +954,7 @@ LM3S811EVB but it has 256k of flash memory and 64k of SRAM. Updating
 the values in the linker script ``standalone.ld`` is sufficient to
 create a valid BSP port for this device.
 
-Instead of continuing to work in the LM3S811 port, create a copy,
+Instead of continuing to work with the LM3S811 port, create a copy,
 named CORTEX_LM3S6965_GCC:
 
 .. code-block:: shell
