@@ -28,8 +28,7 @@ relying on any native RTOS capabilities. Therefore, the whole Java world
 runs in one single RTOS task. Read more about this architecture in the
 `Platform Developer
 Guide <https://docs.microej.com/en/latest/PlatformDeveloperGuide/coreEngine.html>`__.
-(QUESTION: use architecture diagram from plaftorm guide?) A quick way to
-check if the Java threads are scheduled correctly is, here again, to
+A quick way to check if the Java threads are scheduled correctly is, here again, to
 make one of the threads print a heart beat message. Copy/paste the
 following snippet in the ``main()`` method of the application:
 
