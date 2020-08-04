@@ -42,10 +42,9 @@ A widget can be transparent, meaning that it does not draw every pixel of its bo
 A widget can also be rendered directly in a specific graphics context by calling its `render(GraphicsContext)` method. It can be useful to render a widget (and its children) in an image for example.
 
 Render Policy
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 The most naive render policy would be to render the whole hierarchy of the desktop. However `DefaultRenderPolicy` is smarter than that: it only repaints the widget, and its ancestors if the widget is transparent. The result is correct only if there is no overlapping widget, in which case  `ZIndexRenderPolicy` should be used instead.
-
 
 Lay Out
 -------
@@ -64,7 +63,7 @@ Events generated in the hardware (touch, buttons, etc.) are sent to the event di
 Widgets are disabled by default and don't receive the events.
 
 Pointer Event Dispatcher
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, the desktop proposes an event dispatcher that handles only pointer events.
 
@@ -85,17 +84,107 @@ A widget can redefine its reactive area by subclassing the `contains(int x, int 
 Style
 -----
 
-* Boxing model
-* Other elements
+A style describes how widgets must be rendered on screen. The attributes of the style are strongly inspired from CSS.
 
-Cascading resolution
-~~~~~~~~~~~~~~~~~~~~
+Dimension
+~~~~~~~~~
 
-States
-------
+The dimension is used to constrain the size of the widget.
 
-* Attached
-* Shown
+MWT provides multiple implementations of dimensions:
+
+- ``NoDimension`` does not constrain the dimension of the widget, so the widget will take all the space granted by its parent container.
+- ``OptimalDimension`` constrains the dimension of the widget to its optimal size, which is given by the ``computeContentOptimalSize()`` method of the widget.
+- ``FixedDimension`` constrains the dimension of the widget to a fixed absolute size.
+- ``RelativeDimension`` constrains the dimension of the widget to a percentage of the size of its parent container.
+
+Alignment
+~~~~~~~~~
+
+The horizontal and vertical alignments are used to position the content of the widget within its bounds.
+
+The alignment is used by the framework to position the widget within its available space if the size of the widget has been constrained with a ``Dimension``.
+
+The alignment can also be used in the ``renderContent()`` method in order to position the drawings of the widget (such as a text or an image) within its content bounds.
+
+Outlines
+~~~~~~~~
+
+The margin, border and padding are the 3 outlines which wrap the content of the widget. The widget is wrapped in the following sequence: first the padding, then the border, and finally the margin.
+
+.. figure:: images/boxmodel.png
+   :alt: Box model
+   :align: center
+
+MWT provides multiple implementations of invisible outlines which are usually used for margin and padding:
+
+- ``NoOutline`` does not wrap the widget in an outline.
+- ``UniformOutline`` wraps the widget in an outline which thickness is equal on all sides.
+- ``FlexibleOutline`` wraps the widget in an outline which thickness can be configured for each side.
+
+MWT also provides multiple implementations of visible outlines which are usually used for border:
+
+- ``RectangularBorder`` draws a plain rectangle around the widget.
+- ``RoundedBorder`` draws a plain rounded rectangle around the widget.
+
+Background
+~~~~~~~~~~
+
+The background is used to render the background of the widget.
+The background covers the border, the padding and the content of the widget, but not its margin.
+
+MWT provides multiple implementations of backgrounds:
+
+- ``NoBackground`` leaves a transparent background behind the widget.
+- ``RectangularBackground`` draws a plain rectangle behind the widget.
+- ``RoundedBackground`` draws a plain rounded rectangle behind the widget.
+- ``ImageBackground`` draws an image behinds the widget.
+
+Color
+~~~~~
+
+The color is not used by the framework itself, but it may be used in the ``renderContent()`` to select the color of the drawings.
+
+Font
+~~~~
+
+The font is not used by framework itself, but it may be used in the ``renderContent()`` to select the font to use when drawing strings.
+
+Extra fields
+~~~~~~~~~~~~
+
+Extra fields are not used by framework itself, but they may be used in the ``renderContent()`` to customize the behavior and the appearance of the widget.
+
+See chapter ``How-To Define an Extra Style Field`` for more information on extra fields.
+
+Stylesheet
+----------
+
+A stylesheet allows to customize the appearance of all the widgets of a desktop without changing the code of the widget subclasses.
+
+MWT provides multiple implementations of stylesheets:
+
+- ``VoidStylesheet`` assigns the same default style for every widget.
+- ``CascadingStylesheet`` assigns styles to widgets using selectors, similarly to CSS.
+
+For example, the following code customizes the style of every ``Label`` widget of the desktop:
+
+.. code-block:: Java
+
+	CascadingStylesheet stylesheet = new CascadingStylesheet();
+
+	EditableStyle labelStyle = stylesheet.getSelectorStyle(new TypeSelector(Label.class));
+	labelStyle.setColor(Colors.RED);
+	labelStyle.setBackground(new RectangularBackground(Colors.WHITE));
+
+	desktop.setStylesheet(stylesheet);
+
+Desktop and widget states
+-------------------------
+
+* Shown/attached desktop
+* Attached widget
+* Shown widget
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
