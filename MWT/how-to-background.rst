@@ -10,12 +10,12 @@ Informing whether the background is transparent
 The ``isTransparent()`` method is called by the MWT framework in order to know whether or not the background is transparent.
 A background is considered as transparent if it does not draw every pixel with maximal opacity when it is applied.
 
-For example, the following snippet informs that the background is completely opaque:
+For example, the following snippet informs that the background is completely opaque regardless of its size:
 
 .. code-block:: Java
 
 	@Override
-	public boolean isTransparent() {
+	public boolean isTransparent(int width, int height) {
 		return false;
 	}
 

@@ -107,8 +107,8 @@ The alignment is used by the framework to position the widget within its availab
 
 The alignment can also be used in the ``renderContent()`` method in order to position the drawings of the widget (such as a text or an image) within its content bounds.
 
-Box model
-~~~~~~~~~
+Outlines
+~~~~~~~~
 
 The margin, border and padding are the 3 outlines which wrap the content of the widget. The widget is wrapped in the following sequence: first the padding, then the border, and finally the margin.
 
@@ -116,10 +116,10 @@ The margin, border and padding are the 3 outlines which wrap the content of the 
    :alt: Box model
    :align: center
 
-MWT provides multiple implementations of invisible outlines which are usually can be used for margin and padding:
+MWT provides multiple implementations of invisible outlines which are usually used for margin and padding:
 
 - ``NoOutline`` does not wrap the widget in an outline.
-- ``UniformOutline`` wraps the widget in an outline which thickness is equal an all sides.
+- ``UniformOutline`` wraps the widget in an outline which thickness is equal on all sides.
 - ``FlexibleOutline`` wraps the widget in an outline which thickness can be configured for each side.
 
 MWT also provides multiple implementations of visible outlines which are usually used for border:
@@ -162,7 +162,7 @@ Stylesheet
 
 A stylesheet allows to customize the appearance of all the widgets of a desktop without changing the code of the widget subclasses.
 
-MWT provides multiples implementations of stylesheets:
+MWT provides multiple implementations of stylesheets:
 
 - ``VoidStylesheet`` assigns the same default style for every widget.
 - ``CascadingStylesheet`` assigns styles to widgets using selectors, similarly to CSS.
