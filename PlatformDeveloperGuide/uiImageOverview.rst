@@ -32,34 +32,62 @@ The Image Engine is composed of:
 
 .. graphviz::
 
-   digraph {
+  digraph {
+     
+      graph [
+         overlap=false
+         splines=true
+         nodesep=0.7
+         ranksep=0.7
+         bgcolor="transparent"
+         center=1
+      ];
+      
+      node [
+         fixedsize=true,
+         fontname="Ubuntu"
+         fontsize=16
+         fontcolor=dimgray
+         height=1
+         width=2.5
+         shape=box
+         fillcolor=aliceblue
+         style="filled,setlinewidth(3)",
+      ];
          
+      edge [
+         arrowsize=1
+         fontsize=16
+         fontname="Ubuntu"
+         fontcolor=dimgray
+      ];
+            
       { 
-         node [shape=rect color="lightblue" style="filled" fixedsize=true width=3]
+         node [color="lightblue"]
          input generator
       }
-         
+      
       { 
-         node [shape=rect color="darkorange2" style="filled" fixedsize=true width=3]
+         node [color="darkorange2"]
          loader png xxx app algo convert
       }
       
       { 
-         node [shape=rect color="chartreuse2" style="filled" fixedsize=true width=3]
+         node [color="chartreuse2"]
          rom ram ext hard gpu
       }
       
       { 
-         node [shape=rect color="gray" style="filled" ffixedsize=true width=3]
+         node [color="gray"]
          bsp
       }
-      
+         
       {
-         input [label="Input Files (png, xxx)"]
+         input [label="Input Files\n(png, xxx)"]
          generator [label="Image Generator"]
          loader [label="Image Loader"]
-         rom [label="Flash (internal ROM, NOR)"]
-         ext [label="External Flash (SDCard etc.)"]
+         rom [label="Flash\n(internal ROM, NOR)"]
+         ext [label="External Flash\n(SDCard etc.)"]
          ram [label="RAM"]
          app [label="Image Renderer"]
          bsp [label="BSP"]
@@ -67,10 +95,10 @@ The Image Engine is composed of:
          xxx [label="XXX Decoder"]
          convert [label="MEJ Converter"]
          gpu [label="GPU"]
-         algo [label="Software Algorithms"]
+         algo [label="Software\nAlgorithms"]
          hard  [label="Memory Buffer"]
       }         
-               
+                  
       input -> {rom ext generator} [ label = "png | xxx"]
       
       generator ->  {rom ext} [label = "png | xxx | mej | bin"]
@@ -94,8 +122,7 @@ The Image Engine is composed of:
       ext ->  bsp [label = "bin"]
       ext ->  app [label = "mej (byte @)"]
       
-      gpu -> hard  [label = ""]
-      algo -> hard  [label = ""]
+      {algo gpu} -> hard  [label = ""]
    }
 
 * Colors:

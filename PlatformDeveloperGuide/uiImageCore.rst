@@ -17,23 +17,42 @@ The engine redirects all MicroUI images drawings to a set of low-level API. All 
 .. graphviz::
 
    digraph {
+   
+      graph [
+         overlap=false
+         splines=true
+         nodesep=0.5
+         ranksep=0.5
+         bgcolor="transparent"
+         center=1
+      ];
+         
+      node [
+         fixedsize=true,
+         fontname="Ubuntu"
+         fontsize=14
+         fontcolor=dimgray
+         height=0.5
+         width=2.5
+         shape=box
+         fillcolor=aliceblue
+         color="lightblue"
+         style="filled,setlinewidth(3)",
+      ];
+            
+      edge [
+         arrowsize=0.8
+      ];
       
-      { 
-         node [shape=rect color="lightgray" style="filled" ffixedsize=true width=3]
-         app bsp gpu algo llapi llimpl drawApi weak hard
-      }
-      
-      {
-         app [label="Painter API"]
-         bsp [label="BSP"]
-         gpu [label="GPU"]
-         algo [label="Software Algorithms"]
-         llapi  [label="LLUI_PAINTER_impl.h"]
-         llimpl  [label="LLUI_PAINTER_impl.c"]         
-         drawApi  [label="ui_drawing.h"]
-         weak  [label="weak_ui_drawing.c"]
-         hard  [label="hardware"]
-      }  
+      app [label="Painter API"]
+      bsp [label="BSP"]
+      gpu [label="GPU"]
+      algo [label="Software Algorithms"]
+      llapi  [label="LLUI_PAINTER_impl.h"]
+      llimpl  [label="LLUI_PAINTER_impl.c"]         
+      drawApi  [label="ui_drawing.h"]
+      weak  [label="weak_ui_drawing.c"]
+      hard  [label="hardware"]
 
       app -> llapi -> llimpl -> drawApi -> {weak bsp} -> algo -> hard
       bsp -> gpu -> hard

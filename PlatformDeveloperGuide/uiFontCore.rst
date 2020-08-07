@@ -20,18 +20,37 @@ The engine redirects all MicroUI font drawings to the internal software algorith
 
    digraph {
       
-      { 
-         node [shape=rect color="lightgray" style="filled" ffixedsize=true width=3]
-         app stack algo hard
-      }
+      graph [
+         overlap=false
+         splines=true
+         nodesep=0.5
+         ranksep=0.5
+         bgcolor="transparent"
+         center=1
+      ];
+         
+      node [
+         fixedsize=true,
+         fontname="Ubuntu"
+         fontsize=14
+         fontcolor=dimgray
+         height=0.5
+         width=2.5
+         shape=box
+         fillcolor=aliceblue
+         color="lightblue"
+         style="filled,setlinewidth(3)",
+      ];
+            
+      edge [
+         arrowsize=0.8
+      ];
       
-      {
-         app [label="Painter API"]
-         stack [label="Graphical Engine"]
-         algo [label="Software Algorithms"]
-         hard  [label="hardware"]
-      }  
-
+      app [label="Painter API"]
+      stack [label="Graphical Engine"]
+      algo [label="Software Algorithms"]
+      hard  [label="hardware"]
+      
       app -> stack -> algo -> hard
    }
 
