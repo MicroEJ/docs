@@ -128,58 +128,13 @@ character size in pixels.
    When the font is monospace, the space size is equal to the font
    width.
 
-Styles and Filters
-^^^^^^^^^^^^^^^^^^
+Styles
+^^^^^^
 
-A MicroUI font holds a style: PLAIN, BOLD, ITALIC, UNDERLINED, and the
-combinations between BOLD, ITALIC and UNDERLINED. Font Designer can use
-one file to describe several MicroUI fonts.
+Font Designer allows to create a font file which holds several combinations of built-in styles (styles hardcoded in pixels map) and runtime styles (styles rendered dynamically at runtime). However, since MicroUI 3, a MicroUI font holds only one style: ``PLAIN``, ``BOLD``, ``ITALIC`` or ``BOLD + ITALIC``. By consequence, the styles option must be left to the default option.
 
-For example, a font file that describes a PLAIN font can also describe
-an UNDERLINED font because the MicroUI implementation just has to draw a
-line under the characters. In this way, from a developer's point of
-view, there are two fonts: a PLAIN font and an UNDERLINED font. From the
-Font Designer point of view, there are also two fonts, but they use the
-same data file. Font Designer adds a tag to describe the UNDERLINED font
-in the generated font file.
-
-This tag is a *filter*. When a file contains one or more filters,
-MicroUI implementation knows that it has to perform post processing to
-obtain a specific MicroUI font from the encoded font.
-
-Alternatively, the user can create two distinct files to describe the
-two fonts. From the MicroUI application point of view, there are always
-two fonts: a PLAIN font and an UNDERLINED font, but no post-processing
-step is required (no filter tag).
-
-Examples:
-
-1. A font file contains the styles PLAIN and UNDERLINED and the filters
-   PLAIN and UNDERLINED. The MicroUI implementation detects two MicroUI
-   fonts. To draw each font, the PLAIN filter or the UNDERLINED filter
-   is used accordingly.
-
-2. A font file contains the styles PLAIN and UNDERLINED and the filter
-   PLAIN. The MicroUI implementation detects two MicroUI fonts. To draw
-   the underlined font, it will not apply the underlining process (the
-   filter UNDERLINED is absent). So the MicroUI underlined font will
-   have the same rendering as the MicroUI plain font.
-
-Font Designer features three drop-downs, one for each of BOLD, ITALIC
-and UNDERLINED. Each drop-down has three options:
-
--  None – Font Designer will not set this style, nor include a filter
-   for it.
-
--  Built-in – Font Designer will set this style, but not include a
-   filter for it.
-
--  Dynamic – Font Designer will set this style, and include a filter for
-   it.
-
-If all three drop-downs are set to None, only a plain font is generated.
-
-The number of fonts that will result is shown below the drop-downs.
+Font Designer features three drop-downs, one for each of ``BOLD``, ``ITALIC``
+and ``UNDERLINED``. Each drop-down has three options: ``None``, ``Built-in`` and ``Dynamic``. Use only ``None`` option. Otherwise an error at MicroEJ application compiletime will occur (incompatible font file).
 
 Identifiers
 ^^^^^^^^^^^

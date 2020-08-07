@@ -151,7 +151,7 @@ range and the known range. Several ranges can be specified, separated by
 
 Below is an example of a list file for the Font Generator:
 
-.. code-block:: txt
+.. code-block::
    :caption: Fonts Configuration File Example
 
    myfont
@@ -175,7 +175,7 @@ memory.
 Dependencies
 ============
 
--  Font Engine Core module (see :ref:`section_font_core`)
+-  Font Renderer module (see :ref:`section_font_core`)
 
 
 Installation

@@ -295,7 +295,7 @@ Overview
 ~~~~~~~~
 
 Images are graphical resources that can be accessed with a call to
-``ej.microui.display.Image.createImage()``. To be displayed, these
+``ej.microui.display.Image.getImage()`` or ``ej.microui.display.ResourceImage.loadImage()``. To be displayed, these
 images have to be converted from their source format to the display raw
 format. The conversion can either be done at :
 

@@ -427,34 +427,34 @@ Error Messages
    +--------+---------+-----------------------------------------------------+
    | ID     | Type    | Description                                         |
    +========+=========+=====================================================+
-   | 0      | Error   | The static font generator has encountered an        |
+   | 0      | Error   | The font generator has encountered an               |
    |        |         | unexpected internal error.                          |
    +--------+---------+-----------------------------------------------------+
    | 1      | Error   | The Fonts list file has not been specified.         |
    +--------+---------+-----------------------------------------------------+
-   | 2      | Error   | The static font generator cannot create the final,  |
+   | 2      | Error   | The font generator cannot create the final,         |
    |        |         | raw file.                                           |
    +--------+---------+-----------------------------------------------------+
-   | 3      | Error   | The static font generator cannot read the fonts     |
+   | 3      | Error   | The font generator cannot read the fonts            |
    |        |         | list file.                                          |
    +--------+---------+-----------------------------------------------------+
-   | 4      | Warning | The static font generator has found no font to      |
+   | 4      | Warning | The font generator has found no font to             |
    |        |         | generate.                                           |
    +--------+---------+-----------------------------------------------------+
-   | 5      | Error   | The static font generator cannot load the fonts     |
+   | 5      | Error   | The font generator cannot load the fonts            |
    |        |         | list file.                                          |
    +--------+---------+-----------------------------------------------------+
    | 6      | Warning | The specified font path is invalid: The font will   |
    |        |         | be not converted.                                   |
    +--------+---------+-----------------------------------------------------+
-   | 7      | Warning | *There are too many arguments on a line: The        |
-   |        |         | current entry is ignored.*                          |
+   | 7      | Warning | There are too many arguments on a line: The         |
+   |        |         | current entry is ignored.                           |
    +--------+---------+-----------------------------------------------------+
-   | 8      | Error   | The static font generator has encountered an        |
-   |        |         | unexpected internal error.                          |
+   | 8      | Error   | The font generator has encountered an               |
+   |        |         | unexpected internal error (invalid output format).  |
    +--------+---------+-----------------------------------------------------+
-   | 9      | Error   | *The static font* *generator has encountered an     |
-   |        |         | unexpected internal error.*                         |
+   | 9      | Error   | The font generator has encountered an               |
+   |        |         | unexpected internal error (invalid endianness).     |
    +--------+---------+-----------------------------------------------------+
    | 10     | Warning | The specified entry is invalid: The current entry   |
    |        |         | is ignored.                                         |
@@ -489,6 +489,18 @@ Error Messages
    +--------+---------+-----------------------------------------------------+
    | 20     | Error   | The font's name is too long. The output RAW format  |
    |        |         | cannot store all name characters.                   |
+   +--------+---------+-----------------------------------------------------+
+   | 21     | Error   | There are too many ranges. The output RAW           |
+   |        |         | format cannot store all ranges.                     |
+   +--------+---------+-----------------------------------------------------+
+   | 22     | Error   | Output list files cannot be created.                |
+   +--------+---------+-----------------------------------------------------+
+   | 23     | Warning | Dynamic styles are not supported. Only a PLAIN font |
+   |        |         | can be encoded. The current entry is ignored.       |
+   +--------+---------+-----------------------------------------------------+
+   | 24     | Warning | Underlined style is not supported. Only a BOLD and  |
+   |        |         | ITALIC font can be set. The current entry is        |
+   |        |         | ignored.                                            |
    +--------+---------+-----------------------------------------------------+
 
 ..
