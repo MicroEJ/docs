@@ -15,6 +15,7 @@ The aim of this library is to be sufficient to create complex applications with 
    how-to-background
    how-to-event-dispatcher
    how-to-extra-style-field
+   examples
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
