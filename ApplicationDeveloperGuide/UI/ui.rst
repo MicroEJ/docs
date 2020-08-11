@@ -1,22 +1,12 @@
-.. _application-developer-guide:
+UI
+==
 
-Application Developer Guide
-===========================
+This section presents libraries relative to the user interface.
 
 .. toctree::
    :maxdepth: 2
 
-   introduction
-   licenses
-   standaloneApplication
-   sandboxedApplication
-   virtualDevice
-   mmm
-   moduleNatures
-   classpath
-   tools
-   advanced
-   UI/ui
+   MWT/index
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
