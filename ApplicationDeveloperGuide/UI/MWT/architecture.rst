@@ -182,9 +182,22 @@ For example, the following code customizes the style of every ``Label`` widget o
 Desktop and widget states
 -------------------------
 
-* Shown/attached desktop
-* Attached widget
-* Shown widget
+Desktop and widgets pass through different states. Once created, they can be attached, then they can be shown.
+
+A desktop is attached automatically as soon as it is shown on the display.
+It can also be attached manually by calling ``Desktop.setAttached()``. It could be used to render the desktop (and its widgets) on an image for example.
+
+A widget is attached when it is contained by a desktop that is attached.
+
+In the same way, by default, a widget is shown when its desktop is shown. But for optimisation purpose, a container can control when its children are shown or hidden. A typical use case is when the widgets are moved outside the display.
+
+Once a widget is attached, it means that it is ready to be shown (for instance, the necessary resources are allocated). In other word, once attached a widget is ready to be rendered (on an image or on the display).
+
+Once a widget is shown, it means that it is intended to be rendered on the display. While shown, it may start a periodic refresh or an animation.
+
+.. figure:: images/showSequence.png
+   :alt: Show Sequence
+   :align: center
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
