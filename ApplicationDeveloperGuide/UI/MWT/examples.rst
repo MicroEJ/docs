@@ -15,9 +15,10 @@ You can then import the multiple project into your workspace to see the source o
 Provided examples
 ~~~~~~~~~~~~~~~~~
 
-- ``com.microej.example.mwt.attribute``
-- ``com.microej.example.mwt.focus``
-- ``com.microej.example.mwt.lazystylesheet``
+- ``com.microej.example.mwt.attribute``: shows how to customize the style of widgets using attributes selectors, similar to CSS.
+- ``com.microej.example.mwt.focus``: shows how to introduce focus management in your project.
+- ``com.microej.example.mwt.lazystylesheet``: shows how to use a lazy stylesheet rather than the default stylesheet implementation.
+- ``com.microej.example.mwt.mvc``: shows how to develop responsive widgets using a MVC design pattern and how to display a cursor image representing the pointer.
 
 Widget library
 --------------
