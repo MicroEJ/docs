@@ -9,7 +9,7 @@ MicroEJ Glossary
       A MicroEJ Add-On Library is a pure Java library that is implemented on top of one or more MicroEJ Foundation Libraries.
 
    Application
-      A MicroEJ Application is a software program that runs on a MicroEJ-ready device. A MicroEJ Application is called a MicroEJ Standalone Application or a MicroEJ Sandboxed Application depending the way it is linked.
+      A MicroEJ Application is a software program that runs on a Powered by MicroEJ device. A MicroEJ Application is called a MicroEJ Standalone Application or a MicroEJ Sandboxed Application depending the way it is linked.
 
          Standalone Application
             MicroEJ Standalone Application is a MicroEJ Application that is directly linked to the C code to produce a MicroEJ Firmware. It is edited using MicroEJ SDK.
