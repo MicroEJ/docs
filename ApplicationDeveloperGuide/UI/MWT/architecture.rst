@@ -188,7 +188,7 @@ Desktop and widgets pass through different states. Once created, they can be att
 A desktop is attached automatically as soon as it is shown on the display.
 It can also be attached manually by calling ``Desktop.setAttached()``. It could be used to render the desktop (and its widgets) on an image for example.
 
-A widget is attached when it is contained by a desktop that is attached.
+A widget is considered as attached when it is contained by a desktop that is attached.
 
 In the same way, by default, a widget is shown when its desktop is shown. But for optimisation purpose, a container can control when its children are shown or hidden. A typical use case is when the widgets are moved outside the display.
 
