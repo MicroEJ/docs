@@ -50,8 +50,9 @@ Lay Out
 -------
 
 All widgets are laid out at once during the lay out process. This process can be started by `Desktop.requestLayOut()`, `Widget.requestLayOut()`. The layout is also automatically done when the desktop is shown (`Desktop.onShown()`). This process is composed of two steps, each step browses the hierarchy of widgets following a depth-first algorithm:
-* compute the optimal size for each widget and container (considering the constraints of the lay out),
-* set position and size for each widget.
+
+- compute the optimal size for each widget and container (considering the constraints of the lay out),
+- set position and size for each widget.
 
 Once the position and size of a widget is set, the widget is notified by a call to `onLaidOut()`.
 
