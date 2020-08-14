@@ -1,24 +1,5 @@
-Examples
-========
-
-MWT examples
-------------
-
-The MWT Examples repository provides various examples which extend or customize the MWT framework.
-
-Source
-~~~~~~
-
-To run the examples and read the source code of these examples, clone the following GitHub repository: `<https://github.com/MicroEJ/ExampleJava-MWT>`_.
-You can then import the multiple project into your workspace to see the source of each example and to run it on Simulator or on your board.
-
-Provided examples
-~~~~~~~~~~~~~~~~~
-
-- ``com.microej.example.mwt.attribute``: shows how to customize the style of widgets using attributes selectors, similar to CSS.
-- ``com.microej.example.mwt.focus``: shows how to introduce focus management in your project.
-- ``com.microej.example.mwt.lazystylesheet``: shows how to use a lazy stylesheet rather than the default stylesheet implementation.
-- ``com.microej.example.mwt.mvc``: shows how to develop responsive widgets using a MVC design pattern and how to display a cursor image representing the pointer.
+Widgets and Examples
+====================
 
 Widget library
 --------------
@@ -90,6 +71,25 @@ Containers:
 
 - ``Split``: lays out two children horizontally or vertically, by giving each child a portion of the available space.
 - ``ScrollableList``: lays out its widgets the same way as a regular list, but provides an optimization when added to a scroll.
+
+MWT examples
+------------
+
+The MWT Examples repository provides various examples which extend or customize the MWT framework.
+
+Source
+~~~~~~
+
+To run the examples and read the source code of these examples, clone the following GitHub repository: `<https://github.com/MicroEJ/ExampleJava-MWT>`_.
+You can then import the multiple project into your workspace to see the source of each example and to run it on Simulator or on your board.
+
+Provided examples
+~~~~~~~~~~~~~~~~~
+
+- ``com.microej.example.mwt.attribute``: shows how to customize the style of widgets using attributes selectors, similar to CSS.
+- ``com.microej.example.mwt.focus``: shows how to introduce focus management in your project.
+- ``com.microej.example.mwt.lazystylesheet``: shows how to use a lazy stylesheet rather than the default stylesheet implementation.
+- ``com.microej.example.mwt.mvc``: shows how to develop responsive widgets using a MVC design pattern and how to display a cursor image representing the pointer.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
