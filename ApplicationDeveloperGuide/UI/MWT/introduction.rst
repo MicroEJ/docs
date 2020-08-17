@@ -1,5 +1,15 @@
-Architecture
+Introduction
 ============
+
+MWT is a toolkit that simplifies the creation and use of graphical user interface widgets on a pixelated display.
+
+The aim of this library is to be sufficient to create complex applications with a minimal framework. It provides the main concepts without managing particular needs. Specific needs can be met by a MWT expert by creating new widgets, adding more complex concepts, etc. The flexibility of the MWT open framework allows the selection of only what is necessary for the application in order to guarantee lightweight applications and fast execution.
+
+To use the MWT library, add this Ivy dependency to your project:
+
+.. code-block:: XML
+
+	<dependency org="ej.library.ui" name="mwt" rev="3.0.0"/>
 
 Structure
 ---------
@@ -50,8 +60,9 @@ Lay Out
 -------
 
 All widgets are laid out at once during the lay out process. This process can be started by `Desktop.requestLayOut()`, `Widget.requestLayOut()`. The layout is also automatically done when the desktop is shown (`Desktop.onShown()`). This process is composed of two steps, each step browses the hierarchy of widgets following a depth-first algorithm:
-* compute the optimal size for each widget and container (considering the constraints of the lay out),
-* set position and size for each widget.
+
+- compute the optimal size for each widget and container (considering the constraints of the lay out),
+- set position and size for each widget.
 
 Once the position and size of a widget is set, the widget is notified by a call to `onLaidOut()`.
 
@@ -182,9 +193,22 @@ For example, the following code customizes the style of every ``Label`` widget o
 Desktop and widget states
 -------------------------
 
-* Shown/attached desktop
-* Attached widget
-* Shown widget
+Desktop and widgets pass through different states. Once created, they can be attached, then they can be shown.
+
+A desktop is attached automatically as soon as it is shown on the display.
+It can also be attached manually by calling ``Desktop.setAttached()``. It could be used to render the desktop (and its widgets) on an image for example.
+
+A widget is considered as attached when it is contained by a desktop that is attached.
+
+In the same way, by default, a widget is shown when its desktop is shown. But for optimisation purpose, a container can control when its children are shown or hidden. A typical use case is when the widgets are moved outside the display.
+
+Once a widget is attached, it means that it is ready to be shown (for instance, the necessary resources are allocated). In other word, once attached a widget is ready to be rendered (on an image or on the display).
+
+Once a widget is shown, it means that it is intended to be rendered on the display. While shown, it may start a periodic refresh or an animation.
+
+.. figure:: images/showSequence.png
+   :alt: Show Sequence
+   :align: center
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

@@ -1,20 +1,17 @@
-MWT
-===
-
-MWT is a toolkit that simplifies the creation and use of graphical user interface widgets on a pixelated display.
-
-The aim of this library is to be sufficient to create complex applications with a minimal framework. It provides the main concepts without managing particular needs. Specific needs can be met by a MWT expert by creating new widgets, adding more complex concepts, etc. The flexibility of the MWT open framework allows the selection of only what is necessary for the application in order to guarantee lightweight applications and fast execution.
+MWT (Micro Widget Toolkit)
+==========================
 
 .. toctree::
    :maxdepth: 2
 
-   architecture
+   introduction
    how-to-widget
    how-to-container
    how-to-outline
    how-to-background
    how-to-event-dispatcher
    how-to-extra-style-field
+   examples
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
