@@ -155,22 +155,29 @@ ESP32
 =====
 
 .. list-table:: Espressif ESP32 Compilers
-   :widths: 10 10 50 10
+   :widths: 10 10 50 10 20
    :header-rows: 1
 
    * - Compiler
      - Version
      - Flags and Options
-     - Module
+     - Module Name
+     - Module Version
    * - GCC (ESP-IDF)
-     - 5.2.0 (crosstool-NG crosstool-ng-1.22.0-80-g6c4433a)
+     - 5.2.0 (crosstool-ng-1.22.0-80-g6c4433a)
      - ``-mlongcalls``
      - `simikou1 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv52_xtensa-esp32/simikou1/>`_
+     - Any
    * - GCC (ESP-IDF)
-     - 5.2.0 (crosstool-NG crosstool-ng-1.22.0-80-g6c4433a)
+     - 5.2.0 (crosstool-ng-1.22.0-80-g6c4433a)
      - ``-mlongcalls -mfix-esp32-psram-cache-issue``
      - `simikou2 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv52_xtensa-esp32-psram/simikou2/>`_
-
+     - Up to ``7.13.0`` (included)
+   * - GCC (ESP-IDF)
+     - 5.2.0 (crosstool-ng-1.22.0-96-g2852398)
+     - ``-mlongcalls -mfix-esp32-psram-cache-issue``
+     - `simikou2 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv52_xtensa-esp32-psram/simikou2/>`_
+     - ``7.13.1`` or higher
 
 IAR Linker Specific Options
 ===========================
