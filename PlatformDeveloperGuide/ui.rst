@@ -6,13 +6,14 @@ Graphics User Interface
     :maxdepth: 2
 
     uiIntroduction
-    microui
-    static_init
-    leds
-    inputs
-    display
-    image
-    font
+    uiMicroui
+    uiStaticInit
+    uiLowLevel
+    uiLed
+    uiInput
+    uiDisplay
+    uiImage
+    uiFont
     uiSimulation
 
 ..

@@ -22,29 +22,29 @@ The physical display is owned by only one context at a time (the Kernel
 or one Feature). The following cases may trigger a physical display
 owner switch:
 
--  during a call to ``ej.microui.display.Displayable.show()``: after the
+-  during a call to ``ej.microui.display.Display.requestShow(ej.microui.display.Displayable)``: after the
    successful permission check, it is assigned to the context owner.
 
 -  during a call to
-   ``ej.microui.display.Display.callSerially(java.lang.Runnable)``:
+   ``ej.microui.MicroUI.callSerially(java.lang.Runnable)``:
    after the successful permission check it is assigned to owner of the
    ``Runnable`` instance.
 
 The physical display switch performs the following actions:
 
 -  If a ``Displayable`` instance is currently shown on the ``Display``,
-   the method ``Displayable.becomeHidden()`` is called.
+   the method ``Displayable.onHidden()`` is called.
 
 -  All pending events (input events, display flushes, call serially
    runnable instances) are removed from the display event serializer
 
 -  System Event Generators handlers are reset to their default
-   ``ej.microui.util.EventHandler`` instance.
+   ``ej.microui.event.EventHandler`` instance.
 
 Automatically Reclaimed Resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Instances of ``ej.microui.display.Image``, ``ej.microui.display.Font``
+Instances of ``ej.microui.display.ResourceImage``, ``ej.microui.display.Font``
 are automatically reclaimed when a Feature is stopped.
 
 ECOM

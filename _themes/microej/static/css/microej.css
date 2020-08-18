@@ -476,6 +476,7 @@ h2{
   font-weight: bold;
   font-size: 30px;
   color: #4b5357;
+  padding-top: 85px;
 }
 
 li{
@@ -618,6 +619,7 @@ code,
 
 .wy-side-scroll {
   width: 345px;
+  height: 93%;
 }
 
 @media screen and (max-width: 768px) {
@@ -938,7 +940,7 @@ div.rst-other-versions > div.injected > dl {
   perspective-origin: 250px 35.5px;
   transform-origin: 250px 35.5px;
   caret-color: rgb(51, 122, 183);
-  background: rgba(0, 0, 0, 0) url("https://newdev2020.microej.com/wp-content/themes/wordpress-bootstrap-master/css/bg/bg_logo.png") no-repeat scroll 50% 50% / cover padding-box border-box;
+  background: rgba(0, 0, 0, 0) url("https://developer.microej.com/wp-content/themes/wordpress-bootstrap-master/css/bg/bg_logo.png") no-repeat scroll 50% 50% / cover padding-box border-box;
   border: 0px none rgb(51, 122, 183);
   font: 300 18px / 20px "Source Sans Pro", sans-serif;
   outline: rgb(51, 122, 183) none 0px;

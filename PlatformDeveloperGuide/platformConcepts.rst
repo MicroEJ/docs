@@ -105,7 +105,7 @@ implementation is permitted, as shown in the illustration below.
 
 .. figure:: images/low-level-1c.*
    :alt: Low Level API Pattern (single implementation)
-   :width: 70.0%
+   :scale: 75 %
    :align: center
 
    Low Level API Pattern (single implementation)
@@ -116,7 +116,7 @@ must notify the library using a ``receive`` function.
 
 .. figure:: images/low-level-3c.*
    :alt: Low Level API Example
-   :width: 80.0%
+   :scale: 75 %
    :align: center
 
    Low Level API Example
@@ -137,7 +137,7 @@ single instance of a single implementation.
 
 .. figure:: images/low-level-2c.*
    :alt: Low Level API Pattern (multiple implementations/instances)
-   :width: 70.0%
+   :scale: 75 %
    :align: center
 
    Low Level API Pattern (multiple implementations/instances)

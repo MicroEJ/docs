@@ -1,3 +1,5 @@
+.. _LLAPI-CHAPTER:
+
 =========================
 Appendix A: Low Level API
 =========================
@@ -177,50 +179,44 @@ Four C header files are provided:
 
 .. _LLINPUT-API-SECTION:
 
-LLINPUT: Inputs
-===============
+LLUI_INPUT: Inputs
+==================
 
-``LLINPUT`` API is composed of the following files:
+``LLUI_INPUT`` API is composed of the following files:
 
--  the file ``LLINPUT_impl.h`` that defines the functions to be
+-  the file ``LLUI_INPUT_impl.h`` that defines the functions to be
    implemented
 
--  the file ``LLINPUT.h`` that provides the functions for sending events
+-  the file ``LLUI_INPUT.h`` that provides the functions for sending events
 
 Implementation
 --------------
 
-``LLINPUT_IMPL_initialize`` is the first function called by the input
-stack, and it may be used to initialize the underlying devices and bind
+``LLUI_INPUT_IMPL_initialize`` is the first function called by the input
+engine, and it may be used to initialize the underlying devices and bind
 them to event generator IDs.
 
-``LLINPUT_IMPL_enterCriticalSection`` and
-``LLINPUT_IMPL_exitCriticalSection``  need to provide the stack with a
+``LLUI_INPUT_IMPL_enterCriticalSection`` and
+``LLUI_INPUT_IMPL_exitCriticalSection``  need to provide the input engine with a
 critical section mechanism for synchronizing devices when sending events
 to the internal event queue. The mechanism used to implement the
 synchronization will depend on the platform configuration (with or
 without RTOS), and whether or not events are sent from an interrupt
 context.
 
-``LLINPUT_IMPL_getInitialStateValue`` allows the input stack to get the
+``LLUI_INPUT_IMPL_getInitialStateValue`` allows the input stack to get the
 current state for devices connected to the MicroUI States event
 generator, such as switch selector, coding wheels, etc.
 
 Sending Events
 --------------
 
-The ``LLINPUT`` API provides two generic functions for a C driver to
+The ``LLUI_INPUT`` API provides two generic functions for a C driver to
 send data to its associated event generator:
 
--  ``LLINPUT_sendEvent``:  Sends a 32-bit encoded event to a specific
-   event generator, specified by its ID. If the input buffer is full,
-   the event is not added, and the function returns 0; otherwise it
-   returns 1.
+-  ``LLUI_INPUT_sendEvent``:  Sends a 32-bits event to a specific event generator, specified by its ID. If the input buffer is full, the event is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
 
--  ``LLINPUT_sendEvents``: Sends event data to a specific event
-   generator, specified by its ID. If the input buffer cannot receive
-   the whole data, the event is not added, and the function returns 0;
-   otherwise it returns 1.
+-  ``LLUI_INPUT_sendEvents``: Sends a frame constitued by several 32-bits events to a specific event generator, specified by its ID. If the input buffer cannot receive the whole data, the frame is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
 
 Events will be dispatched to the associated event generator that will be
 responsible for decoding them (see :ref:`javaEventGenerators`).
@@ -234,75 +230,77 @@ structured events to the predefined event generators:
 
 .. _table_llinputApiEvtGen:
 .. tabularcolumns:: |p{5.5cm}|p{2cm}|p{6.5cm}|
-.. table:: LLINPUT API for predefined event generators
+.. table:: LLUI_INPUT API for predefined event generators
 
-   +--------------------------------------+-----------+---------------------------------------+
-   | Function name                        | Default   | Comments                              |
-   |                                      | event     |                                       |
-   |                                      | generator |                                       |
-   |                                      | kind [1]_ |                                       |
-   |                                      |           |                                       |
-   |                                      |           |                                       |
-   +======================================+===========+=======================================+
-   | ``LLINPUT_sendCommandEvent``         | Command   | Constants are provided that           |
-   |                                      |           | define all standard MicroUI           |
-   |                                      |           | commands [MUI].                       |
-   +--------------------------------------+-----------+---------------------------------------+
-   | ``LLINPUT_sendButtonPressedEvent``   | Buttons   | In the case of                        |
-   |                                      |           | chronological sequences               |
-   |                                      |           | (for example, a RELEASE               |
-   | ``LLINPUT_sendButtonReleasedEvent``  |           | that may occur only after a           |
-   |                                      |           | PRESSED), it is the                   |
-   |                                      |           | responsibility of the                 |
-   | ``LLINPUT_sendButtonRepeatedEvent``  |           | driver to ensure the                  |
-   |                                      |           | integrity of such                     |
-   |                                      |           | sequences.                            |
-   +--------------------------------------+-----------+---------------------------------------+
-   | ``LLINPUT_sendPointerPressedEvent``  | Pointer   | In the case of                        |
-   |                                      |           | chronological sequences               |
-   |                                      |           | (for example, a RELEASE               |
-   | ``LLINPUT_sendPointerReleasedEvent`` |           | that may occur only after a           |
-   |                                      |           | PRESSED), it is the                   |
-   |                                      |           | responsibility of the                 |
-   | ``LLINPUT_sendPointerMovedEvent``    |           | driver to ensure the                  |
-   |                                      |           | integrity of such                     |
-   |                                      |           | sequences. Depending on               |
-   |                                      |           | whether a button of the               |
-   |                                      |           | pointer is pressed while              |
-   |                                      |           | moving, a DRAG and/or a               |
-   |                                      |           | MOVE MicroUI event is                 |
-   |                                      |           | generated.                            |
-   +--------------------------------------+-----------+---------------------------------------+
-   | ``LLINPUT_sendStateEvent``           | States    | The initial value of each             |
-   |                                      |           | state machine (of a States)           |
-   |                                      |           | is retrieved by a call to             |
-   |                                      |           | ``LLINPUT_IMPL_getInitialStateValue`` |
-   |                                      |           | that must be implemented by           |
-   |                                      |           | the device. Alternatively,            |
-   |                                      |           | the initial value can be              |
-   |                                      |           | specified in the XML static           |
-   |                                      |           | configuration.                        |
-   +--------------------------------------+-----------+---------------------------------------+
-   | ``LLINPUT_sendTouchPressedEvent``    | Pointer   | In the case of                        |
-   |                                      |           | chronological sequences               |
-   |                                      |           | (for example, a RELEASE               |
-   | ``LLINPUT_sendTouchReleasedEvent``   |           | that may only occur after a           |
-   |                                      |           | PRESSED), it is the                   |
-   |                                      |           | responsibility of the                 |
-   | ``LLINPUT_sendTouchMovedEvent``      |           | driver to ensure the                  |
-   |                                      |           | integrity of such                     |
-   |                                      |           | sequences. These APIs will            |
-   |                                      |           | generate a DRAG MicroUI               |
-   |                                      |           | event instead of a MOVE               |
-   |                                      |           | while they represent a                |
-   |                                      |           | touch pad over a display.             |
-   +--------------------------------------+-----------+---------------------------------------+
+   +----------------------------------------+-----------+-----------------------------------------+
+   | Function name                          | Default   | Comments                                |
+   |                                        | event     |                                         |
+   |                                        | generator |                                         |
+   |                                        | kind [1]_ |                                         |
+   |                                        |           |                                         |
+   |                                        |           |                                         |
+   +========================================+===========+=========================================+
+   | ``LLUI_INPUT_sendCommandEvent``        | Command   | Constants are provided that             |
+   |                                        |           | define all standard MicroUI             |
+   |                                        |           | commands [MUI].                         |
+   +----------------------------------------+-----------+-----------------------------------------+
+   | ``LLUI_INPUT_sendButtonPressedEvent``  | Buttons   | In the case of                          |
+   |                                        |           | chronological sequences                 |
+   |                                        |           | (for example, a RELEASE                 |
+   | ``LLUI_INPUT_sendButtonReleasedEvent`` |           | that may occur only after a             |
+   |                                        |           | PRESSED), it is the                     |
+   |                                        |           | responsibility of the                   |
+   | ``LLUI_INPUT_sendButtonRepeatedEvent`` |           | driver to ensure the                    |
+   |                                        |           | integrity of such                       |
+   |                                        |           | sequences.                              |
+   | ``LLUI_INPUT_sendButtonLongEvent``     |           |                                         |
+   |                                        |           |                                         |
+   +----------------------------------------+-----------+-----------------------------------------+
+   | ``LLUI_INPUT_sendPointerPressedEvent`` | Pointer   | In the case of                          |
+   |                                        |           | chronological sequences                 |
+   |                                        |           | (for example, a RELEASE                 |
+   | ``LLUI_INPUT_sendPointerReleasedEvent``|           | that may occur only after a             |
+   |                                        |           | PRESSED), it is the                     |
+   |                                        |           | responsibility of the                   |
+   | ``LLUI_INPUT_sendPointerMovedEvent``   |           | driver to ensure the                    |
+   |                                        |           | integrity of such                       |
+   |                                        |           | sequences. Depending on                 |
+   |                                        |           | whether a button of the                 |
+   |                                        |           | pointer is pressed while                |
+   |                                        |           | moving, a DRAG and/or a                 |
+   |                                        |           | MOVE MicroUI event is                   |
+   |                                        |           | generated.                              |
+   +----------------------------------------+-----------+-----------------------------------------+
+   | ``LLUI_INPUT_sendStateEvent``          | States    | The initial value of each               |
+   |                                        |           | state machine (of a States)             |
+   |                                        |           | is retrieved by a call to               |
+   |                                        |           | ``LLUI_INPUT_IMPL_getInitialStateValue``|
+   |                                        |           | that must be implemented by             |
+   |                                        |           | the device. Alternatively,              |
+   |                                        |           | the initial value can be                |
+   |                                        |           | specified in the XML static             |
+   |                                        |           | configuration.                          |
+   +----------------------------------------+-----------+-----------------------------------------+
+   | ``LLUI_INPUT_sendTouchPressedEvent``   | Pointer   | In the case of                          |
+   |                                        |           | chronological sequences                 |
+   |                                        |           | (for example, a RELEASE                 |
+   | ``LLUI_INPUT_sendTouchReleasedEvent``  |           | that may only occur after a             |
+   |                                        |           | PRESSED), it is the                     |
+   |                                        |           | responsibility of the                   |
+   | ``LLUI_INPUT_sendTouchMovedEvent``     |           | driver to ensure the                    |
+   |                                        |           | integrity of such                       |
+   |                                        |           | sequences. These APIs will              |
+   |                                        |           | generate a DRAG MicroUI                 |
+   |                                        |           | event instead of a MOVE                 |
+   |                                        |           | while they represent a                  |
+   |                                        |           | touch pad over a display.               |
+   +----------------------------------------+-----------+-----------------------------------------+
 
 Event Buffer
 ------------
 
 The maximum usage of the internal event buffer may be retrieved at
-runtime using the ``LLINPUT_getMaxEventsBufferUsage`` function. This is
+runtime using the ``LLUI_INPUT_getMaxEventsBufferUsage`` function. This is
 useful for tuning the size of the buffer.
 
 .. [1]
@@ -310,326 +308,118 @@ useful for tuning the size of the buffer.
    column.
 
 
-LLDISPLAY
-=========
-
 .. _LLDISPLAY-API-SECTION:
 
-LLDISPLAY: Display
-------------------
+LLUI_DISPLAY: Display
+=====================
 
 Principle & Naming Convention
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
-Each display stack provides a low level API in order to connect a
-display driver. The file ``LLDISPLAY_impl.h`` defines the API headers to
-be implemented. For the APIs themselves, the naming convention is that
-their names match the ``*_IMPL_*`` pattern when the functions need to be
-implemented.
+Each display engine provides a low level API in order to connect a display driver. The file ``LLUI_DISPLAY_impl.h`` defines the API headers to be implemented. For the APIs themselves, the naming convention is that their names match the ``*_IMPL_*`` pattern when the functions need to be implemented:
 
-Initialization
-~~~~~~~~~~~~~~
+* ``LLUI_DISPLAY_IMPL_initialize``
+* ``LLUI_DISPLAY_IMPL_binarySemaphoreTake``
+* ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``
+* ``LLUI_DISPLAY_IMPL_flush``
 
-Each display stack gets initialized the same way:
+Some additional low level API allow you to connect display extra features. These LLAPIs are not required. When they are not implemented, a default implementation is used (weak function). It concerns backlight, contrast etc.
 
--  First, the function ``LLDISPLAY_IMPL_initialize`` is called: It asks
-   its display driver to initialize itself.
-
--  Second, the functions ``LLDISPLAY_IMPL_getWidth`` and
-   ``LLDISPLAY_IMPL_getHeight`` are called to retrieve the size of the
-   physical screen.
-
-Working Buffer
-~~~~~~~~~~~~~~
-
-The display driver must allocate a runtime memory buffer for creating
-dynamic images when using MicroUI ``Image.createImage()`` methods that
-explicitly create mutable images.
-
-The display driver may choose to return an empty buffer. Thus, calling
-MicroUI ``Image.createImage()`` methods will result in a
-``java.lang.OutOfMemoryError`` exception.
-
-``LLDISPLAY_getWorkingBufferStartAddress`` returns the buffer start
-address. ``LLDISPLAY_getWorkingBufferEndAddress`` returns the next
-address after the buffer (end-start is the buffer length).
-
-Flush and Synchronization
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Function ``LLDISPLAY_getGraphicsBufferAddress`` returns the address of
-the graphics buffer (back buffer) for the very first drawing. The
-content of this buffer is flushed to the external display memory by the
-function ``LLDISPLAY_flush``. The parameters define the rectangular area
-of the content which has changed during the last drawing action, and
-which must be flushed to the display buffer (dirty area).
-
-``LLDISPLAY_synchronize`` is called before the next drawing after a call
-to the flush function, in order to avoid flickering on the display
-device.
-
-.. _LLDISPLAY-EXTRA-API-SECTION:
-
-LLDISPLAY_EXTRA: Display Extra Features
----------------------------------------
-
-Principle
-~~~~~~~~~
-
-An additional low level API allows you to connect display extra
-features. The files ``LLDISPLAY_EXTRA_impl.h`` define the API headers to
-be implemented.  For the APIs themselves, the naming convention is that
-their names match the ``*_IMPL_*`` pattern when the functions must be
-implemented. These LLAPIs are not required. When they are not
-implemented, a default implementation is used (weak function).
-
-Display Characteristics
-~~~~~~~~~~~~~~~~~~~~~~~
-
-Function ``LLDISPLAY_EXTRA_IMPL_isColor`` directly implements the method
-from the MicroUI ``Display`` class of the same name. The default
-implementation always returns ``LLDISPLAY_EXTRA_OK``.
-
-Function ``LLDISPLAY_EXTRA_IMPL_getNumberOfColors`` directly implements
-the method from the MicroUI ``Display`` class of the same name. The
-default implementation returns a value according to the number of bits
-by pixels, without taking into consideration the alpha bit(s).
-
-Function ``LLDISPLAY_EXTRA_IMPL_isDoubleBuffered`` directly implements
-the method from the MicroUI ``Display`` class of the same name. The
-default implementation returns ``LLDISPLAY_EXTRA_OK``. When LLAPI
-implementation targets a LCD in ``direct`` mode, this function must be
-implemented and return ``LLDISPLAY_EXTRA_NOT_SUPPORTED``.
-
-Contrast
-~~~~~~~~
-
-``LLDISPLAY_EXTRA_IMPL_setContrast`` and
-``DISPLAY_EXTRA_IMPL_getContrast`` are called to set/get the current
-display contrast intensity. The default implementations don't manage the
-contrast.
-
-BackLight
-~~~~~~~~~
-
-``LLDISPLAY_EXTRA_IMPL_hasBackLight`` indicates whether the display has
-backlight capabilities.
-
-``LLDISPLAY_EXTRA_IMPL_setBackLight`` and
-``DISPLAY_EXTRA_IIMPL_getBackLight`` are called to set/get the current
-display backlight intensity.
-
-``LLDISPLAY_EXTRA_IMPL_backlightOn`` and
-``LLDISPLAY_EXTRA_IMPL_backlightOff`` enable/disable the backlight. The
-default implementations don't manage the backlight.
-
-.. _colorConversions:
-
-Color Conversions
-~~~~~~~~~~~~~~~~~
-
-``LLDISPLAY_EXTRA_IMPL_convertARGBColorToDisplayColor`` is called to
-convert a 32-bit ARGB MicroUI color in ``0xAARRGGBB`` format into the
-"driver" display color.
-
-``LLDISPLAY_EXTRA_IMPL_convertDisplayColorToARGBColor`` is called to
-convert a display color to a 32-bit ARGB MicroUI color.
-
-Drawings
-~~~~~~~~
-
-Synchronization
-^^^^^^^^^^^^^^^
-
-The display stack calls the functions
-``LLDISPLAY_EXTRA_IMPL_enterDrawingMode`` and
-``LLDISPLAY_EXTRA_IMPL_exitDrawingMode`` to enter / leave a critical
-section. This is useful when some drawings are performed in C-side using
-the ``LLDISPLAY_UTILS`` API. This function implementation can stay empty
-when there is no call from C-side, or when the calls from C-side are
-performed in the same OS task, rather than in the MicroEJ Core Engine
-task. By default these functions do nothing.
-
-LUT
-^^^
-
-The function ``LLDISPLAY_EXTRA_IMPL_prepareBlendingOfIndexedColors`` is
-called when drawing an image with indexed color. See
-:ref:`display_lut` to have more information about indexed images.
-
-Hardware Accelerator
-^^^^^^^^^^^^^^^^^^^^
-
-Some functions allow you to use an hardware accelerator to perform some
-drawings: ``LLDISPLAY_EXTRA_IMPL_fillRect``,
-``LLDISPLAY_EXTRA_IMPL_drawImage``, ``LLDISPLAY_EXTRA_IMPL_scaleImage``
-and ``LLDISPLAY_EXTRA_IMPL_rotateImage``. When called, the LLDISPLAY
-*must* perform the drawing (see :ref:`display_hard_accelerator`).
-Otherwise a call to ``LLDISPLAY_EXTRA_IMPL_error`` will be performed
-with an error code as parameter (see :ref:`lldisplayextra_error`).
-Furthermore, the drawing will be not performed by software.
-
-A drawing may be executed directly during the call of the relative
-function (synchronous execution), may be executed by a hardware
-peripheral like a DMA (asynchronous execution), or may be executed by a
-dedicated OS task (asynchronous execution). When the drawing is
-synchronous, the function must return
-``LLDISPLAY_EXTRA_DRAWING_COMPLETE``, which indicates the drawing is
-complete. When the drawing is asynchronous, the function must return
-``LLDISPLAY_EXTRA_DRAWING_RUNNING``, which indicates that the drawing is
-running. In this case, the very next drawing (with or without hardware
-acceleration) will be preceded by a specific call in order to
-synchronize the display stack work with the end of hardware drawing. The
-function used to wait for the end of drawing is
-``LLDISPLAY_EXTRA_IMPL_waitPreviousDrawing``.
-
-The default implementations call the error function.
-
-Structures
-~~~~~~~~~~
-
-The drawing functions are using some ``struct`` to specify the drawing
-to perform. These structures are listed in
-``LLDISPLAY_EXTRA_drawing.h``. Refer to this h file have the exhaustive
-list of structures and structures elements.
-
--  ``int32_t LLDISPLAY_EXTRA_IMPL_fillRect(LLDISPLAY_SImage* dest, int32_t destAddr, LLDISPLAY_SRectangle* rect, int32_t color)``
-
--  ``int32_t LLDISPLAY_EXTRA_IMPL_drawImage(LLDISPLAY_SImage* src, int32_t srcAddr, LLDISPLAY_SImage* dest, int32_t destAddr, LLDISPLAY_SDrawImage* drawing)``
-
--  ``int32_t LLDISPLAY_EXTRA_IMPL_scaleImage(LLDISPLAY_SImage* src, int32_t srcAddr, LLDISPLAY_SImage* dest, int32_t destAddr, LLDISPLAY_SScaleImage* drawing)``
-
--  ``int32_t LLDISPLAY_EXTRA_IMPL_rotateImage(LLDISPLAY_SImage* src, int32_t srcAddr, LLDISPLAY_SImage* dest, int32_t destAddr, LLDISPLAY_SRotateImage* drawing)``
-
-Image Decoders
-~~~~~~~~~~~~~~
-
-The API ``LLDISPLAY_EXTRA_IMPL_decodeImage`` allows to add some
-additional image decoders (see :ref:`image_external_decoder`). This
-LLAPI uses some structures as parameter:
-
-``int32_t LLDISPLAY_EXTRA_IMPL_decodeImage(int32_t address, int32_t length, int32_t expected_format, LLDISPLAY_SImage* image, LLDISPLAY_SRawImageData* image_data)``
-
-LLDISPLAY_UTILS: Display Utils
-------------------------------
-
-Principle
-~~~~~~~~~
-
-This header file lets some APIs in C-side perform some drawings in the
-same buffers used by the display stack. This is very useful for reusing
-legacy code, performing a specific drawing, etc.
-
-Synchronization
-~~~~~~~~~~~~~~~
-
-Every drawing performed in C-side must be synchronized with the display
-stack drawings. The idea is to force the display stack to wait the end
-of previous asynchronous drawings before drawing anything else. Use the
-functions ``enterDrawingMode`` and ``exitDrawingMode`` to enter / leave
-a critical section.
-
-Buffer Characteristics
-~~~~~~~~~~~~~~~~~~~~~~
-
-A set of functions allow retrieval of several characterics of an image
-(or the display buffer itself). These functions use a parameter to
-identify the image: the image Java object hash code
-(``myImage.hashCode()`` or ``myGraphicsContext.hashCode()``).
-
-The function ``getBufferAddress`` returns the address of the image data
-buffer. This buffer can be located in runtime memory (RAM, SRAM, SDRAM,
-etc.) or in read-only memory (internal flash, NOR, etc.).
-
-The functions ``getWidth`` and ``getHeight`` return the size of the
-image / graphics context.
-
-The function ``getFormat`` returns the format of the image / graphics
-context. The formats list is available in MicroUI ``GraphicsContext``
-class.
-
-The functions ``getClipX1``, ``getClipX2``, ``getClipY1`` and
-``getClipY2`` return the current clip of the image / graphics context.
-The C-side drawing can use the clip limits (this is optional).
-
-Drawings
-~~~~~~~~
-
-A set of functions allows you to use internal display stack functions to
-draw something on an image (or in the display buffer itself). These
-functions use a parameter to identify the image: the image Java object
-hash code (``myImage.hashCode()`` or ``myGraphicsContext.hashCode()``).
-
-The basic functions ``drawPixel`` and ``readPixel`` are useful for
-drawing or reading a pixel. The function ``blend`` allows you to blend
-two colors and a global alpha.
-
-The C-side can change the current clip of an image / graphics context
-only in the display stack. The clip is not updated in MicroUI. Use the
-function ``setClip`` to do this.
-
-A C-side drawing has to update the drawing limits (before or after the
-drawing itself), using the function ``setDrawingLimits`` when the
-drawing is made in the display back buffer. This allows you to update
-the size of the dirty area the display stack has to flush. If it is not
-updated, the C-side drawing (available in back buffer) may never be
-flushed to the display graphical memory.
-
-Allocation
-~~~~~~~~~~
-
-When decoding an image with an external image decoder (see
-:ref:`image_external_decoder`), the C-side has to allocate a RAW
-image in the working buffer. The function
-``LLDISPLAY_UTILS_allocateRawImage`` takes as parameter a strucutre
-which describes the image (size and format) and an output structure
-where it stores the image allocation data:
-
-``int32_t LLDISPLAY_UTILS_allocateRawImage(LLDISPLAY_SImage* image, LLDISPLAY_SRawImageData* image_data)``
-
-This function can also be used by C-side to allocate a RAW image in the
-working buffer. This image will not be known by MicroUI but this image
-can be used in C-side.
-
-
-.. _LLLEDS-API-SECTION:
-
-LLLEDS: LEDs
-============
-
-Principle
----------
-
-The LEDs stack provides a Low Level API for connecting LED drivers. The
-file ``LLLEDS_impl.h``, which comes with the LEDs stack, defines the API
-headers to be implemented.
-
-Naming Convention
------------------
-
-The Low Level API relies on functions that must be implemented. The
-naming convention for such functions is that their names match the
-``*_IMPL_*`` pattern.
+This describes succinctly some ``LLUI_DISPLAY_IMPL`` functions. Please refer to documentation inside header files to have more information. 
 
 Initialization
 --------------
 
-The first function called is ``LLLEDS_IMPL_initialize``, which allows
-the driver to initialize all LED devices. This method must return the
-number of LEDs available.
+Each display engine gets initialized by calling the function ``LLUI_DISPLAY_IMPL_initialize``: It asks its display driver to initialize itself. The implementation function has to fill the given structure ``LLUI_DISPLAY_SInitData``. This structure allows to retrieve the size of the virtual and physical screen, the back buffer address (where MicroUI is drawing). The implementation has too `give` two binary semaphores.
 
-Each LED has a unique identifier. The first LED has the ID 0, and the
-last has the ID NbLEDs – 1.
+Image Heap
+----------
 
-This UI extension provides support to efficiently implement the set of
-methods that interact with the LEDs provided by a device. Below are the
-relevant C functions:
+The display driver must reserve a runtime memory buffer for creating dynamic images when using MicroUI ``ResouceImage`` and ``BufferedImage`` classes methods. The display driver may choose to reserve an empty buffer. Thus, calling MicroUI methods will result in a ``MicroUIException`` exception.
 
--  ``LLLEDS_IMPL_getIntensity``: Get the intensity of a specific LED
-   using its ID.
+The section name is ``.bss.microui.display.imagesHeap``.
 
--  ``LLLEDS_IMPL_setIntensity``: Set the intensity of an LED using its
-   ID.
+External Font Heap
+------------------
+
+The display driver must reserve a runtime memory buffer for loading external fonts (fonts located outside CPU addresses ranges). The display driver may choose to reserve an empty buffer. Thus, calling MicroUI ``Font`` methods will result in empty drawings of some characters.
+
+The section name is ``.bss.microui.display.externalFontsHeap``.
+
+Flush and Synchronization
+-------------------------
+
+The back buffer (graphics buffer) address set in Initialization function is the address for the very first drawing. The content of this buffer is flushed to the external display memory by the function ``LLUI_DISPLAY_flush``. The parameters define the rectangular area of the content which has changed during the last drawing action, and which must be flushed to the display buffer (dirty area). This function should be atomic: the implementation has to start another task or a hardware device (often a DMA) to perform the copy.
+
+As soon as the application performs a new drawing, the display engine locks the thread. It will automatically unlocked when the BSP will call ``LLUI_DISPLAY_flushDone`` at the end of the copy, 
+
+Display Characteristics
+-----------------------
+
+Function ``LLUI_DISPLAY_IMPL_isColor`` directly implements the method from the MicroUI ``Display`` class of the same name. The default implementation always returns ``true`` when the number of bits per pixel is higher than 4.
+
+Function ``LLUI_DISPLAY_IMPL_getNumberOfColors`` directly implements the method from the MicroUI ``Display`` class of the same name. The default implementation returns a value according to the number of bits by pixel, without taking into consideration the alpha bit(s).
+
+Function ``LLUI_DISPLAY_IMPL_isDoubleBuffered`` directly implements the method from the MicroUI ``Display`` class of the same name. The default implementation returns ``true``. When LLAPI implementation targets a LCD in ``direct`` mode, this function must be implemented and return ``false``.
+
+Contrast
+--------
+
+``LLUI_DISPLAY_IMPL_setContrast`` and ``LLUI_DISPLAY_IMPL_getContrast`` are called to set/get the current display contrast intensity. The default implementations don't manage the contrast.
+
+BackLight
+---------
+
+``LLUI_DISPLAY_IMPL_hasBacklight`` indicates whether the display has backlight capabilities.
+
+``LLUI_DISPLAY_IMPL_setBacklight`` and ``LLUI_DISPLAY_IMPL_getBacklight`` are called to set/get the current display backlight intensity.
+
+.. _colorConversions:
+
+Color Conversions
+-----------------
+
+The following functions are only useful (and called) when the display is not a standard display, see :ref:`display_pixel_structure`.
+
+``LLUI_DISPLAY_IMPL_convertARGBColorToDisplayColor`` is called to convert a 32-bit ARGB MicroUI color in ``0xAARRGGBB`` format into the "driver" display color.
+
+``LLUI_DISPLAY_IMPL_convertDisplayColorToARGBColor`` is called to convert a display color to a 32-bit ARGB MicroUI color.
+
+LUT
+---
+
+The function ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors`` is called when drawing an image with indexed color. See :ref:`display_lut` to have more information about indexed images.
+
+Image Decoders
+--------------
+
+The API ``LLUI_DISPLAY_IMPL_decodeImage`` allows to add some additional :ref:`image decoders<image_external_decoder>`. 
+
+.. _LLLEDS-API-SECTION:
+
+LLUI_LED: LEDs
+==============
+
+Principle
+---------
+
+The LEDs engine provides a Low Level API for connecting LED drivers. The file ``LLUI_LED_impl.h``, which comes with the LEDs engine, defines the API headers to be implemented.
+
+Naming Convention
+-----------------
+
+The Low Level API relies on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
+
+Initialization
+--------------
+
+The first function called is ``LLUI_LED_IMPL_initialize``, which allows the driver to initialize all LED devices. This method must return the available number of LEDs. Each LED has a unique identifier. The first LED has the ID 0, and the last has the ID NbLEDs – 1.
+
+This UI extension provides support to efficiently implement the set of methods that interact with the LEDs provided by a device. Below are the relevant C functions:
+
+-  ``LLUI_LED_IMPL_getIntensity``: Get the intensity of a specific LED using its ID.
+
+-  ``LLUI_LED_IMPL_setIntensity``: Set the intensity of an LED using its ID.
 
 
 .. _LLNET-API-SECTION:

@@ -160,9 +160,9 @@ The display component augments the static initialization file with:
     |                 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
     |                 | ``name``     | The logical name of the display.                                                                                                                           |
     | ``display``     +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-    |                 | ``priority`` | *Optional.* An integer value. Defines the internal display thread priority. Default value is 5.                                                            |
+    |                 | ``priority`` | *Deprecated*. This value is not taken in consideration. Use MicroEj application launcher option instead.                                                   |
     |                 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-    |                 | ``default``  | ``true`` or ``false``. Defines this display to be the default display. By default the very first display described in the XML file is the default display. |
+    |                 | ``default``  | *Deprecated*. This value is not taken in consideration.                                                                                                    |
     +-----------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
     | ``fonts``       |              | The list of system fonts. The system fonts are available for all displays.                                                                                 |
     +-----------------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+

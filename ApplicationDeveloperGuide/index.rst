@@ -8,6 +8,7 @@ Application Developer Guide
 
    introduction
    licenses
+   workspace
    standaloneApplication
    sandboxedApplication
    virtualDevice

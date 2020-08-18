@@ -62,8 +62,8 @@ by MicroEJ Architectures.
    | MCU             | Compiler               | Single      | Tiny        | Multi        |
    |                 |                        | application | application | applications |
    +-----------------+------------------------+-------------+-------------+--------------+
-   | ARM Cortex-M0+  | IAR Embedded Workbench | YES         | YES         | NO           |
-   |                 | for ARM                |             |             |              |
+   | ARM Cortex-M0   | GCC                    | YES         | YES         | NO           |
+   |                 |                        |             |             |              |
    +-----------------+------------------------+-------------+-------------+--------------+
    | ARM Cortex-M4   | IAR Embedded Workbench | YES         | YES         | YES          |
    |                 | for ARM                |             |             |              |
@@ -72,43 +72,56 @@ by MicroEJ Architectures.
    +-----------------+------------------------+-------------+-------------+--------------+
    | ARM Cortex-M4   | Keil uVision           | YES         | NO          | YES          |
    +-----------------+------------------------+-------------+-------------+--------------+
+   | ARM Cortex-M7   | IAR Embedded Workbench | YES         | NO          | YES          |
+   |                 | for ARM                |             |             |              |
+   +-----------------+------------------------+-------------+-------------+--------------+
+   | ARM Cortex-M7   | GCC                    | YES         | NO          | YES          |
+   +-----------------+------------------------+-------------+-------------+--------------+
    | ARM Cortex-M7   | Keil uVision           | YES         | NO          | YES          |
+   +-----------------+------------------------+-------------+-------------+--------------+
+   | ESP32           | ESP-IDF                | YES         | NO          | YES          |
    +-----------------+------------------------+-------------+-------------+--------------+
 
 
-ARM Cortex-M0+
-==============
+ARM Cortex-M0
+=============
 
-.. table:: ARM Cortex-M0+ Compilers
+.. list-table:: ARM Cortex-M0 Compilers
+   :widths: 10 10 50 10
+   :header-rows: 1
 
-   +---------------------+-------------+-----------------------------------+
-   | Compiler            | Version     | Flags and Options                 |
-   +=====================+=============+===================================+
-   | IAR C/C++ Compiler  | 7.40.3.8902 | ``--cpu Cortex-M0+ --fpu None``   |
-   | for ARM             |             |                                   |
-   +---------------------+-------------+-----------------------------------+
-
+   * - Compiler
+     - Version
+     - Flags and Options
+     - Module
+   * - GCC
+     - 4.8
+     - ``-mabi=aapcs -mcpu=cortex-m0 -mlittle-endian -mthumb``
+     - `flopi0G22 <https://repository.microej.com/architectures/com/microej/architecture/CM0/CM0_GCC48/flopi0G22/>`_
 
 ARM Cortex-M4
 =============
 
-.. tabularcolumns:: |p{3cm}|p{2cm}|p{10.1cm}|
+.. list-table:: ARM Cortex-M4 Compilers
+   :widths: 10 10 50 10
+   :header-rows: 1
 
-.. table:: ARM Cortex-M4 Compilers
-
-   +---------------------+-------------+-------------------------------------+
-   | Compiler            | Version     | Flags and Options                   |
-   +=====================+=============+=====================================+
-   | Keil uVision        | 5.18.0.0    | ``--cpu Cortex-M4.fp --apcs=/hardfp |
-   |                     |             | --fpmode=ieee_no_fenv``             |
-   +---------------------+-------------+-------------------------------------+
-   | GCC                 | 4.8         | ``-mabi=aapcs -mcpu=cortex-m4       |
-   |                     |             | -mlittle-endian -mfpu=fpv4-sp-d16   |
-   |                     |             | -mfloat-abi=hard -mthumb``          |
-   +---------------------+-------------+-------------------------------------+
-   | IAR Embedded        | 7.40.3.8938 | ``--cpu Cortex-M4F --fpu VFPv4_sp`` |
-   | Workbench for ARM   |             |                                     |
-   +---------------------+-------------+-------------------------------------+
+   * - Compiler
+     - Version
+     - Flags and Options
+     - Module
+   * - Keil uVision
+     - 5.18.0.0
+     - ``--cpu Cortex-M4.fp --apcs=/hardfp --fpmode=ieee_no_fenv``
+     - `flopi4A20 <https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_ARMCC5/flopi4A20/>`_
+   * - GCC
+     - 4.8
+     - ``-mabi=aapcs -mcpu=cortex-m4 -mlittle-endian -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb``
+     - `flopi4G25 <https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/>`_
+   * - IAR Embedded Workbench for ARM
+     - 8.32.1.18631
+     - ``--cpu Cortex-M4F --fpu VFPv4_sp``
+     - `flopi4I35 <https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_IAR83/flopi4I35/>`_
 
 Note: Since MicroEJ 4.0, Cortex-M4 architectures are compiled using
 ``hardfp`` convention call.
@@ -117,14 +130,46 @@ Note: Since MicroEJ 4.0, Cortex-M4 architectures are compiled using
 ARM Cortex-M7
 =============
 
-.. table:: ARM Cortex-M7 Compilers
+.. list-table:: ARM Cortex-M7 Compilers
+   :widths: 10 10 50 10
+   :header-rows: 1
 
-   +-------------------+----------+----------------------------------------+
-   | Compiler          | Version  | Flags and Options                      |
-   +===================+==========+========================================+
-   | Keil uVision      | 5.18.0.0 | ``--cpu Cortex-M7.fp.sp                |
-   |                   |          | --apcs=/hardfp --fpmode=ieee_no_fenv`` |
-   +-------------------+----------+----------------------------------------+
+   * - Compiler
+     - Version
+     - Flags and Options
+     - Module
+   * - Keil uVision
+     - 5.18.0.0
+     - ``--cpu Cortex-M7.fp.sp --apcs=/hardfp --fpmode=ieee_no_fenv``
+     - `flopi7A21 <https://repository.microej.com/architectures/com/microej/architecture/CM7/CM7hardfp_ARMCC5/flopi7A21/>`_
+   * - GCC
+     - 4.8
+     - ``-mabi=aapcs -mcpu=cortex-m7 -mlittle-endian -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumbb``
+     - `flopi7G26 <https://repository.microej.com/architectures/com/microej/architecture/CM7/CM7hardfp_GCC48/flopi7G26/>`_
+   * - IAR Embedded Workbench for ARM
+     - 8.32.1.18631
+     - ``--cpu Cortex-M7 --fpu VFPv5_sp``
+     - `flopi7I36 <https://repository.microej.com/architectures/com/microej/architecture/CM7/CM7hardfp_IAR83/flopi7I36/>`_
+
+ESP32
+=====
+
+.. list-table:: Espressif ESP32 Compilers
+   :widths: 10 10 50 10
+   :header-rows: 1
+
+   * - Compiler
+     - Version
+     - Flags and Options
+     - Module
+   * - GCC (ESP-IDF)
+     - 5.2.0 (crosstool-NG crosstool-ng-1.22.0-80-g6c4433a)
+     - ``-mlongcalls``
+     - `simikou1 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv52_xtensa-esp32/simikou1/>`_
+   * - GCC (ESP-IDF)
+     - 5.2.0 (crosstool-NG crosstool-ng-1.22.0-80-g6c4433a)
+     - ``-mlongcalls -mfix-esp32-psram-cache-issue``
+     - `simikou2 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv52_xtensa-esp32-psram/simikou2/>`_
 
 
 IAR Linker Specific Options

@@ -1,62 +1,29 @@
 Principle
 =========
 
-The User Interface Extension features one of the fastest graphical
-engines, associated with a unique int-based event management system. It
-provides :ref:`[MUI] library <esr-specifications>` implementation. The following diagram depicts the
-components involved in its design, along with the provided tools:
+The User Interface Extension features one of the fastest graphical engines, associated with a unique int-based event management system. It provides :ref:`[MUI] library <esr-specifications>` implementation. 
 
-.. figure:: images/ui_overview2.*
-   :alt: The User Interface Extension Components along with a Platform
-   :width: 70.0%
-   :align: center
+The diagram below shows a simplified view of the components involved in the provisioning of User Interface Extension.
 
-   The User Interface Extension Components along with a Platform
-
-The diagram below shows a simplified view of the components involved in
-the provisioning of a Java user interface.
-
-.. figure:: images/java-c-ui-interface2.*
+.. figure:: images/java-c-ui-interface.*
    :alt: Overview
    :width: 70.0%
-   :align: center
+   :align: center   
 
    Overview
 
-Stacks are the native parts of MicroUI. They connect the MicroUI library
-to the user-supplied drivers code (coded in C).
+Display, Input and LED are called X engine (respectively Graphical engine, Input engine and LED engine). These three low level parts connect MicroUI library to the user-supplied drivers code (coded in C). The drivers can use hardware accelerators like DMA and GPU to perform some actions (buffers copy, drawings etc.).
 
-Drivers for input devices must generate events that are sent, via a
-MicroUI *Event Generator*, to the MicroEJ Application. An event
-generator accepts notifications from devices, and generates an event in
-a standard format that can be handled by the application. Depending on
-the MicroUI configuration, there can be several different types of event
-generator in the system, and one or more instances of each type. Each
-instance has an unique id.
+The MicroEJ Simulator provides all features of MicroUI library. The three engines are grouped together in a module called Front Panel. The Front Panel is supplied with a set of software widgets that generically support a range of input devices, such as buttons, joysticks and touchscreens, and output devices such as displays and LEDs. With the help of the Front Panel Designer tool that forms part of the MicroEJ Workbench the user must define a front panel mock-up using these widgets. 
 
-Drivers may either interface directly with event generators, or they can
-send their notifications to a *Listener*, also written in C, and the
-listener passes the notifications to the event generator. This
-decoupling has two major benefits:
+Graphical engine manages fonts and images. The fonts and images have to be pre-processed before compiling the MicroEJ application. the following diagram depicts the components involved in its design, along with the provided tools:
 
--  The drivers are isolated from the MicroEJ libraries – they can even
-   be existing code.
+.. figure:: images/ui_overview2.*
+   :alt: The User Interface Extension Components along with a Platform
+   :width: 50.0%
+   :align: center
 
--  The listener can translate the notification; so, for example, a
-   joystick could generate pointer events.
-
-For the MicroEJ Simulator, the platform is supplied with a set of
-software widgets that generically support a range of input devices, such
-as buttons, joysticks and touchscreens, and output devices such as
-pixelated displays and LEDs. With the help of the Front Panel Designer
-tool that forms part of the MicroEJ Workbench the user must define a
-front panel mock-up using these widgets. The user must provide a set of
-listeners that connects the input widgets to event generators. The user
-may choose to simulate events that will ultimately come from a
-special-purpose input device using one of the standard input widgets;
-the listener will do the necessary translation. The user must also
-supply, in Java, a display extension that adapts the supplied display
-widget to the specifics of the hardware being simulated.
+   The User Interface Extension Components along with a Platform
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
