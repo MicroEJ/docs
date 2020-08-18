@@ -1,8 +1,71 @@
+.. _section.ui.Images:
+
+Images
+======
+
+Overview
+--------
+
+Images are graphical resources that can be accessed with a call to
+``ej.microui.display.Image.getImage()`` or ``ej.microui.display.ResourceImage.loadImage()``. To be displayed, these
+images have to be converted from their source format to the display raw
+format. The conversion can either be done at:
+
+-  build-time (using the image generator tool),
+
+-  run-time (using the relevant decoder library).
+
+Images that must be processed by the image generator tool are declared
+in MicroEJ Classpath ``*.images.list`` files. The file format is a
+standard Java properties file, each line representing a ``/`` separated
+resource path relative to the MicroEJ classpath root referring to a
+standard image file (e.g. ``.png``, ``.jpg``). The resource may be
+followed by an optional parameter (separated by a ``:``) which defines
+and/or describes the image output file format (raw format). When no
+option is specified, the image is embedded as-is and will be decoded at
+run-time (although listing files without format specifier has no impact
+on the image generator processing, it is advised to specify them in the
+``*.images.list`` files anyway, as it makes the run-time processing
+behavior explicit). Example:
+
+::
+
+   # The following image is embedded 
+   # as a PNG resource (decoded at run-time)
+   com/mycompany/MyImage1.png
+
+   # The following image is embedded 
+   # as a 16 bits format without transparency (decoded at build-time)
+   com/mycompany/MyImage2.png:RGB565
+
+   # The following image is embedded 
+   # as a 16 bits format with transparency (decoded at build-time)
+   com/mycompany/MyImage3.png:ARGB1555
+
+.. include:: ../ApplicationDeveloperGuide/UI/MicroUI/sectionImageFormats.rst
+
+.. _image_gen_tool:
+
+Configuration File
+------------------
+
+Here is the format of the ``*.images.list`` files.
+
+::
+
+   ConfigFile          ::= Line [ 'EOL' Line ]*
+   Line                ::= ImagePath [ ':' ImageOption ]*
+   ImagePath           ::= Identifier [ '/' Identifier ]*
+   ImageOption         ::= [^:]*
+   Identifier          ::= Letter [ LetterOrDigit ]*
+   Letter              ::= 'a-zA-Z_$'
+   LetterOrDigit       ::= 'a-zA-Z_$0-9'
+
 Output Formats
-~~~~~~~~~~~~~~
+--------------
 
 No Compression
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 When no output format is set in the images list file, the image is
 embedded without any conversion / compression. This allows you to embed
@@ -25,7 +88,7 @@ Disadvantages:
    image1
 
 Display Output Format
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 This format encodes the image into the exact display memory
 representation. If the image to encode contains some transparent pixels,
@@ -50,7 +113,7 @@ Disadvantages:
    image1:display
 
 Generic Output Formats
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 Depending on the target hardware, several generic output formats are
 available. Some formats may be directly managed by the BSP display
@@ -233,7 +296,7 @@ Select one the following format to use a generic format:
    image3:A4
 
 RLE1 Output Format
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 The image engine can display embedded images that are encoded into a
 compressed format which encodes several consecutive pixels into one or
@@ -273,6 +336,74 @@ Disadvantages:
 ::
 
    image1:RLE1
+
+Error Messages
+--------------
+
+These errors can occur while preprocessing images.
+
+.. tabularcolumns:: |L|p{1.5cm}|L|
+
+.. table:: Static Image Generator Error Messages
+
+   +--------+---------+-----------------------------------------------------+
+   | ID     | Type    | Description                                         |
+   +========+=========+=====================================================+
+   | 0      | Error   | The image generator has encountered an              |
+   |        |         | unexpected internal error.                          |
+   +--------+---------+-----------------------------------------------------+
+   | 1      | Error   | The images list file has not been specified.        |
+   +--------+---------+-----------------------------------------------------+
+   | 2      | Error   | The image generator cannot create the final,        |
+   |        |         | raw file.                                           |
+   +--------+---------+-----------------------------------------------------+
+   | 3      | Error   | The image generator cannot read the images          |
+   |        |         | list file. Make sure the system allows reading of   |
+   |        |         | this file.                                          |
+   +--------+---------+-----------------------------------------------------+
+   | 4      | Warning | The image generator has found no image to           |
+   |        |         | generate.                                           |
+   +--------+---------+-----------------------------------------------------+
+   | 5      | Error   | The image generator cannot load the images          |
+   |        |         | list file.                                          |
+   +--------+---------+-----------------------------------------------------+
+   | 6      | Warning | The specified image path is invalid: The image will |
+   |        |         | be not converted.                                   |
+   +--------+---------+-----------------------------------------------------+
+   | 7      | Warning | There are too many or too few options for the       |
+   |        |         | desired format.                                     |
+   +--------+---------+-----------------------------------------------------+
+   | 8      | Error   | The display format is not generic; a                |
+   |        |         | MicroUIRawImageGeneratorExtension implementation is |
+   |        |         | required to generate the MicroUI raw image.         |
+   +--------+---------+-----------------------------------------------------+
+   | 9      | Error   | The image cannot be read.                           |
+   +--------+---------+-----------------------------------------------------+
+   | 10     | Error   | The image generator has encountered an              |
+   |        |         | unexpected internal error (invalid endianness).     |
+   +--------+---------+-----------------------------------------------------+
+   | 11     | Error   | The image generator has encountered an              |
+   |        |         | unexpected internal error (invalid bpp).            |
+   +--------+---------+-----------------------------------------------------+
+   | 12     | Error   | The image generator has encountered an              |
+   |        |         | unexpected internal error (invalid display format). |
+   +--------+---------+-----------------------------------------------------+
+   | 13     | Error   | The image generator has encountered an              |
+   |        |         | unexpected internal error (invalid pixel layout).   |
+   +--------+---------+-----------------------------------------------------+
+   | 14     | Error   | The image generator has encountered an              |
+   |        |         | unexpected internal error (invalid output folder).  |
+   +--------+---------+-----------------------------------------------------+
+   | 15     | Error   | The image generator has encountered an              |
+   |        |         | unexpected internal error (invalid memory           |
+   |        |         | alignment).                                         |
+   +--------+---------+-----------------------------------------------------+
+   | 16     | Warning | The specified format is not managed by the          |
+   |        |         | image generator: The image will be not converted.   |
+   +--------+---------+-----------------------------------------------------+
+   | 17     | Warning | The image has been already loaded with another      |
+   |        |         | output format. The image will be not converted.     |
+   +--------+---------+-----------------------------------------------------+
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

@@ -9,7 +9,6 @@ Appendix B: Foundation Libraries
     kf
     ecom
     ecom-comm
-    mui
     fs
     net
     ssl

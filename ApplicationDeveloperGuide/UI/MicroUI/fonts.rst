@@ -1,10 +1,50 @@
-.. _font_gen_tool:
+.. _section.ui.Fonts:
 
-Font Generator
-==============
+Fonts
+=====
+
+Overview
+--------
+
+Fonts are graphical resources that can be accessed with a call to
+``ej.microui.display.Font.getFont()``. To be displayed, these fonts have
+to be converted at build-time from their source format to the display
+raw format by the font generator tool. Fonts that must be processed by
+the font generator tool are declared in MicroEJ Classpath
+``*.fonts.list`` files. The file format is a standard Java properties
+file, each line representing a ``/`` separated resource path relative to
+the MicroEJ classpath root referring to a MicroEJ font file (usually
+with a ``.ejf`` file extension). The resource may be followed by
+optional parameters which define :
+
+-  some ranges of characters to embed in the final raw file;
+
+-  the required pixel depth for transparency.
+
+By default, all characters available in the input font file are
+embedded, and the pixel depth is ``1`` (i.e 1 bit-per-pixel). Example:
+
+::
+
+   # The following font is embedded with all characters
+   # without transparency
+   com/mycompany/MyFont1.ejf
+
+   # The following font is embedded with only the latin 
+   # unicode range without transparency 
+   com/mycompany/MyFont2.ejf:latin
+
+   # The following font is embedded with all characters
+   # with 2 levels of transparency
+   com/mycompany/MyFont2.ejf::2
+
+MicroEJ font files conventionally end with the ``.ejf`` suffix and are
+created using the Font Designer (see :ref:`section.tool.fontdesigner`).
 
 Configuration File
 ------------------
+
+Here is the format of the ``*.fonts.list`` files.
 
 ::
 
@@ -26,32 +66,41 @@ Configuration File
    Digit10             ::= '0-9'
    BitsPerPixel        ::= '1' | '2' | '4' | '8'
 
+Font Range
+----------
+
+The first parameter is for specifying the font ranges to embed.
+Selecting only a specific set of characters to embed reduces the memory
+footprint. Several ranges can be specified, separated by ``;``. There
+are two ways to specify a character range: the custom range and the
+known range.
+
 Custom Range
-------------
+~~~~~~~~~~~~
 
 Allows the selection of raw Unicode character ranges.
 
 Examples:
 
 -  ``myfont:0x21-0x49``: Embed all characters from 0x21 to 0x49
-   (included).
+   (included);
 
 -  ``myfont:0x21-0x49,0x55``: Embed all characters from 0x21 to 0x49 and
-   character 0x55
+   character 0x55;
 
 -  ``myfont:0x21-0x49;0x55``: Same as previous, but done by declaring
    two ranges.
 
 Known Range
------------
+~~~~~~~~~~~
 
 A known range is a range available in the following table.
 
 Examples:
 
--  ``myfont:basic_latin``: Embed all *Basic Latin* characters.
+-  ``myfont:basic_latin``: Embed all *Basic Latin* characters;
 
--  ``myfont:basic_latin;arabic``:  Embed all *Basic Latin* characters,
+-  ``myfont:basic_latin;arabic``: Embed all *Basic Latin* characters,
    and all *Arabic* characters.
 
 :ref:`The following table <table_unicodeRanges>` describes the available list of ranges
@@ -502,6 +551,19 @@ Error Messages
    |        |         | ITALIC font can be set. The current entry is        |
    |        |         | ignored.                                            |
    +--------+---------+-----------------------------------------------------+
+
+Transparency
+------------
+
+The second parameter is for specifying the font transparency level
+(``1``, ``2``, ``4`` or ``8``).
+
+Examples:
+
+-  ``myfont:latin:4``: Embed all latin characters with 4 levels of
+   transparency
+
+-  ``myfont::2``: Embed all characters with 2 levels of transparency
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

@@ -1,8 +1,5 @@
-MicroUI
-=======
-
 Error Messages
---------------
+==============
 
 When an exception is thrown by the implementation of the MicroUI API, the exception ``MicroUIException`` with the error message
 

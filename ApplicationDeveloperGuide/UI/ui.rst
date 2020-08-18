@@ -6,6 +6,7 @@ This section presents libraries relative to the user interface.
 .. toctree::
    :maxdepth: 2
 
+   MicroUI/index
    MWT/index
 
 ..
