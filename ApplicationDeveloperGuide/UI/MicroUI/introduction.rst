@@ -1,25 +1,31 @@
 Introduction
 ============
 
-MicroUI is a foundation library that provides access to a pixelated display and inputs.
+MicroUI Foundation Library provides access to a pixelated display and inputs.
 
 The aim of this library is to enable the creation of user interface in Java by reifying hardware capabilities.
 
-To use the MicroUI foundation library, add this Ivy dependency to your project:
+The complete specification is available at :ref:`[MICROUI 3.0] ESR documentation <esr-specifications>`.
+
+To use the MicroUI Foundation Library, add `MicroUI API module <https://repository.microej.com/artifacts/ej/api/microui/>`_ to a :ref:`module description file <mmm_module_description>`:
 
 .. code-block:: XML
 
 	<dependency org="ej.api" name="microui" rev="3.0.0"/>
 
-Drawings
---------
+Drawing Foundation Library extends MicroUI drawing APIs [#note_microui_2]_ with more complex ones such as:
 
-To use the MicroUI drawings foundation library, add this Ivy dependency to your project:
+- thick line, arc, circle and ellipse
+- polygon
+- image deformation and rotation
+
+To use the Drawing Foundation Library, add `Drawing API module <https://repository.microej.com/artifacts/ej/api/microui/>`_ to a :ref:`module description file <mmm_module_description>`:
 
 .. code-block:: XML
 
 	<dependency org="ej.api" name="drawing" rev="1.0.0"/>
 
+.. [#note_microui_2] These APIs were formerly included in MicroUI ``2.x``
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
