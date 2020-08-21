@@ -84,7 +84,7 @@ While no widget consumes the events, they are sent to the widget that is under t
 
 Once a widget has consumed an event, it will be the only one to receive the next events during the session.
 
-.. figure:: images/pointer_event_dispatcher_flow.png
+.. figure:: images/pointerEventDispatcherFlow.png
    :alt: Pointer Event Dispatcher Flow
    :align: center
 
