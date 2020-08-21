@@ -18,7 +18,7 @@ Functional Description
 
 .. figure:: images/designer_font-process2.*
    :alt: Font Generation
-   :width: 50.0%
+   :scale: 50%
    :align: center
 
    Font Generation
@@ -33,7 +33,7 @@ Create a MicroEJ Font
 To create a MicroEJ font, follow the steps below:
 
 1. Open the Eclipse wizard:
-   :guilabel:`File` > :guilabel:`New` > :guilabel:`Other` > :guilabel:`MicroEJ` > :guilabel:`MicroEJ Font`.
+   :guilabel:`File` > :guilabel:`New` > :guilabel:`Other...` > :guilabel:`MicroEJ` > :guilabel:`MicroEJ Font`.
 
 2. Select a directory and a name.
 

@@ -730,7 +730,7 @@ The linker files holds five tables, one for each use case, respectively ``IMAGE_
 Library ej.apiDrawing
 =====================
 
-This library is a foundation library which provides additional drawings API. MicroUI's drawing APIs are `aliased` oriented whereas Drawing's drawing APIs are `anti-aliased` oriented. This library is fully integrated in graphical engine. It requires an implementation of its low-level API: ``LLDW_PAINTER_impl.h``. These functions are implemented in the same CCO than ``LLUI_PAINTER_impl.h``: ``com.microej.clibrary.llimpl#microui-drawings``. Like MicroUI painter's natives, the functions are redirected to ``dw_drawing.h``. A default implementation of these functions are available in Software Algorithms module (in weak). This allows to the BSP to override one or several APIs.
+This library is a Foundation Library which provides additional drawings API. MicroUI's drawing APIs are `aliased` oriented whereas Drawing's drawing APIs are `anti-aliased` oriented. This library is fully integrated in graphical engine. It requires an implementation of its low-level API: ``LLDW_PAINTER_impl.h``. These functions are implemented in the same CCO than ``LLUI_PAINTER_impl.h``: ``com.microej.clibrary.llimpl#microui-drawings``. Like MicroUI painter's natives, the functions are redirected to ``dw_drawing.h``. A default implementation of these functions are available in Software Algorithms module (in weak). This allows to the BSP to override one or several APIs.
 
 Dependencies
 ============
