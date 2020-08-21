@@ -1,3 +1,5 @@
+.. _Widgets and Examples:
+
 Widgets and Examples
 ====================
 

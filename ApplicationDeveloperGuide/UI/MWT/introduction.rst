@@ -21,7 +21,7 @@ Structure
 Widget
 ~~~~~~
 
-A widget is an object that is intended to be displayed on a screen. A Widget occupies a specific region of the display and holds a state. A user may interact with a widget (using a touch screen or a button for example).
+A widget is an object that is intended to be displayed on a screen. A widget occupies a specific region of the display and holds a state. A user may interact with a widget (using a touch screen or a button for example).
 
 Widgets are arranged on a desktop. A widget can be part of only one desktop hierarchy, and can appear only once on that desktop.
 
@@ -43,33 +43,35 @@ A desktop contains a widget (or a container). When the desktop is shown, its wid
 Rendering
 ---------
 
-A new rendering of a widget on the display can be requested by calling its `requestRender()` method. The rendering is done asynchronously in the MicroUI thread.
+A new rendering of a widget on the display can be requested by calling its ``requestRender()`` method. The rendering is done asynchronously in the MicroUI thread.
 
 When a container is rendered, all its children are also rendered.
 
-A widget can be transparent, meaning that it does not draw every pixel of its bounds. In this case, when this widget is asked to be rendered, its parent is asked to be rendered in the area of the widget (recursively if the parent is also transparent). Usually a widget is transparent when its background (from the style) is transparent.
+A widget can be transparent, meaning that it does not draw every pixel within its bounds. In this case, when this widget is asked to be rendered, its parent is asked to be rendered in the area of the widget (recursively if the parent is also transparent). Usually a widget is transparent when its background (from the style) is transparent.
 
-A widget can also be rendered directly in a specific graphics context by calling its `render(GraphicsContext)` method. It can be useful to render a widget (and its children) in an image for example.
+A widget can also be rendered directly in a specific graphics context by calling its ``render(GraphicsContext)`` method. It can be useful to render a widget (and its children) in an image for example.
 
 Render Policy
 ~~~~~~~~~~~~~
 
-The most naive render policy would be to render the whole hierarchy of the desktop. However `DefaultRenderPolicy` is smarter than that: it only repaints the widget, and its ancestors if the widget is transparent. The result is correct only if there is no overlapping widget, in which case  `ZIndexRenderPolicy` should be used instead.
+The most naive render policy would be to render the whole hierarchy of the desktop whenever a widget has changed. However ``DefaultRenderPolicy`` is smarter than that: it only repaints the widget, and its ancestors if the widget is transparent. The result is correct only if there is no overlapping widget, in which case  ``OverlapRenderPolicy`` should be used instead. This policy repaints the widget (or its non-transparent ancestor), then it repaints all the widgets that overlap it.
+
+The render policy can be changed by changing the result of ``Desktop.createRenderPolicy()``.
 
 Lay Out
 -------
 
-All widgets are laid out at once during the lay out process. This process can be started by `Desktop.requestLayOut()`, `Widget.requestLayOut()`. The layout is also automatically done when the desktop is shown (`Desktop.onShown()`). This process is composed of two steps, each step browses the hierarchy of widgets following a depth-first algorithm:
+All widgets are laid out at once during the lay out process. This process can be started by ``Desktop.requestLayOut()``, ``Widget.requestLayOut()``. The layout is also automatically done when the desktop is shown (``Desktop.onShown()``). This process is composed of two steps, each step browses the hierarchy of widgets following a depth-first algorithm:
 
 - compute the optimal size for each widget and container (considering the constraints of the lay out),
 - set position and size for each widget.
 
-Once the position and size of a widget is set, the widget is notified by a call to `onLaidOut()`.
+Once the position and size of a widget is set, the widget is notified by a call to ``onLaidOut()``.
 
 Event Dispatch
 --------------
 
-Events generated in the hardware (touch, buttons, etc.) are sent to the event dispatcher of the desktop. It is then responsible of sending the event to one or several widgets of the hierarchy. A widget receives the event through its `handleEvent(int)` method. This method returns a boolean that indicates whether or not the event has been consumed by the widget or not.
+Events generated in the hardware (touch, buttons, etc.) are sent to the event dispatcher of the desktop. It is then responsible of sending the event to one or several widgets of the hierarchy. A widget receives the event through its ``handleEvent(int)`` method. This method returns a boolean that indicates whether or not the event has been consumed by the widget.
 
 Widgets are disabled by default and don't receive the events.
 
@@ -80,7 +82,7 @@ By default, the desktop proposes an event dispatcher that handles only pointer e
 
 Pointer events are grouped in sessions. A session starts when the pointer is pressed, and ends when the pointer is released or when it exits the pressed widget.
 
-While no widget consumes the events, they are sent to the widget that is under the pointer (see `Desktop.getWidgetAt(int, int)`), then sent to all its parent hierarchy recursively.
+While no widget consumes the events, they are sent to the widget that is under the pointer (see ``Desktop.getWidgetAt(int, int)``), then sent to all its parent hierarchy recursively.
 
 Once a widget has consumed an event, it will be the only one to receive the next events during the session.
 
@@ -88,7 +90,7 @@ Once a widget has consumed an event, it will be the only one to receive the next
    :alt: Pointer Event Dispatcher Flow
    :align: center
 
-A widget can redefine its reactive area by subclassing the `contains(int x, int y)` method. It is useful when a widget does not fill fully its bounds.
+A widget can redefine its reactive area by subclassing the ``contains(int x, int y)`` method. It is useful when a widget does not fill fully its bounds.
 
 .. Add an example such as a circular slider or an analog watchface.
 
@@ -202,13 +204,15 @@ A widget is considered as attached when it is contained by a desktop that is att
 
 In the same way, by default, a widget is shown when its desktop is shown. But for optimisation purpose, a container can control when its children are shown or hidden. A typical use case is when the widgets are moved outside the display.
 
-Once a widget is attached, it means that it is ready to be shown (for instance, the necessary resources are allocated). In other word, once attached a widget is ready to be rendered (on an image or on the display).
+Once a widget is attached, it means that it is ready to be shown (for instance, the necessary resources are allocated). In other words, once attached a widget is ready to be rendered (on an image or on the display).
 
 Once a widget is shown, it means that it is intended to be rendered on the display. While shown, it may start a periodic refresh or an animation.
 
 .. figure:: images/showSequence.png
    :alt: Show Sequence
    :align: center
+
+The following sections will present several ways to customize and extend the framework to better fit your needs.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

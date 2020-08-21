@@ -1,10 +1,10 @@
 How-To Create a Desktop Event Dispatcher
 ========================================
 
-Two use cases:
+Creating a custom event dispatcher can help you address two use cases:
 
 * [Dispatch] Extending an EventDispatcher is used to dispatch the events. For example, the FocusEventDispatcher will send the events to the widget owning the focus.
-* [Handle] Overriding the desktop is used to directly trigger a behaviour. For example "BACK" command shows the previous page.
+* [Handle] Overriding the desktop is used to directly trigger a behavior. For example "BACK" command shows the previous page.
 
 To create a custom event dispatcher, a new class should be created, extending the ``EventDispatcher`` class.
 Event dispatcher subclasses have to implement a method and may override optional methods, as explained in the following sections.
@@ -16,7 +16,7 @@ The ``dispatchEvent()`` method is called by the MWT framework in order to dispat
 The ``getDesktop()`` method may be called in order to retrieve the desktop with which the event dispatcher is associated.
 This is useful in order to browse the widget hierarchy of the desktop, for example by using the ``getWidget()`` and ``getWidgetAt()`` methods of ``Desktop``.
 
-In order to send an event to one of the widgets of the hierarchy, the ``sendEventToWidget()`` should be used.
+In order to send an event to one of the widgets of the hierarchy, the ``sendEventToWidget()`` method should be used.
 The ``dispatchEvent()`` method should return whether or not the event was dispatched and consumed by a widget.
 
 For example, the following snippet dispatches every event to the widget of the desktop:
@@ -41,7 +41,7 @@ Initializing and disposing the dispatcher
 
 ``EventDispatcher`` subclasses may override the ``initialize()`` and ``dispose()`` methods in order to allocate and free the necessary resources.
 
-For example, the ``initialize()`` may be overridden to create an event generator and to add it to the system pool of MicroUI:
+For example, the ``initialize()`` method may be overridden to create an event generator and to add it to the system pool of MicroUI:
 
 .. code-block:: Java
 

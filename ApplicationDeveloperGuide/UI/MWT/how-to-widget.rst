@@ -1,6 +1,10 @@
 How-To Create a Widget
 ======================
 
+A widget is the main way to render information on the display. A set of pre-defined widgets is described in the :ref:`Widgets and Examples` section.
+
+If the needed widget does not already exist, it is possible to create it from scratch (or by derivating another one).
+
 To create a custom widget, a new class should be created, extending the ``Widget`` class.
 Widget subclasses have to implement two methods and may override optional methods, as explained in the following sections.
 
