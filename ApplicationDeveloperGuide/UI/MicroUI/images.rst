@@ -42,8 +42,6 @@ behavior explicit). Example:
    # as a 16 bits format with transparency (decoded at build-time)
    com/mycompany/MyImage3.png:ARGB1555
 
-.. include:: ../ApplicationDeveloperGuide/UI/MicroUI/sectionImageFormats.rst
-
 .. _image_gen_tool:
 
 Configuration File

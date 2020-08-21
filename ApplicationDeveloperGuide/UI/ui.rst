@@ -1,5 +1,5 @@
-UI
-==
+Graphical User Interface
+========================
 
 This section presents libraries relative to the user interface.
 
@@ -8,6 +8,7 @@ This section presents libraries relative to the user interface.
 
    MicroUI/index
    MWT/index
+   Widgets/index
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

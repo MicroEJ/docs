@@ -47,7 +47,7 @@ Widget demo
 -----------
 
 The widget demo provides some widget implementations as well as usage examples for these widgets and for the widgets of the Widget library.
-The widgets and usage examples are intended to be duplicated by the developer in order to be adapted to his use-case.
+The widgets and usage examples are intended to be duplicated by the developers in order to be adapted to their use-case.
 
 Source
 ~~~~~~

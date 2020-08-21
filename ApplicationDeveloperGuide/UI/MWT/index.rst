@@ -5,13 +5,13 @@ MWT (Micro Widget Toolkit)
    :maxdepth: 2
 
    introduction
+   concepts
    how-to-widget
    how-to-container
    how-to-outline
    how-to-background
    how-to-event-dispatcher
    how-to-extra-style-field
-   examples
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
