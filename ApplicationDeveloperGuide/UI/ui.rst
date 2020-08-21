@@ -1,4 +1,4 @@
-Graphical User Interface
+Graphics User Interface
 ========================
 
 This section presents libraries relative to the user interface.
