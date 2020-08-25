@@ -142,7 +142,7 @@ font file are embedded, and the pixel depth is 1 (i.e 1 bit-per-pixel).
 
 .. note::
 
-   See :ref:`font_gen_tool` to understand the list file grammar.
+   See :ref:`fonts_list_grammar` to understand the list file grammar.
 
 Selecting only a specific set of characters to embed reduces the memory
 footprint. There are two ways to specify a character range: the custom

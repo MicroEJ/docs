@@ -14,7 +14,7 @@ The widget library does not provide any example. However, the widget demo provid
 Source
 ~~~~~~
 
-To use the widgets provided by the widget library, add this Ivy dependency to your project:
+To use the widgets provided by the widget library, add the following line to a :ref:`module description file <mmm_module_description>`:
 
 .. code-block:: XML
 

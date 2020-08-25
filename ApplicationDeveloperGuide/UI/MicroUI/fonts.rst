@@ -41,6 +41,8 @@ embedded, and the pixel depth is ``1`` (i.e 1 bit-per-pixel). Example:
 MicroEJ font files conventionally end with the ``.ejf`` suffix and are
 created using the Font Designer (see :ref:`section.tool.fontdesigner`).
 
+.. _fonts_list_grammar:
+
 Configuration File
 ------------------
 
