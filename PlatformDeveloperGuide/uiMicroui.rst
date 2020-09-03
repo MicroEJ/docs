@@ -172,7 +172,7 @@ Application project:
 
 ::
 
-  <dependency org="ej.api" name="microui" rev="3.3.0"/>
+  <dependency org="ej.api" name="microui" rev="3.0.0"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
