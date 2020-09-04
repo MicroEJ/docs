@@ -1,5 +1,3 @@
-.. _vee.flavors:
-
 .. |x| image:: ../images/check.png
    :width: 10pt
    :height: 10pt

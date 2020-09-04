@@ -10,6 +10,7 @@ Kernel Developer Guide
    kf
    gettingStarted
    buildType
+   VEE-Flavors
    kernelAPI
    featuresCommunication
    apiDocumentation
