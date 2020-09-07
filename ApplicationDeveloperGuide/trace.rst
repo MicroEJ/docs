@@ -43,7 +43,7 @@ Description
     - In the tab ``Configuration``, select the Category ``Runtime``,
     - Check the option ``Start execution traces automatically``.
 
-- To record an event, use the method ``recordEvent(int eventId)``. The event ID need to be in range ``0 to nbEventTypes-1``.
+- To record an event, use the method ``recordEvent(int eventId)``. The event ID needs to be in the range ``0 to nbEventTypes-1``.
 
   - The methods ``recordEvent(...)`` always needs the eventID as the first parameter and can have up to ten int parameters as custom value for the event.
 
