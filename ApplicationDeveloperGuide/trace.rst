@@ -27,8 +27,10 @@ Description
     This file is available in the ``platform-bsp`` project defined in the sources of the platform.
 
 - To activate the trace system on the platform, the property ``core.trace.enabled`` need to be set to true.
-  It can be done by right clicking on the project and going to ``Run As > Run Configurations`` then in the tab ``Configuration``.
-  Select the Category ``Runtime`` and check the option ``Enable execution traces``.
+  
+  - Right click on the project and go to ``Run As > Run Configurations``,
+  - In the tab ``Configuration``, select the category ``Runtime``,
+  - Check the option ``Enable execution traces``.
 
 - Multiple ways are available to start and stop the trace system:
   
