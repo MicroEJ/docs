@@ -26,7 +26,7 @@ Description
   - A **C API** implemented in the file ``LLTRACE_impl.h``.
     This file is available in the ``platform-bsp`` project defined in the sources of the platform.
 
-- To activate the trace system on the platform, the property ``core.trace.enabled`` need to be set to true.
+- To activate the trace system on the platform, the property ``core.trace.enabled`` needs to be set to true.
   
   - Right click on the project and go to ``Run As > Run Configurations``,
   - In the tab ``Configuration``, select the category ``Runtime``,
