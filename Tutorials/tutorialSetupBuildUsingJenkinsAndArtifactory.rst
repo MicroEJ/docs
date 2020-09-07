@@ -9,12 +9,10 @@ reproducing builds, or archiving binaries.
 Requirements
 ------------
 
-*  MicroEJ SDK **4.1.5 or later**
-*  Git **2.x** installed, with Git executable in path. We recommend
-   installing Git Bash if your operating system is Windows
-   (`<https://git-for-windows.github.io/>`_).
-*  Apache Ant **1.9.x** installed (`<https://ant.apache.org/bindownload.cgi>`_).
-*  Java Development Kit (JDK) **1.8.x**
+*  MicroEJ SDK ``4.1.5`` or higher.
+*  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://git-for-windows.github.io/>`_).
+*  Apache Ant ``1.9.x`` installed (`<https://ant.apache.org/bindownload.cgi>`_).
+*  Java Development Kit (JDK) ``1.8.x``.
 
 
 Set JDK location
@@ -30,11 +28,11 @@ Get MicroEJ CLI toolkit
 -----------------------
 
 The MicroEJ CLI toolkit contains the Easyant entrypoints for building MicroEJ modules from the command line.
-Get it by cloning the git repository `<https://gitlab.cross/M0090_IDE/M0090_SDK-CLI>`_ (**TODO** change with github ref when available)
+Get it by cloning the git repository `<https://gitlab.cross/M0090_IDE/M0090_SDK-CLI>`_ (:guilabel:`TODO` change with github ref when available)
 
 .. code-block:: sh
    
-   git clone -b feature/M0090IDE-3367_build_from_command_line  https://gitlab.cross/M0090_IDE/M0090_SDK-CLI.git
+   git clone --recursive -b feature/M0090IDE-3367_build_from_command_line  https://gitlab.cross/M0090_IDE/M0090_SDK-CLI.git
    /!\ TODO change with github ref when available /!\
 
 
@@ -45,21 +43,29 @@ Extract MicroEJ Build Kit
 
 MicroEJ SDK comes with its own toolkit for building modules. Depending on your MicroEJ SDK version, extracting the build kit from the SDK will differ.
 
-.. note::
-   Starting with MicroEJ SDK Distribution 19.05, you can determine your MicroEJ SDK version this way:
-       #. Start MicroEJ SDK.
-       #. Go to ``Help`` > ``About MicroEK SDK``.
-       #. Click on ``Installation Details``.
-       #. In the ``Installed Software`` tab, look for the version of entry ``MicroEJ SDK``.
+Determine your MicroEJ SDK version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Start MicroEJ SDK.
+- Go to :guilabel:`Help` > :guilabel:`About MicroEJ SDK`.
+
+In case of MicroEJ SDK ``4.1.x``, the MicroEJ SDK version is directly displayed, such as ``4.1.5``.
+
+In case of MicroEJ SDK ``5.x``, the value displayed is the MicroEJ SDK distribution, such as ``19.05`` or ``20.07``.
+Then proceed with the following steps:
+
+- Click on the :guilabel:`Installation Details` button.
+- Click on the :guilabel:`Installed Software` tab.
+- Retrieve the version of entry named :guilabel:`MicroEJ SDK`.
 
 MicroEJ 5.2 or later
 ~~~~~~~~~~~~~~~~~~~~
  
 #. Go to the root directory of the MicroEJ CLI toolkit.
 #. Create a directory named ``buildKit``.
-#. In the SDK, go to ``Window`` > ``Preferences`` > ``MicroEJ`` > ``Module Manager``.
-#. In subsection ``Build repository``, click on ``Export Build Kit``.
-#. As ``Target directory``, choose the ``buildKit`` directory.
+#. In the SDK, go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Module Manager`.
+#. In subsection :guilabel:`Build repository`, click on :guilabel:`Export Build Kit`.
+#. As :guilabel:`Target directory`, choose the ``buildKit`` directory.
 
 MicroEJ 5.1 or earlier
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -95,13 +101,16 @@ MicroEJ 5.1 or earlier
 Get MicroEJ Central Repository
 ------------------------------
 
-The Central Repository gathers software modules that can extend your MicroEJ development environment.
+In the following, we will use the MicroEJ Central Repository, which is the Module Repository used by MicroEJ SDK to fetch dependencies when starting an empty workspace.
+It bundles Foundation Library APIs and numerous Add-On Libraries to start working in a MicroEJ development environment.
+
+To get more information about Module Repositories, please refer to the `Application Developer Guide <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/repository.html>`_.
 
 Next step is to import a local copy of this repository:
 
 #. Visit the `Central Repository <https://developer.microej.com/central-repository/>`_ on the MicroEJ Developer website.
-#. Navigate to the ``Working Offline`` section.
-#. Click on the ``offline repository`` link. This will download the Central Repository as a zip file.
+#. Navigate to the :guilabel:`Working Offline` section.
+#. Click on the :guilabel:`offline repository` link. This will download the Central Repository as a zip file.
 
 
 
@@ -114,14 +123,14 @@ Installation and first start
 #. Download Artifactory here: `<https://api.bintray.com/content/jfrog/artifactory/jfrog-artifactory-oss-$latest.zip;bt_package=jfrog-artifactory-oss-zip>`_.
 #. Unzip downloaded archive, then navigate to ``bin`` directory (by default
    ``artifactory-oss-[version]/bin``).
-#. Run ``artifactory.bat`` or ``artifactory.sh`` depending on your operating system. After initialization, the terminal should print the message **"Artifactory successfully started"**. 
+#. Run ``artifactory.bat`` or ``artifactory.sh`` depending on your operating system. After initialization, the terminal should print the message :guilabel:`Artifactory successfully started`. 
    In case an error occurs, check that ``JAVA_HOME`` and ``JRE_HOME`` environment variables are correct.
-#. Go to http://localhost:8081/.
+#. Go to `<http://localhost:8081/>`_.
 #. Login to Artifactory for the first time using the default ``admin`` account (Username: ``admin``, Password: ``password``).
-#. On the **Welcome** wizard, set the administrator password, then click **Next**,
-#. Configure proxy server (if any) then click **Next**, or click **Skip**.
-#. On **Create Repositories** page, select **Maven** then click on **Create**.
-#. Click on **Finish**. 
+#. On the :guilabel:`Welcome` wizard, set the administrator password, then click :guilabel:`Next`,
+#. Configure proxy server (if any) then click :guilabel:`Next`, or click :guilabel:`Skip`.
+#. On :guilabel:`Create Repositories` page, select :guilabel:`Maven` then click on :guilabel:`Create`.
+#. Click on :guilabel:`Finish`. 
 
 Artifactory is up and running.
 
@@ -130,15 +139,15 @@ General configuration
 
 For demonstration purposes we will allow anonymous users to deploy modules in the repositories.
 
-#. Go to **Admin** > **Security** > **Security Configuration**.
-#. In the **General Security Settings** section, check **Allow Anonymous Access**. Click **Save**.
-#. Go to **Admin** > **Security** > **Permissions**.
-#. Click on **Anything** entry (do not check the line), then go to **Users** tab, click on **Anonymous** and check **Deploy/Cache** permission. Click **Save and finish**.
+#. Go to :guilabel:`Admin` > :guilabel:`Security` > :guilabel:`Security Configuration`.
+#. In the :guilabel:`General Security Settings` section, check :guilabel:`Allow Anonymous Access`. Click :guilabel:`Save`.
+#. Go to :guilabel:`Admin` > :guilabel:`Security` > :guilabel:`Permissions`.
+#. Click on :guilabel:`Anything` entry (do not check the line), then go to :guilabel:`Users` tab, click on :guilabel:`Anonymous` and check :guilabel:`Deploy/Cache` permission. Click :guilabel:`Save and finish`.
 
 Next steps will involve uploading large files, so we'll set the file upload maximum size accordingly:
 
-#. Go to **Admin** > **General Configuration**.
-#. In the **General Settings** section, change the value of **File Upload Max Size (MB)** to ``500`` then click on **Save**.
+#. Go to :guilabel:`Admin` > :guilabel:`General Configuration`.
+#. In the :guilabel:`General Settings` section, change the value of :guilabel:`File Upload Max Size (MB)` to ``500`` then click on :guilabel:`Save`.
 
 
 Manage repositories
@@ -146,22 +155,22 @@ Manage repositories
 
 First step is to configure pre-defined repositories.
 
-#. Go to **Admin** > **Repositories** > **Local**.
-#. Click on ``libs-snapshot-local`` repository, then check **Handle Releases** and uncheck **Handle Snapshots**. Click **Save and finish**.
+#. Go to :guilabel:`Admin` > :guilabel:`Repositories` > :guilabel:`Local`.
+#. Click on ``libs-snapshot-local`` repository, then check :guilabel:`Handle Releases` and uncheck :guilabel:`Handle Snapshots`. Click :guilabel:`Save and finish`.
 
 
 Next step is to create the repositories that will hold the MicroEJ modules.
 
-#. Go to **Admin** > **Repositories** > **Local**.
-#. Click on **New**, and select **Maven**.
-#. Set **Repository Key** field to ``microej-libs-release-local``, then uncheck **Handle Snapshots**. Click on **Save and finish**.
-#. Click on **New**, and select **Maven**.
-#. Set **Repository Key** field to ``microej-easyant-release-local``, then uncheck **Handle Snapshots**. Click on **Save and finish**.
+#. Go to :guilabel:`Admin` > :guilabel:`Repositories` > :guilabel:`Local`.
+#. Click on :guilabel:`New`, and select :guilabel:`Maven`.
+#. Set :guilabel:`Repository Key` field to ``microej-libs-release-local``, then uncheck :guilabel:`Handle Snapshots`. Click on :guilabel:`Save and finish`.
+#. Click on :guilabel:`New`, and select :guilabel:`Maven`.
+#. Set :guilabel:`Repository Key` field to ``microej-easyant-release-local``, then uncheck :guilabel:`Handle Snapshots`. Click on :guilabel:`Save and finish`.
 #. Make these two repositories fetchable:
-    #. Go to **Admin** > **Security** > **Permissions**. 
-    #. Click on **Anything** entry (do not check the line)
-    #. On the **Resources** tab, drag repositories ``microej-libs-release-local`` and ``microej-easyant-release-local`` from the **Available repositories** area to **Included Repositories** area.
-    #. Click on **Save & Finish**.
+    #. Go to :guilabel:`Admin` > :guilabel:`Security` > :guilabel:`Permissions`. 
+    #. Click on :guilabel:`Anything` entry (do not check the line)
+    #. On the :guilabel:`Resources` tab, drag repositories ``microej-libs-release-local`` and ``microej-easyant-release-local`` from the :guilabel:`Available repositories` area to :guilabel:`Included Repositories` area.
+    #. Click on :guilabel:`Save & Finish`.
 
 
 Import MicroEJ modules
@@ -169,20 +178,20 @@ Import MicroEJ modules
 
 In this section, we'll import MicroEJ modules into Artifactory to make them available to the build server.
 
-#. Go to **Admin** > **Import & Export** > **Repositories**.
-#. Scroll to the **Import Repository from Zip** section.
+#. Go to :guilabel:`Admin` > :guilabel:`Import & Export` > :guilabel:`Repositories`.
+#. Scroll to the :guilabel:`Import Repository from Zip` section.
 #. Import the MicroEJ Central Repository:
-    #. As **Target Local Repository**, select ``microej-libs-release-local`` in the list.
-    #. As **Repository Zip File**, select MicroEJ Central Repository zip file (``microej-[MicroEJ version]-[version].zip``) that you downloaded earlier (see :ref:`get-microej-central-repository`).
-    #. Click **Upload**. At the end of upload, click on **Import**. Upload and import may take some time.
+    #. As :guilabel:`Target Local Repository`, select ``microej-libs-release-local`` in the list.
+    #. As :guilabel:`Repository Zip File`, select MicroEJ Central Repository zip file (``microej-[MicroEJ version]-[version].zip``) that you downloaded earlier (please refer to section :ref:`get-microej-central-repository`).
+    #. Click :guilabel:`Upload`. At the end of upload, click on :guilabel:`Import`. Upload and import may take some time.
 
 #. Import the MicroEJ Build Repository:
-    #. As **Target Local Repository**, select ``microej-easyant-release-local`` in the list.
-    #. As **Repository Zip File**, select MicroEJ Build Repository zip file (``microej-build-repository.zip`` or ``is2t_repo.zip``) that you extracted earlier (see :ref:`extract-microej-build-repository`).
-    #. Click **Upload**. At the end of upload, click on **Import**. Upload and import may take some time.
+    #. As :guilabel:`Target Local Repository`, select ``microej-easyant-release-local`` in the list.
+    #. As :guilabel:`Repository Zip File`, select MicroEJ Build Repository zip file (``microej-build-repository.zip`` or ``is2t_repo.zip``) that you extracted earlier (please refer to section :ref:`extract-microej-build-repository`).
+    #. Click :guilabel:`Upload`. At the end of upload, click on :guilabel:`Import`. Upload and import may take some time.
 
 Artifactory is now hosting required MicroEJ modules. 
-Go to **Artifacts** and check that repositories ``microej-libs-release-local`` and ``microej-easyant-release-local`` contain modules.
+Go to :guilabel:`Artifacts` and check that repositories ``microej-libs-release-local`` and ``microej-easyant-release-local`` do contain modules as shown in the figure below.
 
 .. image:: images/tuto_microej_cli_artifactory_preview.PNG
     :align: center
@@ -198,49 +207,49 @@ Installation
 
 #. Download Jenkins WAR (Web Archive) here: `<http://mirrors.jenkins.io/war-stable/latest/jenkins.war>`_
 #. Open a terminal and type the following command: ``java -jar [path/to/downloaded/jenkinswar]/jenkins.war``. 
-   After initialization, the terminal will print out **Jenkins is fully up and running**.
+   After initialization, the terminal will print out :guilabel:`Jenkins is fully up and running`.
 #. Go to `<http://localhost:8080/>`_.
-#. To unlock Jenkins, copy/paste the generated password that has been written in the terminal log. Click on **Continue**.
-#. Select option **Install suggested plugins** and wait for plugin
+#. To unlock Jenkins, copy/paste the generated password that has been written in the terminal log. Click on :guilabel:`Continue`.
+#. Select option :guilabel:`Install suggested plugins` and wait for plugin
    installation.
-#. Fill in the **Create First Admin User** form. Click **Save and continue**.
-#. Click on **Save and finish**, then on **Start using Jenkins**.
+#. Fill in the :guilabel:`Create First Admin User` form. Click :guilabel:`Save and continue`.
+#. Click on :guilabel:`Save and finish`, then on :guilabel:`Start using Jenkins`.
 
 Configuration
 ~~~~~~~~~~~~~
 
 First step is to configure JDK and Ant installations:
 
-#. Go to **Manage Jenkins** > **Global Tool Configuration**.
+#. Go to :guilabel:`Manage Jenkins` > :guilabel:`Global Tool Configuration`.
 #. Add JDK installation:
-    #. Scroll to **JDK** section.
-    #. Click on **Add JDK**.
-    #. Set **Name** to ``JDK [jdk_version]`` (for example ``JDK 1.8``).
-    #. Uncheck **Install automatically**.
-    #. Set **JAVA_HOME** to ``path/to/jdk[jdk_version]`` (for example ``C:\Program Files\Java\jdk1.8.0_[version]`` on Windows).
+    #. Scroll to :guilabel:`JDK` section.
+    #. Click on :guilabel:`Add JDK`.
+    #. Set :guilabel:`Name` to ``JDK [jdk_version]`` (for example ``JDK 1.8``).
+    #. Uncheck :guilabel:`Install automatically`.
+    #. Set :guilabel:`JAVA_HOME` to ``path/to/jdk[jdk_version]`` (for example ``C:\Program Files\Java\jdk1.8.0_[version]`` on Windows).
 #. Add Ant installation:
-    #. Scroll to **Ant** section.
-    #. Click on **Add Ant**.
-    #. Set **Name** to ``Ant 1.9``.
-    #. Uncheck **Install automatically**.
-    #. Set **ANT_HOME** to ``path/to/apache-ant-1.9.[version]``.
-#. Click on **Save**.
+    #. Scroll to :guilabel:`Ant` section.
+    #. Click on :guilabel:`Add Ant`.
+    #. Set :guilabel:`Name` to ``Ant 1.9``.
+    #. Uncheck :guilabel:`Install automatically`.
+    #. Set :guilabel:`ANT_HOME` to ``path/to/apache-ant-1.9.[version]``.
+#. Click on :guilabel:`Save`.
 
 Next step is to configure  environment variables:
 
-#. Go to **Manage Jenkins** > **Configure System**.
-#. Scroll to **Global properties** section.
-#. Check **Environment variables**.
+#. Go to :guilabel:`Manage Jenkins` > :guilabel:`Configure System`.
+#. Scroll to :guilabel:`Global properties` section.
+#. Check :guilabel:`Environment variables`.
 #. Add variable ``MICROEJ_BUILD_TOOLS_HOME``:
-    #. Click **Add**.
-    #. Set **Name** to ``MICROEJ_BUILD_TOOLS_HOME``.
-    #. Set **Value** to be the path to the MicroEJ CLI toolkit directory (as defined in :ref:`get-microej-cli-toolkit`)
+    #. Click :guilabel:`Add`.
+    #. Set :guilabel:`Name` to ``MICROEJ_BUILD_TOOLS_HOME``.
+    #. Set :guilabel:`Value` to be the path to the MicroEJ CLI toolkit directory (as defined in :ref:`get-microej-cli-toolkit`)
 #. Add variable ``EASYANT_HOME``:
-    #. Click **Add**.
-    #. Set **Name** to ``EASYANT_HOME``.
-    #. Set **Value** to be the path to the ``ant`` directory of the ``buildKit`` directory (as defined in :ref:`extract-microej-build-repository`).
-#. For Windows users, scroll to **Shell** section and set the path to the **Shell executable** (for example ``C:\Program Files\Git\bin\sh.exe``).
-#. Click on **Save**.
+    #. Click :guilabel:`Add`.
+    #. Set :guilabel:`Name` to ``EASYANT_HOME``.
+    #. Set :guilabel:`Value` to be the path to the ``ant`` directory of the ``buildKit`` directory (as defined in :ref:`extract-microej-build-repository`).
+#. For Windows users, scroll to :guilabel:`Shell` section and set the path to the :guilabel:`Shell executable` (for example ``C:\Program Files\Git\bin\sh.exe``).
+#. Click on :guilabel:`Save`.
 
 Create a job template
 ~~~~~~~~~~~~~~~~~~~~~
@@ -249,43 +258,43 @@ The main advantage of using EasyAnt is to move build logic into build-types, whi
 It allows to define a generic job in Jenkins that will handle all EasyAnt builds.
 
 #. Go to Jenkins dashboard.
-#. Click on **New item** to create a job template.
+#. Click on :guilabel:`New item` to create a job template.
 #. Set item name to ``Template - EasyAnt from Git``.
-#. Select **Freestyle project**.
-#. Click on **Ok**. 
+#. Select :guilabel:`Freestyle project`.
+#. Click on :guilabel:`Ok`. 
     
 Jenkins jobs are highly configurable, following options and values are recommended by MicroEJ, but they can be customized at your convenience.
 
-In **General** tab:
+In :guilabel:`General` tab:
 
-#. Check **Discard old builds** and set **Max # of builds to keep** value to ``15``.
-#. Check **This project is parametrized** and add **String parameter** named ``easyant.module.dir`` with default value to ``$WORKSPACE/TO_REPLACE``. This will later point to the module sources.
-#. Click on **Advanced** button, and check **Block build when upstream project is building**.
+#. Check :guilabel:`Discard old builds` and set :guilabel:`Max # of builds to keep`` value to ``15``.
+#. Check :guilabel:`This project is parametrized` and add :guilabel:`String parameter` named ``easyant.module.dir`` with default value to ``$WORKSPACE/TO_REPLACE``. This will later point to the module sources.
+#. Click on :guilabel:`Advanced` button, and check :guilabel:`Block build when upstream project is building`.
 
-In **Source Code Management** tab:
+In :guilabel:`Source Code Management` tab:
 
-#. Select **Git** source control:
-#. Set **Repository URL** value to ``TO_REPLACE``,
-#. Set **Branch Specifier** value to ``origin/master``,
-#. In **Additional Behaviours**, click on **Add**, select **Advanced sub-modules behaviors**, then check **Recursively update submodules**.
+#. Select :guilabel:`Git` source control:
+#. Set :guilabel:`Repository URL` value to ``TO_REPLACE``,
+#. Set :guilabel:`Branch Specifier` value to ``origin/master``,
+#. In :guilabel:`Additional Behaviours`, click on :guilabel:`Add`, select :guilabel:`Advanced sub-modules behaviors`, then check :guilabel:`Recursively update submodules`.
 
-In **Build triggers** tab:
+In :guilabel:`Build triggers` tab:
  
-#. Check **Poll SCM**, and set a CRON-like value (for example ``H/30 * * * *`` to poll SCM for changes every 30 minutes).
+#. Check :guilabel:`Poll SCM`, and set a CRON-like value (for example ``H/30 * * * *`` to poll SCM for changes every 30 minutes).
 
-In **Build Environment** tab:
+In :guilabel:`Build Environment` tab:
     
-#. Check **Delete workspace before build starts**.
-#. Check **Add timestamps to the Console Output**.
+#. Check :guilabel:`Delete workspace before build starts`.
+#. Check :guilabel:`Add timestamps to the Console Output`.
 
-In **Build** tab:
+In :guilabel:`Build` tab:
 
-#. Add build step **Execute shell** and set command to ``git clone $MICROEJ_BUILD_TOOLS_HOME -b feature/M0090IDE-3367_build_from_command_line build-tools``. (**TODO** replace this temp branch name with ``master`` when git repo is published)
-#. Add build step **Invoke Ant**:
-    * As **Ant version**, select ``Ant 1.9``.
-    * Set **Targets** to value ``-lib ${EASYANT_HOME}/lib``.
-    * In **Advanced**, set **Build file** to value ``$WORKSPACE/build-tools/easyant/build-module.ant``.
-    * In **Advanced**, expand **Properties** text field then add the following Ant properties:
+#. Add build step :guilabel:`Execute shell` and set command to ``git clone $MICROEJ_BUILD_TOOLS_HOME -b feature/M0090IDE-3367_build_from_command_line build-tools``. (:guilabel:`TODO` replace this temp branch name with ``master`` when git repo is published)
+#. Add build step :guilabel:`Invoke Ant`:
+    * As :guilabel:`Ant version`, select ``Ant 1.9``.
+    * Set :guilabel:`Targets` to value ``-lib ${EASYANT_HOME}/lib``.
+    * In :guilabel:`Advanced`, set :guilabel:`Build file` to value ``$WORKSPACE/build-tools/easyant/build-module.ant``.
+    * In :guilabel:`Advanced`, expand :guilabel:`Properties` text field then add the following Ant properties:
 
     ::
 
@@ -294,14 +303,14 @@ In **Build** tab:
      jenkins.node.name=$NODE_NAME
      is2t.ivysettings.file=$MICROEJ_BUILD_TOOLS_HOME/ivy/ivysettings-artifactory.xml
 
-In **Post-build actions** tab:
+In :guilabel:`Post-build actions` tab:
     
-#. Add post-build action **Publish JUnit test result report**:
-#. Set **Test report XMLs** to ``**/target~/test/xml/**/test-report.xml, **/target~/test/xml/**/*Test.xml``.
-#. Check **Retain long standard output/error**.
-#. Check **Do not fail the build on empty test results**
+#. Add post-build action :guilabel:`Publish JUnit test result report`:
+#. Set :guilabel:`Test report XMLs` to ``**/target~/test/xml/**/test-report.xml, **/target~/test/xml/**/*Test.xml``.
+#. Check :guilabel:`Retain long standard output/error`.
+#. Check :guilabel:`Do not fail the build on empty test results`
 
-Finally, click on **Save**.
+Finally, click on :guilabel:`Save`.
 
 Build a module
 --------------
@@ -319,19 +328,19 @@ In this example, we will create a very simple module using the Sandbox Applicati
    You can adapt the following sections to use an existing MicroEJ project and your own Git repository.
 
 #. Start MicroEJ SDK. 
-#. Go to ``File`` > ``New`` > ``MicroEJ Sandboxed Application Project``.
-#. Fill in the template fields, set ``Project name`` to ``com.example.hello-world``.
+#. Go to :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Sandboxed Application Project`.
+#. Fill in the template fields, set :guilabel:`Project name` to ``com.example.hello-world``.
        
     .. image:: images/tuto_microej_cli_hello_world.PNG
         :align: center
 
-#. Click ``Finish``. This will create the project files and structure.
-#. Right-click on source folder ``src/main/java`` and select ``New`` > ``Package``. Set a name to the package and click ``Finish``.
-#. Right-click on the new package and select ``New`` > ``Class``. Set a name to the class and check ``public static void main(String[] args)``, then click ``Finish``.
+#. Click :guilabel:`Finish`. This will create the project files and structure.
+#. Right-click on source folder ``src/main/java`` and select :guilabel:`New` > :guilabel:`Package`. Set a name to the package and click :guilabel:`Finish`.
+#. Right-click on the new package and select :guilabel:`New` > :guilabel:`Class`. Set a name to the class and check ``public static void main(String[] args)``, then click :guilabel:`Finish`.
 #. Locate the project files
-    #. In the ``Package Explorer`` view, right-click on the project then click on ``Properties``
-    #. Select ``Resource`` menu.
-    #. Click on the arrow button on line ``Location`` to show the project in the system explorer.
+    #. In the :guilabel:`Package Explorer` view, right-click on the project then click on :guilabel:`Properties`.
+    #. Select :guilabel:`Resource` menu.
+    #. Click on the arrow button on line :guilabel:`Location` to show the project in the system explorer.
 #. Open a terminal from this directory and type the following commands:
 
 .. code-block:: sh
@@ -354,16 +363,16 @@ Create an new instance of the template job
 Start by creating a new job, from the job template, for building our application.
 
 #. Go to Jenkins dashboard.
-#. Click on **New Item**.
+#. Click on :guilabel:`New Item`.
 #. Set item name to ``Hello World``.
-#. In **Copy from** field, type ``Template - EasyAnt from Git`` (autocomplete enabled).
-#. Validate with **Ok** button.
+#. In :guilabel:`Copy from` field, type ``Template - EasyAnt from Git`` (autocomplete enabled).
+#. Validate with :guilabel:`Ok` button.
 
 The job configuration page opens, let's replace all the ``TO_REPLACE`` placeholders from the job template with correct values:
 
-#. In **General** tab, set ``easyant.module.dir`` to value ``$WORKSPACE/com.example.hello-world``.
-#. In **Source Code Management**, edit **Repository URL** to ``~/hello_world.git``.
-#. Click on **Save**.
+#. In :guilabel:`General` tab, set ``easyant.module.dir`` to value ``$WORKSPACE/com.example.hello-world``.
+#. In :guilabel:`Source Code Management`, edit :guilabel:`Repository URL` to ``~/hello_world.git``.
+#. Click on :guilabel:`Save`.
 
 
 Build the "Hello World" application
@@ -371,10 +380,10 @@ Build the "Hello World" application
 
 Let's run the job!
 
-In the ``Hello World`` dashboard, click on **Build with Parameters**, then click on **Build**. 
+In Jenkins' ``Hello World`` dashboard, click on :guilabel:`Build with Parameters`, then click on :guilabel:`Build`. 
 
 .. note::
-   You can check the build progress by clicking on the build progress bar and showing the **Console Output**.
+   You can check the build progress by clicking on the build progress bar and showing the :guilabel:`Console Output`.
 
 At the end of the build, the module is published to `<http://localhost:8081/artifactory/list/libs-snapshot-local/com/example/hello-world/>`_.
 
