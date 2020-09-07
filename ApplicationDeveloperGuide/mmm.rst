@@ -74,8 +74,6 @@ The project is created and a set of files and directories are generated from the
   - Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Other...`,
   - Select :guilabel:`EasyAnt` > :guilabel:`EasyAnt Skeleton`.
 
-.. [#warning_check_former_sdk_versions] If using MicroEJ SDK versions lower than ``5.2.0``, please refer to the :ref:`following section <mmm_former_sdk>`.
-
 .. _mmm_module_description:
 
 Module Description File
@@ -233,7 +231,7 @@ A typical usage in a :ref:`module description file <mmm_module_description>` is 
    .. figure:: images/mmm_preferences_options_usage.png
       :align: center
 
-
+.. [#warning_check_former_sdk_versions] If using MicroEJ SDK versions lower than ``5.2.0``, please refer to the :ref:`following section <mmm_former_sdk>`.
 
 .. _mmm_former_sdk:
 
@@ -268,6 +266,7 @@ The Easyant Preferences Page is available at :guilabel:`Window` > :guilabel:`Pre
 
 .. figure:: images/mmm_preferences_up_to_5.1_ea4eclipse_annotated.png
    :align: center
+
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
