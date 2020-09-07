@@ -53,8 +53,7 @@ Description
 
 - This library gives access to a String constant ``TRACE_ENABLED_CONSTANT_PROPERTY`` representing the :ref:`BON Constant <section.classpath.elements.constants>` ``core.trace.enabled``.
 
-  - By adding an if statement using this **BON Constant**, when set it to false, the code inside the if statement (here the tracing) will 
-    not be embedded with the application and thus, will not impact the performances.
+  - This **BON Constant** can be used to remove, at build time, portions of code when trace is disabled. To do that, just surround tracer record calls with a if statement that checks the state of the constant. When the constant is set to false, the code inside the if statement will not be embedded with the application and thus, will not impact the performances.
 
     .. code-block:: java
       
