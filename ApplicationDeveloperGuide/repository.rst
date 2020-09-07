@@ -24,7 +24,7 @@ Create a Repository Project
 
 In MicroEJ SDK, first create a new :ref:`module project <mmm_module_skeleton>` using the ``artifact-repository`` skeleton.
 
-- The ``ivysettings.xml`` :ref:` settings file <mmm_settings_file>` describes how to import the modules of this repository when it is extracted locally on file system. 
+- The ``ivysettings.xml`` :ref:`settings file <mmm_settings_file>` describes how to import the modules of this repository when it is extracted locally on file system. 
   This file will be packaged at the root of the zip file and does not need to be modified.
 
 - The ``module.ivy`` file describes how to build repository and lists the module dependencies that will be included in this repository.
