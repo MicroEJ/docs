@@ -71,7 +71,7 @@ Implementation
 
 - The default implementation can be overridden by implementing the ``LLTRACE_impl.h`` file.
 
-- An implementation of this API is mapped to **SEGGER SystemView** concepts.
+- An implementation of this API mapped to **SEGGER SystemView** concepts is available.
 
   - This allow to visualize the different trace directly in **SEGGER SystemView**.
 
