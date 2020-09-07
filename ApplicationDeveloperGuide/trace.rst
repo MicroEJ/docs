@@ -38,9 +38,10 @@ Description
   
   - from the **C API**, the functions ``LLTRACE_IMPL_start(void)`` and ``LLTRACE_IMPL_stop(void)``,
   
-  - from the **launcher configuration** of the application. 
-    This option can be accessed by right clicking on the project and going to ``Run As > Run Configurations`` then in the tab ``Configuration``.
-    Select the Category ``Runtime`` and check the option ``Start execution traces automatically``.
+  - from the **launcher configuration** of the application: 
+    - Right click on the project and go to ``Run As > Run Configurations``,
+    - In the tab ``Configuration``, select the Category ``Runtime``,
+    - Check the option ``Start execution traces automatically``.
 
 - To record an event, use the method ``recordEvent(int eventId)``. The event ID need to be in range ``0 to nbEventTypes-1``.
 
