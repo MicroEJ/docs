@@ -398,3 +398,26 @@ At this point of the tutorial:
 The next steps recommended are:
 
 * Adapt Jenkins/Artifactory/EasyAnt configuration to your development ecosystem.
+
+
+Appendix
+--------
+
+This section discusses some of the customization options.
+
+Add a custom certificate
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+In case your Artifactory instance uses a custom SSL certificate, you might fall into this error when fetching dependencies:
+
+.. code-block::
+
+   HttpClientHandler: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target url=[artifactory address]
+
+This is because the authority is unknown from a Java perspective. To make it trusted, you have to edit the trust store of the JRE/JDK that is running your builds.
+
+#. Install `Keystore Explorer <http://keystore-explorer.org/downloads.html>`_.
+#. Start Keystore Explorer, and open file ``[JDK home]/jre/lib/security/cacerts`` with the password ``changeit``. You may not have the right to modify this file. Edit rights if needed before opening it.
+#. Click on :guilabel:`Tools`, then :guilabel:`Import Trusted Certificate`.
+#. Select your certificate.
+#. Save the ``cacerts`` file.
