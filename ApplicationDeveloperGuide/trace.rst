@@ -24,7 +24,7 @@ Description
       <dependency org=“ej.api” name=trace rev=“x.y.z”/>
   
   - A **C API** implemented in the file ``LLTRACE_impl.h``.
-    This file is available in the ``platform-bsp`` project of the sources of the platform.
+    This file is available in the ``platform-bsp`` project defined in the sources of the platform.
 
 - To activate the trace system on the platform, the property ``core.trace.enabled`` need to be set to true.
   It can be done by right clicking on the project and going to ``Run As > Run Configurations`` then in the tab ``Configuration``.
