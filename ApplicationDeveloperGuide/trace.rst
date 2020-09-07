@@ -73,7 +73,7 @@ Implementation
 
 - An implementation of this API mapped to **SEGGER SystemView** concepts is available.
 
-  - This allow to visualize the different trace directly in **SEGGER SystemView**.
+  - This allows to visualize the different traces directly in **SEGGER SystemView**.
 
   - The **SystemView** module is added to the targetted platform and initialized in the main function of the platform.
 
