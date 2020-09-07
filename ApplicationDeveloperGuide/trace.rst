@@ -36,7 +36,7 @@ Description
   
   - from the **Java API**, the methods ``Tracer.startTrace()`` and ``Tracer.stopTrace()``,
   
-  - from the **C API**, the methods ``LLTRACE_IMPL_start(void)`` and ``LLTRACE_IMPL_stop(void)``,
+  - from the **C API**, the functions ``LLTRACE_IMPL_start(void)`` and ``LLTRACE_IMPL_stop(void)``,
   
   - from the **launcher configuration** of the application. 
     This option can be accessed by right clicking on the project and going to ``Run As > Run Configurations`` then in the tab ``Configuration``.
