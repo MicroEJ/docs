@@ -12,7 +12,7 @@ It is a tree structure where modules organizations and names are mapped to folde
 
       Example of MicroEJ Module Repository Tree
 
-A module repository takes its input modules from other of repositories, usually the :ref:`MicroEJ Central Repository <central_repository>` 
+A module repository takes its input modules from other repositories, usually the :ref:`MicroEJ Central Repository <central_repository>` 
 which is itself built by MicroEJ Corp. as a module repository.
 
 A module repository is often called an offline repository as it includes the settings file for a local configuration in MicroEJ SDK.
@@ -41,7 +41,7 @@ provided by default in MicroEJ SDK configuration, which is connected to :ref:`Mi
 
    <ea:property name="bar.populate.from.resolver" value="MicroEJChainResolver"/>
 
-The ``MicroEJChainResolver`` is an URL resolver defined defined in ``$USER_HOME\.microej\microej-ivysettings-[VERSION].xml`` that points to MicroEJ Central Repository.
+The ``MicroEJChainResolver`` is a URL resolver defined in ``$USER_HOME\.microej\microej-ivysettings-[VERSION].xml`` that points to MicroEJ Central Repository.
 
 To ensure the repository will be compliant with the :ref:`MMM specification <mmm_specification>`, add the following option:
 
@@ -135,7 +135,7 @@ The build consists of two steps:
    and fails the build if at least one of the dependencies cannot be resolved.
 
 The module repository ``.zip`` file is built in the ``target~/artifacts/`` folder. 
-This is file is also published possibly with the ``CHANGELOG.md``, ``LICENSE.txt`` and ``README.md``.
+This file may be published along with a ``CHANGELOG.md``, ``LICENSE.txt`` and ``README.md``.
 
 .. _repository_offline:
 

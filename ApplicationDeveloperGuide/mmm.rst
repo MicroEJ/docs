@@ -32,7 +32,7 @@ The following schema introduces the main concepts detailed in this chapter.
 
    MMM Overview
 
-MMM is based on of the following tools:
+MMM is based on the following tools:
 
 -  Apache Ivy (`<http://ant.apache.org/ivy>`_) for dependencies
    resolution and module publication;
@@ -61,7 +61,7 @@ In MicroEJ SDK, a new MicroEJ module project is created as following:
 - Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`,
 - Select :guilabel:`MicroEJ` > :guilabel:`MicroEJ Module Project` [#warning_check_former_sdk_versions]_,
 - Fill the module information (project name, module organization, name and revision),
-- Select one of the suggested skeleton depending on the desired :ref:`module nature <module_nature_skeleton_mapping>`,
+- Select one of the suggested skeletons depending on the desired :ref:`module nature <module_nature_skeleton_mapping>`,
 - Click on :guilabel:`Finish`.
 
 The project is created and a set of files and directories are generated from the selected skeleton.
