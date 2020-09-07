@@ -64,12 +64,8 @@ Setup a Project with a JUnit Test Case
 This section describes how to create a new JUnit Test Case starting from
 a new MicroEJ library project.
 
-Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...` >
-:guilabel:`EasyAnt` > :guilabel:`EasyAnt Project`.
-
-Press :guilabel:`Next`. Fill out project settings and select the
-``microej-javalib`` skeleton A new project named ``mylibrary`` is
-created in the workspace.
+First create a new :ref:`module project <mmm_module_skeleton>` using the ``microej-javalib`` skeleton.
+A new project named ``mylibrary`` is created in the workspace.
 
 Right-click on the ``src/test/java`` folder and select :guilabel:`New` >
 :guilabel:`Other...` menu item.

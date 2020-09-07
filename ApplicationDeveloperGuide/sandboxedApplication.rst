@@ -1,4 +1,4 @@
-.. _sandboxed.application:
+.. _sandboxed_application:
 
 Sandboxed Application
 =====================
