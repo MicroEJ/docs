@@ -7,6 +7,8 @@ Overview
 
    editions
    runtime
+   libraries
+   repository
    esr
    firmware
    sdk
