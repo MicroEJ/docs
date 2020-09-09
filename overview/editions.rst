@@ -1,7 +1,8 @@
-.. _section.microej.studio:
-
 MicroEJ Editions
 ================
+
+Introduction
+~~~~~~~~~~~~
 
 MicroEJ offers a comprehensive toolset to build the embedded software of
 a device. The toolset covers two levels in device software development:
@@ -42,6 +43,33 @@ Using the MicroEJ Studio tool, an application developer will be able to:
    information about MicroEJ Forge, please consult
    `<https://www.microej.com/product/forge>`_.
 
+
+.. _get_sdk_version:
+
+Determine the MicroEJ Studio/SDK Version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In MicroEJ Studio/SDK, go to ``Help`` > ``About MicroEJ SDK`` menu.
+
+In case of MicroEJ SDK ``4.1.x``, the MicroEJ SDK version is directly displayed, such as ``4.1.5``:
+
+   .. figure:: images/about_sdk_4.x.png
+      :alt: MicroEJ SDK 4.x About Window
+
+In case of MicroEJ SDK ``5.x``, the value displayed is the MicroEJ SDK distribution, such as ``19.05`` or ``20.07``:
+
+   .. figure:: images/about_sdk_dist_20.07.png
+      :alt: MicroEJ SDK Distribution About Window
+
+To retrieve the MicroEJ SDK version that is currently installed in this distribution, proceed with the following steps:
+
+   - Click on the ``Installation Details`` button,
+   - Click on the ``Installed Software`` tab,
+   - Retrieve the version of entry named ``MicroEJ SDK`` (or ``MicroEJ Studio``).
+
+   .. figure:: images/installation_details_sdk_dist_20.07.png
+      :alt: MicroEJ SDK Distribution Installation Details Window
+  
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
