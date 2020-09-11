@@ -91,7 +91,7 @@ Examples
       tracer.recordEvent(0);
     }
 
-  - Ouput on serial port (standard ouput): 
+  Ouput on serial port (standard ouput): 
 
   .. code-block:: xml
 
