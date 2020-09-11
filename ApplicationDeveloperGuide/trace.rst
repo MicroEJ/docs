@@ -76,7 +76,7 @@ An implementation of this API mapped to **SEGGER SystemView** concepts is availa
 
   - The **SystemView** module is added to the targetted platform and initialized in the main function of the platform.
 
-  - Then a low-level API named ``LLTRACE_sysview.c`` implements the function defined in ``LLTRACE_impl.h`` using the **SystemView** library.
+  - Then a low-level API named ``LLTRACE_sysview.c`` implements the functions defined in ``LLTRACE_impl.h`` using the **SystemView** library.
 
 Examples
 ========
