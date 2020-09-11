@@ -44,7 +44,7 @@ Multiple ways are available to start and stop the trace system:
     - Check the option ``Start execution traces automatically``.
 
 To record an event, use the method ``recordEvent(int eventId)``. The event ID needs to be in the range ``0 to nbEventTypes-1``.
-The methods ``recordEvent(...)`` always needs the eventID as the first parameter and can have up to ten int parameters as custom value for the event.
+The methods ``recordEvent(...)`` always needs the eventID as the first parameter and can have up to ten int parameters as custom values for the event.
 
 To record the end of an event, use the method ``recordEventEnd(int eventID)``. It will trace the duration of an event previously recorded with one of the ``recordEvent(int)`` methods.
 The ``recordEventEnd(...)`` method can also have another int parameter for a custom value for the event end. It can be used to trace the returned value of a method.
