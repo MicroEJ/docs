@@ -29,7 +29,9 @@ MicroEJ gives access to two Trace APIs:
 To activate the trace system on the platform, the property ``core.trace.enabled`` needs to be set to true.
   
   - Right click on the project and go to ``Run As > Run Configurations``,
+
   - In the tab ``Configuration``, select the category ``Runtime``,
+
   - Check the option ``Enable execution traces``.
 
 Multiple ways are available to start and stop the trace system:
@@ -39,26 +41,37 @@ Multiple ways are available to start and stop the trace system:
   - from the **C API**, the functions ``LLTRACE_IMPL_start(void)`` and ``LLTRACE_IMPL_stop(void)``,
   
   - from the **launcher configuration** of the application: 
+
     - Right click on the project and go to ``Run As > Run Configurations``,
+
     - In the tab ``Configuration``, select the Category ``Runtime``,
+
     - Check the option ``Start execution traces automatically``.
 
-To record an event, use the method ``recordEvent(int eventId)``. The event ID needs to be in the range ``0 to nbEventTypes-1``.
+To record an event, you first need to instantiate a ``Tracer`` object by calling its contructor with two parameters.
+The first parameter, ``name``, is a String that will represent the name of the ``Tracer`` object group.
+The second parameter, ``nbEventTypes``, is an integer representing the maximum number of event types available for the group.
+
+Then, you can use the method ``recordEvent(int eventId)``. 
+The event ID needs to be in the range ``0`` to ``nbEventTypes-1`` with ``nbEventTypes`` the maximum number of event types set when initializing the ``Tracer`` object.
 The methods ``recordEvent(...)`` always needs the eventID as the first parameter and can have up to ten int parameters as custom values for the event.
 
-To record the end of an event, use the method ``recordEventEnd(int eventID)``. It will trace the duration of an event previously recorded with one of the ``recordEvent(int)`` methods.
+To record the end of an event, use the method ``recordEventEnd(int eventID)``. 
+It will trace the duration of an event previously recorded with one of the ``recordEvent(int)`` methods.
 The ``recordEventEnd(...)`` method can also have another int parameter for a custom value for the event end. It can be used to trace the returned value of a method.
 
 This library gives access to a String constant ``TRACE_ENABLED_CONSTANT_PROPERTY`` representing the :ref:`BON Constant <section.classpath.elements.constants>` ``core.trace.enabled``.
 
-  - This **BON Constant** can be used to remove, at build time, portions of code when trace is disabled. To do that, just surround tracer record calls with a if statement that checks the state of the constant. When the constant is set to false, the code inside the if statement will not be embedded with the application and thus, will not impact the performances.
+This **BON Constant** can be used to remove, at build time, portions of code when trace is disabled. 
+To do that, just surround tracer record calls with a if statement that checks the state of the constant. 
+When the constant is set to false, the code inside the if statement will not be embedded with the application and thus, will not impact the performances.
 
-    .. code-block:: java
-      
-      if(Constants.getBoolean(Tracer.TRACE_ENABLED_CONSTANT_PROPERTY)) {
-        // This code is not embedded if TRACE_ENABLED_CONSTANT_PROPERTY is set to false.       
-        tracer.recordEventEnd(0);
-      }
+  .. code-block:: java
+    
+    if(Constants.getBoolean(Tracer.TRACE_ENABLED_CONSTANT_PROPERTY)) {
+      // This code is not embedded if TRACE_ENABLED_CONSTANT_PROPERTY is set to false.       
+      tracer.recordEventEnd(0);
+    }
 
 Implementation
 ==============
