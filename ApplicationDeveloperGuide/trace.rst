@@ -56,6 +56,7 @@ This library gives access to a String constant ``TRACE_ENABLED_CONSTANT_PROPERTY
     .. code-block:: java
       
       if(Constants.getBoolean(Tracer.TRACE_ENABLED_CONSTANT_PROPERTY)) {
+        // This code is not embedded if TRACE_ENABLED_CONSTANT_PROPERTY is set to false.       
         tracer.recordEventEnd(0);
       }
 
