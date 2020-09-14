@@ -231,6 +231,25 @@ A typical usage in a :ref:`module description file <mmm_module_description>` is 
    .. figure:: images/mmm_preferences_options_usage.png
       :align: center
 
+Build Kit
+---------
+
+The Module Manager build kit is the consistent set of tools and scripts required for building modules. 
+
+It is bundled with MicroEJ SDK and can be exported to run in headless mode using the following steps: [#warning_check_former_sdk_versions]_
+
+- Select :guilabel:`File` > :guilabel:`Export` > :guilabel:`MicroEJ` > :guilabel:`Module Manager Build Kit`,
+- Choose an empty :guilabel:`Target directory`,
+- Click on the :guilabel:`Finish` button.
+
+Once the build kit is fully exported, the directory content shall look like:
+
+.. figure:: images/mmm_extract_build_kit.png
+      :align: center
+
+To go further with headless builds, please consult `Tool-CommandLineBuild <https://github.com/MicroEJ/Tool-CommandLineBuild/README.rst>`_ for command line builds.
+
+
 .. [#warning_check_former_sdk_versions] If using MicroEJ SDK versions lower than ``5.2.0``, please refer to the :ref:`following section <mmm_former_sdk>`.
 
 .. _mmm_former_sdk:
@@ -266,6 +285,17 @@ The Easyant Preferences Page is available at :guilabel:`Window` > :guilabel:`Pre
 
 .. figure:: images/mmm_preferences_up_to_5.1_ea4eclipse_annotated.png
    :align: center
+
+Export the Build Kit
+####################
+
+- Create an empty directory (e.g. ``mmm_sdk_[version]_build_kit``),
+- Locate your SDK installation plugins directory (by default, ``C:\Program Files\MicroEJ\MicroEJ SDK-[version]\rcp\plugins`` on Windows OS),
+- Open the file ``com.is2t.eclipse.plugin.easyant4e_[version].jar`` with an archive manager,
+- Extract the directory ``lib`` to the target directory,
+- Open the file ``com.is2t.eclipse.plugin.easyant4e.offlinerepo_[version].jar`` with an archive manager,
+- Navigate to directory ``repositories``,
+- Extract the file named ``microej-build-repository.zip`` for MicroEJ SDK ``5.x`` or ``is2t_repo.zip`` for MicroEJ SDK ``4.1.x`` to the target directory.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
