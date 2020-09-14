@@ -231,6 +231,8 @@ A typical usage in a :ref:`module description file <mmm_module_description>` is 
    .. figure:: images/mmm_preferences_options_usage.png
       :align: center
 
+.. _mmm_build_kit:
+
 Build Kit
 ---------
 
@@ -247,7 +249,8 @@ Once the build kit is fully exported, the directory content shall look like:
 .. figure:: images/mmm_extract_build_kit.png
       :align: center
 
-To go further with headless builds, please consult `Tool-CommandLineBuild <https://github.com/MicroEJ/Tool-CommandLineBuild/README.rst>`_ for command line builds.
+To go further with headless builds, please consult `Tool-CommandLineBuild <https://github.com/MicroEJ/Tool-CommandLineBuild/README.rst>`_ for command line builds, 
+and this :ref:`tutorial <tutorial_setup_jenkins_artifactory>` to setup MicroEJ modules build in continuous integration environments).
 
 
 .. [#warning_check_former_sdk_versions] If using MicroEJ SDK versions lower than ``5.2.0``, please refer to the :ref:`following section <mmm_former_sdk>`.
