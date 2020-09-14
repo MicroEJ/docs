@@ -1026,7 +1026,7 @@ default, the GNU LD linker does not search unresolved symbols into
 archive files loaded previously (see ``man ld`` for a description of
 the ``start-group`` option). To solve this issue, either invert the
 declaration of ``LIBS`` (put ``microejapp.o`` first) or guard the
-libraries delcaration with ``--start-group`` and ``--end-group`` in
+libraries declaration with ``--start-group`` and ``--end-group`` in
 ``makedefs``. This tutorial uses the later.
 
 .. code-block:: diff
