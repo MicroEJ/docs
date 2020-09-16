@@ -221,7 +221,8 @@ is issued, where ``<messageId>`` meaning is defined in the next table:
    +-------------+--------------------------------------------------------+
    | -128        | Malformed buffer input error.                          |
    +-------------+--------------------------------------------------------+
-   | -129        | Verify problem on certificate.                         |
+   | -129        | Verify problem on certificate and check date/time on   |
+   |             | your device.                                           |
    +-------------+--------------------------------------------------------+
    | -130        | Verify problem based on signature.                     |
    +-------------+--------------------------------------------------------+
@@ -285,7 +286,7 @@ is issued, where ``<messageId>`` meaning is defined in the next table:
    +-------------+--------------------------------------------------------+
    | -173        | Out of order message: fatal.                           |
    +-------------+--------------------------------------------------------+
-   | -174        | Bad KEA type found.                                    |
+   | -174        | Bad KEY type found.                                    |
    +-------------+--------------------------------------------------------+
    | -175        | Sanity check on ciphertext failed.                     |
    +-------------+--------------------------------------------------------+
