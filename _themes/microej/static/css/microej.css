@@ -476,6 +476,7 @@ h2{
   font-weight: bold;
   font-size: 30px;
   color: #4b5357;
+  padding-top: 85px;
 }
 
 li{
@@ -618,6 +619,7 @@ code,
 
 .wy-side-scroll {
   width: 345px;
+  height: 93%;
 }
 
 @media screen and (max-width: 768px) {

@@ -9,7 +9,8 @@ Principle
 SSL (Secure Sockets Layer) library provides APIs to create and establish
 an encrypted connection between a server and a client. It implements the
 standard SSL/TLS (Transport Layer Security) protocol that manages client
-or server authentication and encrypted communication.
+or server authentication and encrypted communication. Mutual authentication
+is supported since `SSL API 2.1.0 <https://repository.microej.com/artifacts/ej/api/ssl/>`_.
 
 
 Functional Description
@@ -33,9 +34,8 @@ Dependencies
 
 -  Network core module (see :ref:`network_core`).
 
--  ``LLNET_SSL_CONTEXT_impl.h``, ``LLNET_SSL_SOCKET_impl.h`` and
-   ``LLNET_SSL_X509_CERT_impl.h`` implementations (see
-   :ref:`LLNET_SSL-API-SECTION`).
+-  ``LLNET_SSL_CONTEXT_impl.h`` and ``LLNET_SSL_SOCKET_impl.h``
+   implementations (see :ref:`LLNET_SSL-API-SECTION`).
 
 
 Installation
@@ -48,7 +48,13 @@ SSL is an additional module. In the platform configuration file, check
 Use
 ===
 
-A classpath variable named ``SSL-2.0`` is available.
+The `SSL API module <https://repository.microej.com/artifacts/ej/api/ssl/>`_
+must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
+Application project, in order to allow access to the SSL library.
+
+::
+
+  <dependency org="ej.api" name="ssl" rev="2.2.0"/>
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

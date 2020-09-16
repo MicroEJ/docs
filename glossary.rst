@@ -3,13 +3,15 @@
 MicroEJ Glossary
 ================
 
+This glossary defines the technical terms upon which the `MicroEJ Virtual Execution Environment <https://developer.microej.com/microej-vee-virtual-execution-environment>`_ is built.
+
 .. glossary::
 
    Add-On Library
-      A MicroEJ Add-On Library is a pure Java library that is implemented on top of one or more MicroEJ Foundation Libraries.
+      A MicroEJ Add-On Library is a pure `managed code <https://en.wikipedia.org/wiki/Managed_code>`_ (Java) library. It runs over one or more MicroEJ Foundation Libraries.
 
    Application
-      A MicroEJ Application is a software program that runs on a MicroEJ-ready device. A MicroEJ Application is called a MicroEJ Standalone Application or a MicroEJ Sandboxed Application depending the way it is linked.
+      A MicroEJ Application is a software program that runs on a Powered by MicroEJ device.
 
          Standalone Application
             MicroEJ Standalone Application is a MicroEJ Application that is directly linked to the C code to produce a MicroEJ Firmware. It is edited using MicroEJ SDK.
@@ -38,11 +40,8 @@ MicroEJ Glossary
          Multi-Sandbox Firmware
             A MicroEJ Multi-Sandbox Firmware is a MicroEJ Firmware that implements the ability to be extended, by exposing a set of APIs and a memory space to link MicroEJ Sandboxed Applications. (previously MicroEJ Multi-app Firmware) 
 
-   Forge
-      MicroEJ Forge is a cloud server that manages MicroEJ software assets: Applications, Libraries, Virtual Devices,... It is based on JFrog Artifactory PRO. It is a white label product that is branded to the customers brand.
-
    Foundation Library
-      A MicroEJ Foundation Library is a MicroEJ library that provides core runtime APIs or hardware-dependent functionality. It is often connected to underlying C low-level APIs.
+      A MicroEJ Foundation Library is a library that provides core or hardware-dependent functionalities. A Foundation Library combines `managed code <https://en.wikipedia.org/wiki/Managed_code>`_ (Java) and low-level APIs (C) implemented by one or more Abstraction Layers through a native interface (:ref:`SNI <sni>`).
 
    Mock
       A MicroEJ Mock is a mockup of a Board Support Package capability that mimics an hardware functionality for the MicroEJ Simulator.
@@ -51,7 +50,7 @@ MicroEJ Glossary
       MicroEJ Module Manager downloads, installs and controls the consistency of all the dependencies and versions required to build and publish a MicroEJ asset. It is based on `Semantic Versioning <https://semver.org>`_ specification.
 
    Platform
-      A MicroEJ Platform is a software package integrating a C board support package (BSP, with or without RTOS), a MicroEJ Architecture, abstraction layers for the target Device, and its associated MicroEJ Mocks for the MicroEJ Simulator. It is edited using MicroEJ SDK.
+      A MicroEJ Platform integrates a MicroEJ Architecture, one or more Foundation Libraries with their respective Abstraction Layers and the board support package (BSP) for the target Device. It also includes associated MicroEJ Mocks for the MicroEJ Simulator.
 
    SDK
       MicroEJ SDK allows MicroEJ Firmware developers to build a MicroEJ-ready device, by integrating a MicroEJ Architecture with both Java and C software on their device.
@@ -60,7 +59,7 @@ MicroEJ Glossary
       MicroEJ Simulator allows running MicroEJ Applications on a target hardware simulator on the developer’s desktop computer. The MicroEJ Simulator runs one or more MicroEJ mock that mimics the hardware functionality. It enables developers to develop their MicroEJ Applications without the need of hardware.
 
    Studio
-      MicroEJ Studio allows application developers to write a MicroEJ Sandboxed Application, run it on a Virtual Device, deploy it on a MicroEJ-ready device, and publish it to a MicroEJ Forge instance.
+      MicroEJ Studio allows application developers to write a MicroEJ Sandboxed Application, run it on a Virtual Device, deploy it on a MicroEJ-ready device, and publish it to a `MicroEJ Forge <https://www.microej.com/product/forge/>`_ instance.
 
    Virtual Device
       A MicroEJ Virtual Device is a software package that includes the simulation part of a MicroEJ Firmware: runtime, libraries and application(s). It can be run on any PC without the need of MicroEJ Studio. In case a MicroEJ Multi-Sandbox Firmware, it is also used for testing a MicroEJ Sandboxed Application in MicroEJ Studio. 

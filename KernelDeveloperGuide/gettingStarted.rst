@@ -18,12 +18,8 @@ Create an Empty Firmware from Scratch
 Create a new Firmware Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-MicroEJ SDK provides an EasyAnt skeleton
-(``com.is2t.easyant.skeletons#firmware-multiapp``) to create an empty
-Multi-Sandbox Firmware project.
+First create a new :ref:`module project <mmm_module_skeleton>` using the ``build-firmware-multiapp`` skeleton.
 
-Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Other...` > :guilabel:`Easyant` > :guilabel:`Easyant Project`, set the
-appropriate skeleton, and press the ``Finish`` button. 
 
 .. _fms:
 .. image:: png/firmware-multiapp-skeleton.png

@@ -156,7 +156,7 @@ Ivy repository
   * Select the ``ivysettings.xml`` file available in the unzipped
     directory of the ``x-repository-M.m.p.zip`` file.
 
-See :ref:`chapter.module.repository` for more information.
+See :ref:`module_repository` for more information.
 
 C compiler (GCC, KEIL, IAR, …).
 -------------------------------

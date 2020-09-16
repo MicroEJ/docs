@@ -29,9 +29,9 @@ A KF test is a structured directory placed in the ``src/test/projects`` director
 - Create a new directory for the KF test
 - Within this directory, create the sub-projects:
   
-  - Create a project for the Kernel using the ``microej-javalib`` :ref:`skeleton <mmm_module_skeleton>`,
-  - Create a project for each Feature using the ``application`` :ref:`skeleton <mmm_module_skeleton>`,
-  - Create a project for the Firmware using the ``firmware-multiapp`` :ref:`skeleton <mmm_module_skeleton>`.
+  - Create a new :ref:`module project <mmm_module_skeleton>` for the Kernel using the ``microej-javalib`` skeleton,
+  - Create a new :ref:`module project <mmm_module_skeleton>` for the Feature using the ``application`` skeleton,
+  - Create a new :ref:`module project <mmm_module_skeleton>` for the Firmware using the ``firmware-multiapp`` skeleton.
 
 
 The names of the project directories are free, however MicroEJ suggests the following naming convention, assuming the KF test directory is ``[TestName]``:

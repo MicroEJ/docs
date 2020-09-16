@@ -1,3 +1,5 @@
+.. _new_platform_creation:
+
 =============================
 New MicroEJ Platform Creation
 =============================
@@ -14,15 +16,21 @@ MicroEJ Architecture Import
 
 The first step is to choose and import a :ref:`MicroEJ Architecture <architecture_overview>`. 
 MicroEJ Architectures for most common microcontroller instructions sets and compilers
-can be downloaded from https://repository.microej.com/architectures/. 
+can be downloaded from https://repository.microej.com/architectures/ [#note_production]_. 
 
 MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified using the following folder naming convention:
 
 :: 
 
-  com/microej/architecture/[ISA]/[TOOLCHAIN]/[UID]/[VERSION]/
+  com/microej/architecture/[ISA]/[TOOLCHAIN]/[UID]/[VERSION]/[UID]-[VERSION]-[USAGE].xpf
 
-For example, the MicroEJ Architecture versions for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain is available at 
+- ``ISA``: instruction set architecture (e.g. ``CM4`` for Arm® Cortex®-M4, ``ESP32`` for Espressif ESP32, ...).
+- ``TOOLCHAIN``: C compilation toolchain (e.g. ``CM4hardfp_GCC48``).
+- ``VERSION``: module version (e.g. ``7.12.0``).
+- ``UID``: Architecture unique ID (e.g. ``flopi4G25``).
+- ``USAGE`` = ``eval`` for evaluation Architectures, ``prod`` for production Architectures.
+
+For example, MicroEJ Architecture versions for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain is available at 
 https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/.
 
 Once you downloaded a MicroEJ Architecture file, proceed with the following steps to import it in MicroEJ SDK:
@@ -31,6 +39,17 @@ Once you downloaded a MicroEJ Architecture file, proceed with the following step
 - Browse an ``.xpf`` file or a folder that contains one or more an ``.xpf`` files.
 - Check the :guilabel:`I agree and accept the above terms and conditions...` box to accept the license.
 - Click on :guilabel:`Finish` button.
+
+.. note::
+
+   A MicroEJ Architecture can be imported using MicroEJ Module Manager, by adding the following line in a :ref:`module description file <mmm_module_description>`:
+   ::
+
+      <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]" rev="[VERSION]" conf="default">
+        <artifact name="[UID]" m:classifier="[USAGE]" ext="xpf"/>
+      </dependency>
+
+.. [#note_production] MicroEJ Architectures for production can be retrieved from the `license server <https://license.microej.com/>`_.
 
 
 .. _platform_configuration_creation:
@@ -401,7 +420,7 @@ The build script must implement the following specification:
   - The script must end with zero exit code.
 
 Many build script templates are available for most commonly used C toolchains in the 
-`Platform Qualification Tools repository <https://github.com/MicroEJ/PlatformQualificationTools/trunk/framework/platform/scripts>`_.
+`Platform Qualification Tools repository <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_.
 
 Low Level APIs Implementation Files
 -----------------------------------
