@@ -371,6 +371,31 @@ Graphical engine is using two dedicated heaps: for the images (see :ref:`section
 * Images heap: Front Panel simulates the heap usage when the application is creating a ``BufferedImage``, when it loads and decodes an image (PNG, BMP etc.), when it converts an image in MicroEJ format in another MicroEJ format. However it does not simulate the external image copy in heap.
 * External fonts heap: Front Panel does not simulate this heap. There is no limitation (rendering limitation, see :ref:`section_font_loader_memory`) when application is using a font which is located outside CPU addresses ranges.
 
+Image Decoders
+==============
+
+Front Panel uses its own internal image decoders when the internal image decoders related modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Front Panel can add some additional decoders like the C-side for the embedded platform (see :ref:`external image decoders<image_external_decoder>`). However, the exhaustive list of additional decoders is limited (Front Panel is using the Java AWT ``ImageIO`` API). To add an additional decoder, specify the property ``hardwareImageDecoders.list`` in front panel configuration properties file (see :ref:`fp_installation`) with one or several property values:
+
+.. table:: Front Panel Additional Image Decoders
+
+   +-----------------------------------------------------+-----------------+
+   | Type                                                | Property value  |
+   +=====================================================+=================+
+   | Graphics Interchange Format (GIF)                   | gif             |
+   +-----------------------------------------------------+-----------------+
+   | Joint Photographic Experts Group (JPEG)             | jpeg \| jpg     |
+   +-----------------------------------------------------+-----------------+
+   | Portable Network Graphics (PNG)                     | png             |
+   +-----------------------------------------------------+-----------------+
+   | Windows bitmap (BMP)                                | bmp             |
+   +-----------------------------------------------------+-----------------+
+
+The decoders list is comma (*,*) separated. Example:
+
+::
+
+   hardwareImageDecoders.list=jpg,bmp
+
 Dependencies
 ============
 
@@ -405,6 +430,11 @@ The properties file must / can contain the following properties:
 -  ``fpFile.name`` [optional, default value is "" (*empty*)]: Defines
    the front panel file (\*.fp) the application has to use by default when several ``fp`` files are available in project.
    
+-  ``hardwareImageDecoders.list`` [optional, default value is ""
+   (*empty*)]: Defines the available list of additional image decoders
+   provided by the hardware. Use comma (',') to specify several decoders
+   among this list: bmp, jpg, jpeg, gif, png. If empty or unspecified,
+   no image decoder is added.
 
 To test a front panel project without rebuilding the platform or without exporting manually the project, add the property ``-Dej.fp.project=[full project path]`` in the MicroEJ Application launcher (JRE tab). The application will use the front panel project even if the platform the application already contain a built-in front panel. 
 
