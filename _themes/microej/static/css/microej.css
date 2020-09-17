@@ -1535,3 +1535,25 @@ padding-bottom: 7px;
 .wy-breadcrumbs li a:first-child {
   color: #97a7af;
 }
+
+.fwgre, .fwblu, .fwred, .fwpur, .fwbla {
+  color: white;
+  display: block;
+  margin: -8px -16px;
+  padding: 8px 16px;
+}
+.fwgre {
+  background: green;
+}
+.fwblu {
+  background: blue;
+}
+.fwred {
+  background: red;
+}
+.fwpur {
+  background: purple;
+}
+.fwbla {
+  background: black;
+}
