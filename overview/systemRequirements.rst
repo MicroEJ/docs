@@ -11,9 +11,12 @@ System Requirements
    - 2GB Disk
 
 - **Operating Systems :**
-   - Windows 10, Windows 8.1, Windows 8, Windows 7, Windows Vista or Windows XP SP3
-   - Linux distributions (tested on Ubuntu 12.04 and Ubuntu 14.04)
-   - Mac OS X (tested on version 10.10 Yosemite, 10.11 El Capitan, 10.14 Mojave)
+   - Windows 10, Windows 8.1 or Windows 8
+   - Linux distributions (tested on Ubuntu 16.04, 18.04 and 20.04)
+   - Mac OS X (tested on version 10.13 High Sierra, 10.14 Mojave)
+
+- **Java :**
+   - JRE or JDK 8 (OpenJDK or Oracle JDK)
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
