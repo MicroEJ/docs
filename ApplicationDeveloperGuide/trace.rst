@@ -14,39 +14,39 @@ It can be a single event or a period of time with a start and an end.
 
 MicroEJ gives access to two Trace APIs:
   
-  - A **Java API** that can be used to trace Java application. The Javadoc is available 
-    `here <https://repository.microej.com/javadoc/microej_5.x/foundation/ej/trace/Tracer.html>`_.
-    
-    - To add the library to your project, add the following dependency line in your module.ivy file:
-        
-      .. code:: xml
-        
-        <dependency org=“ej.api” name=trace rev=“x.y.z”/>
+- A **Java API** that can be used to trace Java application. The Javadoc is available 
+  `here <https://repository.microej.com/javadoc/microej_5.x/foundation/ej/trace/Tracer.html>`_.
   
-  - A **C API** implemented in the file ``LLTRACE_impl.h``.
-    This file is available in the ``platform-bsp`` project defined in the sources of the platform.
+  - To add the library to your project, add the following dependency line in your module.ivy file:
+      
+    .. code:: xml
+      
+      <dependency org=“ej.api” name=trace rev=“x.y.z”/>
+  
+- A **C API** implemented in the file ``LLTRACE_impl.h``.
+  This file is available in the ``platform-bsp`` project defined in the sources of the platform.
 
 To activate the trace system on the platform, the property ``core.trace.enabled`` needs to be set to true.
   
-  - Right click on the project and go to ``Run As > Run Configurations``,
+- Right click on the project and go to ``Run As > Run Configurations``,
 
-  - In the tab ``Configuration``, select the category ``Runtime``,
+- In the tab ``Configuration``, select the category ``Runtime``,
 
-  - Check the option ``Enable execution traces``.
+- Check the option ``Enable execution traces``.
 
 Multiple ways are available to start and stop the trace system:
   
-  - from the **Java API**, the methods ``Tracer.startTrace()`` and ``Tracer.stopTrace()``,
-  
-  - from the **C API**, the functions ``LLTRACE_IMPL_start(void)`` and ``LLTRACE_IMPL_stop(void)``,
-  
-  - from the **launcher configuration** of the application: 
+- from the **Java API**, the methods ``Tracer.startTrace()`` and ``Tracer.stopTrace()``,
 
-    - Right click on the project and go to ``Run As > Run Configurations``,
+- from the **C API**, the functions ``LLTRACE_IMPL_start(void)`` and ``LLTRACE_IMPL_stop(void)``,
 
-    - In the tab ``Configuration``, select the Category ``Runtime``,
+- from the **launcher configuration** of the application: 
 
-    - Check the option ``Start execution traces automatically``.
+  - Right click on the project and go to ``Run As > Run Configurations``,
+
+  - In the tab ``Configuration``, select the Category ``Runtime``,
+
+  - Check the option ``Start execution traces automatically``.
 
 To record an event, you first need to instantiate a ``Tracer`` object by calling its contructor with two parameters.
 The first parameter, ``name``, is a String that will represent the name of the ``Tracer`` object group.
@@ -66,12 +66,12 @@ This **BON Constant** can be used to remove, at build time, portions of code whe
 To do that, just surround tracer record calls with a if statement that checks the state of the constant. 
 When the constant is set to false, the code inside the if statement will not be embedded with the application and thus, will not impact the performances.
 
-  .. code-block:: java
-    
-    if(Constants.getBoolean(Tracer.TRACE_ENABLED_CONSTANT_PROPERTY)) {
-      // This code is not embedded if TRACE_ENABLED_CONSTANT_PROPERTY is set to false.       
-      tracer.recordEventEnd(0);
-    }
+.. code-block:: java
+  
+  if(Constants.getBoolean(Tracer.TRACE_ENABLED_CONSTANT_PROPERTY)) {
+    // This code is not embedded if TRACE_ENABLED_CONSTANT_PROPERTY is set to false.       
+    tracer.recordEventEnd(0);
+  }
 
 Implementation
 ==============
@@ -85,11 +85,11 @@ The default implementation can be overridden by implementing the ``LLTRACE_impl.
 
 An implementation of this API mapped to **SEGGER SystemView** concepts is available.
 
-  - This allows to visualize the different traces directly in **SEGGER SystemView**.
+- This allows to visualize the different traces directly in **SEGGER SystemView**.
 
-  - The **SystemView** module is added to the targetted platform and initialized in the main function of the platform.
+- The **SystemView** module is added to the targetted platform and initialized in the main function of the platform.
 
-  - Then a low-level API named ``LLTRACE_sysview.c`` implements the functions defined in ``LLTRACE_impl.h`` using the **SystemView** library.
+- Then a low-level API named ``LLTRACE_sysview.c`` implements the functions defined in ``LLTRACE_impl.h`` using the **SystemView** library.
 
 Examples
 ========
