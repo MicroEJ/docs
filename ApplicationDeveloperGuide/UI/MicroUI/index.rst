@@ -8,6 +8,7 @@ MicroUI
    images
    fonts
    fontDesigner
+   traces
    errors
 
 ..
