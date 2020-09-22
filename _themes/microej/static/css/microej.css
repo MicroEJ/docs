@@ -470,6 +470,16 @@ h1{
   font-weight: lighter;
   font-size: 50px;
   color: #4b5357;
+  margin-block-end: 0px;
+  margin-bottom: 24px;
+}
+
+h1:after {
+  content: "";
+  display: block;
+  padding-top: 12px;
+  border-bottom: solid 1px #4b5357;
+  width: 50px;
 }
 
 h2{
@@ -682,6 +692,12 @@ footer span.commit .rst-content tt,
   font-family: Consolas, monospace;
 }
 
+footer {
+  margin-top: 50px;
+  border-top: solid 1px #e5e9eb;
+  padding-top: 24px;
+}
+
 .rst-versions {
   font-family: "Source Sans Pro", sans-serif;
 }
@@ -779,6 +795,12 @@ footer span.commit .rst-content tt,
 
 body > .rst-versions {
   width: 395px;
+}
+
+.wy-breadcrumbs + hr {
+  border-top: 0px;
+  margin: 0px;
+  height: 40px;
 }
 
 .wy-nav-content {
