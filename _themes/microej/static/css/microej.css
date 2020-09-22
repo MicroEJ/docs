@@ -383,6 +383,36 @@
   color: #cf4520;
 }
 
+footer .btn {
+  font-size: 14px;
+  font-weight: 400;
+  text-transform:uppercase;
+  padding: 10px 35px;
+  border-radius: 20px;
+  border: 2px solid #cbd3d7;
+  transition: all 0.2s ease;
+  box-shadow: none;
+}
+
+footer .btn:hover {
+  color:#fff !important;
+  background-color:#f76241 !important;
+  border: 2px solid #f76241;
+  box-shadow: none;
+}
+
+footer .btn:active {
+  padding: 10px 35px;
+}
+
+.fa-arrow-circle-left:before {
+  content: "";
+}
+
+.fa-arrow-circle-right:before {
+  content: "";
+}
+
 .wy-dropdown-menu > dd > a:hover {
   background: #ffffff;
 }
