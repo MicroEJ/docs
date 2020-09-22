@@ -116,17 +116,6 @@ In :guilabel:`Execution` tab, select the :guilabel:`Stack Trace Reader` tool.
    Select Stack Trace Reader Tool
 
 In :guilabel:`Configuration` tab, browse the previously generated application
-binary file with debug information (``application.fodbg``)
-
-.. figure:: images/STR_selectfile.png
-   :alt: Stack Trace Reader Tool Configuration
-   :align: center
-   :width: 910px
-   :height: 587px
-
-   Stack Trace Reader Tool Configuration
-
-In :guilabel:`Configuration` tab, browse the previously generated application
 binary file with debug information (``application.fodbg`` in case of a Sandboxed
 Application or ``application.out`` in case of a Standalone Application)
 
