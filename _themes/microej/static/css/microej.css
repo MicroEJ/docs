@@ -540,6 +540,12 @@ h5,
 h6 {
   font-weight: bold;
   font-size: 18px;
+  margin-bottom: 20px;
+}
+
+h4,
+h4 ~ * {
+  margin-left: 18px !important;
 }
 
 h5,
@@ -552,14 +558,15 @@ h6 ~ * {
   margin-left: 30px !important;
 }
 
-li{
+li {
   padding-bottom: 5px;
 }
 
-p{
+p {
   font-size: 18px;
   color: #4b5357;
   line-height: 26px;
+  margin-bottom: 12px;
 }
 
 code,
