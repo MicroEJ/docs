@@ -500,7 +500,7 @@ code,
 }
 
 .wy-menu-vertical {
-  width: 325px;
+  width: 395px;
 }
 
 .wy-menu-vertical header,
@@ -516,6 +516,7 @@ code,
 .wy-menu-vertical li.current a {
   background-color: #f8f9fa;
   border-right: solid 0px #c9c9c9;
+  margin-left: 60px;
 }
 
 .wy-menu-vertical li.toctree-l1.current > a {
@@ -566,12 +567,17 @@ code,
 
 .wy-menu-vertical a {
   color: #717d83;
+  margin-left: 60px;
 }
 
 .wy-menu-vertical a:hover {
   font-weight: bold;
   color: #4b5357;
   background-color: #d6d6d6;
+}
+
+.wy-menu-vertical span.toctree-expand {
+  margin-left: 60px;
 }
 
 .wy-menu-vertical a:hover span.toctree-expand {
@@ -585,6 +591,10 @@ code,
 .wy-side-nav-search {
   background-color: #ffffff;
   margin-top: 35px;
+  margin-left: 60px;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 275px;
 }
 
 .wy-side-nav-search input[type="text"] {
@@ -613,18 +623,18 @@ code,
 
 .wy-nav-side {
   background: #ffffff;
-  width: 325px;
+  width: 395px;
   top: 70px;
 }
 
 .wy-side-scroll {
-  width: 345px;
+  width: 415px;
   height: 93%;
 }
 
 @media screen and (max-width: 768px) {
     .wy-nav-side {
-        left: -325px;
+        left: -395px;
     }
 
   #headermicroej_DIV_1 {
@@ -745,12 +755,12 @@ footer span.commit .rst-content tt,
 @media screen and (min-width: 767px) {
   .wy-nav-content-wrap {
     background: none;
-    margin-left: 325px;
+    margin-left: 395px;
   }
 }
 
 body > .rst-versions {
-  width: 325px;
+  width: 395px;
 }
 
 .wy-nav-content {
