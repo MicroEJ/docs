@@ -728,6 +728,10 @@ footer {
   padding-top: 24px;
 }
 
+footer hr {
+  border-top: 2px solid #e5e9eb;
+}
+
 .rst-versions {
   font-family: "Source Sans Pro", sans-serif;
 }
