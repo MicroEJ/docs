@@ -885,6 +885,10 @@ The properties file must / can contain the following properties:
       -  When the number of bits-per-pixels (see 'bpp' property) is
          higher or equal than 8, this property is useless and ignored.
 
+-  ``imageBuffer.memoryAlignment`` [optional, default value is "4"]: Defines the image memory alignment to respect when creating an image. This notion is useful when images drawings are performed by a third party hardware accelerator (GPU): it can require some constraints on the image to draw. This value is used by the graphical engine when creating a dynamic image and by the image generator to encode a RAW image. See :ref:`section_image_gpu_raw` and :ref:`section_image_custom_format`. Allowed values are 1, 2, 4, 8, 16, 32, 64, 128 and 256.
+
+-  ``imageHeap.size`` [optional, default value is "not set"]: Defines the images heap size. Useful to fix a platform heap size when building a firmware in command line. When using a MicroEJ launcher, the size set in this launcher is priority to the platform value.
+
 
 Use
 ===

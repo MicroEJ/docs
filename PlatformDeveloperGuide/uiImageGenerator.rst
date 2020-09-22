@@ -126,6 +126,8 @@ The standalone Image Generator is not able to load all images formats, for insta
 
 .. note:: The class ``com.microej.tool.ui.generator.BufferedImageLoader`` already implements the interface. This implementation is used to load standard images. It can be sub-classed to add some behavior.
 
+.. _section_image_custom_format:
+
 Custom MicroEJ Format
 =====================
 
