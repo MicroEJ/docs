@@ -209,9 +209,11 @@ Dependencies Between Processes
 
   * When the MicroEJ Application changes
 
-* The MicroEJ Application must be rebuilt only when it changes.
+* The MicroEJ Application must be rebuilt when it changes or when the
+  MicroEJ Platform changes.
 
-* The BSP must be rebuilt only when it changes.
+* The BSP must be rebuilt when it changes or when the MicroEJ Platform
+  changes.
 
 * The MicroEJ Firmware must be rebuilt (i.e. linked) when either the
   MicroEJ Application (``microejapp.o``, the BSP (``*.o`` or the
