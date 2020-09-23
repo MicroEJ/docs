@@ -164,29 +164,36 @@ The Process
 The process to build a MicroEJ Firmware is two fold:
 
 1. Build a MicroEJ Platform
-2. Build a MicroEJ Application
+2. Build a MicroEJ Application into a MicroEJ Firmware
 
-Then, the MicroEJ Application is compiled against the MicroEJ Platform
-to produce the MicroEJ Firmware that will be deployed on the target
+The MicroEJ Application is compiled against the MicroEJ Platform to
+produce the MicroEJ Firmware that will be deployed on the target
 device.
 
 .. note::
 
-   The case for the MicroEJ Simulator: the MicroEJ Application runs
-   onto the MicroEJ Simulateur using the mocks provided by MicroEJ
+   What about MicroEJ Simulator?  The MicroEJ Application runs onto
+   the MicroEJ Simulateur using the mocks provided by MicroEJ
    Platform.
 
-The following schema presents this two steps for a MicroEJ
-Mono-Sandbox Firmware (previously known as MicroEJ Single-app
-Firmware):
+The next schema presents the steps to build a MicroEJ Mono-Sandbox
+Firmware (previously known as MicroEJ Single-app Firmware).  The steps
+are:
 
-.. image:: images/build_microej_mono_sandbox_firmware.PNG
+1. the MicroEJ Platform is built
+
+2. the MicroEJ Application is compiled into a ``microejapp.o``
+
+3. the BSP is compiled into ``.o``
+
+4. the BSP (``.o``) and the MicroEJ Application (``microejapp.o``) and
+   the MicroEJ Platform (``microejruntime.a``) are linked to produce a
+   final binary called MicroEJ Firmware (e.g. ``application.out``).
+
+.. image:: images/build_microej_mono_sandbox_firmware_numbered.PNG
 	:align: center
 
-In this case, the MicroEJ Application is first compiled into a
-``microejapp.o`` which is then linked against the BSP using the C
-Toolchain to produce a final binary called MicroEJ Firmware.  See
-:ref:`bsp_connection` for more information on how to connect the
+See :ref:`bsp_connection` for more information on how to connect the
 MicroEJ Platform to the BSP.
 
 Dependencies Between Processes
@@ -194,21 +201,23 @@ Dependencies Between Processes
 
 * The MicroEJ Platform must be rebuilt in the following cases:
 
-  * When the MicroEJ Architecture (``.xpf``) changes
+  * When the MicroEJ Architecture (``.xpf``) changes.
 
-  * When a MicroEJ Core Foundation Library (``.xpfp``) changes
+  * When a MicroEJ Core Foundation Library (``.xpfp``) changes.
 
   * When a Foundation Library changes, either when
 
-    * the public API (``.java`` or ``.h``) change
+    * The public API (``.java`` or ``.h``) change.
 
-    * the front-panel or mock implementation (``.java``) changes
+    * The front-panel or mock implementation (``.java``) changes.
 
 * The MicroEJ Platform need not to be rebuilt in the following cases:
 
-  * When the implementation (``.c``) of a Foundation Library changes
+  * When the implementation (``.c``) of a Foundation Library changes.
 
-  * When the MicroEJ Application changes
+  * When the BSP (``.c``) changes.
+
+  * When the MicroEJ Application changes.
 
 * The MicroEJ Application must be rebuilt when it changes or when the
   MicroEJ Platform changes.
@@ -216,7 +225,11 @@ Dependencies Between Processes
 * The BSP must be rebuilt when it changes or when the MicroEJ Platform
   changes.
 
-* The MicroEJ Firmware must be rebuilt (i.e. linked) when either the
-  MicroEJ Application (``microejapp.o``, the BSP (``*.o`` or the
-  MicroEJ Platform (``microejruntime.a``) changes.
+* The MicroEJ Firmware must be rebuilt (i.e. linked) when:
+
+  * MicroEJ Application (``microejapp.o``) changes.
+
+  * The BSP (``*.o``) changes.
+
+  * The MicroEJ Platform (``microejruntime.a``) changes.
 
