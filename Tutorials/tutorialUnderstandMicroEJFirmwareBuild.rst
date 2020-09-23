@@ -36,8 +36,7 @@ https://developer.microej.com/mej32-embedded-runtime-architectures/#arch
 
 The MicroEJ Architecture is either provided from:
 
-* the ``/platformArchitecture`` folder in a MicroEJ Architecture
-  (downloaded from https://developer.microej.com/).
+* the MicroEJ Repository at https://repository.microej.com/architectures/
 * MicroEJ sales or customer care team.
 * For DEV license only: SDK license site https://license.microej.com/
   (:guilabel:`MyProduct` > :guilabel:`Download additional products`
