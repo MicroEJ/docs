@@ -72,8 +72,8 @@ Depending on the requirements of the project, the MicroEJ PLatform can
 be connected in various ways to the BSP, see :ref:`bsp_connection` for
 more information on how to do it.
 
-MicroEJ Application Project (.zip)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MicroEJ Application
+~~~~~~~~~~~~~~~~~~~
 
 A MicroEJ Application is a Java project that can be configured (in the
 :guilabel:`Run configurations ...` properties):
@@ -94,7 +94,7 @@ specific MicroEJ Platform.  It generates a ``microejapp.o`` (native
 object code) that is usually directly linked from the
 ``<platform>-bsp`` project (no manual action to do after the build).
 
-To import a MicroEJ Application project in the SDK:
+To import an existing MicroEJ Application as zip project in the SDK:
 
 * Go to :guilabel:`File` > :guilabel:`Import…` > :guilabel:`General` >
   :guilabel:`Existing Projects into Workspace` > :guilabel:`Select
@@ -102,7 +102,8 @@ To import a MicroEJ Application project in the SDK:
 * Select the zip of the project (e.g. ``x.zip``).
 * And select :guilabel:`Finish` import.
 
-See :ref:`microej.sample.applications` for more information.
+See :ref:`microej.sample.applications` for more information on how to
+create, configure and develop a MicroEJ Application.
 
 C Toolchain (GCC, KEIL, IAR, …)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
