@@ -488,10 +488,9 @@ a.wy-text-info:hover {
 h3,
 h4,
 h5,
-h5,
 h6 {
-  margin-block-start: 20px;
-  margin-block-end: 10px;
+  margin-block-start: 30px;
+  margin-block-end: 16px;
   color: #4b5357;
 }
 
@@ -532,7 +531,7 @@ h2{
 
 h3 {
   font-weight: normal;
-  font-size: 30px;
+  font-size: 28px;
 }
 
 h4,
