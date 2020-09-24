@@ -8,6 +8,8 @@ in order to build a firmware.
 This document describes the components and the process involved in the
 build of a MicroEJ Firmware.
 
+A good knowledge of the MicroEJ glossary https://docs.microej.com/en/latest/glossary.html is required.
+
 The Components
 --------------
 
