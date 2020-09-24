@@ -182,7 +182,7 @@ are:
 
 2. Build the MicroEJ Application into a ``microejapp.o`` using MicroEJ SDK
 
-3. Compile the BSP C sources into ``.o``using the C toolchain
+3. Compile the BSP C sources into ``.o`` using the C toolchain
 
 4. the BSP (``.o``) and the MicroEJ Application (``microejapp.o``) and
    the MicroEJ Platform (``microejruntime.a``) are linked by the C toolchain to produce a
