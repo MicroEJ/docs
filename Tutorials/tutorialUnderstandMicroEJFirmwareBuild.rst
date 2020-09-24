@@ -36,12 +36,12 @@ https://developer.microej.com/mej32-embedded-runtime-architectures/#arch
 
 The MicroEJ Architecture is either provided from:
 
-* the MicroEJ Repository at https://repository.microej.com/architectures/
-* MicroEJ sales or customer care team.
+* For EVAL license only: the MicroEJ Repository at https://repository.microej.com/architectures/
 * For DEV license only: SDK license site https://license.microej.com/
   (:guilabel:`MyProduct` > :guilabel:`Download additional products`
   will list the downloads available).  See
   :ref:`gettingstarted-installlicensesdev` for help with DEV license.
+* MicroEJ sales or customer care team if the requested architecture is not listed as available.
 
 See :ref:`architecture_import` for a description on how to import a
 MicroEJ Architecture.
@@ -53,10 +53,10 @@ This package includes:
 
 * a C Board Support Package (BSP) with or without RTOS and C drivers
 * a MEJ32 Architecture
-* the adaptation layers (ADLAs)
-* the MicroEJ Simulator and its associated MicroEJ Mocks
+* the abstraction layers low level API implementation of the platform architecture and foundations libraries
+* the MicroEJ Simulator and its associated MicroEJ mocks
 
-The zip files contains:
+The platform .zip files contains:
 
 * ``<platform>-configuration``: The configuration of the MicroEJ
   Platform
@@ -67,7 +67,7 @@ The zip files contains:
 See :ref:`new_platform_creation` to learn how to create a MicroEJ
 Platform using a MicroEJ Platform Source project.
 
-Depending on the requirements of the project, the MicroEJ PLatform can
+Depending on the requirements of the project, the MicroEJ Platform can
 be connected in various ways to the BSP, see :ref:`bsp_connection` for
 more information on how to do it.
 
@@ -88,10 +88,10 @@ A MicroEJ Application is a Java project that can be configured (in the
   * foundation libraries,
   * etc…
 
-To run on a device, the project is compiled and optimized for a
+To run on a device, the application is compiled and optimized for a
 specific MicroEJ Platform.  It generates a ``microejapp.o`` (native
-object code) that is usually directly linked from the
-``<platform>-bsp`` project (no manual action to do after the build).
+object code) that is linked with the
+``<platform>-bsp`` project.
 
 To import an existing MicroEJ Application as zip project in the SDK:
 
@@ -114,15 +114,15 @@ Used to compile and link the following files into the final firmware
   * the ``microejruntime.lib`` or ``microejruntime.a`` (platform),
   * the BSP C files (drivers).
 
-Ivy repository
-~~~~~~~~~~~~~~
+Module (Ivy) repository
+~~~~~~~~~~~~~~~~~~~~~~~
 
-An Ivy repository provides the modules required to build MicroEJ
+An module (Ivy) repository provides the modules required to build MicroEJ
 Platforms and MicroEJ Applications.
 
 * The MicroEJ Central Repository is an online repository of software
   artifacts (libraries, tools, …), see
-  https://repository.microej.com/.
+  https://repository.microej.com/. This repository can also be used as an offline repository, see https://developer.microej.com/central-repository/.
 
 * (Optional) It can be extended with an offline repository (``.zip``)
   that can be imported in the workspace (see
@@ -144,21 +144,18 @@ Dependencies Between Components
   Architecture and a BSP with C toolchain.
 
   * Changing either the MicroEJ Architecture or the C toolchain
-    results in a change of MicroEJ Platform.
+    results in a change of the MicroEJ Platform.
 
 * A MicroEJ Application is independent from the MicroEJ Architecture.
 
-  * It can theoretically run on any MicroEJ Platform.  However, a
-    MicroEJ Application may be dependent on a Foundation Library that
-    is only available on a limited number of MicroEJ Architecture or
-    implemented on a limited number of MicroEJ Platforms.
+  * It can run on any MicroEJ Platform as long the platform provides the required APIs.
 
-  * To port a MicroEJ Application on a new device, means that a new
+  * To port a MicroEJ Application on a new device: a new
     MicroEJ Platform must be created for this device with the exact
-    same features.  The MicroEJ Application will require no change.
+    same features.  The MicroEJ Application will not require any change.
 
-The Process
------------
+How to build
+------------
 
 The process to build a MicroEJ Firmware is two fold:
 
@@ -171,23 +168,23 @@ device.
 
 .. note::
 
-   What about MicroEJ Simulator?  The MicroEJ Application runs onto
-   the MicroEJ Simulateur using the mocks provided by MicroEJ
+   WThe MicroEJ Application runs onto
+   the MicroEJ Simulator using the mocks provided by the MicroEJ
    Platform.
 
 The next schema presents the steps to build a MicroEJ Mono-Sandbox
 Firmware (previously known as MicroEJ Single-app Firmware).  The steps
 are:
 
-1. the MicroEJ Platform is built
+1. Build the MicroEJ Platform using MicroEJ SDK
 
-2. the MicroEJ Application is compiled into a ``microejapp.o``
+2. Build the MicroEJ Application into a ``microejapp.o`` using MicroEJ SDK
 
-3. the BSP is compiled into ``.o``
+3. Compile the BSP C sources into ``.o``using the C toolchain
 
 4. the BSP (``.o``) and the MicroEJ Application (``microejapp.o``) and
-   the MicroEJ Platform (``microejruntime.a``) are linked to produce a
-   final binary called MicroEJ Firmware (e.g. ``application.out``).
+   the MicroEJ Platform (``microejruntime.a``) are linked by the C toolchain to produce a
+   final ELF or binary called MicroEJ Firmware (e.g. ``application.out``).
 
 .. image:: images/build_microej_mono_sandbox_firmware_numbered.PNG
 	:align: center
@@ -202,7 +199,7 @@ Dependencies Between Processes
 
   * When the MicroEJ Architecture (``.xpf``) changes.
 
-  * When a MicroEJ Core Foundation Library (``.xpfp``) changes.
+  * When a MicroEJ Core or any of the Foundation Libraries (``.xpfp``) changes.
 
   * When a Foundation Library changes, either when
 
