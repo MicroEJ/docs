@@ -159,7 +159,7 @@ Dependencies Between Components
 How to build
 ------------
 
-The process to build a MicroEJ Firmware is two fold:
+The process to build a MicroEJ Firmware is two-fold:
 
 1. Build a MicroEJ Platform
 2. Build a MicroEJ Application into a MicroEJ Firmware
@@ -245,11 +245,11 @@ following information (the table below is filled with examples):
    * - MicroEJ SDK
      - 20.07
    * - MEJ32 XPF
-     - ARM Cortex-M / KEIL DEV
+     - ARM Cortex-M4 / IAR DEV
    * - Platform
      - 1.0.0
    * - Application
-     - 1.0.0
+     - 1.2.4
    * - Ivy Repository
      - https://repository.microej.com/packages/repository/2.5.0/microej-5_0-2.5.0.zip
    * - C compiler
