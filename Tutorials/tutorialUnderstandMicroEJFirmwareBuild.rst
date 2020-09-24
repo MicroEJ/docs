@@ -170,7 +170,7 @@ device.
 
 .. note::
 
-   WThe MicroEJ Application runs onto
+   The MicroEJ Application runs onto
    the MicroEJ Simulator using the mocks provided by the MicroEJ
    Platform.
 
