@@ -119,8 +119,8 @@ Used to compile and link the following files into the final firmware
 Module (Ivy) repository
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-An module (Ivy) repository provides the modules required to build MicroEJ
-Platforms and MicroEJ Applications.
+A module (Ivy) repository provides the modules required to build
+MicroEJ Platforms and MicroEJ Applications.
 
 * The MicroEJ Central Repository is an online repository of software
   artifacts (libraries, tools, …), see
@@ -201,7 +201,7 @@ Dependencies Between Processes
 
   * When the MicroEJ Architecture (``.xpf``) changes.
 
-  * When a MicroEJ Core or any of the Foundation Libraries (``.xpfp``) changes.
+  * When a MicroEJ Foundation Library (``.xpfp``) changes.
 
   * When a Foundation Library changes, either when
 
