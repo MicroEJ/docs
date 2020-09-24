@@ -8,7 +8,15 @@ This tutorial explains how to setup an environment for automating MicroEJ module
 and `JFrog Artifactory <https://jfrog.com/artifactory/>`_.
 
 Such environment setup facilitates continuous integration (CI) and continuous delivery (CD), which improves productivity across your development ecosystem,
-by automatically building modules when source code changes, saving build results, reproducing builds and archiving binary modules.
+by automatically:
+
+* building modules when source code changes
+* saving build results
+* reproducing builds
+* archiving binary modules
+
+The tutorial should take 2 hours to complete.
+
 
 Intended Audience
 -----------------
@@ -34,17 +42,20 @@ Prerequisites
 *  Apache Ant ``1.9.x`` installed (`<https://ant.apache.org/bindownload.cgi>`_).
 *  Java Development Kit (JDK) ``1.8.x``.
 
+This tutorial was tested with Jenkins ``2.235.3`` and Artifactory ``6.20.1``.
 
 Overview
 --------
+
+*** what we are going to do - details the steps***
 
 For the purposes of simplifying the steps, this tutorial will be performed locally on a single machine.
 
 
 Artifactory will host MicroEJ modules, divided in 3 repositories:
 
-- ``microej-modules-release-local``: repository initialized with pre-built MicroEJ modules, a mirror of the :ref:`Central Repository <central_repository>`
-- ``microej-build-release-local``: repository initialized with build scripts and tools exported from MicroEJ SDK
+- ``microej-module-repository``: repository initialized with pre-built MicroEJ modules, a mirror of the :ref:`Central Repository <central_repository>`
+- ``microej-build-repository``: repository initialized with build scripts and tools exported from MicroEJ SDK
 - ``libs-snapshot-local``: repository where will be published custom modules
 
 
@@ -87,7 +98,7 @@ This section assumes the prerequisites have been properly installed.
     │   └── ...
     └── ...
 
-.. _get-microej-module-repository:
+.. _get_microej_module_repository:
 
 Get a Module Repository
 -----------------------
@@ -172,7 +183,7 @@ In this section, we will import MicroEJ repositories into Artifactory repositori
 #. Scroll to the :guilabel:`Import Repository from Zip` section.
 #. Import the MicroEJ Module Repository:
     #. As :guilabel:`Target Local Repository`, select ``microej-module-repository`` in the list.
-    #. As :guilabel:`Repository Zip File`, select MicroEJ module repository zip file (``microej-[MicroEJ version]-[version].zip``) that you downloaded earlier (please refer to section :ref:`get-microej-module-repository`).
+    #. As :guilabel:`Repository Zip File`, select MicroEJ module repository zip file (``microej-[MicroEJ version]-[version].zip``) that you downloaded earlier (please refer to section :ref:`get_microej_module_repository`).
     #. Click :guilabel:`Upload`. At the end of upload, click on :guilabel:`Import`. Upload and import may take some time.
 
 #. Import the MicroEJ Build Repository:
@@ -222,17 +233,6 @@ First step is to configure JDK and Ant installations:
     #. Set :guilabel:`ANT_HOME` to ``path/to/apache-ant-1.9.[version]``.
 #. Click on :guilabel:`Save`.
 
-Next step is to configure environment variables:
-
-#. Go to :guilabel:`Manage Jenkins` > :guilabel:`Configure System`.
-#. Scroll to :guilabel:`Global properties` section.
-#. Check :guilabel:`Environment variables`.
-#. Add variable ``MICROEJ_BUILD_TOOLS_HOME``:
-    #. Click :guilabel:`Add`.
-    #. Set :guilabel:`Name` to ``MICROEJ_BUILD_TOOLS_HOME``.
-    #. Set :guilabel:`Value` to the path to ``Tool-CommandLineBuild`` (as defined in :ref:`install_build_tools`)
-#. For Windows users, scroll to :guilabel:`Shell` section and set the path to the :guilabel:`Shell executable` (for example ``C:\Program Files\Git\bin\sh.exe``).
-#. Click on :guilabel:`Save`.
 
 Create a Job Template
 ~~~~~~~~~~~~~~~~~~~~~
@@ -254,16 +254,11 @@ In :guilabel:`Source Code Management` tab:
 #. Set :guilabel:`Branch Specifier` value to ``origin/master``,
 #. In :guilabel:`Additional Behaviours`, click on :guilabel:`Add`, select :guilabel:`Advanced sub-modules behaviors`, then check :guilabel:`Recursively update submodules`.
 
-In :guilabel:`Build Environment` tab:
-
-#. Check :guilabel:`Delete workspace before build starts`.
-#. Check :guilabel:`Add timestamps to the Console Output`.
-
 In :guilabel:`Build` tab:
 
 #. Add build step :guilabel:`Invoke Ant`:
     * As :guilabel:`Ant version`, select ``Ant 1.9``.
-    * Set :guilabel:`Targets` to value ``-lib $MICROEJ_BUILD_TOOLS_HOME/buildKit/ant/lib``.
+    * Set :guilabel:`Targets` to value ``-lib ${MICROEJ_BUILD_TOOLS_HOME}/buildKit/ant/lib``.
     * In :guilabel:`Advanced`, set :guilabel:`Build file` to value ``$MICROEJ_BUILD_TOOLS_HOME/easyant/build-module.ant``.
     * In :guilabel:`Advanced`, expand :guilabel:`Properties` text field then add the following Ant properties:
 
@@ -272,7 +267,11 @@ In :guilabel:`Build` tab:
      personalBuild=false
      jenkins.build.id=$BUILD_ID
      jenkins.node.name=$NODE_NAME
-     is2t.ivysettings.file=$MICROEJ_BUILD_TOOLS_HOME/ivy/ivysettings-artifactory.xml
+     user.ivysettings.file=$MICROEJ_BUILD_TOOLS_HOME/ivy/ivysettings-artifactory.xml
+
+.. image:: images/tuto_microej_cli_jenkins_build.PNG
+    :align: center
+
 
 In :guilabel:`Post-build actions` tab:
     
@@ -302,16 +301,24 @@ In this example, we will create a very simple module using the Sandbox Applicati
 #. Go to :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Sandboxed Application Project`.
 #. Fill in the template fields, set :guilabel:`Project name` to ``com.example.hello-world``.
        
-    .. image:: images/tuto_microej_cli_hello_world.PNG
+    .. image:: images/tuto_microej_cli_module_creation.PNG
         :align: center
 
 #. Click :guilabel:`Finish`. This will create the project files and structure.
 #. Right-click on source folder ``src/main/java`` and select :guilabel:`New` > :guilabel:`Package`. Set a name to the package and click :guilabel:`Finish`.
 #. Right-click on the new package and select :guilabel:`New` > :guilabel:`Class`. Set a name to the class and check ``public static void main(String[] args)``, then click :guilabel:`Finish`.
+
+    .. image:: images/tuto_microej_cli_module_files.PNG
+        :align: center
+
 #. Locate the project files
     #. In the :guilabel:`Package Explorer` view, right-click on the project then click on :guilabel:`Properties`.
     #. Select :guilabel:`Resource` menu.
     #. Click on the arrow button on line :guilabel:`Location` to show the project in the system explorer.
+
+    .. image:: images/tuto_microej_cli_module_location.PNG
+        :align: center
+
 #. Open a terminal from this directory and type the following commands:
 
 .. code-block:: sh
@@ -336,13 +343,22 @@ Start by creating a new job, from the job template, for building our application
 #. Go to Jenkins dashboard.
 #. Click on :guilabel:`New Item`.
 #. Set item name to ``Hello World``.
-#. In :guilabel:`Copy from` field, type ``Template - EasyAnt from Git`` (autocomplete enabled).
+#. In :guilabel:`Copy from` field, type ``Template - MMM from Git`` (autocomplete enabled).
 #. Validate with :guilabel:`Ok` button.
 
 The job configuration page opens, let's replace all the ``TO_REPLACE`` placeholders from the job template with correct values:
 
 #. In :guilabel:`General` tab, set ``easyant.module.dir`` to value ``$WORKSPACE/com.example.hello-world``.
+
+    .. image:: images/tuto_microej_cli_jenkins_parameter.PNG
+        :align: center
+
 #. In :guilabel:`Source Code Management`, edit :guilabel:`Repository URL` to ``~/hello_world.git``.
+
+    .. image:: images/tuto_microej_cli_jenkins_git_hello.PNG
+        :align: center
+
+
 #. Click on :guilabel:`Save`.
 
 
@@ -364,11 +380,11 @@ Congratulations!
 At this point of the tutorial:
 
 * Artifactory is hosting your module builds and MicroEJ modules. 
-* Jenkins automates the build process using EasyAnt.
+* Jenkins automates the build process using :ref:`MicroEJ Module Manager <mmm>`.
 
 The next steps recommended are:
 
-* Adapt Jenkins/Artifactory/EasyAnt configuration to your development ecosystem.
+* Adapt Jenkins/Artifactory/:ref:`MicroEJ Module Manager <mmm>` configuration to your development ecosystem.
 
 
 Appendix
