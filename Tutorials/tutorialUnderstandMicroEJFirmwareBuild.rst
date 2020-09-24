@@ -231,3 +231,26 @@ Dependencies Between Processes
 
   * The MicroEJ Platform (``microejruntime.a``) changes.
 
+Get Support
+-----------
+
+If any questions, feel free to contact our support team with the
+following information (the table below is filled with examples):
+
+.. list-table::
+   :widths: 15 30
+
+   * - Delivery
+     - Name
+   * - MicroEJ SDK
+     - 20.07
+   * - MEJ32 XPF
+     - ARM Cortex-M / KEIL DEV
+   * - Platform
+     - 1.0.0
+   * - Application
+     - 1.0.0
+   * - Ivy Repository
+     - https://repository.microej.com/packages/repository/2.5.0/microej-5_0-2.5.0.zip
+   * - C compiler
+     - KEIL 5.25
