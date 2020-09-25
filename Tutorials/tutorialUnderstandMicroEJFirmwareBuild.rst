@@ -209,7 +209,7 @@ Dependencies Between Processes
 
     * The front-panel or mock implementation (``.java``) changes.
 
-* The MicroEJ Platform need not to be rebuilt in the following cases:
+* Rebuilding the MicroEJ Platform is not necessary in the following cases:
 
   * When the implementation (``.c``) of a Foundation Library changes.
 
