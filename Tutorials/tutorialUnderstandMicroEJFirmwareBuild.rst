@@ -148,7 +148,7 @@ Dependencies Between Components
   * Changing either the MicroEJ Architecture or the C toolchain
     results in a change of the MicroEJ Platform.
 
-* A MicroEJ Application is independent from the MicroEJ Architecture.
+* A MicroEJ Application is independent of the MicroEJ Architecture.
 
   * It can run on any MicroEJ Platform as long the platform provides the required APIs.
 
