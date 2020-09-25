@@ -30,8 +30,7 @@ The MicroEJ Architectures are distributed into 2 formats:
 
 * EVAL: evaluation license with runtime limitations (explained in SDK
   developer guide).
-* DEV: production license (these versions are only distributed by
-  MicroEJ sales & Customer Care team).
+* DEV: production license (only MicroEJ sales & Customer Care team distribute this version).
 
 The list of supported MicroEJ Architectures can be found here
 https://developer.microej.com/mej32-embedded-runtime-architectures/#arch
