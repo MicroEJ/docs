@@ -85,7 +85,7 @@ One can override the default implementation by implementing the ``LLTRACE_impl.h
 
 An implementation of this API mapped to **SEGGER SystemView** concepts is available.
 
-- This allows to visualize the different traces directly in **SEGGER SystemView**.
+- This implementation allows visualizing the different traces directly in **SEGGER SystemView**.
 
 - The **SystemView** module is added to the targetted platform and initialized in the main function of the platform.
 
