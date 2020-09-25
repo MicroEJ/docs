@@ -48,7 +48,7 @@ Multiple ways are available to start and stop the trace system:
 
   - Check the option ``Start execution traces automatically``.
 
-To record an event, you first need to instantiate a ``Tracer`` object by calling its contructor with two parameters.
+To record an event, you first need to instantiate a ``Tracer`` object by calling its constructor with two parameters.
 The first parameter, ``name``, is a String that will represent the name of the ``Tracer`` object group.
 The second parameter, ``nbEventTypes``, is an integer representing the maximum number of event types available for the group.
 
