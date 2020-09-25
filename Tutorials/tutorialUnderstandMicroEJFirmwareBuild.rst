@@ -58,7 +58,7 @@ This package includes:
 * the abstraction layers implementation of the platform architecture and foundations libraries
 * the MicroEJ Simulator and its associated MicroEJ mocks
 
-The platform .zip files contains:
+The platform .zip files contain:
 
 * ``<platform>-configuration``: The configuration of the MicroEJ
   Platform
