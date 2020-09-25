@@ -58,7 +58,7 @@ The methods ``recordEvent(...)`` always needs the eventID as the first parameter
 
 To record the end of an event, use the method ``recordEventEnd(int eventID)``. 
 It will trace the duration of an event previously recorded with one of the ``recordEvent(int)`` methods.
-The ``recordEventEnd(...)`` method can also have another int parameter for a custom value for the event end. It can be used to trace the returned value of a method.
+The ``recordEventEnd(...)`` method can also have another int parameter for a custom value for the event end. One can use it to trace the returned value of a method.
 
 This library gives access to a String constant ``TRACE_ENABLED_CONSTANT_PROPERTY`` representing the :ref:`BON Constant <section.classpath.elements.constants>` ``core.trace.enabled``.
 
