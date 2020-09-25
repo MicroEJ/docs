@@ -42,7 +42,7 @@ Multiple ways are available to start and stop the trace system:
 
 - from the **launcher configuration** of the application: 
 
-  - Right click on the project and go to ``Run As > Run Configurations``,
+  - Right-click on the project and go to ``Run As > Run Configurations``,
 
   - In the tab ``Configuration``, select the Category ``Runtime``,
 
