@@ -28,7 +28,7 @@ MicroEJ gives access to two Trace APIs:
 
 To activate the trace system on the platform, the property ``core.trace.enabled`` needs to be set to true.
   
-- Right click on the project and go to ``Run As > Run Configurations``,
+- Right-click on the project and go to ``Run As > Run Configurations``,
 
 - In the tab ``Configuration``, select the category ``Runtime``,
 
