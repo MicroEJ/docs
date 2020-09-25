@@ -151,8 +151,8 @@ Dependencies Between Components
 
   * It can run on any MicroEJ Platform as long the platform provides the required APIs.
 
-  * To port a MicroEJ Application on a new device: a new
-    MicroEJ Platform must be created for this device with the exact
+  * To run a MicroEJ Application on a new device, create a new
+    MicroEJ Platform for this device with the exact
     same features.  The MicroEJ Application will not require any change.
 
 How to build
