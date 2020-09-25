@@ -63,7 +63,7 @@ The ``recordEventEnd(...)`` method can also have another int parameter for a cus
 This library gives access to a String constant ``TRACE_ENABLED_CONSTANT_PROPERTY`` representing the :ref:`BON Constant <section.classpath.elements.constants>` ``core.trace.enabled``.
 
 This **BON Constant** can be used to remove, at build time, portions of code when trace is disabled. 
-To do that, just surround tracer record calls with a if statement that checks the state of the constant. 
+To do that, just surround tracer record calls with a if statement that checks the constant's state. 
 When the constant is set to false, the code inside the if statement will not be embedded with the application and thus, will not impact the performances.
 
 .. code-block:: java
