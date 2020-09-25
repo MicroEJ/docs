@@ -143,7 +143,7 @@ Dependencies Between Components
     MicroEJ Firmware.
 
 * A MicroEJ Platform consists of the aggregation of both a MicroEJ
-  Architecture and a BSP with C toolchain.
+  Architecture and a BSP with a C toolchain.
 
   * Changing either the MicroEJ Architecture or the C toolchain
     results in a change of the MicroEJ Platform.
