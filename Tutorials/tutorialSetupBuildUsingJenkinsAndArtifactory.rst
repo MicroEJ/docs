@@ -22,7 +22,7 @@ Intended Audience
 -----------------
 
 The audience for this document is engineers who are in charge of integrating
-:ref:`MicroEJ Module Manager <mmm>` to their continuous integration environment.
+:ref:`MicroEJ Module Manager (MMM) <mmm>` to their continuous integration environment.
 
 In addition, this tutorial should be of interest to all developers
 wishing to understand how MicroEJ works with headless module builds.
@@ -47,10 +47,17 @@ This tutorial was tested with Jenkins ``2.235.3`` and Artifactory ``6.20.1``.
 Overview
 --------
 
-*** what we are going to do - details the steps***
+The next sections describe step by step how to setup the build environment and build your first MicroEJ module.
+
+The steps to follow are:
+
+#. Install and setup MicroEJ build tools, Jenkins and Artifactory
+#. Create a job template in Jenkins for MMM builds
+#. Create a simple MicroEJ module (Hello World)
+#. Create a new job in Jenkins for the Hello World module
+#. Build the module
 
 For the purposes of simplifying the steps, this tutorial will be performed locally on a single machine.
-
 
 Artifactory will host MicroEJ modules, divided in 3 repositories:
 
@@ -170,8 +177,12 @@ Next step is to create the repositories that will hold the MicroEJ modules.
 #. Make these two repositories accessible by default:
     #. Go to :guilabel:`Admin` > :guilabel:`Security` > :guilabel:`Permissions`. 
     #. Click on :guilabel:`Anything` entry (do not check the line)
-    #. On the :guilabel:`Resources` tab, drag repositories ``microej-module-repository`` and ``microej-build-repository`` from the :guilabel:`Available repositories` area to :guilabel:`Included Repositories` area.
+    #. On the :guilabel:`Resources` tab, drag repositories ``microej-module-repository`` and ``microej-build-repository`` from the :guilabel:`Available repositories` area to the :guilabel:`Included Repositories` area.
     #. Click on :guilabel:`Save & Finish`.
+
+.. image:: images/tuto_microej_cli_artifactory_permissions.PNG
+    :align: center
+
 
 
 Import MicroEJ Repositories
@@ -272,13 +283,6 @@ In :guilabel:`Build` tab:
 .. image:: images/tuto_microej_cli_jenkins_build.PNG
     :align: center
 
-
-In :guilabel:`Post-build actions` tab:
-    
-#. Add post-build action :guilabel:`Publish JUnit test result report`:
-#. Set :guilabel:`Test report XMLs` to ``**/target~/test/xml/**/test-report.xml, **/target~/test/xml/**/*Test.xml``.
-#. Check :guilabel:`Retain long standard output/error`.
-#. Check :guilabel:`Do not fail the build on empty test results`
 
 Finally, click on :guilabel:`Save`.
 
@@ -407,6 +411,13 @@ In :guilabel:`Build triggers` tab:
  
 #. Check :guilabel:`Poll SCM`, and set a CRON-like value (for example ``H/30 * * * *`` to poll SCM for changes every 30 minutes).
 
+In :guilabel:`Post-build actions` tab:
+    
+#. Add post-build action :guilabel:`Publish JUnit test result report`:
+#. Set :guilabel:`Test report XMLs` to ``**/target~/test/xml/**/test-report.xml, **/target~/test/xml/**/*Test.xml``.
+#. Check :guilabel:`Retain long standard output/error`.
+#. Check :guilabel:`Do not fail the build on empty test results`
+
 
 Add a custom certificate
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -424,3 +435,5 @@ This is because the authority is unknown from a Java perspective. To make it tru
 #. Click on :guilabel:`Tools`, then :guilabel:`Import Trusted Certificate`.
 #. Select your certificate.
 #. Save the ``cacerts`` file.
+
+
