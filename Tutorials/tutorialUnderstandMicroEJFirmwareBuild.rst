@@ -197,7 +197,7 @@ MicroEJ Platform to the BSP.
 Dependencies Between Processes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* The MicroEJ Platform must be rebuilt in the following cases:
+* Rebuild the MicroEJ Platform in the following cases:
 
   * When the MicroEJ Architecture (``.xpf``) changes.
 
