@@ -235,7 +235,7 @@ Get Support
 -----------
 
 If any questions, feel free to contact our support team with the
-following information (the table below is filled with examples):
+following information (the table below is an example):
 
 .. list-table::
    :widths: 15 30
