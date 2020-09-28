@@ -164,7 +164,7 @@ The process to build a MicroEJ Firmware is two-fold:
 2. Build a MicroEJ Application into a MicroEJ Firmware
 
 The MicroEJ Application is compiled against the MicroEJ Platform to
-produce the MicroEJ Firmware that will be deployed on the target
+produce the MicroEJ Firmware deployed on the target
 device.
 
 .. note::
