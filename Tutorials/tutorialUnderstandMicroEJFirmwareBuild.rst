@@ -173,17 +173,27 @@ device.
    the MicroEJ Simulator using the mocks provided by the MicroEJ
    Platform.
 
+Build a MicroEJ Platform
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The next schema presents the components and process to build a MicroEJ Platform.
+
+.. image:: images/platform-build_workflow.PNG
+    :align: center
+
+Build a MicroEJ Firmware
+~~~~~~~~~~~~~~~~~~~~~~~~
+
 The next schema presents the steps to build a MicroEJ Mono-Sandbox
 Firmware (previously known as MicroEJ Single-app Firmware).  The steps
 are:
 
-1. Build the MicroEJ Platform using MicroEJ SDK
 
-2. Build the MicroEJ Application into a ``microejapp.o`` using MicroEJ SDK
+1. Build the MicroEJ Application into a ``microejapp.o`` using MicroEJ SDK
 
-3. Compile the BSP C sources into ``.o`` using the C toolchain
+2. Compile the BSP C sources into ``.o`` using the C toolchain
 
-4. the BSP (``.o``) and the MicroEJ Application (``microejapp.o``) and
+3. the BSP (``.o``) and the MicroEJ Application (``microejapp.o``) and
    the MicroEJ Platform (``microejruntime.a``) are linked by the C toolchain to produce a
    final ELF or binary called MicroEJ Firmware (e.g. ``application.out``).
 
