@@ -32,7 +32,7 @@ The MicroEJ Architectures are distributed into 2 formats:
   developer guide).
 * DEV: production license (only MicroEJ sales & Customer Care team distribute this version).
 
-The list of supported MicroEJ Architectures can be found here
+The supported MicroEJ Architectures are listed here
 https://developer.microej.com/mej32-embedded-runtime-architectures/#arch
 
 The MicroEJ Architecture is either provided from:
