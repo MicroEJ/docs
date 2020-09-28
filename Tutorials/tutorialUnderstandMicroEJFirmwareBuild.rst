@@ -69,7 +69,7 @@ See :ref:`new_platform_creation` to learn how to create a MicroEJ
 Platform using a MicroEJ Platform Source project.
 
 Depending on the requirements of the project, the MicroEJ Platform can
-be connected in various ways to the BSP, see :ref:`bsp_connection` for
+be connected in various ways to the BSP; see :ref:`bsp_connection` for
 more information on how to do it.
 
 MicroEJ Application
