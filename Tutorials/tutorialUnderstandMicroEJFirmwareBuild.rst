@@ -196,7 +196,7 @@ MicroEJ Platform to the BSP.
 Dependencies Between Processes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Rebuild the MicroEJ Platform in the following cases:
+* Rebuild the MicroEJ Platform:
 
   * When the MicroEJ Architecture (``.xpf``) changes.
 
@@ -208,7 +208,7 @@ Dependencies Between Processes
 
     * The front-panel or mock implementation (``.java``) changes.
 
-* Rebuilding the MicroEJ Platform is not necessary in the following cases:
+* Rebuild of the MicroEJ Platform is not required:
 
   * When the implementation (``.c``) of a Foundation Library changes.
 
@@ -216,19 +216,25 @@ Dependencies Between Processes
 
   * When the MicroEJ Application changes.
 
-* The MicroEJ Application must be rebuilt when it changes or when the
-  MicroEJ Platform changes.
+* Rebuild MicroEJ Application:
 
-* The BSP must be rebuilt when it changes or when the MicroEJ Platform
-  changes.
+  * When it changes.
 
-* The MicroEJ Firmware must be rebuilt (i.e. linked) when:
+  * When the MicroEJ Platform changes.
 
-  * MicroEJ Application (``microejapp.o``) changes.
+* Rebuild the BSP:
 
-  * The BSP (``*.o``) changes.
+  * When it changes.
 
-  * The MicroEJ Platform (``microejruntime.a``) changes.
+  * When the MicroEJ Platform changes.
+
+* Rebuild the MicroEJ Firmware:
+
+  * When the MicroEJ Application (``microejapp.o``) changes.
+
+  * When the BSP (``*.o``) changes.
+
+  * When the MicroEJ Platform (``microejruntime.a``) changes.
 
 Get Support
 -----------
