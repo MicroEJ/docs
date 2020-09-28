@@ -26,7 +26,7 @@ A MicroEJ Architecture contains the runtime port to a target
 instruction set (ISA) and a C compiler (CC) and MicroEJ Foundation
 Libraries.
 
-The MicroEJ Architectures are distributed into 2 formats:
+The MicroEJ Architectures are distributed into two formats:
 
 * EVAL: evaluation license with runtime limitations (explained in SDK
   developer guide).
