@@ -122,7 +122,7 @@ A module (Ivy) repository provides the modules required to build
 MicroEJ Platforms and MicroEJ Applications.
 
 * The MicroEJ Central Repository is an online repository of software
-  artifacts (libraries, tools, …), see
+  artifacts (libraries, tools, etc.), see
   https://repository.microej.com/. This repository can also be used as an offline repository, see https://developer.microej.com/central-repository/.
 
 * (Optional) It can be extended with an offline repository (``.zip``)
