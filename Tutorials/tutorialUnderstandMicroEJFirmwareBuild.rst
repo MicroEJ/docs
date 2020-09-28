@@ -103,7 +103,7 @@ To import an existing MicroEJ Application as zip project in the SDK:
 * And select :guilabel:`Finish` import.
 
 See :ref:`microej.sample.applications` for more information on how to
-create, configure and develop a MicroEJ Application.
+create, configure, and develop a MicroEJ Application.
 
 C Toolchain (GCC, KEIL, IAR, …)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
