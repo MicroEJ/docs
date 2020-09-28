@@ -204,7 +204,7 @@ Dependencies Between Processes
 
   * When a Foundation Library changes, either when
 
-    * The public API (``.java`` or ``.h``) change.
+    * The public API (``.java`` or ``.h``) changes.
 
     * The front-panel or mock implementation (``.java``) changes.
 
