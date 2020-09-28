@@ -94,7 +94,7 @@ specific MicroEJ Platform.  It generates a ``microejapp.o`` (native
 object code) linked with the
 ``<platform>-bsp`` project.
 
-To import an existing MicroEJ Application as zip project in the SDK:
+To import an existing MicroEJ Application as a zipped project in the SDK:
 
 * Go to :guilabel:`File` > :guilabel:`Import…` > :guilabel:`General` >
   :guilabel:`Existing Projects into Workspace` > :guilabel:`Select
