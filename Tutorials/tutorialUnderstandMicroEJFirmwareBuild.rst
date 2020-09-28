@@ -87,7 +87,7 @@ A MicroEJ Application is a Java project that can be configured (in the
 
   * memory (example: Java heap, Java stack),
   * foundation libraries,
-  * etc…
+  * etc.
 
 To run on a device, the application is compiled and optimized for a
 specific MicroEJ Platform.  It generates a ``microejapp.o`` (native
