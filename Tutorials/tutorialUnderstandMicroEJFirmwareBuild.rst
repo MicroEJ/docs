@@ -91,7 +91,7 @@ A MicroEJ Application is a Java project that can be configured (in the
 
 To run on a device, the application is compiled and optimized for a
 specific MicroEJ Platform.  It generates a ``microejapp.o`` (native
-object code) that is linked with the
+object code) linked with the
 ``<platform>-bsp`` project.
 
 To import an existing MicroEJ Application as zip project in the SDK:
