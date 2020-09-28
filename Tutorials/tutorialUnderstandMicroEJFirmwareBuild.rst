@@ -52,7 +52,7 @@ MicroEJ Platform Source (.zip)
 
 This package includes:
 
-* a C Board Support Package (BSP) with or without RTOS and C drivers
+* a C Board Support Package (BSP) with C drivers and an optional RTOS
 * a MEJ32 Architecture
 * the abstraction layers implementation of the platform architecture and foundations libraries
 * the MicroEJ Simulator and its associated MicroEJ mocks
