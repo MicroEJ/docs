@@ -249,8 +249,8 @@ Dependencies Between Processes
 Get Support
 -----------
 
-If any questions, feel free to contact our support team with the
-following information (the table below is an example):
+If any questions, feel free to contact `our support team <https://www.microej.com/contact/#form_2>`
+with the following information (the table below is an example):
 
 .. list-table::
    :widths: 15 30
