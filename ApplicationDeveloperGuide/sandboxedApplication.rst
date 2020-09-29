@@ -7,6 +7,7 @@ Sandboxed Application
    :maxdepth: 2
 
    sandboxedAppDevelopment
+   applicationPublication
    sharedInterface
 
 ..
