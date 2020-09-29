@@ -249,7 +249,7 @@ Dependencies Between Processes
 Get Support
 -----------
 
-If any questions, feel free to contact `our support team <https://www.microej.com/contact/#form_2>`
+If any questions, feel free to contact `our support team <https://www.microej.com/contact/#form_2>`_
 with the following information (the table below is an example):
 
 .. list-table::
