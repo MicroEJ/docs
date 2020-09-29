@@ -161,7 +161,7 @@ How to build
 The process to build a MicroEJ Firmware is two-fold:
 
 1. Build a MicroEJ Platform
-2. Build a MicroEJ Application into a MicroEJ Firmware
+2. Build a MicroEJ Application
 
 The MicroEJ Application is compiled against the MicroEJ Platform to
 produce the MicroEJ Firmware deployed on the target
@@ -169,7 +169,7 @@ device.
 
 .. note::
 
-   The MicroEJ Application runs onto
+   The MicroEJ Application also runs onto
    the MicroEJ Simulator using the mocks provided by the MicroEJ
    Platform.
 
@@ -268,4 +268,4 @@ following information (the table below is an example):
    * - Ivy Repository
      - https://repository.microej.com/packages/repository/2.5.0/microej-5_0-2.5.0.zip
    * - C compiler
-     - KEIL 5.25
+     - IAR 8.40.1
