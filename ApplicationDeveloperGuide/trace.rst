@@ -131,5 +131,5 @@ It only prints the ID of the recorded event followed by the values given in para
 A Platform can connect its own implementation by overriding the functions defined in the ``LLTRACE_impl.h`` file.
 
 MicroEJ provides an implementation for `SEGGER SystemView <https://www.segger.com/products/development-tools/systemview/>`_ tool.
-Please contact MicroEJ Support for more about information about how to integrate this Platform module.
+Please contact MicroEJ Support for more information about how to integrate this Platform module.
 
