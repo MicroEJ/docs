@@ -270,6 +270,8 @@ The String key parameter must be resolved as an inlined String:
 
 The String value is converted to the desired type using conversion rules described by the :ref:`[BON] <esr-specifications>` API.
 
+.. _if_constant_removal:
+
 A boolean constant declared in an ``if`` statement condition can be used to fully remove portions of code.
 This feature is similar to C pre-processors ``#ifdef`` directive with the difference that this optimization is performed at binary level
 without having to recompile the sources.
