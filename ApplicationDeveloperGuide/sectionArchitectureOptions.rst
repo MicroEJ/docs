@@ -52,6 +52,8 @@ When this option is enabled, ``assert`` statements are executed. Please note
 that the executed code may produce side effects or throw
 ``java.lang.AssertionError``.
 
+.. _architecture_options_group_trace:
+
 Group: Trace
 ------------
 
