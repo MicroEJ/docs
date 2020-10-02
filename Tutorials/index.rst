@@ -8,6 +8,7 @@ Tutorials
 
    tutorialUnderstandMicroEJFirmwareBuild
    tutorialCreateCustomPlatform
+   applicationTrace
    tutorialCreateFirmwareFromScratch
 
 ..
