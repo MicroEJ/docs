@@ -16,8 +16,9 @@ The Components
 As depicted in the following image, several resources and tools are
 used to build a MicroEJ Firmware.
 
-.. image:: images/qa_resources-v3.png
-	:align: center
+.. image:: images/qa_resources-v3.PNG
+    :scale: 70
+    :align: center
 
 MicroEJ Architecture (.xpf, .xpfp)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -185,6 +186,7 @@ Build a MicroEJ Platform
 The next schema presents the components and process to build a MicroEJ Platform.
 
 .. image:: images/platform-build_workflow.PNG
+    :scale: 80
     :align: center
 
 Build a MicroEJ Firmware
@@ -204,7 +206,8 @@ are:
    final ELF or binary called MicroEJ Firmware (e.g. ``application.out``).
 
 .. image:: images/build_microej_mono_sandbox_firmware_numbered.PNG
-	:align: center
+    :scale: 80
+    :align: center
 
 See :ref:`bsp_connection` for more information on how to connect the
 MicroEJ Platform to the BSP.
