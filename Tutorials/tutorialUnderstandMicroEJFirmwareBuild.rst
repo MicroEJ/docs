@@ -30,18 +30,24 @@ The MicroEJ Architectures are distributed into two formats:
 
 * EVAL: evaluation license with runtime limitations (explained in SDK
   developer guide).
-* DEV: production license (only MicroEJ sales & Customer Care team distribute this version).
+
+* PROD: production license (only MicroEJ sales & Customer Care team
+  distribute this version).
 
 The supported MicroEJ Architectures are listed here
 https://developer.microej.com/mej32-embedded-runtime-architectures/#arch
 
 The MicroEJ Architecture is either provided from:
 
-* For EVAL license only: the MicroEJ Repository at https://repository.microej.com/architectures/
-* For DEV license only: SDK license site https://license.microej.com/
+* For EVAL license only: the MicroEJ Repository at
+  https://repository.microej.com/architectures/
+
+* For PROD license only: SDK license site https://license.microej.com/
   (:guilabel:`MyProduct` > :guilabel:`Download additional products`
   will list the downloads available).  See
-  :ref:`gettingstarted-installlicensesdev` for help with DEV license.
+  :ref:`gettingstarted-installlicensesprod` for help with PROD
+  license.
+
 * MicroEJ sales or customer care team if the requested architecture is not listed as available.
 
 See :ref:`architecture_import` for a description on how to import a
