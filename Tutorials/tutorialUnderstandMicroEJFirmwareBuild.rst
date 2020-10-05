@@ -267,7 +267,7 @@ with the following information (the table below is an example):
    * - Delivery
      - Name
    * - MicroEJ SDK
-     - 20.07
+     - Distribution 20.07 / Version 5.2.0 (see :ref:`get_sdk_version`)
    * - MEJ32 XPF
      - ARM Cortex-M4 / IAR DEV
    * - Platform
