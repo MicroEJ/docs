@@ -122,14 +122,14 @@ Used to compile and link the following files into the final firmware
   * the ``microejruntime.lib`` or ``microejruntime.a`` (platform),
   * the BSP C files (drivers).
 
-Module (Ivy) repository
+Module Repository
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-A module (Ivy) repository provides the modules required to build
+A Module Repository provides the modules required to build
 MicroEJ Platforms and MicroEJ Applications.
 
 * The MicroEJ Central Repository is an online repository of software
-  artifacts (libraries, tools, etc.), see
+  modules (libraries, tools, etc.), see
   https://repository.microej.com/. This repository can also be used as an offline repository, see https://developer.microej.com/central-repository/.
 
 * (Optional) It can be extended with an offline repository (``.zip``)
@@ -274,7 +274,7 @@ with the following information (the table below is an example):
      - 1.0.0
    * - Application
      - 1.2.4
-   * - Ivy Repository
+   * - Module Repository
      - https://repository.microej.com/packages/repository/2.5.0/microej-5_0-2.5.0.zip
    * - C compiler
      - IAR 8.40.1
