@@ -1,4 +1,4 @@
-Understand how to build a MicroEJ Firmware and its dependencies
+Understand How to Build a MicroEJ Firmware and its Dependencies
 ===============================================================
 
 A MicroEJ Firmware is built from several input resources and tools.
@@ -162,7 +162,7 @@ Dependencies Between Components
     MicroEJ Platform for this device with the exact
     same features.  The MicroEJ Application will not require any change.
 
-How to build
+How to Build
 ------------
 
 The process to build a MicroEJ Firmware is two-fold:
