@@ -1,4 +1,4 @@
-Understand how to build a MicroEJ Firmware and its dependencies
+Understand How to Build a MicroEJ Firmware and its Dependencies
 ===============================================================
 
 A MicroEJ Firmware is built from several input resources and tools.
@@ -16,8 +16,9 @@ The Components
 As depicted in the following image, several resources and tools are
 used to build a MicroEJ Firmware.
 
-.. image:: images/qa_resources-v3.png
-	:align: center
+.. image:: images/qa_resources-v3.PNG
+    :scale: 70
+    :align: center
 
 MicroEJ Architecture (.xpf, .xpfp)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -30,18 +31,24 @@ The MicroEJ Architectures are distributed into two formats:
 
 * EVAL: evaluation license with runtime limitations (explained in SDK
   developer guide).
-* DEV: production license (only MicroEJ sales & Customer Care team distribute this version).
+
+* PROD: production license (only MicroEJ sales & Customer Care team
+  distribute this version).
 
 The supported MicroEJ Architectures are listed here
 https://developer.microej.com/mej32-embedded-runtime-architectures/#arch
 
 The MicroEJ Architecture is either provided from:
 
-* For EVAL license only: the MicroEJ Repository at https://repository.microej.com/architectures/
-* For DEV license only: SDK license site https://license.microej.com/
+* For EVAL license only: the MicroEJ Repository at
+  https://repository.microej.com/architectures/
+
+* For PROD license only: SDK license site https://license.microej.com/
   (:guilabel:`MyProduct` > :guilabel:`Download additional products`
   will list the downloads available).  See
-  :ref:`gettingstarted-installlicensesdev` for help with DEV license.
+  :ref:`gettingstarted-installlicensesprod` for help with PROD
+  license.
+
 * MicroEJ sales or customer care team if the requested architecture is not listed as available.
 
 See :ref:`architecture_import` for a description on how to import a
@@ -115,14 +122,14 @@ Used to compile and link the following files into the final firmware
   * the ``microejruntime.lib`` or ``microejruntime.a`` (platform),
   * the BSP C files (drivers).
 
-Module (Ivy) repository
+Module Repository
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-A module (Ivy) repository provides the modules required to build
+A Module Repository provides the modules required to build
 MicroEJ Platforms and MicroEJ Applications.
 
 * The MicroEJ Central Repository is an online repository of software
-  artifacts (libraries, tools, etc.), see
+  modules (libraries, tools, etc.), see
   https://repository.microej.com/. This repository can also be used as an offline repository, see https://developer.microej.com/central-repository/.
 
 * (Optional) It can be extended with an offline repository (``.zip``)
@@ -155,7 +162,7 @@ Dependencies Between Components
     MicroEJ Platform for this device with the exact
     same features.  The MicroEJ Application will not require any change.
 
-How to build
+How to Build
 ------------
 
 The process to build a MicroEJ Firmware is two-fold:
@@ -179,6 +186,7 @@ Build a MicroEJ Platform
 The next schema presents the components and process to build a MicroEJ Platform.
 
 .. image:: images/platform-build_workflow.PNG
+    :scale: 80
     :align: center
 
 Build a MicroEJ Firmware
@@ -198,7 +206,8 @@ are:
    final ELF or binary called MicroEJ Firmware (e.g. ``application.out``).
 
 .. image:: images/build_microej_mono_sandbox_firmware_numbered.PNG
-	:align: center
+    :scale: 80
+    :align: center
 
 See :ref:`bsp_connection` for more information on how to connect the
 MicroEJ Platform to the BSP.
@@ -258,14 +267,14 @@ with the following information (the table below is an example):
    * - Delivery
      - Name
    * - MicroEJ SDK
-     - 20.07
+     - Distribution 20.07 / Version 5.2.0 (see :ref:`get_sdk_version`)
    * - MEJ32 XPF
      - ARM Cortex-M4 / IAR DEV
    * - Platform
      - 1.0.0
    * - Application
      - 1.2.4
-   * - Ivy Repository
+   * - Module Repository
      - https://repository.microej.com/packages/repository/2.5.0/microej-5_0-2.5.0.zip
    * - C compiler
      - IAR 8.40.1
