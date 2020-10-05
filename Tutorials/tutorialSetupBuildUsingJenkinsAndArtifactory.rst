@@ -31,7 +31,18 @@ For those who are only interested by command line module build, refer to https:/
 
 Introduction
 ------------
-TODO schema MMM derived big picture (typical infrastructure)
+
+The overall build and deployment flow of a module can be summarized as follows:
+
+#. Some event triggers the build process (i.e module source changed, user action, scheduled routine, etc.)
+#. The module source code is retrieved from the source control system
+#. The module dependencies are imported from the repository manager
+#. The automation server then proceeds to building the module
+#. If the build is successfull, the module binary is deployed on Artifactory
+
+.. image:: images/tuto_microej_cli_flow.PNG
+    :align: center
+
 
 
 Prerequisites
@@ -52,9 +63,9 @@ The next sections describe step by step how to setup the build environment and b
 The steps to follow are:
 
 #. Install and setup MicroEJ build tools, Jenkins and Artifactory
-#. Create a job template in Jenkins for MMM builds
+#. Create a Jenkins job template for MMM builds
 #. Create a simple MicroEJ module (Hello World)
-#. Create a new job in Jenkins for the Hello World module
+#. Create a new Jenkins job for the Hello World module
 #. Build the module
 
 For the purposes of simplifying the steps, this tutorial will be performed locally on a single machine.
