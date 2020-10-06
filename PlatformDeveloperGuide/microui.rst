@@ -200,7 +200,13 @@ MicroUI Initialization step.
 Use
 ===
 
-The classpath variable named ``MICROUI-2.0`` is available.
+The `MicroUI API module <https://repository.microej.com/artifacts/ej/api/microui/>`_
+must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
+Application project:
+
+::
+
+  <dependency org="ej.api" name="microui" rev="2.4.0"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
