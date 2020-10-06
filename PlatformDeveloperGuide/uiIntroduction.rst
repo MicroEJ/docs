@@ -1,7 +1,7 @@
 Principle
 =========
 
-The User Interface Extension features one of the fastest graphical engines, associated with a unique int-based event management system. It provides :ref:`[MUI] library <esr-specifications>` implementation. 
+The User Interface Extension features one of the fastest graphical engines, associated with a unique int-based event management system. It provides :ref:`[MUI] library <esr-specifications>` implementation. This chapter describes the *UI3* notions, available since MicroEJ Architecture UI pack 13.0.0 and higher: MicroUI 3.0, Front Panel v6, low-level APIs ``LLUI_xxx`` etc.
 
 The diagram below shows a simplified view of the components involved in the provisioning of User Interface Extension.
 
