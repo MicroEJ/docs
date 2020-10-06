@@ -35,10 +35,10 @@ Introduction
 The overall build and deployment flow of a module can be summarized as follows:
 
 #. Some event triggers the build process (i.e module source changed, user action, scheduled routine, etc.)
-#. The module source code is retrieved from the source control system
-#. The module dependencies are imported from the repository manager
-#. The automation server then proceeds to building the module
-#. If the build is successful, the module binary is deployed on Artifactory
+#. The module source code is retrieved from the Source Control System
+#. The module dependencies are imported from the Repository Manager
+#. The Automation Server then proceeds to building the module
+#. If the build is successful, the module binary is deployed to the Repository Manager
 
 .. image:: images/tuto_microej_cli_flow.PNG
     :align: center
