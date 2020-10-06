@@ -179,9 +179,13 @@ its relative tools.
 Use
 ===
 
-A classpath variable named ``SP-2.0`` is available, which must be added
-to the build path of the MicroEJ Application project in order to access
-the :ref:`[SP] <esr-specifications>` library.
+The `Shielded Plug API Module <https://repository.microej.com/artifacts/ej/api/sp/>`_
+must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to allow access to the :ref:`[SP] <esr-specifications>` library.
+
+::
+
+   <dependency org="ej.api" name="sp" rev="2.+"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.

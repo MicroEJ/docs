@@ -347,17 +347,23 @@ application" mode is installed.
 Use
 ===
 
-A MicroEJ classpath variable named ``EDC-1.2`` is available, according
-to the selected foundation core library. This MicroEJ classpath variable
-is always required in the build path of a MicroEJ project; and all
-others libraries depend on it. This library provides a set of options.
-Refer to the chapter :ref:`application_options` which lists all
-available options.
+The `EDC API Module <https://repository.microej.com/artifacts/ej/api/edc/>`_ must 
+be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ Application 
+Project. This MicroEJ module is always required in the build path of a MicroEJ project; 
+and all others libraries depend on it. This library provides a set of options.
+Refer to the chapter :ref:`application_options` which lists all available options.
 
-Another classpath variable named ``BON-1.2`` is available. This variable
-must be added to the build path of the MicroEJ Application project in
-order to access the :ref:`[BON] library <esr-specifications>`.
+::
 
+   <dependency org="ej.api" name="edc" rev="1.3.0"/>
+
+The `BON API Module <https://repository.microej.com/artifacts/ej/api/bon/>`_
+must also be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to access the :ref:`[BON] library <esr-specifications>`.
+
+::
+
+   <dependency org="ej.api" name="bon" rev="1.4.0"/>
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

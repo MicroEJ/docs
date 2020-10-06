@@ -78,7 +78,13 @@ The properties file must / can contain the following properties:
 Use
 ===
 
-A classpath variable named ``NET-1.1`` is available.
+The `Net API Module <https://repository.microej.com/artifacts/ej/api/net/>`_
+must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to allow access to the Net library.
+
+::
+
+   <dependency org="ej.api" name="net" rev="1.+"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.

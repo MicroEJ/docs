@@ -39,7 +39,13 @@ The properties file must / can contain the following properties:
 Use
 ===
 
-A classpath variable named ``DEVICE-1.0`` is available.
+The `Device API Module <https://repository.microej.com/artifacts/ej/api/device/>`_ 
+must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to allow access to the Device library.
+
+::
+
+   <dependency org="ej.api" name="device" rev="1.+"/>
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
