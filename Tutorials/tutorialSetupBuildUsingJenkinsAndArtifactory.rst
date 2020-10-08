@@ -4,7 +4,7 @@
 Setup an Automated Build using Jenkins and Artifactory
 ======================================================
 
-This tutorial explains how to setup an environment for automating MicroEJ module build and deployment using `Jenkins <https://www.jenkins.io/>`_
+This tutorial explains how to setup an environment for automating :ref:`MicroEJ Module build <mmm>` and deployment using `Jenkins <https://www.jenkins.io/>`_
 and `JFrog Artifactory <https://jfrog.com/artifactory/>`_.
 
 Such environment setup facilitates continuous integration (CI) and continuous delivery (CD), which improves productivity across your development ecosystem,
@@ -347,11 +347,11 @@ In this example, we will create a very simple module using the Sandbox Applicati
 
 
 .. note::
-   For more details about MicroEJ applications development, refer to the :ref:`Application Developer Guide <application-developer-guide>`.
+   For more details about MicroEJ Applications development, refer to the :ref:`Application Developer Guide <application-developer-guide>`.
 
 
-Create an new instance of the template job
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Create a New Jenkins Job
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Start by creating a new job, from the job template, for building our application.
 
@@ -377,7 +377,7 @@ The job configuration page opens, let's replace all the ``TO_REPLACE`` placehold
 #. Click on :guilabel:`Save`.
 
 
-Build the "Hello World" application
+Build the "Hello World" Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's run the job!
@@ -399,7 +399,7 @@ At this point of the tutorial:
 
 The next steps recommended are:
 
-* Adapt Jenkins/Artifactory/:ref:`MicroEJ Module Manager <mmm>` configuration to your development ecosystem.
+* Adapt Jenkins/Artifactory configuration to your ecosystem and development flow.
 
 
 Appendix
@@ -430,16 +430,16 @@ In :guilabel:`Post-build actions` tab:
 #. Check :guilabel:`Do not fail the build on empty test results`
 
 
-Add a custom certificate
-~~~~~~~~~~~~~~~~~~~~~~~~
+Add a Self-Signed Certificate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In case your Artifactory instance uses a custom SSL certificate, you might fall into this error when fetching dependencies:
+In case your Artifactory instance uses a self-signed SSL certificate, you might fall into this error when fetching dependencies:
 
 .. code-block::
 
    HttpClientHandler: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target url=[artifactory address]
 
-This is because the authority is unknown from a Java perspective. To make it trusted, you have to edit the trust store of the JRE/JDK that is running your builds.
+The authority has to be added to the trust store of the JRE/JDK that is running Artifactory. Here is a way to do it: 
 
 #. Install `Keystore Explorer <http://keystore-explorer.org/downloads.html>`_.
 #. Start Keystore Explorer, and open file ``[JDK home]/jre/lib/security/cacerts`` with the password ``changeit``. You may not have the right to modify this file. Edit rights if needed before opening it.
