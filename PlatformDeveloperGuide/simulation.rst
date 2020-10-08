@@ -6,6 +6,7 @@ Simulation
    simulator
    mock
    spmock
+   frontpanel
    blemock
 
 ..
