@@ -16,7 +16,7 @@ the control panel (the "Front Panel") of the device. The Front Panel generates a
 device, and is displayed in a window on the user's
 development machine when the application is executed in the Simulator.
 
-The Front Panel has been designed to be an implementation of MicroUI library (see xxx). However it can be use to show a hardware device, blink a LED, interact with user without using MicroUI library. 
+The Front Panel has been designed to be an implementation of MicroUI library (see :ref:`section_ui_simulation`). However it can be use to show a hardware device, blink a LED, interact with user without using MicroUI library. 
 
 Functional Description
 ======================
@@ -102,12 +102,12 @@ The Front Panel project is a standard IVY project. Its ``module.ivy`` file shoul
       </dependencies>
    </ivy-module>
 
-The dependency ``ej.tool.frontpanel#widget`` is only useful for MicroUI application (see xxx). The dependencies block must be manually updated to depend only on the Front Panel framework. This framework contains the front panel core classes:
+The dependency ``ej.tool.frontpanel#widget`` is only useful for MicroUI application (see :ref:`section_ui_simulation`). The dependencies block must be manually updated to depend only on the Front Panel framework. This framework contains the front panel core classes:
 
 ::
 
    <dependencies>
-      <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.0"/>
+      <dependency org="ej.tool.frontpanel" name="framework" rev="1.0.0"/>
    </dependencies>
 
 The front panel framework does not provide any widgets. Widgets have to be added to simulate user interactions. 
@@ -193,13 +193,15 @@ Several fp Files
 
 A front panel project can contain several ``fp`` files. All ``fp`` files are compiled when exporting the front panel project in a platform (or during platform build). It is useful to have two or more representation of a board (size, devices layout, display size etc.). By default the MicroEJ Application chooses a random ``fp`` file. To force to use a specific fp, add the option ``-Dfrontpanel.file=xxx.fp`` in the MicroEJ Application launcher (JRE tab) where ``xxx`` is the ``fp`` file name.
 
+.. _section_frontpanel_widget:
+
 Widget
 ======
 
 Description
 -----------
 
-A widget is a subclass of front panel framework class ``ej.fp.Widget``. The library ``ej.tool.frontpanel#widget`` provides a set of widgets which are graphical engine compatible (see xxx). To create a new widget (or a subclass of an existing widget), have a look on available widgets in this library.
+A widget is a subclass of front panel framework class ``ej.fp.Widget``. The library ``ej.tool.frontpanel#widget`` provides a set of widgets which are graphical engine compatible (see :ref:`section_ui_simulation`). To create a new widget (or a subclass of an existing widget), have a look on available widgets in this library.
 
 A widget is recognized by the ``fp`` file as soon as its class contains a ``@WidgetDescription`` annotation. The annotation contains several ``@WidgetAttribute``. An attribute has got a name and tells if it is an optional attribute of widget (by default an attribute is mandatory).
 
@@ -354,6 +356,9 @@ The filter image must have the same size as the skin image. The active
 area is delimited by the fully opaque pixels. Every pixel in the
 filter image which is not fully opaque is considered not part of the
 active area.
+
+
+.. _fp_installation:
 
 Installation
 ============
