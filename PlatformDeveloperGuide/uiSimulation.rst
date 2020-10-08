@@ -131,7 +131,7 @@ File Contents
 -------------
 
 The Front Panel engine takes an XML file (the fp file) as input. It describes
-the panel using widgets: They simulate the drivers, sensors and
+the panel using widgets: they simulate the drivers, sensors and
 actuators of the real device. The front panel engine generates the graphical
 representation of the real device, and is displayed in a window on the
 user's development machine when the application is executed in the
