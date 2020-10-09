@@ -66,7 +66,7 @@ There are some exceptions :
 - ``UIDrawing.java`` and ``DWDrawing.java`` list all drawings methods the platform can implement (and already implemented by the graphical engine).
 - ``EventXXX`` list methods to create input events compatible with MicroUI implementation
 
-All files and their aims are described in :ref:`section_simulation`. 
+All files and their aims are described in :ref:`section_ui_simulation`. 
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

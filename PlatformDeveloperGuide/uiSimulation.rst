@@ -20,7 +20,7 @@ The Front Panel enhances the development environment by allowing User Interface 
 Module Dependencies
 ===================
 
-The Front Panel project requires the dependency ``ej.tool.frontpanel#widget``. This library provides some widgets which have been designed to be compatible with the graphical engine: the MicroUI natives are implemented in these widgets and the widgets behavior matches with MicroUI implementation.
+The Front Panel project is a regular MicroEJ Module project. Its module.ivy file should look like this example:
 
 ::
 
@@ -36,6 +36,38 @@ The Front Panel project requires the dependency ``ej.tool.frontpanel#widget``. T
          <dependency org="ej.tool.frontpanel" name="widget" rev="1.0.0"/>
       </dependencies>
    </ivy-module>
+
+
+It depends at least on the Front Panel framework. This framework contains the front panel core classes. The dependencies can be reduced to:
+
+::
+
+   <dependencies>
+      <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.0"/>
+   </dependencies>
+
+To be compatible with graphical engine, the project must depend on an extension of front panel framework. This extension provides some interfaces and classes the graphical engine is using to target simulated display and input devices. The extension does not provide any widgets. It is the equivalent of embedded low-level API. It fetches by transitivity the front panel framework, so no need to specify explicitely the front panel framework dependency: 
+
+::
+
+   <dependencies>
+      <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.0.0">
+         <artifact name="frontpanel" type="jar"/>
+      </dependency>
+   </dependencies>
+
+.. warning:: This extension is built for each UI pack version. By consequence a front panel project is made for a platform built with the same UI pack. When the UI packs mismatch, some errors may occur during the front panel project exporting step, during the platform build and/or during the application runtime
+
+The graphical engine's front panel extension does not provide any widgets. Some compatible widgets are available in a third library. The cycle-life of this library is decorrelated of the UI pack cycle life. New widgets can be added to simulate new kind of displays, input devices etc. This extension fetches by transitivity the graphical engine's front panel extension , so no need to specify explicitely this extension dependency: 
+
+::
+
+   <dependencies>
+      <dependency org="ej.tool.frontpanel" name="widgets" rev="2.0.0"/>
+   </dependencies>
+
+.. warning:: The minimal version ``2.0.0`` is required to be compatible with UI pack 13.0.0 and higher. By default, when creating a new front panel project, the widget dependency version is ``1.0.0``.
+
 
 Widget Display
 ==============
@@ -67,25 +99,15 @@ This choice of behavior is widget dependant. Please refer to the widget document
 Heap Simulation
 ===============
 
-Graphical engine is using two dedicated heaps: for the images and the external fonts. Front panel simulates partly simulates the heaps usage.
+Graphical engine is using two dedicated heaps: for the images (see :ref:`section_image_loader_memory` ) and the external fonts (see :ref:`section_font_loader_memory`). Front panel simulates partly simulates the heaps usage.
 
 * Images heap: Front Panel simulates the heap usage when the application is creating a ``BufferedImage``, when it loads and decodes an image (PNG, BMP etc.), when it converts an image in MicroEJ format in another MicroEJ format. However it does not simulate the external image copy in heap.
-* External fonts heap: Front Panel does not simulate this heap. 
+* External fonts heap: Front Panel does not simulate this heap. There is no limitation (rendering limitation, see :ref:`section_font_loader_memory`) when application is using a font which is located outside CPU addresses ranges.
 
 Image Decoders
 ==============
 
-Front Panel uses its own internal image decoders when the internal image
-decoders related modules have been selected (see
-:ref:`image_internal_decoder`).
-
-Front Panel can add some additional decoders like the C-side for the
-embedded platform (see :ref:`image_external_decoder`). However, the
-exhaustive list of additional decoders is limited (Front Panel is using
-the Java AWT ``ImageIO`` API). To add an additional decoder, specify the
-property ``hardwareImageDecoders.list`` in front panel configuration
-properties file (see :ref:`fp_installation`) with one or several
-property values:
+Front Panel uses its own internal image decoders when the internal image decoders related modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Front Panel can add some additional decoders like the C-side for the embedded platform (see :ref:`external image decoders<image_external_decoder>`). However, the exhaustive list of additional decoders is limited (Front Panel is using the Java AWT ``ImageIO`` API). To add an additional decoder, specify the property ``hardwareImageDecoders.list`` in front panel configuration properties file (see :ref:`fp_ui_installation`) with one or several property values:
 
 .. table:: Front Panel Additional Image Decoders
 
@@ -116,6 +138,8 @@ Dependencies
 -  Display module (see :ref:`section_display`): This module gives
    the characteristics of the graphical display that are useful for
    configuring the Front Panel.
+
+.. _fp_ui_installation:
 
 Installation
 ============
