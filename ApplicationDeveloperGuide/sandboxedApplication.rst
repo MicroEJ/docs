@@ -1,4 +1,4 @@
-.. _sandboxed.application:
+.. _sandboxed_application:
 
 Sandboxed Application
 =====================
@@ -7,6 +7,7 @@ Sandboxed Application
    :maxdepth: 2
 
    sandboxedAppDevelopment
+   applicationPublication
    sharedInterface
 
 ..

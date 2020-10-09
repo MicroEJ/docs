@@ -17,13 +17,8 @@ in order to keep only desired types, methods and fields.
 Build a Kernel API Module
 -------------------------
 
--  Generate the skeleton project: Select
-   :guilabel:`File` > :guilabel:`New` > :guilabel:`Other...` > :guilabel:`Easyant` > :guilabel:`Easyant Project`, select and
-   configure the ``com.is2t.easyant.skeletons#microej-kernelapi;+``
-   skeleton, and press :guilabel:`Finish` button.
-
+- First create a new :ref:`module project <mmm_module_skeleton>` using the ``microej-kernelapi`` skeleton. 
 -  Create the ``kernel.api`` file into the ``src`` folder.
-
 -  Right-click on the project and select :guilabel:`Build Module`.
 
 Kernel API Generator

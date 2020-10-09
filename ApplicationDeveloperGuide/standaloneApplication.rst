@@ -1,3 +1,5 @@
+.. _standalone_application:
+
 Standalone Application
 ======================
 

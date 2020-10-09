@@ -33,7 +33,7 @@ This document takes as prerequisite that a MicroEJ Platform is available
 for the target device (see :ref:`platform-developer-guide`).
 This document also assumes that the reader is familiar with the
 development and deployment of MicroEJ Applications (see :ref:`application-developer-guide`)
-and specifics of developing Sandboxed Applications (see :ref:`sandboxed.application`).
+and specifics of developing Sandboxed Applications (see :ref:`sandboxed_application`).
 
 Terms and Definitions
 ---------------------

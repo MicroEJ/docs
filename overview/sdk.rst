@@ -20,7 +20,7 @@ Application development is based on the following elements:
 -  MicroEJ SDK, the integrated development environment for writing
    applications. It is based on Eclipse and is relies on the integrated
    Java compiler (JDT). It also provides a dependency manager for
-   managing MicroEJ Libraries (see :ref:`section.ivy.dependency.manager`).
+   managing MicroEJ Libraries (see :ref:`mmm`).
    The current distribution of MicroEJ SDK (``19.05``) is built on top of Eclipse Oxygen
    (`<https://www.eclipse.org/oxygen/>`_).
 

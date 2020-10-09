@@ -6,6 +6,7 @@ Tutorials
 .. toctree::
    :maxdepth: 1
 
+   tutorialUnderstandMicroEJFirmwareBuild
    tutorialCreateCustomPlatform
    tutorialCreateFirmwareFromScratch
 

@@ -113,7 +113,7 @@ following conditions:
    Invalid License Key Error Message
 
 
-.. _gettingstarted-installlicensesdev:
+.. _gettingstarted-installlicensesprod:
 
 Production Licenses
 -------------------
@@ -126,7 +126,6 @@ which use hardware license keys.
 USB Dongles Update
 ~~~~~~~~~~~~~~~~~~
 
-Dongle
 This section contains instructions that will allow to flash your
 hardware dongle with the proper activation key.
 
@@ -192,8 +191,6 @@ hardware dongle is actually recognized by your operating system
 GNU/Linux Troubleshooting
 """""""""""""""""""""""""
 
-USB
-Linux
 For GNU/Linux Users (Ubuntu at least), by default, the dongle access has
 not been granted to the user, you have to modify udev rules. Please
 create a ``/etc/udev/rules.d/91-usbdongle.rules`` file with the
@@ -239,3 +236,12 @@ check among the ``USB Input Device`` entries that the
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
    copyrights are the property of their respective owners.
+
+VirtualBox Troubleshooting
+""""""""""""""""""""""""""
+
+In a VirtualBox virtual machine, USB drives must be enabled to be recognized correctly.
+So make sure to enable the USB dongle by clicking on it in the VirtualBox menu ``Devices`` > ``USB``.
+
+In order to make this setting persistent, go to ``Devices`` > ``USB`` > ``USB Settings...`` 
+and add the USB dongle in the ``USB Devices Filters`` list.
