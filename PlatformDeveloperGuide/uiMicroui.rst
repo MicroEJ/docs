@@ -50,7 +50,7 @@ The embedded platform requires some additional C libraries to drive the I/O devi
    +-----------------------------------------+-----------------+----------------------------+
 
 The simulation platform uses a mock which simulates all I/O devices.
-Refer to the chapter :ref:`section_simulation`
+Refer to the chapter :ref:`section_ui_simulation`.
 
 
 Thread

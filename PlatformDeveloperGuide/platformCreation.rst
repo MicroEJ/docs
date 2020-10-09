@@ -97,6 +97,7 @@ You should get a MicroEJ Platform configuration project that looks like:
    MicroEJ Platform Configuration Project Skeleton
 
 
+.. _platform_configuration_modules:
 
 Groups / Modules Selection
 ==========================
