@@ -355,7 +355,7 @@ Refer to the chapter :ref:`application_options` which lists all available option
 
 ::
 
-   <dependency org="ej.api" name="edc" rev="1.3.0"/>
+   <dependency org="ej.api" name="edc" rev="1.3.3"/>
 
 The `BON API Module <https://repository.microej.com/artifacts/ej/api/bon/>`_
 must also be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 

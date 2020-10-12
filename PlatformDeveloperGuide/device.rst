@@ -45,7 +45,7 @@ Application project in order to allow access to the Device library.
 
 ::
 
-   <dependency org="ej.api" name="device" rev="1.+"/>
+   <dependency org="ej.api" name="device" rev="1.0.2"/>
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
