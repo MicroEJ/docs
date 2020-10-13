@@ -35,7 +35,7 @@ Functional Description
 
 The Static MicroUI Initializer tool takes as entry point the initialization file which describes the MicroUI library extension. This tool is automatically launched during the MicroEJ platform build (see :ref:`section_microui_installation` ).
 
-The Static MicroUI Initializer tool is able to out until two files:
+The Static MicroUI Initializer tool is able to output two files:
 
 -  A Java library which extends MicroUI library. This library is automatically added to the MicroEJ Application classpath when MicroUI API library is fetched. This library is used at MicroUI startup to create all instances of I/O devices (``Display``, ``EventGenerator`` etc.) and contains the fonts described into the configuration file (these fonts are also called "system fonts").
 
