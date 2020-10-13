@@ -113,7 +113,7 @@ following conditions:
    Invalid License Key Error Message
 
 
-.. _gettingstarted-installlicensesdev:
+.. _gettingstarted-installlicensesprod:
 
 Production Licenses
 -------------------

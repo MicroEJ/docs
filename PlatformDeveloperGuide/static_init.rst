@@ -33,44 +33,19 @@ This XML file (also called the initialization file) defines:
 Functional Description
 ======================
 
-The Static MicroUI Initializer tool takes as entry point the
-initialization file which describes the MicroUI library extension. This
-tool is automatically launched during the MicroUI module installation
-(see :ref:`section_microui_installation` ).
+The Static MicroUI Initializer tool takes as entry point the initialization file which describes the MicroUI library extension. This tool is automatically launched during the MicroEJ platform build (see :ref:`section_microui_installation` ).
 
-The Static MicroUI Initializer tool is able to out until three files:
+The Static MicroUI Initializer tool is able to out until two files:
 
--  A Java library which extends MicroUI library. This library is
-   automatically added to the MicroEJ Application classpath when MicroUI
-   library is set as a classpath variable. This library is used at
-   MicroUI startup to create all instances of I/O devices (``Display``,
-   ``EventGenerator`` etc.) and contains the fonts described into the
-   configuration file (these fonts are also called "system fonts").
+-  A Java library which extends MicroUI library. This library is automatically added to the MicroEJ Application classpath when MicroUI API library is fetched. This library is used at MicroUI startup to create all instances of I/O devices (``Display``, ``EventGenerator`` etc.) and contains the fonts described into the configuration file (these fonts are also called "system fonts").
 
-   This MicroUI extension library is always generated and MicroUI
-   library cannot run without this extension.
+.. warning:: This MicroUI extension library is always generated and MicroUI library cannot run without this extension.
 
--  A C header file (\*.h) file. This H file contains some IDs which are
+-  A C header file (``*.h``) file. This H file contains some IDs which are
    used to make a link between an input device (buttons, touch) and its
    MicroUI event generator (see :ref:`section_input`).
 
-   This file is useless if the BSP does not provide any input device and
-   the Static MicroUI Initializer tool is able to not generate this
-   file. Otherwise the MicroUI configuration file has to specify where
-   put this file, typically in a BSP ``include`` directory.
-
--  A Java interface file. This Java file contains the same IDs which are
-   used to make a link between an input device (buttons, touch) and its
-   MicroUI event generator (see :ref:`section_input`).
-
-   This Java file is used to configure the Simulator with the same
-   characteristics as the BSP.
-
-   This file is useless if the BSP does not provide any input device and
-   the Static MicroUI Initializer tool is able to not generate this
-   file. Otherwise the MicroUI configuration file has to specify where
-   put this file, typically in the Simulator project (also called front
-   panel project, see :ref:`section_simulation`).
+.. note:: The front panel project does not need a configuration file (like C header file for embedded platform).
 
 .. figure:: images/static_init_process.*
    :alt: MicroUI Process

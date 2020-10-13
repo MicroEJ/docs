@@ -1,14 +1,20 @@
-.. _sandboxed_application:
+.. _ecom_:
 
-Sandboxed Application
+Serial Communications
 =====================
 
-.. toctree::
-   :maxdepth: 2
 
-   sandboxedAppDevelopment
-   applicationPublication
-   sharedInterface
+MicroEJ provides some Foundation Libraries to instantiate some
+communications with external devices. Each communication method has its
+own library. A global library called ECOM provides support for abstract
+communication streams (communication framework only), and a generic
+devices manager.
+
+
+.. toctree::
+
+    ecom
+    ecom-comm
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

@@ -24,12 +24,6 @@ is issued, where the meaning of ``<messageId>`` is defined in
    |             | be called in the display pump thread (for example in   |
    |             | ``paint`` methods).                                    |
    +-------------+--------------------------------------------------------+
-   | 2           | Out of memory. The image limit has been reached        |
-   |             | because too many images are opened at the same time.   |
-   |             | Try to remove references on useless images, and retry  |
-   |             | opening the new image, or increase the number of       |
-   |             | concurrent images in the MicroEJ launcher.             |
-   +-------------+--------------------------------------------------------+
    | 3           | Out of memory. Not enough memory to allocate the       |
    |             | ``Image``'s buffer. Try to remove references on        |
    |             | useless images and retry opening the new image, or     |
@@ -58,12 +52,12 @@ is issued, where the meaning of ``<messageId>`` is defined in
    +-------------+--------------------------------------------------------+
    | 15          | ``FIFOPump`` size must be positive                     |
    +-------------+--------------------------------------------------------+
+   | 16          | ``FlyingImage`` feature is disabled in MicroEJ launch  |
+   |             | options; cannot use this feature in application.       |
+   +-------------+--------------------------------------------------------+
    | 17          | Out of memory. There is not enough memory to open a    |
    |             | new ``FlyingImage`` Try to increase the number of      |
    |             | concurrent flying images in the MicroEJ launcher.      |
-   +-------------+--------------------------------------------------------+
-   | 18          | There is not enough memory to add a new font. Try to   |
-   |             | increase the number of fonts in the MicroEJ launcher   |
    +-------------+--------------------------------------------------------+
    | 19          | Font's path must be relative to the classpath.         |
    +-------------+--------------------------------------------------------+
@@ -71,10 +65,6 @@ is issued, where the meaning of ``<messageId>`` is defined in
    +-------------+--------------------------------------------------------+
    | 21          | The font data cannot be loaded for an unknown reason   |
    |             | (font is stored outside the CPU address space range).  |
-   +-------------+--------------------------------------------------------+
-   | 22          | Out of memory. There is not enough room to allocate    |
-   |             | the font data (font is stored outside the CPU address  |
-   |             | space range).                                          |
    +-------------+--------------------------------------------------------+
 
 Exceptions

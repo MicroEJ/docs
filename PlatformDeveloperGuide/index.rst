@@ -13,7 +13,7 @@ Platform Developer Guide
    tiny
    native
    externalResourceLoader
-   ecom
+   serialCommunications
    ui
    net
    fs

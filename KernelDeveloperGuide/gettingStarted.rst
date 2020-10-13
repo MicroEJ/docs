@@ -80,17 +80,17 @@ Device may take several minutes. When the build is succeed, the folder
 .. role:: fwpur
 .. role:: fwbla
 
-MicroEJ demo Runtime Environments and Flavors
----------------------------------------------
+MicroEJ Demo VEE Flavors
+------------------------
 This set of APIs is proposed as examples of industrial or commercial typical products APIs.
 
-What is a MicroEJ demo Runtime Environment?
+What is a MicroEJ Demo Runtime Environment?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A MicroEJ Runtime Environment defines a set of MicroEJ APIs exposed to a MicroEJ Sandboxed Application. Here are the default runtimes provided for evaluation by MicroEJ. Any runtime can be customized with MicroEJ SDK for a specific product.
 
 +----------------------------------+-------------+--------------+-------------+--------------+-----------------+-----+-----+-----------+
-| MicroEJ demo Runtime Environment | EDC/B-ON/KF | COMP/WADAPPS | MICROUI/MWT | LEDS/BUTTONS | NET/CONNECT/SSL | BLE | HAL | ECOM/COMM |
+| MicroEJ Demo Runtime Environment | EDC/B-ON/KF | COMP/WADAPPS | MICROUI/MWT | LEDS/BUTTONS | NET/CONNECT/SSL | BLE | HAL | ECOM/COMM |
 +==================================+=============+==============+=============+==============+=================+=====+=====+===========+
 | MicroEJ-Developer                | |x|         | |x|          | |x|         | |x|          | |x|             |     | |x| | |x|       |
 +----------------------------------+-------------+--------------+-------------+--------------+-----------------+-----+-----+-----------+
@@ -137,13 +137,13 @@ You can find below what are the different APIs included in the Runtime Environme
 | COMM or ECOM-COMM          | Serial ports support for the ECOM.                                                               |
 +----------------------------+--------------------------------------------------------------------------------------------------+
 
-What is a MicroEJ demo Flavor?
+What is a MicroEJ Demo Flavor?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A MicroEJ demo Flavor is a composition of a set of runtime services, resident applications and a given MicroEJ Runtime Environment. Any flavor can be customized with MicroEJ SDK for a specific product.
+A MicroEJ Demo Flavor is a composition of a set of runtime services, resident applications and a given MicroEJ Runtime Environment. Any flavor can be customized with MicroEJ SDK for a specific product.
 
 +---------------------+-----------------------------+----------------------------------------------------------------+---------------------------------+
-| MicroEJ demo Flavor | MicroEJ Runtime Environment | Services Resident Apps                                         | UI Resident Apps                |
+| MicroEJ Demo Flavor | MicroEJ Runtime Environment | Services Resident Apps                                         | UI Resident Apps                |
 +---------------------+-----------------------------+------------+----------------------+----------------------+-----+-------+---------+---------------+
 |                                                   | Management | App-Metadata-Storage | CommandServer-Socket | NTP | About | AppList | Forge Connect |
 +=====================+=============================+============+======================+======================+=====+=======+=========+===============+

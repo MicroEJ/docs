@@ -217,7 +217,7 @@ runtime memory.
 .. _fig_directMode:
 .. figure:: images/direct.*
    :alt: Display Direct Mode
-   :width: 30.0%
+   :height: 160px
    :align: center
 
    Display Direct Mode
