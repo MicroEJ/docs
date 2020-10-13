@@ -3,13 +3,19 @@ Graphics User Interface
 
 This section presents libraries relative to the user interface.
 
-The following schema shows the Graphical User Interface architecture and modules:
+The following schema shows the overall architecture and modules:
 
 .. figure:: images/ui_overview.png
-   :alt: Graphical User Interface Overview
+   :alt: Graphics User Interface Overview
    :align: center
 
-   Graphical User Interface Overview
+   Graphics User Interface Overview
+
+.. note::
+
+   This chapter describes the current Graphics User Interface version ``3``, provided by UI Pack version ``13.0.0`` or higher.
+   If you are using the former Graphics User Interface version ``2`` (provided by MicroEJ UI Pack version up to ``12.4.x``),
+   please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_. 
 
 .. toctree::
    :maxdepth: 2

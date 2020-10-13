@@ -2,6 +2,12 @@
 Graphics User Interface
 =======================
 
+.. note::
+
+   This chapter describes the current Graphics User Interface version ``3``, provided by UI Pack version ``13.0.0`` or higher.
+   If you are using the former Graphics User Interface version ``2`` (provided by MicroEJ UI Pack version up to ``12.4.x``),
+   please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_. 
+
 .. toctree::
     :maxdepth: 2
 
