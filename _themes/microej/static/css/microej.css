@@ -859,6 +859,10 @@ footer hr {
   border: 1px solid #cbd3d7;
 }
 
+.rst-content img {
+  height: auto !important;
+}
+
 @media screen and (min-width: 767px) {
   .wy-nav-content-wrap {
     background: none;
