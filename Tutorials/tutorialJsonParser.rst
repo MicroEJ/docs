@@ -8,19 +8,17 @@ JSON and its adapted parser
 
 As described on the `JSON official site <http://json.org/>`_, JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is widely used in many fields for example as a mean of data serialization in lightweight web services such as REST, for server interrogation in Ajax for dynamic webpage building, or even databases.
 
-Due  to its lightweight nature and its simplified syntax compared to XML, it is quite natural to use it in embedded systems. JSON is easily readable by humans but what about computers? That is where the official JSON page comes in handy by providing a rather impressive list of JSON parsers. For our convenience a Java mobile edition (ME) of a JSON parser is available.
+Due to its lightweight nature and its simplified syntax compared to XML, it is quite natural to use it in embedded systems. JSON is easily readable by humans but what about computers? That is where the official JSON page comes in handy by providing a rather impressive list of JSON parsers. For our convenience a Java mobile edition (ME) of a JSON parser is available.
 
 Parser use in MicroEJ
 ---------------------
 
-Here are the steps to get the JSON ME parser in working condition for MicroEJ.
+The `JSON API Module <https://repository.microej.com/artifacts/org/json/me/json/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to allow access to the Device library.
 
-#. Download the parser code from GitHub: go to `<https://github.com/MicroEJ/org.json.me>`_ and select **Download Zip** on bottom-right of the page.
-#. In a MicroEJ workspace, create a new Java project that depends on `EDC <http://www.e-s-r.net/javadocs/edc-1.2-api/index.html>`_, we name the project **JSON_parser**.
-#. Import the previously downloaded zip (it should be named org.json.me-master.zip) into the **JSON_parser** project. Watch out for the right packages during or after your import.
-#. Your parser project should compile. No modification to the parser code is necessary.
+::
 
-In order to use the parser the Java projects should refer to the JSON_parser project in their build path.
+	<dependency org="org.json.me" name="json" rev="1.3.0"/>
 
 The instantiation and use of the parser is pretty straightforward. First you need to get the JSON content as a ``String``,  and then create a ``org.json.me.JSONObject`` instance with the string. If the string content is a valid JSON content, you should have an workable ``JSONObject`` to browse.
 
@@ -49,8 +47,13 @@ The example will parse the file, browse the resulting data structure (``org.json
 
 .. code:: Java
 
-	// Copyright (c) 2014, IS2T All rights reserved.
-	// Use of this source code is governed by a BSD-style license that can be found at http://www.is2t.com/open-source-bsd-license/.
+	/*
+	 * Java
+	 *
+	 * Copyright  2014-2020 MicroEJ Corp. All rights reserved.
+	 * Use of this source code is governed by a BSD-style license that can be found at http://www.is2t.com/open-source-bsd-license/.
+	 * MicroEJ Corp. PROPRIETARY. Use is subject to license terms.
+	 */
 	package com.is2t.json.examples;
 
 	import java.io.DataInputStream;
