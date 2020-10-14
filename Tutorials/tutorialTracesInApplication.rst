@@ -1,25 +1,51 @@
-Application Trace
-=================
+Add logging to MicroEJ applications
+===================================
 
-The easiest way to add traces in an application is to use the Java base
-print functions: ``System.out.println(...)``. But, it is not very
-flexible when going into production while still wanting to maintain a
-proper level of log for debug purposes.
+This tutorial explains how to add logging and tracing to MicroEJ applications and libraries.
 
-Even though logging allows easier debugging and tracing of an
-application, it also means more code is embedded and executed. It may
-have an impact on the performances by having more CPU usage at runtime
-and a bigger ROM footprint for the log messages. When measuring
-performance of an application, be sure to remove or disable all traces
-so it has no impact on the performances.
+Several solutions are presented that aim at helping developers report precise execution context for further debugging and monitoring.
 
-In the MicroEJ environment, two ways are posible for application logging: 
+
+Intended Audience
+-----------------
+
+The audience for this document is engineers who are in charge of adding logs and traces to MicroEJ applications and libraries.
+
+In addition, this tutorial should be of interest to all developers looking for best practices when coming to log messages while keeping a low ROM footprint and good overall performances.
+
+
+Introduction
+------------
+
+One straightforward way to add traces in an application is to use the Java base print functions: ``System.out.println(...)``. 
+However this is not desirable when writing production quality code, where one typically wants to adjust the log level and provide useful, well-formed data and metadata.
+This tutorial discusses the different options available to the MicroEJ developer.
+
+Having logs and traces in an application, though, means more code is embedded and executed.
+This can have an impact on the overall performances of the application by using more CPU usage at runtime. It also increases the ROM footprint of the application.
+This tutorial also addresses this point. 
+
+
+
+Prerequisites
+-------------
+
+*  `MicroEJ SDK <https://developer.microej.com/get-started/>`_ ``4.1.5`` or higher.
+*  Java Development Kit (JDK) ``1.8.x``.
+
+
+
+Overview
+--------
+
+In the MicroEJ environment, there are two ways for logging in an application: 
    
-   - event based tracing using integer events,
+   - Event based tracing using integer events
    
-   - textual tracing for more complex data.
+   - Textual tracing for more complex data.
 
-This tutorial will show how to log traces of the following code snippet using three different libraries:
+
+This tutorial will show how to log traces using three different libraries on the following code snippet:
 
 .. code-block:: java
 
@@ -42,6 +68,10 @@ This tutorial will show how to log traces of the following code snippet using th
             currentState = newState;
          }
       }
+
+Finally, the last section will describe how to remove the logs from the code.
+
+
 
 Event based tracing
 -------------------
