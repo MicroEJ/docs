@@ -214,39 +214,48 @@ This will produce the following output:
 
 Remove traces for the production binary
 ---------------------------------------
-There is multiple possibilities to remove all traces for a production binary.
 
-One possibility is to used constants to get rid of portion of code.
+There are multiple options for removing all logs and traces when building the production binary.
 
-- A boolean constant declared in an if statement can be used to fully remove portion of code.
+Wrap logging statements with a check against a static variable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
-- When this boolean is resolved as false, the code become unreachable and thus, will not be embedded.
+A boolean constant declared in a ``if`` statement can be used to fully remove portions of code: when this boolean constant is evaluated as ``false``, the wrapped code becomes unreachable and, thus, will not be embedded.
 
-- You can find more information about the usage of constants in an if statement 
-  by :ref:`clicking here <section.classpath.elements.Constants.ifRemoval>`.
 
-- If we consider the constant ``com.mycompany.logging`` was declared as false in a file named ``example.constants.list``.
+.. note::
+    You can find more information about the usage of constants and ``if`` code removal in the :ref:`Classpath <if_constant_removal>` section of the :ref:`Application Developer Guide <application-developer-guide>`.
 
-   - To remove the previous logging, add an if statement as follow:
+
+
+#. Let's consider a constant ``com.mycompany.logging`` that we declared as ``false`` in a resource file named ``example.constants.list``.
+
+    .. image:: images/tuto_microej_trace_constant.png
+        :align: center
+
+
+#. Add an ``if`` code removal statement to remove a logging, as follows:
    
-      .. code-block:: java 
+   .. code-block:: java 
 
-         public static void switchState(ApplicationState newState) {
-            oldState = currentState;
-            currentState = newState;
+      public static void switchState(ApplicationState newState) {
+         oldState = currentState;
+         currentState = newState;
 
-            if(Constants.getBoolean("com.mycompany.logging")) {
-               String category = "Application";
-               int logID = 2;
-               BasicMessageLogger.INSTANCE.log(Level.INFO, category, logID, oldState, currentState);
-            }
+         if(Constants.getBoolean("com.mycompany.logging")) {
+            BasicMessageLogger.INSTANCE.log(Level.INFO, "Application", 2, oldState, currentState);
          }
+      }
 
-   - When using the API ``ej.api.trace``, a boolean constant can be accessed named ``TRACE_ENABLED_CONSTANT_PROPERTY`` 
-     representing the :ref:`BON Constant <section.classpath.elements.constants>` ``core.trace.enabled``.
-      
-      - This constant is true when traces are enable in the system and false otherwise.
-     
+
+When using the Trace API (ej.api.trace), you can evaluate the value of constant ``Tracer.TRACE_ENABLED_CONSTANT_PROPERTY`` that represents property ``core.trace.enabled``.
+The value of this property can be modified by going to :guilabel:`Launch` > :guilabel:`Launch configurations` then in the tab :guilabel:`Configuration` > :guilabel:`Runtime`, you can check/uncheck the option :guilabel:`Enable execution traces` to respectively set the value to ``true``/``false``.
+
+         .. image:: images/tuto_microej_trace_property.png
+             :align: center
+
+Follow same principle as before:
+
       .. code-block:: java 
 
          public static void switchState(ApplicationState newState) {
@@ -262,31 +271,22 @@ One possibility is to used constants to get rid of portion of code.
             }
          }
 
-      - The value of this constant can be modified by going to ``Launch > Launch configurations`` then in the tab ``Configuration``,
-        under the option ``Runtime``, you can check the option ``Enable execution traces`` to set the value to true.
+      
 
-         .. image:: images/tuto_application_trace_enable_execution_traces.PNG
+Use ProGuard
+~~~~~~~~~~~~
 
-Another possibility is to use external tools.
+`ProGuard <https://www.guardsquare.com/en/products/proguard>`_ is a command-line tool that shrinks, optimizes and obfuscates Java code.
 
--  For example, the ProGuard open source tool.
-
-   -  ProGuard is a command-line tool that shrinks, optimizes and
-      obfuscates Java code.
+It will optimize bytecode as well as detect and remove unused instructions. Therefore it can be used to remove log messages in a production binary.
    
-   -  It is able to optimize bytecode as well as detect and remove
-      unused instructions. For example, it can be used to remove all log
-      messages in a production binary.
-   
-   -  A How-To is available in the MicroEJ github for using ProGuard in 
-      https://github.com/MicroEJ/How-To/tree/master/Proguard-Get-Started.
-   
-   -  This example is based on removing code of elements of the library 
-      **ej.library.eclasspath.logging**.
+`MicroEJ Github <https://github.com/MicroEJ/>`_ provides a dedicated How-To showing how to `get started with ProGuard <https://github.com/MicroEJ/How-To/tree/1.8.3/Proguard-Get-Started>`_ and remove elements of code from the Logging library (ej.library.eclasspath.logging).
 
-..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
-   is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
-   copyrights are the property of their respective owners.
+
+
+Congratulations!
+
+At this point of the tutorial:
+
+* You can add logging to your MicroEJ applications while meeting the constraints of embedded applications
+* You can fully turn off logging in your production builds.
