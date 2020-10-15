@@ -38,14 +38,14 @@ Prerequisites
 Overview
 --------
 
-In the MicroEJ environment, there are two ways for logging in an application: 
+In the MicroEJ environment, there are three ways for logging in an application: 
    
-   - Event based tracing using integer events
-   
-   - Textual tracing for more complex data.
+   - Trace API
+   - Logging library
+   - Messages library
 
 
-This tutorial will show how to log traces using three different libraries on the following code snippet:
+This tutorial will show how to log traces using these three different libraries on the following code snippet:
 
 .. code-block:: java
 
@@ -73,32 +73,25 @@ Finally, the last section will describe how to remove the logs from the code.
 
 
 
-Event based tracing
--------------------
+Trace API (ej.api.trace)
+------------------------
 
-Api Trace
-~~~~~~~~~
-The API Trace is a Java library based over a low-level api that allow users 
-to record events using named Tracer and a limited number of integer events.
+The Trace API provides a way of tracing user-defined events.
+Its features and principles are described in the :ref:`Event Tracing <event-tracing>` section of the :ref:`Application Developer Guide <application-developer-guide>`.
 
-- To use this library in your project add the following dependency line in your module.ivy: 
+Here we'll show a short example on how to use this API to log the entry/exit of the method ``switchState()``:
 
-   ``<dependency org=“ej.api” name="trace" rev=“x.y.z”/>``
+#. Add the following dependency to your ``module.ivy``: ``<dependency org="ej.api" name="trace" rev="x.y.z"/>``
 
-- More informations about the API are available on the MicroEJ documentation website, 
-  in the :ref:`API Trace section <apiTrace>`.
-
-- To use this API:
-
-   - Start by initializing a ``Tracer`` object.
+#. Start by initializing a ``Tracer`` object:
 
       .. code-block:: java
 
          private static final Tracer tracer = new Tracer("Application", 100);
       
-      - In this case, out ``Tracer`` will be named ``Application`` and will be limited to 100 different event types.
+      In this case, ``Application`` identifies a group of events that defines a maximum of ``100`` available event types.
 
-   - Now activate the trace system.
+#. Next, activate the trace system:
 
       .. code-block:: java
 
@@ -109,7 +102,7 @@ to record events using named Tracer and a limited number of integer events.
             switchState(ApplicationState.INSTALLED);
          }
 
-   - Once initialized, you can use the methods Tracer.recordEvent(...) and Tracer.recordEventEnd(...) to record the elements of your choice.
+#. Use the methods Tracer.recordEvent(...) and Tracer.recordEventEnd(...) to record the entry/exit events in the method:
 
       .. code-block:: java
 
@@ -122,184 +115,102 @@ to record events using named Tracer and a limited number of integer events.
             tracer.recordEventEnd(0);
          }
    
-   - The logging output will be, directly printed in the console: 
+   The ``Tracer`` object records the entry/exit of method ``switchState`` with event ID ``0``.
+   
+This will produce the following output:
 
       .. code-block::
 
          [TRACE: Application] Event 0x0()
          [TRACE: Application] Event End 0x0()
 
-- The output can be redirected to any standard output and be used by third party like, for example, Segger's SystemView.
 
-- A MicroEJ demo platform of the ``NXP OM13098`` board containing the SystemView support is available and downloadable 
-  by `clicking here <https://developer.microej.com/packages/referenceimplementations/U3OER/2.0.1/OM13098-U3OER-fullPackaging-eval-2.0.1.zip>`_.
 
-Textual tracing
----------------
 
-In the MicroEJ SDK resources, two libraries allow the users to do textual tracing.
 
--  ``ej.library.eclasspath.logging``. It is based over the
-   ``java.util.logging`` library and follows the same principles of
-   LogManagers, Loggers, LogRecords and Handlers.
+.. note::
 
--  ``ej.library.runtime.message``. This library is based on a
-   MessageBuilder and a MessageLogger.
+   The default platform implementation of the Trace API prints the events in the console. MicroEJ provides an other implementation that redirects the events to `SystemView <https://www.segger.com/products/development-tools/systemview/>`_, the real-time recording and visualization tool from `Segger <https://www.segger.com/>`_. It allows for a finer understanding of the runtime behavior by showing events sequencing and duration. A platform reference implementation for the `NXP OM13098 development board <https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc54000-cortex-m4-/lpcxpresso54628-development-board:OM13098>`_ with SystemView support is available `here <https://developer.microej.com/packages/referenceimplementations/U3OER/2.0.1/OM13098-U3OER-fullPackaging-eval-2.0.1.zip>`_. Please contact MicroEJ Support for more information about how to integrate this Platform module.
 
-Both libraries have the possibility to associate a level to the Logger
-to allow only certain levels of messages to be logged.
 
-ej.library.eclasspath.logging library
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Logging library (ej.library.eclasspath.logging)
+-----------------------------------------------
 
-To use this library, add the following dependency line in the project’s
-module.ivy:
+Library ``ej.library.eclasspath.logging`` is based over the ``java.util.logging`` library and follows the same principles:
 
-   ``<dependency org=“ej.library.eclasspath” name=“logging” rev=“x.y.z”/>``
+-  There is one instance of ``LogManager`` by application that manages the hierarchy of loggers.
+-  Find or create ``Logger`` objects using the method ``Logger.getLogger(String ID)``. If a logger has already been created with the same name, this logger is returned, otherwise a new logger is created. 
+-  Each ``Logger`` created with this method is registered in the ``LoggerManager`` and can be retrieved using its String ``ID``.
+-  You can associate a minimum level to this ``Logger`` so that only messages that have at least this level are logged. The standard levels are listed in the class ``java.util.logging.Level``.
+-  The ``Logger`` API provides multiple methods for logging:
+    -  ``log(...)`` methods, that send a ``LogRecord`` with the level argument to the registered ``Handler`` instances.
+    -  Log level-specific methods, like ``severe(String msg)``, that call the aforementioned ``log(...)`` method with correct level argument.
+-  The library defines a default implementation of type ``Handler``, called ``DefaultHandler``, that prints the message of the ``LogRecord`` on the standard error output stream. It also prints the stack trace of the ``Throwable`` associated to the ``LogRecord`` if there is one.
 
--  In every application that uses this library, there is only one
-   instance of a ``LogManager`` object.
+Let's see how to use it on our short snippet:
 
--  Load or create a ``Logger`` object using the method
-   ``Logger.getLogger(String ID)``.
+#. Add the following dependency your ``module.ivy``: ``<dependency org="ej.library.eclasspath" name="logging" rev="x.y.z"/>``
 
--  Each ``Logger`` created with this method is saved in the
-   ``LoggerManager`` and, if already created before, will be retrieved
-   using their ID of type String.
-
--  Once created, it is possible to associate a minimum level to this
-   ``Logger`` so that only messages that have at least this level are
-   logged. The standard levels are listed in the class
-   ``java.util.logging.Level``.
-
--  To send a request to log something, there are two possibilities.
-
-   -  The first is to use the method ``myLogger.log(...)``. This method
-      will send a ``LogRecord`` to the registered ``Handler`` instances
-      to be logged.
-   
-   -  The second is to use the log level-specific methods. For example
-      ``myLogger.severe(String msg)`` will create a ``LogRecord`` with
-      the level ``Level.SEVERE`` and send it to the registered
-      ``Handler`` instances.
-
--  The library defines a default implementation of type ``Handler``,
-   called ``DefaultHandler``, that prints the message of the
-   ``LogRecord`` on the standard error output stream. It also prints the
-   stack trace of the ``Throwable`` associated to the ``LogRecord`` if
-   there is one.
-
-- Example:
+#. Call the logging API to log some info text:
 
    .. code-block:: java
      
-      public class Main {
+      public static void switchState(ApplicationState newState) {
+         oldState = currentState;
+         currentState = newState;
 
-         enum ApplicationState {
-            INSTALLED, STARTED, STOPPED, UNINSTALLED
-         }
-
-         private static ApplicationState currentState;
-         private static ApplicationState oldState;
-
-         public static void main(String[] args) {
-            currentState = ApplicationState.UNINSTALLED;
-            switchState(ApplicationState.INSTALLED);
-         }
-
-         public static void switchState(ApplicationState newState) {
-            oldState = currentState;
-            currentState = newState;
-
-            Logger logger = Logger.getLogger("ApplicationLogger");
-            logger.log(Level.INFO, "The application state has changed from " + oldState.toString() + " to "
-                  + currentState.toString() + ".");
-         }
+         Logger logger = Logger.getLogger(Main.class.getName());
+         logger.log(Level.INFO, "The application state has changed from " + oldState.toString() + " to "
+               + currentState.toString() + ".");
       }
 
-   - The logging output will be, directly printed in the console: 
+
+This will produce the following output: 
 
    .. code-block:: java
       
-      applicationlogger INFO: The application state has changed from UNINSTALLED to INSTALLED.
+      main INFO: The application state has changed from UNINSTALLED to INSTALLED.
 
-ej.library.runtime.message library
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To use this library, add this dependency line in the project module.ivy:
+Message library (ej.library.runtime.message)
+--------------------------------------------
 
-   ``<dependency org=“ej.library.runtime” name=“message” rev=“x.y.z”/>``
+Library ``ej.library.runtime.message`` was designed to enable logging while minimizing RAM/ROM footprint and CPU usage. For doing so, it favors the use of integer over strings.
 
--  A ``BasicMessageBuilder`` is implemented in the library. The messages
-   that is built follows this format: >
-   *Category*:*LevelCharacter*\ =\ *MessageIntID* argument1 argument2 …
-   > Exception in thread “thread” *java.lang.Throwable*:
-   *ThrowableMessage*
+Principles:
 
--  As the ID of the message is an integer, it is wise to maintain a
-   documentation that describes all message IDs.
+- The ``MessageLogger`` type allows for logging messages solely based on integers that identify the message content.
+- Log a message by using methods ``MessageLogger.log(...)``, specifying the log level, the message category and message integer identifer.
+  Use optional arguments to add any useful information to your log such as a throwable or contextual data.
+- Log levels are very similar to those of the Logging library. You will find the full level definition in type ``ej.util.message.Level``.
+- Combined with the category, the integer ID will allow the user to find the corresponding error/warning/info description.
+- Loggers rely on the ``MessageBuilder`` type for message creation. 
+  The messages constructed by the ``BasicMessageBuilder`` follow this pattern: `[category]:[LEVEL]=[id]`. The builder will append specified ``Object`` arguments (if any) separated by spaces, then the full stack trace of a throwable (if any).
+- As the ID of the message is an integer, making the output not very human-readable, it is wise to maintain a documentation that describes all message IDs.
 
--  To log a message, instantiate a new ``MessageLogger`` object or use
-   the INSTANCE constants in the base ``MessageLogger`` classes defined
-   in the library (``BasicMessageLogger`` and ``FilterMessageLogger``).
+Usage example:
 
--  Then, use the method ``MessageLogger.log(...)``. This log method
-   needs at least three parameters:
+#. To use this library, add this dependency line in the project module.ivy:
 
-   -  char level, the character corresponding to the level of the
-      message to log. Standard levels are listed in the class
-      ``ej.util.message.Level``.
-   
-   -  String category, the category of the message.
-   
-   -  int id, that represents the message. Combined with the category,
-      it will allow the user to find the corresponding error
-      description.
+   ``<dependency org="ej.library.runtime" name="message" rev="x.y.z"/>``
 
--  In addition to those parameters, a throwable can be added and / or a
-   list of Objects. The list of Objects will be added to the logged
-   message as the argument seen in the ``BasicMessageBuilder`` message
-   composition seen above. The throwable will make the System throw an
-   exception after logging the message.
-
--  The library ``ej.library.runtime.message`` takes less space than
-   ``ej.library.eclasspath.logging`` when embedded and has a lower RAM /
-   CPU consumption at runtime.
-
-- Example 
+#. Call the message API to log some info:
    
    .. code-block:: java 
 
-      public class Main {
+      public static void switchState(ApplicationState newState) {
+         oldState = currentState;
+         currentState = newState;
 
-         private static final String category = "Application";
-         private static final int logID = 2;
+         BasicMessageLogger.INSTANCE.log(Level.INFO, "Application", 2, oldState, currentState);
+      }     
 
-         enum ApplicationState {
-            INSTALLED, STARTED, STOPPED, UNINSTALLED
-         }
-
-         private static ApplicationState currentState;
-         private static ApplicationState oldState;
-
-         public static void main(String[] args) {
-            currentState = ApplicationState.UNINSTALLED;
-            switchState(ApplicationState.INSTALLED);
-         }
-
-         public static void switchState(ApplicationState newState) {
-            oldState = currentState;
-            currentState = newState;
-
-            BasicMessageLogger.INSTANCE.log(Level.INFO, category, logID, oldState, currentState);
-         }     
-      }
-
-   - The logging output will be, directly printed in the console: 
+This will produce the following output:
 
    .. code-block:: java
       
       Application:I=2 UNINSTALLED INSTALLED
+
 
 Remove traces for the production binary
 ---------------------------------------
