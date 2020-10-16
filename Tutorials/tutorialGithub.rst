@@ -1,9 +1,9 @@
 MicroEJ and Github
 ==================
 
-In a previous article, we explained how you can use Git in MicroEJ to manage your source code. You may also know that MicroEJ has an `account on Github <https://github.com/MicroEJ>`_. There, we share examples (like `examples for MWT <http://ardyu9v96nsae1p2.microej.com/mwt-examples-github/>`_) libraries, tools and demos. In this article, we will explain how you can connect repositories from Gitub inside MicroEJ.
+You may know that MicroEJ has an `account on Github <https://github.com/MicroEJ>`_. There, we share examples (like `examples for MWT <http://ardyu9v96nsae1p2.microej.com/mwt-examples-github/>`_) libraries, tools and demos. In this article, we will explain how you can connect repositories from Gitub inside MicroEJ.
 
-Assuming that you have installed EGit properly, you can clone an existing repository. Here, we use the MWT Examples repository. From the Github page, you can copy the HTTP address of this repository from the dedicated field in the right menu (highlighted in red):
+Both the MicroEJ Studio and MicroEJ SDK come with the EGit plugin built-in, so you can easily clone an existing repository. Here, we use the MWT Examples repository. From the Github page, you can copy the HTTP address of this repository from the dedicated field in the right menu (highlighted in red):
 
 .. figure:: images/0-address-to-clone.png
    :alt: Address to clone
@@ -41,3 +41,9 @@ Click Next, select “Existing local repository”, click Next, select the Git r
 
 If you want to import projects from another Github repository, you simply have to do the same procedure for the desired repository.
 
+..
+   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
