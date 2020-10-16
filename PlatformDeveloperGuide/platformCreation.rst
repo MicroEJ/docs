@@ -147,10 +147,25 @@ Modifying one of these files requires to build the Platform again.
 Platform Customization
 ======================
 
-Platform can be customized by creating a ``configuration.xml`` script
-beside the ``[name].platform`` file. This script can extend one or
+Platforms can be customized by creating a ``configuration.xml`` Ant file
+beside the ``[name].platform`` file. This Ant script can extend one or
 several of the extension points available. By default, you should not have to change 
 the default configuration script.
+
+Here is a template for a ``configuration.xml`` Ant file:
+
+.. code:: xml
+
+   <?xml version="1.0" encoding="UTF-8"?>
+   <project name="configuration">
+   
+   	<!--
+   		Define "project.dir" property that references the directory 
+   		where this file is located.
+   	-->
+   	<dirname property="project.dir" file="${ant.file.configuration}"/>
+   
+   </project>
 
 Configuration project (the project which contains the
 ``[name].platform`` file) can contain an optional ``dropins`` folder.
