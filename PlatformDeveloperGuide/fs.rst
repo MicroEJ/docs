@@ -69,7 +69,13 @@ The properties file must / can contain the following properties:
 Use
 ===
 
-A classpath variable named ``FS-2.0`` is available.
+The `FS API Module <https://repository.microej.com/artifacts/ej/api/fs/>`_
+must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to allow access to the FS library.
+
+::
+
+   <dependency org="ej.api" name="fs" rev="2.0.6"/>
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

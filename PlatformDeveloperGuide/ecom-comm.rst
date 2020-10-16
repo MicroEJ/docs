@@ -493,8 +493,15 @@ is required during platform creation to configure the module (see
 Use
 ===
 
-A classpath variable named ``ECOM-COMM-1.1`` is available. This
-Foundation Library is always required when developing a MicroEJ
+The `ECOM Comm API Module <https://repository.microej.com/artifacts/ej/api/ecom-comm/>`_ 
+must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to allow access to the ECOM Comm library. 
+
+::
+
+   <dependency org="ej.api" name="ecom-comm" rev="1.1.4"/>
+
+This Foundation Library is always required when developing a MicroEJ
 Application which communicates with some external devices using the
 serial communication mode.
 

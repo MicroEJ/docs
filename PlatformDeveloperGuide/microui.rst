@@ -202,7 +202,7 @@ Use
 
 The `MicroUI API module <https://repository.microej.com/artifacts/ej/api/microui/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
-Application project:
+Application project in order to allow access to the :ref:`[MicroUI] <esr-specifications>` library:
 
 ::
 
