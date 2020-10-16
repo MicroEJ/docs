@@ -75,7 +75,7 @@ Application project in order to allow access to the FS library.
 
 ::
 
-   <dependency org="ej.api" name="fs" rev="2.+"/>
+   <dependency org="ej.api" name="fs" rev="2.0.6"/>
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

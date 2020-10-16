@@ -158,7 +158,7 @@ Application project in order to allow access to the ECOM library.
 
 ::
 
-   <dependency org="ej.api" name="hal" rev="1.+"/>
+   <dependency org="ej.api" name="hal" rev="1.0.4"/>
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

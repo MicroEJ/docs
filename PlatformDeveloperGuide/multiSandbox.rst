@@ -128,7 +128,7 @@ Application project in order to allow access to :ref:`[KF] <esr-specifications>`
 
 ::
 
-   <dependency org="ej.api" name="kf" rev="1.+"/>
+   <dependency org="ej.api" name="kf" rev="1.4.4"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.

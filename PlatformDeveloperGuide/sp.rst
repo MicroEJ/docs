@@ -185,7 +185,7 @@ Application project in order to allow access to the :ref:`[SP] <esr-specificatio
 
 ::
 
-   <dependency org="ej.api" name="sp" rev="2.+"/>
+   <dependency org="ej.api" name="sp" rev="2.0.2"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.

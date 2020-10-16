@@ -84,7 +84,7 @@ Application project in order to allow access to the Net library.
 
 ::
 
-   <dependency org="ej.api" name="net" rev="1.+"/>
+   <dependency org="ej.api" name="net" rev="1.1.1"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.

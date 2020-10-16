@@ -499,7 +499,7 @@ Application project in order to allow access to the ECOM Comm library.
 
 ::
 
-   <dependency org="ej.api" name="ecom-comm" rev="1.+"/>
+   <dependency org="ej.api" name="ecom-comm" rev="1.1.4"/>
 
 This Foundation Library is always required when developing a MicroEJ
 Application which communicates with some external devices using the
