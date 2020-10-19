@@ -1,7 +1,7 @@
 MicroEJ and Github
 ==================
 
-You may know that MicroEJ has an `account on Github <https://github.com/MicroEJ>`_. There, we share examples (like `examples for MWT <http://ardyu9v96nsae1p2.microej.com/mwt-examples-github/>`_) libraries, tools and demos. In this article, we will explain how you can connect repositories from Gitub inside MicroEJ.
+You may know that MicroEJ has an `account on Github <https://github.com/MicroEJ>`_. There, we share examples (like `examples for MWT <https://github.com/MicroEJ/ExampleJava-MWT>`_) libraries, tools and demos. In this article, we will explain how you can connect repositories from Gitub inside MicroEJ.
 
 Both the MicroEJ Studio and MicroEJ SDK come with the EGit plugin built-in, so you can easily clone an existing repository. Here, we use the MWT Examples repository. From the Github page, you can copy the HTTP address of this repository from the dedicated field in the right menu (highlighted in red):
 
