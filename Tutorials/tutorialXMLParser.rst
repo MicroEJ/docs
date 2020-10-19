@@ -35,3 +35,10 @@ We advise you to read the `step-by-step guide to MicroEJ installation <http://ar
 For more information about XML pull parsing, please refer to `xmlpull.org <http://www.xmlpull.org/>`_.
 
 JSON (JavaScript Object Notation) format is an alternative to the use of XML, more lightweight and less bandwidth-intensive, find out how to use JSON parser on MicroEJ `here <http://ardyu9v96nsae1p2.microej.com/json-parser-microej/>`_.
+
+..
+   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
