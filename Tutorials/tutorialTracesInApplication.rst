@@ -1,7 +1,7 @@
 Add logging to MicroEJ applications
 ===================================
 
-This tutorial explains how to add logging and tracing to MicroEJ applications and libraries.
+This document explains how to add logging and tracing to MicroEJ applications and libraries.
 
 Several solutions are presented that aim at helping developers report precise execution context for further debugging and monitoring.
 
@@ -11,7 +11,7 @@ Intended Audience
 
 The audience for this document is engineers who are in charge of adding logs and traces to MicroEJ applications and libraries.
 
-In addition, this tutorial should be of interest to all developers looking for best practices when coming to log messages while keeping a low ROM footprint and good overall performances.
+In addition, it should be of interest to all developers looking for best practices when coming to log messages while keeping a low ROM footprint and good overall performances.
 
 
 Introduction
@@ -19,12 +19,9 @@ Introduction
 
 One straightforward way to add traces in an application is to use the Java base print functions: ``System.out.println(...)``. 
 However this is not desirable when writing production quality code, where one typically wants to adjust the log level and provide useful, well-formed data and metadata.
-This tutorial discusses the different options available to the MicroEJ developer.
 
 Having logs and traces in an application, though, means more code is embedded and executed.
 This can have an impact on the overall performances of the application by using more CPU usage at runtime. It also increases the ROM footprint of the application.
-This tutorial also addresses this point. 
-
 
 
 Prerequisites
@@ -32,7 +29,6 @@ Prerequisites
 
 *  `MicroEJ SDK <https://developer.microej.com/get-started/>`_ ``4.1.5`` or higher.
 *  Java Development Kit (JDK) ``1.8.x``.
-
 
 
 Overview
@@ -45,7 +41,7 @@ In the MicroEJ environment, there are three ways for logging in an application:
    - Messages library
 
 
-This tutorial will show how to log traces using these three different libraries on the following code snippet:
+The following code snippet is used to illustrate how to log traces with three different libraries:
 
 .. code-block:: java
 
@@ -69,7 +65,7 @@ This tutorial will show how to log traces using these three different libraries 
          }
       }
 
-Finally, the last section will describe how to remove the logs from the code.
+Finally, the last section describes how to remove the logs from the code.
 
 
 
@@ -79,7 +75,7 @@ Trace API (ej.api.trace)
 The Trace API provides a way of tracing user-defined events.
 Its features and principles are described in the :ref:`Event Tracing <event-tracing>` section of the :ref:`Application Developer Guide <application-developer-guide>`.
 
-Here we'll show a short example on how to use this API to log the entry/exit of the method ``switchState()``:
+Here we show a short example on how to use this API to log the entry/exit of the method ``switchState()``:
 
 #. Add the following dependency to your ``module.ivy``: ``<dependency org="ej.api" name="trace" rev="x.y.z"/>``
 
@@ -117,7 +113,7 @@ Here we'll show a short example on how to use this API to log the entry/exit of 
    
    The ``Tracer`` object records the entry/exit of method ``switchState`` with event ID ``0``.
    
-This will produce the following output:
+This produces the following output:
 
       .. code-block::
 
@@ -165,7 +161,7 @@ Let's see how to use it on our short snippet:
       }
 
 
-This will produce the following output: 
+This produces the following output: 
 
    .. code-block:: java
       
@@ -182,10 +178,10 @@ Principles:
 - The ``MessageLogger`` type allows for logging messages solely based on integers that identify the message content.
 - Log a message by using methods ``MessageLogger.log(...)``, specifying the log level, the message category and message integer identifer.
   Use optional arguments to add any useful information to your log such as a throwable or contextual data.
-- Log levels are very similar to those of the Logging library. You will find the full level definition in type ``ej.util.message.Level``.
-- Combined with the category, the integer ID will allow the user to find the corresponding error/warning/info description.
+- Log levels are very similar to those of the Logging library. You can find the full level definition in type ``ej.util.message.Level``.
+- Combined with the category, the integer ID allows the user to find the corresponding error/warning/info description.
 - Loggers rely on the ``MessageBuilder`` type for message creation. 
-  The messages constructed by the ``BasicMessageBuilder`` follow this pattern: `[category]:[LEVEL]=[id]`. The builder will append specified ``Object`` arguments (if any) separated by spaces, then the full stack trace of a throwable (if any).
+  The messages constructed by the ``BasicMessageBuilder`` follow this pattern: `[category]:[LEVEL]=[id]`. The builder appends the specified ``Object`` arguments (if any) separated by spaces, then the full stack trace of a throwable (if any).
 - As the ID of the message is an integer, making the output not very human-readable, it is wise to maintain a documentation that describes all message IDs.
 
 Usage example:
@@ -205,7 +201,7 @@ Usage example:
          BasicMessageLogger.INSTANCE.log(Level.INFO, "Application", 2, oldState, currentState);
       }     
 
-This will produce the following output:
+This produces the following output:
 
    .. code-block:: java
       
@@ -220,7 +216,7 @@ There are multiple options for removing all logs and traces when building the pr
 Wrap logging statements with a check against a static variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
-A boolean constant declared in a ``if`` statement can be used to fully remove portions of code: when this boolean constant is evaluated as ``false``, the wrapped code becomes unreachable and, thus, will not be embedded.
+A boolean constant declared in a ``if`` statement can be used to fully remove portions of code: when this boolean constant is evaluated as ``false``, the wrapped code becomes unreachable and, thus, is not be embedded.
 
 
 .. note::
@@ -278,7 +274,7 @@ Use ProGuard
 
 `ProGuard <https://www.guardsquare.com/en/products/proguard>`_ is a command-line tool that shrinks, optimizes and obfuscates Java code.
 
-It will optimize bytecode as well as detect and remove unused instructions. Therefore it can be used to remove log messages in a production binary.
+It optimizes bytecode as well as detect and remove unused instructions. Therefore it can be used to remove log messages in a production binary.
    
 `MicroEJ Github <https://github.com/MicroEJ/>`_ provides a dedicated How-To showing how to `get started with ProGuard <https://github.com/MicroEJ/How-To/tree/1.8.3/Proguard-Get-Started>`_ and remove elements of code from the Logging library (ej.library.eclasspath.logging).
 
