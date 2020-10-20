@@ -77,7 +77,7 @@ Its features and principles are described in the :ref:`Event Tracing <event-trac
 
 Here we show a short example on how to use this API to log the entry/exit of the method ``switchState()``:
 
-#. Add the following dependency to your ``module.ivy``: ``<dependency org="ej.api" name="trace" rev="x.y.z"/>``
+#. Add the following dependency to the ``module.ivy``: ``<dependency org="ej.api" name="trace" rev="x.y.z"/>``
 
 #. Start by initializing a ``Tracer`` object:
 
@@ -137,7 +137,7 @@ Library ``ej.library.eclasspath.logging`` is based over the ``java.util.logging`
 -  There is one instance of ``LogManager`` by application that manages the hierarchy of loggers.
 -  Find or create ``Logger`` objects using the method ``Logger.getLogger(String ID)``. If a logger has already been created with the same name, this logger is returned, otherwise a new logger is created. 
 -  Each ``Logger`` created with this method is registered in the ``LoggerManager`` and can be retrieved using its String ``ID``.
--  You can associate a minimum level to this ``Logger`` so that only messages that have at least this level are logged. The standard levels are listed in the class ``java.util.logging.Level``.
+-  A minimum level can be set to a ``Logger`` so that only messages that have at least this level are logged. The standard levels are listed in the class ``java.util.logging.Level``.
 -  The ``Logger`` API provides multiple methods for logging:
     -  ``log(...)`` methods, that send a ``LogRecord`` with the level argument to the registered ``Handler`` instances.
     -  Log level-specific methods, like ``severe(String msg)``, that call the aforementioned ``log(...)`` method with correct level argument.
@@ -145,7 +145,7 @@ Library ``ej.library.eclasspath.logging`` is based over the ``java.util.logging`
 
 Let's see how to use it on our short snippet:
 
-#. Add the following dependency your ``module.ivy``: ``<dependency org="ej.library.eclasspath" name="logging" rev="x.y.z"/>``
+#. Add the following dependency the ``module.ivy``: ``<dependency org="ej.library.eclasspath" name="logging" rev="x.y.z"/>``
 
 #. Call the logging API to log some info text:
 
@@ -177,7 +177,7 @@ Principles:
 
 - The ``MessageLogger`` type allows for logging messages solely based on integers that identify the message content.
 - Log a message by using methods ``MessageLogger.log(...)``, specifying the log level, the message category and message integer identifer.
-  Use optional arguments to add any useful information to your log such as a throwable or contextual data.
+  Use optional arguments to add any useful information to the log such as a throwable or contextual data.
 - Log levels are very similar to those of the Logging library. You can find the full level definition in type ``ej.util.message.Level``.
 - Combined with the category, the integer ID allows the user to find the corresponding error/warning/info description.
 - Loggers rely on the ``MessageBuilder`` type for message creation. 
@@ -220,7 +220,7 @@ A boolean constant declared in a ``if`` statement can be used to fully remove po
 
 
 .. note::
-    You can find more information about the usage of constants and ``if`` code removal in the :ref:`Classpath <if_constant_removal>` section of the :ref:`Application Developer Guide <application-developer-guide>`.
+    More information about the usage of constants and ``if`` code removal can be found in the :ref:`Classpath <if_constant_removal>` section of the :ref:`Application Developer Guide <application-developer-guide>`.
 
 
 
@@ -245,7 +245,7 @@ A boolean constant declared in a ``if`` statement can be used to fully remove po
 
 
 When using the Trace API (ej.api.trace), you can evaluate the value of constant ``Tracer.TRACE_ENABLED_CONSTANT_PROPERTY`` that represents property ``core.trace.enabled``.
-The value of this property can be modified by going to :guilabel:`Launch` > :guilabel:`Launch configurations` then in the tab :guilabel:`Configuration` > :guilabel:`Runtime`, you can check/uncheck the option :guilabel:`Enable execution traces` to respectively set the value to ``true``/``false``.
+The value of this property can be modified by going to :guilabel:`Launch` > :guilabel:`Launch configurations` then in the tab :guilabel:`Configuration` > :guilabel:`Runtime`, check/uncheck the option :guilabel:`Enable execution traces` to respectively set the value to ``true``/``false``.
 
          .. image:: images/tuto_microej_trace_property.png
              :align: center
