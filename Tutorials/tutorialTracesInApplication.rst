@@ -134,7 +134,7 @@ This produces the following output:
 Logging library (ej.library.eclasspath.logging)
 -----------------------------------------------
 
-Library ``ej.library.eclasspath.logging`` is based over the ``java.util.logging`` library and follows the same principles:
+The library ``ej.library.eclasspath.logging`` implements standard Java ``java.util.logging`` package and follows the same principles:
 
 -  There is one instance of ``LogManager`` by application that manages the hierarchy of loggers.
 -  Find or create ``Logger`` objects using the method ``Logger.getLogger(String ID)``. If a logger has already been created with the same name, this logger is returned, otherwise a new logger is created. 
@@ -172,7 +172,7 @@ This produces the following output:
 
 .. note::
 
-   Unlike the two other libraries discussed here, the library ``ej.library.eclasspath.logging`` is entirely based on Strings (log ID and message). Note that String operations can lead to performance issues and that String objects use significant RAM and ROM space. When possible, favor a logging solution that uses primitive types over Strings.
+   Unlike the two other libraries discussed here, the library ``ej.library.eclasspath.logging`` is entirely based on Strings (log ID and message). Note that String operations can lead to performance issues and that String objects use significant ROM space. When possible, favor a logging solution that uses primitive types over Strings.
 
 
 Message library (ej.library.runtime.message)
