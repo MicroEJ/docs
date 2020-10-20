@@ -52,7 +52,7 @@ The following code snippet is used to illustrate how to log traces with three di
          }
 
          private static ApplicationState currentState;
-         private static ApplicationState oldState;
+         private static ApplicationState previousState;
 
          public static void main(String[] args) {
             currentState = ApplicationState.UNINSTALLED;
@@ -60,7 +60,7 @@ The following code snippet is used to illustrate how to log traces with three di
          }
 
          public static void switchState(ApplicationState newState) {
-            oldState = currentState;
+            previousState = currentState;
             currentState = newState;
          }
       }
@@ -77,7 +77,7 @@ Its features and principles are described in the :ref:`Event Tracing <event-trac
 
 Here we show a short example on how to use this API to log the entry/exit of the method ``switchState()``:
 
-#. Add the following dependency to the ``module.ivy``: ``<dependency org="ej.api" name="trace" rev="x.y.z"/>``
+#. Add the following dependency to the ``module.ivy``: ``<dependency org="ej.api" name="trace" rev="1.1.0"/>``
 
 #. Start by initializing a ``Tracer`` object:
 
@@ -102,13 +102,15 @@ Here we show a short example on how to use this API to log the entry/exit of the
 
       .. code-block:: java
 
-         public static void switchState(ApplicationState newState) {
-            tracer.recordEvent(0);
+         private static final int EVENT_ID = 0;
 
-            oldState = currentState;
+         public static void switchState(ApplicationState newState) {
+            tracer.recordEvent(EVENT_ID);
+
+            previousState = currentState;
             currentState = newState;
 
-            tracer.recordEventEnd(0);
+            tracer.recordEventEnd(EVENT_ID);
          }
    
    The ``Tracer`` object records the entry/exit of method ``switchState`` with event ID ``0``.
@@ -145,18 +147,18 @@ Library ``ej.library.eclasspath.logging`` is based over the ``java.util.logging`
 
 Let's see how to use it on our short snippet:
 
-#. Add the following dependency the ``module.ivy``: ``<dependency org="ej.library.eclasspath" name="logging" rev="x.y.z"/>``
+#. Add the following dependency the ``module.ivy``: ``<dependency org="ej.library.eclasspath" name="logging" rev="1.1.0"/>``
 
 #. Call the logging API to log some info text:
 
    .. code-block:: java
      
       public static void switchState(ApplicationState newState) {
-         oldState = currentState;
+         previousState = currentState;
          currentState = newState;
 
          Logger logger = Logger.getLogger(Main.class.getName());
-         logger.log(Level.INFO, "The application state has changed from " + oldState.toString() + " to "
+         logger.log(Level.INFO, "The application state has changed from " + previousState.toString() + " to "
                + currentState.toString() + ".");
       }
 
@@ -188,17 +190,21 @@ Usage example:
 
 #. To use this library, add this dependency line in the project module.ivy:
 
-   ``<dependency org="ej.library.runtime" name="message" rev="x.y.z"/>``
+   ``<dependency org="ej.library.runtime" name="message" rev="2.1.0"/>``
 
 #. Call the message API to log some info:
    
    .. code-block:: java 
 
+      private static final String LOG_CATEGORY = "Application";
+
+      private static final int LOG_ID = 2;
+
       public static void switchState(ApplicationState newState) {
-         oldState = currentState;
+         previousState = currentState;
          currentState = newState;
 
-         BasicMessageLogger.INSTANCE.log(Level.INFO, "Application", 2, oldState, currentState);
+         BasicMessageLogger.INSTANCE.log(Level.INFO, LOG_CATEGORY, LOG_ID, previousState, currentState);
       }     
 
 This produces the following output:
@@ -234,12 +240,16 @@ A boolean constant declared in a ``if`` statement can be used to fully remove po
    
    .. code-block:: java 
 
+      private static final String LOG_PROPERTY = "com.mycompany.logging";
+
       public static void switchState(ApplicationState newState) {
-         oldState = currentState;
+         previousState = currentState;
          currentState = newState;
 
-         if(Constants.getBoolean("com.mycompany.logging")) {
-            BasicMessageLogger.INSTANCE.log(Level.INFO, "Application", 2, oldState, currentState);
+         if (Constants.getBoolean(LOG_PROPERTY)) {
+            Logger logger = Logger.getLogger(Main.class.getName());
+            logger.log(Level.INFO, "The application state has changed from " + previousState.toString() + " to "
+               + currentState.toString() + ".");
          }
       }
 
@@ -254,16 +264,18 @@ Follow same principle as before:
 
       .. code-block:: java 
 
+         private static final int EVENT_ID = 0;
+
          public static void switchState(ApplicationState newState) {
-            if(Constants.getBoolean(Tracer.TRACE_ENABLED_CONSTANT_PROPERTY)) {
-               tracer.recordEvent(0);
+            if (Constants.getBoolean(Tracer.TRACE_ENABLED_CONSTANT_PROPERTY)) {
+               tracer.recordEvent(EVENT_ID);
             }
 
-            oldState = currentState;
+            previousState = currentState;
             currentState = newState;
 
-            if(Constants.getBoolean(Tracer.TRACE_ENABLED_CONSTANT_PROPERTY)) {
-               tracer.recordEventEnd(0);
+            if (Constants.getBoolean(Tracer.TRACE_ENABLED_CONSTANT_PROPERTY)) {
+               tracer.recordEventEnd(EVENT_ID);
             }
          }
 
