@@ -128,7 +128,7 @@ This produces the following output:
 
 .. note::
 
-   The default platform implementation of the Trace API prints the events in the console. MicroEJ provides an other implementation that redirects the events to `SystemView <https://www.segger.com/products/development-tools/systemview/>`_, the real-time recording and visualization tool from `Segger <https://www.segger.com/>`_. It allows for a finer understanding of the runtime behavior by showing events sequencing and duration. A platform reference implementation for the `NXP OM13098 development board <https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc54000-cortex-m4-/lpcxpresso54628-development-board:OM13098>`_ with SystemView support is available `here <https://developer.microej.com/packages/referenceimplementations/U3OER/2.0.1/OM13098-U3OER-fullPackaging-eval-2.0.1.zip>`_. Please contact MicroEJ Support for more information about how to integrate this Platform module.
+   The default platform implementation of the Trace API prints the events in the console. MicroEJ provides an other implementation that redirects the events to `SystemView <https://www.segger.com/products/development-tools/systemview/>`_, the real-time recording and visualization tool from `Segger <https://www.segger.com/>`_. It allows for a finer understanding of the runtime behavior by showing events sequence and duration. A platform reference implementation for the `NXP OM13098 development board <https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc54000-cortex-m4-/lpcxpresso54628-development-board:OM13098>`_ with SystemView support is available `here <https://developer.microej.com/packages/referenceimplementations/U3OER/2.0.1/OM13098-U3OER-fullPackaging-eval-2.0.1.zip>`_. Please contact MicroEJ Support for more information about how to integrate this Platform module.
 
 
 Logging library (ej.library.eclasspath.logging)
@@ -138,11 +138,11 @@ Library ``ej.library.eclasspath.logging`` is based over the ``java.util.logging`
 
 -  There is one instance of ``LogManager`` by application that manages the hierarchy of loggers.
 -  Find or create ``Logger`` objects using the method ``Logger.getLogger(String ID)``. If a logger has already been created with the same name, this logger is returned, otherwise a new logger is created. 
--  Each ``Logger`` created with this method is registered in the ``LoggerManager`` and can be retrieved using its String ``ID``.
+-  Each ``Logger`` created with this method is registered in the ``LogManager`` and can be retrieved using its String ``ID``.
 -  A minimum level can be set to a ``Logger`` so that only messages that have at least this level are logged. The standard levels are listed in the class ``java.util.logging.Level``.
 -  The ``Logger`` API provides multiple methods for logging:
-    -  ``log(...)`` methods, that send a ``LogRecord`` with the level argument to the registered ``Handler`` instances.
-    -  Log level-specific methods, like ``severe(String msg)``, that call the aforementioned ``log(...)`` method with correct level argument.
+    -  ``log(...)`` methods that send a ``LogRecord`` with a level to the registered ``Handler`` instances.
+    -  Log level-specific methods, like ``severe(String msg)``, that call the aforementioned ``log(...)`` method with correct level.
 -  The library defines a default implementation of type ``Handler``, called ``DefaultHandler``, that prints the message of the ``LogRecord`` on the standard error output stream. It also prints the stack trace of the ``Throwable`` associated to the ``LogRecord`` if there is one.
 
 Let's see how to use it on our short snippet:
@@ -178,19 +178,17 @@ Library ``ej.library.runtime.message`` was designed to enable logging while mini
 Principles:
 
 - The ``MessageLogger`` type allows for logging messages solely based on integers that identify the message content.
-- Log a message by using methods ``MessageLogger.log(...)``, specifying the log level, the message category and message integer identifer.
+- Log a message by using methods ``MessageLogger.log(...)``, specifying the log level, the message category and message integer identifier.
   Use optional arguments to add any useful information to the log such as a throwable or contextual data.
 - Log levels are very similar to those of the Logging library. You can find the full level definition in type ``ej.util.message.Level``.
 - Combined with the category, the integer ID allows the user to find the corresponding error/warning/info description.
 - Loggers rely on the ``MessageBuilder`` type for message creation. 
   The messages constructed by the ``BasicMessageBuilder`` follow this pattern: `[category]:[LEVEL]=[id]`. The builder appends the specified ``Object`` arguments (if any) separated by spaces, then the full stack trace of a throwable (if any).
-- As the ID of the message is an integer, making the output not very human-readable, it is wise to maintain a documentation that describes all message IDs.
+- As the ID of the message is an integer, making the output not very human-readable, it is wise to maintain a documentation that describes all IDs.
 
 Usage example:
 
-#. To use this library, add this dependency line in the project module.ivy:
-
-   ``<dependency org="ej.library.runtime" name="message" rev="2.1.0"/>``
+#. To use this library, add this dependency line in the ``module.ivy``: ``<dependency org="ej.library.runtime" name="message" rev="2.1.0"/>``
 
 #. Call the message API to log some info:
    
@@ -296,5 +294,5 @@ Congratulations!
 
 At this point of the tutorial:
 
-* You can add logging to your MicroEJ applications while meeting the constraints of embedded applications
+* You can add logging to your MicroEJ applications while meeting the constraints of embedded applications.
 * You can fully turn off logging in your production builds.
