@@ -141,7 +141,7 @@ Library ``ej.library.eclasspath.logging`` is based over the ``java.util.logging`
 -  Each ``Logger`` created with this method is registered in the ``LogManager`` and can be retrieved using its String ``ID``.
 -  A minimum level can be set to a ``Logger`` so that only messages that have at least this level are logged. The standard levels are listed in the class ``java.util.logging.Level``.
 -  The ``Logger`` API provides multiple methods for logging:
-    -  ``log(...)`` methods that send a ``LogRecord`` with a level to the registered ``Handler`` instances.
+    -  ``log(...)`` methods that send a ``LogRecord`` to the registered ``Handler`` instances. The ``LogRecord`` object wraps the String message and the log level. 
     -  Log level-specific methods, like ``severe(String msg)``, that call the aforementioned ``log(...)`` method with correct level.
 -  The library defines a default implementation of type ``Handler``, called ``DefaultHandler``, that prints the message of the ``LogRecord`` on the standard error output stream. It also prints the stack trace of the ``Throwable`` associated to the ``LogRecord`` if there is one.
 
@@ -170,17 +170,22 @@ This produces the following output:
       main INFO: The application state has changed from UNINSTALLED to INSTALLED.
 
 
+.. note::
+
+   Unlike the two other libraries discussed here, the library ``ej.library.eclasspath.logging`` is entirely based on Strings (log ID and message). Note that String operations can lead to performance issues and that String objects use significant RAM and ROM space. When possible, favor a logging solution that uses primitive types over Strings.
+
+
 Message library (ej.library.runtime.message)
 --------------------------------------------
 
-Library ``ej.library.runtime.message`` was designed to enable logging while minimizing RAM/ROM footprint and CPU usage. For doing so, it favors the use of integer over strings.
+The library ``ej.library.runtime.message`` was designed to enable logging while minimizing RAM/ROM footprint and CPU usage. For doing so, it favors the use of integer over strings.
 
 Principles:
 
 - The ``MessageLogger`` type allows for logging messages solely based on integers that identify the message content.
 - Log a message by using methods ``MessageLogger.log(...)``, specifying the log level, the message category and message integer identifier.
   Use optional arguments to add any useful information to the log such as a throwable or contextual data.
-- Log levels are very similar to those of the Logging library. You can find the full level definition in type ``ej.util.message.Level``.
+- Log levels are very similar to those of the Logging library. The standard levels are listed in the class ``ej.util.message.Level``.
 - Combined with the category, the integer ID allows the user to find the corresponding error/warning/info description.
 - Loggers rely on the ``MessageBuilder`` type for message creation. 
   The messages constructed by the ``BasicMessageBuilder`` follow this pattern: `[category]:[LEVEL]=[id]`. The builder appends the specified ``Object`` arguments (if any) separated by spaces, then the full stack trace of a throwable (if any).
