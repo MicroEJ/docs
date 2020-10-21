@@ -48,7 +48,7 @@ native world:
 .. _fig_sni-flow:
 .. figure:: images/sni_flow.*
    :alt: SNI Processing
-   :scale: 70%
+   :scale: 75%
    :align: center
 
    :ref:`[SNI] <esr-specifications>` Processing

@@ -33,6 +33,7 @@ The Multi-Sandbox process extends the overall process described in
 .. figure:: images/process-multiapp-overview.*
    :alt: Multi-Sandbox Process
    :align: center
+   :scale: 80%
 
    Multi-Sandbox Process
 

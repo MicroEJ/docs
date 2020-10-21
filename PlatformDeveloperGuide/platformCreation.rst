@@ -239,7 +239,7 @@ The 3 most common integration cases are:
   .. figure:: images/bsp-connection-cases-none.png
      :alt: MicroEJ Platform with no BSP connection
      :align: center
-     :scale: 75 %
+     :scale: 80%
 
      MicroEJ Platform with no BSP connection
 
@@ -258,7 +258,7 @@ The 3 most common integration cases are:
   .. figure:: images/bsp-connection-cases-partial.png
      :alt: MicroEJ Platform with partial BSP connection
      :align: center
-     :scale: 75 %
+     :scale: 80%
 
      MicroEJ Platform with partial BSP connection
 
@@ -278,7 +278,7 @@ The 3 most common integration cases are:
   .. figure:: images/bsp-connection-cases-full.png
      :alt: MicroEJ Platform with full BSP connection
      :align: center
-     :scale: 75 %
+     :scale: 80%
 
      MicroEJ Platform with full BSP connection
 

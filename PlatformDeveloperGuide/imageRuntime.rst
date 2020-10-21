@@ -24,7 +24,7 @@ Functional Description
 
 .. figure:: images/image-decoders2.*
    :alt: Image Decoder Principle
-   :width: 80.0%
+   :width: 750px
    :align: center
 
    Image Decoder Principle

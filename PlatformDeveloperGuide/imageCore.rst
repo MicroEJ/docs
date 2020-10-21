@@ -21,7 +21,7 @@ Functional Description
 
 .. figure:: images/image_process.*
    :alt: Image Engine Core Principle
-   :width: 80.0%
+   :width: 800px
    :align: center
 
    Image Engine Core Principle

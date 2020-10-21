@@ -65,6 +65,7 @@ Overall Architecture
 .. figure:: png/overview.png
    :alt: Firmware Boundary Overview
    :align: center
+   :scale: 60%
 
    Firmware Boundary Overview
 
@@ -72,6 +73,7 @@ Overall Architecture
 .. figure:: png/inputs_outputs.png
    :alt: Firmware Input and Output Artifacts
    :align: center
+   :scale: 60%
 
    Firmware Input and Output Artifacts
 
@@ -131,6 +133,7 @@ Firmware Build Flow
 .. figure:: png/build_flow_generic.png
    :alt: Firmware Build Flow (Kernel + Resident Applications)
    :align: center
+   :scale: 80%
 
    Firmware Build Flow (Kernel + Resident Applications)
 
@@ -157,6 +160,7 @@ following steps:
 .. figure:: png/build_flow_virtual_device.png
    :alt: Virtual Device Build Flow
    :align: center
+   :scale: 75%
 
    Virtual Device Build Flow
 

@@ -11,6 +11,7 @@ hardware platform or a Java J2SE application.
 .. figure:: images/hil5.*
    :alt: Shielded Plug Mock General Architecture
    :align: center
+   :scale: 75%
 
    Shielded Plug Mock General Architecture
 

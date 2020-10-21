@@ -127,7 +127,7 @@ Preferences Page
 
 The MMM preferences page is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Module Manager` [#warning_check_former_sdk_versions]_.
 
-   .. figure:: images/mmm_preferences_5.2_annotated.png
+   .. figure:: images/mmm_preferences_5-2_annotated.png
       :alt: MMM Preferences Page
       :align: center
 
@@ -277,7 +277,7 @@ Ivy Preferences Page
 
 The Ivy Preferences Page is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Ivy` > :guilabel:`Settings`.
 
-.. figure:: images/mmm_preferences_up_to_5.1_ivy_settings_annotated.png
+.. figure:: images/mmm_preferences_up_to_5-1_ivy_settings_annotated.png
    :align: center
 
 
@@ -286,7 +286,7 @@ Easyant Preferences Page
 
 The Easyant Preferences Page is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`EasyAnt4Eclipse`.
 
-.. figure:: images/mmm_preferences_up_to_5.1_ea4eclipse_annotated.png
+.. figure:: images/mmm_preferences_up_to_5-1_ea4eclipse_annotated.png
    :align: center
 
 Export the Build Kit

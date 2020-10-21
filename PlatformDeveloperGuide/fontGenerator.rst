@@ -18,7 +18,7 @@ Functional Description
 
 .. figure:: images/static-font-gen2.*
    :alt: Font Generator Principle
-   :width: 50.0%
+   :width: 450px
    :align: center
 
    Font Generator Principle

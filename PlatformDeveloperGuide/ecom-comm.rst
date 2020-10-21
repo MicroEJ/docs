@@ -81,6 +81,7 @@ exist to support a Buffered connection.
 .. figure:: images/architecture.*
    :alt: ECOM Comm components
    :align: center
+   :scale: 80%
 
    ECOM Comm components
 
@@ -149,6 +150,7 @@ to the given Comm Port identifier.
 .. figure:: images/comm_open.*
     :alt: Comm Port Open Sequence
     :align: center
+    :scale: 80%
 
     Comm Port Open Sequence
 
@@ -179,7 +181,7 @@ connection with ECOM registration mechanism enabled.
 
 .. figure:: images/dyn_sequence.*
     :alt: Dynamic Connection Lifecycle
-    :width: 100.0%
+    :scale: 90%
     :align: center
 
     Dynamic Connection Lifecycle
