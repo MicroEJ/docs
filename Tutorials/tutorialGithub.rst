@@ -1,9 +1,9 @@
-MicroEJ and Github
-==================
+Importing GitHub projects into MicroEJ SDK
+==========================================
 
-You may know that MicroEJ has an `account on Github <https://github.com/MicroEJ>`_. There, we share examples (like `examples for MWT <https://github.com/MicroEJ/ExampleJava-MWT>`_) libraries, tools and demos. In this article, we will explain how you can connect repositories from Gitub inside MicroEJ.
+You may know that MicroEJ has an `account on GitHub <https://github.com/MicroEJ>`_. There, we share examples (like `examples for MWT <https://github.com/MicroEJ/ExampleJava-MWT>`_) libraries, tools and demos. In this article, we will explain how you can connect repositories from GitHub inside MicroEJ SDK.
 
-Both the MicroEJ Studio and MicroEJ SDK come with the EGit plugin built-in, so you can easily clone an existing repository. Here, we use the MWT Examples repository. From the Github page, you can copy the HTTP address of this repository from the dedicated field in the right menu (highlighted in red):
+Both MicroEJ Studio and MicroEJ SDK come with the EGit plugin built-in, so you can easily clone an existing repository. Here, we use the MWT Examples repository. From the GitHub page, you can copy the HTTP address of this repository from the dedicated field in the right menu (highlighted in red):
 
 .. figure:: images/0-address-to-clone.png
    :alt: Address to clone
@@ -43,7 +43,7 @@ Click :guilabel:`Next` once more and finally :guilabel:`Finish`. The ``Package E
    :width: 447px
    :height: 534px
 
-If you want to import projects from another Github repository, you simply have to do the same procedure for the desired repository.
+If you want to import projects from another GitHub repository, you simply have to do the same procedure for the desired repository.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
