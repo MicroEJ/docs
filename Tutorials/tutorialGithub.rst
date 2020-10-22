@@ -8,36 +8,40 @@ Both the MicroEJ Studio and MicroEJ SDK come with the EGit plugin built-in, so y
 .. figure:: images/0-address-to-clone.png
    :alt: Address to clone
    :align: center
+   :width: 1103px
+   :height: 548px
 
-For this repository, the address is `<https://github.com/MicroEJ/ExampleJava-MWT.git>`_. In MicroEJ, open the Git perspective and select “Clone a Git repository” in the “Git Repositories” view. If have already copied the HTTP address, the fields are filed automatically:
+In MicroEJ SDK, to clone and import the project from the remote Git repository into the MicroEJ workspace, go to File / Import / Git / Projects from Git.
 
-.. figure:: images/1-location-to-clone.png
-   :alt: Location to clone
-   :align: center
-
-Click Next, select the master branch, click Next and finally accept the proposed “Local Destination” by clicking Finish.
-
-.. figure:: images/2-local-destination.png
-   :alt: Local destination
-   :align: center
-
-You can now see the details of the repository in the “Git Repositories” view.
-
-.. figure:: images/3-details-after-clone.png
-   :alt: Details after clone
-   :align: center
-
-If you go back to the MicroEJ perspective and have a look at the “Package Explorer” view, you may be disappointed: there is no project! That’s normal because cloning a repository is just copying files from the remote repository to your local repository It has no effect on your MicroEJ workspace, only on your Git repository. You now have to import the project from the local Git repository into the MicroEJ workspace. To do so, go to File / Import / Git / Projects from Git.
-
-.. figure:: images/4-import-type.png
+.. figure:: images/1-import-type.png
    :alt: Import type
    :align: center
+   :width: 520px
+   :height: 553px
 
-Click Next, select “Existing local repository”, click Next, select the Git repository to clone (in our example, its name is “ExampleJava-MWT”), click Next twice and finally Finish. “Package Explorer” view now contains the projects!
+Click Next, select “Clone URI”, click Next, enter the address of the remote repository in the URI field. For this repository, the address is `<https://github.com/MicroEJ/ExampleJava-MWT.git>`_. If have already copied the HTTP address, the fields are filed automatically. 
 
-.. figure:: images/5-projects-imported.png
+.. figure:: images/2-location-to-clone.png
+   :alt: Location to clone
+   :align: center
+   :width: 512px
+   :height: 544px
+
+Click Next, select the master branch, click Next and accept the proposed “Local Destination” by clicking Next once again.
+
+.. figure:: images/3-local-destination.png
+   :alt: Local destination
+   :align: center
+   :width: 513px
+   :height: 544px
+
+Click Next once more and finally Finish. The “Package Explorer” view now contains the projects!
+
+.. figure:: images/4-projects-imported.png
    :alt: Projects imported
    :align: center
+   :width: 447px
+   :height: 534px
 
 If you want to import projects from another Github repository, you simply have to do the same procedure for the desired repository.
 
