@@ -59,6 +59,19 @@ Here is the format of the ``*.images.list`` files.
    Letter              ::= 'a-zA-Z_$'
    LetterOrDigit       ::= 'a-zA-Z_$0-9'
 
+Images Heap
+-----------
+
+The images heap is used to allocate the pixel data of:
+
+- mutable images (i.e. ``BufferedImage`` instances)
+- images which are not byte-addressable, such as images opened with an input stream
+- images which are byte-addressable but converted to a different output format
+
+In other words, every image which can not be retrieved using ``Image.getImage()`` is saved on the images heap.
+
+The size of the images heap can be configured with the ``ej.microui.memory.imagesheap.size`` property.
+
 Output Formats
 --------------
 
