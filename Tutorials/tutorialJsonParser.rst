@@ -1,5 +1,5 @@
-JSON parser on MicroEJ
-======================
+Using a JSON parser
+===================
 
 This article explains how to parse and use JSON files with MicroEJ.
 
@@ -10,8 +10,8 @@ As described on the `JSON official site <http://json.org/>`_, JSON (JavaScript O
 
 Due to its lightweight nature and its simplified syntax compared to XML, it is quite natural to use it in embedded systems. JSON is easily readable by humans but what about computers? That is where the official JSON page comes in handy by providing a rather impressive list of JSON parsers. For our convenience a Java mobile edition (ME) of a JSON parser is available.
 
-Parser use in MicroEJ
----------------------
+Parser use in MicroEJ SDK
+-------------------------
 
 The `JSON API Module <https://repository.microej.com/artifacts/org/json/me/json/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the Device library.
