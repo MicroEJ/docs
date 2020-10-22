@@ -11,7 +11,7 @@ Both the MicroEJ Studio and MicroEJ SDK come with the EGit plugin built-in, so y
    :width: 1103px
    :height: 548px
 
-In MicroEJ SDK, to clone and import the project from the remote Git repository into the MicroEJ workspace, go to File / Import / Git / Projects from Git.
+In MicroEJ SDK, to clone and import the project from the remote Git repository into the MicroEJ workspace, go to :guilabel:`File` / :guilabel:`Import` / :guilabel:`Git` / :guilabel:`Projects from Git`.
 
 .. figure:: images/1-import-type.png
    :alt: Import type
@@ -19,7 +19,7 @@ In MicroEJ SDK, to clone and import the project from the remote Git repository i
    :width: 520px
    :height: 553px
 
-Click Next, select “Clone URI”, click Next, enter the address of the remote repository in the URI field. For this repository, the address is `<https://github.com/MicroEJ/ExampleJava-MWT.git>`_. If have already copied the HTTP address, the fields are filed automatically. 
+Click :guilabel:`Next`, select :guilabel:`Clone URI`, click :guilabel:`Next`, enter the address of the remote repository in the `URI` field. For this repository, the address is `<https://github.com/MicroEJ/ExampleJava-MWT.git>`_. If have already copied the HTTP address, the fields are filed automatically. 
 
 .. figure:: images/2-location-to-clone.png
    :alt: Location to clone
@@ -27,7 +27,7 @@ Click Next, select “Clone URI”, click Next, enter the address of the remote 
    :width: 512px
    :height: 544px
 
-Click Next, select the master branch, click Next and accept the proposed “Local Destination” by clicking Next once again.
+Click :guilabel:`Next`, select the master branch, click :guilabel:`Next` and accept the proposed `Local Destination` by clicking :guilabel:`Next` once again.
 
 .. figure:: images/3-local-destination.png
    :alt: Local destination
@@ -35,7 +35,7 @@ Click Next, select the master branch, click Next and accept the proposed “Loca
    :width: 513px
    :height: 544px
 
-Click Next once more and finally Finish. The “Package Explorer” view now contains the projects!
+Click :guilabel:`Next` once more and finally :guilabel:`Finish`. The ``Package Explorer`` view now contains the projects !
 
 .. figure:: images/4-projects-imported.png
    :alt: Projects imported
