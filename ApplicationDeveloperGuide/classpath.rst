@@ -83,6 +83,8 @@ The MicroEJ Classpath contains the following elements:
 
 -  Images and Fonts resources;
 
+-  Native Language Support (NLS) resources, described in section :ref:`section.classpath.elements.nls`;
+
 -  ``*.[extension].list`` files, declaring contents to load. Supported
    list file extensions and format is specific to declared application
    contents and is described in the appropriate section.
@@ -421,6 +423,83 @@ Examples:
    transparency
 
 -  ``myfont::2``: Embed all characters with 2 levels of transparency
+
+.. _section.classpath.elements.nls:
+
+Native Language Support
+-----------------------
+
+Native Language Support (NLS) allows the application to support internationalization.
+Each label to be internationalized is referenced by a key, which can be 
+used in the application code instead of using the label directly.
+
+Labels must be defined in `PO files <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`_ in the MicroEJ Classpath of the application.
+Here is an example:
+
+::
+
+   msgid ""
+   msgstr ""
+   "Language: en_US\n"
+   "Language-Team: English\n"
+   "MIME-Version: 1.0\n"
+   "Content-Type: text/plain; charset=UTF-8\n"
+
+   msgid "Label1"
+   msgstr "My label 1"
+
+   msgid "Label2"
+   msgstr "My label 2"
+
+These PO files have to be converted to be usable by the application.
+In order to let the build system know which PO files to process, 
+they must be referenced in MicroEJ Classpath ``*.nls.list`` files.
+The file format of these ``*.nls.list`` files is a standard Java properties file.
+Each line represents the Full Qualified Name of a Java interface that will be 
+generated and used in the application. Here is an example, let's call it `i18n.nls.list`:
+
+.. code-block:: properties
+
+   com.mycompany.myapp.Labels
+   com.mycompany.myapp.Messages
+
+For each line, PO files whose name starts with the interface name (``Messages`` and ``Labels` `
+in the example) are retrieved from the MicroEJ Classpath and used to generate:
+
+- a Java interface with the given FQN, containing a field for each ``msgid`` of the PO files
+- a NLS binary file containing the translations
+
+So, in the example, the generated interface ``com.mycompany.myapp.Labels`` will gather all the 
+translations from files named ``Labels*.po`` and located in the MicroEJ Classpath.
+PO files are generally suffixed by their locale (``Labels_en_US.po``) but it is only for convenience
+since the suffix is not used, the locale is extracted from the PO file's metadata.
+
+Once the generation is done, the application can use the Java interfaces to get internationalized 
+labels, for example:
+
+.. code-block:: java
+
+   import com.mycompany.myapp.Labels;
+
+   public class MyClass {
+
+      String label = Labels.Label1;
+
+      ...
+
+The generation is triggered when building the application or after a change done in any PO or ``*.nls.list`` files.
+This allows to always have the Java interfaces up-to-date with the translations and to use them immediately.
+
+Use
+~~~
+
+The `NLS API module <https://repository.microej.com/artifacts/ej/library/runtime/nls/>`_
+must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
+Application project, in order to allow access to the NLS library.
+
+::
+
+  <dependency org="ej.library.runtime" name="nls" rev="..."/>
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
