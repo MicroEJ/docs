@@ -1,9 +1,7 @@
 Add logging to MicroEJ applications
 ===================================
 
-This document explains how to add logging and tracing to MicroEJ applications and libraries.
-
-This tutorial presents several solutions. The aim is to help developers to report precise execution context for further debugging and monitoring.
+This document explains how to add logging and tracing to MicroEJ applications and libraries with three different solutions. The aim is to help developers to report precise execution context for further debugging and monitoring.
 
 
 Intended Audience
