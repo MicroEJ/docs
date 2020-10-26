@@ -156,6 +156,9 @@ resource. Example:
    # The following resource is embedded as a raw resource
    com/mycompany/MyResource.txt
 
+Others resources types are supported in MicroEJ Classpath, 
+see :ref:`chapter.microej.applicationResources` for more details.
+
 .. _section.classpath.elements.immutables:
 
 Immutable Objects
