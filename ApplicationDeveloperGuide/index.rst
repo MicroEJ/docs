@@ -15,6 +15,7 @@ Application Developer Guide
    mmm
    moduleNatures
    classpath
+   applicationResources
    tools
    advanced
 
