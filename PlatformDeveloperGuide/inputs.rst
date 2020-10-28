@@ -35,7 +35,7 @@ collaborative components that communicate using a shared buffer:
 
 .. figure:: images/drivers-microui-comms.*
    :alt: Drivers and MicroUI Event Generators Communication
-   :width: 70.0%
+   :width: 550px
    :align: center
 
    Drivers and MicroUI Event Generators Communication
@@ -56,6 +56,7 @@ event generators and sent to objects that listen for input activity.
 .. figure:: images/microui-events.png
    :alt: MicroUI Events Framework
    :align: center
+   :scale: 75%
 
    MicroUI Events Framework
 

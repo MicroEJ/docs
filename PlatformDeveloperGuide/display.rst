@@ -66,7 +66,7 @@ hardware configuration.
 
 .. figure:: images/display_modes_nocustom.*
    :alt: Buffer Modes
-   :width: 60.0%
+   :width: 450px
    :align: center
 
    Buffer Modes
@@ -109,11 +109,10 @@ Switch Mode Synchronization Steps
 - | *Step 1:* Drawing
   | MicroUI is drawing in buffer 0 (back buffer) and the display is reading its contents from buffer 1 (display buffer).
 
-.. figure:: images/switch-step1.*
-   :alt: Step 1 : Drawing
-   :width: 284px
-   :height: 160px
-   :align: center
+   .. figure:: images/switch-step1.*
+      :alt: Step 1 : Drawing
+      :width: 400px
+      :align: center
 
    Step 1 : Drawing
 
@@ -121,11 +120,10 @@ Switch Mode Synchronization Steps
   | The drawing is done. Set that the next read will be done from buffer 0.
   | Note that the display \"hardware component\" asynchronously continues to read data from buffer 1.
 
-.. figure:: images/switch-step2.*
-   :alt: Step 2 : Switch
-   :width: 284px
-   :height: 160px
-   :align: center
+   .. figure:: images/switch-step2.*
+      :alt: Step 2 : Switch
+      :width: 400px
+      :align: center
 
    Step 2 : Switch
 
@@ -136,11 +134,10 @@ Switch Mode Synchronization Steps
   | If it is not possible to start an asynchronous copy, the copy must be performed in the MicroUI drawing routine, at the beginning of the next step.
   | Note that the copy is partial: only the parts that have changed need to be copied, lowering the CPU load.
 
-.. figure:: images/switch-step3.*
-   :alt: Step 3 : Copy
-   :width: 284px
-   :height: 160px
-   :align: center
+   .. figure:: images/switch-step3.*
+      :alt: Step 3 : Copy
+      :width: 400px
+      :align: center
 
    Step 3 : Copy
 
@@ -151,11 +148,10 @@ Switch Mode Synchronization Steps
 - | *Step 5:* Next draw operation
   | Same behavior as step 1 with buffers reversed.
 
-.. figure:: images/switch-step4.*
-   :alt: Step 5 : Next draw operation
-   :width: 284px
-   :height: 160px
-   :align: center
+   .. figure:: images/switch-step4.*
+      :alt: Step 5 : Next draw operation
+      :width: 400px
+      :align: center
 
    Step 5 : Next draw operation
 
@@ -180,27 +176,24 @@ Display Copy Mode
 - | *Step 1:* Drawing 
   | MicroUI is drawing in the back buffer and the display is reading its content from the display buffer.
 
-.. image:: images/copy-step1.*
-   :width: 284px
-   :height: 160px
-   :align: center
+   .. image:: images/copy-step1.*
+      :width: 400px
+      :align: center
 
 - | *Step 2:* Copy 
   | The drawing is done. A copy from the back buffer to the display buffer is triggered. 
   | Note that the implementation of the copy operation may be done asynchronously – it is recommended to wait until the display "hardware component" has finished a full buffer read to avoid flickering. At the implementation level, the copy may be done by a DMA, a dedicated RTOS task, interrupt, etc.
 
-.. image:: images/copy-step2.*
-   :width: 284px
-   :height: 160px
-   :align: center
+   .. image:: images/copy-step2.*
+      :width: 400px
+      :align: center
 
 - | *Step 3:*  Synchronization
   | The next drawing operation waits until the copy is complete.
 
-.. image:: images/copy-step3.*
-   :width: 284px
-   :height: 160px
-   :align: center
+   .. image:: images/copy-step3.*
+      :width: 400px
+      :align: center
 
 
 .. _directBufferMode:
@@ -217,7 +210,7 @@ runtime memory.
 .. _fig_directMode:
 .. figure:: images/direct.*
    :alt: Display Direct Mode
-   :height: 160px
+   :width: 270px
    :align: center
 
    Display Direct Mode

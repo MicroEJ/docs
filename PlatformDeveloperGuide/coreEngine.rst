@@ -19,6 +19,7 @@ are performed within the C IDE.
 .. figure:: images/mjvm_flow2.*
    :alt: MicroEJ Core Engine Flow
    :align: center
+   :scale: 80%
 
    MicroEJ Core Engine Flow
 
@@ -50,6 +51,7 @@ task" refers to the tasks scheduled by the underlying OS; and the term
 .. figure:: images/mjvm_gt.*
    :alt: A Green Threads Architecture Example
    :align: center
+   :scale: 75%
 
    A Green Threads Architecture Example
 

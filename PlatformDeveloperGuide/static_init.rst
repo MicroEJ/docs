@@ -49,7 +49,7 @@ The Static MicroUI Initializer tool is able to output two files:
 
 .. figure:: images/static_init_process.*
    :alt: MicroUI Process
-   :width: 70.0%
+   :width: 750px
    :align: center
 
    MicroUI Process

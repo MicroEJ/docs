@@ -25,7 +25,7 @@ etc.).
 
 .. figure:: images/microui-fragment-dependencies.*
    :alt: MicroUI Elements
-   :width: 70.0%
+   :width: 600px
    :align: center
 
    MicroUI Elements

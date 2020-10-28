@@ -56,6 +56,7 @@ The following figure gives an overview of MicroEJ Studio possibilities:
 .. figure:: images/1_overview.png
    :alt: MicroEJ Application Development Overview
    :align: center
+   :scale: 50%
 
    MicroEJ Application Development Overview
 
