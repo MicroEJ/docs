@@ -328,6 +328,8 @@ must be linked by the third-party linker.
    |                             | code                        |             |            |
    +-----------------------------+-----------------------------+-------------+------------+
 
+.. note::
+	Sections ``ICETEA_HEAP``, ``_java_heap`` and ``_java_immortals`` are zero-initialized at MicroEJ Core Engine startup. 
 
 Dependencies
 ============
