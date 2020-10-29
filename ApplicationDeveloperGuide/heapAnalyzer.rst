@@ -1,3 +1,5 @@
+.. _heapdumper:
+
 Heap Dumper & Heap Analyzer
 ===========================
 
