@@ -190,7 +190,7 @@ generated and used in the application. Here is an example, let's call it `i18n.n
    com.mycompany.myapp.Labels
    com.mycompany.myapp.Messages
 
-For each line, PO files whose name starts with the interface name (``Messages`` and ``Labels` `
+For each line, PO files whose name starts with the interface name (``Messages`` and ``Labels``
 in the example) are retrieved from the MicroEJ Classpath and used to generate:
 
 - a Java interface with the given FQN, containing a field for each ``msgid`` of the PO files
