@@ -212,7 +212,8 @@ Platform Configuration
 The following platform configuration guidelines are recommended in order to minimize the size of the application:
 
 - Use the latest MicroEJ architecture.
-- Use tiny MEJ32 architecture. It reduces the code size by ~20% but it is only possible if the size of the application code is lower than 256KB (resources excluded). See dedicated documentation: :ref:`core-tiny`
+- Use tiny MEJ32 architecture. It reduces the size of the application code by ~20% but it is only possible if the size of the application code is lower than 256KB (resources excluded). See dedicated documentation: :ref:`core-tiny`.
+- Disable unnecessary modules in the ``.platform`` file. For example, disable the ``Image PNG Decoder`` module if you know that the application will not load PNG images at runtime.
 - Don't embed unnecessary pixel conversion algorithms. This can save up to ~8KB of code size but it requires knowing the format of the resources embedded in the application.
 - Use the best optimization level for every source file (for example, ``-O3`` or ``-Os`` on GCC).
 - Use an optimal compiler such as IAR rather than GCC.
