@@ -191,15 +191,16 @@ The following application code guidelines are recommended in order to minimize t
 - Avoid manipulating ``String`` objects when possible. For example, prefer using integers to represent IDs. Indeed, strings take a lot of memory.
 - Avoid using logging library or ``println()``, use the trace library (``ej.api#trace``) instead. The logging library uses strings, while the trace library is light and uses error codes.
 - Avoid manipulating wrappers such as ``Integer`` and ``Long`` objects, manipulate primitive types instead. Objects take more memory and require boxing/unboxing operations.
-- Avoid using service library, use singletons instead. The service library adds extra code which doesn't add any feature to your application. It also embeds reflection methods of EDC.
+- Avoid using service library, use singletons or ``Constants.getClass()`` instead. The service library adds extra code which doesn't add any feature to your application. It also embeds reflection methods of EDC.
 - Avoid using ``List`` objects, use arrays and ``ArrayTools`` instead. Even though the collections framework is very user-friendly, the code size and the heap usage are more important than when manipulating arrays.
 - Avoid using ``Map`` objects, use ``PackedMap`` instead. Packed maps provide the same features as collection maps but are much lighter.
 - Avoid using ``StringBuffer``, use ``StringBuilder`` instead. They do the same thing, except that ``StringBuffer`` is synchronized, and thus, it is heavier.
 - Avoid using ``java.util.Timer``, use ``ej.bon.Timer`` instead. EDC's timers are now deprecated.
-- Avoid serializing/deserializing data from byte arrays using manual bitwise operations, use ``ej.bon.ByteArray`` instead.
 - Use BON constants when writing debug code or optional code, such as ``if (Constants.getBoolean()) { ... }``. That way, the optional code will not be embedded if the constant is ``false``.
 - Avoid using system properties, use BON constants instead. Constants checks are computed at compile time rather than at runtime. Also, manipulating properties requires to embed their name, and strings take a lot of memory.
 - Avoid using synchronization. A ``synchronized`` block takes a lot of extra code size, even though it is only a few characters of code.
+- Avoid overriding ``toString()`` for debugging purposes. This method will always be embedded even if it is not called explicitly.
+- Avoid overriding ``equals(Object)`` and ``hashCode()``, use ``==`` operator instead if it is sufficient. Indeed, these methods take more memory and require null and type checks.
 - Avoid calling ``equals()`` and ``hashCode()`` on ``Object`` references. If you do, the method will be embedded for every class that overrides the method.
 - Avoid using the string concatenation operator (``+``) when concatenating more than 2 objects into a single string, use ``StringBuilder`` instead. Multiple ``+`` take more code size than multiple ``StringBuilder.append()`` calls.
 - Avoid using ``java.util.Calendar``, use another calendar implementation instead. The calendar implementation of EDC is very heavy, even when only a few methods are used.

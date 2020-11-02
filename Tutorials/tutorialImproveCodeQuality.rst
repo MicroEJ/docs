@@ -126,14 +126,6 @@ error.
   - Constructors
   - Methods
 
-Bad Practices
--------------
-
-- Avoid redefining ``toString()`` method for debugging purposes. The method
-  will always be embedded and consume some Flash.
-- Do not implement ``equals(Object)`` and ``hashCode()`` if not necessary
-  (if ``==`` operator is sufficient). See :ref:`equals-hashcode`.
-
 Best Practices to Avoid Pitfalls
 --------------------------------
 
@@ -162,8 +154,7 @@ Best Practices to Simplify Maintenance
 - Write short lines. This can be achieved by extracting variables (for
   example: (``(a == null || b == null)`` becomes
   ``(aIsNull || bIsNull)``).
-- Use component-oriented architecture to separate concerns (Use
-  ej.library.runtime#component).
+- Use component-oriented architecture to separate concerns.
 - Use a limited number of parameters in methods (or perhaps a new type
   is needed).
 - Create small methods with little complexity. When a method gets too
@@ -211,6 +202,8 @@ Basic Optimizations
   optimized by declaring it as immutables.
 - All stateless objects initialized at startup could be turned
   into immutables to save RAM and execution time.
+- Avoid serializing/deserializing data from byte arrays using manual
+  bitwise operations, use ``ej.bon.ByteArray`` instead.
 
 .. _equals-hashcode:
 
