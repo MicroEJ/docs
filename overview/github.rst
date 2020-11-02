@@ -22,7 +22,7 @@ In MicroEJ SDK, to clone and import the project from the remote Git repository i
    :alt: Import type
    :align: center
 
-Click :guilabel:`Next`, select :guilabel:`Clone URI`, click :guilabel:`Next` and paste the the remote repository address in the :guilabel:`URI` field. For this repository, the address is `<https://github.com/MicroEJ/ExampleJava-MWT.git>`_. If the HTTP address is a valid repository, the other fields are filed automatically. 
+Click :guilabel:`Next`, select :guilabel:`Clone URI`, click :guilabel:`Next` and paste the remote repository address in the :guilabel:`URI` field. For this repository, the address is `<https://github.com/MicroEJ/ExampleJava-MWT.git>`_. If the HTTP address is a valid repository, the other fields are filed automatically. 
 
 .. figure:: images/2-location-to-clone.png
    :alt: Location to clone
@@ -40,7 +40,7 @@ Click :guilabel:`Next` once more and finally :guilabel:`Finish`. The ``Package E
    :alt: Projects imported
    :align: center
 
-If you want to import projects from another GitHub repository, you simply have to do the same procedure for the desired repository.
+If you want to import projects from another (GitHub) repository, you simply have to do the same procedure using the Git URL of the desired repository.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
