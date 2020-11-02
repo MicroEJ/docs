@@ -300,6 +300,15 @@ Thread Stacks
 - Configure the number of allocated thread stack blocks. Keep the default value for the size of a block (``512``) and figure out how many blocks each thread requires. This can be done empirically by starting with a low number of blocks and increasing this number as long as the application throws a ``StackOverflowError``.
 - Configure the maximum number of blocks per thread. The best choice is to set it to the number of blocks required by the most greedy thread. Another acceptable option is to set it to the same value as the total number of allocated blocks.
 - Configure the maximum number of monitors. This number can be known accurately by counting the number of concurrent ``synchronized`` blocks. This can also be done empirically by starting with a low number of monitors and increasing this number as long as no exception occurs. Either way, it is recommended to set a slightly higher value than calculated.
+ 
+VM Dump
+"""""""
+
+The ``LLMJVM_dump()`` function declared in ``LLMJVM.h`` may be called to print information on alive threads such as their current and maximum stack block usage.
+This function may be called from the application by exposing it in a :ref:`native function <sni>`.
+
+More specifically, the ``Peak java threads count`` value printed in the dump can be used to configure the maximum number of threads.
+The ``max_java_stack`` and ``current_java_stack`` values printed for each thread can be used to configure the number of stack blocks.
 
 MicroUI Images Heap
 ^^^^^^^^^^^^^^^^^^^
