@@ -15,40 +15,30 @@ First, from the GitHub page, copy the repository URI (HTTP address) from the ded
 .. figure:: images/0-address-to-clone.png
    :alt: Address to clone
    :align: center
-   :width: 1103px
-   :height: 548px
 
 In MicroEJ SDK, to clone and import the project from the remote Git repository into the MicroEJ workspace, select :guilabel:`File` > :guilabel:`Import` > :guilabel:`Git` > :guilabel:`Projects from Git` wizard.
 
 .. figure:: images/1-import-type.png
    :alt: Import type
    :align: center
-   :width: 520px
-   :height: 553px
 
 Click :guilabel:`Next`, select :guilabel:`Clone URI`, click :guilabel:`Next` and paste the the remote repository address in the :guilabel:`URI` field. For this repository, the address is `<https://github.com/MicroEJ/ExampleJava-MWT.git>`_. If the HTTP address is a valid repository, the other fields are filed automatically. 
 
 .. figure:: images/2-location-to-clone.png
    :alt: Location to clone
    :align: center
-   :width: 512px
-   :height: 544px
 
 Click :guilabel:`Next`, select the ``master`` branch, click :guilabel:`Next` and accept the proposed `Local Destination` by clicking :guilabel:`Next` once again.
 
 .. figure:: images/3-local-destination.png
    :alt: Local destination
    :align: center
-   :width: 513px
-   :height: 544px
 
 Click :guilabel:`Next` once more and finally :guilabel:`Finish`. The ``Package Explorer`` view now contains the imported projects.
 
 .. figure:: images/4-projects-imported.png
    :alt: Projects imported
    :align: center
-   :width: 447px
-   :height: 534px
 
 If you want to import projects from another GitHub repository, you simply have to do the same procedure for the desired repository.
 
