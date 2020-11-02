@@ -10,8 +10,8 @@ Tutorials
    tutorialCreateCustomPlatform
    tutorialCreateFirmwareFromScratch
    tutorialSetupBuildUsingJenkinsAndArtifactory
-   tutorialJavaCodingRules
-   tutorialFootprintGuidelines
+   tutorialImproveCodeQuality
+   tutorialOptimizeFootprint
    tutorialStripClassNames
 
 ..

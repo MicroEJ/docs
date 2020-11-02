@@ -1,4 +1,4 @@
-.. _javacodingrules:
+.. _improvecodequality:
 
 Improve the Quality of the Code of an Application
 =================================================

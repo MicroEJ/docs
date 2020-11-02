@@ -83,7 +83,7 @@ The following snippet shows that the ``.bss.vm.stacks.java`` section takes 0x800
 How to Reduce the Image Size of an Application
 ----------------------------------------------
 
-Generic coding rules may be found in the following tutorial: :ref:`javacodingrules`.
+Generic coding rules may be found in the following tutorial: :ref:`improvecodequality`.
 
 This section provides additional coding rules and good practices to reduce the image size (flash memory) of an application.
 
@@ -234,7 +234,7 @@ The following application configuration guidelines are recommended in order to m
 How to Reduce the Runtime Size of an Application
 ------------------------------------------------
 
-You can find generic coding rules in the following tutorial: :ref:`javacodingrules`.
+You can find generic coding rules in the following tutorial: :ref:`improvecodequality`.
 
 This section provides additional coding rules and good practices in order to reduce the runtime size (RAM) of an application.
 
