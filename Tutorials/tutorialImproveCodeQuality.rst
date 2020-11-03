@@ -1,22 +1,9 @@
-.. _javacodingrules:
+.. _improvecodequality:
 
 Improve the Quality of the Code of an Application
 =================================================
 
 This tutorial explains how to analyze the quality of the code of an application and how to improve this quality in order to simplify the maintenance of the code.
-
-Code Analysis with SonarQube™
------------------------------
-
-SonarQube is an open source platform for continuous inspection of code quality.
-SonarQube offers reports on duplicated code, coding standards, unit tests, code coverage, code complexity, potential bugs, comments, and architecture.
-
-To set it up on your MicroEJ application project, please refer to `this documentation <https://github.com/MicroEJ/ExampleTool-Sonar>`_.
-It describes the following steps:
-
-- How to run a SonarQube server locally.
-- How to run an analysis using a dedicated script.
-- How to run an analysis during "Build with EasyAnt."
 
 Naming Convention
 -----------------
@@ -139,15 +126,7 @@ error.
   - Constructors
   - Methods
 
-Bad Practices
--------------
-
-- Avoid redefining ``toString()`` method for debugging purposes. The method
-  will always be embedded and consume some Flash.
-- Do not implement ``equals(Object)`` and ``hashCode()`` if not necessary
-  (if ``==`` operator is sufficient). See :ref:`equals-hashcode`.
-
-Best Practices to avoid pitfalls
+Best Practices to Avoid Pitfalls
 --------------------------------
 
 - ``equals(Object)`` and ``hashCode()`` must be overridden in
@@ -166,7 +145,7 @@ Best Practices to avoid pitfalls
 		myLocale.myMethod();
 	}
 
-Best Practices to simplify maintenance
+Best Practices to Simplify Maintenance
 --------------------------------------
 
 - Extract constants instead of using magic numbers.
@@ -175,8 +154,7 @@ Best Practices to simplify maintenance
 - Write short lines. This can be achieved by extracting variables (for
   example: (``(a == null || b == null)`` becomes
   ``(aIsNull || bIsNull)``).
-- Use component-oriented architecture to separate concerns (Use
-  ej.library.runtime#component).
+- Use component-oriented architecture to separate concerns.
 - Use a limited number of parameters in methods (or perhaps a new type
   is needed).
 - Create small methods with little complexity. When a method gets too
@@ -184,7 +162,7 @@ Best Practices to simplify maintenance
 - Use ``+`` operator for single-line string concatenation. Use a
   StringBuilder otherwise.
 
-Performance considerations
+Performance Considerations
 --------------------------
 
 - Avoid using ``Calendar.getInstance()`` for a repeated operation. It
@@ -198,7 +176,7 @@ Performance considerations
   model can be updated using a calendar. An update on an NTP can also
   be considered.
 
-Basic optimizations
+Basic Optimizations
 -------------------
 
 - Avoid initializing fields to ``0`` or ``null``. A ``//VM_DONE`` tag
@@ -224,6 +202,8 @@ Basic optimizations
   optimized by declaring it as immutables.
 - All stateless objects initialized at startup could be turned
   into immutables to save RAM and execution time.
+- Avoid serializing/deserializing data from byte arrays using manual
+  bitwise operations, use ``ej.bon.ByteArray`` instead.
 
 .. _equals-hashcode:
 
@@ -330,3 +310,16 @@ JUnit
   - Suffix package with .test for black-box tests.
   - Use the same package for white-box tests (allow to use classes with
     package visibility).
+
+Code Analysis with SonarQube™
+-----------------------------
+
+SonarQube is an open source platform for continuous inspection of code quality.
+SonarQube offers reports on duplicated code, coding standards, unit tests, code coverage, code complexity, potential bugs, comments, and architecture.
+
+To set it up on your MicroEJ application project, please refer to `this documentation <https://github.com/MicroEJ/ExampleTool-Sonar>`_.
+It describes the following steps:
+
+- How to run a SonarQube server locally.
+- How to run an analysis using a dedicated script.
+- How to run an analysis during "Build with EasyAnt."
