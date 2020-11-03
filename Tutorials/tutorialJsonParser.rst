@@ -43,18 +43,30 @@ In the following example we will parse this JSON file that represents a simple a
 		}
 	}
 
-The example will parse the file, browse the resulting data structure (``org.json.me.JSONObject``) and print the value of the ``menuitem`` JSON array.
+First, we need to include this file in our project by adding it to the ``src/main/resources`` folder and creating a ``.resources.list`` properties file to declare this resource for our application to be able to retrieve it (see :ref:`section.classpath.elements.resources` for more details). 
+
+.. figure:: images/json-src-files-folders.png
+	:alt: Source files organization
+	:width: 242px
+	:height: 128px
+	:align: center
+
+This ``.resources.list`` file (here named ``json.resources.list``) should contain the path to our JSON file as such :
+
+.. code::
+
+	resources/menu.json
+
+The example below will parse the file, browse the resulting data structure (``org.json.me.JSONObject``) and print the value of the ``menuitem`` JSON array.
 
 .. code:: Java
 
 	/*
 	 * Java
 	 *
-	 * Copyright  2014-2020 MicroEJ Corp. All rights reserved.
-	 * Use of this source code is governed by a BSD-style license that can be found at http://www.is2t.com/open-source-bsd-license/.
-	 * MicroEJ Corp. PROPRIETARY. Use is subject to license terms.
+	 * Copyright 2014-2020 MicroEJ Corp. All rights reserved.
 	 */
-	package com.is2t.json.examples;
+	package com.microej.examples.json;
 
 	import java.io.DataInputStream;
 	import java.io.IOException;
