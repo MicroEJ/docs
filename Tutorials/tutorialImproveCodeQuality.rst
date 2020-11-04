@@ -169,7 +169,7 @@ Common Pitfalls
 - Do not overburden the constructor with logic.
 - Do not directly store an array given by parameter.
 - Do not directly return an internal array.
-- Save object reference from a field to a local before using it (see :ref:`local_extraction`)
+- Save object reference from a field to a local before using it (see :ref:`local_extraction`).
 
 Simplify Maintenance
 ^^^^^^^^^^^^^^^^^^^^
@@ -219,9 +219,9 @@ Local extraction consists of storing the result of an expression before using it
 It improves the Java code in many ways:
 
 - self documentation: gives a name to a computed result.
-- performance & memory footprint: avoids repeated access to same elements and extract loop invariants
-- thread safety: helps to avoid synchronization issues or falling to unwanted race conditions
-- code pattern detection: helps automated tools such as Null Analysis
+- performance & memory footprint: avoids repeated access to same elements and extract loop invariants.
+- thread safety: helps to avoid synchronization issues or falling to unwanted race conditions.
+- code pattern detection: helps automated tools such as Null Analysis.
 
 .. _equals_hashcode:
 
