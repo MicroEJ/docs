@@ -250,6 +250,8 @@ Dependencies
 
 The HIL Engine API is automatically provided by the ``microej-mock`` project skeleton.
 
+.. _mock_module:
+
 Installation
 ============
 
@@ -262,6 +264,7 @@ First create a new :ref:`module project <mmm_module_skeleton>` using the ``micro
 Once implemented, right-click on the repository project and select ``Build Module``.
 
 Once the module is built, the mock can be installed in a Platform in one of the two ways:
+
 - by adding the mock module a regular Platform module dependency, 
 - or by manually copying the JAR file ``[mock_project]\target~\rip\mocks\[mock_name].jar`` to the :ref:`Platform configuration <platform_configuration_creation>` mock dropins folder ``dropins/mocks/dropins/``.
 
