@@ -14,6 +14,7 @@ Overview
    sdk
    studio
    gettingStarted
+   github
    systemRequirements
 
 ..
