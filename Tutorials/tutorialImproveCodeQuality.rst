@@ -1,34 +1,47 @@
-.. _improvecodequality:
+.. _improve_code_quality:
 
-Improve the Quality of the Code of an Application
-=================================================
+Improve the Quality of Java Code
+================================
 
-This tutorial explains how to analyze the quality of the code of an application and how to improve this quality in order to simplify the maintenance of the code.
+This tutorial describes some rules and tools aimed at improving the quality of a Java code to simplify its maintenance.
+It makes up a minimum consistent set of rules which can be applied in any situation, especially on embedded systems where performance and low memory footprint matter.
 
-Naming Convention
+Intended Audience
 -----------------
 
-Use full words instead of abbreviations (for classes, methods, fields, or
-locals).
+The audience for this document is engineers who are developing any kind of Java code (application or library).
 
-Here is a list of the casing rules for each type:
+Readable Code
+-------------
+
+This section describes rules to get a readable code, in order to facilitate:
+
+- the maintenance of an existing code with multiple developers contributions (e.g. merge conflicts, reviews). 
+- the landing to a new code base when the same rules are applied across different modules and components.
+
+Naming Convention
+^^^^^^^^^^^^^^^^^
+
+Naming of Java elements (package, class, method, field and local) follows the `Camel Case <https://en.wikipedia.org/wiki/Camel_case>`_ convention.
 
 - Package names are written fully in lower case (no underscore).
-- Package names are singular (for example ``ej.animal`` rather than
-  ``ej.animals``).
+- Package names are singular (e.g. ``ej.animal`` instead of ``ej.animals``).
 - Class names are written in upper camel case.
 - Method and instance field names are written in lower camel case.
 - Static field names are written in lower camel case.
 - Constant names are written in fully upper case with underscore as word separator.
-- Enum names are written in fully upper case with underscores as word separators.
+- Enum constant names are written in fully upper case with underscores as word separators.
 - Local (and parameter) names are written in lower camel case.
-- For acronyms in camel case, capitalize only the first letter, not the
-  others (for example, ``xmlHttpContext`` for a local).
+- When a name contains an acronym, capitalize only the first letter of the acronym (e.g. for a local with the ``HTTP`` acronym, use ``myHttpContext`` instead of ``myHTTPContext``).
+
+It is also recommended to use full words instead of abbreviations (e.g. ``MyProxyReference`` instead of ``MyProxyRef``).
+
+.. _visibility:
 
 Visibility
-----------
+^^^^^^^^^^
 
-Here is a list of the usage of each visibility:
+Here is a list of the usage of each Java element visibility:
 
 - ``public``: API.
 - ``protected``: API for subclasses.
@@ -41,59 +54,61 @@ Package visibility can be used by writing the comment ``/*default*/`` in place o
 the modifier.
 
 Javadoc
--------
+^^^^^^^
 
-Official documentation:
-https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html
+Javadoc comments convention is based on the `official documentation <https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html>`_.
 
-The Javadoc is written in HTML. Do not use XHTML: all tags must not be
-closed. For example, use only a ``<p>`` between two paragraphs.
+.. note::
+
+   Javadoc is written in HTML format and doesn't accept XHTML format: tags must not be closed. 
+   For example, use only a ``<p>`` between two paragraphs.
+
 Here is a list of the rules to follow when writing Javadoc:
 
-- All APIs (see ``Visibility`` chapter) must have a full Javadoc
+- All APIs (see :ref:`visibility`) must have a full Javadoc
   (classes, methods, and fields).
 - Add a dot at the end of all phrases.
-- Add @since when introducing a new API.
+- Add ``@since`` tag when introducing a new API.
 - Do not hesitate to use links to help the user to navigate in the API
   (``@see``, ``@link``).
-- Use the code tag in the following cases:
+- Use the ``@code`` tag in the following cases:
 
-  - For keywords.
-  - For names.
-  - For code example.
-  - ``{@code null}``, ``{@code true}``, ``{@code false}``,
-    ``{@code my code}``.
+  - For keywords (e.g. ``{@code null}`` or ``{@code true}``).
+  - For names and types (e.g. ``{@code x}`` or ``{@code Integer}``).
+  - For code example (e.g. ``{@code new Integer(Integer.parseInt(s))}``).
 
-For the methods, follow the rules below:
+Here is a list of additional rules for methods:
 
-- The first sentence starts with the third person (as if there is “This
-  method” before).
+- The first sentence starts with the third person (as if there is *This method* before).
 - All parameters and returned values must be described.
 - Put as much as possible information in the description, keep
   ``@param`` and ``@return`` minimal.
-- Start ``@param`` with a lower case and usually with “the” or “a.”
+- Start ``@param`` with a lower case and usually with *the* or *a*.
 - Start ``@return`` with a lower case as if the sentence starts with
-  “Returns."
+  *Returns*.
 - Avoid naming parameters anywhere other than in ``@param``. If the
   parameter is renamed afterward, the comment is not changed
-  automatically. Prefer using “the given xxx.”
+  automatically. Prefer using *the given xxx*.
 
-Code Style
-----------
+Code Style and Formatting
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The formatting rules for Eclipse recommended by MicroEJ can be found here: `Eclipse Java
-settings <https://repository.microej.com/packages/formatter/>`__.
+MicroEJ defines a formatting profile for ``.java`` files, which is automatically set up when creating a new :ref:`mmm_module_skeleton`.
 
-These rules must be set (and committed) for each project (in ``.settings``
-directory). Then, the committed files must not have any warning or
-error.
+.. note::
 
-- Indentation is done with 1 tab. (Why? Because it is simply more
-  versatile, you can represent it as you wish!).
+   MicroEJ SDK automatically applies formatting when a ``.java`` file is saved. It is also possible to manually apply formatting on specific files:
+   
+   - In ``Package Explorer``, select the desired files, folders or projects,
+   - then go to :guilabel:`Source` > :guilabel:`Format`. The processed files must not have any warning or error.
+   
+Here is the list of formatting rules included in this profile:
+
+- Indentation is done with 1 tab.
 - Braces are mandatory with ``if``, ``else``, ``for``, ``do``, and
   ``while`` statements, even when the body is empty or contains only a
   single statement.
-- Braces follow the Kernighan and Ritchie style (“Egyptian brackets”) described below:
+- Braces follow the Kernighan and Ritchie style (Egyptian brackets) described below:
 
   - No line break before the opening brace.
   - Line break after the opening brace.
@@ -104,9 +119,12 @@ error.
     if it is followed by else or a comma.
 
 - One statement per line.
-- Let the formatter automagically wraps your code when a statement
+- Let the formatter automatically wraps your code when a statement
   needs to be wrapped.
-- Class and member modifiers, when present, appear in the order
+
+Here is a list of additional formatting rules that are not automatically applied:
+
+- Class and member modifiers, when present, must appear in the order
   recommended by the Java Language Specification:
   ``public protected private abstract default static final transient volatile synchronized native strictfp``.
 - Avoid committing commented code (other than to explain an
@@ -117,98 +135,90 @@ error.
   order suggested by the Code Convention for the Java Programming
   Language:
 
-  - Class (static) variables. First, the public class variables, then
+  - Class (static) fields. First, the public class fields, then
     the protected, then package level (no access modifier), and then
     the private.
-  - Instance variables. First, the public class variables, then the
+  - Instance fields. First, the public class fields, then the
     protected, then package level (no access modifier), and then the
     private.
   - Constructors
   - Methods
 
-Best Practices to Avoid Pitfalls
---------------------------------
+.. note::
+   
+   Most of these rules are checked by :ref:`sonar_code_analysis`.
 
-- ``equals(Object)`` and ``hashCode()`` must be overridden in
-  pairs. See :ref:`equals-hashcode`.
+Best Practices 
+--------------
+
+This section describes rules made of best practices and well-known restrictions of the Java Programming Language and more generally Object Oriented paradigm.
+
+Common Pitfalls
+^^^^^^^^^^^^^^^
+
+- `Object.equals(Object) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#equals-java.lang.Object->`_ and `Object.hashCode() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#hashCode-->`_ methods must be overridden in
+  pairs. See :ref:`equals_hashcode`.
 - Do not assign fields in field declaration but in the constructor.
 - Do not use non-final method inside the constructor.
 - Do not overburden the constructor with logic.
-- Prefer a default constructor (without parameters) in order to use
-  reflection (``Class.newInstance()``).
 - Do not directly store an array given by parameter.
 - Do not directly return an internal array.
-- Save object reference from a field to a local before using it::
+- Save object reference from a field to a local before using it (see :ref:`local_extraction`).
 
-	Object myLocale = this.myField;
-	if (myLocale != null) {
-		myLocale.myMethod();
-	}
-
-Best Practices to Simplify Maintenance
---------------------------------------
+Simplify Maintenance
+^^^^^^^^^^^^^^^^^^^^
 
 - Extract constants instead of using magic numbers.
 - Use parenthesis for complex operation series; it simplifies the understanding 
   of operator priorities.
-- Write short lines. This can be achieved by extracting variables (for
-  example: (``(a == null || b == null)`` becomes
-  ``(aIsNull || bIsNull)``).
-- Use component-oriented architecture to separate concerns.
+- Write short lines. This can be achieved by extracting locals (see :ref:`local_extraction`).
 - Use a limited number of parameters in methods (or perhaps a new type
   is needed).
 - Create small methods with little complexity. When a method gets too
   complex, it should be split.
-- Use ``+`` operator for single-line string concatenation. Use a
-  StringBuilder otherwise.
-
-Performance Considerations
---------------------------
-
-- Avoid using ``Calendar.getInstance()`` for a repeated operation. It
-  creates a new instance of Calendar for each call. Prefer using the
-  same instance when possible.
-- Avoid using the Calendar to compute fields to display a watch face
-  for example. The computation of the fields of a Calendar may affect
-  performance. In a watch face, prefer maintaining a watch model
-  (with one field per data: second, minute, hour, etc.) that updates
-  its fields every x milliseconds, then every x seconds or minutes. The
-  model can be updated using a calendar. An update on an NTP can also
-  be considered.
+- Use ``+`` operator only for single-line string concatenation. Use an explicit `StringBuilder <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StringBuilder.html>`_ otherwise.
+- Use component-oriented architecture to separate concerns. If a class is intended to be instantiated using `Class.newInstance() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#newInstance-->`_, add a default constructor (without parameters).
 
 Basic Optimizations
--------------------
+^^^^^^^^^^^^^^^^^^^
 
-- Avoid initializing fields to ``0`` or ``null``. A ``//VM_DONE`` tag
+- Avoid explicitly initializing fields to ``0`` or ``null``, because they are zero-initialized by the runtime. A ``//VM_DONE`` comment
   can be written to understand the optimization.
-- The switch/case blocks are generated in two ways depending on the
-  cases. Prefer consecutive cases for faster execution (and slightly
-  smaller bytecode).
-- Avoid using synchronized types (Vector, Hashtable, StringBuffer,
-  etc.) when possible.
-- Avoid using not packed collections as fields. Instead of ArrayList
-  prefer using arrays with the right size and instead of HashSet,
-  HashMap use packed maps (see ``ej.library.runtime#basictool``
-  library).
-- Avoid using not packed collections as fields. Prefer using arrays
-  with the right size or packed maps (see
-  ``ej.library.runtime#basictool`` library).
-- Use locals for repeated access to fields or array elements.
-- Save fields in local (for reading use cases) to avoid synchronization
-  issues.
-- Save results of method calls as local.
-- Arrays in static fields consume a lot of flash and are initialized
-  dynamically (it generates a lot of Java bytecode). It can be
-  optimized by declaring it as immutables.
-- All stateless objects initialized at startup could be turned
-  into immutables to save RAM and execution time.
+- The switch/case statements are generated by the Java compiler in two ways depending on the
+  cases density. Prefer declaring consecutive cases (`table_switch`) for performance (``O(1)``) and slightly
+  smaller code memory footprint instead of `lookup_switch` (``O(log N)``).
+- Avoid using built-in thread safe types (`Vector <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Vector.html>`_,
+  `Hashtable <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Hashtable.html>`_,
+  `StringBuffer <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StringBuffer.html>`_, etc.). 
+  Usually synchronization has to be done at a higher level.
 - Avoid serializing/deserializing data from byte arrays using manual
-  bitwise operations, use ``ej.bon.ByteArray`` instead.
+  bitwise operations, use `ByteArray <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html>`_ utility methods instead.
 
-.. _equals-hashcode:
+.. _local_extraction:
+
+Local Extraction
+^^^^^^^^^^^^^^^^
+
+Local extraction consists of storing the result of an expression before using it, for example:
+
+.. code:: java
+
+   Object myLocale = this.myField;
+   if (myLocale != null) {
+     myLocale.myMethod();
+   }
+
+It improves the Java code in many ways:
+
+- self documentation: gives a name to a computed result.
+- performance and memory footprint: avoids repeated access to same elements and extract loop invariants.
+- thread safety: helps to avoid synchronization issues or falling into unwanted race conditions.
+- code pattern detection: helps automated tools such as Null Analysis.
+
+.. _equals_hashcode:
 
 Equals and Hashcode
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 The purpose of these methods is to uniquely and consistently identify
 objects. The most common use of these methods is to compare instances in
@@ -274,7 +284,7 @@ The ``equals(Object)`` method is written that way:
 The ``hashCode()`` method is written that way:
 
 - Choose a prime number.
-- Create a result variable, whatever the value (usually the prime number).
+- Create a result local, whatever the value (usually the prime number).
 - For each field, multiply the previous result with the prime
   plus the hash code of the field and store it as the result.
 - Return the result.
@@ -301,8 +311,15 @@ Depending on its type, the hash code of a field is:
     return result;
   }
 
-JUnit
------
+Related Tools
+-------------
+
+This section points to tools aimed at helping to improve code quality.
+
+Unit Testing
+^^^^^^^^^^^^
+
+Here is a list of rules when writing tests (see :ref:`testsuite`):
 
 - Prefer black-box tests (with a maximum coverage).
 - Here is the test packages naming convention:
@@ -311,8 +328,11 @@ JUnit
   - Use the same package for white-box tests (allow to use classes with
     package visibility).
 
+
+.. _sonar_code_analysis:
+
 Code Analysis with SonarQube™
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 SonarQube is an open source platform for continuous inspection of code quality.
 SonarQube offers reports on duplicated code, coding standards, unit tests, code coverage, code complexity, potential bugs, comments, and architecture.
@@ -322,4 +342,4 @@ It describes the following steps:
 
 - How to run a SonarQube server locally.
 - How to run an analysis using a dedicated script.
-- How to run an analysis during "Build with EasyAnt."
+- How to run an analysis during a module build.
