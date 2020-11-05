@@ -19,9 +19,10 @@ All source code is available on `MicroEJ GitHub <https://github.com/MicroEJ/Exam
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<!--
-		XML file
+		XML
+		
 		Copyright 2014-2020 MicroEJ Corp. All rights reserved.
-		Use of this source code is governed by a BSD-style license that can be found at http://www.is2t.com/open-source-bsd-license/.
+		Use of this source code is governed by a BSD-style license that can be found with this software.
 	-->
 	<poem xmlns="http://www.megginson.com/ns/exp/poetry">
 		<title>Roses are Red</title>
