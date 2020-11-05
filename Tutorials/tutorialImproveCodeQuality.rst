@@ -93,7 +93,7 @@ Here is a list of additional rules for methods:
 Code Style and Formatting
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-MicroEJ defines a formatting profile for ``.java`` files, which is automatically setup when creating a new :ref:`mmm_module_skeleton`.
+MicroEJ defines a formatting profile for ``.java`` files, which is automatically set up when creating a new :ref:`mmm_module_skeleton`.
 
 .. note::
 
