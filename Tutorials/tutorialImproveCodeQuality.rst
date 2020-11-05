@@ -93,7 +93,7 @@ Here is a list of additional rules for methods:
 Code Style and Formatting
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-MicroEJ defines a formatting profile for ``.java`` files, which are automatically set up when creating a new :ref:`mmm_module_skeleton`.
+MicroEJ defines a formatting profile for ``.java`` files, which is automatically setup when creating a new :ref:`mmm_module_skeleton`.
 
 .. note::
 
@@ -102,10 +102,6 @@ MicroEJ defines a formatting profile for ``.java`` files, which are automaticall
    - In ``Package Explorer``, select the desired files, folders or projects,
    - then go to :guilabel:`Source` > :guilabel:`Format`. The processed files must not have any warning or error.
    
-   These rules can also be found here: `Eclipse Java
-   Settings <https://repository.microej.com/packages/formatter/>`_. These files must be installed in ``.settings``
-   directory of each project and shared under version control. 
-
 Here is the list of formatting rules included in this profile:
 
 - Indentation is done with 1 tab.
