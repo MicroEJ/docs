@@ -4,7 +4,7 @@ Improve the Quality of Java Code
 ================================
 
 This tutorial describes some rules and tools aimed at improving the quality of a Java code to simplify its maintenance.
-It makes-up a minimum consistent set of rules which can be applied in any situation, especially on embedded systems where performance and low memory footprint matters. 
+It makes up a minimum consistent set of rules which can be applied in any situation, especially on embedded systems where performance and low memory footprint matter.
 
 Intended Audience
 -----------------
@@ -32,7 +32,7 @@ Naming of Java elements (package, class, method, field and local) follows the `C
 - Constant names are written in fully upper case with underscore as word separator.
 - Enum constant names are written in fully upper case with underscores as word separators.
 - Local (and parameter) names are written in lower camel case.
-- When a name contains an acronym, capitalize only the first letter (e.g. for the ``HTTP`` acronym, use ``xmlHttpContext`` for a local instead of ``xmlHTTPContext``).
+- When a name contains an acronym, capitalize only the first letter of the acronym (e.g. for a local with the ``HTTP`` acronym, use ``myHttpContext`` instead of ``myHTTPContext``).
 
 It is also recommended to use full words instead of abbreviations (e.g. ``MyProxyReference`` instead of ``MyProxyRef``).
 
@@ -56,11 +56,11 @@ the modifier.
 Javadoc
 ^^^^^^^
 
-Javadoc comment is based on the `official documentation <https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html>`_.
+Javadoc comments convention is based on the `official documentation <https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html>`_.
 
 .. note::
 
-   Javadoc is written in HTML format and don't accept XHTML format: tags must not be closed. 
+   Javadoc is written in HTML format and doesn't accept XHTML format: tags must not be closed. 
    For example, use only a ``<p>`` between two paragraphs.
 
 Here is a list of the rules to follow when writing Javadoc:
@@ -68,40 +68,38 @@ Here is a list of the rules to follow when writing Javadoc:
 - All APIs (see :ref:`visibility`) must have a full Javadoc
   (classes, methods, and fields).
 - Add a dot at the end of all phrases.
-- Add ``@since`` when introducing a new API.
+- Add ``@since`` tag when introducing a new API.
 - Do not hesitate to use links to help the user to navigate in the API
   (``@see``, ``@link``).
-- Use the ``code`` tag in the following cases:
+- Use the ``@code`` tag in the following cases:
 
-  - For keywords.
-  - For names.
-  - For code example.
-  - ``{@code null}``, ``{@code true}``, ``{@code false}``,
-    ``{@code my code}``.
+  - For keywords (e.g. ``{@code null}`` or ``{@code true}``).
+  - For names and types (e.g. ``{@code x}`` or ``{@code Integer}``).
+  - For code example (e.g. ``{@code new Integer(Integer.parseInt(s))}``).
 
 Here is a list of additional rules for methods:
 
-- The first sentence starts with the third person (as if there is `This method` before).
+- The first sentence starts with the third person (as if there is ``This method`` before).
 - All parameters and returned values must be described.
 - Put as much as possible information in the description, keep
   ``@param`` and ``@return`` minimal.
-- Start ``@param`` with a lower case and usually with `the` or `a`.
+- Start ``@param`` with a lower case and usually with ``the`` or ``a``.
 - Start ``@return`` with a lower case as if the sentence starts with
-  `Returns`.
+  ``Returns``.
 - Avoid naming parameters anywhere other than in ``@param``. If the
   parameter is renamed afterward, the comment is not changed
-  automatically. Prefer using `the given xxx`.
+  automatically. Prefer using ``the given xxx``.
 
 Code Style & Formatting
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-MicroEJ defines a formatting profile for ``.java`` files, which are automatically setup when creating a new :ref:`mmm_module_skeleton`.
+MicroEJ defines a formatting profile for ``.java`` files, which are automatically set up when creating a new :ref:`mmm_module_skeleton`.
 
 .. note::
 
-   MicroEJ SDK automatically applies formatting when a ``.java`` file is saved. It is also possible to manually apply formatting on all files:
+   MicroEJ SDK automatically applies formatting when a ``.java`` file is saved. It is also possible to manually apply formatting on specific files:
    
-   - In `Package Explorer`, select the desired project(s),
+   - In ``Package Explorer``, select the desired files or projects,
    - then go to :guilabel:`Source` > :guilabel:`Format`. The processed files must not have any warning or error.
    
    These rules can also be found here: `Eclipse Java
@@ -114,7 +112,7 @@ Here is the list of formatting rules included in this profile:
 - Braces are mandatory with ``if``, ``else``, ``for``, ``do``, and
   ``while`` statements, even when the body is empty or contains only a
   single statement.
-- Braces follow the Kernighan and Ritchie style (`Egyptian brackets`) described below:
+- Braces follow the Kernighan and Ritchie style (Egyptian brackets) described below:
 
   - No line break before the opening brace.
   - Line break after the opening brace.
@@ -177,15 +175,14 @@ Simplify Maintenance
 - Extract constants instead of using magic numbers.
 - Use parenthesis for complex operation series; it simplifies the understanding 
   of operator priorities.
-- Write short lines. This can be achieved by extracting locals (e.g. (``(a == null || b == null)`` becomes
-  ``(aIsNull || bIsNull)``, see :ref:`local_extraction`).
+- Write short lines. This can be achieved by extracting locals (see :ref:`local_extraction`).
 - Use component-oriented architecture to separate concerns.
 - Use a limited number of parameters in methods (or perhaps a new type
   is needed).
 - Create small methods with little complexity. When a method gets too
   complex, it should be split.
 - Use ``+`` operator only for single-line string concatenation. Use an explicit `StringBuilder <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StringBuilder.html>`_ otherwise.
-- Think about adding a default constructor (without parameters) so that the class can be instantiated later using `Class.newInstance() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#newInstance-->`_.
+- If a class is intended to be instantiated using `Class.newInstance() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#newInstance-->`_, add a default constructor (without parameters).
 
 Basic Optimizations
 ^^^^^^^^^^^^^^^^^^^
@@ -193,8 +190,7 @@ Basic Optimizations
 - Avoid initializing fields to ``0`` or ``null``. A ``//VM_DONE`` comment
   can be written to understand the optimization.
 - The switch/case statements are generated by the Java compiler in two ways depending on the
-  cases density. Prefer declaring consecutive cases (`table_switch`) for performance (``O(1)``) and slightly
-  smaller code memory footprint instead of `lookup_switch` (``O(log N)``).
+  cases density. Prefer declaring consecutive cases for performance and slightly smaller code memory footprint.
 - Avoid using built-in thread safe types (`Vector <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Vector.html>`_,
   `Hashtable <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Hashtable.html>`_,
   `StringBuffer <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StringBuffer.html>`_, etc.). 
@@ -219,8 +215,8 @@ Local extraction consists of storing the result of an expression before using it
 It improves the Java code in many ways:
 
 - self documentation: gives a name to a computed result.
-- performance & memory footprint: avoids repeated access to same elements and extract loop invariants.
-- thread safety: helps to avoid synchronization issues or falling to unwanted race conditions.
+- performance and memory footprint: avoids repeated access to same elements and extract loop invariants.
+- thread safety: helps to avoid synchronization issues or falling into unwanted race conditions.
 - code pattern detection: helps automated tools such as Null Analysis.
 
 .. _equals_hashcode:
