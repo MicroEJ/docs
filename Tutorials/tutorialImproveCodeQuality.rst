@@ -198,7 +198,7 @@ Basic Optimizations
 - Avoid using built-in thread safe types (`Vector <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Vector.html>`_,
   `Hashtable <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Hashtable.html>`_,
   `StringBuffer <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StringBuffer.html>`_, etc.). 
-  Usually synchronization has to be done at an higher level.
+  Usually synchronization has to be done at a higher level.
 - Avoid serializing/deserializing data from byte arrays using manual
   bitwise operations, use `ByteArray <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ByteArray.html>`_ utility methods instead.
 
