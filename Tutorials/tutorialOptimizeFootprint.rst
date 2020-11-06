@@ -227,22 +227,22 @@ Application Configuration
 
 The following application configuration guidelines are recommended in order to minimize the size of the application:
 
-- Disable class names generation by setting the ``soar.generate.classnames`` property to ``false``. Class names are only useful for logging and for reflection. In such case, the name of a specific class can be explicitly embedded. Refer to :ref:`stripclassnames` section for a dedicated tutorial.
+- Disable class names generation by setting the ``soar.generate.classnames`` property to ``false``. Class names are only required when using Java reflection. In such case, the name of a specific class can be explicitly embedded. Refer to :ref:`stripclassnames` section for a dedicated tutorial.
 - Remove UTF-8 encoding support by setting the ``cldc.encoding.utf8.included`` property to ``false``. The default encoding (``ISO-8859-1``) is enough for most applications.
 - Remove ``SecurityManager`` checks by setting the ``com.microej.library.edc.securitymanager.enabled`` property to ``false``. This feature is only useful for multi-app firmware.
 - Remove ``toString()`` methods by setting the ``com.microej.library.edc.tostring.included`` property to ``false``. These methods are only useful for debugging.
 
 .. _stripclassnames:
 
-Stripping Java Class Names from an Application
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stripping Class Names from an Application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, when a class is used, the name of the class is embedded too. A class is used when one of its methods is called, for example.
+By default, when a Java class is used, the name of the class is embedded too. A class is used when one of its methods is called, for example.
 Embedding the name of every class is rarely useful and takes a lot of flash memory.
-This section explains how to strip class names from an application.
+This section explains how to embed only the required class names of an application.
 
-Stripping All Class Names
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Removing All Class Names
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Select ``Run`` > ``Run Configurations...``.
 2. Select the launcher of the application.
@@ -255,20 +255,15 @@ Listing Required Class Names
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Some class names may be required by an application to work properly.
-Those class names must be explicitly specified in a ``*.types.list`` file.
+These class names must be explicitly specified in a ``*.types.list`` file.
 
-The application and add-on libraries code must be checked for all uses of the following methods:
-
-- ``Class.forName()``
-- ``Class.getName()``
-- ``Class.getSimpleName()``
-
-Each call indicates a class name usage. Either add the class names to a ``*.types.list`` file or remove the use of class names.
+The code of the application must be checked for all uses of the ``Class.forName()``, ``Class.getName()`` and ``Class.getSimpleName()`` methods.
+Each call indicates a class name usage. Either add the class name to a ``*.types.list`` file or remove the use of the class name.
 
 Case of ServiceLoader
 """""""""""""""""""""
 
-A ``ServiceLoader`` is a dependency injection service. It is used to retrieve the implementation of a service by using the interface.
+A ``ServiceLoader`` is a dependency injection facility. It can be used to retrieve the implementation of a service.
 
 The assignment between a service and its implementation is done in ``*.properties.list`` files. Both the service class name and the implementation class name must be embedded (i.e., added in a ``*.types.list`` file).
 
@@ -276,29 +271,29 @@ For example:
 
 .. code-block::
 
-	# services.properties.list
-	com.example.services.WiFi=com.example.services.WiFiImpl
+	# example.properties.list
+	com.example.MyService=com.example.MyServiceImpl
 
 .. code-block::
 
-	# services.types.list
-	com.example.services.WiFi
-	com.example.services.WiFiImpl
+	# example.types.list
+	com.example.MyService
+	com.example.MyServiceImpl
 
-Case of Dynamic Properties Loading
-""""""""""""""""""""""""""""""""""
+Case of Properties Loading
+""""""""""""""""""""""""""
 
-Some properties may be loaded dynamically by using the name of a class to determine the full name of the property to load. For example: 
-
-.. code-block:: java
-
-	Integer.getInteger(MyClassA.class.getName() + ".VALUE");
-
-If ``MyClassA`` is not dynamically defined, meaning it is always the same class name, then it can be replaced with the actual string. For example:
+Some properties may be loaded by using the name of a class to determine the full name of the property. For example: 
 
 .. code-block:: java
 
-	Integer.getInteger("com.example.MyClassA.VALUE");
+	Integer.getInteger(MyClass.class.getName() + ".myproperty");
+
+In this case, it can be replaced with the actual string. For example:
+
+.. code-block:: java
+
+	Integer.getInteger("com.example.MyClass.myproperty");
 
 Case of Logger and Other Debugging Facilities
 """""""""""""""""""""""""""""""""""""""""""""
