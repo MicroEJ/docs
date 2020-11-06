@@ -266,7 +266,7 @@ The ``equals(Object)`` method is written that way:
   field in the casted argument. Return ``true`` if all fields are equal,
   ``false`` otherwise.
 
-::
+.. code:: java
 
   @Override
   public boolean equals(Object o) {
@@ -299,7 +299,7 @@ Depending on its type, the hash code of a field is:
 - Object: ``(f == null ? 0 : f.hashCode())``.
 - Array: add the hash codes of all its elements (depending on their type).
 
-::
+.. code:: java
 
   private static final int PRIME = 31;
 
