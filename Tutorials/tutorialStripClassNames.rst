@@ -1,26 +1,26 @@
 .. _stripclassnames:
 
-Strip Java Class Names from a MicroEJ Firmware
+Stripping Java Class Names from an Application
 ==============================================
 
 By default, when a class is used, the name of the class is embedded too. A class is used when one of its methods is called, for example.
 Embedding the name of every class is rarely useful and takes a lot of flash memory.
-This document explains how to strip class names from a MicroEJ Firmware.
+This section explains how to strip class names from an application.
 
-Strip All Class Names in MicroEJ Firmware
------------------------------------------
+Stripping All Class Names
+-------------------------
 
 1. Select ``Run`` > ``Run Configurations...``.
-2. Select the launcher of the MicroEJ Firmware.
+2. Select the launcher of the application.
 3. Select tab ``Configuration``.
 4. Ensure ``Embed all type names`` is unchecked in ``Core Engine`` > ``Debug``.
 
 Alternatively, the option ``soar.generate.classnames`` can be set to ``false`` in a ``.properties`` file loaded by the launcher.
 
-List Class Names to Embed
--------------------------
+Listing Required Class Names
+----------------------------
 
-Some class names may be required by a MicroEJ Application to work properly.
+Some class names may be required by an application to work properly.
 Those class names must be explicitly specified in a ``*.types.list`` file.
 
 The application and add-on libraries code must be checked for all uses of the following methods:
@@ -51,12 +51,6 @@ For example:
 	com.example.services.WiFi
 	com.example.services.WiFiImpl
 
-Case of Logger and Other Debugging Facilities
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Logging mechanisms usually display the name of the classes in traces.
-It is not necessary to embed these class names. The :ref:`stack_trace_reader` can decipher the output.
-
 Case of Dynamic Properties Loading
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -71,3 +65,9 @@ If ``MyClassA`` is not dynamically defined, meaning it is always the same class 
 .. code-block:: java
 
 	Integer.getInteger("com.example.MyClassA.VALUE");
+
+Case of Logger and Other Debugging Facilities
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Logging mechanisms usually display the name of the classes in traces.
+It is not necessary to embed these class names. The :ref:`stack_trace_reader` can decipher the output.
