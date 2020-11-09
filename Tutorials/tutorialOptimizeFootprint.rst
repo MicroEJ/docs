@@ -228,10 +228,12 @@ Application Configuration
 
 The following application configuration guidelines are recommended in order to minimize the size of the application:
 
-- Disable class names generation by setting the ``soar.generate.classnames`` property to ``false``. Class names are only required when using Java reflection. In such case, the name of a specific class can be explicitly embedded. Refer to :ref:`stripclassnames` section for a dedicated tutorial.
-- Remove UTF-8 encoding support by setting the ``cldc.encoding.utf8.included`` property to ``false``. The default encoding (``ISO-8859-1``) is enough for most applications.
-- Remove ``SecurityManager`` checks by setting the ``com.microej.library.edc.securitymanager.enabled`` property to ``false``. This feature is only useful for multi-app firmware.
-- Remove ``toString()`` methods by setting the ``com.microej.library.edc.tostring.included`` property to ``false``. These methods are only useful for debugging.
+- Disable class names generation by setting the ``soar.generate.classnames`` option to ``false``. Class names are only required when using Java reflection. In such case, the name of a specific class can be explicitly embedded. Refer to :ref:`stripclassnames` section for a dedicated tutorial.
+- Remove UTF-8 encoding support by setting the ``cldc.encoding.utf8.included`` option to ``false``. The default encoding (``ISO-8859-1``) is enough for most applications.
+- Remove ``SecurityManager`` checks by setting the ``com.microej.library.edc.securitymanager.enabled`` option to ``false``. This feature is only useful for multi-app firmware.
+- Remove ``toString()`` methods by setting the ``com.microej.library.edc.tostring.included`` option to ``false``. These methods are only useful for debugging.
+
+For more information on how to set an option, please refer to the :ref:`setting_an_option` documentation.
 
 .. _stripclassnames:
 
@@ -245,12 +247,9 @@ This section explains how to embed only the required class names of an applicati
 Removing All Class Names
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Select ``Run`` > ``Run Configurations...``.
-2. Select the launcher of the application.
-3. Select tab ``Configuration``.
-4. Ensure ``Embed all type names`` is unchecked in ``Core Engine`` > ``Debug``.
+In the configuration of your launcher, set the ``soar.generate.classnames`` option to ``false``.
 
-Alternatively, the option ``soar.generate.classnames`` can be set to ``false`` in a ``.properties`` file loaded by the launcher.
+For more information on how to set an option, please refer to the :ref:`setting_an_option` documentation.
 
 Listing Required Class Names
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -356,6 +355,8 @@ Application Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following application configuration guidelines are recommended in order to minimize the size of the application.
+
+For more information on how to set an option, please refer to the :ref:`setting_an_option` documentation.
 
 Java Heap and Immortals Heap
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
