@@ -3,6 +3,12 @@ Optimize the Footprint of an Application
 
 This guide explains how a developer can analyze the footprint of an application and how he can reduce both the ROM and the RAM footprint.
 
+Often, the developer has already started coding when he starts thinking about the footprint of his application.
+Before jumping into code optimizations, it is best to list every area of improvement, and estimate for each area how much memory can be gained and how much effort it requires.
+Without performing the analysis first, the developer might start working on a minor optimization which takes a lot of effort for a small gain, whereas he could be working on a major optimization allowing a faster and bigger gain.
+Besides, an optimization may allow a significant gain in an application while it would not be relevant in an other application.
+This is why this tutorial starts by explaining how the developer can analyze the footprint of his application, before providing guidelines that can be followed to reduce the footprint.
+
 How to Analyze the Footprint of an Application
 ----------------------------------------------
 
