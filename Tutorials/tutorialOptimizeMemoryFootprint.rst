@@ -4,8 +4,8 @@ Optimize the Memory Footprint of an Application
 This tutorial explains how a developer can analyze the footprint of an application and how he can reduce both the ROM and the RAM footprint.
 
 Often, the developer has already started coding when he starts thinking about the footprint of his application.
-Before jumping into code optimizations, it is best to list every area of improvement, and estimate for each area how much memory can be gained and how much effort it requires.
-Without performing the analysis first, the developer might start working on a minor optimization which takes a lot of effort for a small gain, whereas he could be working on a major optimization allowing a faster and bigger gain.
+Before jumping into code optimizations, it is best to list every area of improvement, and estimate for each area how much memory can be saved and how much effort it requires.
+Without performing the analysis first, the developer might start working on a minor optimization which takes a lot of effort for few improvements, whereas he could be working on a major optimization allowing a faster and bigger gain.
 Besides, an optimization may allow a significant gain in an application while it would not be relevant in an other application.
 This is why this tutorial starts by explaining how the developer can analyze the footprint of his application, before providing guidelines that can be followed to reduce the footprint.
 
@@ -26,7 +26,7 @@ Footprint analysis tools:
 
 - The :ref:`memorymapanalyzer` allows to analyze the memory consumption of different features in the RAM and ROM.
 - The :ref:`heapdumper` allow to understand the contents of the Java heap and find problems such as memory leaks.
-- The `Dependency Discoverer <https://forum.microej.com/t/tool-dependency-discoverer/771>`_  allows to analyze a piece of code to detect all its dependencies.
+- The `Dependency Discoverer <https://github.com/MicroEJ/Tool-DependencyDiscoverer>`_  allows to analyze a piece of code to detect all its dependencies.
 
 How to Analyze a SOAR.map File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -35,7 +35,7 @@ A ``SOAR.map`` file is generated after building a MicroEJ Application on device.
 This file lists every embedded symbol of the application (section, Java class or method, etc.) and its size in ROM or RAM.
 The ``SOAR.map`` file can be opened using the :ref:`memorymapanalyzer`.
 
-The embedded symbols are grouped into multiple categories. For example, the ``Object`` class and its methods are in the ``LibFoundationEDC`` category.
+The embedded symbols are grouped into multiple categories. For example, the ``Object`` class and its methods are grouped in the ``LibFoundationEDC`` category.
 For each symbol or each category, you can see its size in ROM (``Image Size``) and RAM (``Runtime Size``).
 
 The linker regroups all the strings in the same section. The same applies to the static fields, the types and the class names. Each of these sections is displayed in its own category.
@@ -91,7 +91,7 @@ See :ref:`Core Engine Link <core_engine_link>` documentation for more informatio
 How to Reduce the Image Size of an Application
 ----------------------------------------------
 
-Generic coding rules may be found in the following tutorial: :ref:`improve_code_quality`.
+Generic coding rules can be found in the following tutorial: :ref:`improve_code_quality`.
 
 This section provides additional coding rules and good practices to reduce the image size (ROM) of an application.
 
@@ -99,7 +99,8 @@ Application Resources
 ~~~~~~~~~~~~~~~~~~~~~
 
 Resources such as images and fonts take a lot of memory.
-For every ``.list`` file, make sure that it does not embed any unused resource. Having unused resources in the :ref:`application classpath <application.classpath.mapping>` is OK as long as they are not listed in a ``.list`` file.
+For every ``.list`` file, make sure that it does not embed any unused resource. 
+Only resources declared in a ``.list`` file will be embedded. Other resources available in the :ref:`application classpath <application.classpath.mapping>` will not be taken into account.
 
 Fonts
 ^^^^^
@@ -107,11 +108,11 @@ Fonts
 Default Font
 """"""""""""
 
-By default, in the platform configuration project, a so-called system font is declared inside the ``microui.xml`` file.
+By default, in a :ref:`MicroEJ Platform configuration <platform_configuration_creation>` project, a so-called system font is declared in the ``microui.xml`` file (by default).
 
-When generating the platform, this file is copied from the configuration project to the actual platform project. It will later be converted to binary format and linked with your MicroEJ Application, even if you use fonts different from the system font.
+When generating the MicroEJ Platform, this file is copied from the configuration project to the actual MicroEJ Platform project. It will later be converted to binary format and linked with your MicroEJ Application, even if you use fonts different from the system font.
 
-Therefore, you can comment the system font from the ``microui.xml`` file to reduce the ROM footprint of your MicroEJ Application if this one does not rely on the system font. Note that you will need to rebuild the platform and then the application to benefit from the footprint reduction.
+Therefore, you can comment the system font from the ``microui.xml`` file to reduce the ROM footprint of your MicroEJ Application if this one does not rely on the system font. Note that you will need to rebuild the MicroEJ Platform and then the application to benefit from the footprint reduction.
 
 See the *Display Element* section of the :ref:`section_static_init` documentation for more information on system fonts.
 
@@ -146,7 +147,7 @@ Internationalization Data
 Implementation
 """"""""""""""
 
-MicroEJ provides the Native Language Support (NLS for short) library to handle internationalization.
+MicroEJ provides the :ref:`Native Language Support <section.applicationResources.nls>` (NLS for short) library to handle internationalization.
 
 See https://github.com/MicroEJ/Example-NLS for an example of the use of the NLS library.
 
@@ -195,67 +196,81 @@ Application Code
 
 The following application code guidelines are recommended in order to minimize the size of the application:
 
-- Avoid using legacy versions of packs and libraries. The latest version may be more optimized (check the changelog).
-- Avoid manipulating ``String`` objects when possible. For example, prefer using integers to represent IDs. Indeed, strings take a lot of memory.
-- Avoid using logging library or ``println()``, use the :ref:`trace library <event-tracing>` instead. The logging library uses strings, while the trace library is light and uses error codes.
-- Avoid manipulating wrappers such as ``Integer`` and ``Long`` objects, manipulate primitive types instead. Objects take more memory and require boxing/unboxing operations.
-- Avoid using service library, use singletons or ``Constants.getClass()`` instead. The service library adds extra code which doesn't add any feature to your application. It also embeds reflection methods of EDC.
-- Avoid using ``List`` objects, use arrays and ``ArrayTools`` instead. Even though the collections framework is very user-friendly, the code size and the heap usage are more important than when manipulating arrays.
-- Avoid using ``Map`` objects, use ``PackedMap`` instead. Packed maps provide the same features as collection maps but are much lighter.
-- Avoid using ``java.util.Timer``, use ``ej.bon.Timer`` instead. EDC's timers are now deprecated.
-- Use BON constants when writing debug code or optional code, such as ``if (Constants.getBoolean()) { ... }``. That way, the optional code will not be embedded if the constant is ``false``.
-- Avoid using system properties, use BON constants instead. Constants checks are computed at compile time rather than at runtime. Also, manipulating properties requires to embed their name, and strings take a lot of memory.
-- Avoid using synchronization. A ``synchronized`` block takes a lot of extra code size, even though it is only a few characters of code.
-- Avoid overriding ``toString()`` for debugging purposes. This method will always be embedded even if it is not called explicitly.
-- Avoid overriding ``equals(Object)`` and ``hashCode()``, use ``==`` operator instead if it is sufficient. Indeed, these methods take more memory and require null and type checks.
-- Avoid calling ``equals()`` and ``hashCode()`` on ``Object`` references. If you do, the method will be embedded for every class that overrides the method.
-- Avoid using the string concatenation operator (``+``), use ``StringBuilder`` instead. The bytecode generated by the ``+`` operator is not optimal and is bigger than when using manual ``StringBuilder`` operations.
-- Avoid using ``java.util.Calendar``, use another calendar implementation instead. The calendar implementation of EDC is very heavy, even when only a few methods are used.
-- Avoid creating anonymous objects (such as ``Runnable`` objects), re-use other classes instead. Indeed, these objects are treated like a whole new class, and each enclosed final variable is treated as a field of the class.
-- Avoid accessing the same field multiple times in the same method, copy the value of the field into a local variable instead. Accessing fields leads to bigger code size and may induce synchronization issues.
-- Avoid initializing arrays and complex objects in ``static final`` fields, use immutables instead. Indeed, initializing objects dynamically generates bytecode, which takes a lot of memory and requires execution time.
+- Check libraries versions and changelog regularly. Latest versions may be more optimized.
+- Avoid manipulating `String <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html>`_ objects
+  
+  - For example, prefer using integers to represent IDs.
+  - Avoid overriding `Object.toString() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#toString-->`_ for debugging purposes. This method will always be embedded even if it is not called explicitly.
+  - Avoid using `Logger <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html>`_ or ``System.out.println()``. Use the :ref:`trace library <event-tracing>` instead. The logging library uses strings, while the trace library only use integer based error codes.
+  - Avoid using the string concatenation operator (``+``), use an explicit `StringBuilder <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StringBuilder.html>`_ instead. The code generated by the ``+`` operator is not optimal and is may be bigger than when using manual ``StringBuilder`` operations.
 
-Platform Configuration
-~~~~~~~~~~~~~~~~~~~~~~
+- Avoid manipulating wrappers such as `Integer <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Integer.html>`_ and `Long <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Long.html>`_ objects, use primitive types instead. Such objects are allocated in Java heap memory and require boxing/unboxing extra code operations.
+- Avoid using the `service <https://repository.microej.com/artifacts/ej/library/runtime/service/>`_ library. Use singletons or `Constants.getClass() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Constants.html#getClass-java.lang.String->`_ instead. The service library require class reflection and to embed API and implementation type names.
+- Avoid using the Java Collections Framework. In addition to the heavy library code size, the internal structures require to use more memory than necessary to hold the elements (for example, the default `ArrayList constructor <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/ArrayList.html#ArrayList-->`_ API require to allocate space for ten elements).
+  
+  - Use raw arrays instead of `List <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/List.html>`_ objects. The `ArrayTools <https://repository.microej.com/javadoc/microej_5.x/apis/ej/basictool/ArrayTools.html>`_ class provided utility methods for common array manipulations.
+  - Use `PackedMap <https://repository.microej.com/javadoc/microej_5.x/apis/ej/basictool/map/PackedMap.html>`_ instead of `Map <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Map.html>`_ objects. It provides similar APIs and features with no extra cost in heap.
 
-The following platform configuration guidelines are recommended in order to minimize the size of the application:
+- Avoid using EDC ``java.util.Timer`` (deprecated). Use `ej.bon.Timer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html>`_ instead. If both are integrated, almost all the code is embedded twice.
+- Use :ref:`BON constants <section.classpath.elements.constants>` wherever possible
+  
+  - when writing debug code or optional code, use the ``if (Constants.getBoolean()) { ... }`` pattern. That way, the optional code will not be embedded if the constant is set ``false`` when building the production firmware.
+  - replace the use of :ref:`System Properties <system_properties>` when both key and values are compile-time constants. System Properties should be reserved for runtime lookup, and it also require to embed the key and the value as strings.
 
-- Use the latest MicroEJ architecture.
-- Use tiny MEJ32 architecture. It reduces the size of the application code by ~20% but it is only possible if the size of the application code is lower than 256KB (resources excluded). See dedicated documentation: :ref:`core-tiny`.
+- Avoid abrupt exit (using ``break``, ``continue`` or ``return``) that jumps over a ``synchronized`` block. At each exit point, some extra code is generated to properly release the monitor.
+- Avoid overriding `Object.equals(Object) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#equals-java.lang.Object->`_ and `Object.hashCode() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#hashCode-->`_, use ``==`` operator instead if it is sufficient. The :ref:`correct implementation of these methods <equals_hashcode>` needs code.
+- Avoid calling ``equals()`` and ``hashCode()`` on ``Object`` references, otherwise all overridden methods for every selected class will be embedded.
+- Avoid creating inlined anonymous objects (such as ``Runnable`` objects). Declare explicit classes instead, as a new anonymous class is created at declared for each inlined object. Moreover, each enclosed final variable is treated as a field of the class.
+- Replace constant arrays and objects initialization in ``static final`` fields by :ref:`immutables objects <section.classpath.elements.immutables>`. Otherwise it generates initialization code which requires execution time and allocates objects in Java heap.
+
+
+MicroEJ Platform Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following configuration guidelines are recommended in order to minimize the size of the application:
+
+- Check MicroEJ Architecture and Packs versions and changelog regularly. Latest versions may be more optimized.
+- Configure the Platform to use :ref:`tiny <core-tiny>` capability of the MicroEJ Core Engine. It reduces application code size by ~20%, provided application code size is lower than 256KB (resources excluded).
 - Disable unnecessary modules in the ``.platform`` file. For example, disable the ``Image PNG Decoder`` module if you know that the application will not load PNG images at runtime.
 - Don't embed unnecessary pixel conversion algorithms. This can save up to ~8KB of code size but it requires knowing the format of the resources embedded in the application.
-- Use the best optimization level for every source file (for example, ``-O3`` or ``-Os`` on GCC).
-- Use an optimal compiler such as IAR rather than GCC.
-- Retrieve the linker command line and check that every parameter is OK. The linker command line can be found in the project settings, and it may be printed during link. For example, if there is ``-u _printf_float`` in the parameters, you can go in the project settings and disable printf for float if you so wish.
-- In the map file generated by the third-party linker, check that every embedded method is necessary. For example, hardware timers or HAL components may be initialized in the BSP but not used in the application. Also, debug methods such as SystemView may not be useful in production.
+- Select your embedded C compilation toolchain with care, one which will allow low ROM footprint with optimal performance. Check the compiler command line
+   
+  - Check documentation for available optimization options (``-Os`` on GCC). These options can also be overridden per source file.
+  - Separate each function and data resource in a dedicated section (``-ffunction-sections  -fdata-sections`` on GCC)
+  
+- Check the linker command line optimization options. The linker command line can be found in the project settings, and it may be printed during link.
+
+  - Only embed necessary sections (``--gc-sections`` option on GCC/LD).
+  - Some functions, such as the `printf` function, may be configured to only implement a subset of the (for example, remove ``-u _printf_float`` option on GCC/LD to disable printing floating point values).
+
+- In the map file generated by the third-party linker, check that every embedded function is necessary. For example, hardware timers or HAL components may be initialized in the BSP but not used in the application. Also, debug functions such as SystemView may be disconnected when building the production firmware.
 
 Application Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following application configuration guidelines are recommended in order to minimize the size of the application:
 
-- Disable class names generation by setting the ``soar.generate.classnames`` option to ``false``. Class names are only required when using Java reflection. In such case, the name of a specific class can be explicitly embedded. Refer to :ref:`stripclassnames` section for a dedicated tutorial.
+- Disable class names generation by setting the ``soar.generate.classnames`` option to ``false``. Class names are only required when using Java reflection. In such case, the name of a specific class will be embedded only if explicitly required. See also :ref:`stripclassnames` section for usage.
 - Remove UTF-8 encoding support by setting the ``cldc.encoding.utf8.included`` option to ``false``. The default encoding (``ISO-8859-1``) is enough for most applications.
-- Remove ``SecurityManager`` checks by setting the ``com.microej.library.edc.securitymanager.enabled`` option to ``false``. This feature is only useful for multi-app firmware.
-- Remove ``toString()`` methods by setting the ``com.microej.library.edc.tostring.included`` option to ``false``. These methods are only useful for debugging.
+- Remove ``SecurityManager`` checks by setting the ``com.microej.library.edc.securitymanager.enabled`` option to ``false``. This feature is only useful for Multi-Sandbox firmware.
 
-For more information on how to set an option, please refer to the :ref:`setting_an_option` documentation.
+For more information on how to set an option, please refer to the :ref:`define_option` section.
 
 .. _stripclassnames:
 
 Stripping Class Names from an Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, when a Java class is used, the name of the class is embedded too. A class is used when one of its methods is called, for example.
-Embedding the name of every class is rarely useful and takes a lot of ROM.
+By default, when a Java class is used, its name is embedded too. A class is used when one of its methods is called, for example.
+Embedding the name of every class is useful when starting a new MicroEJ Application, but as the application is growing with many library dependencies, it takes a lot of ROM.
 This section explains how to embed only the required class names of an application.
 
 Removing All Class Names
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the configuration of your launcher, set the ``soar.generate.classnames`` option to ``false``.
+First, the default behavior is inverted by defining the :ref:`Application option <application_options>` ``soar.generate.classnames`` to ``false``.
 
-For more information on how to set an option, please refer to the :ref:`setting_an_option` documentation.
+For more information on how to set an option, please refer to the :ref:`define_option` section.
 
 Listing Required Class Names
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -263,15 +278,18 @@ Listing Required Class Names
 Some class names may be required by an application to work properly.
 These class names must be explicitly specified in a ``*.types.list`` file.
 
-The code of the application must be checked for all uses of the ``Class.forName()``, ``Class.getName()`` and ``Class.getSimpleName()`` methods.
-Each call indicates a class name usage. Either add the class name to a ``*.types.list`` file or remove the use of the class name.
+The code of the application must be checked for all uses of the `Class.forName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#forName-java.lang.String->`_, `Class.getName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getName-->`_ and `Class.getSimpleName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getSimpleName-->`_ methods.
+For each of these method calls, if this is a required runtime class name, add the class name to a ``*.types.list`` file. Otherwise remove the use of the class name.
 
-Case of ServiceLoader
-"""""""""""""""""""""
+The following sections illustrates this on concrete use cases.
 
-A ``ServiceLoader`` is a dependency injection facility. It can be used to retrieve the implementation of a service.
+Case of Service Library
+"""""""""""""""""""""""
 
-The assignment between a service and its implementation is done in ``*.properties.list`` files. Both the service class name and the implementation class name must be embedded (i.e., added in a ``*.types.list`` file).
+The `ej.service.ServiceLoader <https://repository.microej.com/javadoc/microej_5.x/apis/ej/service/ServiceLoader.html>`_ class of the `service <https://repository.microej.com/artifacts/ej/library/runtime/service/>`_ library is a dependency injection facility.
+It can be used to dynamically retrieve the implementation of a service.
+
+The assignment between a service API and its implementation is done in ``*.properties.list`` files. Both the service class name and the implementation class name must be embedded (i.e., added in a ``*.types.list`` file).
 
 For example:
 
@@ -319,17 +337,22 @@ Application Code
 
 The following application code guidelines are recommended in order to minimize the size of the application:
 
-- Define fields as ``short`` or ``byte`` rather than ``int``. Integers take more memory and are not necessary when the value can not be big.
-- Make sure that your widget hierarchy is as flat as possible (avoid unnecessary containers). Deep widget hierarchies take more memory and can reduce performance.
-- Make sure that the size of the buffers allocated in generic components can be configured (by a parameter in the constructor or by a BON constant for example). That way, the user can select the optimal buffer size depending on his use-case and avoid wasting memory.
-- Avoid using immortal arrays to call native methods, use regular arrays instead. Immortal arrays are never deallocated and they are not necessary anymore when calling a native method.
-- Avoid creating multiple threads, timers, or executors, share the instances instead when possible. Each thread requires allocating dedicated VM stacks, which takes a lot of memory.
-- Avoid creating mutable images (``BufferedImage`` instances) to draw in them and render them later, render graphics directly on the display instead. Mutable images require allocating a lot of memory from the images heap.
+- Adjust the type of ``int`` fields (32 bits) according to the expected range of values being stored (``byte`` for 8 bits, ``short``: 16 bits).
+- When designing a generic and reusable component, allow the user to parameterize the size of the internal allocated buffers (either at runtime using a constructor parameter, or globally using a BON constant). That way, the user can select the optimal buffer size depending on his use-case and avoid wasting memory.
+- Avoid allocating immortal arrays to call native methods, use regular arrays instead. Immortal arrays are never reclaimed and they are not necessary anymore when calling a native method.
+- Reduce the maximum number of parallel threads. Each thread require a dedicated internal structure and VM stack blocks.
+  
+  - Avoid creating on the fly threads for asynchronous execution, use shared thread instances instead (timers, executors, `MicroUI.callSerially(Runnable) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#callSerially-java.lang.Runnable->`_, ...). 
 
-Platform Configuration
-~~~~~~~~~~~~~~~~~~~~~~
+- When designing Graphics User Interface,
+  
+  - Avoid creating mutable images (`BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html>`_ instances) to draw in them and render them later, render graphics directly on the display instead. Mutable images require allocating a lot of memory from the images heap.
+  - Make sure that your `Widget <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html>`_ hierarchy is as flat as possible (avoid unnecessary `Container <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Container.html>`_ layers). Deep widget hierarchies take more memory and can reduce performance.
 
-The following platform configuration guidelines are recommended in order to minimize the size of the application:
+MicroEJ Platform Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following MicroEJ configuration guidelines are recommended in order to minimize the runtime size of the application:
 
 - Check the size of the stack of each RTOS task. For example, 1.0KB may be enough for the MicroJVM task but it can be increased to allow deep native calls.
 - Check the size of the heap allocated by the RTOS (for example, ``configTOTAL_HEAP_SIZE`` for FreeRTOS).
@@ -362,7 +385,7 @@ Application Configuration
 
 The following application configuration guidelines are recommended in order to minimize the size of the application.
 
-For more information on how to set an option, please refer to the :ref:`setting_an_option` documentation.
+For more information on how to set an option, please refer to the :ref:`define_option` documentation.
 
 Java Heap and Immortals Heap
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -373,16 +396,16 @@ Java Heap and Immortals Heap
 Thread Stacks
 ^^^^^^^^^^^^^
 
-- Configure the maximum number of threads. This number can be known accurately by counting in the code how many ``Thread`` and ``Timer`` objects may run concurrently. You can call ``Thread.getAllStackTraces()`` or ``Thread.activeCount()`` to know what threads are running at a given moment.
-- Configure the number of allocated thread stack blocks. Keep the default value for the size of a block (``512``) and figure out how many blocks each thread requires. This can be done empirically by starting with a low number of blocks and increasing this number as long as the application throws a ``StackOverflowError``.
-- Configure the maximum number of blocks per thread. The best choice is to set it to the number of blocks required by the most greedy thread. Another acceptable option is to set it to the same value as the total number of allocated blocks.
-- Configure the maximum number of monitors. This number can be known accurately by counting the number of concurrent ``synchronized`` blocks. This can also be done empirically by starting with a low number of monitors and increasing this number as long as no exception occurs. Either way, it is recommended to set a slightly higher value than calculated.
+- Configure the :ref:`maximum number of threads <option_number_of_threads>`). This number can be known accurately by counting in the code how many ``Thread`` and ``Timer`` objects may run concurrently. You can call `Thread.getAllStackTraces() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#getAllStackTraces-->`_ or `Thread.activeCount() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#activeCount-->`_ to know what threads are running at a given moment.
+- Configure the :ref:`number of allocated thread stack blocks <option_number_of_stack_blocks>`). Keep the default value for the size of a block (``512``) and figure out how many blocks each thread requires. This can be done empirically by starting with a low number of blocks and increasing this number as long as the application throws a ``StackOverflowError``.
+- Configure the :ref:`maximum number of blocks per thread <option_maximum_number_of_stack_blocks_per_thread>`). The best choice is to set it to the number of blocks required by the most greedy thread. Another acceptable option is to set it to the same value as the total number of allocated blocks.
+- Configure the :ref:`maximum number of monitors per thread <option_maximum_number_of_monitors_per_thread>`). This number can be known accurately by counting the number of concurrent ``synchronized`` blocks. This can also be done empirically by starting with a low number of monitors and increasing this number as long as no exception occurs. Either way, it is recommended to set a slightly higher value than calculated.
  
 VM Dump
 """""""
 
 The ``LLMJVM_dump()`` function declared in ``LLMJVM.h`` may be called to print information on alive threads such as their current and maximum stack block usage.
-This function may be called from the application by exposing it in a :ref:`native function <sni>`.
+This function may be called from the application by exposing it in a :ref:`native function <sni>`. See :ref:`vm_dump` section for usage.
 
 More specifically, the ``Peak java threads count`` value printed in the dump can be used to configure the maximum number of threads.
 The ``max_java_stack`` and ``current_java_stack`` values printed for each thread can be used to configure the number of stack blocks.
@@ -390,4 +413,4 @@ The ``max_java_stack`` and ``current_java_stack`` values printed for each thread
 MicroUI Images Heap
 ^^^^^^^^^^^^^^^^^^^
 
-- Configure the images heap to be as small as possible. You can compute the optimal size empirically. It can also be calculated accurately by adding the size of every image that may be stored in the images heap at a given moment. One way of doing this is to inspect every occurrence of ``new BufferedImage()`` and ``ResourceImage.loadImage()``.
+- Configure the images heap to be as small as possible. You can compute the optimal size empirically. It can also be calculated accurately by adding the size of every image that may be stored in the images heap at a given moment. One way of doing this is to inspect every occurrence of `BufferedImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#BufferedImage-int-int->`_ allocations and `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_ usage of ``loadImage()`` methods.

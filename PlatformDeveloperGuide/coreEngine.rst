@@ -219,6 +219,8 @@ from a dedicated RTOS task.
        }
    }
 
+.. _vm_dump:
+
 Debugging
 ---------
 
