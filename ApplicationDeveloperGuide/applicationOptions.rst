@@ -24,7 +24,7 @@ Notice that some options may not be available, in the following cases:
 - Option has been introduced in a newer version of the MicroEJ Architecture which is integrated in the targeted Platform.
 - Options related to :ref:`Board Support Package (BSP) connection <bsp_connection_application_options>`.
 
-.. _setting_an_option:
+.. _define_option:
 
 Defining an Option
 ==================
