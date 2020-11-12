@@ -1,8 +1,8 @@
 .. _new_platform_creation:
 
-=============================
-New MicroEJ Platform Creation
-=============================
+=========================
+MicroEJ Platform Creation
+=========================
 
 This section describes the steps to create a new MicroEJ Platform in MicroEJ SDK, 
 and options to connect it to an external Board Support Package (BSP) as well as a third-party C toolchain. 
@@ -54,8 +54,8 @@ Once you downloaded a MicroEJ Architecture file, proceed with the following step
 
 .. _platform_configuration_creation:
 
-New MicroEJ Platform Configuration
-==================================
+MicroEJ Platform Configuration
+==============================
 
 The next step is to create a MicroEJ Platform configuration:
 
