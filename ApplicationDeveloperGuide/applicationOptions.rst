@@ -30,8 +30,7 @@ Defining an Option
 ==================
 
 A MicroEJ Standalone Application option can be defined either from a launcher or from a properties file.
-It is also possible to use both together. Most of MicroEJ Architecture and MicroEJ Pack options come with a preset value, which is taken into
-account if no user option is defined.
+It is also possible to use both together. Each MicroEJ Architecture and MicroEJ Pack option comes with a default value, which is used if the option has not been set by the user.
 
 Using a Launcher
 ----------------
@@ -43,33 +42,29 @@ To set an option in a launcher, perform the following steps:
 3. Select the :guilabel:`Configuration` tab,
 4. Find the desired option and set it to the desired value.
 
-It is recommended to index the launcher configuration to your version control system. To export launcher options to filesystem, perform the following steps:
+It is recommended to index the launcher configuration to your version control system. To export launcher options to the filesystem, perform the following steps:
 
-1. Select the :guilabel:`Common tab`,
-2. Select the :guilabel:`Shared file:` option and browse an export path directory,
-3. Press :guilabel:`Apply button`. A file named ``[launcher_configuration_name].launch`` is generated in the directory.
-
-Finally, to export options defined in a ``.launch`` file to a properties file, perform the following steps:
-
-1. Select the ``[launcher_configuration_name].launch`` file,
-2. Select :guilabel:`File` > :guilabel:`Export` > :guilabel:`MicroEJ` > :guilabel:`Launcher as Properties File`,
-3. Browse an output ``.properties`` files,
-4. Press :guilabel:`Finish` button.
+1. Select the :guilabel:`Common` tab,
+2. Select the :guilabel:`Shared file:` option and browse the desired export folder,
+3. Press the :guilabel:`Apply` button. A file named ``[launcher_configuration_name].launch`` is generated in the export folder.
 
 Using a Properties File
 -----------------------
 
-Options can be also be defined in properties files. In case an option is defined in multiple properties files, 
-the option of the first loaded file is taken into account and the same option defined in the other files is ignored (a loaded option cannot be overridden).
+Options can be also be defined in properties files.
 
 When a MicroEJ Standalone Application is built using the ``firmware-singleapp`` :ref:`skeleton <mmm_module_skeleton>`, 
-options are loaded from properties files located in the ``build`` folder. 
+options are loaded from properties files located in the ``build`` folder at the root of the project. 
 
-The properties files are loaded in the order defined hereafter:
+The properties files are loaded in the following order:
 
-1. The file ``sim/sim.properties`` (optional), for Simulator options only (Virtual Device build).
-2. The file ``emb/emb.properties`` (optional), for Device options only (Firmware build).
-3. All files named ``*.properties`` files (no order). Usually, the ``build`` folder contains a single file named ``common.properties`` which defines options for both Simulator and Device.
+1. Every file matching ``build/sim/*.properties``, for Simulator options only (Virtual Device build). These files are optional.
+2. Every file matching ``build/emb/*.properties``, for Device options only (Firmware build). These files are optional.
+3. Every file matching ``build/*.properties``, both for Simulator and Device options. At least one file is required.
+
+Usually, the ``build`` folder contains a single file named ``common.properties``.
+
+In case an option is defined in multiple properties files, the option of the first loaded file is taken into account and the same option defined in the other files is ignored (a loaded option cannot be overridden).
 
 The figure below shows the expected tree of the ``build`` folder:
 
@@ -88,15 +83,25 @@ To use the options declared in properties files in a launcher, perform the follo
 1. In MicroEJ Studio/SDK, select :guilabel:`Run` > :guilabel:`Run Configurations...`,
 2. Select the launcher of the application,
 3. Select the :guilabel:`Execution` tab,
-4. Under :guilabel:`Option Files`, press :guilabel:`Add...` button,
+4. Under :guilabel:`Option Files`, press the :guilabel:`Add...` button,
 5. Browse the ``sim.properties`` file for Simulator or the ``emb.properties`` file for Device (if any) and press :guilabel:`Open` button,
-6. Add the ``common.properties`` file and press :guilabel:`Open` button.
+6. Add the ``common.properties`` file and press the :guilabel:`Open` button.
 
 .. note::
 
    An option set in a properties file can not be modified in the ``Configuration`` tab.
-   Options are loaded in the order the properties files are added (you can use ``Up`` and ``Down`` buttons to change the file ordering).
+   Options are loaded in the order the properties files are added (you can use ``Up`` and ``Down`` buttons to change the file order).
    In ``Configuration`` tab, hovering the pointer over an option field will show the location of the properties file that defines the option.
+
+Generating a Properties File
+----------------------------
+
+In order to export options defined in a ``.launch`` file to a properties file, perform the following steps:
+
+1. Select the ``[launcher_configuration_name].launch`` file,
+2. Select :guilabel:`File` > :guilabel:`Export` > :guilabel:`MicroEJ` > :guilabel:`Launcher as Properties File`,
+3. Browse the desired output ``.properties`` file,
+4. Press the :guilabel:`Finish` button.
 
 .. include:: sectionArchitectureOptions.rst
 
