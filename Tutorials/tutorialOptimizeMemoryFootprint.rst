@@ -365,9 +365,11 @@ MicroEJ Platform Configuration
 
 The following configuration guidelines are recommended in order to minimize the runtime size of the application:
 
-- Check the size of the stack of each RTOS task. For example, 1.0KB may be enough for the MicroJVM task but it can be increased to allow deep native calls.
+- Check the size of the stack of each RTOS task. For example, 1.0KB may be enough for the MicroJVM task but it can be increased to allow deep native calls. See :ref:`debugstackoverflows` section for more information.
 - Check the size of the heap allocated by the RTOS (for example, ``configTOTAL_HEAP_SIZE`` for FreeRTOS).
 - Check that the size of the back buffer matches the size of the display. Use a partial buffer if the back buffer does not fit in the RAM.
+
+.. _debugstackoverflows:
 
 Debugging Stack Overflows
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -402,7 +404,7 @@ Java Heap and Immortals Heap
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Configure the :ref:`immortals heap <option_immortal_heap>` option to be as small as possible. You can get the minimum value by calling `Immortals.freeMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Immortals.html>`_ after the creation of all the immortal objects.
-- Configure the :ref:`Java heap <option_java_heap>` option to fit the needs of the application. You can get the maximum heap usage by calling `Runtime.freeMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#freeMemory-->`_ after `System.gc() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#gc-->`_ at different moments in the application's lifecycle.
+- Configure the :ref:`Java heap <option_java_heap>` option to fit the needs of the application. You can get the maximum heap usage by calling `Runtime.freeMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#freeMemory-->`_ after `System.gc() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#gc-->`_ at different moments in the application's lifecycle. The `profiling <https://repository.microej.com/artifacts/com/microej/library/profiling/>`_ library can be used for this.
 
 Thread Stacks
 ^^^^^^^^^^^^^
