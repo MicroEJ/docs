@@ -83,6 +83,8 @@ Category: Memory
 Group: Heaps
 ^^^^^^^^^^^^
 
+.. _option_java_heap:
+
 Option(text): Java heap size (in bytes)
 """""""""""""""""""""""""""""""""""""""
 
@@ -96,6 +98,8 @@ Specifies the Java heap size in bytes.
 
 A Java heap contains live Java objects. An OutOfMemory error can occur if the
 heap is too small.
+
+.. _option_immortal_heap:
 
 Option(text): Immortal heap size (in bytes)
 """""""""""""""""""""""""""""""""""""""""""
