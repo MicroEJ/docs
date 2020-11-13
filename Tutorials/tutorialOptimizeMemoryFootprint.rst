@@ -224,11 +224,15 @@ The following application code guidelines are recommended in order to minimize t
   - when writing debug code or optional code, use the ``if (Constants.getBoolean()) { ... }`` pattern. That way, the optional code will not be embedded in the production firmware if the constant is set to ``false``.
   - replace the use of :ref:`System Properties <system_properties>` when both key and values are compile-time constants. System Properties should be reserved for runtime lookup, and also require to embed the key and the value as intern strings.
 
+- Check for useless or duplicate synchronization layers in call stacks, in order reduce the usage of ``synchronized`` statements. Some extra code is generated to acquire and release the monitor.
 - Avoid declaring abrupt exit statements (``break``, ``continue``, ``throw`` or ``return``) that jump over a ``synchronized`` block. At each exit point, some extra code is generated to release the monitor properly.
+- Avoid declaring abrupt exit statements (``break``, ``continue``, ``throw`` or ``return``) that jump over a ``try`` block. At each exit point, the code of the ``finally`` block is generated (duplicated). This also applies on a ``try(with_resource){}`` block since a finally block is generated to close the resource properly.
 - Avoid overriding `Object.equals(Object) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#equals-java.lang.Object->`_ and `Object.hashCode() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#hashCode-->`_, use ``==`` operator instead if it is sufficient. The :ref:`correct implementation of these methods <equals_hashcode>` needs code.
 - Avoid calling ``equals()`` and ``hashCode()`` methods directly on ``Object`` references, otherwise all overridden methods for every selected classes will be embedded.
 - Avoid creating inlined anonymous objects (such as ``new Runnable(){ ... }`` objects), otherwise a new anonymous class is created for each inlined object. Moreover, each enclosed final variable is added as a field of the anonymous class. Declare an explicit class instead.
 - Replace constant arrays and objects initialization in ``static final`` fields by :ref:`immutables objects <section.classpath.elements.immutables>`. Otherwise it generates initialization code which requires execution time and allocates objects in Java heap.
+- Check if some features available in software libraries are already provided by device hardware. For example, avoid using `java.util.Calendar <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Calendar.html>`_ (full Gregorian calendar implementation) if the application only require basic date manipulation provided by the internal real-time clock (RTC).
+
 
 MicroEJ Platform Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
