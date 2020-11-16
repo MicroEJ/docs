@@ -196,28 +196,6 @@ The execution of this example on the simulated Java platform should print the fo
 	SUCCESS
 
 
-CBOR
-====
-
-The `CBOR (Concise Binary Object Representation) <https://cbor.io/>`_ binary data serialization format is a lightweight data-interchange format similar to JSON but with a smaller footprint, making it very practical for embedded applications, though its messages are often less easily readable by humans.
-
-CBOR Parser Use In MicroEJ SDK
-------------------------------
-
-The `CBOR API Module <https://repository.microej.com/artifacts/ej/library/iot/cbor/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project in order to allow access to the Device library.
-
-::
-
-	<dependency org="ej.library.iot" name="cbor" rev="1.1.0"/>
-
-Example Of Use
---------------
-
-Protocol Buffers
-================
-
-
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
