@@ -1,47 +1,41 @@
 Evaluate Data Serialization Formats
-'''''''''''''''''''''''''''''''''''
+===================================
 
 This tutorial highlights some data serialization formats that are provided on MicroEJ Central Repository and their usage through basic code samples.
 
 Intended Audience
-=================
+-----------------
 
 The audience for this document is Application engineers who want to implement data serialization.
 In addition, this tutorial should be of interest to software architects how are looking for a suitable data format for their use case.
 
 XML
-===
+---
 
-`XML (EXtensible Markup Language) <https://en.wikipedia.org/wiki/XML>`_ is used to describe data and text. It allows flexible development of user-defined document types. The format is robust, non-proprietary, persistent and is verifiable for storage and transmission. To parse this data format, several XML Pull parsers are available, such as `KXmlParser <http://kxml.org/>`_ from the Java community, which has been integrated to MicroEJ as a MMM dependency.
+`XML (EXtensible Markup Language) <https://en.wikipedia.org/wiki/XML>`_ is used to describe data and text. It allows flexible development of user-defined document types. The format is robust, non-proprietary, persistent and is verifiable for storage and transmission. To parse this data format, several XML Pull parsers are available, such as `KXmlParser <http://kxml.org/>`_ from the Java community, which has been integrated to MicroEJ Central Repository.
 
 XML Parser Use In MicroEJ SDK
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The `XML API Module <https://repository.microej.com/artifacts/org/kxml2/kxml2/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project in order to allow access to the Device library.
+Application project in order to allow access to the KXML library.
 
 ::
 
 	<dependency org="org.kxml2" name="kxml2" rev="2.3.2"/>
 
 Example Of Use
---------------
+~~~~~~~~~~~~~~
 
 This MicroEJ project presents how to use XML data exchange for your Java application developed with MicroEJ. It details how to use the `KXmlParser <http://kxml.org/>`_ module.
 
-The example parses a short poem written in XML and prints the result on the system out. The MicroEJ project runs on all built-in MicroEJ Java platforms (simulator and evaluation kits).
+The example parses a short poem written in XML and prints the result on the system out. The MicroEJ project can run on any MicroEJ Platform (no external dependencies).
 
-All source code is available on `MicroEJ GitHub <https://github.com/MicroEJ/Example-XML>`_ and you can find a free trial version of MicroEJ SDK `here <https://developer.microej.com/get-started/>`_. 
+All source code is available at `MicroEJ GitHub <https://github.com/MicroEJ/Example-XML>`_. 
 
 ::
 
 	<?xml version="1.0" encoding="UTF-8"?>
-	<!--
-		XML
-		
-		Copyright 2014-2020 MicroEJ Corp. All rights reserved.
-		Use of this source code is governed by a BSD-style license that can be found with this software.
-	-->
 	<poem xmlns="http://www.megginson.com/ns/exp/poetry">
 		<title>Roses are Red</title>
 		<l>Roses are red,</l>
@@ -50,18 +44,73 @@ All source code is available on `MicroEJ GitHub <https://github.com/MicroEJ/Exam
 		<l>And I love you.</l>
 	</poem>
 
+Running the ``ReadPoem`` Java application should print the following trace :
+
+::
+
+	=============== [ Initialization Stage ] ===============
+	=============== [ Launching on Simulator ] ===============
+	Roses are Red
+	_____________
+
+	Roses are red,
+	Violets are blue;
+	Sugar is sweet,
+	And I love you.
+
+	=============== [ Completed Successfully ] ===============
+
+	SUCCESS
+
+Running ``MyXmlPullApp`` gives more details on the XML parsing and should print this trace :
+
+::
+
+	=============== [ Initialization Stage ] ===============
+	=============== [ Launching on Simulator ] ===============
+	parser implementation class is class org.kxml2.io.KXmlParser
+	Parsing simple sample XML
+	Start document
+	Start element: {http://www.megginson.com/ns/exp/poetry}poem
+	Characters:    "\n"
+	Start element: {http://www.megginson.com/ns/exp/poetry}title
+	Characters:    "Roses are Red"
+	End element:   {http://www.megginson.com/ns/exp/poetry}title
+	Characters:    "\n"
+	Start element: {http://www.megginson.com/ns/exp/poetry}l
+	Characters:    "Roses are red,"
+	End element:   {http://www.megginson.com/ns/exp/poetry}l
+	Characters:    "\n"
+	Start element: {http://www.megginson.com/ns/exp/poetry}l
+	Characters:    "Violets are blue;"
+	End element:   {http://www.megginson.com/ns/exp/poetry}l
+	Characters:    "\n"
+	Start element: {http://www.megginson.com/ns/exp/poetry}l
+	Characters:    "Sugar is sweet,"
+	End element:   {http://www.megginson.com/ns/exp/poetry}l
+	Characters:    "\n"
+	Start element: {http://www.megginson.com/ns/exp/poetry}l
+	Characters:    "And I love you."
+	End element:   {http://www.megginson.com/ns/exp/poetry}l
+	Characters:    "\n"
+	End element:   {http://www.megginson.com/ns/exp/poetry}poem
+	=============== [ Completed Successfully ] ===============
+
+	SUCCESS
+
 JSON
-====
+----
 
 As described on the `JSON official site <http://json.org/>`_, JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is widely used in many fields for example as a mean of data serialization in lightweight web services such as REST, for server interrogation in Ajax for dynamic webpage building, or even databases.
 
-Due to its lightweight nature and its simplified syntax compared to XML, it is quite natural to use it in embedded systems. JSON is easily readable by humans but what about computers? That is where the official JSON page comes in handy by providing a rather impressive list of JSON parsers. For our convenience a Java mobile edition (ME) of a JSON parser is available.
+JSON is easily readable by humans compared to XML. To parse this data format, several JSON parsers are available on the `official JSON page <http://json.org/>`_, such as `JSON ME`, which has been integrated to MicroEJ Central Repository.
+
 
 JSON Parser Use In MicroEJ SDK
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The `JSON API Module <https://repository.microej.com/artifacts/org/json/me/json/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project in order to allow access to the Device library.
+Application project in order to allow access to the JSON library.
 
 ::
 
@@ -70,7 +119,7 @@ Application project in order to allow access to the Device library.
 The instantiation and use of the parser is pretty straightforward. First you need to get the JSON content as a ``String``,  and then create a ``org.json.me.JSONObject`` instance with the string. If the string content is a valid JSON content, you should have an workable ``JSONObject`` to browse.
 
 Example Of Use
---------------
+~~~~~~~~~~~~~~
 
 In the following example we will parse this JSON file that represents a simple abstraction of a file menu:
 
@@ -108,11 +157,6 @@ The example below will parse the file, browse the resulting data structure (``or
 
 .. code:: Java
 
-	/*
-	 * Java
-	 *
-	 * Copyright 2014-2020 MicroEJ Corp. All rights reserved.
-	 */
 	package com.microej.examples.json;
 
 	import java.io.DataInputStream;
@@ -183,12 +227,12 @@ The example below will parse the file, browse the resulting data structure (``or
 
 	}
 
-The execution of this example on the simulated Java platform should print the following trace:
+The execution of this example on the MicroEJ Simulator should print the following trace:
 
 ::
 
 	=============== [ Initialization Stage ] ===============
-	=============== [ Launching SimJPF ] ===============
+	=============== [ Launching Simulator ] ===============
 	The menuitem content of popup menu is:
 	[{"value":"New","onclick":"CreateNewDoc()"},{"value":"Open","onclick":"OpenDoc()"},{"value":"Close","onclick":"CloseDoc()"}]
 	=============== [ Completed Successfully ] ===============
