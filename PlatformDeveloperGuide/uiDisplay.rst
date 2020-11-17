@@ -584,22 +584,22 @@ Captions definition:
 Tearing Signal
 --------------
 
-In this example, the drawing time is 7ms, the time between end of drawing and call to ``Display.flush()`` is 1ms and the flush time is 6ms. So the expected rendering frequency is 7 + 1 + 6 = 14ms. Flush starts just after the call to ``Display.flush()`` and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. By consequence the LCD content is refreshed during the LCD refresh time. The content can be corrupted: flickering, glitches etc. The rendering frequency is faster than LCD refresh rate.
+In this example, the drawing time is 7ms, the time between end of drawing and call to ``Display.flush()`` is 1ms and the flush time is 6ms. So the expected rendering frequency is 7 + 1 + 6 = 14ms (71.4Hz). Flush starts just after the call to ``Display.flush()`` and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. By consequence the LCD content is refreshed during the LCD refresh time. The content can be corrupted: flickering, glitches etc. The rendering frequency is faster than LCD refresh rate.
 
 .. figure:: images/uiDisplaySync01.*
    :width: 100%
 
-In this example, the times are identical to previous example. The tearing signal is used to start the flush in respecting the LCD refreshing time. The rendering frequency becomes smaller: it is cadenced on the tearing signal, every 16ms. During 2ms, the CPU can schedule other tasks or goes in idle mode. The rendering frequency is equal to LCD refresh rate.
+In this example, the times are identical to previous example. The tearing signal is used to start the flush in respecting the LCD refreshing time. The rendering frequency becomes smaller: it is cadenced on the tearing signal, every 16ms (62.5Hz). During 2ms, the CPU can schedule other tasks or goes in idle mode. The rendering frequency is equal to LCD refresh rate.
 
 .. figure:: images/uiDisplaySync02.*
    :width: 100%
 
-In this example, the drawing time is 14ms, the time between end of drawing and call to ``Display.flush()`` is 1ms and the flush time is 6ms. So the expected rendering frequency is 14 + 1 + 6 = 21ms. Flush starts just after the call to ``Display.flush()`` and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. The rendering frequency is higher than LCD refresh rate.
+In this example, the drawing time is 14ms, the time between end of drawing and call to ``Display.flush()`` is 1ms and the flush time is 6ms. So the expected rendering frequency is 14 + 1 + 6 = 21ms (47.6Hz). Flush starts just after the call to ``Display.flush()`` and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. 
 
 .. figure:: images/uiDisplaySync03.*
    :width: 100%
  
-In this example, the times are identical to previous example. The tearing signal is used to start the flush in respecting the LCD refreshing time. The drawing time + flush time is higher than LCD tearing signal period. So the flush cannot start at every tearing peak: it is cadenced on two tearing signals, every 32ms. During 11ms, the CPU can schedule other tasks or goes in idle mode. The rendering frequency is equal to LCD refresh rate divided by two.
+In this example, the times are identical to previous example. The tearing signal is used to start the flush in respecting the LCD refreshing time. The drawing time + flush time is higher than LCD tearing signal period. So the flush cannot start at every tearing peak: it is cadenced on two tearing signals, every 32ms (31.2Hz). During 11ms, the CPU can schedule other tasks or goes in idle mode. The rendering frequency is equal to LCD refresh rate divided by two.
 
 .. figure:: images/uiDisplaySync04.*
    :width: 100%
@@ -609,20 +609,50 @@ Additional Buffer
 
 Some devices take a lot of time to send back buffer content to display buffer. The following examples demonstrate the consequence on rendering frequency. The use of an additional buffer optimizes this frequency, however it uses a lot of RAM memory.
 
-In this example, the drawing time is 5ms, the time between end of drawing and call to ``Display.flush()`` is 1ms and the flush time is 14ms. So the expected rendering frequency is 5 + 1 + 14 = 20ms. Flush starts just after the call to ``Display.flush()`` and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. The rendering frequency is cadenced on drawing time + flush time.
+In this example, the drawing time is 7ms, the time between end of drawing and call to ``Display.flush()`` is 1ms and the flush time is 12ms. So the expected rendering frequency is 7 + 1 + 12 = 20ms (50Hz). Flush starts just after the call to ``Display.flush()`` and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. The rendering frequency is cadenced on drawing time + flush time.
 
 .. figure:: images/uiDisplaySync05.*
    :width: 100%
 
-As mentionned upper, the idea is to use two back buffers. First, UI task is drawing in back buffer ``A``. Just after the call to ``Display.flush()``, the flush can start. At same moment, the content of back buffer ``A`` is copied in back buffer ``B``. During the flush time (copy of back buffer ``A`` to display buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When drawings in back buffer ``B`` are done (and after call to ``Display.flush()``), the DMA copy of back buffer ``B`` to back buffer ``A`` cannot start: the copy can only start when the flush is fully done because the flush is using the back buffer ``A``. As soon as the flush is done, a new flush (and DMA copy) can start. The rendering frequency is cadenced on flush time.
+As mentionned upper, the idea is to use two back buffers. First, UI task is drawing in back buffer ``A``. Just after the call to ``Display.flush()``, the flush can start. At same moment, the content of back buffer ``A`` is copied in back buffer ``B`` (use a DMA, copy time is 1ms). During the flush time (copy of back buffer ``A`` to display buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When drawings in back buffer ``B`` are done (and after call to ``Display.flush()``), the DMA copy of back buffer ``B`` to back buffer ``A`` cannot start: the copy can only start when the flush is fully done because the flush is using the back buffer ``A``. As soon as the flush is done, a new flush (and DMA copy) can start. The rendering frequency is cadenced on flush time, ie 12ms (83.3Hz).
 
 .. figure:: images/uiDisplaySync06.*
    :width: 100%
 
-The previous example doesn't take in consideration the LCD tearing signal. However this technique of double back buffers is not efficient when tearing signal is used. The flush cannot start until tearing signal. During this waiting time, DMA copy and next drawing can be done or started. As soon as the drawing is done (and after call to ``Display.flush()``), the UI task has to wait the end of flush (which has started in late). By consequence, the rendering frequency is cadenced on two LCD tearing signals. 
+The previous example doesn't take in consideration the LCD tearing signal. With tearing signal and only one back buffer, the frequency is cadenced on two tearing signals (see previous chapter). With two back buffers, the frequency is now cadenced on only one tearing signal, despite the long flush time. 
 
 .. figure:: images/uiDisplaySync07.*
    :width: 100%
+
+Time Sum-up
+-----------
+
+The following table resumes the previous examples times:
+
+* It consider the LCD frequency is 62.5Hz (16ms). 
+* *Drawing time* is the time let to the application to perform its drawings and call ``Display.flush()``. In our examples, the time between the last drawing and the call to ``Display.flush()`` is 1ms.
+* *FPS* and *CPU load* are calculated from examples times.
+* *Max drawing time* is the maximum time let to the application to perform its drawings, without overlapping next LCD tearing signal (when tearing is enabled). 
+
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|  Tearing |  Nb buffers |  Drawing time (ms) |  Flush time (ms) |  DMA copy time (ms) |  FPS (Hz) |  CPU load (%) |  Max drawing time (ms) |
++==========+=============+====================+==================+=====================+===========+===============+========================+
+|     no   |       1     |         7+1        |         6        |                     |    71.4   |      57.1     |                        |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|    yes   |       1     |         7+1        |         6        |                     |    62.5   |       50      |            10          |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|     no   |       1     |         14+1       |         6        |                     |    47.6   |      71.4     |                        |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|    yes   |       1     |         14+1       |         6        |                     |    31.2   |      46.9     |            20          |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|     no   |       1     |         7+1        |         12       |                     |     50    |       40      |                        |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|    yes   |       1     |         7+1        |         12       |                     |    31.2   |       25      |            8           |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|     no   |       2     |         7+1        |         12       |           1         |    83.3   |      66.7     |                        |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|    yes   |       2     |         7+1        |         12       |           1         |    62.5   |       50      |            11          |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
 
 GPU Synchronization
 ===================
