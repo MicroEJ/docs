@@ -1,5 +1,5 @@
-Evaluate Data Serialization Formats
-===================================
+Explore Data Serialization Formats
+==================================
 
 This tutorial highlights some data serialization formats that are provided on MicroEJ Central Repository and their usage through basic code samples.
 

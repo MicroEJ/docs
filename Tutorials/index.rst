@@ -11,7 +11,7 @@ Tutorials
    tutorialCreateFirmwareFromScratch
    tutorialSetupBuildUsingJenkinsAndArtifactory
    tutorialImproveCodeQuality
-   tutorialEvaluateDataSerializationFormats
+   tutorialExploreDataSerializationFormats
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
