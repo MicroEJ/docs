@@ -8,8 +8,8 @@ Overview
 
 MicroEJ Architectures are distributed in two different versions:
 
-- Evaluation Architectures, associated with a software license key 
-- Production Architectures, associated with an hardware license key stored on a USB dongle 
+- Evaluation Architectures, associated with a software license key. Can be found on `<https://repository.microej.com/architectures/>`_.
+- Production Architectures, associated with an hardware license key stored on a USB dongle. Can be requested to MicroEJ support team support@microej.com
 
 Licenses list is available in MicroEJ preferences dialog page in :guilabel:`Window`
 > :guilabel:`Preferences` > :guilabel:`MicroEJ`
