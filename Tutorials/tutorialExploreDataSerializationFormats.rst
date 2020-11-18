@@ -27,11 +27,11 @@ Application project in order to allow access to the KXML library.
 Example Of Use
 ~~~~~~~~~~~~~~
 
-This MicroEJ project presents how to use XML data exchange for your Java application developed with MicroEJ. It details how to use the `KXmlParser <http://kxml.org/>`_ module.
+An example available at https://github.com/MicroEJ/Example-XML.
+It presents how to use XML data exchange for your MicroEJ Application. It also details how to use the `KXmlParser <http://kxml.org/>`_ module.
 
-The example parses a short poem written in XML and prints the result on the system out. The MicroEJ project can run on any MicroEJ Platform (no external dependencies).
+The example parses a short poem written in XML and prints the result on the standard output. The project can run on any MicroEJ Platform (no external dependencies).
 
-All source code is available at `MicroEJ GitHub <https://github.com/MicroEJ/Example-XML>`_. 
 
 ::
 
