@@ -12,7 +12,7 @@ In addition, this tutorial should be of interest to software architects how are 
 XML
 ---
 
-`XML (EXtensible Markup Language) <https://en.wikipedia.org/wiki/XML>`_ is used to describe data and text. It allows flexible development of user-defined document types. The format is robust, non-proprietary, persistent and is verifiable for storage and transmission. To parse this data format, several XML Pull parsers are available, such as `KXmlParser <http://kxml.org/>`_ from the Java community, which has been integrated to MicroEJ Central Repository.
+`XML (EXtensible Markup Language) <https://en.wikipedia.org/wiki/XML>`_ is used to describe data and text. It allows flexible development of user-defined document types. The format is robust, non-proprietary, persistent and is verifiable for storage and transmission. To parse this data format, the XML Pull parser `KXmlParser <http://kxml.org/>`_ from the Java community has been integrated to MicroEJ Central Repository.
 
 XML Parser Use In MicroEJ SDK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
