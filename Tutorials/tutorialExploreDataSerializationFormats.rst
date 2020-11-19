@@ -7,7 +7,7 @@ Intended Audience
 -----------------
 
 The audience for this document is Application engineers who want to implement data serialization.
-In addition, this tutorial should be of interest to software architects how are looking for a suitable data format for their use case.
+In addition, this tutorial should be of interest to software architects who are looking for a suitable data format for their use case.
 
 XML
 ---
