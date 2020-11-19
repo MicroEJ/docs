@@ -101,7 +101,11 @@ Running ``MyXmlPullApp`` gives more details on the XML parsing and should print 
 JSON
 ----
 
-As described on the `JSON official site <http://json.org/>`_, JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is widely used in many fields for example as a mean of data serialization in lightweight web services such as REST, for server interrogation in Ajax for dynamic webpage building, or even databases.
+As described on the `JSON official site <http://json.org/>`_, JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is widely used in many applications such as:
+
+- as a mean of data serialization for lightweight web services such as REST
+- for server interrogation in Ajax to build dynamic webpages
+- or even databases.
 
 JSON is easily readable by humans compared to XML. To parse this data format, several JSON parsers are available on the `official JSON page <http://json.org/>`_, such as `JSON ME`, which has been integrated to MicroEJ Central Repository.
 
