@@ -562,10 +562,10 @@ The second parameter is for specifying the font transparency level
 
 Examples:
 
--  ``myfont:latin:4``: Embed all latin characters with 4 levels of
+-  ``myfont:latin:4``: Embed all latin characters with 16 levels of
    transparency
 
--  ``myfont::2``: Embed all characters with 2 levels of transparency
+-  ``myfont::2``: Embed all characters with 4 levels of transparency
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

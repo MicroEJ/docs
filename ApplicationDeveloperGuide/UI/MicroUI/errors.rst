@@ -51,7 +51,7 @@ is issued, where the meaning of ``<messageId>`` is defined in :ref:`Table "Micro
    |             | the platform.                                          |
    +-------------+--------------------------------------------------------+
    | -9          | This exception is thrown when the pump of the internal |
-   |             | thread ``UIPump`` is full. In this case, no more event |     
+   |             | MicroUI thread is full. In this case, no more event    |     
    |             | (such as ``requestRender``, input events etc.) can be  |
    |             | added into it.                                         |
    |             |                                                        |

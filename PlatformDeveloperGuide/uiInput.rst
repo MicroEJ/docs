@@ -37,7 +37,7 @@ Each MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.
 
 The ``LLINPUT`` API allows multiple pairs of ``<driver - event generator>`` to use the same buffer, and associates drivers and event generators using an int ID. The ID used is the event generator ID held within the MicroUI global registry :ref:`[MUI] <esr-specifications>`. Apart from sharing the ID used to "connect" one driver's data to its respective event generator, both entities are completely decoupled.
 
-The MicroUI thread ``UIPump`` waits for data to be published by drivers into the "input buffer," and dispatches to the correct (according to the ID) event generator to read the received data. This "driver-specific-data" is then transformed into MicroUI events by event generators and sent to objects that listen for input activity.
+The `MicroUI <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html>`_ thread waits for data to be published by drivers into the "input buffer", and dispatches to the correct (according to the ID) event generator to read the received data. This "driver-specific-data" is then transformed into MicroUI events by event generators and sent to objects that listen for input activity.
 
 .. figure:: images/microui-events.png
    :alt: MicroUI Events Framework
@@ -74,7 +74,7 @@ Standard Event Generators
 
 MicroUI provides a set of standard event generators: `Command <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Command.html>`_, `Buttons <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html>`_ , `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ and `States <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/States.html>`_. For each standard generator, Input engine proposes a set of functions to create and send an event to this generator.
 
-Static Initialization proposes an additional event generator: ``Touch``. A touch event generator is a pointer event generator whose area size is the display size where the touch panel is placed. Furthermore, contrary to a pointer, a *press* action is required to be able to have a *move* action (and so a *drag* action). Input engine proposes a set of functions to target a touch event generator (equal to a pointer event generator but with some constraints).
+Static Initialization proposes an additional event generator: ``Touch``. A touch event generator is a `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ event generator whose area size is the display size where the touch panel is placed. Furthermore, contrary to a pointer, a *press* action is required to be able to have a *move* action (and so a *drag* action). Input engine proposes a set of functions to target a touch event generator (equal to a pointer event generator but with some constraints). The touch event generator is identified as a standard `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ event generator, by consequence the Java application has to use the `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ API to deal with a touch event generator.
 
 According to the event generator, one or several parameters are required. The parameter format is event generator dependant. For instance a ``Pointer`` X-coordinate is encoded on 16 bits (0-65535 pixels).
 
@@ -93,6 +93,8 @@ The event generator is responsible for converting incoming data into a MicroUI e
 
 If the event generator is not available in the application classpath, a warning is thrown (with a stack trace) and the application continues. In this case, all events sent by BSP to this event generator are ignored because no event generator is able to decode them.
 
+.. _section_input_llapi:
+
 Low-Level API
 =============
 
@@ -107,6 +109,9 @@ To send an event to the MicroEJ application, the driver (or its listener) has to
 .. figure:: images/ui_llapi_input2.*
    :alt: MicroUI Input Low-Level
    :width: 500px
+   :align: center
+
+   Input Low-Level API
 
 When there is no input device on the board, a *stub* implementation of C library is available. This C library must be linked by the third-party C IDE when the MicroUI module is installed in the MicroEJ Platform. This stub library does not provide any low-level API files.
 

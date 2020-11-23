@@ -63,7 +63,7 @@ The MicroUI implementation for MicroEJ uses one internal thread as described in 
 Role
 ----
 
-This thread is called ``UIPump``. It has two roles:
+This thread (called ``UIPump``) has two roles:
 
 -  It manages all display events (`requestRender() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestRender-->`_, `requestShow() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestShow-ej.microui.display.Displayable->`_, etc.)
 -  It reads the I/O devices inputs and dispatches them into the event generators' listeners. See input section: :ref:`section_input`. 
@@ -83,11 +83,11 @@ When an exception occurs in a user method called by the internal thread (for ins
 Native Calls
 ============
 
-The MicroUI implementation for MicroEJ uses native methods to perform some actions (read input devices events, perform drawings, turn on LEDs etc.). The library implementation has been designed to not use blocking native methods (wait input devices, wait end of drawing etc.) which can lock the full MicroJvm execution. 
+The MicroUI implementation for MicroEJ uses native methods to perform some actions (read input devices events, perform drawings, turn on LEDs etc.). The library implementation has been designed to not use blocking native methods (wait input devices, wait end of drawing etc.) which can lock the full MicroEJ Core Engine execution. 
 
 The specification of the native methods is to perform the action as fast as possible. The action execution may be sequential or parallel because an action is able to use a third-party device (software or hardware). In this case, some callbacks are available to notify the end of this kind of parallel actions. 
 
-However some actions have to wait the end of a previous parallel action. By consequence the caller thread is blocked until the previous action is done; in others words, until the previous parallel action has called its callback. In this case, only the current Java thread is locked (because it cannot continue its execution until the both actions are performed). All others Java threads can run, even a thread with a lower priority than current thread. If no thread has to be run, MicroJvm goes in sleep mode until the native callback is called.
+However some actions have to wait the end of a previous parallel action. By consequence the caller thread is blocked until the previous action is done; in others words, until the previous parallel action has called its callback. In this case, only the current Java thread is locked (because it cannot continue its execution until the both actions are performed). All others Java threads can run, even a thread with a lower priority than current thread. If no thread has to be run, MicroEJ Core Engine goes in sleep mode until the native callback is called.
 
 Transparency
 ============
@@ -104,12 +104,12 @@ rendering format. During the image drawing, each pixel is converted into
 
 This pixel format contains 8 bits to store the transparency level
 (alpha). This byte is used to merge the foreground pixel (image
-transparent pixel) with the background pixel (display buffer opaque pixel).
+transparent pixel) with the background pixel (buffer opaque pixel).
 The formula to obtain the pixel is:
 
 .. math::
 
-   {\alpha}Mult = {\alpha}FG * {\alpha}BG) / 255
+   {\alpha}Mult = ({\alpha}FG * {\alpha}BG) / 255
 
 .. math::
 
@@ -119,15 +119,18 @@ The formula to obtain the pixel is:
 
    COut = (CFG * {\alpha}FG + CBG * {\alpha}BG - CBG * {\alpha}Mult) / {\alpha}Out 
 
+The destination buffer is always opaque, so:
+
+.. math::
+
+   COut = (CFG * {\alpha}FG + CBG * (255 - {\alpha}Mult)) / 255
+
 where:
 
 -  :math:`{\alpha}`\ *FG* is the alpha level of the foreground pixel (layer pixel)
-
 -  :math:`{\alpha}`\ *BG* is the alpha level of the background pixel (working buffer
    pixel)
-
--  :math:`{\alpha}`\ *xx* is a color component of a pixel (Red, Green or Blue).
-
+-  *Cxx* is a color component of a pixel (Red, Green or Blue).
 -  :math:`{\alpha}`\ *Out* is the alpha level of the final pixel
 
 Fonts
