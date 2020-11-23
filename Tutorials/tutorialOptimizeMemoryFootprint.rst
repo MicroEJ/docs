@@ -24,7 +24,7 @@ This section explains the process of analyzing the footprint of a MicroEJ Applic
 
 Suggested footprint analysis process:
 
-1. Build the MicroEJ Application on Device
+1. Build the MicroEJ Application
 2. Analyze ``SOAR.map`` with the :ref:`memorymapanalyzer`
 3. Analyze ``soar/*.xml`` with an XML editor
 4. Link the MicroEJ Application with the BSP
