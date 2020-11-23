@@ -1,7 +1,7 @@
 Introduction
 ============
 
-MicroUI Foundation Library provides access to a pixelated display and inputs.
+MicroUI Foundation Library provides access to a pixel-based display and inputs.
 
 The aim of this library is to enable the creation of user interface in Java by reifying hardware capabilities.
 

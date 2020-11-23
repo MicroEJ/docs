@@ -360,7 +360,7 @@ Function ``LLUI_DISPLAY_IMPL_isColor`` directly implements the method from the M
 
 Function ``LLUI_DISPLAY_IMPL_getNumberOfColors`` directly implements the method from the MicroUI ``Display`` class of the same name. The default implementation returns a value according to the number of bits by pixel, without taking into consideration the alpha bit(s).
 
-Function ``LLUI_DISPLAY_IMPL_isDoubleBuffered`` directly implements the method from the MicroUI ``Display`` class of the same name. The default implementation returns ``true``. When LLAPI implementation targets a LCD in ``direct`` mode, this function must be implemented and return ``false``.
+Function ``LLUI_DISPLAY_IMPL_isDoubleBuffered`` directly implements the method from the MicroUI ``Display`` class of the same name. The default implementation returns ``true``. When LLAPI implementation targets a display in ``direct`` mode, this function must be implemented and return ``false``.
 
 Contrast
 --------

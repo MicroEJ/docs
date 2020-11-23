@@ -31,7 +31,7 @@ Front Panel (simulator display engine part) gives the same possibilities. Same c
 Display Configurations
 ======================
 
-The Display engine provides a number of different configurations. The appropriate configuration should be selected depending on the capabilities of the screen and other related hardware, such as LCD controllers.
+The Display engine provides a number of different configurations. The appropriate configuration should be selected depending on the capabilities of the screen and other related hardware, such as display controllers.
 
 The modes can vary in three ways:
 
@@ -65,8 +65,8 @@ handy guide to selecting the appropriate buffer mode according to the hardware c
 Implementation
 --------------
 
-The display engine does not depend on type of buffer mode. At the end of a drawing, the display engine calls the LLAPI ``LLUI_DISPLAY_IMPL_flush`` to let the implementation to update the LCD data. This function should be atomic and the implementation has to return the new graphics buffer address (back buffer address). In
-``direct`` and ``copy`` modes, this address never changes and the implementation has always to return the back buffer address. In ``switch`` mode, the implementation has to return the old LCD frame buffer address.
+The display engine does not depend on type of buffer mode. At the end of a drawing, the display engine calls the LLAPI ``LLUI_DISPLAY_IMPL_flush`` to let the implementation to update the display data. This function should be atomic and the implementation has to return the new graphics buffer address (back buffer address). In
+``direct`` and ``copy`` modes, this address never changes and the implementation has always to return the back buffer address. In ``switch`` mode, the implementation has to return the old display frame buffer address.
 
 The next sections describe the work to do for each mode.
 
@@ -103,7 +103,7 @@ Synchronization steps are described :ref:`below <switchModeSyncSteps>`.
 - | *Step 3:* Copy
   | A copy from the buffer 0 (new display buffer) to the buffer 1 (new back buffer) must be done to keep the contents of the current drawing. The copy routine must wait until the display has finished the switch, and start asynchronously by comparison with the MicroUI drawing routine (see next step). 
   | This copy routine can be done in a dedicated RTOS task or in an interrupt routine. The copy should start after the display \"hardware component\" has finished a full buffer read to avoid flickering.
-  | Usually a tearing signal from the LCD at the end of the  read of the previous buffer (buffer 1) or at the beginning of the read of the new buffer (buffer 0) throws an interrupt. The interrupt routine starts the copy using a DMA.
+  | Usually a tearing signal from the display at the end of the  read of the previous buffer (buffer 1) or at the beginning of the read of the new buffer (buffer 0) throws an interrupt. The interrupt routine starts the copy using a DMA.
   | If it is not possible to start an asynchronous copy, the copy must be performed in the MicroUI drawing routine, at the beginning of the next step.
   | Note that the copy is partial: only the parts that have changed need to be copied, lowering the CPU load.
 
@@ -183,7 +183,7 @@ result in "noisy" rendering and flickering, but saves one buffer in runtime memo
 Byte Layout
 ===========
 
-This chapter concerns only LCD with a number of bits-per-pixel (BPP) smaller than 8. For this kind of LCD, a byte contains several pixels and the display module allows to customize how to organize the pixels in a
+This chapter concerns only display with a number of bits-per-pixel (BPP) smaller than 8. For this kind of display, a byte contains several pixels and the display module allows to customize how to organize the pixels in a
 byte.
 
 Two layouts are available:
@@ -235,7 +235,7 @@ When installing the display module, a property ``byteLayout`` is required to spe
 Memory Layout
 =============
 
-For the LCD with a number of bits-per-pixel (BPP) higher or equal to 8, the display module supports the line-by-line memory organization: pixels are laid out from left to right within a line, starting with the top
+For the display with a number of bits-per-pixel (BPP) higher or equal to 8, the display module supports the line-by-line memory organization: pixels are laid out from left to right within a line, starting with the top
 line. For a display with 16 bits-per-pixel, the pixel at (0,0) is stored at memory address 0, the pixel at (1,0) is stored at address 2, the pixel at (2,0) is stored at address 4, and so on.
 
 .. table:: Memory Layout for BPP >= 8
@@ -256,7 +256,7 @@ line. For a display with 16 bits-per-pixel, the pixel at (0,0) is stored at memo
    |     | [7:0]     | [7:0]     | [7:0]     | [7:0]     | [7:0]     |
    +-----+-----------+-----------+-----------+-----------+-----------+
 
-For the LCD with a number of bits-per-pixel (BPP) lower than 8, the display module supports the both memory organizations: line by line (pixels are laid out from left to right within a line, starting with the top line) and column by column (pixels are laid out from top to bottom within a line, starting with the left line). These byte organizations concern until 8 consecutive pixels (see :ref:`section_display_layout_byte`). When installing the display module, a property ``memoryLayout`` is required to specify the kind of pixels representation (see :ref:`section_display_installation`).
+For the display with a number of bits-per-pixel (BPP) lower than 8, the display module supports the both memory organizations: line by line (pixels are laid out from left to right within a line, starting with the top line) and column by column (pixels are laid out from top to bottom within a line, starting with the left line). These byte organizations concern until 8 consecutive pixels (see :ref:`section_display_layout_byte`). When installing the display module, a property ``memoryLayout`` is required to specify the kind of pixels representation (see :ref:`section_display_installation`).
 
 .. table:: Memory Layout 'line' for BPP < 8 and byte layout 'line'
 
@@ -325,7 +325,7 @@ Pixel Structure
 
 The Display module provides pre-built display configurations with standard pixel memory layout. The layout of the bits within the pixel may be standard (see MicroUI GraphicsContext pixel formats) or driver-specific. When installing the display module, a property ``bpp`` is required to specify the kind of pixel representation (see :ref:`section_display_installation`).
 
-When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the display module considers the LCD pixels representation as standard. According to the chosen format, some color data can be lost or cropped.
+When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the display module considers the pixels representation as standard. According to the chosen format, some color data can be lost or cropped.
 
 -  ARGB8888: the pixel uses 32 bits-per-pixel (alpha[8], red[8],
    green[8] and blue[8]).
@@ -464,8 +464,8 @@ When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 |
           return 0xff000000 | (c * 0xffffff);
       }
 
-When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the display module considers the LCD pixel representation as generic but not standard. In this case, the driver must implement functions that
-convert MicroUI's standard 32 bits ARGB colors to LCD color representation (see :ref:`LLDISPLAY-API-SECTION`). This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. This mode can also be used when the number of bits for a color component (alpha, red, green or blue) is not standard or when the value does not represent a color but an index in an LUT.
+When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the display module considers the pixel representation as generic but not standard. In this case, the driver must implement functions that
+convert MicroUI's standard 32 bits ARGB colors to display color representation (see :ref:`LLDISPLAY-API-SECTION`). This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. This mode can also be used when the number of bits for a color component (alpha, red, green or blue) is not standard or when the value does not represent a color but an index in an LUT.
 
 Low-Level API
 =============
@@ -490,10 +490,10 @@ Overview
 Required Low Level API
 ----------------------
 
-Some four low-level APIs are required to connect the display engine on the LCD driver. The functions are listed in ``LLUI_DISPLAY_impl.h``. 
+Some four low-level APIs are required to connect the display engine on the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``. 
 
-* ``LLUI_DISPLAY_IMPL_initialize`` : The initialization function is called when MicroEJ application is calling ``MicroUI.start()``. Before this call, the LCD is useless and no need to be initialized. This function consists to initialize the LCD driver and to fill the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on two binary semaphores (see after), the back buffer address (see :ref:`section_display_modes`), the LCD *virtual* size in pixels and optionaly the LCD *physical* size in pixels.
-  The LCD *virtual* size is the size of the area where the drawings are visible. The LCD *physical* size is the required memory size where the area is located. Theoretical memory size is: ``lcd_width * lcd_height * bpp / 8``. On some devices the memory width (in pixels) is higher than virtual width. In this way, the graphics buffer memory size is: ``memory_width * memory_height * bpp / 8``.
+* ``LLUI_DISPLAY_IMPL_initialize`` : The initialization function is called when MicroEJ application is calling ``MicroUI.start()``. Before this call, the display is useless and no need to be initialized. This function consists to initialize the display driver and to fill the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on two binary semaphores (see after), the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels and optionaly the display *physical* size in pixels.
+  The display *virtual* size is the size of the area where the drawings are visible. The display *physical* size is the required memory size where the area is located. Theoretical memory size is: ``display_width * display_height * bpp / 8``. On some devices the memory width (in pixels) is higher than virtual width. In this way, the graphics buffer memory size is: ``memory_width * memory_height * bpp / 8``.
 
 * ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: The display engine requires two binary semaphores to synchronize its internal states. The binary semaphores must be configured in a state such that the semaphore must first be *given* before it can be *taken*. Two distincts functions have to be implemented to *take* and *give* a binary semaphore.
 
@@ -502,7 +502,7 @@ Some four low-level APIs are required to connect the display engine on the LCD d
 Optional Low Level API
 ----------------------
 
-Several low-level API are available in ``LLUI_DISPLAY_impl.h``. They are already implemented as *weak* functions in the display engine and return no error. These optional features concern the LCD backlight and constrast, LCD characteristics (is colored display, double buffer), colors conversions (see :ref:`display_pixel_structure` and :ref:`display_lut`) etc.
+Several low-level API are available in ``LLUI_DISPLAY_impl.h``. They are already implemented as *weak* functions in the display engine and return no error. These optional features concern the display backlight and constrast, display characteristics (is colored display, double buffer), colors conversions (see :ref:`display_pixel_structure` and :ref:`display_lut`) etc.
 
 Painter Low Level API
 ---------------------
@@ -572,7 +572,7 @@ Display Synchronization
 Overview
 --------
 
-Graphical engine is designed to be synchronized with the LCD refresh rate by defining some points in the rendering timeline. It is optional; however it is mainly recommanded.  This chapter explains why to use LCD tearing signal and its consequences. Some chronograms describe several use cases: with and without LCD tearing signal, long drawings, long flush time etc. Times are in milliseconds. To simplify chronograms views, the LCD refresh rate is every 16ms (62.5Hz). 
+Graphical engine is designed to be synchronized with the display refresh rate by defining some points in the rendering timeline. It is optional; however it is mainly recommanded.  This chapter explains why to use display tearing signal and its consequences. Some chronograms describe several use cases: with and without display tearing signal, long drawings, long flush time etc. Times are in milliseconds. To simplify chronograms views, the display refresh rate is every 16ms (62.5Hz). 
 
 Captions definition:
 
@@ -584,12 +584,12 @@ Captions definition:
 Tearing Signal
 --------------
 
-In this example, the drawing time is 7ms, the time between end of drawing and call to ``Display.flush()`` is 1ms and the flush time is 6ms. So the expected rendering frequency is 7 + 1 + 6 = 14ms (71.4Hz). Flush starts just after the call to ``Display.flush()`` and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. By consequence the LCD content is refreshed during the LCD refresh time. The content can be corrupted: flickering, glitches etc. The rendering frequency is faster than LCD refresh rate.
+In this example, the drawing time is 7ms, the time between end of drawing and call to ``Display.flush()`` is 1ms and the flush time is 6ms. So the expected rendering frequency is 7 + 1 + 6 = 14ms (71.4Hz). Flush starts just after the call to ``Display.flush()`` and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. By consequence the display content is refreshed during the display refresh time. The content can be corrupted: flickering, glitches etc. The rendering frequency is faster than display refresh rate.
 
 .. figure:: images/uiDisplaySync01.*
    :width: 100%
 
-In this example, the times are identical to previous example. The tearing signal is used to start the flush in respecting the LCD refreshing time. The rendering frequency becomes smaller: it is cadenced on the tearing signal, every 16ms (62.5Hz). During 2ms, the CPU can schedule other tasks or goes in idle mode. The rendering frequency is equal to LCD refresh rate.
+In this example, the times are identical to previous example. The tearing signal is used to start the flush in respecting the display refreshing time. The rendering frequency becomes smaller: it is cadenced on the tearing signal, every 16ms (62.5Hz). During 2ms, the CPU can schedule other tasks or goes in idle mode. The rendering frequency is equal to display refresh rate.
 
 .. figure:: images/uiDisplaySync02.*
    :width: 100%
@@ -599,7 +599,7 @@ In this example, the drawing time is 14ms, the time between end of drawing and c
 .. figure:: images/uiDisplaySync03.*
    :width: 100%
  
-In this example, the times are identical to previous example. The tearing signal is used to start the flush in respecting the LCD refreshing time. The drawing time + flush time is higher than LCD tearing signal period. So the flush cannot start at every tearing peak: it is cadenced on two tearing signals, every 32ms (31.2Hz). During 11ms, the CPU can schedule other tasks or goes in idle mode. The rendering frequency is equal to LCD refresh rate divided by two.
+In this example, the times are identical to previous example. The tearing signal is used to start the flush in respecting the display refreshing time. The drawing time + flush time is higher than display tearing signal period. So the flush cannot start at every tearing peak: it is cadenced on two tearing signals, every 32ms (31.2Hz). During 11ms, the CPU can schedule other tasks or goes in idle mode. The rendering frequency is equal to display refresh rate divided by two.
 
 .. figure:: images/uiDisplaySync04.*
    :width: 100%
@@ -619,7 +619,7 @@ As mentionned upper, the idea is to use two back buffers. First, UI task is draw
 .. figure:: images/uiDisplaySync06.*
    :width: 100%
 
-The previous example doesn't take in consideration the LCD tearing signal. With tearing signal and only one back buffer, the frequency is cadenced on two tearing signals (see previous chapter). With two back buffers, the frequency is now cadenced on only one tearing signal, despite the long flush time. 
+The previous example doesn't take in consideration the display tearing signal. With tearing signal and only one back buffer, the frequency is cadenced on two tearing signals (see previous chapter). With two back buffers, the frequency is now cadenced on only one tearing signal, despite the long flush time. 
 
 .. figure:: images/uiDisplaySync07.*
    :width: 100%
@@ -629,10 +629,10 @@ Time Sum-up
 
 The following table resumes the previous examples times:
 
-* It consider the LCD frequency is 62.5Hz (16ms). 
+* It consider the display frequency is 62.5Hz (16ms). 
 * *Drawing time* is the time let to the application to perform its drawings and call ``Display.flush()``. In our examples, the time between the last drawing and the call to ``Display.flush()`` is 1ms.
 * *FPS* and *CPU load* are calculated from examples times.
-* *Max drawing time* is the maximum time let to the application to perform its drawings, without overlapping next LCD tearing signal (when tearing is enabled). 
+* *Max drawing time* is the maximum time let to the application to perform its drawings, without overlapping next display tearing signal (when tearing is enabled). 
 
 +----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
 |  Tearing |  Nb buffers |  Drawing time (ms) |  Flush time (ms) |  DMA copy time (ms) |  FPS (Hz) |  CPU load (%) |  Max drawing time (ms) |
@@ -683,7 +683,7 @@ Note that the dynamic mode is slower than the static mode.
 LUT
 ===
 
-The display module allows to target LCD which uses a pixel indirection table (LUT). This kind of LCD are considered as generic but not standard (see :ref:`display_pixel_structure`). By consequence, the driver must implement functions that convert MicroUI's standard 32 bits ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to LCD color representation. For each application ARGB8888 color, the display driver has to find the corresponding color in the table. The display module will store the index of the color in the table instead of using the color itself.
+The display module allows to target display which uses a pixel indirection table (LUT). This kind of display are considered as generic but not standard (see :ref:`display_pixel_structure`). By consequence, the driver must implement functions that convert MicroUI's standard 32 bits ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to display color representation. For each application ARGB8888 color, the display driver has to find the corresponding color in the table. The display module will store the index of the color in the table instead of using the color itself.
 
 When an application color is not available in the display driver table (LUT), the display driver can try to find the nearest color or return a default color. First solution is often quite difficult to write and can cost a lot of time at runtime. That's why the second solution is preferred. However, a consequence is that  he application has only to use a range of colors provided by the display driver.
 
@@ -705,7 +705,7 @@ Image Pixel Conversion
 Overview
 --------
 
-Display engine is built for a dedicated LCD pixel format (see :ref:`display_pixel_structure`). For this pixel format, the display engine must be able to draw image with or without alpha blending and with or without transformation. In addition, it must be able to read all images formats.
+Display engine is built for a dedicated display pixel format (see :ref:`display_pixel_structure`). For this pixel format, the display engine must be able to draw image with or without alpha blending and with or without transformation. In addition, it must be able to read all images formats.
 
 The MicroEJ application may not use all MicroUI image drawings options and may not use all images formats. It is not possible to detect what the application is needed, so no optimization can be performed at application compiletime. However, for a given application, the platform can be built with a reduced set of pixel support. 
 
@@ -716,9 +716,9 @@ Functions
 
 There are five pixel *conversion* modes:
 
--  draw an image without transformation and without global alpha blending: copy a pixel from a format to the destination format (LCD format)
--  draw an image without transformation and with global alpha blending: copy a pixel with alpha blending from a format to the destination format (LCD format)
--  draw an image with transformation and with or without alpha blending: draw an ARGB8888 pixel in destination format (LCD format)
+-  draw an image without transformation and without global alpha blending: copy a pixel from a format to the destination format (display format)
+-  draw an image without transformation and with global alpha blending: copy a pixel with alpha blending from a format to the destination format (display format)
+-  draw an image with transformation and with or without alpha blending: draw an ARGB8888 pixel in destination format (display format)
 -  load a ``ResourceImage`` with an output format: convert an ARGB8888 pixel to the output format
 -  read a pixel from an image (``Image.readPixel()`` or to draw an image with transformation or to convert an image): read any pixel formats and convert it in ARGB8888
 
@@ -892,7 +892,7 @@ The properties file must / can contain the following properties:
 
 -  ``memoryLayout`` [optional, default value is "line"]: Defines the
    pixels data order in memory the display device is using. This option
-   concerns only the LCD with a bpp lower than 8 (see 'bpp' property).
+   concerns only the display with a bpp lower than 8 (see 'bpp' property).
    Two modes are available: when the byte memory address is incremented,
    the next targeted group of pixels is the next group on the same line
    or the next group on same column. In first case, when the end of line

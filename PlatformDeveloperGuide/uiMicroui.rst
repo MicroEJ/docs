@@ -8,7 +8,7 @@ MicroUI
 Principle
 =========
 
-MicroUI library defines a low-level UI framework for embedded devices. This module allows the creation of basic Human-Machine-Interfaces (HMI), with output on a pixelated screen. For more information, please consult the :ref:`[MUI] Specification <esr-specifications>`.
+MicroUI library defines a low-level UI framework for embedded devices. This module allows the creation of basic Human-Machine-Interfaces (HMI), with output on a pixel-based screen. For more information, please consult the :ref:`[MUI] Specification <esr-specifications>`.
 
 
 .. _section_architecture:
@@ -20,7 +20,7 @@ MicroUI library is the entry point to perform some drawings on a display and to 
 
 At MicroEJ application startup all MicroUI objects relative to the I/O devices are created and accessible. The following MicroUI methods allow you to access these internal objects:
 
--  ``Display.getDisplay()``: returns the instance of the display which drives the main LCD screen.
+-  ``Display.getDisplay()``: returns the instance of the display which drives the main display screen.
 
 -  ``Leds.getNumberOfLeds()``: returns the numbers of available LEDs.
 
@@ -37,17 +37,16 @@ The embedded platform requires some additional C libraries to drive the I/O devi
 
 .. table:: MicroUI C libraries
 
-   +-----------------------------------------+-----------------+----------------------------+
-   | I/O devices                             | Extension Name  | Chapter                    |
-   +=========================================+=================+============================+
-   | Graphical / pixelated display (LCD      | Display         | :ref:`section_display`     |
-   | screen)                                 |                 |                            |
-   +-----------------------------------------+-----------------+----------------------------+
-   | Inputs (buttons, joystick, touch,       | Input           | :ref:`section_input`       |
-   | pointers etc.)                          |                 |                            |
-   +-----------------------------------------+-----------------+----------------------------+
-   | LEDs                                    | LEDs            | :ref:`section_leds`        |
-   +-----------------------------------------+-----------------+----------------------------+
+   +-------------------------------------------+-----------------+----------------------------+
+   | I/O devices                               | Extension Name  | Chapter                    |
+   +===========================================+=================+============================+
+   | Graphical / pixel-based display           | Display         | :ref:`section_display`     |
+   +-------------------------------------------+-----------------+----------------------------+
+   | Inputs (buttons, joystick, touch,         | Input           | :ref:`section_input`       |
+   | pointers etc.)                            |                 |                            |
+   +-------------------------------------------+-----------------+----------------------------+
+   | LEDs                                      | LEDs            | :ref:`section_leds`        |
+   +-------------------------------------------+-----------------+----------------------------+
 
 The simulation platform uses a mock which simulates all I/O devices.
 Refer to the chapter :ref:`section_ui_simulation`.
@@ -93,19 +92,19 @@ However some actions have to wait the end of a previous parallel action. By cons
 Transparency
 ============
 
-MicroUI provides several policies to use the transparency. These policies depend on several factors, including the kind of drawing and the LCD pixel rendering format. The main concept is that MicroUI does not allow you to draw something with a transparency level different from 255 (fully opaque). There are two exceptions: the images and the fonts.
+MicroUI provides several policies to use the transparency. These policies depend on several factors, including the kind of drawing and the display pixel rendering format. The main concept is that MicroUI does not allow you to draw something with a transparency level different from 255 (fully opaque). There are two exceptions: the images and the fonts.
 
 Images
 ------
 
 Drawing an image (a pre-generated image or an image decoded at runtime)
-which contains some transparency levels does not depend on the LCD pixel
+which contains some transparency levels does not depend on the display pixel
 rendering format. During the image drawing, each pixel is converted into
 32 bits by pixel format.
 
 This pixel format contains 8 bits to store the transparency level
 (alpha). This byte is used to merge the foreground pixel (image
-transparent pixel) with the background pixel (LCD buffer opaque pixel).
+transparent pixel) with the background pixel (display buffer opaque pixel).
 The formula to obtain the pixel is:
 
 .. math::
