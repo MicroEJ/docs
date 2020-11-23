@@ -12,9 +12,9 @@ The diagram below shows a simplified view of the components involved in the prov
 
    Overview
 
-Display, Input and LED are respectively called Graphical engine, Input engine and LED engine. These three low level parts connect MicroUI library to the user-supplied drivers code (coded in C). The drivers can use hardware accelerators like DMA and GPU to perform specific actions (buffers copy, drawings etc.).
+Display, Input and LED are respectively called :ref:`Graphical engine <section_display>`, :ref:`Input engine <section_input>` and :ref:`LED engine <section_leds>`. These three low level parts connect MicroUI library to the user-supplied drivers code (coded in C). The drivers can use hardware accelerators like DMA and GPU to perform specific actions (buffers copy, drawings etc.).
 
-The MicroEJ Simulator provides all features of MicroUI library. The three engines are grouped together in a module called Front Panel. The Front Panel is supplied with a set of software widgets that generically support a range of input devices, such as buttons, joysticks and touchscreens, and output devices such as displays and LEDs. With the help of the Front Panel Designer tool that forms part of the MicroEJ Workbench the user must define a front panel mock-up using these widgets. 
+The MicroEJ Simulator provides all features of MicroUI library. The three engines are grouped together in a module called :ref:`Front Panel <section_ui_simulation>`. The Front Panel is supplied with a set of software widgets that generically support a range of input devices, such as buttons, joysticks and touchscreens, and output devices such as displays and LEDs. With the help of the Front Panel Designer tool that forms part of the MicroEJ Workbench the user must define a front panel mock-up using these widgets. 
 
 The graphical engine manages fonts and images. The fonts and images are pre-processed before compiling the MicroEJ application. The following diagram depicts the components involved in its design, along with the provided tools:
 
