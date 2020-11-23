@@ -20,7 +20,7 @@ The graphical engine manages fonts and images. The fonts and images are pre-proc
 
 .. figure:: images/ui_overview2.*
    :alt: The User Interface Extension Components along with a Platform
-   :width: 50.0%
+   :width: 70.0%
    :align: center
 
    The User Interface Extension Components along with a Platform
