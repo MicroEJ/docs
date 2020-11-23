@@ -11,6 +11,7 @@ Tutorials
    tutorialCreateFirmwareFromScratch
    tutorialSetupBuildUsingJenkinsAndArtifactory
    tutorialImproveCodeQuality
+   tutorialOptimizeMemoryFootprint
    tutorialExploreDataSerializationFormats
 
 ..

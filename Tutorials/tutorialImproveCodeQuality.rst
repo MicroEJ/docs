@@ -224,7 +224,7 @@ The purpose of these methods is to uniquely and consistently identify
 objects. The most common use of these methods is to compare instances in
 collections (list or set elements, map keys, etc.).
 
-The ``equals(Object)`` method implements an equivalence relation (defined in
+The `Object.equals(Object) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#equals-java.lang.Object->`_ method implements an equivalence relation (defined in
 the Javadoc) with the following properties:
 
 - It is reflexive: for any reference value x, ``x.equals(x)`` must return
@@ -281,7 +281,7 @@ The ``equals(Object)`` method is written that way:
       (field2 == null ? other.field2 == null : field2.equals(other.field2));
   }
 
-The ``hashCode()`` method is written that way:
+The `Object.hashCode() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#hashCode-->`_ method is written that way:
 
 - Choose a prime number.
 - Create a result local, whatever the value (usually the prime number).

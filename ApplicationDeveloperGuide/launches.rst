@@ -56,8 +56,8 @@ verbose options (advanced debug purpose options).
 .. figure:: images/executionTab.png
    :alt: MicroEJ Launch Application Execution Tab
    :align: center
-   :width: 800px
-   :height: 640px
+   :width: 823px
+   :height: 706px
 
    MicroEJ Launch Application Execution Tab
 

@@ -1,3 +1,5 @@
+.. _elftomapgenerator:
+
 =========================
 ELF to Map File Generator
 =========================
