@@ -15,7 +15,7 @@ The LED engine contains the C part of the MicroUI implementation which manages 
 Functional Description
 ======================
 
-The LED engine implements the MicroUI ``Leds`` framework. ``LLUI_LED`` specifies the low level API that receive orders from the Java world.
+The LED engine implements the MicroUI `Leds <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/led/Leds.html>`_ framework. ``LLUI_LED`` specifies the low level API that receive orders from the Java world.
 
 The low level API are the same for the LED which is connected to a ``GPIO`` (``0`` or ``1``), to a ``PWM``, to a bus (``I2C``, ``SPI``) etc. The BSP has the responsibility of interpreting the MicroEJ Application parameter ``intensity``.
 
@@ -59,8 +59,7 @@ In the platform configuration file, check :guilabel:`UI` > :guilabel:`LEDs` to i
 Use
 ===
 
-The MicroUI LEDs APIs are available in the class
-``ej.microui.led.Leds``.
+The MicroUI LEDs APIs are available in the class `ej.microui.led.Leds <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/led/Leds.html>`_.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

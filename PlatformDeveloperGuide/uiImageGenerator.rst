@@ -271,7 +271,7 @@ Use
 ===
 
 The MicroUI Image APIs are available in the class
-``ej.microui.display.Image`` ant its subclasses. There are no specific APIs that use a
+`ej.microui.display.Image <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#>`_ ant its subclasses. There are no specific APIs that use a
 pre-generated image. When an image has been pre-processed, the MicroUI
 Image APIs ``getImage`` and ``loadImage`` will get/load the images.
 

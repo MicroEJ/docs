@@ -20,9 +20,9 @@ MicroUI library is the entry point to perform some drawings on a display and to 
 
 At MicroEJ application startup all MicroUI objects relative to the I/O devices are created and accessible. The following MicroUI methods allow you to access these internal objects:
 
--  ``Display.getDisplay()``: returns the instance of the display which drives the main display screen.
+-  `Display.getDisplay() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#getDisplay-->`_ : returns the instance of the display which drives the main display screen.
 
--  ``Leds.getNumberOfLeds()``: returns the numbers of available LEDs.
+-  `Leds.getNumberOfLeds() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/led/Leds.html#getNumberOfLeds-->`_: returns the numbers of available LEDs.
 
 MicroUI is not a standalone library. It requires a configuration step and several extensions to drive I/O devices (display, inputs, LEDs).
 
@@ -58,14 +58,14 @@ Thread
 Principle
 ---------
 
-The MicroUI implementation for MicroEJ uses one internal thread as described in :ref:`MicroUI specification <esr-specifications>`. This thread is created during the MicroUI initialization step, and is started by a call to ``MicroUI.start()``. 
+The MicroUI implementation for MicroEJ uses one internal thread as described in :ref:`MicroUI specification <esr-specifications>`. This thread is created during the MicroUI initialization step, and is started by a call to `MicroUI.start() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start-->`_. 
 
 Role
 ----
 
 This thread is called ``UIPump``. It has two roles:
 
--  It manages all display events (``requestRender()``, ``requestShow()``, etc.)
+-  It manages all display events (`requestRender() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestRender-->`_, `requestShow() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestShow-ej.microui.display.Displayable->`_, etc.)
 -  It reads the I/O devices inputs and dispatches them into the event generators' listeners. See input section: :ref:`section_input`. 
 
 Memory
@@ -78,7 +78,7 @@ Exceptions
 
 The thread cannot be stopped with a Java exception: The exceptions are always checked by the framework.
 
-When an exception occurs in a user method called by the internal thread (for instance ``render()``), the current ``UncaughtExceptionHandler`` receives the exception. When no exception handler is set, a default handler prints the stack trace.
+When an exception occurs in a user method called by the internal thread (for instance `render() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Displayable.html#render-ej.microui.display.GraphicsContext->`_), the current ``UncaughtExceptionHandler`` receives the exception. When no exception handler is set, a default handler prints the stack trace.
 
 Native Calls
 ============

@@ -8,11 +8,11 @@ Principle
 
 The Image Engine is designed to make the distinction about three kinds of MicroUI images:
 
-* the images which can be used by the application without a loading step: class ``Image``,
-* the images which requires a loading step before being usable by the application: class ``ResourceImage``,
-* the buffered images where the application can draw into: class ``BufferedImage``.
+* the images which can be used by the application without a loading step: class `Image <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#>`_,
+* the images which requires a loading step before being usable by the application: class `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#>`_,
+* the buffered images where the application can draw into: class `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#>`_.
 
-First kind of image requires the Image Engine must be able to use (get, read and draw) an image referenced by its path without any loading step. The *open* step should be very fast: just have to find the image in the application resources list and create an ``Image`` object which targets the resource. No RAM memory to store the image pixels is required: the Image Engine directly uses the resource address (often in FLASH memory). And finally, *closing* step is useless because there is nothing to free (except ``Image`` object itself, via the garbage collector).
+First kind of image requires the Image Engine must be able to use (get, read and draw) an image referenced by its path without any loading step. The *open* step should be very fast: just have to find the image in the application resources list and create an `Image <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#>`_ object which targets the resource. No RAM memory to store the image pixels is required: the Image Engine directly uses the resource address (often in FLASH memory). And finally, *closing* step is useless because there is nothing to free (except `Image <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#>`_ object itself, via the garbage collector).
 
 Second kind of image requires the Image Engine must be able to use (load, read and draw) an image referenced by its path with or without any loading step. When the image is understable by the Image Engine without any loading step, the image is considered like the first kind of image (fast *open* step, no RAM memory, useless *closing* step). When a loading step is required (dynamic decoding, external resource loading, image format conversion), the *open* state becomes longer and a buffer in RAM is required to store the image pixels. By consequence a *closing* step is required to free the buffer when image becomes useless.
 
