@@ -1,3 +1,5 @@
+.. _mwt:
+
 MWT (Micro Widget Toolkit)
 ==========================
 

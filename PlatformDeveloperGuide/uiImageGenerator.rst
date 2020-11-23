@@ -226,7 +226,7 @@ Each line can add optional parameters (separated by a ':') which define and/or d
 Linker File
 ===========
 
-In addition with images binary files, the Image Generator module generates a linker file (``*.lscf``). This linker file declares an image section called ``.rodata.images``. This section follows the next rules:
+In addition to images binary files, the Image Generator module generates a linker file (``*.lscf``). This linker file declares an image section called ``.rodata.images``. This section follows the next rules:
 
 * The files are always listed in same order between two MicroEJ application builds.
 * The section is aligned on the value specified by the display module property ``imageBuffer.memoryAlignment`` (32 bits by default).
