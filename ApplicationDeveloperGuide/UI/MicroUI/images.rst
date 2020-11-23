@@ -6,8 +6,7 @@ Images
 Overview
 --------
 
-Images are graphical resources that can be accessed with a call to
-``ej.microui.display.Image.getImage()`` or ``ej.microui.display.ResourceImage.loadImage()``. To be displayed, these
+Images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_ . To be displayed, these
 images have to be converted from their source format to the display raw
 format. The conversion can either be done at:
 
@@ -16,7 +15,7 @@ format. The conversion can either be done at:
 -  run-time (using the relevant decoder library).
 
 Images that must be processed by the image generator tool are declared
-in MicroEJ Classpath ``*.images.list`` files. The file format is a
+in :ref:`MicroEJ Classpath<chapter.microej.classpath>` ``*.images.list`` files. The file format is a
 standard Java properties file, each line representing a ``/`` separated
 resource path relative to the MicroEJ classpath root referring to a
 standard image file (e.g. ``.png``, ``.jpg``). The resource may be
@@ -64,19 +63,19 @@ Images Heap
 
 The images heap is used to allocate the pixel data of:
 
-- mutable images (i.e. ``BufferedImage`` instances)
+- mutable images (i.e. `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html>`_  instances)
 - images which are not byte-addressable, such as images opened with an input stream
 - images which are byte-addressable but converted to a different output format
 
-In other words, every image which can not be retrieved using ``Image.getImage()`` is saved on the images heap.
+In other words, every image which can not be retrieved using `Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_  is saved on the images heap.
 
 The size of the images heap can be configured with the ``ej.microui.memory.imagesheap.size`` property.
 
 Output Formats
 --------------
 
-No Compression
-~~~~~~~~~~~~~~
+Without Compression
+~~~~~~~~~~~~~~~~~~~
 
 When no output format is set in the images list file, the image is
 embedded without any conversion / compression. This allows you to embed
@@ -86,13 +85,14 @@ specifiying an image as a resource in the MicroEJ launcher.
 
 Advantages:
 
--  Preserves the image characteristics.
+- Preserves the image characteristics;
+- Preserves the original image compression.
 
 Disadvantages:
 
--  Requires an image runtime decoder;
-
--  Requires some RAM in which to store the decoded image.
+- Requires an image runtime decoder;
+- Requires some RAM in which to store the decoded image;
+- Requires execution time to decode the image.
 
 ::
 
@@ -110,9 +110,9 @@ memory space.
 
 Advantages:
 
--  Drawing an image is very fast;
+-  Drawing an image is very fast because no pixel conversion is required at runtime;
 
--  Supports alpha encoding.
+-  Supports alpha encoding when display pixel format allow it.
 
 Disadvantages:
 
@@ -145,15 +145,17 @@ Advantages:
 Disadvantages:
 
 -  No compression: the image size in bytes is proportional to the number
-   of pixels, the transparency, and the bits-per-pixel.
+   of pixels, the transparency, and the bits-per-pixel;
+- Slower than ``display`` format when the display driver does not recognize the
+   format: a pixel conversion is required at runtime.
 
-Select one the following format to use a generic format:
+Select one the following format to use a generic format among this list: ``ARGB8888``, ``RGB888``, ``ARGB4444``, ``ARGB1555``, ``RGB565``, ``A8``, ``A4``, ``A2``, ``A1``, ``C4``, ``C2``, ``C1``, ``AC44``, ``AC22`` and ``AC11``. The following snippets describe the color conversion for each format:
 
 -  ARGB8888: 32 bits format, 8 bits for transparency, 8 per color.
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return c;
       }
 
@@ -161,7 +163,7 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return c & 0xffffff;
       }
 
@@ -169,7 +171,7 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return 0
                   | ((c & 0xf0000000) >> 16)
                   | ((c & 0x00f00000) >> 12)
@@ -182,7 +184,7 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return 0
                   | (((c & 0xff000000) == 0xff000000) ? 0x8000 : 0)
                   | ((c & 0xf80000) >> 9)
@@ -196,7 +198,7 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return 0
                   | ((c & 0xf80000) >> 8)
                   | ((c & 0x00fc00) >> 5)
@@ -209,7 +211,7 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return 0xff - (toGrayscale(c) & 0xff);
       }
 
@@ -218,7 +220,7 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return (0xff - (toGrayscale(c) & 0xff)) / 0x11;
       }
 
@@ -227,7 +229,7 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return (0xff - (toGrayscale(c) & 0xff)) / 0x55;
       }
 
@@ -236,7 +238,7 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return (0xff - (toGrayscale(c) & 0xff)) / 0xff;
       }
 
@@ -245,7 +247,7 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return (toGrayscale(c) & 0xff) / 0x11;
       }
 
@@ -254,7 +256,7 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return (toGrayscale(c) & 0xff) / 0x55;
       }
 
@@ -263,7 +265,7 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return (toGrayscale(c) & 0xff) / 0xff;
       }
 
@@ -271,7 +273,7 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return 0
               | ((color >> 24) & 0xf0)
               | ((toGrayscale(color) & 0xff) / 0x11)
@@ -282,7 +284,7 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return 0
               | ((color >> 28) & 0xc0)
               | ((toGrayscale(color) & 0xff) / 0x55)
@@ -293,12 +295,14 @@ Select one the following format to use a generic format:
 
    ::
 
-      u32 convertARGB8888toRAWFormat(u32 c){
+      int convertARGB8888toRAWFormat(int c){
           return 0
               | ((c & 0xff000000) == 0xff000000 ? 0x2 : 0x0)
               | ((toGrayscale(color) & 0xff) / 0xff)
               ;
       }
+
+Examples:
 
 ::
 
@@ -309,8 +313,7 @@ Select one the following format to use a generic format:
 RLE1 Output Format
 ~~~~~~~~~~~~~~~~~~
 
-The image engine can display embedded images that are encoded into a
-compressed format which encodes several consecutive pixels into one or
+The image engine can display embedded images that are encoded into a compressed format which encodes several consecutive pixels into one or
 more 16-bits words. This encoding manages a maximum alpha level of 2
 (alpha level is always assumed to be 2, even if the image is not
 transparent).
@@ -318,9 +321,9 @@ transparent).
 -  Several consecutive pixels have the same color (2 words):
 
    -  First 16-bit word specifies how many consecutive pixels have the
-      same color;
+      same color (pixels colors converted in RGB565 format, without opacity data).
 
-   -  Second 16-bit word is the pixels' color.
+   -  Second 16-bit word is the pixels' color in RGB565 format.
 
 -  Several consecutive pixels have their own color (1 + n words):
 
@@ -335,7 +338,7 @@ transparent).
 
 Advantages:
 
--  Supports 0 & 2 alpha encoding.
+-  Supports fully opaque and fully transparent encoding.
 
 -  Good compression when several consecutive pixels respect one of the
    three previous rules.
@@ -343,13 +346,14 @@ Advantages:
 Disadvantages:
 
 -  Drawing an image is slightly slower than when using Display format.
+- Not designed for images with many different pixel colors: in such case, the output file size may be larger than the original image file.
 
 ::
 
    image1:RLE1
 
-Error Messages
---------------
+Image Generator Error Messages
+------------------------------
 
 These errors can occur while preprocessing images.
 

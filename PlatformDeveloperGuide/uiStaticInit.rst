@@ -20,113 +20,116 @@ The next chapters describe succinctly the XML file. For more information about g
 Functional Description
 ======================
 
-The Static MicroUI Initializer tool takes as entry point the initialization file which describes the MicroUI library extension. This tool is automatically launched during the MicroEJ platform build (see :ref:`section_microui_installation` ).
+The Static MicroUI Initializer tool takes as entry point the initialization file which describes the MicroUI library extension. This tool is automatically launched during the MicroEJ platform build (see :ref:`section_microui_installation` ). 
 
-The Static MicroUI Initializer tool is able to out until two files:
+The Static MicroUI Initializer tool is able to generate two files:
 
--  A Java library which extends MicroUI library. This library is automatically added to the MicroEJ Application classpath when MicroUI API library is fetched. This library is used at MicroUI startup to create all instances of I/O devices (`Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_, `EventGenerator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_ etc.) and contains the fonts described into the configuration file (these fonts are also called "system fonts").
+-  A Java library which extends MicroUI library. This library is automatically added to the :ref:`MicroEJ Application classpath<chapter.microej.classpath>` when MicroUI API library is fetched. This library is used at MicroUI startup to create all instances of I/O devices (`Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_, `EventGenerator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_ etc.) and contains the fonts described into the configuration file (these fonts are also called "system fonts").
 
 .. warning:: This MicroUI extension library is always generated and MicroUI library cannot run without this extension.
 
--  A C header file (``*.h``) file. This H file contains some IDs which are
+-  A C header file (``*.h``). This header file contains some IDs which are
    used to make a link between an input device (buttons, touch) and its
    MicroUI event generator (see :ref:`section_input`).
 
 .. note:: The front panel project does not need a configuration file (like C header file for embedded platform).
 
 .. figure:: images/static_init_process.*
-   :alt: MicroUI Process
+   :alt: Static MicroUI Initializer Process
    :width: 70.0%
    :align: center
 
-   MicroUI Process
+   Static MicroUI Initializer Process
 
-XML Root Element
-================
+XML File
+========
 
-The initialization file root element is ``<microui>`` and contains
-component-specific elements.
+The XML file must be created in platform configuration project, in folder ``microui`` and called ``microui.xml``.
 
-::
+.. figure:: images/static_xml.*
+   :alt: Static MicroUI Initializer XML File
 
-   <microui>
-       [ component specific elements ]
-   </microui>
+   Static MicroUI Initializer XML File
+
+The XML file grammar is detailed :ref:`here<muiStaticInit>`. The following list gives a short description of each element:
+
+* Root element: The initialization file root element is ``<microui>`` and contains component-specific elements.
+
+    ::
+
+        <microui>
+            [ component specific elements ]
+        </microui>
 
 
-XML Display Element
-===================
+* Display element: The ``display`` element augments the initialization file with the configuration of the display. The following snippet is an example of ``display`` element:
 
-The display component augments the initialization file with:
+    ::
 
--  The configuration of the display.
+        <display name="DISPLAY"/>
 
--  Fonts that are implicitly embedded within the application (also
-   called system fonts). Applications can also embed their own fonts. 
+* Fonts element: The ``fonts`` element augments the initialization file with the fonts that are implicitly embedded within the application (also called system fonts). Applications can also embed their own fonts. 
    
-.. note:: The system fonts are optional, in this case application has to provide some fonts to be able to draw characters.
+    .. note:: The system fonts are optional, in which case application has to provide some fonts to be able to draw characters.
 
-::
+    The following snippet is an example of ``fonts`` element:
 
-   <display name="DISPLAY"/>
+    ::
 
-   <fonts>
-       <font file="resources\fonts\myfont.ejf">
-           <range name="LATIN" sections="0-2"/>
-           <customrange start="0x21" end="0x3f"/>
-       </font>
-       <font file="C:\data\myfont.ejf"/>
-   </fonts>
+        <fonts>
+            <font file="resources\fonts\myfont.ejf">
+                <range name="LATIN" sections="0-2"/>
+                <customrange start="0x21" end="0x3f"/>
+            </font>
+            <font file="C:\data\myfont.ejf"/>
+        </fonts>
 
 
-XML Event Generators Element
-============================
+* Event generators element: The ``eventgenerators`` element augments the initialization file with:
 
-The event generators component augments the initialization file with:
+    -  the configuration of the predefined MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_: `Command <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Command.html>`_, `Buttons <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html>`_, `States <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/States.html>`_, `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ and Touch.
 
--  the configuration of the predefined MicroUI ``Event Generator``:
-   ``Command``, ``Buttons``, ``States``, ``Pointer``, ``Touch``.
+    -  the configuration of the generic MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_.
 
--  the configuration of the generic MicroUI ``Event Generator``.
+    The following snippet is an example of ``eventgenerators`` element:
 
-::
+    ::
 
-   <eventgenerators>
-       <!-- Generic Event Generators -->
-       <eventgenerator name="GENERIC" class="foo.bar.Zork">
-           <property name="PROP1" value="3"/>
-           <property name="PROP2" value="aaa"/>
-       </eventgenerator>
+        <eventgenerators>
+            <!-- Generic Event Generators -->
+            <eventgenerator name="GENERIC" class="foo.bar.Zork">
+                <property name="PROP1" value="3"/>
+                <property name="PROP2" value="aaa"/>
+            </eventgenerator>
 
-       <!-- Predefined Event Generators -->
-       <command name="COMMANDS"/>
-       <buttons name="BUTTONS" extended="3"/>
-       <buttons name="JOYSTICK" extended="5"/>
-       <pointer name="POINTER" width="1200" height="1200"/>
-       <touch name="TOUCH" display="DISPLAY"/>
-       <states name="STATES" numbers="NUMBERS" values="VALUES"/>
+            <!-- Predefined Event Generators -->
+            <command name="COMMANDS"/>
+            <buttons name="BUTTONS" extended="3"/>
+            <buttons name="JOYSTICK" extended="5"/>
+            <pointer name="POINTER" width="1200" height="1200"/>
+            <touch name="TOUCH" display="DISPLAY"/>
+            <states name="STATES" numbers="NUMBERS" values="VALUES"/>
 
-   </eventgenerators>
+        </eventgenerators>
 
-   <array name="NUMBERS">
-       <elem value="3"/>
-       <elem value="2"/>
-       <elem value="5"/>
-   </array>
+        <array name="NUMBERS">
+            <elem value="3"/>
+            <elem value="2"/>
+            <elem value="5"/>
+        </array>
 
-   <array name="VALUES">
-       <elem value="2"/>
-       <elem value="0"/>
-       <elem value="1"/>
-   </array>
-
+        <array name="VALUES">
+            <elem value="2"/>
+            <elem value="0"/>
+            <elem value="1"/>
+        </array>
 
 XML File Example
 ================
 
 This common MicroUI initialization file initializes MicroUI with:
 
--  a display
+-  a `Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_
 
 -  a `Command <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Command.html>`_ event generator
 

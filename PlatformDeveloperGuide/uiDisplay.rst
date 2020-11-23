@@ -18,7 +18,7 @@ The Display engine contains the C part of the MicroUI implementation which manag
 Functional Description
 ======================
 
-The Display engine (or graphical engine) implements the MicroUI graphics framework. This framework is constitued of several notions: the display characteristics (size, format, backlight, contrast etc.), the drawing state machine (render, flush, wait flush completed), the images cycle life, the font and drawings. The main part of graphical engine is provided by a built-in C archive. This library manages the drawing state machine mechanism, the images and fonts. The display characteristics and the drawings are managed by the ``LLUI_DISPLAY`` implementation.   
+The Display engine (or graphical engine) implements the MicroUI graphics framework. This framework is constitued of several notions: the display characteristics (size, format, backlight, contrast etc.), the drawing state machine (render, flush, wait flush completed), the images lifecycle, the font and drawings. The main part of graphical engine is provided by a built-in C archive. This library manages the drawing state machine mechanism, the images and fonts. The display characteristics and the drawings are managed by the ``LLUI_DISPLAY`` implementation.   
 
 Graphical engine is designed to let the BSP use an optional graphics processor unit (GPU) or an optional third-party drawing library. Each drawing can be implemented independantly; no have to implement all MicroUI drawings. If no extra framework is available, the graphical engine performs all drawings in software. In this case the graphical engine low-level implementation the BSP has to perform is very simple (four functions). 
 
@@ -38,8 +38,6 @@ The modes can vary in three ways:
 -  the buffer mode: double-buffer, simple buffer (also known as *direct*)
 -  the memory layout of the pixels
 -  pixel format or depth
-
-The supplied configurations offer a limited range of combinations of the options.
 
 Buffer Modes
 ============
@@ -323,9 +321,11 @@ For the display with a number of bits-per-pixel (BPP) lower than 8, the display 
 Pixel Structure
 ===============
 
-The Display module provides pre-built display configurations with standard pixel memory layout. The layout of the bits within the pixel may be standard (see MicroUI GraphicsContext pixel formats) or driver-specific. When installing the display module, a property ``bpp`` is required to specify the kind of pixel representation (see :ref:`section_display_installation`).
+The Display module provides pre-built display configurations with standard pixel memory layout. The layout of the bits within the pixel may be :ref:`standard<display_pixel_structure_standard>` or :ref:`driver-specific<display_pixel_structure_driver>`. When installing the display module, a property ``bpp`` is required to specify the kind of pixel representation (see :ref:`section_display_installation`).
 
-When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the display module considers the pixels representation as standard. According to the chosen format, some color data can be lost or cropped.
+.. _display_pixel_structure_standard:
+
+When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the display module considers the pixels representation as **standard**. According to the chosen format, some color data can be lost or cropped.
 
 -  ARGB8888: the pixel uses 32 bits-per-pixel (alpha[8], red[8],
    green[8] and blue[8]).
@@ -464,8 +464,13 @@ When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 |
           return 0xff000000 | (c * 0xffffff);
       }
 
-When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the display module considers the pixel representation as generic but not standard. In this case, the driver must implement functions that
+
+.. _display_pixel_structure_driver:
+
+When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the display module considers the pixel representation as **driver-specific**. In this case, the driver must implement functions that
 convert MicroUI's standard 32 bits ARGB colors to display color representation (see :ref:`LLDISPLAY-API-SECTION`). This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. This mode can also be used when the number of bits for a color component (alpha, red, green or blue) is not standard or when the value does not represent a color but an index in an LUT.
+
+.. _section_display_llapi:
 
 Low-Level API
 =============
@@ -476,6 +481,9 @@ Overview
 .. figure:: images/ui_llapi_display.*
    :alt: MicroUI Display Low-Level
    :width: 70%
+   :align: center
+
+   Display Low-Level API
 
 * MicroUI library `talks` with BSP through the graphical engine and header file ``LLUI_DISPLAY_impl.h``. 
 * Implementation of ``LLUI_DISPLAY_impl.h`` can `talk` with graphical engine through ``LLUI_DISPLAY.h``.

@@ -18,7 +18,7 @@ Functional Description
 
 .. figure:: images/designer_font-process2.*
    :alt: Font Generation
-   :scale: 50%
+   :scale: 60%
    :align: center
 
    Font Generation
@@ -40,12 +40,12 @@ To create a MicroEJ font, follow the steps below:
 3. Click Finish.
 
 Once the font is created, a new editor is opened: the MicroEJ Font
-Designer Editor.
+Designer.
 
 Edit a MicroEJ Font
 -------------------
 
-You can edit your font with the MicroEJ Font Designer Editor (by
+You can edit your font with the MicroEJ Font Designer (by
 double-clicking on a ``*.ejf`` file or after running the new MicroEJ
 Font wizard).
 
@@ -300,19 +300,7 @@ No dependency.
 Installation
 ============
 
-The Font Designer module is already installed in the MicroEJ
-environment. The module is optional for the platform, and allows the
-platform user to create new fonts.
-
-.. note::
-
-   When the platform user already has a MicroEJ environment which
-   provides the Font Designer module, he/she will able to create a new
-   font even if the platform does not provide the Font Designer module.
-
-In the platform configuration file, check :guilabel:`UI` > :guilabel:`Font Designer` to
-install the Font Designer module.
-
+The Font Designer module is already installed in the MicroEJ environment. 
 
 Use
 ===

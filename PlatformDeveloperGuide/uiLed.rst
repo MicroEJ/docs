@@ -19,9 +19,11 @@ The LED engine implements the MicroUI `Leds <https://repository.microej.com/java
 
 The low level API are the same for the LED which is connected to a ``GPIO`` (``0`` or ``1``), to a ``PWM``, to a bus (``I2C``, ``SPI``) etc. The BSP has the responsibility of interpreting the MicroEJ Application parameter ``intensity``.
 
-Typically, when the LED is connected to a ``GPIO``, the ``intensity`` "0" means "OFF," and all others values "ON." When the LED is connected via a ``PWM``, the ``intensity`` "0" means "OFF," and all others values must configure the ``PWM`` signal.
+Typically, when the LED is connected to a ``GPIO``, the ``intensity`` "0" means "OFF," and all others values "ON." When the LED is connected via a ``PWM``, the ``intensity`` "0" means "OFF," and all others values must configure the ``PWM`` duty cycle signal.
 
-The BSP should be able to return the state of an LED. If it is not able to do so (for example ``GPIO`` is not accessible in read mode), the returned value may be wrong. The MicroEJ Application may not be able to know the LEDs states.
+The BSP should be able to return the state of an LED. If it is not able to do so (for example ``GPIO`` is not accessible in read mode), the BSP has to save the LED state in a global variable. If not, the returned value may be wrong and the MicroEJ Application may not be able to know the LEDs states.
+
+.. _section_leds_llapi:
 
 Low-Level API
 =============
@@ -33,6 +35,9 @@ The LLAPI to implement are listed in the header file ``LLUI_LEDS_impl.h``. First
 .. figure:: images/ui_llapi_led.*
    :alt: MicroUI LED Low-Level
    :width: 200px
+   :align: center
+
+   Led Low-Level API
 
 When there is no LED on the board, a *stub* implementation of C library is available. This C library must be linked by the third-party C IDE when the MicroUI module is installed in the MicroEJ Platform. This stub library does not provide any low-level API files.
 

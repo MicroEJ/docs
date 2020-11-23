@@ -1,11 +1,7 @@
 Error Messages
 ==============
 
-When an exception is thrown by the implementation of the MicroUI API, the exception ``MicroUIException`` with the error message
-
-``MicroUI:E=<messageId>``
-
-is issued, where the meaning of ``<messageId>`` is defined in :ref:`Table "MicroUI Error Messages" <table_mui-error-msgs>`.
+When an exception is thrown by the implementation of the MicroUI API, the exception `MicroUIException <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUIException.html>`_  with the error message ``MicroUI:E=<messageId>`` is issued, where the meaning of ``<messageId>`` is defined in following table:
 
 .. _table_mui-error-msgs:
 .. tabularcolumns:: |p{2cm}|p{13cm}|
@@ -51,7 +47,7 @@ is issued, where the meaning of ``<messageId>`` is defined in :ref:`Table "Micro
    |             | the platform.                                          |
    +-------------+--------------------------------------------------------+
    | -9          | This exception is thrown when the pump of the internal |
-   |             | thread ``UIPump`` is full. In this case, no more event |     
+   |             | MicroUI thread is full. In this case, no more event    |     
    |             | (such as ``requestRender``, input events etc.) can be  |
    |             | added into it.                                         |
    |             |                                                        |

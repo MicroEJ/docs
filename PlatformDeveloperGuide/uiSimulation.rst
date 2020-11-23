@@ -58,12 +58,12 @@ To be compatible with graphical engine, the project must depend on an extension 
 
 .. warning:: This extension is built for each UI pack version. By consequence a front panel project is made for a platform built with the same UI pack. When the UI packs mismatch, some errors may occur during the front panel project exporting step, during the platform build and/or during the application runtime
 
-The graphical engine's front panel extension does not provide any widgets. Some compatible widgets are available in a third library. The cycle-life of this library is decorrelated of the UI pack cycle life. New widgets can be added to simulate new kind of displays, input devices etc. This extension fetches by transitivity the graphical engine's front panel extension , so no need to specify explicitely this extension dependency: 
+The graphical engine's front panel extension does not provide any widgets. Some compatible widgets are available in a third library. The cycle-life of this library is decorrelated of the UI pack lifecycle. New widgets can be added to simulate new kind of displays, input devices etc. This extension fetches by transitivity the graphical engine's front panel extension , so no need to specify explicitely this extension dependency: 
 
 ::
 
    <dependencies>
-      <dependency org="ej.tool.frontpanel" name="widgets" rev="2.0.0"/>
+      <dependency org="ej.tool.frontpanel" name="widget" rev="2.0.0"/>
    </dependencies>
 
 .. warning:: The minimal version ``2.0.0`` is required to be compatible with UI pack 13.0.0 and higher. By default, when creating a new front panel project, the widget dependency version is ``1.0.0``.
@@ -99,15 +99,17 @@ This choice of behavior is widget dependant. Please refer to the widget document
 Heap Simulation
 ===============
 
-Graphical engine is using two dedicated heaps: for the images (see :ref:`section_image_loader_memory` ) and the external fonts (see :ref:`section_font_loader_memory`). Front panel simulates partly simulates the heaps usage.
+Graphical engine is using two dedicated heaps: for the images (see :ref:`section_image_loader_memory` ) and the external fonts (see :ref:`section_font_loader_memory`). Front panel partly simulates the heaps usage.
 
-* Images heap: Front Panel simulates the heap usage when the application is creating a `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#>`_, when it loads and decodes an image (PNG, BMP etc.), when it converts an image in MicroEJ format in another MicroEJ format. However it does not simulate the external image copy in heap.
-* External fonts heap: Front Panel does not simulate this heap. There is no limitation (rendering limitation, see :ref:`section_font_loader_memory`) when application is using a font which is located outside CPU addresses ranges.
+* Images heap: Front Panel simulates the heap usage when the application is creating a `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#>`_, when it loads and decodes an image (PNG, BMP etc.) which is not a raw resource and when it converts an image in MicroEJ format in another MicroEJ format. However it does not simulate the external image copy in heap (see :ref:`section_image_external_memory`).
+* External fonts heap: Front Panel does not simulate this heap (see :ref:`section_font_loader_memory`). There is no rendering limitation when application is using a font which is located outside CPU addresses ranges.
+
+.. _fp_ui_decoder:
 
 Image Decoders
 ==============
 
-Front Panel uses its own internal image decoders when the internal image decoders related modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Front Panel can add some additional decoders like the C-side for the embedded platform (see :ref:`external image decoders<image_external_decoder>`). However, the exhaustive list of additional decoders is limited (Front Panel is using the Java AWT ``ImageIO`` API). To add an additional decoder, specify the property ``hardwareImageDecoders.list`` in front panel configuration properties file (see :ref:`fp_ui_installation`) with one or several property values:
+Front Panel uses its own internal image decoders when the associated modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Front Panel can add some additional decoders like the C-side for the embedded platform (see :ref:`external image decoders<image_external_decoder>`). However, the exhaustive list of additional decoders is limited (Front Panel is using the Java AWT ``ImageIO`` API). To add an additional decoder, specify the property ``hardwareImageDecoders.list`` in front panel configuration properties file (see :ref:`fp_ui_installation`) with one or several property values:
 
 .. table:: Front Panel Additional Image Decoders
 
@@ -116,7 +118,7 @@ Front Panel uses its own internal image decoders when the internal image decoder
    +=====================================================+=================+
    | Graphics Interchange Format (GIF)                   | gif             |
    +-----------------------------------------------------+-----------------+
-   | Joint Photographic Experts Group (JPEG)             | jpeg \| jpg     |
+   | Joint Photographic Experts Group (JPEG)             | jpeg or jpg     |
    +-----------------------------------------------------+-----------------+
    | Portable Network Graphics (PNG)                     | png             |
    +-----------------------------------------------------+-----------------+
@@ -152,8 +154,7 @@ The properties file can additional properties:
    
 -  ``hardwareImageDecoders.list`` [optional, default value is ""
    (*empty*)]: Defines the available list of additional image decoders
-   provided by the hardware. Use comma (',') to specify several decoders
-   among this list: bmp, jpg, jpeg, gif, png. If empty or unspecified,
+   provided by the hardware (see :ref:`fp_ui_decoder`). Use comma (',') to specify several decoders among this list: bmp, jpg, jpeg, gif, png. If empty or unspecified,
    no image decoder is added.
 
 Use

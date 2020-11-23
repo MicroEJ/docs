@@ -255,15 +255,14 @@ The row stride allows to add some padding at the end of each line in order to st
 MicroEJ Format: RLE1
 ====================
 
-The Image Engine can display embedded images that are encoded into a compressed format which encodes several consecutive pixels into one or more 16-bits words. This encoding manages a maximum alpha level of 2 (alpha level is always assumed to be 2, even if the image is not
-transparent).
+The Image Engine can display embedded images that are encoded into a compressed format which encodes several consecutive pixels into one or more 16-bits words. This encoding manages a maximum alpha level of 2 (alpha level is always assumed to be 2, even if the image is not transparent).
 
 -  Several consecutive pixels have the same color (2 words).
 
    -  First 16-bit word specifies how many consecutive pixels have the
-      same color.
+      same color (pixels colors converted in RGB565 format, without opacity data).
 
-   -  Second 16-bit word is the pixels' color.
+   -  Second 16-bit word is the pixels' color in RGB565 format.
 
 -  Several consecutive pixels have their own color  (1 + n words).
 
@@ -275,10 +274,11 @@ transparent).
 -  Several consecutive pixels are transparent (1 word).
 
    -  16-bit word specifies how many consecutive pixels are transparent.
+   - Not designed for images with many different pixel colors: in such case, the output file size may be larger than the original image file.
 
 Advantages:
 
-* Supports 0 & 2 alpha encoding.
+* Supports fully opaque and fully transparent encoding.
 * Good compression when several consecutive pixels respect one of the three previous rules.
 
 Disadvantages:
@@ -305,8 +305,8 @@ Disadvantages:
 
 .. _section_image_asis:
 
-No Compression
-==============
+Without Compression
+===================
 
 An image can be embedded without any conversion / compression. This allows to embed the resource as well, in order to keep the source image characteristics (compression, bpp etc.). This option produces the same result as specifying an image as a resource in the MicroEJ launcher.
 

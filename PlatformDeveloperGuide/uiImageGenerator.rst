@@ -209,7 +209,7 @@ Each line can add optional parameters (separated by a ':') which define and/or d
 
       image1:RLE1
 
-* No Compression: to keep original file, do not specify any format:
+* Without Compression: to keep original file, do not specify any format:
 
    .. code-block::
       :caption: Unchanged Image Example

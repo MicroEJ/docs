@@ -6,8 +6,7 @@ Fonts
 Overview
 --------
 
-Fonts are graphical resources that can be accessed with a call to
-``ej.microui.display.Font.getFont()``. To be displayed, these fonts have
+Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_. To be displayed, these fonts have
 to be converted at build-time from their source format to the display
 raw format by the font generator tool. Fonts that must be processed by
 the font generator tool are declared in MicroEJ Classpath
@@ -73,7 +72,9 @@ Font Range
 
 The first parameter is for specifying the font ranges to embed.
 Selecting only a specific set of characters to embed reduces the memory
-footprint. Several ranges can be specified, separated by ``;``. There
+footprint. If unspecified, all characters of the font are embedded. 
+
+Several ranges can be specified, separated by ``;``. There
 are two ways to specify a character range: the custom range and the
 known range.
 
@@ -90,9 +91,6 @@ Examples:
 -  ``myfont:0x21-0x49,0x55``: Embed all characters from 0x21 to 0x49 and
    character 0x55;
 
--  ``myfont:0x21-0x49;0x55``: Same as previous, but done by declaring
-   two ranges.
-
 Known Range
 ~~~~~~~~~~~
 
@@ -108,7 +106,7 @@ Examples:
 :ref:`The following table <table_unicodeRanges>` describes the available list of ranges
 and sub-ranges (processed from the "Unicode Character Database" version
 9.0.0 available on the official unicode website
- ``https://www.unicode.org``).
+ `https://www.unicode.org <https://www.unicode.org>`_ ).
 
 .. _table_unicodeRanges:
 .. tabularcolumns:: |p{5.5cm}|p{7cm}|p{1cm}|p{1cm}|
@@ -468,8 +466,21 @@ and sub-ranges (processed from the "Unicode Character Database" version
    | Specials                 | specials                                       | 0xfff0 | 0xffff |
    +--------------------------+------------------------------------------------+--------+--------+
 
-Error Messages
---------------
+Transparency
+------------
+
+The second parameter is for specifying the font transparency level
+(``1``, ``2``, ``4`` or ``8``). If unspecified, the encoded transparency level is ``1`` (does not depend on transparency level encoded in EJF file).
+
+Examples:
+
+-  ``myfont:latin:4``: Embed all latin characters with 16 levels of
+   transparency
+
+-  ``myfont::2``: Embed all characters with 4 levels of transparency
+
+Font Generator Error Messages
+-----------------------------
 
 .. tabularcolumns:: |L|p{1.5cm}|L|
 
@@ -553,19 +564,6 @@ Error Messages
    |        |         | ITALIC font can be set. The current entry is        |
    |        |         | ignored.                                            |
    +--------+---------+-----------------------------------------------------+
-
-Transparency
-------------
-
-The second parameter is for specifying the font transparency level
-(``1``, ``2``, ``4`` or ``8``).
-
-Examples:
-
--  ``myfont:latin:4``: Embed all latin characters with 4 levels of
-   transparency
-
--  ``myfont::2``: Embed all characters with 2 levels of transparency
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
