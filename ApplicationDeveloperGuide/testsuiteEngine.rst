@@ -1,3 +1,5 @@
+.. _testsuite_engine:
+
 Testsuite Engine
 ================
 
