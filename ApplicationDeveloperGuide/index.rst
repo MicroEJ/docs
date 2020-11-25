@@ -7,7 +7,6 @@ Application Developer Guide
    :maxdepth: 2
 
    introduction
-   licenses
    workspace
    standaloneApplication
    sandboxedApplication

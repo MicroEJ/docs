@@ -6,6 +6,7 @@ Overview
 .. toctree::
 
    editions
+   licenses
    runtime
    libraries
    repository
