@@ -126,6 +126,34 @@ following conditions:
 
    Invalid License Key Error Message
 
+.. _gettingstarted-installlicenseseval-pca:
+
+Evaluation Licenses with Platform Configuration Additions
+---------------------------------------------------------
+
+This section should be considered when using evaluation platforms
+configured with the :ref:`Platform Configuration Additions (PCA)
+<platform_configuration_creation>`, which use software license keys.
+
+.. _gettingstarted-installlicenseseval-install-pca:
+
+Installing License Keys
+~~~~~~~~~~~~~~~~~~~~~~~
+
+License keys can be added to MicroEJ by copying the license file (a
+``.zip``) in the ``~/.microej/licenses/`` directory.  Create the
+directory if it doesn't exist.
+
+.. _gettingstarted-installlicenseseval-uid-pca:
+
+Generating Machine UID
+~~~~~~~~~~~~~~~~~~~~~~
+
+The UUID is displayed in the ``Console`` log during the build of a MicroEJ Platform or the build of a MicroEJ Firmware.
+
+.. code-block:: console
+
+   [INFO ] Launching in Evaluation mode. Your UID is XXXXXXXXXXXXXXXX.
 
 .. _production_license:
 
