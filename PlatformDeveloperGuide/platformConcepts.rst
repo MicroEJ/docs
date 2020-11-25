@@ -81,6 +81,8 @@ tab. A module may require a configuration step to be installed into the
 platform. The :guilabel:`Modules Detail` view indicates if a configuration file
 is required.
 
+.. _low_level_api:
+
 Low Level API Pattern
 ---------------------
 
