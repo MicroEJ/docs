@@ -420,18 +420,6 @@ engine in the custom properties file of a test.
    the time out for each test. If it is negative or not an integer, then
    global timeout defined for the MicroEJ Testsuite is used.
 
-
-Dependencies
-------------
-
-No dependency.
-
-
-Installation
-------------
-
-This tool is provided in the :ref:`Build Kit <mmm_build_kit>`.
-
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
