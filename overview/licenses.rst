@@ -135,6 +135,13 @@ Production Licenses
 This section should be considered when using Production Architectures,
 which use hardware license keys stored on an USB dongle.
 
+.. figure:: images/dongle/dongle.jpg
+   :alt: MicroEJ USB Dongle
+   :align: center
+   :scale: 30%
+
+   MicroEJ USB Dongle
+
 .. note :: 
 
    If your USB dongle has been provided to you by your sales representative and you don't have received an activation certificate by email, it may be a pre-activated dongle.
