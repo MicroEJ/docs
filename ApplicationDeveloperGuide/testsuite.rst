@@ -106,6 +106,40 @@ The test is now successfully executed on the target platform so the MicroEJ Add-
 Double-click on the JUnit testsuite report to see the test has been
 successfully executed.
 
+.. _testsuite_report:
+
+Testsuite Reports
+-----------------
+
+Once a testsuite is completed, a testsuite report is generated:
+
+- in HTML format in module project location ``target~/test/html/test/junit-noframes.html``.
+  At the beginning of the file a summary is displayed, then all
+  execution traces for each test executed are available.
+
+  .. figure:: images/testsuiteReportHTMLExample.png
+     :alt: Example of MicroEJ Testsuite HTML Report
+     
+     Example of MicroEJ Testsuite HTML Report
+
+- in JUnit XML format, in module project location ``target~/test/xml/TEST-test-report.xml``.
+
+  .. figure:: images/testsuiteReportXMLExample.png
+     :alt: Example of MicroEJ Testsuite XML Report
+     
+     Example of MicroEJ Testsuite XML Report
+  
+  XML report file can also be open in the JUnit View. Right-click on the file > :guilabel:`Open With` >  :guilabel:`JUnit View`:
+
+  .. figure:: images/testsuiteReportXMLExampleJunitView.png
+     :alt: Example of MicroEJ Testsuite XML Report in JUnit View
+     
+     Example of MicroEJ Testsuite XML Report in JUnit View
+
+If executed on device, the Firmware binary produced for each test
+is available in module project location ``target~/test/xml/<TIMESTAMP>/bin/<FULLY-QUALIFIED-CLASSNAME>/application.out``.
+
+
 Advanced Configurations
 -----------------------
 
@@ -211,38 +245,7 @@ test case file.
 Consult the Application Launch Options Appendix of the Device
 Developer's Guide to get the list of available options properties.
 
-.. _testsuite_report:
 
-Testsuite Report
-~~~~~~~~~~~~~~~
-
-Once a testsuite is completed, a testsuite report is generated:
-
-- in HTML format in module project location ``target~/test/html/test/junit-noframes.html``.
-  At the beginning of the file a summary is displayed, then all
-  execution traces for each test executed are available.
-
-  .. figure:: images/testsuiteReportHTMLExample.png
-     :alt: Example of MicroEJ Testsuite HTML Report
-     
-     Example of MicroEJ Testsuite HTML Report
-
-- in JUnit XML format, in module project location ``target~/test/xml/TEST-test-report.xml``.
-
-  .. figure:: images/testsuiteReportXMLExample.png
-     :alt: Example of MicroEJ Testsuite XML Report
-     
-     Example of MicroEJ Testsuite XML Report
-  
-  XML report file can also be open in the JUnit View. Right-click on the file > :guilabel:`Open With` >  :guilabel:`JUnit View`:
-
-  .. figure:: images/testsuiteReportXMLExampleJunitView.png
-     :alt: Example of MicroEJ Testsuite XML Report in JUnit View
-     
-     Example of MicroEJ Testsuite XML Report in JUnit View
-
-If executed on device, the Firmware binary produced for each test
-is available in module project location ``target~/test/xml/<TIMESTAMP>/bin/<FULLY-QUALIFIED-CLASSNAME>/application.out``.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
