@@ -16,7 +16,7 @@ Such validation is performed by running tests at two-levels:
 - In Java, by calling Foundation Library APIs (usually automatically using :ref:`platform_testsuite`).
 
 MicroEJ provides a set of tools and pre-defined projects aimed at simplifying the steps 
-for validating Foundation Libraries. Please refer to https://github.com/MicroEJ/PlatformQualificationTools.
+for validating Platforms. Please refer to https://github.com/MicroEJ/PlatformQualificationTools.
 
 .. _platform_testsuite:
 
