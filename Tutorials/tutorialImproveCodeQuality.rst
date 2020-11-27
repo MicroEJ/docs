@@ -319,7 +319,7 @@ This section points to tools aimed at helping to improve code quality.
 Unit Testing
 ^^^^^^^^^^^^
 
-Here is a list of rules when writing tests (see :ref:`testsuite`):
+Here is a list of rules when writing tests (see :ref:`application_testsuite`):
 
 - Prefer black-box tests (with a maximum coverage).
 - Here is the test packages naming convention:
