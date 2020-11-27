@@ -7,39 +7,30 @@ This document explains how to add logging and tracing to MicroEJ applications an
 Intended Audience
 -----------------
 
-This document's intended audience is engineers who are in charge of adding logs and traces to MicroEJ applications and libraries.
+The audience for this document is application developers who are looking for ways to add logging to their MicroEJ applications and libraries.
 
-It should also be of interest to all developers looking for best practices when coming to log messages while keeping a low ROM footprint and good overall performances.
+It should also be of interest to Firmware engineers how are looking for adjusting the log level while keeping low memory footprint and good performances.
 
 
 Introduction
 ------------
 
-One straightforward way to add traces in an application is to use the Java basic print methods: ``System.out.println(...)``. 
-However, this is not desirable when writing production-quality code, where one typically wants to adjust the log level and provide useful well-formed data and metadata.
+One straightforward way to add logs in Java code is to use the Java basic print methods: ``System.out.println(...)``. 
+However, this is not desirable when writing production-grade code, where it should be possible to adjust the log level:
 
-Having logs and traces in an application, though, means more code is embedded and executed.
-This can impact the overall performances of the application by using more CPU usage at runtime. It also increases the ROM footprint of the application.
-
-
-Prerequisites
--------------
-
-*  `MicroEJ SDK <https://developer.microej.com/get-started/>`_ ``4.1.5`` or higher.
-*  Java Development Kit (JDK) ``1.8.x``.
-
+- without having to change the original source code,
+- at build-time or at runtime, as application logging will affect memory footprint and performances
 
 Overview
 --------
 
-In the MicroEJ environment, there are three ways for logging in an application: 
+In this tutorial, we will describe 3 ways for logging data: 
    
-- Trace API
-- Logging library
-- Messages library
+- Using `Trace <https://repository.microej.com/artifacts/ej/api/trace>`_ library, a real-time event recording library designed for performance and interaction analysis.
+- Using `Message <https://repository.microej.com/artifacts/ej/library/runtime/message/>`_ library: a lightweight and simple logging library.
+- Using `Logging <https://repository.microej.com/artifacts/ej/library/eclasspath/logging/>`_ library: a complete and highly configurable standard logging library. 
 
-
-This tutorial refactors the following code snippet to illustrate how to log traces with three different libraries:
+Through this tutorial, we will illustrate the usage of each library by instrumenting the following code snippet:
 
 .. code-block:: java
 
@@ -63,21 +54,19 @@ This tutorial refactors the following code snippet to illustrate how to log trac
          }
       }
 
-The last section describes how to reduce the footprint when the logs are disabled.
+Finally, the last section describes some techniques to remove logging related code in order to reduce the memory footprint.
 
+Log with the Trace Library
+--------------------------
 
+The library `ej.api.trace <https://repository.microej.com/artifacts/ej/api/trace>`_ provides a way of tracing integer events.
+Its features and principles are described in the :ref:`event-tracing` section.
 
-Trace API (ej.api.trace)
-------------------------
-
-The Trace API provides a way of tracing user-defined events.
-Its features and principles are described in the :ref:`Event Tracing <event-tracing>` section of the :ref:`Application Developer Guide <application-developer-guide>`.
-
-Here is a short example of how to use this API to log the entry/exit of the method ``switchState()``:
+Here is a short example of how to use this library to log the entry/exit of the ``switchState()`` method:
 
 #. Add the following dependency to the ``module.ivy``: ``<dependency org="ej.api" name="trace" rev="1.1.0"/>``
 
-#. Start by initializing a ``Tracer`` object:
+#. Start by initializing a `Tracer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html>`_ object:
 
       .. code-block:: java
 
@@ -88,6 +77,7 @@ Here is a short example of how to use this API to log the entry/exit of the meth
 #. Next, activate the trace system:
 
       .. code-block:: java
+         :emphasize-lines: 2
 
          public static void main(String[] args) {
             Tracer.startTrace();
@@ -99,6 +89,7 @@ Here is a short example of how to use this API to log the entry/exit of the meth
 #. Use the methods ``Tracer.recordEvent(...)`` and ``Tracer.recordEventEnd(...)`` to record the entry/exit events in the method:
 
       .. code-block:: java
+         :emphasize-lines: 4,9
 
          private static final int EVENT_ID = 0;
 
@@ -111,7 +102,7 @@ Here is a short example of how to use this API to log the entry/exit of the meth
             tracer.recordEventEnd(EVENT_ID);
          }
    
-   The ``Tracer`` object records the entry/exit of method ``switchState`` with event ID ``0``.
+   The `Tracer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html>`_ object records the entry/exit of method ``switchState`` with event ID ``0``.
    
 This produces the following output:
 
@@ -120,36 +111,85 @@ This produces the following output:
          [TRACE: Application] Event 0x0()
          [TRACE: Application] Event End 0x0()
 
-
-
-
-
 .. note::
 
-   The default platform implementation of the Trace API prints the events in the console. MicroEJ provides another implementation that redirects the events to `SystemView <https://www.segger.com/products/development-tools/systemview/>`_, the real-time recording and visualization tool from `Segger <https://www.segger.com/>`_. It allows for a finer understanding of the runtime behavior by showing events sequence and duration. A platform reference implementation for the `NXP OM13098 development board <https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc54000-cortex-m4-/lpcxpresso54628-development-board:OM13098>`_ with SystemView support is available `here <https://developer.microej.com/packages/referenceimplementations/U3OER/2.0.1/OM13098-U3OER-fullPackaging-eval-2.0.1.zip>`_. Please contact MicroEJ Support for more information about how to integrate this Platform module.
+   The default Platform implementation of the ``Trace`` library prints the events to the console.
+   See :ref:`trace_implementations` for other available implementations such as `SEGGER SystemView <https://www.segger.com/products/development-tools/systemview/>`_ tool.
+   
+Log with the Message Library
+----------------------------
 
 
-Logging library (ej.library.eclasspath.logging)
------------------------------------------------
+The library `ej.library.runtime.message <https://repository.microej.com/artifacts/ej/library/runtime/message/>`_ was designed to enable logging while minimizing RAM/ROM footprint and CPU usage.
+For that, logs are based on message identifiers, which are stored on integers instead of using of constant Strings.
+An external documentation must be maintained to describe each message identifier and its expected arguments.
+Combined with the category, the printed message identifier value allows the user to find the corresponding error/warning/info description.
 
-The library ``ej.library.eclasspath.logging`` implements standard Java ``java.util.logging`` package and follows the same principles:
+Principles:
 
--  There is one instance of ``LogManager`` by application that manages the hierarchy of loggers.
--  Find or create ``Logger`` objects using the method ``Logger.getLogger(String ID)``. If a logger has already been created with the same name, this logger is returned, otherwise a new logger is created. 
--  Each ``Logger`` created with this method is registered in the ``LogManager`` and can be retrieved using its String ``ID``.
--  A minimum level can be set to a ``Logger`` so that only messages that have at least this level are logged. The standard levels are listed in the class ``java.util.logging.Level``.
+- The `MessageLogger <https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/MessageLogger.html>`_ type allows for logging messages solely based on integers that identify the message content.
+- Log a message by using methods ``MessageLogger.log(...)`` methods, by specifying the log level, the message category, and the message identifier.
+  Use optional arguments to add any useful information to the log, such as a `Throwable <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html>`_ or contextual data.
+- Log levels are very similar to those of the ``Logging`` library. The class `ej.util.message.Level <https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/Level.html>`_ lists the available levels.
+- Loggers rely on the `MessageBuilder <https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/MessageBuilder.html>`_ type for message creation. 
+  The messages built by the `BasicMessageBuilder <https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/basic/BasicMessageBuilder.html>`_ follow this pattern: ``[category]:[LEVEL]=[id]``. 
+  The builder appends the specified `Object <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html>`_ arguments (if any) separated by spaces, then the full stack trace of the `Throwable <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html>`_ argument (if any).
+
+Here is a short example of how to use this library to log the entry/exit of the ``switchState()`` method:
+
+#. To use this library, add this dependency line in the ``module.ivy``: ``<dependency org="ej.library.runtime" name="message" rev="2.1.0"/>``
+
+#. Call the message API to log some info:
+   
+   .. code-block:: java 
+      :emphasize-lines: 9
+
+      private static final String LOG_CATEGORY = "Application";
+
+      private static final int LOG_ID = 2;
+
+      public static void switchState(ApplicationState newState) {
+         previousState = currentState;
+         currentState = newState;
+
+         BasicMessageLogger.INSTANCE.log(Level.INFO, LOG_CATEGORY, LOG_ID, previousState, currentState);
+      }     
+
+This produces the following output:
+
+   .. code-block:: java
+      
+      Application:I=2 UNINSTALLED INSTALLED
+
+
+Log with the Logging Library
+----------------------------
+
+The library `ej.library.eclasspath.logging <https://repository.microej.com/artifacts/ej/library/eclasspath/logging/>`_ implements a subset of the standard Java `java.util.logging <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/package-summary.html>`_ package and follows the same principles:
+
+-  There is one instance of `LogManager <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogManager.html>`_ by application that manages the hierarchy of loggers.
+-  Find or create `Logger <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html>`_ objects using the method `Logger.getLogger(String) <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html#getLogger-java.lang.String->`_.
+   If a logger has already been created with the same name, this logger is returned, otherwise a new logger is created. 
+-  Each `Logger <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html>`_ created with this method is registered in the ``LogManager`` and can be retrieved using its String ``ID``.
+-  A minimum level can be set to a `Logger <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html>`_ so that only messages that have at least this level are logged. The class `java.util.logging.Level <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Level.html>`_ lists the available standard levels.
 -  The ``Logger`` API provides multiple methods for logging:
-    -  ``log(...)`` methods that send a ``LogRecord`` to the registered ``Handler`` instances. The ``LogRecord`` object wraps the String message and the log level. 
+    
+    -  ``log(...)`` methods that send a `LogRecord <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogRecord.html>`_ to the registered `Handler <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Handler.html>`_ instances. 
+       The `LogRecord <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogRecord.html>`_ object wraps the String message and the log level. 
     -  Log level-specific methods, like ``severe(String msg)``, that call the aforementioned ``log(...)`` method with the correct level.
--  The library defines a default implementation of type ``Handler``, called ``DefaultHandler``, that prints the message of the ``LogRecord`` on the standard error output stream. It also prints the stack trace of the ``Throwable`` associated with the ``LogRecord`` if there is one.
 
-Let's see how to use it on our short snippet:
+-  The library defines a default `Handler <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Handler.html>`_ implementation, called `DefaultHandler <https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/logging/handler/DefaultHandler.html>`_,
+   that prints the message of the `LogRecord <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogRecord.html>`_ on the standard error output stream.
+   It also prints the stack trace of the `Throwable <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html>`_ associated with the `LogRecord <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogRecord.html>`_ if there is one.
+
+Here is a short example of how to use this library to log the entry/exit of the ``switchState()`` method:
 
 #. Add the following dependency to the ``module.ivy``: ``<dependency org="ej.library.eclasspath" name="logging" rev="1.1.0"/>``
 
 #. Call the logging API to log some info text:
 
    .. code-block:: java
+      :emphasize-lines: 5,6,7
      
       public static void switchState(ApplicationState newState) {
          previousState = currentState;
@@ -170,65 +210,25 @@ This produces the following output:
 
 .. note::
 
-   Unlike the two other libraries discussed here, the library ``ej.library.eclasspath.logging`` is entirely based on Strings (log IDs and messages). Note that String operations can lead to performance issues and that String objects use significant ROM space. When possible, favor a logging solution that uses primitive types over Strings.
+   Unlike the two other libraries discussed here, the ``Logging`` library is entirely based on Strings (log IDs and messages). 
+   Note that String operations can lead to performance issues and that String objects use significant ROM space. 
+   When possible, prefer using a logging solution that uses primitive types over Strings.
 
 
-Message library (ej.library.runtime.message)
---------------------------------------------
+Remove Logging Related Code
+---------------------------
 
-The library ``ej.library.runtime.message`` was designed to enable logging while minimizing RAM/ROM footprint and CPU usage. For doing so, it favors the use of integer over strings.
+This section describes some techniques to remove logging related code, which saves memory footprint when logging is disabled at runtime.
+This is typically useful when building two Firmware flavors: one for production and one for debug.
 
-Principles:
+Wrap with a Constant If Statement
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- The ``MessageLogger`` type allows for logging messages solely based on integers that identify the message content.
-- Log a message by using methods ``MessageLogger.log(...)`` specifying the log level, the message category, and the message integer identifier.
-  Use optional arguments to add any useful information to the log, such as a ``Throwable`` or contextual data.
-- Log levels are very similar to those of the Logging library. The class ``ej.util.message.Level`` lists the standard levels.
-- Combined with the category, the integer ID allows the user to find the corresponding error/warning/info description.
-- Loggers rely on the ``MessageBuilder`` type for message creation. 
-  The messages constructed by the ``BasicMessageBuilder`` follow this pattern: ``[category]:[LEVEL]=[id]``. The builder appends the specified ``Object`` arguments (if any) separated by spaces, then the full stack trace of a ``Throwable`` (if any).
-- As the ID of the message is an integer, making the output not very human-readable, it is wise to maintain documentation that describes all IDs.
-
-Usage example:
-
-#. To use this library, add this dependency line in the ``module.ivy``: ``<dependency org="ej.library.runtime" name="message" rev="2.1.0"/>``
-
-#. Call the message API to log some info:
-   
-   .. code-block:: java 
-
-      private static final String LOG_CATEGORY = "Application";
-
-      private static final int LOG_ID = 2;
-
-      public static void switchState(ApplicationState newState) {
-         previousState = currentState;
-         currentState = newState;
-
-         BasicMessageLogger.INSTANCE.log(Level.INFO, LOG_CATEGORY, LOG_ID, previousState, currentState);
-      }     
-
-This produces the following output:
-
-   .. code-block:: java
-      
-      Application:I=2 UNINSTALLED INSTALLED
-
-
-Remove traces for the production binary
----------------------------------------
-
-There are multiple options for removing all logs and traces when building the production binary.
-
-Wrap logging statements with a check against a static variable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-
-A boolean constant declared in an ``if`` statement can be used to fully remove portions of code: when this boolean constant is evaluated as ``false``, the wrapped code becomes unreachable and, thus, is not embedded.
-
+A boolean :ref:`constant <section.classpath.elements.constants>` declared in an ``if`` statement can be used to fully remove portions of code. 
+When this boolean constant is detected to be ``false``, the wrapped code becomes unreachable and is not embedded.
 
 .. note::
-    More information about the usage of constants and ``if`` code removal can be found in the :ref:`Classpath <if_constant_removal>` section of the :ref:`Application Developer Guide <application-developer-guide>`.
-
+    More information about the usage of constants and ``if`` code removal can be found in the :ref:`Classpath <if_constant_removal>` section.
 
 
 #. Let's consider a constant ``com.mycompany.logging`` declared as ``false`` in a resource file named ``example.constants.list``.
@@ -237,7 +237,7 @@ A boolean constant declared in an ``if`` statement can be used to fully remove p
         :align: center
 
 
-#. Add an ``if`` code removal statement to remove a logging, as follows:
+#. Wrap the log code by an ``if`` statement, as follows:
    
    .. code-block:: java 
 
@@ -282,20 +282,13 @@ Follow the same principle as before:
 
       
 
-Use ProGuard
-~~~~~~~~~~~~
+Shrink Code Using ProGuard
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`ProGuard <https://www.guardsquare.com/en/products/proguard>`_ is a command-line tool that shrinks, optimizes, and obfuscates Java code.
+`ProGuard <https://www.guardsquare.com/en/products/proguard>`_ is a tool that shrinks, optimizes, and obfuscates Java code.
 
 It optimizes bytecode as well as it detects and removes unused instructions. Therefore it can be used to remove log messages in a production binary.
    
-`MicroEJ Github <https://github.com/MicroEJ/>`_ provides a dedicated How-To showing how to `get started with ProGuard <https://github.com/MicroEJ/How-To/tree/1.8.3/Proguard-Get-Started>`_ and remove elements of code from the Logging library (ej.library.eclasspath.logging).
+A dedicated How-To is available at https://github.com/MicroEJ/How-To/tree/master/Proguard-Get-Started.
+It describes how to configure ProGuard to remove elements of code from the `Logging <https://repository.microej.com/artifacts/ej/library/eclasspath/logging/>`_ library.
 
-
-
-Congratulations!
-
-At this point in the tutorial:
-
-* You can add logging to your MicroEJ applications while meeting the constraints of embedded applications.
-* You can fully turn off logging in your production builds.
