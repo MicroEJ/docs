@@ -10,7 +10,7 @@ Tutorials
    tutorialCreateCustomPlatform
    tutorialCreateFirmwareFromScratch
    tutorialSetupBuildUsingJenkinsAndArtifactory
-   tutorialTracesInApplication
+   tutorialInstrumentJavaCodeForLogging
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
