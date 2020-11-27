@@ -235,16 +235,12 @@ within the ``<ea:build>`` XML element.
 Test Specific Options
 ~~~~~~~~~~~~~~~~~~~~~
 
-The :ref:`testsuite_engine` allows to define MicroEJ Launch options
+The :ref:`testsuite_engine` allows to define :ref:`application_options`
 specific to each test case. This can be done by defining a file with the
 same name as the generated test case file with the ``.properties``
 extension instead of the ``.java`` extension. The file must be put in
 the ``src/test/resources`` folder and within the same package than the
 test case file.
-
-Consult the Application Launch Options Appendix of the Device
-Developer's Guide to get the list of available options properties.
-
 
 
 ..
