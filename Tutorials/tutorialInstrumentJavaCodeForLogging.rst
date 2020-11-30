@@ -27,7 +27,7 @@ Overview
 
 In this tutorial, we will describe 3 ways for logging data: 
    
-- Using `Trace <https://repository.microej.com/artifacts/ej/api/trace>`_ library, a real-time event recording library designed for performance and interaction analysis.
+- Using `Trace <https://repository.microej.com/artifacts/ej/api/trace>`_ library: a real-time event recording library designed for performance and interaction analysis.
 - Using `Message <https://repository.microej.com/artifacts/ej/library/runtime/message/>`_ library: a lightweight and simple logging library.
 - Using `Logging <https://repository.microej.com/artifacts/ej/library/eclasspath/logging/>`_ library: a complete and highly configurable standard logging library. 
 
