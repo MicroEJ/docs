@@ -33,6 +33,7 @@ connection on a hardware device.
 .. figure:: images/ecom-core_process.*
    :alt: ECOM Flow
    :align: center
+   :scale: 80%
 
    ECOM Flow
 
@@ -93,8 +94,15 @@ the library.
 Use
 ===
 
-A classpath variable named ``ECOM-1.1`` is available. This foundation
-library is always required when developing a MicroEJ Application which
+The `ECOM API Module <https://repository.microej.com/artifacts/ej/api/ecom/>`_ 
+must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to allow access to the ECOM library.
+
+::
+
+   <dependency org="ej.api" name="ecom" rev="1.1.4"/>
+
+This foundation library is always required when developing a MicroEJ Application which
 communicates with some external devices. It is automatically embedded as
 soon as a sub communication library is added in the classpath.
 

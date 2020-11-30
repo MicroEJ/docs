@@ -31,6 +31,7 @@ components required for both host computer and target hardware:
 .. figure:: images/2_download.png
    :alt: MicroEJ Studio Development Imported Elements
    :align: center
+   :scale: 50%
 
    MicroEJ Studio Development Imported Elements
 

@@ -19,6 +19,7 @@ instance of a MicroEJ runtime linked to:
 .. figure:: images/firmware.png
    :alt: MicroEJ Firmware Architecture
    :align: center
+   :scale: 70%
 
    MicroEJ Firmware Architecture
 

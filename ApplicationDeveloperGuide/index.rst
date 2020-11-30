@@ -7,7 +7,6 @@ Application Developer Guide
    :maxdepth: 2
 
    introduction
-   licenses
    workspace
    standaloneApplication
    sandboxedApplication
@@ -15,6 +14,7 @@ Application Developer Guide
    mmm
    moduleNatures
    classpath
+   applicationResources
    tools
    advanced
 

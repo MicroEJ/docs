@@ -19,6 +19,7 @@ are performed within the C IDE.
 .. figure:: images/mjvm_flow2.*
    :alt: MicroEJ Core Engine Flow
    :align: center
+   :scale: 80%
 
    MicroEJ Core Engine Flow
 
@@ -50,6 +51,7 @@ task" refers to the tasks scheduled by the underlying OS; and the term
 .. figure:: images/mjvm_gt.*
    :alt: A Green Threads Architecture Example
    :align: center
+   :scale: 75%
 
    A Green Threads Architecture Example
 
@@ -217,6 +219,8 @@ from a dedicated RTOS task.
        }
    }
 
+.. _vm_dump:
+
 Debugging
 ---------
 
@@ -286,6 +290,8 @@ The ``System.err`` stream is connected to the ``System.out`` print
 stream. See below for how to configure the destination of these streams.
 
 
+.. _core_engine_link:
+
 Link
 ====
 
@@ -326,6 +332,8 @@ must be linked by the third-party linker.
    |                             | code                        |             |            |
    +-----------------------------+-----------------------------+-------------+------------+
 
+.. note::
+	Sections ``ICETEA_HEAP``, ``_java_heap`` and ``_java_immortals`` are zero-initialized at MicroEJ Core Engine startup. 
 
 Dependencies
 ============
@@ -347,17 +355,23 @@ application" mode is installed.
 Use
 ===
 
-A MicroEJ classpath variable named ``EDC-1.2`` is available, according
-to the selected foundation core library. This MicroEJ classpath variable
-is always required in the build path of a MicroEJ project; and all
-others libraries depend on it. This library provides a set of options.
-Refer to the chapter :ref:`application_options` which lists all
-available options.
+The `EDC API Module <https://repository.microej.com/artifacts/ej/api/edc/>`_ must 
+be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ Application 
+Project. This MicroEJ module is always required in the build path of a MicroEJ project; 
+and all others libraries depend on it. This library provides a set of options.
+Refer to the chapter :ref:`application_options` which lists all available options.
 
-Another classpath variable named ``BON-1.2`` is available. This variable
-must be added to the build path of the MicroEJ Application project in
-order to access the :ref:`[BON] library <esr-specifications>`.
+::
 
+   <dependency org="ej.api" name="edc" rev="1.3.3"/>
+
+The `BON API Module <https://repository.microej.com/artifacts/ej/api/bon/>`_
+must also be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to access the :ref:`[BON] library <esr-specifications>`.
+
+::
+
+   <dependency org="ej.api" name="bon" rev="1.4.0"/>
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

@@ -26,6 +26,7 @@ application developer as module dependencies (see :ref:`mmm`).
 .. figure:: images/ClassPath_2.png
    :alt: MicroEJ Foundation Libraries and Add-On Libraries
    :align: center
+   :scale: 67%
 
    MicroEJ Foundation Libraries and Add-On Libraries
 

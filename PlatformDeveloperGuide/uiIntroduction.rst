@@ -8,7 +8,7 @@ components involved in its design, along with the provided tools:
 
 .. figure:: images/ui_overview2.*
    :alt: The User Interface Extension Components along with a Platform
-   :width: 70.0%
+   :width: 600px
    :align: center
 
    The User Interface Extension Components along with a Platform
@@ -18,7 +18,7 @@ the provisioning of a Java user interface.
 
 .. figure:: images/java-c-ui-interface2.*
    :alt: Overview
-   :width: 70.0%
+   :scale: 12%
    :align: center
 
    Overview

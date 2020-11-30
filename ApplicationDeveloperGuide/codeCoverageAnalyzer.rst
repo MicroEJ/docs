@@ -22,6 +22,7 @@ files.
 .. figure:: images/cca_process.*
    :alt: Code Coverage Analyzer Process
    :align: center
+   :scale: 80%
 
    Code Coverage Analyzer Process
 

@@ -40,7 +40,7 @@ project appearance order (top to bottom).
 .. figure:: images/ClassPath_4.png
    :alt: MicroEJ Application Classpath Mapping
    :align: center
-   :width: 80.0%
+   :scale: 70%
 
    MicroEJ Application Classpath Mapping
 
@@ -63,6 +63,7 @@ MicroEJ Classpath elements are loaded transitively.
 .. figure:: images/ClassPath_1.png
    :alt: Classpath Load Principle
    :align: center
+   :scale: 65%
 
    Classpath Load Principle
 
@@ -81,7 +82,7 @@ The MicroEJ Classpath contains the following elements:
 
 -  Immutables Object data files, described in Section :ref:`section.classpath.elements.immutables`;
 
--  Images and Fonts resources;
+-  Images, Fonts and Native Language Support (NLS) resources, described in :ref:`chapter.microej.applicationResources`;
 
 -  ``*.[extension].list`` files, declaring contents to load. Supported
    list file extensions and format is specific to declared application
@@ -155,6 +156,9 @@ resource. Example:
 
    # The following resource is embedded as a raw resource
    com/mycompany/MyResource.txt
+
+Others resources types are supported in MicroEJ Classpath, 
+see :ref:`chapter.microej.applicationResources` for more details.
 
 .. _section.classpath.elements.immutables:
 
@@ -281,146 +285,6 @@ without having to recompile the sources.
 .. note::
    In :ref:`Multi-Sandbox <multisandbox>` environment, constants are processed locally within each context.
    In particular, constants defined in the Kernel are not propagated to :ref:`Sandboxed Applications <sandboxed_application>`.
-
-
-.. _section.classpath.Images:
-
-Images
-------
-
-Overview
-~~~~~~~~
-
-Images are graphical resources that can be accessed with a call to
-``ej.microui.display.Image.createImage()``. To be displayed, these
-images have to be converted from their source format to the display raw
-format. The conversion can either be done at :
-
--  build-time (using the image generator tool),
-
--  run-time (using the relevant decoder library).
-
-Images that must be processed by the image generator tool are declared
-in MicroEJ Classpath ``*.images.list`` files. The file format is a
-standard Java properties file, each line representing a ``/`` separated
-resource path relative to the MicroEJ classpath root referring to a
-standard image file (e.g. ``.png``, ``.jpg``). The resource may be
-followed by an optional parameter (separated by a ``:``) which defines
-and/or describes the image output file format (raw format). When no
-option is specified, the image is embedded as-is and will be decoded at
-run-time (although listing files without format specifier has no impact
-on the image generator processing, it is advised to specify them in the
-``*.images.list`` files anyway, as it makes the run-time processing
-behavior explicit). Example:
-
-::
-
-   # The following image is embedded 
-   # as a PNG resource (decoded at run-time)
-   com/mycompany/MyImage1.png
-
-   # The following image is embedded 
-   # as a 16 bits format without transparency (decoded at build-time)
-   com/mycompany/MyImage2.png:RGB565
-
-   # The following image is embedded 
-   # as a 16 bits format with transparency (decoded at build-time)
-   com/mycompany/MyImage3.png:ARGB1555
-
-.. include:: ../ApplicationDeveloperGuide/sectionImageFormats.rst
-
-.. _section.classpath.Fonts:
-
-Fonts
------
-
-Overview
-~~~~~~~~
-
-Fonts are graphical resources that can be accessed with a call to
-``ej.microui.display.Font.getFont()``. To be displayed, these fonts have
-to be converted at build-time from their source format to the display
-raw format by the font generator tool. Fonts that must be processed by
-the font generator tool are declared in MicroEJ Classpath
-``*.fonts.list`` files. The file format is a standard Java properties
-file, each line representing a ``/`` separated resource path relative to
-the MicroEJ classpath root referring to a MicroEJ font file (usually
-with a ``.ejf`` file extension). The resource may be followed by
-optional parameters which define :
-
--  some ranges of characters to embed in the final raw file;
-
--  the required pixel depth for transparency.
-
-By default, all characters available in the input font file are
-embedded, and the pixel depth is ``1`` (i.e 1 bit-per-pixel). Example:
-
-::
-
-   # The following font is embedded with all characters
-   # without transparency
-   com/mycompany/MyFont1.ejf
-
-   # The following font is embedded with only the latin 
-   # unicode range without transparency 
-   com/mycompany/MyFont2.ejf:latin
-
-   # The following font is embedded with all characters
-   # with 2 levels of transparency
-   com/mycompany/MyFont2.ejf::2
-
-MicroEJ font files conventionally end with the ``.ejf`` suffix and are
-created using the Font Designer (see :ref:`section.tool.fontdesigner`).
-
-Font Range
-~~~~~~~~~~
-
-The first parameter is for specifying the font ranges to embed.
-Selecting only a specific set of characters to embed reduces the memory
-footprint. Several ranges can be specified, separated by ``;``. There
-are two ways to specify a character range: the custom range and the
-known range.
-
-Custom Range
-^^^^^^^^^^^^
-
-Allows the selection of raw Unicode character ranges.
-
-Examples:
-
--  ``myfont:0x21-0x49``: Embed all characters from 0x21 to 0x49
-   (included);
-
--  ``myfont:0x21-0x49,0x55``: Embed all characters from 0x21 to 0x49 and
-   character 0x55;
-
--  ``myfont:0x21-0x49;0x55``: Same as previous, but done by declaring
-   two ranges.
-
-Known Range
-^^^^^^^^^^^
-
-A known range is a range defined by the "Unicode Character Database"
-version 9.0.0 available on `<https://home.unicode.org/>`_. Each range is
-composed of sub ranges that have a unique id.
-
--  ``myfont:basic_latin``: Embed all *Basic Latin* characters;
-
--  ``myfont:basic_latin;arabic``: Embed all *Basic Latin* characters,
-   and all *Arabic* characters.
-
-Transparency
-~~~~~~~~~~~~
-
-The second parameter is for specifying the font transparency level
-(``1``, ``2``, ``4`` or ``8``).
-
-Examples:
-
--  ``myfont:latin:4``: Embed all latin characters with 4 levels of
-   transparency
-
--  ``myfont::2``: Embed all characters with 2 levels of transparency
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

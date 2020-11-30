@@ -17,16 +17,18 @@ The following table describes the :ref:`project skeleton <mmm_module_skeleton>` 
    * - Add-On Library
      - `microej-javalib`
      - :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Add-On Library Project`
+   * - :ref:`Mock <mock_module>`
+     - `microej-mock`
+     - 
    * - :ref:`Module Repository <module_repository>`
      - `artifact-repository`
      - 
-   * - :ref:`Standalone Application <standalone_application>`
-     - `firmware-singleapp`
-     - :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Standalone Application Project`
    * - :ref:`Sandboxed Application <sandboxed_application>`
      - `application`
      - :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Sandboxed Application Project`
-
+   * - :ref:`Standalone Application <standalone_application>`
+     - `firmware-singleapp`
+     - :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Standalone Application Project`
 
 .. toctree::
    :maxdepth: 2

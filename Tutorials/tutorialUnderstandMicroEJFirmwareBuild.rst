@@ -46,7 +46,7 @@ The MicroEJ Architecture is either provided from:
 * For PROD license only: SDK license site https://license.microej.com/
   (:guilabel:`MyProduct` > :guilabel:`Download additional products`
   will list the downloads available).  See
-  :ref:`gettingstarted-installlicensesprod` for help with PROD
+  :ref:`production_license` for help with PROD
   license.
 
 * MicroEJ sales or customer care team if the requested architecture is not listed as available.

@@ -14,13 +14,13 @@ This glossary defines the technical terms upon which the `MicroEJ Virtual Execut
       A MicroEJ Application is a software program that runs on a Powered by MicroEJ device.
 
          Standalone Application
-            MicroEJ Standalone Application is a MicroEJ Application that is directly linked to the C code to produce a MicroEJ Firmware. It is edited using MicroEJ SDK.
+            MicroEJ Standalone Application is a MicroEJ Application that is directly linked to the C code to produce a MicroEJ Mono-Sandbox Firmware. It is edited using MicroEJ SDK.
 
          Sandboxed Application
             A MicroEJ Sandboxed Application is a MicroEJ Application that can run over a MicroEJ Multi-Sandbox Firmware. It can be linked either statically or dynamically.
 
          System Application
-            A MicroEJ System Application is a MicroEJ Sandboxed Application that is statically linked to the MicroEJ Firmware, as it is part of the initial image and cannot be removed.
+            A MicroEJ System Application is a MicroEJ Sandboxed Application that is statically linked to a MicroEJ Multi-Sandbox Firmware, as it is part of the initial image and cannot be removed.
 
          Kernel Application
             A MicroEJ Kernel Application is a MicroEJ Standalone Application that implements the ability to be extended to produce a MicroEJ Multi-Sandbox Firmware.

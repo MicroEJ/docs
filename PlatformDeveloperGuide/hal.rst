@@ -152,7 +152,13 @@ HAL is an additional module. In the platform configuration file, check
 Use
 ===
 
-A classpath variable named ``HAL-1.0`` is available.
+The `HAL API Module <https://repository.microej.com/artifacts/ej/api/hal/>`_
+must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to allow access to the ECOM library.
+
+::
+
+   <dependency org="ej.api" name="hal" rev="1.0.4"/>
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
