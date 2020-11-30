@@ -127,8 +127,8 @@ Log with the Message Library
 
 The library `ej.library.runtime.message <https://repository.microej.com/artifacts/ej/library/runtime/message/>`_ was designed to enable logging while minimizing RAM/ROM footprint and CPU usage.
 For that, logs are based on message identifiers, which are stored on integers instead of using of constant Strings.
-An external documentation must be maintained to describe each message identifier and its expected arguments.
-Combined with the category, the printed message identifier value allows the user to find the corresponding error/warning/info description.
+In addition to a message identifier, the category of the message allows the user to find the corresponding error/warning/info description.
+An external documentation must be maintained to describe all message identifiers and their expected arguments for each category.
 
 Principles:
 
@@ -305,4 +305,3 @@ It optimizes bytecode as well as it detects and removes unused instructions. The
    
 A dedicated How-To is available at https://github.com/MicroEJ/How-To/tree/master/Proguard-Get-Started.
 It describes how to configure ProGuard to remove elements of code from the `Logging <https://repository.microej.com/artifacts/ej/library/eclasspath/logging/>`_ library.
-
