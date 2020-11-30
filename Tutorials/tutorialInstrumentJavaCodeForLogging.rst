@@ -16,6 +16,7 @@ Introduction
 ------------
 
 One straightforward way to add logs in Java code is to use the Java basic print methods: ``System.out.println(...)``. 
+
 However, this is not desirable when writing production-grade code, where it should be possible to adjust the log level:
 
 - without having to change the original source code,
@@ -64,52 +65,56 @@ Its features and principles are described in the :ref:`event-tracing` section.
 
 Here is a short example of how to use this library to log the entry/exit of the ``switchState()`` method:
 
-#. Add the following dependency to the ``module.ivy``: ``<dependency org="ej.api" name="trace" rev="1.1.0"/>``
+#. Add the following dependency to the ``module.ivy``: 
+
+   .. code-block:: xml
+
+      <dependency org="ej.api" name="trace" rev="1.1.0"/>
 
 #. Start by initializing a `Tracer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html>`_ object:
 
-      .. code-block:: java
+   .. code-block:: java
 
-         private static final Tracer tracer = new Tracer("Application", 100);
+      private static final Tracer tracer = new Tracer("Application", 100);
       
-      In this case, ``Application`` identifies a category of events that defines a maximum of ``100`` different event types.
+   In this case, ``Application`` identifies a category of events that defines a maximum of ``100`` different event types.
 
 #. Next, activate the trace system:
 
-      .. code-block:: java
-         :emphasize-lines: 2
+   .. code-block:: java
+      :emphasize-lines: 2
 
-         public static void main(String[] args) {
-            Tracer.startTrace();
+      public static void main(String[] args) {
+         Tracer.startTrace();
 
-            currentState = ApplicationState.UNINSTALLED;
-            switchState(ApplicationState.INSTALLED);
-         }
+         currentState = ApplicationState.UNINSTALLED;
+         switchState(ApplicationState.INSTALLED);
+      }
 
 #. Use the methods ``Tracer.recordEvent(...)`` and ``Tracer.recordEventEnd(...)`` to record the entry/exit events in the method:
 
-      .. code-block:: java
-         :emphasize-lines: 4,9
+   .. code-block:: java
+      :emphasize-lines: 4,9
 
-         private static final int EVENT_ID = 0;
+      private static final int EVENT_ID = 0;
 
-         public static void switchState(ApplicationState newState) {
-            tracer.recordEvent(EVENT_ID);
+      public static void switchState(ApplicationState newState) {
+         tracer.recordEvent(EVENT_ID);
 
-            previousState = currentState;
-            currentState = newState;
+         previousState = currentState;
+         currentState = newState;
 
-            tracer.recordEventEnd(EVENT_ID);
-         }
+         tracer.recordEventEnd(EVENT_ID);
+      }
    
    The `Tracer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html>`_ object records the entry/exit of method ``switchState`` with event ID ``0``.
    
 This produces the following output:
 
-      .. code-block::
+.. code-block::
 
-         [TRACE: Application] Event 0x0()
-         [TRACE: Application] Event End 0x0()
+   [TRACE: Application] Event 0x0()
+   [TRACE: Application] Event End 0x0()
 
 .. note::
 
@@ -137,7 +142,11 @@ Principles:
 
 Here is a short example of how to use this library to log the entry/exit of the ``switchState()`` method:
 
-#. To use this library, add this dependency line in the ``module.ivy``: ``<dependency org="ej.library.runtime" name="message" rev="2.1.0"/>``
+#. To use this library, add this dependency line in the ``module.ivy``:
+
+   .. code-block:: xml 
+   
+      <dependency org="ej.library.runtime" name="message" rev="2.1.0"/>
 
 #. Call the message API to log some info:
    
@@ -157,7 +166,7 @@ Here is a short example of how to use this library to log the entry/exit of the 
 
 This produces the following output:
 
-   .. code-block:: java
+   .. code-block::
       
       Application:I=2 UNINSTALLED INSTALLED
 
@@ -184,7 +193,11 @@ The library `ej.library.eclasspath.logging <https://repository.microej.com/artif
 
 Here is a short example of how to use this library to log the entry/exit of the ``switchState()`` method:
 
-#. Add the following dependency to the ``module.ivy``: ``<dependency org="ej.library.eclasspath" name="logging" rev="1.1.0"/>``
+#. Add the following dependency to the ``module.ivy``: 
+
+   .. code-block:: xml
+
+      <dependency org="ej.library.eclasspath" name="logging" rev="1.1.0"/>
 
 #. Call the logging API to log some info text:
 
@@ -203,9 +216,9 @@ Here is a short example of how to use this library to log the entry/exit of the 
 
 This produces the following output: 
 
-   .. code-block:: java
+.. code-block::
       
-      main INFO: The application state has changed from UNINSTALLED to INSTALLED.
+   main INFO: The application state has changed from UNINSTALLED to INSTALLED.
 
 
 .. note::
@@ -240,6 +253,7 @@ When this boolean constant is detected to be ``false``, the wrapped code becomes
 #. Wrap the log code by an ``if`` statement, as follows:
    
    .. code-block:: java 
+      :emphasize-lines: 7,11
 
       private static final String LOG_PROPERTY = "com.mycompany.logging";
 
@@ -255,11 +269,11 @@ When this boolean constant is detected to be ``false``, the wrapped code becomes
       }
 
 
-When using the Trace API (``ej.api.trace``), you can evaluate the value of the static field ``Tracer.TRACE_ENABLED_CONSTANT_PROPERTY`` that represents the constant ``core.trace.enabled``.
-The value of this constant can be modified by going to :guilabel:`Launch` > :guilabel:`Launch configurations` then in the tab :guilabel:`Configuration` > :guilabel:`Runtime`, check/uncheck the option :guilabel:`Enable execution traces` to respectively set the value to ``true``/``false``.
+When using the Trace API (``ej.api.trace``), you can evaluate the value of the static field ``Tracer.TRACE_ENABLED_CONSTANT_PROPERTY`` that represents the value of the ``core.trace.enabled`` :ref:`Application option <application_options>`.
+In a :ref:`launch configuration <define_option_in_launcher>`, check/uncheck the option :guilabel:`Enable execution traces` to respectively set the value to ``true``/``false``.
 
-         .. image:: images/tuto_microej_trace_property.png
-             :align: center
+.. image:: images/tuto_microej_trace_property.png
+   :align: center
 
 Follow the same principle as before:
 
