@@ -79,7 +79,7 @@ Here is a short example of how to use this library to log the entry/exit of the 
       
    In this case, ``Application`` identifies a category of events that defines a maximum of ``100`` different event types.
 
-#. Next, activate the trace system:
+#. Next, start trace recording:
 
    .. code-block:: java
       :emphasize-lines: 2
@@ -109,6 +109,12 @@ Here is a short example of how to use this library to log the entry/exit of the 
    
    The `Tracer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html>`_ object records the entry/exit of method ``switchState`` with event ID ``0``.
    
+#. Finally, to enable the MicroEJ Core Engine trace system, set the ``core.trace.enabled`` :ref:`option <application_options>` to ``true``. 
+   This can be done from a :ref:`launch configuration <define_option_in_launcher>`: check :guilabel:`Runtime` > :guilabel:`Enable execution traces` option.
+
+   .. image:: images/tuto_microej_trace_property.png
+      :align: center
+
 This produces the following output:
 
 .. code-block::
@@ -269,15 +275,12 @@ When this boolean constant is detected to be ``false``, the wrapped code becomes
       }
 
 
-When using the Trace API (``ej.api.trace``), you can evaluate the value of the static field ``Tracer.TRACE_ENABLED_CONSTANT_PROPERTY`` that represents the value of the ``core.trace.enabled`` :ref:`Application option <application_options>`.
-In a :ref:`launch configuration <define_option_in_launcher>`, check/uncheck the option :guilabel:`Enable execution traces` to respectively set the value to ``true``/``false``.
-
-.. image:: images/tuto_microej_trace_property.png
-   :align: center
+When using the Trace API (``ej.api.trace``), you can use the `Tracer.TRACE_ENABLED_CONSTANT_PROPERTY <https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#TRACE_ENABLED_CONSTANT_PROPERTY>`_ constant that represents the value of the ``core.trace.enabled`` :ref:`option <application_options>`.
 
 Follow the same principle as before:
 
-      .. code-block:: java 
+      .. code-block:: java
+         :emphasize-lines: 4,11
 
          private static final int EVENT_ID = 0;
 
