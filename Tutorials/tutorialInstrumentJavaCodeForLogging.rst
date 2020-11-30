@@ -176,20 +176,20 @@ Log with the Logging Library
 
 The library `ej.library.eclasspath.logging <https://repository.microej.com/artifacts/ej/library/eclasspath/logging/>`_ implements a subset of the standard Java `java.util.logging <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/package-summary.html>`_ package and follows the same principles:
 
--  There is one instance of `LogManager <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogManager.html>`_ by application that manages the hierarchy of loggers.
--  Find or create `Logger <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html>`_ objects using the method `Logger.getLogger(String) <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html#getLogger-java.lang.String->`_.
-   If a logger has already been created with the same name, this logger is returned, otherwise a new logger is created. 
--  Each `Logger <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html>`_ created with this method is registered in the ``LogManager`` and can be retrieved using its String ``ID``.
--  A minimum level can be set to a `Logger <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html>`_ so that only messages that have at least this level are logged. The class `java.util.logging.Level <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Level.html>`_ lists the available standard levels.
--  The ``Logger`` API provides multiple methods for logging:
-    
-    -  ``log(...)`` methods that send a `LogRecord <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogRecord.html>`_ to the registered `Handler <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Handler.html>`_ instances. 
-       The `LogRecord <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogRecord.html>`_ object wraps the String message and the log level. 
-    -  Log level-specific methods, like ``severe(String msg)``, that call the aforementioned ``log(...)`` method with the correct level.
+- There is one instance of `LogManager <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogManager.html>`_ by application that manages the hierarchy of loggers.
+- Find or create `Logger <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html>`_ objects using the method `Logger.getLogger(String) <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html#getLogger-java.lang.String->`_.
+  If a logger has already been created with the same name, this logger is returned, otherwise a new logger is created. 
+- Each `Logger <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html>`_ created with this method is registered in the ``LogManager`` and can be retrieved using its String ``ID``.
+- A minimum level can be set to a `Logger <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html>`_ so that only messages that have at least this level are logged. The class `java.util.logging.Level <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Level.html>`_ lists the available standard levels.
+- The ``Logger`` API provides multiple methods for logging:
 
--  The library defines a default `Handler <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Handler.html>`_ implementation, called `DefaultHandler <https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/logging/handler/DefaultHandler.html>`_,
-   that prints the message of the `LogRecord <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogRecord.html>`_ on the standard error output stream.
-   It also prints the stack trace of the `Throwable <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html>`_ associated with the `LogRecord <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogRecord.html>`_ if there is one.
+  - ``log(...)`` methods that send a `LogRecord <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogRecord.html>`_ to the registered `Handler <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Handler.html>`_ instances. 
+    The `LogRecord <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogRecord.html>`_ object wraps the String message and the log level. 
+  - Log level-specific methods, like ``severe(String msg)``, that call the aforementioned ``log(...)`` method with the correct level.
+
+- The library defines a default `Handler <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Handler.html>`_ implementation, called `DefaultHandler <https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/logging/handler/DefaultHandler.html>`_,
+  that prints the message of the `LogRecord <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogRecord.html>`_ on the standard error output stream.
+  It also prints the stack trace of the `Throwable <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html>`_ associated with the `LogRecord <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogRecord.html>`_ if there is one.
 
 Here is a short example of how to use this library to log the entry/exit of the ``switchState()`` method:
 
