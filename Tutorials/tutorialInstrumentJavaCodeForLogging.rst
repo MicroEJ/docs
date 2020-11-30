@@ -224,7 +224,7 @@ This produces the following output:
 .. note::
 
    Unlike the two other libraries discussed here, the ``Logging`` library is entirely based on Strings (log IDs and messages). 
-   Note that String operations can lead to performance issues and that String objects use significant ROM space. 
+   String operations can lead to performance issues and String objects use significant ROM space. 
    When possible, prefer using a logging solution that uses primitive types over Strings.
 
 
