@@ -32,12 +32,14 @@ Defining an Option
 A MicroEJ Standalone Application option can be defined either from a launcher or from a properties file.
 It is also possible to use both together. Each MicroEJ Architecture and MicroEJ Pack option comes with a default value, which is used if the option has not been set by the user.
 
+.. _define_option_in_launcher:
+
 Using a Launcher
 ----------------
 
 To set an option in a launcher, perform the following steps:
 
-1. In MicroEJ Studio/SDK, select :guilabel:`Run` > :guilabel:`Run Configurations...`,
+1. In MicroEJ Studio/SDK, select :guilabel:`Run` > :guilabel:`Run Configurations...` menu,
 2. Select the launcher of the application under :guilabel:`MicroEJ Application` or create a new one,
 3. Select the :guilabel:`Configuration` tab,
 4. Find the desired option and set it to the desired value.
