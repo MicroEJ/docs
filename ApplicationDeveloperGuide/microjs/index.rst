@@ -11,12 +11,15 @@
 
 .. toctree::
 
-   microjs/glossary
-   microjs/introduction
-   microjs/getting_started
-   microjs/builtin
-   microjs/host_env
-   microjs/testing
-   microjs/footprint
-   microjs/limitations
-   microjs/examples
+   glossary
+   introduction
+   getting_started
+   builtin
+   host_env
+   testing
+   footprint
+   limitations
+   examples
+
+.. include:: readme_link
+
