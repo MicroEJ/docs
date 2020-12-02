@@ -114,6 +114,10 @@ project:
        
    }
 
+.. note::
+
+   The visibility of the native method implemented in the mock must be ``public`` regardless of the visibility of the native method in the application.  Otherwise the following exception is raised: ``java.lang.UnsatisfiedLinkError: No such method in remote class``.
+
 
 Mocks Design Support
 ====================
