@@ -67,6 +67,9 @@ Copy the UID. It will be needed when requesting a license.
 
    Machine UID for Evaluation License
 
+
+.. _request_activation_key:
+
 Request your Activation Key
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
