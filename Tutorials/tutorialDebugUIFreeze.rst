@@ -32,7 +32,7 @@ A quick way to check if the Java threads are scheduled correctly is, here again,
 make one of the threads print a heart beat message. Copy/paste the
 following snippet in the ``main()`` method of the application:
 
-::
+.. code-block:: java
 
    TimerTask task = new TimerTask() {
 
@@ -67,7 +67,7 @@ does not process display events. Let’s make the heart beat snippet above
 execute in the UI thread. Simply wraps the
 ``System.out.println("Alive")`` with a ``callSerially``:
 
-::
+.. code-block:: java
 
    TimerTask task = new TimerTask() {
 
@@ -123,7 +123,7 @@ As a general rule, avoid running long operations in the UI thread,
 follow the general pattern and use a dedicated thread/executor instead:
 (QUESTION: use a sequence diagram to be more explicit?)
 
-::
+.. code-block:: java
 
    ExecutorService executorService = ServiceLoaderFactory.getServiceLoader().getService(ExecutorService.class, SingleThreadExecutor.class);
    executorService.execute(new Runnable() {
@@ -149,7 +149,7 @@ processing user input events like it should. The UI may look “frozen”
 only because it don’t react to input events. Replace the desktop
 instance with the one below to log all user inputs.
 
-::
+.. code-block:: java
 
    Desktop desktop = new Desktop() {
 
