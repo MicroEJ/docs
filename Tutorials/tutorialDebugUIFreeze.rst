@@ -6,7 +6,7 @@ When an application User Interface freezes and becomes unresponsive, in most cas
 - An unrecoverable system failure occurred, like a HardFault, and the RTOS tasks are not scheduled anymore. 
 - The RTOS task that runs the MicroEJ runtime is never given CPU time (suspended or blocked). 
 - The RTOS task that runs the MicroEJ runtime is executing never-ending native code (infinite loop in native implementation for example). 
-- A Java method is executing a long running operation in the MicroUI Display Pump thread. 
+- A Java method is executing a long running operation in the MicroUI thread (also called Display Pump thread). 
 - The application code is unable to receive or process user input events.
 
 This tutorial explains how to instrument the code in order to locate the issue when the UI freeze occurs.
@@ -48,24 +48,28 @@ This code creates a new Java thread that will print the message ``Alive``
 on the standard output every 10 seconds. If the ``Alive`` printouts stop
 when the UI freeze occurs (assuming no one cancelled the ``Timer``),
 then it means that the MicroEJ Runtime stopped scheduling the Java
-threads. Few suggestions:
+threads.
 
--  The RTOS task that runs the MicroEJ runtime might be suspended or
-   blocked. Check if some API call is suspending the task or if a shared
-   resource could be blocking it.
+Here are a few suggestions:
 
--  When a Java native method executes, it executes its C counterpart
-   function in the RTOS task that runs the MicroEJ runtime. While the C
-   function executes, no other Java methods executes: the Java world
-   "waits" for the C function to finish. As a consequence, if the C
-   function never returns, no Java thread can run. Spot any suspect
-   native functions and print every entry/exit to detect faulty code.
+- The RTOS task that runs the MicroEJ runtime might be suspended or
+  blocked. Check if some API call is suspending the task or if a
+  shared resource could be blocking it.
 
-Now, what if the ``Alive`` heart beat runs while the UI is frozen? Java
-threads are getting scheduled but the UI thread, called "Display Pump",
-does not process display events. Let's make the heart beat snippet above
-execute in the UI thread. Simply wraps the
-``System.out.println("Alive")`` with a ``callSerially``:
+- When a Java native method executes, it executes its C counterpart
+  function in the RTOS task that runs the MicroEJ runtime. While the C
+  function executes, no other Java methods executes: the Java world
+  awaits for the C function to finish. As a consequence, if the C
+  function never returns, no Java thread can run. Spot any suspect
+  native functions and print every entry/exit to detect faulty code.
+
+Now, what if the ``Alive`` heart beat runs while the UI is frozen?
+Java threads are getting scheduled but the UI thread (also called
+Display Pump thread), does not process display events.
+
+Let's make the heart beat snippet above execute in the UI
+thread. Simply wraps the ``System.out.println("Alive")`` with a
+``callSerially``:
 
 .. code-block:: java
 
@@ -114,8 +118,8 @@ the freeze occurs, then there are few options:
    -  ``revalidate()``/``revalidateSubTree()``: code in
       ``validateContent()`` and ``setBoundsContent()``
    -  ``handleEvent()``
-   -  ``callSerially()``: code wrapped in such calls will execute in the
-      UI thread
+   -  ``callSerially()``: code wrapped in such calls will be executed
+      in the UI thread
 
 -  The UI thread has terminated.
 
