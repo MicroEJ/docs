@@ -1,5 +1,5 @@
-Debug a “UI Freeze”
-========================
+Debug a "UI Freeze"
+===================
 
 When an application User Interface freezes and becomes unresponsive, in most cases, one of the following conditions applies: 
 
@@ -14,7 +14,7 @@ This tutorial explains how to instrument the code in order to locate the issue w
 Bottom-Up approach
 ------------------
 
-Let’s start at low level by figuring out if the RTOS is scheduling the
+Let's start at low level by figuring out if the RTOS is scheduling the
 tasks correctly. Make one of the RTOS task act like a heart beat: create
 a dedicated task and make it report in some way at a regular pace (print
 a message on standard output, blink a LED, etc.). If the heart beat is
@@ -44,8 +44,8 @@ following snippet in the ``main()`` method of the application:
    Timer timer = new Timer();
    timer.schedule(task, 10_000, 10_000);
 
-This code creates a new Java thread that will print the message “Alive”
-on the standard output every 10 seconds. If the “Alive” printouts stop
+This code creates a new Java thread that will print the message "Alive"
+on the standard output every 10 seconds. If the "Alive" printouts stop
 when the UI freeze occurs (assuming no one cancelled the ``Timer``),
 then it means that the MicroEJ Runtime stopped scheduling the Java
 threads. Few suggestions:
@@ -57,13 +57,13 @@ threads. Few suggestions:
 -  When a Java native method executes, it executes its C counterpart
    function in the RTOS task that runs the MicroEJ runtime. While the C
    function executes, no other Java methods executes: the Java world
-   “waits” for the C function to finish. As a consequence, if the C
+   "waits" for the C function to finish. As a consequence, if the C
    function never returns, no Java thread can run. Spot any suspect
    native functions and print every entry/exit to detect faulty code.
 
-Now, what if the “Alive” heart beat runs while the UI is frozen? Java
-threads are getting scheduled but the UI thread, called “Display Pump”,
-does not process display events. Let’s make the heart beat snippet above
+Now, what if the "Alive" heart beat runs while the UI is frozen? Java
+threads are getting scheduled but the UI thread, called "Display Pump",
+does not process display events. Let's make the heart beat snippet above
 execute in the UI thread. Simply wraps the
 ``System.out.println("Alive")`` with a ``callSerially``:
 
@@ -93,7 +93,7 @@ execute in the UI thread. Simply wraps the
    Timer timer = new Timer();
    timer.schedule(task, 10_000, 10_000);
 
-In case this snippet prints “TimerTask Alive” but not “UI alive” when
+In case this snippet prints "TimerTask Alive" but not "UI alive" when
 the freeze occurs, then there are few options:
 
 -  The application might be processing a long operation in the UI
@@ -145,8 +145,8 @@ follow the general pattern and use a dedicated thread/executor instead:
    });
 
 Another case that is worth looking at is whether the application is
-processing user input events like it should. The UI may look “frozen”
-only because it don’t react to input events. Replace the desktop
+processing user input events like it should. The UI may look "frozen"
+only because it don't react to input events. Replace the desktop
 instance with the one below to log all user inputs.
 
 .. code-block:: java
