@@ -447,4 +447,18 @@ The authority has to be added to the trust store of the JRE/JDK that is running 
 #. Select your certificate.
 #. Save the ``cacerts`` file.
 
+Customize ``target~`` path
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Some systems and toolchains don't handle long path properly.  A
+workaround this issue is to move the build directory (that is, the
+``target~`` directory) closer to the root directory.
+
+To change the ``target~`` directory path, override the Ant property ``target``.
+
+In :guilabel:`Advanced`, expand :guilabel:`Properties` text field and
+set the ``target`` property to the path of your choice.  For example:
+
+.. code-block:: properties
+
+   target=C:/tmp/
