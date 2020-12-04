@@ -170,15 +170,10 @@ instance with the one below to log all user inputs.
 LLMJVM_dump
 -----------
 
-In addition to the tips described above, the ``LLMJVM_dump`` tool will
-give detailled information about the current state of Java threads when
-the issue occurs:
-
-From Platform Developer Guide: > The internal MicroEJ Core Engine
-function called LLMJVM_dump allows you to dump the state of all MicroEJ
-threads: name, priority, stack trace, etc. This function can be called
-at any time and from an interrupt routine (for instance from a button
-interrupt).
+In addition to the tips described above, the ``LLMJVM_dump`` function
+will give detailled information about the current state of Java
+threads when the issue occurs.  See :ref:`this section<vm_dump>` to
+learn more about ``LLMJVM_dump``.
 
 Sources
 -------
