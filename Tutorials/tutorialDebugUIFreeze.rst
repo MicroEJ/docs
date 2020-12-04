@@ -152,7 +152,7 @@ follow the general pattern and use a dedicated thread/executor instead:
 
 Another case that is worth looking at is whether the application is
 processing user input events like it should. The UI may look "frozen"
-only because it don't react to input events. Replace the desktop
+only because it doesn't react to input events. Replace the desktop
 instance with the one below to log all user inputs.
 
 .. code-block:: java
