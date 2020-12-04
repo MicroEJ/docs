@@ -56,12 +56,13 @@ Here are a few suggestions:
   blocked. Check if some API call is suspending the task or if a
   shared resource could be blocking it.
 
-- When a Java native method executes, it executes its C counterpart
+- When a Java native method is called, it calls its C counterpart
   function in the RTOS task that runs the MicroEJ runtime. While the C
-  function executes, no other Java methods executes: the Java world
+  function is running, no other Java methods can run : the Java world
   awaits for the C function to finish. As a consequence, if the C
-  function never returns, no Java thread can run. Spot any suspect
-  native functions and print every entry/exit to detect faulty code.
+  function never returns, no Java thread can ever run again. Spot any
+  suspect native functions and print every entry/exit to detect faulty
+  code.
 
 Now, what if the ``Alive`` heart beat runs while the UI is frozen?
 Java threads are getting scheduled but the UI thread (also called
