@@ -451,10 +451,11 @@ Customize ``target~`` path
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Some systems and toolchains don't handle long path properly.  A
-workaround this issue is to move the build directory (that is, the
+workaround for this issue is to move the build directory (that is, the
 ``target~`` directory) closer to the root directory.
 
-To change the ``target~`` directory path, override the Ant property ``target``.
+To change the ``target~`` directory path, set the
+:ref:`mmm_build_options` ``target``.
 
 In :guilabel:`Advanced`, expand :guilabel:`Properties` text field and
 set the ``target`` property to the path of your choice.  For example:

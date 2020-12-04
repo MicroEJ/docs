@@ -110,6 +110,33 @@ It describes the :ref:`module nature <module_natures>` (also called build type) 
        </dependencies>
    </ivy-module>        
 
+.. _mmm_build_options:
+
+Build Options
+~~~~~~~~~~~~~
+
+MMM Build Options can be set with:
+
+.. code-block:: xml
+
+   <ea:property name="[buildoption_name]" value="[buildoption_value]"/>
+
+The following build options are globally available:
+
+.. list-table:: Build Options
+   :widths: 1 5 3
+   :header-rows: 1
+
+   * - Property Name
+     - Description
+     - Default Value
+   * - ``target``
+     - Path to the build directory ``target~``.
+     - ``${basedir}/target~``
+
+Refer to the documentation of :ref:`module_natures` for specific build
+options.
+
 .. _mmm_configuration:
 
 MicroEJ Module Manager Configuration 
