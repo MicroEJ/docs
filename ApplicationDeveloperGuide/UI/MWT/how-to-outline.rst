@@ -1,4 +1,4 @@
-How-To Define an Outline or Border
+How to Define an Outline or Border
 ==================================
 
 To create a custom outline or border, a new class should be created, extending the ``Outline`` class.

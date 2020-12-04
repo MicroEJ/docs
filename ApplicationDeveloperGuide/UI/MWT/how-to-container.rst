@@ -1,4 +1,4 @@
-How-To Create a Container
+How to Create a Container
 =========================
 
 To create a custom container, a new class should be created, extending the ``Container`` class.

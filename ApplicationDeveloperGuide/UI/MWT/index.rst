@@ -10,6 +10,7 @@ MWT (Micro Widget Toolkit)
    concepts
    how-to-widget
    how-to-container
+   how-to-animate-widget
    how-to-outline
    how-to-background
    how-to-event-dispatcher

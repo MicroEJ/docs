@@ -1,4 +1,4 @@
-How-To Create a Desktop Event Dispatcher
+How to Create a Desktop Event Dispatcher
 ========================================
 
 Creating a custom event dispatcher can help you address two use cases:

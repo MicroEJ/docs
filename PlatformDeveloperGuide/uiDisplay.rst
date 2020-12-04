@@ -236,6 +236,8 @@ Besides, the following MicroUI API can not be used in partial buffer mode: `Pain
 Indeed, this API allows to draw a region of the display by reading the content of the back buffer. In partial buffer mode, we cannot rely on the current content of the back buffer as it doesn’t contain what is seen on the screen.
 Instead of relying on the drawings which were performed previously, this API should be avoided and all the drawings should be performed again.
 
+Using a partial buffer can have a significant impact on animation performance. Refer to :ref:`section_animations` for more information on the development of animations in an application.
+
 Implementation Example
 ----------------------
 
