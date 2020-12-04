@@ -7,7 +7,7 @@ Image Renderer
 Principle
 =========
 
-The Image Renderer module is an on-board engine that reads and draws the image encoded in MicroEJ format (see :ref:`section_image_raw`) . It calls low-level APIs to draw and transform the images (rotation, scaling, deformation etc.). It also includes software algorithms to perform the rendering.
+The Image Renderer module is an on-board engine that reads and draws the image encoded in MicroEJ format (see :ref:`section_image_raw`) . It calls low-level APIs to draw and transform the images (rotation, scaling, deformation, etc.). It also includes software algorithms to perform the rendering.
 
 Functional Description
 ======================

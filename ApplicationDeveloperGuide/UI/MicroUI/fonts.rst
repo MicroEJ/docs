@@ -89,7 +89,7 @@ Examples:
    (included);
 
 -  ``myfont:0x21-0x49,0x55``: Embed all characters from 0x21 to 0x49 and
-   character 0x55;
+   character 0x55.
 
 Known Range
 ~~~~~~~~~~~

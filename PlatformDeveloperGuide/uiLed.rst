@@ -17,7 +17,7 @@ Functional Description
 
 The LED engine implements the MicroUI `Leds <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/led/Leds.html>`_ framework. ``LLUI_LED`` specifies the low level API that receive orders from the Java world.
 
-The low level API are the same for the LED which is connected to a ``GPIO`` (``0`` or ``1``), to a ``PWM``, to a bus (``I2C``, ``SPI``) etc. The BSP has the responsibility of interpreting the MicroEJ Application parameter ``intensity``.
+The low level API are the same for the LED which is connected to a ``GPIO`` (``0`` or ``1``), to a ``PWM``, to a bus (``I2C``, ``SPI``), etc. The BSP has the responsibility of interpreting the MicroEJ Application parameter ``intensity``.
 
 Typically, when the LED is connected to a ``GPIO``, the ``intensity`` "0" means "OFF," and all others values "ON." When the LED is connected via a ``PWM``, the ``intensity`` "0" means "OFF," and all others values must configure the ``PWM`` duty cycle signal.
 

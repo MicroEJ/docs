@@ -467,8 +467,7 @@ When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 |
 
 .. _display_pixel_structure_driver:
 
-When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the display module considers the pixel representation as **driver-specific**. In this case, the driver must implement functions that
-convert MicroUI's standard 32 bits ARGB colors to display color representation (see :ref:`LLDISPLAY-API-SECTION`). This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. This mode can also be used when the number of bits for a color component (alpha, red, green or blue) is not standard or when the value does not represent a color but an index in an LUT.
+When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the display module considers the pixel representation as **driver-specific**. In this case, the driver must implement functions that convert MicroUI's standard 32 bits ARGB colors to display color representation (see :ref:`LLDISPLAY-API-SECTION`). This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. This mode can also be used when the number of bits for a color component (alpha, red, green or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut` .
 
 .. _section_display_llapi:
 
@@ -485,8 +484,8 @@ Overview
 
    Display Low-Level API
 
-* MicroUI library `talks` with BSP through the graphical engine and header file ``LLUI_DISPLAY_impl.h``. 
-* Implementation of ``LLUI_DISPLAY_impl.h`` can `talk` with graphical engine through ``LLUI_DISPLAY.h``.
+* MicroUI library calls the BSP functions through the graphical engine and header file ``LLUI_DISPLAY_impl.h``. 
+* Implementation of ``LLUI_DISPLAY_impl.h`` can call graphical engine functions through ``LLUI_DISPLAY.h``.
 * To perform some drawings, MicroUI uses ``LLUI_PAINTER_impl.h`` functions.
 * The drawing native functions are implemented in the CCO ``com.microej.clibrary.llimpl#microui-drawings``; this CCO must be included in BSP.
 * This CCO redirects drawings the implementation of ``ui_drawing.h``.
@@ -500,17 +499,16 @@ Required Low Level API
 
 Some four low-level APIs are required to connect the display engine on the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``. 
 
-* ``LLUI_DISPLAY_IMPL_initialize`` : The initialization function is called when MicroEJ application is calling ``MicroUI.start()``. Before this call, the display is useless and no need to be initialized. This function consists to initialize the display driver and to fill the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on two binary semaphores (see after), the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels and optionaly the display *physical* size in pixels.
-  The display *virtual* size is the size of the area where the drawings are visible. The display *physical* size is the required memory size where the area is located. Theoretical memory size is: ``display_width * display_height * bpp / 8``. On some devices the memory width (in pixels) is higher than virtual width. In this way, the graphics buffer memory size is: ``memory_width * memory_height * bpp / 8``.
+* ``LLUI_DISPLAY_IMPL_initialize`` : The initialization function is called when MicroEJ application is calling ``MicroUI.start()``. Before this call, the display is useless and no need to be initialized. This function consists to initialize the display driver and to fill the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on two binary semaphores (see after), the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels and optionaly the display *physical* size in pixels. The display *virtual* size is the size of the area where the drawings are visible. The display *physical* size is the required memory size where the area is located. Virtual memory size is: ``display_width * display_height * bpp / 8``. On some devices the memory width (in pixels) is higher than virtual width. In this way, the graphics buffer memory size is: ``memory_width * memory_height * bpp / 8``.
 
 * ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: The display engine requires two binary semaphores to synchronize its internal states. The binary semaphores must be configured in a state such that the semaphore must first be *given* before it can be *taken*. Two distincts functions have to be implemented to *take* and *give* a binary semaphore.
 
-* ``LLUI_DISPLAY_IMPL_flush``: According the display buffer mode (see :ref:`section_display_modes`), the ``flush`` function has to be implemented. This function should be atomic and not performing the copy directly. Another OS task or a dedicated hardware must be configured to perform the buffer copy. 
+* ``LLUI_DISPLAY_IMPL_flush``: According the display buffer mode (see :ref:`section_display_modes`), the ``flush`` function has to be implemented. This function must not be blocking and not performing the copy directly. Another OS task or a dedicated hardware must be configured to perform the buffer copy. 
 
 Optional Low Level API
 ----------------------
 
-Several low-level API are available in ``LLUI_DISPLAY_impl.h``. They are already implemented as *weak* functions in the display engine and return no error. These optional features concern the display backlight and constrast, display characteristics (is colored display, double buffer), colors conversions (see :ref:`display_pixel_structure` and :ref:`display_lut`) etc.
+Several optional low-level API are available in ``LLUI_DISPLAY_impl.h``. They are already implemented as *weak* functions in the display engine and return no error. These optional features concern the display backlight and constrast, display characteristics (is colored display, double buffer), colors conversions (see :ref:`display_pixel_structure` and :ref:`display_lut`), etc. Refer to each function comment to have more information about the default behavior.
 
 Painter Low Level API
 ---------------------
@@ -688,23 +686,37 @@ Note that the dynamic mode is slower than the static mode.
 
 .. _display_lut:
 
-LUT
-===
+CLUT
+====
 
-The display module allows to target display which uses a pixel indirection table (LUT). This kind of display are considered as generic but not standard (see :ref:`display_pixel_structure`). By consequence, the driver must implement functions that convert MicroUI's standard 32 bits ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to display color representation. For each application ARGB8888 color, the display driver has to find the corresponding color in the table. The display module will store the index of the color in the table instead of using the color itself.
+The display module allows to target display which uses a pixel indirection table (CLUT). This kind of display are considered as generic but not standard (see :ref:`display_pixel_structure`). It consists to store color indices in image memory buffer instead of colors themselves.
 
-When an application color is not available in the display driver table (LUT), the display driver can try to find the nearest color or return a default color. First solution is often quite difficult to write and can cost a lot of time at runtime. That's why the second solution is preferred. However, a consequence is that  he application has only to use a range of colors provided by the display driver.
+Color Conversion
+----------------
 
-MicroUI and the display module uses blending when drawing some texts or anti-aliased shapes. For each pixel to draw, the display stack blends the current application foreground color with the targeted pixel current color or with the current application background color (when enabled). This blending *creates* some  intermediate colors which are managed by the display driver. Most of time the default color will be returned and so the rendering will be wrong. To prevent this use case, the display module offers a specific LLAPI ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors(void* foreground, void* background)``. This API is only used when a blending is required and when the background color is enabled. Display module calls the API just before the blending and gives as parameter the pointers on the both ARGB colors. The display driver should replace the ARGB colors by the LUT indexes. Then the display module will only use the indexes between the
-both indexes. For instance, when the returned indexes are ``20`` and ``27``, the display stack will use the indexes ``20`` to ``27``, where all indexes between ``20`` and ``27`` target some intermediate colors between the both original ARGB colors. 
+The driver must implement functions that convert MicroUI's standard 32 bits ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to display color representation. For each application ARGB8888 color, the display driver has to find the corresponding color in the table. The display module will store the index of the color in the table instead of using the color itself.
+
+When an application color is not available in the display driver table (CLUT), the display driver can try to find the closest color or return a default color. First solution is often quite difficult to write and can cost a lot of time at runtime. That's why the second solution is preferred. However, a consequence is that  he application has only to use a range of colors provided by the display driver.
+
+Alpha Blending
+--------------
+
+MicroUI and the graphical engine uses blending when drawing some texts or anti-aliased shapes. For each pixel to draw, the display stack blends the current application foreground color with the targeted pixel current color or with the current application background color (when enabled). This blending *creates* some  intermediate colors which are managed by the display driver. 
+
+Most of time the intermediate colors do not match with the palette. The default color is so returned and the rendering becomes wrong. To prevent this use case, the display module offers a specific LLAPI ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors(void* foreground, void* background)``. 
+
+This API is only used when a blending is required and when the background color is enabled. Display module calls the API just before the blending and gives as parameter the pointers on the both ARGB colors. The display driver should replace the ARGB colors by the CLUT indices. Then the display module will only use the indices between the
+both indices. 
+
+For instance, when the returned indices are ``20`` and ``27``, the display stack will use the indices ``20`` to ``27``, where all indices between ``20`` and ``27`` target some intermediate colors between the both original ARGB colors. 
 
 This solution requires several conditions:
 
--  Background color is enabled and it is an available color in the LUT.
--  Application can only use foreground colors provided by the LUT. The platform designer should give to the application developer the available list of colors the LUT manages.
--  The LUT must provide a set blending ranges the application can use. Each range can have its own size (different number of colors between two colors). Each range is independent. For instance if the foreground color ``RED`` (``0xFFFF0000``) can be blended with two background colors ``WHITE`` (``0xFFFFFFFF``) and ``BLACK`` (``0xFF000000``), two ranges must be provided. The both ranges have to contain the same index for the color ``RED``.
--  Application can only use blending ranges provided by the LUT. Otherwise the display driver is not able to find the range and the default color will be used to perform the blending.
--  Rendering of dynamic images (images decoded at runtime) may be wrong because the ARGB colors may be out of LUT range.
+-  Background color is enabled and it is an available color in the CLUT.
+-  Application can only use foreground colors provided by the CLUT. The platform designer should give to the application developer the available list of colors the CLUT manages.
+-  The CLUT must provide a set blending ranges the application can use. Each range can have its own size (different number of colors between two colors). Each range is independent. For instance if the foreground color ``RED`` (``0xFFFF0000``) can be blended with two background colors ``WHITE`` (``0xFFFFFFFF``) and ``BLACK`` (``0xFF000000``), two ranges must be provided. The both ranges have to contain the same index for the color ``RED``.
+-  Application can only use blending ranges provided by the CLUT. Otherwise the display driver is not able to find the range and the default color will be used to perform the blending.
+-  Rendering of dynamic images (images decoded at runtime) may be wrong because the ARGB colors may be out of CLUT range.
 
 
 Image Pixel Conversion
@@ -763,38 +775,14 @@ How to get the file:
 
 .. warning:: When the display format in ``[platform configuration project]/display/display.properties`` changes, the linker file suffix changes too. Perform again all operations in new file with new suffix.
 
-The linker files holds five tables, one for each use case, respectively ``IMAGE_UTILS_TABLE_COPY``, ``IMAGE_UTILS_TABLE_COPY_WITH_ALPHA``, ``IMAGE_UTILS_TABLE_DRAW``, ``IMAGE_UTILS_TABLE_SET`` and ``IMAGE_UTILS_TABLE_READ``. For each table, a comment describe how to remove an option (when possible) or how to replace an option by a generic function (if available). 
+The linker file holds five tables, one for each use case, respectively ``IMAGE_UTILS_TABLE_COPY``, ``IMAGE_UTILS_TABLE_COPY_WITH_ALPHA``, ``IMAGE_UTILS_TABLE_DRAW``, ``IMAGE_UTILS_TABLE_SET`` and ``IMAGE_UTILS_TABLE_READ``. For each table, a comment describe how to remove an option (when possible) or how to replace an option by a generic function (if available). 
 
-Library ej.apiDrawing
-=====================
+Library ej.api.Drawing
+======================
 
-This library is a Foundation Library which provides additional drawings API. MicroUI's drawing APIs are `aliased` oriented whereas Drawing's drawing APIs are `anti-aliased` oriented. This library is fully integrated in graphical engine. It requires an implementation of its low-level API: ``LLDW_PAINTER_impl.h``. These functions are implemented in the same CCO than ``LLUI_PAINTER_impl.h``: ``com.microej.clibrary.llimpl#microui-drawings``. Like MicroUI painter's natives, the functions are redirected to ``dw_drawing.h``. A default implementation of these functions are available in Software Algorithms module (in weak). This allows to the BSP to override one or several APIs.
-
-Dependencies
-============
-
--  MicroUI initialization step (see :ref:`section_static_init`).
-
--  MicroUI C libraries (see :ref:`section_architecture`).
-
-
+This library is a Foundation Library which provides additional drawings API. This library is fully integrated in graphical engine. It requires an implementation of its low-level API: ``LLDW_PAINTER_impl.h``. These functions are implemented in the same CCO than ``LLUI_PAINTER_impl.h``: ``com.microej.clibrary.llimpl#microui-drawings``. Like MicroUI painter's natives, the functions are redirected to ``dw_drawing.h``. A default implementation of these functions are available in Software Algorithms module (in weak). This allows to the BSP to override one or several APIs.
 
 .. _section_display_implementation:
-
-Implementations
-===============
-
-The implementation of the MicroUI `Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_ API targets a generic
-display (see :ref:`section_display_modes`): Switch, Copy and Direct.
-It provides some low level API. The BSP has to implement these LLAPI,
-making the link between the MicroUI C library ``display`` and the BSP
-display driver. The LLAPI to implement are listed in the header file
-``LLUI_DISPLAY_impl.h``.
-
-When there is no display on the board, a *stub* implementation of C
-library is available. This C library must be linked by the third-party C
-IDE when MicroUI module is installed in the MicroEJ Platform.
-
 
 Dependencies
 ============

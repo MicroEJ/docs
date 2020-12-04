@@ -24,7 +24,7 @@ The Static MicroUI Initializer tool takes as entry point the initialization file
 
 The Static MicroUI Initializer tool is able to generate two files:
 
--  A Java library which extends MicroUI library. This library is automatically added to the :ref:`MicroEJ Application classpath<chapter.microej.classpath>` when MicroUI API library is fetched. This library is used at MicroUI startup to create all instances of I/O devices (`Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_, `EventGenerator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_ etc.) and contains the fonts described into the configuration file (these fonts are also called "system fonts").
+-  A Java library which extends MicroUI library. This library is automatically added to the :ref:`MicroEJ Application classpath<chapter.microej.classpath>` when MicroUI API library is fetched. This library is used at MicroUI startup to create all instances of I/O devices (`Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_, `EventGenerator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_, etc.) and contains the fonts described into the configuration file (these fonts are also called "system fonts").
 
 .. warning:: This MicroUI extension library is always generated and MicroUI library cannot run without this extension.
 

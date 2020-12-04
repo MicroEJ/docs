@@ -97,34 +97,9 @@ Disadvantages:
 ::
 
    image1
-
-Display Output Format
-~~~~~~~~~~~~~~~~~~~~~
-
-This format encodes the image into the exact display memory
-representation. If the image to encode contains some transparent pixels,
-the output file will embed the transparency according to the display's
-implementation capacity. When all pixels are fully opaque, no extra
-information will be stored in the output file in order to free up some
-memory space.
-
-Advantages:
-
--  Drawing an image is very fast because no pixel conversion is required at runtime;
-
--  Supports alpha encoding when display pixel format allow it.
-
-Disadvantages:
-
--  No compression: the image size in bytes is proportional to the number
-   of pixels.
-
-::
-
-   image1:display
-
-Generic Output Formats
-~~~~~~~~~~~~~~~~~~~~~~
+   
+Standard Output Formats
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Depending on the target hardware, several generic output formats are
 available. Some formats may be directly managed by the BSP display
@@ -144,10 +119,8 @@ Advantages:
 
 Disadvantages:
 
--  No compression: the image size in bytes is proportional to the number
-   of pixels, the transparency, and the bits-per-pixel;
-- Slower than ``display`` format when the display driver does not recognize the
-   format: a pixel conversion is required at runtime.
+- No compression: the image size in bytes is proportional to the number   of pixels, the transparency, and the bits-per-pixel;
+- Slower than ``display`` format when the display driver does not recognize the  format: a pixel conversion is required at runtime.
 
 Select one the following format to use a generic format among this list: ``ARGB8888``, ``RGB888``, ``ARGB4444``, ``ARGB1555``, ``RGB565``, ``A8``, ``A4``, ``A2``, ``A1``, ``C4``, ``C2``, ``C1``, ``AC44``, ``AC22`` and ``AC11``. The following snippets describe the color conversion for each format:
 
@@ -309,6 +282,34 @@ Examples:
    image1:ARGB8888
    image2:RGB565
    image3:A4
+
+Display Output Format
+~~~~~~~~~~~~~~~~~~~~~
+
+This format encodes the image into the exact display memory
+representation. If the image to encode contains some transparent pixels,
+the output file will embed the transparency according to the display's
+implementation capacity. When all pixels are fully opaque, no extra
+information will be stored in the output file in order to free up some
+memory space.
+
+.. note:: When the display memory representation is standard, the display output format is automatically replaced by a standard format.
+
+Advantages:
+
+-  Drawing an image is very fast because no pixel conversion is required at runtime;
+
+-  Supports alpha encoding when display pixel format allow it.
+
+Disadvantages:
+
+-  No compression: the image size in bytes is proportional to the number
+   of pixels.
+
+::
+
+   image1:display
+
 
 RLE1 Output Format
 ~~~~~~~~~~~~~~~~~~

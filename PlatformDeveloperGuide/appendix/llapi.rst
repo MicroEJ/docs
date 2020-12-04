@@ -385,8 +385,8 @@ The following functions are only useful (and called) when the display is not a s
 
 ``LLUI_DISPLAY_IMPL_convertDisplayColorToARGBColor`` is called to convert a display color to a 32-bit ARGB MicroUI color.
 
-LUT
----
+CLUT
+----
 
 The function ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors`` is called when drawing an image with indexed color. See :ref:`display_lut` to have more information about indexed images.
 

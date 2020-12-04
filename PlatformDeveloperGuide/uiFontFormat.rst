@@ -83,7 +83,7 @@ Language
 Supported Languages
 -------------------
 
-The Font Engine manages the Unicode basic multilingual languages, whose characters are encoded on 16-bit, i.e. Unicodes from 0x0000 to 0xFFFF. It allows to render left-to-right or right-to-left writing systems: Latin (English etc.), Arabic, Chinese etc. are some supported languages. Note that the rendering is always performed left-to-right, even if the string are written right-to-left. There is no support for top-to-bottom writing systems. Some languages require diacritics and contextual letters; the Font Engine manages simple rules in order to combine several characters.
+The Font Engine manages the Unicode basic multilingual languages, whose characters are encoded on 16-bit, i.e. Unicodes from 0x0000 to 0xFFFF. It allows to render left-to-right or right-to-left writing systems: Latin (English, etc.), Arabic, Chinese etc. are some supported languages. Note that the rendering is always performed left-to-right, even if the string are written right-to-left. There is no support for top-to-bottom writing systems. Some languages require diacritics and contextual letters; the Font Engine manages simple rules in order to combine several characters.
 
 Arabic Support
 --------------

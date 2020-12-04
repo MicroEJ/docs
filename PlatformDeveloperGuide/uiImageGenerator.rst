@@ -40,7 +40,7 @@ Process overview (see too :ref:`section_image_core_process`)
 
 The image generator can run in two modes: 
 
-* Standalone mode: the image to convert (input files) are standard (PNG, JPEG etc.), the generated binary files are in MicroEJ format and do not depend on platform characteristics or restrictions (see :ref:`section_image_standard_raw`).
+* Standalone mode: the image to convert (input files) are standard (PNG, JPEG, etc.), the generated binary files are in MicroEJ format and do not depend on platform characteristics or restrictions (see :ref:`section_image_standard_raw`).
 * Extended mode: the image to convert (input files) may be custom, the generated binary files can be encoded in customized MicroEJ format (can depend on several platform characteristics and restrictions, see :ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`) or the generated files are encoded in another format than MicroEJ format (binary format, see :ref:`section_image_binary_raw`).
 
 Structure
@@ -50,7 +50,7 @@ The Image Generator module is constitued in several parts: the core part and ser
 
 * "Core" part: it takes an images list file as entry point and generates a binary file (no specific format) for each file. To read a file, it redirects the reading to the available service loaders. To generate a binary file, it redirects the encoding to the available service encoders. 
 * "Service API" part: it provides some APIs used by the core part to load input files and to encode binary files. It provides too some APIs to customize the MicroEJ format.
-* "Standard input format loader" part: this service loads standard image files (PNG, JPEG etc.).
+* "Standard input format loader" part: this service loads standard image files (PNG, JPEG, etc.).
 * "MicroEJ format generator" part: this service encodes an image in MicroEJ format.
 
 Standalone Mode

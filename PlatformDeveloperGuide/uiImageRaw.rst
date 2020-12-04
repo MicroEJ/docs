@@ -24,6 +24,7 @@ Advantages:
 Disadvantages:
 
 * No compression: the image size in bytes is proportional to the number of pixels, the transparency, and the number of bits-per-pixel. 
+* Slower than ``display`` format when the display driver does not recognize the  format: a pixel conversion is required at runtime.
 
 This format requires a small header (around 20 bytes) to store the image size (width, height), format, flags (is_transparent etc.), row stride etc. The requires memory depends too on number of bits-per-pixels of MicroEJ format:
 
@@ -36,7 +37,7 @@ The pixels array is stored after the MicroEJ image file header. A padding betwee
 .. figure:: images/uiFormat01.*
    :width: 50.0%
 
-The available standard encodings are part of this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | A8 | A4 | A2 | A1 | C4 | C2 | C1 | AC44 | AC22 | AC11``
+Select one the following format to use a generic format among this list: ``ARGB8888``, ``RGB888``, ``ARGB4444``, ``ARGB1555``, ``RGB565``, ``A8``, ``A4``, ``A2``, ``A1``, ``C4``, ``C2``, ``C1``, ``AC44``, ``AC22`` and ``AC11``. The following snippets describe the color conversion for each format:
 
 -  ARGB8888: 32 bits format, 8 bits for transparency, 8 per color.
 
@@ -208,7 +209,6 @@ Advantages:
 
 * Encoding is identical to display encoding.
 * Drawing an image is often very fast (simple memory copy when the display pixel encoding does not hold the opacity level)
-* Supports opacity encoding.
 
 Disadvantages:
 
