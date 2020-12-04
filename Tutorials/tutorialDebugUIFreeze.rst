@@ -44,8 +44,8 @@ following snippet in the ``main()`` method of the application:
    Timer timer = new Timer();
    timer.schedule(task, 10_000, 10_000);
 
-This code creates a new Java thread that will print the message "Alive"
-on the standard output every 10 seconds. If the "Alive" printouts stop
+This code creates a new Java thread that will print the message ``Alive``
+on the standard output every 10 seconds. If the ``Alive`` printouts stop
 when the UI freeze occurs (assuming no one cancelled the ``Timer``),
 then it means that the MicroEJ Runtime stopped scheduling the Java
 threads. Few suggestions:
@@ -61,7 +61,7 @@ threads. Few suggestions:
    function never returns, no Java thread can run. Spot any suspect
    native functions and print every entry/exit to detect faulty code.
 
-Now, what if the "Alive" heart beat runs while the UI is frozen? Java
+Now, what if the ``Alive`` heart beat runs while the UI is frozen? Java
 threads are getting scheduled but the UI thread, called "Display Pump",
 does not process display events. Let's make the heart beat snippet above
 execute in the UI thread. Simply wraps the
@@ -93,7 +93,7 @@ execute in the UI thread. Simply wraps the
    Timer timer = new Timer();
    timer.schedule(task, 10_000, 10_000);
 
-In case this snippet prints "TimerTask Alive" but not "UI alive" when
+In case this snippet prints ``TimerTask Alive`` but not ``UI alive`` when
 the freeze occurs, then there are few options:
 
 -  The application might be processing a long operation in the UI
@@ -121,7 +121,8 @@ the freeze occurs, then there are few options:
 
 As a general rule, avoid running long operations in the UI thread,
 follow the general pattern and use a dedicated thread/executor instead:
-(QUESTION: use a sequence diagram to be more explicit?)
+
+.. (QUESTION: use a sequence diagram to be more explicit?)
 
 .. code-block:: java
 
