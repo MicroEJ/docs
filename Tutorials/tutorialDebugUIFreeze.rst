@@ -14,13 +14,22 @@ This tutorial explains how to instrument the code in order to locate the issue w
 Bottom-Up approach
 ------------------
 
+Check RTOS scheduler liveness
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Let's start at low level by figuring out if the RTOS is scheduling the
-tasks correctly. Make one of the RTOS task act like a heart beat: create
-a dedicated task and make it report in some way at a regular pace (print
-a message on standard output, blink a LED, etc.). If the heart beat is
-still running when the UI freeze occurs, we can go a step further and
-check whether the MicroEJ runtime is still scheduling Java threads or
-not.
+tasks correctly.
+
+Make one of the RTOS task act like a heart beat: create a dedicated
+task and make it report in some way at a regular pace (print a message
+on standard output, blink a LED, etc.).
+
+If the heart beat is still running when the UI freeze occurs, we can
+go a step further and check whether the MicroEJ runtime is still
+scheduling Java threads or not.
+
+Check Java Scheduler Liveness
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As a reminder, the architecture of the MicroEJ runtime is called green
 thread architecture, it defines a multi-threaded environment without
@@ -63,6 +72,9 @@ Here are a few suggestions:
   function never returns, no Java thread can ever run again. Spot any
   suspect native functions and print every entry/exit to detect faulty
   code.
+
+Check UI Thread Liveness
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now, what if the ``Alive`` heart beat runs while the UI is frozen?
 Java threads are getting scheduled but the UI thread (also called
@@ -149,6 +161,9 @@ follow the general pattern and use a dedicated thread/executor instead:
        });
        }
    });
+
+Check Input Events Processing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Another case that is worth looking at is whether the application is
 processing user input events like it should. The UI may look "frozen"
