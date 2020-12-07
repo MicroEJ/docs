@@ -18,23 +18,26 @@ remaining steps are performed within the C IDE.
 
    Overall Process
 
-1. Step 1 consists in creating a new MicroEJ Platform configuration
-   project. This project describes the MicroEJ Platform (MicroEJ
-   architecture, metadata, etc.).
+The steps are as follow:
 
-2. Step 2 allows you to select which modules available in MicroEJ
-   Architecture will be installed in the MicroEJ Platform.
+1. Create a new MicroEJ Platform configuration project. This project
+   describes the MicroEJ Platform to build (MicroEJ architecture,
+   metadata, etc.).
 
-3. Step 3 builds the MicroEJ Platform according to the choices made in
-   steps 1 and 2.
+2. Select which modules provided by the MicroEJ Architecture will be
+   installed in the MicroEJ Platform.
 
-4. Step 4 compiles a MicroEJ Application against the MicroEJ Platform in
-   order to obtain an application file to link in the BSP.
+3. Build the MicroEJ Platform according to the choices made in steps 1
+   and 2.
 
-5. Step 5 consists in compiling the BSP and linking it with the MicroEJ
-   Application that was built previously, in step 4.
+4. Compile a MicroEJ Application against the MicroEJ Platform in order
+   to obtain an application file to link in the BSP.
 
-6. Step 6 is the final step: Deploy the binary application onto a board.
+5. Compile the BSP and link it with the MicroEJ Application that was
+   built previously in step 4 to produce a MicroEJ Firmware.
+
+6. Final step: Deploy MicroEJ Firmware (i.e. the binary application)
+   onto a board.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
