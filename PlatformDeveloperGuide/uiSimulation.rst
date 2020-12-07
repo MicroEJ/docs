@@ -8,7 +8,7 @@ Simulation
 Principle
 =========
 
-The graphical user interface uses the Front Panel mock (see :ref:`section_frontpanel`) and some extensions (widgets) to simulate the user interactions. It is the equivalent of the three embedded modules (Display, Inputs and LED) of the MicroEJ Platform (see :ref:`section_microui`).
+The graphical user interface uses the Front Panel mock (see :ref:`section_frontpanel`) and some extensions (widgets) to simulate the user interactions. It is the equivalent of the three embedded modules (Display, Input and LED) of the MicroEJ Platform (see :ref:`section_microui`).
 
 The Front Panel enhances the development environment by allowing User Interface  applications to be designed and tested on the computer rather than on the target device (which may not yet be built). The mock interacts with the user's computer in two ways: 
 
@@ -46,7 +46,7 @@ It depends at least on the Front Panel framework. This framework contains the fr
       <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.0"/>
    </dependencies>
 
-To be compatible with graphical engine, the project must depend on an extension of front panel framework. This extension provides some interfaces and classes the graphical engine is using to target simulated display and input devices. The extension does not provide any widgets. It is the equivalent of the embedded low-level API. It fetches by transitivity the front panel framework, so the front panel framework dependency does not need to be specified explicitly: 
+To be compatible with graphical engine, the project must depend on an extension of front panel framework. This extension provides some interfaces and classes the graphical engine is using to target simulated display and input devices. The extension does not provide any widgets. It is the equivalent of the embedded Low Level API. It fetches by transitivity the front panel framework, so the front panel framework dependency does not need to be specified explicitly: 
 
 ::
 
@@ -58,7 +58,7 @@ To be compatible with graphical engine, the project must depend on an extension 
 
 .. warning:: This extension is built for each UI pack version. By consequence a front panel project is made for a platform built with the same UI pack. When the UI pack mismatch, some errors may occur during the front panel project export step, during the platform build and/or during the application runtime.
 
-The graphical engine's front panel extension does not provide any widgets. Some compatible widgets are available in a third library. The lifecycle of this library is different than the UI pack's one. New widgets can be added to simulate new kind of displays, input devices, etc. This extension fetches by transitivity the graphical engine's front panel extension, so this extension dependency does not need to be specified explicitly: 
+The graphical engine's front panel extension does not provide any widgets. Some compatible widgets are available in a third library. The life cycle of this library is different than the UI pack's one. New widgets can be added to simulate new kind of displays, input devices, etc. This extension fetches by transitivity the graphical engine's front panel extension, so this extension dependency does not need to be specified explicitly: 
 
 ::
 
@@ -135,7 +135,7 @@ The decoders list is comma (*,*) separated. Example:
 Dependencies
 ============
 
--  MicroUI module (see :ref:`section_microui`).
+-  MicroUI module (see :ref:`section_microui`),
 
 -  Display module (see :ref:`section_display`): This module gives
    the characteristics of the graphical display that are useful for

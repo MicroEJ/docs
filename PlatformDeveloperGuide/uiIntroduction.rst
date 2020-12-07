@@ -1,7 +1,12 @@
 Principle
 =========
 
-The User Interface Extension features one of the fastest graphical engines, associated with a unique int-based event management system. It provides :ref:`[MUI] library <esr-specifications>` implementation. This chapter describes the *UI3* notions, available since MicroEJ Architecture UI pack 13.0.0 and higher: MicroUI 3.0, Front Panel v6, low-level APIs ``LLUI_xxx``, etc.
+The User Interface Extension features one of the fastest graphical engines, associated with a unique int-based event management system. 
+
+.. 
+   // Add again next line when ESR 3.0 will be available:It provides :ref:`[MUI] library <esr-specifications>` implementation. 
+   
+This chapter describes the *UI3* notions, available since MicroEJ Architecture UI pack 13.0.0 and higher: MicroUI 3.0, Front Panel v6, Low Level APIs ``LLUI_xxx``, etc.
 
 The diagram below shows a simplified view of the components involved in the provisioning of User Interface Extension.
 
@@ -12,8 +17,8 @@ The diagram below shows a simplified view of the components involved in the prov
 
    Overview
 
-The engines responsible to manage the Display, the Inputs and the LEDs are respectively called :ref:`Graphical engine <section_display>`, :ref:`Input engine <section_input>` and :ref:`LED engine <section_leds>`.
-These three low level parts connect MicroUI library to the user-supplied drivers code (coded in C). The drivers can use hardware accelerators like DMA and GPU to perform specific actions (buffers copy, drawings, etc.).
+The engines responsible to manage the Display, the Input and the LED are respectively called :ref:`Graphical engine <section_display>`, :ref:`Input engine <section_input>` and :ref:`LED engine <section_leds>`.
+These three Low Level parts connect MicroUI library to the user-supplied drivers code (coded in C). The drivers can use hardware accelerators like DMA and GPU to perform specific actions (buffers copy, drawings, etc.).
 
 The MicroEJ Simulator provides all features of MicroUI library. The three engines are grouped together in a module called :ref:`Front Panel <section_ui_simulation>`. The Front Panel is supplied with a set of software widgets that generically support a range of input devices such as buttons, joysticks and touchscreens, and output devices such as displays and LEDs. With the help of the Front Panel Designer tool that forms part of the MicroEJ Workbench the user must define a front panel mock-up using these widgets. 
 

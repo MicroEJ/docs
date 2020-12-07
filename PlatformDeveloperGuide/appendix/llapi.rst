@@ -179,8 +179,8 @@ Four C header files are provided:
 
 .. _LLINPUT-API-SECTION:
 
-LLUI_INPUT: Inputs
-==================
+LLUI_INPUT: Input
+=================
 
 ``LLUI_INPUT`` API is composed of the following files:
 
@@ -214,9 +214,9 @@ Sending Events
 The ``LLUI_INPUT`` API provides two generic functions for a C driver to
 send data to its associated event generator:
 
--  ``LLUI_INPUT_sendEvent``:  Sends a 32-bits event to a specific event generator, specified by its ID. If the input buffer is full, the event is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
+-  ``LLUI_INPUT_sendEvent``:  Sends a 32-bit event to a specific event generator, specified by its ID. If the input buffer is full, the event is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
 
--  ``LLUI_INPUT_sendEvents``: Sends a frame constitued by several 32-bits events to a specific event generator, specified by its ID. If the input buffer cannot receive the whole data, the frame is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
+-  ``LLUI_INPUT_sendEvents``: Sends a frame constituted by several 32-bit events to a specific event generator, specified by its ID. If the input buffer cannot receive the whole data, the frame is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
 
 Events will be dispatched to the associated event generator that will be
 responsible for decoding them (see :ref:`javaEventGenerators`).
@@ -316,14 +316,14 @@ LLUI_DISPLAY: Display
 Principle & Naming Convention
 -----------------------------
 
-Each display engine provides a low level API in order to connect a display driver. The file ``LLUI_DISPLAY_impl.h`` defines the API headers to be implemented. For the APIs themselves, the naming convention is that their names match the ``*_IMPL_*`` pattern when the functions need to be implemented:
+The display engine provides some Low Level APIs to connect a display driver. The file ``LLUI_DISPLAY_impl.h`` defines the API headers to be implemented. For the APIs themselves, the naming convention is that their names match the ``*_IMPL_*`` pattern when the functions need to be implemented:
 
 * ``LLUI_DISPLAY_IMPL_initialize``
 * ``LLUI_DISPLAY_IMPL_binarySemaphoreTake``
 * ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``
 * ``LLUI_DISPLAY_IMPL_flush``
 
-Some additional low level API allow you to connect display extra features. These LLAPIs are not required. When they are not implemented, a default implementation is used (weak function). It concerns backlight, contrast etc.
+Some additional Low Level APIs allow you to connect display extra features. These Low Level APIs are not required. When they are not implemented, a default implementation is used (weak function). It concerns backlight, contrast, etc.
 
 This describes succinctly some ``LLUI_DISPLAY_IMPL`` functions. Please refer to documentation inside header files to have more information. 
 
@@ -403,12 +403,12 @@ LLUI_LED: LEDs
 Principle
 ---------
 
-The LEDs engine provides a Low Level API for connecting LED drivers. The file ``LLUI_LED_impl.h``, which comes with the LEDs engine, defines the API headers to be implemented.
+The LEDs engine provides Low Level APIs for connecting LED drivers. The file ``LLUI_LED_impl.h``, which comes with the LEDs engine, defines the API headers to be implemented.
 
 Naming Convention
 -----------------
 
-The Low Level API relies on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
+The Low Level APIs rely on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
 
 Initialization
 --------------

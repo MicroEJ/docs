@@ -14,7 +14,7 @@ The Image Loader module is an on-board engine that
 * retrieves image in external memories (external memory loader),
 * converts images in MicroEJ format, 
 * creates a runtime buffer to manage MicroUI BufferedImage,
-* manages dynamic images lifecycle.
+* manages dynamic images life cycle.
 
 .. note:: The Image Loader is managing images to be compatible with Image Renderer. It does manage image in custom format (see :ref:`section_image_binary_raw`)
 
@@ -37,7 +37,7 @@ The heap size is application dependant. In MicroEJ application launcher, set its
 BufferedImage
 =============
 
-MicroUI application is able to create an image where it is allowed to draw into: the MicroUI ``BufferedImage``. The image format is the same than the display format; in other words, its number of bits-per-pixel and its pixel bits organization are the same. The display pixel format can standard or custom (see :ref:`display_pixel_structure`). To create this kind of image, the Image Loader has just to create a buffer in RAM whose size depends on the image size (see :ref:`section_image_display_raw`).
+MicroUI application is able to create an image where it is allowed to draw into: the MicroUI ``BufferedImage``. The image format is the same than the display format; in other words, its number of bits-per-pixel and its pixel bits organization are the same. The display pixel format can be standard or custom (see :ref:`display_pixel_structure`). To create this kind of image, the Image Loader has just to create a buffer in RAM whose size depends on the image size (see :ref:`section_image_display_raw`).
 
 
 .. _section_image_external_memory:

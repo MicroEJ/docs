@@ -25,8 +25,7 @@ Create a MicroEJ Standalone Application
 
    -  ``src/main/java``: Folder for future sources
 
-   -  ``src/main/resources``: Folder for future resources (images, fonts
-      etc.)
+   -  ``src/main/resources``: Folder for future resources (images, fonts, etc.)
 
    -  ``META-INF``: Sandboxed Application configuration and resources
 

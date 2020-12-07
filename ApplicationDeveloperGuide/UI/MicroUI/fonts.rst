@@ -85,11 +85,10 @@ Allows the selection of raw Unicode character ranges.
 
 Examples:
 
--  ``myfont:0x21-0x49``: Embed all characters from 0x21 to 0x49
+-  ``myfont:0x21-0x49``: Defines one range: embed all characters from 0x21 to 0x49
    (included);
-
--  ``myfont:0x21-0x49,0x55``: Embed all characters from 0x21 to 0x49 and
-   character 0x55.
+-  ``myfont:0x21-0x49,0x55-0x75``: Defines a set of two ranges: embed all characters from 0x21 to 0x49 and from 0x55 to 0x75.
+-  ``myfont:0x21-0x49,0x55``: Defines a set of one range and one character: embed all characters from 0x21 to 0x49 and character 0x55.
 
 Known Range
 ~~~~~~~~~~~
@@ -99,7 +98,6 @@ A known range is a range available in the following table.
 Examples:
 
 -  ``myfont:basic_latin``: Embed all *Basic Latin* characters;
-
 -  ``myfont:basic_latin;arabic``: Embed all *Basic Latin* characters,
    and all *Arabic* characters.
 

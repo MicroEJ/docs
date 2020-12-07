@@ -83,7 +83,7 @@ Language
 Supported Languages
 -------------------
 
-The Font Engine manages the Unicode basic multilingual languages, whose characters are encoded on 16-bit, i.e. Unicodes from 0x0000 to 0xFFFF. It allows to render left-to-right or right-to-left writing systems: Latin (English, etc.), Arabic, Chinese etc. are some supported languages. Note that the rendering is always performed left-to-right, even if the string are written right-to-left. There is no support for top-to-bottom writing systems. Some languages require diacritics and contextual letters; the Font Engine manages simple rules in order to combine several characters.
+The Font Engine manages the Unicode basic multilingual languages, whose characters are encoded on 16-bit, i.e. Unicodes from 0x0000 to 0xFFFF. It allows to render left-to-right or right-to-left writing systems: Latin (English, etc.), Arabic, Chinese, etc. are some supported languages. Note that the rendering is always performed left-to-right, even if the string are written right-to-left. There is no support for top-to-bottom writing systems. Some languages require diacritics and contextual letters; the Font Engine manages simple rules in order to combine several characters.
 
 Arabic Support
 --------------
@@ -94,7 +94,7 @@ To render an Arabic text, the font engine requires several points:
 
 -  To determinate if a character has to overlap the previous character,
    the font engine uses a specific range of ARABIC characters: from
-   ``0xfe70`` to ``0xfefc``. All others characters (ARABIC or not)
+   ``0xfe70`` to ``0xfefc``. All other characters (ARABIC or not)
    outside this range are considered *classic* and no overlap is
    performed. Note that several ARABIC characters are available outside
    this range, but the same characters (same representation) are

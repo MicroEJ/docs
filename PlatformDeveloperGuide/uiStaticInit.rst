@@ -11,7 +11,7 @@ The MicroUI implementation for MicroEJ requires a configuration step (also calle
 
 This XML file (also called the initialization file) defines:
 
--  The MicroUI event generators that will exist in the application in relation to low level drivers that provide data to these event generators (see :ref:`section_input`).
+-  The MicroUI event generators that will exist in the application in relation to Low Level drivers that provide data to these event generators (see :ref:`section_input`).
 -  Whether the application has a display; and if so, it provides its logical name.
 -  Which fonts will be provided to the application.
 
@@ -129,18 +129,17 @@ XML File Example
 
 This common MicroUI initialization file initializes MicroUI with:
 
--  a `Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_
+-  a `Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_,
 
--  a `Command <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Command.html>`_ event generator
+-  a `Command <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Command.html>`_ event generator,
 
--  a `Buttons <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html>`_ event generator which targets *n* buttons (3 first
-   buttons having extended features)
+-  a `Buttons <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html>`_ event generator which targets *n* buttons (3 first buttons having extended features),
 
--  a `Buttons <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html>`_ event generator which targets the buttons of a joystick
+-  a `Buttons <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html>`_ event generator which targets the buttons of a joystick,
 
--  a `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ event generator which targets a touch panel
+-  a `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ event generator which targets a touch panel,
 
--  a `Font <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html>`_ whose path is relative to this file
+-  a `Font <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html>`_ whose path is relative to this file.
 
 ::
 

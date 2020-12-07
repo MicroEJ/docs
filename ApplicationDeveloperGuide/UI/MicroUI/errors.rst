@@ -26,7 +26,7 @@ When an exception is thrown by the implementation of the MicroUI API, the except
    +-------------+--------------------------------------------------------+
    | -3          | Deadlock. Cannot wait for an event in the same thread  |
    |             | that runs events. ``Display.waitFlushCompleted()``     |
-   |             | must not be called in the display pump thread (for     |
+   |             | must not be called in the MicroUI thread (for          |
    |             | example in ``render`` method).                         |
    +-------------+--------------------------------------------------------+
    | -4          | Resource's path must be relative to the classpath      |
@@ -46,9 +46,9 @@ When an exception is thrown by the implementation of the MicroUI API, the except
    |             | the required runtime image decoder is not available in |
    |             | the platform.                                          |
    +-------------+--------------------------------------------------------+
-   | -9          | This exception is thrown when the pump of the internal |
+   | -9          | This exception is thrown when the FIFO of the internal |
    |             | MicroUI thread is full. In this case, no more event    |     
-   |             | (such as ``requestRender``, input events etc.) can be  |
+   |             | (such as ``requestRender``, input events, etc.) can be |
    |             | added into it.                                         |
    |             |                                                        |
    |             | Most of time this error occurs when:                   |
@@ -58,8 +58,8 @@ When an exception is thrown by the implementation of the MicroUI API, the except
    |             |    waiting for the end of the previous drawing.        |
    |             |                                                        |
    |             | -  Too many input events are pushed from an input      |
-   |             |    driver to the UI pump (for example some touch       |
-   |             |    events).                                            |
+   |             |    driver to the MicroUI thread (for example some      |
+   |             |    touch events).                                      |
    +-------------+--------------------------------------------------------+
    | -10         | There is no display on the platform.                   |
    +-------------+--------------------------------------------------------+

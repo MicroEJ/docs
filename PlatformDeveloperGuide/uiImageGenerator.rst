@@ -46,10 +46,10 @@ The image generator can run in two modes:
 Structure
 =========
 
-The Image Generator module is constitued in several parts: the core part and services parts: 
+The Image Generator module is constituted from several parts, the core part and services parts: 
 
 * "Core" part: it takes an images list file as entry point and generates a binary file (no specific format) for each file. To read a file, it redirects the reading to the available service loaders. To generate a binary file, it redirects the encoding to the available service encoders. 
-* "Service API" part: it provides some APIs used by the core part to load input files and to encode binary files. It provides too some APIs to customize the MicroEJ format.
+* "Service API" part: it provides some APIs used by the core part to load input files and to encode binary files. It also provides some APIs to customize the MicroEJ format.
 * "Standard input format loader" part: this service loads standard image files (PNG, JPEG, etc.).
 * "MicroEJ format generator" part: this service encodes an image in MicroEJ format.
 
@@ -61,10 +61,10 @@ The standalone Image Generator embeds all parts described above. By consequence,
 Extended Mode
 =============
 
-To increase the capacities of Image Generator, the extension must be built and added in the platform. As descrived above this extension will able to:
+To increase the capabilities of Image Generator, the extension must be built and added in the platform. As described above this extension will be able to:
 
 * read more input image file formats,
-* enrich the MicroEJ format with platform characteristics,
+* extand the MicroEJ format with platform characteristics,
 * encode images in a third-party binary format.
 
 To do that the Image Generator provides some services to implement. This chapter explain how to create and include this extension in the platform. Next chapters explain the aim of each service.
@@ -106,7 +106,7 @@ To do that the Image Generator provides some services to implement. This chapter
          </dependencies>
       </ivy-module>
 
-3. Create the folder ``META-INF/services`` in source folder ``src/main/resources`` (this folder will be filled with later).
+3. Create the folder ``META-INF/services`` in source folder ``src/main/resources`` (this folder will be filled in later).
 4. When a service is added (see next chapters), build the easyant project.
 5. Copy the generated jar: ``target~/artifacts/imageGeneratorMyPlatform.jar`` in the platform configuration project folder: ``MyPlatform-configuration/dropins/tools/``
 6. Rebuild the platform.
@@ -122,7 +122,7 @@ The standalone Image Generator is not able to load all images formats, for insta
 2. Create an implementation of interface ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension``.
 3. Create the file ``META-INF/services/com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` and open it.
 4. Note down the name of created class, with its package and classname.
-5. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see upper).
+5. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
 
 .. note:: The class ``com.microej.tool.ui.generator.BufferedImageLoader`` already implements the interface. This implementation is used to load standard images. It can be sub-classed to add some behavior.
 
@@ -131,7 +131,7 @@ The standalone Image Generator is not able to load all images formats, for insta
 Custom MicroEJ Format
 =====================
 
-As mentionned upper (:ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`), the MicroEJ format can be enriched by notions specific to the platform (and often to the GPU the platform is using). The generated file stays a MicroEJ file format, usable by the Image Renderer. Additionally, the file becomes compatible with the platform constraints. 
+As mentionned above (:ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`), the MicroEJ format can be extanded by notions specific to the platform (and often to the GPU the platform is using). The generated file stays a MicroEJ file format, usable by the Image Renderer. Additionally, the file becomes compatible with the platform constraints. 
 
 1. Open image generator extension project.
 2. Create a subclass of ``com.microej.tool.ui.generator.BufferedImageLoader`` (to be able to load standard images) or create an implementation of interface ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` (to load custom images).
@@ -140,7 +140,7 @@ As mentionned upper (:ref:`section_image_display_raw` and :ref:`section_image_gp
 5. Override method ``getOptionalHeader()`` if an additional header must be added between the MicroEJ file header and pixels array. The header size is also used to align image memory address (custom header is aligned on its size).
 6. Create the file ``META-INF/services/com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` and open it.
 7. Note down the name of created class, with its package and classname.
-8. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see upper).
+8. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
 
 If the only constraint is the pixels array aligment, the Image Generator extension is not useful:
 
@@ -153,13 +153,13 @@ This alignment will be used by the Image Generator and also by the Image Loader.
 Platform Binary Format
 ======================
 
-As mentionned upper (:ref:`section_image_binary_raw`), the Image Generator is able to generate a binary file compatible with platform (and not compatible with Image Renderer). This is very useful when a platform library offers the possibility to use other kinds of images than MicroUI library. The binary file can be encoded according options the user gives in the images list file.
+As mentionned above (:ref:`section_image_binary_raw`), the Image Generator is able to generate a binary file compatible with platform (and not compatible with Image Renderer). This is very useful when a platform library offers the possibility to use other kinds of images than MicroUI library. The binary file can be encoded according to the options the user gives in the images list file.
 
 1. Open image generator extension project.
 2. Create an implementation of the interface ``com.microej.tool.ui.generator.ImageConverter``.
 3. Create the file ``META-INF/services/com.microej.tool.ui.generator.ImageConverter`` and open it.
 4. Note down the name of created class, with its package and classname.
-5. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see upper).
+5. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
 
 Configuration File
 ==================
@@ -169,7 +169,7 @@ application classpath.
 
 .. note::
 
-   The list file must be specified in the MicroEJ Application launcher (see :ref:`application_options`). However, all files in application classpath with suffix ``.images.list`` are automatically parsed by the Image Generator tool.
+   The list file must be specified in the MicroEJ Application launcher (see :ref:`application_options`). However, all the files in the application classpath with suffix ``.images.list`` are automatically parsed by the Image Generator tool.
 
 Each line can add optional parameters (separated by a ':') which define and/or describe the output file format (raw format). When no option is specified, the image is not converted and embedded as well.
 
@@ -186,14 +186,14 @@ Each line can add optional parameters (separated by a ':') which define and/or d
       image2:RGB565
       image3:A4
 
-* MicroEJ "Display" output format: to encode the image in the same format than display (generic display or custom display, see :ref:`display_pixel_structure`), specify ``display`` as output format:
+* MicroEJ "Display" output format: to encode the image in the same format as the display (generic display or custom display, see :ref:`display_pixel_structure`), specify ``display`` as output format:
 
    .. code-block::
       :caption: Display Output Format Example
 
       image1:display
 
-* MicroEJ "GPU" output format: this format declaration is identical to standard format. It is by construction a standard becomes a GPU compatible format.
+* MicroEJ "GPU" output format: this format declaration is identical to standard format. It is a format that is also supported by the GPU.
 
    .. code-block::
       :caption: GPU Output Format Examples
@@ -250,8 +250,7 @@ Dependencies
 -  Image Renderer module (see :ref:`section_image_core`).
 
 -  Display module (see :ref:`section_display`): This module gives
-   the characteristics of the graphical display that are useful in
-   configuring the Image Generator.
+   the characteristics of the graphical display that are useful to configure the Image Generator.
 
 
 .. _section_imagen_installation:

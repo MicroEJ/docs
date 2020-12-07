@@ -80,7 +80,7 @@ Without Compression
 When no output format is set in the images list file, the image is
 embedded without any conversion / compression. This allows you to embed
 the resource as well, in order to keep the source image characteristics
-(compression, bpp etc.). This option produces the same result as
+(compression, bpp, etc.). This option produces the same result as
 specifiying an image as a resource in the MicroEJ launcher.
 
 Advantages:
@@ -315,7 +315,7 @@ RLE1 Output Format
 ~~~~~~~~~~~~~~~~~~
 
 The image engine can display embedded images that are encoded into a compressed format which encodes several consecutive pixels into one or
-more 16-bits words. This encoding manages a maximum alpha level of 2
+more 16-bit words. This encoding manages a maximum alpha level of 2
 (alpha level is always assumed to be 2, even if the image is not
 transparent).
 
