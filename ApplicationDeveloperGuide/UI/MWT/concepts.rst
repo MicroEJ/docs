@@ -201,7 +201,7 @@ See chapter :ref:`section_animate_widget` for more information on animating a wi
 Partial buffer considerations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Rendering a widget in partial buffer mode may require multiple cycles if the buffer is not big enough to hold all the pixels to update in a single shot.
+Rendering a widget in :ref:`partial buffer mode <section_display_partial_buffer>` may require multiple cycles if the buffer is not big enough to hold all the pixels to update in a single shot.
 This means that rendering is slower in partial buffer mode, and this may cause performance being significantly affected during animations.
 
 Besides, the whole screen is flushed in multiple times instead of a single one, which means that the user may see the display at a time where every part of the display has not been flushed yet.
@@ -210,8 +210,6 @@ Due to these limitations, it is not recommended to repaint big parts of the scre
 For example, a transition on a small part of the screen will look better than a transition affecting the whole screen.
 A transition will look perfect if the partial buffer can hold all the lines to repaint.
 Since the buffer holds a group of lines, a horizontal transition may not look the same as a vertical transition.
-
-Refer to :ref:`section_display_partial_buffer` for more information on partial buffer mode.
 
 Desktop and widget states
 -------------------------

@@ -232,9 +232,14 @@ Application Limitations
 
 Using a partial buffer rather than a complete buffer may require adapting the code of the application, since rendering a graphical element may require multiple passes. If the application uses MWT, a :ref:`custom render policy <section_render_policy>` has to be used.
 
-Besides, the following MicroUI API can not be used in partial buffer mode: `Painter.drawDisplayRegion() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html>`_.
-Indeed, this API allows to draw a region of the display by reading the content of the back buffer. In partial buffer mode, we cannot rely on the current content of the back buffer as it doesn’t contain what is seen on the screen.
-Instead of relying on the drawings which were performed previously, this API should be avoided and all the drawings should be performed again.
+Besides, the `GraphicsContext.readPixel() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#readPixel-int-int->`_
+and the `GraphicsContext.readPixels() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#readPixels-int:A-int-int-int-int-int-int->`_ APIs
+can not be used on the graphics context of the display in partial buffer mode.
+Indeed, we cannot rely on the current content of the back buffer as it doesn't contain what is seen on the screen.
+
+Likewise, the `Painter.drawDisplayRegion() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html>`_ API can not be used in partial buffer mode.
+Indeed, this API reads the content of the back buffer in order to draw a region of the display.
+Instead of relying on the drawings which were performed previously, this API should be avoided and the drawings should be performed again.
 
 Using a partial buffer can have a significant impact on animation performance. Refer to :ref:`section_animations` for more information on the development of animations in an application.
 
