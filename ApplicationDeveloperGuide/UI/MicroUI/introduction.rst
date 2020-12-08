@@ -5,7 +5,10 @@ MicroUI Foundation Library provides access to a pixel-based display and inputs.
 
 The aim of this library is to enable the creation of user interface in Java by reifying hardware capabilities.
 
-The complete specification is available at :ref:`[MICROUI 3.0] ESR documentation <esr-specifications>`.
+
+.. 
+   // Add again next line when ESR 3.0 will be available:
+   The complete specification is available at :ref:`[MICROUI 3.0] ESR documentation <esr-specifications>`.
 
 To use the MicroUI Foundation Library, add `MicroUI API module <https://repository.microej.com/artifacts/ej/api/microui/>`_ to a :ref:`module description file <mmm_module_description>`:
 

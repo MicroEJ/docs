@@ -47,6 +47,7 @@ Foundation Libraries :
 .. figure:: images/jpf-runtime-components.*
    :alt: MicroEJ Architecture Runtime Modules: Tools, Libraries and APIs
    :align: center
+   :scale: 75%
 
    MicroEJ Architecture Runtime Modules: Tools, Libraries and APIs
 

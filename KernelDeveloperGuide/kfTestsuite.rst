@@ -2,7 +2,7 @@ Setup a KF Testsuite
 ====================
 
 A KF testsuite can be executed when building a Foundation Library or an Add-On library, 
-and usually extends the tests written for the :ref:`default library testsuite <testsuite>` to verify the behavior
+and usually extends the tests written for the :ref:`default library testsuite <application_testsuite>` to verify the behavior
 of this library when its APIs are exposed by a Kernel.
 
 A KF testsuite is composed of a set of KF tests, each KF test itself is a minimal MicroEJ Multi-Sandbox Firmware composed of a Kernel and zero or more Features.

@@ -7,12 +7,12 @@ Image Renderer
 Principle
 =========
 
-The Image Renderer module is an on-board engine that reads and draws the image encoded in MicroEJ format (see :ref:`section_image_raw`) . It calls low-level APIs to draw and transform the images (rotation, scaling, deformation etc.). It also includes software algorithms to perform the rendering.
+The Image Renderer module is an on-board engine that reads and draws the image encoded in MicroEJ format (see :ref:`section_image_raw`) . It calls Low LevelLow Level APIs to draw and transform the images (rotation, scaling, deformation, etc.). It also includes software algorithms to perform the rendering.
 
 Functional Description
 ======================
 
-The engine redirects all MicroUI images drawings to a set of low-level API. All low-level API are implemented by weak functions which call software algorithms. The BSP has the possibility to override this default behavior for each low-level API independently. Furthermore, the BSP can override a low-level API for a specific MicroEJ format (for instance ``ARGB8888``) and call the software algorithms for all others formats.
+The engine redirects all MicroUI images drawings to a set of Low Level API. All Low Level API are implemented by weak functions which call software algorithms. The BSP has the possibility to override this default behavior for each Low Level API independently. Furthermore, the BSP can override a Low Level API for a specific MicroEJ format (for instance ``ARGB8888``) and call the software algorithms for all other formats.
 
 .. graphviz::
 
@@ -62,9 +62,9 @@ The engine redirects all MicroUI images drawings to a set of low-level API. All 
 Dependencies
 ============
 
--  MicroUI module (see :ref:`section_microui`)
+-  MicroUI module (see :ref:`section_microui`),
 
--  Display module (see :ref:`section_display`)
+-  Display module (see :ref:`section_display`).
 
 
 Installation

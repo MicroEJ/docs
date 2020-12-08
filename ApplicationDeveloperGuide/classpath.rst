@@ -40,7 +40,7 @@ project appearance order (top to bottom).
 .. figure:: images/ClassPath_4.png
    :alt: MicroEJ Application Classpath Mapping
    :align: center
-   :width: 80.0%
+   :scale: 70%
 
    MicroEJ Application Classpath Mapping
 
@@ -63,6 +63,7 @@ MicroEJ Classpath elements are loaded transitively.
 .. figure:: images/ClassPath_1.png
    :alt: Classpath Load Principle
    :align: center
+   :scale: 65%
 
    Classpath Load Principle
 
@@ -81,7 +82,7 @@ The MicroEJ Classpath contains the following elements:
 
 -  Immutables Object data files, described in Section :ref:`section.classpath.elements.immutables`;
 
--  Images and Fonts resources;
+-  Images, Fonts and Native Language Support (NLS) resources, described in :ref:`chapter.microej.applicationResources`;
 
 -  ``*.[extension].list`` files, declaring contents to load. Supported
    list file extensions and format is specific to declared application
@@ -155,6 +156,9 @@ resource. Example:
 
    # The following resource is embedded as a raw resource
    com/mycompany/MyResource.txt
+
+Others resources types are supported in MicroEJ Classpath, 
+see :ref:`chapter.microej.applicationResources` for more details.
 
 .. _section.classpath.elements.immutables:
 

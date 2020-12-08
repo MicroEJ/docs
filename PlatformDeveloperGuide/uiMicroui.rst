@@ -8,7 +8,11 @@ MicroUI
 Principle
 =========
 
-MicroUI library defines a low-level UI framework for embedded devices. This module allows the creation of basic Human-Machine-Interfaces (HMI), with output on a pixel-based screen. For more information, please consult the :ref:`[MUI] Specification <esr-specifications>`.
+MicroUI library defines a Low Level UI framework for embedded devices. This module allows the creation of basic Human-Machine-Interfaces (HMI), with output on a pixel-based screen. 
+
+.. 
+   // Add again next line when ESR 3.0 will be available:
+   For more information, please consult the :ref:`[MUI] Specification <esr-specifications>`.
 
 
 .. _section_architecture:
@@ -18,7 +22,7 @@ Architecture
 
 MicroUI library is the entry point to perform some drawings on a display and to interact with user input events. This library contains only a minimal set of basic APIs. High-level libraries can be used to have more expressive power, such as :ref:`mwt` . In addition to this restricted set of APIs, the MicroUI implementation has been designed so that the EDC and BON footprint is minimal. 
 
-At MicroEJ application startup all MicroUI objects relative to the I/O devices are created and accessible. The following MicroUI methods allow you to access these internal objects:
+At MicroEJ application startup all MicroUI objects relative to the I/O devices are created and accessible. The following MicroUI methods allow you to access these objects:
 
 -  `Display.getDisplay() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#getDisplay-->`_ : returns the instance of the display which drives the main display screen.
 
@@ -30,8 +34,7 @@ First, MicroUI requires a configuration step in order to create these internal o
 
 .. note::
 
-   This configuration step is the same for both embedded and simulation
-   platforms.
+   This configuration step is the same for both embedded and smulated platforms.
 
 The embedded platform requires some additional C libraries to drive the I/O devices. Each C library is dedicated to a specific kind of I/O device. A specific chapter is available to explain each kind of I/O device.
 
@@ -43,9 +46,9 @@ The embedded platform requires some additional C libraries to drive the I/O devi
    | Graphical / pixel-based display           | Display         | :ref:`section_display`     |
    +-------------------------------------------+-----------------+----------------------------+
    | Inputs (buttons, joystick, touch,         | Input           | :ref:`section_input`       |
-   | pointers etc.)                            |                 |                            |
+   | pointers, etc.)                           |                 |                            |
    +-------------------------------------------+-----------------+----------------------------+
-   | LEDs                                      | LEDs            | :ref:`section_leds`        |
+   | LEDs                                      | LED             | :ref:`section_leds`        |
    +-------------------------------------------+-----------------+----------------------------+
 
 The simulation platform uses a mock which simulates all I/O devices.
@@ -58,36 +61,37 @@ Thread
 Principle
 ---------
 
-The MicroUI implementation for MicroEJ uses one internal thread as described in :ref:`MicroUI specification <esr-specifications>`. This thread is created during the MicroUI initialization step, and is started by a call to `MicroUI.start() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start-->`_. 
+The MicroUI implementation for MicroEJ uses one internal thread. This thread is created during the MicroUI initialization step, and is started by a call to `MicroUI.start() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start-->`_. 
 
 Role
 ----
 
-This thread (called ``UIPump``) has two roles:
+This thread has several roles:
 
--  It manages all display events (`requestRender() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestRender-->`_, `requestShow() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestShow-ej.microui.display.Displayable->`_, etc.)
--  It reads the I/O devices inputs and dispatches them into the event generators' listeners. See input section: :ref:`section_input`. 
+- It manages all display events (`requestRender() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestRender-->`_, `requestShow() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestShow-ej.microui.display.Displayable->`_, etc.).
+- It reads the I/O devices inputs and dispatches them into the event generators' listeners. See input section: :ref:`section_input`. 
+- It allows to run some piece of code using the `callSerially() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#callSerially-java.lang.Runnable->`_ method.
 
 Memory
 ------
 
-The thread is always running. The user has to count it to determine the number of concurrent threads the MicroEJ Core Engine can run (see Memory options in :ref:`application_options`).
+The thread is always running. The user has to count it to determine the number of concurrent threads the MicroEJ Core Engine can run (see *Memory* options in :ref:`application_options`).
 
 Exceptions
 ----------
 
-The thread cannot be stopped with a Java exception: The exceptions are always checked by the framework.
+The thread cannot be stopped with a Java exception: the exceptions are always checked by the framework.
 
 When an exception occurs in a user method called by the internal thread (for instance `render() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Displayable.html#render-ej.microui.display.GraphicsContext->`_), the current ``UncaughtExceptionHandler`` receives the exception. When no exception handler is set, a default handler prints the stack trace.
 
 Native Calls
 ============
 
-The MicroUI implementation for MicroEJ uses native methods to perform some actions (read input devices events, perform drawings, turn on LEDs etc.). The library implementation has been designed to not use blocking native methods (wait input devices, wait end of drawing etc.) which can lock the full MicroEJ Core Engine execution. 
+The MicroUI implementation for MicroEJ uses native methods to perform some actions (read input devices events, perform drawings, turn on LEDs, etc.). The library implementation has been designed to not use blocking native methods (wait input devices, wait end of drawing, etc.) which can lock the full MicroEJ Core Engine execution. 
 
 The specification of the native methods is to perform the action as fast as possible. The action execution may be sequential or parallel because an action is able to use a third-party device (software or hardware). In this case, some callbacks are available to notify the end of this kind of parallel actions. 
 
-However some actions have to wait the end of a previous parallel action. By consequence the caller thread is blocked until the previous action is done; in others words, until the previous parallel action has called its callback. In this case, only the current Java thread is locked (because it cannot continue its execution until the both actions are performed). All others Java threads can run, even a thread with a lower priority than current thread. If no thread has to be run, MicroEJ Core Engine goes in sleep mode until the native callback is called.
+However some actions have to wait the end of a previous parallel action. By consequence the caller thread is blocked until the previous action is done; in other words, until the previous parallel action has called its callback. In this case, only the current Java thread is locked (because it cannot continue its execution until both actions are performed). All other Java threads can run, even a thread with a lower priority than current thread. If no thread has to be run, MicroEJ Core Engine goes in sleep mode until the native callback is called.
 
 Transparency
 ============
@@ -127,11 +131,10 @@ The destination buffer is always opaque, so:
 
 where:
 
--  :math:`{\alpha}`\ *FG* is the alpha level of the foreground pixel (layer pixel)
--  :math:`{\alpha}`\ *BG* is the alpha level of the background pixel (working buffer
-   pixel)
--  *Cxx* is a color component of a pixel (Red, Green or Blue).
--  :math:`{\alpha}`\ *Out* is the alpha level of the final pixel
+-  :math:`{\alpha}`\ *FG* is the alpha level of the foreground pixel (layer pixel),
+-  :math:`{\alpha}`\ *BG* is the alpha level of the background pixel (working buffer pixel),
+-  *Cxx* is a color component of a pixel (Red, Green or Blue),
+-  :math:`{\alpha}`\ *Out* is the alpha level of the final pixel.
 
 Fonts
 -----
@@ -168,17 +171,7 @@ MicroUI Initialization step.
 Use
 ===
 
-The `MicroUI API module <https://repository.microej.com/artifacts/ej/api/microui/>`_
-must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
-Application project:
-
-::
-
-  <dependency org="ej.api" name="microui" rev="3.0.0"/>
-
-This library provides a set of options. Refer to the chapter
-:ref:`application_options` which lists all available options.
-
+See :ref:`MicroUI <section_app_microui>` chapter in Application Developer Guide.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

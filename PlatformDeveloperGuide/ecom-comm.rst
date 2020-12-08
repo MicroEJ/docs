@@ -81,6 +81,7 @@ exist to support a Buffered connection.
 .. figure:: images/architecture.*
    :alt: ECOM Comm components
    :align: center
+   :scale: 80%
 
    ECOM Comm components
 
@@ -149,6 +150,7 @@ to the given Comm Port identifier.
 .. figure:: images/comm_open.*
     :alt: Comm Port Open Sequence
     :align: center
+    :scale: 80%
 
     Comm Port Open Sequence
 
@@ -179,7 +181,7 @@ connection with ECOM registration mechanism enabled.
 
 .. figure:: images/dyn_sequence.*
     :alt: Dynamic Connection Lifecycle
-    :width: 100.0%
+    :scale: 90%
     :align: center
 
     Dynamic Connection Lifecycle
@@ -493,8 +495,15 @@ is required during platform creation to configure the module (see
 Use
 ===
 
-A classpath variable named ``ECOM-COMM-1.1`` is available. This
-Foundation Library is always required when developing a MicroEJ
+The `ECOM Comm API Module <https://repository.microej.com/artifacts/ej/api/ecom-comm/>`_ 
+must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to allow access to the ECOM Comm library. 
+
+::
+
+   <dependency org="ej.api" name="ecom-comm" rev="1.1.4"/>
+
+This Foundation Library is always required when developing a MicroEJ
 Application which communicates with some external devices using the
 serial communication mode.
 

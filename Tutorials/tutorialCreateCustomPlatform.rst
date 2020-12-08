@@ -31,7 +31,7 @@ In this document we will address the following items:
 
 The MicroEJ Platform relies on C drivers (aka low level LL drivers) for each of the platform feature.
 These drivers are implemented in the platform BSP project. This project is edited in the C compiler IDE/dev environment (e.g. KEIL, GCC, IAR).
-E.g. the MicroUI library LED feature will require a ``LLLEDS.c`` that implements the native on/off IO drive.
+E.g. the MicroUI library LED feature will require a ``LLUI_LED.c`` that implements the native on/off IO drive.
 
 The following sections explain how to create a MicroEJ Platform for a custom device starting from an existing MicroEJ Platform project
 whether it is configured for the same MCU/RTOS/C Compiler or not.

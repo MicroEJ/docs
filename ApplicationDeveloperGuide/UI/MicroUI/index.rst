@@ -1,3 +1,5 @@
+.. _section_app_microui:
+
 MicroUI
 =======
 

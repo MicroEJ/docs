@@ -9,7 +9,7 @@ Principle
 =========
 
 The Font Designer module is a graphical tool (Eclipse plugin) that runs
-within the MicroEJ Workbench used to build and edit MicroUI fonts. It
+within the MicroEJ IDE used to build and edit MicroUI fonts. It
 stores fonts in a platform-independent format.
 
 
@@ -18,7 +18,7 @@ Functional Description
 
 .. figure:: images/designer_font-process2.*
    :alt: Font Generation
-   :scale: 60%
+   :scale: 70%
    :align: center
 
    Font Generation

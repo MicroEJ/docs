@@ -14,7 +14,7 @@ The Image Loader module is an on-board engine that
 * retrieves image in external memories (external memory loader),
 * converts images in MicroEJ format, 
 * creates a runtime buffer to manage MicroUI BufferedImage,
-* manages dynamic images lifecycle.
+* manages dynamic images life cycle.
 
 .. note:: The Image Loader is managing images to be compatible with Image Renderer. It does manage image in custom format (see :ref:`section_image_binary_raw`)
 
@@ -37,7 +37,7 @@ The heap size is application dependant. In MicroEJ application launcher, set its
 BufferedImage
 =============
 
-MicroUI application is able to create an image where it is allowed to draw into: the MicroUI ``BufferedImage``. The image format is the same than the display format; in other words, its number of bits-per-pixel and its pixel bits organization are the same. The display pixel format can standard or custom (see :ref:`display_pixel_structure`). To create this kind of image, the Image Loader has just to create a buffer in RAM whose size depends on the image size (see :ref:`section_image_display_raw`).
+MicroUI application is able to create an image where it is allowed to draw into: the MicroUI ``BufferedImage``. The image format is the same than the display format; in other words, its number of bits-per-pixel and its pixel bits organization are the same. The display pixel format can be standard or custom (see :ref:`display_pixel_structure`). To create this kind of image, the Image Loader has just to create a buffer in RAM whose size depends on the image size (see :ref:`section_image_display_raw`).
 
 
 .. _section_image_external_memory:
@@ -65,7 +65,7 @@ An image may be pre-processed (:ref:`section_image_generator`) and so already in
 Encoded Image
 =============
 
-An image can be encoded (PNG, JPEG etc.). In this case Image Loader asks to its Image Decoders module if a decoder is able to decode the image. The source image is not copied in RAM (expect for images located in an external memory). Image Decoder allocates the decoded image buffer in RAM first and then inflates the image. The image is encoded in MicroEJ format specified by the application, when specified. When not specified, the image in encoded in the default MicroEJ format specified by the Image Decoder itself.
+An image can be encoded (PNG, JPEG, etc.). In this case Image Loader asks to its Image Decoders module if a decoder is able to decode the image. The source image is not copied in RAM (expect for images located in an external memory). Image Decoder allocates the decoded image buffer in RAM first and then inflates the image. The image is encoded in MicroEJ format specified by the application, when specified. When not specified, the image in encoded in the default MicroEJ format specified by the Image Decoder itself.
 
 .. _image_internal_decoder:
 

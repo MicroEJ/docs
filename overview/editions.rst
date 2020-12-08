@@ -17,6 +17,7 @@ for application developers targeting this device.
 
 .. figure:: images/toolchain.png
    :alt: MicroEJ Development Tools Overview
+   :scale: 55%
    :align: center
 
    MicroEJ Development Tools Overview
@@ -53,13 +54,15 @@ In MicroEJ Studio/SDK, go to ``Help`` > ``About MicroEJ SDK`` menu.
 
 In case of MicroEJ SDK ``4.1.x``, the MicroEJ SDK version is directly displayed, such as ``4.1.5``:
 
-   .. figure:: images/about_sdk_4.x.png
-      :alt: MicroEJ SDK 4.x About Window
+.. figure:: images/about_sdk_4-x.png
+   :alt: MicroEJ SDK 4.x About Window
+   :align: center
 
 In case of MicroEJ SDK ``5.x``, the value displayed is the MicroEJ SDK distribution, such as ``19.05`` or ``20.07``:
 
-   .. figure:: images/about_sdk_dist_20.07.png
-      :alt: MicroEJ SDK Distribution About Window
+.. figure:: images/about_sdk_dist_20-07.png
+   :alt: MicroEJ SDK Distribution About Window
+   :align: center
 
 To retrieve the MicroEJ SDK version that is currently installed in this distribution, proceed with the following steps:
 
@@ -67,8 +70,9 @@ To retrieve the MicroEJ SDK version that is currently installed in this distribu
    - Click on the ``Installed Software`` tab,
    - Retrieve the version of entry named ``MicroEJ SDK`` (or ``MicroEJ Studio``).
 
-   .. figure:: images/installation_details_sdk_dist_20.07.png
-      :alt: MicroEJ SDK Distribution Installation Details Window
+.. figure:: images/installation_details_sdk_dist_20-07.png
+   :alt: MicroEJ SDK Distribution Installation Details Window
+   :align: center
   
 
 ..

@@ -1,3 +1,5 @@
+.. _tool_serial_to_socket:
+
 ============================
 Serial to Socket Transmitter
 ============================

@@ -9,7 +9,8 @@ Overview
 To run a MicroEJ Application that uses the Bluetooth LE Foundation Library (`ej.api.bluetooth <https://repository.microej.com/artifacts/ej/api/bluetooth/>`_) 
 on MicroEJ Simulator, a Bluetooth LE mock controller must be set up first:
 
-   |Bluetooth-mock-controller|
+.. image:: images/blemock-controller.png
+   :align: center
 
 The Bluetooth LE mock controller is a hardware mock of the Bluetooth LE library. It
 means the Simulator uses a real Bluetooth LE device to scan other devices,
@@ -73,14 +74,16 @@ To configure the network:
 #. Open a browser and connect to http://192.168.4.1/ to access the Wi-Fi setup
    interface :
 
-   |wifi-setup-interface|
+   .. image:: images/blemock-wifi-setup-interface.png
+      :align: center
 
 #. Select the desired network and provide the required information if asked.
    If an error occurs during the connection, retry this step.
 #. In case the device is successfully connected to the desired network, the
    web page should looks like this:
 
-   |wifi-setup-last-screen|
+   .. image:: images/blemock-wifi-setup-last-screen.png
+      :align: center
 
    Additionally, the serial output of the device shows connection status.
 #. Connect your computer back to this network : your computer and the
@@ -95,7 +98,8 @@ the saved configuration.
 
 The IP address of the controller is available in the logs :
 
-|controller-ip|
+.. image:: images/blemock-controller-ip.png
+   :align: center
 
 Before running your Bluetooth LE application on the Simulator, in the
 :ref:`Run configuration <concepts-microejlaunches>` panel, set the simulation mode
@@ -148,10 +152,7 @@ network.
 
 .. _developer.microej.com: https://developer.microej.com/getting-started-sdk-esp32-wrover-5.html
 .. _firmware: http://repository.microej.com/packages/ble-mock/bluetooth-controller-ESP32WROOM-0.1.0.bin
-.. |Bluetooth-mock-controller| image:: images/blemock-controller.png
-.. |wifi-setup-interface| image:: images/blemock-wifi-setup-interface.png
-.. |wifi-setup-last-screen| image:: images/blemock-wifi-setup-last-screen.png
-.. |controller-ip| image:: images/blemock-controller-ip.png
+
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

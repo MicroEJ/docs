@@ -439,7 +439,7 @@ Install an Evaluation License
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This step describes how to create and activate an :ref:`Evaluation
-License <gettingstarted-installlicenseseval>` for the MicroEJ
+License <evaluation_license>` for the MicroEJ
 Architecture previously imported.
 
 #. Select the :guilabel:`Window` > :guilabel:`Preferences` >

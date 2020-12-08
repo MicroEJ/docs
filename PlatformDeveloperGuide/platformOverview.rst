@@ -13,7 +13,7 @@ remaining steps are performed within the C IDE.
 .. _fig_overall-process:
 .. figure:: images/process-overview5.*
    :alt: Overall Process
-   :width: 80.0%
+   :scale: 80%
    :align: center
 
    Overall Process

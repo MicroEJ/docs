@@ -127,7 +127,7 @@ Preferences Page
 
 The MMM preferences page is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Module Manager` [#warning_check_former_sdk_versions]_.
 
-   .. figure:: images/mmm_preferences_5.2_annotated.png
+   .. figure:: images/mmm_preferences_5-2_annotated.png
       :alt: MMM Preferences Page
       :align: center
 
@@ -231,6 +231,8 @@ A typical usage in a :ref:`module description file <mmm_module_description>` is 
    .. figure:: images/mmm_preferences_options_usage.png
       :align: center
 
+.. _mmm_build_kit:
+
 Build Kit
 ---------
 
@@ -247,7 +249,8 @@ Once the build kit is fully exported, the directory content shall look like:
 .. figure:: images/mmm_extract_build_kit.png
       :align: center
 
-To go further with headless builds, please consult `Tool-CommandLineBuild <https://github.com/MicroEJ/Tool-CommandLineBuild/README.rst>`_ for command line builds.
+To go further with headless builds, please consult `Tool-CommandLineBuild <https://github.com/MicroEJ/Tool-CommandLineBuild>`_ for command line builds, 
+and this :ref:`tutorial <tutorial_setup_automated_build_using_jenkins_and_artifactory>` to setup MicroEJ modules build in continuous integration environments).
 
 
 .. [#warning_check_former_sdk_versions] If using MicroEJ SDK versions lower than ``5.2.0``, please refer to the :ref:`following section <mmm_former_sdk>`.
@@ -274,7 +277,7 @@ Ivy Preferences Page
 
 The Ivy Preferences Page is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Ivy` > :guilabel:`Settings`.
 
-.. figure:: images/mmm_preferences_up_to_5.1_ivy_settings_annotated.png
+.. figure:: images/mmm_preferences_up_to_5-1_ivy_settings_annotated.png
    :align: center
 
 
@@ -283,7 +286,7 @@ Easyant Preferences Page
 
 The Easyant Preferences Page is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`EasyAnt4Eclipse`.
 
-.. figure:: images/mmm_preferences_up_to_5.1_ea4eclipse_annotated.png
+.. figure:: images/mmm_preferences_up_to_5-1_ea4eclipse_annotated.png
    :align: center
 
 Export the Build Kit
