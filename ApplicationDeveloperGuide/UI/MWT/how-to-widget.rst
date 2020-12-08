@@ -1,4 +1,4 @@
-How-To Create a Widget
+How to Create a Widget
 ======================
 
 A widget is the main way to render information on the display. A set of pre-defined widgets is described in the :ref:`Widgets and Examples` section.

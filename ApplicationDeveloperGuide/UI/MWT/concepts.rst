@@ -41,12 +41,18 @@ A widget can be transparent, meaning that it does not draw every pixel within it
 
 A widget can also be rendered directly in a specific graphics context by calling its ``render(GraphicsContext)`` method. It can be useful to render a widget (and its children) in an image for example.
 
+.. _section_render_policy:
+
 Render Policy
 ~~~~~~~~~~~~~
 
+A render policy is a strategy that MWT uses in order to repaint the entire desktop or to repaint a specific widget.
+
 The most naive render policy would be to render the whole hierarchy of the desktop whenever a widget has changed. However ``DefaultRenderPolicy`` is smarter than that: it only repaints the widget, and its ancestors if the widget is transparent. The result is correct only if there is no overlapping widget, in which case  ``OverlapRenderPolicy`` should be used instead. This policy repaints the widget (or its non-transparent ancestor), then it repaints all the widgets that overlap it.
 
-The render policy can be changed by changing the result of ``Desktop.createRenderPolicy()``.
+When using a :ref:`partial buffer <section_display_partial_buffer>`, these render policies can not be used because they render the entire screen in a single pass. Instead, a custom render policy which renders the screen in multiple passes has to be used. Refer to the `partial buffer demo <https://github.com/MicroEJ/>`__ for more information on how to implement this render policy and how to use it.
+
+The render policy can be changed by overridding ``Desktop.createRenderPolicy()``.
 
 Lay Out
 -------
@@ -158,7 +164,7 @@ Extra fields
 
 Extra fields are not used by framework itself, but they may be used in the ``renderContent()`` to customize the behavior and the appearance of the widget.
 
-See chapter ``How-To Define an Extra Style Field`` for more information on extra fields.
+See chapter :ref:`section_define_extra_style_field` for more information on extra fields.
 
 Stylesheet
 ----------
@@ -182,6 +188,29 @@ For example, the following code customizes the style of every ``Label`` widget o
 
 	desktop.setStylesheet(stylesheet);
 
+.. _section_animations:
+
+Animations
+----------
+
+MWT provides a utility class in order to animate widgets: `Animator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animator.html>`_.
+When a widget is being animated by an animator, the widget is notified each time that the display is flushed. The widget can use this interrupt in order to update its state and request a new rendering.
+
+See chapter :ref:`section_animate_widget` for more information on animating a widget.
+
+Partial buffer considerations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Rendering a widget in :ref:`partial buffer mode <section_display_partial_buffer>` may require multiple cycles if the buffer is not big enough to hold all the pixels to update in a single shot.
+This means that rendering is slower in partial buffer mode, and this may cause performance being significantly affected during animations.
+
+Besides, the whole screen is flushed in multiple times instead of a single one, which means that the user may see the display at a time where every part of the display has not been flushed yet.
+
+Due to these limitations, it is not recommended to repaint big parts of the screen at the same time.
+For example, a transition on a small part of the screen will look better than a transition affecting the whole screen.
+A transition will look perfect if the partial buffer can hold all the lines to repaint.
+Since the buffer holds a group of lines, a horizontal transition may not look the same as a vertical transition.
+
 Desktop and widget states
 -------------------------
 
@@ -192,7 +221,7 @@ It can also be attached manually by calling ``Desktop.setAttached()``. It could 
 
 A widget is considered as attached when it is contained by a desktop that is attached.
 
-In the same way, by default, a widget is shown when its desktop is shown. But for optimisation purpose, a container can control when its children are shown or hidden. A typical use case is when the widgets are moved outside the display.
+In the same way, by default, a widget is shown when its desktop is shown. But for optimization purpose, a container can control when its children are shown or hidden. A typical use case is when the widgets are moved outside the display.
 
 Once a widget is attached, it means that it is ready to be shown (for instance, the necessary resources are allocated). In other words, once attached a widget is ready to be rendered (on an image or on the display).
 

@@ -1,4 +1,4 @@
-How-To Define a Background
+How to Define a Background
 ==========================
 
 To create a custom background, a new class should be created, extending the ``Background`` class.

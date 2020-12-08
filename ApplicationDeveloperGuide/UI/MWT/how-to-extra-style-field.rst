@@ -1,4 +1,6 @@
-How-To Define an Extra Style Field
+.. _section_define_extra_style_field:
+
+How to Define an Extra Style Field
 ==================================
 
 Extra style fields allow to customize a widget by configuring graphical elements of the widget from the stylesheet.

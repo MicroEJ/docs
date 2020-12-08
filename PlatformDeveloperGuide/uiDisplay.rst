@@ -170,6 +170,78 @@ result in "noisy" rendering and flickering, but saves one buffer in runtime memo
    :width: 270px
    :align: center
 
+.. _section_display_partial_buffer:
+
+Partial Buffer
+==============
+
+In the case where RAM usage is not a constraint, the graphics buffer is sized to store all the pixel data of the screen.
+However, when the RAM available on the device is very limited, a partial buffer can be used instead.
+In that case, the buffer is smaller and can only store a part of the screen (one third for example).
+
+When this technique is used, the application draws in the partial buffer.
+To flush the drawings, the content of the partial buffer is copied to the display (to its internal memory or to a complete buffer from which the display reads).
+
+If the display does not have its own internal memory and if the device does not have enough RAM to allocate a complete buffer, then it is not possible to use a partial buffer. In that case, only the *Direct* buffer mode can be used.
+
+Workflow
+--------
+
+The workflow depends on the specifications of the display. More specifically, it depends on whether or not the display has its own internal memory (regardless of whether or not it is mapped to byte-addressable RAM).
+
+Display with Internal Memory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this case, a partial buffer is allocated in RAM.
+
+The implementation should follow these steps:
+
+1. First, the application draws in the partial buffer.
+2. Then, to flush the drawings on the screen, the data of the partial buffer is sent to the display.
+3. Finally, a synchronization is required before starting the next drawing operation.
+
+Display without Internal Memory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this case, a partial buffer and a complete buffer are allocated in RAM. The display is configured to read from the complete buffer.
+
+The implementation should follow these steps:
+
+1. First, the application draws in the partial buffer.
+2. Then, to flush the drawings on the screen, the data of the partial buffer is copied into the complete buffer.
+3. Finally, a synchronization is required before starting the next drawing operation.
+
+Dual Partial Buffer
+-------------------
+
+A second partial buffer can be used to avoid the synchronization delay before between two drawing cycles.
+While one of the two partial buffers is being copied to the display, the application can start drawing in the second partial buffer.
+
+This technique is interesting when the copy time is long. The downside is that it requires more RAM or to reduce the size of the partial buffers.
+
+Using a dual partial buffer has no impact on the application code.
+
+Application Limitations
+-----------------------
+
+Using a partial buffer rather than a complete buffer may require adapting the code of the application, since rendering a graphical element may require multiple passes. If the application uses MWT, a :ref:`custom render policy <section_render_policy>` has to be used.
+
+Besides, the `GraphicsContext.readPixel() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#readPixel-int-int->`_
+and the `GraphicsContext.readPixels() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#readPixels-int:A-int-int-int-int-int-int->`_ APIs
+can not be used on the graphics context of the display in partial buffer mode.
+Indeed, we cannot rely on the current content of the back buffer as it doesn't contain what is seen on the screen.
+
+Likewise, the `Painter.drawDisplayRegion() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html>`_ API can not be used in partial buffer mode.
+Indeed, this API reads the content of the back buffer in order to draw a region of the display.
+Instead of relying on the drawings which were performed previously, this API should be avoided and the drawings should be performed again.
+
+Using a partial buffer can have a significant impact on animation performance. Refer to :ref:`section_animations` for more information on the development of animations in an application.
+
+Implementation Example
+----------------------
+
+The `partial buffer demo <https://github.com/MicroEJ/>`__ provides an example of partial buffer implementation. This example explains how to implement partial buffer support in the BSP and how to use it in an application.
+
 .. _section_display_layout_byte:
 
 Byte Layout
