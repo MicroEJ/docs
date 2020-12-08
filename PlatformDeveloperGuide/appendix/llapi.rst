@@ -197,7 +197,7 @@ engine, and it may be used to initialize the underlying devices and bind
 them to event generator IDs.
 
 ``LLUI_INPUT_IMPL_enterCriticalSection`` and
-``LLUI_INPUT_IMPL_exitCriticalSection``  need to provide the input engine with a
+``LLUI_INPUT_IMPL_exitCriticalSection``  need to provide the Input Engine with a
 critical section mechanism for synchronizing devices when sending events
 to the internal event queue. The mechanism used to implement the
 synchronization will depend on the platform configuration (with or
@@ -316,7 +316,7 @@ LLUI_DISPLAY: Display
 Principle & Naming Convention
 -----------------------------
 
-The display engine provides some Low Level APIs to connect a display driver. The file ``LLUI_DISPLAY_impl.h`` defines the API headers to be implemented. For the APIs themselves, the naming convention is that their names match the ``*_IMPL_*`` pattern when the functions need to be implemented:
+The  Graphical Engine provides some Low Level APIs to connect a display driver. The file ``LLUI_DISPLAY_impl.h`` defines the API headers to be implemented. For the APIs themselves, the naming convention is that their names match the ``*_IMPL_*`` pattern when the functions need to be implemented:
 
 * ``LLUI_DISPLAY_IMPL_initialize``
 * ``LLUI_DISPLAY_IMPL_binarySemaphoreTake``
@@ -330,7 +330,7 @@ This describes succinctly some ``LLUI_DISPLAY_IMPL`` functions. Please refer to 
 Initialization
 --------------
 
-Each display engine gets initialized by calling the function ``LLUI_DISPLAY_IMPL_initialize``: It asks its display driver to initialize itself. The implementation function has to fill the given structure ``LLUI_DISPLAY_SInitData``. This structure allows to retrieve the size of the virtual and physical screen, the back buffer address (where MicroUI is drawing). The implementation has too `give` two binary semaphores.
+Each Graphical Engine gets initialized by calling the function ``LLUI_DISPLAY_IMPL_initialize``: It asks its display driver to initialize itself. The implementation function has to fill the given structure ``LLUI_DISPLAY_SInitData``. This structure allows to retrieve the size of the virtual and physical screen, the back buffer address (where MicroUI is drawing). The implementation has too `give` two binary semaphores.
 
 Image Heap
 ----------
@@ -351,7 +351,7 @@ Flush and Synchronization
 
 The back buffer (graphics buffer) address set in Initialization function is the address for the very first drawing. The content of this buffer is flushed to the external display memory by the function ``LLUI_DISPLAY_flush``. The parameters define the rectangular area of the content which has changed during the last drawing action, and which must be flushed to the display buffer (dirty area). This function should be atomic: the implementation has to start another task or a hardware device (often a DMA) to perform the copy.
 
-As soon as the application performs a new drawing, the display engine locks the thread. It will automatically unlocked when the BSP will call ``LLUI_DISPLAY_flushDone`` at the end of the copy, 
+As soon as the application performs a new drawing, the Graphical Engine locks the thread. It will automatically unlocked when the BSP will call ``LLUI_DISPLAY_flushDone`` at the end of the copy, 
 
 Display Characteristics
 -----------------------

@@ -87,7 +87,7 @@ Simulator
 
 In MicroEJ SDK
 
-* modify the existing Simulator front panel ``xxx-fp`` project
+* modify the existing Simulator Front Panel ``xxx-fp`` project
 
 A MicroEJ Platform Project is not available for the same MCU/RTOS/C Compiler
 ----------------------------------------------------------------------------

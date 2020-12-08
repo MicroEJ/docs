@@ -7,7 +7,7 @@ Font Characteristics
 Font Format
 ===========
 
-The font engine module provides fonts that conform to the `Unicode
+The Font Engine provides fonts that conform to the `Unicode
 Standard <https://unicode.org/standard/standard.html>`_. The ``.ejf`` files hold font properties:
 
 -  Identifiers: Fonts hold at least one identifier that can be one of
@@ -61,7 +61,7 @@ transformations on the displayed characters.
 Pixel Transparency
 ==================
 
-The font engine renders the font according the the value stored for each
+The Font Renderer renders the font according the the value stored for each
 pixel. If the value is 0, the pixel is not rendered. If the value is the
 maximum value (for example the value 3 for 2 bits-per-pixel), the pixel
 is rendered using the current foreground color, completely overwriting
@@ -83,17 +83,17 @@ Language
 Supported Languages
 -------------------
 
-The Font Engine manages the Unicode basic multilingual languages, whose characters are encoded on 16-bit, i.e. Unicodes from 0x0000 to 0xFFFF. It allows to render left-to-right or right-to-left writing systems: Latin (English, etc.), Arabic, Chinese, etc. are some supported languages. Note that the rendering is always performed left-to-right, even if the string are written right-to-left. There is no support for top-to-bottom writing systems. Some languages require diacritics and contextual letters; the Font Engine manages simple rules in order to combine several characters.
+The Font Renderer manages the Unicode basic multilingual languages, whose characters are encoded on 16-bit, i.e. Unicodes from 0x0000 to 0xFFFF. It allows to render left-to-right or right-to-left writing systems: Latin (English, etc.), Arabic, Chinese, etc. are some supported languages. Note that the rendering is always performed left-to-right, even if the string are written right-to-left. There is no support for top-to-bottom writing systems. Some languages require diacritics and contextual letters; the Font Renderer manages simple rules in order to combine several characters.
 
 Arabic Support
 --------------
 
-The font engine manages the ARABIC font specificities: the diacritics and contextual letters. 
+The Font Renderer manages the ARABIC font specificities: the diacritics and contextual letters. 
 
-To render an Arabic text, the font engine requires several points:
+To render an Arabic text, the Font Renderer requires several points:
 
 -  To determinate if a character has to overlap the previous character,
-   the font engine uses a specific range of ARABIC characters: from
+   the Font Renderer uses a specific range of ARABIC characters: from
    ``0xfe70`` to ``0xfefc``. All other characters (ARABIC or not)
    outside this range are considered *classic* and no overlap is
    performed. Note that several ARABIC characters are available outside
@@ -116,10 +116,10 @@ To render an Arabic text, the font engine requires several points:
 
    the string characters must be :
    '``\ufee2\ufedc\ufe91\u0020\ufe8e\ufe92\ufea3\ufeae\ufee3``'. The
-   font engine will first render the character '``\ufee2``', then
+   Font Renderer will first render the character '``\ufee2``', then
    '``\ufedc``,' and so on.
 
 -  Each character in the font (in the ``ejf`` file) must have a
    rendering compatible with the character position. The character will
-   be rendered by the font engine as-is. No support is performed by the
-   font engine to obtain a *linear* text.
+   be rendered by the Font Renderer as-is. No support is performed by the
+   Font Renderer to obtain a *linear* text.

@@ -6,7 +6,7 @@ Image Format
 
 The Image Engine makes the distinction between the `input formats` (how an image is encoded) and the `output formats` (how the image is used by the platform and/or the Image Renderer).The Image Engine manages several standard formats in input: PNG, JPEG, BMP, etc. In addition, an input format may be custom (platform dependant, unsupported image format by default). It manages two formats in output: the MicroEJ format (known by the Image Renderer) and the binary format.
 
-Each Image engine module can manage one or several input formats. However the Image Renderer manages only the MicroEJ format (:ref:`section_image_standard_raw`, :ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`). The binary output format (:ref:`section_image_binary_raw`)is fully platform dependant and can be used to encode some images which are not usable by MicroUI standard API.
+Each Image Engine can manage one or several input formats. However the Image Renderer manages only the MicroEJ format (:ref:`section_image_standard_raw`, :ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`). The binary output format (:ref:`section_image_binary_raw`)is fully platform dependant and can be used to encode some images which are not usable by MicroUI standard API.
 
 .. _section_image_standard_raw:
 

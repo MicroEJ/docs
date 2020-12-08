@@ -229,7 +229,7 @@ Linker File
 In addition to images binary files, the Image Generator module generates a linker file (``*.lscf``). This linker file declares an image section called ``.rodata.images``. This section follows the next rules:
 
 * The files are always listed in same order between two MicroEJ application builds.
-* The section is aligned on the value specified by the display module property ``imageBuffer.memoryAlignment`` (32 bits by default).
+* The section is aligned on the value specified by the Display module property ``imageBuffer.memoryAlignment`` (32 bits by default).
 * Each file is aligned on section alignment value.
 
 External Resources

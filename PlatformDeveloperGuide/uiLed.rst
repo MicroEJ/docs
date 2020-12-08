@@ -8,14 +8,14 @@ LED
 Principle
 =========
 
-The LED engine contains the C part of the MicroUI implementation which manages LED devices. This module is composed of only one element: an implementation of the Low Level APIs for the LEDs which must be provided by the BSP (see :ref:`LLLEDS-API-SECTION`).
+The LED module contains the C part of the MicroUI implementation which manages LED devices. This module is composed of only one element: an implementation of the Low Level APIs for the LEDs which must be provided by the BSP (see :ref:`LLLEDS-API-SECTION`).
 
 .. _section_leds_implementation:
 
 Functional Description
 ======================
 
-The LED engine implements the MicroUI `Leds <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/led/Leds.html>`_ framework. ``LLUI_LED`` specifies the Low Level APIs that receive orders from the Java world.
+The LED module implements the MicroUI `Leds <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/led/Leds.html>`_ framework. ``LLUI_LED`` specifies the Low Level APIs that receive orders from the Java world.
 
 The Low Level APIs are the same for the LED which is connected to a ``GPIO`` (``0`` or ``1``), to a ``PWM``, to a bus (``I2C``, ``SPI``), etc. The BSP has the responsibility of interpreting the MicroEJ Application parameter ``intensity``.
 
@@ -28,7 +28,7 @@ The BSP should be able to return the state of an LED. If it is not able to do so
 Low Level API
 =============
 
-The LED engine provides Low Level APIs that allow the BSP to manage the LEDs. The BSP has to implement these Low Level APIs, making the link between the MicroUI library and the BSP LEDs drivers.
+The LED module provides Low Level APIs that allow the BSP to manage the LEDs. The BSP has to implement these Low Level APIs, making the link between the MicroUI library and the BSP LEDs drivers.
 
 The Low Level APIs to implement are listed in the header file ``LLUI_LEDS_impl.h``. First, in the initialization function, the BSP must return the available number of LEDs the board provides. The other functions are used to turn the LEDs on and off.
 
@@ -54,7 +54,7 @@ Dependencies
 Installation
 ============
 
-LEDs is a sub-part of MicroUI library. When the MicroUI module is installed, the LEDs module must be installed in order to be able to connect physical LEDs with MicroEJ Platform. If not installed, the
+LEDs is a sub-part of MicroUI library. When the MicroUI module is installed, the LED module must be installed in order to be able to connect physical LEDs with MicroEJ Platform. If not installed, the
 *stub* module will be used.
 
 In the platform configuration file, check :guilabel:`UI` > :guilabel:`LEDs` to install LEDs.
