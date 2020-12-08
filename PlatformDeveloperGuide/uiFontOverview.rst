@@ -22,7 +22,7 @@ Functional Description
 
 .. figure:: images/font-process2.*
    :alt: Font Generation
-   :width: 80.0%
+   :width: 800px
    :align: center
 
    Font Generation

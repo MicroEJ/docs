@@ -17,7 +17,7 @@ Functional Description
 
 .. figure:: images/static-image-gen2.*
    :alt: Image Generator Principle
-   :width: 70.0%
+   :width: 650px
    :align: center
 
    Image Generator Principle

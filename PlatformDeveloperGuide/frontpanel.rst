@@ -156,7 +156,7 @@ may be other attributes depending on the type of the widget.
 The file and tags specifications are available in chapter
 :ref:`front_panel_file`.
 
-.. note:: The ``.fp`` file grammar has changed since the UI Pack version ``12.0.0`` (Front Panel core has been moved to MicroEJ Architecture ``7.11.0``). A quick migration guide is available here: open Platform configuration file ``.Platform``, go to ``Content`` tab, click on module ``Front Panel``. The migration guide is available in ``Details`` box.
+.. note:: The ``.fp`` file grammar has changed since the UI Pack version ``12.0.0`` (Front Panel core has been moved to MicroEJ Architecture ``7.11.0``). A quick migration guide is available: open Platform configuration file ``.Platform``, go to ``Content`` tab, click on module ``Front Panel``. The migration guide is available in ``Details`` box.
 
 
 Editing Front Panel Files

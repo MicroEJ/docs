@@ -1,8 +1,8 @@
 .. _new_platform_creation:
 
-=============================
-New MicroEJ Platform Creation
-=============================
+=========================
+MicroEJ Platform Creation
+=========================
 
 This section describes the steps to create a new MicroEJ Platform in MicroEJ SDK, 
 and options to connect it to an external Board Support Package (BSP) as well as a third-party C toolchain. 
@@ -54,8 +54,8 @@ Once you downloaded a MicroEJ Architecture file, proceed with the following step
 
 .. _platform_configuration_creation:
 
-New MicroEJ Platform Configuration
-==================================
+MicroEJ Platform Configuration
+==============================
 
 The next step is to create a MicroEJ Platform configuration:
 
@@ -147,10 +147,25 @@ Modifying one of these files requires to build the Platform again.
 Platform Customization
 ======================
 
-Platform can be customized by creating a ``configuration.xml`` script
-beside the ``[name].platform`` file. This script can extend one or
+Platforms can be customized by creating a ``configuration.xml`` Ant file
+beside the ``[name].platform`` file. This Ant script can extend one or
 several of the extension points available. By default, you should not have to change 
 the default configuration script.
+
+Here is a template for a ``configuration.xml`` Ant file:
+
+.. code:: xml
+
+   <?xml version="1.0" encoding="UTF-8"?>
+   <project name="configuration">
+   
+   	<!--
+   		Define "project.dir" property that references the directory 
+   		where this file is located.
+   	-->
+   	<dirname property="project.dir" file="${ant.file.configuration}"/>
+   
+   </project>
 
 Configuration project (the project which contains the
 ``[name].platform`` file) can contain an optional ``dropins`` folder.
@@ -205,7 +220,7 @@ and the ``build.bat`` or ``build.sh`` file is executed to produce the final exec
    BSP connection configuration is only required in the following cases:
 
    - Use MicroEJ SDK to produce the final executable file of a Mono-Sandbox Firmware (recommended).
-   - Use MicroEJ SDK to run a :ref:`MicroEJ Testsuite <testsuite>` on device.
+   - Use MicroEJ SDK to run a :ref:`MicroEJ Testsuite <platform_testsuite>` on device.
    - Build a Multi-Sandbox Firmware.
 
 .. _bsp_connection_cases:
@@ -224,7 +239,7 @@ The 3 most common integration cases are:
   .. figure:: images/bsp-connection-cases-none.png
      :alt: MicroEJ Platform with no BSP connection
      :align: center
-     :scale: 75 %
+     :scale: 80%
 
      MicroEJ Platform with no BSP connection
 
@@ -243,7 +258,7 @@ The 3 most common integration cases are:
   .. figure:: images/bsp-connection-cases-partial.png
      :alt: MicroEJ Platform with partial BSP connection
      :align: center
-     :scale: 75 %
+     :scale: 80%
 
      MicroEJ Platform with partial BSP connection
 
@@ -263,7 +278,7 @@ The 3 most common integration cases are:
   .. figure:: images/bsp-connection-cases-full.png
      :alt: MicroEJ Platform with full BSP connection
      :align: center
-     :scale: 75 %
+     :scale: 80%
 
      MicroEJ Platform with full BSP connection
 

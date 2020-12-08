@@ -56,7 +56,7 @@ handy guide to selecting the appropriate buffer mode according to the hardware c
 
 .. figure:: images/display_modes_nocustom.*
    :alt: Buffer Modes
-   :width: 40.0%
+   :width: 450px
    :align: center
 
    Buffer Modes
@@ -85,8 +85,7 @@ Synchronization steps are described :ref:`below <switchModeSyncSteps>`.
 
 .. figure:: images/switch-step1.*
    :alt: Step 1 : Drawing
-   :width: 284px
-   :height: 160px
+   :width: 400px
    :align: center
 
 - | *Step 2:* Switch
@@ -95,8 +94,7 @@ Synchronization steps are described :ref:`below <switchModeSyncSteps>`.
 
 .. figure:: images/switch-step2.*
    :alt: Step 2 : Switch
-   :width: 284px
-   :height: 160px
+   :width: 400px
    :align: center
 
 - | *Step 3:* Copy
@@ -108,8 +106,7 @@ Synchronization steps are described :ref:`below <switchModeSyncSteps>`.
 
 .. figure:: images/switch-step3.*
    :alt: Step 3 : Copy
-   :width: 284px
-   :height: 160px
+   :width: 400px
    :align: center
 
 - | *Step 4:* Synchronisation
@@ -121,8 +118,7 @@ Synchronization steps are described :ref:`below <switchModeSyncSteps>`.
 
 .. figure:: images/switch-step4.*
    :alt: Step 5 : Next draw operation
-   :width: 284px
-   :height: 160px
+   :width: 400px
    :align: center
 
 
@@ -142,8 +138,7 @@ Synchronization steps are described :ref:`below <table_copyModeSyncSteps>`.
   | MicroUI is drawing in the back buffer and the display is reading its content from the display buffer.
 
 .. image:: images/copy-step1.*
-   :width: 284px
-   :height: 160px
+   :width: 400px
    :align: center
 
 - | *Step 2:* Copy 
@@ -151,16 +146,14 @@ Synchronization steps are described :ref:`below <table_copyModeSyncSteps>`.
   | Note that the implementation of the copy operation may be done asynchronously – it is recommended to wait until the display "hardware component" has finished a full buffer read to avoid flickering. At the implementation level, the copy may be done by a DMA, a dedicated RTOS task, interrupt, etc.
 
 .. image:: images/copy-step2.*
-   :width: 284px
-   :height: 160px
+   :width: 400px
    :align: center
 
 - | *Step 3:*  Synchronization
   | The next drawing operation waits until the copy is complete.
 
 .. image:: images/copy-step3.*
-   :width: 284px
-   :height: 160px
+   :width: 400px
    :align: center
 
 .. _directBufferMode:
@@ -174,7 +167,7 @@ result in "noisy" rendering and flickering, but saves one buffer in runtime memo
 .. _fig_directMode:
 .. figure:: images/direct.*
    :alt: Display Direct Mode
-   :height: 160px
+   :width: 270px
    :align: center
 
 .. _section_display_layout_byte:

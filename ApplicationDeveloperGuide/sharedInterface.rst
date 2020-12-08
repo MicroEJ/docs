@@ -28,6 +28,7 @@ The basic schema:
 .. figure:: images/SI_1.png
    :alt: Shared Interface Call Mechanism
    :align: center
+   :scale: 75%
 
    Shared Interface Call Mechanism
 
@@ -91,6 +92,7 @@ and forth between application boundaries.
 .. figure:: images/SI_3.png
    :alt: Shared Interface Parameters Transfer
    :align: center
+   :scale: 75%
 
    Shared Interface Parameters Transfer
 
@@ -218,6 +220,7 @@ being transferred to this application.
 .. figure:: images/SI_4.png
    :alt: Shared Interfaces Proxy Overview
    :align: center
+   :scale: 75%
 
    Shared Interfaces Proxy Overview
 

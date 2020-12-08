@@ -12,7 +12,7 @@ The diagram below shows a simplified view of the components involved in the prov
 
 .. figure:: images/java-c-ui-interface.*
    :alt: Overview
-   :width: 70.0%
+   :width: 600px
    :align: center   
 
    Overview
@@ -26,7 +26,7 @@ The graphical engine also manages fonts and images. The fonts and images are pre
 
 .. figure:: images/ui_overview2.*
    :alt: The User Interface Extension Components along with a Platform
-   :width: 70.0%
+   :width: 600px
    :align: center
 
    The User Interface Extension Components along with a Platform

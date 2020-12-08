@@ -30,7 +30,7 @@ Each MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.
 
 .. figure:: images/drivers-microui-comms.*
    :alt: Drivers and MicroUI Event Generators Communication
-   :width: 40.0%
+   :width: 550px
    :align: center
 
    Drivers and MicroUI Event Generators Communication
@@ -41,8 +41,8 @@ The `MicroUI <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui
 
 .. figure:: images/microui-events.png
    :alt: MicroUI Events Framework
-   :width: 70.0%
    :align: center
+   :scale: 75%
 
    MicroUI Events Framework
 

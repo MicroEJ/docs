@@ -114,6 +114,10 @@ project:
        
    }
 
+.. note::
+
+   The visibility of the native method implemented in the mock must be ``public`` regardless of the visibility of the native method in the application.  Otherwise the following exception is raised: ``java.lang.UnsatisfiedLinkError: No such method in remote class``.
+
 
 Mocks Design Support
 ====================
@@ -248,22 +252,25 @@ stop() method.
 Dependencies
 ============
 
-The MicroEJ Platform architecture provides some APIs (HIL APIs) to
-develop a Mock that will be ready to be used against the Simulator. The
-classpath variable that allows you to access to the HIL Engine API is
-``HILENGINE-2.0.1``. MicroEJ projects that build Mocks should put that
-library on their build path.
+The HIL Engine API is automatically provided by the ``microej-mock`` project skeleton.
 
+.. _mock_module:
 
 Installation
 ============
 
-The Mock creator is responsible for building the Mock jar file using
-his/her own method (Eclipse build, ``javac``, etc.).
+First create a new :ref:`module project <mmm_module_skeleton>` using the ``microej-mock`` skeleton.
 
-Once built, the jar file must be put in this specific platform
-configuration project folder in order to be included during the platform
-creation : ``dropins/mocks/dropins/``.
+.. figure:: images/mock-skeleton.png
+   :alt: Mock Project Structure
+   :align: center
+
+Once implemented, right-click on the repository project and select ``Build Module``.
+
+Once the module is built, the mock can be installed in a Platform in one of the two ways:
+
+- by adding the mock module as a regular Platform module dependency (if your Platform configuration project contains a ``module.ivy`` file), 
+- or by manually copying the JAR file ``[mock_project]\target~\rip\mocks\[mock_name].jar`` to the :ref:`Platform configuration <platform_configuration_creation>` mock dropins folder ``dropins/mocks/dropins/``.
 
 
 Use

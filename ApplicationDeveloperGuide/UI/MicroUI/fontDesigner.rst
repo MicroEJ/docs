@@ -18,7 +18,7 @@ Functional Description
 
 .. figure:: images/designer_font-process2.*
    :alt: Font Generation
-   :scale: 60%
+   :scale: 70%
    :align: center
 
    Font Generation

@@ -6,6 +6,7 @@ Overview
 .. toctree::
 
    editions
+   licenses
    runtime
    libraries
    repository
@@ -14,6 +15,7 @@ Overview
    sdk
    studio
    gettingStarted
+   github
    systemRequirements
 
 ..
