@@ -84,7 +84,7 @@ Some additional decoders can be added. Implement the function ``LLUI_DISPLAY_IMP
    .. note::
 
       The output image format might be different than the expected
-      format (given as argument). In this way, the display module will
+      format (given as argument). In this way, the Display module will
       perform a conversion after the decoding step. During this
       conversion, an out of memory error can occur because the final RAW
       image cannot be allocated.

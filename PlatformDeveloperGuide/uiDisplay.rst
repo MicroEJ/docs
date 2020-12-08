@@ -8,9 +8,9 @@ Display
 Principle
 =========
 
-The Display engine contains the C part of the MicroUI implementation which manages graphical displays. This module is composed of three elements:
+The Display module contains the C part of the MicroUI implementation which manages graphical displays. This module is composed of three elements:
 
-- the C part of MicroUI Display API (a built-in C archive),
+- the C part of MicroUI Display API (a built-in C archive) called Graphical Engine,
 - an implementation of a Low Level APIs for the displays (LLUI_DISPLAY) that the BSP must provide (see :ref:`LLDISPLAY-API-SECTION`),
 - an implementation of a Low Level APIs for MicroUI drawings.
 
@@ -18,21 +18,21 @@ The Display engine contains the C part of the MicroUI implementation which manag
 Functional Description
 ======================
 
-The Display engine (or graphical engine) implements the MicroUI graphics framework. This framework is constituted of several notions: the display characteristics (size, format, backlight, contrast, etc.), the drawing state machine (render, flush, wait flush completed), the images life cycle, the fonts and drawings. The main part of graphical engine is provided by a built-in C archive. This library manages the drawing state machine mechanism, the images and fonts. The display characteristics and the drawings are managed by the ``LLUI_DISPLAY`` implementation.   
+The Display module implements the MicroUI graphics framework. This framework is constituted of several notions: the display characteristics (size, format, backlight, contrast, etc.), the drawing state machine (render, flush, wait flush completed), the images life cycle, the fonts and drawings. The main part of the Display module is provided by a built-in C archive called Graphical Engine. This library manages the drawing state machine mechanism, the images and fonts. The display characteristics and the drawings are managed by the ``LLUI_DISPLAY`` implementation.   
 
-Graphical engine is designed to let the BSP use an optional graphics processor unit (GPU) or an optional third-party drawing library. Each drawing can be implemented independently. If no extra framework is available, the graphical engine performs all drawings in software. 
-In this case, the BSP has to perform a very simple implementation (four functions) of the graphical engine low-level APIs.
+The Graphical engine is designed to let the BSP use an optional graphics processor unit (GPU) or an optional third-party drawing library. Each drawing can be implemented independently. If no extra framework is available, the Graphical Engine performs all drawings in software. 
+In this case, the BSP has to perform a very simple implementation (four functions) of the Graphical Engine low-level APIs.
 
-MicroUI library also gives the possibility to perform some additional drawings which are not available as API in MicroUI library. Graphical engine gives a set of functions to synchronize the drawings between them, to get the destination (and sometimes source) characteristics, to call internal software drawings, etc. 
+MicroUI library also gives the possibility to perform some additional drawings which are not available as API in MicroUI library. The Graphical Engine gives a set of functions to synchronize the drawings between them, to get the destination (and sometimes source) characteristics, to call internal software drawings, etc. 
 
-Front Panel (simulator display engine part) gives the same possibilities. Same constraints can be applied, same drawings can be overridden or added, same software drawing rendering is performed (down to the pixel).
+Front Panel (simulator Graphical Engine part) gives the same possibilities. Same constraints can be applied, same drawings can be overridden or added, same software drawing rendering is performed (down to the pixel).
 
 .. _section_display_modes:
 
 Display Configurations
 ======================
 
-The Display engine provides a number of different configurations. The appropriate configuration should be selected depending on the capabilities of the screen and other related hardware, such as display controllers.
+The Graphical Engine provides a number of different configurations. The appropriate configuration should be selected depending on the capabilities of the screen and other related hardware, such as display controllers.
 
 The modes can vary in three ways:
 
@@ -64,7 +64,7 @@ handy guide to selecting the appropriate buffer mode according to the hardware c
 Implementation
 --------------
 
-The display engine does not depend on the type of buffer mode. The implementation of `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_  calls the Low Level API ``LLUI_DISPLAY_IMPL_flush`` to let the BSP to update the display data. This function should be atomic and the implementation has to return the new graphics buffer address (back buffer address). In
+The Graphical Engine does not depend on the type of buffer mode. The implementation of `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_  calls the Low Level API ``LLUI_DISPLAY_IMPL_flush`` to let the BSP to update the display data. This function should be atomic and the implementation has to return the new graphics buffer address (back buffer address). In
 ``direct`` and ``copy`` modes, this address never changes and the implementation has always to return the back buffer address. In ``switch`` mode, the implementation has to return the old display frame buffer address.
 
 The next sections describe the work to do for each mode.
@@ -175,7 +175,7 @@ result in "noisy" rendering and flickering, but saves one buffer in runtime memo
 Byte Layout
 ===========
 
-This chapter concerns only display with a number of bits-per-pixel (BPP) smaller than 8. For this kind of display, a byte contains several pixels and the display module allows to customize how to organize the pixels in a
+This chapter concerns only display with a number of bits-per-pixel (BPP) smaller than 8. For this kind of display, a byte contains several pixels and the Graphical Engine allows to customize how to organize the pixels in a
 byte.
 
 Two layouts are available:
@@ -183,7 +183,7 @@ Two layouts are available:
 -  line: The byte contains several consecutive pixels on same line. When the end of line is reached, a padding is added in order to start a new line with a new byte.
 -  column: The byte contains several consecutive pixels on same column. When the end of column is reached, a padding is added in order to start a new column with a new byte.
 
-When installing the display module, a property ``byteLayout`` is required to specify the kind of pixels representation (see :ref:`section_display_installation`).
+When installing the Display module, a property ``byteLayout`` is required to specify the kind of pixels representation (see :ref:`section_display_installation`).
 
 .. table:: Byte Layout: line
 
@@ -227,7 +227,7 @@ When installing the display module, a property ``byteLayout`` is required to spe
 Memory Layout
 =============
 
-For the display with a number of bits-per-pixel (BPP) higher or equal to 8, the display module supports the line-by-line memory organization: pixels are laid out from left to right within a line, starting with the top
+For the display with a number of bits-per-pixel (BPP) higher or equal to 8, the Graphical Engine supports the line-by-line memory organization: pixels are laid out from left to right within a line, starting with the top
 line. For a display with 16 bits-per-pixel, the pixel at (0,0) is stored at memory address 0, the pixel at (1,0) is stored at address 2, the pixel at (2,0) is stored at address 4, and so on.
 
 .. table:: Memory Layout for BPP >= 8
@@ -248,7 +248,7 @@ line. For a display with 16 bits-per-pixel, the pixel at (0,0) is stored at memo
    |     | [7:0]     | [7:0]     | [7:0]     | [7:0]     | [7:0]     |
    +-----+-----------+-----------+-----------+-----------+-----------+
 
-For the display with a number of bits-per-pixel (BPP) lower than 8, the display module supports the both memory organizations: line by line (pixels are laid out from left to right within a line, starting with the top line) and column by column (pixels are laid out from top to bottom within a line, starting with the left line). These byte organizations concern until 8 consecutive pixels (see :ref:`section_display_layout_byte`). When installing the display module, a property ``memoryLayout`` is required to specify the kind of pixels representation (see :ref:`section_display_installation`).
+For the display with a number of bits-per-pixel (BPP) lower than 8, the Graphical Engine supports the both memory organizations: line by line (pixels are laid out from left to right within a line, starting with the top line) and column by column (pixels are laid out from top to bottom within a line, starting with the left line). These byte organizations concern until 8 consecutive pixels (see :ref:`section_display_layout_byte`). When installing the Display module, a property ``memoryLayout`` is required to specify the kind of pixels representation (see :ref:`section_display_installation`).
 
 .. table:: Memory Layout 'line' for BPP < 8 and byte layout 'line'
 
@@ -315,11 +315,11 @@ For the display with a number of bits-per-pixel (BPP) lower than 8, the display 
 Pixel Structure
 ===============
 
-The Display module provides pre-built display configurations with standard pixel memory layout. The layout of the bits within the pixel may be :ref:`standard<display_pixel_structure_standard>` or :ref:`driver-specific<display_pixel_structure_driver>`. When installing the display module, a property ``bpp`` is required to specify the kind of pixel representation (see :ref:`section_display_installation`).
+The Display module provides pre-built display configurations with standard pixel memory layout. The layout of the bits within the pixel may be :ref:`standard<display_pixel_structure_standard>` or :ref:`driver-specific<display_pixel_structure_driver>`. When installing the Display module, a property ``bpp`` is required to specify the kind of pixel representation (see :ref:`section_display_installation`).
 
 .. _display_pixel_structure_standard:
 
-When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the display module considers the pixels representation as **standard**. According to the chosen format, some color data can be lost or cropped.
+When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the Display module considers the pixels representation as **standard**. According to the chosen format, some color data can be lost or cropped.
 
 -  ARGB8888: the pixel uses 32 bits-per-pixel (alpha[8], red[8],
    green[8] and blue[8]).
@@ -461,7 +461,7 @@ When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 |
 
 .. _display_pixel_structure_driver:
 
-When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the display module considers the pixel representation as **driver-specific**. In this case, the driver must implement functions that convert MicroUI's standard 32 bits ARGB colors to display color representation (see :ref:`LLDISPLAY-API-SECTION`). This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. This mode can also be used when the number of bits for a color component (alpha, red, green or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut` .
+When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the Display module considers the pixel representation as **driver-specific**. In this case, the driver must implement functions that convert MicroUI's standard 32 bits ARGB colors to display color representation (see :ref:`LLDISPLAY-API-SECTION`). This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. This mode can also be used when the number of bits for a color component (alpha, red, green or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut` .
 
 .. _section_display_llapi:
 
@@ -478,8 +478,8 @@ Overview
 
    Display Low Level API
 
-* MicroUI library calls the BSP functions through the graphical engine and header file ``LLUI_DISPLAY_impl.h``. 
-* Implementation of ``LLUI_DISPLAY_impl.h`` can call graphical engine functions through ``LLUI_DISPLAY.h``.
+* MicroUI library calls the BSP functions through the Graphical Engine and header file ``LLUI_DISPLAY_impl.h``. 
+* Implementation of ``LLUI_DISPLAY_impl.h`` can call Graphical Engine functions through ``LLUI_DISPLAY.h``.
 * To perform some drawings, MicroUI uses ``LLUI_PAINTER_impl.h`` functions.
 * The drawing native functions are implemented in the CCO ``com.microej.clibrary.llimpl#microui-drawings``; this CCO must be included in BSP.
 * This CCO redirects drawings the implementation of ``ui_drawing.h``.
@@ -491,36 +491,36 @@ Overview
 Required Low Level API
 ----------------------
 
-Some four Low Level APIs are required to connect the display engine on the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``. 
+Some four Low Level APIs are required to connect the Graphical Engine on the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``. 
 
 * ``LLUI_DISPLAY_IMPL_initialize`` : The initialization function is called when MicroEJ application is calling ``MicroUI.start()``. Before this call, the display is useless and don't need to be initialized. This function consists in initializing the LCD driver and in filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on two binary semaphores (see after), the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels and optionally the display *physical* size in pixels. The display *virtual* size is the size of the area where the drawings are visible. The display *physical* size is the required memory size where the area is located. Virtual memory size is: ``display_width * display_height * bpp / 8``. On some devices the memory width (in pixels) is higher than virtual width. In this way, the graphics buffer memory size is: ``memory_width * memory_height * bpp / 8``.
 
-* ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: The display engine requires two binary semaphores to synchronize its internal states. The binary semaphores must be configured in a state such that the semaphore must first be *given* before it can be *taken* (this initialization must be performed in ``LLUI_DISPLAY_IMPL_initialize`` function). Two distinct functions have to be implemented to *take* and *give* a binary semaphore.
+* ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: The Graphical Engine requires two binary semaphores to synchronize its internal states. The binary semaphores must be configured in a state such that the semaphore must first be *given* before it can be *taken* (this initialization must be performed in ``LLUI_DISPLAY_IMPL_initialize`` function). Two distinct functions have to be implemented to *take* and *give* a binary semaphore.
 
 * ``LLUI_DISPLAY_IMPL_flush``: According the display buffer mode (see :ref:`section_display_modes`), the ``flush`` function has to be implemented. This function must not be blocking and not performing the copy directly. Another OS task or a dedicated hardware must be configured to perform the buffer copy. 
 
 Optional Low Level API
 ----------------------
 
-Several optional Low Level API are available in ``LLUI_DISPLAY_impl.h``. They are already implemented as *weak* functions in the display engine and return no error. These optional features concern the display backlight and constrast, display characteristics (is colored display, double buffer), colors conversions (see :ref:`display_pixel_structure` and :ref:`display_lut`), etc. Refer to each function comment to have more information about the default behavior.
+Several optional Low Level API are available in ``LLUI_DISPLAY_impl.h``. They are already implemented as *weak* functions in the Graphical Engine and return no error. These optional features concern the display backlight and constrast, display characteristics (is colored display, double buffer), colors conversions (see :ref:`display_pixel_structure` and :ref:`display_lut`), etc. Refer to each function comment to have more information about the default behavior.
 
 Painter Low Level API
 ---------------------
 
-All MicroUI drawings (available in ``Painter`` class) are calling a native function. The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h``. The implementation must take care about a lot of constraints: synchronization between drawings, graphical engine notification, MicroUI ``GraphicsContext`` clip and colors, flush dirty area, etc. The principle of implementing a MicroUI drawing function is described in the chapter :ref:`display_drawing_native`. 
+All MicroUI drawings (available in ``Painter`` class) are calling a native function. The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h``. The implementation must take care about a lot of constraints: synchronization between drawings, Graphical Engine notification, MicroUI ``GraphicsContext`` clip and colors, flush dirty area, etc. The principle of implementing a MicroUI drawing function is described in the chapter :ref:`display_drawing_native`. 
 
-An implementation of ``LLUI_PAINTER_impl.h`` is already available on MicroEJ Central Repository. This implementation respects the synchronization between drawings, the graphical engine notification, reduce (when possible) the MicroUI ``GraphicsContext`` clip constraints and update (when possible) the flush dirty area. This implementation does not perform the drawings. It only calls the equivalent of drawing available in ``ui_drawing.h``. This allows to simplify how to use a GPU (or a third-party library) to perform a drawing: the ``ui_drawing.h`` implementation has just to take in consideration the  MicroUI ``GraphicsContext`` clip and colors and flush dirty area. Synchronization with the graphical engine is already performed.
+An implementation of ``LLUI_PAINTER_impl.h`` is already available on MicroEJ Central Repository. This implementation respects the synchronization between drawings, the Graphical Engine notification, reduce (when possible) the MicroUI ``GraphicsContext`` clip constraints and update (when possible) the flush dirty area. This implementation does not perform the drawings. It only calls the equivalent of drawing available in ``ui_drawing.h``. This allows to simplify how to use a GPU (or a third-party library) to perform a drawing: the ``ui_drawing.h`` implementation has just to take in consideration the  MicroUI ``GraphicsContext`` clip and colors and flush dirty area. Synchronization with the Graphical Engine is already performed.
 
-In addition to the implementation of ``LLUI_PAINTER_impl.h``, an implementation of ``ui_drawing.h`` is already available in graphical engine (in *weak* mode). This allows to implement only the functions the GPU is able to perform. For a given drawing, the weak function implementation is calling the equivalent of drawing available in ``ui_drawing_soft.h``. This file lists all drawing functions implemented by the graphical engine.
+In addition to the implementation of ``LLUI_PAINTER_impl.h``, an implementation of ``ui_drawing.h`` is already available in Graphical Engine (in *weak* mode). This allows to implement only the functions the GPU is able to perform. For a given drawing, the weak function implementation is calling the equivalent of drawing available in ``ui_drawing_soft.h``. This file lists all drawing functions implemented by the Graphical Engine.
 
-The graphical engine implementation of ``ui_drawing_soft.h`` is performing the drawings in software. However some drawings can call another ``ui_drawing.h`` function. For instance ``UI_DRAWING_SOFT_drawHorizontalLine`` is calling ``UI_DRAWING_fillRectangle`` in order to use a GPU if available. If not available, the weak implementation of ``UI_DRAWING_fillRectangle`` is calling ``UI_DRAWING_SOFT_fillRectangle`` and so on.
+The Graphical Engine implementation of ``ui_drawing_soft.h`` is performing the drawings in software. However some drawings can call another ``ui_drawing.h`` function. For instance ``UI_DRAWING_SOFT_drawHorizontalLine`` is calling ``UI_DRAWING_fillRectangle`` in order to use a GPU if available. If not available, the weak implementation of ``UI_DRAWING_fillRectangle`` is calling ``UI_DRAWING_SOFT_fillRectangle`` and so on.
 
 The BSP implementation is also allowed to call ``ui_drawing_soft.h`` algorithms, one or several times per function to implement. For instance, a GPU may be able to draw an image whose format is RGB565. But if the image format is ARGB1555, BSP implementation can call ``UI_DRAWING_SOFT_drawImage`` function.
 
 Graphical Engine API
 --------------------
 
-Graphical engine provides a set of functions to interact with the C archive. The functions allow to retrieve some drawing characteristics, synchronize drawings between them, notify the end of flush and drawings, etc. 
+The Graphical Engine provides a set of functions to interact with the C archive. The functions allow to retrieve some drawing characteristics, synchronize drawings between them, notify the end of flush and drawings, etc. 
 
 The functions are available in ``LLUI_DISPLAY.h``. 
 
@@ -539,7 +539,7 @@ A graphics context holds a clip and the drawer is not allowed to perform a drawi
 
    Several clip functions are available in ``LLUI_DISPLAY.h`` to check if a drawing fits the clip.
 
-Graphical engine requires the synchronization between the drawings. To do that, it requires a call to ``LLUI_DISPLAY_requestDrawing`` at the beginning of native function implementation. This function takes as parameter the graphics context and the pointer on the native function itself. This pointer must be casted in a ``SNI_callback``. 
+The Graphical Engine requires the synchronization between the drawings. To do that, it requires a call to ``LLUI_DISPLAY_requestDrawing`` at the beginning of native function implementation. This function takes as parameter the graphics context and the pointer on the native function itself. This pointer must be casted in a ``SNI_callback``. 
 
 The drawing function must update the next `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_ area (dirty area). If not performed, the next call to `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_ will not call ``LLUI_DISPLAY_IMPL_flush()`` function.
  
@@ -549,7 +549,7 @@ The native function implementation pattern is:
 
    void Java_com_mycompany_MyPainterClass_myDrawingNative(MICROUI_GraphicsContext* gc, ...)
    {
-      // tell to graphical engine if drawing can be performed
+      // tell to the Graphical Engine if drawing can be performed
       if (LLUI_DISPLAY_requestDrawing(gc, (SNI_callback)&Java_com_mycompany_MyPainterClass_myDrawingNative))
       {
          DRAWING_Status status;
@@ -572,7 +572,7 @@ Display Synchronization
 Overview
 --------
 
-Graphical engine is designed to be synchronized with the display refresh rate by defining some points in the rendering timeline. It is optional; however it is mainly recommanded.  This chapter explains why to use display tearing signal and its consequences. Some chronograms describe several use cases: with and without display tearing signal, long drawings, long flush time, etc. Times are in milliseconds. To simplify chronograms views, the display refresh rate is every 16ms (62.5Hz). 
+The Graphical Engine is designed to be synchronized with the display refresh rate by defining some points in the rendering timeline. It is optional; however it is mainly recommanded.  This chapter explains why to use display tearing signal and its consequences. Some chronograms describe several use cases: with and without display tearing signal, long drawings, long flush time, etc. Times are in milliseconds. To simplify chronograms views, the display refresh rate is every 16ms (62.5Hz). 
 
 Captions definition:
 
@@ -657,7 +657,7 @@ The following table resumes the previous examples times:
 GPU Synchronization
 ===================
 
-When a GPU is used to perform a drawing, the caller (MicroUI painter native method) returns immediately. This allows the MicroEJ application to perform other operations during the GPU rendering. However, as soon as the MicroEJ application is trying to perform another drawing, the previous drawing made by the GPU must be done. Graphical engine is designed to be synchronized with the GPU asynchronous drawings by defining some points in the rendering timeline. It is not optional: MicroUI considers a drawing is fully done when it starts a new one. The end of GPU drawing must notify the graphical engine calling ``LLUI_DISPLAY_drawingDone()``.
+When a GPU is used to perform a drawing, the caller (MicroUI painter native method) returns immediately. This allows the MicroEJ application to perform other operations during the GPU rendering. However, as soon as the MicroEJ application is trying to perform another drawing, the previous drawing made by the GPU must be done. The Graphical Engine is designed to be synchronized with the GPU asynchronous drawings by defining some points in the rendering timeline. It is not optional: MicroUI considers a drawing is fully done when it starts a new one. The end of GPU drawing must notify the Graphical Engine calling ``LLUI_DISPLAY_drawingDone()``.
 
 Antialiasing
 ============
@@ -680,23 +680,23 @@ For each pixel to draw, the antialiasing process blends the foreground color wit
 CLUT
 ====
 
-The display module allows to target display which uses a pixel indirection table (CLUT). This kind of display are considered as generic but not standard (see :ref:`display_pixel_structure`). It consists to store color indices in image memory buffer instead of colors themselves.
+The Display module allows to target display which uses a pixel indirection table (CLUT). This kind of display are considered as generic but not standard (see :ref:`display_pixel_structure`). It consists to store color indices in image memory buffer instead of colors themselves.
 
 Color Conversion
 ----------------
 
-The driver must implement functions that convert MicroUI's standard 32 bits ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to display color representation. For each application ARGB8888 color, the display driver has to find the corresponding color in the table. The display module will store the index of the color in the table instead of using the color itself.
+The driver must implement functions that convert MicroUI's standard 32 bits ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to display color representation. For each application ARGB8888 color, the display driver has to find the corresponding color in the table. The Graphical Engine will store the index of the color in the table instead of using the color itself.
 
 When an application color is not available in the display driver table (CLUT), the display driver can try to find the closest color or return a default color. First solution is often quite difficult to write and can cost a lot of time at runtime. That's why the second solution is preferred. However, a consequence is that the application has only to use a range of colors provided by the display driver.
 
 Alpha Blending
 --------------
 
-MicroUI and the graphical engine use blending when drawing some texts or anti-aliased shapes. For each pixel to draw, the display stack blends the current application foreground color with the targeted pixel current color or with the current application background color (when enabled). This blending *creates* some  intermediate colors which are managed by the display driver. 
+MicroUI and the Graphical Engine use blending when drawing some texts or anti-aliased shapes. For each pixel to draw, the display stack blends the current application foreground color with the targeted pixel current color or with the current application background color (when enabled). This blending *creates* some  intermediate colors which are managed by the display driver. 
 
-Most of time the intermediate colors do not match with the palette. The default color is so returned and the rendering becomes wrong. To prevent this use case, the display module offers a specific Low Level API ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors(void* foreground, void* background)``. 
+Most of time the intermediate colors do not match with the palette. The default color is so returned and the rendering becomes wrong. To prevent this use case, the Graphical Engine offers a specific Low Level API ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors(void* foreground, void* background)``. 
 
-This API is only used when a blending is required and when the background color is enabled. Display module calls the API just before the blending and gives as parameter the pointers on the both ARGB colors. The display driver should replace the ARGB colors by the CLUT indices. Then the display module will only use between both indices. 
+This API is only used when a blending is required and when the background color is enabled. The Graphical Engine calls the API just before the blending and gives as parameter the pointers on the both ARGB colors. The display driver should replace the ARGB colors by the CLUT indices. Then the Graphical Engine will only use between both indices. 
 
 For instance, when the returned indices are ``20`` and ``27``, the display stack will use the indices ``20`` to ``27``, where all indices between ``20`` and ``27`` target some intermediate colors between both the original ARGB colors. 
 
@@ -715,7 +715,7 @@ Image Pixel Conversion
 Overview
 --------
 
-Display engine is built for a dedicated display pixel format (see :ref:`display_pixel_structure`). For this pixel format, the display engine must be able to draw images with or without alpha blending and with or without transformation. In addition, it must be able to read all image formats.
+The Graphical Engine is built for a dedicated display pixel format (see :ref:`display_pixel_structure`). For this pixel format, the Graphical Engine must be able to draw images with or without alpha blending and with or without transformation. In addition, it must be able to read all image formats.
 
 The MicroEJ application may not use all MicroUI image drawings options and may not use all images formats. It is not possible to detect what the application needs, so no optimization can be performed at application compiletime. However, for a given application, the platform can be built with a reduced set of pixel support. 
 
@@ -770,7 +770,7 @@ The linker file holds five tables, one for each use case, respectively ``IMAGE_U
 Library ej.api.Drawing
 ======================
 
-This library is a Foundation Library which provides additional drawings API. This library is fully integrated in graphical engine. It requires an implementation of its Low Level API: ``LLDW_PAINTER_impl.h``. These functions are implemented in the same CCO as ``LLUI_PAINTER_impl.h``: ``com.microej.clibrary.llimpl#microui-drawings``. Like MicroUI painter's natives, the functions are redirected to ``dw_drawing.h``. A default implementation of these functions is available in Software Algorithms module (in weak). This allows the BSP to override one or several APIs.
+This library is a Foundation Library which provides additional drawings API. This library is fully integrated in Display module. It requires an implementation of its Low Level API: ``LLDW_PAINTER_impl.h``. These functions are implemented in the same CCO as ``LLUI_PAINTER_impl.h``: ``com.microej.clibrary.llimpl#microui-drawings``. Like MicroUI painter's natives, the functions are redirected to ``dw_drawing.h``. A default implementation of these functions is available in Software Algorithms module (in weak). This allows the BSP to override one or several APIs.
 
 .. _section_display_implementation:
 
@@ -790,7 +790,7 @@ Dependencies
 Installation
 ============
 
-Display is a sub-part of the MicroUI library. When the MicroUI module is
+The Display module is a sub-part of the MicroUI library. When the MicroUI module is
 installed, the Display module must be installed in order to be able to
 connect the physical display with the MicroEJ Platform. If not
 installed, the *stub* module will be used.
@@ -900,7 +900,7 @@ The properties file must / can contain the following properties:
       -  When the number of bits-per-pixels (see 'bpp' property) is
          higher or equal than 8, this property is useless and ignored.
 
--  ``imageBuffer.memoryAlignment`` [optional, default value is "4"]: Defines the image memory alignment to respect when creating an image. This notion is useful when images drawings are performed by a third party hardware accelerator (GPU): it can require some constraints on the image to draw. This value is used by the graphical engine when creating a dynamic image and by the image generator to encode a RAW image. See :ref:`section_image_gpu_raw` and :ref:`section_image_custom_format`. Allowed values are 1, 2, 4, 8, 16, 32, 64, 128 and 256.
+-  ``imageBuffer.memoryAlignment`` [optional, default value is "4"]: Defines the image memory alignment to respect when creating an image. This notion is useful when images drawings are performed by a third party hardware accelerator (GPU): it can require some constraints on the image to draw. This value is used by the Graphical Engine when creating a dynamic image and by the image generator to encode a RAW image. See :ref:`section_image_gpu_raw` and :ref:`section_image_custom_format`. Allowed values are 1, 2, 4, 8, 16, 32, 64, 128 and 256.
 
 -  ``imageHeap.size`` [optional, default value is "not set"]: Defines the images heap size. Useful to fix a platform heap size when building a firmware in command line. When using a MicroEJ launcher, the size set in this launcher is priority to the platform value.
 

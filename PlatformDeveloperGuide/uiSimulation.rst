@@ -46,7 +46,7 @@ It depends at least on the Front Panel framework. This framework contains the fr
       <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.0"/>
    </dependencies>
 
-To be compatible with graphical engine, the project must depend on an extension of front panel framework. This extension provides some interfaces and classes the graphical engine is using to target simulated display and input devices. The extension does not provide any widgets. It is the equivalent of the embedded Low Level API. It fetches by transitivity the front panel framework, so the front panel framework dependency does not need to be specified explicitly: 
+To be compatible with Display module's Graphical Engine, the project must depend on an extension of front panel framework. This extension provides some interfaces and classes the Front Panel is using to target simulated display and input devices. The extension does not provide any widgets. It is the equivalent of the embedded Low Level API. It fetches by transitivity the front panel framework, so the front panel framework dependency does not need to be specified explicitly: 
 
 ::
 

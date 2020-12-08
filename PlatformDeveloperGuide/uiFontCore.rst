@@ -13,7 +13,7 @@ The Font Renderer is included in the MicroUI module (see :ref:`section_microui`)
 Functional Description
 ======================
 
-The engine redirects all MicroUI font drawings to the internal software algorithms. There is no indirection to a set of Low Level API. 
+The Graphical Engine redirects all MicroUI font drawings to the internal software algorithms. There is no indirection to a set of Low Level API. 
 
 .. graphviz::
 
@@ -77,7 +77,7 @@ Dependencies
 Installation
 ============
 
-The Font Renderer modules are part of the MicroUI module and Display module. You must install them in order to be able to use some fonts.
+The Font Renderer is part of the MicroUI module and Display module. You must install them in order to be able to use some fonts.
 
 
 Use

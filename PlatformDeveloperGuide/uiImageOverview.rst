@@ -25,9 +25,9 @@ Functional Description
 
 The Image Engine is composed of:
 
-* An "Image Generator" module, for converting images into a MicroEJ format (known by the Image Engine Core) or into a platform binary format (cannot be used by the Image Engine Core), before runtime (pre-generated images).
+* An "Image Generator" module, for converting images into a MicroEJ format (known by the Image Engine Renderer) or into a platform binary format (cannot be used by the Image Engine Renderer), before runtime (pre-generated images).
 * The "Image Loader" module, for loading, converting and closing the images. 
-* A set of "Image Decoder" modules, for converting standard image formats into a MicroEJ format (known by the Image Core) at runtime. Each Image Decoder is an additional module of the main module "Image Loader".
+* A set of "Image Decoder" modules, for converting standard image formats into a MicroEJ format (known by the Image Renderer) at runtime. Each Image Decoder is an additional module of the main module "Image Loader".
 * The "Image Renderer" module, for reading and drawing the images in MicroEJ format.
 
 .. graphviz::
