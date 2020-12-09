@@ -334,7 +334,7 @@ The following application code guidelines are recommended in order to minimize t
   
   - Avoid creating threads on the fly for asynchronous execution, use shared thread instances instead (`Timer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html>`_, `Executor <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/concurrent/Executor.html>`_, `MicroUI.callSerially(Runnable) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#callSerially-java.lang.Runnable->`_, ...). 
 
-- When designing Graphics User Interface:
+- When designing Graphical User Interface:
   
   - Avoid creating mutable images (`BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html>`_ instances) to draw in them and render them later, render graphics directly on the display instead. Mutable images require allocating a lot of memory from the images heap.
   - Make sure that your `Widget <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html>`_ hierarchy is as flat as possible (avoid any unnecessary `Container <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Container.html>`_). Deep widget hierarchies take more memory and can reduce performance.
