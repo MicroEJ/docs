@@ -10,13 +10,9 @@
 ========
 
 .. toctree::
+   :maxdepth: 2
 
-   microjs/glossary
    microjs/introduction
    microjs/getting_started
    microjs/builtin
-   microjs/host_env
-   microjs/testing
-   microjs/footprint
    microjs/limitations
-   microjs/examples
