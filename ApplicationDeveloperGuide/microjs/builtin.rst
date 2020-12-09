@@ -5,6 +5,8 @@
 .. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 ..
 
+.. _microjs.builtin:
+
 ================
 Built-in objects
 ================
