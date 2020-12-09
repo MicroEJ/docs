@@ -7,6 +7,7 @@ The following schema shows the overall architecture and modules:
 
 .. figure:: images/ui_overview.png
    :alt: Graphical User Interface Overview
+   :width: 600px
    :align: center
 
    Graphical User Interface Overview
