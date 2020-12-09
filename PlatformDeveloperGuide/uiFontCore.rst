@@ -13,7 +13,7 @@ The Font Renderer is included in the MicroUI module (see :ref:`section_microui`)
 Functional Description
 ======================
 
-The Graphical Engine redirects all MicroUI font drawings to the internal software algorithms. There is no indirection to a set of Low Level API. 
+The Graphics Engine redirects all MicroUI font drawings to the internal software algorithms. There is no indirection to a set of Low Level API. 
 
 .. graphviz::
 
@@ -46,7 +46,7 @@ The Graphical Engine redirects all MicroUI font drawings to the internal softwar
       ];
       
       app [label="Painter API"]
-      stack [label="Graphical Engine"]
+      stack [label="Graphics Engine"]
       algo [label="Software Algorithms"]
       hard  [label="hardware"]
       

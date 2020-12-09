@@ -128,7 +128,7 @@ The Image Engine is composed of:
 * Colors:
    * blue: off-board elements (tools, files).
    * green: hardware elements (memory, processor).
-   * orange: on-board graphical engine elements.
+   * orange: on-board Graphics Engine elements.
    * gray: BSP.
 
 * Line labels:

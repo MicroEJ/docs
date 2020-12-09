@@ -314,7 +314,7 @@ The traces are SystemView compatible. The following text can be copied in a file
    6        UI_ImageData       (MicroUI) %UINewImage ( %UIImageData ): id = %p; size = %d*%d
 
    #
-   # MicroUI Graphical Engine
+   # MicroUI Graphics Engine
    #
    10       GE_FlushStart      (MicroUI GraphicalEngine) Flush back buffer (%u,%u) (%u*%u)
    11       GE_FlushDone       (MicroUI GraphicalEngine) Flush done

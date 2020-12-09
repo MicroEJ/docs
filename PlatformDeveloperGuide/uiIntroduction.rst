@@ -1,7 +1,7 @@
 Principle
 =========
 
-The User Interface Extension features one of the fastest graphical engines, associated with a unique int-based event management system. 
+The User Interface Extension features one of the fastest graphics engines, associated with a unique int-based event management system. 
 
 .. 
    // Add again next line when ESR 3.0 will be available:It provides :ref:`[MUI] library <esr-specifications>` implementation. 
