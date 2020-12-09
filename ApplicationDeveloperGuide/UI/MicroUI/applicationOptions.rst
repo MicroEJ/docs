@@ -1,18 +1,12 @@
-.. _section_app_microui:
+.. _microui_application_options:
 
-MicroUI
-=======
+Application Options
+###################
 
-.. toctree::
-   :maxdepth: 2
+MicroUI libraries and its tools provide a set of options. 
+See :ref:`application_options` to have more information about the application options.
 
-   introduction
-   images
-   fonts
-   fontDesigner
-   applicationOptions
-   traces
-   errors
+.. include:: sectionArchitectureOptions.rst
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
