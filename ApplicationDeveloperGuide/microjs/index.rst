@@ -10,16 +10,12 @@
 ========
 
 .. toctree::
+   :maxdepth: 2
 
-   glossary
    introduction
    getting_started
    builtin
-   host_env
-   testing
-   footprint
    limitations
-   examples
 
 .. include:: readme_link
 
