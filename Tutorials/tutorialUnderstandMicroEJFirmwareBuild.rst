@@ -70,7 +70,7 @@ The platform .zip files contain:
   Platform
 * ``<platform>-bsp``: The C code for the board-specific files
   (drivers).
-* ``<platform>-fp``: Front panel mockup for the simulator.
+* ``<platform>-fp``: Front Panel mockup for the simulator.
 
 See :ref:`new_platform_creation` to learn how to create a MicroEJ
 Platform using a MicroEJ Platform Source project.

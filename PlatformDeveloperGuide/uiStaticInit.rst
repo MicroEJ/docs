@@ -32,7 +32,7 @@ The Static MicroUI Initializer tool is able to generate two files:
    used to make a link between an input device (buttons, touch) and its
    MicroUI event generator (see :ref:`section_input`).
 
-.. note:: The front panel project does not need a configuration file (like C header file for embedded platform).
+.. note:: The Front Panel project does not need a configuration file (like C header file for embedded platform).
 
 .. figure:: images/static_init_process.*
    :alt: Static MicroUI Initializer Process
