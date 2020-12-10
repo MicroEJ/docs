@@ -31,10 +31,10 @@ Let's walk through the steps required to use Javascript in your MicroEJ applicat
     ...
 
     MicroJsCode.initJs();
-    MicroJsRuntime.ENGINE.run();
+    MicroJsRuntime.ENGINE.runOneJob();
     MicroJsRuntime.stop();
 
-- create a file named ``hello.js`` in the folder ``src/main/js`` with the following content:
+- create a file named ``hello.js`` in the folder ``src/main/resources`` with the following content:
 
 .. code:: javascript
 
