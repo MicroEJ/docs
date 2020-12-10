@@ -154,7 +154,7 @@ Set the matching rule of a given dependency with ``ej:match="matching rule"``.  
 
 .. code-block:: xml
 
-   <depedency org="ORG" name="NAME" rev="MAJOR.MINOR.PATCH" ej:match="perfect" />
+   <dependency org="ORG" name="NAME" rev="MAJOR.MINOR.PATCH" ej:match="perfect" />
 
 Automatic Update Before Resolution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -172,6 +172,33 @@ When the plugin is enabled, for each module dependency, MMM will check
 the version declared in the module file and update it to the latest
 version available if and only if it satisfies the matching rule of the
 dependency.
+
+Dependency Visibility
+~~~~~~~~~~~~~~~~~~~~~
+
+- A dependency declared ``public`` is transitively resolved by upper
+  modules.  The default when not set.
+- A dependency declared ``private`` is only used by the module itself,
+  typically for:
+
+   - Bundling the content into the module
+   - Testing the module
+
+The visibility of a dependency is declared by setting the tag
+``visibility``, for example:
+
+.. code-block:: xml
+
+   <dependency org="ORG" name="NAME" rev="MAJOR.MINOR.PATCH" visibility="private" />
+
+The visibility can also be set according to the configurations
+declared in the ``configurations`` node.  The configuration is
+declared by setting the ``conf`` tag, for example:
+
+.. code-block:: xml
+
+   <dependency org="ORG" name="NAME" rev="MAJOR.MINOR.PATCH" conf="[CONF-NAME]->*" />
+
 
 .. _mmm_configuration:
 
