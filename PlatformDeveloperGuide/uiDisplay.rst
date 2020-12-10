@@ -56,7 +56,7 @@ handy guide to selecting the appropriate buffer mode according to the hardware c
 
 .. figure:: images/display_modes_nocustom.*
    :alt: Buffer Modes
-   :width: 450px
+   :scale: 50%
    :align: center
 
    Buffer Modes
@@ -187,28 +187,13 @@ If the display does not have its own internal memory and if the device does not 
 Workflow
 --------
 
-The workflow depends on the specifications of the display. More specifically, it depends on whether or not the display has its own internal memory (regardless of whether or not it is mapped to byte-addressable RAM).
-
-Display with Internal Memory
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In this case, a partial buffer is allocated in RAM.
+A partial buffer of the desired size has to be allocated in RAM.
+If the display does not have its own internal memory, a complete buffer also has to be allocated in RAM, and the display has to be configured to read from the complete buffer.
 
 The implementation should follow these steps:
 
 1. First, the application draws in the partial buffer.
-2. Then, to flush the drawings on the screen, the data of the partial buffer is sent to the display.
-3. Finally, a synchronization is required before starting the next drawing operation.
-
-Display without Internal Memory
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In this case, a partial buffer and a complete buffer are allocated in RAM. The display is configured to read from the complete buffer.
-
-The implementation should follow these steps:
-
-1. First, the application draws in the partial buffer.
-2. Then, to flush the drawings on the screen, the data of the partial buffer is copied into the complete buffer.
+2. Then, to flush the drawings on the screen, the data of the partial buffer is sent to the display (either copied to its internal memory or to the complete buffer in RAM).
 3. Finally, a synchronization is required before starting the next drawing operation.
 
 Dual Partial Buffer
