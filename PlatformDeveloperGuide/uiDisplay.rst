@@ -56,7 +56,7 @@ handy guide to selecting the appropriate buffer mode according to the hardware c
 
 .. figure:: images/display_modes_nocustom.*
    :alt: Buffer Modes
-   :width: 450px
+   :scale: 50%
    :align: center
 
    Buffer Modes
