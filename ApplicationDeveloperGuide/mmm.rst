@@ -110,6 +110,21 @@ It describes the :ref:`module nature <module_natures>` (also called build type) 
        </dependencies>
    </ivy-module>        
 
+Enable MMM Semantic
+~~~~~~~~~~~~~~~~~~~
+
+The MMM semantic is enabled in a the module by adding the MicroEJ XML
+namespace in the ``ivy-module`` node:
+
+.. code:: xml
+
+   <ivy-module xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
+
+.. note::
+
+   Multiple namespaces can be declared in the ``ivy-module`` node.
+
+
 .. _mmm_configuration:
 
 MicroEJ Module Manager Configuration 
