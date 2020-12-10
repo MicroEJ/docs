@@ -114,7 +114,7 @@ Enable MMM Semantic
 ~~~~~~~~~~~~~~~~~~~
 
 The MMM semantic is enabled in a module by adding the MicroEJ XML
-namespace in the ``ivy-module`` node:
+namespace and the ``ej:version`` attribute in the ``ivy-module`` node:
 
 .. code:: xml
 
