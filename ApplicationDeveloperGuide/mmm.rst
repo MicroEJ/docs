@@ -156,6 +156,23 @@ Set the matching rule of a given dependency with ``ej:match="matching rule"``.  
 
    <depedency org="ORG" name="NAME" rev="MAJOR.MINOR.PATCH" ej:match="perfect" />
 
+Automatic Update Before Resolution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Easyant plugin ``ivy-update`` can be used to automatically update
+the version (tag ``rev``) of every module dependencies declared.
+
+.. code-block:: xml
+
+   <info organisation="[organisation]" module="[name]" status="integration" revision="[version]">
+       <ea:plugin org="com.is2t.easyant.plugins" name="ivy-update" revision="1.+" />
+   </info>
+
+When the plugin is enabled, for each module dependency, MMM will check
+the version declared in the module file and update it to the latest
+version available if and only if it satisfies the matching rule of the
+dependency.
+
 .. _mmm_configuration:
 
 MicroEJ Module Manager Configuration 
