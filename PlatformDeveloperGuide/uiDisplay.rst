@@ -193,7 +193,7 @@ If the display does not have its own internal memory, a complete buffer also has
 The implementation should follow these steps:
 
 1. First, the application draws in the partial buffer.
-2. Then, to flush the drawings on the screen, the data of the partial buffer is sent to the display (either copied to its internal memory or to the complete buffer).
+2. Then, to flush the drawings on the screen, the data of the partial buffer is sent to the display (either copied to its internal memory or to the complete buffer in RAM).
 3. Finally, a synchronization is required before starting the next drawing operation.
 
 Dual Partial Buffer
