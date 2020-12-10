@@ -160,7 +160,7 @@ Automatic Update Before Resolution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Easyant plugin ``ivy-update`` can be used to automatically update
-the version (tag ``rev``) of every module dependencies declared.
+the version (attribute ``rev``) of every module dependencies declared.
 
 .. code-block:: xml
 
@@ -184,7 +184,7 @@ Dependency Visibility
    - Bundling the content into the module
    - Testing the module
 
-The visibility of a dependency is declared by setting the tag
+The visibility of a dependency is declared by setting the attribute
 ``visibility``, for example:
 
 .. code-block:: xml
@@ -193,7 +193,7 @@ The visibility of a dependency is declared by setting the tag
 
 The visibility can also be set according to the configurations
 declared in the ``configurations`` node.  The configuration is
-declared by setting the ``conf`` tag, for example:
+declared by setting the ``conf`` attribute, for example:
 
 .. code-block:: xml
 
