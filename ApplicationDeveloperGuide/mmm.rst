@@ -125,6 +125,37 @@ namespace in the ``ivy-module`` node:
    Multiple namespaces can be declared in the ``ivy-module`` node.
 
 
+Dependency Matching Rule
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following matching rules are specified by MMM:
+
+.. list-table::
+   :widths: 2 2 3
+   :header-rows: 1
+
+   * - Name
+     - Range Notation
+     - Semantic
+   * - compatible
+     - [M.m.p-RC, (M+1).0.0-RC[
+     - Equal or up to next major version.  Default if not set.
+   * - equivalent
+     - [M.m.p-RC, M.(m+1).0-RC [
+     - Equal or up to next minor version
+   * - greaterOrEqual
+     - [M.m.p-RC, ∞[
+     - Equal or greater versions
+   * - perfect
+     - [M.m.p-RC, M.m.(p+1)-RC[
+     - Exact match (strong dependency)
+
+Set the matching rule of a given dependency with ``ej:match="matching rule"``.  For example:
+
+.. code-block:: xml
+
+   <depedency org="ORG" name="NAME" rev="MAJOR.MINOR.PATCH" ej:match="perfect" />
+
 .. _mmm_configuration:
 
 MicroEJ Module Manager Configuration 
