@@ -156,6 +156,9 @@ next table.
    | 163         | SOAR limit reached: Your application defines too many  |
    |             | cnocrete types.                                        |
    +-------------+--------------------------------------------------------+
+   | 164         | SOAR limit reached: Your application defines too many  |
+   |             | reference fields in a class.                           |
+   +-------------+--------------------------------------------------------+
    | 251         | Error in converting an IEE754 float(32) or double(64)  |
    |             | to a fixed-point arithmetic number                     |
    +-------------+--------------------------------------------------------+
