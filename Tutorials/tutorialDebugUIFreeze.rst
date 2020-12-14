@@ -14,7 +14,7 @@ This tutorial explains how to instrument the code in order to locate the issue w
 Bottom-Up approach
 ------------------
 
-Check RTOS scheduler liveness
+Check RTOS Scheduler Liveness
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's start at low level by figuring out if the RTOS is scheduling the
