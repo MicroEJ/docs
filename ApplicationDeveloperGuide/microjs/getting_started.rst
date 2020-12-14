@@ -11,9 +11,19 @@ Getting started
 
 Let's walk through the steps required to use Javascript in your MicroEJ application:
 
-- create your application project in the MicroEJ SDK, see :ref:`standalone_application`. 
-  Once done, you can continue with the MicroEJ SDK or with your favorite IDE.
 - install the :ref:`MMM CLI (Command Line Interface) <mmm_build_kit>`
+- create your Standalone Application project with the ``init`` command:
+
+.. code:: console
+
+    mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=firmware-singleapp -Dskeleton.rev=1.1.12  -Dproject.org=com.mycompany -Dproject.module=myproject -Dproject.rev=1.0.0 -Dskeleton.target.dir=myproject 
+
+Adapt the properties values to your need.
+See the :ref:`MMM CLI init command documentation <mmm.cli.commands.init>` for more details.
+
+Javascript is supported in the following project types: ``microej-javalib``, ``application`` and ``firmware-singleapp``.
+You can have more information on the project types in the :ref:`Module Natures page <module_natures>`.
+
 - add the microjs dependency in the ``module.ivy`` file:
 
 .. code:: xml
@@ -48,13 +58,13 @@ Let's walk through the steps required to use Javascript in your MicroEJ applicat
 - follow the steps described in the :ref:`run command documentation <mmm_cli.commands.run>`
 - in a terminal, go to the folder containing the ``module.ivy`` file and build the project with the command:
 
-.. code:: shell
+.. code:: console
 
     mmm build
 
 You should see the following message at the end of the build:
 
-.. code:: shell
+.. code:: console
 
     BUILD SUCCESSFUL
 
@@ -62,13 +72,13 @@ You should see the following message at the end of the build:
 
 - now that your application is built, you can run it in the simulator with the command:
 
-.. code:: shell
+.. code:: console
 
     mmm run
 
 You should see the following output:
 
-.. code:: shell
+.. code:: console
 
     My first  MicroEJ Javascript application!
 
