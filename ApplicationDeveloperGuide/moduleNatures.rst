@@ -99,7 +99,6 @@ There are 4 different ways to provide a MicroEJ Platform for a module project:
 
 -  Copy a MicroEJ Platform file to the dropins folder. The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.dropins``.
 
-
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
