@@ -26,6 +26,7 @@ Browse the following chapters to familiarize yourself with MicroEJ Technology an
    PlatformDeveloperGuide/index
    KernelDeveloperGuide/index
    Tutorials/index
+   about
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
