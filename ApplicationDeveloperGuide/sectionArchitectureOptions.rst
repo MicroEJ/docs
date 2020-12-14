@@ -52,6 +52,8 @@ When this option is enabled, ``assert`` statements are executed. Please note
 that the executed code may produce side effects or throw
 ``java.lang.AssertionError``.
 
+.. _architecture_options_group_trace:
+
 Group: Trace
 ------------
 
@@ -81,6 +83,8 @@ Category: Memory
 Group: Heaps
 ^^^^^^^^^^^^
 
+.. _option_java_heap:
+
 Option(text): Java heap size (in bytes)
 """""""""""""""""""""""""""""""""""""""
 
@@ -94,6 +98,8 @@ Specifies the Java heap size in bytes.
 
 A Java heap contains live Java objects. An OutOfMemory error can occur if the
 heap is too small.
+
+.. _option_immortal_heap:
 
 Option(text): Immortal heap size (in bytes)
 """""""""""""""""""""""""""""""""""""""""""
@@ -124,6 +130,8 @@ there is no free block in the pool, a StackOverflow error is thrown. When a
 thread terminates all associated blocks are freed. These blocks can then be
 used by other threads.
 
+.. _option_number_of_threads:
+
 Option(text): Number of threads
 """""""""""""""""""""""""""""""
 
@@ -135,6 +143,8 @@ Option(text): Number of threads
 
 Specifies the number of threads the application will be able to use at the same
 time.
+
+.. _option_number_of_stack_blocks:
 
 Option(text): Number of blocks in pool
 """"""""""""""""""""""""""""""""""""""
@@ -157,6 +167,8 @@ Option(text): Block size (in bytes)
 *Description*:
 
 Specifies the thread stack block size (in bytes).
+
+.. _option_maximum_number_of_stack_blocks_per_thread:
 
 Option(text): Maximum size of thread stack (in blocks)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -810,6 +822,8 @@ Category: Core Engine
 
 Group: Memory
 ^^^^^^^^^^^^^
+
+.. _option_maximum_number_of_monitors_per_thread:
 
 Option(text):
 """"""""""""""

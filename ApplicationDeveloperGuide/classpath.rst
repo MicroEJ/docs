@@ -27,12 +27,6 @@ zip file, called a JAR file (JAR stands for Java ARchive).
 -  :ref:`section.classpath.elements` specifies the different elements that can be declared
    in MicroEJ Classpath to describe the application contents.
 
--  :ref:`section.foundation.library.versus.add.on.library` explains the different kind of
-   libraries that can be added to MicroEJ Classpath.
-
--  Finally, :ref:`section.ivy.dependency.manager` shows how to manage libraries dependencies
-   in MicroEJ.
-
 .. _application.classpath.mapping:
 
 Application Classpath
@@ -46,7 +40,7 @@ project appearance order (top to bottom).
 .. figure:: images/ClassPath_4.png
    :alt: MicroEJ Application Classpath Mapping
    :align: center
-   :width: 80.0%
+   :scale: 70%
 
    MicroEJ Application Classpath Mapping
 
@@ -69,6 +63,7 @@ MicroEJ Classpath elements are loaded transitively.
 .. figure:: images/ClassPath_1.png
    :alt: Classpath Load Principle
    :align: center
+   :scale: 65%
 
    Classpath Load Principle
 
@@ -87,7 +82,7 @@ The MicroEJ Classpath contains the following elements:
 
 -  Immutables Object data files, described in Section :ref:`section.classpath.elements.immutables`;
 
--  Images and Fonts resources;
+-  Images, Fonts and Native Language Support (NLS) resources, described in :ref:`chapter.microej.applicationResources`;
 
 -  ``*.[extension].list`` files, declaring contents to load. Supported
    list file extensions and format is specific to declared application
@@ -162,6 +157,9 @@ resource. Example:
    # The following resource is embedded as a raw resource
    com/mycompany/MyResource.txt
 
+Others resources types are supported in MicroEJ Classpath, 
+see :ref:`chapter.microej.applicationResources` for more details.
+
 .. _section.classpath.elements.immutables:
 
 Immutable Objects
@@ -225,6 +223,7 @@ For example, to define the property ``myProp`` with the value
 
 Option can also be set in the ``VM arguments`` field of the ``JRE`` tab of the launch using the -D option (e.g. ``-Dmicroej.java.property.myProp=theValue``).
 
+.. _section.classpath.elements.constants:
 
 Constants
 ---------
@@ -269,6 +268,8 @@ The String key parameter must be resolved as an inlined String:
 
 The String value is converted to the desired type using conversion rules described by the :ref:`[BON] <esr-specifications>` API.
 
+.. _if_constant_removal:
+
 A boolean constant declared in an ``if`` statement condition can be used to fully remove portions of code.
 This feature is similar to C pre-processors ``#ifdef`` directive with the difference that this optimization is performed at binary level
 without having to recompile the sources.
@@ -283,195 +284,7 @@ without having to recompile the sources.
 
 .. note::
    In :ref:`Multi-Sandbox <multisandbox>` environment, constants are processed locally within each context.
-   In particular, constants defined in the Kernel are not propagated to :ref:`Sandboxed Applications <sandboxed.application>`.
-
-
-.. _section.classpath.Images:
-
-Images
-------
-
-Overview
-~~~~~~~~
-
-Images are graphical resources that can be accessed with a call to
-``ej.microui.display.Image.createImage()``. To be displayed, these
-images have to be converted from their source format to the display raw
-format. The conversion can either be done at :
-
--  build-time (using the image generator tool),
-
--  run-time (using the relevant decoder library).
-
-Images that must be processed by the image generator tool are declared
-in MicroEJ Classpath ``*.images.list`` files. The file format is a
-standard Java properties file, each line representing a ``/`` separated
-resource path relative to the MicroEJ classpath root referring to a
-standard image file (e.g. ``.png``, ``.jpg``). The resource may be
-followed by an optional parameter (separated by a ``:``) which defines
-and/or describes the image output file format (raw format). When no
-option is specified, the image is embedded as-is and will be decoded at
-run-time (although listing files without format specifier has no impact
-on the image generator processing, it is advised to specify them in the
-``*.images.list`` files anyway, as it makes the run-time processing
-behavior explicit). Example:
-
-::
-
-   # The following image is embedded 
-   # as a PNG resource (decoded at run-time)
-   com/mycompany/MyImage1.png
-
-   # The following image is embedded 
-   # as a 16 bits format without transparency (decoded at build-time)
-   com/mycompany/MyImage2.png:RGB565
-
-   # The following image is embedded 
-   # as a 16 bits format with transparency (decoded at build-time)
-   com/mycompany/MyImage3.png:ARGB1555
-
-.. include:: ../ApplicationDeveloperGuide/sectionImageFormats.rst
-
-.. _section.classpath.Fonts:
-
-Fonts
------
-
-Overview
-~~~~~~~~
-
-Fonts are graphical resources that can be accessed with a call to
-``ej.microui.display.Font.getFont()``. To be displayed, these fonts have
-to be converted at build-time from their source format to the display
-raw format by the font generator tool. Fonts that must be processed by
-the font generator tool are declared in MicroEJ Classpath
-``*.fonts.list`` files. The file format is a standard Java properties
-file, each line representing a ``/`` separated resource path relative to
-the MicroEJ classpath root referring to a MicroEJ font file (usually
-with a ``.ejf`` file extension). The resource may be followed by
-optional parameters which define :
-
--  some ranges of characters to embed in the final raw file;
-
--  the required pixel depth for transparency.
-
-By default, all characters available in the input font file are
-embedded, and the pixel depth is ``1`` (i.e 1 bit-per-pixel). Example:
-
-::
-
-   # The following font is embedded with all characters
-   # without transparency
-   com/mycompany/MyFont1.ejf
-
-   # The following font is embedded with only the latin 
-   # unicode range without transparency 
-   com/mycompany/MyFont2.ejf:latin
-
-   # The following font is embedded with all characters
-   # with 2 levels of transparency
-   com/mycompany/MyFont2.ejf::2
-
-MicroEJ font files conventionally end with the ``.ejf`` suffix and are
-created using the Font Designer (see :ref:`section.tool.fontdesigner`).
-
-Font Range
-~~~~~~~~~~
-
-The first parameter is for specifying the font ranges to embed.
-Selecting only a specific set of characters to embed reduces the memory
-footprint. Several ranges can be specified, separated by ``;``. There
-are two ways to specify a character range: the custom range and the
-known range.
-
-Custom Range
-^^^^^^^^^^^^
-
-Allows the selection of raw Unicode character ranges.
-
-Examples:
-
--  ``myfont:0x21-0x49``: Embed all characters from 0x21 to 0x49
-   (included);
-
--  ``myfont:0x21-0x49,0x55``: Embed all characters from 0x21 to 0x49 and
-   character 0x55;
-
--  ``myfont:0x21-0x49;0x55``: Same as previous, but done by declaring
-   two ranges.
-
-Known Range
-^^^^^^^^^^^
-
-A known range is a range defined by the "Unicode Character Database"
-version 9.0.0 available on `<https://home.unicode.org/>`_. Each range is
-composed of sub ranges that have a unique id.
-
--  ``myfont:basic_latin``: Embed all *Basic Latin* characters;
-
--  ``myfont:basic_latin;arabic``: Embed all *Basic Latin* characters,
-   and all *Arabic* characters.
-
-Transparency
-~~~~~~~~~~~~
-
-The second parameter is for specifying the font transparency level
-(``1``, ``2``, ``4`` or ``8``).
-
-Examples:
-
--  ``myfont:latin:4``: Embed all latin characters with 4 levels of
-   transparency
-
--  ``myfont::2``: Embed all characters with 2 levels of transparency
-
-.. _section.foundation.library.versus.add.on.library:
-
-Foundation Libraries vs Add-On Libraries
-========================================
-
-A MicroEJ Foundation Library is a MicroEJ Core library that provides
-core runtime APIs or hardware-dependent functionality. A Foundation
-library is divided into an API and an implementation. A Foundation
-library API is composed of a name and a 2 digits version (e.g.
-``EDC-1.3``) and follows the semantic versioning (`<http://semver.org>`_)
-specification. A Foundation Library API only contains prototypes without
-code. Foundation Library implementations are provided by MicroEJ
-Platforms. From a MicroEJ Classpath, Foundation Library APIs
-dependencies are automatically mapped to the associated implementations
-provided by the Platform or the Virtual Device on which the application
-is being executed.
-
-A MicroEJ Add-On Library is a MicroEJ library that is implemented on top
-of MicroEJ Foundation Libraries (100% full Java code). A MicroEJ Add-On
-Library is distributed in a single JAR file, with a 3 digits version and
-provides its associated source code.
-
-Foundation and Add-On Libraries are added to MicroEJ Classpath by the
-application developer as module dependencies (see :ref:`section.ivy.dependency.manager`).
-
-.. figure:: images/ClassPath_2.png
-   :alt: MicroEJ Foundation Libraries and Add-On Libraries
-   :align: center
-
-   MicroEJ Foundation Libraries and Add-On Libraries
-
-.. _central_repository:
-
-MicroEJ Central Repository
-==========================
-
-The MicroEJ Central Repository is the binary repository maintained by
-MicroEJ. It contains Foundation Library APIs and numerous Add-On
-Libraries. Foundation Libraries APIs are distributed under the
-organization ``ej.api``. All other artifacts are Add-On Libraries.
-
-For more information, please visit `<https://developer.microej.com/central-repository/>`_.
-
-By default, MicroEJ SDK is configured to connect online MicroEJ Central
-Repository. The MicroEJ Central Repository can be downloaded locally for
-offline use. Please follow the steps described at
-`<https://developer.microej.com/central-repository/>`_.
+   In particular, constants defined in the Kernel are not propagated to :ref:`Sandboxed Applications <sandboxed_application>`.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

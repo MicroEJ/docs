@@ -1,5 +1,5 @@
-Appendix B: Foundation Libraries
-================================
+Appendix B: MicroEJ Foundation Libraries
+========================================
 
 .. toctree::
     :maxdepth: 2
@@ -9,7 +9,6 @@ Appendix B: Foundation Libraries
     kf
     ecom
     ecom-comm
-    mui
     fs
     net
     ssl

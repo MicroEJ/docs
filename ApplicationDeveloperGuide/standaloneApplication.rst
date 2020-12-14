@@ -1,3 +1,5 @@
+.. _standalone_application:
+
 Standalone Application
 ======================
 
@@ -6,6 +8,7 @@ Standalone Application
 
    platform
    gettingStartedApp
+   buildOutputFiles
    launches
    applicationOptions
    soar

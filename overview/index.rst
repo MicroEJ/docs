@@ -6,12 +6,16 @@ Overview
 .. toctree::
 
    editions
+   licenses
    runtime
+   libraries
+   repository
    esr
    firmware
    sdk
    studio
    gettingStarted
+   github
    systemRequirements
 
 ..

@@ -20,16 +20,16 @@ Application development is based on the following elements:
 -  MicroEJ SDK, the integrated development environment for writing
    applications. It is based on Eclipse and is relies on the integrated
    Java compiler (JDT). It also provides a dependency manager for
-   managing MicroEJ Libraries (see :ref:`section.ivy.dependency.manager`).
-   The current distribution of MicroEJ SDK (``19.05``) is built on top of Eclipse Oxygen
-   (`<https://www.eclipse.org/oxygen/>`_).
+   managing MicroEJ Libraries (see :ref:`mmm`).
+   The current distribution of MicroEJ SDK (``20.10``) is built on top of 
+   `Eclipse 2020-06 <https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-java-developers>`_.
 
 -  MicroEJ Platform, a software package including the resources and
    tools required for building and testing an application for a specific
    MicroEJ-ready device. MicroEJ Platforms are imported into MicroEJ SDK
    within a local folder called MicroEJ Platforms repository. Once a
    MicroEJ Platform is imported, an application can be launched and
-   tested on Simulator. It also provides a means to locally deploy the
+   tested on Simulator. It also provides a mean to locally deploy the
    application on a MicroEJ-ready device.
 
 -  MicroEJ-ready device, an hardware device that will be programmed with
@@ -39,11 +39,11 @@ Application development is based on the following elements:
 Starting from scratch, the steps to go through the whole process are
 detailed in the following sections of this chapter :
 
--  Download and install a MicroEJ Platform
+-  :ref:`Download and install a MicroEJ Platform <download.hardware.simulator>`
 
--  Build and run your first application on Simulator
+-  :ref:`Build and run your first application on Simulator <microej.sample.applications>`
 
--  Build and run your first application on target hardware
+-  :ref:`Build and run your first application on target hardware <section.run.on.emb>`
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

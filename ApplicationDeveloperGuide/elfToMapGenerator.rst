@@ -1,3 +1,5 @@
+.. _elftomapgenerator:
+
 =========================
 ELF to Map File Generator
 =========================
@@ -18,6 +20,7 @@ Functional Description
 .. figure:: images/elftomap_process.*
    :alt: ELF To Map Process
    :align: center
+   :scale: 90%
 
    ELF To Map Process
 

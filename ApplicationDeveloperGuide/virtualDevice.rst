@@ -23,7 +23,7 @@ device.
 
 .. figure:: images/virtual-device.png
    :alt: MicroEJ Virtual Device Architecture
-   :width: 90.0%
+   :scale: 65%
    :align: center
 
    MicroEJ Virtual Device Architecture

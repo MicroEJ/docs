@@ -6,6 +6,8 @@ Simulation
    simulator
    mock
    spmock
+   frontpanel
+   blemock
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

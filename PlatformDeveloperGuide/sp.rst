@@ -14,6 +14,7 @@ blocks: chunks of RAM.
 .. figure:: images/sp1.*
    :alt: A Shielded Plug Between Two Application (Java/C) Modules.
    :align: center
+   :scale: 75%
 
    A Shielded Plug Between Two Application (Java/C) Modules.
 
@@ -28,7 +29,7 @@ one proposed by the :ref:`[SP] specification <esr-specifications>`.
 
 Once this database is defined, it can be accessed within the MicroEJ
 Application or the C application. The :ref:`[SP] <esr-specifications>` Foundation Library is
-accessible from the classpath variable ``SP-2.0``. This library contains
+accessible from the :ref:`[SP] API Module <sp-api-mmm>`. This library contains
 the classes and methods to read and write data in the database. See also
 the Java documentation from the MicroEJ Workbench resources center
 ("Javadoc" menu). The C header file ``sp.h`` available in the MicroEJ
@@ -60,6 +61,7 @@ name is Shielded Plug Compiler. It outputs:
 .. figure:: images/sp_flow.png
    :alt: Shielded Plug Compiler Process Overview
    :align: center
+   :scale: 75%
 
    Shielded Plug Compiler Process Overview
 
@@ -176,12 +178,18 @@ platform. In the platform configuration file, check
 its relative tools.
 
 
+.. _sp-api-mmm:
+
 Use
 ===
 
-A classpath variable named ``SP-2.0`` is available, which must be added
-to the build path of the MicroEJ Application project in order to access
-the :ref:`[SP] <esr-specifications>` library.
+The `Shielded Plug API Module <https://repository.microej.com/artifacts/ej/api/sp/>`_
+must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to allow access to the :ref:`[SP] <esr-specifications>` library.
+
+::
+
+   <dependency org="ej.api" name="sp" rev="2.0.2"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.

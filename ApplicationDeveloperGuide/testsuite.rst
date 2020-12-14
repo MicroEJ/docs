@@ -1,12 +1,12 @@
-.. _testsuite:
+.. _application_testsuite:
 
 Testsuite with JUnit
 ====================
 
-MicroEJ allows to run unit tests using the standard JUnit API during the
-build process of a MicroEJ library or a MicroEJ Application. The MicroEJ
-testsuite engine runs tests on a target Platform and outputs a JUnit XML
-report.
+MicroEJ allows to run unit tests using the standard JUnit API during
+the build process of a MicroEJ library or a MicroEJ Application. The
+:ref:`testsuite_engine` runs tests on a target Platform and outputs a
+JUnit XML report.
 
 Principle
 ---------
@@ -17,7 +17,7 @@ build type. JUnit test cases processing is automatically enabled when
 the following dependency is declared in the ``module.ivy`` file of the
 project.
 
-::
+.. code-block:: xml
 
    <dependency conf="test->*" org="ej.library.test" name="junit" rev="1.5.0"/>
 
@@ -64,12 +64,8 @@ Setup a Project with a JUnit Test Case
 This section describes how to create a new JUnit Test Case starting from
 a new MicroEJ library project.
 
-Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...` >
-:guilabel:`EasyAnt` > :guilabel:`EasyAnt Project`.
-
-Press :guilabel:`Next`. Fill out project settings and select the
-``microej-javalib`` skeleton A new project named ``mylibrary`` is
-created in the workspace.
+First create a new :ref:`module project <mmm_module_skeleton>` using the ``microej-javalib`` skeleton.
+A new project named ``mylibrary`` is created in the workspace.
 
 Right-click on the ``src/test/java`` folder and select :guilabel:`New` >
 :guilabel:`Other...` menu item.
@@ -110,6 +106,40 @@ The test is now successfully executed on the target platform so the MicroEJ Add-
 Double-click on the JUnit testsuite report to see the test has been
 successfully executed.
 
+.. _testsuite_report:
+
+Testsuite Reports
+-----------------
+
+Once a testsuite is completed, a testsuite report is generated:
+
+- in HTML format in module project location ``target~/test/html/test/junit-noframes.html``.
+  At the beginning of the file a summary is displayed, then all
+  execution traces for each test executed are available.
+
+  .. figure:: images/testsuiteReportHTMLExample.png
+     :alt: Example of MicroEJ Testsuite HTML Report
+     
+     Example of MicroEJ Testsuite HTML Report
+
+- in JUnit XML format, in module project location ``target~/test/xml/TEST-test-report.xml``.
+
+  .. figure:: images/testsuiteReportXMLExample.png
+     :alt: Example of MicroEJ Testsuite XML Report
+     
+     Example of MicroEJ Testsuite XML Report
+  
+  XML report file can also be open in the JUnit View. Right-click on the file > :guilabel:`Open With` >  :guilabel:`JUnit View`:
+
+  .. figure:: images/testsuiteReportXMLExampleJunitView.png
+     :alt: Example of MicroEJ Testsuite XML Report in JUnit View
+     
+     Example of MicroEJ Testsuite XML Report in JUnit View
+
+If executed on device, the Firmware binary produced for each test
+is available in module project location ``target~/test/xml/<TIMESTAMP>/bin/<FULLY-QUALIFIED-CLASSNAME>/application.out``.
+
+
 Advanced Configurations
 -----------------------
 
@@ -134,11 +164,11 @@ The JUnit processor generates test classes into the
 JUnit Test Case to MicroEJ Test Case
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The MicroEJ testsuite engine allows to select the classes that will be
+The :ref:`testsuite_engine` allows to select the classes that will be
 executed, by setting the following property in the project
 ``module.ivy`` file.
 
-::
+.. code-block:: xml
 
    <ea:property name="test.run.includes.pattern" value="[MicroEJ Test Case Include Pattern]"/>
 
@@ -146,7 +176,7 @@ The following line consider all JUnit test methods of the same class as
 a single MicroEJ test case (default behaviour). If at least one JUnit
 test method fails, the whole test case fails in the JUnit report.
 
-::
+.. code-block:: xml
 
    <ea:property name="test.run.includes.pattern" value="**/_AllTests_*.class"/>
 
@@ -155,7 +185,7 @@ MicroEJ test case. Each test method is viewed independently in the JUnit
 report, but this may slow down the testsuite execution because a new
 deployment is done for each test method.
 
-::
+.. code-block:: xml
 
    <ea:property name="test.run.includes.pattern" value="**/_SingleTest_*.class"/>
 
@@ -177,7 +207,7 @@ dumped into the console.
 Testsuite Options
 ~~~~~~~~~~~~~~~~~
 
-The MicroEJ testsuite engine can be configured with specific options 
+The :ref:`testsuite_engine` can be configured with specific options 
 which can be added to the ``module.ivy`` file of the project running the testsuite, 
 within the ``<ea:build>`` XML element.
 
@@ -186,7 +216,7 @@ within the ``<ea:build>`` XML element.
   It is possible to inject an :ref:`Application Option <application_options>` for all the tests, 
   by adding to the original option the ``microej.testsuite.properties.`` prefix:
 
-  :: 
+  .. code-block:: xml 
   
      <ea:property name="microej.testsuite.properties.[application_option_name]" value="[application_option_value]"/> 
       
@@ -196,7 +226,7 @@ within the ``<ea:build>`` XML element.
   for example an unreliable harness script that may lose some trace characters or crop the end of the trace.
   For all these unlikely reasons, it is possible to configure the number of retries before a test is considered to have failed:
 
-  ::
+  .. code-block:: xml
 
      <ea:property name="microej.testsuite.retry.count" value="[nb_of_retries]"/> 
       
@@ -205,15 +235,13 @@ within the ``<ea:build>`` XML element.
 Test Specific Options
 ~~~~~~~~~~~~~~~~~~~~~
 
-The MicroEJ testsuite engine allows to define MicroEJ Launch options
+The :ref:`testsuite_engine` allows to define :ref:`application_options`
 specific to each test case. This can be done by defining a file with the
 same name as the generated test case file with the ``.properties``
 extension instead of the ``.java`` extension. The file must be put in
 the ``src/test/resources`` folder and within the same package than the
 test case file.
 
-Consult the Application Launch Options Appendix of the Device
-Developer's Guide to get the list of available options properties.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

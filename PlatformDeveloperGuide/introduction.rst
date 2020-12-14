@@ -27,6 +27,8 @@ Application can interoperate with C code on the target, and the details
 of the MicroEJ Architecture modules, including their APIs, error codes
 and options.
 
+.. _architecture_overview:
+
 MicroEJ Architecture Modules Overview
 -------------------------------------
 
@@ -45,6 +47,7 @@ Foundation Libraries :
 .. figure:: images/jpf-runtime-components.*
    :alt: MicroEJ Architecture Runtime Modules: Tools, Libraries and APIs
    :align: center
+   :scale: 75%
 
    MicroEJ Architecture Runtime Modules: Tools, Libraries and APIs
 

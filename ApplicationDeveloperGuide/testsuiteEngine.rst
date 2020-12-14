@@ -1,24 +1,41 @@
+.. _testsuite_engine:
+
 Testsuite Engine
 ================
 
+MicroEJ Testsuite Engine
+========================
 
-.. _testsuite-definition:
+Introduction
+------------
 
-Definition
-----------
+The MicroEJ Testsuite Engine is a generic tool made for validating any
+development project using automatic testing.
 
-The MicroEJ Testsuite is an engine made for validating any development
-project using automatic testing. The MicroEJ Testsuite engine allows
-the user to test any kind of projects within the configuration of a
-generic ant file.
+This section details advanced configuration for users who wish to
+integrate custom testsuites in their build flow.
 
+The MicroEJ Testsuite Engine allows the user to test any kind of
+projects within the configuration of a generic Ant file.
 
-.. _testsuite-command-ant:
+   .. figure:: images/testsuiteEngine.png
+      :alt: MicroEJ Testsuite Engine Overview
+      :align: center
+      :width: 500px
 
-Using the MicroEJ Testsuite Ant tasks
+The MicroEJ Testsuite Engine is already pre-configured for running
+testsuites on a MicroEJ Platform (either on Simulator or on Device).
+
+- For Application and Libraries, refer to :ref:`application_testsuite`
+  section.
+- For Foundation Libraries Testsuites, refer to
+  :ref:`platform_testsuite` section.
+
+Using the MicroEJ Testsuite Ant Tasks
 --------------------------------------
 
-Multiple Ant tasks are available in the testsuite-engine provided jar:
+Multiple Ant tasks are available in the ``testsuite-engine.jar``
+provided in the :ref:`Build Kit <mmm_build_kit>`:
 
 -  ``testsuite`` allows the user to run a given testsuite and to
    retrieve an XML report document in a JUnit format.
@@ -31,144 +48,224 @@ Multiple Ant tasks are available in the testsuite-engine provided jar:
 
 .. _testsuite-command-ant-runtestsuite:
 
-The testsuite Task
-~~~~~~~~~~~~~~~~~~
+The ``testsuite`` Task
+~~~~~~~~~~~~~~~~~~~~~~
 
-This task have some mandatory attributes to fill:
+The following attributes are mandatory:
 
--  ``outputDir``: the output folder of the testsuite. The final report
-   will be generated at ``[outputDir]/[label]/[reportName].xml``, see
-   the ``testsuiteReportFileProperty`` and
-   ``testsuiteReportDirProperty`` attributes.
+.. list-table:: ``testsuite`` task mandatory attributes
+   :widths: 1 5
+   :header-rows: 1
+   
+   * - Attribute Name
+     - Description
+   * - ``outputDir``
+     - The output folder of the testsuite. The final report will be
+       generated at ``[outputDir]/[label]/[reportName].xml``, see the
+       ``testsuiteReportFileProperty`` and
+       ``testsuiteReportDirProperty`` attributes.
+   * - ``harnessScript``
+     - The harness script must be an Ant script and it is the script
+       which will be called for each test by the testsuite engine. It
+       is called with a ``basedir`` located at output location of the
+       current test.
 
--  ``harnessScript``: the harness script must be an Ant script and it is
-   the script which will be called for each test by the testsuite
-   engine. It is called with a ``basedir`` located at output location of
-   the current test. The testsuite engine will provide to it some
-   properties giving all the informations to start the test:
+The testsuite engine provides the following properties to the harness
+script giving all the informations to start the test:
 
-   -  ``testsuite.test.name``: The output name of the current test in
-      the report. Default value is the relative path of the test. It can
-      be manually set by the user. More details on the output name are
-      available in the section
-      :ref:`testsuite-various-customproperties`.
+.. list-table:: ``harnessScript`` properties
+   :widths: 1 5
+   :header-rows: 1
 
-   -  ``testsuite.test.path``: The current test absolute path in the
-      filesystem.
+   * - Attribute Name
+     - Description
+   * - ``testsuite.test.name``
+     - The output name of the current test in the report. Default
+       value is the relative path of the test. It can be manually set
+       by the user. More details on the output name are available in
+       the section :ref:`testsuite-various-customproperties`.
+   * - ``testsuite.test.path``
+     - The current test absolute path in the filesystem.
+   * - ``testsuite.test.properties``
+     - The absolute path to the custom properties of the current test
+       (see the property ``customPropertiesExtension``)
+   * - ``testsuite.common.properties``
+     - The absolute path to the common properties of all the tests
+       (see the property ``commonProperties``)
+   * - ``testsuite.report.dir``
+     - The absolute path to the directory of the final report.
 
-   -  ``testsuite.test.properties``: The absolute path to the custom
-      properties of the current test (see the property
-      ``customPropertiesExtension``)
+The following attributes are optional:
 
-   -  ``testsuite.common.properties``: The absolute path to the common
-      properties of all the tests (see the property
-      ``commonProperties``)
+.. list-table:: ``testsuite`` task optional attributes
+   :widths: 1 5 3
+   :header-rows: 1
 
-   -  ``testsuite.report.dir``: The absolute path to the directory of
-      the final report.
+   * - Attribute Name
+     - Description
+     - Default value
+   * - ``timeOut``
+     - The time in seconds before any test is considerated as
+       unknown. Set it to ``0`` to disable the time-out.
+     - ``60``
+   * - ``verboseLevel``
+     - The required level to output messages from the testsuite. Can
+       be one of those values: ``error``, ``warning``, ``info``,
+       ``verbose``, ``debug``.
+     - ``info``
+   * - ``reportName``
+     - The final report name (without extension).
+     - ``testsuite-report``
+   * - ``customPropertiesExtension``
+     - The extension of the custom properties for each test. For
+       instance, if it is set to ``.options``, a test named
+       ``xxx/Test1.class`` will be associated with
+       ``xxx/Test1.options``. If a file exists for a test, the
+       property ``testsuite.test.properties`` is set with its absolute
+       path and given to the ``harnessScript``. If the test path
+       references a directory, then the custom properties path is the
+       concatenation of the test path and the
+       ``customPropertiesExtension`` value.
+     - ``.properties``
+   * - ``commonProperties``
+     - The properties to  apply to every test of  the testsuite. Those
+       options might  be overridden by  the custom properties  of each
+       test. If this  option is set and the file  exists, the property
+       ``testsuite.common.properties`` is set to  the absolute path of
+       the ``harnessScript`` file. 
+     - no common properties
+   * - ``label``
+     - The build label.
+     - timestamp of when the testsuite was invoked.
+   * - ``productName``
+     - The name of the current tested product.
+     - ``TestSuite``
+   * - ``jvm``
+     - The location of your Java VM to start the testsuite (the
+       ``harnessScript`` is called as is:  ``[jvm] [...] -buildfile
+       [harnessScript]``).
+     - ``java.home`` location if the property is set, ``java``
+       otherwise.
+   * - ``jvmargs``
+     - The arguments to pass to the Java VM started for each test.
+     - None.
+   * - ``testsuiteReportFileProperty``
+     - The name of the Ant property in which the path of the final
+       report is stored. Path is
+       ``[outputDir]/[label]/[reportName].xml``
+     - ``testsuite.report.file``
+   * - ``testsuiteReportDirProperty``
+     - The name of the Ant property in which is store the path of the
+       directory of the final report. Path is ``[outputDir]/[label]``.
+     - ``testsuite.report.dir``
 
-Some attributes are optional, and if not set by the user, a default
-value will be attributed.
-
--  ``timeOut``: the time in seconds before any test is considerated as
-   unknown. Set it to 0 to disable the time-out. Will be defaulted as
-   60.
-
--  ``verboseLevel``: the required level to output messages from the
-   testsuite. Can be one of those values: error, warning, info,
-   verbose, debug. Will be defaulted as info.
-
--  ``reportName``: the final report name (without extension). Default
-   value is ``testsuite-report``.
-
--  ``customPropertiesExtension``: the extension of the custom properties
-   for each test. For instance, if it is set to ``.options``, a test
-   named ``xxx/Test1.class`` will be associated with
-   ``xxx/Test1.options``. If a file exists for a test, the property
-   ``testsuite.test.properties`` is set with its absolute path and given
-   to the ``harnessScript``. If the test path references a directory,
-   then the custom properties path is the concatenation of the test path
-   and the ``customPropertiesExtension`` value. By default, custom
-   properties extension is ``.properties``.
-
--  ``commonProperties``: the properties to apply to every test of the
-   testsuite. Those options might be overridden by the custom
-   properties of each test. If this option is set and the file exists,
-   the property ``testsuite.common.properties`` is set to the absolute
-   path of the ``harnessScript`` file. By default, there is not any
-   common properties.
-
--  ``label``: the build label. Will be generated as a timestamp by the
-   testsuite if not set.
-
--  ``productName``: the name of the current tested product. Default
-   value is ``TestSuite``.
-
--  ``jvm``: the location of your Java VM to start the testsuite (the
-   ``harnessScript`` is called as is:
-   ``[jvm] [...] -buildfile [harnessScript]``). Will be defaulted as
-   your ``java.home`` location if the property is set, or to ``java``.
-
--  ``jvmargs``: the arguments to pass to the Java VM started for each
-   test.
-
--  ``testsuiteReportFileProperty``: the name of the Ant property in
-   which is stored the path of the final report. Default value is
-   ``testsuite.report.file`` and path is
-   ``[outputDir]/[label]/[reportName].xml``
-
--  ``testsuiteReportDirProperty``: the name of the Ant property in which
-   is store the path of the directory of the final report. Default value
-   is ``testsuite.report.dir`` and path is ``[outputDir]/[label]``
-
--  ``testsuiteResultProperty``: the name of the Ant property in which
-   you want to have the result of the testsuite (true or false),
-   depending if every tests successfully passed the testsuite or not.
-   Ignored tests do not affect this result.
+   * - ``testsuiteResultProperty``
+     - The name of the Ant property in which you want to have the
+       result of the testsuite (``true`` or ``false``), depending if
+       every tests successfully passed the testsuite or not.  Ignored
+       tests do not affect this result.
+     - None
 
 Finally, you have to give as nested element the path containing the
 tests.
 
--  ``testPath``: containing all the file of the tests which will be
-   launched by the testsuite.
+.. list-table:: ``testsuite`` task nested elements
+   :widths: 1 5
+   :header-rows: 1
 
--  ``testIgnoredPath`` (optional): Any test in the intersection between
-   ``testIgnoredPath`` and ``testPath`` will be executed by the
-   testsuite, but will not appear in the JUnit final report. It will
-   still generate a JUnit report for each test, which will allow the
-   HTML report to let them appears as "ignored" if it is generated.
-   Mostly used for known bugs which are not considered as failure but
-   still relevant enough to appears on the HTML report.
+   * - Element Name
+     - Description
+   * - ``testPath``
+     - Containing all the file of the tests which will be launched by
+       the testsuite.
+   * - ``testIgnoredPath`` (optional)
+     - Any test in the intersection between ``testIgnoredPath`` and
+       ``testPath`` will be executed by the testsuite, but will not
+       appear in the JUnit final report. It will still generate a
+       JUnit report for each test, which will allow the HTML report to
+       let them appears as "ignored" if it is generated.  Mostly used
+       for known bugs which are not considered as failure but still
+       relevant enough to appears on the HTML report.
+
+.. code-block:: xml
+   :caption: Example of testsuite task invocation
+
+   <!-- Launch the testusite engine -->
+   <testsuite:testsuite
+       timeOut="${microej.kf.testsuite.timeout}"
+       outputDir="${target.test.xml}/testkf"
+       harnessScript="${com.is2t.easyant.plugins#microej-kf-testsuite.microej-kf-testsuite-harness-jpf-emb.xml.file}"
+       commonProperties="${microej.kf.launch.propertyfile}"
+       testsuiteResultProperty="testkf.result"
+       testsuiteReportDirProperty="testkf.testsuite.report.dir"
+       productName="${module.name} testkf"
+       jvmArgs="${microej.kf.testsuite.jvmArgs}"
+       lockPort="${microej.kf.testsuite.lockPort}"
+       verboseLevel="${testkf.verbose.level}"
+   >
+       <testPath refid="target.testkf.path"/>
+   </testsuite:testsuite>
 
 .. _testsuite-command-ant-runjavatestsuite:
 
-The javaTestsuite Task
-~~~~~~~~~~~~~~~~~~~~~~
+The ``javaTestsuite`` Task
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This task extends the ``testsuite`` task, specializing the testsuite to
-only start real Java class. This task will retrieve the classname of the
-tests from the classfile and will provide new properties to the harness
+only start real Java class. This task retrieves the classname of the
+tests from the classfile and provides new properties to the harness
 script:
 
--  ``testsuite.test.class``: The classname of the current test. The
-   value of the property ``testsuite.test.name`` is also set to the
-   classname of the current test.
+.. list-table:: ``javaTestsuite`` task properties
+   :widths: 1 5
+   :header-rows: 1
 
--  ``testsuite.test.classpath``: The classpath of the current test.
+   * - Property Name
+     - Description
+   * - ``testsuite.test.class``
+     - The classname of the current test. The value of the property
+       ``testsuite.test.name`` is also set to the classname of the
+       current test.
+   * - ``testsuite.test.classpath``
+     - The classpath of the current test.
+
+.. code-block:: xml
+   :caption: Example of javaTestsuite task invocation
+
+   <!-- Launch test suite -->
+   <testsuite:javaTestsuite
+       verboseLevel="${microej.testsuite.verboseLevel}"
+       timeOut="${microej.testsuite.timeout}"
+       outputDir="${target.test.xml}/@{prefix}"
+       harnessScript="${harness.file}"
+       commonProperties="${microej.launch.propertyfile}"
+       testsuiteResultProperty="@{prefix}.result"
+       testsuiteReportDirProperty="@{prefix}.testsuite.report.dir"
+       productName="${module.name} @{prefix}"
+       jvmArgs="${microej.testsuite.jvmArgs}"
+       lockPort="${microej.testsuite.lockPort}"
+       retryCount="${microej.testsuite.retry.count}"
+       retryIf="${microej.testsuite.retry.if}"
+       retryUnless="${microej.testsuite.retry.unless}"
+   >
+       <testPath refid="target.@{prefix}.path"/>
+       <testIgnoredPath refid="tests.@{prefix}.ignored.path" />
+   </testsuite:javaTestsuite>
 
 .. _testsuite-command-ant-generatereport:
 
-The htmlReport Task
-~~~~~~~~~~~~~~~~~~~
+The ``htmlReport`` Task
+~~~~~~~~~~~~~~~~~~~~~~~
 
 This task allow the user to transform a given path containing a sample
-of JUnit reports to an HTML detailled report. Here is the attributes to
+of JUnit reports to an HTML detailed report. Here is the attributes to
 fill:
 
--  A nested fileset containing all the JUnit reports of each test. Take
-   care to exclude the final JUnit report generated by the testsuite.
+- A nested ``fileset`` element containing all the JUnit reports of
+  each test.  Take care to exclude the final JUnit report generated by
+  the testsuite.
 
--  A nested element ``report``
+-  A nested element ``report``:
 
    -  ``format``: The format of the generated HTML report. Must be
       ``noframes`` or ``frames``. When ``noframes`` format is choosen, a
@@ -188,10 +285,25 @@ fill:
          HTML report.
 
 .. note::
-   **Tip :** It is advised to set the format to ``noframes`` if your test
-   suite is not a Java testsuite. If the format is set to ``frames``, with
-   a non-Java MicroEJ Testsuite, the name of the links will not be
+
+   It is advised to set the format to ``noframes`` if your test suite
+   is not a Java testsuite. If the format is set to ``frames``, with a
+   non-Java MicroEJ Testsuite, the name of the links will not be
    relevant because of the non-existency of packages.
+
+
+.. code-block:: xml
+   :caption: Example of htmlReport task invocation
+
+   <!-- Generate HTML report -->
+   <testsuite:htmlReport>
+       <fileset dir="${@{prefix}.testsuite.report.dir}">
+           <include name="**/*.xml"/> <!-- include unary reports -->
+           <exclude name="**/bin/**/*.xml"/> <!-- exclude test bin files -->
+           <exclude name="*.xml"/> <!-- exclude global report -->
+       </fileset>
+       <report format="noframes" todir="${target.test.html}/@{prefix}"/>
+   </testsuite:htmlReport>
 
 
 .. _testsuite-trace-analyzer:
@@ -307,18 +419,6 @@ engine in the custom properties file of a test.
 -  The ``testsuite.test.timeout`` property allow the user to redefine
    the time out for each test. If it is negative or not an integer, then
    global timeout defined for the MicroEJ Testsuite is used.
-
-
-Dependencies
-------------
-
-No dependency.
-
-
-Installation
-------------
-
-This tool is a built-in platform tool.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

@@ -28,11 +28,12 @@ Functional Description
 ======================
 
 The Multi-Sandbox process extends the overall process described in
-:ref:`the overview of the platform process <processOverviewId>`.
+:ref:`the overview of the platform process <build_process_overview>`.
 
 .. figure:: images/process-multiapp-overview.*
    :alt: Multi-Sandbox Process
    :align: center
+   :scale: 80%
 
    Multi-Sandbox Process
 
@@ -122,7 +123,13 @@ configuration file, check :guilabel:`Multi Applications`.
 Use
 ===
 
-A classpath variable named ``KF-1.4`` is available.
+The `KF API Module <https://repository.microej.com/artifacts/ej/api/kf/>`_ 
+must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to allow access to :ref:`[KF] <esr-specifications>` library.
+
+::
+
+   <dependency org="ej.api" name="kf" rev="1.4.4"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.

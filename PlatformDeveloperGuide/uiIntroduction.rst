@@ -1,62 +1,35 @@
 Principle
 =========
 
-The User Interface Extension features one of the fastest graphical
-engines, associated with a unique int-based event management system. It
-provides :ref:`[MUI] library <esr-specifications>` implementation. The following diagram depicts the
-components involved in its design, along with the provided tools:
+The User Interface Extension features one of the fastest graphics engines, associated with a unique int-based event management system. 
 
-.. figure:: images/ui_overview2.*
-   :alt: The User Interface Extension Components along with a Platform
-   :width: 70.0%
-   :align: center
+.. 
+   // Add again next line when ESR 3.0 will be available:It provides :ref:`[MUI] library <esr-specifications>` implementation. 
+   
+This chapter describes the *UI3* notions, available since MicroEJ Architecture UI pack 13.0.0 and higher: MicroUI 3.0, Front Panel v6, Low Level APIs ``LLUI_xxx``, etc.
 
-   The User Interface Extension Components along with a Platform
+The diagram below shows a simplified view of the components involved in the provisioning of User Interface Extension.
 
-The diagram below shows a simplified view of the components involved in
-the provisioning of a Java user interface.
-
-.. figure:: images/java-c-ui-interface2.*
+.. figure:: images/java-c-ui-interface.*
    :alt: Overview
-   :width: 70.0%
-   :align: center
+   :width: 600px
+   :align: center   
 
    Overview
 
-Stacks are the native parts of MicroUI. They connect the MicroUI library
-to the user-supplied drivers code (coded in C).
+The modules responsible to manage the Display, the Input and the LED are respectively called :ref:`Display module <section_display>`, :ref:`Input module <section_input>` and :ref:`LED module <section_leds>`.
+These three Low Level parts connect MicroUI library to the user-supplied drivers code (coded in C). The drivers can use hardware accelerators like DMA and GPU to perform specific actions (buffers copy, drawings, etc.).
 
-Drivers for input devices must generate events that are sent, via a
-MicroUI *Event Generator*, to the MicroEJ Application. An event
-generator accepts notifications from devices, and generates an event in
-a standard format that can be handled by the application. Depending on
-the MicroUI configuration, there can be several different types of event
-generator in the system, and one or more instances of each type. Each
-instance has an unique id.
+The MicroEJ Simulator provides all features of MicroUI library. The three modules are grouped together in a module called :ref:`Front Panel <section_ui_simulation>`. The Front Panel is supplied with a set of software widgets that generically support a range of input devices such as buttons, joysticks and touchscreens, and output devices such as displays and LEDs. With the help of the Front Panel Designer tool that forms part of the MicroEJ Workbench the user must define a Front Panel mock-up using these widgets. 
 
-Drivers may either interface directly with event generators, or they can
-send their notifications to a *Listener*, also written in C, and the
-listener passes the notifications to the event generator. This
-decoupling has two major benefits:
+The Display module also manages fonts and images. The fonts and images are pre-processed before compiling the MicroEJ application. The following diagram depicts the components involved in its design, along with the provided tools:
 
--  The drivers are isolated from the MicroEJ libraries – they can even
-   be existing code.
+.. figure:: images/ui_overview2.*
+   :alt: The User Interface Extension Components along with a Platform
+   :width: 600px
+   :align: center
 
--  The listener can translate the notification; so, for example, a
-   joystick could generate pointer events.
-
-For the MicroEJ Simulator, the platform is supplied with a set of
-software widgets that generically support a range of input devices, such
-as buttons, joysticks and touchscreens, and output devices such as
-pixelated displays and LEDs. With the help of the Front Panel Designer
-tool that forms part of the MicroEJ Workbench the user must define a
-front panel mock-up using these widgets. The user must provide a set of
-listeners that connects the input widgets to event generators. The user
-may choose to simulate events that will ultimately come from a
-special-purpose input device using one of the standard input widgets;
-the listener will do the necessary translation. The user must also
-supply, in Java, a display extension that adapts the supplied display
-widget to the specifics of the hardware being simulated.
+   The User Interface Extension Components along with a Platform
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

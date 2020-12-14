@@ -7,15 +7,17 @@ Application Developer Guide
    :maxdepth: 2
 
    introduction
-   licenses
+   workspace
    standaloneApplication
    sandboxedApplication
    virtualDevice
    mmm
    moduleNatures
    classpath
+   applicationResources
    tools
    advanced
+   UI/ui
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

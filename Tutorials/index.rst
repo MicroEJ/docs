@@ -6,7 +6,14 @@ Tutorials
 .. toctree::
    :maxdepth: 1
 
+   tutorialUnderstandMicroEJFirmwareBuild
    tutorialCreateCustomPlatform
+   tutorialCreateFirmwareFromScratch
+   tutorialSetupBuildUsingJenkinsAndArtifactory
+   tutorialImproveCodeQuality
+   tutorialOptimizeMemoryFootprint
+   tutorialExploreDataSerializationFormats
+   tutorialInstrumentJavaCodeForLogging
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
