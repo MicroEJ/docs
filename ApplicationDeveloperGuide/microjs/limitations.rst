@@ -10,19 +10,19 @@
 Limitations
 ===========
 
-Syntaxes
-********
+Unsupported Statements
+**********************
 
 The following syntaxes are not supported by the MicroEJ JavaScript engine:
 
 - ``with (x) { }``
-- ``break`` or ``continue`` in an unreachable section of code i.e. after a ``return`` or another ``break`` or ``continue``
+- unreachable code after a ``return``, ``break``, ``continue`` or ``throw``
 - ``delete x``
 - ``typeof x``
 - ``arguments``
 
-Methods
-*******
+Unsupported Methods
+*******************
 
 The following methods are not supported by the MicroEJ JavaScript engine:
 
