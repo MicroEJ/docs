@@ -48,7 +48,7 @@ Specification
 
 MMM provides a non ambiguous semantic for dependencies
 resolution. Please consult the MMM specification available on
-`<https://developer.microej.com/packages/documentation/TLT-0831-SPE-MicroEJModuleManager-2.0-D.pdf>`_.
+`<https://developer.microej.com/packages/documentation/TLT-0831-SPE-MicroEJModuleManager-2.0-E.pdf>`_.
 
 
 .. _mmm_module_skeleton:
@@ -109,6 +109,96 @@ It describes the :ref:`module nature <module_natures>` (also called build type) 
          <dependency org="[dep_organisation]" name="[dep_name]" rev="[dep_version]"/>
        </dependencies>
    </ivy-module>        
+
+Enable MMM Semantic
+~~~~~~~~~~~~~~~~~~~
+
+The MMM semantic is enabled in a module by adding the MicroEJ XML
+namespace and the ``ej:version`` attribute in the ``ivy-module`` node:
+
+.. code:: xml
+
+   <ivy-module xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
+
+.. note::
+
+   Multiple namespaces can be declared in the ``ivy-module`` node.
+
+
+Dependency Matching Rule
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following matching rules are specified by MMM:
+
+.. list-table::
+   :widths: 2 2 3
+   :header-rows: 1
+
+   * - Name
+     - Range Notation
+     - Semantic
+   * - compatible
+     - [M.m.p-RC, (M+1).0.0-RC[
+     - Equal or up to next major version.  Default if not set.
+   * - equivalent
+     - [M.m.p-RC, M.(m+1).0-RC [
+     - Equal or up to next minor version
+   * - greaterOrEqual
+     - [M.m.p-RC, ∞[
+     - Equal or greater versions
+   * - perfect
+     - [M.m.p-RC, M.m.(p+1)-RC[
+     - Exact match (strong dependency)
+
+Set the matching rule of a given dependency with ``ej:match="matching rule"``.  For example:
+
+.. code-block:: xml
+
+   <dependency org="ORG" name="NAME" rev="MAJOR.MINOR.PATCH" ej:match="perfect" />
+
+Automatic Update Before Resolution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Easyant plugin ``ivy-update`` can be used to automatically update
+the version (attribute ``rev``) of every module dependencies declared.
+
+.. code-block:: xml
+
+   <info organisation="[organisation]" module="[name]" status="integration" revision="[version]">
+       <ea:plugin org="com.is2t.easyant.plugins" name="ivy-update" revision="1.+" />
+   </info>
+
+When the plugin is enabled, for each module dependency, MMM will check
+the version declared in the module file and update it to the latest
+version available if and only if it satisfies the matching rule of the
+dependency.
+
+Dependency Visibility
+~~~~~~~~~~~~~~~~~~~~~
+
+- A dependency declared ``public`` is transitively resolved by upper
+  modules.  The default when not set.
+- A dependency declared ``private`` is only used by the module itself,
+  typically for:
+
+   - Bundling the content into the module
+   - Testing the module
+
+The visibility of a dependency is declared by setting the attribute
+``visibility``, for example:
+
+.. code-block:: xml
+
+   <dependency org="ORG" name="NAME" rev="MAJOR.MINOR.PATCH" visibility="private" />
+
+The visibility can also be set according to the configurations
+declared in the ``configurations`` node.  The configuration is
+declared by setting the ``conf`` attribute, for example:
+
+.. code-block:: xml
+
+   <dependency org="ORG" name="NAME" rev="MAJOR.MINOR.PATCH" conf="[CONF-NAME]->*" />
+
 
 .. _mmm_configuration:
 
