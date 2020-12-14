@@ -48,7 +48,7 @@ Specification
 
 MMM provides a non ambiguous semantic for dependencies
 resolution. Please consult the MMM specification available on
-`<https://developer.microej.com/packages/documentation/TLT-0831-SPE-MicroEJModuleManager-2.0-D.pdf>`_.
+`<https://developer.microej.com/packages/documentation/TLT-0831-SPE-MicroEJModuleManager-2.0-E.pdf>`_.
 
 
 .. _mmm_module_skeleton:
