@@ -21,7 +21,7 @@ remaining steps are performed within the C IDE.
 The steps are as follow:
 
 1. Create a new MicroEJ Platform configuration project. This project
-   describes the MicroEJ Platform to build (MicroEJ architecture,
+   describes the MicroEJ Platform to build (MicroEJ Architecture,
    metadata, etc.).
 
 2. Select which modules provided by the MicroEJ Architecture will be
