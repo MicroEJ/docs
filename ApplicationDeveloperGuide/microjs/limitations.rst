@@ -10,6 +10,20 @@
 Limitations
 ===========
 
+Syntaxes
+********
+
+The following syntaxes are not supported by the MicroEJ JavaScript engine:
+
+- ``with (x) { }``
+- ``break`` or ``continue`` in an unreachable section of code i.e. after a ``return`` or another ``break`` or ``continue``
+- ``delete x``
+- ``typeof x``
+- ``arguments``
+
+Methods
+*******
+
 The following methods are not supported by the MicroEJ JavaScript engine:
 
 - ``eval ( x )``
