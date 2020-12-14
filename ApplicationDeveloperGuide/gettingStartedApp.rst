@@ -1,7 +1,7 @@
 Build and Run an Application
 ============================
 
-.. _microej.sample.applications:
+.. _simulator_execution:
 
 Create a MicroEJ Standalone Application
 ---------------------------------------
@@ -104,7 +104,7 @@ MicroEJ SDK console will display Launch steps messages.
     SUCCESS
 
 
-.. _section.run.on.emb:
+.. _device_build:
 
 Run on the Hardware Device
 --------------------------

@@ -39,11 +39,11 @@ Application development is based on the following elements:
 Starting from scratch, the steps to go through the whole process are
 detailed in the following sections of this chapter :
 
--  :ref:`Download and install a MicroEJ Platform <download.hardware.simulator>`
+-  :ref:`Download and install a MicroEJ Platform <platform_import>`
 
--  :ref:`Build and run your first application on Simulator <microej.sample.applications>`
+-  :ref:`Build and run your first Application on Simulator <simulator_execution>`
 
--  :ref:`Build and run your first application on target hardware <section.run.on.emb>`
+-  :ref:`Build and run your first Application on Device <device_build>`
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

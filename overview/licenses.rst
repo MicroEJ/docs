@@ -30,7 +30,7 @@ The license manager is provided with MicroEJ Architectures and this then integra
 - Production licenses will be shown only if at least one Production Architecture or Platform built from a Production Architecture 
   has been imported in MicroEJ SDK.
 
-See sections :ref:`architecture_import` and :ref:`download.hardware.simulator` for more information.
+See sections :ref:`architecture_import` and :ref:`platform_import` for more information.
 
 .. _evaluation_license:
 

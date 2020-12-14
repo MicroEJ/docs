@@ -49,7 +49,7 @@ The following steps are usually followed when starting a new project:
    Qualification Tools (PQT)
    <https://github.com/microej/PlatformQualificationTools>`_.
 #. Develop the :ref:`MicroEJ Application
-   <microej.sample.applications>`.
+   <simulator_execution>`.
 
 This tutorial describes step by step how to go from the FreeRTOS BSP
 to a MicroEJ Application that runs on the MicroEJ Platform and prints

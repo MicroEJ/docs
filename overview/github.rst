@@ -1,3 +1,5 @@
+.. _github:
+
 GitHub Repositories
 ===================
 
