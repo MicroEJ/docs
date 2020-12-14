@@ -54,10 +54,16 @@ following snippet in the ``main()`` method of the application:
    timer.schedule(task, 10_000, 10_000);
 
 This code creates a new Java thread that will print the message ``Alive``
-on the standard output every 10 seconds. If the ``Alive`` printouts stop
-when the UI freeze occurs (assuming no one cancelled the ``Timer``),
-then it means that the MicroEJ Runtime stopped scheduling the Java
-threads.
+on the standard output every 10 seconds.
+
+.. note::
+
+   If the UART output is not available, use another method to signal
+   that the task is running (e.g. blink a LED).
+
+If the ``Alive`` printouts stop when the UI freeze occurs (assuming no
+one cancelled the ``Timer``), then it means that the MicroEJ Runtime
+stopped scheduling the Java threads.
 
 Here are a few suggestions:
 
