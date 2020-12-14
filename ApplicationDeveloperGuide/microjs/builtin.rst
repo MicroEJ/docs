@@ -164,3 +164,12 @@ String
 - trim ( )
 - length
 - [[GetOwnProperty]] ( P )
+
+Limitations
+-----------
+
+The following methods are not supported by the MicroEJ JavaScript engine:
+
+- Date
+- Regex
+- methods using locales.
