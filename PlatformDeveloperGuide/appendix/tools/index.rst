@@ -10,10 +10,7 @@ Appendix C: Tools Options and Error Codes
     sp
     nls
     static
-    mui_font
-    mui_image
     mui_frontpanelmock
-    lldisplayextra
     hil
     heapdump
 

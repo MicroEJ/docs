@@ -17,6 +17,27 @@
 			</fileset>
 		</copy>
 
+		<microbsp.buildJPFExtension 
+			titleLevel="${title.level}" 
+			imagewidth="1080" 
+			imageheight="600" 
+			verboselevel="9" 
+			maxImageWidth="150" 
+			outputdir="${basedir}/../../StandaloneAppDevGuide" 
+			imagesoutputname="png/architecture_options" 
+			outputname="sectionArchitectureOptions.rst" 
+			outputConditions="${output.conditions}" 
+			outputFormat="ReStructuredText" 
+			maxnbcolumns="79">
+			<extensionClasspath>
+				<!-- 
+					For correct category merge, only the root file is provided to the generator 
+					Other extensions workbenchExtension[xxx] are automatically loaded by the workbench 
+				-->
+				<path location="${jars.dir}/workbenchExtension.jar"/>
+			</extensionClasspath>
+		</microbsp.buildJPFExtension>
+		
 		<!-- code coverage analyzer -->
 		<microbsp.buildJPFExtension 
 			titleLevel="${title.level}" 

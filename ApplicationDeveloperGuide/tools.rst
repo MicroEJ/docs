@@ -28,7 +28,6 @@ tab then contains the options relevant to the selected tool.
    :maxdepth: 2
 
    testsuite
-   fontDesigner
    stackTraceReader
    codeCoverageAnalyzer
    heapAnalyzer

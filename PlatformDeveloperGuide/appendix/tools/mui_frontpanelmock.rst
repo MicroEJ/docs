@@ -65,6 +65,7 @@ File Specification
 
 .. [3]
    Must be  "``https://developer.microej.com .widget.xsd``"
+
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

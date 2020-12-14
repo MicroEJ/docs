@@ -9,7 +9,6 @@ Appendix B: MicroEJ Foundation Libraries
     kf
     ecom
     ecom-comm
-    mui
     fs
     net
     ssl

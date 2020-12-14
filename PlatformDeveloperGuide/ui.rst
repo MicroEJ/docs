@@ -1,18 +1,25 @@
-=======================
-Graphics User Interface
-=======================
+========================
+Graphical User Interface
+========================
+
+.. note::
+
+   This chapter describes the current Graphical User Interface version ``3``, provided by UI Pack version ``13.0.0`` or higher.
+   If you are using the former Graphical User Interface version ``2`` (provided by MicroEJ UI Pack version up to ``12.1.x``),
+   please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_. 
 
 .. toctree::
     :maxdepth: 2
 
     uiIntroduction
-    microui
-    static_init
-    leds
-    inputs
-    display
-    image
-    font
+    uiMicroui
+    uiStaticInit
+    uiLowLevel
+    uiLed
+    uiInput
+    uiDisplay
+    uiImage
+    uiFont
     uiSimulation
 
 ..

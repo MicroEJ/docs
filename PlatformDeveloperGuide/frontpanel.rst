@@ -192,7 +192,7 @@ position, and insert a template for the selected element.
 Multiple Front Panel Files
 --------------------------
 
-A Front Panel project can contain multiple ``.fp`` files. All ``fp`` files are compiled when exporting the Front Panel project in a Platform (or during Platform build). It is useful to have two or more representation of a board (size, devices layout, display size etc.). By default the Simulator will chooses the default ``.fp`` file declared by the Platform, or will defaults to a random one. To choose a specific one, set the :ref:`Application Option <application_options>` ``frontpanel.file`` to a Front Panel simple file name included in the Platform (e.g. ``mycompany.fp``).
+A Front Panel project can contain multiple ``.fp`` files. All ``fp`` files are compiled when exporting the Front Panel project in a Platform (or during Platform build). It is useful to have two or more representation of a board (size, devices layout, display size, etc.). By default the Simulator will chooses the default ``.fp`` file declared by the Platform, or will defaults to a random one. To choose a specific one, set the :ref:`Application Option <application_options>` ``frontpanel.file`` to a Front Panel simple file name included in the Platform (e.g. ``mycompany.fp``).
 
 .. _section_frontpanel_widget:
 
@@ -202,7 +202,7 @@ Widget
 Description
 -----------
 
-A widget is a subclass of Front Panel framework class ``ej.fp.Widget``. The library ``ej.tool.frontpanel#widget`` provides a set of widgets which are graphical engine compatible (see :ref:`section_ui_simulation`). To create a new widget (or a subclass of an existing widget), have a look on available widgets in this library.
+A widget is a subclass of Front Panel framework class ``ej.fp.Widget``. The library ``ej.tool.frontpanel#widget`` provides a set of widgets which are Graphics Engine compatible (see :ref:`section_ui_simulation`). To create a new widget (or a subclass of an existing widget), have a look on available widgets in this library.
 
 A widget is recognized by the ``fp`` file as soon as its class contains a ``@WidgetDescription`` annotation. The annotation contains several ``@WidgetAttribute``. An attribute has got a name and tells if it is an optional attribute of widget (by default an attribute is mandatory).
 

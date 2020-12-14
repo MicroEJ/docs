@@ -24,6 +24,7 @@ if microej.can_build_independent_docs():
 
 extensions = [
     'microej',
+    'sphinx.ext.graphviz',
 ]
 
 templates_path = ['_templates']
