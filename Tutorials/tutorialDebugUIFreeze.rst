@@ -70,7 +70,7 @@ Here are a few suggestions:
   function is running, no other Java methods can run : the Java world
   awaits for the C function to finish. As a consequence, if the C
   function never returns, no Java thread can ever run again. Spot any
-  suspect native functions and print every entry/exit to detect faulty
+  suspect native functions and trace every entry/exit to detect faulty
   code.
 
 Check UI Thread Liveness
@@ -191,7 +191,7 @@ LLMJVM_dump
 -----------
 
 In addition to the tips described above, the ``LLMJVM_dump`` function
-will give detailled information about the current state of Java
+will give detailed information about the current state of Java
 threads when the issue occurs.  See :ref:`this section<vm_dump>` to
 learn more about ``LLMJVM_dump``.
 
