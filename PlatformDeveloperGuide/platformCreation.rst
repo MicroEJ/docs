@@ -81,7 +81,7 @@ The next step is to create a MicroEJ Platform configuration:
    be modified later on.
 
 -  Click on :guilabel:`Finish` button. A new project ``[device]-[name]-[toolchain]`` is being created
-   containing a ``[name].platform`` file. A Platform description editor shall then
+   containing a ``[name].platform`` file. The Platform Editor shall then
    open.
 
 -  Install `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/>`_. 
@@ -102,7 +102,7 @@ You should get a MicroEJ Platform configuration project that looks like:
 Groups / Modules Selection
 ==========================
 
-From the Platform description editor, select the Content tab to access
+From the Platform Editor, select the Content tab to access
 the Platform modules selection. Modules can be selected/deselected from
 the Modules frame.
 
