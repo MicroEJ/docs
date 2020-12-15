@@ -1,3 +1,5 @@
+.. pack_gui:
+
 ========================
 Graphical User Interface
 ========================

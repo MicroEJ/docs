@@ -1,4 +1,4 @@
-.. _platform_fs:
+.. _pack_fs:
 
 ===========
 File System
