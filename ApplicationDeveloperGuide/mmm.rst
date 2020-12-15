@@ -342,16 +342,68 @@ So if the same option is defined in both locations, the value defined in the com
 Subcommands
 ~~~~~~~~~~~
 
-**build**
+.. _mmm.cli.commands.init:
 
-The subcommand ``build`` builds the project (executes Easyant with clean package target).
+**init**
+
+The subcommand ``init`` creates a project (executes Easyant with ``skeleton:generate`` target).
+The skeleton and project information must be passed with the following system properties:
+
+- ``skeleton.org``: organisation of the skeleton module. Defaults to ``org.apache.easyant.skeletons``.
+- ``skeleton.module``: name of the skeleton module. Mandatory, no default.
+- ``skeleton.rev``: revision of the skeleton module. Mandatory, no default.
+- ``project.org``: organisation of the project module. Mandatory, no default.
+- ``project.module``: name of the project module. Mandatory, no default.
+- ``project.rev``: revision of the project module. Defaults to ``0.1``.
+- ``skeleton.target.dir``: relative path of the project directory (created if it does not exist). Defaults to the current directory.
+
 For example
 
-.. code::
+.. code:: console
+
+   mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=microej-javalib -Dskeleton.rev=4.2.8 -Dproject.org=com.mycompany -Dproject.module=myproject -Dproject.rev=1.0.0 -Dskeleton.target.dir=myproject
+
+If one of these properties is missing, it will be asked in interactive mode:
+
+.. code:: console
+
+   $ mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=microej-javalib -Dskeleton.rev=4.2.8 -Dproject.org=com.mycompany -Dproject.module=myproject -Dproject.rev=1.0.0
+   
+   ...
+   
+   -skeleton:check-generate:
+      [input] skipping input as property skeleton.org has already been set.
+      [input] skipping input as property skeleton.module has already been set.
+      [input] skipping input as property skeleton.rev has already been set.
+      [input] The path where the skeleton project will be unzipped [/home/tdelhomenie/microej/working/skeleton]
+
+To force the non-interactive mode, the property ``skeleton.interactive.mode`` must be set to ``false``.
+In non-interactive mode the default values are used for missing non-mandatory properties, and the creation fails if mandatory properties are missing.
+
+.. code:: console
+
+   $ mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=microej-javalib -Dskeleton.rev=4.2.8 -Dproject.org=com.mycompany -Dskeleton.target.dir=myproject -Dskeleton.interactive.mode=false
+   
+   ...
+   
+   * Problem Report:
+
+   expected property 'project.module': Module name of YOUR project
+
+.. _mmm.cli.commands.build:
+
+**build**
+
+The subcommand ``build`` builds the project (executes Easyant with ``clean package`` target).
+For example
+
+.. code:: console
 
    mmm build -f ivy.xml -v
 
 builds the project with the Ivy file ivy.xml and in verbose mode.
+
+.. _mmm.cli.commands.publish:
 
 **publish**
 
@@ -363,7 +415,7 @@ The subcommand ``publish`` publishes the project. This subcommand accepts the pu
 
 For example
 
-.. code::
+.. code:: console
 
    mmm publish local
 
@@ -398,7 +450,7 @@ It has the following requirements:
 The subcommand ``help`` displays the help for a subcommand.
 For example
 
-.. code::
+.. code:: console
 
    mmm help run
 
@@ -411,7 +463,7 @@ Troubleshooting
 
 If the following message appears when executing the run subcommand:
 
-.. code:: shell
+.. code:: console
 
    * Problem Report:
 
