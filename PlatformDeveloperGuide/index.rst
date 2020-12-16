@@ -20,7 +20,6 @@ Platform Developer Guide
    hal
    device
    simulation
-   limitations
    appendix/index
 
 ..
