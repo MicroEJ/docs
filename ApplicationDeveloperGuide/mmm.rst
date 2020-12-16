@@ -135,7 +135,6 @@ Module dependencies are added to the ``dependencies`` node as follow:
 .. code:: xml
    :emphasize-lines: 2
 
-
    <dependencies>
      <dependency org="[dep_organisation]" name="[dep_name]" rev="[dep_version]"/>
    </dependencies>
