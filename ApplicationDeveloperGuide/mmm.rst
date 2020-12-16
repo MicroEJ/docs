@@ -83,7 +83,7 @@ A module description file is an Ivy configuration file named ``module.ivy``, loc
 of each MicroEJ module project. 
 It describes the :ref:`module nature <module_natures>` (also called build type) and dependencies to other modules.
 
-.. code:: xml
+.. code-block:: xml
 
    <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:m="http://ant.apache.org/ivy/extra" 
                              xmlns:ej="https://developer.microej.com" ej:version="2.0.0"> 
@@ -116,7 +116,7 @@ Enable MMM Semantic
 The MMM semantic is enabled in a module by adding the MicroEJ XML
 namespace and the ``ej:version`` attribute in the ``ivy-module`` node:
 
-.. code:: xml
+.. code-block:: xml
 
    <ivy-module xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
 
@@ -132,7 +132,7 @@ Module Dependency
 
 Module dependencies are added to the ``dependencies`` node as follow:
 
-.. code:: xml
+.. code-block:: xml
    :emphasize-lines: 2
 
    <dependencies>
