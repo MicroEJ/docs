@@ -48,7 +48,7 @@ Specification
 
 MMM provides a non ambiguous semantic for dependencies
 resolution. Please consult the MMM specification available on
-`<https://developer.microej.com/packages/documentation/TLT-0831-SPE-MicroEJModuleManager-2.0-D.pdf>`_.
+`<https://developer.microej.com/packages/documentation/TLT-0831-SPE-MicroEJModuleManager-2.0-E.pdf>`_.
 
 
 .. _mmm_module_skeleton:
@@ -109,6 +109,144 @@ It describes the :ref:`module nature <module_natures>` (also called build type) 
          <dependency org="[dep_organisation]" name="[dep_name]" rev="[dep_version]"/>
        </dependencies>
    </ivy-module>        
+
+Enable MMM Semantic
+~~~~~~~~~~~~~~~~~~~
+
+The MMM semantic is enabled in a module by adding the MicroEJ XML
+namespace and the ``ej:version`` attribute in the ``ivy-module`` node:
+
+.. code:: xml
+
+   <ivy-module xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
+
+.. note::
+
+   Multiple namespaces can be declared in the ``ivy-module`` node.
+
+MMM semantic is enabled in the module created with the
+:ref:`mmm_module_skeleton`.
+
+Module Dependency
+~~~~~~~~~~~~~~~~~
+
+Module dependencies are added to the ``dependencies`` node as follow:
+
+.. code:: xml
+   :emphasize-lines: 2
+
+
+   <dependencies>
+     <dependency org="[dep_organisation]" name="[dep_name]" rev="[dep_version]"/>
+   </dependencies>
+
+When no matching rule is specified, the default matching rule is
+``compatible``.
+
+Dependency Matching Rule
+++++++++++++++++++++++++
+
+The following matching rules are specified by MMM:
+
+.. list-table::
+   :widths: 2 2 3
+   :header-rows: 1
+
+   * - Name
+     - Range Notation
+     - Semantic
+   * - compatible
+     - [M.m.p-RC, (M+1).0.0-RC[
+     - Equal or up to next major version.  Default if not set.
+   * - equivalent
+     - [M.m.p-RC, M.(m+1).0-RC [
+     - Equal or up to next minor version
+   * - greaterOrEqual
+     - [M.m.p-RC, ∞[
+     - Equal or greater versions
+   * - perfect
+     - [M.m.p-RC, M.m.(p+1)-RC[
+     - Exact match (strong dependency)
+
+Set the matching rule of a given dependency with ``ej:match="matching rule"``.  For example:
+
+.. code-block:: xml
+
+   <dependency org="[dep_organisation]" name="[dep_name]" rev="[dep_version]" ej:match="perfect" />
+
+Dependency Visibility
++++++++++++++++++++++
+
+- A dependency declared ``public`` is transitively resolved by upper
+  modules.  The default when not set.
+- A dependency declared ``private`` is only used by the module itself,
+  typically for:
+
+   - Bundling the content into the module
+   - Testing the module
+
+The visibility is set by the configurations declared in the
+``configurations`` node.  For example:
+
+.. code-block:: xml
+   :emphasize-lines: 2
+
+   <configurations defaultconfmapping="default->default;provided->provided">
+       <conf name="[conf_name]" visibility="private"/>
+   </configurations>
+
+
+The configuration of a dependency is specified by setting the ``conf``
+attribute, for example:
+
+.. code-block:: xml
+
+   <dependency org="[dep_organisation]" name="[dep_name]" rev="[dep_version]" conf="[conf_name]->*" />
+
+
+Automatic Update Before Resolution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Easyant plugin ``ivy-update`` can be used to automatically update
+the version (attribute ``rev``) of every module dependencies declared.
+
+.. code-block:: xml
+   :emphasize-lines: 2
+
+   <info organisation="[organisation]" module="[name]" status="integration" revision="[version]">
+       <ea:plugin org="com.is2t.easyant.plugins" name="ivy-update" revision="1.+" />
+   </info>
+
+When the plugin is enabled, for each module dependency, MMM will check
+the version declared in the module file and update it to the highest
+version available which satisfies the matching rule of the dependency.
+
+.. _mmm_build_options:
+
+Build Options
+~~~~~~~~~~~~~
+
+MMM Build Options can be set with:
+
+.. code-block:: xml
+
+   <ea:property name="[buildoption_name]" value="[buildoption_value]"/>
+
+The following build options are globally available:
+
+.. list-table:: Build Options
+   :widths: 1 5 3
+   :header-rows: 1
+
+   * - Property Name
+     - Description
+     - Default Value
+   * - ``target``
+     - Path to the build directory ``target~``.
+     - ``${basedir}/target~``
+
+Refer to the documentation of :ref:`module_natures` for specific build
+options.
 
 .. _mmm_configuration:
 
@@ -273,7 +411,7 @@ Preferences Pages
 MMM Preferences Pages are located in two dedicated pages. The following pictures show the options mapping using the same options numbers declared in :ref:`Preferences Page <mmm_preferences_page>`.
 
 Ivy Preferences Page
-####################
+++++++++++++++++++++
 
 The Ivy Preferences Page is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Ivy` > :guilabel:`Settings`.
 
@@ -282,7 +420,7 @@ The Ivy Preferences Page is available at :guilabel:`Window` > :guilabel:`Prefere
 
 
 Easyant Preferences Page
-########################
+++++++++++++++++++++++++
 
 The Easyant Preferences Page is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`EasyAnt4Eclipse`.
 
@@ -290,7 +428,7 @@ The Easyant Preferences Page is available at :guilabel:`Window` > :guilabel:`Pre
    :align: center
 
 Export the Build Kit
-####################
+++++++++++++++++++++
 
 - Create an empty directory (e.g. ``mmm_sdk_[version]_build_kit``),
 - Locate your SDK installation plugins directory (by default, ``C:\Program Files\MicroEJ\MicroEJ SDK-[version]\rcp\plugins`` on Windows OS),
