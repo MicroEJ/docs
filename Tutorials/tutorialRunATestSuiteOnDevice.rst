@@ -17,7 +17,7 @@ Intended Audience and Scope
 ---------------------------
 
 The audience for this document is software engineers who want to
-validate a Low Level API port or to understand how to automatically
+validate an abstraction layer implementation or understand how to automatically
 run a MicroEJ Testsuite on their device.
 
 The following topics are out of the scope of this tutorial:
@@ -36,11 +36,11 @@ This tutorial assumes the following:
 
 - Good knowledge of the :ref:`chapter-glossary`.
 
-- :ref:`tutorialUnderstandMicroEJFirmwareBuild`.
+- Tutorial :ref:`tutorialUnderstandMicroEJFirmwareBuild` has been followed.
 
-- MicroEJ SDK distribution 20.07 or more (see :ref:`get_sdk_version`)
+- MicroEJ SDK distribution 20.07 or more (see :ref:`get_sdk_version`).
 
-- The WROVER Platform has been properly setup (i.e. it can be used to
+- The WROVER Platform has been properly setup (i.e., it can be used to
   generate a MicroEJ Mono-Sandbox Firmware).
 
 The explanation can be adapted to run the testsuite on any other
@@ -83,14 +83,14 @@ Follow these steps to import the Testsuite FS into the workspace from the `Platf
 <https://github.com/MicroEJ/PlatformQualificationTools/blob/2.3.0/tests/fs>`__:
 
 - Clone or download the `Platform Qualitification Tools project 2.3.0
-  <https://github.com/MicroEJ/PlatformQualificationTools/releases/tag/2.3.0>`__
-- Select :guilabel:`File` > :guilabel:`Import...`
-- Select :guilabel:`Existing Projects into Workspace`
+  <https://github.com/MicroEJ/PlatformQualificationTools/releases/tag/2.3.0>`__.
+- Select :guilabel:`File` > :guilabel:`Import...`.
+- Select :guilabel:`Existing Projects into Workspace`.
 - Set :guilabel:`Select the root directory` to the directory
   ``tests/fs`` in the Platform Qualification Tools fetched in the
   previous step.
 - Ensure :guilabel:`Copy projects into workspace` is checked.
-- Click on :guilabel:`Finish`
+- Click on :guilabel:`Finish`.
 
 The project ``java-testsuite-fs`` should now be available in the
 workspace.
@@ -147,7 +147,7 @@ properties ``microej.testsuite.properties.testsuite.trace.ip`` and
 ``microej.testsuite.properties.testsuite.trace.port`` must be
 configured.
 
-Follow the following steps to create a launcher for Serial To Socket
+Follow these steps to create a launcher for Serial To Socket
 Transmitter:
 
 - Select :guilabel:`Run` > :guilabel:`Run Configurations...`.
@@ -200,7 +200,7 @@ Run the Testsuite
 To run the Testsuite, right click on the Testsuite module and select
 ``Build Module``.
 
-Configure which Tests to Run
+Configure the Tests to Run
 ----------------------------
 
 It is possible to exclude some tests from being executed by the Test
@@ -221,17 +221,17 @@ file ``config.properties`` in the folder of the testsuite.
 
 Several reasons might explain why to exclude some tests:
 
-- Iterative development: Test only the Abstraction Layer that is
-  currently being developed.  The full Testsuite must still be ran to
+- **Iterative development**. Test only the Abstraction Layer that is
+  currently being developed.  The full Testsuite must still be executed to
   validate the complete implementation.
 
-- Known bugs in the Foundation Library: The latest version of the Test
-  Suite for a given Foundation Library might contains regression
-  tests, or tests for new features.  If the MicroEJ Platform doesn't
+- **Known bugs in the Foundation Library**. The latest version of the Test
+  Suite for a given Foundation Library might contain regression
+  tests or tests for new features.  If the MicroEJ Platform doesn't
   use the latest Foundation Library, then it can be necessary to exclude
   the new tests.
 
-- Known bugs in the Foundation Library implementation: The project
+- **Known bugs in the Foundation Library implementation**. The project
   might have specific requirements that prevent a fully compliant
   implementation of the Foundation Library.
 
