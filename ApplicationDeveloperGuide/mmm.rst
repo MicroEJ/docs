@@ -414,7 +414,7 @@ Installation
 
 The steps to install MMM CLI are:
 
-- download `the MMM CLI archive <https://artifactory.cross/microej-cross5-snapshot/com/microej/cli/mmm-cli/1.0.0-RC202012011543/mmm-cli-1.0.0-RC202012011543.zip>`_
+- download `the MMM CLI archive <https://artifactory.cross/microej-cross5-release/com/microej/cli/mmm-cli/0.1.0/mmm-cli-0.1.0.zip>`_
 - extract the archive in any directory
 - add the ``bin`` directory of the created directory to the ``PATH`` environment variable of your machine
 - make sure the ``JAVA_HOME`` environment variable is set and points to a JRE/JDK installation or that ``java`` executable is in the ``PATH`` environment variable (Java 8 is required)
