@@ -333,7 +333,7 @@ Here is an example:
 Options defined in the [options] section are passed as system properties.
 
 .. warning:: 
-   - it is recommended to use quotes for names and values of options in the TOML file to avoid any issue with special characters
+   - it is mandatory to use quotes for values in the TOML file
    - if you use Windows paths, backslashes must be doubled in TOML file, for example ``C:\\Users\\johndoe\\ivysettings.xml``
 
 Options defined directly in the command line have a higher priority than the ones defined in the configuration file.
