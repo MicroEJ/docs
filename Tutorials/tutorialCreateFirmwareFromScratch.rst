@@ -434,6 +434,7 @@ This step describes how to import a :ref:`MicroEJ Architecture
    #. Accept the license and click on :guilabel:`Finish`
 
 .. image:: images/tuto_microej_fw_from_scratch_import_architecture.PNG
+   :scale: 80 %
 
 Install an Evaluation License
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -474,6 +475,7 @@ Architecture previously imported.
 
 
 .. image:: images/tuto_microej_fw_from_scratch_activate_license.PNG
+   :scale: 80 %
 
 Create the MicroEJ Platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
