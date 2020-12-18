@@ -125,7 +125,7 @@ This produces the following output:
 .. note::
 
    The default Platform implementation of the ``Trace`` library prints the events to the console.
-   See :ref:`trace_implementations` for other available implementations such as `SEGGER SystemView <https://www.segger.com/products/development-tools/systemview/>`_ tool.
+   See :ref:`trace_implementations` for other available implementations such as :ref:`systemview` tool.
    
 Log with the Message Library
 ----------------------------

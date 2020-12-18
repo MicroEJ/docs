@@ -131,7 +131,7 @@ It only prints the ID of the recorded event followed by the values given in para
 
 A Platform can connect its own implementation by overriding the functions defined in the ``LLTRACE_impl.h`` file.
 
-MicroEJ provides an implementation that redirects the events to `SystemView <https://www.segger.com/products/development-tools/systemview/>`_ tool, 
+MicroEJ provides an implementation that redirects the events to :ref:`systemview` tool, 
 the real-time recording and visualization tool from `Segger <https://www.segger.com/>`_. It is perfect for a finer understanding of the runtime behavior by showing events sequence and duration.
 
 A implementation example for the `NXP OM13098 development board <https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc54000-cortex-m4-/lpcxpresso54628-development-board:OM13098>`_ with SystemView support is available `here <https://developer.microej.com/packages/referenceimplementations/U3OER/2.0.1/OM13098-U3OER-fullPackaging-eval-2.0.1.zip>`__.
