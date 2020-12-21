@@ -225,7 +225,7 @@ Using a partial buffer can have a significant impact on animation performance. R
 Implementation Example
 ----------------------
 
-The `partial buffer demo <https://github.com/MicroEJ/>`__ provides an example of partial buffer implementation. This example explains how to implement partial buffer support in the BSP and how to use it in an application.
+The `partial buffer demo <https://github.com/MicroEJ/Demo-PartialBuffer>`__ provides an example of partial buffer implementation. This example explains how to implement partial buffer support in the BSP and how to use it in an application.
 
 .. _section_display_layout_byte:
 
