@@ -28,8 +28,8 @@ SystemView consists on installing several items in the BSP. The following steps 
 1. Download and install SystemView: http://segger.com/downloads/systemview/.
 2. Apply SystemView for FreeRTOS patch as described in documentation (https://www.segger.com/downloads/jlink/UM08027); patch is available in installation folder ``SEGGER\SystemView\Src\Sample\FreeRTOSVxx``.
 3. Add ``SEGGER\SystemView\Src\Sample\FreeRTOSVxx\Config\SEGGER_SYSVIEW_Config_FreeRTOS.c`` in your BSP.
-4. Add SystemView for MicroEJ CCO files in your BSP: ``com.microej.clibrary.thirdparty.systemview-1.3.0`` (or check the differences between pre-installed SystemView and CCO files)
-5. Add SystemView for MicroEJ for FreeRTOS CCO files in your BSP: ``com.microej.clibrary.thirdparty.systemview-freertosxx-1.1.0`` (or check the differences between pre-installed SystemView and CCO files)
+4. Add SystemView for MicroEJ CCO files in your BSP: ``com.microej.clibrary.thirdparty.systemview-x.y.z`` (or check the differences between pre-installed SystemView and CCO files)
+5. Add SystemView for MicroEJ for FreeRTOS CCO files in your BSP: ``com.microej.clibrary.thirdparty.systemview-freertosxx-x.y.z`` (or check the differences between pre-installed SystemView and CCO files)
 6. Install the implementation of MicroJvm monitoring over SystemView by adding CCO files in your BSP: ``com.microej.clibrary.llimpl.trace-systemview-2.1.0``
 7. Make FreeRTOS compatible with SystemView: open  ``FreeRTOSConfig.h`` and:
 
@@ -85,11 +85,11 @@ MicroEJ platforms can generate specific events that allow monitoring current Jav
 To enable MEJ32 tracing, in MicroEJ SDK:
 
 1. Click on your MicroEJ application project
-2. Run -> Run Configurations
+2. :guilabel:`Run` -> :guilabel:`Run Configurations`
 3. Select your configuration
 4. In the configuration tab:
-5. Target -> Debug
-6. Check: "Enable execution traces" and "Start execution traces automatically"
+5. :guilabel:`Target` -> :guilabel:`Debug` 
+6. Check: :guilabel:`Enable execution traces` and :guilabel:`Start execution traces automatically`
 
 ..
    | Copyright 2020, MicroEJ Corp. Content in this space is free 
