@@ -126,7 +126,7 @@ format (:ref:`intClassfileFormat`). Fully qualified names
 are names separated by the / separator (For example, ``a/b/C``).
 
 .. _intClassFileFormat:
-.. code-block:: txt
+.. code-block::
    :caption: Internal classfile Format for Types
 
    Type = <BaseType> | <ClassType> | <ArrayType>

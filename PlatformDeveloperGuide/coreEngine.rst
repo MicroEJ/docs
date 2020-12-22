@@ -231,7 +231,7 @@ interrupt routine (for instance from a button interrupt).
 
 This is an example of a dump:
 
-.. code:: txt
+.. code-block::
 
    ============ VM Dump ============
    2 java threads
