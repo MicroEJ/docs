@@ -39,7 +39,7 @@ Then, multiple ways are available to start and stop the trace recording:
 Java API Usage
 ==============
 
-The detailed Trace API documentation is available `here <https://repository.microej.com/javadoc/microej_5.x/foundation/ej/trace/Tracer.html>`_.
+The detailed Trace API documentation is available `here <https://repository.microej.com/javadoc/microej_5.x/foundation/ej/trace/Tracer.html>`__.
 
 First, you need to instantiate a ``Tracer`` object by calling its constructor with two parameters.
 The first parameter, ``name``, is a String that will represent the ``Tracer`` object group's name.
@@ -134,6 +134,6 @@ A Platform can connect its own implementation by overriding the functions define
 MicroEJ provides an implementation that redirects the events to `SystemView <https://www.segger.com/products/development-tools/systemview/>`_ tool, 
 the real-time recording and visualization tool from `Segger <https://www.segger.com/>`_. It is perfect for a finer understanding of the runtime behavior by showing events sequence and duration.
 
-A implementation example for the `NXP OM13098 development board <https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc54000-cortex-m4-/lpcxpresso54628-development-board:OM13098>`_ with SystemView support is available `here <https://developer.microej.com/packages/referenceimplementations/U3OER/2.0.1/OM13098-U3OER-fullPackaging-eval-2.0.1.zip>`_.
+A implementation example for the `NXP OM13098 development board <https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc54000-cortex-m4-/lpcxpresso54628-development-board:OM13098>`_ with SystemView support is available `here <https://developer.microej.com/packages/referenceimplementations/U3OER/2.0.1/OM13098-U3OER-fullPackaging-eval-2.0.1.zip>`__.
 Please contact MicroEJ Support for more information about how to integrate this Platform module.
     
