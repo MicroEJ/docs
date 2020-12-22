@@ -185,7 +185,7 @@ The file format of these ``*.nls.list`` files is a standard Java properties file
 Each line represents the Full Qualified Name of a Java interface that will be 
 generated and used in the application. Here is an example, let's call it `i18n.nls.list`:
 
-.. code-block:: properties
+.. code-block::
 
    com.mycompany.myapp.Labels
    com.mycompany.myapp.Messages
