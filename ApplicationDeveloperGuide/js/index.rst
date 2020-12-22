@@ -5,9 +5,9 @@
 .. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 ..
 
-========
- MicroJS
-========
+============
+ Javascript
+============
 
 .. toctree::
    :maxdepth: 2
