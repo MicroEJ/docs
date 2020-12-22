@@ -55,7 +55,7 @@ behavior explicit). Example:
    # as a 16 bits format with transparency (decoded at build-time)
    com/mycompany/MyImage3.png:ARGB1555
 
-.. include:: ../ApplicationDeveloperGuide/sectionImageFormats.rst
+Please refer to :ref:`section.ui.Images` for more information.
 
 .. _section.applicationResources.Fonts:
 
