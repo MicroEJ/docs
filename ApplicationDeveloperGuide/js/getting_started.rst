@@ -24,25 +24,25 @@ See the :ref:`MMM CLI init command documentation <mmm.cli.commands.init>` for mo
 Javascript is supported in the following project types: ``microej-javalib``, ``application`` and ``firmware-singleapp``.
 You can have more information on the project types in the :ref:`Module Natures page <module_natures>`.
 
-- add the microjs dependency in the ``module.ivy`` file:
+- add the js dependency in the ``module.ivy`` file:
 
 .. code:: xml
 
-    <dependency org="com.microej.library.runtime" name="microjs" rev="0.2.1"/>
+    <dependency org="com.microej.library.runtime" name="js" rev="0.2.1"/>
 
 - add the following lines in your application main class:
 
 .. code:: java
 
-    import com.microej.microjs.JsErrorWrapper;
-    import com.microej.microjs.MicroJsCode;
-    import com.microej.microjs.MicroJsRuntime;
+    import com.microej.js.JsErrorWrapper;
+    import com.microej.js.JsCode;
+    import com.microej.js.JsRuntime;
 
     ...
 
-    MicroJsCode.initJs();
-    MicroJsRuntime.ENGINE.runOneJob();
-    MicroJsRuntime.stop();
+    JsCode.initJs();
+    JsRuntime.ENGINE.runOneJob();
+    JsRuntime.stop();
 
 - create a file named ``hello.js`` in the folder ``src/main/resources`` with the following content:
 
@@ -82,4 +82,8 @@ You should see the following output:
 
     My first  MicroEJ Javascript application!
 
+<<<<<<< HEAD:ApplicationDeveloperGuide/microjs/getting_started.rst
 You can now go further by exploring the :ref:`capabilities of the MicroEJ Javascript engine <microjs.builtin>` and discovering the :ref:`commands available in the CLI <mmm_cli>`.
+=======
+You can now go further by exploring the :ref:`capabilities of the MicroEJ Javascript engine <js.builtin>` and discovering the :ref:`commands available in the CLI <mmm.cli>`.
+>>>>>>> M0228J-57 Rename MicroJS to JS.:ApplicationDeveloperGuide/js/getting_started.rst

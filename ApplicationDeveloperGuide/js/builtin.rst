@@ -5,13 +5,13 @@
 .. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 ..
 
-.. _microjs.builtin:
+.. _js.builtin:
 
 ================
 Built-in objects
 ================
 
-All standard built-in objects from ECMAScript 5.1 are available in MicroJS.
+All standard built-in objects from ECMAScript 5.1 are supported.
 For the complete reference about these built-in objects, consult the `ECMA 5.1 specification <https://www.ecma-international.org/ecma-262/5.1/#sec-15>`_.
 
 For a description and usage examples of each method or property, consult a JavaScript documentation such as `Mozilla Developer Reference <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects>`_.
@@ -19,12 +19,12 @@ For a description and usage examples of each method or property, consult a JavaS
 Excluded methods
 ----------------
 
-MicroJS supports every method and property in the ECMAScript built-in objects library (a total of **194** properties or methods) except **2** methods:
+Every method and property in the ECMAScript built-in objects library (a total of **194** properties or methods) are supported except **2** methods:
 
 -  ``eval ( x )`` function
 - ``Function ( p1, p2, … , pn, body )`` constructor
 
-The reason is that the JavaScript compiler is not embedded in the MicroJS runtime.
+The reason is that the JavaScript compiler is not embedded in the runtime.
 
 Built-in complete list
 ----------------------
