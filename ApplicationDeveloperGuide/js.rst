@@ -15,4 +15,5 @@
    js/introduction
    js/getting_started
    js/builtin
+   js/java
    js/limitations
