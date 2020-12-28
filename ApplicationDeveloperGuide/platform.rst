@@ -38,7 +38,7 @@ This is likely the case when the files are checked out from a Version Control Sy
 Import from Zip File
 ~~~~~~~~~~~~~~~~~~~~
 
-This sections applies when the Platform files are packaged in a ``.zip`` file. 
+This section applies when the Platform files are packaged in a ``.zip`` file. 
 
 - Select :guilabel:`File` > :guilabel:`Import…` > :guilabel:`General` >
   :guilabel:`Existing Projects into Workspace` > :guilabel:`Select
