@@ -68,7 +68,7 @@ After downloading the MicroEJ Platform ``.jpf`` file, launch MicroEJ SDK and fol
 
 -  Open the Platform view in MicroEJ SDK, select :guilabel:`Window` >
    :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms`. The
-   view should be empty on a fresh install of the tool
+   view should be empty on a fresh install of the tool.
 
    .. figure:: images/platformImport.png
       :alt: MicroEJ Platform Import
