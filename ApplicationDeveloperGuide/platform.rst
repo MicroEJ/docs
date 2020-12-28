@@ -65,7 +65,7 @@ The ``source`` folder contains the Platform content which can be set to the ``ta
 Binary Platform Import
 ----------------------
 
-After downloading the MicroEJ Platform ``.jpf`` file, launch MicroEJ SDK to import the MicroEJ Platform:
+After downloading the MicroEJ Platform ``.jpf`` file, launch MicroEJ SDK and follow these steps to import the MicroEJ Platform:
 
 -  Open the Platform view in MicroEJ SDK, select :guilabel:`Window` >
    :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms`. The
