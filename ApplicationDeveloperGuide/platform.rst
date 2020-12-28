@@ -3,7 +3,7 @@
 MicroEJ Platform Import
 =======================
 
-A MicroEJ Standalone Application requires a MicroEJ Platform to be executed on Simulator or to build the Firmware binary for the target device.
+A MicroEJ Platform is required to run a MicroEJ Standalone Application on the Simulator or build the Firmware binary for the target device.
 
 The :ref:`platform-developer-guide` describes how to create a MicroEJ Platform from scratch for any kind of device. 
 In addition, some MicroEJ Platforms are available for several commercial targets boards from main MCU/MPU chip manufacturers
