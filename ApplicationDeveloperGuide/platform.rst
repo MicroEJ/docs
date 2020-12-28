@@ -6,8 +6,7 @@ MicroEJ Platform Import
 A MicroEJ Platform is required to run a MicroEJ Standalone Application on the Simulator or build the Firmware binary for the target device.
 
 The :ref:`platform-developer-guide` describes how to create a MicroEJ Platform from scratch for any kind of device. 
-In addition, some MicroEJ Platforms are available for several commercial targets boards from main MCU/MPU chip manufacturers
-at https://repository.microej.com/index.php?resource=JPF.
+In addition, MicroEJ Corp. provides Platforms for various development boards (see https://repository.microej.com/index.php?resource=JPF).
 
 MicroEJ Platforms are distributed in two packages:
 
