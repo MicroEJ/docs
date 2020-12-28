@@ -20,7 +20,7 @@ Source Platform Import
 Import from Folder
 ~~~~~~~~~~~~~~~~~~
 
-This sections applies when the Platform files are already available on a local folder. 
+This section applies when the Platform files are already available on a local folder. 
 This is likely the case when the files are checked out from a Version Control System, such as a local git repository clone. 
 
 .. note::
