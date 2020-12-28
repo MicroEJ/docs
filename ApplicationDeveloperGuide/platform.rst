@@ -10,7 +10,7 @@ In addition, MicroEJ Corp. provides Platforms for various development boards (se
 
 MicroEJ Platforms are distributed in two packages:
 
-- source files imported in the workspace, called `Platforms in Workspace`. This is the default case.
+- **Source Platform**. The source files are imported into the workspace. This is the default case.
 - binary files imported in the :ref:`MicroEJ repository <workspace>`, ending with the ``.jpf`` extension. As of MicroEJ SDK ``5.3.0``, this package is deprecated.
 
 Source Platform Import
