@@ -44,7 +44,7 @@ This section applies when the Platform files are packaged in a ``.zip`` file.
   :guilabel:`Existing Projects into Workspace` > :guilabel:`Select
   archive file` > :guilabel:`Browse…`.
 - Select the zip of the project (e.g. ``x.zip``). The wizard will automatically discover projects to import.
-- Click on :guilabel:`Finish` button.
+- Click on the :guilabel:`Finish` button.
 
 Platform Build
 ~~~~~~~~~~~~~~
