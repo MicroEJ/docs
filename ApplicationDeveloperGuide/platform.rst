@@ -32,7 +32,7 @@ This is likely the case when the files are checked out from a Version Control Sy
   :guilabel:`Existing Projects into Workspace` > :guilabel:`Select
   root directory` > :guilabel:`Browse…`.
 - Select the root directory. The wizard will automatically discover projects to import.
-- Click on :guilabel:`Finish` button.
+- Click on the :guilabel:`Finish` button.
 
 
 Import from Zip File
