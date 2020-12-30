@@ -403,6 +403,7 @@ This CLI is the good tool if you want to work in a terminal or in any other IDE.
 
 The following operations are supported:
 
+- creating a module project
 - building a module project
 - running the project application on the simulator
 - publishing a module in a module repository
@@ -414,7 +415,7 @@ Installation
 
 The steps to install MMM CLI are:
 
-- download `the MMM CLI archive <https://artifactory.cross/microej-cross5-release/com/microej/cli/mmm-cli/0.1.0/mmm-cli-0.1.0.zip>`_
+- download `the MMM CLI archive <https://artifactory.cross/microej-cross5-release/com/microej/cli/mmm-cli/0.2.0/mmm-cli-0.2.0.zip>`_
 - extract the archive in any directory
 - add the ``bin`` directory of the created directory to the ``PATH`` environment variable of your machine
 - make sure the ``JAVA_HOME`` environment variable is set and points to a JRE/JDK installation or that ``java`` executable is in the ``PATH`` environment variable (Java 8 is required)
@@ -431,9 +432,10 @@ In order to use the MMM CLI for your project:
 where ``subcommand`` is the subcommand to execute (for example ``mmm build``).
 The available subcommands are:
 
-- build : build the project
-- publish : publish the project
-- run : run the application on the simulator
+- ``init``: create a project
+- ``build``: build the project
+- ``publish``: publish the project
+- ``run``: run the application on the simulator
 - help : display the help for a subcommand
 - no subcommand : executes Easyant with any target
 
