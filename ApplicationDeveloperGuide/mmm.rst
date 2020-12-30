@@ -403,6 +403,7 @@ This CLI is the good tool if you want to work in a terminal or in any other IDE.
 
 The following operations are supported:
 
+- creating a module project
 - building a module project
 - running the project application on the simulator
 - publishing a module in a module repository
@@ -431,6 +432,7 @@ In order to use the MMM CLI for your project:
 where ``subcommand`` is the subcommand to execute (for example ``mmm build``).
 The available subcommands are:
 
+- init : create a project
 - build : build the project
 - publish : publish the project
 - run : run the application on the simulator
