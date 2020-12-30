@@ -432,10 +432,10 @@ In order to use the MMM CLI for your project:
 where ``subcommand`` is the subcommand to execute (for example ``mmm build``).
 The available subcommands are:
 
-- init : create a project
-- build : build the project
-- publish : publish the project
-- run : run the application on the simulator
+- ``init``: create a project
+- ``build``: build the project
+- ``publish``: publish the project
+- ``run``: run the application on the simulator
 - help : display the help for a subcommand
 - no subcommand : executes Easyant with any target
 
