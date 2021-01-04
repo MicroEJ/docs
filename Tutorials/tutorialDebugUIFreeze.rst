@@ -18,7 +18,8 @@ Check RTOS Scheduler Liveness
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's start at low level by figuring out if the RTOS is scheduling the
-tasks correctly.
+tasks correctly.  If possible, use a debugger, if not use the heart
+beat task described here.
 
 Make one of the RTOS task act like a heart beat: create a dedicated
 task and make it report in some way at a regular pace (print a message
