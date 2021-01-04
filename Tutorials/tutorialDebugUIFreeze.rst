@@ -99,11 +99,6 @@ following snippet in the ``main()`` method of the application:
 This code creates a new Java thread that will print the message ``Alive``
 on the standard output every 10 seconds.
 
-.. note::
-
-   If the UART output is not available, use another method to signal
-   that the task is running (e.g. blink a LED).
-
 If the ``Alive`` printouts stop when the UI freeze occurs (assuming no
 one cancelled the ``Timer``), then it means that the MicroEJ Runtime
 stopped scheduling the Java threads.
@@ -121,6 +116,9 @@ Here are a few suggestions:
   function never returns, no Java thread can ever run again. Spot any
   suspect native functions and trace every entry/exit to detect faulty
   code.
+
+Please refer to :ref:`implementation_details` if you encounter issues
+to implement the heart beat.
 
 Check UI Thread Liveness
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -244,12 +242,28 @@ will give detailed information about the current state of Java
 threads when the issue occurs.  See :ref:`this section<vm_dump>` to
 learn more about ``LLMJVM_dump``.
 
+.. _implementation_details:
+
 Implementation Details
 ----------------------
 
-- The number of threads in the MicroEJ Application must to be
-  sufficient to support the creation of additional threads when using
-  ``Timer`` and ``Thread``.
+Java Threads Creation
+~~~~~~~~~~~~~~~~~~~~~
+
+The number of threads in the MicroEJ Application must to be sufficient
+to support the creation of additional threads when using ``Timer`` and
+``Thread``.  The number of available threads can be updated in the
+launch configuration of the application.
+
+If it is not possible to increase the number of available threads (for
+example because the memory is full), try to reuse another thread but
+not the UI thread.
+
+UART not available
+~~~~~~~~~~~~~~~~~~
+
+If the UART output is not available, use another method to signal that
+the heart beat task is running (e.g. blink a LED).
 
 Sources
 -------
