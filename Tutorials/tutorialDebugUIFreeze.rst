@@ -28,6 +28,18 @@ If the heart beat is still running when the UI freeze occurs, we can
 go a step further and check whether the MicroEJ runtime is still
 scheduling Java threads or not.
 
+If you use task priorities for the RTOS tasks management, ensure that
+the priority of the RTOS task is equal or lower than the priority of
+the MicroEJ runtime task.
+
+If the RTOS task of the heart beat doesn't run when:
+
+- the priority is the highest than any other tasks, then the RTOS
+  scheduler is not scheduling anything.
+- the priority is the same as the MicroEJ runtime and other tasks with
+  a higher priority exist, then one or more RTOS tasks are causing
+  starvation by taking all the resources.
+
 Check Java Scheduler Liveness
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
