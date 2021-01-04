@@ -201,6 +201,13 @@ will give detailed information about the current state of Java
 threads when the issue occurs.  See :ref:`this section<vm_dump>` to
 learn more about ``LLMJVM_dump``.
 
+Implementation Details
+----------------------
+
+- The number of threads in the MicroEJ Application must to be
+  sufficient to support the creation of additional threads when using
+  ``Timer`` and ``Thread``.
+
 Sources
 -------
 
