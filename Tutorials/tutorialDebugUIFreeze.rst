@@ -40,6 +40,24 @@ If the RTOS task of the heart beat doesn't run when:
   a higher priority exist, then one or more RTOS tasks are causing
   starvation by taking all the resources.
 
+..
+   @startuml
+   if (Heart Beat task runs\nwith highest priority) then (no)
+     #pink:RTOS scheduler not working;
+     kill
+   else (yes)
+     if (Heart Beat task runs\nwith same priority\nas MicroEJ Runtime) then (no)
+       #pink:MicroEJ Runtime is starving;
+       kill
+     else (yes)
+       :MicroEJ Runtime is running;
+       kill
+     endif
+   endif
+   @enduml  
+
+.. image:: images/tuto_microej_debug_ui_freeze_rtos_task_heart_beat_priority.png
+
 Check Java Scheduler Liveness
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
