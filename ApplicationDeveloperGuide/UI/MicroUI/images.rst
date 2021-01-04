@@ -414,8 +414,8 @@ These errors can occur while preprocessing images.
    |        |         | unexpected internal error (invalid memory           |
    |        |         | alignment).                                         |
    +--------+---------+-----------------------------------------------------+
-   | 16     | Error   | The specified format is not managed by the          |
-   |        |         | image generator.                                    |
+   | 16     | Error   | The input image format and / or the ouput format are| 
+   |        |         | not managed by the image generator.                 |
    +--------+---------+-----------------------------------------------------+
    | 17     | Error   | The image has been already loaded with another      |
    |        |         | output format.                                      |
