@@ -507,7 +507,7 @@ Font Generator Error Messages
    | 6      | Warning | The specified font path is invalid: The font will   |
    |        |         | be not converted.                                   |
    +--------+---------+-----------------------------------------------------+
-   | 7      | Warning | There are too many arguments on a line: The         |
+   | 7      | Warning | There are too many arguments on a line: the         |
    |        |         | current entry is ignored.                           |
    +--------+---------+-----------------------------------------------------+
    | 8      | Error   | The font generator has encountered an               |
@@ -516,33 +516,28 @@ Font Generator Error Messages
    | 9      | Error   | The font generator has encountered an               |
    |        |         | unexpected internal error (invalid endianness).     |
    +--------+---------+-----------------------------------------------------+
-   | 10     | Warning | The specified entry is invalid: The current entry   |
-   |        |         | is ignored.                                         |
+   | 10     | Error   | The specified entry is invalid.                     |
    +--------+---------+-----------------------------------------------------+
-   | 11     | Warning | The specified entry does not contain a list of      |
-   |        |         | characters: The current entry is ignored.           |
+   | 11     | Error   | The specified entry does not contain a list of      |
+   |        |         | characters.                                         |
    +--------+---------+-----------------------------------------------------+
-   | 12     | Warning | The specified entry does not contain a list of      |
-   |        |         | identifiers: The current entry is ignored.          |
+   | 12     | Error   | The specified entry does not contain a list of      |
+   |        |         | identifiers.                                        |
    +--------+---------+-----------------------------------------------------+
-   | 13     | Warning | The specified entry is an invalid width: The        |
-   |        |         | current entry is ignored.                           |
+   | 13     | Error   | The specified entry is an invalid width.            |
    +--------+---------+-----------------------------------------------------+
-   | 14     | Warning | The specified entry is an invalid height: the       |
-   |        |         | current entry is ignored.                           |
+   | 14     | Error   | The specified entry is an invalid height.           |
    +--------+---------+-----------------------------------------------------+
-   | 15     | Warning | The specified entry does not contain the            |
-   |        |         | characters' addresses:  The current entry is        |
-   |        |         | ignored.                                            |
+   | 15     | Error   | The specified entry does not contain the            |
+   |        |         | characters' addresses.                              |
    +--------+---------+-----------------------------------------------------+
-   | 16     | Warning | The specified entry does not contain the            |
-   |        |         | characters' bitmaps: The current entry is ignored.  |
+   | 16     | Error   | The specified entry does not contain the            |
+   |        |         | characters' bitmaps.                                |
    +--------+---------+-----------------------------------------------------+
-   | 17     | Warning | The specified entry bits-per-pixel value is         |
-   |        |         | invalid: The current entry is ignored.              |
+   | 17     | Error   | The specified entry bits-per-pixel value is         |
+   |        |         | invalid.                                            |
    +--------+---------+-----------------------------------------------------+
-   | 18     | Warning | The specified range is invalid: The current entry   |
-   |        |         | is ignored.                                         |
+   | 18     | Error   | The specified range is invalid.                     |
    +--------+---------+-----------------------------------------------------+
    | 19     | Error   | There are too many identifiers. The output RAW      |
    |        |         | format cannot store all identifiers.                |
@@ -555,12 +550,11 @@ Font Generator Error Messages
    +--------+---------+-----------------------------------------------------+
    | 22     | Error   | Output list files cannot be created.                |
    +--------+---------+-----------------------------------------------------+
-   | 23     | Warning | Dynamic styles are not supported. Only a PLAIN font |
-   |        |         | can be encoded. The current entry is ignored.       |
+   | 23     | Error   | Dynamic styles are not supported. Only a PLAIN font |
+   |        |         | can be encoded.                                     |
    +--------+---------+-----------------------------------------------------+
-   | 24     | Warning | Underlined style is not supported. Only a BOLD and  |
-   |        |         | ITALIC font can be set. The current entry is        |
-   |        |         | ignored.                                            |
+   | 24     | Error   | Underlined style is not supported. Only a BOLD and  |
+   |        |         | ITALIC font can be set.                             |
    +--------+---------+-----------------------------------------------------+
 
 ..

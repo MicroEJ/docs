@@ -414,11 +414,11 @@ These errors can occur while preprocessing images.
    |        |         | unexpected internal error (invalid memory           |
    |        |         | alignment).                                         |
    +--------+---------+-----------------------------------------------------+
-   | 16     | Warning | The specified format is not managed by the          |
-   |        |         | image generator: The image will be not converted.   |
+   | 16     | Error   | The specified format is not managed by the          |
+   |        |         | image generator.                                    |
    +--------+---------+-----------------------------------------------------+
-   | 17     | Warning | The image has been already loaded with another      |
-   |        |         | output format. The image will be not converted.     |
+   | 17     | Error   | The image has been already loaded with another      |
+   |        |         | output format.                                      |
    +--------+---------+-----------------------------------------------------+
 
 ..
