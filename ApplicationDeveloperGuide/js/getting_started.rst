@@ -1,7 +1,7 @@
 ..
 .. ReStructuredText
 ..
-.. Copyright 2020 MicroEJ Corp. All rights reserved.
+.. Copyright 2020-2021 MicroEJ Corp. All rights reserved.
 .. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 ..
 
@@ -44,7 +44,7 @@ You can have more information on the project types in the :ref:`Module Natures p
     JsRuntime.ENGINE.runOneJob();
     JsRuntime.stop();
 
-- create a file named ``hello.js`` in the folder ``src/main/resources`` with the following content:
+- create a file named ``hello.js`` in the folder ``src/main/js`` with the following content:
 
 .. code:: javascript
 
