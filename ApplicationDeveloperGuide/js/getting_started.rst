@@ -28,7 +28,7 @@ You can have more information on the project types in the :ref:`Module Natures p
 
 .. code:: xml
 
-    <dependency org="com.microej.library.runtime" name="js" rev="0.4.0"/>
+    <dependency org="com.microej.library.runtime" name="js" rev="0.5.0"/>
 
 - add the following lines in your application main class:
 
