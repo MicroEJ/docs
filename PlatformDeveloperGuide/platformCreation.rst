@@ -45,7 +45,7 @@ Once you downloaded a MicroEJ Architecture file, proceed with the following step
    A MicroEJ Architecture can be imported using MicroEJ Module Manager, by adding the following line in a :ref:`module description file <mmm_module_description>`:
    ::
 
-      <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]" rev="[VERSION]" conf="default">
+      <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]" rev="[VERSION]">
         <artifact name="[UID]" m:classifier="[USAGE]" ext="xpf"/>
       </dependency>
 
