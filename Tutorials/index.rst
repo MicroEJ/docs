@@ -14,6 +14,7 @@ Tutorials
    tutorialOptimizeMemoryFootprint
    tutorialExploreDataSerializationFormats
    tutorialInstrumentJavaCodeForLogging
+   tutorialDebugUIFreeze
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
