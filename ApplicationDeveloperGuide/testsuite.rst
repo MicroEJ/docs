@@ -111,18 +111,17 @@ successfully executed.
 Testsuite Reports
 -----------------
 
-Once a testsuite is completed, a testsuite report is generated:
+Once a testsuite is completed, the following  testsuite reports are generated:
 
-- in HTML format in module project location ``target~/test/html/test/junit-noframes.html``.
-  At the beginning of the file a summary is displayed, then all
-  execution traces for each test executed are available.
+- JUnit HTML report in the module project location ``target~/test/html/test/junit-noframes.html``.
+  This report contains a summary and the execution trace of every executed test.
 
   .. figure:: images/testsuiteReportHTMLExample.png
      :alt: Example of MicroEJ Testsuite HTML Report
      
      Example of MicroEJ Testsuite HTML Report
 
-- in JUnit XML format, in module project location ``target~/test/xml/TEST-test-report.xml``.
+- JUnit XML report in the module project location ``target~/test/xml/TEST-test-report.xml``.
 
   .. figure:: images/testsuiteReportXMLExample.png
      :alt: Example of MicroEJ Testsuite XML Report
