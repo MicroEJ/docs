@@ -1,5 +1,5 @@
 Run a Testsuite on a Device
-===========================
+============================
 
 This tutorial describes all the steps to configure and run a
 :ref:`platform_testsuite` on a device using the `Platform
@@ -7,8 +7,7 @@ Qualification Tools
 <https://github.com/MicroEJ/PlatformQualificationTools>`_.
 
 In this tutorial, the target device is the Espressif ESP32-WROVER-KIT
-V4.1 board and the File System (:ref:`FS <platform_fs>`) testsuite
-will be used as an example.
+V4.1 board and the Filesystem Testsuite will be used as an example.
 
 The tutorial should take 1 hour to complete (excluding the Platform
 Getting Started setup).
@@ -40,8 +39,10 @@ This tutorial assumes the following:
 
 - MicroEJ SDK distribution 20.07 or more (see :ref:`get_sdk_version`).
 
-- The WROVER Platform has been properly setup (i.e., it can be used to
-  generate a MicroEJ Mono-Sandbox Firmware).
+- The `WROVER Platform
+  <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/tree/1.6.2>`__
+  has been properly setup (i.e., it can be used to generate a MicroEJ
+  Mono-Sandbox Firmware).
 
 The explanation can be adapted to run the testsuite on any other
 MicroEJ Platform providing:
@@ -53,13 +54,14 @@ MicroEJ Platform providing:
 .. note::
 
    This tutorial can also be adapted to run other testsuites in addition to the
-   FS testsuite presented here.
+   Filesystem Testsuite presented here.
 
 Introduction
 ------------
 
 This tutorial presents a local setup of the :ref:`platform_testsuite`
-for the FS Foundation Library on a concrete device (not on simulator).
+for the :ref:`FS <platform_fs>` Foundation Library on a concrete
+device (not on simulator).
 
 In essence, a Foundation Library provides an API to be used by a
 MicroEJ Application or an Add-on Library.
@@ -79,7 +81,8 @@ of the Abstraction Layer.
 Import the Testsuite
 --------------------
 
-Follow these steps to import the Testsuite FS into the workspace from the `Platform Qualification Tools
+Follow these steps to import the Filesystem Testsuite into the
+workspace from the `Platform Qualification Tools
 <https://github.com/MicroEJ/PlatformQualificationTools/blob/2.3.0/tests/fs>`__:
 
 - Clone or download the `Platform Qualitification Tools project 2.3.0
@@ -136,7 +139,9 @@ from standard input to UART.
    :alt: Plug alternative UART on WROVER GND/D0
    :align: center
 
-See the WROVER Platform documentation for more details.
+See the `WROVER Platform documentation
+<https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/tree/1.6.2#testsuite-configuration>`__
+for more details.
 
 Start Serial To Socket
 ~~~~~~~~~~~~~~~~~~~~~~
