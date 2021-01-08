@@ -7,7 +7,8 @@ Qualification Tools
 <https://github.com/MicroEJ/PlatformQualificationTools>`_.
 
 In this tutorial, the target device is the Espressif ESP32-WROVER-KIT
-V4.1 board and the Filesystem Testsuite will be used as an example.
+V4.1 board and the Filesystem Testsuite for :ref:`FS <platform_fs>`
+module will be used as an example.
 
 The tutorial should take 1 hour to complete (excluding the Platform
 Getting Started setup).
