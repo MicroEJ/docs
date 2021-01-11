@@ -1,4 +1,4 @@
-Run a Testsuite on a Device
+Run a Test Suite on a Device
 ============================
 
 This tutorial describes all the steps to configure and run a
@@ -7,7 +7,7 @@ Qualification Tools
 <https://github.com/MicroEJ/PlatformQualificationTools>`_.
 
 In this tutorial, the target device is the Espressif ESP32-WROVER-KIT
-V4.1 board and the Filesystem Testsuite for :ref:`FS <platform_fs>`
+V4.1 board and the Filesystem Test Suite for :ref:`FS <platform_fs>`
 module will be used as an example.
 
 The tutorial should take 1 hour to complete (excluding the Platform
@@ -18,11 +18,11 @@ Intended Audience and Scope
 
 The audience for this document is software engineers who want to
 validate an abstraction layer implementation or understand how to automatically
-run a MicroEJ Testsuite on their device.
+run a MicroEJ Test Suite on their device.
 
 The following topics are out of the scope of this tutorial:
 
-- How to write test cases and package a Testsuite module. See
+- How to write test cases and package a Test Suite module. See
   :ref:`application_testsuite` for this topic.
 - How to create a new Foundation Library. See the `Foundation Library
   Getting Started
@@ -45,7 +45,7 @@ This tutorial assumes the following:
   has been properly setup (i.e., it can be used to generate a MicroEJ
   Mono-Sandbox Firmware).
 
-The explanation can be adapted to run the testsuite on any other
+The explanation can be adapted to run the test suite on any other
 MicroEJ Platform providing:
 
 - An implementation of :ref:`LLFS-API-SECTION` version 1.0.2 in
@@ -54,8 +54,8 @@ MicroEJ Platform providing:
 
 .. note::
 
-   This tutorial can also be adapted to run other testsuites in addition to the
-   Filesystem Testsuite presented here.
+   This tutorial can also be adapted to run other test suites in addition to the
+   Filesystem Test Suite presented here.
 
 Introduction
 ------------
@@ -76,13 +76,13 @@ MicroEJ Application or an Add-on Library.
 For example, the Java file system API ``java.io.File`` is provided by
 the MicroEJ Foundation Library named ``FS``. The Abstraction Layer of
 each Foundation API must be implemented in C in the Board Support
-Package.  The Testsuite is used to validate the C code implementation
+Package.  The Test Suite is used to validate the C code implementation
 of the Abstraction Layer.
 
-Import the Testsuite
+Import the Test Suite
 --------------------
 
-Follow these steps to import the Filesystem Testsuite into the
+Follow these steps to import the Filesystem Test Suite into the
 workspace from the `Platform Qualification Tools
 <https://github.com/MicroEJ/PlatformQualificationTools/blob/2.3.0/tests/fs>`__:
 
@@ -99,7 +99,7 @@ workspace from the `Platform Qualification Tools
 The project ``java-testsuite-fs`` should now be available in the
 workspace.
 
-Configure the Testsuite
+Configure the Test Suite
 -----------------------
 
 Configure the Platform BSP Connection
@@ -109,8 +109,8 @@ Several properties must be defined depending on the type of BSP
 Connection used by the MicroEJ Platform.
 
 For a MicroEJ Application, these properties are set using the launcher
-of the application.  For a Testsuite, the properties are defined in a
-file named ``config.properties`` in the root folder of the Testsuite.
+of the application.  For a Test Suite, the properties are defined in a
+file named ``config.properties`` in the root folder of the Test Suite.
 For example, see this `config.properties
 <https://github.com/MicroEJ/PlatformQualificationTools/blob/2.3.0/tests/fs/java/java-testsuite-fs/config.properties>`__
 file.
@@ -123,7 +123,7 @@ The ``microej.testsuite.properties.deploy.*`` and
 Configure Execution Trace Redirection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When the Testsuite is executed, the Testsuite Engine must read the
+When the Test Suite is executed, the Test Suite Engine must read the
 trace to determine the result of the execution.  To do that, we will
 use the :ref:`tool_serial_to_socket` tool to redirect the execution
 traces dumped to a COM port.
@@ -182,14 +182,14 @@ Transmitter:
     ``config.properties`` as
     ``microej.testsuite.properties.testsuite.trace.port``.
 
-Configure the Testsuite Specific Options
+Configure the Test Suite Specific Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Depending on the Testsuite and the specificities of the device,
+Depending on the Test Suite and the specificities of the device,
 various properties may be required and adjusted.  See the file
 ``validation/microej-testsuite-common.properties`` (for example
 https://github.com/MicroEJ/PlatformQualificationTools/blob/2.3.0/tests/fs/java/java-testsuite-fs/validation/microej-testsuite-common.properties)
-and the README of the Testsuite for a description of each property.
+and the README of the Test Suite for a description of each property.
 
 On the WROVER Platform, the configuration files ``config.properties``
 and ``microej-testsuite-common.properties`` are provided in
@@ -200,10 +200,10 @@ set to the absolute path to the platform.  For example
 ``C:/P0065_ESP32-WROVER-Platform/ESP32-WROVER-Xtensa-FreeRTOS-platform/source``.
 
 
-Run the Testsuite
+Run the Test Suite
 ----------------------
 
-To run the Testsuite, right click on the Testsuite module and select
+To run the Test Suite, right click on the Test Suite module and select
 ``Build Module``.
 
 Configure the Tests to Run
@@ -215,7 +215,7 @@ Suite Engine.
 To speed-up the execution, let's configure it to run only a small set
 of tests.  In the following example, only the classes that match
 ``TestFilePermission`` are executed.  This configuration goes into the
-file ``config.properties`` in the folder of the testsuite.
+file ``config.properties`` in the folder of the test suite.
 
 .. code:: properties
 
@@ -228,7 +228,7 @@ file ``config.properties`` in the folder of the testsuite.
 Several reasons might explain why to exclude some tests:
 
 - **Iterative development**. Test only the Abstraction Layer that is
-  currently being developed.  The full Testsuite must still be executed to
+  currently being developed.  The full Test Suite must still be executed to
   validate the complete implementation.
 
 - **Known bugs in the Foundation Library**. The latest version of the Test
@@ -241,10 +241,10 @@ Several reasons might explain why to exclude some tests:
   might have specific requirements that prevent a fully compliant
   implementation of the Foundation Library.
 
-Examine the Testsuite Report
+Examine the Test Suite Report
 ----------------------------
 
-Once the Testsuite is completed, open the HTML :ref:`Testsuite Report
+Once the Test Suite is completed, open the HTML :ref:`Test Suite Report
 <testsuite_report>` stored in
 ``java-testsuite-fs/target~/test/html/test/junit-noframes.html``.
 
@@ -255,6 +255,14 @@ If necessary, the binaries produced and ran on the device by the Test
 Suite Engine are available in
 ``target~/test/xml/<TIMESTAMP>/bin/<FULLY-QUALIFIED-CLASSNAME>/application.out``.
 
-The following image shows the testsuite report fully passed:
+The following image shows the test suite report fully passed:
 
 .. image:: ./images/tuto_testsuite_fs_all_tests_passed.PNG
+
+..
+   | Copyright 2021, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
+

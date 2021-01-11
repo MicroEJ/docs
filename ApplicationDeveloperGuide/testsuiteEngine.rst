@@ -1,47 +1,47 @@
 .. _testsuite_engine:
 
-Testsuite Engine
-================
+Test Suite Engine
+=================
 
-MicroEJ Testsuite Engine
-========================
+MicroEJ Test Suite Engine
+=========================
 
 Introduction
 ------------
 
-The MicroEJ Testsuite Engine is a generic tool made for validating any
+The MicroEJ Test Suite Engine is a generic tool made for validating any
 development project using automatic testing.
 
 This section details advanced configuration for users who wish to
-integrate custom testsuites in their build flow.
+integrate custom test suites in their build flow.
 
-The MicroEJ Testsuite Engine allows the user to test any kind of
+The MicroEJ Test Suite Engine allows the user to test any kind of
 projects within the configuration of a generic Ant file.
 
    .. figure:: images/testsuiteEngine.png
-      :alt: MicroEJ Testsuite Engine Overview
+      :alt: MicroEJ Test Suite Engine Overview
       :align: center
       :width: 500px
 
-The MicroEJ Testsuite Engine is already pre-configured for running
-testsuites on a MicroEJ Platform (either on Simulator or on Device).
+The MicroEJ Test Suite Engine is already pre-configured for running
+test suites on a MicroEJ Platform (either on Simulator or on Device).
 
 - For Application and Libraries, refer to :ref:`application_testsuite`
   section.
-- For Foundation Libraries Testsuites, refer to
+- For Foundation Libraries Test Suites, refer to
   :ref:`platform_testsuite` section.
 
-Using the MicroEJ Testsuite Ant Tasks
+Using the MicroEJ Test Suite Ant Tasks
 --------------------------------------
 
 Multiple Ant tasks are available in the ``testsuite-engine.jar``
 provided in the :ref:`Build Kit <mmm_build_kit>`:
 
--  ``testsuite`` allows the user to run a given testsuite and to
+-  ``testsuite`` allows the user to run a given test suite and to
    retrieve an XML report document in a JUnit format.
 
 -  ``javaTestsuite`` is a subtask of the ``testsuite`` task, used to run
-   a specialized testsuite for Java (will only run Java classes).
+   a specialized test suite for Java (will only run Java classes).
 
 -  ``htmlReport`` is a task which will generate an HTML report from a
    list of JUnit report files.
@@ -60,17 +60,17 @@ The following attributes are mandatory:
    * - Attribute Name
      - Description
    * - ``outputDir``
-     - The output folder of the testsuite. The final report will be
+     - The output folder of the test suite. The final report will be
        generated at ``[outputDir]/[label]/[reportName].xml``, see the
        ``testsuiteReportFileProperty`` and
        ``testsuiteReportDirProperty`` attributes.
    * - ``harnessScript``
      - The harness script must be an Ant script and it is the script
-       which will be called for each test by the testsuite engine. It
+       which will be called for each test by the test suite engine. It
        is called with a ``basedir`` located at output location of the
        current test.
 
-The testsuite engine provides the following properties to the harness
+The test suite engine provides the following properties to the harness
 script giving all the informations to start the test:
 
 .. list-table:: ``harnessScript`` properties
@@ -109,7 +109,7 @@ The following attributes are optional:
        unknown. Set it to ``0`` to disable the time-out.
      - ``60``
    * - ``verboseLevel``
-     - The required level to output messages from the testsuite. Can
+     - The required level to output messages from the test suite. Can
        be one of those values: ``error``, ``warning``, ``info``,
        ``verbose``, ``debug``.
      - ``info``
@@ -128,7 +128,7 @@ The following attributes are optional:
        ``customPropertiesExtension`` value.
      - ``.properties``
    * - ``commonProperties``
-     - The properties to  apply to every test of  the testsuite. Those
+     - The properties to  apply to every test of  the test suite. Those
        options might  be overridden by  the custom properties  of each
        test. If this  option is set and the file  exists, the property
        ``testsuite.common.properties`` is set to  the absolute path of
@@ -136,12 +136,12 @@ The following attributes are optional:
      - no common properties
    * - ``label``
      - The build label.
-     - timestamp of when the testsuite was invoked.
+     - timestamp of when the test suite was invoked.
    * - ``productName``
      - The name of the current tested product.
      - ``TestSuite``
    * - ``jvm``
-     - The location of your Java VM to start the testsuite (the
+     - The location of your Java VM to start the test suite (the
        ``harnessScript`` is called as is:  ``[jvm] [...] -buildfile
        [harnessScript]``).
      - ``java.home`` location if the property is set, ``java``
@@ -161,8 +161,8 @@ The following attributes are optional:
 
    * - ``testsuiteResultProperty``
      - The name of the Ant property in which you want to have the
-       result of the testsuite (``true`` or ``false``), depending if
-       every tests successfully passed the testsuite or not.  Ignored
+       result of the test suite (``true`` or ``false``), depending if
+       every tests successfully passed the test suite or not.  Ignored
        tests do not affect this result.
      - None
 
@@ -177,10 +177,10 @@ tests.
      - Description
    * - ``testPath``
      - Containing all the file of the tests which will be launched by
-       the testsuite.
+       the test suite.
    * - ``testIgnoredPath`` (optional)
      - Any test in the intersection between ``testIgnoredPath`` and
-       ``testPath`` will be executed by the testsuite, but will not
+       ``testPath`` will be executed by the test suite, but will not
        appear in the JUnit final report. It will still generate a
        JUnit report for each test, which will allow the HTML report to
        let them appears as "ignored" if it is generated.  Mostly used
@@ -188,7 +188,7 @@ tests.
        relevant enough to appears on the HTML report.
 
 .. code-block:: xml
-   :caption: Example of testsuite task invocation
+   :caption: Example of test suite task invocation
 
    <!-- Launch the testusite engine -->
    <testsuite:testsuite
@@ -211,7 +211,7 @@ tests.
 The ``javaTestsuite`` Task
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This task extends the ``testsuite`` task, specializing the testsuite to
+This task extends the ``testsuite`` task, specializing the test suite to
 only start real Java class. This task retrieves the classname of the
 tests from the classfile and provides new properties to the harness
 script:
@@ -263,7 +263,7 @@ fill:
 
 - A nested ``fileset`` element containing all the JUnit reports of
   each test.  Take care to exclude the final JUnit report generated by
-  the testsuite.
+  the test suite.
 
 -  A nested element ``report``:
 
@@ -287,8 +287,8 @@ fill:
 .. note::
 
    It is advised to set the format to ``noframes`` if your test suite
-   is not a Java testsuite. If the format is set to ``frames``, with a
-   non-Java MicroEJ Testsuite, the name of the links will not be
+   is not a Java test suite. If the format is set to ``frames``, with a
+   non-Java MicroEJ Test Suite, the name of the links will not be
    relevant because of the non-existency of packages.
 
 
@@ -312,7 +312,7 @@ Using the Trace Analyzer
 ------------------------
 
 This section will shortly explains how to use the ``Trace Analyzer``.
-The MicroEJ Testsuite comes with an archive containing the
+The MicroEJ Test Suite comes with an archive containing the
 ``Trace Analyzer`` which can be used to analyze the output trace of an
 application. It can be used from different forms;
 
@@ -385,14 +385,14 @@ Appendix
 --------
 
 The goal of this section is to explain some tips and tricks that might
-be useful in your usage of the testsuite engine.
+be useful in your usage of the test suite engine.
 
 .. _testsuite-various-customproperties:
 
 Specific Custom Properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Some custom properties are specifics and retrieved from the testsuite
+Some custom properties are specifics and retrieved from the test suite
 engine in the custom properties file of a test.
 
 -  The ``testsuite.test.name`` property is the output name of the
@@ -403,7 +403,7 @@ engine in the custom properties file of a test.
       ``testsuite.test.name`` is find on the corresponding file, then
       the output name of the current test will be set to it.
 
-   -  Otherwise, if the running MicroEJ Testsuite is a Java testsuite,
+   -  Otherwise, if the running MicroEJ Test Suite is a Java test suite,
       the output name is set to the class name of the test.
 
    -  Otherwise, from the path containing all the tests, a common prefix
@@ -418,10 +418,10 @@ engine in the custom properties file of a test.
 
 -  The ``testsuite.test.timeout`` property allow the user to redefine
    the time out for each test. If it is negative or not an integer, then
-   global timeout defined for the MicroEJ Testsuite is used.
+   global timeout defined for the MicroEJ Test Suite is used.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
