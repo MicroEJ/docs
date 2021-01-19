@@ -70,7 +70,7 @@ The steps to follow are:
 
 For the purposes of simplifying the steps, this tutorial will be performed locally on a single machine.
 
-Artifactory will host MicroEJ modules, divided in 3 repositories:
+Artifactory will host MicroEJ modules in 3 repositories:
 
 - ``microej-module-repository``: repository initialized with pre-built MicroEJ modules, a mirror of the :ref:`Central Repository <central_repository>`
 - ``microej-build-repository``: repository initialized with build scripts and tools exported from MicroEJ SDK
