@@ -124,7 +124,7 @@ Get a Module Repository
 A Module Repository is a portable ZIP file that bundles a set of modules for extending the MicroEJ development environment.
 Please consult the :ref:`Module Repository <module_repository>` section for more information.
 
-In the following, we will use the MicroEJ Central Repository, which is the Module Repository used by MicroEJ SDK to fetch dependencies when starting an empty workspace. 
+This tutorial uses the MicroEJ Central Repository, which is the Module Repository used by MicroEJ SDK to fetch dependencies when starting an empty workspace. 
 It bundles Foundation Library APIs and numerous Add-On Libraries.
 
 Next step is to download a local copy of this repository:
