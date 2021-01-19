@@ -74,7 +74,7 @@ Artifactory will host MicroEJ modules, divided in 3 repositories:
 
 - ``microej-module-repository``: repository initialized with pre-built MicroEJ modules, a mirror of the :ref:`Central Repository <central_repository>`
 - ``microej-build-repository``: repository initialized with build scripts and tools exported from MicroEJ SDK
-- ``libs-snapshot-local``: repository where will be published custom modules
+- ``libs-snapshot-local``: repository where custom modules will be published
 
 
 .. _install_build_tools:
