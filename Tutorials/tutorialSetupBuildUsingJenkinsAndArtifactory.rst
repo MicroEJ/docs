@@ -70,11 +70,11 @@ The steps to follow are:
 
 For the purposes of simplifying the steps, this tutorial will be performed locally on a single machine.
 
-Artifactory will host MicroEJ modules, divided in 3 repositories:
+Artifactory will host MicroEJ modules in 3 repositories:
 
 - ``microej-module-repository``: repository initialized with pre-built MicroEJ modules, a mirror of the :ref:`Central Repository <central_repository>`
 - ``microej-build-repository``: repository initialized with build scripts and tools exported from MicroEJ SDK
-- ``libs-snapshot-local``: repository where will be published custom modules
+- ``libs-snapshot-local``: repository where custom modules will be published
 
 
 .. _install_build_tools:
@@ -124,7 +124,7 @@ Get a Module Repository
 A Module Repository is a portable ZIP file that bundles a set of modules for extending the MicroEJ development environment.
 Please consult the :ref:`Module Repository <module_repository>` section for more information.
 
-In the following, we will use the MicroEJ Central Repository, which is the Module Repository used by MicroEJ SDK to fetch dependencies when starting an empty workspace. 
+This tutorial uses the MicroEJ Central Repository, which is the Module Repository used by MicroEJ SDK to fetch dependencies when starting an empty workspace. 
 It bundles Foundation Library APIs and numerous Add-On Libraries.
 
 Next step is to download a local copy of this repository:
@@ -336,14 +336,14 @@ In this example, we will create a very simple module using the Sandbox Applicati
 
 #. Open a terminal from this directory and type the following commands:
 
-.. code-block:: sh
-
-   git init --bare ~/hello_world.git
-   git init
-   git remote add origin ~/hello_world.git
-   git add com.example.hello-world
-   git commit -m "Add Hello World application"
-   git push --set-upstream origin master
+   .. code-block:: sh
+   
+      git init --bare ~/hello_world.git
+      git init
+      git remote add origin ~/hello_world.git
+      git add com.example.hello-world
+      git commit -m "Add Hello World application"
+      git push --set-upstream origin master
 
 
 .. note::
