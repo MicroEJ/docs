@@ -336,14 +336,14 @@ In this example, we will create a very simple module using the Sandbox Applicati
 
 #. Open a terminal from this directory and type the following commands:
 
-.. code-block:: sh
-
-   git init --bare ~/hello_world.git
-   git init
-   git remote add origin ~/hello_world.git
-   git add com.example.hello-world
-   git commit -m "Add Hello World application"
-   git push --set-upstream origin master
+   .. code-block:: sh
+   
+      git init --bare ~/hello_world.git
+      git init
+      git remote add origin ~/hello_world.git
+      git add com.example.hello-world
+      git commit -m "Add Hello World application"
+      git push --set-upstream origin master
 
 
 .. note::
