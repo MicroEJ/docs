@@ -345,7 +345,7 @@ The following table describes Application options, configured as regular :ref:`M
      - Deploy the MicroEJ Platform runtime file (``microejruntime.a``) to this absolute directory. An empty value means no deployment.
    * - ``deploy.dir.microejinc``
      - Deploy the MicroEJ Platform header files (``*.h``) to this absolute directory. An empty value means no deployment.
-   * - ``deploy.bsp.microejscript``
+   * - ``deploy.dir.microejscript``
      - Execute the BSP build script file (``build.bat`` or ``build.sh``) present in this absolute directory. An empty value means no deployment.
 
 
