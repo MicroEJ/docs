@@ -368,6 +368,38 @@ A typical usage in a :ref:`module description file <mmm_module_description>` is 
    .. figure:: images/mmm_preferences_options_usage.png
       :align: center
 
+.. _mmm_module_build:
+
+Module Build
+------------
+
+In MicroEJ SDK, a MicroEJ module project build can be started as following:
+
+  - In the `Package Explorer`, right-click on the project,
+  - Select :guilabel:`Build Module`.
+
+   .. figure:: images/mmm_build_module.png
+      :alt: Module build
+      :align: center
+
+      Module Build
+
+A module build can take time depending on
+
+   - the `module nature <module_natures>`_ to build, 
+   - the number and the size of module dependencies to download,
+   - the repository connection bandwidth, ...
+
+The module build logs are redirected to the integrated console. 
+
+Alternatively, a MicroEJ module project build can be started from the build history:
+
+   .. figure:: images/mmm_build_module_istory.png
+      :alt: Module Build History
+      :align: center
+
+      Module Build History
+
 .. _mmm_build_kit:
 
 Build Kit
