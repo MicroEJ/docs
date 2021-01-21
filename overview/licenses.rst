@@ -1,27 +1,15 @@
 Licenses
 ========
 
-Overview
---------
+.. _license_manager:
+
+License Manager Overview
+------------------------
 
 MicroEJ Architectures are distributed in two different versions:
 
 - Evaluation Architectures, associated with a software license key. Can be downloaded at `<https://repository.microej.com/architectures/>`_.
 - Production Architectures, associated with an hardware license key stored on a USB dongle. Can be requested to MicroEJ support team support@microej.com.
-
-Licenses list is available in MicroEJ SDK preferences dialog page in :guilabel:`Window`
-> :guilabel:`Preferences` > :guilabel:`MicroEJ`:
-
-.. figure:: images/preferences/licenses.jpg
-   :alt: MicroEJ Licenses View
-   :align: center
-
-   MicroEJ Licenses View
-
-.. _license_manager:
-
-License Manager
----------------
 
 The license manager is provided with MicroEJ Architectures and this then integrated to Platforms, consequently:
 
@@ -32,21 +20,41 @@ The license manager is provided with MicroEJ Architectures and this then integra
 
 See sections :ref:`architecture_import` and :ref:`platform_import` for more information.
 
+
+The list of installed licenses is available in MicroEJ SDK preferences dialog page in :guilabel:`Window`
+> :guilabel:`Preferences` > :guilabel:`MicroEJ`:
+
+.. figure:: images/preferences/licenses.jpg
+   :alt: MicroEJ Licenses View
+   :align: center
+
+   MicroEJ Licenses View
+
 .. _evaluation_license:
 
 Evaluation Licenses
 -------------------
 
 This section should be considered when using Evaluation Architectures, which
-use software license keys.
+use software license keys. A machine UID needs to be provided
+to activate an Evaluation license on the MicroEJ Licenses Server. The machine UID is a 16 hexadecimal digits number.
 
 Get your Machine UID
 ~~~~~~~~~~~~~~~~~~~~
 
-To activate an Evaluation Architecture, a machine UID needs to be provided
-to the key server. 
+Retrieving the machine UID depends on the kind of MicroEJ Platform being evaluated.
 
-This information is available from the preferences page:
+If your MicroEJ Platform is already :ref:`imported in Package Explorer <source_platform_import>` and built with :ref:`mmm`, the MicroEJ Architecture has been automatically imported.
+The machine UID will be displayed when building a :ref:`MicroEJ Standalone Application on device <device_build>`.
+
+.. code-block:: console
+   :emphasize-lines: 1
+
+   [INFO ] Launching in Evaluation mode. Your UID is XXXXXXXXXXXXXXXX.
+   [ERROR] Invalid license check (No license found).
+
+Otherwise, a MicroEJ Architecture or Platform should have been manually imported from the MicroEJ SDK preferences page. 
+The machine UID can be retrieved as following:
 
 - Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ`,
 - Select either :guilabel:`Architectures` or :guilabel:`Platforms`, 
@@ -55,7 +63,7 @@ This information is available from the preferences page:
 
 .. note:: 
 
-   To access this :guilabel:`Get UID` option, at least one Evaluation Architecture must have been imported before (see :ref:`license_manager`).
+   To access this :guilabel:`Get UID` option, at least one Evaluation Architecture or Platform must have been imported before (see :ref:`license_manager`).
 
 Copy the UID. It will be needed when requesting a license.
 
@@ -70,18 +78,33 @@ Copy the UID. It will be needed when requesting a license.
 Request your Activation Key
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Go to https://license.microej.com.
+- Go to MicroEJ Licenses Server https://license.microej.com.
 - Click on :guilabel:`Create a new account` link.
 - Create your account with a valid email address. You will receive a confirmation email a few minutes after. Click on the confirmation link in the email and login with your new account.
 - Click on :guilabel:`Activate a License`.
 - Set :guilabel:`Product P/N:` to ``9PEVNLDBU6IJ``.
-- Set :guilabel:`UID:` to the UID you copied before.
+- Set :guilabel:`UID:` to the machine UID you copied before.
 - Click on :guilabel:`Activate`.
 - The license is being activated. You should receive your activation by email in less than 5 minutes. If not, please contact support@microej.com.
 - Once received by email, save the attached zip file that contains your activation key.
 
 Install the License Key
 ~~~~~~~~~~~~~~~~~~~~~~~
+
+If your MicroEJ Platform is already :ref:`imported in Package Explorer <source_platform_import>` and built with :ref:`mmm`, 
+the license key zip file must be simply dropped to the ``~/.microej/licenses/`` directory (create it if it doesn't exist).
+
+.. figure:: images/user_license_folder.png
+   :alt: MicroEJ Shared Licenses Directory
+   :align: center
+
+   MicroEJ Shared Licenses Directory
+
+.. note::
+  
+   The MicroEJ SDK Preferences page will be automatically refreshed when building a :ref:`MicroEJ Standalone Application on device <device_build>`.
+
+Otherwise, the license key must be installed as following:
 
 - Go back to MicroEJ SDK.
 - Select the :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` menu.
@@ -128,15 +151,6 @@ following conditions:
 
 .. _gettingstarted-installlicenseseval-pca:
 
-Evaluation Licenses with Platform Configuration Additions
----------------------------------------------------------
-
-This section should be considered when using evaluation platforms
-configured with the :ref:`Platform Configuration Additions (PCA)
-<platform_configuration_creation>`, which use software license keys.
-
-.. _gettingstarted-installlicenseseval-install-pca:
-
 Installing License Keys
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -146,14 +160,6 @@ directory if it doesn't exist.
 
 .. _gettingstarted-installlicenseseval-uid-pca:
 
-Generating Machine UID
-~~~~~~~~~~~~~~~~~~~~~~
-
-The UUID is displayed in the ``Console`` log during the build of a MicroEJ Platform or the build of a MicroEJ Firmware.
-
-.. code-block:: console
-
-   [INFO ] Launching in Evaluation mode. Your UID is XXXXXXXXXXXXXXXX.
 
 .. _production_license:
 
@@ -250,7 +256,7 @@ Check Activation on MicroEJ SDK
 
 .. note::
 
-   Production licenses will be shown only if at least one Production Architecture has been imported before (see :ref:`license_manager`).
+   Production licenses will be shown only if at least one Production Architecture or Platform has been imported before (see :ref:`license_manager`).
 
 - Go back to MicroEJ SDK,
 - Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ`,
