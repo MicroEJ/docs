@@ -114,7 +114,11 @@ The next step is to create a MicroEJ Platform configuration:
 
      com.microej.platformbuilder.platform.filename=myplatform.platform
 
-- Build the Platform as a regular :ref:`mmm_module_build`: 
+MicroEJ Platform Build
+======================
+
+
+To build the MicroEJ Platform, perform as a regular :ref:`mmm_module_build`: 
 
   - Right-click on the Platfom Configuration project,
   - Select :guilabel:`Build Module`.
@@ -135,18 +139,18 @@ The next step is to create a MicroEJ Platform configuration:
 
       Total time: 43 seconds
   
-- Import the Platform directory to your MicroEJ SDK workspace as mentioned in the report. You should get a ready-to-use MicroEJ Platform project.
+Then , import the Platform directory to your MicroEJ SDK workspace as mentioned in the report. You should get a ready-to-use MicroEJ Platform project
+in the workspace available for the MicroEJ Application project to run on. You can also check the MicroEJ Platform availability in:
+:guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
 
-   .. figure:: images/platformSource.png
-      :alt: MicroEJ Platform Project
-      :align: center
+.. figure:: images/platformSource.png
+   :alt: MicroEJ Platform Project
+   :align: center
 
-      MicroEJ Platform Project
-
-  .. note::
-     
-     This step is only required the first time the Platform is built, or if the Platform properties haved changed. 
-     When the same Platform is rebuilt, right-click on the Platform project and select :guilabel:`Refresh` to get the new content.
+   MicroEJ Platform Project
+ 
+This step is only required the first time the Platform is built, or if the Platform properties haved changed. 
+When the same Platform is rebuilt, right-click on the Platform project and select :guilabel:`Refresh` to get the new content.
 
 .. _platform_configuration_modules:
 
@@ -173,6 +177,11 @@ All the checked modules will be installed in the Platform.
    :align: center
 
    MicroEJ Platform Configuration Modules Selection
+
+.. note::
+
+  It is possible to quickly rebuild the Platform from the Platform Editor when only changes have been made in the Platform Editor.
+  Click on the :guilabel:`Build Platform` link on the Platform configuration :guilabel:`Overview` tab.
 
 
 Modules Customization
@@ -520,16 +529,6 @@ Example:
 
 These files will be converted into an internal format during the
 MicroEJ Platform build.
-
-MicroEJ Platform Build
-======================
-
-To build the MicroEJ Platform, click on the :guilabel:`Build Platform` link on the
-Platform configuration :guilabel:`Overview` tab.
-
-It will create a MicroEJ Platform in the workspace available for the
-MicroEJ Application project to run on. The MicroEJ Platform will be available in:
-:guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
 
 
 ..
