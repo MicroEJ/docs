@@ -11,7 +11,7 @@ This glossary defines the technical terms upon which the `MicroEJ Virtual Execut
       A MicroEJ Add-On Library is a pure `managed code <https://en.wikipedia.org/wiki/Managed_code>`_ (Java) library. It runs over one or more MicroEJ Foundation Libraries.
 
    Abstraction Layer
-      An Abstraction Layer is the C code that implements low-level APIs of a Foundation Library over a board support package (BSP) or a C library.
+      An Abstraction Layer is the C code that implements a Foundation Library's low-level APIs over a board support package (BSP) or a C library.
 
    Application
       A MicroEJ Application is a software program that runs on a Powered by MicroEJ device.
