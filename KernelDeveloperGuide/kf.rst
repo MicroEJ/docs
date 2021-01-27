@@ -21,6 +21,9 @@ depends on an other Feature to be stopped).
 
 The complete :ref:`[KF] specification <esr-specifications>` is available at `<http://www.e-s-r.net/download/specification/ESR-SPE-0020-KF-1.4-F.pdf>`_
 
+The full API documentation of the Kernel & Features Foundation Library
+is available at https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/package-summary.html.
+
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
