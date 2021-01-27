@@ -149,17 +149,6 @@ following conditions:
 
    Invalid License Key Error Message
 
-.. _gettingstarted-installlicenseseval-pca:
-
-Installing License Keys
-~~~~~~~~~~~~~~~~~~~~~~~
-
-License keys can be added to MicroEJ by copying the license file (a
-``.zip``) in the ``~/.microej/licenses/`` directory.  Create the
-directory if it doesn't exist.
-
-.. _gettingstarted-installlicenseseval-uid-pca:
-
 
 .. _production_license:
 
