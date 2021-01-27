@@ -9,16 +9,16 @@ Stack Trace Reader
 Principle
 =========
 
-Stack Trace Reader is a MicroEJ tool which reads and decodes the MicroEJ
+Stack Trace Reader is a MicroEJ tool that reads and decodes the MicroEJ
 stack traces. When an exception occurs, the MicroEJ Core Engine prints
 the stack trace on the standard output ``System.out``. The class names,
-non required types (see :ref:`section.classpath.elements.types`) names
+non-required types names(see :ref:`section.classpath.elements.types`),
 and method names obtained are encoded with a MicroEJ internal format.
-This internal format prevents the embedding of all class names and
-method names in the flash, in order to save some memory space. The Stack
+This internal format prevents embedding all class names and
+method names in the executable image to save some memory space. The Stack
 Trace Reader tool allows you to decode the stack traces by replacing the
 internal class names and method names with their real names. It also
-retrieves the line number in the MicroEJ Application.
+retrieves the line numbers in the MicroEJ Application.
 
 Functional Description
 ======================
@@ -44,7 +44,7 @@ This tool is a built-in platform tool.
 Use (Standalone Application)
 ============================
 
-Write a new line to dump the currently executed stack trace on the
+For example, write the following new line to dump the currently executed stack trace on the
 standard output.
 
 .. figure:: images/trace1.png
@@ -112,14 +112,14 @@ The stack trace reader can simultaneously decode heterogeneous stack
 traces with lines owned by different applications and the firmware.
 Other debug information files can be appended using the
 :guilabel:`Additional object files` option. Lines owned by the firmware can be
-decoded with the firwmare debug information file (optionally made
+decoded with the firmware debug information file (optionally made
 available by your firmware provider).
 
 
 Use (Sandboxed Application)
 ===========================
 
-Write a new line to dump the currently executed stack trace on the
+For example, write the following new line to dump the currently executed stack trace on the
 standard output.
 
 .. figure:: images/STR_stacktracedump.png
@@ -129,10 +129,10 @@ standard output.
 
    Code to Dump a Stack Trace
 
-To be able to decode an application stack trace, the stack trace reader
+To decode an application stack trace, the stack trace reader
 tool requires the application binary file with debug information
-(``application.fodbg`` in the output folder). Note that the file which
-is uploaded on the device is ``application.fo`` (stripped version
+(``application.fodbg`` in the output folder). Note that the file 
+uploaded on the device is ``application.fo`` (stripped version
 without debug information).
 
 .. figure:: images/STR_debugfofile.png
@@ -191,7 +191,7 @@ The stack trace reader can simultaneously decode heterogeneous stack
 traces with lines owned by different applications and the firmware.
 Other debug information files can be appended using the
 :guilabel:`Additional object files` option. Lines owned by the firmware can be
-decoded with the firwmare debug information file (optionally made
+decoded with the firmware debug information file (optionally made
 available by your firmware provider).
 
 
