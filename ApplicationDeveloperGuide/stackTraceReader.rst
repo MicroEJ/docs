@@ -41,12 +41,8 @@ Installation
 This tool is a built-in platform tool.
 
 
-Use
-===
-
----------------------------
-For Standalone Applications
----------------------------
+Use (Standalone Application)
+============================
 
 Write a new line to dump the currently executed stack trace on the
 standard output.
@@ -120,9 +116,8 @@ decoded with the firwmare debug information file (optionally made
 available by your firmware provider).
 
 
---------------------------
-For Sandboxed Applications
---------------------------
+Use (Sandboxed Application)
+===========================
 
 Write a new line to dump the currently executed stack trace on the
 standard output.
