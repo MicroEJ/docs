@@ -27,57 +27,6 @@ Application can interoperate with C code on the target, and the details
 of the MicroEJ Architecture modules, including their APIs, error codes
 and options.
 
-.. _architecture_overview:
-
-MicroEJ Architecture Modules Overview
--------------------------------------
-
-MicroEJ Architecture features the MicroEJ Core Engine: a tiny and fast
-runtime associated with a Garbage Collector. It provides four built-in
-Foundation Libraries :
-
--  :ref:`[BON] <esr-specifications>`
--  EDC
--  :ref:`[SNI] <esr-specifications>`
--  :ref:`[SP] <esr-specifications>`
-
-:ref:`The following figure <fig_jpf-runtime-components>` shows the components involved.
-
-.. _fig_jpf-runtime-components:
-.. figure:: images/jpf-runtime-components.*
-   :alt: MicroEJ Architecture Runtime Modules: Tools, Libraries and APIs
-   :align: center
-   :scale: 75%
-
-   MicroEJ Architecture Runtime Modules: Tools, Libraries and APIs
-
-Three APIs allow the device architecture runtime to link with (and port
-to) external code, such as any kind of RTOS or legacy C libraries. These
-three APIs are
-
--  Simple Native Interface (:ref:`[SNI] <esr-specifications>`)
-
--  Low Level MicroEJ Core Engine (LLMJVM)
-
--  Low Level Shielded Plug (LLSP)
-
-MicroEJ Architecture features additional Foundation Libraries and
-modules to extend the kernel:
-
--  serial communication,
-
--  UI extension (User Interface)
-
--  networking
-
--  file system
-
--  etc.
-
-Each additional module is optional and selected on demand during the
-MicroEJ Platform configuration.
-
-
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

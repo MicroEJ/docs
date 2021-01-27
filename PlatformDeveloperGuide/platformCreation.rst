@@ -15,8 +15,8 @@ MicroEJ Architecture Import
 ===========================
 
 The first step is to choose and import a :ref:`MicroEJ Architecture <architecture_overview>`. 
-MicroEJ Architectures for most common microcontroller instructions sets and compilers
-can be downloaded from https://repository.microej.com/architectures/ [#note_production]_. 
+MicroEJ Corp. provides MicroEJ Evaluation Architectures for most common microcontroller instructions sets and compilers
+at https://repository.microej.com/architectures/ [#note_production]_. 
 
 MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified using the following folder naming convention:
 
@@ -40,16 +40,7 @@ Once you downloaded a MicroEJ Architecture file, proceed with the following step
 - Check the :guilabel:`I agree and accept the above terms and conditions...` box to accept the license.
 - Click on :guilabel:`Finish` button.
 
-.. note::
-
-   A MicroEJ Architecture can be imported using MicroEJ Module Manager, by adding the following line in a :ref:`module description file <mmm_module_description>`:
-   ::
-
-      <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]" rev="[VERSION]">
-        <artifact name="[UID]" m:classifier="[USAGE]" ext="xpf"/>
-      </dependency>
-
-.. [#note_production] MicroEJ Architectures for production can be retrieved from the `license server <https://license.microej.com/>`_.
+.. [#note_production] If the requested MicroEJ Architecture is not available for evaluation or to get a MicroEJ Production Architecture, please contact your MicroEJ sales representative.
 
 
 .. _platform_configuration_creation:
@@ -61,19 +52,14 @@ The next step is to create a MicroEJ Platform configuration:
 
 -  Select :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Platform Project…`.
 
--  Click on :guilabel:`Next` button. The Configure Target Architecture page allows to
-   select the MicroEJ Architecture that contains a minimal MicroEJ
-   Platform and a set of compatible modules targeting a processor
-   architecture and a compilation toolchain. This environment can be
+-  The Configure Target Architecture page allows to
+   select the MicroEJ Architecture. This can be
    changed later.
 
    -  Click on :guilabel:`Browse...` button to select one of the installed MicroEJ
       Architecture.
 
-   -  Check the :guilabel:`Create from a platform reference implementation` box to
-      use one of the available implementation. Uncheck it if you want to
-      provide your own implementation or if no reference implementation
-      is available.
+   -  Uncheck the :guilabel:`Create from a platform reference implementation` box.
 
 -  Click on :guilabel:`Next` button. The ``Configure platform properties`` page contains the
    identification of the MicroEJ Platform to create. Most fields are
@@ -88,14 +74,83 @@ The next step is to create a MicroEJ Platform configuration:
    Files within the ``content`` folder have to be copied to the configuration project folder,
    by following instructions described at https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/README.rst.
    
-You should get a MicroEJ Platform configuration project that looks like:
+   You should get a MicroEJ Platform configuration project that looks like:
 
-.. figure:: images/platformConfigurationSkeleton.png
-   :alt: MicroEJ Platform Configuration Project Skeleton
+   .. figure:: images/platformConfigurationSkeleton.png
+      :alt: MicroEJ Platform Configuration Project Skeleton
+      :align: center
+
+      MicroEJ Platform Configuration Project Skeleton
+
+- Edit the :ref:`mmm_module_description` ``module.ivy`` to declare the dependency line to the MicroEJ Architecture previously downloaded:
+
+  .. code-block:: xml
+     :emphasize-lines: 3,4,5
+
+     <dependencies>
+
+        <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]" rev="[VERSION]">
+          <artifact name="[UID]" m:classifier="[USAGE]" ext="xpf"/>
+        </dependency>
+     
+     </dependencies>
+
+  For example, to declare the MicroEJ Evaluation Architecture version ``7.14.0`` for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
+
+  .. code-block:: xml
+      :emphasize-lines: 3,4,5
+
+      <dependencies>
+
+          <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25" rev="7.14.0">
+            <artifact name="flopi4G25" m:classifier="eval" ext="xpf"/>
+          </dependency>
+      
+      </dependencies>
+      
+- Edit the ``module.properties`` file and set the option ``com.microej.platformbuilder.platform.filename`` to the ``[name].platform`` file name.
+
+  .. code-block::
+
+     com.microej.platformbuilder.platform.filename=myplatform.platform
+
+MicroEJ Platform Build
+======================
+
+
+To build the MicroEJ Platform, perform as a regular :ref:`mmm_module_build`: 
+
+  - Right-click on the Platfom Configuration project,
+  - Select :guilabel:`Build Module`.
+  - The build starts and the build logs are redirected to the integrated console. Once the build is terminated, you should get the following message:
+
+    .. code-block:: console
+      :emphasize-lines: 3,4,5,6
+      
+      module-platform:report:
+        [echo]     ============================================================================================================
+        [echo]     Platform has been built in this directory 'C:\tmp\mydevice-Platform-mytoolchain-0.0.1'.
+        [echo]     To import this project in your MicroEJ SDK workspace (if not already available):
+        [echo]      - Select 'File' > 'Import...' > 'General' > 'Existing Projects into Workspace' > 'Next'
+        [echo]      - Check 'Select root directory' and browse 'C:\tmp\mydevice-Platform-mytoolchain-0.0.1' > 'Finish'
+        [echo]     ============================================================================================================
+
+      BUILD SUCCESSFUL
+
+      Total time: 43 seconds
+  
+Then , import the Platform directory to your MicroEJ SDK workspace as mentioned in the report. You should get a ready-to-use MicroEJ Platform project
+in the workspace available for the MicroEJ Application project to run on. You can also check the MicroEJ Platform availability in:
+:guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
+
+.. figure:: images/platformSource.png
+   :alt: MicroEJ Platform Project
    :align: center
 
-   MicroEJ Platform Configuration Project Skeleton
-
+   MicroEJ Platform Project
+ 
+This step is only required the first time the Platform is built, or if the Platform properties haved changed. 
+When the same Platform is rebuilt, right-click on the Platform project and select :guilabel:`Refresh` to get the new content.
 
 .. _platform_configuration_modules:
 
@@ -122,6 +177,11 @@ All the checked modules will be installed in the Platform.
    :align: center
 
    MicroEJ Platform Configuration Modules Selection
+
+.. note::
+
+  It is possible to quickly rebuild the Platform from the Platform Editor when only changes have been made in the Platform Editor.
+  Click on the :guilabel:`Build Platform` link on the Platform configuration :guilabel:`Overview` tab.
 
 
 Modules Customization
@@ -469,16 +529,6 @@ Example:
 
 These files will be converted into an internal format during the
 MicroEJ Platform build.
-
-MicroEJ Platform Build
-======================
-
-To build the MicroEJ Platform, click on the :guilabel:`Build Platform` link on the
-Platform configuration :guilabel:`Overview` tab.
-
-It will create a MicroEJ Platform in the workspace available for the
-MicroEJ Application project to run on. The MicroEJ Platform will be available in:
-:guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
 
 
 ..
