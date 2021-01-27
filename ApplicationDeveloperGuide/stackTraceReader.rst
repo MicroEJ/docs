@@ -54,8 +54,7 @@ standard output.
 .. figure:: images/trace1.png
    :alt: Code to Dump a Stack Trace
    :align: center
-   :width: 424px
-   :height: 204px
+   :scale: 100%
 
    Code to Dump a Stack Trace
 
@@ -83,7 +82,7 @@ the following trace is dumped on standard output.
 To create a new MicroEJ Tool configuration, right-click on the application
 project and click on :guilabel:`Run As...` > :guilabel:`Run Configurations...`.
 
-Create a new MicroEJ Tool configuration. In the :guilabel:`Execution` tab, select your target platform, then select the :guilabel:`Stack Trace Reader` tool. Set an output folder in the `Output folder` field.
+Create a new MicroEJ Tool configuration. In the :guilabel:`Execution` tab, select your target platform, then select the :guilabel:`Stack Trace Reader` tool. Set an output folder in the :guilabel:`Output folder` field.
 
 .. figure:: images/STR_selecttool_standalone.png
    :alt: Select Stack Trace Reader Tool
@@ -131,8 +130,7 @@ standard output.
 .. figure:: images/STR_stacktracedump.png
    :alt: Code to Dump a Stack Trace
    :align: center
-   :width: 425px
-   :height: 124px
+   :scale: 100%
 
    Code to Dump a Stack Trace
 
@@ -145,47 +143,40 @@ without debug information).
 .. figure:: images/STR_debugfofile.png
    :alt: Application Binary File with Debug Information
    :align: center
-   :width: 335px
-   :height: 332px
+   :scale: 100%
 
    Application Binary File with Debug Information
 
 On successful deployment, the application is started on the device and
 the following trace is dumped on standard output.
 
-.. TODO this figure was controled by a conditional, isSandbox
-   is showing
-
-.. figure:: images/STR_tracetermite.png
+.. figure:: images/STR_tracetermite_sandboxed.png
    :alt: Stack Trace Output
    :align: center
-   :width: 995px
-   :height: 98px
+   :scale: 100%
 
    Stack Trace Output
 
 To create a new MicroEJ Tool configuration, right-click on the application
 project and click on :guilabel:`Run As...` > :guilabel:`Run Configurations...`.
 
-In :guilabel:`Execution` tab, select the :guilabel:`Stack Trace Reader` tool.
+Create a new MicroEJ Tool configuration. In the :guilabel:`Execution` tab, select your target platform, then select the :guilabel:`Stack Trace Reader` tool. Set an output folder in the :guilabel:`Output folder` field.
 
-.. figure:: images/STR_selecttool.png
+.. figure:: images/STR_selecttool_sandboxed.png
    :alt: Select Stack Trace Reader Tool
    :align: center
-   :width: 926px
-   :height: 306px
+   :scale: 100%
 
    Select Stack Trace Reader Tool
 
 In :guilabel:`Configuration` tab, browse the previously generated application
 binary file with debug information (``application.fodbg`` in case of a Sandboxed
-Application or ``application.out`` in case of a Standalone Application)
+Application)
 
-.. figure:: images/STR_selectfile.png
+.. figure:: images/STR_selectfile_sandboxed.png
    :alt: Stack Trace Reader Tool Configuration (Sandboxed Application)
    :align: center
-   :width: 910px
-   :height: 587px
+   :scale: 100%
 
    Stack Trace Reader Tool Configuration (Sandboxed Application)
 
@@ -193,13 +184,11 @@ Click on :guilabel:`Run` button and copy/paste the trace into the Eclipse
 console. The decoded trace is dumped and the line corresponding to the
 application hook is now readable.
 
-.. TODO this figure was controlled with a conditional, isSandbox
 
-.. figure:: images/STR_console.png
+.. figure:: images/STR_console_sandboxed.png
    :alt: Read the Stack Trace
    :align: center
-   :width: 873px
-   :height: 239px
+   :scale: 100%
 
    Read the Stack Trace
 
