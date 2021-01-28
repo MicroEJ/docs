@@ -178,7 +178,7 @@ To check where the Kernel executable file of your Virtual Device is located, if 
 
    Location of the Virtual Device Directory
 
-In this directory, the Kernel executable file should be named ``firmware.out`` in the ``firmware/`` sub-directory.
+In this directory, the Kernel executable file should be named ``firmware.out`` in the ``/firmware`` sub-directory.
 
 If you do not have access to the Kernel executable file, you can still get some information from the Stack Trace Reader using the application binary file only. In the :guilabel:`Configuration` tab, browse the previously generated application binary file with debug information (``application.fodbg`` in case of a Sandboxed Application)
 
