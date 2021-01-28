@@ -158,9 +158,29 @@ Create a new MicroEJ Tool configuration. In the :guilabel:`Execution` tab, selec
 
    Stack Trace Reader Tool Configuration (Virtual Device Selection)
 
-In :guilabel:`Configuration` tab, browse the previously generated application
-binary file with debug information (``application.fodbg`` in case of a Sandboxed
-Application)
+In the :guilabel:`Configuration` tab, if the Kernel executable file is available to you (usually named ``firmware.out`` and located in your Virtual Device files), you can browse for it in the :guilabel:`Executable file` field,
+and then add your previously generated application binary file with debug information (``application.fodbg`` in case of a Sandboxed
+Application) in the :guilabel:`Additional object files` field.
+
+.. figure:: images/STR_firmware-out.png
+   :alt: Select the Kernel Executable File
+   :align: center
+   :scale: 100%
+
+   Select the Kernel Executable File
+
+To check where the Kernel executable file of your Virtual Device is located, if you have access to it, go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Virtual Devices`, hover over your Virtual Device in the list and wait until an information popup appears. Press :guilabel:`F2` to get all the informations and the path to the directory of your Virtual Device should appear in the list.
+
+.. figure:: images/STR_virtualdevice.png
+   :alt: Location of the Virtual Device Directory
+   :align: center
+   :scale: 100%
+
+   Location of the Virtual Device Directory
+
+In this directory, the Kernel executable file should be named ``firmware.out`` in the ``firmware/`` sub-directory.
+
+If you do not have access to the Kernel executable file, you can still get some information from the Stack Trace Reader using the application binary file only. In the :guilabel:`Configuration` tab, browse the previously generated application binary file with debug information (``application.fodbg`` in case of a Sandboxed Application)
 
 .. figure:: images/STR_selectfile_sandboxed.png
    :alt: Stack Trace Reader Tool Configuration (Sandboxed Application)
