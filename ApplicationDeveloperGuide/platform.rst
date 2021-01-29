@@ -13,6 +13,8 @@ MicroEJ Platforms are distributed in two packages:
 - **Source Platform**. The source files are imported into the workspace. This is the default case.
 - **Binary Platform**. A ``.jpf`` file is imported into the :ref:`MicroEJ repository <workspace>`. As of MicroEJ SDK ``5.3.0``, this package is deprecated.
 
+.. _source_platform_import:
+
 Source Platform Import
 ----------------------
 
@@ -60,6 +62,8 @@ Once imported or built, a Platform project should be available as following:
    MicroEJ Platform Project
 
 The ``source`` folder contains the Platform content which can be set to the ``target.platform.dir`` option.
+
+.. _binary_platform_import:
 
 Binary Platform Import
 ----------------------
