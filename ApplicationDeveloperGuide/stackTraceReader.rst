@@ -23,10 +23,16 @@ retrieves the line numbers in the MicroEJ Application.
 Functional Description
 ======================
 
-The Stack Trace Reader reads the debug info from the fully linked ELF
+The Stack Trace Reader reads the debug information from the fully linked ELF
 file (the ELF file that contains the MicroEJ Core Engine, the other
 libraries, the BSP, the OS, and the compiled MicroEJ Application). It
 prints the decoded stack trace.
+
+When :ref:`Multi-Sandbox capability <multisandbox>` is enabled, 
+the stack trace reader can simultaneously decode heterogeneous stack
+traces with lines owned by different MicroEJ Sandboxed Applications and the firmware.
+Lines owned by the firmware can be decoded with the firmware debug information file
+(optionally made available by your firmware provider).
 
 
 Dependencies
@@ -201,12 +207,8 @@ application hook is now readable.
 
    Stack trace Reader Console
 
-The stack trace reader can simultaneously decode heterogeneous stack
-traces with lines owned by different applications and the firmware.
 Other debug information files can be appended using the
-:guilabel:`Additional object files` option. Lines owned by the firmware can be
-decoded with the firmware debug information file (optionally made
-available by your firmware provider).
+:guilabel:`Additional object files` option. 
 
 
 The following section explains MicroEJ tool options.
