@@ -158,7 +158,7 @@ project and click on :guilabel:`Run As...` > :guilabel:`Run Configurations...`.
 Create a new MicroEJ Tool configuration. In the :guilabel:`Execution` tab, select your target platform, then select the :guilabel:`Stack Trace Reader` tool. Set an output folder in the :guilabel:`Output folder` field.
 
 .. figure:: images/STR_selecttool_sandboxed.png
-   :alt: Select Stack Trace Reader Tool
+   :alt: Stack Trace Reader Tool Configuration (Virtual Device Selection)
    :align: center
    :scale: 100%
 
@@ -210,11 +210,10 @@ application hook is now readable.
 Other debug information files can be appended using the
 :guilabel:`Additional object files` option. 
 
-
-The following section explains MicroEJ tool options.
-
 Stack Trace Reader Options
 ==========================
+
+The following section explains MicroEJ tool options.
 
 .. include:: stackTraceReader_use.rst
 
