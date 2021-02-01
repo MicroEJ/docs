@@ -262,7 +262,7 @@ is located at ``$USER_HOME\.microej\microej-ivysettings-[VERSION].xml``
 Preferences Page
 ~~~~~~~~~~~~~~~~
 
-The MMM preferences page is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Module Manager` [#warning_check_former_sdk_versions]_.
+The MMM preferences page in the MicroEJ SDK is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Module Manager` [#warning_check_former_sdk_versions]_.
 
    .. figure:: images/mmm_preferences_5-2_annotated.png
       :alt: MMM Preferences Page
@@ -423,6 +423,229 @@ and this :ref:`tutorial <tutorial_setup_automated_build_using_jenkins_and_artifa
 
 
 .. [#warning_check_former_sdk_versions] If using MicroEJ SDK versions lower than ``5.2.0``, please refer to the :ref:`following section <mmm_former_sdk>`.
+
+.. _mmm.cli:
+
+MMM CLI
+-------
+
+The MicroEJ SDK also provides a new Command Line Interface (CLI).
+It allows to perform all the main development operations without the MicroEJ SDK.
+This CLI is the good tool if you want to work in a terminal or in any other IDE.
+
+The following operations are supported:
+
+- creating a module project
+- building a module project
+- running the project application on the simulator
+- publishing a module in a module repository
+
+.. _mmm.cli.installation:
+
+Installation
+~~~~~~~~~~~~
+
+The steps to install MMM CLI are:
+
+- download `the MMM CLI archive <https://artifactory.cross/microej-cross5-release/com/microej/cli/mmm-cli/0.3.0/mmm-cli-0.3.0.zip>`_
+- extract the archive in any directory
+- add the ``bin`` directory of the created directory to the ``PATH`` environment variable of your machine
+- make sure the ``JAVA_HOME`` environment variable is set and points to a JRE/JDK installation or that ``java`` executable is in the ``PATH`` environment variable (Java 8 is required)
+- confirm that the installation works fine by executing the command ``mmm --version``. The result should display the MMM CLI version.
+
+Usage
+~~~~~
+
+In order to use the MMM CLI for your project:
+
+- go to the root folder of your project
+- run the command mmm [<subcommand>]
+
+where ``subcommand`` is the subcommand to execute (for example ``mmm build``).
+The available subcommands are:
+
+- ``init``: creates a new project
+- ``build``: builds the project
+- ``publish``: publishes the project
+- ``run``: runs the application on the simulator
+- help : displays the help for a subcommand
+- no subcommand : executes Easyant with any target
+
+The available options are:
+
+- ``--help`` (``-h``) : display the MMM CLI help
+- ``--version`` (``-V``) : display the MMM CLI version
+- ``--build-repository-settings-file`` (``-b``) : path of the Ivy settings file for build artifacts. Defaults to ``${user.home}/.microej/microej-ivysettings-5.xml``.
+- ``--repository-settings-file`` (``-r``) : path of the Ivy settings file for module artifacts. Defaults to ``${user.home}/.microej/microej-ivysettings-5.xml``.
+- ``--ivy-file`` (``-f``) : path of the project's Ivy file. Defaults to ``./module.ivy``.
+- ``--targets`` (``-t``) : Easyant targets of the build. Available only with no subcommand (for example ``mmm -t clean,verify``). Defaults to ``clean,package``.
+- ``--verbose`` (``-v``) : verbose mode. Disabled by default. Add this option to enable verbose mode.
+- ``-Dxxx=yyy`` : any additional option passed as system properties.
+
+Shared configuration
+~~~~~~~~~~~~~~~~~~~~
+
+In order to share configuration across several projects, these parameters can be defined in the file ``${user.home}/.microej/.mmmconfig``.
+This file uses the TOML format. Options names are the same, except the character ``_`` is used as a separator instead of ``-``.
+Here is an example:
+
+.. code:: toml
+
+   build_repository_settings_file = "/home/johndoe/ivy-configuration/ivysettings.xml"
+   module_repository_settings_file = "/home/johndoe/ivy-configuration/ivysettings.xml"
+   ivy_file = "ivy.xml"
+
+   [options]
+   buildRequesterUserId = "johndoe"
+   artifacts.resolver = "fetchAll"
+   artifactory.cross.username = "johndoe"
+   artifactory.cross.password = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+Options defined in the [options] section are passed as system properties.
+
+.. warning:: 
+   - it is mandatory to use quotes for values in the TOML file
+   - if you use Windows paths, backslashes must be doubled in TOML file, for example ``C:\\Users\\johndoe\\ivysettings.xml``
+
+Options defined directly in the command line have a higher priority than the ones defined in the configuration file.
+So if the same option is defined in both locations, the value defined in the command line is used.
+
+Subcommands
+~~~~~~~~~~~
+
+.. _mmm.cli.commands.init:
+
+**init**
+
+The subcommand ``init`` creates a new project (executes Easyant with ``skeleton:generate`` target).
+The skeleton and project information must be passed with the following system properties:
+
+- ``skeleton.org``: organisation of the skeleton module. Defaults to ``org.apache.easyant.skeletons``.
+- ``skeleton.module``: name of the skeleton module. Mandatory, no default.
+- ``skeleton.rev``: revision of the skeleton module. Mandatory, no default.
+- ``project.org``: organisation of the project module. Mandatory, no default.
+- ``project.module``: name of the project module. Mandatory, no default.
+- ``project.rev``: revision of the project module. Defaults to ``0.1``.
+- ``skeleton.target.dir``: relative path of the project directory (created if it does not exist). Defaults to the current directory.
+
+For example
+
+.. code:: console
+
+   mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=microej-javalib -Dskeleton.rev=4.2.8 -Dproject.org=com.mycompany -Dproject.module=myproject -Dproject.rev=1.0.0 -Dskeleton.target.dir=myproject
+
+If one of these properties is missing, it will be asked in interactive mode:
+
+.. code:: console
+
+   $ mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=microej-javalib -Dskeleton.rev=4.2.8 -Dproject.org=com.mycompany -Dproject.module=myproject -Dproject.rev=1.0.0
+   
+   ...
+   
+   -skeleton:check-generate:
+      [input] skipping input as property skeleton.org has already been set.
+      [input] skipping input as property skeleton.module has already been set.
+      [input] skipping input as property skeleton.rev has already been set.
+      [input] The path where the skeleton project will be unzipped [/home/tdelhomenie/microej/working/skeleton]
+
+To force the non-interactive mode, the property ``skeleton.interactive.mode`` must be set to ``false``.
+In non-interactive mode the default values are used for missing non-mandatory properties, and the creation fails if mandatory properties are missing.
+
+.. code:: console
+
+   $ mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=microej-javalib -Dskeleton.rev=4.2.8 -Dproject.org=com.mycompany -Dskeleton.target.dir=myproject -Dskeleton.interactive.mode=false
+   
+   ...
+   
+   * Problem Report:
+
+   expected property 'project.module': Module name of YOUR project
+
+.. _mmm.cli.commands.build:
+
+**build**
+
+The subcommand ``build`` builds the project (executes Easyant with ``clean package`` targets).
+For example
+
+.. code:: console
+
+   mmm build -f ivy.xml -v
+
+builds the project with the Ivy file ivy.xml and in verbose mode.
+
+.. _mmm.cli.commands.publish:
+
+**publish**
+
+The subcommand ``publish`` publishes the project. This subcommand accepts the publication target as a parameter, amongst these values:
+
+- ``local`` (default value) : executes the ``clean publish-local`` Easyant target, which publishes the project with the resolver referenced by the property ``local.resolver`` in the Ivy settings.
+- ``shared`` : executes the ``clean publish-shared`` Easyant target, which publishes the project with the resolver referenced by the property ``shared.resolver`` in the Ivy settings.
+- ``release`` : executes the ``clean release`` Easyant target, which publishes the project with the resolver referenced by the property ``release.resolver`` in the Ivy settings.
+
+For example
+
+.. code:: console
+
+   mmm publish local
+
+publishes the project using the local resolver.
+
+.. _mmm.cli.commands.run:
+
+**run**
+
+The subcommand ``run`` runs the application on the simulator (executes Easyant with ``compile simulator:run`` targets).
+It has the following requirements:
+
+- the application to run on the simulator must have one of the following build types:
+
+  - ``build-application``, starting from version ``7.1.0``
+  - ``build-microej-javalib``, starting from version ``4.2.0``
+  - ``build-firmware-singleapp``, starting with version ``1.3.0``
+
+- the property ``application.main.class`` must be set to the Fully Qualified Name of the application main class (for example ``com.mycompany.Main``)
+- the platform must be referenced using one of these options:
+
+  - set the ``property platform-loader.target.platform.file`` to a Platform file absolute path
+  - set the ``property platform-loader.target.platform.dir`` to a Platform directory absolute path
+  - declare a dependency in module.ivy
+  - copy/paste a platform file into the folder defined by the property ``platform-loader.target.platform.dropins`` (by default its value is ``dropins``)
+
+- a properties file (with any name) under a folder ``build`` must be available in the project (for example ``build/common.properties``). It allows to customize simulator configuration.
+- the application artifacts must be available before running the simulator, so the ``mmm build`` command must be executed **before** running the simulator the first time or after a clean.
+
+**help**
+
+The subcommand ``help`` displays the help for a subcommand.
+For example
+
+.. code:: console
+
+   mmm help run
+
+displays the help of the subcommand ``run``.
+
+Troubleshooting
+~~~~~~~~~~~~~~~
+
+**Run fails with ``Target "simulator:run" does not exist``**
+
+If the following message appears when executing the run subcommand:
+
+.. code:: console
+
+   * Problem Report:
+
+   Target "simulator:run" does not exist in the project "my-app".
+
+it means that the subcommand ``run`` is not supported by the build type of your application.
+Make sure it is one of the following ones:
+
+- ``build-application``, with version ``7.1.0`` or higher
+- ``build-microej-javalib``, with version ``4.2.0`` or higher
+- ``build-firmware-singleapp``, with version ``1.3.0`` or higher
 
 .. _mmm_former_sdk:
 
