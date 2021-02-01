@@ -59,7 +59,7 @@ Module Project Skeleton
 In MicroEJ SDK, a new MicroEJ module project is created as following:
 
 - Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`,
-- Select :guilabel:`MicroEJ` > :guilabel:`MicroEJ Module Project` [#warning_check_former_sdk_versions]_,
+- Select :guilabel:`MicroEJ` > :guilabel:`MicroEJ Module Project` [#warning_check_sdk_5_2]_,
 - Fill the module information (project name, module organization, name and revision),
 - Select one of the suggested skeletons depending on the desired :ref:`module nature <module_nature_skeleton_mapping>`,
 - Click on :guilabel:`Finish`.
@@ -262,7 +262,7 @@ is located at ``$USER_HOME\.microej\microej-ivysettings-[VERSION].xml``
 Preferences Page
 ~~~~~~~~~~~~~~~~
 
-The MMM preferences page in the MicroEJ SDK is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Module Manager` [#warning_check_former_sdk_versions]_.
+The MMM preferences page in the MicroEJ SDK is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Module Manager` [#warning_check_sdk_5_2]_.
 
    .. figure:: images/mmm_preferences_5-2_annotated.png
       :alt: MMM Preferences Page
@@ -298,7 +298,7 @@ The file format is described in `Apache Ivy documentation <https://ant.apache.or
 
 To configure MMM to a custom settings file (usually from an :ref:`offline repository <repository_offline>`):
 
-1. Set :guilabel:`Settings file` to a custom ``ivysettings.xml`` settings file [#warning_check_former_sdk_versions]_,
+1. Set :guilabel:`Settings file` to a custom ``ivysettings.xml`` settings file [#warning_check_sdk_5_2]_,
 2. Click on :guilabel:`Apply and Close` button
 
 If the workspace is not empty, it is recommended to trigger a full resolution
@@ -405,9 +405,14 @@ Alternatively, the build of a MicroEJ module project can be started from the bui
 Build Kit
 ---------
 
-The Module Manager build kit is the consistent set of tools and scripts required for building modules. 
+The Module Manager build kit is a consistent set of tools, scripts, configuration and artifacts required for building modules in command-line mode.
+Starting from SDK 5.4.0, it also contains a Command Line Interface (CLI).
+This Build Kit is the good tool if you want to work in a terminal or in any other IDE, or if you want to build your modules in a Continuous Integration tool.
 
-It is bundled with MicroEJ SDK and can be exported to run in headless mode using the following steps: [#warning_check_former_sdk_versions]_
+Installation
+~~~~~~~~~~~~
+
+The Build Kit is bundled with MicroEJ SDK and can be exported using the following steps: [#warning_check_sdk_5_3]_
 
 - Select :guilabel:`File` > :guilabel:`Export` > :guilabel:`MicroEJ` > :guilabel:`Module Manager Build Kit`,
 - Choose an empty :guilabel:`Target directory`,
@@ -415,43 +420,48 @@ It is bundled with MicroEJ SDK and can be exported to run in headless mode using
 
 Once the build kit is fully exported, the directory content shall look like:
 
-.. figure:: images/mmm_extract_build_kit.png
-      :align: center
+.. code-block:: console
+
+  /
+  ├─ bin
+  ├─ conf
+  ├─ lib
+  ├─ microej-build-repository
+  │  ├─ ant-contrib
+  │  ├─ com
+  │  ├─ ...
+  │  └─ ivysettings.xml
+  ├─ microej-module-repository
+  │  └─ ivysettings.xml
+  └─ release.properties
+
+- Add the ``bin`` directory of the Build Kit directory to the ``PATH`` environment variable of your machine
+- Make sure the ``JAVA_HOME`` environment variable is set and points to a JRE/JDK installation or that ``java`` executable is in the ``PATH`` environment variable (Java 8 is required)
+- Confirm that the installation works fine by executing the command ``mmm --version``. The result should display the MMM CLI version.
+
+The build repository (``microej-build-repository`` folder) is the same repository than in the SDK.
+The module repository (``microej-module-repository`` folder) is empty (you can add any artifacts), its configuration fetches artifacts from MicroEJ Central repository and from this local repository.
 
 To go further with headless builds, please consult `Tool-CommandLineBuild <https://github.com/MicroEJ/Tool-CommandLineBuild>`_ for command line builds, 
 and this :ref:`tutorial <tutorial_setup_automated_build_using_jenkins_and_artifactory>` to setup MicroEJ modules build in continuous integration environments).
 
-
-.. [#warning_check_former_sdk_versions] If using MicroEJ SDK versions lower than ``5.2.0``, please refer to the :ref:`following section <mmm_former_sdk>`.
+.. [#warning_check_sdk_5_2] If using MicroEJ SDK versions lower than ``5.2.0``, please refer to the :ref:`following section <mmm_former_sdk_5_2>`.
+.. [#warning_check_sdk_5_3] If using MicroEJ SDK versions lower than ``5.3.0``, please refer to the :ref:`following section <mmm_former_sdk_5_3>`.
 
 .. _mmm.cli:
 
 MMM CLI
 -------
 
-The MicroEJ SDK also provides a new Command Line Interface (CLI).
-It allows to perform all the main development operations without the MicroEJ SDK.
-This CLI is the good tool if you want to work in a terminal or in any other IDE.
+Starting from SDK 5.4.0, the MicroEJ SDK provides a Command Line Interface (CLI).
+Please refer to the :ref:`Build Kit <mmm_build_kit>` section for installation details.
 
-The following operations are supported:
+The following operations are supported by the MMM CLI:
 
 - creating a module project
 - building a module project
 - running the project application on the simulator
 - publishing a module in a module repository
-
-.. _mmm.cli.installation:
-
-Installation
-~~~~~~~~~~~~
-
-The steps to install MMM CLI are:
-
-- download `the MMM CLI archive <https://artifactory.cross/microej-cross5-release/com/microej/cli/mmm-cli/0.3.0/mmm-cli-0.3.0.zip>`_
-- extract the archive in any directory
-- add the ``bin`` directory of the created directory to the ``PATH`` environment variable of your machine
-- make sure the ``JAVA_HOME`` environment variable is set and points to a JRE/JDK installation or that ``java`` executable is in the ``PATH`` environment variable (Java 8 is required)
-- confirm that the installation works fine by executing the command ``mmm --version``. The result should display the MMM CLI version.
 
 Usage
 ~~~~~
@@ -647,7 +657,7 @@ Make sure it is one of the following ones:
 - ``build-microej-javalib``, with version ``4.2.0`` or higher
 - ``build-firmware-singleapp``, with version ``1.3.0`` or higher
 
-.. _mmm_former_sdk:
+.. _mmm_former_sdk_5_2:
 
 Former MicroEJ SDK Versions
 ---------------------------
@@ -681,8 +691,28 @@ The Easyant Preferences Page is available at :guilabel:`Window` > :guilabel:`Pre
 .. figure:: images/mmm_preferences_up_to_5-1_ea4eclipse_annotated.png
    :align: center
 
-Export the Build Kit
-++++++++++++++++++++
+Build Kit
+~~~~~~~~~
+
+.. _mmm_former_sdk_5_3:
+
+**For SDK 5.3.x**
+
+The Build Kit is bundled with MicroEJ SDK and can be exported using the following steps:
+
+- Select :guilabel:`File` > :guilabel:`Export` > :guilabel:`MicroEJ` > :guilabel:`Module Manager Build Kit`,
+- Choose an empty :guilabel:`Target directory`,
+- Click on the :guilabel:`Finish` button.
+
+Once the build kit is fully exported, the directory content shall look like:
+
+.. figure:: images/mmm_extract_build_kit.png
+      :align: center
+
+To go further with headless builds, please consult `Tool-CommandLineBuild <https://github.com/MicroEJ/Tool-CommandLineBuild>`_ for command line builds, 
+and this :ref:`tutorial <tutorial_setup_automated_build_using_jenkins_and_artifactory>` to setup MicroEJ modules build in continuous integration environments).
+
+**For SDK 5.2.0 and before**
 
 - Create an empty directory (e.g. ``mmm_sdk_[version]_build_kit``),
 - Locate your SDK installation plugins directory (by default, ``C:\Program Files\MicroEJ\MicroEJ SDK-[version]\rcp\plugins`` on Windows OS),
@@ -693,7 +723,7 @@ Export the Build Kit
 - Extract the file named ``microej-build-repository.zip`` for MicroEJ SDK ``5.x`` or ``is2t_repo.zip`` for MicroEJ SDK ``4.1.x`` to the target directory.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
