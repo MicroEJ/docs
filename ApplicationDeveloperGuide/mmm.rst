@@ -459,6 +459,7 @@ Please refer to the :ref:`Build Kit <mmm_build_kit>` section for installation de
 The following operations are supported by the MMM CLI:
 
 - creating a module project
+- cleaning a module project
 - building a module project
 - running the project application on the simulator
 - publishing a module in a module repository
@@ -475,6 +476,7 @@ where ``subcommand`` is the subcommand to execute (for example ``mmm build``).
 The available subcommands are:
 
 - ``init``: creates a new project
+- ``clean``: cleans the project
 - ``build``: builds the project
 - ``publish``: publishes the project
 - ``run``: runs the application on the simulator
@@ -570,6 +572,17 @@ In non-interactive mode the default values are used for missing non-mandatory pr
    expected property 'project.module': Module name of YOUR project
 
 .. _mmm.cli.commands.build:
+
+**clean**
+
+The subcommand ``clean`` cleans the project (executes Easyant with ``clean`` target).
+For example
+
+.. code:: console
+
+   mmm clean
+
+cleans the project.
 
 **build**
 
