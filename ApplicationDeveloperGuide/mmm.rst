@@ -498,7 +498,9 @@ Shared configuration
 ~~~~~~~~~~~~~~~~~~~~
 
 In order to share configuration across several projects, these parameters can be defined in the file ``${user.home}/.microej/.mmmconfig``.
-This file uses the TOML format. Options names are the same, except the character ``_`` is used as a separator instead of ``-``.
+This file uses the `TOML <https://toml.io>`__ format.
+Parameters names are the same than the ones passed as system properties, except the character ``_`` is used as a separator instead of ``-``.
+The parameters defined in the [options] section are passed as system properties.
 Here is an example:
 
 .. code:: toml
@@ -508,19 +510,15 @@ Here is an example:
    ivy_file = "ivy.xml"
 
    [options]
-   buildRequesterUserId = "johndoe"
-   artifacts.resolver = "fetchAll"
-   artifactory.cross.username = "johndoe"
-   artifactory.cross.password = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
-
-Options defined in the [options] section are passed as system properties.
+   my.first.property = "value1"
+   my.second.property = "value2"
 
 .. warning:: 
    - it is mandatory to use quotes for values in the TOML file
    - if you use Windows paths, backslashes must be doubled in TOML file, for example ``C:\\Users\\johndoe\\ivysettings.xml``
 
-Options defined directly in the command line have a higher priority than the ones defined in the configuration file.
-So if the same option is defined in both locations, the value defined in the command line is used.
+Parameters defined directly in the command line have a higher priority than the ones defined in the configuration file.
+So if the same parameter is defined in both locations, the value defined in the command line is used.
 
 Subcommands
 ~~~~~~~~~~~
