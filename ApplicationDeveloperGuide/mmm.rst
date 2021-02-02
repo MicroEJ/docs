@@ -637,6 +637,23 @@ It has the following requirements:
 - a properties file (with any name) under a folder ``build`` must be available in the project (for example ``build/common.properties``). It allows to customize simulator configuration.
 - the application artifacts must be available before running the simulator, so the ``mmm build`` command must be executed **before** running the simulator the first time or after a clean.
 
+For example
+
+.. code:: console
+
+   mmm run -D"platform-loader.target.platform.file"="/path/to/the/platform.zip"
+
+runs the application on the given platform.
+
+The Simulator can be launched in debug mode by setting the property ``execution.mode`` of the application file ``build/commons.properties`` to ``debug``:
+
+.. code:: properties
+
+   execution.mode=debug
+
+The debug port can be defined with the property ``debug.port``.
+Go to :ref:`Simulator Debug options section <simulator-remote-debug-options>` for more details.
+
 **help**
 
 The subcommand ``help`` displays the help for a subcommand.
