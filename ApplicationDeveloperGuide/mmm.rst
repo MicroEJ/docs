@@ -532,13 +532,13 @@ Subcommands
 The subcommand ``init`` creates a new project (executes Easyant with ``skeleton:generate`` target).
 The skeleton and project information must be passed with the following system properties:
 
-- ``skeleton.org``: organisation of the skeleton module. Defaults to ``org.apache.easyant.skeletons``.
-- ``skeleton.module``: name of the skeleton module. Mandatory, no default.
-- ``skeleton.rev``: revision of the skeleton module. Mandatory, no default.
-- ``project.org``: organisation of the project module. Mandatory, no default.
-- ``project.module``: name of the project module. Mandatory, no default.
-- ``project.rev``: revision of the project module. Defaults to ``0.1``.
-- ``skeleton.target.dir``: relative path of the project directory (created if it does not exist). Defaults to the current directory.
+- ``skeleton.org``: organisation of the skeleton module. Defaults to ``com.is2t.easyant.skeletons``.
+- ``skeleton.module``: name of the skeleton module. Mandatory, defaults to ``microej-javalib``.
+- ``skeleton.rev``: revision of the skeleton module. Mandatory, defaults to ``+`` (meaning the latest released version).
+- ``project.org``: organisation of the project module. Mandatory, defaults to ``com.mycompany``.
+- ``project.module``: name of the project module. Mandatory, defaults to ``myproject``.
+- ``project.rev``: revision of the project module. Defaults to ``0.1.0``.
+- ``skeleton.target.dir``: relative path of the project directory (created if it does not exist). Mandatory, defaults to the current directory.
 
 For example
 
