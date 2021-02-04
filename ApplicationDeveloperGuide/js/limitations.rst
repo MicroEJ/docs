@@ -10,6 +10,11 @@
 Limitations
 ===========
 
+Unsupported Directives
+**********************
+
+Directives, such as ``'use strict'``, are not supported and are considered as literal statements. Literal statements are just ignored.
+
 Unsupported Statements
 **********************
 
@@ -20,6 +25,7 @@ The following syntaxes are not supported by the MicroEJ JavaScript engine:
 - ``delete x``
 - ``typeof x``
 - ``arguments``
+- ``get`` and ``set`` in object initialiser
 
 Unsupported Methods
 *******************
