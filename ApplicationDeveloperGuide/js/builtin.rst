@@ -126,7 +126,7 @@ Number
 - NaN
 - NEGATIVE_INFINITY
 - POSITIVE_INFINITY
-- toString ( [ radix ] )
+- **[excluded]** toString ( [ radix ] )
 - **[excluded]** toLocaleString()
 - valueOf ( )
 - **[excluded]** toFixed (fractionDigits)
