@@ -33,15 +33,18 @@ Array
 *****
 - Array (len)
 - isArray ( arg )
-- join (separator)
-- concat ( [ item1 [ , item2 [ , … ] ] ] )
 - toString ( )
+- **[excluded]** toLocaleString ( )
+- concat ( [ item1 [ , item2 [ , … ] ] ] )
+- join (separator)
 - pop ( )
 - push ( [ item1 [ , item2 [ , … ] ] ] )
 - reverse ( )
 - shift ( )
 - slice (start, end)
 - sort (comparefn)
+- **[excluded]** splice (start, deleteCount [ , item1 [ , item2 [ , … ] ] ] )
+- **[excluded]** unshift ( [ item1 [ , item2 [ , … ] ] ] )
 - indexOf ( searchElement [ , fromIndex ] )
 - lastIndexOf ( searchElement [ , fromIndex ] )
 - every ( callbackfn [ , thisArg ] )
@@ -49,6 +52,8 @@ Array
 - forEach ( callbackfn [ , thisArg ] )
 - map ( callbackfn [ , thisArg ] )
 - filter ( callbackfn [ , thisArg ] )
+- **[excluded]** reduce ( callbackfn [ , initialValue ] )
+- **[excluded]** reduceRight ( callbackfn [ , initialValue ] )
 - length
 
 Boolean
@@ -122,7 +127,11 @@ Number
 - NEGATIVE_INFINITY
 - POSITIVE_INFINITY
 - toString ( [ radix ] )
+- **[excluded]** toLocaleString()
 - valueOf ( )
+- **[excluded]** toFixed (fractionDigits)
+- **[excluded]** toExponential (fractionDigits)
+- **[excluded]** toPrecision (precision)
 
 Object
 ******
@@ -141,6 +150,7 @@ Object
 - Object.isExtensible ( O )
 - Object.keys ( O )
 - toString ( )
+- **[excluded]** toLocaleString ( )
 - valueOf ( )
 - hasOwnProperty (V)
 - isPrototypeOf (V)
@@ -157,10 +167,17 @@ String
 - concat ( [ string1 [ , string2 [ , … ] ] ] )
 - indexOf (searchString, position)
 - lastIndexOf (searchString, position)
+- **[excluded]** localeCompare (that)
+- **[excluded]** match (regexp)
+- **[excluded]** replace (searchValue, replaceValue)
+- **[excluded]** search (regexp)
 - slice (start, end)
+- **[excluded]** split (separator, limit)
 - substring (start, end)
 - toLowerCase ( )
+- **[excluded]** toLocaleLowerCase ( )
 - toUpperCase ( )
+- **[excluded]** toLocaleUpperCase ( )
 - trim ( )
 - length
 - [[GetOwnProperty]] ( P )
