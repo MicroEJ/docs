@@ -87,7 +87,8 @@ Global
 JSON
 ****
 - parse ( text [ , reviver ] )
-- stringify ( value [ , replacer [ , space ] ] )
+- stringify ( value )
+- **[excluded]** stringify ( value , replacer [ , space ] )
 
 Math
 ****
