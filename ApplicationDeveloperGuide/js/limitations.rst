@@ -24,6 +24,7 @@ The following syntaxes are not supported by the MicroEJ JavaScript engine:
 - unreachable code after a ``return``, ``break``, ``continue`` or ``throw``
 - ``delete x``
 - ``typeof x``
+- ``x instanceof y``
 - ``arguments``
 - ``get`` and ``set`` in object initialiser
 
