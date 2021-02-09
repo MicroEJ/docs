@@ -83,6 +83,12 @@ Global
 - parseFloat (string)
 - isNaN (number)
 - isFinite (number)
+- **[excluded]** escape (string)
+- **[excluded]** unescape (string)
+- **[excluded]** decodeURI (encodedURI)
+- **[excluded]** decodeURIComponent (encodedURIComponent) 
+- **[excluded]** encodeURI (uri)
+- **[excluded]** encodeURIComponent (uriComponent)
 
 JSON
 ****
