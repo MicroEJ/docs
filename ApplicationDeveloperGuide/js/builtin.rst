@@ -70,6 +70,10 @@ Function
 ********
 - **[excluded]** Function (p1, p2, … , pn, body)
 - length
+- **[excluded]** toString ( )
+- **[excluded]** apply (thisArg, argArray)
+- **[excluded]** call (thisArg [ , arg1 [ , arg2, … ] ] )
+- **[excluded]** bind (thisArg [, arg1 [, arg2, …]])
 - [[Call]]
 - [[Construct]]
 
