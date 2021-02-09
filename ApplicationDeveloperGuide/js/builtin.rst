@@ -173,7 +173,7 @@ String
 - **[excluded]** search (regexp)
 - **[excluded]** slice (start, end)
 - **[excluded]** split (separator, limit)
-- **[excluded]** substr(start [ , length ] )
+- **[excluded]** substr (start [ , length ] )
 - substring (start, end)
 - toLowerCase ( )
 - **[excluded]** toLocaleLowerCase ( )
