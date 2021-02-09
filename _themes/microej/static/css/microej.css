@@ -371,11 +371,11 @@
   color: #ffffff;
 }
 
-.btn-link:hover {
+.btn-link:hover, .btn-link:visited:hover {
   color: #f8a331 !important;
 }
 
-.btn-link:active {
+.btn-link:active, .btn-link:active:hover {
   color: #f8a331 !important;
 }
 
@@ -465,7 +465,7 @@ a {
   color: #ee502e;
 }
 
-a:hover {
+a:hover, a:visited:hover {
   color: #f8a331;
 }
 
@@ -481,7 +481,7 @@ body {
   color: #ee502e !important;
 }
 
-a.wy-text-info:hover {
+a.wy-text-info:hover, a.wy-text-info:visited:hover {
   color: #f8a331 !important;
 }
 
@@ -620,7 +620,7 @@ code,
 }
 
 .wy-menu-vertical li.toctree-l1.current > a:hover {
-  background-color: #f8f9fa;
+  background-color: #d6d6d6;
 }
 
 .wy-menu-vertical li.toctree-l2.current > a {
