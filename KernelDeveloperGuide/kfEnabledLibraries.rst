@@ -19,16 +19,7 @@ Physical Display Ownership
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The physical display is owned by only one context at a time (the Kernel
-or one Feature). The following cases may trigger a physical display
-owner switch:
-
--  during a call to ``ej.microui.display.Display.requestShow(ej.microui.display.Displayable)``: after the
-   successful permission check, it is assigned to the context owner.
-
--  during a call to
-   ``ej.microui.MicroUI.callSerially(java.lang.Runnable)``:
-   after the successful permission check it is assigned to owner of the
-   ``Runnable`` instance.
+or one Feature). A call to ``ej.microui.display.Display.requestShow(ej.microui.display.Displayable)`` may trigger a physical display owner switch: after the successful permission check, it is assigned to the context owner.
 
 The physical display switch performs the following actions:
 
@@ -40,6 +31,8 @@ The physical display switch performs the following actions:
 
 -  System Event Generators handlers are reset to their default
    ``ej.microui.event.EventHandler`` instance.
+
+-  The pending event created by calling ``Display.callOnFlushCompleted(Runnable)`` is removed and will be never added to the display event serializer.
 
 Automatically Reclaimed Resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -82,7 +75,7 @@ Instances of ``javax.net.ssl.SSLSocket`` are automatically reclaimed
 when a Feature is stopped.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
