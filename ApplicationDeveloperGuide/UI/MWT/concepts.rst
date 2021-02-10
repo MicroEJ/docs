@@ -50,7 +50,7 @@ A render policy is a strategy that MWT uses in order to repaint the entire deskt
 
 The most naive render policy would be to render the whole hierarchy of the desktop whenever a widget has changed. However ``DefaultRenderPolicy`` is smarter than that: it only repaints the widget, and its ancestors if the widget is transparent. The result is correct only if there is no overlapping widget, in which case  ``OverlapRenderPolicy`` should be used instead. This policy repaints the widget (or its non-transparent ancestor), then it repaints all the widgets that overlap it.
 
-When using a :ref:`partial buffer <section_display_partial_buffer>`, these render policies can not be used because they render the entire screen in a single pass. Instead, a custom render policy which renders the screen in multiple passes has to be used. Refer to the `partial buffer demo <https://github.com/MicroEJ/>`__ for more information on how to implement this render policy and how to use it.
+When using a :ref:`partial buffer <section_display_partial_buffer>`, these render policies can not be used because they render the entire screen in a single pass. Instead, a custom render policy which renders the screen in multiple passes has to be used. Refer to the `partial buffer demo <https://github.com/MicroEJ/Demo-PartialBuffer>`__ for more information on how to implement this render policy and how to use it.
 
 The render policy can be changed by overridding ``Desktop.createRenderPolicy()``.
 
