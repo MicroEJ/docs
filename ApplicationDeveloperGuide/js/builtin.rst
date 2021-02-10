@@ -60,11 +60,11 @@ Boolean
 *******
 - Boolean (value)
 - Boolean.prototype.toString ( )
-- Boolean.prototype.valueOf ( )
+- **[excluded]** Boolean.prototype.valueOf ( )
 
 Error
 *****
-- toString ( )
+- **[excluded]**
 
 Function
 ********
@@ -200,4 +200,5 @@ The following methods are not supported by the MicroEJ JavaScript engine:
 
 - Date
 - Regex
+- Error
 - methods using locales.
