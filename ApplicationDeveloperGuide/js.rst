@@ -10,7 +10,7 @@
 ============
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    js/introduction
    js/getting_started
