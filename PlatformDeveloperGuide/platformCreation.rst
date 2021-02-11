@@ -498,6 +498,33 @@ The build script must implement the following specification:
 Many build script templates are available for most commonly used C toolchains in the 
 `Platform Qualification Tools repository <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_.
 
+Run Script File
+---------------
+
+This script is required only for Platforms intended to run a :ref:`MicroEJ Testsuite <platform_testsuite>` on device.
+
+The BSP run script is responsible to invoke a third-party tool to upload and start the executable file (``application.out``) on device.
+
+The run script must implement the following specification:
+
+- On Windows operating system, it is a Windows batch file named ``run.bat``.
+- On Mac OS X or Linux operating systems, it is a shell script named ``run.sh``, with execution permission enabled.
+- On build error, the script must end with a non zero exit code.
+- On success
+
+  - The executable has been uploaded and started on the device
+  - The script must end with zero exit code.
+
+The run script can optionally redirect execution traces. If it does not implement execution traces redirection,
+the testsuite must be configured with the following :ref:`application_options` in order to take its input from a TCP/IP socket server, 
+such as :ref:`tool_serial_to_socket`.
+
+::
+
+  testsuite.trace.ip=localhost
+  testsuite.trace.port=5555
+
+
 Low Level APIs Implementation Files
 -----------------------------------
 
