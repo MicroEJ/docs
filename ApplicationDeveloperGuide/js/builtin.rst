@@ -11,23 +11,10 @@
 Built-in objects
 ================
 
-All standard built-in objects from ECMAScript 5.1 are supported.
+This section lists all the JavaScript built-in objects and their support status.
 For the complete reference about these built-in objects, consult the `ECMA 5.1 specification <https://www.ecma-international.org/ecma-262/5.1/#sec-15>`_.
 
 For a description and usage examples of each method or property, consult a JavaScript documentation such as `Mozilla Developer Reference <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects>`_.
-
-Excluded methods
-----------------
-
-Every method and property in the ECMAScript built-in objects library (a total of **194** properties or methods) are supported except **2** methods:
-
--  ``eval ( x )`` function
-- ``Function ( p1, p2, … , pn, body )`` constructor
-
-The reason is that the JavaScript compiler is not embedded in the runtime.
-
-Built-in complete list
-----------------------
 
 Array
 *****
@@ -61,6 +48,10 @@ Boolean
 - Boolean (value)
 - Boolean.prototype.toString ( )
 - **[excluded]** Boolean.prototype.valueOf ( )
+
+Date
+****
+- **[excluded]**
 
 Error
 *****
@@ -154,7 +145,7 @@ Object
 - Object.defineProperties ( O, Properties )
 - **[excluded]** Object.seal ( O )
 - **[excluded]** Object.freeze ( O )
-- Object.preventExtensions ( O )
+- **[excluded]** Object.preventExtensions ( O )
 - Object.isSealed ( O )
 - Object.isFrozen ( O )
 - Object.isExtensible ( O )
@@ -165,6 +156,10 @@ Object
 - hasOwnProperty (V)
 - isPrototypeOf (V)
 - propertyIsEnumerable (V)
+
+Regex
+*****
+- **[excluded]**
 
 String
 ******
@@ -192,13 +187,3 @@ String
 - trim ( )
 - length
 - [[GetOwnProperty]] ( P )
-
-Limitations
------------
-
-The following methods are not supported by the MicroEJ JavaScript engine:
-
-- Date
-- Regex
-- Error
-- methods using locales.
