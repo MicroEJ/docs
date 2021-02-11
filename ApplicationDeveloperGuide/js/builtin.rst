@@ -154,7 +154,7 @@ Object
 - Object.defineProperties ( O, Properties )
 - **[excluded]** Object.seal ( O )
 - **[excluded]** Object.freeze ( O )
-- Object.preventExtensions ( O )
+- **[excluded]** Object.preventExtensions ( O )
 - Object.isSealed ( O )
 - Object.isFrozen ( O )
 - Object.isExtensible ( O )
