@@ -488,7 +488,7 @@ The build script must implement the following specification:
 
 - On Windows operating system, it is a Windows batch file named ``build.bat``.
 - On Mac OS X or Linux operating systems, it is a shell script named ``build.sh``, with execution permission enabled.
-- On build error, the script must end with a non zero exit code.
+- On error, the script must end with a non zero exit code.
 - On success
 
   - The executable must be copied to the file ``application.out`` in the folder from
@@ -509,7 +509,7 @@ The run script must implement the following specification:
 
 - On Windows operating system, it is a Windows batch file named ``run.bat``.
 - On Mac OS X or Linux operating systems, it is a shell script named ``run.sh``, with execution permission enabled.
-- On build error, the script must end with a non zero exit code.
+- On error, the script must end with a non zero exit code.
 - On success
 
   - The executable has been uploaded and started on the device
