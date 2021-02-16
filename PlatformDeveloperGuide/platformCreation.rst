@@ -89,7 +89,7 @@ The next step is to create a MicroEJ Platform configuration:
 
      <dependencies>
 
-        <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]" rev="[VERSION]">
+        <dependency transitive="false" org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]" rev="[VERSION]">
           <artifact name="[UID]" m:classifier="[USAGE]" ext="xpf"/>
         </dependency>
      
@@ -532,7 +532,7 @@ MicroEJ Platform build.
 
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
