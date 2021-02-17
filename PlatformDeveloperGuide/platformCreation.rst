@@ -519,7 +519,7 @@ The run script can optionally redirect execution traces. If it does not implemen
 the testsuite must be configured with the following :ref:`application_options` in order to take its input from a TCP/IP socket server, 
 such as :ref:`tool_serial_to_socket`.
 
-::
+.. code-block:: properties
 
   testsuite.trace.ip=localhost
   testsuite.trace.port=5555
