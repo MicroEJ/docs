@@ -18,7 +18,7 @@ The first step is to choose and import a :ref:`MicroEJ Architecture <architectur
 MicroEJ Corp. provides MicroEJ Evaluation Architectures for most common microcontroller instructions sets and compilers
 at https://repository.microej.com/architectures/ [#note_production]_. 
 
-MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified using the following folder naming convention:
+MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified using the following naming convention:
 
 :: 
 
@@ -488,15 +488,43 @@ The build script must implement the following specification:
 
 - On Windows operating system, it is a Windows batch file named ``build.bat``.
 - On Mac OS X or Linux operating systems, it is a shell script named ``build.sh``, with execution permission enabled.
-- On build error, the script must end with a non zero exit code.
+- On error, the script must end with a non zero exit code.
 - On success
 
-  - The executable must be copied to the file ``application.out`` in the folder from
+  - The executable must be copied to the file ``application.out`` in the directory from
     where the script has been executed.
   - The script must end with zero exit code.
 
 Many build script templates are available for most commonly used C toolchains in the 
 `Platform Qualification Tools repository <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_.
+
+Run Script File
+---------------
+
+This script is required only for Platforms intended to run a :ref:`MicroEJ Testsuite <platform_testsuite>` on device.
+
+The BSP run script is responsible to invoke a third-party tool to upload and start the executable file (``application.out``) on device.
+The ``application.out`` file is located in the directory from where the script has been executed.
+
+The run script must implement the following specification:
+
+- On Windows operating system, it is a Windows batch file named ``run.bat``.
+- On Mac OS X or Linux operating systems, it is a shell script named ``run.sh``, with execution permission enabled.
+- On error, the script must end with a non zero exit code.
+- On success
+
+  - The executable file (``application.out``) has been uploaded and started on the device
+  - The script must end with zero exit code.
+
+The run script can optionally redirect execution traces. If it does not implement execution traces redirection,
+the testsuite must be configured with the following :ref:`application_options` in order to take its input from a TCP/IP socket server, 
+such as :ref:`tool_serial_to_socket`.
+
+.. code-block:: properties
+
+  testsuite.trace.ip=localhost
+  testsuite.trace.port=5555
+
 
 Low Level APIs Implementation Files
 -----------------------------------
