@@ -18,7 +18,7 @@ The first step is to choose and import a :ref:`MicroEJ Architecture <architectur
 MicroEJ Corp. provides MicroEJ Evaluation Architectures for most common microcontroller instructions sets and compilers
 at https://repository.microej.com/architectures/ [#note_production]_. 
 
-MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified using the following folder naming convention:
+MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified using the following naming convention:
 
 :: 
 
