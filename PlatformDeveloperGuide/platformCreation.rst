@@ -512,7 +512,7 @@ The run script must implement the following specification:
 - On error, the script must end with a non zero exit code.
 - On success
 
-  - The executable has been uploaded and started on the device
+  - The executable file (``application.out``) has been uploaded and started on the device
   - The script must end with zero exit code.
 
 The run script can optionally redirect execution traces. If it does not implement execution traces redirection,
