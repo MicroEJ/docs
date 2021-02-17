@@ -491,7 +491,7 @@ The build script must implement the following specification:
 - On error, the script must end with a non zero exit code.
 - On success
 
-  - The executable must be copied to the file ``application.out`` in the folder from
+  - The executable must be copied to the file ``application.out`` in the directory from
     where the script has been executed.
   - The script must end with zero exit code.
 
@@ -504,6 +504,7 @@ Run Script File
 This script is required only for Platforms intended to run a :ref:`MicroEJ Testsuite <platform_testsuite>` on device.
 
 The BSP run script is responsible to invoke a third-party tool to upload and start the executable file (``application.out``) on device.
+The ``application.out`` file is located in the directory from where the script has been executed.
 
 The run script must implement the following specification:
 
