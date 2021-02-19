@@ -227,7 +227,7 @@ version available which satisfies the matching rule of the dependency.
 Build Options
 ~~~~~~~~~~~~~
 
-MMM Build Option can be set with:
+MMM build options can be set with:
 
 .. code-block:: xml
 
