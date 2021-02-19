@@ -80,7 +80,7 @@ Package.  The Test Suite is used to validate the C code implementation
 of the Abstraction Layer.
 
 Import the Test Suite
---------------------
+---------------------
 
 Follow these steps to import the Filesystem Test Suite into the
 workspace from the `Platform Qualification Tools
@@ -100,7 +100,7 @@ The project ``java-testsuite-fs`` should now be available in the
 workspace.
 
 Configure the Test Suite
------------------------
+------------------------
 
 Configure the Platform BSP Connection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -183,7 +183,7 @@ Transmitter:
     ``microej.testsuite.properties.testsuite.trace.port``.
 
 Configure the Test Suite Specific Options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Depending on the Test Suite and the specificities of the device,
 various properties may be required and adjusted.  See the file
@@ -242,7 +242,7 @@ Several reasons might explain why to exclude some tests:
   implementation of the Foundation Library.
 
 Examine the Test Suite Report
-----------------------------
+-----------------------------
 
 Once the Test Suite is completed, open the HTML :ref:`Test Suite Report
 <testsuite_report>` stored in
