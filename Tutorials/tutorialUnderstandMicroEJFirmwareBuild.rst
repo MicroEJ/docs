@@ -1,4 +1,6 @@
-Understand How to Build a MicroEJ Firmware and its Dependencies
+.. _tutorialUnderstandMicroEJFirmwareBuild:
+
+Understand how to build a MicroEJ Firmware and its dependencies
 ===============================================================
 
 A MicroEJ Firmware is built from several input resources and tools.

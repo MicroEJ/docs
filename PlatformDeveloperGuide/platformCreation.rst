@@ -280,7 +280,7 @@ and the ``build.bat`` or ``build.sh`` file is executed to produce the final exec
    BSP connection configuration is only required in the following cases:
 
    - Use MicroEJ SDK to produce the final executable file of a Mono-Sandbox Firmware (recommended).
-   - Use MicroEJ SDK to run a :ref:`MicroEJ Testsuite <platform_testsuite>` on device.
+   - Use MicroEJ SDK to run a :ref:`MicroEJ Test Suite <platform_testsuite>` on device.
    - Build a Multi-Sandbox Firmware.
 
 .. _bsp_connection_cases:
@@ -345,7 +345,7 @@ The 3 most common integration cases are:
   This case is recommended when:
 
   - the MicroEJ Platform is used to build various MicroEJ Applications.
-  - the MicroEJ Platform is validated using MicroEJ testsuites. 
+  - the MicroEJ Platform is validated using MicroEJ test suites. 
   - the MicroEJ Platform and BSP are delivered as a single standalone module (same versioning), perhaps
     subcontracted to a team or a company outside the application project(s).
 
@@ -560,7 +560,7 @@ MicroEJ Platform build.
 
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -1,7 +1,7 @@
 .. _application_testsuite:
 
-Testsuite with JUnit
-====================
+Test Suite with JUnit
+=====================
 
 MicroEJ allows to run unit tests using the standard JUnit API during
 the build process of a MicroEJ library or a MicroEJ Application. The
@@ -77,11 +77,11 @@ Select the :guilabel:`Java` > :guilabel:`JUnit` > :guilabel:`New JUnit Test Case
 wizard. Enter a test name and press :guilabel:`Finish`. A new JUnit test case
 class is created with a default failing test case.
 
-Build and Run a JUnit Testsuite
--------------------------------
+Build and Run a JUnit Test Suite
+--------------------------------
 
 Right-click on the ``mylibrary`` project and select :guilabel:`Build Module`.
-After the library is built, the testsuite engine launches available test cases
+After the library is built, the test suite engine launches available test cases
 and the build process fails in the console view.
 
 On the ``mylibrary`` project, right-click and select :guilabel:`Refresh`.
@@ -89,7 +89,7 @@ On the ``mylibrary`` project, right-click and select :guilabel:`Refresh`.
 A ``target~`` folder appears with intermediate build files. The JUnit
 report is available at ``target~\test\xml\TEST-test-report.xml``.
 
-Double-click on the file to open the JUnit testsuite report.
+Double-click on the file to open the JUnit test suite report.
 
 Modify the test case by replacing
 
@@ -106,38 +106,37 @@ with
 Right-click again on the ``mylibrary`` project and select :guilabel:`Build Module`.
 The test is now successfully executed on the target platform so the MicroEJ Add-On Library is fully built and published without errors.
 
-Double-click on the JUnit testsuite report to see the test has been
+Double-click on the JUnit test suite report to see the test has been
 successfully executed.
 
 .. _testsuite_report:
 
-Testsuite Reports
------------------
+Test Suite Reports
+------------------
 
-Once a testsuite is completed, a testsuite report is generated:
+Once a test suite is completed, the following test suite reports are generated:
 
-- in HTML format in module project location ``target~/test/html/test/junit-noframes.html``.
-  At the beginning of the file a summary is displayed, then all
-  execution traces for each test executed are available.
+- JUnit HTML report in the module project location ``target~/test/html/test/junit-noframes.html``.
+  This report contains a summary and the execution trace of every executed test.
 
   .. figure:: images/testsuiteReportHTMLExample.png
-     :alt: Example of MicroEJ Testsuite HTML Report
+     :alt: Example of MicroEJ Test Suite HTML Report
      
-     Example of MicroEJ Testsuite HTML Report
+     Example of MicroEJ Test Suite HTML Report
 
-- in JUnit XML format, in module project location ``target~/test/xml/TEST-test-report.xml``.
+- JUnit XML report in the module project location ``target~/test/xml/TEST-test-report.xml``.
 
   .. figure:: images/testsuiteReportXMLExample.png
-     :alt: Example of MicroEJ Testsuite XML Report
+     :alt: Example of MicroEJ Test Suite XML Report
      
-     Example of MicroEJ Testsuite XML Report
+     Example of MicroEJ Test Suite XML Report
   
   XML report file can also be open in the JUnit View. Right-click on the file > :guilabel:`Open With` >  :guilabel:`JUnit View`:
 
   .. figure:: images/testsuiteReportXMLExampleJunitView.png
-     :alt: Example of MicroEJ Testsuite XML Report in JUnit View
+     :alt: Example of MicroEJ Test Suite XML Report in JUnit View
      
-     Example of MicroEJ Testsuite XML Report in JUnit View
+     Example of MicroEJ Test Suite XML Report in JUnit View
 
 If executed on device, the Firmware binary produced for each test
 is available in module project location ``target~/test/xml/<TIMESTAMP>/bin/<FULLY-QUALIFIED-CLASSNAME>/application.out``.
@@ -185,7 +184,7 @@ test method fails, the whole test case fails in the JUnit report.
 
 The following line consider each JUnit test method as a dedicated
 MicroEJ test case. Each test method is viewed independently in the JUnit
-report, but this may slow down the testsuite execution because a new
+report, but this may slow down the test suite execution because a new
 deployment is done for each test method.
 
 .. code-block:: xml
@@ -207,11 +206,11 @@ dumped into the console.
 
 .. _testsuite_options:
 
-Testsuite Options
-~~~~~~~~~~~~~~~~~
+Test Suite Options
+~~~~~~~~~~~~~~~~~~
 
 The :ref:`testsuite_engine` can be configured with specific options 
-which can be added to the ``module.ivy`` file of the project running the testsuite, 
+which can be added to the ``module.ivy`` file of the project running the test suite, 
 within the ``<ea:build>`` XML element.
 
 - Application Option Injection
@@ -247,7 +246,7 @@ test case file.
 
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
