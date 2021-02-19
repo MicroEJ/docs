@@ -7,7 +7,7 @@ Qualification Tools
 <https://github.com/MicroEJ/PlatformQualificationTools>`_.
 
 In this tutorial, the target device is the Espressif ESP32-WROVER-KIT
-V4.1 board and the Filesystem Test Suite for :ref:`FS <platform_fs>`
+V4.1 board and the Filesystem Test Suite for :ref:`FS <pack_fs>`
 module will be used as an example.
 
 The tutorial should take 1 hour to complete (excluding the Platform
@@ -61,7 +61,7 @@ Introduction
 ------------
 
 This tutorial presents a local setup of the :ref:`platform_testsuite`
-for the :ref:`FS <platform_fs>` Foundation Library on a concrete
+for the :ref:`FS <pack_fs>` Foundation Library on a concrete
 device (not on simulator).
 
 In essence, a Foundation Library provides an API to be used by a
