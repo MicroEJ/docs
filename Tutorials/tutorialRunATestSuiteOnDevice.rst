@@ -62,7 +62,7 @@ Introduction
 
 This tutorial presents a local setup of the :ref:`platform_testsuite`
 for the :ref:`FS <pack_fs>` Foundation Library on a concrete
-device (not on simulator).
+device (not on Simulator).
 
 In essence, a Foundation Library provides an API to be used by a
 MicroEJ Application or an Add-on Library.
