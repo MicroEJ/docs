@@ -628,7 +628,7 @@ builds the project and publishes the module using the local resolver.
 The command ``run`` runs the application on the Simulator (executes Easyant with ``compile,simulator:run`` targets).
 It has the following requirements:
 
-- to run on the Simulator, the project must be configured one of the following :ref:`module_natures`:
+- to run on the Simulator, the project must be configured with one of the following :ref:`module_natures`:
 
   - :ref:`module_natures.sandboxed_application`
   - :ref:`module_natures.standalone_application`
@@ -637,7 +637,7 @@ It has the following requirements:
 - the property ``application.main.class`` must be set to the Fully Qualified Name of the application main class (for example ``com.mycompany.Main``)
 - a MicroEJ Platform must be provided (see :ref`module_natures_platform_selection` section)
 - :ref:`application_options` must be defined using properties file under in the ``build`` directory (see :ref:`define_option_in_properties_file` section)
-- the module must have been built once before running the Simulator. So the ``mmm build`` command must be executed before running the Simulator the first time or after project clean (``mmm clean`` command).
+- the module must have been built once before running the Simulator. So the ``mmm build`` command must be executed before running the Simulator the first time or after a project clean (``mmm clean`` command).
   
   .. note::
 
