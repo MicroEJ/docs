@@ -127,8 +127,10 @@ namespace and the ``ej:version`` attribute in the ``ivy-module`` node:
 MMM semantic is enabled in the module created with the
 :ref:`mmm_module_skeleton`.
 
-Module Dependency
-~~~~~~~~~~~~~~~~~
+.. _mmm_module_dependencies:
+
+Module Dependencies
+~~~~~~~~~~~~~~~~~~~
 
 Module dependencies are added to the ``dependencies`` node as follow:
 
@@ -216,7 +218,7 @@ the version (attribute ``rev``) of every module dependencies declared.
        <ea:plugin org="com.is2t.easyant.plugins" name="ivy-update" revision="1.+" />
    </info>
 
-When the plugin is enabled, for each module dependency, MMM will check
+When the plugin is enabled, for each :ref:`module dependency <mmm_module_dependencies>`, MMM will check
 the version declared in the module file and update it to the highest
 version available which satisfies the matching rule of the dependency.
 
@@ -225,7 +227,7 @@ version available which satisfies the matching rule of the dependency.
 Build Options
 ~~~~~~~~~~~~~
 
-MMM Build Options can be set with:
+MMM build options can be set with:
 
 .. code-block:: xml
 
@@ -253,7 +255,7 @@ MicroEJ Module Manager Configuration
 -------------------------------------
 
 By default, when starting an empty workspace, MicroEJ SDK is configured to import dependencies
-from :ref:`MicroEJ Central Repository <central_repository>` and to publish built modules to a local folder.
+from :ref:`MicroEJ Central Repository <central_repository>` and to publish built modules to a local directory.
 The repository configuration is stored in a :ref:`settings file <mmm_settings_file>` (``ivysettings.xml``), and the default one
 is located at ``$USER_HOME\.microej\microej-ivysettings-[VERSION].xml``
 
@@ -405,12 +407,9 @@ Alternatively, the build of a MicroEJ module project can be started from the bui
 Build Kit
 ---------
 
-The Module Manager build kit is a consistent set of tools, scripts, configuration and artifacts required for building modules in command-line mode.
-Starting from SDK 5.4.0, it also contains a Command Line Interface (CLI).
-This Build Kit is the good tool if you want to work in a terminal or in any other IDE, or if you want to build your modules in a Continuous Integration tool.
-
-Installation
-~~~~~~~~~~~~
+The Module Manager Build Kit is a consistent set of tools, scripts, configuration and artifacts required for building modules in command-line mode.
+Starting from MicroEJ SDK ``5.4.0``, it also contains a :ref:`mmm_cli` (CLI).
+The Build Kit allows to work in headless mode (e.g. in a terminal) and to build your modules using a Continuous Integration tool.
 
 The Build Kit is bundled with MicroEJ SDK and can be exported using the following steps: [#warning_check_sdk_5_3]_
 
@@ -418,12 +417,14 @@ The Build Kit is bundled with MicroEJ SDK and can be exported using the followin
 - Choose an empty :guilabel:`Target directory`,
 - Click on the :guilabel:`Finish` button.
 
-Once the build kit is fully exported, the directory content shall look like:
+Once the Build Kit is fully exported, the directory content shall look like:
 
 .. code-block:: console
 
   /
   ├─ bin
+  │  ├─ mmm
+  │  └─ mmm.bat
   ├─ conf
   ├─ lib
   ├─ microej-build-repository
@@ -439,21 +440,23 @@ Once the build kit is fully exported, the directory content shall look like:
 - Make sure the ``JAVA_HOME`` environment variable is set and points to a JRE/JDK installation or that ``java`` executable is in the ``PATH`` environment variable (Java 8 is required)
 - Confirm that the installation works fine by executing the command ``mmm --version``. The result should display the MMM CLI version.
 
-The build repository (``microej-build-repository`` folder) is the same repository than in the SDK.
-The module repository (``microej-module-repository`` folder) is empty (you can add any artifacts), its configuration fetches artifacts from MicroEJ Central repository and from this local repository.
+The build repository (``microej-build-repository`` directory) contains scripts and tools for building modules. It is specific to a MicroEJ SDK version and shall not be modified by default.
+
+The module repository (``microej-module-repository`` directory) contains a default :ref:`mmm_settings_file` for importing modules from :ref:`central_repository` and this local repository (modules that are locally built will be published to this directory).
+You can override with custom settings or by extracting an :ref:`offline repository <repository_offline>`.
 
 To go further with headless builds, please consult `Tool-CommandLineBuild <https://github.com/MicroEJ/Tool-CommandLineBuild>`_ for command line builds, 
 and this :ref:`tutorial <tutorial_setup_automated_build_using_jenkins_and_artifactory>` to setup MicroEJ modules build in continuous integration environments).
 
 .. [#warning_check_sdk_5_2] If using MicroEJ SDK versions lower than ``5.2.0``, please refer to the :ref:`following section <mmm_former_sdk_5_2>`.
-.. [#warning_check_sdk_5_3] If using MicroEJ SDK versions lower than ``5.3.0``, please refer to the :ref:`following section <mmm_former_sdk_5_3>`.
+.. [#warning_check_sdk_5_3] If using MicroEJ SDK versions lower than ``5.4.0``, please refer to the :ref:`following section <mmm_former_sdk_5_2_to_5_3>`.
 
-.. _mmm.cli:
+.. _mmm_cli:
 
-MMM CLI
--------
+Command Line Interface
+----------------------
 
-Starting from SDK 5.4.0, the MicroEJ SDK provides a Command Line Interface (CLI).
+Starting from version ``5.4.0``, MicroEJ SDK provides a Command Line Interface (CLI).
 Please refer to the :ref:`Build Kit <mmm_build_kit>` section for installation details.
 
 The following operations are supported by the MMM CLI:
@@ -461,7 +464,7 @@ The following operations are supported by the MMM CLI:
 - creating a module project
 - cleaning a module project
 - building a module project
-- running the project application on the simulator
+- running a MicroEJ Application project on the Simulator
 - publishing a module in a module repository
 
 Usage
@@ -469,19 +472,24 @@ Usage
 
 In order to use the MMM CLI for your project:
 
-- go to the root folder of your project
-- run the command mmm [<subcommand>]
+- go to the root directory of your project
+- run the following command 
 
-where ``subcommand`` is the subcommand to execute (for example ``mmm build``).
-The available subcommands are:
+  .. code-block:: console
 
+     mmm [OPTION]... [COMMAND]
+
+where ``COMMAND`` is the command to execute (for example ``mmm build``).
+The available commands are:
+
+- ``help``: displays help information about the specified command
 - ``init``: creates a new project
 - ``clean``: cleans the project
 - ``build``: builds the project
-- ``publish``: publishes the project
-- ``run``: runs the application on the simulator
-- help : displays the help for a subcommand
-- no subcommand : executes Easyant with any target
+- ``publish``: builds the project and publishes the module
+- ``run``: runs the MicroEJ Application project on the Simulator
+
+When no command is specified, MMM CLI executes Easyant with custom targets (see ``--targets`` option).
 
 The available options are:
 
@@ -490,7 +498,7 @@ The available options are:
 - ``--build-repository-settings-file`` (``-b``) : path of the Ivy settings file for build artifacts. Defaults to ``${user.home}/.microej/microej-ivysettings-5.xml``.
 - ``--repository-settings-file`` (``-r``) : path of the Ivy settings file for module artifacts. Defaults to ``${user.home}/.microej/microej-ivysettings-5.xml``.
 - ``--ivy-file`` (``-f``) : path of the project's Ivy file. Defaults to ``./module.ivy``.
-- ``--targets`` (``-t``) : Easyant targets of the build. Available only with no subcommand (for example ``mmm -t clean,verify``). Defaults to ``clean,package``.
+- ``--targets`` (``-t``) : Easyant targets of the build. Available only with no command (for example ``mmm -t clean,verify``). Defaults to ``clean,package``.
 - ``--verbose`` (``-v``) : verbose mode. Disabled by default. Add this option to enable verbose mode.
 - ``-Dxxx=yyy`` : any additional option passed as system properties.
 
@@ -514,20 +522,20 @@ Here is an example:
    my.second.property = "value2"
 
 .. warning:: 
-   - it is mandatory to use quotes for values in the TOML file
-   - if you use Windows paths, backslashes must be doubled in TOML file, for example ``C:\\Users\\johndoe\\ivysettings.xml``
+   - TOML values must be surrounded with double quotes 
+   - Backslash characters (``\``) must be doubled (for example a Windows path ``C:\\Users\\johndoe\\ivysettings.xml``)
 
-Parameters defined directly in the command line have a higher priority than the ones defined in the configuration file.
-So if the same parameter is defined in both locations, the value defined in the command line is used.
+Command line options take precedence over those defined in the configuration file.
+So if the same option is defined in both locations, the value defined in the command line is used.
 
-Subcommands
-~~~~~~~~~~~
+Commands
+~~~~~~~~
 
-.. _mmm.cli.commands.init:
+.. _mmm_cli.commands.init:
 
 **init**
 
-The subcommand ``init`` creates a new project (executes Easyant with ``skeleton:generate`` target).
+The command ``init`` creates a new project (executes Easyant with ``skeleton:generate`` target).
 The skeleton and project information must be passed with the following system properties:
 
 - ``skeleton.org``: organisation of the skeleton module. Defaults to ``com.is2t.easyant.skeletons``.
@@ -571,11 +579,11 @@ In non-interactive mode the default values are used for missing non-mandatory pr
 
    expected property 'project.module': Module name of YOUR project
 
-.. _mmm.cli.commands.build:
+.. _mmm_cli.commands.build:
 
 **clean**
 
-The subcommand ``clean`` cleans the project (executes Easyant with ``clean`` target).
+The command ``clean`` cleans the project (executes Easyant with ``clean`` target).
 For example
 
 .. code:: console
@@ -586,7 +594,7 @@ cleans the project.
 
 **build**
 
-The subcommand ``build`` builds the project (executes Easyant with ``clean package`` targets).
+The command ``build`` builds the project (executes Easyant with ``clean,package`` targets).
 For example
 
 .. code:: console
@@ -595,15 +603,15 @@ For example
 
 builds the project with the Ivy file ivy.xml and in verbose mode.
 
-.. _mmm.cli.commands.publish:
+.. _mmm_cli.commands.publish:
 
 **publish**
 
-The subcommand ``publish`` publishes the project. This subcommand accepts the publication target as a parameter, amongst these values:
+The command ``publish`` builds the project and publishes the module. This command accepts the publication target as a parameter, amongst these values:
 
-- ``local`` (default value) : executes the ``clean publish-local`` Easyant target, which publishes the project with the resolver referenced by the property ``local.resolver`` in the Ivy settings.
-- ``shared`` : executes the ``clean publish-shared`` Easyant target, which publishes the project with the resolver referenced by the property ``shared.resolver`` in the Ivy settings.
-- ``release`` : executes the ``clean release`` Easyant target, which publishes the project with the resolver referenced by the property ``release.resolver`` in the Ivy settings.
+- ``local`` (default value) : executes the ``clean,publish-local`` Easyant target, which publishes the project with the resolver referenced by the property ``local.resolver`` in the :ref:`mmm_settings_file`.
+- ``shared`` : executes the ``clean,publish-shared`` Easyant target, which publishes the project with the resolver referenced by the property ``shared.resolver`` in the :ref:`mmm_settings_file`.
+- ``release`` : executes the ``clean,release`` Easyant target, which publishes the project with the resolver referenced by the property ``release.resolver`` the :ref:`mmm_settings_file`.
 
 For example
 
@@ -611,31 +619,29 @@ For example
 
    mmm publish local
 
-publishes the project using the local resolver.
+builds the project and publishes the module using the local resolver.
 
-.. _mmm.cli.commands.run:
+.. _mmm_cli.commands.run:
 
 **run**
 
-The subcommand ``run`` runs the application on the simulator (executes Easyant with ``compile simulator:run`` targets).
+The command ``run`` runs the application on the Simulator (executes Easyant with ``compile,simulator:run`` targets).
 It has the following requirements:
 
-- the application to run on the simulator must have one of the following build types:
+- to run on the Simulator, the project must be configured with one of the following :ref:`module_natures`:
 
-  - ``build-application``, starting from version ``7.1.0``
-  - ``build-microej-javalib``, starting from version ``4.2.0``
-  - ``build-firmware-singleapp``, starting with version ``1.3.0``
+  - :ref:`module_natures.sandboxed_application`
+  - :ref:`module_natures.standalone_application`
+  - :ref:`module_natures.addon_lib`
 
 - the property ``application.main.class`` must be set to the Fully Qualified Name of the application main class (for example ``com.mycompany.Main``)
-- the platform must be referenced using one of these options:
+- a MicroEJ Platform must be provided (see :ref`module_natures_platform_selection` section)
+- :ref:`application_options` must be defined using properties file under in the ``build`` directory (see :ref:`define_option_in_properties_file` section)
+- the module must have been built once before running the Simulator. So the ``mmm build`` command must be executed before running the Simulator the first time or after a project clean (``mmm clean`` command).
+  
+  .. note::
 
-  - set the ``property platform-loader.target.platform.file`` to a Platform file absolute path
-  - set the ``property platform-loader.target.platform.dir`` to a Platform directory absolute path
-  - declare a dependency in module.ivy
-  - copy/paste a platform file into the folder defined by the property ``platform-loader.target.platform.dropins`` (by default its value is ``dropins``)
-
-- a properties file (with any name) under a folder ``build`` must be available in the project (for example ``build/common.properties``). It allows to customize simulator configuration.
-- the application artifacts must be available before running the simulator, so the ``mmm build`` command must be executed **before** running the simulator the first time or after a clean.
+     The next times, it is not required to rebuild the module if source code files have been modified. The content of ``src/main/java`` and ``src/main/resources`` folders are automatically compiled by ``mmm run`` command before running the Simulator. 
 
 For example
 
@@ -656,21 +662,21 @@ Go to :ref:`Simulator Debug options section <simulator-remote-debug-options>` fo
 
 **help**
 
-The subcommand ``help`` displays the help for a subcommand.
+The command ``help`` displays the help for a command.
 For example
 
 .. code:: console
 
    mmm help run
 
-displays the help of the subcommand ``run``.
+displays the help of the command ``run``.
 
 Troubleshooting
 ~~~~~~~~~~~~~~~
 
 **Run fails with ``Target "simulator:run" does not exist``**
 
-If the following message appears when executing the run subcommand:
+If the following message appears when executing the run command:
 
 .. code:: console
 
@@ -678,7 +684,7 @@ If the following message appears when executing the run subcommand:
 
    Target "simulator:run" does not exist in the project "my-app".
 
-it means that the subcommand ``run`` is not supported by the build type of your application.
+it means that the command ``run`` is not supported by the build type declared by your module project.
 Make sure it is one of the following ones:
 
 - ``build-application``, with version ``7.1.0`` or higher
@@ -687,8 +693,8 @@ Make sure it is one of the following ones:
 
 .. _mmm_former_sdk_5_2:
 
-Former MicroEJ SDK Versions
----------------------------
+Former MicroEJ SDK Versions (lower than 5.2.0)
+----------------------------------------------
 
 This section describes MMM configuration elements for MicroEJ SDK versions lower than ``5.2.0``.
 
@@ -722,26 +728,6 @@ The Easyant Preferences Page is available at :guilabel:`Window` > :guilabel:`Pre
 Build Kit
 ~~~~~~~~~
 
-.. _mmm_former_sdk_5_3:
-
-**For SDK 5.3.x**
-
-The Build Kit is bundled with MicroEJ SDK and can be exported using the following steps:
-
-- Select :guilabel:`File` > :guilabel:`Export` > :guilabel:`MicroEJ` > :guilabel:`Module Manager Build Kit`,
-- Choose an empty :guilabel:`Target directory`,
-- Click on the :guilabel:`Finish` button.
-
-Once the build kit is fully exported, the directory content shall look like:
-
-.. figure:: images/mmm_extract_build_kit.png
-      :align: center
-
-To go further with headless builds, please consult `Tool-CommandLineBuild <https://github.com/MicroEJ/Tool-CommandLineBuild>`_ for command line builds, 
-and this :ref:`tutorial <tutorial_setup_automated_build_using_jenkins_and_artifactory>` to setup MicroEJ modules build in continuous integration environments).
-
-**For SDK 5.2.0 and before**
-
 - Create an empty directory (e.g. ``mmm_sdk_[version]_build_kit``),
 - Locate your SDK installation plugins directory (by default, ``C:\Program Files\MicroEJ\MicroEJ SDK-[version]\rcp\plugins`` on Windows OS),
 - Open the file ``com.is2t.eclipse.plugin.easyant4e_[version].jar`` with an archive manager,
@@ -749,6 +735,26 @@ and this :ref:`tutorial <tutorial_setup_automated_build_using_jenkins_and_artifa
 - Open the file ``com.is2t.eclipse.plugin.easyant4e.offlinerepo_[version].jar`` with an archive manager,
 - Navigate to directory ``repositories``,
 - Extract the file named ``microej-build-repository.zip`` for MicroEJ SDK ``5.x`` or ``is2t_repo.zip`` for MicroEJ SDK ``4.1.x`` to the target directory.
+
+
+.. _mmm_former_sdk_5_2_to_5_3:
+
+Former MicroEJ SDK Versions (from 5.2.0 to 5.3.x)
+-------------------------------------------------
+
+Build Kit
+~~~~~~~~~
+
+The Build Kit is bundled with MicroEJ SDK and can be exported using the following steps:
+
+- Select :guilabel:`File` > :guilabel:`Export` > :guilabel:`MicroEJ` > :guilabel:`Module Manager Build Kit`,
+- Choose an empty :guilabel:`Target directory`,
+- Click on the :guilabel:`Finish` button.
+
+Once the Build Kit is fully exported, the directory content shall look like:
+
+.. figure:: images/mmm_extract_build_kit.png
+      :align: center
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
