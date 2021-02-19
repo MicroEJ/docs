@@ -127,10 +127,10 @@ namespace and the ``ej:version`` attribute in the ``ivy-module`` node:
 MMM semantic is enabled in the module created with the
 :ref:`mmm_module_skeleton`.
 
-.. _mmm_module_dependency:
+.. _mmm_module_dependencies:
 
-Module Dependency
-~~~~~~~~~~~~~~~~~
+Module Dependencies
+~~~~~~~~~~~~~~~~~~~
 
 Module dependencies are added to the ``dependencies`` node as follow:
 
@@ -218,14 +218,14 @@ the version (attribute ``rev``) of every module dependencies declared.
        <ea:plugin org="com.is2t.easyant.plugins" name="ivy-update" revision="1.+" />
    </info>
 
-When the plugin is enabled, for each :ref:`mmm_module_dependency`, MMM will check
+When the plugin is enabled, for each :ref:`module dependency <mmm_module_dependencies>`, MMM will check
 the version declared in the module file and update it to the highest
 version available which satisfies the matching rule of the dependency.
 
 .. _mmm_build_options:
 
-Build Option
-~~~~~~~~~~~~
+Build Options
+~~~~~~~~~~~~~
 
 MMM Build Option can be set with:
 
