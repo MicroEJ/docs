@@ -42,10 +42,13 @@ Setup a Platform for Tests
 
 Before running tests, a target platform must be configured in the
 MicroEJ workspace. The following steps assume that a platform has been
-previously imported into the MicroEJ Platform repository.
+previously imported into the MicroEJ Platform repository (or available
+in the Workspace).
 
-Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` >
-:guilabel:`Platforms` and select the desired platform on which to run the tests.
+Go to :guilabel:`Window` > :guilabel:`Preferences` >
+:guilabel:`MicroEJ` > :guilabel:`Platforms` (or :guilabel:`Platforms
+in workspace`) and select the desired platform on which to run the
+tests.
 
 Press :kbd:`F2` to expand the details.
 
