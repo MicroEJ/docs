@@ -218,7 +218,7 @@ the version (attribute ``rev``) of every module dependencies declared.
        <ea:plugin org="com.is2t.easyant.plugins" name="ivy-update" revision="1.+" />
    </info>
 
-When the plugin is enabled, for each module dependency, MMM will check
+When the plugin is enabled, for each :ref:`mmm_module_dependency`, MMM will check
 the version declared in the module file and update it to the highest
 version available which satisfies the matching rule of the dependency.
 
@@ -409,7 +409,7 @@ Build Kit
 
 The Module Manager Build Kit is a consistent set of tools, scripts, configuration and artifacts required for building modules in command-line mode.
 Starting from MicroEJ SDK ``5.4.0``, it also contains a :ref:`mmm_cli` (CLI).
-The Build Kit allows to work in headless mode and to build your modules using a Continuous Integration tool.
+The Build Kit allows to work in headless mode (e.g. in a terminal) and to build your modules using a Continuous Integration tool.
 
 The Build Kit is bundled with MicroEJ SDK and can be exported using the following steps: [#warning_check_sdk_5_3]_
 
