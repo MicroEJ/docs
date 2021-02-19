@@ -243,7 +243,7 @@ The following build options are globally available:
      - Description
      - Default Value
    * - ``target``
-     - Path to the build directory ``target~``.
+     - Path of the build directory ``target~``.
      - ``${basedir}/target~``
 
 Refer to the documentation of :ref:`module_natures` for specific build
@@ -482,25 +482,24 @@ In order to use the MMM CLI for your project:
 where ``COMMAND`` is the command to execute (for example ``mmm build``).
 The available commands are:
 
-- ``help``: displays help information about the specified command
-- ``init``: creates a new project
-- ``clean``: cleans the project
-- ``build``: builds the project
-- ``publish``: builds the project and publishes the module
-- ``run``: runs the MicroEJ Application project on the Simulator
-
-When no command is specified, MMM CLI executes Easyant with custom targets (see ``--targets`` option).
+- ``help``: display help information about the specified command
+- ``init``: create a new project
+- ``clean``: clean the project
+- ``build``: build the project
+- ``publish``: build the project and publish the module
+- ``run``: run the MicroEJ Application project on the Simulator
 
 The available options are:
 
-- ``--help`` (``-h``) : display the MMM CLI help
-- ``--version`` (``-V``) : display the MMM CLI version
-- ``--build-repository-settings-file`` (``-b``) : path of the Ivy settings file for build artifacts. Defaults to ``${user.home}/.microej/microej-ivysettings-5.xml``.
-- ``--repository-settings-file`` (``-r``) : path of the Ivy settings file for module artifacts. Defaults to ``${user.home}/.microej/microej-ivysettings-5.xml``.
+- ``--help`` (``-h``) : show the help message and exit
+- ``--version`` (``-V``) : print version information and exit
+- ``--build-repository-settings-file`` (``-b``) : path of the Ivy settings file for build scripts and tools. Defaults to ``${CLI_HOME}/microej-build-repository/ivysettings.xml``.
+- ``--repository-settings-file`` (``-r``) : path of the Ivy settings file for modules. Defaults to ``${CLI_HOME}/microej-module-repository/ivysettings.xml``.
 - ``--ivy-file`` (``-f``) : path of the project's Ivy file. Defaults to ``./module.ivy``.
-- ``--targets`` (``-t``) : Easyant targets of the build. Available only with no command (for example ``mmm -t clean,verify``). Defaults to ``clean,package``.
 - ``--verbose`` (``-v``) : verbose mode. Disabled by default. Add this option to enable verbose mode.
 - ``-Dxxx=yyy`` : any additional option passed as system properties.
+
+When no command is specified, MMM CLI executes Easyant with custom targets using the ``--targets`` (``-t``) option (defaults to ``clean,package``).
 
 Shared configuration
 ~~~~~~~~~~~~~~~~~~~~
