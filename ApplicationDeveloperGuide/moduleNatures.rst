@@ -89,15 +89,15 @@ Many modules natures require a MicroEJ Platform for building the module or for r
 
 There are 4 different ways to provide a MicroEJ Platform for a module project:
 
--  Set the :ref:`mmm_build_options` ``platform-loader.target.platform.file`` to a MicroEJ Platform file (``.zip``, ``.jpf`` or ``.vde``):
--  Set the :ref:`mmm_build_options` ``platform-loader.target.platform.dir`` to an already imported :ref:`Source Platform <source_platform_import>`.
+-  Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.file`` to a MicroEJ Platform file (``.zip``, ``.jpf`` or ``.vde``):
+-  Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.dir`` to an already imported :ref:`Source Platform <source_platform_import>`.
 -  Declare a :ref:`module dependency <mmm_module_dependency>`:
 
    .. code:: xml
 
       <dependency org="myorg" name="myname" rev="1.0.0" conf="platform->default" transitive="false"/>
 
--  Copy a MicroEJ Platform file to the dropins folder. The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the :ref:`mmm_build_options` ``platform-loader.target.platform.dropins``.
+-  Copy a MicroEJ Platform file to the dropins folder. The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.dropins``.
 
 
 ..
