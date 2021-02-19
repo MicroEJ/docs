@@ -8,10 +8,10 @@ License Manager Overview
 
 MicroEJ Architectures are distributed in two different versions:
 
-- Evaluation Architectures, associated with a software license key. Can be downloaded at `<https://repository.microej.com/architectures/>`_.
-- Production Architectures, associated with an hardware license key stored on a USB dongle. Can be requested to MicroEJ support team support@microej.com.
+- Evaluation Architectures, associated with a software license key. They can be downloaded at `<https://repository.microej.com/architectures/>`_.
+- Production Architectures, associated with a hardware license key stored on a USB dongle. They can be requested to MicroEJ support team support@microej.com.
 
-The license manager is provided with MicroEJ Architectures and this then integrated to Platforms, consequently:
+The license manager is provided with MicroEJ Architectures and then integrated into Platforms, consequently:
 
 - Evaluation licenses will be shown only if at least one Evaluation Architecture or Platform built from an Evaluation Architecture 
   has been imported in MicroEJ SDK.
@@ -54,7 +54,7 @@ The machine UID will be displayed when building a :ref:`MicroEJ Standalone Appli
    [ERROR] Invalid license check (No license found).
 
 Otherwise, a MicroEJ Architecture or Platform should have been manually imported from the MicroEJ SDK preferences page. 
-The machine UID can be retrieved as following:
+The machine UID can be retrieved as follows:
 
 - Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ`,
 - Select either :guilabel:`Architectures` or :guilabel:`Platforms`, 
@@ -80,7 +80,7 @@ Request your Activation Key
 
 - Go to MicroEJ Licenses Server https://license.microej.com.
 - Click on :guilabel:`Create a new account` link.
-- Create your account with a valid email address. You will receive a confirmation email a few minutes after. Click on the confirmation link in the email and login with your new account.
+- Create your account with a valid email address. You will receive a confirmation email a few minutes after. Click on the confirmation link in the email and log in with your new account.
 - Click on :guilabel:`Activate a License`.
 - Set :guilabel:`Product P/N:` to ``9PEVNLDBU6IJ``.
 - Set :guilabel:`UID:` to the machine UID you copied before.
@@ -104,7 +104,7 @@ the license key zip file must be simply dropped to the ``~/.microej/licenses/`` 
   
    The MicroEJ SDK Preferences page will be automatically refreshed when building a :ref:`MicroEJ Standalone Application on device <device_build>`.
 
-Otherwise, the license key must be installed as following:
+Otherwise, the license key must be installed as follows:
 
 - Go back to MicroEJ SDK.
 - Select the :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` menu.
@@ -116,7 +116,7 @@ Otherwise, the license key must be installed as following:
 
 If an error message appears, the license key could not be installed. (see
 section :ref:`evaluation_license_troubleshooting`).
-A license key can be removed from key-store by selecting it and by
+A license key can be removed from the key-store by selecting it and by
 clicking on :guilabel:`Remove` button.
 
 .. _evaluation_license_troubleshooting:
@@ -128,7 +128,7 @@ Consider this section when an error message appears while adding the
 Evaluation license key. Before contacting MicroEJ support, please check the
 following conditions:
 
--  Key is corrupted (wrong copy/paste, missing characters or extra
+-  Key is corrupted (wrong copy/paste, missing characters, or extra
    characters)
 
 -  Key has not been generated for the installed environment
@@ -156,7 +156,7 @@ Production Licenses
 -------------------
 
 This section should be considered when using Production Architectures,
-which use hardware license keys stored on an USB dongle.
+which use hardware license keys stored on a USB dongle.
 
 .. figure:: images/dongle/dongle.jpg
    :alt: MicroEJ USB Dongle
@@ -168,7 +168,7 @@ which use hardware license keys stored on an USB dongle.
 .. note :: 
 
    If your USB dongle has been provided to you by your sales representative and you don't have received an activation certificate by email, it may be a pre-activated dongle.
-   Then you can skip the activation steps and directly jump to :ref:`production_license_check` section.
+   Then you can skip the activation steps and directly jump to the :ref:`production_license_check` section.
 
 Request your Activation Key
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -179,7 +179,7 @@ Request your Activation Key
 - Click on :guilabel:`Activate a License`.
 - Set :guilabel:`Product P/N:` to **The P/N on the activation certificate**.
 - Enter your UID: serial number printed on the USB dongle label (8 alphanumeric char.).
-- Click on :guilabel:`Activate` and check confirmation message.
+- Click on :guilabel:`Activate` and check the confirmation message.
 - Click on :guilabel:`Confirm your registration`.
 - Enter the **Registration Code provided on the activation certificate**.
 - Click on :guilabel:`Submit`.
@@ -187,14 +187,14 @@ Request your Activation Key
 
 .. note:: 
    
-   You can check the :guilabel:`My Products` page to verify your product registration status, the Activation Key availability and to download the Activation Key when available.
+   You can check the :guilabel:`My Products` page to verify your product registration status, the Activation Key availability, and download the Activation Key when available.
 
 Once the Activation Key is available, download and save the Activation Key ZIP file to a local directory.
 
 Activate your USB Dongle
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-This section contains instructions that will allow to flash your
+This section contains instructions that will allow you to flash your
 USB dongle with the proper activation key.
 
 You shall ensure that the following prerequisites are met :
@@ -202,10 +202,10 @@ You shall ensure that the following prerequisites are met :
 -  The USB dongle is plugged and recognized by your operating system
    (see :ref:`production_license_troubleshooting` section)
 
--  No more than one USB dongle is plugged to the computer while running the
+-  No more than one USB dongle is plugged into the computer while running the
    update tool
 
--  The update tool is not launched from a Network drive or from a USB
+-  The update tool is not launched from a network drive or a USB
    key
 
 -  The activation key you downloaded is the one for the dongle UID on
@@ -265,7 +265,7 @@ Troubleshooting
 ~~~~~~~~~~~~~~~
 
 This section contains instructions to check that your
-USB dongle is correctly recognized by your operating system.
+operating system correctly recognizes your USB dongle.
 
 GNU/Linux Troubleshooting
 """""""""""""""""""""""""
@@ -292,7 +292,7 @@ Then, restart udev: ``/etc/init.d/udev restart``
 
 You can check that the device is recognized by running the ``lsusb``
 command. The output of the command should contain a line similar to the
-one below for each dongle :
+one below for each dongle:
 ``Bus 002 Device 003: ID 096e:0006 Feitian Technologies, Inc.``
 
 Windows Troubleshooting
@@ -320,9 +320,9 @@ VirtualBox Troubleshooting
 """"""""""""""""""""""""""
 
 In a VirtualBox virtual machine, USB drives must be enabled to be recognized correctly.
-So make sure to enable the USB dongle by clicking on it in the VirtualBox menu ``Devices`` > ``USB``.
+Make sure to enable the USB dongle by clicking on it in the VirtualBox menu ``Devices`` > ``USB``.
 
-In order to make this setting persistent, go to ``Devices`` > ``USB`` > ``USB Settings...`` 
+To make this setting persistent, go to ``Devices`` > ``USB`` > ``USB Settings...`` 
 and add the USB dongle in the ``USB Devices Filters`` list.
 
 
