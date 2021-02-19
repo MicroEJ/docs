@@ -127,6 +127,8 @@ namespace and the ``ej:version`` attribute in the ``ivy-module`` node:
 MMM semantic is enabled in the module created with the
 :ref:`mmm_module_skeleton`.
 
+.. _mmm_module_dependency:
+
 Module Dependency
 ~~~~~~~~~~~~~~~~~
 

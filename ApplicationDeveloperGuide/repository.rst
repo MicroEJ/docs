@@ -60,7 +60,7 @@ Modules bundled into the module repository must be declared in the ``dependencie
 Include a Single Module
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-To add a module, declare the module dependency using the ``artifacts`` configuration:
+To add a module, declare the :ref:`module dependency <mmm_module_dependency>` using the ``artifacts`` configuration:
 
 .. code-block:: xml
    :emphasize-lines: 2
