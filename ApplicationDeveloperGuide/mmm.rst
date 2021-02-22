@@ -436,9 +436,14 @@ Once the Build Kit is fully exported, the directory content shall look like:
   │  └─ ivysettings.xml
   └─ release.properties
 
-- Add the ``bin`` directory of the Build Kit directory to the ``PATH`` environment variable of your machine
+- Add the ``bin`` directory of the Build Kit directory to the ``PATH`` environment variable of your machine. 
 - Make sure the ``JAVA_HOME`` environment variable is set and points to a JRE/JDK installation or that ``java`` executable is in the ``PATH`` environment variable (Java 8 is required)
 - Confirm that the installation works fine by executing the command ``mmm --version``. The result should display the MMM CLI version.
+
+The ``mmm`` tool can run on any supported :ref:`Operating Systems <system-requirements>`:
+
+- on Windows, either in the command prompt using the Windows batch script ``mmm.bat`` or in `MinGW environments <https://en.wikipedia.org/wiki/MinGW>`_ such as `Git BASH <https://gitforwindows.org/>`_ using the bash script ``mmm``.
+- on Mac OS X and Linux distributions using the bash script ``mmm``.
 
 The build repository (``microej-build-repository`` directory) contains scripts and tools for building modules. It is specific to a MicroEJ SDK version and shall not be modified by default.
 
