@@ -199,6 +199,8 @@ USB dongle with the proper activation key.
 
 You shall ensure that the following prerequisites are met :
 
+-  Your :ref:`operating system <system-requirements>` is Windows 
+
 -  The USB dongle is plugged and recognized by your operating system
    (see :ref:`production_license_troubleshooting` section)
 
