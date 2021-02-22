@@ -171,7 +171,7 @@ which use hardware license keys stored on a USB dongle.
    Then you can skip the activation steps and directly jump to the :ref:`production_license_check` section.
 
 Request your Activation Key
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Go to `license.microej.com <https://license.microej.com/>`_.
 - Click on :guilabel:`Create a new account` link.
@@ -217,13 +217,15 @@ You can then proceed to the USB dongle update:
 - Unzip the ``Activation Key`` file to a local directory 
 - Enter the directory just created by your ZIP extraction tool.
 - Launch the executable program.
+- Accept running the unsigned software if requested (Windows 10)
+  
+  .. figure:: images/dongle/update_warning_unknown_publisher.png
+     :scale: 80%    
+
 - Click on the :guilabel:`Update` button (no password needed)
 
   .. figure:: images/dongle/updateTool.png
      :alt: Dongle Update Tool
-     :align: center
-     :width: 271px
-     :height: 310px
 
      Dongle Update Tool
 
@@ -232,11 +234,8 @@ You can then proceed to the USB dongle update:
 
   .. figure:: images/dongle/updateSuccessful.png
      :alt: Successful dongle update
-     :align: center
-     :width: 222px
-     :height: 169px
 
-     Successful dongle update
+     Successful Dongle Update
 
 .. _production_license_check:
 
