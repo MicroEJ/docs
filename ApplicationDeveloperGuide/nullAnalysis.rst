@@ -64,7 +64,7 @@ To enable Null Analysis tool, a :ref:`module project <mmm_module_skeleton>` must
 
   .. figure:: images/null_analysis_project_configuration_annotations.png
 
-- In :guilabel:`Annotations` section, check :guilabel:`Suppress optional errors with '@SuppressWarnings'` option:
+- In the :guilabel:`Annotations` section, check :guilabel:`Suppress optional errors with '@SuppressWarnings'` option:
   
   .. figure:: images/null_analysis_project_configuration_suppress_warnings.png
 
