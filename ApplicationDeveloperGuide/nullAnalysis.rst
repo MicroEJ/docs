@@ -26,8 +26,8 @@ Java Code Annotation
 
 MicroEJ defines its own annotations:
 
-- `@NonNullBydefault <https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNullByDefault.html>`_: Indicates that all fields, method return values or parameters can never be null in the annotated package or type.
-  This rule can be overridden on each element by using Nullable annotation.
+- `@NonNullByDefault <https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNullByDefault.html>`_: Indicates that all fields, method return values or parameters can never be null in the annotated package or type.
+  This rule can be overridden on each element by using the Nullable annotation.
   
 - `@Nullable <https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNull.html>`_: Indicates that a field, local variable, method return value or parameter can be null.
 
@@ -36,7 +36,7 @@ MicroEJ defines its own annotations:
 MicroEJ recommends to annotate the Java code as follows:
 
 - In each Java package, create a ``package-info.java`` file and annotate the Java package with ``@NonNullByDefault``.
-  This allow to declare all fields and methods that can never be null, which is considered to be the default case unless it is not explicitly marked ``@Nullable``.
+  This allows to declare all fields and methods that can never be null, which is considered to be the default case unless it is not explicitly marked ``@Nullable``.
 
   .. figure:: images/null_analysis_packageinfo.png
 
@@ -47,7 +47,7 @@ MicroEJ recommends to annotate the Java code as follows:
 
 .. note::
    
-   MicroEJ SDK ``5.3.0`` or higher require annotations declared in `EDC-1.3.3 <https://repository.microej.com/modules/ej/api/edc/1.3.3/>`_ or higher. See `EDC 1.3.3 Changelog <https://repository.microej.com/modules/ej/api/edc/1.3.3/CHANGELOG-1.3.3.md>`_ for more details.
+   MicroEJ SDK ``5.3.0`` or higher requires annotations declared in `EDC-1.3.3 <https://repository.microej.com/modules/ej/api/edc/1.3.3/>`_ or higher. See `EDC 1.3.3 Changelog <https://repository.microej.com/modules/ej/api/edc/1.3.3/CHANGELOG-1.3.3.md>`_ for more details.
 
 Module Project Configuration 
 ----------------------------
@@ -56,11 +56,11 @@ To enable Null Analysis tool, a :ref:`module project <mmm_module_skeleton>` must
 
 - In the Package Explorer, right-click on the module project and select :guilabel:`Properties`,
 - Navigate to :guilabel:`Java Compiler` > :guilabel:`Errors/Warnings`,
-- In :guilabel:`Null analysis` section, configure options as follows:
+- In the :guilabel:`Null analysis` section, configure options as follows:
 
   .. figure:: images/null_analysis_project_configuration_checks.png
 
-- Click on :guilabel:`Configure...` link to configure MicroEJ annotations:
+- Click on the :guilabel:`Configure...` link to configure MicroEJ annotations:
 
   .. figure:: images/null_analysis_project_configuration_annotations.png
 
@@ -88,7 +88,7 @@ Here is are few examples to illustrate the philosophy:
 
 - `System.getProperty(String key, String def) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#getProperty-java.lang.String-java.lang.String->`_ does not accept a ``null`` default value, which allows to ensure the returned value is always non ``null``.
 - Collections of the Java Collections Framework that can hold ``null`` elements (e.g. `HashMap <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/HashMap.html>`_) do not accept ``null`` elements. 
-  This allows APIs returning ``null`` (e.g. `HashMap.get(Object) <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/HashMap.html#get-java.lang.Object->`_) only when an element is not contained in the collection.
+  This allows APIs to return ``null`` (e.g. `HashMap.get(Object) <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/HashMap.html#get-java.lang.Object->`_) only when an element is not contained in the collection.
 
 Implementations are left unchanged and still comply with the Javadoc description whether the Null Analysis is enabled or not. 
 So if these additional constraints are not acceptable for your project, please disable Null Analysis detection.
@@ -97,7 +97,7 @@ So if these additional constraints are not acceptable for your project, please d
 Advanced Use
 ------------
 
-For more information about Null Analysis detection and inter-procedural analysis, please visit `Eclipse JDT Null Analysis documentation <https://help.eclipse.org/2020-06/index.jsp?topic=/org.eclipse.jdt.doc.user/tasks/task-using_null_annotations.htm>`_.
+For more information about Null Analysis and inter-procedural analysis, please visit `Eclipse JDT Null Analysis documentation <https://help.eclipse.org/2020-06/index.jsp?topic=/org.eclipse.jdt.doc.user/tasks/task-using_null_annotations.htm>`_.
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
