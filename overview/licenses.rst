@@ -9,7 +9,7 @@ License Manager Overview
 MicroEJ Architectures are distributed in two different versions:
 
 - Evaluation Architectures, associated with a software license key. They can be downloaded at `<https://repository.microej.com/architectures/>`_.
-- Production Architectures, associated with a hardware license key stored on a USB dongle. They can be requested to MicroEJ support team support@microej.com.
+- Production Architectures, associated with a hardware license key stored on a USB dongle. They can be requested to :ref:`our support team <get_support>`.
 
 The license manager is provided with MicroEJ Architectures and then integrated into Platforms, consequently:
 
@@ -85,7 +85,7 @@ Request your Activation Key
 - Set :guilabel:`Product P/N:` to ``9PEVNLDBU6IJ``.
 - Set :guilabel:`UID:` to the machine UID you copied before.
 - Click on :guilabel:`Activate`.
-- The license is being activated. You should receive your activation by email in less than 5 minutes. If not, please contact support@microej.com.
+- The license is being activated. You should receive your activation by email in less than 5 minutes. If not, please contact contact :ref:`our support team <get_support>`.
 - Once received by email, save the attached zip file that contains your activation key.
 
 Install the License Key
@@ -125,7 +125,7 @@ Troubleshooting
 ~~~~~~~~~~~~~~~
 
 Consider this section when an error message appears while adding the
-Evaluation license key. Before contacting MicroEJ support, please check the
+Evaluation license key. Before contacting :ref:`our support team <get_support>`, please check the
 following conditions:
 
 -  Key is corrupted (wrong copy/paste, missing characters, or extra

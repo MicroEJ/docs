@@ -81,7 +81,7 @@ If you have multiple projects to configure, you can then copy the content of the
 MicroEJ Libraries
 -----------------
 
-Many libraries available on :ref:`central_repository` are annotated with Null Analysis. If you are using a library which is not yet annotated, please ask to support@microej.com.
+Many libraries available on :ref:`central_repository` are annotated with Null Analysis. If you are using a library which is not yet annotated, please contact :ref:`our support team <get_support>`.
 
 For the benefit of Null Analysis, some APIs have been slightly constrained compared to the Javadoc description.
 Here is are few examples to illustrate the philosophy:

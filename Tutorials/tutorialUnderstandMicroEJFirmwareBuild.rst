@@ -256,27 +256,3 @@ Dependencies Between Processes
   * When the BSP (``*.o``) changes.
 
   * When the MicroEJ Platform (``microejruntime.a``) changes.
-
-Get Support
------------
-
-If any questions, feel free to contact `our support team <https://www.microej.com/contact/#form_2>`_
-with the following information (the table below is an example):
-
-.. list-table::
-   :widths: 15 30
-
-   * - Delivery
-     - Name
-   * - MicroEJ SDK
-     - Distribution 20.07 / Version 5.2.0 (see :ref:`get_sdk_version`)
-   * - MEJ32 XPF
-     - ARM Cortex-M4 / IAR DEV
-   * - Platform
-     - 1.0.0
-   * - Application
-     - 1.2.4
-   * - Module Repository
-     - https://repository.microej.com/packages/repository/2.5.0/microej-5_0-2.5.0.zip
-   * - C compiler
-     - IAR 8.40.1
