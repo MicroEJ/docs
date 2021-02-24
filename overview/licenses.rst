@@ -191,6 +191,8 @@ Request your Activation Key
 
 Once the Activation Key is available, download and save the Activation Key ZIP file to a local directory.
 
+.. _production_license_activate:
+
 Activate your USB Dongle
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -221,7 +223,7 @@ You can then proceed to the USB dongle update:
 - Launch the executable program.
 - Accept running the unsigned software if requested (Windows 10)
   
-  .. figure:: images/dongle/update_warning_unknown_publisher.png
+  .. figure:: images/dongle/updateWarningUnknownPublisher.png
      :scale: 80%    
 
 - Click on the :guilabel:`Update` button (no password needed)
@@ -299,16 +301,22 @@ one below for each dongle:
 Windows Troubleshooting
 """""""""""""""""""""""
 
-For Windows users, each dongle shall be recognized with the following
+If the :ref:`dongle activation <production_license_activate>` failed with ``No rockey`` message, check there is one and only one dongle recognized with the following
 hardware ID :
 
 ::
 
    HID\VID_096E&PID_0006&REV_0109
 
-On Windows 8.1, go to :guilabel:`Device Manager` > :guilabel:`Human Interface Devices` and
-check among the ``USB Input Device`` entries that the
-``Details`` > ``Hardware Ids`` property match the ID mentioned before.
+Go to the :guilabel:`Device Manager` > :guilabel:`Human Interface Devices` and
+check among the :guilabel:`USB Input Device` entries that the
+:guilabel:`Details` > :guilabel:`Hardware Ids` property match the ID mentioned before.
+
+
+If the :ref:`dongle activation <production_license_activate>` was successful with ``Update successfully`` message but the license does not appear in MicroEJ SDK or is not updated, 
+try to activate again by starting the executable with administrator privileges:
+
+.. figure:: images/dongle/runAsAdministrator.png
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
