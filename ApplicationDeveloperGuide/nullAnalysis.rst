@@ -47,7 +47,7 @@ MicroEJ recommends to annotate the Java code as follows:
 
 .. note::
    
-   MicroEJ SDK ``5.3.0`` or higher require annotations declared in `EDC-1.3.3 <https://repository.microej.com/modules/ej/api/edc/1.3.3/>`_ or higher. See `EDC 1.3.3 Changelog <https://repository.microej.com/modules/ej/api/edc/1.3.3/CHANGELOG-1.3.3.md>`_ for more details.
+   MicroEJ SDK ``5.3.0`` or higher requires annotations declared in `EDC-1.3.3 <https://repository.microej.com/modules/ej/api/edc/1.3.3/>`_ or higher. See `EDC 1.3.3 Changelog <https://repository.microej.com/modules/ej/api/edc/1.3.3/CHANGELOG-1.3.3.md>`_ for more details.
 
 Module Project Configuration 
 ----------------------------
