@@ -56,7 +56,7 @@ To enable Null Analysis tool, a :ref:`module project <mmm_module_skeleton>` must
 
 - In the Package Explorer, right-click on the module project and select :guilabel:`Properties`,
 - Navigate to :guilabel:`Java Compiler` > :guilabel:`Errors/Warnings`,
-- In :guilabel:`Null analysis` section, configure options as follows:
+- In the :guilabel:`Null analysis` section, configure options as follows:
 
   .. figure:: images/null_analysis_project_configuration_checks.png
 
