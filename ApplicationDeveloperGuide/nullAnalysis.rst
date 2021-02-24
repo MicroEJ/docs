@@ -60,7 +60,7 @@ To enable Null Analysis tool, a :ref:`module project <mmm_module_skeleton>` must
 
   .. figure:: images/null_analysis_project_configuration_checks.png
 
-- Click on :guilabel:`Configure...` link to configure MicroEJ annotations:
+- Click on the :guilabel:`Configure...` link to configure MicroEJ annotations:
 
   .. figure:: images/null_analysis_project_configuration_annotations.png
 
