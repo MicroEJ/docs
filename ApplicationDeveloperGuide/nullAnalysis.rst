@@ -26,7 +26,7 @@ Java Code Annotation
 
 MicroEJ defines its own annotations:
 
-- `@NonNullBydefault <https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNullByDefault.html>`_: Indicates that all fields, method return values or parameters can never be null in the annotated package or type.
+- `@NonNullByDefault <https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNullByDefault.html>`_: Indicates that all fields, method return values or parameters can never be null in the annotated package or type.
   This rule can be overridden on each element by using the Nullable annotation.
   
 - `@Nullable <https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNull.html>`_: Indicates that a field, local variable, method return value or parameter can be null.
