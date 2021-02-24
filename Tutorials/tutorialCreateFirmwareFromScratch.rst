@@ -459,7 +459,7 @@ Architecture previously imported.
 
    * The license is being activated. An activation mail should be
      received in less than 5 minutes. If not, please contact
-     support@microej.com.
+     contact :ref:`our support team <get_support>`.
    * Once received by email, save the attached zip file that contains
      the activation key.
 

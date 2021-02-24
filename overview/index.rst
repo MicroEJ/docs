@@ -17,6 +17,7 @@ Overview
    gettingStarted
    github
    systemRequirements
+   support
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
