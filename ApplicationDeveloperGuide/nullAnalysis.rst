@@ -3,8 +3,8 @@
 Null Analysis
 =============
 
-`NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNullByDefault.html>`_ thrown at runtime is one of the most common causes for failure of Java programs.
-Null Analysis tool can detect such programming errors (misuse of potential ``null`` Java values) at compile-time.
+`NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_ thrown at runtime is one of the most common causes for failure of Java programs.
+The Null Analysis tool can detect such programming errors (misuse of potential ``null`` Java values) at compile-time.
 
 The following example of code shows a typical Null Analysis error detection in MicroEJ SDK.
 
