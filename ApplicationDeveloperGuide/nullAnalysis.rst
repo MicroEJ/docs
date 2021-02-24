@@ -36,7 +36,7 @@ MicroEJ defines its own annotations:
 MicroEJ recommends to annotate the Java code as follows:
 
 - In each Java package, create a ``package-info.java`` file and annotate the Java package with ``@NonNullByDefault``.
-  This declares all fields, method return values or parameters to be non-null unless they are annotated with ``@Nullable``.
+  This declares all fields, method return values and parameters to be non-null unless they are annotated with ``@Nullable``.
 
   .. figure:: images/null_analysis_packageinfo.png
 
