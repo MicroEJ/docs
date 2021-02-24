@@ -89,7 +89,7 @@ MicroEJ Libraries
 Many libraries available on :ref:`central_repository` are annotated with Null Analysis. If you are using a library which is not yet annotated, please contact :ref:`our support team <get_support>`.
 
 For the benefit of Null Analysis, some APIs have been slightly constrained compared to the Javadoc description.
-Here is are few examples to illustrate the philosophy:
+Here are some examples to illustrate the philosophy:
 
 - `System.getProperty(String key, String def) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#getProperty-java.lang.String-java.lang.String->`_ does not accept a ``null`` default value, which allows to ensure the returned value is always non ``null``.
 - Collections of the Java Collections Framework that can hold ``null`` elements (e.g. `HashMap <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/HashMap.html>`_) do not accept ``null`` elements. 
