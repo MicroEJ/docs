@@ -221,7 +221,7 @@ You can then proceed to the USB dongle update:
 - Launch the executable program.
 - Accept running the unsigned software if requested (Windows 10)
   
-  .. figure:: images/dongle/update_warning_unknown_publisher.png
+  .. figure:: images/dongle/updateWarningUnknownPublisher.png
      :scale: 80%    
 
 - Click on the :guilabel:`Update` button (no password needed)
