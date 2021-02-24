@@ -191,6 +191,8 @@ Request your Activation Key
 
 Once the Activation Key is available, download and save the Activation Key ZIP file to a local directory.
 
+.. _production_license_activate:
+
 Activate your USB Dongle
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -299,16 +301,17 @@ one below for each dongle:
 Windows Troubleshooting
 """""""""""""""""""""""
 
-For Windows users, each dongle shall be recognized with the following
+If the :ref:`dongle activation <production_license_activate>` failed with ``No rockey`` message, check there is one and only one dongle recognized with the following
 hardware ID :
 
 ::
 
    HID\VID_096E&PID_0006&REV_0109
 
-On Windows 8.1, go to :guilabel:`Device Manager` > :guilabel:`Human Interface Devices` and
-check among the ``USB Input Device`` entries that the
-``Details`` > ``Hardware Ids`` property match the ID mentioned before.
+Go to the :guilabel:`Device Manager` > :guilabel:`Human Interface Devices` and
+check among the :guilabel:`USB Input Device` entries that the
+:guilabel:`Details` > :guilabel:`Hardware Ids` property match the ID mentioned before.
+
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
