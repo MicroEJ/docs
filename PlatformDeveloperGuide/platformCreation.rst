@@ -30,7 +30,7 @@ MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified 
 - ``UID``: Architecture unique ID (e.g. ``flopi4G25``).
 - ``USAGE`` = ``eval`` for evaluation Architectures, ``prod`` for production Architectures.
 
-For example, MicroEJ Architecture versions for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain is available at 
+For example, MicroEJ Architecture versions for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain are available at
 https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/.
 
 Once you downloaded a MicroEJ Architecture file, proceed with the following steps to import it in MicroEJ SDK:
@@ -42,6 +42,86 @@ Once you downloaded a MicroEJ Architecture file, proceed with the following step
 
 .. [#note_production] If the requested MicroEJ Architecture is not available for evaluation or to get a MicroEJ Production Architecture, please contact your MicroEJ sales representative.
 
+.. _pack_import:
+
+MicroEJ Pack Import
+===================
+
+The next step is to choose and import a :ref:`MicroEJ Pack
+<pack_overview>`.  MicroEJ Corp. provides MicroEJ Packs to provide
+additional features.
+
+There are two flavors of MicroEJ Packs:
+
+#. MicroEJ Architecture Specific Pack provided at https://repository.microej.com/architectures/.
+#. MicroEJ Generic Pack provided at https://repository.microej.com/modules/com/microej/pack/.
+
+MicroEJ Architecture Specific Pack
+----------------------------------
+
+MicroEJ Architecture Specific Packs contain compiled libraries
+archives and are thus dependent on the MicroEJ Architecture and
+toolchain used in the MicroEJ Platform.
+
+MicroEJ Architecture Specific Packs files ends with the ``.xpfp``
+extension and are classified using the following naming convention:
+
+::
+
+   com/microej/architecture/[ISA]/[TOOLCHAIN]/[UID]-[NAME]-pack/[VERSION]/[UID]-[NAME]-[VERSION].xpfp
+
+- ``ISA``: instruction set architecture (e.g. ``CM4`` for Arm® Cortex®-M4, ``ESP32`` for Espressif ESP32, ...).
+- ``TOOLCHAIN``: C compilation toolchain (e.g. ``CM4hardfp_GCC48``).
+- ``VERSION``: module version (e.g. ``7.12.0``).
+- ``UID``: Architecture unique ID (e.g. ``flopi4G25``).
+- ``NAME`` : the name of the module (e.g. ``ui``).
+
+For example, MicroEJ Architecture Specific Pack UI versions for Arm®
+Cortex®-M4 microcontrollers compiled with GNU CC toolchain are
+available at
+https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25-ui-pack/.
+
+MicroEJ Generic Pack
+--------------------
+
+Contrary to MicroEJ Architecture Specific Packs, MicroEJ Generic Packs
+are not dependent on a specific toolchain or MicroEJ Architecture.
+
+They are classified using the following naming convention:
+
+::
+
+   com/microej/pack/[name]/[name]-pack/[version]/
+
+For example, MicroEJ Generic Pack Bluetooth versions are available at
+https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-pack/.
+
+Legacy MicroEJ Generic Pack
+---------------------------
+
+Legacy MicroEJ Generic Packs files ends with the ``.xpfp`` extension
+and are classified using the following naming convention:
+
+::
+
+   com/microej/pack/[name]/[version]/[name]-[version].xpfp
+
+For example, the Legacy MicroEJ Generic Pack NET versions are
+available at
+https://repository.microej.com/modules/com/microej/pack/net/.
+
+Import MicroEJ Pack
+-------------------
+
+This section is only relevant for MicroEJ Packs packaged as ``.xpfp``
+(MicroEJ Architecture Specific Packs and Legacy MicroEJ Generic
+Packs).  Once you downloaded a MicroEJ Pack file, proceed with the
+following steps to import it in MicroEJ SDK:
+
+- Select :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`.
+- Browse an ``.xpfp`` file or a folder that contains one or more an ``.xpfp`` files.
+- Check the :guilabel:`I agree and accept the above terms and conditions...` box to accept the license.
+- Click on :guilabel:`Finish` button.
 
 .. _platform_configuration_creation:
 
@@ -82,6 +162,12 @@ The next step is to create a MicroEJ Platform configuration:
 
       MicroEJ Platform Configuration Project Skeleton
 
+- Edit the ``module.properties`` file and set the option ``com.microej.platformbuilder.platform.filename`` to the ``[name].platform`` file name.
+
+  .. code-block::
+
+     com.microej.platformbuilder.platform.filename=myplatform.platform
+
 - Edit the :ref:`mmm_module_description` ``module.ivy`` to declare the dependency line to the MicroEJ Architecture previously downloaded:
 
   .. code-block:: xml
@@ -108,11 +194,48 @@ The next step is to create a MicroEJ Platform configuration:
       
       </dependencies>
       
-- Edit the ``module.properties`` file and set the option ``com.microej.platformbuilder.platform.filename`` to the ``[name].platform`` file name.
+- Edit the :ref:`mmm_module_description` ``module.ivy`` to declare the dependency line to the MicroEJ Packs previously downloaded:
 
-  .. code-block::
+  .. code-block:: xml
+     :emphasize-lines: 3,4,5,8
 
-     com.microej.platformbuilder.platform.filename=myplatform.platform
+     <dependencies>
+        <!-- MicroEJ Architecture Specific Pack and Legacy MicroEJ Generic Pack  -->
+        <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]-[NAME]-pack" rev="[VERSION]">
+          <artifact name="[UID]-[NAME]-pack" ext="xpfp"/>
+        </dependency>
+
+        <!-- MicroEJ Generic Pack  -->
+        <dependency org="com.microej.pack.[NAME]" name="[NAME]-pack" rev="[VERSION]"/>
+
+     </dependencies>
+
+  For example, to declare the MicroEJ Architecture Specific Pack UI
+  version ``13.0.4`` for MicroEJ Architecture ``flopi4G25`` on Arm®
+  Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
+
+  .. code-block:: xml
+      :emphasize-lines: 3,4,5
+
+      <dependencies>
+          <!-- MicroEJ Architecture Specific Pack and Legacy MicroEJ Generic Pack  -->
+          <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="13.0.4">
+            <artifact name="flopi4G25-ui-pack" ext="xpfp"/>
+          </dependency>
+
+      </dependencies>
+
+  And to declare the MicroEJ Generic Pack Bluetooth version ``2.1.0``:
+
+
+  .. code-block:: xml
+      :emphasize-lines: 3,4,5
+
+      <dependencies>
+        <!-- MicroEJ Generic Pack  -->
+          <dependency org="com.microej.pack.bluetooth" name="bluetooth-pack" rev="2.1.0"/>
+
+      </dependencies>
 
 MicroEJ Platform Build
 ======================
@@ -161,11 +284,14 @@ From the Platform Editor, select the Content tab to access
 the Platform modules selection. Modules can be selected/deselected from
 the Modules frame.
 
-Modules are organized into groups. When a group is selected, by default,
-all its modules are selected. To view the modules making up a group,
-click on the Show/Hide modules icon on the top-right of the frame. This
-will let you select/deselect on a per module basis. Note that individual
-module selection is not recommended.
+Modules Modules are provided by MicroEJ Architecture Specific Packs
+and Legacy MicroEJ Generic Packs.  Modules are organized into groups.
+When a group is selected, by default, all its modules are selected.
+To view the modules making up a group, click on the Show/Hide modules
+icon on the top-right of the frame.  This will let you select/deselect
+on a per module basis.  Note that individual module selection is not
+recommended and that it is only available when the module have been
+imported.
 
 The description and contents of an item (group or module) are displayed
 beside the list on item selection.

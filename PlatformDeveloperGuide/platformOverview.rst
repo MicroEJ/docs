@@ -39,6 +39,8 @@ to) external code, such as any kind of RTOS or legacy C libraries:
 
 See :ref:`MicroEJ Architecture Import <architecture_import>` for usage.
 
+.. _pack_overview:
+
 MicroEJ Packs
 ~~~~~~~~~~~~~
 
