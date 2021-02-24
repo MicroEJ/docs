@@ -313,7 +313,7 @@ check among the :guilabel:`USB Input Device` entries that the
 :guilabel:`Details` > :guilabel:`Hardware Ids` property match the ID mentioned before.
 
 
-If the :ref:`dongle activation <production_license_activate>` was successful with ``Update successfully`` message but the license does not appear in MicroEJ SDK, 
+If the :ref:`dongle activation <production_license_activate>` was successful with ``Update successfully`` message but the license does not appear in MicroEJ SDK or is not updated, 
 try to activate again by starting the executable with administrator privileges:
 
 .. figure:: images/dongle/runAsAdministrator.png
