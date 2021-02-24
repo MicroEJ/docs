@@ -78,10 +78,10 @@ If you have multiple projects to configure, you can then copy the content of the
      
    Null Analysis Settings Folder
 
-.. warning:
+.. warning::
 
    You may lose information if your target module project already has custom parameterization or if it was created with another MicroEJ SDK version. 
-   In case of any doubt, please configure the options manually or help yourself with a text file comparator.
+   In case of any doubt, please configure the options manually or merge with a text file comparator.
 
 MicroEJ Libraries
 -----------------
