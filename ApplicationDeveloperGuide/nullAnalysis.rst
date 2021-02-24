@@ -16,7 +16,7 @@ The following example of code shows a typical Null Analysis error detection in M
 Principle
 ---------
 
-Null Analysis tool is based on Java annotations. Each Java field, method parameter and method return value must be marked to indicate whether it can be ``null`` or not.
+The Null Analysis tool is based on Java annotations. Each Java field, method parameter and method return value must be marked to indicate whether it can be ``null`` or not.
 
 Once the Java code is annotated, :ref:`module projects <mmm_module_skeleton>` must be configured to enable Null Analysis detection in MicroEJ SDK.
 
@@ -52,7 +52,7 @@ MicroEJ recommends to annotate the Java code as follows:
 Module Project Configuration 
 ----------------------------
 
-To enable Null Analysis tool, a :ref:`module project <mmm_module_skeleton>` must be configured as follows:
+To enable the Null Analysis tool, a :ref:`module project <mmm_module_skeleton>` must be configured as follows:
 
 - In the Package Explorer, right-click on the module project and select :guilabel:`Properties`,
 - Navigate to :guilabel:`Java Compiler` > :guilabel:`Errors/Warnings`,
