@@ -91,7 +91,7 @@ Here is are few examples to illustrate the philosophy:
   This allows APIs to return ``null`` (e.g. `HashMap.get(Object) <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/HashMap.html#get-java.lang.Object->`_) only when an element is not contained in the collection.
 
 Implementations are left unchanged and still comply with the Javadoc description whether the Null Analysis is enabled or not. 
-So if these additional constraints are not acceptable for your project, please disable Null Analysis detection.
+So if these additional constraints are not acceptable for your project, please disable Null Analysis.
 
 
 Advanced Use
