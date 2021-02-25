@@ -112,7 +112,7 @@ For a MicroEJ Application, these properties are set using the launcher
 of the application.  For a Test Suite, the properties are defined in a
 file named ``config.properties`` in the root folder of the Test Suite.
 For example, see this `config.properties
-<https://github.com/MicroEJ/PlatformQualificationTools/blob/2.3.0/tests/fs/java/java-testsuite-fs/config.properties>`__
+<https://github.com/MicroEJ/PlatformQualificationTools/blob/2.3.0/tests/fs/java/java-testsuite-fs/config.properties.tpl>`__
 file.
 
 See :ref:`bsp_connection` for an explanation of the properties.  See
