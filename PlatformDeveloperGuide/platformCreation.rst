@@ -51,10 +51,10 @@ The next step is to choose and import a :ref:`MicroEJ Pack
 <pack_overview>`.  MicroEJ Corp. provides MicroEJ Packs to provide
 additional features.
 
-There are two flavors of MicroEJ Packs:
+MicroEJ Packs are distributed in two packages:
 
-#. MicroEJ Architecture Specific Pack provided at https://repository.microej.com/architectures/.
-#. MicroEJ Generic Pack provided at https://repository.microej.com/modules/com/microej/pack/.
+- MicroEJ Architecture Specific Pack provided at https://repository.microej.com/modules/com/microej/architecture.
+- MicroEJ Generic Pack provided at https://repository.microej.com/modules/com/microej/pack/.
 
 MicroEJ Architecture Specific Pack
 ----------------------------------
@@ -79,7 +79,7 @@ extension and are classified using the following naming convention:
 For example, MicroEJ Architecture Specific Pack UI versions for Arm®
 Cortex®-M4 microcontrollers compiled with GNU CC toolchain are
 available at
-https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25-ui-pack/.
+https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25-ui-pack/.
 
 MicroEJ Generic Pack
 --------------------
@@ -197,16 +197,17 @@ The next step is to create a MicroEJ Platform configuration:
 - Edit the :ref:`mmm_module_description` ``module.ivy`` to declare the dependency line to the MicroEJ Packs previously downloaded:
 
   .. code-block:: xml
-     :emphasize-lines: 3,4,5,8
+     :emphasize-lines: 3,6,9
 
      <dependencies>
         <!-- MicroEJ Architecture Specific Pack and Legacy MicroEJ Generic Pack  -->
-        <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]-[NAME]-pack" rev="[VERSION]">
-          <artifact name="[UID]-[NAME]-pack" ext="xpfp"/>
-        </dependency>
+        <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]-[NAME]-pack" rev="[VERSION]"/>
 
         <!-- MicroEJ Generic Pack  -->
         <dependency org="com.microej.pack.[NAME]" name="[NAME]-pack" rev="[VERSION]"/>
+
+        <!-- Legacy MicroEJ Generic Pack -->
+        <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]-[NAME]-pack" rev="[VERSION]"/>
 
      </dependencies>
 
@@ -215,13 +216,11 @@ The next step is to create a MicroEJ Platform configuration:
   Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
 
   .. code-block:: xml
-      :emphasize-lines: 3,4,5
+      :emphasize-lines: 3
 
       <dependencies>
-          <!-- MicroEJ Architecture Specific Pack and Legacy MicroEJ Generic Pack  -->
-          <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="13.0.4">
-            <artifact name="flopi4G25-ui-pack" ext="xpfp"/>
-          </dependency>
+          <!-- MicroEJ Architecture Specific Pack -->
+          <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="13.0.4"/>
 
       </dependencies>
 
@@ -229,7 +228,7 @@ The next step is to create a MicroEJ Platform configuration:
 
 
   .. code-block:: xml
-      :emphasize-lines: 3,4,5
+      :emphasize-lines: 3
 
       <dependencies>
         <!-- MicroEJ Generic Pack  -->
@@ -277,15 +276,15 @@ When the same Platform is rebuilt, right-click on the Platform project and selec
 
 .. _platform_configuration_modules:
 
-Groups / Modules Selection
-==========================
+Platform Groups / Modules Selection
+===================================
 
-From the Platform Editor, select the Content tab to access
-the Platform modules selection. Modules can be selected/deselected from
-the Modules frame.
+From the Platform Editor, select the Content tab to access the
+Platform modules selection.  Platform modules can be
+selected/deselected from the Modules frame.
 
-Modules Modules are provided by MicroEJ Architecture Specific Packs
-and Legacy MicroEJ Generic Packs.  Modules are organized into groups.
+Platform modules are provided by MicroEJ Architecture Specific Packs
+and Legacy MicroEJ Generic Packs.  Platform modules are organized into groups.
 When a group is selected, by default, all its modules are selected.
 To view the modules making up a group, click on the Show/Hide modules
 icon on the top-right of the frame.  This will let you select/deselect
@@ -296,7 +295,7 @@ imported.
 The description and contents of an item (group or module) are displayed
 beside the list on item selection.
 
-All the checked modules will be installed in the Platform.
+All the checked Platform modules will be installed in the Platform.
 
 .. figure:: images/platformConfigurationModules.png
    :alt: MicroEJ Platform Configuration Modules Selection
@@ -310,12 +309,12 @@ All the checked modules will be installed in the Platform.
   Click on the :guilabel:`Build Platform` link on the Platform configuration :guilabel:`Overview` tab.
 
 
-Modules Customization
-=====================
+Platform Modules Customization
+==============================
 
-Each selected module can be customized by creating a [module] folder
-named after the module beside the ``[name].platform`` definition. It may
-contain:
+Each selected Platform module can be customized by creating a [module]
+folder named after the module beside the ``[name].platform``
+definition. It may contain:
 
 -  An optional [module].properties file named after the module name.
    These properties will be injected in the execution context prefixed
@@ -655,10 +654,10 @@ such as :ref:`tool_serial_to_socket`.
 Low Level APIs Implementation Files
 -----------------------------------
 
-Some MicroEJ Architecture modules require some additional information 
-about the BSP implementation of Low Level APIs.
+Some Platform modules require additional information about the BSP
+implementation of Low Level APIs.
 
-This information must be stored in each module's configuration folder, in a file named ``bsp.xml``.
+This information must be stored in each Platform module's configuration folder, in a file named ``bsp.xml``.
 
 This file must start with the node ``<bsp>``. It can contain several
 lines like this one:
