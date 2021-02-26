@@ -109,7 +109,7 @@ Manual Import
 -------------
 
 This section is only relevant for older MicroEJ Platforms with no :ref:`mmm_module_description`.
-These Platforms are built from MicroEJ Architecture Specific Packs and Legacy MicroEJ Generic Packs (packaged as ``.xpfp`` files).
+These Platforms are built from MicroEJ Architecture Specific Packs and Legacy MicroEJ Generic Packs (packaged as ``.xpfp`` files) that must be imported manually.
 
 Once you downloaded a MicroEJ Pack file, proceed with the
 following steps to import it in MicroEJ SDK:
