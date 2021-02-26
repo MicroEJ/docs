@@ -297,7 +297,7 @@ The execution of this example on the MicroEJ Simulator should print the followin
 	}
 	=============== [ Completed Successfully ] ===============
 
-Another example showing how to use the :ref:`JSON Module <json-module>` along with the CBOR module to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.json .
+Another example showing how to use the :ref:`JSON Module <json-module>` along with the `CBOR Module <https://repository.microej.com/artifacts/ej/library/iot/cbor/>`_ to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.json .
 
 The execution of this example on the MicroEJ Simulator should print the following trace:
 
