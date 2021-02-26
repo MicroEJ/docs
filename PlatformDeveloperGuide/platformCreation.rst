@@ -629,6 +629,8 @@ The build script must implement the following specification:
 Many build script templates are available for most commonly used C toolchains in the 
 `Platform Qualification Tools repository <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_.
 
+.. _bsp_connection_run_script:
+
 Run Script File
 ---------------
 
