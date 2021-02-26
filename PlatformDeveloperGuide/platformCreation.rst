@@ -74,7 +74,7 @@ extension and are classified using the following naming convention:
 - ``TOOLCHAIN``: C compilation toolchain (e.g. ``CM4hardfp_GCC48``).
 - ``UID``: Architecture unique ID (e.g. ``flopi4G25``).
 - ``NAME`` : pack name (e.g. ``ui``).
-- ``VERSION``: pack version (e.g. ``7.12.0``).
+- ``VERSION``: pack version (e.g. ``13.0.4``).
 
 For example, MicroEJ Architecture Specific Pack UI versions for Arm®
 Cortex®-M4 microcontrollers compiled with GNU CC toolchain are
@@ -92,8 +92,8 @@ They are classified using the following naming convention:
 
    com/microej/pack/[NAME]/[NAME]-pack/[VERSION]/
 
-- ``NAME`` : pack name (e.g. ``ui``).
-- ``VERSION``: pack version (e.g. ``7.12.0``).
+- ``NAME`` : pack name (e.g. ``bluetooth``).
+- ``VERSION``: pack version (e.g. ``2.1.0``).
 
 For example, MicroEJ Generic Pack Bluetooth versions are available at
 https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-pack/.
