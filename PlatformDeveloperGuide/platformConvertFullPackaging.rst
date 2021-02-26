@@ -1,0 +1,303 @@
+.. _addBSPConnectionToFullPackaging:
+
+Configure a BSP Connection to MicroEJ Platform "FullPackaging"
+==============================================================
+
+This document describes all the steps to configure a BSP Connection to
+a MicroEJ Platform FullPackaging using the Platform Configuration
+Additions distributed by the `Platform Qualification Tools`_.
+
+In this document, `STM32F746G-DISCO Platform
+<https://developer.microej.com/create-your-embedded-platform/get-started-platform-development-on-stmicroelectronics-stm32f746g-disco/>`_
+will be used as an example.
+
+The steps are:
+
+#. Create an Architecture Repository to store the MicroEJ Architecture
+   and the MicroEJ Packs used by the MicroEJ Platform.
+#. Import the Platform Configuration Additions into the Platform
+   Configuration project.
+#. Update frontpanel configuration.
+#. Configure the BSP Connection.
+#. Add the Build Script and Run Script.
+
+Create an Architecture Repository
+---------------------------------
+
+The first step is to create an Architecture Repository.  The MicroEJ
+Architecture and MicroEJ Packs are provided in the
+``platformArchitecture`` folder of the fullPackaging package,
+
+- Import ``architecture-repository`` project from the `Platform
+  Qualication Tools <URL>`__ into the workspace.
+- Copy the MicroEJ Architecture (``.xpf``) into the correct folder
+  following MicroEJ Naming Convention (see
+  :ref:`architecture_import`).
+
+  - Open or extract the MicroEJ Architecture file (``.xpf``)
+  - Open the ``release.properties`` file:
+
+    - ``architecture`` is the ``ISA`` (e.g. ``CM7``)
+    - ``toolchain`` is the ``TOOLCHAIN`` (e.g. ``CM7hardfp_ARMCC5``)
+    - ``name`` is the ``UID`` (e.g. ``flopi7A21``)
+    - ``version`` is the ``VERSION`` (e.g. ``7.11.0``)
+
+  For example, in the STM32F746G-DISCO Platform, the MicroEJ
+  Architecture file ``flopi7A21-eval.xpf`` shall be copied and renamed
+  to
+  ``architecture-repository/repository/com/microej/architecture/CM7/CM7hardfp_ARMCC5/flopi7A21/7.11.0/flopi7A21-7.11.0-eval.xpf``.
+
+- Copy the MicroEJ Architecture Specific Packs (``.xpfp``) into the
+  correct folder following MicroEJ Naming Convention (see
+  :ref:`pack_import`).
+
+  - Open or extract the MicroEJ Architecture Specific Pack (``.xpfp``).
+
+    .. note:: The MicroEJ Architecture Specific Packs have the ``UID``
+              of the architecture in their name
+              (e.g. ``flopi7A21UI.xpfp``) and their
+              ``release_pack.properties`` file contains the
+              information of the MicroEJ Architecture.
+
+  - Open the ``release_pack.properties`` file:
+
+    - ``architecture`` is the ``ISA`` (e.g. ``CM7``)
+    - ``toolchain`` is the ``TOOLCHAIN`` (e.g. ``CM7hardfp_ARMCC5``)
+    - ``name`` is the ``UID`` (e.g. ``flopi7A21``)
+    - ``packName`` is the ``NAME`` (e.g. ``ui``)
+    - ``packVersion`` is the ``VERSION`` (e.g. ``12.0.1``)
+
+  For example, in the STM32F746G-DISCO Platform, the MicroEJ
+  Architecture Specific Pack UI ``flopi7A21UI.xpfp`` shall be copied
+  and renamed to
+  ``architecture-repository/repository/com/microej/architecture/CM7/CM7hardfp_ARMCC5/flopi7A21-ui-pack/12.0.1/flopi7A21-ui-pack-12.0.1.xpfp``.
+
+- Copy the Legacy MicroEJ Generic Packs (``.xpfp``) into the correct folder
+  following MicroEJ Naming Convention (see
+  :ref:`pack_import`).
+
+  - Open or extract the MicroEJ Generic Pack (``.xpfp``).
+
+    .. note:: The ``release_pack.properties`` of Legacy MicroEJ
+                Generic Packs does not contain information about
+                MicroEJ Architecture.
+
+  - Open the ``release_pack.properties`` file:
+
+    - ``packName`` is the ``NAME`` (e.g. ``fs``)
+    - ``packVersion`` is the ``VERSION`` (e.g. ``4.0.2``)
+
+  For example, in the STM32F746G-DISCO Platform, the Legacy MicroEJ
+  Generic Pack FS ``fs.xpfp`` shall be copied and renamed to
+  ``architecture-repository/repository/com/microej/pack/fs/4.0.2/fs-4.0.2.xpfp``.
+
+- Configure MicroEJ Module Manager to use the Architecture Repository:
+
+  - Go to :guilabel:`Window` > :guilabel:`Preferences` >
+    :guilabel:`MicroEJ` > :guilabel:`Module Manager`
+  - In :guilabel:`Module Repository` set :guilabel:`Settings File:` to
+    ``${workspace_loc:architecture-repository/ivysettings.xml}``.
+  - :guilabel:`Apply and Close`
+
+Here is the layout of the Architecture Repository for STM32F746GDISCO.
+
+.. figure:: images/platform_architecture-repository.png
+   :align: center
+   
+   Architecture Repository for STM32F746GDISCO fullPackaging
+
+Import the Platform Configuration Additions into the Platform Configuration project
+-----------------------------------------------------------------------------------
+
+- Rename the file ``bsp.properties`` to ``bsp2.properties`` (save it
+  for later).
+- Follow the this `README <URL>`__ to import the Platform
+  Configuration Additions into the ``-configuration`` project
+  (e.g. ``STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-configuration``).
+- Edit the ``module.properties`` file and set
+  ``com.microej.platformbuilder.platform.filename`` to the name of the
+  platform configuration file of the platform
+  (e.g. ``STM32F746GDISCO.platform``).
+- Fill the ``module.ivy`` with the MicroEJ Architecture and MicroEJ
+  Packs dependencies.
+
+Here is the module dependencies declared for the STM32F746GDISCO Platform.
+
+.. code-block:: xml
+   :caption: STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-configuration/module.ivy
+
+   <dependencies>
+     <!-- MicroEJ Architecture -->
+     <dependency org="com.microej.architecture.CM7.CM7hardfp_ARMCC5" name="flopi7A21" rev="7.11.0">
+       <artifact name="flopi7A21" m:classifier="${com.microej.platformbuilder.architecture.usage}" ext="xpf"/>
+     </dependency>
+   
+     <!-- MicroEJ Architecture Specific Packs  -->
+     <dependency org="com.microej.architecture.CM7.CM7hardfp_ARMCC5" name="flopi7A21-ui-pack" rev="12.0.1">
+       <artifact name="flopi7A21-ui-pack" ext="xpfp"/>
+     </dependency>
+     <dependency org="com.microej.architecture.CM7.CM7hardfp_ARMCC5" name="flopi7A21-net-pack" rev="6.1.5">
+       <artifact name="flopi7A21-net-pack" ext="xpfp"/>
+     </dependency>
+   
+     <!-- Legacy MicroEJ Generic Packs -->
+     <dependency org="com.microej.pack" name="fs" rev="4.0.2">
+       <artifact name="fs" ext="xpfp"/>
+     </dependency>
+     <dependency org="com.microej.pack" name="hal" rev="2.0.1">
+       <artifact name="hal" ext="xpfp"/>
+     </dependency>
+     
+   </dependencies>
+      
+
+.. note:: The ``<artifact .../>`` node is required because the
+          repository contains incomplete modules.  A module properly
+          packaged must provide a ``ivy.xml``.
+
+Update frontpanel configuration
+-------------------------------
+
+- In ``-configuration/frontpanel/frontpanel.properties`` set the
+  ``project.name`` to the folder name that contains the frontpanel
+  (e.g. ``project.name=STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-fp``).
+
+At this state, the platform is not connected to the BSP yet, but you
+can check that everything is properly configured so far by building
+the platform:
+
+- Right-click on the ``-configuration`` project and select
+  :guilabel:`Build Module`
+- Import the MicroEJ Platform built into the workspace.
+
+You can then create a MicroEJ Standalone Application and run it on the
+simulator (see :ref:`simulator_execution`).
+
+Configure BSP Connection
+------------------------
+
+This section explains how to configure a full BSP Connection on the
+STM32F746GDISCO Platform.  See :ref:`bsp_connection` for more
+information.
+
+- Open ``-configuration/bsp/bsp.properties``.
+- Comment out and set the following variables:
+
+  - ``root.dir``
+  - ``microejapp.relative.dir``
+  - ``microejlib.relative.dir``
+  - ``microejinc.relative.dir``
+  - ``microejscript.relative.dir``
+
+  For example:
+
+  .. code-block:: properties
+
+     # Specify the MicroEJ Application file ('microejapp.o') parent directory.
+     # This is a '/' separated directory relative to 'bsp.root.dir'.
+     microejapp.relative.dir=Projects/STM32746G-Discovery/Applications/MicroEJ/platform/lib
+     
+     # Specify the MicroEJ Platform runtime file ('microejruntime.a') parent directory.
+     # This is a '/' separated directory relative to 'bsp.root.dir'.
+     microejlib.relative.dir=Projects/STM32746G-Discovery/Applications/MicroEJ/platform/lib
+     
+     # Specify MicroEJ Platform header files ('*.h') parent directory.
+     # This is a '/' separated directory relative to 'bsp.root.dir'.
+     microejinc.relative.dir=Projects/STM32746G-Discovery/Applications/MicroEJ/platform/inc
+     
+     # Specify BSP external scripts files ('build.bat' and 'run.bat') parent directory.
+     # This is a '/' separated directory relative to 'bsp.root.dir'.
+     microejscript.relative.dir=Projects/STM32746G-Discovery/Applications/MicroEJ/scripts
+     
+     # Specify the BSP root directory. Can use ${project.parent.dir} which target the parent of platform configuration project
+     # For example, '${project.parent.dir}/PROJECT-NAME-bsp' specifies a BSP project beside the '-configuration' project
+     root.dir=${project.parent.dir}/STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-bsp/
+
+The paths to ``microejXXX.relative.dir`` can be inferred by looking at
+the ``output.dir`` value in ``bsp2.properties`` saved earlier.  For
+example on the STM32F746GDISCO project, its value is
+``${workspace}/${project.prefix}-bsp/Projects/STM32746G-Discovery/Applications/MicroEJ/platform``.
+
+- The BSP project path ``${workspace}/${project.prefix}-bsp`` becomes
+  ``${project.parent.dir}/STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-bsp/``.
+- ``Projects/STM32746G-Discovery/Applications/MicroEJ/platform`` is
+  the path to MicroEJ Application file, MicroEJ Platform header and
+  runtime files.  MicroEJ convention is to put the MicroEJ Application
+  file and MicroEJ Platform runtime files to ``platform/lib/`` and
+  MicroEJ Platform header files to ``platform/inc/``.
+- :ref:`bsp_connection_build_script` and
+  :ref:`bsp_connection_run_script` are PCA-specific and did not exist
+  before.  By convention we put them in a ``scripts/`` folder.
+
+The paths to ``microejXXX.relative.dir`` can be also be checked by
+looking at the C TOOLCHAIN configuration of the BSP.  For example on
+the STM32F746GDISCO project, the BSP configuration is located at
+``STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-bsp/Projects/STM32746G-Discovery/Applications/MicroEJ/MDK-ARM/Project.uvprojx``.
+
+- In :guilabel:`Project` > :guilabel:`Options for Target
+  'standalone'...` > :guilabel:`C/C++` > :guilabel:`Include Paths`
+  contains ``../platform/inc``.  This corresponds to the
+  ``microejinc.relative.dir`` relative the TOOLCHAIN project's file.
+- In the :guilabel:`Project` pane, there is a folder ``MicroEJ/Libs``
+  that contains ``microejruntime.lib`` and ``microejapp.o``.
+
+  - Right-click on ``microejruntime.lib`` > :guilabel:`Options for
+    File 'XXX'...`.  The :guilabel:`Path` is
+    ``../platform/lib/microejruntime.lib``.  This corresponds to the
+    ``microejlib.relative.dir``.
+  - Right-click on ``microejapp.o`` > :guilabel:`Options for File
+    'XXX'...`.  The :guilabel:`Path` is
+    ``../platform/lib/microejapp.o``.  This corresponds to the
+    ``microejapp.relative.dir``.
+
+At this stage the platform is connected to the BSP but lacks the Build
+Script and Run Script.  Still, you can:
+
+- Rebuild the platform (Right-click on the ``-configuration`` project
+  and select :guilabel:`Build Module`)
+- Build and program a MicroEJ Firmware (see :ref:`device_build`).
+
+Add Build Script and Run Script
+-------------------------------
+
+The final stage consists of adding the Build Script, to produce a
+MicroEJ Firmware, and the Run Script, to program a MicroEJ Firmware
+onto the device.
+
+The `Platform Qualification Tools`_ provides examples of Build Script
+and Run Script for various C TOOLCHAIN `here
+<https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`__.
+
+On the STM32F746GDISCO, the C TOOLCHAIN used is Keil uVision.
+
+- Create the folder pointed by ``microejscript.relative.dir``
+  (e.g. ``STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-bsp\Projects\STM32746G-Discovery\Applications\MicroEJ\scripts``).
+- Copy the example scripts from the `Platform Qualification Tools`_
+  for the C TOOLCHAIN of the BSP
+  (e.g. ``PlatformQualificationTools/framework/platform/scripts/KEILuV5/``)
+- Configure the scripts.
+- Enable the execution of the build script: 
+
+  - Go to :guilabel:`Run` > :guilabel:`Run Configurations...`
+  - Select the launch configuration
+  - Go to :guilabel:`Configuration` > :guilabel:`Device` > :guilabel:`Deploy`
+  - Ensure :guilabel:`Execute the MicroEJ build script (build.bat) at
+    a location known by the 3rd-party BSP project.` is checked.
+
+Going further
+-------------
+
+Now that the MicroEJ Platform is connected to the BSP it can leverage
+the Java Test Suites provided by the `Platform Qualification Tools`_.
+See :ref:`tutorialRunATestSuiteOnDevice` for a step by step
+explanation on how to do so.
+
+.. _Platform Qualification Tools: https://github.com/MicroEJ/PlatformQualificationTools
+
+..
+   | Copyright 2021, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
+

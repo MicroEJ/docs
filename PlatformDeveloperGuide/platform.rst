@@ -9,6 +9,7 @@ MicroEJ Platform
    platformConcepts
    platformCreation
    platformQualification
+   platformConvertFullPackaging
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
