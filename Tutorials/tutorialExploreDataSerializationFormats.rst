@@ -122,7 +122,9 @@ Application project in order to allow access to the JSON library.
 
 	<dependency org="org.json.me" name="json" rev="1.3.0"/>
 
-The instantiation and use of the parser is pretty straightforward. First you need to get the JSON content as a ``String``,  and then create a ``org.json.me.JSONObject`` instance with the string. If the string content is a valid JSON content, you should have an workable ``JSONObject`` to browse.
+The instantiation and use of the parser is pretty straightforward. 
+First you need to get the JSON content as a ``String``,  and then create a `JSONObject <https://repository.microej.com/javadoc/microej_5.x/apis/org/json/me/JSONObject.html>`_ instance with the string. 
+If the string content is a valid JSON content, you should have an workable `JSONObject <https://repository.microej.com/javadoc/microej_5.x/apis/org/json/me/JSONObject.html>`_ to browse.
 
 Example Of Use
 ~~~~~~~~~~~~~~
