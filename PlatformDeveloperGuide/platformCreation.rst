@@ -84,8 +84,7 @@ https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GC
 MicroEJ Generic Pack
 --------------------
 
-Contrary to MicroEJ Architecture Specific Packs, MicroEJ Generic Packs
-are not dependent on a specific toolchain or MicroEJ Architecture.
+MicroEJ Generic Packs can be imported on top of any MicroEJ Architecture.
 
 They are classified using the following naming convention:
 
@@ -99,26 +98,20 @@ They are classified using the following naming convention:
 For example, MicroEJ Generic Pack Bluetooth versions are available at
 https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-pack/.
 
-Legacy MicroEJ Generic Pack
----------------------------
+Legacy MicroEJ Generic Packs files end with the ``.xpfp`` extension and can be :ref:`manually imported <pack_manual_import>` on older MicroEJ Platforms.
 
-Legacy MicroEJ Generic Packs files ends with the ``.xpfp`` extension
-and are classified using the following naming convention:
+For example, the Legacy MicroEJ Generic Pack NET version ``9.2.3`` is
+available at https://repository.microej.com/modules/com/microej/pack/net/9.2.3/net-9.2.3.xpfp.
 
-::
+.. _pack_manual_import:
 
-   com/microej/pack/[name]/[version]/[name]-[version].xpfp
+Manual Import 
+-------------
 
-For example, the Legacy MicroEJ Generic Pack NET versions are
-available at
-https://repository.microej.com/modules/com/microej/pack/net/.
+This section is only relevant for older MicroEJ Platforms with no :ref:`mmm_module_description`.
+These Platforms are built from MicroEJ Architecture Specific Packs and Legacy MicroEJ Generic Packs (packaged as ``.xpfp`` files).
 
-Import MicroEJ Pack
--------------------
-
-This section is only relevant for MicroEJ Packs packaged as ``.xpfp``
-(MicroEJ Architecture Specific Packs and Legacy MicroEJ Generic
-Packs).  Once you downloaded a MicroEJ Pack file, proceed with the
+Once you downloaded a MicroEJ Pack file, proceed with the
 following steps to import it in MicroEJ SDK:
 
 - Select :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`.
