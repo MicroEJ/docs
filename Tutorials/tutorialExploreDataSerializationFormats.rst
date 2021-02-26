@@ -17,7 +17,7 @@ XML
 XML Parser Use In MicroEJ SDK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `XML API Module <https://repository.microej.com/artifacts/org/kxml2/kxml2/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `XML Module <https://repository.microej.com/artifacts/org/kxml2/kxml2/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the KXML library.
 
 ::
@@ -115,7 +115,7 @@ JSON is easily readable by humans compared to XML. To parse this data format, se
 JSON Parser Use In MicroEJ SDK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `JSON API Module <https://repository.microej.com/artifacts/org/json/me/json/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `JSON Module <https://repository.microej.com/artifacts/org/json/me/json/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the JSON library.
 
 ::
@@ -254,7 +254,7 @@ The `CBOR (Concise Binary Object Representation) <https://cbor.io/>`_ binary dat
 CBOR Parser Use In MicroEJ SDK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `CBOR API Module <https://repository.microej.com/artifacts/ej/library/iot/cbor/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `CBOR Module <https://repository.microej.com/artifacts/ej/library/iot/cbor/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the CBOR library.
 
 ::
