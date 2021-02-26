@@ -26,8 +26,8 @@ MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified 
 
 - ``ISA``: instruction set architecture (e.g. ``CM4`` for Arm® Cortex®-M4, ``ESP32`` for Espressif ESP32, ...).
 - ``TOOLCHAIN``: C compilation toolchain (e.g. ``CM4hardfp_GCC48``).
-- ``VERSION``: module version (e.g. ``7.12.0``).
 - ``UID``: Architecture unique ID (e.g. ``flopi4G25``).
+- ``VERSION``: module version (e.g. ``7.12.0``).
 - ``USAGE`` = ``eval`` for evaluation Architectures, ``prod`` for production Architectures.
 
 For example, MicroEJ Architecture versions for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain are available at
@@ -72,9 +72,9 @@ extension and are classified using the following naming convention:
 
 - ``ISA``: instruction set architecture (e.g. ``CM4`` for Arm® Cortex®-M4, ``ESP32`` for Espressif ESP32, ...).
 - ``TOOLCHAIN``: C compilation toolchain (e.g. ``CM4hardfp_GCC48``).
-- ``VERSION``: module version (e.g. ``7.12.0``).
 - ``UID``: Architecture unique ID (e.g. ``flopi4G25``).
-- ``NAME`` : the name of the module (e.g. ``ui``).
+- ``NAME`` : pack name (e.g. ``ui``).
+- ``VERSION``: pack version (e.g. ``7.12.0``).
 
 For example, MicroEJ Architecture Specific Pack UI versions for Arm®
 Cortex®-M4 microcontrollers compiled with GNU CC toolchain are
@@ -91,7 +91,10 @@ They are classified using the following naming convention:
 
 ::
 
-   com/microej/pack/[name]/[name]-pack/[version]/
+   com/microej/pack/[NAME]/[NAME]-pack/[VERSION]/
+
+- ``NAME`` : pack name (e.g. ``ui``).
+- ``VERSION``: pack version (e.g. ``7.12.0``).
 
 For example, MicroEJ Generic Pack Bluetooth versions are available at
 https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-pack/.
