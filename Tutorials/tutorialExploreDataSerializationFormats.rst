@@ -27,7 +27,7 @@ Application project in order to allow access to the KXML library.
 Example Of Use
 ~~~~~~~~~~~~~~
 
-An example available at https://github.com/MicroEJ/Example-XML.
+An example is available at https://github.com/MicroEJ/Example-XML.
 It presents how to use XML data exchange for your MicroEJ Application. It also details how to use the `KXmlParser <http://kxml.org/>`_ module.
 
 The example parses a short poem written in XML and prints the result on the standard output. The project can run on any MicroEJ Platform (no external dependencies).
@@ -97,6 +97,8 @@ Running ``MyXmlPullApp`` gives more details on the XML parsing and should print 
 	=============== [ Completed Successfully ] ===============
 
 	SUCCESS
+
+.. _json-module:
 
 JSON
 ----
@@ -244,6 +246,64 @@ The execution of this example on the MicroEJ Simulator should print the followin
 	SUCCESS
 
 
+CBOR
+----
+
+The `CBOR (Concise Binary Object Representation) <https://cbor.io/>`_ binary data serialization format is a lightweight data-interchange format similar to JSON but with a smaller footprint, making it very practical for embedded applications, though its messages are often less easily readable by humans.
+
+CBOR Parser Use In MicroEJ SDK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The `CBOR API Module <https://repository.microej.com/artifacts/ej/library/iot/cbor/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to allow access to the CBOR library.
+
+::
+
+	<dependency org="ej.library.iot" name="cbor" rev="1.1.0"/>
+
+Example Of Use
+~~~~~~~~~~~~~~
+
+An example is available at https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor .
+It shows how to use the CBOR library in your MicroEJ Application by encoding some data and reading it back, printing it on the standard output both as a raw byte string and in a JSON-like format. You can use http://cbor.me/ to convert the byte string output to a JSON format and check that it matches the encoded data. The project can run on any MicroEJ Platform (no external dependencies).
+
+When run on the MicroEJ Simulator, this example should print the following trace:
+
+::
+
+	=============== [ Initialization Stage ] ===============
+	=============== [ Launching on Simulator ] ===============
+	CBOR data string : a1646d656e75a36269646466696c656576616c75656446696c6565706f707570a1686d656e756974656d83a26576616c7565634e6577676f6e636c69636b6e4372656174654e6577446f632829a26576616c7565644f70656e676f6e636c69636b694f70656e446f632829a26576616c756565436c6f7365676f6e636c69636b6a436c6f7365446f632829
+	Data content : 
+	{
+		"menu" : {
+			"id" : "file",
+			"value" : "File",
+			"popup" : {
+				"menuitem" : [ {
+						"value" : "New",
+						"onclick" : "CreateNewDoc()"
+					}, {
+						"value" : "Open",
+						"onclick" : "OpenDoc()"
+					}, {
+						"value" : "Close",
+						"onclick" : "CloseDoc()"
+					} ]
+			}
+		}
+	}
+	=============== [ Completed Successfully ] ===============
+
+Another example showing how to use the :ref:`JSON Module <json-module>` along with the CBOR module to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.json .
+
+When run on the MicroEJ Simulator, this example should print the following trace:
+
+::
+
+	Initial data (271 bytes) = {"menu":{"value":"File","id":"file","popup":{"menuitem":[{"value":"New","onclick":"CreateNewDoc()"},{"value":"Open","onclick":"OpenDoc()"},{"value":"Close","onclick":"CloseDoc()"}]}}}
+	Data serialized (139 bytes)
+	Data deserialized = {menu={value=File, id=file, popup={menuitem=[{value=New, onclick=CreateNewDoc()}, {value=Open, onclick=OpenDoc()}, {value=Close, onclick=CloseDoc()}]}}}
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
