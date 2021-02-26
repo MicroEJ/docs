@@ -14,8 +14,8 @@ XML
 
 `XML (EXtensible Markup Language) <https://en.wikipedia.org/wiki/XML>`_ is used to describe data and text. It allows flexible development of user-defined document types. The format is robust, non-proprietary, persistent and is verifiable for storage and transmission. To parse this data format, the XML Pull parser `KXmlParser <http://kxml.org/>`_ from the Java community has been integrated to MicroEJ Central Repository.
 
-XML Parser Use In MicroEJ SDK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+XML Module
+~~~~~~~~~~
 
 The `XML Module <https://repository.microej.com/artifacts/org/kxml2/kxml2/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the KXML library.
@@ -112,8 +112,8 @@ As described on the `JSON official site <http://json.org/>`_, JSON (JavaScript O
 JSON is easily readable by humans compared to XML. To parse this data format, several JSON parsers are available on the `official JSON page <http://json.org/>`_, such as `JSON ME`, which has been integrated to MicroEJ Central Repository.
 
 
-JSON Parser Use In MicroEJ SDK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+JSON Module
+~~~~~~~~~~~
 
 The `JSON Module <https://repository.microej.com/artifacts/org/json/me/json/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the JSON library.
@@ -251,8 +251,8 @@ CBOR
 
 The `CBOR (Concise Binary Object Representation) <https://cbor.io/>`_ binary data serialization format is a lightweight data-interchange format similar to JSON but with a smaller footprint, making it very practical for embedded applications, though its messages are often less easily readable by humans.
 
-CBOR Parser Use In MicroEJ SDK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CBOR Module
+~~~~~~~~~~~
 
 The `CBOR Module <https://repository.microej.com/artifacts/ej/library/iot/cbor/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the CBOR library.
