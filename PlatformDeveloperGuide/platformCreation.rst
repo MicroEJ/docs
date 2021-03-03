@@ -203,7 +203,7 @@ The next step is to create a MicroEJ Platform configuration:
         <dependency org="com.microej.pack.[NAME]" name="[NAME]-pack" rev="[VERSION]"/>
 
         <!-- Legacy MicroEJ Generic Pack -->
-        <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]-[NAME]-pack" rev="[VERSION]"/>
+        <dependency org="com.microej.pack" name="[NAME]" rev="[VERSION]"/>
 
      </dependencies>
 
@@ -220,8 +220,7 @@ The next step is to create a MicroEJ Platform configuration:
 
       </dependencies>
 
-  And to declare the MicroEJ Generic Pack Bluetooth version ``2.1.0``:
-
+  To declare the MicroEJ Generic Pack Bluetooth version ``2.1.0``:
 
   .. code-block:: xml
       :emphasize-lines: 3
@@ -229,6 +228,17 @@ The next step is to create a MicroEJ Platform configuration:
       <dependencies>
         <!-- MicroEJ Generic Pack  -->
           <dependency org="com.microej.pack.bluetooth" name="bluetooth-pack" rev="2.1.0"/>
+
+      </dependencies>
+
+  And to declare the Legacy MicroEJ Generic Pack Net version ``9.2.3``:
+
+  .. code-block:: xml
+      :emphasize-lines: 3
+
+      <dependencies>
+        <!-- Legacy MicroEJ Generic Pack -->
+        <dependency org="com.microej.pack" name="net" rev="9.2.3"/>
 
       </dependencies>
 
