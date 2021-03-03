@@ -111,8 +111,8 @@ Connection used by the MicroEJ Platform.
 For a MicroEJ Application, these properties are set using the launcher
 of the application.  For a Test Suite, the properties are defined in a
 file named ``config.properties`` in the root folder of the Test Suite.
-For example, see this `config.properties
-<https://github.com/MicroEJ/PlatformQualificationTools/blob/2.3.0/tests/fs/java/java-testsuite-fs/config.properties>`__
+For example, see this example of `config.properties
+<https://github.com/MicroEJ/PlatformQualificationTools/blob/2.3.0/tests/fs/java/java-testsuite-fs/config.properties.tpl>`__
 file.
 
 See :ref:`bsp_connection` for an explanation of the properties.  See
@@ -265,4 +265,3 @@ The following image shows the test suite report fully passed:
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
    copyrights are the property of their respective owners.
-
