@@ -4,6 +4,33 @@
 Changelog
 =========
 
+13.0.5 (2021-03-08)
+===================
+
+* Compatible with Architecture 7.13.0 or higher.
+
+MicroUI Implementation
+""""""""""""""""""""""
+
+**Fixed**
+
+	* A feature was not able to call Display.callOnFlushCompleted().
+	* Stop feature: prevent NullPointerException when a kernel's EventGenerator is removed from event generators pool.
+	* Filter DeadFeatureException in MicroUI pump. 
+	* Drawing of thick arcs which represent an almost full circle.
+	* Drawing of thick faded arcs which pass by 0° angle.
+
+**Removed**
+
+	* Remove ResourceManager dependency.
+
+Simulator
+"""""""""
+
+**Fixed**
+
+	* Front panel memory management: reduce simulation time.
+
 13.0.4 (2021-01-15)
 ===================
 
