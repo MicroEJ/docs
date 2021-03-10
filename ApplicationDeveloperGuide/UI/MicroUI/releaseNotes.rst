@@ -4,14 +4,14 @@
 Migration Guide
 ===============
 
-The MicroUI implementation is provided by the MicroEJ Architecture UI Pack.
-According the UI Pack used to build the MicroEJ platform, the application has to be updated.
+The MicroUI implementation is provided by the MicroEJ UI Pack.
+According the MicroEJ UI Pack used to build the MicroEJ Platform, the application has to be updated.
 
-* Refer to the table that illustrates the implemented MicroUI API for each pack :ref:`here <section_ui_api>`.
-* Refer to the MicroUI API changelog `here <https://repository.microej.com/artifacts/ej/api/microui>`_.
-* Refer to the Drawing API changelog `here <https://repository.microej.com/artifacts/ej/api/drawing>`_.
+* Refer to the :ref:`table <section_ui_api>` that illustrates the implemented MicroUI API for each MicroEJ UI Pack.
+* Refer to the latest `MicroUI API changelog <https://repository.microej.com/artifacts/ej/api/microui>`_.
+* Refer to the latest `Drawing API changelog <https://repository.microej.com/artifacts/ej/api/drawing>`_.
 
-The following chapters describe the changes to peform in the application according the UI pack used to build the MicroEJ platform.
+The following chapters describe the changes to perform in the application according the UI pack used to build the MicroEJ platform.
 
 From 12.x to 13.x
 =================
