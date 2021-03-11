@@ -269,7 +269,7 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Obsolete references on Java heap are used (since UI pack 12.0.0)
+	* Obsolete references on Java heap are used (since MicroEJ UI Pack 12.0.0)
 
 12.1.3 (2020-02-24)
 ===================
@@ -438,7 +438,7 @@ Tools
 
 **Removed**
 
-	* FrontPanel version 5: Move front panel from UI Pack to Architecture *(not backward compatible)*; Architecture contains now Front Panel version 6
+	* FrontPanel version 5: Move front panel from MicroEJ UI Pack to Architecture *(not backward compatible)*; Architecture contains now Front Panel version 6
 
 11.2.0 (2019-02-01)
 ===================
@@ -915,7 +915,7 @@ MWT
 
 **Removed**
 
-	* Remove MWT from UI pack *(not backward compatible)*
+	* Remove MWT from MicroEJ UI Pack *(not backward compatible)*
 
 Simulator
 """""""""
