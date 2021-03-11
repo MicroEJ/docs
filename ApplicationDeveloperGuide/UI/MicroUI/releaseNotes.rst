@@ -11,29 +11,31 @@ According the MicroEJ UI Pack used to build the MicroEJ Platform, the applicatio
 * Refer to the latest `MicroUI API changelog <https://repository.microej.com/artifacts/ej/api/microui>`_.
 * Refer to the latest `Drawing API changelog <https://repository.microej.com/artifacts/ej/api/drawing>`_.
 
-The following chapters describe the changes to perform in the application according the UI pack used to build the MicroEJ platform.
+The following chapters describe the changes to perform in the application according the MicroEJ UI pack used to build the MicroEJ Platform.
 
 From 12.x to 13.x
 =================
 
-* Update ``ej.api#microui`` dependency to ``3.0.0``.
-* Add ``ej.api#drawing-1.0.0`` dependency.
+* Update ``ej.api#microui`` dependency to ``3.0.3``.
+* Add ``ej.api#drawing-1.0.2`` dependency.
+
+.. code-block:: xml
+
+   <dependencies>
+      <dependency org="ej.api" name="microui" rev="3.0.3"/>
+      <dependency org="ej.api" name="drawing" rev="1.0.2"/>         
+   </dependencies>
 
 From 10.x to 12.x
 =================
 
-* In MicroEJ application launcher > ``Configuration`` tab > ``MicroUI``: check ``Use Flying Images`` when the application is using the flying images.
-* In MicroEJ application launcher, increase java heap: it now contains MicroUI images metadata (size, format, clip etc.). The iceatea heap has been automatically decreased.
+* In MicroEJ application launcher > ``Configuration`` tab > :ref:`MicroUI <section_ui_options_microui>`: check ``Use Flying Images`` when the application is using the flying images (property ``com.microej.library.microui.flyingimage.enabled``).
+* In MicroEJ application launcher, increase the :ref:`Java heap <option_java_heap>`: it now contains MicroUI images metadata (size, format, clip etc.). The iceatea heap has been automatically decreased.
 
 From 9.x to 10.x
 ================
 
-* In MicroEJ application launcher > ``Configuration`` tab > ``MicroUI``: set the image heap size (application mode).
-
-From 8.x to 9.x
-===============
-
-* MWT has been removed from pack: update the application classpath in consequence
+* In MicroEJ application launcher > ``Configuration`` tab > :ref:`MicroUI <section_ui_options_microui>`: set the image heap size (property :ref:`ej.microui.memory.imagesheap.size <section_ui_options_imagesheapsize>`).
 
 ..
    | Copyright 2021, MicroEJ Corp. Content in this space is free 
