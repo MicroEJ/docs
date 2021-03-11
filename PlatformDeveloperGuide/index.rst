@@ -19,6 +19,7 @@ Platform Developer Guide
    fs
    hal
    device
+   watchdog
    simulation
    appendix/index
 
