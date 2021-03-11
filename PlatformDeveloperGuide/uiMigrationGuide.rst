@@ -1,7 +1,7 @@
 .. _section_ui_migrationguide:
 
 ===============
-Migration Notes
+Migration Guide
 ===============
 
 From 12.x to 13.x

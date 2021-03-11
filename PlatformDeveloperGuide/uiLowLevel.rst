@@ -8,7 +8,7 @@ Low Level API
 Principle
 =========
 
-The MicroUI implementation for MicroEJ requires a Low Level implementation. This Low Level implementation finalizes the MicroUI implementation started with the static initialization step (see :ref:`section_static_init`) for a given MicroEJ platform.
+The MicroUI implementation for MicroEJ requires a Low Level implementation. This Low Level implementation finalizes the MicroUI implementation started with the static initialization step (see :ref:`section_static_init`) for a given MicroEJ Platform.
 
 The Low Level implementation consists of a set of headers files to implement in C to target the hardware drivers. Some functions are mandatory, others are not. Some other headers files are also available to call UI engines internal functions.
 
