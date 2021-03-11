@@ -11,7 +11,7 @@ According the MicroEJ UI Pack used to build the MicroEJ Platform, the applicatio
 * Refer to the latest `MicroUI API changelog <https://repository.microej.com/artifacts/ej/api/microui>`_.
 * Refer to the latest `Drawing API changelog <https://repository.microej.com/artifacts/ej/api/drawing>`_.
 
-The following chapters describe the changes to perform in the application according the MicroEJ UI pack used to build the MicroEJ Platform.
+The following chapters describe the changes to perform in the application according the MicroEJ UI Pack used to build the MicroEJ Platform.
 
 From 12.x to 13.x
 =================
