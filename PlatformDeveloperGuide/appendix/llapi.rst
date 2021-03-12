@@ -597,6 +597,37 @@ One C header file is provided:
    platform architecture name and unique device identifier.
 
 
+.. _LLWATCHDOG-API-SECTION:
+
+LLWATCHDOG: Watchdog
+====================
+
+Naming Convention
+-----------------
+
+The Low Level Watchdog API (LLWATCHDOG), provides functions that allow the use of this API
+at the BSP level in C. The names of these functions match the ``LLWATCHDOG_IMPL_*`` pattern.
+
+The Watchdog API is delivered with a Generic CCO implementation on which the platform must
+depend. This CCO relies on functions that need to be implemented by engineers in a driver.
+The name of these functions match the ``LLWATCHDOG_IMPL_*_action`` pattern.
+
+Header Files
+------------
+
+One C header file is provided:
+
+-  LLWATCHDOG_impl.h
+
+   Defines a set of functions that can be used at BSP level if required.
+
+The header of Generic CCO containing functions to implement:
+
+-  watchdog_helper.h
+
+   Defines a set of functions that the BSP must implement to link the platform watchdog timer
+   to the Watchdog library.
+
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
