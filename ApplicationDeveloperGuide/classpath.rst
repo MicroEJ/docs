@@ -227,7 +227,8 @@ For example, to define the property ``myProp`` with the value
 Option can also be set in the ``VM arguments`` field of the ``JRE`` tab of the launch using the -D option (e.g. ``-Dmicroej.java.property.myProp=theValue``).
 
 .. note::
-   In :ref:`Multi-Sandbox <multisandbox>` environment, ``*.properties.list`` files found in MicroEJ Classpath are silently skipped.
+
+   When building a :ref:`sandboxed_application`, ``*.properties.list`` files found in MicroEJ Classpath are silently skipped.
 
 .. _section.classpath.elements.constants:
 
