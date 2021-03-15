@@ -63,11 +63,11 @@ Use in a Java application
 
 The `Watchdog API Module <https://repository.microej.com/artifacts/ej/api/monitoring/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project in order to allow access to the Device library.
+Application project in order to allow access to the Watchdog library.
 
 ::
 
-   <dependency org="ej.api.monitoring" name="watchdog" rev="1.0.0" transitive="false"/>
+   <dependency org="ej.api.monitoring" name="watchdog" rev="1.0.1" transitive="false"/>
 
 
 Use in C inside the BSP
