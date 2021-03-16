@@ -481,8 +481,8 @@ imported.
 Setup the MicroEJ Platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This step describes how to configure the MicroEJ Platform previously
-created.
+This step describes how to configure the :ref:`MicroEJ Platform <platform_configuration_creation>` 
+previously created.
 
 The `Platform Configuration Additions
 <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform>`_
@@ -515,7 +515,7 @@ invoking ``make`` in the FreeRTOS BSP.
 
      .. code-block:: console
 
-       svn export --revision 54 --force https://github.com/MicroEJ/PlatformQualificationTools/trunk/framework/platform/content [path_to_output_directory]
+       svn export --force https://github.com/MicroEJ/PlatformQualificationTools/trunk/framework/platform/content [path_to_platform_configuration_directory]
 
 #. Edit the file ``bsp/bsp.properties`` as follow:
 
@@ -533,7 +533,7 @@ invoking ``make`` in the FreeRTOS BSP.
      # This is a '/' separated directory relative to 'bsp.root.dir'.
      microejinc.relative.dir=microej/inc
 	 
-#. Edit the file ``modules.ivy`` and add the MicroEJ architecture as a dependency:
+#. Edit the file ``modules.ivy`` and add the MicroEJ Architecture as a dependency:
 
    .. code-block:: XML
 
@@ -552,9 +552,23 @@ invoking ``make`` in the FreeRTOS BSP.
 
 #. Right-click on the platform project and click on ``Build Module``. 
 
-#. Select 'File' > 'Import...' > 'General' > 'Existing Projects into Workspace' > 'Next'.
+#. The following message appears in the console:
 
-#. Check 'Select root directory' and import the generated platform in the workspace 'lm3s811evb-Platform-CM0_GCC48-0.0.1'. 
+.. code-block:: none
+
+	module-platform:report:
+		 [echo]     ============================================================================================================
+		 [echo]     Platform has been built in this directory 'C:\Users\user\src\tuto-from-scratch\workspace/lm3s811evb-Platform-CM0_GCC48-0.0.1'.
+		 [echo]     To import this project in your MicroEJ SDK workspace (if not already available):
+		 [echo]      - Select 'File' > 'Import...' > 'General' > 'Existing Projects into Workspace' > 'Next'
+		 [echo]      - Check 'Select root directory' and browse 'C:\Users\user\src\tuto-from-scratch\workspace/lm3s811evb-Platform-CM0_GCC48-0.0.1' > 'Finish'
+		 [echo]     ============================================================================================================
+
+	BUILD SUCCESSFUL
+
+#. Follow the instructions to import the generated platform in the workspace: 
+
+   .. image:: images/tuto_microej_fw_from_scratch_build_platform.png
 
 At this point, the MicroEJ Platform is ready to be used to build
 MicroEJ Applications.
@@ -891,7 +905,6 @@ https://github.com/MicroEJ/FreeRTOS/commit/7ae8e79f9c811621569ccb90c46b1dcda91da
 Build and Link the Firmware with the MicroEJ Runtime and MicroEJ Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To build and link the firmware with the MicroEJ Runtime and MicroEJ
 To build and link the firmware with the MicroEJ Runtime and MicroEJ
 Application, the BSP port must be modified to:
 
