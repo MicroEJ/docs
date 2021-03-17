@@ -164,10 +164,9 @@ boots on the target device.
    .. note::
 
       WSL can start the editor Visual Studio Code. type ``code .`` in WSL. ``.`` represents the current directory in Unix.
-
-   https://github.com/MicroEJ/FreeRTOS/commit/48248eae13baebf7df9638cd8da6fbfe1a735a9c
    
    .. code-block:: diff
+       :caption: https://github.com/MicroEJ/FreeRTOS/commit/48248eae13baebf7df9638cd8da6fbfe1a735a9c
 
        diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
        --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
@@ -269,9 +268,8 @@ the UART device and an example implementation for QEMU is available
 Here is the patch that implements ``putchar(3)`` and ``puts(3)`` and prints
 ``Hello World``.
 
-https://github.com/MicroEJ/FreeRTOS/commit/d09ec0f5cbdf69ca97a5ac15f8b905538aa4c61e
-
 .. code-block:: diff
+    :caption: https://github.com/MicroEJ/FreeRTOS/commit/d09ec0f5cbdf69ca97a5ac15f8b905538aa4c61e
 
     diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
     --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
@@ -333,10 +331,8 @@ qemu-system-arm -M lm3s811evb -nographic -kernel gcc/RTOSDemo.bin``
 
 With this two functions implemented, ``printf(3)`` is also available.
 
-https://github.com/MicroEJ/FreeRTOS/commit/1f7e7ee014754a4dcb4f6c5a470205e02f6ac3c8
-
 .. code-block:: diff
-
+    :caption: https://github.com/MicroEJ/FreeRTOS/commit/1f7e7ee014754a4dcb4f6c5a470205e02f6ac3c8
 
     diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
     --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
@@ -481,8 +477,8 @@ imported.
 Setup the MicroEJ Platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This step describes how to configure the :ref:`MicroEJ Platform <platform_configuration_creation>` 
-previously created.
+This step describes how to configure the MicroEJ Platform previously created. 
+For more information on this topic, please refer to :ref:`platform_configuration_creation`.
 
 The `Platform Configuration Additions
 <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform>`_
@@ -879,9 +875,8 @@ task by calling ``SNI_startVM``. The function ``SNI_startVM`` returns
 when the MicroEJ Application exits. Both functions are declared in the
 C header ``sni.h``.
 
-https://github.com/MicroEJ/FreeRTOS/commit/7ae8e79f9c811621569ccb90c46b1dcda91da35d
-
 .. code-block:: diff
+    :caption: https://github.com/MicroEJ/FreeRTOS/commit/7ae8e79f9c811621569ccb90c46b1dcda91da35d
 
     diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
     --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
@@ -917,10 +912,9 @@ Application, the BSP port must be modified to:
 
 The following patch updates the BSP port ``Makefile`` to do it:
 
-https://github.com/MicroEJ/FreeRTOS/commit/e52451e569c274348acb99620bd5df839e9ba41a
-
 .. code-block:: diff
-
+  :caption: https://github.com/FreeRTOS/FreeRTOS/commit/257d9e1d123be0342029e2930c0073dd5a4a2b2d
+	
   --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/Makefile
   +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/Makefile
   @@ -29,8 +29,10 @@ RTOS_SOURCE_DIR=../../Source
@@ -989,9 +983,8 @@ The rest of the tutorial assumes that everything is done in the
 
 Then update the linker script ``standlone.ld``:
 
-https://github.com/MicroEJ/FreeRTOS/commit/0e2e31d8a510d37178c340051bab636902471eea
-
 .. code-block:: diff
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/0e2e31d8a510d37178c340051bab636902471eea
 
   diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
   --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
@@ -1045,9 +1038,8 @@ declaration of ``LIBS`` (put ``microejapp.o`` first) or guard the
 libraries declaration with ``--start-group`` and ``--end-group`` in
 ``makedefs``. This tutorial uses the later.
 
-https://github.com/MicroEJ/FreeRTOS/commit/4b23ea2e77112f053368718d299ff8db826ddde1
-
 .. code-block:: diff
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/4b23ea2e77112f053368718d299ff8db826ddde1
 
   diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
@@ -1110,9 +1102,8 @@ linking the firmware is defined in the file ``makedefs``. Replicating
 how the libc is managed, the following patch finds the ``libm.a``
 library and add it at link time:
 
-https://github.com/MicroEJ/FreeRTOS/commit/a202f43948c41b848ebfbc8c53610028c454b66f
-
 .. code-block:: diff
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/a202f43948c41b848ebfbc8c53610028c454b66f
 
   diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
@@ -1159,9 +1150,8 @@ Instead of implementing a stub ``_sbrk`` function, this tutorial uses
 the ``libnosys.a`` which provides stub implementation for various
 functions.
 
-https://github.com/MicroEJ/FreeRTOS/commit/a202f43948c41b848ebfbc8c53610028c454b66f
-
 .. code-block:: diff
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/a202f43948c41b848ebfbc8c53610028c454b66f
 
   diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
@@ -1210,9 +1200,8 @@ the ``end`` symbol corresponds to the beginning of the C heap. This
 tutorial uses the end of the ``.bss`` segment as the beginning of the
 C heap.
 
-https://github.com/MicroEJ/FreeRTOS/commit/898f2e6cd492616b4ccaabc136cafa76ef038690
-
 .. code-block:: diff
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/898f2e6cd492616b4ccaabc136cafa76ef038690
 
   diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
   --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
