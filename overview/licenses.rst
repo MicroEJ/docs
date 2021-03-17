@@ -301,22 +301,27 @@ one below for each dongle:
 Windows Troubleshooting
 """""""""""""""""""""""
 
-If the :ref:`dongle activation <production_license_activate>` failed with ``No rockey`` message, check there is one and only one dongle recognized with the following
-hardware ID :
+- If the :ref:`dongle activation <production_license_activate>` failed with ``No rockey`` message, check there is one and only one dongle recognized with the following hardware ID :
 
-::
+  ::
 
-   HID\VID_096E&PID_0006&REV_0109
+     HID\VID_096E&PID_0006&REV_0109
 
-Go to the :guilabel:`Device Manager` > :guilabel:`Human Interface Devices` and
-check among the :guilabel:`USB Input Device` entries that the
-:guilabel:`Details` > :guilabel:`Hardware Ids` property match the ID mentioned before.
+  Go to the :guilabel:`Device Manager` > :guilabel:`Human Interface Devices` and
+  check among the :guilabel:`USB Input Device` entries that the
+  :guilabel:`Details` > :guilabel:`Hardware Ids` property match the ID mentioned before.
 
 
-If the :ref:`dongle activation <production_license_activate>` was successful with ``Update successfully`` message but the license does not appear in MicroEJ SDK or is not updated, 
-try to activate again by starting the executable with administrator privileges:
+- If the :ref:`dongle activation <production_license_activate>` was successful with ``Update successfully`` message but the license does not appear in MicroEJ SDK or is not updated, 
+  try to activate again by starting the executable with administrator privileges:
 
-.. figure:: images/dongle/runAsAdministrator.png
+  .. figure:: images/dongle/runAsAdministrator.png
+
+- If the following error message is thrown when building a MicroEJ Firmware, either the dongle plugged is a verbatim dongle or it has not been successfully :ref:`activated <production_license_activate>`:
+
+  .. code-block:: console
+
+     Invalid license check (Dongle found is not compatible).
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
