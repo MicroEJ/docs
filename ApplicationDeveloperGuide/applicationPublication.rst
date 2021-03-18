@@ -24,18 +24,10 @@ up the following message:
 
     Total time: 1 minute 6 seconds
 
-
-.. _section.publish.on.a.microej.store:
-
-Publish on a MicroEJ Forge Instance
------------------------------------
-
 The WPK file produced by the build process is located in a dedicated
-``target~/artifacts`` folder in the project.
+``target~/artifacts`` folder in the project and is published to the target module repository declared in :ref:`MicroEJ Module Manager settings file <mmm_settings_file>`.
 
-The ``.wpk`` file is ready to be uploaded to a MicroEJ Forge instance.
-Please consult `<https://community.microej.com>`_ for more information.
-
+The module repository can be a `MicroEJ Forge instance <https://www.microej.com/product/forge/>`_.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
