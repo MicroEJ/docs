@@ -38,7 +38,7 @@ The MicroEJ Architectures are distributed into two formats:
   distribute this version).
 
 The supported MicroEJ Architectures are listed here
-https://developer.microej.com/mej32-embedded-runtime-architectures/#arch
+`<https://developer.microej.com/mej32-embedded-runtime-architectures/>`_
 
 The MicroEJ Architecture is either provided from:
 
