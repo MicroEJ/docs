@@ -21,9 +21,7 @@ Unsupported Statements
 The following syntaxes are not supported by the MicroEJ JavaScript engine:
 
 - ``with (x) { }``
-- ``delete x``
 - ``typeof x``
-- ``x instanceof y``
 - ``arguments``
 - ``get`` and ``set`` in object initialiser
 
