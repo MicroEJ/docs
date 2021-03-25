@@ -305,7 +305,7 @@ Windows Troubleshooting
 
   ::
 
-     HID\VID_096E&PID_0006&REV_0109
+     HID\VID_096E&PID_0006&REV_0201
 
   Go to the :guilabel:`Device Manager` > :guilabel:`Human Interface Devices` and
   check among the :guilabel:`USB Input Device` entries that the
