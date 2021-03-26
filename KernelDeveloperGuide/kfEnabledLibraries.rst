@@ -57,6 +57,13 @@ Automatically Reclaimed Resources
 
 Instances of `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_ and `Font <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html>`_ are automatically reclaimed when a Feature is stopped.
 
+BON
+~~~
+
+The ``ej.bon.Timer`` class can handle timer tasks from any feature.
+Instances of ``ej.bon.TimerTask`` are automatically canceled when a Feature is stopped.
+In Multi-Sandbox mode, ``ej.bon.Timer`` instances should not be created inside a clinit.
+
 ECOM
 ~~~~
 
