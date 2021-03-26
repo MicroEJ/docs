@@ -76,4 +76,5 @@ latex_logo = '_themes/microej/static/mascot.pdf'
 # setting for pygments. This is the same style class used by the HTML builder.
 pygments_style = 'microej.MicroEJStyle'
 
-linkcheck_ignore = [r'https?:\/\/github\.com\/.+#.+']
+# ignoring Github links with anchors at linkcheck
+# linkcheck_ignore = [r'https?:\/\/github\.com\/.+#.+']
