@@ -33,6 +33,8 @@ This function can then be used in JS::
 
 This technique can also be used to share Java objects to JS. It is achieved by returning any Java object in the `invoke` method.
 
+.. _js.java.ffi:
+
 ----------------------------
  Foreign Function Interface
 ----------------------------
@@ -40,12 +42,14 @@ This technique can also be used to share Java objects to JS. It is achieved by r
 As said above, JS can manipulate Java objects and call methods on Java objects.
 
 Let `getValue()` a Java method called from JS on a Java object.
-As long as the type of the object is not known at compile-time in the JS, all the types containing a method with the same signature are searched. Then the JS pre-processor generates a `JsFfi` class and a method that dynamically tries to find the type of the receiver object. So, when the `getValue()` method is called from JS, this generated method is called.
+As long as the type of the object is not known at compile-time in the JS, all the types containing a method with the same signature are searched in the classpath.
+Then the JS pre-processor generates a `JsFfi` class and a method that dynamically tries to find the type of the receiver object.
+So, when the `getValue()` method is called from JS, this generated method is called.
 
 .. Warning::
     Calling a method whose name is very common could result in a delay while calling it, and some useless methods embedded.
 
-This example shares the a Java Date of the current time::
+This example shares a Java Date of the current time::
 
 	JsRuntime.JS_GLOBAL_OBJECT.put("getCurrentDate", JsRuntime.createFunction(new JsClosure() {
 		@Override
