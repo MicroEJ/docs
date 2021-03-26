@@ -17,3 +17,4 @@
    js/builtin
    js/java
    js/limitations
+   js/troubleshooting
