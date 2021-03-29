@@ -1,36 +1,48 @@
-.. _addBSPConnectionToFullPackaging:
+.. _former_platform_migration:
 
-Configure a BSP Connection to MicroEJ Platform "FullPackaging"
-==============================================================
+Former MicroEJ Platform Migration
+=================================
 
-This document describes all the steps to configure a BSP Connection to
-a MicroEJ Platform FullPackaging using the Platform Configuration
-Additions distributed by the `Platform Qualification Tools`_.
+This chapter describes the steps to migrate a former MicroEJ Platform in its latest form described in :ref:`new_platform_creation` chapter.
 
-In this document, `STM32F746G-DISCO Platform
-<https://developer.microej.com/create-your-embedded-platform/get-started-platform-development-on-stmicroelectronics-stm32f746g-disco/>`_
+As a reminder, this new form brings two main features:
+
+- Both MicroEJ Platform :ref:`build <platform_build>` and :ref:`dependencies declaration <platform_configuration_creation>` are managed by :ref:`mmm`. This allows a fully automated build and continuous integration.
+- The configuration of the target Board Support Package (BSP) has been revisited to support any :ref:`BSP Connection cases <bsp_connection_cases>`.
+ 
+Former MicroEJ Platforms were usually distributed by MicroEJ Corp. in an all-in-one ZIP file also called `fullPackaging`.
+
+In this document, the `MicroEJ Platform for STMicroelectronics STM32F746G-DISCO board
+<https://repository.microej.com/packages/referenceimplementations/846SI/3.4.2/STM32F746G-DISCO-846SI-fullPackaging-eval-3.4.2.zip>`_
 will be used as an example.
 
-The steps are:
+The following figure shows the `fullPackaging` structure once extracted.
 
-#. Create an Architecture Repository to store the MicroEJ Architecture
-   and the MicroEJ Packs used by the MicroEJ Platform.
-#. Import the Platform Configuration Additions into the Platform
+.. figure:: images/platform_fullPackaging_structure.png
+   :align: center
+   
+   STM32F746G-DISCO Platform Full Packaging Structure 
+
+The migration steps are:
+
+#. Create a :ref:`Module Repository <module_repository>` to store the :ref:`MicroEJ Architecture <architecture_overview>`
+   and :ref:`MicroEJ Packs <pack_overview>` used by the MicroEJ Platform.
+#. Import the `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/>`_ into the Platform
    Configuration project.
-#. Update frontpanel configuration.
-#. Configure the BSP Connection.
-#. Add the Build Script and Run Script.
+#. Update the Front Panel project configuration.
+#. Configure the :ref:`BSP Connection <bsp_connection>`.
+#. Add the :ref:`Build Script <bsp_connection_build_script>` and :ref:`Run Script <bsp_connection_run_script>`.
 
 Create an Architecture Repository
 ---------------------------------
 
-The first step is to create an Architecture Repository.  The MicroEJ
+The first step is to create an Architecture Repository. The MicroEJ 
 Architecture and MicroEJ Packs are provided in the
-``platformArchitecture`` folder of the fullPackaging package,
+``platformArchitecture`` directory of the `fullPackaging` package,
 
 - Import ``architecture-repository`` project from the `Platform
   Qualication Tools <URL>`__ into the workspace.
-- Copy the MicroEJ Architecture (``.xpf``) into the correct folder
+- Copy the MicroEJ Architecture (``.xpf``) into the correct directory
   following MicroEJ Naming Convention (see
   :ref:`architecture_import`).
 
@@ -48,7 +60,7 @@ Architecture and MicroEJ Packs are provided in the
   ``architecture-repository/repository/com/microej/architecture/CM7/CM7hardfp_ARMCC5/flopi7A21/7.11.0/flopi7A21-7.11.0-eval.xpf``.
 
 - Copy the MicroEJ Architecture Specific Packs (``.xpfp``) into the
-  correct folder following MicroEJ Naming Convention (see
+  correct directory following MicroEJ Naming Convention (see
   :ref:`pack_import`).
 
   - Open or extract the MicroEJ Architecture Specific Pack (``.xpfp``).
@@ -72,7 +84,7 @@ Architecture and MicroEJ Packs are provided in the
   and renamed to
   ``architecture-repository/repository/com/microej/architecture/CM7/CM7hardfp_ARMCC5/flopi7A21-ui-pack/12.0.1/flopi7A21-ui-pack-12.0.1.xpfp``.
 
-- Copy the Legacy MicroEJ Generic Packs (``.xpfp``) into the correct folder
+- Copy the Legacy MicroEJ Generic Packs (``.xpfp``) into the correct directory
   following MicroEJ Naming Convention (see
   :ref:`pack_import`).
 
@@ -99,12 +111,12 @@ Architecture and MicroEJ Packs are provided in the
     ``${workspace_loc:architecture-repository/ivysettings.xml}``.
   - :guilabel:`Apply and Close`
 
-Here is the layout of the Architecture Repository for STM32F746GDISCO.
+Here is the layout of the Architecture Repository for STM32F746G-DISCO.
 
 .. figure:: images/platform_architecture-repository.png
    :align: center
    
-   Architecture Repository for STM32F746GDISCO fullPackaging
+   Architecture Repository for STM32F746G-DISCO `fullPackaging`
 
 Import the Platform Configuration Additions into the Platform Configuration project
 -----------------------------------------------------------------------------------
@@ -113,18 +125,18 @@ Import the Platform Configuration Additions into the Platform Configuration proj
   for later).
 - Follow the this `README <URL>`__ to import the Platform
   Configuration Additions into the ``-configuration`` project
-  (e.g. ``STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-configuration``).
+  (e.g. ``STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-configuration``).
 - Edit the ``module.properties`` file and set
   ``com.microej.platformbuilder.platform.filename`` to the name of the
   platform configuration file of the platform
-  (e.g. ``STM32F746GDISCO.platform``).
+  (e.g. ``STM32F746G-DISCO.platform``).
 - Fill the ``module.ivy`` with the MicroEJ Architecture and MicroEJ
   Packs dependencies.
 
-Here is the module dependencies declared for the STM32F746GDISCO Platform.
+Here is the module dependencies declared for the STM32F746G-DISCO Platform.
 
 .. code-block:: xml
-   :caption: STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-configuration/module.ivy
+   :caption: STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-configuration/module.ivy
 
    <dependencies>
      <!-- MicroEJ Architecture -->
@@ -160,7 +172,7 @@ Update frontpanel configuration
 
 - In ``-configuration/frontpanel/frontpanel.properties`` set the
   ``project.name`` to the folder name that contains the frontpanel
-  (e.g. ``project.name=STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-fp``).
+  (e.g. ``project.name=STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-fp``).
 
 At this state, the platform is not connected to the BSP yet, but you
 can check that everything is properly configured so far by building
@@ -177,7 +189,7 @@ Configure BSP Connection
 ------------------------
 
 This section explains how to configure a full BSP Connection on the
-STM32F746GDISCO Platform.  See :ref:`bsp_connection` for more
+STM32F746G-DISCO Platform.  See :ref:`bsp_connection` for more
 information.
 
 - Open ``-configuration/bsp/bsp.properties``.
@@ -211,15 +223,15 @@ information.
      
      # Specify the BSP root directory. Can use ${project.parent.dir} which target the parent of platform configuration project
      # For example, '${project.parent.dir}/PROJECT-NAME-bsp' specifies a BSP project beside the '-configuration' project
-     root.dir=${project.parent.dir}/STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-bsp/
+     root.dir=${project.parent.dir}/STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-bsp/
 
 The paths to ``microejXXX.relative.dir`` can be inferred by looking at
 the ``output.dir`` value in ``bsp2.properties`` saved earlier.  For
-example on the STM32F746GDISCO project, its value is
+example on the STM32F746G-DISCO project, its value is
 ``${workspace}/${project.prefix}-bsp/Projects/STM32746G-Discovery/Applications/MicroEJ/platform``.
 
 - The BSP project path ``${workspace}/${project.prefix}-bsp`` becomes
-  ``${project.parent.dir}/STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-bsp/``.
+  ``${project.parent.dir}/STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-bsp/``.
 - ``Projects/STM32746G-Discovery/Applications/MicroEJ/platform`` is
   the path to MicroEJ Application file, MicroEJ Platform header and
   runtime files.  MicroEJ convention is to put the MicroEJ Application
@@ -227,12 +239,12 @@ example on the STM32F746GDISCO project, its value is
   MicroEJ Platform header files to ``platform/inc/``.
 - :ref:`bsp_connection_build_script` and
   :ref:`bsp_connection_run_script` are PCA-specific and did not exist
-  before.  By convention we put them in a ``scripts/`` folder.
+  before.  By convention we put them in a ``scripts/`` directory.
 
 The paths to ``microejXXX.relative.dir`` can be also be checked by
 looking at the C TOOLCHAIN configuration of the BSP.  For example on
-the STM32F746GDISCO project, the BSP configuration is located at
-``STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-bsp/Projects/STM32746G-Discovery/Applications/MicroEJ/MDK-ARM/Project.uvprojx``.
+the STM32F746G-DISCO project, the BSP configuration is located at
+``STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-bsp/Projects/STM32746G-Discovery/Applications/MicroEJ/MDK-ARM/Project.uvprojx``.
 
 - In :guilabel:`Project` > :guilabel:`Options for Target
   'standalone'...` > :guilabel:`C/C++` > :guilabel:`Include Paths`
@@ -268,10 +280,10 @@ The `Platform Qualification Tools`_ provides examples of Build Script
 and Run Script for various C TOOLCHAIN `here
 <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`__.
 
-On the STM32F746GDISCO, the C TOOLCHAIN used is Keil uVision.
+On the STM32F746G-DISCO, the C TOOLCHAIN used is Keil uVision.
 
-- Create the folder pointed by ``microejscript.relative.dir``
-  (e.g. ``STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-bsp\Projects\STM32746G-Discovery\Applications\MicroEJ\scripts``).
+- Create the directory pointed by ``microejscript.relative.dir``
+  (e.g. ``STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-bsp\Projects\STM32746G-Discovery\Applications\MicroEJ\scripts``).
 - Copy the example scripts from the `Platform Qualification Tools`_
   for the C TOOLCHAIN of the BSP
   (e.g. ``PlatformQualificationTools/framework/platform/scripts/KEILuV5/``)
