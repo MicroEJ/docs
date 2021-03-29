@@ -71,7 +71,7 @@ Network Setup
 To configure the network:
 
 #. Connect your computer to the Wi-Fi network "BLE-Mock-Controller-[hexa device id]" mounted by the controller.
-#. Open a browser and connect to http://192.168.4.1/ to access the Wi-Fi setup
+#. Open a browser and connect to ``http://192.168.4.1/`` to access the Wi-Fi setup
    interface :
 
    .. image:: images/blemock-wifi-setup-interface.png

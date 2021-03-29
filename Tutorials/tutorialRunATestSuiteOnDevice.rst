@@ -140,8 +140,8 @@ from standard input to UART.
    :alt: Plug alternative UART on WROVER GND/D0
    :align: center
 
-See the `WROVER Platform documentation
-<https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/tree/1.6.2#testsuite-configuration>`__
+See the `Testsuite Configuration section of the WROVER Platform documentation
+<https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/tree/1.6.2>`__
 for more details.
 
 Start Serial To Socket

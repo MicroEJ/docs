@@ -386,7 +386,7 @@ In MicroEJ SDK, the build of a MicroEJ module project can be started as followin
 
 The build of a module can take time depending on
 
-   - the `module nature <module_natures>`_ to build, 
+   - the :ref:`module nature <module_natures>` to build, 
    - the number and the size of module dependencies to download,
    - the repository connection bandwidth, ...
 

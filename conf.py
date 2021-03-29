@@ -76,3 +76,6 @@ latex_logo = '_themes/microej/static/mascot.pdf'
 # This is defined in the theme, but the LaTeX builder does not honor the theme
 # setting for pygments. This is the same style class used by the HTML builder.
 pygments_style = 'microej.MicroEJStyle'
+
+# ignoring Github links with anchors at linkcheck
+# linkcheck_ignore = [r'https?:\/\/github\.com\/.+#.+']
