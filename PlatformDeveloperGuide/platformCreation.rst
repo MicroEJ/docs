@@ -242,6 +242,8 @@ The next step is to create a MicroEJ Platform configuration:
 
       </dependencies>
 
+.. _platform_build:
+
 MicroEJ Platform Build
 ======================
 
