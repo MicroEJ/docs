@@ -60,9 +60,18 @@ Instances of `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/
 BON
 ~~~
 
-The ``ej.bon.Timer`` class can handle timer tasks from any feature.
-Instances of ``ej.bon.TimerTask`` are automatically canceled when a Feature is stopped.
-In Multi-Sandbox mode, ``ej.bon.Timer`` instances should not be created inside a clinit.
+Kernel Timer 
+^^^^^^^^^^^^
+
+A Kernel `Timer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html>`_ instance can handle `TimerTask <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/TimerTask.html>`_ instances owned by the Kernel or any Features.
+
+It should not be created in :ref:`clinit code <soar_clinit>`, otherwise you may have to manually declare :ref:`explicit clinit dependencies <soar_clinit_explicit_dependencies>`.
+
+Automatically Reclaimed Resources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`TimerTask <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/TimerTask.html>`_ instances are automatically canceled when a Feature is stopped.
+
 
 ECOM
 ~~~~
