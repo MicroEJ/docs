@@ -3,14 +3,14 @@
 Multi-Sandbox Enabled Libraries
 ===============================
 
-A multi-Sandbox enabled library is a foundation or Add-On Library which can
-be embedded into the kernel and exposed as API. MicroEJ Foundation
-Libraries provided in MicroEJ SDK are already multi-Sandbox enabled. A
+A Multi-Sandbox enabled library is a Foundation or Add-On Library which can
+be embedded into the Kernel and exposed as API. MicroEJ Foundation
+Libraries provided in MicroEJ SDK are already Multi-Sandbox enabled. A
 stateless library - i.e. a library that does not contain any method
-modifying an internal global state - is multi-Sandbox enabled by default.
+modifying an internal global state - is Multi-Sandbox enabled by default.
 
-This section details the multi-Sandbox semantic that have been added to
-MicroEJ Foundation Libraries in order to be multi-Sandbox enabled.
+This section details the Multi-Sandbox semantic that have been added to
+MicroEJ Foundation Libraries in order to be Multi-Sandbox enabled.
 
 MicroUI
 ~~~~~~~
@@ -56,6 +56,22 @@ Automatically Reclaimed Resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instances of `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_ and `Font <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html>`_ are automatically reclaimed when a Feature is stopped.
+
+BON
+~~~
+
+Kernel Timer 
+^^^^^^^^^^^^
+
+A Kernel `Timer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html>`_ instance can handle `TimerTask <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/TimerTask.html>`_ instances owned by the Kernel or any Features.
+
+It should not be created in :ref:`clinit code <soar_clinit>`, otherwise you may have to manually declare :ref:`explicit clinit dependencies <soar_clinit_explicit_dependencies>`.
+
+Automatically Reclaimed Resources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`TimerTask <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/TimerTask.html>`_ instances are automatically canceled when a Feature is stopped.
+
 
 ECOM
 ~~~~
