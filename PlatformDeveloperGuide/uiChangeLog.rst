@@ -24,6 +24,10 @@ LLAPIs
 MicroUI Implementation
 """"""""""""""""""""""
 
+**Removed**
+
+	* Remove ResourceManager dependency.
+
 **Fixed**
 
 	* A feature was not able to call Display.callOnFlushCompleted().
@@ -31,10 +35,6 @@ MicroUI Implementation
 	* Filter DeadFeatureException in MicroUI pump. 
 	* Drawing of thick arcs which represent an almost full circle.
 	* Drawing of thick faded arcs which pass by 0° angle.
-
-**Removed**
-
-	* Remove ResourceManager dependency.
 
 Simulator
 """""""""
@@ -157,8 +157,8 @@ Simulator
 	* Cannot use an external image decoder on front panel.
 	* Missing an API to check the overlapping between source and destination areas.
 
-Misc
-""""
+ImageGenerator
+""""""""""""""
 
 **Fixed**
 
@@ -403,6 +403,10 @@ Simulator
 
 MicroUI Implementation
 """"""""""""""""""""""
+	
+**Added**
+
+	* Trace MicroUI events and log them on SystemView
 
 **Changed**
 
@@ -414,10 +418,6 @@ MicroUI Implementation
 	* Use java heap to store fill polygon algorithm's objects instead of using icetea heap (remove option "max edges") 
 	* ``SecurityManager`` enabled as a boolean constant option (footprint removal by default)
 	* Remove ``FlyingImage`` feature using BON constants (option to enable it) 
-	
-**Added**
-
-	* Trace MicroUI events and log them on SystemView
 	
 **Fixed**
 
@@ -445,8 +445,8 @@ Simulator
 
 	* A pixel read on an image is always truncated
 
-Tools
-"""""
+FrontPanel Plugin
+"""""""""""""""""
 
 **Removed**
 
@@ -611,8 +611,8 @@ Misc
 
 * Compatible with Architecture 6.12.0 or higher.
 
-Tools
-"""""
+ImageGenerator
+""""""""""""""
 
 **Fixed**
 
@@ -626,14 +626,14 @@ Tools
 
 MicroUI Implementation
 """"""""""""""""""""""
-
-**Changed**
-
-	* Optimize character encoding removing first vertical line when possible
 	
 **Added**
 
 	* LUT image management
+
+**Changed**
+
+	* Optimize character encoding removing first vertical line when possible
 	
 **Fixed**
 
@@ -706,6 +706,10 @@ MicroUI API
   
 MicroUI Implementation
 """"""""""""""""""""""
+	
+**Added**
+
+	* Provide function to send a Long Button event (emb only)
 
 **Changed**
 
@@ -714,29 +718,25 @@ MicroUI Implementation
 	* Allow to open a raw image with ``Image.createImage(stream)``
 	* Improve ``Image.createImage(stream)`` when stream is a memory input stream
 	
-**Added**
-
-	* Provide function to send a Long Button event (emb only)
-	
 **Fixed**
 
 	* Draw region of the display on the display does not support overlap.
 	* Unspecified exception while loading an image with an empty name
 	* ``Display.flush()``: ymax can be higher than display.height
 
-Tools
-"""""
+ImageGenerator
+""""""""""""""
+
+**Fixed**
+
+	* Generic displays must be able to generate standard images
+
+Misc
+""""
 
 **Changed**
 
 	* SOAR can exclude some resources (update llext output folder)
-	
-**Fixed**
-
-	* Image generator: generic displays must be able to generate standard images
-
-Misc
-""""
 
 **Fixed**
 
@@ -755,12 +755,12 @@ MicroUI Implementation
 
 	* Rendering of a RAW image on grayscale display is wrong 
 
-Tools
-"""""
+ImageGenerator
+""""""""""""""
 
 **Fixed**
 
-	* Image generator: an Ax image may be fully opaque
+	* An Ax image may be fully opaque
 
 9.1.2 (2017-03-16)
 ==================
@@ -777,15 +777,15 @@ MicroUI API
   
 MicroUI Implementation
 """"""""""""""""""""""
+	
+**Added**
+
+	* Renderable strings
 
 **Changed**
 
 	* Draw string: improve time to perform it
 	* Optimize antialiased circle arc drawing when fade=0
-	
-**Added**
-
-	* Renderable strings
 	
 **Fixed**
 
@@ -797,13 +797,13 @@ MicroUI Implementation
 	* MicroUI lib expects the dynamic image decoder default format
 	* Wrong error code is returned when converting an image
 
-Tools
-"""""
+ImageGenerator
+""""""""""""""
 
 **Fixed**
 
-	* Image generator: Use the application classpath
-	* Image generator: An Ax image may be fully opaque
+	* Use the application classpath
+	* An Ax image may be fully opaque
     
 9.0.1 (2017-03-13)
 ==================
@@ -931,14 +931,14 @@ MWT
 
 Simulator
 """""""""
-
-**Changed**
-
-	* Display Device UID if available in the window title
 	
 **Added**
 
 	* Optional mask on display
+
+**Changed**
+
+	* Display Device UID if available in the window title
 
 Tools
 """""
@@ -992,10 +992,6 @@ Simulator
 
 MicroUI Implementation
 """"""""""""""""""""""
-
-**Changed**
-
-	* Merge stacks ``DIRECT/COPY/SWITCH`` *(not backward compatible)*
 	
 **Added**
 
@@ -1003,6 +999,10 @@ MicroUI Implementation
 	* External image decoders 
 	* Manage external memories like internal memories. 
 	* Custom display stacks (hardware acceleration)
+
+**Changed**
+
+	* Merge stacks ``DIRECT/COPY/SWITCH`` *(not backward compatible)*
 	
 **Fixed**
 
