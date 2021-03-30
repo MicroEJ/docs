@@ -4,6 +4,18 @@
 Changelog
 =========
 
+13.0.6 (2021-03-29)
+===================
+
+* Compatible with Architecture 7.13.0 or higher.
+
+LLAPIs
+""""""
+
+**Fixed**
+
+	* Fix the size of the typedef ``MICROUI_Image``: do not depend on the size of the enumaration ``MICROUI_ImageFormat`` (``LLUI_PAINTER_impl.h``).
+
 13.0.5 (2021-03-08)
 ===================
 
