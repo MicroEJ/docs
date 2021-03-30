@@ -32,7 +32,7 @@ MicroUI Implementation
 
 	* A feature was not able to call Display.callOnFlushCompleted().
 	* Stop feature: prevent NullPointerException when a kernel's EventGenerator is removed from event generators pool.
-	* Filter DeadFeatureException in MicroUI pump. 
+	* Filter DeadFeatureException in MicroUI pump. .
 	* Drawing of thick arcs which represent an almost full circle.
 	* Drawing of thick faded arcs which pass by 0° angle.
 
@@ -105,10 +105,10 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Reduce Java heap usage. 
+	* Reduce Java heap usage. .
 	* Fix empty images heap.
 	* Draw image algorithm does not respect image stride in certain circumstances.
-	* Fix flush limits of ``drawThickFadedLine``, ``drawThickEllipse`` and ``drawThickFadedEllipse``
+	* Fix flush limits of ``drawThickFadedLine``, ``drawThickEllipse`` and ``drawThickFadedEllipse``.
  
 13.0.2 (2020-10-02)
 ===================
@@ -168,7 +168,7 @@ ImageGenerator
 ===================
 
 * Compatible with Architecture 7.13.0 or higher.
-* Integrate SDK 3.0-B license
+* Integrate SDK 3.0-B license.
 
 MicroUI API
 """""""""""
@@ -235,7 +235,7 @@ Simulator
 	
 **Removed**
 
-	* ``ej.tool.frontpanel#widget-microui`` has been replaced by ``com.microej.pack.ui#ui-pack(frontpanel)``. 
+	* ``ej.tool.frontpanel#widget-microui`` has been replaced by ``com.microej.pack.ui#ui-pack(frontpanel)``. .
  
 ImageGenerator
 """"""""""""""
@@ -268,8 +268,8 @@ FontGenerator
 ===================
 
 * Compatible with Architecture 7.11.0 or higher.
-* [ESP32] - Fixed potential PSRAM access faults by rebuilding using esp-idf v3.3.0 toolchain (simikou2)
-* Use new naming convention: ``com.microej.architecture.[toolchain].[architecture]-ui-pack``
+* [ESP32] - Fixed potential PSRAM access faults by rebuilding using esp-idf v3.3.0 toolchain (simikou2).
+* Use new naming convention: ``com.microej.architecture.[toolchain].[architecture]-ui-pack``.
 
 12.1.4 (2020-03-10)
 ===================
@@ -281,7 +281,7 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Obsolete references on Java heap are used (since MicroEJ UI Pack 12.0.0)
+	* Obsolete references on Java heap are used (since MicroEJ UI Pack 12.0.0).
 
 12.1.3 (2020-02-24)
 ===================
@@ -293,7 +293,7 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Caps are not used when drawing an anti-aliased line
+	* Caps are not used when drawing an anti-aliased line.
 
 12.1.2 (2019-12-09)
 ===================
@@ -305,8 +305,8 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Fix graphical engine empty clip (empty clip had got a size of 1 pixel)
-	* Clip not respected when clip is set "just after or before" graphics context drawable area: first (or last) line (or column) of graphics context was rendered
+	* Fix graphical engine empty clip (empty clip had got a size of 1 pixel).
+	* Clip not respected when clip is set "just after or before" graphics context drawable area: first (or last) line (or column) of graphics context was rendered.
 
 12.1.1 (2019-10-29)
 ===================
@@ -318,20 +318,20 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Fix graphical engine clip (cannot be outside graphics context)
+	* Fix graphical engine clip (cannot be outside graphics context).
 
 (maint) 8.0.0 (2019-10-18)
 ==========================
 
 * Compatible with Architecture 7.0.0 or higher.
-* Based on 7.4.7
+* Based on 7.4.7.
 
 MicroUI Implementation
 """"""""""""""""""""""
 
 **Fixed**
 
-	* Pending flush cannot be added after an OutOfEventException
+	* Pending flush cannot be added after an OutOfEventException.
 
 12.1.0 (2019-10-16)
 ===================
@@ -350,14 +350,14 @@ MicroUI Implementation
 
 **Changed**
 
-	* Prepare inlining of get X/Y/W/H methods
-	* Reduce number of strings embedded by MicroUI library
+	* Prepare inlining of get X/Y/W/H methods.
+	* Reduce number of strings embedded by MicroUI library.
 	
 **Fixed**
 
-	* Pending flush cannot be added after an ``OutOfEventException``
-	* ``Display.isColor()`` returns an invalid value
-	* Draw/fill circle/ellipse arc is not drawn when angle is negative
+	* Pending flush cannot be added after an ``OutOfEventException``.
+	* ``Display.isColor()`` returns an invalid value.
+	* Draw/fill circle/ellipse arc is not drawn when angle is negative.
 
 12.0.2 (2019-09-23)
 ===================
@@ -369,13 +369,13 @@ MicroUI Implementation
 
 **Changed**
 
-	* Change ``CM4hardfp_IAR83`` compiler flags
-	*  Remove RAW images from cache as soon as possible to reduce java heap usage
-	* Do not cache RAW images with their paths to reduce java heap usage
+	* Change ``CM4hardfp_IAR83`` compiler flags.
+	*  Remove RAW images from cache as soon as possible to reduce java heap usage.
+	* Do not cache RAW images with their paths to reduce java heap usage.
 	
 **Fixed**
 
-	* Remove useless exception in SystemInputPump
+	* Remove useless exception in SystemInputPump.
 
 12.0.1 (2019-07-25)
 ===================
@@ -387,14 +387,14 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Physical size is not taken in consideration
+	* Physical size is not taken in consideration.
 
 Simulator
 """""""""
 
 **Fixed**
 
-	* Increase native implementation execution time
+	* Increase native implementation execution time.
   
 12.0.0 (2019-06-24)
 ===================
@@ -406,51 +406,51 @@ MicroUI Implementation
 	
 **Added**
 
-	* Trace MicroUI events and log them on SystemView
+	* Trace MicroUI events and log them on SystemView.
 
 **Changed**
 
-	* Manage the Graphics Context clip on native side
-	* Use java heap to store images metadata instead of using icetea heap (remove option "max offscreen")
-	* Optimize retrieval of all fonts 
-	* Ensure user buffer size is larger than LCD size 
-	* Use java heap to store flying images metadata instead of using icetea heap (remove option "max flying images") 
-	* Use java heap to store fill polygon algorithm's objects instead of using icetea heap (remove option "max edges") 
-	* ``SecurityManager`` enabled as a boolean constant option (footprint removal by default)
-	* Remove ``FlyingImage`` feature using BON constants (option to enable it) 
+	* Manage the Graphics Context clip on native side.
+	* Use java heap to store images metadata instead of using icetea heap (remove option "max offscreen").
+	* Optimize retrieval of all fonts .
+	* Ensure user buffer size is larger than LCD size .
+	* Use java heap to store flying images metadata instead of using icetea heap (remove option "max flying images") .
+	* Use java heap to store fill polygon algorithm's objects instead of using icetea heap (remove option "max edges") .
+	* ``SecurityManager`` enabled as a boolean constant option (footprint removal by default).
+	* Remove ``FlyingImage`` feature using BON constants (option to enable it) .
 	
 **Fixed**
 
-	* Wrong rendering of a fill polygon on emb
-	* Wrong rendering of image overlaping on C1/2/4 platforms
-	* Wrong rendering of a LUT image with more than 127 colors on emb
-	* Wrong rendering of an antialiased arc with 360 angle
-	* Debug option com.is2t.microui.log=true fails when there is a flying image
-	* Gray scale between gray and white makes magenta
-	* Minimal size of some buffers set by user is never checked 
-	* The format of a RAW image using "display" format is wrong
-	* Dynamic image width for platform C1/2/4 may be wrong
-	* Wrong pixel address when reading from a C2/4 display
-	* ``getDisplayColor()`` can return a color with transparency (spec is ``0x00RRGGBB``)
-	* A fully opaque image is tagged as transparent (ARGB8888 platform)
+	* Wrong rendering of a fill polygon on emb.
+	* Wrong rendering of image overlaping on C1/2/4 platforms.
+	* Wrong rendering of a LUT image with more than 127 colors on emb.
+	* Wrong rendering of an antialiased arc with 360 angle.
+	* Debug option com.is2t.microui.log=true fails when there is a flying image.
+	* Gray scale between gray and white makes magenta.
+	* Minimal size of some buffers set by user is never checked .
+	* The format of a RAW image using "display" format is wrong.
+	* Dynamic image width for platform C1/2/4 may be wrong.
+	* Wrong pixel address when reading from a C2/4 display.
+	* ``getDisplayColor()`` can return a color with transparency (spec is ``0x00RRGGBB``).
+	* A fully opaque image is tagged as transparent (ARGB8888 platform).
 
 Simulator
 """""""""
 
 **Added**
 
-	* Simulate flush time (add JRE property ``-Dfrontpanel.flush.time=8``)
+	* Simulate flush time (add JRE property ``-Dfrontpanel.flush.time=8``).
 	
 **Fixed**
 
-	* A pixel read on an image is always truncated
+	* A pixel read on an image is always truncated.
 
 FrontPanel Plugin
 """""""""""""""""
 
 **Removed**
 
-	* FrontPanel version 5: Move front panel from MicroEJ UI Pack to Architecture *(not backward compatible)*; Architecture contains now Front Panel version 6
+	* FrontPanel version 5: Move front panel from MicroEJ UI Pack to Architecture *(not backward compatible)*; Architecture contains now Front Panel version 6.
 
 11.2.0 (2019-02-01)
 ===================
@@ -462,18 +462,18 @@ MicroUI Implementation
 
 **Added**
 
-	* Manage extended UTF16 characters (> 0xffff)
+	* Manage extended UTF16 characters (> 0xffff).
 	
 **Fixed**
 
-	* IOException thrown instead of an OutOfMemory when using external resource loader
+	* IOException thrown instead of an OutOfMemory when using external resource loader.
 
 Tools
 """""
 
 **Removed**
 
-	* Remove Font Designer from pack (useless)
+	* Remove Font Designer from pack (useless).
 
 11.1.2 (2018-08-10)
 ===================
@@ -485,19 +485,19 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Fix drawing bug in thick circle arcs
+	* Fix drawing bug in thick circle arcs.
 
 11.1.1 (2018-08-02)
 ===================
 
 * Compatible with Architecture 7.0.0 or higher.
-* Internal release
+* Internal release.
 
 11.1.0 (2018-07-27)
 ===================
 
 * Compatible with Architecture 7.0.0 or higher.
-* Merge 10.0.2 and 11.0.1
+* Merge 10.0.2 and 11.0.1.
 
 MicroUI API
 """""""""""
@@ -511,57 +511,57 @@ MicroUI Implementation
 
 **Added**
 
-	* ``LLDisplay``: prepare round LCD
+	* ``LLDisplay``: prepare round LCD.
 	
 **Fixed**
 
-	* ``Fillrect`` throws a hardfault on 8bpp platform
-	* Rendering of a LUT image is wrong when using software algorithm
+	* ``Fillrect`` throws a hardfault on 8bpp platform.
+	* Rendering of a LUT image is wrong when using software algorithm.
 
 11.0.1 (2018-06-05)
 ===================
 
 * Compatible with Architecture 7.0.0 or higher.
-* Based on 11.0.0
+* Based on 11.0.0.
 
 MicroUI Implementation
 """"""""""""""""""""""
 
 **Fixed**
 
-	* Image rendering may be invalid on custom display
-	* Render a dynamic image on custom display is too slow
-	* LRGB888 image format is always fully opaque
-	* Number of colors returned when it is a custom display may be wrong
+	* Image rendering may be invalid on custom display.
+	* Render a dynamic image on custom display is too slow.
+	* LRGB888 image format is always fully opaque.
+	* Number of colors returned when it is a custom display may be wrong.
 
 10.0.2 (2018-02-15)
 ===================
 
 * Compatible with Architecture 6.13.0 or higher.
-* Based on 10.0.1
+* Based on 10.0.1.
 
 MicroUI Implementation
 """"""""""""""""""""""
 
 **Fixed**
 
-	* Number of colors returned when it is a custom display may be wrong
-	* LRGB888 image format is always fully opaque
-	* Render a dynamic image on custom display is too slow
-	* Image rendering may be invalid on custom display
+	* Number of colors returned when it is a custom display may be wrong.
+	* LRGB888 image format is always fully opaque.
+	* Render a dynamic image on custom display is too slow.
+	* Image rendering may be invalid on custom display.
 
 11.0.0 (2018-02-02)
 ===================
 
 * Compatible with Architecture 7.0.0 or higher.
-* Based on 10.0.1
+* Based on 10.0.1.
 
 MicroUI Implementation
 """"""""""""""""""""""
 
 **Changed**
 
-	* SNI Callback feature in the VM to remove the SNI retry pattern *(not backward compatible)*
+	* SNI Callback feature in the VM to remove the SNI retry pattern *(not backward compatible)*.
 
 10.0.1 (2018-01-03)
 ===================
@@ -573,7 +573,7 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Hard fault when using custom display stack
+	* Hard fault when using custom display stack.
 
 10.0.0 (2017-12-22)
 ===================
@@ -585,26 +585,26 @@ MicroUI Implementation
 
 **Changed**
 
-	* Improve ``TOP-LEFT`` anchor checks 
+	* Improve ``TOP-LEFT`` anchor checks .
 	
 **Fixed**
 
-	* Subsequent renderings may not be correctly flushed
-	* Rendering of display on display was not optimized
+	* Subsequent renderings may not be correctly flushed.
+	* Rendering of display on display was not optimized.
 
 Simulator
 """""""""
 
 **Changed**
 
-	* Check the allocated memory when creating a dynamic image *(not backward compatible)*
+	* Check the allocated memory when creating a dynamic image *(not backward compatible)*.
 
 Misc
 """"
 
 **Added**
 
-	* Option in platform builder to images heap size
+	* Option in platform builder to images heap size.
 
 9.4.1 (2017-11-24)
 ==================
@@ -616,29 +616,29 @@ ImageGenerator
 
 **Fixed**
 
-	* Missing some files in image generator module
+	* Missing some files in image generator module.
 
 9.4.0 (2017-11-23)
 ==================
 
 * Compatible with Architecture 6.12.0 or higher.
-* Deprecated: use 9.4.1 instead
+* Deprecated: use 9.4.1 instead.
 
 MicroUI Implementation
 """"""""""""""""""""""
 	
 **Added**
 
-	* LUT image management
+	* LUT image management.
 
 **Changed**
 
-	* Optimize character encoding removing first vertical line when possible
+	* Optimize character encoding removing first vertical line when possible.
 	
 **Fixed**
 
-	* Memory leak when an ``OutOfEvent`` exception is thrown
-	* A null Java object is not checked when using a font
+	* Memory leak when an ``OutOfEvent`` exception is thrown.
+	* A null Java object is not checked when using a font.
   
 9.3.1 (2017-09-28)
 ==================
@@ -650,9 +650,9 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Returned X coordinates when drawing a string was considered as an error code 
-	* Exception when loading a font from an application 
-	* ``LLEXT`` link error with Architecture 6.13+ and UI 9+
+	* Returned X coordinates when drawing a string was considered as an error code .
+	* Exception when loading a font from an application .
+	* ``LLEXT`` link error with Architecture 6.13+ and UI 9+.
   
 9.3.0 (2017-08-24)
 ==================
@@ -664,15 +664,15 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Ellipsis must not drawn when text anchor is a "manual" ``TOP-RIGHT``
+	* Ellipsis must not drawn when text anchor is a "manual" ``TOP-RIGHT``.
 
 Simulator
 """""""""
 
 **Fixed**
 
-	* Do not create an AWT window for each image
-	* Error when trying to play with an unknown led
+	* Do not create an AWT window for each image.
+	* Error when trying to play with an unknown led.
   
 9.2.1 (2017-08-14)
 ==================
@@ -684,18 +684,18 @@ Simulator
 
 **Added**
 
-	* Provide function to send a Long Button event
-	* "flush" debug option
+	* Provide function to send a Long Button event.
+	* "flush" debug option.
 	
 **Fixed**
 
-	* Mock startup is too long
+	* Mock startup is too long.
 
 9.2.0 (2017-07-21)
 ==================
 
 * Compatible with Architecture 6.12.0 or higher.
-* Merge 9.1.2 and 9.0.2
+* Merge 9.1.2 and 9.0.2.
 
 MicroUI API
 """""""""""
@@ -709,64 +709,64 @@ MicroUI Implementation
 	
 **Added**
 
-	* Provide function to send a Long Button event (emb only)
+	* Provide function to send a Long Button event (emb only).
 
 **Changed**
 
-	* Use font format v5
-	* A signature on RAW files
-	* Allow to open a raw image with ``Image.createImage(stream)``
-	* Improve ``Image.createImage(stream)`` when stream is a memory input stream
+	* Use font format v5.
+	* A signature on RAW files.
+	* Allow to open a raw image with ``Image.createImage(stream)``.
+	* Improve ``Image.createImage(stream)`` when stream is a memory input stream.
 	
 **Fixed**
 
 	* Draw region of the display on the display does not support overlap.
-	* Unspecified exception while loading an image with an empty name
-	* ``Display.flush()``: ymax can be higher than display.height
+	* Unspecified exception while loading an image with an empty name.
+	* ``Display.flush()``: ymax can be higher than display.height.
 
 ImageGenerator
 """"""""""""""
 
 **Fixed**
 
-	* Generic displays must be able to generate standard images
+	* Generic displays must be able to generate standard images.
 
 Misc
 """"
 
 **Changed**
 
-	* SOAR can exclude some resources (update llext output folder)
+	* SOAR can exclude some resources (update llext output folder).
 
 **Fixed**
 
-	* RI build: reduce frontpanel dependency
+	* RI build: reduce frontpanel dependency.
 
 9.0.2 (2017-04-21)
 ==================
 
 * Compatible with Architecture 6.4.0 or higher.
-* Based on 9.0.1
+* Based on 9.0.1.
   
 MicroUI Implementation
 """"""""""""""""""""""
 
 **Fixed**
 
-	* Rendering of a RAW image on grayscale display is wrong 
+	* Rendering of a RAW image on grayscale display is wrong .
 
 ImageGenerator
 """"""""""""""
 
 **Fixed**
 
-	* An Ax image may be fully opaque
+	* An Ax image may be fully opaque.
 
 9.1.2 (2017-03-16)
 ==================
 
 * Compatible with Architecture 6.8.0 or higher.
-* Based on 9.1.1
+* Based on 9.1.1.
   
 MicroUI API
 """""""""""
@@ -780,81 +780,81 @@ MicroUI Implementation
 	
 **Added**
 
-	* Renderable strings
+	* Renderable strings.
 
 **Changed**
 
-	* Draw string: improve time to perform it
-	* Optimize antialiased circle arc drawing when fade=0
+	* Draw string: improve time to perform it.
+	* Optimize antialiased circle arc drawing when fade=0.
 	
 **Fixed**
 
-	* ImageScale bugs
-	* Draw string: some errors are not thrown
-	* ``Font.getWidth()`` and ``getHeight()`` don't use ratio factor
-	* Draw antialiased circle arc render issue
-	* Draw antialiased circle arc render bug with 45° angles
-	* MicroUI lib expects the dynamic image decoder default format
-	* Wrong error code is returned when converting an image
+	* ImageScale bugs.
+	* Draw string: some errors are not thrown.
+	* ``Font.getWidth()`` and ``getHeight()`` don't use ratio factor.
+	* Draw antialiased circle arc render issue.
+	* Draw antialiased circle arc render bug with 45° angles.
+	* MicroUI lib expects the dynamic image decoder default format.
+	* Wrong error code is returned when converting an image.
 
 ImageGenerator
 """"""""""""""
 
 **Fixed**
 
-	* Use the application classpath
-	* An Ax image may be fully opaque
+	* Use the application classpath.
+	* An Ax image may be fully opaque.
     
 9.0.1 (2017-03-13)
 ==================
 
 * Compatible with Architecture 6.4.0 or higher.
-* Based on 9.0.0
+* Based on 9.0.0.
   
 MicroUI Implementation
 """"""""""""""""""""""
 
 **Fixed**
 
-	* Hardfault when filling a rectangle on an odd image 
-	* Pixel rendering on non-standard LCD is wrong
-	* RZ hardware accelerator: RAW images have to respect an aligned size 
-	* Use the classpath when invoking the fonts and images generators
+	* Hardfault when filling a rectangle on an odd image .
+	* Pixel rendering on non-standard LCD is wrong.
+	* RZ hardware accelerator: RAW images have to respect an aligned size .
+	* Use the classpath when invoking the fonts and images generators.
 
 Simulator
 """""""""
 
 **Fixed**
 
-	* Wrong rendering of A8 images
+	* Wrong rendering of A8 images.
 
 FrontPanel Plugin
 """""""""""""""""
 
 **Fixed**
 
-	* Manage display mask on preview
-	* Respect initial background color set by user on preview
-	* Preview does not respect the real size of display
+	* Manage display mask on preview.
+	* Respect initial background color set by user on preview.
+	* Preview does not respect the real size of display.
 
 9.1.1 (2017-02-14)
 ==================
 
 * Compatible with Architecture 6.8.0 or higher.
-* Based on 9.1.0
+* Based on 9.1.0.
 
 Misc
 """"
 
 **Fixed**
 
-	* RI build: Several custom event generators in same ``microui.xml`` file are not embedded
+	* RI build: Several custom event generators in same ``microui.xml`` file are not embedded.
   
 9.1.0 (2017-02-13)
 ==================
 
 * Compatible with Architecture 6.8.0 or higher.
-* Based on 9.0.0
+* Based on 9.0.0.
 
 MicroUI API
 """""""""""
@@ -868,33 +868,33 @@ MicroUI Implementation
 
 **Added**
 
-	* G2D hardware accelerator
-	* Hardware accelerator: add flip feature
+	* G2D hardware accelerator.
+	* Hardware accelerator: add flip feature.
 	
 **Fixed**
 
-	* Hardfault when filling a rectangle on an odd image 
-	* Pixel rendering on non-standard LCD is wrong
-	* RZ hardware accelerator: RAW images have to respect an aligned size 
-	* Use the classpath when invoking the fonts and images generators
-	* Exception when flipping an image out of display bounds
-	* Flipped image is translated when clip is modified
+	* Hardfault when filling a rectangle on an odd image .
+	* Pixel rendering on non-standard LCD is wrong.
+	* RZ hardware accelerator: RAW images have to respect an aligned size .
+	* Use the classpath when invoking the fonts and images generators.
+	* Exception when flipping an image out of display bounds.
+	* Flipped image is translated when clip is modified.
 
 Simulator
 """""""""
 
 **Fixed**
 
-	* Wrong rendering of A8 images
+	* Wrong rendering of A8 images.
 
 FrontPanel Plugin
 """""""""""""""""
 
 **Fixed**
 
-	* Manage display mask on preview
-	* Respect initial background color set by user on preview
-	* Preview does not respect the real size of display
+	* Manage display mask on preview.
+	* Respect initial background color set by user on preview.
+	* Preview does not respect the real size of display.
 
 9.0.0 (2017-02-02)
 ==================
@@ -917,44 +917,44 @@ MicroUI Implementation
 	
 **Fixed**
 
-	* Display linker file is required even if there is no display on platform 
+	* Display linker file is required even if there is no display on platform .
 	* MicroUI on KF: NPE when changing app quickly (in several threads).
 	* MicroUI on KF: NPE when stopping a Feature and there's no eventHandler in a generator.
-	* MicroUI on KF: Remaining K->F link when there is no default event handler registered by the Kernel
+	* MicroUI on KF: Remaining K->F link when there is no default event handler registered by the Kernel.
 
 MWT
 """
 
 **Removed**
 
-	* Remove MWT from MicroEJ UI Pack *(not backward compatible)*
+	* Remove MWT from MicroEJ UI Pack *(not backward compatible)*.
 
 Simulator
 """""""""
 	
 **Added**
 
-	* Optional mask on display
+	* Optional mask on display.
 
 **Changed**
 
-	* Display Device UID if available in the window title
+	* Display Device UID if available in the window title.
 
 Tools
 """""
 
 **Changed**
 
-	* FrontPanel plugin: Update icons
-	* FontDesigner plugin: Update icons
-	* Font Designer and Generator: use Unicode 9.0.0 specification
+	* FrontPanel plugin: Update icons.
+	* FontDesigner plugin: Update icons.
+	* Font Designer and Generator: use Unicode 9.0.0 specification.
 
 Misc
 """"
 
 **Fixed**
 
-	* Remove obsolete documentations from FrontPanel And FontDesigner plugins
+	* Remove obsolete documentations from FrontPanel And FontDesigner plugins.
 
 8.1.0 (2016-12-24)
 ==================
@@ -966,8 +966,8 @@ MicroUI Implementation
 
 **Changed**
 
-	* Improve image drawing timings 
-	* Runtime decoders can force the output RAW image's fully opacity
+	* Improve image drawing timings .
+	* Runtime decoders can force the output RAW image's fully opacity.
 
 MWT
 """
@@ -976,14 +976,14 @@ MWT
 
 	* With two panels, the paint is done but the screen is not refreshed.
 	* Widget show notify method is called before the panel is set.
-	* Widget still linked to panel when ``lostFocus()`` is called. 
+	* Widget still linked to panel when ``lostFocus()`` is called. .
 
 Simulator
 """""""""
 
 **Added**
 
-	* Can add an additional screen on simulator
+	* Can add an additional screen on simulator.
 
 8.0.0 (2016-11-17)
 ==================
@@ -995,41 +995,41 @@ MicroUI Implementation
 	
 **Added**
 
-	* RZ UI acceleration
-	* External image decoders 
-	* Manage external memories like internal memories. 
-	* Custom display stacks (hardware acceleration)
+	* RZ UI acceleration.
+	* External image decoders .
+	* Manage external memories like internal memories. .
+	* Custom display stacks (hardware acceleration).
 
 **Changed**
 
-	* Merge stacks ``DIRECT/COPY/SWITCH`` *(not backward compatible)*
+	* Merge stacks ``DIRECT/COPY/SWITCH`` *(not backward compatible)*.
 	
 **Fixed**
 
-	* add KF rule: a thread cannot enter in a feature code while it owns a kernel monitor 
-	* automatic flush is not waiting the end of previous flush
-	* Invalid image rotation rendering
-	* Do not embed Images & Fonts.list of kernel API classpath in app mode 
-	* Invalid icetea heap allocation 
-	* microui image: invalid "defaultformat" and "format" fields values
+	* add KF rule: a thread cannot enter in a feature code while it owns a kernel monitor .
+	* automatic flush is not waiting the end of previous flush.
+	* Invalid image rotation rendering.
+	* Do not embed Images & Fonts.list of kernel API classpath in app mode .
+	* Invalid icetea heap allocation .
+	* microui image: invalid "defaultformat" and "format" fields values.
 
 MWT
 """
 
 **Fixed**
 
-	* possible to create an inconsistent hierarchy
+	* possible to create an inconsistent hierarchy.
 
 Simulator
 """""""""
 
 **Added**
 
-	* Can decode additional image formats 
+	* Can decode additional image formats .
 	
 **Fixed**
 
-	* Cannot set initial value of StateEventGenerator
+	* Cannot set initial value of StateEventGenerator.
 
 7.4.7 (2016-06-14)
 ==================
@@ -1041,16 +1041,16 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Do not create all fonts derivations of built-in styles
-	* A bold font is not flagged as bold font
-	* Wrong A4 image rendering
+	* Do not create all fonts derivations of built-in styles.
+	* A bold font is not flagged as bold font.
+	* Wrong A4 image rendering.
 
 Simulator
 """""""""
 
 **Fixed**
 
-	* Cannot convert an image
+	* Cannot convert an image.
 
 7.4.2 (2016-05-25)
 ==================
@@ -1062,7 +1062,7 @@ MicroUI Implementation
 
 **Fixed**
 
-	* invalid image drawing for *column* display
+	* invalid image drawing for *column* display.
   
 7.4.1 (2016-05-10)
 ==================
@@ -1074,7 +1074,7 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Restore stack 1, 2 and 4 BPP
+	* Restore stack 1, 2 and 4 BPP.
   
 7.4.0 (2016-04-29)
 ==================
@@ -1086,14 +1086,14 @@ MicroUI Implementation
 
 **Fixed**
 
-	* image A1's width is sometimes invalid
+	* image A1's width is sometimes invalid.
 
 Simulator
 """""""""
 
 **Added**
 
-	* Restore stack 1, 2 and 4 BPP
+	* Restore stack 1, 2 and 4 BPP.
   
 7.3.0 (2016-04-25)
 ==================
@@ -1105,7 +1105,7 @@ MicroUI Implementation
 
 **Added**
 
-	* Stack 8BPP with LUT support
+	* Stack 8BPP with LUT support.
  
 7.2.1 (2016-04-18)
 ==================
@@ -1117,7 +1117,7 @@ Misc
 
 **Fixed**
 
-	* Remove ``java`` keyword in workbench extension
+	* Remove ``java`` keyword in workbench extension.
   
 7.2.0 (2016-04-05)
 ==================
@@ -1129,7 +1129,7 @@ Tools
 
 **Added**
 
-	* Preprocess ``*.xxx.list`` files
+	* Preprocess ``*.xxx.list`` files.
   
 7.1.0 (2016-03-02)
 ==================
@@ -1141,7 +1141,7 @@ MicroUI Implementation
 
 **Added**
 
-	* Manage several images RAW formats
+	* Manage several images RAW formats.
   
 7.0.0 (2016-01-20)
 ==================
@@ -1153,7 +1153,7 @@ Misc
 
 **Changed**
 
-	* Remove jpf property header *(not backward compatible)*
+	* Remove jpf property header *(not backward compatible)*.
   
 6.0.1 (2015-12-17)
 ==================
@@ -1163,7 +1163,7 @@ MicroUI Implementation
 
 **Fixed**
 
-	* A negative clip throws an exception on simulator
+	* A negative clip throws an exception on simulator.
 
 6.0.0 (2015-11-12)
 ==================
@@ -1173,7 +1173,7 @@ MicroUI Implementation
 
 **Changed**
 
-	* LLDisplay for UIv2 *(not backward compatible)*
+	* LLDisplay for UIv2 *(not backward compatible)*.
 
 ..
    | Copyright 2021, MicroEJ Corp. Content in this space is free 
