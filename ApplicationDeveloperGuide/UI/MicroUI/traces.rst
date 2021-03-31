@@ -1,3 +1,5 @@
+.. _microui_traces:
+
 Debug Traces
 =============
 

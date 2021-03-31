@@ -1,4 +1,3 @@
-
 .. _systemview:
 
 ==========
@@ -14,6 +13,8 @@ A specific SystemView extension made by MicroEJ allows to traces the OS tasks an
 
 .. note:: SystemView for MicroEJ is compatible with FreeRTOS 9 and FreeRTOS 10. 
 
+.. note:: This SystemView section has been written for SystemView version V2.52a. A new version of this documentation will arrive later to support the latest SystemView version.
+
 References
 ==========
 
@@ -25,21 +26,78 @@ Installation
 
 SystemView consists on installing several items in the BSP. The following steps describe them and must be performed in right order. In case of SystemView is already available in the BSP, apply only modifications made by MicroEJ on SystemView files and SystemView for FreeRTOS files to enable MicroEJ Java threads monitoring.
 
-1. Download and install SystemView: http://segger.com/downloads/systemview/.
+1. Download and install SystemView V2.52a: http://segger.com/downloads/systemview/.
 2. Apply SystemView for FreeRTOS patch as described in documentation (https://www.segger.com/downloads/jlink/UM08027); patch is available in installation folder ``SEGGER\SystemView\Src\Sample\FreeRTOSVxx``.
-3. Add ``SEGGER\SystemView\Src\Sample\FreeRTOSVxx\Config\SEGGER_SYSVIEW_Config_FreeRTOS.c`` in your BSP.
-4. Add SystemView for MicroEJ CCO files in your BSP: ``com.microej.clibrary.thirdparty.systemview-1.3.0`` (or check the differences between pre-installed SystemView and CCO files)
-5. Add SystemView for MicroEJ for FreeRTOS CCO files in your BSP: ``com.microej.clibrary.thirdparty.systemview-freertosxx-1.1.0`` (or check the differences between pre-installed SystemView and CCO files)
-6. Install the implementation of MicroJvm monitoring over SystemView by adding CCO files in your BSP: ``com.microej.clibrary.llimpl.trace-systemview-2.1.0``
-7. Make FreeRTOS compatible with SystemView: open  ``FreeRTOSConfig.h`` and:
+
+.. note:: If you are using FreeRTOS V10.2.0, use the patch located here: https://forum.segger.com/index.php/Thread/6158-SOLVED-SystemView-Kernelpatch-for-FreeRTOS-10-2-0/?s=add3b0f6a33159b9c4b602da0082475afeceb89a
+
+3. Check if the patch disabled SystemView systick events in ``port.c``, if not remove these lines manually:
+
+.. figure:: images/sytemview_remove_systick.png
+   :alt: Disable systick events (too many events are generated).
+   :align: center
+   :scale: 75
+   :width: 921px
+   :height: 734px
+
+4. Add ``SEGGER\SystemView\Src\Sample\FreeRTOSVxx\Config\SEGGER_SYSVIEW_Config_FreeRTOS.c`` in your BSP.
+
+This file can be modified to fit with your system configuration:
+   
+   * Update ``SYSVIEW_APP_NAME``, ``SYSVIEW_DEVICE_NAME`` and ``SYSVIEW_RAM_BASE`` defines to fit your system information.
+   * To add MicroEJ tasks data in SystemView initialization:
+  
+      * Add these includes ``#include "LLMJVM_MONITOR_SYSVIEW.h"`` and ``#include "LLTRACE_SYSVIEW_configuration.h"``.
+      * In function ``_cbSendSystemDesc(void)``, add this instruction: ``SEGGER_SYSVIEW_SendSysDesc("N="SYSVIEW_APP_NAME",D="SYSVIEW_DEVICE_NAME",O=FreeRTOS");`` before ``SEGGER_SYSVIEW_SendSysDesc("I#15=SysTick");``.
+      * Replace the ``Global function`` section by this code:
+
+      .. code-block:: C
+
+         /*********************************************************************
+         *
+         *       Global functions
+         *
+         **********************************************************************
+         */
+
+         SEGGER_SYSVIEW_OS_API SYSVIEW_MICROEJ_X_OS_TraceAPI;
+
+         static void SYSVIEW_MICROEJ_X_OS_SendTaskList(void){
+            SYSVIEW_X_OS_TraceAPI.pfSendTaskList();
+            LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();
+         }
+         
+         void SEGGER_SYSVIEW_Conf(void) {
+            SYSVIEW_MICROEJ_X_OS_TraceAPI.pfGetTime = SYSVIEW_X_OS_TraceAPI.pfGetTime;
+            SYSVIEW_MICROEJ_X_OS_TraceAPI.pfSendTaskList = SYSVIEW_MICROEJ_X_OS_SendTaskList;
+            
+            SEGGER_SYSVIEW_Init(SYSVIEW_TIMESTAMP_FREQ, SYSVIEW_CPU_FREQ,
+                                 &SYSVIEW_MICROEJ_X_OS_TraceAPI, _cbSendSystemDesc);
+            SEGGER_SYSVIEW_SetRAMBase(SYSVIEW_RAM_BASE);
+         }
+
+5. Add SystemView for MicroEJ CCO files in your BSP: ``com.microej.clibrary.thirdparty.systemview-1.3.0`` (or check the differences between pre-installed SystemView and CCO files)
+6. Add SystemView for MicroEJ for FreeRTOS CCO files in your BSP: ``com.microej.clibrary.thirdparty.systemview-freertosxx-1.1.1`` (or check the differences between pre-installed SystemView and CCO files)
+7. Install the implementation of MicroJvm monitoring over SystemView by adding CCO files in your BSP: ``com.microej.clibrary.llimpl.trace-systemview-2.1.0``
+8. Make FreeRTOS compatible with SystemView: open  ``FreeRTOSConfig.h`` and:
 
    * add ``#define INCLUDE_xTaskGetIdleTaskHandle 1``
    * add ``#define INCLUDE_pxTaskGetStackStart 1``
    * add ``#define INCLUDE_uxTaskPriorityGet 1``
+   * comment the line ``#define traceTASK_SWITCHED_OUT()`` if defined 
+   * comment the line ``#define traceTASK_SWITCHED_IN()`` if defined 
    * add ``#include "SEGGER_SYSVIEW_FreeRTOS.h"`` at the end of file
 
-8. Enable SystemView on startup (before creating first OS task): call ``SEGGER_SYSVIEW_Conf();``
-9. Add a call to ``SYSVIEW_setMicroJVMTask(pvCreatedTask);`` just after creating the OS task which launch the MicroJvm. The handler to give is the one filled by ``xTaskCreate`` function.
+9. Enable SystemView on startup (before creating first OS task): call ``SEGGER_SYSVIEW_Conf();``
+10. Right enabling SystemView on startup, prints the RTT block address to the serial port: ``printf("SEGGER_RTT block address: %p\n", &(_SEGGER_RTT));``.
+
+.. note:: Particulary useful if SystemView does not find automatically the RTT block address.
+
+11. Add a call to ``SYSVIEW_setMicroJVMTask((U32)pvCreatedTask);`` just after creating the OS task which launch the MicroJvm. The handler to give is the one filled by ``xTaskCreate`` function.
+
+12. Copy the file ``/YourPlatformProject-bsp/projects/microej/trace/systemview/SYSVIEW_MicroEJ.txt`` to the SystemView install path such as: ``SEGGER/SystemView_V252a/Description/``. If you use MicroUI traces, you can also copy the file in section :ref:`microui_traces`
+
+
 
 MicroJvm Task
 =============
@@ -90,6 +148,50 @@ To enable MEJ32 tracing, in MicroEJ SDK:
 4. In the configuration tab:
 5. Target -> Debug
 6. Check: "Enable execution traces" and "Start execution traces automatically"
+
+
+
+.. note:: If your target board uses a ST-Link to flash the firmware, follow instructions provided by SEGGER Microcontroller https://www.segger.com/products/debug-probes/j-link/models/other-j-links/st-link-on-board/ to re-flash the ST-LINK on board with a J-Link firmware.
+
+Troubleshooting
+===============
+
+
+OVERFLOW events in SystemView
+-----------------------------
+
+Depending on the application, OVERFLOW events can be seen in System View. To mitigate this problem, the default `SEGGER_SYSVIEW_RTT_BUFFER_SIZE` can be increased
+from the default 1kB to a more appropriate size of 4kB. Still, if OVERFLOW events are still visible, the user can further increase this configuration found in
+``/YourPlatformProject-bsp/projects/microej/thirdparty/systemview/inc/SEGGER_SYSVIEW_configuration.h``.
+
+
+RTT Control block not found
+---------------------------
+
+.. figure:: images/systemview_rtt_not_found.png
+   :alt: RTT Block not found.
+   :align: center
+   :scale: 100
+   :width: 277px
+   :height: 147px
+
+* Get RTT block address on serial uart by resetting the board (it's printed at the beginning of the firmware program).
+* In SystemView `Target > Start recording`
+* In RTT Control Block Detection, select `Address` and put the address retrieved
+  * You can also try with `Search Range` option
+
+Cannot flash a firmware with ST-Link after replacing back J-Link firmware by ST-Link
+------------------------------------------------------------------------------------
+
+.. figure:: images/systemview_st_link_pb.png
+   :alt: RTT Block not found.
+   :align: center
+   :scale: 50
+   :width: 1285px
+   :height: 951px
+
+- Use ST_Link utility program to update the ST_Link firmware, go to ``ST-LINK > Firmware update``.
+- Then, try to flash again.
 
 ..
    | Copyright 2020, MicroEJ Corp. Content in this space is free 
