@@ -36,18 +36,50 @@ The migration steps are:
 Create an Architecture Repository
 ---------------------------------
 
-The first step is to create an Architecture Repository. The MicroEJ 
-Architecture and MicroEJ Packs are provided in the
-``platformArchitecture`` directory of the `fullPackaging` package,
+The first step is to create an Architecture Repository. 
+The MicroEJ Architecture and MicroEJ Packs are provided in the ``platformArchitecture`` directory of the `fullPackaging` package.
 
-- Import ``architecture-repository`` project from the `Platform
-  Qualication Tools <URL>`__ into the workspace.
-- Copy the MicroEJ Architecture (``.xpf``) into the correct directory
-  following MicroEJ Naming Convention (see
-  :ref:`architecture_import`).
+By default, we provide the steps to extend the default :ref:`MicroEJ SDK settings file configuration <mmm_configuration>`.
+with local MicroEJ Architecture and MicroEJ Packs modules.
+The following steps can be adapted to custom :ref:`settings file <mmm_settings_file>`.
+
+- Create a new empty project named ``architecture-repository``
+- Create a new file named ``ivysettings.xml`` with the following content and update the included settings file according to your MicroEJ SDK version
+  
+  .. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <ivysettings>
+      <property name="local.repo.url" value="${ivy.settings.dir}" override="false"/>
+      
+      <!--
+        Include default settings file for MicroEJ SDK version:
+        - MICROEJ SDK 5.4.0 or higher: ${user.home}/.microej/microej-ivysettings-5.4.xml
+        - MICROEJ SDK 5.0.0 to 5.3.1: ${user.home}/.microej/microej-ivysettings-5.xml
+        - MICROEJ SDK 4.1.x: ${user.home}/.ivy2/microej-ivysettings-4.1.xml 
+      -->
+      <include file="${user.home}/.microej/microej-ivysettings-5.xml"/>
+      
+      <settings defaultResolver="ArchitectureResolver"/>
+
+      <resolvers>
+        <filesystem name="LocalArchitectureResolver" m2compatible="true">
+          <artifact pattern="${local.repo.url}/${microej.artifact.pattern}" />
+          <ivy pattern="${local.repo.url}/${microej.ivy.pattern}" />
+        </filesystem>
+            
+        <chain name="ArchitectureResolver"> 
+          <resolver ref="LocalArchitectureResolver"/>
+          <resolver ref="${microej.default.resolver}"/>
+        </chain>
+      </resolvers>
+    </ivysettings>
+
+- Copy the MicroEJ Architecture file (``.xpf``) into the correct directory
+  following MicroEJ Naming Convention (see :ref:`architecture_import`).
 
   - Open or extract the MicroEJ Architecture file (``.xpf``)
-  - Open the ``release.properties`` file:
+  - Open the ``release.properties`` file to retrieve the naming convention mapping:
 
     - ``architecture`` is the ``ISA`` (e.g. ``CM7``)
     - ``toolchain`` is the ``TOOLCHAIN`` (e.g. ``CM7hardfp_ARMCC5``)
@@ -57,21 +89,20 @@ Architecture and MicroEJ Packs are provided in the
   For example, in the STM32F746G-DISCO Platform, the MicroEJ
   Architecture file ``flopi7A21-eval.xpf`` shall be copied and renamed
   to
-  ``architecture-repository/repository/com/microej/architecture/CM7/CM7hardfp_ARMCC5/flopi7A21/7.11.0/flopi7A21-7.11.0-eval.xpf``.
+  ``architecture-repository/com/microej/architecture/CM7/CM7hardfp_ARMCC5/flopi7A21/7.11.0/flopi7A21-7.11.0-eval.xpf``.
 
-- Copy the MicroEJ Architecture Specific Packs (``.xpfp``) into the
-  correct directory following MicroEJ Naming Convention (see
-  :ref:`pack_import`).
+- Copy the MicroEJ Architecture Specific Packs files (``.xpfp``) into the
+  correct directory following MicroEJ Naming Convention (see :ref:`pack_import`).
 
   - Open or extract the MicroEJ Architecture Specific Pack (``.xpfp``).
 
     .. note:: The MicroEJ Architecture Specific Packs have the ``UID``
-              of the architecture in their name
+              of the MicroEJ Architecture in their name
               (e.g. ``flopi7A21UI.xpfp``) and their
               ``release_pack.properties`` file contains the
               information of the MicroEJ Architecture.
 
-  - Open the ``release_pack.properties`` file:
+  - Open the ``release_pack.properties`` file to retrieve the naming convention mapping:
 
     - ``architecture`` is the ``ISA`` (e.g. ``CM7``)
     - ``toolchain`` is the ``TOOLCHAIN`` (e.g. ``CM7hardfp_ARMCC5``)
@@ -82,11 +113,10 @@ Architecture and MicroEJ Packs are provided in the
   For example, in the STM32F746G-DISCO Platform, the MicroEJ
   Architecture Specific Pack UI ``flopi7A21UI.xpfp`` shall be copied
   and renamed to
-  ``architecture-repository/repository/com/microej/architecture/CM7/CM7hardfp_ARMCC5/flopi7A21-ui-pack/12.0.1/flopi7A21-ui-pack-12.0.1.xpfp``.
+  ``architecture-repository/com/microej/architecture/CM7/CM7hardfp_ARMCC5/flopi7A21-ui-pack/12.0.1/flopi7A21-ui-pack-12.0.1.xpfp``.
 
-- Copy the Legacy MicroEJ Generic Packs (``.xpfp``) into the correct directory
-  following MicroEJ Naming Convention (see
-  :ref:`pack_import`).
+- Copy the Legacy MicroEJ Generic Packs (``.xpfp`` files) into the correct directory
+  following MicroEJ Naming Convention (see :ref:`pack_import`).
 
   - Open or extract the MicroEJ Generic Pack (``.xpfp``).
 
@@ -101,7 +131,7 @@ Architecture and MicroEJ Packs are provided in the
 
   For example, in the STM32F746G-DISCO Platform, the Legacy MicroEJ
   Generic Pack FS ``fs.xpfp`` shall be copied and renamed to
-  ``architecture-repository/repository/com/microej/pack/fs/4.0.2/fs-4.0.2.xpfp``.
+  ``architecture-repository/com/microej/pack/fs/4.0.2/fs-4.0.2.xpfp``.
 
 - Configure MicroEJ Module Manager to use the Architecture Repository:
 
@@ -118,18 +148,18 @@ Here is the layout of the Architecture Repository for STM32F746G-DISCO.
    
    Architecture Repository for STM32F746G-DISCO `fullPackaging`
 
-Import the Platform Configuration Additions into the Platform Configuration project
------------------------------------------------------------------------------------
+Install the Platform Configuration Additions
+--------------------------------------------
 
 - Rename the file ``bsp.properties`` to ``bsp2.properties`` (save it
   for later).
-- Follow the this `README <URL>`__ to import the Platform
-  Configuration Additions into the ``-configuration`` project
+- Install `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/>`_, 
+  by following instructions described at https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/README.rst.
+  Files within the ``content`` folder have to be copied to the ``-configuration`` project
   (e.g. ``STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-configuration``).
 - Edit the ``module.properties`` file and set
   ``com.microej.platformbuilder.platform.filename`` to the name of the
-  platform configuration file of the platform
-  (e.g. ``STM32F746G-DISCO.platform``).
+  platform configuration file (e.g. ``STM32F746G-DISCO.platform``).
 - Fill the ``module.ivy`` with the MicroEJ Architecture and MicroEJ
   Packs dependencies.
 
@@ -163,27 +193,22 @@ Here is the module dependencies declared for the STM32F746G-DISCO Platform.
    </dependencies>
       
 
-.. note:: The ``<artifact .../>`` node is required because the
-          repository contains incomplete modules.  A module properly
-          packaged must provide a ``ivy.xml``.
-
-Update frontpanel configuration
--------------------------------
+Update Front Panel Configuration
+--------------------------------
 
 - In ``-configuration/frontpanel/frontpanel.properties`` set the
   ``project.name`` to the folder name that contains the frontpanel
   (e.g. ``project.name=STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-fp``).
 
-At this state, the platform is not connected to the BSP yet, but you
-can check that everything is properly configured so far by building
-the platform:
+At this state, the MicroEJ Platform is not connected to the BSP yet, but you
+can check that everything is properly configured so far by building it:
 
 - Right-click on the ``-configuration`` project and select
   :guilabel:`Build Module`
-- Import the MicroEJ Platform built into the workspace.
+- Import the MicroEJ Platform built into the workspace by following instructions available at the end of the build logs).
 
-You can then create a MicroEJ Standalone Application and run it on the
-simulator (see :ref:`simulator_execution`).
+At this stage the MicroEJ Platform is built, so you can create a MicroEJ Standalone Application and run it on the
+Simulator (see :ref:`simulator_execution`).
 
 Configure BSP Connection
 ------------------------
@@ -261,19 +286,17 @@ the STM32F746G-DISCO project, the BSP configuration is located at
     'XXX'...`.  The :guilabel:`Path` is
     ``../platform/lib/microejapp.o``.  This corresponds to the
     ``microejapp.relative.dir``.
-
-At this stage the platform is connected to the BSP but lacks the Build
-Script and Run Script.  Still, you can:
-
 - Rebuild the platform (Right-click on the ``-configuration`` project
   and select :guilabel:`Build Module`)
-- Build and program a MicroEJ Firmware (see :ref:`device_build`).
+  
+At this stage the MicroEJ Platform is connected to the BSP so you can 
+build and program a MicroEJ Firmware (see :ref:`device_build`).
 
 Add Build Script and Run Script
 -------------------------------
 
-The final stage consists of adding the Build Script, to produce a
-MicroEJ Firmware, and the Run Script, to program a MicroEJ Firmware
+The final stage consists of adding the Build Script, to automate the build a
+MicroEJ Firmware, and the Run Script, to automate the program a MicroEJ Firmware
 onto the device.
 
 The `Platform Qualification Tools`_ provides examples of Build Script
