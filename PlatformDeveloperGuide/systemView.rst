@@ -11,6 +11,8 @@ SystemView is a real-time recording and visualization tool for embedded systems 
 
 A specific SystemView extension made by MicroEJ allows to traces the OS tasks and the MicroEJ Java threads at the same time. This chapter explains how to add SystemView feature in a platform and how to setup it.
 
+A SystemView support is provided to use the software with a MicroEJ system. This documentation shows how to setup your BSP and your Java application.
+
 .. note:: SystemView for MicroEJ is compatible with FreeRTOS 9 and FreeRTOS 10. 
 
 .. note:: This SystemView section has been written for SystemView version V2.52a. A new version of this documentation will arrive later to support the latest SystemView version.
@@ -76,9 +78,9 @@ This file can be modified to fit with your system configuration:
             SEGGER_SYSVIEW_SetRAMBase(SYSVIEW_RAM_BASE);
          }
 
-5. Add SystemView for MicroEJ CCO files in your BSP: ``com.microej.clibrary.thirdparty.systemview-1.3.0`` (or check the differences between pre-installed SystemView and CCO files)
-6. Add SystemView for MicroEJ for FreeRTOS CCO files in your BSP: ``com.microej.clibrary.thirdparty.systemview-freertosxx-1.1.1`` (or check the differences between pre-installed SystemView and CCO files)
-7. Install the implementation of MicroJvm monitoring over SystemView by adding CCO files in your BSP: ``com.microej.clibrary.llimpl.trace-systemview-2.1.0``
+5. Add in your BSP the MicroEJ C component files for SystemView: ``com.microej.clibrary.thirdparty.systemview-1.3.0`` (or check the differences between pre-installed SystemView and C component files)
+6. Add in your BSP the MicroEJ C component files for SystemView FreeRTOS support : ``com.microej.clibrary.thirdparty.systemview-freertosxx-1.1.1`` (or check the differences between pre-installed SystemView and C component files)
+7. Install the implementation of MicroJvm monitoring over SystemView by adding C component files in your BSP: ``com.microej.clibrary.llimpl.trace-systemview-2.1.0``
 8. Make FreeRTOS compatible with SystemView: open  ``FreeRTOSConfig.h`` and:
 
    * add ``#define INCLUDE_xTaskGetIdleTaskHandle 1``
