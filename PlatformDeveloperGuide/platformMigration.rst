@@ -13,7 +13,7 @@ As a reminder, this new form brings two main features:
 Former MicroEJ Platforms were usually distributed by MicroEJ Corp. in an all-in-one ZIP file also called `fullPackaging`.
 
 In this document, the `MicroEJ Platform for STMicroelectronics STM32F746G-DISCO board
-<https://repository.microej.com/packages/referenceimplementations/846SI/3.4.2/STM32F746G-DISCO-846SI-fullPackaging-eval-3.4.2.zip>`_
+<https://repository.microej.com/packages/referenceimplementations/846SI/3.4.2/STM32F746GDISCO-846SI-fullPackaging-eval-3.4.2.zip>`_
 will be used as an example.
 
 The following figure shows the `fullPackaging` structure once extracted.
@@ -44,7 +44,7 @@ with local MicroEJ Architecture and MicroEJ Packs modules.
 The following steps can be adapted to custom :ref:`settings file <mmm_settings_file>`.
 
 - Create a new empty project named ``architecture-repository``
-- Create a new file named ``ivysettings.xml`` with the following content and update the included settings file according to your MicroEJ SDK version
+- Create a new file named ``ivysettings.xml`` with the following content and update the included settings file according to your MicroEJ SDK version (see :ref:`get_sdk_version`)
   
   .. code-block:: xml
 
@@ -156,17 +156,17 @@ Install the Platform Configuration Additions
 - Install `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/>`_, 
   by following instructions described at https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/README.rst.
   Files within the ``content`` folder have to be copied to the ``-configuration`` project
-  (e.g. ``STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-configuration``).
+  (e.g. ``STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-configuration``).
 - Edit the ``module.properties`` file and set
   ``com.microej.platformbuilder.platform.filename`` to the name of the
-  platform configuration file (e.g. ``STM32F746G-DISCO.platform``).
+  platform configuration file (e.g. ``STM32F746GDISCO.platform``).
 - Fill the ``module.ivy`` with the MicroEJ Architecture and MicroEJ
   Packs dependencies.
 
 Here is the module dependencies declared for the STM32F746G-DISCO Platform.
 
 .. code-block:: xml
-   :caption: STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-configuration/module.ivy
+   :caption: STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-configuration/module.ivy
 
    <dependencies>
      <!-- MicroEJ Architecture -->
@@ -198,7 +198,7 @@ Update Front Panel Configuration
 
 - In ``-configuration/frontpanel/frontpanel.properties`` set the
   ``project.name`` to the folder name that contains the frontpanel
-  (e.g. ``project.name=STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-fp``).
+  (e.g. ``project.name=STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-fp``).
 
 At this state, the MicroEJ Platform is not connected to the BSP yet, but you
 can check that everything is properly configured so far by building it:
@@ -248,7 +248,7 @@ information.
      
      # Specify the BSP root directory. Can use ${project.parent.dir} which target the parent of platform configuration project
      # For example, '${project.parent.dir}/PROJECT-NAME-bsp' specifies a BSP project beside the '-configuration' project
-     root.dir=${project.parent.dir}/STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-bsp/
+     root.dir=${project.parent.dir}/STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-bsp/
 
 The paths to ``microejXXX.relative.dir`` can be inferred by looking at
 the ``output.dir`` value in ``bsp2.properties`` saved earlier.  For
@@ -256,7 +256,7 @@ example on the STM32F746G-DISCO project, its value is
 ``${workspace}/${project.prefix}-bsp/Projects/STM32746G-Discovery/Applications/MicroEJ/platform``.
 
 - The BSP project path ``${workspace}/${project.prefix}-bsp`` becomes
-  ``${project.parent.dir}/STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-bsp/``.
+  ``${project.parent.dir}/STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-bsp/``.
 - ``Projects/STM32746G-Discovery/Applications/MicroEJ/platform`` is
   the path to MicroEJ Application file, MicroEJ Platform header and
   runtime files.  MicroEJ convention is to put the MicroEJ Application
@@ -269,7 +269,7 @@ example on the STM32F746G-DISCO project, its value is
 The paths to ``microejXXX.relative.dir`` can be also be checked by
 looking at the C TOOLCHAIN configuration of the BSP.  For example on
 the STM32F746G-DISCO project, the BSP configuration is located at
-``STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-bsp/Projects/STM32746G-Discovery/Applications/MicroEJ/MDK-ARM/Project.uvprojx``.
+``STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-bsp/Projects/STM32746G-Discovery/Applications/MicroEJ/MDK-ARM/Project.uvprojx``.
 
 - In :guilabel:`Project` > :guilabel:`Options for Target
   'standalone'...` > :guilabel:`C/C++` > :guilabel:`Include Paths`
@@ -306,7 +306,7 @@ and Run Script for various C TOOLCHAIN `here
 On the STM32F746G-DISCO, the C TOOLCHAIN used is Keil uVision.
 
 - Create the directory pointed by ``microejscript.relative.dir``
-  (e.g. ``STM32F746G-DISCO-Full-CM7_ARMCC-FreeRTOS-bsp\Projects\STM32746G-Discovery\Applications\MicroEJ\scripts``).
+  (e.g. ``STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-bsp\Projects\STM32746G-Discovery\Applications\MicroEJ\scripts``).
 - Copy the example scripts from the `Platform Qualification Tools`_
   for the C TOOLCHAIN of the BSP
   (e.g. ``PlatformQualificationTools/framework/platform/scripts/KEILuV5/``)
