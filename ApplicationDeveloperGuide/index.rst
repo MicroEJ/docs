@@ -13,6 +13,7 @@ Application Developer Guide
    virtualDevice
    mmm
    moduleNatures
+   repository
    classpath
    applicationResources
    tools

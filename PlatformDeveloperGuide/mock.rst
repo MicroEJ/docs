@@ -269,7 +269,7 @@ Once implemented, right-click on the repository project and select ``Build Modul
 
 Once the module is built, the mock can be installed in a Platform in one of the two ways:
 
-- by adding the mock module as a regular Platform module dependency (if your Platform configuration project contains a ``module.ivy`` file), 
+- by adding the mock module as a regular Platform :ref:`module dependency <mmm_module_dependencies>` (if your Platform configuration project contains a ``module.ivy`` file), 
 - or by manually copying the JAR file ``[mock_project]\target~\rip\mocks\[mock_name].jar`` to the :ref:`Platform configuration <platform_configuration_creation>` mock dropins folder ``dropins/mocks/dropins/``.
 
 

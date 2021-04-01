@@ -184,7 +184,7 @@ where a dependency line is declared:
    | ``default->default;``         | Add-On Library (``JAR``)      | Embedded in both the firmware and the Virtual Device                                                                                                                            |
    | ``vdruntime->default``        |                               |                                                                                                                                                                                 |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``platform->platformDev``     | Platform (``JPF``)            | Platform dependency used to build the firmware and the Virtual Device. There are other ways to select the platform (see :ref:`platform_selection`)                              |
+   | ``platform->platformDev``     | Platform (``JPF``)            | Platform dependency used to build the firmware and the Virtual Device. There are other ways to select the platform (see :ref:`module_natures_platform_selection`)               |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | ``kernelapi->default``        | Runtime Environment (``JAR``) | See :ref:`runtime_environment`                                                                                                                                                  |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -224,35 +224,10 @@ Change the set of Properties used to Build a Firmware
 The build use the file ``build/common.properties`` to
 configure the build process.
 
-.. _platform_selection:
-
 Change the Platform used to Build the Firmware and the Virtual Device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To build a firmware and a Virtual Device a platform must be specified.
-Four different ways are possible to do so:
-
--  Use an Ivy dependency.
-
-   .. code:: xml
-
-      <dependency org="myorg" name="myname" rev="1.0.0" conf="platform->platformDev" transitive="false"/>
-
--  Copy/Paste a platform file into the folder defined by the property
-   ``platform-loader.target.platform.dropins`` (by default it value is
-   ``dropins``).
-
--  Set the property ``platform-loader.target.platform.file``.
-
-   .. code:: xml
-
-      <ea:property name="platform-loader.target.platform.file" value="/path-to-a-platform-file/" />
-
--  Set the property ``platform-loader.target.platform.dir``.
-
-   .. code:: xml
-
-      <ea:property name="platform-loader.target.platform.dir" value="/path-to-a-platform-folder/" />
+To build a MicroEJ Firmware and a Virtual Device, a MicroEJ Platform must provided (see :ref:`module_natures_platform_selection` section).
 
 Build only a Firmware
 ~~~~~~~~~~~~~~~~~~~~~

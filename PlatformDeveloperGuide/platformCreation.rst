@@ -542,7 +542,7 @@ The following table describes Application options, configured as regular :ref:`M
 
 .. note::
 
-   It is also possible to configure the BSP root directory using the build option named ``toolchain.dir``, 
+   It is also possible to configure the BSP root directory using the :ref:`build option <mmm_build_options>` ``toolchain.dir``, 
    instead of the application option ``deploy.bsp.root.dir``.
    This allow to configure a MicroEJ Firmware by specifying both the Platform (using the ``target.platform.dir`` option) and the BSP 
    at build level, without having to modify the application options files.
