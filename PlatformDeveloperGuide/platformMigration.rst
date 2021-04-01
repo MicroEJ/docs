@@ -39,7 +39,7 @@ Create an Architecture Repository
 The first step is to create an Architecture Repository. 
 The MicroEJ Architecture and MicroEJ Packs are provided in the ``platformArchitecture`` directory of the `fullPackaging` package.
 
-By default, we provide the steps to extend the default :ref:`MicroEJ SDK settings file configuration <mmm_configuration>`.
+By default, we provide the steps to extend the default :ref:`MicroEJ SDK settings file configuration <mmm_configuration>`
 with local MicroEJ Architecture and MicroEJ Packs modules.
 The following steps can be adapted to custom :ref:`settings file <mmm_settings_file>`.
 
