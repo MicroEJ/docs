@@ -13,9 +13,9 @@ A specific SystemView extension made by MicroEJ allows to traces the OS tasks an
 
 A SystemView support is provided to use the software with a MicroEJ system. This documentation shows how to setup your BSP and your Java application.
 
-.. note:: SystemView for MicroEJ is compatible with FreeRTOS 9 and FreeRTOS 10. 
+.. note:: SystemView support for MicroEJ is compatible with FreeRTOS 9 and FreeRTOS 10. 
 
-.. note:: This SystemView section has been written for SystemView version V2.52a. A new version of this documentation will arrive later to support the latest SystemView version.
+.. note:: This SystemView section has been written for SystemView version V2.52a. Later versions may or may not work, and may need modification to the following steps.
 
 References
 ==========
@@ -26,7 +26,7 @@ References
 Installation
 ============
 
-SystemView consists on installing several items in the BSP. The following steps describe them and must be performed in right order. In case of SystemView is already available in the BSP, apply only modifications made by MicroEJ on SystemView files and SystemView for FreeRTOS files to enable MicroEJ Java threads monitoring.
+SystemView consists on installing several items in the BSP. The following steps describe them and must be performed in the right order. If SystemView support is already available in the BSP, apply only modifications made by MicroEJ on SystemView files and SystemView for FreeRTOS files to enable MicroEJ Java threads monitoring.
 
 1. Download and install SystemView V2.52a: http://segger.com/downloads/systemview/.
 2. Apply SystemView for FreeRTOS patch as described in documentation (https://www.segger.com/downloads/jlink/UM08027); patch is available in installation folder ``SEGGER\SystemView\Src\Sample\FreeRTOSVxx``.
@@ -153,7 +153,7 @@ To enable MEJ32 tracing, in MicroEJ SDK:
 
 
 
-.. note:: If your target board uses a ST-Link to flash the firmware, follow instructions provided by SEGGER Microcontroller https://www.segger.com/products/debug-probes/j-link/models/other-j-links/st-link-on-board/ to re-flash the ST-LINK on board with a J-Link firmware.
+.. note:: Since the software SystemView is only compatible with J-Link, if your target board uses a ST-Link to flash the firmware, follow instructions provided by SEGGER Microcontroller https://www.segger.com/products/debug-probes/j-link/models/other-j-links/st-link-on-board/ to re-flash the ST-LINK on board with a J-Link firmware.
 
 Troubleshooting
 ===============
@@ -182,8 +182,8 @@ RTT Control block not found
 * In RTT Control Block Detection, select `Address` and put the address retrieved
   * You can also try with `Search Range` option
 
-Cannot flash a firmware with ST-Link after replacing back J-Link firmware by ST-Link
-------------------------------------------------------------------------------------
+Cannot flash a firmware for a STM32 device after replacing back J-Link firmware by ST-Link
+------------------------------------------------------------------------------------------
 
 .. figure:: images/systemview_st_link_pb.png
    :alt: RTT Block not found.
