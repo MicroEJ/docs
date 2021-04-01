@@ -48,32 +48,30 @@ The following steps can be adapted to custom :ref:`settings file <mmm_settings_f
   
   .. code-block:: xml
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <ivysettings>
-      <property name="local.repo.url" value="${ivy.settings.dir}" override="false"/>
-      
-      <!--
-        Include default settings file for MicroEJ SDK version:
-        - MICROEJ SDK 5.4.0 or higher: ${user.home}/.microej/microej-ivysettings-5.4.xml
-        - MICROEJ SDK 5.0.0 to 5.3.1: ${user.home}/.microej/microej-ivysettings-5.xml
-        - MICROEJ SDK 4.1.x: ${user.home}/.ivy2/microej-ivysettings-4.1.xml 
-      -->
-      <include file="${user.home}/.microej/microej-ivysettings-5.xml"/>
-      
-      <settings defaultResolver="ArchitectureResolver"/>
+     <?xml version="1.0" encoding="UTF-8"?>
+     <ivysettings>
+       <property name="local.repo.url" value="${ivy.settings.dir}" override="false"/>
 
-      <resolvers>
-        <filesystem name="LocalArchitectureResolver" m2compatible="true">
-          <artifact pattern="${local.repo.url}/${microej.artifact.pattern}" />
-          <ivy pattern="${local.repo.url}/${microej.ivy.pattern}" />
-        </filesystem>
-            
-        <chain name="ArchitectureResolver"> 
-          <resolver ref="LocalArchitectureResolver"/>
-          <resolver ref="${microej.default.resolver}"/>
-        </chain>
-      </resolvers>
-    </ivysettings>
+       <!--
+           Include default settings file for MicroEJ SDK version:
+           - MICROEJ SDK 5.4.0 or higher: ${user.home}/.microej/microej-ivysettings-5.4.xml
+           - MICROEJ SDK 5.0.0 to 5.3.1: ${user.home}/.microej/microej-ivysettings-5.xml
+           - MICROEJ SDK 4.1.x: ${user.home}/.ivy2/microej-ivysettings-4.1.xml
+       -->
+       <include file="${user.home}/.microej/microej-ivysettings-5.xml"/>
+
+       <settings defaultResolver="ArchitectureResolver"/>
+
+       <resolvers>
+         <chain name="ArchitectureResolver">
+           <filesystem m2compatible="true">
+             <artifact pattern="${local.repo.url}/${microej.artifact.pattern}" />
+             <ivy pattern="${local.repo.url}/${microej.ivy.pattern}" />
+           </filesystem>
+           <resolver ref="${microej.default.resolver}"/>
+         </chain>
+       </resolvers>
+     </ivysettings>
 
 - Copy the MicroEJ Architecture file (``.xpf``) into the correct directory
   following MicroEJ Naming Convention (see :ref:`architecture_import`).
