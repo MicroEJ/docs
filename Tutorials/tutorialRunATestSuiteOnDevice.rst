@@ -1,3 +1,5 @@
+.. _run_test_suite_on_device:
+
 Run a Test Suite on a Device
 ============================
 

@@ -9,6 +9,7 @@ Tutorials
    tutorialUnderstandMicroEJFirmwareBuild
    tutorialCreateCustomPlatform
    tutorialCreateFirmwareFromScratch
+   tutorialCreateBuildScripts
    tutorialSetupBuildUsingJenkinsAndArtifactory
    tutorialImproveCodeQuality
    tutorialOptimizeMemoryFootprint
