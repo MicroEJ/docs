@@ -258,17 +258,24 @@ Example
 -------
 
 The following example shows how to create and launch the MicroEJ Core
-Engine from the C world. This function (``mjvm_main``) should be called
+Engine from the C world. This function (``microej_main``) should be called
 from a dedicated RTOS task.
 
 .. code:: c
 
    #include <stdio.h>
-   #include "mjvm_main.h"
+   #include "microej_main.h"
    #include "LLMJVM.h"
    #include "sni.h"
 
-   void mjvm_main(void)
+   #ifdef __cplusplus
+       extern "C" {
+   #endif
+
+   /**
+    * @brief Creates and starts a MicroEJ instance. This function returns when the MicroEJ execution ends.
+    */
+   void microej_main(int argc, char **argv)
    {
        void* vm;
        int32_t err;
@@ -279,12 +286,14 @@ from a dedicated RTOS task.
 
        if(vm == NULL)
        {
-           printf("VM initialization error.\n");
+           printf("MicroEJ initialization error.\n");
        }
        else
        {
-           printf("VM START\n");
-           err = SNI_startVM(vm, 0, NULL);
+           printf("MicroEJ START\n");
+		   
+		   // Error codes documentation is available in LLMJVM.h
+           err = SNI_startVM(vm, argc, argv);
 
            if(err < 0)
            {
@@ -295,20 +304,24 @@ from a dedicated RTOS task.
                }
                else
                {
-                   printf("VM execution error (err = %d).\n", err);
+                   printf("MicroEJ execution error (err = %d).\n", err);
                }
            }
            else
            {
                // VM execution ends normally
                exitcode = SNI_getExitCode(vm);
-               printf("VM END (exit code = %d)\n", exitcode);
+               printf("MicroEJ END (exit code = %d)\n", exitcode);
            }
 
            // delete VM
            SNI_destroyVM(vm);
        }
    }
+   
+   #ifdef __cplusplus
+       }
+   #endif
 
 .. _vm_dump:
 
