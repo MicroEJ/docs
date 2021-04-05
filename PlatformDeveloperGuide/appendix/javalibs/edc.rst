@@ -64,43 +64,19 @@ is issued, where ``<messageId>`` meaning is defined in the next table:
 Exit Codes
 ----------
 
-The RTOS task that runs the MicroEJ runtime may end, especially when the
-MicroEJ Application calls ``System.exit`` method. By convention, a
-negative value indicates abnormal termination.  
+The MicroEJ Application can stop its execution by calling the method 
+``System.exit()``. 
+To retrieve the appplication exit code (or exit status), use the C function 
+``SNI_getExitCode()`` after the end of ``SNI_startVM()`` (see ``sni.h`` 
+header file). 
+If the MicroEJ Application ended without calling ``System.exit()`` then 
+``SNI_getExitCode()`` returns ``0``.
 
-.. table:: MicroEJ Platform exit codes
-
-   +-------------+--------------------------------------------------------+
-   | Message  ID | Meaning                                                |
-   +=============+========================================================+
-   | 0           | The MicroEJ Application ended normally.                |
-   +-------------+--------------------------------------------------------+
-   | -1          | The SOAR and the MicroEJ Platform are not compatible.  |
-   +-------------+--------------------------------------------------------+
-   | -2          | Incompatible link configuration (``lsc`` file) with    |
-   |             | either the SOAR or the MicroEJ Platform.               |
-   +-------------+--------------------------------------------------------+
-   | -3          | Evaluation version limitations reached: termination of |
-   |             | the application.                                       |
-   +-------------+--------------------------------------------------------+
-   | -5          | Not enough resources to start the very first MicroEJ   |
-   |             | thread that executes ``main`` method.                  |
-   +-------------+--------------------------------------------------------+
-   | -12         | Maximum number of threads reached.                     |
-   +-------------+--------------------------------------------------------+
-   | -13         | Fail to start the MicroEJ Platform because the         |
-   |             | specified MicroEJ heap is too large.                   |
-   +-------------+--------------------------------------------------------+
-   | -14         | Invalid stack space due to a link placement error.     |
-   +-------------+--------------------------------------------------------+
-   | -15         | The application has too many static (the requested     |
-   |             | static head is too large).                             |
-   +-------------+--------------------------------------------------------+
-   | -16         | The MicroEJ Core Engine cannot be restarted.           |
-   +-------------+--------------------------------------------------------+
+The error codes returned by ``SNI_startVM()`` are defined in the section 
+:ref:`core_engine_error_codes`.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
