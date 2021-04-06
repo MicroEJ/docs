@@ -1,3 +1,5 @@
+.. _tutorial_create_build_scripts:
+
 Create Platform Build Scripts
 =============================
 
@@ -32,9 +34,7 @@ See :ref:`Build Script File and Run Script File<bsp_connection_build_script>` su
 Overview
 --------
 
-In  :ref:`Create a MicroEJ Firmware From Scratch<create_firmware_from_scratch>`, the :ref:`BSP connection<bsp_connection>` is partial: the final binary is produced by invoking ``make`` in the FreeRTOS BSP.
-
-We use WSL to build the firmware and launch it with QEMU. We thus setup build scripts for these tasks: ``build.sh`` will build ``application.out`` whereas ``run.sh`` will launch it in QEMU.
+In  :ref:`Create a MicroEJ Firmware From Scratch<create_firmware_from_scratch>`, the :ref:`BSP connection<bsp_connection>` the final binary is produced by invoking ``make`` in the FreeRTOS BSP. The command to type is dependant of the toolchain used. The application is then launched in QEMU but could have been instead flashed to a device with another specific command. This tutorial explain how to write `build` and `run` scripts for these two tasks. 
 
 The next sections will
 
@@ -46,12 +46,14 @@ Create Build Scripts
 
 This section describes how to write build scripts.
 
-There are four scripts:
+There are two scripts:
 
 #. ``build.xxx`` which calls the toolchain to build the application executable file. It also ensures that the output file is called ``application.out`` and is located in the directory from where the script was called.
 #. ``run.xxx`` which deploys and runs ``application.out`` on the device. In this tutorial, it will only run the application with QEMU instead of flashing it on real hardware.
 
-Create a ``microej/scripts`` directory in BSP project:
+Each of these scripts come in two flavors: ``.sh`` for unix-like systems, and ``.batch`` for Windows systems.
+
+First, create a ``microej/scripts`` directory in BSP project:
 
 .. code-block:: shell
 
@@ -89,7 +91,7 @@ Create `build.sh` and `run.sh` Scripts
     # Restore application directory
     cd $CURRENT_DIRECTORY/
 
-2. Verify that the scrit succesfully build our firmware and put it in the current directory with the name ``application.out``.
+2. Verify that the script succesfully built your firmware and put it in the current directory with the name ``application.out``.
 
   .. code-block:: shell
 
@@ -145,12 +147,12 @@ Create `build.sh` and `run.sh` Scripts
 
 .. note::
 
-  This script is very simple because our application is just run with QEMU instead of a real hardware. To deploy the applcation on a device, the script would have to setup and call a flash tool. See for instance the build script for `Espressif-ESP-WROVER-KIT-V4.1 <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/blob/1.7.0/ESP32-WROVER-Xtensa-FreeRTOS-bsp/Projects/microej/scripts/build.sh>`_. 
+  This script is very simple because our application is just run with QEMU instead of a real hardware. To deploy the application on a device, the script would have to setup and call a flash tool. See for instance the build script for `Espressif-ESP-WROVER-KIT-V4.1 <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/blob/1.7.0/ESP32-WROVER-Xtensa-FreeRTOS-bsp/Projects/microej/scripts/build.sh>`_. 
 
 Create `build.bat` and `run.bat` Scripts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As our toolchain has only be configured for Linux in WSL, we simply create wrappers that call shell scripts through WSL.
+As our toolchain has only be configured for Linux in WSL, we create wrappers that call shell scripts through WSL.
 
 1. Create a file called `build.bat` in the `microej/scripts` directory with the following content:
 
@@ -237,14 +239,18 @@ As our toolchain has only be configured for Linux in WSL, we simply create wrapp
     Hello, World! printf function is working.
     Hello World!
 
-A Build Script Practical Usage
-----------------------------------
+Use Build Script in MicroEJ Application Project
+-----------------------------------------------
 
 In this section, we illustrate how built scripts are used in pratice.
 
 We will first configure Eclipse and the platform to enable full firmware build (build application, build BSP + link to platform) when building `HelloWorld` application from launcher.
 
-We will then finalize BSP connection to remove the link between the application and the BSP.
+We will then configure a full BSP connection. This will remove the need to configure the path of the BSP in the application launcher.
+
+.. note::
+
+    Build Scripts do not require to configure a full BSP connection. This last part has only be added to finish a MicroEJ Application project independant from the BSP.
 
 Build Firmware at Once from Eclipse 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -307,8 +313,8 @@ Build Firmware at Once from Eclipse
 
 Reading the traces, we see that the `HelloWorld` application and the platform MicroEJ Platform library have been deployed to the BSP and the ```build.bat`` script has been called to rebuild the BSP. The output is then ``application.out`` binary that can be flashed on the board (or run on QEMU).
 
-Links the Platform to the BSP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Finish full BSP connection (optional)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this section, we configure the BSP root directory in the platform.
 
@@ -353,7 +359,7 @@ The platform is now fully connected to the BSP.
 
     You can notice the difference in the second line of the trace that now says that the connection is `using platform option 'root.dir' in 'bsp/bsp.properties'.` instead of `using platform option 'deploy.bsp.root.dir'.` in the previous launch.
 
- The application launcher does not know anymore where the BSP is located Nevertheless it still builds a full firmware ready to be flashed. The link to the BSP is now configured in the platform and every MicroEJ mono-sandboxed application projects can use it without extra configuration.
+ The application launcher does not know anymore where the BSP is located. Nevertheless it still builds a full firmware ready to be flashed. The link to the BSP is now configured in the platform and every MicroEJ mono-sandboxed application projects can use it without extra configuration.
 
 Going Further
 -------------
