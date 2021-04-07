@@ -24,7 +24,7 @@ Such validation is performed by running tests at two-levels:
 - In C, by calling Low Level APIs (usually manually).
 - In Java, by calling Foundation Library APIs (usually automatically using :ref:`platform_testsuite`).
 
-MicroEJ provides a set of tools and pre-defined projects aimed at simplifying the steps 
+MicroEJ provides a set of tools and pre-defined projects aimed at simplifying the steps
 for validating Platforms. Please refer to https://github.com/MicroEJ/PlatformQualificationTools.
 
 .. _pqt_overview:
@@ -97,16 +97,86 @@ A Platform Test Suite contains one or more tests.  For each test, the Test Suite
 Test Suite Versioning
 =====================
 
-From an Application point of view, a Platform provides a set of
-Foundation Libraries.  From the Platform point of view, a Platform
-integrates a set of MicroEJ Packs with Low-Level APIs that must be
-implemented in the BSP.  The version of Test Suites to run depends on
-the Packs integrated in the Platform.
+Foundation Libraries are integrated in a MicroEJ Platform by MicroEJ
+Packs (see :ref:`pack_import`).  Depending on the version of the
+Foundation Libraries provided by a Pack (one MicroEJ Pack can provide
+several Foundation Libraries), a precise Test Suite version must be
+used to validate the ADLA implementations.
 
+The following table presents the Test Suites to use to validate the
+integration of MicroEJ Packs in the Platform.
 
+.. list-table:: MicroEJ Packs and Test Suites association table
+   :widths: 40 10 40 10
+   :header-rows: 1
+
+   * - MicroEJ Pack
+     - Pack Version
+     - Test Suite
+     - Test Suite Version
+   * - com/microej/pack/bluetooth/bluetooth-pack
+     - 2.1.0
+     - com/microej/pack/bluetooth/bluetooth-testsuite
+     - 2.0.0
+   * - com/microej/pack/device/device-pack
+     - 1.1.1
+     - N/A
+     -
+   * - com/microej/pack/ecom-mobile/ecom-mobile-pack
+     - 1.0.0
+     - N/A
+     -
+   * - com/microej/architecture/generic/fs/fs-pack
+     - 5.0.0
+     - com/microej/pack/fs/fs-testsuite
+     - 3.0.3
+   * - com/microej/pack/fs
+     - 4.0.3
+     - com/microej/pack/fs/fs-testsuite
+     - 3.0.3
+   * - com/microej/pack/fs
+     - 5.1.2
+     - com/microej/pack/fs/fs-testsuite
+     - 3.0.3
+   * - com/microej/pack/hal
+     - 2.0.2
+     - N/A
+     -
+   * - com/microej/pack/gnss/gnss-pack
+     - 1.0.2
+     - N/A
+     -
+   * - com/microej/pack/monitoring/monitoring-pack
+     - 1.0.0
+     - com/microej/pack/watchdog/watchdog-testsuite
+     - 2.0.0
+   * - com/microej/pack/multicore/multicore-pack
+     - 0.1.0
+     - N/A
+     -
+   * - com/microej/pack/net
+     - 9.2.3
+     - com/is2t/libraries/net-embedded/net-embedded-testsuite
+     - 3.5.2
+   * -
+     -
+     - com/is2t/libraries/ssl-embedded/ssl-embedded-testsuite
+     - 3.1.2
+   * -
+     -
+     - com/is2t/libraries/security/security-testsuite
+     - 1.1.0
+   * - com/microej/pack/net-addons
+     - 2.3.0
+     - com/is2t/libraries/net-embedded/net-embedded-testsuite-wifi
+     - 1.1.2
+   * -
+     -
+     - com/is2t/libraries/ecom- network/ecom-network-wifi-testsuite
+     - 1.0.0
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
    copyrights are the property of their respective owners.
