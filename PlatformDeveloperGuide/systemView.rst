@@ -78,7 +78,7 @@ This file can be modified to fit with your system configuration:
             SEGGER_SYSVIEW_SetRAMBase(SYSVIEW_RAM_BASE);
          }
 
-5. Add in your BSP the MicroEJ C component files for SystemView: ``com.microej.clibrary.thirdparty.systemview-1.3.0`` (or check the differences between pre-installed SystemView and C component files)
+5. Add in your BSP the MicroEJ C component files for SystemView: ``com.microej.clibrary.thirdparty.systemview-1.3.1`` (or check the differences between pre-installed SystemView and C component files)
 6. Add in your BSP the MicroEJ C component files for SystemView FreeRTOS support : ``com.microej.clibrary.thirdparty.systemview-freertosxx-1.1.1`` (or check the differences between pre-installed SystemView and C component files)
 7. Install the implementation of MicroJvm monitoring over SystemView by adding C component files in your BSP: ``com.microej.clibrary.llimpl.trace-systemview-2.1.0``
 8. Make FreeRTOS compatible with SystemView: open  ``FreeRTOSConfig.h`` and:
