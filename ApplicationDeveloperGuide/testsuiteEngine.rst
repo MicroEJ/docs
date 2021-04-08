@@ -1,8 +1,5 @@
 .. _testsuite_engine:
 
-Test Suite Engine
-=================
-
 MicroEJ Test Suite Engine
 =========================
 
