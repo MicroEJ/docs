@@ -538,12 +538,11 @@ Overview
 * MicroUI library calls the BSP functions through the Graphics Engine and header file ``LLUI_DISPLAY_impl.h``. 
 * Implementation of ``LLUI_DISPLAY_impl.h`` can call Graphics Engine functions through ``LLUI_DISPLAY.h``.
 * To perform some drawings, MicroUI uses ``LLUI_PAINTER_impl.h`` functions.
-* The drawing native functions are implemented in the CCO ``com.microej.clibrary.llimpl#microui``; this CCO must be included in BSP.
-* This CCO redirects drawings the implementation of ``ui_drawing.h``.
-* ``ui_drawing.h`` is already implemented by `software algorithms` library (not represented in previous picture).
-* ``ui_drawing.h`` can be too implemented in BSP to use a GPU for instance.
-* This Implementation is allowed to call `software algorithms` through ``ui_drawing_soft.h`` header file.
-* MicroEJ library ``Drawing`` performs same operations with header files ``LLDW_PAINTER_impl.h``, ``dw_drawing_impl.h`` and ``dw_drawing.h``; and with C file ``LLDW_PAINTER_impl.c`` also available in CCO ``com.microej.clibrary.llimpl#microui``.
+* The module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_ provides a default implementation of the drawing native functions of ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``:
+  * It implements the synchronization layer, then redirects drawings implementations to ``ui_drawing.h`` and ``dw_drawing.h``
+* ``ui_drawing.h`` and ``dw_drawing.h`` are already implemented by built-in software algorithms (library provided by the UI Pack).
+* It is possible to implement some of the ``ui_drawing.h`` and ``dw_drawing.h`` functions in the BSP to provide a custom implementation (for instance, a GPU).
+  * Custom implementation is still allowed to call software algorithms declared in ``ui_drawing_soft.h`` and ``dw_drawing_soft.h``.
 
 Required Low Level API
 ----------------------
