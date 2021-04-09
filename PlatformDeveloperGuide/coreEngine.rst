@@ -173,7 +173,7 @@ occurred during the MicroEJ Core Engine initialization or execution.
 The file ``LLMJVM.h`` defines the platform-specific error code constants.
 The following table describes these error codes.
 
-.. table:: MicroEJ Core Engine error codes
+.. table:: MicroEJ Core Engine Error Codes
 
    +-------------+-------------------------------------------------------------+
    | Error Code  | Meaning                                                     |
