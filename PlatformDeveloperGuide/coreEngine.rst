@@ -205,7 +205,7 @@ The following table describes these error codes.
    |             | specified MicroEJ heap is too large or too small.           |
    |             | See section :ref:`option_java_heap`.                        |
    +-------------+-------------------------------------------------------------+
-   | -14         | Invalid MicroEJ application stack configuration. The        |
+   | -14         | Invalid MicroEJ Application stack configuration. The        |
    |             | stack start or end is not eight-byte aligned, or stack      |
    |             | block size is too small. See section                        |
    |             | :ref:`option_number_of_stack_blocks`.                       |
@@ -246,13 +246,13 @@ The following table describes these error codes.
    |             | MicroEJ Architecture.                                       |
    +-------------+-------------------------------------------------------------+
    | -23         | The function ``LLMJVM_IMPL_initialize`` defined in the      |
-   |             | abstraction layer returns an error.                         |
+   |             | Abstraction Layer implementation returns an error.          |
    +-------------+-------------------------------------------------------------+
    | -24         | The function ``LLMJVM_IMPL_vmTaskStarted`` defined in the   |
-   |             | abstraction layer returns an error.                         |
+   |             | Abstraction Layer implementation returns an error.          |
    +-------------+-------------------------------------------------------------+
    | -25         | The function ``LLMJVM_IMPL_shutdown`` defined in the        |
-   |             | abstraction layer returns an error.                         |
+   |             | Abstraction Layer implementation returns an error.          |
    +-------------+-------------------------------------------------------------+
 
 

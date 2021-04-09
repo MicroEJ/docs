@@ -63,7 +63,7 @@ This package includes:
 
 * a C Board Support Package (BSP) with C drivers and an optional RTOS
 * a MEJ32 Architecture
-* the abstraction layers implementation of the platform architecture and foundations libraries
+* the Abstraction Layers implementation of the platform architecture and foundations libraries
 * the MicroEJ Simulator and its associated MicroEJ Mocks
 
 The platform .zip files contain:
