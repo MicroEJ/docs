@@ -81,8 +81,8 @@ This file can be modified to fit with your system configuration:
 5. Add in your BSP the MicroEJ C module files for SystemView: `com.microej.clibrary.thirdparty#systemview <https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview/1.3.1/>`_ (or check the differences between pre-installed SystemView and C files provided by this module)
 6. Add in your BSP the MicroEJ C module files for SystemView FreeRTOS support (or check the differences between pre-installed SystemView and C files provided by this module)
    
-   - FreeRTOS 9: `com.microej.clibrary.thirdparty#systemview-freertos9 <https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview-freertos9/1.1.1/>`_ 
    - FreeRTOS 10: `com.microej.clibrary.thirdparty#systemview-freertos10 <https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview-freertos10/1.1.1/>`_ 
+   - FreeRTOS 9: please contact :ref:`our support team <get_support>` to get the latest maintenance version of ``com.microej.clibrary.thirdparty#systemview-freertos9`` module.
 
 7. Install the Abstraction Layer implementation of the :ref:`Java Trace API <trace_implementations>` for SystemView by adding C module files in your BSP: `com.microej.clibrary.llimpl#trace-systemview <https://repository.microej.com/modules/com/microej/clibrary/llimpl/trace-systemview/2.1.1/>`_
 8. Make FreeRTOS compatible with SystemView: open  ``FreeRTOSConfig.h`` and:
