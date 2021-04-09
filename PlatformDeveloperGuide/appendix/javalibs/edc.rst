@@ -65,11 +65,11 @@ Exit Codes
 ----------
 
 The MicroEJ Application can stop its execution by calling the method 
-``System.exit()``. 
+`System.exit() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#exit-int->`_. 
 To retrieve the appplication exit code (or exit status), use the C function 
 ``SNI_getExitCode()`` after the end of ``SNI_startVM()`` (see ``sni.h`` 
 header file). 
-If the MicroEJ Application ended without calling ``System.exit()`` then 
+If the MicroEJ Application ended without calling `System.exit() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#exit-int->`_ then 
 ``SNI_getExitCode()`` returns ``0``.
 
 The error codes returned by ``SNI_startVM()`` are defined in the section 
