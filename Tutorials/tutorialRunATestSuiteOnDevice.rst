@@ -17,7 +17,7 @@ Intended Audience and Scope
 ---------------------------
 
 The audience for this document is software engineers who want to
-validate an abstraction layer implementation or understand how to automatically
+validate an Abstraction Layer implementation or understand how to automatically
 run a MicroEJ Test Suite on their device.
 
 The following topics are out of the scope of this tutorial:
