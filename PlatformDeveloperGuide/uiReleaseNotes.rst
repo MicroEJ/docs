@@ -8,7 +8,7 @@ Release Notes
 MicroEJ Architecture Compatibility Version
 ==========================================
 
-The following tables illustrate the compatibility ranges between the MicroEJ UI Packs and MicroEJ Architectures.
+The following tables describe the compatibility ranges between MicroEJ UI Packs and MicroEJ Architectures.
 
 Standard Versions
 """""""""""""""""
@@ -170,7 +170,7 @@ LED
 Front Panel API
 ===============
 
-Since MicroEJ UI Pack 13.0.0, the Front Panel project must depend on module `com.microej.pack.ui.ui-pack(frontpanel) <https://repository.microej.com/artifacts/com/microej/pack/ui/ui-pack/>`_ . 
+Since MicroEJ UI Pack ``13.0.0``, the Front Panel project must depend on module `com.microej.pack.ui.ui-pack(frontpanel) <https://repository.microej.com/artifacts/com/microej/pack/ui/ui-pack/>`_ . 
 The module version is the MicroEJ Generic UI Pack version, that is always aligned with the MicroEJ UI Packs specific for MCUs.
 
 +-----------------+---------------------------------------------+-------------------+
@@ -181,12 +181,12 @@ The module version is the MicroEJ Generic UI Pack version, that is always aligne
 | [12.0.0-12.1.5] | ``ej.tool.frontpanel.widget-microui``       | 1.0.0             |
 +-----------------+---------------------------------------------+-------------------+
 
-.. note:: Before MicroEJ UI Pack **12.0.0**, the Front Panel project must depend on classpath variable ``FRONTPANEL_WIDGETS_HOME``.
+.. note:: Before MicroEJ UI Pack ``12.0.0``, the Front Panel project must depend on classpath variable ``FRONTPANEL_WIDGETS_HOME``.
 
 Image Generator API
 ===================
 
-Since MicroEJ UI Pack 13.0.0, the Image Generator extension project must depend on module `com.microej.pack.ui.ui-pack(imagegenerator) <https://repository.microej.com/artifacts/com/microej/pack/ui/ui-pack/>`_ .
+Since MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on module `com.microej.pack.ui.ui-pack(imagegenerator) <https://repository.microej.com/artifacts/com/microej/pack/ui/ui-pack/>`_ .
 The module version is the MicroEJ Generic UI Pack version, that is always aligned with the MicroEJ UI Packs specific for MCUs.
 
 +-----------------+-------------------------------------------------+-------------------+
@@ -195,7 +195,7 @@ The module version is the MicroEJ Generic UI Pack version, that is always aligne
 | [13.0.0-13.0.6] | ``com.microej.pack.ui.ui-pack(imagegenerator)`` | UI Pack version   |
 +-----------------+-------------------------------------------------+-------------------+
 
-.. note:: Before MicroEJ UI Pack **13.0.0**, the Image Generator extension project must depend on classpath variable ``IMAGE-GENERATOR-x.x``.
+.. note:: Before MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on classpath variable ``IMAGE-GENERATOR-x.x``.
 
 ..
    | Copyright 2021, MicroEJ Corp. Content in this space is free 
