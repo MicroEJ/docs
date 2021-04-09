@@ -11,14 +11,24 @@ Platform Configuration Project
 """"""""""""""""""""""""""""""
 
 * Update Architecture version: 7.13.0 or higher.
-* Add the CCO in the module ivy file: ``<dependency org="com.microej.clibrary.platform" name="bsp-llmicroui" rev="1.0.1"/>``
-* If not already set, set the ``ea:property`` ``bsp.project.microej.dir`` in the module ivy file to configure the CCO output folder.
+* Add the following module in the :ref:`module description file <mmm_module_description>`: 
+
+  .. code-block:: xml
+
+     <dependency org="com.microej.clibrary.llimpl" name="microui" rev="1.0.3"/>
+
+* If not already set, set the ``ea:property`` ``bsp.project.microej.dir`` in the module ivy file to configure the BSP output folder where is extracted the module.
 
 Hardware Accelerator
 """"""""""""""""""""
 
 * Open ``-configuration`` project > ``display`` > ``display.properties``
-* Remove optional property ``hardwareAccelerator``. If old value was ``dma2d``, add the CCO in the module ivy file: ``<dependency org="com.microej.clibrary.platform" name="bsp-lldisplay_dma2d" rev="1.0.2"/>``. 
+* Remove optional property ``hardwareAccelerator``. If old value was ``dma2d``, add the following module in the :ref:`module description file <mmm_module_description>`: 
+  
+  .. code-block:: xml
+  
+     <dependency org="com.microej.clibrary.llimpl" name="display-dma2d" rev="1.0.6"/>``
+
 * For the hardware accelerator DMA2D, please consult STM32F7Discovery board updates. Add the file ``lldisplay_dma2d.c``, the global defines ``DRAWING_DMA2D_BPP=16`` (or another value) and ``STM32F4XX`` or ``STM32F7XX``
 * For the others hardware accelerators, please contact MicroEJ support.
 
@@ -45,7 +55,7 @@ Front Panel API
 
 * ``ej.drawing.LLDWPainter``
 
-	* [Added] Equivalent of CCO ``com.microej.clibrary.platform#bsp-llmicroui`` (``LLDW_PAINTER_impl.c``): implements all ``ej.api.drawing`` natives and redirect them to the interface ``DWDrawing``.
+	* [Added] Equivalent of module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_ (``LLDW_PAINTER_impl.c``): implements all ``ej.api.drawing`` natives and redirect them to the interface ``DWDrawing``.
 	* [Added] ``setDrawer(DWDrawing)``: allows to configure the implementation of ``DWDrawing`` the ``LLDWPainter`` has to use. When no drawer is configured, ``LLDWPainter`` redirects all drawings to the internal graphical engine software algorithms.
 
 * ``ej.fp.event.MicroUIButtons``
@@ -112,7 +122,7 @@ Front Panel API
 
 * ``ej.microui.display.LLUIPainter``
 
-	* [Added] Equivalent of CCO ``com.microej.clibrary.platform#bsp-llmicroui`` (``LLUI_PAINTER_impl.c``): implements all ``ej.api.microui`` natives and redirect them to the interface ``UIDrawing``.
+	* [Added] Equivalent of module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_ (``LLUI_PAINTER_impl.c``): implements all ``ej.api.microui`` natives and redirect them to the interface ``UIDrawing``.
 	* [Added] ``MicroUIGraphicsContext``: representation of a MicroUI ``GraphicsContext`` in front panel. This interface (implemented by the graphical engine) provides several function to get information on graphics context, clip, etc.
 	* [Added] ``MicroUIGraphicsContext#requestDrawing()``: allows to take the hand on the drawing buffer.
 	* [Added] ``MicroUIImage``: representation of a MicroUI ``Image`` in front panel. This interface (implemented by the graphical engine) provides several function to get information on image.
@@ -277,7 +287,7 @@ The available changes in LLAPI are described in :ref:`next chapter<section_ui_mi
 * Fix some functions signatures (``LLUI_DISPLAY_IMPL_hasBacklight()``, etc)
 * Remove the functions ``LLDISPLAY_IMPL_getGraphicsBufferAddress``, ``LLDISPLAY_IMPL_getHeight``, ``LLDISPLAY_IMPL_getWidth``, ``LLDISPLAY_IMPL_synchronize``, ``LLDISPLAY_EXTRA_IMPL_waitPreviousDrawing``, ``LLDISPLAY_EXTRA_IMPL_error``
 * Add the end of asynchronous flush copy, call ``LLUI_DISPLAY_flushDone``
-* Add the files ``LLUI_PAINTER_impl.c`` and ``LLDW_PAINTER_impl.c`` in your C project (CCO files)
+* Add the files ``LLUI_PAINTER_impl.c`` and ``LLDW_PAINTER_impl.c`` in your C configuration project
 * Replace the prefix ``LLINPUT`` in all header files, functions and defines by the new prefix ``LLUI_INPUT``
 * Replace the prefix ``LLLEDS`` in all header files, functions and defines by the new prefix ``LLUI_LED``
 * Replace the prefix ``LLDISPLAY`` in all header files, functions and defines by the new prefix ``LLUI_DISPLAY``
@@ -360,7 +370,7 @@ LLAPI
  
 * ``LLDW_PAINTER_impl.h``
 
-	* [Added] List of ``ej.api.drawing`` library's native functions implemented in CCO ``com.microej.clibrary.platform#bsp-llmicroui``.
+	* [Added] List of ``ej.api.drawing`` library's native functions implemented in module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_.
 
 * ``LLLEDS_impl.h`` and ``intern/LLLEDS_impl.h`` merged in ``LLUI_LED_impl.h``
 
@@ -413,7 +423,7 @@ LLAPI
 
 * ``LLUI_PAINTER_impl.h``
 
-	* [Added] List of ``ej.api.microui`` library's native functions implemented in CCO ``com.microej.clibrary.platform#bsp-llmicroui``.
+	* [Added] List of ``ej.api.microui`` library's native functions implemented in module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_.
 	* [Added] ``MICROUI_ImageFormat``: MicroUI ``Image`` pixel format.
 	* [Added] ``MICROUI_Image``: MicroUI ``Image`` representation.
 	* [Added] ``MICROUI_GraphicsContext``: MicroUI ``GraphicsContext`` representation.

@@ -14,7 +14,7 @@ LLAPIs
 
 **Fixed**
 
-	* Fix the size of the typedef ``MICROUI_Image``: do not depend on the size of the enumaration ``MICROUI_ImageFormat`` (``LLUI_PAINTER_impl.h``).
+	* Size of the typedef ``MICROUI_Image``: do not depend on the size of the enumeration ``MICROUI_ImageFormat`` (``LLUI_PAINTER_impl.h``).
 
 13.0.5 (2021-03-08)
 ===================
@@ -114,8 +114,11 @@ MicroUI Implementation
 ===================
 
 * Compatible with Architecture 7.13.0 or higher.
-* [ESP32] - Fixed potential ``PSRAM`` access faults by rebuilding using esp-idf v3.3.0 toolchain (``simikou2``).
 * Use new naming convention: ``com.microej.architecture.[toolchain].[architecture]-ui-pack``.
+
+**Fixed**
+
+	* [ESP32] - Potential ``PSRAM`` access faults by rebuilding using esp-idf v3.3.0 toolchain - ``simikou2``.
 
 13.0.1 (2020-09-22)
 ===================
@@ -212,7 +215,7 @@ LLAPIs
 
 	* Some new functions are mandatory: see header files list, tag *mandatory*.
 	* Some new functions are optional: see header files list, tag *optional*.
-	* Some header files list the libraries ``ej.api.microui`` and ``ej.api.drawing`` natives; these natives are implemented in CCO ``com.microej.clibrary.platform#bsp-llmicroui``.
+	* Some header files list the libraries ``ej.api.microui`` and ``ej.api.drawing`` natives. Provided by Abstraction Layer implementation module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_.
 	* Some header files list the drawing algorithms the platform can implement; all algorithms are optional.
 	* Some header files list the internal graphical engine software algorithms the platform can call.
 	
@@ -268,8 +271,11 @@ FontGenerator
 ===================
 
 * Compatible with Architecture 7.11.0 or higher.
-* [ESP32] - Fixed potential PSRAM access faults by rebuilding using esp-idf v3.3.0 toolchain (simikou2).
 * Use new naming convention: ``com.microej.architecture.[toolchain].[architecture]-ui-pack``.
+
+**Fixed**
+
+	* [ESP32] - Potential ``PSRAM`` access faults by rebuilding using esp-idf v3.3.0 toolchain - ``simikou2``.
 
 12.1.4 (2020-03-10)
 ===================
