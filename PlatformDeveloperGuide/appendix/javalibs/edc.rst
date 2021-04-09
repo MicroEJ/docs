@@ -61,6 +61,8 @@ is issued, where ``<messageId>`` meaning is defined in the next table:
    |             | ``Character.MIN_RADIX`` to ``Character.MAX_RADIX``.    |
    +-------------+--------------------------------------------------------+
 
+.. _edc_exit_codes:
+
 Exit Codes
 ----------
 

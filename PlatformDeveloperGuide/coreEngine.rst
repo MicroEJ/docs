@@ -181,6 +181,7 @@ The following table describes these error codes.
    | 0           | The MicroEJ Application ended normally (i.e., all the       |
    |             | non-daemon threads are terminated or                        |
    |             | ``System.exit(exitCode)`` has been called).                 |
+   |             | See section :ref:`edc_exit_codes`.                          |
    +-------------+-------------------------------------------------------------+
    | -1          | The SOAR and the MicroEJ Platform are not compatible.       |
    |             | The ``microejapp.o`` object file has been built for         |
