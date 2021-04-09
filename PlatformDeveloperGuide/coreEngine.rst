@@ -1,3 +1,5 @@
+.. _core_engine:
+
 ===================
 MicroEJ Core Engine
 ===================
@@ -84,7 +86,7 @@ architectures. Refer to section :ref:`appendix_matrixcapabilities`
 for more details.
 
 
-.. _mjvm_impl:
+.. _core_engine_implementation:
 
 Implementation
 ==============
@@ -445,7 +447,7 @@ Dependencies
 ============
 
 The MicroEJ Core Engine requires an implementation of its low level APIs
-in order to run. Refer to the chapter :ref:`mjvm_impl` for more
+in order to run. Refer to the chapter :ref:`core_engine_implementation` for more
 information.
 
 
