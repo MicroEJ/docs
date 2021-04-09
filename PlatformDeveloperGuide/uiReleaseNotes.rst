@@ -44,10 +44,10 @@ Maintenance Versions
 
 .. _section_ui_api:
 
-Java Libraries API
-==================
+Foundation Libraries
+====================
 
-The following table illustrates the API implemented in the MicroEJ UI Packs.
+The following table describes Foundation Libraries API versions implemented in MicroEJ UI Packs.
 
 .. list-table:: MicroUI API Implementation
    :widths: 20 10 10
@@ -90,10 +90,10 @@ The following table illustrates the API implemented in the MicroEJ UI Packs.
      - 2.0.0
      - 
 
-Low-Level API
-=============
+Abstraction Layer Interface
+===========================
 
-The following chapters describe succinctly the changes in low-level API.
+The following sections briefly describes Abstraction Layer interface changes.
 For more details, refer to the :ref:`section_ui_migrationguide`.
 
 Display
