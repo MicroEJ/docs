@@ -4,8 +4,8 @@
 Changelog
 =========
 
-13.0.6 (2021-03-29)
-===================
+[13.0.6] - 2021-03-29
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -16,8 +16,8 @@ LLAPIs
 
 	* Size of the typedef ``MICROUI_Image``: do not depend on the size of the enumeration ``MICROUI_ImageFormat`` (``LLUI_PAINTER_impl.h``).
 
-13.0.5 (2021-03-08)
-===================
+[13.0.5] - 2021-03-08
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -43,8 +43,8 @@ Simulator
 
 	* Front panel memory management: reduce simulation time.
 
-13.0.4 (2021-01-15)
-===================
+[13.0.4] - 2021-01-15
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -87,8 +87,8 @@ ImageGenerator
 	* ``NullPointerException`` when trying to convert an unknown image.
 	* Restore external resources option in MicroEJ launcher.
 
-13.0.3 (2020-12-03)
-===================
+[13.0.3] - 2020-12-03
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
  
@@ -110,8 +110,8 @@ MicroUI Implementation
 	* Draw image algorithm does not respect image stride in certain circumstances.
 	* Fix flush limits of ``drawThickFadedLine``, ``drawThickEllipse`` and ``drawThickFadedEllipse``.
  
-13.0.2 (2020-10-02)
-===================
+[13.0.2] - 2020-10-02
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 * Use new naming convention: ``com.microej.architecture.[toolchain].[architecture]-ui-pack``.
@@ -120,8 +120,8 @@ MicroUI Implementation
 
 	* [ESP32] - Potential ``PSRAM`` access faults by rebuilding using esp-idf v3.3.0 toolchain - ``simikou2``.
 
-13.0.1 (2020-09-22)
-===================
+[13.0.1] - 2020-09-22
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -167,8 +167,8 @@ ImageGenerator
 
 	* Cannot build a platform with image generator and without front panel.
 
-13.0.0 (2020-07-30)
-===================
+[13.0.0] - 2020-07-30
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 * Integrate SDK 3.0-B license.
@@ -267,8 +267,8 @@ FontGenerator
 
 	* Used a dedicated ``bss`` section to load characters from an external font instead of using the java heap.
 
-12.1.5 (2020-10-02)
-===================
+[12.1.5] - 2020-10-02
+=====================
 
 * Compatible with Architecture 7.11.0 or higher.
 * Use new naming convention: ``com.microej.architecture.[toolchain].[architecture]-ui-pack``.
@@ -277,8 +277,8 @@ FontGenerator
 
 	* [ESP32] - Potential ``PSRAM`` access faults by rebuilding using esp-idf v3.3.0 toolchain - ``simikou2``.
 
-12.1.4 (2020-03-10)
-===================
+[12.1.4] - 2020-03-10
+=====================
 
 * Compatible with Architecture 7.11.0 or higher.
 
@@ -289,8 +289,8 @@ MicroUI Implementation
 
 	* Obsolete references on Java heap are used (since MicroEJ UI Pack 12.0.0).
 
-12.1.3 (2020-02-24)
-===================
+[12.1.3] - 2020-02-24
+=====================
 
 * Compatible with Architecture 7.11.0 or higher.
 
@@ -301,8 +301,8 @@ MicroUI Implementation
 
 	* Caps are not used when drawing an anti-aliased line.
 
-12.1.2 (2019-12-09)
-===================
+[12.1.2] - 2019-12-09
+=====================
 
 * Compatible with Architecture 7.11.0 or higher.
 
@@ -314,8 +314,8 @@ MicroUI Implementation
 	* Fix graphical engine empty clip (empty clip had got a size of 1 pixel).
 	* Clip not respected when clip is set "just after or before" graphics context drawable area: first (or last) line (or column) of graphics context was rendered.
 
-12.1.1 (2019-10-29)
-===================
+[12.1.1] - 2019-10-29
+=====================
 
 * Compatible with Architecture 7.11.0 or higher.
 
@@ -326,8 +326,8 @@ MicroUI Implementation
 
 	* Fix graphical engine clip (cannot be outside graphics context).
 
-(maint) 8.0.0 (2019-10-18)
-==========================
+[(maint) 8.0.0] - 2019-10-18
+============================
 
 * Compatible with Architecture 7.0.0 or higher.
 * Based on 7.4.7.
@@ -339,8 +339,8 @@ MicroUI Implementation
 
 	* Pending flush cannot be added after an OutOfEventException.
 
-12.1.0 (2019-10-16)
-===================
+[12.1.0] - 2019-10-16
+=====================
 
 * Compatible with Architecture 7.11.0 or higher.
 
@@ -365,8 +365,8 @@ MicroUI Implementation
 	* ``Display.isColor()`` returns an invalid value.
 	* Draw/fill circle/ellipse arc is not drawn when angle is negative.
 
-12.0.2 (2019-09-23)
-===================
+[12.0.2] - 2019-09-23
+=====================
 
 * Compatible with Architecture 7.11.0 or higher.
 
@@ -383,8 +383,8 @@ MicroUI Implementation
 
 	* Remove useless exception in SystemInputPump.
 
-12.0.1 (2019-07-25)
-===================
+[12.0.1] - 2019-07-25
+=====================
 
 * Compatible with Architecture 7.11.0 or higher.
 
@@ -402,8 +402,8 @@ Simulator
 
 	* Increase native implementation execution time.
   
-12.0.0 (2019-06-24)
-===================
+[12.0.0] - 2019-06-24
+=====================
 
 * Compatible with Architecture 7.11.0 or higher.
 
@@ -458,8 +458,8 @@ FrontPanel Plugin
 
 	* FrontPanel version 5: Move front panel from MicroEJ UI Pack to Architecture *(not backward compatible)*; Architecture contains now Front Panel version 6.
 
-11.2.0 (2019-02-01)
-===================
+[11.2.0] - 2019-02-01
+=====================
 
 * Compatible with Architecture 7.0.0 or higher.
 
@@ -481,8 +481,8 @@ Tools
 
 	* Remove Font Designer from pack (useless).
 
-11.1.2 (2018-08-10)
-===================
+[11.1.2] - 2018-08-10
+=====================
 
 * Compatible with Architecture 7.0.0 or higher.
 
@@ -493,14 +493,14 @@ MicroUI Implementation
 
 	* Fix drawing bug in thick circle arcs.
 
-11.1.1 (2018-08-02)
-===================
+[11.1.1] - 2018-08-02
+=====================
 
 * Compatible with Architecture 7.0.0 or higher.
 * Internal release.
 
-11.1.0 (2018-07-27)
-===================
+[11.1.0] - 2018-07-27
+=====================
 
 * Compatible with Architecture 7.0.0 or higher.
 * Merge 10.0.2 and 11.0.1.
@@ -524,8 +524,8 @@ MicroUI Implementation
 	* ``Fillrect`` throws a hardfault on 8bpp platform.
 	* Rendering of a LUT image is wrong when using software algorithm.
 
-11.0.1 (2018-06-05)
-===================
+[11.0.1] - 2018-06-05
+=====================
 
 * Compatible with Architecture 7.0.0 or higher.
 * Based on 11.0.0.
@@ -540,8 +540,8 @@ MicroUI Implementation
 	* LRGB888 image format is always fully opaque.
 	* Number of colors returned when it is a custom display may be wrong.
 
-10.0.2 (2018-02-15)
-===================
+[10.0.2] - 2018-02-15
+=====================
 
 * Compatible with Architecture 6.13.0 or higher.
 * Based on 10.0.1.
@@ -556,8 +556,8 @@ MicroUI Implementation
 	* Render a dynamic image on custom display is too slow.
 	* Image rendering may be invalid on custom display.
 
-11.0.0 (2018-02-02)
-===================
+[11.0.0] - 2018-02-02
+=====================
 
 * Compatible with Architecture 7.0.0 or higher.
 * Based on 10.0.1.
@@ -569,8 +569,8 @@ MicroUI Implementation
 
 	* SNI Callback feature in the VM to remove the SNI retry pattern *(not backward compatible)*.
 
-10.0.1 (2018-01-03)
-===================
+[10.0.1] - 2018-01-03
+=====================
 
 * Compatible with Architecture 6.13.0 or higher.
 
@@ -581,8 +581,8 @@ MicroUI Implementation
 
 	* Hard fault when using custom display stack.
 
-10.0.0 (2017-12-22)
-===================
+[10.0.0] - 2017-12-22
+=====================
 
 * Compatible with Architecture 6.13.0 or higher.
 
@@ -612,8 +612,8 @@ Misc
 
 	* Option in platform builder to images heap size.
 
-9.4.1 (2017-11-24)
-==================
+[9.4.1] - 2017-11-24
+====================
 
 * Compatible with Architecture 6.12.0 or higher.
 
@@ -624,8 +624,8 @@ ImageGenerator
 
 	* Missing some files in image generator module.
 
-9.4.0 (2017-11-23)
-==================
+[9.4.0] - 2017-11-23
+====================
 
 * Compatible with Architecture 6.12.0 or higher.
 * Deprecated: use 9.4.1 instead.
@@ -646,8 +646,8 @@ MicroUI Implementation
 	* Memory leak when an ``OutOfEvent`` exception is thrown.
 	* A null Java object is not checked when using a font.
   
-9.3.1 (2017-09-28)
-==================
+[9.3.1] - 2017-09-28
+====================
 
 * Compatible with Architecture 6.12.0 or higher.
   
@@ -660,8 +660,8 @@ MicroUI Implementation
 	* Exception when loading a font from an application .
 	* ``LLEXT`` link error with Architecture 6.13+ and UI 9+.
   
-9.3.0 (2017-08-24)
-==================
+[9.3.0] - 2017-08-24
+====================
 
 * Compatible with Architecture 6.12.0 or higher.
   
@@ -680,8 +680,8 @@ Simulator
 	* Do not create an AWT window for each image.
 	* Error when trying to play with an unknown led.
   
-9.2.1 (2017-08-14)
-==================
+[9.2.1] - 2017-08-14
+====================
 
 * Compatible with Architecture 6.12.0 or higher.
 
@@ -697,8 +697,8 @@ Simulator
 
 	* Mock startup is too long.
 
-9.2.0 (2017-07-21)
-==================
+[9.2.0] - 2017-07-21
+====================
 
 * Compatible with Architecture 6.12.0 or higher.
 * Merge 9.1.2 and 9.0.2.
@@ -748,8 +748,8 @@ Misc
 
 	* RI build: reduce frontpanel dependency.
 
-9.0.2 (2017-04-21)
-==================
+[9.0.2] - 2017-04-21
+====================
 
 * Compatible with Architecture 6.4.0 or higher.
 * Based on 9.0.1.
@@ -768,8 +768,8 @@ ImageGenerator
 
 	* An Ax image may be fully opaque.
 
-9.1.2 (2017-03-16)
-==================
+[9.1.2] - 2017-03-16
+====================
 
 * Compatible with Architecture 6.8.0 or higher.
 * Based on 9.1.1.
@@ -811,8 +811,8 @@ ImageGenerator
 	* Use the application classpath.
 	* An Ax image may be fully opaque.
     
-9.0.1 (2017-03-13)
-==================
+[9.0.1] - 2017-03-13
+====================
 
 * Compatible with Architecture 6.4.0 or higher.
 * Based on 9.0.0.
@@ -843,8 +843,8 @@ FrontPanel Plugin
 	* Respect initial background color set by user on preview.
 	* Preview does not respect the real size of display.
 
-9.1.1 (2017-02-14)
-==================
+[9.1.1] - 2017-02-14
+====================
 
 * Compatible with Architecture 6.8.0 or higher.
 * Based on 9.1.0.
@@ -856,8 +856,8 @@ Misc
 
 	* RI build: Several custom event generators in same ``microui.xml`` file are not embedded.
   
-9.1.0 (2017-02-13)
-==================
+[9.1.0] - 2017-02-13
+====================
 
 * Compatible with Architecture 6.8.0 or higher.
 * Based on 9.0.0.
@@ -902,8 +902,8 @@ FrontPanel Plugin
 	* Respect initial background color set by user on preview.
 	* Preview does not respect the real size of display.
 
-9.0.0 (2017-02-02)
-==================
+[9.0.0] - 2017-02-02
+====================
 
 * Compatible with Architecture 6.4.0 or higher.
 
@@ -962,8 +962,8 @@ Misc
 
 	* Remove obsolete documentations from FrontPanel And FontDesigner plugins.
 
-8.1.0 (2016-12-24)
-==================
+[8.1.0] - 2016-12-24
+====================
 
 * Compatible with Architecture 6.4.0 or higher.
 
@@ -991,8 +991,8 @@ Simulator
 
 	* Can add an additional screen on simulator.
 
-8.0.0 (2016-11-17)
-==================
+[8.0.0] - 2016-11-17
+====================
 
 * Compatible with Architecture 6.4.0 or higher.
 
@@ -1037,8 +1037,8 @@ Simulator
 
 	* Cannot set initial value of StateEventGenerator.
 
-7.4.7 (2016-06-14)
-==================
+[7.4.7] - 2016-06-14
+====================
 
 * Compatible with Architecture 6.1.0 or higher.
 
@@ -1058,8 +1058,8 @@ Simulator
 
 	* Cannot convert an image.
 
-7.4.2 (2016-05-25)
-==================
+[7.4.2] - 2016-05-25
+====================
 
 * Compatible with Architecture 6.1.0 or higher.
 
@@ -1070,8 +1070,8 @@ MicroUI Implementation
 
 	* invalid image drawing for *column* display.
   
-7.4.1 (2016-05-10)
-==================
+[7.4.1] - 2016-05-10
+====================
 
 * Compatible with Architecture 6.1.0 or higher.
 
@@ -1082,8 +1082,8 @@ MicroUI Implementation
 
 	* Restore stack 1, 2 and 4 BPP.
   
-7.4.0 (2016-04-29)
-==================
+[7.4.0] - 2016-04-29
+====================
 
 * Compatible with Architecture 6.1.0 or higher.
 
@@ -1101,8 +1101,8 @@ Simulator
 
 	* Restore stack 1, 2 and 4 BPP.
   
-7.3.0 (2016-04-25)
-==================
+[7.3.0] - 2016-04-25
+====================
 
 * Compatible with Architecture 6.1.0 or higher.
 
@@ -1113,8 +1113,8 @@ MicroUI Implementation
 
 	* Stack 8BPP with LUT support.
  
-7.2.1 (2016-04-18)
-==================
+[7.2.1] - 2016-04-18
+====================
 
 * Compatible with Architecture 6.1.0 or higher.
 
@@ -1125,8 +1125,8 @@ Misc
 
 	* Remove ``java`` keyword in workbench extension.
   
-7.2.0 (2016-04-05)
-==================
+[7.2.0] - 2016-04-05
+====================
 
 * Compatible with Architecture 6.1.0 or higher.
 
@@ -1137,8 +1137,8 @@ Tools
 
 	* Preprocess ``*.xxx.list`` files.
   
-7.1.0 (2016-03-02)
-==================
+[7.1.0] - 2016-03-02
+====================
 
 * Compatible with Architecture 6.1.0 or higher.
 
@@ -1149,8 +1149,8 @@ MicroUI Implementation
 
 	* Manage several images RAW formats.
   
-7.0.0 (2016-01-20)
-==================
+[7.0.0] - 2016-01-20
+====================
 
 * Compatible with Architecture 6.1.0 or higher.
 
@@ -1161,8 +1161,8 @@ Misc
 
 	* Remove jpf property header *(not backward compatible)*.
   
-6.0.1 (2015-12-17)
-==================
+[6.0.1] - 2015-12-17
+====================
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1171,8 +1171,8 @@ MicroUI Implementation
 
 	* A negative clip throws an exception on simulator.
 
-6.0.0 (2015-11-12)
-==================
+[6.0.0] - 2015-11-12
+====================
 
 MicroUI Implementation
 """"""""""""""""""""""
