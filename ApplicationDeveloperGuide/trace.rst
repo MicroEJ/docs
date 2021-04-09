@@ -23,6 +23,11 @@ Event Tracing can be accessed from two APIs:
   
 - A C API, provided by the Platform header file named ``LLTRACE_impl.h``.
 
+.. _event_enable_recording:
+
+Event Recording
+===============
+
 Events are recorded if and only if:
 
 - the MicroEJ Core Engine trace system is enabled,

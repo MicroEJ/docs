@@ -47,7 +47,7 @@ SystemView consists on installing several items in the BSP. The following steps 
 This file can be modified to fit with your system configuration:
    
    * Update ``SYSVIEW_APP_NAME``, ``SYSVIEW_DEVICE_NAME`` and ``SYSVIEW_RAM_BASE`` defines to fit your system information.
-   * To add MicroEJ tasks data in SystemView initialization:
+   * To add MicroEJ Java threads management in SystemView tasks initialization:
   
       * Add these includes ``#include "LLMJVM_MONITOR_SYSVIEW.h"`` and ``#include "LLTRACE_SYSVIEW_configuration.h"``.
       * In function ``_cbSendSystemDesc(void)``, add this instruction: ``SEGGER_SYSVIEW_SendSysDesc("N="SYSVIEW_APP_NAME",D="SYSVIEW_DEVICE_NAME",O=FreeRTOS");`` before ``SEGGER_SYSVIEW_SendSysDesc("I#15=SysTick");``.
@@ -78,9 +78,13 @@ This file can be modified to fit with your system configuration:
             SEGGER_SYSVIEW_SetRAMBase(SYSVIEW_RAM_BASE);
          }
 
-5. Add in your BSP the MicroEJ C component files for SystemView: ``com.microej.clibrary.thirdparty.systemview-1.3.1`` (or check the differences between pre-installed SystemView and C component files)
-6. Add in your BSP the MicroEJ C component files for SystemView FreeRTOS support : ``com.microej.clibrary.thirdparty.systemview-freertosxx-1.1.1`` (or check the differences between pre-installed SystemView and C component files)
-7. Install the implementation of MicroJvm monitoring over SystemView by adding C component files in your BSP: ``com.microej.clibrary.llimpl.trace-systemview-2.1.0``
+5. Add in your BSP the MicroEJ C module files for SystemView: `com.microej.clibrary.thirdparty#systemview <https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview/1.3.1/>`_ (or check the differences between pre-installed SystemView and C files provided by this module)
+6. Add in your BSP the MicroEJ C module files for SystemView FreeRTOS support (or check the differences between pre-installed SystemView and C files provided by this module)
+   
+   - FreeRTOS 9: `com.microej.clibrary.thirdparty#systemview-freertos9 <https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview-freertos9/1.1.1/>`_ 
+   - FreeRTOS 10: `com.microej.clibrary.thirdparty#systemview-freertos10 <https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview-freertos10/1.1.1/>`_ 
+
+7. Install the Abstraction Layer implementation of the :ref:`Java Trace API <trace_implementations>` for SystemView by adding C module files in your BSP: `com.microej.clibrary.llimpl#trace-systemview <https://repository.microej.com/modules/com/microej/clibrary/llimpl/trace-systemview/2.1.1/>`_
 8. Make FreeRTOS compatible with SystemView: open  ``FreeRTOSConfig.h`` and:
 
    * add ``#define INCLUDE_xTaskGetIdleTaskHandle 1``
@@ -93,81 +97,81 @@ This file can be modified to fit with your system configuration:
 9. Enable SystemView on startup (before creating first OS task): call ``SEGGER_SYSVIEW_Conf();``
 10. Right enabling SystemView on startup, prints the RTT block address to the serial port: ``printf("SEGGER_RTT block address: %p\n", &(_SEGGER_RTT));``.
 
-.. note:: Particulary useful if SystemView does not find automatically the RTT block address.
+.. note:: 
+   
+   This is useful if SystemView does not find automatically the RTT block address.
+   See section :ref:`systemview_no_rtt_block` for more details.
 
-11. Add a call to ``SYSVIEW_setMicroJVMTask((U32)pvCreatedTask);`` just after creating the OS task which launch the MicroJvm. The handler to give is the one filled by ``xTaskCreate`` function.
+11. Add a call to ``SYSVIEW_setMicroJVMTask((U32)pvCreatedTask);`` just after creating the OS task to register the MicroEJ Core Engine OS task. The handler to give is the one filled by ``xTaskCreate`` function.
 
 12. Copy the file ``/YourPlatformProject-bsp/projects/microej/trace/systemview/SYSVIEW_MicroEJ.txt`` to the SystemView install path such as: ``SEGGER/SystemView_V252a/Description/``. If you use MicroUI traces, you can also copy the file in section :ref:`microui_traces`
 
 
 
-MicroJvm Task
-=============
+MicroEJ Core Engine OS Task
+===========================
 
-The MicroJvm task is an OS task and has got a particular role: it manages the MicroEJ Java threads. As soon as the MicroEJ application is started (when calling ``SNI_startVM``), the jobs performed during the MicroJvm task (events, semaphores etc.) are dispatched to the current MicroEJ Java thread. By consequence, this task is useless when the MicroEJ application is running.
+The :ref:`MicroEJ Core Engine <core_engine>` task is the OS task that executes MicroEJ Java threads. 
+Once it is :ref:`started <core_engine_implementation>` (by calling ``SNI_startVM``) it executes initialization code and rapidly starts to execute the MicroEJ Application main thread.
+At that time, the events produced by this OS task (context switch, semaphores, etc.) are dispatched to the current MicroEJ Java thread.
+By consequence, this OS task is useless when the MicroEJ Application is running.
 
-SystemView for MicroEJ disables the visibility of the MicroJvm task when the MicroEJ application is running. It simplifies the SystemView client debugging.
+SystemView for MicroEJ disables the visibility of this OS task when the MicroEJ Application is running. It simplifies the SystemView client debugging.
 
-Task and Thread Names
-=====================
+OS Tasks and Java Threads Names
+===============================
 
-To make a distinction between the OS tasks and the MicroEJ Java thread, a prefix is added to the task/thread name: "[OS] " or "[MEJ] ".
+To make a distinction between the OS tasks and MicroEJ Java threads, a prefix is added to OS tasks names (``[OS]``) and Java threads names (``[MEJ]``).
 
 .. _fig_sv_names:
 .. figure:: images/sv_names.*
    :alt: OS and Thread Names
    :align: center
 
-   OS and Thread Names
+   OS Tasks and Java Threads Names
 
-.. note:: SystemView limits the number of characters to 32. The prefix length is included in these 32 characters and by consequence the original task/thread name can be cropped.
+.. note:: 
 
-Task and Thread Priorities
-==========================
+   SystemView limits the number of characters to 32. The prefix length is included in these 32 characters and by consequence the end of the original OS task or Java thread name can be cropped.
 
-SystemView lists the tasks and threads according their priorities. However the priority notion has not the same signification when talking about tasks or threads: a thread priority depends on the MicroJvm task priority. 
+OS Tasks and Java Threads Priorities
+====================================
 
-By consequence a thread with the priority ``5`` must not be included between a task with the priority ``4`` and other task with priority ``6``. It depends on MicroJvm task priority: 
+SystemView lists the OS tasks and Java threads according their priorities. 
+However the priority notion has not the same signification when talking about OS tasks or Java threads: a Java thread priority depends on the MicroEJ Core Engine OS task priority.
 
-* if this task priority is ``3``, the thread has got a lower priority than task with priority ``4``. 
-* if this task priority is ``7``, the thread has got a higher priority than task with priority ``6``. 
+By consequence, a Java thread with the priority ``5`` may not appear between an OS task with the priority ``4`` and other OS task with priority ``6``:
 
-To allow SystemView making this distinction, the priorities sent to SystemView client respect the following rules:
+* if the MicroEJ Core Engine OS task priority is ``3``, the Java thread must appear below an OS task with priority ``4``. 
+* if the MicroEJ Core Engine OS task priority is ``7``, the Java thread must appear above an OS task with priority ``6``. 
 
-* it is an OS task: ``priority_sent = task_priority * 100``.
-* it is a MicroEJ Java thread: ``priority_sent = MicroJvm_task_priority * 100 + thread_priority``.
+To keep a consistent line ordering in SystemView, the priorities sent to SystemView client respect the following rules:
+
+* OS task: ``priority_sent = task_priority * 100``.
+* MicroEJ Java thread: ``priority_sent = MicroJvm_task_priority * 100 + thread_priority``.
 
 Use
 ===
 
-MicroEJ platforms can generate specific events that allow monitoring current Java thread executed, Java exceptions, Java allocations, etc.
+MicroEJ Architecture can generate specific events that allow monitoring current Java thread executed, Java exceptions, Java allocations, ... as well as custom application events.
+Please refer to :ref:`event-tracing` section.
 
-To enable MEJ32 tracing, in MicroEJ SDK:
-
-1. Click on your MicroEJ application project
-2. Run -> Run Configurations
-3. Select your configuration
-4. In the configuration tab:
-5. Target -> Debug
-6. Check: "Enable execution traces" and "Start execution traces automatically"
-
-
-
-.. note:: Since the software SystemView is only compatible with J-Link, if your target board uses a ST-Link to flash the firmware, follow instructions provided by SEGGER Microcontroller https://www.segger.com/products/debug-probes/j-link/models/other-j-links/st-link-on-board/ to re-flash the ST-LINK on board with a J-Link firmware.
+To enable events recording, refer to section :ref:`event_enable_recording` to configure required :ref:`Application Options <application_options>`.
 
 Troubleshooting
 ===============
 
 
-OVERFLOW events in SystemView
+OVERFLOW Events in SystemView
 -----------------------------
 
 Depending on the application, OVERFLOW events can be seen in System View. To mitigate this problem, the default `SEGGER_SYSVIEW_RTT_BUFFER_SIZE` can be increased
 from the default 1kB to a more appropriate size of 4kB. Still, if OVERFLOW events are still visible, the user can further increase this configuration found in
 ``/YourPlatformProject-bsp/projects/microej/thirdparty/systemview/inc/SEGGER_SYSVIEW_configuration.h``.
 
+.. _systemview_no_rtt_block:
 
-RTT Control block not found
+RTT Control Block Not Found
 ---------------------------
 
 .. figure:: images/systemview_rtt_not_found.png
@@ -177,26 +181,34 @@ RTT Control block not found
    :width: 277px
    :height: 147px
 
-* Get RTT block address on serial uart by resetting the board (it's printed at the beginning of the firmware program).
-* In SystemView `Target > Start recording`
-* In RTT Control Block Detection, select `Address` and put the address retrieved
-  * You can also try with `Search Range` option
+* Get RTT block address from standard output by resetting the board (it's printed at the beginning of the firmware program),
+* In SystemView, select :guilabel:`Target` > :guilabel:`Start recording`,
+* In :guilabel:`RTT Control Block Detection`, select :guilabel:`Address` and put the address retrieved.
+  You can also try with :guilabel:`Search Range` option.
 
-Cannot flash a firmware for a STM32 device after replacing back J-Link firmware by ST-Link
-------------------------------------------------------------------------------------------
 
-.. figure:: images/systemview_st_link_pb.png
-   :alt: RTT Block not found.
-   :align: center
-   :scale: 50
-   :width: 1285px
-   :height: 951px
+SystemView for STM32 ST-Link Probe
+==================================
+
+SystemView software requires a J-Link probe. 
+If your target board uses a ST-Link probe, it is possible to re-flash the ST-LINK on board with a J-Link firmware.
+See instructions provided by SEGGER Microcontroller https://www.segger.com/products/debug-probes/j-link/models/other-j-links/st-link-on-board/ for more details.
+
+If you cannot flash a firmware for a STM32 device after replacing back J-Link firmware by ST-Link original one:
 
 - Use ST_Link utility program to update the ST_Link firmware, go to ``ST-LINK > Firmware update``.
 - Then, try to flash again.
 
+
+.. figure:: images/systemview_st_link_pb.png
+   :alt: RTT Block not found.
+   :align: center
+   :scale: 75
+   :width: 1285px
+   :height: 951px
+
 ..
-   | Copyright 2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2020-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
