@@ -183,9 +183,10 @@ The following table describes these error codes.
    |             | ``System.exit(exitCode)`` has been called).                 |
    |             | See section :ref:`edc_exit_codes`.                          |
    +-------------+-------------------------------------------------------------+
-   | -1          | The SOAR and the MicroEJ Platform are not compatible.       |
-   |             | The ``microejapp.o`` object file has been built for         |
-   |             | another platform.                                           |
+   | -1          | The ``microejapp.o`` produced by SOAR is not compatible     |
+   |             | with the MicroEJ Core Engine (``microejruntime.a``).        |
+   |             | The object file has been built from another                 |
+   |             | MicroEJ Platform.                                           |
    +-------------+-------------------------------------------------------------+
    | -2          | Internal error. Invalid link configuration in the           |
    |             | MicroEJ Architecture or the MicroEJ Platform.               |
