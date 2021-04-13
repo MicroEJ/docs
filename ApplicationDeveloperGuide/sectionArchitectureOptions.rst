@@ -596,7 +596,7 @@ Category: Libraries
 ===================
 
 
-.. figure:: images/architecture_options/img10.png
+.. figure:: images/architecture_options/img11.png
    :align: center
    :width: 998px
    :height: 551px
@@ -605,7 +605,7 @@ Category: EDC
 -------------
 
 
-.. figure:: images/architecture_options/img11.png
+.. figure:: images/architecture_options/img12.png
    :align: center
    :width: 998px
    :height: 551px
@@ -680,7 +680,7 @@ Category: Shielded Plug
 -----------------------
 
 
-.. figure:: images/architecture_options/img12.png
+.. figure:: images/architecture_options/img13.png
    :align: center
    :width: 998px
    :height: 551px
@@ -707,7 +707,7 @@ Category: ECOM
 --------------
 
 
-.. figure:: images/architecture_options/img13.png
+.. figure:: images/architecture_options/img14.png
    :align: center
    :width: 998px
    :height: 551px
@@ -744,7 +744,7 @@ Category: Comm Connection
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-.. figure:: images/architecture_options/img14.png
+.. figure:: images/architecture_options/img15.png
    :align: center
    :width: 998px
    :height: 551px
@@ -789,7 +789,7 @@ Category: External Resources Loader
 -----------------------------------
 
 
-.. figure:: images/architecture_options/img15.png
+.. figure:: images/architecture_options/img16.png
    :align: center
    :width: 998px
    :height: 551px
@@ -820,7 +820,7 @@ Category: Device
 ================
 
 
-.. figure:: images/architecture_options/img16.png
+.. figure:: images/architecture_options/img17.png
    :align: center
    :width: 998px
    :height: 551px
@@ -829,7 +829,7 @@ Category: Core Engine
 ---------------------
 
 
-.. figure:: images/architecture_options/img17.png
+.. figure:: images/architecture_options/img18.png
    :align: center
    :width: 1054px
    :height: 551px
@@ -894,7 +894,7 @@ Category: Kernel
 ^^^^^^^^^^^^^^^^
 
 
-.. figure:: images/architecture_options/img18.png
+.. figure:: images/architecture_options/img19.png
    :align: center
    :width: 998px
    :height: 551px
@@ -962,7 +962,7 @@ Category: Watchdog
 ^^^^^^^^^^^^^^^^^^
 
 
-.. figure:: images/architecture_options/img19.png
+.. figure:: images/architecture_options/img20.png
    :align: center
    :width: 998px
    :height: 551px
@@ -992,7 +992,7 @@ Category: Deploy
 ----------------
 
 
-.. figure:: images/architecture_options/img20.png
+.. figure:: images/architecture_options/img21.png
    :align: center
    :width: 998px
    :height: 551px
@@ -1030,7 +1030,7 @@ Category: Feature
 =================
 
 
-.. figure:: images/architecture_options/img21.png
+.. figure:: images/architecture_options/img22.png
    :align: center
    :width: 998px
    :height: 551px
@@ -1043,7 +1043,7 @@ Category: Dynamic Download
 --------------------------
 
 
-.. figure:: images/architecture_options/img22.png
+.. figure:: images/architecture_options/img23.png
    :align: center
    :width: 998px
    :height: 551px
