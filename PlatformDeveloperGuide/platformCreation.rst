@@ -98,7 +98,17 @@ They are classified using the following naming convention:
 For example, MicroEJ Generic Pack Bluetooth versions are available at
 https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-pack/.
 
-Legacy MicroEJ Generic Packs files end with the ``.xpfp`` extension and can be :ref:`manually imported <pack_manual_import>` on older MicroEJ Platforms.
+Legacy MicroEJ Generic Packs files end with the ``.xpfp`` extension
+and can be :ref:`manually imported <pack_manual_import>` on older
+MicroEJ Platforms.  They are classified using the following naming
+convention:
+
+::
+   
+   com/microej/pack/[NAME]/[NAME]/[VERSION]/
+
+- ``NAME`` : pack name (e.g. ``net``).
+- ``VERSION``: pack version (e.g. ``9.2.3``).
 
 For example, the Legacy MicroEJ Generic Pack NET version ``9.2.3`` is
 available at https://repository.microej.com/modules/com/microej/pack/net/9.2.3/net-9.2.3.xpfp.
