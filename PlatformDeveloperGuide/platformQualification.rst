@@ -64,15 +64,6 @@ Please refer to the `PQT README
 <https://github.com/MicroEJ/PlatformQualificationTools>`__ for more
 details and the location of the components.
 
-Platform Qualification Steps
-----------------------------
-
-The Platform Qualification Tools components are to be used in the
-following context:
-
-.. figure:: images/platform-qualification-timeline.png
-   :align: center
-
 .. _platform_testsuite:
 
 Platform Test Suite
