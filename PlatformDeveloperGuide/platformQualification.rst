@@ -41,9 +41,11 @@ The Platform Qualification Tools provide the following components:
 - Platform Configuration Additions (PCA):
 
   - Used to:
+
     - Manage MicroEJ Architecture, MicroEJ Packs and the Platform
       build with the MicroEJ Module Manager.
     - Configure the BSP connection to call the build and run scripts.
+
   - Added when creating a Platform (see :ref:`new_platform_creation`).
 
 - Build and Run Scripts examples:
