@@ -10,16 +10,18 @@ Introduction
 A Platform integrates one or more Foundation Libraries with their
 respective Abstraction Layers.
 
-Platform Qualification is the process of validating the :ref:`Low
-Level APIs <low_level_api>` implemented by the Adaptation Layer
-(ADLA) of the Foundation Libraries.
+Platform Qualification is the process of validating the Abstraction
+Layer that implements the :ref:`Low Level APIs <low_level_api>` of a
+Foundation Libraries.
 
 .. figure:: images/overview-platform-qualification.png
    :align: center
 
-   Platform Qualification: Validate the conformance of ADLA implementations
+   Platform Qualification: Validate the conformance of Abstraction Layer implementations
 
-Such validation is performed by running tests at two-levels:
+For each Low Level API, an Abstraction Layer implementation is
+required.  The validation of the Abstraction Layer implementations is
+performed by running tests at two-levels:
 
 - In C, by calling Low Level APIs (usually manually).
 - In Java, by calling Foundation Library APIs (usually automatically using :ref:`platform_testsuite`).
@@ -101,7 +103,7 @@ Foundation Libraries are integrated in a MicroEJ Platform by MicroEJ
 Packs (see :ref:`pack_import`).  Depending on the version of the
 Foundation Libraries provided by a Pack (one MicroEJ Pack can provide
 several Foundation Libraries), a precise Test Suite version must be
-used to validate the ADLA implementations.
+used to validate the Abstraction Layer implementations.
 
 The following table presents the Test Suites to use to validate the
 integration of MicroEJ Packs in the Platform.
