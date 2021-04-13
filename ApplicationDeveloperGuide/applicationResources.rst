@@ -214,7 +214,7 @@ messages, for example:
 The generation is triggered when building the application or after a change done in any PO or ``*.nls.list`` files.
 This allows to always have the Java interfaces up-to-date with the translations and to use them immediately.
 
-The `NLS API module <https://repository.microej.com/artifacts/ej/library/runtime/nls/>`_
+The `NLS API module <https://repository.microej.com/modules/ej/library/runtime/nls/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
 Application project, in order to allow access to the NLS library.
 

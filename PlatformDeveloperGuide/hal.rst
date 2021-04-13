@@ -152,7 +152,7 @@ HAL is an additional module. In the platform configuration file, check
 Use
 ===
 
-The `HAL API Module <https://repository.microej.com/artifacts/ej/api/hal/>`_
+The `HAL API Module <https://repository.microej.com/modules/ej/api/hal/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the ECOM library.
 

@@ -175,7 +175,7 @@ install the additional Java APIs in order to manipulate the data arrays.
 Use
 ===
 
-The `SNI API module <https://repository.microej.com/artifacts/ej/api/sni/>`_ must be added 
+The `SNI API module <https://repository.microej.com/modules/ej/api/sni/>`_ must be added 
 to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ Application project, in order to allow
 access to the :ref:`[SNI] <esr-specifications>` library.
 

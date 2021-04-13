@@ -53,8 +53,8 @@ MicroUI API
 
 **Changed**
 
-	* [Changed] Include `MicroUI API 3.0.3 <https://repository.microej.com/artifacts/ej/api/microui/3.0.3/>`_.
-	* [Changed] Include `MicroUI Drawing API 1.0.2 <https://repository.microej.com/artifacts/ej/api/drawing/1.0.2/>`_.
+	* [Changed] Include `MicroUI API 3.0.3 <https://repository.microej.com/modules/ej/api/microui/3.0.3/>`_.
+	* [Changed] Include `MicroUI Drawing API 1.0.2 <https://repository.microej.com/modules/ej/api/drawing/1.0.2/>`_.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -80,7 +80,7 @@ ImageGenerator
 
 **Changed**
 
-	* Compatible with `com.microej.pack.ui#ui-pack(imageGenerator)#13.0.4 <https://repository.microej.com/artifacts/com/microej/pack/ui/ui-pack/13.0.4/>`_.
+	* Compatible with `com.microej.pack.ui#ui-pack(imageGenerator)#13.0.4 <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.4/>`_.
 	
 **Fixed**
 
@@ -130,7 +130,7 @@ MicroUI API
 
 **Changed**
 
-	* Include `MicroUI API 3.0.1 <https://repository.microej.com/artifacts/ej/api/microui/3.0.1/>`_.
+	* Include `MicroUI API 3.0.1 <https://repository.microej.com/modules/ej/api/microui/3.0.1/>`_.
  
 MicroUI Implementation
 """"""""""""""""""""""
@@ -178,8 +178,8 @@ MicroUI API
 
 **Changed**
 
-	* [Changed] Include `MicroUI API 3.0.0 <https://repository.microej.com/artifacts/ej/api/microui/3.0.0/>`_.
-	* [Changed] Include `MicroUI Drawing API 1.0.0 <https://repository.microej.com/artifacts/ej/api/drawing/1.0.0/>`_.
+	* [Changed] Include `MicroUI API 3.0.0 <https://repository.microej.com/modules/ej/api/microui/3.0.0/>`_.
+	* [Changed] Include `MicroUI Drawing API 1.0.0 <https://repository.microej.com/modules/ej/api/drawing/1.0.0/>`_.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -233,7 +233,7 @@ Simulator
 	
 **Changed**
 
-	* Compatible with `com.microej.pack.ui#ui-pack(frontpanel)#13.0.0 <https://repository.microej.com/artifacts/com/microej/pack/ui/ui-pack/13.0.0/>`_.
+	* Compatible with `com.microej.pack.ui#ui-pack(frontpanel)#13.0.0 <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/>`_.
 	* See :ref:`Migration notes<section_ui_migration_frontpanelapi_13x>` that describe the available changes in Front Panel API.
 	
 **Removed**
@@ -251,7 +251,7 @@ ImageGenerator
 	
 **Changed**
 
-	* Compatible with `com.microej.pack.ui#ui-pack(imageGenerator)#13.0.0 <https://repository.microej.com/artifacts/com/microej/pack/ui/ui-pack/13.0.0/>`_.
+	* Compatible with `com.microej.pack.ui#ui-pack(imageGenerator)#13.0.0 <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/>`_.
 	* See :ref:`Migration notes<section_ui_migration_imagegeneratorapi_13x>` that describe the available changes in Image Generator API.
 	* Uses a service loader to loads the image generator extension classes.
 	* Manages image data (pixels) address alignment.
@@ -349,7 +349,7 @@ MicroUI API
 
 **Changed**
 
-	* Include `MicroUI API 2.4.0 <https://repository.microej.com/artifacts/ej/api/microui/2.4.0/>`_.
+	* Include `MicroUI API 2.4.0 <https://repository.microej.com/modules/ej/api/microui/2.4.0/>`_.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -510,7 +510,7 @@ MicroUI API
 
 **Changed**
 
-	* Include `MicroUI API 2.3.0 <https://repository.microej.com/artifacts/ej/api/microui/2.3.0/>`_.
+	* Include `MicroUI API 2.3.0 <https://repository.microej.com/modules/ej/api/microui/2.3.0/>`_.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -708,7 +708,7 @@ MicroUI API
 
 **Changed**
 
-	* Include `MicroUI API 2.2.0 <https://repository.microej.com/artifacts/ej/api/microui/2.2.0/>`_.
+	* Include `MicroUI API 2.2.0 <https://repository.microej.com/modules/ej/api/microui/2.2.0/>`_.
   
 MicroUI Implementation
 """"""""""""""""""""""
@@ -912,7 +912,7 @@ MicroUI API
 
 **Changed**
 
-	* Include `MicroUI API 2.0.6 <https://repository.microej.com/artifacts/ej/api/microui/2.0.6/>`_.
+	* Include `MicroUI API 2.0.6 <https://repository.microej.com/modules/ej/api/microui/2.0.6/>`_.
 
 MicroUI Implementation
 """"""""""""""""""""""
