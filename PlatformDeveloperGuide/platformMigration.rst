@@ -89,8 +89,10 @@ The following steps can be adapted to custom :ref:`settings file <mmm_settings_f
   to
   ``architecture-repository/com/microej/architecture/CM7/CM7hardfp_ARMCC5/flopi7A21/7.11.0/flopi7A21-7.11.0-eval.xpf``.
 
-- Copy the MicroEJ Architecture Specific Packs files (``.xpfp``) into the
-  correct directory following MicroEJ Naming Convention (see :ref:`pack_import`).
+- Copy the MicroEJ Architecture Specific Packs files (``.xpfp``) into
+  the correct directory following MicroEJ Naming Convention (see
+  :ref:`pack_import`) with the exception of the Standalone pack that
+  should not be imported (e.g. named ``flopi7A21Standalone.xpfp``).
 
   - Open or extract the MicroEJ Architecture Specific Pack (``.xpfp``).
 
