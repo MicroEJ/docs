@@ -112,6 +112,9 @@ heap usage is higher than the initial heap size, and
 `gc() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#gc-->`_ 
 has not been called).
 
+See the section :ref:`option_enable_heap_usage` to enable this option and 
+configure the initial heap size.
+
 Even if the heap size can vary during time, a memory section of 
 `maxMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#maxMemory-->`_ 
 bytes is allocated at link time or during the MicroEJ Core Engine startup. 

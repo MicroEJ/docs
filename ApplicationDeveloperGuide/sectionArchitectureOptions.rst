@@ -188,7 +188,7 @@ Category: Simulator
 
 .. figure:: images/architecture_options/img3.png
    :align: center
-   :width: 1054x
+   :width: 1054px
    :height: 551px
 
 Group: Options
@@ -861,6 +861,8 @@ Option(text):
 
 Specifies the maximum number of stack frames that can be dumped to the standard
 output when Core Engine throws an OutOfMemoryError.
+
+.. _option_enable_heap_usage:
 
 Option(checkbox): Enable Java heap usage monitoring
 """""""""""""""""""""""""""""""""""""""""""""""""""
