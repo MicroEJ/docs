@@ -38,35 +38,37 @@ Platform Qualification Tools Overview
 
 The Platform Qualification Tools provide the following components:
 
-- Platform Configuration Additions (PCA) to:
+- Platform Configuration Additions (PCA):
 
-  - Manage MicroEJ Architecture, MicroEJ Packs and the Platform build
-    with the MicroEJ Module Manager.
-  - Configure the BSP connection to call the build and run scripts.
+  - Used to:
+    - Manage MicroEJ Architecture, MicroEJ Packs and the Platform
+      build with the MicroEJ Module Manager.
+    - Configure the BSP connection to call the build and run scripts.
+  - Added when creating a Platform (see :ref:`new_platform_creation`).
 
-- Build and Run Scripts examples to:
+- Build and Run Scripts examples:
 
-  - Generate and deploy a MicroEJ Firmware on a device by invoking a
-    third-party toolchain for the BSP
+  - Used to generate and deploy a MicroEJ Firmware on a device by
+    invoking a third-party toolchain for the BSP
+  - Added when integrating the BSP to the Platform (see to
+    :ref:`bsp_connection_build_script` or check the tutorial XXX).
 
-- C and Java Test Suites to:
+- C and Java Test Suites:
 
-  - Validate the Low Level APIs implementations
-
-The Platform Qualification Tools components are to be used in the following context:
-
-- The Platform Configuration Additions (PCA) are added when creating a
-  Platform.  See :ref:`new_platform_creation`.
-- The Build and Run Scripts are configured when integrating the BSP to
-  the Platform.  See to :ref:`bsp_connection_build_script` or
-  check the tutorial XXX
-- The C and Java Test Suites should be validated during the BSP
-  development and whenever a Low Level API implementation is added
-  or changed.  See :ref:`tutorialRunATestSuiteOnDevice`.
+  - Used to validate the Low Level APIs implementations
+  - Validated during the BSP development and whenever an Abstraction
+    Layer implementation is added or changed (see
+    :ref:`tutoRunTestSuiteOnDevice`).
 
 Please refer to the `PQT README
 <https://github.com/MicroEJ/PlatformQualificationTools>`__ for more
-details and for the exact location of the components.
+details and the location of the components.
+
+Platform Qualification Steps
+----------------------------
+
+The Platform Qualification Tools components are to be used in the
+following context:
 
 .. figure:: images/platform-qualification-timeline.png
    :align: center
