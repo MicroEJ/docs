@@ -71,8 +71,10 @@ details and the location of the components.
 Platform Test Suite
 ===================
 
-The purpose of a MicroEJ Platform Test Suite is to validate
-an implementation of a Low Level API by automatically running Java tests on the device.
+The purpose of a MicroEJ Platform Test Suite is to validate the
+Abstraction Layer that implements the :ref:`Low Level APIs
+<low_level_api>` of a Foundation Libraries by automatically running
+Java tests on the device.
 
 The :ref:`testsuite_engine` is used for building,
 running a Test Suite, and providing a report.
