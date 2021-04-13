@@ -310,7 +310,8 @@ On the STM32F746G-DISCO, the C TOOLCHAIN used is Keil uVision.
 - Copy the example scripts from the `Platform Qualification Tools`_
   for the C TOOLCHAIN of the BSP
   (e.g. ``PlatformQualificationTools/framework/platform/scripts/KEILuV5/``)
-- Configure the scripts.
+- Configure the scripts.  Refer to the documentation in the scripts
+  comments for this step.
 - Enable the execution of the build script: 
 
   - Go to :guilabel:`Run` > :guilabel:`Run Configurations...`
