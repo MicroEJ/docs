@@ -26,8 +26,10 @@ performed by running tests at two-levels:
 - In C, by calling Low Level APIs (usually manually).
 - In Java, by calling Foundation Library APIs (usually automatically using :ref:`platform_testsuite`).
 
-MicroEJ provides a set of tools and pre-defined projects aimed at simplifying the steps
-for validating Platforms. Please refer to https://github.com/MicroEJ/PlatformQualificationTools.
+MicroEJ provides a set of tools and pre-defined projects aimed at
+simplifying the steps for validating Platforms in the form of the
+`Platform Qualification Tools (PQT)
+<https://github.com/MicroEJ/PlatformQualificationTools>`__.
 
 .. _pqt_overview:
 
@@ -61,6 +63,10 @@ The Platform Qualification Tools components are to be used in the following cont
 - The C and Java Test Suites should be validated during the BSP
   development and whenever a Low Level API implementation is added
   or changed.  See :ref:`tutorialRunATestSuiteOnDevice`.
+
+Please refer to the `PQT README
+<https://github.com/MicroEJ/PlatformQualificationTools>`__ for more
+details and for the exact location of the components.
 
 .. figure:: images/platform-qualification-timeline.png
    :align: center
