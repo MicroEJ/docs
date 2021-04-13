@@ -68,7 +68,7 @@ extension and are classified using the following naming convention:
 
 ::
 
-   com/microej/architecture/[ISA]/[TOOLCHAIN]/[UID]-[NAME]-pack/[VERSION]/[UID]-[NAME]-[VERSION].xpfp
+   com/microej/architecture/[ISA]/[TOOLCHAIN]/[UID]-[NAME]-pack/[VERSION]/[UID]-[NAME]-pack-[VERSION].xpfp
 
 - ``ISA``: instruction set architecture (e.g. ``CM4`` for Arm® Cortex®-M4, ``ESP32`` for Espressif ESP32, ...).
 - ``TOOLCHAIN``: C compilation toolchain (e.g. ``CM4hardfp_GCC48``).
