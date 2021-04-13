@@ -188,7 +188,7 @@ Category: Simulator
 
 .. figure:: images/architecture_options/img3.png
    :align: center
-   :width: 998px
+   :width: 1054x
    :height: 551px
 
 Group: Options
@@ -252,8 +252,8 @@ Option(checkbox): Specify a port
 When selected allows the use of a specific HIL connection port, otherwise a
 random free port is used.
 
-Option(text): HIL connection port
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Option(text): Port
+^^^^^^^^^^^^^^^^^^
 
 *Option Name*: ``s3.hil.port``
 
@@ -270,8 +270,8 @@ Option(text): HIL connection port
 
 It specifies the port used by the MicroEJ Simulator to accept HIL connections.
 
-Option(text): HIL connection timeout
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Option(text): Timeout (s)
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Option Name*: ``s3.hil.timeout``
 
@@ -285,6 +285,18 @@ Option(text): HIL connection timeout
 
 It specifies the time the MicroEJ Simulator should wait before failing when
 it invokes native methods.
+
+Option(text): Maximum frame size (bytes)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*Option Name*: ``com.microej.simulator.hil.frame.size``
+
+*Default value*: ``262144``
+
+*Description*:
+
+Maximum frame size in bytes. Must be increased to transfer large arrays to
+native side.
 
 Group: Shielded Plug server configuration
 -----------------------------------------
@@ -819,7 +831,7 @@ Category: Core Engine
 
 .. figure:: images/architecture_options/img17.png
    :align: center
-   :width: 998px
+   :width: 1054px
    :height: 551px
 
 Group: Memory
@@ -849,6 +861,34 @@ Option(text):
 
 Specifies the maximum number of stack frames that can be dumped to the standard
 output when Core Engine throws an OutOfMemoryError.
+
+Option(checkbox): Enable Java heap usage monitoring
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+*Option Name*: ``com.microej.runtime.debug.heap.monitoring.enabled``
+
+*Default value*: ``false``
+
+Option(text):
+""""""""""""""
+
+*Option Name*: ``com.microej.runtime.debug.heap.monitoring.init.size``
+
+*Default value*: ``0``
+
+*Description*:
+
+Specify the initial size (in bytes) of the Java Heap.
+
+Group: SOAR
+^^^^^^^^^^^
+
+Option(checkbox): Enable Bytecode Verifier
+""""""""""""""""""""""""""""""""""""""""""
+
+*Option Name*: ``soar.bytecode.verifier``
+
+*Default value*: ``false``
 
 Category: Kernel
 ^^^^^^^^^^^^^^^^
@@ -1028,7 +1068,7 @@ Option(browse): Kernel
 
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
