@@ -108,77 +108,110 @@ Foundation Libraries provided by a Pack (one MicroEJ Pack can provide
 several Foundation Libraries), a precise Test Suite version must be
 used to validate the Abstraction Layer implementations.
 
-The following table presents the Test Suites to use to validate the
-integration of MicroEJ Packs in the Platform.
+Pack FS
+-------
 
-.. list-table:: MicroEJ Packs and Test Suites association table
-   :widths: 40 10 40 10
-   :header-rows: 1
+.. list-table:: FS API Implementation
+   :widths: 20 10 10
 
-   * - MicroEJ Pack
-     - Pack Version
-     - Test Suite
-     - Test Suite Version
-   * - com/microej/pack/bluetooth/bluetooth-pack
-     - 2.1.0
-     - com/microej/pack/bluetooth/bluetooth-testsuite
-     - 2.0.0
-   * - com/microej/pack/device/device-pack
-     - 1.1.1
-     - N/A
-     -
-   * - com/microej/pack/ecom-mobile/ecom-mobile-pack
-     - 1.0.0
-     - N/A
-     -
-   * - com/microej/architecture/generic/fs/fs-pack
-     - 5.0.0
-     - com/microej/pack/fs/fs-testsuite
-     - 3.0.3
-   * - com/microej/pack/fs
-     - 4.0.3
-     - com/microej/pack/fs/fs-testsuite
-     - 3.0.3
-   * - com/microej/pack/fs
-     - 5.1.2
-     - com/microej/pack/fs/fs-testsuite
-     - 3.0.3
-   * - com/microej/pack/hal
-     - 2.0.2
-     - N/A
-     -
-   * - com/microej/pack/gnss/gnss-pack
-     - 1.0.2
-     - N/A
-     -
-   * - com/microej/pack/monitoring/monitoring-pack
-     - 1.0.0
-     - com/microej/pack/watchdog/watchdog-testsuite
-     - 2.0.0
-   * - com/microej/pack/multicore/multicore-pack
-     - 0.1.0
-     - N/A
-     -
-   * - com/microej/pack/net
-     - 9.2.3
-     - com/is2t/libraries/net-embedded/net-embedded-testsuite
-     - 3.5.2
-   * -
-     -
-     - com/is2t/libraries/ssl-embedded/ssl-embedded-testsuite
-     - 3.1.2
-   * -
-     -
-     - com/is2t/libraries/security/security-testsuite
-     - 1.1.0
-   * - com/microej/pack/net-addons
-     - 2.3.0
-     - com/is2t/libraries/net-embedded/net-embedded-testsuite-wifi
-     - 1.1.2
-   * -
-     -
-     - com/is2t/libraries/ecom- network/ecom-network-wifi-testsuite
-     - 1.0.0
+   * - FS Pack
+     - FS API
+     - Java Test Suite
+   * - [4.0.0-4.1.0[
+     - `2.0.6 <https://repository.microej.com/modules/ej/api/fs/2.0.6/>`__
+     - 2.2.1
+   * - [5.1.2-5.2.0[
+     - `2.0.6 <https://repository.microej.com/modules/ej/api/fs/2.0.6/>`__
+     - `3.0.3 <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/>`__
+
+Pack BLUETOOTH
+--------------
+
+.. list-table:: BLUETOOTH API Implementation
+   :widths: 20 10 10
+
+   * - BLUETOOTH Pack
+     - BLUETOOTH API
+     - Java Test Suite
+   * - 2.1.0
+     - `2.1.0 <https://repository.microej.com/modules/ej/api/bluetooth/2.1.0/>`__
+     - `2.0.0 <https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-testsuite/2.0.0/>`__
+   * - 2.0.1
+     - `2.0.0 <https://repository.microej.com/modules/ej/api/bluetooth/2.0.0/>`__
+     - `2.0.0 <https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-testsuite/2.0.0/>`__
+
+..
+   The following table presents the Test Suites to use to validate the
+   integration of MicroEJ Packs in the Platform.
+
+   .. list-table:: MicroEJ Packs and Test Suites association table
+      :widths: 40 10 40 10
+      :header-rows: 1
+
+      * - MicroEJ Pack
+        - Pack Version
+        - Test Suite
+        - Test Suite Version
+      * - com/microej/pack/bluetooth/bluetooth-pack
+        - 2.1.0
+        - com/microej/pack/bluetooth/bluetooth-testsuite
+        - 2.0.0
+      * - com/microej/pack/device/device-pack
+        - 1.1.1
+        - N/A
+        -
+      * - com/microej/pack/ecom-mobile/ecom-mobile-pack
+        - 1.0.0
+        - N/A
+        -
+      * - com/microej/architecture/generic/fs/fs-pack
+        - 5.0.0
+        - com/microej/pack/fs/fs-testsuite
+        - 3.0.3
+      * - com/microej/pack/fs
+        - 4.0.3
+        - com/microej/pack/fs/fs-testsuite
+        - 3.0.3
+      * - com/microej/pack/fs
+        - 5.1.2
+        - com/microej/pack/fs/fs-testsuite
+        - 3.0.3
+      * - com/microej/pack/hal
+        - 2.0.2
+        - N/A
+        -
+      * - com/microej/pack/gnss/gnss-pack
+        - 1.0.2
+        - N/A
+        -
+      * - com/microej/pack/monitoring/monitoring-pack
+        - 1.0.0
+        - com/microej/pack/watchdog/watchdog-testsuite
+        - 2.0.0
+      * - com/microej/pack/multicore/multicore-pack
+        - 0.1.0
+        - N/A
+        -
+      * - com/microej/pack/net
+        - 9.2.3
+        - com/is2t/libraries/net-embedded/net-embedded-testsuite
+        - 3.5.2
+      * -
+        -
+        - com/is2t/libraries/ssl-embedded/ssl-embedded-testsuite
+        - 3.1.2
+      * -
+        -
+        - com/is2t/libraries/security/security-testsuite
+        - 1.1.0
+      * - com/microej/pack/net-addons
+        - 2.3.0
+        - com/is2t/libraries/net-embedded/net-embedded-testsuite-wifi
+        - 1.1.2
+      * -
+        -
+        - com/is2t/libraries/ecom- network/ecom-network-wifi-testsuite
+        - 1.0.0
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification
