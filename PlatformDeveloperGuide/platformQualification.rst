@@ -60,7 +60,7 @@ The Platform Qualification Tools provide the following components:
   - Used to validate the Low Level APIs implementations
   - Validated during the BSP development and whenever an Abstraction
     Layer implementation is added or changed (see
-    :ref:`tutoRunTestSuiteOnDevice`).
+    :ref:`tutorialRunATestSuiteOnDevice`).
 
 Please refer to the `PQT README
 <https://github.com/MicroEJ/PlatformQualificationTools>`__ for more
