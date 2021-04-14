@@ -1,3 +1,5 @@
+.. _tutorialRunATestSuiteOnDevice:
+
 Run a Test Suite on a Device
 ============================
 
