@@ -27,9 +27,9 @@ Overview
 
 In this tutorial, we will describe 3 ways for logging data: 
    
-- Using `Trace <https://repository.microej.com/artifacts/ej/api/trace>`_ library: a real-time event recording library designed for performance and interaction analysis.
-- Using `Message <https://repository.microej.com/artifacts/ej/library/runtime/message/>`_ library: a lightweight and simple logging library.
-- Using `Logging <https://repository.microej.com/artifacts/ej/library/eclasspath/logging/>`_ library: a complete and highly configurable standard logging library. 
+- Using `Trace <https://repository.microej.com/modules/ej/api/trace>`_ library: a real-time event recording library designed for performance and interaction analysis.
+- Using `Message <https://repository.microej.com/modules/ej/library/runtime/message/>`_ library: a lightweight and simple logging library.
+- Using `Logging <https://repository.microej.com/modules/ej/library/eclasspath/logging/>`_ library: a complete and highly configurable standard logging library. 
 
 Through this tutorial, we will illustrate the usage of each library by instrumenting the following code snippet:
 
@@ -60,7 +60,7 @@ Finally, the last section describes some techniques to remove logging related co
 Log with the Trace Library
 --------------------------
 
-The library `ej.api.trace <https://repository.microej.com/artifacts/ej/api/trace>`_ provides a way of tracing integer events.
+The library `ej.api.trace <https://repository.microej.com/modules/ej/api/trace>`_ provides a way of tracing integer events.
 Its features and principles are described in the :ref:`event-tracing` section.
 
 Here is a short example of how to use this library to log the entry/exit of the ``switchState()`` method:
@@ -131,7 +131,7 @@ Log with the Message Library
 ----------------------------
 
 
-The library `ej.library.runtime.message <https://repository.microej.com/artifacts/ej/library/runtime/message/>`_ was designed to enable logging while minimizing RAM/ROM footprint and CPU usage.
+The library `ej.library.runtime.message <https://repository.microej.com/modules/ej/library/runtime/message/>`_ was designed to enable logging while minimizing RAM/ROM footprint and CPU usage.
 For that, logs are based on message identifiers, which are stored on integers instead of using of constant Strings.
 In addition to a message identifier, the category of the message allows the user to find the corresponding error/warning/info description.
 An external documentation must be maintained to describe all message identifiers and their expected arguments for each category.
@@ -180,7 +180,7 @@ This produces the following output:
 Log with the Logging Library
 ----------------------------
 
-The library `ej.library.eclasspath.logging <https://repository.microej.com/artifacts/ej/library/eclasspath/logging/>`_ implements a subset of the standard Java `java.util.logging <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/package-summary.html>`_ package and follows the same principles:
+The library `ej.library.eclasspath.logging <https://repository.microej.com/modules/ej/library/eclasspath/logging/>`_ implements a subset of the standard Java `java.util.logging <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/package-summary.html>`_ package and follows the same principles:
 
 - There is one instance of `LogManager <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/LogManager.html>`_ by application that manages the hierarchy of loggers.
 - Find or create `Logger <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html>`_ objects using the method `Logger.getLogger(String) <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html#getLogger-java.lang.String->`_.
@@ -307,4 +307,4 @@ Shrink Code Using ProGuard
 It optimizes bytecode as well as it detects and removes unused instructions. Therefore it can be used to remove log messages in a production binary.
    
 A dedicated How-To is available at https://github.com/MicroEJ/How-To/tree/master/Proguard-Get-Started.
-It describes how to configure ProGuard to remove elements of code from the `Logging <https://repository.microej.com/artifacts/ej/library/eclasspath/logging/>`_ library.
+It describes how to configure ProGuard to remove elements of code from the `Logging <https://repository.microej.com/modules/ej/library/eclasspath/logging/>`_ library.

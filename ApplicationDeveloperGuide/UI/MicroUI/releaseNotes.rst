@@ -8,8 +8,8 @@ The MicroUI implementation is provided by the MicroEJ UI Pack.
 According the MicroEJ UI Pack used to build the MicroEJ Platform, the application has to be updated.
 
 * Refer to the :ref:`table <section_ui_api>` that illustrates the implemented MicroUI API for each MicroEJ UI Pack.
-* Refer to the latest `MicroUI API Changelog <https://repository.microej.com/artifacts/ej/api/microui>`_.
-* Refer to the latest `Drawing API Changelog <https://repository.microej.com/artifacts/ej/api/drawing>`_.
+* Refer to the latest `MicroUI API Changelog <https://repository.microej.com/modules/ej/api/microui>`_.
+* Refer to the latest `Drawing API Changelog <https://repository.microej.com/modules/ej/api/drawing>`_.
 
 The following chapters describe the changes to perform in the application according the MicroEJ UI Pack used to build the MicroEJ Platform.
 

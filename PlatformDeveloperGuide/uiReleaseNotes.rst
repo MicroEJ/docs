@@ -57,25 +57,25 @@ The following table describes Foundation Libraries API versions implemented in M
      - MicroUI
      - Drawing
    * - [13.0.4-13.0.6]
-     - `3.0.3 <https://repository.microej.com/artifacts/ej/api/microui/3.0.3/>`_
-     - `1.0.2 <https://repository.microej.com/artifacts/ej/api/drawing/1.0.2/>`_
+     - `3.0.3 <https://repository.microej.com/modules/ej/api/microui/3.0.3/>`_
+     - `1.0.2 <https://repository.microej.com/modules/ej/api/drawing/1.0.2/>`_
    * - 13.0.3
      - 3.0.2
      - 1.0.1
    * - [13.0.1-13.0.2]
-     - `3.0.1 <https://repository.microej.com/artifacts/ej/api/microui/3.0.1/>`_
-     - `1.0.0 <https://repository.microej.com/artifacts/ej/api/drawing/1.0.0/>`_
+     - `3.0.1 <https://repository.microej.com/modules/ej/api/microui/3.0.1/>`_
+     - `1.0.0 <https://repository.microej.com/modules/ej/api/drawing/1.0.0/>`_
    * - 13.0.0
-     - `3.0.0 <https://repository.microej.com/artifacts/ej/api/microui/3.0.0/>`_
-     - `1.0.0 <https://repository.microej.com/artifacts/ej/api/drawing/1.0.0/>`_
+     - `3.0.0 <https://repository.microej.com/modules/ej/api/microui/3.0.0/>`_
+     - `1.0.0 <https://repository.microej.com/modules/ej/api/drawing/1.0.0/>`_
    * - [12.1.0-12.1.5]
-     - `2.4.0 <https://repository.microej.com/artifacts/ej/api/microui/2.4.0/>`_
+     - `2.4.0 <https://repository.microej.com/modules/ej/api/microui/2.4.0/>`_
      - 
    * - [11.1.0-11.2.0]
-     - `2.3.0 <https://repository.microej.com/artifacts/ej/api/microui/2.3.0/>`_
+     - `2.3.0 <https://repository.microej.com/modules/ej/api/microui/2.3.0/>`_
      - 
    * - [9.2.0-11.0.1]
-     - `2.2.0 <https://repository.microej.com/artifacts/ej/api/microui/2.2.0/>`_
+     - `2.2.0 <https://repository.microej.com/modules/ej/api/microui/2.2.0/>`_
      - 
    * - [9.1.1-9.1.2]
      - 2.1.3
@@ -84,7 +84,7 @@ The following table describes Foundation Libraries API versions implemented in M
      - 2.1.2
      - 
    * - [9.0.0-9.0.2]
-     - `2.0.6 <https://repository.microej.com/artifacts/ej/api/microui/2.0.6/>`_
+     - `2.0.6 <https://repository.microej.com/modules/ej/api/microui/2.0.6/>`_
      - 
    * - [6.0.0-8.1.0]
      - 2.0.0
@@ -170,7 +170,7 @@ LED
 Front Panel API
 ===============
 
-Since MicroEJ UI Pack ``13.0.0``, the Front Panel project must depend on module `com.microej.pack.ui.ui-pack(frontpanel) <https://repository.microej.com/artifacts/com/microej/pack/ui/ui-pack/>`_ . 
+Since MicroEJ UI Pack ``13.0.0``, the Front Panel project must depend on module `com.microej.pack.ui.ui-pack(frontpanel) <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/>`_ . 
 The module version is the MicroEJ Generic UI Pack version, that is always aligned with the MicroEJ UI Packs specific for MCUs.
 
 +-----------------+---------------------------------------------+-------------------+
@@ -186,7 +186,7 @@ The module version is the MicroEJ Generic UI Pack version, that is always aligne
 Image Generator API
 ===================
 
-Since MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on module `com.microej.pack.ui.ui-pack(imagegenerator) <https://repository.microej.com/artifacts/com/microej/pack/ui/ui-pack/>`_ .
+Since MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on module `com.microej.pack.ui.ui-pack(imagegenerator) <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/>`_ .
 The module version is the MicroEJ Generic UI Pack version, that is always aligned with the MicroEJ UI Packs specific for MCUs.
 
 +-----------------+-------------------------------------------------+-------------------+
