@@ -313,7 +313,7 @@ Build Firmware at Once from Eclipse
 
 Reading the traces, we see that the `HelloWorld` application and the platform MicroEJ Platform library have been deployed to the BSP and the ```build.bat`` script has been called to rebuild the BSP. The output is then ``application.out`` binary that can be flashed on the board (or run on QEMU).
 
-Finish full BSP connection (optional)
+Convert from partial BSP connection to full BSP connection (optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this section, we configure the BSP root directory in the platform.
