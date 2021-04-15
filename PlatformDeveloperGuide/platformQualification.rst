@@ -103,15 +103,21 @@ Test Suite Versioning
 =====================
 
 Foundation Libraries are integrated in a MicroEJ Platform by MicroEJ
-Packs (see :ref:`pack_import`).  Depending on the version of the
-Foundation Libraries provided by a Pack (one MicroEJ Pack can provide
-several Foundation Libraries), a precise Test Suite version must be
-used to validate the Abstraction Layer implementations.
+Packs (see :ref:`pack_import`).  Use the Test Suite version compliant
+with the Foundation Library version to validate the Abstraction Layer
+implementation.  For example, the `Test Suite FS module 3.0.3
+<https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/>`_
+should be used to validate the Abstraction Layer implementation of the
+:ref:`Low Level API FS <LLFS-API-SECTION>` provided by the `Pack FS
+5.1.2
+<https://repository.microej.com/modules/com/microej/pack/fs/5.1.2/>`_.
+
+.. note:: One MicroEJ Pack can provide several Foundation Libraries.
 
 Pack FS
 -------
 
-.. list-table:: FS API Implementation
+.. list-table:: FS API Implementation and Validation
    :widths: 20 10 10
 
    * - FS Pack
@@ -127,7 +133,7 @@ Pack FS
 Pack BLUETOOTH
 --------------
 
-.. list-table:: BLUETOOTH API Implementation
+.. list-table:: BLUETOOTH API Implementation and Validation
    :widths: 20 10 10
 
    * - BLUETOOTH Pack
