@@ -104,6 +104,24 @@ workspace.
 Configure the Test Suite
 ------------------------
 
+Select the Test Suite Version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For a given Foundation Library version, a specific Test Suite version
+should be used to validate the Abstraction Layer implementation.
+Please refer to :ref:`test_suite_versioning` to determine the correct
+Test Suite version to use.
+
+On the WROVER Platform, the FS Test Suite version to use is specified
+in ``{PLATFORM}-configuration/testsuites/fs/README.md``.  The Test
+Suite version must be set in the ``module.ivy`` of the
+``java-testsuite-fs`` project (e.g. ``java-testsuite-fs/module.ivy``).
+For example:
+
+.. code-block:: xml
+
+   <dependency org="com.microej.pack.fs" name="fs-testsuite" rev="3.0.3"/>
+
 Configure the Platform BSP Connection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
