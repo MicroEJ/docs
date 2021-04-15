@@ -34,7 +34,7 @@ See :ref:`Build Script File and Run Script File<bsp_connection_build_script>` su
 Overview
 --------
 
-In  :ref:`Create a MicroEJ Firmware From Scratch<create_firmware_from_scratch>`, the :ref:`BSP connection<bsp_connection>` the final binary is produced by invoking ``make`` in the FreeRTOS BSP. The command to type is dependant of the toolchain used. The application is then launched in QEMU but could have been instead flashed to a device with another specific command. This tutorial explain how to write `build` and `run` scripts for these two tasks. 
+In  :ref:`Create a MicroEJ Firmware From Scratch<create_firmware_from_scratch>`, the final binary is produced by invoking ``make`` in the FreeRTOS BSP. The command to type is dependant of the toolchain used. The application is then launched in QEMU but could have been instead flashed to a device with another specific command. This tutorial explain how to write `build` and `run` scripts for these two tasks. 
 
 The next sections will
 
