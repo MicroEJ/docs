@@ -1,9 +1,9 @@
 .. _tutorial_create_build_scripts:
 
-Create Platform Build Scripts
-=============================
+Create Platform Build and Run Scripts
+=====================================
 
-This tutorial describes all the steps to create platform build scripts and shows how to use them.
+This tutorial describes all the steps to create platform build and run scripts and shows how to use them.
 
 Intended Audience
 -----------------
@@ -22,7 +22,7 @@ This tutorial is a direct continuation of :ref:`Create a MicroEJ Firmware From S
 Introduction
 ------------
 
-Build scripts are normalized entry points to
+Build and run scripts are normalized entry points to
 
 - build an application against a platform
 - deploy and run the built application on a device.
@@ -38,13 +38,13 @@ In  :ref:`Create a MicroEJ Firmware From Scratch<create_firmware_from_scratch>`,
 
 The next sections will
 
-- describe step-by-step how to ceate the build script both for shell and batch terminals. These scripts automate platform build and firmware execution in QUEMU as presented in :ref:`Create a MicroEJ Firmware From Scratch<create_firmware_from_scratch>` tutorial.
-- show a pratical usage of these buid scipts in a MicroEJ development flow. This will allow to configure Eclipse build the full firmware when building an application.
+- describe step-by-step how to ceate the build and run scripts both for shell and batch terminals. These scripts automate platform build and firmware execution in QUEMU as presented in :ref:`Create a MicroEJ Firmware From Scratch<create_firmware_from_scratch>` tutorial.
+- show a pratical usage of these build and run scipts in a MicroEJ development flow. This will allow to configure Eclipse build the full firmware when building an application.
 
-Create Build Scripts
---------------------
+Create Build and Run Scripts
+----------------------------
 
-This section describes how to write build scripts.
+This section describes how to write build and run scripts.
 
 There are two scripts:
 
@@ -68,7 +68,7 @@ Create `build.sh` and `run.sh` Scripts
 
 .. warning::
 
-  Make sure the build scripts have the execution permission.
+  Make sure the build and run scripts have the execution permission.
 
 1. Create a file called ``build.sh`` in the ``microej/scripts`` directory with the following content:
 
@@ -147,7 +147,7 @@ Create `build.sh` and `run.sh` Scripts
 
 .. note::
 
-  This script is very simple because our application is just run with QEMU instead of a real hardware. To deploy the application on a device, the script would have to setup and call a flash tool. See for instance the build script for `Espressif-ESP-WROVER-KIT-V4.1 <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/blob/1.7.0/ESP32-WROVER-Xtensa-FreeRTOS-bsp/Projects/microej/scripts/build.sh>`_. 
+  This script is very simple because our application is just run with QEMU instead of a real hardware. To deploy the application on a device, the script would have to setup and call a flash tool. See for instance the build and run scripts for `Espressif-ESP-WROVER-KIT-V4.1 <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/blob/1.7.0/ESP32-WROVER-Xtensa-FreeRTOS-bsp/Projects/microej/scripts/build.sh>`_. 
 
 Create `build.bat` and `run.bat` Scripts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -221,7 +221,7 @@ As our toolchain has only be configured for Linux in WSL, we create wrappers tha
     REM Restore application directory
     CD %CURRENT_DIRECTORY%
 
-    REM Run the bash build script with WSL
+    REM Run the bash run script with WSL
     WSL %SCRIPT_DIRECTORY%/run.sh
 
     IF %ERRORLEVEL% NEQ 0 (
@@ -239,8 +239,8 @@ As our toolchain has only be configured for Linux in WSL, we create wrappers tha
     Hello, World! printf function is working.
     Hello World!
 
-Use Build Script in MicroEJ Application Project
------------------------------------------------
+Use Build and Run Scripts in MicroEJ Application Project
+--------------------------------------------------------
 
 In this section, we illustrate how built scripts are used in pratice.
 
@@ -250,7 +250,7 @@ We will then configure a full BSP connection. This will remove the need to confi
 
 .. note::
 
-    Build Scripts do not require to configure a full BSP connection. This last part has only be added to finish a MicroEJ Application project independant from the BSP.
+    Build and run scripts do not require to configure a full BSP connection. This last part has only be added to finish a MicroEJ Application project independant from the BSP.
 
 Build Firmware at Once from Eclipse 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
