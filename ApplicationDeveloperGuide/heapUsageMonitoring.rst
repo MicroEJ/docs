@@ -6,8 +6,8 @@ Heap Usage Monitoring
 Introduction
 ------------
 
-When building an application, the Java heap size must be specified in the 
-launcher with the :ref:`option_java_heap`.
+When building a :ref:`standalone_application`, the Java heap size must be specified
+as an :ref:`Application Option <application_options>` (see :ref:`option_java_heap`).
 The value to set in this option depends on the maximum heap usage, and the 
 developer can estimate it by running the application.
 
