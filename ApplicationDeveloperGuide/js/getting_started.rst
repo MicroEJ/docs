@@ -82,8 +82,4 @@ You should see the following output:
 
     My first  MicroEJ Javascript application!
 
-<<<<<<< HEAD:ApplicationDeveloperGuide/microjs/getting_started.rst
-You can now go further by exploring the :ref:`capabilities of the MicroEJ Javascript engine <microjs.builtin>` and discovering the :ref:`commands available in the CLI <mmm_cli>`.
-=======
-You can now go further by exploring the :ref:`capabilities of the MicroEJ Javascript engine <js.builtin>` and discovering the :ref:`commands available in the CLI <mmm.cli>`.
->>>>>>> M0228J-57 Rename MicroJS to JS.:ApplicationDeveloperGuide/js/getting_started.rst
+You can now go further by exploring the :ref:`capabilities of the MicroEJ Javascript engine <js.builtin>` and discovering the :ref:`commands available in the CLI <mmm_cli>`.
