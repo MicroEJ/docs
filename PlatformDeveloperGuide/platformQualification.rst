@@ -109,6 +109,8 @@ A Platform Test Suite contains one or more tests.  For each test, the Test Suite
 
    Platform Test Suite on Device Overview
 
+.. _test_suite_versioning:
+
 Test Suite Versioning
 =====================
 
@@ -123,6 +125,8 @@ should be used to validate the Abstraction Layer implementation of the
 <https://repository.microej.com/modules/com/microej/pack/fs/5.1.2/>`_.
 
 .. note:: One MicroEJ Pack can provide several Foundation Libraries.
+
+.. _test_suite_versioning_fs:
 
 Pack FS
 -------
@@ -139,6 +143,8 @@ Pack FS
    * - [4.0.0-4.1.0[
      - `2.0.6 <https://repository.microej.com/modules/ej/api/fs/2.0.6/>`__
      - On demand [#]_
+
+.. _test_suite_versioning_bluetooth:
 
 Pack BLUETOOTH
 --------------
