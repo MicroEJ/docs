@@ -32,10 +32,9 @@ Here are the descriptions of the different notions related to heap usage:
    objects to increase free memory.
 
 .. figure:: images/heap_usage.png
-   :alt: Outline View
+   :alt: Heap Structure Summary
    :align: center
-   :width: 1430px
-   :height: 630px
+   :scale: 50%
 
    Heap Structure Summary
 
