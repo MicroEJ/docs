@@ -26,6 +26,13 @@ performed by running tests at two-levels:
 - In C, by calling Low Level APIs (usually manually).
 - In Java, by calling Foundation Library APIs (usually automatically using :ref:`platform_testsuite`).
 
+The following figure depicts an example for the Test Suite FS:
+
+.. figure:: images/overview-platform-qualification-test-suite-fs.png
+   :align: center
+
+   Validate the conformance with Test Suite FS
+
 MicroEJ provides a set of tools and pre-defined projects aimed at
 simplifying the steps for validating Platforms in the form of the
 `Platform Qualification Tools (PQT)
@@ -128,7 +135,7 @@ Pack FS
      - `3.0.3 <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/>`__
    * - [4.0.0-4.1.0[
      - `2.0.6 <https://repository.microej.com/modules/ej/api/fs/2.0.6/>`__
-     - 2.2.1
+     - On demand [#]_
 
 Pack BLUETOOTH
 --------------
@@ -145,6 +152,8 @@ Pack BLUETOOTH
    * - 2.0.1
      - `2.0.0 <https://repository.microej.com/modules/ej/api/bluetooth/2.0.0/>`__
      - `2.0.0 <https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-testsuite/2.0.0/>`__
+
+.. [#] Test Suite available on demand, please contact :ref:`MicroEJ Support<get_support>`.
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free
