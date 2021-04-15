@@ -154,7 +154,7 @@ Create `build.bat` and `run.bat` Scripts
 
 As our toolchain has only be configured for Linux in WSL, we create wrappers that call shell scripts through WSL.
 
-1. Create a file called `build.bat` in the `microej/scripts` directory with the following content:
+1. Create a file called ``build.bat`` in the ``microej/scripts`` directory with the following content:
 
   .. code-block:: batch
 
