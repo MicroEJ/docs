@@ -123,12 +123,12 @@ Pack FS
    * - FS Pack
      - FS API
      - Java Test Suite
-   * - [4.0.0-4.1.0[
-     - `2.0.6 <https://repository.microej.com/modules/ej/api/fs/2.0.6/>`__
-     - 2.2.1
    * - [5.1.2-5.2.0[
      - `2.0.6 <https://repository.microej.com/modules/ej/api/fs/2.0.6/>`__
      - `3.0.3 <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/>`__
+   * - [4.0.0-4.1.0[
+     - `2.0.6 <https://repository.microej.com/modules/ej/api/fs/2.0.6/>`__
+     - 2.2.1
 
 Pack BLUETOOTH
 --------------
