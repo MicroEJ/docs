@@ -505,6 +505,16 @@ legend {
   font-family: "Source Sans Pro", sans-serif;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding-top: 85px; 
+  margin-top: -70px;
+}
+
 h1{
   font-weight: lighter;
   font-size: 50px;
@@ -526,7 +536,6 @@ h2{
   font-weight: bold;
   font-size: 30px;
   color: #4b5357;
-  padding-top: 85px;
 }
 
 h3 {
