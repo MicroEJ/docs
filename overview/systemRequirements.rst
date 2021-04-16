@@ -16,10 +16,18 @@ System Requirements
    - Mac OS X (tested on version 10.13 High Sierra, 10.14 Mojave)
 
 - **Java :**
-   - JRE or JDK 8 (OpenJDK or Oracle JDK)
+   - JRE or JDK 8 (Oracle JDK or other OpenJDK build: tested on AdoptOpenJDK/Eclipse Adoptium)
+
+.. warning:: 
+   When installing the AdoptOpenJDK build on Windows, the option ``JavaSoft (Oracle) registry keys`` must be enabled:
+
+   .. figure:: images/adoptopenjdk-install.png
+      :align: center
+   
+   Without this option, the SDK installer cannot find the JRE/JDK and the message ``The application requires a Java Runtime Environment 1.8.0`` is displayed.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
