@@ -480,6 +480,8 @@ The 3 most common integration cases are:
   - the MicroEJ Platform and BSP are delivered as a single standalone module (same versioning), perhaps
     subcontracted to a team or a company outside the application project(s).
 
+.. _bsp_connection_options:
+
 Options
 -------
 
@@ -628,6 +630,8 @@ The build script must implement the following specification:
 
 Many build script templates are available for most commonly used C toolchains in the 
 `Platform Qualification Tools repository <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_.
+
+.. _bsp_connection_run_script:
 
 Run Script File
 ---------------
