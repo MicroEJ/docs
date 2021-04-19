@@ -10,9 +10,9 @@ Intended Audience
 
 The audience for this document is Platform engineers who want to
 
-- validate their MicroEJ Platform using automated :ref:`MicroEJ test suites <platform_testsuite>`,
-- prepare their MicroEJ Platform for automated builds and continuous integration using :ref:`mmm`,
-- ease :ref:`MicroEJ Standalone Application <standalone_application>` development by simplifying the Firmware build for Java developers,
+- validate their MicroEJ Platform using automated :ref:`MicroEJ test suites <platform_testsuite>`.
+- prepare their MicroEJ Platform for automated builds and continuous integration using :ref:`mmm`.
+- ease :ref:`MicroEJ Standalone Application <standalone_application>` development by simplifying the Firmware build for Java developers.
 - configure their MicroEJ Platform with full :ref:`BSP connection<bsp_connection>`.
 
 Prerequisites
