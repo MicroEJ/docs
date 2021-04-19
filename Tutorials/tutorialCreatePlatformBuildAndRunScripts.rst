@@ -1,45 +1,48 @@
-.. _tutorial_create_build_scripts:
+.. _tutorial_create_platform_build_and_run_scripts:
 
-Create Platform Build and Run Scripts
-=====================================
+Create MicroEJ Platform Build and Run Scripts
+=============================================
 
-This tutorial describes all the steps to create platform build and run scripts and shows how to use them.
+This tutorial describes all the steps to create :ref:`MicroEJ Platform <platform_import>` build and run scripts and shows how to use them.
 
 Intended Audience
 -----------------
 
 The audience for this document is Platform engineers who want to
 
-- validate their platform using MicroEJ test suites
-- configure a full :ref:`BSP connection<bsp_connection>` with their platform
-- ease application development by removing the link to the BSP
+- validate their MicroEJ Platform using automated :ref:`MicroEJ test suites <platform_testsuite>`,
+- prepare their MicroEJ Platform for automated builds and continuous integration using :ref:`mmm`,
+- ease :ref:`MicroEJ Standalone Application <standalone_application>` development by simplifying the Firmware build for Java developers,
+- configure their MicroEJ Platform with full :ref:`BSP connection<bsp_connection>`.
 
 Prerequisites
 -------------
 
-This tutorial is a direct continuation of :ref:`Create a MicroEJ Firmware From Scratch<create_firmware_from_scratch>` tutorial. It should have been completed before starting this one.
+This tutorial is a direct continuation of :ref:`create_firmware_from_scratch` tutorial. It should have been completed before starting this one.
 
 Introduction
 ------------
 
-Build and run scripts are normalized entry points to
+Build and Run scripts are normalized entry points to
 
-- build an application against a platform
-- deploy and run the built application on a device.
+- build a MicroEJ Firmware linked to the Board Support Package,
+- deploy and run the Firmware on a device.
 
 External tools only need to run these scripts without additional knowledge about the toolchain or deployment tools.
 
-See :ref:`Build Script File and Run Script File<bsp_connection_build_script>` subsections from MicroEJ Platform Creation guide for more information about these scripts. Script examples are provided in `Platform Qualification Tools <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_ repository.
+See :ref:`bsp_connection_build_script` and :ref:`bsp_connection_run_script` sections for more information about these scripts. Script examples are provided in `Platform Qualification Tools <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_ repository.
 
 Overview
 --------
 
-In  :ref:`Create a MicroEJ Firmware From Scratch<create_firmware_from_scratch>`, the final binary is produced by invoking ``make`` in the FreeRTOS BSP. The command to type is dependant of the toolchain used. The application is then launched in QEMU but could have been instead flashed to a device with another specific command. This tutorial explain how to write `build` and `run` scripts for these two tasks. 
+In the previous :ref:`create_firmware_from_scratch` tutorial, the final binary is produced by invoking ``make`` in the FreeRTOS BSP. The command to type is dependant of the toolchain used. The Firmware is then executed in QEMU but could have been instead flashed to a device with another specific command. This tutorial explain how to write `build` and `run` scripts for these two tasks. 
 
 The next sections will
 
-- describe step-by-step how to ceate the build and run scripts both for shell and batch terminals. These scripts automate platform build and firmware execution in QUEMU as presented in :ref:`Create a MicroEJ Firmware From Scratch<create_firmware_from_scratch>` tutorial.
-- show a pratical usage of these build and run scipts in a MicroEJ development flow. This will allow to configure Eclipse build the full firmware when building an application.
+- describe step-by-step how to create the build and run scripts both for unix-like systems (Bash scripts) and Windows systems (batch files). These scripts automate Firmware build and execution in QEMU as presented in :ref:`create_firmware_from_scratch` tutorial.
+- show a practical usage of these scripts in a MicroEJ development flow. This will allow to configure a MicroEJ Standalone Application to build the Firmware in MicroEJ SDK.
+
+Finally, this tutorial describes how to convert the MicroEJ Platform from partial BSP connection to full BSP connection.
 
 Create Build and Run Scripts
 ----------------------------
@@ -48,10 +51,10 @@ This section describes how to write build and run scripts.
 
 There are two scripts:
 
-#. ``build.xxx`` which calls the toolchain to build the application executable file. It also ensures that the output file is called ``application.out`` and is located in the directory from where the script was called.
-#. ``run.xxx`` which deploys and runs ``application.out`` on the device. In this tutorial, it will only run the application with QEMU instead of flashing it on real hardware.
+#. ``build.[sh|bat]`` which calls the C toolchain to build and link the Firmware file. It also ensures that the output file is called ``application.out`` and is located in the directory from where the script was called.
+#. ``run.[sh|bat]`` which deploys and runs ``application.out`` on the device. In this tutorial, it will only run the Firmware with QEMU instead of flashing it on real hardware.
 
-Each of these scripts come in two flavors: ``.sh`` for unix-like systems, and ``.batch`` for Windows systems.
+Each of these scripts come in two flavors: ``.sh`` for unix-like systems, and ``.bat`` for Windows systems.
 
 First, create a ``microej/scripts`` directory in BSP project:
 
@@ -61,7 +64,9 @@ First, create a ``microej/scripts`` directory in BSP project:
   /mnt/c/Users/user/src/tuto-from-scratch/FreeRTOS/FreeRTOS/Demo/CORTEX_LM3S6965_GCC
   $ mkdir microej/scripts
 
-All the script created in the next sections will be put in this directory.
+.. note::
+  
+   The scripts created in the next sections will be put in this directory.
 
 Create `build.sh` and `run.sh` Scripts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -91,7 +96,7 @@ Create `build.sh` and `run.sh` Scripts
     # Restore application directory
     cd $CURRENT_DIRECTORY/
 
-2. Verify that the script succesfully built your firmware and put it in the current directory with the name ``application.out``.
+2. Verify that the script successfully built your Firmware and put it in the current directory with the name ``application.out``.
 
   .. code-block:: shell
 
@@ -133,7 +138,7 @@ Create `build.sh` and `run.sh` Scripts
     # Launch application with QEMU
     qemu-system-arm -M lm3s6965evb -nographic -kernel application.out
 
-5. We can now run the application we just built with the ``run.sh`` script:
+5. We can now run the Firmware we just built with the ``run.sh`` script:
 
   .. code-block:: shell
 
@@ -147,12 +152,13 @@ Create `build.sh` and `run.sh` Scripts
 
 .. note::
 
-  This script is very simple because our application is just run with QEMU instead of a real hardware. To deploy the application on a device, the script would have to setup and call a flash tool. See for instance the build and run scripts for `Espressif-ESP-WROVER-KIT-V4.1 <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/blob/1.7.0/ESP32-WROVER-Xtensa-FreeRTOS-bsp/Projects/microej/scripts/build.sh>`_. 
+  This script is very simple because our Firmware is just run with QEMU instead of a real hardware. To deploy the Firmware on a device, the script would have to setup and call a flash tool. See for instance the build and run scripts for `Espressif-ESP-WROVER-KIT-V4.1 <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/blob/1.7.0/ESP32-WROVER-Xtensa-FreeRTOS-bsp/Projects/microej/scripts/build.sh>`_. 
 
 Create `build.bat` and `run.bat` Scripts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As our toolchain has only be configured for Linux in WSL, we create wrappers that call shell scripts through WSL.
+We could also decide to directly invoke QEMU for Windows instead. This is just a implementation choice for this Platform.
 
 1. Create a file called ``build.bat`` in the ``microej/scripts`` directory with the following content:
 
@@ -195,7 +201,7 @@ As our toolchain has only be configured for Linux in WSL, we create wrappers tha
       CC    microej/src/LLMJVM_stub.c
       LD    gcc/RTOSDemo.axf
     Current DIR /mnt/c/Users/user/src/tuto-from-scratch/FreeRTOS/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/microej/scripts
-            1 fichier(s) déplacé(s).
+            1 file(s) moved.
 
 .. note::
 
@@ -233,36 +239,37 @@ As our toolchain has only be configured for Linux in WSL, we create wrappers tha
   .. code-block:: shell
 
     C:\Users\user\src\tuto-from-scratch\FreeRTOS\FreeRTOS\Demo\CORTEX_LM3S6965_GCC\application.out
-    1 fichier(s) copié(s)
+    1 file(s) copied.
     ## Start application in QEMU.
     ## Use 'Ctrl-a x' to quit.
     Hello, World! printf function is working.
     Hello World!
 
-Use Build and Run Scripts in MicroEJ Application Project
---------------------------------------------------------
+Use Build Script in MicroEJ SDK
+-------------------------------
 
-In this section, we illustrate how built scripts are used in pratice.
+In this section, we illustrate how build script is used in practice to ease the Firmware build for Java developers in MicroEJ SDK.
 
-We will first configure Eclipse and the platform to enable full firmware build (build application, build BSP + link to platform) when building `HelloWorld` application from launcher.
+We will configure a MicroEJ Standalone Application to enable full Firmware build (application + BSP + link) when building the `HelloWorld` application.
 
-We will then configure a full BSP connection. This will remove the need to configure the path of the BSP in the application launcher.
+We will then configure a full BSP connection. This will remove the need to configure the path of the BSP root directory as a MicroEJ Standalone Application option.
+Please refer to :ref:`BSP connection cases <bsp_connection_cases>` section and :ref:`BSP connection options <bsp_connection_options>` for more details.
 
 .. note::
 
-    Build and run scripts do not require to configure a full BSP connection. This last part has only be added to finish a MicroEJ Application project independant from the BSP.
+    Build and run scripts do not require to configure a full BSP connection. This last part has only be added to allow a MicroEJ Standalone Application project to be built independently from the BSP.
 
-Build Firmware at Once from Eclipse 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Build Firmware from MicroEJ SDK 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Right click on the ``HelloWorld`` application project
-2. In the menu, select :guilabel:`Run as` > :guilabel:`Run Configurations...`
+2. In the menu, select :guilabel:`Run As` > :guilabel:`Run Configurations...`
 3. Select the :guilabel:`Configuration` tab
 4. Select :guilabel:`Device` > :guilabel:`Deploy` entry in the configurations menu
 5. Check :guilabel:`Execute the MicroEJ script (build.bat) at the location known by the 3rd-party BSP project` checkbox
 
   .. image::  images/configure_build_bat_eclipse.png
-    :scale: 80 %
+     :scale: 80 %
 
 6. Click on the :guilabel:`Run` button. It should print the following:
 
@@ -290,7 +297,8 @@ Build Firmware at Once from Eclipse
     # This is a '/' separated directory relative to 'bsp.root.dir'.
     microejscript.relative.dir=microej/scripts
 
-8. Run the `HelloWorld` application once again. This should print the following result:
+8. Rebuild your Platform (right-click on the platform configuration project and click on :guilabel:`Build Module`)
+9. Run the `HelloWorld` launcher once again. This should print the following result:
 
   .. code-block:: none
 
@@ -311,16 +319,21 @@ Build Firmware at Once from Eclipse
 
     SUCCESS
 
-Reading the traces, we see that the `HelloWorld` application and the platform MicroEJ Platform library have been deployed to the BSP and the ```build.bat`` script has been called to rebuild the BSP. The output is then ``application.out`` binary that can be flashed on the board (or run on QEMU).
+Reading the traces, we see that the `HelloWorld` application (`microejapp.o`) and the MicroEJ Platform library (`microejruntime.a`) have been deployed to the suitable BSP location.
+Then the ``build.bat`` script has been executed to rebuild the BSP and link the Firmware. The output is the ``application.out`` binary that can be flashed on the device (or run on QEMU).
+
+.. _convert_partial_to_full_bsp_connection:
 
 Convert from partial BSP connection to full BSP connection (optional)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this section, we configure the BSP root directory in the platform.
+In this section, we configure the BSP root directory in the Platform. 
+Such configuration is called `full BSP connection`: the MicroEJ Platform includes the BSP, and any MicroEJ Standalone Application can be built against this MicroEJ Platform without extra configuration.
 
-When launching the ``HelloWorld`` application from Eclipse, the launcher knows how to find the BSP because we have configured its path in ``HelloWorld/build/emb.properties`` file which is imported in the launcher.
+When launching the ``HelloWorld`` application from MicroEJ SDK, the launcher knows how to find the BSP because we have configured its path in ``HelloWorld/build/emb.properties`` file which is imported in the launcher
+(this file has been configured in :ref:`Create a MicroEJ Firmware From Scratch<create_firmware_from_scratch>` tutorial).
 
-1. Cut ``deploy.bsp.root.dir`` property value from ``HelloWorld/build/emb.properties`` file configured in :ref:`Create a MicroEJ Firmware From Scratch<create_firmware_from_scratch>` tutorial
+1. Cut ``deploy.bsp.root.dir`` property value from ``HelloWorld/build/emb.properties`` file
 2. Paste the value in ``bsp/bsp.properties`` as follow:
 
   .. code-block:: properties
@@ -329,9 +342,9 @@ When launching the ``HelloWorld`` application from Eclipse, the launcher knows h
     # For example, '${workspace}/${project.prefix}-bsp' specifies a BSP project beside the '-configuration' project
     root.dir=[absolute_path] to FreeRTOS\\FreeRTOS\\Demo\\CORTEX_LM3S811_GCC
 
-3. Rebuild your platform with a right-click on the platform project and click on :guilabel:`Build Module`.
+3. Rebuild your MicroEJ Platform (right-click on the platform configuration project and click on :guilabel:`Build Module`)
 
-The platform is now fully connected to the BSP.
+   The MicroEJ Platform is now fully connected to the BSP.
   
 4. Launch ``HelloWorld`` project from Eclipse launcher, it should print the following result:
 
@@ -357,13 +370,15 @@ The platform is now fully connected to the BSP.
 
   .. note::
 
-    You can notice the difference in the second line of the trace that now says that the connection is `using platform option 'root.dir' in 'bsp/bsp.properties'.` instead of `using platform option 'deploy.bsp.root.dir'.` in the previous launch.
+    You can notice the difference in the second line of the trace that now says that the connection is ``using platform option root.dir' in 'bsp/bsp.properties'`` instead of ``using platform option 'deploy.bsp.root.dir'`` in the previous launch.
 
- The application launcher does not know anymore where the BSP is located. Nevertheless it still builds a full firmware ready to be flashed. The link to the BSP is now configured in the platform and every MicroEJ mono-sandboxed application projects can use it without extra configuration.
+ The application launcher does not know anymore where the BSP is located. Nevertheless it still builds a Firmware ready to be flashed.
+ The link to the BSP is now configured in the MicroEJ Platform. Any MicroEJ Standalone Application can be built against this MicroEJ Platform with no BSP specific option.
 
 Going Further
 -------------
 
-- More about build scripts in :ref:`Build Script File and Run Script File<bsp_connection_build_script>` subsections from MicroEJ Platform Creation guide
+- More about build and run scripts in :ref:`bsp_connection_build_script` in :ref:`bsp_connection_run_script` sections
 - Some build scripts examples from `Platform Qualification Tools <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_
-- :ref:`Run a testsuite on device<run_test_suite_on_device>` tutorial
+- Perform the :ref:`run_test_suite_on_device` tutorial to learn how to run an automated testsuite
+- Perform the :ref:`tutorial_setup_automated_build_using_jenkins_and_artifactory` tutorial to learn how to automate the build of a MicroEJ Platform module
