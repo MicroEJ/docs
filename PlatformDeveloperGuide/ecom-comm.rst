@@ -497,7 +497,7 @@ is required during platform creation to configure the module (see
 Use
 ===
 
-The `ECOM Comm API Module <https://repository.microej.com/artifacts/ej/api/ecom-comm/>`_ 
+The `ECOM Comm API Module <https://repository.microej.com/modules/ej/api/ecom-comm/>`_ 
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the ECOM Comm library. 
 

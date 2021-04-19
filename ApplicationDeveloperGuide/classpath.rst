@@ -88,7 +88,7 @@ The MicroEJ Classpath contains the following elements:
    list file extensions and format is specific to declared application
    contents and is described in the appropriate section.
 
-At source level, Java types are stored in ``src/main/java`` folder of the `module project <mmm_module_skeleton>`_, 
+At source level, Java types are stored in ``src/main/java`` folder of the :ref:`module project <mmm_module_skeleton>`, 
 any other kind of resources and list files are stored in the ``src/main/resources`` folder.
 
 .. _section.classpath.elements.entrypoints:

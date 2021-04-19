@@ -1,3 +1,5 @@
+.. _microui_traces:
+
 Debug Traces
 =============
 
@@ -221,7 +223,7 @@ where:
    | 0xcc (204)  | Draw image with scalling (bilinear)        |
    +-------------+--------------------------------------------+
 
-The traces are SystemView compatible. The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and copied in SystemView installation folder.
+The traces are :ref:`systemview` compatible. The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and copied in SystemView installation folder.
 
 .. code-block::
 

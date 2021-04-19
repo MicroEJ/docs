@@ -6,7 +6,7 @@ Bluetooth LE Mock
 Overview
 --------
 
-To run a MicroEJ Application that uses the Bluetooth LE Foundation Library (`ej.api.bluetooth <https://repository.microej.com/artifacts/ej/api/bluetooth/>`_) 
+To run a MicroEJ Application that uses the Bluetooth LE Foundation Library (`ej.api.bluetooth <https://repository.microej.com/modules/ej/api/bluetooth/>`_) 
 on MicroEJ Simulator, a Bluetooth LE mock controller must be set up first:
 
 .. image:: images/blemock-controller.png

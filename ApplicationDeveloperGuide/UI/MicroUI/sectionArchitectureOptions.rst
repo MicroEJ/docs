@@ -1,3 +1,5 @@
+.. _section_ui_options_microui:
+
 Category: Libraries
 ===================
 
@@ -43,6 +45,8 @@ Option(combo): Pump events thread priority
 *Description*:
 
 Specifies the priority of the pump events queue.
+
+.. _section_ui_options_imagesheapsize:
 
 Option(text): Images heap size (in bytes)
 """""""""""""""""""""""""""""""""""""""""
