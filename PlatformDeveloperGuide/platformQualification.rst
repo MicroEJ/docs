@@ -74,7 +74,7 @@ The Platform Qualification Tools provide the following components:
     :ref:`platform_testsuite` or check the tutorial
     :ref:`tutorial_run_test_suite_on_device`).
 
-Please refer to the `PQT README
+Please refer to the `Platform Qualification Tools README
 <https://github.com/MicroEJ/PlatformQualificationTools>`__ for more
 details and the location of the components.
 
@@ -122,15 +122,15 @@ with the Foundation Library version to validate the Abstraction Layer
 implementation.  For example, the `Test Suite FS module 3.0.3
 <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/>`_
 should be used to validate the Abstraction Layer implementation of the
-:ref:`Low Level API FS <LLFS-API-SECTION>` provided by the `Pack FS
+:ref:`Low Level API FS <LLFS-API-SECTION>` provided by the `FS Pack
 5.1.2
 <https://repository.microej.com/modules/com/microej/pack/fs/5.1.2/>`_.
 
-.. note:: One MicroEJ Pack can provide several Foundation Libraries.
+.. note:: A MicroEJ Pack can provide several Foundation Libraries.
 
 .. _test_suite_versioning_fs:
 
-Pack FS
+FS Pack
 -------
 
 .. list-table:: FS API Implementation and Validation
@@ -148,7 +148,7 @@ Pack FS
 
 .. _test_suite_versioning_bluetooth:
 
-Pack BLUETOOTH
+BLUETOOTH Pack
 --------------
 
 .. list-table:: BLUETOOTH API Implementation and Validation
