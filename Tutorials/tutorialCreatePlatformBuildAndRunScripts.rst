@@ -18,7 +18,7 @@ The audience for this document is Platform engineers who want to
 Prerequisites
 -------------
 
-This tutorial is a direct continuation of :ref:`create_firmware_from_scratch` tutorial. It should have been completed before starting this one.
+This tutorial is a direct continuation of :ref:`tutorial_create_firmware_from_scratch` tutorial. It should have been completed before starting this one.
 
 Introduction
 ------------
@@ -35,11 +35,11 @@ See :ref:`bsp_connection_build_script` and :ref:`bsp_connection_run_script` sect
 Overview
 --------
 
-In the previous :ref:`create_firmware_from_scratch` tutorial, the final binary is produced by invoking ``make`` in the FreeRTOS BSP. The command to type is dependant of the toolchain used. The Firmware is then executed in QEMU but could have been instead flashed to a device with another specific command. This tutorial explain how to write `build` and `run` scripts for these two tasks. 
+In the previous :ref:`tutorial_create_firmware_from_scratch` tutorial, the final binary is produced by invoking ``make`` in the FreeRTOS BSP. The command to type is dependant of the toolchain used. The Firmware is then executed in QEMU but could have been instead flashed to a device with another specific command. This tutorial explain how to write `build` and `run` scripts for these two tasks. 
 
 The next sections will
 
-- describe step-by-step how to create the build and run scripts both for unix-like systems (Bash scripts) and Windows systems (batch files). These scripts automate Firmware build and execution in QEMU as presented in :ref:`create_firmware_from_scratch` tutorial.
+- describe step-by-step how to create the build and run scripts both for unix-like systems (Bash scripts) and Windows systems (batch files). These scripts automate Firmware build and execution in QEMU as presented in :ref:`tutorial_create_firmware_from_scratch` tutorial.
 - show a practical usage of these scripts in a MicroEJ development flow. This will allow to configure a MicroEJ Standalone Application to build the Firmware in MicroEJ SDK.
 
 Finally, this tutorial describes how to convert the MicroEJ Platform from partial BSP connection to full BSP connection.
@@ -331,7 +331,7 @@ In this section, we configure the BSP root directory in the Platform.
 Such configuration is called `full BSP connection`: the MicroEJ Platform includes the BSP, and any MicroEJ Standalone Application can be built against this MicroEJ Platform without extra configuration.
 
 When launching the ``HelloWorld`` application from MicroEJ SDK, the launcher knows how to find the BSP because we have configured its path in ``HelloWorld/build/emb.properties`` file which is imported in the launcher
-(this file has been configured in :ref:`Create a MicroEJ Firmware From Scratch<create_firmware_from_scratch>` tutorial).
+(this file has been configured in :ref:`tutorial_create_firmware_from_scratch` tutorial).
 
 1. Cut ``deploy.bsp.root.dir`` property value from ``HelloWorld/build/emb.properties`` file
 2. Paste the value in ``bsp/bsp.properties`` as follow:
