@@ -325,7 +325,7 @@ Going further
 
 Now that the MicroEJ Platform is connected to the BSP it can leverage
 the Java Test Suites provided by the `Platform Qualification Tools`_.
-See :ref:`tutorialRunATestSuiteOnDevice` for a step by step
+See :ref:`tutorial_run_test_suite_on_device` for a step by step
 explanation on how to do so.
 
 .. _Platform Qualification Tools: https://github.com/MicroEJ/PlatformQualificationTools
