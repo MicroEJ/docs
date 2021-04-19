@@ -10,15 +10,14 @@ Introduction
 A MicroEJ Platform integrates one or more Foundation Libraries with their
 respective Abstraction Layers.
 
-Platform Qualification is the process of validating the Abstraction
-Layer that implements the :ref:`Low Level APIs <low_level_api>` of a
-Foundation Library.
+Platform Qualification is the process of validating the conformance of the Abstraction
+Layer that implements the :ref:`Low Level APIs <low_level_api>` of a Foundation Library.
 
 .. figure:: images/overview-platform-qualification.png
    :align: center
    :scale: 90%
 
-   Platform Qualification: Validate the conformance of Abstraction Layer implementations
+   Platform Qualification Overwiew
 
 For each Low Level API, an Abstraction Layer implementation is
 required.  The validation of the Abstraction Layer implementation is
@@ -27,13 +26,13 @@ performed by running tests at two-levels:
 - In C, by calling Low Level APIs (usually manually).
 - In Java, by calling Foundation Library APIs (usually automatically using :ref:`platform_testsuite`).
 
-The following figure depicts an example for the Test Suite FS:
+The following figure depicts an example for the FS Pack:
 
 .. figure:: images/overview-platform-qualification-test-suite-fs.png
    :align: center
    :scale: 90%
 
-   Validate the conformance with Test Suite FS
+   Platform Qualification Example for FS Pack
 
 MicroEJ provides a set of tools and pre-defined projects aimed at
 simplifying the steps for validating Platforms in the form of the
