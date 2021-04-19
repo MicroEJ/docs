@@ -581,7 +581,7 @@ Create MicroEJ Application HelloWorld
    .. image:: images/tuto_microej_fw_from_scratch_new_microej_application_project.PNG
 
 #. Run the application in Simulator to ensure it is working properly.
-   Right-click on HelloWorld project > :guilabel:`Run as` >
+   Right-click on HelloWorld project > :guilabel:`Run As` >
    :guilabel:`MicroEJ Application`
 
    .. image:: images/tuto_microej_fw_from_scratch_run_as_microej_application.PNG
@@ -1293,3 +1293,4 @@ The next steps recommended are:
   functions in ``LLMJVM_impl.h``).
 * Validate the implementation with the `PQT Core
   <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`_.
+* Follow the :ref:`tutorial_create_platform_build_and_run_scripts` tutorial to get this MicroEJ Platform fully automated for build and execution. 
