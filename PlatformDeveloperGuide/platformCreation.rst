@@ -492,6 +492,8 @@ The 3 most common integration cases are:
   - the MicroEJ Platform and BSP are delivered as a single standalone module (same versioning), perhaps
     subcontracted to a team or a company outside the application project(s).
 
+.. _bsp_connection_options:
+
 Options
 -------
 
