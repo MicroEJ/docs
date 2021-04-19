@@ -54,7 +54,7 @@ The Platform Qualification Tools provide the following components:
     - Configure the BSP connection to call the build and run scripts.
 
   - Added when creating a Platform (see :ref:`new_platform_creation`
-    or check the tutorial :ref:`tutorialCreateFirmwareFromScratch`).
+    or check the tutorial :ref:`tutorial_create_firmware_from_scratch`).
 
 - Build and Run Scripts examples:
 
@@ -62,7 +62,7 @@ The Platform Qualification Tools provide the following components:
     invoking a third-party toolchain for the BSP
   - Added when integrating the BSP to the Platform (see
     :ref:`bsp_connection_build_script` and
-    :ref:`bsp_connection_run_script` or check the tutorial XXX).
+    :ref:`bsp_connection_run_script` or check the tutorial :ref:`tutorial_create_platform_build_and_run_scripts`).
 
 - C and Java Test Suites:
 
@@ -70,7 +70,7 @@ The Platform Qualification Tools provide the following components:
   - Validated during the BSP development and whenever an Abstraction
     Layer implementation is added or changed (see
     :ref:`platform_testsuite` or check the tutorial
-    :ref:`tutorialRunATestSuiteOnDevice`).
+    :ref:`tutorial_run_test_suite_on_device`).
 
 Please refer to the `PQT README
 <https://github.com/MicroEJ/PlatformQualificationTools>`__ for more

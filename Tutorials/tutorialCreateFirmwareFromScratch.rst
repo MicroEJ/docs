@@ -1,4 +1,4 @@
-.. _create_firmware_from_scratch:
+.. _tutorial_create_firmware_from_scratch:
 
 Create a MicroEJ Firmware From Scratch
 ======================================
