@@ -152,7 +152,7 @@ Create `build.sh` and `run.sh` Scripts
 
 .. note::
 
-  This script is very simple because our Firmware is just run with QEMU instead of a real hardware. To deploy the Firmware on a device, the script would have to setup and call a flash tool. See for instance the build and run scripts for `Espressif-ESP-WROVER-KIT-V4.1 <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/blob/1.7.0/ESP32-WROVER-Xtensa-FreeRTOS-bsp/Projects/microej/scripts/build.sh>`_. 
+  This script is very simple because our Firmware is just run with QEMU instead of real hardware. To deploy the Firmware on a device, the script would have to setup and call a flash tool. See for instance the build and run scripts for `Espressif-ESP-WROVER-KIT-V4.1 <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/blob/1.7.0/ESP32-WROVER-Xtensa-FreeRTOS-bsp/Projects/microej/scripts/build.sh>`_. 
 
 Create `build.bat` and `run.bat` Scripts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
