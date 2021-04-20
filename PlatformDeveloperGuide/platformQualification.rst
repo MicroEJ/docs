@@ -170,13 +170,25 @@ UI Pack
 -------
 
 .. list-table:: UI Validation
-   :widths: 20 10 10
+   :widths: 20 10
 
    * - UI Pack
      - C Test Suite
    * - [6.0.0-12.1.5]
      - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/tree/2.4.0/tests/ui>`__
 
+.. _test_suite_versioning_core:
+
+Core Engine
+-----------
+
+.. list-table:: Core Engine Validation
+   :widths: 20 10
+
+   * - Architecture
+     - Test Suite
+   * - 7.0.0 or higher
+     - `Core Engine Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/tree/2.4.0/tests/core>`__
 
 .. [#] Test Suite available on demand, please contact :ref:`MicroEJ Support<get_support>`.
 
