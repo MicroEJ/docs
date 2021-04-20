@@ -138,7 +138,7 @@ Core Engine
    * - Architecture
      - Test Suite
    * - 7.0.0 or higher
-     - `Core Engine Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/tree/2.4.0/tests/core>`__
+     - `Core Engine Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`__
 
 .. _test_suite_versioning_ui:
 
@@ -153,7 +153,7 @@ UI Pack
    * - 13.0.0 or higher (UI3)
      - On demand [1]_
    * - [6.0.0-12.1.5] (UI2)
-     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/tree/2.4.0/tests/ui>`__
+     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/ui>`__
 
 .. _test_suite_versioning_fs:
 
