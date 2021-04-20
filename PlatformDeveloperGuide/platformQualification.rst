@@ -1,8 +1,8 @@
 .. _platform_qualification:
 
-======================
-Platform Qualification
-======================
+============================
+Platform Qualification Tools
+============================
 
 Introduction
 ============
