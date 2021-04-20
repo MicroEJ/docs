@@ -170,7 +170,7 @@ UI Pack
 -------
 
 .. list-table:: UI Validation
-   :widths: 20 10
+   :widths: 20 20
 
    * - UI Pack
      - C Test Suite
@@ -183,7 +183,7 @@ Core Engine
 -----------
 
 .. list-table:: Core Engine Validation
-   :widths: 20 10
+   :widths: 20 20
 
    * - Architecture
      - Test Suite
