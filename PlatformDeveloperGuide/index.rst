@@ -8,6 +8,7 @@ Platform Developer Guide
 
    introduction
    platform
+   platformQualification
    coreEngine
    multiSandbox
    tiny

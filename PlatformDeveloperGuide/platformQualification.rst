@@ -1,8 +1,8 @@
 .. _platform_qualification:
 
-======================
-Platform Qualification
-======================
+============================
+Platform Qualification Tools
+============================
 
 Introduction
 ============
@@ -127,6 +127,34 @@ should be used to validate the Abstraction Layer implementation of the
 
 .. note:: A MicroEJ Pack can provide several Foundation Libraries.
 
+.. _test_suite_versioning_core:
+
+Core Engine
+-----------
+
+.. list-table:: Core Engine Validation
+   :widths: 20 20
+
+   * - Architecture
+     - Test Suite
+   * - 7.0.0 or higher
+     - `Core Engine Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`__
+
+.. _test_suite_versioning_ui:
+
+UI Pack
+-------
+
+.. list-table:: UI Validation
+   :widths: 20 20
+
+   * - UI Pack
+     - C Test Suite
+   * - 13.0.0 or higher (UI3)
+     - On demand [1]_
+   * - [6.0.0-12.1.5] (UI2)
+     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/ui>`__
+
 .. _test_suite_versioning_fs:
 
 FS Pack
@@ -143,7 +171,7 @@ FS Pack
      - `3.0.3 <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/>`__
    * - [4.0.0-4.1.0[
      - `2.0.6 <https://repository.microej.com/modules/ej/api/fs/2.0.6/>`__
-     - On demand [#]_
+     - On demand [1]_
 
 .. _test_suite_versioning_bluetooth:
 
@@ -163,7 +191,12 @@ BLUETOOTH Pack
      - `2.0.0 <https://repository.microej.com/modules/ej/api/bluetooth/2.0.0/>`__
      - `2.0.0 <https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-testsuite/2.0.0/>`__
 
-.. [#] Test Suite available on demand, please contact :ref:`MicroEJ Support<get_support>`.
+NET/SSL Pack
+------------
+
+On demand [1]_.
+
+.. [1] Test Suite available on demand, please contact :ref:`MicroEJ Support<get_support>`.
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free

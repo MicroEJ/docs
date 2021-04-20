@@ -8,7 +8,6 @@ MicroEJ Platform
    platformOverview
    platformConcepts
    platformCreation
-   platformQualification
    platformMigration
 
 ..
