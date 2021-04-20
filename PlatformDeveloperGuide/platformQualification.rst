@@ -163,6 +163,21 @@ BLUETOOTH Pack
      - `2.0.0 <https://repository.microej.com/modules/ej/api/bluetooth/2.0.0/>`__
      - `2.0.0 <https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-testsuite/2.0.0/>`__
 
+
+.. _test_suite_versioning_ui:
+
+UI Pack
+-------
+
+.. list-table:: UI Validation
+   :widths: 20 10 10
+
+   * - UI Pack
+     - C Test Suite
+   * - [6.0.0-12.1.5]
+     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/tree/2.4.0/tests/ui>`__
+
+
 .. [#] Test Suite available on demand, please contact :ref:`MicroEJ Support<get_support>`.
 
 ..
