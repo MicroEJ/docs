@@ -171,8 +171,6 @@ You have to enable runtime traces of your Java application.
 - Finally, check checkboxes ``Enable execution traces`` and ``Start execution traces automatically`` as shown in the picture below.
 - Rebuild your firmware with the new Java application version and it should fix the issue.
 
-You may only check the first checkbox when you know when you want to start the trace recording.
-
 .. figure:: images/sysview_app_traces.png
    :alt: Enable traces of the Java application.
    :align: center
@@ -180,6 +178,7 @@ You may only check the first checkbox when you know when you want to start the t
    :width: 1109px
    :height: 865px
 
+You may only check the first checkbox when you know when you want to start the trace recording.
 
 OVERFLOW Events in SystemView
 -----------------------------
