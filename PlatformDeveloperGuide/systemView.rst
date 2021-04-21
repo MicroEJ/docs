@@ -90,8 +90,8 @@ This file can be modified to fit with your system configuration:
    * comment the line ``#define traceTASK_SWITCHED_IN()`` if defined 
    * add ``#include "SEGGER_SYSVIEW_FreeRTOS.h"`` at the end of file
 
-9. Enable SystemView on startup (before creating first OS task): call ``SEGGER_SYSVIEW_Conf();``
-10. Right enabling SystemView on startup, prints the RTT block address to the serial port: ``printf("SEGGER_RTT block address: %p\n", &(_SEGGER_RTT));``.
+9. Enable SystemView on startup (before creating first OS task): call ``SEGGER_SYSVIEW_Conf();``. Include required ``#include "SEGGER_SYSVIEW.h"``.
+10. Right enabling SystemView on startup, prints the RTT block address to the serial port: ``printf("SEGGER_RTT block address: %p\n", &(_SEGGER_RTT));``. Inlcude required ``#include "SEGGER_RTT.h"``.
 
 .. note:: Particulary useful if SystemView does not find automatically the RTT block address.
 
@@ -157,6 +157,25 @@ To enable MEJ32 tracing, in MicroEJ SDK:
 
 Troubleshooting
 ===============
+
+SystemView doesn't see any activity in MicroEJ Tasks
+----------------------------------------------------
+
+You have to enable runtime traces of your Java application. 
+
+- In ``Run > Run configuration`` select your Java application launcher.
+- Then, go to ``Configuration tab > Runtime > Trace``
+- Finally, check checkboxes ``Enable execution traces`` and ``Start execution traces automatically`` as shown in the picture below.
+- Rebuild your firmware with the new Java application version and it should fix the issue.
+
+You may only check the first checkbox when you know when you want to start the trace recording.
+
+.. figure:: images/sysview_app_traces.png
+   :alt: Enable traces of the Java application.
+   :align: center
+   :scale: 60
+   :width: 1109px
+   :height: 865px
 
 
 OVERFLOW events in SystemView
