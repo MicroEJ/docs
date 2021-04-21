@@ -95,7 +95,7 @@ This file can be modified to fit with your system configuration:
    * add ``#include "SEGGER_SYSVIEW_FreeRTOS.h"`` at the end of file
 
 9. Enable SystemView on startup (before creating first OS task): call ``SEGGER_SYSVIEW_Conf();``. Include required ``#include "SEGGER_SYSVIEW.h"``.
-10. Prints the RTT block address to the serial port on startup: ``printf("SEGGER_RTT block address: %p\n", &(_SEGGER_RTT));``. Include required ``#include "SEGGER_RTT.h"``.
+10. Print the RTT block address to the serial port on startup: ``printf("SEGGER_RTT block address: %p\n", &(_SEGGER_RTT));``. Include required ``#include "SEGGER_RTT.h"``.
 
 .. note:: 
    
