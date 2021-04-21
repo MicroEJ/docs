@@ -14,7 +14,7 @@ It can be a single event or a period of time with a start and an end.
 
 Event Tracing can be accessed from two APIs:
   
-- A Java API, provided by the `Trace API module <https://repository.microej.com/artifacts/ej/api/trace/>`_.
+- A Java API, provided by the `Trace API module <https://repository.microej.com/modules/ej/api/trace/>`_.
   The following dependency must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ Application project:
       
   .. code:: xml
@@ -22,6 +22,11 @@ Event Tracing can be accessed from two APIs:
      <dependency org="ej.api" name="trace" rev="1.1.0"/>
   
 - A C API, provided by the Platform header file named ``LLTRACE_impl.h``.
+
+.. _event_enable_recording:
+
+Event Recording
+===============
 
 Events are recorded if and only if:
 
@@ -39,7 +44,7 @@ Then, multiple ways are available to start and stop the trace recording:
 Java API Usage
 ==============
 
-The detailed Trace API documentation is available `here <https://repository.microej.com/javadoc/microej_5.x/foundation/ej/trace/Tracer.html>`_.
+The detailed Trace API documentation is available `here <https://repository.microej.com/javadoc/microej_5.x/foundation/ej/trace/Tracer.html>`__.
 
 First, you need to instantiate a ``Tracer`` object by calling its constructor with two parameters.
 The first parameter, ``name``, is a String that will represent the ``Tracer`` object group's name.
@@ -134,6 +139,6 @@ A Platform can connect its own implementation by overriding the functions define
 MicroEJ provides an implementation that redirects the events to :ref:`systemview` tool, 
 the real-time recording and visualization tool from `Segger <https://www.segger.com/>`_. It is perfect for a finer understanding of the runtime behavior by showing events sequence and duration.
 
-A implementation example for the `NXP OM13098 development board <https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc54000-cortex-m4-/lpcxpresso54628-development-board:OM13098>`_ with SystemView support is available `here <https://developer.microej.com/packages/referenceimplementations/U3OER/2.0.1/OM13098-U3OER-fullPackaging-eval-2.0.1.zip>`_.
-Please contact MicroEJ Support for more information about how to integrate this Platform module.
+A implementation example for the `NXP OM13098 development board <https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc54000-cortex-m4-/lpcxpresso54628-development-board:OM13098>`_ with SystemView support is available `here <https://developer.microej.com/packages/referenceimplementations/U3OER/2.0.1/OM13098-U3OER-fullPackaging-eval-2.0.1.zip>`__.
+Please contact :ref:`our support team <get_support>` for more information about how to integrate this Platform module.
     

@@ -70,11 +70,11 @@ The steps to follow are:
 
 For the purposes of simplifying the steps, this tutorial will be performed locally on a single machine.
 
-Artifactory will host MicroEJ modules, divided in 3 repositories:
+Artifactory will host MicroEJ modules in 3 repositories:
 
 - ``microej-module-repository``: repository initialized with pre-built MicroEJ modules, a mirror of the :ref:`Central Repository <central_repository>`
 - ``microej-build-repository``: repository initialized with build scripts and tools exported from MicroEJ SDK
-- ``libs-snapshot-local``: repository where will be published custom modules
+- ``libs-snapshot-local``: repository where custom modules will be published
 
 
 .. _install_build_tools:
@@ -124,7 +124,7 @@ Get a Module Repository
 A Module Repository is a portable ZIP file that bundles a set of modules for extending the MicroEJ development environment.
 Please consult the :ref:`Module Repository <module_repository>` section for more information.
 
-In the following, we will use the MicroEJ Central Repository, which is the Module Repository used by MicroEJ SDK to fetch dependencies when starting an empty workspace. 
+This tutorial uses the MicroEJ Central Repository, which is the Module Repository used by MicroEJ SDK to fetch dependencies when starting an empty workspace. 
 It bundles Foundation Library APIs and numerous Add-On Libraries.
 
 Next step is to download a local copy of this repository:
@@ -144,7 +144,7 @@ Install and Start Artifactory
    ``artifactory-oss-[version]/bin``).
 #. Run ``artifactory.bat`` or ``artifactory.sh`` depending on your operating system. After initialization, the terminal should print the message :guilabel:`Artifactory successfully started`. 
    In case an error occurs, check that ``JAVA_HOME`` and ``JRE_HOME`` environment variables are correct.
-#. Go to `<http://localhost:8081/>`_.
+#. Go to ``http://localhost:8081/``.
 #. Login to Artifactory for the first time using the default ``admin`` account (Username: ``admin``, Password: ``password``).
 #. On the :guilabel:`Welcome` wizard, set the administrator password, then click :guilabel:`Next`,
 #. Configure proxy server (if any) then click :guilabel:`Next`, or click :guilabel:`Skip`.
@@ -228,7 +228,7 @@ Install Jenkins
 #. Download Jenkins WAR (Web Archive) here: `<http://mirrors.jenkins.io/war-stable/latest/jenkins.war>`_
 #. Open a terminal and type the following command: ``java -jar [path/to/downloaded/jenkinswar]/jenkins.war``. 
    After initialization, the terminal will print out :guilabel:`Jenkins is fully up and running`.
-#. Go to `<http://localhost:8080/>`_.
+#. Go to ``http://localhost:8080/``.
 #. To unlock Jenkins, copy/paste the generated password that has been written in the terminal log. Click on :guilabel:`Continue`.
 #. Select option :guilabel:`Install suggested plugins` and wait for plugin
    installation.
@@ -336,14 +336,14 @@ In this example, we will create a very simple module using the Sandbox Applicati
 
 #. Open a terminal from this directory and type the following commands:
 
-.. code-block:: sh
-
-   git init --bare ~/hello_world.git
-   git init
-   git remote add origin ~/hello_world.git
-   git add com.example.hello-world
-   git commit -m "Add Hello World application"
-   git push --set-upstream origin master
+   .. code-block:: sh
+   
+      git init --bare ~/hello_world.git
+      git init
+      git remote add origin ~/hello_world.git
+      git add com.example.hello-world
+      git commit -m "Add Hello World application"
+      git push --set-upstream origin master
 
 
 .. note::
@@ -387,7 +387,7 @@ In Jenkins' ``Hello World`` dashboard, click on :guilabel:`Build with Parameters
 .. note::
    You can check the build progress by clicking on the build progress bar and showing the :guilabel:`Console Output`.
 
-At the end of the build, the module is published to `<http://localhost:8081/artifactory/list/libs-snapshot-local/com/example/hello-world/>`_.
+At the end of the build, the module is published to ``http://localhost:8081/artifactory/list/libs-snapshot-local/com/example/hello-world/``.
 
 
 Congratulations!
@@ -447,4 +447,19 @@ The authority has to be added to the trust store of the JRE/JDK that is running 
 #. Select your certificate.
 #. Save the ``cacerts`` file.
 
+Customize ``target~`` path
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Some systems and toolchains don't handle long path properly.  A
+workaround for this issue is to move the build directory (that is, the
+``target~`` directory) closer to the root directory.
+
+To change the ``target~`` directory path, set the
+:ref:`build option <mmm_build_options>` ``target``.
+
+In :guilabel:`Advanced`, expand :guilabel:`Properties` text field and
+set the ``target`` property to the path of your choice.  For example:
+
+.. code-block:: properties
+
+   target=C:/tmp/

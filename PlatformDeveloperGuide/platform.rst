@@ -8,7 +8,7 @@ MicroEJ Platform
    platformOverview
    platformConcepts
    platformCreation
-   platformQualification
+   platformMigration
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

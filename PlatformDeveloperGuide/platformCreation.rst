@@ -15,10 +15,10 @@ MicroEJ Architecture Import
 ===========================
 
 The first step is to choose and import a :ref:`MicroEJ Architecture <architecture_overview>`. 
-MicroEJ Architectures for most common microcontroller instructions sets and compilers
-can be downloaded from https://repository.microej.com/architectures/ [#note_production]_. 
+MicroEJ Corp. provides MicroEJ Evaluation Architectures for most common microcontroller instructions sets and compilers
+at https://repository.microej.com/architectures/ [#note_production]_. 
 
-MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified using the following folder naming convention:
+MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified using the following naming convention:
 
 :: 
 
@@ -26,11 +26,11 @@ MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified 
 
 - ``ISA``: instruction set architecture (e.g. ``CM4`` for Arm® Cortex®-M4, ``ESP32`` for Espressif ESP32, ...).
 - ``TOOLCHAIN``: C compilation toolchain (e.g. ``CM4hardfp_GCC48``).
-- ``VERSION``: module version (e.g. ``7.12.0``).
 - ``UID``: Architecture unique ID (e.g. ``flopi4G25``).
+- ``VERSION``: module version (e.g. ``7.12.0``).
 - ``USAGE`` = ``eval`` for evaluation Architectures, ``prod`` for production Architectures.
 
-For example, MicroEJ Architecture versions for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain is available at 
+For example, MicroEJ Architecture versions for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain are available at
 https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/.
 
 Once you downloaded a MicroEJ Architecture file, proceed with the following steps to import it in MicroEJ SDK:
@@ -40,17 +40,94 @@ Once you downloaded a MicroEJ Architecture file, proceed with the following step
 - Check the :guilabel:`I agree and accept the above terms and conditions...` box to accept the license.
 - Click on :guilabel:`Finish` button.
 
-.. note::
+.. [#note_production] If the requested MicroEJ Architecture is not available for evaluation or to get a MicroEJ Production Architecture, please contact your MicroEJ sales representative.
 
-   A MicroEJ Architecture can be imported using MicroEJ Module Manager, by adding the following line in a :ref:`module description file <mmm_module_description>`:
-   ::
+.. _pack_import:
 
-      <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]" rev="[VERSION]" conf="default">
-        <artifact name="[UID]" m:classifier="[USAGE]" ext="xpf"/>
-      </dependency>
+MicroEJ Pack Import
+===================
 
-.. [#note_production] MicroEJ Architectures for production can be retrieved from the `license server <https://license.microej.com/>`_.
+The next step is to choose and import a :ref:`MicroEJ Pack
+<pack_overview>`.  MicroEJ Corp. provides MicroEJ Packs to provide
+additional features.
 
+MicroEJ Packs are distributed in two packages:
+
+- MicroEJ Architecture Specific Pack provided at https://repository.microej.com/modules/com/microej/architecture.
+- MicroEJ Generic Pack provided at https://repository.microej.com/modules/com/microej/pack/.
+
+MicroEJ Architecture Specific Pack
+----------------------------------
+
+MicroEJ Architecture Specific Packs contain compiled libraries
+archives and are thus dependent on the MicroEJ Architecture and
+toolchain used in the MicroEJ Platform.
+
+MicroEJ Architecture Specific Packs files ends with the ``.xpfp``
+extension and are classified using the following naming convention:
+
+::
+
+   com/microej/architecture/[ISA]/[TOOLCHAIN]/[UID]-[NAME]-pack/[VERSION]/[UID]-[NAME]-pack-[VERSION].xpfp
+
+- ``ISA``: instruction set architecture (e.g. ``CM4`` for Arm® Cortex®-M4, ``ESP32`` for Espressif ESP32, ...).
+- ``TOOLCHAIN``: C compilation toolchain (e.g. ``CM4hardfp_GCC48``).
+- ``UID``: Architecture unique ID (e.g. ``flopi4G25``).
+- ``NAME`` : pack name (e.g. ``ui``).
+- ``VERSION``: pack version (e.g. ``13.0.4``).
+
+For example, MicroEJ Architecture Specific Pack UI versions for Arm®
+Cortex®-M4 microcontrollers compiled with GNU CC toolchain are
+available at
+https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25-ui-pack/.
+
+MicroEJ Generic Pack
+--------------------
+
+MicroEJ Generic Packs can be imported on top of any MicroEJ Architecture.
+
+They are classified using the following naming convention:
+
+::
+
+   com/microej/pack/[NAME]/[NAME]-pack/[VERSION]/
+
+- ``NAME`` : pack name (e.g. ``bluetooth``).
+- ``VERSION``: pack version (e.g. ``2.1.0``).
+
+For example, MicroEJ Generic Pack Bluetooth versions are available at
+https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-pack/.
+
+Legacy MicroEJ Generic Packs files end with the ``.xpfp`` extension
+and can be :ref:`manually imported <pack_manual_import>` on older
+MicroEJ Platforms.  They are classified using the following naming
+convention:
+
+::
+   
+   com/microej/pack/[NAME]/[NAME]/[VERSION]/
+
+- ``NAME`` : pack name (e.g. ``net``).
+- ``VERSION``: pack version (e.g. ``9.2.3``).
+
+For example, the Legacy MicroEJ Generic Pack NET version ``9.2.3`` is
+available at https://repository.microej.com/modules/com/microej/pack/net/9.2.3/net-9.2.3.xpfp.
+
+.. _pack_manual_import:
+
+Manual Import 
+-------------
+
+This section is only relevant for older MicroEJ Platforms with no :ref:`mmm_module_description`.
+These Platforms are built from MicroEJ Architecture Specific Packs and Legacy MicroEJ Generic Packs (packaged as ``.xpfp`` files) that must be imported manually.
+
+Once you downloaded a MicroEJ Pack file, proceed with the
+following steps to import it in MicroEJ SDK:
+
+- Select :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`.
+- Browse an ``.xpfp`` file or a folder that contains one or more an ``.xpfp`` files.
+- Check the :guilabel:`I agree and accept the above terms and conditions...` box to accept the license.
+- Click on :guilabel:`Finish` button.
 
 .. _platform_configuration_creation:
 
@@ -61,19 +138,14 @@ The next step is to create a MicroEJ Platform configuration:
 
 -  Select :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Platform Project…`.
 
--  Click on :guilabel:`Next` button. The Configure Target Architecture page allows to
-   select the MicroEJ Architecture that contains a minimal MicroEJ
-   Platform and a set of compatible modules targeting a processor
-   architecture and a compilation toolchain. This environment can be
+-  The Configure Target Architecture page allows to
+   select the MicroEJ Architecture. This can be
    changed later.
 
    -  Click on :guilabel:`Browse...` button to select one of the installed MicroEJ
       Architecture.
 
-   -  Check the :guilabel:`Create from a platform reference implementation` box to
-      use one of the available implementation. Uncheck it if you want to
-      provide your own implementation or if no reference implementation
-      is available.
+   -  Uncheck the :guilabel:`Create from a platform reference implementation` box.
 
 -  Click on :guilabel:`Next` button. The ``Configure platform properties`` page contains the
    identification of the MicroEJ Platform to create. Most fields are
@@ -88,34 +160,160 @@ The next step is to create a MicroEJ Platform configuration:
    Files within the ``content`` folder have to be copied to the configuration project folder,
    by following instructions described at https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/README.rst.
    
-You should get a MicroEJ Platform configuration project that looks like:
+   You should get a MicroEJ Platform configuration project that looks like:
 
-.. figure:: images/platformConfigurationSkeleton.png
-   :alt: MicroEJ Platform Configuration Project Skeleton
+   .. figure:: images/platformConfigurationSkeleton.png
+      :alt: MicroEJ Platform Configuration Project Skeleton
+      :align: center
+
+      MicroEJ Platform Configuration Project Skeleton
+
+- Edit the ``module.properties`` file and set the option ``com.microej.platformbuilder.platform.filename`` to the ``[name].platform`` file name.
+
+  .. code-block::
+
+     com.microej.platformbuilder.platform.filename=myplatform.platform
+
+- Edit the :ref:`mmm_module_description` ``module.ivy`` to declare the dependency line to the MicroEJ Architecture previously downloaded:
+
+  .. code-block:: xml
+     :emphasize-lines: 3,4,5
+
+     <dependencies>
+
+        <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]" rev="[VERSION]">
+          <artifact name="[UID]" m:classifier="[USAGE]" ext="xpf"/>
+        </dependency>
+     
+     </dependencies>
+
+  For example, to declare the MicroEJ Evaluation Architecture version ``7.14.0`` for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
+
+  .. code-block:: xml
+      :emphasize-lines: 3,4,5
+
+      <dependencies>
+
+          <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25" rev="7.14.0">
+            <artifact name="flopi4G25" m:classifier="eval" ext="xpf"/>
+          </dependency>
+      
+      </dependencies>
+      
+- Edit the :ref:`mmm_module_description` ``module.ivy`` to declare the dependency line to the MicroEJ Packs previously downloaded:
+
+  .. code-block:: xml
+     :emphasize-lines: 3,6,9
+
+     <dependencies>
+        <!-- MicroEJ Architecture Specific Pack and Legacy MicroEJ Generic Pack  -->
+        <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]-[NAME]-pack" rev="[VERSION]"/>
+
+        <!-- MicroEJ Generic Pack  -->
+        <dependency org="com.microej.pack.[NAME]" name="[NAME]-pack" rev="[VERSION]"/>
+
+        <!-- Legacy MicroEJ Generic Pack -->
+        <dependency org="com.microej.pack" name="[NAME]" rev="[VERSION]"/>
+
+     </dependencies>
+
+  For example, to declare the MicroEJ Architecture Specific Pack UI
+  version ``13.0.4`` for MicroEJ Architecture ``flopi4G25`` on Arm®
+  Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
+
+  .. code-block:: xml
+      :emphasize-lines: 3
+
+      <dependencies>
+          <!-- MicroEJ Architecture Specific Pack -->
+          <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="13.0.4"/>
+
+      </dependencies>
+
+  To declare the MicroEJ Generic Pack Bluetooth version ``2.1.0``:
+
+  .. code-block:: xml
+      :emphasize-lines: 3
+
+      <dependencies>
+        <!-- MicroEJ Generic Pack  -->
+          <dependency org="com.microej.pack.bluetooth" name="bluetooth-pack" rev="2.1.0"/>
+
+      </dependencies>
+
+  And to declare the Legacy MicroEJ Generic Pack Net version ``9.2.3``:
+
+  .. code-block:: xml
+      :emphasize-lines: 3
+
+      <dependencies>
+        <!-- Legacy MicroEJ Generic Pack -->
+        <dependency org="com.microej.pack" name="net" rev="9.2.3"/>
+
+      </dependencies>
+
+.. _platform_build:
+
+MicroEJ Platform Build
+======================
+
+
+To build the MicroEJ Platform, perform as a regular :ref:`mmm_module_build`: 
+
+  - Right-click on the Platfom Configuration project,
+  - Select :guilabel:`Build Module`.
+  - The build starts and the build logs are redirected to the integrated console. Once the build is terminated, you should get the following message:
+
+    .. code-block:: console
+      :emphasize-lines: 3,4,5,6
+      
+      module-platform:report:
+        [echo]     ============================================================================================================
+        [echo]     Platform has been built in this directory 'C:\tmp\mydevice-Platform-mytoolchain-0.0.1'.
+        [echo]     To import this project in your MicroEJ SDK workspace (if not already available):
+        [echo]      - Select 'File' > 'Import...' > 'General' > 'Existing Projects into Workspace' > 'Next'
+        [echo]      - Check 'Select root directory' and browse 'C:\tmp\mydevice-Platform-mytoolchain-0.0.1' > 'Finish'
+        [echo]     ============================================================================================================
+
+      BUILD SUCCESSFUL
+
+      Total time: 43 seconds
+  
+Then , import the Platform directory to your MicroEJ SDK workspace as mentioned in the report. You should get a ready-to-use MicroEJ Platform project
+in the workspace available for the MicroEJ Application project to run on. You can also check the MicroEJ Platform availability in:
+:guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
+
+.. figure:: images/platformSource.png
+   :alt: MicroEJ Platform Project
    :align: center
 
-   MicroEJ Platform Configuration Project Skeleton
-
+   MicroEJ Platform Project
+ 
+This step is only required the first time the Platform is built, or if the Platform properties haved changed. 
+When the same Platform is rebuilt, right-click on the Platform project and select :guilabel:`Refresh` to get the new content.
 
 .. _platform_configuration_modules:
 
-Groups / Modules Selection
-==========================
+Platform Groups / Modules Selection
+===================================
 
-From the Platform Editor, select the Content tab to access
-the Platform modules selection. Modules can be selected/deselected from
-the Modules frame.
+From the Platform Editor, select the Content tab to access the
+Platform modules selection.  Platform modules can be
+selected/deselected from the Modules frame.
 
-Modules are organized into groups. When a group is selected, by default,
-all its modules are selected. To view the modules making up a group,
-click on the Show/Hide modules icon on the top-right of the frame. This
-will let you select/deselect on a per module basis. Note that individual
-module selection is not recommended.
+Platform modules are provided by MicroEJ Architecture Specific Packs
+and Legacy MicroEJ Generic Packs.  Platform modules are organized into groups.
+When a group is selected, by default, all its modules are selected.
+To view the modules making up a group, click on the Show/Hide modules
+icon on the top-right of the frame.  This will let you select/deselect
+on a per module basis.  Note that individual module selection is not
+recommended and that it is only available when the module have been
+imported.
 
 The description and contents of an item (group or module) are displayed
 beside the list on item selection.
 
-All the checked modules will be installed in the Platform.
+All the checked Platform modules will be installed in the Platform.
 
 .. figure:: images/platformConfigurationModules.png
    :alt: MicroEJ Platform Configuration Modules Selection
@@ -123,13 +321,18 @@ All the checked modules will be installed in the Platform.
 
    MicroEJ Platform Configuration Modules Selection
 
+.. note::
 
-Modules Customization
-=====================
+  It is possible to quickly rebuild the Platform from the Platform Editor when only changes have been made in the Platform Editor.
+  Click on the :guilabel:`Build Platform` link on the Platform configuration :guilabel:`Overview` tab.
 
-Each selected module can be customized by creating a [module] folder
-named after the module beside the ``[name].platform`` definition. It may
-contain:
+
+Platform Modules Customization
+==============================
+
+Each selected Platform module can be customized by creating a [module]
+folder named after the module beside the ``[name].platform``
+definition. It may contain:
 
 -  An optional [module].properties file named after the module name.
    These properties will be injected in the execution context prefixed
@@ -220,7 +423,7 @@ and the ``build.bat`` or ``build.sh`` file is executed to produce the final exec
    BSP connection configuration is only required in the following cases:
 
    - Use MicroEJ SDK to produce the final executable file of a Mono-Sandbox Firmware (recommended).
-   - Use MicroEJ SDK to run a :ref:`MicroEJ Testsuite <platform_testsuite>` on device.
+   - Use MicroEJ SDK to run a :ref:`MicroEJ Test Suite <platform_testsuite>` on device.
    - Build a Multi-Sandbox Firmware.
 
 .. _bsp_connection_cases:
@@ -285,9 +488,11 @@ The 3 most common integration cases are:
   This case is recommended when:
 
   - the MicroEJ Platform is used to build various MicroEJ Applications.
-  - the MicroEJ Platform is validated using MicroEJ testsuites. 
+  - the MicroEJ Platform is validated using MicroEJ test suites. 
   - the MicroEJ Platform and BSP are delivered as a single standalone module (same versioning), perhaps
     subcontracted to a team or a company outside the application project(s).
+
+.. _bsp_connection_options:
 
 Options
 -------
@@ -345,13 +550,13 @@ The following table describes Application options, configured as regular :ref:`M
      - Deploy the MicroEJ Platform runtime file (``microejruntime.a``) to this absolute directory. An empty value means no deployment.
    * - ``deploy.dir.microejinc``
      - Deploy the MicroEJ Platform header files (``*.h``) to this absolute directory. An empty value means no deployment.
-   * - ``deploy.bsp.microejscript``
+   * - ``deploy.dir.microejscript``
      - Execute the BSP build script file (``build.bat`` or ``build.sh``) present in this absolute directory. An empty value means no deployment.
 
 
 .. note::
 
-   It is also possible to configure the BSP root directory using the build option named ``toolchain.dir``, 
+   It is also possible to configure the BSP root directory using the :ref:`build option <mmm_build_options>` ``toolchain.dir``, 
    instead of the application option ``deploy.bsp.root.dir``.
    This allow to configure a MicroEJ Firmware by specifying both the Platform (using the ``target.platform.dir`` option) and the BSP 
    at build level, without having to modify the application options files.
@@ -428,23 +633,53 @@ The build script must implement the following specification:
 
 - On Windows operating system, it is a Windows batch file named ``build.bat``.
 - On Mac OS X or Linux operating systems, it is a shell script named ``build.sh``, with execution permission enabled.
-- On build error, the script must end with a non zero exit code.
+- On error, the script must end with a non zero exit code.
 - On success
 
-  - The executable must be copied to the file ``application.out`` in the folder from
+  - The executable must be copied to the file ``application.out`` in the directory from
     where the script has been executed.
   - The script must end with zero exit code.
 
 Many build script templates are available for most commonly used C toolchains in the 
 `Platform Qualification Tools repository <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_.
 
+.. _bsp_connection_run_script:
+
+Run Script File
+---------------
+
+This script is required only for Platforms intended to run a :ref:`MicroEJ Testsuite <platform_testsuite>` on device.
+
+The BSP run script is responsible to invoke a third-party tool to upload and start the executable file (``application.out``) on device.
+The ``application.out`` file is located in the directory from where the script has been executed.
+
+The run script must implement the following specification:
+
+- On Windows operating system, it is a Windows batch file named ``run.bat``.
+- On Mac OS X or Linux operating systems, it is a shell script named ``run.sh``, with execution permission enabled.
+- On error, the script must end with a non zero exit code.
+- On success
+
+  - The executable file (``application.out``) has been uploaded and started on the device
+  - The script must end with zero exit code.
+
+The run script can optionally redirect execution traces. If it does not implement execution traces redirection,
+the testsuite must be configured with the following :ref:`application_options` in order to take its input from a TCP/IP socket server, 
+such as :ref:`tool_serial_to_socket`.
+
+.. code-block:: properties
+
+  testsuite.trace.ip=localhost
+  testsuite.trace.port=5555
+
+
 Low Level APIs Implementation Files
 -----------------------------------
 
-Some MicroEJ Architecture modules require some additional information 
-about the BSP implementation of Low Level APIs.
+Some Platform modules require additional information about the BSP
+implementation of Low Level APIs.
 
-This information must be stored in each module's configuration folder, in a file named ``bsp.xml``.
+This information must be stored in each Platform module's configuration folder, in a file named ``bsp.xml``.
 
 This file must start with the node ``<bsp>``. It can contain several
 lines like this one:
@@ -470,19 +705,9 @@ Example:
 These files will be converted into an internal format during the
 MicroEJ Platform build.
 
-MicroEJ Platform Build
-======================
-
-To build the MicroEJ Platform, click on the :guilabel:`Build Platform` link on the
-Platform configuration :guilabel:`Overview` tab.
-
-It will create a MicroEJ Platform in the workspace available for the
-MicroEJ Application project to run on. The MicroEJ Platform will be available in:
-:guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
-
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

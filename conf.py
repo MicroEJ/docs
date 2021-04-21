@@ -10,7 +10,7 @@ import microej
 
 
 project = 'MicroEJ Documentation'
-copyright = '2008-2020, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval. MicroEJ is a trademark of MicroEJ Corp. All other trademarks and copyrights are the property of their respective owners.'
+copyright = '2008-2021, MicroEJ Corp. Content in this space is free for read and redistribute. Except if otherwise stated, modification is subject to MicroEJ Corp prior approval. MicroEJ is a trademark of MicroEJ Corp. All other trademarks and copyrights are the property of their respective owners.'
 author = 'MicroEJ'
 release = '1.0'
 
@@ -25,6 +25,7 @@ if microej.can_build_independent_docs():
 extensions = [
     'microej',
     'sphinx.ext.graphviz',
+    'sphinx_copybutton',
 ]
 
 templates_path = ['_templates']
@@ -75,3 +76,6 @@ latex_logo = '_themes/microej/static/mascot.pdf'
 # This is defined in the theme, but the LaTeX builder does not honor the theme
 # setting for pygments. This is the same style class used by the HTML builder.
 pygments_style = 'microej.MicroEJStyle'
+
+# ignoring Github links with anchors at linkcheck
+# linkcheck_ignore = [r'https?:\/\/github\.com\/.+#.+']

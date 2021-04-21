@@ -20,7 +20,7 @@ Overview
 ~~~~~~~~
 
 Images are graphical resources that can be accessed with a call to
-``ej.microui.display.Image.createImage()``. To be displayed, these
+`ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_ . To be displayed, these
 images have to be converted from their source format to the display raw
 format. The conversion can either be done at :
 
@@ -55,7 +55,7 @@ behavior explicit). Example:
    # as a 16 bits format with transparency (decoded at build-time)
    com/mycompany/MyImage3.png:ARGB1555
 
-.. include:: ../ApplicationDeveloperGuide/sectionImageFormats.rst
+Please refer to :ref:`section.ui.Images` for more information.
 
 .. _section.applicationResources.Fonts:
 
@@ -66,7 +66,7 @@ Overview
 ~~~~~~~~
 
 Fonts are graphical resources that can be accessed with a call to
-``ej.microui.display.Font.getFont()``. To be displayed, these fonts have
+`ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_. To be displayed, these fonts have
 to be converted at build-time from their source format to the display
 raw format by the font generator tool. Fonts that must be processed by
 the font generator tool are declared in MicroEJ Classpath
@@ -105,35 +105,32 @@ Font Range
 
 The first parameter is for specifying the font ranges to embed.
 Selecting only a specific set of characters to embed reduces the memory
-footprint. Several ranges can be specified, separated by ``;``. There
+footprint. If unspecified, all characters of the font are embedded. 
+
+Several ranges can be specified, separated by ``;``. There
 are two ways to specify a character range: the custom range and the
 known range.
 
 Custom Range
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 Allows the selection of raw Unicode character ranges.
 
 Examples:
 
--  ``myfont:0x21-0x49``: Embed all characters from 0x21 to 0x49
+-  ``myfont:0x21-0x49``: Defines one range: embed all characters from 0x21 to 0x49
    (included);
-
--  ``myfont:0x21-0x49,0x55``: Embed all characters from 0x21 to 0x49 and
-   character 0x55;
-
--  ``myfont:0x21-0x49;0x55``: Same as previous, but done by declaring
-   two ranges.
+-  ``myfont:0x21-0x49,0x55-0x75``: Defines a set of two ranges: embed all characters from 0x21 to 0x49 and from 0x55 to 0x75.
+-  ``myfont:0x21-0x49,0x55``: Defines a set of one range and one character: embed all characters from 0x21 to 0x49 and character 0x55.
 
 Known Range
-^^^^^^^^^^^
+~~~~~~~~~~~
 
-A known range is a range defined by the "Unicode Character Database"
-version 9.0.0 available on `<https://home.unicode.org/>`_. Each range is
-composed of sub ranges that have a unique id.
+A known range is a range available in the following table.
+
+Examples:
 
 -  ``myfont:basic_latin``: Embed all *Basic Latin* characters;
-
 -  ``myfont:basic_latin;arabic``: Embed all *Basic Latin* characters,
    and all *Arabic* characters.
 
@@ -141,14 +138,14 @@ Transparency
 ~~~~~~~~~~~~
 
 The second parameter is for specifying the font transparency level
-(``1``, ``2``, ``4`` or ``8``).
+(``1``, ``2``, ``4`` or ``8``). If unspecified, the encoded transparency level is ``1`` (does not depend on transparency level encoded in EJF file).
 
 Examples:
 
--  ``myfont:latin:4``: Embed all latin characters with 4 levels of
+-  ``myfont:latin:4``: Embed all latin characters with 16 levels of
    transparency
 
--  ``myfont::2``: Embed all characters with 2 levels of transparency
+-  ``myfont::2``: Embed all characters with 4 levels of transparency
 
 .. _section.applicationResources.nls:
 
@@ -185,7 +182,7 @@ The file format of these ``*.nls.list`` files is a standard Java properties file
 Each line represents the Full Qualified Name of a Java interface that will be 
 generated and used in the application. Here is an example, let's call it `i18n.nls.list`:
 
-.. code-block:: properties
+.. code-block::
 
    com.mycompany.myapp.Labels
    com.mycompany.myapp.Messages
@@ -217,7 +214,7 @@ messages, for example:
 The generation is triggered when building the application or after a change done in any PO or ``*.nls.list`` files.
 This allows to always have the Java interfaces up-to-date with the translations and to use them immediately.
 
-The `NLS API module <https://repository.microej.com/artifacts/ej/library/runtime/nls/>`_
+The `NLS API module <https://repository.microej.com/modules/ej/library/runtime/nls/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
 Application project, in order to allow access to the NLS library.
 
@@ -226,7 +223,7 @@ Application project, in order to allow access to the NLS library.
   <dependency org="ej.library.runtime" name="nls" rev="3.0.1"/>
 
 ..
-   | Copyright 2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2020-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

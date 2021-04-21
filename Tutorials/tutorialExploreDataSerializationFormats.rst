@@ -14,10 +14,10 @@ XML
 
 `XML (EXtensible Markup Language) <https://en.wikipedia.org/wiki/XML>`_ is used to describe data and text. It allows flexible development of user-defined document types. The format is robust, non-proprietary, persistent and is verifiable for storage and transmission. To parse this data format, the XML Pull parser `KXmlParser <http://kxml.org/>`_ from the Java community has been integrated to MicroEJ Central Repository.
 
-XML Parser Use In MicroEJ SDK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+XML Module
+~~~~~~~~~~
 
-The `XML API Module <https://repository.microej.com/artifacts/org/kxml2/kxml2/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `XML Module <https://repository.microej.com/modules/org/kxml2/kxml2/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the KXML library.
 
 ::
@@ -27,7 +27,7 @@ Application project in order to allow access to the KXML library.
 Example Of Use
 ~~~~~~~~~~~~~~
 
-An example available at https://github.com/MicroEJ/Example-XML.
+An example is available at https://github.com/MicroEJ/Example-XML.
 It presents how to use XML data exchange for your MicroEJ Application. It also details how to use the `KXmlParser <http://kxml.org/>`_ module.
 
 The example parses a short poem written in XML and prints the result on the standard output. The project can run on any MicroEJ Platform (no external dependencies).
@@ -98,6 +98,8 @@ Running ``MyXmlPullApp`` gives more details on the XML parsing and should print 
 
 	SUCCESS
 
+.. _json-module:
+
 JSON
 ----
 
@@ -110,17 +112,19 @@ As described on the `JSON official site <http://json.org/>`_, JSON (JavaScript O
 JSON is easily readable by humans compared to XML. To parse this data format, several JSON parsers are available on the `official JSON page <http://json.org/>`_, such as `JSON ME`, which has been integrated to MicroEJ Central Repository.
 
 
-JSON Parser Use In MicroEJ SDK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+JSON Module
+~~~~~~~~~~~
 
-The `JSON API Module <https://repository.microej.com/artifacts/org/json/me/json/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `JSON Module <https://repository.microej.com/modules/org/json/me/json/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the JSON library.
 
 ::
 
 	<dependency org="org.json.me" name="json" rev="1.3.0"/>
 
-The instantiation and use of the parser is pretty straightforward. First you need to get the JSON content as a ``String``,  and then create a ``org.json.me.JSONObject`` instance with the string. If the string content is a valid JSON content, you should have an workable ``JSONObject`` to browse.
+The instantiation and use of the parser is pretty straightforward. 
+First you need to get the JSON content as a ``String``,  and then create a `JSONObject <https://repository.microej.com/javadoc/microej_5.x/apis/org/json/me/JSONObject.html>`_ instance with the string. 
+If the string content is a valid JSON content, you should have an workable `JSONObject <https://repository.microej.com/javadoc/microej_5.x/apis/org/json/me/JSONObject.html>`_ to browse.
 
 Example Of Use
 ~~~~~~~~~~~~~~
@@ -244,6 +248,65 @@ The execution of this example on the MicroEJ Simulator should print the followin
 	SUCCESS
 
 
+CBOR
+----
+
+The `CBOR (Concise Binary Object Representation) <https://cbor.io/>`_ binary data serialization format is a lightweight data-interchange format similar to JSON but with a smaller footprint, making it very practical for embedded applications, though its messages are often less easily readable by humans.
+
+CBOR Module
+~~~~~~~~~~~
+
+The `CBOR Module <https://repository.microej.com/modules/ej/library/iot/cbor/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Application project in order to allow access to the CBOR library.
+
+::
+
+	<dependency org="ej.library.iot" name="cbor" rev="1.1.0"/>
+
+Example Of Use
+~~~~~~~~~~~~~~
+
+An example is available at https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor .
+It shows how to use the CBOR library in your MicroEJ Application by encoding some data and reading it back, printing it on the standard output both as a raw byte string and in a JSON-like format.
+You can use http://cbor.me/ to convert the byte string output to a JSON format and check that it matches the encoded data. The project can run on any MicroEJ Platform (no external dependencies).
+
+The execution of this example on the MicroEJ Simulator should print the following trace:
+
+::
+
+	=============== [ Initialization Stage ] ===============
+	=============== [ Launching on Simulator ] ===============
+	CBOR data string : a1646d656e75a36269646466696c656576616c75656446696c6565706f707570a1686d656e756974656d83a26576616c7565634e6577676f6e636c69636b6e4372656174654e6577446f632829a26576616c7565644f70656e676f6e636c69636b694f70656e446f632829a26576616c756565436c6f7365676f6e636c69636b6a436c6f7365446f632829
+	Data content : 
+	{
+		"menu" : {
+			"id" : "file",
+			"value" : "File",
+			"popup" : {
+				"menuitem" : [ {
+						"value" : "New",
+						"onclick" : "CreateNewDoc()"
+					}, {
+						"value" : "Open",
+						"onclick" : "OpenDoc()"
+					}, {
+						"value" : "Close",
+						"onclick" : "CloseDoc()"
+					} ]
+			}
+		}
+	}
+	=============== [ Completed Successfully ] ===============
+
+Another example showing how to use the :ref:`JSON Module <json-module>` along with the `CBOR Module <https://repository.microej.com/modules/ej/library/iot/cbor/>`_ to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.json .
+
+The execution of this example on the MicroEJ Simulator should print the following trace:
+
+::
+
+	Initial data (271 bytes) = {"menu":{"value":"File","id":"file","popup":{"menuitem":[{"value":"New","onclick":"CreateNewDoc()"},{"value":"Open","onclick":"OpenDoc()"},{"value":"Close","onclick":"CloseDoc()"}]}}}
+	Data serialized (139 bytes)
+	Data deserialized = {menu={value=File, id=file, popup={menuitem=[{value=New, onclick=CreateNewDoc()}, {value=Open, onclick=OpenDoc()}, {value=Close, onclick=CloseDoc()}]}}}
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

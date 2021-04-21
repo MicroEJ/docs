@@ -1,4 +1,4 @@
-.. _platform_fs:
+.. _pack_fs:
 
 ===========
 File System
@@ -71,7 +71,7 @@ The properties file must / can contain the following properties:
 Use
 ===
 
-The `FS API Module <https://repository.microej.com/artifacts/ej/api/fs/>`_
+The `FS API Module <https://repository.microej.com/modules/ej/api/fs/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the FS library.
 

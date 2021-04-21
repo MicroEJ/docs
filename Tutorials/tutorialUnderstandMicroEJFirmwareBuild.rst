@@ -1,4 +1,6 @@
-Understand How to Build a MicroEJ Firmware and its Dependencies
+.. _tutorialUnderstandMicroEJFirmwareBuild:
+
+Understand how to build a MicroEJ Firmware and its dependencies
 ===============================================================
 
 A MicroEJ Firmware is built from several input resources and tools.
@@ -36,7 +38,7 @@ The MicroEJ Architectures are distributed into two formats:
   distribute this version).
 
 The supported MicroEJ Architectures are listed here
-https://developer.microej.com/mej32-embedded-runtime-architectures/#arch
+`<https://developer.microej.com/mej32-embedded-runtime-architectures/>`_
 
 The MicroEJ Architecture is either provided from:
 
@@ -60,8 +62,8 @@ MicroEJ Platform Source (.zip)
 This package includes:
 
 * a C Board Support Package (BSP) with C drivers and an optional RTOS
-* a MEJ32 Architecture
-* the abstraction layers implementation of the platform architecture and foundations libraries
+* the MicroEJ Architecture and MicroEJ Packs
+* the Abstraction Layers implementations
 * the MicroEJ Simulator and its associated MicroEJ Mocks
 
 The platform .zip files contain:
@@ -109,7 +111,7 @@ To import an existing MicroEJ Application as a zipped project in the SDK:
 * Select the zip of the project (e.g. ``x.zip``).
 * And select :guilabel:`Finish` import.
 
-See :ref:`microej.sample.applications` for more information on how to
+See :ref:`simulator_execution` for more information on how to
 create, configure, and develop a MicroEJ Application.
 
 C Toolchain (GCC, KEIL, IAR, …)
@@ -254,27 +256,3 @@ Dependencies Between Processes
   * When the BSP (``*.o``) changes.
 
   * When the MicroEJ Platform (``microejruntime.a``) changes.
-
-Get Support
------------
-
-If any questions, feel free to contact `our support team <https://www.microej.com/contact/#form_2>`_
-with the following information (the table below is an example):
-
-.. list-table::
-   :widths: 15 30
-
-   * - Delivery
-     - Name
-   * - MicroEJ SDK
-     - Distribution 20.07 / Version 5.2.0 (see :ref:`get_sdk_version`)
-   * - MEJ32 XPF
-     - ARM Cortex-M4 / IAR DEV
-   * - Platform
-     - 1.0.0
-   * - Application
-     - 1.2.4
-   * - Module Repository
-     - https://repository.microej.com/packages/repository/2.5.0/microej-5_0-2.5.0.zip
-   * - C compiler
-     - IAR 8.40.1

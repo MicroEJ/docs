@@ -1,15 +1,15 @@
-Setup a KF Testsuite
-====================
+Setup a KF Test Suite
+=====================
 
-A KF testsuite can be executed when building a Foundation Library or an Add-On library, 
-and usually extends the tests written for the :ref:`default library testsuite <application_testsuite>` to verify the behavior
+A KF test suite can be executed when building a Foundation Library or an Add-On library, 
+and usually extends the tests written for the :ref:`default library test suite <application_testsuite>` to verify the behavior
 of this library when its APIs are exposed by a Kernel.
 
-A KF testsuite is composed of a set of KF tests, each KF test itself is a minimal MicroEJ Multi-Sandbox Firmware composed of a Kernel and zero or more Features.
+A KF test suite is composed of a set of KF tests, each KF test itself is a minimal MicroEJ Multi-Sandbox Firmware composed of a Kernel and zero or more Features.
 
 
-Enable the Testsuite
---------------------
+Enable the Test Suite
+---------------------
 
 In an existing library project:
 
@@ -40,24 +40,24 @@ The names of the project directories are free, however MicroEJ suggests the foll
 - ``[TestName]-app[1..N]`` for Feature projects,
 - ``[TestName]-firmware`` for the Firmware project. 
 
-The KF Testsuite structure shall be similar to the following figure:
+The KF Test Suite structure shall be similar to the following figure:
 
 .. figure:: png/kf_testsuite_project_structure.png
-   :alt: KF Testsuite Structure
+   :alt: KF Test Suite Structure
    :align: center
 
-   KF Testsuite Overall Structure
+   KF Test Suite Overall Structure
 
 All the projects will be built automatically in the right order based on their dependencies.
 
-KF Testsuite Options
---------------------
+KF Test Suite Options
+---------------------
    
-It is possible to configure the same options defined by :ref:`Testsuite Options <testsuite_options>` for the KF testsuite, 
+It is possible to configure the same options defined by :ref:`Test Suite Options <testsuite_options>` for the KF test suite, 
 by using the prefix ``microej.kf.testsuite.properties`` instead of ``microej.testsuite.properties``.
 
 ..
-   | Copyright 2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2020-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

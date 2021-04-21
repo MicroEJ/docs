@@ -1,3 +1,5 @@
+.. _core_engine:
+
 ===================
 MicroEJ Core Engine
 ===================
@@ -84,21 +86,20 @@ architectures. Refer to section :ref:`appendix_matrixcapabilities`
 for more details.
 
 
-.. _mjvm_impl:
+.. _core_engine_implementation:
 
 Implementation
 ==============
 
-The platform implements the :ref:`[SNI] specification <esr-specifications>`. It is created and
-initialized with the C function ``SNI_createVM``. Then it is started and
-executed in the current RTOS task by calling ``SNI_startVM``. The
-function ``SNI_startVM`` returns when the MicroEJ Application exits. The
-function ``SNI_destroyVM`` handles the platform termination.
+The MicroEJ Core Engine implements the :ref:`[SNI] specification <esr-specifications>`. 
+It is created and initialized with the C function ``SNI_createVM``.
+Then it is started and executed in the current RTOS task by calling ``SNI_startVM``.
+The function ``SNI_startVM`` returns when the MicroEJ Application exits or if
+an error occurs (see section :ref:`core_engine_error_codes`).
+The function ``SNI_destroyVM`` handles the platform termination.
 
 The file ``LLMJVM_impl.h`` that comes with the platform defines the API
-to be implemented. The file ``LLMJVM.h`` that comes with the platform
-defines platform-specific exit code constants. (See
-:ref:`LLMJVM-API-SECTION`.)
+to be implemented. See section :ref:`LLMJVM-API-SECTION`.
 
 Initialization
 --------------
@@ -163,21 +164,122 @@ to the MicroEJ world:
 -  ``LLMJVM_IMPL_setApplicationTime``: must set the difference between
    the current time and midnight, January 1, 1970, UTC.
 
+
+.. _core_engine_error_codes:
+
+Error Codes
+-----------
+
+The C function ``SNI_createVM`` returns a negative value if an error 
+occurred during the MicroEJ Core Engine initialization or execution.
+The file ``LLMJVM.h`` defines the platform-specific error code constants.
+The following table describes these error codes.
+
+.. table:: MicroEJ Core Engine Error Codes
+
+   +-------------+-------------------------------------------------------------+
+   | Error Code  | Meaning                                                     |
+   +=============+=============================================================+
+   | 0           | The MicroEJ Application ended normally (i.e., all the       |
+   |             | non-daemon threads are terminated or                        |
+   |             | ``System.exit(exitCode)`` has been called).                 |
+   |             | See section :ref:`edc_exit_codes`.                          |
+   +-------------+-------------------------------------------------------------+
+   | -1          | The ``microejapp.o`` produced by SOAR is not compatible     |
+   |             | with the MicroEJ Core Engine (``microejruntime.a``).        |
+   |             | The object file has been built from another                 |
+   |             | MicroEJ Platform.                                           |
+   +-------------+-------------------------------------------------------------+
+   | -2          | Internal error. Invalid link configuration in the           |
+   |             | MicroEJ Architecture or the MicroEJ Platform.               |
+   +-------------+-------------------------------------------------------------+
+   | -3          | Evaluation version limitations reached: termination of      |
+   |             | the application. See section :ref:`limitations`.            |
+   +-------------+-------------------------------------------------------------+
+   | -5          | Not enough resources to start the very first MicroEJ        |
+   |             | thread that executes ``main`` method. See section           |
+   |             | :ref:`option_java_heap`.                                    |
+   +-------------+-------------------------------------------------------------+
+   | -12         | Number of threads limitation reached. See sections          |
+   |             | :ref:`limitations` and :ref:`option_number_of_threads`.     |
+   +-------------+-------------------------------------------------------------+
+   | -13         | Fail to start the MicroEJ Application because the           |
+   |             | specified MicroEJ heap is too large or too small.           |
+   |             | See section :ref:`option_java_heap`.                        |
+   +-------------+-------------------------------------------------------------+
+   | -14         | Invalid MicroEJ Application stack configuration. The        |
+   |             | stack start or end is not eight-byte aligned, or stack      |
+   |             | block size is too small. See section                        |
+   |             | :ref:`option_number_of_stack_blocks`.                       |
+   +-------------+-------------------------------------------------------------+
+   | -16         | The MicroEJ Core Engine cannot be restarted.                |
+   +-------------+-------------------------------------------------------------+
+   | -17         | The MicroEJ Core Engine is not in a valid state because     |
+   |             | of one of the following situations:                         |
+   |             |                                                             |
+   |             | - ``SNI_startVM`` called before ``SNI_createVM``.           |
+   |             |                                                             |
+   |             | - ``SNI_startVM`` called while the MicroEJ                  |
+   |             |   Appplication is running.                                  |
+   |             |                                                             |
+   |             | - ``SNI_createVM`` called several times.                    |
+   +-------------+-------------------------------------------------------------+
+   | -18         | The memory used for the MicroEJ heap or immortal heap       |
+   |             | does not work properly. Read/Write memory checks            |
+   |             | failed. This may be caused by an invalid external RAM       |
+   |             | configuration. Verify ``_java_heap`` and                    |
+   |             | ``_java_immortals`` sections locations.                     |
+   +-------------+-------------------------------------------------------------+
+   | -19         | The memory used for the MicroEJ Application static          |
+   |             | fields does not work properly. Read/Write memory checks     |
+   |             | failed. This may be caused by an invalid external RAM       |
+   |             | configuration. Verify ``.bss.soar`` section location.       |
+   +-------------+-------------------------------------------------------------+
+   | -20         | KF configuration internal error. Invalid link               |
+   |             | configuration in the MicroEJ Architecture or the            |
+   |             | MicroEJ Platform.                                           |
+   +-------------+-------------------------------------------------------------+
+   | -21         | Number of monitors per thread limitation reached.           |
+   |             | See sections :ref:`limitations` and                         |
+   |             | :ref:`Options<option_maximum_number_of_monitors_per_thread>`|
+   |             | .                                                           |
+   +-------------+-------------------------------------------------------------+
+   | -22         | Internal error. Invalid FPU configuration in the            |
+   |             | MicroEJ Architecture.                                       |
+   +-------------+-------------------------------------------------------------+
+   | -23         | The function ``LLMJVM_IMPL_initialize`` defined in the      |
+   |             | Abstraction Layer implementation returns an error.          |
+   +-------------+-------------------------------------------------------------+
+   | -24         | The function ``LLMJVM_IMPL_vmTaskStarted`` defined in the   |
+   |             | Abstraction Layer implementation returns an error.          |
+   +-------------+-------------------------------------------------------------+
+   | -25         | The function ``LLMJVM_IMPL_shutdown`` defined in the        |
+   |             | Abstraction Layer implementation returns an error.          |
+   +-------------+-------------------------------------------------------------+
+
+
 Example
 -------
 
 The following example shows how to create and launch the MicroEJ Core
-Engine from the C world. This function (``mjvm_main``) should be called
+Engine from the C world. This function (``microej_main``) should be called
 from a dedicated RTOS task.
 
 .. code:: c
 
    #include <stdio.h>
-   #include "mjvm_main.h"
+   #include "microej_main.h"
    #include "LLMJVM.h"
    #include "sni.h"
 
-   void mjvm_main(void)
+   #ifdef __cplusplus
+       extern "C" {
+   #endif
+
+   /**
+    * @brief Creates and starts a MicroEJ instance. This function returns when the MicroEJ execution ends.
+    */
+   void microej_main(int argc, char **argv)
    {
        void* vm;
        int32_t err;
@@ -188,12 +290,14 @@ from a dedicated RTOS task.
 
        if(vm == NULL)
        {
-           printf("VM initialization error.\n");
+           printf("MicroEJ initialization error.\n");
        }
        else
        {
-           printf("VM START\n");
-           err = SNI_startVM(vm, 0, NULL);
+           printf("MicroEJ START\n");
+		   
+		   // Error codes documentation is available in LLMJVM.h
+           err = SNI_startVM(vm, argc, argv);
 
            if(err < 0)
            {
@@ -204,20 +308,24 @@ from a dedicated RTOS task.
                }
                else
                {
-                   printf("VM execution error (err = %d).\n", err);
+                   printf("MicroEJ execution error (err = %d).\n", err);
                }
            }
            else
            {
                // VM execution ends normally
                exitcode = SNI_getExitCode(vm);
-               printf("VM END (exit code = %d)\n", exitcode);
+               printf("MicroEJ END (exit code = %d)\n", exitcode);
            }
 
            // delete VM
            SNI_destroyVM(vm);
        }
    }
+   
+   #ifdef __cplusplus
+       }
+   #endif
 
 .. _vm_dump:
 
@@ -231,7 +339,7 @@ interrupt routine (for instance from a button interrupt).
 
 This is an example of a dump:
 
-.. code:: txt
+.. code-block::
 
    ============ VM Dump ============
    2 java threads
@@ -339,7 +447,7 @@ Dependencies
 ============
 
 The MicroEJ Core Engine requires an implementation of its low level APIs
-in order to run. Refer to the chapter :ref:`mjvm_impl` for more
+in order to run. Refer to the chapter :ref:`core_engine_implementation` for more
 information.
 
 
@@ -355,7 +463,7 @@ application" mode is installed.
 Use
 ===
 
-The `EDC API Module <https://repository.microej.com/artifacts/ej/api/edc/>`_ must 
+The `EDC API Module <https://repository.microej.com/modules/ej/api/edc/>`_ must 
 be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ Application 
 Project. This MicroEJ module is always required in the build path of a MicroEJ project; 
 and all others libraries depend on it. This library provides a set of options.
@@ -365,7 +473,7 @@ Refer to the chapter :ref:`application_options` which lists all available option
 
    <dependency org="ej.api" name="edc" rev="1.3.3"/>
 
-The `BON API Module <https://repository.microej.com/artifacts/ej/api/bon/>`_
+The `BON API Module <https://repository.microej.com/modules/ej/api/bon/>`_
 must also be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to access the :ref:`[BON] library <esr-specifications>`.
 
@@ -374,7 +482,7 @@ Application project in order to access the :ref:`[BON] library <esr-specificatio
    <dependency org="ej.api" name="bon" rev="1.4.0"/>
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

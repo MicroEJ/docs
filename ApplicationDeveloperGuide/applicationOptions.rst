@@ -50,6 +50,8 @@ It is recommended to index the launcher configuration to your version control sy
 2. Select the :guilabel:`Shared file:` option and browse the desired export folder,
 3. Press the :guilabel:`Apply` button. A file named ``[launcher_configuration_name].launch`` is generated in the export folder.
 
+.. _define_option_in_properties_file:
+
 Using a Properties File
 -----------------------
 

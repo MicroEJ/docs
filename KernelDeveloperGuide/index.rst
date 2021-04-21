@@ -12,7 +12,6 @@ Kernel Developer Guide
    buildType
    kernelAPI
    featuresCommunication
-   apiDocumentation
    kfEnabledLibraries
    kfTestsuite
 

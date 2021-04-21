@@ -1,26 +1,78 @@
-.. _download.hardware.simulator:
+.. _platform_import:
 
-Download and Install a MicroEJ Platform
-=======================================
+MicroEJ Platform Import
+=======================
 
-MicroEJ SDK being a cross development tool, it does not build software
-targeted to your host desktop platform. In order to run MicroEJ
-Applications, a target hardware is required. Several commercial targets
-boards from main MCU/MPU chip manufacturers can be prepared to run
-MicroEJ Applications, you can also run your applications without one of
-these boards with the help of a MicroEJ Simulator.
+A MicroEJ Platform is required to run a MicroEJ Standalone Application on the Simulator or build the Firmware binary for the target device.
 
-A MicroEJ Platform is a software package including the resources and
-tools required for building and testing an application for a specific
-MicroEJ-ready device. MicroEJ Platforms are available at
-`<https://developer.microej.com/5/getting-started-sdk.html>`_.
+The :ref:`platform-developer-guide` describes how to create a MicroEJ Platform from scratch for any kind of device. 
+In addition, MicroEJ Corp. provides Platforms for various development boards (see https://repository.microej.com/index.php?resource=JPF).
 
-After downloading the MicroEJ Platform, launch MicroEJ SDK on your
-desktop to start the process of Platform installation :
+MicroEJ Platforms are distributed in two packages:
+
+- **Source Platform**. The source files are imported into the workspace. This is the default case.
+- **Binary Platform**. A ``.jpf`` file is imported into the :ref:`MicroEJ repository <workspace>`. As of MicroEJ SDK ``5.3.0``, this package is deprecated.
+
+.. _source_platform_import:
+
+Source Platform Import
+----------------------
+
+Import from Folder
+~~~~~~~~~~~~~~~~~~
+
+This section applies when the Platform files are already available on a local folder. 
+This is likely the case when the files are checked out from a Version Control System, such as a local git repository clone. 
+
+.. note::
+
+   If you are going to import a Platform from MicroEJ Github, you can follow the specific :ref:`github` section instead (the projects will be automatically imported).
+
+
+- Select :guilabel:`File` > :guilabel:`Import…` > :guilabel:`General` >
+  :guilabel:`Existing Projects into Workspace` > :guilabel:`Select
+  root directory` > :guilabel:`Browse…`.
+- Select the root directory. The wizard will automatically discover projects to import.
+- Click on the :guilabel:`Finish` button.
+
+
+Import from Zip File
+~~~~~~~~~~~~~~~~~~~~
+
+This section applies when the Platform files are packaged in a ``.zip`` file. 
+
+- Select :guilabel:`File` > :guilabel:`Import…` > :guilabel:`General` >
+  :guilabel:`Existing Projects into Workspace` > :guilabel:`Select
+  archive file` > :guilabel:`Browse…`.
+- Select the zip of the project (e.g., ``x.zip``). The wizard will automatically discover projects to import.
+- Click on the :guilabel:`Finish` button.
+
+Platform Build
+~~~~~~~~~~~~~~
+
+MicroEJ Platforms are usually shared with only the Platform configuration files. 
+Once the projects are imported, follow the platform-specific documentation to build the Platform.
+
+Once imported or built, a Platform project should be available as following:
+
+.. figure:: images/platform_project.png
+   :alt: MicroEJ Platform Project
+   :align: center
+
+   MicroEJ Platform Project
+
+The ``source`` folder contains the Platform content which can be set to the ``target.platform.dir`` option.
+
+.. _binary_platform_import:
+
+Binary Platform Import
+----------------------
+
+After downloading the MicroEJ Platform ``.jpf`` file, launch MicroEJ SDK and follow these steps to import the MicroEJ Platform:
 
 -  Open the Platform view in MicroEJ SDK, select :guilabel:`Window` >
    :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms`. The
-   view should be empty on a fresh install of the tool
+   view should be empty on a fresh install of the tool.
 
    .. figure:: images/platformImport.png
       :alt: MicroEJ Platform Import

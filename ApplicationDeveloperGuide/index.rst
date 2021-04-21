@@ -13,11 +13,13 @@ Application Developer Guide
    virtualDevice
    mmm
    moduleNatures
+   repository
    classpath
    applicationResources
    tools
    advanced
    UI/ui
+   limitations
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

@@ -9,11 +9,13 @@ Tutorials
    tutorialUnderstandMicroEJFirmwareBuild
    tutorialCreateCustomPlatform
    tutorialCreateFirmwareFromScratch
+   tutorialCreatePlatformBuildAndRunScripts
    tutorialSetupBuildUsingJenkinsAndArtifactory
    tutorialImproveCodeQuality
    tutorialOptimizeMemoryFootprint
    tutorialExploreDataSerializationFormats
    tutorialInstrumentJavaCodeForLogging
+   tutorialRunATestSuiteOnDevice
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

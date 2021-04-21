@@ -371,11 +371,11 @@
   color: #ffffff;
 }
 
-.btn-link:hover {
+.btn-link:hover, .btn-link:visited:hover {
   color: #f8a331 !important;
 }
 
-.btn-link:active {
+.btn-link:active, .btn-link:active:hover {
   color: #f8a331 !important;
 }
 
@@ -465,7 +465,7 @@ a {
   color: #ee502e;
 }
 
-a:hover {
+a:hover, a:visited:hover {
   color: #f8a331;
 }
 
@@ -481,7 +481,7 @@ body {
   color: #ee502e !important;
 }
 
-a.wy-text-info:hover {
+a.wy-text-info:hover, a.wy-text-info:visited:hover {
   color: #f8a331 !important;
 }
 
@@ -505,6 +505,16 @@ legend {
   font-family: "Source Sans Pro", sans-serif;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding-top: 85px; 
+  margin-top: -70px;
+}
+
 h1{
   font-weight: lighter;
   font-size: 50px;
@@ -526,7 +536,6 @@ h2{
   font-weight: bold;
   font-size: 30px;
   color: #4b5357;
-  padding-top: 85px;
 }
 
 h3 {
@@ -580,6 +589,7 @@ code,
 
 .wy-menu-vertical {
   width: 395px;
+  padding-bottom: 3rem;
 }
 
 .wy-menu-vertical header,
@@ -619,7 +629,7 @@ code,
 }
 
 .wy-menu-vertical li.toctree-l1.current > a:hover {
-  background-color: #f8f9fa;
+  background-color: #d6d6d6;
 }
 
 .wy-menu-vertical li.toctree-l2.current > a {

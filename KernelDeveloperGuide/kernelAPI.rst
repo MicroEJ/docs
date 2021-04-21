@@ -9,7 +9,7 @@ Default Kernel APIs Derivation
 ------------------------------
 
 MicroEJ provides predefined kernel API files for the most common libraries provided by a Kernel. 
-These files are packaged as MicroEJ modules under the `com/microej/kernelapi <https://repository.microej.com/artifacts/com/microej/kernelapi/>`_ organisation.
+These files are packaged as MicroEJ modules under the `com/microej/kernelapi <https://repository.microej.com/modules/com/microej/kernelapi/>`_ organisation.
 
 The packaged file ``kernel.api`` can be extracted from the JAR file and edited
 in order to keep only desired types, methods and fields.

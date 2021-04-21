@@ -8,6 +8,7 @@ Platform Developer Guide
 
    introduction
    platform
+   platformQualification
    coreEngine
    multiSandbox
    tiny
@@ -21,7 +22,6 @@ Platform Developer Guide
    device
    systemView
    simulation
-   limitations
    appendix/index
 
 ..

@@ -60,7 +60,7 @@ Modules bundled into the module repository must be declared in the ``dependencie
 Include a Single Module
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-To add a module, declare the module dependency using the ``artifacts`` configuration:
+To add a module, declare the :ref:`module dependency <mmm_module_dependencies>` using the ``artifacts`` configuration:
 
 .. code-block:: xml
    :emphasize-lines: 2
@@ -110,8 +110,20 @@ The ``artifacts`` configuration has to be derived with a new name as many times 
 Include a Module Repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To add all the modules already included in an other module repository, 
-declare the module repository dependency using the ``repository`` configuration:
+To add all the modules already included in an other module repository,
+add the configuration ``repository`` if it does not exist:
+
+.. code-block:: xml
+   :emphasize-lines: 3
+
+   <configurations defaultconfmapping="default->default;provided->provided">
+      <!-- ... other configurations ... -->
+      <conf name="repository" visibility="private" description="Repository to be embedded in the repository" />
+
+   </configurations>
+
+Then declare the module repository dependency using the ``repository``
+configuration:
 
 .. code-block:: xml
    :emphasize-lines: 2
