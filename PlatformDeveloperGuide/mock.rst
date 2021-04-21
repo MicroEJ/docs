@@ -185,6 +185,10 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
 - ``Object.notifyAll()``: Wakes up all the threads that are waiting on
   this object's monitor.
 
+- ``NativeInterface.notifySuspendStart()``: Notifies the Simulator that the current native is suspended so it can schedule a thread with a lower priority.
+
+- ``NativeInterface.notifySuspendEnd()``: Notifies the Simulator that the current native is no more suspended. Lower priority threads in the Simulator will not be scheduled anymore.
+
 .. code:: java
 
    public static byte[] data = new byte[BUFFER_SIZE];
@@ -193,12 +197,15 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
 
    //Mock native method
    public static void waitForData(){
+         NativeInterface ni = HIL.getInstance();
          //inside the Mock
          //wait until the data is received
          synchronized (lock) {
                while(dataLength == 0) {
                      try {
+                           ni.notifySuspendStart();
                            lock.wait(); // equivalent to lock.wait(0)
+                           ni.notifySuspendEnd();
                      } catch (InterruptedException e) {
                            Thread.currentThread().interrupt();
                            // Use the error code specific to your library
