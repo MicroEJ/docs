@@ -95,7 +95,7 @@ This file can be modified to fit with your system configuration:
    * add ``#include "SEGGER_SYSVIEW_FreeRTOS.h"`` at the end of file
 
 9. Enable SystemView on startup (before creating first OS task): call ``SEGGER_SYSVIEW_Conf();``. Include required ``#include "SEGGER_SYSVIEW.h"``.
-10. Right enabling SystemView on startup, prints the RTT block address to the serial port: ``printf("SEGGER_RTT block address: %p\n", &(_SEGGER_RTT));``. Inlcude required ``#include "SEGGER_RTT.h"``.
+10. Prints the RTT block address to the serial port on startup: ``printf("SEGGER_RTT block address: %p\n", &(_SEGGER_RTT));``. Include required ``#include "SEGGER_RTT.h"``.
 
 .. note:: 
    
@@ -178,7 +178,9 @@ You have to enable runtime traces of your Java application.
    :width: 1109px
    :height: 865px
 
-You may only check the first checkbox when you know when you want to start the trace recording.
+You may only check the first checkbox when you know when you want to start the trace recording. 
+For more information, please refer to section :ref:`event_enable_recording` to configure required :ref:`Application Options <application_options>`.
+
 
 OVERFLOW Events in SystemView
 -----------------------------
