@@ -15,7 +15,7 @@ Layer that implements the :ref:`Low Level APIs <low_level_api>` of a Foundation 
 
 .. figure:: images/overview-platform-qualification.png
    :align: center
-   :scale: 70%
+   :scale: 80%
 
    Platform Qualification Overwiew
 
@@ -30,7 +30,7 @@ The following figure depicts an example for the FS Pack:
 
 .. figure:: images/overview-platform-qualification-test-suite-fs.png
    :align: center
-   :scale: 70%
+   :scale: 80%
 
    Platform Qualification Example for FS Pack
 
