@@ -17,7 +17,7 @@ XML
 XML Module
 ~~~~~~~~~~
 
-The `XML Module <https://repository.microej.com/artifacts/org/kxml2/kxml2/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `XML Module <https://repository.microej.com/modules/org/kxml2/kxml2/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the KXML library.
 
 ::
@@ -115,7 +115,7 @@ JSON is easily readable by humans compared to XML. To parse this data format, se
 JSON Module
 ~~~~~~~~~~~
 
-The `JSON Module <https://repository.microej.com/artifacts/org/json/me/json/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `JSON Module <https://repository.microej.com/modules/org/json/me/json/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the JSON library.
 
 ::
@@ -256,7 +256,7 @@ The `CBOR (Concise Binary Object Representation) <https://cbor.io/>`_ binary dat
 CBOR Module
 ~~~~~~~~~~~
 
-The `CBOR Module <https://repository.microej.com/artifacts/ej/library/iot/cbor/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `CBOR Module <https://repository.microej.com/modules/ej/library/iot/cbor/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the CBOR library.
 
 ::
@@ -298,7 +298,7 @@ The execution of this example on the MicroEJ Simulator should print the followin
 	}
 	=============== [ Completed Successfully ] ===============
 
-Another example showing how to use the :ref:`JSON Module <json-module>` along with the `CBOR Module <https://repository.microej.com/artifacts/ej/library/iot/cbor/>`_ to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.json .
+Another example showing how to use the :ref:`JSON Module <json-module>` along with the `CBOR Module <https://repository.microej.com/modules/ej/library/iot/cbor/>`_ to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.json .
 
 The execution of this example on the MicroEJ Simulator should print the following trace:
 

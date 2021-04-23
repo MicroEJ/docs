@@ -68,7 +68,7 @@ extension and are classified using the following naming convention:
 
 ::
 
-   com/microej/architecture/[ISA]/[TOOLCHAIN]/[UID]-[NAME]-pack/[VERSION]/[UID]-[NAME]-[VERSION].xpfp
+   com/microej/architecture/[ISA]/[TOOLCHAIN]/[UID]-[NAME]-pack/[VERSION]/[UID]-[NAME]-pack-[VERSION].xpfp
 
 - ``ISA``: instruction set architecture (e.g. ``CM4`` for Arm® Cortex®-M4, ``ESP32`` for Espressif ESP32, ...).
 - ``TOOLCHAIN``: C compilation toolchain (e.g. ``CM4hardfp_GCC48``).
@@ -98,7 +98,17 @@ They are classified using the following naming convention:
 For example, MicroEJ Generic Pack Bluetooth versions are available at
 https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-pack/.
 
-Legacy MicroEJ Generic Packs files end with the ``.xpfp`` extension and can be :ref:`manually imported <pack_manual_import>` on older MicroEJ Platforms.
+Legacy MicroEJ Generic Packs files end with the ``.xpfp`` extension
+and can be :ref:`manually imported <pack_manual_import>` on older
+MicroEJ Platforms.  They are classified using the following naming
+convention:
+
+::
+   
+   com/microej/pack/[NAME]/[NAME]/[VERSION]/
+
+- ``NAME`` : pack name (e.g. ``net``).
+- ``VERSION``: pack version (e.g. ``9.2.3``).
 
 For example, the Legacy MicroEJ Generic Pack NET version ``9.2.3`` is
 available at https://repository.microej.com/modules/com/microej/pack/net/9.2.3/net-9.2.3.xpfp.
@@ -241,6 +251,8 @@ The next step is to create a MicroEJ Platform configuration:
         <dependency org="com.microej.pack" name="net" rev="9.2.3"/>
 
       </dependencies>
+
+.. _platform_build:
 
 MicroEJ Platform Build
 ======================
@@ -480,6 +492,8 @@ The 3 most common integration cases are:
   - the MicroEJ Platform and BSP are delivered as a single standalone module (same versioning), perhaps
     subcontracted to a team or a company outside the application project(s).
 
+.. _bsp_connection_options:
+
 Options
 -------
 
@@ -542,7 +556,7 @@ The following table describes Application options, configured as regular :ref:`M
 
 .. note::
 
-   It is also possible to configure the BSP root directory using the build option named ``toolchain.dir``, 
+   It is also possible to configure the BSP root directory using the :ref:`build option <mmm_build_options>` ``toolchain.dir``, 
    instead of the application option ``deploy.bsp.root.dir``.
    This allow to configure a MicroEJ Firmware by specifying both the Platform (using the ``target.platform.dir`` option) and the BSP 
    at build level, without having to modify the application options files.
@@ -628,6 +642,8 @@ The build script must implement the following specification:
 
 Many build script templates are available for most commonly used C toolchains in the 
 `Platform Qualification Tools repository <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_.
+
+.. _bsp_connection_run_script:
 
 Run Script File
 ---------------

@@ -144,7 +144,7 @@ Install and Start Artifactory
    ``artifactory-oss-[version]/bin``).
 #. Run ``artifactory.bat`` or ``artifactory.sh`` depending on your operating system. After initialization, the terminal should print the message :guilabel:`Artifactory successfully started`. 
    In case an error occurs, check that ``JAVA_HOME`` and ``JRE_HOME`` environment variables are correct.
-#. Go to `<http://localhost:8081/>`_.
+#. Go to ``http://localhost:8081/``.
 #. Login to Artifactory for the first time using the default ``admin`` account (Username: ``admin``, Password: ``password``).
 #. On the :guilabel:`Welcome` wizard, set the administrator password, then click :guilabel:`Next`,
 #. Configure proxy server (if any) then click :guilabel:`Next`, or click :guilabel:`Skip`.
@@ -228,7 +228,7 @@ Install Jenkins
 #. Download Jenkins WAR (Web Archive) here: `<http://mirrors.jenkins.io/war-stable/latest/jenkins.war>`_
 #. Open a terminal and type the following command: ``java -jar [path/to/downloaded/jenkinswar]/jenkins.war``. 
    After initialization, the terminal will print out :guilabel:`Jenkins is fully up and running`.
-#. Go to `<http://localhost:8080/>`_.
+#. Go to ``http://localhost:8080/``.
 #. To unlock Jenkins, copy/paste the generated password that has been written in the terminal log. Click on :guilabel:`Continue`.
 #. Select option :guilabel:`Install suggested plugins` and wait for plugin
    installation.
@@ -387,7 +387,7 @@ In Jenkins' ``Hello World`` dashboard, click on :guilabel:`Build with Parameters
 .. note::
    You can check the build progress by clicking on the build progress bar and showing the :guilabel:`Console Output`.
 
-At the end of the build, the module is published to `<http://localhost:8081/artifactory/list/libs-snapshot-local/com/example/hello-world/>`_.
+At the end of the build, the module is published to ``http://localhost:8081/artifactory/list/libs-snapshot-local/com/example/hello-world/``.
 
 
 Congratulations!
@@ -455,7 +455,7 @@ workaround for this issue is to move the build directory (that is, the
 ``target~`` directory) closer to the root directory.
 
 To change the ``target~`` directory path, set the
-:ref:`mmm_build_options` ``target``.
+:ref:`build option <mmm_build_options>` ``target``.
 
 In :guilabel:`Advanced`, expand :guilabel:`Properties` text field and
 set the ``target`` property to the path of your choice.  For example:

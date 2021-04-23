@@ -1,3 +1,5 @@
+.. _tutorial_run_test_suite_on_device:
+
 Run a Test Suite on a Device
 ============================
 
@@ -17,7 +19,7 @@ Intended Audience and Scope
 ---------------------------
 
 The audience for this document is software engineers who want to
-validate an abstraction layer implementation or understand how to automatically
+validate an Abstraction Layer implementation or understand how to automatically
 run a MicroEJ Test Suite on their device.
 
 The following topics are out of the scope of this tutorial:
@@ -102,6 +104,24 @@ workspace.
 Configure the Test Suite
 ------------------------
 
+Select the Test Suite Version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For a given Foundation Library version, a specific Test Suite version
+should be used to validate the Abstraction Layer implementation.
+Please refer to :ref:`test_suite_versioning` to determine the correct
+Test Suite version to use.
+
+On the WROVER Platform, the FS Test Suite version to use is specified
+in ``{PLATFORM}-configuration/testsuites/fs/README.md``.  The Test
+Suite version must be set in the ``module.ivy`` of the
+``java-testsuite-fs`` project (e.g. ``java-testsuite-fs/module.ivy``).
+For example:
+
+.. code-block:: xml
+
+   <dependency org="com.microej.pack.fs" name="fs-testsuite" rev="3.0.3"/>
+
 Configure the Platform BSP Connection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -140,8 +160,8 @@ from standard input to UART.
    :alt: Plug alternative UART on WROVER GND/D0
    :align: center
 
-See the `WROVER Platform documentation
-<https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/tree/1.6.2#testsuite-configuration>`__
+See the `Testsuite Configuration section of the WROVER Platform documentation
+<https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/tree/1.6.2>`__
 for more details.
 
 Start Serial To Socket

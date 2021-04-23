@@ -1,3 +1,5 @@
+.. _tutorial_create_firmware_from_scratch:
+
 Create a MicroEJ Firmware From Scratch
 ======================================
 
@@ -164,12 +166,11 @@ boots on the target device.
    .. note::
 
       WSL can start the editor Visual Studio Code. type ``code .`` in WSL. ``.`` represents the current directory in Unix.
-
+   
    .. code-block:: diff
+       :caption: https://github.com/MicroEJ/FreeRTOS/commit/48248eae13baebf7df9638cd8da6fbfe1a735a9c
 
        diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
-
-       index 8ee3fe2f8..b771ff834 100644
        --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
        +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/standalone.ld
        @@ -42,7 +42,15 @@ SECTIONS
@@ -266,33 +267,13 @@ the UART device and an example implementation for QEMU is available
 `here
 <https://github.com/dwelch67/qemu_arm_samples/blob/master/cortex-m/uart01/notmain.c>`_).
 
-The following code implements the ``putchar(3)`` and ``puts(3)``
-functions:
-
-.. code-block:: c
-
-    #define UART0BASE ((volatile int*) 0x4000C000)
-
-    int putchar (int c){
-        (*UART0BASE) = c;
-        return c;
-    }
-
-    int puts(const char *s) {
-        while (*s) {
-            putchar(*s);
-            s++;
-        }
-        return putchar('\n');
-    }
-
-And here is the patch that implements both functions and prints
+Here is the patch that implements ``putchar(3)`` and ``puts(3)`` and prints
 ``Hello World``.
 
 .. code-block:: diff
+    :caption: https://github.com/MicroEJ/FreeRTOS/commit/d09ec0f5cbdf69ca97a5ac15f8b905538aa4c61e
 
     diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
-    index 107517c00..3ea4c23a4 100644
     --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
     +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
     @@ -134,9 +134,25 @@ SemaphoreHandle_t xButtonSemaphore;
@@ -320,8 +301,6 @@ And here is the patch that implements both functions and prints
     +
      	/* Configure the clocks, UART and GPIO. */
      	prvSetupHardware();
-     
- 
 
 
 Rebuild and run the newly generated kernel: ``make &&
@@ -355,10 +334,9 @@ qemu-system-arm -M lm3s811evb -nographic -kernel gcc/RTOSDemo.bin``
 With this two functions implemented, ``printf(3)`` is also available.
 
 .. code-block:: diff
-
+    :caption: https://github.com/MicroEJ/FreeRTOS/commit/1f7e7ee014754a4dcb4f6c5a470205e02f6ac3c8
 
     diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
-    index 76440e60e..f24007597 100644
     --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
     +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
     @@ -149,9 +149,11 @@ int puts(const char *s) {
@@ -501,8 +479,8 @@ imported.
 Setup the MicroEJ Platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This step describes how to configure the MicroEJ Platform previously
-created.
+This step describes how to configure the MicroEJ Platform previously created. 
+For more information on this topic, please refer to :ref:`platform_configuration_creation`.
 
 The `Platform Configuration Additions
 <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform>`_
@@ -535,7 +513,7 @@ invoking ``make`` in the FreeRTOS BSP.
 
      .. code-block:: console
 
-       svn checkout https://github.com/MicroEJ/PlatformQualificationTools/trunk/framework/platform/content [path_to_platform_configuration_directory]
+       svn export --force https://github.com/MicroEJ/PlatformQualificationTools/trunk/framework/platform/content [path_to_platform_configuration_directory]
 
 #. Edit the file ``bsp/bsp.properties`` as follow:
 
@@ -552,11 +530,43 @@ invoking ``make`` in the FreeRTOS BSP.
      # Specify MicroEJ Platform header files ('*.h') parent directory.
      # This is a '/' separated directory relative to 'bsp.root.dir'.
      microejinc.relative.dir=microej/inc
+	 
+#. Edit the file ``modules.ivy`` and add the MicroEJ Architecture as a dependency:
 
-#. Open the ``.platform`` file and click on ``Build Platform``. The
-   MicroEJ Platform will appear in the workspace.
+   .. code-block:: XML
 
-    .. image:: images/tuto_microej_fw_from_scratch_build_platform.PNG
+	 <dependencies>
+		<dependency org="com.microej.architecture.CM0.CM0_GCC48" name="flopi0G22" rev="7.14.0">
+			<artifact name="flopi0G22" m:classifier="${com.microej.platformbuilder.architecture.usage}" ext="xpf"/>
+		</dependency>
+	 </dependencies>
+		 
+#. Edit the file ``modules.properties`` and set the MicroEJ platform filename:
+
+   .. code-block:: properties
+
+	 # Platform configuration file (relative to this project).
+	 com.microej.platformbuilder.platform.filename=Tuto.platform
+
+#. Right-click on the platform project and click on ``Build Module``. 
+
+#. The following message appears in the console:
+
+.. code-block:: none
+
+	module-platform:report:
+		 [echo]     ============================================================================================================
+		 [echo]     Platform has been built in this directory 'C:\Users\user\src\tuto-from-scratch\workspace/lm3s811evb-Platform-CM0_GCC48-0.0.1'.
+		 [echo]     To import this project in your MicroEJ SDK workspace (if not already available):
+		 [echo]      - Select 'File' > 'Import...' > 'General' > 'Existing Projects into Workspace' > 'Next'
+		 [echo]      - Check 'Select root directory' and browse 'C:\Users\user\src\tuto-from-scratch\workspace/lm3s811evb-Platform-CM0_GCC48-0.0.1' > 'Finish'
+		 [echo]     ============================================================================================================
+
+	BUILD SUCCESSFUL
+
+#. Follow the instructions to import the generated platform in the workspace: 
+
+   .. image:: images/tuto_microej_fw_from_scratch_build_platform.png
 
 At this point, the MicroEJ Platform is ready to be used to build
 MicroEJ Applications.
@@ -571,7 +581,7 @@ Create MicroEJ Application HelloWorld
    .. image:: images/tuto_microej_fw_from_scratch_new_microej_application_project.PNG
 
 #. Run the application in Simulator to ensure it is working properly.
-   Right-click on HelloWorld project > :guilabel:`Run as` >
+   Right-click on HelloWorld project > :guilabel:`Run As` >
    :guilabel:`MicroEJ Application`
 
    .. image:: images/tuto_microej_fw_from_scratch_run_as_microej_application.PNG
@@ -868,9 +878,9 @@ when the MicroEJ Application exits. Both functions are declared in the
 C header ``sni.h``.
 
 .. code-block:: diff
+    :caption: https://github.com/MicroEJ/FreeRTOS/commit/7ae8e79f9c811621569ccb90c46b1dcda91da35d
 
     diff --git a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
-    index d5728f976..644710120 100644
     --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
     +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/main.c
     @@ -150,11 +150,14 @@ int puts(const char *s) {
@@ -888,7 +898,6 @@ C header ``sni.h``.
      	/* Configure the clocks, UART and GPIO. */
      	prvSetupHardware();
      
-        
 
 Build and Link the Firmware with the MicroEJ Runtime and MicroEJ Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -906,8 +915,8 @@ Application, the BSP port must be modified to:
 The following patch updates the BSP port ``Makefile`` to do it:
 
 .. code-block:: diff
-
-  index 814cc6f7e..bbcad47b3 100644
+  :caption: https://github.com/FreeRTOS/FreeRTOS/commit/257d9e1d123be0342029e2930c0073dd5a4a2b2d
+	
   --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/Makefile
   +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/Makefile
   @@ -29,8 +29,10 @@ RTOS_SOURCE_DIR=../../Source
@@ -977,9 +986,9 @@ The rest of the tutorial assumes that everything is done in the
 Then update the linker script ``standlone.ld``:
 
 .. code-block:: diff
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/0e2e31d8a510d37178c340051bab636902471eea
 
   diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
-  index b771ff834..e3719ea30 100644
   --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
   +++ b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
   @@ -28,8 +28,8 @@
@@ -1032,9 +1041,9 @@ libraries declaration with ``--start-group`` and ``--end-group`` in
 ``makedefs``. This tutorial uses the later.
 
 .. code-block:: diff
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/4b23ea2e77112f053368718d299ff8db826ddde1
 
   diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
-  index 1a8f4dab5..66b482804 100644
   --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   +++ b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   @@ -196,13 +196,13 @@ ifeq (${COMPILER}, gcc)
@@ -1096,9 +1105,9 @@ how the libc is managed, the following patch finds the ``libm.a``
 library and add it at link time:
 
 .. code-block:: diff
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/a202f43948c41b848ebfbc8c53610028c454b66f
 
   diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
-  index 66b482804..80f812829 100644
   --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   +++ b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   @@ -102,6 +102,11 @@ LIBGCC=${shell ${CC} -mthumb -march=armv6t2 -print-libgcc-file-name}
@@ -1144,9 +1153,9 @@ the ``libnosys.a`` which provides stub implementation for various
 functions.
 
 .. code-block:: diff
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/a202f43948c41b848ebfbc8c53610028c454b66f
 
   diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
-  index 80f812829..9de8150a5 100644
   --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   +++ b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   @@ -107,6 +107,11 @@ LIBC=${shell ${CC} -mthumb -march=armv6t2 -print-file-name=libc.a}
@@ -1194,9 +1203,9 @@ tutorial uses the end of the ``.bss`` segment as the beginning of the
 C heap.
 
 .. code-block:: diff
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/898f2e6cd492616b4ccaabc136cafa76ef038690
 
   diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
-  index e3719ea30..e86294b5f 100644
   --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
   +++ b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/standalone.ld
   @@ -64,5 +64,6 @@ SECTIONS
@@ -1284,3 +1293,4 @@ The next steps recommended are:
   functions in ``LLMJVM_impl.h``).
 * Validate the implementation with the `PQT Core
   <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`_.
+* Follow the :ref:`tutorial_create_platform_build_and_run_scripts` tutorial to get this MicroEJ Platform fully automated for build and execution. 

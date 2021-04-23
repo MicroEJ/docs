@@ -88,7 +88,7 @@ The MicroEJ Classpath contains the following elements:
    list file extensions and format is specific to declared application
    contents and is described in the appropriate section.
 
-At source level, Java types are stored in ``src/main/java`` folder of the `module project <mmm_module_skeleton>`_, 
+At source level, Java types are stored in ``src/main/java`` folder of the :ref:`module project <mmm_module_skeleton>`, 
 any other kind of resources and list files are stored in the ``src/main/resources`` folder.
 
 .. _section.classpath.elements.entrypoints:
@@ -187,9 +187,12 @@ System Properties
 -----------------
 
 System Properties are key/value string pairs that can be accessed with a
-call to ``System.getProperty(String)``. System properties are declared
-in MicroEJ Classpath ``*.properties.list`` files. The file format is a
-standard Java properties file. Example:
+call to `System.getProperty(String) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#getProperty-java.lang.String->`_. 
+
+System Properties are defined when building a :ref:`standalone_application`,
+by declaring ``*.properties.list`` files in MicroEJ Classpath. 
+
+The file format is a standard Java properties file. Example:
 
 .. code-block:: xml
    :caption: Example of Contents of a MicroEJ Properties File
@@ -200,7 +203,7 @@ standard Java properties file. Example:
 
 System Properties are resolved at runtime, and all declared keys and values are embedded as intern Strings.
 
-System Properties can also be defined using Applications Options. This
+System Properties can also be defined using :ref:`application_options`. This
 can be done by setting the option with a specific
 prefix in their name:
 
@@ -217,11 +220,15 @@ For example, to define the property ``myProp`` with the value
 ``theValue``, set the following option :
 
 .. code-block:: xml
-   :caption: Example of MicroEJ Property Definition in Launch Configuration
+   :caption: Example of MicroEJ System Property Definition as Application Option
 
    microej.java.property.myProp=theValue
 
 Option can also be set in the ``VM arguments`` field of the ``JRE`` tab of the launch using the -D option (e.g. ``-Dmicroej.java.property.myProp=theValue``).
+
+.. note::
+
+   When building a :ref:`sandboxed_application`, ``*.properties.list`` files found in MicroEJ Classpath are silently skipped.
 
 .. _section.classpath.elements.constants:
 

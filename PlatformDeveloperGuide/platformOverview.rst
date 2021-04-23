@@ -14,11 +14,11 @@ The MicroEJ Core Engine is a tiny and fast runtime associated with a Scheduler a
 
 MicroEJ Architecture provides implementations of the following Foundation Libraries :
 
--  `EDC <https://repository.microej.com/artifacts/ej/api/edc/>`_: Embedded Device Configuration.
--  `BON <https://repository.microej.com/artifacts/ej/api/bon/>`_ Beyond Profile (see :ref:`[BON] <esr-specifications>`).
--  `SNI <https://repository.microej.com/artifacts/ej/api/sni/>`_ Simple Native Interface (:ref:`[SNI] <esr-specifications>`).
--  `SP <https://repository.microej.com/artifacts/ej/api/sni/>`_ Shielded Plug (:ref:`[SP] <esr-specifications>`).
--  `KF <https://repository.microej.com/artifacts/ej/api/sni/>`_ Kernel & Features (:ref:`[KF] <esr-specifications>`).
+-  `EDC <https://repository.microej.com/modules/ej/api/edc/>`_: Embedded Device Configuration.
+-  `BON <https://repository.microej.com/modules/ej/api/bon/>`_ Beyond Profile (see :ref:`[BON] <esr-specifications>`).
+-  `SNI <https://repository.microej.com/modules/ej/api/sni/>`_ Simple Native Interface (:ref:`[SNI] <esr-specifications>`).
+-  `SP <https://repository.microej.com/modules/ej/api/sni/>`_ Shielded Plug (:ref:`[SP] <esr-specifications>`).
+-  `KF <https://repository.microej.com/modules/ej/api/sni/>`_ Kernel & Features (:ref:`[KF] <esr-specifications>`).
 
 :ref:`The following figure <fig_jpf-runtime-components>` shows the components involved.
 

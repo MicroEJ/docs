@@ -352,6 +352,8 @@ Category: Debug
    :width: 998px
    :height: 551px
 
+.. _simulator-remote-debug-options:
+
 Group: Remote Debug
 ^^^^^^^^^^^^^^^^^^^
 

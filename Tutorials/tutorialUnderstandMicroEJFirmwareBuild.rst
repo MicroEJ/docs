@@ -38,7 +38,7 @@ The MicroEJ Architectures are distributed into two formats:
   distribute this version).
 
 The supported MicroEJ Architectures are listed here
-https://developer.microej.com/mej32-embedded-runtime-architectures/#arch
+`<https://developer.microej.com/mej32-embedded-runtime-architectures/>`_
 
 The MicroEJ Architecture is either provided from:
 
@@ -62,8 +62,8 @@ MicroEJ Platform Source (.zip)
 This package includes:
 
 * a C Board Support Package (BSP) with C drivers and an optional RTOS
-* a MEJ32 Architecture
-* the abstraction layers implementation of the platform architecture and foundations libraries
+* the MicroEJ Architecture and MicroEJ Packs
+* the Abstraction Layers implementations
 * the MicroEJ Simulator and its associated MicroEJ Mocks
 
 The platform .zip files contain:

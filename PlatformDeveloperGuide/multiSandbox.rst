@@ -123,7 +123,7 @@ configuration file, check :guilabel:`Multi Applications`.
 Use
 ===
 
-The `KF API Module <https://repository.microej.com/artifacts/ej/api/kf/>`_ 
+The `KF API Module <https://repository.microej.com/modules/ej/api/kf/>`_ 
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to :ref:`[KF] <esr-specifications>` library.
 

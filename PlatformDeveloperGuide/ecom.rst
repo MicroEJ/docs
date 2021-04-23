@@ -94,7 +94,7 @@ the library.
 Use
 ===
 
-The `ECOM API Module <https://repository.microej.com/artifacts/ej/api/ecom/>`_ 
+The `ECOM API Module <https://repository.microej.com/modules/ej/api/ecom/>`_ 
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the ECOM library.
 

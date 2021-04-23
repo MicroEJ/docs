@@ -8,6 +8,7 @@ Platform Developer Guide
 
    introduction
    platform
+   platformQualification
    coreEngine
    multiSandbox
    tiny
@@ -20,6 +21,7 @@ Platform Developer Guide
    hal
    device
    watchdog
+   systemView
    simulation
    appendix/index
 
