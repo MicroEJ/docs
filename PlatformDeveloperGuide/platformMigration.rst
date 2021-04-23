@@ -1,7 +1,7 @@
 .. _former_platform_migration:
 
-Former MicroEJ Platform Migration
-=================================
+Former Platform Migration
+=========================
 
 This chapter describes the steps to migrate a former MicroEJ Platform in its latest form described in :ref:`new_platform_creation` chapter.
 
