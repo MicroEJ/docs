@@ -1,5 +1,5 @@
-Appendix C: Tools Options and Error Codes
-=========================================
+Tools Options and Error Codes
+=============================
 
 .. toctree::
     :maxdepth: 2

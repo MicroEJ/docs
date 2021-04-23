@@ -7,7 +7,10 @@ MicroEJ Platform Creation
 This section describes the steps to create a new MicroEJ Platform in MicroEJ SDK, 
 and options to connect it to an external Board Support Package (BSP) as well as a third-party C toolchain. 
 
-MicroEJ SDK must be started on a new empty :ref:`workspace <workspace>`.
+.. note::
+   
+   If you own a legacy Platform, you can either create your Platform again from scratch,
+   or follow the :ref:`former_platform_migration` chapter.
 
 .. _architecture_import:
 

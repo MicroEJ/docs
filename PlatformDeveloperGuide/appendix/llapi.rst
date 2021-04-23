@@ -1,8 +1,8 @@
 .. _LLAPI-CHAPTER:
 
-=========================
-Appendix A: Low Level API
-=========================
+=============
+Low Level API
+=============
 
 
 This chapter describes succinctly the available Low Level API, module by

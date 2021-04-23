@@ -1,5 +1,5 @@
-Appendix B: MicroEJ Foundation Libraries
-========================================
+MicroEJ Foundation Libraries
+============================
 
 .. toctree::
     :maxdepth: 2
