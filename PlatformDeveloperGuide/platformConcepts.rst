@@ -1,32 +1,7 @@
-Concepts
-========
-
 .. _concepts-jpf:
 
-MicroEJ Platform
-----------------
-
-A MicroEJ Platform includes development tools and a runtime environment.
-
-The runtime environment consists of:
-
--  A MicroEJ Core Engine.
-
--  Some Foundation Libraries.
-
--  Some C libraries.
-
-The development tools are composed of:
-
--  Java APIs to compile MicroEJ Application code.
-
--  Documentation: this guide, library specifications, etc.
-
--  Tools for development and compilation.
-
--  Launch scripts to run the simulation or build the binary file.
-
--  Eclipse plugins.
+Concepts
+========
 
 MicroEJ Platform Configuration
 ------------------------------
