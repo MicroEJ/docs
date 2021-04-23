@@ -25,8 +25,9 @@ The second part of the API implements a **checkpoint registration system** linke
 
 The checkpoint registration system allows the user to add checkpoints monitored by the platform watchdog timer.
 Each checkpoint registered by the Watchdog API must attest their activity before the watchdog
-timeout, otherwise a **hardware reset** is performed. The high level diagram below summarizes use application 
-interaction with the Watchdog API.
+timeout, otherwise a **hardware reset** is performed. 
+The high level diagram below summarizes interactions between the user application, 
+the Watchdog API and the Watchdog timer.
 
 .. figure:: images/watchdog_highlevel_diagram.png
    :alt: Watchdog API high level description
@@ -37,7 +38,7 @@ interaction with the Watchdog API.
 The particularity of this library is that it can be either used in Java, in C inside the BSP
 or even both of them. The use of this library in the BSP in C is relevant when the user needs
 to monitor an item of the software system which is outside of the MicroEJ Virtual Machine. 
-The sequence diagram shows a classic use of the Watchdog API in Java and in C.
+The sequence diagram below shows a standard use of the Watchdog API in Java and in C.
 
 
 .. figure:: images/watchdog_seq_diagram.png
