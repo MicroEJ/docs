@@ -8,6 +8,7 @@ Platform Developer Guide
 
    introduction
    platform
+   platformCreation
    platformQualification
    coreEngine
    multiSandbox
