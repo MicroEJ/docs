@@ -3,23 +3,47 @@ Watchdog
 ========
 
 
-Principle
-=========
+Overview
+========
 
 The Watchdog foundation library provides a way to handle platform watchdog timer.
-A watchdog is particularly useful if you want to monitor different parts of your
-software system during the runtime.
+A watchdog is particularly useful if you want to monitor different items of your
+software system during the runtime. The figure below shows watchdog elements at each level of 
+a MicroEJ project:
+
+.. figure:: images/watchdog_sandwich.png
+   :alt: Watchdog API integration
+   :align: center
+   :scale: 80%
+
+
+Principle
+=========
 
 The Watchdog API is in **two parts**, the first part drives the **watchdog timer** itself.
 The second part of the API implements a **checkpoint registration system** linked to the watchdog timer.
 
 The checkpoint registration system allows the user to add checkpoints monitored by the platform watchdog timer.
 Each checkpoint registered by the Watchdog API must attest their activity before the watchdog
-timeout otherwise a **hardware reset** is performed.
+timeout, otherwise a **hardware reset** is performed. The high level diagram below summarizes use application 
+interaction with the Watchdog API.
+
+.. figure:: images/watchdog_highlevel_diagram.png
+   :alt: Watchdog API high level description
+   :align: center
+   :scale: 80%
+
 
 The particularity of this library is that it can be either used in Java, in C inside the BSP
 or even both of them. The use of this library in the BSP in C is relevant when the user needs
-to monitor a part of the software system which is outside of the MicroEJ Virtual Machine.
+to monitor an item of the software system which is outside of the MicroEJ Virtual Machine. 
+The sequence diagram shows a classic use of the Watchdog API in Java and in C.
+
+
+.. figure:: images/watchdog_seq_diagram.png
+   :alt: Watchdog API sequence diagram
+   :align: center
+   :scale: 80%
 
 Dependencies
 ============
@@ -148,15 +172,6 @@ Note that compared to the Java API, you have to get error codes returned by func
 to check if the function is executed correctly since you have no access to
 exceptions generated for the Java.
 
-There is an additional function in ``LLWATCHDOG_impl.h`` compared to the Java API.
-This is ``LLWATCHDOG_IMPL_refresh``, because a low level implementation of this function
-is required for the library. However, the user does not need and should not use this function on his own.
-
-
-
-Code example in C
-=================
-
 The watchdog Low Level API provides a set of functions with the same usage as in Java.
 Here is the list of the watchdog Low Level API functions:
 
@@ -171,6 +186,16 @@ Here is the list of the watchdog Low Level API functions:
    LLWATCHDOG_IMPL_isResetCause()              // refer to ej.watchdog.Watchdog.isResetCause()
    LLWATCHDOG_IMPL_getWatchdogTimeoutMs()      // refer to ej.watchdog.Watchdog.getWatchdogTimeoutMs()
 
+
+There is an additional function in ``LLWATCHDOG_impl.h`` compared to the Java API.
+This is ``LLWATCHDOG_IMPL_refresh``, because a low level implementation of this function
+is required for the library. However, the user does not need and should not use this function on his own.
+
+
+
+
+Code example in C
+=================
 
 Here is an example that summarizes main features in a simple use case.
 The checkpoint is performed in a FreeRTOS task scheduled to attest its activity to the watchdog every 5 seconds.
