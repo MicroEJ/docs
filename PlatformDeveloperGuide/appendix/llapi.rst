@@ -608,8 +608,8 @@ Naming Convention
 The Low Level Watchdog API (LLWATCHDOG), provides functions that allow the use of this API
 at the BSP level in C. The names of these functions match the ``LLWATCHDOG_IMPL_*`` pattern.
 
-The Watchdog API is delivered with a Generic CCO implementation on which the platform must
-depend. This CCO relies on functions that need to be implemented by engineers in a driver.
+The Watchdog API is delivered with a Generic C implementation on which the platform must
+depend. This implementation relies on functions that need to be implemented by engineers in a driver.
 The name of these functions match the ``LLWATCHDOG_IMPL_*_action`` pattern.
 
 Header Files
@@ -621,7 +621,7 @@ One C header file is provided:
 
    Defines a set of functions that can be used at BSP level if required.
 
-The header of Generic CCO containing functions to implement:
+The header of the Generic C implementation containing functions to implement:
 
 -  watchdog_helper.h
 
@@ -629,7 +629,7 @@ The header of Generic CCO containing functions to implement:
    to the Watchdog library.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
