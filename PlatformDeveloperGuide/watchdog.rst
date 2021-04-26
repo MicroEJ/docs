@@ -52,14 +52,14 @@ Dependencies
 - This library needs to be used with the Watchdog Generic C implementation developed for this purpose,
   its module name is ``watchdog-generic``.
 
-- ``LLWATCHDOG_impl.h`` implemetend by the Watchdog Generic part (see :ref:`LLWATCHDOG-API-SECTION`).
+- ``LLWATCHDOG_impl.h`` implemented by the Watchdog C implementation (see :ref:`LLWATCHDOG-API-SECTION`).
 
-- ``watchdog_helper.h`` implementation needed by the Watchdog Generic part (see :ref:`LLWATCHDOG-API-SECTION`).
+- ``watchdog_helper.h`` implementation needed by the Watchdog C implementation (see :ref:`LLWATCHDOG-API-SECTION`).
 
 Installation
 ============
 
-Watchdog is an API composed of a ``Pack`` module and a C implementation module.
+Watchdog is an API composed of a ``Pack`` module and a C component module.
 You need both of them in your platform to install the API.
 
 In the platform configuration project, the one with ``-configuration`` extension, add
@@ -71,15 +71,7 @@ the dependency to the two required modules in the file ``module.ivy``:
    <dependency changing="true" org="com.microej.clibrary.llimpl" name="watchdog-generic" rev="2.0.0" transitive="false"/>
 
 Then, you have to implement functions that match the ``LLWATCHDOG_IMPL_*_action`` pattern
-which is required by the Watchdog Generic C implementation.
-
-If you use the Realtek ``AmebaD`` board, you can add in the platform configuration the dependency
-to the C module ``watchdog-helper-realtek-amebad``, in order to retrieve implemented
-functions required by the Watchdog Generic C implementation. Thus, add this line to ``module.ivy``:
-
-::
-
-   <dependency changing="true" org="com.microej.clibrary.llimpl" name="watchdog-helper-realtek-amebad" rev="1.0.0" transitive="false"/>
+which is required by the Watchdog C implementation.
 
 Then, build the platform: right-click on ``-configuration`` project > ``Build module``.
 
@@ -99,7 +91,7 @@ Code example in Java
 ====================
 
 Here is an example that summarizes all features in a simple use case.
-The checkpoint is performed in a TimerTask thread scheduled to run every 5 seconds.
+The checkpoint is performed in a TimerTask scheduled to run every 5 seconds.
 To use TimerTask in your Java application, add the following dependency:
 
 ::

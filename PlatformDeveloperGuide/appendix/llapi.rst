@@ -621,7 +621,7 @@ One C header file is provided:
 
    Defines a set of functions that can be used at BSP level if required.
 
-The header of the Generic C implementation containing functions to implement:
+This C header file contains functions to implement:
 
 -  watchdog_helper.h
 
