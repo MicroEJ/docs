@@ -7,7 +7,7 @@ Create a MicroEJ Standalone Application
 ---------------------------------------
 
 -  Create a project in your workspace. Select :guilabel:`File` > :guilabel:`New` >
-   :guilabel:`MicroEJ Standalone Application Project`.
+   :guilabel:`Standalone Application Project`.
 
    .. figure:: images/newApp1.png
       :alt: New MicroEJ Standalone Application Project

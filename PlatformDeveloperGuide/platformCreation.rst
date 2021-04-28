@@ -136,7 +136,7 @@ MicroEJ Platform Configuration
 
 The next step is to create a MicroEJ Platform configuration:
 
--  Select :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Platform Project…`.
+-  Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Platform Project`.
 
 -  The Configure Target Architecture page allows to
    select the MicroEJ Architecture. This can be

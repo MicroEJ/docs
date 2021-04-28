@@ -12,7 +12,7 @@ The first step to explore a Sandboxed Application structure is to create
 a new project.
 
 First select :guilabel:`File` > :guilabel:`New` >
-:guilabel:`MicroEJ Sandboxed Application Project`:
+:guilabel:`Sandboxed Application Project`:
 
 Fill in the application template fields, the :guilabel:`Project name` field will
 automatically duplicate in the following fields.
