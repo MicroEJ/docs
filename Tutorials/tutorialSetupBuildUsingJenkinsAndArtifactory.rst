@@ -313,7 +313,7 @@ In this example, we will create a very simple module using the Sandbox Applicati
    You can adapt the following sections to use an existing MicroEJ project and your own Git repository.
 
 #. Start MicroEJ SDK. 
-#. Go to :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Sandboxed Application Project`.
+#. Go to :guilabel:`File` > :guilabel:`New` > :guilabel:`Sandboxed Application Project`.
 #. Fill in the template fields, set :guilabel:`Project name` to ``com.example.hello-world``.
        
     .. image:: images/tuto_microej_cli_module_creation.PNG

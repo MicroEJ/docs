@@ -462,8 +462,7 @@ This step describes how to create a new :ref:`MicroEJ Platform
 <new_platform_creation>` using the MicroEJ Architecture previously
 imported.
 
-#. Select :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ
-   Platform Project`.
+#. Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Platform Project`.
 #. Ensure the :guilabel:`Architecture` selected is the MicroEJ
    Architecture previously imported.
 #. Ensure the :guilabel:`Create from a platform reference
@@ -574,8 +573,7 @@ MicroEJ Applications.
 Create MicroEJ Application HelloWorld
 -------------------------------------
 
-#. Select :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ
-   Standalone Application Project`.
+#. Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Standalone Application Project`.
 #. Set the name to ``HelloWorld`` and click on :guilabel:`Finish`
 
    .. image:: images/tuto_microej_fw_from_scratch_new_microej_application_project.PNG

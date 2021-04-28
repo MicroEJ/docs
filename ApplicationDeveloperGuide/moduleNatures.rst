@@ -16,7 +16,7 @@ The following table describes the :ref:`project skeleton <mmm_module_skeleton>` 
      - Direct Wizard
    * - :ref:`Add-On Library <module_natures.addon_lib>`
      - `microej-javalib`
-     - :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Add-On Library Project`
+     - :guilabel:`File` > :guilabel:`New` > :guilabel:`Add-On Library Project`
    * - :ref:`Mock <module_natures.mock>`
      - `microej-mock`
      - 
@@ -25,10 +25,10 @@ The following table describes the :ref:`project skeleton <mmm_module_skeleton>` 
      - 
    * - :ref:`Sandboxed Application <module_natures.sandboxed_application>`
      - `application`
-     - :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Sandboxed Application Project`
+     - :guilabel:`File` > :guilabel:`New` > :guilabel:`Sandboxed Application Project`
    * - :ref:`Standalone Application <module_natures.standalone_application>`
      - `firmware-singleapp`
-     - :guilabel:`File` > :guilabel:`New` > :guilabel:`MicroEJ Standalone Application Project`
+     - :guilabel:`File` > :guilabel:`New` > :guilabel:`Standalone Application Project`
 
 .. _module_natures.addon_lib:
 

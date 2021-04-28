@@ -59,7 +59,7 @@ Module Project Skeleton
 In MicroEJ SDK, a new MicroEJ module project is created as following:
 
 - Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`,
-- Select :guilabel:`MicroEJ` > :guilabel:`MicroEJ Module Project` [#warning_check_sdk_5_2]_,
+- Select :guilabel:`MicroEJ` > :guilabel:`Module Project` [#warning_check_sdk_5_2]_,
 - Fill the module information (project name, module organization, name and revision),
 - Select one of the suggested skeletons depending on the desired :ref:`module nature <module_nature_skeleton_mapping>`,
 - Click on :guilabel:`Finish`.
