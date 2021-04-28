@@ -1,7 +1,7 @@
 ..
 .. ReStructuredText
 ..
-.. Copyright 2020 MicroEJ Corp. All rights reserved.
+.. Copyright 2020-2021 MicroEJ Corp. All rights reserved.
 .. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 ..
 
@@ -62,7 +62,7 @@ Function
 - **[excluded]** Function (p1, p2, … , pn, body)
 - length
 - **[excluded]** toString ( )
-- **[excluded]** apply (thisArg, argArray)
+- apply (thisArg, argArray)
 - **[excluded]** call (thisArg [ , arg1 [ , arg2, … ] ] )
 - **[excluded]** bind (thisArg [, arg1 [, arg2, …]])
 - [[Call]]
