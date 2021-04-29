@@ -12,9 +12,9 @@ software system during the runtime. The figure below shows watchdog elements at 
 a MicroEJ project:
 
 .. figure:: images/watchdog_sandwich.png
-   :alt: Watchdog API integration
-   :align: center
-   :scale: 80%
+	:alt: Watchdog API integration
+	:align: center
+	:scale: 80%
 
 
 Principle
@@ -30,9 +30,9 @@ The high level diagram below summarizes interactions between the user applicatio
 the Watchdog API and the Watchdog timer.
 
 .. figure:: images/watchdog_highlevel_diagram.png
-   :alt: Watchdog API high level description
-   :align: center
-   :scale: 80%
+	:alt: Watchdog API high level description
+	:align: center
+	:scale: 80%
 
 
 The particularity of this library is that it can be either used in Java, in C inside the BSP
@@ -42,9 +42,9 @@ The sequence diagram below shows a standard use of the Watchdog API in Java and 
 
 
 .. figure:: images/watchdog_seq_diagram.png
-   :alt: Watchdog API sequence diagram
-   :align: center
-   :scale: 80%
+	:alt: Watchdog API sequence diagram
+	:align: center
+	:scale: 80%
 
 Dependencies
 ============
@@ -67,8 +67,8 @@ the dependency to the two required modules in the file ``module.ivy``:
 
 ::
 
-   <dependency org="com.microej.pack.monitoring" name="monitoring-pack" rev="1.0.0" />
-   <dependency changing="true" org="com.microej.clibrary.llimpl" name="watchdog-generic" rev="2.0.0" transitive="false"/>
+	<dependency org="com.microej.pack.monitoring" name="monitoring-pack" rev="1.0.0" />
+	<dependency changing="true" org="com.microej.clibrary.llimpl" name="watchdog-generic" rev="2.0.0" transitive="false"/>
 
 Then, you have to implement functions that match the ``LLWATCHDOG_IMPL_*_action`` pattern
 which is required by the Watchdog C implementation.
@@ -84,7 +84,7 @@ Application project in order to allow access to the Watchdog library.
 
 ::
 
-   <dependency org="ej.api.monitoring" name="watchdog" rev="1.0.1" transitive="false"/>
+	<dependency org="ej.api.monitoring" name="watchdog" rev="1.0.1" transitive="false"/>
 
 
 Code example in Java
@@ -120,10 +120,10 @@ Then, you can use this example code:
 
 			@Override
 			public void run() {
-            // We attest our task activity using the checkpoint method.
-            // Since this is our only checkpoint registered, the watchdog is refreshed.
-            Watchdog.checkpoint(this.checkpointId); 
-            System.out.println("Task performed watchdog checkpoint with the ID " + this.checkpointId); //$NON-NLS-1$
+				// We attest our task activity using the checkpoint method.
+				// Since this is our only checkpoint registered, the watchdog is refreshed.
+				Watchdog.checkpoint(this.checkpointId); 
+				System.out.println("Task performed watchdog checkpoint with the ID " + this.checkpointId); //$NON-NLS-1$
 			}
 		};
 
@@ -170,14 +170,14 @@ Here is the list of the watchdog Low Level API functions:
 
 .. code:: c
 
-   LLWATCHDOG_IMPL_init()                      // refer to ej.watchdog.Watchdog.init()
-   LLWATCHDOG_IMPL_start()                     // refer to ej.watchdog.Watchdog.start()
-   LLWATCHDOG_IMPL_stop()                      // refer to ej.watchdog.Watchdog.stop()
-   LLWATCHDOG_IMPL_registerCheckpoint()        // refer to ej.watchdog.Watchdog.registerCheckpoint()
-   LLWATCHDOG_IMPL_unregisterCheckpoint()      // refer to ej.watchdog.Watchdog.unregisterCheckpoint()
-   LLWATCHDOG_IMPL_checkpoint()                // refer to ej.watchdog.Watchdog.checkpoint()
-   LLWATCHDOG_IMPL_isResetCause()              // refer to ej.watchdog.Watchdog.isResetCause()
-   LLWATCHDOG_IMPL_getWatchdogTimeoutMs()      // refer to ej.watchdog.Watchdog.getWatchdogTimeoutMs()
+	LLWATCHDOG_IMPL_init()                      // refer to ej.watchdog.Watchdog.init()
+	LLWATCHDOG_IMPL_start()                     // refer to ej.watchdog.Watchdog.start()
+	LLWATCHDOG_IMPL_stop()                      // refer to ej.watchdog.Watchdog.stop()
+	LLWATCHDOG_IMPL_registerCheckpoint()        // refer to ej.watchdog.Watchdog.registerCheckpoint()
+	LLWATCHDOG_IMPL_unregisterCheckpoint()      // refer to ej.watchdog.Watchdog.unregisterCheckpoint()
+	LLWATCHDOG_IMPL_checkpoint()                // refer to ej.watchdog.Watchdog.checkpoint()
+	LLWATCHDOG_IMPL_isResetCause()              // refer to ej.watchdog.Watchdog.isResetCause()
+	LLWATCHDOG_IMPL_getWatchdogTimeoutMs()      // refer to ej.watchdog.Watchdog.getWatchdogTimeoutMs()
 
 
 There is an additional function in ``LLWATCHDOG_impl.h`` compared to the Java API.
@@ -194,72 +194,72 @@ Here is an example that summarizes main features in a simple use case.
 The checkpoint is performed in a FreeRTOS task scheduled to attest its activity to the watchdog every 5 seconds.
 
 .. code:: C
-      
-   #include <stdio.h>
-   #include <stdint.h>
+		
+	#include <stdio.h>
+	#include <stdint.h>
 
-   #include "FreeRTOS.h"
-   #include "task.h"
-   #include "queue.h"
-   #include "semphr.h"
+	#include "FreeRTOS.h"
+	#include "task.h"
+	#include "queue.h"
+	#include "semphr.h"
 
-   #include "LLWATCHDOG_impl.h"
+	#include "LLWATCHDOG_impl.h"
 
-   #define MONITORED_TASK_STACK_SIZE 1024
-   #define TASK_SLEEP_TIME_MS 5000 // We sleep for 5 seconds, assuming that the watchdog timeout is higher.
+	#define MONITORED_TASK_STACK_SIZE 1024
+	#define TASK_SLEEP_TIME_MS 5000 // We sleep for 5 seconds, assuming that the watchdog timeout is higher.
 
-   /*-----------------------------------------------------------*/
+	/*-----------------------------------------------------------*/
 
-   static void my_monitored_task( void *pvParameters ){
-      // We get an ID from watchdog registration system for this new checkpoint
-      int32_t checkpoint_id = LLWATCHDOG_IMPL_registerCheckpoint();
+	static void my_monitored_task( void *pvParameters ){
+		// We get an ID from watchdog registration system for this new checkpoint
+		int32_t checkpoint_id = LLWATCHDOG_IMPL_registerCheckpoint();
 
-      for(;;){
-         vTaskDelay( TASK_SLEEP_TIME_MS / portTICK_PERIOD_MS);
-         // Since this is our only checkpoint registered, the watchdog is refreshed.
-         LLWATCHDOG_IMPL_checkpoint(checkpoint_id); 
-         printf("MonitoredTask with ID = %d did watchdog checkpoint!\n", checkpoint_id);
-      }
-   }
+		for(;;){
+			vTaskDelay( TASK_SLEEP_TIME_MS / portTICK_PERIOD_MS);
+			// Since this is our only checkpoint registered, the watchdog is refreshed.
+			LLWATCHDOG_IMPL_checkpoint(checkpoint_id); 
+			printf("MonitoredTask with ID = %d did watchdog checkpoint!\n", checkpoint_id);
+		}
+	}
 
-   /*-----------------------------------------------------------*/
+	/*-----------------------------------------------------------*/
 
-   int main( void ){
-      xTaskHandle handle_monitored_task;
+	int main( void ){
+		xTaskHandle handle_monitored_task;
 
-      /* Check if last reset was done by the Watchdog. */
-      if(LLWATCHDOG_IMPL_isResetCause()){
-         printf("Watchdog triggered the last reset, we stop the program now! \n");
-         return -1;
-      }
+		/* Check if last reset was done by the Watchdog. */
+		if(LLWATCHDOG_IMPL_isResetCause()){
+			printf("Watchdog triggered the last reset, we stop the program now! \n");
+			return -1;
+		}
 
-      /* Setup the Watchdog */
-      if(WATCHDOG_ERROR == LLWATCHDOG_IMPL_init()){
-   	   printf("Failed to init watchdog in main. \n");
-      } else{
-         printf("Watchdog initialized to trigger after %d ms \n", LLWATCHDOG_IMPL_getWatchdogTimeoutMs());
-      }
+		/* Setup the Watchdog */
+		if(WATCHDOG_ERROR == LLWATCHDOG_IMPL_init()){
+			printf("Failed to init watchdog in main. \n");
+		} else{
+			printf("Watchdog initialized to trigger after %d ms \n", LLWATCHDOG_IMPL_getWatchdogTimeoutMs());
+		}
 
-      /* Start the Watchdog */
-      if(WATCHDOG_ERROR == LLWATCHDOG_IMPL_start()){
-         printf("Failed to start watchdog in main. \n");
-      } else{
-         printf("Watchdog started!\n");
-      }
+		/* Start the Watchdog */
+		if(WATCHDOG_ERROR == LLWATCHDOG_IMPL_start()){
+			printf("Failed to start watchdog in main. \n");
+		} else{
+			printf("Watchdog started!\n");
+		}
 
-      /* Create the monitored task. */
-      xTaskCreate( my_monitored_task, "MonitoredTask", MONITORED_TASK_STACK_SIZE, NULL, tskIDLE_PRIORITY, &handle_monitored_task);
+		/* Create the monitored task. */
+		xTaskCreate( my_monitored_task, "MonitoredTask", MONITORED_TASK_STACK_SIZE, NULL, tskIDLE_PRIORITY, &handle_monitored_task);
 
-      /* Start the scheduler. */
-      printf("Starting scheduler...\n");
-      vTaskStartScheduler();
+		/* Start the scheduler. */
+		printf("Starting scheduler...\n");
+		vTaskStartScheduler();
 
-      return 0;
-   }
+		return 0;
+	}
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
-   is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
-   copyrights are the property of their respective owners.
+	| Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+	for read and redistribute. Except if otherwise stated, modification 
+	is subject to MicroEJ Corp prior approval.
+	| MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+	copyrights are the property of their respective owners.
