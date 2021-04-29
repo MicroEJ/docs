@@ -97,10 +97,14 @@ This file can be modified to fit with your system configuration:
 9. Enable SystemView on startup (before creating first OS task): call ``SEGGER_SYSVIEW_Conf();``. Include required ``#include "SEGGER_SYSVIEW.h"``.
 10. Print the RTT block address to the serial port on startup: ``printf("SEGGER_RTT block address: %p\n", &(_SEGGER_RTT));``. Include required ``#include "SEGGER_RTT.h"``.
 
-.. note:: 
+.. note::
    
    This is useful if SystemView does not find automatically the RTT block address.
    See section :ref:`systemview_no_rtt_block` for more details.
+
+.. note::
+
+   You may also find the RTT block address in RAM by searching ``_SEGGER_RTT`` in the .map file generated with the firmware binary.
 
 11. Add a call to ``SYSVIEW_setMicroJVMTask((U32)pvCreatedTask);`` just after creating the OS task to register the MicroEJ Core Engine OS task. The handler to give is the one filled by ``xTaskCreate`` function.
 
