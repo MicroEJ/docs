@@ -116,14 +116,14 @@ Then, you can use this example code:
 
 		TimerTask checkpointTask = new TimerTask() {
 
-			private final int taskID = Watchdog.registerCheckpoint();
+			private final int checkpointId = Watchdog.registerCheckpoint();
 
 			@Override
 			public void run() {
-				// We attest our task activity using the checkpoint method.
-				Watchdog.checkpoint(this.taskID); // Since this is our only checkpoint registered, the watchdog is
-				// refreshed.
-				System.out.println("Task performed watchdog checkpoint with the ID " + this.taskID); //$NON-NLS-1$
+            // We attest our task activity using the checkpoint method.
+            // Since this is our only checkpoint registered, the watchdog is refreshed.
+            Watchdog.checkpoint(this.checkpointId); 
+            System.out.println("Task performed watchdog checkpoint with the ID " + this.checkpointId); //$NON-NLS-1$
 			}
 		};
 
@@ -216,8 +216,9 @@ The checkpoint is performed in a FreeRTOS task scheduled to attest its activity 
 
       for(;;){
          vTaskDelay( TASK_SLEEP_TIME_MS / portTICK_PERIOD_MS);
-         LLWATCHDOG_IMPL_checkpoint(checkpoint_id); // Since this is our only checkpoint registered, the watchdog is refreshed.
-         printf("MonitoredTask with ID = %d did watchdog checkpoint!\n\r", checkpoint_id);
+         // Since this is our only checkpoint registered, the watchdog is refreshed.
+         LLWATCHDOG_IMPL_checkpoint(checkpoint_id); 
+         printf("MonitoredTask with ID = %d did watchdog checkpoint!\n", checkpoint_id);
       }
    }
 
@@ -228,29 +229,29 @@ The checkpoint is performed in a FreeRTOS task scheduled to attest its activity 
 
       /* Check if last reset was done by the Watchdog. */
       if(LLWATCHDOG_IMPL_isResetCause()){
-         printf("Watchdog triggered the last reset, we stop the program now! \n\r");
+         printf("Watchdog triggered the last reset, we stop the program now! \n");
          return -1;
       }
 
       /* Setup the Watchdog */
       if(WATCHDOG_ERROR == LLWATCHDOG_IMPL_init()){
-   	   printf("Failed to init watchdog in main. \n\r");
+   	   printf("Failed to init watchdog in main. \n");
       } else{
-         printf("Watchdog initialized to trigger after %d ms \n\r", LLWATCHDOG_IMPL_getWatchdogTimeoutMs());
+         printf("Watchdog initialized to trigger after %d ms \n", LLWATCHDOG_IMPL_getWatchdogTimeoutMs());
       }
 
       /* Start the Watchdog */
       if(WATCHDOG_ERROR == LLWATCHDOG_IMPL_start()){
-         printf("Failed to start watchdog in main. \n\r");
+         printf("Failed to start watchdog in main. \n");
       } else{
-         printf("Watchdog started!\n\r");
+         printf("Watchdog started!\n");
       }
 
       /* Create the monitored task. */
       xTaskCreate( my_monitored_task, "MonitoredTask", MONITORED_TASK_STACK_SIZE, NULL, tskIDLE_PRIORITY, &handle_monitored_task);
 
       /* Start the scheduler. */
-      printf("Starting scheduler...\n\r");
+      printf("Starting scheduler...\n");
       vTaskStartScheduler();
 
       return 0;
