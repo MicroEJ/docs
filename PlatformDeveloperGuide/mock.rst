@@ -206,7 +206,6 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
 					ni.notifySuspendStart();
 					lock.wait(); // equivalent to lock.wait(0)
 				} catch (InterruptedException e) {
-					Thread.currentThread().interrupt();
 					// Use the error code specific to your library
 					throw new NativeException(-1, "InterruptedException", e);
 				} finally {
