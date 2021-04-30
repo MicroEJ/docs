@@ -195,27 +195,27 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
    public static int dataLength = 0;
    private static Object lock = new Object();
 
-   //Mock native method
-   public static void waitForData(){
-         NativeInterface ni = HIL.getInstance();
-         //inside the Mock
-         //wait until the data is received
-         synchronized (lock) {
-               while(dataLength == 0) {
-                     try {
-                           ni.notifySuspendStart();
-                           lock.wait(); // equivalent to lock.wait(0)
-                           ni.notifySuspendEnd();
-                     } catch (InterruptedException e) {
-                           Thread.currentThread().interrupt();
-                           // Use the error code specific to your library
-                           throw new NativeException(-1, "InterruptedException", e);
-                     }
-               }
-         }
-   }
+	// Mock native method
+	public static void waitForData() {
+		NativeInterface ni = HIL.getInstance();
+		// inside the Mock
+		// wait until the data is received
+		synchronized (lock) {
+			while (dataLength == 0) {
+				try {
+					ni.notifySuspendStart();
+					lock.wait(); // equivalent to lock.wait(0)
+					ni.notifySuspendEnd();
+				} catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
+					// Use the error code specific to your library
+					throw new NativeException(-1, "InterruptedException", e);
+				}
+			}
+		}
+	}
 
-   //Mock data reader thread
+   // Mock data reader thread
    public static void notifyDataReception() {
          synchronized (lock) {
                dataLength = readFromInputStream(data);
