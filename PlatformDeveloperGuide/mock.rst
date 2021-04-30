@@ -185,30 +185,37 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
 - ``Object.notifyAll()``: Wakes up all the threads that are waiting on
   this object's monitor.
 
+- ``NativeInterface.notifySuspendStart()``: Notifies the Simulator that the current native is suspended so it can schedule a thread with a lower priority.
+
+- ``NativeInterface.notifySuspendEnd()``: Notifies the Simulator that the current native is no more suspended. Lower priority threads in the Simulator will not be scheduled anymore.
+
 .. code:: java
 
    public static byte[] data = new byte[BUFFER_SIZE];
    public static int dataLength = 0;
    private static Object lock = new Object();
 
-   //Mock native method
-   public static void waitForData(){
-         //inside the Mock
-         //wait until the data is received
-         synchronized (lock) {
-               while(dataLength == 0) {
-                     try {
-                           lock.wait(); // equivalent to lock.wait(0)
-                     } catch (InterruptedException e) {
-                           Thread.currentThread().interrupt();
-                           // Use the error code specific to your library
-                           throw new NativeException(-1, "InterruptedException", e);
-                     }
-               }
-         }
-   }
+	// Mock native method
+	public static void waitForData() {
+		NativeInterface ni = HIL.getInstance();
+		// inside the Mock
+		// wait until the data is received
+		synchronized (lock) {
+			while (dataLength == 0) {
+				try {
+					ni.notifySuspendStart();
+					lock.wait(); // equivalent to lock.wait(0)
+				} catch (InterruptedException e) {
+					// Use the error code specific to your library
+					throw new NativeException(-1, "InterruptedException", e);
+				} finally {
+					ni.notifySuspendEnd();
+				}
+			}
+		}
+	}
 
-   //Mock data reader thread
+   // Mock data reader thread
    public static void notifyDataReception() {
          synchronized (lock) {
                dataLength = readFromInputStream(data);
