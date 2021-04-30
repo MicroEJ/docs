@@ -650,7 +650,7 @@ Run Script File
 
 This script is required only for Platforms intended to run a :ref:`MicroEJ Testsuite <platform_testsuite>` on device.
 
-The BSP run script is responsible to invoke a third-party tool to upload and start the executable file (``application.out``) on device.
+The BSP run script is responsible to invoke a third-party tool to upload and start the executable file on device.
 
 The run script must implement the following specification:
 
