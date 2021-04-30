@@ -651,12 +651,12 @@ Run Script File
 This script is required only for Platforms intended to run a :ref:`MicroEJ Testsuite <platform_testsuite>` on device.
 
 The BSP run script is responsible to invoke a third-party tool to upload and start the executable file (``application.out``) on device.
-The ``application.out`` file is located in the directory from where the script has been executed.
 
 The run script must implement the following specification:
 
 - On Windows operating system, it is a Windows batch file named ``run.bat``.
 - On Mac OS X or Linux operating systems, it is a shell script named ``run.sh``, with execution permission enabled.
+- The executable file is passed as first script parameter if there is one, otherwise it is the ``application.out`` file located in the directory from where the script has been executed.
 - On error, the script must end with a non zero exit code.
 - On success
 
