@@ -4,7 +4,7 @@
 MicroEJ Architecture
 ====================
 
-Introduction
+Overview
 ============
 
 MicroEJ Architecture features the MicroEJ Core Engine built for a specific instructions set (ISA) and compiler.
