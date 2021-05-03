@@ -211,6 +211,20 @@ RTT Control Block Not Found
   You can also try with :guilabel:`Search Range` option.
 
 
+RTT block found by SystemView but no traces displayed
+=====================================================
+
+- Be sure that your MCU is running. It may happen that the BSP uses semi-hosting traces that
+  blocks the MCU execution if the application is running out of a Debug session.
+- You can check the state of the MCU using J-Link tools such as ``J-Link Commander`` and ``Ozone`` to start a Debug session.
+
+Bus hardfault when running SystemView without Java Virtual Machine (JVM)
+========================================================================
+
+The  function  ``LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();`` triggers  a  ``Bus  Hardfault`` when no JVM is launched.
+To solve this issue, comment this function call in ``SEGGER_SYSVIEW_Config_FreeRTOS.c`` when you run SystemView without launching the JVM.
+
+
 SystemView for STM32 ST-Link Probe
 ==================================
 
