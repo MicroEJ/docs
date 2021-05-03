@@ -1,13 +1,16 @@
 .. _new_platform_creation:
 
-=========================
-MicroEJ Platform Creation
-=========================
+=================
+Platform Creation
+=================
 
 This section describes the steps to create a new MicroEJ Platform in MicroEJ SDK, 
 and options to connect it to an external Board Support Package (BSP) as well as a third-party C toolchain. 
 
-MicroEJ SDK must be started on a new empty :ref:`workspace <workspace>`.
+.. note::
+   
+   If you own a legacy Platform, you can either create your Platform again from scratch,
+   or follow the :ref:`former_platform_migration` chapter.
 
 .. _architecture_import:
 
@@ -15,23 +18,9 @@ MicroEJ Architecture Import
 ===========================
 
 The first step is to choose and import a :ref:`MicroEJ Architecture <architecture_overview>`. 
+
 MicroEJ Corp. provides MicroEJ Evaluation Architectures for most common microcontroller instructions sets and compilers
-at https://repository.microej.com/architectures/ [#note_production]_. 
-
-MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified using the following naming convention:
-
-:: 
-
-  com/microej/architecture/[ISA]/[TOOLCHAIN]/[UID]/[VERSION]/[UID]-[VERSION]-[USAGE].xpf
-
-- ``ISA``: instruction set architecture (e.g. ``CM4`` for Arm® Cortex®-M4, ``ESP32`` for Espressif ESP32, ...).
-- ``TOOLCHAIN``: C compilation toolchain (e.g. ``CM4hardfp_GCC48``).
-- ``UID``: Architecture unique ID (e.g. ``flopi4G25``).
-- ``VERSION``: module version (e.g. ``7.12.0``).
-- ``USAGE`` = ``eval`` for evaluation Architectures, ``prod`` for production Architectures.
-
-For example, MicroEJ Architecture versions for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain are available at
-https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/.
+at https://repository.microej.com/modules/ [#note_production]_. 
 
 Once you downloaded a MicroEJ Architecture file, proceed with the following steps to import it in MicroEJ SDK:
 
@@ -50,68 +39,6 @@ MicroEJ Pack Import
 The next step is to choose and import a :ref:`MicroEJ Pack
 <pack_overview>`.  MicroEJ Corp. provides MicroEJ Packs to provide
 additional features.
-
-MicroEJ Packs are distributed in two packages:
-
-- MicroEJ Architecture Specific Pack provided at https://repository.microej.com/modules/com/microej/architecture.
-- MicroEJ Generic Pack provided at https://repository.microej.com/modules/com/microej/pack/.
-
-MicroEJ Architecture Specific Pack
-----------------------------------
-
-MicroEJ Architecture Specific Packs contain compiled libraries
-archives and are thus dependent on the MicroEJ Architecture and
-toolchain used in the MicroEJ Platform.
-
-MicroEJ Architecture Specific Packs files ends with the ``.xpfp``
-extension and are classified using the following naming convention:
-
-::
-
-   com/microej/architecture/[ISA]/[TOOLCHAIN]/[UID]-[NAME]-pack/[VERSION]/[UID]-[NAME]-pack-[VERSION].xpfp
-
-- ``ISA``: instruction set architecture (e.g. ``CM4`` for Arm® Cortex®-M4, ``ESP32`` for Espressif ESP32, ...).
-- ``TOOLCHAIN``: C compilation toolchain (e.g. ``CM4hardfp_GCC48``).
-- ``UID``: Architecture unique ID (e.g. ``flopi4G25``).
-- ``NAME`` : pack name (e.g. ``ui``).
-- ``VERSION``: pack version (e.g. ``13.0.4``).
-
-For example, MicroEJ Architecture Specific Pack UI versions for Arm®
-Cortex®-M4 microcontrollers compiled with GNU CC toolchain are
-available at
-https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25-ui-pack/.
-
-MicroEJ Generic Pack
---------------------
-
-MicroEJ Generic Packs can be imported on top of any MicroEJ Architecture.
-
-They are classified using the following naming convention:
-
-::
-
-   com/microej/pack/[NAME]/[NAME]-pack/[VERSION]/
-
-- ``NAME`` : pack name (e.g. ``bluetooth``).
-- ``VERSION``: pack version (e.g. ``2.1.0``).
-
-For example, MicroEJ Generic Pack Bluetooth versions are available at
-https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-pack/.
-
-Legacy MicroEJ Generic Packs files end with the ``.xpfp`` extension
-and can be :ref:`manually imported <pack_manual_import>` on older
-MicroEJ Platforms.  They are classified using the following naming
-convention:
-
-::
-   
-   com/microej/pack/[NAME]/[NAME]/[VERSION]/
-
-- ``NAME`` : pack name (e.g. ``net``).
-- ``VERSION``: pack version (e.g. ``9.2.3``).
-
-For example, the Legacy MicroEJ Generic Pack NET version ``9.2.3`` is
-available at https://repository.microej.com/modules/com/microej/pack/net/9.2.3/net-9.2.3.xpfp.
 
 .. _pack_manual_import:
 

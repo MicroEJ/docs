@@ -1,6 +1,6 @@
-========================================
-Appendix D: Architectures MCU / Compiler
-========================================
+============================
+Architectures MCU / Compiler
+============================
 
 Principle
 =========
@@ -97,7 +97,7 @@ ARM Cortex-M0
    * - GCC
      - 4.8
      - ``-mabi=aapcs -mcpu=cortex-m0 -mlittle-endian -mthumb``
-     - `flopi0G22 <https://repository.microej.com/architectures/com/microej/architecture/CM0/CM0_GCC48/flopi0G22/>`_
+     - `flopi0G22 <https://repository.microej.com/modules/com/microej/architecture/CM0/CM0_GCC48/flopi0G22/>`_
 
 ARM Cortex-M4
 =============
@@ -113,15 +113,15 @@ ARM Cortex-M4
    * - Keil uVision
      - 5.18.0.0
      - ``--cpu Cortex-M4.fp --apcs=/hardfp --fpmode=ieee_no_fenv``
-     - `flopi4A20 <https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_ARMCC5/flopi4A20/>`_
+     - `flopi4A20 <https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_ARMCC5/flopi4A20/>`_
    * - GCC
      - 4.8
      - ``-mabi=aapcs -mcpu=cortex-m4 -mlittle-endian -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb``
-     - `flopi4G25 <https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/>`_
+     - `flopi4G25 <https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/>`_
    * - IAR Embedded Workbench for ARM
      - 8.32.1.18631
      - ``--cpu Cortex-M4F --fpu VFPv4_sp``
-     - `flopi4I35 <https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_IAR83/flopi4I35/>`_
+     - `flopi4I35 <https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_IAR83/flopi4I35/>`_
 
 Note: Since MicroEJ 4.0, Cortex-M4 architectures are compiled using
 ``hardfp`` convention call.
@@ -141,15 +141,15 @@ ARM Cortex-M7
    * - Keil uVision
      - 5.18.0.0
      - ``--cpu Cortex-M7.fp.sp --apcs=/hardfp --fpmode=ieee_no_fenv``
-     - `flopi7A21 <https://repository.microej.com/architectures/com/microej/architecture/CM7/CM7hardfp_ARMCC5/flopi7A21/>`_
+     - `flopi7A21 <https://repository.microej.com/modules/com/microej/architecture/CM7/CM7hardfp_ARMCC5/flopi7A21/>`_
    * - GCC
      - 4.8
      - ``-mabi=aapcs -mcpu=cortex-m7 -mlittle-endian -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumbb``
-     - `flopi7G26 <https://repository.microej.com/architectures/com/microej/architecture/CM7/CM7hardfp_GCC48/flopi7G26/>`_
+     - `flopi7G26 <https://repository.microej.com/modules/com/microej/architecture/CM7/CM7hardfp_GCC48/flopi7G26/>`_
    * - IAR Embedded Workbench for ARM
      - 8.32.1.18631
      - ``--cpu Cortex-M7 --fpu VFPv5_sp``
-     - `flopi7I36 <https://repository.microej.com/architectures/com/microej/architecture/CM7/CM7hardfp_IAR83/flopi7I36/>`_
+     - `flopi7I36 <https://repository.microej.com/modules/com/microej/architecture/CM7/CM7hardfp_IAR83/flopi7I36/>`_
 
 ESP32
 =====
@@ -166,17 +166,17 @@ ESP32
    * - GCC (ESP-IDF)
      - 5.2.0 (crosstool-ng-1.22.0-80-g6c4433a)
      - ``-mlongcalls``
-     - `simikou1 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv52_xtensa-esp32/simikou1/>`_
+     - `simikou1 <https://repository.microej.com/modules/com/microej/architecture/ESP32/GNUv52_xtensa-esp32/simikou1/>`_
      - Any
    * - GCC (ESP-IDF)
      - 5.2.0 (crosstool-ng-1.22.0-80-g6c4433a)
      - ``-mlongcalls -mfix-esp32-psram-cache-issue``
-     - `simikou2 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv52_xtensa-esp32-psram/simikou2/>`_
+     - `simikou2 <https://repository.microej.com/modules/com/microej/architecture/ESP32/GNUv52_xtensa-esp32-psram/simikou2/>`_
      - Up to ``7.13.0`` (included)
    * - GCC (ESP-IDF)
      - 5.2.0 (crosstool-ng-1.22.0-96-g2852398)
      - ``-mlongcalls -mfix-esp32-psram-cache-issue``
-     - `simikou2 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv52_xtensa-esp32-psram/simikou2/>`_
+     - `simikou2 <https://repository.microej.com/modules/com/microej/architecture/ESP32/GNUv52_xtensa-esp32-psram/simikou2/>`_
      - ``7.13.1`` or higher
 
 IAR Linker Specific Options

@@ -381,7 +381,7 @@ The list of MicroEJ Architectures supported is listed at
 https://docs.microej.com/en/latest/PlatformDeveloperGuide/appendix/toolchain.html.
 MicroEJ Evaluation Architectures provided by MicroEJ Corp. can be
 downloaded from `MicroEJ Architectures Repository
-<https://repository.microej.com/architectures/com/microej/architecture/>`_.
+<https://repository.microej.com/modules/com/microej/architecture/>`_.
 
 There is no ``CM3`` in MicroEJ Architectures Repository and the Arm®
 Cortex®-M3 MCU is not mentioned in the :ref:`capabilities
@@ -403,7 +403,7 @@ This step describes how to import a :ref:`MicroEJ Architecture
    select it.
 #. Keep the default MicroEJ Repository
 #. Download the latest MicroEJ Architecture for Arm® Cortex®-M0
-   instead: https://repository.microej.com/architectures/com/microej/architecture/CM0/CM0_GCC48/flopi0G22/7.14.0/flopi0G22-7.14.0-eval.xpf
+   instead: https://repository.microej.com/modules/com/microej/architecture/CM0/CM0_GCC48/flopi0G22/7.14.0/flopi0G22-7.14.0-eval.xpf
 #. Import the MicroEJ Architecture in MicroEJ SDK
 
    #. :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` >
