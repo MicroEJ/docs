@@ -4,7 +4,7 @@
 MicroEJ Packs
 =============
 
-Introduction
+Overview
 ============
 
 On top of a MicroEJ Architecture can be imported MicroEJ Packs which provide additional features such as:
