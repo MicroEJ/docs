@@ -570,6 +570,17 @@ The build script must implement the following specification:
 Many build script templates are available for most commonly used C toolchains in the 
 `Platform Qualification Tools repository <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_.
 
+.. note::
+
+    The final executable file must be an ELF executable file.  On
+    Unix, the command ``file(1)`` can be use to check the format of a
+    file.  For example:
+
+    .. code-block:: sh
+
+       ~$ file application.out
+       ELF 32-bit LSB executable
+
 .. _bsp_connection_run_script:
 
 Run Script File
