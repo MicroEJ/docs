@@ -215,7 +215,7 @@ RTT block found by SystemView but no traces displayed
 =====================================================
 
 - Be sure that your MCU is running. It may happen that the BSP uses semi-hosting traces that
-  blocks the MCU execution if the application is running out of a Debug session.
+  block the MCU execution if the application is running out of a Debug session.
 - You can check the state of the MCU using J-Link tools such as ``J-Link Commander`` and ``Ozone`` to start a Debug session.
 
 Bus hardfault when running SystemView without Java Virtual Machine (JVM)
