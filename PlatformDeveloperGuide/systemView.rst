@@ -94,13 +94,17 @@ This file can be modified to fit with your system configuration:
    * comment the line ``#define traceTASK_SWITCHED_IN()`` if defined 
    * add ``#include "SEGGER_SYSVIEW_FreeRTOS.h"`` at the end of file
 
-9. Enable SystemView on startup (before creating first OS task): call ``SEGGER_SYSVIEW_Conf();``
-10. Right enabling SystemView on startup, prints the RTT block address to the serial port: ``printf("SEGGER_RTT block address: %p\n", &(_SEGGER_RTT));``.
+9. Enable SystemView on startup (before creating first OS task): call ``SEGGER_SYSVIEW_Conf();``. Include required ``#include "SEGGER_SYSVIEW.h"``.
+10. Print the RTT block address to the serial port on startup: ``printf("SEGGER_RTT block address: %p\n", &(_SEGGER_RTT));``. Include required ``#include "SEGGER_RTT.h"``.
 
-.. note:: 
+.. note::
    
    This is useful if SystemView does not find automatically the RTT block address.
    See section :ref:`systemview_no_rtt_block` for more details.
+
+.. note::
+
+   You may also find the RTT block address in RAM by searching ``_SEGGER_RTT`` in the .map file generated with the firmware binary.
 
 11. Add a call to ``SYSVIEW_setMicroJVMTask((U32)pvCreatedTask);`` just after creating the OS task to register the MicroEJ Core Engine OS task. The handler to give is the one filled by ``xTaskCreate`` function.
 
@@ -161,6 +165,26 @@ To enable events recording, refer to section :ref:`event_enable_recording` to co
 Troubleshooting
 ===============
 
+SystemView doesn't see any activity in MicroEJ Tasks
+----------------------------------------------------
+
+You have to enable runtime traces of your Java application. 
+
+- In ``Run > Run configuration`` select your Java application launcher.
+- Then, go to ``Configuration tab > Runtime > Trace``
+- Finally, check checkboxes ``Enable execution traces`` and ``Start execution traces automatically`` as shown in the picture below.
+- Rebuild your firmware with the new Java application version and it should fix the issue.
+
+.. figure:: images/sysview_app_traces.png
+   :alt: Enable traces of the Java application.
+   :align: center
+   :scale: 60
+   :width: 1109px
+   :height: 865px
+
+You may only check the first checkbox when you know when you want to start the trace recording. 
+For more information, please refer to section :ref:`event_enable_recording` to configure required :ref:`Application Options <application_options>`.
+
 
 OVERFLOW Events in SystemView
 -----------------------------
@@ -185,6 +209,20 @@ RTT Control Block Not Found
 * In SystemView, select :guilabel:`Target` > :guilabel:`Start recording`,
 * In :guilabel:`RTT Control Block Detection`, select :guilabel:`Address` and put the address retrieved.
   You can also try with :guilabel:`Search Range` option.
+
+
+RTT block found by SystemView but no traces displayed
+=====================================================
+
+- Be sure that your MCU is running. It may happen that the BSP uses semi-hosting traces that
+  block the MCU execution if the application is running out of a Debug session.
+- You can check the state of the MCU using J-Link tools such as ``J-Link Commander`` and ``Ozone`` to start a Debug session.
+
+Bus hardfault when running SystemView without Java Virtual Machine (JVM)
+========================================================================
+
+The  function  ``LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();`` triggers  a  ``Bus  Hardfault`` when no JVM is launched.
+To solve this issue, comment this function call in ``SEGGER_SYSVIEW_Config_FreeRTOS.c`` when you run SystemView without launching the JVM.
 
 
 SystemView for STM32 ST-Link Probe
