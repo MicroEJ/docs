@@ -1,7 +1,7 @@
 ..
 .. ReStructuredText
 ..
-.. Copyright 2020 MicroEJ Corp. All rights reserved.
+.. Copyright 2020-2021 MicroEJ Corp. All rights reserved.
 .. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 ..
 
@@ -66,21 +66,20 @@ The JS can then use this Date to print the current time::
 
 In this case, the generated method in `JsFfi` looks like::
 
-	public static Object ffi_getTime_0(Object function, Object this_) {
+	public static Object ffi_getTime_0(Object function, @ej.annotation.Nullable Object this_) {
 		try {
-			if(this_ instanceof NativeObject) {
-				return JsRuntime.functionCall(((Reference)function).getValue(), this_);
+			if (this_ instanceof JsObject || this_ instanceof String)
+				return JsRuntime.functionCall(((Reference) function).getValue(), this_);
+			if (this_ instanceof Calendar) {
+				return ((Calendar) this_).getTime();
 			}
-			if(this_ instanceof Calendar) {
-				return ((Calendar)this_).getTime();
+			if (this_ instanceof Date) {
+				return new Double(((Date) this_).getTime());
 			}
-			if(this_ instanceof Date) {
-				return new Double( ((Date)this_).getTime());
-			}
-		} catch(JsErrorWrapper e){
+		} catch (JsErrorWrapper e) {
 			throw e;
-		} catch(Throwable t){
-			throw new JsErrorWrapper( new TypeError( "A Java exception has been thrown in generated FFI code of getTime"), t);
+		} catch (Throwable t) {
+			throw new JsErrorWrapper(new JsObjectError.TypeError("A Java exception has been thrown in generated FFI code of getTime"), t);
 		}
-		throw new JsErrorWrapper( new TypeError( "getTime"));
+		throw new JsErrorWrapper(new JsObjectError.TypeError("getTime"));
 	}
