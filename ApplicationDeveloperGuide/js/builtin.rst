@@ -63,7 +63,7 @@ Function
 - length
 - **[excluded]** toString ( )
 - apply (thisArg, argArray)
-- **[excluded]** call (thisArg [ , arg1 [ , arg2, … ] ] )
+- call (thisArg [ , arg1 [ , arg2, … ] ] )
 - **[excluded]** bind (thisArg [, arg1 [, arg2, …]])
 - [[Call]]
 - [[Construct]]
@@ -168,15 +168,15 @@ String
 - toString ( )
 - valueOf ( )
 - charAt (pos)
-- **[excluded]** charCodeAt (pos)
+- charCodeAt (pos)
 - concat ( [ string1 [ , string2 [ , … ] ] ] )
 - indexOf (searchString, position)
-- **[excluded]** lastIndexOf (searchString, position)
+- lastIndexOf (searchString, position)
 - **[excluded]** localeCompare (that)
 - **[excluded]** match (regexp)
 - **[excluded]** replace (searchValue, replaceValue)
 - **[excluded]** search (regexp)
-- **[excluded]** slice (start, end)
+- slice (start, end)
 - **[excluded]** split (separator, limit)
 - **[excluded]** substr (start [ , length ] )
 - substring (start, end)
