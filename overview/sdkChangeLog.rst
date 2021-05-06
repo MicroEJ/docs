@@ -1,26 +1,29 @@
+..
+   note : this file was excluded from the build as it is included in the sdk.rst page
+
 MicroEJ SDK Distribution Changelog
 ----------------------------------
 
 [21.03] - 2021-03-25
 ~~~~~~~~~~~~~~~~~~~~
 
--  Included MicroEJ Studio / SDK ``5.4.0``
+-  Included :ref:`MicroEJ Studio / SDK 5.4.0 <changelog-5.4.0>`
 
 **KNOWN ISSUES**:
 
--  See MicroEJ Studio / SDK ``5.4.0`` Known Issues section
+-  See :ref:`MicroEJ Studio / SDK 5.4.0 Known Issues <known-issues-5.4.0>` section
 
 [20.12] - 2020-12-11
 ~~~~~~~~~~~~~~~~~~~~
 
--  Included MicroEJ Studio / SDK ``5.3.1``
+-  Included :ref:`MicroEJ Studio / SDK 5.3.1 <changelog-5.3.0>`
 -  Disabled Java version check when updating MicroEJ Studio/SDK (see
-   known issues of Studio/SDK Distribution ``20.10``)
+   :ref:`known issues of Studio/SDK Distribution 20.10 <known-issues-20.10>`)
 
 [20.10] - 2020-10-30
 ~~~~~~~~~~~~~~~~~~~~
 
--  Included MicroEJ Studio / SDK ``5.3.0``
+-  Included :ref:`MicroEJ Studio / SDK 5.3.0 <changelog-5.3.0>`
 -  Updated to Eclipse version ``2020-06``
 -  Fixed low quality MacOS SDK icons
 
@@ -29,6 +32,8 @@ because 32bits JRE support has been removed since Eclipse version
 ``2018-12``. See `this
 link <https://www.eclipse.org/eclipse/news/4.10/platform.php#java32-removal>`__
 for more details.
+
+.. _known-issues-20.10:
 
 **KNOWN ISSUES**:
 
@@ -54,7 +59,7 @@ for more details.
 [20.07] - 2020-07-28
 ~~~~~~~~~~~~~~~~~~~~
 
--  Included MicroEJ Studio / SDK ``5.2.0``
+-  Included :ref:`MicroEJ Studio / SDK 5.2.0 <changelog-5.2.0>`
 -  Updated the default microej repository folder name (replaced MicroEJ
    Studio/SDK version by the distribution number)
 -  Added ``Dist.`` prefix in installer name (e.g.
@@ -67,7 +72,7 @@ for more details.
 [19.05] - 2019-05-17
 ~~~~~~~~~~~~~~~~~~~~
 
--  Included MicroEJ Studio / SDK version ``5.1.0``
+-  Included :ref:`MicroEJ Studio / SDK version 5.1.0 <changelog-5.1.0>`
 -  Updated MicroEJ icons (``16x16`` and ``32x32``)
 -  Updated the publisher of Windows executables (``MicroEJ`` instead of
    ``IS2T SA.``)
@@ -78,7 +83,7 @@ for more details.
 ~~~~~~~~~~~~~~~~~~~~
 
 -  Updated to Eclipse Oxygen version ``4.7.2``
--  Included MicroEJ Studio / SDK version ``5.0.1``
+-  Included :ref:`MicroEJ Studio / SDK version 5.0.1 <changelog-5.0.1>`
 -  Included Sonarlint version ``4.0.0``
 
 MicroEJ SDK Changelog
@@ -88,6 +93,8 @@ MicroEJ SDK includes all MicroEJ Studio features.
 
 A line prefixed by ``[Studio]`` is valid for both MicroEJ Studio and
 MicroEJ SDK. A line prefixed by ``[SDK]`` is only valid for MicroEJ SDK.
+
+.. _changelog-5.4.1:
 
 [5.4.1] - 2021-04-16
 ~~~~~~~~~~~~~~~~~~~~
@@ -104,13 +111,15 @@ MicroEJ Module Manager
    include modules bundled in an other module repository)
 -  ``[Studio]`` Fixed missing some old build types versions that were
    removed by error. (introduced in MicroEJ SDK ``5.4.0``, please refer
-   to the Known Issues section for more details)
+   to the :ref:`Known Issues <known-issues-5.4.0>` section for more details)
 -  ``[Studio]`` Fixed wrong version of module built in a meta-build
    (module was published with the module version instead of the snapshot
    version)
 -  ``[Studio]`` Fixed code coverage analysis on source code (besides on
    bytecode) thanks to the property ``cc.src.folders`` (only for
    architectures in version 7.16.0 and beyond)
+
+.. _changelog-5.4.0:
 
 [5.4.0] - 2021-03-25
 ~~~~~~~~~~~~~~~~~~~~
@@ -189,6 +198,8 @@ Skeletons
    ``microej-javaimpl`` and ``microej-extension`` skeletons (intern
    changelog and ``.dbk`` file)
 
+.. _known-issues-5.4.0:
+
 Known Issues
 ~~~~~~~~~~~~
 
@@ -203,6 +214,8 @@ Known Issues
    -  ``[Studio]`` build-microej-javalib ``4.1.1``
    -  ``[SDK]`` build-firmware-singleapp ``1.2.10``
    -  ``[SDK]`` build-microej-extension ``1.3.2``
+
+.. _changelog-5.3.1:
 
 [5.3.1] - 2020-12-11
 ~~~~~~~~~~~~~~~~~~~~
@@ -234,8 +247,10 @@ Skeletons
 -  ``[Studio]`` Fixed skeleton dependency to
    `EDC-1.3.3 <https://repository.microej.com/artifacts/ej/api/edc/1.3.3/>`__
    to avoid an Eclipse JDT builder error when Null Analysis is enabled
-   (see known issues of Studio/SDK Distribution ``20.10``)
-   
+   (see :ref:`known issues of Studio/SDK Distribution 20.10 <known-issues-20.10>`)
+
+.. _changelog-5.3.0:
+
 [5.3.0] - 2020-10-30
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -318,6 +333,8 @@ Skeletons
 -  ``[Studio]`` Fixed ``microej-mock`` content script initialization
    folder name
 
+.. _known-issues-5.3.0:
+
 Known Issues
 ~~~~~~~~~~~~
 
@@ -326,6 +343,8 @@ Known Issues
    target / ``ivy:cachepath`` task). Workaround is to trigger the
    library build again.
 
+
+.. _changelog-5.2.0:
 
 [5.2.0] - 2020-07-28
 ~~~~~~~~~~~~~~~~~~~~
@@ -454,6 +473,8 @@ Misc
 -  ``[SDK]`` Added support for generating Application Options in
    reStructured Text format
 
+.. _changelog-5.1.2:
+
 [5.1.2] - 2020-03-09
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -473,6 +494,8 @@ MicroEJ Module Manager
    when building a standard JAR with JUnit tests
 
 
+.. _changelog-5.1.1:
+
 [5.1.1] - 2019-09-26
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -481,6 +504,8 @@ General
 
 -  ``[SDK]`` Fixed files locked in ``Platform in workspace`` projects
    preventing the Platform from being deleted or rebuilt
+
+.. _changelog-5.1.0:
 
 [5.1.0] - 2019-05-17
 ~~~~~~~~~~~~~~~~~~~~
@@ -596,6 +621,8 @@ Skeletons
 -  ``[Studio]`` Updated offline module repository skeleton to fetch in a
    dedicated cache directory under ``${user.dir}/.microej/caches``
 
+
+.. _changelog-5.0.1:
 
 [5.0.1] - 2019-02-14
 ~~~~~~~~~~~~~~~~~~~~
