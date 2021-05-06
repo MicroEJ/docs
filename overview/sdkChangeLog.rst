@@ -201,7 +201,7 @@ Skeletons
 .. _known-issues-5.4.0:
 
 Known Issues
-~~~~~~~~~~~~
+""""""""""""
 
 -  Some older build types versions have been removed by error.
    Consequently, using MicroEJ SDK ``5.4.0``, it may be not possible to
@@ -336,7 +336,7 @@ Skeletons
 .. _known-issues-5.3.0:
 
 Known Issues
-~~~~~~~~~~~~
+""""""""""""
 
 -  ``[Studio]`` Library module build may lead to unexpected
    ``Unresolved Dependencies`` error in some cases (in ``sonar:init``
@@ -467,7 +467,7 @@ Skeletons
    ``firmware-singleapp`` skeleton
 
 Misc
-~~~~
+""""
 
 -  ``[Studio]`` Updated End User License Agreement
 -  ``[SDK]`` Added support for generating Application Options in
