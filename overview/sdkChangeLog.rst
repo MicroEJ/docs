@@ -9,6 +9,8 @@ MicroEJ SDK Distribution Changelog
 ~~~~~~~~~~~~~~~~~~~~
 
 -  Included :ref:`MicroEJ Studio / SDK 5.4.0 <changelog-5.4.0>`
+  
+.. _known-issues-21.03:
 
 **KNOWN ISSUES**:
 
@@ -130,6 +132,23 @@ MicroEJ Module Manager
 and Eclipse Oxygen, so it can still be installed on a previous MicroEJ
 Studio / SDK Distribution.
 
+.. _known-issues-5.4.0:
+
+Known Issues
+""""""""""""
+
+-  Some older build types versions have been removed by error.
+   Consequently, using MicroEJ SDK ``5.4.0``, it may be not possible to
+   build modules that have been created with an older MicroEJ SDK
+   version (For example, `MicroEJ
+   GitHub <https://github.com/MicroEJ/>`__ code). The list of missing
+   build types:
+
+   -  ``[Studio]`` build-application ``7.0.2``
+   -  ``[Studio]`` build-microej-javalib ``4.1.1``
+   -  ``[SDK]`` build-firmware-singleapp ``1.2.10``
+   -  ``[SDK]`` build-microej-extension ``1.3.2``
+
 General
 """""""
 
@@ -200,23 +219,6 @@ Skeletons
    ``microej-javaimpl`` and ``microej-extension`` skeletons (intern
    changelog and ``.dbk`` file)
 
-.. _known-issues-5.4.0:
-
-Known Issues
-""""""""""""
-
--  Some older build types versions have been removed by error.
-   Consequently, using MicroEJ SDK ``5.4.0``, it may be not possible to
-   build modules that have been created with an older MicroEJ SDK
-   version (For example, `MicroEJ
-   GitHub <https://github.com/MicroEJ/>`__ code). The list of missing
-   build types:
-
-   -  ``[Studio]`` build-application ``7.0.2``
-   -  ``[Studio]`` build-microej-javalib ``4.1.1``
-   -  ``[SDK]`` build-firmware-singleapp ``1.2.10``
-   -  ``[SDK]`` build-microej-extension ``1.3.2``
-
 .. _changelog-5.3.1:
 
 [5.3.1] - 2020-12-11
@@ -259,6 +261,16 @@ Skeletons
 **NOTE:** This release is both compatible with Eclipse version
 ``2020-06`` and Eclipse Oxygen, so it can still be installed on a
 previous MicroEJ Studio / SDK Distribution.
+
+.. _known-issues-5.3.0:
+
+Known Issues
+""""""""""""
+
+-  ``[Studio]`` Library module build may lead to unexpected
+   ``Unresolved Dependencies`` error in some cases (in ``sonar:init``
+   target / ``ivy:cachepath`` task). Workaround is to trigger the
+   library build again.
 
 General
 """""""
@@ -334,16 +346,6 @@ Skeletons
 
 -  ``[Studio]`` Fixed ``microej-mock`` content script initialization
    folder name
-
-.. _known-issues-5.3.0:
-
-Known Issues
-""""""""""""
-
--  ``[Studio]`` Library module build may lead to unexpected
-   ``Unresolved Dependencies`` error in some cases (in ``sonar:init``
-   target / ``ivy:cachepath`` task). Workaround is to trigger the
-   library build again.
 
 
 .. _changelog-5.2.0:
