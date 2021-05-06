@@ -77,9 +77,10 @@ at https://github.com/MicroEJ/FreeRTOS/tree/tuto-microej-firmware-from-scratch.
 Prerequisites
 -------------
 
-* MicroEJ SDK version 5.1.0 or higher (distribution 19.05). Can be
-  downloaded from https://developer.microej.com/ (`direct link
-  <https://repository.microej.com/packages/SDK/19.05/MicroEJ-SDK-Installer-Win64-19.05.exe>`_)
+* MicroEJ SDK version 5.3.0 or higher (distribution 20.10). Can be
+  downloaded from https://repository.microej.com/packages/SDK (tested on 
+  `MicroEJ SDK distribution 20.10
+  <https://repository.microej.com/packages/SDK/20.10/MicroEJ-SDK-Installer-Win64-20.10.exe>`_)
 * Windows 10 with Windows Subsystem for Linux (WSL). See the
   `installation guide
   <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_.
@@ -1292,3 +1293,10 @@ The next steps recommended are:
 * Validate the implementation with the `PQT Core
   <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`_.
 * Follow the :ref:`tutorial_create_platform_build_and_run_scripts` tutorial to get this MicroEJ Platform fully automated for build and execution. 
+
+..
+   | Copyright 2020-2021, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
