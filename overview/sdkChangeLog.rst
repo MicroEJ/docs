@@ -1,6 +1,7 @@
 ..
    note : this file was excluded from the build as it is included in the sdk.rst page
 
+----------------------------------
 MicroEJ SDK Distribution Changelog
 ----------------------------------
 
@@ -86,6 +87,7 @@ for more details.
 -  Included :ref:`MicroEJ Studio / SDK version 5.0.1 <changelog-5.0.1>`
 -  Included Sonarlint version ``4.0.0``
 
+---------------------
 MicroEJ SDK Changelog
 ---------------------
 
@@ -714,7 +716,7 @@ Skeletons
 -  ``[SDK]`` Added the latest HIL Engine API to mock-up skeleton (Start
    and Stop listeners hooks)
 
-
+---------------
 Migration Notes
 ---------------
 
@@ -851,7 +853,7 @@ The new file system structure shall look like:
         private.modules.list
         public.modules.list
 
-
+---------------------------
 Advanced Installation Notes
 ---------------------------
 
@@ -906,6 +908,7 @@ One solution is to configure Eclipse as following:
 -  Check there is not more SWT/MOZILLA related errors
    (``Window > Show View > Other... > General > Error Log``)
 
+---------------
 MicroEJ Support
 ---------------
 
