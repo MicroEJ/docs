@@ -1,5 +1,5 @@
 ..
-   note : this file was excluded from the build as it is included in the sdk.rst page
+   Note : This file has been excluded from the build in conf.py as it is included in the sdk.rst page.
 
 ----------------------------------
 MicroEJ SDK Distribution Changelog
@@ -908,13 +908,6 @@ One solution is to configure Eclipse as following:
 -  Check there is not more SWT/MOZILLA related errors
    (``Window > Show View > Other... > General > Error Log``)
 
----------------
-MicroEJ Support
----------------
-
-For any issue or question with MicroEJ, please first consult `MicroEJ
-Forum <https://forum.microej.com/>`__ or contact `MicroEJ
-Support <mailto:support@microej.com>`__.
 
 
 ..

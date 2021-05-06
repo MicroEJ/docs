@@ -1,5 +1,5 @@
 ..
-   note : this file was excluded from the build as it is included in the sdk.rst page
+   Note : This file has been excluded from the build in conf.py as it is included in the sdk.rst page.
 
 Release Notes
 -------------
