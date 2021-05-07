@@ -895,8 +895,7 @@ One solution is to configure Eclipse as following:
 
    ::
 
-       ~~launcher.GTK_Version
-       2
+      --launcher.GTK_Version 2
 
 -  Ensure GTK is correctly installed (``libwebkitgtk`` packet)
 -  Configure the following environment variables
