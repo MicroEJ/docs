@@ -1,9 +1,6 @@
 MicroEJ SDK
 ===========
 
-Introduction
-------------
-
 MicroEJ SDK provides tools based on Eclipse to develop software
 applications for MicroEJ-ready devices. MicroEJ SDK allows application
 developers to write MicroEJ Applications and run them on a virtual
@@ -48,14 +45,15 @@ detailed in the following sections of this chapter :
 
 -  :ref:`Build and run your first Application on Device <device_build>`
 
-.. include:: sdkReleaseNotes.rst
+For further information on the SDK installation and releases, you can check these chapters:
 
-.. include:: sdkChangeLog.rst
+.. toctree::
+   :maxdepth: 1
 
-.. include:: sdkInstallationNotes.rst
-
-.. include:: sdkMigrationNotes.rst
-
+   sdkReleaseNotes
+   sdkChangeLog
+   sdkInstallationNotes
+   sdkMigrationNotes
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 

@@ -1,12 +1,5 @@
-..
-   Note : This file has been excluded from the build in conf.py as it is included in the sdk.rst page.
-
 Release Notes
 -------------
-
-------------
-Introduction
-------------
 
 Starting from MicroEJ version ``5.0.0``, MicroEJ Architectures are distributed separately from MicroEJ SDK. MicroEJ Architectures for Evaluation can be downloaded from the  `Architectures Repository <https://repository.microej.com/architectures>`_. MicroEJ Architectures for Production can be downloaded from the  `License Server <https://license.microej.com>`_ or from `MicroEJ Support <mailto:support@microej.com>`_.
 

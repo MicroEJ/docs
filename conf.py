@@ -39,10 +39,6 @@ exclude_patterns = [
     'README.rst',
     'section*.rst',
     '**/section*.rst',
-    '**/sdkChangeLog.rst',
-    '**/sdkReleaseNotes.rst',
-    '**/sdkInstallationNotes.rst',
-    '**/sdkMigrationNotes.rst',
 ]
 
 # HTML theme options

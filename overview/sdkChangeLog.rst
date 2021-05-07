@@ -1,6 +1,3 @@
-..
-   Note : This file has been excluded from the build in conf.py as it is included in the sdk.rst page.
-
 ----------------------------------
 MicroEJ SDK Distribution Changelog
 ----------------------------------
