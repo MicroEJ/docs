@@ -54,7 +54,7 @@ Core Engine
 -  Added support for applying Feature relocations
 
 Foundation Libraries
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 -  Updated ``KF`` implementation to apply Feature relocations using the
    Core Engine. The former Java implementation is deprecated but can
@@ -726,9 +726,8 @@ Tools
          unchanged (``project.file`` option in collaboration with
          ``augmentCProject`` scripts)
 
--  Launch configuration: ``Device > Deploy`` options allow to override
-   the default Platform configuration in order to deploy each MicroEJ
-   file into a separate folder.
+   -  Launch configuration: ``Device > Deploy`` options allow to override the default Platform configuration in order to deploy each MicroEJ file into a separate folder.
+
 -  Fixed wrong ELF file generation when a section included in a LOAD
    segment was generated before one of the sections included in a LOAD
    segment declared before the first one (integrated in ELF Utils and
