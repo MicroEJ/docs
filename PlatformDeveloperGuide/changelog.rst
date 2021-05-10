@@ -139,7 +139,7 @@ Foundation Libraries
    supplementary characters
 -  Fixed ``java.lang.NullPointerException`` thrown when
    ``java.util.WeakHashMap.put()`` method is called with a ``null`` key
-   (introduced in version ``7.11.0``)
+   (introduced in version :ref:`7.11.0 <changelog-7.11.0>`)
 
 .. _integration-1:
 
@@ -163,7 +163,7 @@ Integration
    named ``Types``
 -  Fixed generated Feature filename (unexpanded
    ``${feature.output.basename}`` variable, introduced in version
-   ``7.13.0``)
+   :ref:`7.13.0 <changelog-7.13.0>`)
 -  Fixed definition of missing default values for memory options (same
    values than launcher default ones)
 -  [Tiny,Multi] - Added display of the Core Engine capability when
@@ -201,7 +201,7 @@ Core Engine
 -  [QNX70] - Embed method names and line numbers information in the
    application
 -  [Cortex-A/QNX70] - Fixed wrong float/double arguments passed to the
-   SNI natives (introduced in version ``7.12.0``)
+   SNI natives (introduced in version :ref:`7.12.0 <changelog-7.12.0>`)
 
 Simulator
 ~~~~~~~~~
@@ -237,7 +237,7 @@ Tools
 ~~~~~
 
 -  Fixed Feature build script for MicroEJ SDK 5.x (introduced in version
-   ``7.13.0``)
+   :ref:`7.13.0 <changelog-7.13.0>`)
 -  Updated Memory Map Scripts for MicroUI 3 and Service libraries
 
 .. _section-6:
@@ -255,7 +255,7 @@ Core Engine
    toolchain <https://github.com/espressif/esp-idf/commit/ff29e3e7a24a715bc7f5ba453c83d694ba0ec1e2>`__
    (``simikou2``)
 
-.. _section-7:
+.. _changelog-7.13.0:
 
 7.13.0 (2020-07-03)
 -------------------
@@ -324,7 +324,7 @@ Core Engine
    context instead of the Feature context)
 -  [ARMCC5] - Fixed link error
    ``Undefined symbol _java_Ljava_lang_OutOfMemoryError_field_OOMEMethodAddr_I``
-   with ARM Compiler 5 linker (introduced in version ``7.12.0``)
+   with ARM Compiler 5 linker (introduced in version :ref:`7.12.0 <changelog-7.12.0>`)
 
 .. _foundation-libraries-2:
 
@@ -398,7 +398,7 @@ Simulator
 -  Fixed heap consumption simulation for objects instances of classes
    declaring fields of type ``float`` or ``double``
 -  Fixed Device UID not displayed in the Front Panel window title
-   (introduced in version ``7.11.0``)
+   (introduced in version :ref:`7.11.0 <changelog-7.11.0>`)
 -  Fixed loading of a resource from a JAR when the path starts with
    ``/``
 -  Fixed potential deadlock on Front Panel startup in some cases
@@ -414,9 +414,9 @@ Simulator
    analyzer crash
 -  [Multi] - Fixed potential crash (``java.lang.NullPointerException``)
    in debug mode when debugging an Application (introduced in version
-   ``7.10.0``)
+   :ref:`7.10.0 <changelog-7.10.0>`)
 -  [Multi] - Fixed error when using ``KF`` library without defining a
-   ``kernel.kf`` file in the Kernel (introduced in version ``7.10.0``)
+   ``kernel.kf`` file in the Kernel (introduced in version :ref:`7.10.0 <changelog-7.10.0>`)
 
 .. _soar-3:
 
@@ -443,14 +443,14 @@ Tools
 -  Fixed HIL Engine to exit as soon as the Simulator is disconnected
    (avoid remaining detached processes)
 -  Fixed ELF to Map generating symbol addresses different from the ELF
-   symbol addresses (introduice in version ``7.11.0``)
+   symbol addresses (introduice in version :ref:`7.11.0 <changelog-7.11.0>`)
 -  Fixed Heap Dumper crash when a wrong object header is encountered
 -  Fixed Heap Dumper failure when a memory dump is larger than the heap
    section
 -  Fixed Heap Dumper crash when loading an Intel HEX file that contains
    lines of type ``02``
 
-.. _section-8:
+.. _changelog-7.12.0:
 
 7.12.0 (2019-10-16)
 -------------------
@@ -504,10 +504,10 @@ Simulator
    declared with only 2 digits (e.g. ``25`` was parsed as ``2``)
 -  Fixed error parsing of an array of ``byte`` when an element is
    declared with the unsigned hexadecimal notation (e.g. ``0xFF``)
-   (introduced in version ``7.10.0``)
+   (introduced in version :ref:`7.10.0 <changelog-7.10.0>`)
 -  Fixed crash when ``ej.bon.ResourceBuffer.readString()`` is called on
    a String greater than ``63`` characters (introduced in version
-   ``7.10.0``)
+   :ref:`7.10.0 <changelog-7.10.0>`)
 -  Fixed code coverage ``.cc`` generation of classpath directories
 -  Fixed crash during a GC when computing the references map of a
    complex method (an error message is dumped with the involved method
@@ -548,7 +548,7 @@ Tools
 -  Fixed Code Coverage Analyzer potential generated empty report (wrong
    load of classfiles from JAR files)
 
-.. _section-9:
+.. _changelog-7.11.0:
 
 7.11.0 (2019-06-24)
 -------------------
@@ -654,13 +654,13 @@ Simulator
 -  Fixed ``Object.clone()`` crash when an OutOfMemory occurs
 -  Fixed potential crash when calling an abstract method (some
    interfaces of the hierarchy were not taken into account - introduced
-   in version ``7.10.0``)
+   in version :ref:`7.10.0 <changelog-7.10.0>`)
 -  Fixed OutOfMemory errors even if the heap is not full (resources
    loaded from ``Class.getResourceAsStream`` and
    ``ResourceBuffer.open()`` were taken into account in simulated heap
-   memory - introduced in version ``7.10.0``)
+   memory - introduced in version :ref:`7.10.0 <changelog-7.10.0>`)
 -  Fixed potential crash when a GC occurs while a ``ResourceBuffer`` is
-   open (introduced in version ``7.10.0``)
+   open (introduced in version :ref:`7.10.0 <changelog-7.10.0>`)
 -  Fixed potential debugger hangs when an exception was thrown but not
    caught in the same method
 -  [Multi] Fixed wrong class loading in some cases
@@ -749,7 +749,7 @@ Simulator
 -  Fixed ``Object.getClass()`` may return a Class instance owned by a
    Feature for type owned by the Kernel
 
-.. _section-11:
+.. _changelog-7.10.0:
 
 7.10.0 (2019-03-29)
 -------------------
@@ -1184,7 +1184,7 @@ Core Engine
 ~~~~~~~~~~~
 
 -  Fixed External Resource Loader link error (introduced in version
-   ``6.13.0``)
+   :ref:`6.13.0 <changelog-6.13.0>`)
 
 .. _section-29:
 
@@ -1257,7 +1257,7 @@ Tools
 -  Modified ``Firmware Linker`` internal scripts structure for new
    Virtual Devices tools
 
-.. _section-32:
+.. _changelog-6.13.0:
 
 6.13.0 (2017-07-21)
 -------------------
@@ -1374,10 +1374,10 @@ Integration
 ~~~~~~~~~~~
 
 -  Fixed missing properties in ``release.properties`` (introduced in
-   version ``v6.9.1``)
+   version :ref:`v6.9.1 <changelog-6.9.1>`)
 -  Fixed artifacts build dependencies to private dependencies
 
-.. _section-37:
+.. _changelog-6.9.1:
 
 6.9.1 (2017-05-29)
 ------------------
