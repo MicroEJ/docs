@@ -5,7 +5,7 @@ MicroEJ Architecture
 ====================
 
 Overview
-============
+========
 
 MicroEJ Architecture features the MicroEJ Core Engine built for a specific instructions set (ISA) and compiler.
 
@@ -55,6 +55,8 @@ For example, MicroEJ Architecture versions for Arm® Cortex®-M4 microcontroller
 https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/.
 
 See :ref:`architecture_import` for usage.
+
+.. include:: architectureChangelog.rst
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 

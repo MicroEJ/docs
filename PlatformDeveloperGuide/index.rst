@@ -9,7 +9,6 @@ Platform Developer Guide
    introduction
    platform
    architecture
-   changelog
    pack
    platformCreation
    platformQualification

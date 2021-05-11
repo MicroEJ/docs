@@ -39,6 +39,7 @@ exclude_patterns = [
     'README.rst',
     'section*.rst',
     '**/section*.rst',
+    '**/architectureChangelog.rst',
 ]
 
 # HTML theme options
