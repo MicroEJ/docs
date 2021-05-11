@@ -21,7 +21,7 @@ Application development is based on the following elements:
    applications. It is based on Eclipse and is relies on the integrated
    Java compiler (JDT). It also provides a dependency manager for
    managing MicroEJ Libraries (see :ref:`mmm`).
-   The current distribution of MicroEJ SDK (``20.10``) is built on top of 
+   The current distribution of MicroEJ SDK (since ``20.10``) is built on top of 
    `Eclipse 2020-06 <https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-java-developers>`_.
 
 -  MicroEJ Platform, a software package including the resources and
