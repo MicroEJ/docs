@@ -32,55 +32,133 @@ Dependencies
 Installation
 ============
 
-FS is an additional module. In the platform configuration file, check
-:guilabel:`FS` to install it. When checked, the properties file ``fs`` > ``fs.properties`` are required during platform creation in
-order to configure the module.
+FS is an additional module. In the platform configuration file, check :guilabel:`FS` to install it. 
+When checked, the properties file ``fs/fs.properties`` is required during platform creation in order to configure the module.
+This properties file specifies the characteristics of the File System used in the C project (case sensitivity, root
+directory, file separator, etc.).
 
-The properties file must / can contain the following properties:
+The FS module defines two pre-configured File System types: ``Unix`` and ``FatFS``.
+Some characteristics don't need to be specified for these File System types, but they can be overridden if needed.
+For example, specifying a ``Unix`` File System type will automatically set the file separator to ``/``.
 
--  ``fs`` [optional, default value is "Custom"]: Defines the kind of
-   File System native stack used in the C project.
+If none of the pre-configured File System types correspond to the File System used in the C project, the ``Custom``
+type can be used. When this type is selected, all the File System characteristics must be specified in the properties file.
 
-   -  ``Custom``: select this configuration to make a specific File
-      System portage.
+The list below describes the properties that can be defined in the file ``fs/fs.properties``:
 
-   -  ``FatFS``: select this configuration to use FatFS native File
-      System-compliant settings.
+-  ``fs``: Defines the type of File System used in the C project (optional, the default value is ``Unix``). 
+   This property can have one of the following values:
 
--  ``root.dir`` [optional, for a FatFS File System. Mandatory, for a
-   Custom File System.]: Defines the native File System root volume
-   (default value is "/" for FatFS).
+   -  ``Unix``: select this configuration when using a Unix-like File System
+      (case-sensitive, file separator is ``/``).
 
--  ``user.dir`` [optional, for a FatFS File System. Mandatory, for a
-   Custom File System.]: Defines the native File System user directory
-   (default value is "/usr" for FatFS).
+   -  ``FatFS``: select this configuration when using FatFS File System
+      (case-insensitive, file separator is ``/``).
+	  
+   -  ``Custom``: select this configuration when using another type of File System.
+   
+-  ``root.dir``: Defines the File System root volume. This property is optional for ``Unix``
+   and ``FatFS`` (``/`` by default for both).
 
--  ``tmp.dir`` [optional, for a FatFS File System. Mandatory, for a
-   Custom File System.]: Defines the native File System temporary
-   directory (default value is "/tmp" for FatFS).
+-  ``user.dir``: Defines the File System user directory. This property is optional for ``FatFS``
+   (``/usr/`` by default).
 
--  ``file.separator`` [optional, for a FatFS File System. Mandatory, for
-   a Custom File System.]: Defines the native File System file separator
-   (default value is "/" for FatFS).
+-  ``java.io.tmpdir``: Defines the File System temporary directory.  This property is optional for 
+   ``Unix`` and ``FatFS`` (``/tmp/`` by default for both).
+   
+-  ``file.separator``: Defines the File System file separator. This property is optional for ``Unix``
+   and ``FatFS`` (``/`` by default for both).
 
--  ``path.separator`` [optional, for a FatFS File System. Mandatory, for
-   a Custom File System.]: Defines the native File System path separator
-   (default value is ":" for FatFS).
+-  ``path.separator``: Defines the File System path separator. This property is optional for ``Unix``
+   and ``FatFS`` (``:`` by default for both).
 
+-  ``case.sensitivity``: Defines the case sensitivity of the File System. This property is optional 
+   for ``Unix`` (``caseSensitive`` by default) and  ``FatFS`` (``caseInsensitive`` by default).
+   This property can have one of the following values:
+
+   - ``caseSensitive``: the File System is case-sensitive.
+   
+   - ``caseInsensitive``: the File System is case-insensitive.
+   
+   
+Properties File Template
+------------------------
+
+The following snippet can be used as a template for ``fs.properties`` file:
+
+.. code-block:: properties
+
+	# Defines the type of File System used in the C project.
+	# Possible values are:
+	#   - FatFs
+	#   - Unix
+	#   - Custom
+	# @optional, default value is "Unix"
+	#fs=
+
+	# Defines the File System root volume.
+	# @optional for the following File System types:
+	#   - FatFs (default value is "/")
+	#   - Unix (default value is "/")
+	# @mandatory for the following File System type:
+	#   - Custom
+	#root.dir=
+
+	# Defines the File System user directory.
+	# @optional for the following File System type:
+	#   - FatFs (default value is "/usr")
+	# @mandatory for the following File System types:
+	#   - Unix
+	#   - Custom
+	#user.dir=
+
+	# Defines the File System temporary directory.
+	# @optional for the following File System types:
+	#   - FatFs (default value is "/tmp")
+	#   - Unix (default value is "/tmp")
+	# @mandatory for the following File System type:
+	#   - Custom
+	#java.io.tmpdir=
+
+	# Defines the File System file separator.
+	# @optional for the following File System types:
+	#   - FatFs (default value is "/")
+	#   - Unix (default value is "/")
+	# @mandatory for the following File System type:
+	#   - Custom
+	#file.separator=
+
+	# Defines the File System path separator.
+	# @optional for the following File System types:
+	#   - FatFs (default value is ":")
+	#   - Unix (default value is ":")
+	# @mandatory for the following File System type:
+	#   - Custom
+	#path.separator=
+
+	# Defines the case sensitivity of the File System.
+	# Valid values are "caseInsensitive" and "caseSensitive".
+	# @optional for the following File System types:
+	#   - FatFs (default value is "caseInsensitive")
+	#   - Unix (default value is "caseSensitive")
+	# @mandatory for the following File System type:
+	#   - Custom
+	#case.sensitivity=
+   
 
 Use
 ===
 
 The `FS API Module <https://repository.microej.com/modules/ej/api/fs/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project in order to allow access to the FS library.
+Application project to use the FS library.
 
-::
+.. code-block:: xml
 
    <dependency org="ej.api" name="fs" rev="2.0.6"/>
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
