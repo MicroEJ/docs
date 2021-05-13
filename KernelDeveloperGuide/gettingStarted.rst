@@ -40,7 +40,7 @@ Setup a Platform
 
 Before building the firmware, a target platform must be configured. The
 easiest way to do it is to copy a platform file into the
-``myfirmware > dropins`` folder. Such file usually ends with ``.jpf``.
+:guilabel:`myfirmware` > :guilabel:`dropins` folder. Such file usually ends with ``.jpf``.
 For other ways to setup the input platform to build a firmware see
 :ref:`module_natures_platform_selection`.
 
@@ -50,7 +50,7 @@ Build the Firmware
 In the Package Explorer, right-click on the firmware project and select
 :guilabel:`Build Module`. The build of the Firmware and Virtual
 Device may take several minutes. When the build is succeed, the folder
-``myfirmware > target~ > artifacts`` contains the firmware output artifacts
+:guilabel:`myfirmware` > :guilabel:`target~` > :guilabel:`artifacts` contains the firmware output artifacts
 (see :ref:`in_out_artifacts`) :
 
 -  ``mymodule.out``: The Firmware Binary to be programmed on device.
@@ -181,7 +181,7 @@ You can find below what are the different System Apps included in the Flavor:
 +------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -853,7 +853,7 @@ installed, the *stub* module will be used.
 
 In the platform configuration file, check :guilabel:`UI` > :guilabel:`Display` to
 install the Display module. When checked, the properties file
-:guilabel:`display` > :guilabel:`display.properties` is required during platform creation to
+``display/display.properties`` is required during platform creation to
 configure the module. This configuration step is used to choose the kind
 of implementation (see :ref:`section_display_implementation`).
 

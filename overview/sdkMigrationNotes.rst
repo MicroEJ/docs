@@ -34,31 +34,31 @@ Enable New Wizards Shortcuts in MicroEJ Perspective
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Eclipse perspective settings are stored in the workspace metadata, so
-the new wizards shortcuts (``Add-On Library Project`` and
-``Module Project``) are not visible in the ``File > New`` menu.
+the new wizards shortcuts (:guilabel:`Add-On Library Project` and
+:guilabel:`Module Project`) are not visible in the :guilabel:`File` > :guilabel:`New` menu.
 
 The MicroEJ perspective must be reset to its default settings as
 following:
 
--  Click on ``Windows > Perspective > Open Perspective > Other...`` menu
--  Select ``MicroEJ`` perspective
--  Click on ``Windows > Perspective > Reset Perspective...`` menu
--  Click on ``Yes`` button to accept to reset the MicroEJ perspective to
+-  Click on :guilabel:`Windows` > :guilabel:`Perspective` > :guilabel:`Open Perspective` > :guilabel:`Other...` menu
+-  Select :guilabel:`MicroEJ` perspective
+-  Click on :guilabel:`Windows` > :guilabel:`Perspective` > :guilabel:`Reset Perspective...` menu
+-  Click on :guilabel:`Yes` button to accept to reset the MicroEJ perspective to
    its defaults.
 
-The new wizards shortcuts are now visible into ``File > New`` menu.
+The new wizards shortcuts are now visible into :guilabel:`File` > :guilabel:`New` menu.
 
 Re-enable the Ivy Preferences Pages (Advanced Use)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The original ``Window > Preferences > Ivy`` pages can be re-enabled as
+The original :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Ivy` pages can be re-enabled as
 following:
 
 -  Close all running instances of MicroEJ Studio / SDK
 -  Edit ``MicroEJ-[SDK[Studio].ini`` and add the property
    ``-Dorg.apache.ivy.showAdvancedPrefs=true``
 -  Start MicroEJ Studio / SDK again
--  Go to ``Window > Preferences > Module Manager`` page
+-  Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Module Manager` page
 
 A new link ``Ivy settings`` should appear on the bottom of the page. It
 opens a popup window with the original Ivy preferences pages.
@@ -81,9 +81,9 @@ higher is required).
 A Wadapps Application Project can be updated as following:
 
 -  Right-click on the project, then
-   ``Configure > Remove Sandboxed Application Nature``
+   :guilabel:`Configure` > :guilabel:`Remove Sandboxed Application Nature`
 -  Right-click on the project, then
-   ``Configure > Add Sandboxed Application Nature``
+   :guilabel:`Configure` > :guilabel:`Add Sandboxed Application Nature`
 -  Update ``module.ivy`` dependency to fetch
    ``ej.library.wadapps.framework`` version ``1.9.0`` (or perform
    MicroEJ Module Manager update as defined below)
@@ -100,7 +100,7 @@ maintained in future versions.
 
 The ``module.ivy`` can be updated as following:
 
--  Right-click on ``module.ivy``, then ``Update Module Dependencies...``
+-  Right-click on ``module.ivy``, then :guilabel:`Update Module Dependencies...`
 
 This has for effect to both migrate the ``module.ivy`` to the MicroEJ
 Module Manager semantic and also to update dependencies version to the

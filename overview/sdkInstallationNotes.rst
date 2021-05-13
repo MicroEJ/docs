@@ -21,7 +21,7 @@ folders that should be excluded from Windows Defender monitoring:
 -  your workspace(s) folder(s)
 
 The exclusion page is available in the ``Settings`` application
-(``Windows Security > Virus & threat protection > Manage settings > Exclusions > Add or remove exclusions``).
+(:guilabel:`Windows Security` > :guilabel:`Virus & threat protection` > :guilabel:`Manage settings` > :guilabel:`Exclusions` > :guilabel:`Add or remove exclusions`).
 
 ---------------
 Linux Specifics
@@ -51,7 +51,7 @@ One solution is to configure Eclipse as following:
 
 -  Restart MicroEJ Studio/SDK
 -  Check there is not more SWT/MOZILLA related errors
-   (``Window > Show View > Other... > General > Error Log``)
+   (:guilabel:`Window` > :guilabel:`Show View` > :guilabel:`Other...` > :guilabel:`General` > :guilabel:`Error Log`)
 
 
 

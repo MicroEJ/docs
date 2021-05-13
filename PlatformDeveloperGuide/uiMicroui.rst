@@ -20,7 +20,7 @@ MicroUI library defines a Low Level UI framework for embedded devices. This modu
 Architecture
 ============
 
-MicroUI library is the entry point to perform some drawings on a display and to interact with user input events. This library contains only a minimal set of basic APIs. High-level libraries can be used to have more expressive power, such as :ref:`mwt` . In addition to this restricted set of APIs, the MicroUI implementation has been designed so that the EDC and BON footprint is minimal. 
+MicroUI library is the entry point to perform some drawings on a display and to interact with user input events. This library contains only a minimal set of basic APIs. High-level libraries can be used to have more expressive power, such as :ref:`mwt`. In addition to this restricted set of APIs, the MicroUI implementation has been designed so that the EDC and BON footprint is minimal. 
 
 At MicroEJ application startup all MicroUI objects relative to the I/O devices are created and accessible. The following MicroUI methods allow you to access these objects:
 
@@ -161,7 +161,7 @@ Installation
 
 The MicroUI library is an additional module. In the platform
 configuration file, check :guilabel:`UI` > :guilabel:`MicroUI` to install the library.
-When checked, the XML file :guilabel:`microui` > :guilabel:`microui.xml` is required
+When checked, the XML file ``microui/microui.xml`` is required
 during platform creation in order to configure the module. This
 configuration step is used to extend the MicroUI library. Refer to the
 chapter :ref:`section_static_init` for more information about the
@@ -174,7 +174,7 @@ Use
 See :ref:`MicroUI <section_app_microui>` chapter in Application Developer Guide.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

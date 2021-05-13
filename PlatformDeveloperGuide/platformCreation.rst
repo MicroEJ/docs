@@ -206,7 +206,7 @@ To build the MicroEJ Platform, perform as a regular :ref:`mmm_module_build`:
 
       Total time: 43 seconds
   
-Then , import the Platform directory to your MicroEJ SDK workspace as mentioned in the report. You should get a ready-to-use MicroEJ Platform project
+Then, import the Platform directory to your MicroEJ SDK workspace as mentioned in the report. You should get a ready-to-use MicroEJ Platform project
 in the workspace available for the MicroEJ Application project to run on. You can also check the MicroEJ Platform availability in:
 :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
 
@@ -328,7 +328,7 @@ Using a MicroEJ Platform, the user can compile a MicroEJ Application on that Pla
 The result of this compilation is a ``microejapp.o`` file.
 
 This file has to be linked with the MicroEJ Platform runtime file (``microejruntime.a``) 
-and a third-party C project, called the Board Support Package (BSP) ,
+and a third-party C project, called the Board Support Package (BSP),
 to obtain the final binary file (MicroEJ Firmware).
 For more information, please consult the :ref:`MicroEJ build process overview <build_process_overview>`.
 
@@ -426,7 +426,7 @@ Options
 
 BSP connection options can be specified as Platform options or as Application options or a mix of both.
 
-The following table describes Platform options, configured in ``bsp`` > ``bsp.properties`` file of the Platform configuration project.
+The following table describes Platform options, configured in ``bsp/bsp.properties`` file of the Platform configuration project.
 
 .. list-table:: MicroEJ Platform Options for BSP Connection
    :widths: 1 5 3 

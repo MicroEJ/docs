@@ -264,7 +264,7 @@ to be able to target pre-generated images.
 
 In the platform configuration file, check :guilabel:`UI` > :guilabel:`Image Generator`
 to install the Image Generator module. When checked, the properties file
-``imageGenerator`` > ``imageGenerator.properties`` is required to specify the Image Generator extension project. When no extension is required (standalone mode only), this property is useless.
+``imageGenerator/imageGenerator.properties`` is required to specify the Image Generator extension project. When no extension is required (standalone mode only), this property is useless.
 
 Use
 ===
@@ -274,13 +274,13 @@ The MicroUI Image APIs are available in the class
 pre-generated image. When an image has been pre-processed, the MicroUI
 Image APIs ``getImage`` and ``loadImage`` will get/load the images.
 
-Refer to the chapter :ref:`application_options` (``Libraries`` >
-``MicroUI`` > ``Image``) for more information about specifying the image
+Refer to the chapter :ref:`application_options` (:guilabel:`Libraries` >
+:guilabel:`MicroUI` > :guilabel:`Image`) for more information about specifying the image
 configuration file.
 
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

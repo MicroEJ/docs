@@ -489,7 +489,7 @@ Installation
 
 ECOM-Comm Java library is an additional library. In the platform
 configuration file, check :guilabel:`Serial Communication` > :guilabel:`ECOM-COMM` to
-install it. When checked, the xml file :guilabel:`ecom-comm` > :guilabel:`ecom-comm.xml`
+install it. When checked, the xml file ``ecom-comm/ecom-comm.xml``
 is required during platform creation to configure the module (see
 :ref:`section_ecomcomm_xml`).
 
@@ -513,7 +513,7 @@ This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

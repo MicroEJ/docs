@@ -23,7 +23,7 @@ Installation
 
 Device Information is an additional module. In the platform
 configuration file, check :guilabel:`Device Information` to install it. When
-checked, the property file ``device > device.properties`` may be 
+checked, the property file ``device/device.properties`` may be 
 defined during platform creation to customize the module.
 
 The properties file must / can contain the following properties:
@@ -48,7 +48,7 @@ Application project in order to allow access to the Device library.
    <dependency org="ej.api" name="device" rev="1.0.2"/>
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

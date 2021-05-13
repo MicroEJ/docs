@@ -51,7 +51,7 @@ Creating a Front Panel Project
 A Front Panel project is created using the New Front Panel Project
 wizard. Select:
 
-``New > Project... > MicroEJ > Front Panel Project``
+:guilabel:`New` > :guilabel:`Project...` > :guilabel:`MicroEJ` > :guilabel:`Front Panel Project`
 
 The wizard will appear:
 
@@ -163,7 +163,7 @@ Editing Front Panel Files
 -------------------------
 
 To edit a ``.fp`` file, open it using the Eclipse XML editor (right-click on
-the ``.fp`` file, select ``Open With > XML Editor``). This editor features
+the ``.fp`` file, select :guilabel:`Open With` > :guilabel:`XML Editor`). This editor features
 syntax highlighting and checking, and content-assist based on the schema
 (XSD file) referenced in the fp file. This schema is a hidden file
 within the project's definitions folder. An incremental builder checks
@@ -173,7 +173,7 @@ itself.
 
 A preview of the Front Panel can be obtained by opening the Front Panel
 Preview
-(``Window > Show View > Other... > MicroEJ > Front Panel Preview``).
+(:guilabel:`Window` > :guilabel:`Show View` > :guilabel:`Other...` > :guilabel:`MicroEJ` > :guilabel:`Front Panel Preview`).
 
 The preview is updated each time the ``.fp`` file is saved.
 
@@ -366,7 +366,7 @@ Installation
 
 In the :ref:`platform configuration <platform_configuration_modules>` file, check :guilabel:`Front Panel` to
 install the Front Panel module. When checked, the properties file
-``frontpanel`` > ``frontpanel.properties`` is required during platform creation to
+``frontpanel/frontpanel.properties`` is required during platform creation to
 configure the module. This configuration step is used to identify and
 configure the Front Panel.
 
@@ -392,7 +392,7 @@ Use
 Launch an application on the Simulator to run the Front Panel.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
