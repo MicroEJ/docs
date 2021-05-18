@@ -32,7 +32,7 @@ MicroUI Implementation
 
 	* A feature was not able to call Display.callOnFlushCompleted().
 	* Stop feature: prevent NullPointerException when a kernel's EventGenerator is removed from event generators pool.
-	* Filter DeadFeatureException in MicroUI pump. .
+	* Filter DeadFeatureException in MicroUI pump.
 	* Drawing of thick arcs which represent an almost full circle.
 	* Drawing of thick faded arcs which pass by 0° angle.
 
@@ -105,7 +105,7 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Reduce Java heap usage. .
+	* Reduce Java heap usage.
 	* Fix empty images heap.
 	* Draw image algorithm does not respect image stride in certain circumstances.
 	* Fix flush limits of ``drawThickFadedLine``, ``drawThickEllipse`` and ``drawThickFadedEllipse``.
@@ -238,7 +238,7 @@ Simulator
 	
 **Removed**
 
-	* ``ej.tool.frontpanel#widget-microui`` has been replaced by ``com.microej.pack.ui#ui-pack(frontpanel)``. .
+	* ``ej.tool.frontpanel#widget-microui`` has been replaced by ``com.microej.pack.ui#ui-pack(frontpanel)``.
  
 ImageGenerator
 """"""""""""""
@@ -418,12 +418,12 @@ MicroUI Implementation
 
 	* Manage the Graphics Context clip on native side.
 	* Use java heap to store images metadata instead of using icetea heap (remove option "max offscreen").
-	* Optimize retrieval of all fonts .
-	* Ensure user buffer size is larger than LCD size .
-	* Use java heap to store flying images metadata instead of using icetea heap (remove option "max flying images") .
-	* Use java heap to store fill polygon algorithm's objects instead of using icetea heap (remove option "max edges") .
+	* Optimize retrieval of all fonts.
+	* Ensure user buffer size is larger than LCD size.
+	* Use java heap to store flying images metadata instead of using icetea heap (remove option "max flying images").
+	* Use java heap to store fill polygon algorithm's objects instead of using icetea heap (remove option "max edges").
 	* ``SecurityManager`` enabled as a boolean constant option (footprint removal by default).
-	* Remove ``FlyingImage`` feature using BON constants (option to enable it) .
+	* Remove ``FlyingImage`` feature using BON constants (option to enable it).
 	
 **Fixed**
 
@@ -433,7 +433,7 @@ MicroUI Implementation
 	* Wrong rendering of an antialiased arc with 360 angle.
 	* Debug option com.is2t.microui.log=true fails when there is a flying image.
 	* Gray scale between gray and white makes magenta.
-	* Minimal size of some buffers set by user is never checked .
+	* Minimal size of some buffers set by user is never checked.
 	* The format of a RAW image using "display" format is wrong.
 	* Dynamic image width for platform C1/2/4 may be wrong.
 	* Wrong pixel address when reading from a C2/4 display.
@@ -591,7 +591,7 @@ MicroUI Implementation
 
 **Changed**
 
-	* Improve ``TOP-LEFT`` anchor checks .
+	* Improve ``TOP-LEFT`` anchor checks.
 	
 **Fixed**
 
@@ -656,8 +656,8 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Returned X coordinates when drawing a string was considered as an error code .
-	* Exception when loading a font from an application .
+	* Returned X coordinates when drawing a string was considered as an error code.
+	* Exception when loading a font from an application.
 	* ``LLEXT`` link error with Architecture 6.13+ and UI 9+.
   
 [9.3.0] - 2017-08-24
@@ -759,7 +759,7 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Rendering of a RAW image on grayscale display is wrong .
+	* Rendering of a RAW image on grayscale display is wrong.
 
 ImageGenerator
 """"""""""""""
@@ -822,9 +822,9 @@ MicroUI Implementation
 
 **Fixed**
 
-	* Hardfault when filling a rectangle on an odd image .
+	* Hardfault when filling a rectangle on an odd image.
 	* Pixel rendering on non-standard LCD is wrong.
-	* RZ hardware accelerator: RAW images have to respect an aligned size .
+	* RZ hardware accelerator: RAW images have to respect an aligned size.
 	* Use the classpath when invoking the fonts and images generators.
 
 Simulator
@@ -879,9 +879,9 @@ MicroUI Implementation
 	
 **Fixed**
 
-	* Hardfault when filling a rectangle on an odd image .
+	* Hardfault when filling a rectangle on an odd image.
 	* Pixel rendering on non-standard LCD is wrong.
-	* RZ hardware accelerator: RAW images have to respect an aligned size .
+	* RZ hardware accelerator: RAW images have to respect an aligned size.
 	* Use the classpath when invoking the fonts and images generators.
 	* Exception when flipping an image out of display bounds.
 	* Flipped image is translated when clip is modified.
@@ -923,7 +923,7 @@ MicroUI Implementation
 	
 **Fixed**
 
-	* Display linker file is required even if there is no display on platform .
+	* Display linker file is required even if there is no display on platform.
 	* MicroUI on KF: NPE when changing app quickly (in several threads).
 	* MicroUI on KF: NPE when stopping a Feature and there's no eventHandler in a generator.
 	* MicroUI on KF: Remaining K->F link when there is no default event handler registered by the Kernel.
@@ -972,7 +972,7 @@ MicroUI Implementation
 
 **Changed**
 
-	* Improve image drawing timings .
+	* Improve image drawing timings.
 	* Runtime decoders can force the output RAW image's fully opacity.
 
 MWT
@@ -982,7 +982,7 @@ MWT
 
 	* With two panels, the paint is done but the screen is not refreshed.
 	* Widget show notify method is called before the panel is set.
-	* Widget still linked to panel when ``lostFocus()`` is called. .
+	* Widget still linked to panel when ``lostFocus()`` is called.
 
 Simulator
 """""""""
@@ -1002,8 +1002,8 @@ MicroUI Implementation
 **Added**
 
 	* RZ UI acceleration.
-	* External image decoders .
-	* Manage external memories like internal memories. .
+	* External image decoders.
+	* Manage external memories like internal memories.
 	* Custom display stacks (hardware acceleration).
 
 **Changed**
@@ -1012,11 +1012,11 @@ MicroUI Implementation
 	
 **Fixed**
 
-	* add KF rule: a thread cannot enter in a feature code while it owns a kernel monitor .
+	* add KF rule: a thread cannot enter in a feature code while it owns a kernel monitor.
 	* automatic flush is not waiting the end of previous flush.
 	* Invalid image rotation rendering.
-	* Do not embed Images & Fonts.list of kernel API classpath in app mode .
-	* Invalid icetea heap allocation .
+	* Do not embed Images & Fonts.list of kernel API classpath in app mode.
+	* Invalid icetea heap allocation.
 	* microui image: invalid "defaultformat" and "format" fields values.
 
 MWT
@@ -1031,7 +1031,7 @@ Simulator
 
 **Added**
 
-	* Can decode additional image formats .
+	* Can decode additional image formats.
 	
 **Fixed**
 

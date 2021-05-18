@@ -48,7 +48,7 @@ built with :ref:`module project <mmm_module_skeleton>` ``build-runtime-api`` ske
    </info>
 
 The ``runtime.api.name`` property define the name of the runtime
-environment (it is required by the build type) , and the
+environment (it is required by the build type), and the
 ``runtime.api.version`` property define it version. If the property
 ``runtime.api.version`` is not provided the build type computes it using
 the revision of the ivy module.

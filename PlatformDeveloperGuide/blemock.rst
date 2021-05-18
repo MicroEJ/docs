@@ -86,7 +86,7 @@ To configure the network:
       :align: center
 
    Additionally, the serial output of the device shows connection status.
-#. Connect your computer back to this network : your computer and the
+#. Connect your computer back to this network: your computer and the
    controller must be in the same network.
 
 Simulation
@@ -142,8 +142,8 @@ change them, erase the flash and reflash the firmware.
 Simulation Errors
 ~~~~~~~~~~~~~~~~~
 
-Error during the simulation : mock could not connect to controller
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error during the simulation: mock could not connect to controller
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This error means the mock process (Simulator) could not initialize the connection
 with the controller. Please check that the device is connected to the network
@@ -154,7 +154,7 @@ network.
 .. _firmware: http://repository.microej.com/packages/ble-mock/bluetooth-controller-ESP32WROOM-0.1.0.bin
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

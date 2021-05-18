@@ -71,14 +71,14 @@ Capabilities
 
 MicroEJ Core Engine defines 3 exclusive capabilities:
 
--  Mono-sandbox : capability to produce a monolithic firmware
+-  Mono-sandbox: capability to produce a monolithic firmware
    (default one).
 
--  Multi-Sandbox : capability to produce a extensible firmware on
+-  Multi-Sandbox: capability to produce a extensible firmware on
    which new applications can be dynamically installed. See section
    :ref:`multisandbox`.
 
--  Tiny application : capability to produce a compacted firmware
+-  Tiny application: capability to produce a compacted firmware
    (optimized for size). See section :ref:`core-tiny`.
 
 All MicroEJ Core Engine capabilities may not be available on all

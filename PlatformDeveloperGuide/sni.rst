@@ -42,7 +42,7 @@ native world:
 
 -  Return a value from the C world to the Java world.
 
--  Manipulate (read & write) shared memory both in Java and C : the
+-  Manipulate (read & write) shared memory both in Java and C: the
    immortal space.
 
 .. _fig_sni-flow:
@@ -185,7 +185,7 @@ access to the :ref:`[SNI] <esr-specifications>` library.
 
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

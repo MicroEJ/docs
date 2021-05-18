@@ -45,7 +45,7 @@ extension and are classified using the following naming convention:
 - ``ISA``: instruction set architecture (e.g. ``CM4`` for Arm® Cortex®-M4, ``ESP32`` for Espressif ESP32, ...).
 - ``TOOLCHAIN``: C compilation toolchain (e.g. ``CM4hardfp_GCC48``).
 - ``UID``: Architecture unique ID (e.g. ``flopi4G25``).
-- ``NAME`` : pack name (e.g. ``ui``).
+- ``NAME``: pack name (e.g. ``ui``).
 - ``VERSION``: pack version (e.g. ``13.0.4``).
 
 For example, MicroEJ Architecture Specific Pack UI versions for Arm®
@@ -64,7 +64,7 @@ They are classified using the following naming convention:
 
    com/microej/pack/[NAME]/[NAME]-pack/[VERSION]/
 
-- ``NAME`` : pack name (e.g. ``bluetooth``).
+- ``NAME``: pack name (e.g. ``bluetooth``).
 - ``VERSION``: pack version (e.g. ``2.1.0``).
 
 For example, MicroEJ Generic Pack Bluetooth versions are available at
@@ -79,7 +79,7 @@ convention:
    
    com/microej/pack/[NAME]/[NAME]/[VERSION]/
 
-- ``NAME`` : pack name (e.g. ``net``).
+- ``NAME``: pack name (e.g. ``net``).
 - ``VERSION``: pack version (e.g. ``9.2.3``).
 
 For example, the Legacy MicroEJ Generic Pack NET version ``9.2.3`` is

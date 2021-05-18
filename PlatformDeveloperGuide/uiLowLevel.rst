@@ -50,13 +50,13 @@ Simulator
 
    MicroUI Simulator Low Level API
 
-In the simulator the three UI engines are grouped in a mock called Front Panel. The Front Panel comes with a set of classes and interfaces which are the equivalent of headers file (``*.h``) of Embedded Platform .
+In the simulator the three UI engines are grouped in a mock called Front Panel. The Front Panel comes with a set of classes and interfaces which are the equivalent of headers file (``*.h``) of Embedded Platform.
 
 The specification of class names is:
 
 - Package are the same than the MicroUI library (``ej.microui.display``, ``ej.microui.event``, ``ej.microui.led``).
-- Name start with ``LLUI`` .
-- Second part name refers the UI engine: ``Display``, ``Input``, ``Led``
+- Name start with ``LLUI``.
+- Second part name refers the UI engine: ``Display``, ``Input``, ``Led``.
 - Files whose name ends with  ``Impl`` list methods to implement like embedded platform.
 - Files whose name has no suffix list internal UI engines functions.
 

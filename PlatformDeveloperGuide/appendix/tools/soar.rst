@@ -24,7 +24,7 @@ next table.
    +-------------+--------------------------------------------------------+
    | 3           | A mandatory option is not set.                         |
    +-------------+--------------------------------------------------------+
-   | 4           | A filename given in options does not exist .           |
+   | 4           | A filename given in options does not exist.            |
    +-------------+--------------------------------------------------------+
    | 5           | Failed to write the output file (access permissions    |
    |             | required for ``-toDir`` and ``-root`` options).        |
@@ -199,18 +199,18 @@ next table.
    +-------------+--------------------------------------------------------+
    | 355         | SNI file error: The data must be an integer.           |
    +-------------+--------------------------------------------------------+
-   | 356         | SNI file error : unexpected tag                        |
+   | 356         | SNI file error: unexpected tag                         |
    +-------------+--------------------------------------------------------+
-   | 357         | SNI file error : attributes <name>, <descriptor>,      |
+   | 357         | SNI file error: attributes <name>, <descriptor>,       |
    |             | <index> and <size> are expected in the specified tag.  |
    +-------------+--------------------------------------------------------+
-   | 358         | SNI file error : invalid SNI tag value.                |
+   | 358         | SNI file error: invalid SNI tag value.                 |
    +-------------+--------------------------------------------------------+
    | 359         | Error parsing the SNI file.                            |
    +-------------+--------------------------------------------------------+
    | 360         | XML Error on parsing the SNI file.                     |
    +-------------+--------------------------------------------------------+
-   | 361         | SNI incompatibility : illegal call to the specified    |
+   | 361         | SNI incompatibility: illegal call to the specified     |
    |             | data.                                                  |
    +-------------+--------------------------------------------------------+
    | 362         | No stack found for the specified native group.         |
@@ -228,7 +228,7 @@ next table.
    +-------------+--------------------------------------------------------+
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

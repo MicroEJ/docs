@@ -130,7 +130,7 @@ Explorer`, right-click on it and select :guilabel:`Open With` > :guilabel:`Heap 
 
 Alternatively, right-click on it and select :guilabel:`Heap Analyzer` > :guilabel:`Open heap viewer`
 
-This will open a Heap Viewer tool window for the selected heap dump [1]_ .
+This will open a Heap Viewer tool window for the selected heap dump [1]_.
 
 The Heap Viewer works in conjunction with two views:
 
@@ -227,7 +227,7 @@ during the period.
 Clicking on the graph area in a chart restricts the Outline view to just
 the types and instances that were created during the selected time
 period. Clicking on a chart but outside of the graph area restores the
-Outline view to showing all types and instances  [2]_ .
+Outline view to showing all types and instances  [2]_.
 
 The button Generate graphViz file in the top-right corner of the Heap
 Usage page generates a file compatible with graphviz (www.graphviz.org).
@@ -396,7 +396,7 @@ and new heap dumps, and highlights any differences between the values.
 
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

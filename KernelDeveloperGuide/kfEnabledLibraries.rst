@@ -29,7 +29,7 @@ The physical display is owned by only one context at a time (the Kernel
 or one Feature). The following cases may trigger a physical display
 owner switch:
 
--  during a call to  `Display.requestShow(Displayable) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestShow-ej.microui.display.Displayable->`_ , `Display.requestHide(Displayable) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestHide-ej.microui.display.Displayable->`_ or `Display.requestRender() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestRender-->`_: after the successful permission check, it is assigned to the context owner.
+-  during a call to  `Display.requestShow(Displayable) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestShow-ej.microui.display.Displayable->`_, `Display.requestHide(Displayable) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestHide-ej.microui.display.Displayable->`_ or `Display.requestRender() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestRender-->`_: after the successful permission check, it is assigned to the context owner.
 
 -  during a call to `MicroUI.callSerially(Runnable) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#callSerially-java.lang.Runnable->`_: after the successful permission check it is assigned to owner of the ``Runnable`` instance.
 
@@ -108,7 +108,7 @@ Instances of ``javax.net.ssl.SSLSocket`` are automatically reclaimed
 when a Feature is stopped.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

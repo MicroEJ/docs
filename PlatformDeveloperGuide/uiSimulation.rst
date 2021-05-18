@@ -74,7 +74,7 @@ Widget Display
 
 By default, a display area is rectangular. Some displays can have
 another appearance (for instance: circular). The Front Panel is able to
-simulate that using a filter (see :ref:`section_frontpanel_widget`) . This filter defines the pixels inside and
+simulate that using a filter (see :ref:`section_frontpanel_widget`). This filter defines the pixels inside and
 outside the real display area. The filter image must have the same size
 than display rectangular area. A display pixel at a given position will
 be not rendered if the pixel at the same position in mask is fully
@@ -163,7 +163,7 @@ Use
 Launch a MicroUI application on the Simulator to run the Front Panel.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

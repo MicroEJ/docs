@@ -22,7 +22,7 @@ Below is the XML schema for heap dumps.
    |    -->                                                                                      |
    |                                                                                             |
    |    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">                                  |
-   |        <!-- root element : heap -->                                                         |
+   |        <!-- root element: heap -->                                                          |
    |        <xs:element name="heap">                                                             |
    |            <xs:complexType>                                                                 |
    |                <xs:choice minOccurs="0" maxOccurs="unbounded">                              |
@@ -83,7 +83,7 @@ Below is the XML schema for heap dumps.
    | ::                                                                                          |
    |                                                                                             |
    |                                                                                             |
-   |     <!-- field element :  child of class, object and stringLiteral-->                       |
+   |     <!-- field element:  child of class, object and stringLiteral-->                        |
    |        <xs:element name="field">                                                            |
    |            <xs:complexType>                                                                 |
    |                <xs:attribute name="name" type="xs:string" use = "required"/>                |
@@ -185,7 +185,7 @@ Tags used in the heap dumps are described in the table below.
    +-------------------+------------------+------------------------------------------------------------+
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
