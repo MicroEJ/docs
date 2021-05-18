@@ -38,7 +38,7 @@ for more details.
 **KNOWN ISSUES**:
 
 -  Projects configured with Null Analysis must be updated to import `EDC
-   API 1.3.3 <https://repository.microej.com/artifacts/ej/api/edc/1.3.3/>`__
+   API 1.3.3 <https://repository.microej.com/modules/ej/api/edc/1.3.3/>`__
    or higher in order to avoid an Eclipse JDT builder error (see also
    `this link <https://bugs.eclipse.org/bugs/show_bug.cgi?id=566599>`__
    for more details).
@@ -246,7 +246,7 @@ Skeletons
 ^^^^^^^^^
 
 -  ``[Studio]`` Fixed skeleton dependency to
-   `EDC-1.3.3 <https://repository.microej.com/artifacts/ej/api/edc/1.3.3/>`__
+   `EDC-1.3.3 <https://repository.microej.com/modules/ej/api/edc/1.3.3/>`__
    to avoid an Eclipse JDT builder error when Null Analysis is enabled
    (see :ref:`known issues of Studio/SDK Distribution 20.10 <known-issues-20.10>`)
 

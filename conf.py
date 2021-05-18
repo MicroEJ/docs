@@ -84,8 +84,5 @@ pygments_style = 'microej.MicroEJStyle'
 import subprocess
 if os.getenv("READTHEDOCS") == "True":
     print("RUNNING LINKCHECK")
-    linkcheck_output = subprocess.check_output(
-        ["make", "linkcheck"],
-        env={"PATH": os.environ["PATH"]},
-    )
+    linkcheck_output = subprocess.check_output(["make", "linkcheck"], env={"PATH": os.environ["PATH"]},)
     print(linkcheck_output.decode(errors="ignore"))
