@@ -499,7 +499,7 @@ The available options are:
 - ``--help`` (``-h``) : show the help message and exit
 - ``--version`` (``-V``) : print version information and exit
 - ``--build-repository-settings-file`` (``-b``) : path of the Ivy settings file for build scripts and tools. Defaults to ``${CLI_HOME}/microej-build-repository/ivysettings.xml``.
-- ``--repository-settings-file`` (``-r``) : path of the Ivy settings file for modules. Defaults to ``${CLI_HOME}/microej-module-repository/ivysettings.xml``.
+- ``--module-repository-settings-file`` (``-r``) : path of the Ivy settings file for modules. Defaults to ``${CLI_HOME}/microej-module-repository/ivysettings.xml``.
 - ``--ivy-file`` (``-f``) : path of the project's Ivy file. Defaults to ``./module.ivy``.
 - ``--verbose`` (``-v``) : verbose mode. Disabled by default. Add this option to enable verbose mode.
 - ``-Dxxx=yyy`` : any additional option passed as system properties.
