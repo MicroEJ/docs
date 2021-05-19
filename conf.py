@@ -79,3 +79,10 @@ pygments_style = 'microej.MicroEJStyle'
 
 # ignoring Github links with anchors at linkcheck
 # linkcheck_ignore = [r'https?:\/\/github\.com\/.+#.+']
+
+# trigger linkcheck on build
+import subprocess
+if os.getenv("READTHEDOCS") == "True":
+    print("RUNNING LINKCHECK")
+    linkcheck_output = subprocess.check_output(["make", "linkcheck"], env={"PATH": os.environ["PATH"]},)
+    print(linkcheck_output.decode(errors="ignore"))
