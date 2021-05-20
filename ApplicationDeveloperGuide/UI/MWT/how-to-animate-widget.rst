@@ -29,6 +29,8 @@ For example, the following snippet starts the animation as soon as the widget is
 			getDesktop().getAnimator().startAnimation(this);
 			// save start time
 			this.startTime = System.currentTimeMillis();
+			// set widget initial state
+			this.elapsedTime = 0;
 		}
 
 		@Override
