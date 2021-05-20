@@ -6,7 +6,7 @@ How to Animate a Widget
 Starting and stopping the animation
 -----------------------------------
 
-To animate a widget, an ``Animator`` instance is required. This instance can be passed in the constructor of the widget or be fetched from a service provider.
+To animate a widget, an ``Animator`` instance is required. This instance can be retrieved from the desktop of the widget by calling ``Desktop.getAnimator()``.
 Make sure that your widget subclass implements the ``Animation`` interface so that it can be used with an ``Animator``.
 
 An animation can be started at any moment, provided that the widget is shown. For example, the animation can start on a click event.
@@ -20,27 +20,25 @@ For example, the following snippet starts the animation as soon as the widget is
 
 	public class MyAnimatedWidget extends Widget implements Animation {
 
-		private final Animator animator;
-
 		private long startTime;
 		private long elapsedTime;
 
-		public MyAnimatedWidget(Animator animator) {
-			this.animator = animator;
-		}
-
 		@Override
 		protected void onShown() {
+			// start animation
+			getDesktop().getAnimator().startAnimation(this);
+			// save start time
 			this.startTime = System.currentTimeMillis();
-			this.animator.startAnimation(this);
+			// set widget initial state
+			this.elapsedTime = 0;
 		}
 
 		@Override
 		protected void onHidden() {
-			this.animator.stopAnimation(this);
+			// stop animation
+			getDesktop().getAnimator().stopAnimation(this);
 		}
 	}
-
 
 Performing an animation step
 ----------------------------
@@ -78,7 +76,7 @@ For example, the following snippet renders the current state of the widget by di
 	}
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

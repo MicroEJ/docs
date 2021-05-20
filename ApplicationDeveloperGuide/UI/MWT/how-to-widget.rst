@@ -83,7 +83,7 @@ Listening to the life-cycle hooks
 - ``onShown()``
 - ``onHidden()``
 
-For example, the ``onAttached()`` may be overridden to load an image:
+For example, the ``onAttached()`` method may be overridden to load an image:
 
 .. code-block:: Java
 
@@ -101,13 +101,13 @@ Likewise, the ``onDetached()`` method may be overridden to close the image:
 		this.image.close();
 	}
 
-For example, the ``onShown()`` may be overridden to start an animation:
+For example, the ``onShown()`` method may be overridden to start an animation:
 
 .. code-block:: Java
 
 	@Override
 	protected void onShown() {
-		Animator animator = ServiceFactory.getService(Animator.class);
+		Animator animator = getDesktop().getAnimator();
 		animator.startAnimation(this);
 	}
 
@@ -117,12 +117,12 @@ Likewise, the ``onHidden()`` method may be overridden to stop an animation:
 
 	@Override
 	protected void onHidden() {
-		Animator animator = ServiceFactory.getService(Animator.class);
+		Animator animator = getDesktop().getAnimator();
 		animator.stopAnimation(this);
 	}
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
