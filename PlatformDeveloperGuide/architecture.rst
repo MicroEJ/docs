@@ -4,9 +4,6 @@
 MicroEJ Architecture
 ====================
 
-Overview
-========
-
 MicroEJ Architecture features the MicroEJ Core Engine built for a specific instructions set (ISA) and compiler.
 
 The MicroEJ Core Engine is a tiny and fast runtime associated with a Scheduler and a Garbage Collector. 
@@ -36,27 +33,11 @@ to) external code, such as any kind of RTOS or legacy C libraries:
 -  Low Level MicroEJ Core Engine (see :ref:`LLMJVM <LLMJVM-API-SECTION>`)
 -  Low Level Shielded Plug (see :ref:`LLSP <LLSP-API-SECTION>`)
 
-Naming Convention
-=================
+.. toctree::
+   :maxdepth: 1
 
-MicroEJ Architecture files ends with the ``.xpf`` extension, and are classified using the following naming convention:
-
-:: 
-
-  com/microej/architecture/[ISA]/[TOOLCHAIN]/[UID]/[VERSION]/[UID]-[VERSION]-[USAGE].xpf
-
-- ``ISA``: instruction set architecture (e.g. ``CM4`` for Arm® Cortex®-M4, ``ESP32`` for Espressif ESP32, ...).
-- ``TOOLCHAIN``: C compilation toolchain (e.g. ``CM4hardfp_GCC48``).
-- ``UID``: Architecture unique ID (e.g. ``flopi4G25``).
-- ``VERSION``: module version (e.g. ``7.12.0``).
-- ``USAGE`` = ``eval`` for evaluation Architectures, ``prod`` for production Architectures.
-
-For example, MicroEJ Architecture versions for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain are available at
-https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/.
-
-See :ref:`architecture_import` for usage.
-
-.. include:: architectureChangelog.rst
+   architectureNamingConvention
+   architectureChangelog
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 

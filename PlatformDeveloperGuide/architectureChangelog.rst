@@ -1,8 +1,7 @@
 
-MicroEJ Architectures Release Notes
-===================================
+MicroEJ Architectures Changelog
+===============================
 
---------
 Notation
 --------
 
@@ -32,9 +31,6 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
----------
-Changelog
----------
 
 7.15.1 (2021-02-19)
 -------------------
