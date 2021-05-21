@@ -54,7 +54,7 @@ for more details.
    plugins on install/update. Since CDT requires JRE 11, it prevents to
    install/update a newer MicroEJ SDK version. The CDT documentation
    explains that this can be bypassed by disabling the option
-   ``Windows > Preferences > Install/Update > Verify provisioning operation is compatible with currently running JRE``.
+   :guilabel:`Windows` > :guilabel:`Preferences` > :guilabel:`Install/Update` > :guilabel:`Verify provisioning operation is compatible with currently running JRE`.
 
 [20.07] - 2020-07-28
 ~~~~~~~~~~~~~~~~~~~~
@@ -336,7 +336,7 @@ Build Natures
    ``izpack.microej.product.location`` option is missing
 -  ``[SDK]`` Deprecated ``build-microej-ri`` and disabled documentation
    generation (useless docbook toolchains have been removed to reduce
-   the bundle size : ``-150MB``)
+   the bundle size: ``-150MB``)
 
 Skeletons
 ^^^^^^^^^
@@ -356,11 +356,11 @@ General
 -  ``[Studio]`` Added ``Dist.`` prefix in default workspace and
    repository name to avoid confusion between MicroEJ SDK distribution
    vs MicroEJ SDK version
--  ``[Studio]`` Replaced ``Version`` by ``Dist.`` in ``Help`` >
-   ``About MicroEJ® SDK | Studio`` menu. The MicroEJ SDK or Studio
+-  ``[Studio]`` Replaced ``Version`` by ``Dist.`` in :guilabel:`Help` >
+   :guilabel:`About MicroEJ® SDK | Studio` menu. The MicroEJ SDK or Studio
    version is available in ``Installation Details`` view.
 -  ``[Studio]`` Replaced ``IS2T S.A.`` and ``MicroEJ S.A.`` by
-   ``MicroEJ Corp.`` in ``Help`` > ``About MicroEJ® SDK | Studio`` menu.
+   ``MicroEJ Corp.`` in :guilabel:`Help` > :guilabel:`About MicroEJ® SDK | Studio` menu.
 -  ``[Studio]`` Updated Front Panel plugin to version 6.1.1
 -  ``[Studio]`` Removed MicroEJ Copyright in Java class template and
    skeletons files
@@ -374,19 +374,19 @@ General
 ^^^^^^^
 
 -  ``[Studio]`` Added a new configuration page
-   (``Window > Preferences > Module Manager``). This page is a merge of
+   (:guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Module Manager`). This page is a merge of
    formerly named ``Easyant4Eclipse`` preferences page and
    ``Ivy Settings`` relevant options for MicroEJ.
--  ``[Studio]`` Added ``Export > MicroEJ > Module Manager Build Kit``
+-  ``[Studio]`` Added :guilabel:`Export` > :guilabel:`MicroEJ` > :guilabel:`Module Manager Build Kit`
    wizard, to extract the files required for automating MicroEJ modules
    builds out of the IDE.
--  ``[Studio]`` Added ``New > MicroEJ > Module Project`` wizard
+-  ``[Studio]`` Added :guilabel:`New` > :guilabel:`MicroEJ` > :guilabel:`Module Project` wizard
    (formerly named ``New Easyant Project``), with module fields content
    assist and alphabetical sort of the skeletons list
--  ``[Studio]`` Added ``Import > MicroEJ > Module Repository`` wizard to
+-  ``[Studio]`` Added :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Module Repository` wizard to
    automatically configure workspace with a module repository (directory
    or zip file)
--  ``[Studio]`` Added ``New MicroEJ Add-On Library Project`` wizard to
+-  ``[Studio]`` Added :guilabel:`New MicroEJ Add-On Library Project` wizard to
    simplify MicroEJ Add-On library skeleton project creation
 -  ``[Studio]`` Updated the build repository
    (``microej-build-repository.zip``) to be self contained with its owns
@@ -523,7 +523,7 @@ General
    installation
 -  ``[Studio]`` Fixed ADP source folders order generation in
    ``.classpath`` (alphabetical sort of the ADP id)
--  ``[Studio]`` Fixed ``Run As... > MicroEJ Application`` automatic
+-  ``[Studio]`` Fixed :guilabel:`Run As...` > :guilabel:`MicroEJ Application` automatic
    launcher creation: when selecting a ``Platform in workspace``, an
    other platform of the repository was used instead
 -  ``[Studio]`` Fixed ``Memory Map Analyzer`` load of mapping scripts
@@ -539,7 +539,7 @@ General
    Panel engine
 
    -  The Front Panel engine has been refactored and moved from UI Pack to Architecture (UI pack ``12.0.0`` requires Architecture ``7.11.0`` or higher)
-   -  ``New Front Panel Project`` wizard now generates a project skeleton for this new Front Panel engine, based on MMM
+   -  :guilabel:`New Front Panel Project` wizard now generates a project skeleton for this new Front Panel engine, based on MMM
    -  Legacy Front Panel projects for UI Pack ``v11.1.0`` or higher are still valid
 -  ``[SDK]`` Updated Virtual Device builder to speed-up Virtual Device
    boot time (Resident Applications are now extracted at build time)
@@ -675,7 +675,7 @@ Plugins
 ^^^^^^^
 
 -  ``[Studio]`` Added IvyDE resolution from properties defined in
-   ``Windows > Preferences > Ant > Runtime > Properties``
+   :guilabel:`Windows` > :guilabel:`Preferences` > :guilabel:`Ant` > :guilabel:`Runtime` > :guilabel:`Properties`
 -  ``[Studio]`` Fixed *Illegal character in path* error that may occur
    when running an Add-on Processor
 -  ``[Studio]`` Fixed IvyDE crash when defining an Ant property file

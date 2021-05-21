@@ -334,14 +334,14 @@ VirtualBox Troubleshooting
 """"""""""""""""""""""""""
 
 In a VirtualBox virtual machine, USB drives must be enabled to be recognized correctly.
-Make sure to enable the USB dongle by clicking on it in the VirtualBox menu ``Devices`` > ``USB``.
+Make sure to enable the USB dongle by clicking on it in the VirtualBox menu :guilabel:`Devices` > :guilabel:`USB`.
 
-To make this setting persistent, go to ``Devices`` > ``USB`` > ``USB Settings...`` 
-and add the USB dongle in the ``USB Devices Filters`` list.
+To make this setting persistent, go to :guilabel:`Devices` > :guilabel:`USB` > :guilabel:`USB Settings...`
+and add the USB dongle in the :guilabel:`USB Devices Filters` list.
 
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

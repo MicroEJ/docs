@@ -43,7 +43,7 @@ Installation
 
 Network is an additional module. In the platform configuration file,
 check :guilabel:`NET` to install this module. When checked, the properties file
-``net`` > ``net.properties`` is required during platform creation to
+``net/net.properties`` is required during platform creation to
 configure the module. This configuration step is used to customize the
 kind of TCP/IP native stack used and the Domain Name System (DNS)
 implementation.
@@ -91,7 +91,7 @@ This library provides a set of options. Refer to the chapter
 
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

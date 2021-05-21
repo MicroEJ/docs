@@ -7,7 +7,7 @@ Image Renderer
 Principle
 =========
 
-The Image Renderer is an on-board engine that reads and draws the image encoded in MicroEJ format (see :ref:`section_image_raw`) . It calls Low LevelLow Level APIs to draw and transform the images (rotation, scaling, deformation, etc.). It also includes software algorithms to perform the rendering.
+The Image Renderer is an on-board engine that reads and draws the image encoded in MicroEJ format (see :ref:`section_image_raw`). It calls Low LevelLow Level APIs to draw and transform the images (rotation, scaling, deformation, etc.). It also includes software algorithms to perform the rendering.
 
 Functional Description
 ======================
@@ -80,7 +80,7 @@ The MicroUI image APIs are available in the class
 ``ej.microui.display.Image``.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

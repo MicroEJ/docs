@@ -72,7 +72,7 @@ Example
 To implement the native method ``getSensorValue(int sensorID)``, you
 need to create a MicroEJ standard project containing the same ``Sensor``
 class on the same ``example`` package. To do so, open the Eclipse menu
-``File > New > Project... > Java > Java Project`` in order to create a
+:guilabel:`File` > :guilabel:`New` > :guilabel:`Project...` > :guilabel:`Java` > :guilabel:`Java Project` in order to create a
 MicroEJ standard project.
 
 The following code is the required ``Sensor`` class of the created Mock
@@ -288,7 +288,7 @@ MicroEJ Application calls a native method which is implemented into the
 Mock.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

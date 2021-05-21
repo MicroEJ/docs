@@ -12,7 +12,7 @@ The ECOM Comm Java library provides support for serial communication.
 ECOM Comm extends ECOM to allow stream communication via serial
 communication ports (typically UARTs). In the MicroEJ Application, the
 connection is established using the ``Connector.open()`` method. The
-returned connection is a ``ej.ecom.io.CommConnection`` , and the input
+returned connection is a ``ej.ecom.io.CommConnection``, and the input
 and output streams can be used for full duplex communication.
 
 The use of ECOM Comm in a custom platform requires the implementation of
@@ -116,7 +116,7 @@ three ways:
    port will carry (for example, "debug traces" or "GPS data").
 
 -  A platform port number. This is specific to the platform, and may
-   directly identify an hardware device  [2]_ .
+   directly identify an hardware device  [2]_.
 
 -  A platform port name. This is mostly used for dynamic connections or
    on platforms having a file-system based device mapping.
@@ -193,7 +193,7 @@ Java API
 ========
 
 Opening a connection is done using
-``ej.ecom.io.Connector.open(String name)`` . The connection string (the
+``ej.ecom.io.Connector.open(String name)``. The connection string (the
 ``name`` parameter) must start with "comm:", followed by the Comm port
 identifier, and a semicolon-separated list of options. Options are the
 baudrate, the parity, the number of bits per character, and the number
@@ -208,7 +208,7 @@ of stop bits:
 -  parity=x where x is odd, even or none (none by default)
 
 All of these are optional. Illegal or unrecognized parameters cause an
-``IllegalArgumentException`` .
+``IllegalArgumentException``.
 
 
 .. _section_ecomcomm_driver:
@@ -489,7 +489,7 @@ Installation
 
 ECOM-Comm Java library is an additional library. In the platform
 configuration file, check :guilabel:`Serial Communication` > :guilabel:`ECOM-COMM` to
-install it. When checked, the xml file :guilabel:`ecom-comm` > :guilabel:`ecom-comm.xml`
+install it. When checked, the xml file ``ecom-comm/ecom-comm.xml``
 is required during platform creation to configure the module (see
 :ref:`section_ecomcomm_xml`).
 
@@ -513,7 +513,7 @@ This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

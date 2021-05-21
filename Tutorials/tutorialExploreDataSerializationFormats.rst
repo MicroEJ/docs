@@ -266,7 +266,7 @@ Application project in order to allow access to the CBOR library.
 Example Of Use
 ~~~~~~~~~~~~~~
 
-An example is available at https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor .
+An example is available at https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.
 It shows how to use the CBOR library in your MicroEJ Application by encoding some data and reading it back, printing it on the standard output both as a raw byte string and in a JSON-like format.
 You can use http://cbor.me/ to convert the byte string output to a JSON format and check that it matches the encoded data. The project can run on any MicroEJ Platform (no external dependencies).
 
@@ -298,7 +298,7 @@ The execution of this example on the MicroEJ Simulator should print the followin
 	}
 	=============== [ Completed Successfully ] ===============
 
-Another example showing how to use the :ref:`JSON Module <json-module>` along with the `CBOR Module <https://repository.microej.com/modules/ej/library/iot/cbor/>`_ to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.json .
+Another example showing how to use the :ref:`JSON Module <json-module>` along with the `CBOR Module <https://repository.microej.com/modules/ej/library/iot/cbor/>`_ to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.json.
 
 The execution of this example on the MicroEJ Simulator should print the following trace:
 
@@ -309,7 +309,7 @@ The execution of this example on the MicroEJ Simulator should print the followin
 	Data deserialized = {menu={value=File, id=file, popup={menuitem=[{value=New, onclick=CreateNewDoc()}, {value=Open, onclick=OpenDoc()}, {value=Close, onclick=CloseDoc()}]}}}
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

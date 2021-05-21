@@ -120,7 +120,7 @@ Display
 |                 | * ``LLDISPLAY_COPY_impl.h``                                      |
 |                 | * ``LLDISPLAY_DIRECT_impl.h``                                    | 
 +-----------------+------------------------------------------------------------------+
-| [6.0.0-7.4.7]   | *UI2* format: implement one of header file :                     |
+| [6.0.0-7.4.7]   | *UI2* format: implement one of header file:                      |
 |                 |                                                                  |
 |                 | * ``LLDISPLAY_SWITCH_impl.h``                                    |
 |                 | * ``LLDISPLAY_COPY_impl.h``                                      |
@@ -170,7 +170,7 @@ LED
 Front Panel API
 ===============
 
-Since MicroEJ UI Pack ``13.0.0``, the Front Panel project must depend on module `com.microej.pack.ui.ui-pack(frontpanel) <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/>`_ . 
+Since MicroEJ UI Pack ``13.0.0``, the Front Panel project must depend on module `com.microej.pack.ui.ui-pack(frontpanel) <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/>`_. 
 The module version is the MicroEJ Generic UI Pack version, that is always aligned with the MicroEJ UI Packs specific for MCUs.
 
 +-----------------+---------------------------------------------+-------------------+
@@ -186,7 +186,7 @@ The module version is the MicroEJ Generic UI Pack version, that is always aligne
 Image Generator API
 ===================
 
-Since MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on module `com.microej.pack.ui.ui-pack(imagegenerator) <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/>`_ .
+Since MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on module `com.microej.pack.ui.ui-pack(imagegenerator) <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/>`_.
 The module version is the MicroEJ Generic UI Pack version, that is always aligned with the MicroEJ UI Packs specific for MCUs.
 
 +-----------------+-------------------------------------------------+-------------------+

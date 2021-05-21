@@ -170,9 +170,9 @@ SystemView doesn't see any activity in MicroEJ Tasks
 
 You have to enable runtime traces of your Java application. 
 
-- In ``Run > Run configuration`` select your Java application launcher.
-- Then, go to ``Configuration tab > Runtime > Trace``
-- Finally, check checkboxes ``Enable execution traces`` and ``Start execution traces automatically`` as shown in the picture below.
+- In :guilabel:`Run` > :guilabel:`Run configuration` select your Java application launcher.
+- Then, go to :guilabel:`Configuration tab` > :guilabel:`Runtime` > :guilabel:`Trace`.
+- Finally, check checkboxes :guilabel:`Enable execution traces` and :guilabel:`Start execution traces automatically` as shown in the picture below.
 - Rebuild your firmware with the new Java application version and it should fix the issue.
 
 .. figure:: images/sysview_app_traces.png
@@ -234,7 +234,7 @@ See instructions provided by SEGGER Microcontroller https://www.segger.com/produ
 
 If you cannot flash a firmware for a STM32 device after replacing back J-Link firmware by ST-Link original one:
 
-- Use ST_Link utility program to update the ST_Link firmware, go to ``ST-LINK > Firmware update``.
+- Use ST_Link utility program to update the ST_Link firmware, go to :guilabel:`ST-LINK` > :guilabel:`Firmware update`.
 - Then, try to flash again.
 
 

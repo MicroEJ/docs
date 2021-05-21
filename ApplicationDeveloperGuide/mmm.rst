@@ -496,13 +496,13 @@ The available commands are:
 
 The available options are:
 
-- ``--help`` (``-h``) : show the help message and exit
-- ``--version`` (``-V``) : print version information and exit
-- ``--build-repository-settings-file`` (``-b``) : path of the Ivy settings file for build scripts and tools. Defaults to ``${CLI_HOME}/microej-build-repository/ivysettings.xml``.
-- ``--module-repository-settings-file`` (``-r``) : path of the Ivy settings file for modules. Defaults to ``${CLI_HOME}/microej-module-repository/ivysettings.xml``.
-- ``--ivy-file`` (``-f``) : path of the project's Ivy file. Defaults to ``./module.ivy``.
-- ``--verbose`` (``-v``) : verbose mode. Disabled by default. Add this option to enable verbose mode.
-- ``-Dxxx=yyy`` : any additional option passed as system properties.
+- ``--help`` (``-h``): show the help message and exit
+- ``--version`` (``-V``): print version information and exit
+- ``--build-repository-settings-file`` (``-b``): path of the Ivy settings file for build scripts and tools. Defaults to ``${CLI_HOME}/microej-build-repository/ivysettings.xml``.
+- ``--module-repository-settings-file`` (``-r``): path of the Ivy settings file for modules. Defaults to ``${CLI_HOME}/microej-module-repository/ivysettings.xml``.
+- ``--ivy-file`` (``-f``): path of the project's Ivy file. Defaults to ``./module.ivy``.
+- ``--verbose`` (``-v``): verbose mode. Disabled by default. Add this option to enable verbose mode.
+- ``-Dxxx=yyy``: any additional option passed as system properties.
 
 When no command is specified, MMM CLI executes Easyant with custom targets using the ``--targets`` (``-t``) option (defaults to ``clean,package``).
 
@@ -613,9 +613,9 @@ builds the project with the Ivy file ivy.xml and in verbose mode.
 
 The command ``publish`` builds the project and publishes the module. This command accepts the publication target as a parameter, amongst these values:
 
-- ``local`` (default value) : executes the ``clean,publish-local`` Easyant target, which publishes the project with the resolver referenced by the property ``local.resolver`` in the :ref:`mmm_settings_file`.
-- ``shared`` : executes the ``clean,publish-shared`` Easyant target, which publishes the project with the resolver referenced by the property ``shared.resolver`` in the :ref:`mmm_settings_file`.
-- ``release`` : executes the ``clean,release`` Easyant target, which publishes the project with the resolver referenced by the property ``release.resolver`` the :ref:`mmm_settings_file`.
+- ``local`` (default value): executes the ``clean,publish-local`` Easyant target, which publishes the project with the resolver referenced by the property ``local.resolver`` in the :ref:`mmm_settings_file`.
+- ``shared``: executes the ``clean,publish-shared`` Easyant target, which publishes the project with the resolver referenced by the property ``shared.resolver`` in the :ref:`mmm_settings_file`.
+- ``release``: executes the ``clean,release`` Easyant target, which publishes the project with the resolver referenced by the property ``release.resolver`` the :ref:`mmm_settings_file`.
 
 For example
 

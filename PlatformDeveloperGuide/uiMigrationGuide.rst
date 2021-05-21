@@ -22,7 +22,7 @@ Platform Configuration Project
 Hardware Accelerator
 """"""""""""""""""""
 
-* Open ``-configuration`` project > ``display`` > ``display.properties``
+* Open :guilabel:`-configuration` project > :guilabel:`display` > :guilabel:`display.properties`
 * Remove optional property ``hardwareAccelerator``. If old value was ``dma2d``, add the following module in the :ref:`module description file <mmm_module_description>`: 
   
   .. code-block:: xml
@@ -217,7 +217,7 @@ The artifact name prefix must be ``imageGenerator-``.
       com.microej.generator.MyImageGeneratoExtension
 
 * Build the easyant project
-* Copy the jar in the platform configuration project > dropins
+* Copy the jar in the platform :guilabel:`-configuration` project > :guilabel:`dropins` folder
 * Rebuild the platform after any changes
 
 .. _section_ui_migration_imagegeneratorapi_13x:
@@ -256,7 +256,7 @@ Image Generator API
 Font
 """"
 
-* Open optional font(s) in ``-configuration`` project > ``microui/**/*.ejf`` 
+* Open optional font(s) in :guilabel:`-configuration` project > :guilabel:`microui/**/*.ejf`
 * Remove all dynamic styles (select ``None`` or ``Built-in`` for bold, italic and underline); the number of generated fonts must be ``1`` (the feature to render dynamic styles at runtime have been removed)
 * Save the file(s)
 
@@ -266,7 +266,7 @@ BSP
 This chapter resumes the changes to perform.
 The available changes in LLAPI are described in :ref:`next chapter<section_ui_migration_llapi_13x>`.
 
-* Delete all platform header files (folder should be set in ``-configuration`` project > ``bsp`` > ``bsp.properties`` > property ``output.dir``)
+* Delete all platform header files (folder should be set in :guilabel:`-configuration` project > :guilabel:`bsp` > :guilabel:`bsp.properties` > property ``output.dir``)
 * If not possible to delete this folder, delete all UI headers files:
 
     * ``intern/LLDISPLAY*``
@@ -464,8 +464,8 @@ Front Panel
 
 * Create a new Front Panel Project (next sections explain how to update each widget):
 
-    1. Verify that FrontPanelDesigner is at least version 6 : ``Help`` > ``About`` > ``Installations Details`` > ``Plug-ins``.
-    2. Create a new front panel project: ``File`` > ``New`` > ``Project...`` > ``MicroEJ`` > ``MicroEJ Front Panel Project``, choose a name and press ``Finish``.
+    1. Verify that FrontPanelDesigner is at least version 6: :guilabel:`Help` > :guilabel:`About` > :guilabel:`Installations Details` > :guilabel:`Plug-ins`.
+    2. Create a new front panel project: :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...` > :guilabel:`MicroEJ` > :guilabel:`MicroEJ Front Panel Project`, choose a name and press :guilabel:`Finish`.
     3. Move files from ``[old project]/src`` to ``[new project]/src/main/java``.
     4. Move files from ``[old project]/resources`` to ``[new project]/src/main/resources``.
     5. Move files from ``[old project]/definitions`` to ``[new project]/src/main/resources``, **except** your ``xxx.fp`` file.
@@ -490,7 +490,7 @@ Front Panel
     4. (*if set*) Rename the attribute ``mask`` by ``filter``; this image must have the same size in pixels than display itself (``width`` * ``height``).
     5. (*if set*) Rename the attribute ``realWidth`` by ``displayWidth``.
     6. (*if set*) Rename the attribute ``realHeight`` by ``displayHeight``.
-    7. (*if set*) Rename the attribute ``transparencyLevel`` by ``alpha``; change the value: ``newValue = 255 - oldValue`` .
+    7. (*if set*) Rename the attribute ``transparencyLevel`` by ``alpha``; change the value: ``newValue = 255 - oldValue``.
     8. (*if set*) Remove the attribute ``residualFactor`` (not supported).
     9. (*if set*) If ``extensionClass`` is specified: follow next notes.
 
@@ -512,6 +512,7 @@ Front Panel
 * Widget "pointer": ``ej.fp.widget.Pointer`` Listener Class:
   
     This extension class is useless if the implementation respects these rules:
+	
     * *(a)* ``press`` method is sending a ``press`` MicroUI Pointer event.
     * *(b)* ``release`` method is sending a ``release`` MicroUI Pointer event.
     * *(c )* ``move`` method is sending a ``move`` MicroUI Pointer event.
@@ -519,11 +520,13 @@ Front Panel
     * *(e)* The MicroUI Pointer event generator name is ``TOUCH`` when ``ej.fp.widget.Pointer``'s ``touch`` attribute is ``true``.
 
     If only *(d)* or *(e)* is different: 
+	
     1. Open the listener class.
-    2. Extends the class ``ej.fp.widget.Pointer.PointerListenerToPointerEvents`` instead of implementing the interface .``com.is2t.microej.frontpanel.input.listener.PointerListener``
+    2. Extends the class ``ej.fp.widget.Pointer.PointerListenerToPointerEvents`` instead of implementing the interface ``com.is2t.microej.frontpanel.input.listener.PointerListener``.
     3. Implements the method ``getMicroUIGeneratorTag()``.
 
     In all other cases:
+	
     1. Open the listener class.
     2. Implements the interface ``ej.fp.widget.Pointer.PointerListener`` instead of ``com.is2t.microej.frontpanel.input.listener.PointerListener``.
 
@@ -538,16 +541,19 @@ Front Panel
 * Widget "push": ``ej.fp.widget.Button`` Listener Class:
 
     This extension class is useless if the implementation respects these rules:
+	
     * *(a)* ``press`` method is sending a ``press`` MicroUI Buttons event with button ``label`` (equals to old button ``id``) as button index.
     * *(b)* ``release`` method is sending a ``release`` MicroUI Buttons event with button ``label`` (equals to old button ``id``) as button index.
     * *(c )* The MicroUI Buttons event generator name is ``BUTTONS``.
 
     If only *(c )* is different: 
+	
     1. Open the listener class.
     2. Extends the class ``ej.fp.widget.Button.ButtonListenerToButtonEvents`` instead of implementing the interface ``com.is2t.microej.frontpanel.input.listener.ButtonListener``.
     3. Overrides the method ``getMicroUIGeneratorTag()``.
 
     In all other cases:
+	
     1. Open the listener class.
     2. Implements the interface ``ej.fp.widget.Button.ButtonListener`` instead of ``com.is2t.microej.frontpanel.input.listener.ButtonListener``.
 
@@ -573,17 +579,20 @@ Front Panel
 * Widget "joystick": ``ej.fp.widget.Joystick`` Listener Class:
 
     This extension class is useless if the implementation respects these rules:
+	
     * *(a)* ``press`` methods are sending some MicroUI Command events ``UP``, ``DOWN``, ``LEFT``, ``RIGHT`` and ``SELECT``.
     * *(b)* ``repeat`` methods are sending same MicroUI Command events ``UP``, ``DOWN``, ``LEFT``, ``RIGHT`` and ``SELECT``.
     * *(c )* ``release`` methods are sending nothing.
     * *(d)* The MicroUI Command event generator name is ``JOYSTICK``.
 
     If only *(d)* is different: 
+	
     1. Open the listener class
     2. Extends the class ``ej.fp.widget.Joystick.JoystickListenerToCommandEvents`` instead of implementing the interface ``com.is2t.microej.frontpanel.input.listener.JoystickListener``.
     3. Overrides the method ``getMicroUIGeneratorTag()``.
 
     In all other cases:
+	
     1. Open the listener class.
     2. Implements the interface ``ej.fp.widget.Joystick.JoystickListener`` instead of ``com.is2t.microej.frontpanel.input.listener.JoystickListener``.
 

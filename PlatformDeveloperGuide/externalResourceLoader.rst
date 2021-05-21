@@ -65,7 +65,7 @@ resource using the ``open`` function. This function receives the
 resources path as a parameter. This path is the absolute path of the
 resource from the MicroEJ Application classpath (the MicroEJ Application
 source base directory). For example, when the resource is located here:
-``com.mycompany.myapplication.resource.MyResource.txt`` , the given path
+``com.mycompany.myapplication.resource.MyResource.txt``, the given path
 is: ``com/mycompany/myapplication/resource/MyResource.txt``.
 
 Resource Identifier

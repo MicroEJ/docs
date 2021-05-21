@@ -210,10 +210,10 @@ prefix in their name:
 -  Properties for both the MicroEJ Core Engine and the MicroEJ Simulator :
    name starts with ``microej.java.property.*``
 
--  Properties for the MicroEJ Simulator : name starts with
+-  Properties for the MicroEJ Simulator: name starts with
    ``sim.java.property.*``
 
--  Properties for the MicroEJ Core Engine : name starts with
+-  Properties for the MicroEJ Core Engine: name starts with
    ``emb.java.property.*``
 
 For example, to define the property ``myProp`` with the value
@@ -294,7 +294,7 @@ without having to recompile the sources.
    In particular, constants defined in the Kernel are not propagated to :ref:`Sandboxed Applications <sandboxed_application>`.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

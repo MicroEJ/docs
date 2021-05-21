@@ -84,7 +84,7 @@ Synchronization steps are described :ref:`below <switchModeSyncSteps>`.
   | MicroUI is drawing in buffer 0 (back buffer) and the display is reading its contents from buffer 1 (display buffer).
 
 .. figure:: images/switch-step1.*
-   :alt: Step 1 : Drawing
+   :alt: Step 1: Drawing
    :width: 400px
    :align: center
 
@@ -93,7 +93,7 @@ Synchronization steps are described :ref:`below <switchModeSyncSteps>`.
   | Note that the display \"hardware component\" asynchronously continues to read data from buffer 1.
 
 .. figure:: images/switch-step2.*
-   :alt: Step 2 : Switch
+   :alt: Step 2: Switch
    :width: 400px
    :align: center
 
@@ -105,7 +105,7 @@ Synchronization steps are described :ref:`below <switchModeSyncSteps>`.
   | Note that the copy is partial: only the parts that have changed need to be copied, lowering the CPU load.
 
 .. figure:: images/switch-step3.*
-   :alt: Step 3 : Copy
+   :alt: Step 3: Copy
    :width: 400px
    :align: center
 
@@ -117,7 +117,7 @@ Synchronization steps are described :ref:`below <switchModeSyncSteps>`.
   | Same behavior as step 1 with buffers reversed.
 
 .. figure:: images/switch-step4.*
-   :alt: Step 5 : Next draw operation
+   :alt: Step 5: Next draw operation
    :width: 400px
    :align: center
 
@@ -549,7 +549,7 @@ Required Low Level API
 
 Some four Low Level APIs are required to connect the Graphics Engine on the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``. 
 
-* ``LLUI_DISPLAY_IMPL_initialize`` : The initialization function is called when MicroEJ application is calling ``MicroUI.start()``. Before this call, the display is useless and don't need to be initialized. This function consists in initializing the LCD driver and in filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on two binary semaphores (see after), the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels and optionally the display *physical* size in pixels. The display *virtual* size is the size of the area where the drawings are visible. The display *physical* size is the required memory size where the area is located. Virtual memory size is: ``display_width * display_height * bpp / 8``. On some devices the memory width (in pixels) is higher than virtual width. In this way, the graphics buffer memory size is: ``memory_width * memory_height * bpp / 8``.
+* ``LLUI_DISPLAY_IMPL_initialize``: The initialization function is called when MicroEJ application is calling ``MicroUI.start()``. Before this call, the display is useless and don't need to be initialized. This function consists in initializing the LCD driver and in filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on two binary semaphores (see after), the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels and optionally the display *physical* size in pixels. The display *virtual* size is the size of the area where the drawings are visible. The display *physical* size is the required memory size where the area is located. Virtual memory size is: ``display_width * display_height * bpp / 8``. On some devices the memory width (in pixels) is higher than virtual width. In this way, the graphics buffer memory size is: ``memory_width * memory_height * bpp / 8``.
 
 * ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: The Graphics Engine requires two binary semaphores to synchronize its internal states. The binary semaphores must be configured in a state such that the semaphore must first be *given* before it can be *taken* (this initialization must be performed in ``LLUI_DISPLAY_IMPL_initialize`` function). Two distinct functions have to be implemented to *take* and *give* a binary semaphore.
 
@@ -853,7 +853,7 @@ installed, the *stub* module will be used.
 
 In the platform configuration file, check :guilabel:`UI` > :guilabel:`Display` to
 install the Display module. When checked, the properties file
-:guilabel:`display` > :guilabel:`display.properties` is required during platform creation to
+``display/display.properties`` is required during platform creation to
 configure the module. This configuration step is used to choose the kind
 of implementation (see :ref:`section_display_implementation`).
 
@@ -968,7 +968,7 @@ The MicroUI Display APIs are available in the class `ej.microui.display.Display 
 
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

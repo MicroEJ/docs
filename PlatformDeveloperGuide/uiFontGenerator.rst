@@ -147,7 +147,7 @@ font file are embedded, and the pixel depth is 1 (i.e 1 bit-per-pixel).
 Selecting only a specific set of characters to embed reduces the memory
 footprint. There are two ways to specify a character range: the custom
 range and the known range. Several ranges can be specified, separated by
-";" .
+";".
 
 Below is an example of a list file for the Font Generator:
 
@@ -201,12 +201,12 @@ In order to be able to embed ready-to-be-displayed fonts, you must
 activate the fonts conversion feature and specify the fonts
 configuration file.
 
-Refer to the chapter :ref:`application_options` (``Libraries`` >
-``MicroUI`` > ``Font``) for more information about specifying the fonts
+Refer to the chapter :ref:`application_options` (:guilabel:`Libraries` >
+:guilabel:`MicroUI` > :guilabel:`Font`) for more information about specifying the fonts
 configuration file.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

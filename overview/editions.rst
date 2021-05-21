@@ -50,7 +50,7 @@ Using the MicroEJ Studio tool, an application developer will be able to:
 Determine the MicroEJ Studio/SDK Version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In MicroEJ Studio/SDK, go to ``Help`` > ``About MicroEJ SDK`` menu.
+In MicroEJ Studio/SDK, go to :guilabel:`Help` > :guilabel:`About MicroEJ SDK` menu.
 
 In case of MicroEJ SDK ``4.1.x``, the MicroEJ SDK version is directly displayed, such as ``4.1.5``:
 
@@ -76,7 +76,7 @@ To retrieve the MicroEJ SDK version that is currently installed in this distribu
   
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
