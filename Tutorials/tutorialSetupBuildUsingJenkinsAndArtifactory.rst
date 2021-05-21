@@ -55,7 +55,7 @@ Prerequisites
 This tutorial was tested with Jenkins ``2.235.3`` and Artifactory ``6.20.1``.
 
 .. note::
-    For SDK versions before 5.4.0, please refer to :ref:`this tutorial <tutorial_setup_automated_build_using_jenkins_and_artifactory_up_to_sdk_5_3>`.
+    For SDK versions before 5.4.0, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_.
 
 Overview
 --------
@@ -88,7 +88,7 @@ This section assumes the prerequisites have been properly installed.
 #. Set the environment variable ``JRE_HOME`` to point to the ``jre`` directory (for example ``C:\Program Files\Java\jdk1.8.0_[version]\jre``).
 #. Create a directory named ``buildKit``.
 #. Export the MicroEJ build kit from your MicroEJ SDK version to the ``buildKit`` directory, by following the steps described :ref:`here <mmm_build_kit>`.
-#. Download :download:`this Ivy settings file <resources/ivysettings-artifactory.xml>` and save it at the root of the ``buildKit`` directory. This file pre-configures Ivy to fetch and publish modules from the Artifactory server used in this tutorial.
+#. Download :download:`this settings file <resources/ivysettings-artifactory.xml>` and save it at the root of the ``buildKit`` directory. This file configures MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this tutorial. Please refer to :ref:`mmm_settings_file` section for more details.
 
 .. note::
    At this point, the content of the directory ``buildKit`` should look like the following:
@@ -242,7 +242,7 @@ First step is to configure the JDK and MMM paths:
     #. Scroll to :guilabel:`Global properties` section.
     #. Check :guilabel:`Environment variables`.
     #. Click on :guilabel:`Add`.
-    #. Set :guilabel:`Name` to ``MICROEJ_BUILD_TOOLS_HOME``.
+    #. Set :guilabel:`Name` to ``MICROEJ_BUILD_KIT_HOME``.
     #. Set :guilabel:`Value` to the absolute path of the ``buildKit`` folder.
 #. Click on :guilabel:`Save`.
 
@@ -275,7 +275,7 @@ In :guilabel:`Build` tab:
     ::
 
      cd "%easyant.module.dir%"
-     "%MICROEJ_BUILD_TOOLS_HOME%\\bin\\mmm.bat" publish shared -r "%MICROEJ_BUILD_TOOLS_HOME%\\ivysettings-artifactory.xml"
+     "%MICROEJ_BUILD_KIT_HOME%\\bin\\mmm.bat" publish shared -r "%MICROEJ_BUILD_KIT_HOME%\\ivysettings-artifactory.xml"
 
 * For Linux, add build step :guilabel:`Execute shell`:
     * In :guilabel:`Command`, set the following content:
@@ -283,7 +283,7 @@ In :guilabel:`Build` tab:
     ::
 
      cd "${easyant.module.dir}"
-     "${MICROEJ_BUILD_TOOLS_HOME}/bin/mmm" publish shared -r "${MICROEJ_BUILD_TOOLS_HOME}/ivysettings-artifactory.xml"
+     "${MICROEJ_BUILD_KIT_HOME}/bin/mmm" publish shared -r "${MICROEJ_BUILD_KIT_HOME}/ivysettings-artifactory.xml"
 
 Finally, click on :guilabel:`Save`.
 
