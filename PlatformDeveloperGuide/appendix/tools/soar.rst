@@ -64,7 +64,8 @@ next table.
    +-------------+--------------------------------------------------------+
    | 23          | A clinit cycle has been detected. The clinit cycle can |
    |             | be cut either by simplifying the application clinit    |
-   |             | code or by explicitly declaring clinit dependencies.   |
+   |             | code or by explicitly declaring clinit dependencies    |
+   |             | (see :ref:`soar_clinit`).                              |
    |             | Check the generated ``.clinitmap`` file for more       |
    |             | information.                                           |
    +-------------+--------------------------------------------------------+
