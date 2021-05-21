@@ -16,7 +16,7 @@ MicroEJ SDK Distribution Changelog
 [20.12] - 2020-12-11
 ~~~~~~~~~~~~~~~~~~~~
 
--  Included :ref:`MicroEJ Studio / SDK 5.3.1 <changelog-5.3.0>`
+-  Included :ref:`MicroEJ Studio / SDK 5.3.1 <changelog-5.3.1>`
 -  Disabled Java version check when updating MicroEJ Studio/SDK (see
    :ref:`known issues of Studio/SDK Distribution 20.10 <known-issues-20.10>`)
 
