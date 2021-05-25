@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-	IVY
-	
-	Copyright 2021 MicroEJ Corp. All rights reserved.
-	Use of this source code is governed by a BSD-style license that can be found with this software.
--->
 <ivy-settings>
   
   <property name="Artifactory_Repository" value="http://localhost:8081/artifactory" override="false"/>
   <property name="personalBuilds.dir" value="${user.home}/.ivy2/repository/" override="false"/>
   
   <!-- Map MMM resolvers (*.resolver) to custom resolver (publish*) -->
-  <property name="release.resolver" value="publishMicroEJRelease" override="false"/>
+  <property name="release.resolver" value="publishRelease" override="false"/>
   <property name="shared.resolver" value="publishSnapshot" override="false"/>
   <property name="local.resolver" value="publishPersonal" override="false"/>
  
   <property name="artifacts.resolver" value="fetchRelease" override="false" /> <!-- Fetch the artifact only from release repositories -->
-  <!-- 
-  		modules.resolver is already equal to artifacts.resolver except when artifacts.resolver is equal to public.
-  		In that case modules.resolver is equal to fetchRelease (see ivyPropertiesConfiguration.xml).
-  -->
-  <property name="modules.resolver" value="${artifacts.resolver}" override="false" />
   <property name="request.cache.dir" value="${user.home}/.ivy2/cache" override="false"/><!-- default cache dir -->
   <property name="default.conflict.manager" value="latest-compatible" override="false"/>
   
@@ -36,36 +25,12 @@
 		Kinds of repositories:
 		- release: used when building a product release.
 		- snapshot: used when building a product beta.
-		- personal: used when building a product in local or with a JBE personal build.
+		- personal: used when building a product in local or with a personal build.
 	
 	-->
-	
-	<!-- Publish resolver for workingEnvs in non personal build: publish in personal directory -->
-	
-	<!-- Publish resolver in public: publish in MicroEJ public repository -->
-	<url name="publishMicroEJPublic" m2compatible="true" >
-		<artifact pattern="${Artifactory_Repository}/libs-release-local/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-		<ivy pattern="${Artifactory_Repository}/libs-release-local/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
-	</url>
 	 
-	<!-- Publish resolver in release: publish in MicroEJ release repository -->
-	<url name="publishMicroEJRelease" m2compatible="true">
-		<artifact pattern="${Artifactory_Repository}/libs-release-local/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-		<ivy pattern="${Artifactory_Repository}/libs-release-local/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
-	</url>
-	
-	<url name="fetchMicroEJBuild" m2compatible="true">
-		<artifact pattern="${Artifactory_Repository}/microej-build-repository/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-		<ivy pattern="${Artifactory_Repository}/microej-build-repository/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
-	</url>
-	
-	<url name="fetchMicroEJModules" m2compatible="true">
-		<artifact pattern="${Artifactory_Repository}/microej-module-repository/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-		<ivy pattern="${Artifactory_Repository}/microej-module-repository/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
-	</url>
-	
-	<!-- Publish resolver in release: publish in Intern release repository -->
-	<url name="publishInternRelease" m2compatible="true">
+	<!-- Publish resolver in release: publish in release repository -->
+	<url name="publishRelease" m2compatible="true">
 		<artifact pattern="${Artifactory_Repository}/libs-release-local/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
 		<ivy pattern="${Artifactory_Repository}/libs-release-local/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
 	</url>
@@ -81,21 +46,11 @@
 		<artifact pattern="${personalBuilds.dir}/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
 		<ivy pattern="${personalBuilds.dir}/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
 	</filesystem>
-	
-	<!-- Publish resolver in personal build: publish in personal workingEnvs repository -->
-	<filesystem name="publishPersonalWorkingEnvs">
-		<artifact pattern="${personalBuilds.dir}/[organization]/[module]/[branch]/[revision]/workingEnvs_[artifact]-[revision](-[classifier]).[ext]" />
-		<ivy pattern="${personalBuilds.dir}/[organization]/[module]/[branch]/[revision]/ivy-workingEnvs-[revision].xml" />
-	</filesystem>
-	
-	<!-- For backward compatibility, keep the old resolvers corresponding to the two snapshot repositories on Artifactory -->
-	<chain name="publishMicroEJSnapshot">
-		<resolver ref="publishSnapshot"/>
-	</chain>
-	<chain name="publishInternSnapshot">
-		<resolver ref="publishSnapshot"/>
-	</chain>
-	
+
+	<url name="fetchMicroEJModules" m2compatible="true">
+		<artifact pattern="${Artifactory_Repository}/microej-module-repository/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+		<ivy pattern="${Artifactory_Repository}/microej-module-repository/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
+	</url>
 
 	<!-- Fetch resolver in release: look in release repositories -->
 	<url name="fetchArtifactoryRelease" m2compatible="true" >
@@ -104,10 +59,8 @@
 	</url>
 	
 	<chain name="fetchRelease">
-		<resolver ref="fetchMicroEJBuild"/>
 		<resolver ref="fetchMicroEJModules"/>
 		<resolver ref="fetchArtifactoryRelease"/>
-		<resolver ref="publishMicroEJPublic"/> 
 	</chain>
 	
 	<chain name="fetchSnapshot">
@@ -125,24 +78,8 @@
 	<chain name="fetchAll">
 		<resolver ref="fetchPersonal"/>
 	</chain>
+
 	<ibiblio name="ext" m2compatible="true" root="${Artifactory_Repository}/ext" />
 	
   </resolvers>
-  
-  <modules>
-  	<!-- set default conflict manager for external artifacts -->
- 	<module organisation="xerces" name="*" conflict-manager="all"/> 
- 	<module organisation="xom" name="*" conflict-manager="all"/> 
- 	<module organisation="jaxen" name="*" conflict-manager="all"/> 
- 	<module organisation="xml-apis" name="*" conflict-manager="all"/> 
- 	
-  	<module organisation="com.is2t.easyant.buildtypes" name="*" resolver="${modules.resolver}"/>
-  	<module organisation="com.is2t.easyant.plugins" name="*" resolver="${modules.resolver}"/>
-  	<module organisation="org.apache.easyant.plugins" name="*" resolver="${modules.resolver}"/>
-  	<module organisation="org.apache.easyant.buildtypes" name="*" resolver="${modules.resolver}"/>
-  	<module organisation="org.codehaus.sonar-plugins" name="*" resolver="${modules.resolver}"/>
-  	<module organisation="org.apache.ant" name="*" resolver="${modules.resolver}" />
-  	<module organisation="com.is2t.tools" name="*" resolver="${modules.resolver}" />
-  	<module organisation="com.is2t.platform.test" name="*" resolver="${modules.resolver}" />
-  </modules>
 </ivy-settings>

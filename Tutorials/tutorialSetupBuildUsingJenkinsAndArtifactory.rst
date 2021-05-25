@@ -88,7 +88,12 @@ This section assumes the prerequisites have been properly installed.
 #. Set the environment variable ``JRE_HOME`` to point to the ``jre`` directory (for example ``C:\Program Files\Java\jdk1.8.0_[version]\jre``).
 #. Create a directory named ``buildKit``.
 #. Export the MicroEJ build kit from your MicroEJ SDK version to the ``buildKit`` directory, by following the steps described :ref:`here <mmm_build_kit>`.
-#. Download :download:`this settings file <resources/ivysettings-artifactory.xml>` and save it at the root of the ``buildKit`` directory. This file configures MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this tutorial. Please refer to :ref:`mmm_settings_file` section for more details.
+#. Copy the following content in a file named ``ivysettings-artifactory.xml`` at the root of the ``buildKit`` directory:
+
+.. literalinclude:: resources/ivysettings-artifactory.xml
+    :language: xml
+
+This file configures MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this tutorial. Please refer to :ref:`mmm_settings_file` section for more details.
 
 .. note::
    At this point, the content of the directory ``buildKit`` should look like the following:
@@ -270,6 +275,7 @@ In :guilabel:`Source Code Management` tab:
 In :guilabel:`Build` tab:
 
 * For Windows, add build step :guilabel:`Execute Windows batch command`:
+
     * In :guilabel:`Command`, set the following content:
 
     ::
@@ -278,6 +284,7 @@ In :guilabel:`Build` tab:
      "%MICROEJ_BUILD_KIT_HOME%\\bin\\mmm.bat" publish shared -r "%MICROEJ_BUILD_KIT_HOME%\\ivysettings-artifactory.xml"
 
 * For Linux, add build step :guilabel:`Execute shell`:
+
     * In :guilabel:`Command`, set the following content:
 
     ::
