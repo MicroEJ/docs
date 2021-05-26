@@ -1,78 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-settings>
   
-  <property name="Artifactory_Repository" value="http://localhost:8081/artifactory" override="false"/>
-  <property name="personalBuilds.dir" value="${user.home}/.ivy2/repository/" override="false"/>
+	<property name="artifactory.repository.url" value="http://localhost:8081/artifactory" override="false"/>
+	<property name="local.repository.dir" value="${user.home}/.ivy2/repository/" override="false"/>
   
-  <!-- Map MMM resolvers (*.resolver) to custom resolver (publish*) -->
-  <property name="release.resolver" value="publishRelease" override="false"/>
-  <property name="shared.resolver" value="publishSnapshot" override="false"/>
-  <property name="local.resolver" value="publishPersonal" override="false"/>
- 
-  <property name="artifacts.resolver" value="fetchRelease" override="false" /> <!-- Fetch the artifact only from release repositories -->
-  <property name="request.cache.dir" value="${user.home}/.ivy2/cache" override="false"/><!-- default cache dir -->
-  <property name="default.conflict.manager" value="latest-compatible" override="false"/>
-  
-  <settings defaultResolver="${artifacts.resolver}" defaultConflictManager="${default.conflict.manager}" defaultResolveMode="dynamic"/>
-  <caches defaultCacheDir="${request.cache.dir}"/>	<!-- override the default cache directory -->
-  <resolvers>
-
 	<!--
-		Types of resolver:
-		- fetch resolvers: used to fetch artifacts from several repositories.
-		- publish resolvers: used to publish artifacts into a repository.
+		Map MMM resolvers (*.resolver) to custom resolver
 		
 		Kinds of repositories:
-		- release: used when releasing a module.
-		- snapshot: used when building a module snapshot.
-		- personal: used when building a module in local or with a personal build.
-	
+		- release: used when publishing a released module.
+		- snapshot: used when publishing a snapshot module.
+		- personal: used when publishing a snapshot module locally.
 	-->
+	<property name="release.resolver" value="modulesReleaseRepository" override="false"/>
+	<property name="shared.resolver" value="modulesSnapshotRepository" override="false"/>
+	<property name="local.resolver" value="localRepository" override="false"/>
+ 
+	<property name="modules.resolver" value="fetchAll" override="false" />
+	<property name="request.cache.dir" value="${user.home}/.ivy2/cache" override="false"/>
+	<property name="default.conflict.manager" value="latest-compatible" override="false"/>
+  
+	<settings defaultResolver="${modules.resolver}" defaultConflictManager="${default.conflict.manager}" defaultResolveMode="dynamic"/>
+	<caches defaultCacheDir="${request.cache.dir}"/>
+  
+  	<resolvers>
 	 
-	<!-- Publish resolver in release: publish in release repository -->
-	<url name="publishRelease" m2compatible="true">
-		<artifact pattern="${Artifactory_Repository}/libs-release-local/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-		<ivy pattern="${Artifactory_Repository}/libs-release-local/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
-	</url>
-	
-	<!-- Publish resolver in snapshot: publish in snapshot repository -->
-	<url name="publishSnapshot" m2compatible="true" checkmodified="true">
-		<artifact pattern="${Artifactory_Repository}/libs-snapshot-local/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-		<ivy pattern="${Artifactory_Repository}/libs-snapshot-local/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
-	</url>
-	
-	<!-- Publish resolver in personal build: publish in personal repository -->
-	<filesystem name="publishPersonal" m2compatible="true" checkmodified="true">
-		<artifact pattern="${personalBuilds.dir}/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-		<ivy pattern="${personalBuilds.dir}/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
-	</filesystem>
+		<url name="modulesReleaseRepository" m2compatible="true">
+			<artifact pattern="${artifactory.repository.url}/libs-release-local/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+			<ivy pattern="${artifactory.repository.url}/libs-release-local/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
+		</url>
+		
+		<url name="modulesSnapshotRepository" m2compatible="true" checkmodified="true">
+			<artifact pattern="${artifactory.repository.url}/libs-snapshot-local/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+			<ivy pattern="${artifactory.repository.url}/libs-snapshot-local/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
+		</url>
+		
+		<url name="microejModulesRepository" m2compatible="true">
+			<artifact pattern="${artifactory.repository.url}/microej-module-repository/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+			<ivy pattern="${artifactory.repository.url}/microej-module-repository/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
+		</url>
+		
+		<filesystem name="localRepository" m2compatible="true" checkmodified="true">
+			<artifact pattern="${local.repository.dir}/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+			<ivy pattern="${local.repository.dir}/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
+		</filesystem>
+		
+		<chain name="fetchRelease">
+			<resolver ref="modulesReleaseRepository"/>
+			<resolver ref="microejModulesRepository"/>
+		</chain>
+		
+		<chain name="fetchSnapshot">
+			<resolver ref="modulesSnapshotRepository"/>
+			<resolver ref="fetchRelease"/>
+		</chain>
 
-	<url name="fetchMicroEJModules" m2compatible="true">
-		<artifact pattern="${Artifactory_Repository}/microej-module-repository/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-		<ivy pattern="${Artifactory_Repository}/microej-module-repository/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
-	</url>
+		<chain name="fetchLocal">
+			<resolver ref="localRepository"/> 
+			<resolver ref="fetchSnapshot"/> 
+		</chain>
 
-	<!-- Fetch resolver in release: look in release repositories -->
-	<url name="fetchArtifactoryRelease" m2compatible="true" >
-		<artifact pattern="${Artifactory_Repository}/libs-release/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-		<ivy pattern="${Artifactory_Repository}/libs-release/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
-	</url>
+		<chain name="fetchAll">
+			<resolver ref="fetchLocal"/>
+		</chain>
 	
-	<chain name="fetchRelease">
-		<resolver ref="fetchMicroEJModules"/>
-		<resolver ref="fetchArtifactoryRelease"/>
-	</chain>
-	
-	<chain name="fetchSnapshot">
-		<resolver ref="publishSnapshot"/>
-		<resolver ref="fetchRelease"/>
-	</chain>
-
-	<!-- Fetch resolver for personal build: look in personal, snapshot and release repositories -->
-	<chain name="fetchPersonal">
-		<resolver ref="publishPersonal"/> 
-		<resolver ref="fetchSnapshot"/> 
-	</chain>
-	
-  </resolvers>
+	</resolvers>
 </ivy-settings>
