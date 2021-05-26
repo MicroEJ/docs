@@ -33,6 +33,8 @@ to) external code, such as any kind of RTOS or legacy C libraries:
 -  Low Level MicroEJ Core Engine (see :ref:`LLMJVM <LLMJVM-API-SECTION>`)
 -  Low Level Shielded Plug (see :ref:`LLSP <LLSP-API-SECTION>`)
 
+For further information on Architecture installation and releases, you can check these chapters:
+
 .. toctree::
    :maxdepth: 1
 
