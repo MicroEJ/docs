@@ -23,9 +23,9 @@
 		- publish resolvers: used to publish artifacts into a repository.
 		
 		Kinds of repositories:
-		- release: used when building a product release.
-		- snapshot: used when building a product beta.
-		- personal: used when building a product in local or with a personal build.
+		- release: used when releasing a module.
+		- snapshot: used when building a module snapshot.
+		- personal: used when building a module in local or with a personal build.
 	
 	-->
 	 
@@ -73,13 +73,6 @@
 		<resolver ref="publishPersonal"/> 
 		<resolver ref="fetchSnapshot"/> 
 	</chain>
-
-	<!-- Fetch resolver that looks everywhere to get the artifacts -->
-	<chain name="fetchAll">
-		<resolver ref="fetchPersonal"/>
-	</chain>
-
-	<ibiblio name="ext" m2compatible="true" root="${Artifactory_Repository}/ext" />
 	
   </resolvers>
 </ivy-settings>
