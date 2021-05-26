@@ -52,7 +52,7 @@ Prerequisites
 *  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://git-for-windows.github.io/>`_).
 *  Java Development Kit (JDK) ``1.8.x``.
 
-This tutorial was tested with Jenkins ``2.235.3`` and Artifactory ``6.20.1``.
+This tutorial was tested with Jenkins ``2.277.4`` and Artifactory ``6.23.13``.
 
 .. note::
     For SDK versions before 5.4.0, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_.
