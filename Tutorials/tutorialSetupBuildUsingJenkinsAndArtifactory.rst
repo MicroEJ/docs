@@ -27,7 +27,7 @@ The audience for this document is engineers who are in charge of integrating
 In addition, this tutorial should be of interest to all developers
 wishing to understand how MicroEJ works with headless module builds.
 
-For those who are only interested by command line module build, consider using the `CommandLineBuild <https://github.com/MicroEJ/Tool-CommandLineBuild>`_ tool.
+For those who are only interested by command line module build, consider using the :ref:`MMM Command Line Interface <mmm_cli>`.
 
 Introduction
 ------------
