@@ -10,7 +10,7 @@
 		Kinds of repositories:
 		- release: used when publishing a released module.
 		- snapshot: used when publishing a snapshot module.
-		- personal: used when publishing a snapshot module locally.
+		- local: used when publishing a snapshot module locally.
 	-->
 	<property name="release.resolver" value="modulesReleaseRepository" override="false"/>
 	<property name="shared.resolver" value="modulesSnapshotRepository" override="false"/>
