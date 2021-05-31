@@ -27,7 +27,7 @@ The audience for this document is engineers who are in charge of integrating
 In addition, this tutorial should be of interest to all developers
 wishing to understand how MicroEJ works with headless module builds.
 
-For those who are only interested by command line module build, consider using the `CommandLineBuild <https://github.com/MicroEJ/Tool-CommandLineBuild>`_ tool.
+For those who are only interested by command line module build, consider using the :ref:`MMM Command Line Interface <mmm_cli>`.
 
 Introduction
 ------------
@@ -48,12 +48,14 @@ The overall build and deployment flow of a module can be summarized as follows:
 Prerequisites
 -------------
 
-*  `MicroEJ SDK <https://developer.microej.com/get-started/>`_ ``4.1.5`` or higher.
+*  `MicroEJ SDK <https://developer.microej.com/get-started/>`_ ``5.4.0`` or higher.
 *  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://git-for-windows.github.io/>`_).
-*  Apache Ant ``1.9.x`` installed (`<https://ant.apache.org/bindownload.cgi>`_).
 *  Java Development Kit (JDK) ``1.8.x``.
 
-This tutorial was tested with Jenkins ``2.235.3`` and Artifactory ``6.20.1``.
+This tutorial was tested with Jenkins ``2.277.4`` and Artifactory ``6.23.13``.
+
+.. note::
+    For SDK versions before 5.4.0, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_.
 
 Overview
 --------
@@ -68,16 +70,13 @@ The steps to follow are:
 #. Create a new Jenkins job for the Hello World module
 #. Build the module
 
-For the purposes of simplifying the steps, this tutorial will be performed locally on a single machine.
+In order to simplify the steps, this tutorial will be performed locally on a single machine.
 
-Artifactory will host MicroEJ modules in 3 repositories:
+Artifactory will host MicroEJ modules in 2 repositories:
 
 - ``microej-module-repository``: repository initialized with pre-built MicroEJ modules, a mirror of the :ref:`Central Repository <central_repository>`
-- ``microej-build-repository``: repository initialized with build scripts and tools exported from MicroEJ SDK
 - ``libs-snapshot-local``: repository where custom modules will be published
 
-
-.. _install_build_tools:
 
 Install the Build Tools
 -----------------------
@@ -85,36 +84,37 @@ Install the Build Tools
 This section assumes the prerequisites have been properly installed.
 
 #. Locate your JDK installation directory (typically something like ``C:\Program Files\Java\jdk1.8.0_[version]`` on Windows).
-#. Set the environment variable ``JAVA_HOME`` to point to the ``bin`` directory (for example ``C:\Program Files\Java\jdk1.8.0_[version]\bin``).
+#. Set the environment variable ``JAVA_HOME`` to point to this directory.
 #. Set the environment variable ``JRE_HOME`` to point to the ``jre`` directory (for example ``C:\Program Files\Java\jdk1.8.0_[version]\jre``).
-#. Download the pre-configured settings file by cloning the following git repository:
-
-   .. code-block:: sh
-   
-      git clone --recursive https://github.com/MicroEJ/Tool-CommandLineBuild.git
-
-#. Create a directory named ``buildKit`` in the ``Tool-CommandLineBuild`` directory.
+#. Create a directory named ``buildKit``.
 #. Export the MicroEJ build kit from your MicroEJ SDK version to the ``buildKit`` directory, by following the steps described :ref:`here <mmm_build_kit>`.
-#. Set the environment variable ``MICROEJ_BUILD_TOOLS_HOME`` to point to the ``Tool-CommandLineBuild`` directory
+#. Edit the file ``buildKit/microej-module-repository/ivysettings.xml`` and replace its content by:
+
+.. literalinclude:: resources/ivysettings-artifactory.xml
+    :language: xml
+
+This file configures MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this tutorial. Please refer to :ref:`mmm_settings_file` section for more details.
 
 .. note::
-   At this point, the content of the directory ``Tool-CommandLineBuild`` should look like the following:
+   At this point, the content of the directory ``buildKit`` should look like the following:
    ::
     
-    Tool-CommandLineBuild
-    ├── buildKit
-    │   ├── ant
-    │   │   └── lib
-    │   │       ├── ant.jar
-    │   │       ├── ant-launcher.jar
-    │   │       └── ...
-    │   └── microej-build-repository.zip (or is2t_repo.zip)
-    ├── easyant
+    buildKit
+    ├── bin
+    │   ├── mmm
+    │   └── mmm.bat
+    ├── conf
+    │   └── easyant-conf.xml
+    ├── lib
+    │   ├── ant.jar
     │   └── ...
-    ├── ivy
-    │   ├── ivysettings-artifactory.xml
+    ├── microej-build-repository
+    │   ├── ant-contrib
+    │   ├── be
     │   └── ...
-    └── ...
+    ├── microej-module-repository
+    │   └── ivysettings.xml
+    └── release.properties
 
 .. _get_microej_module_repository:
 
@@ -172,6 +172,7 @@ Next steps will involve uploading large files, so we have to augment the file up
 Configure Repositories
 ~~~~~~~~~~~~~~~~~~~~~~
 
+We will now create and configure the repositories.
 First step is to configure to pre-defined repository for the future snapshot modules built.
 
 #. Go to :guilabel:`Admin` > :guilabel:`Repositories` > :guilabel:`Local`.
@@ -183,12 +184,10 @@ Next step is to create the repositories that will hold the MicroEJ modules.
 #. Go to :guilabel:`Admin` > :guilabel:`Repositories` > :guilabel:`Local`.
 #. Click on :guilabel:`New`, and select :guilabel:`Maven`.
 #. Set :guilabel:`Repository Key` field to ``microej-module-repository``, then uncheck :guilabel:`Handle Snapshots`. Click on :guilabel:`Save and finish`.
-#. Click on :guilabel:`New`, and select :guilabel:`Maven`.
-#. Set :guilabel:`Repository Key` field to ``microej-build-repository``, then uncheck :guilabel:`Handle Snapshots`. Click on :guilabel:`Save and finish`.
-#. Make these two repositories accessible by default:
+#. Make this repository accessible by default:
     #. Go to :guilabel:`Admin` > :guilabel:`Security` > :guilabel:`Permissions`. 
     #. Click on :guilabel:`Anything` entry (do not check the line)
-    #. On the :guilabel:`Resources` tab, drag repositories ``microej-module-repository`` and ``microej-build-repository`` from the :guilabel:`Available repositories` area to the :guilabel:`Included Repositories` area.
+    #. On the :guilabel:`Resources` tab, drag repository ``microej-module-repository`` from the :guilabel:`Available repositories` area to the :guilabel:`Included Repositories` area.
     #. Click on :guilabel:`Save & Finish`.
 
 .. image:: images/tuto_microej_cli_artifactory_permissions.PNG
@@ -208,15 +207,10 @@ In this section, we will import MicroEJ repositories into Artifactory repositori
     #. As :guilabel:`Repository Zip File`, select MicroEJ module repository zip file (``microej-[MicroEJ version]-[version].zip``) that you downloaded earlier (please refer to section :ref:`get_microej_module_repository`).
     #. Click :guilabel:`Upload`. At the end of upload, click on :guilabel:`Import`. Upload and import may take some time.
 
-#. Import the MicroEJ Build Repository:
-    #. As :guilabel:`Target Local Repository`, select ``microej-build-repository`` in the list.
-    #. As :guilabel:`Repository Zip File`, select MicroEJ Build Repository zip file (``microej-build-repository.zip`` or ``is2t_repo.zip``) that you exported from MicroEJ SDK earlier (please refer to section :ref:`install_build_tools`).
-    #. Click :guilabel:`Upload`. At the end of upload, click on :guilabel:`Import`. Upload and import may take some time.
-
 Artifactory is now hosting all required MicroEJ modules. 
-Go to :guilabel:`Artifacts` and check that repositories ``microej-module-repository`` and ``microej-build-repository`` do contain modules as shown in the figure below.
+Go to :guilabel:`Artifacts` and check that the repository ``microej-module-repository`` does contain modules as shown in the figure below.
 
-.. image:: images/tuto_microej_cli_artifactory_preview.PNG
+.. image:: images/tuto_microej_cli_artifactory_module_preview.PNG
     :align: center
       
 Setup Jenkins
@@ -225,12 +219,12 @@ Setup Jenkins
 Install Jenkins
 ~~~~~~~~~~~~~~~
 
-#. Download Jenkins WAR (Web Archive) here: `<http://mirrors.jenkins.io/war-stable/latest/jenkins.war>`_
+#. Download Jenkins here: `<https://www.jenkins.io/download/>`_. In this tutorial we will use the WAR (Web Archive), but you can use any other installation package (Docker, Ubuntu/Debian, ...).
 #. Open a terminal and type the following command: ``java -jar [path/to/downloaded/jenkinswar]/jenkins.war``. 
    After initialization, the terminal will print out :guilabel:`Jenkins is fully up and running`.
 #. Go to ``http://localhost:8080/``.
 #. To unlock Jenkins, copy/paste the generated password that has been written in the terminal log. Click on :guilabel:`Continue`.
-#. Select option :guilabel:`Install suggested plugins` and wait for plugin
+#. Select option :guilabel:`Install suggested plugins` and wait for plugins
    installation.
 #. Fill in the :guilabel:`Create First Admin User` form. Click :guilabel:`Save and continue`.
 #. Click on :guilabel:`Save and finish`, then on :guilabel:`Start using Jenkins`.
@@ -238,7 +232,7 @@ Install Jenkins
 Configure Jenkins
 ~~~~~~~~~~~~~~~~~
 
-First step is to configure JDK and Ant installations:
+First step is to configure the JDK and MMM paths:
 
 #. Go to :guilabel:`Manage Jenkins` > :guilabel:`Global Tool Configuration`.
 #. Add JDK installation:
@@ -246,13 +240,14 @@ First step is to configure JDK and Ant installations:
     #. Click on :guilabel:`Add JDK`.
     #. Set :guilabel:`Name` to ``JDK [jdk_version]`` (for example ``JDK 1.8``).
     #. Uncheck :guilabel:`Install automatically`.
-    #. Set :guilabel:`JAVA_HOME` to ``path/to/jdk[jdk_version]`` (for example ``C:\Program Files\Java\jdk1.8.0_[version]`` on Windows).
-#. Add Ant installation:
-    #. Scroll to :guilabel:`Ant` section.
-    #. Click on :guilabel:`Add Ant`.
-    #. Set :guilabel:`Name` to ``Ant 1.9``.
-    #. Uncheck :guilabel:`Install automatically`.
-    #. Set :guilabel:`ANT_HOME` to ``path/to/apache-ant-1.9.[version]``.
+    #. Set :guilabel:`JAVA_HOME` to the absolute path of your JDK installation (for example ``C:\Program Files\Java\jdk1.8.0_[version]`` on Windows).
+#. Click on :guilabel:`Save`.
+#. Go to :guilabel:`Manage Jenkins` > :guilabel:`Configure System`.
+    #. Scroll to :guilabel:`Global properties` section.
+    #. Check :guilabel:`Environment variables`.
+    #. Click on :guilabel:`Add`.
+    #. Set :guilabel:`Name` to ``MICROEJ_BUILD_KIT_HOME``.
+    #. Set :guilabel:`Value` to the absolute path of the ``buildKit`` folder.
 #. Click on :guilabel:`Save`.
 
 
@@ -267,7 +262,7 @@ Create a Job Template
 
 In :guilabel:`General` tab:
 
-#. Check :guilabel:`This project is parametrized` and add :guilabel:`String parameter` named ``easyant.module.dir`` with default value to ``$WORKSPACE/TO_REPLACE``. This will later point to the module sources.
+#. Check :guilabel:`This project is parameterized` and add :guilabel:`String parameter` named ``easyant.module.dir`` with default value to ``$WORKSPACE/TO_REPLACE``. This will later point to the module sources.
 
 In :guilabel:`Source Code Management` tab:
 
@@ -278,22 +273,23 @@ In :guilabel:`Source Code Management` tab:
 
 In :guilabel:`Build` tab:
 
-#. Add build step :guilabel:`Invoke Ant`:
-    * As :guilabel:`Ant version`, select ``Ant 1.9``.
-    * Set :guilabel:`Targets` to value ``-lib ${MICROEJ_BUILD_TOOLS_HOME}/buildKit/ant/lib``.
-    * In :guilabel:`Advanced`, set :guilabel:`Build file` to value ``$MICROEJ_BUILD_TOOLS_HOME/easyant/build-module.ant``.
-    * In :guilabel:`Advanced`, expand :guilabel:`Properties` text field then add the following Ant properties:
+* For Windows, add build step :guilabel:`Execute Windows batch command`:
+
+    * In :guilabel:`Command`, set the following content:
 
     ::
 
-     personalBuild=false
-     jenkins.build.id=$BUILD_ID
-     jenkins.node.name=$NODE_NAME
-     user.ivysettings.file=$MICROEJ_BUILD_TOOLS_HOME/ivy/ivysettings-artifactory.xml
+     cd "%easyant.module.dir%"
+     "%MICROEJ_BUILD_KIT_HOME%\\bin\\mmm.bat" publish shared"
 
-.. image:: images/tuto_microej_cli_jenkins_build.PNG
-    :align: center
+* For Linux, add build step :guilabel:`Execute shell`:
 
+    * In :guilabel:`Command`, set the following content:
+
+    ::
+
+     cd "${easyant.module.dir}"
+     "${MICROEJ_BUILD_KIT_HOME}/bin/mmm" publish shared"
 
 Finally, click on :guilabel:`Save`.
 
@@ -397,9 +393,7 @@ At this point of the tutorial:
 * Artifactory is hosting your module builds and MicroEJ modules. 
 * Jenkins automates the build process using :ref:`MicroEJ Module Manager <mmm>`.
 
-The next steps recommended are:
-
-* Adapt Jenkins/Artifactory configuration to your ecosystem and development flow.
+The next recommended step is to adapt MMM/Jenkins/Artifactory configuration to your ecosystem and development flow.
 
 
 Appendix
@@ -424,10 +418,15 @@ In :guilabel:`Build triggers` tab:
 
 In :guilabel:`Post-build actions` tab:
     
-#. Add post-build action :guilabel:`Publish JUnit test result report`:
-#. Set :guilabel:`Test report XMLs` to ``**/target~/test/xml/**/test-report.xml, **/target~/test/xml/**/*Test.xml``.
-#. Check :guilabel:`Retain long standard output/error`.
-#. Check :guilabel:`Do not fail the build on empty test results`
+1. Add post-build action :guilabel:`Publish JUnit test result report`:
+2. Set :guilabel:`Test report XMLs` to ``**/target~/test/xml/**/test-report.xml, **/target~/test/xml/**/*Test.xml``.
+
+.. note::
+    The error message ``‘**/target~/test/xml/**/test-report.xml’ doesn’t match anything: ‘**’ exists but not ‘**/target~/test/xml/**/test-report.xml’``
+    will be displayed since no build has been executed yet. These folders will be generated during the build.
+
+3. Check :guilabel:`Retain long standard output/error`.
+4. Check :guilabel:`Do not fail the build on empty test results`
 
 
 Add a Self-Signed Certificate
