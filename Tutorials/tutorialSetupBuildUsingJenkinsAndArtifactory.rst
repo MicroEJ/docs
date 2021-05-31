@@ -219,7 +219,7 @@ Setup Jenkins
 Install Jenkins
 ~~~~~~~~~~~~~~~
 
-#. Download Jenkins WAR (Web Archive) here: `<http://mirrors.jenkins.io/war-stable/latest/jenkins.war>`_
+#. Download Jenkins here: `<https://www.jenkins.io/download/>`_. In this tutorial we will use the WAR (Web Archive), but you can use any other installation package (Docker, Ubuntu/Debian, ...).
 #. Open a terminal and type the following command: ``java -jar [path/to/downloaded/jenkinswar]/jenkins.war``. 
    After initialization, the terminal will print out :guilabel:`Jenkins is fully up and running`.
 #. Go to ``http://localhost:8080/``.
