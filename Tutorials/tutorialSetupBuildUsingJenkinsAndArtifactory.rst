@@ -418,10 +418,15 @@ In :guilabel:`Build triggers` tab:
 
 In :guilabel:`Post-build actions` tab:
     
-#. Add post-build action :guilabel:`Publish JUnit test result report`:
-#. Set :guilabel:`Test report XMLs` to ``**/target~/test/xml/**/test-report.xml, **/target~/test/xml/**/*Test.xml``.
-#. Check :guilabel:`Retain long standard output/error`.
-#. Check :guilabel:`Do not fail the build on empty test results`
+1. Add post-build action :guilabel:`Publish JUnit test result report`:
+2. Set :guilabel:`Test report XMLs` to ``**/target~/test/xml/**/test-report.xml, **/target~/test/xml/**/*Test.xml``.
+
+.. note::
+    The error message ``‘**/target~/test/xml/**/test-report.xml’ doesn’t match anything: ‘**’ exists but not ‘**/target~/test/xml/**/test-report.xml’``
+    will be displayed since no build has been executed yet. These folders will be generated during the build.
+
+3. Check :guilabel:`Retain long standard output/error`.
+4. Check :guilabel:`Do not fail the build on empty test results`
 
 
 Add a Self-Signed Certificate
