@@ -676,11 +676,12 @@ For example
 displays the help of the command ``run``.
 
 Troubleshooting
-~~~~~~~~~~~~~~~
+---------------
 
-**Run fails with ``Target "simulator:run" does not exist``**
+Target "simulator:run" does not exist
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If the following message appears when executing the run command:
+If the following message appears when executing the ``mmm run`` command:
 
 .. code:: console
 
