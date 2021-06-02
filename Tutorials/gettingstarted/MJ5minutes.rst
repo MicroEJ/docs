@@ -114,7 +114,7 @@ Create a New Project
 
    |image7|
 
-Featured project #.Demo Widget
+Featured project Demo Widget
 ------------------------------
 
 - instructions to download import and launch Demo Widget 
