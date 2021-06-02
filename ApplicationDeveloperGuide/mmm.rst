@@ -678,6 +678,78 @@ displays the help of the command ``run``.
 Troubleshooting
 ---------------
 
+Unresolved Dependency
+~~~~~~~~~~~~~~~~~~~~~
+
+If the following message appears when resolving module dependencies:
+
+.. code:: console
+
+   :: problems summary ::
+   :::: WARNINGS
+      module not found: com.mycompany#mymodule;[M.m.p-RC,M.m.(p+1)-RC[
+
+   		::::::::::::::::::::::::::::::::::::::::::::::
+
+   		::          UNRESOLVED DEPENDENCIES         ::
+
+   		::::::::::::::::::::::::::::::::::::::::::::::
+
+   		:: com.mycompany#mymodule;[M.m.p-RC,M.m.(p+1)-RC[: not found
+
+   		::::::::::::::::::::::::::::::::::::::::::::::
+
+First, check that either a released module ``com.mycompany/mymodule/M.m.p`` or a snapshot module ``com.mycompany/mymodule/M.m.p-RCYYYYMMDD-HHMM`` exists in your module repository.
+
+- If the module does not exist, 
+  
+  - if it is declared as a :ref:`direct dependency <mmm_module_dependencies>`, the module repository is not compatible with your source code. 
+  - otherwise, this is likely a missing transitive module dependency. The module repository is not consistent.
+  
+  In both cases, please contact your module repository provider.
+
+- If the module exists, this may be either a configuration issue or a network connection error. 
+  We have to find the cause in the resolution logs with the verbose mode enabled:
+
+  For URL repositories, find:
+  
+  .. code:: console
+        
+        trying https://[MY_REPOSITORY_URL]/[MY_REPOSITORY_NAME]/com.mycompany/mymodule/
+        tried https://[MY_REPOSITORY_URL]/[MY_REPOSITORY_NAME]/com.mycompany/mymodule/
+
+  For filesystem repository, find the line:
+
+  .. code:: console
+     
+        trying [MY_REPOSITORY_PATH]/com.mycompany/mymodule/
+        tried [MY_REPOSITORY_PATH]/com.mycompany/mymodule/
+      
+  If your module repository URL or filesystem path does not appear, check your :ref:`settings file <mmm_settings_file>`. This is likely a missing resolver.
+
+  Otherwise, if your module repository is an URL, this may be a network connection error between MMM (the client) and the module repository (the server).
+  First, check for :ref:`invalid_certificate` issue.
+  
+  Otherwise, the next step is to debug at the HTTP level:
+  
+  .. code:: console
+     
+     HTTP response status: [RESPONSE_CODE] url=https://[MY_REPOSITORY_URL]/com.mycompany/mymodule/
+     CLIENT ERROR: Not Found url=https://[MY_REPOSITORY_URL]/com.mycompany/mymodule/
+
+  Depending on the HTTP error code:
+  
+  - ``401 Unauthorized``: check your `settings file credentials <https://ant.apache.org/ivy/history/2.5.0/settings/credentials.html>`_ configuration.
+  - ``404 Not Found``: add the following options to log raw HTTP traffic:
+
+    .. code-block:: shell
+      
+       -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.SimpleLog -Dorg.apache.commons.logging.simplelog.showdatetime=true -Dorg.apache.commons.logging.simplelog.log.org.apache.http=DEBUG -Dorg.apache.commons.logging.simplelog.log.org.apache.http.wire=ERROR
+
+    Particularly, Ivy requires the HTTP ``HEAD`` request which may be disabled by some servers.
+
+.. _invalid_certificate:
+
 Invalid Certificate
 ~~~~~~~~~~~~~~~~~~~
          
