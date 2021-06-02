@@ -678,6 +678,34 @@ displays the help of the command ``run``.
 Troubleshooting
 ---------------
 
+Invalid Certificate
+~~~~~~~~~~~~~~~~~~~
+         
+If the following message appears when resolving module dependencies:
+
+.. code:: console
+         
+   HttpClientHandler: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target url=[artifactory address]
+         
+The server may use a self-signed certificate that has to be added to the JRE trust store that is running MicroEJ Module Manager. Here is a way to do it: 
+         
+#. Install `Keystore Explorer <http://keystore-explorer.org/downloads.html>`_,
+#. Start Keystore Explorer, and open file ``[JRE_HOME]/lib/security/cacerts`` or ``[JDK_HOME]/jre/lib/security/cacerts`` with the password ``changeit``. You may not have the right to modify this file. Edit rights if needed before opening it,
+#. Click on :guilabel:`Tools`, then :guilabel:`Import Trusted Certificate`,
+#. Select your certificate,
+#. Save the ``cacerts`` file.
+
+If the problem still occurs, add the following option to enable SSL protocol traces:
+
+      .. code-block:: shell
+   
+         -Djavax.net.debug=all
+
+This is useful to detect advanced errors such as:
+
+- invalid certificate chain: one of root or intermediate certificate may be missing in the JRE/JDK truststore.
+- TLS protocol negotiation issues.
+
 Target "simulator:run" does not exist
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

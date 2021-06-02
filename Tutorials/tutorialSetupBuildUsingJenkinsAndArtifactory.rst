@@ -428,24 +428,6 @@ In :guilabel:`Post-build actions` tab:
 3. Check :guilabel:`Retain long standard output/error`.
 4. Check :guilabel:`Do not fail the build on empty test results`
 
-
-Add a Self-Signed Certificate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In case your Artifactory instance uses a self-signed SSL certificate, you might fall into this error when fetching dependencies:
-
-.. code-block::
-
-   HttpClientHandler: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target url=[artifactory address]
-
-The authority has to be added to the trust store of the JRE/JDK that is running Artifactory. Here is a way to do it: 
-
-#. Install `Keystore Explorer <http://keystore-explorer.org/downloads.html>`_.
-#. Start Keystore Explorer, and open file ``[JDK home]/jre/lib/security/cacerts`` with the password ``changeit``. You may not have the right to modify this file. Edit rights if needed before opening it.
-#. Click on :guilabel:`Tools`, then :guilabel:`Import Trusted Certificate`.
-#. Select your certificate.
-#. Save the ``cacerts`` file.
-
 Customize ``target~`` path
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
