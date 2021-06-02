@@ -50,7 +50,7 @@ Use
 
 The `SSL API module <https://repository.microej.com/modules/ej/api/ssl/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
-Application project, in order to allow access to the SSL library.
+Application project to use the SSL library.
 
 ::
 

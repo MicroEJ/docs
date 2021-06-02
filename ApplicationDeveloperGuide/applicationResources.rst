@@ -216,7 +216,7 @@ This allows to always have the Java interfaces up-to-date with the translations 
 
 The `NLS API module <https://repository.microej.com/modules/ej/library/runtime/nls/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
-Application project, in order to allow access to the NLS library.
+Application project to use the NLS library.
 
 ::
 
