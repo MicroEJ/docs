@@ -396,7 +396,7 @@ Import the MicroEJ Architecture
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This step describes how to import a :ref:`MicroEJ Architecture
-<architecture_import>`.
+<architecture_overview>`.
 
 
 #. Start MicroEJ SDK on an empty workspace. For example, create an

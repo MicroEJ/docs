@@ -8,7 +8,7 @@ License Manager Overview
 
 MicroEJ Architectures are distributed in two different versions:
 
-- Evaluation Architectures, associated with a software license key. They can be downloaded at `<https://repository.microej.com/architectures/>`_.
+- Evaluation Architectures, associated with a software license key. They can be downloaded at `<https://repository.microej.com/modules/com/microej/architecture/>`_.
 - Production Architectures, associated with a hardware license key stored on a USB dongle. They can be requested to :ref:`our support team <get_support>`.
 
 The license manager is provided with MicroEJ Architectures and then integrated into Platforms, consequently:
@@ -17,9 +17,6 @@ The license manager is provided with MicroEJ Architectures and then integrated i
   has been imported in MicroEJ SDK.
 - Production licenses will be shown only if at least one Production Architecture or Platform built from a Production Architecture 
   has been imported in MicroEJ SDK.
-
-See sections :ref:`architecture_import` and :ref:`platform_import` for more information.
-
 
 The list of installed licenses is available in MicroEJ SDK preferences dialog page in :guilabel:`Window`
 > :guilabel:`Preferences` > :guilabel:`MicroEJ`:
