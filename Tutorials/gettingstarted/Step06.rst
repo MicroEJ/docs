@@ -5,7 +5,7 @@ The handleEvent method
 ---------------------------
 - Every class that extends ``Widget`` inherits the ``handleEvent()`` method.
 - Add custom event handling by overriding the ``handleEvent()`` method of a widget.
-- Using as a sample the Button class
+- Using the ``Button`` class from the Widget library as a sample:
 - Use the handleEvent of the parent class if none of the EventTypes are used
 
 .. code:: java
