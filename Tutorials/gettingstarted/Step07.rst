@@ -50,7 +50,7 @@ Geometric objects
 Images can also be set
 ----------------------
 
--  Adding the image as shown in step 3
+-  Drawing the image as shown in step 3:
 
    .. code:: java
 
