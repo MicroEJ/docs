@@ -33,7 +33,8 @@ The handleEvent method
 	}
 
 - It's important to note that only widgets that are "enabled" will receive input events. One can enable a widget by calling ``setEnabled(true)``.
-- The handleClick method is where the clickListener is used
+- In the ``Button`` class, the click triggers an action which is defined by the registered ``OnClickListener``. The ``handleClick`` method is where the listener is called:
+
 
 .. code:: java
  
