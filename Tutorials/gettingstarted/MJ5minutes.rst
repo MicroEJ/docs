@@ -39,7 +39,8 @@ Prepare platform sources
    - `GCC <https://repository.microej.com/packages/referenceimplementations/M5QNX/1.2.0/STM32F7508-M5QNX-fullPackaging-eval-1.2.0.zip>`__
    - `IAR <https://repository.microej.com/packages/referenceimplementations/KUVW3/1.2.0/STM32F7508-KUVW3-fullPackaging-eval-1.2.0.zip>`__
 
-#. Select ``File > Import > MicroEJ > Architectures`` click on ``Next>`` and
+#. Go to :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`, click on :guilabel:`Import.. ` and
+
    choose the directory ``platformArchitecture`` inside the unzipped
    folder read the license of the targets, and then click **Finish**.
 
