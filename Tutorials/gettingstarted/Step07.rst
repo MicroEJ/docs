@@ -47,7 +47,7 @@ Geometric objects
 
    |image1|
        
-Images can also be set
+Drawing images
 ----------------------
 
 -  Drawing the image as shown in step 3:
