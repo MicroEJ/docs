@@ -31,7 +31,7 @@ The handleEvent method
 		return super.handleEvent(event);
 	}
 
-- It's important to know that the widget should be setEnabled(true) in order to events to work
+- It's important to note that only widgets that are "enabled" will receive input events. One can enable a widget by calling ``setEnabled(true)``.
 - The handleClick method is where the clickListener is used
 
 .. code:: java
