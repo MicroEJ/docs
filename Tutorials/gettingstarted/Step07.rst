@@ -28,7 +28,7 @@ Basic drawing/Drawing on screen
    
    |image0|
  
-Geometric objects
+Drawing basic shapes
 -----------------
 
 -  It is also possible to also draw geometric objects using Displayable
@@ -55,7 +55,7 @@ Drawing images
    .. code:: java
 
        Image image = Image.getImage("/images/mj.png");
-       // draws the image at x,y coordinates (50, 50).
+       // draws the image at x,y coordinates (150, 50).
        Painter.drawImage(g, image, 150, 50);
 
    |image2|

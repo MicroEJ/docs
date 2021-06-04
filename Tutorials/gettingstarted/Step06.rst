@@ -46,10 +46,10 @@ The handleEvent method
 
 
 Using events with buttons
--------------------------------
+-------------------------
 Events are handled in the same way
 
-- Using the code created in the Last Step, it is possible to simply add the onClick Listener
+- Using the code created in the previous step, let's add a simple action to the button by adding a ``OnClickListener``.
 
 .. code:: java
 
@@ -60,7 +60,7 @@ Events are handled in the same way
         }
     });
 
-This should be shown in the console
+When running the modified sample, this should be shown in the console:
 
 .. code:: Console
 
