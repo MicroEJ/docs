@@ -3,7 +3,7 @@ Event Handling
 
 The handleEvent method
 ---------------------------
-- Every class that extends Widget inherits the handleEvent method
+- Every class that extends ``Widget`` inherits the ``handleEvent()`` method.
 - It is possible to handle events overriding this class on a created sample
 - Using as a sample the Button class
 - Use the handleEvent of the parent class if none of the EventTypes are used
