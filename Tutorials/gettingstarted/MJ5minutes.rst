@@ -45,9 +45,9 @@ Prepare platform sources
 
    |image0|
 
-#. Select :guilabel:Window > :guilabel:Preferences > :guilabel:MicroEJ > :guilabel:Architectures and click on
-   Import..., find the previously extracted folder and select the
-   MicroEJ Architecture directory. 
+#. Select :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > :guilabel:`click on
+   Import...`> :guilabel:`find the previously extracted folder and select the
+   MicroEJ Architecture directory`. 
 
    .. note::
 
@@ -55,7 +55,7 @@ Prepare platform sources
    
    |image1|
 
-#. Select the :guilabel:File > :guilabel:Import > :guilabel:General > :guilabel:Existing Projects into
+#. Select the :guilabel:`File` > :guilabel:`Import` > :guilabel:`General` > :guilabel:`Existing Projects into`
    Workspace click on :guilabel:`Select archive file` and browse for the previously
    extracted folder to locate the **MicroEJ Platform Reference
    Implementation file(e.g.STM32F7508-KUVW3-platformSource.zip)** then
@@ -70,9 +70,15 @@ Create your license
 #. After receiving the confirmation e-mail, login to your account and
    click on Activate a License.
 #. Set Product P/N: to 9PEVNLDBU6IJ.
-#. To get your UID from the MicroEJ SDK, select :guilabel:Window > :guilabel:Preferences > :guilabel:MicroEJ > Architectures menu, click on one of the available architectures and press Get UID. 
-   
-   |image3|
+#. To get your UID from the MicroEJ SDK, select :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > guilabel:`click on one of the available architectures and press Get UID`. 
+
+.. raw:: html
+
+   <div class="figure align-center">
+           <video width="960" height="540" muted="on" controls="controls" >
+                   <source src="https://developer.microej.com/wp-content/uploads/2020/04/sdk_sc_2-get-your-uid.mp4" type="video/mp4">
+           </video>
+   </div>
 
 #. Wait for the e-mail confirmation and download the attached zip file
    that contains your activation key. 
@@ -84,13 +90,19 @@ Create your license
 Activate your license
 ---------------------
 
-#. Back in MicroEJ SDK, select the ``Window > Preferences > MicroEJ`` menu
+#. Back in MicroEJ SDK, select the :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` menu
    and press Add... to select the downloaded activation key archive
    file.
 #. Go to Architectures sub-menu and check that all architectures are now
    activated (green check). 
-   
-   |image4|
+
+.. raw:: html
+
+   <div class="figure align-center">
+           <video width="960" height="540" muted="on" controls="controls" >
+                   <source src="https://developer.microej.com/wp-content/uploads/2020/04/generate-you-activation-key.mp4" type="video/mp4">
+           </video>
+   </div>
 
 Build Your Platform
 -------------------

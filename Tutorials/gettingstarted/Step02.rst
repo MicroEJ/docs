@@ -45,8 +45,8 @@ Using Flow Layout
    |image1|
 
    
-Canvas
-------
+Using Canvas
+------------------
 
 - Lays out any number of children freely.
 - To add a widget to a ``Canvas``, specify its position and size.

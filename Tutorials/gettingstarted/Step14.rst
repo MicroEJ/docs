@@ -1,5 +1,5 @@
 Expandable Widget
-================
+========================
 
 A simple Expandable Widget
 --------------------------
@@ -213,5 +213,5 @@ Using the ExpandableWidget with the Scroll List
 
 |imageexpanded|
 
-.. |imageexpanded| image:: expanded.png
+.. |imageexpanded| image:: images/expanded.png
 

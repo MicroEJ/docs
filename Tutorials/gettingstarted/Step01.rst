@@ -1,5 +1,5 @@
-MicroUI
-=======
+Starting MicroUI
+====================
 
 #. To get started, first we need to add MicroUI, a foundation library
    that provides an abstraction layer to access the low-level UI inputs
