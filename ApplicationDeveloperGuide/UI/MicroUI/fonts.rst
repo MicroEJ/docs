@@ -104,7 +104,7 @@ Examples:
 :ref:`The following table <table_unicodeRanges>` describes the available list of ranges
 and sub-ranges (processed from the "Unicode Character Database" version
 9.0.0 available on the official unicode website
- `https://www.unicode.org <https://www.unicode.org>`_ ).
+ `<https://home.unicode.org/>`_ ).
 
 .. _table_unicodeRanges:
 .. tabularcolumns:: |p{5.5cm}|p{7cm}|p{1cm}|p{1cm}|
