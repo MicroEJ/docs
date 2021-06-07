@@ -56,11 +56,11 @@ Creating the contact widget
    .. code:: java
 
         for (int i = 0; i < 45; i++) {
-            Label lbl = new Label("Label" + i);
             list.addChild(new ContactWidget("Label" + i, Image.getImage("/images/mj.png")));
         }
 
 - The class should be as follows
+
 
    .. code:: java
    
