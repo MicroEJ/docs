@@ -5,6 +5,8 @@
 .. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 ..
 
+.. _js.getting_started:
+
 ===============
 Getting started
 ===============
@@ -28,7 +30,7 @@ You can have more information on the project types in the :ref:`Module Natures p
 
 .. code:: xml
 
-    <dependency org="com.microej.library.runtime" name="js" rev="0.5.0"/>
+    <dependency org="com.microej.library.runtime" name="js" rev="0.10.0"/>
 
 - add the following lines in your application main class:
 
