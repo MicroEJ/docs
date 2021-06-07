@@ -10,6 +10,8 @@
 Limitations
 ===========
 
+The MicroEJ engine supports the version 5.1 of the ECMAScript specification, with the limitations described in this page.
+
 Unsupported Directives
 **********************
 
@@ -20,8 +22,8 @@ Unsupported Statements
 
 The following syntaxes are not supported by the MicroEJ JavaScript engine:
 
-- ``with (x) { }``
-- ``get`` and ``set`` in object initialiser
+- ``with (x) { }`` : the ``with`` statement is not supported in MicroEJ since its usage is not recommended. 
+  See `the reference documentation <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with#ambiguity_contra>`_ for more information.
 
 Unsupported Built-in objects
 ****************************
