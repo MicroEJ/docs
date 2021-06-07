@@ -494,6 +494,8 @@ The available commands are:
 - ``publish``: build the project and publish the module
 - ``run``: run the MicroEJ Application project on the Simulator
 
+.. _mmm_cli_options:
+
 The available options are:
 
 - ``--help`` (``-h``): show the help message and exit
@@ -678,6 +680,8 @@ displays the help of the command ``run``.
 Troubleshooting
 ---------------
 
+.. _mmm_unresolved_dependency:
+
 Unresolved Dependency
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -704,12 +708,12 @@ First, check that either a released module ``com.mycompany/mymodule/M.m.p`` or a
 - If the module does not exist, 
   
   - if it is declared as a :ref:`direct dependency <mmm_module_dependencies>`, the module repository is not compatible with your source code. 
+    You can either check if an other module version is available in the repository or add the missing module to the repository.
   - otherwise, this is likely a missing transitive module dependency. The module repository is not consistent.
-  
-  In both cases, please contact your module repository provider.
+    Check the module repository settings file and that consistency check has been enabled during the module repository build (see :ref:`module_repository_consistency`).
 
 - If the module exists, this may be either a configuration issue or a network connection error. 
-  We have to find the cause in the resolution logs with the verbose mode enabled:
+  We have to find the cause in the resolution logs with the :ref:`verbose mode option <mmm_cli_options>` enabled:
 
   For URL repositories, find:
   
@@ -718,7 +722,7 @@ First, check that either a released module ``com.mycompany/mymodule/M.m.p`` or a
         trying https://[MY_REPOSITORY_URL]/[MY_REPOSITORY_NAME]/com.mycompany/mymodule/
         tried https://[MY_REPOSITORY_URL]/[MY_REPOSITORY_NAME]/com.mycompany/mymodule/
 
-  For filesystem repository, find the line:
+  For filesystem repository, find:
 
   .. code:: console
      
