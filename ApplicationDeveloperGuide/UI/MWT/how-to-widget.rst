@@ -75,20 +75,15 @@ For example, the following snippet prints a message when the widget receives an 
 Consuming events
 ~~~~~~~~~~~~~~~~
 
-To indicate that an event was consumed by a widget, ``handleEvent()``
-should return ``true``.  When an event is consumed, it is not
-propagated to other widgets.  The widget that consumed the event, is
-the only one that can react to it.
+To indicate that an event was consumed by a widget, ``handleEvent()`` should return ``true``.
+When an event is consumed, it is not propagated to other widgets.
+The widget that consumed the event, is the only one that can react to it.
 
-The following guidelines are recommended to decide when to consume an
-event and when not to consume an event:
+The following guidelines are recommended to decide when to consume an event and when not to consume an event:
 
 - If the event triggers an action on the widget, consume the event.
-- If the event does not trigger an action the widget, do not consume
-  the event.
-- If the event is ``Pointer.PRESSED``, do not consume the event unless
-  it is required that the subsequent widgets in the hierarchy do not
-  receive it.
+- If the event does not trigger an action the widget, do not consume the event.
+- If the event is ``Pointer.PRESSED``, do not consume the event unless it is required that the subsequent widgets in the hierarchy do not receive it.
 
 Listening to the life-cycle hooks
 ---------------------------------
