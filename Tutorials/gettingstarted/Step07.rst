@@ -31,7 +31,11 @@ Basic drawing/Drawing on screen
 Drawing basic shapes
 -----------------
 
--  It is also possible to also draw geometric objects using Displayable
+-  It is also possible to also draw geometric objects using the Painter class 
+-  The code below paints each component the selected color(Yellow, Purple,Green)
+-  The drawLine Method receives the starting and finishing point in x and y coordinates
+-  Fill rectangle and ellipse methods receive x and y coordinates and also width and height
+-  draw circle receives x and y and it's diameter 
 
    .. code:: java
 
@@ -63,7 +67,7 @@ Drawing images
 Drawing Thick Shapes
 --------------------
 
--  Drawing thick shapes is very straight forward 
+-  The code below shows how to draw a Thick Faded line
 
    .. code:: java
 
