@@ -76,14 +76,20 @@ Consuming events
 ~~~~~~~~~~~~~~~~
 
 To indicate that an event was consumed by a widget, ``handleEvent()`` should return ``true``.
-When an event is consumed, it is not propagated to other widgets.
-The widget that consumed the event, is the only one that can react to it.
+Usually, once an event is consumed, it is not dispatched to other widgets (this behavior is controlled by the event dispatcher).
+The widget that consumed the event is the only one that can react to it.
 
 The following guidelines are recommended to decide when to consume an event and when not to consume an event:
 
-- If the event triggers an action on the widget, consume the event.
-- If the event does not trigger an action the widget, do not consume the event.
+- If the widget triggers an action when receiving the event, it consumes the event.
+- If the widget does not trigger an action when receiving the event, it does not consume the event.
 - If the event is ``Pointer.PRESSED``, do not consume the event unless it is required that the subsequent widgets in the hierarchy do not receive it.
+
+  .. note::
+
+     The ``Pointer.PRESSED`` event is special because pressing a widget is usually not the deciding factor to trigger an action.
+     The user has to release it.
+     If the user presses a widget and then drags their finger out of the widget before releasing it, the action is not triggered.
 
 Listening to the life-cycle hooks
 ---------------------------------
