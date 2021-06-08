@@ -17,7 +17,6 @@ Basic drawing/Drawing on screen
 
         @Override
         public boolean handleEvent(int event) {
-            // handles input events. We'll address this later.
             return false;
         }
     };
