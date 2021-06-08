@@ -66,7 +66,7 @@ Drawing images
 
 Drawing Thick Shapes
 --------------------
-
+-  The ShapePainter Class offers a set of static methods to render thick shapes
 -  The code below shows how to draw a Thick Faded line
 
    .. code:: java
