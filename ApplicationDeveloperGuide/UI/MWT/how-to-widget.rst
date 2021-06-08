@@ -83,13 +83,13 @@ The following guidelines are recommended to decide when to consume an event and 
 
 - If the widget triggers an action when receiving the event, it consumes the event.
 - If the widget does not trigger an action when receiving the event, it does not consume the event.
-- If the event is ``Pointer.PRESSED``, do not consume the event unless it is required that the subsequent widgets in the hierarchy do not receive it.
 
-  .. note::
+.. note::
 
-     The ``Pointer.PRESSED`` event is special because pressing a widget is usually not the deciding factor to trigger an action.
-     The user has to release it.
-     If the user presses a widget and then drags their finger out of the widget before releasing it, the action is not triggered.
+   If the event is ``Pointer.PRESSED``, do not consume the event unless it is required that the subsequent widgets in the hierarchy do not receive it.
+   The ``Pointer.PRESSED`` event is special because pressing a widget is usually not the deciding factor to trigger an action.
+   The user has to release it.
+   If the user presses a widget and then drags their finger out of the widget before releasing it, the action is not triggered.
 
 Listening to the life-cycle hooks
 ---------------------------------
