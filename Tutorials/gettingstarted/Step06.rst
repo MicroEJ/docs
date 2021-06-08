@@ -48,7 +48,7 @@ The handleEvent method
 
 Using events with buttons
 -------------------------
-Events are handled in the same way
+As an example, The usage of Button class
 
 - Using the code created in the previous step, let's add a simple action to the button by adding a ``OnClickListener``.
 
