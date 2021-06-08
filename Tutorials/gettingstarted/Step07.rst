@@ -5,24 +5,25 @@ Basic drawing/Drawing on screen
    Display object that represents a pixelated version of the Display
 
 .. code:: java
+    
+    public static void main(String[] args){
+       Displayable myDisplayable = new Displayable() {
 
-    Displayable myDisplayable = new Displayable() {
+           @Override
+           protected void render(GraphicsContext g) {
+               // draws a yellow line.
+               g.setColor(Colors.YELLOW);
+               Painter.drawLine(g, 0, 0, 100, 50);
+           }
 
-        @Override
-        protected void render(GraphicsContext g) {
-            // draws a yellow line.
-            g.setColor(Colors.YELLOW);
-            Painter.drawLine(g, 0, 0, 100, 50);
-        }
-
-        @Override
-        public boolean handleEvent(int event) {
-            return false;
-        }
-    };
+           @Override
+           public boolean handleEvent(int event) {
+               return false;
+           }
+       };
 
     Display.getDisplay().requestShow(myDisplayable);
-
+   }
 -  This should draw a line from the coordinates of the display (0,0) going to (100,50) 
    
    |image0|
