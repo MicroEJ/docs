@@ -108,7 +108,7 @@ Activate your license
 Build Your Platform
 -------------------
 
-#. Inside the **stm32f7508_freertos-configuration** project, open the
+#. Inside the :guilabel:`stm32f7508_freertos-configuration` project, open the
    **.platform** File MicroEJ platform configuration file. From this
    MicroEJ platform configuration file, click on the link Build Platform
    
