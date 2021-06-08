@@ -24,7 +24,7 @@ Using PO Files
     msgid "Label2"
     msgstr "My label 2"
 
-- Labels_pt_br.rst
+- Labels_pt_br.po
 
 .. code:: po
 
