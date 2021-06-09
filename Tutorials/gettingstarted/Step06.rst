@@ -1,7 +1,9 @@
 Event Handling
 ==============
+
 - MicroUI generates integer-based events that encode the low-level input type and action. The application can handle these events in the ``handleEvent`` method.
 The handleEvent method
+
 ---------------------------
 - Every class that extends ``Widget`` inherits the ``handleEvent()`` method.
 - Add custom event handling by overriding the ``handleEvent()`` method of a widget.
