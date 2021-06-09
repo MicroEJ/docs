@@ -80,7 +80,7 @@ Use
 
 The `Net API Module <https://repository.microej.com/modules/ej/api/net/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project in order to allow access to the Net library.
+Application project to use the Net library.
 
 ::
 

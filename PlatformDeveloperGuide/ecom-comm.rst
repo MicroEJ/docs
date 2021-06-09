@@ -499,7 +499,7 @@ Use
 
 The `ECOM Comm API Module <https://repository.microej.com/modules/ej/api/ecom-comm/>`_ 
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project in order to allow access to the ECOM Comm library. 
+Application project to use the ECOM Comm library. 
 
 ::
 

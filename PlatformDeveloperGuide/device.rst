@@ -41,7 +41,7 @@ Use
 
 The `Device API Module <https://repository.microej.com/modules/ej/api/device/>`_ 
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project in order to allow access to the Device library.
+Application project to use the Device library.
 
 ::
 
