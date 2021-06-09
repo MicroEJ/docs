@@ -32,7 +32,7 @@ Starting MicroUI
 
 #. To run your code on the simulator, left click on the Project Go To
    
-   :guilbael:`Run` > :guilabel:`Run As` > :guilabel:`MicroEJ Application` > :guilabel:`Select the device you added`
+   :guilabel:`Run` > :guilabel:`Run As` > :guilabel:`MicroEJ Application` > :guilabel:`Select the device you added`
    
    |image0|
 
