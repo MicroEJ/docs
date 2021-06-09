@@ -24,12 +24,13 @@ Basic drawing/Drawing on screen
 
     Display.getDisplay().requestShow(myDisplayable);
    }
+   
 -  This should draw a line from the coordinates of the display (0,0) going to (100,50) 
    
    |image0|
  
 Drawing basic shapes
------------------
+---------------------------
 
 -  It is also possible to also draw geometric objects using the Painter class 
 -  The code below paints each component the selected color(Yellow, Purple,Green)
