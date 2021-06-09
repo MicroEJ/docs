@@ -1,11 +1,11 @@
 .. _tutorial_sni_non_blocking_call:
 
 ==========================================================
-Make a Non-Blocking Call to a Java native method using SNI 
+Make a Non-Blocking Call to a Java Native Method using SNI 
 ==========================================================
 
 This tutorial describes all the steps to perform a non-blocking call to a Java method
-implemented in C using :ref:`Simple Native Interface (SNI) <sni>`.
+implemented in C using the :ref:`Simple Native Interface (SNI) <sni>` mechanism.
 
 Intended Audience
 =================
@@ -52,7 +52,7 @@ The following application:
 - Creates a thread (timer task) that prints each second ``This timer fires each 1 sec`` in the console.
 - Uses the main thread to call a native method that takes time to execute.
 
-MicroEJ Application code:
+The MicroEJ Application code:
 
 .. code:: java
 
@@ -117,6 +117,10 @@ Expected results
 
 The MicroEJ Application should produce the following logs:
 
+.. note::
+
+    A timestamp has been added in the console in order to highlight the blocking call.
+
 .. code:: bash
 
     [12:00:11] MicroEJ START
@@ -141,9 +145,10 @@ make a non-blocking call.
 
 Here is a summary of what will be done: 
 
-- From the C implementation of the of the Java native method:
-
+- In the C implementation of the of the Java native method:
+  
   - Suspend the Java thread that called the Java native method (the other threads will still run).
+  - Remove all the operations related to the data processing.
   - Create a new RTOS task and perform the processing in it.
 
 - Resume the Java thread when the "processing" task is done and kill the task.
@@ -296,7 +301,7 @@ Step 4 : Implement the callback function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The callback function must have the same signature as the SNI native, in this case:
-``jint multiplyByTwoBlockingNative_callback(jint aValue)``
+``jint multiplyByTwoBlockingNative_callback(jint aValue)``.
 
 The callback function is automatically called by the Java thread when it is resumed.
 Use the ``SNI_getCallbackArgs()`` function to retrieve the arguments given to an SNI callback
@@ -321,6 +326,10 @@ Expected results
 ----------------
 
 The MicroEJ Application should produce the following logs:
+
+.. note::
+
+    A timestamp has been added in the console in order to highlight the non-blocking call.
 
 .. code:: bash
 
