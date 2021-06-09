@@ -494,6 +494,8 @@ The available commands are:
 - ``publish``: build the project and publish the module
 - ``run``: run the MicroEJ Application project on the Simulator
 
+.. _mmm_cli_options:
+
 The available options are:
 
 - ``--help`` (``-h``): show the help message and exit
@@ -676,11 +678,114 @@ For example
 displays the help of the command ``run``.
 
 Troubleshooting
-~~~~~~~~~~~~~~~
+---------------
 
-**Run fails with ``Target "simulator:run" does not exist``**
+.. _mmm_unresolved_dependency:
 
-If the following message appears when executing the run command:
+Unresolved Dependency
+~~~~~~~~~~~~~~~~~~~~~
+
+If the following message appears when resolving module dependencies:
+
+.. code:: console
+
+   :: problems summary ::
+   :::: WARNINGS
+      module not found: com.mycompany#mymodule;[M.m.p-RC,M.m.(p+1)-RC[
+
+   		::::::::::::::::::::::::::::::::::::::::::::::
+
+   		::          UNRESOLVED DEPENDENCIES         ::
+
+   		::::::::::::::::::::::::::::::::::::::::::::::
+
+   		:: com.mycompany#mymodule;[M.m.p-RC,M.m.(p+1)-RC[: not found
+
+   		::::::::::::::::::::::::::::::::::::::::::::::
+
+First, check that either a released module ``com.mycompany/mymodule/M.m.p`` or a snapshot module ``com.mycompany/mymodule/M.m.p-RCYYYYMMDD-HHMM`` exists in your module repository.
+
+- If the module does not exist, 
+  
+  - if it is declared as a :ref:`direct dependency <mmm_module_dependencies>`, the module repository is not compatible with your source code. 
+    You can either check if an other module version is available in the repository or add the missing module to the repository.
+  - otherwise, this is likely a missing transitive module dependency. The module repository is not consistent.
+    Check the module repository settings file and that consistency check has been enabled during the module repository build (see :ref:`module_repository_consistency`).
+
+- If the module exists, this may be either a configuration issue or a network connection error. 
+  We have to find the cause in the resolution logs with the :ref:`verbose mode option <mmm_cli_options>` enabled:
+
+  For URL repositories, find:
+  
+  .. code:: console
+        
+        trying https://[MY_REPOSITORY_URL]/[MY_REPOSITORY_NAME]/com.mycompany/mymodule/
+        tried https://[MY_REPOSITORY_URL]/[MY_REPOSITORY_NAME]/com.mycompany/mymodule/
+
+  For filesystem repository, find:
+
+  .. code:: console
+     
+        trying [MY_REPOSITORY_PATH]/com.mycompany/mymodule/
+        tried [MY_REPOSITORY_PATH]/com.mycompany/mymodule/
+      
+  If your module repository URL or filesystem path does not appear, check your :ref:`settings file <mmm_settings_file>`. This is likely a missing resolver.
+
+  Otherwise, if your module repository is an URL, this may be a network connection error between MMM (the client) and the module repository (the server).
+  First, check for :ref:`invalid_certificate` issue.
+  
+  Otherwise, the next step is to debug at the HTTP level:
+  
+  .. code:: console
+     
+     HTTP response status: [RESPONSE_CODE] url=https://[MY_REPOSITORY_URL]/com.mycompany/mymodule/
+     CLIENT ERROR: Not Found url=https://[MY_REPOSITORY_URL]/com.mycompany/mymodule/
+
+  Depending on the HTTP error code:
+  
+  - ``401 Unauthorized``: check your `settings file credentials <https://ant.apache.org/ivy/history/2.5.0/settings/credentials.html>`_ configuration.
+  - ``404 Not Found``: add the following options to log raw HTTP traffic:
+
+    .. code-block:: shell
+      
+       -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.SimpleLog -Dorg.apache.commons.logging.simplelog.showdatetime=true -Dorg.apache.commons.logging.simplelog.log.org.apache.http=DEBUG -Dorg.apache.commons.logging.simplelog.log.org.apache.http.wire=ERROR
+
+    Particularly, Ivy requires the HTTP ``HEAD`` request which may be disabled by some servers.
+
+.. _invalid_certificate:
+
+Invalid Certificate
+~~~~~~~~~~~~~~~~~~~
+         
+If the following message appears when resolving module dependencies:
+
+.. code:: console
+         
+   HttpClientHandler: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target url=[artifactory address]
+         
+The server may use a self-signed certificate that has to be added to the JRE trust store that is running MicroEJ Module Manager. Here is a way to do it: 
+         
+#. Install `Keystore Explorer <http://keystore-explorer.org/downloads.html>`_,
+#. Start Keystore Explorer, and open file ``[JRE_HOME]/lib/security/cacerts`` or ``[JDK_HOME]/jre/lib/security/cacerts`` with the password ``changeit``. You may not have the right to modify this file. Edit rights if needed before opening it,
+#. Click on :guilabel:`Tools`, then :guilabel:`Import Trusted Certificate`,
+#. Select your certificate,
+#. Save the ``cacerts`` file.
+
+If the problem still occurs, add the following option to enable SSL protocol traces:
+
+      .. code-block:: shell
+   
+         -Djavax.net.debug=all
+
+This is useful to detect advanced errors such as:
+
+- invalid certificate chain: one of root or intermediate certificate may be missing in the JRE/JDK truststore.
+- TLS protocol negotiation issues.
+
+Target "simulator:run" does not exist
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If the following message appears when executing the ``mmm run`` command:
 
 .. code:: console
 
