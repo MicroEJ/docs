@@ -69,11 +69,11 @@ A MicroEJ Add-On Library is a MicroEJ library that is implemented on top of Micr
 
 This module nature inherits the configuration properties of the following features:
 
-- :ref:`Java Compilation <module_natures.features.compilation>`
-- :ref:`Platform Selection <module_natures_platform_selection>`
-- :ref:`Javadoc <module_natures.features.javadoc>`
-- :ref:`Test Suite <module_natures.features.testsuite>`
-- :ref:`Artifact Checker <module_natures.features.artifact_checker>`
+- :ref:`module_natures.features.compilation`
+- :ref:`module_natures_platform_selection`
+- :ref:`module_natures.features.javadoc`
+- :ref:`module_natures.features.testsuite`
+- :ref:`module_natures.features.artifact_checker`
 
 Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
 
@@ -90,9 +90,9 @@ A MicroEJ Foundation Library API is a MicroEJ Core library that provides core ru
 
 This module nature inherits the configuration properties of the following features:
 
-- :ref:`Java Compilation <module_natures.features.compilation>`
-- :ref:`Javadoc <module_natures.features.javadoc>`
-- :ref:`Artifact Checker <module_natures.features.artifact_checker>`
+- :ref:`module_natures.features.compilation`
+- :ref:`module_natures.features.javadoc`
+- :ref:`module_natures.features.artifact_checker`
 
 Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
 
@@ -109,8 +109,8 @@ A MicroEJ Foundation Library Implementation is a MicroEJ Core library that imple
 
 This module nature inherits the configuration properties of the following features:
 
-- :ref:`Java Compilation <module_natures.features.compilation>`
-- :ref:`Test Suite <module_natures.features.testsuite>`
+- :ref:`module_natures.features.compilation`
+- :ref:`module_natures.features.testsuite`
 
 and it also has the following dedicated configuration properties:
 
@@ -142,8 +142,8 @@ Mocks allow applications to be run unchanged in the Simulator while still (appar
 
 This module nature inherits the configuration properties of the following features:
 
-- :ref:`Java Compilation <module_natures.features.compilation>`
-- :ref:`Unit Tests <module_natures.features.unittests>`
+- :ref:`module_natures.features.compilation`
+- :ref:`module_natures.features.unittests`
 
 Go to the :ref:`Mock <mock_module>` section for more details.
 
@@ -161,7 +161,7 @@ It is used to contain all the dependencies required to build and package the app
 
 This module nature inherits the configuration properties of the following features:
 
-- :ref:`Artifact Checker <module_natures.features.artifact_checker>`
+- :ref:`module_natures.features.artifact_checker`
 
 and it also has the following dedicated configuration properties:
 
@@ -245,11 +245,11 @@ If it is statically linked, it is then called a System Application as it is part
 
 This module nature inherits the configuration properties of the following features:
 
-- :ref:`Java Compilation <module_natures.features.compilation>`
-- :ref:`Platform Selection <module_natures_platform_selection>`
-- :ref:`Javadoc <module_natures.features.javadoc>`
-- :ref:`Test Suite <module_natures.features.testsuite>`
-- :ref:`Artifact Checker <module_natures.features.artifact_checker>`
+- :ref:`module_natures.features.compilation`
+- :ref:`module_natures_platform_selection`
+- :ref:`module_natures.features.javadoc`
+- :ref:`module_natures.features.testsuite`
+- :ref:`module_natures.features.artifact_checker`
 
 Go to the :ref:`sandboxed_application` section for more details.
 
@@ -267,10 +267,10 @@ Such application must define a main entry point, i.e. a class containing a publi
 
 This module nature inherits the configuration properties of the following features:
 
-- :ref:`Java Compilation <module_natures.features.compilation>`
-- :ref:`Platform Selection <module_natures_platform_selection>`
-- :ref:`Test Suite <module_natures.features.testsuite>`
-- :ref:`Artifact Checker <module_natures.features.artifact_checker>`
+- :ref:`module_natures.features.compilation`
+- :ref:`module_natures_platform_selection`
+- :ref:`module_natures.features.testsuite`
+- :ref:`module_natures.features.artifact_checker`
 
 and it also has the following dedicated configuration properties:
 
@@ -304,9 +304,9 @@ A MicroEJ Add-On Processor is a MicroEJ library that executes operations on sour
 
 This module nature inherits the configuration properties of the following features:
 
-- :ref:`Java Compilation <module_natures.features.compilation>`
-- :ref:`Unit Tests <module_natures.features.unittests>`
-- :ref:`Artifact Checker <module_natures.features.artifact_checker>`
+- :ref:`module_natures.features.compilation`
+- :ref:`module_natures.features.unittests`
+- :ref:`module_natures.features.artifact_checker`
 
 Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
 
@@ -345,8 +345,8 @@ Natures features
 
 .. _module_natures.features.compilation:
 
-Compilation
-^^^^^^^^^^^
+Java Compilation
+^^^^^^^^^^^^^^^^
 
 The compilation feature is used by several modules natures:
 
