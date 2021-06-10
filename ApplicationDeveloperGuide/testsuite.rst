@@ -40,26 +40,26 @@ JUnit documentation to get details on usage of other annotations.
 Setup a Platform for Tests
 --------------------------
 
-Before running tests, a target platform must be configured in the
-MicroEJ workspace. The following steps assume that a platform has been
-previously imported into the MicroEJ Platform repository (or available
-in the Workspace).
+Before running tests, a target platform must be configured.
 
-Go to :guilabel:`Window` > :guilabel:`Preferences` >
-:guilabel:`MicroEJ` > :guilabel:`Platforms` (or :guilabel:`Platforms
-in workspace`) and select the desired platform on which to run the
-tests.
+Execution in SDK
+~~~~~~~~~~~~~~~~
 
-Press :kbd:`F2` to expand the details.
+In order to execute the Test Suite in the SDK, a target platform must be configured in the MicroEJ workspace.
+The following steps assume that a platform has been previously imported into the MicroEJ Platform repository (or available in the Workspace):
 
-Select the the platform path and copy it to the clipboard.
+- Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms` (or :guilabel:`Platforms in workspace`).
+- Select the desired platform on which to run the tests.
+- Press :kbd:`F2` to expand the details.
+- Select the the platform path and copy it to the clipboard.
+- Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Ant` > :guilabel:`Runtime` and select the :guilabel:`Properties` tab.
+- Click on :guilabel:`Add Property...` button and set a new property named ``target.platform.dir`` with the platform path pasted from the clipboard.
 
-Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Ant` >
-:guilabel:`Runtime` and select the :guilabel:`Properties` tab.
+Execution during module build
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Click on :guilabel:`Add Property...` button and set a new property named
-``target.platform.dir`` with the platform path pasted from the
-clipboard.
+In order to execute the Test Suite during the build of the module, 
+a target platform must be configured in the module project as described in the section :ref:`platform_selection`.
 
 Setup a Project with a JUnit Test Case
 --------------------------------------
@@ -67,31 +67,22 @@ Setup a Project with a JUnit Test Case
 This section describes how to create a new JUnit Test Case starting from
 a new MicroEJ library project.
 
-First create a new :ref:`module project <mmm_module_skeleton>` using the ``microej-javalib`` skeleton.
-A new project named ``mylibrary`` is created in the workspace.
-
-Right-click on the ``src/test/java`` folder and select :guilabel:`New` >
-:guilabel:`Other...` menu item.
-
-Select the :guilabel:`Java` > :guilabel:`JUnit` > :guilabel:`New JUnit Test Case`
-wizard. Enter a test name and press :guilabel:`Finish`. A new JUnit test case
-class is created with a default failing test case.
+- First create a new :ref:`module project <mmm_module_skeleton>` using the ``microej-javalib`` skeleton.
+  A new project named ``mylibrary`` is created in the workspace.
+- Right-click on the ``src/test/java`` folder and select :guilabel:`New` > :guilabel:`Other...` menu item.
+- Select the :guilabel:`Java` > :guilabel:`JUnit` > :guilabel:`New JUnit Test Case` wizard.
+- Enter a test name and press :guilabel:`Finish`. 
+  A new JUnit test case class is created with a default failing test case.
 
 Build and Run a JUnit Test Suite
 --------------------------------
 
-Right-click on the ``mylibrary`` project and select :guilabel:`Build Module`.
-After the library is built, the test suite engine launches available test cases
-and the build process fails in the console view.
-
-On the ``mylibrary`` project, right-click and select :guilabel:`Refresh`.
-
-A ``target~`` folder appears with intermediate build files. The JUnit
-report is available at ``target~\test\xml\TEST-test-report.xml``.
-
-Double-click on the file to open the JUnit test suite report.
-
-Modify the test case by replacing
+- Right-click on the ``mylibrary`` project and select :guilabel:`Build Module`.
+  After the library is built, the test suite engine launches available test cases and the build process fails in the console view.
+- On the ``mylibrary`` project, right-click and select :guilabel:`Refresh`.
+  A ``target~`` folder appears with intermediate build files. The JUnit report is available at ``target~\test\xml\TEST-test-report.xml``.
+- Double-click on the file to open the JUnit test suite report.
+- Modify the test case by replacing
 
 ::
 
@@ -103,11 +94,9 @@ with
 
    Assert.assertTrue(true);
 
-Right-click again on the ``mylibrary`` project and select :guilabel:`Build Module`.
-The test is now successfully executed on the target platform so the MicroEJ Add-On Library is fully built and published without errors.
-
-Double-click on the JUnit test suite report to see the test has been
-successfully executed.
+- Right-click again on the ``mylibrary`` project and select :guilabel:`Build Module`.
+  The test is now successfully executed on the target platform so the MicroEJ Add-On Library is fully built and published without errors.
+- Double-click on the JUnit test suite report to see the test has been successfully executed.
 
 .. _testsuite_report:
 

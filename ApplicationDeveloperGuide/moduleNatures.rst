@@ -67,13 +67,30 @@ A MicroEJ Add-On Library is a MicroEJ library that is implemented on top of Micr
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following features:
+This module nature inherits the configuration properties of the following plugins:
 
-- :ref:`module_natures.features.compilation`
-- :ref:`module_natures_platform_selection`
-- :ref:`module_natures.features.javadoc`
-- :ref:`module_natures.features.testsuite`
-- :ref:`module_natures.features.artifact_checker`
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.platform_loader`
+- :ref:`module_natures.plugins.javadoc`
+- :ref:`module_natures.plugins.testsuite`
+- :ref:`module_natures.plugins.artifact_checker`
+
+Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
+
+.. _module_natures.addon_processor:
+
+Add-On Processor
+----------------
+
+A MicroEJ Add-On Processor is a MicroEJ library that executes operations on sources files.
+
+**Build type**: ``com.is2t.easyant.buildtypes#build-addon-processor``
+
+This module nature inherits the configuration properties of the following plugins:
+
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.unittests`
+- :ref:`module_natures.plugins.artifact_checker`
 
 Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
 
@@ -88,11 +105,11 @@ A MicroEJ Foundation Library API is a MicroEJ Core library that provides core ru
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following features:
+This module nature inherits the configuration properties of the following plugins:
 
-- :ref:`module_natures.features.compilation`
-- :ref:`module_natures.features.javadoc`
-- :ref:`module_natures.features.artifact_checker`
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.javadoc`
+- :ref:`module_natures.plugins.artifact_checker`
 
 Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
 
@@ -107,10 +124,10 @@ A MicroEJ Foundation Library Implementation is a MicroEJ Core library that imple
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following features:
+This module nature inherits the configuration properties of the following plugins:
 
-- :ref:`module_natures.features.compilation`
-- :ref:`module_natures.features.testsuite`
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.testsuite`
 
 and it also has the following dedicated configuration properties:
 
@@ -128,6 +145,36 @@ and it also has the following dedicated configuration properties:
 
 Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
 
+.. _module_natures.meta_build:
+
+Meta Build
+----------
+
+A Meta Build is a project allowing to build other projects.
+
+**Build type**: ``com.is2t.easyant.buildtypes#microej-meta-build``
+
+**Configuration**:
+
+.. list-table:: 
+   :widths: 20 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - metabuild.root
+     - Path of the root folder containing the modules to build.
+     - ``${basedir}/..``
+   * - private.modules.file
+     - Name of the file listing the private modules to build.
+     - ``private.modules.list``
+   * - public.modules.file
+     - Name of the file listing the public modules to build.
+     - ``public.modules.list``
+
+Go to the :ref:`Meta Build <meta_build>` section for more details.
+
 .. _module_natures.mock:
 
 Mock
@@ -140,10 +187,10 @@ Mocks allow applications to be run unchanged in the Simulator while still (appar
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following features:
+This module nature inherits the configuration properties of the following plugins:
 
-- :ref:`module_natures.features.compilation`
-- :ref:`module_natures.features.unittests`
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.unittests`
 
 Go to the :ref:`Mock <mock_module>` section for more details.
 
@@ -159,9 +206,9 @@ It is used to contain all the dependencies required to build and package the app
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following features:
+This module nature inherits the configuration properties of the following plugins:
 
-- :ref:`module_natures.features.artifact_checker`
+- :ref:`module_natures.plugins.artifact_checker`
 
 and it also has the following dedicated configuration properties:
 
@@ -227,6 +274,9 @@ and it also has the following dedicated configuration properties:
    * - bar.javadoc.stylesheet.file
      - Path of the Stylesheet used for the generated Javadoc.
      - (To be fixed)
+   * - skip.artifact.checker
+     - When this property is set to true, all artifact checkers are skipped.
+     - Not set
 
 Go to the :ref:`module_repository` section for more details.
 
@@ -243,13 +293,13 @@ If it is statically linked, it is then called a System Application as it is part
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following features:
+This module nature inherits the configuration properties of the following plugins:
 
-- :ref:`module_natures.features.compilation`
-- :ref:`module_natures_platform_selection`
-- :ref:`module_natures.features.javadoc`
-- :ref:`module_natures.features.testsuite`
-- :ref:`module_natures.features.artifact_checker`
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.platform_loader`
+- :ref:`module_natures.plugins.javadoc`
+- :ref:`module_natures.plugins.testsuite`
+- :ref:`module_natures.plugins.artifact_checker`
 
 Go to the :ref:`sandboxed_application` section for more details.
 
@@ -265,12 +315,12 @@ Such application must define a main entry point, i.e. a class containing a publi
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following features:
+This module nature inherits the configuration properties of the following plugins:
 
-- :ref:`module_natures.features.compilation`
-- :ref:`module_natures_platform_selection`
-- :ref:`module_natures.features.testsuite`
-- :ref:`module_natures.features.artifact_checker`
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.platform_loader`
+- :ref:`module_natures.plugins.testsuite`
+- :ref:`module_natures.plugins.artifact_checker`
 
 and it also has the following dedicated configuration properties:
 
@@ -293,57 +343,10 @@ and it also has the following dedicated configuration properties:
 
 Go to the :ref:`standalone_application` section for more details.
 
-.. _module_natures.addon_processor:
+Natures plugins
+---------------
 
-Add-On Processor
-----------------
-
-A MicroEJ Add-On Processor is a MicroEJ library that executes operations on sources files.
-
-**Build type**: ``com.is2t.easyant.buildtypes#build-addon-processor``
-
-This module nature inherits the configuration properties of the following features:
-
-- :ref:`module_natures.features.compilation`
-- :ref:`module_natures.features.unittests`
-- :ref:`module_natures.features.artifact_checker`
-
-Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
-
-.. _module_natures.meta_build:
-
-Meta Build
-----------
-
-A Meta Build is a project allowing to build other projects.
-
-**Build type**: ``com.is2t.easyant.buildtypes#microej-meta-build``
-
-**Configuration**:
-
-.. list-table:: 
-   :widths: 20 65 15
-   :header-rows: 1
-
-   * - Name
-     - Description
-     - Default
-   * - metabuild.root
-     - Path of the root folder containing the modules to build.
-     - ``${basedir}/..``
-   * - private.modules.file
-     - Name of the file listing the private modules to build.
-     - ``private.modules.list``
-   * - public.modules.file
-     - Name of the file listing the public modules to build.
-     - ``public.modules.list``
-
-Go to the :ref:`Meta Build <meta_build>` section for more details.
-
-Natures features
-----------------
-
-.. _module_natures.features.compilation:
+.. _module_natures.plugins.compilation:
 
 Java Compilation
 ^^^^^^^^^^^^^^^^
@@ -388,10 +391,10 @@ The following options are available to configure the test:
      - ``1.7`` (edc version)
 
 
-.. _module_natures_platform_selection:
+.. _module_natures.plugins.platform_loader:
 
-MicroEJ Platform Selection
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Platform Loader
+^^^^^^^^^^^^^^^
 
 Several modules natures require a MicroEJ Platform for building the module or for running tests:
 
@@ -399,17 +402,6 @@ Several modules natures require a MicroEJ Platform for building the module or fo
 - :ref:`module_natures.standalone_application`
 - :ref:`module_natures.sandboxed_application`
 
-There are 4 different ways to provide a MicroEJ Platform for a module project:
-
--  Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.file`` to the path of a MicroEJ Platform file (``.zip``, ``.jpf`` or ``.vde``).
--  Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.dir`` to the path of the ``source`` folder of an already imported :ref:`Source Platform <source_platform_import>`.
--  Declare a :ref:`module dependency <mmm_module_dependencies>` with the conf ``platform``:
-
-   .. code:: xml
-
-      <dependency org="myorg" name="myname" rev="1.0.0" conf="platform->default" transitive="false"/>
-
--  Copy a MicroEJ Platform file to the dropins folder. The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.dropins``.
 
 The following options are available to configure the platform loading:
 
@@ -420,6 +412,12 @@ The following options are available to configure the platform loading:
    * - Name
      - Description
      - Default
+   * - platform-loader.target.platform.file
+     - Path of the platform file to use in the build. See :ref:`platform_selection` section for Platform Selection rules.
+     - Not set
+   * - platform-loader.target.platform.dir
+     - Path of the root folder of the platform to use in the build. See :ref:`platform_selection` section for Platform Selection rules.
+     - Not set
    * - platform-loader.platform.dir
      - Path of the folder to unzip the loaded platform to.
      - ``${target}/platform``
@@ -434,7 +432,9 @@ The following options are available to configure the platform loading:
      - Absolute or relative (to the project root folder) path of the folder where the platform can be found (see :ref:`module_natures_platform_selection`).
      - ``dropins`` 
 
-.. _module_natures.features.javadoc:
+To learn more about the Platform Selection, go to the :ref:`platform_selection` page.
+
+.. _module_natures.plugins.javadoc:
 
 Javadoc
 ^^^^^^^
@@ -497,42 +497,12 @@ The following options are available to configure the test:
      - Ivy configuration used to publish the Javadoc artifact.
      - ``documentation``
 
-.. _module_natures.features.unittests:
+.. _module_natures.plugins.testsuite:
 
-Unit tests
+Test Suite
 ^^^^^^^^^^
-Unit tests can be added for several modules natures:
 
-- :ref:`module_natures.mock`
-
-The following options are available to configure the test suite:
-
-.. list-table:: 
-   :widths: 20 65 15
-   :header-rows: 1
-
-   * - Name
-     - Description
-     - Default
-   * - test.run.includes.pattern
-     - Pattern of classes included in the test suite execution.
-     - ``**/*`` (all tests)
-   * - test.run.excludes.pattern
-     - Pattern of classes excluded from the test suite execution.
-     - Empty string (no test)
-   * - test.run.failonerror
-     - When this property is set to true, the build fails if an error is raised.
-     - ``true``
-   * - skip.test
-     - When this property is set (any value), the tests are not executed.
-     - Not set
-
-.. _module_natures.features.testsuite:
-
-Test Suite on MicroEJ Simulator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-A test suite on MicroEJ Simulator can be added for several modules natures:
+A test suite on MicroEJ VM can be added for several modules natures:
 
 - :ref:`module_natures.addon_lib`
 - :ref:`module_natures.foundation_lib_api`
@@ -568,9 +538,44 @@ The following options are available to configure the test suite:
      - When this property is set to true, the code coverage analysis is disabled.
      - Not set
 
-To learn more about the Test Suite, please to go the :ref:`MicroEJ Test Suite <application_testsuite>` page.
+To learn more about the Test Suite, go to the :ref:`Test Suite <application_testsuite>` page.
 
-.. _module_natures.features.artifact_checker:
+.. _module_natures.plugins.artifact_checker:
+
+.. _module_natures.plugins.unittests:
+
+J2SE Unit Tests
+^^^^^^^^^^^^^^^
+
+J2SE Unit tests can be added for several modules natures:
+
+- :ref:`module_natures.addon_processor`
+- :ref:`module_natures.mock`
+
+These tests are generally reserved for tools.
+Tests classes must be created in the folder ``srtc/test/java`` of the project.
+
+The following options are available to configure the J2SE unit tests:
+
+.. list-table:: 
+   :widths: 20 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - test.run.includes.pattern
+     - Pattern of classes included in the test suite execution.
+     - ``**/*`` (all tests)
+   * - test.run.excludes.pattern
+     - Pattern of classes excluded from the test suite execution.
+     - Empty string (no test)
+   * - test.run.failonerror
+     - When this property is set to true, the build fails if an error is raised.
+     - ``true``
+   * - skip.test
+     - When this property is set (any value), the tests are not executed.
+     - Not set
 
 Artifact Checker
 ^^^^^^^^^^^^^^^^
@@ -592,8 +597,8 @@ The following options are available to configure the test suite:
    * - Name
      - Description
      - Default
-   * - skip.artifact.checker
-     - When this property is set to true, all artifact checkers are skipped.
+   * - run.artifact.checker
+     - When this property is set (any value), the artifact checker is executed.
      - Not set
    * - skip.addonconf.checker
      - When this property is set to true, the addon configurations checker is not executed.
