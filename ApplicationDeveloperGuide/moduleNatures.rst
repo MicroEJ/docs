@@ -89,8 +89,8 @@ Many modules natures require a MicroEJ Platform for building the module or for r
 
 There are 4 different ways to provide a MicroEJ Platform for a module project:
 
--  Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.file`` to a MicroEJ Platform file (``.zip``, ``.jpf`` or ``.vde``):
--  Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.dir`` to an already imported :ref:`Source Platform <source_platform_import>`.
+-  Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.file`` to the path of a MicroEJ Platform file (``.zip``, ``.jpf`` or ``.vde``).
+-  Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.dir`` to the path of the ``source`` folder of an already imported :ref:`Source Platform <source_platform_import>`.
 -  Declare a :ref:`module dependency <mmm_module_dependencies>`:
 
    .. code:: xml
@@ -101,7 +101,7 @@ There are 4 different ways to provide a MicroEJ Platform for a module project:
 
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
