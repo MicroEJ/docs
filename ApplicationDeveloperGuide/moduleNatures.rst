@@ -22,6 +22,14 @@ Configuration properties can be defined by adding a ``ea:property`` tag inside t
      - microej-javalib
      - build-microej-javalib
      - :guilabel:`File` > :guilabel:`New` > :guilabel:`Add-On Library Project`
+   * - :ref:`Foundation Library API <module_natures.foundation_lib_api>`
+     - microej-javaapi
+     - build-microej-javaapi
+     - 
+   * - :ref:`Foundation Library Implementation <module_natures.foundation_lib_impl>`
+     - microej-javaimpl
+     - build-microej-javaimpl
+     - 
    * - :ref:`Mock <module_natures.mock>`
      - microej-mock
      - build-microej-mock
@@ -66,6 +74,57 @@ This module nature inherits the configuration properties of the following featur
 - :ref:`Javadoc <module_natures.features.javadoc>`
 - :ref:`Test Suite <module_natures.features.testsuite>`
 - :ref:`Artifact Checker <module_natures.features.artifact_checker>`
+
+Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
+
+.. _module_natures.foundation_lib_api:
+
+Foundation Library API
+----------------------
+
+A MicroEJ Foundation Library API is a MicroEJ Core library that provides core runtime APIs or hardware-dependent functionality.
+
+**Build type**: ``com.is2t.easyant.buildtypes#build-microej-javaapi``
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following features:
+
+- :ref:`Java Compilation <module_natures.features.compilation>`
+- :ref:`Javadoc <module_natures.features.javadoc>`
+- :ref:`Artifact Checker <module_natures.features.artifact_checker>`
+
+Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
+
+.. _module_natures.foundation_lib_impl:
+
+Foundation Library Implementation
+---------------------------------
+
+A MicroEJ Foundation Library Implementation is a MicroEJ Core library that implements a MicroEJ Foundation Library API.
+
+**Build type**: ``com.is2t.easyant.buildtypes#build-microej-javaimpl``
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following features:
+
+- :ref:`Java Compilation <module_natures.features.compilation>`
+- :ref:`Test Suite <module_natures.features.testsuite>`
+
+and it also has the following dedicated configuration properties:
+
+.. list-table:: 
+   :widths: 20 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - |question| microej.lib.implfor
+     - Target VM of the Library Implementation.
+       Possible values are `emb` (only embedded), `sim` (only simulator) and `common` (both embedded and simulator).
+     - ``common``
 
 Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
 
@@ -291,9 +350,11 @@ Compilation
 
 The compilation feature is used by several modules natures:
 
+- :ref:`module_natures.addon_lib`
+- :ref:`module_natures.foundation_lib_api`
+- :ref:`module_natures.foundation_lib_impl`
 - :ref:`module_natures.standalone_application`
 - :ref:`module_natures.sandboxed_application`
-- :ref:`module_natures.addon_lib`
 
 The following options are available to configure the test:
 
@@ -334,9 +395,9 @@ MicroEJ Platform Selection
 
 Several modules natures require a MicroEJ Platform for building the module or for running tests:
 
+- :ref:`module_natures.addon_lib`
 - :ref:`module_natures.standalone_application`
 - :ref:`module_natures.sandboxed_application`
-- :ref:`module_natures.addon_lib`
 
 There are 4 different ways to provide a MicroEJ Platform for a module project:
 
@@ -380,8 +441,9 @@ Javadoc
 
 Javadoc can be generated for several modules natures:
 
-- :ref:`module_natures.sandboxed_application`
 - :ref:`module_natures.addon_lib`
+- :ref:`module_natures.foundation_lib_api`
+- :ref:`module_natures.sandboxed_application`
 
 The following options are available to configure the test:
 
@@ -472,9 +534,11 @@ Test Suite on MicroEJ Simulator
 
 A test suite on MicroEJ Simulator can be added for several modules natures:
 
+- :ref:`module_natures.addon_lib`
+- :ref:`module_natures.foundation_lib_api`
+- :ref:`module_natures.foundation_lib_impl`
 - :ref:`module_natures.standalone_application`
 - :ref:`module_natures.sandboxed_application`
-- :ref:`module_natures.addon_lib`
 
 The following options are available to configure the test suite:
 
@@ -513,9 +577,10 @@ Artifact Checker
 
 The Artifact Checker is enabled for several modules natures:
 
+- :ref:`module_natures.addon_lib`
+- :ref:`module_natures.foundation_lib_api`
 - :ref:`module_natures.standalone_application`
 - :ref:`module_natures.sandboxed_application`
-- :ref:`module_natures.addon_lib`
 - :ref:`module_natures.module_repository`
 
 The following options are available to configure the test suite:
