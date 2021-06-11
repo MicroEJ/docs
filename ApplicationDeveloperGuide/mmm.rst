@@ -641,7 +641,7 @@ It has the following requirements:
   - :ref:`module_natures.addon_lib`
 
 - the property ``application.main.class`` must be set to the Fully Qualified Name of the application main class (for example ``com.mycompany.Main``)
-- a MicroEJ Platform must be provided (see :ref:`module_natures_platform_selection` section)
+- a MicroEJ Platform must be provided (see :ref:`platform_selection` section)
 - :ref:`application_options` must be defined using properties file under in the ``build`` directory (see :ref:`define_option_in_properties_file` section)
 - the module must have been built once before running the Simulator. So the ``mmm build`` command must be executed before running the Simulator the first time or after a project clean (``mmm clean`` command).
   

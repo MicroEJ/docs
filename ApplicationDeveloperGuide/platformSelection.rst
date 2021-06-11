@@ -1,4 +1,3 @@
-.. _module_natures_platform_selection:
 .. _platform_selection:
 
 Platform Selection

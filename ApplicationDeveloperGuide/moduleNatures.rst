@@ -413,7 +413,7 @@ This plugin defines the following configuration properties:
      - Path of the root folder of the platform to use in the build. See :ref:`platform_selection` section for Platform Selection rules.
      - Not set
    * - platform-loader.target.platform.dropins
-     - Absolute or relative (to the project root folder) path of the folder where the platform can be found (see :ref:`module_natures_platform_selection`).
+     - Absolute or relative (to the project root folder) path of the folder where the platform can be found (see :ref:`platform_selection`).
      - ``dropins`` 
    * - platform-loader.target.platform.file
      - Path of the platform file to use in the build. See :ref:`platform_selection` section for Platform Selection rules.
