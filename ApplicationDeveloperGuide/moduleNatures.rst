@@ -72,7 +72,7 @@ This module nature inherits the configuration properties of the following plugin
 - :ref:`module_natures.plugins.javadoc`
 - :ref:`module_natures.plugins.artifact_checker`
 
-It defines the following dedicated configuration properties:
+This module nature defines the following dedicated configuration properties:
 
 .. list-table:: 
     :widths: 20 65 15
@@ -108,7 +108,7 @@ This module nature inherits the configuration properties of the following plugin
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.testsuite`
 
-It defines the following dedicated configuration properties:
+This module nature defines the following dedicated configuration properties:
 
 .. list-table:: 
     :widths: 20 65 15
@@ -189,7 +189,7 @@ This module nature inherits the configuration properties of the following plugin
 
 - :ref:`module_natures.plugins.artifact_checker`
 
-It defines the following dedicated configuration properties:
+This module nature defines the following dedicated configuration properties:
 
 .. list-table:: 
    :widths: 20 65 15
@@ -303,7 +303,7 @@ This module nature inherits the configuration properties of the following plugin
 - :ref:`module_natures.plugins.testsuite`
 - :ref:`module_natures.plugins.artifact_checker`
 
-It defines the following dedicated configuration properties:
+This module nature defines the following dedicated configuration properties:
 
 .. list-table:: 
    :widths: 20 65 15
