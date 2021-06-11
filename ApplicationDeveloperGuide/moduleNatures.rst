@@ -8,7 +8,8 @@ This page describes the most common module natures as follows:
 - **Skeleton Name**: the :ref:`project skeleton <mmm_module_skeleton>` name.
 - **Build Type Name**: the build type name, derived from the module nature name: ``com.is2t.easyant.buildtypes#build-[NATURE_NAME]``.
 - **Documentation**: a link to the documentation.
-- **SDK Menu**: the menu to the direct wizard in MicroEJ SDK (if available).
+- **SDK Menu**: the menu to the direct wizard in MicroEJ SDK (if available). 
+  Any module nature can be created with the default wizard from :guilabel:`File` > :guilabel:`New` > :guilabel:`Module Project`.
 - **Configuration**: properties that can be defined to configure the module. Properties are defined inside the ``ea:build`` tag of the :ref:`module.ivy <mmm_module_description>` file,
   using ``ea:property`` tag as described in the section :ref:`mmm_build_options`.
   A module nature also inherits the configuration properties from the listed :ref:`module_natures.plugins`.
