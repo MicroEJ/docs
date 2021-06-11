@@ -252,7 +252,7 @@ It defines the following dedicated configuration properties:
      - Not set
    * - skip.email
      - When this property is set (any value), the notification email is not sent. 
-       Otherwise the following ``bar.notification.*`` properties are required.
+       Otherwise the ``bar.notification.*`` properties are required.
      - Not set   
    * - skip.javadoc.deprecated
      - Prevents the generation of any deprecated API at all in the javadoc.
