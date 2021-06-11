@@ -403,7 +403,7 @@ This plugin defines the following configuration properties:
      - ``${target}/platform``
    * - platform.loader.skip.load.platform
      - When this property is set to true, the platform is not loaded. It must be already available in the directory defined by the property ``platform-loader.platform.dir``.
-       The platform content may be modified during the build. (e.g. in case of Testsuite or Virtual Device build).
+       Use with caution: the platform content may be modified during the build (e.g. in case of Testsuite or Virtual Device build).
      - ``false``
    * - platform-loader.target.platform.conf
      - The Ivy configuration used to retrieved the platform if fetched via dependencies.
