@@ -85,10 +85,10 @@ This module nature defines the following dedicated configuration properties:
       - Platform library name on the form: ``[NAME]-[VERSION]-api``.
         - ``[NAME]``: name of the implemented Foundation Library API module.
         - ``[VERSION]``: version of the implemented Foundation Library API module without patch (``Major.minor``).
-      - Not set.
+      - Not set
     * - rip.printableName
       - Printable name for the Platform Editor.
-      - Not set.
+      - Not set
 
 .. _module_natures.foundation_lib_impl:
 
