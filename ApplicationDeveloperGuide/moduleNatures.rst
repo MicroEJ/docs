@@ -8,7 +8,7 @@ This page describes the most common module natures as follows:
 - **Skeleton Name**: the :ref:`project skeleton <mmm_module_skeleton>` name.
 - **Build Type Name**: the build type name, derived from the module nature name: ``com.is2t.easyant.buildtypes#build-[NATURE_NAME]``.
 - **Documentation**: a link to the documentation.
-- **Wizard**: the direct wizard shortcut in MicroEJ SDK (if available).
+- **SDK Menu**: the menu to the direct wizard in MicroEJ SDK (if available).
 - **Configuration**: properties that can be defined to configure the module. Properties are defined inside the ``ea:build`` tag of the :ref:`module.ivy <mmm_module_description>` file,
   using ``ea:property`` tag as described in the section :ref:`mmm_build_options`.
   A module nature also inherits the configuration properties from the listed :ref:`module_natures.plugins`.
@@ -24,7 +24,7 @@ Add-On Library
 
 **Documentation**: :ref:`libraries`
 
-**Wizard**: :guilabel:`File` > :guilabel:`New` > :guilabel:`Add-On Library Project`
+**SDK Menu**: :guilabel:`File` > :guilabel:`New` > :guilabel:`Add-On Library Project`
 
 **Configuration**:
 
@@ -75,7 +75,7 @@ This module nature inherits the configuration properties of the following plugin
 This module nature defines the following dedicated configuration properties:
 
 .. list-table:: 
-    :widths: 20 65 15
+    :widths: 25 65 15
     :header-rows: 1
 
     * - Name
@@ -111,7 +111,7 @@ This module nature inherits the configuration properties of the following plugin
 This module nature defines the following dedicated configuration properties:
 
 .. list-table:: 
-    :widths: 20 65 15
+    :widths: 25 65 15
     :header-rows: 1
 
     * - Name
@@ -138,7 +138,7 @@ Meta Build
 This module nature defines the following dedicated configuration properties:
 
 .. list-table:: 
-    :widths: 20 65 15
+    :widths: 25 65 15
     :header-rows: 1
 
     * - Name
@@ -192,7 +192,7 @@ This module nature inherits the configuration properties of the following plugin
 This module nature defines the following dedicated configuration properties:
 
 .. list-table:: 
-   :widths: 20 65 15
+   :widths: 25 65 15
    :header-rows: 1
 
    * - Name
@@ -269,7 +269,7 @@ Sandboxed Application
 
 **Documentation**: :ref:`sandboxed_application`
 
-**Wizard**: :guilabel:`File` > :guilabel:`New` > :guilabel:`Sandboxed Application Project`
+**SDK Menu**: :guilabel:`File` > :guilabel:`New` > :guilabel:`Sandboxed Application Project`
 
 **Configuration**:
 
@@ -292,7 +292,7 @@ Standalone Application
 
 **Documentation**: :ref:`standalone_application`
 
-**Wizard**: :guilabel:`File` > :guilabel:`New` > :guilabel:`Standalone Application Project`
+**SDK Menu**: :guilabel:`File` > :guilabel:`New` > :guilabel:`Standalone Application Project`
 
 **Configuration**:
 
@@ -306,7 +306,7 @@ This module nature inherits the configuration properties of the following plugin
 This module nature defines the following dedicated configuration properties:
 
 .. list-table:: 
-   :widths: 20 65 15
+   :widths: 25 65 15
    :header-rows: 1
 
    * - Name
@@ -355,7 +355,7 @@ This plugin is used by the following module natures:
 This plugin defines the following configuration properties:
 
 .. list-table:: 
-   :widths: 20 65 15
+   :widths: 25 65 15
    :header-rows: 1
 
    * - Name
@@ -436,7 +436,7 @@ This plugin is used by the following module natures:
 This plugin defines the following configuration properties:
 
 .. list-table:: 
-   :widths: 20 65 15
+   :widths: 25 65 15
    :header-rows: 1
 
    * - Name
@@ -498,7 +498,7 @@ This plugin is used by the following module natures:
 This plugin defines the following configuration properties:
 
 .. list-table:: 
-   :widths: 20 65 15
+   :widths: 25 65 15
    :header-rows: 1
 
    * - Name
@@ -546,7 +546,7 @@ This plugin is used by the following module natures:
 This plugin defines the following configuration properties:
 
 .. list-table:: 
-   :widths: 20 65 15
+   :widths: 25 65 15
    :header-rows: 1
 
    * - Name
@@ -585,7 +585,7 @@ This plugin is used by the following module natures:
 This plugin defines the following configuration properties:
 
 .. list-table:: 
-   :widths: 20 65 15
+   :widths: 25 65 15
    :header-rows: 1
 
    * - Name
