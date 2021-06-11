@@ -3,67 +3,28 @@
 Module Natures
 ==============
 
-This page describes the most common MicroEJ Module Natures.
-A description is available for each of them, as well as their :ref:`project skeleton <mmm_module_skeleton>` name, build type name and configuration properties.
+This page describes the most common module natures as follows:
 
-Configuration properties can be defined by adding a ``ea:property`` tag inside the ``ea:build`` tag in the file ``module.ivy`` of the module, as described in the section :ref:`mmm_build_options`.
-
-.. _module_nature_skeleton_mapping:
-
-.. list-table:: MicroEJ Module Natures Summary
-   :widths: 20 20 20 40
-   :header-rows: 1
-
-   * - Module Nature
-     - Skeleton Name
-     - Build Type Name
-     - MicroEJ SDK Direct Wizard
-   * - :ref:`Add-On Library <module_natures.addon_lib>`
-     - microej-javalib
-     - build-microej-javalib
-     - :guilabel:`File` > :guilabel:`New` > :guilabel:`Add-On Library Project`
-   * - :ref:`Foundation Library API <module_natures.foundation_lib_api>`
-     - microej-javaapi
-     - build-microej-javaapi
-     - 
-   * - :ref:`Foundation Library Implementation <module_natures.foundation_lib_impl>`
-     - microej-javaimpl
-     - build-microej-javaimpl
-     - 
-   * - :ref:`Mock <module_natures.mock>`
-     - microej-mock
-     - build-microej-mock
-     - 
-   * - :ref:`Module Repository <module_natures.module_repository>`
-     - artifact-repository
-     - build-artifact-repository
-     - 
-   * - :ref:`Sandboxed Application <module_natures.sandboxed_application>`
-     - application
-     - build-application
-     - :guilabel:`File` > :guilabel:`New` > :guilabel:`Sandboxed Application Project`
-   * - :ref:`Standalone Application <module_natures.standalone_application>`
-     - firmware-singleapp
-     - build-firmware-singleapp
-     - :guilabel:`File` > :guilabel:`New` > :guilabel:`Standalone Application Project`
-   * - :ref:`Addon Processor <module_natures.addon_processor>`
-     - addon-processor
-     - build-addon-processor
-     - 
-
-   * - :ref:`Meta Build <module_natures.meta_build>`
-     - microej-meta-build
-     - microej-meta-build
-     - 
+- **Skeleton Name**: the :ref:`project skeleton <mmm_module_skeleton>` name.
+- **Build Type Name**: the build type name, derived from the module nature name: ``com.is2t.easyant.buildtypes#build-[NATURE_NAME]``.
+- **Documentation**: a link to the documentation.
+- **Wizard**: the direct wizard shortcut in MicroEJ SDK (if available).
+- **Configuration**: properties that can be defined to configure the module. Properties are defined inside the ``ea:build`` tag of the :ref:`module.ivy <mmm_module_description>` file,
+  using ``ea:property`` tag as described in the section :ref:`mmm_build_options`.
+  A module nature also inherits the configuration properties from the listed :ref:`module_natures.plugins`.
 
 .. _module_natures.addon_lib:
 
 Add-On Library
 --------------
 
-A MicroEJ Add-On Library is a MicroEJ library that is implemented on top of MicroEJ Foundation Libraries (100% full Java code).
+**Skeleton Name**: ``microej-javalib``
 
-**Build type**: ``com.is2t.easyant.buildtypes#build-microej-javalib``
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-microej-javalib``
+
+**Documentation**: :ref:`libraries`
+
+**Wizard**: :guilabel:`File` > :guilabel:`New` > :guilabel:`Add-On Library Project`
 
 **Configuration**:
 
@@ -75,16 +36,16 @@ This module nature inherits the configuration properties of the following plugin
 - :ref:`module_natures.plugins.testsuite`
 - :ref:`module_natures.plugins.artifact_checker`
 
-Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
-
 .. _module_natures.addon_processor:
 
 Add-On Processor
 ----------------
 
-A MicroEJ Add-On Processor is a MicroEJ library that executes operations on sources files.
+**Skeleton Name**: ``addon-processor``
 
-**Build type**: ``com.is2t.easyant.buildtypes#build-addon-processor``
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-addon-processor``
+
+**Configuration**:
 
 This module nature inherits the configuration properties of the following plugins:
 
@@ -92,16 +53,16 @@ This module nature inherits the configuration properties of the following plugin
 - :ref:`module_natures.plugins.unittests`
 - :ref:`module_natures.plugins.artifact_checker`
 
-Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
-
 .. _module_natures.foundation_lib_api:
 
 Foundation Library API
 ----------------------
 
-A MicroEJ Foundation Library API is a MicroEJ Core library that provides core runtime APIs or hardware-dependent functionality.
+**Skeleton Name**: ``microej-javaapi``
 
-**Build type**: ``com.is2t.easyant.buildtypes#build-microej-javaapi``
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-microej-javaapi``
+
+**Documentation**: :ref:`libraries`
 
 **Configuration**:
 
@@ -111,16 +72,16 @@ This module nature inherits the configuration properties of the following plugin
 - :ref:`module_natures.plugins.javadoc`
 - :ref:`module_natures.plugins.artifact_checker`
 
-Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
-
 .. _module_natures.foundation_lib_impl:
 
 Foundation Library Implementation
 ---------------------------------
 
-A MicroEJ Foundation Library Implementation is a MicroEJ Core library that implements a MicroEJ Foundation Library API.
+**Skeleton Name**: ``microej-javaimpl``
 
-**Build type**: ``com.is2t.easyant.buildtypes#build-microej-javaimpl``
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-microej-javaimpl``
+
+**Documentation**: :ref:`libraries`
 
 **Configuration**:
 
@@ -129,7 +90,7 @@ This module nature inherits the configuration properties of the following plugin
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.testsuite`
 
-and it also has the following dedicated configuration properties:
+It defines the following dedicated configuration properties:
 
 .. list-table:: 
    :widths: 20 65 15
@@ -143,18 +104,20 @@ and it also has the following dedicated configuration properties:
        Possible values are `emb` (only embedded), `sim` (only simulator) and `common` (both embedded and simulator).
      - ``common``
 
-Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
-
 .. _module_natures.meta_build:
 
 Meta Build
 ----------
 
-A Meta Build is a project allowing to build other projects.
+**Skeleton Name**: ``microej-meta-build``
 
-**Build type**: ``com.is2t.easyant.buildtypes#microej-meta-build``
+**Build Type Name**: ``com.is2t.easyant.buildtypes#microej-meta-build``
+
+**Documentation**: :ref:`meta_build`
 
 **Configuration**:
+
+This module nature defines the following dedicated configuration properties:
 
 .. list-table:: 
    :widths: 20 65 15
@@ -173,17 +136,16 @@ A Meta Build is a project allowing to build other projects.
      - Name of the file listing the public modules to build.
      - ``public.modules.list``
 
-Go to the :ref:`Meta Build <meta_build>` section for more details.
-
 .. _module_natures.mock:
 
 Mock
 ----
 
-A Mock is a jar file containing some Java classes that simulate natives for the Simulator.
-Mocks allow applications to be run unchanged in the Simulator while still (apparently) interacting with native code.
+**Skeleton Name**: ``microej-mock``
 
-**Build type**: ``build-microej-mock``
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-microej-mock``
+
+**Documentation**: :ref:`mock`
 
 **Configuration**:
 
@@ -192,17 +154,16 @@ This module nature inherits the configuration properties of the following plugin
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.unittests`
 
-Go to the :ref:`Mock <mock_module>` section for more details.
-
 .. _module_natures.module_repository:
 
 Module Repository
 -----------------
 
-A module repository is a module that bundles a set of modules in a portable ZIP file.
-It is used to contain all the dependencies required to build and package the applications.
+**Skeleton Name**: ``artifact-repository``
 
-**Build type**: ``com.is2t.easyant.buildtypes#build-artifact-repository``
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-artifact-repository``
+
+**Documentation**: :ref:`module_repository`
 
 **Configuration**:
 
@@ -210,7 +171,7 @@ This module nature inherits the configuration properties of the following plugin
 
 - :ref:`module_natures.plugins.artifact_checker`
 
-and it also has the following dedicated configuration properties:
+It defines the following dedicated configuration properties:
 
 .. list-table:: 
    :widths: 20 65 15
@@ -278,18 +239,18 @@ and it also has the following dedicated configuration properties:
      - When this property is set to true, all artifact checkers are skipped.
      - Not set
 
-Go to the :ref:`module_repository` section for more details.
-
 .. _module_natures.sandboxed_application:
 
 Sandboxed Application
 ---------------------
 
-A MicroEJ Sandboxed Application is a MicroEJ Application that can run over a Multi-Sandbox Firmware.
-It can be linked either statically or dynamically.
-If it is statically linked, it is then called a System Application as it is part of the initial image and cannot be removed.
+**Skeleton Name**: ``application``
 
-**Build type**: ``com.is2t.easyant.buildtypes#build-application``
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-application``
+
+**Documentation**: :ref:`sandboxed_application`
+
+**Wizard**: :guilabel:`File` > :guilabel:`New` > :guilabel:`Sandboxed Application Project`
 
 **Configuration**:
 
@@ -301,17 +262,18 @@ This module nature inherits the configuration properties of the following plugin
 - :ref:`module_natures.plugins.testsuite`
 - :ref:`module_natures.plugins.artifact_checker`
 
-Go to the :ref:`sandboxed_application` section for more details.
-
 .. _module_natures.standalone_application:
 
 Standalone Application
 ----------------------
 
-A MicroEJ Standalone Application is a MicroEJ Application that is directly linked to the C code to produce a MicroEJ Firmware.
-Such application must define a main entry point, i.e. a class containing a public static void main(String[]) method.
+**Skeleton Name**: ``firmware-singleapp``
 
-**Build type**: ``com.is2t.easyant.buildtypes#build-firmware-singleapp``
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-firmware-singleapp``
+
+**Documentation**: :ref:`standalone_application`
+
+**Wizard**: :guilabel:`File` > :guilabel:`New` > :guilabel:`Standalone Application Project`
 
 **Configuration**:
 
@@ -322,7 +284,7 @@ This module nature inherits the configuration properties of the following plugin
 - :ref:`module_natures.plugins.testsuite`
 - :ref:`module_natures.plugins.artifact_checker`
 
-and it also has the following dedicated configuration properties:
+It defines the following dedicated configuration properties:
 
 .. list-table:: 
    :widths: 20 65 15
@@ -341,17 +303,27 @@ and it also has the following dedicated configuration properties:
      - When this property is set (any value), the virtual device is not created.
      - Not set
 
-Go to the :ref:`standalone_application` section for more details.
+.. _module_natures.plugins:
 
-Natures plugins
+Natures Plugins
 ---------------
+
+This page describes the most common module nature plugins as follows:
+
+- **Documentation**: link to documentation.
+- **Module Natures**: list of :ref:`module_natures` using this plugin.
+- **Configuration**: properties that can be defined to configure the module. Properties are defined inside the ``ea:build`` tag of the :ref:`module.ivy <mmm_module_description>` file,
+  using ``ea:property`` tag as described in the section :ref:`mmm_build_options`.
+
 
 .. _module_natures.plugins.compilation:
 
 Java Compilation
 ^^^^^^^^^^^^^^^^
 
-The compilation feature is used by several modules natures:
+**Module Natures**:
+
+This plugin is used by the following module natures:
 
 - :ref:`module_natures.addon_lib`
 - :ref:`module_natures.foundation_lib_api`
@@ -359,7 +331,9 @@ The compilation feature is used by several modules natures:
 - :ref:`module_natures.standalone_application`
 - :ref:`module_natures.sandboxed_application`
 
-The following options are available to configure the test:
+**Configuration**:
+
+This plugin defines the following configuration properties:
 
 .. list-table:: 
    :widths: 20 65 15
@@ -396,14 +370,19 @@ The following options are available to configure the test:
 Platform Loader
 ^^^^^^^^^^^^^^^
 
-Several modules natures require a MicroEJ Platform for building the module or for running tests:
+**Documentation**: :ref:`platform_selection`
+
+**Module Natures**:
+
+This plugin is used by the following module natures:
 
 - :ref:`module_natures.addon_lib`
 - :ref:`module_natures.standalone_application`
 - :ref:`module_natures.sandboxed_application`
 
+**Configuration**:
 
-The following options are available to configure the platform loading:
+This plugin defines the following configuration properties:
 
 .. list-table:: 
    :widths: 20 65 15
@@ -439,13 +418,17 @@ To learn more about the Platform Selection, go to the :ref:`platform_selection` 
 Javadoc
 ^^^^^^^
 
-Javadoc can be generated for several modules natures:
+**Module Natures**:
+
+This plugin is used by the following module natures:
 
 - :ref:`module_natures.addon_lib`
 - :ref:`module_natures.foundation_lib_api`
 - :ref:`module_natures.sandboxed_application`
 
-The following options are available to configure the test:
+**Configuration**:
+
+This plugin defines the following configuration properties:
 
 .. list-table:: 
    :widths: 20 65 15
@@ -502,7 +485,11 @@ The following options are available to configure the test:
 Test Suite
 ^^^^^^^^^^
 
-A test suite on MicroEJ VM can be added for several modules natures:
+**Documentation**: :ref:`application_testsuite`
+
+**Module Natures**:
+
+This plugin is used by the following module natures:
 
 - :ref:`module_natures.addon_lib`
 - :ref:`module_natures.foundation_lib_api`
@@ -510,7 +497,9 @@ A test suite on MicroEJ VM can be added for several modules natures:
 - :ref:`module_natures.standalone_application`
 - :ref:`module_natures.sandboxed_application`
 
-The following options are available to configure the test suite:
+**Configuration**:
+
+This plugin defines the following configuration properties:
 
 .. list-table:: 
    :widths: 20 65 15
@@ -547,15 +536,16 @@ To learn more about the Test Suite, go to the :ref:`Test Suite <application_test
 J2SE Unit Tests
 ^^^^^^^^^^^^^^^
 
-J2SE Unit tests can be added for several modules natures:
+**Module Natures**:
+
+This plugin is used by the following module natures:
 
 - :ref:`module_natures.addon_processor`
 - :ref:`module_natures.mock`
 
-These tests are generally reserved for tools.
-Tests classes must be created in the folder ``srtc/test/java`` of the project.
+**Configuration**:
 
-The following options are available to configure the J2SE unit tests:
+This plugin defines the following configuration properties:
 
 .. list-table:: 
    :widths: 20 65 15
@@ -577,10 +567,14 @@ The following options are available to configure the J2SE unit tests:
      - When this property is set (any value), the tests are not executed.
      - Not set
 
+.. _module_natures.plugins.artifact_checker:
+
 Artifact Checker
 ^^^^^^^^^^^^^^^^
 
-The Artifact Checker is enabled for several modules natures:
+**Module Natures**:
+
+This plugin is used by the following module natures:
 
 - :ref:`module_natures.addon_lib`
 - :ref:`module_natures.foundation_lib_api`
@@ -588,7 +582,9 @@ The Artifact Checker is enabled for several modules natures:
 - :ref:`module_natures.sandboxed_application`
 - :ref:`module_natures.module_repository`
 
-The following options are available to configure the test suite:
+**Configuration**:
+
+This plugin defines the following configuration properties:
 
 .. list-table:: 
    :widths: 20 65 15

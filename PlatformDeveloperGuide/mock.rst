@@ -1,3 +1,5 @@
+.. _mock:
+
 ====
 Mock
 ====
@@ -260,8 +262,6 @@ Dependencies
 ============
 
 The HIL Engine API is automatically provided by the ``microej-mock`` project skeleton.
-
-.. _mock_module:
 
 Installation
 ============
