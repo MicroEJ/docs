@@ -111,16 +111,16 @@ This module nature inherits the configuration properties of the following plugin
 It defines the following dedicated configuration properties:
 
 .. list-table:: 
-   :widths: 20 65 15
-   :header-rows: 1
+    :widths: 20 65 15
+    :header-rows: 1
 
-   * - Name
-     - Description
-     - Default
+    * - Name
+      - Description
+      - Default
     * - microej.lib.implfor
       - Execution target.
         Possible values are `emb` (only on Device), `sim` (only Simulator) and `common` (both).
-     - ``common``
+      - ``common``
 
 .. _module_natures.meta_build:
 
@@ -138,21 +138,21 @@ Meta Build
 This module nature defines the following dedicated configuration properties:
 
 .. list-table:: 
-   :widths: 20 65 15
-   :header-rows: 1
+    :widths: 20 65 15
+    :header-rows: 1
 
-   * - Name
-     - Description
-     - Default
-   * - metabuild.root
-     - Path of the root folder containing the modules to build.
-     - ``${basedir}/..``
-   * - private.modules.file
-     - Name of the file listing the private modules to build.
-     - ``private.modules.list``
-   * - public.modules.file
-     - Name of the file listing the public modules to build.
-     - ``public.modules.list``
+    * - Name
+      - Description
+      - Default
+    * - metabuild.root
+      - Path of the root folder containing the modules to build.
+      - ``${basedir}/..``
+    * - private.modules.file
+      - Name of the file listing the private modules to build.
+      - ``private.modules.list``
+    * - public.modules.file
+      - Name of the file listing the public modules to build.
+      - ``public.modules.list``
 
 .. _module_natures.mock:
 
@@ -417,6 +417,7 @@ This plugin defines the following configuration properties:
    * - platform-loader.target.platform.file
      - Path of the platform file to use in the build. See :ref:`platform_selection` section for Platform Selection rules.
      - Not set
+
 .. _module_natures.plugins.javadoc:
 
 Javadoc
@@ -526,6 +527,12 @@ This plugin defines the following configuration properties:
 
 J2SE Unit Tests
 ^^^^^^^^^^^^^^^
+
+.. warning::
+   
+   This plugin is reserved for tools written in Java Standard Edition.
+   Tests classes must be created in the folder ``src/test/java`` of the project.
+   See :ref:`module_natures.plugins.testsuite` section for MicroEJ tests.
 
 **Module Natures**:
 
