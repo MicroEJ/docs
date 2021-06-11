@@ -72,6 +72,24 @@ This module nature inherits the configuration properties of the following plugin
 - :ref:`module_natures.plugins.javadoc`
 - :ref:`module_natures.plugins.artifact_checker`
 
+It defines the following dedicated configuration properties:
+
+.. list-table:: 
+    :widths: 20 65 15
+    :header-rows: 1
+
+    * - Name
+      - Description
+      - Default
+    * - microej.lib.name
+      - Platform library name on the form: ``[NAME]-[VERSION]-api``.
+        - ``[NAME]``: name of the implemented Foundation Library API module.
+        - ``[VERSION]``: version of the implemented Foundation Library API module without patch (``Major.minor``).
+      - Not set.
+    * - rip.printableName
+      - Printable name for the Platform Editor.
+      - Not set.
+
 .. _module_natures.foundation_lib_impl:
 
 Foundation Library Implementation
