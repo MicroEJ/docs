@@ -42,7 +42,7 @@ Before building the firmware, a target platform must be configured. The
 easiest way to do it is to copy a platform file into the
 :guilabel:`myfirmware` > :guilabel:`dropins` folder. Such file usually ends with ``.jpf``.
 For other ways to setup the input platform to build a firmware see
-:ref:`module_natures_platform_selection`.
+:ref:`platform_selection`.
 
 Build the Firmware
 ~~~~~~~~~~~~~~~~~~

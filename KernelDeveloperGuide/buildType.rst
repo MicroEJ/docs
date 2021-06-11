@@ -184,7 +184,7 @@ where a dependency line is declared:
    | ``default->default;``         | Add-On Library (``JAR``)      | Embedded in both the firmware and the Virtual Device                                                                                                                            |
    | ``vdruntime->default``        |                               |                                                                                                                                                                                 |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``platform->platformDev``     | Platform (``JPF``)            | Platform dependency used to build the firmware and the Virtual Device. There are other ways to select the platform (see :ref:`module_natures_platform_selection`)               |
+   | ``platform->platformDev``     | Platform (``JPF``)            | Platform dependency used to build the firmware and the Virtual Device. There are other ways to select the platform (see :ref:`platform_selection`)                              |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | ``kernelapi->default``        | Runtime Environment (``JAR``) | See :ref:`runtime_environment`                                                                                                                                                  |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -227,7 +227,7 @@ configure the build process.
 Change the Platform used to Build the Firmware and the Virtual Device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To build a MicroEJ Firmware and a Virtual Device, a MicroEJ Platform must provided (see :ref:`module_natures_platform_selection` section).
+To build a MicroEJ Firmware and a Virtual Device, a MicroEJ Platform must provided (see :ref:`platform_selection` section).
 
 Build only a Firmware
 ~~~~~~~~~~~~~~~~~~~~~

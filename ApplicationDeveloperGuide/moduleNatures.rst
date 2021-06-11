@@ -3,101 +3,619 @@
 Module Natures
 ==============
 
-.. _module_nature_skeleton_mapping:
+This page describes the most common module natures as follows:
 
-The following table describes the :ref:`project skeleton <mmm_module_skeleton>` name for most common MicroEJ Module Natures.
-
-.. list-table:: MicroEJ Module Natures Summary
-   :widths: 20 10 50
-   :header-rows: 1
-
-   * - Module Nature
-     - Skeleton Name
-     - Direct Wizard
-   * - :ref:`Add-On Library <module_natures.addon_lib>`
-     - `microej-javalib`
-     - :guilabel:`File` > :guilabel:`New` > :guilabel:`Add-On Library Project`
-   * - :ref:`Mock <module_natures.mock>`
-     - `microej-mock`
-     - 
-   * - :ref:`Module Repository <module_natures.module_repository>`
-     - `artifact-repository`
-     - 
-   * - :ref:`Sandboxed Application <module_natures.sandboxed_application>`
-     - `application`
-     - :guilabel:`File` > :guilabel:`New` > :guilabel:`Sandboxed Application Project`
-   * - :ref:`Standalone Application <module_natures.standalone_application>`
-     - `firmware-singleapp`
-     - :guilabel:`File` > :guilabel:`New` > :guilabel:`Standalone Application Project`
+- **Skeleton Name**: the :ref:`project skeleton <mmm_module_skeleton>` name.
+- **Build Type Name**: the build type name, derived from the module nature name: ``com.is2t.easyant.buildtypes#build-[NATURE_NAME]``.
+- **Documentation**: a link to the documentation.
+- **SDK Menu**: the menu to the direct wizard in MicroEJ SDK (if available). 
+  Any module nature can be created with the default wizard from :guilabel:`File` > :guilabel:`New` > :guilabel:`Module Project`.
+- **Configuration**: properties that can be defined to configure the module. Properties are defined inside the ``ea:build`` tag of the :ref:`module.ivy <mmm_module_description>` file,
+  using ``ea:property`` tag as described in the section :ref:`mmm_build_options`.
+  A module nature also inherits the configuration properties from the listed :ref:`module_natures.plugins`.
 
 .. _module_natures.addon_lib:
 
 Add-On Library
-~~~~~~~~~~~~~~
+--------------
 
-A MicroEJ Add-On Library is a MicroEJ library that is implemented on top of MicroEJ Foundation Libraries (100% full Java code).
+**Skeleton Name**: ``microej-javalib``
 
-Go to the :ref:`MicroEJ Libraries <libraries>` section for more details.
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-microej-javalib``
+
+**Documentation**: :ref:`libraries`
+
+**SDK Menu**: :guilabel:`File` > :guilabel:`New` > :guilabel:`Add-On Library Project`
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following plugins:
+
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.platform_loader`
+- :ref:`module_natures.plugins.javadoc`
+- :ref:`module_natures.plugins.testsuite`
+- :ref:`module_natures.plugins.artifact_checker`
+
+.. _module_natures.addon_processor:
+
+Add-On Processor
+----------------
+
+**Skeleton Name**: ``addon-processor``
+
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-addon-processor``
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following plugins:
+
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.unittests`
+- :ref:`module_natures.plugins.artifact_checker`
+
+.. _module_natures.foundation_lib_api:
+
+Foundation Library API
+----------------------
+
+**Skeleton Name**: ``microej-javaapi``
+
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-microej-javaapi``
+
+**Documentation**: :ref:`libraries`
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following plugins:
+
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.javadoc`
+- :ref:`module_natures.plugins.artifact_checker`
+
+This module nature defines the following dedicated configuration properties:
+
+.. list-table:: 
+    :widths: 25 65 15
+    :header-rows: 1
+
+    * - Name
+      - Description
+      - Default
+    * - microej.lib.name
+      - Platform library name on the form: ``[NAME]-[VERSION]-api``.
+        - ``[NAME]``: name of the implemented Foundation Library API module.
+        - ``[VERSION]``: version of the implemented Foundation Library API module without patch (``Major.minor``).
+      - Not set
+    * - rip.printableName
+      - Printable name for the Platform Editor.
+      - Not set
+
+.. _module_natures.foundation_lib_impl:
+
+Foundation Library Implementation
+---------------------------------
+
+**Skeleton Name**: ``microej-javaimpl``
+
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-microej-javaimpl``
+
+**Documentation**: :ref:`libraries`
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following plugins:
+
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.testsuite`
+
+This module nature defines the following dedicated configuration properties:
+
+.. list-table:: 
+    :widths: 25 65 15
+    :header-rows: 1
+
+    * - Name
+      - Description
+      - Default
+    * - microej.lib.implfor
+      - Execution target.
+        Possible values are `emb` (only on Device), `sim` (only Simulator) and `common` (both).
+      - ``common``
+
+.. _module_natures.meta_build:
+
+Meta Build
+----------
+
+**Skeleton Name**: ``microej-meta-build``
+
+**Build Type Name**: ``com.is2t.easyant.buildtypes#microej-meta-build``
+
+**Documentation**: :ref:`meta_build`
+
+**Configuration**:
+
+This module nature defines the following dedicated configuration properties:
+
+.. list-table:: 
+    :widths: 25 65 15
+    :header-rows: 1
+
+    * - Name
+      - Description
+      - Default
+    * - metabuild.root
+      - Path of the root folder containing the modules to build.
+      - ``${basedir}/..``
+    * - private.modules.file
+      - Name of the file listing the private modules to build.
+      - ``private.modules.list``
+    * - public.modules.file
+      - Name of the file listing the public modules to build.
+      - ``public.modules.list``
 
 .. _module_natures.mock:
 
 Mock
-~~~~
+----
 
-A Mock is a jar file containing some Java classes that simulate natives for the Simulator.
-Mocks allow applications to be run unchanged in the Simulator while still (apparently) interacting with native code.
+**Skeleton Name**: ``microej-mock``
 
-Go to the :ref:`Mock <mock_module>` section for more details.
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-microej-mock``
+
+**Documentation**: :ref:`mock`
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following plugins:
+
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.unittests`
 
 .. _module_natures.module_repository:
 
 Module Repository
-~~~~~~~~~~~~~~~~~
+-----------------
 
-A module repository is a module that bundles a set of modules in a portable ZIP file.
-It is used to contain all the dependencies required to build and package the applications.
+**Skeleton Name**: ``artifact-repository``
 
-Go to the :ref:`module_repository` section for more details.
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-artifact-repository``
+
+**Documentation**: :ref:`module_repository`
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following plugins:
+
+- :ref:`module_natures.plugins.artifact_checker`
+
+This module nature defines the following dedicated configuration properties:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - bar.check.as.v2.module
+     - When this property is set to true, the artifact checker uses the MicroEJ Module Manager semantic.
+     - ``false``
+   * - bar.javadoc.dir
+     - Path of the folder containing the generated javadoc.
+     - ``${target}/javadoc``
+   * - bar.javadoc.stylesheet.file
+     - Path of the Stylesheet used for the generated Javadoc.
+     - Not set
+   * - bar.notification.email.from
+     - The email address used as the from address when sending the notification emails.
+     - Not set
+   * - bar.notification.email.host
+     - The hostname of the mail service used to send the notification emails.
+     - Not set
+   * - bar.notification.email.password
+     - The password used to authenticate on the mail service.
+     - Not set
+   * - bar.notification.email.port
+     - The port of the mail service used to send the notification emails
+     - Not set
+   * - bar.notification.email.ssl
+     - When this property is set to true, SSL/TLS is used to send the notification emails.
+     - Not set
+   * - bar.notification.email.to
+     - The notification email address destination.
+     - Not set
+   * - bar.notification.email.user
+     - The username used to authenticate on the mail service.
+     - Not set
+   * - bar.populate.from.resolver
+     - Name of the resolver used to fetch the modules to populate the repository.
+     - ``fetchRelease``
+   * - bar.populate.ivy.settings.file
+     - Path of the Ivy settings file used to fetch the modules to populate the repository.
+     - ``${project.ivy.settings.file}``
+   * - bar.populate.repository.conf
+     - Ivy configuration of included repositories. 
+       The modules of the repositories declared as dependency with this configuration are included in the built repository.
+     - ``repository``
+   * - bar.test.haltonerror
+     - When this property is set to true, the artifact checker stops at the first error.
+     - ``false``
+   * - javadoc.excludes
+     - Comma-separated list of packages to exclude from the javadoc.
+     - Empty string
+   * - javadoc.includes
+     - Comma-separated list of packages to include in the javadoc.
+     - ``**`` (all packages)
+   * - skip.artifact.checker
+     - When this property is set to true, all artifact checkers are skipped.
+     - Not set
+   * - skip.email
+     - When this property is set (any value), the notification email is not sent. 
+       Otherwise the ``bar.notification.*`` properties are required.
+     - Not set   
+   * - skip.javadoc.deprecated
+     - Prevents the generation of any deprecated API at all in the javadoc.
+     - ``true``
 
 .. _module_natures.sandboxed_application:
 
 Sandboxed Application
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
-A MicroEJ Sandboxed Application is a MicroEJ Application that can run over a Multi-Sandbox Firmware.
-It can be linked either statically or dynamically.
-If it is statically linked, it is then called a System Application as it is part of the initial image and cannot be removed.
+**Skeleton Name**: ``application``
 
-Go to the :ref:`sandboxed_application` section for more details.
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-application``
+
+**Documentation**: :ref:`sandboxed_application`
+
+**SDK Menu**: :guilabel:`File` > :guilabel:`New` > :guilabel:`Sandboxed Application Project`
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following plugins:
+
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.platform_loader`
+- :ref:`module_natures.plugins.javadoc`
+- :ref:`module_natures.plugins.testsuite`
+- :ref:`module_natures.plugins.artifact_checker`
 
 .. _module_natures.standalone_application:
 
 Standalone Application
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
-A MicroEJ Standalone Application is a MicroEJ Application that is directly linked to the C code to produce a MicroEJ Firmware.
-Such application must define a main entry point, i.e. a class containing a public static void main(String[]) method.
+**Skeleton Name**: ``firmware-singleapp``
 
-Go to the :ref:`standalone_application` section for more details.
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-firmware-singleapp``
 
-.. _module_natures_platform_selection:
+**Documentation**: :ref:`standalone_application`
 
-MicroEJ Platform Selection
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+**SDK Menu**: :guilabel:`File` > :guilabel:`New` > :guilabel:`Standalone Application Project`
 
-Many modules natures require a MicroEJ Platform for building the module or for running tests.
+**Configuration**:
 
-There are 4 different ways to provide a MicroEJ Platform for a module project:
+This module nature inherits the configuration properties of the following plugins:
 
--  Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.file`` to the path of a MicroEJ Platform file (``.zip``, ``.jpf`` or ``.vde``).
--  Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.dir`` to the path of the ``source`` folder of an already imported :ref:`Source Platform <source_platform_import>`.
--  Declare a :ref:`module dependency <mmm_module_dependencies>`:
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.platform_loader`
+- :ref:`module_natures.plugins.testsuite`
+- :ref:`module_natures.plugins.artifact_checker`
 
-   .. code:: xml
+This module nature defines the following dedicated configuration properties:
 
-      <dependency org="myorg" name="myname" rev="1.0.0" conf="platform->default" transitive="false"/>
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
 
--  Copy a MicroEJ Platform file to the dropins folder. The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.dropins``.
+   * - Name
+     - Description
+     - Default
+   * - application.main.class
+     - Full Qualified Name of the main class of the application. This option is required.
+     - Not set
+   * - skip.build.virtual.device
+     - When this property is set (any value), the virtual device is not built.
+     - Not set
+   * - virtual.device.sim.only
+     - When this property is set (any value), the firmware is not built.
+     - Not set
+
+.. _module_natures.plugins:
+
+Natures Plugins
+---------------
+
+This page describes the most common module nature plugins as follows:
+
+- **Documentation**: link to documentation.
+- **Module Natures**: list of :ref:`module_natures` using this plugin.
+- **Configuration**: properties that can be defined to configure the module. Properties are defined inside the ``ea:build`` tag of the :ref:`module.ivy <mmm_module_description>` file,
+  using ``ea:property`` tag as described in the section :ref:`mmm_build_options`.
+
+
+.. _module_natures.plugins.compilation:
+
+Java Compilation
+^^^^^^^^^^^^^^^^
+
+**Module Natures**:
+
+This plugin is used by the following module natures:
+
+- :ref:`module_natures.addon_lib`
+- :ref:`module_natures.foundation_lib_api`
+- :ref:`module_natures.foundation_lib_impl`
+- :ref:`module_natures.standalone_application`
+- :ref:`module_natures.sandboxed_application`
+
+**Configuration**:
+
+This plugin defines the following configuration properties:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - javac.debug.level
+     - Comma-separated list of levels for the Java compiler debug mode.
+     - ``lines,source,vars``
+   * - javac.debug.mode
+     - When this property is set to true, the Java compiler is set in debug mode.
+     - ``false``
+   * - src.main.java
+     - Path of the folder containing the Java sources.
+     - ``${basedir}/src/main/java``
+
+
+.. _module_natures.plugins.platform_loader:
+
+Platform Loader
+^^^^^^^^^^^^^^^
+
+**Documentation**: :ref:`platform_selection`
+
+**Module Natures**:
+
+This plugin is used by the following module natures:
+
+- :ref:`module_natures.addon_lib`
+- :ref:`module_natures.standalone_application`
+- :ref:`module_natures.sandboxed_application`
+
+**Configuration**:
+
+This plugin defines the following configuration properties:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - platform-loader.platform.dir
+     - Path of the folder to unzip the loaded platform to.
+     - ``${target}/platform``
+   * - platform.loader.skip.load.platform
+     - When this property is set to true, the platform is not loaded. It must be already available in the directory defined by the property ``platform-loader.platform.dir``.
+       Use with caution: the platform content may be modified during the build (e.g. in case of Testsuite or Virtual Device build).
+     - ``false``
+   * - platform-loader.target.platform.conf
+     - The Ivy configuration used to retrieved the platform if fetched via dependencies.
+     - ``platform``     
+   * - platform-loader.target.platform.dir
+     - Path of the root folder of the platform to use in the build. See :ref:`platform_selection` section for Platform Selection rules.
+     - Not set
+   * - platform-loader.target.platform.dropins
+     - Absolute or relative (to the project root folder) path of the folder where the platform can be found (see :ref:`platform_selection`).
+     - ``dropins`` 
+   * - platform-loader.target.platform.file
+     - Path of the platform file to use in the build. See :ref:`platform_selection` section for Platform Selection rules.
+     - Not set
+
+.. _module_natures.plugins.javadoc:
+
+Javadoc
+^^^^^^^
+
+**Module Natures**:
+
+This plugin is used by the following module natures:
+
+- :ref:`module_natures.addon_lib`
+- :ref:`module_natures.foundation_lib_api`
+- :ref:`module_natures.sandboxed_application`
+
+**Configuration**:
+
+This plugin defines the following configuration properties:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - src.main.java
+     - Path of the folder containing the Java sources.
+     - ``${basedir}/src/main/java``
+   * - javadoc.file.encoding
+     - Encoding used for the generated Javadoc.
+     - ``UTF-8``
+   * - javadoc.failonerror
+     - When this property is set to true, the build is stopped if an error is raised during the Javadoc generation.
+     - ``true``
+   * - javadoc.failonwarning
+     - When this property is set to true, the build is stopped if a warning is raised during the Javadoc generation.
+     - ``false``
+   * - target.reports
+     - Path of the base folder for reports.
+     - ``${target}/reports``
+   * - target.javadoc
+     - Path of the base folder where the Javadoc is generated.
+     - ``${target.reports}/javadoc``
+   * - target.javadoc.main
+     - Path of the folder where the Javadoc is generated.
+     - ``${target.javadoc}/main``
+   * - javadoc-microej.overview.html
+     - Path of the HTML template file used for the Javadoc overview page.
+     - ``${src.main.java}/overview.html`` if exists, otherwise a default template.
+   * - target.artifacts
+     - Path of the packaged artifacts.
+     - ``${target}/artifacts``
+   * - target.artifacts.main.javadoc.jar.name
+     - Name of the packaged JAR containing the generated Javadoc (stored in folder ``target.artifacts``).
+     - ``${module.name}-javadoc.jar``
+   * - javadoc.publish.conf
+     - Ivy configuration used to publish the Javadoc artifact.
+     - ``documentation``
+
+.. _module_natures.plugins.testsuite:
+
+Test Suite
+^^^^^^^^^^
+
+**Documentation**: :ref:`application_testsuite`
+
+**Module Natures**:
+
+This plugin is used by the following module natures:
+
+- :ref:`module_natures.addon_lib`
+- :ref:`module_natures.foundation_lib_api`
+- :ref:`module_natures.foundation_lib_impl`
+- :ref:`module_natures.standalone_application`
+- :ref:`module_natures.sandboxed_application`
+
+**Configuration**:
+
+This plugin defines the following configuration properties:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - microej.testsuite.cc.excludes.classes
+     - Pattern of classes excluded from the code coverage analysis.
+     - Not set
+   * - microej.testsuite.properties.s3.cc.activated
+     - When this property is set to true, the code coverage analysis is disabled.
+     - Not set
+   * - test.run.excludes.pattern
+     - Pattern of classes excluded from the test suite execution.
+     - Empty string (no test)
+   * - test.run.failonerror
+     - When this property is set to true, the build fails if an error is raised.
+     - ``true``
+   * - test.run.includes.pattern
+     - Pattern of classes included in the test suite execution.
+     - ``**/*`` (all tests)
+   * - skip.test
+     - When this property is set (any value), the tests are not executed.
+     - Not set
+
+.. _module_natures.plugins.unittests:
+
+J2SE Unit Tests
+^^^^^^^^^^^^^^^
+
+.. warning::
+   
+   This plugin is reserved for tools written in Java Standard Edition.
+   Tests classes must be created in the folder ``src/test/java`` of the project.
+   See :ref:`module_natures.plugins.testsuite` section for MicroEJ tests.
+
+**Module Natures**:
+
+This plugin is used by the following module natures:
+
+- :ref:`module_natures.addon_processor`
+- :ref:`module_natures.mock`
+
+**Configuration**:
+
+This plugin defines the following configuration properties:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - test.run.excludes.pattern
+     - Pattern of classes excluded from the test suite execution.
+     - Empty string (no test)
+   * - test.run.failonerror
+     - When this property is set to true, the build fails if an error is raised.
+     - ``true``
+   * - test.run.includes.pattern
+     - Pattern of classes included in the test suite execution.
+     - ``**/*`` (all tests)
+   * - skip.test
+     - When this property is set (any value), the tests are not executed.
+     - Not set
+
+.. _module_natures.plugins.artifact_checker:
+
+Artifact Checker
+^^^^^^^^^^^^^^^^
+
+**Module Natures**:
+
+This plugin is used by the following module natures:
+
+- :ref:`module_natures.addon_lib`
+- :ref:`module_natures.foundation_lib_api`
+- :ref:`module_natures.standalone_application`
+- :ref:`module_natures.sandboxed_application`
+- :ref:`module_natures.module_repository`
+
+**Configuration**:
+
+This plugin defines the following configuration properties:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - run.artifact.checker
+     - When this property is set (any value), the artifact checker is executed.
+     - Not set
+   * - skip.addonconf.checker
+     - When this property is set to true, the addon configurations checker is not executed.
+     - Not set
+   * - skip.changelog.checker
+     - When this property is set to true, the changelog checker is not executed.
+     - Not set
+   * - skip.foundationconf.checker
+     - When this property is set to true, the foundation configurations checker is not executed.
+     - Not set
+   * - skip.license.checker
+     - When this property is set to true, the license checker is not executed.
+     - Not set
+   * - skip.publicconf.checker
+     - When this property is set to true, the public configurations checker is not executed.
+     - Not set
+   * - skip.readme.checker
+     - When this property is set to true, the readme checker is not executed.
+     - Not set
+   * - skip.retrieve.checker
+     - When this property is set to true, the retrieve checker is not executed.
+     - Not set
 
 
 ..
