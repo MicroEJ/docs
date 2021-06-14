@@ -2,7 +2,8 @@ String bounds check on a Widget
 ===============================
 The issue
 -------------
-- When creating an application, it may support multiple languages, some of those languages have words and phrases that may be bigger than first planned when creating an application
+
+When creating an application, it may support multiple languages, some of those languages have words and phrases that may be bigger than first planned when creating an application
 
 Extending a Widget
 -------------------
@@ -24,8 +25,10 @@ Extending a Widget
 
 Overriding onLaidOut
 --------------------
-- After a widget is laidOut, the onLaidOut method is called, so, overriding this method is possible to check whether or not the text fits 
-- Inside of the method ,get the Font from the Style that the widget is using, and then, get the Font 
+ 
+After a widget is laidOut, the onLaidOut method is called, so, overriding this method is possible to check whether or not the text fits 
+
+Inside of the method ,get the Font from the Style that the widget is using, and then, get the Font 
 
 .. code-block:: java
 
@@ -61,11 +64,12 @@ Testing with canvas
 
 .. code-block:: console
 
-The text size is greater than the Widget content Width!
+    The text size is greater than the Widget content Width!
 
 Improving the Bounds Check
 ----------------------------
-- To make the debugging process easier, it's possible to show on which section of the text is truncated 
+
+To make the debugging process easier, it's possible to show on which section of the text is truncated 
 
 .. code-block:: java
 
@@ -86,9 +90,10 @@ Improving the Bounds Check
         }
     }
 
-- This block of code can be also extracted to a helper class,to be used also in other Widgets, not only the one extending Label
+This block of code can be also extracted to a helper class,to be used also in other Widgets, not only the one extending Label
 
 .. code-block:: java
+
     public class LabelBoundsCheck {
 
     static void fits(final Font font, final String text, final int contentWidth) {
