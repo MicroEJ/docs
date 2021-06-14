@@ -205,9 +205,6 @@ This module nature defines the following dedicated configuration properties:
    * - bar.javadoc.dir
      - Path of the folder containing the generated javadoc.
      - ``${target}/javadoc``
-   * - bar.javadoc.stylesheet.file
-     - Path of the Stylesheet used for the generated Javadoc.
-     - Not set
    * - bar.notification.email.from
      - The email address used as the from address when sending the notification emails.
      - Not set
