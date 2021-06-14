@@ -509,8 +509,8 @@ This plugin defines the following configuration properties:
      - Pattern of classes excluded from the code coverage analysis.
      - Not set
    * - microej.testsuite.properties.s3.cc.activated
-     - When this property is set to true, the code coverage analysis is disabled.
-     - Not set
+     - When this property is set to true, the code coverage analysis is enabled.
+     - ``true``
    * - test.run.excludes.pattern
      - Pattern of classes excluded from the test suite execution.
      - Empty string (no test)
