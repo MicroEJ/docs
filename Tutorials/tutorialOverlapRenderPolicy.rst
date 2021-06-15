@@ -81,9 +81,7 @@ Using OverlapRenderPolicy
 
 - The widgets should alternate as shown below 
 
-.. code-block:: console
-
-    Video PlaceHolder
+.. image:: images/tutorial_MicroEJ_renderpolicyanimation.gif
 
 - When a widget rendering is requested, the widget is rendered on top of the other widget, regardless of their order in the widget hierachy.
 - To avoid this, it's possible to change the render policy as follows
