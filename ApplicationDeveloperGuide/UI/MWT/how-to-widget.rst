@@ -77,7 +77,7 @@ Consuming events
 
 To indicate that an event was consumed by a widget, ``handleEvent()`` should return ``true``.
 Usually, once an event is consumed, it is not dispatched to other widgets (this behavior is controlled by the event dispatcher).
-The widget that consumed the event is the only one that can react to it.
+The widget that consumed the event is the last one to receive it.
 
 The following guidelines are recommended to decide when to consume an event and when not to consume an event:
 
