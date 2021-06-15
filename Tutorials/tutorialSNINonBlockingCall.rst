@@ -103,10 +103,9 @@ This is because the native function is called in the same RTOS task that the Jav
 
 This schematic explains what is going on:
 
-.. image:: images/tuto_sni_non_blocking_call_blocking_case.PNG
+.. image:: ./images/tuto_sni_non_blocking_call_blocking_case.PNG
    :scale: 80 %
    :align: center
-   :alt: 
 
 Implement a non-blocking call
 =============================
@@ -127,7 +126,7 @@ Here is a summary of what will be done:
 
 This schematic summarizes the steps described above:
 
-.. image:: images/tuto_sni_non_blocking_call_non_blocking_case.PNG
+.. image:: ./images/tuto_sni_non_blocking_call_non_blocking_case.PNG
    :scale: 70 %
    :align: center
 
