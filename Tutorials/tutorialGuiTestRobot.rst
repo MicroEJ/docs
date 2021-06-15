@@ -174,7 +174,8 @@ The API of our WatchPointer is straightforward, just start() and stop() the reco
             // ...
 
             // Start recording events.
-            new WatchPointer().start();
+            WatchPointer.getInstance().setInitialEventHandler(desktop);
+            WatchPointer.getInstance().start();
         }
     }
 
@@ -502,7 +503,7 @@ Let’s assume that we have a Main.getCurrentWidget() method that returns the cu
         private final EventHandler initialEventHandler;
         private long lastTimeEvent;
 
-        public WatchPointerEventHandler(final EventHandler eventHandler) {
+        public WatchPointerEventHandler(EventHandler eventHandler) {
             this.initialEventHandler = eventHandler;
             this.lastTimeEvent = System.currentTimeMillis();
         }
@@ -512,30 +513,32 @@ Let’s assume that we have a Main.getCurrentWidget() method that returns the cu
             // Forward events to the initial EventHandler.
             final boolean ret = this.initialEventHandler.handleEvent(event);
 
-            if (Event.POINTER == Event.getType(event)) {
-            Pointer pointer = (Pointer) Event.getGenerator(event);
-            final int action = Buttons.getAction(event);
-            onAction(action);
+            if (Pointer.EVENT_TYPE == Event.getType(event)) {
+                Pointer pointer = (Pointer) Event.getGenerator(event);
+                final int action = Buttons.getAction(event);
+                onAction(action);
             }
             return ret;
         }
 
         private void onAction(int action) {
-            String command;
+            String command = null;
             boolean isCommand = true;
             Widget currentWidget = Main.getCurrentWidget();
-
             switch (action) {
             case Buttons.PRESSED:
                 command = "robot.checkWidget(\"" + currentWidget.getClass().getName() + "\");\n"
-                    + "robot.press(" + pointer.getX() + ", " + pointer.getY() + ");";
+                    + "robot.press(" + WatchPointer.this.pointer.getX() + ", " + WatchPointer.this.pointer.getY()
+                        + ");";
                 break;
             case Pointer.MOVED:
             case Pointer.DRAGGED:
-                command = "robot.move(" + pointer.getX() + ", " + pointer.getY() + ");";
+                command = "robot.move(" + WatchPointer.this.pointer.getX() + ", " + WatchPointer.this.pointer.getY()
+                        + ");";
                 break;
             case Buttons.RELEASED:
-                command = "robot.release(" + pointer.getX() + ", " + pointer.getY() + ");";
+                command = "robot.release(" + WatchPointer.this.pointer.getX() + ", " + WatchPointer.this.pointer.getY()
+                        + ");";
                 break;
             default:
                 isCommand = false;
@@ -570,7 +573,7 @@ Conversely, we update Robot to add the checkWidget() method.
             final Widget lastShown = Main.getCurrentWidget();
             final String lastShownName = lastShown.getClass().getName();
             if (!className.equals(lastShownName)) {
-            throw new InterruptedException("Expected " + className + " got " + lastShownName);
+                throw new InterruptedException("Expected " + className + " got " + lastShownName);
             }
         }
     }
