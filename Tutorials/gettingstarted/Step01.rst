@@ -78,7 +78,7 @@ Desktop
 Displaying a Label
 ------------------
 
-#. To add a label, just instantiate a ´´Label`` object and add it to the
+#. To add a label, just instantiate a ``Label`` object and add it to the
    desktop as the root widget.
 
    .. code:: java

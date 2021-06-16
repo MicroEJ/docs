@@ -118,11 +118,11 @@ Build Your Platform
 Create a New Project
 --------------------
 
-#. First, Go to :guilabel:`File` > :guilabel:`New` > :guilabel:`Standalone Project`
+#. First, Go to :guilabel:`File` > :guilabel:`New` > :guilabel:`Standalone Application Project`
 
    |image6|
 
-#. The Project Structure should look like this 
+#. The Project Structure should look like this:
 
    |image7|
 
