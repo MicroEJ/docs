@@ -16,6 +16,7 @@ Tutorials
    tutorialExploreDataSerializationFormats
    tutorialInstrumentJavaCodeForLogging
    tutorialRunATestSuiteOnDevice
+   tutorialWidgetBoundsRevalidation
    getStartedWithGUI/index
 
 ..
