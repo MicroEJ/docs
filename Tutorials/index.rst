@@ -17,6 +17,7 @@ Tutorials
    tutorialInstrumentJavaCodeForLogging
    tutorialRunATestSuiteOnDevice
    tutorialWidgetBoundsRevalidation
+   tutorialWidgetBoundsRevalidation
    getStartedWithGUI/index
 
 ..
