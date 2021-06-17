@@ -35,7 +35,7 @@ beat task described here.
 
 Make one of the RTOS task act like a heart beat: create a dedicated
 task and make it report in some way at a regular pace (print a message
-on standard output, blink a LED, etc.).
+on standard output, blink a LED, use SystemView, etc.).
 
 If the heart beat is still running when the UI freeze occurs, we can
 go a step further and check whether the MicroEJ runtime is still
@@ -261,7 +261,7 @@ UART not available
 ~~~~~~~~~~~~~~~~~~
 
 If the UART output is not available, use another method to signal that
-the heart beat task is running (e.g. blink a LED).
+the heart beat task is running (e.g. blink a LED, use SystemView).
 
 Sources
 -------
