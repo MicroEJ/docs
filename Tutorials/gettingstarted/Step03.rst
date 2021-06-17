@@ -33,8 +33,8 @@ Usage
 
    .. code:: java
 
-       CascadingStylesheet css = new CascadingStylesheet();
-       EditableStyle style = css.getSelectorStyle(new TypeSelector(Label.class));
+       CascadingStylesheet stylesheet = new CascadingStylesheet();
+       EditableStyle style = stylesheet.getSelectorStyle(new TypeSelector(Label.class));
 
 -  We can now change the style object options, in this sample, changing
    the base color to red and adding a black rectangular border of 1px
@@ -49,7 +49,7 @@ Usage
 
    .. code:: java
 
-       desktop.setStylesheet(css);
+       desktop.setStylesheet(stylesheet);
 
 -  The final code should look like this
 
@@ -66,7 +66,7 @@ Usage
          canvas.addChild(label2, 0, 15, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
 
          CascadingStylesheet stylesheet = new CascadingStylesheet();
-         EditableStyle style = css.getSelectorStyle(new TypeSelector(Label.class));
+         EditableStyle style = stylesheet.getSelectorStyle(new TypeSelector(Label.class));
          style.setColor(Colors.RED);
          style.setBorder(new RectangularBorder(Colors.BLACK, 1));
 
@@ -86,16 +86,36 @@ Padding and Margin
 
            style.setMargin(new UniformOutline(4));
 
-   |image0|
+|image0|
+
+- Setting an oversized margin should look like this
+
+   ..code:: java
+         
+         style.setMargin(new UniformOutline(10));
+   
+|image3|
+
 -  Adding padding
 
    .. code:: java
 
            style.setPadding(new UniformOutline(2));
 
-   |image1|
+|image1|
 
+- Oversizing the padding 
 
+.. code:: java
+   
+   style.setPadding(new UniformOutline(15));
+
+|image4|
+
+- It's possible to see the widget ovelapping other  
+  
 .. |image0| image:: images/margin.png
 .. |image1| image:: images/marginandpadding.png
 .. |image2| image:: images/styleborder.png
+.. |image3| image:: images/tuto_microej_gettingstarted_oversizedmargin.png
+.. |image4| image:: images/tuto_microej_gettingstarted_oversizedmarginandpadding.png

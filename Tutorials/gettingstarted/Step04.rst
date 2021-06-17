@@ -1,9 +1,15 @@
 Images
 ======
 
-To display an image, you must first add it to the resource list file.
-Create two packages on the Resources folder, one named list and another
-named images. The structure should look like this:
+Adding Images
+----------------
+- Create two packages on the Resources folder, one named list and another named images
+
+- Create a resources list file, and add it to the list package at resources(myapp.images.list)
+
+- copy the image to the resources/image package
+
+- The structure should look like this:
 
 |image0| 
 

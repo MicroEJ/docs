@@ -57,11 +57,11 @@ Widgets
        are dependencies for the Widget library. They will be
        automatically resolved with the correct version. 
        
-Desktop
--------
+Desktop Usage 
+--------------
 
 #. A desktop is the top-level object that can be displayed on a Display.
-   It may contain only a single widget, and at most one desktop is shown
+   It may contain a widget, and at most one desktop is shown
    on a Display at any given time.
 #. Desktop automatically triggers the layout and rendering phases for
    itself and its children.
