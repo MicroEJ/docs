@@ -10,7 +10,7 @@ Prerequisites
 Download and Install
 --------------------
 
-#.  Download the installer package corresponding to your host computer OS `MicroEJ SDK <https://repository.microej.com/packages/SDK/21.03/MicroEJ-SDK-Installer-Win64-21.03.exe>`__
+#.  Download the installer package corresponding to your host computer OS `MicroEJ SDK <https://repository.microej.com/packages/SDK/>`__
 
 #.  Unzip the downloaded installer package if needed and execute the installer.
 
@@ -129,7 +129,7 @@ Create a New Project
 Featured project Demo Widget
 ------------------------------
 
-- instructions to download import and launch Demo Widget 
+- `MicroEJ SDK <https://github.com/MicroEJ/Demo-Widget>`__
 
    |image8|
 
