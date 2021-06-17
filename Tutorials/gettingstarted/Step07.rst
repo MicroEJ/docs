@@ -7,6 +7,7 @@ Basic drawing/Drawing on screen
 .. code:: java
     
     public static void main(String[] args){
+       MicroUI.start();
        Displayable myDisplayable = new Displayable() {
 
            @Override
@@ -22,7 +23,8 @@ Basic drawing/Drawing on screen
            }
        };
 
-    Display.getDisplay().requestShow(myDisplayable);
+        Display.getDisplay().requestShow(myDisplayable);
+
    }
    
 -  This should draw a line from the coordinates of the display (0,0) going to (100,50) 

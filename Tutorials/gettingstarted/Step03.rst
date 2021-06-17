@@ -19,7 +19,7 @@ Selectors
 -  Selectors determine the widget to which a style applies. There are three main types of selectors:
 
    -  Simple selectors (based on type,Class)
-   -  Combinators (base on relationships)
+   -  Combinators (based on relationships)
    -  State Selectors (based on state) 
 
    .. note::
