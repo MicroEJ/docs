@@ -250,10 +250,8 @@ Implementation Details
 Java Threads Creation
 ~~~~~~~~~~~~~~~~~~~~~
 
-The number of threads in the MicroEJ Application must be sufficient
-to support the creation of additional threads when using ``Timer`` and
-``Thread``.  The number of available threads can be updated in the
-launch configuration of the application.
+The number of threads in the MicroEJ Application must be sufficient to support the creation of additional threads when using ``Timer`` and ``Thread``.
+The number of available threads can be updated in the launch configuration of the application (see :ref:`option_number_of_threads`).
 
 If it is not possible to increase the number of available threads (for
 example because the memory is full), try to reuse another thread but
