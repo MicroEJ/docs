@@ -5,7 +5,7 @@ Fonts
    ej.microui.display.Font.getFont(). To be displayed, these fonts have
    to be converted at build-time from their source format to the display
    raw format by the font generator tool.
--  Fonts, just like images, must be declared at the \yourapp.fonts.list 
+-  Fonts, just like images, must be declared in a ``*.fonts.list`` file 
 
 Creating a font
 ---------------
@@ -25,7 +25,7 @@ Creating a font
 |image1|
 
 .. note::
- It is important to have the font that you want installed at the system already
+ It is important to have the font that you want installed on your system already
 
 - To choose what font you will use you click on **Import...** and the following should open
 
@@ -50,7 +50,8 @@ Creating a font
 Adding the font to a Label
 --------------------------
 
--  To add the font, you simple change the font on a StyleSheet
+-  To add the font, you must change the font in the StyleSheet
+
 
 .. code:: java
 

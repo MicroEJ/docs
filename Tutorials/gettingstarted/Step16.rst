@@ -26,7 +26,7 @@ Using the Pop Up
     desktop.requestShow();
 
     Popup popup = new Popup();
-    Button b = new Button("TESTE");
+    Button b = new Button("Test");
     b.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick() {

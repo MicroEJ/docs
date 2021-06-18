@@ -72,7 +72,7 @@ Usage
   
 .. code::
 
-    import com.mycompany.pos.Labels;
+    import com.mycompany.myapp.Labels;
 
 - Then, Check which languages are available, and set the Locale
 
