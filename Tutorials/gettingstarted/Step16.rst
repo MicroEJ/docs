@@ -108,7 +108,8 @@ The popup code
 			this.previous.requestShow();
 		}
 	}
-
+    
+- A render policy is a strategy that MWT uses in order to repaint the entire desktop or to repaint a specific widget
 - Finally, a RenderPolicy will be used for this desktop
 
 .. code:: java

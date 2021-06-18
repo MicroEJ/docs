@@ -9,10 +9,9 @@ List
 -  Using as an example the code used before, with the new font, adding
    20 components shows the following result 
 
-   |image0|
-
+   
 -  Using MicroEJ, it is possible to create a Scrollable List to avoid
-   this issue
+this issue
 
 .. code:: java
 
@@ -22,6 +21,9 @@ List
       lbl.addClassSelector(BUTTON);
       list.addChild(lbl);
    }
+
+
+   |image0|
 
 Scrollable List
 ---------------
