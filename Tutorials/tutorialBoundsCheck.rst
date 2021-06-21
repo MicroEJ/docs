@@ -1,13 +1,14 @@
-String bounds check on a Widget
+String Bounds Check on a Widget
 ===============================
-The issue
+The Issue
 -------------
 
 When creating an application, it may support multiple languages, some of those languages have words and phrases that may be bigger than first planned when creating an application
 
 Extending a Widget
 -------------------
-- Firstly, to add a check for label size, the Widget needs to be extendend,on this example, the Label class will be used for this purpose
+To add a check on the size of the messages, the widgets drawing a String need to be extended or modified.
+In this tutorial, the `Label` class will be extended by `MyLabel`.
 
 .. code-block:: java
 
@@ -26,9 +27,10 @@ Extending a Widget
 Overriding onLaidOut
 --------------------
  
-After a widget is laidOut, the onLaidOut method is called, so, overriding this method is possible to check whether or not the text fits 
+As soon as a widget is laid out (its position and size set) by its parent, its `onLaidOut()` method is called.
+So, overriding this method is the best place to check whether or not the text fits.
 
-Inside of the method ,get the Font from the Style that the widget is using, and then, get the Font 
+Inside of the method, get the Font from the Style that the widget is using, and then, get the Font 
 
 .. code-block:: java
 
@@ -37,15 +39,15 @@ Inside of the method ,get the Font from the Style that the widget is using, and 
         final Font font = getStyle().getFont();
         final String text = getText();
         final int stringWidth = font.stringWidth(text);
-        final int labelWidth = this.getContentBounds().getWidth();
-        if (stringWidth > labelWidth) {
-            System.err.println("The text size is greater than the Widget content Width!");
+        final int contentWidth = getContentBounds().getWidth();
+        if (stringWidth > contentWidth) {
+            System.err.println("The text size is greater than the widget content width!");
         }
     }
 
-Testing with canvas
+Testing with a Canvas
 --------------------
-- Using canvas, it's possible to set constraints to each added widget
+The check can be easily validated by putting the widget in a canvas and setting its bounds manually (a little shorter than the text size).
   
 .. code-block:: java
 
@@ -60,7 +62,7 @@ Testing with canvas
 
 .. image:: images/tuto_microej_bounds_check.png
 
-- and the console should show this
+The console should show this:
 
 .. code-block:: console
 
@@ -69,7 +71,7 @@ Testing with canvas
 Improving the Bounds Check
 ----------------------------
 
-To make the debugging process easier, it's possible to show on which section of the text is truncated 
+To make the correction process easier, it's possible to indicate where the text is truncated.
 
 .. code-block:: java
 
@@ -82,7 +84,7 @@ To make the debugging process easier, it's possible to show on which section of 
         if (stringWidth > labelWidth) {
             for (int i = text.length() - 1; i >= 0; i--) {
                 if (font.substringWidth(text, 0, i) <= labelWidth) {
-                    System.out.println(text + "\" trucantes after \"" + text.substring(0, i) + "\""); //$NON-NLS-1$ //$NON-NLS-2$
+                    System.out.println(text + "\" truncates after \"" + text.substring(0, i) + "\""); //$NON-NLS-1$ //$NON-NLS-2$
                     break;
                 }
 
@@ -90,7 +92,7 @@ To make the debugging process easier, it's possible to show on which section of 
         }
     }
 
-This block of code can be also extracted to a helper class,to be used also in other Widgets, not only the one extending Label
+This block of code can be also extracted to a helper class in order to be used in several Widgets.
 
 .. code-block:: java
 
@@ -102,7 +104,7 @@ This block of code can be also extracted to a helper class,to be used also in ot
             if (stringWidth > contentWidth) {
                 for (int i = text.length() - 1; i >= 0; i--) {
                     if (font.substringWidth(text, 0, i) <= contentWidth) {
-                        System.out.println(text + "\" trucantes after \"" + text.substring(0, i) + "\""); //$NON-NLS-1$ //$NON-NLS-2$
+                        System.out.println(text + "\" truncates after \"" + text.substring(0, i) + "\""); //$NON-NLS-1$ //$NON-NLS-2$
                         break;
                     }
 
@@ -111,6 +113,5 @@ This block of code can be also extracted to a helper class,to be used also in ot
         }
     }
     }
-
 
 
