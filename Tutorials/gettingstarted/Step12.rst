@@ -4,7 +4,7 @@ Creating a Contact List using Scroll List
 Creating the contact widget
 ---------------------------
 
--  As explained in step 9, it is possible to create our own widget by
+-  As explained in Creating Widget , it is possible to create our own widget by
    just extending the Widget class
 -  First, let's create a constructor with all the things that we are
    going to need for this

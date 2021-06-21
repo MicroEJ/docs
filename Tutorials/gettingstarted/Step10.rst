@@ -11,7 +11,7 @@ Creating a font
 ---------------
 
 -  To create a font, go to the package you want to store your fonts in,
-   Normally **Resources-> fonts**
+   Normally `Resources`-> `fonts`
 -  Then **Right-Click->New->Other->MicroEJ->MicroEJ Font**
 
 |image4| 
@@ -37,7 +37,7 @@ Creating a font
 
 .. note::
 
-   If you are using a latin based alphabet, just leave the settings as they are and click finish
+   If you are using a latin based alphabet, just leave the settings as they are and click finish,Don't Forget to adjust the height and baseline of the font
 
 - Click finish and save the file. The font should be imported in the .ejf file
 
