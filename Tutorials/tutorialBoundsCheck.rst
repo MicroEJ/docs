@@ -46,7 +46,7 @@ Inside of the method, get the Font from the Style that the widget is using, and 
     }
 
 Testing with a Canvas
---------------------
+----------------------
 The check can be easily validated by putting the widget in a canvas and setting its bounds manually (a little shorter than the text size).
   
 .. code-block:: java
@@ -55,7 +55,7 @@ The check can be easily validated by putting the widget in a canvas and setting 
         MicroUI.start();
         Desktop desktop = new Desktop();
         Canvas canvas = new Canvas();
-        canvas.addChild(new MyLabel("Teste"), 15, 0, 15, 10);
+        canvas.addChild(new MyLabel("Test"), 15, 0, 15, 10);
         desktop.setWidget(canvas);
         desktop.requestShow();
     }
@@ -99,19 +99,18 @@ This block of code can be also extracted to a helper class in order to be used i
     public class LabelBoundsCheck {
 
     static void fits(final Font font, final String text, final int contentWidth) {
-        if (Constants.getBoolean("myapp.debugtextsize")) {
             int stringWidth = font.stringWidth(text);
             if (stringWidth > contentWidth) {
                 for (int i = text.length() - 1; i >= 0; i--) {
                     if (font.substringWidth(text, 0, i) <= contentWidth) {
                         System.out.println(text + "\" truncates after \"" + text.substring(0, i) + "\""); //$NON-NLS-1$ //$NON-NLS-2$
                         break;
-                    }
-
+                   }
                 }
             }
-        }
+        
     }
+    
     }
 
 
