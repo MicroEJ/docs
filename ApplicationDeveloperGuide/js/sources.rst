@@ -14,13 +14,13 @@ JavaScript sources location
 ---------------------------
 
 The JavaScript sources of an application must be located in the project folder ``src/main/js``.
-All JavaScript files found in this folder, at any level, are processed by the MicroEJ engine.
+All JavaScript files (``*.js``) found in this folder, at any level, are processed.
 
 
 JavaScript sources load order
 -----------------------------
 
-When several ``*.js`` files are found in the sources folder, they are loaded in alphabetical order of their relative path.
+When several JavaScript files are found in the sources folder, they are loaded in alphabetical order of their relative path.
 For example, the following source files:
 
 .. code-block::
