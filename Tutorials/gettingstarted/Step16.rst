@@ -159,6 +159,121 @@ The popup code
         }
     }
 
+- The final Popup should look like this
 
+.. code-block:: java
+
+    public class Popup extends Desktop {
+
+	int clipX;
+	int clipY;
+	int clipW;
+	int clipH;
+
+	@Override
+	/* package */void layOut() {
+		Widget widget = this.getWidget();
+		if (widget != null) {
+			Display display = Display.getDisplay();
+			int displayWidth = display.getWidth();
+			int displayHeight = display.getHeight();
+
+			widget.computeOptimalSize(displayWidth, displayHeight);
+			widget.layOut(0, 0, widget.getWidth(), widget.getHeight());
+		}
+	}
+
+	@Override
+	public boolean handleEvent(int event) {
+		int type = Event.getType(event);
+		if (type == Pointer.EVENT_TYPE) {
+			Pointer pointer = (Pointer) Event.getGenerator(event);
+			pointer.setOrigin(this.clipX, this.clipY);
+			int pointerX = pointer.getX();
+			int pointerY = pointer.getY();
+			int action = Buttons.getAction(event);
+			if (action == Buttons.RELEASED) {
+				if (!getWidget().contains(pointerX, pointerY)) {
+					this.requestHide();
+					return false;
+				}
+			}
+		}
+
+		return super.handleEvent(event);
+	}
+
+	@Override
+	protected RenderPolicy createRenderPolicy() {
+		return new MyRenderPolicy(this);
+	}
+
+	Desktop previous;
+
+	@Override
+	public void requestShow() {
+		Displayable displayable = Display.getDisplay().getDisplayable();
+		if (displayable instanceof Desktop) {
+			this.previous = (Desktop) displayable;
+			this.setStylesheet(this.previous.getStylesheet());
+		}
+		super.requestShow();
+	}
+
+	@Override
+	public void requestHide() {
+		super.requestHide();
+		if (this.previous != null) {
+			this.previous.requestShow();
+		}
+	}
+
+	class MyRenderPolicy extends DefaultRenderPolicy {
+
+		/**
+		 * @param desktop
+		 */
+		public MyRenderPolicy(Desktop desktop) {
+			super(desktop);
+		}
+
+		@Override
+		public void requestRender(Widget widget, int x, int y, int width, int height) {
+			super.requestRender(widget, x + Popup.this.clipX, y + Popup.this.clipY, width, height);
+		}
+
+		@Override
+		public void renderDesktop() {
+			Desktop desktop = getDesktop();
+			Widget widget = desktop.getWidget();
+			if (widget != null) {
+				// reset translation and clip
+				final Display display = Display.getDisplay();
+				final GraphicsContext g = display.getGraphicsContext();
+				g.resetTranslation();
+				g.resetClip();
+
+				final int displayWidth = display.getWidth();
+				final int displayHeight = display.getHeight();
+				final int contentWidth = widget.getWidth();
+				final int contentHeight = widget.getHeight();
+				int x = Alignment.computeLeftX(contentWidth, 0, displayWidth, Alignment.HCENTER);
+				int y = Alignment.computeTopY(contentHeight, 0, displayHeight, Alignment.VCENTER);
+
+				g.setClip(x, y, contentWidth, contentHeight);
+				g.setTranslation(x, y);
+
+				Popup.this.clipX = x;
+				Popup.this.clipY = y;
+				Popup.this.clipW = contentWidth;
+				Popup.this.clipH = contentHeight;
+
+				// render widget
+				desktop.renderWidget(g, widget);
+			}
+		}
+	}
+    }
+    
 
 .. |openPopup| image:: images/openPopup.PNG

@@ -57,7 +57,7 @@ Drawing basic shapes
 Drawing images
 ----------------------
 
--  Drawing the image as shown in step 4:
+-  Drawing the image as shown in Images step:
 
    .. code:: java
 
