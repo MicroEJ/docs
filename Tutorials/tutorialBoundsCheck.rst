@@ -66,7 +66,7 @@ The console should show this:
 
 .. code-block:: console
 
-    The text size is greater than the Widget content Width!
+    The text size is greater than the widget content width!
 
 Improving the Bounds Check
 ----------------------------
@@ -112,5 +112,4 @@ This block of code can be also extracted to a helper class in order to be used i
     }
     
     }
-
 
