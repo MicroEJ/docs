@@ -40,7 +40,7 @@ This tutorial assumes the following:
 
 - Tutorial :ref:`tutorialUnderstandMicroEJFirmwareBuild` has been followed.
 
-- MicroEJ SDK distribution 20.07 or more (see :ref:`get_sdk_version`).
+- MicroEJ SDK distribution 20.07 or more (see ).
 
 - The `WROVER Platform
   <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/tree/1.6.2>`__

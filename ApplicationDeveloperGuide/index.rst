@@ -7,7 +7,6 @@ Application Developer Guide
    :maxdepth: 2
 
    introduction
-   workspace
    standaloneApplication
    sandboxedApplication
    virtualDevice
