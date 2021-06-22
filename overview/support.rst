@@ -12,7 +12,7 @@ with the following information (the table below is an example):
    * - Delivery
      - Name
    * - MicroEJ SDK
-     - Distribution 20.07 / Version 5.2.0 (see :ref:`get_sdk_version`)
+     - Distribution 20.07 / Version 5.2.0 (see )
    * - MicroEJ Architecture 
      - ARM Cortex-M4 / IAR / Evaluation | Production (see :ref:`architecture_overview`)
    * - Platform

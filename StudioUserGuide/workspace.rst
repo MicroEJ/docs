@@ -1,7 +1,7 @@
 .. _workspace:
 
-Local Workspaces and Repositories
-=================================
+Workspaces and MicroEJ Repositories
+===================================
 
 When starting MicroEJ SDK, it prompts you to select the last used
 workspace or a default workspace on the first run. A workspace is a main
