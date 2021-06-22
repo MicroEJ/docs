@@ -7,11 +7,11 @@ Font Characteristics
 Font Format
 ===========
 
-The Font Engine provides fonts that conform to the `Unicode
-Standard <https://unicode.org/standard/standard.html>`_. The ``.ejf`` files hold font properties:
+The Font Engine provides fonts that conform to the Unicode
+Standard. The ``.ejf`` files hold font properties:
 
 -  Identifiers: Fonts hold at least one identifier that can be one of
-   the `predefined Unicode scripts <https://unicode.org/standard/standard.html>`_ or a user-specified identifier.
+   the predefined Unicode scripts (see official Unicode website) or a user-specified identifier.
    The intention is that an identifier indicates that the font contains
    a specific set of character codes, but this is not enforced.
 
