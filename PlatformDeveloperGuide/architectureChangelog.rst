@@ -31,7 +31,128 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+[7.16.0] - 2021-06-24
+---------------------
 
+Notes
+~~~~~
+
+The ``Device`` module provided by the MicroEJ Architecture is deprecated
+and will be removed in a future version. It has been moved to the
+`Device Pack <https://repository.microej.com/modules/com/microej/pack/device/device-pack/>`_. Please update your Platforms.
+
+Core Engine
+~~~~~~~~~~~
+
+-  Added a dedicated error code ``LLMJVM_E_INITIALIZE_ERROR (-23)`` when
+   ``LLMJVM_IMPL_initialize()``, ``LLMJVM_IMPL_vmTaskStarted()``, or
+   ``LLMJVM_IMPL_shutdown()`` fails. Previously the generic error code
+   ``LLMJVM_E_MAIN_THREAD_ALLOC (-5)`` was returned.
+-  Added automatic heap consumption monitoring when option ``com.microej.runtime.debug.heap.monitoring.enabled`` is set to ``true``
+-  Fixed some parts of ``LLMJVM_checkIntegrity()`` code were embedded even if not called
+-  [Multi] Fixed potential crash during the call of
+   ``LLMJVM_checkIntegrity`` when analyzing a corrupted Java stack (make
+   this function robust to object references with an invalid memory
+   address)
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+-  Added source code for ``KF``, ``SCHEDCONTROL``, ``SNI``, ``SP`` implementations
+-  Updated ``KF`` API with annotations for Null analysis
+-  Updated ``SNI`` API with annotations for Null analysis
+-  Updated ``SP`` API with annotations for Null analysis
+-  Updated ``ResourceManager`` implementation with annotations for Null analysis
+-  Updated ``KF`` implementation:
+  
+   -  Added missing ``Kernel.getAllFeatureStateListeners()`` method
+   -  Updated code for correct Null analysis detection
+   -  Fixed ``Feature.getCriticality()`` to throw
+      ``IllegalStateException`` if it is in state ``UNINSTALLED``
+      (instead of returning ``NORM_CRITICALITY``)
+   -  Fixed potential race condition between
+      ``Kernel.addResourceControlListener()`` and
+      ``Kernel.removeResourceControlListener()``. Adding a new listener
+      may not be registered if another one is removed at the same time.
+
+Integration
+~~~~~~~~~~~
+
+-  Added a new task in ELF Utils library allowing to update the content of an ELF section:
+   
+   -  Declaration:
+      
+      .. code-block:: xml
+        
+         <taskdef classpath="${platform.dir}/tools/elfutils.jar" classname="com.is2t.elf.utils.AddSectionTask" name="addSection" />
+   -  Usage: 
+      
+      .. code-block:: xml
+         
+         <addSection file="${executable.file}" sectionFile="${section.file}" sectionName="${section.name}" sectionAlignment="${section.alignment}" outputDir="${output.dir}" outputName="${output.name}" />
+-  Updated Architecture End User License Agreement to version ``SDK 3.0-C``
+-  Updated copyright notice of Low Level APIs header files to latest MicroEJ SDK default license
+-  Updated Architecture module with required files and configurations for correct publication in a module repository (``README.md``,
+   ``LICENSE.txt`` and ``CHANGELOG.md``)
+
+Simulator
+~~~~~~~~~
+
+-  Added an option (``com.microej.simulator.hil.frame.size``) to
+   configure the HIL engine max frame size
+-  Fixed load of an immutable byte field (sign extension)
+-  Fixed String creation with characters in range ``[0x80,0xFF]`` using
+   default ``ISO-8859-1`` encoding.
+-  Fixed potential crash in debug mode when a breakpoint is set on a
+   field access (introduced in version ``7.13.0``)
+-  Fixed wrong garbage collection of an object only referenced by an
+   immortal object
+
+SOAR
+~~~~
+
+-  Fixed ``if`` statement with BON constant compilation issues:
+
+   -  too many code may be removed when the block contains a ``while``
+      loop
+   -  potential ``Stacks merging coherence error`` may be thrown the
+      block contains a nested ``try-catch`` statement
+   -  potential ``Stacks merging coherence error`` when declaring a
+      ternary expression with ``Constants.getBoolean()`` in condition
+      expression
+
+-  Fixed ``assert`` statement removal when it is located at the end of a
+   ``then`` block: the ``else`` block may be executed instead of jumping
+   over
+-  Removed names of arrays of basetype unless ``soar.generate.classnames`` option is set to ``true``
+-  [Multi] Fixed potential link exception when a Feature use one of
+   ``ej_bon_ByteArray`` methods
+   (e.g. ``ej.kf.InvalidFormatException: code=51:ON_ej_bon_ByteArray_method_readUnsignedByte_AB_I_I``)
+-  [Multi] Fixed SOAR error (``Invalid SNI method``) when one of
+   ``ej.bon.Constants.getXXX()`` methods is declared in a ``kernel.api``
+   file. This issue was preventing from using BON Constants in Feature
+   code.
+
+Tools
+~~~~~
+
+-  Updated Code Coverage Analyzer report generation:
+
+   -  Automatically configure ``src/main/java`` source directory
+      beside a ``/bin`` directory is available
+   -  Added an option (``cc.src.folders``) to specify the source directory
+      (require MicroEJ SDK ``5.4.1`` or higher)
+   -  Removed the analysis of generated code for ``synchronized``
+      statements
+   -  Fixed crash when loading source code with annotations
+
+-  Fixed Memory Map scripts: ``ClassNames`` group may contain duplicate
+   sections with ``Types`` group
+-  Fixed load of an ELF executable when a section overlaps a segment (updated ELF
+   Utils, Kernel Packager and Firmware Linker)
+-  Fixed Firmware Linker to generate output executable file at the same
+   location than the input executable file
+   
 [7.15.1] - 2021-02-19
 ---------------------
 
