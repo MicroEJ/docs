@@ -27,12 +27,21 @@ A compilation error can be raised when the classpath contains unexpected classes
 
 As described in :ref:`the FFI section <js.java.ffi>`, in order to call Java methods from JavaScript code, all the methods with the given names are searched in the classpath.
 Since the classpath can contain test dependencies which are not available at compile time, the generated FFI can contain classes from these dependencies and therefore fail to compile.
-The following packages are excluded by default:
-- org.junit
-- ej.junit
-- junit
-- org.hamcrest
+The following classes are excluded by default:
 
-This list can be changed by setting the system property ``js.ffi.excludes.packages`` to a comma-separated list of packages names. For example::
+- ``ej.junit.*``
+- ``org.junit.*``
+- ``junit.*``
+- ``org.hamcrest.*``
+- ``java.lang.String``
+- ``java.lang.Number``
 
-	js.ffi.excludes.packages=org.junit,org.hamcrest,com.mycompany.test
+This list can be changed by setting the system property ``js.ffi.excludes.classes`` to a comma-separated list of FQN patterns. For example:
+
+.. code-block:: properties
+
+	js.ffi.excludes.classes=ej.junit.*,org.junit.*,junit.*,org.hamcrest.*,java.lang.String,java.lang.Number,com.mycompany.test.*
+
+.. warning::
+
+    Defining this property overwrites the default value, so do not forget to keep the default excluded classes (unless you know what you are doing).
