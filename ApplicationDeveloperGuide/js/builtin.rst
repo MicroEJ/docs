@@ -31,9 +31,9 @@ Array
 - slice (start, end)
 - sort (comparefn)
 - **[excluded]** splice (start, deleteCount [ , item1 [ , item2 [ , … ] ] ] )
-- **[excluded]** unshift ( [ item1 [ , item2 [ , … ] ] ] )
-- **[excluded]** indexOf ( searchElement [ , fromIndex ] )
-- **[excluded]** lastIndexOf ( searchElement [ , fromIndex ] )
+- unshift ( [ item1 [ , item2 [ , … ] ] ] )
+- indexOf ( searchElement [ , fromIndex ] )
+- lastIndexOf ( searchElement [ , fromIndex ] )
 - every ( callbackfn [ , thisArg ] )
 - some ( callbackfn [ , thisArg ] )
 - forEach ( callbackfn [ , thisArg ] )
@@ -47,7 +47,7 @@ Boolean
 *******
 - Boolean (value)
 - Boolean.prototype.toString ( )
-- **[excluded]** Boolean.prototype.valueOf ( )
+- Boolean.prototype.valueOf ( )
 
 Date
 ****
@@ -88,7 +88,7 @@ Global
 JSON
 ****
 - parse ( text [ , reviver ] )
-- **[excluded]** stringify ( value , [ replacer [ , space ] ] )
+- stringify ( value , [ replacer [ , space ] ] )
 
 Math
 ****
@@ -159,7 +159,10 @@ Object
 
 Regex
 *****
-- **[excluded]**
+- RegExp (pattern, flags)
+- exec (string)
+- test (string)
+- toString ()
 
 String
 ******
@@ -173,11 +176,11 @@ String
 - indexOf (searchString, position)
 - lastIndexOf (searchString, position)
 - **[excluded]** localeCompare (that)
-- **[excluded]** match (regexp)
-- **[excluded]** replace (searchValue, replaceValue)
+- match (regexp)
+- replace (searchValue, replaceValue)
 - **[excluded]** search (regexp)
 - slice (start, end)
-- **[excluded]** split (separator, limit)
+- split (separator, limit)
 - **[excluded]** substr (start [ , length ] )
 - substring (start, end)
 - toLowerCase ( )
