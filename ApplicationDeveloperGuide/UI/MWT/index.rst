@@ -15,6 +15,7 @@ MWT (Micro Widget Toolkit)
    how-to-background
    how-to-event-dispatcher
    how-to-extra-style-field
+   how-to-widget-bounds-revalidation
    tutorialWidgetBoundsRevalidation
    tutorialWidgetBoundsRevalidation
    how-to-overlap-render-policy
