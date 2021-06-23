@@ -15,7 +15,7 @@ MWT (Micro Widget Toolkit)
    how-to-background
    how-to-event-dispatcher
    how-to-extra-style-field
-   tutorialOverlapRenderPolicy
+   how-to-overlap-render-policy
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
