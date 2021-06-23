@@ -42,7 +42,7 @@ Record the Robot input events
 We will now look at how to record the events.
 
 Record events with ``WatchPointerEventHandler``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is the custom ``EventHandler`` named ``WatchPointerEventHandler``.
 
@@ -179,7 +179,6 @@ The API of our ``WatchPointer`` is straightforward, just ``start()`` and ``stop(
         }
     }
 
-And that's it
 
 The easiest way to record our robots is to run it on the platform simulator.
 The events will be outputted in the MicroEJ SDK console.
@@ -193,7 +192,7 @@ Run a robot
 Play the Robot
 ~~~~~~~~~~~~~~
 
-Playing a robot is easy. We just need to send the recorded events. Here is our Robot class.
+To play the Robot. We just need to send the recorded events. Here is the Robot class.
 
 .. code:: java
 
@@ -336,7 +335,7 @@ Going further
 -------------
 
 Split the Robot into actions and build complex scenario
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As we create more and more complex robots it is a good idea to put the various behaviors into separate functions so that we can create complex scenarios out of simple action blocks.
 
