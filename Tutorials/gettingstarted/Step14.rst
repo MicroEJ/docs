@@ -190,25 +190,28 @@ Using the ExpandableWidget with the Scroll List
 - Also, for viewing purposes, let's set a style for the widget
 
 .. code:: java
+    final int DEFAULT_BACKGROUND = 0xffffff
+    final int DEFAULT_FOREGROUND = 0x262a2c
+    final int DEFAULT_BORDER = 0x97a7af
 
     private static void populateStylesheet(CascadingStylesheet stylesheet) {
     EditableStyle style = stylesheet.getDefaultStyle();
-    style.setColor(DemoColors.DEFAULT_FOREGROUND);
-    style.setBackground(new RectangularBackground(DemoColors.DEFAULT_BACKGROUND));
+    style.setColor(DEFAULT_FOREGROUND);
+    style.setBackground(new RectangularBackground(DEFAULT_BACKGROUND));
 
     style = stylesheet.getSelectorStyle(new TypeSelector(Scrollbar.class));
     style.setBackground(NoBackground.NO_BACKGROUND);
     style.setDimension(new FixedDimension(10, Widget.NO_CONSTRAINT));
-    style.setColor(DemoColors.DEFAULT_FOREGROUND);
+    style.setColor(DEFAULT_FOREGROUND);
 
     style = stylesheet.getSelectorStyle(new TypeSelector(ExpandableWidget.class));
-    style.setBorder(new FlexibleRectangularBorder(DemoColors.DEFAULT_BORDER, 1, 0, 0, 0));
+    style.setBorder(new FlexibleRectangularBorder(DEFAULT_BORDER, 1, 0, 0, 0));
     style.setHorizontalAlignment(Alignment.LEFT);
-    style.setBackground(new RectangularBackground(DemoColors.DEFAULT_BACKGROUND));
+    style.setBackground(new RectangularBackground(DEFAULT_BACKGROUND));
 
     style = stylesheet.getSelectorStyle(
             new AndCombinator(new TypeSelector(ExpandableWidget.class), OddChildSelector.ODD_CHILD_SELECTOR));
-    style.setBackground(new RectangularBackground(DemoColors.ALTERNATE_BACKGROUND));
+    style.setBackground(new RectangularBackground(ALTERNATE_BACKGROUND));
     }
 
 |imageexpanded|
