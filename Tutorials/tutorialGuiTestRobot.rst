@@ -5,8 +5,8 @@ This article presents how to test a GUI application with a software robot for ro
 Robot tests and traditional unit tests are different but both are useful.
 Traditional unit tests validate the systems through calls to the API (internal or external). Robot tests validate the systems by mimiing the human user behavior directly in the GUI.
 The robot implementation proposed here targets the following errors detection:
-    - OutOfMemory
-    - StackOverflow
+    - ``OutOfMemory``
+    - ``StackOverflow``
     - MEJ32 and platform librairies error
     - Widget sequence validation
 
@@ -32,7 +32,7 @@ Overview
 --------
 
 The robot creation process is twofold. First, we have to record and store the human user events. Second, we have to play them back with the robot.
-To record the events we will develop a custom EventHandler and we will inject it into the EventGenerator of Pointer events. The handler will record the events and generate the Java code to play them back.
+To record the events we will develop a custom ``EventHandler`` and we will inject it into the ``EventGenerator`` of ``Pointer`` events. The handler will record the events and generate the Java code to play them back.
 Then, we will inject this code into our main application and run it.
 NB: In the next sections, we show code that is mostly functional. To use it in our project, we have to put it in our MicroEJ SDK/Studio workspace and add the proper imports.
 
@@ -41,10 +41,10 @@ Record the Robot input events
 
 We will now look at how to record the events.
 
-Record events with WatchPointerEventHandler
+Record events with ``WatchPointerEventHandler``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Here is the custom EventHandler named WatchPointerEventHandler.
+Here is the custom ``EventHandler`` named ``WatchPointerEventHandler``.
 
 .. code:: java
 
@@ -100,14 +100,14 @@ Here is the custom EventHandler named WatchPointerEventHandler.
         }
     }
 
-This EventHandler does two things.
+This ``EventHandler`` does two things:
 
     #. It records all pressed, moved, dragged and released events as well as the time between each event (we want to play our robot at the same speed as the human)
-    #. It forwards all events to the initial EventHandler. Without that, our handler would hijack the initial handler and our UI would be unresponsive because it would receive no event.
+    #. It forwards all events to the initial ``EventHandler``. Without that, our handler would hijack the initial handler and our UI would be unresponsive because it would receive no event.
 
-Note that WatchPointerEventHandler outputs the commands on the standard output. More on this a bit later.
+Note that ``WatchPointerEventHandler`` outputs the commands on the standard output. More on this a bit later.
 
-Replace default EventHandler with WatchPointerEventHandler
+Replace default ``EventHandler`` with ``WatchPointerEventHandler``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Next, we setup the handler
@@ -157,14 +157,14 @@ Next, we setup the handler
     }
 
 This code
-    #. saves the default EventHandler of the Pointer to pass it to the WatchPointerEventHandler so that it can forward the events
-    #. we start the recording by replacing the EventHandler 
-    #. and we stop it by restoring the initial EventHandler.
+    #. saves the default ``EventHandler`` of the Pointer to pass it to the ``WatchPointerEventHandler`` so that it can forward the events
+    #. we start the recording by replacing the ``EventHandler``
+    #. and we stop it by restoring the initial ``EventHandler``.
 
 Use WatchPointer in our main application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The API of our WatchPointer is straightforward, just start() and stop() the recording of events. A good place to start the recording is after the initialization of your GUI.
+The API of our ``WatchPointer`` is straightforward, just ``start()`` and ``stop()`` the recording of events. A good place to start the recording is after the initialization of your GUI.
 
 .. code:: java
 
@@ -184,7 +184,7 @@ And that's it
 The easiest way to record our robots is to run it on the platform simulator.
 The events will be outputted in the MicroEJ SDK console.
 
-The robot can also be run on board with the WatchPointer enabled. The events will be outputted on the trace output (typically a UART).
+The robot can also be run on board with the ``WatchPointer`` enabled. The events will be outputted on the trace output (typically a UART).
 
 We will now see how to run our robot with the recorded events
 
@@ -261,12 +261,12 @@ Playing a robot is easy. We just need to send the recorded events. Here is our R
         }
     }
 
-The Robot API implements the commands that were generated in the WatchPointerEventHandler. Through the basic operations press(), move() and release() the click and drag actions are simulated. With the pause() we ensure we do it exactly at the same speed as the human who recorded it.
+The Robot API implements the commands that were generated in the ``WatchPointerEventHandler``. Through the basic operations ``press()``, ``move()`` and ``release()`` the click and drag actions are simulated. With the ``pause()`` we ensure we do it exactly at the same speed as the human who recorded it.
 
 Use Robot in our main application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Copy the commands into a function and call it from the main application at the same place where WatchPointer was called.
+Copy the commands into a function and call it from the main application at the same place where ``WatchPointer`` was called.
 Here is an example of a simple Robot.
 
 .. code:: java
@@ -329,7 +329,7 @@ And now we plug it into our main application.
     }
 
 This new application can run on both the simulator and on the board.
-And that’s it! We now have the basics to create and to play software robots to test our applications.
+At this point, we have the basics to create and to play software robots to test our applications.
 Note that because we act at the UI level, whenever our application’s appearance changes, in particular if UI elements are moved around, we will need to update a new version of our robots to match the new UI.
 
 Going further
@@ -488,14 +488,14 @@ Validate the Widget
 
 So far our Robot is pretty simple and can catch all raised exceptions and runtime errors.
 
-Depending on your application architecture, you most likely have some kind of central class that manages which is the main Widget currently displayed. For example you may use a TransitionContainer. What we need, is a way to retrieve the Widget currently displayed.
+Depending on your application architecture, you most likely have some kind of central class that manages which is the main Widget currently displayed. For example you may use a ``TransitionContainer``. What we need, is a way to retrieve the Widget currently displayed.
 
 The idea is:
 
     #. to record the Widget displayed before recording an action in our WatchPointerEventHandler and
     #. to check that the Widget is displayed before playing an action in our Robot.
 
-Let’s assume that we have a Main.getCurrentWidget() method that returns the current Widget. We update WatchPointerEventHandler like this:
+Let’s assume that we have a ``Main.getCurrentWidget()`` method that returns the current Widget. We update WatchPointerEventHandler like this:
 
 .. code:: java
 
@@ -553,7 +553,7 @@ Let’s assume that we have a Main.getCurrentWidget() method that returns the cu
         }
     }
 
-Conversely, we update Robot to add the checkWidget() method.
+Conversely, we update Robot to add the ``checkWidget()`` method.
 
 .. code:: java
 
@@ -578,12 +578,12 @@ Conversely, we update Robot to add the checkWidget() method.
         }
     }
 
-When we record new robots, we will record the current Widget before a press action is executed. And when we play the robots, we will ensure that the same Widget is displayed before sending the press event. If the Widget is not the one recorded, checkWidget will raise an exception, otherwise, we proceed as before.
+When we record new robots, we will record the current Widget before a press action is executed. And when we play the robots, we will ensure that the same Widget is displayed before sending the press event. If the Widget is not the one recorded, ``checkWidget`` will raise an exception, otherwise, we proceed as before.
 
 JUnit
 ~~~~~
 
-It is possible to integrate the robot into a JUnit test suite if we use assertEquals instead of raising an Exception.
+It is possible to integrate the robot into a JUnit test suite if we use ``assertEquals`` instead of raising an Exception.
 
 .. note::
     check https://github.com/MicroEJ/Example-Sandboxed-JUnit 3 for more information on the JUnit use.
@@ -597,5 +597,5 @@ We can use whatever we want to have a rock solid application!
 Performance Regression Framework
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The checkWidget() method can also be used as a performance regression framework. If a Widget display time becomes much slower because of a regression, assuming the robot was recorded by a “not too slow” human, our robot will fail with an Exception.
+The ``checkWidget()`` method can also be used as a performance regression framework. If a Widget display time becomes much slower because of a regression, assuming the robot was recorded by a “not too slow” human, our robot will fail with an Exception.
 We can even lower manually (or automatically) the timings to make sure our UI is responsive.
