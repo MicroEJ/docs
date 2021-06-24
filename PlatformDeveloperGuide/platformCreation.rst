@@ -477,7 +477,7 @@ The following table describes the Application options, which can be set as regul
    * - ``deploy.dir.microejinc``
      - Absolute path to the directory where to deploy the MicroEJ Platform header files (``*.h``) to this absolute directory. An empty value means no deployment.
    * - ``deploy.dir.microejscript``
-     - Absolute path to the directory thta contains the BSP build script file (``build.bat`` or ``build.sh``). An empty value means no build script execution.
+     - Absolute path to the directory that contains the BSP build script file (``build.bat`` or ``build.sh``). An empty value means no build script execution.
 
 
 .. note::
