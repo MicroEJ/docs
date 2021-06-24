@@ -20,12 +20,12 @@ MicroEJ Architecture Import
 The first step is to choose and import a :ref:`MicroEJ Architecture <architecture_overview>`. 
 
 MicroEJ Corp. provides MicroEJ Evaluation Architectures for most common microcontroller instructions sets and compilers
-at https://repository.microej.com/modules/ [#note_production]_. 
+at https://repository.microej.com/modules/com/microej/architecture/ [#note_production]_. 
 
 Once you downloaded a MicroEJ Architecture file, proceed with the following steps to import it in MicroEJ SDK:
 
 - Select :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`.
-- Browse an ``.xpf`` file or a folder that contains one or more an ``.xpf`` files.
+- Browse an ``.xpf`` file or a folder that contains one or more ``.xpf`` files.
 - Check the :guilabel:`I agree and accept the above terms and conditions...` box to accept the license.
 - Click on :guilabel:`Finish` button.
 
@@ -52,7 +52,7 @@ Once you downloaded a MicroEJ Pack file, proceed with the
 following steps to import it in MicroEJ SDK:
 
 - Select :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`.
-- Browse an ``.xpfp`` file or a folder that contains one or more an ``.xpfp`` files.
+- Browse an ``.xpfp`` file or a folder that contains one or more ``.xpfp`` files.
 - Check the :guilabel:`I agree and accept the above terms and conditions...` box to accept the license.
 - Click on :guilabel:`Finish` button.
 
@@ -216,23 +216,22 @@ in the workspace available for the MicroEJ Application project to run on. You ca
 
    MicroEJ Platform Project
  
-This step is only required the first time the Platform is built, or if the Platform properties haved changed. 
-When the same Platform is rebuilt, right-click on the Platform project and select :guilabel:`Refresh` to get the new content.
+This step is only required the first time the Platform is built, or if the Platform properties have changed (i.e, name, version). 
+When the same Platform is rebuilt again, right-click on the Platform project and select :guilabel:`Refresh` to get the new content.
 
 .. _platform_configuration_modules:
 
 Platform Groups / Modules Selection
 ===================================
 
-From the Platform Editor, select the Content tab to access the
+From the Platform Editor, select the :guilabel:`Content`tab to access the
 Platform modules selection.  Platform modules can be
-selected/deselected from the Modules frame.
+selected/deselected from the :guilabel:`Modules` frame.
 
 Platform modules are provided by MicroEJ Architecture Specific Packs
 and Legacy MicroEJ Generic Packs.  Platform modules are organized into groups.
 When a group is selected, by default, all its modules are selected.
-To view the modules making up a group, click on the Show/Hide modules
-icon on the top-right of the frame.  This will let you select/deselect
+To view all the modules making up a group, click on the Expand All icon on the top-right of the frame. This will let you select/deselect
 on a per module basis.  Note that individual module selection is not
 recommended and that it is only available when the module have been
 imported.
@@ -297,7 +296,7 @@ Here is a template for a ``configuration.xml`` Ant file:
    
    </project>
 
-Configuration project (the project which contains the
+The Configuration project (the project that contains the
 ``[name].platform`` file) can contain an optional ``dropins`` folder.
 The contents of this folder will be copied integrally into the final
 Platform. This feature allows to add some additional libraries, tools
@@ -395,7 +394,7 @@ The 3 most common integration cases are:
   This case is recommended when:
   
   - the MicroEJ Platform is used to build one MicroEJ Application on top of one BSP. 
-  - the Application and BSP are slightly coupled, thus making a change in the BSP just require to build the firmware again.
+  - the Application and BSP are slightly coupled, thus making a change in the BSP just requires to build the firmware again.
 
 - Case 3: Full BSP connection
   
@@ -426,7 +425,7 @@ Options
 
 BSP connection options can be specified as Platform options or as Application options or a mix of both.
 
-The following table describes Platform options, configured in ``bsp/bsp.properties`` file of the Platform configuration project.
+The following table describes the Platform options, which can be set in the ``bsp/bsp.properties`` file of the Platform configuration project.
 
 .. list-table:: MicroEJ Platform Options for BSP Connection
    :widths: 1 5 3 
@@ -453,7 +452,7 @@ The following table describes Platform options, configured in ``bsp/bsp.properti
 
 .. _bsp_connection_application_options:
 
-The following table describes Application options, configured as regular :ref:`MicroEJ Application Options <application_options>`.
+The following table describes the Application options, which can be set as regular :ref:`MicroEJ Application Options <application_options>`.
 
 .. list-table:: MicroEJ Application Options for BSP Connection
    :widths: 1 5
@@ -468,24 +467,24 @@ The following table describes Application options, configured as regular :ref:`M
    * - ``deploy.bsp.microejinc``
      - Deploy the MicroEJ Platform header files (``*.h``) to the location defined by the Platform (defaults to ``true`` when Platform option ``microejinc.relative.dir`` is set). 
    * - ``deploy.bsp.microejscript``
-     - Execute the BSP build script file (``build.bat`` or ``build.sh``) present at the location defined by the Platform. (defaults to ``false`` and requires ``microejscript.relative.dir`` Platform option to be set). 
+     - Execute the BSP build script file (``build.bat`` or ``build.sh``) at the location specified by the Platform. (defaults to ``false`` and requires ``microejscript.relative.dir`` Platform option to be set). 
    * - ``deploy.bsp.root.dir``
-     - The 3rd-party BSP project absolute directory. This option is required if at least one the 4 options described above is set to ``true`` and the Platform does not includes the BSP.
+     - The 3rd-party BSP project absolute directory. This option is required if at least one the 4 options described above is set to ``true`` and the Platform does not include the BSP.
    * - ``deploy.dir.microejapp``
-     - Deploy the MicroEJ Application file (``microejapp.o``) to this absolute directory. An empty value means no deployment.
+     - Absolute path to the directory where to deploy the MicroEJ Application file (``microejapp.o``). An empty value means no deployment.
    * - ``deploy.dir.microejlib``
-     - Deploy the MicroEJ Platform runtime file (``microejruntime.a``) to this absolute directory. An empty value means no deployment.
+     - Absolute path to the directory where to deploy the MicroEJ Platform runtime file (``microejruntime.a``) to this absolute directory. An empty value means no deployment.
    * - ``deploy.dir.microejinc``
-     - Deploy the MicroEJ Platform header files (``*.h``) to this absolute directory. An empty value means no deployment.
+     - Absolute path to the directory where to deploy the MicroEJ Platform header files (``*.h``) to this absolute directory. An empty value means no deployment.
    * - ``deploy.dir.microejscript``
-     - Execute the BSP build script file (``build.bat`` or ``build.sh``) present in this absolute directory. An empty value means no deployment.
+     - Absolute path to the directory thta contains the BSP build script file (``build.bat`` or ``build.sh``). An empty value means no build script execution.
 
 
 .. note::
 
-   It is also possible to configure the BSP root directory using the :ref:`build option <mmm_build_options>` ``toolchain.dir``, 
+   It is also possible to configure the BSP root directory by setting the :ref:`build option <mmm_build_options>` ``toolchain.dir``, 
    instead of the application option ``deploy.bsp.root.dir``.
-   This allow to configure a MicroEJ Firmware by specifying both the Platform (using the ``target.platform.dir`` option) and the BSP 
+   This allows to configure a MicroEJ Firmware by specifying both the Platform (using the ``target.platform.dir`` option) and the BSP 
    at build level, without having to modify the application options files.
 
 For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a summary of the options to set: 
@@ -553,17 +552,17 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
 Build Script File
 -----------------
 
-The BSP build script file is responsible to invoke the third-party C toolchain (compiler and linker)
+The BSP build script file is used to invoke the third-party C toolchain (compiler and linker)
 to produce the final executable file (``application.out``).
 
-The build script must implement the following specification:
+The build script must comply with the following specification:
 
 - On Windows operating system, it is a Windows batch file named ``build.bat``.
 - On Mac OS X or Linux operating systems, it is a shell script named ``build.sh``, with execution permission enabled.
 - On error, the script must end with a non zero exit code.
 - On success
 
-  - The executable must be copied to the file ``application.out`` in the directory from
+  - The executable must be copied to a file named ``application.out`` in the directory from
     where the script has been executed.
   - The script must end with zero exit code.
 
@@ -588,15 +587,15 @@ Run Script File
 
 This script is required only for Platforms intended to run a :ref:`MicroEJ Testsuite <platform_testsuite>` on device.
 
-The BSP run script is responsible to invoke a third-party tool to upload and start the executable file on device.
+The BSP run script is used to invoke a third-party tool to upload and start the executable file on device.
 
-The run script must implement the following specification:
+The run script must comply with the following specification:
 
 - On Windows operating system, it is a Windows batch file named ``run.bat``.
 - On Mac OS X or Linux operating systems, it is a shell script named ``run.sh``, with execution permission enabled.
 - The executable file is passed as first script parameter if there is one, otherwise it is the ``application.out`` file located in the directory from where the script has been executed.
 - On error, the script must end with a non zero exit code.
-- On success
+- On success:
 
   - The executable file (``application.out``) has been uploaded and started on the device
   - The script must end with zero exit code.
