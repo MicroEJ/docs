@@ -34,7 +34,7 @@ Overview
 The robot creation process is twofold. First, we have to record and store the human user events. Second, we have to play them back with the robot.
 To record the events we will develop a custom ``EventHandler`` and we will inject it into the ``EventGenerator`` of ``Pointer`` events. The handler will record the events and generate the Java code to play them back.
 Then, we will inject this code into our main application and run it.
-NB: In the next sections, we show code that is mostly functional. To use it in our project, we have to put it in our MicroEJ SDK/Studio workspace and add the proper imports.
+.. note:: In the next sections, we show code that is mostly functional. To use it in our project, we have to put it in our MicroEJ SDK/Studio workspace and add the proper imports.
 
 Record the Robot input events
 -----------------------------
@@ -260,12 +260,12 @@ To play the Robot. We just need to send the recorded events. Here is the Robot c
         }
     }
 
-The Robot API implements the commands that were generated in the ``WatchPointerEventHandler``. Through the basic operations ``press()``, ``move()`` and ``release()`` the click and drag actions are simulated. With the ``pause()`` we ensure we do it exactly at the same speed as the human who recorded it.
+The Robot API implements the commands that were generated in the ``WatchPointerEventHandler``. The click and drag user actions are simulated through the basic operations ``press()``, ``move()`` and ``release()``. With the ``pause()`` we ensure we do it exactly at the same speed as the human who recorded it.
 
 Use Robot in our main application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Copy the commands into a function and call it from the main application at the same place where ``WatchPointer`` was called.
+To use the events recorded with the robot, copy the commands into a function and call it from the main application at the same place where ``WatchPointer`` was called.
 Here is an example of a simple Robot.
 
 .. code:: java
@@ -585,7 +585,7 @@ JUnit
 It is possible to integrate the robot into a JUnit test suite if we use ``assertEquals`` instead of raising an Exception.
 
 .. note::
-    check https://github.com/MicroEJ/Example-Sandboxed-JUnit 3 for more information on the JUnit use.
+    check https://github.com/MicroEJ/Example-Sandboxed-JUnit for more information on the JUnit use.
 
 Add more checks
 ~~~~~~~~~~~~~~~
