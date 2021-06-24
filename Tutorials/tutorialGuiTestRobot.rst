@@ -3,7 +3,7 @@ How to test a GUI application with a (software) robot
 
 This article presents how to test a GUI application with a software robot for robotic process automation (RPA).
 Robot tests and traditional unit tests are different but both are useful.
-Traditional unit tests validate the systems through calls to the API (internal or external). Robot tests validate the systems by mimiing the human user behavior directly in the GUI.
+Traditional unit tests validate the systems through calls to the API (internal or external). Robot tests validate the systems by miming the human user behavior directly in the GUI.
 The robot implementation proposed here targets the following errors detection:
     - ``OutOfMemory``
     - ``StackOverflow``
