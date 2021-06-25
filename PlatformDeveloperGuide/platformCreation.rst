@@ -272,7 +272,7 @@ Modifying one of these files requires to :ref:`build the Platform <platform_buil
 Platform Customization
 ======================
 
-Configuration project (the project which contains the
+The configuration project (the project which contains the
 :guilabel:`.platform` file) can contain an optional :guilabel:`dropins` folder.
 The contents of this folder will be copied integrally into the final
 Platform. This feature allows to add some additional libraries, tools
