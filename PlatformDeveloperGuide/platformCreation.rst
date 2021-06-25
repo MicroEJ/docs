@@ -122,26 +122,22 @@ Pack Import
 
 :ref:`MicroEJ Pack <pack_overview>` provides additional features on top of the MicroEJ Architecture such as Graphical User Interface or Networking.
 
-To declare the MicroEJ Pack dependency:
-
-- Edit the :ref:`mmm_module_description` ``module.ivy`` :
+To declare the MicroEJ Pack dependency, edit the :ref:`mmm_module_description` ``module.ivy`` as follows:
   
-  .. code-block:: xml
-    :emphasize-lines: 3,6,9
+.. code-block:: xml
+  :emphasize-lines: 3,6,9
 
-     <dependencies>
-        <!-- MicroEJ Architecture Specific Pack and Legacy MicroEJ Generic Pack  -->
-        <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]-[NAME]-pack" rev="[VERSION]"/>
+    <dependencies>
+      <!-- MicroEJ Architecture Specific Pack and Legacy MicroEJ Generic Pack  -->
+      <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]-[NAME]-pack" rev="[VERSION]"/>
 
-        <!-- MicroEJ Generic Pack  -->
-        <dependency org="com.microej.pack.[NAME]" name="[NAME]-pack" rev="[VERSION]"/>
+      <!-- MicroEJ Generic Pack  -->
+      <dependency org="com.microej.pack.[NAME]" name="[NAME]-pack" rev="[VERSION]"/>
 
-        <!-- Legacy MicroEJ Generic Pack -->
-        <dependency org="com.microej.pack" name="[NAME]" rev="[VERSION]"/>
+      <!-- Legacy MicroEJ Generic Pack -->
+      <dependency org="com.microej.pack" name="[NAME]" rev="[VERSION]"/>
 
-     </dependencies>
-
-- :ref:`Build the Platform <platform_build>` again.
+    </dependencies>
 
 For example, to declare the MicroEJ Architecture Specific Pack UI
 version ``13.0.4`` for MicroEJ Architecture ``flopi4G25`` on Arm®
@@ -177,6 +173,8 @@ And to declare the Legacy MicroEJ Generic Pack Net version ``9.2.3``:
        <dependency org="com.microej.pack" name="net" rev="9.2.3"/>
 
    </dependencies>
+
+Once the Pack dependencies are added, :ref:`build the Platform <platform_build>` again.
 
 .. _platform_module_configuration:
 
