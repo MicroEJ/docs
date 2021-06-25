@@ -238,7 +238,7 @@ It may contain:
    by the module name. Some properties might be needed for the
    configuration of some modules. Please refer to the modules
    documentation for more information.
--  A :guilabel:`bsp.xml` file which provide additional information about the BSP
+-  A :guilabel:`bsp.xml` file which provides additional information about the BSP
    implementation of Low Level APIs.
 
    This file must start with the node ``<bsp>``. It can contain several 
