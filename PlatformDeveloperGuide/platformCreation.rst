@@ -205,7 +205,7 @@ Then import them in MicroEJ SDK as follows:
 - Check the :guilabel:`I agree and accept the above terms and conditions...` box to accept the license,
 - Click on :guilabel:`Finish` button. This may take some time.
 
-Once imported, double-click on the :guilabel:`[name].platform` file to open the Platform Editor.
+Once imported, double-click on the :guilabel:`default.platform` file to open the Platform Editor.
 
 From the Platform Editor, select the :guilabel:`Content` tab to access the
 modules selection.  Platform modules can be selected/deselected from the :guilabel:`Modules` frame.
@@ -230,8 +230,8 @@ All the selected Platform modules will be installed in the Platform.
    MicroEJ Platform Configuration Modules Selection
 
 Each selected Platform module can be customized by creating a :guilabel:`[module]`
-folder named after the module beside the :guilabel:`[name].platform`
-definition. It may contain:
+folder named after the module beside the :guilabel:`.platform` file definition. 
+It may contain:
 
 -  A :guilabel:`[module].properties` file named after the module name.
    These properties will be injected in the execution context prefixed
@@ -273,14 +273,14 @@ Platform Customization
 ======================
 
 Configuration project (the project which contains the
-``[name].platform`` file) can contain an optional ``dropins`` folder.
+:guilabel:`.platform` file) can contain an optional :guilabel:`dropins` folder.
 The contents of this folder will be copied integrally into the final
 Platform. This feature allows to add some additional libraries, tools
 etc. into the Platform.
 
 The dropins folder organization should respect the final Platform files
 and folders organization. For instance, the tools are located in the
-sub-folder ``tools``. Launch a Platform build without the dropins folder
+sub-folder :guilabel:`tools`. Launch a Platform build without the dropins folder
 to see how the Platform files and folders organization is. Then fill the
 dropins folder with additional features and build again the Platform to
 obtain an advanced Platform.
@@ -290,7 +290,7 @@ path and name as another file already installed into the Platform, the
 dropins folder file will be kept.
 
 Platform build can also be customized by updating the :guilabel:`configuration.xml` file
-beside the :guilabel:`[name].platform` file. This Ant script can extend one or
+beside the :guilabel:`.platform` file. This Ant script can extend one or
 several of the extension points available. By default, you should not have to change 
 the default configuration script.
 
