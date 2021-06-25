@@ -201,7 +201,7 @@ Before opening the Platform Editor, the Platform must have been built once to le
 Then import them in MicroEJ SDK as follows:
 
 - Select :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`,
-- Browse :guilabel:`myplatform-configuration\target~\dependencies` folder (contains ``.xpf`` and ``.xpfp`` files once the Platform is built),
+- Browse :guilabel:`myplatform-configuration/target~/dependencies` folder (contains ``.xpf`` and ``.xpfp`` files once the Platform is built),
 - Check the :guilabel:`I agree and accept the above terms and conditions...` box to accept the license,
 - Click on :guilabel:`Finish` button. This may take some time.
 
