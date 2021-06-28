@@ -126,4 +126,159 @@ To change the theme, a menu item will be created, and added, At `com.microej.dem
 	
 this is how it should look like
 
-.. image:: images/microejtuto.gif
+.. image:: images/microejtutotheme.gif
+
+Improving theming
+-------------------------------------
+
+Now, some changes are going to be made 
+
+Extract the onClick() code to a method in navigation
+
+.. code-block:: java
+
+    	public static void applyTheme(Page caller) {
+		switch (SELECTED_THEME) {
+		case DARK_THEME:
+			SELECTED_THEME = LIGHT_THEME;
+			Theme lightThemeInstance = Theme.getLightThemeInstance();
+			assert lightThemeInstance != null;
+			DemoColors.applyTheme(lightThemeInstance);
+			break;
+		case LIGHT_THEME:
+			SELECTED_THEME = DARK_THEME;
+			Theme darkThemeInstance = Theme.getDarkThemeInstance();
+			assert darkThemeInstance != null;
+			DemoColors.applyTheme(darkThemeInstance);
+			break;
+		}
+
+	}
+
+The mainpage MenuItem OnClickListener should look like this
+
+.. code-block:: java
+
+    changetheme.setOnClickListener(new OnClickListener() {
+
+    @Override
+    public void onClick() {
+        Navigation.applyTheme(callee);
+    }
+
+    });
+
+add two more fields on DemoColors
+
+.. code-block:: java
+
+    public static int EVEN = 0;
+
+    public static int ODD = 0;
+
+also adding both fields to the theme code
+
+The colors added to the DarkTheme Constructor
+
+.. code-block:: java
+
+    this.EVEN = Colors.WHITE;
+    this.ODD = 0xe5e9eb;
+
+The colors added to the LightTheme Constructor
+
+
+.. code-block:: java
+
+    this.ODD = Colors.WHITE;
+    this.EVEN = Colors.WHITE;
+
+to make the changes more visible, let's add this to the ScrollableList at MainPage
+
+.. code-block:: java
+
+    public void populateStylesheet(CascadingStylesheet stylesheet) {
+    EditableStyle style = stylesheet.getSelectorStyle(new TypeSelector(Scrollbar.class));
+    style.setDimension(new FixedDimension(2, Widget.NO_CONSTRAINT));
+    style.setPadding(new UniformOutline(1));
+    style.setColor(GRAY);
+    style.setBackground(new RectangularBackground(DemoColors.EMPTY_SPACE));
+
+    style = stylesheet.getSelectorStyle(new ClassSelector(LIST_ITEM));
+    style.setColor(DemoColors.ALTERNATE_BACKGROUND);
+    style.setPadding(
+            new FlexibleOutline(LIST_ITEM_PADDING_TOP, 0, LIST_ITEM_PADDING_BOTTOM, LIST_ITEM_PADDING_LEFT));
+    style.setHorizontalAlignment(Alignment.LEFT);
+    style.setBackground(new GoToBackground(DemoColors.EVEN));
+
+    style = stylesheet.getSelectorStyle(new TypeSelector(Scroll.class));
+    style.setBackground(new RectangularBackground(Colors.WHITE));
+
+    style = stylesheet
+            .getSelectorStyle(new AndCombinator(new ClassSelector(LIST_ITEM), OddChildSelector.ODD_CHILD_SELECTOR));
+    style.setBackground(new GoToBackground(DemoColors.ODD));
+    }
+
+add the option to changed the theme
+
+.. code-block:: java
+		
+        Toggle toggle3 = new Toggle("Dark theme") { //$NON-NLS-1$
+			@Override
+			public boolean handleEvent(int event) {
+
+				int type = Event.getType(event);
+				if (type == Pointer.EVENT_TYPE) {
+					int action = Buttons.getAction(event);
+					if (action == Buttons.RELEASED) {
+						Navigation.applyTheme(callee);
+					}
+				}
+				return super.handleEvent(event);
+			}
+		};
+
+
+Also, a checking is needed when the theme is changed from the Item on the List, or from the toggle button, the applyTheme method should look like this
+
+.. code-block:: java
+
+    public static void applyTheme(Page caller) {
+    switch (SELECTED_THEME) {
+    case DARK_THEME:
+        SELECTED_THEME = LIGHT_THEME;
+        Theme lightThemeInstance = Theme.getLightThemeInstance();
+        assert lightThemeInstance != null;
+        DemoColors.applyTheme(lightThemeInstance);
+        break;
+    case LIGHT_THEME:
+        SELECTED_THEME = DARK_THEME;
+        Theme darkThemeInstance = Theme.getDarkThemeInstance();
+        assert darkThemeInstance != null;
+        DemoColors.applyTheme(darkThemeInstance);
+        break;
+    }
+    final Desktop mainDesktop2 = mainDesktop;
+    if (caller instanceof MainPage) {
+
+        assert mainDesktop2 != null;
+        mainDesktop2.setStylesheet(createStylesheet(caller));
+        mainDesktop2.requestLayOut();
+        Display.getDisplay().requestShow(mainDesktop2);
+
+    } else {
+        assert mainDesktop2 != null;
+        mainDesktop2.setStylesheet(createStylesheet(new MainPage()));
+        Display.getDisplay().getDisplayable();
+        updateTitleBar(false);
+        Desktop desktop = createDesktop(caller);
+        desktop.setStylesheet(createStylesheet(caller));
+        desktop.requestLayOut();
+        Display.getDisplay().requestShow(desktop);
+    }
+
+}
+
+the final result should look like this
+
+.. image:: images/microejtutotheme_2.gif
