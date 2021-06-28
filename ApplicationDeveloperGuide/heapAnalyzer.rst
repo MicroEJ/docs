@@ -7,12 +7,12 @@ Introduction
 ------------
 
 Heap Dumper is a tool that takes a snapshot of the heap. Generated files
-(with the ``.heap`` extension) are available on the application output
+(with the ``.heap`` extension) are available in the application output
 folder. Note that it works only on simulations. It is a built-in platform tool and has no dependencies.
 
 The Heap Analyzer is a set of tools to help developers understand the
 contents of the Java heap and find problems such as memory leaks.
-For its part, the Heap Analyzer plug-in is able to open dump files. It
+For its part, the Heap Analyzer plugin is able to open dump files. It
 helps you analyze their contents thanks to the following features:
 
 -  memory leaks detection
@@ -36,7 +36,7 @@ Heap Dump
 A heap dump is an XML file that provides a snapshot of the heap contents
 at the moment the file is created. It contains a list of all the
 instances of both class and array types that exist in the heap. For each
-instance it records:
+instance, it records:
 
 -  The time at which the instance was created
 
@@ -56,7 +56,7 @@ For instances of array types, it also records:
 
 -  The contents of the array
 
-For each referenced class type it records the values in the static
+For each referenced class type, it records the values in the static
 fields of the class.
 
 Heap Analyzer Tools
@@ -89,13 +89,13 @@ Heap Dumper
 -----------
 
 When the Heap Dumper option is activated, the garbage collector process
-ends by performing a dump file that represent a snapshot of the heap at
+ends by performing a dump file that represents a snapshot of the heap at
 this moment. Thus, to generate such dump files, you must explicitly call
 the System.gc() method in your code, or wait long enough for garbage
 collector activation.
 
 The heap dump file contains the list of all instances of both class and
-array types that exist in the heap. For each instance it records:
+array types that exist in the heap. For each instance, it records:
 
 -  the time at which the instance was created
 
@@ -231,6 +231,9 @@ Outline view to showing all types and instances  [2]_.
 
 The button Generate graphViz file in the top-right corner of the Heap
 Usage page generates a file compatible with graphviz (www.graphviz.org).
+
+The section :ref:`heap_usage_monitoring` shows how to compute the maximum
+heap usage.
 
 .. [2]
    The Outline can also be restored by selecting the All types and
