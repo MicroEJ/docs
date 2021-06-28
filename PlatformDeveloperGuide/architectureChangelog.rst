@@ -93,7 +93,7 @@ Integration
 -  Updated Architecture End User License Agreement to version ``SDK 3.0-C``
 -  Updated copyright notice of Low Level APIs header files to latest MicroEJ SDK default license
 -  Updated Architecture module with required files and configurations for correct publication in a module repository (``README.md``,
-   ``LICENSE.txt`` and ``CHANGELOG.md``)
+   ``LICENSE.txt``, and ``CHANGELOG.md``)
 
 Simulator
 ~~~~~~~~~
