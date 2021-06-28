@@ -73,7 +73,7 @@ Foundation Libraries
    -  Fixed potential race condition between
       ``Kernel.addResourceControlListener()`` and
       ``Kernel.removeResourceControlListener()``. Adding a new listener
-      may not be registered if another one is removed at the same time.
+      may not register it if another one is removed at the same time.
 
 Integration
 ~~~~~~~~~~~
