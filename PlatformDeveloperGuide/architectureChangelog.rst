@@ -139,7 +139,7 @@ Tools
 -  Updated Code Coverage Analyzer report generation:
 
    -  Automatically configure ``src/main/java`` source directory
-      beside a ``/bin`` directory is available
+      beside a ``/bin`` directory if available
    -  Added an option (``cc.src.folders``) to specify the source directory
       (require MicroEJ SDK ``5.4.1`` or higher)
    -  Removed the analysis of generated code for ``synchronized``
