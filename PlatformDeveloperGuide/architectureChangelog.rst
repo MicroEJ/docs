@@ -128,7 +128,7 @@ SOAR
 -  [Multi] Fixed potential link exception when a Feature use one of the
    ``ej_bon_ByteArray`` methods
    (e.g. ``ej.kf.InvalidFormatException: code=51:ON_ej_bon_ByteArray_method_readUnsignedByte_AB_I_I``)
--  [Multi] Fixed SOAR error (``Invalid SNI method``) when one of
+-  [Multi] Fixed SOAR error (``Invalid SNI method``) when one of the
    ``ej.bon.Constants.getXXX()`` methods is declared in a ``kernel.api``
    file. This issue was preventing from using BON Constants in Feature
    code.
