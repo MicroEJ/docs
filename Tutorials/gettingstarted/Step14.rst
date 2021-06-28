@@ -190,6 +190,7 @@ Using the ExpandableWidget with the Scroll List
 - Also, for viewing purposes, let's set a style for the widget
 
 .. code:: java
+    
     final int DEFAULT_BACKGROUND = 0xffffff
     final int DEFAULT_FOREGROUND = 0x262a2c
     final int DEFAULT_BORDER = 0x97a7af
