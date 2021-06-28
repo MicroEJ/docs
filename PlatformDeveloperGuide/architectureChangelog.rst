@@ -111,7 +111,7 @@ Simulator
 SOAR
 ~~~~
 
--  Fixed ``if`` statement with BON constant compilation issues:
+-  Fixed the following compilation issues in ``if`` statement with BON constant:
 
    -  too many code may be removed when the block contains a ``while``
       loop
