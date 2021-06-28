@@ -11,14 +11,14 @@ Pointer events are grouped in sessions. A session starts when the pointer is pre
 
 While no renderable consumes the events, they are sent to the renderable that is under the pointer, then sent to all its parent hierarchy. Once a renderable has consumed an event, every other event in the session is sent to it.
 
-The renderable under the pointer is requested using Desktop.getWidgetAt(). By default every widget is considered as a rectangular area. This area can be modified by subclassing Widget.contains().
+The renderable under the pointer is requested using getDesktop().getWidgetAt(). By default every widget is considered as a rectangular area. This area can be modified by subclassing Widget.contains().
 
 |image0|
 
 Other Events
 ------------
 
-For other events, the events are sent to the focus owner of the active Displayable, then sent to all its parent hierarchy while the event is not consumed.
+For other events, the events are sent to the focus owner of the active Displayable.
 
 |image1|
 
