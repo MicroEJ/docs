@@ -125,7 +125,7 @@ SOAR
    ``then`` block: the ``else`` block may be executed instead of jumping
    over
 -  Removed names of arrays of basetype unless ``soar.generate.classnames`` option is set to ``true``
--  [Multi] Fixed potential link exception when a Feature use one of
+-  [Multi] Fixed potential link exception when a Feature use one of the
    ``ej_bon_ByteArray`` methods
    (e.g. ``ej.kf.InvalidFormatException: code=51:ON_ej_bon_ByteArray_method_readUnsignedByte_AB_I_I``)
 -  [Multi] Fixed SOAR error (``Invalid SNI method``) when one of
