@@ -101,8 +101,8 @@ Simulator
 -  Added an option (``com.microej.simulator.hil.frame.size``) to
    configure the HIL engine max frame size
 -  Fixed load of an immutable byte field (sign extension)
--  Fixed String creation with characters in range ``[0x80,0xFF]`` using
-   default ``ISO-8859-1`` encoding.
+-  Fixed ``java.lang.String`` constructors ``String(byte[] bytes, ...)`` when passing
+   characters in the range ``[0x80,0xFF]`` using default ``ISO-8859-1`` encoding
 -  Fixed potential crash in debug mode when a breakpoint is set on a
    field access (introduced in version ``7.13.0``)
 -  Fixed wrong garbage collection of an object only referenced by an
