@@ -115,7 +115,7 @@ SOAR
 
    -  too many code may be removed when the block contains a ``while``
       loop
-   -  potential ``Stacks merging coherence error`` may be thrown the
+   -  potential ``Stacks merging coherence error`` may be thrown when the
       block contains a nested ``try-catch`` statement
    -  potential ``Stacks merging coherence error`` when declaring a
       ternary expression with ``Constants.getBoolean()`` in condition
