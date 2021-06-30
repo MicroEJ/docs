@@ -97,7 +97,7 @@ To declare a MicroEJ Pack dependency, edit the :ref:`mmm_module_description` ``m
   :emphasize-lines: 3,6,9
 
     <dependencies>
-      <!-- MicroEJ Architecture Specific Pack and Legacy MicroEJ Generic Pack  -->
+      <!-- MicroEJ Architecture Specific Pack -->
       <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]-[NAME]-pack" rev="[VERSION]"/>
 
       <!-- MicroEJ Generic Pack  -->
