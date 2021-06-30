@@ -53,7 +53,7 @@ Platform Build
 MicroEJ Platforms are usually shared with only the Platform configuration files. 
 Once the projects are imported, follow the platform-specific documentation to build the Platform.
 
-Once imported or built, a Platform project should be available as following:
+Once imported or built, a Platform project should be available as follows:
 
 .. figure:: images/platform_project.png
    :alt: MicroEJ Platform Project

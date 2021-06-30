@@ -1,7 +1,7 @@
 .. _core-tiny:
 
 ================
-Tiny application
+Tiny Application
 ================
 
 

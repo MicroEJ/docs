@@ -364,7 +364,7 @@ active area.
 Installation
 ============
 
-In the :ref:`platform configuration <platform_configuration_modules>` file, check :guilabel:`Front Panel` to
+In the :ref:`platform configuration <platform_module_configuration>` file, check :guilabel:`Front Panel` to
 install the Front Panel module. When checked, the properties file
 ``frontpanel/frontpanel.properties`` is required during platform creation to
 configure the module. This configuration step is used to identify and
