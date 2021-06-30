@@ -85,7 +85,7 @@ Request your Activation Key
 - Set :guilabel:`Product P/N:` to ``9PEVNLDBU6IJ``.
 - Set :guilabel:`UID:` to the machine UID you copied before.
 - Click on :guilabel:`Activate`.
-- The license is being activated. You should receive your activation by email in less than 5 minutes. If not, please contact contact :ref:`our support team <get_support>`.
+- The license is being activated. You should receive your activation by email in less than 5 minutes. If not, please contact :ref:`our support team <get_support>`.
 - Once received by email, save the attached zip file that contains your activation key.
 
 Install the License Key
