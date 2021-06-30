@@ -126,7 +126,11 @@ Pack Import
 
 :ref:`MicroEJ Pack <pack_overview>` provides additional features on top of the MicroEJ Architecture such as Graphical User Interface or Networking.
 
-To declare the MicroEJ Pack dependency, edit the :ref:`mmm_module_description` ``module.ivy`` as follows:
+.. note::
+  
+   MicroEJ Packs are optional. You can skip this section if you intend to integrate MicroEJ runtime only with custom libraries.
+
+To declare a MicroEJ Pack dependency, edit the :ref:`mmm_module_description` ``module.ivy`` as follows:
   
 .. code-block:: xml
   :emphasize-lines: 3,6,9
