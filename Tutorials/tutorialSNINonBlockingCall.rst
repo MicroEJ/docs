@@ -35,8 +35,8 @@ Requirements
 
 A MicroEJ Platform with (at least):
 
-- EDC-1.3
-- SNI-1.4
+- EDC-1.3.
+- SNI-1.4.
 
 Example code
 ============
