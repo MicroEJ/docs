@@ -38,7 +38,7 @@ The next step is to create a MicroEJ Platform configuration project:
 
 -  Click on :guilabel:`Finish` button. A new empty project is created,
 
--  Install `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/>`_. 
+-  Install the latest `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/>`_. 
    Files within the ``content`` folder have to be copied to the configuration project folder,
    by following instructions described at https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/README.rst.
    
@@ -49,6 +49,10 @@ The next step is to create a MicroEJ Platform configuration project:
       :align: center
 
       MicroEJ Platform Configuration Project Skeleton
+
+   .. note::
+      
+      The version of installed Platform Configuration Additions is indicated in the `CHANGELOG <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/content/build/CHANGELOG.md>`_ file. 
 
 - Edit the :ref:`mmm_module_description` ``module.ivy`` to declare the MicroEJ Architecture dependency:
 
