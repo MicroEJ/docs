@@ -18,7 +18,7 @@ XML Module
 ~~~~~~~~~~
 
 The `XML Module <https://repository.microej.com/modules/org/kxml2/kxml2/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project in order to allow access to the KXML library.
+Application project to use the KXML library.
 
 ::
 
@@ -116,7 +116,7 @@ JSON Module
 ~~~~~~~~~~~
 
 The `JSON Module <https://repository.microej.com/modules/org/json/me/json/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project in order to allow access to the JSON library.
+Application project to use the JSON library.
 
 ::
 
@@ -257,7 +257,7 @@ CBOR Module
 ~~~~~~~~~~~
 
 The `CBOR Module <https://repository.microej.com/modules/ej/library/iot/cbor/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project in order to allow access to the CBOR library.
+Application project to use the CBOR library.
 
 ::
 

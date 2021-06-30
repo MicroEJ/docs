@@ -176,8 +176,8 @@ General
    repository <https://forge.microej.com/artifactory/microej-developer-repository-release/>`__
    (located at ``${user.dir}\.microej\microej-ivysettings-5.4.xml``)
 
-Build Natures
-^^^^^^^^^^^^^
+Build Types
+^^^^^^^^^^^
 
 -  ``[Studio]`` Updated all relevant build types to load the Platform
    using the ``platform`` configuration instead of the ``test``
@@ -194,8 +194,8 @@ Build Natures
    resolution order
 -  ``[SDK]`` Removed javadoc generation for ``microej-extension``
 
-Plugins
-^^^^^^^
+Build Plugins
+^^^^^^^^^^^^^
 
 -  ``[Studio]`` Updated Addon Processor to fail the build when an error
    is detected. Error messages are dumped to the build logs.
@@ -235,8 +235,8 @@ General
 MicroEJ Module Manager
 """"""""""""""""""""""
 
-Plugins
-^^^^^^^
+Build Plugins
+^^^^^^^^^^^^^
 
 -  ``[Studio]`` Fixed potential build error when computing Sonar
    classpath from dependencies (``ivy:cachepath`` task was sometimes
@@ -304,8 +304,8 @@ General
    issue) when resolving module dependencies across multiple
    configurations
 
-Build Natures
-^^^^^^^^^^^^^
+Build Types
+^^^^^^^^^^^
 
 -  ``[Studio]`` Exclude packs from artifact checker when building a
    module repository
@@ -403,8 +403,8 @@ General
 -  ``[Studio]`` Fixed Ivy module resolution being blocked from time to
    time
 
-Build Natures
-^^^^^^^^^^^^^
+Build Types
+^^^^^^^^^^^
 
 -  ``[Studio]`` Fixed meta build to publish correct snapshot revisions
    for built dependencies. (Indirectly fixes ADP resolution issue when
@@ -431,8 +431,8 @@ Build Natures
    building a branded MicroEJ Studio. It is automatically imported and
    settings file is configured when booting on a new workspace.
 
-Plugins
-^^^^^^^
+Build Plugins
+^^^^^^^^^^^^^
 
 -  ``[Studio]`` Added variables ``@MMM_MODULE_ORGANISATION@``,
    ``@MMM_MODULE_NAME@`` and ``@MMM_MODULE_VERSION@``\ for README.md
@@ -550,8 +550,8 @@ General
 MicroEJ Module Manager
 """"""""""""""""""""""
 
-Plugins
-^^^^^^^
+Build Plugins
+^^^^^^^^^^^^^
 
 -  ``[Studio]`` Added a new option ``application.project.dir`` passed to
    launch scripts with the workspace project directory
@@ -592,8 +592,8 @@ Plugins
    classpath order (error was ``This module requires easyant [0.9,+]``)
 -  ``[Studio]`` Fixed ``product-java`` broken skeleton
 
-Build Natures
-^^^^^^^^^^^^^
+Build Types
+^^^^^^^^^^^
 
 -  ``[Studio]`` Updated Platform Loader error message when the property
    ``platform-loader.target.platform.dir`` is set to an invalid
@@ -671,8 +671,8 @@ General
 MicroEJ Module Manager
 """"""""""""""""""""""
 
-Plugins
-^^^^^^^
+Build Plugins
+^^^^^^^^^^^^^
 
 -  ``[Studio]`` Added IvyDE resolution from properties defined in
    :guilabel:`Windows` > :guilabel:`Preferences` > :guilabel:`Ant` > :guilabel:`Runtime` > :guilabel:`Properties`
@@ -681,8 +681,8 @@ Plugins
 -  ``[Studio]`` Fixed IvyDE crash when defining an Ant property file
    with Eclipse variables
 
-Build Natures
-^^^^^^^^^^^^^
+Build Types
+^^^^^^^^^^^
 
 -  ``[Studio]`` Kept only latest build types versions (skeletons
    updated)
