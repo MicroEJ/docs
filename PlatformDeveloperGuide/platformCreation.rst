@@ -185,7 +185,8 @@ in the workspace available for the MicroEJ Application project to run on. You ca
    MicroEJ Platform Project
  
 This step is only required the first time the Platform is built, or if the Platform properties have changed (i.e, name, version). 
-When the same Platform is built again, right-click on the Platform project and select :guilabel:`Refresh` to get the new content.
+When the same Platform is built again, the Platform project should be automatically refreshed after few seconds. 
+In case of any doubt, right-click on the Platform project and select :guilabel:`Refresh` to get the new content.
 
 .. _platform_module_configuration:
 
