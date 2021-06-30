@@ -100,7 +100,7 @@ To declare a MicroEJ Pack dependency, edit the :ref:`mmm_module_description` ``m
       <!-- MicroEJ Architecture Specific Pack -->
       <dependency org="com.microej.architecture.[ISA].[TOOLCHAIN]" name="[UID]-[NAME]-pack" rev="[VERSION]"/>
 
-      <!-- MicroEJ Generic Pack  -->
+      <!-- MicroEJ Generic Pack -->
       <dependency org="com.microej.pack.[NAME]" name="[NAME]-pack" rev="[VERSION]"/>
 
       <!-- Legacy MicroEJ Generic Pack -->
@@ -142,6 +142,11 @@ And to declare the Legacy MicroEJ Generic Pack Net version ``9.2.3``:
        <dependency org="com.microej.pack" name="net" rev="9.2.3"/>
 
    </dependencies>
+
+.. warning::
+   
+   :ref:`MicroEJ Architecture Specific Packs <pack_architecture_specific>` and :ref:`Legacy MicroEJ Generic Packs <pack_generic_legacy>` provide Platform modules
+   that are **not installed** by default. See :ref:`platform_module_configuration` section for more details.
 
 .. _platform_build:
 
