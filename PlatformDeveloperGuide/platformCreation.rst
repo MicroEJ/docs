@@ -80,45 +80,6 @@ The next step is to create a MicroEJ Platform configuration project:
       
       </dependencies>
       
-.. _platform_build:
-
-Platform Build
-==============
-
-To build the MicroEJ Platform, perform as a regular :ref:`mmm_module_build`: 
-
-  - Right-click on the Platform Configuration project,
-  - Select :guilabel:`Build Module`.
-  - The build starts and the build logs are redirected to the integrated console. Once the build is terminated, you should get the following message:
-
-    .. code-block:: console
-      :emphasize-lines: 3,4,5,6
-      
-      module-platform:report:
-        [echo]     ============================================================================================================
-        [echo]     Platform has been built in this directory 'C:\tmp\mydevice-Platform-[TOOLCHAIN]-0.1.0'.
-        [echo]     To import this project in your MicroEJ SDK workspace (if not already available):
-        [echo]      - Select 'File' > 'Import...' > 'General' > 'Existing Projects into Workspace' > 'Next'
-        [echo]      - Check 'Select root directory' and browse 'C:\tmp\mydevice-Platform-[TOOLCHAIN]-0.1.0' > 'Finish'
-        [echo]     ============================================================================================================
-
-      BUILD SUCCESSFUL
-
-      Total time: 43 seconds
-  
-Then, import the Platform directory to your MicroEJ SDK workspace as mentioned in the report. You should get a ready-to-use MicroEJ Platform project
-in the workspace available for the MicroEJ Application project to run on. You can also check the MicroEJ Platform availability in:
-:guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
-
-.. figure:: images/platformSource.png
-   :alt: MicroEJ Platform Project
-   :align: center
-
-   MicroEJ Platform Project
- 
-This step is only required the first time the Platform is built, or if the Platform properties haved changed. 
-When the same Platform is rebuilt, right-click on the Platform project and select :guilabel:`Refresh` to get the new content.
-
 .. _pack_import:
 
 Pack Import
@@ -127,7 +88,7 @@ Pack Import
 :ref:`MicroEJ Pack <pack_overview>` provides additional features on top of the MicroEJ Architecture such as Graphical User Interface or Networking.
 
 .. note::
-  
+
    MicroEJ Packs are optional. You can skip this section if you intend to integrate MicroEJ runtime only with custom libraries.
 
 To declare a MicroEJ Pack dependency, edit the :ref:`mmm_module_description` ``module.ivy`` as follows:
@@ -182,7 +143,45 @@ And to declare the Legacy MicroEJ Generic Pack Net version ``9.2.3``:
 
    </dependencies>
 
-Once the Pack dependencies are added, :ref:`build the Platform <platform_build>` again.
+.. _platform_build:
+
+Platform Build
+==============
+
+To build the MicroEJ Platform, perform as a regular :ref:`mmm_module_build`: 
+
+  - Right-click on the Platform Configuration project,
+  - Select :guilabel:`Build Module`.
+  - The build starts and the build logs are redirected to the integrated console. Once the build is terminated, you should get the following message:
+
+    .. code-block:: console
+      :emphasize-lines: 3,4,5,6
+      
+      module-platform:report:
+        [echo]     ============================================================================================================
+        [echo]     Platform has been built in this directory 'C:\tmp\mydevice-Platform-[TOOLCHAIN]-0.1.0'.
+        [echo]     To import this project in your MicroEJ SDK workspace (if not already available):
+        [echo]      - Select 'File' > 'Import...' > 'General' > 'Existing Projects into Workspace' > 'Next'
+        [echo]      - Check 'Select root directory' and browse 'C:\tmp\mydevice-Platform-[TOOLCHAIN]-0.1.0' > 'Finish'
+        [echo]     ============================================================================================================
+
+      BUILD SUCCESSFUL
+
+      Total time: 43 seconds
+  
+Then, import the Platform directory to your MicroEJ SDK workspace as mentioned in the report. You should get a ready-to-use MicroEJ Platform project
+in the workspace available for the MicroEJ Application project to run on. You can also check the MicroEJ Platform availability in:
+:guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
+
+.. figure:: images/platformSource.png
+   :alt: MicroEJ Platform Project
+   :align: center
+
+   MicroEJ Platform Project
+ 
+This step is only required the first time the Platform is built, or if the Platform properties have changed. 
+When the same Platform is rebuilt, right-click on the Platform project and select :guilabel:`Refresh` to get the new content.
+
 
 .. _platform_module_configuration:
 
