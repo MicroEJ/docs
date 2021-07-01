@@ -9,9 +9,7 @@ List
 -  Using as an example the code used before, with the new font, adding
    20 components shows the following result 
 
-   
--  Using MicroEJ, it is possible to create a Scrollable List to avoid
-this issue
+-  Using MicroEJ, it is possible to create a Scrollable List to avoid this issue
 
 .. code:: java
 

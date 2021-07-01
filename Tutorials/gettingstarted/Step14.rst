@@ -27,7 +27,7 @@ A simple Expandable Widget
 - Being an expandable widget, it should also expand or collapse when clicked (simply calling toggle), for that you have to add and event handler to handle the pressed event
 
 .. code:: java
-    
+
     @Override
     public boolean handleEvent(int event) {
         int type = Event.getType(event);
@@ -190,7 +190,7 @@ Using the ExpandableWidget with the Scroll List
 - Also, for viewing purposes, let's set a style for the widget
 
 .. code:: java
-    
+
     final int DEFAULT_BACKGROUND = 0xffffff
     final int DEFAULT_FOREGROUND = 0x262a2c
     final int DEFAULT_BORDER = 0x97a7af
