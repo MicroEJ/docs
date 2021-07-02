@@ -1,0 +1,44 @@
+@startuml
+' Copyright 2019-2020 MicroEJ Corp. All rights reserved.
+' This library is provided in source code for use, modification and test, subject to license terms.
+' Any modification of the source code will break MicroEJ Corp. warranties on the whole library.
+
+
+skinparam backgroundColor #f7f8f9
+skinparam roundcorner 20
+skinparam linetype ortho
+skinparam Shadowing false
+skinparam Participant {
+	BackgroundColor #cbd3d7
+	BorderColor #cbd3d7
+	FontColor automatic
+	FontName Source Sans Pro
+}
+skinparam SequenceDivider {
+	FontColor automatic
+	BackgroundColor #ee502e
+	BorderColor #ee502e
+}
+
+actor Main #cbd3d7
+participant Display
+Main -> Display : Press
+Display -> EventDispatcher : handleEvent(Press)
+EventDispatcher -> PointerEventDispatcher : handleEvent(Press)
+PointerEventDispatcher -> Desktop : getWidgetAt(x, y)
+PointerEventDispatcher -> Widget : handleEvent(press)
+PointerEventDispatcher <-- Widget : false(the event has not been consumed)
+PointerEventDispatcher -> Widget : getParent()
+PointerEventDispatcher -> Parent : handleEvent(press)
+PointerEventDispatcher <-- Parent : true(the event has been consumed)
+Main -> Display : Drag
+Display -> EventDispatcher :  handleEvent(drag)
+EventDispatcher -> PointerEventDispatcher : handleEvent(Press)
+PointerEventDispatcher -> Parent:  handleEvent(Drag)
+PointerEventDispatcher <-- Parent : true(the event has been consumed)
+Main -> Display : Release
+Display -> EventDispatcher :  handleEvent(release)
+EventDispatcher -> PointerEventDispatcher : handleEvent(Press)
+PointerEventDispatcher -> Parent:  handleEvent(Drag)
+PointerEventDispatcher <-- Parent : true(the event has been consumed)
+@enduml
