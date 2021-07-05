@@ -59,7 +59,7 @@ Displaying an image
            canvas.addChild(label, 0, 0, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
            canvas.addChild(label2, 0, 15, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
 
-           ImageWidget image = new ImageWidget("/images/mj.png");
+           ImageWidget image = new ImageWidget("/images/microej_logo.png");
            canvas.addChild(image, 0, 30, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
 
            CascadingStylesheet css = new CascadingStylesheet();

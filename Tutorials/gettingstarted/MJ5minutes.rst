@@ -113,7 +113,7 @@ Build Your Platform
    
    |image5|
 
-#. The message should say build successful
+#. The message should say build successful and the platform you builded should be seen at the sdk
 
 Create a New Project
 --------------------

@@ -61,7 +61,7 @@ Drawing images
 
    .. code:: java
 
-       Image image = Image.getImage("/images/mj.png");
+       Image image = Image.getImage("/images/microej_logo.png");
        // draws the image at x,y coordinates (150, 50).
        Painter.drawImage(g, image, 150, 50);
 
