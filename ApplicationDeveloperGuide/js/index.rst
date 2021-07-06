@@ -13,11 +13,12 @@ MicroEJ allows to develop parts of an application in JavaScript. Basically, a Mi
 
 
 .. figure:: images/js_runtime.png
-   :alt: MicroEJ JavaScript Runtime Overview
-   :scale: 55%
+   :alt: MicroEJ JavaScript Overview
+   :scale: 75%
    :align: center
 
-   MicroEJ JavaScript Runtime Overview
+   MicroEJ JavaScript Overview
+
 |
 
 It supports the `ECMAScript 5.1 specification <https://262.ecma-international.org/5.1>`_, with :ref:`some limitations <js.limitations>`.
