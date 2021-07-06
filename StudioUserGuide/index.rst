@@ -75,12 +75,13 @@ detailed in the following sections of this chapter :
    :maxdepth: 1
 
    install
-   workspace
    systemRequirements
+   workspace
+   version
+   tools
    sdkReleaseNotes
    sdkChangeLog
    sdkMigrationNotes
-   version
    troubleshooting
    
 ..
