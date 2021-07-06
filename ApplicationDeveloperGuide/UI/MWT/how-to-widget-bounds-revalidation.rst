@@ -3,8 +3,10 @@ How compute Optimal Size works
 
 A Container has multiple children widgets, to compute the size of each of the children on a container
 
-Every time a widget is laid out, the method ComputeOptimalSize is called, it calculates the Size of this widget,Every call to computeOptimalsize stores the Size needed to show the Widget correctly Including outlines(Example: Margin,Padding)
-and Sets the Size atrribute
+Every time a widget is laid out, the method ComputeOptimalSize is called, it calculates the Size of this widget
+
+Every call to computeOptimalsize stores the Size needed to show the Widget correctly Including outlines(Example: Margin,Padding) and Sets the Size atrribute
+
 As a Container is also a Widget,it also contains a computeOptimalsize, calculating its size using its children
 
 on every call to LayOut, the optimal Size is recalculated
