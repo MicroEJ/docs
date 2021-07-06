@@ -9,7 +9,7 @@
  JavaScript
 ============
 
-Besides Java, the MicroEJ engine allows to develop applications in JavaScript.
+MicroEJ allows to develop parts of an application in JavaScript. Basically, a MicroEJ Application boots in Java, then it initializes the JavaScript runtime to run a mix of Java and JavaScript code.
 
 
 .. figure:: images/js_runtime.png
