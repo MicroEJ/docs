@@ -1,41 +1,42 @@
-String Bounds Check on a Widget
+How to detect text overflow
 ===============================
 The Issue
 -------------
 
-When creating an application, it may support multiple languages, some of those languages have words and phrases that may be bigger than first planned when creating an application
+Widgets that display some text may encounter text overflow when the strings are too long to fit in the available area. This is often the case in applications which support multiple languages, because widgets have to cop with texts of different lengths.
 
-Extending a Widget
+Extending the Widget
 -------------------
-To add a check on the size of the messages, the widgets drawing a String need to be extended or modified.
-In this tutorial, the `Label` class will be extended by `MyLabel`.
+The goal is to check if the text to display fits in the content bounds of a widget. A straightforward way to test this is to extend or modify the widget.
+In this article, the type `MyLabel` will extend the type `Label` from the Widget library which displays a text.
 
 .. code-block:: java
 
     public class MyLabel extends Label {
 
-        public MyLabel(String txt) {
-            super(txt);
+        public MyLabel(String text) {
+            super(text);
         }
 
         @Override
         protected void onLaidOut() {
-
+            super.onLaidOut();
         }
     }
 
-Overriding onLaidOut
+Overriding the onLaidOut() method
 --------------------
  
-As soon as a widget is laid out (its position and size set) by its parent, its `onLaidOut()` method is called.
-So, overriding this method is the best place to check whether or not the text fits.
+As soon as a widget is laid out, its position and size are set and its `onLaidOut()` method is called.
+Overriding this method is the best place to check whether the text fits or not.
 
-Inside of the method, get the Font from the Style that the widget is using, and then, get the Font 
+In the method body, get the `Font` from the `Style` of the widget, and compare the text width to the content width.
 
 .. code-block:: java
 
     @Override
     protected void onLaidOut() {
+        super.onLaidOut();
         final Font font = getStyle().getFont();
         final String text = getText();
         final int stringWidth = font.stringWidth(text);
@@ -45,9 +46,9 @@ Inside of the method, get the Font from the Style that the widget is using, and 
         }
     }
 
-Testing with a Canvas
+Testing
 ----------------------
-The check can be easily validated by putting the widget in a canvas and setting its bounds manually (a little shorter than the text size).
+The check can be easily validated by putting the widget in a canvas and setting its bounds manually (a little shorter than the text width).
   
 .. code-block:: java
 
@@ -68,7 +69,7 @@ The console should show this:
 
     The text size is greater than the widget content width!
 
-Improving the Bounds Check
+Improving the bounds check
 ----------------------------
 
 To make the correction process easier, it's possible to indicate where the text is truncated.
@@ -92,13 +93,13 @@ To make the correction process easier, it's possible to indicate where the text 
         }
     }
 
-This block of code can be also extracted to a helper class in order to be used in several Widgets.
+This block of code may also be extracted to a helper class in order to be used in other Widgets.
 
 .. code-block:: java
 
     public class LabelBoundsCheck {
 
-    static void fits(final Font font, final String text, final int contentWidth) {
+    public static void fits(final Font font, final String text, final int contentWidth) {
             int stringWidth = font.stringWidth(text);
             if (stringWidth > contentWidth) {
                 for (int i = text.length() - 1; i >= 0; i--) {
@@ -112,4 +113,3 @@ This block of code can be also extracted to a helper class in order to be used i
     }
     
     }
-
