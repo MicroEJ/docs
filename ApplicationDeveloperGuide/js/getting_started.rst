@@ -23,8 +23,10 @@ Let's walk through the steps required to use Javascript in your MicroEJ applicat
 Adapt the properties values to your need.
 See the :ref:`MMM CLI init command documentation <mmm.cli.commands.init>` for more details.
 
-Javascript is supported in the following project types: ``microej-javalib``, ``application`` and ``firmware-singleapp``.
-You can have more information on the project types in the :ref:`Module Natures page <module_natures>`.
+Javascript is supported in the following :ref:`Module Natures page <module_natures>: 
+- :ref:`module_natures.addon_lib`, 
+- :ref:`module_natures.standalone_application`,
+- :ref:`module_natures.sandboxed_application`.
 
 - add the js dependency in the ``module.ivy`` file:
 
