@@ -19,7 +19,7 @@ Some methods request an action asynchronously in the DisplayPump:
 
 - repaint asynchronously calls render (and :guilabel:`renderContent`),
 - revalidate asynchronously calls :guilabel:`validate` (and :guilabel:`validateContent`) then :guilabel:`setBounds` (and :guilabel:`setBoundsContent`).
-- The handleEvent 3 method is also called in the DisplayPump.
+- The handleEvent method is also called in the DisplayPump.
 
 These methods (not exhaustive) should be called in the DisplayPump (if the receiver is in the displayed hierarchy):
 
