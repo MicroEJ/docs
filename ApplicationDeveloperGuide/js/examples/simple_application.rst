@@ -7,7 +7,7 @@
 
 .. _js.examples.simple_app:
 
-Simple application
+Simple Application
 ==================
 
 .. note::

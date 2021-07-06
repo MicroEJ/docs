@@ -8,7 +8,7 @@
 .. _js.builtin:
 
 ================
-Built-in objects
+Built-in Objects
 ================
 
 This section lists all the JavaScript built-in objects and their support status.

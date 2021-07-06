@@ -7,7 +7,7 @@
 
 .. _js.java:
 
-Communication between Java and JS
+Communication Between Java and JS
 =================================
 
 The MicroEJ engine allows to communicate between Java and JavaScript: Java API can be used from JavaScript code and vice-versa.

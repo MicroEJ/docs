@@ -10,7 +10,7 @@
 Internals
 =========
 
-JavaScript sources processing
+JavaScript Sources Processing
 -----------------------------
 
 The JavaScript code is not executed directly, it is first translated in Java code and compiled with the Java application code.

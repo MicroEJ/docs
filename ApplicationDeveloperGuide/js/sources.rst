@@ -10,14 +10,14 @@
 Sources Management
 ==================
 
-JavaScript sources location
+JavaScript Sources Location
 ---------------------------
 
 The JavaScript sources of an application must be located in the project folder ``src/main/js``.
 All JavaScript files (``*.js``) found in this folder, at any level, are processed.
 
 
-JavaScript sources load order
+JavaScript Sources Load Order
 -----------------------------
 
 When several JavaScript files are found in the sources folder, they are loaded in alphabetical order of their relative path.
@@ -47,7 +47,7 @@ are loaded in this order:
 #. ui/widgets.js
 
 
-JavaScript sources load scope
+JavaScript Sources Load Scope
 -----------------------------
 
 All the code of the JavaScript source files are loaded in the same scope.
@@ -68,7 +68,7 @@ In this example:
 
 the file ``src/main/js/lib.js`` is loaded before ``src/main/js/main.js`` so the function ``sum`` can be used in ``src/main/js/main.js``.
 
-JavaScript sources processing
+JavaScript Sources Processing
 -----------------------------
 
 JavaScript sources need to be processed before being executed. This processing is done in the following cases:

@@ -8,7 +8,7 @@
 .. _js.getting_started:
 
 ===============
-Getting started
+Getting Started
 ===============
 
 Let's walk through the steps required to use Javascript in your MicroEJ application:
