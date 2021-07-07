@@ -12,7 +12,7 @@ Creating the contact widget
 .. code:: java
 
     public ContactWidget(String contactname, Image img) {
-        this.cname = contactname;
+        this.contactName = contactname;
         this.img = img;
     }
 
@@ -22,9 +22,9 @@ Creating the contact widget
 
     @Override
     protected void computeContentOptimalSize(Size size) {
-        // TODO Auto-generated method stub
+
         Font f = getStyle().getFont();
-        int width = f.stringWidth(this.cname);
+        int width = f.stringWidth(this.contactName);
         int height = f.getHeight() * 2;
         size.setSize(width, (int) (height * 2.5));
 
@@ -34,7 +34,7 @@ Creating the contact widget
 
     @Override
     protected void renderContent(GraphicsContext g, int contentWidth, int contentHeight) {
-        // TODO Auto-generated method stub
+
 
         g.setColor(Colors.WHITE);
         int x0 = 0;
@@ -44,7 +44,7 @@ Creating the contact widget
         int circleRadius = contentHeight * 7 / 10;
         ShapePainter.fillPolygon(g, new int[] { x0, y0, x0, y1, x1, y1, x1, y0 });
         g.setColor(Colors.BLACK);
-        StringPainter.drawStringAtPoint(g, this.cname, getStyle().getFont(), circleRadius + 15, contentHeight / 2, 0, 0);
+        StringPainter.drawStringAtPoint(g, this.contactName, getStyle().getFont(), circleRadius + 15, contentHeight / 2, 0, 0);
         g.setColor(Colors.BLACK);
         ImagePainter.drawImageInArea(g, this.img, contentWidth * 1 / 100, contentHeight / 4, 1, 1, 0, 0);
         ShapePainter.drawThickCircle(g, contentWidth * 1 / 100, contentHeight / 4, circleRadius, 2);
@@ -66,18 +66,18 @@ Creating the contact widget
    
     public class ContactWidget extends Widget {
 
-        String cname;
+        String contactName;
         Image img;
 
         public ContactWidget(String contactname, Image img) {
-            this.cname = contactname;
+            this.contactName = contactname;
             this.img = img;
         }
 
         @Override
         protected void computeContentOptimalSize(Size size) {
             Font f = getStyle().getFont();
-            int width = f.stringWidth(this.cname);
+            int width = f.stringWidth(this.contactName);
             int height = f.getHeight() * 2;
             size.setSize(width, (int) (height * 2.5));
 
@@ -93,7 +93,7 @@ Creating the contact widget
             int circleRadius = contentHeight * 7 / 10;
             ShapePainter.fillPolygon(g, new int[] { x0, y0, x0, y1, x1, y1, x1, y0 });
             g.setColor(Colors.BLACK);
-            StringPainter.drawStringAtPoint(g, this.cname, getStyle().getFont(), circleRadius + 15, contentHeight / 2, 0, 0);
+            StringPainter.drawStringAtPoint(g, this.contactName, getStyle().getFont(), circleRadius + 15, contentHeight / 2, 0, 0);
             g.setColor(Colors.BLACK);
             ImagePainter.drawImageInArea(g, this.img, contentWidth * 1 / 100, contentHeight / 4, 1, 1, 0, 0);
             ShapePainter.drawThickCircle(g, contentWidth * 1 / 100, contentHeight / 4, circleRadius, 2);
