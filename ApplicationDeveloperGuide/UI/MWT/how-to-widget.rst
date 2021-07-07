@@ -15,24 +15,23 @@ Computing the optimal size of the widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``computeContentOptimalSize()`` method is called by the MWT framework in order to know the optimal size of the widget.
-The optimal size of the widget should be big enough to contain all the drawings of the widget.
 
-The ``Size`` parameter of the ``computeContentOptimalSize()`` method initially contains the size available for the widget.
+The optimal size of the widget is the size of the smallest possible area which would still allow to represent the widget.
+Unless the widget is using an ``OptimalDimension`` in its style, the actual size of the widget will most likely be bigger than the optimal size returned in this method.
+
+The ``size`` parameter of the ``computeContentOptimalSize()`` method initially contains the size available for the widget.
 An available width or height equal to ``Widget.NO_CONSTRAINT`` means that the optimal size should be computed without considering any restriction on the respective axis.
 Before the method returns, the size object should be set to the optimal size of the widget.
 
 When implementing this method, the ``getStyle()`` method may be called in order to retrieve the style of the widget.
 
-For example, the following snippet computes the optimal size of a label:
+For example, the following snippet computes the optimal size of an image widget:
 
 .. code-block:: Java
 
 	@Override
 	protected void computeContentOptimalSize(Size size) {
-		Font font = getStyle().getFont();
-		int width = font.stringWidth(this.text);
-		int height = font.getHeight();
-		size.setSize(width, height);
+		size.setSize(this.image.getWidth(), this.image.getHeight());
 	}
 
 Rendering the content of the widget
@@ -40,17 +39,23 @@ Rendering the content of the widget
 
 The ``renderContent()`` method is called by the MWT framework in order to render the content of the widget.
 
+The ``g`` parameter can be used in order to draw the content of the widget with the translation and clipping area which matches the widget's bounds.
+The ``contentWidth`` and ``contentHeight`` parameters indicate the actual size of the content of the widget (excluding its outlines).
+Unless the widget is using an ``OptimalDimension`` in its style, the given content size will most likely be bigger than the optimal size returned in ``computeContentOptimalSize()``.
+If the drawings do not take the complete content area, the position of the drawings should be computed using the horizontal and vertical alignment values set in the widget's style.
+
 When implementing this method, the ``getStyle()`` method may be called in order to retrieve the style of the widget.
 
-For example, the following snippet renders the content of a label:
+For example, the following snippet renders the content of an image widget:
 
 .. code-block:: Java
 
 	@Override
 	protected void renderContent(GraphicsContext g, int contentWidth, int contentHeight) {
 		Style style = getStyle();
-		g.setColor(style.getColor());
-		Painter.drawString(g, style.getFont(), this.text, 0, 0);
+		int imageX = Alignment.computeLeftX(this.image.getWidth(), 0, contentWidth, style.getHorizontalAlignment());
+		int imageY = Alignment.computeTopY(this.image.getHeight(), 0, contentHeight, style.getVerticalAlignment());
+		Painter.drawImage(g, this.image, imageX, imageY);
 	}
 
 Handling events
