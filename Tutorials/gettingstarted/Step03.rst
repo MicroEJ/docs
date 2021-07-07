@@ -112,7 +112,7 @@ Padding and Margin
 
 |image4|
 
-- It's possible to see the widget ovelapping other  
+- It's possible to see the widget ovelapping other when using canvas
   
 .. |image0| image:: images/margin.png
 .. |image1| image:: images/marginandpadding.png

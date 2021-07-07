@@ -68,6 +68,11 @@ A simple Expandable Widget
 
         private static final int DEFAULT_EXPANDED_HEIGHT = DEFAULT_COLLAPSED_HEIGHT * 2;
 
+        private static final int MATERIAL_LABEL_PADDING = 72;
+
+        private static final int MATERIAL_PADDING = 16;
+
+
         private int motionValue;
 
         private final String myLabel;
@@ -116,8 +121,6 @@ A simple Expandable Widget
                     : (this.expanded ? getExpandedHeight() : getCollapsedHeight()));
         }
 
-        private static final int MATERIAL_LABEL_PADDING = 72;
-        private static final int MATERIAL_PADDING = 16;
 
         @Override
         protected void renderContent(GraphicsContext g, int contentWidth, int contentHeight) {
@@ -191,9 +194,9 @@ Using the ExpandableWidget with the Scroll List
 
 .. code:: java
 
-    final int DEFAULT_BACKGROUND = 0xffffff
-    final int DEFAULT_FOREGROUND = 0x262a2c
-    final int DEFAULT_BORDER = 0x97a7af
+    static final int DEFAULT_BACKGROUND = 0xffffff
+    static final int DEFAULT_FOREGROUND = 0x262a2c
+    static final int DEFAULT_BORDER = 0x97a7af
 
     private static void populateStylesheet(CascadingStylesheet stylesheet) {
     EditableStyle style = stylesheet.getDefaultStyle();

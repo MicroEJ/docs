@@ -53,7 +53,7 @@ Using Canvas
 
    .. note::
 
-    in this case, using Widget.NO\_CONSTRAINT sets the width and height to the standard size of the widget
+    in this case, using Widget.NO\_CONSTRAINT sets the width and height to the optimal size of the widget
 
    .. code:: java
 

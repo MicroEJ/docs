@@ -17,7 +17,7 @@ Adding Images
 
 .. code::
 
-    /images/mj.png:ARGB4444
+    /images/microej_logo.png:ARGB4444
 
 -  The image declaration in the .list file follows this pattern:
 
@@ -37,7 +37,7 @@ Displaying an image
 
    .. code:: java
 
-       ImageWidget image = new ImageWidget("/images/mj.png");
+       ImageWidget image = new ImageWidget("/images/microej_logo.png");
 
 - Add the widget to the canvas container by adding this line to the ``main`` of your application:
 

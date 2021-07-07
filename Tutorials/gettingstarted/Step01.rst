@@ -28,7 +28,7 @@ Starting MicroUI
        }
    .. note:: 
 
-     MicroUI have to be started before any UI operations
+     MicroUI has to be started before any UI operations
 
 #. To run your code on the simulator, left click on the Project Go To
    

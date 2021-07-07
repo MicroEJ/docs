@@ -34,18 +34,18 @@ Start the IDE for the first time
 Prepare platform sources
 ------------------------
 
-#. Download and unzip the platform sources for 
+#. Download and unzip the platform sources for  STM32F7508 
 
    - `GCC <https://repository.microej.com/packages/referenceimplementations/M5QNX/1.2.0/STM32F7508-M5QNX-fullPackaging-eval-1.2.0.zip>`__
    - `IAR <https://repository.microej.com/packages/referenceimplementations/KUVW3/1.2.0/STM32F7508-KUVW3-fullPackaging-eval-1.2.0.zip>`__
 
 #. Go to :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`, click on :guilabel:`Import.. ` and
    choose the directory ``platformArchitecture`` inside the unzipped
-   folder read the license of the targets, and then click **Finish**.
+   folder read the license of the targets, and then click :guilabel:`Finish`.
 
    |image0|
 
-#. Select :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > :guilabel:`click on
+#. Select :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > click on :guilabel:`
    Import...`> :guilabel:`find the previously extracted folder and select the
    MicroEJ Architecture directory`. 
 
@@ -59,7 +59,7 @@ Prepare platform sources
    Workspace click on :guilabel:`Select archive file` and browse for the previously
    extracted folder to locate the **MicroEJ Platform Reference
    Implementation file(e.g.STM32F7508-KUVW3-platformSource.zip)** then
-   import all available Eclipse projects,and then click **Finish**
+   import all available Eclipse projects,and then click :guilabel:`Finish`
 
    |image2|
 
@@ -68,9 +68,9 @@ Create your license
 
 #. Go to `license.microej.com <https://license.microej.com>`__ and create a new account.
 #. After receiving the confirmation e-mail, login to your account and
-   click on Activate a License.
+   click on :guilabel:`Activate a License.`
 #. Set Product P/N: to 9PEVNLDBU6IJ.
-#. To get your UID from the MicroEJ SDK, select :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > guilabel:`click on one of the available architectures and press Get UID`. 
+#. To get your UID from the MicroEJ SDK, select :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > :guilabel:`click on one of the available architectures and press Get UID`. 
 
 .. raw:: html
 
@@ -128,6 +128,8 @@ Create a New Project
 
 Featured project Demo Widget
 ------------------------------
+
+You can have a look at the demo widget project, which contains multiple samples of widgets and usages
 
 - `MicroEJ SDK <https://github.com/MicroEJ/Demo-Widget>`__
 

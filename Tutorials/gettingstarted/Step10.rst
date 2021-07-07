@@ -76,12 +76,9 @@ Adding the font to a Label
    }
 
 .. note::
-   Don't forget to add the Style to the Desktop
+   Don't forget to add the Stylesheet to the Desktop
 
 |image3| 
-
-.. note::
-   The font used was FiraCode
 
 .. |image0| image:: images/fontname.png
 .. |image1| image:: images/fonteditor.png

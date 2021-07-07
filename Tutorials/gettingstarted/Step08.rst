@@ -16,6 +16,9 @@ Usage
    .. code:: java 
    
     Animation lblAnimation = new Animation() { 
+    
+        int tick = 0;
+        
         @Override public boolean tick(longcurrentTimeMillis) { 
             label.setText(Integer.toString(tick++));
             label.requestRender();

@@ -21,7 +21,7 @@ List
    }
 
 
-   |image0|
+|image0|
 
 Scrollable List
 ---------------

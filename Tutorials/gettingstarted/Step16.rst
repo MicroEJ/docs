@@ -4,37 +4,37 @@ Pop up
 Using the Pop Up
 -----------------------
 - The main idea behind the popup shown here is to show a Widget(In a desktop that overlaps another)
-- The usage should look liken this
+- The usage should look like this
 
 .. code:: java
     
     public static void main(String[] args) {
-    MicroUI.start();
+		MicroUI.start();
 
-    Desktop desktop = new Desktop();
-    CascadingStylesheet css = new CascadingStylesheet();
-    EditableStyle style = css.getSelectorStyle(new TypeSelector(Button.class));
-    style.setBackground(new RectangularBackground(Colors.BLUE));
-    style = css.getSelectorStyle(new TypeSelector(Canvas.class));
-    style.setBackground(new RectangularBackground(Colors.WHITE));
+		Desktop desktop = new Desktop();
+		CascadingStylesheet css = new CascadingStylesheet();
+		EditableStyle style = css.getSelectorStyle(new TypeSelector(Button.class));
+		style.setBackground(new RectangularBackground(Colors.BLUE));
+		style = css.getSelectorStyle(new TypeSelector(Canvas.class));
+		style.setBackground(new RectangularBackground(Colors.WHITE));
 
-    desktop.setStylesheet(css);
+		desktop.setStylesheet(css);
 
-    Canvas canvas = new Canvas();
+		Canvas canvas = new Canvas();
 
-    desktop.setWidget(canvas);
-    desktop.requestShow();
+		desktop.setWidget(canvas);
+		desktop.requestShow();
 
-    Popup popup = new Popup();
-    Button b = new Button("Test");
-    b.setOnClickListener(new OnClickListener() {
-        @Override
-        public void onClick() {
-            System.out.println("Print this");
-        }
-    });
-    popup.setWidget(b);
-    popup.requestShow();
+		Popup popup = new Popup();
+		Button b = new Button("Test");
+		b.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick() {
+				System.out.println("Print this");
+			}
+		});
+		popup.setWidget(b);
+		popup.requestShow();
     }
 
 
