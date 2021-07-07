@@ -18,10 +18,11 @@ To perform a link check for all links and references::
 
     make linkcheck
 
-Warning
-~~~~~~~
+Warning Processing
+~~~~~~~~~~~~~~~~~~
 
-ReST syntax errors warnings are setup to make the build fail to avoid them being pushed to the repository unadressed. However, when building locally, resulting warnings are cached once source files have been read once (even during linkcheck) and won't reappear on second builds, making them falsely successful. These warnings aren't cached when building the public website on Read The Docs, but the current linkcheck call output doesn't allow to know what caused the failure. To have them reappear when building locally, you can clear the `_build` folder, or checkout to another Git branch.
+Syntax warnings are configured to make the build fail. When building locally, warnings are cached once source files have been read once (even during linkcheck) and thus won't reappear on subsequent builds. 
+To get all the warnings locally, clean the `_build` directory (``make clean``) and rebuild the whole documentation (``make html`` , ``make linkcheck``).
 
 Components
 ----------
