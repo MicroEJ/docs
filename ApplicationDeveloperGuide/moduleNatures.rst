@@ -617,7 +617,6 @@ This plugin defines the following configuration properties:
      - When this property is set to true, the retrieve checker is not executed.
      - Not set
 
-
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

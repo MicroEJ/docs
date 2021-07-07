@@ -598,6 +598,8 @@ For example
 
 cleans the project.
 
+.. _mmm.cli.commands.build:
+
 **build**
 
 The command ``build`` builds the project (executes Easyant with ``clean,package`` targets).
