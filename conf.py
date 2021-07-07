@@ -51,7 +51,7 @@ html_theme_options = {
 }
 html_show_sphinx = False
 
-# remove headers permalinks
+# # remove headers permalinks
 # html_add_permalinks = ''
 
 # This is required because the version of the Read the Docs Sphinx theme the
