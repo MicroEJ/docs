@@ -6,7 +6,7 @@ Getting Started With UI
 .. toctree::
    :maxdepth: 1
 
-   MJ5minutes
+   tutorialStartFirstGUIApplicationIn15Minutes
    Step01
    Step02
    Step03
