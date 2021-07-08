@@ -2,13 +2,12 @@ Overlap Render Policy
 ======================
 Introduction
 -------------
-A render policy is a strategy that MWT uses in order to repaint the entire desktop or to repaint a specific widget. 
+The MWT library implements two `render policies <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MWT/concepts.html#render-policy>`_: the ``DefaultRenderPolicy`` and the ``OverlapRenderPolicy``:
 
-The most naive render policy would be to render the whole hierarchy of the desktop whenever a widget has changed.
+* ``DefaultRenderPolicy``: renders the specified widget. If the widget is transparent, it renders its parent too (and recursively).
+* ``OverlapRenderPolicy``: renders the specified widget but also the other widgets that overlap with it.
 
-The DefaultRenderPolicy, repaints the Widget and its ancestors if the widget is transparent
-
-The OverlapRenderPolicy, repaints the Widget that was changed but also the ones that are overlapped by it
+While the ``DefaultRenderPolicy`` will be the perfect match for most UI designs, it will not handle the case where widgets overlap. In this case, the ``OverlapRenderPolicy`` will be the render policy to choose in order to avoid rendering inconsistencies.
 
 Overlapping widget
 -------------------
