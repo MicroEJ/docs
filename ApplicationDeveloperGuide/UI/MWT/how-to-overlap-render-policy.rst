@@ -9,10 +9,12 @@ The MWT library implements two `render policies <https://docs.microej.com/en/lat
 
 While the ``DefaultRenderPolicy`` will be the perfect match for most UI designs, it will not handle the case where widgets overlap. In this case, the ``OverlapRenderPolicy`` will be the render policy to choose in order to avoid rendering inconsistencies.
 
-Overlapping widget
+Overlapping widgets
 -------------------
-
-- Here's a snippet of two widgets
+A widget is said to overlap with another when:
+* their bounds intersect
+* it comes after in the widget tree (depth-first search)
+Here is a snippet of code that displays two widgets that overlap:
 
 .. code-block:: java
 
@@ -34,16 +36,16 @@ Overlapping widget
             Label widget1 = new Label("Widget 1");
             Label widget2 = new Label("Widget 2");
 
-            // Widget 2 is added after Widget 1
-            root.addChild(widget1, 0, 0, 100, 50);
+            // Widget 1 is added after Widget 2
             root.addChild(widget2, 50, 5, 100, 50);
+            root.addChild(widget1, 0, 0, 100, 50);
 
             desktop.setWidget(root);
             Display.getDisplay().requestShow(desktop);
         }
     }
 
-- Here's the result
+Here is the result:
 
 .. image:: images/tutorial_MicroEJ_renderpolicy2.png
 
@@ -56,11 +58,12 @@ Overlapping widget
 
 .. image:: images/tutorial_MicroEJ_renderpolicy.png
 
-- So far, the renderPolicy was not changed
+As expected, widget 1 overlaps widget 2. So far, the ``DefaultRenderPolicy`` is being used and it provides good results: the widgets of the desktop are rendered recursively in order after the call to ``Display.getDisplay().requestShow(desktop)``.
 
-Using OverlapRenderPolicy
+Rendering the widgets
 --------------------------
-- Adding a small loop to alternate between requesting render on each widget, usually done when the widget was updated(for example: the text was changed)
+Let's see how the ``DefaultRenderPolicy`` performs when a widget is requested to render.
+In most cases, a widget is requested to render when its content has been updated (e.g. the value displayed changed). Here, we use a small loop to repaint each widget in turn:
 
 .. code-block:: java
 
@@ -81,12 +84,13 @@ Using OverlapRenderPolicy
         widget2.requestRender();
     }
 
-- The widgets should alternate as shown below 
+The widgets should alternate as shown below:
 
 .. image:: images/tutorial_MicroEJ_renderpolicyanimation.gif
 
-- When a widget rendering is requested, the widget is rendered on top of the other widget, regardless of their order in the widget hierachy.
-- To avoid this, it's possible to change the render policy as follows
+When a widget is requested to render, it is rendered on top of the other widgets, regardless of their order in the widget hierarchy.
+Unlike the ``DefaultRenderPolicy``, the ``OverlapRenderPolicy`` will inspect the relative order of other widgets when rendering a widget. Widgets that comes after in the widget tree (Depth-first search) will be rendered too, if there bounds intersect those of the widget.
+Overriding the method ``createRenderPolicy()`` of the desktop, as follows, will make the ``OverlapRenderPolicy`` apply when rendering widgets:
   
 .. code-block:: java
 
@@ -97,7 +101,7 @@ Using OverlapRenderPolicy
         }
     };
 
-Since widget1 was added after widget2, the hierarchy should be respected and the shown like this
+Here is the result when using the ``OverlapRenderPolicy``:
 
 
 .. image:: images/tutorial_MicroEJ_renderpolicy.png
