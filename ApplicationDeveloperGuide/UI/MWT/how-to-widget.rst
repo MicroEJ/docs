@@ -40,7 +40,7 @@ Rendering the content of the widget
 The ``renderContent()`` method is called by the MWT framework in order to render the content of the widget.
 
 The ``g`` parameter is used to draw the content of the widget.
-It is already configured with the translation and clipping area which matches the widget's bounds.
+It is already configured with the translation and clipping area which match the widget's bounds.
 The ``contentWidth`` and ``contentHeight`` parameters indicate the actual size of the content of the widget (excluding its outlines).
 Unless the widget is using an ``OptimalDimension`` in its style, the given content size will most likely be bigger than the optimal size returned in ``computeContentOptimalSize()``.
 If the drawings do not take the complete content area, the position of the drawings should be computed using the horizontal and vertical alignment values set in the widget's style.
