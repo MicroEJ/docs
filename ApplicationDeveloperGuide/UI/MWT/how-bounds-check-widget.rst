@@ -39,9 +39,9 @@ In the method body, get the `Font` from the `Style` of the widget, and compare t
         super.onLaidOut();
         final Font font = getStyle().getFont();
         final String text = getText();
-        //This method gets the string width by the size of each character and fonts
+        // get the width of the text with the specified font
         final int stringWidth = font.stringWidth(text);
-        //Gets the bounds of the Widget
+        // get the available width for the content in the widget (excluding outlines)
         final int contentWidth = getContentBounds().getWidth();
         if (stringWidth > contentWidth) {
             System.err.println("The text size is greater than the widget content width!");
