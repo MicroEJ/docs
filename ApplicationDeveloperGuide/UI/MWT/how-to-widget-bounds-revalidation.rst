@@ -17,34 +17,30 @@ Flow Container
 --------------
 - Each time Compute optimal size is called on a Container(And a widget), Compute content optimal size is also called, in the case of Flow, it computes the size of each children and adds to the total sum
 
+- The sample below is a simple computing of the size of a Flow Container
 
 .. code-block:: Java
 
-    protected void computeContentOptimalSize(Size size) {
-            int widthHint = size.getWidth();
-            int heightHint = size.getHeight();
+	protected void computeContentOptimalSize(Size size) {
+		int totalWidth = 0;
+		int totalHeight = 0;
 
-            Widget[] children = getChildren();
-            for (Widget child : children) {
-                assert (child != null);
+		// computes the maximum size of children within the container.
+		int childWidthHint = size.getWidth() / getChildrenCount();
+		int childHeightHint = size.getHeight();
 
-                // compute child optimal size
-                computeChildOptimalSize(child, widthHint, heightHint);
-            }
+		// iterates over the children to compute their optimal size.
+		for (Widget child : getChildren()) {
+			computeChildOptimalSize(child, childWidthHint, childHeightHint);
 
-            // get total size
-            boolean isHorizontal = (this.orientation == LayoutOrientation.HORIZONTAL);
-            int mainSizeHint = (isHorizontal ? widthHint : heightHint);
-            int[] totalSize = new int[2];
-            computeTotalSize(children, isHorizontal, mainSizeHint, totalSize);
+			// updates the container optimal size
+			totalWidth += Math.min(childWidthHint, child.getWidth());
+			totalHeight = Math.max(totalHeight, child.getHeight());
+		}
 
-            // set container optimal size
-            if (isHorizontal) {
-                size.setSize(totalSize[0], totalSize[1]);
-            } else {
-                size.setSize(totalSize[1], totalSize[0]);
-            }
-        }
+		// sets the container optimal size
+		size.setSize(totalWidth, totalHeight);
+	}
 
 
 Canvas Container
