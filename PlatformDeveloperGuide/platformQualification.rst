@@ -151,9 +151,9 @@ UI Pack
    * - UI Pack
      - C Test Suite
    * - 13.0.0 or higher (UI3)
-     - On demand [1]_
+     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/tests/ui/ui3/README.rst>`__
    * - [6.0.0-12.1.5] (UI2)
-     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/ui>`__
+     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/tests/ui/ui2/README.rst>`__
 
 .. _test_suite_versioning_fs:
 
