@@ -47,6 +47,7 @@ Canvas Container
 ------------------
 - Since Canvas can position widgets freely we calculate the optimal size based on the position of the farthest child in the X and Y position, its width and compare if the width of the canvas
 
+- This simpler implementation of canvas will only calculate using the X and Y position of each child and see if it's greater than the one before
 
 .. code-block:: java
 
@@ -63,17 +64,9 @@ Canvas Container
         Rectangle bounds = widgetBounds.get(child);
         int childX = bounds.getX();
         int childY = bounds.getY();
-        int childWidth = bounds.getWidth();
-        int childHeight = bounds.getHeight();
+        int childWidth=child.getWidth();
+        int childHeight=child.getHeight();
 
-        // compute child optimal size
-        int childWidthHint = getChildSize(childWidth, widthHint);
-        int childHeightHint = getChildSize(childHeight, heightHint);
-        computeChildOptimalSize(child, childWidthHint, childHeightHint);
-
-        // update container optimal size
-        childWidth = getChildSize(childWidth, child.getWidth());
-        childHeight = getChildSize(childHeight, child.getHeight());
         width = Math.max(width, childX + childWidth);
         height = Math.max(height, childY + childHeight);
     }
