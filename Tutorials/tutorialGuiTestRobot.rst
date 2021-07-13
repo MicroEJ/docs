@@ -5,28 +5,29 @@ This article presents how to test a GUI application with a software robot for ro
 Robot tests and traditional unit tests are different but both are useful.
 Traditional unit tests validate the systems through calls to the API (internal or external). Robot tests validate the systems by miming the human user behavior directly in the GUI.
 The robot implementation proposed here targets the following errors detection:
-    - ``OutOfMemory``
-    - ``StackOverflow``
-    - MEJ32 and platform librairies error
-    - Widget sequence validation
+
+- ``OutOfMemory``
+- ``StackOverflow``
+- MEJ32 and platform librairies error
+- Widget sequence validation
 
 The following document covers:
 
-    - recording human touch events on the simulator or on the embedded platform
-    - running recorded events on the simulator or on the embedded platform
+- recording human touch events on the simulator or on the embedded platform
+- running recorded events on the simulator or on the embedded platform
 
 The following document does not cover:
 
-    - the display rendering validation
-    - integration of the robot into an automatic JUnit test suite
+- the display rendering validation
+- integration of the robot into an automatic JUnit test suite
 
 We will now present the basic architecture and code required to create and to run a robot within a MicroEJ application on the simulator and embedded platform.
 
 
 In the following sections, we assume:
 
-    - the MicroEJ Java application is based in MicroUI 2.x, MWT 2.x and Widget 2.x
-    - the MicroEJ platform has a display interface and a touch controller (using the MicroUI EventGenerator for Pointer)
+- the MicroEJ Java application is based in MicroUI 2.x, MWT 2.x and Widget 2.x
+- the MicroEJ platform has a display interface and a touch controller (using the MicroUI EventGenerator for Pointer)
 
 Overview
 --------
@@ -102,8 +103,8 @@ Here is the custom ``EventHandler`` named ``WatchPointerEventHandler``.
 
 This ``EventHandler`` does two things:
 
-    #. It records all pressed, moved, dragged and released events as well as the time between each event (we want to play our robot at the same speed as the human)
-    #. It forwards all events to the initial ``EventHandler``. Without that, our handler would hijack the initial handler and our UI would be unresponsive because it would receive no event.
+#. It records all pressed, moved, dragged and released events as well as the time between each event (we want to play our robot at the same speed as the human)
+#. It forwards all events to the initial ``EventHandler``. Without that, our handler would hijack the initial handler and our UI would be unresponsive because it would receive no event.
 
 Note that ``WatchPointerEventHandler`` outputs the commands on the standard output. More on this a bit later.
 
@@ -157,9 +158,10 @@ Next, we setup the handler
     }
 
 This code
-    #. saves the default ``EventHandler`` of the Pointer to pass it to the ``WatchPointerEventHandler`` so that it can forward the events
-    #. we start the recording by replacing the ``EventHandler``
-    #. and we stop it by restoring the initial ``EventHandler``.
+
+#. saves the default ``EventHandler`` of the Pointer to pass it to the ``WatchPointerEventHandler`` so that it can forward the events
+#. we start the recording by replacing the ``EventHandler``
+#. and we stop it by restoring the initial ``EventHandler``.
 
 Use WatchPointer in our main application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -467,18 +469,18 @@ Here is an example.
 
 Here we have the following basic actions:
 
-    #. Logging;
-    #. Opening the configuration menu;
-    #. Closing the configuration menu;
-    #. Selecting option 1;
-    #. Selecting option 2;
-    #. Going back to the login.
-
+#. Logging;
+#. Opening the configuration menu;
+#. Closing the configuration menu;
+#. Selecting option 1;
+#. Selecting option 2;
+#. Going back to the login.
+                  
 From those actions we build 3 scenarios:
 
-    #. Test the opening/closing of the configuration menu.
-    #. Select the option 1 in the configuration menu.
-    #. Select the option 2 in the configuration menu.
+#. Test the opening/closing of the configuration menu.
+#. Select the option 1 in the configuration menu.
+#. Select the option 2 in the configuration menu.
 
 And finally, we also have a “stress” scenario that endlessly go through the 3 previous scenarios in random order.
 We can call each of those scenarios from our main application to test whatever we want to.
@@ -492,8 +494,8 @@ Depending on your application architecture, you most likely have some kind of ce
 
 The idea is:
 
-    #. to record the Widget displayed before recording an action in our WatchPointerEventHandler and
-    #. to check that the Widget is displayed before playing an action in our Robot.
+#. to record the Widget displayed before recording an action in our WatchPointerEventHandler and
+#. to check that the Widget is displayed before playing an action in our Robot.
 
 Let’s assume that we have a ``Main.getCurrentWidget()`` method that returns the current Widget. We update WatchPointerEventHandler like this:
 
