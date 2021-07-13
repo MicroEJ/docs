@@ -652,125 +652,125 @@ Modifying the constructor of DemoRobot should make it work with DemoWidget
 .. code-block:: java
 
     public class DemoRobot {
-    Robot robot;
-
-    /**
-    * Instantiates our Demo.
-    */
-    public DemoRobot(Robot robot) {
-        this.robot = robot;
-    }
-
-    public void login() {
-        this.robot.press(33, 130);
-        this.robot.pause(82);
-        this.robot.release(33, 130);
-        this.robot.pause(1972);
-        this.robot.press(401, 248);
-        this.robot.pause(78);
-        this.robot.release(401, 248);
-        this.robot.pause(1047);
-    }
-
-    public void openMenuConfiguration() {
-        this.robot.press(425, 250);
-        this.robot.pause(20);
-        this.robot.release(425, 250);
-        this.robot.pause(918);
-        this.robot.press(407, 249);
-        this.robot.pause(58);
-        this.robot.release(407, 249);
-        this.robot.pause(1000);
-    }
-
-    public void closeMenuConfiguration() {
-        this.robot.press(307, 243);
-        this.robot.pause(59);
-        this.robot.move(304, 232);
-        this.robot.pause(19);
-        this.robot.release(304, 232);
-        this.robot.pause(922);
-    }
-
-    public void selectOption1() {
-        this.robot.press(407, 245);
-        this.robot.pause(39);
-        this.robot.release(407, 245);
-        this.robot.pause(1012);
-    }
-
-    public void selectOption2() {
-        this.robot.press(419, 249);
-        this.robot.pause(43);
-        this.robot.release(419, 249);
-        this.robot.pause(1035);
-    }
-
-    public void goToLogin() {
-        this.robot.press(302, 250);
-        this.robot.pause(39);
-        this.robot.release(302, 250);
-        this.robot.pause(918);
-    }
-
-    // Logins and tests open/close of configuration menu.
-    public void scenario1() {
-        try {
-            login();
-            openMenuConfiguration();
-            closeMenuConfiguration();
-            goToLogin();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        Robot robot;
+    
+        /**
+        * Instantiates our Demo.
+        */
+        public DemoRobot(Robot robot) {
+            this.robot = robot;
         }
-    }
-
-    // Logins and selects option 1 in configuration menu.
-    public void scenario2() {
-        try {
-            login();
-            openMenuConfiguration();
-            selectOption1();
-            goToLogin();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+    
+        public void login() {
+            this.robot.press(33, 130);
+            this.robot.pause(82);
+            this.robot.release(33, 130);
+            this.robot.pause(1972);
+            this.robot.press(401, 248);
+            this.robot.pause(78);
+            this.robot.release(401, 248);
+            this.robot.pause(1047);
         }
-    }
-
-    // Logins and selects option 2 in configuration menu.
-    public void scenario3() {
-        try {
-            login();
-            openMenuConfiguration();
-            selectOption2();
-            goToLogin();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+    
+        public void openMenuConfiguration() {
+            this.robot.press(425, 250);
+            this.robot.pause(20);
+            this.robot.release(425, 250);
+            this.robot.pause(918);
+            this.robot.press(407, 249);
+            this.robot.pause(58);
+            this.robot.release(407, 249);
+            this.robot.pause(1000);
         }
-    }
-
-    // Endless loop with all three scenarios in random order.
-    public void scenarioLoop() {
-        Random rand = new Random();
-        try {
-            while (true) {
-                switch (rand.nextInt(3)) {
-                case 0:
-                    scenario1();
-                    break;
-                case 1:
-                    scenario2();
-                    break;
-                case 2:
-                    scenario3();
-                    break;
-                }
+    
+        public void closeMenuConfiguration() {
+            this.robot.press(307, 243);
+            this.robot.pause(59);
+            this.robot.move(304, 232);
+            this.robot.pause(19);
+            this.robot.release(304, 232);
+            this.robot.pause(922);
+        }
+    
+        public void selectOption1() {
+            this.robot.press(407, 245);
+            this.robot.pause(39);
+            this.robot.release(407, 245);
+            this.robot.pause(1012);
+        }
+    
+        public void selectOption2() {
+            this.robot.press(419, 249);
+            this.robot.pause(43);
+            this.robot.release(419, 249);
+            this.robot.pause(1035);
+        }
+    
+        public void goToLogin() {
+            this.robot.press(302, 250);
+            this.robot.pause(39);
+            this.robot.release(302, 250);
+            this.robot.pause(918);
+        }
+    
+        // Logins and tests open/close of configuration menu.
+        public void scenario1() {
+            try {
+                login();
+                openMenuConfiguration();
+                closeMenuConfiguration();
+                goToLogin();
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        }
+    
+        // Logins and selects option 1 in configuration menu.
+        public void scenario2() {
+            try {
+                login();
+                openMenuConfiguration();
+                selectOption1();
+                goToLogin();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    
+        // Logins and selects option 2 in configuration menu.
+        public void scenario3() {
+            try {
+                login();
+                openMenuConfiguration();
+                selectOption2();
+                goToLogin();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    
+        // Endless loop with all three scenarios in random order.
+        public void scenarioLoop() {
+            Random rand = new Random();
+            try {
+                while (true) {
+                    switch (rand.nextInt(3)) {
+                    case 0:
+                        scenario1();
+                        break;
+                    case 1:
+                        scenario2();
+                        break;
+                    case 2:
+                        scenario3();
+                        break;
+                    }
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
     }
-}
 
 .. code-block:: java
 
