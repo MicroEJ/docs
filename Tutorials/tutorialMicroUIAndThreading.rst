@@ -3,6 +3,8 @@ MicroUI and Threading
 
 On MicroEJ there are two threads that handle the application, ``DisplayPump`` and ``InputPump``.
 
+The user can add more Threads if needed
+
 #. ``DisplayPump`` is a thread responsible for
 
     - managing the events;
