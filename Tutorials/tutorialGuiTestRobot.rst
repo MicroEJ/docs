@@ -35,6 +35,9 @@ Overview
 The robot creation process is twofold. First, we have to record and store the human user events. Second, we have to play them back with the robot.
 To record the events we will develop a custom ``EventHandler`` and we will inject it into the ``EventGenerator`` of ``Pointer`` events. The handler will record the events and generate the Java code to play them back.
 Then, we will inject this code into our main application and run it.
+
+For more information, please see :ref:`MWT Concepts<mwt_concepts>` and :ref:`MicroUI Input module<section_input>`.
+
 .. note:: In the next sections, we show code that is mostly functional. To use it in our project, we have to put it in our MicroEJ SDK/Studio workspace and add the proper imports.
 
 Record the Robot input events
