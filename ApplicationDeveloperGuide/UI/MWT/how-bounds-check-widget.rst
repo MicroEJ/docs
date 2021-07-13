@@ -87,7 +87,7 @@ To make the correction process easier, it's possible to indicate where the text 
         if (stringWidth > labelWidth) {
             for (int i = text.length() - 1; i >= 0; i--) {
                 if (font.substringWidth(text, 0, i) <= labelWidth) {
-                    System.out.println(text + "\" truncates after \"" + text.substring(0, i) + "\""); //$NON-NLS-1$ //$NON-NLS-2$
+                    System.out.printErr(text + "\" truncates after \"" + text.substring(0, i) + "\""); //$NON-NLS-1$ //$NON-NLS-2$
                     break;
                 }
 
@@ -101,17 +101,28 @@ This block of code may also be extracted to a helper class in order to be used i
 
     public class LabelBoundsCheck {
 
-    public static void fits(final Font font, final String text, final int contentWidth) {
+    public static boolean fits(final Font font, final String text, final int contentWidth) {
             int stringWidth = font.stringWidth(text);
             if (stringWidth > contentWidth) {
                 for (int i = text.length() - 1; i >= 0; i--) {
                     if (font.substringWidth(text, 0, i) <= contentWidth) {
-                        System.out.println(text + "\" truncates after \"" + text.substring(0, i) + "\""); //$NON-NLS-1$ //$NON-NLS-2$
-                        break;
+                        System.out.printErr(text + "\" truncates after \"" + text.substring(0, i) + "\""); //$NON-NLS-1$ //$NON-NLS-2$
+                        return false;
                    }
                 }
             }
-        
+        return true;
     }
     
+    }
+
+Using BON constant
+----------------------------
+
+To avoid verbosity on the console, it's possible to use BON constants to show the error at developer will
+
+.. code-block:: java
+
+    if (Constants.getBoolean("com.mycompany.checkTextOverflow")) {
+        LabelBoundsCheck.fits(font,text,contentWidth);
     }
