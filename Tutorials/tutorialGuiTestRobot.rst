@@ -42,7 +42,7 @@ Record the Robot input events
 We will now look at how to record the events.
 
 Record events with ``WatchPointerEventHandler``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is the custom ``EventHandler`` named ``WatchPointerEventHandler``.
 
@@ -108,7 +108,7 @@ This ``EventHandler`` does two things:
 Note that ``WatchPointerEventHandler`` outputs the commands on the standard output. More on this a bit later.
 
 Replace default ``EventHandler`` with ``WatchPointerEventHandler``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Next, we setup the handler
 
@@ -189,6 +189,7 @@ We will now see how to run our robot with the recorded events
 
 Run a robot
 -----------
+
 Play the Robot
 ~~~~~~~~~~~~~~
 
@@ -335,7 +336,7 @@ Going further
 -------------
 
 Split the Robot into actions and build complex scenario
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As we create more and more complex robots it is a good idea to put the various behaviors into separate functions so that we can create complex scenarios out of simple action blocks.
 
