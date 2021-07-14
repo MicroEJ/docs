@@ -6,7 +6,7 @@ List
 
 -  A list is a Container that resizes each of its children accordingly
 -  Naturally, It shows some issues if you add too many components
--  Using as an example the code used before, with the new font, adding
+-  Using as an example the code used before, adding
    20 components shows the following result 
 
 -  Using MicroEJ, it is possible to create a Scrollable List to avoid this issue
