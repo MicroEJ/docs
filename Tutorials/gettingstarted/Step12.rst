@@ -11,9 +11,9 @@ Creating the contact widget
 
 .. code:: java
 
-    public ContactWidget(String contactname, Image img) {
+    public ContactWidget(String contactname, Image image) {
         this.contactName = contactname;
-        this.img = img;
+        this.image = image;
     }
 
 -  Then, overriding the two abstract methods of Widget
@@ -46,7 +46,7 @@ Creating the contact widget
         g.setColor(Colors.BLACK);
         StringPainter.drawStringAtPoint(g, this.contactName, getStyle().getFont(), circleRadius + 15, contentHeight / 2, 0, 0);
         g.setColor(Colors.BLACK);
-        ImagePainter.drawImageInArea(g, this.img, contentWidth * 1 / 100, contentHeight / 4, 1, 1, 0, 0);
+        ImagePainter.drawImageInArea(g, this.image, contentWidth * 1 / 100, contentHeight / 4, 1, 1, 0, 0);
         ShapePainter.drawThickCircle(g, contentWidth * 1 / 100, contentHeight / 4, circleRadius, 2);
 
     }
@@ -67,11 +67,11 @@ Creating the contact widget
     public class ContactWidget extends Widget {
 
         String contactName;
-        Image img;
+        Image image;
 
-        public ContactWidget(String contactname, Image img) {
+        public ContactWidget(String contactname, Image image) {
             this.contactName = contactname;
-            this.img = img;
+            this.image = image;
         }
 
         @Override
@@ -95,7 +95,7 @@ Creating the contact widget
             g.setColor(Colors.BLACK);
             StringPainter.drawStringAtPoint(g, this.contactName, getStyle().getFont(), circleRadius + 15, contentHeight / 2, 0, 0);
             g.setColor(Colors.BLACK);
-            ImagePainter.drawImageInArea(g, this.img, contentWidth * 1 / 100, contentHeight / 4, 1, 1, 0, 0);
+            ImagePainter.drawImageInArea(g, this.image, contentWidth * 1 / 100, contentHeight / 4, 1, 1, 0, 0);
             ShapePainter.drawThickCircle(g, contentWidth * 1 / 100, contentHeight / 4, circleRadius, 2);
 
         }

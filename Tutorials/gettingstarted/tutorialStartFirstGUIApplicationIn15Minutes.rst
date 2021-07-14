@@ -45,9 +45,8 @@ Prepare platform sources
 
    |image0|
 
-#. Select :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > click on :guilabel:`
-   Import...`> :guilabel:`find the previously extracted folder and select the
-   MicroEJ Architecture directory`. 
+#. Select :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > click on :guilabel:` Import...` > find the previously extracted folder and select the
+   MicroEJ Architecture directory. 
 
    .. note::
 
@@ -133,7 +132,7 @@ You can have a look at the demo widget project, which contains multiple samples 
 
 - `MicroEJ SDK <https://github.com/MicroEJ/Demo-Widget>`__
 
-   |image8|
+|image8|
 
 .. |image0| image:: images/architeture.PNG
 .. |image1| image:: images/windowarch.PNG

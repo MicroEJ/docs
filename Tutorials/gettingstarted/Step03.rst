@@ -90,9 +90,9 @@ Padding and Margin
 
 - Setting an oversized margin should look like this
 
-   ..code:: java
+..code:: java
          
-         style.setMargin(new UniformOutline(10));
+   style.setMargin(new UniformOutline(10));
    
 |image3|
 
