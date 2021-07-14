@@ -20,8 +20,8 @@ Getting Started With UI
    Step11
    Step12
    Step13
-   Step14
    Step15
+   Step14
    Step16
    Step17
 
