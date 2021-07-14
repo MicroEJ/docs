@@ -65,7 +65,7 @@ Using Canvas
 
          Canvas canvas = new Canvas();
          canvas.addChild(label, 0, 0, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
-         canvas.addChild(label2, 0, 15, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
+         canvas.addChild(label2, 15, 15, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
 
          desktop.setWidget(canvas);
          desktop.requestShow();
