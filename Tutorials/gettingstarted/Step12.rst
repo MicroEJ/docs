@@ -77,9 +77,11 @@ Creating the contact widget
         @Override
         protected void computeContentOptimalSize(Size size) {
             Font f = getStyle().getFont();
-            int width = f.stringWidth(this.contactName);
-            int height = f.getHeight() * 2;
-            size.setSize(width, (int) (height * 2.5));
+            int height = f.getHeight();
+            int stringWidth = f.stringWidth(this.cname);
+            int width = stringWidth + this.img.getWidth();
+            assert (width > 240) : "String is too large";
+            size.setSize(width > 240 ? 240 : width, height);
 
         }
 
