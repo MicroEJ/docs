@@ -38,6 +38,7 @@ Prepare platform sources
 
    - `GCC <https://repository.microej.com/packages/referenceimplementations/M5QNX/1.2.0/STM32F7508-M5QNX-fullPackaging-eval-1.2.0.zip>`__
    - `IAR <https://repository.microej.com/packages/referenceimplementations/KUVW3/1.2.0/STM32F7508-KUVW3-fullPackaging-eval-1.2.0.zip>`__
+   - `Github <https://github.com/MicroEJ/Platform-STMicroelectronics-STM32F7508-DK>`__
 
 #. Go to :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`, click on :guilabel:`Import.. ` and
    choose the directory ``platformArchitecture`` inside the unzipped
@@ -53,6 +54,7 @@ Prepare platform sources
       There will be an X on architecture, this issue will be addressed soon 
    
    |image1|
+
 
 #. Select the :guilabel:`File` > :guilabel:`Import` > :guilabel:`General` > :guilabel:`Existing Projects into`
    Workspace click on :guilabel:`Select archive file` and browse for the previously
