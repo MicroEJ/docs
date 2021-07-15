@@ -1,3 +1,5 @@
+.. include:: uiReplaces.rst
+
 .. _section_ui_simulation:
 
 ==========
@@ -51,12 +53,12 @@ To be compatible with Display module's Graphics Engine, the project must depend 
 ::
 
    <dependencies>
-      <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.0.0">
+      <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
          <artifact name="frontpanel" type="jar"/>
       </dependency>
    </dependencies>
 
-.. warning:: This extension is built for each UI pack version. By consequence a Front Panel project is made for a platform built with the same UI pack. When the UI pack mismatch, some errors may occur during the Front Panel project export step, during the platform build and/or during the application runtime.
+.. warning:: This extension is built for each UI pack version. By consequence a Front Panel project is made for a platform built with the same UI pack. When the UI pack mismatch, some errors may occur during the Front Panel project export step, during the platform build and/or during the application runtime. The current pack version is |UIPACKVERSION|.
 
 The Front Panel extension does not provide any widgets. Some compatible widgets are available in a third library. The life cycle of this library is different than the UI pack's one. New widgets can be added to simulate new kind of displays, input devices, etc. This extension fetches by transitivity the Front Panel extension, so this extension dependency does not need to be specified explicitly: 
 

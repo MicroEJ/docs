@@ -4,6 +4,75 @@
 Changelog
 =========
 
+
+13.1.0 (RC)
+===========
+
+* Compatible with Architecture 7.13.0 or higher.
+
+MicroUI API
+"""""""""""
+
+**Removed**
+
+	* Remove MicroUI and Drawing API from UI pack.
+	
+MicroUI Implementation
+""""""""""""""""""""""
+
+**Changed**
+
+	* Compatible with MicroUI API 3.1.0.
+	* Check Immortals heap minimal size required by MicroUI implementation.
+	* Change the EventGenerator Pointer event format.
+	* Do no use systematically the GPU to draw intermediate steps of a shape.  
+	
+**Fixed**
+
+	* EventGenerator's event has not to be sent to the Display's handler when EventGenerator's handler is null.
+	* Fill rounded rectangle: fix rendering when corner radius is higher than rectangle height.
+	* An external image is closed twice when application only checks if the image is available.
+	* RLE1 image rendering when platform requires image pixels address alignment. 
+	* Manage the system fonts when the font generator is not embedded in the platform.
+
+Drawing Implementation
+""""""""""""""""""""""
+
+**Changed**
+
+	* Compatible with Drawing API 1.0.3.
+
+LLAPIs
+""""""
+	
+**Added**
+
+	* Add ``LLUI_DISPLAY_convertDisplayColorToARGBColor()``.
+	* Add LLAPI to manage the MicroUI Image heap.
+	* Add LLAPI to dump the MicroUI input queue.
+
+**Changed**	
+
+	* Change signature of ``LLUI_DISPLAY_setDrawingLimits()``: remove ``MICROUI_GraphicsContext*`` to be able to call this function from GPU callback method. 
+
+Simulator
+"""""""""
+
+**Added**
+
+    * Add `MicroUIImage.getImage(int)`: apply a rendering color on Ax images.  
+    * Add `LLUIDisplay.convertRegion()`: convert a region according image format restrictions.   
+
+**Changed**	
+
+	* Compatible with new EventGenerator Pointer event format.
+	
+**Fixed**
+
+	* Fix OutputFormat A8 when loading an image (path or stream) or when converting a RAW image.
+	* Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images. 
+	* Simulates the image data alignment.
+
 [13.0.6] - 2021-03-29
 =====================
 
