@@ -14,7 +14,7 @@ To use the MicroUI Foundation Library, add `MicroUI API module <https://reposito
 
 .. code-block:: XML
 
-	<dependency org="ej.api" name="microui" rev="3.0.3"/>
+	<dependency org="ej.api" name="microui" rev="3.1.0"/>
 
 Drawing Foundation Library extends MicroUI drawing APIs [#note_microui_2]_ with more complex ones such as:
 
@@ -26,7 +26,7 @@ To use the Drawing Foundation Library, add `Drawing API module <https://reposito
 
 .. code-block:: XML
 
-	<dependency org="ej.api" name="drawing" rev="1.0.2"/>
+	<dependency org="ej.api" name="drawing" rev="1.0.3"/>
 
 .. [#note_microui_2] These APIs were formerly included in MicroUI ``2.x``
 
