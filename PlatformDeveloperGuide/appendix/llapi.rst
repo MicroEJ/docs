@@ -339,6 +339,12 @@ The display driver must reserve a runtime memory buffer for creating dynamic ima
 
 The section name is ``.bss.microui.display.imagesHeap``.
 
+Functions ``LLUI_DISPLAY_IMPL_image_heap_xxx`` allow to control the image buffers allocation in the image heap. 
+An implementation of these LLAPIs is already available on the MicroEJ Central Repository (``LLUI_DISPLAY_HEAP_impl.c``). 
+This implementation is using a best fit allocator. 
+It can be updated to log the allocations, the remaining space, etc. 
+When no implementation is included in the BSP, the default Graphics Engine'a allocator (a best fit allocator) is used.
+
 External Font Heap
 ------------------
 

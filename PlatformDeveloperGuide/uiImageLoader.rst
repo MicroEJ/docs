@@ -35,6 +35,11 @@ There are several ways to create a MicroUI Image. Except few specific cases, the
 The heap size is application dependant. In MicroEJ application launcher, set its size in :guilabel:`Libraries` > :guilabel:`MicroUI` > :guilabel:`Images heap size (in bytes)`.
 It will declare a section whose name is ``.bss.microui.display.imagesHeap``.
 
+By default, the Image Loader uses an internal best fit allocator to allocate the image buffers (internal Graphics Engine's allocator). 
+To override this default implementation, some specific :ref:`Low Level API <LLDISPLAY-API-SECTION>` (LLAPI) are available. 
+These LLAPIs may useful to control the buffers allocation, retrieve the remaining space, etc. 
+When not implemented by the BSP, the default internal Graphics Engine's allocator is used.
+
 BufferedImage
 =============
 
