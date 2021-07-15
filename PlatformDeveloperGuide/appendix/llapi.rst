@@ -296,17 +296,19 @@ structured events to the predefined event generators:
    |                                        |           | touch pad over a display.               |
    +----------------------------------------+-----------+-----------------------------------------+
 
-Event Buffer
-------------
-
-The maximum usage of the internal event buffer may be retrieved at
-runtime using the ``LLUI_INPUT_getMaxEventsBufferUsage`` function. This is
-useful for tuning the size of the buffer.
 
 .. [1]
    The implementation class is a subclass of the MicroUI class of the
    column.
 
+Event Buffer
+------------
+
+Functions ``LLUI_INPUT_IMPL_log_xxx`` allow to log the use of event buffer. 
+An implementation of these LLAPIs is already available on the MicroEJ Central Repository (``LLUI_INPUT_LOG_impl.c``). 
+This implementation is using an array to add some metadata on each event. 
+This metadata is used when the BSP is calling ``LLUI_INPUT_dump()``.
+When no implementation is included in the BSP, the call to ``LLUI_INPUT_dump()`` has no effect (no available logger).
 
 .. _LLDISPLAY-API-SECTION:
 

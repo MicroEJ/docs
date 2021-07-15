@@ -118,6 +118,36 @@ When there is no input device on the board, a *stub* implementation of C library
 
 .. _javaEventGenerators:
 
+Event Buffer
+============
+
+MicroUI is using a circular buffer to a manage the input events. 
+As soon as an event is added, removed or replaced in the queue, the event engine calls the associated Low Level API (LLAPI) ``LLUI_INPUT_IMPL_log_queue_xxx()``.
+This LLAPI allows the BSP to log this event in order to dump it later thanks a call to ``LLUI_INPUT_dump()``.
+
+.. note:: When the functions ``LLUI_INPUT_IMPL_log_queue_xxx()`` are not implemented, a call to ``LLUI_INPUT_dump()`` has no effect (there is no default logger).
+
+The following steps describe how the logger is called:
+
+1. On startup, MicroUI calls ``LLUI_INPUT_IMPL_log_queue_init()``: it gives the event buffer. The implementation should prepare its logger.
+2. The BSP adds or replaces an event in the queue, the event engine calls ``LLUI_INPUT_IMPL_log_queue_add()`` or ``LLUI_INPUT_IMPL_log_queue_replace()``. The implementation should store the event metadata: buffer index, event size, etc.
+3. If the event cannot be added because the queue is full, the event engine calls ``LLUI_INPUT_IMPL_log_queue_full()``. The implementation can print a warning, throw an error, etc.
+4. MicroUI reads an event, the event engine calls ``LLUI_INPUT_IMPL_log_queue_read()``. The implementation has to update its metadata (if required).
+
+The following steps describes how the dump is performed:
+
+1. The BSP calls ``LLUI_INPUT_dump()``: the event engine starts a dump of the event buffer.
+2. First, the event engine dumps the older events. It calls ``LLUI_INPUT_IMPL_log_dump()`` for each old event. The log type value is ``0``; it means that all logs are the events or events' data already consumed (`past` events) and first log is the latest event or data stored in the queue.
+3. Then, the event engine dumps the `future` events (events not consumed yet by MicroUI). It calls ``LLUI_INPUT_IMPL_log_dump()`` for each new event. The log type value is ``1``; it means that all logs are the events or data not consumed yet (`future` events).
+4. The `future` events can target a MicroUI object (a `Displayable` for a `requestRender` event,  a `Runnable` for a `callSerially` event, etc.). The event engine notifies the logger that it will print the MicroUI objects by calling ``LLUI_INPUT_IMPL_log_dump()`` with ``2`` as log type value.
+5. Finally, the event engine notifies the logger about the end of dump by calling ``LLUI_INPUT_IMPL_log_dump()`` with ``3`` as log type value.
+
+.. warning:: The dump of MicroUI objects linked to the `future` events is only available with the MicroEJ Architectures 7.16 and higher. With older MicroEJ Architectures, nothing is dumped.
+ 
+An implementation is available on the MicroEJ Central Repository. This logger is constituted with two files:
+
+* ``LLUI_INPUT_LOG_impl.c``: this file holds some metadata for each event. When the event engine calls ``LLUI_INPUT_IMPL_log_dump()``, the logger retrieves the event metadata and calls ``microui_event_decoder.c`` functions. To enable this logger, set the define ``MICROUIEVENTDECODER_ENABLED`` in ``microui_event_decoder_conf.h``. 
+* ``microui_event_decoder.c``: this file describes the MicroUI events. It has to be customized with the MicroUI event generators identifiers. See ``microui_event_decoder_conf.h``.
 
 Dependencies
 ============
