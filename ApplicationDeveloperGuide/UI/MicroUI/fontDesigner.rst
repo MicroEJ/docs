@@ -131,10 +131,21 @@ character size in pixels.
 Styles
 ^^^^^^
 
-Font Designer allows to create a font file which holds several combinations of built-in styles (styles hardcoded in pixels map) and runtime styles (styles rendered dynamically at runtime). However, since MicroUI 3, a MicroUI font holds only one style: ``PLAIN``, ``BOLD``, ``ITALIC`` or ``BOLD + ITALIC``. By consequence, the styles option must be left to the default option.
+Font Designer allows to create a font file that holds several combinations of built-in styles (styles hardcoded in pixels map) and runtime styles (styles rendered dynamically at runtime). However, since MicroUI 3, a MicroUI font holds only one style: ``PLAIN``, ``BOLD``, ``ITALIC`` or ``BOLD + ITALIC``. 
 
-Font Designer features three drop-downs, one for each of ``BOLD``, ``ITALIC``
-and ``UNDERLINED``. Each drop-down has three options: ``None``, ``Built-in`` and ``Dynamic``. Use only ``None`` option. Otherwise an error at MicroEJ application compiletime will occur (incompatible font file).
+Font Designer features three drop-downs, one for each of ``BOLD``, ``ITALIC`` and ``UNDERLINED``. Each drop-down has three options: ``None``, ``Built-in`` and ``Dynamic``. To be compatible with MicroUI 3, the font options must be adjusted:
+
+* The style option ``Dynamic`` (that targets the runtime style) is forbidden, select ``None`` instead.
+* The syle ``UNDERLINED`` is forbidden, select ``None`` instead.
+
+The styles options ``Built-in`` tag the font as bold, italic or bold and italic. This style can be retrieved by the MicroEJ Application thanks the methods ``Font.isBold()`` and ``Font.isItalic()``. Adjust the styles options according the font:
+
+* The font is a `plain` font: select ``None`` option for each style.
+* The font is a `bold` font: select ``Built-in`` for the style `bold` and ``None`` for the other styles.
+* The font is an `italic` font: select ``Built-in`` for the style `italic` and ``None`` for the other styles.
+* The font is a `bold` and `italic` font: select ``Built-in`` for the styles `bold` and `italic` and ``None`` for ``underline``.
+
+.. warning:: When a font holds a ``Built-in`` style or when the style `underline`, an error at MicroEJ application compiletime is thrown (incompatible font file).
 
 Identifiers
 ^^^^^^^^^^^
