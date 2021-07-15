@@ -136,6 +136,7 @@ MicroUI Implementation
 	* Clip is not checked when filling arcs, circles and ellipsis.
 	* Image path when loading an external image (``LLEXT``).
 	* ``InternalLimitsError`` when calling ``MicroUI.callSerially()`` from a feature.
+    * Allow to open a font encoded by an UI Pack 12 (but cannot manage dynamic styles).
 
 Drawing Implementation
 """"""""""""""""""""""

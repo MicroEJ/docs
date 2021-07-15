@@ -128,6 +128,8 @@ character size in pixels.
    When the font is monospace, the space size is equal to the font
    width.
 
+.. _section.tool.fontdesigner.styles:
+
 Styles
 ^^^^^^
 
