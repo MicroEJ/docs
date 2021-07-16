@@ -6,14 +6,14 @@ Hiding a Widget
 Using Desktop To hide a widget
 ---------------------------------
 
-In the code Sample below, a button is created to change the Desktop when clicked, a new desktop with a widget is created, hiding the ones behind it
+In the code Sample below, a button is created to change the Desktop when clicked:
 
 .. code-block:: java
 
     MicroUI.start();
     Desktop desktop = new Desktop();
     Canvas c;
-    MyFlow list = new MyFlow();
+    Flow list = new Flow(Orientation");
     list.addChild(new Label("Label 1"));
     list.addChild(new Label("Label 2"));
     Button b = new Button("Click to change the Widget");
@@ -29,9 +29,37 @@ In the code Sample below, a button is created to change the Desktop when clicked
     desktop.setWidget(list);
     desktop.requestShow();
 
-it's possible to go back with the old desktop by just requesting show on the old desktop 
+A new desktop with a widget is created, this will hide the Desktop, to go back to the first desktop you do the same process of calling requestShow from the desktop
+
+.. code-block:: java
+
+    MicroUI.start();
+    Desktop desktop = new Desktop();
+    Canvas c;
+    Flow list = new Flow(LayoutOrientation.HORIZONTAL);
+    list.addChild(new Label("Label 1"));
+    list.addChild(new Label("Label 2"));
+    Button b = new Button("Click to change the Widget");
+    Desktop desktop2 = new Desktop();
+    b.setOnClickListener(new OnClickListener() {
+        @Override
+        public void onClick() {
+            Button b2 = new Button("Click to change back the Widget");
+            b2.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick() {
+                    desktop.requestShow();
+                }
+            });
+            desktop2.setWidget(b2);
+            desktop2.requestShow();
+        }
+    });
+    list.addChild(b);
+    desktop.setWidget(list);
+    desktop.requestShow();
+
 
 .. image:: images/hidewidgetshow.png
 
 .. image:: images/hidewidgethidden.png
-
