@@ -518,7 +518,7 @@ When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 |
 
 .. _display_pixel_structure_driver:
 
-When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the Display module considers the pixel representation as **driver-specific**. In this case, the driver must implement functions that convert MicroUI's standard 32 bits ARGB colors to display color representation (see :ref:`LLDISPLAY-API-SECTION`). This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. This mode can also be used when the number of bits for a color component (alpha, red, green or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut` .
+When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the Display module considers the pixel representation as **driver-specific**. In this case, the driver must implement functions that convert MicroUI's standard 32 bits ARGB colors to display color representation (see :ref:`LLDISPLAY-API-SECTION`). This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. This mode can also be used when the number of bits for a color component (alpha, red, green or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut`.
 
 .. _section_display_llapi:
 
