@@ -163,6 +163,8 @@ As mentionned above (:ref:`section_image_binary_raw`), the Image Generator is ab
 4. Note down the name of created class, with its package and classname.
 5. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
 
+.. _section_image_generator_conffile:
+
 Configuration File
 ==================
 
