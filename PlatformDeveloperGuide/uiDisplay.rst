@@ -383,7 +383,7 @@ Standard
 --------
 
 When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the Display module considers the pixels representation as **standard**. 
-All standard representations are internally managed by the Display module, by the :ref:`Front Panel module<section_ui_simulation>` and by the :ref:`Image Generator<section_image_generator>`. 
+All standard representations are internally managed by the Display module, by the :ref:`Front Panel<section_ui_simulation>` and by the :ref:`Image Generator<section_image_generator>`. 
 No specific support is required as soon as a MicroEJ Platform is using a standard representation. It is able to:
 
 * generates at compile-time RAW images in same format than display pixel format,
