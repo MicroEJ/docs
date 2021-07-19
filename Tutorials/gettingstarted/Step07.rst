@@ -1,4 +1,4 @@
-Basic drawing/Drawing on screen
+Basic Drawing on screen
 ===============================
 
 -  It is also possible to have access to a drawable interface using the
@@ -31,7 +31,7 @@ Basic drawing/Drawing on screen
    
    |image0|
  
-Drawing basic shapes
+Drawing Basic Shapes
 ---------------------------
 
 -  It is also possible to also draw geometric objects using the Painter class 
@@ -84,7 +84,7 @@ Drawing Thick Shapes
 
    |image3|
 
-.. |image0| image:: images/drawline.PNG
+.. |image0| image:: images/drawline.png
 .. |image1| image:: images/geometry.png
 .. |image2| image:: images/imagedrawable.png
 .. |image3| image:: images/thickshapes.png

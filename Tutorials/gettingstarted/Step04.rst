@@ -30,7 +30,7 @@ Adding Images
 -  ``path`` is the path to the image file, relative to the ``resources`` folder.
 -  ``format`` specifies how the image will be embedded in the application.
 
-Displaying an image
+Displaying an Image
 -------------------
 
 - To display this image, first create an instance of the widget ``ImageWidget``, specifying the path to the image in the constructor:

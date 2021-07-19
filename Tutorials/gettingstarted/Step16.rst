@@ -8,9 +8,8 @@ Using the Pop Up
 
 .. code:: java
     
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		MicroUI.start();
-
 		Desktop desktop = new Desktop();
 		CascadingStylesheet css = new CascadingStylesheet();
 		EditableStyle style = css.getSelectorStyle(new TypeSelector(Button.class));
@@ -276,4 +275,4 @@ The popup code
     }
     
 
-.. |openPopup| image:: images/openPopup.PNG
+.. |openPopup| image:: images/openPopup.png

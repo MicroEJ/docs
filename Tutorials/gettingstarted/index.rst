@@ -1,7 +1,7 @@
 .. _gettingstarted:
 
-Getting Started With UI 
-=======================
+Getting Started With GUI 
+=========================
 
 .. toctree::
    :maxdepth: 1

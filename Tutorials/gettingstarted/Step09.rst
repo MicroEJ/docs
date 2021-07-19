@@ -22,7 +22,7 @@ Creating Widgets
             }
         }
 
-Setting up
+Setting Up
 ----------
 
 -  Let's use the progress bar with a fixed size
@@ -98,4 +98,4 @@ Using with Animator
 
    |image0|
 
-.. |image0| image:: images/progressbar.PNG
+.. |image0| image:: images/progressbar.png

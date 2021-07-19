@@ -65,7 +65,7 @@ Class Selector
 
    |image0| 
 
-Combinator and Conditional style
+Combinator and Conditional Style
 --------------------------------
 
 -  It is possible to combine two or more Classes using a combinator

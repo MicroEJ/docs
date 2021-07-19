@@ -75,5 +75,5 @@ Using Canvas
 
 
 .. |image0| image:: images/flowexample.png
-.. |image1| image:: images/flowusage.PNG
+.. |image1| image:: images/flowusage.png
 .. |image2| image:: images/canvassample.png

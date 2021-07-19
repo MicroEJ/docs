@@ -24,7 +24,7 @@ Start the IDE for the first time
 
       If you are not familiar with Eclipse workspaces, select the default and press OK.
    
-#. Select the MicroEJ repository to import MicroEJ architectures
+#. Select the MicroEJ repository to import MicroEJ Architectures
    from. 
 
    .. note::
@@ -35,18 +35,15 @@ Prepare platform sources
 ------------------------
 
 #. Download and unzip the platform sources for  STM32F7508 
-
-   - `GCC <https://repository.microej.com/packages/referenceimplementations/M5QNX/1.2.0/STM32F7508-M5QNX-fullPackaging-eval-1.2.0.zip>`__
-   - `IAR <https://repository.microej.com/packages/referenceimplementations/KUVW3/1.2.0/STM32F7508-KUVW3-fullPackaging-eval-1.2.0.zip>`__
    - `Github <https://github.com/MicroEJ/Platform-STMicroelectronics-STM32F7508-DK>`__
 
-#. Go to :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`, click on :guilabel:`Import.. ` and
+#. Go to :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > click on :guilabel:`Import...` >
    choose the directory ``platformArchitecture`` inside the unzipped
    folder read the license of the targets, and then click :guilabel:`Finish`.
 
    |image0|
 
-#. Select :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > click on :guilabel:` Import...` > find the previously extracted folder and select the
+#. Select :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > click on :guilabel:`Import...`  > find the previously extracted folder and select the
    MicroEJ Architecture directory. 
 
    .. note::
@@ -132,16 +129,19 @@ Featured project Demo Widget
 
 You can have a look at the demo widget project, which contains multiple samples of widgets and usages
 
-- `MicroEJ SDK <https://github.com/MicroEJ/Demo-Widget>`__
+- `Widget Demo GitHub Repository <https://github.com/MicroEJ/Demo-Widget>`__
 
 |image8|
 
-.. |image0| image:: images/architeture.PNG
-.. |image1| image:: images/windowarch.PNG
+.. |image0| image:: images/architecture.png
+
+.. |image1| image:: images/windowarch.png
 .. |image2| image:: images/workspace.png
 .. |image3| image:: images/video1.png
-.. |image4| image:: images/activatevid.PNG
+.. |image4| image:: images/activatevid.png
 .. |image5| image:: images/buildplat.png
 .. |image6| image:: images/createStandaloneProject.png
 .. |image7| image:: images/structure.png
-.. |image8| image:: images/widgetdemo.PNG
+.. |image8| image:: images/widgetdemo.png
+
+ 

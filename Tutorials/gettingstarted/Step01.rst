@@ -1,7 +1,7 @@
 Starting MicroUI
 ====================
 
-#. To get started, first we need to add MicroUI, a foundation library
+#. To get started, first we need to add MicroUI, a Foundation Library
    that provides an abstraction layer to access the low-level UI inputs
    and outputs.
 #. Look for module.ivy, and replace dependencies with the following:
@@ -30,9 +30,7 @@ Starting MicroUI
 
      MicroUI has to be started before any UI operations
 
-#. To run your code on the simulator, left click on the Project Go To
-   
-   :guilabel:`Run` > :guilabel:`Run As` > :guilabel:`MicroEJ Application` > :guilabel:`Select the device you added`
+#. To run your code on the Simulator, left click on the Project Go To :guilabel:`Run` > :guilabel:`Run As` > :guilabel:`MicroEJ Application` > :guilabel:`Select the device you added`
    
    |image0|
 
@@ -93,7 +91,7 @@ Displaying a Label
         desktop.requestShow();
     }
 
-#. To run the code go to the **Main.java** file and right click it, hover over Run As and select MicroEJ Application
+#. To run the code go to the **Main.java** file and right click it, hover over :guilabel:`Run As` and select :guilabel:`MicroEJ Application`
 
    |image2|
 
