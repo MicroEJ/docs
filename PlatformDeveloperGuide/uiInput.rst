@@ -193,7 +193,7 @@ Example of dump:
    [26: 0x002a0029]    at 42,41 (absolute)
    --------------------------- New Events' Java objects ---------------------------
    [java/lang/Object[2]@0xC000FD1C
-	[0] com/is2t/examples/microui/mvc/MVCDisplayable@0xC000BAC0
+	[0] com/microej/examples/microui/mvc/MVCDisplayable@0xC000BAC0
 	[1] null
    ================================================================================
 

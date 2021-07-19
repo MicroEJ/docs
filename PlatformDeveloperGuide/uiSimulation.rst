@@ -70,18 +70,20 @@ The Front Panel extension does not provide any widgets. Some compatible widgets 
 
 .. warning:: The minimal version ``2.0.0`` is required to be compatible with UI pack 13.0.0 and higher. By default, when creating a new Front Panel project, the widget dependency version is ``1.0.0``.
 
+.. _section_ui_simulation_display:
 
 Widget Display
 ==============
 
-By default, a display area is rectangular. Some displays can have
-another appearance (for instance: circular). The Front Panel is able to
-simulate that using a filter (see :ref:`section_frontpanel_widget`). This filter defines the pixels inside and
-outside the real display area. The filter image must have the same size
-than display rectangular area. A display pixel at a given position will
-be not rendered if the pixel at the same position in mask is fully
-transparent.
+The widget Display implements the interface ``ej.microui.display.LLUIDisplayImpl`` to be compatible with the implementation of the MicroUI class `Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_.
 
+This widget manages:
+
+* The simple or double buffering (default value): ``doubleBufferFeature=true|false``.
+* The backlight (enabled by default): ``backlightFeature=true|false``.
+* The non-rectangular displays: ``filter="xxx.png"``. Some displays can have another appearance (for instance: circular); the Front Panel is able to simulate that using a filter (see :ref:`section_frontpanel_widget`). This filter defines the pixels inside and outside the real display area. The filter image must have the same size than display rectangular area. A display pixel at a given position will be not rendered if the pixel at the same position in mask is fully transparent.
+* The :ref:`standard<display_pixel_structure_standard>` pixel formats.
+* The :ref:`driver-specific<display_pixel_structure_driver>` pixel formats: ``extensionClass="xxx"``. This class must be added in the Front Panel project and implement the interface ``ej.fp.widget.Display.DisplayExtension``.
 
 Inputs Extensions
 =================

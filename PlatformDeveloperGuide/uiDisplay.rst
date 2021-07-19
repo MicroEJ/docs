@@ -372,11 +372,27 @@ For the display with a number of bits-per-pixel (BPP) lower than 8, the Graphics
 Pixel Structure
 ===============
 
+Principle
+---------
+
 The Display module provides pre-built display configurations with standard pixel memory layout. The layout of the bits within the pixel may be :ref:`standard<display_pixel_structure_standard>` or :ref:`driver-specific<display_pixel_structure_driver>`. When installing the Display module, a property ``bpp`` is required to specify the kind of pixel representation (see :ref:`section_display_installation`).
 
 .. _display_pixel_structure_standard:
 
-When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the Display module considers the pixels representation as **standard**. According to the chosen format, some color data can be lost or cropped.
+Standard
+--------
+
+When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the Display module considers the pixels representation as **standard**. 
+All standard representations are internally managed by the Display module, by the :ref:`Front Panel module<section_ui_simulation>` and by the :ref:`Image Generator<section_image_generator>`. 
+No specific support is required as soon as a MicroEJ Platform is using a standard representation. It is able to:
+
+* generates at compile-time RAW images in same format than display pixel format,
+* converts at runtime MicroUI 32-bit colors in display pixel format,
+* simulates at runtime the display pixel format.
+
+.. note:: The custom implementations of the image generator, low-level APIs and Front Panel APIs are ignored by the Display module when a pixel standard representation is selected.
+
+According to the chosen format, some color data can be lost or cropped.
 
 -  ARGB8888: the pixel uses 32 bits-per-pixel (alpha[8], red[8],
    green[8] and blue[8]).
@@ -515,10 +531,104 @@ When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 |
           return 0xff000000 | (c * 0xffffff);
       }
 
-
 .. _display_pixel_structure_driver:
 
-When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the Display module considers the pixel representation as **driver-specific**. In this case, the driver must implement functions that convert MicroUI's standard 32 bits ARGB colors to display color representation (see :ref:`LLDISPLAY-API-SECTION`). This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. This mode can also be used when the number of bits for a color component (alpha, red, green or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut`.
+Driver-Specific
+---------------
+
+When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the Display module considers the pixel representation as **driver-specific**. 
+This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. 
+This mode can also be used when the number of bits for a color component (alpha, red, green or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut`.
+This mode requires some specific support in the MicroEJ Platform:
+
+* An extension of the image generator is mandatory: see :ref:`section_image_generator_extended` to convert MicroUI's standard 32 bits ARGB colors to display pixel format.
+* The Front Panel widget ``Display`` requires an extension to convert the MicroUI 32-bit colors in display pixel format and vice-versa, see :ref:`section_ui_simulation_display`.  
+* The driver must implement functions that convert MicroUI's standard 32 bits ARGB colors to display pixel format and vice-versa: see :ref:`colorConversions`.
+
+The following example illustrates the use of specific format BGR565 (the pixel uses 16 bits-per-pixel (alpha[0], red[5], green[6]
+and blue[5]):
+
+1. Configure the MicroEJ Platform:
+
+   * Create or open the Platform configuration project file ``display/display.properties``: 
+
+   .. code-block:: java 
+
+      bpp=16
+
+2. Image Generator:
+  
+  *  Create a project as described :ref:`here<section_image_generator_extended>`.
+  *  Create the class ``com.microej.graphicalengine.generator.MicroUIGeneratorExtension`` that extends the class ``com.microej.tool.ui.generator.BufferedImageLoader``.
+  *  Fill the method ``convertARGBColorToDisplayColor()``:
+
+  .. code-block:: java
+
+      public class MicroUIGeneratorExtension extends BufferedImageLoader {
+        @Override
+        public int convertARGBColorToDisplayColor(int color) {
+           return ((color & 0xf80000) >> 19) | ((color & 0x00fc00) >> 5) | ((color & 0x0000f8) << 8);
+        }
+     }
+  * Configure the Image Generator' service loader: add the file ``/META-INF/services/com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension``:
+
+  .. code-block:: java
+   
+      com.microej.graphicalengine.generator.MicroUIGeneratorExtension
+
+  * Build the module (click on blue button).
+  * Copy the generated jar file (``imageGeneratorMyPlatform.jar``) in the MicroEJ Platform configuration project: ``/dropins/tools/``.
+
+2. Simulator (Front Panel):
+
+   *  Create the class ``com.microej.fp.MyDisplayExtension`` that implements the interface ``ej.fp.widget.Display.DisplayExtension``:
+
+   .. code-block:: java
+
+      public class MyDisplayExtension implements DisplayExtension {
+
+         @Override
+         public int convertARGBColorToDisplayColor(Display display, int color) {
+            return ((color & 0xf80000) >> 19) | ((color & 0x00fc00) >> 5) | ((color & 0x0000f8) << 8);
+         }
+
+         @Override
+         public int convertDisplayColorToARGBColor(Display display, int color) {
+            return ((color & 0x001f) << 19) | ((color & 0x7e00) << 5) | ((color & 0xf800) >> 8) | 0xff000000;
+         }
+
+         @Override
+         public boolean isColor(Display display) {
+            return true;
+         }
+
+         @Override
+         public int getNumberOfColors(Display display) {
+            return 1 << 16;
+         }
+      }
+   
+   * Configure the widget ``Display`` in the ``.fp`` file by referencing the display extension:
+
+   .. code-block:: xml
+
+      <ej.fp.widget.Display x="41" y="33" width="320" height="240" extensionClass="com.microej.fp.MyDisplayExtension"/>
+
+3. Build the MicroEJ Platform as usual
+
+4. Update the ``LLUI_DISPLAY`` implementation by adding the following functions:
+
+   .. code-block:: c
+
+      uint32_t LLUI_DISPLAY_IMPL_convertARGBColorToDisplayColor(uint32_t color)
+      {
+         return ((color & 0xf80000) >> 19) | ((color & 0x00fc00) >> 5) | ((color & 0x0000f8) << 8);
+      }
+      
+      uint32_t LLUI_DISPLAY_IMPL_convertDisplayColorToARGBColor(uint32_t color)
+      {
+        return ((color & 0x001f) << 19) | ((color & 0x7e00) << 5) | ((color & 0xf800) >> 8) | 0xff000000;
+      }
 
 .. _section_display_llapi:
 
@@ -763,7 +873,6 @@ This solution requires several conditions:
 -  The CLUT must provide a set of blending ranges the application can use. Each range can have its own size (different number of colors between two colors). Each range is independent. For instance if the foreground color ``RED`` (``0xFFFF0000``) can be blended with two background colors ``WHITE`` (``0xFFFFFFFF``) and ``BLACK`` (``0xFF000000``), two ranges must be provided. Both the ranges have to contain the same index for the color ``RED``.
 -  Application can only use blending ranges provided by the CLUT. Otherwise the display driver is not able to find the range and the default color will be used to perform the blending.
 -  Rendering of dynamic images (images decoded at runtime) may be wrong because the ARGB colors may be out of CLUT range.
-
 
 Image Pixel Conversion
 ======================

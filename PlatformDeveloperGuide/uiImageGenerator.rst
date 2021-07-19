@@ -58,6 +58,8 @@ Standalone Mode
 
 The standalone Image Generator embeds all parts described above. By consequence, once installed in a platform, the standalone image generator does not need any extended module to generate MicroEJ files from standard images files. 
 
+.. _section_image_generator_extended:
+
 Extended Mode
 =============
 
@@ -84,7 +86,7 @@ To do that the Image Generator provides some services to implement. This chapter
 
       <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:m="http://www.easyant.org/ivy/maven" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
 
-         <info organisation="com.is2t.microui" module="imageGeneratorMyPlatform" status="integration" revision="1.0.0">      
+         <info organisation="com.microej.microui" module="imageGeneratorMyPlatform" status="integration" revision="1.0.0">      
             <ea:build organisation="com.is2t.easyant.buildtypes" module="build-std-javalib" revision="2.+"/>
          </info>
          
