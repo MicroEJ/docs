@@ -219,7 +219,7 @@ send data to its associated event generator:
 -  ``LLUI_INPUT_sendEvents``: Sends a frame constituted by several 32-bit events to a specific event generator, specified by its ID. If the input buffer cannot receive the whole data, the frame is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
 
 Events will be dispatched to the associated event generator that will be
-responsible for decoding them (see :ref:`javaEventGenerators`).
+responsible for decoding them (see :ref:`section_inputs_genericEventGenerators`).
 
 The UI extension provides an implementation for each of MicroUI's
 built-in event generators. Each one has dedicated functions that allows

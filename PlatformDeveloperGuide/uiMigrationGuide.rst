@@ -27,7 +27,7 @@ BSP
 * Add a cast when using ``MICROUI_Image*`` object: ``(MICROUI_ImageFormat)image->format`` .
 * Remove parameter ``MICROUI_GraphicsContext*`` when calling ``LLUI_DISPLAY_setDrawingLimits()``. 
 * Ensure to call ``LLUI_DISPLAY_setDrawingLimits()`` before calling ``LLUI_DISPLAY_setDrawingStatus()`` or ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``.
-* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the images heap allocation; by default the internal Graphics Engine's allocator is used. Another implementation is also available on the MicroEJ Central Repository. 
+* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available on the :ref:`C module<section_ui_releasenotes_cmodule>`. 
 
 From 12.x to 13.x
 =================

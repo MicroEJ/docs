@@ -60,6 +60,8 @@ decoupling has two major benefits:
 -  The listener can translate the notification; so, for example, a
    joystick could generate pointer events.
 
+.. _section_inputs_static_init:
+
 Static Initialization
 =====================
 
@@ -77,6 +79,8 @@ MicroUI provides a set of standard event generators: `Command <https://repositor
 Static Initialization proposes an additional event generator: ``Touch``. A touch event generator is a `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ event generator whose area size is the display size where the touch panel is placed. Furthermore, contrary to a pointer, a *press* action is required to be able to have a *move* action (and so a *drag* action). The Input Engine proposes a set of functions to target a touch event generator (equal to a pointer event generator but with some constraints). The touch event generator is identified as a standard `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ event generator, by consequence the Java application has to use the `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ API to deal with a touch event generator.
 
 According to the event generator, one or several parameters are required. The parameter format is event generator dependant. For instance a ``Pointer`` X-coordinate is encoded on 16 bits (0-65535 pixels).
+
+.. _section_inputs_genericEventGenerators:
 
 Generic Event Generators
 ========================
@@ -116,7 +120,7 @@ These functions take as parameter the MicroUI EventGenerator to target and the d
 
 When there is no input device on the board, a *stub* implementation of C library is available. This C library must be linked by the third-party C IDE when the MicroUI module is installed in the MicroEJ Platform. This stub library does not provide any Low Level API files.
 
-.. _javaEventGenerators:
+.. _section_inputs_eventbuffer:
 
 Event Buffer
 ============
@@ -144,7 +148,7 @@ The following steps describes how the dump is performed:
 
 .. warning:: The dump of MicroUI objects linked to the `future` events is only available with the MicroEJ Architectures 7.16 and higher. With older MicroEJ Architectures, nothing is dumped.
  
-An implementation is available on the MicroEJ Central Repository. This logger is constituted with two files:
+An implementation is available on the :ref:`C module<section_ui_releasenotes_cmodule>`. This logger is constituted with two files:
 
 * ``LLUI_INPUT_LOG_impl.c``: this file holds some metadata for each event. When the event engine calls ``LLUI_INPUT_IMPL_log_dump()``, the logger retrieves the event metadata and calls ``microui_event_decoder.c`` functions. To enable this logger, set the define ``MICROUIEVENTDECODER_ENABLED`` in ``microui_event_decoder_conf.h``. 
 * ``microui_event_decoder.c``: this file describes the MicroUI events. It has to be customized with the MicroUI event generators identifiers. See ``microui_event_decoder_conf.h``.

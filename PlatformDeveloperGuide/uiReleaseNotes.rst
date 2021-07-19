@@ -197,10 +197,32 @@ The module version is the MicroEJ Generic UI Pack version, that is always aligne
 +-----------------+-------------------------------------------------+-------------------+
 | UI Pack Range   | Module                                          | Version           |
 +=================+=================================================+===================+
-| [13.0.0-13.0.6] | ``com.microej.pack.ui.ui-pack(imagegenerator)`` | |UIPACKVERSION|   |
+| [13.0.0-13.1.0] | ``com.microej.pack.ui.ui-pack(imagegenerator)`` | |UIPACKVERSION|   |
 +-----------------+-------------------------------------------------+-------------------+
 
 .. note:: Before MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on classpath variable ``IMAGE-GENERATOR-x.x``.
+
+.. _section_ui_releasenotes_cmodule:
+
+C Module
+========
+
+A C module `<https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_ is available on MicroEJ Central Repository. 
+This C module provides default implementations for:
+
+* ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``: see :ref:`section_display_llapi`,
+* Images heap allocator: see :ref:`section_image_loader_memory`,
+* ``LLUI_INPUT_IMPL_log_queue_xxx()``: see :ref:`section_inputs_eventbuffer`.
+
+The following table describes the compatibility versions between the C modules and the MicroEJ UI Packs:
+
++-----------------+------------------+
+| C Module Range  | UI Pack Range    |
++=================+==================+
+| 1.1.0           | 13.1.0           | 
++-----------------+------------------+
+| [1.0.0-1.0.3]   | [13.0.0-13.1.0]  |
++-----------------+------------------+
 
 ..
    | Copyright 2021, MicroEJ Corp. Content in this space is free 
