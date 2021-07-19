@@ -155,7 +155,7 @@ An implementation is available on the :ref:`C module<section_ui_releasenotes_cmo
 
 Example of a dump:
 
-.. code-block:: c
+::
 
    ============================== MicroUI FIFO Dump ===============================
    ---------------------------------- Old Events ----------------------------------

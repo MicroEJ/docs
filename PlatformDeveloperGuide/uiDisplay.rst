@@ -570,6 +570,7 @@ and blue[5]):
            return ((color & 0xf80000) >> 19) | ((color & 0x00fc00) >> 5) | ((color & 0x0000f8) << 8);
         }
      }
+     
   * Configure the Image Generator' service loader: add the file ``/META-INF/services/com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension``:
 
   .. code-block:: java
