@@ -125,9 +125,9 @@ When there is no input device on the board, a *stub* implementation of C library
 Event Buffer
 ============
 
-MicroUI is using a circular buffer to a manage the input events. 
-As soon as an event is added, removed or replaced in the queue, the event engine calls the associated Low Level API (LLAPI) ``LLUI_INPUT_IMPL_log_queue_xxx()``.
-This LLAPI allows the BSP to log this event in order to dump it later thanks a call to ``LLUI_INPUT_dump()``.
+MicroUI is using a circular buffer to manage the input events. 
+As soon as an event is added, removed, or replaced in the queue, the event engine calls the associated Low-Level API (LLAPI) ``LLUI_INPUT_IMPL_log_queue_xxx()``.
+This LLAPI allows the BSP to log this event to dump it later thanks to a call to ``LLUI_INPUT_dump()``.
 
 .. note:: When the functions ``LLUI_INPUT_IMPL_log_queue_xxx()`` are not implemented, a call to ``LLUI_INPUT_dump()`` has no effect (there is no default logger).
 
@@ -138,13 +138,13 @@ The following steps describe how the logger is called:
 3. If the event cannot be added because the queue is full, the event engine calls ``LLUI_INPUT_IMPL_log_queue_full()``. The implementation can print a warning, throw an error, etc.
 4. MicroUI reads an event, the event engine calls ``LLUI_INPUT_IMPL_log_queue_read()``. The implementation has to update its metadata (if required).
 
-The following steps describes how the dump is performed:
+The following steps describe how the dump is performed:
 
 1. The BSP calls ``LLUI_INPUT_dump()``: the event engine starts a dump of the event buffer.
-2. First, the event engine dumps the older events. It calls ``LLUI_INPUT_IMPL_log_dump()`` for each old event. The log type value is ``0``; it means that all logs are the events or events' data already consumed (`past` events) and first log is the latest event or data stored in the queue.
+2. First, the event engine dumps the older events. It calls ``LLUI_INPUT_IMPL_log_dump()`` for each old event. The log type value is ``0``; it means that all logs are the events or events' data already consumed (`past` events), and the first log is the latest event or data stored in the queue.
 3. Then, the event engine dumps the `future` events (events not consumed yet by MicroUI). It calls ``LLUI_INPUT_IMPL_log_dump()`` for each new event. The log type value is ``1``; it means that all logs are the events or data not consumed yet (`future` events).
-4. The `future` events can target a MicroUI object (a `Displayable` for a `requestRender` event,  a `Runnable` for a `callSerially` event, etc.). The event engine notifies the logger that it will print the MicroUI objects by calling ``LLUI_INPUT_IMPL_log_dump()`` with ``2`` as log type value.
-5. Finally, the event engine notifies the logger about the end of dump by calling ``LLUI_INPUT_IMPL_log_dump()`` with ``3`` as log type value.
+4. The `future` events can target a MicroUI object (a `Displayable` for a `requestRender` event,  a `Runnable` for a `callSerially` event, etc.). The event engine notifies the logger to print the MicroUI objects by calling ``LLUI_INPUT_IMPL_log_dump()`` with ``2`` as log type value.
+5. Finally, the event engine notifies the logger about the end of the dump by calling ``LLUI_INPUT_IMPL_log_dump()`` with ``3`` as log type value.
 
 .. warning:: The dump of MicroUI objects linked to the `future` events is only available with the MicroEJ Architectures 7.16 and higher. With older MicroEJ Architectures, nothing is dumped.
  
@@ -153,7 +153,7 @@ An implementation is available on the :ref:`C module<section_ui_releasenotes_cmo
 * ``LLUI_INPUT_LOG_impl.c``: this file holds some metadata for each event. When the event engine calls ``LLUI_INPUT_IMPL_log_dump()``, the logger retrieves the event metadata and calls ``microui_event_decoder.c`` functions. To enable this logger, set the define ``MICROUIEVENTDECODER_ENABLED`` in ``microui_event_decoder_conf.h``. 
 * ``microui_event_decoder.c``: this file describes the MicroUI events. It has to be customized with the MicroUI event generators identifiers. See ``microui_event_decoder_conf.h``.
 
-Example of dump:
+Example of a dump:
 
 .. code-block:: c
 
@@ -200,12 +200,12 @@ Example of dump:
 Notes:
 
 * The event ``24`` holds an object in the events objects array (a ``Displayable``); its object index is ``0``. 
-* An object is ``null`` when the memory slot has been used during the application execution but freed at the time of the dump.
+* An object is ``null`` when the memory slot has been used during the application execution but freed at the dump time.
 * The object array' size is the maximum of non-null objects reached during application execution.
 * The indices of old events are out-of-date: the memory slot is now null or reused by a newer event.
-* The event ``25`` targets the event generator ``3``; it is the identifier available in ``microui_constants.h`` (created during the MicroEJ Platform build, see :ref:`section_inputs_static_init`). 
+* The event ``25`` targets the event generator ``3``; the identifier is available in ``microui_constants.h`` (created during the MicroEJ Platform build, see :ref:`section_inputs_static_init`). 
 * The events ``27`` to ``99`` cannot be identified (no metadata or partial event content due to circular queue management).
-* Refers to the implementation on the :ref:`C module<section_ui_releasenotes_cmodule>` to have more information about the events format; this implementation is always up-to-date with the MicroUI implementation.
+* Refers to the implementation on the :ref:`C module<section_ui_releasenotes_cmodule>` to have more information about the format of the event; this implementation is always up-to-date with the MicroUI implementation.
 
 Dependencies
 ============

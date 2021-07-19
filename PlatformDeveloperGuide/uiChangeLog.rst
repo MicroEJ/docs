@@ -25,13 +25,13 @@ MicroUI Implementation
 	* Compatible with MicroUI API 3.1.0.
 	* Check Immortals heap minimal size required by MicroUI implementation.
 	* Change the EventGenerator Pointer event format.
-	* Do no use systematically the GPU to draw intermediate steps of a shape.  
+	* Do no systematically use the GPU to draw intermediate steps of a shape.  
 	
 **Fixed**
 
 	* EventGenerator's event has not to be sent to the Display's handler when EventGenerator's handler is null.
 	* Fill rounded rectangle: fix rendering when corner radius is higher than rectangle height.
-	* An external image is closed twice when application only checks if the image is available.
+	* An external image is closed twice when the application only checks if the image is available.
 	* RLE1 image rendering when platform requires image pixels address alignment. 
 	* Manage the system fonts when the font generator is not embedded in the platform.
 
@@ -69,7 +69,7 @@ Simulator
 	
 **Fixed**
 
-	* Fix OutputFormat A8 when loading an image (path or stream) or when converting a RAW image.
+	* Fix OutputFormat A8 when loading an image (path or stream) or converting a RAW image.
 	* Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images. 
 	* Simulates the image data alignment.
 

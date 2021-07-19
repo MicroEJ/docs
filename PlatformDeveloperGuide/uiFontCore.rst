@@ -72,14 +72,14 @@ This extra information is stored into a RAM section called ``.bss.microui.displa
 Configuration File
 ------------------
 
-Like internal resources, the Image Generator uses a :ref:`configuration file <section_fontgen_conffile>` (also called the "list file") for describing fonts that need to be processed. The list file must be specified in the MicroEJ Application launcher (see :ref:`application_options`). However, all the files in the application classpath with suffix ``.fontsext.list`` are automatically parsed by the Font Generator tool.
+Like internal resources, the Image Generator uses a :ref:`configuration file <section_fontgen_conffile>` (also called the "list file") for describing fonts that need to be processed. The list file must be specified in the MicroEJ Application launcher (see :ref:`application_options`). However, all the files in the application classpath with the suffix ``.fontsext.list`` are automatically parsed by the Font Generator tool.
 
 Process
 -------
 
 This chapter describes the steps to open an external resource from the application:
 
-1. Add the font in the application project (most of time in source folder ``src/main/resources`` and in the package ``fonts``).
+1. Add the font in the application project (most of the time in the source folder ``src/main/resources`` and in the package ``fonts``).
 2. Create / open the configuration file (most of time ``application.fontsext.list``).
 3. Add the relative path of the font: see :ref:`section.ui.Fonts`.
 4. Launch the application: the Font Generator converts the font in RAW format in the external resources folder (``[application_output_folder]/externalResources``).
@@ -88,19 +88,19 @@ This chapter describes the steps to open an external resource from the applicati
 7. Build and link the application with the BSP.
 8. The application loads the external resource using `Font.getFont(String) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
 9. The font loader looks for the font and only reads the font header.
-10. (optional) The external resource is closed if the external resource is inside CPU addresses' space range. 
+10. (optional) The external resource is closed if the external resource is inside the CPU addresses' space range. 
 11. The application can use the font.
-12. The external resource is never closed: the font's bytes are copied in RAM memory on demand (draw string, etc.).
+12. The external resource is never closed: the font's bytes are copied in RAM on demand (drawString, etc.).
 
-.. note:: The simulator (Front Panel) does not manage the external resources. All fonts listed in ``.fontsext.list`` files are generated in the external resources folder and this folder is added to the simulator's classpath. 
+.. note:: The simulator (Front Panel) does not manage the external resources. All fonts listed in ``.fontsext.list`` files are generated in the external resources folder, and this folder is added to the simulator's classpath. 
 
 Backward Compatibility
 ----------------------
 
-As explained :ref:`here<section.tool.fontdesigner.styles>`, the notion of `dynamic` styles and the style `underline` are not supported anymore by MicroUI 3. However, an external font may have been generated with an older version of the Font Generator; and by consequence, the generated file can hold the dynamic style. The Font Renderer is able to load these old versions of fonts. However, there are some runtime limitations:
+As explained :ref:`here<section.tool.fontdesigner.styles>`, the notion of `dynamic` styles and the style `underline` are not supported anymore by MicroUI 3. However, an external font may have been generated with an older version of the Font Generator; consequently, the generated file can hold the dynamic style. The Font Renderer can load these old versions of fonts. However, there are some runtime limitations:
 
 * The `dynamic` styles are ignored. The font is drawn without any dynamic algorithm.
-* The font style (the style returned by ``Font.isBold()`` and ``Font.isItalic()``) is the `dynamic` style. For instance when a font holds the style `bold` as dynamic style and the style `italic` as built-in style, the font is considered as `bold` + `italic`; even if the style `bold` is not rendered.
+* The font style (the style returned by ``Font.isBold()`` and ``Font.isItalic()``) is the `dynamic` style. For instance, when a font holds the style `bold` as dynamic style and the style `italic` as built-in style, the font is considered as `bold` + `italic`; even if the style `bold` is not rendered.
 
 Dependencies
 ============

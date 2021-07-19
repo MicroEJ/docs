@@ -384,13 +384,13 @@ Standard
 
 When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the Display module considers the pixels representation as **standard**. 
 All standard representations are internally managed by the Display module, by the :ref:`Front Panel<section_ui_simulation>` and by the :ref:`Image Generator<section_image_generator>`. 
-No specific support is required as soon as a MicroEJ Platform is using a standard representation. It is able to:
+No specific support is required as soon as a MicroEJ Platform is using a standard representation. It can:
 
-* generates at compile-time RAW images in same format than display pixel format,
+* generates at compile-time RAW images in the same format than display pixel format,
 * converts at runtime MicroUI 32-bit colors in display pixel format,
 * simulates at runtime the display pixel format.
 
-.. note:: The custom implementations of the image generator, low-level APIs and Front Panel APIs are ignored by the Display module when a pixel standard representation is selected.
+.. note:: The custom implementations of the image generator, low-level APIs, and Front Panel APIs are ignored by the Display module when a standard pixel representation is selected.
 
 According to the chosen format, some color data can be lost or cropped.
 
@@ -536,9 +536,9 @@ According to the chosen format, some color data can be lost or cropped.
 Driver-Specific
 ---------------
 
-When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the Display module considers the pixel representation as **driver-specific**. 
+The Display module considers the pixel representation as **driver-specific** when the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``. 
 This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. 
-This mode can also be used when the number of bits for a color component (alpha, red, green or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut`.
+This mode can also be used when the number of bits for a color component (alpha, red, green, or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut`.
 This mode requires some specific support in the MicroEJ Platform:
 
 * An extension of the image generator is mandatory: see :ref:`section_image_generator_extended` to convert MicroUI's standard 32 bits ARGB colors to display pixel format.
@@ -576,7 +576,7 @@ and blue[5]):
    
       com.microej.graphicalengine.generator.MicroUIGeneratorExtension
 
-  * Build the module (click on blue button).
+  * Build the module (click on the blue button).
   * Copy the generated jar file (``imageGeneratorMyPlatform.jar``) in the MicroEJ Platform configuration project: ``/dropins/tools/``.
 
 2. Simulator (Front Panel):

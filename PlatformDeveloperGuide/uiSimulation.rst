@@ -58,7 +58,7 @@ To be compatible with Display module's Graphics Engine, the project must depend 
       </dependency>
    </dependencies>
 
-.. warning:: This extension is built for each UI pack version. By consequence a Front Panel project is made for a platform built with the same UI pack. When the UI pack mismatch, some errors may occur during the Front Panel project export step, during the platform build and/or during the application runtime. The current pack version is |UIPACKVERSION|.
+.. warning:: This extension is built for each UI pack version. By consequence, a Front Panel project is done for a platform built with the same UI pack. When the UI pack mismatch, some errors may occur during the Front Panel project export step, during the platform build, and/or during the application runtime. The current pack version is |UIPACKVERSION|.
 
 The Front Panel extension does not provide any widgets. Some compatible widgets are available in a third library. The life cycle of this library is different than the UI pack's one. New widgets can be added to simulate new kind of displays, input devices, etc. This extension fetches by transitivity the Front Panel extension, so this extension dependency does not need to be specified explicitly: 
 
@@ -73,7 +73,7 @@ The Front Panel extension does not provide any widgets. Some compatible widgets 
 MicroUI Implementation
 ======================
 
-As described :ref:`here<section_ui_low_level>`, the Front Panel is using an equivalent of embedded side's header files that implements MicroUI native methods.
+As described :ref:`here<section_ui_low_level>`, the Front Panel uses an equivalent of embedded side's header files that implement MicroUI native methods.
 
 .. figure:: images/ui_llapi_sim.*
    :alt: MicroUI Low Level
@@ -83,10 +83,10 @@ As described :ref:`here<section_ui_low_level>`, the Front Panel is using an equi
 This set of classes and interfaces is available in the module ``com.microej.pack.ui#ui-pack``.
 It offers the same capacity to override some built-in drawing algorithms (internal Graphics Engine drawing algorithms), to add some custom drawing algorithms, to manipulate the MicroUI concepts (GraphicsContext, Image, etc.) in the Front Panel project, etc.
 
-* The interface ``ej.microui.display.LLUIDisplay`` represents the MicroUI Graphics Engine (MicroUI framework). It provides some methods to map MicroUI byte arrays in MicroUI Graphics Context objects, to manipulate MicroUI colors etc. An instance of this framework is available via the field ``Instance``. 
+* The interface ``ej.microui.display.LLUIDisplay`` represents the MicroUI Graphics Engine (MicroUI framework). It provides some methods to map MicroUI byte arrays in MicroUI Graphics Context objects, manipulate MicroUI colors, etc. An instance of this framework is available via the field ``Instance``. 
 * The interface ``ej.microui.display.LLUIDisplayImpl`` all methods required by MicroUI implementation to be compatible with the MicroUI Display class implementation. See :ref:`section_ui_simulation_display`.
-* The class ``ej.microui.display.LLUIPainter`` implements all MicroUI drawing natives. It defines some interfaces and classes to manipulate the MicroUI concepts (GraphicsContext, Image, etc.) in the Front Panel project. Like embedded side, this class manages the synchronization with the Graphics Engine and delegates the drawing to the interface ``ej.microui.display.UIDrawing``. 
-* Like the embedded side, the default implementation of the interface ``ej.microui.display.UIDrawing``: ``ej.microui.display.UIDrawing.UIDrawingDefault`` calls the internal Graphics Engine algorithms (software algorithms). Each algorithm can be overrided independently. 
+* The class ``ej.microui.display.LLUIPainter`` implements all MicroUI drawing natives. It defines some interfaces and classes to manipulate the MicroUI concepts (GraphicsContext, Image, etc.) in the Front Panel project. Like the embedded side, this class manages the synchronization with the Graphics Engine and delegates the drawing to the interface ``ej.microui.display.UIDrawing``. 
+* Like the embedded side, the default implementation of the interface ``ej.microui.display.UIDrawing``: ``ej.microui.display.UIDrawing.UIDrawingDefault`` calls the internal Graphics Engine algorithms (software algorithms). Each algorithm can be overridden independently. 
 * The classes in the package ``ej.drawing`` implement the native of the MicroUI extended library: `Drawing <https://repository.microej.com/modules/ej/api/drawing/>`_
 * The classes in the package ``ej.microui.event`` manage the input events, see :ref:`section_ui_simulation_input`.
 * The classes in the package ``ej.microui.led`` manage the LEDs.
@@ -102,7 +102,7 @@ This widget manages:
 
 * The simple or double buffering (default value): ``doubleBufferFeature=true|false``.
 * The backlight (enabled by default): ``backlightFeature=true|false``.
-* The non-rectangular displays: ``filter="xxx.png"``. Some displays can have another appearance (for instance: circular); the Front Panel is able to simulate that using a filter (see :ref:`section_frontpanel_widget`). This filter defines the pixels inside and outside the real display area. The filter image must have the same size than display rectangular area. A display pixel at a given position will be not rendered if the pixel at the same position in mask is fully transparent.
+* The non-rectangular displays: ``filter="xxx.png"``. Some displays can have another appearance (for instance: circular); the Front Panel can simulate using a filter (see :ref:`section_frontpanel_widget`). This filter defines the pixels inside and outside the whole display area. The filter image must have the same size as the rectangular display area. A display pixel at a given position will not be rendered if the pixel at the same position in the mask is fully transparent.
 * The :ref:`standard<display_pixel_structure_standard>` pixel formats.
 * The :ref:`driver-specific<display_pixel_structure_driver>` pixel formats: ``extensionClass="xxx"``. This class must be added in the Front Panel project and implement the interface ``ej.fp.widget.Display.DisplayExtension``.
 
@@ -111,7 +111,7 @@ This widget manages:
 Custom Drawings
 ===============
    
-The Graphics Engine drawing algorithms can be replaced by custom algorithms like embedded side.
+Custom algorithms like the embedded side can replace the Graphics Engine drawing algorithms.
 This chapter describes how to override the method ``fillRectangle()``.
 
 1. Create an implementation of the interface ``ej.microui.display.UIDrawing.UiDrawingDefault``: ``MyDrawer``. 
@@ -139,7 +139,7 @@ This chapter describes how to override the method ``fillRectangle()``.
       </device>
    </frontpanel>
 
-4. Implements the ``fillRectangle`` methdod like this:
+4. Implements the ``fillRectangle`` method like this:
 
 .. code-block:: java
 
@@ -158,7 +158,7 @@ This chapter describes how to override the method ``fillRectangle()``.
             return;
          }
       }
-      // clip disabled or rectangle fully fits the clip
+      // clip disabled, or rectangle entirely fits the clip
 
       // get/create AWT objects
       Graphics2D src = (Graphics2D) ((BufferedImage) gc.getImage().getRAWImage()).getGraphics();
@@ -180,15 +180,15 @@ Explanations:
 * Before drawing, the MicroUI clip is checked (the MicroUI drawing can be outside the clip and/or the image itself).
 * After drawing, the implementation updates the Graphics Engine dirty area by calling ``gc.setDrawingLimits()``.
 
-.. note:: More details are available in LLUIPainter, UIDrawing, LLUIDisplay and LLUIDisplayImpl classes.
+.. note:: More details are available in LLUIPainter, UIDrawing, LLUIDisplay, and LLUIDisplayImpl classes.
 
 New Drawings
 ============
 
-The Front Panel framework allows to add custom drawing algorithms.
+The Front Panel framework allows the addition of custom drawing algorithms.
 This chapter describes how to implement the method ``drawSomething()``.
 
-.. note:: To add a custom drawing algorithm, it is strongly recommanded to follow the same rules than the MicroUI drawings: a class that synchronizes the drawings with the Graphics Engine and another class that just performs the drawing itself (like :ref:`section_ui_simulation_customdrawing`).
+.. note:: To add a custom drawing algorithm, it is strongly recommended to follow the same rules as the MicroUI drawings: a class that synchronizes the drawings with the Graphics Engine and another class that performs the drawing itself (like :ref:`section_ui_simulation_customdrawing`).
 
 1. In the MicroEJ application, write the new native: 
 
@@ -232,7 +232,7 @@ This chapter describes how to implement the method ``drawSomething()``.
    }
 
    
-.. note:: More details are available in LLUIPainter, UIDrawing, LLUIDisplay and LLUIDisplayImpl classes.
+.. note:: More details are available in LLUIPainter, UIDrawing, LLUIDisplay, and LLUIDisplayImpl classes.
 
 
 .. _section_ui_simulation_input:

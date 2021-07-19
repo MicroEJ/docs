@@ -304,11 +304,11 @@ structured events to the predefined event generators:
 Event Buffer
 ------------
 
-Functions ``LLUI_INPUT_IMPL_log_xxx`` allow to log the use of event buffer. 
-An implementation of these LLAPIs is already available on the MicroEJ Central Repository (``LLUI_INPUT_LOG_impl.c``). 
-This implementation is using an array to add some metadata on each event. 
+Functions ``LLUI_INPUT_IMPL_log_xxx`` allow logging the use of event buffer. 
+Implementation of these LLAPIs is already available on the MicroEJ Central Repository (``LLUI_INPUT_LOG_impl.c``). 
+This implementation is using an array to add some metadata to each event. 
 This metadata is used when the BSP is calling ``LLUI_INPUT_dump()``.
-When no implementation is included in the BSP, the call to ``LLUI_INPUT_dump()`` has no effect (no available logger).
+When no implementation is included in the BSP, the call to ``LLUI_INPUT_dump()``does not affect (no available logger).
 
 .. _LLDISPLAY-API-SECTION:
 
@@ -341,8 +341,8 @@ The display driver must reserve a runtime memory buffer for creating dynamic ima
 
 The section name is ``.bss.microui.display.imagesHeap``.
 
-Functions ``LLUI_DISPLAY_IMPL_image_heap_xxx`` allow to control the image buffers allocation in the image heap. 
-An implementation of these LLAPIs is already available on the MicroEJ Central Repository (``LLUI_DISPLAY_HEAP_impl.c``). 
+Functions ``LLUI_DISPLAY_IMPL_image_heap_xxx``allow to control the image buffers allocation in the image heap. 
+Implementation of these LLAPIs is already available on the MicroEJ Central Repository (``LLUI_DISPLAY_HEAP_impl.c``). 
 This implementation is using a best fit allocator. 
 It can be updated to log the allocations, the remaining space, etc. 
 When no implementation is included in the BSP, the default Graphics Engine'a allocator (a best fit allocator) is used.
