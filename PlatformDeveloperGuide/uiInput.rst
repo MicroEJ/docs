@@ -153,6 +153,60 @@ An implementation is available on the :ref:`C module<section_ui_releasenotes_cmo
 * ``LLUI_INPUT_LOG_impl.c``: this file holds some metadata for each event. When the event engine calls ``LLUI_INPUT_IMPL_log_dump()``, the logger retrieves the event metadata and calls ``microui_event_decoder.c`` functions. To enable this logger, set the define ``MICROUIEVENTDECODER_ENABLED`` in ``microui_event_decoder_conf.h``. 
 * ``microui_event_decoder.c``: this file describes the MicroUI events. It has to be customized with the MicroUI event generators identifiers. See ``microui_event_decoder_conf.h``.
 
+Example of dump:
+
+.. code-block:: c
+
+   ============================== MicroUI FIFO Dump ===============================
+   ---------------------------------- Old Events ----------------------------------
+   [27: 0x00000000] garbage
+   [28: 0x00000000] garbage
+   [...]  
+   [99: 0x00000000] garbage
+   [00: 0x08000000] Display SHOW Displayable (Displayable index = 0)
+   [01: 0x00000008] Command HELP (event generator 0)
+   [02: 0x0d000000] Display REPAINT Displayable (Displayable index = 0)
+   [03: 0x07030000] Input event: Pointer pressed (event generator 3)
+   [04: 0x009f0063]    at 159,99 (absolute)
+   [05: 0x07030600] Input event: Pointer moved (event generator 3)
+   [06: 0x00aa0064]    at 170,100 (absolute)
+   [07: 0x02030700] Pointer dragged (event generator 3)
+   [08: 0x0d000000] Display REPAINT Displayable (Displayable index = 0)
+   [09: 0x07030600] Input event: Pointer moved (event generator 3)
+   [10: 0x00b30066]    at 179,102 (absolute)
+   [11: 0x02030700] Pointer dragged (event generator 3)
+   [12: 0x0d000000] Display REPAINT Displayable (Displayable index = 0)
+   [13: 0x07030600] Input event: Pointer moved (event generator 3)
+   [14: 0x00c50067]    at 197,103 (absolute)
+   [15: 0x02030700] Pointer dragged (event generator 3)
+   [16: 0x0d000000] Display REPAINT Displayable (Displayable index = 0)
+   [17: 0x07030600] Input event: Pointer moved (event generator 3)
+   [18: 0x00d00066]    at 208,102 (absolute)
+   [19: 0x02030700] Pointer dragged (event generator 3)
+   [20: 0x0d000000] Display REPAINT Displayable (Displayable index = 0)
+   [21: 0x07030100] Input event: Pointer released (event generator 3)
+   [22: 0x00000000]    at 0,0 (absolute)
+   [23: 0x00000008] Command HELP (event generator 0)
+   ---------------------------------- New Events ----------------------------------
+   [24: 0x0d000000] Display REPAINT Displayable (Displayable index = 0)
+   [25: 0x07030000] Input event: Pointer pressed (event generator 3)
+   [26: 0x002a0029]    at 42,41 (absolute)
+   --------------------------- New Events' Java objects ---------------------------
+   [java/lang/Object[2]@0xC000FD1C
+	[0] com/is2t/examples/microui/mvc/MVCDisplayable@0xC000BAC0
+	[1] null
+   ================================================================================
+
+Notes:
+
+* The event ``24`` holds an object in the events objects array (a ``Displayable``); its object index is ``0``. 
+* An object is ``null`` when the memory slot has been used during the application execution but freed at the time of the dump.
+* The object array' size is the maximum of non-null objects reached during application execution.
+* The indices of old events are out-of-date: the memory slot is now null or reused by a newer event.
+* The event ``25`` targets the event generator ``3``; it is the identifier available in ``microui_constants.h`` (created during the MicroEJ Platform build, see :ref:`section_inputs_static_init`). 
+* The events ``27`` to ``99`` cannot be identified (no metadata or partial event content due to circular queue management).
+* Refers to the implementation on the :ref:`C module<section_ui_releasenotes_cmodule>` to have more information about the events format; this implementation is always up-to-date with the MicroUI implementation.
+
 Dependencies
 ============
 
