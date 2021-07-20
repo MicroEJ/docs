@@ -34,7 +34,7 @@ Using the Pop Up
 		});
 		popup.setWidget(b);
 		popup.requestShow();
-    }
+	}
 
 
 - First, create a main desktop, and then, create the popup and show it with it's widget
@@ -53,7 +53,7 @@ The popup code
 .. code:: java
 
     @Override
-	/* package */void layOut() {
+	void layOut() {
 		Widget widget = this.getWidget();
 		if (widget != null) {
 			Display display = Display.getDisplay();
@@ -91,7 +91,7 @@ The popup code
 
 .. code:: java
 
-    @Override
+	@Override
 	public void requestShow() {
 		Displayable displayable = Display.getDisplay().getDisplayable();
 		if (displayable instanceof Desktop) {

@@ -55,8 +55,8 @@ Prepare platform sources
       :align: center
 
 
-#. Select the :guilabel:`File` > :guilabel:`Import` > :guilabel:`General` > :guilabel:`Existing Projects into`
-   Workspace click on :guilabel:`Select archive file` and browse for the previously
+#. Select the :guilabel:`File` > :guilabel:`Import` > :guilabel:`General` > :guilabel:`Existing Projects into Workspace` 
+#. click on :guilabel:`Select archive file` and browse for the previously
    extracted folder to locate the **MicroEJ Platform Reference
    Implementation file(e.g.STM32F7508-KUVW3-platformSource.zip)** then
    import all available Eclipse projects,and then click :guilabel:`Finish`
