@@ -21,7 +21,8 @@ List
    }
 
 
-|image0|
+.. image:: images/listsample.png
+    :align: center
 
 Scrollable List
 ---------------
@@ -59,7 +60,5 @@ Scrollable List
 - Using the scroll container(Called Scroll), then adding the ScrollableList as a Child 
 - It should look like this
 
-|image1|
-
-.. |image0| image:: images/listsample.png
-.. |image1| image:: images/scrollbar.png
+.. image:: images/scrollbar.png
+    :align: center

@@ -30,7 +30,8 @@ Usage
 
 - The code above updates the label text everytime it is called
 
-|image0| 
+.. image:: images/ticking.png
+    :align: center 
 
 - The final code should look like this
 
@@ -61,4 +62,3 @@ Usage
         desktop.requestShow();
     }
 
-.. |image0| image:: images/ticking.png

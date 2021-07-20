@@ -18,7 +18,8 @@ Using Flow Layout
    vertically, using multiple rows if necessary depending on the size
    of each child widget 
 
-   |image0|
+   .. image:: images/flowexample.png
+    :align: center
 
 -  Creating a Flow Layout
 -  First, instantiate a ``Flow`` container, then add two ``Label`` objets to this container. 
@@ -42,7 +43,8 @@ Using Flow Layout
 
 -  Both of the labels will share half of the screen 
 
-   |image1|
+   .. image:: images/flowusage.png
+    :align: center
 
    
 Using Canvas
@@ -71,9 +73,7 @@ Using Canvas
          desktop.requestShow();
       }
 
-   |image2| 
+   .. image:: images/canvassample.png
+    :align: center 
 
 
-.. |image0| image:: images/flowexample.png
-.. |image1| image:: images/flowusage.png
-.. |image2| image:: images/canvassample.png

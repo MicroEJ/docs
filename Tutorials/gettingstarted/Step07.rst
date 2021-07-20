@@ -29,7 +29,8 @@ Basic Drawing on screen
    
 -  This should draw a line from the coordinates of the display (0,0) going to (100,50) 
    
-   |image0|
+   .. image:: images/drawline.png
+    :align: center
  
 Drawing Basic Shapes
 ---------------------------
@@ -52,7 +53,8 @@ Drawing Basic Shapes
        g.setColor(Colors.GREEN);
        Painter.drawCircle(g, 50, 50, 100);
 
-   |image1|
+   .. image:: images/geometry.png
+    :align: center
        
 Drawing images
 ----------------------
@@ -65,7 +67,8 @@ Drawing images
        // draws the image at x,y coordinates (150, 50).
        Painter.drawImage(g, image, 150, 50);
 
-   |image2|
+   .. image:: images/imagedrawable.png
+    :align: center
 
 Drawing Thick Shapes
 --------------------
@@ -82,9 +85,6 @@ Drawing Thick Shapes
        g.setColor(Colors.GREEN);
        ShapePainter.drawThickFadedCircle(g, 130, 20, 100, 20, 2);
 
-   |image3|
+   .. image:: images/thickshapes.png
+    :align: center
 
-.. |image0| image:: images/drawline.png
-.. |image1| image:: images/geometry.png
-.. |image2| image:: images/imagedrawable.png
-.. |image3| image:: images/thickshapes.png

@@ -106,6 +106,6 @@ Creating the contact widget
 
 - And it should look like this:
 
-|image0|
+.. image:: images/listcontact.png
+    :align: center
 
-.. |image0| image:: images/listcontact.png

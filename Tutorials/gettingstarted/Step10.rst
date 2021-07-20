@@ -14,26 +14,31 @@ Creating a font
    Normally `Resources`-> `fonts`
 -  Then **Right-Click->New->Other->MicroEJ->MicroEJ Font**
 
-|image4| 
+.. image:: images/microejfont.png
+    :align: center 
 
 -  Then, select the name of the font
 
-|image0|
+.. image:: images/fontname.png
+    :align: center
 
 - After that, the following window should open
 
-|image1|
+.. image:: images/fonteditor.png
+    :align: center
 
 .. note::
  It is important to have the font that you want installed on your system already
 
 - To choose what font you will use you click on **Import...** and the following should open
 
-|image5|
+.. image:: images/importfonts1.png
+    :align: center
 
 - Here you will click on **Next** and then select the font you want to use as shown below
 
-|image6|
+.. image:: images/importfonts2.png
+    :align: center
 
 .. note::
 
@@ -47,7 +52,7 @@ Creating a font
 
       /fonts/NewFont.ejf
 
-Adding the font to a Label
+Adding the Font to a Label
 --------------------------
 
 -  To add the font, you must change the font in the StyleSheet
@@ -78,12 +83,5 @@ Adding the font to a Label
 .. note::
    Don't forget to add the Stylesheet to the Desktop
 
-|image3| 
-
-.. |image0| image:: images/fontname.png
-.. |image1| image:: images/fonteditor.png
-.. |image2| image:: images/selectsysfont.PNG
-.. |image3| image:: images/font.png
-.. |image4| image:: images/microejfont.PNG
-.. |image5| image:: images/importfonts1.png
-.. |image6| image:: images/importfonts2.png
+.. image:: images/font.png
+    :align: center 

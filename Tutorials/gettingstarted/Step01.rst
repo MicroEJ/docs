@@ -32,7 +32,9 @@ Starting MicroUI
 
 #. To run your code on the Simulator, left click on the Project Go To :guilabel:`Run` > :guilabel:`Run As` > :guilabel:`MicroEJ Application` > :guilabel:`Select the device you added`
    
-   |image0|
+.. image:: images/simulator.png
+    :align: center
+
 
 Widgets
 -------
@@ -93,11 +95,10 @@ Displaying a Label
 
 #. To run the code go to the **Main.java** file and right click it, hover over :guilabel:`Run As` and select :guilabel:`MicroEJ Application`
 
-   |image2|
+.. image:: images/runapplication.png
+    :align: center
 
-   |image1|
+.. image:: images/hello.png
+    :align: center
 
 
-.. |image0| image:: images/simulator.png
-.. |image1| image:: images/hello.png
-.. |image2| image:: images/runapplication.png

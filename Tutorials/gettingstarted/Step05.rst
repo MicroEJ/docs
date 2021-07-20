@@ -63,7 +63,8 @@ Class Selector
             }
        }
 
-   |image0| 
+.. image:: images/imagebackgroundexample.png
+    :align: center 
 
 Combinator and Conditional Style
 --------------------------------
@@ -83,7 +84,5 @@ Combinator and Conditional Style
 
 - Instead of directly instantiating classSelector in the get selector style, the ClassSelector has been exposed to be combined with the ButtonActive selector
 
-    |image1|
-
-.. |image0| image:: images/imagebackgroundexample.png
-.. |image1| image:: images/classselectorexample.png
+.. image:: images/classselectorexample.png
+    :align: center

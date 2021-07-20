@@ -75,26 +75,31 @@ Usage
          desktop.requestShow();
       }
 
-   |image2| 
+
+   .. image:: images/styleborder.png
+      :align: center 
 
 Padding and Margin
 ~~~~~~~~~~~~~~~~~~
 
 -  Using margin and padding its pretty simple. Adding margin and padding to widget is as follows
 
-   .. code:: java
+.. code:: java
 
-           style.setMargin(new UniformOutline(4));
+      style.setMargin(new UniformOutline(4));
 
-|image0|
+   
+.. image:: images/margin.png
+   :align: center
 
 - Setting an oversized margin should look like this
 
-..code:: java
-         
+.. code:: java
+   
    style.setMargin(new UniformOutline(10));
    
-|image3|
+.. image:: images/tuto_microej_gettingstarted_oversizedmargin.png
+   :align: center
 
 -  Adding padding
 
@@ -102,20 +107,19 @@ Padding and Margin
 
            style.setPadding(new UniformOutline(2));
 
-|image1|
+
+.. image:: images/marginandpadding.png
+   :align: center
 
 - Oversizing the padding 
 
 .. code:: java
-   
+ 
    style.setPadding(new UniformOutline(15));
 
-|image4|
+
+.. image:: images/tuto_microej_gettingstarted_oversizedmarginandpadding.png  
+   :align: center
 
 - It's possible to see the widget ovelapping other when using canvas
   
-.. |image0| image:: images/margin.png
-.. |image1| image:: images/marginandpadding.png
-.. |image2| image:: images/styleborder.png
-.. |image3| image:: images/tuto_microej_gettingstarted_oversizedmargin.png
-.. |image4| image:: images/tuto_microej_gettingstarted_oversizedmarginandpadding.png

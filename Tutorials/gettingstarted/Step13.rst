@@ -101,12 +101,12 @@ Usage
 
 - The result should look like this
 
-|image0|
+.. image:: images/labelsampleptbr.png
+    :align: center
 
 - Setting the locale to "en_us" the result should be as follows
 
-|image1|
+.. image:: images/labelsampleenus.png
+    :align: center
 
-.. |image0| image:: images/labelsampleptbr.png
 
-.. |image1| image:: images/labelsampleenus.png

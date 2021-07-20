@@ -39,7 +39,8 @@ Using the Pop Up
 
 - First, create a main desktop, and then, create the popup and show it with it's widget
 
-|openPopup|
+.. image:: images/openPopup.png
+    :align: center
 
 .. note:: 
     A nice suggestion is a message box widget
@@ -275,4 +276,3 @@ The popup code
     }
     
 
-.. |openPopup| image:: images/openPopup.png

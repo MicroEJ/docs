@@ -96,6 +96,6 @@ Using with Animator
         desktop.requestShow();
     }
 
-   |image0|
+   .. image:: images/progressbar.png
+    :align: center
 
-.. |image0| image:: images/progressbar.png

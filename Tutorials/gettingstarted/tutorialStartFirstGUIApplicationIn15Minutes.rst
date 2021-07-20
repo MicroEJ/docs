@@ -41,7 +41,8 @@ Prepare platform sources
    choose the directory ``platformArchitecture`` inside the unzipped
    folder read the license of the targets, and then click :guilabel:`Finish`.
 
-   |image0|
+.. image:: images/architecture.png
+    :align: center
 
 #. Select :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > click on :guilabel:`Import...`  > find the previously extracted folder and select the
    MicroEJ Architecture directory. 
@@ -50,7 +51,8 @@ Prepare platform sources
 
       There will be an X on architecture, this issue will be addressed soon 
    
-   |image1|
+   .. image:: images/windowarch.png 
+      :align: center
 
 
 #. Select the :guilabel:`File` > :guilabel:`Import` > :guilabel:`General` > :guilabel:`Existing Projects into`
@@ -59,7 +61,8 @@ Prepare platform sources
    Implementation file(e.g.STM32F7508-KUVW3-platformSource.zip)** then
    import all available Eclipse projects,and then click :guilabel:`Finish`
 
-   |image2|
+.. image:: images/workspace.png
+   :align: center
 
 Create your license
 -------------------
@@ -109,7 +112,8 @@ Build Your Platform
    **.platform** File MicroEJ platform configuration file. From this
    MicroEJ platform configuration file, click on the link Build Platform
    
-   |image5|
+.. image:: images/workspace.png
+   :align: center
 
 #. The message should say build successful and the platform you builded should be seen at the sdk
 
@@ -118,11 +122,13 @@ Create a New Project
 
 #. First, Go to :guilabel:`File` > :guilabel:`New` > :guilabel:`Standalone Application Project`
 
-   |image6|
+.. image:: images/createStandaloneProject.png
+   :align: center
 
 #. The Project Structure should look like this:
 
-   |image7|
+.. image:: images/structure.png
+   :align: center
 
 Featured project Demo Widget
 ------------------------------
@@ -131,17 +137,8 @@ You can have a look at the demo widget project, which contains multiple samples 
 
 - `Widget Demo GitHub Repository <https://github.com/MicroEJ/Demo-Widget>`__
 
-|image8|
+.. image:: images/widgetdemo.png
+   :align: center
 
-.. |image0| image:: images/architecture.png
 
-.. |image1| image:: images/windowarch.png
-.. |image2| image:: images/workspace.png
-.. |image3| image:: images/video1.png
-.. |image4| image:: images/activatevid.png
-.. |image5| image:: images/buildplat.png
-.. |image6| image:: images/createStandaloneProject.png
-.. |image7| image:: images/structure.png
-.. |image8| image:: images/widgetdemo.png
 
- 
