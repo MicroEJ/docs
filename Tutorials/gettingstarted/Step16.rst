@@ -85,7 +85,8 @@ The popup code
             }
         }
     }
-    return super.handleEvent(event);}
+    return super.handleEvent(event);
+	}
 
 - both methods for requesting show and hide are implemented like this 
 
