@@ -73,6 +73,26 @@ Simulator
 * Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images. 
 * Simulates the image data alignment.
 
+13.0.7 (RC)
+===========
+
+* Compatible with Architecture 7.13.0 or higher.
+
+MicroUI Implementation
+""""""""""""""""""""""
+
+**Fixed**
+
+* Allow to open a font encoded by an UI Pack 12 (but cannot manage dynamic styles).
+* `Display.flush()` method is called once when MicroUI pump thread has a higher priority than the caller of `Display.requestFlush()`.
+
+Misc
+""""
+
+**Fixed**
+
+* Fix MMM dependencies: do not fetch the MicroEJ Architecture.
+
 [13.0.6] - 2021-03-29
 =====================
 
@@ -136,7 +156,6 @@ MicroUI Implementation
 * Clip is not checked when filling arcs, circles and ellipsis.
 * Image path when loading an external image (``LLEXT``).
 * ``InternalLimitsError`` when calling ``MicroUI.callSerially()`` from a feature.
-    * Allow to open a font encoded by an UI Pack 12 (but cannot manage dynamic styles).
 
 Drawing Implementation
 """"""""""""""""""""""
