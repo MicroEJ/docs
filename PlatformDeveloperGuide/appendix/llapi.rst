@@ -304,11 +304,11 @@ structured events to the predefined event generators:
 Event Buffer
 ------------
 
-Functions ``LLUI_INPUT_IMPL_log_xxx`` allow logging the use of event buffer. 
+Functions ``LLUI_INPUT_IMPL_log_xxx`` allow logging the use of event buffer.
 Implementation of these LLAPIs is already available on the MicroEJ Central Repository (``LLUI_INPUT_LOG_impl.c``). 
 This implementation is using an array to add some metadata to each event. 
 This metadata is used when the BSP is calling ``LLUI_INPUT_dump()``.
-When no implementation is included in the BSP, the call to ``LLUI_INPUT_dump()``does not affect (no available logger).
+When no implementation is included in the BSP, the call to ``LLUI_INPUT_dump()`` does not affect (no available logger).
 
 .. _LLDISPLAY-API-SECTION:
 
