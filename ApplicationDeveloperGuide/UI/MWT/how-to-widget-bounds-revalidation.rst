@@ -1,17 +1,17 @@
 How compute Optimal Size works
 ===============================
 
-A widget, when it's created, will have its size set a Container has multiple children widgets
+When created, a widget, will have its size set A container has multiple children widgets
 
-to compute the size of each of the children on a container every time a widget is laid out, the method ComputeOptimalSize is called, it calculates the Size of this widget
+To compute the size of each of the children on a container every time a widget is laid out, the method ComputeOptimalSize is called, which will calculate the Size of this widget
 
 Every call to computeOptimalSize stores the Size needed to show the Widget correctly Including outlines(Example: Margin,Padding) and Sets the Size atrribute
 
-As a Container is also a Widget, it also contains a computeOptimalsize, calculating its size using its children
+As a container is also a Widget, it also contains a computeOptimalsize, calculating its size using its children
 
 on every call to LayOut, the optimal Size is recalculated
 
-every container has it's own way to calculate the optimal size as seen below
+every container has it's own way to calculate the optimal size as seen below:
 
 Flow Container
 --------------
@@ -45,9 +45,9 @@ Flow Container
 
 Canvas Container
 ------------------
-- Since Canvas can position widgets freely we calculate the optimal size based on the position of the farthest child in the X and Y position, its width and compare if the width of the canvas
+- Since Canvas can position widgets freely, we calculate the optimal size based on the  X and Y position and width of the farthest child,and compare it with the width of the canvas
 
-- This simpler implementation of canvas will only calculate using the X and Y position of each child and see if it's greater than the one before
+- This simpler implementation of Canvas will only calculate using the X and Y position of each child and see if it is greater than the one before
 
 .. code-block:: java
 
