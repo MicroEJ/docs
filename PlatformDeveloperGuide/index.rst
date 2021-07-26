@@ -20,7 +20,7 @@ Platform Developer Guide
    fs
    hal
    device
-   watchdog
+   watchdog-timer
    systemView
    simulation
    appendix/index

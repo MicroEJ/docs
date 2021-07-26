@@ -597,36 +597,36 @@ One C header file is provided:
    platform architecture name and unique device identifier.
 
 
-.. _LLWATCHDOG-API-SECTION:
+.. _LLWATCHDOG_TIMER-API-SECTION:
 
-LLWATCHDOG: Watchdog
-====================
+LLWATCHDOG_TIMER: Watchdog Timer
+================================
 
 Naming Convention
 -----------------
 
-The Low Level Watchdog API (LLWATCHDOG), provides functions that allow the use of this API
-at the BSP level in C. The names of these functions match the ``LLWATCHDOG_IMPL_*`` pattern.
+The Low Level Watchdog Timer API (LLWATCHDOG_TIMER), provides functions that allow the use of this API
+at the BSP level in C. The names of these functions match the ``LLWATCHDOG_TIMER_IMPL_*`` pattern.
 
 The Watchdog API is delivered with a Generic C implementation on which the platform must
 depend. This implementation relies on functions that need to be implemented by engineers in a driver.
-The name of these functions match the ``LLWATCHDOG_IMPL_*_action`` pattern.
+The name of these functions match the ``LLWATCHDOG_TIMER_IMPL_*_action`` pattern.
 
 Header Files
 ------------
 
 One C header file is provided:
 
--  LLWATCHDOG_impl.h
+-  LLWATCHDOG_TIMER_impl.h
 
    Defines a set of functions that can be used at BSP level if required.
 
 This C header file contains functions to implement:
 
--  watchdog_helper.h
+-  watchdog_timer_helper.h
 
    Defines a set of functions that the BSP must implement to link the platform watchdog timer
-   to the Watchdog library.
+   to the Watchdog Timer library.
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
