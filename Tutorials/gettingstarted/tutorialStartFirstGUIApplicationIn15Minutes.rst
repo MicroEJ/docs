@@ -37,31 +37,13 @@ Prepare platform sources
 #. Download and unzip the platform sources for  STM32F7508 
    - `Github <https://github.com/MicroEJ/Platform-STMicroelectronics-STM32F7508-DK>`__
 
-#. Go to :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > click on :guilabel:`Import...` >
-   choose the directory ``platformArchitecture`` inside the unzipped
-   folder read the license of the targets, and then click :guilabel:`Finish`.
-
-.. image:: images/architecture.png
-    :align: center
-
-#. Select :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Architectures` > click on :guilabel:`Import...`  > find the previously extracted folder and select the
-   MicroEJ Architecture directory. 
-
-   .. note::
-
-      There will be an X on architecture, this issue will be addressed soon 
-   
-   .. image:: images/windowarch.png 
-      :align: center
-
-
 #. Select the :guilabel:`File` > :guilabel:`Import` > :guilabel:`General` > :guilabel:`Existing Projects into Workspace` 
 #. click on :guilabel:`Select archive file` and browse for the previously
    extracted folder to locate the **MicroEJ Platform Reference
    Implementation file(e.g.STM32F7508-KUVW3-platformSource.zip)** then
    import all available Eclipse projects,and then click :guilabel:`Finish`
 
-.. image:: images/workspace.png
+.. image:: images/workspace.png 
    :align: center
 
 Create your license
@@ -112,7 +94,7 @@ Build Your Platform
    **.platform** File MicroEJ platform configuration file. From this
    MicroEJ platform configuration file, click on the link Build Platform
    
-.. image:: images/workspace.png
+.. image:: images/buildplat.png
    :align: center
 
 #. The message should say build successful and the platform you builded should be seen at the sdk
