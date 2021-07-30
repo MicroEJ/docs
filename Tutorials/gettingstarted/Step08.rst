@@ -1,17 +1,17 @@
 Animation
 =========
 
--  To use animation, the Animation class is going to be used
+-  To use animations, the Animation class is going to be used.
 -  The main goal with animation is to set the widget graphics in motion
-   to make the GUI more appealing and more lively 
+   to make the GUI more appealing and more lively.
 
 Usage
 -----
 
 -  Using Animation is easy, just override the method tick() in the
-   Animator class
+   Animator class.
 -  Every time the method is called on, the widget should be re-rendered, or
-   else, it is not going to show 
+   else, it is not going to show:
    
    .. code:: java 
    
@@ -28,12 +28,12 @@ Usage
     Animator animator = new Animator();
     animator.startAnimation(lblAnimation); 
 
-- The code above updates the label text everytime it is called
+- The code above updates the label text everytime it is called:
 
 .. image:: images/ticking.png
     :align: center 
 
-- The final code should look like this
+- The final code should look like this:
 
 .. code:: java
 

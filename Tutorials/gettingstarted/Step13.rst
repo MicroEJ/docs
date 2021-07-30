@@ -3,11 +3,12 @@ Internationalization
 
 Using PO Files
 --------------
-- PO files are a good way to handle Internationalization
-- Documentation is available `here <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`__
-- In this example, let's create two PO files for two different languages(English and Portuguese) and add them to **resources/nls**
 
-- Label_en_us.po
+- PO files are a good way to handle Internationalization.
+- Documentation is available `here <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`__.
+- In this example, let's create two PO files for two different languages(English and Portuguese) and add them to **resources/nls**.
+
+Labels_en_us.po:
 
 .. code:: po
 
@@ -24,7 +25,7 @@ Using PO Files
     msgid "Label2"
     msgstr "My label 2"
 
-- Labels_pt_br.po
+Labels_pt_br.po:
 
 .. code:: po
 
@@ -41,19 +42,20 @@ Using PO Files
     msgid "Label2"
     msgstr "Minha label 2"
 
-- These PO files have to be converted to be usable by the application
-- In order to let the build system know which PO files to process, they must be referenced in MicroEJ Classpath myapp.nls.list file
+- These PO files have to be converted to be usable by the application.
+- In order to let the build system know which PO files to process, they must be referenced in MicroEJ Classpath using a myapp.nls.list file.
 
 Configuring NLS in MicroEJ
 --------------------------
-- First add those two dependencies
+
+- First add those two dependencies to the module.ivy of your projet:
 
 .. code:: xml
 
     <dependency org="ej.library.runtime" name="nls" rev="3.0.1"/> 
     <dependency org="com.microej.library.runtime" name="nls-po" rev="2.2.0"/>
 
-- Then, let's create a myapp.nls.list file, and put it in the **resources/list** folder. The file should look like this
+- Then, let's create a myapp.nls.list file, and put it in the **resources/list** folder. The file should look like this:
 
 .. code::
 
@@ -63,18 +65,19 @@ Configuring NLS in MicroEJ
 
   For each line, PO files whose name starts with the interface name (Messages and Labels in the example) are retrieved from the MicroEJ Classpath and used to generate:
 
-  - a Java interface with the given FQN, containing a field for each msgid of the PO files
-  - a NLS binary file containing the translations
+  - a Java interface with the given Fully Qualified Name, containing a field for each msgid of the PO files.
+  - a NLS binary file containing the translations.
  
 Usage
 -----
-- Import the interface set in the nls.List file 
+
+- Import the interface set in the nls.List file:
   
 .. code::
 
     import com.mycompany.myapp.Labels;
 
-- Then, Check which languages are available, and set the Locale
+- Then, check which languages are available, and set the Locale:
 
 .. code:: java
     
@@ -84,7 +87,7 @@ Usage
     System.out.println(Labels.NLS.getCurrentLocale());
     Labels.NLS.setCurrentLocale("pt_BR"); 
 
-- Finally, set the String to a label. the code should look like this
+- Finally, set the String to a label. The code should look like this:
  
 .. code:: java
 
@@ -99,12 +102,12 @@ Usage
         desktop.requestShow();
     }
 
-- The result should look like this
+- The result should look like this:
 
 .. image:: images/labelsampleptbr.png
     :align: center
 
-- Setting the locale to "en_us" the result should be as follows
+- Setting the locale to "en_US" the result should be as follows:
 
 .. image:: images/labelsampleenus.png
     :align: center

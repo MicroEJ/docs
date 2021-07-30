@@ -10,20 +10,20 @@ Style
    etc.).
    
    .. note::
-    Some of the attributes are inspired by CSS, like Background,Border, Color, Dimension, Font, Alignment,Margin/Padding
-    and also the CascadingStylesheet with the cascading algorithms,selectors and etc
+    Some of the attributes are inspired by CSS, like Background, Border, Color, Dimension, Font, Alignment, Margin/Padding
+    and also the CascadingStylesheet with the cascading algorithms, selectors and etc.
 
 Selectors
 ---------
 
 -  Selectors determine the widget to which a style applies. There are three main types of selectors:
 
-   -  Simple selectors (based on type,Class)
+   -  Simple selectors (based on type, Class)
    -  Combinators (based on relationships)
    -  State Selectors (based on state) 
 
    .. note::
-    More of this will be presented in the Advanced Styling step 
+    More of this will be presented in the Advanced Styling step.
 
 Usage
 `````
@@ -82,7 +82,7 @@ Usage
 Padding and Margin
 ~~~~~~~~~~~~~~~~~~
 
--  Using margin and padding its pretty simple. Adding margin and padding to widget is as follows
+-  Using margin and padding its pretty simple. Adding margin and padding to widget is as follows:
 
 .. code:: java
 
@@ -92,7 +92,7 @@ Padding and Margin
 .. image:: images/margin.png
    :align: center
 
-- Setting an oversized margin should look like this
+- Setting an oversized margin should look like this:
 
 .. code:: java
    
@@ -101,7 +101,7 @@ Padding and Margin
 .. image:: images/tuto_microej_gettingstarted_oversizedmargin.png
    :align: center
 
--  Adding padding
+-  Adding padding:
 
    .. code:: java
 
@@ -111,7 +111,7 @@ Padding and Margin
 .. image:: images/marginandpadding.png
    :align: center
 
-- Oversizing the padding 
+- Oversizing the padding:
 
 .. code:: java
  
@@ -121,5 +121,5 @@ Padding and Margin
 .. image:: images/tuto_microej_gettingstarted_oversizedmarginandpadding.png  
    :align: center
 
-- It's possible to see the widget ovelapping other when using canvas
+- It's possible to see the widget ovelapping other when using canvas.
   

@@ -1,8 +1,8 @@
-Basic Drawing on screen
-===============================
+Basic Drawing on Screen
+=======================
 
 -  It is also possible to have access to a drawable interface using the
-   Display object that represents a pixelated version of the Display
+   Display object that represents a pixelated version of the Display.
 
 .. code:: java
     
@@ -27,19 +27,19 @@ Basic Drawing on screen
 
    }
    
--  This should draw a line from the coordinates of the display (0,0) going to (100,50) 
+-  This should draw a line from the coordinates of the display (0,0) to (100,50).
    
    .. image:: images/drawline.png
     :align: center
  
 Drawing Basic Shapes
----------------------------
+--------------------
 
--  It is also possible to also draw geometric objects using the Painter class 
--  The code below paints each component the selected color(Yellow, Purple,Green)
--  The drawLine Method receives the starting and finishing point in x and y coordinates
--  Fill rectangle and ellipse methods receive x and y coordinates and also width and height
--  draw circle receives x and y and it's diameter 
+-  It is also possible to also draw geometric objects using the Painter class.
+-  The code below paints each component the selected color(Yellow, Purple, Green).
+-  The drawLine Method uses the starting and finishing point in x and y coordinates.
+-  Fill rectangle and ellipse methods use x and y coordinates and also width and height.
+-  Draw circle uses x and y and it's diameter.
 
    .. code:: java
 
@@ -56,10 +56,10 @@ Drawing Basic Shapes
    .. image:: images/geometry.png
     :align: center
        
-Drawing images
-----------------------
+Drawing Images
+--------------
 
--  Drawing the image as shown in Images step:
+-  Drawing the image as shown in the Images step.
 
    .. code:: java
 
@@ -72,8 +72,9 @@ Drawing images
 
 Drawing Thick Shapes
 --------------------
--  The ShapePainter Class offers a set of static methods to render thick shapes
--  The code below shows how to draw a Thick Faded line
+
+-  The ShapePainter Class offers a set of static methods to render thick shapes.
+-  The code below shows how to draw a Thick Faded line.
 
    .. code:: java
 

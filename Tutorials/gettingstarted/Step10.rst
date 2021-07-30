@@ -5,48 +5,48 @@ Fonts
    ej.microui.display.Font.getFont(). To be displayed, these fonts have
    to be converted at build-time from their source format to the display
    raw format by the font generator tool.
--  Fonts, just like images, must be declared in a ``*.fonts.list`` file 
+-  Fonts, just like images, must be declared in a ``*.fonts.list`` file. 
 
 Creating a font
 ---------------
 
 -  To create a font, go to the package you want to store your fonts in,
-   Normally `Resources`-> `fonts`
--  Then **Right-Click->New->Other->MicroEJ->MicroEJ Font**
+   normally :guilabel:`Resources`> :guilabel:`fonts`.
+-  Then :guilabel:`Right-Click` > :guilabel:`New` > :guilabel:`Other`> :guilabel:`MicroEJ` > :guilabel:`MicroEJ Font`:
 
 .. image:: images/microejfont.png
     :align: center 
 
--  Then, select the name of the font
+-  Then, select the name of the font:
 
 .. image:: images/fontname.png
     :align: center
 
-- After that, the following window should open
+- Click on :guilabel:`Finish`, the following window should open:
 
 .. image:: images/fonteditor.png
     :align: center
 
 .. note::
- It is important to have the font that you want installed on your system already
+ It is important to have the font that you want installed on your system already.
 
-- To choose what font you will use you click on **Import...** and the following should open
+- To choose what font you will use you click on :guilabel:`Import...` and the following should open:
 
 .. image:: images/importfonts1.png
     :align: center
 
-- Here you will click on **Next** and then select the font you want to use as shown below
+- Here you will click on :guilabel:`Next` and then select the font you want to use as shown below:
 
 .. image:: images/importfonts2.png
     :align: center
 
 .. note::
 
-   If you are using a latin based alphabet, just leave the settings as they are and click finish,Don't Forget to adjust the height and baseline of the font
+   If you are using a latin based alphabet, just leave the settings as they are and click :guilabel:`Finish`, don't Forget to adjust the height and baseline of the font.
 
-- Click finish and save the file. The font should be imported in the .ejf file
+- Click :guilabel:`Finish` and save the file. The font should be imported in the .ejf file.
 
-- Then just add the font to the \yourapp.font.list file
+- Then just add the font to a myapp.fonts.list file you'll create resources sources folder of your application:
 
    .. code::
 
@@ -55,7 +55,7 @@ Creating a font
 Adding the Font to a Label
 --------------------------
 
--  To add the font, you must change the font in the StyleSheet
+-  To add the font, you must change the font in the StyleSheet:
 
 
 .. code:: java
@@ -81,7 +81,7 @@ Adding the Font to a Label
    }
 
 .. note::
-   Don't forget to add the Stylesheet to the Desktop
+   Don't forget to add the Stylesheet to the Desktop.
 
 .. image:: images/font.png
     :align: center 

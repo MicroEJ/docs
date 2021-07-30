@@ -1,9 +1,10 @@
 Expandable Widget
-========================
+=================
 
 A simple Expandable Widget
 --------------------------
-- To create an expandable widget, let's create a toggle() method to change the direction of the motion(animation)
+
+- To create an expandable widget, let's create a toggle() method to change the direction of the motion (animation).
 
 .. code:: java
 
@@ -163,6 +164,7 @@ A simple Expandable Widget
 
 Using the ExpandableWidget with the Scroll List
 -----------------------------------------------
+
 - To add, simply add the expandable widget to the ScrollList
 
 .. code:: java

@@ -6,7 +6,7 @@ Getting Started With GUI
 .. toctree::
    :maxdepth: 1
 
-   tutorialStartFirstGUIApplicationIn15Minutes
+   setup
    Step01
    Step02
    Step03

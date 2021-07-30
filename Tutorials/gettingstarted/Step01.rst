@@ -1,5 +1,5 @@
 Starting MicroUI
-====================
+================
 
 #. To get started, first we need to add MicroUI, a Foundation Library
    that provides an abstraction layer to access the low-level UI inputs
@@ -30,8 +30,12 @@ Starting MicroUI
 
      MicroUI has to be started before any UI operations
 
-#. To run your code on the Simulator, left click on the Project Go To :guilabel:`Run` > :guilabel:`Run As` > :guilabel:`MicroEJ Application` > :guilabel:`Select the device you added`
+#. To run your code on the Simulator, left click on the Project Go To :guilabel:`Run` > :guilabel:`Run As` > :guilabel:`MicroEJ Application`
    
+.. note::
+
+    If you have several platforms you will be asked which to use.
+
 .. image:: images/simulator.png
     :align: center
 

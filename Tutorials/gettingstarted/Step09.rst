@@ -1,12 +1,13 @@
 Creating Widgets
 ================
 
--  To create a Widget, you need to create a Class that extends widget
-   superclass
--  In this example, you are going to create a simple progress bar
+-  To create a Widget, you need to create a Class that extends the Widget
+   superclass.
+-  In this example, you are going to create a simple progress bar.
+-  So create a MyProgressBarWidget class extending Widget.
 
 .. note::
-    The computeContentOptimalSize and renderContent methods should be overridden
+    The computeContentOptimalSize and renderContent methods should be overridden:
 
     .. code:: java
 
@@ -25,7 +26,7 @@ Creating Widgets
 Setting Up
 ----------
 
--  Let's use the progress bar with a fixed size
+-  Let's use a progress bar with a fixed size:
 
    .. code:: java
 
@@ -34,13 +35,13 @@ Setting Up
        }
 
 -  Then, let's create the progress bar, first, it is important to add a
-   Progress value
+   Progress value:
 
    .. code:: java
 
        private float progressValue = 0.3f;
 
--  Now, let's implement the renderContent method
+-  Now, let's implement the renderContent method:
 
    .. code:: java
 
@@ -56,7 +57,7 @@ Setting Up
         ShapePainter.drawThickFadedLine(g, 0, halfHeight, barWidth, halfHeight, 3, 1, Cap.ROUNDED, Cap.ROUNDED);
     }
 
--  Finally, let's create a method to set the progress on the ProgressBar
+-  Finally, let's create a method to set the progress on the ProgressBar:
 
    .. code:: java
 
@@ -67,8 +68,8 @@ Setting Up
 Using with Animator
 -------------------
 
--  Using the code made in the previous Animation tutorial, doing the modifications below, it is
-   possible to see the progress bar animated
+-  Using the code made in the previous Animation tutorial, doing the modifications below, it is now
+   possible to see the progress bar animated:
 
    .. code:: java
 

@@ -2,18 +2,21 @@ Images
 ======
 
 Adding Images
-----------------
-- Create two packages on the Resources folder, one named list and another named images
+-------------
 
-- Create a resources list file, and add it to the list package at resources(myapp.images.list)
+- Create two packages in the Resources folder, one named list and another named images.
 
-- copy the image to the resources/image package
+- Create a resources list file, and add it to the list package (myapp.images.list).
+
+- Save the following image to the resources/image package:
+  
+|image2|
 
 - The structure should look like this:
 
 |image0| 
 
--  Then go to the **myapp.images.list** and add the file
+-  Then go to the **myapp.images.list** and add the image file:
 
 .. code::
 
@@ -21,7 +24,7 @@ Adding Images
 
 -  The image declaration in the .list file follows this pattern:
 
-.. note:: the ARGB4444 mode was used because the image has a transparency, more info at `Images <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MicroUI/images.html>`__
+.. note:: The ARGB4444 mode was used because the image has a transparency, more info at `Images <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MicroUI/images.html>`__.
 
 .. code::
 
@@ -76,3 +79,4 @@ Displaying an Image
 
 .. |image0| image:: images/resources.png
 .. |image1| image:: images/imagessimulator.png
+.. |image2| image:: images/microej_logo.png

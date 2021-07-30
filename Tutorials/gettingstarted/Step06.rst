@@ -1,14 +1,14 @@
 Event Handling
 ==============
 
-- MicroUI generates integer-based events that encode the low-level input type and action. The application can handle these events in the ``handleEvent`` method.
+MicroUI generates integer-based events that encode the low-level input type and action. The application can handle these events in the ``handleEvent`` method.
 
 The handleEvent Method
----------------------------
+----------------------
+
 - Every class that extends ``Widget`` inherits the ``handleEvent()`` method.
 - Add custom event handling by overriding the ``handleEvent()`` method of a widget.
-- Using the ``Button`` class from the Widget library as a sample:
-- Use the handleEvent of the parent class if none of the EventTypes are used
+- Using the ``Button`` class from the Widget library as a basis, we use the handleEvent of the parent class if none of the EventTypes are used:
 
 .. code:: java
 
@@ -50,9 +50,8 @@ The handleEvent Method
 
 Using Events with Buttons
 -------------------------
-As an example, The usage of Button class
 
-- Using the code created in the previous step, let's add a simple action to the button by adding a ``OnClickListener``.
+As an example of usage of the Button class we reuse the code created in the previous step, and add a simple action to the button by adding a ``OnClickListener``.
 
 .. code:: java
 
@@ -70,7 +69,6 @@ When running the modified sample, this should be shown in the console:
     =============== [ Initialization Stage ] ===============
     =============== [ Converting fonts ] ===============
     =============== [ Converting images ] ===============
-    The watchdog is not configured by the application, so it is enabled. This default behavior will reset the MCU after ~32 seconds of not executing the RTOS idle task
     =============== [ Launching on Simulator ] ===============
     Clicked!
     Clicked!

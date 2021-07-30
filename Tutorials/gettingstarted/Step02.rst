@@ -11,17 +11,17 @@ Using Layouts
    -  This process is started automatically when the Desktop is shown.
       It can also be triggered programmatically.
 
-Using Flow Layout
+Using a Flow Layout
 -------------------
 
 -  Flow layout: lays out any number of children horizontally or
    vertically, using multiple rows if necessary depending on the size
-   of each child widget 
+   of each child widget.
 
    .. image:: images/flowexample.png
     :align: center
 
--  Creating a Flow Layout
+-  Creating a Flow Layout.
 -  First, instantiate a ``Flow`` container, then add two ``Label`` objets to this container. 
 -  Finally, add the ``Flow`` container to the ``Desktop``.
 
@@ -41,21 +41,21 @@ Using Flow Layout
          desktop.requestShow();
       }
 
--  Both of the labels will share half of the screen 
+-  Both of the labels will share half of the screen:
 
    .. image:: images/flowusage.png
     :align: center
 
    
-Using Canvas
-------------------
+Using a Canvas
+--------------
 
 - Lays out any number of children freely.
 - To add a widget to a ``Canvas``, specify its position and size.
 
    .. note::
 
-    in this case, using Widget.NO\_CONSTRAINT sets the width and height to the optimal size of the widget
+    In this case, using Widget.NO\_CONSTRAINT sets the width and height to the optimal size of the widget.
 
    .. code:: java
 

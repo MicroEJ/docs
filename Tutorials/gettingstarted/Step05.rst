@@ -1,8 +1,8 @@
 Advanced Styling
 ================
 
-Imaging with stylesheets
-------------------------
+Stylesheeting with Images
+-------------------------
 
 -  Let's add a button to the application, with the MicroEJ logo as background.
 -  Since this background will apply to a specific button, introduce a new class selector that will select this button.
@@ -10,15 +10,15 @@ Imaging with stylesheets
 Class Selector
 --------------
 
--  Just like a class on CSS, it associates to every element that is
-   from the same class
+-  Just like a class in CSS, it associates to every element that is
+   from the same class.
 -  Define a class for the button as follows:
 
    .. code:: java
 
     private static final int BUTTON = 600;
 
-- Bind the class ``BUTTON`` to the button widget.
+- Bind the class ``BUTTON`` to the button widget:
 
    .. code:: java
 
@@ -31,13 +31,13 @@ Class Selector
 
        EditableStyle style = css.getSelectorStyle(new ClassSelector(BUTTON));
 
--  Finally, lets add an Image Background to this Button
+-  Finally, lets add an Image Background to this Button:
 
    .. code:: java
 
-       style.setBackground(new ImageBackground(Image.getImage("/images/mj.png")));
+       style.setBackground(new ImageBackground(Image.getImage("/images/microej_logo.png")));
 
-   And the result should be as follows
+   And the result should be as follows:
 
    .. code:: java
 
@@ -55,7 +55,7 @@ Class Selector
 
             CascadingStylesheet css = new CascadingStylesheet();
             EditableStyle style = css.getSelectorStyle(new ClassSelector(BUTTON));
-            style.setBackground(new ImageBackground(Image.getImage("/images/mj.png")));
+            style.setBackground(new ImageBackground(Image.getImage("/images/microej_logo.png")));
 
             desktop.setStylesheet(css);
             desktop.setWidget(flow);
@@ -69,8 +69,8 @@ Class Selector
 Combinator and Conditional Style
 --------------------------------
 
--  It is possible to combine two or more Classes using a combinator
--  In this example the active state of the Button will turn the text red
+-  It is possible to combine two or more Classes using a combinator.
+-  In this example the active state of the Button will turn the text blue.
 
    .. code:: java
 
@@ -80,9 +80,9 @@ Combinator and Conditional Style
        style.setBackground(new ImageBackground(Image.getImage("/images/mj.png")));
        Selector activeSelector = new StateSelector(Button.ACTIVE);
        EditableStyle styleActive = css.getSelectorStyle(new AndCombinator(imageButton, activeSelector));
-       styleActive.setColor(Colors.RED);  
+       styleActive.setColor(Colors.BLUE);  
 
-- Instead of directly instantiating classSelector in the get selector style, the ClassSelector has been exposed to be combined with the ButtonActive selector
+- Instead of directly instantiating a classSelector in the get selector style, the ClassSelector has been exposed to be combined with the ButtonActive selector.
 
 .. image:: images/classselectorexample.png
     :align: center

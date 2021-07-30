@@ -1,13 +1,13 @@
 Creating a Contact List using Scroll List
 =========================================
 
-Creating the contact widget
+Creating the Contact Widget
 ---------------------------
 
--  As explained in Creating Widget , it is possible to create our own widget by
-   just extending the Widget class
--  First, let's create a constructor with all the things that we are
-   going to need for this
+- As explained in Creating Widget, it is possible to create our own widget by
+  just extending the Widget class.
+- First, let's create a constructor with all the things that we are
+  going to need for this.
 
 .. code:: java
 
@@ -22,20 +22,20 @@ Creating the contact widget
 
     @Override
     protected void computeContentOptimalSize(Size size) {
-
         Font f = getStyle().getFont();
-        int width = f.stringWidth(this.contactName);
-        int height = f.getHeight() * 2;
-        size.setSize(width, (int) (height * 2.5));
-
+        int height = Math.max(f.getHeight(), this.image.getHeight());
+        int stringWidth = f.stringWidth(this.contactName);
+        int width = stringWidth + this.image.getWidth();
+        if(width > 240){
+            width = 240;
+        }
+        size.setSize(width, height);
     }
 
 .. code:: java
 
     @Override
     protected void renderContent(GraphicsContext g, int contentWidth, int contentHeight) {
-
-
         g.setColor(Colors.WHITE);
         int x0 = 0;
         int y0 = 0;
@@ -44,26 +44,26 @@ Creating the contact widget
         int circleRadius = contentHeight * 7 / 10;
         ShapePainter.fillPolygon(g, new int[] { x0, y0, x0, y1, x1, y1, x1, y0 });
         g.setColor(Colors.BLACK);
-        StringPainter.drawStringAtPoint(g, this.contactName, getStyle().getFont(), circleRadius + 15, contentHeight / 2, 0, 0);
+        StringPainter.drawStringAtPoint(g, this.contactName, getStyle().getFont(), circleRadius + 15, contentHeight / 2,
+                0, 0);
         g.setColor(Colors.BLACK);
         ImagePainter.drawImageInArea(g, this.image, contentWidth * 1 / 100, contentHeight / 4, 1, 1, 0, 0);
         ShapePainter.drawThickCircle(g, contentWidth * 1 / 100, contentHeight / 4, circleRadius, 2);
-
     }
 
--  Then, simply add it to the List used in the last step
+-  Then, simply replace the children in the List used in the last step:
 
    .. code:: java
 
         for (int i = 0; i < 45; i++) {
-            list.addChild(new ContactWidget("Label" + i, Image.getImage("/images/mj.png")));
+            list.addChild(new ContactWidget("Label" + i, Image.getImage("/images/microej_logo.png")));
         }
 
-- The class should be as follows
+- The class should be as follows:
 
 
    .. code:: java
-   
+
     public class ContactWidget extends Widget {
 
         String contactName;
@@ -77,12 +77,13 @@ Creating the contact widget
         @Override
         protected void computeContentOptimalSize(Size size) {
             Font f = getStyle().getFont();
-            int height = max(f.getHeight(),this.img.getHeight);
-            int stringWidth = f.stringWidth(this.cname);
-            int width = stringWidth + this.img.getWidth();
-            assert (width > 240) : "String is too large";
-            size.setSize(width > 240 ? 240 : width, height);
-
+            int height = Math.max(f.getHeight(), this.image.getHeight());
+            int stringWidth = f.stringWidth(this.contactName);
+            int width = stringWidth + this.image.getWidth();
+            if(width > 240){
+                width = 240;
+            }
+            size.setSize(width, height);
         }
 
         @Override
@@ -95,11 +96,11 @@ Creating the contact widget
             int circleRadius = contentHeight * 7 / 10;
             ShapePainter.fillPolygon(g, new int[] { x0, y0, x0, y1, x1, y1, x1, y0 });
             g.setColor(Colors.BLACK);
-            StringPainter.drawStringAtPoint(g, this.contactName, getStyle().getFont(), circleRadius + 15, contentHeight / 2, 0, 0);
+            StringPainter.drawStringAtPoint(g, this.contactName, getStyle().getFont(), circleRadius + 15, contentHeight / 2,
+                    0, 0);
             g.setColor(Colors.BLACK);
             ImagePainter.drawImageInArea(g, this.image, contentWidth * 1 / 100, contentHeight / 4, 1, 1, 0, 0);
             ShapePainter.drawThickCircle(g, contentWidth * 1 / 100, contentHeight / 4, circleRadius, 2);
-
         }
     }
 
