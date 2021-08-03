@@ -4,9 +4,8 @@
 Changelog
 =========
 
-
-13.1.0 (RC)
-===========
+13.1.0 (2021-08-03)
+===================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -34,6 +33,7 @@ MicroUI Implementation
 * An external image is closed twice when the application only checks if the image is available.
 * RLE1 image rendering when platform requires image pixels address alignment. 
 * Manage the system fonts when the font generator is not embedded in the platform.
+* Have to wait the end of current drawing before closing an image.
 
 Drawing Implementation
 """"""""""""""""""""""
@@ -60,8 +60,8 @@ Simulator
 
 **Added**
 
-    * Add ``MicroUIImage.getImage(int)``: apply a rendering color on Ax images.  
-    * Add ``LLUIDisplay.convertRegion()``: convert a region according image format restrictions.   
+* Add ``MicroUIImage.getImage(int)``: apply a rendering color on Ax images.  
+* Add ``LLUIDisplay.convertRegion()``: convert a region according image format restrictions.   
 
 **Changed**	
 
@@ -73,8 +73,8 @@ Simulator
 * Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images. 
 * Simulates the image data alignment.
 
-13.0.7 (RC)
-===========
+13.0.7 (2021-07-30)
+===================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -83,8 +83,9 @@ MicroUI Implementation
 
 **Fixed**
 
-* Allow to open a font encoded by an UI Pack 12 (but cannot manage dynamic styles).
+* Allow to open a font in format made with UI Pack 12.x (but cannot manage dynamic styles).
 * `Display.flush()` method is called once when MicroUI pump thread has a higher priority than the caller of `Display.requestFlush()`.
+* `Display.requestFlush()` is only executed once from a feature (UI deadlock).
 
 Misc
 """"
