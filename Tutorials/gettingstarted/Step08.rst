@@ -1,64 +1,76 @@
 Animation
 =========
 
--  To use animations, the Animation class is going to be used.
--  The main goal with animation is to set the widget graphics in motion
-   to make the GUI more appealing and more lively.
+Animations can be used to make the GUI more appealing and more lively.
+
+MWT provides a framework to create fluid animations.
+The principle is as follow:
+
+- make a step of all the running animations (with a probable new rendering of some widgets),
+- wait for the display to be flushed,
+- do it again.
+
+The goals are:
+
+- doing animations as fast as possible (considering the complexity of the drawings and the hardware capabilities),
+- synchronizing all the running animations and avoiding glitches.
 
 Usage
 -----
 
--  Using Animation is easy, just override the method tick() in the
-   Animator class.
--  Every time the method is called on, the widget should be re-rendered, or
-   else, it is not going to show:
+- An animation can be created by implemeting ``Animation`` interface and its ``tick()`` method.
+- The ``tick()`` method is called for each step of the animation.
+- Every time the method is called, the widget should be re-rendered.
+- The animation can be stopped by returning ``false``.
    
-   .. code:: java 
+  .. code:: java
    
-    Animation lblAnimation = new Animation() { 
+    Animation labelAnimation = new Animation() { 
     
-        int tick = 0;
+       int tick = 0;
         
-        @Override public boolean tick(longcurrentTimeMillis) { 
-            label.setText(Integer.toString(tick++));
-            label.requestRender();
-            return true; 
-        } 
+       @Override
+       public boolean tick(long currentTimeMillis) { 
+          label.setText(Integer.toString(tick++));
+          label.requestRender();
+          return true; 
+       } 
     };
     Animator animator = new Animator();
-    animator.startAnimation(lblAnimation); 
+    animator.startAnimation(labelAnimation); 
 
 - The code above updates the label text everytime it is called:
 
-.. image:: images/ticking.png
-    :align: center 
+  .. image:: images/ticking.png
+   :align: center 
 
-- The final code should look like this:
+- The final code looks like this:
 
-.. code:: java
+  .. code:: java
 
     public static void main(String[] args) {
-        MicroUI.start();
-        Desktop desktop = new Desktop();
-        final Label label = new Label("hello");
+       MicroUI.start();
+       Desktop desktop = new Desktop();
+       final Label label = new Label("hello");
 
-        Flow flow = new Flow(LayoutOrientation.VERTICAL);
-        flow.addChild(label);
+       Flow flow = new Flow(LayoutOrientation.VERTICAL);
+       flow.addChild(label);
 
-        Animation lblAnimation = new Animation() {
+       Animation labelAnimation = new Animation() {
 
-            int tick = 0;
+          int tick = 0;
 
-            @Override
-            public boolean tick(long currentTimeMillis) {
-                label.setText(Integer.toString(this.tick++));
-                label.requestRender();
-                return true;
-            }
-        };
-        Animator animator = new Animator();
-        animator.startAnimation(lblAnimation);
-        desktop.setWidget(flow);
-        desktop.requestShow();
+          @Override
+          public boolean tick(long currentTimeMillis) {
+             label.setText(Integer.toString(this.tick++));
+             label.requestRender();
+             return true;
+          }
+       };
+       Animator animator = new Animator();
+       animator.startAnimation(labelAnimation);
+
+       desktop.setWidget(flow);
+       desktop.requestShow();
     }
 

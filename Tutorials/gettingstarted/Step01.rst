@@ -4,39 +4,37 @@ Starting MicroUI
 #. To get started, first we need to add MicroUI, a Foundation Library
    that provides an abstraction layer to access the low-level UI inputs
    and outputs.
-#. Look for module.ivy, and replace dependencies with the following:
+#. Look for ``module.ivy``, and replace dependencies with the following:
 
    .. code:: xml
 
-       <dependencies>
-           <dependency org="ej.api" name="microui" rev="3.0.3"/>
-       </dependencies>
+      <dependencies>
+         <dependency org="ej.api" name="microui" rev="3.0.3"/>
+      </dependencies>
 
    .. note::
 
-       There's no need to add EDC as a dependency for
-       the MicroUI library. It will be automatically resolved with the
-       correct version.
+    There's no need to add EDC as a dependency. It will be automatically resolved with the correct version (as a dependency of the MicroUI library).
 
 #. This call initializes the MicroUI framework and starts the UI Thread,
    which manages the user input and display events.
 
    .. code:: java
 
-       public static void main(String[] args) {
-           MicroUI.start();
-       }
+      public static void main(String[] args) {
+         MicroUI.start();
+      }
    .. note:: 
 
-     MicroUI has to be started before any UI operations
+    MicroUI has to be started before any UI operations.
 
-#. To run your code on the Simulator, left click on the Project Go To :guilabel:`Run` > :guilabel:`Run As` > :guilabel:`MicroEJ Application`
+#. To run your code on the Simulator, left click on the Project Go To :guilabel:`Run` > :guilabel:`Run As` > :guilabel:`MicroEJ Application`.
    
-.. note::
+   .. note::
 
     If you have several platforms you will be asked which to use.
 
-.. image:: images/simulator.png
+   .. image:: images/simulator.png
     :align: center
 
 
@@ -47,19 +45,19 @@ Widgets
    containers. It is based on MWT, a base library that defines core
    type graphical elements for designing rich graphical user interface
    embedded applications.
-#. Look for module.ivy, and replace dependencies with the following:
+#. Look for ``module.ivy``, and replace dependencies with the following:
 
    .. code:: xml
 
-       <dependencies>
-           <dependency org="ej.library.ui" name="widget" rev="4.0.0" />
-       </dependencies>
+      <dependencies>
+         <dependency org="ej.library.ui" name="widget" rev="4.0.0" />
+      </dependencies>
 
    .. note::
 
-       There's no need to add MWT or MicroUI, as both
-       are dependencies for the Widget library. They will be
-       automatically resolved with the correct version. 
+    There's no need to add MWT or MicroUI, as both
+    are dependencies of the Widget library. They will be
+    automatically resolved with the correct version. 
        
 Desktop Usage 
 --------------
@@ -72,12 +70,12 @@ Desktop Usage
 
    .. code:: java
 
-    public static void main(String[] args) {
-        MicroUI.start();
+      public static void main(String[] args) {
+         MicroUI.start();
 
-        Desktop desktop = new Desktop();
-        desktop.requestShow();
-    }
+         Desktop desktop = new Desktop();
+         desktop.requestShow();
+      }
 
 Displaying a Label
 ------------------
@@ -87,22 +85,22 @@ Displaying a Label
 
    .. code:: java
 
-    public static void main(String[] args) {
-        MicroUI.start();
-        Desktop desktop = new Desktop();
+      public static void main(String[] args) {
+         MicroUI.start();
+         Desktop desktop = new Desktop();
 
-        Label label = new Label("Hello World");
-        desktop.setWidget(label);
+         Label label = new Label("Hello World");
+         desktop.setWidget(label);
 
-        desktop.requestShow();
-    }
+         desktop.requestShow();
+      }
 
-#. To run the code go to the **Main.java** file and right click it, hover over :guilabel:`Run As` and select :guilabel:`MicroEJ Application`
+#. To run the code go to the **Main.java** file and right click it, hover over :guilabel:`Run As` and select :guilabel:`MicroEJ Application`.
 
-.. image:: images/runapplication.png
+   .. image:: images/runapplication.png
     :align: center
 
-.. image:: images/hello.png
+   .. image:: images/hello.png
     :align: center
 
 

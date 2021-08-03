@@ -1,125 +1,115 @@
 Style
 =====
 
--  Instances of Desktop, Widget, and Container classes are semantic
-   elements of the GUI, describing the structure and meaning of the
-   content.
--  The Style API (ej.mwt.style) defines style options for widgets,
-   allowing for a clear separation of the core structure (content) and
-   the design aspects (colors, fonts, margin, padding, background,
-   etc.).
+Instances of Desktop, Widget, and Container classes are semantic elements of the GUI, describing the structure and meaning of the content.
+
+The Style API (ej.mwt.style) defines style options for widgets, allowing for a clear separation of the core structure (content) and the design aspects (colors, fonts, spacing, background, etc.).
    
-   .. note::
-    Some of the attributes are inspired by CSS, like Background, Border, Color, Dimension, Font, Alignment, Margin/Padding
-    and also the CascadingStylesheet with the cascading algorithms, selectors and etc.
+.. note::
+   Some of the attributes are inspired by CSS, like Background, Border, Color, Dimension, Font, Alignment, Margin/Padding.
+   And the CascadingStylesheet manages the order of the selectors (with their specificity), the cascading, etc.
 
 Selectors
 ---------
 
--  Selectors determine the widget to which a style applies. There are three main types of selectors:
+Selectors determine the widget(s) to which a style applies. There are three main types of selectors:
 
-   -  Simple selectors (based on type, Class)
-   -  Combinators (based on relationships)
-   -  State Selectors (based on state) 
+-  Simple selectors (based on type or class),
+-  State Selectors (based on state or position),
+-  Combinators (based on relationships or conditions).
 
-   .. note::
-    More of this will be presented in the Advanced Styling step.
+.. note::
+    More of this will be presented in the :ref:`ui-advanced-styling` step.
 
 Usage
 `````
 
--  Using a CascadingStylesheet, we can define a base style for all
-   labels using a TypeSelector:
+- With a CascadingStylesheet, we can define a style for all labels using a TypeSelector:
 
-   .. code:: java
+  .. code:: java
 
-       CascadingStylesheet stylesheet = new CascadingStylesheet();
-       EditableStyle style = stylesheet.getSelectorStyle(new TypeSelector(Label.class));
+   CascadingStylesheet stylesheet = new CascadingStylesheet();
+   EditableStyle style = stylesheet.getSelectorStyle(new TypeSelector(Label.class));
 
--  We can now change the style object options, in this sample, changing
-   the base color to red and adding a black rectangular border of 1px
-   thickness.
+- We can now change the style object options. In this sample, we change the base color to red and adding a black rectangular border of 1px thickness.
 
-   .. code:: java
+  .. code:: java
 
-       style.setColor(Colors.RED);
-       style.setBorder(new RectangularBorder(Colors.BLACK, 1));
+   style.setColor(Colors.RED);
+   style.setBorder(new RectangularBorder(Colors.BLACK, 1));
 
--  For these options to take effect, bind the stylesheet to the desktop.
+- For these options to take effect, bind the stylesheet to the desktop.
 
-   .. code:: java
+  .. code:: java
 
-       desktop.setStylesheet(stylesheet);
+   desktop.setStylesheet(stylesheet);
 
--  The final code should look like this
+- The final code looks like this:
 
-   .. code:: java
+  .. code:: java
 
-      public static void main(String[] args) {
-         MicroUI.start();
-         Desktop desktop = new Desktop();
-         Label label = new Label("Hello World");
-         Label label2 = new Label("Hello World 2");
+   public static void main(String[] args) {
+      MicroUI.start();
+      Desktop desktop = new Desktop();
+      Label label = new Label("Hello World");
+      Label label2 = new Label("Hello World 2");
 
-         Canvas canvas = new Canvas();
-         canvas.addChild(label, 0, 0, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
-         canvas.addChild(label2, 0, 15, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
+      Canvas canvas = new Canvas();
+      canvas.addChild(label, 0, 0, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
+      canvas.addChild(label2, 0, 15, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
 
-         CascadingStylesheet stylesheet = new CascadingStylesheet();
-         EditableStyle style = stylesheet.getSelectorStyle(new TypeSelector(Label.class));
-         style.setColor(Colors.RED);
-         style.setBorder(new RectangularBorder(Colors.BLACK, 1));
+      CascadingStylesheet stylesheet = new CascadingStylesheet();
+      EditableStyle style = stylesheet.getSelectorStyle(new TypeSelector(Label.class));
+      style.setColor(Colors.RED);
+      style.setBorder(new RectangularBorder(Colors.BLACK, 1));
 
-         desktop.setStylesheet(stylesheet);
-         desktop.setWidget(canvas);
-         desktop.requestShow();
-      }
+      desktop.setStylesheet(stylesheet);
+      desktop.setWidget(canvas);
+      desktop.requestShow();
+   }
 
-
-   .. image:: images/styleborder.png
-      :align: center 
+  .. image:: images/styleborder.png
+   :align: center 
 
 Padding and Margin
 ~~~~~~~~~~~~~~~~~~
 
--  Using margin and padding its pretty simple. Adding margin and padding to widget is as follows:
+- Using margin and padding is pretty simple. Adding margin is as follows:
 
-.. code:: java
+  .. code:: java
 
-      style.setMargin(new UniformOutline(4));
+   style.setMargin(new UniformOutline(4));
 
-   
-.. image:: images/margin.png
+  .. image:: images/margin.png
    :align: center
 
-- Setting an oversized margin should look like this:
+- Setting an oversized margin looks like this:
 
-.. code:: java
+  .. code:: java
    
    style.setMargin(new UniformOutline(10));
    
-.. image:: images/tuto_microej_gettingstarted_oversizedmargin.png
+  .. image:: images/tuto_microej_gettingstarted_oversizedmargin.png
    :align: center
 
--  Adding padding:
+- Adding padding:
 
-   .. code:: java
+  .. code:: java
 
-           style.setPadding(new UniformOutline(2));
+   style.setPadding(new UniformOutline(2));
 
 
-.. image:: images/marginandpadding.png
+  .. image:: images/marginandpadding.png
    :align: center
 
-- Oversizing the padding:
+- Oversizing the padding (the widgets ovelap each other because we use a canvas with fixed positions):
 
-.. code:: java
+  .. code:: java
  
    style.setPadding(new UniformOutline(15));
 
 
-.. image:: images/tuto_microej_gettingstarted_oversizedmarginandpadding.png  
+  .. image:: images/tuto_microej_gettingstarted_oversizedmarginandpadding.png  
    :align: center
 
-- It's possible to see the widget ovelapping other when using canvas.
   

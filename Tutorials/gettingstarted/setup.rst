@@ -36,17 +36,17 @@ Prepare Platform Sources
 #. Download and unzip the platform sources for STM32F7508-DK by clicking on :guilabel:`Download` > :guilabel:`Download ZIP`: 
    `Go to the Github repository <https://github.com/MicroEJ/Platform-STMicroelectronics-STM32F7508-DK/tree/1.3.2>`__.
 #. Follow the README to import the platform sources, activate your license and build your platform: `STM32F7508-DK Platform Setup <https://github.com/MicroEJ/Platform-STMicroelectronics-STM32F7508-DK/tree/1.3.2#platform-setup>`_
-#. Once all the steps of the platform setup are done.
+#. Once all the steps of the platform setup are done, a new Java project can be created.
 
 Create a New Project
 --------------------
 
-#. First, Go to :guilabel:`File` > :guilabel:`New` > :guilabel:`Standalone Application Project`:
+Go to :guilabel:`File` > :guilabel:`New` > :guilabel:`Standalone Application Project`:
 
 .. image:: images/createStandaloneProject.png
    :align: center
 
-#. The project structure should look like this:
+The project structure should look like this:
 
 .. image:: images/structure.png
    :align: center

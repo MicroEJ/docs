@@ -1,79 +1,77 @@
 Using Layouts
 =============
 
--  The lay out process determines the position and size of the widgets.
--  It depends on:
+The lay out process determines the position and size of the widgets.
+It depends on:
 
-   -  the layout of the containers: how the children are arranged within
-      the containers.
-   -  the widgets content size: the size needed by the widgets for
-      optimal display.
-   -  This process is started automatically when the Desktop is shown.
-      It can also be triggered programmatically.
+-  The layout of the containers: how the children are arranged within the containers.
+-  The widgets content size: the size needed by the widgets for optimal display.
+
+This process is started automatically when the desktop is shown.
+It can also be triggered programmatically.
 
 Using a Flow Layout
 -------------------
 
--  Flow layout: lays out any number of children horizontally or
-   vertically, using multiple rows if necessary depending on the size
-   of each child widget.
+The flow layout lays out any number of children horizontally or vertically, using multiple rows if necessary depending on the size of each child widget.
 
-   .. image:: images/flowexample.png
-    :align: center
+.. image:: images/flowexample.png
+   :align: center
 
--  Creating a Flow Layout.
--  First, instantiate a ``Flow`` container, then add two ``Label`` objets to this container. 
--  Finally, add the ``Flow`` container to the ``Desktop``.
+Creating a flow layout:
 
-   .. code:: java
+- First, instantiate a ``Flow`` container, then add two ``Label`` objets to this container. 
+- Finally, add the ``Flow`` container to the ``Desktop``.
 
-      public static void main(String[] args) {
-         MicroUI.start();
-         Desktop desktop = new Desktop();
-         Label label = new Label("Hello World");
-         Label secondLabel = new Label("Hello World 2");
+.. code:: java
 
-         Flow flowContainer = new Flow(LayoutOrientation.HORIZONTAL);
-         flowContainer.addChild(label);
-         flowContainer.addChild(secondLabel);
+   public static void main(String[] args) {
+      MicroUI.start();
+      Desktop desktop = new Desktop();
+      Label label = new Label("Hello World");
+      Label secondLabel = new Label("Hello World 2");
 
-         desktop.setWidget(flowContainer);
-         desktop.requestShow();
-      }
+      Flow flowContainer = new Flow(LayoutOrientation.HORIZONTAL);
+      flowContainer.addChild(label);
+      flowContainer.addChild(secondLabel);
 
--  Both of the labels will share half of the screen:
+      desktop.setWidget(flowContainer);
+      desktop.requestShow();
+   }
 
-   .. image:: images/flowusage.png
-    :align: center
+Both of the labels will share the screen:
+
+.. image:: images/flowusage.png
+   :align: center
 
    
 Using a Canvas
 --------------
 
-- Lays out any number of children freely.
-- To add a widget to a ``Canvas``, specify its position and size.
+A canvas lays out any number of children freely.
 
-   .. note::
+To add a widget to a ``Canvas``, specify its position and size.
 
-    In this case, using Widget.NO\_CONSTRAINT sets the width and height to the optimal size of the widget.
+.. note::
+   Using ``Widget.NO_CONSTRAINT`` sets the width and height to the optimal size of the widget.
 
-   .. code:: java
+.. code:: java
 
-      public static void main(String[] args) {
-         MicroUI.start();
-         Desktop desktop = new Desktop();
-         Label label = new Label("Hello World");
-         Label label2 = new Label("Hello World 2");
+   public static void main(String[] args) {
+      MicroUI.start();
+      Desktop desktop = new Desktop();
+      Label label = new Label("Hello World");
+      Label label2 = new Label("Hello World 2");
 
-         Canvas canvas = new Canvas();
-         canvas.addChild(label, 0, 0, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
-         canvas.addChild(label2, 15, 15, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
+      Canvas canvas = new Canvas();
+      canvas.addChild(label, 0, 0, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
+      canvas.addChild(label2, 15, 15, Widget.NO_CONSTRAINT, Widget.NO_CONSTRAINT);
 
-         desktop.setWidget(canvas);
-         desktop.requestShow();
-      }
+      desktop.setWidget(canvas);
+      desktop.requestShow();
+   }
 
-   .. image:: images/canvassample.png
-    :align: center 
+.. image:: images/canvassample.png
+ :align: center 
 
 

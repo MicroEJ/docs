@@ -1,88 +1,89 @@
+.. _ui-advanced-styling:
+
 Advanced Styling
 ================
 
-Stylesheeting with Images
--------------------------
+Using Images in Stylesheet
+--------------------------
 
--  Let's add a button to the application, with the MicroEJ logo as background.
--  Since this background will apply to a specific button, introduce a new class selector that will select this button.
+- Let's add a button to the application, with the MicroEJ logo as background.
+- Since this background will apply to a specific button, introduce a new class selector that will select this button.
 
 Class Selector
 --------------
 
--  Just like a class in CSS, it associates to every element that is
-   from the same class.
--  Define a class for the button as follows:
+- Just like a class in CSS, it associates to every element that is from the same class.
+- Define a class for the button as follows:
 
-   .. code:: java
+  .. code:: java
 
     private static final int BUTTON = 600;
 
 - Bind the class ``BUTTON`` to the button widget:
 
-   .. code:: java
+  .. code:: java
 
-       Button button = new Button("Click ME");
-       button.addClassSelector(BUTTON);
+    Button button = new Button("Click ME");
+    button.addClassSelector(BUTTON);
 
 - Retrieve the style for this class from the stylesheet and edit the attributes:
 
-   .. code:: java
+  .. code:: java
 
-       EditableStyle style = css.getSelectorStyle(new ClassSelector(BUTTON));
+    EditableStyle style = css.getSelectorStyle(new ClassSelector(BUTTON));
 
--  Finally, lets add an Image Background to this Button:
+- Finally, lets add an Image Background to this Button:
 
-   .. code:: java
+  .. code:: java
 
-       style.setBackground(new ImageBackground(Image.getImage("/images/microej_logo.png")));
+    style.setBackground(new ImageBackground(Image.getImage("/images/microej_logo.png")));
 
-   And the result should be as follows:
+- And the result should be as follows:
 
-   .. code:: java
+  .. code:: java
 
-       public class Main {
-           private static final int BUTTON = 600;
+    public class Main {
+       private static final int BUTTON = 600;
 
-           public static void main(String[] args) {
-            MicroUI.start();
-            Desktop desktop = new Desktop();
-            Button button = new Button("Click ME");
-            button.addClassSelector(BUTTON);
+       public static void main(String[] args) {
+          MicroUI.start();
+          Desktop desktop = new Desktop();
+          Button button = new Button("Click ME");
+          button.addClassSelector(BUTTON);
 
-            Flow flow = new Flow(LayoutOrientation.VERTICAL);
-            flow.addChild(button);
+          Flow flow = new Flow(LayoutOrientation.VERTICAL);
+          flow.addChild(button);
 
-            CascadingStylesheet css = new CascadingStylesheet();
-            EditableStyle style = css.getSelectorStyle(new ClassSelector(BUTTON));
-            style.setBackground(new ImageBackground(Image.getImage("/images/microej_logo.png")));
+          CascadingStylesheet css = new CascadingStylesheet();
+          EditableStyle style = css.getSelectorStyle(new ClassSelector(BUTTON));
+          style.setBackground(new ImageBackground(Image.getImage("/images/microej_logo.png")));
 
-            desktop.setStylesheet(css);
-            desktop.setWidget(flow);
-            desktop.requestShow();
-            }
+          desktop.setStylesheet(css);
+          desktop.setWidget(flow);
+          desktop.requestShow();
        }
+    }
 
 .. image:: images/imagebackgroundexample.png
-    :align: center 
+ :align: center 
 
 Combinator and Conditional Style
 --------------------------------
 
--  It is possible to combine two or more Classes using a combinator.
--  In this example the active state of the Button will turn the text blue.
+- It is possible to combine two or more selectors using combinators.
+- In this example the active state of the button will turn the text blue.
 
-   .. code:: java
+  .. code:: java
 
-       CascadingStylesheet css = new CascadingStylesheet();
-       Selector imageButton = new ClassSelector(BUTTON); 
-       EditableStyle style = css.getSelectorStyle(imageButton);
-       style.setBackground(new ImageBackground(Image.getImage("/images/mj.png")));
-       Selector activeSelector = new StateSelector(Button.ACTIVE);
-       EditableStyle styleActive = css.getSelectorStyle(new AndCombinator(imageButton, activeSelector));
-       styleActive.setColor(Colors.BLUE);  
+    CascadingStylesheet css = new CascadingStylesheet();
+    Selector buttonSelector = new ClassSelector(BUTTON); 
+    EditableStyle style = css.getSelectorStyle(buttonSelector);
+    style.setBackground(new ImageBackground(Image.getImage("/images/microej_logo.png")));
+    Selector activeSelector = new StateSelector(Button.ACTIVE);
+    EditableStyle styleActive = css.getSelectorStyle(new AndCombinator(buttonSelector, activeSelector));
+    styleActive.setColor(Colors.BLUE);  
 
-- Instead of directly instantiating a classSelector in the get selector style, the ClassSelector has been exposed to be combined with the ButtonActive selector.
+- The class selector for the button has been extracted as a locale to be combined with the button active state selector.
 
 .. image:: images/classselectorexample.png
-    :align: center
+ :align: center

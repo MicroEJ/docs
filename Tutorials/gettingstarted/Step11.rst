@@ -4,71 +4,76 @@ Scroll List
 List
 ----
 
--  A list is a Container that resizes each of its children accordingly.
--  Naturally, it shows some issues if you add too many components.
--  Adding 45 item to a List shows the following result:
+- A list is a container that lays out its children one after the other in a single column or row depending on its orientation.
+- The size of each widget is set proportionally to its optimal size and the available size.
+- Naturally, it shows some issues if the list contains too many components.
+- Adding 45 items to a list shows the following result:
 
-.. code:: java
+  .. code:: java
 
-	public static void main(String[] args) {
-		MicroUI.start();
-		Desktop desktop = new Desktop();
+     public static void main(String[] args) {
+        MicroUI.start();
+        Desktop desktop = new Desktop();
 
-		Flow flow = new Flow(LayoutOrientation.VERTICAL);
+        List list = new List(LayoutOrientation.VERTICAL);
+        for (int i = 0; i < 45; i++) {
+           Label label = new Label("Label" + i);
+           list.addChild(label);
+        }
 
-		List list = new List(LayoutOrientation.VERTICAL);
-		for (int i = 0; i < 45; i++) {
-			Label lbl = new Label("Label" + i);
-			lbl.addClassSelector(LIST_ITEM);
-			list.addChild(lbl);
-		}
+        desktop.setWidget(list);
+        desktop.requestShow();
+     }
 
-		flow.addChild(list);
+  .. image:: images/listsample.png
+   :align: center
 
-		desktop.setWidget(flow);
-		desktop.requestShow();
-	}
-
-.. image:: images/listsample.png
-    :align: center
-
--  Using MicroEJ, it is possible to create a Scrollable List to avoid this issue.
+- To be able to see all the items, the list must be bigger than the display. So it needs to be included in another container that is able to scroll it.
 
 Scrollable List
 ---------------
 
--  It is possible to create our own components, for example a Scrollable Container.
--  The full implementation of the class is available at `Widget Demo <https://github.com/MicroEJ/Demo-Widget/tree/master/com.microej.demo.widget/src/main/java/com/microej/demo/widget/scrollablelist/widget>`__
--  Copy the classes in your project.
--  The use is pretty simple:
+- A simple way to see all the items correctly and scroll the list is to include it in a ``Scroll`` container:
 
-.. code:: java 
+  .. code:: java 
 
-   public class Main {
-      private static final int LIST_ITEM = 600;
+     public static void main(String[] args) {
+        MicroUI.start();
+        Desktop desktop = new Desktop();
+        List list = new List(LayoutOrientation.VERTICAL);
+        for (int i = 0; i < 45; i++) {
+           Label item = new Label("Label" + i);
+           list.addChild(item);
+        }
+        CascadingStylesheet css = new CascadingStylesheet();
+        Scroll scroll = new Scroll(LayoutOrientation.VERTICAL);
+        scroll.setChild(list);
+        desktop.setStylesheet(css);
+        desktop.setWidget(scroll);
+        desktop.requestShow();
+     }
 
-      public static void main(String[] args) {
-         MicroUI.start();
-         Desktop desktop = new Desktop();
-         Label label = new Label("Hello World");
-         Label label2 = new Label("Hello World 2");
-         ScrollableList list = new ScrollableList(LayoutOrientation.VERTICAL);
-         for (int i = 0; i < 45; i++) {
-            Label lbl = new Label("Label" + i);
-            lbl.addClassSelector(LIST_ITEM);
-            list.addChild(lbl);
-         }
-         CascadingStylesheet css = new CascadingStylesheet();
-         Scroll scroll = new Scroll(LayoutOrientation.VERTICAL);
-         scroll.setChild(list);
-         desktop.setStylesheet(css);
-         desktop.setWidget(scroll);
-         desktop.requestShow();
-      }
-   }
+  .. image:: images/scrollbar.png
+   :align: center
 
-- Using the scroll container (called Scroll), then adding the ScrollableList as a Child.
-- It should look like this:
+- The list can be optimized for the scroll (to exclude the items that are outside the visible area).
+  A scrollable list is available at `Widget Demo <https://github.com/MicroEJ/Demo-Widget/tree/master/com.microej.demo.widget/src/main/java/com/microej/demo/widget/scrollablelist/widget>`__.
+- It can be copied in the project and replace the list:
 
-.. image:: images/scrollbar.png
-    :align: center
+  .. code:: java 
+
+     public static void main(String[] args) {
+        MicroUI.start();
+        Desktop desktop = new Desktop();
+        ScrollableList list = new ScrollableList(LayoutOrientation.VERTICAL);
+        for (int i = 0; i < 45; i++) {
+           Label label = new Label("Label" + i);
+           list.addChild(label);
+        }
+        CascadingStylesheet css = new CascadingStylesheet();
+        Scroll scroll = new Scroll(LayoutOrientation.VERTICAL);
+        scroll.setChild(list);
+        desktop.setStylesheet(css);
+        desktop.setWidget(scroll);
+        desktop.requestShow();
+     }

@@ -9,104 +9,82 @@ Creating the Contact Widget
 - First, let's create a constructor with all the things that we are
   going to need for this.
 
-.. code:: java
+  .. code:: java
 
-    public ContactWidget(String contactname, Image image) {
-        this.contactName = contactname;
-        this.image = image;
+    public ContactWidget(String contactName, Image image) {
+       this.contactName = contactName;
+       this.image = image;
     }
 
--  Then, overriding the two abstract methods of Widget
+- Then, overriding the two abstract methods of Widget
 
-.. code:: java
+  .. code:: java
 
     @Override
     protected void computeContentOptimalSize(Size size) {
-        Font f = getStyle().getFont();
-        int height = Math.max(f.getHeight(), this.image.getHeight());
-        int stringWidth = f.stringWidth(this.contactName);
-        int width = stringWidth + this.image.getWidth();
-        if(width > 240){
-            width = 240;
-        }
-        size.setSize(width, height);
+       Font f = getStyle().getFont();
+       int height = Math.max(f.getHeight(), this.image.getHeight());
+       int stringWidth = f.stringWidth(this.contactName);
+       int width = stringWidth + this.image.getWidth();
+       size.setSize(width, height);
     }
 
-.. code:: java
+  .. code:: java
 
     @Override
     protected void renderContent(GraphicsContext g, int contentWidth, int contentHeight) {
-        g.setColor(Colors.WHITE);
-        int x0 = 0;
-        int y0 = 0;
-        int x1 = contentWidth;
-        int y1 = contentHeight;
-        int circleRadius = contentHeight * 7 / 10;
-        ShapePainter.fillPolygon(g, new int[] { x0, y0, x0, y1, x1, y1, x1, y0 });
-        g.setColor(Colors.BLACK);
-        StringPainter.drawStringAtPoint(g, this.contactName, getStyle().getFont(), circleRadius + 15, contentHeight / 2,
-                0, 0);
-        g.setColor(Colors.BLACK);
-        ImagePainter.drawImageInArea(g, this.image, contentWidth * 1 / 100, contentHeight / 4, 1, 1, 0, 0);
-        ShapePainter.drawThickCircle(g, contentWidth * 1 / 100, contentHeight / 4, circleRadius, 2);
+       g.setColor(Colors.BLACK);
+       Painter.drawImage(g, this.image, 0, 0);
+       int cornerEllipseSize = contentHeight / 2;
+       int imageWidth = this.image.getWidth();
+       int imageHeight = this.image.getHeight();
+       Painter.drawRoundedRectangle(g, 0, 0, imageWidth, imageHeight, cornerEllipseSize, cornerEllipseSize);
+       Painter.drawString(g, this.contactName, getStyle().getFont(), imageWidth + 2, contentHeight / 3);
     }
 
--  Then, simply replace the children in the List used in the last step:
+- Then, simply replace the children in the List used in the last step:
 
-   .. code:: java
+  .. code:: java
 
-        for (int i = 0; i < 45; i++) {
-            list.addChild(new ContactWidget("Label" + i, Image.getImage("/images/microej_logo.png")));
-        }
+    for (int i = 0; i < 45; i++) {
+       list.addChild(new ContactWidget("Label" + i, Image.getImage("/images/microej_logo.png")));
+    }
 
-- The class should be as follows:
+- The class is as follows:
 
-
-   .. code:: java
+  .. code:: java
 
     public class ContactWidget extends Widget {
 
-        String contactName;
-        Image image;
+       private String contactName;
+       private Image image;
 
-        public ContactWidget(String contactname, Image image) {
-            this.contactName = contactname;
-            this.image = image;
-        }
+       public ContactWidget(String contactName, Image image) {
+          this.contactName = contactName;
+          this.image = image;
+       }
 
-        @Override
-        protected void computeContentOptimalSize(Size size) {
-            Font f = getStyle().getFont();
-            int height = Math.max(f.getHeight(), this.image.getHeight());
-            int stringWidth = f.stringWidth(this.contactName);
-            int width = stringWidth + this.image.getWidth();
-            if(width > 240){
-                width = 240;
-            }
-            size.setSize(width, height);
-        }
+       @Override
+       protected void computeContentOptimalSize(Size size) {
+          Font f = getStyle().getFont();
+          int height = Math.max(f.getHeight(), this.image.getHeight());
+          int stringWidth = f.stringWidth(this.contactName);
+          int width = stringWidth + this.image.getWidth();
+          size.setSize(width, height);
+       }
 
-        @Override
-        protected void renderContent(GraphicsContext g, int contentWidth, int contentHeight) {
-            g.setColor(Colors.WHITE);
-            int x0 = 0;
-            int y0 = 0;
-            int x1 = contentWidth;
-            int y1 = contentHeight;
-            int circleRadius = contentHeight * 7 / 10;
-            ShapePainter.fillPolygon(g, new int[] { x0, y0, x0, y1, x1, y1, x1, y0 });
-            g.setColor(Colors.BLACK);
-            StringPainter.drawStringAtPoint(g, this.contactName, getStyle().getFont(), circleRadius + 15, contentHeight / 2,
-                    0, 0);
-            g.setColor(Colors.BLACK);
-            ImagePainter.drawImageInArea(g, this.image, contentWidth * 1 / 100, contentHeight / 4, 1, 1, 0, 0);
-            ShapePainter.drawThickCircle(g, contentWidth * 1 / 100, contentHeight / 4, circleRadius, 2);
-        }
+       @Override
+       protected void renderContent(GraphicsContext g, int contentWidth, int contentHeight) {
+          g.setColor(Colors.BLACK);
+          Painter.drawImage(g, this.image, 0, 0);
+          int cornerEllipseSize = contentHeight / 2;
+          int imageWidth = this.image.getWidth();
+          int imageHeight = this.image.getHeight();
+          Painter.drawRoundedRectangle(g, 0, 0, imageWidth, imageHeight, cornerEllipseSize, cornerEllipseSize);
+          Painter.drawString(g, this.contactName, getStyle().getFont(), imageWidth + 2, contentHeight / 3);
+       }
     }
 
-
-- And it should look like this:
-
-.. image:: images/listcontact.png
-    :align: center
+  .. image:: images/listcontact.png
+   :align: center
 

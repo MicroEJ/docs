@@ -1,124 +1,219 @@
-Transitions
-===========
+Expandable Widget
+=================
 
-- All apps need some animation, be it on its components or when changing screens. In this step you will learn how to make screen transition animations.
-- All the code needed for this tutorial can be found `here <link>`__.
+A simple expandable Widget
+--------------------------
 
-Motion
-------
+- To create an expandable widget, let's create a ``toggle()`` method to change the direction of the motion (animation).
 
-- The most important thing for the transition is the motion, it is responsible for calculating how the animation will be made, there are various Motion functions, but in this transition we are using the ``QuadEaseOutFunction``
+  .. code:: java
 
-.. code:: java
-
-    private static Motion createMotion(boolean forward) {
-        int width = Display.getDisplay().getWidth();
-        if (forward) {
-            return new Motion(QuadEaseOutFunction.INSTANCE, width, 0, DURATION);
+    public void toggle() {
+        Motion motion;
+        if (!this.expanded) {
+            motion = new Motion(QuadEaseOutFunction.INSTANCE, getCollapsedHeight(), getExpandedHeight(),
+                    getAnimationDuration());
         } else {
-            return new Motion(QuadEaseOutFunction.INSTANCE, 0, width, DURATION);
+            motion = new Motion(QuadEaseOutFunction.INSTANCE, getExpandedHeight(), getCollapsedHeight(),
+                    getAnimationDuration());
         }
+        this.motionAnimation = new MotionAnimation(this.animator, motion, this);
+
+        this.motionAnimation.start();
+        this.expanded = !this.expanded;
     }
 
-- In this case we are using the motion function QuadEaseOut to calculate where the X will be at each given frame when it is moving foward - from the width of the screen to the start of the screen - or backwards, which inverts the starting and ending points.
-- After creating the motion you will need to make sure that the result from the motion is updated on the screen to where you want it to be. This can be made by overwriting the tick method and using its ``value`` to set the position of the ``Desktop``.
+- This method just creates a motion for when it should expand or shrink
 
-.. code:: java
+- Being an expandable widget, it should also expand or collapse when clicked (simply calling toggle), for that you have to add and event handler to handle the pressed event
+
+  .. code:: java
 
     @Override
-    public void tick(int value, boolean finished) {
-        if (finished) {
-            this.newDesktop.requestShow();
-        } else {
-            this.currentPosition = value;
+    public boolean handleEvent(int event) {
+        int type = Event.getType(event);
+        if (type == Pointer.EVENT_TYPE) {
+            int action = Buttons.getAction(event);
+            if (action == Buttons.RELEASED) {
+                toggle();
+                return true;
+            }
+        }
+        return super.handleEvent(event);
+    }
+
+- To change the size you should also override the ``computeContentOptimalSize`` and change the ``size``
+
+  .. code:: java
+
+    protected void computeContentOptimalSize(Size size) {
+        size.setHeight(this.motionAnimation != null ? this.motionValue
+                : (this.expanded ? getExpandedHeight() : getCollapsedHeight()));
+    }
+
+- The final class looks like this 
+
+  .. code:: java
+
+    public class ExpandableWidget extends Widget implements MotionAnimationListener {
+
+        public static final int STYLE_COLLAPSED_HEIGHT = 1;
+        public static final int STYLE_EXPANDED_HEIGHT = 2;
+        public static final int STYLE_ANIMATION_DURATION = 3;
+
+        private static final int DEFAULT_COLLAPSED_HEIGHT = 48;
+        private static final int DEFAULT_EXPANDED_HEIGHT = DEFAULT_COLLAPSED_HEIGHT * 2;
+        private static final int DEFAULT_ANIMATION_DURATION = 250;
+
+        private static final int MATERIAL_LABEL_PADDING = 72;
+        private static final int MATERIAL_PADDING = 16;
+
+
+        private int motionValue;
+
+        private final String myLabel;
+        private final Animator animator;
+        private MotionAnimation motionAnimation;
+        private boolean expanded = false;
+
+        public ExpandableWidget(String label, Animator animator) {
+            setEnabled(true);
+            this.animator = animator;
+            this.myLabel = label;
+        }
+
+        public void toggle() {
+            Motion motion;
+            if (!this.expanded) {
+                motion = new Motion(QuadEaseOutFunction.INSTANCE, getCollapsedHeight(), getExpandedHeight(),
+                        getAnimationDuration());
+            } else {
+                motion = new Motion(QuadEaseOutFunction.INSTANCE, getExpandedHeight(), getCollapsedHeight(),
+                        getAnimationDuration());
+            }
+            this.motionAnimation = new MotionAnimation(this.animator, motion, this);
+
+            this.motionAnimation.start();
+            this.expanded = !this.expanded;
+        }
+
+        @Override
+        public boolean handleEvent(int event) {
+            int type = Event.getType(event);
+            if (type == Pointer.EVENT_TYPE) {
+                int action = Buttons.getAction(event);
+                if (action == Buttons.RELEASED) {
+                    toggle();
+                    return true;
+                }
+            }
+
+            return super.handleEvent(event);
+        }
+
+        @Override
+        protected void computeContentOptimalSize(Size size) {
+            size.setHeight(this.motionAnimation != null ? this.motionValue
+                    : (this.expanded ? getExpandedHeight() : getCollapsedHeight()));
+        }
+
+
+        @Override
+        protected void renderContent(GraphicsContext g, int contentWidth, int contentHeight) {
+            final Style style = this.getStyle();
+            final Font font = style.getFont();
+
+            g.setColor(style.getColor());
+            StringPainter.drawStringInArea(g, this.myLabel, font, MATERIAL_LABEL_PADDING,
+                    Alignment.computeTopY(font.getHeight(), 0, getCollapsedHeight(), Alignment.VCENTER), contentWidth,
+                    getCollapsedHeight(), style.getHorizontalAlignment(), style.getVerticalAlignment());
+
+            final char expandChar = 'V';
+            final int charWidth = font.charWidth(expandChar);
+            final int charHeight = font.getHeight();
+            final int charX = Alignment.computeLeftX(charWidth, -MATERIAL_PADDING, contentWidth, Alignment.RIGHT);
+            final int charY = Alignment.computeTopY(charHeight, 0, getCollapsedHeight(), Alignment.VCENTER);
+            TransformPainter.drawRotatedCharBilinear(g, font, expandChar, charX, charY, charX + charWidth / 2,
+                    charY + charHeight / 2, this.expanded ? 180 : 0);
+        }
+
+        private int getCollapsedHeight() {
+            return this.getStyle().getExtraInt(STYLE_COLLAPSED_HEIGHT, DEFAULT_COLLAPSED_HEIGHT);
+        }
+
+        private int getExpandedHeight() {
+            return this.getStyle().getExtraInt(STYLE_EXPANDED_HEIGHT, DEFAULT_EXPANDED_HEIGHT);
+        }
+
+        private int getAnimationDuration() {
+            return this.getStyle().getExtraInt(STYLE_ANIMATION_DURATION, DEFAULT_ANIMATION_DURATION);
+        }
+
+        @Override
+        public void tick(int value, boolean finished) {
+            this.motionValue = value;
+            this.getParent().requestLayOut();
             requestRender();
         }
     }
 
-.. note::
-    ``currentPosition`` is an int variable created to represent the position updated from the ``Motion``.
+Using the ExpandableWidget with the Scroll List
+-----------------------------------------------
 
-- With the updated value you can now update the screen with the current position of the ``Desktop``.
+- To add, simply add the expandable widget to the ScrollList
 
-.. code:: java
-
-    @Override
-    protected void render(GraphicsContext gc) {
-        Display display = Display.getDisplay();
-        int displayWidth = display.getWidth();
-        int displayHeight = display.getHeight();
-
-        int currentPosition = this.currentPosition;
-
-        if (this.forward) {
-            renderNewDesktop(gc, currentPosition, currentPosition, displayWidth - currentPosition);
-        } else {
-            int lastPosition = this.lastPosition;
-            Painter.drawDisplayRegion(gc, lastPosition, 0, displayWidth - currentPosition, displayHeight,
-                    currentPosition, 0);
-            renderNewDesktop(gc, 0, lastPosition, currentPosition - lastPosition);
-        }
-
-        this.lastPosition = currentPosition;
-    }
-
-    private void renderNewDesktop(GraphicsContext gc, int x, int clipX, int clipWidth) {
-        gc.setClip(clipX, 0, clipWidth, gc.getHeight());
-        gc.setTranslation(x, 0);
-
-        Desktop newDesktop = this.newDesktop;
-        newDesktop.setAttached();
-        Widget widget = newDesktop.getWidget();
-        assert (widget != null);
-        widget.render(gc);
-    }
-
-
-.. note::
-    Same as ``currentPosition``, ``lastPosition`` is used to calculate the position to draw the ``Desktop``.
-
-Changing screen
----------------
-
-- To change the screen you need to request for the display to show the Desktop instance you want, that could be done by calling ``requestShow(desktop)`` 
-
-.. code:: java
-
-    Display.getDisplay().requestShow(desktop);
-
-- Now to use the animation that we created when changing the screen.
-
-.. code:: java
+  .. code:: java
 
     public static void main(String[] args) {
         MicroUI.start();
-        mainScreen = new Desktop();
-        Label title = new Label("Main Screen");
-        Button changeScreen = new Button("Click to change the screen");
-        Canvas canvas = new Canvas();
-        int titleWidth = 64;
-        int buttonWidth = 64;
-        int buttonHeigth = 24;
-        int titleX = Alignment.computeLeftX(titleWidth, 0, Display.getDisplay().getWidth(), Alignment.HCENTER);
-        int buttonX = Alignment.computeLeftX(buttonWidth, 0, Display.getDisplay().getWidth(), Alignment.HCENTER);
-        int buttonY = Alignment.computeTopY(buttonHeigth, 0, Display.getDisplay().getHeight(), Alignment.VCENTER);
-        canvas.addChild(title, titleX, 0, titleWidth, Widget.NO_CONSTRAINT);
-        canvas.addChild(changeScreen, buttonX, buttonY, buttonWidth, buttonHeigth);
-        changeScreen.setOnClickListener(new OnClickListener() {
 
-            @Override
-            public void onClick() {
-                NewDesktop newDesktop = new NewDesktop();
-                TransitionDisplayable displayable = new TransitionDisplayable(newDesktop, true);
-                Display.getDisplay().requestShow(displayable);
-            }
-        });
-        mainScreen.setWidget(canvas);
-        mainScreen.requestShow();
+        Desktop desktop = new Desktop();
+
+        final Animator animator = new Animator();
+        ScrollableList list = new ScrollableList(LayoutOrientation.VERTICAL);
+        for (int i = 1; i < 15; i++) {
+            ExpandableWidget item = new ExpandableWidget("item " + i, animator);
+            list.addChild(item);
+        }
+
+        Scroll scroll = new Scroll(LayoutOrientation.VERTICAL, animator);
+        scroll.setChild(list);
+
+        CascadingStylesheet css = new CascadingStylesheet();
+        populateStylesheet(css);
+        desktop.setStylesheet(css);
+
+        desktop.setWidget(scroll);
+        desktop.requestShow();
     }
 
-- And it should look like this
+- Also, for viewing purposes, let's set a style for the widget
 
-|image0|
+  .. code:: java
 
-.. |image0| image:: images/transition.gif
+    static final int DEFAULT_BACKGROUND = 0xffffff
+    static final int DEFAULT_FOREGROUND = 0x262a2c
+    static final int DEFAULT_BORDER = 0x97a7af
+
+    private static void populateStylesheet(CascadingStylesheet stylesheet) {
+    EditableStyle style = stylesheet.getDefaultStyle();
+    style.setColor(DEFAULT_FOREGROUND);
+    style.setBackground(new RectangularBackground(DEFAULT_BACKGROUND));
+
+    style = stylesheet.getSelectorStyle(new TypeSelector(Scrollbar.class));
+    style.setBackground(NoBackground.NO_BACKGROUND);
+    style.setDimension(new FixedDimension(10, Widget.NO_CONSTRAINT));
+    style.setColor(DEFAULT_FOREGROUND);
+
+    style = stylesheet.getSelectorStyle(new TypeSelector(ExpandableWidget.class));
+    style.setBorder(new FlexibleRectangularBorder(DEFAULT_BORDER, 1, 0, 0, 0));
+    style.setHorizontalAlignment(Alignment.LEFT);
+    style.setBackground(new RectangularBackground(DEFAULT_BACKGROUND));
+
+    style = stylesheet.getSelectorStyle(
+            new AndCombinator(new TypeSelector(ExpandableWidget.class), OddChildSelector.ODD_CHILD_SELECTOR));
+    style.setBackground(new RectangularBackground(ALTERNATE_BACKGROUND));
+    }
+
+  .. image:: images/expanded.png
+   :align: center
