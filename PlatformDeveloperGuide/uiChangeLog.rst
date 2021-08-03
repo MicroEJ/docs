@@ -21,7 +21,7 @@ MicroUI Implementation
 
 **Changed**
 
-* Compatible with MicroUI API 3.1.0.
+* Compatible with `MicroUI API 3.1.0 <https://repository.microej.com/modules/ej/api/microui/3.1.0/>`_.
 * Check Immortals heap minimal size required by MicroUI implementation.
 * Change the EventGenerator Pointer event format.
 * Do no systematically use the GPU to draw intermediate steps of a shape.  
@@ -40,7 +40,7 @@ Drawing Implementation
 
 **Changed**
 
-* Compatible with Drawing API 1.0.3.
+* Compatible with `Drawing API 1.0.3 <https://repository.microej.com/modules/ej/api/drawing/1.0.3/>`_.
 
 LLAPIs
 """"""
