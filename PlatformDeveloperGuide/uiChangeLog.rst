@@ -4,8 +4,8 @@
 Changelog
 =========
 
-13.1.0 (2021-08-03)
-===================
+[13.1.0] - 2021-08-03
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -73,8 +73,8 @@ Simulator
 * Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images. 
 * Simulates the image data alignment.
 
-13.0.7 (2021-07-30)
-===================
+[13.0.7] -2021-07-30
+====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
