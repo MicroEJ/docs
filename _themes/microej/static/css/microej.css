@@ -570,6 +570,10 @@ li {
   padding-bottom: 5px;
 }
 
+dd p {
+  font-size: 16px;
+}
+
 p {
   font-size: 18px;
   color: #4b5357;
