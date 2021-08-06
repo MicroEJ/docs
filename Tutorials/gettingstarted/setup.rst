@@ -1,5 +1,5 @@
-Start your first MICROEJ GUI application in 15 Minutes
-======================================================
+Setup Your Environment
+======================
 
 Prerequisites
 -------------
