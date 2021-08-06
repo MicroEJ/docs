@@ -8,18 +8,19 @@ Getting Started With GUI
 
    setup
    Step01
+   Step07
+   Step08
+   Step09
    Step02
    Step03
    Step04
    Step05
    Step06
-   Step07
-   Step08
-   Step09
    Step10
    Step11
    Step12
    Step13
+..
    Step14
    Step15
    Step16
