@@ -16,6 +16,7 @@ Tutorials
    tutorialExploreDataSerializationFormats
    tutorialInstrumentJavaCodeForLogging
    tutorialRunATestSuiteOnDevice
+   getStartedWithGUI/index
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
