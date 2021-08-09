@@ -2,16 +2,16 @@
 Theming with MicroEJ
 =====================
 
-- MicroEJ uses a cascading stylesheet, it's possible to change it according to each screen
-- For this example, Demo-Widget will be used, since it already has a well defined stylesheet and color scheme
+- MicroEJ uses a cascading stylesheet, it's possible to change it according to each screen.
+- For this example, Demo-Widget will be used, since it already has a well defined stylesheet and color scheme.
 
 Defining Themes
 -----------------
-In this example, a light and a dark theme will be created, since the Demo Widget is already set in a dark color scheme, only the attributes will be changed
+In this example, a light and a dark theme will be created, since the Demo Widget is already set in a dark color scheme, only the attributes will be changed.
   
-Also, a theme class will be created to handle the two themes
+Also, a theme class will be created to handle the two themes.
   
-Theme Class
+Theme Class:
 
 .. code-block:: java
 
@@ -41,7 +41,7 @@ Theme Class
     }
 
 
-Dark Theme Class
+Dark Theme Class:
 
 .. code-block:: java
 
@@ -59,7 +59,7 @@ Dark Theme Class
         }
     }
 
-Light Theme Class
+Light Theme Class:
 
 .. code-block:: java
 
@@ -93,7 +93,7 @@ In the demo colors class, This method will be added to apply a theme:
     }
 
 Adding a Menu Option to Change the Theme
------------------------------------------
+----------------------------------------
 
 To change the theme, a menu item will be created, and added, at `com.microej.demo.widget.main.MainPage` and at the Method getContentWidget();
 
@@ -129,11 +129,11 @@ this is how it should look:
 .. image:: images/microejtutotheme.gif
 
 Theme improvement
--------------------------------------
+-----------------
 
-Now, some changes are going to be made 
+Now, some changes are going to be made.
 
-Extract the onClick() code to a method in navigation
+Extract the onClick() code to a method in navigation:
 
 .. code-block:: java
 
@@ -155,7 +155,7 @@ Extract the onClick() code to a method in navigation
 
 	}
 
-The mainpage MenuItem OnClickListener should look like this
+The mainpage MenuItem OnClickListener should look like this:
 
 .. code-block:: java
 
@@ -168,7 +168,7 @@ The mainpage MenuItem OnClickListener should look like this
 
     });
 
-add two more fields on DemoColors
+add two more fields on DemoColors:
 
 .. code-block:: java
 
@@ -176,16 +176,16 @@ add two more fields on DemoColors
 
     public static int ODD = 0;
 
-also adding both fields to the theme code
+also adding both fields to the theme code.
 
-The colors added to the DarkTheme Constructor
+The colors added to the DarkTheme Constructor:
 
 .. code-block:: java
 
     this.EVEN = Colors.WHITE;
     this.ODD = 0xe5e9eb;
 
-The colors added to the LightTheme Constructor
+The colors added to the LightTheme Constructor:
 
 
 .. code-block:: java
@@ -193,7 +193,7 @@ The colors added to the LightTheme Constructor
     this.ODD = Colors.WHITE;
     this.EVEN = Colors.WHITE;
 
-to make the changes more visible, let's add this to the ScrollableList at MainPage
+to make the changes more visible, let's add this to the ScrollableList at MainPage:
 
 .. code-block:: java
 
@@ -219,7 +219,7 @@ to make the changes more visible, let's add this to the ScrollableList at MainPa
     style.setBackground(new GoToBackground(DemoColors.ODD));
     }
 
-add the option to changed the theme
+add the option to changed the theme:
 
 .. code-block:: java
 		
@@ -239,7 +239,7 @@ add the option to changed the theme
 		};
 
 
-Also, a check is needed when the theme is changed from the Item on the List, or from the toggle button, The applyTheme method should look like this
+Also, a check is needed when the theme is changed from the Item on the List, or from the toggle button, The applyTheme method should look like this:
 
 .. code-block:: java
 
@@ -279,6 +279,6 @@ Also, a check is needed when the theme is changed from the Item on the List, or 
 
 }
 
-This is how the final result should appear
+This is how the final result should appear:
 
 .. image:: images/microejtutotheme_2.gif
