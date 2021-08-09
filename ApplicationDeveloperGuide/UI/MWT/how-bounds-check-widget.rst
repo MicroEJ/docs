@@ -1,14 +1,14 @@
 How To Detect Text overflow
-===============================
+===========================
 The Issue
 -------------
 
 Widgets that display some text may encounter text overflow when the strings are too long to fit into the available area. This is often the case in applications which support multiple languages, because widgets have to cope with texts of different lengths.
 
 Extending the Widget
-----------------------
+--------------------
 The goal is to check if the text to be displayed fits into the content boundaries of the widget. A straightforward way to test this is to extend or modify the widget.
-In this article, the type `MyLabel` will extend the type `Label` from the Widget library which displays a text.
+In this article, the type `MyLabel` will extend the type `Label` from the Widget library which displays a text:
 
 .. code-block:: java
 
@@ -25,12 +25,12 @@ In this article, the type `MyLabel` will extend the type `Label` from the Widget
     }
 
 Overriding the onLaidOut() Method
-----------------------------------
+---------------------------------
  
 As soon as a widget is laid out, its position and size are set and its `onLaidOut()` method is called.
 Overriding this method is the best way to check whether the text fits or not.
 
-In the method body, get the `Font` from the `Style` of the widget, and compare the text width to the content width.
+In the method body, get the `Font` from the `Style` of the widget, and compare the text width to the content width:
 
 .. code-block:: java
 
@@ -49,8 +49,8 @@ In the method body, get the `Font` from the `Style` of the widget, and compare t
     }
 
 Testing
-----------------------
-The check can be easily validated by putting the widget in a canvas and setting its boundaries manually (a little shorter than the text width).
+-------
+The check can be easily validated by putting the widget in a canvas and setting its boundaries manually (a little shorter than the text width):
   
 .. code-block:: java
 
@@ -72,9 +72,9 @@ The console should show this:
     The text size is greater than the widget content width!
 
 Improving the Bounds Check
-----------------------------
+--------------------------
 
-To make the correction process easier, it's possible to indicate where the text is truncated.
+To make the correction process easier, it is possible to indicate where the text is truncated:
 
 .. code-block:: java
 
@@ -95,7 +95,7 @@ To make the correction process easier, it's possible to indicate where the text 
         }
     }
 
-This block of code may also be extracted to a helper class in order to be used in other Widgets.
+This block of code may also be extracted to a helper class in order to be used in other Widgets:
 
 .. code-block:: java
 
@@ -117,9 +117,9 @@ This block of code may also be extracted to a helper class in order to be used i
     }
 
 Using BON Constant
-----------------------------
+------------------
 
-To avoid verbosity on the console, it's possible to use BON constants to show the error at developer will
+To avoid verbosity on the console, it is possible to use BON constants to show the error at developer will:
 
 .. code-block:: java
 
