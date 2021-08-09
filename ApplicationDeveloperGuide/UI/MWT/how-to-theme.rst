@@ -124,7 +124,7 @@ To change the theme, a menu item will be created, and added, at `com.microej.dem
 
 		});
 	
-this is how it should look:
+This is how it should look:
 
 .. image:: images/microejtutotheme.gif
 
@@ -168,7 +168,7 @@ The mainpage MenuItem OnClickListener should look like this:
 
     });
 
-add two more fields on DemoColors:
+Add two more fields on DemoColors:
 
 .. code-block:: java
 
@@ -176,7 +176,7 @@ add two more fields on DemoColors:
 
     public static int ODD = 0;
 
-also adding both fields to the theme code.
+Also adding both fields to the theme code.
 
 The colors added to the DarkTheme Constructor:
 
@@ -193,7 +193,7 @@ The colors added to the LightTheme Constructor:
     this.ODD = Colors.WHITE;
     this.EVEN = Colors.WHITE;
 
-to make the changes more visible, let's add this to the ScrollableList at MainPage:
+To make the changes more visible, let's add this to the ScrollableList at MainPage:
 
 .. code-block:: java
 
@@ -219,7 +219,7 @@ to make the changes more visible, let's add this to the ScrollableList at MainPa
     style.setBackground(new GoToBackground(DemoColors.ODD));
     }
 
-add the option to changed the theme:
+Add the option to changed the theme:
 
 .. code-block:: java
 		
