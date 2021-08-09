@@ -77,7 +77,7 @@ Light Theme Class:
         }
     }
 
-In the demo colors class, This method will be added to apply a theme:
+In the demo colors class, this method will be added to apply a theme:
 
 .. code-block:: java
 
@@ -95,7 +95,7 @@ In the demo colors class, This method will be added to apply a theme:
 Adding a Menu Option to Change the Theme
 ----------------------------------------
 
-To change the theme, a menu item will be created, and added, at `com.microej.demo.widget.main.MainPage` and at the Method getContentWidget();
+To change the theme, a menu item will be created, and added, at `com.microej.demo.widget.main.MainPage` and at the method getContentWidget();
 
 .. code-block:: java
 
@@ -155,7 +155,7 @@ Extract the onClick() code to a method in navigation:
 
 	}
 
-The mainpage MenuItem OnClickListener should look like this:
+The mainPage MenuItem OnClickListener should look like this:
 
 .. code-block:: java
 
@@ -275,9 +275,8 @@ Also, a check is needed when the theme is changed from the Item on the List, or 
         desktop.setStylesheet(createStylesheet(caller));
         desktop.requestLayOut();
         Display.getDisplay().requestShow(desktop);
+        }
     }
-
-}
 
 This is how the final result should appear:
 
