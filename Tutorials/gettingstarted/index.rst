@@ -20,11 +20,6 @@ Getting Started With GUI
    Step11
    Step12
    Step13
-..
-   Step14
-   Step15
-   Step16
-   Step17
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
