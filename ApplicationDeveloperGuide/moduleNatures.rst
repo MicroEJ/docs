@@ -508,6 +508,9 @@ This plugin defines the following configuration properties:
    * - microej.testsuite.properties.s3.cc.activated
      - When this property is set to true, the code coverage analysis is enabled.
      - ``true``
+   * - microej.testsuite.verbose
+     - When this property is set to true, the verbose trace level is enabled.
+     - ``false``
    * - test.run.excludes.pattern
      - Pattern of classes excluded from the test suite execution.
      - Empty string (no test)
@@ -613,7 +616,6 @@ This plugin defines the following configuration properties:
    * - skip.retrieve.checker
      - When this property is set to true, the retrieve checker is not executed.
      - Not set
-
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 

@@ -28,8 +28,10 @@ MicroEJ Packs are distributed in two packages:
 
 See :ref:`pack_import` for usage.
 
-MicroEJ Architecture Specific Pack
-----------------------------------
+.. _pack_architecture_specific:
+
+Architecture Specific Pack
+--------------------------
 
 MicroEJ Architecture Specific Packs contain compiled libraries
 archives and are thus dependent on the MicroEJ Architecture and
@@ -53,8 +55,10 @@ Cortex®-M4 microcontrollers compiled with GNU CC toolchain are
 available at
 https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25-ui-pack/.
 
-MicroEJ Generic Pack
---------------------
+.. _pack_generic:
+
+Generic Pack
+------------
 
 MicroEJ Generic Packs can be imported on top of any MicroEJ Architecture.
 
@@ -70,14 +74,18 @@ They are classified using the following naming convention:
 For example, MicroEJ Generic Pack Bluetooth versions are available at
 https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-pack/.
 
-Legacy MicroEJ Generic Packs files end with the ``.xpfp`` extension
-and can be :ref:`manually imported <pack_manual_import>` on older
-MicroEJ Platforms.  They are classified using the following naming
-convention:
+.. _pack_generic_legacy:
+
+Legacy Generic Pack
+~~~~~~~~~~~~~~~~~~~
+
+Legacy MicroEJ Generic Packs files end with the ``.xpfp`` extension.
+These Packs contain one or more Platform modules. See :ref:`platform_module_configuration` for their configuration.  
+They are classified using the following naming convention:
 
 ::
    
-   com/microej/pack/[NAME]/[NAME]/[VERSION]/
+   com/microej/pack/[NAME]/[VERSION]/[NAME]-[VERSION].xpfp
 
 - ``NAME``: pack name (e.g. ``net``).
 - ``VERSION``: pack version (e.g. ``9.2.3``).

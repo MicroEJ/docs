@@ -74,7 +74,7 @@ The following steps can be adapted to custom :ref:`settings file <mmm_settings_f
      </ivysettings>
 
 - Copy the MicroEJ Architecture file (``.xpf``) into the correct directory
-  following MicroEJ Naming Convention (see :ref:`architecture_import`).
+  following its :ref:`naming convention <architecture_naming_convention>`).
 
   - Open or extract the MicroEJ Architecture file (``.xpf``)
   - Open the ``release.properties`` file to retrieve the naming convention mapping:

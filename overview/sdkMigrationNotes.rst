@@ -78,7 +78,7 @@ The Wadapps code generator has been moved from IDE to an Addon Processor
 coming with ``ej.library.wadapps.framework`` module (``v1.9.0`` or
 higher is required).
 
-A Wadapps Application Project can be updated as following:
+A Wadapps Application Project can be updated as follows:
 
 -  Right-click on the project, then
    :guilabel:`Configure` > :guilabel:`Remove Sandboxed Application Nature`
@@ -98,7 +98,7 @@ It is highly recommended to migrate ``module.ivy`` to the MicroEJ Module
 Manager semantic, since the default Ivy resolution will be no more
 maintained in future versions.
 
-The ``module.ivy`` can be updated as following:
+The ``module.ivy`` can be updated as follows:
 
 -  Right-click on ``module.ivy``, then :guilabel:`Update Module Dependencies...`
 
@@ -110,7 +110,7 @@ Meta build Project Update
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A project using ``microej-meta-build`` version ``1.x`` can be updated to
-version ``2.x`` as following:
+version ``2.x`` as follows:
 
 -  Edit ``module.ivy``
 

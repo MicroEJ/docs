@@ -56,7 +56,7 @@ resolution. Please consult the MMM specification available on
 Module Project Skeleton
 -----------------------
 
-In MicroEJ SDK, a new MicroEJ module project is created as following:
+In MicroEJ SDK, a new MicroEJ module project is created as follows:
 
 - Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`,
 - Select :guilabel:`MicroEJ` > :guilabel:`Module Project` [#warning_check_sdk_5_2]_,
@@ -68,7 +68,7 @@ The project is created and a set of files and directories are generated from the
 
 .. note:: 
   When an empty Eclipse project already exists or when the skeleton has to be created within an existing directory, 
-  the MicroEJ module is created as following:
+  the MicroEJ module is created as follows:
 
   - In the `Package Explorer`, click on the parent project or directory,
   - Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Other...`,
@@ -375,7 +375,7 @@ A typical usage in a :ref:`module description file <mmm_module_description>` is 
 Module Build
 ------------
 
-In MicroEJ SDK, the build of a MicroEJ module project can be started as following:
+In MicroEJ SDK, the build of a MicroEJ module project can be started as follows:
 
   - In the `Package Explorer`, right-click on the project,
   - Select :guilabel:`Build Module`.
@@ -597,6 +597,8 @@ For example
    mmm clean
 
 cleans the project.
+
+.. _mmm.cli.commands.build:
 
 **build**
 

@@ -139,9 +139,9 @@ Setup Artifactory
 Install and Start Artifactory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Download Artifactory here: `<https://api.bintray.com/content/jfrog/artifactory/jfrog-artifactory-oss-$latest.zip;bt_package=jfrog-artifactory-oss-zip>`_.
-#. Unzip downloaded archive, then navigate to ``bin`` directory (by default
-   ``artifactory-oss-[version]/bin``).
+#. Download Artifactory here: `<https://jfrog.com/fr/open-source/>`_ and select the appropriate package for your operating system.
+#. Unzip downloaded archive, then navigate to ``app/bin`` directory (by default
+   ``artifactory-oss-[version]/app/bin``).
 #. Run ``artifactory.bat`` or ``artifactory.sh`` depending on your operating system. After initialization, the terminal should print the message :guilabel:`Artifactory successfully started`. 
    In case an error occurs, check that ``JAVA_HOME`` and ``JRE_HOME`` environment variables are correct.
 #. Go to ``http://localhost:8081/``.
