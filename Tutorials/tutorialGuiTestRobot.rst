@@ -48,7 +48,7 @@ We will now look at how to record the events.
 Record events with ``WatchPointerEventHandler``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Here is the custom ``EventHandler`` named ``WatchPointerEventHandler``.
+Here is the custom ``EventHandler`` named ``WatchPointerEventHandler``:
 
 .. code:: java
 
@@ -111,10 +111,10 @@ This ``EventHandler`` does two things:
 
 Note that ``WatchPointerEventHandler`` outputs the commands on the standard output. More on this a bit later.
 
-Replace default ``EventHandler`` with ``WatchPointerEventHandler``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Replace the default ``EventHandler`` with ``WatchPointerEventHandler``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Next, we setup the handler
+Next, we setup the handler:
 
 .. code:: java
 
@@ -166,10 +166,10 @@ This code
 #. we start the recording by replacing the ``EventHandler``
 #. and we stop it by restoring the initial ``EventHandler``.
 
-Use WatchPointer in our main application
+Use WatchPointer In Our Main Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The API of our ``WatchPointer`` is straightforward, just ``start()`` and ``stop()`` the recording of events. A good place to start the recording is after the initialization of your GUI.
+The API of our ``WatchPointer`` is straightforward, just ``start()`` and ``stop()`` the recording of events. A good place to start the recording is after the initialization of your GUI:
 
 .. code:: java
 
