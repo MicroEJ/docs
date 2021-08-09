@@ -1,7 +1,7 @@
 Basic Drawing on Screen
 =======================
 
-- We have seen a basic use of the MWT and widgets libraries. Before going further let see how to write directly on a display using both Displayable and GraphicsContext classes.
+- We have seen a basic use of the MWT and widgets libraries. Before going further let's see how to write directly on a display using both Displayable and GraphicsContext classes.
 - A Displayable represents what can be shown on a screen, a GraphicsContext provides access to a modifiable (readable and writable) pixel buffer to be associated with an Image or a Displayable.
 - It is then possible to have access to a drawable interface that represents a pixelated version of the Display.
 
