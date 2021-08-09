@@ -3,14 +3,14 @@
 Networking
 ==========
 
-This section presents network's libraries.
+This section presents networking libraries.
 
 The following schema shows the overall architecture and modules:
 
 .. figure:: images/networking_overview.png
    :alt: Network Libraries Overview
-   :width: 600px
    :align: center
+   :scale: 75%
 
    Network Libraries Overview
 
@@ -19,7 +19,7 @@ Foundation Libraries
 
 .. list-table::
    :header-rows: 1
-   :widths: 10 200 10 70
+   :widths: 10 40 15 40
 
    *  -  Name
       -  Description
@@ -27,45 +27,45 @@ Foundation Libraries
       -  Use
    
    *  -  ``Bluetooth``
-      -  Provides interfaces and classes stubs of the Bluetooth API.
+      -  Bluetooth Low Energy (BLE) based on the Generic Attribute Profile (GATT).
       -  `bluetooth <https://repository.microej.com/modules/ej/api/bluetooth/>`_
-      -  `utility library <https://repository.microej.com/modules/ej/library/iot/bluetooth-util/>`_
+      -  - `Bluetooth utility Library <https://repository.microej.com/modules/ej/library/iot/bluetooth-util/>`_
 
    *  -  ``ECOM-Network``
-      -  Provides classes to manage the network interfaces and their IP configurations.
+      -  Network interfaces management and IP configurations.
       -  `ecom-network <https://repository.microej.com/modules/ej/api/ecom-network/>`_
       - 
 
    *  -  ``ECOM-WIFI``
-      -  Provides classes to manage Wi-Fi.
+      -  Wi-Fi connectivity.
       -  `ecom-wifi <https://repository.microej.com/modules/ej/api/ecom-wifi/>`_
-      -  -  `wifi-util <https://repository.microej.com/modules/ej/library/iot/wifi-util/>`_
-         -  `Example Wi-fi setup <https://github.com/MicroEJ/Example-Wi-Fi-Setup>`_
+      -  - `Wi-Fi setup Example  <https://github.com/MicroEJ/Example-Wi-Fi-Setup>`_
+         - `Wi-Fi utility Library <https://repository.microej.com/modules/ej/library/iot/wifi-util/>`_
 
    *  -  ``NET``
-      -  Contains classes and interfaces stubs of NET API (ESR024).
+      -  Client and Server raw TCP/IP sockets.
       -  `net <https://repository.microej.com/modules/ej/api/net/>`_
-      -  -  `MicroEJ/Foundation/Net <https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/com.microej.example.foundation.net.helloworld>`_
-         -  `net-util <https://repository.microej.com/modules/ej/library/iot/net-util/>`_
+      -  -  `NET Example <https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/com.microej.example.foundation.net.helloworld>`_
+         -  `NET utility Library <https://repository.microej.com/modules/ej/library/iot/net-util/>`_
 
    *  -  ``Security``
-      -  MicroEJ Java library API: security.
+      -  Cryptographic operations.
       -  `security <https://repository.microej.com/modules/ej/api/security/>`_
       - 
 
    *  -  ``SSL``
-      -  Contains classes and interfaces stubs of SSL API (ESR029).
+      -  Client and Server secure sockets layer using Transport Layer Security (TLS) protocols.
       -  `ssl <https://repository.microej.com/modules/ej/api/ssl/>`_
-      -  -  `ssl-util <https://repository.microej.com/modules/ej/library/iot/ssl-util/>`_
-         -  `SSL Mutual <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.mutual>`_
-         -  `SSL Mutual Server <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.mutual.server>`_
+      -  -  `SSL mutual client Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.mutual>`_
+         -  `SSL mutual server Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.mutual.server>`_
+         -  `SSL utility Library <https://repository.microej.com/modules/ej/library/iot/ssl-util/>`_
 
 IoT Libraries
---------------
+-------------
 
 .. list-table::
    :header-rows: 1
-   :widths: 10 200 10 100
+   :widths: 10 40 15 40
 
    *  -  Name
       -  Description
@@ -73,51 +73,49 @@ IoT Libraries
       -  Use
 
    *  -  ``Android Connectivity`` 
-      -  Contains android connectivity utilities.
+      -  Network connection state and notifications.
       -  `android-connectivity <https://repository.microej.com/modules/ej/library/iot/android-connectivity/>`_
-      -  `Example-Sandboxed-IOT/android-connectivity <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.androidconnectivity>`_
+      -  - `Connectivity Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.androidconnectivity>`_
 
    *  -  ``HTTP Client``
-      -  Contains the implementation of an HTTP client.
+      -  OpenJDK HTTP client.
       -  `httpclient <https://repository.microej.com/modules/ej/library/eclasspath/httpclient/>`_, `httpsclient <https://repository.microej.com/modules/ej/library/eclasspath/httpsclient/>`_
-      -  See REST Client
+      -  - `HTTP client README <https://repository.microej.com/modules/ej/library/eclasspath/httpclient/1.3.0/README-1.3.0.md>`_
+         - See also `REST client Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.rest>`_
    
    *  -  ``HTTP Server (Hoka)``
-      -  Provides a tiny footprint yet extensible web server. Check the documentation of this library by following this link:
-         `Hoka/user-manual.rst <https://github.com/MicroEJ/LibraryJava-hoka/blob/master/hoka/user-manual.rst>`_
+      -  Tiny footprint yet extensible web server. 
       -  `hoka <https://repository.microej.com/modules/ej/library/iot/hoka/>`_
-      -  `Example-Hoka <https://github.com/MicroEJ/Example-Hoka>`_   
+      -  - `Hoka user manual <https://github.com/MicroEJ/LibraryJava-hoka/blob/master/hoka/user-manual.rst>`_
+         - `Hoka Example <https://github.com/MicroEJ/Example-Hoka>`_   
 
    *  -  ``MQTT Client``
-      -  - This is a fork of Paho: `eclispe/paho/clients/java <https://eclipse.org/paho/clients/java/>`_ from commit 496f94a58a41557ba2401d4ba94bc099a75ba8ef (just after version 1.0.2).
-         - Implements MQTT 3.1.1
+      -  Eclipse Paho MQTT 3.1.1 client.
       -  `mqtt <https://repository.microej.com/modules/org/eclipse/paho/mqttv3-microej/>`_, `mqtt-ssl <https://repository.microej.com/modules/org/eclipse/paho/mqttv3-ssl-microej/>`_
-      -  -  `Example-Sandboxed-IOT/mqtt.publisher <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.mqtt.publisher>`_  
-         -  `Example-Sandboxed-IOT/mqtt.subscriber <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.mqtt.subscriber>`_
-
+      -  - `MQTT publish Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.mqtt.publisher>`_  
+         - `MQTT subscribe Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.mqtt.subscriber>`_
 
    *  -  ``REST Client``
-      -  It is a tiny RESTful services client. Check out README.md
-         to learn more: `RestClient/README.md <https://repository.microej.com/modules/ej/library/iot/restclient/1.1.0/README-1.1.0.md>`_
+      -  REpresentational State Tranfer (REST) client.
       -  `restclient <https://repository.microej.com/modules/ej/library/iot/restclient/>`_
-      -  `Example-Sandboxed-IOT/rest <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.rest>`_
+      -  - `REST client README <https://repository.microej.com/modules/ej/library/iot/restclient/1.1.0/README-1.1.0.md>`_
+         - `REST client Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.rest>`_
 
    *  -  ``REST Server``
-      -  A simple REST server implementation over Hoka library.
+      -  REpresentational State Tranfer (REST) server using on Hoka HTTP Server.
       -  `restserver <https://repository.microej.com/modules/ej/library/iot/restserver/>`_
-      -  `Example-Sandboxed-IOT/dynamic-restserver <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.dynamic-restserver>`_
+      -  - `REST server Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.dynamic-restserver>`_
 
    *  -  ``SNTP Client``
-      -  Implements an SNTP client. It can be used to retrieve the current time from an NTP server. Check out README.md
-         to learn more: `SNTPClient/README.md <https://repository.microej.com/modules/ej/library/iot/sntpclient/1.3.0/README-1.3.0.md>`_
+      -  Simple Network Time Protocol (SNTP) client, used to retrieve the current time from an NTP server.
       -  `sntpclient <https://repository.microej.com/modules/ej/library/iot/sntpclient/>`_
-      -
+      -  - `SNTP client README <https://repository.microej.com/modules/ej/library/iot/sntpclient/1.3.0/README-1.3.0.md>`_
 
    *  -  ``WebSocket Client``
-      -  Implementation for the client side of the WebSocket protocol as described in RFC 6455. Check out README.md
-         to learn more: `WebSocket/README.md <https://repository.microej.com/modules/ej/library/iot/websocket/2.0.0/README-2.0.0.md>`_
+      -  WebSocket client (RFC 6455).
       -  `websocket <https://repository.microej.com/modules/ej/library/iot/websocket/>`_, `websocket-secure <https://repository.microej.com/modules/ej/library/iot/websocket-secure/>`_
-      -  `Example-Sandboxed-IOT/websocket <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.websocket>`_  
+      -  - `WebSocket client README <https://repository.microej.com/modules/ej/library/iot/websocket/2.0.0/README-2.0.0.md>`_
+         - `WebSocket client Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.websocket>`_  
 
 
 Data Serialization Libraries
@@ -125,7 +123,7 @@ Data Serialization Libraries
 
 .. list-table::
    :header-rows: 1
-   :widths: 10 200 10 70
+   :widths: 10 40 15 40
 
    *  -  Name
       -  Description
@@ -133,21 +131,25 @@ Data Serialization Libraries
       -  Use
 
    *  -  ``CBOR``
-      -  Library for encoding/decoding CBOR format.
+      -  Concise Binary Object Representation (CBOR) encoder and decoder (RFC 7049).
       -  `cbor <https://repository.microej.com/modules/ej/library/iot/cbor/>`_
-      -  `Tutorials/CBOR <https://docs.microej.com/en/latest/Tutorials/tutorialExploreDataSerializationFormats.html#cbor>`_
+      -  - `CBOR Tutorial <tutorial_cbor>`_
 
    *  -  ``JSON``
-      -  Provides APIs for writing to and reading from JSON streams. Check out README.md
-         to learn more: `JSON/README.md <https://repository.microej.com/modules/ej/library/iot/json/1.0.0/README-1.0.0.md>`_
+      -  JavaScript Object Notation (JSON) encoder and decoder.
       -  `json <https://repository.microej.com/modules/ej/library/iot/json/>`_
-      -  `Tutorials/JSON <https://docs.microej.com/en/latest/Tutorials/tutorialExploreDataSerializationFormats.html#json>`_
+      -  - `README <https://repository.microej.com/modules/ej/library/iot/json/1.0.0/README-1.0.0.md>`_
+         - `JSON Tutorial <tutorial_json>`_
 
-   *  -  ``Protocol Buffer``
-      -  Contains the lite part of Google Protocol Buffer library for java.
-         It supports java files compiled by protoc with lite plugin.
+   *  -  ``Protocol Buffers``
+      -  Google Protocol Buffers 3 encoder and decoder, supporting files compiled by ``protoc`` with lite plugin.
       -  `protobuf3 <https://repository.microej.com/modules/com/google/protobuf3/>`_
-      -  `Demo-Protobuf3 <https://github.com/MicroEJ/Demo-Protobuf3>`_
+      -  - `Protobuf3 Example <https://github.com/MicroEJ/Demo-Protobuf3>`_
+
+   *  -  ``XML``
+      -  eXtensible Markup Language encoder and decoder (`kXML 3 <http://kxml.sourceforge.net/about.shtml>`_).
+      -  `kxml2 <https://repository.microej.com/modules/org/kxml2/kxml2/>`_
+      - - `XML Tutorial <tutorial_xml>`_
 
 
 Cloud Agent Libraries
@@ -155,23 +157,23 @@ Cloud Agent Libraries
 
 .. list-table::
    :header-rows: 1
-   :widths: 5 200 10 70
+   :widths: 10 40 15 40
 
    *  -  Name
       -  Description
       -  Module Link
       -  Use
 
-   *  -  ``AWS``
-      -  Enables MicroEJ developers to access the AWS IoT platform, providing publish/subscribe functionalities. Check out README.md
-         to learn more: `AWS/README.md <https://repository.microej.com/modules/ej/library/iot/aws/aws-iot/1.2.0/README-1.2.0.md>`_
-      -  `aws <https://repository.microej.com/modules/ej/library/iot/aws/aws-iot/>`_
-      -  `AWS <https://github.com/MicroEJ/AWS>`_
+   *  -  ``AWS IoT Core``
+      -  AWS IoT Core client, providing publish/subscribe functionalities.
+      -  `aws-iot <https://repository.microej.com/modules/ej/library/iot/aws/aws-iot/>`_
+      -  - `AWS IoT Core README <https://repository.microej.com/modules/ej/library/iot/aws/aws-iot/1.2.0/README-1.2.0.md>`_
+         - `AWS IoT Core Example <https://github.com/MicroEJ/AWS>`_
 
    *  -  ``Google Cloud Platform Iot Core``
-      -  Allows to connect to Google Cloud Platform Iot Core services.
+      -  Google Cloud Platform Iot Core client.
       -  `gcp-iotcore <https://repository.microej.com/modules/googlecloud/iotcore/>`_
-      - 
+      -  - `Google Cloud Platform Getting Started <https://developer.microej.com/features/iot-connectivity/get-started-google-cloud-iot-core-connectivity/>`_
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free

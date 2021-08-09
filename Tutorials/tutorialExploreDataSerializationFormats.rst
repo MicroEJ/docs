@@ -9,6 +9,8 @@ Intended Audience
 The audience for this document is Application engineers who want to implement data serialization.
 In addition, this tutorial should be of interest to software architects who are looking for a suitable data format for their use case.
 
+.. _tutorial_xml:
+
 XML
 ---
 
@@ -98,7 +100,7 @@ Running ``MyXmlPullApp`` gives more details on the XML parsing and should print 
 
 	SUCCESS
 
-.. _json-module:
+.. _tutorial_json:
 
 JSON
 ----
@@ -111,6 +113,7 @@ As described on the `JSON official site <http://json.org/>`_, JSON (JavaScript O
 
 JSON is easily readable by humans compared to XML. To parse this data format, several JSON parsers are available on the `official JSON page <http://json.org/>`_, such as `JSON ME`, which has been integrated to MicroEJ Central Repository.
 
+.. _json_module:
 
 JSON Module
 ~~~~~~~~~~~
@@ -247,6 +250,7 @@ The execution of this example on the MicroEJ Simulator should print the followin
 
 	SUCCESS
 
+.. _tutorial_cbor:
 
 CBOR
 ----
@@ -298,7 +302,7 @@ The execution of this example on the MicroEJ Simulator should print the followin
 	}
 	=============== [ Completed Successfully ] ===============
 
-Another example showing how to use the :ref:`JSON Module <json-module>` along with the `CBOR Module <https://repository.microej.com/modules/ej/library/iot/cbor/>`_ to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.json.
+Another example showing how to use the :ref:`JSON Module <json_module>` along with the `CBOR Module <https://repository.microej.com/modules/ej/library/iot/cbor/>`_ to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.json.
 
 The execution of this example on the MicroEJ Simulator should print the following trace:
 
