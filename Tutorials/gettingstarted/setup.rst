@@ -1,10 +1,10 @@
-Setup Your Environment
+Setup your Environment
 ======================
 
 Prerequisites
 -------------
 
-- Supported Operating System: MICROEJ SDK runs on the following operating systems: Windows (7, 8, 8.1, 10), Linux, macOS.
+- Supported Operating System: MICROEJ SDK runs on the following operating systems: Windows (7, 8, 8.1, 10), Linux, macos.
 - A Java™ Runtime Environment 8 is needed on your host computer for running MICROEJ SDK Dist. 21.03: `Download Java <https://www.java.com/en/download/manual.jsp>`__.
 
 Download and Install
@@ -35,7 +35,7 @@ Prepare Platform Sources
 
 #. Download and unzip the platform sources for STM32F7508-DK by clicking on :guilabel:`Download` > :guilabel:`Download ZIP`: 
    `Go to the Github repository <https://github.com/MicroEJ/Platform-STMicroelectronics-STM32F7508-DK/tree/1.3.2>`__.
-#. Follow the README to import the platform sources, activate your license and build your platform, in the Platformn Setup section.
+#. Follow the README to import the platform sources, activate your license and build your platform, in the Platform Setup section.
 #. Once all the steps of the platform setup are done, a new Java project can be created.
 
 Create a New Project
