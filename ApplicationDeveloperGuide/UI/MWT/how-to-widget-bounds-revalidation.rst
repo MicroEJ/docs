@@ -15,7 +15,7 @@ every container has its own way to calculate the optimal size as seen below:
 
 Flow Container
 --------------
-Each time Compute optimal size is called on a Container(And a widget), Compute content optimal size is also called, in the case of Flow, it computes the size of each children and adds to the total sum
+Each time Compute optimal size is called on a Container(And a widget), Compute content optimal size is also called, in the case of Flow, it computes the size of each children and adds to the total sum.
 
 The sample below is a simple computing of the size of a Flow Container:
 
