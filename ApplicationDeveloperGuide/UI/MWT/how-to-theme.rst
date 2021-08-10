@@ -155,7 +155,7 @@ Extract the onClick() code to a method in navigation:
 
 	}
 
-The mainPage MenuItem OnClickListener should look like this:
+The MainPage MenuItem OnClickListener should look like this:
 
 .. code-block:: java
 
@@ -178,14 +178,14 @@ Add two more fields on DemoColors:
 
 Also adding both fields to the theme code.
 
-The colors added to the DarkTheme Constructor:
+The colors added to the DarkTheme constructor:
 
 .. code-block:: java
 
     this.EVEN = Colors.WHITE;
     this.ODD = 0xe5e9eb;
 
-The colors added to the LightTheme Constructor:
+The colors added to the LightTheme constructor:
 
 
 .. code-block:: java
@@ -219,7 +219,7 @@ To make the changes more visible, let's add this to the ScrollableList at MainPa
     style.setBackground(new GoToBackground(DemoColors.ODD));
     }
 
-Add the option to changed the theme:
+Add the option to change the theme:
 
 .. code-block:: java
 		
@@ -239,7 +239,7 @@ Add the option to changed the theme:
 		};
 
 
-Also, a check is needed when the theme is changed from the Item on the List, or from the toggle button, The applyTheme method should look like this:
+Also, a check is needed when the theme is changed from the Item on the List, or from the Toggle button, The applyTheme method should look like this:
 
 .. code-block:: java
 
