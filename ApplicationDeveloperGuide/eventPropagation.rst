@@ -13,14 +13,11 @@ While no renderable consumes the events, they are sent to the renderable that is
 
 The renderable under the pointer is requested using getDesktop().getWidgetAt(). By default every widget is considered as a rectangular area. This area can be modified by subclassing Widget.contains().
 
-|image0|
+.. image:: images/EventPropagation_1.png
 
 Other Events
 ------------
 
 For other events, the events are sent to the focus owner of the active Displayable.
 
-|image1|
-
-.. |image0| image:: images/EventPropagation_1.png
-.. |image1| image:: images/EventPropagation_2.png
+.. image:: images/EventPropagation_2.png
