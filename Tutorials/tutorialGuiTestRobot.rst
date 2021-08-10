@@ -13,8 +13,8 @@ The robot implementation proposed here targets the following errors detection:
 
 The following document covers:
 
-- recording human touch events on the simulator or on the embedded platform
-- running recorded events on the simulator or on the embedded platform
+- recording human touch events on the simulator or on the embedded platform.
+- running recorded events on the simulator or on the embedded platform.
 
 The following document does not cover:
 
@@ -27,7 +27,7 @@ We will now present the basic architecture and code required to create and to ru
 In the following sections, we assume:
 
 - the MicroEJ Java application is based in MicroUI 2.x, MWT 2.x and Widget 2.x
-- the MicroEJ platform has a display interface and a touch controller (using the MicroUI EventGenerator for Pointer)
+- the MicroEJ platform has a display interface and a touch controller (using the MicroUI EventGenerator for Pointer).
 
 Overview
 --------
