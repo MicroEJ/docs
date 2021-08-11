@@ -30,7 +30,7 @@ Overriding the onLaidOut() Method
 As soon as a widget is laid out, its position and size are set and its `onLaidOut()` method is called.
 Overriding this method is the best way to check whether the text fits or not.
 
-In the method body, get the `Font` from the `Style` of the widget, and compare the text width to the content width:
+In the method body, get the `Font` from the `Style` of the Widget, and compare the text width to the content width:
 
 .. code-block:: java
 
@@ -50,7 +50,7 @@ In the method body, get the `Font` from the `Style` of the widget, and compare t
 
 Testing
 -------
-The check can be easily validated by putting the widget in a canvas and setting its boundaries manually (a little shorter than the text width):
+The check can be validated by putting the widget in a canvas and setting its boundaries manually (a little shorter than the text width):
   
 .. code-block:: java
 
@@ -74,7 +74,7 @@ The console should show this:
 Improving the Bounds Check
 --------------------------
 
-To make the correction process easier, it is possible to indicate where the text is truncated:
+To make the correction process more assertive, it is possible to indicate where the text is truncated:
 
 .. code-block:: java
 
