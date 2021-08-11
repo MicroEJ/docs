@@ -15,7 +15,7 @@ The following schema shows the overall architecture and modules:
    Network Libraries Overview
 
 Foundation Libraries
----------------------
+--------------------
 
 .. list-table::
    :header-rows: 1
@@ -60,8 +60,12 @@ Foundation Libraries
          -  `SSL mutual server Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.mutual.server>`_
          -  `SSL utility Library <https://repository.microej.com/modules/ej/library/iot/ssl-util/>`_
 
+
+Add-On Libraries
+----------------
+
 IoT Libraries
--------------
+~~~~~~~~~~~~~
 
 .. list-table::
    :header-rows: 1
@@ -119,7 +123,7 @@ IoT Libraries
 
 
 Data Serialization Libraries
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table::
    :header-rows: 1
@@ -153,7 +157,7 @@ Data Serialization Libraries
 
 
 Cloud Agent Libraries
-----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table::
    :header-rows: 1
