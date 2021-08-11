@@ -1,75 +1,82 @@
-How computeOptimalSize works
-==============================
+How to compute the optimal size of a Widget
+===========================================
 
-When created, a widget, will have its size set A container has multiple children widgets.
+The ``computeContentOptimalSize()`` method is called by the MWT framework in order to know the optimal size of a widget.
+The optimal size of the widget should be big enough to contain all the drawings of the widget.
 
-To compute the size of each of the children on a container every time a widget is laid out, the method ComputeOptimalSize is called, which will calculate the size of this Widget.
+The ``Size`` parameter of the ``computeContentOptimalSize()`` method initially contains the size available for the widget.
+An available width or height equal to ``Widget.NO_CONSTRAINT`` means that the optimal size should be computed without considering any restriction on the respective axis.
+Before the method returns, the size object should be set to the optimal size of the widget.
 
-Every call to computeOptimalSize stores the Size needed to show the Widget correctly including outlines(Example: Margin, Padding) and sets the Size atrribute.
+When implementing this method, the ``getStyle()`` method may be called in order to retrieve the style of the widget.
 
-As a container is also a Widget, it also contains a computeOptimalsize, calculating its size using its children.
+.. note::
 
-on every call to LayOut, the optimal Size is recalculated.
+   The outlines defined in the style (Margin, Border and Padding) don't need to be taken in count to compute the optimal size of the widget, it will be added automatically by MWT.
 
-every container has its own way to calculate the optimal size as seen below:
-
-Flow Container
---------------
-Each time computeOptimalSize is called on a Container(And a widget), Compute content optimal size is also called, in the case of Flow, it computes the size of each children and adds to the total sum.
-
-The sample below is a simple computing of the size of a Flow Container:
+For example, the following snippet computes the optimal size of a label:
 
 .. code-block:: Java
 
+	@Override
 	protected void computeContentOptimalSize(Size size) {
+		Font font = getStyle().getFont();
+		int width = font.stringWidth(this.text);
+		int height = font.getHeight();
+		size.setSize(width, height);
+	}
+
+Compute the optimal size of a Container
+---------------------------------------
+
+The container is responsible for computing the optimal size of every child. 
+The optimal size of the container should be big enough so that each child can be laid out with a size at least as big as its own optimal size.
+
+To do so, the ``computeChildOptimalSize()`` method should be called for every child.
+After this method is called, the optimal size of the child can be retrieved by calling ``getWidth()`` and ``getHeight()`` on the child widget.
+
+The following snippet shows how ``computeContentOptimalSize()`` of a ``List`` is done.
+``computeChildOptimalSize`` is called on every child of the list, according to the orientation of the list, the width or height is equal to the sum of the children width/height. The other dimension is equal to the greater width/height of the children.
+
+.. code-block:: Java
+
+    @Override
+	protected void computeContentOptimalSize(Size size) {
+		// perform quick optimization if there is no child
+		int childrenCount = getChildrenCount();
+		if (childrenCount == 0) {
+			size.setSize(0, 0);
+			return;
+		}
+
+		// compute size hint for children
+		boolean isHorizontal = (this.orientation == LayoutOrientation.HORIZONTAL);
+		int childWidthHint = size.getWidth();
+		int childHeightHint = size.getHeight();
+
+		// compute total children size
 		int totalWidth = 0;
 		int totalHeight = 0;
 
-		// computes the maximum size of children within the container.
-		int childWidthHint = size.getWidth() / getChildrenCount();
-		int childHeightHint = size.getHeight();
+		for (Widget widget : getChildren()) {
+			assert (widget != null);
 
-		// iterates over the children to compute their optimal size.
-		for (Widget child : getChildren()) {
-			computeChildOptimalSize(child, childWidthHint, childHeightHint);
+			// compute child optimal size
+			computeChildOptimalSize(widget, childWidthHint, childHeightHint);
 
-			// updates the container optimal size
-			totalWidth += Math.min(childWidthHint, child.getWidth());
-			totalHeight = Math.max(totalHeight, child.getHeight());
+			// update total children size
+			if (isHorizontal) {
+				totalWidth += widget.getWidth();
+				totalHeight = Math.max(totalHeight, widget.getHeight());
+			} else {
+				totalWidth = Math.max(totalWidth, widget.getWidth());
+				totalHeight += widget.getHeight();
+			}
 		}
 
-		// sets the container optimal size
+		// save total children size for layout
+		this.totalLength = (isHorizontal ? totalWidth : totalHeight);
+
+		// set container optimal size
 		size.setSize(totalWidth, totalHeight);
 	}
-
-
-Canvas Container
-----------------
-Since Canvas can position widgets freely, we calculate the optimal size based on the X and Y position and width of the farthest child,and compare it with the width of the canvas.
-
-This simpler implementation of Canvas will only calculate using the X and Y position of each child and see if it is greater than the one before:
-
-.. code-block:: java
-
-    int widthHint = size.getWidth();
-    int heightHint = size.getHeight();
-    PackedMap<Widget, Rectangle> widgetBounds = this.widgetBounds;
-
-    int width = 0;
-    int height = 0;
-    for (Widget child : getChildren()) {
-        assert (child != null);
-
-        // get child desired bounds
-        Rectangle bounds = widgetBounds.get(child);
-        int childX = bounds.getX();
-        int childY = bounds.getY();
-        int childWidth=child.getWidth();
-        int childHeight=child.getHeight();
-
-        width = Math.max(width, childX + childWidth);
-        height = Math.max(height, childY + childHeight);
-    }
-
-    // set container optimal size
-    size.setSize(width, height);
