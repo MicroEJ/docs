@@ -1,15 +1,15 @@
 MicroUI and Threading
 =====================
 
-On MicroEJ there are two threads that handle the application, ``DisplayPump`` and ``InputPump``.
+On MicroEJ, there are two Threads that handle the application, ``DisplayPump`` and ``InputPump``.
 
 The user can add more Threads if needed.
 
 #. ``DisplayPump`` is a thread responsible for:
 
-    - managing the events;
-    - doing the validation (layout) of the widgets;
-    - rendering the widgets.
+    - Managing the Events;
+    - Doing the Validation (layout) of The Widgets;
+    - Rendering the Widgets.
 
 #. ``InputPump`` waits for native events and immediately delegates their handling to the ``DisplayPump``.
 
@@ -20,9 +20,9 @@ Everything related to the UI must be executed on the DisplayPump. The goal is th
 
 Some methods request an action asynchronously in the DisplayPump:
 
-- repaint asynchronously calls render (and ``renderContent``),
-- revalidate asynchronously calls ``validate`` (and ``validateContent``) then ``setBounds`` (and ``setBoundsContent``).
-- The handleEvent method is also called in the DisplayPump.
+- Repaint Asynchronously Calls Render (and ``renderContent``),
+- Revalidate Asynchronously Calls ``validate`` (and ``validateContent``) then ``setBounds`` (and ``setBoundsContent``).
+- The handleEvent Method is Also Called in the DisplayPump.
 
 These methods (not exhaustive) should be called in the DisplayPump (if the receiver is in the displayed hierarchy):
 
@@ -32,9 +32,9 @@ These methods (not exhaustive) should be called in the DisplayPump (if the recei
 - ``TransitionContainer``: ``show``.
 - To execute methods in the ``DisplayPump``, use ``Display.callSerially``.
 
-To avoid slowing down the rendering (and the animations), long running algorithm should be executed in another thread. For example the creation of a new complex page could be done entirely in another thread. Once it is ready, it could be shown on the display and then every modification in this page must be done in the ``DisplayPump``.
+To avoid slowing down the rendering (and the animations), long running algorithm should be executed in another Thread. For example the creation of a new complex page could be done entirely in another thread. Once it is ready, it could be shown on the display and then every modification in this page must be done in the ``DisplayPump``.
 
-Animations management
+Animations Management
 ---------------------
 
 Widget library provides an ``Animator`` that repeatedly executes several animations. This animator uses the unique instance of Timer registered in the service loader ``ServiceLoader.getServiceLoader().getService(Timer.class)``. Therefore the tick method of the animations will be called in this timer.
