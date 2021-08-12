@@ -496,7 +496,7 @@ This plugin is used by the following module natures:
 This plugin defines the following configuration properties:
 
 .. list-table:: 
-   :widths: 25 65 15
+   :widths: 25 55 25
    :header-rows: 1
 
    * - Name
@@ -508,6 +508,9 @@ This plugin defines the following configuration properties:
    * - microej.testsuite.properties.s3.cc.activated
      - When this property is set to true, the code coverage analysis is enabled.
      - ``true``
+   * - cc.src.folders
+     - Path to the folders containing the Java sources used for code coverage analysis.
+     - Not set
    * - microej.testsuite.verbose
      - When this property is set to true, the verbose trace level is enabled.
      - ``false``
