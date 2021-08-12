@@ -21,6 +21,7 @@ Application Developer Guide
    advanced
    UI/ui
    js/index
+   networking
    limitations
 
 ..
