@@ -508,7 +508,7 @@ This plugin defines the following configuration properties:
      - ``true``
    * - cc.src.folders
      - Path to the folders containing the Java sources used for code coverage analysis.
-     - Not set
+     - Java source folder and add-on processors generated sources
    * - microej.testsuite.verbose
      - When this property is set to true, the verbose trace level is enabled.
      - ``false``
