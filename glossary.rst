@@ -53,7 +53,7 @@ This glossary defines the technical terms upon which the `MICROEJ VEE (Virtual E
       MicroEJ Module Manager downloads, installs and controls the consistency of all the dependencies and versions required to build and publish a MicroEJ asset. It is based on `Semantic Versioning <https://semver.org>`_ specification.
 
    Platform
-      A MicroEJ Platform integrates a MICROEJ VEE, a MICROEJ Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP) for the target Device. It also includes associated MICROEJ Mocks for the MICROEJ Simulator.
+      A MicroEJ Platform integrates a MICROEJ VEE, a MicroEJ Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP) for the target Device. It also includes associated MicroEJ Mocks for the MicroEJ Simulator.
 
    SDK
       MicroEJ SDK allows MicroEJ Firmware developers to build a MicroEJ-ready device, by integrating a MicroEJ Architecture with both Java and C software on their device.
