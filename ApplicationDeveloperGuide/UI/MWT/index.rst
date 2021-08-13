@@ -15,7 +15,6 @@ MWT (Micro Widget Toolkit)
    how-to-background
    how-to-event-dispatcher
    how-to-extra-style-field
-   how-bounds-check-widget
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

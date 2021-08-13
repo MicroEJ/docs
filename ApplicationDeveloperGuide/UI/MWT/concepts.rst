@@ -54,6 +54,8 @@ When using a :ref:`partial buffer <section_display_partial_buffer>`, these rende
 
 The render policy can be changed by overridding ``Desktop.createRenderPolicy()``.
 
+.. _section_layout_process:
+
 Lay Out
 -------
 
