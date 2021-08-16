@@ -26,13 +26,13 @@
   	<resolvers>
 	 
 		<url name="modulesReleaseRepository" m2compatible="true">
-			<artifact pattern="${artifactory.repository.url}/libs-release-local/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-			<ivy pattern="${artifactory.repository.url}/libs-release-local/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
+			<artifact pattern="${artifactory.repository.url}/custom-modules-release/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+			<ivy pattern="${artifactory.repository.url}/custom-modules-release/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
 		</url>
 		
 		<url name="modulesSnapshotRepository" m2compatible="true" checkmodified="true">
-			<artifact pattern="${artifactory.repository.url}/libs-snapshot-local/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-			<ivy pattern="${artifactory.repository.url}/libs-snapshot-local/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
+			<artifact pattern="${artifactory.repository.url}/custom-modules-snapshot/[organization]/[module]/[branch]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+			<ivy pattern="${artifactory.repository.url}/custom-modules-snapshot/[organization]/[module]/[branch]/[revision]/ivy-[revision].xml" />
 		</url>
 		
 		<url name="microejModulesRepository" m2compatible="true">

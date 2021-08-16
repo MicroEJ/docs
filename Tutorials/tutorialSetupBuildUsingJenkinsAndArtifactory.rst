@@ -72,10 +72,11 @@ The steps to follow are:
 
 In order to simplify the steps, this tutorial will be performed locally on a single machine.
 
-Artifactory will host MicroEJ modules in 2 repositories:
+Artifactory will host MicroEJ modules in 3 repositories:
 
 - ``microej-module-repository``: repository initialized with pre-built MicroEJ modules, a mirror of the :ref:`Central Repository <central_repository>`
-- ``libs-snapshot-local``: repository where custom modules will be published
+- ``custom-modules-snapshot``: repository where custom snapshot modules will be published
+- ``custom-modules-release``: repository where custom release modules will be published
 
 
 Install the Build Tools
@@ -147,7 +148,6 @@ Install and Start Artifactory
 #. Login to Artifactory for the first time using the default ``admin`` account (Username: ``admin``, Password: ``password``).
 #. On the :guilabel:`Welcome` wizard, set the administrator password, then click :guilabel:`Next`,
 #. Configure proxy server (if any) then click :guilabel:`Next`, or click :guilabel:`Skip`.
-#. Click on :guilabel:`Create a Repository`, then :guilabel:`Create Local Repository`, select :guilabel:`Maven`, set `libs-snapshot-local` in `Repository Key` then click on :guilabel:`Create`.
 #. Click on :guilabel:`Finish`. 
 
 Artifactory is up and running.
@@ -179,9 +179,9 @@ We will now create and configure the repositories. Let's start with the reposito
 #. Go to :guilabel:`Administration` > :guilabel:`Repositories` > :guilabel:`Repositories` in the left menu.
 #. Click on :guilabel:`Add Repositories` > :guilabel:`Local Repository`
 #. Select :guilabel:`Maven`.
-#. Set :guilabel:`Repository Key` field to ``libs-snapshot-local`` and click on :guilabel:`Save and Finish`.
+#. Set :guilabel:`Repository Key` field to ``custom-modules-snapshot`` and click on :guilabel:`Save and Finish`.
 
-Repeat the same steps for the second repository with the :guilabel:`Repository Key` field set to ``microej-module-repository``.
+Repeat the same steps for the other repositories with the :guilabel:`Repository Key` field set to ``custom-modules-release`` and ``microej-module-repository``.
 
 
 Import MicroEJ Repositories
@@ -371,7 +371,7 @@ In Jenkins' ``Hello World`` dashboard, click on :guilabel:`Build with Parameters
 .. note::
    You can check the build progress by clicking on the build progress bar and showing the :guilabel:`Console Output`.
 
-At the end of the build, the module is published to ``http://localhost:8081/artifactory/list/libs-snapshot-local/com/example/hello-world/``.
+At the end of the build, the module is published to ``http://localhost:8081/artifactory/list/custom-modules-snapshot/com/example/hello-world/``.
 
 
 Congratulations!
