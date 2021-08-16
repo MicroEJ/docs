@@ -298,8 +298,6 @@ This module nature inherits the configuration properties of the following plugin
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.platform_loader`
-- :ref:`module_natures.plugins.testsuite`
-- :ref:`module_natures.plugins.artifact_checker`
 
 This module nature defines the following dedicated configuration properties:
 
