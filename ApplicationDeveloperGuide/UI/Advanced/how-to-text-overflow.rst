@@ -187,6 +187,7 @@ To keep control over the extra verbosity and code size, one option is to use :re
 In the following snippet, when the constant ``com.mycompany.check.text.overflow`` is set to ``false``, the debug code will not be embedded in the application.
 
 .. code-block:: java
+    :emphasize-lines: 2
 
     public static void checkTextOverflow(final Widget widget, final String text, final Font font) {
         if (Constants.getBoolean("com.mycompany.check.text.overflow")) {
