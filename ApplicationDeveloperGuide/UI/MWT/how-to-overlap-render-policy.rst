@@ -20,6 +20,7 @@ A widget is said to overlap with another when:
 The following snippet displays two widgets that overlap:
 
 .. code-block:: java
+    :emphasize-lines: 9,11
 
     public static void main(String[] args) {
         MicroUI.start();
@@ -68,6 +69,7 @@ For demonstration purposes, let's introduce a mean to trigger a new render: each
 The snippet above shows how to do that, by adding an ``OnClickListener`` to the ``overlapped`` widget:
 
 .. code-block:: java
+    :emphasize-lines: 5
 
     overlapped.setOnClickListener(new OnClickListener() {
         
@@ -95,6 +97,7 @@ Using the OverlapRenderPolicy
 Overriding the method ``createRenderPolicy()`` of the ``Desktop``, as follows, will cause the ``OverlapRenderPolicy`` to be used when rendering widgets:
   
 .. code-block:: java
+    :emphasize-lines: 4
 
     Desktop desktop = new Desktop() {
         @Override
