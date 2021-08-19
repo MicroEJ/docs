@@ -1,11 +1,11 @@
-How to detect text overflow
+How to Detect Text Overflow
 ===========================
 
 
 Widgets that display a text may experience text overflow when the strings are too long to fit into the available area. It can be the case, for example, in applications that support multiple languages because widgets have to deal with texts of different lengths.
 
 
-Instrumenting the widget
+Instrumenting the Widget
 ------------------------
 
 The goal is to check whether the text to be displayed is within the content bounds of the widget. A way to test this is to extend or modify the widget.
@@ -24,7 +24,7 @@ In this article, the widget ``MyLabel`` will extend the type ``Label`` from the 
     }
 
 
-Overriding the onLaidOut() method
+Overriding the onLaidOut() Method
 ---------------------------------
  
 Once the position and size of a wigdet are set during the lay out process, the ``onLaidOut()`` method is called to notify the widget.
@@ -87,7 +87,7 @@ The text is cropped and the console logs that a text overflow has been detected:
      > Width = 47 px (available: 25 px)
 
 
-Improving the detection
+Improving the Detection
 -----------------------
 
 To ease the correction process, it is best to add some additional debug information to locate the issue. 
