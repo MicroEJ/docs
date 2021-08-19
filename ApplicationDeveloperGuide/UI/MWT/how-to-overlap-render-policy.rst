@@ -1,7 +1,7 @@
-Overlap Render Policy
-======================
+How to Use the Overlap Render Policy
+====================================
 
-The MWT library implements two `render policies <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MWT/concepts.html#render-policy>`_: the ``DefaultRenderPolicy`` and the ``OverlapRenderPolicy``:
+The MWT library implements two :ref:`render policies <section_render_policy>`: the ``DefaultRenderPolicy`` and the ``OverlapRenderPolicy``:
 
 * ``DefaultRenderPolicy``: renders the specified widget. If the widget is transparent, it renders its parent (and recursively).
 * ``OverlapRenderPolicy``: renders the specified widget but also the other widgets that overlap with it.
@@ -9,7 +9,7 @@ The MWT library implements two `render policies <https://docs.microej.com/en/lat
 While the ``DefaultRenderPolicy`` will be fine for most GUIs, it will not handle properly the case where widgets overlap. In this case, the ``OverlapRenderPolicy`` will be the best match.
 
 
-Making widgets overlap
+Making Widgets Overlap
 ----------------------
 
 A widget is said to overlap with another when:
@@ -40,7 +40,7 @@ The following snippet displays two widgets that overlap:
         EditableStyle style = stylesheet.getSelectorStyle(new TypeSelector(Label.class));
         style.setBackground(new RectangularBackground(Colors.SILVER));
 
-        // the overlapping widget is orange
+        // the overlapped widget is orange
         style = stylesheet.getSelectorStyle(new TypeSelector(Button.class));
         style.setBackground(new RectangularBackground(0xee502e));
         desktop.setStylesheet(stylesheet);
@@ -59,7 +59,7 @@ As expected from the ``addChild()`` sequence, the widget ``overlapping`` overlap
 So far, the ``DefaultRenderPolicy`` is being used and it seems to look fine: the widgets of the desktop are rendered recursively in order after the call to ``desktop.requestShow()``.
 
 
-Requesting a new render
+Requesting a New Render
 -----------------------
 
 Let's see how the ``DefaultRenderPolicy`` performs when the widget ``overlapped`` is requested to render again.
