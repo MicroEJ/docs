@@ -42,18 +42,14 @@ The supported MicroEJ Architectures are listed here
 
 The MicroEJ Architecture is either provided from:
 
-* For EVAL license only: the MicroEJ Repository at
-  https://repository.microej.com/architectures/
+* For EVAL license only: the MicroEJ Repository at https://repository.microej.com/modules/com/microej/architecture/
 
-* For PROD license only: SDK license site https://license.microej.com/
-  (:guilabel:`MyProduct` > :guilabel:`Download additional products`
-  will list the downloads available).  See
-  :ref:`production_license` for help with PROD
-  license.
+* For PROD license only: please contact your sales representative or :ref:`our support team <get_support>`.  
+  See also :ref:`production_license` for help with PROD license.
 
 * MicroEJ sales or customer care team if the requested architecture is not listed as available.
 
-See :ref:`architecture_import` for a description on how to import a
+See :ref:`platform_configuration_creation` for a description on how to import a
 MicroEJ Architecture.
 
 MicroEJ Platform Source (.zip)

@@ -1,3 +1,4 @@
+.. _architecture_changelog:
 
 MicroEJ Architectures Changelog
 ===============================

@@ -20,6 +20,8 @@ Application Developer Guide
    tools
    advanced
    UI/ui
+   js/index
+   networking
    limitations
 
 ..

@@ -1,3 +1,5 @@
+.. _architectures_toolchains:
+
 ============================
 Architectures MCU / Compiler
 ============================

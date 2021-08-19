@@ -1,3 +1,5 @@
+.. _tool_javah:
+
 ==============
 MicroEJ Java H
 ==============
