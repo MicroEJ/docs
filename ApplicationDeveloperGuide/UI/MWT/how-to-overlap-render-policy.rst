@@ -56,7 +56,7 @@ As expected from the ``addChild()`` sequence, the widget ``overlapping`` overlap
     :align: center
 
 
-So far, the ``DefaultRenderPolicy`` is being used and it seems to look fine: the widgets of the desktop are rendered recursively in order after the call to ``desktop.requestShow()``.
+So far, the ``DefaultRenderPolicy`` is being used and it seems to look fine: the widgets of the desktop are rendered successively in depth-first order after the call to ``desktop.requestShow()``.
 
 
 Requesting a New Render
