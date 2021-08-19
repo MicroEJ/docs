@@ -15,24 +15,23 @@ Computing the optimal size of the widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``computeContentOptimalSize()`` method is called by the MWT framework in order to know the optimal size of the widget.
-The optimal size of the widget should be big enough to contain all the drawings of the widget.
 
-The ``Size`` parameter of the ``computeContentOptimalSize()`` method initially contains the size available for the widget.
+The optimal size of the widget is the size of the smallest possible area which would still allow to represent the widget.
+Unless the widget is using an ``OptimalDimension`` in its style, the actual size of the widget will most likely be bigger than the optimal size returned in this method.
+
+The ``size`` parameter of the ``computeContentOptimalSize()`` method initially contains the size available for the widget.
 An available width or height equal to ``Widget.NO_CONSTRAINT`` means that the optimal size should be computed without considering any restriction on the respective axis.
 Before the method returns, the size object should be set to the optimal size of the widget.
 
 When implementing this method, the ``getStyle()`` method may be called in order to retrieve the style of the widget.
 
-For example, the following snippet computes the optimal size of a label:
+For example, the following snippet computes the optimal size of an image widget:
 
 .. code-block:: Java
 
 	@Override
 	protected void computeContentOptimalSize(Size size) {
-		Font font = getStyle().getFont();
-		int width = font.stringWidth(this.text);
-		int height = font.getHeight();
-		size.setSize(width, height);
+		size.setSize(this.image.getWidth(), this.image.getHeight());
 	}
 
 Rendering the content of the widget
@@ -40,17 +39,24 @@ Rendering the content of the widget
 
 The ``renderContent()`` method is called by the MWT framework in order to render the content of the widget.
 
+The ``g`` parameter is used to draw the content of the widget.
+It is already configured with the translation and clipping area which match the widget's bounds.
+The ``contentWidth`` and ``contentHeight`` parameters indicate the actual size of the content of the widget (excluding its outlines).
+Unless the widget is using an ``OptimalDimension`` in its style, the given content size will most likely be bigger than the optimal size returned in ``computeContentOptimalSize()``.
+If the drawings do not take the complete content area, the position of the drawings should be computed using the horizontal and vertical alignment values set in the widget's style.
+
 When implementing this method, the ``getStyle()`` method may be called in order to retrieve the style of the widget.
 
-For example, the following snippet renders the content of a label:
+For example, the following snippet renders the content of an image widget:
 
 .. code-block:: Java
 
 	@Override
 	protected void renderContent(GraphicsContext g, int contentWidth, int contentHeight) {
 		Style style = getStyle();
-		g.setColor(style.getColor());
-		Painter.drawString(g, style.getFont(), this.text, 0, 0);
+		int imageX = Alignment.computeLeftX(this.image.getWidth(), 0, contentWidth, style.getHorizontalAlignment());
+		int imageY = Alignment.computeTopY(this.image.getHeight(), 0, contentHeight, style.getVerticalAlignment());
+		Painter.drawImage(g, this.image, imageX, imageY);
 	}
 
 Handling events
@@ -71,6 +77,25 @@ For example, the following snippet prints a message when the widget receives an 
 		System.out.println("Event type: " + Event.getType(event));
 		return false;
 	}
+
+Consuming events
+~~~~~~~~~~~~~~~~
+
+To indicate that an event was consumed by a widget, ``handleEvent()`` should return ``true``.
+Usually, once an event is consumed, it is not dispatched to other widgets (this behavior is controlled by the event dispatcher).
+The widget that consumed the event is the last one to receive it.
+
+The following guidelines are recommended to decide when to consume an event and when not to consume an event:
+
+- If the widget triggers an action when receiving the event, it consumes the event.
+- If the widget does not trigger an action when receiving the event, it does not consume the event.
+
+.. note::
+
+   If the event is ``Pointer.PRESSED``, do not consume the event unless it is required that the subsequent widgets in the hierarchy do not receive it.
+   The ``Pointer.PRESSED`` event is special because pressing a widget is usually not the deciding factor to trigger an action.
+   The user has to release or to drag the widget to trigger an action.
+   If the user presses a widget and then drags the pointer (e.g. their finger or a stylus) out of the widget before releasing it, the action is not triggered.
 
 Listening to the life-cycle hooks
 ---------------------------------

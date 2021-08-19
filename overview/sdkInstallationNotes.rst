@@ -32,7 +32,7 @@ troubles such as missing content pages. This is related to incomplete
 Eclipse SWT configuration (see `Eclipse GTK wiki
 page <https://wiki.eclipse.org/SWT/Devel/Gtk/GtkVersion>`__).
 
-One solution is to configure Eclipse as following:
+One solution is to configure Eclipse as follows:
 
 -  Add the next lines to ``MicroEK-[SDK|Studio].ini``, before
    ``-vmargs`` argument:

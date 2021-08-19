@@ -570,6 +570,10 @@ li {
   padding-bottom: 5px;
 }
 
+dd p {
+  font-size: 16px;
+}
+
 p {
   font-size: 18px;
   color: #4b5357;
@@ -1743,4 +1747,8 @@ padding-bottom: 7px;
 }
 .fwbla {
   background: black;
+}
+
+.note {
+  margin-top: 10px;
 }

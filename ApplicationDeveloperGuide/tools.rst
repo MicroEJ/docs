@@ -30,7 +30,8 @@ tab then contains the options relevant to the selected tool.
    testsuite
    stackTraceReader
    codeCoverageAnalyzer
-   heapAnalyzer
+   heapUsageMonitoring
+   heapAnalyzer   
    elfToMapGenerator
    serialToSocketTransmitter
    memoryMapAnalyzer

@@ -298,8 +298,6 @@ This module nature inherits the configuration properties of the following plugin
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.platform_loader`
-- :ref:`module_natures.plugins.testsuite`
-- :ref:`module_natures.plugins.artifact_checker`
 
 This module nature defines the following dedicated configuration properties:
 
@@ -496,7 +494,7 @@ This plugin is used by the following module natures:
 This plugin defines the following configuration properties:
 
 .. list-table:: 
-   :widths: 25 65 15
+   :widths: 25 55 25
    :header-rows: 1
 
    * - Name
@@ -508,6 +506,12 @@ This plugin defines the following configuration properties:
    * - microej.testsuite.properties.s3.cc.activated
      - When this property is set to true, the code coverage analysis is enabled.
      - ``true``
+   * - cc.src.folders
+     - Path to the folders containing the Java sources used for code coverage analysis.
+     - Not set
+   * - microej.testsuite.verbose
+     - When this property is set to true, the verbose trace level is enabled.
+     - ``false``
    * - test.run.excludes.pattern
      - Pattern of classes excluded from the test suite execution.
      - Empty string (no test)
@@ -613,7 +617,6 @@ This plugin defines the following configuration properties:
    * - skip.retrieve.checker
      - When this property is set to true, the retrieve checker is not executed.
      - Not set
-
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 

@@ -3,7 +3,7 @@
 MicroEJ Glossary
 ================
 
-This glossary defines the technical terms upon which the `MicroEJ Virtual Execution Environment <https://developer.microej.com/microej-vee-virtual-execution-environment>`_ is built.
+This glossary defines the technical terms upon which the `MICROEJ VEE (Virtual Execution Environment) <https://developer.microej.com/microej-vee-virtual-execution-environment>`_ is built.
 
 .. glossary::
 
@@ -31,8 +31,8 @@ This glossary defines the technical terms upon which the `MicroEJ Virtual Execut
    Architecture
       A MicroEJ Architecture is a software package that includes the MicroEJ Core Engine port to a target instruction set and a C compiler, core MicroEJ Foundation Libraries (EDC, :ref:`[BON], [SNI], [KF] <esr-specifications>`) and the MicroEJ Simulator. MicroEJ Architectures are distributed either as evaluation or production version.
 
-   Core Engine
-      MicroEJ Core Engine is a scalable runtime for resource-constrained embedded devices running on 32-bit microcontrollers or microprocessors. MicroEJ Core Engine allows devices to run multiple and mixed Java and C software applications.
+   Core Engine, also named "MEJ32"
+      `MicroEJ Core Engine, also named MEJ32, is a scalable 32-bit core <https://developer.microej.com/mej32-virtual-machine-for-embedded-systems/>`_ for resource-constrained embedded devices. It is delivered in various flavors, mostly as a binary software package. MicroEJ Core Engine allows applications written in various languages to run in a safe container.
 
    Firmware
       A MicroEJ Firmware is the result of the binary link of a MicroEJ Standalone Application with a MicroEJ Platform. The firmware is a binary  program that can be programmed into the flash memory of a device. 
@@ -53,7 +53,7 @@ This glossary defines the technical terms upon which the `MicroEJ Virtual Execut
       MicroEJ Module Manager downloads, installs and controls the consistency of all the dependencies and versions required to build and publish a MicroEJ asset. It is based on `Semantic Versioning <https://semver.org>`_ specification.
 
    Platform
-      A MicroEJ Platform integrates a MicroEJ Architecture, one or more Foundation Libraries with their respective Abstraction Layers and the board support package (BSP) for the target Device. It also includes associated MicroEJ Mocks for the MicroEJ Simulator.
+      A MicroEJ Platform integrates a MICROEJ VEE, a MicroEJ Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP) for the target Device. It also includes associated MicroEJ Mocks for the MicroEJ Simulator.
 
    SDK
       MicroEJ SDK allows MicroEJ Firmware developers to build a MicroEJ-ready device, by integrating a MicroEJ Architecture with both Java and C software on their device.
@@ -63,6 +63,9 @@ This glossary defines the technical terms upon which the `MicroEJ Virtual Execut
 
    Studio
       MicroEJ Studio allows application developers to write a MicroEJ Sandboxed Application, run it on a Virtual Device, deploy it on a MicroEJ-ready device, and publish it to a `MicroEJ Forge <https://www.microej.com/product/forge/>`_ instance.
+
+   VEE
+      MICROEJ VEE is an applications container. VEE stands for Virtual Execution Environment, and refers to the first implementation that embeds a virtual 32-bit processor, hence the term "Virtual". MICROEJ VEE runs on any OS/RTOS commonly used in embedded systems (FreeRTOS, QP/C, uc/OS, ThreadX, embOS, Mbed OS, Zephyr OS, VxWorks, PikeOS, Integrity, Linux, QNX, …) and can also run without RTOS (bare-metal) or proprietary RTOS. MICROEJ VEE includes the small MEJ32, along with a wide range of libraries (Add-On Libraries and Foundation Libraries).
 
    Virtual Device
       A MicroEJ Virtual Device is a software package that includes the simulation part of a MicroEJ Firmware: runtime, libraries and application(s). It can be run on any PC without the need of MicroEJ Studio. In case a MicroEJ Multi-Sandbox Firmware, it is also used for testing a MicroEJ Sandboxed Application in MicroEJ Studio. 
