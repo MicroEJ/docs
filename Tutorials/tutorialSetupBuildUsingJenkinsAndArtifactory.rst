@@ -52,7 +52,7 @@ Prerequisites
 *  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://git-for-windows.github.io/>`_).
 *  Java Development Kit (JDK) ``1.8.x``.
 
-This tutorial was tested with Jenkins ``2.277.4`` and Artifactory ``6.23.13``.
+This tutorial was tested with Jenkins ``2.277.4`` and Artifactory ``7.24.3``.
 
 .. note::
     For SDK versions before 5.4.0, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_.
@@ -72,10 +72,11 @@ The steps to follow are:
 
 In order to simplify the steps, this tutorial will be performed locally on a single machine.
 
-Artifactory will host MicroEJ modules in 2 repositories:
+Artifactory will host MicroEJ modules in 3 repositories:
 
 - ``microej-module-repository``: repository initialized with pre-built MicroEJ modules, a mirror of the :ref:`Central Repository <central_repository>`
-- ``libs-snapshot-local``: repository where custom modules will be published
+- ``custom-modules-snapshot``: repository where custom snapshot modules will be published
+- ``custom-modules-release``: repository where custom release modules will be published
 
 
 Install the Build Tools
@@ -142,13 +143,11 @@ Install and Start Artifactory
 #. Download Artifactory here: `<https://jfrog.com/fr/open-source/>`_ and select the appropriate package for your operating system.
 #. Unzip downloaded archive, then navigate to ``app/bin`` directory (by default
    ``artifactory-oss-[version]/app/bin``).
-#. Run ``artifactory.bat`` or ``artifactory.sh`` depending on your operating system. After initialization, the terminal should print the message :guilabel:`Artifactory successfully started`. 
-   In case an error occurs, check that ``JAVA_HOME`` and ``JRE_HOME`` environment variables are correct.
-#. Go to ``http://localhost:8081/``.
+#. Run ``artifactory.bat`` or ``artifactory.sh`` depending on your operating system.
+#. Once Artifactory is started, go to ``http://localhost:8081/``.
 #. Login to Artifactory for the first time using the default ``admin`` account (Username: ``admin``, Password: ``password``).
 #. On the :guilabel:`Welcome` wizard, set the administrator password, then click :guilabel:`Next`,
 #. Configure proxy server (if any) then click :guilabel:`Next`, or click :guilabel:`Skip`.
-#. On :guilabel:`Create Repositories` page, select :guilabel:`Maven` then click on :guilabel:`Create`.
 #. Click on :guilabel:`Finish`. 
 
 Artifactory is up and running.
@@ -156,43 +155,33 @@ Artifactory is up and running.
 Configure Artifactory
 ~~~~~~~~~~~~~~~~~~~~~
 
-For demonstration purposes we will allow anonymous users to deploy modules in the repositories.
+For demonstration purposes we will allow anonymous users to deploy modules in the repositories:
 
-#. Go to :guilabel:`Admin` > :guilabel:`Security` > :guilabel:`Security Configuration`.
-#. In the :guilabel:`General Security Settings` section, check :guilabel:`Allow Anonymous Access`. Click :guilabel:`Save`.
-#. Go to :guilabel:`Admin` > :guilabel:`Security` > :guilabel:`Permissions`.
-#. Click on :guilabel:`Anything` entry (do not check the line), then go to :guilabel:`Users` tab, click on :guilabel:`Anonymous` and check :guilabel:`Deploy/Cache` permission. Click :guilabel:`Save and finish`.
+#. Go to :guilabel:`Administration` > :guilabel:`Security` > :guilabel:`Settings`.
+#. In the :guilabel:`General Security Settings` section, check :guilabel:`Allow Anonymous Access`.
+#. Click on :guilabel:`Save`.
+#. Go to :guilabel:`Administration` > :guilabel:`Identity and Access` > :guilabel:`Permissions`.
+#. Click on :guilabel:`Anything` entry (do not check the line), then go to :guilabel:`Users` tab
+#. Click on :guilabel:`anonymous` and check :guilabel:`Deploy/Cache` permission in the :guilabel:`Repositories` category.
+#. Click on :guilabel:`Save and finish`.
 
 Next steps will involve uploading large files, so we have to augment the file upload maximum size accordingly:
 
-#. Go to :guilabel:`Admin` > :guilabel:`General Configuration`.
-#. In the :guilabel:`General Settings` section, change the value of :guilabel:`File Upload Max Size (MB)` to ``1024`` then click on :guilabel:`Save`.
+#. Go to :guilabel:`Administration` > :guilabel:`Artifactory`.
+#. In the :guilabel:`General Settings` section, change the value of :guilabel:`File Upload In UI Max Size (MB)` to ``1024`` then click on :guilabel:`Save`.
 
 
-Configure Repositories
-~~~~~~~~~~~~~~~~~~~~~~
+Create Repositories
+~~~~~~~~~~~~~~~~~~~
 
-We will now create and configure the repositories.
-First step is to configure to pre-defined repository for the future snapshot modules built.
+We will now create and configure the repositories. Let's start with the repository for the future built snapshot modules:
 
-#. Go to :guilabel:`Admin` > :guilabel:`Repositories` > :guilabel:`Local`.
-#. Click on ``libs-snapshot-local`` repository, then check :guilabel:`Handle Releases` and uncheck :guilabel:`Handle Snapshots`. Click :guilabel:`Save and finish`.
+#. Go to :guilabel:`Administration` > :guilabel:`Repositories` > :guilabel:`Repositories` in the left menu.
+#. Click on :guilabel:`Add Repositories` > :guilabel:`Local Repository`
+#. Select :guilabel:`Maven`.
+#. Set :guilabel:`Repository Key` field to ``custom-modules-snapshot`` and click on :guilabel:`Save and Finish`.
 
-
-Next step is to create the repositories that will hold the MicroEJ modules.
-
-#. Go to :guilabel:`Admin` > :guilabel:`Repositories` > :guilabel:`Local`.
-#. Click on :guilabel:`New`, and select :guilabel:`Maven`.
-#. Set :guilabel:`Repository Key` field to ``microej-module-repository``, then uncheck :guilabel:`Handle Snapshots`. Click on :guilabel:`Save and finish`.
-#. Make this repository accessible by default:
-    #. Go to :guilabel:`Admin` > :guilabel:`Security` > :guilabel:`Permissions`. 
-    #. Click on :guilabel:`Anything` entry (do not check the line)
-    #. On the :guilabel:`Resources` tab, drag repository ``microej-module-repository`` from the :guilabel:`Available repositories` area to the :guilabel:`Included Repositories` area.
-    #. Click on :guilabel:`Save & Finish`.
-
-.. image:: images/tuto_microej_cli_artifactory_permissions.PNG
-    :align: center
-
+Repeat the same steps for the other repositories with the :guilabel:`Repository Key` field set to ``custom-modules-release`` and ``microej-module-repository``.
 
 
 Import MicroEJ Repositories
@@ -200,15 +189,14 @@ Import MicroEJ Repositories
 
 In this section, we will import MicroEJ repositories into Artifactory repositories to make them available to the build server.
 
-#. Go to :guilabel:`Admin` > :guilabel:`Import & Export` > :guilabel:`Repositories`.
+#. Go to :guilabel:`Administration` > :guilabel:`Artifactory` > :guilabel:`Import & Export` > :guilabel:`Repositories`.
 #. Scroll to the :guilabel:`Import Repository from Zip` section.
-#. Import the MicroEJ Module Repository:
-    #. As :guilabel:`Target Local Repository`, select ``microej-module-repository`` in the list.
-    #. As :guilabel:`Repository Zip File`, select MicroEJ module repository zip file (``microej-[MicroEJ version]-[version].zip``) that you downloaded earlier (please refer to section :ref:`get_microej_module_repository`).
-    #. Click :guilabel:`Upload`. At the end of upload, click on :guilabel:`Import`. Upload and import may take some time.
+#. As :guilabel:`Target Local Repository`, select ``microej-module-repository`` in the list.
+#. Click on :guilabel:`Select file` and select the MicroEJ module repository zip file (``microej-[MicroEJ version]-[version].zip``) that you downloaded earlier (please refer to section :ref:`get_microej_module_repository`).
+#. Click :guilabel:`Upload`. At the end of upload, click on :guilabel:`Import`. Upload and import may take some time.
 
 Artifactory is now hosting all required MicroEJ modules. 
-Go to :guilabel:`Artifacts` and check that the repository ``microej-module-repository`` does contain modules as shown in the figure below.
+Go to :guilabel:`Administration` > :guilabel:`Artifactory` > :guilabel:`Artifacts` and check that the repository ``microej-module-repository`` does contain modules as shown in the figure below.
 
 .. image:: images/tuto_microej_cli_artifactory_module_preview.PNG
     :align: center
@@ -383,7 +371,7 @@ In Jenkins' ``Hello World`` dashboard, click on :guilabel:`Build with Parameters
 .. note::
    You can check the build progress by clicking on the build progress bar and showing the :guilabel:`Console Output`.
 
-At the end of the build, the module is published to ``http://localhost:8081/artifactory/list/libs-snapshot-local/com/example/hello-world/``.
+At the end of the build, the module is published to ``http://localhost:8081/artifactory/list/custom-modules-snapshot/com/example/hello-world/``.
 
 
 Congratulations!
