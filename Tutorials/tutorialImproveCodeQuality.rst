@@ -27,6 +27,7 @@ Naming of Java elements (package, class, method, field and local) follows the `C
 - Package names are written fully in lower case (no underscore).
 - Package names are singular (e.g. ``ej.animal`` instead of ``ej.animals``).
 - Class names are written in upper camel case.
+- Interfaces are named in the same way as classes (see below).
 - Method and instance field names are written in lower camel case.
 - Static field names are written in lower camel case.
 - Constant names are written in fully upper case with underscore as word separator.
@@ -35,6 +36,17 @@ Naming of Java elements (package, class, method, field and local) follows the `C
 - When a name contains an acronym, capitalize only the first letter of the acronym (e.g. for a local with the ``HTTP`` acronym, use ``myHttpContext`` instead of ``myHTTPContext``).
 
 It is also recommended to use full words instead of abbreviations (e.g. ``MyProxyReference`` instead of ``MyProxyRef``).
+
+Interfaces and Subclasses Naming Convention
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+An Interface is named after the feature it exposes.
+It does not have a ``I`` prefix because it hurts readability and may cause naming issues when potentially converted to/from an abstract class.
+
+The classes implementing an interface are named after the interface and how they implement it. 
+Using ``Impl`` suffix is not recommended because it does not express the implementation specificity. If there is no specificity, maybe there is no need to have an interface.
+
+Example: an interface ``Storage`` (that allows to load/store data) may have several implementations, such as ``StorageFs`` (on a file system), ``StorageDb`` (on a database), ``StorageRam`` (volatile storage in RAM).
 
 .. _visibility:
 
@@ -50,7 +62,7 @@ Here is a list of the usage of each Java element visibility:
 
 By default, all instance fields must be private.
 
-Package visibility can be used by writing the comment ``/*default*/`` in place of
+Package visibility can be used by writing the comment ``/* package */`` in place of
 the modifier.
 
 Javadoc
@@ -90,6 +102,49 @@ Here is a list of additional rules for methods:
   parameter is renamed afterward, the comment is not changed
   automatically. Prefer using *the given xxx*.
 
+Code Convention
+^^^^^^^^^^^^^^^
+
+Official documentation:
+https://www.oracle.com/java/technologies/javase/codeconventions-introduction.html
+
+Class Declaration
+~~~~~~~~~~~~~~~~~
+
+The parts of a class or interface declaration must appear in the order suggested by the Code Convention for the Java Programming Language:
+
+- Constants.
+- Class (static) fields.
+- Instance fields.
+- Constructors
+- Methods
+
+Fields Order
+~~~~~~~~~~~~
+
+For a better readability, the fields (class and instance) must be ordered by scope:
+
+#. ``public``
+#. ``protected``
+#. ``package``
+#. ``private``
+
+Methods Order
+~~~~~~~~~~~~~
+
+It is recommended to group related methods together.
+It helps for maintenance:
+
+- when searching for a bug on a specific feature,
+- when refactoring a class into several ones.
+
+Modifiers Order
+~~~~~~~~~~~~~~~
+
+Class and member modifiers, when present, appear in the order recommended by the Java Language Specification:
+
+``public protected private abstract default static final transient volatile synchronized native strictfp``
+
 Code Style and Formatting
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -124,25 +179,10 @@ Here is the list of formatting rules included in this profile:
 
 Here is a list of additional formatting rules that are not automatically applied:
 
-- Class and member modifiers, when present, must appear in the order
-  recommended by the Java Language Specification:
-  ``public protected private abstract default static final transient volatile synchronized native strictfp``.
 - Avoid committing commented code (other than to explain an
   optimization).
 - All methods of an interface are public. There is no need to specify
   the visibility (easier to read).
-- The parts of a class or interface declaration must appear in the
-  order suggested by the Code Convention for the Java Programming
-  Language:
-
-  - Class (static) fields. First, the public class fields, then
-    the protected, then package level (no access modifier), and then
-    the private.
-  - Instance fields. First, the public class fields, then the
-    protected, then package level (no access modifier), and then the
-    private.
-  - Constructors
-  - Methods
 
 .. note::
    
