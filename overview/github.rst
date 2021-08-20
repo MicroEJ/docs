@@ -44,6 +44,19 @@ Click :guilabel:`Next` once more and finally :guilabel:`Finish`. The ``Package E
 
 If you want to import projects from another (GitHub) repository, you simply have to do the same procedure using the Git URL of the desired repository.
 
+MicroEJ GitHub Badges
+=====================
+
+MicroEJ GitHub Badges are badges embedded in a README at the root of the
+repository. They allow to provide the compatiblities of the repository at a
+quick glance. Three types are currently used Architecture, SDK and UI badges.
+The color of the badge has the following meaning:
+
+- Green means a current supported version.
+- Orange means a “soon” to be deprecated version.
+- Gray means a deprecated version.
+
+
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
