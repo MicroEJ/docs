@@ -48,7 +48,7 @@ MicroEJ GitHub Badges
 =====================
 
 MicroEJ GitHub Badges are badges embedded in a README at the root of the
-repository. They allow to provide the compatiblities of the repository at a
+repository. They allow to provide the compatibilities of the repository at a
 quick glance. Three types are currently used Architecture, SDK and UI badges.
 The color of the badge has the following meaning:
 
