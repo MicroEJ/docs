@@ -100,7 +100,7 @@ The following snippet:
 * prints the path to the widget in the widget tree to help the tester locate the affected widget in the GUI.
 
 .. code-block:: java
-    :emphasize-lines: 13,31
+    :emphasize-lines: 13,30
 
     public class MyLabel extends Label {
 
