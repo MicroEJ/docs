@@ -56,10 +56,13 @@ repository. They allow to provide the compatibilities of the repository at a
 quick glance. Three types are currently used Architecture, SDK and UI badges.
 The color of the badge has the following meaning:
 
-- Green means a current supported version.
-- Orange means a “soon” to be deprecated version.
-- Gray means a deprecated version.
+- Green means a current supported version: |badge-green|
+- Orange means a still supported version that will be deprecated in the future: |badge-orange|
+- Gray means a deprecated version: |badge-grey|
 
+.. |badge-green| image:: images/badge-green.png
+.. |badge-orange| image:: images/badge-orange.png
+.. |badge-grey| image:: images/badge-grey.png
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
