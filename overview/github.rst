@@ -6,7 +6,11 @@ GitHub Repositories
 A large number of examples, libraries, demos and tools are shared on MicroEJ GitHub account: https://github.com/MicroEJ. 
 
 Most of these GitHub repositories contain projects ready to be imported in MicroEJ SDK.
-This section explains the steps to import them in MicroEJ SDK, using the `MWT Examples repository <https://github.com/MicroEJ/ExampleJava-MWT>`_.
+
+Repository Import
+-----------------
+
+This section explains the steps to import a Github repository in MicroEJ SDK, illustrated with the `MWT Examples repository <https://github.com/MicroEJ/ExampleJava-MWT>`_.
 
 .. note::
 
@@ -45,7 +49,7 @@ Click :guilabel:`Next` once more and finally :guilabel:`Finish`. The ``Package E
 If you want to import projects from another (GitHub) repository, you simply have to do the same procedure using the Git URL of the desired repository.
 
 MicroEJ GitHub Badges
-=====================
+---------------------
 
 MicroEJ GitHub Badges are badges embedded in a README at the root of the
 repository. They allow to provide the compatibilities of the repository at a
