@@ -92,4 +92,4 @@ You should see the following output:
 
     My first  MicroEJ Javascript application!
 
-You can now go further by exploring the :ref:`capabilities of the MicroEJ Javascript engine <js.builtin>` and discovering the :ref:`commands available in the CLI <mmm_cli>`.
+You can now go further by exploring the :ref:`capabilities of the MicroEJ Javascript engine <js.api>` and discovering the :ref:`commands available in the CLI <mmm_cli>`.
