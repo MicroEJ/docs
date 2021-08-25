@@ -28,4 +28,4 @@ The following syntaxes are not supported by the MicroEJ JavaScript engine:
 Unsupported Built-in Objects
 ****************************
 
-The unsupported built-in objects are listed in the :ref:`Built-in objects section <js.builtin>`.
+The unsupported built-in objects are listed in the :ref:`API section <js.api>`.

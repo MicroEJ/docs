@@ -31,9 +31,9 @@ You can start playing with it by following the :ref:`Getting Started <js.getting
    getting_started
    sources
    examples
+   api
    java
    tests
    limitations
-   builtin
    troubleshooting
    internals
