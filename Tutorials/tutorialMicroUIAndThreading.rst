@@ -37,7 +37,7 @@ To avoid slowing down the rendering (and the animations), long running algorithm
 Animations Management
 ---------------------
 
-Widget library provides an ``Animator`` that repeatedly executes several animations. This animator uses the unique instance of Timer registered in the service loader ``ServiceLoader.getServiceLoader().getService(Timer.class)``. Therefore the tick method of the animations will be called in this timer.
+MWT library provides an ``Animator`` that repeatedly executes several animations. This animator uses the unique instance of Timer registered in the service loader ``ServiceLoader.getServiceLoader().getService(Timer.class)``. Therefore the tick method of the animations will be called in this timer.
 If an animation needs to modify the UI, don’t forget to delegate it in the DisplayPump.
 
 To avoid slowing down animations, long running algorithms should not be executed in this timer.
