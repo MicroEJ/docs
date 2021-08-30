@@ -80,7 +80,7 @@ Process
 This chapter describes the steps to open an external resource from the application:
 
 1. Add the font in the application project (most of the time in the source folder ``src/main/resources`` and in the package ``fonts``).
-2. Create / open the configuration file (most of time ``application.fontsext.list``).
+2. Create / open the configuration file (usually ``application.fontsext.list``).
 3. Add the relative path of the font: see :ref:`section.ui.Fonts`.
 4. Launch the application: the Font Generator converts the font in RAW format in the external resources folder (``[application_output_folder]/externalResources``).
 5. Deploy the external resources in the external memory (SDCard, flash, etc.).
@@ -97,10 +97,10 @@ This chapter describes the steps to open an external resource from the applicati
 Backward Compatibility
 ----------------------
 
-As explained :ref:`here<section.tool.fontdesigner.styles>`, the notion of `dynamic` styles and the style `underline` are not supported anymore by MicroUI 3. However, an external font may have been generated with an older version of the Font Generator; consequently, the generated file can hold the dynamic style. The Font Renderer can load these old versions of fonts. However, there are some runtime limitations:
+As explained :ref:`here<section.tool.fontdesigner.styles>`, the notion of ``Dynamic`` styles and the style ``UNDERLINED`` are not supported anymore by MicroUI 3. However, an external font may have been generated with an older version of the Font Generator; consequently, the generated file can hold the ``Dynamic`` style. The Font Renderer can load these old versions of fonts. However, there are some runtime limitations:
 
-* The `dynamic` styles are ignored. The font is drawn without any dynamic algorithm.
-* The font style (the style returned by ``Font.isBold()`` and ``Font.isItalic()``) is the `dynamic` style. For instance, when a font holds the style `bold` as dynamic style and the style `italic` as built-in style, the font is considered as `bold` + `italic`; even if the style `bold` is not rendered.
+* The ``Dynamic`` styles are ignored. The font is drawn without any dynamic algorithm.
+* The font style (the style returned by ``Font.isBold()`` and ``Font.isItalic()``) is the ``Dynamic`` style. For instance, when a font holds the style `bold` as dynamic style and the style `italic` as built-in style, the font is considered as `bold` + `italic`; even if the style `bold` is not rendered.
 
 Dependencies
 ============

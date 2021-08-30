@@ -83,7 +83,7 @@ MicroUI Implementation
 
 **Fixed**
 
-* Allow to open a font in format made with UI Pack 12.x (but cannot manage dynamic styles).
+* Allow to open a font in format made with UI Pack 12.x (but cannot manage ``Dynamic`` styles).
 * ``Display.flush()`` method is called once when MicroUI pump thread has a higher priority than the caller of ``Display.requestFlush()``.
 * ``Display.requestFlush()`` is only executed once from a feature (UI deadlock).
 

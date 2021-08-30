@@ -70,8 +70,8 @@ Process
 
 This chapter describes the steps to open an external resource from the application:
 
-1. Add the image in the application project (most of the time in the source folder ``src/main/resources`` and in the package ``images``).
-2. Create / open the configuration file (most of time ``application.imagesext.list``).
+1. Add the image in the application project (usually in the source folder ``src/main/resources`` and in the package ``images``).
+2. Create / open the configuration file (usually ``application.imagesext.list``).
 3. Add the relative path of the image: see :ref:`section.ui.Images`.
 4. Launch the application: the Image Generator converts the image in RAW format in the external resources folder (``[application_output_folder]/externalResources``).
 5. Deploy the external resources in the external memory (SDCard, flash, etc.).

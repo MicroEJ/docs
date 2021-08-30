@@ -145,9 +145,9 @@ The styles options ``Built-in`` tag the font as bold, italic, or bold and italic
 * The font is a `plain` font: select ``None`` option for each style.
 * The font is a `bold` font: select ``Built-in`` for the style `bold` and ``None`` for the other styles.
 * The font is an `italic` font: select ``Built-in`` for the style `italic` and ``None`` for the other styles.
-* The font is a `bold` and `italic` font: select ``Built-in`` for the styles `bold` and `italic` and ``None`` for ``underline``.
+* The font is a `bold` and `italic` font: select ``Built-in`` for the styles `bold` and `italic` and ``None`` for ``UNDERLINED``.
 
-.. warning:: When a font holds a ``Dynamic`` style or when the style `underline` is not ``None``, an error at MicroEJ application compile-time is thrown (incompatible font file).
+.. warning:: When a font holds a dynamic style or when the style ``UNDERLINED`` is not ``None``, an error at MicroEJ application compile-time is thrown (incompatible font file).
 
 Identifiers
 ^^^^^^^^^^^

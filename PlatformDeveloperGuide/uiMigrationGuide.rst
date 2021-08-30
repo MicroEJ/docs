@@ -282,7 +282,7 @@ Font
 """"
 
 * Open optional font(s) in :guilabel:`-configuration` project > :guilabel:`microui/**/*.ejf`
-* Remove all dynamic styles (select ``None`` or ``Built-in`` for bold, italic and underline); the number of generated fonts must be ``1`` (the feature to render dynamic styles at runtime have been removed)
+* Remove all ``Dynamic`` styles (select ``None`` or ``Built-in`` for bold, italic and underline); the number of generated fonts must be ``1`` (the feature to render ``Dynamic`` styles at runtime have been removed)
 * Save the file(s)
 
 BSP

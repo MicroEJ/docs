@@ -541,9 +541,9 @@ This mode is often used when the pixel representation is not ``ARGB`` or ``RGB``
 This mode can also be used when the number of bits for a color component (alpha, red, green, or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut`.
 This mode requires some specific support in the MicroEJ Platform:
 
-* An extension of the image generator is mandatory: see :ref:`section_image_generator_extended` to convert MicroUI's standard 32 bits ARGB colors to display pixel format.
+* An extension of the image generator is mandatory: see :ref:`section_image_generator_extended` to convert MicroUI's standard 32-bit ARGB colors to display pixel format.
 * The Front Panel widget ``Display`` requires an extension to convert the MicroUI 32-bit colors in display pixel format and vice-versa, see :ref:`section_ui_simulation_display`.  
-* The driver must implement functions that convert MicroUI's standard 32 bits ARGB colors to display pixel format and vice-versa: see :ref:`colorConversions`.
+* The driver must implement functions that convert MicroUI's standard 32-bit ARGB colors to display pixel format and vice-versa: see :ref:`colorConversions`.
 
 The following example illustrates the use of specific format BGR565 (the pixel uses 16 bits-per-pixel (alpha[0], red[5], green[6]
 and blue[5]):
@@ -852,7 +852,7 @@ The Display module allows to target display which uses a pixel indirection table
 Color Conversion
 ----------------
 
-The driver must implement functions that convert MicroUI's standard 32 bits ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to display color representation. For each application ARGB8888 color, the display driver has to find the corresponding color in the table. The Graphics Engine will store the index of the color in the table instead of using the color itself.
+The driver must implement functions that convert MicroUI's standard 32-bit ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to display color representation. For each application ARGB8888 color, the display driver has to find the corresponding color in the table. The Graphics Engine will store the index of the color in the table instead of using the color itself.
 
 When an application color is not available in the display driver table (CLUT), the display driver can try to find the closest color or return a default color. First solution is often quite difficult to write and can cost a lot of time at runtime. That's why the second solution is preferred. However, a consequence is that the application has only to use a range of colors provided by the display driver.
 
