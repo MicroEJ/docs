@@ -118,6 +118,7 @@ fully opaque.
 For 8-BPP RAW font, a transparency level is equal to
 ``255 - grayscale value``.
 
+.. _section_fontgen_conffile:
 
 Configuration File
 ==================

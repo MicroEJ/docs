@@ -57,6 +57,8 @@ Through this tutorial, we will illustrate the usage of each library by instrumen
 
 Finally, the last section describes some techniques to remove logging related code in order to reduce the memory footprint.
 
+.. _log_trace_library:
+
 Log with the Trace Library
 --------------------------
 
@@ -126,10 +128,11 @@ This produces the following output:
 
    The default Platform implementation of the ``Trace`` library prints the events to the console.
    See :ref:`trace_implementations` for other available implementations such as :ref:`systemview` tool.
-   
+
+.. _log_message_library:
+
 Log with the Message Library
 ----------------------------
-
 
 The library `ej.library.runtime.message <https://repository.microej.com/modules/ej/library/runtime/message/>`_ was designed to enable logging while minimizing RAM/ROM footprint and CPU usage.
 For that, logs are based on message identifiers, which are stored on integers instead of using of constant Strings.
@@ -176,6 +179,7 @@ This produces the following output:
       
       Application:I=2 UNINSTALLED INSTALLED
 
+.. _log_logging_library:
 
 Log with the Logging Library
 ----------------------------

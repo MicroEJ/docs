@@ -65,6 +65,9 @@ When an exception is thrown by the implementation of the MicroUI API, the except
    +-------------+--------------------------------------------------------+
    | -11         | There is no font (platform and application).           |
    +-------------+--------------------------------------------------------+
+   | -12         | The maximum number of event generators in the pool     |
+   |             | (254) has been reached.                                |
+   +-------------+--------------------------------------------------------+
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

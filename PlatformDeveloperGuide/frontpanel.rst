@@ -325,6 +325,8 @@ The following code is a simple widget LED. MicroEJ Application can interact with
       }
    }
 
+.. _section_frontpanel_emptywidget:
+
 Empty Widget
 ------------
 

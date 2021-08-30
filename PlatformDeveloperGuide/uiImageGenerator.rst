@@ -58,6 +58,8 @@ Standalone Mode
 
 The standalone Image Generator embeds all parts described above. By consequence, once installed in a platform, the standalone image generator does not need any extended module to generate MicroEJ files from standard images files. 
 
+.. _section_image_generator_extended:
+
 Extended Mode
 =============
 
@@ -84,7 +86,7 @@ To do that the Image Generator provides some services to implement. This chapter
 
       <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:m="http://www.easyant.org/ivy/maven" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
 
-         <info organisation="com.is2t.microui" module="imageGeneratorMyPlatform" status="integration" revision="1.0.0">      
+         <info organisation="com.microej.microui" module="imageGeneratorMyPlatform" status="integration" revision="1.0.0">      
             <ea:build organisation="com.is2t.easyant.buildtypes" module="build-std-javalib" revision="2.+"/>
          </info>
          
@@ -100,7 +102,7 @@ To do that the Image Generator provides some services to implement. This chapter
          <publications/>
          
          <dependencies>
-            <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.0.0">
+            <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
                <artifact name="imageGenerator" type="jar"/>
             </dependency>
          </dependencies>
@@ -160,6 +162,8 @@ As mentionned above (:ref:`section_image_binary_raw`), the Image Generator is ab
 3. Create the file ``META-INF/services/com.microej.tool.ui.generator.ImageConverter`` and open it.
 4. Note down the name of created class, with its package and classname.
 5. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
+
+.. _section_image_generator_conffile:
 
 Configuration File
 ==================

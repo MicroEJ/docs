@@ -35,6 +35,11 @@ There are several ways to create a MicroUI Image. Except few specific cases, the
 The heap size is application dependant. In MicroEJ application launcher, set its size in :guilabel:`Libraries` > :guilabel:`MicroUI` > :guilabel:`Images heap size (in bytes)`.
 It will declare a section whose name is ``.bss.microui.display.imagesHeap``.
 
+By default, the Image Loader uses an internal best fit allocator to allocate the image buffers (internal Graphics Engine's allocator). 
+Some specific :ref:`Low Level API <LLDISPLAY-API-SECTION>` (LLAPI) are available to override this default implementation. 
+These LLAPIs may be helpful to control the buffers allocation, retrieve the remaining space, etc. 
+When not implemented by the BSP, the default internal Graphics Engine's allocator is used.
+
 BufferedImage
 =============
 
@@ -46,11 +51,41 @@ MicroUI application is able to create an image where it is allowed to draw into:
 External Resource
 =================
 
-An image is retrieved by its path (except for ``BufferedImage``). The path describes a location in application classpath. The resource may be generated at same time than application (internal resource) or be external (external resource). The Image Loader is able to load some images located outside the CPU addresses' space range. It uses the External Resource Loader.
+Principle
+---------
 
-When an image is located in such memory, the Image Loader copies it into RAM (into the CPU addresses' space range). Then it considers the image as an internal resource: it can continue to load the image (see next chapters). The RAM section used to load the external image is automatically freed when the Image Loader do not need it again.
+An image is retrieved by its path (except for `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#>`_). The path describes a location in the application classpath. The resource may be generated at the same time as the application (internal resource) or be external (external resource). The Image Loader can load some images located outside the CPU addresses' space range. It uses the External Resource Loader.
 
-The image may be located in external memory but be available in CPU addresses' space ranges (byte-adressable). In this case the Image Loader considers the image as `internal` and does not need to copy its content in RAM memory. 
+When an image is located in such memory, the Image Loader copies it into RAM (into the CPU addresses' space range). Then it considers the image as an internal resource: it can continue to load the image (see following chapters). The RAM section used to load the external image is automatically freed when the Image Loader does not need it again.
+
+The image may be located in external memory but be available in CPU addresses' space ranges (byte-addressable). In this case, the Image Loader considers the image as `internal` and does not need to copy its content in RAM. 
+
+Configuration File
+------------------
+
+Like internal resources, the Image Generator uses a :ref:`configuration file <section_image_generator_conffile>` (also called the "list file") for describing images that need to be processed. The list file must be specified in the MicroEJ Application launcher (see :ref:`application_options`). However, all the files in the application classpath with the suffix ``.imagesext.list`` are automatically parsed by the Image Generator tool.
+
+Process
+-------
+
+This chapter describes the steps to open an external resource from the application:
+
+1. Add the image in the application project (usually in the source folder ``src/main/resources`` and in the package ``images``).
+2. Create / open the configuration file (usually ``application.imagesext.list``).
+3. Add the relative path of the image: see :ref:`section.ui.Images`.
+4. Launch the application: the Image Generator converts the image in RAW format in the external resources folder (``[application_output_folder]/externalResources``).
+5. Deploy the external resources in the external memory (SDCard, flash, etc.).
+6. (optional) Update the implementation of the :ref:`section_externalresourceloader`.
+7. Build and link the application with the BSP.
+8. The application loads the external resource using `Image.loadImage(String) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_.
+9. The image loader looks for the image and copies it in the :ref:`images heap<section_image_loader_memory>` (no copy if the external memory is byte-addressable).
+10. (optional) The image may be decoded (for instance: PNG), and the source image is removed from the images heap.
+11. The external resource is immediately closed: the image's bytes have been copied in the images heap, or the image's bytes are always available (byte-addressable memory).
+12. The application can use the image.
+13. The application closes the image: the image is removed from the image heap.
+
+.. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``.imagesext.list`` files are generated in the external resources folder, and this folder is added to the simulator's classpath. 
+
 
 Image in MicroEJ Format
 =======================

@@ -219,7 +219,7 @@ send data to its associated event generator:
 -  ``LLUI_INPUT_sendEvents``: Sends a frame constituted by several 32-bit events to a specific event generator, specified by its ID. If the input buffer cannot receive the whole data, the frame is not added, and the function returns ``LLUI_INPUT_NOK``; otherwise it returns ``LLUI_INPUT_OK``.
 
 Events will be dispatched to the associated event generator that will be
-responsible for decoding them (see :ref:`javaEventGenerators`).
+responsible for decoding them (see :ref:`section_inputs_genericEventGenerators`).
 
 The UI extension provides an implementation for each of MicroUI's
 built-in event generators. Each one has dedicated functions that allows
@@ -296,17 +296,19 @@ structured events to the predefined event generators:
    |                                        |           | touch pad over a display.               |
    +----------------------------------------+-----------+-----------------------------------------+
 
-Event Buffer
-------------
-
-The maximum usage of the internal event buffer may be retrieved at
-runtime using the ``LLUI_INPUT_getMaxEventsBufferUsage`` function. This is
-useful for tuning the size of the buffer.
 
 .. [1]
    The implementation class is a subclass of the MicroUI class of the
    column.
 
+Event Buffer
+------------
+
+Functions ``LLUI_INPUT_IMPL_log_xxx`` allow logging the use of event buffer.
+Implementation of these LLAPIs is already available on the MicroEJ Central Repository (``LLUI_INPUT_LOG_impl.c``). 
+This implementation is using an array to add some metadata to each event. 
+This metadata is used when the BSP is calling ``LLUI_INPUT_dump()``.
+When no implementation is included in the BSP, the call to ``LLUI_INPUT_dump()`` has no effect (no available logger).
 
 .. _LLDISPLAY-API-SECTION:
 
@@ -338,6 +340,12 @@ Image Heap
 The display driver must reserve a runtime memory buffer for creating dynamic images when using MicroUI ``ResouceImage`` and ``BufferedImage`` classes methods. The display driver may choose to reserve an empty buffer. Thus, calling MicroUI methods will result in a ``MicroUIException`` exception.
 
 The section name is ``.bss.microui.display.imagesHeap``.
+
+Functions ``LLUI_DISPLAY_IMPL_image_heap_xxx`` allow to control the image buffers allocation in the image heap. 
+Implementation of these LLAPIs is already available on the MicroEJ Central Repository (``LLUI_DISPLAY_HEAP_impl.c``). 
+This implementation is using a best fit allocator. 
+It can be updated to log the allocations, the remaining space, etc. 
+When no implementation is included in the BSP, the default Graphics Engine'a allocator (a best fit allocator) is used.
 
 External Font Heap
 ------------------

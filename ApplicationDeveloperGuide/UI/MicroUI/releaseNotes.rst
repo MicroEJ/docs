@@ -22,8 +22,8 @@ From 12.x to 13.x
 .. code-block:: xml
 
    <dependencies>
-      <dependency org="ej.api" name="microui" rev="3.0.3"/>
-      <dependency org="ej.api" name="drawing" rev="1.0.2"/>         
+      <dependency org="ej.api" name="microui" rev="3.1.0"/>
+      <dependency org="ej.api" name="drawing" rev="1.0.3"/>         
    </dependencies>
 
 From 10.x to 12.x

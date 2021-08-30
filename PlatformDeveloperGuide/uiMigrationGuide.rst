@@ -1,8 +1,33 @@
+.. include:: uiReplaces.rst
+
 .. _section_ui_migrationguide:
 
 ===============
 Migration Guide
 ===============
+
+
+From 13.0.x to 13.1.x
+=====================
+
+Front Panel
+"""""""""""
+
+* Set the explicit dependency to the UI Pack 13.1.0: 
+
+  .. code-block:: xml
+
+	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.1.0">
+		<artifact name="frontpanel" type="jar"/>
+	 </dependency>
+
+BSP
+"""
+
+* Add a cast when using ``MICROUI_Image*`` object: ``(MICROUI_ImageFormat)image->format`` .
+* Remove parameter ``MICROUI_GraphicsContext*`` when calling ``LLUI_DISPLAY_setDrawingLimits()``. 
+* Ensure to call ``LLUI_DISPLAY_setDrawingLimits()`` before calling ``LLUI_DISPLAY_setDrawingStatus()`` or ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``.
+* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available on the :ref:`C module<section_ui_releasenotes_cmodule>`. 
 
 From 12.x to 13.x
 =================
@@ -200,7 +225,7 @@ This chapter only concerns platform with a custom display. In this case a dedica
          <publications/>
          
          <dependencies>
-            <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.0.0">
+            <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
                <artifact name="imageGenerator" type="jar"/>
             </dependency>
          </dependencies>
@@ -257,7 +282,7 @@ Font
 """"
 
 * Open optional font(s) in :guilabel:`-configuration` project > :guilabel:`microui/**/*.ejf`
-* Remove all dynamic styles (select ``None`` or ``Built-in`` for bold, italic and underline); the number of generated fonts must be ``1`` (the feature to render dynamic styles at runtime have been removed)
+* Remove all ``Dynamic`` styles (select ``None`` or ``Built-in`` for bold, italic and underline); the number of generated fonts must be ``1`` (the feature to render ``Dynamic`` styles at runtime have been removed)
 * Save the file(s)
 
 BSP

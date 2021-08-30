@@ -372,11 +372,27 @@ For the display with a number of bits-per-pixel (BPP) lower than 8, the Graphics
 Pixel Structure
 ===============
 
+Principle
+---------
+
 The Display module provides pre-built display configurations with standard pixel memory layout. The layout of the bits within the pixel may be :ref:`standard<display_pixel_structure_standard>` or :ref:`driver-specific<display_pixel_structure_driver>`. When installing the Display module, a property ``bpp`` is required to specify the kind of pixel representation (see :ref:`section_display_installation`).
 
 .. _display_pixel_structure_standard:
 
-When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the Display module considers the pixels representation as **standard**. According to the chosen format, some color data can be lost or cropped.
+Standard
+--------
+
+When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the Display module considers the pixels representation as **standard**. 
+All standard representations are internally managed by the Display module, by the :ref:`Front Panel<section_ui_simulation>` and by the :ref:`Image Generator<section_image_generator>`. 
+No specific support is required as soon as a MicroEJ Platform is using a standard representation. It can:
+
+* generate at compile-time RAW images in the same format than display pixel format,
+* convert at runtime MicroUI 32-bit colors in display pixel format,
+* simulate at runtime the display pixel format.
+
+.. note:: The custom implementations of the image generator, low-level APIs, and Front Panel APIs are ignored by the Display module when a standard pixel representation is selected.
+
+According to the chosen format, some color data can be lost or cropped.
 
 -  ARGB8888: the pixel uses 32 bits-per-pixel (alpha[8], red[8],
    green[8] and blue[8]).
@@ -515,10 +531,105 @@ When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 |
           return 0xff000000 | (c * 0xffffff);
       }
 
-
 .. _display_pixel_structure_driver:
 
-When the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``, the Display module considers the pixel representation as **driver-specific**. In this case, the driver must implement functions that convert MicroUI's standard 32 bits ARGB colors to display color representation (see :ref:`LLDISPLAY-API-SECTION`). This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. This mode can also be used when the number of bits for a color component (alpha, red, green or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut` .
+Driver-Specific
+---------------
+
+The Display module considers the pixel representation as **driver-specific** when the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``. 
+This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. 
+This mode can also be used when the number of bits for a color component (alpha, red, green, or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut`.
+This mode requires some specific support in the MicroEJ Platform:
+
+* An extension of the image generator is mandatory: see :ref:`section_image_generator_extended` to convert MicroUI's standard 32-bit ARGB colors to display pixel format.
+* The Front Panel widget ``Display`` requires an extension to convert the MicroUI 32-bit colors in display pixel format and vice-versa, see :ref:`section_ui_simulation_display`.  
+* The driver must implement functions that convert MicroUI's standard 32-bit ARGB colors to display pixel format and vice-versa: see :ref:`colorConversions`.
+
+The following example illustrates the use of specific format BGR565 (the pixel uses 16 bits-per-pixel (alpha[0], red[5], green[6]
+and blue[5]):
+
+1. Configure the MicroEJ Platform:
+
+   * Create or open the Platform configuration project file ``display/display.properties``: 
+
+   .. code-block:: java 
+
+      bpp=16
+
+2. Image Generator:
+  
+  *  Create a project as described :ref:`here<section_image_generator_extended>`.
+  *  Create the class ``com.microej.graphicalengine.generator.MicroUIGeneratorExtension`` that extends the class ``com.microej.tool.ui.generator.BufferedImageLoader``.
+  *  Fill the method ``convertARGBColorToDisplayColor()``:
+
+  .. code-block:: java
+
+      public class MicroUIGeneratorExtension extends BufferedImageLoader {
+        @Override
+        public int convertARGBColorToDisplayColor(int color) {
+           return ((color & 0xf80000) >> 19) | ((color & 0x00fc00) >> 5) | ((color & 0x0000f8) << 8);
+        }
+     }
+     
+  * Configure the Image Generator' service loader: add the file ``/META-INF/services/com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension``:
+
+  .. code-block:: java
+   
+      com.microej.graphicalengine.generator.MicroUIGeneratorExtension
+
+  * Build the module (click on the blue button).
+  * Copy the generated jar file (``imageGeneratorMyPlatform.jar``) in the MicroEJ Platform configuration project: ``/dropins/tools/``.
+
+2. Simulator (Front Panel):
+
+   *  Create the class ``com.microej.fp.MyDisplayExtension`` that implements the interface ``ej.fp.widget.Display.DisplayExtension``:
+
+   .. code-block:: java
+
+      public class MyDisplayExtension implements DisplayExtension {
+
+         @Override
+         public int convertARGBColorToDisplayColor(Display display, int color) {
+            return ((color & 0xf80000) >> 19) | ((color & 0x00fc00) >> 5) | ((color & 0x0000f8) << 8);
+         }
+
+         @Override
+         public int convertDisplayColorToARGBColor(Display display, int color) {
+            return ((color & 0x001f) << 19) | ((color & 0x7e00) << 5) | ((color & 0xf800) >> 8) | 0xff000000;
+         }
+
+         @Override
+         public boolean isColor(Display display) {
+            return true;
+         }
+
+         @Override
+         public int getNumberOfColors(Display display) {
+            return 1 << 16;
+         }
+      }
+   
+   * Configure the widget ``Display`` in the ``.fp`` file by referencing the display extension:
+
+   .. code-block:: xml
+
+      <ej.fp.widget.Display x="41" y="33" width="320" height="240" extensionClass="com.microej.fp.MyDisplayExtension"/>
+
+3. Build the MicroEJ Platform as usual
+
+4. Update the ``LLUI_DISPLAY`` implementation by adding the following functions:
+
+   .. code-block:: c
+
+      uint32_t LLUI_DISPLAY_IMPL_convertARGBColorToDisplayColor(uint32_t color)
+      {
+         return ((color & 0xf80000) >> 19) | ((color & 0x00fc00) >> 5) | ((color & 0x0000f8) << 8);
+      }
+      
+      uint32_t LLUI_DISPLAY_IMPL_convertDisplayColorToARGBColor(uint32_t color)
+      {
+        return ((color & 0x001f) << 19) | ((color & 0x7e00) << 5) | ((color & 0xf800) >> 8) | 0xff000000;
+      }
 
 .. _section_display_llapi:
 
@@ -538,7 +649,7 @@ Overview
 * MicroUI library calls the BSP functions through the Graphics Engine and header file ``LLUI_DISPLAY_impl.h``. 
 * Implementation of ``LLUI_DISPLAY_impl.h`` can call Graphics Engine functions through ``LLUI_DISPLAY.h``.
 * To perform some drawings, MicroUI uses ``LLUI_PAINTER_impl.h`` functions.
-* The module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_ provides a default implementation of the drawing native functions of ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``:
+* The :ref:`C module<section_ui_releasenotes_cmodule>` provides a default implementation of the drawing native functions of ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``:
   * It implements the synchronization layer, then redirects drawings implementations to ``ui_drawing.h`` and ``dw_drawing.h``
 * ``ui_drawing.h`` and ``dw_drawing.h`` are already implemented by built-in software algorithms (library provided by the UI Pack).
 * It is possible to implement some of the ``ui_drawing.h`` and ``dw_drawing.h`` functions in the BSP to provide a custom implementation (for instance, a GPU).
@@ -565,7 +676,7 @@ Painter Low Level API
 
 All MicroUI drawings (available in ``Painter`` class) are calling a native function. The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h``. The implementation must take care about a lot of constraints: synchronization between drawings, Graphics Engine notification, MicroUI ``GraphicsContext`` clip and colors, flush dirty area, etc. The principle of implementing a MicroUI drawing function is described in the chapter :ref:`display_drawing_native`. 
 
-An implementation of ``LLUI_PAINTER_impl.h`` is already available on MicroEJ Central Repository. This implementation respects the synchronization between drawings, the Graphics Engine notification, reduce (when possible) the MicroUI ``GraphicsContext`` clip constraints and update (when possible) the flush dirty area. This implementation does not perform the drawings. It only calls the equivalent of drawing available in ``ui_drawing.h``. This allows to simplify how to use a GPU (or a third-party library) to perform a drawing: the ``ui_drawing.h`` implementation has just to take in consideration the  MicroUI ``GraphicsContext`` clip and colors and flush dirty area. Synchronization with the Graphics Engine is already performed.
+An implementation of ``LLUI_PAINTER_impl.h`` is already available on the :ref:`C module<section_ui_releasenotes_cmodule>`. This implementation respects the synchronization between drawings, the Graphics Engine notification, reduce (when possible) the MicroUI ``GraphicsContext`` clip constraints and update (when possible) the flush dirty area. This implementation does not perform the drawings. It only calls the equivalent of drawing available in ``ui_drawing.h``. This allows to simplify how to use a GPU (or a third-party library) to perform a drawing: the ``ui_drawing.h`` implementation has just to take in consideration the  MicroUI ``GraphicsContext`` clip and colors and flush dirty area. Synchronization with the Graphics Engine is already performed.
 
 In addition to the implementation of ``LLUI_PAINTER_impl.h``, an implementation of ``ui_drawing.h`` is already available in Graphics Engine (in *weak* mode). This allows to implement only the functions the GPU is able to perform. For a given drawing, the weak function implementation is calling the equivalent of drawing available in ``ui_drawing_soft.h``. This file lists all drawing functions implemented by the Graphics Engine.
 
@@ -585,7 +696,7 @@ The functions are available in ``LLUI_DISPLAY.h``.
 Drawing Native
 ==============
 
-As explained before, MicroUI implementation provides a dedicated header file which lists all MicroUI Painter drawings native function. The implementation of these functions has to respect several rules to not corrupt the MicroUI execution (flickering, memory corruption, unknown behavior, etc.). These rules are already respected in the default Abstraction Layer implementation modules available in MicroEJ Central Repository. In addition, MicroUI allows to add some custom drawings. The implementation of MicroUI Painter native drawings should be used as model to implement the custom drawings.
+As explained before, MicroUI implementation provides a dedicated header file which lists all MicroUI Painter drawings native function. The implementation of these functions has to respect several rules to not corrupt the MicroUI execution (flickering, memory corruption, unknown behavior, etc.). These rules are already respected in the default Abstraction Layer implementation modules available on the :ref:`C module<section_ui_releasenotes_cmodule>`. In addition, MicroUI allows to add some custom drawings. The implementation of MicroUI Painter native drawings should be used as model to implement the custom drawings.
 
 All native functions must have a ``MICROUI_GraphicsContext*`` as parameter (often first parameter). This identifies the destination target: the MicroUI `GraphicsContext <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html>`_. This target is retrieved in MicroEJ application calling the method ``GraphicsContext.getSNIContext()``. This method returns a byte array which is directly mapped on the ``MICROUI_GraphicsContext`` structure in MicroUI native drawing function declaration.
  
@@ -741,7 +852,7 @@ The Display module allows to target display which uses a pixel indirection table
 Color Conversion
 ----------------
 
-The driver must implement functions that convert MicroUI's standard 32 bits ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to display color representation. For each application ARGB8888 color, the display driver has to find the corresponding color in the table. The Graphics Engine will store the index of the color in the table instead of using the color itself.
+The driver must implement functions that convert MicroUI's standard 32-bit ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to display color representation. For each application ARGB8888 color, the display driver has to find the corresponding color in the table. The Graphics Engine will store the index of the color in the table instead of using the color itself.
 
 When an application color is not available in the display driver table (CLUT), the display driver can try to find the closest color or return a default color. First solution is often quite difficult to write and can cost a lot of time at runtime. That's why the second solution is preferred. However, a consequence is that the application has only to use a range of colors provided by the display driver.
 
@@ -764,6 +875,7 @@ This solution requires several conditions:
 -  Application can only use blending ranges provided by the CLUT. Otherwise the display driver is not able to find the range and the default color will be used to perform the blending.
 -  Rendering of dynamic images (images decoded at runtime) may be wrong because the ARGB colors may be out of CLUT range.
 
+.. _display_pixel_conversion:
 
 Image Pixel Conversion
 ======================
