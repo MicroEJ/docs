@@ -386,9 +386,9 @@ When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 |
 All standard representations are internally managed by the Display module, by the :ref:`Front Panel<section_ui_simulation>` and by the :ref:`Image Generator<section_image_generator>`. 
 No specific support is required as soon as a MicroEJ Platform is using a standard representation. It can:
 
-* generates at compile-time RAW images in the same format than display pixel format,
-* converts at runtime MicroUI 32-bit colors in display pixel format,
-* simulates at runtime the display pixel format.
+* generate at compile-time RAW images in the same format than display pixel format,
+* convert at runtime MicroUI 32-bit colors in display pixel format,
+* simulate at runtime the display pixel format.
 
 .. note:: The custom implementations of the image generator, low-level APIs, and Front Panel APIs are ignored by the Display module when a standard pixel representation is selected.
 

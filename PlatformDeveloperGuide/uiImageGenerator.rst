@@ -102,7 +102,7 @@ To do that the Image Generator provides some services to implement. This chapter
          <publications/>
          
          <dependencies>
-            <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]|">
+            <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
                <artifact name="imageGenerator" type="jar"/>
             </dependency>
          </dependencies>
