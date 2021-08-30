@@ -875,6 +875,8 @@ This solution requires several conditions:
 -  Application can only use blending ranges provided by the CLUT. Otherwise the display driver is not able to find the range and the default color will be used to perform the blending.
 -  Rendering of dynamic images (images decoded at runtime) may be wrong because the ARGB colors may be out of CLUT range.
 
+.. _display_pixel_conversion:
+
 Image Pixel Conversion
 ======================
 

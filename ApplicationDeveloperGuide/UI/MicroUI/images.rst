@@ -58,6 +58,8 @@ Here is the format of the ``*.images.list`` files.
    Letter              ::= 'a-zA-Z_$'
    LetterOrDigit       ::= 'a-zA-Z_$0-9'
 
+.. _images_heap:
+
 Images Heap
 -----------
 
