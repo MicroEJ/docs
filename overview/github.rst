@@ -6,7 +6,11 @@ GitHub Repositories
 A large number of examples, libraries, demos and tools are shared on MicroEJ GitHub account: https://github.com/MicroEJ. 
 
 Most of these GitHub repositories contain projects ready to be imported in MicroEJ SDK.
-This section explains the steps to import them in MicroEJ SDK, using the `MWT Examples repository <https://github.com/MicroEJ/ExampleJava-MWT>`_.
+
+Repository Import
+-----------------
+
+This section explains the steps to import a Github repository in MicroEJ SDK, illustrated with the `MWT Examples repository <https://github.com/MicroEJ/ExampleJava-MWT>`_.
 
 .. note::
 
@@ -45,17 +49,21 @@ Click :guilabel:`Next` once more and finally :guilabel:`Finish`. The ``Package E
 If you want to import projects from another (GitHub) repository, you simply have to do the same procedure using the Git URL of the desired repository.
 
 MicroEJ GitHub Badges
-=====================
+---------------------
 
 MicroEJ GitHub Badges are badges embedded in a README at the root of the
-repository. They allow to provide the compatibilities of the repository at a
-quick glance. Three types are currently used Architecture, SDK and UI badges.
+repository. They highlight the compatibilities of the repository at a
+quick glance with MicroEJ Architecture, MicroEJ SDK and Graphical User Interface versions.
+
 The color of the badge has the following meaning:
 
-- Green means a current supported version.
-- Orange means a “soon” to be deprecated version.
-- Gray means a deprecated version.
+- Green means a current supported version: |badge-green|
+- Orange means a still supported version that will be deprecated in the future: |badge-orange|
+- Gray means a deprecated version: |badge-grey|
 
+.. |badge-green| image:: images/badge-green.png
+.. |badge-orange| image:: images/badge-orange.png
+.. |badge-grey| image:: images/badge-grey.png
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
