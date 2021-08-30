@@ -72,7 +72,7 @@ This extra information is stored into a RAM section called ``.bss.microui.displa
 Configuration File
 ------------------
 
-Like internal resources, the Image Generator uses a :ref:`configuration file <section_fontgen_conffile>` (also called the "list file") for describing fonts that need to be processed. The list file must be specified in the MicroEJ Application launcher (see :ref:`application_options`). However, all the files in the application classpath with the suffix ``.fontsext.list`` are automatically parsed by the Font Generator tool.
+Like internal resources, the Font Generator uses a :ref:`configuration file <section_fontgen_conffile>` (also called the "list file") for describing fonts that need to be processed. The list file must be specified in the MicroEJ Application launcher (see :ref:`application_options`). However, all the files in the application classpath with the suffix ``.fontsext.list`` are automatically parsed by the Font Generator tool.
 
 Process
 -------

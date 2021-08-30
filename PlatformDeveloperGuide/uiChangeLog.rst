@@ -4,8 +4,8 @@
 Changelog
 =========
 
-13.1.0 (2021-08-03)
-===================
+[13.1.0] - 2021-08-03
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -49,7 +49,7 @@ LLAPIs
 
 * Add ``LLUI_DISPLAY_convertDisplayColorToARGBColor()``.
 * Add LLAPI to manage the :ref:`MicroUI Image heap<section_image_loader_memory>`.
-* Add LLAPI to dump the :ref:`MicroUI Image queue<section_inputs_genericEventGenerators>`.
+* Add LLAPI to dump the :ref:`MicroUI Image queue<section_inputs_eventbuffer>`.
 
 **Changed**	
 
@@ -73,8 +73,8 @@ Simulator
 * Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images. 
 * Simulates the image data alignment.
 
-13.0.7 (2021-07-30)
-===================
+[13.0.7] -2021-07-30
+====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
