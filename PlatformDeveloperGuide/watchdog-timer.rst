@@ -76,8 +76,8 @@ the dependency to the two required modules in the file ``module.ivy``:
 
 ::
 
-	<dependency org="com.microej.pack.watchdog-timer" name="watchdog-timer-pack" rev="2.0.0" />
-	<dependency changing="true" org="com.microej.clibrary.llimpl" name="watchdog-timer-generic" rev="3.0.0" transitive="false"/>
+	<dependency org="com.microej.pack.watchdog-timer" name="watchdog-timer-pack" rev="2.0.1" />
+	<dependency changing="true" org="com.microej.clibrary.llimpl" name="watchdog-timer-generic" rev="3.0.1" transitive="false"/>
 
 Then, you have to implement functions that match the ``LLWATCHDOG_TIMER_IMPL_*_action`` pattern
 which is required by the Watchdog C implementation.
@@ -93,7 +93,7 @@ Application project in order to allow access to the Watchdog library.
 
 ::
 
-	<dependency org="ej.hal" name="watchdog-timer" rev="2.0.0" transitive="false"/>
+	<dependency org="ej.api" name="watchdog-timer" rev="2.0.0" transitive="false"/>
 
 
 Code example in Java
