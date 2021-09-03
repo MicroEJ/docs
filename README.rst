@@ -18,6 +18,12 @@ To perform a link check for all links and references::
 
     make linkcheck
 
+Warning Processing
+~~~~~~~~~~~~~~~~~~
+
+Syntax warnings are configured to make the build fail. When building locally, warnings are cached once source files have been read once (even during linkcheck) and thus won't reappear on subsequent builds. 
+To get all the warnings locally, clean the `_build` directory (``make clean``) and rebuild the whole documentation (``make html`` , ``make linkcheck``).
+
 Components
 ----------
 
