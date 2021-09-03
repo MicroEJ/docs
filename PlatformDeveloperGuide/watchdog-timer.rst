@@ -87,7 +87,7 @@ which is required by the Watchdog C implementation.
 Use in a Java application
 =========================
 
-The `WatchdogTimer API Module <https://repository.microej.com/artifacts/ej/hal/watchdog-timer/>`_
+The `WatchdogTimer API Module <https://repository.microej.com/modules/ej/api/watchdog-timer/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the Watchdog library.
 
