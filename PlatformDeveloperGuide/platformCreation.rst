@@ -153,11 +153,19 @@ And to declare the Legacy MicroEJ Generic Pack Net version ``9.2.3``:
 Platform Build
 ==============
 
-To build the MicroEJ Platform, perform as a regular :ref:`mmm_module_build`: 
+The MicroEJ Platform can be built either from the SDK or from the :ref:`MMM CLI <mmm_cli>`.
+To build the MicroEJ Platform from the SDK, perform a regular :ref:`mmm_module_build`: 
 
   - Right-click on the Platform Configuration project,
   - Select :guilabel:`Build Module`.
-  - The build starts and the build logs are redirected to the integrated console. Once the build is terminated, you should get the following message:
+
+To build the MicroEJ Platform from the MMM CLI:
+
+  - Set the ``eclipse.home`` property to the path of your SDK, using ``-Declipse.home=<path>`` in the command line or using the :ref:`mmm_cli_shared_configuration`.
+  - Execute the command: ``mmm``
+
+In both cases the build starts and the build logs are redirected to the integrated console.
+Once the build is terminated, you should get the following message:
 
     .. code-block:: console
       :emphasize-lines: 3,4,5,6
@@ -173,7 +181,7 @@ To build the MicroEJ Platform, perform as a regular :ref:`mmm_module_build`:
       BUILD SUCCESSFUL
 
       Total time: 43 seconds
-  
+
 Then, import the Platform directory to your MicroEJ SDK workspace as mentioned in the report. You should get a ready-to-use MicroEJ Platform project
 in the workspace available for the MicroEJ Application project to run on. You can also check the MicroEJ Platform availability in:
 :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
