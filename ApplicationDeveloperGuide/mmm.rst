@@ -508,6 +508,8 @@ The available options are:
 
 When no command is specified, MMM CLI executes Easyant with custom targets using the ``--targets`` (``-t``) option (defaults to ``clean,package``).
 
+.. _mmm_cli_shared_configuration:
+
 Shared configuration
 ~~~~~~~~~~~~~~~~~~~~
 
