@@ -4,7 +4,7 @@ Hiding a Widget
 - in the sample below, The desktop will be exchanged with the one with the container/widget
 
 Using Desktop To hide a widget
----------------------------------
+------------------------------
 
 In the code Sample below, a button is created to change the Desktop when clicked:
 
@@ -63,3 +63,47 @@ A new desktop with a widget is created, this will hide the Desktop, to go back t
 .. image:: images/hidewidgetshow.png
 
 .. image:: images/hidewidgethidden.png
+
+Using a Hideable Container to Hide a Widget
+-------------------------------------------
+
+It is also possible to use a Hideable Container, which will render selectively the its children widget
+
+On the widget hierarchy, a container is also a Widget, so if this Widget is a sibling of any other widget, There should be no Issues
+.. code-block:: java
+    
+    	public class HideableContainer extends OverlapContainer {
+
+		private boolean visibility = true;
+
+		public boolean isVisible() {
+			return this.visibility;
+		}
+
+		public void setVisible(boolean visible) {
+			if (this.visibility != visible) {
+				this.visibility = visible;
+				this.setEnabled(visible);
+				Container parent = this.getParent();
+				if (parent != null) {
+					parent.requestRender();
+				}
+			}
+		}
+
+		@Override
+		public void render(GraphicsContext g) {
+			if (this.visibility) {
+				super.render(g);
+			}
+		}
+	}
+
+Adding this to a button in the DemoWidget sample application yields these results
+.. image:: images/hideableContainerShown.png
+
+After clicking the Button
+
+.. image:: images/hideableContainerHidden.png
+
+
