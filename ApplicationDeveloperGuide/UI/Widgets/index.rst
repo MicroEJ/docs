@@ -3,7 +3,7 @@
 Widgets and Examples
 ====================
 
-Widget library
+Widget Library
 --------------
 
 The widget library provides very common widgets with basic implementations.
@@ -23,7 +23,7 @@ To use the widgets provided by the widget library, add the following line to a :
 To fork one of the provided widgets, duplicate the associated Java class from the widget library JAR into the source code of your application.
 It is recommended to move the duplicated class to an other package and to rename the class in order to avoid confusion between your forked class and the original class.
 
-Provided widgets
+Provided Widgets
 ~~~~~~~~~~~~~~~~
 
 Widgets:
@@ -43,7 +43,82 @@ Containers:
 - ``OverlapContainer``: lays out any number of children by stacking them.
 - ``Canvas``: lays out any number of children freely.
 
-Widget demo
+Debug Utilities
+~~~~~~~~~~~~~~~
+
+A few utilities useful for debugging are available in the package ``ej.widget.util.debug`` of the widget library.
+
+- Print the hierarchy of widgets.
+
+  The method ``HierarchyInspector.hierarchyToString(Widget)`` returns a String representing the hierarchy of a widget.
+  In other words, it prints the widget and its children recursively in a tree format.
+
+  It may be used to analyse the content of a page and have a quick estimation of the number of widgets and the depth of the hierarchy.
+
+  For example:
+
+  .. code-block::
+
+     Scroll
+     +--ScrollableList
+     |  +--Label
+     |  +--Dock
+     |  |  +--ImageWidget
+     |  |  +--Label
+     |  +--Label
+  
+- Print the path to a widget.
+
+  The method ``HierarchyInspector. pathToWidgetToString(Widget)`` returns a String representing the list of ancestors of the widget.
+  For example: ``Desktop > Scroll > ScrollableList > Label``.
+
+  It may be used to identify a widget in a trace.
+
+  It is also possible to choose the separator by using ``HierarchyInspector.pathToWidgetToString(Widget, char)`` method.
+  For example: ``Desktop ; Scroll ; ScrollableList ; Label``.
+
+- Count the number of widgets or containers.
+
+  The methods ``HierarchyInspector.countNumberOfWidgets(Widget)`` and ``HierarchyInspector.countNumberOfContainers(Widget)`` respectively count the number of widgets and containers in a hierarchy.
+
+  It may be used to evaluate the complexity of a hierarchy of widgets.
+
+- Count the maximum depth of a hierarchy.
+
+  The method ``HierarchyInspector.countMaxDepth(Widget)`` counts the maximum depth of a hierarchy.
+  In other words, the depth of the widget with the biggest number of parents recursively.
+
+  It may be used to evaluate the complexity of a hierarchy of widgets.
+
+- Print the bounds of a widget.
+
+  The method ``BoundsInspector.boundsToString(Widget)`` returns a String with the widget type and its bounds.
+  The returned String contains:
+
+  - the simple name of the class of the widget,
+  - its position relative to its parent,
+  - its size,
+  - its absolute position.
+
+  For example: ``Label: 0,0 7x25 (absolute: 75,75)``
+
+- Print the bounds of all the widgets in a hierarchy.
+
+  The method ``BoundsInspector.boundsRecursiveToString(Widget)`` returns a String representing the type and bounds of each widget in the hierarchy of a widget.
+
+  For example:
+
+  .. code-block::
+
+     Scroll: 0,0 480x272 (absolute: 0,0)
+     +--ScrollableList: 0,0 480x272 (absolute: 0,0)
+     |  +--Label: 0,0 480x50 (absolute: 0,0)
+     |  +--Dock: 0,50 480x50 (absolute: 0,50)
+     |  |  +--ImageWidget: 0,0 70x50 (absolute: 0,50)
+     |  |  +--Label: 70,0 202x50 (absolute: 70,50)
+     |  +--Label: 0,100 480x50 (absolute: 0,100)
+  
+Widget Demo
 -----------
 
 The widget demo provides some widget implementations as well as usage examples for these widgets and for the widgets of the Widget library.
@@ -58,7 +133,7 @@ You can then import the ``com.microej.demo.widget`` project into your workspace 
 Each subpackage contains the source code for a specific widget and for a page which showcases the widget.
 For example, the ``com.microej.demo.widget.checkbox`` package contains the ``Checkbox`` widget and the ``CheckboxPage``.
 
-Provided widgets
+Provided Widgets
 ~~~~~~~~~~~~~~~~
 
 Widgets:
@@ -74,7 +149,7 @@ Containers:
 - ``Split``: lays out two children horizontally or vertically, by giving each child a portion of the available space.
 - ``ScrollableList``: lays out its widgets the same way as a regular list, but provides an optimization when added to a scroll.
 
-MWT examples
+MWT Examples
 ------------
 
 The MWT Examples repository provides various examples which extend or customize the MWT framework.
@@ -85,7 +160,7 @@ Source
 To run the examples and read the source code of these examples, clone the following GitHub repository: `<https://github.com/MicroEJ/ExampleJava-MWT>`_.
 You can then import the multiple project into your workspace to see the source of each example and to run it on Simulator or on your board.
 
-Provided examples
+Provided Examples
 ~~~~~~~~~~~~~~~~~
 
 - ``com.microej.example.mwt.attribute``: shows how to customize the style of widgets using attributes selectors, similar to CSS.

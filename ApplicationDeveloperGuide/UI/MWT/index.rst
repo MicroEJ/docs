@@ -16,6 +16,7 @@ MWT (Micro Widget Toolkit)
    how-to-event-dispatcher
    how-to-extra-style-field
    how-to-overlap-render-policy
+   how-to-debug
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
