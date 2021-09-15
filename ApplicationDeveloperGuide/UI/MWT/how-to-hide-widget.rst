@@ -1,8 +1,8 @@
 Hiding a Widget
 ====================
 Hiding widgets can be done by:
-- swapping the entire desktop; or
-- selectively by placing your widgets in a custom hideable container.
+- Swapping the entire desktop; or
+- Selectively by placing your widgets in a custom hideable container.
 
 Using Desktop To hide a widget
 ------------------------------
@@ -17,16 +17,16 @@ In the code sample below, a button is created to change the desktop when clicked
     Flow list = new Flow(Orientation");
     list.addChild(new Label("Label 1"));
     list.addChild(new Label("Label 2"));
-    Button b = new Button("Click to change the Widget");
+    Button button = new Button("Click to change the Widget");
     Desktop desktop2 = new Desktop();
-    b.setOnClickListener(new OnClickListener() {
+    button.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick() {
             desktop2.setWidget(new Label("new Widget"));
             desktop2.requestShow();
         }
     });
-    list.addChild(b);
+    list.addChild(button);
     desktop.setWidget(list);
     desktop.requestShow();
 
@@ -40,13 +40,13 @@ A new desktop with a single widget is created, hiding the original desktop. To g
     Flow list = new Flow(LayoutOrientation.HORIZONTAL);
     list.addChild(new Label("Label 1"));
     list.addChild(new Label("Label 2"));
-    Button b = new Button("Click to change the Widget");
+    Button button = new Button("Click to change the Widget");
     Desktop desktop2 = new Desktop();
-    b.setOnClickListener(new OnClickListener() {
+    button.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick() {
-            Button b2 = new Button("Click to change back the Widget");
-            b2.setOnClickListener(new OnClickListener() {
+            Button button2 = new Button("Click to change back the Widget");
+            button2.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick() {
                     desktop.requestShow();
@@ -56,7 +56,7 @@ A new desktop with a single widget is created, hiding the original desktop. To g
             desktop2.requestShow();
         }
     });
-    list.addChild(b);
+    list.addChild(button);
     desktop.setWidget(list);
     desktop.requestShow();
 
