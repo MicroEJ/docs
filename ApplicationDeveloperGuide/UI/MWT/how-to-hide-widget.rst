@@ -1,18 +1,19 @@
 Hiding a Widget
 ====================
-- To hide a widget, it's possible to use desktops to show and hide then at will 
-- in the sample below, The desktop will be exchanged with the one with the container/widget
+Hiding widgets can be done by:
+- swapping the entire desktop; or
+- selectively by placing your widgets in a custom hideable container.
 
 Using Desktop To hide a widget
 ------------------------------
 
-In the code Sample below, a button is created to change the Desktop when clicked:
+In the code sample below, a button is created to change the desktop when clicked:
 
 .. code-block:: java
 
     MicroUI.start();
     Desktop desktop = new Desktop();
-    Canvas c;
+    Canvas canvas;
     Flow list = new Flow(Orientation");
     list.addChild(new Label("Label 1"));
     list.addChild(new Label("Label 2"));
@@ -29,7 +30,7 @@ In the code Sample below, a button is created to change the Desktop when clicked
     desktop.setWidget(list);
     desktop.requestShow();
 
-A new desktop with a widget is created, this will hide the Desktop, to go back to the first desktop you do the same process of calling requestShow from the desktop
+A new desktop with a single widget is created, hiding the original desktop. To go back just use requestShow on the first desktop.
 
 .. code-block:: java
 
@@ -67,9 +68,7 @@ A new desktop with a widget is created, this will hide the Desktop, to go back t
 Using a Hideable Container to Hide a Widget
 -------------------------------------------
 
-It is also possible to use a Hideable Container, which will render selectively the its children widget
-
-On the widget hierarchy, a container is also a Widget, so if this Widget is a sibling of any other widget, There should be no Issues
+This sample shows how to create a hideable container by disabling the rendering of its children.
 .. code-block:: java
     
     	public class HideableContainer extends OverlapContainer {
