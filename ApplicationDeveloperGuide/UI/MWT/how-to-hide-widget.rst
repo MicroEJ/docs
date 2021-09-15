@@ -14,7 +14,7 @@ In the code sample below, a button is created to change the desktop when clicked
     MicroUI.start();
     Desktop desktop = new Desktop();
     Canvas canvas;
-    Flow list = new Flow(Orientation");
+    Flow list = new Flow(LayoutOrientation.HORIZONTAL);
     list.addChild(new Label("Label 1"));
     list.addChild(new Label("Label 2"));
     Button button = new Button("Click to change the Widget");
@@ -69,6 +69,9 @@ Using a Hideable Container to Hide a Widget
 -------------------------------------------
 
 This sample shows how to create a hideable container by disabling the rendering of its children.
+
+The children are not rendered, since the widget, and all of its children should be hidden
+
 .. code-block:: java
     
     	public class HideableContainer extends OverlapContainer {
