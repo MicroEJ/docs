@@ -81,30 +81,30 @@ environment:
 
 -  By using the ivy dependency ``runtimeapi`` module.
 
-.. _resident_application_input_ways:
+.. _system_application_input_ways:
 
-Resident Applications
+System Applications
 ---------------------
 
 A MicroEJ Sandboxed Application can be dynamically installed using 
 `Kernel.install() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream->`_ 
 or can be directly linked into the Firmware binary at built-time. In this case, it is called
-a Resident Application.
+a System Application.
 
-The user can specify the Resident Applications in two different ways:
+The user can specify the System Applications in two different ways:
 
 -  Set the property ``build-systemapps.dropins.dir`` to a folder with
-   contains all the resident applications.
+   contains all the System Applications.
 
--  Add ivy dependencyy on each resident application:
+-  Add ivy dependencyy on each System Application:
 
    .. code:: xml
 
       <dependency org="com.microej.app.wadapps" name="management" 
       rev="[2.2.2-RC0,3.0.0-RC0[" conf="systemapp->application"/>
 
-All Resident Applications are also available for the Virtual Device, if
-a resident application should only be available for the Firmware, use an
+All System Applications are also available for the Virtual Device, if
+a System Application should only be available for the Firmware, use an
 ivy dependency with the ivy configuration ``systemapp-fw`` instead of
 ``systemapp``, like:
 
@@ -189,14 +189,14 @@ where a dependency line is declared:
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | ``kernelapi->default``        | Runtime Environment (``JAR``) | See :ref:`runtime_environment`                                                                                                                                                  |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``systemapp->application``    | Application (``WPK``)         | Linked into both the firmware and the Virtual Device as resident application. There are other ways to select resident applications (see :ref:`resident_application_input_ways`) |
+   | ``systemapp->application``    | Application (``WPK``)         | Linked into both the firmware and the Virtual Device as System Application. There are other ways to select System Applications (see :ref:`system_application_input_ways`) |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``systemapp-fw->application`` | Application (``WPK``)         | Linked into the firmware only as resident application.                                                                                                                          |
+   | ``systemapp-fw->application`` | Application (``WPK``)         | Linked into the firmware only as System Application.                                                                                                                          |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 **Example of minimal firmware dependencies.**
 
-The following example firmware contains one system app (``management``),
+The following example firmware contains one System App (``management``),
 and defines an API that contains all types, methods, and fields from
 ``edc,kf,wadapps,components``.
 
@@ -213,7 +213,7 @@ and defines an API that contains all types, methods, and fields from
        <dependency org="com.microej.kernelapi" name="kf" rev="[2.0.0-RC0,3.0.0-RC0[" conf="kernelapi->default"/>
        <dependency org="com.microej.kernelapi" name="wadapps" rev="[1.0.0-RC0,2.0.0-RC0[" conf="kernelapi->default"/>
        <dependency org="com.microej.kernelapi" name="components" rev="[1.0.0-RC0,2.0.0-RC0[" conf="kernelapi->default"/>
-       <!-- System apps -->
+       <!-- System Apps -->
        <dependency org="com.microej.app.wadapps" name="management" 
        rev="[2.2.2-RC0,3.0.0-RC0[" conf="systemapp->application"/>
    </dependencies>
