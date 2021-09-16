@@ -86,7 +86,8 @@ environment:
 Resident Applications
 ---------------------
 
-A MicroEJ Sandboxed Application can be dynamically installed from a MicroEJ Forge instance 
+A MicroEJ Sandboxed Application can be dynamically installed using 
+`Kernel.install() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream->`_ 
 or can be directly linked into the Firmware binary at built-time. In this case, it is called
 a Resident Application.
 
