@@ -2,15 +2,13 @@ Communication between Features
 ==============================
 
 Features can communicate together through the use of shared interfaces.
-The mechanism is described in *Chapter Shared Interfaces* of the
-Application Developer's Guide.
-
-Kernel Type Converters
-----------------------
+This mechanism is described in :ref:`chapter.shared.interfaces` section.
 
 The shared interface mechanism allows to transfer an object instance of
 a Kernel type from one Feature to an other. To do that, the Kernel must
-register a new converter (See ``Kernel.addConverter()`` method).
+register a new Kernel type converter.
+
+See the `Converter <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Converter.html>`_ class and `Kernel.addConverter() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#addConverter-ej.kf.Converter->`_ method for more details.
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 

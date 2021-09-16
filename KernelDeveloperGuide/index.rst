@@ -9,7 +9,7 @@ Kernel Developer Guide
    overview
    kf
    gettingStarted
-   buildType
+   firmwareCreation
    kernelAPI
    featuresCommunication
    kfEnabledLibraries

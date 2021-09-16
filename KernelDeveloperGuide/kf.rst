@@ -3,7 +3,8 @@
 Kernel & Features Specification
 ===============================
 
-Kernel & Features semantic (KF) allows an application code to be split
+MicroEJ Multi-Sandboxing is based on the Kernel & Features semantic (KF).
+It allows an application code to be split
 between multiples parts: the main application, called the *Kernel* and
 zero or more sandboxed applications called *Features*.
 
@@ -16,7 +17,7 @@ entry point. This entry point is the Kernel. Applications (downloaded or
 preinstalled) are "code extensions" (called "Features"), that are called
 by the Kernel. These Features are fully controlled by the Kernel: they
 can be installed, started, stopped and uninstalled at any time
-independently of the system state (particularily, a Feature never
+independently of the system state (particularly, a Feature never
 depends on an other Feature to be stopped).
 
 The complete :ref:`[KF] specification <esr-specifications>` is available at `<http://www.e-s-r.net/download/specification/ESR-SPE-0020-KF-1.4-F.pdf>`_
