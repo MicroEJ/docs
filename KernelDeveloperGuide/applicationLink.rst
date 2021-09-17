@@ -1,0 +1,206 @@
+.. _application_link:
+
+Application Linking
+===================
+
+This chapter describes how a Sandboxed Application is built so that it can be (dynamically) installed on a Kernel.
+The build of a Sandboxed Application against a Kernel is called a Feature, hence the ``f`` letter used in the extension name of the related files (``.fso`` and ``.fo`` files).
+
+SOAR Build Phases
+-----------------
+
+When building a Sandboxed Application to a Feature, SOAR processing is divided in two phases:
+
+1. **SOAR Compiler**: loads and compiles the set of application ``.class`` files and resources. Among the various steps, mention may be made of:
+
+   - Transitive closure from the application entry points of all required elements (types, methods, fields, strings, immutables, resources, system properties),
+   - Clinit order computation.
+
+   The result is an object file that ends with ``.fso`` extension. 
+   The ``.fso`` file is a portable file that can be linked on any compatible Kernel (see :ref:`fso_compatibility`).
+
+2. **SOAR Optimizer**: links a ``.fso`` file against a specific Kernel. Among the various steps, mention may be made of:
+
+   - Link to expected Kernel APIs (types, methods, fields) according to the JVM specification [1]_,
+   - Generate MEJ32 instructions,
+   - Build of virtualization tables.
+
+   The result is an object file that ends with ``.fo`` extension.
+   The ``.fo`` file is specific to a Kernel: it can only be installed on the Kernel it has been linked. 
+   Rebuilding a Kernel require to run this phase again.   
+
+.. figure:: png/link_application.png
+   :alt: Sandboxed Application Build Flow
+   :align: center
+   :scale: 80%
+
+   Sandboxed Application Build Flow
+
+The Feature ``.fo`` file can be deployed in the following ways:
+
+-  Downloaded and installed on Device by software. Refer to the :ref:`[KF]
+   specification <esr-specifications>` for `Kernel.install() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream->`_ method.
+
+-  Installed at build-time into the Multi-Sandboxed Firmware using the :ref:`firmware_linker` tool.
+
+
+Feature Build Off Board
+-----------------------
+
+A Sandboxed Application can be built to a Feature (``.fo`` file) 
+using a :ref:`MicroEJ Application Launch <concepts-microejlaunches>` configured as follows:
+
+-  Set the :guilabel:`Settings` field in the :guilabel:`Execution` tab to :guilabel:`Build Dynamic Feature`.
+-  Set the :guilabel:`Kernel` field in the :guilabel:`Configuration` tab to a Multi-Sandboxed Firmware (``.out`` ELF executable file).
+
+
+.. figure:: png/build_flow_zoom_workspace_feature_only.png
+   :alt: Feature Build Flow using MicroEJ Launch
+   :align: center
+   :scale: 80%
+
+   Feature Build Flow using MicroEJ Launch
+
+.. _build_feature_on_device:
+
+Feature Build On Device
+-----------------------
+
+The SOAR Optimizer is packaged to a Foundation Library named ``SOAR``, thus this phase can be executed directly on Device.
+
+General Workflow
+~~~~~~~~~~~~~~~~
+
+Here are the typical steps to achieve:
+
+- Build the Sandboxed Application on any compatible Kernel to get the ``.fso`` file,
+- Transfer the ``.fso`` file on Device by any mean,
+- Generate the :ref:`Kernel Metadata <kernel_metadata_generation>` for the Kernel on which the ``.fso`` file is being linked,
+- Transfer the ``.kdat`` file on Device by any mean,
+- Write a MicroEJ Standalone Application for building the ``.fso`` file:
+  
+  - implement a ``com.microej.soar.KernelMetadataProvider`` to provide an InputStream to load the ``.kdat`` file,
+  - provide an InputStream to load the ``.fso`` file,
+  - provide an OutputStream to store the ``.fo`` file,
+  - call ``FeatureOptimizer.build()`` method.
+
+Then the ``.fo`` file can be dynamically installed using `Kernel.install() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream->`_.
+
+.. figure:: png/link_application_on_device.png
+   :alt: Sandboxed Application Build on Device
+   :align: center
+   :scale: 80%
+
+   Sandboxed Application Build on Device
+
+.. note::
+
+   Although this is common, it is not required to run the SOAR Optimizer phase on the Kernel that will dynamically install the ``.fo``. 
+   There is no relationship between ``SOAR`` and ``KF`` Foundation Libraries.
+
+Implement the Kernel 
+~~~~~~~~~~~~~~~~~~~~
+
+SOAR Optimizer can be integrated on any Standalone Application providing the following :ref:`module dependencies <mmm_module_dependencies>`:
+
+.. code-block:: xml
+   
+   <dependency org="ej.api" name="edc" rev="1.3.3" />
+   <dependency org="com.microej.api" name="soar" rev="1.0.0" />
+   <dependency org="ej.library.eclasspath" name="collections" rev="1.4.0" />
+
+The following code sample illustrates the usage of the ``SOAR`` Foundation Library:
+
+.. code-block:: java
+
+   package com.microej.example;
+
+   import java.io.IOException;
+   import java.io.InputStream;
+   import java.io.OutputStream;
+
+   import com.microej.soar.FeatureOptimizer;
+   import com.microej.soar.FeatureOptimizerException;
+   import com.microej.soar.KernelMetadataProvider;
+
+   /**
+   * This is a sample code that shows the typical steps to achieve for building a
+   * ``.fso`` file to a ``.fo`` file on Device.
+   */
+   public class SampleFSOBuild {
+
+      /**
+      * Your Platform specific {@link KernelMetadataProvider} implementation.
+      */
+      private static final class MyKernelMetadataProvider implements KernelMetadataProvider {
+
+         @Override
+         public InputStream openInputStream(int offset) throws IOException {
+            // Return an InputStream to the Kernel Metadata resource (``.kdat`` file) at the given offset in bytes.
+            return null; // TODO
+         }
+
+         @Override
+         public String toString() {
+            // Here, return a printable representation of this Kernel Metadata Provider (for debug purpose only)
+            return "Kernel Metadata loaded from ..."; // TODO
+         }
+      }
+
+      /**
+      * A method that builds a ``.fso`` file to a ``.fo`` file.
+      */
+      public static void build() {
+         // Create the KernelMetadataProvider instance
+         KernelMetadataProvider kernelMetadataProvider = new MyKernelMetadataProvider();
+
+         // Load the ``.fso`` InputStream
+         InputStream fsoInputStream = null; // TODO
+
+         // Prepare the target OutputStream where to store the ``.fo``
+         OutputStream foOutputStream = null; // TODO
+
+         // Create the FeatureOptimizer instance
+         FeatureOptimizer soarOptimizer;
+         try {
+            soarOptimizer = new FeatureOptimizer(kernelMetadataProvider);
+         } catch (FeatureOptimizerException e) {
+            // Handle Kernel Metadata cannot be loaded
+            e.printStackTrace(); // TODO
+            return;
+         }
+
+         // Build
+         try {
+            soarOptimizer.build(fsoInputStream, foOutputStream);
+         } catch (FeatureOptimizerException e) {
+            // Handle ``.fso`` cannot be built to ``.fo``
+            e.printStackTrace(); // TODO
+         }
+      }
+   }
+
+
+.. _fso_compatibility:
+
+Compatibility Rules
+-------------------
+
+A ``.fso`` file can be linked on any Kernel providing all the following conditions:
+
+- its Architecture has the same endianness than the Architecture on which the ``.fso`` file has been produced,
+- its Architecture version is compatible [#compatible_def]_ with the Architecture version on which the ``.fso`` file has been produced,
+- it provided the required APIs according to the JVM specification [1]_.
+
+
+.. [1]
+   Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
+
+.. [#compatible_def] New version is greater than or equals the previous one within the same major version.
+
+..
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
