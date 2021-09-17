@@ -12,64 +12,6 @@ The file ``README.md`` provides a step by step guide to produce a
 minimal firmware on an evaluation board on which new applications can be
 dynamically deployed through a serial or a TCP/IP connection.
 
-Create an Empty Firmware from Scratch
--------------------------------------
-
-Create a new Firmware Project
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-First create a new :ref:`module project <mmm_module_skeleton>` using the ``build-firmware-multiapp`` skeleton.
-
-
-.. _fms:
-.. image:: png/firmware-multiapp-skeleton.png
-   :align: center
-   :width: 525px
-   :height: 500px
-
-A new project is generated into the workspace:
-
-.. _fms-project:
-.. image:: png/firmware-multiapp-skeleton-project.png
-   :align: center
-   :width: 334px
-   :height: 353px
-
-Setup a Platform
-~~~~~~~~~~~~~~~~
-
-Before building the firmware, a target platform must be configured. The
-easiest way to do it is to copy a platform file into the
-:guilabel:`myfirmware` > :guilabel:`dropins` folder. Such file usually ends with ``.jpf``.
-For other ways to setup the input platform to build a firmware see
-:ref:`platform_selection`.
-
-Build the Firmware
-~~~~~~~~~~~~~~~~~~
-
-In the Package Explorer, right-click on the firmware project and select
-:guilabel:`Build Module`. The build of the Firmware and Virtual
-Device may take several minutes. When the build is succeed, the folder
-:guilabel:`myfirmware` > :guilabel:`target~` > :guilabel:`artifacts` contains the firmware output artifacts
-(see :ref:`in_out_artifacts`) :
-
--  ``mymodule.out``: The Firmware Binary to be programmed on device.
-
--  ``mymodule.kpk``: The Firmware Package to be imported in a MicroEJ
-   Forge instance.
-
--  ``mymodule.vde``: The Virtual Device to be imported in MicroEJ
-   Studio.
-
--  ``mymodule-workingEnv.zip``: This file contains all files produced by
-   the build phasis (intermediate, debug and report files).
-
-.. _fms-artifacts:
-.. image:: png/firmware-multiapp-skeleton-artifacts.png
-   :align: center
-   :width: 335px
-   :height: 866px
-
 .. |x| image:: ../images/check.png
    :width: 10pt
    :height: 10pt
@@ -140,10 +82,10 @@ You can find below what are the different APIs included in the Runtime Environme
 What is a MicroEJ Demo Flavor?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A MicroEJ Demo Flavor is a composition of a set of runtime services, resident applications and a given MicroEJ Runtime Environment. Any flavor can be customized with MicroEJ SDK for a specific product.
+A MicroEJ Demo Flavor is a composition of a set of runtime services, System Applications and a given MicroEJ Runtime Environment. Any flavor can be customized with MicroEJ SDK for a specific product.
 
 +---------------------+-----------------------------+----------------------------------------------------------------+---------------------------------+
-| MicroEJ Demo Flavor | MicroEJ Runtime Environment | Services Resident Apps                                         | UI Resident Apps                |
+| MicroEJ Demo Flavor | MicroEJ Runtime Environment | Services System Apps                                           | UI System Apps                  |
 +---------------------+-----------------------------+------------+----------------------+----------------------+-----+-------+---------+---------------+
 |                                                   | Management | App-Metadata-Storage | CommandServer-Socket | NTP | About | AppList | Forge Connect |
 +=====================+=============================+============+======================+======================+=====+=======+=========+===============+

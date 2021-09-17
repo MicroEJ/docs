@@ -20,7 +20,7 @@ Firmware Developers:
 -  Managing lifecycles of applications (deciding when to install, start,
    stop and uninstall them)
 
--  Integrating applications (called resident applications)
+-  Integrating applications (called System Applications)
 
 -  Defining and applying permissions on system resources (rules &
    policies)
@@ -38,7 +38,7 @@ and specifics of developing Sandboxed Applications (see :ref:`sandboxed_applicat
 Terms and Definitions
 ---------------------
 
-A *Resident Application* is a Sandboxed Application that is linked into
+A *System Application* is a Sandboxed Application that is linked into
 a Multi-Sandbox Firmware.
 
 A *Multi-Sandbox Platform* is a Platform with the Multi Sandbox
@@ -77,9 +77,54 @@ Overall Architecture
 
    Firmware Input and Output Artifacts
 
+Multi-Sandbox Build Flow
+------------------------
+
+Firmware Build Flow
+~~~~~~~~~~~~~~~~~~~
+
+The Firmware build is composed of two phases:
+
+- the build of the Kernel,
+- the build of Sandboxed Application which is linked and append to the Firmware as a System Application (repeatable).
+
+.. _build_flow_generic:
+.. figure:: png/build_flow_generic.png
+   :alt: Firmware Build Flow (Kernel + System Applications)
+   :align: center
+   :scale: 80%
+
+   Firmware Build Flow (Kernel + System Applications)
+
+Virtual Device Build Flow
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Virtual Device is automatically built at the same time than the
+Firmware (see :ref:`multisandbox_firmware_creation`). 
+
+The Virtual Device builder performs the following steps:
+
+-  Remove the embedded part of the platform (compiler, linker and
+   runtime).
+
+-  Append Add-On Libraries and System Applications into the runtime
+   classpath. (See :ref:`ivy_confs`) for specifying the
+   dependencies).
+
+-  Turn the Platform (MicroEJ SDK) license to Virtual Device (MicroEJ
+   Studio) license so that it can be freely distributed.
+
+-  Generate the Runtime Environment from the Kernel APIs.
+
+.. figure:: png/build_flow_virtual_device.png
+   :alt: Virtual Device Build Flow
+   :align: center
+   :scale: 75%
+
+   Virtual Device Build Flow
 
 Firmware Implementation Libraries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------
 
 Firmware implementations must cover the following topics:
 
@@ -118,51 +163,13 @@ Firmware implementations must cover the following topics:
    deployment of an application, a management console, ...
 
 -  System Applications: pre-built applications that can be embedded as
-   resident apps into a firmware. Some of them are user-land counter
+   System Apps into a firmware. Some of them are user-land counter
    parts of the Kernel, implementing the application lifecycle for the
    firmware's application framework (e.g. the Wadapps Framework). These
    "Kernel System Applications" rely on a dedicated set of interfaces to
    interact with the Kernel, this interface being defined in a dedicated
    module.
 
-
-Firmware Build Flow
--------------------
-
-.. _build_flow_generic:
-.. figure:: png/build_flow_generic.png
-   :alt: Firmware Build Flow (Kernel + Resident Applications)
-   :align: center
-   :scale: 80%
-
-   Firmware Build Flow (Kernel + Resident Applications)
-
-Virtual Device Build Flow
--------------------------
-
-The Virtual Device is automatically built at the same time than the
-firmware when using the ``build-firmware-multiapp`` build type (see
-:ref:`firmware_build_type`). The Virtual Device builder performs the
-following steps:
-
--  Remove the embedded part of the platform (compiler, linker and
-   runtime).
-
--  Append Add-On Libraries and Resident Applications into the runtime
-   classpath. (See :ref:`ivy_confs`) for specifying the
-   dependencies).
-
--  Turn the Platform (MicroEJ SDK) license to Virtual Device (MicroEJ
-   Studio) license so that it can be freely distributed.
-
--  Generate the Runtime Environment from the Kernel APIs.
-
-.. figure:: png/build_flow_virtual_device.png
-   :alt: Virtual Device Build Flow
-   :align: center
-   :scale: 75%
-
-   Virtual Device Build Flow
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

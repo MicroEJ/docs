@@ -412,7 +412,7 @@ must be linked by the third-party linker.
    | Section name                | Aim                         | Location    | Alignment  |
    |                             |                             |             | (in bytes) |
    +=============================+=============================+=============+============+
-   | ``.bss.features.installed`` | Resident applications       | RW          | 4          |
+   | ``.bss.features.installed`` | System Applications         | RW          | 4          |
    |                             | statics                     |             |            |
    +-----------------------------+-----------------------------+-------------+------------+
    | ``.bss.soar``               | Application static          | RW          | 8          |
@@ -431,7 +431,7 @@ must be linked by the third-party linker.
    | ``.rodata.resources``       | Application resources       | RO          | 16         |
    |                             |                             |             |            |
    +-----------------------------+-----------------------------+-------------+------------+
-   | ``.rodata.soar.features``   | Resident applications code  | RO          | 4          |
+   | ``.rodata.soar.features``   | System Applications code    | RO          | 4          |
    |                             | and resources               |             |            |
    +-----------------------------+-----------------------------+-------------+------------+
    | ``.shieldedplug``           | Shielded Plug data          | RO          | 4          |

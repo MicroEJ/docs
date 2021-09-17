@@ -31,7 +31,7 @@ Option(list): Resident application files
 
 *Description*:
 
-Specify the full path of resident applications ``.out`` files linked by the
+Specify the full path of System Applications ``.out`` files linked by the
 Firmware Linker.
 
 Group: Memory

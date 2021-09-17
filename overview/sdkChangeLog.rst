@@ -542,7 +542,7 @@ General
    -  :guilabel:`New Front Panel Project` wizard now generates a project skeleton for this new Front Panel engine, based on MMM
    -  Legacy Front Panel projects for UI Pack ``v11.1.0`` or higher are still valid
 -  ``[SDK]`` Updated Virtual Device builder to speed-up Virtual Device
-   boot time (Resident Applications are now extracted at build time)
+   boot time (System Applications are now extracted at build time)
 -  ``[SDK]`` Fixed inability to select a ``Platform in workspace`` in a
    MicroEJ Tool launch configuration
 -  ``[SDK]`` Fixed broken title in MicroEJ export menu (Platform Export)
@@ -609,7 +609,7 @@ Build Types
 -  ``[SDK]`` Added a new build nature for building platform options
    pages (``microej-extension``)
 -  ``[SDK]`` Updated Virtual Device builder to speed-up Virtual Device
-   boot time (Resident Applications are now extracted at build time)
+   boot time (System Applications are now extracted at build time)
 -  ``[SDK]`` Fixed Virtual Device Player builder (dependencies were not
    exported into the zip file) and updated ``firmware-singleapp``
    skeleton with missing configurations
@@ -702,7 +702,7 @@ Build Types
 -  ``[SDK]`` Updated Virtual Device Builder to generate with ``.vde``
    extension
 -  ``[SDK]`` Updated Multi-app Firmware Builder to embed (Sim/Emb)
-   specific modules (Add-on libraries and Resident Applications)
+   specific modules (Add-on libraries and System Applications)
 -  ``[SDK]`` Fixed ``build-microej-ri`` v1.2.1 missing dependencies
    (embedded in SDK 4.1.5)
 

@@ -1,115 +1,183 @@
-Build Firmware
-==============
+.. _multisandbox_firmware_creation:
 
-Prerequisite of this chapter: minimum understanding of :ref:`MicroEJ Module Manager <mmm>`.
+Multi-Sandbox Firmware Creation
+===============================
 
-Workspace Build
----------------
+This chapter requires a minimum understanding of :ref:`mmm` and :ref:`module_natures`. 
 
-.. _build_flow_workspace:
-.. figure:: png/build_flow_zoom_workspace.png
-   :alt: Firmware Build Flow in MicroEJ SDK Workspace
+Create a new Firmware Project
+-----------------------------
+
+First create a new :ref:`module project <mmm_module_skeleton>` using the ``build-firmware-multiapp`` skeleton.
+
+A new project is generated into the workspace:
+
+.. _fms-project:
+.. image:: png/firmware-multiapp-skeleton-project.png
    :align: center
-   :scale: 80%
+   :width: 334px
+   :height: 353px
 
-   Firmware Build Flow in MicroEJ SDK Workspace
+Configure a Platform
+--------------------
 
-.. _firmware_build_type:
+Before building the firmware, a target platform must be configured. The
+easiest way to do it is to copy a platform file into the
+:guilabel:`myfirmware` > :guilabel:`dropins` folder. Such file usually ends with ``.jpf``.
+For other ways to setup the input platform to build a firmware see
+:ref:`platform_selection`.
 
-Headless Build
---------------
+Build the Firmware and Virtual Device
+-------------------------------------
 
-.. _build_flow_buildtype:
-.. figure:: png/build_flow_zoom_buildtype.png
-   :alt: Firmware Build Flow in MicroEJ SDK Workspace
+In the Package Explorer, right-click on the project and select
+:guilabel:`Build Module`. The build of the Firmware and Virtual
+Device may take several minutes. When the build is succeed, the folder
+:guilabel:`myfirmware` > :guilabel:`target~` > :guilabel:`artifacts` contains the firmware output artifacts
+(see :ref:`in_out_artifacts`) :
+
+-  ``mymodule.out``: The Firmware Binary to be programmed on device.
+
+-  ``mymodule.kpk``: The Firmware Package to be imported in a MicroEJ
+   Forge instance.
+
+-  ``mymodule.vde``: The Virtual Device to be imported in MicroEJ
+   Studio.
+
+-  ``mymodule-workingEnv.zip``: This file contains all files produced by
+   the build phasis (intermediate, debug and report files).
+
+.. _fms-artifacts:
+.. image:: png/firmware-multiapp-skeleton-artifacts.png
    :align: center
-   :scale: 80%
+   :width: 335px
+   :height: 866px
 
 .. _runtime_environment:
 
-Runtime Environment
--------------------
+Define a Runtime Environment
+----------------------------
 
-A Firmware define a runtime environment which is the set of classes,
+A Multi-Sandbox Firmware must define a runtime environment which is the set of classes,
 methods and fields all applications are allowed to use. In most of the
-cases the runtime environment is an aggregation of several kernel APIs
-built with :ref:`module project <mmm_module_skeleton>` ``build-runtime-api`` skeleton.
+cases the runtime environment is an aggregation of several :ref:`Kernel APIs <kernel.api>`.
+
+.. note::
+
+   According to the :ref`Kernel and Features specification <chapter_KF>`, no API is open by default to Sandboxed Applications.
+
+Specify Kernel APIs
+~~~~~~~~~~~~~~~~~~~
+
+A Kernel API module is added as a dependency with the configuration ``kernelapi->default``.
 
 .. code:: xml
 
-   <info organisation="myorg" module="mymodule" status="integration"
-   revision="1.0.0">
+   <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6" conf="kernelapi->default"/>
+
+The build options ``runtime.api.name`` and ``runtime.api.version`` must be set unless declaring a dependency to a Runtime API module.
+
+Create a Runtime API Module
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A Runtime API module is a module that aggregates a set of Kernel APIs modules.
+
+It is be built with :ref:`module project <mmm_module_skeleton>` ``build-runtime-api`` skeleton.
+
+.. code:: xml
+
+   <info organisation="myorg" module="mymodule" status="integration" revision="1.0.0">
       <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="2.+">
-      <ea:plugin org="com.is2t.easyant.plugins" module="clean-artifacts" revision="2.+" />
-      <ea:property name="clean.artifacts.max.keep" value="2" />
       <ea:property name="runtime.api.name" value="RUNTIME"/>
       <ea:property name="runtime.api.version" value="1.0"/>
       </ea:build>
    </info>
 
-The ``runtime.api.name`` property define the name of the runtime
-environment (it is required by the build type), and the
-``runtime.api.version`` property define it version. If the property
-``runtime.api.version`` is not provided the build type computes it using
-the revision of the ivy module.
+The build option ``runtime.api.name`` defines the name of the runtime environment (required). 
+The build option ``runtime.api.version`` defines its version. If not set, it takes the declared module version.
+
+
+For example, the following dependencies declare a runtime environment that aggregates all classes, methods and fields
+defined by ``edc,kf,bon,wadapps,components`` Kernel APIs modules.
 
 .. code:: xml
 
    <dependencies>
-      <dependency org="com.microej.kernelapi" name="edc" rev="[1.0.4-RC0,1.0.5-RC0[" transitive="false"/>
-      <dependency org="com.microej.kernelapi" name="kf" rev="[2.0.1-RC0,2.0.2-RC0[" transitive="false"/>
-      <dependency org="com.microej.kernelapi" name="bon" rev="[1.0.4-RC0,1.0.5-RC0[" transitive="false"/>
-      <dependency org="com.microej.kernelapi" name="wadapps" rev="[1.2.2-RC0,1.2.3-RC0[" transitive="false"/>
-      <dependency org="com.microej.kernelapi" name="components" rev="[1.2.2-RC0,1.2.3-RC0[" transitive="false"/>
+      <dependency org="com.microej.kernelapi" name="edc" rev="1.0.4"/>
+      <dependency org="com.microej.kernelapi" name="kf" rev="2.0.1"/>
+      <dependency org="com.microej.kernelapi" name="bon" rev="1.0.4"/>
+      <dependency org="com.microej.kernelapi" name="wadapps" rev="1.2.2"/>
+      <dependency org="com.microej.kernelapi" name="components" rev="1.2.2"/>
    </dependencies>
 
-This runtime environment aggregate all classes, methods and fields
-defined by ``edc,kf,bon,wadapps,components`` kernel APIs.
 
-The documentation of a runtime environment is packaged into the Virtual
-Device as HTML javadoc (:guilabel:`Help` > :guilabel:`MicroEJ Resource Center` > :guilabel:`Javadoc`).
+.. _system_application_input_ways:
 
-Specify the Runtime Environment of the Firmware
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Add System Applications
+-----------------------
 
-While building a firmware, two ways exist to specify the runtime
-environment:
+A MicroEJ Sandboxed Application can be dynamically installed using 
+`Kernel.install() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream->`_ 
+or can be directly linked into the Firmware binary at built-time. 
+In this case, it is called a System Application.
 
--  By using one or more ivy dependencies of ``kernel API`` artifacts. In
-   this case we must set properties ``runtime.api.name`` and
-   ``runtime.api.version``.
+The user can specify the System Applications in two different ways:
 
--  By using the ivy dependency ``runtimeapi`` module.
+-  Set the property ``build-systemapps.dropins.dir`` to a folder which
+   contains System Applications (``.wpk`` files).
 
-.. _resident_application_input_ways:
-
-Resident Applications
----------------------
-
-A MicroEJ Sandboxed Application can be dynamically installed from a MicroEJ Forge instance 
-or can be directly linked into the Firmware binary at built-time. In this case, it is called
-a Resident Application.
-
-The user can specify the Resident Applications in two different ways:
-
--  Set the property ``build-systemapps.dropins.dir`` to a folder with
-   contains all the resident applications.
-
--  Add ivy dependencyy on each resident application:
+-  Add a new dependency for each System Application with the configuration ``systemapp->application``:
 
    .. code:: xml
 
-      <dependency org="com.microej.app.wadapps" name="management" 
-      rev="[2.2.2-RC0,3.0.0-RC0[" conf="systemapp->application"/>
+      <dependency org="com.microej.app.wadapps" name="management" rev="2.2.2" conf="systemapp->application"/>
 
-All Resident Applications are also available for the Virtual Device, if
-a resident application should only be available for the Firmware, use an
-ivy dependency with the ivy configuration ``systemapp-fw`` instead of
-``systemapp``, like:
+All System Applications are also included to the Virtual Device.
+If a System Application must only be linked to the Firmware,
+declare the dependency with the configuration ``systemapp-fw`` instead of ``systemapp``:
 
 .. code:: xml
 
-   <dependency org="com.microej.app.wadapps" name="management" rev="[2.2.2-RC0,3.0.0-RC0[" conf="systemapp-fw->application"/>
+   <dependency org="com.microej.app.wadapps" name="management" rev="2.2.2" conf="systemapp-fw->application"/>
+
+Build Firmware using Meta Build
+-------------------------------
+
+A :ref:`Meta build project <module_natures.meta_build>` can be useful to automatically build Sandboxed Applications 
+that will be linked as System Application in the Firmware.
+
+
+The following figure shows the overall build flow (Sandboxed Application build prior to the Firmware build):
+
+.. _build_flow_buildtype:
+.. figure:: png/build_flow_zoom_buildtype.png
+   :alt: Firmware Build Flow using MicroEJ Module Manager
+   :align: center
+   :scale: 80%
+
+   Firmware Build Flow using MicroEJ Module Manager
+
+
+Build Firmware using MicroEJ Launches
+-------------------------------------
+
+It is still possible to build the Firmware using :ref:`concepts-microejlaunches` rather than the regular module build.
+This speeds-up the build time thanks to MicroEJ Module Manager workspace resolution and Eclipse incremental compilation.
+
+- Import the Firmware project and all System Application projects in the same workspace,
+- Prepare a MicroEJ Application for the Kernel as a regular :ref:`standalone_application`,
+- Prepare a MicroEJ Application launch for each System Application using `Build Dynamic Feature` settings,
+- Prepare a MicroEJ Tool launch for each System Application using the `Firmware Linker` settings.
+
+The following figure shows the overall build flow:
+
+.. _build_flow_workspace:
+.. figure:: png/build_flow_zoom_workspace.png
+   :alt: Firmware Build Flow using MicroEJ Launches
+   :align: center
+   :scale: 80%
+
+   Firmware Build Flow using MicroEJ Launches
 
 Advanced
 --------
@@ -188,47 +256,34 @@ where a dependency line is declared:
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | ``kernelapi->default``        | Runtime Environment (``JAR``) | See :ref:`runtime_environment`                                                                                                                                                  |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``systemapp->application``    | Application (``WPK``)         | Linked into both the firmware and the Virtual Device as resident application. There are other ways to select resident applications (see :ref:`resident_application_input_ways`) |
+   | ``systemapp->application``    | Application (``WPK``)         | Linked into both the firmware and the Virtual Device as System Application. There are other ways to select System Applications (see :ref:`system_application_input_ways`)       |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``systemapp-fw->application`` | Application (``WPK``)         | Linked into the firmware only as resident application.                                                                                                                          |
+   | ``systemapp-fw->application`` | Application (``WPK``)         | Linked into the firmware only as System Application.                                                                                                                            |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 **Example of minimal firmware dependencies.**
 
-The following example firmware contains one system app (``management``),
+The following example firmware contains one System App (``management``),
 and defines an API that contains all types, methods, and fields from
 ``edc,kf,wadapps,components``.
 
 .. code:: xml
 
    <dependencies>
-       <dependency org="ej.api" name="edc" rev="[1.2.0-RC0,2.0.0-RC0[" conf="provided" />
-       <dependency org="ej.api" name="kf" rev="[1.4.0-RC0,2.0.0-RC0[" conf="provided" />
-       <dependency org="ej.library.wadapps" name="framework" rev="[1.0.0-RC0,2.0.0-RC0[" />
-       <dependency org="com.microej.library.wadapps.kernel" name="common-impl" rev="[3.0.0-RC0,4.0.0-RC0[" />
-       <dependency org="com.microej.library.wadapps" name="admin-kf-default" rev="[1.2.0-RC0,2.0.0-RC0[" />
+       <dependency org="ej.api" name="edc" rev="1.2.0" conf="provided" />
+       <dependency org="ej.api" name="kf" rev="1.4.0" conf="provided" />
+       <dependency org="ej.library.wadapps" name="framework" rev="1.11.0" />
+       <dependency org="com.microej.library.wadapps.kernel" name="common-impl" rev="3.0.0" />
+       <dependency org="com.microej.library.wadapps" name="admin-kf-default" rev="1.2.0" />
        <!-- Runtime API (set of Kernel API files) -->
-       <dependency org="com.microej.kernelapi" name="edc" rev="[1.0.0-RC0,2.0.0-RC0[" conf="kernelapi->default"/>
-       <dependency org="com.microej.kernelapi" name="kf" rev="[2.0.0-RC0,3.0.0-RC0[" conf="kernelapi->default"/>
-       <dependency org="com.microej.kernelapi" name="wadapps" rev="[1.0.0-RC0,2.0.0-RC0[" conf="kernelapi->default"/>
-       <dependency org="com.microej.kernelapi" name="components" rev="[1.0.0-RC0,2.0.0-RC0[" conf="kernelapi->default"/>
-       <!-- System apps -->
-       <dependency org="com.microej.app.wadapps" name="management" 
-       rev="[2.2.2-RC0,3.0.0-RC0[" conf="systemapp->application"/>
+       <dependency org="com.microej.kernelapi" name="edc" rev="1.0.0" conf="kernelapi->default"/>
+       <dependency org="com.microej.kernelapi" name="kf" rev="2.0.0" conf="kernelapi->default"/>
+       <dependency org="com.microej.kernelapi" name="wadapps" rev="1.0.0" conf="kernelapi->default"/>
+       <dependency org="com.microej.kernelapi" name="components" rev="1.0.0" conf="kernelapi->default"/>
+       <!-- System Applications -->
+       <dependency org="com.microej.app.wadapps" name="management" rev="2.2.2" conf="systemapp->application"/>
    </dependencies>
                            
-
-Change the set of Properties used to Build a Firmware
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The build use the file ``build/common.properties`` to
-configure the build process.
-
-Change the Platform used to Build the Firmware and the Virtual Device
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To build a MicroEJ Firmware and a Virtual Device, a MicroEJ Platform must provided (see :ref:`platform_selection` section).
-
 Build only a Firmware
 ~~~~~~~~~~~~~~~~~~~~~
 
