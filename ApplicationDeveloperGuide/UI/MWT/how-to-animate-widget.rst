@@ -28,7 +28,7 @@ For example, the following snippet starts the animation as soon as the widget is
 			// start animation
 			getDesktop().getAnimator().startAnimation(this);
 			// save start time
-			this.startTime = System.currentTimeMillis();
+			this.startTime = Util.platformTimeMillis();
 			// set widget initial state
 			this.elapsedTime = 0;
 		}
@@ -52,9 +52,9 @@ For example, the following snippet updates the state of the widget when it is ti
 .. code-block:: Java
 
 	@Override
-	public boolean tick(long currentTimeMillis) {
+	public boolean tick(long platformTimeMillis) {
 		// update widget state
-		this.elapsedTime = currentTimeMillis - this.startTime;
+		this.elapsedTime = platformTimeMillis - this.startTime;
 		// request new render
 		requestRender();
 		// return whether to continue or to stop the animation
@@ -62,7 +62,7 @@ For example, the following snippet updates the state of the widget when it is ti
 	}
 
 The ``renderContent()`` method should render the widget by using its current state (saved in the fields of the widget).
-This method should not call methods such as ``System.currentTimeMillis()`` because the widget could be rendered in multiple passes, for example if a :ref:`partial buffer <section_display_partial_buffer>` is used.
+This method should not call methods such as ``Util.platformTimeMillis()`` because the widget could be rendered in multiple passes, for example if a :ref:`partial buffer <section_display_partial_buffer>` is used.
 
 For example, the following snippet renders the current state of the widget by displaying the time elapsed since the start of the animation:
 
