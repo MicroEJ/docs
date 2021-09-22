@@ -54,6 +54,20 @@ One solution is to configure Eclipse as follows:
    (:guilabel:`Window` > :guilabel:`Show View` > :guilabel:`Other...` > :guilabel:`General` > :guilabel:`Error Log`)
 
 
+---------------
+MacOS Specifics
+---------------
+
+When launching the SDK using the ``.app`` file, you may encounter the following message::
+
+   "MicroEJ-SDK-xx.xx" is damaged and can't be opened. You should move it to the Trash.
+
+This is due to MacOS putting applications in quarantine when downloaded with a browser.
+Use this command to remove the SDK application from quarantine::
+
+   sudo xattr -rd com.apple.quarantine sdk.app
+
+where ``sdk.app`` is the SDK file name.
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
