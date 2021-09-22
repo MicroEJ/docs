@@ -12,9 +12,9 @@ specific configuration:
 
 -  Core Engine Capability
 
-   -  ``Single``: Single Application (default)
+   -  ``Single``: Mono-Sandbox (default)
    -  ``Tiny``: Tiny Application
-   -  ``Multi``: Multi Applications
+   -  ``Multi``: Multi-Sandbox
 
 -  Instruction Set
 
