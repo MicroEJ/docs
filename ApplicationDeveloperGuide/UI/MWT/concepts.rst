@@ -82,6 +82,10 @@ Pointer events are grouped in sessions. A session starts when the pointer is pre
 
 While no widget consumes the events, they are sent to the widget that is under the pointer (see ``Desktop.getWidgetAt(int, int)``), then sent to all its parent hierarchy recursively.
 
+.. figure:: images/eventDispatchUML.png
+   :alt: Pointer Event Dispatcher Flow
+   :align: center
+
 Once a widget has consumed an event, it will be the only one to receive the next events during the session.
 
 .. figure:: images/pointerEventDispatcherFlow.png
