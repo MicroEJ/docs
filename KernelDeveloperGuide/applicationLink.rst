@@ -66,6 +66,11 @@ using a :ref:`MicroEJ Application Launch <concepts-microejlaunches>` configured 
 Feature Build On Device
 -----------------------
 
+.. note::
+
+   This is a new functionality that requires a custom MicroEJ Architecture configuration.
+   Please contact :ref:`our support team <get_support>` for more details.
+   
 The SOAR Optimizer is packaged to a Foundation Library named ``SOAR``, thus this phase can be executed directly on Device.
 
 General Workflow
