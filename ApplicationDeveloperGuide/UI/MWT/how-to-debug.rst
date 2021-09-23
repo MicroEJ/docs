@@ -4,20 +4,20 @@ How to Debug
 Highlighting the Bounds of the Widgets
 --------------------------------------
 
-When designing an UI, it can be pretty convenient to highlight the bounds of each widget.
-It helps:
+When designing a UI, it can be pretty convenient to highlight the bounds of each widget.
+Here are some cases where it helps:
 
-- verifying if the layout fits the expected design,
-- setting the outlines (margin, padding, border),
-- checking the alignment of the widget content inside its bounds.
+- Verify if the layout fits the expected design.
+- Set the outlines (margin, padding, border).
+- Check the alignment of the widget content inside its bounds.
 
 Setting the ``ej.mwt.debug.bounds.enabled`` constant to ``true`` will add a rectangle overlay over each widget and container.
-(See :ref:`section.classpath.elements.constants` section for more information about constants.)
+For more information about constants, see the :ref:`section.classpath.elements.constants` section.
 
 By default, the rectangles around the widgets are magenta.
 But their color can be adjusted by modifying the ``ej.mwt.debug.bounds.color`` constant.
 
-Example of ``xxx.constants.list`` file and the result in an application:
+Here is an example of a ``xxx.constants.list`` file with the result in an application:
 
 .. code-block::
 
