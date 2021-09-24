@@ -108,7 +108,7 @@ This is because the native function is called in the same RTOS/OS task as the Ja
 This schematic explains what is going on:
 
 .. image:: ./images/tuto_sni_non_blocking_call_blocking_case.PNG
-   :scale: 80 %
+   :scale: 60 %
    :align: center
 
 Implement a non-blocking method
@@ -139,6 +139,9 @@ Step 1: Update the C native function
 
 The ``Java_example_NativeCCallExample_waitButton()`` function will now suspend the current Java thread. It will also
 store the information required to resume it and return the index of the pressed button.
+
+The SNI functions used in this example are defined in ``sni.h``. See this header file for a more detailed description of
+the API.
 
 - Store the ID of the Java thread that called the function. This ID should be stored in a global variable.
   It is used to resume the Java thread when a button is pressed.
