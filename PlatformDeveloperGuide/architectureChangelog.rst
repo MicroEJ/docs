@@ -12,9 +12,9 @@ specific configuration:
 
 -  Core Engine Capability
 
-   -  ``Single``: Single Application (default)
+   -  ``Single``: Mono-Sandbox (default)
    -  ``Tiny``: Tiny Application
-   -  ``Multi``: Multi Applications
+   -  ``Multi``: Multi-Sandbox
 
 -  Instruction Set
 
@@ -34,6 +34,29 @@ specific configuration:
 
 [7.16.0] - 2021-06-24
 ---------------------
+
+Known Issues
+~~~~~~~~~~~~
+
+- [Multi] SOAR may fail to build a Feature with the following message:
+  
+  .. code-block:: 
+  
+     1 : KERNEL/FEATURE ERROR
+         [M25] - Type double[] is expected to be owned by the Kernel but is not embedded. 
+
+  Workaround is to explicitly declare each array of basetypes in your ``kernel.api`` file:
+  
+  .. code-block:: xml
+     
+      <type name="int[]"/>
+      <type name="long[]"/>
+      <type name="short[]"/>
+      <type name="double[]"/>
+      <type name="float[]"/>
+      <type name="byte[]"/>
+      <type name="char[]"/>
+      <type name="boolean[]"/>
 
 Notes
 ~~~~~
