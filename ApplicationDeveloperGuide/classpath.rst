@@ -288,6 +288,20 @@ without having to recompile the sources.
           System.out.println("this code and the constant string will be fully removed when the constant is resolved to 'false'")
    }
 
+Please mind that ``Constants.getXXX`` must be inlined in the ``if`` condition to take effect.
+The following piece of code will not remove the code:
+
+.. code-block:: java
+   
+   static final boolean MY_CONSTANT = Constants.getBoolean("com.mycompany.myconstantkey");
+
+   ...
+
+   if(MY_CONSTANT){
+      System.out.println("this code will not be removed when MY_CONSTANT is resolved to 'false'")
+   }
+
+
 
 .. note::
    In :ref:`Multi-Sandbox <multisandbox>` environment, constants are processed locally within each context.
