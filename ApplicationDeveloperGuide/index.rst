@@ -14,6 +14,7 @@ Application Developer Guide
    repository
    classpath
    applicationResources
+   librarySources
    platformSelection
    tools
    advanced
