@@ -16,7 +16,7 @@ Tutorials
    tutorialExploreDataSerializationFormats
    tutorialInstrumentJavaCodeForLogging
    tutorialRunATestSuiteOnDevice
-   tutorialSNINonBlockingCall
+   tutorialImplementABlockingNativeMethodWithSNI
    getStartedWithGUI/index
 
 ..

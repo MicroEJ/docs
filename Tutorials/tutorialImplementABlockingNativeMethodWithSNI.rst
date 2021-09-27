@@ -1,4 +1,4 @@
-.. _tutorial_sni_non_blocking_call:
+.. _tutorial_sni_implement_blocking_native_method:
 
 ================================================
 Implement a Blocking Java Native Method with SNI
@@ -42,7 +42,7 @@ A MicroEJ Platform with (at least):
 - EDC-1.3.
 - SNI-1.4.
 
-Example code
+Example Code
 ============
 
 Let's start with a MicroEJ Application that calls a blocking Java method implemented in C.
@@ -96,7 +96,7 @@ It should be adapted according to the BSP of the target board.
         semaphoreGiveFromISR(button_semaphore);
     }
 
-Application behavior
+Application Behavior
 --------------------
 
 In this example, the execution of the ``waitButton()`` native method will block until a button is pressed. 
@@ -111,7 +111,7 @@ This schematic explains what is going on:
    :scale: 60 %
    :align: center
 
-Implement a non-blocking method
+Implement a Non-Blocking Method
 ===============================
 
 This section will explain how to update the example code to make a non-blocking method.
@@ -131,10 +131,10 @@ This schematic summarizes the steps described above:
    :scale: 70 %
    :align: center
 
-Update the C native function implementation
+Update the C Native Function Implementation
 -------------------------------------------
 
-Step 1: Update the C native function
+Step 1: Update the C Native Function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``Java_example_NativeCCallExample_waitButton()`` function will now suspend the current Java thread. It will also
@@ -179,7 +179,7 @@ The updated ``Java_example_NativeCCallExample_waitButton()`` function should loo
         return SNI_IGNORED_RETURNED_VALUE; // Returned value not used
     }
 
-Step 2: Update the Button interrupt function
+Step 2: Update the Button Interrupt Function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The role of the button interrupt is now to resume the Java thread when a button event occurs.
@@ -194,7 +194,7 @@ Update it this way:
 The button's index is passed to the function ``SNI_resumeJavaThreadWithArg()`` so that the callback retrieves it
 when the thread is resumed.
 
-Step 3: Implement the callback function
+Step 3: Implement the Callback Function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -214,7 +214,7 @@ the ``SNI_suspendCurrentJavaThreadWithCallback()`` or ``SNI_resumeJavaThreadWith
         return (jint)button_index; // Actual value returned to Java
     }
 
-Application behavior
+Application Behavior
 --------------------
 
 In this configuration, calling the  native method ``waitButton()`` will still return only when a button is pressed, 
