@@ -17,7 +17,7 @@ consumption of different features in the RAM and ROM.
 Functional Description
 ======================
 
-.. figure:: images/mma_process.*
+.. figure:: images/mma_process.png
    :alt: Memory Map Analyzer Process
    :align: center
    :scale: 80%

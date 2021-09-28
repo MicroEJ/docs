@@ -30,7 +30,6 @@ tab then contains the options relevant to the selected tool.
    testsuite
    heapUsageMonitoring
    serialToSocketTransmitter
-   memoryMapAnalyzer
    trace
    nullAnalysis
 

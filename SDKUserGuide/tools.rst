@@ -10,7 +10,8 @@ MicroEJ SDK provides a number of tools to assist with various aspects of develop
 
    stackTraceReader
    codeCoverageAnalyzer
-   heapAnalyzer   
+   heapAnalyzer
+   memoryMapAnalyzer
    elfToMapGenerator
 
 ..
