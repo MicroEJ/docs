@@ -78,6 +78,8 @@ detailed in the following sections of this chapter :
    systemRequirements
    workspace
    version
+   licenses
+   mmm
    tools
    sdkReleaseNotes
    sdkChangeLog

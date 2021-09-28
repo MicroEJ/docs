@@ -53,7 +53,6 @@ Using the MicroEJ Studio tool, an application developer will be able to:
    repository
    esr
    github
-   licenses
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 

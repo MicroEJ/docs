@@ -10,7 +10,6 @@ Application Developer Guide
    standaloneApplication
    sandboxedApplication
    virtualDevice
-   mmm
    moduleNatures
    repository
    classpath
