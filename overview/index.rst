@@ -46,12 +46,12 @@ Using the MicroEJ Studio tool, an application developer will be able to:
 .. toctree::
    :hidden:
 
+   gettingStarted
    firmware
    runtime
    libraries
    repository
    esr
-   gettingStarted
    github
    licenses
 
