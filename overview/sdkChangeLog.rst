@@ -11,8 +11,32 @@ MicroEJ SDK Distribution Changelog
 
 **KNOWN ISSUES**:
 
--  See :ref:`MicroEJ Studio / SDK 5.4.0 Known Issues <known-issues-5.4.0>` section
+-  The following error occurs when installing an SDK update on MacOS:
 
+  .. code-block:: 
+
+    !MESSAGE Error while loading manipulator.
+    !STACK 0
+    java.lang.IllegalStateException: Error while loading manipulator.
+    	at org.eclipse.equinox.internal.p2.touchpoint.eclipse.LazyManipulator.loadDelegate(LazyManipulator.java:64)
+    	at org.eclipse.equinox.internal.p2.touchpoint.eclipse.LazyManipulator.getConfigData(LazyManipulator.java:117)
+    	at org.eclipse.equinox.internal.p2.touchpoint.eclipse.actions.UninstallBundleAction.uninstallBundle(UninstallBundleAction.java:57)
+    	at org.eclipse.equinox.internal.p2.touchpoint.eclipse.actions.UninstallBundleAction.execute(UninstallBundleAction.java:33)
+    	at org.eclipse.equinox.internal.p2.engine.ParameterizedProvisioningAction.execute(ParameterizedProvisioningAction.java:42)
+    	at org.eclipse.equinox.internal.p2.engine.Phase.mainPerform(Phase.java:186)
+    	at org.eclipse.equinox.internal.p2.engine.Phase.perform(Phase.java:99)
+    	at org.eclipse.equinox.internal.p2.engine.PhaseSet.perform(PhaseSet.java:50)
+    	at org.eclipse.equinox.internal.p2.engine.Engine.perform(Engine.java:80)
+    	at org.eclipse.equinox.internal.p2.engine.Engine.perform(Engine.java:48)
+    	at org.eclipse.equinox.p2.operations.ProvisioningSession.performProvisioningPlan(ProvisioningSession.java:181)
+    	at org.eclipse.equinox.p2.operations.ProfileModificationJob.runModal(ProfileModificationJob.java:76)
+    	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:190)
+    	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+  The workaround is to replace ``/eclipse/plugins/`` by ``/Eclipse/plugins/`` (capital ``E``) in ``MicroEJ-SDK-21.03.app\Contents\Eclipse\eclipse.ini``.
+
+-  See :ref:`MicroEJ Studio / SDK 5.4.0 Known Issues <known-issues-5.4.0>` section
+  
 [20.12] - 2020-12-11
 ~~~~~~~~~~~~~~~~~~~~
 
