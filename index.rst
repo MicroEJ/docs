@@ -11,7 +11,8 @@ Browse the following chapters to familiarize yourself with MicroEJ Technology an
 
 - The `Glossary <glossary.html>`_ chapter describes MicroEJ terminology.
 - The `Overview <overview/index.html>`_ chapter introduces MicroEJ products and technology.
-- The `Application Developer Guide <ApplicationDeveloperGuide/index.html>`_ presents Java applications development and debugging tools.
+- The `SDK User Guide <SDKUserGuide/index.html>`_ chapter presents the MicroEJ Software Development Kit.
+- The `Application Developer Guide <ApplicationDeveloperGuide/index.html>`_ presents how to develop a Java application.
 - The `Platform Developer Guide <PlatformDeveloperGuide/index.html>`_ teaches you how to integrate a C Board Support as well as simulation configurations.
 - The `Kernel Developer Guide <KernelDeveloperGuide/index.html>`_ introduces you to advanced concepts, such as partial updates and dynamic app life cycle workflows.
 - The `Tutorials <Tutorials/index.html>`_ chapter covers a variety of topics related to developing with the MicroEJ ecosystem.
