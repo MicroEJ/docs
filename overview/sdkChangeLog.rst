@@ -11,6 +11,8 @@ MicroEJ SDK Distribution Changelog
 
 **KNOWN ISSUES**:
 
+-  An error ``Error while loading manipulator`` occurs when installing an SDK update on MacOS.
+   The workaround is to replace ``/eclipse/plugins/`` by ``/Eclipse/plugins/`` (capital ``E``) in ``MicroEJ-SDK-21.03.app\Contents\Eclipse\eclipse.ini``.
 -  See :ref:`MicroEJ Studio / SDK 5.4.0 Known Issues <known-issues-5.4.0>` section
 
 [20.12] - 2020-12-11
