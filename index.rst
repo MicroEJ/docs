@@ -27,6 +27,7 @@ Browse the following chapters to familiarize yourself with MicroEJ Technology an
    PlatformDeveloperGuide/index
    KernelDeveloperGuide/index
    Tutorials/index
+   support
    about
 
 ..

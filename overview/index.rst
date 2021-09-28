@@ -54,7 +54,6 @@ Using the MicroEJ Studio tool, an application developer will be able to:
    gettingStarted
    github
    licenses
-   support
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
