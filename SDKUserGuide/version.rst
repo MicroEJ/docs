@@ -1,7 +1,7 @@
 .. _get_sdk_version:
 
-MicroEJ Studio/SDK Version
-==========================
+MicroEJ SDK Version
+===================
 
 In MicroEJ Studio/SDK, go to ``Help`` > ``About MicroEJ SDK`` menu.
 

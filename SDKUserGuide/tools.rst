@@ -1,9 +1,9 @@
-.. _studio_development_tools:
+.. _sdk_development_tools:
 
 Development Tools
 #################
 
-MicroEJ Studio/SDK provides a number of tools to assist with various aspects of development.
+MicroEJ SDK provides a number of tools to assist with various aspects of development.
 
 .. toctree::
    :maxdepth: 2

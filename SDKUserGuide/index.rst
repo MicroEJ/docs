@@ -1,21 +1,21 @@
-.. _studio_user_guide:
+.. _sdk_user_guide:
 
-Studio/SDK User Guide
-=====================
+SDK User Guide
+==============
 
-MicroEJ Studio/SDK provides tools based on Eclipse to develop software applications for MicroEJ-ready devices.
-MicroEJ Studio/SDK allows application developers to write MicroEJ Applications and run them on a virtual (simulated) or real device.
+MicroEJ SDK provides tools based on Eclipse to develop software applications for MicroEJ-ready devices.
+MicroEJ SDK allows application developers to write MicroEJ Applications and run them on a virtual (simulated) or real device.
 
 The purpose of MicroEJ SDK is to develop for targeted MCU/MPU computers (IoT, wearable, etc.) and it is therefore a cross-development tool.
 Unlike standard low-level cross-development tools, 
-MicroEJ Studio/SDK offers unique services like hardware simulation and local deployment to the target hardware.
+MicroEJ SDK offers unique services like hardware simulation and local deployment to the target hardware.
 
 Application development is based on the following elements:
 
--  MicroEJ Studio/SDK, the integrated development environment for writing applications.
+-  MicroEJ SDK, the integrated development environment for writing applications.
    It is based on Eclipse and relies on the integrated Java compiler (JDT).
    It also provides a dependency manager for managing MicroEJ Libraries (see :ref:`mmm`).
-   The current distribution of MicroEJ SDK / Studio (``21.03``) is built on top of `Eclipse 2020-06 <https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-java-developers>`_.
+   The current distribution of MicroEJ SDK (``21.03``) is built on top of `Eclipse 2020-06 <https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-java-developers>`_.
 
 -  MicroEJ Platform, a software package including the resources and
    tools required for building and testing an application for a specific
@@ -38,7 +38,7 @@ Application development is based on the following elements:
 
    -  User interaction.
 
-   Virtual Devices are imported into MicroEJ Studio within a local
+   Virtual Devices are imported into MicroEJ SDK within a local
    folder called MicroEJ Repository. Once a Virtual Device is imported,
    an application can be launched and tested on Simulator. It also
    provides a mean to locally deploy the application on a MicroEJ-ready
@@ -51,7 +51,7 @@ Application development is based on the following elements:
    Devices and MicroEJ Firmwares share the same version (there is a 1:1
    mapping).
 
-The following figure gives an overview of MicroEJ SDK / Studio possibilities:
+The following figure gives an overview of MicroEJ SDK possibilities:
 
 .. figure:: images/1_overview.png
    :alt: MicroEJ Application Development Overview

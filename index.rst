@@ -22,7 +22,7 @@ Browse the following chapters to familiarize yourself with MicroEJ Technology an
 
    Glossary <glossary>
    overview/index
-   StudioUserGuide/index
+   SDKUserGuide/index
    ApplicationDeveloperGuide/index
    PlatformDeveloperGuide/index
    KernelDeveloperGuide/index
