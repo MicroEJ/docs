@@ -1,7 +1,9 @@
-Hiding a Widget
+How to Hide a Widget
 ====================
+
 Hiding widgets can be done by:
-- Swapping the entire desktop; or
+
+- Swapping the entire desktop
 - Selectively by placing your widgets in a custom hideable container.
 
 Using Desktop To hide a widget
@@ -70,7 +72,7 @@ Using a Hideable Container to Hide a Widget
 
 This sample shows how to create a hideable container by disabling the rendering of its children.
 
-The children are not rendered, since the widget, and all of its children should be hidden
+The children are not rendered, since the widget, and all of its children should be hidden.
 
 .. code-block:: java
     
@@ -101,10 +103,11 @@ The children are not rendered, since the widget, and all of its children should 
 		}
 	}
 
-Adding this to a button in the DemoWidget sample application yields these results
+Adding this to a button in the DemoWidget sample application yields these results:
+
 .. image:: images/hideableContainerShown.png
 
-After clicking the Button
+After clicking the Button:
 
 .. image:: images/hideableContainerHidden.png
 
