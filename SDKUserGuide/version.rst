@@ -1,9 +1,9 @@
 .. _get_sdk_version:
 
-MicroEJ SDK Version
-===================
+SDK Version
+===========
 
-In MicroEJ Studio/SDK, go to ``Help`` > ``About MicroEJ SDK`` menu.
+In MicroEJ SDK, go to ``Help`` > ``About MicroEJ SDK`` menu.
 
 In case of MicroEJ SDK ``4.1.x``, the MicroEJ SDK version is directly displayed, such as ``4.1.5``:
 
