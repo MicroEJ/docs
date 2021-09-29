@@ -44,7 +44,7 @@ with local MicroEJ Architecture and MicroEJ Packs modules.
 The following steps can be adapted to custom :ref:`settings file <mmm_settings_file>`.
 
 - Create a new empty project named ``architecture-repository``
-- Create a new file named ``ivysettings.xml`` with the following content and update the included settings file according to your MicroEJ SDK version (see  )
+- Create a new file named ``ivysettings.xml`` with the following content and update the included settings file according to your MicroEJ SDK version (see :ref:`get_sdk_version`)
   
   .. code-block:: xml
 
