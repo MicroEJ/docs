@@ -1,5 +1,5 @@
-Perform Online Getting Started
-==============================
+Getting Started
+===============
 
 MicroEJ Studio Getting Started is available on
 `<https://developer.microej.com/5/getting-started-studio.html>`_.
