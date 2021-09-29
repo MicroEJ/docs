@@ -17,7 +17,7 @@ by third party linkers can be analyzed and interpreted using the
 Functional Description
 ======================
 
-.. figure:: images/elftomap_process.*
+.. figure:: images/elftomap_process.png
    :alt: ELF To Map Process
    :align: center
    :scale: 90%
@@ -40,7 +40,7 @@ This chapter explains MicroEJ tool options.
 .. include:: elftomap_use.rst
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -1,11 +1,11 @@
-----------------------------------
-MicroEJ SDK Distribution Changelog
-----------------------------------
+--------------------------
+SDK Distribution Changelog
+--------------------------
 
 [21.03] - 2021-03-25
 ~~~~~~~~~~~~~~~~~~~~
 
--  Included :ref:`MicroEJ Studio / SDK 5.4.0 <changelog-5.4.0>`
+-  Included :ref:`Studio / SDK 5.4.0 <changelog-5.4.0>`
   
 .. _known-issues-21.03:
 
@@ -35,19 +35,19 @@ MicroEJ SDK Distribution Changelog
 
   The workaround is to replace ``/eclipse/plugins/`` by ``/Eclipse/plugins/`` (capital ``E``) in ``MicroEJ-SDK-21.03.app\Contents\Eclipse\eclipse.ini``.
 
--  See :ref:`MicroEJ Studio / SDK 5.4.0 Known Issues <known-issues-5.4.0>` section
-  
+-  See :ref:`Studio / SDK 5.4.0 Known Issues <known-issues-5.4.0>` section
+
 [20.12] - 2020-12-11
 ~~~~~~~~~~~~~~~~~~~~
 
--  Included :ref:`MicroEJ Studio / SDK 5.3.1 <changelog-5.3.1>`
--  Disabled Java version check when updating MicroEJ Studio/SDK (see
+-  Included :ref:`Studio / SDK 5.3.1 <changelog-5.3.1>`
+-  Disabled Java version check when updating Studio/SDK (see
    :ref:`known issues of Studio/SDK Distribution 20.10 <known-issues-20.10>`)
 
 [20.10] - 2020-10-30
 ~~~~~~~~~~~~~~~~~~~~
 
--  Included :ref:`MicroEJ Studio / SDK 5.3.0 <changelog-5.3.0>`
+-  Included :ref:`Studio / SDK 5.3.0 <changelog-5.3.0>`
 -  Updated to Eclipse version ``2020-06``
 -  Fixed low quality MacOS SDK icons
 
@@ -76,7 +76,7 @@ for more details.
    -  Download and save this file `microej-ivysettings-5.xml <https://repository.microej.com/microej-ivysettings-5.xml>`__ to the previously created ``.microej`` folder.
 -  By default, a check is done on the JRE version required by the
    plugins on install/update. Since CDT requires JRE 11, it prevents to
-   install/update a newer MicroEJ SDK version. The CDT documentation
+   install/update a newer SDK version. The CDT documentation
    explains that this can be bypassed by disabling the option
    :guilabel:`Windows` > :guilabel:`Preferences` > :guilabel:`Install/Update` > :guilabel:`Verify provisioning operation is compatible with currently running JRE`.
 
@@ -84,19 +84,19 @@ for more details.
 ~~~~~~~~~~~~~~~~~~~~
 
 -  Included :ref:`MicroEJ Studio / SDK 5.2.0 <changelog-5.2.0>`
--  Updated the default microej repository folder name (replaced MicroEJ
+-  Updated the default microej repository folder name (replaced
    Studio/SDK version by the distribution number)
 -  Added ``Dist.`` prefix in installer name (e.g.
-   ``MicroEJ SDK Dist. 20.07``) to avoid confusion between MicroEJ SDK
-   distribution vs MicroEJ SDK version
--  Updated MicroEJ SDK and MicroEJ Studio End User License Agreement
--  Disabled popup window when installing a MicroEJ SDK update site
+   ``MicroEJ SDK Dist. 20.07``) to avoid confusion between SDK
+   distribution vs SDK version
+-  Updated SDK and Studio End User License Agreement
+-  Disabled popup window when installing a SDK update site
    (allow to install unsigned content by default)
 
 [19.05] - 2019-05-17
 ~~~~~~~~~~~~~~~~~~~~
 
--  Included :ref:`MicroEJ Studio / SDK version 5.1.0 <changelog-5.1.0>`
+-  Included :ref:`Studio / SDK version 5.1.0 <changelog-5.1.0>`
 -  Updated MicroEJ icons (``16x16`` and ``32x32``)
 -  Updated the publisher of Windows executables (``MicroEJ`` instead of
    ``IS2T SA.``)
@@ -107,17 +107,16 @@ for more details.
 ~~~~~~~~~~~~~~~~~~~~
 
 -  Updated to Eclipse Oxygen version ``4.7.2``
--  Included :ref:`MicroEJ Studio / SDK version 5.0.1 <changelog-5.0.1>`
+-  Included :ref:`Studio / SDK version 5.0.1 <changelog-5.0.1>`
 -  Included Sonarlint version ``4.0.0``
 
----------------------
-MicroEJ SDK Changelog
----------------------
+-------------
+SDK Changelog
+-------------
 
-MicroEJ SDK includes all MicroEJ Studio features.
+SDK includes all Studio features.
 
-A line prefixed by ``[Studio]`` is valid for both MicroEJ Studio and
-MicroEJ SDK. A line prefixed by ``[SDK]`` is only valid for MicroEJ SDK.
+A line prefixed by ``[Studio]`` is valid for both Studio and SDK. A line prefixed by ``[SDK]`` is only valid for SDK.
 
 .. _changelog-5.4.1:
 
@@ -125,7 +124,7 @@ MicroEJ SDK. A line prefixed by ``[SDK]`` is only valid for MicroEJ SDK.
 ~~~~~~~~~~~~~~~~~~~~
 
 *NOTE:* This release is both compatible with Eclipse version ``2020-06``
-and Eclipse Oxygen, so it can still be installed on a previous MicroEJ
+and Eclipse Oxygen, so it can still be installed on a previous
 Studio / SDK Distribution.
 
 MicroEJ Module Manager
@@ -135,7 +134,7 @@ MicroEJ Module Manager
    ``artifact-repository`` skeleton (this configuration is required to
    include modules bundled in an other module repository)
 -  ``[Studio]`` Fixed missing some old build types versions that were
-   removed by error. (introduced in MicroEJ SDK ``5.4.0``, please refer
+   removed by error. (introduced in SDK ``5.4.0``, please refer
    to the :ref:`Known Issues <known-issues-5.4.0>` section for more details)
 -  ``[Studio]`` Fixed wrong version of module built in a meta-build
    (module was published with the module version instead of the snapshot
@@ -150,7 +149,7 @@ MicroEJ Module Manager
 ~~~~~~~~~~~~~~~~~~~~
 
 *NOTE:* This release is both compatible with Eclipse version ``2020-06``
-and Eclipse Oxygen, so it can still be installed on a previous MicroEJ
+and Eclipse Oxygen, so it can still be installed on a previous
 Studio / SDK Distribution.
 
 .. _known-issues-5.4.0:
@@ -159,8 +158,8 @@ Known Issues
 """"""""""""
 
 -  Some older build types versions have been removed by error.
-   Consequently, using MicroEJ SDK ``5.4.0``, it may be not possible to
-   build modules that have been created with an older MicroEJ SDK
+   Consequently, using SDK ``5.4.0``, it may be not possible to
+   build modules that have been created with an older SDK
    version (For example, `MicroEJ
    GitHub <https://github.com/MicroEJ/>`__ code). The list of missing
    build types:
@@ -212,7 +211,7 @@ Build Types
    -  Addon Library (``javalib``)
    -  MicroEJ Testsuite (``testsuite``)
 -  ``[Studio]`` Updated Module Repository to allow to partially include
-   a MicroEJ Architecture module (``eval`` and/or ``prod``)
+   an Architecture module (``eval`` and/or ``prod``)
 -  ``[Studio]`` Fixed potential Addon Processor error
    ``NoClassDefFoundError: ej/tool/addon/util/Message`` depending on the
    resolution order
@@ -247,7 +246,7 @@ Skeletons
 
 **NOTE:** This release is both compatible with Eclipse version
 ``2020-06`` and Eclipse Oxygen, so it can still be installed on a
-previous MicroEJ Studio/SDK Distribution.
+previous Studio/SDK Distribution.
 
 General
 """""""
@@ -281,7 +280,7 @@ Skeletons
 
 **NOTE:** This release is both compatible with Eclipse version
 ``2020-06`` and Eclipse Oxygen, so it can still be installed on a
-previous MicroEJ Studio / SDK Distribution.
+previous Studio / SDK Distribution.
 
 .. _known-issues-5.3.0:
 
@@ -378,10 +377,10 @@ General
 """""""
 
 -  ``[Studio]`` Added ``Dist.`` prefix in default workspace and
-   repository name to avoid confusion between MicroEJ SDK distribution
-   vs MicroEJ SDK version
+   repository name to avoid confusion between SDK distribution
+   vs SDK version
 -  ``[Studio]`` Replaced ``Version`` by ``Dist.`` in :guilabel:`Help` >
-   :guilabel:`About MicroEJ® SDK | Studio` menu. The MicroEJ SDK or Studio
+   :guilabel:`About MicroEJ® SDK | Studio` menu. The SDK or Studio
    version is available in ``Installation Details`` view.
 -  ``[Studio]`` Replaced ``IS2T S.A.`` and ``MicroEJ S.A.`` by
    ``MicroEJ Corp.`` in :guilabel:`Help` > :guilabel:`About MicroEJ® SDK | Studio` menu.
@@ -411,7 +410,7 @@ General
    automatically configure workspace with a module repository (directory
    or zip file)
 -  ``[Studio]`` Added :guilabel:`New MicroEJ Add-On Library Project` wizard to
-   simplify MicroEJ Add-On library skeleton project creation
+   simplify Add-On Library skeleton project creation
 -  ``[Studio]`` Updated the build repository
    (``microej-build-repository.zip``) to be self contained with its owns
    ``ivysettings.xml``
@@ -449,10 +448,10 @@ Build Types
    into an other module repository (using new configuration
    ``repository->*``)
 -  ``[SDK]`` Added the possibility to bundle a set of Virtual Devices
-   when building a branded MicroEJ Studio. They are automatically
+   when building a branded Studio. They are automatically
    imported to the MicroEJ repository when booting on a new workspace.
 -  ``[SDK]`` Added the possibility to bundle a Module Repository when
-   building a branded MicroEJ Studio. It is automatically imported and
+   building a branded Studio. It is automatically imported and
    settings file is configured when booting on a new workspace.
 
 Build Plugins
@@ -462,7 +461,7 @@ Build Plugins
    ``@MMM_MODULE_NAME@`` and ``@MMM_MODULE_VERSION@``\ for README.md
    file
 -  ``[SDK]`` Fixed ``microej-kf-testsuite`` repository access issue
-   (introduced in MicroEJ SDK ``5.0.0``).
+   (introduced in SDK ``5.0.0``).
 -  ``[Studio]`` Fixed ``artifact-checker`` to accept revisions
    surrounded by brackets (as specified by
    https://keepachangelog.com/en/1.0.0/)
@@ -680,8 +679,8 @@ General
    default
 -  ``[SDK]`` Enabled MicroEJ workspace Foundation Libraries resolution
    by default
--  ``[SDK]`` Added possibility for MicroEJ Architectures to check for a
-   minimum required version of MicroEJ SDK (``sdk.min.version``
+-  ``[SDK]`` Added possibility for Architectures to check for a
+   minimum required version of SDK (``sdk.min.version``
    property)
 -  ``[SDK]`` Updated ``New Standalone Application Project`` wizard to
    generate a single-app firmware skeleton

@@ -39,7 +39,7 @@ Using a Launcher
 
 To set an option in a launcher, perform the following steps:
 
-1. In MicroEJ Studio/SDK, select :guilabel:`Run` > :guilabel:`Run Configurations...` menu,
+1. In MicroEJ SDK, select :guilabel:`Run` > :guilabel:`Run Configurations...` menu,
 2. Select the launcher of the application under :guilabel:`MicroEJ Application` or create a new one,
 3. Select the :guilabel:`Configuration` tab,
 4. Find the desired option and set it to the desired value.
@@ -84,7 +84,7 @@ To set an option in a properties file, open the file in a text editor and add a 
 
 To use the options declared in properties files in a launcher, perform the following steps:
 
-1. In MicroEJ Studio/SDK, select :guilabel:`Run` > :guilabel:`Run Configurations...`,
+1. In MicroEJ SDK, select :guilabel:`Run` > :guilabel:`Run Configurations...`,
 2. Select the launcher of the application,
 3. Select the :guilabel:`Execution` tab,
 4. Under :guilabel:`Option Files`, press the :guilabel:`Add...` button,
@@ -110,7 +110,7 @@ In order to export options defined in a ``.launch`` file to a properties file, p
 .. include:: sectionArchitectureOptions.rst
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

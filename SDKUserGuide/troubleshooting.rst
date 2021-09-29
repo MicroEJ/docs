@@ -1,7 +1,6 @@
-Advanced Installation Notes
----------------------------
+Troubleshooting
+===============
 
------------------
 Windows Specifics
 -----------------
 
@@ -23,7 +22,7 @@ folders that should be excluded from Windows Defender monitoring:
 The exclusion page is available in the ``Settings`` application
 (:guilabel:`Windows Security` > :guilabel:`Virus & threat protection` > :guilabel:`Manage settings` > :guilabel:`Exclusions` > :guilabel:`Add or remove exclusions`).
 
----------------
+
 Linux Specifics
 ---------------
 
@@ -54,7 +53,6 @@ One solution is to configure Eclipse as follows:
    (:guilabel:`Window` > :guilabel:`Show View` > :guilabel:`Other...` > :guilabel:`General` > :guilabel:`Error Log`)
 
 
----------------
 MacOS Specifics
 ---------------
 
