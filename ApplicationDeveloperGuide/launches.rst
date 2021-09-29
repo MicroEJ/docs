@@ -43,6 +43,7 @@ The :guilabel:`Main` tab allows you to set in order:
 
    MicroEJ Launch Application Main Tab
 
+.. _launch_execution_tab:
 
 Execution Tab
 -------------
@@ -91,12 +92,21 @@ are typically used to increase memory spaces:
 
 -  To set thread stack space to 512MB, set the ``-Xss512M`` option.
 
-Other Tabs
+.. _launch_source_tab:
+
+Source Tab
 ----------
 
-The next tabs (:guilabel:`Source` and :guilabel:`Common` tabs) are the default Eclipse
-launch tabs. Refer to Eclipse help for more details on how to use these
-launch tabs.
+The next tab is the :guilabel:`Source` tab.
+By default, it is automatically configured to connect your Add-On Libraries sources dependencies.
+To connect your Platform Foundation Library sources, please refer to the section :ref:`foundation_library_sources`.
+
+
+Common Tab
+----------
+
+The last tabs is the :guilabel:`Common` tab. This is a default Eclipse tab that allows to configure you launch 
+Refer to Eclipse help for more details on how to use this tab.
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
