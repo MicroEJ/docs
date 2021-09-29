@@ -1,4 +1,4 @@
-.. _studio_install:
+.. _sdk_install:
 
 Download and Install
 ====================

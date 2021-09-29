@@ -53,7 +53,6 @@ One solution is to configure Eclipse as follows:
    (:guilabel:`Window` > :guilabel:`Show View` > :guilabel:`Other...` > :guilabel:`General` > :guilabel:`Error Log`)
 
 
----------------
 MacOS Specifics
 ---------------
 
