@@ -19,7 +19,7 @@ HTML report to ease the analysis of methods coverage. The HTML report is
 available in a folder named htmlReport in the same folder as the .cc
 files.
 
-.. figure:: images/cca_process.*
+.. figure:: images/cca_process.png
    :alt: Code Coverage Analyzer Process
    :align: center
    :scale: 80%

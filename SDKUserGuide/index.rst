@@ -80,7 +80,6 @@ detailed in the following sections of this chapter :
    version
    licenses
    mmm
-   tools
    sdkReleaseNotes
    sdkChangeLog
    sdkMigrationNotes
