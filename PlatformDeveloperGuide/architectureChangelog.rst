@@ -715,6 +715,23 @@ Important Notes
    is now distributed using the ``ej.tool.frontpanel.framework`` module
    instead of the legacy Eclipse classpath variable.
 
+Known Issues
+~~~~~~~~~~~~
+
+- SOAR ``Internal SOAR error`` or  ``Stacks merging coherence error`` thrown when an ``if`` statement (being removed)
+  is declared at the end of a ``try`` block:
+  
+  .. code-block:: java
+      
+      try {
+         ...
+         if (Constants.getBoolean(XXX)) { // constant resolved to false
+            ... // code being removed
+         }
+      } catch (Exception e) {
+	      ...
+      }
+
 .. _core-engine-7:
 
 Core Engine
