@@ -3,12 +3,12 @@
 Overview
 ========
 
-MicroEJ offers a comprehensive toolset to build the embedded software of
-a device. The toolset covers two levels in device software development:
+MicroEJ SDK offers a comprehensive toolset to build the embedded software of
+a device. The SDK covers two levels in device software development:
 
--  MicroEJ SDK for device firmware development
+-  Device Firmware development
 
--  MicroEJ Studio for application development
+-  Application development
 
 The firmware will generally be produced by the device OEM, it includes
 all device drivers and a specific set of MicroEJ functionalities useful
@@ -21,22 +21,21 @@ for application developers targeting this device.
 
    MicroEJ Development Tools Overview
 
-Using the MicroEJ SDK tool, a firmware developer will produce two
-versions of the MicroEJ binary, each one able to run applications
-created with the MicroEJ Studio tool:
+Using the SDK, a firmware developer will produce two
+versions of the MicroEJ binary, each one able to run applications:
 
--  A MicroEJ Firmware binary to be flashed on OEM devices;
+-  A Firmware binary to be flashed on OEM devices;
 
 -  A Virtual Device which will be used as a device simulator by
    application developers.
 
-Using the MicroEJ Studio tool, an application developer will be able to:
+Using the SDK, an application developer will be able to:
 
 -  Import Virtual Devices matching his target hardware in order to
    develop and test applications on the Simulator;
 
 -  Deploy the application locally on an hardware device equipped with
-   the MicroEJ Firmware;
+   the Firmware;
 
 -  Package and publish the application on a MicroEJ Forge Instance,
    enabling remote end users to install it on their devices. For more

@@ -3,13 +3,13 @@
 Workspaces and MicroEJ Repositories
 ===================================
 
-When starting MicroEJ SDK, it prompts you to select the last used
+When starting the SDK, it prompts you to select the last used
 workspace or a default workspace on the first run. A workspace is a main
 folder where to find a set of projects containing MicroEJ source code.
 
-When loading a new workspace, MicroEJ SDK prompts for the location of
-the MicroEJ repository, where the MicroEJ Architectures, Platforms or Virtual Devices will be imported. 
-By default, MicroEJ SDK suggests to point to the default MicroEJ
+When loading a new workspace, the SDK prompts for the location of
+the MicroEJ repository, where Architectures, Platforms or Virtual Devices will be imported. 
+By default, the SDK suggests to point to the default MicroEJ
 repository on your operating system, located at
 ``${user.home}/.microej/repositories/[version]``. You can select an
 alternative location. Another common practice is to define a local

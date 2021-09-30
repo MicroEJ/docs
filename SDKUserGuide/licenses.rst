@@ -14,11 +14,11 @@ MicroEJ Architectures are distributed in two different versions:
 The license manager is provided with MicroEJ Architectures and then integrated into Platforms, consequently:
 
 - Evaluation licenses will be shown only if at least one Evaluation Architecture or Platform built from an Evaluation Architecture 
-  has been imported in MicroEJ SDK.
+  has been imported in the SDK.
 - Production licenses will be shown only if at least one Production Architecture or Platform built from a Production Architecture 
-  has been imported in MicroEJ SDK.
+  has been imported in the SDK.
 
-The list of installed licenses is available in MicroEJ SDK preferences dialog page in :guilabel:`Window`
+The list of installed licenses is available in the SDK preferences dialog page in :guilabel:`Window`
 > :guilabel:`Preferences` > :guilabel:`MicroEJ`:
 
 .. figure:: images/preferences/licenses.jpg
@@ -50,7 +50,7 @@ The machine UID will be displayed when building a :ref:`MicroEJ Standalone Appli
    [INFO ] Launching in Evaluation mode. Your UID is XXXXXXXXXXXXXXXX.
    [ERROR] Invalid license check (No license found).
 
-Otherwise, a MicroEJ Architecture or Platform should have been manually imported from the MicroEJ SDK preferences page. 
+Otherwise, a MicroEJ Architecture or Platform should have been manually imported from the SDK preferences page. 
 The machine UID can be retrieved as follows:
 
 - Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ`,
@@ -99,17 +99,17 @@ the license key zip file must be simply dropped to the ``~/.microej/licenses/`` 
 
 .. note::
   
-   The MicroEJ SDK Preferences page will be automatically refreshed when building a :ref:`MicroEJ Standalone Application on device <device_build>`.
+   The SDK Preferences page will be automatically refreshed when building a :ref:`MicroEJ Standalone Application on device <device_build>`.
 
 Otherwise, the license key must be installed as follows:
 
-- Go back to MicroEJ SDK.
+- Go back to the SDK.
 - Select the :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` menu.
 - Press :guilabel:`Add...`.
 - Browse the previously downloaded activation key archive file.
 - Press OK. A new license is successfully installed.
 - Go to Architectures sub-menu and check that all Architectures are now activated (green check).
-- Your MicroEJ SDK is successfully activated.
+- Your SDK is successfully activated.
 
 If an error message appears, the license key could not be installed. (see
 section :ref:`evaluation_license_troubleshooting`).
@@ -240,14 +240,14 @@ You can then proceed to the USB dongle update:
 
 .. _production_license_check:
 
-Check Activation on MicroEJ SDK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Check Activation on SDK
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
 
    Production licenses will be shown only if at least one Production Architecture or Platform has been imported before (see :ref:`license_manager`).
 
-- Go back to MicroEJ SDK,
+- Go back to the SDK,
 - Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ`,
 - Go to :guilabel:`Architectures` or :guilabel:`Platforms` sub-menu and check that all Production Architectures or Platforms are now activated (green check).
 
@@ -309,7 +309,7 @@ Windows Troubleshooting
   :guilabel:`Details` > :guilabel:`Hardware Ids` property match the ID mentioned before.
 
 
-- If the :ref:`dongle activation <production_license_activate>` was successful with ``Update successfully`` message but the license does not appear in MicroEJ SDK or is not updated, 
+- If the :ref:`dongle activation <production_license_activate>` was successful with ``Update successfully`` message but the license does not appear in the SDK or is not updated, 
   try to activate again by starting the executable with administrator privileges:
 
   .. figure:: images/dongle/runAsAdministrator.png

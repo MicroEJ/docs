@@ -50,7 +50,7 @@ A *Mono-Sandbox Firmware* is produced by building and linking a Standalone
 Application with a Platform.
 
 A *Virtual Device* is the Multi-Sandbox Firmware counterpart for developing
-a Sandboxed Application in MicroEJ Studio. It provides the firmware
+a Sandboxed Application. It provides the firmware
 functional simulation part. Usually it also provides a mean to directly
 deploy a Sandboxed Application on the target device running a Multi-Sandbox
 Firmware (this is called *Local Deployment*). In case of dynamic
@@ -111,8 +111,8 @@ The Virtual Device builder performs the following steps:
    classpath. (See :ref:`ivy_confs`) for specifying the
    dependencies).
 
--  Turn the Platform (MicroEJ SDK) license to Virtual Device (MicroEJ
-   Studio) license so that it can be freely distributed.
+-  Turn the Platform (SDK) license to Virtual Device license 
+   so that it can be freely distributed.
 
 -  Generate the Runtime Environment from the Kernel APIs.
 
@@ -158,7 +158,7 @@ Firmware implementations must cover the following topics:
    another application through a Shared Interface. For that to be
    possible, a conversion proxy must be registered for this kernel type.
 
--  Tools libraries: tools that plug into MicroEJ Studio or SDK,
+-  Tools libraries: tools that plug into MicroEJ SDK,
    extending them with feature that are specific to the firmware, like
    deployment of an application, a management console, ...
 
