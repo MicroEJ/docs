@@ -70,6 +70,14 @@ The Front Panel extension does not provide any widgets. Some compatible widgets 
 
 .. warning:: The minimal version ``2.0.0`` is required to be compatible with UI pack 13.0.0 and higher. By default, when creating a new Front Panel project, the widget dependency version is ``1.0.0``.
 
+Source code for widgets is available by expanding the library from the project view.
+
+.. figure:: images/fpwidgets.png
+   :alt: Front Panel Widgets
+   :align: center
+
+   Front Panel Widgets
+
 MicroUI Implementation
 ======================
 

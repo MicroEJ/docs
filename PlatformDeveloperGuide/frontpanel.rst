@@ -204,6 +204,12 @@ Description
 
 A widget is a subclass of Front Panel framework class ``ej.fp.Widget``. The library ``ej.tool.frontpanel#widget`` provides a set of widgets which are Graphics Engine compatible (see :ref:`section_ui_simulation`). To create a new widget (or a subclass of an existing widget), have a look on available widgets in this library.
 
+.. figure:: images/fpwidgets.png
+   :alt: Front Panel Widgets
+   :align: center
+
+   Front Panel Widgets
+
 A widget is recognized by the ``fp`` file as soon as its class contains a ``@WidgetDescription`` annotation. The annotation contains several ``@WidgetAttribute``. An attribute has got a name and tells if it is an optional attribute of widget (by default an attribute is mandatory).
 
 This is the description of the widget ``LED``:
