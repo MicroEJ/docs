@@ -72,6 +72,8 @@ next table.
    | 25          | An ``assert`` statement could not be removed.          |
    |             | The ``.class`` file may have been built outside        |
    |             | MicroEJ SDK with an other compiler than Eclipse JDT.   |
+   |             | A workaround is to enable                              |
+   |             | :ref:`assertions <enable_assertions_emb>` option.      |
    +-------------+--------------------------------------------------------+
    | 50          | Missing code: Java code refers to a method not found   |
    |             | in specified classes.                                  |
