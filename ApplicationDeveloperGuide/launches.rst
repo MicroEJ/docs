@@ -105,7 +105,7 @@ To connect your Platform Foundation Library sources, please refer to the section
 Common Tab
 ----------
 
-The last tabs is the :guilabel:`Common` tab. This is a default Eclipse tab that allows to configure you launch 
+The last tab is the :guilabel:`Common` tab. This is a default Eclipse tab that allows to configure your launch.
 Refer to Eclipse help for more details on how to use this tab.
 
 ..
