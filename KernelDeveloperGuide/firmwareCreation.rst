@@ -64,7 +64,7 @@ cases the runtime environment is an aggregation of several :ref:`Kernel APIs <ke
 
 .. note::
 
-   According to the :ref`Kernel and Features specification <chapter_KF>`, no API is open by default to Sandboxed Applications.
+   According to the :ref:`Kernel and Features specification <chapter_KF>`, no API is open by default to Sandboxed Applications.
 
 Specify Kernel APIs
 ~~~~~~~~~~~~~~~~~~~
@@ -308,7 +308,7 @@ Build only a Virtual Device with a pre-existing Firmware
 Copy/Paste the ``.kpk`` file into the folder ``dropins``
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
