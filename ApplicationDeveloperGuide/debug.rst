@@ -1,7 +1,5 @@
-.. _library_sources:
-
-Library Sources
-===============
+Debug an Application
+====================
 
 All libraries included in MicroEJ SDK are provided with their source code and resources.
 The way the sources are retrieved depends on the kind of library (Add-On Library or Foundation Library).
