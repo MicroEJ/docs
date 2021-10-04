@@ -3,16 +3,36 @@
 Build Output Files
 ==================
 
-When building a MicroEJ Application, multiple files are generated next to the ELF file.
-These files are generated in a folder which is named like the main type and which is located in the output folder specified in the run configuration.
+When building a Standalone Application, multiple files are generated next to the ELF executable file.
 
-The following image shows an example of output folder:
+Launch Output Folder
+~~~~~~~~~~~~~~~~~~~~
+
+Using a :ref:`MicroEJ Application Launch <concepts-microejlaunches>`, the files are generated in a folder which is named like the main type and which is located in the output folder specified in the run configuration.
 
 .. figure:: images/build-output-files.png
-   :alt: Build Output Files
+   :alt: Build Output Files from MicroEJ Application Launch
    :align: center
 
-   Build Output Files
+   Build Output Files from MicroEJ Application Launch
+
+Published Module Files
+~~~~~~~~~~~~~~~~~~~~~~
+
+After :ref:`building <mmm_module_build>` the Standalone Application, the published module contains the following main files:
+
+- ``[name]-[version].out``: Firmware (ELF Executable)
+- ``[name]-[version].zip``: Virtual Device
+- ``[name]-[version]-workingEnv.zip``: Build intermediate files, including the content of the launch output Folder)
+
+
+.. figure:: images/standalone_application_published_files.png
+   :alt:  Published Standalone Application Module Files
+   :align: center
+   :scale: 70%
+
+   Published Standalone Application Module Files
+
 
 The SOAR Map File
 ~~~~~~~~~~~~~~~~~
