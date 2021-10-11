@@ -439,6 +439,9 @@ must be linked by the third-party linker.
    | ``.text.soar``              | Application and library     | RO          | 16         |
    |                             | code                        |             |            |
    +-----------------------------+-----------------------------+-------------+------------+
+   | ``.text.__icetea__*``       | MicroEJ Core Engine         | RX          | ISA        |
+   |                             | generated code              |             | Specific   |
+   +-----------------------------+-----------------------------+-------------+------------+
 
 .. note::
 	Sections ``ICETEA_HEAP``, ``_java_heap`` and ``_java_immortals`` are zero-initialized at MicroEJ Core Engine startup. 
