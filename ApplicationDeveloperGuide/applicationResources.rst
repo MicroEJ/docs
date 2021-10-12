@@ -157,7 +157,7 @@ It provides support to manipulate messages and translate them in different langu
 Each message to be internationalized is referenced by a key, which can be 
 used in the application code instead of using the message directly.
 
-Messages must be defined in `PO files <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`_ in the MicroEJ Classpath of the application.
+Messages must be defined in `PO files <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`_, located in the MicroEJ Classpath of the application (for example in the ``src/main/resources`` folder).
 Here is an example:
 
 ::
@@ -177,7 +177,8 @@ Here is an example:
 
 These PO files have to be converted to be usable by the application.
 In order to let the build system know which PO files to process, 
-they must be referenced in MicroEJ Classpath ``*.nls.list`` files.
+they must be referenced in files named ``*.nls.list``, located in the MicroEJ Classpath 
+(for example still in the ``src/main/resources`` folder).
 The file format of these ``*.nls.list`` files is a standard Java properties file.
 Each line represents the Full Qualified Name of a Java interface that will be 
 generated and used in the application. Here is an example, let's call it `i18n.nls.list`:
@@ -207,7 +208,7 @@ messages, for example:
 
    public class MyClass {
 
-      String label = Labels.Label1;
+      String label = Labels.NLS.getMessage(Labels.Label1);
 
       ...
 
@@ -220,7 +221,7 @@ Application project to use the NLS library.
 
 ::
 
-  <dependency org="ej.library.runtime" name="nls" rev="3.0.1"/>
+  <dependency org="com.microej.library.runtime" name="nls-po" rev="2.2.0"/>
 
 ..
    | Copyright 2020-2021, MicroEJ Corp. Content in this space is free 
