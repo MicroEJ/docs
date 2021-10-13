@@ -4,7 +4,7 @@ Application Linking
 ===================
 
 This chapter describes how a Sandboxed Application is built so that it can be (dynamically) installed on a Kernel.
-The build of a Sandboxed Application against a Kernel is called a Feature, hence the ``f`` letter used in the extension name of the related files (``.fso`` and ``.fo`` files).
+The build output file of a Sandboxed Application against a Kernel is called a Feature, hence the ``f`` letter used in the extension name of the related files (``.fso`` and ``.fo`` files).
 
 SOAR Build Phases
 -----------------
@@ -13,21 +13,21 @@ When building a Sandboxed Application to a Feature, SOAR processing is divided i
 
 1. **SOAR Compiler**: loads and compiles the set of application ``.class`` files and resources. Among the various steps, mention may be made of:
 
-   - Transitive closure from the application entry points of all required elements (types, methods, fields, strings, immutables, resources, system properties),
-   - Clinit order computation.
+   - Computing the transitive closure from the application entry points of all required elements (types, methods, fields, strings, immutables, resources, system properties),
+   - Computing the :ref:`clinit order <soar_clinit>`.
 
    The result is an object file that ends with ``.fso`` extension. 
    The ``.fso`` file is a portable file that can be linked on any compatible Kernel (see :ref:`fso_compatibility`).
 
 2. **SOAR Optimizer**: links a ``.fso`` file against a specific Kernel. Among the various steps, mention may be made of:
 
-   - Link to expected Kernel APIs (types, methods, fields) according to the JVM specification [1]_,
-   - Generate MEJ32 instructions,
-   - Build of virtualization tables.
+   - Linking to the expected Kernel APIs (types, methods, fields) according to the JVM specification [1]_,
+   - Generating the MEJ32 instructions,
+   - Building the virtualization tables.
 
    The result is an object file that ends with ``.fo`` extension.
    The ``.fo`` file is specific to a Kernel: it can only be installed on the Kernel it has been linked. 
-   Rebuilding a Kernel require to run this phase again.   
+   Rebuilding a Kernel implies to run this phase again.   
 
 .. figure:: png/link_application.png
    :alt: Sandboxed Application Build Flow
@@ -43,6 +43,7 @@ The Feature ``.fo`` file can be deployed in the following ways:
 
 -  Installed at build-time into the Multi-Sandboxed Firmware using the :ref:`firmware_linker` tool.
 
+.. _build_feature_off_board:
 
 Feature Build Off Board
 -----------------------
@@ -114,7 +115,7 @@ SOAR Optimizer can be integrated on any Standalone Application providing the fol
    <dependency org="com.microej.api" name="soar" rev="1.0.0" />
    <dependency org="ej.library.eclasspath" name="collections" rev="1.4.0" />
 
-The following code sample illustrates the usage of the ``SOAR`` Foundation Library:
+The following code template illustrates the usage of the ``SOAR`` Foundation Library:
 
 .. code-block:: java
 
@@ -129,10 +130,10 @@ The following code sample illustrates the usage of the ``SOAR`` Foundation Libra
    import com.microej.soar.KernelMetadataProvider;
 
    /**
-   * This is a sample code that shows the typical steps to achieve for building a
-   * ``.fso`` file to a ``.fo`` file on Device.
+   * This is a template code that shows the typical steps to follow for building a
+   * .fo file from a .fso file on Device.
    */
-   public class SampleFSOBuild {
+   public class TemplateFSOBuild {
 
       /**
       * Your Platform specific {@link KernelMetadataProvider} implementation.
@@ -141,7 +142,7 @@ The following code sample illustrates the usage of the ``SOAR`` Foundation Libra
 
          @Override
          public InputStream openInputStream(int offset) throws IOException {
-            // Return an InputStream to the Kernel Metadata resource (``.kdat`` file) at the given offset in bytes.
+            // Return an InputStream to the Kernel Metadata resource (.kdat file) at the given offset in bytes.
             return null; // TODO
          }
 
@@ -153,22 +154,22 @@ The following code sample illustrates the usage of the ``SOAR`` Foundation Libra
       }
 
       /**
-      * A method that builds a ``.fso`` file to a ``.fo`` file.
+      * A method that builds a .fso file to a .fo file.
       */
       public static void build() {
          // Create the KernelMetadataProvider instance
          KernelMetadataProvider kernelMetadataProvider = new MyKernelMetadataProvider();
 
-         // Load the ``.fso`` InputStream
+         // Load the .fso InputStream
          InputStream fsoInputStream = null; // TODO
 
-         // Prepare the target OutputStream where to store the ``.fo``
+         // Prepare the target OutputStream where to store the .fo
          OutputStream foOutputStream = null; // TODO
 
          // Create the FeatureOptimizer instance
-         FeatureOptimizer soarOptimizer;
+         FeatureOptimizer featureOptimizer;
          try {
-            soarOptimizer = new FeatureOptimizer(kernelMetadataProvider);
+            featureOptimizer = new FeatureOptimizer(kernelMetadataProvider);
          } catch (FeatureOptimizerException e) {
             // Handle Kernel Metadata cannot be loaded
             e.printStackTrace(); // TODO
@@ -177,9 +178,9 @@ The following code sample illustrates the usage of the ``SOAR`` Foundation Libra
 
          // Build
          try {
-            soarOptimizer.build(fsoInputStream, foOutputStream);
+            featureOptimizer.build(fsoInputStream, foOutputStream);
          } catch (FeatureOptimizerException e) {
-            // Handle ``.fso`` cannot be built to ``.fo``
+            // Handle .fso cannot be built to .fo
             e.printStackTrace(); // TODO
          }
       }
@@ -195,13 +196,13 @@ A ``.fso`` file can be linked on any Kernel providing all the following conditio
 
 - its Architecture has the same endianness than the Architecture on which the ``.fso`` file has been produced,
 - its Architecture version is compatible [#compatible_def]_ with the Architecture version on which the ``.fso`` file has been produced,
-- it provided the required APIs according to the JVM specification [1]_.
+- it provides the required APIs according to the JVM specification [1]_.
 
 
 .. [1]
    Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
 
-.. [#compatible_def] New version is greater than or equals the previous one within the same major version.
+.. [#compatible_def] New version is greater than or equals to the old one within the same major version.
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 

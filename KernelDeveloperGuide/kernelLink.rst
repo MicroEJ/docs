@@ -6,7 +6,7 @@ Kernel Linking
 This chapter describes how a Kernel Application is linked.
 
 Basically, a Kernel Application is linked as a Standalone Application.
-The main difference is that a Kernel Application defines :ref:`Kernel APIs <kernel.api>`, and require to embed additional information that will be used later to build a Sandboxed Application against this Kernel (by linking with the Kernel APIs). 
+The main difference is that a Kernel Application defines :ref:`Kernel APIs <kernel.api>`, and requires to embed additional information that will be used later to build a Sandboxed Application against this Kernel (by linking with the Kernel APIs). 
 Such additional information is called the Kernel Metadata.
 
 Link Flow
@@ -23,7 +23,7 @@ The following figure shows the general process of linking a Firmware, applied to
 
 The Platform must be configured with :ref:`Multi-Sandbox capability <multisandbox>`.
 
-By default, the Kernel Metadata is included in the ``.debug.soar`` section which also serve for debug purpose (:ref:`stack_trace_reader`, :ref:`Heap Dumper <heapdumper>`).
+By default, the Kernel Metadata is included in the ``.debug.soar`` section which also serves for debug purpose (:ref:`stack_trace_reader`, :ref:`Heap Dumper <heapdumper>`).
 Particularly, it contains resolved absolute addresses of Kernel APIs.
 
 .. _kernel_metadata_generation:
@@ -31,9 +31,11 @@ Particularly, it contains resolved absolute addresses of Kernel APIs.
 Kernel Metadata Generation
 --------------------------
 
-To :ref:`build a Sandboxed Application on Device <build_feature_on_device>`, the Kernel Metadata must be exported after the Firmware link from the ``.debug.soar`` section.
+To :ref:`build a Sandboxed Application on Device <build_feature_on_device>`, the Kernel Metadata must be exported after the Firmware link from the ``.debug.soar`` section of the executable.
+This step is not necessary to :ref:`build a Sandboxed Application Off Board <build_feature_off_board>`.
 
-This is achieved by the Kernel Metadata Generator tool. It produces a ``.kdat`` file that will be provided to the software implementation of the ``KernelMetadataProvider``.
+The Kernel Metadata can be exported from an existing Firmware executable file by using the Kernel Metadata Generator tool.
+It produces a ``.kdat`` file that will be used to link the Sandboxed Applications on device.
 
 .. figure:: png/kernel_metadata_generator.png
    :alt: Kernel Metadata Generator
@@ -59,14 +61,14 @@ Firmware Linker
 
 Firmware Linker is a tool that links a Feature within a Multi-Sandboxed Firmware.
 
-It takes as input the executable application (``.out`` file) and the Feature binary
+It takes as input the Firmware executable (``.out`` file) and the Feature binary
 code (``.fo`` file) into which to be linked. It outputs a new executable application
 file, including the Installed Feature. This tool can be used to append
-multiple Features, by setting as the input file the output file of the
+multiple Features, by using as input file of each link pass the output file of the
 previous pass. Features linked this way are then called Installed Features. 
 
 The Kernel should have been linked for dimensioning the maximum size (code,
-data) for such Installed Features. See :ref:`Core Engine link sections <core_engine_link>`.
+data) for such Installed Features. See :ref:`Installed Features options <architecture_options_group_installed_features>`.
 
 The Firmware Linker tool is automatically called when declaring :ref:`System Applications <system_application_input_ways>` to a Multi-Sandbox module description.
 It is also available as a :ref:`MicroEJ Tool <MicroEJToolsSection>` named :guilabel:`Firmware Linker`.
@@ -80,7 +82,7 @@ It is also available as a :ref:`MicroEJ Tool <MicroEJToolsSection>` named :guila
    
 .. warning::
 
-   Features linked using the Firmware Linker tool could not be dynamically uninstalled using `Kernel.uninstall(Feature) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#uninstall-ej.kf.Feature->`_ method.
+   Features linked using the Firmware Linker tool cannot be dynamically uninstalled using `Kernel.uninstall(Feature) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#uninstall-ej.kf.Feature->`_ method.
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
