@@ -14,7 +14,9 @@ Kernel Developer Guide
    featuresCommunication
    kfEnabledLibraries
    kfTestsuite
-
+   kernelLink
+   applicationLink
+   
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

@@ -925,6 +925,8 @@ Option(text):
 Specifies the maximum number of threads a Feature is allowed to use at the same
 time.
 
+.. _architecture_options_group_installed_features:
+
 Group: Installed Features
 """""""""""""""""""""""""
 
