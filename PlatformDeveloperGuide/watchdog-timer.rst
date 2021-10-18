@@ -167,7 +167,7 @@ Then, you can use this example code:
 Use in C inside the BSP
 =======================
 
-Once the platform is configured to use the Watchdog Timer API as explained in ``Installation``
+Once the Platform is configured to use the Watchdog Timer API as explained in ``Installation``
 section, you can use functions defined in ``LLWATCHDOG_TIMER_impl.h``.
 
 Note that compared to the Java API, you have to get error codes returned by functions
