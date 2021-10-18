@@ -6,7 +6,7 @@ Watchdog Timer
 Overview
 ========
 
-The WatchdogTimer foundation library provides a way to handle platform watchdog timer.
+The WatchdogTimer Foundation Library provides a way to handle hardware watchdog timer.
 A watchdog is particularly useful if you want to monitor different items of your
 software system during the runtime. The figure below shows watchdog elements at each level of 
 a MicroEJ project:
@@ -23,7 +23,7 @@ Principle
 The Watchdog Timer API is in **two parts**, the first part drives the **watchdog timer** itself.
 The second part of the API implements a **checkpoint registration system** linked to the watchdog timer.
 
-The checkpoint registration system allows the user to add checkpoints monitored by the platform watchdog timer.
+The checkpoint registration system allows the user to add checkpoints monitored by the hardware watchdog timer.
 Each checkpoint registered by the Watchdog Timer API must attest their activity before the watchdog
 timeout, otherwise a **hardware reset** is performed. 
 The high level diagram below summarizes interactions between the user application, 
@@ -50,7 +50,7 @@ The sequence diagram below shows a standard use of the Watchdog API in Java and 
 Mock Implementation
 ===================
 
-When you run your Java application on the simulator, the watchdog timer must be emulated. 
+When you run your Application on the Simulator, the watchdog timer must be emulated. 
 To do so, a Java Timer Task is used which emulates the watchdog timer.
 
 The Mock implementation does not perform a hardware reset when the false watchdog timer triggers.
@@ -69,9 +69,9 @@ Installation
 ============
 
 Watchdog Timer is an API composed of a ``Pack`` module and a C component module.
-You need both of them in your platform to install the API.
+You need both of them in your Platform to install the API.
 
-In the platform configuration project, the one with ``-configuration`` extension, add
+In the Platform configuration project, the one with ``-configuration`` extension, add
 the dependency to the two required modules in the file ``module.ivy``:
 
 ::
@@ -84,8 +84,8 @@ The Platform must be rebuilt (:ref:`platform_build`).
 Then, you have to implement functions that match the ``LLWATCHDOG_TIMER_IMPL_*_action`` pattern
 which is required by the Watchdog C implementation.
 
-Use in a Java application
-=========================
+Use in an Application
+=====================
 
 The `WatchdogTimer API Module <https://repository.microej.com/modules/ej/api/watchdog-timer/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
@@ -167,7 +167,7 @@ Then, you can use this example code:
 Use in C inside the BSP
 =======================
 
-Once the platform is configured to use the Watchdog Timer API as explained in ``Installation``
+Once the Platform is configured to use the Watchdog Timer API as explained in ``Installation``
 section, you can use functions defined in ``LLWATCHDOG_TIMER_impl.h``.
 
 Note that compared to the Java API, you have to get error codes returned by functions
