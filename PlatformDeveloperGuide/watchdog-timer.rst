@@ -6,7 +6,7 @@ Watchdog Timer
 Overview
 ========
 
-The WatchdogTimer Foundation Library provides a way to handle platform watchdog timer.
+The WatchdogTimer Foundation Library provides a way to handle hardware watchdog timer.
 A watchdog is particularly useful if you want to monitor different items of your
 software system during the runtime. The figure below shows watchdog elements at each level of 
 a MicroEJ project:
@@ -23,7 +23,7 @@ Principle
 The Watchdog Timer API is in **two parts**, the first part drives the **watchdog timer** itself.
 The second part of the API implements a **checkpoint registration system** linked to the watchdog timer.
 
-The checkpoint registration system allows the user to add checkpoints monitored by the platform watchdog timer.
+The checkpoint registration system allows the user to add checkpoints monitored by the hardware watchdog timer.
 Each checkpoint registered by the Watchdog Timer API must attest their activity before the watchdog
 timeout, otherwise a **hardware reset** is performed. 
 The high level diagram below summarizes interactions between the user application, 
