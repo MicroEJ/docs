@@ -150,3 +150,10 @@ When editing eea files manually you may have to clean your project :guilabel:`Pr
 If your changes still aren't taken into account, restart the IDE.
 
 It's also worth the try with automatic annotations if you encounter a problem.
+
+..
+   | Copyright 2021, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
