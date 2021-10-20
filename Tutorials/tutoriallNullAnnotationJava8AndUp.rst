@@ -47,7 +47,7 @@ To enable automatic annotations you first need to link an annotation folder in y
    :align: center
    :scale: 80%
 
-Then you have to link a source to the library you want to annotate if needed. If you don't have access to the source of a library go to `Manual annotation`_.
+Then you have to link the source of libraries you want to annotate if it's not already done. If you don't have access to the source of a library go to `Manual annotation`_.
 
 You can now select a return or parameter type...
 
@@ -55,7 +55,7 @@ You can now select a return or parameter type...
    :align: center
    :scale: 80%
 
-...and use the shorcut ``ctrl+1`` or right click and select *Annotate*.
+...and use the shorcut ``ctrl+1`` or right click and select :guilabel:`Annotate`.
 
 .. image:: ./images/ctrl1.png
    :align: center
@@ -146,7 +146,7 @@ Descriptors:
 Update changes
 ~~~~~~~~~~~~~~
 
-When editing eea files manually you may have to clean your project **Project->Clean** for the changes to take place.
+When editing eea files manually you may have to clean your project :guilabel:`Project` > :guilabel:`Clean...` for the changes to take place.
 If your changes still aren't taken into account, restart the IDE.
 
 It's also worth the try with automatic annotations if you encounter a problem.
