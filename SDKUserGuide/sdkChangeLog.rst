@@ -131,7 +131,7 @@ A line prefixed by ``[Studio]`` is valid for both Studio and SDK. A line prefixe
 MicroEJ Module Manager
 """"""""""""""""""""""
 
--  ``[Studio]`` Fixed missing ``artifact-checker`` plugin to ``microej-javaimpl`` module nature.
+-  ``[Studio]`` Fixed missing ``artifact-checker`` plugin to some module natures (``custom``, ``firmware-multiapp``, ``firmware-singleapp``, ``microej-javaimpl``, ``microej-mock``, ``microej-testsuite``, ``product-java``).
 
 
 .. _changelog-5.4.1:
