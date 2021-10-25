@@ -318,6 +318,8 @@ Option(text): Server socket port
 
 Set the Shielded Plug server socket port.
 
+.. _category.code.coverage:
+
 Category: Code Coverage
 -----------------------
 
@@ -345,6 +347,7 @@ Option(checkbox): Activate code coverage analysis
 
 When selected it enables the code coverage analysis by the MicroEJ Simulator.
 Resulting files are output in the cc directory inside the output directory.
+You can process these files to an HTML report afterward with the built-in :ref:`Code Coverage Analyzer <code_coverage_analyzer>` .
 
 Option(text): Saving coverage information period (in sec.)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
