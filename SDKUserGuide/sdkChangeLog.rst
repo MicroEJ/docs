@@ -131,6 +131,7 @@ A line prefixed by ``[Studio]`` is valid for both Studio and SDK. A line prefixe
 MicroEJ Module Manager
 """"""""""""""""""""""
 
+-  ``[Studio]`` Added ``bin`` folder to ``.gitignore`` file of module natures Java project skeleton.
 -  ``[Studio]`` Fixed missing ``artifact-checker`` plugin to some module natures (``custom``, ``firmware-multiapp``, ``firmware-singleapp``, ``microej-javaimpl``, ``microej-mock``, ``microej-testsuite``, ``product-java``).
 
 
