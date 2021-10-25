@@ -2,6 +2,11 @@
 SDK Distribution Changelog
 --------------------------
 
+[21.11] - 2021-11-05
+~~~~~~~~~~~~~~~~~~~~
+
+-  Included :ref:`Studio / SDK 5.5.0 <changelog-5.5.0>`
+
 [21.03] - 2021-03-25
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -117,6 +122,17 @@ SDK Changelog
 SDK includes all Studio features.
 
 A line prefixed by ``[Studio]`` is valid for both Studio and SDK. A line prefixed by ``[SDK]`` is only valid for SDK.
+
+.. _changelog-5.5.0:
+
+[5.5.0] - 2021-11-05
+~~~~~~~~~~~~~~~~~~~~
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+-  ``[Studio]`` Fixed missing ``artifact-checker`` plugin to ``microej-javaimpl`` module nature.
+
 
 .. _changelog-5.4.1:
 
