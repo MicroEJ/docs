@@ -12,8 +12,6 @@ MicroEJ implements the following `ESR Consortium <http://www.e-s-r.net>`_ specif
    +------------+------------------------------------------------------------------------+
    | [SP]       | http://e-s-r.net/download/specification/ESR-SPE-0014-SP-2.0-A.pdf      |
    +------------+------------------------------------------------------------------------+
-   | [MUI]      | http://e-s-r.net/download/specification/ESR-SPE-0002-MICROUI-2.0-B.pdf |
-   +------------+------------------------------------------------------------------------+
    | [KF]       | http://e-s-r.net/download/specification/ESR-SPE-0020-KF-1.4-F.pdf      |
    +------------+------------------------------------------------------------------------+
 
