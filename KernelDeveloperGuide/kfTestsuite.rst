@@ -19,6 +19,10 @@ In an existing library project:
   ::
 
     <ea:plugin organisation="com.is2t.easyant.plugins" module="microej-kf-testsuite" revision="+" />
+- Configure the option ``artifacts.resolver`` to the name of the resolver used to import KF test dependencies.  
+  The name must be one of the resolver names defined in your :ref:`settings file <mmm_settings_file>`. 
+  If you are using the default settings file, set the option to ``MicroEJChainResolver``.
+  This option is usually set as a global :ref:`MMM option <mmm_options>`.
 
 Add a KF Test
 -------------
