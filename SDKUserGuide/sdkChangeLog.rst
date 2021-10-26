@@ -133,6 +133,7 @@ MicroEJ Module Manager
 
 -  ``[Studio]`` Added Add-On Processor resolution in workspace.
 -  ``[Studio]`` Added ``bin`` folder to ``.gitignore`` file of module natures Java project skeleton.
+-  ``[Studio]`` Added Eclipse Public License v2.0 to the list of default licenses allowed for ``artifact-checker``.
 -  ``[Studio]`` Clarified input messages of ``mmm init`` command.
 -  ``[Studio]`` Fixed missing ``artifact-checker`` plugin to some module natures (``custom``, ``firmware-multiapp``, ``firmware-singleapp``, ``microej-javaimpl``, ``microej-mock``, ``microej-testsuite``, ``product-java``).
 -  ``[Studio]`` Fixed ``mmm run`` execution on a ``firmware-singleapp`` module (do not trigger the Firmware build).
