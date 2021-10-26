@@ -128,10 +128,15 @@ A line prefixed by ``[Studio]`` is valid for both Studio and SDK. A line prefixe
 [5.5.0] - 2021-11-05
 ~~~~~~~~~~~~~~~~~~~~
 
+General
+"""""""
+
+-  ``[Studio]`` Added Add-On Processor resolution in workspace.
+-  ``[SDK]`` Updated Architecture version check during Pack import (``greaterOrEqual`` instead of ``compatible``). This allows to import :ref:`pack_architecture_specific` and :ref:`pack_generic_legacy` on future Architecture ``8.x`` versions.
+
 MicroEJ Module Manager
 """"""""""""""""""""""
 
--  ``[Studio]`` Added Add-On Processor resolution in workspace.
 -  ``[Studio]`` Added ``bin`` folder to ``.gitignore`` file of module natures Java project skeleton.
 -  ``[Studio]`` Added Eclipse Public License v2.0 to the list of default licenses allowed for ``artifact-checker``.
 -  ``[Studio]`` Clarified input messages of ``mmm init`` command.
