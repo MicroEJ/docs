@@ -135,6 +135,17 @@ MicroEJ Module Manager
 -  ``[Studio]`` Clarified input messages of ``mmm init`` command.
 -  ``[Studio]`` Fixed missing ``artifact-checker`` plugin to some module natures (``custom``, ``firmware-multiapp``, ``firmware-singleapp``, ``microej-javaimpl``, ``microej-mock``, ``microej-testsuite``, ``product-java``).
 -  ``[SDK]`` Added ability to package private dependencies to ``mock`` module natures (configuration ``embedded``).
+-  ``[SDK]`` Added ``ssh`` deployment to ``microej-kf-testsuite`` plugin.
+-  ``[SDK]`` Updated ``firmware-multiapp`` to remove the ``bsp`` directory in Virtual Devices.
+-  ``[SDK]`` Updated ``firmware-multiapp`` to allow Virtual Devices for launching a specific main class other than the Kernel main class
+   This is useful for running JUnit tests using a Virtual Device instead of a Platform.
+-  ``[SDK]`` Updated ``firmware-multiapp`` to allow Virtual Devices for automatically launching a Sandboxed Application project in MicroEJ Studio.
+-  ``[SDK]`` Updated ``firmware-multiapp`` to automatically configure the Virtual Device Kernel UID when a Firmware is built.
+-  ``[SDK]`` Fixed ``firmware-multiapp`` unexpected build error when no declared Resident Application.
+-  ``[SDK]`` Fixed ``firmware-multiapp`` build which may fail an unexpected ``Unresolved Dependencies`` error the first time,
+   for Kernel APIs module dependencies (configuration ``kernelapi``) or Virtual Device specific modules dependencies (configuration ``default-vd``).
+-  ``[SDK]`` Fixed ``firmware-multiapp`` unexpected build error when no Application (``.wpk`` file) found in the dropins folder.
+-  ``[SDK]`` Fixed ``firmware-multiapp`` unexpected build error when no declared Resident Application.
 
 
 .. _changelog-5.4.1:
@@ -200,7 +211,7 @@ General
 -  ``[SDK]`` Updated End User License Agreement
 -  ``[SDK]`` Added the latest HIL Engine API to mock-up skeleton (native
    resources management)
--  ``[SDK]`` Update the Architecture import wizard to automatically
+-  ``[SDK]`` Updated the Architecture import wizard to automatically
    accept Pack licenses when the Architecture license is accepted
 
 MicroEJ Module Manager
