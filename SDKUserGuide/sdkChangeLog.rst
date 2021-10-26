@@ -132,6 +132,7 @@ MicroEJ Module Manager
 """"""""""""""""""""""
 
 -  ``[Studio]`` Added ``bin`` folder to ``.gitignore`` file of module natures Java project skeleton.
+-  ``[Studio]`` Clarified input messages of ``mmm init`` command.
 -  ``[Studio]`` Fixed missing ``artifact-checker`` plugin to some module natures (``custom``, ``firmware-multiapp``, ``firmware-singleapp``, ``microej-javaimpl``, ``microej-mock``, ``microej-testsuite``, ``product-java``).
 -  ``[SDK]`` Added ability to package private dependencies to ``mock`` module natures (configuration ``embedded``).
 
