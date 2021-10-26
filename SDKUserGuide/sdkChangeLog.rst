@@ -138,6 +138,7 @@ MicroEJ Module Manager
 """"""""""""""""""""""
 
 -  ``[Studio]`` Added ``bin`` folder to ``.gitignore`` file of module natures Java project skeleton.
+-  ``[Studio]`` Added Null Analysis configuration to ``artifact-checker``. When building a module repository, null analysis configuration is only checked on the highest module version included in the repository.
 -  ``[Studio]`` Added Eclipse Public License v2.0 to the list of default licenses allowed for ``artifact-checker``.
 -  ``[Studio]`` Clarified input messages of ``mmm init`` command.
 -  ``[Studio]`` Fixed missing ``artifact-checker`` plugin to some module natures (``custom``, ``firmware-multiapp``, ``firmware-singleapp``, ``microej-javaimpl``, ``microej-mock``, ``microej-testsuite``, ``product-java``).
