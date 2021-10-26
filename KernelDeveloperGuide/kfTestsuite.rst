@@ -16,10 +16,13 @@ In an existing library project:
 - Create the ``src/test/projects`` directory,
 - Edit the ``module.ivy`` and insert the following line within the ``<ea:build>`` XML element:
 
-::
+  ::
 
     <ea:plugin organisation="com.is2t.easyant.plugins" module="microej-kf-testsuite" revision="+" />
-
+- Configure the option ``artifacts.resolver`` to the name of the resolver used to import KF test dependencies.  
+  The name must be one of the resolver names defined in your :ref:`settings file <mmm_settings_file>`. 
+  If you are using the default settings file, set the option to ``MicroEJChainResolver``.
+  This option is usually set as a global :ref:`MMM option <mmm_options>`.
 
 Add a KF Test
 -------------
@@ -29,10 +32,9 @@ A KF test is a structured directory placed in the ``src/test/projects`` director
 - Create a new directory for the KF test
 - Within this directory, create the sub-projects:
   
-  - Create a new :ref:`module project <mmm_module_skeleton>` for the Kernel using the ``microej-javalib`` skeleton,
-  - Create a new :ref:`module project <mmm_module_skeleton>` for the Feature using the ``application`` skeleton,
-  - Create a new :ref:`module project <mmm_module_skeleton>` for the Firmware using the ``firmware-multiapp`` skeleton.
-
+  - Create a new directory for the Kernel project and initialize it using the ``microej-javalib`` :ref:`skeleton <mmm_module_skeleton>`,
+  - Create a new directory for the Feature project and initialize it using the ``application`` :ref:`skeleton <mmm_module_skeleton>`,
+  - Create a new directory for the Firmware project and initialize it using the ``firmware-multiapp`` :ref:`skeleton <mmm_module_skeleton>`.
 
 The names of the project directories are free, however MicroEJ suggests the following naming convention, assuming the KF test directory is ``[TestName]``:
 
