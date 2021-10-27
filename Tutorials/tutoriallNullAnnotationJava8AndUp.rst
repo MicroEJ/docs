@@ -55,7 +55,7 @@ You can now select a return or parameter type...
    :align: center
    :scale: 80%
 
-...and use the shorcut ``ctrl+1`` or right click and select *Annotate*.
+...and use the shortcut ``ctrl+1`` or right click and select *Annotate*.
 
 .. image:: ./images/ctrl1.png
    :align: center
@@ -70,22 +70,22 @@ You can now choose to set an annotation for the selected type:
 Manual annotation
 ~~~~~~~~~~~~~~~~~
 
-eea file creation
-^^^^^^^^^^^^^^^^^
+Eclipse External Annotations file creation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-eea files follow the same construction rules as class files.
+Eclipse External Annotations (``.eea``) files follow the same construction rules as class files.
 
 from your external annotations root folder
 create a folder hierarchy corresponding to the package hierarchy of the class :
 
 **java.lang.String -> /java/lang/String.eea**
 
-for inner classes ,this information is reflected on the file name, inner classes have a proper eea file :
+for inner classes ,this information is reflected on the file name, inner classes have a proper Eclipse External Annotations file :
 
 **org.tool.a$1 -> /example/org/tool/a$1.eea**
 
-eea header
-^^^^^^^^^^
+Eclipse External Annotations file header
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *class <filepath but extention>*
 
@@ -96,8 +96,8 @@ example for file /example/org/tool/a$1.eea:
     class /example/org/tool/a$1
 
 
-eea type/method
-^^^^^^^^^^^^^^^
+Eclipse External Annotations file type/method
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The construction is done as such:
 
@@ -120,8 +120,8 @@ Placing the annotation
 ^^^^^^^^^^^^^^^^^^^^^^
 
 0 represents the **@Nullable** annotation, and 1 represents the **@NonNull** annotation.
-eea files are mostly based on jvm specs: https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html , 
-you can refer to these specs for types descriptors.
+Eclipse External Annotations files are mostly based on JVM's specifications: https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html , 
+you can refer to these specifications for types descriptors.
 
 Descriptors:
 ^^^^^^^^^^^^
@@ -146,7 +146,7 @@ Descriptors:
 Update changes
 ~~~~~~~~~~~~~~
 
-When editing eea files manually you may have to clean your project **Project->Clean** for the changes to take place.
+When editing ``.eea`` files manually you may have to clean your project **Project->Clean** for the changes to take place.
 If your changes still aren't taken into account, restart the IDE.
 
 It's also worth the try with automatic annotations if you encounter a problem.
