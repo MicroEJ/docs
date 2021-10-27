@@ -19,11 +19,11 @@ Breaking changes
 
 Null annotations can be placed before every part of a variable type.
 
-For instance when you could only annotate String [] as :
+For instance when it was only possible to annotate String [] as :
 
 + **@Nullable String []**  a nullable array
 
-You can now annotate the variable as :
+It is now possible to annotate the type as :
 
 + **@Nullable String []** a non-null array of nullable Strings
 + **String @Nullable []** a nullable array of non-null Strings
@@ -41,29 +41,29 @@ Automatic annotation
 
 **~ For Eclipse IDE and it's derivatives ~**
 
-To enable automatic annotations you first need to link an annotation folder in your IDE:
+An annotation folder must be linked in order to enable automatic annotations.
 
-.. image:: ./images/addNullAnnotation.png
+.. image:: ./images/null_analysis_add_null_annotation.png
    :align: center
    :scale: 80%
 
 Then you have to link a source to the library you want to annotate if needed. If you don't have access to the source of a library go to `Manual annotation`_.
 
-You can now select a return or parameter type...
+It is now possible to select a return or parameter type...
 
-.. image:: ./images/wordToSelect.png
+.. image:: ./images/null_analysis_word_to_select.png
    :align: center
    :scale: 80%
 
 ...and use the shortcut ``ctrl+1`` or right click and select *Annotate*.
 
-.. image:: ./images/ctrl1.png
+.. image:: ./images/null_analysis_ctrl1.png
    :align: center
    :scale: 80%
 
-You can now choose to set an annotation for the selected type:
+An annotation can be set for the selected type:
 
-.. image:: ./images/autoAnnotation.png
+.. image:: ./images/null_analysis_auto_annotation.png
    :align: center
    :scale: 80%
 
@@ -75,7 +75,7 @@ Eclipse External Annotations file creation
 
 Eclipse External Annotations (``.eea``) files follow the same construction rules as class files.
 
-from your external annotations root folder
+from the external annotations root folder
 create a folder hierarchy corresponding to the package hierarchy of the class :
 
 **java.lang.String -> /java/lang/String.eea**
@@ -121,7 +121,7 @@ Placing the annotation
 
 0 represents the **@Nullable** annotation, and 1 represents the **@NonNull** annotation.
 Eclipse External Annotations files are mostly based on JVM's specifications: https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html , 
-you can refer to these specifications for types descriptors.
+it is the reference when writing types descriptors.
 
 Descriptors:
 ^^^^^^^^^^^^
@@ -146,7 +146,7 @@ Descriptors:
 Update changes
 ~~~~~~~~~~~~~~
 
-When editing ``.eea`` files manually you may have to clean your project **Project->Clean** for the changes to take place.
-If your changes still aren't taken into account, restart the IDE.
+When editing ``.eea`` files manually it may be needed to clean the project **Project->Clean** for the changes to take place.
+If the changes still aren't taken into account, the IDE must be restarted.
 
-It's also worth the try with automatic annotations if you encounter a problem.
+It's also worth the try with automatic annotations if any problem is encountered.
