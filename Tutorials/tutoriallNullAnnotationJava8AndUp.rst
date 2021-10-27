@@ -47,7 +47,7 @@ An annotation folder must be linked in order to enable automatic annotations.
    :align: center
    :scale: 80%
 
-Then you have to link a source to the library you want to annotate if needed. If you don't have access to the source of a library go to `Manual annotation`_.
+Then you have to link the source of libraries you want to annotate if it's not already done. If you don't have access to the source of a library go to `Manual annotation`_.
 
 It is now possible to select a return or parameter type...
 
@@ -55,7 +55,11 @@ It is now possible to select a return or parameter type...
    :align: center
    :scale: 80%
 
+<<<<<<< HEAD
 ...and use the shortcut ``ctrl+1`` or right click and select *Annotate*.
+=======
+...and use the shorcut ``ctrl+1`` or right click and select :guilabel:`Annotate`.
+>>>>>>> fb92c679a7f5a17b5a3aaec9fb1efa13ddf90b7e
 
 .. image:: ./images/null_analysis_ctrl1.png
    :align: center
