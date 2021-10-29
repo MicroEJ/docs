@@ -13,7 +13,7 @@ To use the widgets provided by the widget library, add the following line to a :
 
 .. code-block:: XML
 
-	<dependency org="ej.library.ui" name="widget" rev="4.0.0"/>
+	<dependency org="ej.library.ui" name="widget" rev="4.1.0"/>
 
 To fork one of the provided widgets, duplicate the associated Java class from the widget library JAR into the source code of your application.
 It is recommended to move the duplicated class to an other package and to rename the class in order to avoid confusion between your forked class and the original class.

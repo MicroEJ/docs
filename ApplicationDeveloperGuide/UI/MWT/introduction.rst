@@ -9,7 +9,7 @@ To use the MWT library, add the following line to a :ref:`module description fil
 
 .. code-block:: XML
 
-	<dependency org="ej.library.ui" name="mwt" rev="3.2.1"/>
+	<dependency org="ej.library.ui" name="mwt" rev="3.3.0"/>
 
 ..
    | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
