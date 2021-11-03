@@ -18,7 +18,7 @@ Tutorials
    tutorialRunATestSuiteOnDevice
    tutorialImplementABlockingNativeMethodWithSNI
    getStartedWithGUI/index
-   tutorialDebugUIFreeze
+   tutorialDebug
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 

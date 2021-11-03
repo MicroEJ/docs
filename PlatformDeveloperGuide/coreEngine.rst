@@ -387,9 +387,32 @@ This is an example of a dump:
     [0x0800DB6F]
    =================================
 
-See :ref:`stack_trace_reader` for additional info related to working
-with VM dumps.
+See :ref:`stack_trace_reader` for additional info related to working with VM dumps.
 
+Trigger VM dump from a fault handler
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is recommended to do a VM dump as a last resort in a fault handler.
+Calling ``LLMJVM_dump`` is undefined if the VM is not paused.
+The call to ``LLMJVM_dump`` MUST be done last in the fault handler.
+
+Trigger VM dump from debugger
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To trigger a VM dump from the debugger, set the PC register to the ``LLMJVM_dump`` address.
+
+The symbol for the ``LLMJVM_dump`` address is ``__icetea__virtual__com_is2t_microjvm_IGreenThreadMicroJvm___dump`` or ``__icetea__virtual__com_is2t_microjvm_mowana_VMTask___dump``.
+Search for these symbols in the ``.map`` file.
+
+.. note::
+
+   ``LLM_JVM_dump`` (in ``LLMJVM.h``) may need to be called explicitely.
+   A linker optimization may remove the symbol if it is not used anywhere in the code.
+
+Requirements:
+
+* Embedded debugger is attached and the processor is halted in an exception handler.
+* A way to read stdout (usually UART).
 
 Generic Output
 ==============
