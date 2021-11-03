@@ -334,8 +334,8 @@ Debugging
 
 The internal MicroEJ Core Engine function called ``LLMJVM_dump`` allows
 you to dump the state of all MicroEJ threads: name, priority, stack
-trace, etc. This function can be called at any time and from an
-interrupt routine (for instance from a button interrupt).
+trace, etc. This function must only be called from the MicroJvm virtual machine thread context and only from a native function or callback.
+Calling this function from another context may lead to undefined behavior and should be done only for debug purpose.
 
 This is an example of a dump:
 
