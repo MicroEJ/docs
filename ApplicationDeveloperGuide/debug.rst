@@ -1,3 +1,5 @@
+.. _application_debugger:
+
 Debug an Application
 ====================
 
