@@ -1,3 +1,5 @@
+.. _tutorial_instrument_java_code_for_logging:
+
 Instrument Java Code for Logging
 ================================
 
