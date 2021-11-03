@@ -138,7 +138,7 @@ thread. Simply wraps the ``System.out.println("Alive")`` with a
        @Override
        public void run() {
            System.out.println("TimerTask Alive");
-           Display.getDefaultDisplay().callSerially(new Runnable() {
+           MicroUI.callSerially(new Runnable() {
            
                @Override
                public void run() {
