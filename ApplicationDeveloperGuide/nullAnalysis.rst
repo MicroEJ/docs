@@ -106,8 +106,8 @@ So if these additional constraints are not acceptable for your project, please d
 External null annotations
 -------------------------
 
-In some situation, the null Analysis will miss potential null access while using unannotated external libraries.
-For instance : an ArrayList can contain null values, hence the `get(int)` method can return a null values. However, this won't be taken into account by default.
+In some situations, the null analysis will miss potential null access while using unannotated external libraries.
+For instance : an ArrayList can contain null values, hence the `get(int)` method can return null values. However, this won't be taken into account by default during null analysis.
 
 .. figure:: images/null_analysis_ArrayList_annotation_before.png
 
@@ -120,7 +120,7 @@ Automatic annotation
 
 **~ For Eclipse IDE and it's derivatives ~**
 
-An annotation folder must be linked in order to enable automatic annotations.
+An external annotations folder must be linked in order to enable automatic annotations.
 
 .. figure:: images/null_analysis_add_null_annotation_folder.png
 
@@ -151,7 +151,7 @@ a folder hierarchy corresponding to the package hierarchy of the class must be c
 
 **java.lang.String -> /java/lang/String.eea**
 
-for inner classes ,additional information is contained in the file name. Inner classes have a proper Eclipse External Annotations file :
+for inner classes, additional information is contained in the file name. Inner classes have a proper Eclipse External Annotations file :
 
 **org.tool.a$1 -> /example/org/tool/a$1.eea**
 
