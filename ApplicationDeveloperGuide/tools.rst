@@ -37,6 +37,7 @@ tab then contains the options relevant to the selected tool.
    memoryMapAnalyzer
    trace
    nullAnalysis
+   dependencyDiscoverer
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
