@@ -106,6 +106,15 @@ So if these additional constraints are not acceptable for your project, please d
 External null annotations
 -------------------------
 
+In some situation, the null Analysis will miss potential null access while using unannotated external libraries.
+For instance : an ArrayList can contain null values, hence the `get(int)` method can return a null values. However, this won't be taken into account by default.
+
+.. figure:: images/null_analysis_ArrayList_annotation_before.png
+
+Manually annotate the `get(int)` method return type with @Nullable allows to detect the potential null access: 
+
+.. figure:: images/null_analysis_ArrayList_annotation_after.png
+
 Automatic annotation
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -113,21 +122,21 @@ Automatic annotation
 
 An annotation folder must be linked in order to enable automatic annotations.
 
-.. figure:: ./images/null_analysis_add_null_annotation_folder.png
+.. figure:: images/null_analysis_add_null_annotation_folder.png
 
-Then you have to link a source to the library you want to annotate if needed. If you don't have access to the source of a library go to `Manual annotation`_.
+Then the source code must be linked to the library to annotate. See `Manual annotation`_ in cases where the source code isn't available.
 
 It is now possible to select a return or parameter type...
 
-.. figure:: ./images/null_analysis_word_to_select.png
+.. figure:: images/null_analysis_word_to_select.png
 
 ...and use the shortcut ``ctrl+1`` or right click and select *Annotate*.
 
-.. figure:: ./images/null_analysis_ctrl1.png
+.. figure:: images/null_analysis_ctrl1.png
 
 An annotation can be set for the selected type:
 
-.. figure:: ./images/null_analysis_auto_annotation.png
+.. figure:: images/null_analysis_auto_annotation.png
 
 Manual annotation
 ~~~~~~~~~~~~~~~~~
@@ -137,12 +146,12 @@ Eclipse External Annotations file creation
 
 Eclipse External Annotations (``.eea``) files follow the same construction rules as class files.
 
-From the external annotations root folder
-create a folder hierarchy corresponding to the package hierarchy of the class :
+From the external annotations root folder,
+a folder hierarchy corresponding to the package hierarchy of the class must be created:
 
 **java.lang.String -> /java/lang/String.eea**
 
-for inner classes ,this information is reflected on the file name, inner classes have a proper Eclipse External Annotations file :
+for inner classes ,additional information is contained in the file name. Inner classes have a proper Eclipse External Annotations file :
 
 **org.tool.a$1 -> /example/org/tool/a$1.eea**
 
@@ -183,7 +192,7 @@ Placing the annotation
 
 0 represents the **@Nullable** annotation, and 1 represents the **@NonNull** annotation.
 Eclipse External Annotations files are mostly based on JVM's specifications: https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html , 
-it is the reference when writing types descriptors.
+it is the reference when writing type descriptors.
 
 Descriptors:
 ^^^^^^^^^^^^
