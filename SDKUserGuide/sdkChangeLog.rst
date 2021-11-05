@@ -152,6 +152,7 @@ MicroEJ Module Manager
    This is useful for running JUnit tests using a Virtual Device instead of a Platform.
 -  ``[SDK]`` Updated ``firmware-multiapp`` to allow Virtual Devices for automatically launching a Sandboxed Application project in MicroEJ Studio.
 -  ``[SDK]`` Updated ``firmware-multiapp`` to automatically configure the Virtual Device Kernel UID when a Firmware is built.
+-  ``[SDK]`` Fixed ``firmware-multiapp`` skeleton default dependencies with only modules available in MicroEJ Central Repository.
 -  ``[SDK]`` Fixed ``firmware-multiapp`` unexpected build error when no declared Resident Application.
 -  ``[SDK]`` Fixed ``firmware-multiapp`` build which may fail an unexpected ``Unresolved Dependencies`` error the first time,
    for Kernel APIs module dependencies (configuration ``kernelapi``) or Virtual Device specific modules dependencies (configuration ``default-vd``).
