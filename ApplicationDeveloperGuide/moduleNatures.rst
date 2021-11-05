@@ -298,6 +298,8 @@ This module nature inherits the configuration properties of the following plugin
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.platform_loader`
+- :ref:`module_natures.plugins.javadoc` [#require_sdk_5_5]_
+- :ref:`module_natures.plugins.testsuite` [#require_sdk_5_5]_
 
 This module nature defines the following dedicated configuration properties:
 
@@ -317,6 +319,8 @@ This module nature defines the following dedicated configuration properties:
    * - virtual.device.sim.only
      - When this property is set (any value), the firmware is not built.
      - Not set
+
+.. [#require_sdk_5_5] MicroEJ SDK version ``5.5.0`` or higher.
 
 .. _module_natures.plugins:
 
