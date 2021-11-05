@@ -159,6 +159,7 @@ MicroEJ Module Manager
 -  ``[SDK]`` Fixed ``firmware-multiapp`` unexpected build error when no Application (``.wpk`` file) found in the dropins folder.
 -  ``[SDK]`` Fixed ``firmware-multiapp`` unexpected build error when no declared Resident Application.
 -  ``[SDK]`` Fixed ``firmware-singleapp`` and ``firmware-multiapp`` skeletons wrong package name generation for the default Main class.
+-  ``[SDK]`` Fixed ``artifact-repository`` changelog check for modules with a snapshot version.
 
 .. _changelog-5.4.1:
 
