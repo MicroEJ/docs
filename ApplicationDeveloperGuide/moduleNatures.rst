@@ -108,6 +108,7 @@ This module nature inherits the configuration properties of the following plugin
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.testsuite`
+- :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
 
 This module nature defines the following dedicated configuration properties:
 
@@ -172,6 +173,7 @@ This module nature inherits the configuration properties of the following plugin
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.unittests`
+- :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
 
 .. _module_natures.module_repository:
 
@@ -300,6 +302,7 @@ This module nature inherits the configuration properties of the following plugin
 - :ref:`module_natures.plugins.platform_loader`
 - :ref:`module_natures.plugins.javadoc` [#require_sdk_5_5]_
 - :ref:`module_natures.plugins.testsuite` [#require_sdk_5_5]_
+- :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
 
 This module nature defines the following dedicated configuration properties:
 
