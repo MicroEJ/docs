@@ -145,6 +145,7 @@ MicroEJ Module Manager
 -  ``[Studio]`` Fixed missing ``artifact-checker`` plugin to some module natures (``custom``, ``firmware-multiapp``, ``firmware-singleapp``, ``microej-javaimpl``, ``microej-mock``, ``microej-testsuite``, ``product-java``).
 -  ``[Studio]`` Fixed ``mmm run`` execution on a ``firmware-singleapp`` module (do not trigger the Firmware build).
 -  ``[SDK]`` Added ability to package private dependencies to ``mock`` module natures (configuration ``embedded``).
+-  ``[SDK]`` Added ``testsuite`` and ``javadoc`` plugin to ``firmware-singleapp`` module nature.
 -  ``[SDK]`` Added ``ssh`` deployment to ``microej-kf-testsuite`` plugin.
 -  ``[SDK]`` Updated ``firmware-multiapp`` to remove the ``bsp`` directory in Virtual Devices.
 -  ``[SDK]`` Updated ``firmware-multiapp`` to allow Virtual Devices for launching a specific main class other than the Kernel main class
