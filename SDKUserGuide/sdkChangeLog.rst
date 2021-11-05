@@ -141,6 +141,7 @@ MicroEJ Module Manager
 -  ``[Studio]`` Added Null Analysis configuration to ``artifact-checker``. When building a module repository, null analysis configuration is only checked on the highest module version included in the repository.
 -  ``[Studio]`` Added Eclipse Public License v2.0 to the list of default licenses allowed for ``artifact-checker``.
 -  ``[Studio]`` Clarified input messages of ``mmm init`` command.
+-  ``[Studio]`` Updated ``artifact-checker`` plugin binding to target ``verify``. This allow module checks to be executed on builds triggered by a pull request (no publication).
 -  ``[Studio]`` Fixed missing ``artifact-checker`` plugin to some module natures (``custom``, ``firmware-multiapp``, ``firmware-singleapp``, ``microej-javaimpl``, ``microej-mock``, ``microej-testsuite``, ``product-java``).
 -  ``[Studio]`` Fixed ``mmm run`` execution on a ``firmware-singleapp`` module (do not trigger the Firmware build).
 -  ``[SDK]`` Added ability to package private dependencies to ``mock`` module natures (configuration ``embedded``).
