@@ -158,7 +158,7 @@ MicroEJ Module Manager
    for Kernel APIs module dependencies (configuration ``kernelapi``) or Virtual Device specific modules dependencies (configuration ``default-vd``).
 -  ``[SDK]`` Fixed ``firmware-multiapp`` unexpected build error when no Application (``.wpk`` file) found in the dropins folder.
 -  ``[SDK]`` Fixed ``firmware-multiapp`` unexpected build error when no declared Resident Application.
-
+-  ``[SDK]`` Fixed ``firmware-singleapp`` and ``firmware-multiapp`` skeletons wrong package name generation for the default Main class.
 
 .. _changelog-5.4.1:
 
