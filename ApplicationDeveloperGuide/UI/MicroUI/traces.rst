@@ -3,7 +3,12 @@
 Debug Traces
 =============
 
-MicroUI logs several actions when traces are enabled. This chapter explains the traces identifiers. Some events data are described in next tables.
+MicroUI logs several actions when traces are enabled. This chapter explains the traces identifiers.
+
+Trace format
+------------
+
+The trace output format is the following:
 
 ``[TRACE: MicroUI] Event AA(BB[CC],DD[EE])``
 
@@ -11,10 +16,24 @@ where:
 
 - AA is the event identifier. See next table.
 - BB is the first event data.
-- CC is the first event data number (0x0).
+- CC is the index of the first event data (0x0).
 - DD is the second event data.
-- EE is the second event data number (0x1).
+- EE is the index of the second event data (0x1).
 - etc.
+
+For example, given the following trace output:
+
+``[TRACE: MicroUI] Event 0x2(1[0x0],2[0x1],117571586[0x2])``
+
+- 0x2 -> Execute native input event
+- 1 -> Event “Button” (index 0x0)
+- 2 -> Generator Id (index 0x1)
+- 117571586 -> event data (index 0x2)
+
+Trace identifiers
+-----------------
+
+The following tables describe some events data.
 
 .. table:: MicroUI Traces
 
@@ -222,6 +241,9 @@ where:
    +-------------+--------------------------------------------+
    | 0xcc (204)  | Draw image with scalling (bilinear)        |
    +-------------+--------------------------------------------+
+
+SystemView Integration
+----------------------
 
 The traces are :ref:`systemview` compatible. The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and copied in SystemView installation folder.
 
