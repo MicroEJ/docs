@@ -102,6 +102,21 @@ MicroEJ SDK console will display Launch steps messages.
 
     SUCCESS
 
+.. _section.debug.on.simulator:
+
+Debug on the Simulator
+----------------------
+
+To debug the sample project on Simulator, select it in the left panel then right-click
+and select :guilabel:`Run` > :guilabel:`Debug as` > :guilabel:`MicroEJ Application`.
+
+.. figure:: images/debug1.png
+   :alt: MicroEJ Development Tools Overview of the Debugger
+   :align: center
+   :scale: 75
+
+   MicroEJ Development Tools Overview of the Debugger
+
 
 .. _device_build:
 

@@ -3,11 +3,155 @@
 Debugging applications
 ======================
 
-This tutorial explains the available tools provided to developers to debug an application.
+This tutorial describes the available tools provided to developers to debug an application.
 It also lists several application uses cases.
 
 This tutorial assumes the issues occurs only on the board and can not be reproduced on the simulator.
 If an issue is reproducible on the simulator, it is often easier to use the :ref:`Application Debugger<application_debugger>`.
+
+Solutions
+---------
+
+Add traces and visualize the system behaviors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When an application has issues, the first step is often to get a better understanding of what is happening inside the system.
+
+- Use `Trace Library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html>`__ to trace the beginning and ending of events.
+
+   .. code-block:: java
+      :emphasize-lines: 4,9
+
+      private static final int EVENT_ID = 0;
+
+      public static void switchState(ApplicationState newState) {
+         tracer.recordEvent(EVENT_ID);
+
+         previousState = currentState;
+         currentState = newState;
+
+         tracer.recordEventEnd(EVENT_ID);
+      }
+
+  This API is most useful with the :ref:`SystemView Event tracer<systemview>` to visualize the timeline of events.
+
+   .. figure:: ../PlatformDeveloperGuide/images/STM32F7508-DK-demoWidget-SystemView.png
+      :alt: SystemView analysis of DemoWidget on STM32F7508 Platform
+      :align: center
+      :scale: 75
+
+- The `Message Library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/basic/BasicMessageLogger.html>`__ is a low RAM/ROM/CPU footprint API to log errors, warnings and misc information.
+
+   .. code-block:: java 
+      :emphasize-lines: 9
+
+      private static final String LOG_CATEGORY = "Application";
+
+      private static final int LOG_ID = 2;
+
+      public static void switchState(ApplicationState newState) {
+         previousState = currentState;
+         currentState = newState;
+
+         BasicMessageLogger.INSTANCE.log(Level.INFO, LOG_CATEGORY, LOG_ID, previousState, currentState);
+      }     
+
+- The `Logging Library <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html>`__ implements a subset of the standard Java ``java.util.logging``.
+
+   .. code-block:: java
+      :emphasize-lines: 5,6,7
+     
+      public static void switchState(ApplicationState newState) {
+         previousState = currentState;
+         currentState = newState;
+
+         Logger logger = Logger.getLogger(Main.class.getName());
+         logger.log(Level.INFO, "The application state has changed from " + previousState.toString() + " to "
+               + currentState.toString() + ".");
+      }
+
+Please refer to the tutorial :ref:`tutorial_instrument_java_code_for_logging` for a comparison of these libraries.
+
+- The :ref:`Core engine VM dump<vm_dump>` is a low-level API to display the states of the MicroEJ Runtime.  It displays the state of all MicroEJ threads: name, priority, stack trace, etc. 
+
+   .. code-block::
+   
+      ============ VM Dump ============
+      1 java threads
+      ---------------------------------
+      Java Thread[3]
+      name="SYSINpmp" prio=5 state=WAITING
+   
+      java/lang/Thread:
+          at com/is2t/microbsp/microui/natives/NSystemInputPump.@134261800
+       [0x0800AC32]
+          at com/is2t/microbsp/microui/io/SystemInputPump.@134265968
+       [0x0800BC80]
+          at ej/microui/Pump.@134261696
+       [0x0800ABCC]
+          at ej/microui/Pump.@134265872
+       [0x0800BC24]
+          at java/lang/Thread.@134273964
+       [0x0800DBC4]
+      =================================
+
+
+Troubleshooting memory issues
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Memory issues such as Memory corruptions and memory leaks can be hard to troubleshoot.  The following tool are available to address these issues:
+
+* `LLJVM check integrity <https://forum.microej.com/t/architecture-7-13-check-integrity-utility/769/2>`_ is a low-level API to detect memory corruptions in native functions.
+* Use :ref:`Heap Usage Monitoring Tool <heap_usage_monitoring>` to estimate the heap requirements of an application.
+* The :ref:`heapdumper` tools are used to analyze the content of the heap.  It is useful to detect memory leaks and to look for optimization of the heap usage.
+
+   .. figure:: images/HeapAnalyzer-example.png
+      :alt: Heap Analyzer Example
+      :align: center
+      :scale: 75
+
+Debugging GUI applications
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* The Widget Library provides several :ref:`Debug Utilities<widget_library_debug_utilities>` to investigate and assist troubleshooting of GUI applications.
+  For example, it is possible to print the type and bounds of each widget in the hierarchy of a widget:
+
+   .. code-block::
+   
+       Scroll: 0,0 480x272 (absolute: 0,0)
+       +--ScrollableList: 0,0 480x272 (absolute: 0,0)
+       |  +--Label: 0,0 480x50 (absolute: 0,0)
+       |  +--Dock: 0,50 480x50 (absolute: 0,50)
+       |  |  +--ImageWidget: 0,0 70x50 (absolute: 0,50)
+       |  |  +--Label: 70,0 202x50 (absolute: 70,50)
+       |  +--Label: 0,100 480x50 (absolute: 0,100)
+
+* Make sure to understand :ref:`MWT Concepts<mwt_concepts>`, especially the relations between the rendering, the lay-out the event dispatch and the states of desktop and widget.
+* For UI2 and former versions, please refer to `MicroUI and multithreading <https://forum.microej.com/t/gui-microui-and-multithreading/652>`__ for a description of the threading model involved.
+
+Static Analysis Tools
+~~~~~~~~~~~~~~~~~~~~~
+
+Static Analysis Tools are helpful allies to prevent several classes of bugs.
+
+* :ref:`SonarQube™<sonar_code_analysis>` provides reports on duplicated code, coding standards, unit tests, code coverage, code complexity, potential bugs, comments, and architecture.
+* Use the :ref:`Null Analysis tool<null_analysis>` to detect and to prevent `NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_, one of the most common causes of runtime failure of Java programs.
+
+   .. figure:: ../ApplicationDeveloperGuide/images/null_analysis_example.png
+      :alt: Example of Null Analysis Detection
+
+
+Simulator Debugger
+~~~~~~~~~~~~~~~~~~
+
+* Run on simulator, :ref:`section.debug.on.simulator`
+
+   .. figure:: ../ApplicationDeveloperGuide/images/debug1.png
+      :alt: MicroEJ Development Tools Overview of the Debugger
+      :align: center
+      :scale: 75
+
+* Configure the libraries sources location to :ref:`View library as sources<application_debugger>` in the debugger.
 
 
 .. _tutorial_debug_use_case_1:
@@ -439,30 +583,3 @@ Information printed in the VM state are:
 * Stack trace for each thread
 
 See :ref:`this section<vm_dump>` to learn more about ``LLMJVM_dump``.
-
-Resources
----------
-
-* API: Embedded Traces
-
-    * :ref:`tutorial_instrument_java_code_for_logging`
-    * :ref:`MicroUI traces<microui_traces>`
-    * :ref:`Application Stack Trace Reader<stack_trace_reader>`
-
-* API: 
-
-    * :ref:`Core engine VM dump<vm_dump>`
-    * `LLJVM check integrity <https://forum.microej.com/t/architecture-7-13-check-integrity-utility/769/2>`_
-
-* TOOL: 
-
-    * :ref:`SystemView Event tracer<systemview>`
-    * :ref:`heap_usage_monitoring`
-    * Run on simulator, debug on simulator https://docs.microej.com/en/latest/ApplicationDeveloperGuide/gettingStartedApp.html
-
-* DOC: 
-
-    * :ref:`null_analysis`
-    * :ref:`View library as sources<application_debugger>`
-    * `MicroUI and multithreading <https://forum.microej.com/t/gui-microui-and-multithreading/652>`__
-

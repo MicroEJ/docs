@@ -1,3 +1,5 @@
+.. _mwt_concepts:
+
 Concepts
 ============
 

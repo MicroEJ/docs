@@ -1,3 +1,5 @@
+.. _mwt_how_to_debug:
+
 How to Debug
 ============
 

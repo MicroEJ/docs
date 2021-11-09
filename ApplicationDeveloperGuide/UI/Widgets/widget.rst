@@ -38,6 +38,8 @@ Containers:
 - ``OverlapContainer``: lays out any number of children by stacking them.
 - ``Canvas``: lays out any number of children freely.
 
+.. _widget_library_debug_utilities:
+
 Debug Utilities
 ---------------
 
