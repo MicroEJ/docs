@@ -167,7 +167,7 @@ MicroEJ Module Manager
 [5.4.1] - 2021-04-16
 ~~~~~~~~~~~~~~~~~~~~
 
-*NOTE:* This release is both compatible with Eclipse version ``2020-06``
+**NOTE:** This release is both compatible with Eclipse version ``2020-06``
 and Eclipse Oxygen, so it can still be installed on a previous
 Studio / SDK Distribution.
 
@@ -192,7 +192,7 @@ MicroEJ Module Manager
 [5.4.0] - 2021-03-25
 ~~~~~~~~~~~~~~~~~~~~
 
-*NOTE:* This release is both compatible with Eclipse version ``2020-06``
+**NOTE:** This release is both compatible with Eclipse version ``2020-06``
 and Eclipse Oxygen, so it can still be installed on a previous
 Studio / SDK Distribution.
 
