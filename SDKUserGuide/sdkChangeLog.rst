@@ -2,10 +2,14 @@
 SDK Distribution Changelog
 --------------------------
 
-[21.11] - 2021-11-05
+[21.11] - 2021-11-15
 ~~~~~~~~~~~~~~~~~~~~
 
+**NOTE:** This release prepares for a future JRE 11 migration.
+However, the officially supported JRE version is still JRE 8. Please refer to :ref:`system-requirements` for more details.
+
 -  Included :ref:`Studio / SDK 5.5.0 <changelog-5.5.0>`
+-  Updated installer to accept both JRE 8 and JRE 11.
 
 [21.03] - 2021-03-25
 ~~~~~~~~~~~~~~~~~~~~
@@ -128,10 +132,14 @@ A line prefixed by ``[Studio]`` is valid for both Studio and SDK. A line prefixe
 [5.5.0] - 2021-11-05
 ~~~~~~~~~~~~~~~~~~~~
 
+**NOTE:** This release prepares for a future JRE 11 migration.
+However, the officially supported JRE version is still JRE 8. Please refer to :ref:`system-requirements` for more details.
+
 General
 """""""
 
 -  ``[Studio]`` Added Add-On Processor resolution in workspace.
+-  ``[Studio]`` Updated tools for both JRE 8 and JRE 11 compatibility.
 -  ``[SDK]`` Updated Architecture version check during Pack import (``greaterOrEqual`` instead of ``compatible``). This allows to import :ref:`pack_architecture_specific` and :ref:`pack_generic_legacy` on future Architecture ``8.x`` versions.
 
 MicroEJ Module Manager
