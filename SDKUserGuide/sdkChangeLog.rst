@@ -153,6 +153,7 @@ MicroEJ Module Manager
 -  ``[Studio]`` Fixed missing ``artifact-checker`` plugin to some module natures (``custom``, ``firmware-multiapp``, ``firmware-singleapp``, ``microej-javaimpl``, ``microej-mock``, ``microej-testsuite``, ``product-java``).
 -  ``[Studio]`` Fixed ``mmm run`` execution on a ``firmware-singleapp`` module (do not trigger the Firmware build).
 -  ``[Studio]`` Fixed ``kf-testsuite`` plugin test project build.
+-  ``[Studio]`` Added support of branch analysis with Sonar.
 -  ``[SDK]`` Added ability to package private dependencies to ``mock`` module natures (configuration ``embedded``).
 -  ``[SDK]`` Added ``testsuite`` and ``javadoc`` plugin to ``firmware-singleapp`` module nature.
 -  ``[SDK]`` Added ``ssh`` deployment to ``microej-kf-testsuite`` plugin.
