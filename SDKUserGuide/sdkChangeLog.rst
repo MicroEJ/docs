@@ -141,6 +141,7 @@ General
 
 -  ``[Studio]`` Added Add-On Processor resolution in workspace.
 -  ``[Studio]`` Updated tools for both JRE 8 and JRE 11 compatibility.
+-  ``[Studio]`` Fixed corrupted font file created by the Font designer when importing large number of glyphs.
 -  ``[SDK]`` Updated Architecture version check during Pack import (``greaterOrEqual`` instead of ``compatible``). This allows to import :ref:`pack_architecture_specific` and :ref:`pack_generic_legacy` on future Architecture ``8.x`` versions.
 
 MicroEJ Module Manager
