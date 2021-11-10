@@ -11,11 +11,13 @@ However, the officially supported JRE version is still JRE 8. Please refer to :r
 -  Included :ref:`Studio / SDK 5.5.0 <changelog-5.5.0>`
 -  Updated installer to accept both JRE 8 and JRE 11.
 -  Fixed error ``Error while loading manipulator`` when installing SDK updates on MacOS.
+-  Updated End User License Agreement
 
 [21.03] - 2021-03-25
 ~~~~~~~~~~~~~~~~~~~~
 
 -  Included :ref:`Studio / SDK 5.4.0 <changelog-5.4.0>`
+-  Updated End User License Agreement
   
 .. _known-issues-21.03:
 
@@ -143,6 +145,7 @@ General
 -  ``[Studio]`` Updated tools for both JRE 8 and JRE 11 compatibility.
 -  ``[Studio]`` Fixed corrupted font file created by the Font designer when importing large number of glyphs.
 -  ``[SDK]`` Updated Architecture version check during Pack import (``greaterOrEqual`` instead of ``compatible``). This allows to import :ref:`pack_architecture_specific` and :ref:`pack_generic_legacy` on future Architecture ``8.x`` versions.
+-  ``[SDK]`` Updated End User License Agreement
 
 MicroEJ Module Manager
 """"""""""""""""""""""
