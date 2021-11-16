@@ -132,7 +132,7 @@ A line prefixed by ``[Studio]`` is valid for both Studio and SDK. A line prefixe
 
 .. _changelog-5.5.0:
 
-[5.5.0] - 2021-11-05
+[5.5.0] - 2021-11-15
 ~~~~~~~~~~~~~~~~~~~~
 
 **NOTE:** This release prepares for a future JRE 11 support.
