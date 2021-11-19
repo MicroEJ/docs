@@ -17,6 +17,13 @@ A SystemView support is provided to use the software with a MicroEJ system. This
 
 .. note:: This SystemView section has been written for SystemView version V2.52a. Later versions may or may not work, and may need modification to the following steps.
 
+Here is a example when analyzing the `Demo Widget <https://...>`__ running on the `STM32F7508-DK platform <...>`__.
+
+.. figure:: images/STM32F7508-DK-demoWidget-SystemView.png
+   :alt: SystemView analysis of DemoWidget on STM32F7508 Platform
+   :align: center
+   :scale: 75
+
 References
 ==========
 
