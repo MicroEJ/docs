@@ -176,7 +176,7 @@ from :ref:`MicroEJ Central Repository <central_repository>`.
 
 To configure MicroEJ SDK to import dependencies from a local module repository, follow these steps:
 
-1. Open the :ref:`MMM preferences page <mmm_preferences_page>` in the MicroEJ SDK: :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Module Manager`.
+1. Open the :ref:`MMM preferences page <mmm_preferences_page>`: :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Module Manager`.
 2. In :guilabel:`Module Manager` group, click on :guilabel:`Import Repository`.
 3. Select the module repository ``.zip`` file, and then click on :guilabel:`Finish`.
 
