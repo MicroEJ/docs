@@ -37,7 +37,34 @@ Calling Java from JavaScript
 
 The MicroEJ engine allows to expose Java objects or methods to the JavaScript code by using the engine API and creating the adequate JavaScript object.
 
-For example, here is the code to create a JavaScript function named `javaPrint` in the global scope:
+Java objects can be exposed to JavaScript using the ``JavaImport`` mechanism: 
+it takes a Java fully qualified name as argument and returns an objects that 
+gives access to the constructors, static methoods and static fields.
+
+For instance, the following code imports ``java.lang.System`` and prints a 
+string calling ``System.out.println()``:
+
+.. code-block:: javascript
+
+	var System = JavaImport("java.lang.System")
+	System.out.println("foo");
+
+Here we instantiate a Java ``File`` object and checks that it exists:
+
+.. code-block:: javascript
+
+	var File = JavaImport("java.io.File")
+	var myFile = new File("myFile.txt")
+
+	if (myFile.exists()) {
+		print("myFile.txt exists")
+	} else {
+		print("myFile.txt does not exist")
+	}
+
+We can also implement JavaScript functions in Java by adding their 
+implementation to the global object from Java. For example, here is the code to 
+create a JavaScript function named `javaPrint` in the global scope:
 
 .. code-block:: java
 
