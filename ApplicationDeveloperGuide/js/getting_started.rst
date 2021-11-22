@@ -11,12 +11,6 @@
 Getting Started
 ===============
 
-.. note::
-
-    The JavaScript runtime is currently in preview and is available as a demonstration bundle on demand. Please contact :ref:`our support team <get_support>`.
-
-    Before going further with this getting started, follow the steps described in the ``README.rst`` of the demonstration bundle.
-
 Let's walk through the steps required to use Javascript in your MicroEJ application:
 
 - install the :ref:`MMM CLI (Command Line Interface) <mmm_build_kit>`
