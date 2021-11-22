@@ -174,8 +174,17 @@ Use the Offline Repository
 By default, when starting an empty workspace, MicroEJ SDK is configured to import dependencies
 from :ref:`MicroEJ Central Repository <central_repository>`. 
 
-To configure MicroEJ SDK to import dependencies from a local module repository:
+To configure MicroEJ SDK to import dependencies from a local module repository, follow these steps:
 
-1. Unzip the module repository ``.zip`` file to the folder of your choice,
-2. :ref:`Configure MMM settings file <mmm_settings_file>` using the ``ivysettings.xml`` file located at the root
-   of the folder where the repository has been extracted.
+1. Open the :ref:`MMM preferences page <mmm_preferences_page>`: :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Module Manager`.
+2. In :guilabel:`Module Manager` group, click on :guilabel:`Import Repository`.
+3. Select the module repository ``.zip`` file, and then click on :guilabel:`Finish`.
+
+The import may take some time. The module repository is unzipped in the folder ``${user.dir}/.microej/repositories``, and the settings are updated. 
+
+..
+   | Copyright 2020-2021, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
