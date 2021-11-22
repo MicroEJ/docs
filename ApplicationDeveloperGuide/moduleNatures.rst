@@ -108,6 +108,7 @@ This module nature inherits the configuration properties of the following plugin
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.testsuite`
+- :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
 
 This module nature defines the following dedicated configuration properties:
 
@@ -172,6 +173,7 @@ This module nature inherits the configuration properties of the following plugin
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.unittests`
+- :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
 
 .. _module_natures.module_repository:
 
@@ -298,6 +300,9 @@ This module nature inherits the configuration properties of the following plugin
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.platform_loader`
+- :ref:`module_natures.plugins.javadoc` [#require_sdk_5_5]_
+- :ref:`module_natures.plugins.testsuite` [#require_sdk_5_5]_
+- :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
 
 This module nature defines the following dedicated configuration properties:
 
@@ -317,6 +322,8 @@ This module nature defines the following dedicated configuration properties:
    * - virtual.device.sim.only
      - When this property is set (any value), the firmware is not built.
      - Not set
+
+.. [#require_sdk_5_5] MicroEJ SDK version ``5.5.0`` or higher.
 
 .. _module_natures.plugins:
 
@@ -508,7 +515,7 @@ This plugin defines the following configuration properties:
      - ``true``
    * - cc.src.folders
      - Path to the folders containing the Java sources used for code coverage analysis.
-     - Not set
+     - Java source folder (``src/main/java``) and Add-On Processor generated source folders (``src-adpgenerated/*``) [#warning_check_sdk_5_5]_
    * - microej.testsuite.verbose
      - When this property is set to true, the verbose trace level is enabled.
      - ``false``
@@ -524,6 +531,8 @@ This plugin defines the following configuration properties:
    * - skip.test
      - When this property is set (any value), the tests are not executed.
      - Not set
+
+.. [#warning_check_sdk_5_5] Option ``cc.src.folders`` is not set by default for MicroEJ SDK versions lower than ``5.5.0``.
 
 .. _module_natures.plugins.unittests:
 

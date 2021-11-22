@@ -2,10 +2,22 @@
 SDK Distribution Changelog
 --------------------------
 
+[21.11] - 2021-11-15
+~~~~~~~~~~~~~~~~~~~~
+
+**NOTE:** This release prepares for a future JRE 11 support.
+However, the only officially supported JRE version is still JRE 8. Please refer to :ref:`system-requirements` for more details.
+
+-  Included :ref:`Studio / SDK 5.5.0 <changelog-5.5.0>`.
+-  Updated installer to accept both JRE 8 and JRE 11.
+-  Fixed error ``Error while loading manipulator`` when installing SDK updates on MacOS.
+-  Updated End User License Agreement.
+
 [21.03] - 2021-03-25
 ~~~~~~~~~~~~~~~~~~~~
 
--  Included :ref:`Studio / SDK 5.4.0 <changelog-5.4.0>`
+-  Included :ref:`Studio / SDK 5.4.0 <changelog-5.4.0>`.
+-  Updated End User License Agreement.
   
 .. _known-issues-21.03:
 
@@ -118,12 +130,58 @@ SDK includes all Studio features.
 
 A line prefixed by ``[Studio]`` is valid for both Studio and SDK. A line prefixed by ``[SDK]`` is only valid for SDK.
 
+.. _changelog-5.5.0:
+
+[5.5.0] - 2021-11-15
+~~~~~~~~~~~~~~~~~~~~
+
+**NOTE:** This release prepares for a future JRE 11 support.
+However, the only officially supported JRE version is still JRE 8. Please refer to :ref:`system-requirements` for more details.
+
+General
+"""""""
+
+-  ``[Studio]`` Added Add-On Processor resolution in workspace.
+-  ``[Studio]`` Updated tools for both JRE 8 and JRE 11 compatibility.
+-  ``[Studio]`` Fixed corrupted font file created by the Font designer when importing large number of glyphs.
+-  ``[SDK]`` Updated Architecture version check during Pack import (``greaterOrEqual`` instead of ``compatible``). This allows to import :ref:`pack_architecture_specific` and :ref:`pack_generic_legacy` on future Architecture ``8.x`` versions.
+-  ``[SDK]`` Updated End User License Agreement.
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+-  ``[Studio]`` Added ``bin`` folder to ``.gitignore`` file of module natures Java project skeleton.
+-  ``[Studio]`` Added Null Analysis configuration to ``artifact-checker``. When building a module repository, null analysis configuration is only checked on the highest module version included in the repository.
+-  ``[Studio]`` Added Eclipse Public License v2.0 to the list of default licenses allowed for ``artifact-checker``.
+-  ``[Studio]`` Clarified input messages of ``mmm init`` command.
+-  ``[Studio]`` Updated ``artifact-checker`` plugin binding to target ``verify``. This allow module checks to be executed on builds triggered by a pull request (no publication).
+-  ``[Studio]`` Fixed missing ``artifact-checker`` plugin to some module natures (``custom``, ``firmware-multiapp``, ``firmware-singleapp``, ``microej-javaimpl``, ``microej-mock``, ``microej-testsuite``, ``product-java``).
+-  ``[Studio]`` Fixed ``mmm run`` execution on a ``firmware-singleapp`` module (do not trigger the Firmware build).
+-  ``[Studio]`` Fixed ``kf-testsuite`` plugin test project build.
+-  ``[Studio]`` Added support of branch analysis with Sonar.
+-  ``[SDK]`` Added ability to package private dependencies to ``mock`` module natures (configuration ``embedded``).
+-  ``[SDK]`` Added ``testsuite`` and ``javadoc`` plugin to ``firmware-singleapp`` module nature.
+-  ``[SDK]`` Added ``ssh`` deployment to ``microej-kf-testsuite`` plugin.
+-  ``[SDK]`` Updated ``firmware-multiapp`` to remove the ``bsp`` directory in Virtual Devices.
+-  ``[SDK]`` Updated ``firmware-multiapp`` to allow Virtual Devices for launching a specific main class other than the Kernel main class.
+   This is useful for running JUnit tests using a Virtual Device instead of a Platform.
+-  ``[SDK]`` Updated ``firmware-multiapp`` to allow Virtual Devices for automatically launching a Sandboxed Application project in MicroEJ Studio.
+-  ``[SDK]`` Updated ``firmware-multiapp`` to automatically configure the Virtual Device Kernel UID when a Firmware is built.
+-  ``[SDK]`` Fixed ``firmware-multiapp`` skeleton default dependencies with only modules available in MicroEJ Central Repository.
+-  ``[SDK]`` Fixed ``firmware-multiapp`` unexpected build error when no declared Resident Application.
+-  ``[SDK]`` Fixed ``firmware-multiapp`` build which may fail an unexpected ``Unresolved Dependencies`` error the first time,
+   for Kernel APIs module dependencies (configuration ``kernelapi``) or Virtual Device specific modules dependencies (configuration ``default-vd``).
+-  ``[SDK]`` Fixed ``firmware-multiapp`` unexpected build error when no Application (``.wpk`` file) found in the dropins folder.
+-  ``[SDK]`` Fixed ``firmware-multiapp`` unexpected build error when no declared Resident Application.
+-  ``[SDK]`` Fixed ``firmware-singleapp`` and ``firmware-multiapp`` skeletons wrong package name generation for the default Main class.
+-  ``[SDK]`` Fixed ``artifact-repository`` changelog check for modules with a snapshot version.
+
 .. _changelog-5.4.1:
 
 [5.4.1] - 2021-04-16
 ~~~~~~~~~~~~~~~~~~~~
 
-*NOTE:* This release is both compatible with Eclipse version ``2020-06``
+**NOTE:** This release is both compatible with Eclipse version ``2020-06``
 and Eclipse Oxygen, so it can still be installed on a previous
 Studio / SDK Distribution.
 
@@ -148,7 +206,7 @@ MicroEJ Module Manager
 [5.4.0] - 2021-03-25
 ~~~~~~~~~~~~~~~~~~~~
 
-*NOTE:* This release is both compatible with Eclipse version ``2020-06``
+**NOTE:** This release is both compatible with Eclipse version ``2020-06``
 and Eclipse Oxygen, so it can still be installed on a previous
 Studio / SDK Distribution.
 
@@ -181,7 +239,7 @@ General
 -  ``[SDK]`` Updated End User License Agreement
 -  ``[SDK]`` Added the latest HIL Engine API to mock-up skeleton (native
    resources management)
--  ``[SDK]`` Update the Architecture import wizard to automatically
+-  ``[SDK]`` Updated the Architecture import wizard to automatically
    accept Pack licenses when the Architecture license is accepted
 
 MicroEJ Module Manager
