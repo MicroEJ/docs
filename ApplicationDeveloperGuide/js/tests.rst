@@ -28,7 +28,7 @@ In order to setup JavaScript tests for your application, follow these steps:
 
 .. code-block:: xml
 
-    <dependency org="com.microej.library.runtime" name="js" rev="0.10.0"/>
+    <dependency org="com.microej.library.runtime" name="js" rev="0.13.0"/>
 
 - define the platform to use to run the tests with one of the options described in :ref:`platform_selection` section
 - create a file ``assert.js`` in the folder ``src/test/resources`` with the following content:

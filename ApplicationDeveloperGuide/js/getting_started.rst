@@ -24,7 +24,7 @@ Let's walk through the steps required to use Javascript in your MicroEJ applicat
 
 .. code:: console
 
-    mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=firmware-singleapp -Dskeleton.rev=1.1.12  -Dproject.org=com.mycompany -Dproject.module=myproject -Dproject.rev=1.0.0 -Dskeleton.target.dir=myproject 
+    mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=firmware-singleapp -Dskeleton.rev=1.1.12 -Dproject.org=com.mycompany -Dproject.module=myproject -Dproject.rev=1.0.0 -Dskeleton.target.dir=myproject 
 
 Adapt the properties values to your need.
 See the :ref:`MMM CLI init command documentation <mmm_cli.commands.init>` for more details.
@@ -38,7 +38,7 @@ Javascript is supported in the following :ref:`Module Natures page <module_natur
 
 .. code:: xml
 
-    <dependency org="com.microej.library.runtime" name="js" rev="0.10.0"/>
+    <dependency org="com.microej.library.runtime" name="js" rev="0.13.0"/>
 
 - add the following lines in your application main class:
 
