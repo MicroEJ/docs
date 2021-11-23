@@ -11,12 +11,12 @@ A native method is a method declared in Java with the ``native`` keyword and imp
 Intended Audience
 =================
 
-The audience for this document is Platform developers who want to implement abstraction layer interfaces.
+The audience for this document is Platform developers who want to implement Abstraction Layer interfaces.
 
 Prerequisites
 =============
 
-The following document assumes the reader already has a setup ready to run a MicroEJ application on a target device.
+The following document assumes the reader already has a setup ready to run a MicroEJ Standalone Application on a target device.
 
 The following document also assumes the reader is familiar with the :ref:`Simple Native Interface (SNI) <sni>` mechanism.
 If not, the `CallingCFromJava <https://github.com/MicroEJ/Example-Standalone-Java-C-Interface/tree/master/CallingCFromJava/>`_ 
@@ -45,7 +45,7 @@ A MicroEJ Platform with (at least):
 Example Code
 ============
 
-Let's start with a MicroEJ Application that calls a blocking Java method implemented in C.
+Let's start with a MicroEJ Standalone Application that calls a blocking Java method implemented in C.
 
 The following example waits for a button event and prints the index of the pressed button.
 
