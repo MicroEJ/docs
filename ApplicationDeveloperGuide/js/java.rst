@@ -37,9 +37,14 @@ Calling Java from JavaScript
 
 The MicroEJ engine allows to expose Java objects or methods to the JavaScript code by using the engine API and creating the adequate JavaScript object.
 
-Java objects can be exposed to JavaScript using the ``JavaImport`` mechanism: 
-it takes a Java fully qualified name as argument and returns an objects that 
-gives access to the constructors, static methoods and static fields.
+Import Java Types from JavaScript
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Java objects can be exposed to JavaScript using the ``JavaImport`` mechanism.
+It takes a Java fully qualified name as argument and returns an object that 
+gives access to the constructors, static methods and static fields. All the 
+classes from the project's classpath can be imported (project's own classes and 
+its dependencies).
 
 For instance, the following code imports ``java.lang.System`` and prints a 
 string calling ``System.out.println()``:
@@ -49,7 +54,7 @@ string calling ``System.out.println()``:
 	var System = JavaImport("java.lang.System")
 	System.out.println("foo");
 
-Here we instantiate a Java ``File`` object and checks that it exists:
+Here we instantiate a Java ``File`` object and check that it exists:
 
 .. code-block:: javascript
 
@@ -65,6 +70,9 @@ Here we instantiate a Java ``File`` object and checks that it exists:
 .. warning::
 
      You cannot instantiate an anonymous class from an interface or an abstract class with the ``new`` keyword and ``JavaImport``. Nevertheless, you can still access to static fields and methods.   
+
+Implement JavaScript Functions in Java
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We can also implement JavaScript functions in Java by adding their 
 implementation to the global object from Java. For example, here is the code to 
@@ -163,7 +171,7 @@ Passing Values Between JavaScript and Java
 ------------------------------------------
 
 JavaScript base types are represented by Java objects and not Java base types. 
-The following table show the correspondance between types in both languages: 
+The following table shows the mapping between types in both languages: 
 
 +------------+-----------------------------------------------+
 | JavaScript | Java                                          |
@@ -259,7 +267,7 @@ Here is a possible implementation of the callback object:
     }
 
 We can now pass the callback to the job. The Java code will wait on the 
-``callback.getValue()`` untill the result is ready.
+``callback.getValue()`` until the result is ready.
 
 .. code-block:: java
 
