@@ -6,9 +6,6 @@ Debugging applications
 This tutorial describes the available tools provided to developers to debug an application.
 It also lists several application uses cases.
 
-This tutorial assumes the issues occurs only on the board and can not be reproduced on the simulator.
-If an issue is reproducible on the simulator, it is often easier to use the :ref:`Application Debugger<application_debugger>`.
-
 Solutions
 ---------
 
@@ -127,7 +124,7 @@ Debugging GUI applications
        |  +--Label: 0,100 480x50 (absolute: 0,100)
 
 * Make sure to understand :ref:`MWT Concepts<mwt_concepts>`, especially the relations between the rendering, the lay-out the event dispatch and the states of desktop and widget.
-* For UI2 and former versions, please refer to `MicroUI and multithreading <https://forum.microej.com/t/gui-microui-and-multithreading/652>`__ for a description of the threading model involved.
+* For UI2 and former versions, please refer to `MicroUI and multithreading <https://forum.microej.com/t/gui-microui-and-multithreading/652>`__ for a description of the threading model.
 
 Static Analysis Tools
 ~~~~~~~~~~~~~~~~~~~~~
