@@ -96,10 +96,10 @@ Please refer to the tutorial :ref:`tutorial_instrument_java_code_for_logging` fo
 Troubleshooting memory issues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Memory issues such as Memory corruptions and memory leaks can be hard to troubleshoot.  The following tool are available to address these issues:
+Memory issues such as memory corruptions and memory leaks can be hard to troubleshoot.  The following tools are available to address these issues:
 
 * `LLJVM check integrity <https://forum.microej.com/t/architecture-7-13-check-integrity-utility/769/2>`_ is a low-level API to detect memory corruptions in native functions.
-* Use :ref:`Heap Usage Monitoring Tool <heap_usage_monitoring>` to estimate the heap requirements of an application.
+* Use the :ref:`Heap Usage Monitoring Tool <heap_usage_monitoring>` to estimate the heap requirements of an application.
 * The :ref:`heapdumper` tools are used to analyze the content of the heap.  It is useful to detect memory leaks and to look for optimization of the heap usage.
 
    .. figure:: images/HeapAnalyzer-example.png
@@ -129,7 +129,7 @@ Debugging GUI applications
 Static Analysis Tools
 ~~~~~~~~~~~~~~~~~~~~~
 
-Static Analysis Tools are helpful allies to prevent several classes of bugs.
+Static analysis tools are helpful allies to prevent several classes of bugs.
 
 * :ref:`SonarQube™<sonar_code_analysis>` provides reports on duplicated code, coding standards, unit tests, code coverage, code complexity, potential bugs, comments, and architecture.
 * Use the :ref:`Null Analysis tool<null_analysis>` to detect and to prevent `NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_, one of the most common causes of runtime failure of Java programs.
@@ -141,7 +141,7 @@ Static Analysis Tools are helpful allies to prevent several classes of bugs.
 Simulator Debugger
 ~~~~~~~~~~~~~~~~~~
 
-* Run on simulator, :ref:`section.debug.on.simulator`
+* Run on simulator, :ref:`section.debug.on.simulator`, add breakpoints, inspect stack frame, use step-by-step, etc.
 
    .. figure:: ../ApplicationDeveloperGuide/images/debug1.png
       :alt: MicroEJ Development Tools Overview of the Debugger
