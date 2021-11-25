@@ -62,6 +62,10 @@ Here we instantiate a Java ``File`` object and checks that it exists:
 		print("myFile.txt does not exist")
 	}
 
+.. warning::
+
+     You cannot instantiate an anonymous class from an interface or an abstract class with the ``new`` keyword and ``JavaImport``. Nevertheless, you can still access to static fields and methods.   
+
 We can also implement JavaScript functions in Java by adding their 
 implementation to the global object from Java. For example, here is the code to 
 create a JavaScript function named `javaPrint` in the global scope:
