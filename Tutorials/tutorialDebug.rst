@@ -14,7 +14,7 @@ Add traces and visualize the system behaviors
 
 When an application has issues, the first step is often to get a better understanding of what is happening inside the system.
 
-- Use `Trace Library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html>`__ to trace the beginning and ending of events.
+- The `Trace Library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html>`__ is a real-time event recording library. Use it to trace the beginning and ending of events.
 
    .. code-block:: java
       :emphasize-lines: 4,9
