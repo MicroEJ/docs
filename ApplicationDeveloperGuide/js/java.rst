@@ -150,7 +150,7 @@ it can be called from a Java piece of code with:
 .. code-block:: java
 
     JsObjectFunction functionObject = (JsObjectFunction) JsRuntime.JS_GLOBAL_OBJECT.get("sum");
-    JsRuntime.ENGINE.addJob(new Job(functionObject, JsRuntime.JS_GLOBAL_OBJECT, new Integer(5), new Integer(3)));
+    JsRuntime.ENGINE.addJob(functionObject, JsRuntime.JS_GLOBAL_OBJECT, new Integer(5), new Integer(3));
 
 The first line gets the JavaScript function from the global scope.
 The second line adds a job in the JavaScript engine queue to execute the function, in the global scope, with the arguments ``5`` and ``3``.
@@ -181,7 +181,7 @@ possible for performance reasons. Otherwhise, ``Double`` type will be used.
 
 .. note::
 
-    Prefer passing ``Integer`` values as argument to a ``Job``, or return ``Integer`` values when implementing a ``JsClosure`` instead of ``Double`` when possible.
+    Prefer passing ``Integer`` values as argument to a job added to the JavaScript execution queue, or return ``Integer`` values when implementing a ``JsClosure`` instead of ``Double`` when possible.
 
 It is not possible to retrieve the returned value of a JavaScript function from 
 Java. For instance, consider the following JavaScript function:
@@ -197,7 +197,7 @@ When calling this function from Java, we have no way to get the result back:
 .. code-block:: java
 
     JsObjectFunction functionObject = (JsObjectFunction) JsRuntime.JS_GLOBAL_OBJECT.get("sum");
-    JsRuntime.ENGINE.addJob(new Job(functionObject, JsRuntime.JS_GLOBAL_OBJECT, new Integer(5), new Integer(3)));
+    JsRuntime.ENGINE.addJob(functionObject, JsRuntime.JS_GLOBAL_OBJECT, new Integer(5), new Integer(3));
 
 A workaround is to modify the JavaScript function so it takes a callback object 
 as argument:
@@ -261,6 +261,6 @@ We can now pass the callback to the job. The Java code will wait on the
 
     JsObjectFunction functionObject = (JsObjectFunction) JsRuntime.JS_GLOBAL_OBJECT.get("sum");
     Callback<Integer> callback = new Callback<>();
-    JsRuntime.ENGINE.addJob(new Job(functionObject, JsRuntime.JS_GLOBAL_OBJECT, new Integer(5), new Integer(3), callback));
+    JsRuntime.ENGINE.addJob(functionObject, JsRuntime.JS_GLOBAL_OBJECT, new Integer(5), new Integer(3), callback);
     Integer returnedValue = callback.getValue();
     System.out.println("Result is " + returnedValue);
