@@ -149,6 +149,7 @@ MicroEJ Module Manager
 
 -  ``[Studio]`` Added ``bin`` folder to ``.gitignore`` file of module natures Java project skeleton.
 -  ``[Studio]`` Added Null Analysis configuration to ``artifact-checker``. When building a module repository, null analysis configuration is only checked on the highest module version included in the repository.
+-  ``[Studio]`` Added changelog release date to ``artifact-checker``.
 -  ``[Studio]`` Added Eclipse Public License v2.0 to the list of default licenses allowed for ``artifact-checker``.
 -  ``[Studio]`` Clarified input messages of ``mmm init`` command.
 -  ``[Studio]`` Updated ``artifact-checker`` plugin binding to target ``verify``. This allow module checks to be executed on builds triggered by a pull request (no publication).
@@ -171,7 +172,7 @@ MicroEJ Module Manager
 -  ``[SDK]`` Fixed ``firmware-multiapp`` unexpected build error when no Application (``.wpk`` file) found in the dropins folder.
 -  ``[SDK]`` Fixed ``firmware-multiapp`` unexpected build error when no declared Resident Application.
 -  ``[SDK]`` Fixed ``firmware-singleapp`` and ``firmware-multiapp`` skeletons wrong package name generation for the default Main class.
--  ``[SDK]`` Fixed ``artifact-repository`` changelog check for modules with a snapshot version.
+
 
 .. _changelog-5.4.1:
 
