@@ -141,7 +141,7 @@ Static analysis tools are helpful allies to prevent several classes of bugs.
 Simulator Debugger
 ~~~~~~~~~~~~~~~~~~
 
-* Run on simulator, :ref:`section.debug.on.simulator`, add breakpoints, inspect stack frame, use step-by-step, etc.
+* :ref:`Debug an application <application_debugger>` on simulator, add breakpoints, inspect stack frame, use step-by-step, etc.
 
    .. figure:: ../ApplicationDeveloperGuide/images/debug1.png
       :alt: MicroEJ Development Tools Overview of the Debugger
