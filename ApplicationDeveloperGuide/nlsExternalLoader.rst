@@ -16,13 +16,13 @@ PO files can be dropped in a given location in the Virtual Device folders to dyn
 Installation
 ------------
 
-To enable the NLS External Loader in your Virtual Device, add the following dependency to the ``module.ivy`` file of your MicroEJ Firmware project:
+To enable the NLS External Loader in the Virtual Device, add the following dependency to the ``module.ivy`` file of the MicroEJ Firmware project:
 
 .. code-block:: xml
 
    <dependency org="com.microej.tool" name="nls-po-external-loader" rev="2.3.0" transitive="false"/>
 
-Then rebuild your MicroEJ Firmware project to produce the Virtual Device.
+Then rebuild the MicroEJ Firmware project to produce the Virtual Device.
 
 Usage
 -----
@@ -30,7 +30,7 @@ Usage
 Once the project built:
 
 - unzip the Virtual Device and create a folder named ``translations`` in the root folder.
-- copy all the PO files from your project into the ``translations`` folder.
+- copy all the PO files from the project into the ``translations`` folder.
   All PO files found in this folder are processed, no matter their folder level.
 - start the Virtual Device with the launcher.
    The following logs should be printed if the NLS External Loader has been executed and has found the PO files::
@@ -47,8 +47,8 @@ Once the project built:
    [po-to-nls] Loading *.po files for NLS interface <CLASSPATH>.<CLASSNAME>
    [po-to-nls]   => loaded locales : fr_DA,fr_ES,fr_NL,fr_FI,fr_RU,fr_SV,fr_DE,fr_NO,fr_IT,fr_FR,fr_PL,fr_EN
 
-- update the languages strings in your PO files of the Virtual Device (the files in the `translations/` folder).
-- restart the Virtual Device and check your changes.
+- update the languages strings in the PO files of the Virtual Device (the files in the `translations/` folder).
+- restart the Virtual Device and check the changes.
 
 
 It is important to know the following rules about the NLS External Loader:
@@ -93,7 +93,7 @@ Crowdin is a cloud-based localization platform which allows to manage multilingu
 The NLS External Loader can fetch translations directly from Crowdin to make the translation process even easier.
 Translators can then contribute and validate their translations in Crowdin and apply them automatically in the Virtual Device.
 
-A new dependency must be added to the `module.ivy` file of your MicroEJ Firmware project to enable this integration:
+A new dependency must be added to the ``module.ivy`` file of the MicroEJ Firmware project to enable this integration:
 
 .. code-block:: xml
 
@@ -101,8 +101,8 @@ A new dependency must be added to the `module.ivy` file of your MicroEJ Firmware
 
 Once the module has been built, edit the file ``platform/tools/crowdin/crowdin.properties`` to configure the Crowdin connection:
 
-- set ``crowdin.token`` to your Crowdin API token. A token can be generated in the Crowdin in :guilabel:`Settings` > :guilabel:`API` > click on :guilabel:`New Token`.
-- set ``crowdin.projectsIds`` to the id of your Crowdin project. The project id can be found in the :guilabel:`Details` section on a project page.
+- set ``crowdin.token`` to the Crowdin API token. A token can be generated in the Crowdin in :guilabel:`Settings` > :guilabel:`API` > click on :guilabel:`New Token`.
+- set ``crowdin.projectsIds`` to the id of the Crowdin project. The project id can be found in the :guilabel:`Details` section on a project page.
   Multiple projects can be set by separating their id with a comma (for example ``crowdin.projectsIds=12,586,874``).
 
 When the configuration is done, the fetch of the Crowdin translations can be done by executing the script ``crowdin.bat`` or ``crowdin.sh`` located in the folder ``platform/tools/crowdin/``.
