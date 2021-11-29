@@ -3,15 +3,11 @@
 NLS External Loader
 ===================
 
-MicroEJ provides Native Language Support in applications as described in the :ref:`section.applicationResources.nls` section.
-Languages strings are defined in PO files in the application sources.
-While this is convenient during the application development phase since everything is at the same location,
-it can be painful in others circumstances.
-For example, during the test of the application or the translation phase by non-developer persons, 
-it would mean asking the developers to update the sources filesand rebuild the application for each update.
-
-In order to make NLS changes easier and quicker, PO files can be updated directly in a Virtual Device thanks to the NLS External Loader.
+The NLS External Loader allows to update the :ref:`PO files <section.applicationResources.nls>` of an application without rebuilding it.
 PO files can be dropped in a given location in the Virtual Device folders to dynamically replace the language strings embedded in the application.
+
+This is typically useful when testing or translating an application in order to have a quick feedback when changing the PO files.
+Once the PO files are updated, a simple restart of the Virtual Device allows to immediately see the result.
 
 Installation
 ------------
