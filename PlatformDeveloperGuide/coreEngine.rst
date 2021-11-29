@@ -406,7 +406,7 @@ Search for these symbols in the ``.map`` file.
 
 .. note::
 
-   ``LLM_JVM_dump`` (in ``LLMJVM.h``) may need to be called explicitely.
+   ``LLMJVM_dump`` (in ``LLMJVM.h``) needs to be called explicitly.
    A linker optimization may remove the symbol if it is not used anywhere in the code.
 
 Requirements:
