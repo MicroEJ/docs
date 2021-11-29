@@ -245,11 +245,31 @@ following snippet in the ``main()`` method of the application:
 This code creates a new Java thread that will print the message ``Alive``
 on the standard output every 10 seconds.
 
-If the ``Alive`` printouts stop when the UI freeze occurs (assuming no
-one cancelled the ``Timer``), then it means that the MicroEJ Runtime
-stopped scheduling the Java threads.
+If the ``Alive`` printouts stop when the UI freeze occurs (assuming no one cancelled the ``Timer``), then it means that the MicroEJ Runtime stopped scheduling the Java threads or that one or more threads with a higher priority are preventing the threads with a lower priority to run.
 
 Here are a few suggestions:
+
+- Make sure no Java threads with a high priority are preventing the scheduling of the other threads.
+  For example, convert the above example with a dedicated thread with the highest priority:
+
+  .. code-block:: java
+
+     Thread thread = new Thread(new Runnable() {
+
+     	@Override
+     	public void run() {
+     		while (true) {
+     			try {
+     				Thread.sleep(10_000);
+     				System.out.println("Alive");
+     			} catch (InterruptedException e) {
+     				e.printStackTrace();
+     			}
+     		}
+     	}
+     });
+     thread.setPriority(Thread.MAX_PRIORITY);
+     thread.start();
 
 - The RTOS task that runs the MicroEJ runtime might be suspended or
   blocked. Check if some API call is suspending the task or if a
