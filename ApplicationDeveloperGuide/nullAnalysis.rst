@@ -107,11 +107,11 @@ External null annotations
 -------------------------
 
 In some situations, the null analysis will miss potential null access while using unannotated external libraries.
-For instance : an ArrayList can contain null values, hence the `get(int)` method can return null values. However, this won't be taken into account by default during null analysis.
+For instance : an ``ArrayList`` can contain null values, hence the ``get(int)`` method can return ``null`` values. However, this won't be taken into account by default during null analysis.
 
 .. figure:: images/null_analysis_ArrayList_annotation_before.png
 
-Manually annotate the `get(int)` method return type with @Nullable allows to detect the potential null access: 
+Manually annotate the ``get(int)`` method return type with **@Nullable** allows to detect the potential null access: 
 
 .. figure:: images/null_analysis_ArrayList_annotation_after.png
 
@@ -220,7 +220,7 @@ Update changes
 When editing ``.eea`` files manually it may be needed to clean the project **Project->Clean** for the changes to take place.
 If the changes still aren't taken into account, the IDE must be restarted.
 
-It's also worth the try with automatic annotations if any problem is encountered.
+Sometimes a manual update can also be needed for automatic annotations.
 
 Advanced Use
 ------------
