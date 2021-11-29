@@ -389,14 +389,14 @@ This is an example of a dump:
 
 See :ref:`stack_trace_reader` for additional info related to working with VM dumps.
 
-Trigger VM dump from a fault handler
+Trigger VM Dump From A Fault Handler
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is recommended to do a VM dump as a last resort in a fault handler.
 Calling ``LLMJVM_dump`` is undefined if the VM is not paused.
 The call to ``LLMJVM_dump`` MUST be done last in the fault handler.
 
-Trigger VM dump from debugger
+Trigger VM Dump From Debugger
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To trigger a VM dump from the debugger, set the PC register to the ``LLMJVM_dump`` address.
