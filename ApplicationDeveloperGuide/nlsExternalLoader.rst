@@ -29,7 +29,7 @@ Once the project built:
 - copy all the PO files from the project into the ``translations`` folder.
   All PO files found in this folder are processed, no matter their folder level.
 - start the Virtual Device with the launcher.
-   The following logs should be printed if the NLS External Loader has been executed and has found the PO files::
+  The following logs should be printed if the NLS External Loader has been executed and has found the PO files::
 
    externalPoLoaderInit:init:
 
