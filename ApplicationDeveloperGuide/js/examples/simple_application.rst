@@ -20,7 +20,7 @@ This example shows the minimal code for a MicroEJ JavaScript application:
 - create an :ref:`Add-On Library <libraries>` project or a :ref:`Sandboxed Application <section.application.template>` project
 - add the MicroEJ JavaScript dependency in the module.ivy file of your project::
 
-    <dependency org="com.microej.library.runtime" name="js" rev="0.10.0"/>
+    <dependency org="com.microej.library.runtime" name="js" rev="0.13.0"/>
 
 - init the JavaScript code in your Java application with:
 

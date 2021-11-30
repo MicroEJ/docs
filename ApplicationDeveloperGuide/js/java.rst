@@ -37,7 +37,46 @@ Calling Java from JavaScript
 
 The MicroEJ engine allows to expose Java objects or methods to the JavaScript code by using the engine API and creating the adequate JavaScript object.
 
-For example, here is the code to create a JavaScript function named `javaPrint` in the global scope:
+Import Java Types from JavaScript
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Java objects can be exposed to JavaScript using the ``JavaImport`` mechanism.
+It takes a Java fully qualified name as argument and returns an object that 
+gives access to the constructors, static methods and static fields. All the 
+classes from the project's classpath can be imported (project's own classes and 
+its dependencies).
+
+For instance, the following code imports ``java.lang.System`` and prints a 
+string calling ``System.out.println()``:
+
+.. code-block:: javascript
+
+	var System = JavaImport("java.lang.System")
+	System.out.println("foo");
+
+Here we instantiate a Java ``File`` object and check that it exists:
+
+.. code-block:: javascript
+
+	var File = JavaImport("java.io.File")
+	var myFile = new File("myFile.txt")
+
+	if (myFile.exists()) {
+		print("myFile.txt exists")
+	} else {
+		print("myFile.txt does not exist")
+	}
+
+.. warning::
+
+     You cannot instantiate an anonymous class from an interface or an abstract class with the ``new`` keyword and ``JavaImport``. Nevertheless, you can still access to static fields and methods.   
+
+Implement JavaScript Functions in Java
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We can also implement JavaScript functions in Java by adding their 
+implementation to the global object from Java. For example, here is the code to 
+create a JavaScript function named `javaPrint` in the global scope:
 
 .. code-block:: java
 
@@ -123,7 +162,117 @@ it can be called from a Java piece of code with:
 .. code-block:: java
 
     JsObjectFunction functionObject = (JsObjectFunction) JsRuntime.JS_GLOBAL_OBJECT.get("sum");
-    JsRuntime.ENGINE.addJob(new Job(functionObject, JsRuntime.JS_GLOBAL_OBJECT, new Integer(5), new Integer(3)));
+    JsRuntime.ENGINE.addJob(functionObject, JsRuntime.JS_GLOBAL_OBJECT, new Integer(5), new Integer(3));
 
 The first line gets the JavaScript function from the global scope.
 The second line adds a job in the JavaScript engine queue to execute the function, in the global scope, with the arguments ``5`` and ``3``.
+
+Passing Values Between JavaScript and Java
+------------------------------------------
+
+JavaScript base types are represented by Java objects and not Java base types. 
+The following table shows the mapping between types in both languages: 
+
++------------+-----------------------------------------------+
+| JavaScript | Java                                          |
++============+===============================================+
+| Number     | ``java.lang.Integer`` or ``java.lang.Double`` |
++------------+-----------------------------------------------+
+| Boolean    | ``java.lang.Boolean``                         |
++------------+-----------------------------------------------+
+| String     | ``java.lang.String``                          |
++------------+-----------------------------------------------+
+| Null       | ``null`` value                                |
++------------+-----------------------------------------------+
+| Undefined  | ``JsRuntime.JS_UNDEFINED_OBJECT`` singleton   |
++------------+-----------------------------------------------+
+
+In JavaScript, a ``Number`` type is a 64-bits floating-point value. 
+Nevertheless, Kifaru may use integer values (``Integer`` Java type) when 
+possible for performance reasons. Otherwhise, ``Double`` type will be used.
+
+.. note::
+
+    Prefer passing ``Integer`` values as argument to a job added to the JavaScript execution queue, or return ``Integer`` values when implementing a ``JsClosure`` instead of ``Double`` when possible.
+
+It is not possible to retrieve the returned value of a JavaScript function from 
+Java. For instance, consider the following JavaScript function:
+
+.. code-block:: javascript
+
+    function sum(a, b) {
+        return a + b;
+    }
+
+When calling this function from Java, we have no way to get the result back:
+
+.. code-block:: java
+
+    JsObjectFunction functionObject = (JsObjectFunction) JsRuntime.JS_GLOBAL_OBJECT.get("sum");
+    JsRuntime.ENGINE.addJob(functionObject, JsRuntime.JS_GLOBAL_OBJECT, new Integer(5), new Integer(3));
+
+A workaround is to modify the JavaScript function so it takes a callback object 
+as argument:
+
+.. code-block:: javascript
+
+    function sum(a, b, callback) {
+        callback.returnValue(a + b);
+    }
+
+Here is a possible implementation of the callback object:
+
+.. code-block:: java
+
+    public class Callback<T> {
+
+        @Nullable
+        private T value;
+
+        private boolean returned;
+
+        /**
+         * Gets the value returned by this callback function when ready.
+         * <p>
+         * A call to this method waits for the value to be ready.
+         *
+         * @return the value return by the callback
+         */
+	    @Nullable
+        public T getValue() {
+            synchronized (this) {
+                while (!this.returned) {
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
+                        throw new JsErrorWrapper(""); //$NON-NLS-1$
+                    }
+                }
+            }
+
+             return this.value;
+        }
+
+        /**
+         * Sets the value to return by this callback function.
+         *
+         * @param value
+         *            the value to return
+         */
+        public synchronized void returnValue(@Nullable T value) {
+            this.value = value;
+            this.returned = true;
+            notify();
+        }
+    }
+
+We can now pass the callback to the job. The Java code will wait on the 
+``callback.getValue()`` until the result is ready.
+
+.. code-block:: java
+
+    JsObjectFunction functionObject = (JsObjectFunction) JsRuntime.JS_GLOBAL_OBJECT.get("sum");
+    Callback<Integer> callback = new Callback<>();
+    JsRuntime.ENGINE.addJob(functionObject, JsRuntime.JS_GLOBAL_OBJECT, new Integer(5), new Integer(3), callback);
+    Integer returnedValue = callback.getValue();
+    System.out.println("Result is " + returnedValue);
