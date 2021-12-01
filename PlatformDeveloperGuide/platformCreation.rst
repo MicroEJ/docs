@@ -79,6 +79,8 @@ The next step is to create a MicroEJ Platform configuration project:
           </dependency>
       
       </dependencies>
+
+  .. note:: The Platform Configuration Additions allow to select the Architecture ``USAGE`` using the option ``com.microej.platformbuilder.architecture.usage``.  Edit the file ``module.properties`` to set the property to ``prod`` to use a Production Architecture and to ``eval`` to use an Evaluation Architecture.
       
 .. _pack_import:
 
