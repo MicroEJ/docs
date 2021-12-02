@@ -130,6 +130,16 @@ SDK includes all Studio features.
 
 A line prefixed by ``[Studio]`` is valid for both Studio and SDK. A line prefixed by ``[SDK]`` is only valid for SDK.
 
+.. _changelog-5.5.1:
+
+[5.5.1] - 2021-12-02
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+-  ``[Studio]`` Fixed wrong category name in ``New Project`` wizard.
+
 .. _changelog-5.5.0:
 
 [5.5.0] - 2021-11-15
