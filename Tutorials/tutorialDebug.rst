@@ -1,6 +1,6 @@
 .. _tutorial_debug_application:
 
-Debugging applications
+Debugging Applications
 ======================
 
 This tutorial describes the available tools provided to developers to debug an application.
@@ -9,7 +9,7 @@ It also lists several application uses cases.
 Solutions
 ---------
 
-Add traces and visualize the system behaviors
+Add Traces And Visualize The System Behaviors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When an application has issues, the first step is often to get a better understanding of what is happening inside the system.
@@ -93,7 +93,7 @@ Please refer to the tutorial :ref:`tutorial_instrument_java_code_for_logging` fo
       =================================
 
 
-Troubleshooting memory issues
+Troubleshooting Memory Issues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Memory issues such as memory corruptions and memory leaks can be hard to troubleshoot.  The following tools are available to address these issues:
@@ -107,7 +107,7 @@ Memory issues such as memory corruptions and memory leaks can be hard to trouble
       :align: center
       :scale: 75
 
-Debugging GUI applications
+Debugging GUI Applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * The Widget Library provides several :ref:`Debug Utilities<widget_library_debug_utilities>` to investigate and assist troubleshooting of GUI applications.
@@ -153,7 +153,7 @@ Simulator Debugger
 
 .. _tutorial_debug_use_case_1:
 
-Use case 1:  Debugging an UI application freeze
+Use Case 1:  Debugging An UI Application Freeze
 -----------------------------------------------
 
 When an application User Interface freezes and becomes unresponsive, in most cases, one of the following conditions applies:
@@ -415,7 +415,7 @@ If it is not possible to increase the number of available threads (for
 example because the memory is full), try to reuse another thread but
 not the UI thread.
 
-UART not available
+UART Not Available
 ++++++++++++++++++
 
 If the UART output is not available, use another method to signal that
@@ -423,7 +423,7 @@ the heart beat task is running (e.g. blink a LED, use SystemView).
 
 .. _tutorial_debug_use_case_2:
 
-Use case 2: Debugging a hardfault
+Use Case 2: Debugging A Hardfault
 ---------------------------------
 
 When the application crashes it can be the result of an hardfault triggered by the MCU.
@@ -441,7 +441,7 @@ Useful Resources
 * ESP-IDF Programming Guide : Fatal Errors https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/fatal-errors.html
 * Using Cortex-M3/M4/M7 Fault Exceptions MDK Tutorial http://www.keil.com/appnotes/files/apnt209.pdf
 
-Exceptions, hardfaults and exception handler
+Exceptions, Hardfaults And Exception Handler
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *From ARM Architecture Reference Manual*
@@ -471,7 +471,7 @@ Possible exceptions can be:
 
 Check the hardware documentation for the complete list of exceptions.
 
-What to do in exception handlers?
+What To Do In Exception Handlers?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For all hardfault handlers, the following information are available and must be printed:
@@ -504,7 +504,7 @@ If applicable, the MPU should be configured to protect the application.
 * Configure the MPU to configure the access to the JVM heap and stack to prevent any other native threads from altering this area.
   Refer to :ref:`this section<core_engine_link>` for the list of section names defined by the MicroEJ Core Engine.
 
-Memory corruption
+Memory Corruption
 ~~~~~~~~~~~~~~~~~
 
 The symptoms of a memory corruption can be:
@@ -559,10 +559,10 @@ Determine which memory regions are affected and then determine which components 
 
 * Implement a CRC of the *hot sections* when entering/leaving all natives. *Hot Sections* are memory sections used by both the Java and native code (e.g. C or ASM).
 
-When a hardfault occurs
+When A Hardfault Occurs
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Extract information and coredump
+Extract Information And Coredump
 ++++++++++++++++++++++++++++++++
 
 Attach an embedded debugger and get the following information:
@@ -583,13 +583,13 @@ Attach an embedded debugger and get the following information:
   * it can be done either in Debug mode or by searching inside the generated .map file.
 
 
-Memory dump analysis
+Memory Dump Analysis
 ~~~~~~~~~~~~~~~~~~~~
 
 * Run the Heap Dumper to check the application heap has not been corrupted
 * Check the native stack is not full (usually there shall have remaining init patterns in memory on top of stack such as "0xDEADBEEF")
 
-Trigger a VM dump
+Trigger A VM Dump
 ~~~~~~~~~~~~~~~~~
 
 ``LLMJVM_dump`` function is provided by ``LLMJVM.h``.
