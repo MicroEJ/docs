@@ -1,3 +1,5 @@
+.. _tutorial_optimize_memory_footprint:
+
 Optimize the Memory Footprint of an Application
 ===============================================
 
