@@ -392,7 +392,7 @@ See :ref:`stack_trace_reader` for additional info related to working with VM dum
 Dump The State Of All MicroEJ Threads From A Fault Handler
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It is recommended to do a VM dump as a last resort in a fault handler.
+It is recommended to call the ``LLMJVM_dump`` API as a last resort in a fault handler.
 Calling ``LLMJVM_dump`` is undefined if the VM is not paused.
 The call to ``LLMJVM_dump`` MUST be done last in the fault handler.
 
