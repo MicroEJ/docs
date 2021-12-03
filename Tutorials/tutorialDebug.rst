@@ -72,25 +72,87 @@ Please refer to the tutorial :ref:`tutorial_instrument_java_code_for_logging` fo
 - The :ref:`Core engine VM dump<vm_dump>` is a low-level API to display the states of the MicroEJ Runtime.  It displays the state of all MicroEJ threads: name, priority, stack trace, etc. 
 
    .. code-block::
-   
-      ============ VM Dump ============
-      1 java threads
-      ---------------------------------
-      Java Thread[3]
-      name="SYSINpmp" prio=5 state=WAITING
-   
-      java/lang/Thread:
-          at com/is2t/microbsp/microui/natives/NSystemInputPump.@134261800
-       [0x0800AC32]
-          at com/is2t/microbsp/microui/io/SystemInputPump.@134265968
-       [0x0800BC80]
-          at ej/microui/Pump.@134261696
-       [0x0800ABCC]
-          at ej/microui/Pump.@134265872
-       [0x0800BC24]
-          at java/lang/Thread.@134273964
-       [0x0800DBC4]
-      =================================
+
+      =================================== VM Dump ====================================
+      Java threads count: 3
+      Peak java threads count: 3
+      Total created java threads: 3
+      Last executed native function: 0x90035E3D
+      Last executed external hook function: 0x00000000
+      State: running
+      --------------------------------------------------------------------------------
+      Java Thread[1026]
+      name="main" prio=5 state=RUNNING max_java_stack=456 current_java_stack=184
+      
+      java.lang.MainThread@0xC0083C7C:
+          at (native) [0x90003F65]
+          at com.microej.demo.widget.main.MainPage.getContentWidget(MainPage.java:95)
+              Object References:
+                  - com.microej.demo.widget.main.MainPage@0xC00834E0
+                  - com.microej.demo.widget.main.MainPage$1@0xC0082184
+                  - java.lang.Thread@0xC0082194
+                  - java.lang.Thread@0xC0082194
+          at com.microej.demo.widget.common.Navigation.createRootWidget(Navigation.java:104)
+              Object References:
+                  - com.microej.demo.widget.main.MainPage@0xC00834E0
+          at com.microej.demo.widget.common.Navigation.createDesktop(Navigation.java:88)
+              Object References:
+                  - com.microej.demo.widget.main.MainPage@0xC00834E0
+                  - ej.mwt.stylesheet.CachedStylesheet@0xC00821DC
+          at com.microej.demo.widget.common.Navigation.main(Navigation.java:40)
+              Object References:
+                  - com.microej.demo.widget.main.MainPage@0xC00834E0
+          at java.lang.MainThread.run(Thread.java:855)
+              Object References:
+                  - java.lang.MainThread@0xC0083C7C
+          at java.lang.Thread.runWrapper(Thread.java:464)
+              Object References:
+                  - java.lang.MainThread@0xC0083C7C
+          at java.lang.Thread.callWrapper(Thread.java:449)
+      --------------------------------------------------------------------------------
+      Java Thread[1281]
+      name="UIPump" prio=5 state=WAITING timeout(ms)=INF max_java_stack=120 current_java_stack=117
+      external event: status=waiting
+      
+      java.lang.Thread@0xC0083628:
+          at ej.microui.MicroUIPump.read(Unknown Source)
+              Object References:
+                  - ej.microui.display.DisplayPump@0xC0083640
+          at ej.microui.MicroUIPump.run(MicroUIPump.java:176)
+              Object References:
+                  - ej.microui.display.DisplayPump@0xC0083640
+          at java.lang.Thread.run(Thread.java:311)
+              Object References:
+                  - java.lang.Thread@0xC0083628
+          at java.lang.Thread.runWrapper(Thread.java:464)
+              Object References:
+                  - java.lang.Thread@0xC0083628
+          at java.lang.Thread.callWrapper(Thread.java:449)
+      --------------------------------------------------------------------------------
+      Java Thread[1536]
+      name="Thread1" prio=5 state=READY max_java_stack=60 current_java_stack=57
+      
+      java.lang.Thread@0xC0082194:
+          at java.lang.Thread.runWrapper(Unknown Source)
+              Object References:
+                  - java.lang.Thread@0xC0082194
+          at java.lang.Thread.callWrapper(Thread.java:449)
+      ================================================================================
+      
+      ============================== Garbage Collector ===============================
+      State: Stopped
+      Last analyzed object: null
+      Total memory: 15500
+      Current allocated memory: 7068
+      Current free memory: 8432
+      Allocated memory after last GC: 0
+      Free memory after last GC: 15500
+      ================================================================================
+      
+      =============================== Native Resources ===============================
+      Id         CloseFunc  Owner            Description
+      --------------------------------------------------------------------------------
+      ================================================================================
 
 
 Troubleshooting Memory Issues
