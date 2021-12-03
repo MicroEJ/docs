@@ -234,8 +234,7 @@ As a reminder, the architecture of the MicroEJ runtime is called green
 thread architecture, it defines a multi-threaded environment without
 relying on any native RTOS capabilities. Therefore, the whole Java world
 runs in one single RTOS task. Read more about this architecture in the
-`Platform Developer
-Guide <https://docs.microej.com/en/latest/PlatformDeveloperGuide/coreEngine.html>`__.
+:ref:`Platform Developer Guide <core_engine>`.
 A quick way to check if the Java threads are scheduled correctly is, here again, to
 make one of the threads print a heart beat message. Copy/paste the
 following snippet in the ``main()`` method of the application:
@@ -562,10 +561,11 @@ Determine which memory regions are affected and then determine which components 
 
     * What are the code sections for BSP and Java
     * Where are the BSP stack and heap, what about the Application stack and heap?
-    * Where are the Java immortals (https://docs.microej.com/en/latest/Tutorials/tutorialOptimizeMemoryFootprint.html?highlight=immortals#java-heap-and-immortals-heap)?
+    * Where are the Java immortals heap?
     * Where are the Java strings?
     * Where is the MicroEJ UI buffer?
     * Besides the Java immortals, what are the other intersection point between the Java and the BSP? (e.g. a temporary RAM buffer for JPEG decoder).
+    * Please refer to the :ref:`Core Engine Link section <core_engine_link>` to locate the Application sections and to the :ref:`application_options` for their sizes.
 
 * Implement a CRC of the *hot sections* when entering/leaving all natives. *Hot Sections* are memory sections used by both the Java and native code (e.g. C or ASM).
 
