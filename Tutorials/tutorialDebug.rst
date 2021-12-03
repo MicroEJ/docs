@@ -158,6 +158,12 @@ After porting or adding a feature to a MicroEJ Platform, it is necessary to vali
 
 The project is available on GitHub: https://github.com/MicroEJ/PlatformQualificationTools/tree/2.4.0
 
+.. figure:: ../PlatformDeveloperGuide/images/overview-platform-qualification.png
+   :align: center
+   :scale: 80%
+
+   Platform Qualification Overwiew
+
 Please refer to the :ref:`platform_qualification` documentation for more information.
 
 
