@@ -9,8 +9,8 @@ It also lists several application uses cases.
 Solutions
 ---------
 
-Add Traces And Visualize The System Behaviors
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traces
+~~~~~~
 
 When an application has issues, the first step is often to get a better understanding of what is happening inside the system.
 
