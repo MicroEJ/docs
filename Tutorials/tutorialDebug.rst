@@ -1,7 +1,7 @@
 .. _tutorial_debug_application:
 
-Discover MicroEJ Debugging Tools
-================================
+Discover Debugging Tools
+========================
 
 This tutorial describes the available tools provided to developers to debug an application.
 It also lists several application uses cases.
@@ -508,7 +508,8 @@ When the application crashes it can be the result of an hardfault triggered by t
 The next sections explain:
 
 1. What are exceptions, hardfaults and the exception handler.
-2. 
+2. What to do in case of Memory Corruptions.
+3. What to do when a hardfault occurs.
 
 Useful Resources
 ~~~~~~~~~~~~~~~~
