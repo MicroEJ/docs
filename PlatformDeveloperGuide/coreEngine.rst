@@ -399,10 +399,11 @@ The call to ``LLMJVM_dump`` MUST be done last in the fault handler.
 Trigger VM Dump From Debugger
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To trigger a VM dump from the debugger, set the PC register to the ``LLMJVM_dump`` address.
 
-The symbol for the ``LLMJVM_dump`` address is ``__icetea__virtual__com_is2t_microjvm_IGreenThreadMicroJvm___dump`` or ``__icetea__virtual__com_is2t_microjvm_mowana_VMTask___dump``.
-Search for these symbols in the ``.map`` file.
+To trigger a VM dump from the debugger, set the PC register to the ``LLMJVM_dump`` physical memory address.
+
+The symbol for the ``LLMJVM_dump`` address is ``__icetea__virtual__com_is2t_microjvm_IGreenThreadMicroJvm___dump``.
+Search for this symbol in the appropriate C toolchain ``.map`` file.
 
 .. note::
 
