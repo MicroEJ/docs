@@ -150,6 +150,16 @@ Simulator Debugger
 
 * Configure the libraries sources location to :ref:`View library as sources<application_debugger>` in the debugger.
 
+Platform Qualification
+~~~~~~~~~~~~~~~~~~~~~~
+
+The Platform Qualification Tools (PQT) project provides the tools required to validate each component of a MicroEJ Platform.
+After porting or adding a feature to a MicroEJ Platform, it is necessary to validate its integration.
+
+The project is available on GitHub: https://github.com/MicroEJ/PlatformQualificationTools/tree/2.4.0
+
+Please refer to the :ref:`platform_qualification` documentation for more information.
+
 
 .. _tutorial_debug_use_case_1:
 
