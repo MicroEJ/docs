@@ -569,6 +569,8 @@ Determine which memory regions are affected and then determine which components 
 
 * Implement a CRC of the *hot sections* when entering/leaving all natives. *Hot Sections* are memory sections used by both the Java and native code (e.g. C or ASM).
 
+* Move the C stack at the beginning of the memory so that it crashes when it overflows (instead of corrupting the memory).
+
 When A Hardfault Occurs
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -598,7 +600,6 @@ Memory Dump Analysis
 
 * Run the Heap Dumper to check the application heap has not been corrupted
 * Make sure the native stack is not full (usually there shall have the remaining initialization patterns in memory on top of stack such as ``0xDEADBEEF``)
-
 
 Trigger A VM Dump
 ~~~~~~~~~~~~~~~~~
