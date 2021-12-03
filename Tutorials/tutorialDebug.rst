@@ -1,13 +1,13 @@
 .. _tutorial_debug_application:
 
-Debugging Applications
-======================
+Discover MicroEJ Debugging Tools
+================================
 
 This tutorial describes the available tools provided to developers to debug an application.
 It also lists several application uses cases.
 
-Solutions
----------
+Tools
+-----
 
 Traces
 ~~~~~~
