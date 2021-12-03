@@ -597,7 +597,8 @@ Memory Dump Analysis
 ~~~~~~~~~~~~~~~~~~~~
 
 * Run the Heap Dumper to check the application heap has not been corrupted
-* Check the native stack is not full (usually there shall have remaining init patterns in memory on top of stack such as "0xDEADBEEF")
+* Make sure the native stack is not full (usually there shall have the remaining initialization patterns in memory on top of stack such as ``0xDEADBEEF``)
+
 
 Trigger A VM Dump
 ~~~~~~~~~~~~~~~~~
