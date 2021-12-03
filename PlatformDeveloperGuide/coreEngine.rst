@@ -402,7 +402,7 @@ Trigger VM Dump From Debugger
 
 To trigger a VM dump from the debugger, set the PC register to the ``LLMJVM_dump`` physical memory address.
 
-The symbol for the ``LLMJVM_dump`` address is ``__icetea__virtual__com_is2t_microjvm_IGreenThreadMicroJvm___dump``.
+The symbol for the ``LLMJVM_dump`` API is defined in the header file ``LLMJVM.h``.
 Search for this symbol in the appropriate C toolchain ``.map`` file.
 
 .. note::
