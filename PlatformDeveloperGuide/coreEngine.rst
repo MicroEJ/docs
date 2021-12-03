@@ -389,8 +389,8 @@ This is an example of a dump:
 
 See :ref:`stack_trace_reader` for additional info related to working with VM dumps.
 
-Trigger VM Dump From A Fault Handler
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dump The State Of All MicroEJ Threads From A Fault Handler
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is recommended to do a VM dump as a last resort in a fault handler.
 Calling ``LLMJVM_dump`` is undefined if the VM is not paused.
