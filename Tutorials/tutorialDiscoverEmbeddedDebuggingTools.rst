@@ -305,12 +305,15 @@ The steps followed are:
 3. Check if the UI thread is properly scheduled.
 4. Check if Input Events are properly processed.
 
+.. note::
+   - The checks of the schedulers are possible with :ref:`systemview` and :ref:`MicroUI Debug Traces <microui_traces>`.
+   - The Input Events check is possible with the :ref:`LLUI_INPUT_dump API <section_inputs_eventbuffer>`.
+
 Check RTOS Scheduler Liveness
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Let's start at low level by figuring out if the RTOS is scheduling the
-tasks correctly.  If possible, use a debugger, if not use the heart
-beat task described here.
+Let's start at low level by figuring out if the RTOS is scheduling the tasks correctly.
+If possible, use a debugger or :ref:`systemview`, if not use the heart beat task described here.
 
 Make one of the RTOS task act like a heart beat: create a dedicated
 task and make it report in some way at a regular pace (print a message
