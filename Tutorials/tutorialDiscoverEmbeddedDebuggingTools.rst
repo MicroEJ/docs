@@ -240,6 +240,13 @@ Debugging GUI Applications
      ================================================================================
 
 * MicroUI can log several actions that can be viewed in SystemView, please refer to :ref:`microui_traces` for more information.
+
+  .. figure:: ../ApplicationDeveloperGuide/UI/MicroUI/images/microui_traces_systemview.png
+     :alt: MicroUI Traces displayed in SystemView
+     :align: center
+  
+     MicroUI Traces displayed in SystemView
+
 * Make sure to understand :ref:`MWT Concepts<mwt_concepts>`, especially the relations between the rendering, the lay-out the event dispatch and the states of desktop and widget.
 * For UI2 and former versions, please refer to `MicroUI and multithreading <https://forum.microej.com/t/gui-microui-and-multithreading/652>`__ for a description of the threading model.
 
