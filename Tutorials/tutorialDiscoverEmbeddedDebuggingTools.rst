@@ -4,7 +4,7 @@ Discover Embedded Debugging Tools
 =================================
 
 This tutorial describes the available tools provided to developers to debug an application.
-It also lists several application uses cases.
+It also lists several applications uses cases.
 
 Tools
 -----
@@ -12,9 +12,9 @@ Tools
 Traces
 ~~~~~~
 
-When an application has issues, the first step is often to get a better understanding of what is happening inside the system.
+When an application has issues, the first step is to understand what is happening inside the system.
 
-- The `Trace Library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html>`__ is a real-time event recording library. Use it to trace the beginning and ending of events.
+- The `Trace Library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html>`__ is a real-time event recording library. Use it to trace the beginning and the ending of events.
 
    .. code-block:: java
       :emphasize-lines: 4,9
@@ -37,7 +37,7 @@ When an application has issues, the first step is often to get a better understa
       :align: center
       :scale: 75
 
-- The `Message Library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/basic/BasicMessageLogger.html>`__ is a low RAM/ROM/CPU footprint API to log errors, warnings and misc information.
+- The `Message Library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/basic/BasicMessageLogger.html>`__ is a small RAM/ROM/CPU footprint API to log errors, warnings, and misc information.
 
    .. code-block:: java 
       :emphasize-lines: 9
@@ -69,7 +69,7 @@ When an application has issues, the first step is often to get a better understa
 
 Please refer to the tutorial :ref:`tutorial_instrument_java_code_for_logging` for a comparison of these libraries.
 
-- The :ref:`Core engine VM dump<vm_dump>` is a low-level API to display the states of the MicroEJ Runtime.  It displays the state of all MicroEJ threads: name, priority, stack trace, etc. 
+- The :ref:`Core engine VM dump<vm_dump>` is a low-level API to display the states of the MicroEJ Runtime and MicroEJ threads (name, priority, stack trace, etc. )
 
    .. code-block::
 
@@ -154,7 +154,7 @@ Please refer to the tutorial :ref:`tutorial_instrument_java_code_for_logging` fo
       --------------------------------------------------------------------------------
       ================================================================================
 
-- Output information on the standard output ``System.out`` and use the :ref:`stack_trace_reader` to read and to decode the MicroEJ stack traces.
+- Output information on the standard output ``System.out`` and use the :ref:`stack_trace_reader` to read and decode the MicroEJ stack traces.
 
   |fig1| |fig2|
 
@@ -168,7 +168,7 @@ Please refer to the tutorial :ref:`tutorial_instrument_java_code_for_logging` fo
 Troubleshooting Memory Issues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Memory issues such as memory corruptions and memory leaks can be hard to troubleshoot.  The following tools are available to address these issues:
+Memory issues such as memory corruption and memory leaks can be hard to troubleshoot.  However, the following tools are available to address these issues:
 
 * `LLJVM check integrity <https://forum.microej.com/t/architecture-7-13-check-integrity-utility/769/2>`_ is a low-level API to detect memory corruptions in native functions.
 * Use the :ref:`Heap Usage Monitoring Tool <heap_usage_monitoring>` to estimate the heap requirements of an application.
