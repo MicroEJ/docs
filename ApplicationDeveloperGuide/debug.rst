@@ -4,7 +4,7 @@ Debug an Application
 ====================
 
 To debug an application on Simulator, select it in the left panel then right-click
-and select :guilabel:`Run` > :guilabel:`Debug as` > :guilabel:`MicroEJ Application`.
+and select :guilabel:`Debug As` > :guilabel:`MicroEJ Application`.
 
 .. figure:: images/debug1.png
    :alt: MicroEJ Development Tools Overview of the Debugger
