@@ -708,7 +708,7 @@ Determine which memory regions are affected and determine which components are r
 
 * Move the C stack at the beginning of the memory to trigger a crash when it overflows (instead of corrupting the memory).
 
-When A Hardfault Occurs
+When a Hardfault Occurs
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Extract Information and Coredump
