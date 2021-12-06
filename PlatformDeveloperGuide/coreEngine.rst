@@ -454,6 +454,45 @@ Requirements:
 * Embedded debugger is attached and the processor is halted in an exception handler.
 * A way to read stdout (usually UART).
 
+.. _core_engine.check_integrity:
+
+Check Internal Structure Integrity
+----------------------------------
+
+The internal MicroEJ Core Engine function called ``LLMJVM_checkIntegrity`` checks the internal structure integrity of the MicroJvm virtual machine and returns its checksum.
+
+- If an integrity error is detected, the ``LLMJVM_on_CheckIntegrity_error`` hook is called and this method returns ``0``.
+- If no integrity error is detected, a non-zero checksum is returned.
+
+This function must only be called from the MicroJvm virtual machine thread context and only from a native function or callback.
+Calling this function multiple times in a native function must always produce the same checksum.
+If the checksums returned are different, a corruption must have occurred.
+
+Please note that returning a non-zero checksum does not mean the MicroJvm virtual machine data has not been corrupted,
+as it is not possible for the MicroJvm virtual machine to detect the complete memory integrity.
+
+MicroJvm virtual machine internal structures allowed to be modified by a native function are not taken into account for the checksum computation.
+The internal structures allowed are:
+
+- basetype fields in Java objects or content of Java arrays of base type,
+- internal structures modified by a ``LLMJVM`` function call (e.g. set a pending Java exception, suspend or resume the Java thread, register a resource, ...).
+
+This function affects performance and should only be used for debug purpose.
+A typical use of this API is to verify that a native implementation does not corrupt the internal structures:
+
+.. code-block:: java
+
+   void Java_com_mycompany_MyClass_myNativeFunction(void) {
+   		int32_t crcBefore = LLMJVM_checkIntegrity();
+   		myNativeFunctionDo();
+        int32_t crcAfter = LLMJVM_checkIntegrity();
+        if(crcBefore != crcAfter){
+        	// Corrupted MicroJVM virtual machine internal structures
+        	while(1);
+        }
+   }
+
+
 Generic Output
 ==============
 
