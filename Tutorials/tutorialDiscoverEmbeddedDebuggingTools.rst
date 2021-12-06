@@ -170,7 +170,7 @@ Troubleshooting Memory Issues
 
 Memory issues such as memory corruption and memory leaks can be hard to troubleshoot.  However, the following tools are available to address these issues:
 
-* `LLMJVM check integrity <https://forum.microej.com/t/architecture-7-13-check-integrity-utility/769/2>`_ is a low-level API to detect memory corruptions in native functions.
+* Check the internal structure integrity of the MicroJvm virtual machine with the :ref:`LLMJVM_checkIntegrity API <core_engine.check_integrity>` to detect memory corruptions in native functions.
 * Use the :ref:`Heap Usage Monitoring Tool <heap_usage_monitoring>` to estimate the heap requirements of an application.
 * The :ref:`heapdumper` tools analyze the content of the heap.  They are helpful to detect memory leaks and to look for optimization of the heap usage.
 
