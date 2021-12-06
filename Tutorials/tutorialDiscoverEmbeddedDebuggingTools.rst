@@ -293,7 +293,7 @@ Please refer to the :ref:`platform_qualification` documentation for more informa
 
 .. _tutorial_debug_use_case_1:
 
-Use Case 1:  Debugging An UI Application Freeze
+Use Case 1:  Debugging an UI Application Freeze
 -----------------------------------------------
 
 When an application User Interface freezes and becomes unresponsive, in most cases, one of the following conditions applies:
