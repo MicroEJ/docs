@@ -245,7 +245,8 @@ The following tables describe some events data.
 SystemView Integration
 ----------------------
 
-The traces are :ref:`systemview` compatible. The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and copied in SystemView installation folder.
+The traces are :ref:`systemview` compatible.
+The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and copied in SystemView installation folder (e.g. ``SEGGER/SystemView_V252a/Description/``).
 
 .. code-block::
 
