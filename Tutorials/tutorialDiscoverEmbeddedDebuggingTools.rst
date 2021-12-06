@@ -1,7 +1,7 @@
-.. _tutorial_debug_application:
+.. _tutorial_discover_embedded_debugging_tools:
 
-Discover Debugging Tools
-========================
+Discover Embedded Debugging Tools
+=================================
 
 This tutorial describes the available tools provided to developers to debug an application.
 It also lists several application uses cases.
