@@ -154,6 +154,14 @@ Please refer to the tutorial :ref:`tutorial_instrument_java_code_for_logging` fo
       --------------------------------------------------------------------------------
       ================================================================================
 
+- Use the :ref:`stack_trace_reader` to read and to decode the MicroEJ stack traces.
+
+  .. figure:: ../ApplicationDeveloperGuide/images/STR_trace-read.png
+     :alt: Stack Trace Reader Console
+     :scale: 100%
+     :align: center
+     
+     Stack Trace Reader Console
 
 Troubleshooting Memory Issues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
