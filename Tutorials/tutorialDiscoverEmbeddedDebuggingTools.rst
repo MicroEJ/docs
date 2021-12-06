@@ -740,7 +740,7 @@ Memory Dump Analysis
 * Run the Heap Dumper to check the application heap has not been corrupted
 * Make sure the native stack is not full (usually there shall have the remaining initialization patterns in memory on top of the stack such as ``0xDEADBEEF``)
 
-Trigger A VM Dump
+Trigger a VM Dump
 ~~~~~~~~~~~~~~~~~
 
 ``LLMJVM_dump`` function is provided by ``LLMJVM.h``.
