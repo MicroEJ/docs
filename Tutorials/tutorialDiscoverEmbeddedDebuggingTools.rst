@@ -270,7 +270,6 @@ Simulator Debugger
    .. figure:: ../ApplicationDeveloperGuide/images/debug1.png
       :alt: MicroEJ Development Tools Overview of the Debugger
       :align: center
-      :scale: 75
 
 * Configure the libraries' sources location to :ref:`View library as sources<application_debugger>` in the debugger.
 

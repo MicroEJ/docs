@@ -9,7 +9,6 @@ and select :guilabel:`Debug As` > :guilabel:`MicroEJ Application`.
 .. figure:: images/debug1.png
    :alt: MicroEJ Development Tools Overview of the Debugger
    :align: center
-   :scale: 75
 
    MicroEJ Development Tools Overview of the Debugger
 
