@@ -329,8 +329,8 @@ from a dedicated RTOS task.
 
 .. _vm_dump:
 
-Debugging
----------
+Dump the States of the Core Engine
+----------------------------------
 
 The internal MicroEJ Core Engine function called ``LLMJVM_dump`` allows
 you to dump the state of all MicroEJ threads: name, priority, stack
