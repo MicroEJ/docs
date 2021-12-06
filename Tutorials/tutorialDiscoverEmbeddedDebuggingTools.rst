@@ -193,6 +193,51 @@ Debugging GUI Applications
        |  |  +--Label: 70,0 202x50 (absolute: 70,50)
        |  +--Label: 0,100 480x50 (absolute: 0,100)
 
+* :ref:`MicroUI Event Buffer <section_inputs_eventbuffer>` provides an API to store and dump the events received:
+
+  .. code-block::
+
+     ============================== MicroUI FIFO Dump ===============================
+     ---------------------------------- Old Events ----------------------------------
+     [27: 0x00000000] garbage
+     [28: 0x00000000] garbage
+     [...]  
+     [99: 0x00000000] garbage
+     [00: 0x08000000] Display SHOW Displayable (Displayable index = 0)
+     [01: 0x00000008] Command HELP (event generator 0)
+     [02: 0x0d000000] Display REPAINT Displayable (Displayable index = 0)
+     [03: 0x07030000] Input event: Pointer pressed (event generator 3)
+     [04: 0x009f0063]    at 159,99 (absolute)
+     [05: 0x07030600] Input event: Pointer moved (event generator 3)
+     [06: 0x00aa0064]    at 170,100 (absolute)
+     [07: 0x02030700] Pointer dragged (event generator 3)
+     [08: 0x0d000000] Display REPAINT Displayable (Displayable index = 0)
+     [09: 0x07030600] Input event: Pointer moved (event generator 3)
+     [10: 0x00b30066]    at 179,102 (absolute)
+     [11: 0x02030700] Pointer dragged (event generator 3)
+     [12: 0x0d000000] Display REPAINT Displayable (Displayable index = 0)
+     [13: 0x07030600] Input event: Pointer moved (event generator 3)
+     [14: 0x00c50067]    at 197,103 (absolute)
+     [15: 0x02030700] Pointer dragged (event generator 3)
+     [16: 0x0d000000] Display REPAINT Displayable (Displayable index = 0)
+     [17: 0x07030600] Input event: Pointer moved (event generator 3)
+     [18: 0x00d00066]    at 208,102 (absolute)
+     [19: 0x02030700] Pointer dragged (event generator 3)
+     [20: 0x0d000000] Display REPAINT Displayable (Displayable index = 0)
+     [21: 0x07030100] Input event: Pointer released (event generator 3)
+     [22: 0x00000000]    at 0,0 (absolute)
+     [23: 0x00000008] Command HELP (event generator 0)
+     ---------------------------------- New Events ----------------------------------
+     [24: 0x0d000000] Display REPAINT Displayable (Displayable index = 0)
+     [25: 0x07030000] Input event: Pointer pressed (event generator 3)
+     [26: 0x002a0029]    at 42,41 (absolute)
+     --------------------------- New Events' Java objects ---------------------------
+     [java/lang/Object[2]@0xC000FD1C
+      [0] com/microej/examples/microui/mvc/MVCDisplayable@0xC000BAC0
+      [1] null
+     ================================================================================
+
+* MicroUI can log several actions that can be viewed in SystemView, please refer to :ref:`microui_traces` for more information.
 * Make sure to understand :ref:`MWT Concepts<mwt_concepts>`, especially the relations between the rendering, the lay-out the event dispatch and the states of desktop and widget.
 * For UI2 and former versions, please refer to `MicroUI and multithreading <https://forum.microej.com/t/gui-microui-and-multithreading/652>`__ for a description of the threading model.
 
