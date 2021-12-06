@@ -566,7 +566,7 @@ the heartbeat task is running (e.g. blink a LED, use SystemView).
 
 .. _tutorial_debug_use_case_2:
 
-Use Case 2: Debugging A Hardfault
+Use Case 2: Debugging a Hardfault
 ---------------------------------
 
 When the application crashes, it can be the consequence of an hardfault triggered by the MCU.
