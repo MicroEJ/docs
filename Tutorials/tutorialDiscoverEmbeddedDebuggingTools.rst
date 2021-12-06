@@ -530,6 +530,9 @@ instance with the one below to log all user inputs.
        }
    };
 
+It is also possible to display the content of MicroUI Event Buffer with  the ``LLUI_INPUT_IMPL_log_XXX`` API.
+Please refer to :ref:`the Event Buffer documentation <section_inputs_eventbuffer>` for more information.
+
 .. _implementation_details:
 
 Implementation Details
