@@ -711,7 +711,7 @@ Determine which memory regions are affected and determine which components are r
 When A Hardfault Occurs
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Extract Information And Coredump
+Extract Information and Coredump
 ++++++++++++++++++++++++++++++++
 
 Attach an embedded debugger and get the following information:
