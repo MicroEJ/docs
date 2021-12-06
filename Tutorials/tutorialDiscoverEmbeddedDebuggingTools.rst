@@ -172,7 +172,7 @@ Memory issues such as memory corruption and memory leaks can be hard to troubles
 
 * `LLJVM check integrity <https://forum.microej.com/t/architecture-7-13-check-integrity-utility/769/2>`_ is a low-level API to detect memory corruptions in native functions.
 * Use the :ref:`Heap Usage Monitoring Tool <heap_usage_monitoring>` to estimate the heap requirements of an application.
-* The :ref:`heapdumper` tools are used to analyze the content of the heap.  It is useful to detect memory leaks and to look for optimization of the heap usage.
+* The :ref:`heapdumper` tools analyze the content of the heap.  They are helpful to detect memory leaks and to look for optimization of the heap usage.
 
    .. figure:: images/HeapAnalyzer-example.png
       :alt: Heap Analyzer Example
@@ -182,7 +182,7 @@ Memory issues such as memory corruption and memory leaks can be hard to troubles
 Debugging GUI Applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* The Widget Library provides several :ref:`Debug Utilities<widget_library_debug_utilities>` to investigate and assist troubleshooting of GUI applications.
+* The Widget Library provides several :ref:`Debug Utilities<widget_library_debug_utilities>` to investigate and troubleshoot GUI applications.
   For example, it is possible to print the type and bounds of each widget in the hierarchy of a widget:
 
    .. code-block::
@@ -239,7 +239,7 @@ Debugging GUI Applications
       [1] null
      ================================================================================
 
-* MicroUI can log several actions that can be viewed in SystemView, please refer to :ref:`microui_traces` for more information.
+* MicroUI can log several actions that can be viewed in SystemView.  Please refer to :ref:`microui_traces` for more information.
 
   .. figure:: ../ApplicationDeveloperGuide/UI/MicroUI/images/microui_traces_systemview.png
      :alt: MicroUI Traces displayed in SystemView
@@ -272,7 +272,7 @@ Simulator Debugger
       :align: center
       :scale: 75
 
-* Configure the libraries sources location to :ref:`View library as sources<application_debugger>` in the debugger.
+* Configure the libraries' sources location to :ref:`View library as sources<application_debugger>` in the debugger.
 
 Platform Qualification
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -301,15 +301,15 @@ When an application User Interface freezes and becomes unresponsive, in most cas
 - An unrecoverable system failure occurred, like a HardFault, and the RTOS tasks are not scheduled anymore.
 - The RTOS task that runs the MicroEJ runtime is never given CPU time (suspended or blocked).
 - The RTOS task that runs the MicroEJ runtime is executing never-ending native code (infinite loop in native implementation for example).
-- A Java method is executing a long running operation in the MicroUI thread (also called Display Pump thread).
+- A Java method executes a long-running operation in the MicroUI thread (also called Display Pump thread).
 - The application code is unable to receive or process user input events.
 
-The next sections explain how to instrument the code in order to locate the issue when the UI freeze occurs.
+The following sections explain how to instrument the code to locate the issue when the UI freeze occurs.
 The steps followed are:
 
-1. Check if the RTOS Scheduler is properly scheduling the MicroEJ runtime task.
-2. Check if the Java Scheduler is properly scheduling all Java threads.
-3. Check if the UI thread is properly scheduled.
+1. Check if the RTOS Scheduler properly schedules the MicroEJ runtime task.
+2. Check if the Java Scheduler properly schedules all Java threads.
+2. Check if the Java Scheduler properly schedules the MicroUI thread.
 4. Check if Input Events are properly processed.
 
 .. note::
@@ -320,13 +320,13 @@ Check RTOS Scheduler Liveness
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's start at low level by figuring out if the RTOS is scheduling the tasks correctly.
-If possible, use a debugger or :ref:`systemview`, if not use the heart beat task described here.
+If possible, use a debugger or :ref:`systemview`, if not use the heartbeat task described here.
 
-Make one of the RTOS task act like a heart beat: create a dedicated
+Make one of the RTOS task act like a heartbeat: create a dedicated
 task and make it report in some way at a regular pace (print a message
 on standard output, blink a LED, use SystemView, etc.).
 
-If the heart beat is still running when the UI freeze occurs, we can
+If the heartbeat is still running when the UI freeze occurs, we can
 go a step further and check whether the MicroEJ runtime is still
 scheduling Java threads or not.
 
@@ -334,21 +334,21 @@ If you use task priorities for the RTOS tasks management, ensure that
 the priority of the RTOS task is equal or lower than the priority of
 the MicroEJ runtime task.
 
-If the RTOS task of the heart beat doesn't run when:
+If the RTOS task of the heartbeat doesn't run when:
 
 - the priority is the highest than any other tasks, then the RTOS
   scheduler is not scheduling anything.
 - the priority is the same as the MicroEJ runtime and other tasks with
-  a higher priority exist, then one or more RTOS tasks are causing
+  a higher priority exists, then one or more RTOS tasks are causing
   starvation by taking all the resources.
 
 ..
    @startuml
-   if (Heart Beat task runs\nwith highest priority) then (no)
+   if (heartbeat task runs\nwith highest priority) then (no)
      #pink:RTOS scheduler not working;
      kill
    else (yes)
-     if (Heart Beat task runs\nwith same priority\nas MicroEJ Runtime) then (no)
+     if (Heartbeat task runs\nwith same priority\nas MicroEJ Runtime) then (no)
        #pink:MicroEJ Runtime is starving;
        kill
      else (yes)
@@ -369,7 +369,7 @@ relying on any native RTOS capabilities. Therefore, the whole Java world
 runs in one single RTOS task. Read more about this architecture in the
 :ref:`Platform Developer Guide <core_engine>`.
 A quick way to check if the Java threads are scheduled correctly is, here again, to
-make one of the threads print a heart beat message. Copy/paste the
+make one of the threads print a heartbeat message. Copy/paste the
 following snippet in the ``main()`` method of the application:
 
 .. code-block:: java
@@ -387,11 +387,13 @@ following snippet in the ``main()`` method of the application:
 This code creates a new Java thread that will print the message ``Alive``
 on the standard output every 10 seconds.
 
-If the ``Alive`` printouts stop when the UI freeze occurs (assuming no one cancelled the ``Timer``), then it means that the MicroEJ Runtime stopped scheduling the Java threads or that one or more threads with a higher priority are preventing the threads with a lower priority to run.
+Assuming no one canceled the ``Timer``, if the ``Alive`` printouts stop when the UI freeze occurs, then it can mean that:
+- The MicroEJ Runtime stopped scheduling the Java threads.
+- Or that one or more threads with a higher priority prevent the threads with a lower priority from running.
 
 Here are a few suggestions:
 
-- Make sure no Java threads with a high priority are preventing the scheduling of the other threads.
+- Ensure no Java threads with a high priority prevent the scheduling of the other Java threads.
   For example, convert the above example with a dedicated thread with the highest priority:
 
   .. code-block:: java
@@ -417,25 +419,22 @@ Here are a few suggestions:
   blocked. Check if some API call is suspending the task or if a
   shared resource could be blocking it.
 
-- When a Java native method is called, it calls its C counterpart
-  function in the RTOS task that runs the MicroEJ runtime. While the C
-  function is running, no other Java methods can run : the Java world
-  awaits for the C function to finish. As a consequence, if the C
-  function never returns, no Java thread can ever run again. Spot any
-  suspect native functions and trace every entry/exit to detect faulty
-  code.
+- When a Java native method is called, it calls its C counterpart function in the RTOS task that runs the MicroEJ runtime.
+  While the C function is running, no other Java methods can run because the Java world awaits for the C function to finish.
+  Consequently, no Java thread can ever run again if the C function never returns.
+  Therefore, spot any suspect native functions and trace every entry/exit to detect faulty code.
 
 Please refer to :ref:`implementation_details` if you encounter issues
-to implement the heart beat.
+to implement the heartbeat.
 
 Check UI Thread Liveness
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now, what if the ``Alive`` heart beat runs while the UI is frozen?
+Now, what if the ``Alive`` heartbeat runs while the UI is frozen?
 Java threads are getting scheduled but the UI thread (also called
 Display Pump thread), does not process display events.
 
-Let's make the heart beat snippet above execute in the UI
+Let's make the heartbeat snippet above execute in the UI
 thread. Simply wraps the ``System.out.println("Alive")`` with a
 ``callSerially``:
 
@@ -491,7 +490,7 @@ the freeze occurs, then there are few options:
 
 -  The UI thread has terminated.
 
-As a general rule, avoid running long operations in the UI thread,
+As a general rule, avoid running extended operations in the UI thread,
 follow the general pattern and use a dedicated thread/executor instead:
 
 .. (QUESTION: use a sequence diagram to be more explicit?)
@@ -520,10 +519,9 @@ follow the general pattern and use a dedicated thread/executor instead:
 Check Input Events Processing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Another case that is worth looking at is whether the application is
-processing user input events like it should. The UI may look "frozen"
-only because it doesn't react to input events. Replace the desktop
-instance with the one below to log all user inputs.
+Another case worth looking at is whether the application is processing user input events like it should.
+The UI may look "frozen" only because it doesn't react to input events. 
+Replace the desktop instance with the one below to log all user inputs.
 
 .. code-block:: java
 
@@ -542,7 +540,7 @@ instance with the one below to log all user inputs.
        }
    };
 
-It is also possible to display the content of MicroUI Event Buffer with  the ``LLUI_INPUT_IMPL_log_XXX`` API.
+It is also possible to display the content of MicroUI Event Buffer with the ``LLUI_INPUT_IMPL_log_XXX`` API.
 Please refer to :ref:`the Event Buffer documentation <section_inputs_eventbuffer>` for more information.
 
 .. _implementation_details:
@@ -564,18 +562,18 @@ UART Not Available
 ++++++++++++++++++
 
 If the UART output is not available, use another method to signal that
-the heart beat task is running (e.g. blink a LED, use SystemView).
+the heartbeat task is running (e.g. blink a LED, use SystemView).
 
 .. _tutorial_debug_use_case_2:
 
 Use Case 2: Debugging A Hardfault
 ---------------------------------
 
-When the application crashes it can be the result of an hardfault triggered by the MCU.
+When the application crashes, it can be the consequence of an hardfault triggered by the MCU.
 
-The next sections explain:
+The following sections explain:
 
-1. What are exceptions, hardfaults and the exception handler.
+1. What are exceptions, hardfaults, and the exception handler.
 2. What to do in case of Memory Corruptions.
 3. What to do when a hardfault occurs.
 
@@ -597,7 +595,7 @@ Exceptions, Hardfaults And Exception Handler
    This means that, when the event has been handled, the original state can be restored and program execution resumed from the point where the exception was taken.
 
 For example, an *IRQ request* is an exception that can be recovered by handling the hardware request properly.
-On the other hand, an *Undefined Instruction* exception suggests a more serious system failure which might not be recoverable.
+On the other hand, an *Undefined Instruction* exception suggests a more severe system failure that might not be recoverable.
 
 The exceptions that cannot be recovered are named **hardfaults**.
 
@@ -607,7 +605,7 @@ The exceptions that cannot be recovered are named **hardfaults**.
    This address is called the **exception vector** for that exception.
 
 The code pointed by the exception vector is named **exception handler**.
-This means that for all exceptions, including hardfaults, a dedicated exception handler can be configured.
+Therefore, a dedicated exception handler can be configured for all exceptions, including hardfaults.
 
 Possible exceptions can be:
 
@@ -620,7 +618,7 @@ Check the hardware documentation for the complete list of exceptions.
 What To Do In Exception Handlers?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For all hardfault handlers, the following information are available and must be printed:
+For all hardfault handlers, the following data are available and must be printed:
 
 * Name and value of all registers available
 * Name of the handler
@@ -637,11 +635,13 @@ Memory Protection Unit (MPU)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A Memory Protection Unit (MPU) is a hardware unit that provides memory protection.
-A MPU allows a privilegied software to define memory regions and a policy for each memory region. The policy defines who can access the memory.
+An MPU allows privileged software to define memory regions and their policy.
+The policy describes who can access the memory.
 
-For example, the heap and stack of a task can be configured to be accessible from this task only. If another task, or a device driver attempts to access the memory region, an exception is generated.
+For example, configure the heap and stack of a task to be accessible from the task itself only.
+The MPU generates an exception if another task or a device driver attempts to access the memory region.
 
-If applicable, the MPU should be configured to protect the application.
+If applicable, configure the MPU should to protect the application.
 
 * Check the RTOS documentation if it supports MPU. 
 
@@ -653,18 +653,18 @@ If applicable, the MPU should be configured to protect the application.
 Memory Corruption
 ~~~~~~~~~~~~~~~~~
 
-The symptoms of a memory corruption can be:
+Memory corruption can result in the following symptoms:
 
-* the address of the failing instruction is in a data section
-* the trace is incomplete or obviously incorrect
-* the address of the failing instruction is located in the Garbage Collector (GC)
+* The address of the failing instruction is in a data section.
+* The trace is incomplete or incorrect.
+* The address of the failing instruction is located in the Garbage Collector (GC).
 
 The cause(s) of a memory corruption can be:
 
 * A native (C) function has a bug and write to an incorrect memory location
 * A native stackoverflow
 * A native heap overflow
-* A device mis-initialized or mis-configured.
+* A device incorrectly initialized or misconfigured.
 * ...
 
 When the hardfault occurs in the MicroJVM task, the VM task heap or stack may be corrupted.
@@ -686,7 +686,7 @@ Typically, you can check a native with:
 Investigation
 ~~~~~~~~~~~~~
 
-Determine which memory regions are affected and then determine which components are responsible for the corruption.
+Determine which memory regions are affected and determine which components are responsible for the corruption.
 
 * List all memory available and their specifics
 
@@ -697,7 +697,7 @@ Determine which memory regions are affected and then determine which components 
 * Get the memory layout of the project
 
     * What are the code sections for BSP and Java
-    * Where are the BSP stack and heap, what about the Application stack and heap?
+    * Where are the BSP stack and heap? What about the Application stack and heap?
     * Where are the Java immortals heap?
     * Where are the Java strings?
     * Where is the MicroEJ UI buffer?
@@ -706,7 +706,7 @@ Determine which memory regions are affected and then determine which components 
 
 * Implement a CRC of the *hot sections* when entering/leaving all natives. *Hot Sections* are memory sections used by both the Java and native code (e.g. C or ASM).
 
-* Move the C stack at the beginning of the memory so that it crashes when it overflows (instead of corrupting the memory).
+* Move the C stack at the beginning of the memory to trigger a crash when it overflows (instead of corrupting the memory).
 
 When A Hardfault Occurs
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -717,7 +717,7 @@ Extract Information And Coredump
 Attach an embedded debugger and get the following information:
 
 * stack traces and registers information for each stack frame
-* core dump / memory information
+* memory information
 
     * the whole memory if possible
     * otherwise, get the *hot sections* 
@@ -726,6 +726,8 @@ Attach an embedded debugger and get the following information:
         * UI buffer
         * immortals heap
         * sections where the Java and BSP are working together
+
+* :ref:`vm_dump_debugger`
 
 * Check which function is located at the address inside the PC register
 
@@ -736,14 +738,14 @@ Memory Dump Analysis
 ~~~~~~~~~~~~~~~~~~~~
 
 * Run the Heap Dumper to check the application heap has not been corrupted
-* Make sure the native stack is not full (usually there shall have the remaining initialization patterns in memory on top of stack such as ``0xDEADBEEF``)
+* Make sure the native stack is not full (usually there shall have the remaining initialization patterns in memory on top of the stack such as ``0xDEADBEEF``)
 
 Trigger A VM Dump
 ~~~~~~~~~~~~~~~~~
 
 ``LLMJVM_dump`` function is provided by ``LLMJVM.h``.
 This function prints the VM state.
-Information printed in the VM state are:
+Data printed in the VM state are:
 
 * List of Java threads
 * Stack trace for each thread
