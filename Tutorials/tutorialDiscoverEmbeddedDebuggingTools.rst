@@ -308,7 +308,7 @@ The steps followed are:
 
 1. Check if the RTOS Scheduler properly schedules the MicroEJ runtime task.
 2. Check if the Java Scheduler properly schedules all Java threads.
-2. Check if the Java Scheduler properly schedules the MicroUI thread.
+3. Check if the Java Scheduler properly schedules the MicroUI thread.
 4. Check if Input Events are properly processed.
 
 .. note::
