@@ -1,4 +1,4 @@
-.. _tutorial_discover_embedded_debugging_tools:
+.. _tutorial_discover_embedded_debugging_tools_and_methods:
 
 Discover Embedded Debugging Tools and Methods
 =============================================
@@ -6,29 +6,29 @@ Discover Embedded Debugging Tools and Methods
 This tutorial describes the available tools provided to developers to debug an application.
 It also lists several applications uses cases.
 
-1. :ref:`tutorial_discover_embedded_debugging_tools.tools`
+1. :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools`
   
-  - :ref:`tutorial_discover_embedded_debugging_tools.tools.events_tracing_and_logging`
-  - :ref:`tutorial_discover_embedded_debugging_tools.tools.runtime_state_dump`
-  - :ref:`tutorial_discover_embedded_debugging_tools.tools.memory_inspection`
-  - :ref:`tutorial_discover_embedded_debugging_tools.tools.debug_gui_application`
-  - :ref:`tutorial_discover_embedded_debugging_tools.tools.static_analysis_tools`
-  - :ref:`tutorial_discover_embedded_debugging_tools.tools.simulator_debugger`
-  - :ref:`tutorial_discover_embedded_debugging_tools.tools.platform_qualification`
+  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.events_tracing_and_logging`
+  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.runtime_state_dump`
+  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.memory_inspection`
+  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.debug_gui_application`
+  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.static_analysis_tools`
+  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.simulator_debugger`
+  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.platform_qualification`
 
-2. :ref:`tutorial_discover_embedded_debugging_tools.use_case_1`
-3. :ref:`tutorial_discover_embedded_debugging_tools.use_case_2`
+2. :ref:`tutorial_discover_embedded_debugging_tools_and_methods.use_case_1`
+3. :ref:`tutorial_discover_embedded_debugging_tools_and_methods.use_case_2`
 
 Intended Audience
 -----------------
 
 The audience for this document is engineers who want to learn about the tools available to debug embedded applications.
 
-In addition, the :ref:`tutorial_discover_embedded_debugging_tools.use_case_1` is particularly relevant for Application engineers.
-Whereas the :ref:`tutorial_discover_embedded_debugging_tools.use_case_2` is more relevant for Firmware engineers.
+In addition, the :ref:`tutorial_discover_embedded_debugging_tools_and_methods.use_case_1` is particularly relevant for Application engineers.
+Whereas the :ref:`tutorial_discover_embedded_debugging_tools_and_methods.use_case_2` is more relevant for Firmware engineers.
 
 
-.. _tutorial_discover_embedded_debugging_tools.tools:
+.. _tutorial_discover_embedded_debugging_tools_and_methods.tools:
 
 Debugging Tools
 ---------------
@@ -36,16 +36,16 @@ Debugging Tools
 This section presents an overview of the main tools available to debug an embedded application.
 Please refer to the developer guides for the complete reference (:ref:`application-developer-guide`, :ref:`platform-developer-guide`, :ref:`kernel-developer-guide`).
 
-- :ref:`tutorial_discover_embedded_debugging_tools.tools.events_tracing_and_logging`
-- :ref:`tutorial_discover_embedded_debugging_tools.tools.runtime_state_dump`
-- :ref:`tutorial_discover_embedded_debugging_tools.tools.memory_inspection`
-- :ref:`tutorial_discover_embedded_debugging_tools.tools.debug_gui_application`
-- :ref:`tutorial_discover_embedded_debugging_tools.tools.static_analysis_tools`
-- :ref:`tutorial_discover_embedded_debugging_tools.tools.simulator_debugger`
-- :ref:`tutorial_discover_embedded_debugging_tools.tools.platform_qualification`
+- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.events_tracing_and_logging`
+- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.runtime_state_dump`
+- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.memory_inspection`
+- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.debug_gui_application`
+- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.static_analysis_tools`
+- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.simulator_debugger`
+- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.platform_qualification`
 
 
-.. _tutorial_discover_embedded_debugging_tools.tools.events_tracing_and_logging:
+.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.events_tracing_and_logging:
 
 Events Tracing and Logging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -107,7 +107,7 @@ When an application has issues, the first step is to understand what is happenin
 
 Please refer to the tutorial :ref:`tutorial_instrument_java_code_for_logging` for a comparison of these libraries.
 
-.. _tutorial_discover_embedded_debugging_tools.tools.runtime_state_dump:
+.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.runtime_state_dump:
 
 Runtime State Dump
 ~~~~~~~~~~~~~~~~~~
@@ -207,7 +207,7 @@ Runtime State Dump
       --------------------------------------------------------------------------------
       ================================================================================
 
-.. _tutorial_discover_embedded_debugging_tools.tools.memory_inspection:
+.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.memory_inspection:
 
 Memory Inspection
 ~~~~~~~~~~~~~~~~~
@@ -223,7 +223,7 @@ Memory issues such as memory corruption and memory leaks can be hard to troubles
       :align: center
       :scale: 75
 
-.. _tutorial_discover_embedded_debugging_tools.tools.debug_gui_application:
+.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.debug_gui_application:
 
 Debugging GUI Applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -297,7 +297,7 @@ Debugging GUI Applications
 * For UI2 and former versions, please refer to `MicroUI and multithreading <https://forum.microej.com/t/gui-microui-and-multithreading/652>`__ for a description of the threading model.
 
 
-.. _tutorial_discover_embedded_debugging_tools.tools.static_analysis_tools:
+.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.static_analysis_tools:
 
 Static Analysis Tools
 ~~~~~~~~~~~~~~~~~~~~~
@@ -311,7 +311,7 @@ Static analysis tools are helpful allies to prevent several classes of bugs.
       :alt: Example of Null Analysis Detection
 
 
-.. _tutorial_discover_embedded_debugging_tools.tools.simulator_debugger:
+.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.simulator_debugger:
 
 Simulator Debugger
 ~~~~~~~~~~~~~~~~~~
@@ -324,7 +324,7 @@ Simulator Debugger
 
 * Configure the libraries' sources location to :ref:`View library as sources<application_debugger>` in the debugger.
 
-.. _tutorial_discover_embedded_debugging_tools.tools.platform_qualification:
+.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.platform_qualification:
 
 Platform Qualification
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -343,7 +343,7 @@ The project is available on GitHub: https://github.com/MicroEJ/PlatformQualifica
 Please refer to the :ref:`platform_qualification` documentation for more information.
 
 
-.. _tutorial_discover_embedded_debugging_tools.use_case_1:
+.. _tutorial_discover_embedded_debugging_tools_and_methods.use_case_1:
 
 Use Case 1:  Debugging an UI Application Freeze
 -----------------------------------------------
@@ -613,7 +613,7 @@ UART Not Available
 If the UART output is not available, use another method to signal that
 the heartbeat task is running (e.g. blink a LED, use SystemView).
 
-.. _tutorial_discover_embedded_debugging_tools.use_case_2:
+.. _tutorial_discover_embedded_debugging_tools_and_methods.use_case_2:
 
 Use Case 2: Debugging a Hardfault
 ---------------------------------

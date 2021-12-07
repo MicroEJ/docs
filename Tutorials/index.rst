@@ -18,7 +18,7 @@ Tutorials
    tutorialRunATestSuiteOnDevice
    tutorialImplementABlockingNativeMethodWithSNI
    getStartedWithGUI/index
-   tutorialDiscoverEmbeddedDebuggingTools
+   tutorialDiscoverEmbeddedDebuggingToolsAndMethods
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
