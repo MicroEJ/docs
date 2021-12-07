@@ -387,6 +387,7 @@ This code creates a new Java thread that will print the message ``Alive``
 on the standard output every 10 seconds.
 
 Assuming no one canceled the ``Timer``, if the ``Alive`` printouts stop when the UI freeze occurs, then it can mean that:
+
 - The MicroEJ Runtime stopped scheduling the Java threads.
 - Or that one or more threads with a higher priority prevent the threads with a lower priority from running.
 
