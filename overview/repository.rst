@@ -42,8 +42,14 @@ To consult the APIs documentation (Javadoc) of all :ref:`libraries <libraries>` 
 Developer Repository
 ====================
 
-The developer repository is an online repository hosted by MicroEJ Corp.
-It contains modules provided as-is. It is similar to what `Maven repositories <https://mvnrepository.com/repos>`_ are for hosting Java standard modules.
+The developer repository is an online repository hosted by MicroEJ Corp., contains community modules provided "as-is".
+It is similar to what `Maven Central Repository <https://repo1.maven.org/maven2/>`_ are for hosting Java standard modules.
+
+MicroEJ Corp. contributes to the developer repository in the following cases:
+- Demos (Platforms, Firmware, Virtual Devices, Applications),
+- Incubating Libraries,
+- Former MicroEJ Central Repository versions,
+- Hardware specific modules.
 
 Use
 ---
