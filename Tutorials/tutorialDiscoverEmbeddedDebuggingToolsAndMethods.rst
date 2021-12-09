@@ -416,7 +416,7 @@ Check Java Scheduler Liveness
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As a reminder, the threading model implemented by MicroEJ runtime is called green thread: it defines a multi-threaded environment without relying on any native RTOS capabilities. 
-Therefore, the whole Java threads run in a single RTOS task.
+Therefore, all Java threads run in a single RTOS task.
 For more details, please refer to the :ref:`MicroEJ Core Engine<core_engine>` section.
 A quick way to check if the Java threads are scheduled correctly is, here again, to make one of the threads print a heartbeat message. Copy/paste the following snippet in the ``main()`` method of the application:
 
