@@ -412,7 +412,7 @@ If the RTOS task of the heartbeat doesn't run when:
 
 .. image:: images/tuto_microej_debug_ui_freeze_rtos_task_heart_beat_priority.png
 
-Check Java Scheduler Liveness
+Check Java Threads Scheduling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As a reminder, the threading model implemented by MicroEJ runtime is called green thread: it defines a multi-threaded environment without relying on any native RTOS capabilities. 
