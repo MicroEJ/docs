@@ -359,9 +359,9 @@ When an application User Interface freezes and becomes unresponsive, in most cas
 The following sections explain how to instrument the code to locate the issue when the UI freeze occurs.
 The steps followed are:
 
-1. Check if the RTOS Scheduler properly schedules the MicroEJ runtime task.
-2. Check if the Java Scheduler properly schedules all Java threads.
-3. Check if the Java Scheduler properly schedules the MicroUI thread.
+1. Check if the RTOS properly schedules the MicroEJ runtime task.
+2. Check if the Core Engine properly schedules all Java threads.
+3. Check if the Core Engine properly schedules the MicroUI thread.
 4. Check if Input Events are properly processed.
 
 .. note::
