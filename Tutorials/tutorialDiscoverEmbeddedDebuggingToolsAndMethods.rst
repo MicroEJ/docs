@@ -749,7 +749,7 @@ Determine which memory regions are affected and determine which components are r
     * Where are the Java immortals heap?
     * Where are the Java strings?
     * Where is the MicroEJ UI buffer?
-    * Besides the Java immortals, what are the other intersection point between the Java and the BSP? (e.g. a temporary RAM buffer for JPEG decoder).
+    * Besides the Java immortals, what are the other intersection point between the Java application and the BSP? (e.g. a temporary RAM buffer for JPEG decoder).
     * Please refer to the :ref:`Core Engine Link section <core_engine_link>` to locate the Application sections and to the :ref:`application_options` for their sizes.
 
 * Implement a CRC of the *hot sections* when entering/leaving all natives. *Hot Sections* are memory sections used by both Java code and native code (e.g. C or ASM).
@@ -773,7 +773,7 @@ Attach an embedded debugger and get the following information:
         * BSP and Java heap and stack
         * UI buffer
         * immortals heap
-        * sections where the Java and BSP are working together
+        * sections where the Java application and BSP are working together
 
 * :ref:`vm_dump_debugger`
 
