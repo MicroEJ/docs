@@ -744,7 +744,7 @@ Determine which memory regions are affected and determine which components are r
 * Is low-power enabled for CPU and peripherals? Is the memory disabled/changed to save power?
 * Get the memory layout of the project
 
-    * What are the code sections for BSP and Java
+    * What are the code sections for the BSP and the Application?
     * Where are the BSP stack and heap? What about the Application stack and heap?
     * Where are the Java immortals heap?
     * Where are the Java strings?
