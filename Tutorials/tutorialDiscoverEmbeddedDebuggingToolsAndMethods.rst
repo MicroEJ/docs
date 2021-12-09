@@ -469,7 +469,7 @@ Here are a few suggestions:
   shared resource could be blocking it.
 
 - When a Java native method is called, it calls its C counterpart function in the RTOS task that runs the MicroEJ runtime.
-  While the C function is running, no other Java methods can run because the Java world awaits for the C function to finish.
+  While the C function is running, no other Java methods can run because the Core Engine awaits for the C function to finish.
   Consequently, no Java thread can ever run again if the C function never returns.
   Therefore, spot any suspect native functions and trace every entry/exit to detect faulty code.
 
