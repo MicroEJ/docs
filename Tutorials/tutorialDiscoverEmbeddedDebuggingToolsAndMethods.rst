@@ -368,7 +368,7 @@ The steps followed are:
    - The checks of the schedulers are possible with :ref:`systemview` and :ref:`MicroUI Debug Traces <microui_traces>`.
    - The Input Events check is possible with the :ref:`LLUI_INPUT_dump API <section_inputs_eventbuffer>`.
 
-Check RTOS Scheduler Liveness
+Check RTOS Tasks Scheduling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's start at low level by figuring out if the RTOS is scheduling the tasks correctly.
