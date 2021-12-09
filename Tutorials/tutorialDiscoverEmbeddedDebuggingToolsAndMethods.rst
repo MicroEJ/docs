@@ -752,7 +752,7 @@ Determine which memory regions are affected and determine which components are r
     * Besides the Java immortals, what are the other intersection point between the Java and the BSP? (e.g. a temporary RAM buffer for JPEG decoder).
     * Please refer to the :ref:`Core Engine Link section <core_engine_link>` to locate the Application sections and to the :ref:`application_options` for their sizes.
 
-* Implement a CRC of the *hot sections* when entering/leaving all natives. *Hot Sections* are memory sections used by both the Java and native code (e.g. C or ASM).
+* Implement a CRC of the *hot sections* when entering/leaving all natives. *Hot Sections* are memory sections used by both Java code and native code (e.g. C or ASM).
 
 * Move the C stack at the beginning of the memory to trigger a crash when it overflows (instead of corrupting the memory).
 
