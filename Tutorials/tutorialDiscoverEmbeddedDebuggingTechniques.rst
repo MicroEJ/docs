@@ -1,34 +1,34 @@
-.. _tutorial_discover_embedded_debugging_tools_and_methods:
+.. _tutorial_discover_embedded_debugging_techniques:
 
-Discover Embedded Debugging Tools and Methods
-=============================================
+Discover Embedded Debugging Techniques
+======================================
 
 This tutorial describes the available tools provided to developers to debug an application.
-It also lists several applications uses cases.
+It also presents debugging methods applied to two concrete uses cases (GUI freeze and software fault).
 
-1. :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools`
+1. :ref:`tutorial_discover_embedded_debugging_techniques.tools`
   
-  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.events_tracing_and_logging`
-  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.runtime_state_dump`
-  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.memory_inspection`
-  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.debug_gui_application`
-  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.static_analysis_tools`
-  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.simulator_debugger`
-  - :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.platform_qualification`
+  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.events_tracing_and_logging`
+  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.runtime_state_dump`
+  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.memory_inspection`
+  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.debug_gui_application`
+  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.static_analysis_tools`
+  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.simulator_debugger`
+  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.platform_qualification`
 
-2. :ref:`tutorial_discover_embedded_debugging_tools_and_methods.use_case_1`
-3. :ref:`tutorial_discover_embedded_debugging_tools_and_methods.use_case_2`
+2. :ref:`tutorial_discover_embedded_debugging_techniques.use_case_1`
+3. :ref:`tutorial_discover_embedded_debugging_techniques.use_case_2`
 
 Intended Audience
 -----------------
 
 The audience for this document is engineers who want to learn about the tools available to debug embedded applications.
 
-In addition, the :ref:`tutorial_discover_embedded_debugging_tools_and_methods.use_case_1` is particularly relevant for Application engineers.
-Whereas the :ref:`tutorial_discover_embedded_debugging_tools_and_methods.use_case_2` is more relevant for Firmware engineers.
+In addition, the :ref:`tutorial_discover_embedded_debugging_techniques.use_case_1` is particularly relevant for Application engineers.
+Whereas the :ref:`tutorial_discover_embedded_debugging_techniques.use_case_2` is more relevant for Firmware engineers.
 
 
-.. _tutorial_discover_embedded_debugging_tools_and_methods.tools:
+.. _tutorial_discover_embedded_debugging_techniques.tools:
 
 Debugging Tools
 ---------------
@@ -36,16 +36,16 @@ Debugging Tools
 This section presents an overview of the main tools available to debug an embedded application.
 Please refer to the developer guides for the complete reference (:ref:`application-developer-guide`, :ref:`platform-developer-guide`, :ref:`kernel-developer-guide`).
 
-- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.events_tracing_and_logging`
-- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.runtime_state_dump`
-- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.memory_inspection`
-- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.debug_gui_application`
-- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.static_analysis_tools`
-- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.simulator_debugger`
-- :ref:`tutorial_discover_embedded_debugging_tools_and_methods.tools.platform_qualification`
+- :ref:`tutorial_discover_embedded_debugging_techniques.tools.events_tracing_and_logging`
+- :ref:`tutorial_discover_embedded_debugging_techniques.tools.runtime_state_dump`
+- :ref:`tutorial_discover_embedded_debugging_techniques.tools.memory_inspection`
+- :ref:`tutorial_discover_embedded_debugging_techniques.tools.debug_gui_application`
+- :ref:`tutorial_discover_embedded_debugging_techniques.tools.static_analysis_tools`
+- :ref:`tutorial_discover_embedded_debugging_techniques.tools.simulator_debugger`
+- :ref:`tutorial_discover_embedded_debugging_techniques.tools.platform_qualification`
 
 
-.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.events_tracing_and_logging:
+.. _tutorial_discover_embedded_debugging_techniques.tools.events_tracing_and_logging:
 
 Events Tracing and Logging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -107,7 +107,7 @@ When an application has issues, the first step is to understand what is happenin
 
 Please refer to the tutorial :ref:`tutorial_instrument_java_code_for_logging` for a comparison of these libraries.
 
-.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.runtime_state_dump:
+.. _tutorial_discover_embedded_debugging_techniques.tools.runtime_state_dump:
 
 Runtime State Dump
 ~~~~~~~~~~~~~~~~~~
@@ -207,7 +207,7 @@ Runtime State Dump
       --------------------------------------------------------------------------------
       ================================================================================
 
-.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.memory_inspection:
+.. _tutorial_discover_embedded_debugging_techniques.tools.memory_inspection:
 
 Memory Inspection
 ~~~~~~~~~~~~~~~~~
@@ -223,7 +223,7 @@ Memory issues such as memory corruption and memory leaks can be hard to troubles
       :align: center
       :scale: 75
 
-.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.debug_gui_application:
+.. _tutorial_discover_embedded_debugging_techniques.tools.debug_gui_application:
 
 Debugging GUI Applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -297,7 +297,7 @@ Debugging GUI Applications
 * For UI2 and former versions, please refer to `MicroUI and multithreading <https://forum.microej.com/t/gui-microui-and-multithreading/652>`__ for a description of the threading model.
 
 
-.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.static_analysis_tools:
+.. _tutorial_discover_embedded_debugging_techniques.tools.static_analysis_tools:
 
 Static Analysis Tools
 ~~~~~~~~~~~~~~~~~~~~~
@@ -311,7 +311,7 @@ Static analysis tools are helpful allies to prevent several classes of bugs.
       :alt: Example of Null Analysis Detection
 
 
-.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.simulator_debugger:
+.. _tutorial_discover_embedded_debugging_techniques.tools.simulator_debugger:
 
 Simulator Debugger
 ~~~~~~~~~~~~~~~~~~
@@ -324,7 +324,7 @@ Simulator Debugger
 
 * Configure the libraries' sources location to :ref:`View library as sources<application_debugger>` in the debugger.
 
-.. _tutorial_discover_embedded_debugging_tools_and_methods.tools.platform_qualification:
+.. _tutorial_discover_embedded_debugging_techniques.tools.platform_qualification:
 
 Platform Qualification
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -343,7 +343,7 @@ The project is available on GitHub: https://github.com/MicroEJ/PlatformQualifica
 Please refer to the :ref:`platform_qualification` documentation for more information.
 
 
-.. _tutorial_discover_embedded_debugging_tools_and_methods.use_case_1:
+.. _tutorial_discover_embedded_debugging_techniques.use_case_1:
 
 Use Case 1:  Debugging an UI Application Freeze
 -----------------------------------------------
@@ -351,15 +351,15 @@ Use Case 1:  Debugging an UI Application Freeze
 When an application User Interface freezes and becomes unresponsive, in most cases, one of the following conditions applies:
 
 - An unrecoverable system failure occurred, like a HardFault, and the RTOS tasks are not scheduled anymore.
-- The RTOS task that runs the MicroEJ Core Engine is never given CPU time (suspended or blocked).
-- The RTOS task that runs the MicroEJ Core Engine is executing never-ending native code (infinite loop in native implementation for example).
+- The RTOS task that runs the Core Engine is never given CPU time (suspended or blocked).
+- The RTOS task that runs the Core Engine is executing never-ending native code (infinite loop in native implementation for example).
 - A Java method executes a long-running operation in the MicroUI thread (also called Display Pump thread).
 - The application code is unable to receive or process user input events.
 
 The following sections explain how to instrument the code to locate the issue when the UI freeze occurs.
 The steps followed are:
 
-1. Check if the RTOS properly schedules the MicroEJ runtime task.
+1. Check if the RTOS properly schedules the Core Engine task.
 2. Check if the Core Engine properly schedules all Java threads.
 3. Check if the Core Engine properly schedules the MicroUI thread.
 4. Check if Input Events are properly processed.
@@ -379,18 +379,18 @@ task and make it report in some way at a regular pace (print a message
 on standard output, blink a LED, use SystemView, etc.).
 
 If the heartbeat is still running when the UI freeze occurs, we can
-go a step further and check whether the MicroEJ runtime is still
+go a step further and check whether the Core Engine is still
 scheduling Java threads or not.
 
 If you use task priorities for the RTOS tasks management, ensure that
 the priority of the RTOS task is equal or lower than the priority of
-the MicroEJ runtime task.
+the Core Engine task.
 
 If the RTOS task of the heartbeat doesn't run when:
 
 - the priority is the highest than any other tasks, then the RTOS
   scheduler is not scheduling anything.
-- the priority is the same as the MicroEJ runtime and other tasks with
+- the priority is the same as the Core Engine and other tasks with
   a higher priority exists, then one or more RTOS tasks are causing
   starvation by taking all the resources.
 
@@ -400,11 +400,11 @@ If the RTOS task of the heartbeat doesn't run when:
      #pink:RTOS scheduler not working;
      kill
    else (yes)
-     if (Heartbeat task runs\nwith same priority\nas MicroEJ Runtime) then (no)
-       #pink:MicroEJ Runtime is starving;
+     if (Heartbeat task runs\nwith same priority\nas Core Engine) then (no)
+       #pink:Core Engine is starving;
        kill
      else (yes)
-       :MicroEJ Runtime is running;
+       :Core Engine is running;
        kill
      endif
    endif
@@ -415,7 +415,7 @@ If the RTOS task of the heartbeat doesn't run when:
 Check Java Threads Scheduling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As a reminder, the threading model implemented by MicroEJ runtime is called green thread: it defines a multi-threaded environment without relying on any native RTOS capabilities. 
+As a reminder, the threading model implemented by Core Engine is called green thread: it defines a multi-threaded environment without relying on any native RTOS capabilities. 
 Therefore, all Java threads run in a single RTOS task.
 For more details, please refer to the :ref:`MicroEJ Core Engine<core_engine>` section.
 A quick way to check if the Java threads are scheduled correctly is, here again, to make one of the threads print a heartbeat message. Copy/paste the following snippet in the ``main()`` method of the application:
@@ -437,7 +437,7 @@ on the standard output every 10 seconds.
 
 Assuming no one canceled the ``Timer``, if the ``Alive`` printouts stop when the UI freeze occurs, then it can mean that:
 
-- The MicroEJ Runtime stopped scheduling the Java threads.
+- The Core Engine stopped scheduling the Java threads.
 - Or that one or more threads with a higher priority prevent the threads with a lower priority from running.
 
 Here are a few suggestions:
@@ -464,11 +464,11 @@ Here are a few suggestions:
      thread.setPriority(Thread.MAX_PRIORITY);
      thread.start();
 
-- The RTOS task that runs the MicroEJ runtime might be suspended or
+- The RTOS task that runs the Core Engine might be suspended or
   blocked. Check if some API call is suspending the task or if a
   shared resource could be blocking it.
 
-- When a Java native method is called, it calls its C counterpart function in the RTOS task that runs the MicroEJ runtime.
+- When a Java native method is called, it calls its C counterpart function in the RTOS task that runs the Core Engine.
   While the C function is running, no other Java methods can run because the Core Engine awaits for the C function to finish.
   Consequently, no Java thread can ever run again if the C function never returns.
   Therefore, spot any suspect native functions and trace every entry/exit to detect faulty code.
@@ -613,7 +613,7 @@ UART Not Available
 If the UART output is not available, use another method to signal that
 the heartbeat task is running (e.g. blink a LED, use SystemView).
 
-.. _tutorial_discover_embedded_debugging_tools_and_methods.use_case_2:
+.. _tutorial_discover_embedded_debugging_techniques.use_case_2:
 
 Use Case 2: Debugging a Hardfault
 ---------------------------------

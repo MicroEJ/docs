@@ -5,9 +5,8 @@ MicroEJ Core Engine
 ===================
 
 
-The MicroEJ Core Engine (also called the platform engine) and its
-components represent the core of the platform. It is used to compile and
-execute at runtime the MicroEJ Application code.
+The MicroEJ Core Engine and its components represent the core of the Architecture.
+It is used to compile and execute at runtime the MicroEJ Application code.
 
 
 Functional Description
