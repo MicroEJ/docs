@@ -351,8 +351,8 @@ Use Case 1:  Debugging an UI Application Freeze
 When an application User Interface freezes and becomes unresponsive, in most cases, one of the following conditions applies:
 
 - An unrecoverable system failure occurred, like a HardFault, and the RTOS tasks are not scheduled anymore.
-- The RTOS task that runs the MicroEJ runtime is never given CPU time (suspended or blocked).
-- The RTOS task that runs the MicroEJ runtime is executing never-ending native code (infinite loop in native implementation for example).
+- The RTOS task that runs the MicroEJ Core Engine is never given CPU time (suspended or blocked).
+- The RTOS task that runs the MicroEJ Core Engine is executing never-ending native code (infinite loop in native implementation for example).
 - A Java method executes a long-running operation in the MicroUI thread (also called Display Pump thread).
 - The application code is unable to receive or process user input events.
 
