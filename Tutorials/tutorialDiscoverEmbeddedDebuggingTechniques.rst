@@ -4,7 +4,7 @@ Discover Embedded Debugging Techniques
 ======================================
 
 This tutorial describes the available tools provided to developers to debug an application.
-It also presents debugging methods applied to two concrete uses cases (GUI application freeze and hardfault).
+It also presents debugging methods applied to two concrete uses cases (GUI application freeze and HardFault).
 
 1. :ref:`tutorial_discover_embedded_debugging_techniques.tools`
 2. :ref:`tutorial_discover_embedded_debugging_techniques.use_case_1`
@@ -113,7 +113,7 @@ Runtime State Dump
 .. |fig2| image:: ../ApplicationDeveloperGuide/images/STR_trace-read.png
    :alt: Stack Trace Reader Console
 
-- The :ref:`Core Engine VM dump<vm_dump>` is a low-level API to display the states of the MicroEJ Runtime and MicroEJ threads (name, priority, stack trace, etc. )
+- The :ref:`Core Engine VM dump<vm_dump>` is a low-level API to display the state of the MicroEJ Runtime and the MicroEJ threads (name, priority, stack trace, etc. )
 
    .. code-block::
 
@@ -207,7 +207,7 @@ Memory issues such as memory corruption and memory leaks can be hard to troubles
 
 * Check the internal structure integrity of the MicroJvm virtual machine with the :ref:`LLMJVM_checkIntegrity API <core_engine.check_integrity>` to detect memory corruptions in native functions.
 * Use the :ref:`Heap Usage Monitoring Tool <heap_usage_monitoring>` to estimate the heap requirements of an application.
-* The :ref:`heapdumper` tools analyze the content of the heap.  They are helpful to detect memory leaks and to look for optimization of the heap usage.
+* The :ref:`heapdumper` tools analyze the content of the heap.  They are helpful to detect memory leaks and look for optimization of the heap usage.
 
    .. figure:: images/HeapAnalyzer-example.png
       :alt: Heap Analyzer Example
@@ -228,7 +228,7 @@ The project is available on GitHub: https://github.com/MicroEJ/PlatformQualifica
    :align: center
    :scale: 80%
 
-   Platform Qualification Overwiew
+   Platform Qualification Overview
 
 Please refer to the :ref:`platform_qualification` documentation for more information.
 
@@ -254,7 +254,7 @@ Static Analysis Tools
 Static analysis tools are helpful allies to prevent several classes of bugs.
 
 * :ref:`SonarQube™<sonar_code_analysis>` provides reports on duplicated code, coding standards, unit tests, code coverage, code complexity, potential bugs, comments, and architecture.
-* Use the :ref:`Null Analysis tool<null_analysis>` to detect and to prevent `NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_, one of the most common causes of runtime failure of Java programs.
+* Use the :ref:`Null Analysis tool<null_analysis>` to detect and prevent `NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_, one of the most common causes of runtime failure of Java programs.
 
    .. figure:: ../ApplicationDeveloperGuide/images/null_analysis_example.png
       :alt: Example of Null Analysis Detection
@@ -322,7 +322,7 @@ GUI Debugging Tools
       [1] null
      ================================================================================
 
-* MicroUI can log several actions that can be viewed in SystemView.  Please refer to :ref:`microui_traces` for more information.
+* MicroUI can log several actions, which can be viewed in SystemView.  Please refer to :ref:`microui_traces` for more information.
 
   .. figure:: ../ApplicationDeveloperGuide/UI/MicroUI/images/microui_traces_systemview.png
      :alt: MicroUI Traces displayed in SystemView
@@ -362,27 +362,27 @@ The steps followed are:
 Check RTOS Tasks Scheduling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Let's start at low level by figuring out if the RTOS is scheduling the tasks correctly.
-If possible, use a debugger or :ref:`systemview`, if not use the heartbeat task described here.
+Let's start at low level by figuring out if the RTOS is scheduling tasks correctly.
+If possible, use a debugger or :ref:`systemview`; if not, use the heartbeat task described below.
 
-Make one of the RTOS task act like a heartbeat: create a dedicated
+Make one of the RTOS tasks acts like a heartbeat: create a dedicated
 task and make it report in some way at a regular pace (print a message
-on standard output, blink a LED, use SystemView, etc.).
+on standard output, blink an LED, use SystemView, etc.).
 
 If the heartbeat is still running when the UI freeze occurs, we can
 go a step further and check whether the Core Engine is still
 scheduling Java threads or not.
 
 If you use task priorities for the RTOS tasks management, ensure that
-the priority of the RTOS task is equal or lower than the priority of
+the priority of the RTOS task is equal to or lower than the priority of
 the Core Engine task.
 
 If the RTOS task of the heartbeat doesn't run when:
 
 - the priority is the highest than any other tasks, then the RTOS
   scheduler is not scheduling anything.
-- the priority is the same as the Core Engine and other tasks with
-  a higher priority exists, then one or more RTOS tasks are causing
+- the priority is the same as the Core Engine, and other tasks with
+  a higher priority exist, then one or more RTOS tasks are causing
   starvation by taking all the resources.
 
 ..
@@ -460,19 +460,19 @@ Here are a few suggestions:
   shared resource could be blocking it.
 
 - When a Java native method is called, it calls its C counterpart function in the RTOS task that runs the Core Engine.
-  While the C function is running, no other Java methods can run because the Core Engine awaits for the C function to finish.
+  While the C function is running, no other Java methods can run because the Core Engine waits for the C function to finish.
   Consequently, no Java thread can ever run again if the C function never returns.
   Therefore, spot any suspect native functions and trace every entry/exit to detect faulty code.
 
 Please refer to :ref:`implementation_details` if you encounter issues
-to implement the heartbeat.
+when implementing the heartbeat.
 
 Check UI Thread Liveness
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now, what if the ``Alive`` heartbeat runs while the UI is frozen?
-Java threads are getting scheduled but the UI thread (also called
-Display Pump thread), does not process display events.
+Java threads are getting scheduled, but the UI thread (also called
+Display Pump thread) does not process display events.
 
 Let's make the heartbeat snippet above execute in the UI
 thread. Simply wraps the ``System.out.println("Alive")`` with a
@@ -505,7 +505,7 @@ thread. Simply wraps the ``System.out.println("Alive")`` with a
    timer.schedule(task, 10_000, 10_000);
 
 In case this snippet prints ``TimerTask Alive`` but not ``UI alive`` when
-the freeze occurs, then there are few options:
+the freeze occurs, then there are a few options:
 
 -  The application might be processing a long operation in the UI
    thread, for example:
@@ -517,7 +517,7 @@ the freeze occurs, then there are few options:
    -  ``SNI_suspendCurrentJavaThread()`` in native call
 
    When doing so, any other UI-related operation will not be processed
-   until completion, leading the display to being unresponsive. Any code
+   until completion, leading the display to be unresponsive. Any code
    that runs in the UI thread might be responsible. Look for code
    executed as a result of calls to:
 
@@ -559,7 +559,7 @@ follow the general pattern and use a dedicated thread/executor instead:
 Check Input Events Processing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Another case worth looking at is whether the application is processing user input events like it should.
+Another case worth looking at is whether the application is processing user input events as it should.
 The UI may look "frozen" only because it doesn't react to input events. 
 Replace the desktop instance with the one below to log all user inputs.
 
@@ -595,48 +595,48 @@ The number of threads in the MicroEJ Application must be sufficient to support t
 The number of available threads can be updated in the launch configuration of the application (see :ref:`option_number_of_threads`).
 
 If it is not possible to increase the number of available threads (for
-example because the memory is full), try to reuse another thread but
+example, because the memory is full), try to reuse another thread but
 not the UI thread.
 
 UART Not Available
 ++++++++++++++++++
 
 If the UART output is not available, use another method to signal that
-the heartbeat task is running (e.g. blink a LED, use SystemView).
+the heartbeat task is running (e.g., blink an LED, use SystemView).
 
 .. _tutorial_discover_embedded_debugging_techniques.use_case_2:
 
-Use Case 2: Debugging a Hardfault
+Use Case 2: Debugging a HardFault
 ---------------------------------
 
-When the application crashes, it can be the consequence of an hardfault triggered by the MCU.
+When the application crashes, it can result from a HardFault triggered by the MCU.
 
 The following sections explain:
 
-1. What are exceptions, hardfaults, and the exception handler.
+1. What are exceptions, HardFaults, and the exception handler.
 2. What to do in case of Memory Corruptions.
-3. What to do when a hardfault occurs.
+3. What to do when a HardFault occurs.
 
 Useful Resources
 ~~~~~~~~~~~~~~~~
 
-* IAR System : Debugging a HardFault on Cortex-M https://www.iar.com/support/tech-notes/debugger/debugging-a-hardfault-on-cortex-m/
-* ESP-IDF Programming Guide : Fatal Errors https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/fatal-errors.html
+* IAR System: Debugging a HardFault on Cortex-M https://www.iar.com/support/tech-notes/debugger/debugging-a-hardfault-on-cortex-m/
+* ESP-IDF Programming Guide: Fatal Errors https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/fatal-errors.html
 * Using Cortex-M3/M4/M7 Fault Exceptions MDK Tutorial http://www.keil.com/appnotes/files/apnt209.pdf
 
-Exceptions, Hardfaults And Exception Handler
+Exceptions, HardFaults And Exception Handler
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *From ARM Architecture Reference Manual*
 
    An exception causes the processor to suspend program execution to handle an event, such as an externally generated interrupt or an attempt to execute an undefined instruction. Exceptions can be generated by internal and external sources.
-   Normally, when an exception is taken the processor state is preserved immediately, before handling the exception.
+   Normally, when an exception is taken, the processor state is preserved immediately, before handling the exception.
    This means that, when the event has been handled, the original state can be restored and program execution resumed from the point where the exception was taken.
 
 For example, an *IRQ request* is an exception that can be recovered by handling the hardware request properly.
 On the other hand, an *Undefined Instruction* exception suggests a more severe system failure that might not be recoverable.
 
-The exceptions that cannot be recovered are named **hardfaults**.
+The exceptions that cannot be recovered are named **HardFaults**.
 
 *From ARM Architecture Reference Manual*
 
@@ -644,7 +644,7 @@ The exceptions that cannot be recovered are named **hardfaults**.
    This address is called the **exception vector** for that exception.
 
 The code pointed by the exception vector is named **exception handler**.
-Therefore, a dedicated exception handler can be configured for all exceptions, including hardfaults.
+Therefore, a dedicated exception handler can be configured for all exceptions, including HardFaults.
 
 Possible exceptions can be:
 
@@ -657,7 +657,7 @@ Check the hardware documentation for the complete list of exceptions.
 What To Do In Exception Handlers?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For all hardfault handlers, the following data are available and must be printed:
+For all HardFault handlers, the following data are available and must be printed:
 
 * Name and value of all registers available
 * Name of the handler
@@ -684,7 +684,7 @@ If applicable, configure the MPU should to protect the application.
 
 * Check the RTOS documentation if it supports MPU. 
 
-  For example FreeRTOS includes FreeRTOS-MPU https://www.freertos.org/FreeRTOS-MPU-memory-protection-unit.html.
+  For example, FreeRTOS includes FreeRTOS-MPU https://www.freertos.org/FreeRTOS-MPU-memory-protection-unit.html.
 
 * Configure the MPU to configure the access to the JVM heap and stack to prevent any other native threads from altering this area.
   Refer to :ref:`this section<core_engine_link>` for the list of section names defined by the MicroEJ Core Engine.
@@ -700,13 +700,13 @@ Memory corruption can result in the following symptoms:
 
 The cause(s) of a memory corruption can be:
 
-* A native (C) function has a bug and write to an incorrect memory location
-* A native stackoverflow
+* A native (C) function has a bug and writes to an incorrect memory location
+* A native stack overflow
 * A native heap overflow
 * A device incorrectly initialized or misconfigured.
 * ...
 
-When the hardfault occurs in the MicroJVM task, the VM task heap or stack may be corrupted.
+When the HardFault occurs in the MicroJVM task, the VM task heap or stack may be corrupted.
 Add ``LLMJVM_checkIntegrity`` call in checkpoints of the BSP code to identify the timeslot of the memory corruption.
 Typically, you can check a native with:
 
@@ -727,27 +727,27 @@ Investigation
 
 Determine which memory regions are affected and determine which components are responsible for the corruption.
 
-* List all memory available and their specifics
+* List all the memories available and their specifics:
 
     * Access mode (addressable, DMA, ...)
     * Cache mechanism? L1, L2
 
 * Is low-power enabled for CPU and peripherals? Is the memory disabled/changed to save power?
-* Get the memory layout of the project
+* Get the memory layout of the project:
 
     * What are the code sections for the BSP and the Application?
     * Where are the BSP stack and heap? What about the Application stack and heap?
-    * Where are the Java immortals heap?
+    * Where is the Java immortals heap?
     * Where are the Java strings?
     * Where is the MicroEJ UI buffer?
-    * Besides the Java immortals, what are the other intersection point between the Java application and the BSP? (e.g. a temporary RAM buffer for JPEG decoder).
-    * Please refer to the :ref:`Core Engine Link section <core_engine_link>` to locate the Application sections and to the :ref:`application_options` for their sizes.
+    * Besides the Java immortals, what are the other intersection point between the Java application and the BSP? (e.g., a temporary RAM buffer for JPEG decoder).
+    * Please refer to the :ref:`Core Engine Link section <core_engine_link>` to locate the Application sections, and to the :ref:`application_options` for their sizes.
 
-* Implement a CRC of the *hot sections* when entering/leaving all natives. *Hot Sections* are memory sections used by both Java code and native code (e.g. C or ASM).
+* Implement a CRC of the *hot sections* when entering/leaving all natives. *Hot Sections* are memory sections used by both Java code and native code (e.g., C or ASM).
 
 * Move the C stack at the beginning of the memory to trigger a crash when it overflows (instead of corrupting the memory).
 
-When a Hardfault Occurs
+When a HardFault Occurs
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Extract Information and Coredump
@@ -758,7 +758,7 @@ Attach an embedded debugger and get the following information:
 * stack traces and registers information for each stack frame
 * memory information
 
-    * the whole memory if possible
+    * the whole memory, if possible
     * otherwise, get the *hot sections* 
 
         * BSP and Java heap and stack
@@ -768,16 +768,16 @@ Attach an embedded debugger and get the following information:
 
 * :ref:`vm_dump_debugger`
 
-* Check which function is located at the address inside the PC register
+* Check which function is located at the address inside the PC register.
 
-  * it can be done either in Debug mode or by searching inside the generated .map file.
+  * It can be done either in Debug mode or by searching inside the generated .map file.
 
 
 Memory Dump Analysis
 ~~~~~~~~~~~~~~~~~~~~
 
-* Run the Heap Dumper to check the application heap has not been corrupted
-* Make sure the native stack is not full (usually there shall have the remaining initialization patterns in memory on top of the stack such as ``0xDEADBEEF``)
+* Run the Heap Dumper to check the application heap has not been corrupted.
+* Make sure the native stack is not full (usually, there shall have the remaining initialization patterns in memory on top of the stack, such as ``0xDEADBEEF``)
 
 Trigger a VM Dump
 ~~~~~~~~~~~~~~~~~
@@ -790,3 +790,10 @@ Data printed in the VM state are:
 * Stack trace for each thread
 
 See :ref:`this section<vm_dump>` to learn more about ``LLMJVM_dump``.
+
+..
+   | Copyright 2021, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
