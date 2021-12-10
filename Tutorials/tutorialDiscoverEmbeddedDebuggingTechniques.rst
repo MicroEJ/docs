@@ -7,15 +7,6 @@ This tutorial describes the available tools provided to developers to debug an a
 It also presents debugging methods applied to two concrete uses cases (GUI freeze and software fault).
 
 1. :ref:`tutorial_discover_embedded_debugging_techniques.tools`
-  
-  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.events_tracing_and_logging`
-  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.runtime_state_dump`
-  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.memory_inspection`
-  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.debug_gui_application`
-  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.static_analysis_tools`
-  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.simulator_debugger`
-  - :ref:`tutorial_discover_embedded_debugging_techniques.tools.platform_qualification`
-
 2. :ref:`tutorial_discover_embedded_debugging_techniques.use_case_1`
 3. :ref:`tutorial_discover_embedded_debugging_techniques.use_case_2`
 
