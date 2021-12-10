@@ -102,7 +102,6 @@ MicroEJ SDK console will display Launch steps messages.
 
     SUCCESS
 
-
 .. _device_build:
 
 Run on the Hardware Device

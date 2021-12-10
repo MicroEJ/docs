@@ -5,9 +5,8 @@ MicroEJ Core Engine
 ===================
 
 
-The MicroEJ Core Engine (also called the platform engine) and its
-components represent the core of the platform. It is used to compile and
-execute at runtime the MicroEJ Application code.
+The MicroEJ Core Engine and its components represent the core of the Architecture.
+It is used to compile and execute at runtime the MicroEJ Application code.
 
 
 Functional Description
@@ -329,8 +328,8 @@ from a dedicated RTOS task.
 
 .. _vm_dump:
 
-Debugging
----------
+Dump the States of the Core Engine
+----------------------------------
 
 The internal MicroEJ Core Engine function called ``LLMJVM_dump`` allows
 you to dump the state of all MicroEJ threads: name, priority, stack
@@ -341,54 +340,156 @@ This is an example of a dump:
 
 .. code-block::
 
-   ============ VM Dump ============
-   2 java threads
-   ---------------------------------
-   Java Thread[3]
-   name="SYSINpmp" prio=5 state=WAITING
+      =================================== VM Dump ====================================
+      Java threads count: 3
+      Peak java threads count: 3
+      Total created java threads: 3
+      Last executed native function: 0x90035E3D
+      Last executed external hook function: 0x00000000
+      State: running
+      --------------------------------------------------------------------------------
+      Java Thread[1026]
+      name="main" prio=5 state=RUNNING max_java_stack=456 current_java_stack=184
+      
+      java.lang.MainThread@0xC0083C7C:
+          at (native) [0x90003F65]
+          at com.microej.demo.widget.main.MainPage.getContentWidget(MainPage.java:95)
+              Object References:
+                  - com.microej.demo.widget.main.MainPage@0xC00834E0
+                  - com.microej.demo.widget.main.MainPage$1@0xC0082184
+                  - java.lang.Thread@0xC0082194
+                  - java.lang.Thread@0xC0082194
+          at com.microej.demo.widget.common.Navigation.createRootWidget(Navigation.java:104)
+              Object References:
+                  - com.microej.demo.widget.main.MainPage@0xC00834E0
+          at com.microej.demo.widget.common.Navigation.createDesktop(Navigation.java:88)
+              Object References:
+                  - com.microej.demo.widget.main.MainPage@0xC00834E0
+                  - ej.mwt.stylesheet.CachedStylesheet@0xC00821DC
+          at com.microej.demo.widget.common.Navigation.main(Navigation.java:40)
+              Object References:
+                  - com.microej.demo.widget.main.MainPage@0xC00834E0
+          at java.lang.MainThread.run(Thread.java:855)
+              Object References:
+                  - java.lang.MainThread@0xC0083C7C
+          at java.lang.Thread.runWrapper(Thread.java:464)
+              Object References:
+                  - java.lang.MainThread@0xC0083C7C
+          at java.lang.Thread.callWrapper(Thread.java:449)
+      --------------------------------------------------------------------------------
+      Java Thread[1281]
+      name="UIPump" prio=5 state=WAITING timeout(ms)=INF max_java_stack=120 current_java_stack=117
+      external event: status=waiting
+      
+      java.lang.Thread@0xC0083628:
+          at ej.microui.MicroUIPump.read(Unknown Source)
+              Object References:
+                  - ej.microui.display.DisplayPump@0xC0083640
+          at ej.microui.MicroUIPump.run(MicroUIPump.java:176)
+              Object References:
+                  - ej.microui.display.DisplayPump@0xC0083640
+          at java.lang.Thread.run(Thread.java:311)
+              Object References:
+                  - java.lang.Thread@0xC0083628
+          at java.lang.Thread.runWrapper(Thread.java:464)
+              Object References:
+                  - java.lang.Thread@0xC0083628
+          at java.lang.Thread.callWrapper(Thread.java:449)
+      --------------------------------------------------------------------------------
+      Java Thread[1536]
+      name="Thread1" prio=5 state=READY max_java_stack=60 current_java_stack=57
+      
+      java.lang.Thread@0xC0082194:
+          at java.lang.Thread.runWrapper(Unknown Source)
+              Object References:
+                  - java.lang.Thread@0xC0082194
+          at java.lang.Thread.callWrapper(Thread.java:449)
+      ================================================================================
+      
+      ============================== Garbage Collector ===============================
+      State: Stopped
+      Last analyzed object: null
+      Total memory: 15500
+      Current allocated memory: 7068
+      Current free memory: 8432
+      Allocated memory after last GC: 0
+      Free memory after last GC: 15500
+      ================================================================================
+      
+      =============================== Native Resources ===============================
+      Id         CloseFunc  Owner            Description
+      --------------------------------------------------------------------------------
+      ================================================================================
 
-   java/lang/Thread:
-       at com/is2t/microbsp/microui/natives/NSystemInputPump.@134261800
-    [0x0800AC32]
-       at com/is2t/microbsp/microui/io/SystemInputPump.@134265968
-    [0x0800BC80]
-       at ej/microui/Pump.@134261696
-    [0x0800ABCC]
-       at ej/microui/Pump.@134265872
-    [0x0800BC24]
-       at java/lang/Thread.@134273964
-    [0x0800DBC4]
-       at java/lang/Thread.@134273784
-    [0x0800DB04]
-       at java/lang/Thread.@134273892
-    [0x0800DB6F]
-   ---------------------------------
-   Java Thread[2]
-   name="DISPLpmp" prio=5 state=WAITING
+See :ref:`stack_trace_reader` for additional info related to working with VM dumps.
 
-   java/lang/Thread:
-       at java/lang/Object.@134256392
-    [0x08009719]
-       at ej/microui/FIFOPump.@134259824
-    [0x0800A48E]
-       at ej/microui/io/DisplayPump.134263016
-    [0x0800B0F8]
-       at ej/microui/Pump.@134261696
-    [0x0800ABCC]
-       at ej/microui/Pump.@134265872
-    [0x0800BC24]
-       at ej/microui/io/DisplayPump.@134262868
-    [0x0800B064]
-       at java/lang/Thread.@134273964
-    [0x0800DBC4]
-       at java/lang/Thread.@134273784
-    [0x0800DB04]
-       at java/lang/Thread.@134273892
-    [0x0800DB6F]
-   =================================
+.. _vm_dump_fault_handler:
 
-See :ref:`stack_trace_reader` for additional info related to working
-with VM dumps.
+Dump The State Of All MicroEJ Threads From A Fault Handler
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is recommended to call the ``LLMJVM_dump`` API as a last resort in a fault handler.
+Calling ``LLMJVM_dump`` is undefined if the VM is not paused.
+The call to ``LLMJVM_dump`` MUST be done last in the fault handler.
+
+.. _vm_dump_debugger:
+
+Trigger VM Dump From Debugger
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+To trigger a VM dump from the debugger, set the PC register to the ``LLMJVM_dump`` physical memory address.
+
+The symbol for the ``LLMJVM_dump`` API is defined in the header file ``LLMJVM.h``.
+Search for this symbol in the appropriate C toolchain ``.map`` file.
+
+.. note::
+
+   ``LLMJVM_dump`` (in ``LLMJVM.h``) needs to be called explicitly.
+   A linker optimization may remove the symbol if it is not used anywhere in the code.
+
+Requirements:
+
+* Embedded debugger is attached and the processor is halted in an exception handler.
+* A way to read stdout (usually UART).
+
+.. _core_engine.check_integrity:
+
+Check Internal Structure Integrity
+----------------------------------
+
+The internal MicroEJ Core Engine function called ``LLMJVM_checkIntegrity`` checks the internal structure integrity of the MicroJvm virtual machine and returns its checksum.
+
+- If an integrity error is detected, the ``LLMJVM_on_CheckIntegrity_error`` hook is called and this method returns ``0``.
+- If no integrity error is detected, a non-zero checksum is returned.
+
+This function must only be called from the MicroJvm virtual machine thread context and only from a native function or callback.
+Calling this function multiple times in a native function must always produce the same checksum.
+If the checksums returned are different, a corruption must have occurred.
+
+Please note that returning a non-zero checksum does not mean the MicroJvm virtual machine data has not been corrupted,
+as it is not possible for the MicroJvm virtual machine to detect the complete memory integrity.
+
+MicroJvm virtual machine internal structures allowed to be modified by a native function are not taken into account for the checksum computation.
+The internal structures allowed are:
+
+- basetype fields in Java objects or content of Java arrays of base type,
+- internal structures modified by a ``LLMJVM`` function call (e.g. set a pending Java exception, suspend or resume the Java thread, register a resource, ...).
+
+This function affects performance and should only be used for debug purpose.
+A typical use of this API is to verify that a native implementation does not corrupt the internal structures:
+
+.. code-block:: java
+
+   void Java_com_mycompany_MyClass_myNativeFunction(void) {
+   		int32_t crcBefore = LLMJVM_checkIntegrity();
+   		myNativeFunctionDo();
+        int32_t crcAfter = LLMJVM_checkIntegrity();
+        if(crcBefore != crcAfter){
+        	// Corrupted MicroJVM virtual machine internal structures
+        	while(1);
+        }
+   }
 
 
 Generic Output
