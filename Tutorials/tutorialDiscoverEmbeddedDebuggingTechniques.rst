@@ -4,7 +4,7 @@ Discover Embedded Debugging Techniques
 ======================================
 
 This tutorial describes the available tools provided to developers to debug an application.
-It also presents debugging methods applied to two concrete uses cases (GUI freeze and software fault).
+It also presents debugging methods applied to two concrete uses cases (GUI application freeze and hardfault).
 
 1. :ref:`tutorial_discover_embedded_debugging_techniques.tools`
 2. :ref:`tutorial_discover_embedded_debugging_techniques.use_case_1`
@@ -30,10 +30,10 @@ Please refer to the developer guides for the complete reference (:ref:`applicati
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.events_tracing_and_logging`
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.runtime_state_dump`
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.memory_inspection`
-- :ref:`tutorial_discover_embedded_debugging_techniques.tools.debug_gui_application`
-- :ref:`tutorial_discover_embedded_debugging_techniques.tools.static_analysis_tools`
-- :ref:`tutorial_discover_embedded_debugging_techniques.tools.simulator_debugger`
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.platform_qualification`
+- :ref:`tutorial_discover_embedded_debugging_techniques.tools.simulator_debugger`
+- :ref:`tutorial_discover_embedded_debugging_techniques.tools.static_analysis_tools`
+- :ref:`tutorial_discover_embedded_debugging_techniques.tools.gui_debugging_tools`
 
 
 .. _tutorial_discover_embedded_debugging_techniques.tools.events_tracing_and_logging:
@@ -113,7 +113,7 @@ Runtime State Dump
 .. |fig2| image:: ../ApplicationDeveloperGuide/images/STR_trace-read.png
    :alt: Stack Trace Reader Console
 
-- The :ref:`Core engine VM dump<vm_dump>` is a low-level API to display the states of the MicroEJ Runtime and MicroEJ threads (name, priority, stack trace, etc. )
+- The :ref:`Core Engine VM dump<vm_dump>` is a low-level API to display the states of the MicroEJ Runtime and MicroEJ threads (name, priority, stack trace, etc. )
 
    .. code-block::
 
@@ -214,10 +214,56 @@ Memory issues such as memory corruption and memory leaks can be hard to troubles
       :align: center
       :scale: 75
 
-.. _tutorial_discover_embedded_debugging_techniques.tools.debug_gui_application:
+.. _tutorial_discover_embedded_debugging_techniques.tools.platform_qualification:
 
-Debugging GUI Applications
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Platform Qualification
+~~~~~~~~~~~~~~~~~~~~~~
+
+The Platform Qualification Tools (PQT) project provides the tools required to validate each component of a MicroEJ Platform.
+After porting or adding a feature to a MicroEJ Platform, it is necessary to validate its integration.
+
+The project is available on GitHub: https://github.com/MicroEJ/PlatformQualificationTools
+
+.. figure:: ../PlatformDeveloperGuide/images/overview-platform-qualification.png
+   :align: center
+   :scale: 80%
+
+   Platform Qualification Overwiew
+
+Please refer to the :ref:`platform_qualification` documentation for more information.
+
+
+.. _tutorial_discover_embedded_debugging_techniques.tools.simulator_debugger:
+
+Simulator Debugger
+~~~~~~~~~~~~~~~~~~
+
+* :ref:`Debug an Application <application_debugger>` on Simulator, add breakpoints, inspect stack frame, use step-by-step, etc.
+
+   .. figure:: ../ApplicationDeveloperGuide/images/debug1.png
+      :alt: MicroEJ Development Tools Overview of the Debugger
+      :align: center
+
+* Configure the libraries' sources location to :ref:`View library as sources<application_debugger>` in the debugger.
+
+.. _tutorial_discover_embedded_debugging_techniques.tools.static_analysis_tools:
+
+Static Analysis Tools
+~~~~~~~~~~~~~~~~~~~~~
+
+Static analysis tools are helpful allies to prevent several classes of bugs.
+
+* :ref:`SonarQube™<sonar_code_analysis>` provides reports on duplicated code, coding standards, unit tests, code coverage, code complexity, potential bugs, comments, and architecture.
+* Use the :ref:`Null Analysis tool<null_analysis>` to detect and to prevent `NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_, one of the most common causes of runtime failure of Java programs.
+
+   .. figure:: ../ApplicationDeveloperGuide/images/null_analysis_example.png
+      :alt: Example of Null Analysis Detection
+
+
+.. _tutorial_discover_embedded_debugging_techniques.tools.gui_debugging_tools:
+
+GUI Debugging Tools
+~~~~~~~~~~~~~~~~~~~
 
 * The Widget Library provides several :ref:`Debug Utilities<widget_library_debug_utilities>` to investigate and troubleshoot GUI applications.
   For example, it is possible to print the type and bounds of each widget in the hierarchy of a widget:
@@ -288,55 +334,9 @@ Debugging GUI Applications
 * For UI2 and former versions, please refer to `MicroUI and multithreading <https://forum.microej.com/t/gui-microui-and-multithreading/652>`__ for a description of the threading model.
 
 
-.. _tutorial_discover_embedded_debugging_techniques.tools.static_analysis_tools:
-
-Static Analysis Tools
-~~~~~~~~~~~~~~~~~~~~~
-
-Static analysis tools are helpful allies to prevent several classes of bugs.
-
-* :ref:`SonarQube™<sonar_code_analysis>` provides reports on duplicated code, coding standards, unit tests, code coverage, code complexity, potential bugs, comments, and architecture.
-* Use the :ref:`Null Analysis tool<null_analysis>` to detect and to prevent `NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_, one of the most common causes of runtime failure of Java programs.
-
-   .. figure:: ../ApplicationDeveloperGuide/images/null_analysis_example.png
-      :alt: Example of Null Analysis Detection
-
-
-.. _tutorial_discover_embedded_debugging_techniques.tools.simulator_debugger:
-
-Simulator Debugger
-~~~~~~~~~~~~~~~~~~
-
-* :ref:`Debug an Application <application_debugger>` on Simulator, add breakpoints, inspect stack frame, use step-by-step, etc.
-
-   .. figure:: ../ApplicationDeveloperGuide/images/debug1.png
-      :alt: MicroEJ Development Tools Overview of the Debugger
-      :align: center
-
-* Configure the libraries' sources location to :ref:`View library as sources<application_debugger>` in the debugger.
-
-.. _tutorial_discover_embedded_debugging_techniques.tools.platform_qualification:
-
-Platform Qualification
-~~~~~~~~~~~~~~~~~~~~~~
-
-The Platform Qualification Tools (PQT) project provides the tools required to validate each component of a MicroEJ Platform.
-After porting or adding a feature to a MicroEJ Platform, it is necessary to validate its integration.
-
-The project is available on GitHub: https://github.com/MicroEJ/PlatformQualificationTools
-
-.. figure:: ../PlatformDeveloperGuide/images/overview-platform-qualification.png
-   :align: center
-   :scale: 80%
-
-   Platform Qualification Overwiew
-
-Please refer to the :ref:`platform_qualification` documentation for more information.
-
-
 .. _tutorial_discover_embedded_debugging_techniques.use_case_1:
 
-Use Case 1:  Debugging an UI Application Freeze
+Use Case 1:  Debugging a GUI Application Freeze
 -----------------------------------------------
 
 When an application User Interface freezes and becomes unresponsive, in most cases, one of the following conditions applies:
