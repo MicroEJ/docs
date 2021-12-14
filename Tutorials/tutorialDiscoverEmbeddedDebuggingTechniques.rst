@@ -368,40 +368,52 @@ If possible, use a debugger or :ref:`systemview`; if not, use the heartbeat task
 Make one of the RTOS tasks acts like a heartbeat: create a dedicated
 task and make it report in some way at a regular pace (print a message
 on standard output, blink an LED, use SystemView, etc.).
+Set the heartbeat task priority to the same priority as the Core Engine task. 
 
-If the heartbeat is still running when the UI freeze occurs, we can
-go a step further and check whether the Core Engine is still
-scheduling Java threads or not.
+In this configuration, if the heartbeat is still running when the UI freeze occurs, we can go a step 
+further and check whether the Core Engine is still scheduling Java threads or not. 
+See next section :ref:`tutorial_discover_embedded_debugging_techniques.check_java_threads_scheduling`.
 
-If you use task priorities for the RTOS tasks management, ensure that
-the priority of the RTOS task is equal to or lower than the priority of
-the Core Engine task.
+If the heartbeat doesn't run when the UI freeze occurs, set the heartbeat task priority to the maximum priority.
 
-If the RTOS task of the heartbeat doesn't run when:
+.. warning:: 
+   Some RTOS use a task to schedule the RTOS timers.
+   The heartbeat task priority must be lower than the RTOS timers priority.
 
-- the priority is the highest than any other tasks, then the RTOS
-  scheduler is not scheduling anything.
-- the priority is the same as the Core Engine, and other tasks with
-  a higher priority exist, then one or more RTOS tasks are causing
-  starvation by taking all the resources.
+..
+
+In this configuration, if the heartbeat is still running when the UI freeze occurs, then an RTOS task with a 
+priority higher than the Core Engine task keeps using the CPU. 
+Use the RTOS specific tools to identify what is the faulty task.
+
+If the heartbeat doesn't run when the UI freeze occurs, then the RTOS scheduler is not scheduling anything. 
+This can be caused by an RTOS timer task or an interrupt handler that never returns, or a crash of the RTOS scheduler.
+
+The following flow chart summarizes the investigation steps.
+
+
 
 ..
    @startuml
-   if (heartbeat task runs\nwith highest priority) then (no)
-     #pink:RTOS scheduler not working;
+   :Create heartbeat task with priority\nset to Core Engine task priority;
+   if (heartbeat task runs) then (yes)
+     :Core Engine is running:\nGo to next section;
      kill
-   else (yes)
-     if (Heartbeat task runs\nwith same priority\nas Core Engine) then (no)
-       #pink:Core Engine is starving;
+   else (no)
+     :Set heartbeat task priority\nto the highest priority;
+     if (Heartbeat task runs) then (yes)
+       #pink:Higher priority task prevents\nCore Engine task to run;
        kill
-     else (yes)
-       :Core Engine is running;
+     else (no)
+       #pink:RTOS scheduler is not working;
        kill
      endif
    endif
    @enduml  
 
 .. image:: images/tuto_microej_debug_ui_freeze_rtos_task_heart_beat_priority.png
+
+.. _tutorial_discover_embedded_debugging_techniques.check_java_threads_scheduling:
 
 Check Java Threads Scheduling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
