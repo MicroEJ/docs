@@ -32,7 +32,7 @@ Memory
 
 There are several ways to create a MicroUI Image. Except few specific cases, the Image Loader requires some RAM memory to store the image content in MicroEJ format. This format requires a small header as explained here: :ref:`section_image_standard_raw`.  It can be GPU compatible as explained here: :ref:`section_image_gpu_raw`. 
 
-The heap size is application dependant. In MicroEJ application launcher, set its size in :guilabel:`Libraries` > :guilabel:`MicroUI` > :guilabel:`Images heap size (in bytes)`.
+The heap size is application dependant. In the application launcher, set its size in :guilabel:`Libraries` > :guilabel:`MicroUI` > :guilabel:`Images heap size (in bytes)`.
 It will declare a section whose name is ``.bss.microui.display.imagesHeap``.
 
 By default, the Image Loader uses an internal best fit allocator to allocate the image buffers (internal Graphics Engine's allocator). 
@@ -63,7 +63,7 @@ The image may be located in external memory but be available in CPU addresses' s
 Configuration File
 ------------------
 
-Like internal resources, the Image Generator uses a :ref:`configuration file <section_image_generator_conffile>` (also called the "list file") for describing images that need to be processed. The list file must be specified in the MicroEJ Application launcher (see :ref:`application_options`). However, all the files in the application classpath with the suffix ``.imagesext.list`` are automatically parsed by the Image Generator tool.
+Like internal resources, the Image Generator uses a :ref:`configuration file <section_image_generator_conffile>` (also called the "list file") for describing images that need to be processed. The list file must be specified in the application launcher (see :ref:`application_options`). However, all the files in the application classpath with the suffix ``.imagesext.list`` are automatically parsed by the Image Generator tool.
 
 Process
 -------

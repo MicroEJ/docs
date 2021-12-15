@@ -17,11 +17,11 @@ Functional Description
 
 The LED module implements the MicroUI `Leds <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/led/Leds.html>`_ framework. ``LLUI_LED`` specifies the Low Level APIs that receive orders from the Java world.
 
-The Low Level APIs are the same for the LED which is connected to a ``GPIO`` (``0`` or ``1``), to a ``PWM``, to a bus (``I2C``, ``SPI``), etc. The BSP has the responsibility of interpreting the MicroEJ Application parameter ``intensity``.
+The Low Level APIs are the same for the LED which is connected to a ``GPIO`` (``0`` or ``1``), to a ``PWM``, to a bus (``I2C``, ``SPI``), etc. The BSP has the responsibility of interpreting the application parameter ``intensity``.
 
 Typically, when the LED is connected to a ``GPIO``, the ``intensity`` "0" means "OFF", and all other values "ON". When the LED is connected via a ``PWM``, the ``intensity`` "0" means "OFF", and all other values must configure the ``PWM`` duty cycle signal.
 
-The BSP should be able to return the state of an LED. If it is not able to do so (for example ``GPIO`` is not accessible in read mode), the BSP has to save the LED state in a global variable. If not, the returned value may be wrong and the MicroEJ Application may not be able to know the LEDs states.
+The BSP should be able to return the state of an LED. If it is not able to do so (for example ``GPIO`` is not accessible in read mode), the BSP has to save the LED state in a global variable. If not, the returned value may be wrong and the application may not be able to know the LEDs states.
 
 .. _section_leds_llapi:
 

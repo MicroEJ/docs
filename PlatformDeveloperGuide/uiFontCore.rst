@@ -63,16 +63,16 @@ Memory Management
 
 The Font Renderer is able to load some fonts located outside the CPU addresses' space range. It uses the External Resource Loader.
 
-When a font is located in such memory, the Font Renderer copies a very short part of the resource (the font file) into a RAM memory (into CPU addresses space range): the font header. This header stays located in RAM until MicroEJ Application is using the font. As soon as the MicroEJ Application uses another external font, new font replaces the old one. Then, on MicroEJ Application demand, the Font Renderer loads some extra information from the font into the RAM memory (the font meta data, the font pixels, etc.). This extra information is automatically unloaded from RAM when the Font Renderer no longer needs them. 
+When a font is located in such memory, the Font Renderer copies a very short part of the resource (the font file) into a RAM memory (into CPU addresses space range): the font header. This header stays located in RAM until the application is using the font. As soon as the application uses another external font, new font replaces the old one. Then, on application demand, the Font Renderer loads some extra information from the font into the RAM memory (the font meta data, the font pixels, etc.). This extra information is automatically unloaded from RAM when the Font Renderer no longer needs them. 
 
-This extra information is stored into a RAM section called ``.bss.microui.display.externalFontsHeap``. Its size is automatically calculated according to the external fonts used by the firmware. However it is possible to change this value by setting the MicroEJ application property ``ej.microui.memory.externalfontsheap.size``. This option is very useful when building a kernel: the kernel may anticipate the section size required by the features.
+This extra information is stored into a RAM section called ``.bss.microui.display.externalFontsHeap``. Its size is automatically calculated according to the external fonts used by the firmware. However it is possible to change this value by setting the application property ``ej.microui.memory.externalfontsheap.size``. This option is very useful when building a kernel: the kernel may anticipate the section size required by the features.
 
 .. warning:: When this size is smaller than the size required by an external font, some characters may be not drawn. 
 
 Configuration File
 ------------------
 
-Like internal resources, the Font Generator uses a :ref:`configuration file <section_fontgen_conffile>` (also called the "list file") for describing fonts that need to be processed. The list file must be specified in the MicroEJ Application launcher (see :ref:`application_options`). However, all the files in the application classpath with the suffix ``.fontsext.list`` are automatically parsed by the Font Generator tool.
+Like internal resources, the Font Generator uses a :ref:`configuration file <section_fontgen_conffile>` (also called the "list file") for describing fonts that need to be processed. The list file must be specified in the application launcher (see :ref:`application_options`). However, all the files in the application classpath with the suffix ``.fontsext.list`` are automatically parsed by the Font Generator tool.
 
 Process
 -------

@@ -28,7 +28,7 @@ Process overview (see too :ref:`section_image_core_process`)
 2. The Image Generator outputs a binary file for each image to convert.
 3. The raw files are embedded as (hidden) resources within the MicroEJ
    Application. The binary files' data are linked into the FLASH memory.
-4. When the MicroEJ Application creates a MicroUI Image object which
+4. When the application creates a MicroUI Image object which
    targets a pre-generated image, the Image Engine has only to
    create a link from the MicroUI image object to the data in the FLASH
    memory. Therefore, the loading is very fast; only the image data from
@@ -173,7 +173,7 @@ application classpath.
 
 .. note::
 
-   The list file must be specified in the MicroEJ Application launcher (see :ref:`application_options`). However, all the files in the application classpath with suffix ``.images.list`` are automatically parsed by the Image Generator tool.
+   The list file must be specified in the application launcher (see :ref:`application_options`). However, all the files in the application classpath with suffix ``.images.list`` are automatically parsed by the Image Generator tool.
 
 Each line can add optional parameters (separated by a ':') which define and/or describe the output file format (raw format). When no option is specified, the image is not converted and embedded as well.
 
@@ -232,7 +232,7 @@ Linker File
 
 In addition to images binary files, the Image Generator module generates a linker file (``*.lscf``). This linker file declares an image section called ``.rodata.images``. This section follows the next rules:
 
-* The files are always listed in same order between two MicroEJ application builds.
+* The files are always listed in same order between two application builds.
 * The section is aligned on the value specified by the Display module property ``imageBuffer.memoryAlignment`` (32 bits by default).
 * Each file is aligned on section alignment value.
 
