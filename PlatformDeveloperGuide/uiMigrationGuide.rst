@@ -728,7 +728,7 @@ STM32 Platforms with DMA2D only
          while(1);
       }
  
-* Launch a MicroEJ application with images and fillrect
+* Launch an application with images and fillrect
 * Compile, link and debug the BSP
 * Set some breakpoints on three functions
 * Ensure the functions are called

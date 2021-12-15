@@ -143,15 +143,15 @@ Process overview:
    :ref:`section_image_generator`) and / or the images to embed as
    regular resources (see :ref:`image_runtime_decoder`).
 
-2. The files are embedded as resources with the MicroEJ Application. The
+2. The files are embedded as resources with the application. The
    files' data are linked into the FLASH memory.
 
-3. When the MicroEJ Application creates a MicroUI Image object, the
+3. When the application creates a MicroUI Image object, the
    Image Loader loads the image, calling the right sub Image Engine
    module (see :ref:`section_image_generator` and
    :ref:`image_runtime_decoder`) to decode the specified image.
 
-4. When the MicroEJ Application draws this MicroUI Image on the display
+4. When the application draws this MicroUI Image on the display
    (or on buffered image), the decoded image data is used, and no more
    decoding is required, so the decoding is done only once.
 

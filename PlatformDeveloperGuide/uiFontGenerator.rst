@@ -32,7 +32,7 @@ Process overview:
 3. The raw files are embedded as (hidden) resources within the MicroEJ
    Application. The raw file's data is linked into the FLASH memory.
 
-4. When the MicroEJ Application draws text on the display (or on an
+4. When the application draws text on the display (or on an
    image), the font data comes directly from the FLASH memory (the font
    data is not copied to the RAM memory first).
 
@@ -131,7 +131,7 @@ application classpath.
 
 .. note::
 
-   The list file must be specified in the MicroEJ Application launcher
+   The list file must be specified in the application launcher
    (see :ref:`application_options`). However, all files in
    application classpath with suffix ``.fonts.list`` are automatically
    parsed by the Font Generator tool.
@@ -184,10 +184,10 @@ Installation
 
 The Font Generator module is an additional tool for MicroUI library.
 When the MicroUI module is installed, install this module in order to be
-able to embed some additional fonts with the MicroEJ Application.
+able to embed some additional fonts with the application.
 
 If the module is not installed, the platform user will not be able to
-embed a new font with his/her MicroEJ Application. He/she will be only
+embed a new font with his/her application. He/she will be only
 able to use the system fonts specified during the MicroUI initialization
 step (see :ref:`section_static_init`).
 

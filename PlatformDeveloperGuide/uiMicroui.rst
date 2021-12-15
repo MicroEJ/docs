@@ -22,7 +22,7 @@ Architecture
 
 MicroUI library is the entry point to perform some drawings on a display and to interact with user input events. This library contains only a minimal set of basic APIs. High-level libraries can be used to have more expressive power, such as :ref:`mwt`. In addition to this restricted set of APIs, the MicroUI implementation has been designed so that the EDC and BON footprint is minimal. 
 
-At MicroEJ application startup all MicroUI objects relative to the I/O devices are created and accessible. The following MicroUI methods allow you to access these objects:
+At application startup all MicroUI objects relative to the I/O devices are created and accessible. The following MicroUI methods allow you to access these objects:
 
 -  `Display.getDisplay() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#getDisplay-->`_ : returns the instance of the display which drives the main display screen.
 

@@ -198,7 +198,7 @@ This chapter describes how to implement the method ``drawSomething()``.
 
 .. note:: To add a custom drawing algorithm, it is strongly recommended to follow the same rules as the MicroUI drawings: a class that synchronizes the drawings with the Graphics Engine and another class that performs the drawing itself (like :ref:`section_ui_simulation_customdrawing`).
 
-1. In the MicroEJ application, write the new native: 
+1. In the application, write the new native: 
 
 .. code-block:: java
 

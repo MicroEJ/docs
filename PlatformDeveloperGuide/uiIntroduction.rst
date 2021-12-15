@@ -22,7 +22,7 @@ These three Low Level parts connect MicroUI library to the user-supplied drivers
 
 The MicroEJ Simulator provides all features of MicroUI library. The three modules are grouped together in a module called :ref:`Front Panel <section_ui_simulation>`. The Front Panel is supplied with a set of software widgets that generically support a range of input devices such as buttons, joysticks and touchscreens, and output devices such as displays and LEDs. With the help of the Front Panel Designer tool that forms part of the MicroEJ Workbench the user must define a Front Panel mock-up using these widgets. 
 
-The Display module also manages fonts and images. The fonts and images are pre-processed before compiling the MicroEJ application. The following diagram depicts the components involved in its design, along with the provided tools:
+The Display module also manages fonts and images. The fonts and images are pre-processed before compiling the application. The following diagram depicts the components involved in its design, along with the provided tools:
 
 .. figure:: images/ui_overview2.*
    :alt: The User Interface Extension Components along with a Platform
