@@ -655,14 +655,34 @@ Overview
 * It is possible to implement some of the ``ui_drawing.h`` and ``dw_drawing.h`` functions in the BSP to provide a custom implementation (for instance, a GPU).
   * Custom implementation is still allowed to call software algorithms declared in ``ui_drawing_soft.h`` and ``dw_drawing_soft.h``.
 
+Display Size
+------------
+
+The Low-Level APIs distinguish between the display *virtual* size and the display *physical* size (in pixels).
+
+* The display *virtual* size is the size of the area where the drawings are visible. Virtual memory size is: ``lcd_width * lcd_height * bpp / 8``.
+* The display *physical* size is the required memory size where the *virtual* area is located. On some devices, the memory width (in pixels) is higher than the virtual width. In this way, the graphics buffer memory size is: ``memory_width * memory_height * bpp / 8``.
+
+.. note:: The *physical* size may not be configured; in that case, the Graphics Engine considers the *virtual* size os *physical* size.
+
+Semaphores
+----------
+
+The Graphics Engine requires two binary semaphores to synchronize its internal states. 
+These semaphores are reserved for the Graphics Engine. 
+The ``LLUI_DISPLAY_IMPL.h`` implementation is not allowed to use these semaphores to synchronize the function ``LLUI_DISPLAY_IMPL_flush()`` with the display driver (or for any other synchronization actions). 
+The implementation must create its semaphores in addition to these dedicated Graphics Engine's semaphores.
+
+The binary semaphores must be configured in a state such that the semaphore must first be *given* before it can be *taken* (this initialization must be performed in ``LLUI_DISPLAY_IMPL_initialize`` function).
+
 Required Low Level API
 ----------------------
 
 Some four Low Level APIs are required to connect the Graphics Engine on the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``. 
 
-* ``LLUI_DISPLAY_IMPL_initialize``: The initialization function is called when the application is calling ``MicroUI.start()``. Before this call, the display is useless and don't need to be initialized. This function consists in initializing the LCD driver and in filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on two binary semaphores (see after), the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels and optionally the display *physical* size in pixels. The display *virtual* size is the size of the area where the drawings are visible. The display *physical* size is the required memory size where the area is located. Virtual memory size is: ``display_width * display_height * bpp / 8``. On some devices the memory width (in pixels) is higher than virtual width. In this way, the graphics buffer memory size is: ``memory_width * memory_height * bpp / 8``.
+* ``LLUI_DISPLAY_IMPL_initialize``: The initialization function is called when the application is calling ``MicroUI.start()``. Before this call, the display is useless and don't need to be initialized. This function consists in initializing the LCD driver and in filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on the two binary semaphores, the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels (``lcd_width`` and ``lcd_height``) and optionally the display *physical* size in pixels (``memory_width`` and ``memory_height``). 
 
-* ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: The Graphics Engine requires two binary semaphores to synchronize its internal states. The binary semaphores must be configured in a state such that the semaphore must first be *given* before it can be *taken* (this initialization must be performed in ``LLUI_DISPLAY_IMPL_initialize`` function). Two distinct functions have to be implemented to *take* and *give* a binary semaphore.
+* ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: Two distinct functions have to be implemented to *take* and *give* a binary semaphore. 
 
 * ``LLUI_DISPLAY_IMPL_flush``: According the display buffer mode (see :ref:`section_display_modes`), the ``flush`` function has to be implemented. This function must not be blocking and not performing the copy directly. Another OS task or a dedicated hardware must be configured to perform the buffer copy. 
 
