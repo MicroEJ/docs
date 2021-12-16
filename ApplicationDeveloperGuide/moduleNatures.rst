@@ -253,7 +253,10 @@ This module nature defines the following dedicated configuration properties:
    * - skip.email
      - When this property is set (any value), the notification email is not sent. 
        Otherwise the ``bar.notification.*`` properties are required.
-     - Not set   
+     - Not set
+   * - skip.javadoc
+     - Prevents the generation of the javadoc.
+     - ``false``   
    * - skip.javadoc.deprecated
      - Prevents the generation of any deprecated API at all in the javadoc.
      - ``true``
