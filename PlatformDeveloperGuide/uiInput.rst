@@ -402,7 +402,7 @@ event_generator.c
 This file aims to convert the events (received by ``LLUI_INPUT_impl.c`` and then filtered by ``xxx_helper.c``) to the application through the Input Engine.
 
 This C file should be the only C file to include the header file ``microui_constants.h``.
-This header file has been generated during the Platform build (see microui.xml) XXX.
+This header file has been generated during the Platform build (see :ref:`section_static_init`).
 It holds some defines that describe the available list of MicroUI Event Generators.
 Each MicroUI Event Generator has its identifier: 0 to *n-1*.
 
