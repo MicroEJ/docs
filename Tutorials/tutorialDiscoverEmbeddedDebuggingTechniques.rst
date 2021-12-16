@@ -365,16 +365,38 @@ Check RTOS Tasks Scheduling
 Let's start at low level by figuring out if the RTOS is scheduling tasks correctly.
 If possible, use a debugger or :ref:`systemview`; if not, use the heartbeat task described below.
 
-Make one of the RTOS tasks acts like a heartbeat: create a dedicated
+The following flow chart summarizes the investigation steps with a heartbeat task:
+
+..
+   @startuml
+   :**(1)** Create heartbeat task with priority\nset to Core Engine task priority;
+   if (heartbeat task runs) then (yes)
+     :**(2)** Core Engine is running:\nGo to next section;
+     kill
+   else (no)
+     :**(3)** Set heartbeat task priority\nto the highest priority;
+     if (Heartbeat task runs) then (yes)
+       #pink:**(4)** Higher priority task prevents\nCore Engine task to run;
+       kill
+     else (no)
+       #pink:**(5)** RTOS scheduler is not working;
+       kill
+     endif
+   endif
+   @enduml  
+
+.. image:: images/tuto_microej_debug_ui_freeze_rtos_task_heart_beat_priority.png
+
+**(1)** Make one of the RTOS tasks acts like a heartbeat: create a dedicated
 task and make it report in some way at a regular pace (print a message
 on standard output, blink an LED, use SystemView, etc.).
 Set the heartbeat task priority to the same priority as the Core Engine task. 
 
-In this configuration, if the heartbeat is still running when the UI freeze occurs, we can go a step 
+**(2)** In this configuration, if the heartbeat is still running when the UI freeze occurs, we can go a step 
 further and check whether the Core Engine is still scheduling Java threads or not. 
 See next section :ref:`tutorial_discover_embedded_debugging_techniques.check_java_threads_scheduling`.
 
-If the heartbeat doesn't run when the UI freeze occurs, set the heartbeat task priority to the maximum priority.
+**(3)** If the heartbeat doesn't run when the UI freeze occurs, set the heartbeat task priority to the maximum priority.
 
 .. warning:: 
    Some RTOS use a task to schedule the RTOS timers.
@@ -382,36 +404,12 @@ If the heartbeat doesn't run when the UI freeze occurs, set the heartbeat task p
 
 ..
 
-In this configuration, if the heartbeat is still running when the UI freeze occurs, then an RTOS task with a 
+**(4)** In this configuration, if the heartbeat is still running when the UI freeze occurs, then an RTOS task with a 
 priority higher than the Core Engine task keeps using the CPU. 
 Use the RTOS specific tools to identify what is the faulty task.
 
-If the heartbeat doesn't run when the UI freeze occurs, then the RTOS scheduler is not scheduling anything. 
+**(5)** If the heartbeat doesn't run when the UI freeze occurs, then the RTOS scheduler is not scheduling anything. 
 This can be caused by an RTOS timer task or an interrupt handler that never returns, or a crash of the RTOS scheduler.
-
-The following flow chart summarizes the investigation steps.
-
-
-
-..
-   @startuml
-   :Create heartbeat task with priority\nset to Core Engine task priority;
-   if (heartbeat task runs) then (yes)
-     :Core Engine is running:\nGo to next section;
-     kill
-   else (no)
-     :Set heartbeat task priority\nto the highest priority;
-     if (Heartbeat task runs) then (yes)
-       #pink:Higher priority task prevents\nCore Engine task to run;
-       kill
-     else (no)
-       #pink:RTOS scheduler is not working;
-       kill
-     endif
-   endif
-   @enduml  
-
-.. image:: images/tuto_microej_debug_ui_freeze_rtos_task_heart_beat_priority.png
 
 .. _tutorial_discover_embedded_debugging_techniques.check_java_threads_scheduling:
 
