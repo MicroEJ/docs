@@ -133,7 +133,7 @@ The standalone Image Generator is not able to load all images formats, for insta
 Custom MicroEJ Format
 =====================
 
-As mentionned above (:ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`), the MicroEJ format can be extanded by notions specific to the platform (and often to the GPU the platform is using). The generated file stays a MicroEJ file format, usable by the Image Renderer. Additionally, the file becomes compatible with the platform constraints. 
+As mentionned above (:ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`), the MicroEJ format can be extended by notions specific to the platform (and often to the GPU the platform is using). The generated file stays a MicroEJ file format, usable by the Image Renderer. Additionally, the file becomes compatible with the platform constraints. 
 
 1. Open image generator extension project.
 2. Create a subclass of ``com.microej.tool.ui.generator.BufferedImageLoader`` (to be able to load standard images) or create an implementation of interface ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` (to load custom images).
@@ -144,7 +144,7 @@ As mentionned above (:ref:`section_image_display_raw` and :ref:`section_image_gp
 7. Note down the name of created class, with its package and classname.
 8. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
 
-If the only constraint is the pixels array aligment, the Image Generator extension is not useful:
+If the only constraint is the pixels array alignment, the Image Generator extension is not useful:
 
 1. Open platform configuration file ``display/display.properties``.
 2. Add the property ``imageBuffer.memoryAlignment``.
