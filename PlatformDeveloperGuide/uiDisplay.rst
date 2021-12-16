@@ -670,7 +670,7 @@ Semaphores
 
 The Graphics Engine requires two binary semaphores to synchronize its internal states. 
 These semaphores are reserved for the Graphics Engine. 
-The ``LLUI_DISPLAY_IMPL.h`` implementation is not allowed to use these semaphores to synchronize the function ``LLUI_DISPLAY_IMPL_flush()`` with the display driver (or for any other synchronization actions). 
+The ``LLUI_DISPLAY_impl.h`` implementation is not allowed to use these semaphores to synchronize the function ``LLUI_DISPLAY_IMPL_flush()`` with the display driver (or for any other synchronization actions). 
 The implementation must create its semaphores in addition to these dedicated Graphics Engine's semaphores.
 
 The binary semaphores must be configured in a state such that the semaphore must first be *given* before it can be *taken* (this initialization must be performed in ``LLUI_DISPLAY_IMPL_initialize`` function).
@@ -714,10 +714,10 @@ The functions are available in ``LLUI_DISPLAY.h``.
 Typical Implementations
 =======================
 
-This chapter helps to write some basic ``LLUI_DISPLAY_IMPL`` implementations according the display buffer mode (see :ref:`section_display_modes`).
+This chapter helps to write some basic ``LLUI_DISPLAY_impl.h`` implementations according the display buffer mode (see :ref:`section_display_modes`).
 The pseudo-code calls external function such as ``LCD_DRIVER_xxx`` or ``DMA_DRIVER_xxx`` to symbolize the use of external drivers.
 
-.. note:: the pseudo code don't use the dirty area bounds (xmin, ymax, etc.) to simplify the reading.
+.. note:: The pseudo code don't use the dirty area bounds (xmin, ymax, etc.) to simplify the reading.
 
 Common Functions
 ----------------
@@ -893,7 +893,7 @@ A dedicated OS task is required to perform this sent.
 Parallel Display: Copy Mode (Tearing Disabled)
 ----------------------------------------------
 
-.. note:: This mode should synchronize the copy buffer process with the LCD tearing signal. However,  this notion is sometimes not available. This chapter describes the copy buffer process without using the tearing signal (see next chapter).
+.. note:: This mode should synchronize the copy buffer process with the LCD tearing signal. However,  this notion is sometimes not available. This chapter describes the copy buffer process without using the tearing signal (see :ref:`next chapter<section_lluidisplay_parallel_tearing>`).
 
 This kind of configuration requires two buffers in RAM. 
 The first buffer is used by the application (back buffer) and the second buffer is used by the LCD controller to send data to the display (frame buffer).
@@ -1011,6 +1011,8 @@ A dedicated OS task is required to perform this copy.
       return srcAddr;
    }  
 
+
+.. _section_lluidisplay_parallel_tearing:
 
 Parallel Display: Copy Mode (Tearing Enabled)
 ----------------------------------------------
