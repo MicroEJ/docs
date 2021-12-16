@@ -9,7 +9,7 @@ Immutable Images
 Overview
 ~~~~~~~~
 
-Immutable images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_. To be displayed, these
+Immutable images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_. As their name suggests, immutable images can not be modified. Therefore, there is no way to get a Graphics Context to draw into these images. To be displayed, these
 images have to be converted from their source format to a RAW
 format. The conversion can either be done at:
 
@@ -415,17 +415,27 @@ Mutable Images
 Overview
 ~~~~~~~~
 
-Mutable images are graphical resources that can be created with a call to `ej.microui.display.BufferedImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#BufferedImage-int-int->`_. 
-Contrary to the immutable images, the application can draw into the mutable images by calling Painter methods with the image's `Graphics Context <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#getGraphicsContext-->`_ as the destination.
+Unlike immutable images, mutable images are graphical resources that can be created and modified at runtime. The application can draw into such images using the Painter classes with the image's `Graphics Context <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#getGraphicsContext-->`_ as the destination.
+Mutable images can be created with a call to constructor `ej.microui.display.BufferedImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#BufferedImage-int-int->`_. 
+
+.. code:: java
+
+   BufferedImage image = new BufferedImage(320,  240);
+   GraphicsContext g = image.getGraphicsContext();
+   g.setColor(Colors.BLACK);
+   Painter.fillRectangle(g, 0, 0, 320, 240);
+   g.setColor(Colors.RED);
+   Painter.drawHorizontalLine(g, 50, 50, 100);
+
 
 Transparency
 ~~~~~~~~~~~~
 
 The output format of `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html>`_ matches the pixel organization (layout, depth, etc.) of the display.
 The algorithms used to draw in such an image are the same as those used to draw on the display (for footprint purposes). 
-The display buffer is opaque, so the algorithms cannot draw transparent pixels.
+Since the display buffer is opaque, the algorithms cannot draw transparent pixels.
 
-Also, `GraphicsContext.setColor() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setColor-int->`_ does not take the alpha channel into account and only accepts RGB. 
+In addition, `GraphicsContext.setColor() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setColor-int->`_ does not take the alpha channel into account and only accepts RGB values. 
 The given color value is interpreted as a 24-bit RGB color, where the high-order byte is ignored, and the remaining bytes contain the red, green, and blue channels, respectively.
 
 .. _images_heap:
