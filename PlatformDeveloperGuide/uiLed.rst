@@ -41,6 +41,49 @@ The Low Level APIs to implement are listed in the header file ``LLUI_LEDS_impl.h
 
 When there is no LED on the board, a *stub* implementation of C library is available. This C library must be linked by the third-party C IDE when the MicroUI module is installed in the MicroEJ Platform. This stub library does not provide any Low Level API files.
 
+Typical Implementation
+======================
+
+This chapter helps to write a basic ``LLUI_LEDS_impl.h`` implementation.
+This implementation manages some two-state LEDs: on or off.
+
+The pseudo-code calls external functions such as ``LEDS_DRIVER_xxx`` to symbolize the use of external drivers.
+
+.. code:: c
+
+   static void get_led_port_and_pin(int32_t ledID, int32_t* port, int32_t* pin)
+   {
+      switch(ledID)
+      {
+         /* TODO */
+         *port = ...;
+         *pin = ...;
+      }
+   }	
+
+   jint LLUI_LED_IMPL_getIntensity(jint ledID)
+   {
+      int32_t port;
+      int32_t pin;
+      get_led_port_and_pin(ledID, &port, &pin);
+
+      return GPIO_ReadPin(port, pin) == GPIO_PIN_RESET ? LLUI_LED_MAX_INTENSITY : LLUI_LED_MIN_INTENSITY;
+   }
+
+   jint LLUI_LED_IMPL_initialize(void)
+   {
+      return DRIVER_LEDS_Init();  // return the available number of leds
+   }
+
+   void LLUI_LED_IMPL_setIntensity(jint ledID, jint intensity)
+   {
+      int32_t port;
+      int32_t pin;
+      get_led_port_and_pin(ledID, &port, &pin);
+
+      GPIO_WritePin(port, pin, 0 == intensity ? GPIO_PIN_RESET : GPIO_PIN_SET);
+   }
+
 Dependencies
 ============
 
