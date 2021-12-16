@@ -158,6 +158,21 @@ Synchronization steps are described :ref:`below <table_copyModeSyncSteps>`.
 
 .. _directBufferMode:
 
+
+Switch VS Copy
+--------------
+
+When the *Switch* mode is possible, the *Copy* can be used instead:
+
+- In *Switch* mode, the copy from the new frame buffer to the new back buffer consists of restoring the past: after this copy, the application retrieves its previous drawings in the back buffer.
+- In *Copy* mode, the copy from the back buffer to the frame buffer consists of copying the application drawings into the display buffer.
+
+However, when possible, the *Switch* mode should be implemented:
+
+- The new data of the frame buffer is available instantaneous. As soon as the LCD controller has updated its frame buffer address, the latest data is ready to be sent to the LCD. In *Copy* mode, the copy buffer process copies the new data at the same time as the LCD controller read it. Consequently, the copy buffer process must be faster than the LCD controller reading. Otherwise, the LCD controller can first send new buffer data and then old buffer data (because the copy buffer process is not entirely done yet).
+- The synchronization with the LCD controller is more effortless. An interrupt is thrown as soon as the LCD controller has updated its frame buffer address. Then, the copy buffer process can start. In *Copy* mode, the copy buffer process should be synchronized with the LCD tearing signal.
+- During the copy, the same buffer is used as source by the copy buffer process (DMA, memcopy, etc.) and by the LCD controller. Both masters are using the same RAM section in *reading*. In *Copy* mode, the same RAM section switches in *Write* mode (copy buffer process) and *Read* mode (LCD controller). 
+
 Direct
 ------
 
