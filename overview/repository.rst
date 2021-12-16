@@ -46,6 +46,7 @@ The developer repository is an online repository hosted by MicroEJ Corp., contai
 It is similar to what `Maven Central Repository <https://repo1.maven.org/maven2/>`_ are for hosting Java standard modules.
 
 MicroEJ Corp. contributes to the developer repository in the following cases:
+
 - Demos (Platforms, Firmware, Virtual Devices, Applications),
 - Incubating Libraries,
 - Former MicroEJ Central Repository versions,
