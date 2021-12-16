@@ -299,7 +299,7 @@ Consequently, a touch *move* / *drag* event should not be added to the FIFO if t
 This helper keeps the *software* state: the input device's state seen by the application.
 
 This helper also filters the touch panel events.
-It uses two defines ``FIRST_MOVE_PIXEL_LIMIT`` and ``MOVE_PIXEL_LIMIT``to reduce the number of events sent to the application (values are expressed in pixels).
+It uses two defines ``FIRST_MOVE_PIXEL_LIMIT`` and ``MOVE_PIXEL_LIMIT`` to reduce the number of events sent to the application (values are expressed in pixels).
 
 .. note:: This helper does not convert the hardware event in the MicroUI event. It lets ``event_generator.c`` performs this job.
 
