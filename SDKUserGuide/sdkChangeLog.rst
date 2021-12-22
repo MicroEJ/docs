@@ -130,6 +130,24 @@ SDK includes all Studio features.
 
 A line prefixed by ``[Studio]`` is valid for both Studio and SDK. A line prefixed by ``[SDK]`` is only valid for SDK.
 
+.. _changelog-5.5.2:
+
+[5.5.2] - 2021-12-22
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+-  ``[Studio]`` Fixed Addon Processors of a project in a workspace being applied to others projects.
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+Build Plugins
+^^^^^^^^^^^^^
+
+-  ``[Studio]`` Updated Log4j in Artifact Checker and Cobertura plugins to version 2.17.0.
+
 .. _changelog-5.5.1:
 
 [5.5.1] - 2021-12-02
