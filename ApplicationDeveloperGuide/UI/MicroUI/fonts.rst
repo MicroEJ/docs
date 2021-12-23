@@ -562,15 +562,16 @@ Font Generator Error Messages
 Default Character
 -----------------
 
-The application can ask the rendering of a string whose some characters are not available in selected font. 
+The application may request the rendering of a string where some characters are not available in the selected font.
 In that case, a default character is drawn instead: it is the first available character in the font.
-The font's characters are stored by unicode values.
-When the font has been :ref:`cropped <fonts_range>`, the default character is the the first character of the first range.
-Consequently, the default character may not the same between two fonts.
+For example, the first available character for a font where the range matches the ASCII printable characters (``0x21-0x7E``) would be the exclamation mark (``0x21``). 
 
-.. note:: The first available character in a font is often the exclamation mark (``0x21``). 
+The characters of a font are referenced by their Unicode value.
+For a given :ref:`font range <fonts_range>`, the default character is the first character of the first range.
+Consequently, the default character may not be the same for two given fonts of an application: it depends on the specified character range for each font.
 
-The font maker should store in the font a default character (for instance a rectangle).
+
+To help developers identify quickly why a string is rendered with unexpected characters, it is recommended that the font maker sets a default character that is easy to recognize (a symbol, for example, a rectangle).
 This character must have the first character index (index ``0`` is allowed).
 
 ..
