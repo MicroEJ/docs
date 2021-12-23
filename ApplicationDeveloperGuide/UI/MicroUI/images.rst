@@ -426,6 +426,7 @@ Mutable images can be created with a call to constructor `ej.microui.display.Buf
    Painter.fillRectangle(g, 0, 0, 320, 240);
    g.setColor(Colors.RED);
    Painter.drawHorizontalLine(g, 50, 50, 100);
+   image.close();
 
 
 Transparency
@@ -446,12 +447,15 @@ Images Heap
 The images heap is used to allocate the pixel data of:
 
 - mutable images (i.e. `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html>`_  instances)
-- immutable images which are not byte-addressable, such as images opened with an input stream
-- immutable images which are byte-addressable but converted to a different output format
+- immutable images which are not byte-addressable, such as images opened with an input stream (i.e. `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_  instances)
+- immutable images which are byte-addressable but converted to a different output format (i.e. `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_  instances)
 
 In other words, every image which can not be retrieved using `Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_  is saved on the images heap.
 
 The size of the images heap can be configured with the ``ej.microui.memory.imagesheap.size`` property.
+
+.. warning:: A `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_  allocated on the images heap must be closed manually by the application (`ResourceImage.close() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#close-->`_); otherwise, a memory leak will occur on the images heap.
+
 
 ..
    | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
