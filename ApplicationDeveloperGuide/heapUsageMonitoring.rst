@@ -91,7 +91,7 @@ The maximum heap usage of an application's execution can be computed
 automatically by enabling heap usage monitoring.
 
 .. note::
-   This feature is available in the Architecture versions 7.16.0 or higher and for Application deployed on hardware device (not on Simulator).
+   This feature is available in the Architecture versions 7.16.0 or higher for the Applications deployed on hardware devices (not on Simulator).
 
 When this option is activated, an initial size for the heap must be specified, 
 and the Core Engine increases the heap size dynamically. 
