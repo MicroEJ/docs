@@ -34,7 +34,7 @@ First, MicroUI requires a configuration step in order to create these internal o
 
 .. note::
 
-   This configuration step is the same for both embedded and smulated platforms.
+   This configuration step is the same for both embedded and simulated platforms.
 
 The embedded platform requires some additional C libraries to drive the I/O devices. Each C library is dedicated to a specific kind of I/O device. A specific chapter is available to explain each kind of I/O device.
 
