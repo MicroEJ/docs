@@ -11,8 +11,7 @@ as an :ref:`Application Option <application_options>` (see :ref:`option_java_hea
 The value to set in this option depends on the maximum heap usage, and the 
 developer can estimate it by running the application.
 
-The MicroEJ Core Engine provides a Java API to introspect the heap usage at 
-runtime. 
+The Core Engine provides a Java API to introspect the heap usage at runtime. 
 Additionally, heap usage monitoring can be enabled to compute the maximum heap 
 usage automatically.
 
@@ -92,11 +91,10 @@ The maximum heap usage of an application's execution can be computed
 automatically by enabling heap usage monitoring.
 
 .. note::
-   This feature is available in the MicroEJ Architecture versions 7.16.0 or 
-   higher.
+   This feature is available in the Architecture versions 7.16.0 or higher for the Applications deployed on hardware devices (not on Simulator).
 
 When this option is activated, an initial size for the heap must be specified, 
-and the MicroEJ Core Engine increases the heap size dynamically. 
+and the Core Engine increases the heap size dynamically. 
 The value returned by `totalMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#totalMemory-->`_ 
 is the current heap size. 
 `maxMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#maxMemory-->`_ 
@@ -116,7 +114,7 @@ configure the initial heap size.
 
 Even if the heap size can vary during time, a memory section of 
 `maxMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#maxMemory-->`_ 
-bytes is allocated at link time or during the MicroEJ Core Engine startup. 
+bytes is allocated at link time or during the Core Engine startup. 
 No dynamic allocation is performed when increasing the heap size.
 
 .. warning::
