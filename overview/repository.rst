@@ -39,6 +39,8 @@ Javadoc
 
 To consult the APIs documentation (Javadoc) of all :ref:`libraries <libraries>` available in the repository, please visit `<https://repository.microej.com/javadoc/microej_5.x/apis/>`_.
 
+.. _developer_repository:
+
 Developer Repository
 ====================
 
