@@ -104,11 +104,12 @@ IoT Libraries
       -  - `Hoka user manual <https://github.com/MicroEJ/LibraryJava-hoka/blob/master/hoka/user-manual.rst>`_
          - `Hoka Example <https://github.com/MicroEJ/Example-Hoka>`_   
 
-   *  -  ``MQTT Client``
-      -  Eclipse Paho MQTT 3.1.1 client.
-      -  `mqtt <https://repository.microej.com/modules/org/eclipse/paho/mqttv3-microej/>`_, `mqtt-ssl <https://repository.microej.com/modules/org/eclipse/paho/mqttv3-ssl-microej/>`_
+   *  -  ``MQTT Client (MicroPaho)``
+      -  Tiny footprint MQTT 3.1.1 client based on Eclipse Paho Java APIs.
+      -  `micropaho <https://repository.microej.com/modules/ej/library/iot/micropaho/1.0.0/>`_
       -  `MqttClient class <https://repository.microej.com/javadoc/microej_5.x/apis/org/eclipse/paho/client/mqttv3/MqttClient.html>`_
-      -  - `MQTT publish Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.mqtt.publisher>`_  
+      -  - `MicroPaho README <https://repository.microej.com/modules/ej/library/iot/micropaho/1.0.0/README-1.0.0.md>`_
+         - `MQTT publish Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.mqtt.publisher>`_  
          - `MQTT subscribe Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.mqtt.subscriber>`_
 
    *  -  ``REST Client``
