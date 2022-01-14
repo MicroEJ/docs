@@ -152,9 +152,9 @@ HAL is an additional module. In the platform configuration file, check
 Use
 ===
 
-The `HAL API Module <https://repository.microej.com/modules/ej/api/hal/>`_
+The `HAL API Module <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/hal/>`_
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project to use the ECOM library.
+Application project to use the HAL library.
 
 ::
 
