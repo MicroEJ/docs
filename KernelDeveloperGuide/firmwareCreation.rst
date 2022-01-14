@@ -308,7 +308,7 @@ Build only a Virtual Device with a pre-existing Firmware
 Copy/Paste the ``.kpk`` file into the folder ``dropins``
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

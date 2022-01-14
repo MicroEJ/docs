@@ -204,7 +204,7 @@ To configure MicroEJ SDK to import dependencies from a local module repository, 
 The import may take some time. The module repository is unzipped in the folder ``${user.dir}/.microej/repositories``, and the settings are updated. 
 
 ..
-   | Copyright 2020-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2020-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

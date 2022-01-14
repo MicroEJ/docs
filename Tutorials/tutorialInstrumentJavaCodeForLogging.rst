@@ -314,3 +314,10 @@ It optimizes bytecode as well as it detects and removes unused instructions. The
    
 A dedicated How-To is available at https://github.com/MicroEJ/How-To/tree/master/Proguard-Get-Started.
 It describes how to configure ProGuard to remove elements of code from the `Logging <https://repository.microej.com/modules/ej/library/eclasspath/logging/>`_ library.
+
+..
+   | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

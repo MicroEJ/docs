@@ -34,7 +34,7 @@ MicroEJ Corp. provides a large number of libraries through the :ref:`MicroEJ Cen
 To consult its libraries APIs documentation, please visit `<https://developer.microej.com/microej-apis/>`_.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
