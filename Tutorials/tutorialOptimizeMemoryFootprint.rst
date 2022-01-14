@@ -386,7 +386,7 @@ Java Heap and Immortals Heap
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Configure the :ref:`immortals heap <option_immortal_heap>` option to be as small as possible. You can get the minimum value by calling `Immortals.freeMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Immortals.html>`_ after the creation of all the immortal objects.
-- Configure the :ref:`Java heap <option_java_heap>` option to fit the needs of the application. You can get the maximum heap usage by calling `Runtime.freeMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#freeMemory-->`_ after `System.gc() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#gc-->`_ at different moments in the application's lifecycle. The `profiling <https://repository.microej.com/modules/com/microej/library/profiling/>`_ library can be used for this.
+- Configure the :ref:`Java heap <option_java_heap>` option to fit the needs of the application. You can get it by using the :ref:`Heap Usage Monitoring Tool <heap_usage_monitoring>`.
 
 Thread Stacks
 ^^^^^^^^^^^^^
