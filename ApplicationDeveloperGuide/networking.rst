@@ -202,7 +202,7 @@ Cloud Agent Libraries
 
    *  -  ``Google Cloud Platform Iot Core``
       -  Google Cloud Platform Iot Core client.
-      -  `gcp-iotcore <https://repository.microej.com/modules/googlecloud/iotcore/>`_
+      -  `gcp-iotcore <https://forge.microej.com/artifactory/microej-developer-repository-release/googlecloud/iotcore/>`_
       -  - `Google Cloud Platform Getting Started <https://developer.microej.com/features/iot-connectivity/get-started-google-cloud-iot-core-connectivity/>`_
 
 ..
