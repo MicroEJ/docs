@@ -196,8 +196,8 @@ Cloud Agent Libraries
 
    *  -  ``AWS IoT Core``
       -  AWS IoT Core client, providing publish/subscribe functionalities.
-      -  `aws-iot <https://repository.microej.com/modules/ej/library/iot/aws/aws-iot/>`_
-      -  - `AWS IoT Core README <https://repository.microej.com/modules/ej/library/iot/aws/aws-iot/1.2.0/README-1.2.0.md>`_
+      -  `aws-iot <https://repository.microej.com/modules/ej/library/iot/aws-iot/>`_
+      -  - `AWS IoT Core README <https://repository.microej.com/modules/ej/library/iot/aws-iot/2.0.0/README-2.0.0.md>`_
          - `AWS IoT Core Example <https://github.com/MicroEJ/AWS>`_
 
    *  -  ``Google Cloud Platform Iot Core``
