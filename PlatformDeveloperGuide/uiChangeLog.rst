@@ -73,8 +73,8 @@ Simulator
 * Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images. 
 * Simulates the image data alignment.
 
-[13.0.7] -2021-07-30
-====================
+[13.0.7] - 2021-07-30
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -1272,7 +1272,7 @@ MicroUI Implementation
 * LLDisplay for UIv2 *(not backward compatible)*.
 
 ..
-   | Copyright 2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -1,7 +1,7 @@
 ..
 .. ReStructuredText
 ..
-.. Copyright 2020-2021 MicroEJ Corp. All rights reserved.
+.. Copyright 2020-2022 MicroEJ Corp. All rights reserved.
 .. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 ..
 

@@ -409,3 +409,10 @@ MicroUI Images Heap
 ^^^^^^^^^^^^^^^^^^^
 
 - Configure the :ref:`images heap <images_heap>` to be as small as possible. You can compute the optimal size empirically. It can also be calculated accurately by adding the size of every image that may be stored in the images heap at a given moment. One way of doing this is to inspect every occurrence of `BufferedImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#BufferedImage-int-int->`_ allocations and `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_ usage of ``loadImage()`` methods.
+
+..
+   | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
