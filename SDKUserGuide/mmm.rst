@@ -370,6 +370,28 @@ A typical usage in a :ref:`module description file <mmm_module_description>` is 
    .. figure:: images/mmm_preferences_options_usage.png
       :align: center
 
+.. _resolution_logs:
+
+Resolution Logs
+~~~~~~~~~~~~~~~
+
+Resolution logs of module projects imported in the workspace are available from the console view:
+
+- Select :guilabel:`Windows` > :guilabel:`Show View` > :guilabel:`Console`,
+- In the Console view, click on the console window icon and select :guilabel:`Ivy console`:
+
+  .. figure:: images/mmm_console_select_ivy.png
+      :align: center
+
+To enable the verbose mode:
+
+- In the :guilabel:`Ivy console` view, click on the debug icon and select `debug` instead of `info` (defaults):
+  
+  .. figure:: images/mmm_console_filter_debug.png
+      :align: center
+
+This triggers the full workspace resolution with verbose mode enabled.
+
 .. _mmm_module_build:
 
 Module Build
@@ -717,7 +739,15 @@ First, check that either a released module ``com.mycompany/mymodule/M.m.p`` or a
     Check the module repository settings file and that consistency check has been enabled during the module repository build (see :ref:`module_repository_consistency`).
 
 - If the module exists, this may be either a configuration issue or a network connection error. 
-  We have to find the cause in the resolution logs with the :ref:`verbose mode option <mmm_cli_options>` enabled:
+  We have to find the cause in the resolution logs. 
+  
+  .. note::
+  	 
+  	  The verbose mode must be enabled:
+     
+     - if the error occurs during workspace resolution, configure the verbose mode of :ref:`resolution logs <resolution_logs>`,
+     - if the error occurs while building a module from workspace, check the verbose mode option in :ref:`preferences page  <mmm_preferences_page>`,
+     - if the error occurs while building a module from command line, set the verbose mode option in :ref:`command line options <mmm_cli_options>`.
 
   For URL repositories, find:
   
