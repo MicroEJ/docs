@@ -743,7 +743,7 @@ First, check that either a released module ``com.mycompany/mymodule/M.m.p`` or a
   
   .. note::
   	 
-  	  The verbose mode must be enabled:
+  	  The activation of the verbose mode depends on how the resolution has been launched:
      
      - if the error occurs during workspace resolution, configure the verbose mode of :ref:`resolution logs <resolution_logs>`,
      - if the error occurs while building a module from workspace, check the verbose mode option in :ref:`preferences page  <mmm_preferences_page>`,
