@@ -7,25 +7,29 @@
 Advanced Event Tracing
 ######################
 
-From an XPF version 7.17.0, MicroEJ Vee allows method execution to be profiled.
-Two new hooks functions are used by the MicroEJ Vee:
+Principle
+=========
+
+MicroEJ allows method execution to be profiled. The following two new hooks functions are used for that:
 
 - ``LLMJVM_MONITOR_IMPL_on_invoke_method`` called at the start of the method invocation.
-- ``LLMJVM_MONITOR_IMPL_on_return_method`` called at the end of the method invocation.
+- ``LLMJVM_MONITOR_IMPL_on_return_method`` called when returning from the invoked method.
 
-But calling these hook functions each time a method is invoked can slow the whole application,
-so these hook functions is not activated by default even when the trace is enabled and started.
+Calling these functions each time a method is invoked can slow down the whole application,
+so these functions are not called by default when event tracing is enabled and started.
 
-To activate them you need:
+.. note::
+   This feature is available in the Architecture versions 7.17.0 or higher for the Applications deployed on hardware devices (not on Simulator).
+
+To activate them, you need to follow these steps:
 
 - Enable and start the trace see here https://docs.microej.com/en/latest/ApplicationDeveloperGuide/trace.html?highlight=trace#event-recording
 - Tell the Third-party linker program to redirect all calls to ``LLMJVM_invoke_method`` and ``LLMJVM_return_method`` symbols to respectively ``LLMJVM_invoke_method_with_trace`` and ``LLMJVM_return_method_with_trace`` symbols.
 
+Platforms using GNU LD linker
+=============================
 
-Platform which use LD as linker
-===============================
-
-Pass the following options to the LD linker program
+Add the following options to the LD linker command line:
 
 .. code-block:: sh
 
@@ -35,6 +39,8 @@ Pass the following options to the LD linker program
     --defsym=LLMJVM_return_method=LLMJVM_return_method_with_trace
 
 
+Platforms using IAR ILINK linker
+================================
 
 Platform which use ILINK as linker (IAR)
 ========================================
