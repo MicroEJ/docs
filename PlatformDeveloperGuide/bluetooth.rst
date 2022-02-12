@@ -38,6 +38,13 @@ Android app “nRF Connect”).
 Functional Description
 ======================
 
+The diagram below shows the overall process to use Bluetooth adapters.
+
+.. figure:: images/bluetooth-principle-diagram.png
+   :alt: Component stack diagram.
+
+   Component stack diagram.
+
 The MicroEJ Application manages the bluetooth connection using the
 bluetooth library. The Bluetooth 2.0 (or BLE) concepts are available,
 they are pairing, bonding, requesting data, sending data, notifications
@@ -66,9 +73,13 @@ parts of this typical connection flow:
 Dependencies
 ============
 
-The `bluetooth
+A platform with `bluetooth
 pack <https://docs.microej.com/en/latest/PlatformDeveloperGuide/platformQualification.html#bluetooth-pack>`__
 is needed.
+
+.. code:: xml
+
+   <dependency org="com.microej.pack.bluetooth" name="bluetooth-pack" rev="2.1.0"/>
 
 The bluetooth library depends on the bluetooth pack for the native
 implementation of Java native methods,
