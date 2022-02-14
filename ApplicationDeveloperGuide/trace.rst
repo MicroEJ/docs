@@ -143,14 +143,13 @@ A implementation example for the `NXP OM13098 development board <https://www.nxp
 
 Please contact :ref:`our support team <get_support>` for more information about how to integrate this Platform module.
 
-Advanced Event tracing
+Advanced Event Tracing
 ======================
 
 Method invocation can be :ref:`profiled <Advanced-Event-Tracing>`.
 
 .. note::
-   This feature is available in the Architecture versions 7.17.0 or higher for the Applications deployed on hardware devices (not on Simulator).
-
+   This feature requires Architecture version ``7.17.0`` or higher and is only available on MicroEJ Core Engine, not on Simulator.
 
 MicroEJ Corp. provides an implementation on Linux targets to profile an Application and generate a flamegraph for the `Trace Compass <https://www.eclipse.org/tracecompass/>`_ tool.
 

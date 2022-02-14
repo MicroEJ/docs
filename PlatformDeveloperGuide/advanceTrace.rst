@@ -10,12 +10,12 @@ Advanced Event Tracing
 Principle
 =========
 
-MicroEJ allows method execution to be profiled. The following two new hooks functions are used for that:
+MicroEJ Core Engine allows method execution to be profiled. The following two new hooks functions are used for that:
 
 - ``LLMJVM_MONITOR_IMPL_on_invoke_method`` called at the start of the method invocation.
 - ``LLMJVM_MONITOR_IMPL_on_return_method`` called when returning from the invoked method.
 
-Calling these functions each time a method is invoked can slow down the whole application,
+Calling these functions each time a method is invoked will slow down the application execution,
 so these functions are not called by default when event tracing is enabled and started.
 
 .. note::
@@ -23,8 +23,8 @@ so these functions are not called by default when event tracing is enabled and s
 
 To activate them, you need to follow these steps:
 
-- Enable and start the trace see here https://docs.microej.com/en/latest/ApplicationDeveloperGuide/trace.html?highlight=trace#event-recording
-- Tell the Third-party linker program to redirect all calls to ``LLMJVM_invoke_method`` and ``LLMJVM_return_method`` symbols to respectively ``LLMJVM_invoke_method_with_trace`` and ``LLMJVM_return_method_with_trace`` symbols.
+- Enable and start the trace :ref:`see here <event_enable_recording>`
+- Tell the third-party linker program to redirect all calls to ``LLMJVM_invoke_method`` and ``LLMJVM_return_method`` symbols to respectively ``LLMJVM_invoke_method_with_trace`` and ``LLMJVM_return_method_with_trace`` symbols.
 
 Platforms using GNU LD linker
 =============================
