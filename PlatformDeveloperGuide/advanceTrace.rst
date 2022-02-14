@@ -42,9 +42,6 @@ Add the following options to the LD linker command line:
 Platforms using IAR ILINK linker
 ================================
 
-Platform which use ILINK as linker (IAR)
-========================================
-
 Pass the following options to the ILINK linker program
 
 .. code-block:: sh
