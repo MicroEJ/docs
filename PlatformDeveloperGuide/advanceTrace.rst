@@ -19,7 +19,7 @@ Calling these functions each time a method is invoked will slow down the applica
 so these functions are not called by default when event tracing is enabled and started.
 
 .. note::
-   This feature is available in the Architecture versions 7.17.0 or higher for the Applications deployed on hardware devices (not on Simulator).
+   This feature requires Architecture version ``7.17.0`` or higher and is only available on MicroEJ Core Engine, not on Simulator.
 
 To activate them, you need to follow these steps:
 
