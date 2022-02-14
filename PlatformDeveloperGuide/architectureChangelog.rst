@@ -1016,6 +1016,11 @@ Tools
 [7.9.0] - 2018-09-20
 --------------------
 
+Core Engine
+~~~~~~~~~~~
+
+-  Fixed allocation of the exact free memory in immortals heap
+
 .. _soar-6:
 
 SOAR
