@@ -1019,7 +1019,7 @@ Tools
 Core Engine
 ~~~~~~~~~~~
 
--  Fixed allocation of the exact free memory in immortals heap
+-  Fixed ``OutOfMemoryError`` thrown when allocating an object of the size of free memory in immortals heap
 
 .. _soar-6:
 
