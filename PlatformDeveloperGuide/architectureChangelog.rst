@@ -32,13 +32,69 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+[7.17.0] - 2022-06-13
+---------------------
+
+Core Engine
+~~~~~~~~~~~
+
+-  Fixed potential premature evaluation timeout when Core Engine is not started at the same time as the device.
+-  Fixed potential crash during the call of ``LLMJVM_dump`` when printing information about the Garbage Collector.
+-  Added new functions to Low Level API ``LLMJVM_MONITOR_impl.h`` (see :ref:`Advanced-Event-Tracing`):
+
+  
+   -  ``void LLMJVM_MONITOR_IMPL_on_invoke_method(void* method)``: called by the MicroEJ Core Engine when an method is invoked.
+   -  ``void LLMJVM_MONITOR_IMPL_on_return_method(void* method)``: called by the MicroEJ Core Engine when a method returns.
+
+-  [Cortex-M] - Added support for MCU configuration with unaligned access traps enabled (``UNALIGN_TRP`` bit set in ``CCR`` register).
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+-  Updated ``KF`` to version ``1.6``:
+  
+   -  Added ``Kernel.canUninstall()`` method.
+
+Integration
+~~~~~~~~~~~
+
+-  Fixed Architecture compatibility issue with Java 11.
+-  Fixed missing default value for ShieldedPlug server port when running it with MMM.
+-  Updated Memory Map Scripts for ``com.microej.api.vectorgraphics`` library.
+-  Updated Architecture End User License Agreement to version ``SDK 3.1-A``.
+
+Simulator
+~~~~~~~~~
+
+-  Added class file major version check (<=51). Classes mut be compiler for Java 7 or lower. Set the options property ``S3.DisableClassFileVersionCheck`` to ``false`` to disable this verification.
+-  Added native method signature in the stack trace of the ``UnsatisfiedLinkError`` thrown when a native method is missing.
+-  Fixed HIL engine method ``NativeInterface.getResourceContent()`` that generates a runtime error in the Simulator.
+-  Fixed error "Internal limits reached ... S3 internal heap is full" when repeatedly loading a resource that is available in the classpath but not referenced in a ``resources.list`` file.
+-  Fixed ``OutOfMemoryError`` when loading a large resource with ``Class.getResourceAsStream()``.
+-  Fixed ``A[].class.isAssignableFrom(B[].class)`` returning ``false`` instead of ``true`` when  ``B`` is a subclass of ``A``.
+-  Fixed potential "Internal limits reached" error when an ``OutOfMemoryError`` is thrown. 
+-  Fixed error "Cannot pin objects anymore" when passing repeatedly immutable objects to a native method.
+-  Fixed properties not passed correctly to the mocks when the Virtual Device is executed from a path that contains spaces.
+-  [Multi] - Fixed unexpected error when ``kernel.kf`` file is missing and KF library is used: "Please specify a 'kernel.kf' file to enable Kernel & Features semantics."
+-  [Multi] - Fixed type ``double[]`` not recognized in ``kernel.api`` file.
+
+SOAR
+~~~~
+
+-  Fixed internal error when using a BON constant in an if statement at the end of a ``try`` block.
+-  Fixed internal error when a ``try`` block ends with an ``assert`` expression while assertions are disabled.
+-  [Multi] - Raise a warning instead of an error when duplicated ``.kf`` files are detected in the Kernel classpath. Usual classpath resolution order is used to load the file (see :ref:`chapter.microej.classpath`).
+-  [Multi] - Fixed SOAR error when building a Feature that uses an array of basetypes that is not explicitly declared in the ``kernle.api`` file of the Kernel.
+-  [Multi] - Optimized "Build Dynamic Feature" scripts speed by removing unnecessary steps.
+
+
 [7.16.0] - 2021-06-24
 ---------------------
 
 Known Issues
 ~~~~~~~~~~~~
 
-- [Multi] SOAR may fail to build a Feature with the following message:
+- [Multi] - SOAR may fail to build a Feature with the following message:
   
   .. code-block:: 
   
@@ -72,9 +128,9 @@ Core Engine
    ``LLMJVM_IMPL_initialize()``, ``LLMJVM_IMPL_vmTaskStarted()``, or
    ``LLMJVM_IMPL_shutdown()`` fails. Previously the generic error code
    ``LLMJVM_E_MAIN_THREAD_ALLOC (-5)`` was returned.
--  Added automatic heap consumption monitoring when option ``com.microej.runtime.debug.heap.monitoring.enabled`` is set to ``true``
+-  Added automatic heap consumption fing when option ``com.microej.runtime.debug.heap.monitoring.enabled`` is set to ``true``
 -  Fixed some parts of ``LLMJVM_checkIntegrity()`` code were embedded even if not called
--  [Multi] Fixed potential crash during the call of
+-  [Multi] - Fixed potential crash during the call of
    ``LLMJVM_checkIntegrity`` when analyzing a corrupted Java stack (make
    this function robust to object references with an invalid memory
    address)
@@ -149,10 +205,10 @@ SOAR
    ``then`` block: the ``else`` block may be executed instead of jumping
    over
 -  Removed names of arrays of basetype unless ``soar.generate.classnames`` option is set to ``true``
--  [Multi] Fixed potential link exception when a Feature use one of the
+-  [Multi] - Fixed potential link exception when a Feature use one of the
    ``ej_bon_ByteArray`` methods
    (e.g. ``ej.kf.InvalidFormatException: code=51:ON_ej_bon_ByteArray_method_readUnsignedByte_AB_I_I``)
--  [Multi] Fixed SOAR error (``Invalid SNI method``) when one of the
+-  [Multi] - Fixed SOAR error (``Invalid SNI method``) when one of the
    ``ej.bon.Constants.getXXX()`` methods is declared in a ``kernel.api``
    file. This issue was preventing from using BON Constants in Feature
    code.
@@ -183,7 +239,7 @@ Tools
 SOAR
 ~~~~
 
--  [Multi] Fixed potential VM crash when declaring a Proxy class which
+-  [Multi] - Fixed potential VM crash when declaring a Proxy class which
    is ``abstract``.
 
 .. _section-1:
@@ -237,7 +293,7 @@ Tools
 Core Engine
 ~~~~~~~~~~~
 
--  [Multi/x86/QNX7] Fixed missing multi-sandbox version
+-  [Multi/x86/QNX7] - Fixed missing multi-sandbox version
 
 .. _tools-1:
 
@@ -613,7 +669,7 @@ Core Engine
    -  Current number of stack blocks used
    -  Objects referenced by each stack frame: address, type, length (in
       case of arrays), string content (in case of String objects)
-   -  [Multi] Kernel stale references with the name of the Feature
+   -  [Multi] - Kernel stale references with the name of the Feature
       stopped
 
 .. _foundation-libraries-3:
@@ -625,10 +681,10 @@ Foundation Libraries
    called on a ``java.lang.OutOfMemoryError`` thrown by Core Engine or
    Simulator (either the returned stack trace array was empty or a
    ``java.lang.NullPointerException`` was thrown)
--  [Tiny] Fixed ``EDC`` implementation of
+-  [Tiny] - Fixed ``EDC`` implementation of
    ``StackTraceElement.toString()`` (removed the character ``.`` before
    the type)
--  [Multi] Fixed ``KF`` implementation of ``Feature.start()`` to throw a
+-  [Multi] - Fixed ``KF`` implementation of ``Feature.start()`` to throw a
    ``java.lang.ExceptionInInitializerError`` when an exception is thrown
    in a Feature clinit method
 
@@ -656,9 +712,9 @@ Simulator
    complex method (an error message is dumped with the involved method
    name and suggest to increase the internal stack using
    ``S3.JavaMemory.ThreadStackSize`` system property)
--  [Multi] Added validity check of Shared Interface declaration files
+-  [Multi] - Added validity check of Shared Interface declaration files
    (``.si``) according to ``KF`` specification
--  [Multi] Fixed processing of Resource Buffers declared in Feature
+-  [Multi] - Fixed processing of Resource Buffers declared in Feature
    classpath
 
 .. _soar-4:
@@ -739,7 +795,7 @@ Core Engine
 
 -  Added ``EDC-1.3`` support for daemon threads
 -  Added ``BON`` support for ``ej.bon.Util.newArray(T[],int)``
--  [Multi/ARMCC5] Fixed unused undefined symbol that prevent Keil
+-  [Multi/ARMCC5] - Fixed unused undefined symbol that prevent Keil
    MDK-ARM to link properly
 
 .. _foundation-libraries-4:
@@ -823,8 +879,8 @@ Simulator
    open (introduced in version :ref:`7.10.0 <changelog-7.10.0>`)
 -  Fixed potential debugger hangs when an exception was thrown but not
    caught in the same method
--  [Multi] Fixed wrong class loading in some cases
--  [Multi] Fixed wrong immutable loading in some cases
+-  [Multi] - Fixed wrong class loading in some cases
+-  [Multi] - Fixed wrong immutable loading in some cases
 
 .. _soar-5:
 
@@ -1081,7 +1137,7 @@ Tools
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
--  [Multi] Updated ``BON`` library: a Timer owned by the Kernel can
+-  [Multi] - Updated ``BON`` library: a Timer owned by the Kernel can
    execute a TimerTask owned by a Feature
 
 .. _section-17:
