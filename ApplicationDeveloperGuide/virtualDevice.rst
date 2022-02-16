@@ -17,7 +17,7 @@ The Simulator runs a mockup board support package (BSP Mock) that mimics
 the hardware functionality. An application on the Simulator is run as a
 Standalone Application.
 
-Before an application is locally deployed on device, MicroEJ Studio
+Before an application is locally deployed on device, the SDK
 ensures that it does not depend on any API that is unavailable on the
 device.
 
