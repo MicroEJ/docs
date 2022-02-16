@@ -109,29 +109,8 @@ Run on the Hardware Device
 
 Compile an application, connect the hardware device and deploy on it is
 hardware dependant. These steps are described in dedicated documentation
-available inside the MicroEJ Platform. This documentation is accessible
-from the MicroEJ Resources Center view.
+available inside the MicroEJ Platform.
 
-.. note::
-
-   MicroEJ Resources Center view may have been closed. Click on
-   :guilabel:`Help` > :guilabel:`MicroEJ Resources Center` to reopen it.
-
-Open the menu :guilabel:`Manual` and select the documentation
-``[hardware device] MicroEJ Platform``, where ``[hardware device]`` is
-the name of the hardware device. This documentation features a guide to
-run a built-in application on MicroEJ Simulator and on hardware device.
-
-.. figure:: images/emb1.png
-   :alt: MicroEJ Platform Guide
-   :align: center
-   :width: 301px
-   :height: 133px
-
-   MicroEJ Platform Guide
-
-
-..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
