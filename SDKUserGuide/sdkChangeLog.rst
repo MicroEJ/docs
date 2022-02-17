@@ -192,11 +192,11 @@ MicroEJ Module Manager
 -  Updated ``firmware-multiapp`` to allow Virtual Devices for automatically launching a Sandboxed Application project in the SDK.
 -  Updated ``firmware-multiapp`` to automatically configure the Virtual Device Kernel UID when a Firmware is built.
 -  Fixed ``firmware-multiapp`` skeleton default dependencies with only modules available in MicroEJ Central Repository.
--  Fixed ``firmware-multiapp`` unexpected build error when no declared Resident Application.
+-  Fixed ``firmware-multiapp`` unexpected build error when no declared System Application.
 -  Fixed ``firmware-multiapp`` build which may fail an unexpected ``Unresolved Dependencies`` error the first time,
    for Kernel APIs module dependencies (configuration ``kernelapi``) or Virtual Device specific modules dependencies (configuration ``default-vd``).
 -  Fixed ``firmware-multiapp`` unexpected build error when no Application (``.wpk`` file) found in the dropins folder.
--  Fixed ``firmware-multiapp`` unexpected build error when no declared Resident Application.
+-  Fixed ``firmware-multiapp`` unexpected build error when no declared System Application.
 -  Fixed ``firmware-singleapp`` and ``firmware-multiapp`` skeletons wrong package name generation for the default Main class.
 -  Fixed ``artifact-repository`` changelog check for modules with a snapshot version.
 
