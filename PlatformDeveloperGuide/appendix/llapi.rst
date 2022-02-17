@@ -636,6 +636,28 @@ This C header file contains functions to implement:
    Defines a set of functions that the BSP must implement to link the platform watchdog timer
    to the Watchdog Timer library.
 
+.. _LLBLUETOOTH-API-SECTION:
+
+LLBLUETOOTH-API: Bluetooth
+==========================
+
+Naming Convention
+-----------------
+
+The Low Level Bluetooth API (LLBLUETOOTH), relies on functions that need 
+to be implemented. The names of these functions match the 
+``LLBLUETOOTH_IMPL_*`` pattern.
+
+Header Files
+------------
+
+One C header file is provided:
+
+-  LLBLUETOOTH_impl.h
+
+   Defines a set of functions that the BSP must implement to fully 
+   support desired Bluetooth API.
+
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

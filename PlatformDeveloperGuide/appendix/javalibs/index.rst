@@ -12,6 +12,7 @@ MicroEJ Foundation Libraries
     fs
     net
     ssl
+    bluetooth
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
