@@ -107,9 +107,21 @@ MicroEJ SDK console will display Launch steps messages.
 Run on the Hardware Device
 --------------------------
 
-Compile an application, connect the hardware device and deploy on it is
-hardware dependant. These steps are described in dedicated documentation
-available inside the MicroEJ Platform.
+To run the sample on the hardware device, open the run dialog (:guilabel:`Run` > :guilabel:`Run Configurations...`) 
+and select the :guilabel:`MicroEJ Application` :guilabel:`HelloWorld Main` that is created by the previous chapter.
+
+- Open :guilabel:`Execution` tab.
+   - Select :guilabel:`Execute on Device`
+
+.. figure:: images/basic-launcher.png
+   :alt: Execution on Device
+   :align: center
+   :width: 698px
+   :height: 552px
+
+   Execution on Device
+
+- Click :guilabel:`Run` : the application is compiled
 
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
