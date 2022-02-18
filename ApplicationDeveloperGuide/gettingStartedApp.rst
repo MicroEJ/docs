@@ -154,6 +154,7 @@ In case of full BSP connection, the application link can be triggered by executi
 
 - More options can be defined to run a MicroEJ Standalone Application on an hardware device, see :ref:`Application options <application_options>`.
 
+..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.

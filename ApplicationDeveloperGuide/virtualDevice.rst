@@ -36,6 +36,7 @@ Runtime Environment
 The set of MicroEJ APIs exposed by a Virtual Device (and therefore
 provided by its associated firwmare) is documented in Javadoc format, please consult https://repository.microej.com/javadoc/microej_5.x/apis/.
 
+..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
