@@ -141,7 +141,7 @@ In case of full BSP connection, the application link can be triggered by executi
 
 - Open :guilabel:`configuration` tab and select :guilabel:`Device` > :guilabel:`Deploy`.
   
-- By default the options to deploy the application, runtime library and header files are already set. Check the :ref:`BSP connection option <bsp_connection_options>` :guilabel:`deploy.bsp.microejscript`.
+- By default the options to deploy the application, runtime library and header files are already set. Check the :ref:`BSP connection option <bsp_connection_options>` :guilabel:`deploy.bsp.microejscript`, click :guilabel:`Apply` and :guilabel:`Run`. 
 
 .. figure:: images/bsp-options.png
    :alt: BSP connection options
@@ -150,11 +150,9 @@ In case of full BSP connection, the application link can be triggered by executi
    :height: 787px
 
    BSP connection options
-
-- Click :guilabel:`Apply` and :guilabel:`Run` : the ``application.out`` file is produced.
   
 
-More options can be defined to run a MicroEJ Standalone Application on an hardware device, see :ref:`Application options <application_options>`.
+- More options can be defined to run a MicroEJ Standalone Application on an hardware device, see :ref:`Application options <application_options>`.
 
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
