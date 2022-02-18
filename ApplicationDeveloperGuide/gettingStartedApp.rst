@@ -107,11 +107,11 @@ MicroEJ SDK console will display Launch steps messages.
 Run on the Hardware Device
 --------------------------
 
-To run the sample on the hardware device, open the run dialog (:guilabel:`Run` > :guilabel:`Run Configurations...`) 
-and select the :guilabel:`MicroEJ Application` :guilabel:`HelloWorld Main` that is created by the previous chapter.
+- Open the run dialog (:guilabel:`Run` > :guilabel:`Run Configurations...`).
 
-- Open :guilabel:`Execution` tab.
-   - Select :guilabel:`Execute on Device`
+- Select the :guilabel:`MicroEJ Application` :guilabel:`HelloWorld Main` that is created by the previous chapter.
+
+- Open :guilabel:`Execution` tab and select :guilabel:`Execute on Device`
 
 .. figure:: images/basic-launcher.png
    :alt: Execution on Device
@@ -121,7 +121,39 @@ and select the :guilabel:`MicroEJ Application` :guilabel:`HelloWorld Main` that 
 
    Execution on Device
 
-- Click :guilabel:`Run` : the application is compiled
+- Click :guilabel:`Run` : the application is compiled. Depending on your platform :ref:`BSP connection <bsp_connection>` the application, runtime library 
+  or header files can be automatically deployed to your BSP.
+
+::
+
+    =============== [ Deployment ] ===============
+    MicroEJ files for the 3rd-party BSP project are generated to '<application-project>/<fully-qualified-name-of-main-class>/platform'.
+    The MicroEJ application (microejapp.o) has been deployed to: '<path-to-platform-lib-folder>'.
+    The MicroEJ platform library (microejruntime.a) has been deployed to: '<path-to-platform-lib-folder>'.
+    The MicroEJ platform header files (*.h) have been deployed to: '<path-to-platform-include-folder>'.
+    =============== [ Completed Successfully ] ===============
+
+    SUCCESS
+
+
+
+In case of full BSP connection, the application link be triggered by executing the :ref:`build script <bsp_connection_build_script>` file.
+
+- Open :guilabel:`configuration` tab and select :guilabel:`Device` > :guilabel:`Deploy`.
+- By default the options to deploy the application, runtime library and header files are already set. Check the :ref:`BSP connection option <_bsp_connection_options>` :guilabel:`deploy.bsp.microejscript`.
+
+.. figure:: images/bsp-options
+   :alt: BSP connection option
+   :align: center
+   :width: 698px
+   :height: 552px
+
+   BSP connection option
+
+- Click :guilabel:`Apply` and :guilabel:`Run`.
+  
+
+More options can be defined to run a MicroEJ Standalone Application on an hardware device, see :ref:`Application options <application_options>`
 
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
