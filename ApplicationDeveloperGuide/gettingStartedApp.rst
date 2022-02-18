@@ -151,7 +151,7 @@ In case of full BSP connection, the application link can be triggered by executi
 
    BSP connection options
 
-- Click :guilabel:`Apply` and :guilabel:`Run` : the ``application.out`` is produced.
+- Click :guilabel:`Apply` and :guilabel:`Run` : the ``application.out`` file is produced.
   
 
 More options can be defined to run a MicroEJ Standalone Application on an hardware device, see :ref:`Application options <application_options>`.
