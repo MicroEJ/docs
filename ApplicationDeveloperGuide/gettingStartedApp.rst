@@ -109,9 +109,11 @@ Run on the Hardware Device
 
 - Open the run dialog (:guilabel:`Run` > :guilabel:`Run Configurations...`).
 
-- Select the :guilabel:`MicroEJ Application` :guilabel:`HelloWorld Main` that is created by the previous chapter.
+- Select the :guilabel:`MicroEJ Application` > :guilabel:`HelloWorld` that is created by the previous chapter.
 
-- Open :guilabel:`Execution` tab and select :guilabel:`Execute on Device`
+- Open :guilabel:`Execution` tab and select :guilabel:`Execute on Device`.
+
+- Set :guilabel:`Settings` checkbox to :guilabel:`Build & Deploy`.
 
 .. figure:: images/basic-launcher.png
    :alt: Execution on Device
@@ -137,21 +139,22 @@ Run on the Hardware Device
 
 
 
-In case of full BSP connection, the application link can be triggered by executing the :ref:`build script <bsp_connection_build_script>` file.
+- The application link can be triggered by executing the :ref:`build script <bsp_connection_build_script>` file.
 
-- Open :guilabel:`configuration` tab and select :guilabel:`Device` > :guilabel:`Deploy`.
+  - Open :guilabel:`configuration` tab and select :guilabel:`Device` > :guilabel:`Deploy`.
   
-- By default the options to deploy the application, runtime library and header files are already set. Check the :ref:`BSP connection option <bsp_connection_options>` :guilabel:`deploy.bsp.microejscript`, click :guilabel:`Apply` and :guilabel:`Run`. 
+  - By default the options to deploy the application, runtime library and header files are already set. Check the :guilabel:`deploy.bsp.microejscript` option. 
 
 .. figure:: images/bsp-options.png
    :alt: BSP connection options
    :align: center
-   :width: 1351px
-   :height: 787px
+   :width: 1300px
+   :height: 743px
 
    BSP connection options
-  
 
+- Depending on BSP connection case, different options can be specified, see :ref:`BSP connection options <bsp_connection_options>`. 
+  
 - More options can be defined to run a MicroEJ Standalone Application on an hardware device, see :ref:`Application options <application_options>`.
 
 ..
