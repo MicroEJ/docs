@@ -23,7 +23,7 @@ This glossary defines the technical terms upon which the `MICROEJ VEE (Virtual E
             A MicroEJ Sandboxed Application is a MicroEJ Application that can run over a MicroEJ Multi-Sandbox Firmware. It can be linked either statically or dynamically.
 
          System Application
-            A MicroEJ System Application is a MicroEJ Sandboxed Application that is statically linked to a MicroEJ Multi-Sandbox Firmware, as it is part of the initial image and cannot be removed.
+            A MicroEJ System Application (formerly called a Resident Application) is a MicroEJ Sandboxed Application that is statically linked to a MicroEJ Multi-Sandbox Firmware, as it is part of the initial image and cannot be removed.
 
          Kernel Application
             A MicroEJ Kernel Application is a MicroEJ Standalone Application that implements the ability to be extended to produce a MicroEJ Multi-Sandbox Firmware.
