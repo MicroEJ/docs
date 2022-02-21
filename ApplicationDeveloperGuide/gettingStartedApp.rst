@@ -123,7 +123,7 @@ Run on the Hardware Device
 
    Execution on Device
 
-- Click :guilabel:`Run` : the application, the runtime library and the header files are automatically deployed to your BSP.
+- Click :guilabel:`Run` : depending on your Platform :ref:`BSP connection <bsp_connection>`, the application, the runtime library and the header files are automatically deployed to your BSP.
 
 ::
 
@@ -136,10 +136,10 @@ Run on the Hardware Device
 
     SUCCESS
 
+For each Platform BSP connection, platform options and :ref:`application options <application_options>` must be specified. Section :ref:`BSP connection options <bsp_connection_options>` specifies all options required for each BSP connection and how to set them.
 
-
-Full BSP connection
-~~~~~~~~~~~~~~~~~~~
+Generate the application.out file 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In case of full :ref:`BSP connection <bsp_connection>`, the application link can be triggered by executing the :ref:`build script <bsp_connection_build_script>` file.
 
@@ -159,12 +159,6 @@ In case of full :ref:`BSP connection <bsp_connection>`, the application link can
 
 - Click :guilabel:`Apply` and :guilabel:`Run` : the final executable :guilabel:`application.out` file is generated and can now be deployed on your Device using the appropriate flash tool. 
   
-
-No BSP or Partial BSP connection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Different platform options and :ref:`application options <application_options>` must be specified depending on BSP connection. For more details, see :ref:`BSP connection options <bsp_connection_options>` in which all options required for each BSP connection case are specified.
-
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
