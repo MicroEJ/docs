@@ -123,8 +123,7 @@ Run on the Hardware Device
 
    Execution on Device
 
-- Click :guilabel:`Run` : the application is compiled. Depending on your platform :ref:`BSP connection <bsp_connection>` the application, runtime library 
-  or header files can be automatically deployed to your BSP.
+- Click :guilabel:`Run` : the application, the runtime library and the header files are automatically deployed to your BSP.
 
 ::
 
@@ -139,11 +138,16 @@ Run on the Hardware Device
 
 
 
-- The application link can be triggered by executing the :ref:`build script <bsp_connection_build_script>` file.
+Full BSP connection
+~~~~~~~~~~~~~~~~~~~
 
-  - Open :guilabel:`configuration` tab and select :guilabel:`Device` > :guilabel:`Deploy`.
+In case of full :ref:`BSP connection <bsp_connection>`, the application link can be triggered by executing the :ref:`build script <bsp_connection_build_script>` file.
+
+- Open :guilabel:`configuration` tab and select :guilabel:`Device` > :guilabel:`Deploy`. By default the options to deploy the application, runtime library and header files are already set. 
   
-  - By default the options to deploy the application, runtime library and header files are already set. Check the :guilabel:`deploy.bsp.microejscript` option. 
+- Check :guilabel:`Execute the MicroEJ build script (build.bat) at a location known by the 3rd-party BSP project` (:guilabel:`deploy.bsp.microejscript` option). 
+
+  - The platform options :guilabel:`root.dir` and :guilabel:`microejscript.relative.dir` must be set in the :guilabel:`bsp/bsp.properties` file, see :ref:`BSP connection options <bsp_connection_options>` for more details.
 
 .. figure:: images/bsp-options.png
    :alt: BSP connection options
@@ -153,9 +157,13 @@ Run on the Hardware Device
 
    BSP connection options
 
-- Depending on BSP connection case, different options can be specified, see :ref:`BSP connection options <bsp_connection_options>`. 
+- Click :guilabel:`Apply` and :guilabel:`Run` : the final executable :guilabel:`application.out` file is generated and can now be deployed on your Device using the appropriate flash tool. 
   
-- More options can be defined to run a MicroEJ Standalone Application on an hardware device, see :ref:`Application options <application_options>`.
+
+No BSP or Partial BSP connection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Different platform options and :ref:`application options <application_options>` must be specified depending on BSP connection. For more details, see :ref:`BSP connection options <bsp_connection_options>` in which all options required for each BSP connection case are specified.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
