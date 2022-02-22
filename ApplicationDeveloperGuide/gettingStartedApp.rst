@@ -107,6 +107,11 @@ MicroEJ SDK console will display Launch steps messages.
 Run on the Hardware Device
 --------------------------
 
+Build the application
+~~~~~~~~~~~~~~~~~~~~~
+
+- Configure your :ref:`BSP connection <bsp_connection>` to define the deployment location of the application, the runtime library and the header files. Section :ref:`BSP connection options <bsp_connection_options>` specifies all options that can be set for each BSP connection and how to set them. 
+
 - Open the run dialog (:guilabel:`Run` > :guilabel:`Run Configurations...`).
 
 - Select the :guilabel:`MicroEJ Application` > :guilabel:`HelloWorld` that is created by the previous chapter.
@@ -123,31 +128,28 @@ Run on the Hardware Device
 
    Execution on Device
 
-- Click :guilabel:`Run` : depending on your Platform :ref:`BSP connection <bsp_connection>`, the application, the runtime library and the header files are automatically deployed to your BSP.
+- Click :guilabel:`Run` : The application is compiled and the application, the runtime library and the header files are automatically deployed to the locations defined in your BSP connection. 
 
 ::
 
     =============== [ Deployment ] ===============
     MicroEJ files for the 3rd-party BSP project are generated to '<application-project>/<fully-qualified-name-of-main-class>/platform'.
-    The MicroEJ application (microejapp.o) has been deployed to: '<path-to-platform-lib-folder>'.
-    The MicroEJ platform library (microejruntime.a) has been deployed to: '<path-to-platform-lib-folder>'.
-    The MicroEJ platform header files (*.h) have been deployed to: '<path-to-platform-include-folder>'.
+    The MicroEJ application (microejapp.o) has been deployed to: '<relative_path>'.
+    The MicroEJ platform library (microejruntime.a) has been deployed to: '<relative_path>'.
+    The MicroEJ platform header files (*.h) have been deployed to: '<relative_path>'.
     =============== [ Completed Successfully ] ===============
 
     SUCCESS
 
-For each Platform BSP connection, platform options and :ref:`application options <application_options>` must be specified. Section :ref:`BSP connection options <bsp_connection_options>` specifies all options required for each BSP connection and how to set them.
 
 Generate the application.out file 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In case of full :ref:`BSP connection <bsp_connection>`, the application link can be triggered by executing the :ref:`build script <bsp_connection_build_script>` file.
+The application link can be triggered by executing the :ref:`build script <bsp_connection_build_script>` file:
 
-- Open :guilabel:`configuration` tab and select :guilabel:`Device` > :guilabel:`Deploy`. By default the options to deploy the application, runtime library and header files are already set. 
+- Open :guilabel:`configuration` tab and select :guilabel:`Device` > :guilabel:`Deploy`. The options to deploy the application, runtime library and header files have already been set in the previous step. 
   
-- Check :guilabel:`Execute the MicroEJ build script (build.bat) at a location known by the 3rd-party BSP project` (:guilabel:`deploy.bsp.microejscript` option). 
-
-  - The platform options :guilabel:`root.dir` and :guilabel:`microejscript.relative.dir` must be set in the :guilabel:`bsp/bsp.properties` file, see :ref:`BSP connection options <bsp_connection_options>` for more details.
+- If your BSP connection is not configured to execute the build script file (see :ref:`BSP connection options <bsp_connection_options>`), check :guilabel:`Execute the MicroEJ build script (build.bat) at a location known by the 3rd-party BSP project`.
 
 .. figure:: images/bsp-options.png
    :alt: BSP connection options
@@ -157,7 +159,7 @@ In case of full :ref:`BSP connection <bsp_connection>`, the application link can
 
    BSP connection options
 
-- Click :guilabel:`Apply` and :guilabel:`Run` : the final executable :guilabel:`application.out` file is generated and can now be deployed on your Device using the appropriate flash tool. 
+- Click :guilabel:`Apply` and :guilabel:`Run` : the final executable :guilabel:`application.out` file is generated in the directory from where the script has been executed and can now be deployed on your Device using the appropriate flash tool. 
   
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
