@@ -134,9 +134,9 @@ Build the application
 
     =============== [ Deployment ] ===============
     MicroEJ files for the 3rd-party BSP project are generated to '<application-project>/<fully-qualified-name-of-main-class>/platform'.
-    The MicroEJ application (microejapp.o) has been deployed to: '<relative_path>'.
-    The MicroEJ platform library (microejruntime.a) has been deployed to: '<relative_path>'.
-    The MicroEJ platform header files (*.h) have been deployed to: '<relative_path>'.
+    The MicroEJ application (microejapp.o) has been deployed to: '<path-to-deployment-location>'.
+    The MicroEJ platform library (microejruntime.a) has been deployed to: '<path-to-deployment-location>'.
+    The MicroEJ platform header files (*.h) have been deployed to: '<path-to-deployment-location>'.
     =============== [ Completed Successfully ] ===============
 
     SUCCESS
