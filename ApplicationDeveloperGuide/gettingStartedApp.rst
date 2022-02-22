@@ -145,7 +145,7 @@ Build the application
 Generate the application.out file 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The application link can be triggered by executing the :ref:`build script <bsp_connection_build_script>` file:
+The application linking can be triggered by executing the :ref:`build script <bsp_connection_build_script>` file:
 
 - Open :guilabel:`configuration` tab and select :guilabel:`Device` > :guilabel:`Deploy`. The options to deploy the application, runtime library and header files have already been set in the previous step. 
   
