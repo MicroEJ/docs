@@ -110,7 +110,7 @@ Run on the Hardware Device
 Build the application
 ~~~~~~~~~~~~~~~~~~~~~
 
-- Configure your :ref:`BSP connection <bsp_connection>` to define the deployment location of the application, the runtime library and the header files. Section :ref:`BSP connection options <bsp_connection_options>` specifies all options that can be set for each BSP connection and how to set them. 
+- Configure your :ref:`BSP connection <bsp_connection>` to define the deployment location of the application, the runtime library and the header files. The section :ref:`BSP connection options <bsp_connection_options>` specifies all options that can be set for each BSP connection and how to set them. 
 
 - Open the run dialog (:guilabel:`Run` > :guilabel:`Run Configurations...`).
 
