@@ -128,7 +128,7 @@ Build the application
 
    Execution on Device
 
-- Click :guilabel:`Run` : The application is compiled and the application, the runtime library and the header files are automatically deployed to the locations defined in your BSP connection. 
+- Click :guilabel:`Run` : The application is compiled and the application, the runtime library and the header files are automatically deployed to the locations defined in your BSP connection settings. 
 
 ::
 
