@@ -110,8 +110,6 @@ Run on the Hardware Device
 Build the application
 ~~~~~~~~~~~~~~~~~~~~~
 
-- Configure your :ref:`BSP connection <bsp_connection>` to define the deployment location of the application, the runtime library and the header files. The section :ref:`BSP connection options <bsp_connection_options>` specifies all options that can be set for each BSP connection and how to set them. 
-
 - Open the run dialog (:guilabel:`Run` > :guilabel:`Run Configurations...`).
 
 - Select the :guilabel:`MicroEJ Application` > :guilabel:`HelloWorld` that is created by the previous chapter.
@@ -128,7 +126,7 @@ Build the application
 
    Execution on Device
 
-- Click :guilabel:`Run` : The application is compiled and the application, the runtime library and the header files are automatically deployed to the locations defined in your BSP connection settings. 
+- Click :guilabel:`Run` : The application is compiled and the application, the runtime library and the header files are automatically deployed to the locations defined in your Platform :ref:`BSP connection <bsp_connection>` settings. 
 
 ::
 
@@ -141,15 +139,14 @@ Build the application
 
     SUCCESS
 
+Build the Executable File 
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Generate the application.out file 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+If your Platform has configured a :ref:`build script <bsp_connection_build_script>` file, the final application linking can be triggered from the launcher:
 
-The application linking can be triggered by executing the :ref:`build script <bsp_connection_build_script>` file:
-
-- Open :guilabel:`configuration` tab and select :guilabel:`Device` > :guilabel:`Deploy`. The options to deploy the application, runtime library and header files have already been set in the previous step. 
+- Open :guilabel:`Configuration` tab and select :guilabel:`Device` > :guilabel:`Deploy`. The options to deploy the application, runtime library and header files have already been set in the previous step. 
   
-- If your BSP connection is not configured to execute the build script file (see :ref:`BSP connection options <bsp_connection_options>`), check :guilabel:`Execute the MicroEJ build script (build.bat) at a location known by the 3rd-party BSP project`.
+- Check :guilabel:`Execute the MicroEJ build script (build.bat) at a location known by the 3rd-party BSP project`.
 
 .. figure:: images/bsp-options.png
    :alt: BSP connection options
@@ -157,10 +154,15 @@ The application linking can be triggered by executing the :ref:`build script <bs
    :width: 1300px
    :height: 743px
 
-   BSP connection options
+   BSP Connection Application Options
+
+.. note::
+
+   The table :ref:`MicroEJ Application Options for BSP Connection <bsp_connection_application_options>` specifies the application options that can be set depending on the BSP connection configured by the Platform.
 
 - Click :guilabel:`Apply` and :guilabel:`Run` : the final executable :guilabel:`application.out` file is generated in the directory from where the script has been executed and can now be deployed on your Device using the appropriate flash tool. 
-  
+
+
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
