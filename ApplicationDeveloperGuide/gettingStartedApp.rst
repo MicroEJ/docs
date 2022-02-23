@@ -107,7 +107,7 @@ MicroEJ SDK console will display Launch steps messages.
 Run on the Hardware Device
 --------------------------
 
-Build the application
+Build the Application
 ~~~~~~~~~~~~~~~~~~~~~
 
 - Open the run dialog (:guilabel:`Run` > :guilabel:`Run Configurations...`).
