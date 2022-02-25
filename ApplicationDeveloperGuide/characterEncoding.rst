@@ -27,6 +27,8 @@ By default, the standard output stream (``System.out``) uses `ISO-8859-1` charse
 
 The print methods only write the raw byte array encoded with the charset used by the ``PrintStream`` to the console. The console must then be configured with the right encoding to display characters properly.
 
+.. _set_console_encoding:
+
 Set Encoding in MicroEJ SDK Console
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

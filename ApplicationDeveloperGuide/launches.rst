@@ -106,7 +106,8 @@ Common Tab
 ----------
 
 The last tab is the :guilabel:`Common` tab. This is a default Eclipse tab that allows to configure your launch.
-Refer to Eclipse help for more details on how to use this tab.
+Particularly, you can configure the :ref:`console encoding <set_console_encoding>`.
+Refer to Eclipse help for more details on other available options.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
