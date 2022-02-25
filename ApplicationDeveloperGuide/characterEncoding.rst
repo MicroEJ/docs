@@ -1,15 +1,15 @@
 Character Encoding
 ==================
 
-The default character encoding is `ISO-8859-1`. It is thus the encoding used when
+The default character encoding is `ISO-8859-1`. It is thus the encoding used when:
 
--  creating a new string from a byte array without specifying the encoding;
+-  creating a new string from a byte array without specifying the encoding (`String(byte[]) constructor <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html#String-byte:A->`_),
 
--  getting the byte array from a string without specifying the encoding;
+-  getting the byte array from a string without specifying the encoding (`String.getBytes() method <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html#getBytes-->`_),
 
--  printing a string to standard output stream;
+-  printing a string to standard output stream (`System.out <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#out>`_),
 
--  creating a new ``PrintStream`` without specifying the encoding.
+-  creating a new `PrintStream <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/PrintStream.html>`_ without specifying the encoding.
 
 Console Output
 --------------
@@ -23,7 +23,7 @@ By default, the standard output stream (``System.out``) uses `ISO-8859-1` encodi
 
 .. warning::
 
-    Make sure you embed the `UTF-8` encoder. Otherwise a ``java.io.UnsupportedEncodingException`` exception will be thrown. See :ref:`how to set embed UTF-8 option<option_embed_utf8>`.
+    Make sure you embed the `UTF-8` encoder. Otherwise a `java.io.UnsupportedEncodingException <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/UnsupportedEncodingException.html>`_ exception will be thrown. See :ref:`Embed UTF-8 encoding option <option_embed_utf8>`.
 
 The print methods write the raw byte array with the encoding used by the ``PrintStream`` to the console. The console must then be configured with the same encoding to display characters properly.
 
