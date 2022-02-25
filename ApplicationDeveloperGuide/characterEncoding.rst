@@ -24,6 +24,12 @@ It can be embedded using the :ref:`Embed UTF-8 encoding option <option_embed_utf
 
 This implementation also supports Unicode code points as supplementary characters, by setting the :ref:`constant <section.classpath.elements.constants>` ``com.microej.library.edc.supplementarycharacter.enabled`` to ``true``.
 
+Custom Encoding
+---------------
+
+It is possible to connect additional custom encodings. 
+Please contact :ref:`our support team <get_support>` for more details.
+
 Console Output
 --------------
 
