@@ -64,7 +64,7 @@ MicroEJ SDK console will display Launch steps messages.
 
     =============== [ Initialization Stage ] ===============
     =============== [ Launching on Simulator ] ===============
-    hello world!
+    Hello World!
     =============== [ Completed Successfully ] ===============
 
     SUCCESS
