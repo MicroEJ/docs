@@ -44,6 +44,10 @@ Create a MicroEJ Standalone Application
 Run on the Simulator
 --------------------
 
+.. note::
+
+   :ref:`A Platform must be imported <platform_import>` to the workspace to run the Application. If several Platforms have been imported, the target Platform can be selected in the :ref:`Launcher's Execution tab <launch_execution_tab>`.
+
 To run the sample project on Simulator, select it in the left panel then right-click
 and select :guilabel:`Run` > :guilabel:`Run as` > :guilabel:`MicroEJ Application`.
 

@@ -7,7 +7,7 @@ Standalone Application
    :maxdepth: 2
 
    platform
-   standaloneApplicationTutorial
+   buildAndRunApplication
    buildOutputFiles
    launches
    applicationOptions
