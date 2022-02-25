@@ -52,11 +52,11 @@ To run the sample project on Simulator, select it in the left panel then right-c
 and select :guilabel:`Run` > :guilabel:`Run as` > :guilabel:`MicroEJ Application`.
 
 .. figure:: images/sim1.png
-   :alt: MicroEJ Development Tools Overview
+   :alt: MicroEJ Launcher Shortcut
    :align: center
    :scale: 100%
 
-   MicroEJ Development Tools Overview
+   MicroEJ Launcher Shortcut
 
 MicroEJ SDK console will display Launch steps messages.
 
