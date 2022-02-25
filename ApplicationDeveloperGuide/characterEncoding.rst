@@ -39,8 +39,7 @@ The encoding used by a console for a given application can be set in the applica
 .. figure:: images/eclipse_encoding.png
       :alt: Encoding Selection in Eclipse
       :align: center
-      :width: 786px
-      :height: 633px
+      :scale: 100%
 
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
