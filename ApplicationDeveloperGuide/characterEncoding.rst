@@ -1,7 +1,10 @@
 Character Encoding
 ==================
 
-The default character encoding is `ISO-8859-1`. It is thus the encoding used when:
+Default Encoding
+----------------
+
+The default character encoding is ``ISO-8859-1``. It is thus the encoding used when:
 
 -  creating a new string from a byte array without specifying the encoding (`String(byte[]) constructor <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html#String-byte:A->`_),
 
@@ -11,10 +14,20 @@ The default character encoding is `ISO-8859-1`. It is thus the encoding used whe
 
 -  creating a new `PrintStream <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/PrintStream.html>`_ without specifying the encoding.
 
+.. _encoding_utf8:
+
+UTF-8 Encoding
+--------------
+
+EDC provides an implementation of the ``UTF-8`` character encoding. 
+It can be embedded using the :ref:`Embed UTF-8 encoding option <option_embed_utf8>` (otherwise a `java.io.UnsupportedEncodingException <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/UnsupportedEncodingException.html>`_ exception will be thrown).
+
+This implementation also supports Unicode code points as supplementary characters, by setting the :ref:`constant <section.classpath.elements.constants>` ``com.microej.library.edc.supplementarycharacter.enabled`` to ``true``.
+
 Console Output
 --------------
 
-By default, the standard output stream (``System.out``) uses `ISO-8859-1` encoding to print strings. If you want to print a string with a different encoding, you can create a new ``PrintStream``:
+By default, the standard output stream (``System.out``) uses ``ISO-8859-1`` encoding to print strings. If you want to print a string with a different encoding, you can create a new ``PrintStream``:
 
 .. code-block:: java
 
@@ -23,7 +36,7 @@ By default, the standard output stream (``System.out``) uses `ISO-8859-1` encodi
 
 .. warning::
 
-    Make sure you embed the `UTF-8` encoder. Otherwise a `java.io.UnsupportedEncodingException <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/UnsupportedEncodingException.html>`_ exception will be thrown. See :ref:`Embed UTF-8 encoding option <option_embed_utf8>`.
+    Make sure you embed the ``UTF-8`` encoder (see :ref:`encoding_utf8`)
 
 The print methods write the raw byte array with the encoding used by the ``PrintStream`` to the console. The console must then be configured with the same encoding to display characters properly.
 
@@ -32,7 +45,7 @@ The print methods write the raw byte array with the encoding used by the ``Print
 Set Encoding in MicroEJ SDK Console
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The default encoding for Eclipse consoles is `UTF-8`. If your application prints non-ASCII characters, they may not be displayed properly.
+The default encoding for Eclipse consoles is ``UTF-8``. If your application prints non-ASCII characters, they may not be displayed properly.
 
 The encoding used by a console for a given application can be set in the application launcher options: :guilabel:`Run` > :guilabel:`Run Configurations...`, and then :guilabel:`Common` tab > :guilabel:`Encoding` radio buttons.
 
