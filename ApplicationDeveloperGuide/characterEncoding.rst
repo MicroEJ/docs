@@ -32,15 +32,16 @@ The print methods write the raw byte array with the encoding used by the ``Print
 Set Encoding in MicroEJ SDK Console
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The default encoding for consoles is `UTF-8`. If your application prints non-ASCII characters, they may not be displayed properly.
+The default encoding for Eclipse consoles is `UTF-8`. If your application prints non-ASCII characters, they may not be displayed properly.
 
-The encoding used by a console for a given application can be set in the application launch options: :guilabel:`Run` > :guilabel:`Run Configurations...`, and then :guilabel:`Common` tab > :guilabel:`Encoding` radio buttons.
+The encoding used by a console for a given application can be set in the application launcher options: :guilabel:`Run` > :guilabel:`Run Configurations...`, and then :guilabel:`Common` tab > :guilabel:`Encoding` radio buttons.
 
 .. figure:: images/eclipse_encoding.png
-      :alt: Encoding Selection in Eclipse
+      :alt: Eclipse Launcher Console Encoding Options
       :align: center
       :scale: 100%
 
+      Eclipse Launcher Console Encoding Options
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
