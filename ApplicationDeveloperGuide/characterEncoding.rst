@@ -1,20 +1,20 @@
 Character Encoding
 ==================
 
-The default charset is `ISO-8859-1`. It is thus the encoding used when
+The default character encoding is `ISO-8859-1`. It is thus the encoding used when
 
--  creating a new string from a byte array without specifying the charset;
+-  creating a new string from a byte array without specifying the encoding;
 
--  getting the byte array from a string without specifying the charset;
+-  getting the byte array from a string without specifying the encoding;
 
 -  printing a string to standard output stream;
 
--  creating a new ``PrintStream`` without specifying the charset.
+-  creating a new ``PrintStream`` without specifying the encoding.
 
 Console Output
 --------------
 
-By default, the standard output stream (``System.out``) uses `ISO-8859-1` charset to print strings. If you want to print an string encoded with a different charset, you can define a new ``PrintStream``:
+By default, the standard output stream (``System.out``) uses `ISO-8859-1` encoding to print strings. If you want to print a string with a different encoding, you can create a new ``PrintStream``:
 
 .. code-block:: java
 
@@ -23,9 +23,9 @@ By default, the standard output stream (``System.out``) uses `ISO-8859-1` charse
 
 .. warning::
 
-    Make sure you embed `UTF-8` when using this charset. Otherwise a ``java.io.UnsupportedEncodingException`` exception will be thrown. See :ref:`how to set embed UTF-8 option<option_embed_utf8>`.
+    Make sure you embed the `UTF-8` encoder. Otherwise a ``java.io.UnsupportedEncodingException`` exception will be thrown. See :ref:`how to set embed UTF-8 option<option_embed_utf8>`.
 
-The print methods only write the raw byte array encoded with the charset used by the ``PrintStream`` to the console. The console must then be configured with the right encoding to display characters properly.
+The print methods write the raw byte array with the encoding used by the ``PrintStream`` to the console. The console must then be configured with the same encoding to display characters properly.
 
 .. _set_console_encoding:
 
