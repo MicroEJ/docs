@@ -22,6 +22,7 @@ Application Developer Guide
    UI/ui
    js/index
    networking
+   characterEncoding
    limitations
 
 ..
