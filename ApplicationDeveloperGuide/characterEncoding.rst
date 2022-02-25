@@ -9,7 +9,7 @@ The default charset is `ISO-8859-1`. It is thus the encoding used when
 
 -  printing a string to standard output stream;
 
--  creating a new ``PrintStream`` without stecifying the charset.
+-  creating a new ``PrintStream`` without specifying the charset.
 
 Console Output
 --------------
@@ -32,12 +32,12 @@ The print methods only write the raw byte array encoded with the charset used by
 Set Encoding in MicroEJ SDK Console
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The defaut encoding for consoles is `UTF-8`. If your application prints non-ASCII characters, they may not be displayed properly.
+The default encoding for consoles is `UTF-8`. If your application prints non-ASCII characters, they may not be displayed properly.
 
 The encoding used by a console for a given application can be set in the application launch options: :guilabel:`Run` > :guilabel:`Run Configurations...`, and then :guilabel:`Common` tab > :guilabel:`Encoding` radio buttons.
 
 .. figure:: images/eclipse_encoding.png
-      :alt: Ecoding Selection in Eclipse
+      :alt: Encoding Selection in Eclipse
       :align: center
       :width: 786px
       :height: 633px
