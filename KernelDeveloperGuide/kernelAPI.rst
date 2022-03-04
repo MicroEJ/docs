@@ -1,50 +1,36 @@
 .. _kernel.api:
 
-.. _kernel.api.def:
-Kernel API Definition
-~~~~~~~~~~~~~~~~~~~~~
+===========
+Kernel APIs
+===========
 
-A Kernel API file ``kernel.api`` specify among all types owned by the Kernel which ones **must** be used by
+Kernel API files (``kernel.api``) specify among all types owned by the Kernel which ones **must** be used by
 Features, and for those types which members (method, and static fields) are allowed to be accessed by
-Features. When a tye is not declared in a Kernel API, the Kernel and each Feature **can** have their own version of that type,
+Features. When a type is not declared in a Kernel API, the Kernel and each Feature **can** have their own version of that type,
 but if a type is declared in a Kernel API file only the Kernel version will be used by the Kernel and all the Features.
 
-Kernel API file is an XML file (see :ref:`example "Kernel API XML Schema" <fig_kf-api-xsd>` and
-:ref:`table "XML elements specification" <table_kf-api-tags>`).
+For mode details refer to the `Class Spaces` chapter of the :ref:`kf_specification`. 
+
+.. _kernel.api.def:
+
+Kernel API Definition
+=====================
+
+A Kernel API file is an XML file named ``kernel.api`` declared at the root of one ore more paths composing the :ref:`Application classpath <chapter.microej.classpath>`.
 
 .. _fig_kf-api-xsd:
 .. code-block:: xml
-   :caption: Kernel API XML Schema
+   :caption: Kernel API Example for exposing ``System.out.println`` API
 
-   <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
-       <xs:element name='require'>
-           <xs:complexType>
-               <xs:choice minOccurs='0' maxOccurs='unbounded'>
-                   <xs:element ref='type'/>
-                   <xs:element ref='field'/>
-                   <xs:element ref='method'/>
-               </xs:choice>
-           </xs:complexType>
-       </xs:element>
+    <require>
+        <type name="java.io.PrintStream"/>
+        <type name="java.lang.String"/>
+        <type name="java.lang.System"/>
+        <field name="java.lang.System.out"/>
+        <method name="java.io.PrintStream.println(java.lang.String)void"/>
+    </require>
 
-       <xs:element name='type'>
-           <xs:complexType>
-               <xs:attribute name='name' type='xs:string' use='required'/>
-           </xs:complexType>
-       </xs:element>
-
-       <xs:element name='field'>
-           <xs:complexType>
-               <xs:attribute name='name' type='xs:string' use='required'/>
-           </xs:complexType>
-       </xs:element>
-
-       <xs:element name='method'>
-           <xs:complexType>
-               <xs:attribute name='name' type='xs:string' use='required'/>
-           </xs:complexType>
-       </xs:element>
-   </xs:schema>
+The table below describes the format of the XML elements. The full XML schema is available in the :ref:`kf_specification`. 
 
 .. _table_kf-api-tags:
 .. tabularcolumns:: |p{1cm}|p{1.5cm}|p{12.5cm}|

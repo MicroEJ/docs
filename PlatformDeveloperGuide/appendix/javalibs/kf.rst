@@ -57,10 +57,10 @@ file is loaded and are named ``kernel.kf`` and ``kernel.cert``.
 and immutables are automatically owned by the Kernel if not explicitly
 set to be owned by a Feature.
 
-Kernel API Definition
----------------------
+Kernel API Files
+----------------
 
-Kernel API Definition is explained here :ref:`Kernel API <kernel.api.def>`
+Kernel API file definition is explained here :ref:`Kernel API <kernel.api.def>`.
 
 Access Error Codes
 ------------------
