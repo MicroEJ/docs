@@ -46,6 +46,8 @@ For each symbol or each category, you can see its size in ROM (``Image Size``) a
 The SOAR groups all the Java strings in the same section, which appears in the ``ApplicationStrings`` category.
 The same applies to the static fields (``Statics`` category), the types (``Types`` category), and the class names (``ClassNames`` category).
 
+.. _soar_info_file:
+
 The SOAR Information File
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 

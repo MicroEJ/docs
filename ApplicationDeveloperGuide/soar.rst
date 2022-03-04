@@ -1,6 +1,9 @@
 SOAR
 ====
 
+This chapter describes SOAR capabilities and optimizations for the Application developer point of view.
+To get more details on its internal structure, please refer to :ref:`soar_build_phases` section.
+
 .. _soar_clinit:
 
 Class Initialization Code
@@ -42,6 +45,37 @@ where ``T1`` and ``T2`` are fully qualified names on the form ``a.b.C``.
 This explicitly forces SOAR to create a dependency from ``T1`` to
 ``T2``, and therefore cuts a potentially detected dependency from ``T2``
 to ``T1``.
+
+
+.. _soar_method_devirtualization:
+
+Method Devirtualization
+------------------------
+
+Method devirtualization consists of transforming a virtual method call to a direct method call when possible.
+A virtual method call is a call to a method declared either in an interface or in a class when it not declared with private visibility. 
+Calls to constructors and private methods are already as a direct method call by the Java compiler.
+
+SOAR automatically transforms virtual method call to direct method call if there is one and only one embedded implementation method.
+
+.. note::
+  
+   The list of embedded methods is available in the :ref:`SOAR Information File <soar_info_file>`.
+
+.. _soar_method_inlining:
+
+Method Inlining
+---------------
+
+Method inlining consists of replacing a direct method call by the content of the method. This avoids the creation of a new stack frame context which can be slower than executing the code itself.
+Method inlining is transitively applied from leaf to root methods.
+
+The following code patterns are inlined:
+
+- empty code after processing :ref:`assertions <enable_assertions_emb>` and :ref:`if code removal <if_constant_removal>`.
+- call to a constructor with no parameters.
+- call to a private method with no parameters.
+- call to a static method with no parameters, only if the caller is also a static method.
 
 
 ..
