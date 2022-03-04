@@ -1,4 +1,4 @@
-.. _chapter_KF:
+.. _kf_specification:
 
 Kernel & Features Specification
 ===============================
