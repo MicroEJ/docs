@@ -84,6 +84,66 @@ It is also available as a :ref:`MicroEJ Tool <MicroEJToolsSection>` named :guila
 
    Features linked using the Firmware Linker tool cannot be dynamically uninstalled using `Kernel.uninstall(Feature) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#uninstall-ej.kf.Feature->`_ method.
 
+.. _controlled_portability:
+
+Controlled Portability
+----------------------
+
+A Kernel can install ``.fo`` files that have been built on other Kernels, provided this Kernel complies with other Kernels according to a set of rules declared hereafter.
+Such phase is called `Controlled Portability` because the portability is verified during the new Kernel build, with no impact on the Feature dynamic installation.
+
+Principle
+~~~~~~~~~
+
+During a Kernel build, SOAR can verify this Kernel preserves the portability of ``.fo`` files built on previous Kernel using :ref:`Kernel Metadata files <kernel_metadata_generation>`.
+If the portability is preserved, the Kernel UIDs are embedded in the new Kernel, allowing ``.fo`` files built on previous Kernels to be installed.
+Otherwise, SOAR fails with an error indicating the broken rules.
+
+.. figure:: png/controlled_portability_principle.png
+   :alt: Kernel Controlled Portability Principle
+   :align: center
+   :scale: 80%
+
+
+Enable
+~~~~~~
+
+.. note::
+
+   This is a new functionality that requires a custom Architecture configuration.
+   Please contact :ref:`our support team <get_support>` for more details.
+
+Add ``com.microej.soar.kernel.compatiblemetadata.path`` option to your Kernel :ref:`Application Options <application_options>`.
+This is an OS path-separated list of Kernel Metadata files and directories containing ``*.kdat`` files.
+
+
+Portability Rules
+~~~~~~~~~~~~~~~~~
+
+A Kernel Application can install a ``.fo`` file that has been built against an other Kernel Application
+if the Application code has not changed or complies with following rules:
+
+- Modify method code, except if :ref:`soar_method_devirtualization` or :ref:`soar_method_inlining` has changed.
+- Add a new type (including declared as Kernel API),
+- Add a new static method (including declared as Kernel API),
+- Add a new instance method in a type **not declared** as Kernel API,
+- Add a new instance method with ``private`` visibility in a type **declared** as Kernel API,
+- Add a new static field (including declared as Kernel API),
+- Add a new instance field in a type **not declared** as Kernel API,
+- Rename an instance field with ``private`` visibility in a type **declared** as Kernel API,
+- Modify a Java type, method or static field **not declared** as Kernel API (code, signature, hierarchy) 
+- Remove a Java type, method or static field **not declared** as Kernel API
+
+Both Kernel Applications must be built from Platforms based on the same Architecture version.
+
+Any other modifications will break the Feature portability, for example:
+
+- Remove a Java type, method or static field **declared** as Kernel API,
+- Add or remove an instance method in a type **declared** as Kernel API, even if the method is **not declared** as Kernel API,
+- Add or remove an instance field in a type **declared** as Kernel API,
+- Modify method or field signature **declared** as Kernel API (name, declaring type, static vs instance member, ...),
+- Modify hierarchy of a type **declared** as Kernel API.
+
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

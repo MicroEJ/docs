@@ -6,6 +6,8 @@ Application Linking
 This chapter describes how a Sandboxed Application is built so that it can be (dynamically) installed on a Kernel.
 The build output file of a Sandboxed Application against a Kernel is called a Feature, hence the ``f`` letter used in the extension name of the related files (``.fso`` and ``.fo`` files).
 
+.. _soar_build_phases:
+
 SOAR Build Phases
 -----------------
 
@@ -26,8 +28,8 @@ When building a Sandboxed Application to a Feature, SOAR processing is divided i
    - Building the virtualization tables.
 
    The result is an object file that ends with ``.fo`` extension.
-   The ``.fo`` file is specific to a Kernel: it can only be installed on the Kernel it has been linked. 
-   Rebuilding a Kernel implies to run this phase again.   
+   By default, the ``.fo`` file is specific to a Kernel: it can only be installed on the Kernel it has been linked. 
+   Rebuilding a Kernel implies to run this phase again, unless it has been built from the previous Kernel (see :ref:`feature_portability`).   
 
 .. figure:: png/link_application.png
    :alt: Sandboxed Application Build Flow
@@ -69,7 +71,7 @@ Feature Build On Device
 
 .. note::
 
-   This is a new functionality that requires a custom MicroEJ Architecture configuration.
+   This is a new functionality that requires a custom Architecture configuration.
    Please contact :ref:`our support team <get_support>` for more details.
    
 The SOAR Optimizer is packaged to a Foundation Library named ``SOAR``, thus this phase can be executed directly on Device.
@@ -189,8 +191,8 @@ The following code template illustrates the usage of the ``SOAR`` Foundation Lib
 
 .. _fso_compatibility:
 
-Compatibility Rules
--------------------
+FSO Compatibility
+-----------------
 
 A ``.fso`` file can be linked on any Kernel providing all the following conditions:
 
@@ -203,6 +205,28 @@ A ``.fso`` file can be linked on any Kernel providing all the following conditio
    Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
 
 .. [#compatible_def] New version is greater than or equals to the old one within the same major version.
+
+
+.. _feature_portability:
+
+Feature Portability
+-------------------
+
+By default, a ``.fo`` file can only be installed on the Kernel on which it has been linked. 
+
+Starting from Architecture version ``8.0.0``, Feature portability on different Kernels has been introduced.
+Thus it is not required to rebuild the ``.fo`` file in the following cases:
+
+- Relinking the executable (memory layout changes),
+- Recompiling the C code,
+- Rebuilding the Kernel Application, if :ref:`Kernel Controlled Portability <controlled_portability>` has been enabled.
+
+.. figure:: png/feature_portability_overview.png
+   :alt: Feature Portability Overview
+   :align: center
+   :scale: 80%
+
+
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
