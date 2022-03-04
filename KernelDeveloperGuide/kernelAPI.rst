@@ -16,7 +16,7 @@ For mode details refer to the `Class Spaces` chapter of the :ref:`kf_specificati
 Kernel API Definition
 =====================
 
-A Kernel API file is an XML file named ``kernel.api`` declared at the root of one ore more paths composing the :ref:`Application classpath <chapter.microej.classpath>`.
+A Kernel API file is an XML file named ``kernel.api`` declared at the root of one or more path composing the :ref:`Application classpath <chapter.microej.classpath>`.
 
 .. _fig_kf-api-xsd:
 .. code-block:: xml
