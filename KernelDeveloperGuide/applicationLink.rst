@@ -226,6 +226,8 @@ Thus it is not required to rebuild the ``.fo`` file in the following cases:
    :align: center
    :scale: 80%
 
+   Feature Portability Overview
+
 
 
 ..

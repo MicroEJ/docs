@@ -104,6 +104,8 @@ Otherwise, SOAR fails with an error indicating the broken rules.
    :align: center
    :scale: 80%
 
+   Kernel Controlled Portability Principle
+
 
 Enable
 ~~~~~~
