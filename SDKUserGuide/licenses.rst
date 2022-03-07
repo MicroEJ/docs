@@ -27,6 +27,25 @@ The list of installed licenses is available in the SDK preferences dialog page i
 
    MicroEJ Licenses View
 
+
+License Check
+-------------
+
+The table below summarizes where the license is checked.
+
+.. list-table::
+   :widths: 30 10 10
+
+   * - **Application**
+     - **Run on Simulator**
+     - **Build on Device**
+   * - Standalone Application
+     - NO
+     - **YES**
+   * - Sandboxed Application
+     - NO
+     - NO
+
 .. _evaluation_license:
 
 Evaluation Licenses
