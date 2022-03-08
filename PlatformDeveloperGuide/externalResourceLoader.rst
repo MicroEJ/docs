@@ -23,10 +23,10 @@ MicroEJ Platform makes the distinction between two kinds of resources:
    space range (internal device memories, external parallel memories,
    etc.).
 
-   The available list of internal resources to embed must be specified
-   in the MicroEJ Application launcher (MicroEJ launch). Under the "Resources"
-   tab, select all internal resources to embed in the final
-   binary file.
+   The available list of internal resources to embed must be specified for the build of the MicroEJ Application.
+   All resources defined in `.list` files of the application are embedded as internal resources in the final binary file.
+   Alternatively, internal resources can be specified in the MicroEJ Application launcher (MicroEJ launch):
+   Under the "Resources" tab, select all internal resources to embed in the final binary file.
 
 -  External resource: The resource is not taken into consideration by
    MicroEJ. It is the responsibility of the BSP project to manage this
