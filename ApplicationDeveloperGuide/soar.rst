@@ -77,6 +77,10 @@ The following method code patterns are inlined:
 - call to a private method with no parameters.
 - call to a static method with no parameters, if and only if the caller is also a static method.
 
+.. note::
+
+   Method inlining is performed after :ref:`method devirtualization <soar_method_devirtualization>`, so a virtual method call will be inlined 
+   if there is a unique embedded implementation method that matches one of inlined method code patterns.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
