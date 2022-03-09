@@ -95,9 +95,9 @@ This is called `Feature Portability Control`, as the verification is performed d
 Principle
 ~~~~~~~~~
 
-During a Kernel build, SOAR can verify this Kernel preserves the portability of ``.fo`` files built on previous Kernel using :ref:`Kernel Metadata files <kernel_metadata_generation>`.
-If the portability is preserved, the Kernel UIDs are embedded in the new Kernel, allowing ``.fo`` files built on previous Kernels to be installed.
-Otherwise, SOAR fails with an error indicating the broken rules.
+During a Kernel build, SOAR can verify this Kernel preserves the portability of ``.fo`` files built on a previous Kernel using :ref:`the Kernel metadata file <kernel_metadata_generation>`.
+If the portability is preserved, the :ref:`Kernel UID <kernel_uid>` is embedded in the new Kernel, allowing ``.fo`` files built on the previous Kernel to be installed as well.
+Otherwise, SOAR fails with an error indicating the broken rule(s).
 
 .. figure:: png/feature_portability_control_principle.png
    :alt: Feature Portability Control Principle
