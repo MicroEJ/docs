@@ -70,12 +70,12 @@ Method Inlining
 Method inlining consists of replacing a direct method call by the content of the method. This avoids the creation of a new stack frame context which can be slower than executing the code itself.
 Method inlining is transitively applied from leaf to root methods.
 
-The following code patterns are inlined:
+The following method code patterns are inlined:
 
 - empty code after processing :ref:`assertions <enable_assertions_emb>` and :ref:`if code removal <if_constant_removal>`.
 - call to a constructor with no parameters.
 - call to a private method with no parameters.
-- call to a static method with no parameters, only if the caller is also a static method.
+- call to a static method with no parameters, if and only if the caller is also a static method.
 
 
 ..
