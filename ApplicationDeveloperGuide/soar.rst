@@ -53,10 +53,10 @@ Method Devirtualization
 ------------------------
 
 Method devirtualization consists of transforming a virtual method call to a direct method call when possible.
-A virtual method call is a call to a method declared either in an interface or in a class when it not declared with private visibility. 
-Calls to constructors and private methods are already as a direct method call by the Java compiler.
+A virtual method call is a call to a non private method declared either in an interface or in a class. 
+A call to a constructor or a private method is already optimized as a direct method call by the Java compiler.
 
-SOAR automatically transforms virtual method call to direct method call if there is one and only one embedded implementation method.
+SOAR automatically optimizes a virtual method call to direct method call if there is one and only one embedded implementation method.
 
 .. note::
   
