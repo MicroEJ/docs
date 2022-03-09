@@ -84,13 +84,13 @@ It is also available as a :ref:`MicroEJ Tool <MicroEJToolsSection>` named :guila
 
    Features linked using the Firmware Linker tool cannot be dynamically uninstalled using `Kernel.uninstall(Feature) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#uninstall-ej.kf.Feature->`_ method.
 
-.. _controlled_portability:
+.. _feature_portability_control:
 
-Controlled Portability
-----------------------
+Feature Portability Control
+---------------------------
 
 A Kernel can install ``.fo`` files that have been built on other Kernels, provided this Kernel complies with other Kernels according to a set of rules declared hereafter.
-Such phase is called `Controlled Portability` because the portability is verified during the new Kernel build, with no impact on the Feature dynamic installation.
+This is called `Feature Portability Control`, as the verification is performed during the new Kernel build, with no impact on the Feature dynamic installation.
 
 Principle
 ~~~~~~~~~
@@ -99,12 +99,12 @@ During a Kernel build, SOAR can verify this Kernel preserves the portability of 
 If the portability is preserved, the Kernel UIDs are embedded in the new Kernel, allowing ``.fo`` files built on previous Kernels to be installed.
 Otherwise, SOAR fails with an error indicating the broken rules.
 
-.. figure:: png/controlled_portability_principle.png
-   :alt: Kernel Controlled Portability Principle
+.. figure:: png/feature_portability_control_principle.png
+   :alt: Feature Portability Control Principle
    :align: center
    :scale: 80%
 
-   Kernel Controlled Portability Principle
+   Feature Portability Control Principle
 
 
 Enable
