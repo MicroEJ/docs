@@ -218,7 +218,7 @@ On demand [1]_.
      - `2.2.0 <https://repository.microej.com/modules/ej/api/ssl/2.2.0/>`__
      - `1.3.1 <https://repository.microej.com/modules/ej/api/security/1.3.1/>`__
      - 3.4.0 (On demand [1]_)
-     - 3.1.0 (On demand [1]_)
+     - 3.1.4 (On demand [1]_)
      - 1.1.0 (On demand [1]_)
    * - [9.0.1-9.4.1]
      - `1.1.1 <https://repository.microej.com/modules/ej/api/net/1.1.1/>`__
