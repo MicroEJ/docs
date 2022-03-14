@@ -3,8 +3,6 @@
 System Requirements
 ===================
 
-.. rubric:: MicroEJ SDK and MicroEJ Studio
-
 - **Intel x64 PC with minimum :**
    - Dual-core Core i5 processor
    - 4GB RAM
@@ -12,7 +10,7 @@ System Requirements
 
 - **Operating Systems :**
    - Windows 10, Windows 8.1 or Windows 8
-   - Linux distributions (tested on Ubuntu 18.04 and 20.04) - As of SDK 20.10 (based on Eclipse 2020-06), Ubuntu 16.04 is not supported.
+   - Linux distributions (tested on Ubuntu 18.04 and 20.04) - As of SDK Distribution ``20.10`` (based on Eclipse 2020-06), Ubuntu 16.04 is not supported.
    - Mac OS X (tested on version 10.13 High Sierra, 10.14 Mojave)
 
 - **Java :**

@@ -1,39 +1,39 @@
 Getting Started
 ===============
 
-MicroEJ Studio Getting Started is available on
-`<https://developer.microej.com/5/getting-started-studio.html>`_.
+MicroEJ Getting Started is available on
+`<https://developer.microej.com/get-started/>`_.
 
 Starting from scratch, the steps to go through the whole process are:
 
-#. Setup a board and test a MicroEJ Firmware:
+#. Setup a board and test a Firmware:
 
    -  Select between one of the available boards;
 
-   -  Download and install a MicroEJ Firmware on the target hardware;
+   -  Download and install a Firmware on the target hardware;
 
-   -  Deploy and run a MicroEJ demo on board.
+   -  Deploy and run a demo Application on the board.
 
 #. Setup and learn to use development tools:
 
-   -  Download and install MicroEJ Studio;
+   -  Download and install the SDK;
 
    -  Download and install the corresponding Virtual Device for the
       target hardware;
 
-   -  Download, build and run your first application on Simulator;
+   -  Download, build and run your first Application on Simulator;
 
-   -  Build and run your first application on target hardware.
+   -  Build and run your first Application on target hardware.
 
 The following figure gives an overview of the MicroEJ software
 components required for both host computer and target hardware:
 
 .. figure:: images/2_download.png
-   :alt: MicroEJ Studio Development Imported Elements
+   :alt: SDK Development Imported Elements
    :align: center
    :scale: 50%
 
-   MicroEJ Studio Development Imported Elements
+   SDK Development Imported Elements
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

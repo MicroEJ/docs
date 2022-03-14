@@ -56,7 +56,7 @@ resolution. Please consult the MMM specification available on
 Module Project Skeleton
 -----------------------
 
-In MicroEJ SDK, a new MicroEJ module project is created as follows:
+In the SDK, a new MicroEJ module project is created as follows:
 
 - Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`,
 - Select :guilabel:`MicroEJ` > :guilabel:`Module Project` [#warning_check_sdk_5_2]_,
@@ -254,7 +254,7 @@ options.
 MicroEJ Module Manager Configuration 
 -------------------------------------
 
-By default, when starting an empty workspace, MicroEJ SDK is configured to import dependencies
+By default, when starting an empty workspace, the SDK is configured to import dependencies
 from :ref:`MicroEJ Central Repository <central_repository>` and to publish built modules to a local directory.
 The repository configuration is stored in a :ref:`settings file <mmm_settings_file>` (``ivysettings.xml``), and the default one
 is located at ``$USER_HOME\.microej\microej-ivysettings-[VERSION].xml``
@@ -264,7 +264,7 @@ is located at ``$USER_HOME\.microej\microej-ivysettings-[VERSION].xml``
 Preferences Page
 ~~~~~~~~~~~~~~~~
 
-The MMM preferences page in the MicroEJ SDK is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Module Manager` [#warning_check_sdk_5_2]_.
+The MMM preferences page in the SDK is available at :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Module Manager` [#warning_check_sdk_5_2]_.
 
    .. figure:: images/mmm_preferences_5-2_annotated.png
       :alt: MMM Preferences Page
@@ -277,11 +277,11 @@ This page allows to configure the following elements:
 1. ``Settings File``: the file describing how to connect :ref:`module repositories <module_repository>`. See the :ref:`settings file <mmm_settings_file>` section.
 2. ``Options``: files declaring MMM options. See the :ref:`Options <mmm_options>` section.
 3. ``Use Module repository as Build repository``: 
-   the :ref:`settings file <mmm_settings_file>` for connecting the build repository in place of the one bundled in MicroEJ SDK.
+   the :ref:`settings file <mmm_settings_file>` for connecting the build repository in place of the one bundled in the SDK.
    This option shall not be enabled by default and is reserved for advanced configuration.
 4. ``Build repository Settings File``:
-   the :ref:`settings file <mmm_settings_file>` for connecting the build repository in place of the one bundled in MicroEJ SDK.
-   This option is automatically initialized the first time MicroEJ SDK is launched. 
+   the :ref:`settings file <mmm_settings_file>` for connecting the build repository in place of the one bundled in the SDK.
+   This option is automatically initialized the first time the SDK is launched. 
    It shall not be modified by default and is reserved for advanced configuration.
 5. ``Set verbose mode``: to enable advanced debug traces when building a module.
 6. ``Runtime JRE``: the Java Runtime Environment that executes the build process.
@@ -370,12 +370,34 @@ A typical usage in a :ref:`module description file <mmm_module_description>` is 
    .. figure:: images/mmm_preferences_options_usage.png
       :align: center
 
+.. _resolution_logs:
+
+Resolution Logs
+~~~~~~~~~~~~~~~
+
+Resolution logs of module projects imported in the workspace are available from the console view:
+
+- Select :guilabel:`Windows` > :guilabel:`Show View` > :guilabel:`Console`,
+- In the Console view, click on the console window icon and select :guilabel:`Ivy console`:
+
+  .. figure:: images/mmm_console_select_ivy.png
+      :align: center
+
+To enable the verbose mode:
+
+- In the :guilabel:`Ivy console` view, click on the debug icon and select `debug` instead of `info` (defaults):
+  
+  .. figure:: images/mmm_console_filter_debug.png
+      :align: center
+
+This triggers the full workspace resolution with verbose mode enabled.
+
 .. _mmm_module_build:
 
 Module Build
 ------------
 
-In MicroEJ SDK, the build of a MicroEJ module project can be started as follows:
+In the SDK, the build of a MicroEJ module project can be started as follows:
 
   - In the `Package Explorer`, right-click on the project,
   - Select :guilabel:`Build Module`.
@@ -408,10 +430,10 @@ Build Kit
 ---------
 
 The Module Manager Build Kit is a consistent set of tools, scripts, configuration and artifacts required for building modules in command-line mode.
-Starting from MicroEJ SDK ``5.4.0``, it also contains a :ref:`mmm_cli` (CLI).
+Starting from SDK ``5.4.0``, it also contains a :ref:`mmm_cli` (CLI).
 The Build Kit allows to work in headless mode (e.g. in a terminal) and to build your modules using a Continuous Integration tool.
 
-The Build Kit is bundled with MicroEJ SDK and can be exported using the following steps: [#warning_check_sdk_5_3]_
+The Build Kit is bundled with the SDK and can be exported using the following steps: [#warning_check_sdk_5_3]_
 
 - Select :guilabel:`File` > :guilabel:`Export` > :guilabel:`MicroEJ` > :guilabel:`Module Manager Build Kit`,
 - Choose an empty :guilabel:`Target directory`,
@@ -445,7 +467,7 @@ The ``mmm`` tool can run on any supported :ref:`Operating Systems <system-requir
 - on Windows, either in the command prompt using the Windows batch script ``mmm.bat`` or in `MinGW environments <https://en.wikipedia.org/wiki/MinGW>`_ such as `Git BASH <https://gitforwindows.org/>`_ using the bash script ``mmm``.
 - on Mac OS X and Linux distributions using the bash script ``mmm``.
 
-The build repository (``microej-build-repository`` directory) contains scripts and tools for building modules. It is specific to a MicroEJ SDK version and shall not be modified by default.
+The build repository (``microej-build-repository`` directory) contains scripts and tools for building modules. It is specific to a SDK version and shall not be modified by default.
 
 The module repository (``microej-module-repository`` directory) contains a default :ref:`mmm_settings_file` for importing modules from :ref:`central_repository` and this local repository (modules that are locally built will be published to this directory).
 You can override with custom settings or by extracting an :ref:`offline repository <repository_offline>`.
@@ -453,15 +475,15 @@ You can override with custom settings or by extracting an :ref:`offline reposito
 To go further with headless builds, please consult :ref:`the next chapter <mmm_cli>` for command line builds, 
 and this :ref:`tutorial <tutorial_setup_automated_build_using_jenkins_and_artifactory>` to setup MicroEJ modules build in continuous integration environments.
 
-.. [#warning_check_sdk_5_2] If using MicroEJ SDK versions lower than ``5.2.0``, please refer to the :ref:`following section <mmm_former_sdk_5_2>`.
-.. [#warning_check_sdk_5_3] If using MicroEJ SDK versions lower than ``5.4.0``, please refer to the :ref:`following section <mmm_former_sdk_5_2_to_5_3>`.
+.. [#warning_check_sdk_5_2] If using SDK versions lower than ``5.2.0``, please refer to the :ref:`following section <mmm_former_sdk_5_2>`.
+.. [#warning_check_sdk_5_3] If using SDK versions lower than ``5.4.0``, please refer to the :ref:`following section <mmm_former_sdk_5_2_to_5_3>`.
 
 .. _mmm_cli:
 
 Command Line Interface
 ----------------------
 
-Starting from version ``5.4.0``, MicroEJ SDK provides a Command Line Interface (CLI).
+Starting from version ``5.4.0``, the SDK provides a Command Line Interface (CLI).
 Please refer to the :ref:`Build Kit <mmm_build_kit>` section for installation details.
 
 The following operations are supported by the MMM CLI:
@@ -717,7 +739,15 @@ First, check that either a released module ``com.mycompany/mymodule/M.m.p`` or a
     Check the module repository settings file and that consistency check has been enabled during the module repository build (see :ref:`module_repository_consistency`).
 
 - If the module exists, this may be either a configuration issue or a network connection error. 
-  We have to find the cause in the resolution logs with the :ref:`verbose mode option <mmm_cli_options>` enabled:
+  We have to find the cause in the resolution logs. 
+  
+  .. note::
+  	 
+  	  The activation of the verbose mode depends on how the resolution has been launched:
+     
+     - if the error occurs during workspace resolution, configure the verbose mode of :ref:`resolution logs <resolution_logs>`,
+     - if the error occurs while building a module from workspace, check the verbose mode option in :ref:`preferences page  <mmm_preferences_page>`,
+     - if the error occurs while building a module from command line, set the verbose mode option in :ref:`command line options <mmm_cli_options>`.
 
   For URL repositories, find:
   
@@ -816,7 +846,7 @@ The Meta Build module serves as an entry point to build all the modules of the p
 Meta Build creation
 ~~~~~~~~~~~~~~~~~~~
 
-- In the MicroeEJ SDK, select :guilabel:`File` > :guilabel:`New` > :guilabel:`Module Project`.
+- In the SDK, select :guilabel:`File` > :guilabel:`New` > :guilabel:`Module Project`.
 
    .. figure:: images/sdk_new_module.png
       :alt: New Meta Build Project
@@ -873,10 +903,10 @@ For a complete list of configuration options, please refer to :ref:`Meta Build M
 
 .. _mmm_former_sdk_5_2:
 
-Former MicroEJ SDK Versions (lower than 5.2.0)
-----------------------------------------------
+Former SDK Versions (lower than 5.2.0)
+--------------------------------------
 
-This section describes MMM configuration elements for MicroEJ SDK versions lower than ``5.2.0``.
+This section describes MMM configuration elements for SDK versions lower than ``5.2.0``.
 
 New MicroEJ Module Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -914,18 +944,18 @@ Build Kit
 - Extract the directory ``lib`` to the target directory,
 - Open the file ``com.is2t.eclipse.plugin.easyant4e.offlinerepo_[version].jar`` with an archive manager,
 - Navigate to directory ``repositories``,
-- Extract the file named ``microej-build-repository.zip`` for MicroEJ SDK ``5.x`` or ``is2t_repo.zip`` for MicroEJ SDK ``4.1.x`` to the target directory.
+- Extract the file named ``microej-build-repository.zip`` for SDK ``5.x`` or ``is2t_repo.zip`` for SDK ``4.1.x`` to the target directory.
 
 
 .. _mmm_former_sdk_5_2_to_5_3:
 
-Former MicroEJ SDK Versions (from 5.2.0 to 5.3.x)
--------------------------------------------------
+Former SDK Versions (from 5.2.0 to 5.3.x)
+-----------------------------------------
 
 Build Kit
 ~~~~~~~~~
 
-The Build Kit is bundled with MicroEJ SDK and can be exported using the following steps:
+The Build Kit is bundled with the SDK and can be exported using the following steps:
 
 - Select :guilabel:`File` > :guilabel:`Export` > :guilabel:`MicroEJ` > :guilabel:`Module Manager Build Kit`,
 - Choose an empty :guilabel:`Target directory`,

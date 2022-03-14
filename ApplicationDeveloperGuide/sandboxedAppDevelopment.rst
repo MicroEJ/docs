@@ -31,7 +31,7 @@ content:
     Sandboxed Application configuration and resources;
 
 ``module.ivy``
-    Ivy input file, dependencies description for the current project.
+    :ref:`Module description file <mmm_module_description>`, dependencies description for the current project.
 
 .. _section.java.sources.folder:
 

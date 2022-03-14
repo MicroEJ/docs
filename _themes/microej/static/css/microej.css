@@ -566,8 +566,10 @@ h6 ~ * {
   margin-left: 30px !important;
 }
 
-li {
+li,
+li p {
   padding-bottom: 5px;
+  font-size: 18px;
 }
 
 dd p {

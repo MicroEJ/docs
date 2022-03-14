@@ -54,10 +54,10 @@ Re-enable the Ivy Preferences Pages (Advanced Use)
 The original :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Ivy` pages can be re-enabled as
 following:
 
--  Close all running instances of MicroEJ Studio / SDK
--  Edit ``MicroEJ-[SDK[Studio].ini`` and add the property
+-  Close all running instances of the SDK
+-  Edit ``MicroEJ-SDK.ini`` and add the property
    ``-Dorg.apache.ivy.showAdvancedPrefs=true``
--  Start MicroEJ Studio / SDK again
+-  Start the SDK again
 -  Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Module Manager` page
 
 A new link ``Ivy settings`` should appear on the bottom of the page. It
