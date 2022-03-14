@@ -124,6 +124,53 @@ This module nature defines the following dedicated configuration properties:
         Possible values are `emb` (only on Device), `sim` (only Simulator) and `common` (both).
       - ``common``
 
+.. _module_natures.kernel_application:
+
+Kernel Application
+------------------
+
+**Skeleton Name**: ``firmware-multiapp``
+
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-firmware-multiapp``
+
+**Documentation**: :ref:`kernel-developer-guide`
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following plugins:
+
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.platform_loader`
+- :ref:`module_natures.plugins.javadoc`
+- :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
+
+This module nature defines the following dedicated configuration properties:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - application.main.class
+     - Full Qualified Name of the main class of the kernel. This option is required.
+     - Not set
+   * - runtime.api.name
+     - Name of the Runtime API of the kernel. This option is required, 
+       unless a :ref:`Runtime API <runtime_environment>` is declared in the dependencies.
+     - Not set
+   * - runtime.api.version
+     - Version of the Runtime API of the kernel. This option is required, 
+       unless a :ref:`Runtime API <runtime_environment>` is declared in the dependencies..
+     - Not set
+   * - skip.build.virtual.device
+     - When this property is set (any value), the virtual device is not built.
+     - Not set
+   * - virtual.device.sim.only
+     - When this property is set (any value), the firmware is not built.
+     - Not set
+
 .. _module_natures.meta_build:
 
 Meta Build
