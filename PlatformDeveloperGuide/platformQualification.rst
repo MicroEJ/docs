@@ -230,7 +230,7 @@ On demand [1]_.
    * - 10.0.0
      - `1.1.2 <https://repository.microej.com/modules/ej/api/net/1.1.2/>`__
      - `2.2.1 <https://repository.microej.com/modules/ej/api/ssl/2.2.1/>`__
-     - `1.4.0 (On demand [1]_)
+     - 1.4.0 (On demand [1]_)
      - 3.5.2 (On demand [1]_)
      - 3.1.4 (On demand [1]_)
      - 1.2.0 (On demand [1]_)
