@@ -38,6 +38,7 @@ The table below summarizes where the license is checked.
 
    * - **Application**
      - **Run on Simulator**
+       **(Virtual Device)**
      - **Build on Device**
    * - Standalone Application or Kernel Application
      - NO
