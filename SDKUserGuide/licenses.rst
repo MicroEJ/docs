@@ -34,18 +34,21 @@ License Check
 The table below summarizes where the license is checked.
 
 .. list-table::
-   :widths: 30 10 10
+   :widths: 30 10 10 20
 
    * - **Application**
      - **Run on Simulator**
        **(Virtual Device)**
      - **Build on Device**
+     - **Documentation Link**
    * - Standalone Application or Kernel Application
      - NO
      - **YES**
+     - :ref:`device_build`
    * - Sandboxed Application
      - NO
      - NO
+     - :ref:`application_link`
 
 .. _evaluation_license:
 
