@@ -39,7 +39,7 @@ The table below summarizes where the license is checked.
    * - **Application**
      - **Run on Simulator**
      - **Build on Device**
-   * - Standalone Application
+   * - Standalone Application or Kernel Application
      - NO
      - **YES**
    * - Sandboxed Application
