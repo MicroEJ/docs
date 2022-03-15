@@ -27,9 +27,9 @@ When building a Sandboxed Application to a Feature, SOAR processing is divided i
    - Generating the MEJ32 instructions,
    - Building the virtualization tables.
 
-   The result is an object file that ends with ``.fo`` extension.
-   By default, the ``.fo`` file is specific to a Kernel: it can only be installed on the Kernel it has been linked. 
-   Rebuilding a Kernel implies to run this phase again, unless it has been built from the previous Kernel (see :ref:`feature_portability`).   
+   The result is an object file that ends with the ``.fo`` extension.
+   By default, the ``.fo`` file is specific to a Kernel: it can only be installed on the Kernel it has been linked to. 
+   Rebuilding a Kernel implies to run this phase again, unless the application has been built for the previous Kernel (see :ref:`feature_portability`).   
 
 .. figure:: png/link_application.png
    :alt: Sandboxed Application Build Flow
@@ -214,7 +214,7 @@ Feature Portability
 
 By default, a ``.fo`` file can only be installed on the Kernel on which it has been linked. 
 
-Starting from Architecture version ``8.0.0``, a Feature can be installed on different Kernels. This is called `Feature Portability`.
+Starting from Architecture version ``8.0.0``, the same Feature file can be installed on different Kernels. This is called `Feature Portability`.
 Thus it is not required to rebuild the ``.fo`` file in the following cases:
 
 - Relinking the executable (memory layout changes),

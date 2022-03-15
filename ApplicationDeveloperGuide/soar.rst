@@ -1,7 +1,7 @@
 SOAR
 ====
 
-This chapter describes SOAR capabilities and optimizations for the Application developer point of view.
+This chapter describes SOAR capabilities and optimizations from the Application developer's point of view.
 To get more details on its internal structure, please refer to :ref:`soar_build_phases` section.
 
 .. _soar_clinit:
@@ -53,21 +53,22 @@ Method Devirtualization
 ------------------------
 
 Method devirtualization consists of transforming a virtual method call to a direct method call when possible.
-A virtual method call is a call to a non private method declared either in an interface or in a class. 
+A virtual method call is a call to a non-private instance method declared either in an interface or in a class. 
+The Core Engine determines the proper method to call at runtime depending on the actual class of the object. 
 A call to a constructor or a private method is already optimized as a direct method call by the Java compiler.
 
-SOAR automatically optimizes a virtual method call to direct method call if there is one and only one embedded implementation method.
+SOAR automatically optimizes a virtual method call to a direct method call if there is one and only one embedded implementation method.
 
 .. note::
   
-   The list of embedded methods is available in the :ref:`SOAR Information File <soar_info_file>`.
+   SOAR generates the list of the embedded methods in the :ref:`SOAR Information File <soar_info_file>`.
 
 .. _soar_method_inlining:
 
 Method Inlining
 ---------------
 
-Method inlining consists of replacing a direct method call by the content of the method. This avoids the creation of a new stack frame context which can be slower than executing the code itself.
+Method inlining consists of replacing a direct method call with the content of the method. This avoids the creation of a new stack frame context, which can be slower than executing the code itself.
 Method inlining is transitively applied from leaf to root methods.
 
 The following method code patterns are inlined:
@@ -80,7 +81,7 @@ The following method code patterns are inlined:
 .. note::
 
    Method inlining is performed after :ref:`method devirtualization <soar_method_devirtualization>`, so a virtual method call will be inlined 
-   if there is a unique embedded implementation method that matches one of inlined method code patterns.
+   if there is a unique embedded implementation method that matches one of the inlined method code patterns.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

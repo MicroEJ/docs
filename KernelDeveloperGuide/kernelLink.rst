@@ -95,7 +95,7 @@ This is called `Feature Portability Control`, as the verification is performed d
 Principle
 ~~~~~~~~~
 
-During a Kernel build, SOAR can verify this Kernel preserves the portability of ``.fo`` files built on a previous Kernel using :ref:`the Kernel metadata file <kernel_metadata_generation>`.
+During a Kernel build, SOAR can verify this Kernel preserves the portability of any ``.fo`` files built on a previous Kernel using :ref:`the Kernel metadata file <kernel_metadata_generation>`.
 If the portability is preserved, the :ref:`UID <kernel_uid>` of the previous Kernel is embedded in the new Kernel, allowing ``.fo`` files built on the previous Kernel to be installed as well.
 Otherwise, SOAR fails with an error indicating the broken rule(s).
 
@@ -122,8 +122,9 @@ This is an OS path-separated list of Kernel Metadata files and directories conta
 Portability Rules
 ~~~~~~~~~~~~~~~~~
 
-A Kernel Application can install a ``.fo`` file that has been built against an other Kernel Application
-if the Application code has not changed or complies with following rules:
+A Kernel Application can install a ``.fo`` file that has been built against another Kernel Application
+if the Kernel Application code has not changed or if the modifications respect the portability rules. 
+Here is the list of the modifications that can be done while preserving the portability:
 
 - Modify method code, except if :ref:`soar_method_devirtualization` or :ref:`soar_method_inlining` has changed.
 - Add a new type (including declared as Kernel API),
@@ -133,12 +134,12 @@ if the Application code has not changed or complies with following rules:
 - Add a new static field (including declared as Kernel API),
 - Add a new instance field in a type **not declared** as Kernel API,
 - Rename an instance field with ``private`` visibility in a type **declared** as Kernel API,
-- Modify a Java type, method or static field **not declared** as Kernel API (code, signature, hierarchy) 
-- Remove a Java type, method or static field **not declared** as Kernel API
+- Modify a Java type, method, or static field **not declared** as Kernel API (code, signature, hierarchy) 
+- Remove a Java type, method, or static field **not declared** as Kernel API
 
 Both Kernel Applications must be built from Platforms based on the same Architecture version.
 
-Any other modifications will break the Feature portability, for example:
+Any other modifications will break the Feature portability. For example, the following modifications will not preserve the portability:
 
 - Remove a Java type, method or static field **declared** as Kernel API,
 - Add or remove an instance method in a type **declared** as Kernel API, even if the method is **not declared** as Kernel API,
