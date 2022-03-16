@@ -834,6 +834,26 @@ Make sure it is one of the following ones:
 - ``build-microej-javalib``, with version ``4.2.0`` or higher
 - ``build-firmware-singleapp``, with version ``1.3.0`` or higher
 
+
+.. _mmm_build_execution_configuration:
+
+Build Execution Configuration
+-----------------------------
+
+When executing a build with MMM, system properties can be passed to the JVM:
+
+* in command line, by using ``-D``, for example ``mmm build -Dmy.property=value``
+* in the SDK, by adding them in :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Ant` > :guilabel:`Runtime` > :guilabel:`Properties`
+
+Any custom system properties can be defined.
+
+MMM provides the following system properties to configure the build execution:
+
+* ``mmm.module.organisation`` : defines the organisation of the module. It overrides the ``organisation`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
+* ``mmm.module.name`` : defines the name of the module. It overrides the ``module`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
+* ``mmm.module.revision`` : defines the revision of the module. It overrides the ``revision`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
+
+
 .. _meta_build:
 
 Meta Build
