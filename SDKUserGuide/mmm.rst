@@ -852,6 +852,7 @@ MMM provides the following system properties to configure the build execution:
 * ``mmm.module.organisation`` : defines the organisation of the module. It overrides the ``organisation`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
 * ``mmm.module.name`` : defines the name of the module. It overrides the ``module`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
 * ``mmm.module.revision`` : defines the revision of the module. It overrides the ``revision`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
+* ``easyant.debug.port`` : defines the debug port and triggers the debug mode for the build execution.
 
 
 .. _meta_build:
