@@ -118,7 +118,7 @@ Enable
 Add the following :ref:`Application Options <application_options>` to your Kernel project:
 
 - ``com.microej.soar.kernel.featureportabilitycontrol.enabled``: ``true`` to enable Feature Portability Control. Any other value disables Feature Portability Control (the following option is ignored).
-- ``com.microej.soar.kernel.featureportabilitycontrol.metadata.path``: OS path-separated list of Kernel Metadata files and directories containing ``*.kdat`` files.
+- ``com.microej.soar.kernel.featureportabilitycontrol.metadata.path``: OS path-separated list of Kernel Metadata files (``*.kdat`` files).
 
 Portability Rules
 ~~~~~~~~~~~~~~~~~
