@@ -168,7 +168,7 @@ General
 -  Added Add-On Processor resolution in workspace.
 -  Updated tools for both JRE 8 and JRE 11 compatibility.
 -  Fixed corrupted font file created by the Font designer when importing large number of glyphs.
--  Updated Architecture version check during Pack import (``greaterOrEqual`` instead of ``compatible``). This allows to import :ref:`pack_architecture_specific` and :ref:`pack_generic_legacy` on future Architecture ``8.x`` versions.
+-  Updated Architecture version check during Pack import (``greaterOrEqual`` instead of ``compatible``). This allows to import :ref:`pack_architecture_specific` and :ref:`pack_generic_legacy` on future Architecture versions ``8.x``.
 -  Updated End User License Agreement.
 
 MicroEJ Module Manager
@@ -643,7 +643,7 @@ General
 -  Updated ``Front Panel`` plugin to comply with the new Front
    Panel engine
 
-   -  The Front Panel engine has been refactored and moved from UI Pack to Architecture (UI pack ``12.0.0`` requires Architecture ``7.11.0`` or higher)
+   -  The Front Panel engine has been refactored and moved from UI Pack to Architecture (UI pack ``12.0.0`` requires Architecture version ``7.11.0`` or higher)
    -  :guilabel:`New Front Panel Project` wizard now generates a project skeleton for this new Front Panel engine, based on MMM
    -  Legacy Front Panel projects for UI Pack ``v11.1.0`` or higher are still valid
 -  Updated Virtual Device builder to speed-up Virtual Device

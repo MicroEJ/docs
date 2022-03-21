@@ -84,6 +84,70 @@ It is also available as a :ref:`MicroEJ Tool <MicroEJToolsSection>` named :guila
 
    Features linked using the Firmware Linker tool cannot be dynamically uninstalled using `Kernel.uninstall(Feature) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#uninstall-ej.kf.Feature->`_ method.
 
+.. _feature_portability_control:
+
+Feature Portability Control
+---------------------------
+
+A Kernel can install ``.fo`` files that have been built on other Kernels, provided this Kernel complies with other Kernels according to a set of rules declared hereafter.
+This is called `Feature Portability Control`, as the verification is performed during the new Kernel build, with no impact on the Feature dynamic installation.
+
+Principle
+~~~~~~~~~
+
+During a Kernel build, SOAR can verify this Kernel preserves the portability of any ``.fo`` files built on a previous Kernel using :ref:`the Kernel metadata file <kernel_metadata_generation>`.
+If the portability is preserved, the :ref:`UID <kernel_uid>` of the previous Kernel is embedded in the new Kernel, allowing ``.fo`` files built on the previous Kernel to be installed as well.
+Otherwise, SOAR fails with an error indicating the broken rule(s).
+
+.. figure:: png/feature_portability_control_principle.png
+   :alt: Feature Portability Control Principle
+   :align: center
+   :scale: 80%
+
+   Feature Portability Control Principle
+
+
+Enable
+~~~~~~
+
+.. note::
+
+   This is a new functionality that requires a custom Architecture configuration.
+   Please contact :ref:`our support team <get_support>` for more details.
+
+Add the following :ref:`Application Options <application_options>` to your Kernel project:
+
+- ``com.microej.soar.kernel.featureportabilitycontrol.enabled``: ``true`` to enable Feature Portability Control. Any other value disables Feature Portability Control (the following option is ignored).
+- ``com.microej.soar.kernel.featureportabilitycontrol.metadata.path``: OS path-separated list of Kernel Metadata files (``*.kdat`` files).
+
+Portability Rules
+~~~~~~~~~~~~~~~~~
+
+A Kernel Application can install a ``.fo`` file that has been built against another Kernel Application
+if the Kernel Application code has not changed or if the modifications respect the portability rules. 
+Here is the list of the modifications that can be done while preserving the portability:
+
+- Modify method code, except if :ref:`soar_method_devirtualization` or :ref:`soar_method_inlining` has changed.
+- Add a new type (including declared as Kernel API),
+- Add a new static method (including declared as Kernel API),
+- Add a new instance method in a type **not declared** as Kernel API,
+- Add a new instance method with ``private`` visibility in a type **declared** as Kernel API,
+- Add a new static field (including declared as Kernel API),
+- Add a new instance field in a type **not declared** as Kernel API,
+- Rename an instance field with ``private`` visibility in a type **declared** as Kernel API,
+- Modify a Java type, method, or static field **not declared** as Kernel API (code, signature, hierarchy) 
+- Remove a Java type, method, or static field **not declared** as Kernel API
+
+Both Kernel Applications must be built from Platforms based on the same Architecture version.
+
+Any other modifications will break the Feature portability. For example, the following modifications will not preserve the portability:
+
+- Remove a Java type, method or static field **declared** as Kernel API,
+- Add or remove an instance method in a type **declared** as Kernel API, even if the method is **not declared** as Kernel API,
+- Add or remove an instance field in a type **declared** as Kernel API,
+- Modify method or field signature **declared** as Kernel API (name, declaring type, static vs instance member, ...),
+- Modify hierarchy of a type **declared** as Kernel API.
+
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
