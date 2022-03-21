@@ -830,7 +830,7 @@ footer hr {
 .rst-content p.caption .headerlink:after,
 .rst-content table > caption .headerlink:after,
 .rst-content .code-block-caption .headerlink:after {
-  //font-family: Source Sans Pro;
+  /*font-family: Source Sans Pro;*/
 }
 
 .rst-content .sidebar .sidebar-title {
