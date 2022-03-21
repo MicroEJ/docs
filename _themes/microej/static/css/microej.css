@@ -566,12 +566,6 @@ h6 ~ * {
   margin-left: 30px !important;
 }
 
-li,
-li p {
-  padding-bottom: 5px;
-  font-size: 18px;
-}
-
 dd p {
   font-size: 16px;
 }
@@ -672,6 +666,7 @@ code,
 
 .wy-menu-vertical li {
   padding-bottom: 0px;
+  font-size: 16px;
 }
 
 .wy-menu-vertical li ul li a {
@@ -840,6 +835,12 @@ footer hr {
 
 .rst-content .sidebar .sidebar-title {
   font-family: "Source Sans Pro", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
+}
+
+.rst-content li,
+.rst-content li p {
+  padding-bottom: 5px;
+  font-size: 18px;
 }
 
 .rst-content tt,
