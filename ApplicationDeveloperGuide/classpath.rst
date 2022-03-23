@@ -78,11 +78,9 @@ The MicroEJ Classpath contains the following elements:
 
 -  Types in ``.class`` files, described in section :ref:`section.classpath.elements.types`;
 
--  Raw resources, described in section :ref:`section.classpath.elements.resources`;
-
 -  Immutables Object data files, described in Section :ref:`section.classpath.elements.immutables`;
 
--  Images, Fonts and Native Language Support (NLS) resources, described in :ref:`chapter.microej.applicationResources`;
+-  Images, Fonts and Native Language Support (NLS) and Raw resources, described in :ref:`chapter.microej.applicationResources`;
 
 -  ``*.[extension].list`` files, declaring contents to load. Supported
    list file extensions and format is specific to declared application
@@ -138,27 +136,6 @@ listing the fully qualified name of a type. Example:
    # The following types are marked as MicroEJ Required Types
    com.mycompany.MyImplementation
    java.util.Vector
-
-.. _section.classpath.elements.resources:
-
-Raw Resources
--------------
-
-Raw resources are binary files that need to be embedded by the
-application so that they may be dynamically retrieved with a call to
-``Class.getResourceAsStream(java.io.InputStream)``. Raw Resources are
-declared in MicroEJ Classpath using ``*.resources.list`` files. The file
-format is a standard Java properties file, each line is a relative ``/``
-separated name of a file in MicroEJ Classpath to be embedded as a
-resource. Example:
-
-::
-
-   # The following resource is embedded as a raw resource
-   com/mycompany/MyResource.txt
-
-Others resources types are supported in MicroEJ Classpath, 
-see :ref:`chapter.microej.applicationResources` for more details.
 
 .. _section.classpath.elements.immutables:
 
