@@ -13,6 +13,26 @@ Application resources are the following :ref:`section.classpath.elements`:
 
 -  :ref:`section.applicationResources.raw_resources`
 
+Principle
+=========
+
+A *resource* is, for a MicroEJ Application, the contents of a file.
+This file is known by its path (its relative path from the MicroEJ Application classpath) and its name.
+The file may be stored in RAM, flash, or external flash; and it is the responsibility of the MicroEJ Core Engine and/or the BSP to retrieve and load it.
+
+There are two kinds of resources, internal resources and external resources:
+
+-  Internal resource: The resource is taken into consideration during the MicroEJ Application build.
+   The SOAR step loads the resource and copies it into the same C library as the MicroEJ Application.
+   Like the MicroEJ Application, the resource is linked into the CPU address space range (internal device memories, external parallel memories, etc.).
+
+-  External resource: The resource is not taken into consideration by MicroEJ.
+   It is the responsibility of the BSP project to manage this kind of resource.
+   The resource is often programmed outside the CPU address space range (storage media like SD card, serial NOR flash, EEPROM, etc.).
+
+   The BSP must implement some specific Low Level API (LLAPI) C functions: ``LLEXT_RES_impl.h``.
+   See :ref:`section_externalresourceloader` for more information on the its implementation.
+
 .. _section.applicationResources.Images:
 
 Images
