@@ -41,27 +41,21 @@ Images
 Overview
 ~~~~~~~~
 
-Images are graphical resources that can be accessed with a call to
-`ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_ . To be displayed, these
-images have to be converted from their source format to the display raw
-format. The conversion can either be done at :
+Images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_ .
+To be displayed, these images have to be converted from their source format to the display raw format.
+The conversion can either be done at :
 
 -  build-time (using the image generator tool),
 
 -  run-time (using the relevant decoder library).
 
-Images that must be processed by the image generator tool are declared
-in MicroEJ Classpath ``*.images.list`` files. The file format is a
-standard Java properties file, each line representing a ``/`` separated
-resource path relative to the MicroEJ classpath root referring to a
-standard image file (e.g. ``.png``, ``.jpg``). The resource may be
-followed by an optional parameter (separated by a ``:``) which defines
-and/or describes the image output file format (raw format). When no
-option is specified, the image is embedded as-is and will be decoded at
-run-time (although listing files without format specifier has no impact
-on the image generator processing, it is advised to specify them in the
-``*.images.list`` files anyway, as it makes the run-time processing
-behavior explicit). Example:
+Images that must be processed by the image generator tool are declared in MicroEJ Classpath ``*.images.list`` files.
+The file format is a standard Java properties file, each line representing a ``/`` separated
+resource path relative to the MicroEJ classpath root referring to a standard image file (e.g. ``.png``, ``.jpg``).
+The resource may be followed by an optional parameter (separated by a ``:``) which defines and/or describes the image output file format (raw format).
+When no option is specified, the image is embedded as-is and will be decoded at run-time (although listing files without format specifier has no impacton the image generator processing, it is advised to specify them in the ``*.images.list`` files anyway, as it makes the run-time processing behavior explicit).
+
+Example:
 
 ::
 
@@ -87,23 +81,20 @@ Fonts
 Overview
 ~~~~~~~~
 
-Fonts are graphical resources that can be accessed with a call to
-`ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_. To be displayed, these fonts have
-to be converted at build-time from their source format to the display
-raw format by the font generator tool. Fonts that must be processed by
-the font generator tool are declared in MicroEJ Classpath
-``*.fonts.list`` files. The file format is a standard Java properties
-file, each line representing a ``/`` separated resource path relative to
-the MicroEJ classpath root referring to a MicroEJ font file (usually
-with a ``.ejf`` file extension). The resource may be followed by
-optional parameters which define :
+Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
+
+To be displayed, these fonts have to be converted at build-time from their source format to the display raw format by the font generator tool.
+Fonts that must be processed by the font generator tool are declared in MicroEJ Classpath ``*.fonts.list`` files.
+The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the MicroEJ classpath root referring to a MicroEJ font file (usually with a ``.ejf`` file extension).
+The resource may be followed by optional parameters which define :
 
 -  some ranges of characters to embed in the final raw file;
 
 -  the required pixel depth for transparency.
 
-By default, all characters available in the input font file are
-embedded, and the pixel depth is ``1`` (i.e 1 bit-per-pixel). Example:
+By default, all characters available in the input font file are embedded, and the pixel depth is ``1`` (i.e 1 bit-per-pixel).
+
+Example:
 
 ::
 
@@ -119,8 +110,7 @@ embedded, and the pixel depth is ``1`` (i.e 1 bit-per-pixel). Example:
    # with 2 levels of transparency
    com/mycompany/MyFont2.ejf::2
 
-MicroEJ font files conventionally end with the ``.ejf`` suffix and are
-created using the Font Designer (see :ref:`section.tool.fontdesigner`).
+MicroEJ font files conventionally end with the ``.ejf`` suffix and are created using the Font Designer (see :ref:`section.tool.fontdesigner`).
 
 Font Range
 ~~~~~~~~~~
