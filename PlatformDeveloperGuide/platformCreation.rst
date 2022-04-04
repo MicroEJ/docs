@@ -508,7 +508,8 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
       deploy.dir.microejapp=[absolute_path]
       deploy.dir.microejlib=[absolute_path]
       deploy.dir.microejinc=[absolute_path]
-      deploy.bsp.microejscript=[absolute_path]
+      deploy.dir.microejscript=[absolute_path]
+      deploy.bsp.microejscript=true
 
 - Partial BSP connection, executable file built outside MicroEJ SDK
   :: 
