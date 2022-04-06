@@ -36,12 +36,12 @@ The SDK is composed of:
 - **MicroEJ Central and Forge Repositories**, the modules repositories containing all the libraries required to
   develop an Application.
 
-.. figure:: images/sdk_overview.png
-   :alt: MicroEJ SDK Overview
+.. figure:: images/sdk_content.png
+   :alt: SDK Content
    :align: center
    :scale: 60%
 
-   MicroEJ SDK Overview
+   SDK Content
 
 Starting from scratch, the steps to go through the whole process of creating an application are
 detailed in the following sections:

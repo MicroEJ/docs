@@ -46,6 +46,7 @@ Using the SDK, an application developer will be able to:
    :hidden:
 
    gettingStarted
+   sdk
    firmware
    runtime
    libraries
