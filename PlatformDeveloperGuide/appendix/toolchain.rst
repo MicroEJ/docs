@@ -105,23 +105,27 @@ ARM Cortex-M4
 =============
 
 .. list-table:: ARM Cortex-M4 Compilers
-   :widths: 10 10 50 10
+   :widths: 10 10 30 50 10
    :header-rows: 1
 
    * - Compiler
-     - Version
+     - Build Version
+     - Known Compatible Versions
      - Flags and Options
      - Module
    * - Keil uVision
      - 5.18.0.0
+     - 5.x
      - ``--cpu Cortex-M4.fp --apcs=/hardfp --fpmode=ieee_no_fenv``
      - `flopi4A20 <https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_ARMCC5/flopi4A20/>`__
    * - GCC
      - 4.8
+     - 4.x, 5.x, 6.x, 7.x, 8.x, 9.x
      - ``-mabi=aapcs -mcpu=cortex-m4 -mlittle-endian -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb``
      - `flopi4G25 <https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/>`__
    * - IAR Embedded Workbench for ARM
      - 8.32.1.18631
+     - 8.x, 9.x
      - ``--cpu Cortex-M4F --fpu VFPv4_sp``
      - `flopi4I35 <https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_IAR83/flopi4I35/>`__
 
@@ -133,23 +137,27 @@ ARM Cortex-M7
 =============
 
 .. list-table:: ARM Cortex-M7 Compilers
-   :widths: 10 10 50 10
+   :widths: 10 10 30 50 10
    :header-rows: 1
 
    * - Compiler
-     - Version
+     - Build Version
+     - Known Compatible Versions
      - Flags and Options
      - Module
    * - Keil uVision
      - 5.18.0.0
+     - 5.x
      - ``--cpu Cortex-M7.fp.sp --apcs=/hardfp --fpmode=ieee_no_fenv``
      - `flopi7A21 <https://repository.microej.com/modules/com/microej/architecture/CM7/CM7hardfp_ARMCC5/flopi7A21/>`__
    * - GCC
      - 4.8
+     - 4.x, 5.x, 6.x, 7.x, 8.x, 9.x
      - ``-mabi=aapcs -mcpu=cortex-m7 -mlittle-endian -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumbb``
      - `flopi7G26 <https://repository.microej.com/modules/com/microej/architecture/CM7/CM7hardfp_GCC48/flopi7G26/>`__
    * - IAR Embedded Workbench for ARM
      - 8.32.1.18631
+     - 8.x, 9.x
      - ``--cpu Cortex-M7 --fpu VFPv5_sp``
      - `flopi7I36 <https://repository.microej.com/modules/com/microej/architecture/CM7/CM7hardfp_IAR83/flopi7I36/>`__
 
