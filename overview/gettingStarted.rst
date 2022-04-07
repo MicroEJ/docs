@@ -6,9 +6,11 @@ MicroEJ Getting Started is available on
 
 Starting from scratch, the steps to go through the whole process are:
 
-#. Setup a board and test a Firmware:
+#. Setup a board and test a demo Application:
 
    -  Select between one of the available boards;
+
+   -  Download and run a demo Application with a Virtual Device;
 
    -  Download and install a Firmware on the target hardware;
 
@@ -18,22 +20,22 @@ Starting from scratch, the steps to go through the whole process are:
 
    -  Download and install the SDK;
 
-   -  Download and install the corresponding Virtual Device for the
+   -  Download and install the corresponding Platform for the
       target hardware;
 
    -  Download, build and run your first Application on Simulator;
 
    -  Build and run your first Application on target hardware.
 
-The following figure gives an overview of the MicroEJ software
+The following figure gives an overview of the software
 components required for both host computer and target hardware:
 
 .. figure:: images/2_download.png
-   :alt: SDK Development Imported Elements
+   :alt: Getting Started General Components
    :align: center
-   :scale: 50%
+   :scale: 60%
 
-   SDK Development Imported Elements
+   Getting Started General Components
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
