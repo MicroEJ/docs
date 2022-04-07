@@ -19,34 +19,34 @@ the SDK offers unique services like hardware simulation and local deployment to 
 
    MicroEJ Application Development Overview
 
-The SDK is composed of:
+The SDK is composed of the following main elements:
 
-- **SDK** an Integrated Development Environment for writing Applications and Firmwares.
+- **SDK Version 5.x**, an Integrated Development Environment for writing Applications and Firmwares.
   It is based on Eclipse Java edition and relies on the integrated Java compiler (JDT).
-  Besides all the Eclipse capabilities, it provides additional tools such as a dependency manager 
-  for managing MicroEJ Libraries (see :ref:`mmm`), a Memory Map Analyzer or a Heap Analyzer.
-  The current distribution of MicroEJ Studio (``21.03``) is built on top 
-  of `Eclipse 2020-06 <https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-java-developers>`_.
+  
+  It is also packaged with Eclipse to produce a **SDK Distribution**.
 
-- **MicroEJ Module Manager**, the module and build manager used to compile and package Applications and Firmware.
-  It provided a Command Line Interface allowing to build and run Applications with the Simulator.
-  This is the privileged tool to build applications in a Continuous Integration environment.
+- **MicroEJ Module Manager**, the module and build manager used to compile and package any kind of :ref:`MicroEJ modules natures <module_natures>`.
+  It provides a Command Line Interface to build modules, especially used in a Continuous Integration environment.
+  See :ref:`mmm` section for more details.
 
-- **MicroEJ Architecture**, the software package that includes the MEJ32 port to a target instruction set and a C compiler, SOAR, core libraries and Simulator.
+- **Architecture**, the software package that includes the MEJ32 port to a target instruction set and a C compiler, SOAR, core libraries and Simulator.
+  See :ref:`architecture_overview` section for more details.
 
-The SDK is connected to:
+The SDK allows to connect repositories hosting software modules in source and binary form. 
+By default, it is configured with the repositories provided MicroEJ Corp.: 
 
 - **Central and Developer Repository**, the modules repositories containing all the libraries required to
-  develop an Application.
+  develop an Application. See :ref:`module_repositories` section for more details.
 
-- **Github Repositories**, repositories with sources and examples.
+- **Github Repositories**, source repositories with examples and demos See :ref:`github` section for more details.
 
 .. figure:: images/sdk_content.png
-   :alt: SDK Content
+   :alt: SDK Detailed View
    :align: center
    :scale: 80%
 
-   SDK Content
+   SDK Detailed View
 
 .. toctree::
    :hidden:
