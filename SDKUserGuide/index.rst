@@ -3,7 +3,7 @@
 SDK User Guide
 ==============
 
-MicroEJ SDK provides an integrated environment to create software applications for MicroEJ-ready devices.
+MICROEJ SDK is an integrated environment to create software applications for MicroEJ-ready devices.
 The SDK provides tools to write applications and run them on a virtual (simulated) or real device.
 The capability to execute an application in a simulated environment allows to quickly test changes done 
 in the application code and hence provide a short development feedback loop.
@@ -21,37 +21,32 @@ the SDK offers unique services like hardware simulation and local deployment to 
 
 The SDK is composed of:
 
-- **MicroEJ Studio**, the Integrated Development Environment for writing Applications and Firmwares.
+- **SDK** an Integrated Development Environment for writing Applications and Firmwares.
   It is based on Eclipse Java edition and relies on the integrated Java compiler (JDT).
   Besides all the Eclipse capabilities, it provides additional tools such as a dependency manager 
   for managing MicroEJ Libraries (see :ref:`mmm`), a Memory Map Analyzer or a Heap Analyzer.
   The current distribution of MicroEJ Studio (``21.03``) is built on top 
   of `Eclipse 2020-06 <https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-java-developers>`_.
 
-- **MicroEJ Module Manager**, the module and build manager used to compile and package Applications and Firmwares.
+- **MicroEJ Module Manager**, the module and build manager used to compile and package Applications and Firmware.
+  It provided a Command Line Interface allowing to build and run Applications with the Simulator.
+  This is the privileged tool to build applications in a Continuous Integration environment.
 
-- **MMM CLI**, a Command Line Interface allowing to build and run Applications with the simulator.
-  This is the privileged tool to build applications outside the Studio or in a Continuous Integration environment.
+- **MicroEJ Architecture**, the software package that includes the MEJ32 port to a target instruction set and a C compiler, SOAR, core libraries and Simulator.
 
-- **MicroEJ Central and Forge Repositories**, the modules repositories containing all the libraries required to
+The SDK is connected to:
+
+- **Central and Developer Repository**, the modules repositories containing all the libraries required to
   develop an Application.
+
+- **Github Repositories**, repositories with sources and examples.
 
 .. figure:: images/sdk_content.png
    :alt: SDK Content
    :align: center
-   :scale: 60%
+   :scale: 80%
 
    SDK Content
-
-Starting from scratch, the steps to go through the whole process of creating an application are
-detailed in the following sections:
-
--  :ref:`Download and install a MicroEJ Platform <platform_import>`
-
--  :ref:`Build and run your first Application on Simulator <simulator_execution>`
-
--  :ref:`Build and run your first Application on Device <device_build>`
-
 
 .. toctree::
    :hidden:

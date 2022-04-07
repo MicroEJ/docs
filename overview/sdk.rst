@@ -12,11 +12,11 @@ all device drivers and a specific set of MicroEJ functionalities useful
 for application developers targeting this device.
 
 .. figure:: images/toolchain.png
-   :alt: MicroEJ Development Tools Overview
+   :alt: SDK Workflow Overview
    :scale: 55%
    :align: center
 
-   MicroEJ Development Tools Overview
+   SDK Workflow Overview
 
 Using the SDK, a firmware developer will produce two
 versions of the MicroEJ binary, each one able to run applications:
@@ -39,14 +39,14 @@ Using the SDK, an application developer will be able to:
    information about MicroEJ Forge, please consult
    `<https://www.microej.com/product/forge>`_.
 
-
+The :ref:`sdk_user_guide` chapter describes the SDK content and usage.
 
 .. figure:: images/sdk_overview.png
-   :alt: SDK Overview
+   :alt: SDK Components Overview
    :align: center
    :scale: 60%
 
-   SDK Overview
+   SDK Components Overview
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
