@@ -39,6 +39,7 @@ For further information on Architecture installation and releases, you can check
    :maxdepth: 1
 
    architectureNamingConvention
+   runtime
    architectureChangelog
 
 ..

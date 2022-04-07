@@ -54,9 +54,11 @@ By default, it is configured with the repositories provided MicroEJ Corp.:
 
    install
    systemRequirements
+   licenses
+   repository
+   github
    workspace
    version
-   licenses
    mmm
    sdkReleaseNotes
    sdkChangeLog

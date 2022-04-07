@@ -21,11 +21,8 @@ You will create software that delivers incredible user experience and adjusts to
    gettingStarted
    vee
    sdk
-   runtime
    libraries
-   repository
    esr
-   github
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
