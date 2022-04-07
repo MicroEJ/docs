@@ -46,8 +46,8 @@ Using the SDK, an application developer will be able to:
    :hidden:
 
    gettingStarted
+   vee
    sdk
-   firmware
    runtime
    libraries
    repository
