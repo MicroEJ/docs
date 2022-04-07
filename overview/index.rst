@@ -21,7 +21,6 @@ You will create software that delivers incredible user experience and adjusts to
    gettingStarted
    vee
    sdk
-   libraries
    esr
 
 ..

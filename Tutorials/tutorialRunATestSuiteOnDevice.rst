@@ -69,7 +69,7 @@ device (not on Simulator).
 In essence, a Foundation Library provides an API to be used by a
 MicroEJ Application or an Add-on Library.
 
-.. figure:: ../overview/images/ClassPath_2.png
+.. figure:: ../ApplicationDeveloperGuide/images/ClassPath_2.png
    :alt: MicroEJ Foundation Libraries and Add-On Libraries
    :align: center
 

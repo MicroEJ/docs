@@ -9,6 +9,7 @@ Application Developer Guide
    introduction
    standaloneApplication
    sandboxedApplication
+   libraries
    virtualDevice
    moduleNatures
    repository
