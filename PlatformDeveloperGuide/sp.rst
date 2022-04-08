@@ -1,3 +1,5 @@
+.. _sp:
+
 ==================
 Shielded Plug (SP)
 ==================
@@ -6,7 +8,7 @@ Shielded Plug (SP)
 Principle
 =========
 
-The Shielded Plug :ref:`[SP] <esr-specifications>` provides data segregation with a clear
+The Shielded Plug (SP) library provides data segregation with a clear
 publish-subscribe API. The data-sharing between modules uses the concept
 of shared memory blocks, with introspection. The database is made of
 blocks: chunks of RAM.
@@ -18,35 +20,48 @@ blocks: chunks of RAM.
 
    A Shielded Plug Between Two Application (Java/C) Modules.
 
+.. list-table::
+   :widths: 10 30
+
+   * - **Documentation**
+     - **Link**
+   * - Java APIs
+     - https://repository.microej.com/javadoc/microej_5.x/apis/ej/sp/package-summary.html
+   * - Specification
+     - http://e-s-r.net/download/specification/ESR-SPE-0014-SP-2.0-A.pdf
+   * - Module
+     - https://repository.microej.com/modules/ej/api/sp/
+
 
 Functional Description
 ======================
 
 The usage of the Shielded Plug (SP) starts with the definition of a
-database. The implementation of the :ref:`[SP] <esr-specifications>` for the MicroEJ Platform uses an
+database. The implementation uses an
 XML file description to describe the database; the syntax follows the
-one proposed by the :ref:`[SP] specification <esr-specifications>`.
+one proposed by the `[SP] specification <http://e-s-r.net/download/specification/ESR-SPE-0014-SP-2.0-A.pdf>`_.
 
 Once this database is defined, it can be accessed within the MicroEJ
-Application or the C application. The :ref:`[SP] <esr-specifications>` Foundation Library is
+Application or the C application. The ``SP`` Foundation Library is
 accessible from the :ref:`[SP] API Module <sp-api-mmm>`. This library contains
 the classes and methods to read and write data in the database. The C header file ``sp.h`` available in the MicroEJ
 Platform ``source/MICROJVM/include`` folder contains the C functions for
 accessing the database.
 
-To embed the :ref:`[SP] <esr-specifications>` database in your binary file, the XML file description
-must be processed by the :ref:`[SP] <esr-specifications>` compiler. This compiler generates a binary
+To embed the database in your binary file, the XML file description
+must be processed by the :ref:`SP compiler <sp_compiler>`. This compiler generates a binary
 file (``.o``) that will be linked to the overall application by the linker.
 It also generates two descriptions of the block ID constants, one in
 Java and one in C. These constants can be used by either the Java or the
 C application modules.
 
+.. _sp_compiler:
 
 Shielded Plug Compiler
 ======================
 
-A MicroEJ tool is available to launch the :ref:`[SP] <esr-specifications>` compiler tool. The tool
-name is Shielded Plug Compiler. It outputs:
+A :ref:`MicroEJ tool <MicroEJToolsSection>` is available to launch the compiler. The tool
+name is :guilabel:`Shielded Plug Compiler`. It outputs:
 
 -  A description of the requested resources of the database as a binary
    file (``.o``) that will be linked to the overall application by the
@@ -67,7 +82,7 @@ name is Shielded Plug Compiler. It outputs:
 Example
 =======
 
-Below is an example of using a database :ref:`[SP] <esr-specifications>`. The code that publishes the
+Below is an example of using a database. The code that publishes the
 data is written in C, and the code that receives the data is written in
 Java. The data is transferred using two memory blocks. ``TEMP`` is a scalar
 value, ``THERMOSTAT`` is a boolean.
@@ -170,7 +185,7 @@ Dependencies
 Installation
 ============
 
-The :ref:`[SP] <esr-specifications>` library and its relative tools are an optional feature of the
+The ``[SP]`` library and its relative tools are an optional feature of the
 platform. In the platform configuration file, check
 :guilabel:`Java to C Interface` > :guilabel:`Shielded Plug` to install the library and
 its relative tools.
@@ -182,8 +197,8 @@ Use
 ===
 
 The `Shielded Plug API Module <https://repository.microej.com/modules/ej/api/sp/>`_
-must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project to use the :ref:`[SP] <esr-specifications>` library.
+must be added to the :ref:`module.ivy <mmm_module_description>` of the 
+Application project.
 
 ::
 

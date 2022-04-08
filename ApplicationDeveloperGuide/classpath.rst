@@ -168,7 +168,7 @@ Immutable Objects
 Immutables objects are regular read-only objects that can be retrieved
 with a call to ``ej.bon.Immutables.get(String)``. Immutables objects are
 declared in files called *immutable objects data files*, which format is
-described in the :ref:`[BON] specification <esr-specifications>`.
+described in the :ref:`[BON] specification <runtime_bon>`.
 Immutables objects data files are declared in MicroEJ Classpath using
 ``*.immutables.list`` files. The file format is a standard Java
 properties file, each line is a ``/`` separated name of a relative file
@@ -236,7 +236,7 @@ Constants
 ---------
 
 .. note::
-   This feature require :ref:`[BON] <esr-specifications>` version ``1.4`` 
+   This feature require :ref:`[BON] <runtime_bon>` version ``1.4`` 
    which is available in MicroEJ Runtime starting from MicroEJ Architecture version ``7.11.0``.
 
 Constants are key/value string pairs that can be accessed with a
@@ -273,7 +273,7 @@ The String key parameter must be resolved as an inlined String:
 - either a String literal ``"com.mycompany.myconstantkey"``
 - or a ``static final String`` field resolved as a String constant
 
-The String value is converted to the desired type using conversion rules described by the :ref:`[BON] <esr-specifications>` API.
+The String value is converted to the desired type using conversion rules described by the :ref:`[BON] <runtime_bon>` API.
 
 .. _if_constant_removal:
 

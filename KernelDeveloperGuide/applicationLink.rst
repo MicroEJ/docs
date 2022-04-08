@@ -41,7 +41,7 @@ When building a Sandboxed Application to a Feature, SOAR processing is divided i
 The Feature ``.fo`` file can be deployed in the following ways:
 
 -  Downloaded and installed on Device by software. Refer to the :ref:`[KF]
-   specification <esr-specifications>` for `Kernel.install() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream->`_ method.
+   specification <kf_specification>` for `Kernel.install() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream->`_ method.
 
 -  Installed at build-time into the Multi-Sandboxed Firmware using the :ref:`firmware_linker` tool.
 

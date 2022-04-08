@@ -20,10 +20,17 @@ can be installed, started, stopped and uninstalled at any time
 independently of the system state (particularly, a Feature never
 depends on an other Feature to be stopped).
 
-The complete :ref:`[KF] specification <esr-specifications>` is available at `<http://www.e-s-r.net/download/specification/ESR-SPE-0020-KF-1.4-F.pdf>`_
+.. list-table::
+   :widths: 10 30
 
-The full API documentation of the Kernel & Features Foundation Library
-is available at https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/package-summary.html.
+   * - **Documentation**
+     - **Link**
+   * - Java APIs
+     - https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/package-summary.html
+   * - Specification
+     - http://www.e-s-r.net/download/specification/ESR-SPE-0020-KF-1.4-F.pdf
+   * - Module
+     - https://repository.microej.com/modules/ej/api/kf/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

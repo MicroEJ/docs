@@ -21,7 +21,6 @@ You will create software that delivers incredible user experience and adjusts to
    gettingStarted
    vee
    sdk
-   esr
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

@@ -82,7 +82,7 @@ that their names match the ``LLSP_IMPL_*`` pattern.  
 Header Files
 ------------
 
-The implementation of the :ref:`[SP] <esr-specifications>` for the MicroEJ Platform assumes some
+The implementation of the Shielded Plug for the Platform assumes some
 support from the underlying RTOS. It is mainly related to provide some
 synchronization when reading / writing into Shielded Plug blocks.
 
@@ -95,7 +95,7 @@ synchronization when reading / writing into Shielded Plug blocks.
    are used as a semaphore by RTOS tasks. When a task wants to read a
    block, it "locks" this block until it is ready to release it.
 
-The :ref:`[SP] specification <esr-specifications>` provides a mechanism to force a task to wait
+The :ref:`[SP] specification <sp>` provides a mechanism to force a task to wait
 until new data has been provided to a block. The implementation relies
 on functions ``LLSP_IMPL_wait`` and ``LLSP_IMPL_wakeup`` to block the
 current task and to reschedule it.

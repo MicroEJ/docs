@@ -29,7 +29,7 @@ This glossary defines the technical terms upon which the `MICROEJ VEE (Virtual E
             A MicroEJ Kernel Application is a MicroEJ Standalone Application that implements the ability to be extended to produce a MicroEJ Multi-Sandbox Firmware.
 
    Architecture
-      A MicroEJ Architecture is a software package that includes the MicroEJ Core Engine port to a target instruction set and a C compiler, core MicroEJ Foundation Libraries (EDC, :ref:`[BON], [SNI], [KF] <esr-specifications>`) and the MicroEJ Simulator. MicroEJ Architectures are distributed either as evaluation or production version.
+      A MicroEJ Architecture is a software package that includes the MicroEJ Core Engine port to a target instruction set and a C compiler, core Foundation Libraries (:ref:`[EDC], [BON], [SNI], [KF] <runtime_core_libraries>`) and the MicroEJ Simulator. MicroEJ Architectures are distributed either as evaluation or production version.
 
    Core Engine, also named "MEJ32"
       `MicroEJ Core Engine, also named MEJ32, is a scalable 32-bit core <https://developer.microej.com/mej32-virtual-machine-for-embedded-systems/>`_ for resource-constrained embedded devices. It is delivered in various flavors, mostly as a binary software package. MicroEJ Core Engine allows applications written in various languages to run in a safe container.

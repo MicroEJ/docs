@@ -17,9 +17,9 @@ while still (apparently) interacting with native code.
 Functional Description
 ======================
 
-As with :ref:`[SNI] <esr-specifications>`, HIL is responsible for finding the method to execute as a
+As with :ref:`SNI <runtime_sni>`, HIL is responsible for finding the method to execute as a
 replacement for the native Java method that the MicroEJ Simulator tries
-to run. Following the :ref:`[SNI] <esr-specifications>` philosophy, the matching algorithm uses a
+to run. Following the SNI specification philosophy, the matching algorithm uses a
 naming convention. When a native method is called in the MicroEJ
 Simulator, it requests that the HIL engine execute it. The corresponding
 Mock executes the method and provides the result back to the MicroEJ
@@ -133,7 +133,7 @@ class ``com.is2t.hil.NativeInterface``.
 Array Type Arguments
 --------------------
 
-Both :ref:`[SNI] <esr-specifications>` and HIL allow arguments that are arrays of base types. By
+Both :ref:`[SNI] <runtime_sni>` and HIL allow arguments that are arrays of base types. By
 default the contents of an array are NOT sent over to the Mock. An
 "empty copy" is sent by the HIL engine, and the contents of the array
 must be explicitly fetched by the Mock. The array within the Mock can be
@@ -171,7 +171,7 @@ Below is a typical usage.
 Blocking Native Methods
 -----------------------
 
-Some native methods block until an event has arrived :ref:`[SNI] <esr-specifications>`. Such
+Some native methods block until an event has arrived :ref:`[SNI] <runtime_sni>`. Such
 behavior is implemented in native using the following three functions:
 
 -  ``int32_t SNI_suspendCurrentJavaThread(int64_t timeout)``

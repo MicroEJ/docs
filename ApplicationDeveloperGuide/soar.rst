@@ -10,7 +10,7 @@ Class Initialization Code
 -------------------------
 
 SOAR complies with the deterministic class initialization (``<clinit>``)
-order specified in :ref:`[BON] <esr-specifications>`. The application is statically analyzed from
+order specified in :ref:`[BON] specification <runtime_bon>`. The application is statically analyzed from
 its entry points in order to generate a clinit dependency graph. The
 computed clinit sequence is the result of the topological sort of the
 dependency graph. An error is thrown if the clinit dependency graph

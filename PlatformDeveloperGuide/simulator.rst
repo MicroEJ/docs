@@ -15,7 +15,7 @@ In order to simulate external stimuli that come from the native world
 (that is, "the C world"), the MicroEJ Simulator has a Hardware In the
 Loop interface, HIL, which performs the simulation of Java-to-C calls.
 All Java-to-C calls are rerouted to an HIL engine. Indeed HIL is a
-replacement for the :ref:`[SNI] <esr-specifications>` interface.
+replacement for the :ref:`[SNI] <runtime_sni>` interface.
 
 .. figure:: images/hil1.*
    :alt: The HIL Connects the MicroEJ Simulator to the Workstation.
