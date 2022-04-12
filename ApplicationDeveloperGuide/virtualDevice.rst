@@ -3,11 +3,6 @@
 Virtual Device
 ==============
 
-.. _section.virtual.device.simulation:
-
-Using a Virtual Device for Simulation
--------------------------------------
-
 The Virtual Device includes the same custom MicroEJ Core, libraries and
 System Applications as the real device. The Virtual Device allows
 developers to run their applications either on the Simulator, or
@@ -17,7 +12,7 @@ The Simulator runs a mockup board support package (BSP Mock) that mimics
 the hardware functionality. An application on the Simulator is run as a
 Standalone Application.
 
-Before an application is locally deployed on device, MicroEJ Studio
+Before an application is locally deployed on device, the SDK
 ensures that it does not depend on any API that is unavailable on the
 device.
 
@@ -27,24 +22,6 @@ device.
    :align: center
 
    MicroEJ Virtual Device Architecture
-
-.. _section.javadoc.specification:
-
-Runtime Environment
--------------------
-
-The set of MicroEJ APIs exposed by a Virtual Device (and therefore
-provided by its associated firwmare) is documented in Javadoc format in
-the MicroEJ Resource Center (:guilabel:`Window` > :guilabel:`Show View` >
-:guilabel:`MicroEJ Resource Center`).
-
-.. figure:: images/Overview_resourcecenter.png
-   :alt: MicroEJ Resource Center APIs
-   :align: center
-   :width: 286px
-   :height: 147px
-
-   MicroEJ Resource Center APIs
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

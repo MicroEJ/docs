@@ -30,9 +30,7 @@ one proposed by the :ref:`[SP] specification <esr-specifications>`.
 Once this database is defined, it can be accessed within the MicroEJ
 Application or the C application. The :ref:`[SP] <esr-specifications>` Foundation Library is
 accessible from the :ref:`[SP] API Module <sp-api-mmm>`. This library contains
-the classes and methods to read and write data in the database. See also
-the Java documentation from the MicroEJ Workbench resources center
-("Javadoc" menu). The C header file ``sp.h`` available in the MicroEJ
+the classes and methods to read and write data in the database. The C header file ``sp.h`` available in the MicroEJ
 Platform ``source/MICROJVM/include`` folder contains the C functions for
 accessing the database.
 

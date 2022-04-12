@@ -5,10 +5,10 @@ Windows Specifics
 -----------------
 
 If you are using Windows Defender as your default antivirus software,
-MicroEJ Studio or SDK may be slow down as it manipulates lots of JAR
+The SDK may be slowed down as it manipulates lots of JAR
 files (which are ZIP files) that are regularly analyzed.
 
-To improve MicroEJ Studio or SDK experience, please find below a list of
+To improve the SDK experience, please find below a list of
 folders that should be excluded from Windows Defender monitoring:
 
 -  ``%USERPROFILE%\.eclipse``
@@ -26,14 +26,14 @@ The exclusion page is available in the ``Settings`` application
 Linux Specifics
 ---------------
 
-Starting MicroEJ Studio or SDK on a linux distribution may produce
+Starting the SDK on a linux distribution may produce
 troubles such as missing content pages. This is related to incomplete
 Eclipse SWT configuration (see `Eclipse GTK wiki
 page <https://wiki.eclipse.org/SWT/Devel/Gtk/GtkVersion>`__).
 
 One solution is to configure Eclipse as follows:
 
--  Add the next lines to ``MicroEK-[SDK|Studio].ini``, before
+-  Add the next lines to ``MicroEJ-SDK.ini``, before
    ``-vmargs`` argument:
 
    ::
@@ -48,7 +48,7 @@ One solution is to configure Eclipse as follows:
        MOZILLA_FIVE_HOME=/usr/lib/mozilla
        LD_LIBRARY_PATH=${MOZILLA_FIVE_HOME}:${LD_LIBRARY_PATH}
 
--  Restart MicroEJ Studio/SDK
+-  Restart the SDK
 -  Check there is not more SWT/MOZILLA related errors
    (:guilabel:`Window` > :guilabel:`Show View` > :guilabel:`Other...` > :guilabel:`General` > :guilabel:`Error Log`)
 

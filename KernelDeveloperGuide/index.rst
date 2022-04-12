@@ -11,6 +11,7 @@ Kernel Developer Guide
    gettingStarted
    firmwareCreation
    kernelAPI
+   kernelUID
    featuresCommunication
    kfEnabledLibraries
    kfTestsuite

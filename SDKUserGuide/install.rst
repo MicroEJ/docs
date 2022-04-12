@@ -3,7 +3,7 @@
 Download and Install
 ====================
 
-MicroEJ Studio and SDK are available for download at https://developer.microej.com/get-started.
+The SDK is available for download at https://developer.microej.com/get-started.
 Check the :ref:`system-requirements` page for the list of supported environments.
 
 Once downloaded, execute the installer and follow the installation process.

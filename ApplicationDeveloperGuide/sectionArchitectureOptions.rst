@@ -659,6 +659,8 @@ Group: Runtime options
 
 Specifies the additional classes to embed at runtime.
 
+.. _option_embed_utf8:
+
 Option(checkbox): Embed UTF-8 encoding
 """"""""""""""""""""""""""""""""""""""
 

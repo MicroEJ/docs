@@ -566,10 +566,6 @@ h6 ~ * {
   margin-left: 30px !important;
 }
 
-li {
-  padding-bottom: 5px;
-}
-
 dd p {
   font-size: 16px;
 }
@@ -670,6 +666,7 @@ code,
 
 .wy-menu-vertical li {
   padding-bottom: 0px;
+  font-size: 16px;
 }
 
 .wy-menu-vertical li ul li a {
@@ -833,11 +830,17 @@ footer hr {
 .rst-content p.caption .headerlink:after,
 .rst-content table > caption .headerlink:after,
 .rst-content .code-block-caption .headerlink:after {
-  //font-family: Source Sans Pro;
+  /*font-family: Source Sans Pro;*/
 }
 
 .rst-content .sidebar .sidebar-title {
   font-family: "Source Sans Pro", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
+}
+
+.rst-content li,
+.rst-content li p {
+  padding-bottom: 5px;
+  font-size: 18px;
 }
 
 .rst-content tt,

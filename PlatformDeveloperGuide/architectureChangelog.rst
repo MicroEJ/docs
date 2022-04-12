@@ -943,7 +943,7 @@ Integration
 ~~~~~~~~~~~
 
 -  Added generation of ``architecture.properties`` file when building a
-   Platform. (Used by MicroEJ SDK/Studio ``5`` when manipulating
+   Platform. (Used by SDK ``5.x`` when manipulating
    Platforms & Virtual Devices)
 
 .. _simulator-5:
@@ -1015,6 +1015,11 @@ Tools
 
 [7.9.0] - 2018-09-20
 --------------------
+
+Core Engine
+~~~~~~~~~~~
+
+-  Fixed ``OutOfMemoryError`` thrown when allocating an object of the size of free memory in immortals heap
 
 .. _soar-6:
 
