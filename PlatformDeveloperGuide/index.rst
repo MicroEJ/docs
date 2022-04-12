@@ -24,6 +24,7 @@ Platform Developer Guide
    hal
    device
    watchdog-timer
+   bluetooth
    systemView
    simulation
    appendix/index
