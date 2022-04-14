@@ -11,7 +11,7 @@ System Requirements
 - **Operating Systems :**
    - Windows 10, Windows 8.1 or Windows 8
    - Linux distributions (tested on Ubuntu 18.04 and 20.04) - As of SDK Distribution ``20.10`` (based on Eclipse 2020-06), Ubuntu 16.04 is not supported.
-   - Mac OS X (tested on version 10.13 High Sierra, 10.14 Mojave)
+   - macOS (tested on version 10.13 High Sierra, 10.14 Mojave)
 
 - **Java :**
    - JRE or JDK 8 (Oracle JDK or other OpenJDK build: tested on AdoptOpenJDK/Eclipse Adoptium)

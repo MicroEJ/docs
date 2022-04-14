@@ -465,7 +465,7 @@ Once the Build Kit is fully exported, the directory content shall look like:
 The ``mmm`` tool can run on any supported :ref:`Operating Systems <system-requirements>`:
 
 - on Windows, either in the command prompt using the Windows batch script ``mmm.bat`` or in `MinGW environments <https://en.wikipedia.org/wiki/MinGW>`_ such as `Git BASH <https://gitforwindows.org/>`_ using the bash script ``mmm``.
-- on Mac OS X and Linux distributions using the bash script ``mmm``.
+- on macOS and Linux distributions using the bash script ``mmm``.
 
 The build repository (``microej-build-repository`` directory) contains scripts and tools for building modules. It is specific to a SDK version and shall not be modified by default.
 
