@@ -164,7 +164,14 @@ To build the MicroEJ Platform from the SDK, perform a regular :ref:`mmm_module_b
 To build the MicroEJ Platform from the MMM CLI:
 
   - Set the ``eclipse.home`` property to the path of your SDK, using ``-Declipse.home=<path>`` in the command line or using the :ref:`mmm_cli_shared_configuration`.
-  - Execute the command: ``mmm``
+  
+    By default, the SDK's path is one of the following directories:
+  
+    - on Windows: ``C:\Program Files\MicroEJ\MicroEJ-SDK-<YY.MM>\rcp``
+    - on Linux: ``/home/<user>/MicroEJ/MicroEJ-SDK-<YY.MM>/rcp``
+    - on Mac OS X: ``/Applications/MicroEJ/MicroEJ-SDK-<YY.MM>/rcp/MicroEJ-SDK-<YY.MM>.app/Contents/Eclipse``
+	
+  - From the Platform Configuration project, execute the command: ``mmm``
 
 In both cases the build starts and the build logs are redirected to the integrated console.
 Once the build is terminated, you should get the following message:
