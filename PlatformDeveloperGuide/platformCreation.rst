@@ -164,7 +164,14 @@ To build the MicroEJ Platform from the SDK, perform a regular :ref:`mmm_module_b
 To build the MicroEJ Platform from the MMM CLI:
 
   - Set the ``eclipse.home`` property to the path of your SDK, using ``-Declipse.home=<path>`` in the command line or using the :ref:`mmm_cli_shared_configuration`.
-  - Execute the command: ``mmm``
+  
+    By default, the SDK's path is one of the following directories:
+  
+    - on Windows: ``C:\Program Files\MicroEJ\MicroEJ-SDK-<YY.MM>\rcp``
+    - on Linux: ``/home/<user>/MicroEJ/MicroEJ-SDK-<YY.MM>/rcp``
+    - on macOS: ``/Applications/MicroEJ/MicroEJ-SDK-<YY.MM>/rcp/MicroEJ-SDK-<YY.MM>.app/Contents/Eclipse``
+	
+  - From the Platform Configuration project, execute the command: ``mmm``
 
 In both cases the build starts and the build logs are redirected to the integrated console.
 Once the build is terminated, you should get the following message:
@@ -559,7 +566,7 @@ to produce the final executable file (``application.out``).
 The build script must comply with the following specification:
 
 - On Windows operating system, it is a Windows batch file named ``build.bat``.
-- On Mac OS X or Linux operating systems, it is a shell script named ``build.sh``, with execution permission enabled.
+- On macOS or Linux operating systems, it is a shell script named ``build.sh``, with execution permission enabled.
 - On error, the script must end with a non zero exit code.
 - On success
 
@@ -593,7 +600,7 @@ The BSP run script is used to invoke a third-party tool to upload and start the 
 The run script must comply with the following specification:
 
 - On Windows operating system, it is a Windows batch file named ``run.bat``.
-- On Mac OS X or Linux operating systems, it is a shell script named ``run.sh``, with execution permission enabled.
+- On macOS or Linux operating systems, it is a shell script named ``run.sh``, with execution permission enabled.
 - The executable file is passed as first script parameter if there is one, otherwise it is the ``application.out`` file located in the directory from where the script has been executed.
 - On error, the script must end with a non zero exit code.
 - On success:
