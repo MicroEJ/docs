@@ -33,7 +33,7 @@ components required for both host computer and target hardware:
 .. figure:: images/2_download.png
    :alt: Getting Started General Components
    :align: center
-   :scale: 60%
+   :scale: 100%
 
    Getting Started General Components
 
