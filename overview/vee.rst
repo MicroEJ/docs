@@ -3,8 +3,8 @@
 MICROEJ VEE
 ===========
 
-MicroEJ VEE is a scalable Virtual Execution Environment for resource-constrained embedded devices running on microcontrollers or microprocessors. 
-It allows devices to run multiple and mixed Java and C software applications.
+MicroEJ VEE (Virtual Execution Environment) is an applications container for resource-constrained embedded devices running on microcontrollers or microprocessors. 
+It allows devices to run multiple and mixed managed code (Java, JavaScript) and C software applications.
 
 MicroEJ VEE provides a fully configurable set of services that can be expanded, including:
 
