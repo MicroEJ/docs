@@ -6,12 +6,10 @@ MicroEJ Runtime
 Language
 --------
 
-MicroEJ is compatible with the Java language version 7.
+MicroEJ allows to develop Applications in the `Java® Language Specification version 7 <https://docs.oracle.com/javase/specs/jls/se7/jls7.pdf>`_, and supports code extensions written in :ref:`JavaScript <javascript>`.
 
-Java source code is compiled by the Java compiler [1]_ into the binary format specified in the JVM specification [2]_. 
-This binary code needs to be linked before execution: .class files and some other application-related files (see :ref:`MicroEJ Classpath <chapter.microej.classpath>`) are compiled to produce the final application that the MicroEJ Runtime can execute.
-
-MicroEJ complies with the deterministic class initialization (<clinit>) order specified in :ref:`[BON] <runtime_bon>`. The application is statically analyzed from its entry points in order to generate a clinit dependency graph. The computed clinit sequence is the result of the topological sort of the dependency graph. An error is thrown if the clinit dependency graph contains cycles.
+Basically, Java source code is compiled by the Java compiler [1]_ into the binary format specified in the JVM specification [2]_. 
+This binary code is linked by a tool named :ref:`SOAR <soar>` before execution: ``.class`` files and some other application-related files (see :ref:`Classpath <chapter.microej.classpath>` chapter) are linked to produce the final binary file that the :ref:`Core Engine <core_engine>` will execute.
 
 .. [1]
    The JDT compiler from the Eclipse IDE.
@@ -22,20 +20,16 @@ MicroEJ complies with the deterministic class initialization (<clinit>) order sp
 Scheduler
 ---------
 
-The Architecture features a green thread platform that can
-interact with the C world :ref:`[SNI] <runtime_sni>`. The (green) thread policy is as
+The Core Engine features a `Green Threads model <https://en.wikipedia.org/wiki/Green_threads>`_ that can
+interact with the C world using :ref:`[SNI] <runtime_sni>`. The (green) thread policy is as
 follows:
 
 -  preemptive for different priorities,
-
 -  round-robin for same priorities,
-
 -  "priority inheritance protocol" when priority inversion occurs. [3]_
 
-MicroEJ stacks (associated with the threads) automatically adapt their
-sizes according to the thread requirements: Once the thread has
-finished, its associated stack is reclaimed, freeing the corresponding
-RAM memory.
+Threads stacks automatically adapt their sizes according to the thread requirements: once the thread has
+finished, its associated stack is reclaimed, freeing the corresponding RAM memory.
 
 .. [3]
    This protocol raises the priority of a thread (that is holding a
@@ -45,11 +39,11 @@ RAM memory.
 Garbage Collector
 -----------------
 
-The Architecture includes a state-of-the-art memory management
+The Core Engine includes a state-of-the-art memory management
 system, the Garbage Collector (GC). It manages a bounded piece of RAM
 memory, devoted to the Java world. The GC automatically frees dead Java
 objects, and defragments the memory in order to optimize RAM usage. This
-is done transparently while the MicroEJ Applications keep running.
+is done transparently while the Application keep running.
 
 .. _runtime_core_libraries:
 
