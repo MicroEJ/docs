@@ -44,7 +44,7 @@ By default, it is configured with the repositories provided MicroEJ Corp.:
 .. figure:: images/sdk_content.png
    :alt: SDK Detailed View
    :align: center
-   :scale: 80%
+   :scale: 100%
 
    SDK Detailed View
 
