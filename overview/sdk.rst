@@ -44,7 +44,7 @@ The following diagram outlines the SDK content. Please refer to the :ref:`sdk_us
 .. figure:: images/sdk_overview.png
    :alt: SDK Components Overview
    :align: center
-   :scale: 60%
+   :scale: 80%
 
    SDK Components Overview
 
