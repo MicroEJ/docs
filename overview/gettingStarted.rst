@@ -27,15 +27,14 @@ Starting from scratch, the steps to go through the whole process are:
 
    -  Build and run your first Application on target hardware.
 
-The following figure gives an overview of the software
-components required for both host computer and target hardware:
+The following figure gives an overview of the SDK workflow:
 
 .. figure:: images/2_download.png
-   :alt: Getting Started General Components
+   :alt: SDK Workflow Overview
    :align: center
    :scale: 100%
 
-   Getting Started General Components
+   SDK Workflow Overview
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
