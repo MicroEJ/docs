@@ -11,6 +11,7 @@ Application Developer Guide
    sandboxedApplication
    libraries
    virtualDevice
+   runtime
    moduleNatures
    repository
    classpath
