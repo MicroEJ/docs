@@ -90,7 +90,7 @@ for more details.
 Implementation
 ==============
 
-The MicroEJ Core Engine implements the :ref:`[SNI] specification <esr-specifications>`. 
+The MicroEJ Core Engine implements the :ref:`[SNI] specification <runtime_sni>`. 
 It is created and initialized with the C function ``SNI_createVM``.
 Then it is started and executed in the current RTOS task by calling ``SNI_startVM``.
 The function ``SNI_startVM`` returns when the MicroEJ Application exits or if
@@ -579,7 +579,7 @@ Refer to the chapter :ref:`application_options` which lists all available option
 
 The `BON API Module <https://repository.microej.com/modules/ej/api/bon/>`_
 must also be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project in order to access the :ref:`[BON] library <esr-specifications>`.
+Application project in order to access the :ref:`[BON] library <runtime_bon>`.
 
 ::
 

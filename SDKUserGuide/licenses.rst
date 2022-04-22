@@ -1,17 +1,34 @@
 Licenses
 ========
 
+.. _sdk_eula:
+
+SDK EULA
+--------
+
+MICROEJ SDK is licensed under the SDK End User License Agreement (EULA), which covers the following elements:
+
+- SDK Tools & Plugins packaged in the SDK `5.x` Version,
+- Architectures,
+- Modules published to the :ref:`central_repository` with the SDK EULA license, such as GUI or Networking Pack (please consult the ``LICENSE.txt`` file attached to each module)
+
+.. figure:: images/sdk_eula_content.png
+   :alt: SDK EULA Coverage
+   :align: center
+
+   SDK EULA Coverage
+
 .. _license_manager:
 
 License Manager Overview
 ------------------------
 
-MicroEJ Architectures are distributed in two different versions:
+Architectures are distributed in two different versions:
 
 - Evaluation Architectures, associated with a software license key. They can be downloaded at `<https://repository.microej.com/modules/com/microej/architecture/>`_.
 - Production Architectures, associated with a hardware license key stored on a USB dongle. They can be requested to :ref:`our support team <get_support>`.
 
-The license manager is provided with MicroEJ Architectures and then integrated into Platforms, consequently:
+The license manager is provided with Architectures and then integrated into Platforms, consequently:
 
 - Evaluation licenses will be shown only if at least one Evaluation Architecture or Platform built from an Evaluation Architecture 
   has been imported in the SDK.
@@ -22,10 +39,10 @@ The list of installed licenses is available in the SDK preferences dialog page i
 > :guilabel:`Preferences` > :guilabel:`MicroEJ`:
 
 .. figure:: images/preferences/licenses.jpg
-   :alt: MicroEJ Licenses View
+   :alt: License Manager View
    :align: center
 
-   MicroEJ Licenses View
+   License Manager View
 
 
 License Check
@@ -64,7 +81,7 @@ Get your Machine UID
 
 Retrieving the machine UID depends on the kind of MicroEJ Platform being evaluated.
 
-If your MicroEJ Platform is already :ref:`imported in Package Explorer <source_platform_import>` and built with :ref:`mmm`, the MicroEJ Architecture has been automatically imported.
+If your MicroEJ Platform is already :ref:`imported in Package Explorer <source_platform_import>` and built with :ref:`mmm`, the Architecture has been automatically imported.
 The machine UID will be displayed when building a :ref:`MicroEJ Standalone Application on device <device_build>`.
 
 .. code-block:: console
@@ -73,7 +90,7 @@ The machine UID will be displayed when building a :ref:`MicroEJ Standalone Appli
    [INFO ] Launching in Evaluation mode. Your UID is XXXXXXXXXXXXXXXX.
    [ERROR] Invalid license check (No license found).
 
-Otherwise, a MicroEJ Architecture or Platform should have been manually imported from the SDK preferences page. 
+Otherwise, an Architecture or Platform should have been manually imported from the SDK preferences page. 
 The machine UID can be retrieved as follows:
 
 - Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ`,

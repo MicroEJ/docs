@@ -9,7 +9,9 @@ Application Developer Guide
    introduction
    standaloneApplication
    sandboxedApplication
+   libraries
    virtualDevice
+   runtime
    moduleNatures
    repository
    classpath

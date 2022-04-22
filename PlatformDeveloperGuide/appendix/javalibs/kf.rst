@@ -11,8 +11,8 @@ Definitions
 Feature Definition Files
 ------------------------
 
-A Feature is a group of types, resources and :ref:`[BON] <esr-specifications>` immutables objects
-defined using two files that shall be in application classpath:
+A Feature is a group of types, resources and :ref:`[BON] <runtime_bon>` immutables objects
+defined using two files that shall be in Application classpath:
 
 -  ``[featureName].kf``, a Java properties file. Keys are described in
    :ref:`the "Feature definition file properties" table below <table_kf-feature-keys>`.
@@ -30,8 +30,8 @@ defined using two files that shall be in application classpath:
    | entryPoint    | Mandatory | The fully qualified name of the class that                              |
    |               |           | implements ``ej.kf.FeatureEntryPoint``                                  |
    +---------------+-----------+-------------------------------------------------------------------------+
-   | immutables    | Optional  | Semicolon separated list of paths to :ref:`[BON] <esr-specifications>`  |
-   |               |           | immutable files owned by the Feature. :ref:`[BON] <esr-specifications>` |
+   | immutables    | Optional  | Semicolon separated list of paths to :ref:`[BON] <runtime_bon>`         |
+   |               |           | immutable files owned by the Feature. ``[BON]``                         |
    |               |           | immutable file is defined by a ``/`` separated path relative to         |
    |               |           | application classpath                                                   |
    +---------------+-----------+-------------------------------------------------------------------------+
@@ -65,7 +65,7 @@ Kernel API file definition is explained here :ref:`Kernel API <kernel.api.def>`.
 Access Error Codes
 ------------------
 
-When an instruction is executed that will break a :ref:`[KF] <esr-specifications>` insulation
+When an instruction is executed that will break a :ref:`[KF] specification <kf_specification>` insulation
 semantic rule, a ``java.lang.IllegalAccessError`` is thrown, with an
 error code composed of two parts: ``[source][errorKind]``.
 

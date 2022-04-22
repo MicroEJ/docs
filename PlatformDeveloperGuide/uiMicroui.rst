@@ -10,11 +10,6 @@ Principle
 
 MicroUI library defines a Low Level UI framework for embedded devices. This module allows the creation of basic Human-Machine-Interfaces (HMI), with output on a pixel-based screen. 
 
-.. 
-   // Add again next line when ESR 3.0 will be available:
-   For more information, please consult the :ref:`[MUI] Specification <esr-specifications>`.
-
-
 .. _section_architecture:
 
 Architecture

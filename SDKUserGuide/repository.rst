@@ -1,3 +1,5 @@
+.. _module_repositories:
+
 -------------------
 Module Repositories
 -------------------

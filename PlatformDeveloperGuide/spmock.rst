@@ -4,7 +4,7 @@ Shielded Plug Mock
 General Architecture
 --------------------
 
-The Shielded Plug Mock simulates a Shielded Plug :ref:`[SP] <esr-specifications>` on desktop
+The Shielded Plug Mock simulates a Shielded Plug :ref:`[SP] <sp>` on desktop
 computer. This mock can be accessed from the MicroEJ Simulator, the
 hardware platform or a Java J2SE application.
 

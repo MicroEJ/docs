@@ -10,11 +10,11 @@ The MicroEJ Core Engine is a tiny and fast runtime associated with a Scheduler a
 
 MicroEJ Architecture provides implementations of the following Foundation Libraries :
 
--  `EDC <https://repository.microej.com/modules/ej/api/edc/>`_: Embedded Device Configuration.
--  `BON <https://repository.microej.com/modules/ej/api/bon/>`_ Beyond Profile (see :ref:`[BON] <esr-specifications>`).
--  `SNI <https://repository.microej.com/modules/ej/api/sni/>`_ Simple Native Interface (:ref:`[SNI] <esr-specifications>`).
--  `SP <https://repository.microej.com/modules/ej/api/sni/>`_ Shielded Plug (:ref:`[SP] <esr-specifications>`).
--  `KF <https://repository.microej.com/modules/ej/api/sni/>`_ Kernel & Features (:ref:`[KF] <esr-specifications>`).
+- Embedded Device Configuration (see :ref:`[EDC] <runtime_edc>`).
+- Beyond Profile (see :ref:`[BON] <runtime_bon>`).
+- Simple Native Interface (see :ref:`[SNI] <runtime_sni>`).
+- Kernel & Features (see :ref:`[KF] <runtime_kf>`).
+- Shielded Plug (see :ref:`[SP] <sp>`).
 
 :ref:`The following figure <fig_jpf-runtime-components>` shows the components involved.
 
@@ -29,7 +29,7 @@ MicroEJ Architecture provides implementations of the following Foundation Librar
 Three Low Level APIs allow the MicroEJ Architecture to link with (and port
 to) external code, such as any kind of RTOS or legacy C libraries: 
 
--  Simple Native Interface (see :ref:`[SNI] <esr-specifications>`)
+-  Simple Native Interface (see :ref:`[SNI] <runtime_sni>`)
 -  Low Level MicroEJ Core Engine (see :ref:`LLMJVM <LLMJVM-API-SECTION>`)
 -  Low Level Shielded Plug (see :ref:`LLSP <LLSP-API-SECTION>`)
 

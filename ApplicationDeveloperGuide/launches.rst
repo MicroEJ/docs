@@ -33,7 +33,7 @@ The :guilabel:`Main` tab allows you to set in order:
    ``Class.getResourceAsStream()`` method.
 
 5. Immutable objects' description files. See the :ref:`[BON 1.2] ESR
-   documentation <esr-specifications>` for use of immutable objects.
+   documentation <runtime_bon>` for use of immutable objects.
 
 .. figure:: images/mainTab.png
    :alt: MicroEJ Launch Application Main Tab
