@@ -99,7 +99,7 @@ The conversion can either be done at :
 
 -  run-time (using the relevant decoder library).
 
-Images that must be processed by the image generator tool are declared in MicroEJ Classpath ``*.images.list`` files.
+Images that must be processed by the image generator tool are declared in MicroEJ Classpath ``*.images.list`` files (or ``*.imagesext.list`` for external resources).
 The file format is a standard Java properties file, each line representing a ``/`` separated
 resource path relative to the MicroEJ classpath root referring to a standard image file (e.g. ``.png``, ``.jpg``).
 The resource may be followed by an optional parameter (separated by a ``:``) which defines and/or describes the image output file format (raw format).
@@ -134,7 +134,7 @@ Overview
 Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
 
 To be displayed, these fonts have to be converted at build-time from their source format to the display raw format by the font generator tool.
-Fonts that must be processed by the font generator tool are declared in MicroEJ Classpath ``*.fonts.list`` files.
+Fonts that must be processed by the font generator tool are declared in MicroEJ Classpath ``*.fonts.list`` files (or ``*.fontsext.list`` for external resources).
 The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the MicroEJ classpath root referring to a MicroEJ font file (usually with a ``.ejf`` file extension).
 The resource may be followed by optional parameters which define :
 
@@ -242,7 +242,7 @@ Here is an example:
 
 These PO files have to be converted to be usable by the application.
 In order to let the build system know which PO files to process, 
-they must be referenced in files named ``*.nls.list``, located in the MicroEJ Classpath 
+they must be referenced in files named ``*.nls.list`` (and to ``*.externresources.list`` for external resources), located in the MicroEJ Classpath 
 (for example still in the ``src/main/resources`` folder).
 The file format of these ``*.nls.list`` files is a standard Java properties file.
 Each line represents the Full Qualified Name of a Java interface that will be 
@@ -402,7 +402,7 @@ Raw Resources
 Raw resources are binary files that are embedded by the application so that they may be dynamically retrieved with a call to
 ``Class.getResourceAsStream(java.io.InputStream)``.
 
-Raw Resources are declared in MicroEJ Classpath using ``*.resources.list`` files.
+Raw Resources are declared in MicroEJ Classpath using ``*.resources.list`` files (and in ``*.externresources.list`` for external resources).
 The file format is a standard Java properties file, each line is a relative ``/`` separated name of a file in MicroEJ Classpath to be embedded as a resource.
 
 For example:
