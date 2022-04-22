@@ -17,34 +17,6 @@ This binary code is linked by a tool named :ref:`SOAR <soar>` before execution: 
 .. [2]
    Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
 
-Scheduler
----------
-
-The Core Engine features a `Green Threads model <https://en.wikipedia.org/wiki/Green_threads>`_ that can
-interact with the C world using :ref:`[SNI] <runtime_sni>`. The (green) thread policy is as
-follows:
-
--  preemptive for different priorities,
--  round-robin for same priorities,
--  "priority inheritance protocol" when priority inversion occurs. [3]_
-
-Threads stacks automatically adapt their sizes according to the thread requirements: once the thread has
-finished, its associated stack is reclaimed, freeing the corresponding RAM memory.
-
-.. [3]
-   This protocol raises the priority of a thread (that is holding a
-   resource needed by a higher priority task) to the priority of that
-   task.
-
-Garbage Collector
------------------
-
-The Core Engine includes a state-of-the-art memory management
-system, the Garbage Collector (GC). It manages a bounded piece of RAM
-memory, devoted to the Java world. The GC automatically frees dead Java
-objects, and defragments the memory in order to optimize RAM usage. This
-is done transparently while the Application keep running.
-
 .. _runtime_core_libraries:
 
 Core Libraries
@@ -156,6 +128,34 @@ The Kernel & Features semantic (KF) extends the runtime for managing Multi-Sandb
 
 Please refer to the :ref:`kf_specification` for more details, the :ref:`Multi-Sandbox capability <multisandbox>` of the Core Engine
 and more generally the :ref:`kernel-developer-guide` chapter.
+
+Scheduler
+---------
+
+The Core Engine features a `Green Threads model <https://en.wikipedia.org/wiki/Green_threads>`_ that can
+interact with the C world using :ref:`[SNI] <runtime_sni>`. The (green) thread policy is as
+follows:
+
+-  preemptive for different priorities,
+-  round-robin for same priorities,
+-  "priority inheritance protocol" when priority inversion occurs. [3]_
+
+Threads stacks automatically adapt their sizes according to the thread requirements: once the thread has
+finished, its associated stack is reclaimed, freeing the corresponding RAM memory.
+
+.. [3]
+   This protocol raises the priority of a thread (that is holding a
+   resource needed by a higher priority task) to the priority of that
+   task.
+
+Garbage Collector
+-----------------
+
+The Core Engine includes a state-of-the-art memory management
+system, the Garbage Collector (GC). It manages a bounded piece of RAM
+memory, devoted to the Java world. The GC automatically frees dead Java
+objects, and defragments the memory in order to optimize RAM usage. This
+is done transparently while the Application keep running.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
