@@ -167,52 +167,7 @@ Example:
 
 MicroEJ font files conventionally end with the ``.ejf`` suffix and are created using the Font Designer (see :ref:`section.tool.fontdesigner`).
 
-Font Range
-----------
-
-The first parameter is for specifying the font ranges to embed.
-Selecting only a specific set of characters to embed reduces the memory
-footprint. If unspecified, all characters of the font are embedded. 
-
-Several ranges can be specified, separated by ``;``. There
-are two ways to specify a character range: the custom range and the
-known range.
-
-Custom Range
-------------
-
-Allows the selection of raw Unicode character ranges.
-
-Examples:
-
--  ``myfont:0x21-0x49``: Defines one range: embed all characters from 0x21 to 0x49
-   (included);
--  ``myfont:0x21-0x49,0x55-0x75``: Defines a set of two ranges: embed all characters from 0x21 to 0x49 and from 0x55 to 0x75.
--  ``myfont:0x21-0x49,0x55``: Defines a set of one range and one character: embed all characters from 0x21 to 0x49 and character 0x55.
-
-Known Range
------------
-
-A known range is a range available in the following table.
-
-Examples:
-
--  ``myfont:basic_latin``: Embed all *Basic Latin* characters;
--  ``myfont:basic_latin;arabic``: Embed all *Basic Latin* characters,
-   and all *Arabic* characters.
-
-Transparency
-------------
-
-The second parameter is for specifying the font transparency level
-(``1``, ``2``, ``4`` or ``8``). If unspecified, the encoded transparency level is ``1`` (does not depend on transparency level encoded in EJF file).
-
-Examples:
-
--  ``myfont:latin:4``: Embed all latin characters with 16 levels of
-   transparency
-
--  ``myfont::2``: Embed all characters with 4 levels of transparency
+Please refer to :ref:`section.ui.Fonts` for more information.
 
 .. _section.applicationResources.nls:
 
