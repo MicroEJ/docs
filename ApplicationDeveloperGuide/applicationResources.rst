@@ -20,6 +20,11 @@ A *resource* is, for a MicroEJ Application, the contents of a file.
 This file is known by its path (its relative path from the MicroEJ Application classpath) and its name.
 The file may be stored in RAM, flash, or external flash; and it is the responsibility of the MicroEJ Core Engine and/or the BSP to retrieve and load it.
 
+.. _section.applicationResources.internal_and_external_resources:
+
+Internal Resources and External Resources
+-----------------------------------------
+
 There are two kinds of resources, internal resources and external resources:
 
 -  Internal resource: The resource is taken into consideration during the MicroEJ Application build.
