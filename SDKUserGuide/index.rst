@@ -39,7 +39,7 @@ By default, it is configured with the repositories provided MicroEJ Corp.:
 - **Central and Developer Repository**, the modules repositories containing all the libraries required to
   develop an Application. See :ref:`module_repositories` section for more details.
 
-- **Github Repositories**, source repositories with examples and demos See :ref:`github` section for more details.
+- **Github Repositories**, source repositories with examples and demos. See :ref:`github` section for more details.
 
 The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_eula>`. The following figure shows a detailed view of the elements.
 
