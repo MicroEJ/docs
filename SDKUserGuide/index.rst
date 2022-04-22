@@ -21,7 +21,7 @@ the SDK offers unique services like hardware simulation and local deployment to 
 
 The SDK is composed of the following main elements:
 
-- **SDK Version 5.x**, an Integrated Development Environment for writing Applications and Firmwares.
+- **SDK Version 5.x**, an Integrated Development Environment (IDE) for writing Applications and building Firmware.
   It is based on Eclipse Java edition and relies on the integrated Java compiler (JDT).
   
   It is also packaged with Eclipse to produce a **SDK Distribution**.
