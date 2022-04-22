@@ -86,10 +86,10 @@ The following figure summarized how to declare resources:
 .. _section.applicationResources.Images:
 
 Images
-------
+======
 
 Overview
-~~~~~~~~
+--------
 
 Images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_ .
 To be displayed, these images have to be converted from their source format to the display raw format.
@@ -126,10 +126,10 @@ Please refer to :ref:`section.ui.Images` for more information.
 .. _section.applicationResources.Fonts:
 
 Fonts
------
+=====
 
 Overview
-~~~~~~~~
+--------
 
 Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
 
@@ -163,7 +163,7 @@ Example:
 MicroEJ font files conventionally end with the ``.ejf`` suffix and are created using the Font Designer (see :ref:`section.tool.fontdesigner`).
 
 Font Range
-~~~~~~~~~~
+----------
 
 The first parameter is for specifying the font ranges to embed.
 Selecting only a specific set of characters to embed reduces the memory
@@ -174,7 +174,7 @@ are two ways to specify a character range: the custom range and the
 known range.
 
 Custom Range
-~~~~~~~~~~~~
+------------
 
 Allows the selection of raw Unicode character ranges.
 
@@ -186,7 +186,7 @@ Examples:
 -  ``myfont:0x21-0x49,0x55``: Defines a set of one range and one character: embed all characters from 0x21 to 0x49 and character 0x55.
 
 Known Range
-~~~~~~~~~~~
+-----------
 
 A known range is a range available in the following table.
 
@@ -197,7 +197,7 @@ Examples:
    and all *Arabic* characters.
 
 Transparency
-~~~~~~~~~~~~
+------------
 
 The second parameter is for specifying the font transparency level
 (``1``, ``2``, ``4`` or ``8``). If unspecified, the encoded transparency level is ``1`` (does not depend on transparency level encoded in EJF file).
@@ -212,7 +212,7 @@ Examples:
 .. _section.applicationResources.nls:
 
 Native Language Support
------------------------
+=======================
 
 Native Language Support (NLS) allows the application to facilitate internationalization.
 It provides support to manipulate messages and translate them in different languages.
@@ -397,7 +397,7 @@ therefore the new translations are applied after the next Virtual Device restart
 .. _section.applicationResources.raw_resources:
 
 Raw Resources
--------------
+=============
 
 Raw resources are binary files that are embedded by the application so that they may be dynamically retrieved with a call to
 ``Class.getResourceAsStream(java.io.InputStream)``.
