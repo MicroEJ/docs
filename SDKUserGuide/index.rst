@@ -41,6 +41,8 @@ By default, it is configured with the repositories provided MicroEJ Corp.:
 
 - **Github Repositories**, source repositories with examples and demos See :ref:`github` section for more details.
 
+The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_eula>`. The following figure shows a detailed view of the elements.
+
 .. figure:: images/sdk_content.png
    :alt: SDK Detailed View
    :align: center

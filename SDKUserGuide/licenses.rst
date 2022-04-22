@@ -1,6 +1,8 @@
 Licenses
 ========
 
+.. _sdk_eula:
+
 SDK EULA
 --------
 
