@@ -33,6 +33,56 @@ There are two kinds of resources, internal resources and external resources:
    The BSP must implement some specific Low Level API (LLAPI) C functions: ``LLEXT_RES_impl.h``.
    See :ref:`section_externalresourceloader` for more information on the its implementation.
 
+All resources must be added in the project, usually in ``src/main/resources/...``.
+The resources must be declared in the appropriate ``*.list`` files depending on the type (image, font, NLS, raw) and kind (internal or external) resources.
+The following figure summarized how to declare resources:
+
+.. image:: images/application_resource_declaration_list_file.png
+   :align: center
+
+..
+   @startuml
+   : Add resource to project
+   in src/main/resources/...;
+   switch (Kind of resource?)
+   case ( Image )
+   if (Internal ?) then (yes)
+   : *.images.list;
+   kill
+   else (no=external)
+   : *.imagesext.list;
+   kill
+   endif
+   case ( Font )
+   if (Internal ?) then (yes)
+   : *.fonts.list;
+   kill
+   else (no=external)
+   : *.fontsext.list;
+   kill
+   endif
+   case ( Raw resource )
+   if (Internal ?) then (yes)
+   : *.resources.list;
+   kill
+   else (no=external)
+   : *.resources.list +
+    *.externresources.list;
+   kill
+   endif
+   case ( NLS )
+   if (Internal ?) then (yes)
+   : *.nls.list;
+   kill
+   else (no=external)
+   : *.nls.list +
+    *.externresources.list;
+   kill
+   endif
+   endswitch
+   @enduml
+
+
 .. _section.applicationResources.Images:
 
 Images
