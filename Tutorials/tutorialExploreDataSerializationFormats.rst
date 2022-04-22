@@ -150,7 +150,7 @@ In the following example we will parse this JSON file that represents a simple a
 		}
 	}
 
-First, we need to include this file in our project by adding it to the ``src/main/resources`` folder and creating a ``.resources.list`` properties file to declare this resource for our application to be able to retrieve it (see :ref:`section.classpath.elements.resources` for more details). 
+First, we need to include this file in our project by adding it to the ``src/main/resources`` folder and creating a ``.resources.list`` properties file to declare this resource for our application to be able to retrieve it (see :ref:`section.applicationResources.raw_resources` for more details). 
 
 .. figure:: images/json-src-files-folders.png
 	:alt: Source files organization
