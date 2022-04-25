@@ -17,7 +17,7 @@ It contains a selection of production-grade modules such as :ref:`Libraries <lib
 Use
 ---
 
-By default, the SDK is configured to connect the online Central Repository. 
+By default, the SDK is configured to import modules from the online Central Repository. 
 
 You can manually browse the repository at https://repository.microej.com/modules/.
 
@@ -61,7 +61,7 @@ MicroEJ Corp. contributes to the developer repository in the following cases:
 Use
 ---
 
-By default, the SDK is configured to connect the developer repository [#warning_require_sdk_5_4]_.
+By default, the SDK is configured to import modules from the developer repository [#warning_require_sdk_5_4]_.
 
 You can also manually browse the repository at https://forge.microej.com/artifactory/microej-developer-repository-release/.
 
