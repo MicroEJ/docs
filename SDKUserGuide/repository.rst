@@ -35,9 +35,8 @@ Please consult the ``LICENSE.txt`` file attached to each module.
 Changelog
 ---------
 
-The Central Repository content is versioned. The changelog is available at https://repository.microej.com/.
-
-Please consult the ``CHANGELOG.md`` file attached to each module.
+The Central Repository content is versioned. The overall changelog is available at https://repository.microej.com/ and describes modules additions or removals.
+For module content changes, please consult the ``CHANGELOG.md`` file attached to each module.
 
 Javadoc
 -------
