@@ -73,6 +73,7 @@ Before starting to develop production code, it is strongly recommended to transf
 Licensing
 ---------
 
+The developer repository is a set of modules distributed under various software licenses.
 Please consult the ``LICENSE.txt`` file attached to each module.
 
 Changelog
