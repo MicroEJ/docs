@@ -39,7 +39,7 @@ Using the SDK, an application developer will be able to:
    information about MicroEJ Forge, please consult
    `<https://www.microej.com/product/forge>`_.
 
-The following diagram outlines the SDK content. Please refer to the :ref:`sdk_user_guide` chapter for more details ont the SDK and its usage.
+The following diagram outlines the SDK content. Please refer to the :ref:`sdk_user_guide` chapter for more details on the SDK and its usage.
 
 .. figure:: images/sdk_overview.png
    :alt: SDK Components Overview
