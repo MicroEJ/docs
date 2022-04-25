@@ -11,8 +11,8 @@ This chapter describes the :ref:`module repositories <module_repository>` provid
 Central Repository
 ==================
 
-The Central Repository is the module repository distributed and maintained by
-MicroEJ Corp. It contains Foundation Library APIs and numerous Add-On Libraries. 
+The Central Repository is the module repository distributed and maintained by MicroEJ Corp. 
+It contains a selection of production-grade modules such as Foundation Libraries, Add-On Libraries and :ref:`Packs <pack_overview>`.
 
 Use
 ---
