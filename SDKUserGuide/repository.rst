@@ -8,18 +8,18 @@ This chapter describes the :ref:`module repositories <module_repository>` provid
 
 .. _central_repository:
 
-MicroEJ Central Repository
-==========================
+Central Repository
+==================
 
-The MicroEJ Central Repository is the module repository distributed and maintained by
+The Central Repository is the module repository distributed and maintained by
 MicroEJ Corp. It contains Foundation Library APIs and numerous Add-On Libraries. 
 
 Use
 ---
 
-By default, MicroEJ SDK is configured to connect the MicroEJ Central Repository. 
+By default, the SDK is configured to connect the online Central Repository. 
 
-You can also manually browse the repository at https://repository.microej.com/modules/.
+You can manually browse the repository at https://repository.microej.com/modules/.
 
 Before starting to develop production code, it is strongly recommended to import the repository to your local environment. 
 Please follow the steps described at `<https://developer.microej.com/central-repository/>`_.
@@ -35,7 +35,7 @@ Please consult the ``LICENSE.txt`` file attached to each module.
 Changelog
 ---------
 
-The MicroEJ Central Repository content is versioned. The changelog is available at https://repository.microej.com/.
+The Central Repository content is versioned. The changelog is available at https://repository.microej.com/.
 
 Please consult the ``CHANGELOG.md`` file attached to each module.
 
@@ -56,13 +56,13 @@ MicroEJ Corp. contributes to the developer repository in the following cases:
 
 - Demos (Platforms, Firmware, Virtual Devices, Applications),
 - Incubating Libraries,
-- Former MicroEJ Central Repository versions,
+- Former Central Repository versions,
 - Hardware specific modules.
 
 Use
 ---
 
-By default, MicroEJ SDK is configured to connect the developer repository [#warning_require_sdk_5_4]_.
+By default, the SDK is configured to connect the developer repository [#warning_require_sdk_5_4]_.
 
 You can also manually browse the repository at https://forge.microej.com/artifactory/microej-developer-repository-release/.
 
@@ -78,7 +78,7 @@ Please consult the ``LICENSE.txt`` file attached to each module.
 Changelog
 ---------
 
-The developer repository is populated from multiple sources, thus there is no changelog for the whole repository content as it is the case of the MicroEJ Central Repository.
+The developer repository is populated from multiple sources, thus there is no changelog for the whole repository content as it is the case of the Central Repository.
 
 Please consult the ``CHANGELOG.md`` file attached to each module.
 
@@ -98,7 +98,7 @@ Content Organization
 
 The following table describes how are organized the :ref:`modules natures <module_natures>` within the repository.
 
-.. list-table:: MicroEJ Modules Organization
+.. list-table:: Modules Organization
    :widths: 40 40
    :header-rows: 1
 
@@ -108,9 +108,9 @@ The following table describes how are organized the :ref:`modules natures <modul
        ``com.microej.api``
      - Foundation Library API
    * - ``com.microej.architecture``
-     - :ref:`MicroEJ Architecture <architecture_overview>`
+     - :ref:`Architecture <architecture_overview>`
    * - ``com.microej.pack``
-     - :ref:`MicroEJ Pack <pack_overview>`
+     - :ref:`Pack <pack_overview>`
    * - ``ej.tool``,
        ``com.microej.tool``
      - Tool or Add-On processor
