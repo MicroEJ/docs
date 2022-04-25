@@ -10,7 +10,7 @@ MICROEJ SDK is licensed under the SDK End User License Agreement (EULA), which c
 
 - SDK Tools & Plugins packaged in the SDK `5.x` Version,
 - Architectures,
-- Modules published to the :ref:`central_repository` with the SDK EULA license, such as GUI or Networking Pack (please consult the ``LICENSE.txt`` file attached to each module)
+- Modules published to the :ref:`central_repository` with the SDK EULA license, such as GUI or Networking Pack (see :ref:`Central Repository Licensing <central-repository-licensing>` for more details).
 
 .. figure:: images/sdk_eula_content.png
    :alt: SDK EULA Coverage

@@ -24,9 +24,12 @@ You can also manually browse the repository at https://repository.microej.com/mo
 Before starting to develop production code, it is strongly recommended to import the repository to your local environment. 
 Please follow the steps described at `<https://developer.microej.com/central-repository/>`_.
 
+.. _central-repository-licensing:
+
 Licensing
 ---------
 
+The Central Repository is a set of modules distributed under various software licenses, including the :ref:`sdk_eula` for some of them.
 Please consult the ``LICENSE.txt`` file attached to each module.
 
 Changelog
