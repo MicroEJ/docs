@@ -447,6 +447,7 @@ Images Heap
 The images heap is used to allocate the pixel data of:
 
 - mutable images (i.e. `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html>`_  instances)
+- immutable images decoded at runtime, typically a PNG: the heap is used to store the decoded image **and** the runtime decoder's temporary buffers, required during the decoding step. After the decoding step, all temporary buffers are freed. Note that the size of temporary buffers depend on the decoder **and** on the original image itself (compression level, pixel encoding, etc.)
 - immutable images which are not byte-addressable, such as images opened with an input stream (i.e. `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_  instances)
 - immutable images which are byte-addressable but converted to a different output format (i.e. `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_  instances)
 
