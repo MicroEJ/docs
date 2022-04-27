@@ -106,13 +106,70 @@ Widget Display
 
 The widget Display implements the interface ``ej.microui.display.LLUIDisplayImpl`` to be compatible with the implementation of the MicroUI class `Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_.
 
-This widget manages:
+Features
+--------
 
-* The simple or double buffering (default value): ``doubleBufferFeature=true|false``.
-* The backlight (enabled by default): ``backlightFeature=true|false``.
-* The non-rectangular displays: ``filter="xxx.png"``. Some displays can have another appearance (for instance: circular); the Front Panel can simulate using a filter (see :ref:`section_frontpanel_widget`). This filter defines the pixels inside and outside the whole display area. The filter image must have the same size as the rectangular display area. A display pixel at a given position will not be rendered if the pixel at the same position in the mask is fully transparent.
-* The :ref:`standard<display_pixel_structure_standard>` pixel formats.
-* The :ref:`driver-specific<display_pixel_structure_driver>` pixel formats: ``extensionClass="xxx"``. This class must be added in the Front Panel project and implement the interface ``ej.fp.widget.Display.DisplayExtension``.
+* Simple or double buffering (default value): ``doubleBufferFeature=true|false``.
+* :ref:`LCD refresh rate<section_ui_simulation_refreshrate>`: simulates the time between two visible frames on the hardware device.
+* :ref:`LCD flush time<section_ui_simulation_flushtime>`: simulates the time to send the frame content to the hardware device.
+* Backlight (enabled by default): ``backlightFeature=true|false``.
+* :ref:`Non-rectangular displays<section_ui_simulation_nonrectangulardisplay>`: ``filter="xxx.png"``. Some displays can have another appearance (for instance: circular).
+* :ref:`Standard<display_pixel_structure_standard>` pixel formats.
+* :ref:`Driver-specific<display_pixel_structure_driver>` pixel formats: ``extensionClass="xxx"``. This class must be added in the Front Panel project and implement the interface ``ej.fp.widget.Display.DisplayExtension``.
+
+.. _section_ui_simulation_refreshrate:
+
+Refresh Rate
+------------
+
+Usually a LCD is cadenced around 50-60Hz.
+That means the LCD can display a new frame every 16-20ms.
+By default this widget displays a new frame as soon as possible. 
+It can be configured to reduce this time to simulate the hardware device.
+
+In the widget declaration, set the attribute ``refreshRate="xxx"`` with a value in Hertz.
+A zero or negative value disables the feature.
+
+.. note:: This feature is only available when double buffering mode is enabled.
+   
+The application can substitute the platform's value by setting the property ``-Dej.fp.widget.display.refreshRate=xxx`` in the application launcher.
+
+.. _section_ui_simulation_flushtime:
+
+Flush Time
+----------
+ 
+On a hardware device, the time to send the frame data from the back buffer memory to the LCD is not null. 
+According to the hardware device technology, this time varies between 3-4 ms to 10-15ms. 
+In SPI mode, this time may be higher, around 50ms, even more.
+By default this widget copies the content of back buffer as faster as possible.
+It can be configured to reduce this time to simulate the hardware device.
+
+In the widget declaration, set the attribute ``flushTime="xxx"`` with a value in milliseconds.
+A zero or negative value disables the feature.
+
+.. note:: This feature is only available when double buffering mode is enabled.
+   
+The application can substitute the platform's value by setting the property ``-Dej.fp.widget.display.flushTime=xxx`` in the application launcher.
+
+.. _section_ui_simulation_nonrectangulardisplay:
+
+Non-rectangular Display
+-----------------------
+
+The Front Panel can simulate using a filter (see :ref:`section_frontpanel_widget`). 
+This filter defines the pixels inside and outside the whole display area. 
+The filter image must have the same size as the rectangular display area. 
+A display pixel at a given position will not be rendered if the pixel at the same position in the mask is fully transparent.
+
+.. note:: Usually the touch panel over the display uses the same filter to reduce the touch panel area. 
+
+Example of non-rectangular display and touch:
+
+.. code-block:: xml
+
+   <ej.fp.widget.Display x="41" y="33" width="392" height="392" filter="mask_392.png" />
+   <ej.fp.widget.Pointer x="41" y="33" width="392" height="392" filter="mask_392.png" touch="true"/>
 
 .. _section_ui_simulation_customdrawing:
 
