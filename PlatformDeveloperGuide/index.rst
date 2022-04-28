@@ -27,6 +27,7 @@ Platform Developer Guide
    systemView
    simulation
    appendix/index
+   javafx
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
