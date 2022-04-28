@@ -97,12 +97,6 @@ fields found in the given classpath.
 
 .. include:: kernelAPIgenerator_use.rst
 
-Extend Kernel APIs
-------------------
-
-New methods can be added to existing APIs in order to create a custom API. Read :ref:`class-extender` for more 
-information. 
-
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
