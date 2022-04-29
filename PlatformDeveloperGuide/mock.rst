@@ -317,12 +317,12 @@ Use JavaFX in a Mock project
 
 - The :guilabel:`javafx.jar` artifact is now present in your Module dependencies and can be used to develop your Mock Project. 
 
-.. figure:: images/javafx_dependency.png
-   :alt: JavaFX as Mock's dependency
+.. figure:: images/javafx_artifact.png
+   :alt: JavaFX jar artifact
    :align: center
    :scale: 100%
 
-   JavaFX as Mock's dependency
+   JavaFX jar artifact
 
 
 Embed JavaFX in a Platform
