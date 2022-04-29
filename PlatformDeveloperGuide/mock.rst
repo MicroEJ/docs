@@ -281,78 +281,17 @@ Once the module is built, the mock can be installed in a Platform in one of the 
 
 
 JavaFX
-=============
+=======
 
-The JavaFX Module allows the use of `JavaFX <https://openjfx.io/>`_ in the creation of a Mock project or to embed JavaFX in a Platform.
-This Module is required when working with a JDK 11, since JavaFX is not embedded anymore in Oracle JDK.
+`JavaFX <https://openjfx.io/>`_ is a platform for creating Java applications with a modern user interface that is highly portable. It can be used to quickly create mocks for your Platform.
 
-The following OS are supported by the JavaFX Module :
+- Until the version 1.8, JavaFX is bundled in the Oracle JDK, so this version allows you to use it right now in your project.
 
-- Linux 64
-- Mac Aarch64
-- Mac x86_64
-- Windows 64
-
-To ensure Mac Aarch64 support, the JavaFX Module is based on JavaFX 17 which requires a JDK 11, so it can not be used with a JDK 1.8.
-
-.. note::
-
-  To use JavaFX with JDK 1.8, it is required to install an Oracle JDK 1.8 which embeds the JavaFX libraries.  
-
-
-The JavaFX Module is composed of two artifacts which are used depending on your use case:
-
-- :guilabel:`javafx.jar` which contains all JavaFX libraries and can be used to develop a Mock project.
-- :guilabel:`javafx.rip` which embeds the JavaFX libraries in a Platform.
-
-
-Use JavaFX in a Mock project
-----------------------------
-
-- Add the JavaFX Module to the module.ivy of your Mock project.
+- To use JavaFX with the JDK 11, the additional dependency must be added in your Mock project as well as your Platform project :
 
 ::
 
     <dependency org="com.microej.tool" name="javafx" rev="1.1.0" />
-
-- The :guilabel:`javafx.jar` artifact is now present in your Module dependencies and can be used to develop your Mock Project. 
-
-.. figure:: images/javafx_artifact.png
-   :alt: JavaFX jar artifact
-   :align: center
-   :scale: 100%
-
-   JavaFX jar artifact
-
-
-Embed JavaFX in a Platform
---------------------------
-
-- Add the JavaFX Module to the module.ivy of your Platform configuration project.
-
-::
-
-    <dependency org="com.microej.tool" name="javafx" rev="1.1.0" />
-
-- Build your Platform (see :ref:`how to build a Platform <platform_build>`) 
-
-- In your ready-to-use Platform project, thanks to the :guilabel:`javafx.rip` artifact, the JavaFX libraries have been embedded in the :guilabel:`mocks/dropins` directory.
-
-.. figure:: images/javafx_libraries.png
-   :alt: JavaFX Libraries
-   :align: center
-   :scale: 100%
-
-   JavaFX Libraries
-
-- All JavaFX native libraries have been embedded in their corresponding OS directory, in the :guilabel:`resources/os` directory :   
-
-.. figure:: images/javafx_native_libraries.png
-   :alt: JavaFX Native Libraries
-   :align: center
-   :scale: 100%
-
-   JavaFX Native Libraries
 
 Use
 ===
