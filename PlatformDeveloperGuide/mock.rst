@@ -280,7 +280,7 @@ Once the module is built, the mock can be installed in a Platform in one of the 
 - or by manually copying the JAR file ``[mock_project]\target~\rip\mocks\[mock_name].jar`` to the :ref:`Platform configuration <platform_configuration_creation>` mock dropins folder ``dropins/mocks/dropins/``.
 
 
-JavaFX Module
+JavaFX
 =============
 
 The JavaFX Module allows the use of `JavaFX <https://openjfx.io/>`_ in the creation of a Mock project or to embed JavaFX in a Platform.
