@@ -279,26 +279,25 @@ Once the module is built, the mock can be installed in a Platform in one of the 
 - by adding the mock module as a regular Platform :ref:`module dependency <mmm_module_dependencies>` (if your Platform configuration project contains a ``module.ivy`` file), 
 - or by manually copying the JAR file ``[mock_project]\target~\rip\mocks\[mock_name].jar`` to the :ref:`Platform configuration <platform_configuration_creation>` mock dropins folder ``dropins/mocks/dropins/``.
 
-
-JavaFX
-=======
-
-`JavaFX <https://openjfx.io/>`_ is a platform for creating Java applications with a modern user interface that is highly portable. It can be used to quickly create mocks for your Platform.
-
-- Until the version 1.8, JavaFX is bundled in the Oracle JDK, so this version allows you to use it right now in your project.
-
-- To use JavaFX with the JDK 11, the additional dependency must be added in your Mock project as well as your Platform project :
-
-::
-
-    <dependency org="com.microej.tool" name="javafx" rev="1.1.0" />
-
 Use
 ===
 
 Once installed, a Mock is used automatically by the Simulator when the
 MicroEJ Application calls a native method which is implemented into the
 Mock.
+
+JavaFX
+=======
+
+`JavaFX <https://openjfx.io/>`_ is a platform for creating Java applications with a modern user interface that is highly portable. It can be used to quickly create graphical Mocks for your Platform.
+
+- Until the version 1.8, the Oracle JDK contains JavaFX, so this version allows you to use it right now in your project.
+
+- To use JavaFX with the JDK 11, this additional dependency must be added in your Mock project as well as your Platform project :
+
+::
+
+    <dependency org="com.microej.tool" name="javafx" rev="1.1.0" />
 
 
 ..
