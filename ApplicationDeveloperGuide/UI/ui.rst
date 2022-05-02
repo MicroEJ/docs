@@ -25,6 +25,7 @@ The following schema shows the overall architecture and modules:
    MWT/index
    Widgets/index
    Advanced/index
+   MicroVG/index
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
