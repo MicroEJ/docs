@@ -17,6 +17,18 @@ This binary code is linked by a tool named :ref:`SOAR <soar>` before execution: 
 .. [2]
    Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
 
+.. _mjvm_javamemorymodel:
+
+Memory model
+------------
+
+MicroEJ Runtime comply with the standard Java Memory Model. For more details, have a look to this great article:
+`Java Memory Model
+ <https://jenkov.com/tutorials/java-concurrency/java-memory-model.html>`_.
+
+ Concurrent applications should follow the same Java concurrency rules at the exception that the current version of the MEJ32 is
+ not impacted by the visibility of shared objects, regardless of the hardware memory architecture.
+
 .. _runtime_core_libraries:
 
 Core Libraries
