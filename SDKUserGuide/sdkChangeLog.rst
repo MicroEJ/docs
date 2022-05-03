@@ -126,6 +126,16 @@ for more details.
 SDK Changelog
 -------------
 
+.. _changelog-5.5.3:
+
+[5.5.3] - 2022-05-03
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+-  Fixed Module build issue on Windows with JDK 8.0.331.
+
 .. _changelog-5.5.2:
 
 [5.5.2] - 2021-12-22
