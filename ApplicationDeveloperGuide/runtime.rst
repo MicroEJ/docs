@@ -108,6 +108,7 @@ SNI allows you to:
 
 -  Call a C function from a Java method.
 -  Access an Immortal array in a C function (see the :ref:`runtime_bon` to learn about immortal objects).
+-  Access Java base type arrays during the execution of the native function.
 
 SNI does not allow you to:
 
