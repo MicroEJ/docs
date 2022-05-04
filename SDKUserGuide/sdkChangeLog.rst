@@ -134,7 +134,7 @@ SDK Changelog
 General
 """""""
 
--  Fixed Module build issue on Windows with JDK 8.0.331.
+-  Fixed error ``Can't parse module descriptor`` when building a Module on Windows with a JDK 8.0.331+.
 
 .. _changelog-5.5.2:
 
