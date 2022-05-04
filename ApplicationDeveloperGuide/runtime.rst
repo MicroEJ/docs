@@ -22,7 +22,7 @@ This binary code is linked by a tool named :ref:`SOAR <soar>` before execution: 
 Memory model
 ------------
 
-MicroEJ Runtime comply with the standard Java Memory Model. For more details, have a look to this great article:
+MicroEJ Runtime complies with the standard Java Memory Model. For more details, have a look to this great article:
 `Java Memory Model
  <https://jenkov.com/tutorials/java-concurrency/java-memory-model.html>`_.
 
@@ -108,7 +108,7 @@ SNI allows you to:
 
 -  Call a C function from a Java method.
 -  Access an Immortal array in a C function (see the :ref:`runtime_bon` to learn about immortal objects).
--  Access Java base type arrays during the execution of the native function.
+-  Access regular Java base type arrays from a native function context.
 
 SNI does not allow you to:
 
