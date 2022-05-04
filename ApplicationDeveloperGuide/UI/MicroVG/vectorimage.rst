@@ -218,7 +218,9 @@ SVG files that need to be animated should be converted to Android Vector Drawabl
 Supported animations
 ~~~~~~~~~~~~~~~~~~~~
 
-For the following animation examples, this simple java code will be used. The image is drawn in a loop.
+This section will present the different available animations with an example. 
+
+For each example, this simple java code will be used. 
 
 .. code-block:: java
 
@@ -440,6 +442,271 @@ Any group in the Android Vector Drawable can be rotated around a pivot point. Th
    :alt: Draw animated image over a path
    :width: 300px
    :align: center
+
+
+Morphing
+********
+
+The Android Vector Drawable format supports the animation of the `pathData` attribute of a path. With this type of animation a shape can be transformed to a totally different other shape. The only constraint is that the origin and destination `pathData` must have the same commands format.
+
+Lets take for example the morphing of a rectangle to a circle which have the following commands.
+
+:: 
+
+   Circle: M 11.9 9.8 C 11.9 8.1 13.3 6.7 14.9 6.7 C 16.6 6.7 18 8.1 18 9.8 C 18 11.6 16.6 13 14.9 13 C 13.3 13 11.9 11.6 11.9 9.8 Z
+
+   Rectangle: M 11.9 6.7 H 18 V 13 H 11.9 Z
+
+The rectangle path as to be reworked to fit the commands of the circle path. 
+
+There is an infinity of possibilities to create the new path, and the association of each points of the paths will induce a specific morphing animation.
+
+::
+
+   New Rectangle path1: M 11.9 9.8 C 11.897 7.735 11.906 7.995 11.906 6.697 C 16.6 6.7 16.601 6.706 17.995 6.697 C 18 11.6 17.995 11.587 18.004 13.006 C 13.3 13 13.852 13.006 11.897 13.006 Z
+
+   New Rectangle path2: M 11.906 6.697 C 11.953 6.698 12.993 6.698 17.995 6.697 C 17.999 8.331 17.997 9.93 18.002 13.004 C 16.239 13.007 16.009 13.001 11.893 13.007 C 13.3 13 13.852 13.006 11.893 13.007 Z
+
+
+.. code-block:: xml
+
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector  android:width="20dp"  android:height="20dp"  android:viewportWidth="20"  android:viewportHeight="20">
+            <path android:fillColor="#FF0000" android:pathData="M 0 0 h40 v40 h-40"/>
+            <path android:fillColor="#FF0000" android:pathData="M 0 0 h40 v40 h-40"/>
+            <group android:name="group1" android:translateX="-10">
+                <path
+                    android:name="circle1"
+                    android:pathData="M 11.9 9.8 C 11.9 8.1 13.3 6.7 14.9 6.7 C 16.6 6.7 18 8.1 18 9.8 C 18 11.6 16.6 13 14.9 13 C 13.3 13 11.9 11.6 11.9 9.8 Z"
+                    android:fillColor="#FFFFAA"/>
+            </group>
+            <group android:name="group2">
+                <path android:name="circle2"
+                    android:pathData="M 11.9 9.8 C 11.9 8.1 13.3 6.7 14.9 6.7 C 16.6 6.7 18 8.1 18 9.8 C 18 11.6 16.6 13 14.9 13 C 13.3 13 11.9 11.6 11.9 9.8 Z"
+                    android:fillColor="#00FFAA"  />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="circle1">
+    <aapt:attr name="android:animation">
+        <set>
+            <objectAnimator
+                android:propertyName="pathData"
+                android:duration="2000"
+                android:valueFrom="M 11.9 9.8 C 11.9 8.1 13.3 6.7 14.9 6.7 C 16.6 6.7 18 8.1 18 9.8 C 18 11.6 16.6 13 14.9 13 C 13.3 13 11.9 11.6 11.9 9.8 Z"
+                android:valueTo="M 11.9 9.8 C 11.897 7.735 11.906 7.995 11.906 6.697 C 16.6 6.7 16.601 6.706 17.995 6.697 C 18 11.6 17.995 11.587 18.004 13.006 C 13.3 13 13.852 13.006 11.897 13.006 Z"
+                android:valueType="pathType"/>
+        </set>
+    </aapt:attr>
+    </target>
+    <target android:name="circle2">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="pathData"
+                    android:duration="2000"
+                    android:valueFrom="M 11.9 9.8 C 11.9 8.1 13.3 6.7 14.9 6.7 C 16.6 6.7 18 8.1 18 9.8 C 18 11.6 16.6 13 14.9 13 C 13.3 13 11.9 11.6 11.9 9.8 Z"
+                    android:valueTo="M 11.906 6.697 C 11.953 6.698 12.993 6.698 17.995 6.697 C 17.999 8.331 17.997 9.93 18.002 13.004 C 16.239 13.007 16.009 13.001 11.893 13.007 C 13.3 13 13.852 13.006 11.893 13.007 Z"
+                    android:valueType="pathType"/>
+            </set>
+        </aapt:attr>
+   </target>
+   </animated-vector>
+
+.. figure:: images/drawAnimatedImageMorphing.gif
+   :alt: Draw animated image with path morphing
+   :width: 300px
+   :align: center
+
+.. warning:: As path strokes are converted at build-time to filled path, the morphing of stroked paths is not supported. Any image with a path morphing animation on a stroked path will be rejected. Path strokes must be manually converted to filled path and the morphing of these new  filled paths must be created.
+
+
+Color and Opacity
+*****************
+
+Any path fillColor, strokeColor, fillAlpha and strokeAlpha attributes in the Android Vector Drawable can be animated. 
+
+- Image:
+
+.. code-block:: xml
+
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector  android:width="55dp"  android:height="55dp"  android:viewportWidth="55"  android:viewportHeight="55">
+           <group android:translateX="5">
+            <path android:name="fillColor" android:fillColor="#FF00FF" android:pathData="M 0 0 h20 v20 h-20 Z"/>
+            <path android:name="fillAlpha" android:fillColor="#FF0000" android:pathData="M 25 0 h20 v20 h-20 Z"/>
+            <path android:name="strokeColor" android:strokeWidth="5" android:strokeColor="#FFFF00" android:pathData="M 0 25 h20 v20 h-20 Z"/>
+            <path android:name="strokeAlpha" android:strokeWidth="5" android:strokeColor="#00FF00" android:pathData="M 25 25 h20 v20 h-20 Z"/>
+           </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="fillColor">
+    <aapt:attr name="android:animation">
+        <set><objectAnimator
+                android:propertyName="fillColor"
+                android:duration="3000"
+                android:valueFrom="#FF00FF"
+                android:valueTo="#FFFF00"/>
+        </set>
+    </aapt:attr>
+    </target>
+    <target android:name="strokeColor">
+        <aapt:attr name="android:animation">
+            <set><objectAnimator
+                    android:propertyName="strokeColor"
+                    android:duration="3000"
+                    android:valueFrom="#FFFF00"
+                    android:valueTo="#FF00FF"/>
+            </set>
+        </aapt:attr>
+    </target>
+
+    <target android:name="fillAlpha">
+        <aapt:attr name="android:animation">
+            <set> <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:duration="3000"
+                    android:valueFrom="0.2"
+                    android:valueTo="1"
+                    android:valueType="floatType"/>
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="strokeAlpha">
+        <aapt:attr name="android:animation">
+            <set> <objectAnimator
+                    android:propertyName="strokeAlpha"
+                    android:duration="3000"
+                    android:valueFrom="1"
+                    android:valueTo="0.2"
+                    android:valueType="floatType"/>
+            </set>
+        </aapt:attr>
+    </target>
+   </animated-vector>
+
+- Resulting drawing:
+  
+.. figure:: images/drawAnimatedImageColor.gif
+   :alt: Draw animated image with path morphing
+   :width: 300px
+   :align: center
+
+.. warning:: The color of paths colored with a linear gradient can not be animated.
+
+Easing Interpolators
+********************
+
+Every animations are associated with an easing interpolator. By default the animation transition is linear, but the rate of change in the animation can be defined by an interpolator. This allows the existing animation effects to be accelerated, decelerated, repeated, bounced, etc.
+
+The supported Android interpolators are:
+
+  - accelerate_cubic
+  - accelerate_decelerate
+  - accelerate_quad
+  - anticipate
+  - anticipate_overshoot
+  - bounce
+  - cycle
+  - decelerate_cubic
+  - decelerate_quad
+  - decelerate_quint
+  - fast_out_extra_slow_in
+  - fast_out_linear_in
+  - fast_out_slow_in
+  - linear
+  - linear_out_slow_in
+  - overshoot
+
+Any other vectorial path can also be used as the interpolator easing function.
+
+Following examples show the behavior of some of the interpolators for a simple translation animation.
+
+- Image:
+  
+.. code-block:: 
+
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector  android:width="100dp"  android:height="100dp"  android:viewportWidth="100"  android:viewportHeight="100">
+        <path android:pathData="M 0 0 h100 v20 h-100 Z" android:strokeColor="#FFFFFF" android:strokeWidth="1"/>
+           <group android:name="translate">
+            <path android:pathData="M 0 0 h20 v20 h-20 Z" android:fillColor="#335566"/>
+         </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="translate">
+    <aapt:attr name="android:animation">
+        <set><objectAnimator
+                android:propertyName="translateX"
+                android:duration="2000"
+                android:valueFrom="0"
+                android:valueTo="80"
+                android:interpolator = "@android:interpolator/linear" />
+        </set>
+    </aapt:attr>
+    </target>
+   </animated-vector>
+
+
+.. code-block:: xml
+
+         android:interpolator = "@android:interpolator/linear"
+
+.. image:: images/linearInterpolator.gif
+   :alt: Draw animated image with path morphing
+   :width: 100px
+
+
+.. code-block:: xml
+
+         android:interpolator = "@android:interpolator/accelerate_cubic"
+
+.. image:: images/accelerateInterpolator.gif
+   :width: 100px
+
+.. code-block:: xml
+
+         android:interpolator = "@android:interpolator/bounce"
+      
+.. image:: images/bounceInterpolator.gif
+   :width: 100px
+
+.. code-block:: xml
+
+         android:interpolator = "@android:interpolator/fast_out_slow_in"
+
+.. image:: images/fast_out_slow_inInterpolator.gif
+   :width: 100px
+
+.. code-block:: xml
+
+         <aapt:attr name="android:interpolator">
+            <pathInterpolator android:pathData="M 0 0 C 0.371 2.888 0.492 -1.91 1 1" />
+         </aapt:attr>
+
+.. image:: images/custom0Interpolator.gif
+   :width: 100px
+
+.. image:: images/custom0Interpolator.png
+   :width: 100px
+
+.. code-block:: xml
+
+         <aapt:attr name="android:interpolator">
+            <pathInterpolator android:pathData="M 0 0 C 0.333 1.939 0.171 -0.906 0.601 0.335 C 0.862 0.998 0.83 -0.771 1 1" />
+         </aapt:attr>
+
+.. image:: images/custom1Interpolator.gif
+   :width: 100px
+
+.. image:: images/custom1Interpolator.png
+   :width: 100px
 
 Limitations
 -----------
