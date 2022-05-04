@@ -23,11 +23,10 @@ Memory model
 ------------
 
 MicroEJ Runtime complies with the standard Java Memory Model. For more details, have a look to this great article:
-`Java Memory Model
- <https://jenkov.com/tutorials/java-concurrency/java-memory-model.html>`_.
+`Java Memory Model <https://jenkov.com/tutorials/java-concurrency/java-memory-model.html>`_.
 
- Concurrent applications should follow the same Java concurrency rules at the exception that the current version of the MEJ32 is
- not impacted by the visibility of shared objects, regardless of the hardware memory architecture.
+Concurrent applications should follow the same Java concurrency rules at the exception that the current version of the MEJ32 is
+not impacted by the visibility of shared objects, regardless of the hardware memory architecture.
 
 .. _runtime_core_libraries:
 
