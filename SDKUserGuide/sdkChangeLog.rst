@@ -126,6 +126,16 @@ for more details.
 SDK Changelog
 -------------
 
+.. _changelog-5.5.3:
+
+[5.5.3] - 2022-05-03
+~~~~~~~~~~~~~~~~~~~~
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+-  Fixed error ``Can't parse module descriptor`` when building a Module on Windows with a JDK 8.0.331+.
+
 .. _changelog-5.5.2:
 
 [5.5.2] - 2021-12-22
