@@ -1,3 +1,5 @@
+.. _chapter.communication.features:
+
 Communication between Features
 ==============================
 

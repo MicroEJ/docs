@@ -197,6 +197,11 @@ Engine.
       - ``java.util.Map<String,String>``
       - Clone by deep copy
 
+.. note::
+
+   For these types to be transferable, a specific :ref:`converter<chapter.communication.features>` must have been registered in
+   the kernel.
+
 .. _section.proxy.implementation:
 
 Proxy Class Implementation
