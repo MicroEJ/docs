@@ -8,13 +8,12 @@ MicroVG
 
    introduction
    path
-   gradient
    matrix
+   gradient
    vectorfont
    vectorimage
-   avdloader
-   errors
-   limitations
+   helperlib
+
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

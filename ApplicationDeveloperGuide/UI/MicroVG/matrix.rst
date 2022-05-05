@@ -1,3 +1,5 @@
+.. include:: aliases.rst
+
 .. _Matrix:
 
 Matrix
@@ -49,30 +51,44 @@ The following examples use the `Path` created in the section :ref:`Path creation
 Translation
 ~~~~~~~~~~~
 
+|startTable|
+
 .. code-block:: java
 
    Matrix matrix = new Matrix();
    matrix.setTranslate(200, 150);
 
+|nextCell|
+
 .. figure:: images/matrixTranslate0.png 
    :width: 200px
    :align: center
+
+|endCell|
 
 Rotation
 ~~~~~~~~
 
 Around point (0,0).
 
+|startTable|
+
 .. code-block:: java
 
    Matrix matrix = new Matrix();
    matrix.setRotate(40);
 
+|nextCell|
+
 .. figure:: images/matrixRotate0.png 
    :width: 200px
    :align: center
 
+|endCell|
+
 Around a pivot point (80,50).
+
+|startTable|
 
 .. code-block:: java
 
@@ -84,28 +100,40 @@ Around a pivot point (80,50).
    matrix.preTranslate(-pivotX, -pivotY);
    matrix.postTranslate(pivotX, pivotY);
 
+|nextCell|
+
 .. figure:: images/matrixRotate1.png 
    :width: 200px
    :align: center
-   
+
+|endCell|
+
 Scale
 ~~~~~
 
 From point (0,0).
+
+|startTable|
 
 .. code-block:: java
 
    Matrix matrix = new Matrix();
    matrix.setScale(2,3);
 
+|nextCell|
+
 .. figure:: images/matrixScale0.png 
    :width: 200px
    :align: center
+
+|endCell|
 
 Contatenate Matrixes
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Sequence order has an incidence on the rendering.
+
+|startTable|
 
 .. code-block:: java
 
@@ -126,9 +154,13 @@ Sequence order has an incidence on the rendering.
    g.setColor(Colors.YELLOW);
    VectorGraphicsPainter.fillPath(g, path, matrix2);
 
+|nextCell|
+
 .. figure:: images/matrixConcat0.png 
    :width: 200px
    :align: center
+
+|endCell|
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
