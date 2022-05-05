@@ -1,20 +1,10 @@
-.. _section_app_microvg:
+.. _Linear Gradient:
 
-MicroVG
-=======
+Linear Gradient
+===============
 
-.. toctree::
-   :maxdepth: 2
 
-   introduction
-   path
-   gradient
-   matrix
-   vectorfont
-   vectorimage
-   avdloader
-   errors
-   limitations
+
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
