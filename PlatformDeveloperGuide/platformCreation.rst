@@ -322,6 +322,24 @@ the default configuration script.
 
 Modifying one of these files requires to :ref:`build the Platform <platform_build>` again.
 
+.. _platform_publication:
+
+Platform Publication
+====================
+
+The publication of the built Platform to a :ref:`module repository <module_repository>` is disabled by default.
+It can be enabled by setting the ``skip.publish`` property defined in the file ``module.properties`` of 
+the Platform configuration project to ``false``.
+
+The publication is generally kept disabled by default in the project sources since developers use the locally built platform,
+but must be enabled in the Continuous Integration environment.
+This can be done by leaving the ``skip.publish`` property to ``true`` in the project sources 
+and by overwriting it in the command launched by the Continuous Integration environment, for example:
+
+.. code-block:: sh
+
+  mmm publish shared -Dskip.publish=false
+
 .. _bsp_connection:
 
 BSP Connection
