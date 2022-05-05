@@ -116,7 +116,7 @@ Test Suite Versioning
 =====================
 
 Foundation Libraries are integrated in a MicroEJ Platform by MicroEJ Packs (see :ref:`pack_import`).
-Use the Test Suite version compliant with the Foundation Library version to validate the Abstraction Layer implementation.
+Use the Test Suite version compliant with the API version provided by the Foundation Library to validate the Abstraction Layer implementation.
 For example, the `Test Suite FS module 3.0.3 <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/>`_ should be used to validate the Abstraction Layer implementation of the :ref:`Low Level API FS <LLFS-API-SECTION>` provided by the `FS Pack 5.1.2 <https://repository.microej.com/modules/com/microej/pack/fs/5.1.2/>`_.
 
 .. note:: A MicroEJ Pack can provide several Foundation Libraries.
