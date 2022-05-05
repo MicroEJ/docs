@@ -13,7 +13,7 @@ SOAR Build Phases
 
 When building a Sandboxed Application to a Feature, SOAR processing is divided in two phases:
 
-1. **SOAR Compiler**: loads and compiles the set of application ``.class`` files and resources. Among the various steps, mention may be made of:
+1. **SOAR Resolver**: loads the set of application ``.class`` files and resources. Among the various steps, mention may be made of:
 
    - Computing the transitive closure from the application entry points of all required elements (types, methods, fields, strings, immutables, resources, system properties),
    - Computing the :ref:`clinit order <soar_clinit>`.
