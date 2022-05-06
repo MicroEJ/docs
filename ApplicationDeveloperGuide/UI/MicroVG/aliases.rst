@@ -1,11 +1,15 @@
 .. |startTable| raw:: html
 
-   <table width="100%"><td style="vertical-align:middle" >
+   <table width="100%"><td style="vertical-align:middle" width="800px">
 
-.. |nextCell| raw:: html
+.. |midTable| raw:: html
 
    </td><td style="vertical-align:middle" width="300px">
 
-.. |endCell| raw:: html
+.. |midTable600| raw:: html
+
+   </td><td style="vertical-align:middle" width="600px">
+
+.. |endTable| raw:: html
 
    </td></table>

@@ -1,3 +1,5 @@
+.. include:: aliases.rst
+
 Vector Graphics Images
 ======================
 
@@ -10,7 +12,10 @@ Images that must be processed by the image generator tool are declared in ``*.ve
 
 Currently accepted formats are : 
 
-- ":VGF" : vglite compatible format with coordinates encoded as floating points.
+- :VGF : vglite compatible format with coordinates encoded as float numbers(32 bits).
+- :VG32 : vglite compatible format with coordinates encoded as signed int numbers(32 bits).
+- :VG16 : vglite compatible format with coordinates encoded as signed short numbers(16 bits).
+- :VG8 : vglite compatible format with coordinates encoded as signed char numbers(8 bits).
 
 Example:
 
@@ -19,7 +24,7 @@ Example:
    # The following image is embedded 
    # as a PNG resource (decoded at run-time)
    /com/mycompany/MyImage1.svg:VGF
-   /com/mycompany/androidVectorDrawable.xml:VGF
+   /com/mycompany/androidVectorDrawable.xml:VG8
 
 Supported input files
 ---------------------
@@ -68,7 +73,7 @@ The following example describes how an Android Vectordrawable file can be drawn 
       </path>
    </vector>
 
-- Application code:
+|startTable| 
   
 .. code-block:: java
 
@@ -95,19 +100,21 @@ The following example describes how an Android Vectordrawable file can be drawn 
       display.flush();
    }
 
-- Resulting drawing:
+|midTable|
 
 .. figure:: images/drawImage.png
    :alt: Draw and transform image
    :width: 300px
    :align: center
 
+|endTable|
+
 Drawing With Opacity
 ~~~~~~~~~~~~~~~~~~~~
 
 The vector graphics image can be drawn with a global opacity level. 
 
- - Application code:
+|startTable| 
   
 .. code-block:: java
 
@@ -118,14 +125,18 @@ The vector graphics image can be drawn with a global opacity level.
 
    VectorGraphicsPainter.drawImage(g, image, new Matrix(), opacity);
 
-- Resulting drawing:
+|midTable|
   
 .. figure:: images/drawImageAlpha.png
    :alt: Draw image with alpha
    :width: 300px
    :align: center
 
+|endTable|
+
 .. warning:: As paths are drawn one after the other, images that contain overlapping paths are not correctly colored when a global opacity is applied. The rendering of these images will throw an exception. The images must be reworked to suppress overlapping.
+
+
 
 Color Filtering
 ~~~~~~~~~~~~~~~
@@ -162,7 +173,7 @@ A VectorImage object can also be drawn associated to a color matrix by a call to
  
 The following example illustrates this feature.
 
-- Application code:
+|startTable| 
   
 .. code-block:: java
 
@@ -190,13 +201,14 @@ The following example illustrates this feature.
 
    VectorGraphicsPainter.drawFilteredImage(g, image, matrix1, colorMatrix1);
 
-- Resulting drawing:
-  
+|midTable|
+
 .. figure:: images/drawImageFilter.png
    :alt: Draw and filter image
    :width: 300px
    :align: center
 
+|endTable|
 
 Animated Vector Graphics Images
 -------------------------------
@@ -260,13 +272,15 @@ TranslateX and TranslateY
 
 Any group in the Android Vector Drawable can be translated in X or Y direction with an object animator. 
 
-- Image:
+|startTable| 
 
 .. code-block:: xml
 
-   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:aapt="http://schemas.android.com/aapt">
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  
+         xmlns:aapt="http://schemas.android.com/aapt">
    <aapt:attr name="android:drawable">
-      <vector  android:width="100dp"  android:height="100dp"  android:viewportWidth="100"  android:viewportHeight="100">
+      <vector  android:width="100dp"  android:height="100dp"  
+               android:viewportWidth="100" android:viewportHeight="100">
          <group android:name="yellow_group">
                <path  android:pathData="M 0 0 h50 v50 h-50 z"  android:fillColor="#FFFFAA"/>
          </group>
@@ -287,9 +301,9 @@ Any group in the Android Vector Drawable can be translated in X or Y direction w
       <aapt:attr name="android:animation">
          <set android:ordering="together">
                <objectAnimator android:propertyName="translateX" android:valueType="floatType"
-                  android:duration="1000" android:startOffset="0" android:valueFrom="0" android:valueTo="50"  />
+                  android:duration="1000" android:startOffset="0" android:valueFrom="0" android:valueTo="50"/>
                <objectAnimator android:propertyName="translateX"  android:valueType="floatType"
-                  android:duration="1000" android:startOffset="1500" android:valueFrom="50" android:valueTo="0" />
+                  android:duration="1000" android:startOffset="1500" android:valueFrom="50" android:valueTo="0"/>
          </set>
       </aapt:attr>
    </target>
@@ -309,25 +323,30 @@ Any group in the Android Vector Drawable can be translated in X or Y direction w
    </target>
    </animated-vector>
 
-- Resulting drawing:
+|midTable|
   
 .. figure:: images/drawAnimatedImageTranslate.gif
    :alt: Draw animated image with translate
    :width: 300px
    :align: center
 
+|endTable|
+
+
 TranslateXY over a path
 ***********************
 
 Any group in the Android Vector Drawable can be translated over a path.
 
-- Image:
+|startTable|
 
 .. code-block:: xml
 
-   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:aapt="http://schemas.android.com/aapt">
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  
+                    xmlns:aapt="http://schemas.android.com/aapt">
    <aapt:attr name="android:drawable">
-      <vector  android:width="100dp"  android:height="100dp"  android:viewportWidth="100"  android:viewportHeight="100">
+      <vector  android:width="100dp" android:height="100dp" 
+               android:viewportWidth="100" android:viewportHeight="100">
         ... same as previous example
       </vector>
    </aapt:attr>
@@ -337,31 +356,38 @@ Any group in the Android Vector Drawable can be translated over a path.
               <objectAnimator
                     android:propertyName="translateXY" android:duration="5000"
                     android:propertyXName="translateX" android:propertyYName="translateY"
-                    android:pathData="M -0.143 0.479 C -30.355 28.02 -153.405 -111.8 -39.441 -70.818 C -48.423 -63.52 70.593 -18.608 -91.09 -15.802 Z"/>
+                    android:pathData="M -0.143 0.479 C -30.355 28.02 -153.405 -111.8 -39.441 -70.818 
+                                     C -48.423 -63.52 70.593 -18.608 -91.09 -15.802 Z"/>
          </set>
       </aapt:attr>
    </target>
    </animated-vector>
 
-- Resulting drawing:
+|midTable|
   
 .. figure:: images/drawAnimatedImageOverPath.gif
    :alt: Draw animated image over a path
    :width: 300px
    :align: center
 
+|endTable|
+
 ScaleX and ScaleY
 *****************
 
 A group in the Android Vector Drawable can be scaled on X or Y direction. The scaling pivot point is the one defined in the group attributes. By default, the pivot point is (0,0).
 
+|startTable|
+
 .. code-block:: xml
 
-   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:aapt="http://schemas.android.com/aapt">
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  
+                    xmlns:aapt="http://schemas.android.com/aapt">
    <aapt:attr name="android:drawable">
-      <vector  android:width="100dp"  android:height="100dp"  android:viewportWidth="100"  android:viewportHeight="100">
+      <vector  android:width="100dp" android:height="100dp" 
+               android:viewportWidth="100" android:viewportHeight="100">
          <group android:name="yellow_group" android:pivotX="25" android:pivotY="25">
-               <path  android:pathData="M 0 0 h50 v50 h-50 z"  android:fillColor="#FFFFAA"/>
+               <path  android:pathData="M 0 0 h50 v50 h-50 z" android:fillColor="#FFFFAA"/>
          </group>
          <group android:name="gradient_group" >
          <path android:pathData="M 50 50 h50 v50 h-50 z">
@@ -380,9 +406,11 @@ A group in the Android Vector Drawable can be scaled on X or Y direction. The sc
       <aapt:attr name="android:animation">
          <set android:ordering="together">
                <objectAnimator android:propertyName="scaleX" android:valueType="floatType"
-                  android:duration="1000" android:startOffset="0" android:valueFrom="1" android:valueTo="0.5"  />
+                  android:duration="1000" android:startOffset="0" android:valueFrom="1" 
+                  android:valueTo="0.5"  />
                <objectAnimator android:propertyName="scaleX"  android:valueType="floatType"
-                  android:duration="1000" android:startOffset="1500" android:valueFrom="0.5" android:valueTo="1" />
+                  android:duration="1000" android:startOffset="1500" android:valueFrom="0.5" 
+                  android:valueTo="1" />
          </set>
       </aapt:attr>
    </target>
@@ -390,35 +418,45 @@ A group in the Android Vector Drawable can be scaled on X or Y direction. The sc
       <aapt:attr name="android:animation">
          <set android:ordering="together">
                <objectAnimator android:propertyName="scaleX" android:valueType="floatType"
-                  android:duration="1000" android:startOffset="0" android:valueFrom="0.2" android:valueTo="1"  />
+                  android:duration="1000" android:startOffset="0" 
+                  android:valueFrom="0.2" android:valueTo="1"  />
                <objectAnimator android:propertyName="scaleX"  android:valueType="floatType"
-                  android:duration="1000" android:startOffset="1500" android:valueFrom="1" android:valueTo="0.2" />
+                  android:duration="1000" android:startOffset="1500" 
+                  android:valueFrom="1" android:valueTo="0.2" />
                <objectAnimator android:propertyName="scaleY" android:valueType="floatType"
-                  android:duration="1000" android:startOffset="0" android:valueFrom="0.2" android:valueTo="1"  />
+                  android:duration="1000" android:startOffset="0" 
+                  android:valueFrom="0.2" android:valueTo="1"  />
                <objectAnimator android:propertyName="scaleY"  android:valueType="floatType"
-                  android:duration="1000" android:startOffset="1500" android:valueFrom="1" android:valueTo="0.2" />
+                  android:duration="1000" android:startOffset="1500"
+                  android:valueFrom="1" android:valueTo="0.2" />
          </set>
       </aapt:attr>
    </target>
    </animated-vector>
 
-- Resulting drawing:
+|midTable|
   
 .. figure:: images/drawAnimatedImageScaleXY.gif
    :alt: Draw animated image over a path
    :width: 300px
    :align: center
 
+|endTable|
+
 Rotate
 ******
 
 A group in the Android Vector Drawable can be rotated around a pivot point. The pivot point is the one defined in the group attributes. By default, the pivot point is (0,0).
 
+|startTable|
+
 .. code-block:: xml
 
-   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:aapt="http://schemas.android.com/aapt">
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  
+                    xmlns:aapt="http://schemas.android.com/aapt">
    <aapt:attr name="android:drawable">
-      <vector  android:width="100dp"  android:height="100dp"  android:viewportWidth="100"  android:viewportHeight="100">
+      <vector  android:width="100dp"  android:height="100dp"  
+               android:viewportWidth="100"  android:viewportHeight="100">
          ... same as previous example
       </vector>
    </aapt:attr>
@@ -426,21 +464,24 @@ A group in the Android Vector Drawable can be rotated around a pivot point. The 
       <aapt:attr name="android:animation">
          <set android:ordering="together">
                <objectAnimator android:propertyName="rotation" android:valueType="floatType"
-                  android:duration="1000" android:startOffset="0" android:valueFrom="0" android:valueTo="720"  />
+                  android:duration="1000" android:startOffset="0" 
+                  android:valueFrom="0" android:valueTo="720"  />
                <objectAnimator android:propertyName="rotation"  android:valueType="floatType"
-                  android:duration="1000" android:startOffset="1500" android:valueFrom="720" android:valueTo="0" />
+                  android:duration="1000" android:startOffset="1500" 
+                  android:valueFrom="720" android:valueTo="0" />
          </set>
       </aapt:attr>
    </target>
    </animated-vector>
 
-- Resulting drawing:
+|midTable|
   
 .. figure:: images/drawAnimatedImageRotate.gif
    :alt: Draw animated image over a path
    :width: 300px
    :align: center
 
+|endTable|
 
 Morphing
 ********
@@ -465,23 +506,32 @@ There is an infinity of possibilities to create the new path, and the associatio
 
    New Rectangle path2: M 11.906 6.697 C 11.953 6.698 12.993 6.698 17.995 6.697 C 17.999 8.331 17.997 9.93 18.002 13.004 C 16.239 13.007 16.009 13.001 11.893 13.007 C 13.3 13 13.852 13.006 11.893 13.007 Z
 
+|startTable|
 
 .. code-block:: xml
 
-   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:aapt="http://schemas.android.com/aapt">
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  
+                    xmlns:aapt="http://schemas.android.com/aapt">
     <aapt:attr name="android:drawable">
-        <vector  android:width="20dp"  android:height="20dp"  android:viewportWidth="20"  android:viewportHeight="20">
+        <vector  android:width="20dp"  android:height="20dp"  
+                 android:viewportWidth="20"  android:viewportHeight="20">
             <path android:fillColor="#FF0000" android:pathData="M 0 0 h40 v40 h-40"/>
             <path android:fillColor="#FF0000" android:pathData="M 0 0 h40 v40 h-40"/>
             <group android:name="group1" android:translateX="-10">
                 <path
                     android:name="circle1"
-                    android:pathData="M 11.9 9.8 C 11.9 8.1 13.3 6.7 14.9 6.7 C 16.6 6.7 18 8.1 18 9.8 C 18 11.6 16.6 13 14.9 13 C 13.3 13 11.9 11.6 11.9 9.8 Z"
+                    android:pathData="M 11.9 9.8 C 11.9 8.1 13.3 6.7 14.9 6.7 
+                                      C 16.6 6.7 18 8.1 18 9.8 
+                                      C 18 11.6 16.6 13 14.9 13 
+                                      C 13.3 13 11.9 11.6 11.9 9.8 Z"
                     android:fillColor="#FFFFAA"/>
             </group>
             <group android:name="group2">
                 <path android:name="circle2"
-                    android:pathData="M 11.9 9.8 C 11.9 8.1 13.3 6.7 14.9 6.7 C 16.6 6.7 18 8.1 18 9.8 C 18 11.6 16.6 13 14.9 13 C 13.3 13 11.9 11.6 11.9 9.8 Z"
+                    android:pathData="M 11.9 9.8 C 11.9 8.1 13.3 6.7 14.9 6.7 
+                                      C 16.6 6.7 18 8.1 18 9.8 
+                                      C 18 11.6 16.6 13 14.9 13 
+                                      C 13.3 13 11.9 11.6 11.9 9.8 Z"
                     android:fillColor="#00FFAA"  />
             </group>
         </vector>
@@ -493,8 +543,14 @@ There is an infinity of possibilities to create the new path, and the associatio
             <objectAnimator
                 android:propertyName="pathData"
                 android:duration="2000"
-                android:valueFrom="M 11.9 9.8 C 11.9 8.1 13.3 6.7 14.9 6.7 C 16.6 6.7 18 8.1 18 9.8 C 18 11.6 16.6 13 14.9 13 C 13.3 13 11.9 11.6 11.9 9.8 Z"
-                android:valueTo="M 11.9 9.8 C 11.897 7.735 11.906 7.995 11.906 6.697 C 16.6 6.7 16.601 6.706 17.995 6.697 C 18 11.6 17.995 11.587 18.004 13.006 C 13.3 13 13.852 13.006 11.897 13.006 Z"
+                android:valueFrom="M 11.9 9.8 C 11.9 8.1 13.3 6.7 14.9 6.7 
+                                   C 16.6 6.7 18 8.1 18 9.8 
+                                   C 18 11.6 16.6 13 14.9 13 
+                                   C 13.3 13 11.9 11.6 11.9 9.8 Z"
+                android:valueTo="M 11.9 9.8 C 11.897 7.735 11.906 7.995 11.906 6.697 
+                                 C 16.6 6.7 16.601 6.706 17.995 6.697 
+                                 C 18 11.6 17.995 11.587 18.004 13.006 
+                                 C 13.3 13 13.852 13.006 11.897 13.006 Z"
                 android:valueType="pathType"/>
         </set>
     </aapt:attr>
@@ -505,18 +561,28 @@ There is an infinity of possibilities to create the new path, and the associatio
                 <objectAnimator
                     android:propertyName="pathData"
                     android:duration="2000"
-                    android:valueFrom="M 11.9 9.8 C 11.9 8.1 13.3 6.7 14.9 6.7 C 16.6 6.7 18 8.1 18 9.8 C 18 11.6 16.6 13 14.9 13 C 13.3 13 11.9 11.6 11.9 9.8 Z"
-                    android:valueTo="M 11.906 6.697 C 11.953 6.698 12.993 6.698 17.995 6.697 C 17.999 8.331 17.997 9.93 18.002 13.004 C 16.239 13.007 16.009 13.001 11.893 13.007 C 13.3 13 13.852 13.006 11.893 13.007 Z"
+                    android:valueFrom="M 11.9 9.8 C 11.9 8.1 13.3 6.7 14.9 6.7 
+                                       C 16.6 6.7 18 8.1 18 9.8 
+                                       C 18 11.6 16.6 13 14.9 13 
+                                       C 13.3 13 11.9 11.6 11.9 9.8 Z"
+                    android:valueTo="M 11.906 6.697 C 11.953 6.698 12.993 6.698 17.995 6.697 
+                                     C 17.999 8.331 17.997 9.93 18.002 13.004 
+                                     C 16.239 13.007 16.009 13.001 11.893 13.007 
+                                     C 13.3 13 13.852 13.006 11.893 13.007 Z"
                     android:valueType="pathType"/>
             </set>
         </aapt:attr>
    </target>
    </animated-vector>
 
+|midTable|
+
 .. figure:: images/drawAnimatedImageMorphing.gif
    :alt: Draw animated image with path morphing
    :width: 300px
    :align: center
+
+|endTable|
 
 .. warning:: As path strokes are converted at build-time to filled path, the morphing of stroked paths is not supported. Any image with a path morphing animation on a stroked path will be rejected. Path strokes must be manually converted to filled path and the morphing of these new  filled paths must be created.
 
@@ -526,18 +592,24 @@ Color and Opacity
 
 Any path fillColor, strokeColor, fillAlpha and strokeAlpha attributes in the Android Vector Drawable can be animated. 
 
-- Image:
+|startTable|
 
 .. code-block:: xml
 
-   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:aapt="http://schemas.android.com/aapt">
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  
+                    xmlns:aapt="http://schemas.android.com/aapt">
     <aapt:attr name="android:drawable">
-        <vector  android:width="55dp"  android:height="55dp"  android:viewportWidth="55"  android:viewportHeight="55">
+        <vector  android:width="55dp"  android:height="55dp"  
+                 android:viewportWidth="55"  android:viewportHeight="55">
            <group android:translateX="5">
-            <path android:name="fillColor" android:fillColor="#FF00FF" android:pathData="M 0 0 h20 v20 h-20 Z"/>
-            <path android:name="fillAlpha" android:fillColor="#FF0000" android:pathData="M 25 0 h20 v20 h-20 Z"/>
-            <path android:name="strokeColor" android:strokeWidth="5" android:strokeColor="#FFFF00" android:pathData="M 0 25 h20 v20 h-20 Z"/>
-            <path android:name="strokeAlpha" android:strokeWidth="5" android:strokeColor="#00FF00" android:pathData="M 25 25 h20 v20 h-20 Z"/>
+            <path android:name="fillColor" android:fillColor="#FF00FF" 
+                  android:pathData="M 0 0 h20 v20 h-20 Z"/>
+            <path android:name="fillAlpha" android:fillColor="#FF0000" 
+                  android:pathData="M 25 0 h20 v20 h-20 Z"/>
+            <path android:name="strokeColor" android:strokeWidth="5" 
+                  android:strokeColor="#FFFF00" android:pathData="M 0 25 h20 v20 h-20 Z"/>
+            <path android:name="strokeAlpha" android:strokeWidth="5" android:strokeColor="#00FF00" 
+                  android:pathData="M 25 25 h20 v20 h-20 Z"/>
            </group>
         </vector>
     </aapt:attr>
@@ -587,12 +659,14 @@ Any path fillColor, strokeColor, fillAlpha and strokeAlpha attributes in the And
     </target>
    </animated-vector>
 
-- Resulting drawing:
+|midTable|
   
 .. figure:: images/drawAnimatedImageColor.gif
    :alt: Draw animated image with path morphing
    :width: 300px
    :align: center
+
+|endTable|
 
 .. warning:: The color of paths colored with a linear gradient can not be animated.
 
@@ -651,36 +725,60 @@ Following examples show the behavior of some of the interpolators for a simple t
     </target>
    </animated-vector>
 
+|startTable|
 
 .. code-block:: xml
 
          android:interpolator = "@android:interpolator/linear"
 
+|midTable|
+
 .. image:: images/linearInterpolator.gif
    :alt: Draw animated image with path morphing
-   :width: 100px
+   :width: 200px
 
+|endTable|
+
+|startTable|
 
 .. code-block:: xml
 
          android:interpolator = "@android:interpolator/accelerate_cubic"
 
+|midTable|
+
 .. image:: images/accelerateInterpolator.gif
-   :width: 100px
+   :width: 200px
+
+|endTable|
+
+|startTable|
 
 .. code-block:: xml
 
          android:interpolator = "@android:interpolator/bounce"
-      
+
+|midTable|
+
 .. image:: images/bounceInterpolator.gif
-   :width: 100px
+   :width: 200px
+
+|endTable|
+
+|startTable|
 
 .. code-block:: xml
 
          android:interpolator = "@android:interpolator/fast_out_slow_in"
 
+|midTable|
+
 .. image:: images/fast_out_slow_inInterpolator.gif
-   :width: 100px
+   :width: 200px
+
+|endTable|
+
+|startTable|
 
 .. code-block:: xml
 
@@ -688,11 +786,17 @@ Following examples show the behavior of some of the interpolators for a simple t
             <pathInterpolator android:pathData="M 0 0 C 0.371 2.888 0.492 -1.91 1 1" />
          </aapt:attr>
 
+|midTable600|
+
 .. image:: images/custom0Interpolator.gif
-   :width: 100px
+   :width: 200px
 
 .. image:: images/custom0Interpolator.png
-   :width: 100px
+   :width: 200px
+
+|endTable|
+
+|startTable|
 
 .. code-block:: xml
 
@@ -700,11 +804,16 @@ Following examples show the behavior of some of the interpolators for a simple t
             <pathInterpolator android:pathData="M 0 0 C 0.333 1.939 0.171 -0.906 0.601 0.335 C 0.862 0.998 0.83 -0.771 1 1" />
          </aapt:attr>
 
+|midTable600|
+
 .. image:: images/custom1Interpolator.gif
-   :width: 100px
+   :width: 200px
 
 .. image:: images/custom1Interpolator.png
-   :width: 100px
+   :width: 200px
+
+|endTable|
+
 
 Limitations / Supported Features
 --------------------------------

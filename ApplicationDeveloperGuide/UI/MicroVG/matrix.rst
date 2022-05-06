@@ -58,13 +58,13 @@ Translation
    Matrix matrix = new Matrix();
    matrix.setTranslate(200, 150);
 
-|nextCell|
+|midTable|
 
 .. figure:: images/matrixTranslate0.png 
    :width: 200px
    :align: center
 
-|endCell|
+|endTable|
 
 Rotation
 ~~~~~~~~
@@ -78,13 +78,13 @@ Around point (0,0).
    Matrix matrix = new Matrix();
    matrix.setRotate(40);
 
-|nextCell|
+|midTable|
 
 .. figure:: images/matrixRotate0.png 
    :width: 200px
    :align: center
 
-|endCell|
+|endTable|
 
 Around a pivot point (80,50).
 
@@ -100,13 +100,13 @@ Around a pivot point (80,50).
    matrix.preTranslate(-pivotX, -pivotY);
    matrix.postTranslate(pivotX, pivotY);
 
-|nextCell|
+|midTable|
 
 .. figure:: images/matrixRotate1.png 
    :width: 200px
    :align: center
 
-|endCell|
+|endTable|
 
 Scale
 ~~~~~
@@ -120,13 +120,13 @@ From point (0,0).
    Matrix matrix = new Matrix();
    matrix.setScale(2,3);
 
-|nextCell|
+|midTable|
 
 .. figure:: images/matrixScale0.png 
    :width: 200px
    :align: center
 
-|endCell|
+|endTable|
 
 Contatenate Matrixes
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -154,13 +154,13 @@ Sequence order has an incidence on the rendering.
    g.setColor(Colors.YELLOW);
    VectorGraphicsPainter.fillPath(g, path, matrix2);
 
-|nextCell|
+|midTable|
 
 .. figure:: images/matrixConcat0.png 
    :width: 200px
    :align: center
 
-|endCell|
+|endTable|
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

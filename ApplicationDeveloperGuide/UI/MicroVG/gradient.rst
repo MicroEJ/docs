@@ -33,13 +33,13 @@ There are two ways to create a gradient:
 
    VectorGraphicsPainter.fillPath(g, path, new Matrix(), gradient);
 
-|nextCell|
+|midTable|
 
 .. figure:: images/gradient0.png
    :width: 200px
    :align: center
 
-|endCell|
+|endTable|
 
 - with a start point, an end point, a colors table and a positions table: the colors are applied to their corresponding relative positions on the segment. If the first point is not the start point of the segment, then first color is applied from the start of the segment to the first point. If the last point is not the end point of the segment, then last color is applied from the last point to the end of the segment.
 
@@ -54,13 +54,13 @@ There are two ways to create a gradient:
 
    VectorGraphicsPainter.fillPath(g, path, new Matrix(), gradient);
 
-|nextCell|
+|midTable|
 
 .. figure:: images/gradient1.png
    :width: 200px
    :align: center
 
-|endCell|
+|endTable|
 
 The transformation applied to the object(`Path` or `String`) to draw with a gradient is also applied to that gradient. The `LinearGradient` is not updated after the drawing.
 
@@ -78,13 +78,13 @@ The transformation applied to the object(`Path` or `String`) to draw with a grad
 
    VectorGraphicsPainter.fillPath(g, path, matrix, gradient);
 
-|nextCell|
+|midTable|
 
 .. figure:: images/gradient2.png
    :width: 200px
    :align: center
 
-|endCell|
+|endTable|
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

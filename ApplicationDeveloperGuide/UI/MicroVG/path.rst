@@ -26,6 +26,16 @@ The coordinates of the points associated with these commands can be absolute or 
    path.quadTo(12, 40, 80, 50);
    path.close();
 
+.. code-block:: java
+   
+   Path path = new Path();
+
+   path.moveTo(70, 20);
+   path.cubicToRelative(-70, -20, -60, 30, 10, 70);
+   path.lineToRelative(15, -15);
+   path.quadToRelative(-83, -35, -15, -25);
+   path.close();
+
 Path Drawing
 ------------
 
