@@ -66,7 +66,7 @@ Extended Mode
 To increase the capabilities of Image Generator, the extension must be built and added in the platform. As described above this extension will be able to:
 
 * read more input image file formats,
-* extand the MicroEJ format with platform characteristics,
+* extend the MicroEJ format with platform characteristics,
 * encode images in a third-party binary format.
 
 To do that the Image Generator provides some services to implement. This chapter explain how to create and include this extension in the platform. Next chapters explain the aim of each service.
@@ -115,18 +115,41 @@ To do that the Image Generator provides some services to implement. This chapter
 
 .. warning:: The dropins folder must be updated (and platform built again) after any changes in the image generator extension project.
 
+.. _section_image_generator_imageio:
+
 Service Image Loader
 ====================
 
 The standalone Image Generator is not able to load all images formats, for instance SVG format. The service loader can be used to add this feature in order to generate an image file in MicroEJ format. 
+There are two ways to populate the service loader: create a custom implementation of ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` or ``javax.imageio.spi.ImageReaderSpi``.
+
+MicroUIRawImageGeneratorExtension
+---------------------------------
+
+This service allows to add a custom image reader. 
 
 1. Open image generator extension project.
 2. Create an implementation of interface ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension``.
 3. Create the file ``META-INF/services/com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` and open it.
 4. Note down the name of created class, with its package and classname.
-5. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
+5. Rebuild the image generator extension, copy it in platform configuration project (``dropins/tools/``) and rebuild the platform (see above).
 
 .. note:: The class ``com.microej.tool.ui.generator.BufferedImageLoader`` already implements the interface. This implementation is used to load standard images. It can be sub-classed to add some behavior.
+
+ImageReaderSpi
+--------------
+
+This extension is part of AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_.
+By default, the ImageIO class only manages the standard image formats JPG, PNG, BMP and GIF.
+It allows to add some image readers by adding some implementations of the service `javax.imageio.spi.ImageReaderSpi`.
+
+Since UI Pack 13.2.0, the Image Generator automatically includes new image decoders (new ImageIO services, see the class ``com.microej.tool.ui.generator.BufferedImageLoader``), compiled in JAR files that follow this convention:
+
+1. The JAR contains the service declaration ``/META-INF/services/javax.imageio.spi.ImageReaderSpi``,
+2. The JAR filename's prefix is `imageio-`,
+3. The JAR location is the platform configuration project's ``dropins/tools/`` directory.
+
+.. note:: The same JAR is used by the Image Generator and by the :ref:`Front Panel <fp_ui_decoder>`.
 
 .. _section_image_custom_format:
 

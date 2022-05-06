@@ -330,7 +330,14 @@ Graphics Engine is using two dedicated heaps: for the images (see :ref:`section_
 Image Decoders
 ==============
 
-Front Panel uses its own internal image decoders when the associated modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Front Panel can add some additional decoders like the C-side for the embedded platform (see :ref:`external image decoders<image_external_decoder>`). However, the exhaustive list of additional decoders is limited (Front Panel is using the Java AWT ``ImageIO`` API). To add an additional decoder, specify the property ``hardwareImageDecoders.list`` in Front Panel configuration properties file (see :ref:`fp_ui_installation`) with one or several property values:
+Front Panel uses its own internal image decoders when the associated modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Some additional decoders can be added like the C-side for the embedded platform (see :ref:`external image decoders<image_external_decoder>`).  Front Panel uses the Java AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_ API to load the encoded images. 
+
+Generic Image Decoders
+----------------------
+
+The Java AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_  class holds a limited list of additional decoders.
+To be compliant with the embedded side, these decoders are disabled by default.
+To add an additional decoder, specify the property ``hardwareImageDecoders.list`` in Front Panel configuration properties file (see :ref:`fp_ui_installation`) with one or several property values:
 
 .. table:: Front Panel Additional Image Decoders
 
@@ -352,6 +359,18 @@ The decoders list is comma (*,*) separated. Example:
 
    hardwareImageDecoders.list=jpg,bmp
 
+Custom Image Decoders
+---------------------
+
+Additionally, the Java AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_  class offers the possibility to add some custom image decoders by using the service ``javax.imageio.spi.ImageReaderSpi``.
+
+Since UI Pack 13.2.0, Front Panel automatically includes new image decoders (new ImageIO services, see the method ``LLUIDisplayImpl.decode()``), compiled in JAR files that follow this convention:
+
+1. The JAR contains the service declaration ``/META-INF/services/javax.imageio.spi.ImageReaderSpi``,
+2. The JAR filename's prefix is `imageio-`,
+3. The JAR location is the platform configuration project's ``dropins/tools/`` directory.
+
+.. note:: The same JAR is used by the Front Panel and by the :ref:`Image Generator <section_image_generator_imageio>`.
 Dependencies
 ============
 
