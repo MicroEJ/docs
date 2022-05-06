@@ -371,6 +371,21 @@ Since UI Pack 13.2.0, Front Panel automatically includes new image decoders (new
 3. The JAR location is the platform configuration project's ``dropins/tools/`` directory.
 
 .. note:: The same JAR is used by the Front Panel and by the :ref:`Image Generator <section_image_generator_imageio>`.
+
+Classpath
+---------
+
+A standard mock is running on the same JVM than the HIL Engine (link to https://docs.microej.com/en/latest/PlatformDeveloperGuide/mock.html) (it shares the same classpath).
+When the application is not using the MicroUI library (it is not an UI application, even if the platform holds the MicroEJ Graphics Engine or not), the Front Panel mock runs a standard mock.
+When the application is using the MicroUI library, the Front Panel _UI_ mock runs on the same JVM than the MicroEJ Simulator. 
+In this case, the other mocks don't share the same classpath than the Front Panel mock.
+By consequence, another mock than the Front Panel mock is not able to send some input events to MicroUI, the object created in the standard mocks's class loader are not available in the Front Panel _UI_'s class loader (and vice versa), etc.
+
+Since the UI Pack 13.2.0, it is possible to force to run the Front Panel _UI_ mock in the same classpath than the HIL Engine by adding the property -Dej.fp.hil=true` in the application JRE tab. 
+Note this option only works when the version of the MicroEJ Architecture used to build the Platform is 7.17.0 or higher.     
+
+
+
 Dependencies
 ============
 
