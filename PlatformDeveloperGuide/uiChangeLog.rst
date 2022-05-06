@@ -8,7 +8,7 @@ Changelog
 13.2.0 - 2022-05-05
 ===================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 
 Integration
 """""""""""
@@ -57,7 +57,7 @@ Image Generator
 
 * Include automatically the AWT ImageIO services.
 * Allow to a custom image converter to generate a file other than a binary resource.
-* Allow to a custom image converter to specify the supported *.list files.
+* Allow to a custom image converter to specify the supported ``.list`` files.
 
 LLAPIs
 """"""
@@ -76,7 +76,7 @@ BSP
 [13.1.0] - 2021-08-03
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI API
 """""""""""
@@ -145,7 +145,7 @@ Simulator
 [13.0.7] - 2021-07-30
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -166,7 +166,7 @@ Misc
 [13.0.6] - 2021-03-29
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 
 LLAPIs
 """"""
@@ -178,7 +178,7 @@ LLAPIs
 [13.0.5] - 2021-03-08
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -205,7 +205,7 @@ Simulator
 [13.0.4] - 2021-01-15
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI API
 """""""""""
@@ -249,7 +249,7 @@ ImageGenerator
 [13.0.3] - 2020-12-03
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
  
 MicroUI API
 """""""""""
@@ -272,7 +272,7 @@ MicroUI Implementation
 [13.0.2] - 2020-10-02
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 * Use new naming convention: ``com.microej.architecture.[toolchain].[architecture]-ui-pack``.
 
 **Fixed**
@@ -282,7 +282,7 @@ MicroUI Implementation
 [13.0.1] - 2020-09-22
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI API
 """""""""""
@@ -329,7 +329,7 @@ ImageGenerator
 [13.0.0] - 2020-07-30
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 * Integrate SDK 3.0-B license.
 
 MicroUI API
