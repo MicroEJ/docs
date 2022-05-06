@@ -4,6 +4,75 @@
 Changelog
 =========
 
+
+13.2.0 - 2022-05-05
+===================
+
+* Compatible with Architecture 7.13.0 or higher.
+
+Integration
+"""""""""""
+	
+**Changed**	
+
+* Update to the latest SDK license notice.
+	
+MicroUI Implementation
+""""""""""""""""""""""
+	
+**Changed**	
+	
+* Use `.rodata` sections instead of `.text` sections.
+	
+**Fixed**
+
+* Clean KF stale references when killing a feature without display context switch.
+* Make sure to wait the end of an asynchronous drawing before killing a KF feature. 
+* Redirect the events sent to the pump to the pump's handler instead of to the event generator's handler. 
+* Fix the drawing of antialiased arc: caps are drawn over the arc itself (rendering issue when the GraphicsContext's background color is set).
+* Fix the drawing of antialiased arc: arc is not fully drawn when (int)startAngle == (int)((startAngle + arcAngle) % 360)).
+* Fix the input queue size when not already set by the application launcher.
+* Fix the use of a negative `scanLength` in `GraphicsContext.readPixels()` and `Image.readPixels()`.  
+
+Front Panel
+"""""""""""
+
+**Added**
+
+* Add the property `-Dej.fp.hil=true` in the application launcher to force to run the FrontPanel with the Graphics Engine as a standard HIL mock (requires MicroEJ Architecture 7.17.0 or higher).
+* Add `LLUIDisplayImpl.decode()`: the Front Panel project is able to read encoded image like the embedded side.
+* Include automatically the AWT ImageIO services.
+* Add `MicroUIImage.readPixel()` to read an image's pixel color.
+ 
+**Fixed**
+
+* Fix the "display context switch" and the loading of feature's font. 
+* Fix OOM (Java heap space) when opening/closing several hundreds of big RAW Images. 
+* Fix the synchronization with the Graphics Engine when calling `GraphicsContext.setColor()` or `GraphicsContext.enableEllipsis()`.
+ 
+Image Generator
+"""""""""""""""
+
+**Added**
+
+* Include automatically the AWT ImageIO services.
+* Allow to a custom image converter to generate a file other than a binary resource.
+* Allow to a custom image converter to specify the supported *.list files.
+
+LLAPIs
+""""""
+
+**Added**
+
+* Add `LLUI_DISPLAY_readPixel` to read an image's pixel color. 
+
+BSP
+"""
+	
+**Fixed**
+
+* Fix the IAR Embedded Workbench warnings during debug session.
+
 [13.1.0] - 2021-08-03
 =====================
 
