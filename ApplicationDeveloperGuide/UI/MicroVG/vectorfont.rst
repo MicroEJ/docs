@@ -8,7 +8,7 @@ Overview
 
 The MicroVG library enables the usage of Vector Fonts. 
 
-Compared to MicroUI Fonts (:ref:`section.ui.Fonts`), Vector Fonts brings these features:
+Compared to MicroUI Fonts (:ref:`section.ui.Fonts`), Vector Fonts brings the following features:
 
 - the text strings are scalable and can be transformed using a `Matrix` object.
 - the TTF/OTF font files don't need to be preprocessed.
@@ -26,10 +26,10 @@ Font files must be declared as ressources in a `.list` file available in the cla
 Then the font has to be loaded in a `VectorFont` object with a call to `ej.microvg.VectorFont.loadFont` <FIXME link to API>. This `VectorFont` object can then be used to draw text strings.
 
 
-Drawing a String
-----------------
+Text String Drawing
+-------------------
 
-A string can be drawn in the graphic context with a call to `ej.microvg.VectorFontPainter.drawString` <FIXME link to API>.
+A string can be drawn in the graphic context with a call to `ej.microvg.VectorGraphicsPainter.drawString` <FIXME link to API>.
 
 The text string height is scalable, and multiple font files can be used in parrallel.
 
@@ -73,6 +73,9 @@ The text string height is scalable, and multiple font files can be used in parra
 
 |endTable| 
 
+Text Color
+~~~~~~~~~~
+
 The text string can be colored with the graphic context color or a with a linear gradient(:ref:`Linear Gradient`).
 
 `FillType` and `Alpha Blending Mode` are also managed similarly to `Path` drawing (refer to :ref:`FillType` and `Alpha Blending Mode`).
@@ -99,6 +102,9 @@ The text string can be colored with the graphic context color or a with a linear
    :align: center
 
 |endTable| 
+
+Text Transformations
+~~~~~~~~~~~~~~~~~~~~
 
 The text string can also be transformed with a `Matrix` to translate, rotate, scale the drawing.
 
@@ -135,7 +141,10 @@ The text string can also be transformed with a `Matrix` to translate, rotate, sc
 
 |endTable| 
 
-The inter character distance can also be adjust for each string drawing. By default, the inter character distance is take from the font file `kerning table <https://en.wikipedia.org/wiki/Kerning>`_, if any. The letterSpacing drawString() parameter default value is 0 pixel, a positive/negative value will increase/reduce the inter space distance by the corresponding pixel value.
+Letter Spacing
+~~~~~~~~~~~~~~
+
+The inter character distance can be adjusted for each string drawing. By default, the inter character distance is computed from the font file metrics, considering `kerning <https://en.wikipedia.org/wiki/Kerning>`_, if the font file includes a kerning table. The letterSpacing drawString() parameter default value is 0 pixel, a positive/negative value will increase/reduce the inter space distance by the corresponding pixel value.
 
 |startTable|
 
@@ -160,8 +169,46 @@ The inter character distance can also be adjust for each string drawing. By defa
 
 |endTable| 
 
-The library supports the drawing of colored multilayer glyphs.
+Colored Emojis
+~~~~~~~~~~~~~~
 
+The library supports the drawing of colored multilayer glyphs, but only for the embedded implementation. The simulator implementation draws the full emoji glyph with the color of the graphic context.
+
+
+Metrics and Text Positioning
+----------------------------
+
+All metrics provided by the `ej.microvg.VectorFont` class are given for a specific font size. The font size defines the height to which each character bounding box will be scaled.
+
+The following figure presents some concepts of font metrics standarts:
+
+.. figure:: images/fontMetrics.png
+	:align: center
+
+
+When a string is drawn with a call to `ej.microvg.VectorGraphicsPainter.drawString()`, the anchor point of the string is the top left corner of the text rendering box. This anchor point is located horizontally on the first pixel of the first drawn glyph and vertically on the max ascent line.
+
+.. figure:: images/anchorPoint.png
+	:align: center
+	:width: 600px
+
+
+The `ej.microvg.VectorFont.getBaselinePosition()` method can be used to position the text baseline on a horizontal line.
+
+The `ej.microvg.VectorFont.getHeight()` method can be used to center a text inside a label, by positionning the anchor point in order to have the same space above and below the text string.
+
+Two other methods are available to position a know text in a label:
+
+- `ej.microvg.VectorFont.measureStringHeight()`
+- `ej.microvg.VectorFont.measureStringWith()`
+
+These methods returns the width and height of a string drawing. They are computed from the width and height of the glyphs composing the string.
+
+.. figure:: images/textBox.png
+	:align: center
+	:width: 600px
+
+These methods can measure a specific glyph width and height using a one character string.
 
 Draw a String on Circular arc
 -----------------------------
