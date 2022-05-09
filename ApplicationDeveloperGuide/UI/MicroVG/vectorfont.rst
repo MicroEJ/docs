@@ -210,9 +210,90 @@ These methods returns the width and height of a string drawing. They are compute
 
 These methods can measure a specific glyph width and height using a one character string.
 
-Draw a String on Circular arc
------------------------------
+Drawing a Text on a Circle
+--------------------------
 
+The library enables the drawing of a text on a circle by a call to `ej.microvg.VectorGraphicsPainter.drawStringOnCircle` <FIXME link to api>. The string is rendered as if the baseline of the string was a circle arc. 
+
+The string direction can be either clockwise or counter clockwise.
+
+All the features described above are still available (linear gradient, transformations, letter spacing, kerning, colored emojis). 
+
+|startTable|
+
+.. code-block:: java
+
+		int x = 196;
+		int y = 196;
+		int diameter = 250;
+
+		g.setColor(Colors.YELLOW);
+
+		Painter.drawCircle(g, x - diameter / 2, y - diameter / 2, diameter);
+
+		g.setColor(Colors.PURPLE);
+		Matrix matrix = new Matrix();
+
+		matrix.setTranslate(x, y);
+
+		VectorGraphicsPainter.drawStringOnCircle(g, "Hello MicroEJ", font, 50, matrix, diameter / 2,
+				Direction.CLOCKWISE);
+
+		diameter = 100;
+
+		g.setColor(Colors.YELLOW);
+		Painter.drawCircle(g, x - diameter / 2, y - diameter / 2, diameter);
+
+		g.setColor(Colors.RED);
+		VectorGraphicsPainter.drawStringOnCircle(g, "Hello MicroEJ", font, 20, matrix, diameter / 2,
+				Direction.COUNTER_CLOCKWISE);
+
+|midTable|
+
+.. figure:: images/drawStringOnCircle0.png
+	:align: center
+	:width: 300px
+
+|endTable|
+
+The anchor point of the drawing is the center of the circle.  
+
+The position where the text starts along the circle is the 3 o'clock position (positive X axis). This starting position can be modified by specifying a rotation into the transformation `Matrix`.
+
+|startTable|
+
+.. code-block:: java
+
+	g.setColor(Colors.PURPLE);
+	Matrix matrix = new Matrix();
+
+	matrix.setTranslate(x, y);
+
+	VectorGraphicsPainter.drawStringOnCircle(g, "Hello MicroEJ", font, 20, matrix, diameter / 2,
+			Direction.CLOCKWISE);
+
+	matrix.preRotate(90);
+	g.setColor(Colors.RED);
+	VectorGraphicsPainter.drawStringOnCircle(g, "Hello MicroEJ", font, 20, matrix, diameter / 2,
+			Direction.CLOCKWISE);
+
+	matrix.preRotate(90);
+	g.setColor(Colors.GREEN);
+	VectorGraphicsPainter.drawStringOnCircle(g, "Hello MicroEJ", font, 20, matrix, diameter / 2,
+			Direction.CLOCKWISE);
+
+	matrix.preRotate(90);
+	g.setColor(Colors.WHITE);
+	VectorGraphicsPainter.drawStringOnCircle(g, "Hello MicroEJ", font, 20, matrix, diameter / 2,
+			Direction.CLOCKWISE);
+
+|midTable|
+
+.. figure:: images/drawStringOnCircle1.png
+	:align: center
+	:width: 300px
+
+|endTable|
 
 
 ..
