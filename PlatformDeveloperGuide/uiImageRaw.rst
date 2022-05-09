@@ -356,5 +356,15 @@ The following table lists the original formats that can be decoded at run-time a
 * (2): The PNG format is supported when the module ``PNG`` is selected in the platform configuration file (see :ref:`image_runtime_decoder`).
 * (3): The Monochrome BMP is supported when the module ``BMPM`` is selected in the platform configuration file (see :ref:`image_runtime_decoder`); the `colored` BMP format is only supported by the Front Panel (disabled by default, see :ref:`fp_ui_decoder`).
 * (4): Install the tool ``com.microej.tool.imageio-webp`` from the :ref:`developer_repository` in the platform to support the WEBP format (see :ref:`section_image_generator_imageio` and :ref:`fp_ui_decoder`).
+
+   .. code:: xml
+
+      <dependency org="com.microej.tool" name="imageio-webp" rev="1.0.1"/>
+
 * (5): Install the C component ``com.microej.clibrary.thirdparty.libwebp`` in the BSP to support the WEBP format at runtime.
+
+   .. code:: xml
+
+      <dependency org="com.microej.clibrary.thirdparty" name="libwebp" rev="1.0.1"/>
+
 * (6): The UI-pack does not provide some runtime decoders for these formats but a BSP can add its own decoders (see :ref:`image_runtime_decoder`).
