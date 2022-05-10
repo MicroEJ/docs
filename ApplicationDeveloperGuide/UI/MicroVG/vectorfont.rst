@@ -67,7 +67,7 @@ The text string height is scalable, and multiple font files can be used in parra
 
 |midTable| 
 
-.. figure:: images/drawString0.png
+.. figure:: images/drawstring0.png
    :width: 300px
    :align: center
 
@@ -97,7 +97,7 @@ The text string can be colored with the graphic context color or a with a linear
 
 |midTable| 
 
-.. figure:: images/drawString1.png
+.. figure:: images/drawstring1.png
    :width: 300px
    :align: center
 
@@ -135,7 +135,7 @@ The text string can also be transformed with a `Matrix` to translate, rotate, sc
 
 |midTable| 
 
-.. figure:: images/drawString2.png
+.. figure:: images/drawstring2.png
    :width: 300px
    :align: center
 
@@ -163,7 +163,7 @@ The inter character distance can be adjusted for each string drawing. By default
 
 |midTable| 
 
-.. figure:: images/drawString3.png
+.. figure:: images/drawstring3.png
    :width: 300px
    :align: center
 
