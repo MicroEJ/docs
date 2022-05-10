@@ -35,7 +35,7 @@ A transformation can be appended to a `Matrix` with the append methods:
 - `postRotate(angle)`
 - `postScale(scaleX, scaleY)`
 
-A `Matrix` can also get transformations from an other `Matrix` with the contatenate and set methods:
+A `Matrix` can also get transformations from an other `Matrix` with the concatenate and set methods:
 
 - `preConcat(matrix)`
 - `postConcat(matrix)`

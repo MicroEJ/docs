@@ -1,3 +1,5 @@
+.. include:: aliases.rst
+
 Path
 ============
 
@@ -52,28 +54,40 @@ Fill Path With Graphic Context Color
 
 The opacity value of the drawing is ``0xFF``.
 
+|startTable|
+
 .. code-block:: java
 
    g.setColor(Colors.GRAY);
    VectorGraphicsPainter.fillPath(g, path, new Matrix());
 
+|midTable|
+
 .. figure:: images/fillPath.png
    :width: 300px
    :align: center
+
+|endTable|
 
 Fill Path With a Linear Gradient
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The opacity value of the drawing is defined by the Alpha channel of the ARGB color values of the each linear gradient stop point.
 
+|startTable|
+
 .. code-block:: java
 
    LinearGradient gradient = new LinearGradient(0, 0, 100, 0, new int[] { 0xffff0000, 0xffffff00, 0xffffffff });
    VectorGraphicsPainter.fillPath(g, path, new Matrix(), gradient);
 
+|midTable|
+
 .. figure:: images/fillPathGradient.png
    :width: 300px
    :align: center
+
+|endTable|
 
 Refer to :ref:`Linear Gradient` section for more details about the definition of a linear gradient.
 
@@ -89,13 +103,26 @@ The following values are a available:
 - FillType.Winding: Specifies that "inside" is computed by a non-zero sum of signed edge crossings.
 - FillType.EVEN_ODD: Specifies that "inside" is computed by an odd number of edge crossings.
 
-.. code-block:: 
+|startTable|
 
-   Path: M 50,0 L 21,90 L 98,35 L2,35 L79,90 Z
+.. code-block:: java
+
+   Path path = new Path();
+
+   path.moveTo(50, 0);
+   path.lineTo(21, 90);
+   path.lineTo(98, 35);
+   path.lineTo(2, 35);
+   path.lineTo(79, 90);
+   path.close();
+
+|midTable|
 
 .. figure:: images/fillType.png
    :width: 300px
    :align: center
+
+|endTable|
 
 .. _Alpha Blending Mode:
 
