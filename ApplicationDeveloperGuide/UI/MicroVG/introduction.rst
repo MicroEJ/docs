@@ -1,7 +1,7 @@
 Introduction
 ============
 
-MicroVG Foundation Library provides vector graphics drawing capabilities.
+MicroVG Foundation Library provides vector drawing capabilities.
 
 To use the MicroVG Foundation Library, add `MicroVG API module` <FIXME link to api modules/ej/api/microvg> to a :ref:`module description file <mmm_module_description>`:
 
@@ -13,8 +13,8 @@ The MicroVG Library brings the following features:
 
 - the creation and drawing of paths with color or linear gradient.
 - the drawing of texts using vector fonts with color or linear gradient.
-- the drawing of vector graphics images.
-- the transformation of paths, texts, images with affine transformation matrixes.
+- the drawing of vector images.
+- the transformation of paths, texts, images with affine transformation matrices.
 
 
 ..

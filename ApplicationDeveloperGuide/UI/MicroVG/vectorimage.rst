@@ -1,12 +1,12 @@
 .. include:: aliases.rst
 
-Vector Graphics Images
-======================
+Vector Images
+=============
 
 Overview
 --------
 
-Vector Graphics Images are graphical resources that can be accessed with a call to `ej.microvg.VectorImage.getImage` <FIXME link to api page>. The images are converted at build-time (using the image generator tool) to immutable resources.
+Vector Images are graphical resources that can be accessed with a call to `ej.microvg.VectorImage.getImage` <FIXME link to api page>. The images are converted at build-time (using the image generator tool) to immutable resources.
 
 Images that must be processed by the image generator tool are declared in ``*.vectorimages.list`` files. The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the MicroEJ classpath root referring to a vector image file (e.g. ``.svg``, ``.xml``). The resource must be followed by a parameter (separated by a ``:``) which defines and/or describes the image output file format (raw format).
 
@@ -34,7 +34,7 @@ The image generator tool supports the following input file formats:
 -  Android Vector Drawable
 -  SVG 
 
-The vector graphics image objects are extracted and converted to paths made of `Move`, `Line`` and `Curve` commands. 
+The vector image objects are extracted and converted to paths made of `Move`, `Line`` and `Curve` commands. 
 
 Each path is associated with either a fill color or a linear gradient. All object strokes are converted to filled paths at build-time.
 
@@ -112,7 +112,7 @@ The following example describes how an Android Vectordrawable file can be drawn 
 Drawing With Opacity
 ~~~~~~~~~~~~~~~~~~~~
 
-The vector graphics image can be drawn with a global opacity level. 
+The vector image can be drawn with a global opacity level. 
 
 |startTable| 
   
@@ -210,12 +210,12 @@ The following example illustrates this feature.
 
 |endTable|
 
-Animated Vector Graphics Images
--------------------------------
+Animated Vector Images
+----------------------
 
 The Android Vector Drawable format supports the ability to change vector graphics over time, to create animated effects.
 
-The transformations of the objects over the time are embedded in the Vector Graphics image file and a call to `ej.microvg.VectorGraphicsPainter.drawAnimatedImage` <FIXME link to api page> or `ej.microvg.VectorGraphicsPainter.drawFilteredAnimatedImage` <FIXME link to api page> will draw the image for a specific time frame.
+The transformations of the objects over the time are embedded in the Vector image file and a call to `ej.microvg.VectorGraphicsPainter.drawAnimatedImage` <FIXME link to api page> or `ej.microvg.VectorGraphicsPainter.drawFilteredAnimatedImage` <FIXME link to api page> will draw the image for a specific time frame.
 
 The application can get the duration of the image animation with a call to  `ej.microvg.VectorImage.getDuration()` <FIXME link to api page>.
 

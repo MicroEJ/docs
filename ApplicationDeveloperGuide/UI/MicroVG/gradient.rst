@@ -5,17 +5,17 @@
 Linear Gradient
 ===============
 
-The MicroVG library supports the drawing of shape with a linear gradient of color.
+The MicroVG library supports the drawing of shapes with a linear gradient of color.
 
 A linear gradient is specified by a linear segment and a set of ARGB colors associated with points on that segment.
 
-The colors along the segment between those points are calculated using linear interpolation, then extended perpendicular to that line. 
+The colors along the segment between those points are calculated using linear interpolation, then extended perpendicular to that line.
 
-The position of the color points on the segment are given from 0.0f (start of point) to 1.0f (end of the segment). 
+The position of the color points on the segment are given from ``0.0f`` (start of point) to ``1.0f`` (end of the segment).
 
 There are two ways to create a gradient:
 
-- with a start point, an end point and a colors table: the first color will be applied to the start point, the second color to the end point and other colors distributed along the gradient segment.
+- with a start point, an end point and a color table: the first color will be applied to the start point, the second color to the end point and other colors distributed evenly along the gradient segment.
 
 |startTable| 
 
@@ -41,7 +41,7 @@ There are two ways to create a gradient:
 
 |endTable|
 
-- with a start point, an end point, a colors table and a positions table: the colors are applied to their corresponding relative positions on the segment. If the first point is not the start point of the segment, then first color is applied from the start of the segment to the first point. If the last point is not the end point of the segment, then last color is applied from the last point to the end of the segment.
+- with a start point, an end point, a color table and a position table: the colors are applied to their corresponding relative positions on the segment. If the first point is not the start point of the segment, then first color is applied from the start of the segment to the first point. If the last point is not the end point of the segment, then last color is applied from the last point to the end of the segment.
 
 
 |startTable| 
@@ -50,7 +50,7 @@ There are two ways to create a gradient:
 
    LinearGradient gradient = new LinearGradient(0, 0, 99, 0, 
                                                 new int[] { 0xffff0000, 0xffffff00, 0xffffffff },
-				                new float[] { 0.4f, 0.6f, 0.8f });
+                                                new float[] { 0.4f, 0.6f, 0.8f });
 
    VectorGraphicsPainter.fillPath(g, path, new Matrix(), gradient);
 
@@ -62,7 +62,7 @@ There are two ways to create a gradient:
 
 |endTable|
 
-The transformation applied to the object(`Path` or `String`) to draw with a gradient is also applied to that gradient. The `LinearGradient` is not updated after the drawing.
+The transformation applied to the object (`Path` or `String`) to draw with a gradient is also applied to that gradient. The `LinearGradient` is not updated after the drawing.
 
 |startTable| 
 

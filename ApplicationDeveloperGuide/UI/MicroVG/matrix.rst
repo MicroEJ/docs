@@ -13,9 +13,9 @@ The available transformations are:
 - rotation
 - scaling
 
-Scaling and rotation are always perform around the (0,0) pivot point. In order to rotate or scale a `Path` with a pivot point, the matrix must be translated before and after the rotation/scaling.
+Scaling and rotation are always performed around the (0,0) pivot point. In order to rotate or scale a `Path` with a pivot point, the matrix must be translated before and after the rotation/scaling.
 
-`Matrix` are created as identity matrix, which means that the resulting `Path` of the transformation is identical to the original `Path`.
+A `Matrix` is created as an identity matrix, which means that a `Path` resulting of a transformation with this matrix is identical to the original `Path`.
 
 The `Matrix` can be initialized with a transformation with set methods:
 
@@ -35,14 +35,14 @@ A transformation can be appended to a `Matrix` with the append methods:
 - `postRotate(angle)`
 - `postScale(scaleX, scaleY)`
 
-A `Matrix` can also get transformations from an other `Matrix` with the contatenante and set methods:
+A `Matrix` can also get transformations from an other `Matrix` with the contatenate and set methods:
 
 - `preConcat(matrix)`
 - `postConcat(matrix)`
 - `set(matrix)`
 - `setConcat(matrix0, matrix1)`
 
-Once a `Matrix` has been computed, it can be used to draw an object (`Path`, `String`, `VectorImage`). All points of the drawn object will be transformed by the `Matrix`.
+Once a `Matrix` has been computed, it can be used to draw an object (`Path`, `String`, `VectorImage`). All the points of the drawn object will be transformed by the `Matrix`.
 
 When a `Matrix` has been computed with multiple type of transformation, the sequence order of the transformation is important. Chaining the transformations in a different order will not provide the same `Matrix`. The result of the previous transformation is the input to the next transformation.
 
@@ -128,7 +128,7 @@ From point (0,0).
 
 |endTable|
 
-Contatenate Matrixes
+Concatenate Matrixes
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Sequence order has an incidence on the rendering.

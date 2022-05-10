@@ -43,19 +43,18 @@ A path can be drawn with a call to `ej.microvg.VectorGraphicsPainter.fillPath()`
 
 The drawn path will be filled by the graphic context color or by a linear gradient.
 
-The path can be transformed by a transformation matrix(This concept is explained in :ref:`Matrix` section) before drawing.
+The path can be transformed by a transformation matrix (this concept is explained in :ref:`Matrix` section) before drawing.
 
 A `FillType` and an `Alpha Blending Mode` can be applied during the drawing.
 
 Fill Path With Graphic Context Color
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The opacity value of the drawing is 0xFF.
+The opacity value of the drawing is ``0xFF``.
 
 .. code-block:: java
 
    g.setColor(Colors.GRAY);
-
    VectorGraphicsPainter.fillPath(g, path, new Matrix());
 
 .. figure:: images/fillPath.png
@@ -70,14 +69,13 @@ The opacity value of the drawing is defined by the Alpha channel of the ARGB col
 .. code-block:: java
 
    LinearGradient gradient = new LinearGradient(0, 0, 100, 0, new int[] { 0xffff0000, 0xffffff00, 0xffffffff });
-
-	VectorGraphicsPainter.fillPath(g, path, new Matrix(), gradient);
+   VectorGraphicsPainter.fillPath(g, path, new Matrix(), gradient);
 
 .. figure:: images/fillPathGradient.png
    :width: 300px
    :align: center
 
-Refer to `Linear Gradient` section for more details about the definition of a linear gradient.
+Refer to :ref:`Linear Gradient` section for more details about the definition of a linear gradient.
 
 .. _FillType:
 
@@ -106,16 +104,16 @@ Opacity and Blending Mode
 
 The opacity of the drawing can be provided to the `fillPath` method with a blending mode.
 
-When the drawing is done with graphic context color, the given alpha value replaces the default value (0xFF).
+When the drawing is done with graphic context color, the given alpha value replaces the default value (``0xFF``).
 
-When the drawing is done with a linear gradient, the given alpha is applied above each gradient colors alpha channel values(0x80 alpha value on #80FFFFFF ARGB color leads to #40FFFFFF color).
+When the drawing is done with a linear gradient, the given alpha is applied above each gradient colors alpha channel values(0x80 alpha value on ``#80FFFFFF`` ARGB color leads to ``#40FFFFFF`` color).
 
 The supported blending modes are:
 
-- SRC: The source pixels replace the destination pixels.
-- SRC_OVER: The source pixels are drawn over the destination pixels.
-- DST_OVER: The source pixels are drawn behind the destination pixels.
-- SRC_IN: Keeps the source pixels that cover the destination pixels, discards the remaining source and destination pixels.
+- ``SRC``: The source pixels replace the destination pixels.
+- ``SRC_OVER``: The source pixels are drawn over the destination pixels.
+- ``DST_OVER``: The source pixels are drawn behind the destination pixels.
+- ``SRC_IN``: Keeps the source pixels that cover the destination pixels, discards the remaining source and destination pixels.
 
 .. figure:: images/fillPathBlendMode.png
    :width: 300px

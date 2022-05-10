@@ -8,7 +8,7 @@ Overview
 
 The MicroVG library enables the usage of Vector Fonts. 
 
-Compared to MicroUI Fonts (:ref:`section.ui.Fonts`), Vector Fonts brings the following features:
+Compared to MicroUI :ref:`section.ui.Fonts`, Vector Fonts brings the following features:
 
 - the text strings are scalable and can be transformed using a `Matrix` object.
 - the TTF/OTF font files don't need to be preprocessed.
@@ -16,12 +16,12 @@ Compared to MicroUI Fonts (:ref:`section.ui.Fonts`), Vector Fonts brings the fol
 
 The library also considers the `Kerning` space described in the font file kerning table, and allows a fine adjustement of the inter-letters spacing.
 
-Its also provides metrics measurement methods to correctly place the text within the surrounding drawing elements (i.e. in a label).
+It also provides metrics measurement methods to correctly place the text within the surrounding drawing elements (i.e. in a label).
 
 Loading a Font File
 -------------------
 
-Font files must be declared as ressources in a `.list` file available in the classpath(:ref:`chapter.microej.applicationResources`).
+Font files must be declared as ressources in a `.resources.list` file available in the classpath(:ref:`chapter.microej.applicationResources`).
 
 Then the font has to be loaded in a `VectorFont` object with a call to `ej.microvg.VectorFont.loadFont` <FIXME link to API>. This `VectorFont` object can then be used to draw text strings.
 
@@ -29,7 +29,7 @@ Then the font has to be loaded in a `VectorFont` object with a call to `ej.micro
 Text String Drawing
 -------------------
 
-A string can be drawn in the graphic context with a call to `ej.microvg.VectorGraphicsPainter.drawString` <FIXME link to API>.
+A string can be drawn in the graphics context with a call to `ej.microvg.VectorGraphicsPainter.drawString` <FIXME link to API>.
 
 The text string height is scalable, and multiple font files can be used in parrallel.
 
@@ -37,7 +37,7 @@ The text string height is scalable, and multiple font files can be used in parra
 
 .. code-block:: java
 
-      VectorFont font0 = VectorFont.loadFont("/fonts/Arial.ttf");
+		VectorFont font0 = VectorFont.loadFont("/fonts/Arial.ttf");
 		VectorFont font1 = VectorFont.loadFont("/fonts/RAVIE.ttf");
 
 		int x = 20;
@@ -76,15 +76,15 @@ The text string height is scalable, and multiple font files can be used in parra
 Text Color
 ~~~~~~~~~~
 
-The text string can be colored with the graphic context color or a with a linear gradient(:ref:`Linear Gradient`).
+The text string can be colored with the graphics context color or a with a linear gradient(:ref:`Linear Gradient`).
 
-`FillType` and `Alpha Blending Mode` are also managed similarly to `Path` drawing (refer to :ref:`FillType` and `Alpha Blending Mode`).
+`FillType` and `Alpha Blending Mode` are also managed similarly to `Path` drawing (refer to :ref:`FillType` and :ref:`Alpha Blending Mode`).
 
 |startTable|
 
 .. code-block:: java
 
-   	g.setColor(Colors.LIME);
+		g.setColor(Colors.LIME);
 		VectorGraphicsPainter.drawString(g, "Hello MicroEJ", font, 50, x, y);
 
 		LinearGradient gradient = new LinearGradient(0, 0, 250, 50, 
@@ -112,7 +112,7 @@ The text string can also be transformed with a `Matrix` to translate, rotate, sc
 
 .. code-block:: java
 
-      Matrix matrix0 = new Matrix();
+		Matrix matrix0 = new Matrix();
 
 		matrix0.setTranslate(20, 60);
 		VectorGraphicsPainter.drawString(g, "Hello MicroEJ", font, 50, matrix0, 0xff, BlendMode.SRC_OVER, 0);
@@ -144,13 +144,13 @@ The text string can also be transformed with a `Matrix` to translate, rotate, sc
 Letter Spacing
 ~~~~~~~~~~~~~~
 
-The inter character distance can be adjusted for each string drawing. By default, the inter character distance is computed from the font file metrics, considering `kerning <https://en.wikipedia.org/wiki/Kerning>`_, if the font file includes a kerning table. The letterSpacing drawString() parameter default value is 0 pixel, a positive/negative value will increase/reduce the inter space distance by the corresponding pixel value.
+The inter character distance can be adjusted for each string drawing. By default, the inter character distance is computed from the font file metrics, considering `kerning <https://en.wikipedia.org/wiki/Kerning>`_, if the font file includes a kerning table. It can be adjusted with the ``letterSpacing`` parameter of drawString(). Its default value is 0 pixel, a positive/negative value will increase/reduce the inter space distance by the corresponding pixel value.
 
 |startTable|
 
 .. code-block:: java
 
-      Matrix matrix = new Matrix();
+		Matrix matrix = new Matrix();
 
 		matrix.setTranslate(20, 60);
 		VectorGraphicsPainter.drawString(g, "Hello MicroEJ", font, 50, matrix, 0xff, BlendMode.SRC_OVER, 0);
@@ -172,7 +172,7 @@ The inter character distance can be adjusted for each string drawing. By default
 Colored Emojis
 ~~~~~~~~~~~~~~
 
-The library supports the drawing of colored multilayer glyphs, but only for the embedded implementation. The simulator implementation draws the full emoji glyph with the color of the graphic context.
+The library supports the drawing of colored multilayer glyphs, but only for the embedded implementation. The simulator implementation draws the full emoji glyph with the color of the graphics context.
 
 
 Metrics and Text Positioning
@@ -197,12 +197,12 @@ The `ej.microvg.VectorFont.getBaselinePosition()` method can be used to position
 
 The `ej.microvg.VectorFont.getHeight()` method can be used to center a text inside a label, by positionning the anchor point in order to have the same space above and below the text string.
 
-Two other methods are available to position a know text in a label:
+Two other methods are available to position a known text in a label:
 
 - `ej.microvg.VectorFont.measureStringHeight()`
-- `ej.microvg.VectorFont.measureStringWith()`
+- `ej.microvg.VectorFont.measureStringWidth()`
 
-These methods returns the width and height of a string drawing. They are computed from the width and height of the glyphs composing the string.
+These methods return the width and height of a string drawing. They are computed from the width and height of the glyphs composing the string.
 
 .. figure:: images/textBox.png
 	:align: center
@@ -213,7 +213,7 @@ These methods can measure a specific glyph width and height using a one characte
 Drawing a Text on a Circle
 --------------------------
 
-The library enables the drawing of a text on a circle by a call to `ej.microvg.VectorGraphicsPainter.drawStringOnCircle` <FIXME link to api>. The string is rendered as if the baseline of the string was a circle arc. 
+The library proposes the drawing of a text on a circle by a call to `ej.microvg.VectorGraphicsPainter.drawStringOnCircle` <FIXME link to api>. The string is rendered as if the baseline of the string was a circle arc. 
 
 The string direction can be either clockwise or counter clockwise.
 
