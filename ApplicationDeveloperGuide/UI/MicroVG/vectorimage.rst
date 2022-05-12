@@ -12,17 +12,15 @@ Images that must be processed by the image generator tool are declared in ``*.ve
 
 Currently accepted formats are : 
 
-- :VGF : vglite compatible format with coordinates encoded as float numbers(32 bits).
-- :VG32 : vglite compatible format with coordinates encoded as signed int numbers(32 bits).
-- :VG16 : vglite compatible format with coordinates encoded as signed short numbers(16 bits).
-- :VG8 : vglite compatible format with coordinates encoded as signed char numbers(8 bits).
+- ``:VGF``: vglite compatible format with coordinates encoded as float numbers (32 bits).
+- ``:VG32``: vglite compatible format with coordinates encoded as signed int numbers (32 bits).
+- ``:VG16``: vglite compatible format with coordinates encoded as signed short numbers (16 bits).
+- ``:VG8``: vglite compatible format with coordinates encoded as signed char numbers (8 bits).
 
 Example:
 
 ::
 
-   # The following image is embedded 
-   # as a PNG resource (decoded at run-time)
    /com/mycompany/MyImage1.svg:VGF
    /com/mycompany/androidVectorDrawable.xml:VG8
 
@@ -31,8 +29,8 @@ Supported input files
 
 The image generator tool supports the following input file formats:
 
--  Android Vector Drawable
--  SVG 
+- Android Vector Drawable
+- SVG 
 
 The vector image objects are extracted and converted to paths made of `Move`, `Line`` and `Curve` commands. 
 
@@ -49,24 +47,24 @@ Drawing and Transforming Images
 
 Once an image has been loaded it can be drawn in the graphic context with a call to `ej.microvg.VectorGraphicsPainter.drawImage()` <FIXME link to api page>.
 
-The image is associated with a transformation Matrix (see: <FIXME link Matrix section>) that will be applied in order to translate, scale and/or rotate the image. 
+The image is associated with a transformation :ref:`Matrix` that will be applied in order to translate, scale and/or rotate the image. 
 
 The application can get the width and the height of the image with `ej.microvg.VectorImage.getWidth()` <XXX link to api page> and `ej.microvg.VectorImage.getHeight()` <FIXME link to api page> to correctly scale and position the image in the application window.
 
-The following example describes how an Android Vectordrawable file can be drawn and positionned on the display.
+The following example describes how an Android Vector Drawable file can be drawn and positioned on the display.
 
 - Android Vector Drawable file:
-  
+
 .. code-block:: xml
 
    <vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt"
-      android:width="100dp"  android:height="100dp"  android:viewportWidth="100"  android:viewportHeight="100">
-      <path  android:pathData="M 0 0 h50 v50 h-50 z"  android:fillColor="#FFFFAA"/>
+      android:width="100dp" android:height="100dp" android:viewportWidth="100" android:viewportHeight="100">
+      <path android:pathData="M 0 0 h50 v50 h-50 z" android:fillColor="#FFFFAA"/>
       <path android:pathData="M 50 50 h50 v50 h-50 z">
          <aapt:attr name="android:fillColor">
                <gradient
-                  android:startColor="#0000ff" android:startX="50"  android:startY="50"
-                  android:endColor="#ff00ff" android:endX="100"     android:endY="100"
+                  android:startColor="#0000ff" android:startX="50" android:startY="50"
+                  android:endColor="#ff00ff" android:endX="100" android:endY="100"
                   android:type="linear">
                </gradient>
          </aapt:attr>
@@ -78,7 +76,7 @@ The following example describes how an Android Vectordrawable file can be drawn 
 .. code-block:: java
 
    public static void main(String[] args) {
-      
+
       MicroUI.start();
 
       Display display = Display.getDisplay();
@@ -217,15 +215,15 @@ The Android Vector Drawable format supports the ability to change vector graphic
 
 The transformations of the objects over the time are embedded in the Vector image file and a call to `ej.microvg.VectorGraphicsPainter.drawAnimatedImage` <FIXME link to api page> or `ej.microvg.VectorGraphicsPainter.drawFilteredAnimatedImage` <FIXME link to api page> will draw the image for a specific time frame.
 
-The application can get the duration of the image animation with a call to  `ej.microvg.VectorImage.getDuration()` <FIXME link to api page>.
+The application can get the duration of the image animation with a call to `ej.microvg.VectorImage.getDuration()` <FIXME link to api page>.
 
-Every image object that is animated outside the image viewbox is clipped at the image boundary. In any cases, especially when the image is rotated,  the image boundary is the rectangle that contains all the corners of the original image.
+Every image object that is animated outside the image viewbox is clipped at the image boundary. In any cases, especially when the image is rotated, the image boundary is the rectangle that contains all the corners of the original image.
 
-The supported file format is an Animated Vector Drawable xml file with animations and vector definition in the same file as described in <https://developer.android.com/reference/android/graphics/drawable/AnimatedVectorDrawable#define-an-animatedvectordrawable-all-in-one-xml-file>
+The supported file format is an Animated Vector Drawable xml file with animations and vector definition in the same file as described in `Android API <https://developer.android.com/reference/android/graphics/drawable/AnimatedVectorDrawable#define-an-animatedvectordrawable-all-in-one-xml-file>`_.
 
-The SVG format also supports the animation of vector graphics object, but this feature is not yet implemented in the MicroVG library for this file format.
+The SVG format also supports the animation of vector graphics objects, but this feature is not yet implemented in the MicroVG library for this file format.
 
-SVG files that need to be animated should be converted to Android Vector Drawable format with the Android Vector Asset tool and then animated manually or with a tool like Shapeshifter <https://shapeshifter.design/>.
+SVG files that need to be animated should be converted to Android Vector Drawable format with the Android Vector Asset tool and then animated manually or with a tool like `Shapeshifter <https://shapeshifter.design/>`_.
 
 Supported animations
 ~~~~~~~~~~~~~~~~~~~~
@@ -276,20 +274,20 @@ Any group in the Android Vector Drawable can be translated in X or Y direction w
 
 .. code-block:: xml
 
-   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
          xmlns:aapt="http://schemas.android.com/aapt">
    <aapt:attr name="android:drawable">
-      <vector  android:width="100dp"  android:height="100dp"  
+      <vector android:width="100dp" android:height="100dp"
                android:viewportWidth="100" android:viewportHeight="100">
          <group android:name="yellow_group">
-               <path  android:pathData="M 0 0 h50 v50 h-50 z"  android:fillColor="#FFFFAA"/>
+               <path android:pathData="M 0 0 h50 v50 h-50 z" android:fillColor="#FFFFAA"/>
          </group>
          <group android:name="gradient_group">
          <path android:pathData="M 50 50 h50 v50 h-50 z">
                <aapt:attr name="android:fillColor">
                   <gradient
-                     android:startColor="#0000ff" android:startX="50"  android:startY="50"
-                     android:endColor="#ff00ff" android:endX="100"     android:endY="100"
+                     android:startColor="#0000ff" android:startX="50" android:startY="50"
+                     android:endColor="#ff00ff" android:endX="100" android:endY="100"
                      android:type="linear">
                   </gradient>
                </aapt:attr>
@@ -302,7 +300,7 @@ Any group in the Android Vector Drawable can be translated in X or Y direction w
          <set android:ordering="together">
                <objectAnimator android:propertyName="translateX" android:valueType="floatType"
                   android:duration="1000" android:startOffset="0" android:valueFrom="0" android:valueTo="50"/>
-               <objectAnimator android:propertyName="translateX"  android:valueType="floatType"
+               <objectAnimator android:propertyName="translateX" android:valueType="floatType"
                   android:duration="1000" android:startOffset="1500" android:valueFrom="50" android:valueTo="0"/>
          </set>
       </aapt:attr>
@@ -311,13 +309,13 @@ Any group in the Android Vector Drawable can be translated in X or Y direction w
       <aapt:attr name="android:animation">
          <set android:ordering="together">
                <objectAnimator android:propertyName="translateX" android:valueType="floatType"
-                  android:duration="1000" android:startOffset="0" android:valueFrom="0" android:valueTo="-50"  />
-               <objectAnimator android:propertyName="translateX"  android:valueType="floatType"
-                  android:duration="1000" android:startOffset="1500" android:valueFrom="-50" android:valueTo="0" />
+                  android:duration="1000" android:startOffset="0" android:valueFrom="0" android:valueTo="-50"/>
+               <objectAnimator android:propertyName="translateX" android:valueType="floatType"
+                  android:duration="1000" android:startOffset="1500" android:valueFrom="-50" android:valueTo="0"/>
                <objectAnimator android:propertyName="translateY" android:valueType="floatType"
-                  android:duration="1000" android:startOffset="0" android:valueFrom="0" android:valueTo="-50"  />
-               <objectAnimator android:propertyName="translateY"  android:valueType="floatType"
-                  android:duration="1000" android:startOffset="1500" android:valueFrom="-50" android:valueTo="0" />
+                  android:duration="1000" android:startOffset="0" android:valueFrom="0" android:valueTo="-50"/>
+               <objectAnimator android:propertyName="translateY" android:valueType="floatType"
+                  android:duration="1000" android:startOffset="1500" android:valueFrom="-50" android:valueTo="0"/>
          </set>
       </aapt:attr>
    </target>
@@ -342,10 +340,10 @@ Any group in the Android Vector Drawable can be translated over a path.
 
 .. code-block:: xml
 
-   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:aapt="http://schemas.android.com/aapt">
    <aapt:attr name="android:drawable">
-      <vector  android:width="100dp" android:height="100dp" 
+      <vector android:width="100dp" android:height="100dp" 
                android:viewportWidth="100" android:viewportHeight="100">
         ... same as previous example
       </vector>
@@ -381,20 +379,20 @@ A group in the Android Vector Drawable can be scaled on X or Y direction. The sc
 
 .. code-block:: xml
 
-   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:aapt="http://schemas.android.com/aapt">
    <aapt:attr name="android:drawable">
-      <vector  android:width="100dp" android:height="100dp" 
+      <vector android:width="100dp" android:height="100dp" 
                android:viewportWidth="100" android:viewportHeight="100">
          <group android:name="yellow_group" android:pivotX="25" android:pivotY="25">
-               <path  android:pathData="M 0 0 h50 v50 h-50 z" android:fillColor="#FFFFAA"/>
+               <path android:pathData="M 0 0 h50 v50 h-50 z" android:fillColor="#FFFFAA"/>
          </group>
          <group android:name="gradient_group" >
          <path android:pathData="M 50 50 h50 v50 h-50 z">
                <aapt:attr name="android:fillColor">
                   <gradient
-                     android:startColor="#0000ff" android:startX="50"  android:startY="50"
-                     android:endColor="#ff00ff" android:endX="100"     android:endY="100"
+                     android:startColor="#0000ff" android:startX="50" android:startY="50"
+                     android:endColor="#ff00ff" android:endX="100" android:endY="100"
                      android:type="linear">
                   </gradient>
                </aapt:attr>
@@ -407,10 +405,10 @@ A group in the Android Vector Drawable can be scaled on X or Y direction. The sc
          <set android:ordering="together">
                <objectAnimator android:propertyName="scaleX" android:valueType="floatType"
                   android:duration="1000" android:startOffset="0" android:valueFrom="1" 
-                  android:valueTo="0.5"  />
-               <objectAnimator android:propertyName="scaleX"  android:valueType="floatType"
+                  android:valueTo="0.5"/>
+               <objectAnimator android:propertyName="scaleX" android:valueType="floatType"
                   android:duration="1000" android:startOffset="1500" android:valueFrom="0.5" 
-                  android:valueTo="1" />
+                  android:valueTo="1"/>
          </set>
       </aapt:attr>
    </target>
@@ -419,16 +417,16 @@ A group in the Android Vector Drawable can be scaled on X or Y direction. The sc
          <set android:ordering="together">
                <objectAnimator android:propertyName="scaleX" android:valueType="floatType"
                   android:duration="1000" android:startOffset="0" 
-                  android:valueFrom="0.2" android:valueTo="1"  />
-               <objectAnimator android:propertyName="scaleX"  android:valueType="floatType"
+                  android:valueFrom="0.2" android:valueTo="1"/>
+               <objectAnimator android:propertyName="scaleX" android:valueType="floatType"
                   android:duration="1000" android:startOffset="1500" 
-                  android:valueFrom="1" android:valueTo="0.2" />
+                  android:valueFrom="1" android:valueTo="0.2"/>
                <objectAnimator android:propertyName="scaleY" android:valueType="floatType"
                   android:duration="1000" android:startOffset="0" 
-                  android:valueFrom="0.2" android:valueTo="1"  />
-               <objectAnimator android:propertyName="scaleY"  android:valueType="floatType"
+                  android:valueFrom="0.2" android:valueTo="1"/>
+               <objectAnimator android:propertyName="scaleY" android:valueType="floatType"
                   android:duration="1000" android:startOffset="1500"
-                  android:valueFrom="1" android:valueTo="0.2" />
+                  android:valueFrom="1" android:valueTo="0.2"/>
          </set>
       </aapt:attr>
    </target>
@@ -452,11 +450,11 @@ A group in the Android Vector Drawable can be rotated around a pivot point. The 
 
 .. code-block:: xml
 
-   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:aapt="http://schemas.android.com/aapt">
    <aapt:attr name="android:drawable">
-      <vector  android:width="100dp"  android:height="100dp"  
-               android:viewportWidth="100"  android:viewportHeight="100">
+      <vector android:width="100dp" android:height="100dp"
+               android:viewportWidth="100" android:viewportHeight="100">
          ... same as previous example
       </vector>
    </aapt:attr>
@@ -465,10 +463,10 @@ A group in the Android Vector Drawable can be rotated around a pivot point. The 
          <set android:ordering="together">
                <objectAnimator android:propertyName="rotation" android:valueType="floatType"
                   android:duration="1000" android:startOffset="0" 
-                  android:valueFrom="0" android:valueTo="720"  />
-               <objectAnimator android:propertyName="rotation"  android:valueType="floatType"
+                  android:valueFrom="0" android:valueTo="720"/>
+               <objectAnimator android:propertyName="rotation" android:valueType="floatType"
                   android:duration="1000" android:startOffset="1500" 
-                  android:valueFrom="720" android:valueTo="0" />
+                  android:valueFrom="720" android:valueTo="0"/>
          </set>
       </aapt:attr>
    </target>
@@ -488,7 +486,7 @@ Morphing
 
 The Android Vector Drawable format supports the animation of the `pathData` attribute of a path. With this type of animation a shape can be transformed to a totally different other shape. The only constraint is that the origin and destination `pathData` must have the same commands format.
 
-Lets take for instance, the morphing of a rectangle to a circle which have the following commands.
+Lets take, for instance, the morphing of a rectangle to a circle which have the following commands.
 
 :: 
 
@@ -510,11 +508,11 @@ There is an infinity of possibilities to create the new path, and the associatio
 
 .. code-block:: xml
 
-   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:aapt="http://schemas.android.com/aapt">
     <aapt:attr name="android:drawable">
-        <vector  android:width="20dp"  android:height="20dp"  
-                 android:viewportWidth="20"  android:viewportHeight="20">
+        <vector android:width="20dp" android:height="20dp"
+                 android:viewportWidth="20" android:viewportHeight="20">
             <path android:fillColor="#FF0000" android:pathData="M 0 0 h40 v40 h-40"/>
             <path android:fillColor="#FF0000" android:pathData="M 0 0 h40 v40 h-40"/>
             <group android:name="group1" android:translateX="-10">
@@ -532,7 +530,7 @@ There is an infinity of possibilities to create the new path, and the associatio
                                       C 16.6 6.7 18 8.1 18 9.8 
                                       C 18 11.6 16.6 13 14.9 13 
                                       C 13.3 13 11.9 11.6 11.9 9.8 Z"
-                    android:fillColor="#00FFAA"  />
+                    android:fillColor="#00FFAA" />
             </group>
         </vector>
     </aapt:attr>
@@ -584,7 +582,7 @@ There is an infinity of possibilities to create the new path, and the associatio
 
 |endTable|
 
-.. warning:: As path strokes are converted at build-time to filled path, the morphing of stroked paths is not supported. Any image with a path morphing animation on a stroked path will be rejected. Path strokes must be manually converted to filled path and the morphing of these new  filled paths must be created.
+.. warning:: As path strokes are converted at build-time to filled path, the morphing of stroked paths is not supported. Any image with a path morphing animation on a stroked path will be rejected. Path strokes must be manually converted to filled path and the morphing of these new filled paths must be created.
 
 
 Color and Opacity
@@ -596,11 +594,11 @@ Any path fillColor, strokeColor, fillAlpha and strokeAlpha attributes in the And
 
 .. code-block:: xml
 
-   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:aapt="http://schemas.android.com/aapt">
     <aapt:attr name="android:drawable">
-        <vector  android:width="55dp"  android:height="55dp"  
-                 android:viewportWidth="55"  android:viewportHeight="55">
+        <vector android:width="55dp" android:height="55dp"
+                 android:viewportWidth="55" android:viewportHeight="55">
            <group android:translateX="5">
             <path android:name="fillColor" android:fillColor="#FF00FF" 
                   android:pathData="M 0 0 h20 v20 h-20 Z"/>
@@ -699,12 +697,12 @@ Any other vectorial path can also be used as the interpolator easing function.
 Following examples show the behavior of some of the interpolators for a simple translation animation.
 
 - Image:
-  
+
 .. code-block:: 
 
-   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:aapt="http://schemas.android.com/aapt">
+   <animated-vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt">
     <aapt:attr name="android:drawable">
-        <vector  android:width="100dp"  android:height="100dp"  android:viewportWidth="100"  android:viewportHeight="100">
+        <vector android:width="100dp" android:height="100dp" android:viewportWidth="100" android:viewportHeight="100">
         <path android:pathData="M 0 0 h100 v20 h-100 Z" android:strokeColor="#FFFFFF" android:strokeWidth="1"/>
            <group android:name="translate">
             <path android:pathData="M 0 0 h20 v20 h-20 Z" android:fillColor="#335566"/>
@@ -783,7 +781,7 @@ Following examples show the behavior of some of the interpolators for a simple t
 .. code-block:: xml
 
          <aapt:attr name="android:interpolator">
-            <pathInterpolator android:pathData="M 0 0 C 0.371 2.888 0.492 -1.91 1 1" />
+            <pathInterpolator android:pathData="M 0 0 C 0.371 2.888 0.492 -1.91 1 1"/>
          </aapt:attr>
 
 |midTable600|
@@ -801,7 +799,7 @@ Following examples show the behavior of some of the interpolators for a simple t
 .. code-block:: xml
 
          <aapt:attr name="android:interpolator">
-            <pathInterpolator android:pathData="M 0 0 C 0.333 1.939 0.171 -0.906 0.601 0.335 C 0.862 0.998 0.83 -0.771 1 1" />
+            <pathInterpolator android:pathData="M 0 0 C 0.333 1.939 0.171 -0.906 0.601 0.335 C 0.862 0.998 0.83 -0.771 1 1"/>
          </aapt:attr>
 
 |midTable600|
@@ -821,7 +819,7 @@ Limitations / Supported Features
 Android Vector Drawable
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The MVG library supports most of the Android Vector Drawable features with the following limitations:
+The MicroVG library supports most of the Android Vector Drawable features with the following limitations:
 
 - `clip-path` feature is only supported for static images.
 - `trim-path` animation is not supported.
@@ -832,7 +830,7 @@ The MVG library supports most of the Android Vector Drawable features with the f
 SVG
 ~~~
 
-The MVG library supports a subset of SVGTiny: https://www.w3.org/TR/SVGTiny12/ including:
+The MicroVG library supports a subset of SVGTiny: https://www.w3.org/TR/SVGTiny12/ including:
 
 - Path
 - Basic shape
@@ -842,7 +840,7 @@ The MVG library supports a subset of SVGTiny: https://www.w3.org/TR/SVGTiny12/ i
 - Painting color formats : #RRGGBB, #RGB, rgb(r,g,b), keywords
 - Transforms 
 - Text
-- Fonts (The text fonts used in the SVG file has to be installed on the operating system)
+- Fonts (the text fonts used in the SVG file has to be installed on the operating system)
 
 
   

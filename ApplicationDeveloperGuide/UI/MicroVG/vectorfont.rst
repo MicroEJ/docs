@@ -1,6 +1,6 @@
 .. include:: aliases.rst
 
-VectorFont
+Vector Fonts
 ============
 
 Overview
@@ -256,7 +256,7 @@ All the features described above are still available (linear gradient, transform
 
 |endTable|
 
-The anchor point of the drawing is the center of the circle.  
+The anchor point of the drawing is the center of the circle.
 
 The position where the text starts along the circle is the 3 o'clock position (positive X axis). This starting position can be modified by specifying a rotation into the transformation `Matrix`.
 
