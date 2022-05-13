@@ -38,10 +38,10 @@ This glossary defines the technical terms upon which the `MICROEJ VEE (Virtual E
       A Firmware is the result of the binary link of a Standalone Application with a Platform. The firmware is a binary  program that can be programmed into the flash memory of a device. 
 
          Mono-Sandbox Firmware
-            A Mono-Sandbox Firmware is a Firmware that implements an unmodifiable set of functions. (previously Single-app Firmware)
+            A Mono-Sandbox Firmware is a Firmware that implements an unmodifiable set of functions. (formerly called a Single-app Firmware)
 
          Multi-Sandbox Firmware
-            A Multi-Sandbox Firmware is a Firmware that implements the ability to be extended, by exposing a set of APIs and a memory space to link Sandboxed Applications. (previously Multi-app Firmware) 
+            A Multi-Sandbox Firmware is a Firmware that implements the ability to be extended, by exposing a set of APIs and a memory space to link Sandboxed Applications. (formerly called a Multi-app Firmware) 
 
    Foundation Library
       A Foundation Library is a library that provides core or hardware-dependent functionalities. A Foundation Library combines `managed code <https://en.wikipedia.org/wiki/Managed_code>`_ (Java) and low-level APIs (C) implemented by one or more Abstraction Layers through a native interface (:ref:`SNI <sni>`).
