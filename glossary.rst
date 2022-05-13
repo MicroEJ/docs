@@ -8,58 +8,58 @@ This glossary defines the technical terms upon which the `MICROEJ VEE (Virtual E
 .. glossary::
 
    Add-On Library
-      A MicroEJ Add-On Library is a pure `managed code <https://en.wikipedia.org/wiki/Managed_code>`_ (Java) library. It runs over one or more MicroEJ Foundation Libraries.
+      An Add-On Library is a pure `managed code <https://en.wikipedia.org/wiki/Managed_code>`_ (Java) library. It runs over one or more Foundation Libraries.
 
    Abstraction Layer
       An Abstraction Layer is the C code that implements a Foundation Library's low-level APIs over a board support package (BSP) or a C library.
 
    Application
-      A MicroEJ Application is a software program that runs on a Powered by MicroEJ device.
+      An Application is a software program that runs on a Powered by MicroEJ device.
 
          Standalone Application
-            MicroEJ Standalone Application is a MicroEJ Application that is directly linked to the C code to produce a MicroEJ Mono-Sandbox Firmware. It is edited using MicroEJ SDK.
+            A Standalone Application is an Application that is directly linked to the C code to produce a Mono-Sandbox Firmware.
 
          Sandboxed Application
-            A MicroEJ Sandboxed Application is a MicroEJ Application that can run over a MicroEJ Multi-Sandbox Firmware. It can be linked either statically or dynamically.
+            A Sandboxed Application is an Application that can run over a Multi-Sandbox Firmware. It can be linked either statically or dynamically.
 
          System Application
-            A MicroEJ System Application (formerly called a Resident Application) is a MicroEJ Sandboxed Application that is statically linked to a MicroEJ Multi-Sandbox Firmware, as it is part of the initial image and cannot be removed.
+            A System Application (formerly called a Resident Application) is a Sandboxed Application that is statically linked to a Multi-Sandbox Firmware, as it is part of the initial image and cannot be removed.
 
          Kernel Application
-            A MicroEJ Kernel Application is a MicroEJ Standalone Application that implements the ability to be extended to produce a MicroEJ Multi-Sandbox Firmware.
+            A Kernel Application is a Standalone Application that implements the ability to be extended to produce a Multi-Sandbox Firmware.
 
    Architecture
-      A MicroEJ Architecture is a software package that includes the MicroEJ Core Engine port to a target instruction set and a C compiler, core Foundation Libraries (:ref:`[EDC], [BON], [SNI], [KF] <runtime_core_libraries>`) and the MicroEJ Simulator. MicroEJ Architectures are distributed either as evaluation or production version.
+      An Architecture is a software package that includes the Core Engine port to a target instruction set and a C compiler, core Foundation Libraries (:ref:`[EDC], [BON], [SNI], [KF] <runtime_core_libraries>`) and the Simulator. Architectures are distributed either as evaluation or production version.
 
    Core Engine, also named "MEJ32"
-      `MicroEJ Core Engine, also named MEJ32, is a scalable 32-bit core <https://developer.microej.com/mej32-virtual-machine-for-embedded-systems/>`_ for resource-constrained embedded devices. It is delivered in various flavors, mostly as a binary software package. MicroEJ Core Engine allows applications written in various languages to run in a safe container.
+      `The Core Engine, also named MEJ32, is a scalable 32-bit core <https://developer.microej.com/mej32-virtual-machine-for-embedded-systems/>`_ for resource-constrained embedded devices. It is delivered in various flavors, mostly as a binary software package. The Core Engine allows applications written in various languages to run in a safe container.
 
    Firmware
-      A MicroEJ Firmware is the result of the binary link of a MicroEJ Standalone Application with a MicroEJ Platform. The firmware is a binary  program that can be programmed into the flash memory of a device. 
+      A Firmware is the result of the binary link of a Standalone Application with a Platform. The firmware is a binary  program that can be programmed into the flash memory of a device. 
 
          Mono-Sandbox Firmware
-            A MicroEJ Mono-Sandbox Firmware is a MicroEJ Firmware that implements an unmodifiable set of functions. (previously MicroEJ Single-app Firmware)
+            A Mono-Sandbox Firmware is a Firmware that implements an unmodifiable set of functions. (previously Single-app Firmware)
 
          Multi-Sandbox Firmware
-            A MicroEJ Multi-Sandbox Firmware is a MicroEJ Firmware that implements the ability to be extended, by exposing a set of APIs and a memory space to link MicroEJ Sandboxed Applications. (previously MicroEJ Multi-app Firmware) 
+            A Multi-Sandbox Firmware is a Firmware that implements the ability to be extended, by exposing a set of APIs and a memory space to link Sandboxed Applications. (previously Multi-app Firmware) 
 
    Foundation Library
-      A MicroEJ Foundation Library is a library that provides core or hardware-dependent functionalities. A Foundation Library combines `managed code <https://en.wikipedia.org/wiki/Managed_code>`_ (Java) and low-level APIs (C) implemented by one or more Abstraction Layers through a native interface (:ref:`SNI <sni>`).
+      A Foundation Library is a library that provides core or hardware-dependent functionalities. A Foundation Library combines `managed code <https://en.wikipedia.org/wiki/Managed_code>`_ (Java) and low-level APIs (C) implemented by one or more Abstraction Layers through a native interface (:ref:`SNI <sni>`).
 
    Mock
-      A MicroEJ Mock is a mockup of a Board Support Package capability that mimics an hardware functionality for the MicroEJ Simulator.
+      A Mock is a mockup of a Board Support Package capability that mimics an hardware functionality for the Simulator.
 
    Module Manager
       MicroEJ Module Manager downloads, installs and controls the consistency of all the dependencies and versions required to build and publish a MicroEJ asset. It is based on `Semantic Versioning <https://semver.org>`_ specification.
 
    Platform
-      A MicroEJ Platform integrates a MICROEJ VEE, a MicroEJ Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP) for the target Device. It also includes associated MicroEJ Mocks for the MicroEJ Simulator.
+      A Platform integrates a MICROEJ VEE, an Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP) for the target Device. It also includes associated Mocks for the Simulator.
 
    SDK
-      MicroEJ SDK allows MicroEJ Firmware developers to build a MicroEJ-ready device, by integrating a MicroEJ Architecture with both Java and C software on their device.
+      MicroEJ SDK allows Firmware developers to build a MicroEJ-ready device, by integrating an Architecture with both Java and C software on their device.
 
    Simulator
-      MicroEJ Simulator allows running MicroEJ Applications on a target hardware simulator on the developer’s desktop computer. The MicroEJ Simulator runs one or more MicroEJ mock that mimics the hardware functionality. It enables developers to develop their MicroEJ Applications without the need of hardware.
+      The Simulator allows running Applications on a target hardware simulator on the developer’s desktop computer. The Simulator runs one or more mock that mimics the hardware functionality. It enables developers to develop their Applications without the need of hardware.
 
    Studio
       MicroEJ Studio is the part of the SDK that can be rebranded by customers for their specific ecosystem. It allows application developers to write a MicroEJ Sandboxed Application, run it on a Virtual Device, deploy it on a MicroEJ-ready device, and publish it to a `MicroEJ Forge <https://www.microej.com/product/forge/>`_ instance.
@@ -68,7 +68,7 @@ This glossary defines the technical terms upon which the `MICROEJ VEE (Virtual E
       MICROEJ VEE is an applications container. VEE stands for Virtual Execution Environment, and refers to the first implementation that embeds a virtual 32-bit processor, hence the term "Virtual". MICROEJ VEE runs on any OS/RTOS commonly used in embedded systems (FreeRTOS, QP/C, uc/OS, ThreadX, embOS, Mbed OS, Zephyr OS, VxWorks, PikeOS, Integrity, Linux, QNX, …) and can also run without RTOS (bare-metal) or proprietary RTOS. MICROEJ VEE includes the small MEJ32, along with a wide range of libraries (Add-On Libraries and Foundation Libraries).
 
    Virtual Device
-      A MicroEJ Virtual Device is a software package that includes the simulation part of a MicroEJ Firmware: runtime, libraries and application(s). It can be run on any PC without the need of the SDK. In case a MicroEJ Multi-Sandbox Firmware, it is also used for developing a MicroEJ Sandboxed Application in the SDK. 
+      A Virtual Device is a software package that includes the simulation part of a Firmware: runtime, libraries and application(s). It can be run on any PC without the need of the SDK. In case a Multi-Sandbox Firmware, it is also used for developing a Sandboxed Application in the SDK. 
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
