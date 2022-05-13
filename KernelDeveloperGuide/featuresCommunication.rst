@@ -3,7 +3,7 @@
 Communication between Features
 ==============================
 
-Features can communicate together through the use of shared interfaces.
+Features can communicate together through the use of Shared Interfaces.
 This mechanism is described in :ref:`chapter.shared.interfaces` section.
 
 .. _kernel_type_converter:
