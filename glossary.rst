@@ -35,7 +35,7 @@ This glossary defines the technical terms upon which the `MICROEJ VEE (Virtual E
       `The Core Engine, also named MEJ32, is a scalable 32-bit core <https://developer.microej.com/mej32-virtual-machine-for-embedded-systems/>`_ for resource-constrained embedded devices. It is delivered in various flavors, mostly as a binary software package. The Core Engine allows applications written in various languages to run in a safe container.
 
    Firmware
-      A Firmware is the result of the binary link of a Standalone Application with a Platform. The firmware is a binary  program that can be programmed into the flash memory of a device. 
+      A Firmware is the result of the binary link of a Standalone Application with a Platform. It can be programmed into the flash memory of a device. 
 
          Mono-Sandbox Firmware
             A Mono-Sandbox Firmware is a Firmware that implements an unmodifiable set of functions. (formerly called a Single-app Firmware)
@@ -59,7 +59,7 @@ This glossary defines the technical terms upon which the `MICROEJ VEE (Virtual E
       MicroEJ SDK allows Firmware developers to build a MicroEJ-ready device, by integrating an Architecture with both Java and C software on their device.
 
    Simulator
-      The Simulator allows running Applications on a target hardware simulator on the developer’s desktop computer. The Simulator runs one or more mock that mimics the hardware functionality. It enables developers to develop their Applications without the need of hardware.
+      The Simulator allows running Applications on a target hardware simulator on the developer’s desktop computer. The Simulator runs one or more Mock that mimics the hardware functionality. It enables developers to develop their Applications without the need of hardware.
 
    Studio
       MicroEJ Studio is the part of the SDK that can be rebranded by customers for their specific ecosystem. It allows application developers to write a MicroEJ Sandboxed Application, run it on a Virtual Device, deploy it on a MicroEJ-ready device, and publish it to a `MicroEJ Forge <https://www.microej.com/product/forge/>`_ instance.
@@ -68,7 +68,7 @@ This glossary defines the technical terms upon which the `MICROEJ VEE (Virtual E
       MICROEJ VEE is an applications container. VEE stands for Virtual Execution Environment, and refers to the first implementation that embeds a virtual 32-bit processor, hence the term "Virtual". MICROEJ VEE runs on any OS/RTOS commonly used in embedded systems (FreeRTOS, QP/C, uc/OS, ThreadX, embOS, Mbed OS, Zephyr OS, VxWorks, PikeOS, Integrity, Linux, QNX, …) and can also run without RTOS (bare-metal) or proprietary RTOS. MICROEJ VEE includes the small MEJ32, along with a wide range of libraries (Add-On Libraries and Foundation Libraries).
 
    Virtual Device
-      A Virtual Device is a software package that includes the simulation part of a Firmware: runtime, libraries and application(s). It can be run on any PC without the need of the SDK. In case a Multi-Sandbox Firmware, it is also used for developing a Sandboxed Application in the SDK. 
+      A Virtual Device is a software package that includes the simulation part of a Firmware: runtime, libraries and application(s). It can be run on any PC without the need of the SDK. In case of a Multi-Sandbox Firmware, it is also used for developing a Sandboxed Application in the SDK. 
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
