@@ -56,13 +56,13 @@ This glossary defines the technical terms upon which the `MICROEJ VEE (Virtual E
       A Platform integrates a MICROEJ VEE, an Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP) for the target Device. It also includes associated Mocks for the Simulator.
 
    SDK
-      MicroEJ SDK allows Firmware developers to build a MicroEJ-ready device, by integrating an Architecture with both Java and C software on their device.
+      MICROEJ SDK allows Firmware developers to build a Powered by MicroEJ device, by integrating an Architecture with both Java and C software on their device.
 
    Simulator
       The Simulator allows running Applications on a target hardware simulator on the developer’s desktop computer. The Simulator runs one or more Mock that mimics the hardware functionality. It enables developers to develop their Applications without the need of hardware.
 
    Studio
-      MicroEJ Studio is the part of the SDK that can be rebranded by customers for their specific ecosystem. It allows application developers to write a MicroEJ Sandboxed Application, run it on a Virtual Device, deploy it on a MicroEJ-ready device, and publish it to a `MicroEJ Forge <https://www.microej.com/product/forge/>`_ instance.
+      The Studio is the part of the SDK that can be rebranded by customers for their specific ecosystem. It allows application developers to write a Sandboxed Application, run it on a Virtual Device, deploy it on a Powered by MicroEJ device, and publish it to a `MicroEJ Forge <https://www.microej.com/product/forge/>`_ instance.
 
    VEE
       MICROEJ VEE is an applications container. VEE stands for Virtual Execution Environment, and refers to the first implementation that embeds a virtual 32-bit processor, hence the term "Virtual". MICROEJ VEE runs on any OS/RTOS commonly used in embedded systems (FreeRTOS, QP/C, uc/OS, ThreadX, embOS, Mbed OS, Zephyr OS, VxWorks, PikeOS, Integrity, Linux, QNX, …) and can also run without RTOS (bare-metal) or proprietary RTOS. MICROEJ VEE includes the small MEJ32, along with a wide range of libraries (Add-On Libraries and Foundation Libraries).
