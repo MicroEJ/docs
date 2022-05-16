@@ -9,7 +9,7 @@ Kernel Developer Guide
    overview
    kf
    gettingStarted
-   firmwareCreation
+   kernelCreation
    kernelAPI
    kernelUID
    featuresCommunication

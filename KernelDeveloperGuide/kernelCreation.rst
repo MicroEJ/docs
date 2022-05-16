@@ -1,12 +1,12 @@
 .. _multisandbox_firmware_creation:
 
-Multi-Sandbox Firmware Creation
-===============================
+Kernel Creation
+===============
 
 This chapter requires a minimum understanding of :ref:`mmm` and :ref:`module_natures`. 
 
-Create a new Firmware Project
------------------------------
+Create a new Project
+--------------------
 
 First create a new :ref:`module project <mmm_module_skeleton>` using the ``build-firmware-multiapp`` skeleton.
 
@@ -54,110 +54,31 @@ Device may take several minutes. When the build is succeed, the folder
 
 .. _runtime_environment:
 
-Define a Runtime Environment
-----------------------------
+Define APIs
+-----------
 
-A Multi-Sandbox Firmware must define a runtime environment which is the set of classes,
-methods and fields all applications are allowed to use. In most of the
-cases the runtime environment is an aggregation of several :ref:`Kernel APIs <kernel.api>`.
+A Kernel must define the set of classes, methods and static fields all applications are allowed to use.
 
 .. note::
 
    According to the :ref:`Kernel and Features specification <kf_specification>`, no API is open by default to Sandboxed Applications.
 
-Specify Kernel APIs
-~~~~~~~~~~~~~~~~~~~
+This can be done either by declaring :ref:`Kernel APIs <kernel.api>` or by definining a :ref:`Runtime Environment <runtime_environment>`.
 
-A Kernel API module is added as a dependency with the configuration ``kernelapi->default``.
+The main difference is from the Application development point of view. 
+In the first case, the Application project still declares standard module dependencies.
+This is the good starting point for quickly building a Kernel with Applications based on the MicroEJ modules as-is.
+In the second case, the Application project declares the runtime environment dependency. 
+This is the preferred way in case you intend to build and maintain a dedicated Applications ecosystem.
+
+A Kernel API or a Runtime Environment module is added as a dependency with the configuration ``kernelapi->default``.
 
 .. code:: xml
 
    <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6" conf="kernelapi->default"/>
 
 The build options ``runtime.api.name`` and ``runtime.api.version`` must be set unless declaring a dependency to a Runtime API module.
-
-Create a Runtime API Module
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-A Runtime API module is a module that aggregates a set of Kernel APIs modules.
-
-It is be built with :ref:`module project <mmm_module_skeleton>` ``build-runtime-api`` skeleton.
-
-.. code:: xml
-
-   <info organisation="myorg" module="mymodule" status="integration" revision="1.0.0">
-      <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="2.+">
-      <ea:property name="runtime.api.name" value="RUNTIME"/>
-      <ea:property name="runtime.api.version" value="1.0"/>
-      </ea:build>
-   </info>
-
-The build option ``runtime.api.name`` defines the name of the runtime environment (required). 
-The build option ``runtime.api.version`` defines its version. If not set, it takes the declared module version.
-
-
-For example, the following dependencies declare a runtime environment that aggregates all classes, methods and fields
-defined by ``edc,kf,bon,wadapps,components`` Kernel APIs modules.
-
-.. code:: xml
-
-   <dependencies>
-      <dependency org="com.microej.kernelapi" name="edc" rev="1.0.4"/>
-      <dependency org="com.microej.kernelapi" name="kf" rev="2.0.1"/>
-      <dependency org="com.microej.kernelapi" name="bon" rev="1.0.4"/>
-      <dependency org="com.microej.kernelapi" name="wadapps" rev="1.2.2"/>
-      <dependency org="com.microej.kernelapi" name="components" rev="1.2.2"/>
-   </dependencies>
-
-
-Extend a Runtime Environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Foundation and Add-on libraries can be extended by adding new methods to their existing classes thanks to  the `Class Extender
-tool <https://repository.microej.com/modules/com/microej/tool/class-extender/1.0.1/>`_. This tool works at binary level
-and is able to inject methods from one class to another. Extensions can thus be independently compiled and be retrieved
-by the Kernel and applied during a Multi-Sandbox Firmware build.
-
-To make the extensions available to Application developers, Kernel APIs must be updated too. The ``runtime-api``
-build-type takes base Java APIs, extended APIs and the new Kernel API and builds a custom Runtime API.
-
-The following diagram illustrates the process of extending `String` class from EDC from a Kernel developer point of view:
-
-.. image:: png/graph_build_string_methods.png
-   :align: center
-   :width: 1280px
-   :height: 783px
-
-Two processes are taking place to apply extensions:
-
-   1. A Custom Runtime API is built using the `runtime-api` build type. It takes three components
-
-      - EDC foundation library which contains the String class we want to extend
-      - a :ref:`kernel.api` file definition which includes new methods
-      - a new ``String.java`` API source file which includes new methods
-
-      It builds a custom runtime API composed of three components:
-
-      - an Add-on library containing the new ``kernel.api``
-      - the Runtime API containing the extended String API
-      - the corresponding Javadoc including the extended methods
-
-   2. An extended EDC implementation is built during Firmware build calling the Class Extender tool. It takes two components:
-
-      - the original EDC Foundation library implementation jar file
-      - the String extension Add-on librarty jar file
-
-      It overrides the original EDC Foundation library implementation jar file.
-
-From an application developper perspective, the application only depends on custom APIs that include the original APIs and the
-extensions.
-
-.. image:: png/graph_build_string_methods_app_dev.png
-   :align: center
-   :width: 524px
-   :height: 396px
-
-Refer to the `Class Extender tool README <https://repository.microej.com/modules/com/microej/tool/class-extender/1.0.0/README-1.0.0.md>`_ for more information about class extension and integration to Firmware.
+This allows to generate the consolidated Javadoc of exposed APIs in the Virtual Device.
 
 .. _system_application_input_ways:
 
