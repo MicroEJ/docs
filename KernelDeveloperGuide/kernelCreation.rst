@@ -52,8 +52,6 @@ Device may take several minutes. When the build is succeed, the folder
    :width: 335px
    :height: 866px
 
-.. _runtime_environment:
-
 Define APIs
 -----------
 
