@@ -204,6 +204,23 @@ attribute, for example:
 
    <dependency org="[dep_organisation]" name="[dep_name]" rev="[dep_version]" conf="[conf_name]->*" />
 
+.. _mmm_build_options:
+
+Build Options
+~~~~~~~~~~~~~
+
+MMM builds can be configured by settings options in the ``module.ivy`` file using the ``ea:property`` tag inside the ``ea:build`` tag:
+
+.. code-block:: xml
+
+   <ea:build organisation="..." module="..." revision="x.y.z">
+       <ea:property name="[build_option_name]" value="[build_option_value]"/>
+   </ea:build>
+
+Refer to the documentation of :ref:`module_natures` for the list of available build options for each Module Nature.
+
+The options can also be defined via System Properties.
+If an option is defined as both System Property and ``ea:property`` tag, the value passed as System Property takes precedence.
 
 Automatic Update Before Resolution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -221,33 +238,6 @@ the version (attribute ``rev``) of every module dependencies declared.
 When the plugin is enabled, for each :ref:`module dependency <mmm_module_dependencies>`, MMM will check
 the version declared in the module file and update it to the highest
 version available which satisfies the matching rule of the dependency.
-
-.. _mmm_build_options:
-
-Build Options
-~~~~~~~~~~~~~
-
-MMM build options can be set with:
-
-.. code-block:: xml
-
-   <ea:property name="[buildoption_name]" value="[buildoption_value]"/>
-
-The following build options are globally available:
-
-.. list-table:: Build Options
-   :widths: 1 5 3
-   :header-rows: 1
-
-   * - Property Name
-     - Description
-     - Default Value
-   * - ``target``
-     - Path of the build directory ``target~``.
-     - ``${basedir}/target~``
-
-Refer to the documentation of :ref:`module_natures` for specific build
-options.
 
 .. _mmm_configuration:
 
@@ -835,23 +825,21 @@ Make sure it is one of the following ones:
 - ``build-firmware-singleapp``, with version ``1.3.0`` or higher
 
 
-.. _mmm_build_execution_configuration:
+.. _mmm_build_configuration:
 
-Build Execution Configuration
------------------------------
+Build Configuration
+-------------------
 
-When executing a build with MMM, system properties can be passed to the JVM:
+MMM allows to modify the behavior of a build via settings.
+These settings must be passed as system properties.
+MMM provides the following settings:
 
-* in command line, by using ``-D``, for example ``mmm build -Dmy.property=value``
-* in the SDK, by adding them in :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Ant` > :guilabel:`Runtime` > :guilabel:`Properties`
-
-Any custom system properties can be defined.
-
-MMM provides the following system properties to configure the build execution:
-
-* ``mmm.module.organisation`` : defines the organisation of the module. It overrides the ``organisation`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
-* ``mmm.module.name`` : defines the name of the module. It overrides the ``module`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
-* ``mmm.module.revision`` : defines the revision of the module. It overrides the ``revision`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
+* ``mmm.module.organisation`` : defines the organisation of the module. 
+  It overrides the ``organisation`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
+* ``mmm.module.name`` : defines the name of the module. 
+  It overrides the ``module`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
+* ``mmm.module.revision`` : defines the revision of the module. 
+  It overrides the ``revision`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
 * ``easyant.debug.port`` : defines the debug port and triggers the debug mode for the build execution.
 
 

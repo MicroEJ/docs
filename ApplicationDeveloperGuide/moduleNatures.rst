@@ -680,6 +680,24 @@ This plugin defines the following configuration properties:
      - When this property is set to true, the retrieve checker is not executed.
      - Not set
 
+.. _mmm_global_properties:
+
+Global Properties
+-----------------
+
+The following configuration properties are available in any module:
+
+.. list-table::
+   :widths: 1 5 3
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - ``target``
+     - Path of the build directory ``target~``.
+     - ``${basedir}/target~``
+
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
