@@ -78,8 +78,8 @@ ECOM
 
 The ``ej.ecom.DeviceManager`` registry allows to share devices across
 Features. Instances of ``ej.ecom.Device`` that are registered with a
-shared interface type are made accessible through a Proxy to all other
-Features that embed the same shared interface (or an upper one of the
+Shared Interface type are made accessible through a Proxy to all other
+Features that embed the same Shared Interface (or an upper one of the
 hierarchy).
 
 ECOM-COMM
