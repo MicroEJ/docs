@@ -36,7 +36,7 @@ There are two ways to create a gradient:
 |midTable|
 
 .. figure:: images/gradient0.png
-   :width: 200px
+   :width: 300px
    :align: center
 
 |endTable|
@@ -57,7 +57,7 @@ There are two ways to create a gradient:
 |midTable|
 
 .. figure:: images/gradient1.png
-   :width: 200px
+   :width: 300px
    :align: center
 
 |endTable|
@@ -81,7 +81,7 @@ The transformation applied to the object (`Path` or `String`) to draw with a gra
 |midTable|
 
 .. figure:: images/gradient2.png
-   :width: 200px
+   :width: 300px
    :align: center
 
 |endTable|

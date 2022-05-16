@@ -61,7 +61,7 @@ Translation
 |midTable|
 
 .. figure:: images/matrixTranslate0.png 
-   :width: 200px
+   :width: 300px
    :align: center
 
 |endTable|
@@ -81,7 +81,7 @@ Around point (0,0).
 |midTable|
 
 .. figure:: images/matrixRotate0.png 
-   :width: 200px
+   :width: 300px
    :align: center
 
 |endTable|
@@ -103,7 +103,7 @@ Around a pivot point (80,50).
 |midTable|
 
 .. figure:: images/matrixRotate1.png 
-   :width: 200px
+   :width: 300px
    :align: center
 
 |endTable|
@@ -123,7 +123,7 @@ From point (0,0).
 |midTable|
 
 .. figure:: images/matrixScale0.png 
-   :width: 200px
+   :width: 300px
    :align: center
 
 |endTable|
@@ -157,7 +157,7 @@ Sequence order has an incidence on the rendering.
 |midTable|
 
 .. figure:: images/matrixConcat0.png 
-   :width: 200px
+   :width: 300px
    :align: center
 
 |endTable|
