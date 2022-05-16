@@ -308,6 +308,39 @@ This module nature defines the following dedicated configuration properties:
      - Prevents the generation of any deprecated API at all in the javadoc.
      - ``true``
 
+.. _module_natures.runtime_environment:
+
+Runtime Environment
+-------------------
+
+**Skeleton Name**: ``runtime-api``
+
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-runtime-api``
+
+**Documentation**: :ref:`runtime_environment`
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following plugins:
+
+- :ref:`module_natures.plugins.artifact_checker`
+
+This module nature defines the following dedicated configuration properties:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - ``runtime.api.name``
+     - Name of the Runtime Environment. This option is required.
+     - Not set
+   * - ``runtime.api.version``
+     - Version of the Runtime Environment.
+     - Module version
+
 .. _module_natures.sandboxed_application:
 
 Sandboxed Application
