@@ -172,8 +172,8 @@ When an argument transfer is forbidden, the call is abruptly stopped and a ``jav
    For these types to be transferable, a dedicated :ref:`Kernel Type Converter <kernel_type_converter>` must have been registered in
    the Kernel.
 
-The table below shows typical Kernel types allowed to be transferred through a Shared Interface
-call on Evaluation Firmware distributed by MicroEJ Corp. 
+The table below lists typical Kernel types allowed to be transferred through a Shared Interface
+call on Evaluation Firmware distributed by MicroEJ Corp.
 
 .. list-table:: MicroEJ Evaluation Firmware Example of Transfer Types
    :header-rows: 1
