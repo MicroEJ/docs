@@ -11,6 +11,7 @@ Kernel Developer Guide
    gettingStarted
    kernelCreation
    kernelAPI
+   runtimeEnvironment
    kernelUID
    featuresCommunication
    kfEnabledLibraries
