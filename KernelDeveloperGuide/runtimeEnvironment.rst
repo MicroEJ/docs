@@ -51,7 +51,7 @@ by the Kernel and applied during a Multi-Sandbox Firmware build.
 To make the extensions available to Application developers, Kernel APIs must be updated too. The ``runtime-api``
 build-type takes base Java APIs, extended APIs and the new Kernel API and builds a custom Runtime API.
 
-The following diagram illustrates the process of extending the default `String <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html>`_ class from :ref:`EDC`` from a Kernel developer point of view:
+The following diagram illustrates the process of extending the default `String <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html>`_ class from :ref:`[EDC] <runtime_edc>` from a Kernel developer point of view:
 
 .. image:: png/graph_build_string_methods.png
    :align: center
