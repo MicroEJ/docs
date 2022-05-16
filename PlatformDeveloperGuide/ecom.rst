@@ -102,7 +102,7 @@ Application project to use the ECOM library.
 
    <dependency org="ej.api" name="ecom" rev="1.1.4"/>
 
-This foundation library is always required when developing a MicroEJ Application which
+This Foundation Library is always required when developing a MicroEJ Application which
 communicates with some external devices. It is automatically embedded as
 soon as a sub communication library is added in the classpath.
 
