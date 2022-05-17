@@ -289,7 +289,7 @@ Mock.
 JavaFX
 =======
 
-`JavaFX <https://openjfx.io/>`_ is a platform for creating Java applications with a modern user interface that is highly portable. It can be used to quickly create graphical Mocks for your Platform.
+`JavaFX <https://openjfx.io/>`_ is an open-source library for creating modern Java user interfaces that is highly portable. It can be used to quickly create graphical Mocks for your Platform.
 
 - If your SDK is running on JDK 8, the Oracle JDK contains JavaFX, so this version allows you to use it right now in your project.
 
