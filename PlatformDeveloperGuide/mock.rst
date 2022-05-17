@@ -297,7 +297,11 @@ JavaFX
 
 ::
 
-    <dependency org="com.microej.tool" name="javafx" rev="1.1.0" />
+    <dependency org="com.microej.tool" name="javafx" rev="1.2.0" />
+
+- In Mock project, JavaFX is added as a compile-time dependency. Its content is not included in the Mock. 
+
+- Then, if your Platform contains at least one Mock, JavaFX must be added to the Platform project to embed its content in the Platform. 
 
 
 ..
