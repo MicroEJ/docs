@@ -291,7 +291,7 @@ JavaFX
 
 `JavaFX <https://openjfx.io/>`_ is a platform for creating Java applications with a modern user interface that is highly portable. It can be used to quickly create graphical Mocks for your Platform.
 
-- Until the version 1.8, the Oracle JDK contains JavaFX, so this version allows you to use it right now in your project.
+- If your SDK is running on JDK 8, the Oracle JDK contains JavaFX, so this version allows you to use it right now in your project.
 
 - If your SDK is running on JDK 11, JavaFX must be added as an additional dependency to your Mock and Platform project. For that, MicroEJ Corp. provides a ready-to-use packaged module for all supported OS versions.
 
