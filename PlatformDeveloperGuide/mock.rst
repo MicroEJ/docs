@@ -293,7 +293,7 @@ JavaFX
 
 - Until the version 1.8, the Oracle JDK contains JavaFX, so this version allows you to use it right now in your project.
 
-- To use JavaFX with the JDK 11, this additional dependency must be added in your Mock project as well as your Platform project :
+- If your SDK is running on JDK 11, JavaFX must be added as an additional dependency to your Mock and Platform project. For that, MicroEJ Corp. provides a ready-to-use packaged module for all supported OS versions.
 
 ::
 
