@@ -128,7 +128,7 @@ which tells the platform to execute a green thread context switch (which
 gives another MicroEJ thread a chance to run).
 
 When several MicroEJ threads with the same priority are eligible for execution,
-the round-robin algorithm will automatically switch between these threads.
+the round-robin algorithm will automatically switch between these threads after a certain amount of time, called the `time slice`. The time slice is expressed in milliseconds and its default value is ``20`` ms. 
 The time slice given to each thread is configured at link time with the symbol
 ``_java_round_robin_period``, which is defined in the :ref:`linker configuration file <linker_lscf>` 
 ``linkVMConfiguration.lscf`` located in the Platform folder ``/MICROJVM/link/``.
