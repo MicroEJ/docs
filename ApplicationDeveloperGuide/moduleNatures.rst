@@ -561,7 +561,7 @@ This plugin defines the following configuration properties:
      - Pattern of classes excluded from the code coverage analysis.
      - Not set
    * - microej.testsuite.timeout
-     - The time in seconds before any test is considerated as unknown. Set it to ``0`` to disable the time-out.
+     - The time in seconds before a test is considered as failed. Set it to ``0`` to disable the timeout.
      - ``60``
    * - microej.testsuite.properties.s3.cc.activated
      - When this property is set to true, the code coverage analysis is enabled.
