@@ -19,7 +19,7 @@ project.
 
 .. code-block:: xml
 
-   <dependency conf="test->*" org="ej.library.test" name="junit" rev="1.5.0"/>
+   <dependency conf="test->*" org="ej.library.test" name="junit" rev="1.6.2"/>
 
 When a new JUnit test case class is created in the ``src/test/java``
 folder, a JUnit processor generates MicroEJ compliant classes into a
@@ -141,7 +141,7 @@ The JUnit processor generates test classes into the
 ``src-adpgenerated/junit/java`` folder. This folder contains:
 
 ``_AllTestClasses.java`` file
-    A single class with a main enty point that sequentially calls all declared
+    A single class with a main entry point that sequentially calls all declared
     test methods of all JUnit test case classes.
 
 ``_AllTests_[TestCase].java`` files
@@ -164,7 +164,7 @@ executed, by setting the following property in the project
    <ea:property name="test.run.includes.pattern" value="[MicroEJ Test Case Include Pattern]"/>
 
 The following line consider all JUnit test methods of the same class as
-a single MicroEJ test case (default behaviour). If at least one JUnit
+a single MicroEJ test case (default behavior). If at least one JUnit
 test method fails, the whole test case fails in the JUnit report.
 
 .. code-block:: xml
