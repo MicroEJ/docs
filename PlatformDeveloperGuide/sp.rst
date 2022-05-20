@@ -45,7 +45,7 @@ Once this database is defined, it can be accessed within the MicroEJ
 Application or the C application. The ``SP`` Foundation Library is
 accessible from the :ref:`[SP] API Module <sp-api-mmm>`. This library contains
 the classes and methods to read and write data in the database. The C header file ``sp.h`` available in the MicroEJ
-Platform ``source/MICROJVM/include`` folder contains the C functions for
+Platform ``source/include`` folder contains the C functions for
 accessing the database.
 
 To embed the database in your binary file, the XML file description
