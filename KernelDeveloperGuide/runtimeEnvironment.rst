@@ -94,7 +94,22 @@ Two processes are taking place to apply extensions:
 
       It overrides the original EDC Foundation library implementation jar file.
 
-      Refer to the `Class Extender tool README <https://repository.microej.com/modules/com/microej/tool/class-extender/1.0.4/README-1.0.4.md>`_ for more information about class extension and integration to Firmware.
+Class Extension Principle
+-------------------------
+
+A class extension is a Java class that implements methods to inject to a target class. The methods to inject must
+
+   - be annotated with ``@Extend`` annotation which take as parameter the fully qualified name of the class to extend
+   - declared as ``static``
+   - (**if it is an instance method**) take a first parameter of the type of the class to extend.
+     This parameters refers to the instance of the created object (the ``this``)
+   - (**if it is a class method**) add ``isStatic=true`` to the ``@Extended`` annotation parameters
+
+A Class Extension can then be built as a classic ``build-microej-javalib``  MicroEJ Module. To apply an extension,
+you need to add the dependency to the Kernel ``module.ivy``. `Class Extender tool <https://repository.microej.com/modules/com/microej/tool/class-extender/>`_
+will then inject extension methods bytecode to the orginal classes during Firmware build.
+
+Refer to the `Class Extender tool README <https://repository.microej.com/modules/com/microej/tool/class-extender/1.0.4/README-1.0.4.md>`_ for more information about class extension and integration to Firmware.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
