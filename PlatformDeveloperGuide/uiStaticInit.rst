@@ -7,7 +7,7 @@ Static Initialization
 Principle
 =========
 
-The MicroUI implementation for MicroEJ requires a configuration step (also called extension step) to customize itself before the application startup (see :ref:`section_architecture`). This configuration step uses an XML file. In order to save both runtime execution time and flash memory, the file is processed by the Static MicroUI Initializer tool, avoiding the need to process the XML configuration file at runtime. The tool generates appropriate initialized objects directly within the MicroUI library, as well as Java and C constants files for sharing MicroUI event generator IDs.
+The MicroUI implementation for MicroEJ requires a configuration step (also called extension step) to customize itself before application startup (see :ref:`section_architecture`). This configuration step uses an XML file. In order to save both runtime execution time and flash memory, the file is processed by the Static MicroUI Initializer tool, avoiding the need to process the XML configuration file at runtime. The tool generates appropriate initialized objects directly within the MicroUI library, as well as Java and C constants files for sharing MicroUI event generator IDs.
 
 This XML file (also called the initialization file) defines:
 
