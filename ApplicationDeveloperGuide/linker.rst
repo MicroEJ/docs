@@ -110,6 +110,7 @@ rules are :
 -  A symbol name is resolved to a weak symbol if - and only if - no
    global symbol is found with the same name.
 
+.. _linker_lscf:
 
 Linker Specific Configuration File Specification
 ================================================
