@@ -378,8 +378,7 @@ ensure the compatibility between the toolchain used in the BSP and the
 toolchain used to build the MicroEJ Core Engine included in the
 MicroEJ Architecture.
 
-The list of MicroEJ Architectures supported is listed at
-https://docs.microej.com/en/latest/PlatformDeveloperGuide/appendix/toolchain.html.
+The list of MicroEJ Architectures supported is listed :ref:`here <architectures_toolchains>`.
 MicroEJ Evaluation Architectures provided by MicroEJ Corp. can be
 downloaded from `MicroEJ Architectures Repository
 <https://repository.microej.com/modules/com/microej/architecture/>`_.
@@ -1295,7 +1294,7 @@ The next steps recommended are:
 * Follow the :ref:`tutorial_create_platform_build_and_run_scripts` tutorial to get this MicroEJ Platform fully automated for build and execution. 
 
 ..
-   | Copyright 2020-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2020-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

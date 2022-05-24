@@ -378,7 +378,14 @@ When launching the ``HelloWorld`` application from MicroEJ SDK, the launcher kno
 Going Further
 -------------
 
-- More about build and run scripts in :ref:`bsp_connection_build_script` in :ref:`bsp_connection_run_script` sections
+- More about build and run scripts in :ref:`bsp_connection_build_script` and :ref:`bsp_connection_run_script` sections
 - Some build scripts examples from `Platform Qualification Tools <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_
 - Perform the :ref:`tutorial_run_test_suite_on_device` tutorial to learn how to run an automated testsuite
 - Perform the :ref:`tutorial_setup_automated_build_using_jenkins_and_artifactory` tutorial to learn how to automate the build of a MicroEJ Platform module
+
+..
+   | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

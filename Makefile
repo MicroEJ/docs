@@ -1,6 +1,6 @@
 # Makefile for Sphinx documentation
 #
-# Copyright 2019-2021 MicroEJ Corp. All rights reserved.
+# Copyright 2019-2022 MicroEJ Corp. All rights reserved.
 # MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 #
 

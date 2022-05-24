@@ -108,6 +108,7 @@ This module nature inherits the configuration properties of the following plugin
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.testsuite`
+- :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
 
 This module nature defines the following dedicated configuration properties:
 
@@ -122,6 +123,53 @@ This module nature defines the following dedicated configuration properties:
       - Execution target.
         Possible values are `emb` (only on Device), `sim` (only Simulator) and `common` (both).
       - ``common``
+
+.. _module_natures.kernel_application:
+
+Kernel Application
+------------------
+
+**Skeleton Name**: ``firmware-multiapp``
+
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-firmware-multiapp``
+
+**Documentation**: :ref:`kernel-developer-guide`
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following plugins:
+
+- :ref:`module_natures.plugins.compilation`
+- :ref:`module_natures.plugins.platform_loader`
+- :ref:`module_natures.plugins.javadoc`
+- :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
+
+This module nature defines the following dedicated configuration properties:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - application.main.class
+     - Full Qualified Name of the main class of the kernel. This option is required.
+     - Not set
+   * - runtime.api.name
+     - Name of the Runtime API of the kernel. This option is required, 
+       unless a :ref:`Runtime API <runtime_environment>` is declared in the dependencies.
+     - Not set
+   * - runtime.api.version
+     - Version of the Runtime API of the kernel. This option is required, 
+       unless a :ref:`Runtime API <runtime_environment>` is declared in the dependencies..
+     - Not set
+   * - skip.build.virtual.device
+     - When this property is set (any value), the virtual device is not built.
+     - Not set
+   * - virtual.device.sim.only
+     - When this property is set (any value), the firmware is not built.
+     - Not set
 
 .. _module_natures.meta_build:
 
@@ -172,6 +220,7 @@ This module nature inherits the configuration properties of the following plugin
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.unittests`
+- :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
 
 .. _module_natures.module_repository:
 
@@ -251,7 +300,10 @@ This module nature defines the following dedicated configuration properties:
    * - skip.email
      - When this property is set (any value), the notification email is not sent. 
        Otherwise the ``bar.notification.*`` properties are required.
-     - Not set   
+     - Not set
+   * - skip.javadoc
+     - Prevents the generation of the javadoc.
+     - ``false``   
    * - skip.javadoc.deprecated
      - Prevents the generation of any deprecated API at all in the javadoc.
      - ``true``
@@ -298,6 +350,9 @@ This module nature inherits the configuration properties of the following plugin
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.platform_loader`
+- :ref:`module_natures.plugins.javadoc` [#require_sdk_5_5]_
+- :ref:`module_natures.plugins.testsuite` [#require_sdk_5_5]_
+- :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
 
 This module nature defines the following dedicated configuration properties:
 
@@ -317,6 +372,8 @@ This module nature defines the following dedicated configuration properties:
    * - virtual.device.sim.only
      - When this property is set (any value), the firmware is not built.
      - Not set
+
+.. [#require_sdk_5_5] MicroEJ SDK version ``5.5.0`` or higher.
 
 .. _module_natures.plugins:
 
@@ -503,12 +560,15 @@ This plugin defines the following configuration properties:
    * - microej.testsuite.cc.excludes.classes
      - Pattern of classes excluded from the code coverage analysis.
      - Not set
+   * - microej.testsuite.timeout
+     - The time in seconds before a test is considered as failed. Set it to ``0`` to disable the timeout.
+     - ``60``
    * - microej.testsuite.properties.s3.cc.activated
      - When this property is set to true, the code coverage analysis is enabled.
      - ``true``
    * - cc.src.folders
      - Path to the folders containing the Java sources used for code coverage analysis.
-     - Not set
+     - Java source folder (``src/main/java``) and Add-On Processor generated source folders (``src-adpgenerated/*``) [#warning_check_sdk_5_5]_
    * - microej.testsuite.verbose
      - When this property is set to true, the verbose trace level is enabled.
      - ``false``
@@ -524,6 +584,8 @@ This plugin defines the following configuration properties:
    * - skip.test
      - When this property is set (any value), the tests are not executed.
      - Not set
+
+.. [#warning_check_sdk_5_5] Option ``cc.src.folders`` is not set by default for MicroEJ SDK versions lower than ``5.5.0``.
 
 .. _module_natures.plugins.unittests:
 
@@ -619,7 +681,7 @@ This plugin defines the following configuration properties:
      - Not set
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

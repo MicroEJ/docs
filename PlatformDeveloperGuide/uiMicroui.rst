@@ -10,11 +10,6 @@ Principle
 
 MicroUI library defines a Low Level UI framework for embedded devices. This module allows the creation of basic Human-Machine-Interfaces (HMI), with output on a pixel-based screen. 
 
-.. 
-   // Add again next line when ESR 3.0 will be available:
-   For more information, please consult the :ref:`[MUI] Specification <esr-specifications>`.
-
-
 .. _section_architecture:
 
 Architecture
@@ -34,7 +29,7 @@ First, MicroUI requires a configuration step in order to create these internal o
 
 .. note::
 
-   This configuration step is the same for both embedded and smulated platforms.
+   This configuration step is the same for both embedded and simulated Platforms.
 
 The embedded platform requires some additional C libraries to drive the I/O devices. Each C library is dedicated to a specific kind of I/O device. A specific chapter is available to explain each kind of I/O device.
 
@@ -174,7 +169,7 @@ Use
 See :ref:`MicroUI <section_app_microui>` chapter in Application Developer Guide.
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

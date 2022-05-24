@@ -78,8 +78,8 @@ ECOM
 
 The ``ej.ecom.DeviceManager`` registry allows to share devices across
 Features. Instances of ``ej.ecom.Device`` that are registered with a
-shared interface type are made accessible through a Proxy to all other
-Features that embed the same shared interface (or an upper one of the
+Shared Interface type are made accessible through a Proxy to all other
+Features that embed the same Shared Interface (or an upper one of the
 hierarchy).
 
 ECOM-COMM
@@ -108,7 +108,7 @@ Instances of ``javax.net.ssl.SSLSocket`` are automatically reclaimed
 when a Feature is stopped.
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

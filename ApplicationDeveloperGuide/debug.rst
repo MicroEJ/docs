@@ -1,5 +1,16 @@
+.. _application_debugger:
+
 Debug an Application
 ====================
+
+To debug an application on Simulator, select it in the left panel then right-click
+and select :guilabel:`Debug As` > :guilabel:`MicroEJ Application`.
+
+.. figure:: images/debug1.png
+   :alt: MicroEJ Development Tools Overview of the Debugger
+   :align: center
+
+   MicroEJ Development Tools Overview of the Debugger
 
 All libraries included in MicroEJ SDK are provided with their source code and resources.
 The way the sources are retrieved depends on the kind of library (Add-On Library or Foundation Library).
@@ -93,7 +104,7 @@ In the debug session the implementation sources will be now displayed.
       Foundation Library Read-Only Source Code
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

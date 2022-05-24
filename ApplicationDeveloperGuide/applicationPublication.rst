@@ -6,11 +6,11 @@ Application Publication
 Build the WPK
 -------------
 
-When the application is ready for deployment, the last step in MicroEJ
-Studio is to create the WPK (Wadapps PacKage) file that is intended to
+When the application is ready for deployment, the last step 
+is to create the WPK (Wadapps PacKage) file that is intended to
 be published on a MicroEJ Forge instance for end users.
 
-In MicroEJ Studio, right-click on the Sandboxed Application project name
+In the SDK, right-click on the Sandboxed Application project name
 and select ``Build Module``.
 
 The WPK build process will display messages in MicroEJ console, ending
@@ -30,7 +30,7 @@ The WPK file produced by the build process is located in a dedicated
 The module repository can be a `MicroEJ Forge instance <https://www.microej.com/product/forge/>`_.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

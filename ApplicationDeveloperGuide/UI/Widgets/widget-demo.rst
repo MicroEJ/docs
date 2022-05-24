@@ -19,7 +19,7 @@ Provided Widgets
 The showcased widgets are listed in the `README <https://github.com/MicroEJ/Demo-Widget/blob/master/com.microej.demo.widget/README.md>`_ of the project.
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

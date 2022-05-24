@@ -33,7 +33,7 @@ The :guilabel:`Main` tab allows you to set in order:
    ``Class.getResourceAsStream()`` method.
 
 5. Immutable objects' description files. See the :ref:`[BON 1.2] ESR
-   documentation <esr-specifications>` for use of immutable objects.
+   documentation <runtime_bon>` for use of immutable objects.
 
 .. figure:: images/mainTab.png
    :alt: MicroEJ Launch Application Main Tab
@@ -106,10 +106,11 @@ Common Tab
 ----------
 
 The last tab is the :guilabel:`Common` tab. This is a default Eclipse tab that allows to configure your launch.
-Refer to Eclipse help for more details on how to use this tab.
+Particularly, you can configure the :ref:`console encoding <set_console_encoding>`.
+Refer to Eclipse help for more details on other available options.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

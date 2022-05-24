@@ -46,6 +46,8 @@ For each symbol or each category, you can see its size in ROM (``Image Size``) a
 The SOAR groups all the Java strings in the same section, which appears in the ``ApplicationStrings`` category.
 The same applies to the static fields (``Statics`` category), the types (``Types`` category), and the class names (``ClassNames`` category).
 
+.. _soar_info_file:
+
 The SOAR Information File
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -61,7 +63,7 @@ This file contains the list of the following embedded elements:
 - :ref:`immutable <section.classpath.elements.immutables>` (in ``selected_immutables`` tag)
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

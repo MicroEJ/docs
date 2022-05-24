@@ -4,8 +4,8 @@ Setup your Environment
 Prerequisites
 -------------
 
-- Supported Operating System: MICROEJ SDK runs on the following operating systems: Windows (7, 8, 8.1, 10), Linux, macos.
-- A Java™ Runtime Environment 8 is needed on your host computer for running MICROEJ SDK Dist. 21.03: `Download Java <https://www.java.com/en/download/manual.jsp>`__.
+The :ref:`MICROEJ SDK <sdk_install>` must be installed.
+Please check the :ref:`MICROEJ SDK requirements <system-requirements>`.
 
 Download and Install
 --------------------
@@ -61,5 +61,9 @@ You can have a look at the widget demo project, which contains multiple samples 
 .. image:: images/widgetdemo.png
    :align: center
 
-
-
+..
+   | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

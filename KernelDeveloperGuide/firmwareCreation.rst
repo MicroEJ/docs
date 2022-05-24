@@ -41,8 +41,7 @@ Device may take several minutes. When the build is succeed, the folder
 -  ``mymodule.kpk``: The Firmware Package to be imported in a MicroEJ
    Forge instance.
 
--  ``mymodule.vde``: The Virtual Device to be imported in MicroEJ
-   Studio.
+-  ``mymodule.vde``: The Virtual Device to be imported in the SDK.
 
 -  ``mymodule-workingEnv.zip``: This file contains all files produced by
    the build phasis (intermediate, debug and report files).
@@ -64,7 +63,7 @@ cases the runtime environment is an aggregation of several :ref:`Kernel APIs <ke
 
 .. note::
 
-   According to the :ref:`Kernel and Features specification <chapter_KF>`, no API is open by default to Sandboxed Applications.
+   According to the :ref:`Kernel and Features specification <kf_specification>`, no API is open by default to Sandboxed Applications.
 
 Specify Kernel APIs
 ~~~~~~~~~~~~~~~~~~~
@@ -308,7 +307,7 @@ Build only a Virtual Device with a pre-existing Firmware
 Copy/Paste the ``.kpk`` file into the folder ``dropins``
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

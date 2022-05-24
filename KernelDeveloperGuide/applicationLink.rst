@@ -6,12 +6,14 @@ Application Linking
 This chapter describes how a Sandboxed Application is built so that it can be (dynamically) installed on a Kernel.
 The build output file of a Sandboxed Application against a Kernel is called a Feature, hence the ``f`` letter used in the extension name of the related files (``.fso`` and ``.fo`` files).
 
+.. _soar_build_phases:
+
 SOAR Build Phases
 -----------------
 
 When building a Sandboxed Application to a Feature, SOAR processing is divided in two phases:
 
-1. **SOAR Compiler**: loads and compiles the set of application ``.class`` files and resources. Among the various steps, mention may be made of:
+1. **SOAR Resolver**: loads the set of application ``.class`` files and resources. Among the various steps, mention may be made of:
 
    - Computing the transitive closure from the application entry points of all required elements (types, methods, fields, strings, immutables, resources, system properties),
    - Computing the :ref:`clinit order <soar_clinit>`.
@@ -25,9 +27,9 @@ When building a Sandboxed Application to a Feature, SOAR processing is divided i
    - Generating the MEJ32 instructions,
    - Building the virtualization tables.
 
-   The result is an object file that ends with ``.fo`` extension.
-   The ``.fo`` file is specific to a Kernel: it can only be installed on the Kernel it has been linked. 
-   Rebuilding a Kernel implies to run this phase again.   
+   The result is an object file that ends with the ``.fo`` extension.
+   By default, the ``.fo`` file is specific to a Kernel: it can only be installed on the Kernel it has been linked to. 
+   Rebuilding a Kernel implies to run this phase again, unless the application has been built for the previous Kernel (see :ref:`feature_portability`).   
 
 .. figure:: png/link_application.png
    :alt: Sandboxed Application Build Flow
@@ -39,7 +41,7 @@ When building a Sandboxed Application to a Feature, SOAR processing is divided i
 The Feature ``.fo`` file can be deployed in the following ways:
 
 -  Downloaded and installed on Device by software. Refer to the :ref:`[KF]
-   specification <esr-specifications>` for `Kernel.install() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream->`_ method.
+   specification <kf_specification>` for `Kernel.install() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream->`_ method.
 
 -  Installed at build-time into the Multi-Sandboxed Firmware using the :ref:`firmware_linker` tool.
 
@@ -69,7 +71,7 @@ Feature Build On Device
 
 .. note::
 
-   This is a new functionality that requires a custom MicroEJ Architecture configuration.
+   This is a new functionality that requires a custom Architecture configuration.
    Please contact :ref:`our support team <get_support>` for more details.
    
 The SOAR Optimizer is packaged to a Foundation Library named ``SOAR``, thus this phase can be executed directly on Device.
@@ -189,8 +191,8 @@ The following code template illustrates the usage of the ``SOAR`` Foundation Lib
 
 .. _fso_compatibility:
 
-Compatibility Rules
--------------------
+FSO Compatibility
+-----------------
 
 A ``.fso`` file can be linked on any Kernel providing all the following conditions:
 
@@ -204,8 +206,30 @@ A ``.fso`` file can be linked on any Kernel providing all the following conditio
 
 .. [#compatible_def] New version is greater than or equals to the old one within the same major version.
 
+
+.. _feature_portability:
+
+Feature Portability
+-------------------
+
+By default, a ``.fo`` file can only be installed on the Kernel on which it has been linked. 
+
+Starting from Architecture version ``8.0.0``, the same Feature file can be installed on different Kernels. This is called `Feature Portability`.
+Thus it is not required to rebuild the ``.fo`` file in the following cases:
+
+- Relinking the executable (memory layout changes),
+- Recompiling the C code,
+- Rebuilding the Kernel Application, if :ref:`Feature Portability Control <feature_portability_control>` has been enabled.
+
+.. figure:: png/feature_portability_overview.png
+   :alt: Feature Portability Overview
+   :align: center
+   :scale: 80%
+
+   Feature Portability Overview
+
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

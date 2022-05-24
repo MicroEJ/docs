@@ -11,8 +11,8 @@ Definitions
 Feature Definition Files
 ------------------------
 
-A Feature is a group of types, resources and :ref:`[BON] <esr-specifications>` immutables objects
-defined using two files that shall be in application classpath:
+A Feature is a group of types, resources and :ref:`[BON] <runtime_bon>` immutables objects
+defined using two files that shall be in Application classpath:
 
 -  ``[featureName].kf``, a Java properties file. Keys are described in
    :ref:`the "Feature definition file properties" table below <table_kf-feature-keys>`.
@@ -30,8 +30,8 @@ defined using two files that shall be in application classpath:
    | entryPoint    | Mandatory | The fully qualified name of the class that                              |
    |               |           | implements ``ej.kf.FeatureEntryPoint``                                  |
    +---------------+-----------+-------------------------------------------------------------------------+
-   | immutables    | Optional  | Semicolon separated list of paths to :ref:`[BON] <esr-specifications>`  |
-   |               |           | immutable files owned by the Feature. :ref:`[BON] <esr-specifications>` |
+   | immutables    | Optional  | Semicolon separated list of paths to :ref:`[BON] <runtime_bon>`         |
+   |               |           | immutable files owned by the Feature. ``[BON]``                         |
    |               |           | immutable file is defined by a ``/`` separated path relative to         |
    |               |           | application classpath                                                   |
    +---------------+-----------+-------------------------------------------------------------------------+
@@ -57,74 +57,15 @@ file is loaded and are named ``kernel.kf`` and ``kernel.cert``.
 and immutables are automatically owned by the Kernel if not explicitly
 set to be owned by a Feature.
 
-Kernel API Definition
-~~~~~~~~~~~~~~~~~~~~~
+Kernel API Files
+----------------
 
-Kernel types, methods and static fields allowed to be accessed by
-Features must be declared in ``kernel.api`` file. Kernel API file is an
-XML file (see :ref:`example "Kernel API XML Schema" <fig_kf-api-xsd>` and
-:ref:`table "XML elements specification" <table_kf-api-tags>`).
-
-.. _fig_kf-api-xsd:
-.. code-block:: xml
-   :caption: Kernel API XML Schema
-
-   <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
-       <xs:element name='require'>
-           <xs:complexType>
-               <xs:choice minOccurs='0' maxOccurs='unbounded'>
-                   <xs:element ref='type'/>
-                   <xs:element ref='field'/>
-                   <xs:element ref='method'/>
-               </xs:choice>
-           </xs:complexType>
-       </xs:element>
-
-       <xs:element name='type'>
-           <xs:complexType>
-               <xs:attribute name='name' type='xs:string' use='required'/>
-           </xs:complexType>
-       </xs:element>
-
-       <xs:element name='field'>
-           <xs:complexType>
-               <xs:attribute name='name' type='xs:string' use='required'/>
-           </xs:complexType>
-       </xs:element>
-
-       <xs:element name='method'>
-           <xs:complexType>
-               <xs:attribute name='name' type='xs:string' use='required'/>
-           </xs:complexType>
-       </xs:element>
-   </xs:schema>
-
-.. _table_kf-api-tags:
-.. tabularcolumns:: |p{1cm}|p{1.5cm}|p{12.5cm}|
-.. table:: XML elements specification
-
-    +---------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-    | Tag     | Attributes | Description                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    +=========+============+=================================================================================================================================================================================================================================================================================================================================================================================================================================+
-    | require |            | The root element                                                                                                                                                                                                                                                                                                                                                                                                                |
-    +---------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-    |         |            | Static field declaration. Declaring a field as a Kernel API automatically sets the declaring type as a Kernel API                                                                                                                                                                                                                                                                                                               |
-    | field   +------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-    |         | name       | Fully qualified name on the form ``[type].[fieldName]``                                                                                                                                                                                                                                                                                                                                                                         |
-    +---------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-    |         |            | Method or constructor declaration. Declaring a method or a constructor as a Kernel API automatically sets the declaring type as a Kernel API                                                                                                                                                                                                                                                                                    |
-    | method  +------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-    |         | name       | Fully qualified name on the form ``[type].[methodName]([typeArg1,...,typeArgN) typeReturned``. Types are fully qualified names or one of a base type as described by the Java language (``boolean``, ``byte``, ``char``, ``short``, ``int``, ``long``, ``float``, ``double``) When declaring a constructor, ``methodName`` is the single type name. When declaring a void method or a constructor, ``typeReturned`` is ``void`` |
-    +---------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-    |         |            | Type declaration, allowed to be loaded from a Feature using ``Class.forName()``                                                                                                                                                                                                                                                                                                                                                 |
-    | type    +------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-    |         | name       | Fully qualified name on the form ``[package].[package].[typeName]``                                                                                                                                                                                                                                                                                                                                                             |
-    +---------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+Kernel API file definition is explained here :ref:`Kernel API <kernel.api.def>`.
 
 Access Error Codes
 ------------------
 
-When an instruction is executed that will break a :ref:`[KF] <esr-specifications>` insulation
+When an instruction is executed that will break a :ref:`[KF] specification <kf_specification>` insulation
 semantic rule, a ``java.lang.IllegalAccessError`` is thrown, with an
 error code composed of two parts: ``[source][errorKind]``.
 
@@ -181,19 +122,8 @@ error code composed of two parts: ``[source][errorKind]``.
    +---------+------------------------------------------------------------+
 
 
-.. _kf-dyn:
-
-Loading Features Dynamically
-============================
-
-Features may be statically embedded with the Kernel or dynamically built
-against a Kernel. To build a Feature binary file, select
-``Build Dynamic Feature``\ MicroEJ Platform\ ``Execution`` tab. The
-generated file can be dynamically loaded by the Kernel runtime using
-``ej.kf.Kernel.load(InputStream)``.
-
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

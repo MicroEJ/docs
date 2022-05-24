@@ -8,32 +8,7 @@ Simple Native Interface (SNI)
 Principle
 =========
 
-:ref:`[SNI] <esr-specifications>` provides a simple mechanism for implementing native Java methods in
-the C language.
-
-:ref:`[SNI] <esr-specifications>` allows you to:
-
--  Call a C function from a Java method.
-
--  Access an Immortal array in a C function (see the :ref:`[BON]
-   specification <esr-specifications>` to learn about immortal objects).
-
-:ref:`[SNI] <esr-specifications>` does not allow you to:
-
--  Access or create a Java object in a C function.
-
--  Access Java static variables in a C function.
-
--  Call Java methods from a C function.
-
-:ref:`[SNI] <esr-specifications>` provides some Java APIs to manipulate some data arrays between Java
-and the native (C) world.
-
-
-Functional Description
-======================
-
-:ref:`[SNI] <esr-specifications>` defines how to cross the barrier between the Java world and the
+:ref:`[SNI] specification <runtime_sni>` defines how to cross the barrier between the Java world and the
 native world:
 
 -  Call a C function from Java.
@@ -45,18 +20,20 @@ native world:
 -  Manipulate (read & write) shared memory both in Java and C: the
    immortal space.
 
+Functional Description
+======================
+
+The following illustration shows both Java and C code
+accesses to shared objects in the immortal space, while also accessing
+their respective memory.
+
 .. _fig_sni-flow:
 .. figure:: images/sni_flow.*
    :alt: SNI Processing
    :scale: 75%
    :align: center
 
-   :ref:`[SNI] <esr-specifications>` Processing
-
-:ref:`The above illustration <fig_sni-flow>` shows both Java and C code
-accesses to shared objects in the immortal space, while also accessing
-their respective memory.
-
+   :ref:`[SNI] <runtime_sni>` Processing
 
 Example
 =======
@@ -122,7 +99,7 @@ A call to a native function uses the same RTOS task as the RTOS task
 used to run all Java green threads. So during this call, the MicroEJ
 Core Engine cannot schedule other Java threads.
 
-:ref:`[SNI] <esr-specifications>` defines C functions that provide controls for the green threads'
+:ref:`[SNI] <runtime_sni>` defines C functions that provide controls for the green threads'
 activities:
 
 -  ``int32_t SNI_suspendCurrentJavaThread(int64_t timeout)``: Suspends the
@@ -166,8 +143,8 @@ No dependency.
 Installation
 ============
 
-The :ref:`[SNI] <esr-specifications>` library is a built-in feature of the platform, so there is no
-additional dependency to call native code from Java. In the platform
+The ``[SNI]`` library is a built-in feature of the Architecture, so there is no
+additional dependency to call native code from Java. In the Platform
 configuration file, check :guilabel:`Java to C Interface` > :guilabel:`SNI API` to
 install the additional Java APIs in order to manipulate the data arrays.
 
@@ -176,8 +153,8 @@ Use
 ===
 
 The `SNI API module <https://repository.microej.com/modules/ej/api/sni/>`_ must be added 
-to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ Application project
-to use the :ref:`[SNI] <esr-specifications>` library.
+to the :ref:`module.ivy <mmm_module_description>` of the Application project
+to use the :ref:`[SNI] <runtime_sni>` library.
 
 ::
 
@@ -185,7 +162,7 @@ to use the :ref:`[SNI] <esr-specifications>` library.
 
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

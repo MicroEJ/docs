@@ -31,7 +31,7 @@ content:
     Sandboxed Application configuration and resources;
 
 ``module.ivy``
-    Ivy input file, dependencies description for the current project.
+    :ref:`Module description file <mmm_module_description>`, dependencies description for the current project.
 
 .. _section.java.sources.folder:
 
@@ -90,7 +90,7 @@ informations about MicroEJ Module Manager.
 
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -12,7 +12,7 @@ The Multi-Sandbox capability of the MicroEJ Core Engine allows a
 main application (called Standalone Application) to install and execute
 at runtime additional applications (called Sandboxed Applications).
 
-The MicroEJ Core Engine implements the :ref:`[KF] specification <esr-specifications>`. A Kernel is a
+The MicroEJ Core Engine implements the :ref:`[KF] specification <kf_specification>`. A Kernel is a
 Standalone Application generated on a Multi-Sandbox-enabled
 platform. A Feature is a Sandboxed Application generated against a specific Kernel.
 
@@ -89,7 +89,7 @@ Use
 
 The `KF API Module <https://repository.microej.com/modules/ej/api/kf/>`_ 
 must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Application project to use :ref:`[KF] <esr-specifications>` library.
+Application project to use :ref:`[KF] <kf_specification>` library.
 
 ::
 
@@ -99,7 +99,7 @@ This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

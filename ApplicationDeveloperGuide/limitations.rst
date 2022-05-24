@@ -92,7 +92,7 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
    The Java heap Garbage Collection limit may throw unexpected cascading `java.lang.OutOfMemoryError <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html>`_ exceptions before the MicroEJ Core Engine exits.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

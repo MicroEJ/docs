@@ -31,17 +31,15 @@ Standalone Applications and MicroEJ Sanboxed Applications.
 A MicroEJ Standalone Application is a MicroEJ Application that is
 directly linked to the C code to produce a MicroEJ Firmware. Such
 application must define a main entry point, i.e. a class containing a
-``public static void main(String[])`` method. MicroEJ Standalone
-Applications are developed using MicroEJ SDK.
+``public static void main(String[])`` method.
 
 A MicroEJ Sandboxed Application is a MicroEJ Application that can run
 over a Multi-Sandbox Firmware. It can be linked either statically or
 dynamically. If it is statically linked, it is then called a System
 Application as it is part of the initial image and cannot be removed.
-MicroEJ Sandboxed Applications are developed using MicroEJ Studio.
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

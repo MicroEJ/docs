@@ -1,3 +1,5 @@
+.. _tutorial_optimize_memory_footprint:
+
 Optimize the Memory Footprint of an Application
 ===============================================
 
@@ -210,6 +212,7 @@ The following application code guidelines are recommended in order to minimize t
 - Avoid overriding `Object.equals(Object) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#equals-java.lang.Object->`_ and `Object.hashCode() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#hashCode-->`_, use ``==`` operator instead if it is sufficient. The :ref:`correct implementation of these methods <equals_hashcode>` requires significant code.
 - Avoid calling ``equals()`` and ``hashCode()`` methods directly on ``Object`` references. Otherwise, the method of every embedded class which overrides the method will be embedded.
 - Avoid creating inlined anonymous objects (such as ``new Runnable() { ... }`` objects), implement the interface in a existing class instead. Indeed, a new class is created for each inlined object. Moreover, each enclosed final variable is added as a field of this anonymous class.
+- Avoid accessing a private field of a nested class. The Java compiler will generate a dedicated method instead of a direct field access. This method is called `synthetic`, and is identified by its name prefix: ``access$``.
 - Replace constant arrays and objects initialization in ``static final`` fields by :ref:`immutables objects <section.classpath.elements.immutables>`. Indeed, initializing objects dynamically generates code which takes significant ROM and requires execution time.
 - Check if some features available in software libraries are not already provided by the device hardware. For example, avoid using `java.util.Calendar <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Calendar.html>`_ (full Gregorian calendar implementation) if the application only requires basic date manipulation provided by the internal real-time clock (RTC).
 
@@ -383,7 +386,7 @@ Java Heap and Immortals Heap
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Configure the :ref:`immortals heap <option_immortal_heap>` option to be as small as possible. You can get the minimum value by calling `Immortals.freeMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Immortals.html>`_ after the creation of all the immortal objects.
-- Configure the :ref:`Java heap <option_java_heap>` option to fit the needs of the application. You can get the maximum heap usage by calling `Runtime.freeMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#freeMemory-->`_ after `System.gc() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#gc-->`_ at different moments in the application's lifecycle. The `profiling <https://repository.microej.com/modules/com/microej/library/profiling/>`_ library can be used for this.
+- Configure the :ref:`Java heap <option_java_heap>` option to fit the needs of the application. You can get it by using the :ref:`Heap Usage Monitoring Tool <heap_usage_monitoring>`.
 
 Thread Stacks
 ^^^^^^^^^^^^^
@@ -406,3 +409,10 @@ MicroUI Images Heap
 ^^^^^^^^^^^^^^^^^^^
 
 - Configure the :ref:`images heap <images_heap>` to be as small as possible. You can compute the optimal size empirically. It can also be calculated accurately by adding the size of every image that may be stored in the images heap at a given moment. One way of doing this is to inspect every occurrence of `BufferedImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#BufferedImage-int-int->`_ allocations and `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_ usage of ``loadImage()`` methods.
+
+..
+   | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

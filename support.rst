@@ -3,8 +3,13 @@
 Get Support
 ===========
 
-If any questions, feel free to contact `our support team <https://www.microej.com/contact/#form_2>`_
-with the following information (the table below is an example):
+If any questions, the best starting point is to consult the `MicroEJ Forum <https://forum.microej.com/>`_. 
+Feel free to create a new topic if there is no relevant content for your issue. 
+MicroEJ Corp. engineers are listening to the forum activity, so you can expect to get a quick reply.
+
+Otherwise, you can contact `our support team <https://www.microej.com/contact/#form_2>`_.
+
+In both cases, please provide as much information as possible on your installed environment (the table below is an example):
 
 .. list-table::
    :widths: 15 30
@@ -21,3 +26,10 @@ with the following information (the table below is an example):
      - IAR 8.40.1
    * - Host Operating System
      - Windows 10 (see :ref:`system-requirements`)
+     
+..
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

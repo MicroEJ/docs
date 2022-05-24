@@ -17,6 +17,13 @@ A SystemView support is provided to use the software with a MicroEJ system. This
 
 .. note:: This SystemView section has been written for SystemView version V2.52a. Later versions may or may not work, and may need modification to the following steps.
 
+Here is a example when analyzing the `Demo Widget <https://github.com/MicroEJ/Demo-Widget>`__ running on the `STM32F7508-DK platform <https://github.com/MicroEJ/Platform-STMicroelectronics-STM32F7508-DK>`__.
+
+.. figure:: images/STM32F7508-DK-demoWidget-SystemView.png
+   :alt: SystemView analysis of DemoWidget on STM32F7508 Platform
+   :align: center
+   :scale: 75
+
 References
 ==========
 
@@ -246,7 +253,7 @@ If you cannot flash a firmware for a STM32 device after replacing back J-Link fi
    :height: 951px
 
 ..
-   | Copyright 2020-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2020-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

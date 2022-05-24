@@ -104,11 +104,12 @@ IoT Libraries
       -  - `Hoka user manual <https://github.com/MicroEJ/LibraryJava-hoka/blob/master/hoka/user-manual.rst>`_
          - `Hoka Example <https://github.com/MicroEJ/Example-Hoka>`_   
 
-   *  -  ``MQTT Client``
-      -  Eclipse Paho MQTT 3.1.1 client.
-      -  `mqtt <https://repository.microej.com/modules/org/eclipse/paho/mqttv3-microej/>`_, `mqtt-ssl <https://repository.microej.com/modules/org/eclipse/paho/mqttv3-ssl-microej/>`_
+   *  -  ``MQTT Client (MicroPaho)``
+      -  Tiny footprint MQTT 3.1.1 client based on Eclipse Paho Java APIs.
+      -  `micropaho <https://repository.microej.com/modules/ej/library/iot/micropaho/1.0.0/>`_
       -  `MqttClient class <https://repository.microej.com/javadoc/microej_5.x/apis/org/eclipse/paho/client/mqttv3/MqttClient.html>`_
-      -  - `MQTT publish Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.mqtt.publisher>`_  
+      -  - `MicroPaho README <https://repository.microej.com/modules/ej/library/iot/micropaho/1.0.0/README-1.0.0.md>`_
+         - `MQTT publish Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.mqtt.publisher>`_  
          - `MQTT subscribe Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.mqtt.subscriber>`_
 
    *  -  ``REST Client``
@@ -195,17 +196,17 @@ Cloud Agent Libraries
 
    *  -  ``AWS IoT Core``
       -  AWS IoT Core client, providing publish/subscribe functionalities.
-      -  `aws-iot <https://repository.microej.com/modules/ej/library/iot/aws/aws-iot/>`_
-      -  - `AWS IoT Core README <https://repository.microej.com/modules/ej/library/iot/aws/aws-iot/1.2.0/README-1.2.0.md>`_
+      -  `aws-iot <https://repository.microej.com/modules/ej/library/iot/aws-iot/>`_
+      -  - `AWS IoT Core README <https://repository.microej.com/modules/ej/library/iot/aws-iot/2.0.0/README-2.0.0.md>`_
          - `AWS IoT Core Example <https://github.com/MicroEJ/AWS>`_
 
    *  -  ``Google Cloud Platform Iot Core``
       -  Google Cloud Platform Iot Core client.
-      -  `gcp-iotcore <https://repository.microej.com/modules/googlecloud/iotcore/>`_
+      -  `gcp-iotcore <https://forge.microej.com/artifactory/microej-developer-repository-release/googlecloud/iotcore/>`_
       -  - `Google Cloud Platform Getting Started <https://developer.microej.com/features/iot-connectivity/get-started-google-cloud-iot-core-connectivity/>`_
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and

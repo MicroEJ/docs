@@ -3,7 +3,12 @@
 Debug Traces
 =============
 
-MicroUI logs several actions when traces are enabled. This chapter explains the traces identifiers. Some events data are described in next tables.
+MicroUI logs several actions when traces are enabled. This chapter explains the traces identifiers.
+
+Trace format
+------------
+
+The trace output format is the following:
 
 ``[TRACE: MicroUI] Event AA(BB[CC],DD[EE])``
 
@@ -11,10 +16,24 @@ where:
 
 - AA is the event identifier. See next table.
 - BB is the first event data.
-- CC is the first event data number (0x0).
+- CC is the index of the first event data (0x0).
 - DD is the second event data.
-- EE is the second event data number (0x1).
+- EE is the index of the second event data (0x1).
 - etc.
+
+For example, given the following trace output:
+
+``[TRACE: MicroUI] Event 0x2(1[0x0],2[0x1],117571586[0x2])``
+
+- 0x2 -> Execute native input event
+- 1 -> Event “Button” (index 0x0)
+- 2 -> Generator Id (index 0x1)
+- 117571586 -> event data (index 0x2)
+
+Trace identifiers
+-----------------
+
+The following tables describe some events data.
 
 .. table:: MicroUI Traces
 
@@ -223,7 +242,18 @@ where:
    | 0xcc (204)  | Draw image with scalling (bilinear)        |
    +-------------+--------------------------------------------+
 
-The traces are :ref:`systemview` compatible. The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and copied in SystemView installation folder.
+SystemView Integration
+----------------------
+
+The traces are :ref:`systemview` compatible.
+
+.. figure:: images/microui_traces_systemview.png
+   :alt: MicroUI Traces displayed in SystemView
+   :align: center
+
+   MicroUI Traces displayed in SystemView
+
+The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and copied in SystemView installation folder (e.g. ``SEGGER/SystemView_V252a/Description/``).
 
 .. code-block::
 
@@ -335,7 +365,7 @@ The traces are :ref:`systemview` compatible. The following text can be copied in
    24       IE_ReadEvent       (MicroUI Input Engine) Read event %p (index %u)
 
 ..
-   | Copyright 2008-2020, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

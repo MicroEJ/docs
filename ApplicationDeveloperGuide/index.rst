@@ -9,11 +9,14 @@ Application Developer Guide
    introduction
    standaloneApplication
    sandboxedApplication
+   libraries
    virtualDevice
+   runtime
    moduleNatures
    repository
    classpath
    applicationResources
+   nlsExternalLoader
    debug
    platformSelection
    tools
@@ -21,10 +24,11 @@ Application Developer Guide
    UI/ui
    js/index
    networking
+   characterEncoding
    limitations
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

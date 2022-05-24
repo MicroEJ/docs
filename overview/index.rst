@@ -1,61 +1,29 @@
-.. _chapter-overview:
+.. _overview:
 
 Overview
 ========
 
-MicroEJ offers a comprehensive toolset to build the embedded software of
-a device. The toolset covers two levels in device software development:
+The MicroEJ product line offers profitable solutions to device manufacturers, application developers and service providers for:
 
--  MicroEJ SDK for device firmware development
+-	Device software development at lower cost and effort,
+-	Application development and deployment for generating extra revenue streams with services and data.
 
--  MicroEJ Studio for application development
+MicroEJ solutions enable delivery of user experience and business models similar to mobile Internet (smartphones and tablets) for embedded devices with strong cost constraints and strict resource limitations (processor performance, RAM and flash memory footprint, low-power).
+It also combines the techniques, methods and tools that drove the PC and mobile Internet software industry, with the complex technical foundations of embedded systems (fragmented processor architectures and diverse hardware-dependent software).
 
-The firmware will generally be produced by the device OEM, it includes
-all device drivers and a specific set of MicroEJ functionalities useful
-for application developers targeting this device.
+With MicroEJ solutions, you will use proven methods that cut software development time and cost. 
+You will create software that delivers incredible user experience and adjusts to the needs of your business.
 
-.. figure:: images/toolchain.png
-   :alt: MicroEJ Development Tools Overview
-   :scale: 55%
-   :align: center
-
-   MicroEJ Development Tools Overview
-
-Using the MicroEJ SDK tool, a firmware developer will produce two
-versions of the MicroEJ binary, each one able to run applications
-created with the MicroEJ Studio tool:
-
--  A MicroEJ Firmware binary to be flashed on OEM devices;
-
--  A Virtual Device which will be used as a device simulator by
-   application developers.
-
-Using the MicroEJ Studio tool, an application developer will be able to:
-
--  Import Virtual Devices matching his target hardware in order to
-   develop and test applications on the Simulator;
-
--  Deploy the application locally on an hardware device equipped with
-   the MicroEJ Firmware;
-
--  Package and publish the application on a MicroEJ Forge Instance,
-   enabling remote end users to install it on their devices. For more
-   information about MicroEJ Forge, please consult
-   `<https://www.microej.com/product/forge>`_.
 
 .. toctree::
    :hidden:
 
    gettingStarted
-   firmware
-   runtime
-   libraries
-   repository
-   esr
-   github
+   vee
+   sdk
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

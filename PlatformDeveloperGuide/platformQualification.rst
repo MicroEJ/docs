@@ -115,15 +115,9 @@ A Platform Test Suite contains one or more tests.  For each test, the Test Suite
 Test Suite Versioning
 =====================
 
-Foundation Libraries are integrated in a MicroEJ Platform by MicroEJ
-Packs (see :ref:`pack_import`).  Use the Test Suite version compliant
-with the Foundation Library version to validate the Abstraction Layer
-implementation.  For example, the `Test Suite FS module 3.0.3
-<https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/>`_
-should be used to validate the Abstraction Layer implementation of the
-:ref:`Low Level API FS <LLFS-API-SECTION>` provided by the `FS Pack
-5.1.2
-<https://repository.microej.com/modules/com/microej/pack/fs/5.1.2/>`_.
+Foundation Libraries are integrated in a MicroEJ Platform by MicroEJ Packs (see :ref:`pack_import`).
+Use the Test Suite version compliant with the API version provided by the Foundation Library to validate the Abstraction Layer implementation.
+For example, the `Test Suite FS module 3.0.3 <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/>`_ should be used to validate the Abstraction Layer implementation of the :ref:`Low Level API FS <LLFS-API-SECTION>` provided by the `FS Pack 5.1.2 <https://repository.microej.com/modules/com/microej/pack/fs/5.1.2/>`_.
 
 .. note:: A MicroEJ Pack can provide several Foundation Libraries.
 
@@ -191,15 +185,54 @@ BLUETOOTH Pack
      - `2.0.0 <https://repository.microej.com/modules/ej/api/bluetooth/2.0.0/>`__
      - `2.0.0 <https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-testsuite/2.0.0/>`__
 
-NET/SSL Pack
-------------
+NET Pack
+--------
 
 On demand [1]_.
+
+.. list-table:: NET, SSL and SECURITY APIs Implementations and Validations
+   :widths: 15 10 10 10 15 15 15
+
+   * - NET Pack
+     - NET API
+     - SSL API
+     - SECURITY API
+     - NET Java Test Suite
+     - SSL Java Test Suite
+     - SECURITY Java Test Suite
+   * - [8.1.2-8.2.0]
+     - `1.1.0 <https://repository.microej.com/modules/ej/api/net/1.1.0/>`__
+     - `2.1.0 <https://repository.microej.com/modules/ej/api/ssl/2.1.0/>`__
+     - N/A
+     - 3.4.0 (On demand [1]_)
+     - 3.0.1 (On demand [1]_)
+     - N/A
+   * - 9.0.0
+     - `1.1.0 <https://repository.microej.com/modules/ej/api/net/1.1.0/>`__
+     - `2.2.0 <https://repository.microej.com/modules/ej/api/ssl/2.2.0/>`__
+     - `1.3.1 <https://repository.microej.com/modules/ej/api/security/1.3.1/>`__
+     - 3.4.0 (On demand [1]_)
+     - 3.1.4 (On demand [1]_)
+     - 1.1.0 (On demand [1]_)
+   * - [9.0.1-9.4.1]
+     - `1.1.1 <https://repository.microej.com/modules/ej/api/net/1.1.1/>`__
+     - `2.2.0 <https://repository.microej.com/modules/ej/api/ssl/2.2.0/>`__
+     - `1.3.1 <https://repository.microej.com/modules/ej/api/security/1.3.1/>`__
+     - 3.5.2 (On demand [1]_)
+     - 3.1.4 (On demand [1]_)
+     - 1.1.0 (On demand [1]_)
+   * - 10.0.0
+     - `1.1.2 <https://repository.microej.com/modules/ej/api/net/1.1.2/>`__
+     - `2.2.1 <https://repository.microej.com/modules/ej/api/ssl/2.2.1/>`__
+     - 1.4.0 (On demand [1]_)
+     - 3.5.2 (On demand [1]_)
+     - 3.1.4 (On demand [1]_)
+     - 1.2.0 (On demand [1]_)
 
 .. [1] Test Suite available on demand, please contact :ref:`MicroEJ Support<get_support>`.
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and

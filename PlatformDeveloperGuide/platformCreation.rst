@@ -79,6 +79,8 @@ The next step is to create a MicroEJ Platform configuration project:
           </dependency>
       
       </dependencies>
+
+  .. note:: The Platform Configuration Additions allow to select the Architecture ``USAGE`` using the option ``com.microej.platformbuilder.architecture.usage``.  Edit the file ``module.properties`` to set the property to ``prod`` to use a Production Architecture and to ``eval`` to use an Evaluation Architecture.
       
 .. _pack_import:
 
@@ -162,7 +164,14 @@ To build the MicroEJ Platform from the SDK, perform a regular :ref:`mmm_module_b
 To build the MicroEJ Platform from the MMM CLI:
 
   - Set the ``eclipse.home`` property to the path of your SDK, using ``-Declipse.home=<path>`` in the command line or using the :ref:`mmm_cli_shared_configuration`.
-  - Execute the command: ``mmm``
+  
+    By default, the SDK's path is one of the following directories:
+  
+    - on Windows: ``C:\Program Files\MicroEJ\MicroEJ-SDK-<YY.MM>\rcp``
+    - on Linux: ``/home/<user>/MicroEJ/MicroEJ-SDK-<YY.MM>/rcp``
+    - on macOS: ``/Applications/MicroEJ/MicroEJ-SDK-<YY.MM>/rcp/MicroEJ-SDK-<YY.MM>.app/Contents/Eclipse``
+	
+  - From the Platform Configuration project, execute the command: ``mmm``
 
 In both cases the build starts and the build logs are redirected to the integrated console.
 Once the build is terminated, you should get the following message:
@@ -312,6 +321,24 @@ several of the extension points available. By default, you should not have to ch
 the default configuration script.
 
 Modifying one of these files requires to :ref:`build the Platform <platform_build>` again.
+
+.. _platform_publication:
+
+Platform Publication
+====================
+
+The publication of the built Platform to a :ref:`module repository <module_repository>` is disabled by default.
+It can be enabled by setting the ``skip.publish`` property defined in the file ``module.properties`` of 
+the Platform configuration project to ``false``.
+
+The publication is generally kept disabled by default in the project sources since developers use the locally built platform,
+but must be enabled in the Continuous Integration environment.
+This can be done by leaving the ``skip.publish`` property to ``true`` in the project sources 
+and by overwriting it in the command launched by the Continuous Integration environment, for example:
+
+.. code-block:: sh
+
+  mmm publish shared -Dskip.publish=false
 
 .. _bsp_connection:
 
@@ -506,7 +533,8 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
       deploy.dir.microejapp=[absolute_path]
       deploy.dir.microejlib=[absolute_path]
       deploy.dir.microejinc=[absolute_path]
-      deploy.bsp.microejscript=[absolute_path]
+      deploy.dir.microejscript=[absolute_path]
+      deploy.bsp.microejscript=true
 
 - Partial BSP connection, executable file built outside MicroEJ SDK
   :: 
@@ -556,7 +584,7 @@ to produce the final executable file (``application.out``).
 The build script must comply with the following specification:
 
 - On Windows operating system, it is a Windows batch file named ``build.bat``.
-- On Mac OS X or Linux operating systems, it is a shell script named ``build.sh``, with execution permission enabled.
+- On macOS or Linux operating systems, it is a shell script named ``build.sh``, with execution permission enabled.
 - On error, the script must end with a non zero exit code.
 - On success
 
@@ -590,7 +618,7 @@ The BSP run script is used to invoke a third-party tool to upload and start the 
 The run script must comply with the following specification:
 
 - On Windows operating system, it is a Windows batch file named ``run.bat``.
-- On Mac OS X or Linux operating systems, it is a shell script named ``run.sh``, with execution permission enabled.
+- On macOS or Linux operating systems, it is a shell script named ``run.sh``, with execution permission enabled.
 - The executable file is passed as first script parameter if there is one, otherwise it is the ``application.out`` file located in the directory from where the script has been executed.
 - On error, the script must end with a non zero exit code.
 - On success:
@@ -608,7 +636,7 @@ such as :ref:`tool_serial_to_socket`.
   testsuite.trace.port=5555
 
 ..
-   | Copyright 2008-2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

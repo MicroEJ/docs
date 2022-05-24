@@ -1,3 +1,5 @@
+.. _mwt_how_to_debug:
+
 How to Debug
 ============
 
@@ -31,9 +33,10 @@ Here is an example of a ``xxx.constants.list`` file with the result in an applic
 .. figure:: images/highlightWidgetWheel.png
 	:alt: Highlight widgets in a wheel
 	:align: center
- 
+
+.. note:: Available since MWT 3.3.0.
 ..
-   | Copyright 2021, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
