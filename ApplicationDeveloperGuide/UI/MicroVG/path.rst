@@ -43,23 +43,23 @@ Path Drawing
 
 A path can be drawn with a call to `ej.microvg.VectorGraphicsPainter.fillPath()` <FIXME link to api page>.
 
-The drawn path will be filled by the graphic context color or by a linear gradient.
+The drawn path will be filled with the graphic context color or with a linear gradient.
 
 The path can be transformed by a transformation matrix (this concept is explained in :ref:`Matrix` section) before drawing.
 
 A `FillType` and an `Alpha Blending Mode` can be applied during the drawing.
 
-Fill Path With Graphic Context Color
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Fill Path With Graphics Context Color
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The opacity value of the drawing is ``0xFF``.
+The default alpha channel value of the drawing is ``0xFF``(opaque opacity).
 
 |startTable|
 
 .. code-block:: java
 
    g.setColor(Colors.GRAY);
-   VectorGraphicsPainter.fillPath(g, path, new Matrix());
+   VectorGraphicsPainter.fillPath(g, path, 0, 0);
 
 |midTable|
 
@@ -71,6 +71,8 @@ The opacity value of the drawing is ``0xFF``.
 
 Fill Path With a Linear Gradient
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Refer to :ref:`Linear Gradient` section for more details about the definition of a linear gradient.
 
 The opacity value of the drawing is defined by the Alpha channel of the ARGB color values of the each linear gradient stop point.
 
@@ -88,8 +90,6 @@ The opacity value of the drawing is defined by the Alpha channel of the ARGB col
    :align: center
 
 |endTable|
-
-Refer to :ref:`Linear Gradient` section for more details about the definition of a linear gradient.
 
 .. _FillType:
 

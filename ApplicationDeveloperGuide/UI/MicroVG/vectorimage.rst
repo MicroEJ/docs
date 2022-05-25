@@ -24,13 +24,15 @@ Example:
    /com/mycompany/MyImage1.svg:VGF
    /com/mycompany/androidVectorDrawable.xml:VG8
 
-Supported input files
+Supported Input Files
 ---------------------
 
 The image generator tool supports the following input file formats:
 
 - Android Vector Drawable
 - SVG 
+
+Refer to the :ref:`vectorimage_limitations` section for the list of supported features for these file formats.
 
 The vector image objects are extracted and converted to paths made of `Move`, `Line`` and `Curve` commands. 
 
@@ -211,7 +213,7 @@ The following example illustrates this feature.
 Animated Vector Images
 ----------------------
 
-The Android Vector Drawable format supports the ability to change vector graphics over time, to create animated effects.
+The Android Vector Drawable format provides the ability to change the properties of vector graphics over time, in order to create animated effects.
 
 The transformations of the objects over the time are embedded in the Vector image file and a call to `ej.microvg.VectorGraphicsPainter.drawAnimatedImage` <FIXME link to api page> or `ej.microvg.VectorGraphicsPainter.drawFilteredAnimatedImage` <FIXME link to api page> will draw the image for a specific time frame.
 
@@ -494,9 +496,14 @@ Lets take, for instance, the morphing of a rectangle to a circle which have the 
 
    Rectangle: M 11.9 6.7 H 18 V 13 H 11.9 Z
 
-The rectangle path has to be reworked to fit the commands of the circle path. 
+The rectangle path has to be reworked to match with the sequence of commands of the circle path. 
 
-There is an infinity of possibilities to create the new path, and the association of each points of the paths will induce a specific morphing animation.
+The following tools can be used to manipulate the paths to create the wanted animation effect:
+
+- `Shapeshifter <https://shapeshifter.design/>`_
+- `SVGPathEditor <https://yqnn.github.io/svg-path-editor>`_
+
+There is an infinity of possibilities to create the new path, and the association of each points of the paths will induce a specific morphing animation. As an example, let's define two rectangles very similar visually but with different definitions:
 
 ::
 
@@ -812,6 +819,7 @@ Following examples show the behavior of some of the interpolators for a simple t
 
 |endTable|
 
+.. _vectorimage_limitations:
 
 Limitations / Supported Features
 --------------------------------
@@ -825,6 +833,9 @@ The MicroVG library supports most of the Android Vector Drawable features with t
 - `trim-path` animation is not supported.
 - morphing animations are not supported for paths with stroke.
 - `drawImage` with alpha is not supported if the image contains overlapping paths.
+- `radial` and `sweep` gradient types are not supported.
+- `tint`, `tintMode` and `autoMirrored` features are not supported.
+- `trimPath` feature is not supported.
 
 
 SVG
