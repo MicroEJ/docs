@@ -52,7 +52,7 @@ A `FillType` and an `Alpha Blending Mode` can be applied during the drawing.
 Fill Path With Graphics Context Color
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The default alpha channel value of the drawing is ``0xFF``(opaque opacity).
+The default alpha channel value of the drawing is ``0xFF`` (opaque opacity).
 
 |startTable|
 
