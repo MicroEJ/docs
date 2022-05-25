@@ -8,7 +8,7 @@ Dependency Discoverer
 Introduction
 ============
 
-	The Dependency Discoverer is a tool designed to list missing dependencies of a program in the MicroEJ's central repository.
+	MicroEJ Dependency Discoverer is a tool that lists unresolved dependencies (types, methods and fields) of a set of Java ARchive (JAR) files and .class files.
 	It is a versatile tool and can be used in other contexts, for instance, to list every dependency of a JAR file.
 	
 	It can be used through a command-line interface, with the possibility to output the result in JSON or XML format, allowing an easy scripting process.
@@ -18,7 +18,7 @@ Installation
 ============
 
 	This tool is available at https://github.com/MicroEJ/Tool-ApiDependencyDiscoverer. A JAR and Windows executable version can be downloaded from the release page.
-	It is also possible to clone the project, open it into MicroEJ's SDK and use it from sources.
+	It is also possible to clone and import the project in the SDK and use it from sources.
 
 
 Use
