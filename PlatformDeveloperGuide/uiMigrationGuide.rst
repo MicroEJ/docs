@@ -6,6 +6,19 @@
 Migration Guide
 ===============
 
+From 13.1.x to 13.2.x
+=====================
+
+Front Panel
+"""""""""""
+
+* Set the explicit dependency to the UI Pack 13.2.0: 
+
+  .. code-block:: xml
+
+	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.2.0">
+		<artifact name="frontpanel" type="jar"/>
+	 </dependency>
 
 From 13.0.x to 13.1.x
 =====================
@@ -35,7 +48,7 @@ From 12.x to 13.x
 Platform Configuration Project
 """"""""""""""""""""""""""""""
 
-* Update Architecture version: 7.13.0 or higher.
+* Update Architecture version: 7.16.0 or higher.
 * Add the following module in the :ref:`module description file <mmm_module_description>`: 
 
   .. code-block:: xml
@@ -728,7 +741,7 @@ STM32 Platforms with DMA2D only
          while(1);
       }
  
-* Launch a MicroEJ application with images and fillrect
+* Launch an application with images and fillrect
 * Compile, link and debug the BSP
 * Set some breakpoints on three functions
 * Ensure the functions are called

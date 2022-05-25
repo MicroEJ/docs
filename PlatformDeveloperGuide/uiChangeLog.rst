@@ -4,10 +4,79 @@
 Changelog
 =========
 
+
+13.2.0 - 2022-05-05
+===================
+
+* Compatible with Architecture 7.16.0 or higher.
+
+Integration
+"""""""""""
+	
+**Changed**	
+
+* Update to the latest SDK license notice.
+	
+MicroUI Implementation
+""""""""""""""""""""""
+	
+**Changed**	
+	
+* Use `.rodata` sections instead of `.text` sections.
+	
+**Fixed**
+
+* Clean KF stale references when killing a feature without display context switch.
+* Make sure to wait the end of an asynchronous drawing before killing a KF feature. 
+* Redirect the events sent to the pump to the pump's handler instead of to the event generator's handler. 
+* Fix the drawing of antialiased arc: caps are drawn over the arc itself (rendering issue when the GraphicsContext's background color is set).
+* Fix the drawing of antialiased arc: arc is not fully drawn when (int)startAngle == (int)((startAngle + arcAngle) % 360)).
+* Fix the input queue size when not already set by the application launcher.
+* Fix the use of a negative `scanLength` in `GraphicsContext.readPixels()` and `Image.readPixels()`.  
+
+Front Panel
+"""""""""""
+
+**Added**
+
+* Add the property `-Dej.fp.hil=true` in the application launcher to force to run the FrontPanel with the Graphics Engine as a standard HIL mock (requires MicroEJ Architecture 7.17.0 or higher).
+* Add `LLUIDisplayImpl.decode()`: the Front Panel project is able to read encoded image like the embedded side.
+* Include automatically the AWT ImageIO services.
+* Add `MicroUIImage.readPixel()` to read an image's pixel color.
+ 
+**Fixed**
+
+* Fix the "display context switch" and the loading of feature's font. 
+* Fix OOM (Java heap space) when opening/closing several hundreds of big RAW Images. 
+* Fix the synchronization with the Graphics Engine when calling `GraphicsContext.setColor()` or `GraphicsContext.enableEllipsis()`.
+ 
+Image Generator
+"""""""""""""""
+
+**Added**
+
+* Include automatically the AWT ImageIO services.
+* Allow to a custom image converter to generate a file other than a binary resource.
+* Allow to a custom image converter to specify the supported ``.list`` files.
+
+LLAPIs
+""""""
+
+**Added**
+
+* Add `LLUI_DISPLAY_readPixel` to read an image's pixel color. 
+
+BSP
+"""
+	
+**Fixed**
+
+* Fix the IAR Embedded Workbench warnings during debug session.
+
 [13.1.0] - 2021-08-03
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI API
 """""""""""
@@ -76,7 +145,7 @@ Simulator
 [13.0.7] - 2021-07-30
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -97,7 +166,7 @@ Misc
 [13.0.6] - 2021-03-29
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 
 LLAPIs
 """"""
@@ -109,7 +178,7 @@ LLAPIs
 [13.0.5] - 2021-03-08
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -136,7 +205,7 @@ Simulator
 [13.0.4] - 2021-01-15
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI API
 """""""""""
@@ -180,7 +249,7 @@ ImageGenerator
 [13.0.3] - 2020-12-03
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
  
 MicroUI API
 """""""""""
@@ -203,7 +272,7 @@ MicroUI Implementation
 [13.0.2] - 2020-10-02
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 * Use new naming convention: ``com.microej.architecture.[toolchain].[architecture]-ui-pack``.
 
 **Fixed**
@@ -213,7 +282,7 @@ MicroUI Implementation
 [13.0.1] - 2020-09-22
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI API
 """""""""""
@@ -260,7 +329,7 @@ ImageGenerator
 [13.0.0] - 2020-07-30
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+* Compatible with Architecture 7.16.0 or higher.
 * Integrate SDK 3.0-B license.
 
 MicroUI API

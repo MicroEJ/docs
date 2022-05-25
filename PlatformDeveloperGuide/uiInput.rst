@@ -20,7 +20,7 @@ Functional Description
 
 The Input module implements the MicroUI ``int``-based event generators' framework. ``LLUI_INPUT`` specifies the Low Level APIs that send events to the Java world.
 
-Drivers for input devices must generate events that are sent, via a MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_, to the MicroEJ Application. An event generator accepts notifications from devices, and generates an event in a standard format that can be handled by the application. Depending on the MicroUI configuration, there can be several different types of event generator in the system, and one or more instances of each type. 
+Drivers for input devices must generate events that are sent, via a MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_, to the application. An event generator accepts notifications from devices, and generates an event in a standard format that can be handled by the application. Depending on the MicroUI configuration, there can be several different types of event generator in the system, and one or more instances of each type. 
 
 Each MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_ represents one side of a pair of collaborative components that communicate using a shared buffer:
 
@@ -69,7 +69,7 @@ The event generators available on MicroUI startup (after the call to `MicroUI.st
 
 The order of event generators defines the unique identifier for each event generator. These identifiers are generated in a header file called ``microui_constants.h``. The input driver (or its listener) has to use these identifiers to target a specific event generator.
 
-If an unknown identifier is used or if two identifiers are swapped, the associated event may be never received by MicroEJ application or may be misinterpreted. 
+If an unknown identifier is used or if two identifiers are swapped, the associated event may be never received by the application or may be misinterpreted. 
 
 Standard Event Generators
 =========================
@@ -78,14 +78,16 @@ MicroUI provides a set of standard event generators: `Command <https://repositor
 
 Static Initialization proposes an additional event generator: ``Touch``. A touch event generator is a `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ event generator whose area size is the display size where the touch panel is placed. Furthermore, contrary to a pointer, a *press* action is required to be able to have a *move* action (and so a *drag* action). The Input Engine proposes a set of functions to target a touch event generator (equal to a pointer event generator but with some constraints). The touch event generator is identified as a standard `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ event generator, by consequence the Java application has to use the `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ API to deal with a touch event generator.
 
-According to the event generator, one or several parameters are required. The parameter format is event generator dependant. For instance a ``Pointer`` X-coordinate is encoded on 16 bits (0-65535 pixels).
+According to the event generator, one or several parameters are required. The parameter format is event generator dependant. For instance a ``Pointer`` X-coordinate is encoded on 16 bits (0-65535 pixels). 
+
+.. note:: ``Pointer`` and ``Touch`` origin (point ``0,0``) is the top-left point.
 
 .. _section_inputs_genericEventGenerators:
 
 Generic Event Generators
 ========================
 
-MicroUI provides an abstract class `GenericEventGenerator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/GenericEventGenerator.html>`_ (package ``ej.microui.event``). The aim of a generic event generator is to be able to send custom events from native world to MicroEJ application. These events may be constituted by only one 32-bit word or by several 32-bit words (maximum 255). 
+MicroUI provides an abstract class `GenericEventGenerator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/GenericEventGenerator.html>`_ (package ``ej.microui.event``). The aim of a generic event generator is to be able to send custom events from native world to the application. These events may be constituted by only one 32-bit word or by several 32-bit words (maximum 255). 
 
 On the application side, a subclass must be implemented by clients who want to define their own event generators.  Two abstract methods must be implemented by subclasses:
 
@@ -108,7 +110,7 @@ drivers.
 The Low Level APIs to implement are listed in the header file ``LLUI_INPUT_impl.h``. It allows events to be sent to the MicroUI implementation. The input drivers are allowed to add events directly using the event generator's
 unique ID (see :ref:`section_static_init`). The drivers are fully dependent on the MicroEJ framework (a driver or a driver listener cannot be developed without MicroEJ because it uses the header file generated during the MicroUI initialization step).
 
-To send an event to the MicroEJ application, the driver (or its listener) has to call one of the event engine function, listed in ``LLUI_INPUT.h``. 
+To send an event to the application, the driver (or its listener) has to call one of the event engine function, listed in ``LLUI_INPUT.h``. 
 These functions take as parameter the MicroUI EventGenerator to target and the data. The event generator is represented by a unique ID. The data depends on the type of the event. To run correctly, the event engine requires an implementation of functions listed in ``LLUI_INPUT_impl.h``. When an event is added, the event engine notifies MicroUI library.
 
 .. figure:: images/ui_llapi_input2.*
@@ -119,6 +121,345 @@ These functions take as parameter the MicroUI EventGenerator to target and the d
    Input Low Level API
 
 When there is no input device on the board, a *stub* implementation of C library is available. This C library must be linked by the third-party C IDE when the MicroUI module is installed in the MicroEJ Platform. This stub library does not provide any Low Level API files.
+
+Typical Implementation
+======================
+
+This chapter helps to write a basic ``LLUI_INPUT_impl.h`` implementation.
+This implementation should be divided into several files:
+
+- ``LLUI_INPUT_impl.c``: implements ``LLUI_INPUT_imp.h`` and *receives* the input devices interrupts / callbacks (button press, touch move, etc.).
+- ``xxx_helper.c``: one helper per kind of input device (group of buttons, touch, etc.). It links the input device hardware status and the software status (MicroUI event status). 
+- ``event_generator.c``: converts the input device hardware events in MicroUI events.
+
+The pseudo-code calls external functions such as ``BUTTONS_DRIVER_xxx`` or ``TOUCH_DRIVER_xxx`` to symbolize the use of external drivers.
+
+LLUI_INPUT_impl.c
+-----------------
+
+Its main aim is to synchronize the Input Engine with the input devices. 
+The Input Engine holds a circular FIFO to store the input devices' events.
+The use of this FIFO must be performed under the critical section. 
+The concurrent actions "an input device adds a new event in the Input Engine" and "the Input Engine reads an event from the FIFO" must not be performed simultaneously.
+The implementation does not need to manage the concurrency: the Input Engine automatically calls the functions ``LLUI_INPUT_IMPL_enterCriticalSection`` and ``LLUI_INPUT_IMPL_leaveCriticalSection`` when an event is added or read.
+
+- If the input devices add events under interrupt, the critical section must disable and re-enable the input devices' interrupts.
+- If the input devices add events from an OS task, the critical section must use a semaphore to prevent scheduling.
+- If both modes are used (typical use case), the critical section must be designed in consequence.
+
+The following pseudo-code shows a typical implementation with:
+
+- buttons under interrupt.
+- touch panel from an OS task.
+
+.. code:: c
+   
+   static xSemaphoreHandle _sem_input;
+
+   void LLUI_INPUT_IMPL_initialize(void)
+   {
+      _sem_input = xSemaphoreCreateBinary();
+      xSemaphoreGive(g_sem_input); // first take must pass
+      
+      BUTTONS_DRIVER_initialize();
+      TOUCH_DRIVER_initialize();
+   }
+
+   jint LLUI_INPUT_IMPL_getInitialStateValue(jint stateMachinesID, jint stateID)
+   {
+      // no state on this BSP
+      return 0;
+   }
+
+   void LLUI_INPUT_IMPL_enterCriticalSection()
+   {
+      if (MICROEJ_FALSE == interrupt_is_in())
+      {
+         xSemaphoreTake(_sem_input, portMAX_DELAY);
+         BUTTONS_DRIVER_disable_interrupts();
+      }
+      // else: already in secure state (under interrupt)
+   }
+
+   void LLUI_INPUT_IMPL_leaveCriticalSection()
+   {
+      if (MICROEJ_FALSE == interrupt_is_in())
+      {
+         BUTTONS_DRIVER_enable_interrupts();
+         xSemaphoreGive(_sem_input);
+      }
+      // else: already in secure state (under interrupt)
+   }
+
+The other aim of this implementation is to *receive* the input devices' hardware events and to redirect these events to the dedicated helper.
+
+.. code:: c
+
+   // called by the touch panel dedicated task
+   void TOUCH_DRIVER_callback(uint8_t pressed, int32_t x, int32_t y)
+   {            
+      if (pressed)
+      {
+         // here, pen is down for sure
+         TOUCH_HELPER_pressed(x, y);
+      }
+      else
+      {
+         // here, pen is up for sure
+         TOUCH_HELPER_released();
+      }
+   }
+
+   void GPIO_IRQHandler(int32_t button, uint32_t port, uint32_t pin)
+   {
+      if (GPIO_PIN_SET == GPIO_ReadPin(port, pin))
+      {
+         // GPIO == 1 means "pressed"
+         BUTTONS_HELPER_pressed(button);
+      }
+      else
+      {
+         // GPIO == 0 means "released"
+         BUTTONS_HELPER_released(button);
+      }
+   }
+
+buttons_helper.c
+----------------
+
+The Input Engine's FIFO might be full.
+In such a case, a new input device event cannot be added.
+Consequently, a button *release* event should not be added to the FIFO if the previous button *press* event had not been added.
+This helper keeps the *software* state: the input device's state seen by the application.
+
+.. note:: This helper does not convert the hardware event into a MicroUI event. It lets ``event_generator.c`` performs this job.
+
+.. code:: c
+
+   static uint8_t buttons_pressed[NUMBER_OF_BUTTONS];
+
+   void BUTTONS_HELPER_initialize(void)
+   {
+      for(uint32_t i = 0; i < NUMBER_OF_BUTTONS; i++)
+      {
+         buttons_pressed[i] = MICROEJ_FALSE;
+      }
+   }
+
+   void BUTTONS_HELPER_pressed(int32_t buttonId)
+   {
+      // button is pressed
+
+      if (MICROEJ_TRUE == buttons_pressed[buttonId])
+      {
+         // button was pressed => repeat event  (don't care if event is lost)
+         EVENT_GENERATOR_button_repeated(buttonId);
+      }
+      else
+      {
+         // button was released => press event
+         if (LLUI_INPUT_OK == EVENT_GENERATOR_button_pressed(buttonId) )
+         {
+            // the event has been managed: we can store the new button state
+            // button is pressed now
+            buttons_pressed[buttonId] = MICROEJ_TRUE;
+         }
+         // else: event has been lost: stay in "release" state
+      }
+   }
+
+   void BUTTONS_HELPER_repeated(int32_t buttonId)
+   {
+      // manage this repeat event like a press event to check "software" button state
+      BUTTONS_HELPER_pressed(buttonId);
+   }
+
+   void BUTTONS_HELPER_released(int32_t buttonId)
+   {
+      // button is now released
+
+      if (MICROEJ_TRUE == buttons_pressed[buttonId])
+      {
+         // button was pressed => release event
+         if (LLUI_INPUT_OK == EVENT_GENERATOR_button_released(buttonId) )
+         {
+            // the event has been managed: we can store the new button state
+            // button is released now
+            buttons_pressed[buttonId] = MICROEJ_FALSE;
+         }
+         // else: event has been lost: stay in "press" state
+      }
+      // else: already released
+   }
+
+touch_helper.c
+----------------
+
+The Input Engine's FIFO might be full.
+In such a case, a new input device event cannot be added.
+Consequently, a touch *move* / *drag* event should not be added to the FIFO if the previous touch *press* event had not been added.
+This helper keeps the *software* state: the input device's state seen by the application.
+
+This helper also filters the touch panel events.
+It uses two defines ``FIRST_MOVE_PIXEL_LIMIT`` and ``MOVE_PIXEL_LIMIT`` to reduce the number of events sent to the application (values are expressed in pixels).
+
+.. note:: This helper does not convert the hardware event in the MicroUI event. It lets ``event_generator.c`` performs this job.
+
+.. code:: c
+
+   // Number of pixels to generate a move after a press
+   #ifndef FIRST_MOVE_PIXEL_LIMIT
+   #error "Please set the define FIRST_MOVE_PIXEL_LIMIT (in pixels)"
+   #endif
+
+   // Number of pixels to generate a move after a move
+   #ifndef MOVE_PIXEL_LIMIT
+   #error "Please set the define MOVE_PIXEL_LIMIT (in pixels)"
+   #endif
+
+   #define DIFF(a,b)             ((a) < (b) ? (b-a) : (a-b))
+   #define KEEP_COORD(p,n,limit)    (DIFF(p,n) <= limit ? MICROEJ_FALSE : MICROEJ_TRUE)
+   #define KEEP_PIXEL(px,x,py,y,limit) (KEEP_COORD(px,x,limit) || KEEP_COORD(py,y,limit))
+   #define KEEP_FIRST_MOVE(px,x,py,y)  (KEEP_PIXEL(px,x,py,y, FIRST_MOVE_PIXEL_LIMIT))
+   #define KEEP_MOVE(px,x,py,y)     (KEEP_PIXEL(px,x,py,y, MOVE_PIXEL_LIMIT))
+
+   static uint8_t touch_pressed = MICROEJ_FALSE;
+   static uint8_t touch_moved = MICROEJ_FALSE;
+   static uint16_t previous_touch_x, previous_touch_y;
+
+   void TOUCH_HELPER_pressed(int32_t x, int32_t y)
+   {
+      // here, the pen is down for sure
+
+      if (MICROEJ_TRUE == touch_pressed)
+      {
+         // pen was down => move event
+
+         // keep pixel according first "move" event or not
+         int keep_pixel;
+         if(MICROEJ_TRUE == touch_moved)
+         {
+            keep_pixel = KEEP_MOVE(previous_touch_x, x, previous_touch_y, y);
+         }
+         else
+         {
+            keep_pixel = KEEP_FIRST_MOVE(previous_touch_x, x, previous_touch_y, y);
+         }
+
+         if (MICROEJ_TRUE == keep_pixel)
+         {
+            // store the new pixel
+            previous_touch_x = x;
+            previous_touch_y = y;
+            touch_moved = MICROEJ_TRUE;
+
+            // send a MicroUI touch event (don't care if event is lost)
+            EVENT_GENERATOR_touch_moved(x, y);
+         }
+         // else: same position; no need to send an event
+      }
+      else
+      {
+         // pen was up => press event
+         if (LLUI_INPUT_OK == EVENT_GENERATOR_touch_pressed(x, y))
+         {
+            // the event has been managed: we can store the new touch state
+            // touch is pressed now
+            previous_touch_x = x;
+            previous_touch_y = y;
+            touch_pressed = MICROEJ_TRUE;
+            touch_moved = MICROEJ_FALSE;
+         }
+         // else: event has been lost: stay in "release" state
+      }
+   }
+
+   void TOUCH_HELPER_moved(int32_t x, int32_t y)
+   {
+      // manage this move like a press event to check "software" touch state
+      TOUCH_HELPER_pressed(x, y);
+   }
+
+   void TOUCH_HELPER_released(void)
+   {
+      // here, the pen is up for sure
+
+      if (MICROEJ_TRUE == touch_pressed)
+      {
+         // pen was down => release event
+         if (LLUI_INPUT_OK == EVENT_GENERATOR_touch_released())
+         {
+            // the event has been managed: we can store the new touch state
+            // touch is released now
+            touch_pressed = MICROEJ_FALSE;
+         }
+         // else: event has been lost: stay in "press | move" state
+      }
+      // else: the pen was already up
+   }
+
+event_generator.c
+-----------------
+
+This file aims to convert the events (received by ``LLUI_INPUT_impl.c`` and then filtered by ``xxx_helper.c``) to the application through the Input Engine.
+
+This C file should be the only C file to include the header file ``microui_constants.h``.
+This header file has been generated during the Platform build (see :ref:`section_static_init`).
+It holds some defines that describe the available list of MicroUI Event Generators.
+Each MicroUI Event Generator has its identifier: 0 to *n-1*.
+
+A button event is often converted in the MicroUI Command event. 
+That allows the application to be button-independent: the application is not waiting for button 0 or button 1 events but MicroUI Command ``ESC`` or ``LEFT`` for instance.
+The following pseudo-code converts the buttons events in MicroUI Command events.
+
+.. note:: Each hardware event can be converted into another kind of MicroUI event. For instance, a joystick can simulate a MicroUI Pointer; a touch panel can be reduced to a set of MicroUI Commands (left, right, top, left), etc.
+
+.. code:: c
+   
+   #include "microui_constants.h"
+
+   static uint32_t _get_button_command(int32_t button_id)
+   {
+      switch (button_id) 
+      {
+      default:
+      case BUTTON_WAKEUP_ID:
+         return LLUI_INPUT_COMMAND_ESC;
+      case BUTTON_TAMPER_ID:
+         return LLUI_INPUT_COMMAND_MENU;
+      }
+   }
+
+   int32_t EVENT_GENERATOR_button_pressed(int32_t buttonId)
+   {
+      return LLUI_INPUT_sendCommandEvent(MICROUI_EVENTGEN_COMMANDS, _get_button_command(buttonId));
+   }
+
+   int32_t EVENT_GENERATOR_button_repeated(int32_t buttonId)
+   {
+      return LLUI_INPUT_sendCommandEvent(MICROUI_EVENTGEN_COMMANDS, _get_button_command(buttonId));
+   }
+
+   int32_t EVENT_GENERATOR_button_released(int32_t buttonId)
+   {
+      // do not send a Command event on the release event
+      return LLUI_INPUT_OK; // the event has been managed
+   }
+
+   int32_t EVENT_GENERATOR_touch_pressed(int32_t x, int32_t y)
+   {
+      return LLUI_INPUT_sendTouchPressedEvent(MICROUI_EVENTGEN_TOUCH, x, y);
+   }
+
+   int32_t EVENT_GENERATOR_touch_moved(int32_t x, int32_t y)
+   {
+      return LLUI_INPUT_sendTouchMovedEvent(MICROUI_EVENTGEN_TOUCH, x, y);
+   }
+
+   int32_t EVENT_GENERATOR_touch_released(void)
+   {
+      return LLUI_INPUT_sendTouchReleasedEvent(MICROUI_EVENTGEN_TOUCH);
+   }
 
 .. _section_inputs_eventbuffer:
 

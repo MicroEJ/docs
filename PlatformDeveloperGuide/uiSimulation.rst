@@ -106,13 +106,70 @@ Widget Display
 
 The widget Display implements the interface ``ej.microui.display.LLUIDisplayImpl`` to be compatible with the implementation of the MicroUI class `Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_.
 
-This widget manages:
+Features
+--------
 
-* The simple or double buffering (default value): ``doubleBufferFeature=true|false``.
-* The backlight (enabled by default): ``backlightFeature=true|false``.
-* The non-rectangular displays: ``filter="xxx.png"``. Some displays can have another appearance (for instance: circular); the Front Panel can simulate using a filter (see :ref:`section_frontpanel_widget`). This filter defines the pixels inside and outside the whole display area. The filter image must have the same size as the rectangular display area. A display pixel at a given position will not be rendered if the pixel at the same position in the mask is fully transparent.
-* The :ref:`standard<display_pixel_structure_standard>` pixel formats.
-* The :ref:`driver-specific<display_pixel_structure_driver>` pixel formats: ``extensionClass="xxx"``. This class must be added in the Front Panel project and implement the interface ``ej.fp.widget.Display.DisplayExtension``.
+* Simple or double buffering (default value): ``doubleBufferFeature=true|false``.
+* :ref:`LCD refresh rate<section_ui_simulation_refreshrate>`: simulates the time between two visible frames on the hardware device.
+* :ref:`LCD flush time<section_ui_simulation_flushtime>`: simulates the time to send the frame content to the hardware device.
+* Backlight (enabled by default): ``backlightFeature=true|false``.
+* :ref:`Non-rectangular displays<section_ui_simulation_nonrectangulardisplay>`: ``filter="xxx.png"``. Some displays can have another appearance (for instance: circular).
+* :ref:`Standard<display_pixel_structure_standard>` pixel formats.
+* :ref:`Driver-specific<display_pixel_structure_driver>` pixel formats: ``extensionClass="xxx"``. This class must be added in the Front Panel project and implement the interface ``ej.fp.widget.Display.DisplayExtension``.
+
+.. _section_ui_simulation_refreshrate:
+
+Refresh Rate
+------------
+
+Usually a LCD is cadenced around 50-60Hz.
+That means the LCD can display a new frame every 16-20ms.
+By default this widget displays a new frame as soon as possible. 
+It can be configured to reduce this time to simulate the hardware device.
+
+In the widget declaration, set the attribute ``refreshRate="xxx"`` with a value in Hertz.
+A zero or negative value disables the feature.
+
+.. note:: This feature is only available when double buffering mode is enabled.
+   
+The application can substitute the platform's value by setting the property ``-Dej.fp.widget.display.refreshRate=xxx`` in the application launcher.
+
+.. _section_ui_simulation_flushtime:
+
+Flush Time
+----------
+ 
+On a hardware device, the time to send the frame data from the back buffer memory to the LCD is not null. 
+According to the hardware device technology, this time varies between 3-4 ms to 10-15ms. 
+In SPI mode, this time may be higher, around 50ms, even more.
+By default this widget copies the content of back buffer as faster as possible.
+It can be configured to reduce this time to simulate the hardware device.
+
+In the widget declaration, set the attribute ``flushTime="xxx"`` with a value in milliseconds.
+A zero or negative value disables the feature.
+
+.. note:: This feature is only available when double buffering mode is enabled.
+   
+The application can substitute the platform's value by setting the property ``-Dej.fp.widget.display.flushTime=xxx`` in the application launcher.
+
+.. _section_ui_simulation_nonrectangulardisplay:
+
+Non-rectangular Display
+-----------------------
+
+The Front Panel can simulate using a filter (see :ref:`section_frontpanel_widget`). 
+This filter defines the pixels inside and outside the whole display area. 
+The filter image must have the same size as the rectangular display area. 
+A display pixel at a given position will not be rendered if the pixel at the same position in the mask is fully transparent.
+
+.. note:: Usually the touch panel over the display uses the same filter to reduce the touch panel area. 
+
+Example of non-rectangular display and touch:
+
+.. code-block:: xml
+
+   <ej.fp.widget.Display x="41" y="33" width="392" height="392" filter="mask_392.png" />
+   <ej.fp.widget.Pointer x="41" y="33" width="392" height="392" filter="mask_392.png" touch="true"/>
 
 .. _section_ui_simulation_customdrawing:
 
@@ -198,7 +255,7 @@ This chapter describes how to implement the method ``drawSomething()``.
 
 .. note:: To add a custom drawing algorithm, it is strongly recommended to follow the same rules as the MicroUI drawings: a class that synchronizes the drawings with the Graphics Engine and another class that performs the drawing itself (like :ref:`section_ui_simulation_customdrawing`).
 
-1. In the MicroEJ application, write the new native: 
+1. In the application, write the new native: 
 
 .. code-block:: java
 
@@ -273,7 +330,14 @@ Graphics Engine is using two dedicated heaps: for the images (see :ref:`section_
 Image Decoders
 ==============
 
-Front Panel uses its own internal image decoders when the associated modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Front Panel can add some additional decoders like the C-side for the embedded platform (see :ref:`external image decoders<image_external_decoder>`). However, the exhaustive list of additional decoders is limited (Front Panel is using the Java AWT ``ImageIO`` API). To add an additional decoder, specify the property ``hardwareImageDecoders.list`` in Front Panel configuration properties file (see :ref:`fp_ui_installation`) with one or several property values:
+Front Panel uses its own internal image decoders when the associated modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Some additional decoders can be added like the C-side for the embedded platform (see :ref:`external image decoders<image_external_decoder>`).  Front Panel uses the Java AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_ API to load the encoded images. 
+
+Generic Image Decoders
+----------------------
+
+The Java AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_  class holds a limited list of additional decoders.
+To be compliant with the embedded side, these decoders are disabled by default.
+To add an additional decoder, specify the property ``hardwareImageDecoders.list`` in Front Panel configuration properties file (see :ref:`fp_ui_installation`) with one or several property values:
 
 .. table:: Front Panel Additional Image Decoders
 
@@ -294,6 +358,33 @@ The decoders list is comma (*,*) separated. Example:
 ::
 
    hardwareImageDecoders.list=jpg,bmp
+
+Custom Image Decoders
+---------------------
+
+Additionally, the Java AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_  class offers the possibility to add some custom image decoders by using the service ``javax.imageio.spi.ImageReaderSpi``.
+
+Since UI Pack 13.2.0, Front Panel automatically includes new image decoders (new ImageIO services, see the method ``LLUIDisplayImpl.decode()``), compiled in JAR files that follow this convention:
+
+1. The JAR contains the service declaration ``/META-INF/services/javax.imageio.spi.ImageReaderSpi``,
+2. The JAR filename's prefix is `imageio-`,
+3. The JAR location is the platform configuration project's ``dropins/tools/`` directory.
+
+.. note:: The same JAR is used by the Front Panel and by the :ref:`Image Generator <section_image_generator_imageio>`.
+
+Classpath
+---------
+
+A standard mock is running on the same JVM as the HIL Engine (link to https://docs.microej.com/en/latest/PlatformDeveloperGuide/mock.html) (it shares the same classpath).
+When the application is not using the MicroUI library (i.e., it is not an UI application, whether the platform holds the MicroEJ Graphics Engine or not), the Front Panel mock runs a standard mock.
+When the application is using the MicroUI library, the Front Panel _UI_ mock runs on the same JVM than the MicroEJ Simulator. 
+In this case, the other mocks don't share the same classpath than the Front Panel mock.
+As a consequence, an other mock than the Front Panel mock can not send input events to MicroUI, the object created in the standard mocks's class loader are not available in the Front Panel _UI_'s class loader (and vice versa), etc.
+
+Since the UI Pack 13.2.0, it is possible to force to run the Front Panel _UI_ mock in the same classpath than the HIL Engine by adding the property ``-Dej.fp.hil=true`` in the application JRE tab. 
+Note that this option only works when the version of the MicroEJ Architecture used to build the Platform is 7.17.0 or higher.     
+
+
 
 Dependencies
 ============

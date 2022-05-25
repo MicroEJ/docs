@@ -67,6 +67,8 @@ Here is the format of the ``*.fonts.list`` files.
    Digit10             ::= '0-9'
    BitsPerPixel        ::= '1' | '2' | '4' | '8'
 
+.. _fonts_range:
+
 Font Range
 ----------
 
@@ -556,6 +558,21 @@ Font Generator Error Messages
    | 24     | Error   | Underlined style is not supported. Only a BOLD and  |
    |        |         | ITALIC font can be set.                             |
    +--------+---------+-----------------------------------------------------+
+
+Default Character
+-----------------
+
+The application may request the rendering of a string where some characters are not available in the selected font.
+In that case, a default character is drawn instead: it is the first available character in the font.
+For example, the first available character for a font where the range matches the ASCII printable characters (``0x21-0x7E``) would be the exclamation mark (``0x21``). 
+
+The characters of a font are referenced by their Unicode value.
+For a given :ref:`font range <fonts_range>`, the default character is the first character of the first range.
+Consequently, the default character may not be the same for two given fonts of an application: it depends on the specified character range for each font.
+
+
+To help developers identify quickly why a string is rendered with unexpected characters, it is recommended that the font maker sets a default character that is easy to recognize (a symbol, for example, a rectangle).
+This character must have the first character index (index ``0`` is allowed).
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

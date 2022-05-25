@@ -158,6 +158,21 @@ Synchronization steps are described :ref:`below <table_copyModeSyncSteps>`.
 
 .. _directBufferMode:
 
+
+Switch VS Copy
+--------------
+
+Where *Switch* mode is possible, *Copy* can also be used:
+
+- In *Switch* mode, the copy from the new frame buffer to the new back buffer consists of restoring the past: after this copy, the application retrieves its previous drawings in the back buffer.
+- In *Copy* mode, the copy from the back buffer to the frame buffer consists of copying the application drawings into the display buffer.
+
+However, when possible, the *Switch* mode should be implemented:
+
+- The new frame buffer data is available instantly. As soon as the LCD controller has updated its frame buffer address, the data is ready to be sent to the LCD. In *Copy* mode, the process of copying the data to the display buffer occurs while the LCD controller is reading them. Therefore, the buffer copy has to be faster than the LCD controller reading. If this requirement is not met, the LCD controller will send a mix of new and old data (because the buffer copy is not completely finished).
+- The synchronization with the LCD controller is more effortless. An interrupt is thrown as soon as the LCD controller has updated its frame buffer address. Then, the copy buffer process can start. In *Copy* mode, the copy buffer process should be synchronized with the LCD tearing signal.
+- During the copy, the same buffer is used as source by the copy buffer process (DMA, memcopy, etc.) and by the LCD controller. Both masters are using the same RAM section in *reading*. In *Copy* mode, the same RAM section switches in *Write* mode (copy buffer process) and *Read* mode (LCD controller). 
+
 Direct
 ------
 
@@ -655,14 +670,34 @@ Overview
 * It is possible to implement some of the ``ui_drawing.h`` and ``dw_drawing.h`` functions in the BSP to provide a custom implementation (for instance, a GPU).
   * Custom implementation is still allowed to call software algorithms declared in ``ui_drawing_soft.h`` and ``dw_drawing_soft.h``.
 
+Display Size
+------------
+
+The Low-Level APIs distinguish between the display *virtual* size and the display *physical* size (in pixels).
+
+* The display *virtual* size is the size of the area where the drawings are visible. Virtual memory size is: ``lcd_width * lcd_height * bpp / 8``.
+* The display *physical* size is the required memory size where the *virtual* area is located. On some devices, the memory width (in pixels) is higher than the virtual width. In this way, the graphics buffer memory size is: ``memory_width * memory_height * bpp / 8``.
+
+.. note:: The *physical* size may not be configured; in that case, the Graphics Engine considers the *virtual* size os *physical* size.
+
+Semaphores
+----------
+
+The Graphics Engine requires two binary semaphores to synchronize its internal states. 
+These semaphores are reserved for the Graphics Engine. 
+The ``LLUI_DISPLAY_impl.h`` implementation is not allowed to use these semaphores to synchronize the function ``LLUI_DISPLAY_IMPL_flush()`` with the display driver (or for any other synchronization actions). 
+The implementation must create its semaphores in addition to these dedicated Graphics Engine's semaphores.
+
+The binary semaphores must be configured in a state such that the semaphore must first be *given* before it can be *taken* (this initialization must be performed in ``LLUI_DISPLAY_IMPL_initialize`` function).
+
 Required Low Level API
 ----------------------
 
 Some four Low Level APIs are required to connect the Graphics Engine on the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``. 
 
-* ``LLUI_DISPLAY_IMPL_initialize``: The initialization function is called when MicroEJ application is calling ``MicroUI.start()``. Before this call, the display is useless and don't need to be initialized. This function consists in initializing the LCD driver and in filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on two binary semaphores (see after), the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels and optionally the display *physical* size in pixels. The display *virtual* size is the size of the area where the drawings are visible. The display *physical* size is the required memory size where the area is located. Virtual memory size is: ``display_width * display_height * bpp / 8``. On some devices the memory width (in pixels) is higher than virtual width. In this way, the graphics buffer memory size is: ``memory_width * memory_height * bpp / 8``.
+* ``LLUI_DISPLAY_IMPL_initialize``: The initialization function is called when the application is calling ``MicroUI.start()``. Before this call, the display is useless and don't need to be initialized. This function consists in initializing the LCD driver and in filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on the two binary semaphores, the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels (``lcd_width`` and ``lcd_height``) and optionally the display *physical* size in pixels (``memory_width`` and ``memory_height``). 
 
-* ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: The Graphics Engine requires two binary semaphores to synchronize its internal states. The binary semaphores must be configured in a state such that the semaphore must first be *given* before it can be *taken* (this initialization must be performed in ``LLUI_DISPLAY_IMPL_initialize`` function). Two distinct functions have to be implemented to *take* and *give* a binary semaphore.
+* ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: Two distinct functions have to be implemented to *take* and *give* a binary semaphore. 
 
 * ``LLUI_DISPLAY_IMPL_flush``: According the display buffer mode (see :ref:`section_display_modes`), the ``flush`` function has to be implemented. This function must not be blocking and not performing the copy directly. Another OS task or a dedicated hardware must be configured to perform the buffer copy. 
 
@@ -691,6 +726,598 @@ The Graphics Engine provides a set of functions to interact with the C archive. 
 
 The functions are available in ``LLUI_DISPLAY.h``. 
 
+Typical Implementations
+=======================
+
+This chapter helps to write some basic ``LLUI_DISPLAY_impl.h`` implementations according the display buffer mode (see :ref:`section_display_modes`).
+The pseudo-code calls external function such as ``LCD_DRIVER_xxx`` or ``DMA_DRIVER_xxx`` to symbolize the use of external drivers.
+
+.. note:: The pseudo code don't use the dirty area bounds (xmin, ymax, etc.) to simplify the reading.
+
+Common Functions
+----------------
+
+The three functions ``LLUI_DISPLAY_IMPL_initialize``, ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive`` are often the same.
+The following example shows an implementation over FreeRTOS.
+
+.. code:: c
+ 
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
+   {
+      // create the Graphics Engine's binary semaphores
+      g_sem_copyLaunch = xSemaphoreCreateBinary();
+      g_sem_taskTest = xSemaphoreCreateBinary();
+
+      // fill the LLUI_DISPLAY_SInitData structure
+      init_data->binary_semaphore_0 = (void*)xSemaphoreCreateBinary();
+      init_data->binary_semaphore_1 = (void*)xSemaphoreCreateBinary();
+      init_data->lcd_width = LCD_DRIVER_get_width();
+      init_data->lcd_height = LCD_DRIVER_get_height();
+   }
+
+   void LLUI_DISPLAY_IMPL_binarySemaphoreTake(void* sem)
+   {
+      xSemaphoreTake((xSemaphoreHandle)sem, portMAX_DELAY);
+   }
+
+   void LLUI_DISPLAY_IMPL_binarySemaphoreGive(void* sem, bool under_isr)
+   {
+      if (under_isr)
+      {
+         portBASE_TYPE xHigherPriorityTaskWoken = pdFALSE;
+         xSemaphoreGiveFromISR((xSemaphoreHandle)sem, &xHigherPriorityTaskWoken);
+         if(xHigherPriorityTaskWoken != pdFALSE )
+         {
+            // Force a context switch here.
+            portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+         }
+      }
+      else
+      {
+         xSemaphoreGive((xSemaphoreHandle)sem);
+      }
+   }
+
+Direct Mode
+-----------
+
+This mode considers the application and the LCD driver share the same buffer. 
+In other words, all drawings made by the application are immediately shown on the display.
+This particular case is the easiest to write because the ``flush()`` stays empty:
+
+.. code:: c
+
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
+   {
+      // [...]
+
+      // use same buffer between the LCD driver and the Graphics Engine
+      LCD_DRIVER_initialize(lcd_buffer);
+      init_data->back_buffer_address = lcd_buffer;
+   }
+
+   uint8_t* LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t* srcAddr, uint32_t xmin, uint32_t ymin, uint32_t xmax, uint32_t ymax)
+   {
+      // nothing to send to the LCD, just have to return the same buffer address
+      return srcAddr;
+   }
+
+Serial Display
+--------------
+
+A display connected to the CPU through a serial bus (I2C, SPI, etc.) requires the :ref:`copy<copyBufferMode>` mode: the application uses a buffer to perform its drawings and the buffer's content has to be sent to the display when the Graphics Engine is calling the ``flush()`` function.
+
+The specification of the ``flush()`` function is to be **not** blocker (atomic). 
+Its aim is to prepare / configure the serial bus and data to send and then, to start the asynchronous copy (data sent).
+The ``flush()`` function has to return as soon as possible.
+
+Before executing the next application drawing after a flush, the Graphics Engine automatically waits the end of the serial data sent: the drawing buffer (currently used by the serial device) is not updated until the end of data sent.
+The serial device driver has the responsibility to unlock the Graphics Engine by calling the function ``LLUI_DISPLAY_flushDone()`` at the end of the copy.
+
+There are two use cases:
+
+**Hardware**
+
+The serial data sent is performed in hardware. 
+In that case, the serial driver must configure an interrupt to be notified about the end of the copy.
+
+.. code:: c
+
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
+   {
+      // [...]
+
+      LCD_DRIVER_initialize();
+      init_data->back_buffer_address = back_buffer;
+
+      // initialize the serial driver & device: GPIO, etc.
+      SERIAL_DRIVER_initialize();
+   }
+
+   uint8_t* LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t* srcAddr, uint32_t xmin, uint32_t ymin, uint32_t xmax, uint32_t ymax)
+   {
+      // configure the serial device to send n bytes
+      // srcAddr == back_buffer
+      SERIAL_DRIVER_prepare_sent(srcAddr, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8);
+
+      // configure the "end of copy" interrupt
+      SERIAL_DRIVER_enable_interrupt(END_OF_COPY);
+
+      // start the copy
+      SERIAL_DRIVER_start();
+
+      // return the same buffer address for next drawings
+      return srcAddr;
+   }
+
+   void SERIAL_DEVICE_IRQHandler(void)
+   {
+      SERIAL_DRIVER_clear_interrupt();
+      SERIAL_DRIVER_disable_interrupt(END_OF_COPY);
+
+      // end of copy, unlock the Graphics Engine
+      LLUI_DISPLAY_flushDone(true); // true: called under interrupt
+   }
+
+**Software**
+
+The copy (serial data sent) cannot be performed in hardware or require a software loop to send all data.
+This sent must not be performed in the ``flush()`` function. 
+A dedicated OS task is required to perform this sent.
+
+.. code:: c
+
+   static void* _copy_task_semaphore;
+
+   static void _task_flush(void *p_arg)
+   {
+      while(1)
+      {
+         // wait until the Graphics Engine gives the order to copy
+         LLUI_DISPLAY_IMPL_binarySemaphoreTake(_copy_task_semaphore);
+
+         // send data
+         SERIAL_DRIVER_send_data(back_buffer, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8);
+
+         // end of copy, unlock the Graphics Engine
+         LLUI_DISPLAY_flushDone(false); // true: called outside interrupt
+      }
+   }
+
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
+   {
+      // [...]
+
+      LCD_DRIVER_initialize();
+      init_data->back_buffer_address = back_buffer;
+
+      // create a "flush" task and a dedicated semaphore
+      _copy_task_semaphore = (void*)xSemaphoreCreateBinary();
+      xTaskCreate(_task_flush, "FlushTask", 1024, NULL, 12, NULL);
+   }
+
+   uint8_t* LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t* srcAddr, uint32_t xmin, uint32_t ymin, uint32_t xmax, uint32_t ymax)
+   {
+      // unlock the copy task
+      LLUI_DISPLAY_IMPL_binarySemaphoreGive(_copy_task_semaphore, false);
+
+      // return the same buffer address for next drawings
+      return srcAddr;
+   }
+
+Parallel Display: Copy Mode (Tearing Disabled)
+----------------------------------------------
+
+.. note:: This mode should synchronize the copy buffer process with the LCD tearing signal. However,  this notion is sometimes not available. This chapter describes the copy buffer process without using the tearing signal (see :ref:`next chapter<section_lluidisplay_parallel_tearing>`).
+
+This kind of configuration requires two buffers in RAM. 
+The first buffer is used by the application (back buffer) and the second buffer is used by the LCD controller to send data to the display (frame buffer).
+
+The content of the frame buffer must be updated with the content of the back buffer when the Graphics Engine is calling the ``flush()`` function.
+
+The specification of the ``flush()`` function is to be **not** blocker (atomic). 
+Its aim is to prepare / configure the copy buffer process and then, to start the asynchronous copy.
+The ``flush()`` function has to return as soon as possible.
+
+Before executing the next application drawing after a flush, the Graphics Engine automatically waits the end of the copy buffer process: the back buffer (currently used by the copy buffer process) is not updated until the end of the copy.
+The copy driver has the responsibility to unlock the Graphics Engine by calling the function ``LLUI_DISPLAY_flushDone()`` at the end of the copy.
+
+There are two use cases:
+
+**Hardware**
+
+The copy buffer process is performed in hardware (DMA). 
+In that case, the DMA driver must configure an interrupt to be notified about the end of the copy.
+
+.. code:: c
+
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
+   {
+      // [...]
+
+      // use two distinct buffers between the LCD driver and the Graphics Engine
+      LCD_DRIVER_initialize(frame_buffer);
+      init_data->back_buffer_address = back_buffer;
+
+      // initialize the DMA driver: GPIO, etc.
+      DMA_DRIVER_initialize();
+   }
+
+   uint8_t* LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t* srcAddr, uint32_t xmin, uint32_t ymin, uint32_t xmax, uint32_t ymax)
+   {
+      // configure the DMA to send n bytes
+      // srcAddr == back_buffer
+      DMA_DRIVER_prepare_sent(frame_buffer, srcAddr, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8); // dest / src / size
+
+      // configure the "end of copy" interrupt
+      DMA_DRIVER_enable_interrupt(END_OF_COPY);
+
+      // start the copy
+      DMA_DRIVER_start();
+
+      // return the same buffer address for next drawings
+      return srcAddr;
+   }
+
+   void DMA_IRQHandler(void)
+   {
+      DMA_DRIVER_clear_interrupt();
+      DMA_DRIVER_disable_interrupt(END_OF_COPY);
+
+      // end of copy, unlock the Graphics Engine
+      LLUI_DISPLAY_flushDone(true); // true: called under interrupt
+   }
+
+**Software**
+
+The copy buffer process cannot be performed in hardware or require a software loop to send all data (DMA linked list).
+This copy buffer process must not be performed in the ``flush()`` function. 
+A dedicated OS task is required to perform this copy.
+
+.. code:: c
+
+   static void* _copy_task_semaphore;
+
+   static void _task_flush(void *p_arg)
+   {
+      while(1)
+      {
+         int32_t size = LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8;
+         uint8_t* dest = frame_buffer;
+         uint8_t* src = back_buffer;
+
+         // wait until the Graphics Engine gives the order to copy
+         LLUI_DISPLAY_IMPL_binarySemaphoreTake(_copy_task_semaphore);
+
+         // copy data
+         while(size)
+         {
+            int32_t s = min(DMA_MAX_SIZE, size);
+            DMA_DRIVER_send_data(dest, src, s); // dest / src / size
+            dest += s;
+            src += s;
+            size -= s;
+         }
+
+         // end of copy, unlock the Graphics Engine
+         LLUI_DISPLAY_flushDone(false); // true: called outside interrupt
+      }
+   }
+
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
+   {
+      // [...]
+
+      // use two distinct buffers between the LCD driver and the Graphics Engine
+      LCD_DRIVER_initialize(frame_buffer);
+      init_data->back_buffer_address = back_buffer;
+
+      // create a "flush" task and a dedicated semaphore
+      _copy_task_semaphore = (void*)xSemaphoreCreateBinary();
+      xTaskCreate(_task_flush, "FlushTask", 1024, NULL, 12, NULL);
+   }
+
+   uint8_t* LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t* srcAddr, uint32_t xmin, uint32_t ymin, uint32_t xmax, uint32_t ymax)
+   {
+      // unlock the copy task
+      LLUI_DISPLAY_IMPL_binarySemaphoreGive(_copy_task_semaphore, false);
+
+      // return the same buffer address for next drawings
+      return srcAddr;
+   }  
+
+
+.. _section_lluidisplay_parallel_tearing:
+
+Parallel Display: Copy Mode (Tearing Enabled)
+----------------------------------------------
+
+The configuration is the same than previous chapter but it uses the LCD tearing signal to synchronize the LCD refresh rate with the copy buffer process.
+
+The copy buffer process should not start during the call of ``flush()`` but should wait the next tearing signal to start the copy.
+
+There are two use cases:
+
+**Hardware**
+
+.. code:: c
+
+   static uint8_t _start_DMA;
+
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
+   {
+      // [...]
+
+      // use two distinct buffers between the LCD driver and the Graphics Engine
+      LCD_DRIVER_initialize(frame_buffer);
+      init_data->back_buffer_address = back_buffer;
+
+      // enable the tearing interrupt
+      _start_DMA = 0;
+      TE_enable_interrupt();
+
+      // initialize the DMA driver: GPIO, etc.
+      DMA_DRIVER_initialize();
+   }
+
+   uint8_t* LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t* srcAddr, uint32_t xmin, uint32_t ymin, uint32_t xmax, uint32_t ymax)
+   {
+      // configure the DMA to send n bytes
+      // srcAddr == back_buffer
+      DMA_DRIVER_prepare_sent(frame_buffer, srcAddr, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8); // dest / src / size
+
+      // configure the "end of copy" interrupt
+      DMA_DRIVER_enable_interrupt(END_OF_COPY);
+
+      // unlock the job of the tearing interrupt
+      _start_DMA = 1;
+
+      // return the same buffer address for next drawings
+      return srcAddr;
+   }
+
+   void TE_IRQHandler(void)
+   {
+      TE_clear_interrupt();
+
+      if (_start_DMA)
+      {
+         _start_DMA = 0;
+
+         // start the copy
+         DMA_DRIVER_start();
+      }
+   }
+
+   void DMA_IRQHandler(void)
+   {
+      DMA_DRIVER_clear_interrupt();
+      DMA_DRIVER_disable_interrupt(END_OF_COPY);
+
+      // end of copy, unlock the Graphics Engine
+      LLUI_DISPLAY_flushDone(true); // true: called under interrupt
+   }
+
+**Software**
+
+.. code:: c
+
+   static void* _copy_task_semaphore;
+   static uint8_t _start_copy;
+
+   static void _task_flush(void *p_arg)
+   {
+      while(1)
+      {
+         // wait until the Graphics Engine gives the order to copy
+         LLUI_DISPLAY_IMPL_binarySemaphoreTake(_copy_task_semaphore);
+
+         int32_t size = LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8;
+         uint8_t* dest = frame_buffer;
+         uint8_t* src = back_buffer;
+
+         // copy data
+         while(size)
+         {
+            int32_t s = min(DMA_MAX_SIZE, size);
+            DMA_DRIVER_send_data(dest, src, s); // dest / src / size
+            dest += s;
+            src += s;
+            size -= s;
+         }
+
+         // end of copy, unlock the Graphics Engine
+         LLUI_DISPLAY_flushDone(false); // true: called outside interrupt
+      }
+   }
+
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
+   {
+      // [...]
+
+      // use two distinct buffers between the LCD driver and the Graphics Engine
+      LCD_DRIVER_initialize(frame_buffer);
+      init_data->back_buffer_address = back_buffer;
+
+      // create a "flush" task and a dedicated semaphore
+      _copy_task_semaphore = (void*)xSemaphoreCreateBinary();
+      xTaskCreate(_task_flush, "FlushTask", 1024, NULL, 12, NULL);
+
+      // enable the tearing interrupt
+      _start_copy = 0;
+      TE_enable_interrupt();
+   }
+
+   uint8_t* LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t* srcAddr, uint32_t xmin, uint32_t ymin, uint32_t xmax, uint32_t ymax)
+   {
+      // unlock the job of the tearing interrupt
+      _start_copy = 1;
+
+      // return the same buffer address for next drawings
+      return srcAddr;
+   }
+
+   void TE_IRQHandler(void)
+   {
+      TE_clear_interrupt();
+
+      if (_start_copy)
+      {
+         _start_copy = 0;
+
+         // unlock the copy task
+         LLUI_DISPLAY_IMPL_binarySemaphoreGive(_copy_task_semaphore, true);
+      }
+   }  
+
+Parallel Display: Switch Mode
+-----------------------------
+
+This kind of configuration requires two buffers in RAM. 
+The first buffer is used by the application (buffer A) and the second buffer is used by the LCD controller to send data to the display (buffer B).
+
+The LCD controller is reconfigured to use the buffer A when the Graphics Engine is calling the ``flush()`` function.
+A copy buffer process is required to restore the content of the application buffer (buffer B after the flush).
+
+Before executing the next application drawing after a flush, the Graphics Engine automatically waits the end of the copy buffer process: the buffer B (currently used by the LDC controller or by the copy buffer process) is not updated until the end of the copy.
+The copy driver has the responsibility to unlock the Graphics Engine by calling the function ``LLUI_DISPLAY_flushDone()`` at the end of the copy.
+
+There are two use cases:
+
+**Hardware**
+
+The copy buffer process is performed in hardware (DMA). 
+In that case, the DMA driver must configure an interrupt to be notified about the end of the copy.
+
+.. code:: c
+
+   static uint8_t* buffer_A;
+   static uint8_t* buffer_B;
+
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
+   {
+      // [...]
+
+      // use two distinct buffers between the LCD driver and the Graphics Engine
+      LCD_DRIVER_initialize(buffer_B);
+      init_data->back_buffer_address = buffer_A;
+
+      // initialize the DMA driver: GPIO, etc.
+      DMA_DRIVER_initialize();
+   }
+
+   uint8_t* LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t* srcAddr, uint32_t xmin, uint32_t ymin, uint32_t xmax, uint32_t ymax)
+   {
+      // the copy destination is the future back buffer (current frame buffer)
+      uint8_t* dest = LCDC_get_address();
+
+      // configure the DMA to send n bytes
+      DMA_DRIVER_prepare_sent(dest, srcAddr, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8); // dest / src / size
+
+      // configure the "end of copy" interrupt
+      DMA_DRIVER_enable_interrupt(END_OF_COPY);
+
+      // change the LCDC address (executed at next LCD refresh loop)
+      LCDC_set_address(srcAddr);
+
+      // return the new buffer address for next drawings
+      return dest;
+   }
+
+   // only called when reloading a new LCDC address
+   void LCDC_RELOAD_IRQHandler(void)
+   {
+      LCDC_DRIVER_clear_interrupt();
+
+      // start the copy
+      DMA_DRIVER_start();
+   }
+
+   void DMA_IRQHandler(void)
+   {
+      DMA_DRIVER_clear_interrupt();
+      DMA_DRIVER_disable_interrupt(END_OF_COPY);
+
+      // end of copy, unlock the Graphics Engine
+      LLUI_DISPLAY_flushDone(true); // true: called under interrupt
+   }
+
+
+**Software**
+
+The copy buffer process cannot be performed in hardware or require a software loop to send all data (DMA linked list).
+This copy buffer process must not be performed in the ``flush()`` function. 
+A dedicated OS task is required to perform this copy.
+
+.. code:: c
+
+   static void* _copy_task_semaphore;
+   static uint8_t* buffer_A;
+   static uint8_t* buffer_B;
+
+   static void _task_flush(void *p_arg)
+   {
+      while(1)
+      {
+         // wait until the Graphics Engine gives the order to copy
+         LLUI_DISPLAY_IMPL_binarySemaphoreTake(_copy_task_semaphore);
+
+         int32_t size = LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8;
+         uint8_t* src = LCDC_get_address();
+         uint8_t* dest = src == buffer_A ? buffer_B : buffer_A;
+
+         // copy data
+         while(size)
+         {
+            int32_t s = min(DMA_MAX_SIZE, size);
+            DMA_DRIVER_send_data(dest, src, s);
+            src += s;
+            dest += s;
+            size -= s;
+         }
+
+         // end of copy, unlock the Graphics Engine
+         LLUI_DISPLAY_flushDone(false); // true: called outside interrupt
+      }
+   }
+
+   void LLUI_DISPLAY_IMPL_initialize(LLUI_DISPLAY_SInitData* init_data)
+   {
+      // [...]
+
+      // use two distinct buffers between the LCD driver and the Graphics Engine
+      LCD_DRIVER_initialize(buffer_B);
+      init_data->back_buffer_address = buffer_A;
+
+      // initialize the DMA driver: GPIO, etc.
+      DMA_DRIVER_initialize();
+
+      // create a "flush" task and a dedicated semaphore
+      _copy_task_semaphore = (void*)xSemaphoreCreateBinary();
+      xTaskCreate(_task_flush, "FlushTask", 1024, NULL, 12, NULL);
+   }
+
+   uint8_t* LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t* srcAddr, uint32_t xmin, uint32_t ymin, uint32_t xmax, uint32_t ymax)
+   {
+      // the copy destination is the future back buffer (current frame buffer)
+      uint8_t* dest = LCDC_get_address();
+
+      // change the LCDC address (executed at next LCD refresh loop)
+      LCDC_set_address(srcAddr);
+
+      // return the new buffer address for next drawings
+      return dest;
+   }
+
+   // only called when reloading a new LCDC address
+   void LCDC_RELOAD_IRQHandler(void)
+   {
+      LCDC_DRIVER_clear_interrupt();
+
+      // unlock the copy task
+      LLUI_DISPLAY_IMPL_binarySemaphoreGive(_copy_task_semaphore, true);
+   }
+
 .. _display_drawing_native:
 
 Drawing Native
@@ -698,7 +1325,7 @@ Drawing Native
 
 As explained before, MicroUI implementation provides a dedicated header file which lists all MicroUI Painter drawings native function. The implementation of these functions has to respect several rules to not corrupt the MicroUI execution (flickering, memory corruption, unknown behavior, etc.). These rules are already respected in the default Abstraction Layer implementation modules available on the :ref:`C module<section_ui_releasenotes_cmodule>`. In addition, MicroUI allows to add some custom drawings. The implementation of MicroUI Painter native drawings should be used as model to implement the custom drawings.
 
-All native functions must have a ``MICROUI_GraphicsContext*`` as parameter (often first parameter). This identifies the destination target: the MicroUI `GraphicsContext <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html>`_. This target is retrieved in MicroEJ application calling the method ``GraphicsContext.getSNIContext()``. This method returns a byte array which is directly mapped on the ``MICROUI_GraphicsContext`` structure in MicroUI native drawing function declaration.
+All native functions must have a ``MICROUI_GraphicsContext*`` as parameter (often first parameter). This identifies the destination target: the MicroUI `GraphicsContext <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html>`_. This target is retrieved in application calling the method ``GraphicsContext.getSNIContext()``. This method returns a byte array which is directly mapped on the ``MICROUI_GraphicsContext`` structure in MicroUI native drawing function declaration.
  
 A graphics context holds a clip and the drawer is not allowed to perform a drawing outside this clip (otherwise the behavior is unknown). Note the bottom-right coordinates might be smaller than top-left (in x and/or y) when the clip width and/or height is null. The clip may be disabled (when the current drawing fits the clip); this allows to reduce runtime. See ``LLUI_DISPLAY_isClipEnabled()``.
 
@@ -735,6 +1362,8 @@ The native function implementation pattern is:
 
 Display Synchronization
 =======================
+
+.. note:: This chapter is mainly helpful when the :ref:`copy<copyBufferMode>` mode is used: the aim consists of synchronizing the update of the LCD frame buffer with the LCD refresh rate.
 
 Overview
 --------
@@ -824,7 +1453,7 @@ The following table resumes the previous examples times:
 GPU Synchronization
 ===================
 
-When a GPU is used to perform a drawing, the caller (MicroUI painter native method) returns immediately. This allows the MicroEJ application to perform other operations during the GPU rendering. However, as soon as the MicroEJ application is trying to perform another drawing, the previous drawing made by the GPU must be done. The Graphics Engine is designed to be synchronized with the GPU asynchronous drawings by defining some points in the rendering timeline. It is not optional: MicroUI considers a drawing is fully done when it starts a new one. The end of GPU drawing must notify the Graphics Engine calling ``LLUI_DISPLAY_drawingDone()``.
+When a GPU is used to perform a drawing, the caller (MicroUI painter native method) returns immediately. This allows the application to perform other operations during the GPU rendering. However, as soon as the application is trying to perform another drawing, the previous drawing made by the GPU must be done. The Graphics Engine is designed to be synchronized with the GPU asynchronous drawings by defining some points in the rendering timeline. It is not optional: MicroUI considers a drawing is fully done when it starts a new one. The end of GPU drawing must notify the Graphics Engine calling ``LLUI_DISPLAY_drawingDone()``.
 
 Antialiasing
 ============
@@ -839,7 +1468,7 @@ Background Color
 
 For each pixel to draw, the antialiasing process blends the foreground color with a background color. This background color can be specified or not by the application:
 
-- *specified*: The background color is fixed by the MicroEJ Application  (`GraphicsContext.setBackgroundColor() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setBackgroundColor-int->`_).
+- *specified*: The background color is fixed by the application  (`GraphicsContext.setBackgroundColor() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setBackgroundColor-int->`_).
 -  *not specified*: The background color is the original color of the destination pixel (a "read pixel" operation is performed for each pixel).
 
 .. _display_lut:
@@ -885,7 +1514,7 @@ Overview
 
 The Graphics Engine is built for a dedicated display pixel format (see :ref:`display_pixel_structure`). For this pixel format, the Graphics Engine must be able to draw images with or without alpha blending and with or without transformation. In addition, it must be able to read all image formats.
 
-The MicroEJ application may not use all MicroUI image drawings options and may not use all images formats. It is not possible to detect what the application needs, so no optimization can be performed at application compiletime. However, for a given application, the platform can be built with a reduced set of pixel support. 
+The application may not use all MicroUI image drawings options and may not use all images formats. It is not possible to detect what the application needs, so no optimization can be performed at application compiletime. However, for a given application, the platform can be built with a reduced set of pixel support. 
 
 All pixel format manipulations (read, write, copy) are using dedicated functions. It is possible to remove some functions or to use generic functions. The advantage is to reduce the memory footprint. The inconvenient is that some features are removed (the application should not use them) or some features are slower (generic functions are slower than the dedicated functions).
 
