@@ -76,7 +76,7 @@ A Kernel API or a Runtime Environment module is added as a dependency with the c
    <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6" conf="kernelapi->default"/>
 
 The build options ``runtime.api.name`` and ``runtime.api.version`` must be set unless declaring a dependency to a Runtime API module.
-This allows to generate the consolidated Javadoc of exposed APIs in the Virtual Device.
+This allows to generate the consolidated Javadoc of the exposed APIs in the Virtual Device.
 
 .. _system_application_input_ways:
 
