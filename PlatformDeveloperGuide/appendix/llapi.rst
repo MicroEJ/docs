@@ -645,7 +645,7 @@ Naming Convention
 -----------------
 
 The Low Level Security API (LLSEC) provides functions that allow the use of this API at the
-BSP level in C. The names of these functions match the ``LLSEC_IMPL_*`` pattern.
+BSP level in C. The names of these functions match the ``LLSEC_*_IMPL_*`` pattern.
 
 Header Files
 ------------
@@ -683,6 +683,7 @@ Several C header files are provided:
 -  LLSEC_MAC_impl.h
 
    Defines a set of functions that must be implemented by the BSP in order
+   to support MAC algorithms.
 
 -  LLSEC_PRIVATE_KEY_impl.h
 
@@ -702,6 +703,7 @@ Several C header files are provided:
 -  LLSEC_SIG_impl.h
 
    Defines a set of functions that must be implemented by the BSP in order
+   to support signatures functionalities.
 
 -  LLSEC_X509_CERT_impl.h
 
