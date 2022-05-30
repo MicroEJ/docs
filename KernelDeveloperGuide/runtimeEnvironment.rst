@@ -15,7 +15,7 @@ Having the set of APIs named and versioned allows to maintain, share and documen
 Once built, a Runtime Environment module contains the following elements:
 
 - A JAR file with the whole library of APIs (``.class`` files and ``.java``), used by Application projects to compile Application code;
-- A JAR file with the aggregate set of ``kernel.api`` files, used by Kernel projects to expose APIs when building the Firmware and the Virtual Device.
+- A JAR file with the aggregate set of ``kernel.api`` files, used by Kernel projects to expose APIs when building the Firmware and the Virtual Device;
 - A ZIP file with the Javadoc of the APIs for documentation.
 
 The following figure shows the overall build flow:
