@@ -4,16 +4,16 @@ Overview
 Introduction
 ------------
 
-The Kernel Developer's Guide describes how to create a
-MicroEJ Multi-Sandbox Firmware, i.e. a firmware that can be extended
-(statically or dynamically) to run and control the execution of new
-applications (called *Sandboxed Applications*).
+The Kernel Developer's Guide describes how to create a Kernel Application: a :ref:`Standalone Application <standalone_application>`
+that can be extended (statically or dynamically) to run and control the execution of new
+applications called :ref:`Sandboxed Applications :ref:<sandboxed_application>`).
 
 The intended audience of this document are java developers and system
 architects who plan to design and build their own firmware.
 
-Here is a non-exhaustive list of the activities to be done by Multi-Sandbox
-Firmware Developers:
+Here is a non-exhaustive list of the activities to be done by Kernel Developers:
+
+-  Integrating the Kernel Application with a Platform to produce a Multi-Sandbox Firmware and Virtual Device
 
 -  Defining a list of APIs that will be exposed to applications
 
@@ -29,10 +29,10 @@ Firmware Developers:
 
 -  Controlling and monitoring resources
 
-This document takes as prerequisite that a MicroEJ Platform is available
+This document takes as prerequisite that a Platform is available
 for the target device (see :ref:`platform-developer-guide`).
 This document also assumes that the reader is familiar with the
-development and deployment of MicroEJ Applications (see :ref:`application-developer-guide`)
+development and deployment of Applications (see :ref:`application-developer-guide`)
 and specifics of developing Sandboxed Applications (see :ref:`sandboxed_application`).
 
 Terms and Definitions
@@ -42,7 +42,7 @@ A *System Application* is a Sandboxed Application that is linked into
 a Multi-Sandbox Firmware.
 
 A *Multi-Sandbox Platform* is a Platform with the Multi Sandbox
-capability of the MicroEJ Core Engine enabled (see the chapter
+capability of the Core Engine enabled (see the chapter
 *Multi-Sandbox* of the :ref:`platform-developer-guide`).
 A Multi-Sandbox Firmware can only be built with a Multi-Sandbox Platform.
 
@@ -158,7 +158,7 @@ Firmware implementations must cover the following topics:
    another application through a Shared Interface. For that to be
    possible, a conversion proxy must be registered for this kernel type.
 
--  Tools libraries: tools that plug into MicroEJ SDK,
+-  Tools libraries: tools that plug into the SDK,
    extending them with feature that are specific to the firmware, like
    deployment of an application, a management console, ...
 
