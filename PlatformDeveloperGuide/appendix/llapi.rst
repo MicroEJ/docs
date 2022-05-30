@@ -636,6 +636,35 @@ This C header file contains functions to implement:
    Defines a set of functions that the BSP must implement to link the platform watchdog timer
    to the Watchdog Timer library.
 
+.. _LLSECURITY-API-SECTION:
+
+LLSEC: Security
+===============
+
+Naming Convention
+-----------------
+
+The Low Level Security API (LLSEC) provides functions that allow the use of this API at the
+BSP level in C. The names of these functions match the ``LLSEC_IMPL_*`` pattern.
+
+Header Files
+------------
+
+Several C header files are provided:
+
+-  LLSEC_CIPHER_impl.h
+-  LLSEC_CONSTANTS.h
+-  LLSEC_DIGEST_impl.h
+-  LLSEC_ERRORS.h
+-  LLSEC_KEY_FACTORY_impl.h
+-  LLSEC_KEY_PAIR_GENERATOR_impl.h
+-  LLSEC_MAC_impl.h
+-  LLSEC_PRIVATE_KEY_impl.h
+-  LLSEC_PUBLIC_KEY_impl.h
+-  LLSEC_RANDOM_impl.h
+-  LLSEC_SIG_impl.h
+-  LLSEC_X509_CERT_impl.h
+
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
