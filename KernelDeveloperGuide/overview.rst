@@ -15,7 +15,7 @@ Here is a non-exhaustive list of the activities to be done by Kernel Developers:
 
 -  Integrating the Kernel Application with a Platform to produce a Multi-Sandbox Firmware and Virtual Device
 
--  Defining a list of APIs that will be exposed to applications
+-  :ref:`Defining the set of APIs <define_apis>` that will be exposed to Applications, optionally by maintaining a custom :ref:`Runtime Environment <runtime_environment>`
 
 -  Managing lifecycles of applications (deciding when to install, start,
    stop and uninstall them)
