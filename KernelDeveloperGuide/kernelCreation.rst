@@ -32,7 +32,7 @@ Build the Firmware and Virtual Device
 
 In the Package Explorer, right-click on the project and select
 :guilabel:`Build Module`. The build of the Firmware and Virtual
-Device may take several minutes. When the build is succeed, the folder
+Device may take several minutes. Once the build has succeeded, the folder
 :guilabel:`myfirmware` > :guilabel:`target~` > :guilabel:`artifacts` contains the firmware output artifacts
 (see :ref:`in_out_artifacts`) :
 
@@ -44,7 +44,7 @@ Device may take several minutes. When the build is succeed, the folder
 -  ``mymodule.vde``: The Virtual Device to be imported in the SDK.
 
 -  ``mymodule-workingEnv.zip``: This file contains all files produced by
-   the build phasis (intermediate, debug and report files).
+   the build phase (intermediate, debug and report files).
 
 .. _fms-artifacts:
 .. image:: png/firmware-multiapp-skeleton-artifacts.png

@@ -54,8 +54,8 @@ a Sandboxed Application. It provides the firmware
 functional simulation part. Usually it also provides a mean to directly
 deploy a Sandboxed Application on the target device running a Multi-Sandbox
 Firmware (this is called *Local Deployment*). In case of dynamic
-application deployment, the Virtual Device must be published on MicroEJ
-Forge instance in order to execute an internal batch applications build for this
+application deployment, the Virtual Device must be published on a MicroEJ
+Forge instance in order to execute internal batch applications built for this
 device.
 
 Overall Architecture
@@ -86,7 +86,7 @@ Firmware Build Flow
 The Firmware build is composed of two phases:
 
 - the build of the Kernel,
-- the build of Sandboxed Application which is linked and append to the Firmware as a System Application (repeatable).
+- the build of the Sandboxed Application which is linked and appended to the Firmware as a System Application (repeatable).
 
 .. _build_flow_generic:
 .. figure:: png/build_flow_generic.png
@@ -99,7 +99,7 @@ The Firmware build is composed of two phases:
 Virtual Device Build Flow
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Virtual Device is automatically built at the same time than the
+The Virtual Device is automatically built at the same time as the
 Firmware (see :ref:`multisandbox_firmware_creation`). 
 
 The Virtual Device builder performs the following steps:
@@ -108,10 +108,10 @@ The Virtual Device builder performs the following steps:
    runtime).
 
 -  Append Add-On Libraries and System Applications into the runtime
-   classpath. (See :ref:`ivy_confs`) for specifying the
+   classpath. (See :ref:`ivy_confs` for specifying the
    dependencies).
 
--  Turn the Platform (SDK) license to Virtual Device license 
+-  Turn the Platform (SDK) license into Virtual Device license 
    so that it can be freely distributed.
 
 -  Generate the Runtime Environment from the Kernel APIs.
@@ -159,7 +159,7 @@ Firmware implementations must cover the following topics:
    possible, a conversion proxy must be registered for this kernel type.
 
 -  Tools libraries: tools that plug into the SDK,
-   extending them with feature that are specific to the firmware, like
+   extending them with features that are specific to the firmware, like
    deployment of an application, a management console, ...
 
 -  System Applications: pre-built applications that can be embedded as
