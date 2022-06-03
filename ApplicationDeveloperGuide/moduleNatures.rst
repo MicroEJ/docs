@@ -580,7 +580,7 @@ This plugin defines the following configuration properties:
      - ``true``
    * - test.run.includes.pattern
      - Pattern of classes included in the test suite execution.
-     - ``**/*`` (all tests)
+     - ``**/_AllTests_*.class`` (all tests generated)
    * - skip.test
      - When this property is set (any value), the tests are not executed.
      - Not set
