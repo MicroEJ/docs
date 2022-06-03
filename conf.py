@@ -82,7 +82,7 @@ pygments_style = 'microej.MicroEJStyle'
 
 # linkcheck_timeout = 20
 
-# trigger linkcheck on build
+# trigger linkcheck on build (deprecated, setup moved to .readthedocs.yml configuration file)
 # import subprocess
 # if os.getenv("READTHEDOCS") == "True":
 #    print("RUNNING LINKCHECK")
