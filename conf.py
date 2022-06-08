@@ -80,7 +80,7 @@ pygments_style = 'microej.MicroEJStyle'
 # ignoring Github links with anchors at linkcheck
 # linkcheck_ignore = [r'https?:\/\/github\.com\/.+#.+']
 
-# linkcheck_timeout = 20
+linkcheck_timeout = 20
 
 # trigger linkcheck on build (deprecated, setup moved to .readthedocs.yml configuration file)
 # import subprocess
