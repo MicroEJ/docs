@@ -3,8 +3,8 @@
 NLS External Loader
 ===================
 
-The NLS External Loader allows to update the :ref:`PO files <section.applicationResources.nls>` of an application without rebuilding it.
-PO files can be dropped in a given location in the Virtual Device folders to dynamically replace the language strings embedded in the application.
+The NLS External Loader allows to update the :ref:`PO files <section.applicationResources.nls>` of an application executed on a Virtual Device without rebuilding it.
+PO files can be dropped in a given location in the Virtual Device folders to dynamically replace the language strings packaged in the application.
 
 This is typically useful when testing or translating an application in order to have a quick feedback when changing the PO files.
 Once the PO files are updated, a simple restart of the Virtual Device allows to immediately see the result.
@@ -36,12 +36,12 @@ Once the project built:
    externalPoLoaderInit:loadPo:
       [mkdir] Created dir: <PATH>\tmp\microejlaunch1307817858\resourcebuffer
    [po-to-nls] *.nls files found in <PATH>\output\<FIRMWARE>\resourceBuffer :
-   [po-to-nls]   - <CLASSPATH>.<CLASSNAME>
-   [po-to-nls]   - <CLASSPATH>.<CLASSNAME>
-   [po-to-nls] Loading *.po files for NLS interface f<CLASSPATH>.<CLASSNAME>
-   [po-to-nls]   => loaded locales : fr_DA,fr_ES,fr_NL,fr_FI,fr_RU,fr_SV,fr_DE,fr_NO,fr_IT,fr_FR,fr_PL,fr_EN
-   [po-to-nls] Loading *.po files for NLS interface <CLASSPATH>.<CLASSNAME>
-   [po-to-nls]   => loaded locales : fr_DA,fr_ES,fr_NL,fr_FI,fr_RU,fr_SV,fr_DE,fr_NO,fr_IT,fr_FR,fr_PL,fr_EN
+   [po-to-nls]   - com.mycompany.Messages1
+   [po-to-nls]   - com.mycompany.Messages2
+   [po-to-nls] Loading *.po files for NLS interface com.mycompany.Messages1
+   [po-to-nls]   => loaded locales : fr_FR,de_DE,ja_JP,en_US
+   [po-to-nls] Loading *.po files for NLS interface com.mycompany.Messages2
+   [po-to-nls]   => loaded locales : fr_FR,de_DE,ja_JP,en_US
 
 - update the languages strings in the PO files of the Virtual Device (the files in the `translations/` folder).
 - restart the Virtual Device and check the changes.
