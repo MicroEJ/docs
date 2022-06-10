@@ -5,13 +5,13 @@ Application Resources
 
 Application resources are the following :ref:`section.classpath.elements`:
 
+-  :ref:`section.applicationResources.raw_resources`
+
 -  :ref:`section.applicationResources.Images`
 
 -  :ref:`section.applicationResources.Fonts`
 
 -  :ref:`section.applicationResources.nls`
-
--  :ref:`section.applicationResources.raw_resources`
 
 Principle
 =========
@@ -87,6 +87,23 @@ The following figure summarized how to declare resources:
    endswitch
    @enduml
 
+.. _section.applicationResources.raw_resources:
+
+Raw Resources
+=============
+
+Raw resources are binary files that are embedded by the application so that they may be dynamically retrieved with a call to
+``Class.getResourceAsStream(java.io.InputStream)``.
+
+Raw Resources are declared in MicroEJ Classpath using ``*.resources.list`` files (and in ``*.externresources.list`` for external resources).
+The file format is a standard Java properties file, each line is a relative ``/`` separated name of a file in MicroEJ Classpath to be embedded as a resource.
+
+For example:
+
+::
+
+   # The following resource is embedded as a raw resource
+   com/mycompany/MyResource.txt
 
 .. _section.applicationResources.Images:
 
@@ -349,24 +366,6 @@ Once the module has been built, edit the file ``platform/tools/crowdin/crowdin.p
 When the configuration is done, the fetch of the Crowdin translations can be done by executing the script ``crowdin.bat`` or ``crowdin.sh`` located in the folder ``platform/tools/crowdin/``.
 The PO files retrieved from Crowdin are automatically pasted in the folder ``translations``,
 therefore the new translations are applied after the next Virtual Device restart.
-
-.. _section.applicationResources.raw_resources:
-
-Raw Resources
-=============
-
-Raw resources are binary files that are embedded by the application so that they may be dynamically retrieved with a call to
-``Class.getResourceAsStream(java.io.InputStream)``.
-
-Raw Resources are declared in MicroEJ Classpath using ``*.resources.list`` files (and in ``*.externresources.list`` for external resources).
-The file format is a standard Java properties file, each line is a relative ``/`` separated name of a file in MicroEJ Classpath to be embedded as a resource.
-
-For example:
-
-::
-
-   # The following resource is embedded as a raw resource
-   com/mycompany/MyResource.txt
 
 ..
    | Copyright 2020-2022, MicroEJ Corp. Content in this space is free 
