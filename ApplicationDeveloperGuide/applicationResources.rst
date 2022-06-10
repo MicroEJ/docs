@@ -180,7 +180,7 @@ Each message to be internationalized is referenced by a key, which can be
 used in the application code instead of using the message directly.
 
 Usage
-~~~~~
+-----
 
 Messages must be defined in `PO files <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`_, located in the MicroEJ Classpath of the application (for example in the ``src/main/resources`` folder).
 Here is an example:
@@ -251,7 +251,7 @@ Application project to use the NLS library.
 .. _chapter.microej.nlsExternalLoader:
 
 NLS External Loader
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
 The NLS External Loader allows to update the :ref:`PO files <section.applicationResources.nls>` of an application executed on a Virtual Device without rebuilding it.
 PO files can be dropped in a given location in the Virtual Device folders to dynamically replace the language strings packaged in the application.
@@ -354,6 +354,7 @@ Once the module has been built, edit the file ``platform/tools/crowdin/crowdin.p
 When the configuration is done, the fetch of the Crowdin translations can be done by executing the script ``crowdin.bat`` or ``crowdin.sh`` located in the folder ``platform/tools/crowdin/``.
 The PO files retrieved from Crowdin are automatically pasted in the folder ``translations``,
 therefore the new translations are applied after the next Virtual Device restart.
+
 .. _section.applicationResources.raw_resources:
 
 Raw Resources
