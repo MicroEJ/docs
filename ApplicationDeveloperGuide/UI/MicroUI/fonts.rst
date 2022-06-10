@@ -6,6 +6,8 @@ Fonts
 Overview
 --------
 
+.. Keep this section sync'd with the overview in _section.applicationResources.Fonts
+
 Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
 To be displayed, these fonts have to be converted at build-time from their source format to the display raw format by the font generator tool.
 Fonts that must be processed by the font generator tool are declared in :ref:`MicroEJ Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (or ``*.fontsext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).

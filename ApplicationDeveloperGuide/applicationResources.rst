@@ -130,10 +130,11 @@ Please refer to :ref:`section.ui.Images` for more information.
 Fonts
 =====
 
-Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
+.. Keep this section sync'd with the overview in _section.ui.Fonts
 
+Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
 To be displayed, these fonts have to be converted at build-time from their source format to the display raw format by the font generator tool.
-Fonts that must be processed by the font generator tool are declared in MicroEJ Classpath ``*.fonts.list`` files (or ``*.fontsext.list`` for external resources).
+Fonts that must be processed by the font generator tool are declared in :ref:`MicroEJ Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (or ``*.fontsext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
 The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the MicroEJ classpath root referring to a MicroEJ font file (usually with a ``.ejf`` file extension).
 The resource may be followed by optional parameters which define :
 
@@ -142,7 +143,6 @@ The resource may be followed by optional parameters which define :
 -  the required pixel depth for transparency.
 
 By default, all characters available in the input font file are embedded, and the pixel depth is ``1`` (i.e 1 bit-per-pixel).
-
 Example:
 
 ::
@@ -159,7 +159,8 @@ Example:
    # with 2 levels of transparency
    com/mycompany/MyFont2.ejf::2
 
-MicroEJ font files conventionally end with the ``.ejf`` suffix and are created using the Font Designer (see :ref:`section.tool.fontdesigner`).
+MicroEJ font files conventionally end with the ``.ejf`` suffix and are
+created using the Font Designer (see :ref:`section.tool.fontdesigner`).
 
 Please refer to :ref:`section.ui.Fonts` for more information.
 
