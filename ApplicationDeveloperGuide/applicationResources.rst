@@ -16,9 +16,9 @@ Application resources are the following :ref:`section.classpath.elements`:
 Principle
 =========
 
-A *resource* is, for a MicroEJ Application, the contents of a file.
-This file is known by its path (its relative path from the MicroEJ Application classpath) and its name.
-The file may be stored in RAM, flash, or external flash; and it is the responsibility of the MicroEJ Core Engine and/or the BSP to retrieve and load it.
+A *resource* is, for an Application, the contents of a file.
+This file is known by its path (its relative path from the Application classpath) and its name.
+The file may be stored in RAM, flash, or external flash; and it is the responsibility of the Core Engine and/or the BSP to retrieve and load it.
 
 .. _section.applicationResources.internal_and_external_resources:
 
@@ -27,11 +27,11 @@ Internal Resources and External Resources
 
 There are two kinds of resources, internal resources and external resources:
 
--  Internal resource: The resource is taken into consideration during the MicroEJ Application build.
-   The SOAR step loads the resource and copies it into the same C library as the MicroEJ Application.
-   Like the MicroEJ Application, the resource is linked into the CPU address space range (internal device memories, external parallel memories, etc.).
+-  Internal resource: The resource is taken into consideration during the Application build.
+   The SOAR step loads the resource and copies it into the same C library as the Application.
+   Like the Application, the resource is linked into the CPU address space range (internal device memories, external parallel memories, etc.).
 
--  External resource: The resource is not taken into consideration by MicroEJ.
+-  External resource: The resource is not taken into consideration during the Application build.
    It is the responsibility of the BSP project to manage this kind of resource.
    The resource is often programmed outside the CPU address space range (storage media like SD card, serial NOR flash, EEPROM, etc.).
 
@@ -93,9 +93,6 @@ The following figure summarized how to declare resources:
 Images
 ======
 
-Overview
---------
-
 Images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_ .
 To be displayed, these images have to be converted from their source format to the display raw format.
 The conversion can either be done at :
@@ -105,8 +102,7 @@ The conversion can either be done at :
 -  run-time (using the relevant decoder library).
 
 Images that must be processed by the image generator tool are declared in MicroEJ Classpath ``*.images.list`` files (or ``*.imagesext.list`` for external resources).
-The file format is a standard Java properties file, each line representing a ``/`` separated
-resource path relative to the MicroEJ classpath root referring to a standard image file (e.g. ``.png``, ``.jpg``).
+The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the MicroEJ classpath root referring to a standard image file (e.g. ``.png``, ``.jpg``).
 The resource may be followed by an optional parameter (separated by a ``:``) which defines and/or describes the image output file format (raw format).
 When no option is specified, the image is embedded as-is and will be decoded at run-time (although listing files without format specifier has no impacton the image generator processing, it is advised to specify them in the ``*.images.list`` files anyway, as it makes the run-time processing behavior explicit).
 
@@ -132,9 +128,6 @@ Please refer to :ref:`section.ui.Images` for more information.
 
 Fonts
 =====
-
-Overview
---------
 
 Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
 
