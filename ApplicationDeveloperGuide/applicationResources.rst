@@ -49,7 +49,7 @@ The following figure summarized how to declare resources:
    @startuml
    : Add resource to project
    in src/main/resources/...;
-   switch (Kind of resource?)
+   switch (Type of resource?)
    case ( Image )
    if (Internal ?) then (yes)
    : *.images.list;

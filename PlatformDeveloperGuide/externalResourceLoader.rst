@@ -15,7 +15,7 @@ tries first to retrieve the expected resource from its available list of
 internal resources, before asking the BSP to load it (using
 ``LLEXT_RES_impl.h`` functions).
 
-See :ref:`chapter.microej.applicationResources` for more information on how to declare external resources.
+See :ref:`chapter.microej.applicationResources` for more information on how to declare external resources depending on its kind (images, fonts, NLS or raw resources).
 
 
 Implementations
