@@ -36,7 +36,7 @@ There are two kinds of resources, internal resources and external resources:
    The resource is often programmed outside the CPU address space range (storage media like SD card, serial NOR flash, EEPROM, etc.).
 
    The BSP must implement the proper Low Level API (LLAPI) C functions: ``LLEXT_RES_impl.h``.
-   See :ref:`section_externalresourceloader` for more information on the its implementation.
+   See :ref:`section_externalresourceloader` for more information on the implementation.
 
 All resources must be added in the project, usually in ``src/main/resources/...``.
 All resources must be declared in the appropriate ``*.list`` files depending on the type (image, font, NLS, raw) and kind (internal or external) resources.
