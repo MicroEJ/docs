@@ -9,6 +9,8 @@ Immutable Images
 Overview
 ~~~~~~~~
 
+.. Keep this section sync'd with the overview in _section.applicationResources.Images
+
 Immutable images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_. As their name suggests, immutable images can not be modified. Therefore, there is no way to get a Graphics Context to draw into these images. To be displayed, these
 images have to be converted from their source format to a RAW
 format. The conversion can either be done at:

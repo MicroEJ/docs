@@ -93,19 +93,20 @@ The following figure summarized how to declare resources:
 Images
 ======
 
-Images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_ .
-To be displayed, these images have to be converted from their source format to the display raw format.
-The conversion can either be done at :
+.. Keep this section sync'd with the overview in _section.ui.Images
+
+Immutable images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_. As their name suggests, immutable images can not be modified. Therefore, there is no way to get a Graphics Context to draw into these images. To be displayed, these
+images have to be converted from their source format to a RAW
+format. The conversion can either be done at:
 
 -  build-time (using the image generator tool),
 
 -  run-time (using the relevant decoder library).
 
-Images that must be processed by the image generator tool are declared in MicroEJ Classpath ``*.images.list`` files (or ``*.imagesext.list`` for external resources).
+Immutable images that must be processed by the Image Generator tool are declared in :ref:`MicroEJ Classpath<chapter.microej.classpath>` ``*.images.list`` files (or ``*.imagesext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
 The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the MicroEJ classpath root referring to a standard image file (e.g. ``.png``, ``.jpg``).
-The resource may be followed by an optional parameter (separated by a ``:``) which defines and/or describes the image output file format (raw format).
-When no option is specified, the image is embedded as-is and will be decoded at run-time (although listing files without format specifier has no impacton the image generator processing, it is advised to specify them in the ``*.images.list`` files anyway, as it makes the run-time processing behavior explicit).
-
+The resource may be followed by an optional parameter (separated by a ``:``) which defines and/or describes the image output file format (RAW format).
+When no option is specified, the image is embedded as-is and will be decoded at run-time (although listing files without format specifier has no impact on the image generator processing, it is advised to specify them in the ``*.images.list`` files anyway, as it makes the run-time processing behavior explicit).
 Example:
 
 ::
