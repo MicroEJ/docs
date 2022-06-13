@@ -9,7 +9,7 @@ Functional Description
 ======================
 
 The External Resources Loader is an optional module. When not installed,
-only internal resources are available for the MicroEJ Application. When
+only :ref:`internal resources<section.applicationResources.internal_and_external_resources>` are available for the MicroEJ Application. When
 the External Resources Loader is installed, the MicroEJ Core Engine
 tries first to retrieve the expected resource from its available list of
 internal resources, before asking the BSP to load it (using
