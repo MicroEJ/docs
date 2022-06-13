@@ -9,8 +9,8 @@ Overview
 .. Keep this section sync'd with the overview in _section.applicationResources.Fonts
 
 Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
-Fonts are declared in :ref:`MicroEJ Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (or ``*.fontsext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
-The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the MicroEJ classpath root referring to a MicroEJ font file (usually with a ``.ejf`` file extension).
+Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (or ``*.fontsext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a Font file (usually with a ``.ejf`` file extension).
 The resource may be followed by optional parameters which define :
 
 -  some ranges of characters to embed in the final raw file;
@@ -34,7 +34,7 @@ Example:
    # with 2 levels of transparency
    com/mycompany/MyFont2.ejf::2
 
-MicroEJ font files conventionally end with the ``.ejf`` suffix and are
+Font files conventionally end with the ``.ejf`` suffix and are
 created using the Font Designer (see :ref:`section.tool.fontdesigner`).
 
 .. _fonts_list_grammar:

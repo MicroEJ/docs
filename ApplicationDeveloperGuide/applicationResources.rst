@@ -95,8 +95,8 @@ Raw Resources
 Raw resources are binary files that are embedded by the application so that they may be dynamically retrieved with a call to
 ``Class.getResourceAsStream(java.io.InputStream)``.
 
-Raw Resources are declared in MicroEJ Classpath using ``*.resources.list`` files (and in ``*.externresources.list`` for external resources).
-The file format is a standard Java properties file, each line is a relative ``/`` separated name of a file in MicroEJ Classpath to be embedded as a resource.
+Raw Resources are declared in Classpath using ``*.resources.list`` files (and in ``*.externresources.list`` for external resources).
+The file format is a standard Java properties file, each line is a relative ``/`` separated name of a file in Classpath to be embedded as a resource.
 
 For example:
 
@@ -120,8 +120,8 @@ format. The conversion can either be done at:
 
 -  run-time (using the relevant decoder library).
 
-Immutable images are declared in :ref:`MicroEJ Classpath<chapter.microej.classpath>` ``*.images.list`` files (or ``*.imagesext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
-The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the MicroEJ classpath root referring to a standard image file (e.g. ``.png``, ``.jpg``).
+Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.images.list`` files (or ``*.imagesext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a standard image file (e.g. ``.png``, ``.jpg``).
 The resource may be followed by an optional parameter (separated by a ``:``) which defines and/or describes the image output file format (RAW format).
 When no option is specified, the image is embedded as-is and will be decoded at run-time.
 Example:
@@ -150,8 +150,8 @@ Fonts
 .. Keep this section sync'd with the overview in _section.ui.Fonts
 
 Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
-Fonts are declared in :ref:`MicroEJ Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (or ``*.fontsext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
-The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the MicroEJ classpath root referring to a MicroEJ font file (usually with a ``.ejf`` file extension).
+Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (or ``*.fontsext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a Font file (usually with a ``.ejf`` file extension).
 The resource may be followed by optional parameters which define :
 
 -  some ranges of characters to embed in the final raw file;
@@ -175,7 +175,7 @@ Example:
    # with 2 levels of transparency
    com/mycompany/MyFont2.ejf::2
 
-MicroEJ font files conventionally end with the ``.ejf`` suffix and are
+Font files conventionally end with the ``.ejf`` suffix and are
 created using the Font Designer (see :ref:`section.tool.fontdesigner`).
 
 Please refer to :ref:`section.ui.Fonts` for more information.
@@ -193,7 +193,7 @@ used in the application code instead of using the message directly.
 Usage
 -----
 
-Messages must be defined in `PO files <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`_, located in the MicroEJ Classpath of the application (for example in the ``src/main/resources`` folder).
+Messages must be defined in `PO files <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`_, located in the Classpath of the application (for example in the ``src/main/resources`` folder).
 Here is an example:
 
 ::
@@ -213,7 +213,7 @@ Here is an example:
 
 These PO files have to be converted to be usable by the application.
 In order to let the build system know which PO files to process, 
-they must be referenced in files named ``*.nls.list`` (and to ``*.externresources.list`` for external resources), located in the MicroEJ Classpath 
+they must be referenced in files named ``*.nls.list`` (and to ``*.externresources.list`` for external resources), located in the Classpath 
 (for example still in the ``src/main/resources`` folder).
 The file format of these ``*.nls.list`` files is a standard Java properties file.
 Each line represents the Full Qualified Name of a Java interface that will be 
@@ -225,13 +225,13 @@ generated and used in the application. Here is an example, let's call it `i18n.n
    com.mycompany.myapp.Messages
 
 For each line, PO files whose name starts with the interface name (``Messages`` and ``Labels``
-in the example) are retrieved from the MicroEJ Classpath and used to generate:
+in the example) are retrieved from the Classpath and used to generate:
 
 - a Java interface with the given FQN, containing a field for each ``msgid`` of the PO files
 - a NLS binary file containing the translations
 
 So, in the example, the generated interface ``com.mycompany.myapp.Labels`` will gather all the 
-translations from files named ``Labels*.po`` and located in the MicroEJ Classpath.
+translations from files named ``Labels*.po`` and located in the Classpath.
 PO files are generally suffixed by their locale (``Labels_en_US.po``) but it is only for convenience
 since the suffix is not used, the locale is extracted from the PO file's metadata.
 
@@ -252,8 +252,7 @@ The generation is triggered when building the application or after a change done
 This allows to always have the Java interfaces up-to-date with the translations and to use them immediately.
 
 The `NLS API module <https://repository.microej.com/modules/ej/library/runtime/nls/>`_
-must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
-Application project to use the NLS library.
+must be added to the :ref:`module.ivy <mmm_module_description>` of the Application project to use the NLS library.
 
 ::
 
@@ -273,13 +272,13 @@ Once the PO files are updated, a simple restart of the Virtual Device allows to 
 Installation
 ^^^^^^^^^^^^
 
-To enable the NLS External Loader in the Virtual Device, add the following dependency to the ``module.ivy`` file of the MicroEJ Firmware project:
+To enable the NLS External Loader in the Virtual Device, add the following dependency to the ``module.ivy`` file of the Firmware project:
 
 .. code-block:: xml
 
    <dependency org="com.microej.tool" name="nls-po-external-loader" rev="2.3.0" transitive="false"/>
 
-Then rebuild the MicroEJ Firmware project to produce the Virtual Device.
+Then rebuild the Firmware project to produce the Virtual Device.
 
 Usage
 ^^^^^
@@ -350,7 +349,7 @@ Crowdin is a cloud-based localization platform which allows to manage multilingu
 The NLS External Loader can fetch translations directly from Crowdin to make the translation process even easier.
 Translators can then contribute and validate their translations in Crowdin and apply them automatically in the Virtual Device.
 
-A new dependency must be added to the ``module.ivy`` file of the MicroEJ Firmware project to enable this integration:
+A new dependency must be added to the ``module.ivy`` file of the Firmware project to enable this integration:
 
 .. code-block:: xml
 
