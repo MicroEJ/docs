@@ -95,7 +95,7 @@ Raw Resources
 Raw resources are binary files that are embedded by the application so that they may be dynamically retrieved with a call to
 ``Class.getResourceAsStream(java.io.InputStream)``.
 
-Raw Resources are declared in Classpath using ``*.resources.list`` files (and in ``*.externresources.list`` for external resources).
+Raw Resources are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.resources.list`` files (**and** in ``*.externresources.list`` for external resources).
 The file format is a standard Java properties file, each line is a relative ``/`` separated name of a file in Classpath to be embedded as a resource.
 
 For example:
@@ -120,7 +120,7 @@ format. The conversion can either be done at:
 
 -  run-time (using the relevant decoder library).
 
-Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.images.list`` files (or ``*.imagesext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.images.list`` files (**or** in ``*.imagesext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
 The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a standard image file (e.g. ``.png``, ``.jpg``).
 The resource may be followed by an optional parameter (separated by a ``:``) which defines and/or describes the image output file format (RAW format).
 When no option is specified, the image is embedded as-is and will be decoded at run-time.
@@ -150,7 +150,7 @@ Fonts
 .. Keep this section sync'd with the overview in _section.ui.Fonts
 
 Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
-Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (or ``*.fontsext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (**or** in ``*.fontsext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
 The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a Font file (usually with a ``.ejf`` file extension).
 The resource may be followed by optional parameters which define :
 
@@ -209,7 +209,7 @@ Here is an example:
    msgid "Label2"
    msgstr "My label 2"
 
-PO files are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.nls.list`` files (and to ``*.externresources.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+PO files are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.nls.list`` files (**and** in ``*.externresources.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
 The file format is a standard Java properties file, each line represents the Full Qualified Name of a Java interface that will be generated and used in the application.
 Example:
 

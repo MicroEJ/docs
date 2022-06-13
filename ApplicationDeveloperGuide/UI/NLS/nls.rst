@@ -30,7 +30,7 @@ Here is an example:
    msgid "Label2"
    msgstr "My label 2"
 
-PO files are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.nls.list`` files (and to ``*.externresources.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+PO files are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.nls.list`` files (**and** to ``*.externresources.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
 The file format is a standard Java properties file, each line represents the Full Qualified Name of a Java interface that will be generated and used in the application.
 Example:
 
