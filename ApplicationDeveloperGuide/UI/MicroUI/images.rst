@@ -20,6 +20,21 @@ format. The conversion can either be done at:
 -  run-time (using the relevant decoder library).
 
 Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.images.list`` files (**or** in ``*.imagesext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+
+.. graphviz::
+
+  digraph D {
+  
+      internalImage [shape=diamond, label="internal?"]
+      imagesList [shape=box, label="*.images.list"]
+      imagesExt [shape=box, label="*.extimages.list"]
+      subgraph cluster_image {
+          label ="Image"
+          internalImage -> imagesList [label="yes"]
+          internalImage -> imagesExt [label="no=external"]
+      }
+  }
+
 The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a standard image file (e.g. ``.png``, ``.jpg``).
 The resource may be followed by an optional parameter (separated by a ``:``) which defines and/or describes the image output file format (RAW format).
 When no option is specified, the image is embedded as-is and will be decoded at run-time.

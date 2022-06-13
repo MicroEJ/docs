@@ -31,6 +31,21 @@ Here is an example:
    msgstr "My label 2"
 
 PO files are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.nls.list`` files (**and** to ``*.externresources.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+
+.. graphviz::
+
+  digraph D {
+  
+      internalNLS [shape=diamond, label="internal?"]
+      NLSList [shape=box, label="*.nls.list"]
+      NLSExt [shape=box, label="*.nls.list +\l*.externresources.list"]
+      subgraph cluster_NLS {
+          label ="NLS"
+          internalNLS -> NLSList [label="yes"]
+          internalNLS -> NLSExt [label="no=external"]
+      }
+  }
+
 The file format is a standard Java properties file, each line represents the Full Qualified Name of a Java interface that will be generated and used in the application.
 Example:
 

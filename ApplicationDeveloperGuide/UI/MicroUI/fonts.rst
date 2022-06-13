@@ -10,6 +10,21 @@ Overview
 
 Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
 Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (**or** in ``*.fontsext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+
+.. graphviz::
+
+  digraph D {
+  
+      internalFont [shape=diamond, label="internal?"]
+      fontsList [shape=box, label="*.fonts.list"]
+      fontsExt [shape=box, label="*.extfonts.list"]
+      subgraph cluster_font {
+          label ="Font"
+          internalFont -> fontsList [label="yes"]
+          internalFont -> fontsExt [label="no=external"]
+      }
+  }
+
 The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a Font file (usually with a ``.ejf`` file extension).
 The resource may be followed by optional parameters which define :
 

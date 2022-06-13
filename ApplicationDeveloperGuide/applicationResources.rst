@@ -42,50 +42,59 @@ All resources must be added in the project, usually in ``src/main/resources/...`
 All resources must be declared in the appropriate ``*.list`` files depending on the type (image, font, NLS, raw) and kind (internal or external) resources.
 The following figure summarized how to declare resources:
 
-.. image:: images/application_resource_declaration_list_file.png
-   :align: center
+.. graphviz::
 
-..
-   @startuml
-   : Add resource to project
-   in src/main/resources/...;
-   switch (Type of resource?)
-   case ( Image )
-   if (Internal ?) then (yes)
-   : *.images.list;
-   kill
-   else (no=external)
-   : *.imagesext.list;
-   kill
-   endif
-   case ( Font )
-   if (Internal ?) then (yes)
-   : *.fonts.list;
-   kill
-   else (no=external)
-   : *.fontsext.list;
-   kill
-   endif
-   case ( Raw resource )
-   if (Internal ?) then (yes)
-   : *.resources.list;
-   kill
-   else (no=external)
-   : *.resources.list +
-    *.externresources.list;
-   kill
-   endif
-   case ( NLS )
-   if (Internal ?) then (yes)
-   : *.nls.list;
-   kill
-   else (no=external)
-   : *.nls.list +
-    *.externresources.list;
-   kill
-   endif
-   endswitch
-   @enduml
+  digraph D {
+  
+  subgraph cluster_main {
+      init [shape=box, label="Add resource to project\lin src/main/resources/..." ]
+      type [shape=diamond, label="Type of resource?"]
+  
+      internalImage [shape=diamond, label="internal?"]
+      internalFont [shape=diamond, label="internal?"]
+      internalRaw [shape=diamond, label="internal?"]
+      internalNLS [shape=diamond, label="internal?"]
+  
+      imagesList [shape=box, label="*.images.list"]
+      imagesExt [shape=box, label="*.extimages.list"]
+      fontsList [shape=box, label="*.fonts.list"]
+      fontsExt [shape=box, label="*.extfonts.list"]
+      rawList [shape=box, label="*.resources.list"]
+      rawExt [shape=box, label="*.resources.list +\l*.externresources.list"]
+      NLSList [shape=box, label="*.nls.list"]
+      NLSExt [shape=box, label="*.nls.list +\l*.externresources.list"]
+  
+      init -> type
+  
+      type -> internalImage
+      subgraph cluster_image {
+          label ="Image"
+          internalImage -> imagesList [label="yes"]
+          internalImage -> imagesExt [label="no=external"]
+      }
+  
+      type -> internalFont
+      subgraph cluster_font {
+          label ="Font"
+          internalFont -> fontsList [label="yes"]
+          internalFont -> fontsExt [label="no=external"]
+      }
+  
+      type -> internalRaw
+      subgraph cluster_Raw {
+          label ="Raw Resource"
+          internalRaw -> rawList [label="yes"]
+          internalRaw -> rawExt [label="no=external"]
+      }
+      type -> internalNLS
+      subgraph cluster_NLS {
+          label ="NLS"
+          internalNLS -> NLSList [label="yes"]
+          internalNLS -> NLSExt [label="no=external"]
+      }
+  }
+  
+  }
 
 .. _section.applicationResources.raw_resources:
 
@@ -96,6 +105,21 @@ Raw resources are binary files that are embedded by the application so that they
 ``Class.getResourceAsStream(java.io.InputStream)``.
 
 Raw Resources are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.resources.list`` files (**and** in ``*.externresources.list`` for external resources).
+
+.. graphviz::
+
+  digraph D {
+  
+      internalRaw [shape=diamond, label="internal?"]
+      rawList [shape=box, label="*.resources.list"]
+      rawExt [shape=box, label="*.resources.list +\l*.externresources.list"]
+      subgraph cluster_Raw {
+          label ="Raw Resource"
+          internalRaw -> rawList [label="yes"]
+          internalRaw -> rawExt [label="no=external"]
+      }
+  }
+
 The file format is a standard Java properties file, each line is a relative ``/`` separated name of a file in Classpath to be embedded as a resource.
 
 For example:
@@ -121,6 +145,21 @@ format. The conversion can either be done at:
 -  run-time (using the relevant decoder library).
 
 Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.images.list`` files (**or** in ``*.imagesext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+
+.. graphviz::
+
+  digraph D {
+  
+      internalImage [shape=diamond, label="internal?"]
+      imagesList [shape=box, label="*.images.list"]
+      imagesExt [shape=box, label="*.extimages.list"]
+      subgraph cluster_image {
+          label ="Image"
+          internalImage -> imagesList [label="yes"]
+          internalImage -> imagesExt [label="no=external"]
+      }
+  }
+
 The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a standard image file (e.g. ``.png``, ``.jpg``).
 The resource may be followed by an optional parameter (separated by a ``:``) which defines and/or describes the image output file format (RAW format).
 When no option is specified, the image is embedded as-is and will be decoded at run-time.
@@ -151,6 +190,21 @@ Fonts
 
 Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
 Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (**or** in ``*.fontsext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+
+.. graphviz::
+
+  digraph D {
+  
+      internalFont [shape=diamond, label="internal?"]
+      fontsList [shape=box, label="*.fonts.list"]
+      fontsExt [shape=box, label="*.extfonts.list"]
+      subgraph cluster_font {
+          label ="Font"
+          internalFont -> fontsList [label="yes"]
+          internalFont -> fontsExt [label="no=external"]
+      }
+  }
+
 The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a Font file (usually with a ``.ejf`` file extension).
 The resource may be followed by optional parameters which define :
 
@@ -210,6 +264,21 @@ Here is an example:
    msgstr "My label 2"
 
 PO files are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.nls.list`` files (**and** in ``*.externresources.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+
+.. graphviz::
+
+  digraph D {
+  
+      internalNLS [shape=diamond, label="internal?"]
+      NLSList [shape=box, label="*.nls.list"]
+      NLSExt [shape=box, label="*.nls.list +\l*.externresources.list"]
+      subgraph cluster_NLS {
+          label ="NLS"
+          internalNLS -> NLSList [label="yes"]
+          internalNLS -> NLSExt [label="no=external"]
+      }
+  }
+
 The file format is a standard Java properties file, each line represents the Full Qualified Name of a Java interface that will be generated and used in the application.
 Example:
 
