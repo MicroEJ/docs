@@ -102,7 +102,7 @@ Raw Resources
 =============
 
 Raw resources are binary files that are embedded by the application so that they may be dynamically retrieved with a call to
-``Class.getResourceAsStream(java.io.InputStream)``.
+`java.lang.Class.getResourceAsStream(String) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String->`_.
 
 Raw Resources are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.resources.list`` files (**and** in ``*.externresources.list`` for external resources).
 
