@@ -3,6 +3,8 @@
 Vector Images
 =============
 
+.. _vectorimage_overview:
+
 Overview
 --------
 
