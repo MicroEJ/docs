@@ -39,7 +39,7 @@ There are two kinds of resources, internal resources and external resources:
    See :ref:`section_externalresourceloader` for more information on the implementation.
 
 All resources must be added in the project, usually in ``src/main/resources/...``.
-All resources must be declared in the appropriate ``*.list`` files depending on the type (image, font, NLS, raw) and kind (internal or external) resources.
+All resources must be declared in the appropriate ``*.list`` files depending on the type (raw, image, font, NLS) and kind (internal or external) resources.
 The following figure summarized how to declare resources:
 
 .. graphviz::
@@ -50,21 +50,28 @@ The following figure summarized how to declare resources:
       init [shape=box, label="Add resource to project\lin src/main/resources/..." ]
       type [shape=diamond, label="Type of resource?"]
   
+      internalRaw [shape=diamond, label="internal?"]
       internalImage [shape=diamond, label="internal?"]
       internalFont [shape=diamond, label="internal?"]
-      internalRaw [shape=diamond, label="internal?"]
       internalNLS [shape=diamond, label="internal?"]
   
+      rawList [shape=box, label="*.resources.list"]
+      rawExt [shape=box, label="*.resources.list +\l*.externresources.list"]
       imagesList [shape=box, label="*.images.list"]
       imagesExt [shape=box, label="*.extimages.list"]
       fontsList [shape=box, label="*.fonts.list"]
       fontsExt [shape=box, label="*.extfonts.list"]
-      rawList [shape=box, label="*.resources.list"]
-      rawExt [shape=box, label="*.resources.list +\l*.externresources.list"]
       NLSList [shape=box, label="*.nls.list"]
       NLSExt [shape=box, label="*.nls.list +\l*.externresources.list"]
   
       init -> type
+  
+      type -> internalRaw
+      subgraph cluster_Raw {
+          label ="Raw Resource"
+          internalRaw -> rawList [label="yes"]
+          internalRaw -> rawExt [label="no=external"]
+      }
   
       type -> internalImage
       subgraph cluster_image {
@@ -78,13 +85,6 @@ The following figure summarized how to declare resources:
           label ="Font"
           internalFont -> fontsList [label="yes"]
           internalFont -> fontsExt [label="no=external"]
-      }
-  
-      type -> internalRaw
-      subgraph cluster_Raw {
-          label ="Raw Resource"
-          internalRaw -> rawList [label="yes"]
-          internalRaw -> rawExt [label="no=external"]
       }
       type -> internalNLS
       subgraph cluster_NLS {

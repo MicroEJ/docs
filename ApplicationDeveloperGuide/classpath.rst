@@ -80,7 +80,7 @@ The MicroEJ Classpath contains the following elements:
 
 -  Immutables Object data files, described in Section :ref:`section.classpath.elements.immutables`;
 
--  Images, Fonts and Native Language Support (NLS) and Raw resources, described in :ref:`chapter.microej.applicationResources`;
+-  Raw Resources, Images, Fonts and Native Language Support (NLS) described in :ref:`chapter.microej.applicationResources`;
 
 -  ``*.[extension].list`` files, declaring contents to load. Supported
    list file extensions and format is specific to declared application
