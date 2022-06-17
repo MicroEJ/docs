@@ -89,7 +89,7 @@ The following diagram illustrates the process of extending the default `String <
 
 Two processes are taking place to apply extensions:
 
-   1. The custom Runtime Environment is built using the ``runtime-api`` build type. It takes three components as input:
+   1. The custom Runtime Environment is built using the ``build-runtime-api`` build type. It takes three components as input:
 
       - EDC Foundation Library API which contains the String class we want to extend,
       - a :ref:`Kernel API <kernel.api>` file definition in the ``src/main/resource`` folder which includes new methods,
