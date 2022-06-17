@@ -32,7 +32,7 @@ A Runtime Environment :ref:`module project <mmm_module_skeleton>` is built with 
 
 .. code:: xml
 
-   <info organisation="myorg" module="mymodule" status="integration" revision="1.0.0">
+   <info organisation="com.mycompany" module="myruntimeapi" status="integration" revision="1.0.0">
       <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="2.+">
       <ea:property name="runtime.api.name" value="RUNTIME"/>
       <ea:property name="runtime.api.version" value="1.0"/>
@@ -54,6 +54,20 @@ defined by ``EDC,KF,BON,Wadapps,Components`` Kernel APIs modules.
       <dependency org="com.microej.kernelapi" name="wadapps" rev="1.2.2"/>
       <dependency org="com.microej.kernelapi" name="components" rev="1.2.2"/>
    </dependencies>
+
+
+Use a Runtime Environment in an Application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once a Runtime Environment is available, it can be used in the Applications as a dependency::
+
+   <dependency org="com.mycompany" name="myruntimeapi" rev="1.0.0" conf="provided->runtimeapi"/>
+
+It is important to note that in order to have a consistent development environment, 
+it is highly recommended to declare the Runtime Environment module as **the only dependency** of the Application modules.
+In the case an Application needs to use a library not included in the Runtime Environment, 
+the recommended process is to add this library in the Runtime Environment.
+Declaring additional dependencies in the Application could lead to inconsistent situations, for example by using an API not available at runtime.
 
 
 Extend a Runtime Environment
