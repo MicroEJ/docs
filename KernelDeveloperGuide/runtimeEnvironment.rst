@@ -29,7 +29,7 @@ The following figure shows the overall build flow:
 Create a new Runtime Environment Module
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A Runtime Environment :ref:`module project <mmm_module_skeleton>` is built with ``runtime-api`` skeleton.
+A Runtime Environment :ref:`module project <mmm_module_skeleton>` is created with the ``runtime-api`` skeleton.
 
 .. code:: xml
 
