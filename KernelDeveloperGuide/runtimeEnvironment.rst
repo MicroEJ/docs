@@ -8,7 +8,7 @@ Principle
 ~~~~~~~~~
 
 A Runtime Environment is a :ref:`module nature <module_natures>` for defining the set of APIs available to an Application developer on a Kernel.
-It is built by aggregating a set of :ref:`Kernel APIs <kernel.api>`. It also allows to extend the classes of default modules with additional methods.
+It is built by aggregating a set of :ref:`Kernel APIs <kernel.api>`.
 
 Having the set of APIs named and versioned allows to maintain, share and document it outside a specific Kernel implementation.
 
