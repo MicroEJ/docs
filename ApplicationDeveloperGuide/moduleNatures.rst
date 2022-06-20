@@ -157,13 +157,13 @@ This module nature defines the following dedicated configuration properties:
      - Full Qualified Name of the main class of the kernel. This option is required.
      - Not set
    * - runtime.api.name
-     - Name of the Runtime API of the kernel. This option is required, 
-       unless a :ref:`Runtime API <runtime_environment>` is declared in the dependencies.
-     - Not set
+     - Name of the Runtime API of the kernel. This option is ignored 
+       when a :ref:`Runtime API <runtime_environment>` is declared in the dependencies.
+     - ``RUNTIME``
    * - runtime.api.version
-     - Version of the Runtime API of the kernel. This option is required, 
-       unless a :ref:`Runtime API <runtime_environment>` is declared in the dependencies..
-     - Not set
+     - Version of the Runtime API of the kernel. This option is ignored 
+       when a :ref:`Runtime API <runtime_environment>` is declared in the dependencies.
+     - ``1.0``
    * - skip.build.virtual.device
      - When this property is set (any value), the virtual device is not built.
      - Not set
@@ -324,22 +324,6 @@ Runtime Environment
 This module nature inherits the configuration properties of the following plugins:
 
 - :ref:`module_natures.plugins.artifact_checker`
-
-This module nature defines the following dedicated configuration properties:
-
-.. list-table:: 
-   :widths: 25 65 15
-   :header-rows: 1
-
-   * - Name
-     - Description
-     - Default
-   * - ``runtime.api.name``
-     - Name of the Runtime Environment. This option is required.
-     - Not set
-   * - ``runtime.api.version``
-     - Version of the Runtime Environment.
-     - Module version
 
 .. _module_natures.sandboxed_application:
 

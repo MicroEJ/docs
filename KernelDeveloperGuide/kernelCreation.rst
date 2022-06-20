@@ -77,9 +77,6 @@ A Kernel API or a Runtime Environment module is added as a dependency with the c
 
    <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6" conf="kernelapi->default"/>
 
-The build options ``runtime.api.name`` and ``runtime.api.version`` must be set unless declaring a dependency to a Runtime API module.
-This allows to generate the consolidated Javadoc of the exposed APIs in the Virtual Device.
-
 .. _system_application_input_ways:
 
 Add System Applications
@@ -165,8 +162,6 @@ Ivy info
    revision="1.0.0">
        <ea:build organisation="com.is2t.easyant.buildtypes" module="build-firmware-multiapp" revision="2.+"/>
        <ea:property name="application.main.class" value="org.Main" />
-       <ea:property name="runtime.api.name" value="RUNTIME" />
-       <ea:property name="runtime.api.version" value="0.1.0" />
    </info>
                
 
@@ -174,9 +169,7 @@ The property ``application.main.class`` is set to the fully qualified
 name of the main java class. The firmware generated from the skeleton 
 defines its own runtime environment by using ivy dependencies
 on several ``kernel API`` instead of relying on a runtime environment
-module. As consequence, the ``runtime.api.name`` and
-``runtime.api.version`` properties are specified in the firmware project
-itself.
+module.
 
 .. _ivy_confs:
 

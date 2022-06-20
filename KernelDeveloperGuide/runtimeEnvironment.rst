@@ -35,28 +35,39 @@ A Runtime Environment :ref:`module project <mmm_module_skeleton>` is created wit
 .. code:: xml
 
    <info organisation="com.mycompany" module="myruntimeapi" status="integration" revision="1.0.0">
-      <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="2.+">
-      <ea:property name="runtime.api.name" value="RUNTIME"/>
-      <ea:property name="runtime.api.version" value="1.0"/>
+      <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="3.0.+">
       </ea:build>
    </info>
 
-The build option ``runtime.api.name`` defines the name of the Runtime Environment (required). 
-The build option ``runtime.api.version`` defines its version. If not set, it takes the declared module version.
-
+The Kernel APIs can be declared as dependencies of the module.
 For example, the following dependencies declare a Runtime Environment that aggregates all classes, methods and fields
-defined by ``EDC,KF,BON,Wadapps,Components`` Kernel APIs modules.
+defined by ``EDC,KF,BON,Wadapps,MicroUI`` Kernel APIs modules.
 
 .. code:: xml
 
    <dependencies>
-      <dependency org="com.microej.kernelapi" name="edc" rev="1.0.4"/>
-      <dependency org="com.microej.kernelapi" name="kf" rev="2.0.1"/>
-      <dependency org="com.microej.kernelapi" name="bon" rev="1.0.4"/>
-      <dependency org="com.microej.kernelapi" name="wadapps" rev="1.2.2"/>
-      <dependency org="com.microej.kernelapi" name="components" rev="1.2.2"/>
+      <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6"/>
+      <dependency org="com.microej.kernelapi" name="kf" rev="2.0.3"/>
+      <dependency org="com.microej.kernelapi" name="bon" rev="1.1.1"/>
+      <dependency org="com.microej.kernelapi" name="wadapps" rev="2.1.2"/>
+      <dependency org="com.microej.kernelapi" name="microui" rev="3.1.0"/>
    </dependencies>
 
+The libraries modules are fetched transitively from the Kernel APIs dependencies.
+For example, the dependency ``com.microej.kernelapi#edc;1.0.6`` fetches the library ``ej.api#edc;1.2.3``.
+
+It is also possible to force the version of the libraries to use by declaring them as direct dependencies.
+In this example:
+
+.. code:: xml
+
+   <dependencies>
+      <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6"/>
+      
+      <dependency org="ej.api" name="edc" rev="1.3.4"/>
+   </dependencies>
+
+The Runtime Environment uses the version ``1.3.4`` of the EDC library instead of the version ``1.2.3`` fetched transitively by the dependency ``com.microej.kernelapi#edc;1.0.6``.
 
 Use a Runtime Environment in an Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
