@@ -5,7 +5,7 @@ Runtime Environment
 ===================
 
 Principle
-~~~~~~~~~
+---------
 
 A Runtime Environment is a :ref:`module nature <module_natures>` for defining the set of APIs available to an Application developer on a Kernel.
 It is built by aggregating a set of :ref:`Kernel APIs <kernel.api>`.
@@ -28,7 +28,7 @@ The following figure shows the overall build flow:
 
 
 Create a new Runtime Environment Module
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------
 
 A Runtime Environment :ref:`module project <mmm_module_skeleton>` is created with the ``runtime-api`` skeleton.
 
@@ -38,6 +38,9 @@ A Runtime Environment :ref:`module project <mmm_module_skeleton>` is created wit
       <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="3.0.+">
       </ea:build>
    </info>
+
+Kernel APIs as dependencies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Kernel APIs can be declared as dependencies of the module.
 For example, the following dependencies declare a Runtime Environment that aggregates all classes, methods and fields
@@ -69,8 +72,15 @@ In this example:
 
 The Runtime Environment uses the version ``1.3.4`` of the EDC library instead of the version ``1.2.3`` fetched transitively by the dependency ``com.microej.kernelapi#edc;1.0.6``.
 
+Kernel APIs as project file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Kernel APIs can also be defined in a file in the Runtime Environment directly.
+The file must be named ``kernel.api`` and stored in the ``src/main/resources`` folder.
+
+
 Use a Runtime Environment in an Application
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------------
 
 Once a Runtime Environment is available, it can be used in the Applications as a dependency::
 
@@ -84,7 +94,7 @@ Declaring additional dependencies in the Application could lead to inconsistent 
 
 
 Extend a Runtime Environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 
 Foundation and Add-On libraries can be extended by adding new methods to their existing classes thanks to the `Class Extender
 tool <https://repository.microej.com/modules/com/microej/tool/class-extender/>`_. This tool works at binary level
@@ -122,7 +132,7 @@ Two processes are taking place to apply extensions:
       It overrides the original EDC Foundation library implementation jar file.
 
 Class Extension Principle
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A class extension is a Java class that implements methods to inject to a target class. The methods to inject must
 
