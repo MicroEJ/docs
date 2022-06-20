@@ -126,13 +126,13 @@ Class Extension Principle
 
 A class extension is a Java class that implements methods to inject to a target class. The methods to inject must
 
-   - be annotated with ``@Extend`` annotation which take as parameter the fully qualified name of the class to extend
-   - declared as ``static``
+   - be annotated with the `@Extend <https://repository.microej.com/javadoc/microej_5.x/apis/ej/basictool/annotation/Extend.html>`_ annotation which takes as parameter the fully qualified name of the class to extend
+   - be declared as ``static``
    - (**if it is an instance method**) take a first parameter of the type of the class to extend.
-     This parameters refers to the instance of the created object (the ``this``)
-   - (**if it is a class method**) add ``isStatic=true`` to the ``@Extended`` annotation parameters
+     This parameter refers to the instance of the created object (the ``this``)
+   - (**if it is a class method**) add ``isStatic=true`` to the `@Extend <https://repository.microej.com/javadoc/microej_5.x/apis/ej/basictool/annotation/Extend.html>`_ annotation parameters
 
-A Class Extension can then be built as a classic ``build-microej-javalib``  MicroEJ Module. To apply an extension,
+A Class Extension can then be built as an Add-On library (``build-microej-javalib``)  MicroEJ Module. To apply an extension,
 you need to add the dependency to the Kernel ``module.ivy``. `Class Extender tool <https://repository.microej.com/modules/com/microej/tool/class-extender/>`_
 will then inject extension methods bytecode to the orginal classes during Firmware build.
 
