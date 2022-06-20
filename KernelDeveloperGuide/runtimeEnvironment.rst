@@ -96,10 +96,11 @@ Declaring additional dependencies in the Application could lead to inconsistent 
 Extend a Runtime Environment
 ----------------------------
 
-Foundation and Add-On libraries can be extended by adding new methods to their existing classes thanks to the `Class Extender
-tool <https://repository.microej.com/modules/com/microej/tool/class-extender/>`_. This tool works at binary level
-and is able to inject methods from one class to another. Extensions can thus be independently compiled and be retrieved
-by the Kernel and applied during a Multi-Sandbox Firmware build.
+In a Kernel, the Foundation and Add-On libraries can be extended by adding new methods to their existing classes.
+For example, it allows to add new methods to the class ``java.lang.String`` of the module ``ej.api#edc``.
+This is done thanks to the `Class Extender tool <https://repository.microej.com/modules/com/microej/tool/class-extender/>`_.
+This tool works at binary level and is able to inject methods from one class to another.
+Extensions can thus be independently compiled and be retrieved by the Kernel and applied during a Multi-Sandbox Firmware build.
 
 To make the extensions available to Application developers, the Runtime Environment has to be extended too. 
 
@@ -109,44 +110,47 @@ The following diagram illustrates the process of extending the default `String <
    :align: center
    :scale: 100%
 
-Two processes are taking place to apply extensions:
+The extension must be applied in 2 locations:
 
-   1. The custom Runtime Environment is built using the ``build-runtime-api`` build type. It takes three components as input:
+   1. In the Runtime Environment. This ensures that Applications developers can see and use the new methods.
+      The custom Runtime Environment must contain the following element:
 
-      - EDC Foundation Library API which contains the String class we want to extend,
-      - a :ref:`Kernel API <kernel.api>` file definition in the ``src/main/resource`` folder which includes new methods,
-      - a new ``String.java`` API source file in the ``src/main/java`` folder, which includes new methods with their Javadoc specification. 
-        This class overrides the String class fetched from EDC dependency.
+      - the API to extend, as a dependency. 
+        Here this is the EDC Foundation Library API, which contains the ``java.lang.String`` class we want to extend.
+        We can add it transitively through its kernelapi::
 
-      Once built, a Runtime Environment module contains the following elements:
+         <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6"/>
 
-      - an Add-On library containing the new ``kernel.api``
-      - the Runtime API containing the extended String API
-      - the corresponding Javadoc including the extended methods
+      - a :ref:`Kernel API <kernel.api>` file definition in the ``src/main/resources`` folder which includes the new methods.
+        For example::
 
-   2. An extended EDC implementation is built during Kernel build by calling the Class Extender tool. It takes two components:
+         <?xml version="1.0" encoding="UTF-8"?>
+         <require>
+            <method name="java.lang.String.myNewMethod(int)java.lang.String"/>
+            <method name="java.lang.String.myOtherNewMethod()void"/>
+         </require>
 
-      - the original EDC Foundation library implementation jar file
-      - the String extension Add-On library jar file
+      - the new version of the Java source of the API to extend.
+        This class overrides the original class fetched from the dependency.
+        Therefore it must include all the methods, the ones existing in the original class as well as the new methods, with their Javadoc specification.
+        In our example, we must add a new ``String.java`` source file in the ``src/main/java/java/lang`` folder, and add the new methods::
 
-      It overrides the original EDC Foundation library implementation jar file.
+         	public String myNewMethod(int number) {
+         	   return "My number is " + number;
+	         }
+	
+         	public void myOtherNewMethod() {
+         	   System.out.println("Hello!");
+         	}
 
-Class Extension Principle
-~~~~~~~~~~~~~~~~~~~~~~~~~
+        This class overrides the ``java.lang.String`` class fetched from the EDC dependency.     
 
-A class extension is a Java class that implements methods to inject to a target class. The methods to inject must
+      Once built, the custom Runtime Environment contains the new methods and can be used in the Applications projects.
 
-   - be annotated with the `@Extend <https://repository.microej.com/javadoc/microej_5.x/apis/ej/basictool/annotation/Extend.html>`_ annotation which takes as parameter the fully qualified name of the class to extend
-   - be declared as ``static``
-   - (**if it is an instance method**) take a first parameter of the type of the class to extend.
-     This parameter refers to the instance of the created object (the ``this``)
-   - (**if it is a class method**) add ``isStatic=true`` to the `@Extend <https://repository.microej.com/javadoc/microej_5.x/apis/ej/basictool/annotation/Extend.html>`_ annotation parameters
-
-A Class Extension can then be built as an Add-On library (``build-microej-javalib``)  MicroEJ Module. To apply an extension,
-you need to add the dependency to the Kernel ``module.ivy``. `Class Extender tool <https://repository.microej.com/modules/com/microej/tool/class-extender/>`_
-will then inject extension methods bytecode to the orginal classes during Firmware build.
-
-Refer to the `Class Extender tool README <https://repository.microej.com/modules/com/microej/tool/class-extender/1.0.4/README-1.0.4.md>`_ for more information about class extension and integration to Firmware.
+   2. In the Kernel.
+      An extended EDC implementation is built during the Kernel build thanks to the Class Extender tool. 
+      Refer to the `Class Extender tool README <https://repository.microej.com/modules/com/microej/tool/class-extender/1.0.4/README-1.0.4.md>`_ 
+      and especially to the chapter ``Include Class Extender During Firmware Project Build`` to learn how to use it in a Kernel build.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
