@@ -39,7 +39,7 @@ A Runtime Environment :ref:`module project <mmm_module_skeleton>` is created wit
       </ea:build>
    </info>
 
-Kernel APIs as dependencies
+Kernel APIs as Dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Kernel APIs can be declared as dependencies of the module.
@@ -72,7 +72,7 @@ In this example:
 
 The Runtime Environment uses the version ``1.3.4`` of the EDC library instead of the version ``1.2.3`` fetched transitively by the dependency ``com.microej.kernelapi#edc;1.0.6``.
 
-Kernel APIs as project file
+Kernel APIs as Project File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Kernel APIs can also be defined in a file in the Runtime Environment directly.
