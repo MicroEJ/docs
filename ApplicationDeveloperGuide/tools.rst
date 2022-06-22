@@ -32,7 +32,6 @@ tab then contains the options relevant to the selected tool.
    codeCoverageAnalyzer
    heapUsageMonitoring
    heapAnalyzer   
-   elfToMapGenerator
    serialToSocketTransmitter
    memoryMapAnalyzer
    trace
