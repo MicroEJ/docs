@@ -3,11 +3,12 @@
 Android Vector Drawable Loader
 ==============================
 
-The AVD Loader is an Add-on Library that can load Vector Images from Android Vector Drawable XML files, at runtime.
+Overview
+--------
 
-There are cases where it is required to load a vector image directly from its original XML description at runtime rather than loading it as an immutable resource at build-time.
-For example, the image can be an external resource retrieved dynamically from a server or a filesystem. 
-For those cases, the AVD Loader can parse a Vector Drawable XML file and build the corresponding vector image.
+The AVD Loader is an Add-on Library that can load vector images from Android Vector Drawable XML files.
+Unlike :ref:`immutable vector images <vectorimage_overview>`, the XML parsing and interpreting is done at runtime.
+This is useful for loading a vector image as an external resource, especially when the resource has to be loaded dynamically (i.e., not known at build-time).
 
 To use the AVD Loader library, add the following dependency to a :ref:`module description file <mmm_module_description>`:
 
@@ -20,12 +21,41 @@ To use the AVD Loader library, add the following dependency to a :ref:`module de
 
    The AVD Loader library requires MicroVG library 1.1.0 and above.
 
+.. _section.avdloader.format:
+
+Supported Format
+----------------
+
+The library supports the vector drawables with the following elements (in that order):
+
+:``<vector>``: Used to define a vector drawable
+   
+   :``android:viewportWidth``: The width of the image (must be a positive value).
+   :``android:viewportHeight``: The height of the image (must be a positive value).
+
+:``<path>``: Defines a path.
+
+   :``android:fillColor``: (optional) The color used to fill the path. Color is specified as a 32-bit ARGB value in hexadecimal format (``#AARRGGBB``).
+   :``android:fillType``: The fillType for the path, can be either ``evenOdd`` or ``nonZero``.
+   :``android:pathData``: The path data, using the commands in {``M``, ``L``, ``C``, ``Q``, ``Z``} (match upper-case).
+
+Linear gradient can also be used as color fill for a ``<path>`` (optional).
+
+:``<gradient>``: Used to define a linear gradient
+   
+   :``android:endX``: The x-coordinate for the end of the gradient vector.
+   :``android:endY``: The y-coordinate for the end of the gradient vector.
+   :``android:startX``: The x-coordinate for the start of the gradient vector.
+   :``android:startY``: The y-coordinate for the start of the gradient vector.
+
+   :``<item>``: Defines an item of the gradient (minimum two items for a gradient).
+
+      :``android:color``: The color of the item. Color is specified as a 32-bit ARGB value in hexadecimal format (``#AARRGGBB``).
+      :``android:offset``: The position of the item inside the gradient (value in [0..1]).
 
 
-Loading a Vector Drawable
--------------------------
-
-Here is a simple example of a Vector Drawable ``myImage.xml`` that defines a 100 x 100 image with two paths: the first one with a solid color fill, the second one with a linear gradient.
+Here is an example of a Vector Drawable ``myImage.xml`` that complies with that format. 
+It defines a 100 x 100 image with two paths: the first one with a solid color fill, the second one with a linear gradient.
 
 .. code-block:: XML
 
@@ -41,7 +71,21 @@ Here is a simple example of a Vector Drawable ``myImage.xml`` that defines a 100
       </path>
    </vector>
 
-The following code loads the Vector Drawable with the ``AvdImageLoader.loadImage()`` method, given the path to the resource. The resulting vector image can then be drawn on the display:
+The library only supports a subset of the `Vector Drawable specification <https://developer.android.com/reference/android/graphics/drawable/VectorDrawable>`_, to optimize the CPU time and memory needed for parsing and interpreting Vector Drawables in resource-constrained embedded devices.
+
+.. note::
+
+   The image generator tool provides a way to make a Vector Drawable compatible with the library.
+   See :ref:`this section <section.avdloader.convert>` for more information.
+
+
+
+Loading a Vector Drawable
+-------------------------
+
+The following code loads the Vector Drawable ``myImage.xml`` with the ``AvdImageLoader.loadImage()`` method. 
+This method has one parameter which is the path to the Vector Drawable file, provided as a resource of the application.
+The resulting vector image can then be drawn on the display:
 
 
 |startTable|
@@ -70,32 +114,6 @@ The following code loads the Vector Drawable with the ``AvdImageLoader.loadImage
 |endTable|
 
 
-.. note::
-
-   Vector Drawables that must be loaded as :ref:`Raw Resource <section.classpath.elements.resources>` are declared in ``*.resources.list`` files.
-
-.. _section.avdloader.requirements:
-
-Requirements
-------------
-
-Unlike the :ref:`immutable vector images <vectorimage_overview>`, which are converted at build-time using the image generator tool, the conversion from the Vector Drawable format to the platform format is done at runtime.
-To limit the CPU time and memory needed for parsing and interpreting Vector Drawables in resource-constrained embedded devices, the input XML file must have been pre-processed before loading.
-
-The pre-processing step converts the original XML into a Vector Drawable which is optimized for runtime loading.
-The objective of the conversion is threefold:
-
-* Limit the size of the XML file (e.g., minification)
-* Normalize the output (e.g., use only absolute path commands in ``android:pathData``)
-* Pre-process the resource-consuming operations (e.g., transformations, stroking)
-
-To convert a Vector Drawable, run the Vector Image Converter with the following command line:
-
-.. code-block::
-
-   java -jar vectorimage-converter.jar --input originalImage.xml --avd myImage.xml
-
-
 
 
 Limitations
@@ -105,16 +123,38 @@ The AVD Loader can only load static images (i.e., no animations). The other limi
 
 
 
-Advanced / Best Practices
--------------------------
+Advanced
+--------
 
-Heap Usage
-~~~~~~~~~~
+.. _section.avdloader.convert:
 
-The loading of a vector Drawable at runtime uses some Java heap:
+Make a Vector Drawable compatible with the library
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* for the working buffers and intermediate objects used during the loading phase. The XML parser is optimized to stream the data and uses as few heap as possible
-* for the image data
+To ensure that a Vector Drawable can be loaded by the AVD Loader library, use the image generator tool to convert the drawable:
+
+.. code-block::
+
+   java -jar [path_to_platform]/source/tools/vectorimage-converter.jar --input originalImage.xml --avd myImage.xml
+
+
+This process the input file ``originalImage.xml`` and outputs a Vector Drawable ``myImage.xml`` which is compliant with the library and optimized for runtime loading.
+
+The processing does the following:
+
+* Normalize the output
+* Limit the size of the XML file (e.g., minification)
+* Pre-process the resource-consuming operations (e.g., transformations, stroking)
+
+
+
+Memory Usage
+~~~~~~~~~~~~
+
+The loading of a vector Drawable at runtime uses Java heap:
+
+* for the working buffers and intermediate objects used during the loading phase. The XML parser is optimized to stream the data and uses as few heap as possible.
+* for the image data.
 
 
 
@@ -154,7 +194,7 @@ A error can be raised when the parsing fails:
 
    Exception in thread "main" ej.microvg.VectorGraphicsException: MicroVG: The image cannot be parsed. The image must be a valid AVD image, converted with the platform's image generator.
 
-This error indicates that the file is not a valid Vector Drawable converted by the Vector Image Converter. See :ref:`this section <section.avdloader.requirements>` to convert a Vector Drawable.
+This error indicates that the file is not a compatible Vector Drawable, as specified in :ref:`this section <section.avdloader.format>`.
 
 
 ..
