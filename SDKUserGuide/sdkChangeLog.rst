@@ -2,6 +2,19 @@
 SDK Distribution Changelog
 --------------------------
 
+[22.06] - 2022-06-29
+~~~~~~~~~~~~~~~~~~~~
+
+**NOTE:** This release requires a JDK 11 and an Architecture 7.17 or more.
+Please refer to :ref:`system-requirements` for more details.
+
+-  Included :ref:`SDK 5.6.0 <changelog-5.6.0>`.
+-  Added a Distributon for Mac M1.
+-  Updated to Eclipse version ``2022-03``.
+-  Changed required Java Runtime to JDK 11 (JRE and other versions are not supported anymore).
+-  Changed version of the Distribution module to ``1.0.0`` to use semver, and kept the public version format to ``YY.MM`` (``22.06``).
+-  Removed Resources Center view.
+
 [21.11] - 2021-11-15
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -125,6 +138,51 @@ for more details.
 -------------
 SDK Changelog
 -------------
+
+.. _changelog-5.6.0:
+
+[5.6.0] - 2022-06-??
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+-  Changed Easyant targets executed by ``mmm build`` from ``clean,verify`` to ``clean,package``.
+-  Upgraded Front Panel plugin to version 6.1.3 to remove warning on fp framework.
+-  Updated Workspace settings to ignore errors in Ant build files by Default.
+-  Fixed error when opening Heap Dump files which are not part of the workspace.
+-  Fixed error when opening Map files which are not part of the workspace.
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+General
+^^^^^^^
+
+-  Added support for JDK 11 to build modules.
+-  Added the capability to override module organisation/name/revision with system properties.
+-  Added error message when using non-supported Eclipse Link Folders.
+-  Updated End User License Agreement.
+-  Fixed MMM failure when resolving a dependency with a version containing a number with 4 digits.
+-  Fixed error when building a meta-build project with public sub-modules and using target ``verify``.
+-  Removed Nashorn deprecation warnings in build logs.
+
+Build Types
+^^^^^^^^^^^
+
+-  Updated ``build-firmware-multiapp``, ``build-runtime-api`` and ``build-application`` to support 
+   consistent Runtime Environment and allow Application to compile against it.
+
+Build Plugins
+^^^^^^^^^^^^^
+
+-  Updated ``elf-utils`` plugin to load the ELF related tools from the architecture/platform.
+
+Skeletons
+^^^^^^^^^
+
+-  Updated ``firmware-singleapp`` and ``firmware-multiapp`` skeletons for building the executable by default.
+-  Updated ``runtime-api`` to remove all Wadapps related resources and use KF only.
 
 .. _changelog-5.5.3:
 
