@@ -142,13 +142,26 @@ The tool comes with the VG pack installed in the platform, use the following com
    java -jar [path_to_platform]/source/tools/vectorimage-converter.jar --input originalImage.xml --avd myImage.xml
 
 
-This process the input file ``originalImage.xml`` and outputs a Vector Drawable ``myImage.xml`` which is compliant with the library and optimized for runtime loading.
+This process the input Vector Drawable ``originalImage.xml`` and outputs a Vector Drawable ``myImage.xml`` which is compliant with the library and optimized for runtime loading.
 
 The processing does the following:
 
 * Normalize the output
 * Limit the size of the XML file (e.g., minification)
 * Pre-process the resource-consuming operations (e.g., transformations, stroking)
+
+
+Convert a SVG into a compatible Vector Drawable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is possible to convert a SVG into a comptatible Vector Drawable using the platform tooling. Use the following command:
+
+.. code-block::
+
+   java -jar [path_to_platform]/source/tools/vectorimage-converter.jar --input originalImage.svg --svg myImage.xml
+
+
+This process the input SVG ``originalImage.svg`` and outputs a Vector Drawable ``myImage.xml``.
 
 
 
