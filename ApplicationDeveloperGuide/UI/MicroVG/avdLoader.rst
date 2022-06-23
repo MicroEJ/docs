@@ -115,7 +115,9 @@ The resulting vector image can then be drawn on the display:
 |endTable|
 
 
+.. note::
 
+   The image must be provided as a resource of the application, either :ref:`internal or external <section.applicationResources.internal_and_external_resources>`. For external resource loading, the BSP must implement the proper Low Level API (LLAPI), see :ref:`section_externalresourceloader` for more information on the implementation.
 
 Limitations
 -----------
@@ -142,7 +144,7 @@ The tool comes with the VG pack installed in the platform, use the following com
    java -jar [path_to_platform]/source/tools/vectorimage-converter.jar --input originalImage.xml --avd myImage.xml
 
 
-This process the input Vector Drawable ``originalImage.xml`` and outputs a Vector Drawable ``myImage.xml`` which is compliant with the library and optimized for runtime loading.
+This processes the input Vector Drawable ``originalImage.xml`` and outputs a Vector Drawable ``myImage.xml`` which is compliant with the library and optimized for runtime loading.
 
 The processing does the following:
 
@@ -161,7 +163,7 @@ It is possible to convert a SVG into a compatible Vector Drawable using the plat
    java -jar [path_to_platform]/source/tools/vectorimage-converter.jar --input originalImage.svg --svg myImage.xml
 
 
-This process the input SVG ``originalImage.svg`` and outputs a Vector Drawable ``myImage.xml``.
+This processes the input SVG ``originalImage.svg`` and outputs a Vector Drawable ``myImage.xml``.
 
 
 
