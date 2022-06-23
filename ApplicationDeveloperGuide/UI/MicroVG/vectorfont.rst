@@ -174,6 +174,7 @@ Colored Emojis
 
 The library supports the drawing of colored multilayer glyphs, but only for the embedded implementation. The simulator implementation draws the full emoji glyph with the color of the graphics context.
 
+.. _metrics_and_text_positioning:
 
 Metrics and Text Positioning
 ----------------------------
@@ -209,6 +210,8 @@ These methods return the width and height of a string drawing. They are computed
 	:width: 600px
 
 These methods can measure a specific glyph width and height using a one character string.
+
+.. _drawOnCircle:
 
 Drawing a Text on a Circle
 --------------------------
@@ -295,6 +298,65 @@ The position where the text starts along the circle is the 3 o'clock position (p
 
 |endTable|
 
+
+Complex Text Layout
+-------------------	
+
+Some scripts like Arabic or Thai scripts request a specific text layout mode where the shape or positioning of a grapheme depends on its relation to other graphemes (Refer to `https://en.wikipedia.org/wiki/Complex_text_layout <https://en.wikipedia.org/wiki/Complex_text_layout>`_).
+
+The MicroVG library provides two different layout modes:
+
+- the simple layout mode for latin scripts and other scripts where character unicodes and glyphs are one-to-one associated.
+- the complex layout mode for complex text layout scripts like arabic or thai.
+
+The simple layout mode draws the text character as described in the previous sections. It uses the font **Kerning** table and the glyphs advanceX parameter to position the glyphs one after the other.
+
+The complex layout mode uses the **GPOS** and **GSUB** font tables to substitute and position the character glyph.
+
+The complex layout mode can be selected while loading the glyph with `ej.microvg.VectorFont.loadFont` by passing a supplementary boolean argument with value `true`.
+
+Next example shows the same arabic string drawn with the same font but with simple (in white) and complex layout(in RED).
+
+|startTable|
+
+.. code-block:: java
+
+	VectorFont font0 = VectorFont.loadFont(FONT_NAME, false);
+	VectorFont font1 = VectorFont.loadFont(FONT_NAME, true);
+
+	String s = "العربية";
+
+	g.setColor(Colors.WHITE);
+	VectorGraphicsPainter.drawString(g, s, font0, 20, 50, 50);
+
+	g.setColor(Colors.RED);
+	VectorGraphicsPainter.drawString(g, s, font1, 20, 50, 100);
+
+|midTable|
+
+.. figure:: images/drawStringLayout.png
+	:align: center
+	:width: 300px
+
+|endTable|
+
+
+Text Measurement and Positioning
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The measurement of string in complex layout mode respects the requirements presented in :ref:`metrics_and_text_positioning`. 
+
+Strings from script where text is read from right to left, like arabic, are still drawn with the anchor point located on the top left of the string.
+
+Bidirectional Text
+~~~~~~~~~~~~~~~~~~
+
+The complex layout mode does not support bidirectional text. A bidirectional text has to be splitted in multiple strings and each string has to be drawn to the correct location.
+
+Limitations
+~~~~~~~~~~~
+
+The complex layout mode is not available for the :ref:`drawOnCircle` feature.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
