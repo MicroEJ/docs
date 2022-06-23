@@ -154,7 +154,7 @@ The processing does the following:
 Convert a SVG into a compatible Vector Drawable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It is possible to convert a SVG into a comptatible Vector Drawable using the platform tooling. Use the following command:
+It is possible to convert a SVG into a compatible Vector Drawable using the platform tooling. Use the following command:
 
 .. code-block::
 
