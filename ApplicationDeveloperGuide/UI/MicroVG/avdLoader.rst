@@ -35,11 +35,11 @@ The library supports the vector drawables with the following elements (in that o
 
 :``<path>``: Defines a path.
 
-   :``android:fillColor``: (optional) The color used to fill the path. Color is specified as a 32-bit ARGB value in hexadecimal format (``#AARRGGBB``).
+   :``android:fillColor``: (optional) The color used to fill the path. Color is specified as a 32-bit ARGB value in hexadecimal format (``#AARRGGBB``). This attribute is optional when a gradient color is specified (see below).
    :``android:fillType``: The fillType for the path, can be either ``evenOdd`` or ``nonZero``.
    :``android:pathData``: The path data, using the commands in {``M``, ``L``, ``C``, ``Q``, ``Z``} (match upper-case).
 
-Linear gradient can also be used as color fill for a ``<path>`` (optional).
+A linear gradient can also be used as color fill for a ``<path>``. This element is optional if a solid color fill has been specified.
 
 :``<gradient>``: Used to define a linear gradient
    
@@ -72,6 +72,7 @@ It defines a 100 x 100 image with two paths: the first one with a solid color fi
    </vector>
 
 The library only supports a subset of the `Vector Drawable specification <https://developer.android.com/reference/android/graphics/drawable/VectorDrawable>`_, to optimize the CPU time and memory needed for parsing and interpreting Vector Drawables in resource-constrained embedded devices.
+If the input Vector Drawable does not comply with this format, the library will throw an exception.
 
 .. note::
 
@@ -131,7 +132,10 @@ Advanced
 Make a Vector Drawable compatible with the library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To ensure that a Vector Drawable can be loaded by the AVD Loader library, use the image generator tool to convert the drawable:
+To ensure that a Vector Drawable can be loaded by the AVD Loader library at runtime, the image generator tool can generate a compatible version of the drawable.
+
+The tool comes with the VG pack installed in the platform, use the following command line to run it:
+
 
 .. code-block::
 
@@ -151,7 +155,7 @@ The processing does the following:
 Memory Usage
 ~~~~~~~~~~~~
 
-The loading of a vector Drawable at runtime uses Java heap:
+The loading of a Vector Drawable at runtime uses Java heap:
 
 * for the working buffers and intermediate objects used during the loading phase. The XML parser is optimized to stream the data and uses as few heap as possible.
 * for the image data.
@@ -161,7 +165,7 @@ The loading of a vector Drawable at runtime uses Java heap:
 Simplify the Path Data
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The loading time and heap usage grow linearly with the number of path commands in the Vector Drawable. The drawing time may also be affected.
+The loading time and heap usage grow linearly with the number of path commands in the Vector Drawable.
 To achieve optimal performances, it is recommended to reduce the number of path commands, by "simplifying" the paths. The simplification algorithm will determine the optimal amount of anchor points to use in the artwork.
 Most of the modern Graphic Design Software have an option to simplify a path (check `this article <https://helpx.adobe.com/illustrator/using/simplify_paths.html>`_ for Adobe Illustrator for example).
 
