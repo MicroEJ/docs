@@ -834,6 +834,31 @@ Make sure it is one of the following ones:
 - ``build-microej-javalib``, with version ``4.2.0`` or higher
 - ``build-firmware-singleapp``, with version ``1.3.0`` or higher
 
+Nashorn warning messages
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a module is built with a JDK 11, such warning messages can appear in the logs::
+
+   Warning: Nashorn engine is planned to be removed from a future JDK release
+
+These messages can be safely ignored.
+
+They also can be hidden by setting the System Property ``nashorn.args`` to ``--no-deprecation-warning``:
+
+- When using the ``Build Module`` action in the SDK:
+
+  - create a properties file with the following content::
+
+     nashorn.args=--no-deprecation-warning
+
+  - in the SDK, go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Module Manager`
+  - in the ``Properties Files`` panel, add the properties file previously created
+
+- When using the MMM CLI, add ``-Dnashorn.args=--no-deprecation-warning`` in the command line.
+
+The build output should not contain any Nashorn warning message anymore.
+
+
 .. _meta_build:
 
 Meta Build
