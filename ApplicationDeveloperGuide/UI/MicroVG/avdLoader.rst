@@ -160,7 +160,7 @@ It is possible to convert a SVG into a compatible Vector Drawable using the plat
 
 .. code-block::
 
-   java -jar [path_to_platform]/source/tools/vectorimage-converter.jar --input originalImage.svg --svg myImage.xml
+   java -jar [path_to_platform]/source/tools/vectorimage-converter.jar --input originalImage.svg --avd myImage.xml
 
 
 This processes the input SVG ``originalImage.svg`` and outputs a Vector Drawable ``myImage.xml``.
