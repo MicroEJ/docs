@@ -6,7 +6,7 @@ Introduction
 
 The Kernel Developer's Guide describes how to create a Kernel Application: a :ref:`Standalone Application <standalone_application>`
 that can be extended (statically or dynamically) to run and control the execution of new
-applications called :ref:`Sandboxed Applications :ref:<sandboxed_application>`).
+applications called :ref:`Sandboxed Applications <sandboxed_application>`).
 
 The intended audience of this document are java developers and system
 architects who plan to design and build their own firmware.
