@@ -148,9 +148,9 @@ The extension must be applied in 2 locations:
       Once built, the custom Runtime Environment contains the new methods and can be used in the Applications projects.
 
    2. In the Kernel.
-      An extended EDC implementation is built during the Kernel build thanks to the Class Extender tool. 
+      The EDC implementation is extended during the Kernel build thanks to the Class Extender tool. 
       Refer to the `Class Extender tool README <https://repository.microej.com/modules/com/microej/tool/class-extender/1.0.4/README-1.0.4.md>`_ 
-      and especially to the chapter ``Include Class Extender During Firmware Project Build`` to learn how to use it in a Kernel build.
+      and especially to the chapter ``Include Class Extender During Firmware Project Build`` to learn how to integrate it in a Kernel build.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
