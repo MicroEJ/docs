@@ -96,7 +96,7 @@ Declaring additional dependencies in the Application could lead to inconsistent 
 Extend a Runtime Environment
 ----------------------------
 
-In a Kernel, the Foundation and Add-On libraries can be extended by adding new methods to their existing classes.
+In a Kernel, Foundation and Add-On libraries can be extended by adding new methods to their existing classes.
 For example, it allows to add new methods to the class ``java.lang.String`` of the module ``ej.api#edc``.
 This is done thanks to the `Class Extender tool <https://repository.microej.com/modules/com/microej/tool/class-extender/>`_.
 This tool works at binary level and is able to inject methods from one class to another.
