@@ -99,7 +99,7 @@ messages, for example:
 The generation is triggered when building the application or after a change done in any PO or ``*.nls.list`` files.
 This allows to always have the Java interfaces up-to-date with the translations and to use them immediately.
 
-The `NLS-PO module <https://forge.microej.com/artifactory/webapp/#/artifacts/browse/tree/General/microej-central-repository-release/com/microej/library/runtime/nls-po>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the Application project.
+The `NLS-PO module <https://repository.microej.com/modules/com/microej/library/runtime/nls-po>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the Application project.
 
 ::
 
