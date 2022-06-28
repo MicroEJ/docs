@@ -137,6 +137,13 @@ listing the fully qualified name of a type. Example:
    com.mycompany.MyImplementation
    java.util.Vector
 
+.. _section.classpath.elements.resources:
+
+Resources
+---------
+
+See :ref:`dedicated chapter <chapter.microej.applicationResources>`.
+
 .. _section.classpath.elements.immutables:
 
 Immutable Objects
