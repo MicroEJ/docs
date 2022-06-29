@@ -528,7 +528,7 @@ The available options are:
 - ``--verbose`` (``-v``): verbose mode. Disabled by default. Add this option to enable verbose mode.
 - ``-Dxxx=yyy``: any additional option passed as system properties.
 
-When no command is specified, MMM CLI executes Easyant with custom targets using the ``--targets`` (``-t``) option (defaults to ``clean,package``).
+When no command is specified, MMM CLI executes Easyant with custom targets using the ``--targets`` (``-t``) option (defaults to ``clean,verify``).
 
 .. _mmm_cli_shared_configuration:
 
@@ -626,7 +626,7 @@ cleans the project.
 
 **build**
 
-The command ``build`` builds the project (executes Easyant with ``clean,package`` targets).
+The command ``build`` builds the project (executes Easyant with ``clean,verify`` targets).
 For example
 
 .. code:: console
