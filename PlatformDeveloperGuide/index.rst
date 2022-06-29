@@ -13,6 +13,7 @@ Platform Developer Guide
    platformCreation
    platformQualification
    coreEngine
+   advanceTrace
    multiSandbox
    tiny
    native
