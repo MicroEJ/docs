@@ -141,7 +141,7 @@ The tool comes with the VG pack installed in the platform, use the following com
 
 .. code-block::
 
-   java -jar [path_to_platform]/source/tools/vectorimage-converter.jar --input originalImage.xml --avd myImage.xml
+   java -cp [path_to_platform]/source/tools/imagegenerator-vectorimage.jar com.microej.converter.vectorimage.Main --input originalImage.xml --avd myImage.xml
 
 
 This processes the input Vector Drawable ``originalImage.xml`` and outputs a Vector Drawable ``myImage.xml`` which is compliant with the library and optimized for runtime loading.
@@ -160,7 +160,7 @@ It is possible to convert a SVG into a compatible Vector Drawable using the plat
 
 .. code-block::
 
-   java -jar [path_to_platform]/source/tools/vectorimage-converter.jar --input originalImage.svg --avd myImage.xml
+   java -cp [path_to_platform]/source/tools/imagegenerator-vectorimage.jar com.microej.converter.vectorimage.Main --input originalImage.svg --avd myImage.xml
 
 
 This processes the input SVG ``originalImage.svg`` and outputs a Vector Drawable ``myImage.xml``.
