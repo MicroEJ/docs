@@ -36,7 +36,7 @@ The image generator tool supports the following input file formats:
 
 Refer to the :ref:`vectorimage_limitations` section for the list of supported features for these file formats.
 
-The vector image objects are extracted and converted to paths made of `Move`, `Line`` and `Curve` commands. 
+The vector image objects are extracted and converted to paths made of `Move`, `Line` and `Curve` commands. 
 
 Each path is associated with either a fill color or a linear gradient. All object strokes are converted to filled paths at build-time.
 
