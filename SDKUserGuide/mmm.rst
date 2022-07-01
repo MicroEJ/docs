@@ -699,7 +699,7 @@ Build System Options
 --------------------
 
 MMM allows to modify the behavior of a build via System options.
-These options must be passed as system properties, using CLI `-D` option or via the :ref:`SDK Configuration options <mmm_options>`.
+These options must be passed as system properties, using :ref:`CLI <mmm_cli>` ``-D`` option or via the :ref:`SDK Configuration options <mmm_options>`.
 MMM provides the following options:
 
 * ``mmm.module.organisation`` [#require_sdk_5_6]_ : defines the organisation of the module. 
