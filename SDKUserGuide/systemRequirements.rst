@@ -14,7 +14,7 @@ System Requirements
    - macOS with Intel chip (tested on version 10.13 High Sierra, 10.14 Mojave)
    - macOS with Apple M1 chip (tested on version 12.0.1 Monterey), from SDK Distribution ``22.06``
 
-- **Java :**
+- **Java Runtime Environment :**
 
 The compatible JRE/JDK version depends on the Distribution, the SDK and the Architecture version.
 This table lists the supported combinations:
@@ -29,11 +29,11 @@ This table lists the supported combinations:
      - JRE/JDK
    * - 22.06
      - 5.6.0
-     - >= 7.17
+     - >= 7.17.0
      - JDK 11
    * - <= 21.11
      - 5.6.0
-     - >= 7.17
+     - >= 7.17.0
      - JRE or JDK 8 or 11
    * - <= 21.11
      - < 5.6.0
@@ -41,15 +41,15 @@ This table lists the supported combinations:
      - JRE or JDK 8
    * - <= 21.11
      - \*
-     - < 7.17
+     - < 7.17.0
      - JRE or JDK 8
 
 The combinations not listed here are not supported.
-For the supported combinations, tests have been done with the Oracle and the Eclipse Adoptium JDKs.
+For the supported combinations, tests have been done with both the Oracle and the Eclipse Adoptium JDK builds.
 
 .. warning::
    It is important to note that the SDK Distribution ``22.06`` requires a JDK ``11`` (not a JRE) 
-   and can be used only with an :ref:`Architecture <architecture_overview>` ``7.17`` or more.
+   and can be used only with an :ref:`Architecture <architecture_overview>` ``7.17.0`` or more.
 
 
 .. warning:: 
@@ -58,7 +58,7 @@ For the supported combinations, tests have been done with the Oracle and the Ecl
    .. figure:: images/adoptopenjdk-install.png
       :align: center
    
-   Without this option, the SDK installer cannot find the JDK and the message ``The application requires a Java Runtime Environment 11`` is displayed.
+   Without this option, the SDK installer cannot find the JDK and the message ``The application requires a Java Runtime Environment 8`` is displayed.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
