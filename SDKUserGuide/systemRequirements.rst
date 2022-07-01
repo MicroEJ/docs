@@ -4,7 +4,7 @@ System Requirements
 ===================
 
 - **Hardware :**
-   - Intel x64 (Dual-core i5 minimum) or Mac M1 processor
+   - Intel x64 (Dual-core i5 minimum) or macOS AArch64 (M1) processor
    - 4GB RAM (minimum)
    - 2GB Disk (minimum)
 
@@ -12,7 +12,7 @@ System Requirements
    - Windows 10, Windows 8.1 or Windows 8
    - Linux distributions (tested on Ubuntu 18.04, 20.04 and 22.04) - As of SDK Distribution ``20.10`` (based on Eclipse 2020-06), Ubuntu 16.04 is not supported.
    - macOS with Intel chip (tested on version 10.13 High Sierra, 10.14 Mojave)
-   - macOS with Apple M1 chip (tested on version 12.0.1 Monterey), from SDK Distribution ``22.06``
+   - macOS with AArch64 (M1) chip (tested on version 12.0.1 Monterey), from SDK Distribution ``22.06``
 
 - **Java Runtime Environment :**
 

@@ -5,21 +5,23 @@ SDK Distribution Changelog
 [22.06] - 2022-06-29
 ~~~~~~~~~~~~~~~~~~~~
 
-**NOTE:** This release requires a JDK 11 and an Architecture 7.17 or more.
-Please refer to :ref:`system-requirements` for more details.
+.. note::
+   
+   This release requires a JDK 11 and therefore an Architecture ``7.17.0`` or higher.
+   Please refer to :ref:`system-requirements` for more details.
 
 -  Included :ref:`SDK 5.6.0 <changelog-5.6.0>`.
--  Added a Distributon for Mac M1.
+-  Added support for macOS AArch64 (M1).
 -  Updated to Eclipse version ``2022-03``.
 -  Changed required Java Runtime to JDK 11 (JRE and other versions are not supported anymore).
--  Changed version of the Distribution module to ``1.0.0`` to use semver, and kept the public version format to ``YY.MM`` (``22.06``).
--  Removed Resources Center view.
 
 [21.11] - 2021-11-15
 ~~~~~~~~~~~~~~~~~~~~
 
-**NOTE:** This release prepares for a future JRE 11 support.
-However, the only officially supported JRE version is still JRE 8. Please refer to :ref:`system-requirements` for more details.
+.. note::
+
+   This release prepares for a future JRE 11 support.
+   However, the only officially supported JRE version is still JRE 8. Please refer to :ref:`system-requirements` for more details.
 
 -  Included :ref:`SDK 5.5.0 <changelog-5.5.0>`.
 -  Updated installer to accept both JRE 8 and JRE 11.
@@ -76,11 +78,13 @@ However, the only officially supported JRE version is still JRE 8. Please refer 
 -  Updated to Eclipse version ``2020-06``
 -  Fixed low quality MacOS SDK icons
 
-**NOTE:** Starting with this release, only 64bits JRE are supported
-because 32bits JRE support has been removed since Eclipse version
-``2018-12``. See `this
-link <https://www.eclipse.org/eclipse/news/4.10/platform.php#java32-removal>`__
-for more details.
+.. note::
+
+   Starting with this release, only 64bits JRE are supported
+   because 32bits JRE support has been removed since Eclipse version
+   ``2018-12``. See `this
+   link <https://www.eclipse.org/eclipse/news/4.10/platform.php#java32-removal>`__
+   for more details.
 
 .. _known-issues-20.10:
 
@@ -147,11 +151,13 @@ SDK Changelog
 General
 """""""
 
+-  Added support for JDK 11.
 -  Changed Easyant targets executed by ``mmm build`` from ``clean,verify`` to ``clean,package``.
 -  Upgraded Front Panel plugin to version 6.1.3 to remove warning on fp framework.
--  Updated Workspace settings to ignore errors in Ant build files by Default.
--  Fixed error when opening Heap Dump files which are not part of the workspace.
--  Fixed error when opening Map files which are not part of the workspace.
+-  Updated Workspace settings to ignore errors in Ant build files by default.
+-  Fixed error when opening a Heap Dump file not part of the workspace.
+-  Fixed error when opening a Map file not part of the workspace.
+-  Removed Resources Center view.
 
 MicroEJ Module Manager
 """"""""""""""""""""""
@@ -159,19 +165,16 @@ MicroEJ Module Manager
 General
 ^^^^^^^
 
--  Added support for JDK 11 to build modules.
--  Added the capability to override module organisation/name/revision with system properties.
+-  Added the capability to override module organisation/name/revision with :ref:`mmm_build_system_options`.
 -  Added error message when using non-supported Eclipse Link Folders.
 -  Updated End User License Agreement.
 -  Fixed MMM failure when resolving a dependency with a version containing a number with 4 digits.
 -  Fixed error when building a meta-build project with public sub-modules and using target ``verify``.
--  Removed Nashorn deprecation warnings in build logs.
 
 Build Types
 ^^^^^^^^^^^
 
--  Updated ``build-firmware-multiapp``, ``build-runtime-api`` and ``build-application`` to support 
-   consistent Runtime Environment and allow Application to compile against it.
+-  Added support for Kernel Runtime Environments (``build-firmware-multiapp``, ``build-runtime-api`` and ``build-application``).
 
 Build Plugins
 ^^^^^^^^^^^^^
@@ -181,8 +184,9 @@ Build Plugins
 Skeletons
 ^^^^^^^^^
 
+-  Added JUnit dependency to all Java module skeletons (including default JUnit tests pattern).
 -  Updated ``firmware-singleapp`` and ``firmware-multiapp`` skeletons for building the executable by default.
--  Updated ``runtime-api`` to remove all Wadapps related resources and use KF only.
+-  Updated Sandboxed Application skeleton (``application``) to be compatible with any Kernel (based on KF ``FeatureEntryPoint``).
 
 .. _changelog-5.5.3:
 
@@ -227,8 +231,10 @@ General
 [5.5.0] - 2021-11-15
 ~~~~~~~~~~~~~~~~~~~~
 
-**NOTE:** This release prepares for a future JRE 11 support.
-However, the only officially supported JRE version is still JRE 8. Please refer to :ref:`system-requirements` for more details.
+.. note::
+   
+   This release prepares for a future JRE 11 support.
+   However, the only officially supported JRE version is still JRE 8. Please refer to :ref:`system-requirements` for more details.
 
 General
 """""""
@@ -273,9 +279,11 @@ MicroEJ Module Manager
 [5.4.1] - 2021-04-16
 ~~~~~~~~~~~~~~~~~~~~
 
-**NOTE:** This release is both compatible with Eclipse version ``2020-06``
-and Eclipse Oxygen, so it can still be installed on a previous
-SDK Distribution.
+.. note::
+   
+   This release is both compatible with Eclipse version ``2020-06``
+   and Eclipse Oxygen, so it can still be installed on a previous
+   SDK Distribution.
 
 MicroEJ Module Manager
 """"""""""""""""""""""
@@ -298,9 +306,11 @@ MicroEJ Module Manager
 [5.4.0] - 2021-03-25
 ~~~~~~~~~~~~~~~~~~~~
 
-**NOTE:** This release is both compatible with Eclipse version ``2020-06``
-and Eclipse Oxygen, so it can still be installed on a previous
-SDK Distribution.
+.. note::
+   
+   This release is both compatible with Eclipse version ``2020-06``
+   and Eclipse Oxygen, so it can still be installed on a previous
+   SDK Distribution.
 
 .. _known-issues-5.4.0:
 
@@ -394,9 +404,11 @@ Skeletons
 [5.3.1] - 2020-12-11
 ~~~~~~~~~~~~~~~~~~~~
 
-**NOTE:** This release is both compatible with Eclipse version
-``2020-06`` and Eclipse Oxygen, so it can still be installed on a
-previous SDK Distribution.
+.. note::
+   
+   This release is both compatible with Eclipse version
+   ``2020-06`` and Eclipse Oxygen, so it can still be installed on a
+   previous SDK Distribution.
 
 General
 """""""
@@ -428,9 +440,11 @@ Skeletons
 [5.3.0] - 2020-10-30
 ~~~~~~~~~~~~~~~~~~~~
 
-**NOTE:** This release is both compatible with Eclipse version
-``2020-06`` and Eclipse Oxygen, so it can still be installed on a
-previous SDK Distribution.
+.. note::
+   
+   This release is both compatible with Eclipse version
+   ``2020-06`` and Eclipse Oxygen, so it can still be installed on a
+   previous SDK Distribution.
 
 .. _known-issues-5.3.0:
 
