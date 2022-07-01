@@ -204,6 +204,23 @@ attribute, for example:
 
    <dependency org="[dep_organisation]" name="[dep_name]" rev="[dep_version]" conf="[conf_name]->*" />
 
+.. _mmm_build_options:
+
+Build Options
+~~~~~~~~~~~~~
+
+MMM builds can be configured by settings options in the ``module.ivy`` file using the ``ea:property`` tag inside the ``ea:build`` tag:
+
+.. code-block:: xml
+
+   <ea:build organisation="..." module="..." revision="x.y.z">
+       <ea:property name="[build_option_name]" value="[build_option_value]"/>
+   </ea:build>
+
+Refer to the documentation of :ref:`module_natures` for the list of available build options for each Module Nature.
+
+The options can also be defined via System Properties.
+If an option is defined as both System Property and ``ea:property`` tag, the value passed as System Property takes precedence.
 
 Automatic Update Before Resolution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -222,37 +239,10 @@ When the plugin is enabled, for each :ref:`module dependency <mmm_module_depende
 the version declared in the module file and update it to the highest
 version available which satisfies the matching rule of the dependency.
 
-.. _mmm_build_options:
-
-Build Options
-~~~~~~~~~~~~~
-
-MMM build options can be set with:
-
-.. code-block:: xml
-
-   <ea:property name="[buildoption_name]" value="[buildoption_value]"/>
-
-The following build options are globally available:
-
-.. list-table:: Build Options
-   :widths: 1 5 3
-   :header-rows: 1
-
-   * - Property Name
-     - Description
-     - Default Value
-   * - ``target``
-     - Path of the build directory ``target~``.
-     - ``${basedir}/target~``
-
-Refer to the documentation of :ref:`module_natures` for specific build
-options.
-
 .. _mmm_configuration:
 
-MicroEJ Module Manager Configuration 
--------------------------------------
+SDK Configuration 
+-----------------
 
 By default, when starting an empty workspace, the SDK is configured to import dependencies
 from :ref:`MicroEJ Central Repository <central_repository>` and to publish built modules to a local directory.
@@ -703,6 +693,92 @@ For example
 
 displays the help of the command ``run``.
 
+.. _mmm_build_system_options:
+
+Build System Options
+--------------------
+
+MMM allows to modify the behavior of a build via System options.
+These options must be passed as system properties, using :ref:`CLI <mmm_cli>` ``-D`` option or via the :ref:`SDK Configuration options <mmm_options>`.
+MMM provides the following options:
+
+* ``mmm.module.organisation`` [#require_sdk_5_6]_ : defines the organisation of the module. 
+  It overrides the ``organisation`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
+* ``mmm.module.name`` [#require_sdk_5_6]_ : defines the name of the module. 
+  It overrides the ``module`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
+* ``mmm.module.revision`` [#require_sdk_5_6]_ : defines the revision of the module. 
+  It overrides the ``revision`` attribute defined in the ``info`` tag in the :ref:`mmm_module_description`.
+* ``easyant.debug.port`` : defines the debug port and triggers the debug mode for the build execution.
+
+.. [#require_sdk_5_6] Requires SDK version ``5.6.0`` or higher.
+
+.. _meta_build:
+
+Meta Build
+----------
+
+A Meta Build is a module allowing to build other modules.
+It is typically used in a project containing multiple modules.
+The Meta Build module serves as an entry point to build all the modules of the project.
+
+Meta Build creation
+~~~~~~~~~~~~~~~~~~~
+
+- In the SDK, select :guilabel:`File` > :guilabel:`New` > :guilabel:`Module Project`.
+
+   .. figure:: images/sdk_new_module.png
+      :alt: New Meta Build Project
+      :align: center
+
+      New Meta Build Project
+
+- Fill in the fields ``Project name``, ``Organization``, ``Module`` and ``Revision``, then select the ``Skeleton`` named ``microej-meta-build``
+- Click on :guilabel:`Finish`. A template project is automatically created and ready to use.
+
+Meta Build configuration
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The main element to configure in a meta build is the list of modules to build.
+This is done in 2 files, located at the root folder:
+
+- ``public.modules.list`` which contains the list of the modules relative paths to build and publish.
+- ``private.modules.list`` which contains the list of the modules relative paths to build.
+  These modules are not published but only stored in a private and local repository in order to be fetched by the public modules.
+
+The format of these files is a plain text file with one module path by line, for example:
+
+.. code::
+
+   module1
+   module2
+   module3
+
+These paths are relative to the meta build root folder, which is set by default to the parent folder of the meta build module (``..``).
+For this reason, a meta build module is generally created at the same level of the other modules to build.
+Here is a typical structure of a meta build:
+
+.. code-block::
+
+  /
+  ├─ module1
+  │  ├─ ...
+  │  └─ module.ivy
+  ├─ module2
+  │  ├─ ...
+  │  └─ module.ivy
+  ├─ module3
+  │  ├─ ...
+  │  └─ module.ivy
+  └─ metabuild
+     ├─ private.modules.list
+     ├─ public.modules.list
+     └─ module.ivy
+
+The modules build order is calculated based on the dependency information.
+If a module is a dependency of another module, it is built first.
+
+For a complete list of configuration options, please refer to :ref:`Meta Build Module Nature <module_natures.meta_build>` section.
+
 Troubleshooting
 ---------------
 
@@ -833,73 +909,6 @@ Make sure it is one of the following ones:
 - ``build-application``, with version ``7.1.0`` or higher
 - ``build-microej-javalib``, with version ``4.2.0`` or higher
 - ``build-firmware-singleapp``, with version ``1.3.0`` or higher
-
-.. _meta_build:
-
-Meta Build
-----------
-
-A Meta Build is a module allowing to build other modules.
-It is typically used in a project containing multiple modules.
-The Meta Build module serves as an entry point to build all the modules of the project.
-
-Meta Build creation
-~~~~~~~~~~~~~~~~~~~
-
-- In the SDK, select :guilabel:`File` > :guilabel:`New` > :guilabel:`Module Project`.
-
-   .. figure:: images/sdk_new_module.png
-      :alt: New Meta Build Project
-      :align: center
-
-      New Meta Build Project
-
-- Fill in the fields ``Project name``, ``Organization``, ``Module`` and ``Revision``, then select the ``Skeleton`` named ``microej-meta-build``
-- Click on :guilabel:`Finish`. A template project is automatically created and ready to use.
-
-Meta Build configuration
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-The main element to configure in a meta build is the list of modules to build.
-This is done in 2 files, located at the root folder:
-
-- ``public.modules.list`` which contains the list of the modules relative paths to build and publish.
-- ``private.modules.list`` which contains the list of the modules relative paths to build.
-  These modules are not published but only stored in a private and local repository in order to be fetched by the public modules.
-
-The format of these files is a plain text file with one module path by line, for example:
-
-.. code::
-
-   module1
-   module2
-   module3
-
-These paths are relative to the meta build root folder, which is set by default to the parent folder of the meta build module (``..``).
-For this reason, a meta build module is generally created at the same level of the other modules to build.
-Here is a typical structure of a meta build:
-
-.. code-block::
-
-  /
-  ├─ module1
-  │  ├─ ...
-  │  └─ module.ivy
-  ├─ module2
-  │  ├─ ...
-  │  └─ module.ivy
-  ├─ module3
-  │  ├─ ...
-  │  └─ module.ivy
-  └─ metabuild
-     ├─ private.modules.list
-     ├─ public.modules.list
-     └─ module.ivy
-
-The modules build order is calculated based on the dependency information.
-If a module is a dependency of another module, it is built first.
-
-For a complete list of configuration options, please refer to :ref:`Meta Build Module Nature <module_natures.meta_build>` section.
 
 .. _mmm_former_sdk_5_2:
 
