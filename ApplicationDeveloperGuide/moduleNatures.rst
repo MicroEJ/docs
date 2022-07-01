@@ -680,7 +680,7 @@ This plugin defines the following build options:
      - When this property is set to true, the retrieve checker is not executed.
      - Not set
 
-.. _mmm_global_properties:
+.. _global_build_options:
 
 Global Build Options
 --------------------
