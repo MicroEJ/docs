@@ -34,12 +34,12 @@ The Embedded Device Configuration specification defines the minimal
 standard runtime environment for embedded devices. It defines all
 default API packages:
 
--  java.io
--  java.lang
--  java.lang.annotation
--  java.lang.ref
--  java.lang.reflect
--  java.util
+-  `java.io <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/package-frame.html>`_
+-  `java.lang <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/package-frame.html>`_
+-  `java.lang.annotation <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/annotation/package-frame.html>`_
+-  `java.lang.ref <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/package-frame.html>`_
+-  `java.lang.reflect <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/reflect/package-frame.html>`_
+-  `java.util <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/package-frame.html>`_
 
 .. list-table::
    :widths: 10 30

@@ -104,7 +104,7 @@ application kind:
    using the option ``application.main.class``.
 
 -  In case of a MicroEJ Sandboxed Application, it is a class that
-   implements ``ej.kf.FeatureEntryPoint``, declared in the
+   implements `ej.kf.FeatureEntryPoint <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html>`_, declared in the
    ``Application-EntryPoint`` entry in ``META-INF/MANIFEST.MF`` file.
 
 .. _section.classpath.elements.types:
@@ -120,10 +120,10 @@ A type can be declared as a *Required type* in order to enable the
 following usages:
 
 -  to be dynamically loaded from its name (with a call to
-   ``Class.forName(String)``);
+   `Class.forName(String) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#forName-java.lang.String->`_);
 
 -  to retrieve its fully qualified name (with a call to
-   ``Class.getName()``).
+   `Class.getName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getName-->`_).
 
 A type that is not declared as a *Required type* may not have its fully
 qualified name (FQN) embedded. Its FQN can be retrieved using the stack
@@ -146,7 +146,7 @@ Raw Resources
 
 Raw resources are binary files that need to be embedded by the
 application so that they may be dynamically retrieved with a call to
-``Class.getResourceAsStream(java.io.InputStream)``. Raw Resources are
+`Class.getResourceAsStream(java.io.InputStream) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String->`_. Raw Resources are
 declared in MicroEJ Classpath using ``*.resources.list`` files. The file
 format is a standard Java properties file, each line is a relative ``/``
 separated name of a file in MicroEJ Classpath to be embedded as a
@@ -166,7 +166,7 @@ Immutable Objects
 -----------------
 
 Immutables objects are regular read-only objects that can be retrieved
-with a call to ``ej.bon.Immutables.get(String)``. Immutables objects are
+with a call to `ej.bon.Immutables.get(String) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Immutables.html#get-java.lang.String->`_. Immutables objects are
 declared in files called *immutable objects data files*, which format is
 described in the :ref:`[BON] specification <runtime_bon>`.
 Immutables objects data files are declared in MicroEJ Classpath using
@@ -240,7 +240,7 @@ Constants
    which is available in MicroEJ Runtime starting from MicroEJ Architecture version ``7.11.0``.
 
 Constants are key/value string pairs that can be accessed with a
-call to ``ej.bon.Constants.get[Type](String)``, where ``Type`` if one of:
+call to `ej.bon.Constants.get[Type](String) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Constants.html>`_, where ``Type`` if one of:
 
 - Boolean,
 - Byte,

@@ -165,7 +165,7 @@ element to be transferred.
 Objects created by a Sandboxed Application which type is owned by the Kernel 
 can be transferred to another Sandboxed Application provided this has been authorized by the Kernel. 
 The list of Kernel types that can be transferred is Kernel specific, so you have to consult your Kernel specification.
-When an argument transfer is forbidden, the call is abruptly stopped and a ``java.lang.IllegalAccessError`` is thrown by the :ref:`Core Engine <core_engine>`.
+When an argument transfer is forbidden, the call is abruptly stopped and a `java.lang.IllegalAccessError <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalAccessError.html>`_ is thrown by the :ref:`Core Engine <core_engine>`.
 
 .. note::
 
@@ -258,7 +258,7 @@ Each implemented method of the proxy class is responsible for performing
 the remote call and catching all errors from the server side and to
 provide an appropriate answer to the client application call according
 to the interface method specification (contract). Remote invocation
-methods are defined in the super class ``ej.kf.Proxy`` and are named
+methods are defined in the super class `ej.kf.Proxy <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html>`_ and are named
 ``invokeXXX()`` where ``XXX`` is the kind of return type. As this class
 is part of the application, the application developer has the full
 control on the Proxy implementation and is free to insert additional
@@ -275,19 +275,19 @@ code such as logging calls and errors for example.
 
    - 
 
-      - void invoke()
+      - void `invoke() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invoke-->`_
       - Remote invocation for a proxy method that returns void
 
    - 
 
-      - Object invokeRef()
+      - Object `invokeRef() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeRef-->`_
       - Remote invocation for a proxy method that returns a reference
 
    - 
 
-      - boolean invokeBoolean(), byte invokeByte(), char invokeChar(),
-        short invokeShort(), int invokeInt(), long invokeLong(), double
-        invokeDouble(), float invokeFloat()
+      - boolean `invokeBoolean() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeBoolean-->`_, byte `invokeByte() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeByte-->`_, char `invokeChar() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeChar-->`_,
+        short `invokeShort() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeShort-->`_, int `invokeInt() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeInt-->`_, long `invokeLong() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeLong-->`_, double
+        `invokeDouble() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeDouble-->`_, float `invokeFloat() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeFloat-->`_
       - Remote invocation for a proxy method that returns a base type
 
 

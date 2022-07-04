@@ -26,11 +26,11 @@ The :guilabel:`Main` tab allows you to set in order:
 3. Types required in your application that are not statically embedded
    from the main class entry point. Most required types are those that
    may be loaded dynamically by the application, using the
-   ``Class.forName()`` method.
+   `Class.forName() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#forName-java.lang.String->`_ method.
 
 4. Binary resources that need to be embedded by the application. These
    are usually loaded by the application using the
-   ``Class.getResourceAsStream()`` method.
+   `Class.getResourceAsStream() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String->`_ method.
 
 5. Immutable objects' description files. See the :ref:`[BON 1.2] ESR
    documentation <runtime_bon>` for use of immutable objects.
