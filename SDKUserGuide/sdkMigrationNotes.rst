@@ -1,9 +1,9 @@
 Migration Notes
 ---------------
 
--------------------
-From 5.2.x to 5.3.x
--------------------
+---------------------------
+From 5.2.x to 5.3.x or more
+---------------------------
 
 This section applies if MicroEJ SDK ``5.3.x`` is started on a workspace
 that was previously created using MicroEJ SDK ``5.2.x``.
