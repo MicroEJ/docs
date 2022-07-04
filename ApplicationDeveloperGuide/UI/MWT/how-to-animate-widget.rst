@@ -6,13 +6,13 @@ How to Animate a Widget
 Starting and stopping the animation
 -----------------------------------
 
-To animate a widget, an ``Animator`` instance is required. This instance can be retrieved from the desktop of the widget by calling ``Desktop.getAnimator()``.
-Make sure that your widget subclass implements the ``Animation`` interface so that it can be used with an ``Animator``.
+To animate a widget, an `Animator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animator.html>`_ instance is required. This instance can be retrieved from the desktop of the widget by calling `Desktop.getAnimator() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#getAnimator-->`_.
+Make sure that your widget subclass implements the `Animation <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animation.html>`_ interface so that it can be used with an ``Animator``.
 
 An animation can be started at any moment, provided that the widget is shown. For example, the animation can start on a click event.
 Likewise, an animation can be stopped at any moment, for example a few seconds after the animation has started. Once the widget is hidden, its animation should always be stopped to avoid memory leaks and unnecessary operations.
 
-To start the animation of the widget, call the ``startAnimation()`` method of the ``Animator`` instance. To stop it, call the ``stopAnimation()`` method of the same ``Animator`` instance.
+To start the animation of the widget, call the `startAnimation() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animator.html#startAnimation-ej.mwt.animation.Animation->`_ method of the ``Animator`` instance. To stop it, call the `stopAnimation() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animator.html#stopAnimation-ej.mwt.animation.Animation->`_ method of the same ``Animator`` instance.
 
 For example, the following snippet starts the animation as soon as the widget is shown and stops it once the widget is hidden:
 
@@ -43,7 +43,7 @@ For example, the following snippet starts the animation as soon as the widget is
 Performing an animation step
 ----------------------------
 
-The ``tick()`` method is called by the animator in order to update the widget. It is called in the UI thread once the display has been flushed.
+The `tick() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animation.html#tick-long->`_ method is called by the animator in order to update the widget. It is called in the UI thread once the display has been flushed.
 This method should not render the widget but should update its state and request a new render if necessary.
 The ``tick()`` method should return whether or not the animation should continue after this increment.
 
@@ -61,8 +61,8 @@ For example, the following snippet updates the state of the widget when it is ti
 		return (this.elapsedTime < 5_000);
 	}
 
-The ``renderContent()`` method should render the widget by using its current state (saved in the fields of the widget).
-This method should not call methods such as ``Util.platformTimeMillis()`` because the widget could be rendered in multiple passes, for example if a :ref:`partial buffer <section_display_partial_buffer>` is used.
+The `renderContent() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#renderContent-ej.microui.display.GraphicsContext-int-int->`_ method should render the widget by using its current state (saved in the fields of the widget).
+This method should not call methods such as `Util.platformTimeMillis() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Util.html#platformTimeMillis-->`_ because the widget could be rendered in multiple passes, for example if a :ref:`partial buffer <section_display_partial_buffer>` is used.
 
 For example, the following snippet renders the current state of the widget by displaying the time elapsed since the start of the animation:
 

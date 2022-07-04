@@ -1,17 +1,17 @@
 How to Define an Outline or Border
 ==================================
 
-To create a custom outline or border, a new class should be created, extending the ``Outline`` class.
+To create a custom outline or border, a new class should be created, extending the `Outline <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/outline/Outline.html>`_ class.
 Outline subclasses have to implement two methods, as explained in the following sections.
 
 Applying the outline on an outlineable object
 ---------------------------------------------
 
-The ``apply(Outlineable)`` method is called by the MWT framework in order to subtract the outline from a ``Size`` or ``Rectangle`` object.
+The `apply(Outlineable) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/outline/Outline.html#apply-ej.mwt.util.Outlineable->`_ method is called by the MWT framework in order to subtract the outline from a `Size <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/util/Size.html>`_ or `Rectangle <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/util/Rectangle.html>`_ object.
 
-The ``Outlineable`` parameter of the method initially contains the size or bounds of the box, including the outline.
+The `Outlineable <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/util/Outlineable.html>`_ parameter of the method initially contains the size or bounds of the box, including the outline.
 Before the method returns, the outlineable object should be modified by subtracting the outline.
-In order to remove the outline from the object, the ``removeOutline()`` method of ``Outlineable`` should be used, passing as argument the thickness on each side.
+In order to remove the outline from the object, the `removeOutline() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/util/Outlineable.html#removeOutline-int-int-int-int->`_ method of ``Outlineable`` should be used, passing as argument the thickness on each side.
 
 For example, the following snippet applies an outline of 1 pixel on every side:
 
@@ -25,11 +25,11 @@ For example, the following snippet applies an outline of 1 pixel on every side:
 Applying the outline on a graphics context
 ------------------------------------------
 
-The ``apply(GraphicsContext, Size)`` method is called by the MWT framework in order to render the outline (only relevant if it is a border) and to update the translation and clip of a graphics context.
+The `apply(GraphicsContext, Size) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/outline/Outline.html#apply-ej.microui.display.GraphicsContext-ej.mwt.util.Size->`_ method is called by the MWT framework in order to render the outline (only relevant if it is a border) and to update the translation and clip of a graphics context.
 
 The ``Size`` parameter of the method initially contains the size of the box, including the outline.
 Before the method returns, the size object should be modified by subtracting the outline.
-In order to remove the outline from the object, the ``removeOutline()`` method of ``Outlineable`` should be used, passing as argument the thickness on each side.
+In order to remove the outline from the object, the `removeOutline() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/util/Outlineable.html#removeOutline-int-int-int-int->`_ method of ``Outlineable`` should be used, passing as argument the thickness on each side.
 
 For example, the following snippet applies an outline of 1 pixel on every side:
 
