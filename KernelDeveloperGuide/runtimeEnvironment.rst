@@ -152,6 +152,12 @@ The extension must be applied in 2 locations:
       Refer to the `Class Extender tool README <https://repository.microej.com/modules/com/microej/tool/class-extender/1.0.4/README-1.0.4.md>`_ 
       and especially to the chapter ``Include Class Extender During Firmware Project Build`` to learn how to integrate it in a Kernel build.
 
+      MicroEJ Corp. provides some ready-to-use extension modules:
+      
+      - `com.microej.library.runtime#string-regex <https://repository.microej.com/modules/com/microej/library/runtime/string-regex/>`_: String methods based on Regular Expressions (e.g. ``String.split()``, ``String.replaceAll()``)
+      - `com.microej.library.runtime#string-format <https://repository.microej.com/modules/com/microej/library/runtime/string-format/>`_: String formatting utility methods (e.g. ``String.format()``)
+
+
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
