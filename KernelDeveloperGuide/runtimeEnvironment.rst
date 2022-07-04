@@ -82,16 +82,15 @@ The file must be named ``kernel.api`` and stored in the ``src/main/resources`` f
 Use a Runtime Environment in an Application
 -------------------------------------------
 
-Once a Runtime Environment is available, it can be used in the Applications as a dependency::
+The Runtime Environment dependency must be declared in the Application project as following:
 
    <dependency org="com.mycompany" name="myruntimeapi" rev="1.0.0" conf="provided->runtimeapi"/>
 
-It is important to note that in order to have a consistent development environment, 
-it is highly recommended to declare the Runtime Environment module as **the only dependency** of the Application modules.
-In the case an Application needs to use a library not included in the Runtime Environment, 
-the recommended process is to add this library in the Runtime Environment.
-Declaring additional dependencies in the Application could lead to inconsistent situations, for example by using an API not available at runtime.
+.. note::
 
+   If you want to add an other library dependency, make sure it is has been built on this Runtime Environment.
+   Otherwise this could lead to inconsistent situations, for example by using an API not available at runtime.
+   An other approach is to add it to the Runtime Environment.
 
 Extend a Runtime Environment
 ----------------------------
