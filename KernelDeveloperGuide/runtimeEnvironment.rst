@@ -60,6 +60,7 @@ The libraries modules are fetched transitively from the Kernel APIs dependencies
 For example, the dependency ``com.microej.kernelapi#edc;1.0.6`` fetches the library ``ej.api#edc;1.2.3``.
 
 It is also possible to force the version of the libraries to use by declaring them as direct dependencies.
+This is typically used to get a latest version of the library with improvements such as Javadoc fixes or Null Analysis annotations.
 In this example:
 
 .. code:: xml
