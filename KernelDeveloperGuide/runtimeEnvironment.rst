@@ -83,7 +83,7 @@ The file must be named ``kernel.api`` and stored in the ``src/main/resources`` f
 Use a Runtime Environment in an Application
 -------------------------------------------
 
-The Runtime Environment dependency must be declared in the Application project as following:
+The Runtime Environment dependency must be declared in the Application project as following::
 
    <dependency org="com.mycompany" name="myruntimeapi" rev="1.0.0" conf="provided->runtimeapi"/>
 
