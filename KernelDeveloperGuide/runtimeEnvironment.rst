@@ -79,6 +79,30 @@ Kernel APIs as Project File
 The Kernel APIs can also be defined in a file in the Runtime Environment directly.
 The file must be named ``kernel.api`` and stored in the ``src/main/resources`` folder.
 
+Add Addon Processors
+~~~~~~~~~~~~~~~~~~~~
+
+If the Applications need a library which uses an Addon Processor, this Addon Processor must be declared as a direct dependency in the Runtime Environment.
+Here is the list of the libraries using an Addon Processor and how to declare them in a Runtime Environment:
+
+- NLS::
+
+   <dependency org="com.microej.library.runtime" name="nls-po" rev="2.3.0"/>
+   <dependency org="com.microej.tool.addon.runtime" name="nls-po-processor" rev="2.3.0" conf="addon-processor" />	
+
+- Wadapps::
+
+   <dependency org="ej.library.wadapps" name="wadapps" rev="2.2.0"/>
+   <dependency org="ej.tool.addon.wadapps" name="wadapps-processor" rev="2.1.1" conf="addon-processor"/>
+
+- JavaScript::
+
+   <dependency org="com.microej.library.runtime" name="js" rev="0.13.0"/>
+   <dependency org="com.microej.tool.addon.runtime" name="js-processor" rev="0.13.0" conf="addon-processor"/>
+
+The ``addon-processor`` must also be added in the list of ``configurations``::
+
+   <conf name="addon-processor" visibility="public" description="Addon processors dependencies."/>
 
 Use a Runtime Environment in an Application
 -------------------------------------------
