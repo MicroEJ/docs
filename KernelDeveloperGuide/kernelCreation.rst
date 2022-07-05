@@ -1,12 +1,12 @@
 .. _multisandbox_firmware_creation:
 
-Multi-Sandbox Firmware Creation
-===============================
+Kernel Creation
+===============
 
 This chapter requires a minimum understanding of :ref:`mmm` and :ref:`module_natures`. 
 
-Create a new Firmware Project
------------------------------
+Create a new Project
+--------------------
 
 First create a new :ref:`module project <mmm_module_skeleton>` using the ``build-firmware-multiapp`` skeleton.
 
@@ -32,7 +32,7 @@ Build the Firmware and Virtual Device
 
 In the Package Explorer, right-click on the project and select
 :guilabel:`Build Module`. The build of the Firmware and Virtual
-Device may take several minutes. When the build is succeed, the folder
+Device may take several minutes. Once the build has succeeded, the folder
 :guilabel:`myfirmware` > :guilabel:`target~` > :guilabel:`artifacts` contains the firmware output artifacts
 (see :ref:`in_out_artifacts`) :
 
@@ -44,7 +44,7 @@ Device may take several minutes. When the build is succeed, the folder
 -  ``mymodule.vde``: The Virtual Device to be imported in the SDK.
 
 -  ``mymodule-workingEnv.zip``: This file contains all files produced by
-   the build phasis (intermediate, debug and report files).
+   the build phase (intermediate, debug and report files).
 
 .. _fms-artifacts:
 .. image:: png/firmware-multiapp-skeleton-artifacts.png
@@ -52,63 +52,30 @@ Device may take several minutes. When the build is succeed, the folder
    :width: 335px
    :height: 866px
 
-.. _runtime_environment:
+.. _define_apis:
 
-Define a Runtime Environment
-----------------------------
+Define APIs
+-----------
 
-A Multi-Sandbox Firmware must define a runtime environment which is the set of classes,
-methods and fields all applications are allowed to use. In most of the
-cases the runtime environment is an aggregation of several :ref:`Kernel APIs <kernel.api>`.
+A Kernel must define the set of classes, methods and static fields all applications are allowed to use.
 
 .. note::
 
    According to the :ref:`Kernel and Features specification <kf_specification>`, no API is open by default to Sandboxed Applications.
 
-Specify Kernel APIs
-~~~~~~~~~~~~~~~~~~~
+This can be done either by declaring :ref:`Kernel APIs <kernel.api>` or by definining a :ref:`Runtime Environment <runtime_environment>`.
 
-A Kernel API module is added as a dependency with the configuration ``kernelapi->default``.
+The main difference is from the Application development point of view. 
+In the first case, the Application project still declares standard module dependencies.
+This is the good starting point for quickly building a Kernel with Applications based on the MicroEJ modules as-is.
+In the second case, the Application project declares the runtime environment dependency. 
+This is the preferred way in case you intend to build and maintain a dedicated Applications ecosystem.
+
+A Kernel API or a Runtime Environment module is added as a dependency with the configuration ``kernelapi->default``.
 
 .. code:: xml
 
    <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6" conf="kernelapi->default"/>
-
-The build options ``runtime.api.name`` and ``runtime.api.version`` must be set unless declaring a dependency to a Runtime API module.
-
-Create a Runtime API Module
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-A Runtime API module is a module that aggregates a set of Kernel APIs modules.
-
-It is be built with :ref:`module project <mmm_module_skeleton>` ``build-runtime-api`` skeleton.
-
-.. code:: xml
-
-   <info organisation="myorg" module="mymodule" status="integration" revision="1.0.0">
-      <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="2.+">
-      <ea:property name="runtime.api.name" value="RUNTIME"/>
-      <ea:property name="runtime.api.version" value="1.0"/>
-      </ea:build>
-   </info>
-
-The build option ``runtime.api.name`` defines the name of the runtime environment (required). 
-The build option ``runtime.api.version`` defines its version. If not set, it takes the declared module version.
-
-
-For example, the following dependencies declare a runtime environment that aggregates all classes, methods and fields
-defined by ``edc,kf,bon,wadapps,components`` Kernel APIs modules.
-
-.. code:: xml
-
-   <dependencies>
-      <dependency org="com.microej.kernelapi" name="edc" rev="1.0.4"/>
-      <dependency org="com.microej.kernelapi" name="kf" rev="2.0.1"/>
-      <dependency org="com.microej.kernelapi" name="bon" rev="1.0.4"/>
-      <dependency org="com.microej.kernelapi" name="wadapps" rev="1.2.2"/>
-      <dependency org="com.microej.kernelapi" name="components" rev="1.2.2"/>
-   </dependencies>
-
 
 .. _system_application_input_ways:
 
@@ -195,8 +162,6 @@ Ivy info
    revision="1.0.0">
        <ea:build organisation="com.is2t.easyant.buildtypes" module="build-firmware-multiapp" revision="2.+"/>
        <ea:property name="application.main.class" value="org.Main" />
-       <ea:property name="runtime.api.name" value="RUNTIME" />
-       <ea:property name="runtime.api.version" value="0.1.0" />
    </info>
                
 
@@ -204,9 +169,7 @@ The property ``application.main.class`` is set to the fully qualified
 name of the main java class. The firmware generated from the skeleton 
 defines its own runtime environment by using ivy dependencies
 on several ``kernel API`` instead of relying on a runtime environment
-module. As consequence, the ``runtime.api.name`` and
-``runtime.api.version`` properties are specified in the firmware project
-itself.
+module.
 
 .. _ivy_confs:
 

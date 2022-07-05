@@ -4,18 +4,18 @@ Overview
 Introduction
 ------------
 
-The Kernel Developer's Guide describes how to create a
-MicroEJ Multi-Sandbox Firmware, i.e. a firmware that can be extended
-(statically or dynamically) to run and control the execution of new
-applications (called *Sandboxed Applications*).
+The Kernel Developer's Guide describes how to create a Kernel Application: a :ref:`Standalone Application <standalone_application>`
+that can be extended (statically or dynamically) to run and control the execution of new
+applications called :ref:`Sandboxed Applications <sandboxed_application>`).
 
 The intended audience of this document are java developers and system
 architects who plan to design and build their own firmware.
 
-Here is a non-exhaustive list of the activities to be done by Multi-Sandbox
-Firmware Developers:
+Here is a non-exhaustive list of the activities to be done by Kernel Developers:
 
--  Defining a list of APIs that will be exposed to applications
+-  Integrating the Kernel Application with a Platform to produce a Multi-Sandbox Firmware and Virtual Device
+
+-  :ref:`Defining the set of APIs <define_apis>` that will be exposed to Applications, optionally by maintaining a custom :ref:`Runtime Environment <runtime_environment>`
 
 -  Managing lifecycles of applications (deciding when to install, start,
    stop and uninstall them)
@@ -29,10 +29,10 @@ Firmware Developers:
 
 -  Controlling and monitoring resources
 
-This document takes as prerequisite that a MicroEJ Platform is available
+This document takes as prerequisite that a Platform is available
 for the target device (see :ref:`platform-developer-guide`).
 This document also assumes that the reader is familiar with the
-development and deployment of MicroEJ Applications (see :ref:`application-developer-guide`)
+development and deployment of Applications (see :ref:`application-developer-guide`)
 and specifics of developing Sandboxed Applications (see :ref:`sandboxed_application`).
 
 Terms and Definitions
@@ -42,7 +42,7 @@ A *System Application* is a Sandboxed Application that is linked into
 a Multi-Sandbox Firmware.
 
 A *Multi-Sandbox Platform* is a Platform with the Multi Sandbox
-capability of the MicroEJ Core Engine enabled (see the chapter
+capability of the Core Engine enabled (see the chapter
 *Multi-Sandbox* of the :ref:`platform-developer-guide`).
 A Multi-Sandbox Firmware can only be built with a Multi-Sandbox Platform.
 
@@ -54,8 +54,8 @@ a Sandboxed Application. It provides the firmware
 functional simulation part. Usually it also provides a mean to directly
 deploy a Sandboxed Application on the target device running a Multi-Sandbox
 Firmware (this is called *Local Deployment*). In case of dynamic
-application deployment, the Virtual Device must be published on MicroEJ
-Forge instance in order to execute an internal batch applications build for this
+application deployment, the Virtual Device must be published on a MicroEJ
+Forge instance in order to execute internal batch applications built for this
 device.
 
 Overall Architecture
@@ -86,7 +86,7 @@ Firmware Build Flow
 The Firmware build is composed of two phases:
 
 - the build of the Kernel,
-- the build of Sandboxed Application which is linked and append to the Firmware as a System Application (repeatable).
+- the build of the Sandboxed Application which is linked and appended to the Firmware as a System Application (repeatable).
 
 .. _build_flow_generic:
 .. figure:: png/build_flow_generic.png
@@ -99,7 +99,7 @@ The Firmware build is composed of two phases:
 Virtual Device Build Flow
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Virtual Device is automatically built at the same time than the
+The Virtual Device is automatically built at the same time as the
 Firmware (see :ref:`multisandbox_firmware_creation`). 
 
 The Virtual Device builder performs the following steps:
@@ -108,10 +108,10 @@ The Virtual Device builder performs the following steps:
    runtime).
 
 -  Append Add-On Libraries and System Applications into the runtime
-   classpath. (See :ref:`ivy_confs`) for specifying the
+   classpath. (See :ref:`ivy_confs` for specifying the
    dependencies).
 
--  Turn the Platform (SDK) license to Virtual Device license 
+-  Turn the Platform (SDK) license into Virtual Device license 
    so that it can be freely distributed.
 
 -  Generate the Runtime Environment from the Kernel APIs.
@@ -158,8 +158,8 @@ Firmware implementations must cover the following topics:
    another application through a Shared Interface. For that to be
    possible, a conversion proxy must be registered for this kernel type.
 
--  Tools libraries: tools that plug into MicroEJ SDK,
-   extending them with feature that are specific to the firmware, like
+-  Tools libraries: tools that plug into the SDK,
+   extending them with features that are specific to the firmware, like
    deployment of an application, a management console, ...
 
 -  System Applications: pre-built applications that can be embedded as

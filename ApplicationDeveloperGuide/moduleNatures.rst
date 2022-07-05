@@ -157,13 +157,13 @@ This module nature defines the following dedicated build options:
      - Full Qualified Name of the main class of the kernel. This option is required.
      - Not set
    * - runtime.api.name
-     - Name of the Runtime API of the kernel. This option is required, 
-       unless a :ref:`Runtime API <runtime_environment>` is declared in the dependencies.
-     - Not set
+     - Name of the Runtime API of the kernel. This option is ignored 
+       when a :ref:`Runtime API <runtime_environment>` is declared in the dependencies.
+     - ``RUNTIME``
    * - runtime.api.version
-     - Version of the Runtime API of the kernel. This option is required, 
-       unless a :ref:`Runtime API <runtime_environment>` is declared in the dependencies..
-     - Not set
+     - Version of the Runtime API of the kernel. This option is ignored 
+       when a :ref:`Runtime API <runtime_environment>` is declared in the dependencies.
+     - ``1.0``
    * - skip.build.virtual.device
      - When this property is set (any value), the virtual device is not built.
      - Not set
@@ -307,6 +307,23 @@ This module nature defines the following dedicated build options:
    * - skip.javadoc.deprecated
      - Prevents the generation of any deprecated API at all in the javadoc.
      - ``true``
+
+.. _module_natures.runtime_environment:
+
+Runtime Environment
+-------------------
+
+**Skeleton Name**: ``runtime-api``
+
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-runtime-api``
+
+**Documentation**: :ref:`runtime_environment`
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following plugins:
+
+- :ref:`module_natures.plugins.artifact_checker`
 
 .. _module_natures.sandboxed_application:
 

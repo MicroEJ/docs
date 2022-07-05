@@ -97,7 +97,6 @@ fields found in the given classpath.
 
 .. include:: kernelAPIgenerator_use.rst
 
-
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

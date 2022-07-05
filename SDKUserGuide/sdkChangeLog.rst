@@ -757,7 +757,7 @@ Build Plugins
 -  Fixed useless ``unknown resolver trace`` when cache is
    used by multiple Ivy settings configurations with different resolver
    names.
--  Fixed slow Add-on Processor generation. The classpath
+-  Fixed slow Add-On Processor generation. The classpath
    passed to ADP modules could contain the same entry multiple times,
    which leads each ADP module to process the same classpath multiple
    times.
@@ -773,7 +773,7 @@ Build Plugins
    with an Ivy branch
 -  Fixed character ``'-'`` rejected in module organisation
    (according to MMM specification ``2.0-B``)
--  Fixed ADP resolution error when the Add-on Processor
+-  Fixed ADP resolution error when the Add-On Processor
    module was only available in the cache
 -  Fixed potential build crash depending on the build kit
    classpath order (error was ``This module requires easyant [0.9,+]``)
@@ -863,7 +863,7 @@ Build Plugins
 -  Added IvyDE resolution from properties defined in
    :guilabel:`Windows` > :guilabel:`Preferences` > :guilabel:`Ant` > :guilabel:`Runtime` > :guilabel:`Properties`
 -  Fixed *Illegal character in path* error that may occur
-   when running an Add-on Processor
+   when running an Add-On Processor
 -  Fixed IvyDE crash when defining an Ant property file
    with Eclipse variables
 
@@ -888,7 +888,7 @@ Build Types
 -  Updated Virtual Device Builder to generate with ``.vde``
    extension
 -  Updated Multi-app Firmware Builder to embed (Sim/Emb)
-   specific modules (Add-on libraries and System Applications)
+   specific modules (Add-On libraries and System Applications)
 -  Fixed ``build-microej-ri`` v1.2.1 missing dependencies
    (embedded in SDK 4.1.5)
 
