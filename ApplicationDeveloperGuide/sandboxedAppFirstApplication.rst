@@ -52,8 +52,9 @@ This class is the entry point of the Application.
 The method ``start`` is called when the Application is started.
 It is considered as the main method of the Sandboxed Application.
 The method ``stop`` is called when the Application is stopped.
+Please refer to the :ref:`kernel_application_lifecycle` chapter to learn more about the Applications lifecycle.
 
-The ``src/main/java`` folder is also the place to add all the other classes of the Application.
+The ``src/main/java`` folder is also the place to add all the other Java classes of the Application.
 
 Configuration
 -------------
@@ -66,14 +67,14 @@ Here is an example:
 
     name=MyApplication
     entryPoint=com.mycompany.MyApplication
-    types=* 
+    types=*
     version=0.1.0
 
 It contains the following properties:
 
 - **name**: the name of the Application
 - **entryPoint**: the Full Qualified Name of the class implementing ``ej.kf.FeatureEntryPoint``
-- **types**: this property defined the types included in the Application and must always be "* " (do not forget the space at the end)
+- **types**: this property defined the types included in the Application and must always be :literal:`* \ ` (do not forget the space at the end)
 - **version**: the version of the Application
 
 SSL Certificate
