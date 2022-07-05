@@ -9,7 +9,9 @@ A Sandboxed Application can be deployed on a device in several ways:
 - Remote Deployment: the device connects to a Repository where the Application is stored, and deploys it over the network.
 
 In both cases, the Multi-Sandbox Firmware must be previously flashed on the device.
-Please refer to the :ref:`kernel-developer-guide` to learn how to do it.
+Please refer to the :ref:`kernel-developer-guide` to learn how to do it and to 
+the `Resources Repository <https://repository.microej.com/index.php?resource=FIRM&topic=ALL&version=ANY&edition=ANY>`_ 
+for the available Multi-Sandbox demo Firmwares.
 
 Local Deployment
 ----------------
