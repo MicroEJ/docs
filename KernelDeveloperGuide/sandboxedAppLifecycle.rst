@@ -1,12 +1,11 @@
-.. _chapter.application.lifecycle:
+.. _kernel_application_lifecycle:
 
-Application Lifecycle
-=====================
+Sandboxed Application Lifecycle
+===============================
 
 The lifecycle of an Sandboxed Application is managed by the Kernel.
-However, as an Application developer, it is important to understand how it works.
 
-.. figure:: images/sandboxed-application-lifecycle.png
+.. figure:: png/sandboxed-application-lifecycle.png
    :alt: Sandboxed Application Lifecycle
    :align: center
 

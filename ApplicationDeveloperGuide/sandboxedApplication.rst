@@ -10,9 +10,7 @@ Sandboxed Application
    sandboxedAppFirstApplication
    sandboxedAppSim
    sandboxedAppDeploy
-   sandboxedAppLifecycle
    sandboxedAppSharedInterface
-   sandboxedAppIcons
 
 A **Sandboxed Application** is a **Java Application** that can run over a **Multi-Sandbox Firmware**.
 Sandboxed Applications can be linked statically to the Multi-Sandbox Firmware or installed dynamically on the device.
