@@ -19,6 +19,12 @@ The MicroVG Library brings the following features:
 - the transformation of paths, texts, images with affine transformation matrices.
 
 
+.. note::
+   The MicroVG library natives use different drawing engines, font rendering and layout engines for embedded and simulator implementations. 
+
+   This can lead to some slightly drawing differences, like for instance in the antialiasing processing of font glyphs.
+
+   
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
