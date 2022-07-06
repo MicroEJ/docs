@@ -41,7 +41,7 @@ The coordinates of the points associated with these commands can be absolute or 
 Path Drawing
 ------------
 
-A path can be drawn with a call to `ej.microvg.VectorGraphicsPainter.fillPath()` <FIXME link to api page>.
+A path can be drawn with a call to `ej.microvg.VectorGraphicsPainter.fillPath() <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html#fillPath-ej.microui.display.GraphicsContext-ej.microvg.Path-float-float->`_.
 
 The drawn path will be filled with the graphic context color or with a linear gradient.
 

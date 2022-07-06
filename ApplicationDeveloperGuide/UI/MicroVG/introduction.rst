@@ -1,9 +1,11 @@
+.. include:: aliases.rst
+
 Introduction
 ============
 
 MicroVG Foundation Library provides vector drawing capabilities.
 
-To use the MicroVG Foundation Library, add `MicroVG API module` <FIXME link to api modules/ej/api/microvg> to a :ref:`module description file <mmm_module_description>`:
+To use the MicroVG Foundation Library, add `MicroVG API module <zzz_repourl_zzz/ej/api/microvg/>`_ to a :ref:`module description file <mmm_module_description>`:
 
 .. code-block:: XML
 
