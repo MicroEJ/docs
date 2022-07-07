@@ -30,7 +30,7 @@ Here is an example:
    msgid "Label2"
    msgstr "My label 2"
 
-PO files are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.nls.list`` files (**and** to ``*.externresources.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+PO files are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.nls.list`` files (**and** to ``*.externresources.list`` for an external resource, see :ref:`chapter.microej.applicationResources`).
 
 .. graphviz::
 
@@ -110,7 +110,7 @@ The `NLS-PO module <https://repository.microej.com/modules/com/microej/library/r
 NLS External Loader
 -------------------
 
-The NLS External Loader allows to update the :ref:`PO files <section.applicationResources.nls>` of an application executed on a Virtual Device without rebuilding it.
+The NLS External Loader allows to update the PO files of an application executed on a Virtual Device without rebuilding it.
 PO files can be dropped in a given location in the Virtual Device folders to dynamically replace the language strings packaged in the application.
 
 This is typically useful when testing or translating an application in order to have a quick feedback when changing the PO files.

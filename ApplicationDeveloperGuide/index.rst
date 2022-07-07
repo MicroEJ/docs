@@ -16,6 +16,7 @@ Application Developer Guide
    repository
    classpath
    applicationResources
+   nls
    debug
    platformSelection
    tools

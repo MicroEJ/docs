@@ -24,7 +24,6 @@ The following schema shows the overall architecture and modules:
    MicroUI/index
    MWT/index
    Widgets/index
-   NLS/nls
    Advanced/index
 
 ..
