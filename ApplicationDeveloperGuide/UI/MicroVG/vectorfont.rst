@@ -210,6 +210,10 @@ These methods return the width and height of a string drawing. They are computed
 
 These methods can measure a specific glyph width and height using a one character string.
 
+.. note::
+
+The metrics are extracted from the character glyph metrics without considering the antialiasing introduced by the glyphs rasterizer.
+
 Drawing a Text on a Circle
 --------------------------
 
