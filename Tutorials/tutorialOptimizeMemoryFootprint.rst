@@ -138,7 +138,7 @@ Internationalization Data
 Implementation
 """"""""""""""
 
-MicroEJ provides the :ref:`Native Language Support (NLS) <section.applicationResources.nls>` library to handle internationalization.
+MicroEJ provides the :ref:`Native Language Support (NLS) <chapter.nls>` library to handle internationalization.
 
 See https://github.com/MicroEJ/Example-NLS for an example of the use of the NLS library.
 

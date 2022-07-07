@@ -13,7 +13,7 @@ An Application resource is one of the following type:
 
 -  :ref:`Font <section.ui.Fonts>`
 
--  :ref:`Internationalized String (Native Language Support) <section.ui.nls>`
+-  :ref:`Internationalized String (Native Language Support) <chapter.nls>`
 
 The resource may be stored in RAM, flash, or external flash; and it is the responsibility of the Core Engine and/or the BSP to retrieve and load it.
 

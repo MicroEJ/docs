@@ -1,12 +1,10 @@
-.. _section.ui.nls:
+.. _chapter.nls:
 
 Native Language Support
 =======================
 
 Overview
 --------
-
-.. Keep this section sync'd with the overview in _section.applicationResources.nls
 
 Native Language Support (NLS) allows the application to facilitate internationalization.
 It provides support to manipulate messages and translate them in different languages.
