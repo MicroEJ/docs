@@ -19,7 +19,7 @@ format. The conversion can either be done at:
 
 -  run-time (using the relevant decoder library).
 
-Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.images.list`` files (**or** in ``*.imagesext.list`` for an external resource, see :ref:`section.applicationResources.internal_and_external_resources`).
+Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.images.list`` files (**or** in ``*.imagesext.list`` for an external resource, see :ref:`chapter.microej.applicationResources`).
 
 .. graphviz::
 
