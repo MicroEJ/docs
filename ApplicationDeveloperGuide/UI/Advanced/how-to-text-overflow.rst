@@ -9,7 +9,7 @@ Instrumenting the Widget
 ------------------------
 
 The goal is to check whether the text to be displayed is within the content bounds of the widget. A way to test this is to extend or modify the widget.
-In this article, the widget ``MyLabel`` will extend the type `Label <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Label.html>`_ from the Widget library, which displays a text:
+In this article, the widget ``MyLabel`` will extend the type `Label`_ from the Widget library, which displays a text:
 
 .. code-block:: java
     :emphasize-lines: 3
@@ -24,10 +24,12 @@ In this article, the widget ``MyLabel`` will extend the type `Label <https://rep
     }
 
 
+.. _Label: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Label.html
+
 Overriding the onLaidOut() Method
 ---------------------------------
  
-Once the position and size of a wigdet are set during the lay out process, the `onLaidOut() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onLaidOut-->`_ method is called to notify the widget.
+Once the position and size of a wigdet are set during the lay out process, the `onLaidOut()`_ method is called to notify the widget.
 Overriding ``onLaidOut()`` of class ``MyLabel`` is a good place to check whether the text overflows or not.
 
 For example, the following snippet compares the text width with the available width: it will print a message if an overflow is detected.
@@ -51,6 +53,7 @@ For example, the following snippet compares the text width with the available wi
         }
     }
 
+.. _onLaidOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onLaidOut--
 
 Testing
 -------

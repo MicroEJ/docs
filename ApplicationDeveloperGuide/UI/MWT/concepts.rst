@@ -1,7 +1,7 @@
 .. _mwt_concepts:
 
 Concepts
-============
+========
 
 Graphical Elements
 ------------------
@@ -35,13 +35,16 @@ A desktop contains a widget (or a container). When the desktop is shown, its wid
 Rendering
 ---------
 
-A new rendering of a widget on the display can be requested by calling its `requestRender() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#requestRender-->`_ method. The rendering is done asynchronously in the MicroUI thread.
+A new rendering of a widget on the display can be requested by calling its `requestRender()`_ method. The rendering is done asynchronously in the MicroUI thread.
 
 When a container is rendered, all its children are also rendered.
 
 A widget can be transparent, meaning that it does not draw every pixel within its bounds. In this case, when this widget is asked to be rendered, its parent is asked to be rendered in the area of the widget (recursively if the parent is also transparent). Usually a widget is transparent when its background (from the style) is transparent.
 
-A widget can also be rendered directly in a specific graphics context by calling its `render(GraphicsContext) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#render-ej.microui.display.GraphicsContext->`_ method. It can be useful to render a widget (and its children) in an image for example.
+A widget can also be rendered directly in a specific graphics context by calling its `render(GraphicsContext)`_ method. It can be useful to render a widget (and its children) in an image for example.
+
+.. _requestRender(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#requestRender--
+.. _render(GraphicsContext): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#render-ej.microui.display.GraphicsContext-
 
 .. _section_render_policy:
 
@@ -50,30 +53,42 @@ Render Policy
 
 A render policy is a strategy that MWT uses in order to repaint the entire desktop or to repaint a specific widget.
 
-The most naive render policy would be to render the whole hierarchy of the desktop whenever a widget has changed. However `DefaultRenderPolicy <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/render/DefaultRenderPolicy.html>`_ is smarter than that: it only repaints the widget, and its ancestors if the widget is transparent. The result is correct only if there is no overlapping widget, in which case  `OverlapRenderPolicy <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/render/OverlapRenderPolicy.html>`_ should be used instead. This policy repaints the widget (or its non-transparent ancestor), then it repaints all the widgets that overlap it.
+The most naive render policy would be to render the whole hierarchy of the desktop whenever a widget has changed. However `DefaultRenderPolicy`_ is smarter than that: it only repaints the widget, and its ancestors if the widget is transparent. The result is correct only if there is no overlapping widget, in which case  `OverlapRenderPolicy`_ should be used instead. This policy repaints the widget (or its non-transparent ancestor), then it repaints all the widgets that overlap it.
 
-When using a :ref:`partial buffer <section_display_partial_buffer>`, these render policies can not be used because they render the entire screen in a single pass. Instead, a custom render policy which renders the screen in multiple passes has to be used. Refer to the `partial buffer demo <https://github.com/MicroEJ/Demo-PartialBuffer>`__ for more information on how to implement this render policy and how to use it.
+When using a :ref:`partial buffer <section_display_partial_buffer>`, these render policies can not be used because they render the entire screen in a single pass. Instead, a custom render policy which renders the screen in multiple passes has to be used. Refer to the `partial buffer demo`_ for more information on how to implement this render policy and how to use it.
 
-The render policy can be changed by overridding `Desktop.createRenderPolicy() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#createRenderPolicy-->`_.
+The render policy can be changed by overridding `Desktop.createRenderPolicy()`_.
+
+.. _DefaultRenderPolicy: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/render/DefaultRenderPolicy.html
+.. _OverlapRenderPolicy: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/render/OverlapRenderPolicy.html
+.. _partial buffer demo: https://github.com/MicroEJ/Demo-PartialBuffer
+.. _Desktop.createRenderPolicy(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#createRenderPolicy--
 
 .. _section_layout_process:
 
 Lay Out
 -------
 
-All widgets are laid out at once during the lay out process. This process can be started by `Desktop.requestLayOut() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#requestLayOut-->`_, `Widget.requestLayOut() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#requestLayOut-->`_. The layout is also automatically done when the desktop is shown (`Desktop.onShown() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#onShown-->`_). This process is composed of two steps, each step browses the hierarchy of widgets following a depth-first algorithm:
+All widgets are laid out at once during the lay out process. This process can be started by `Desktop.requestLayOut()`_, `Widget.requestLayOut()`_. The layout is also automatically done when the desktop is shown (`Desktop.onShown()`_). This process is composed of two steps, each step browses the hierarchy of widgets following a depth-first algorithm:
 
 - compute the optimal size for each widget and container (considering the constraints of the lay out),
 - set position and size for each widget.
 
-Once the position and size of a widget is set, the widget is notified by a call to `onLaidOut() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onLaidOut-->`_.
+Once the position and size of a widget is set, the widget is notified by a call to `onLaidOut()`_.
+
+.. _Desktop.requestLayOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#requestLayOut--
+.. _Widget.requestLayOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#requestLayOut--
+.. _Desktop.onShown(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#onShown--
+.. _onLaidOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onLaidOut--
 
 Event Dispatch
 --------------
 
-Events generated in the hardware (touch, buttons, etc.) are sent to the event dispatcher of the desktop. It is then responsible of sending the event to one or several widgets of the hierarchy. A widget receives the event through its `handleEvent(int) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#handleEvent-int->`_ method. This method returns a boolean that indicates whether or not the event has been consumed by the widget.
+Events generated in the hardware (touch, buttons, etc.) are sent to the event dispatcher of the desktop. It is then responsible of sending the event to one or several widgets of the hierarchy. A widget receives the event through its `handleEvent(int)`_ method. This method returns a boolean that indicates whether or not the event has been consumed by the widget.
 
 Widgets are disabled by default and don't receive the events.
+
+.. _handleEvent(int): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#handleEvent-int-
 
 Pointer Event Dispatcher
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -82,7 +97,7 @@ By default, the desktop proposes an event dispatcher that handles only pointer e
 
 Pointer events are grouped in sessions. A session starts when the pointer is pressed, and ends when the pointer is released or when it exits the pressed widget.
 
-While no widget consumes the events, they are sent to the widget that is under the pointer (see `Desktop.getWidgetAt(int, int) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#getWidgetAt-int-int->`_), then sent to all its parent hierarchy recursively.
+While no widget consumes the events, they are sent to the widget that is under the pointer (see `Desktop.getWidgetAt(int, int)`_), then sent to all its parent hierarchy recursively.
 
 .. figure:: images/eventDispatchUML.png
    :alt: Pointer Event Dispatcher Flow
@@ -94,9 +109,12 @@ Once a widget has consumed an event, it will be the only one to receive the next
    :alt: Pointer Event Dispatcher Flow
    :align: center
 
-A widget can redefine its reactive area by subclassing the `contains(int x, int y) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#contains-int-int->`_ method. It is useful when a widget does not fill fully its bounds.
+A widget can redefine its reactive area by subclassing the `contains(int x, int y)`_ method. It is useful when a widget does not fill fully its bounds.
 
 .. Add an example such as a circular slider or an analog watchface.
+
+.. _Desktop.getWidgetAt(int, int): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#getWidgetAt-int-int-
+.. _contains(int x, int y): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#contains-int-int-
 
 Style
 -----
@@ -110,19 +128,28 @@ The dimension is used to constrain the size of the widget.
 
 MWT provides multiple implementations of dimensions:
 
-- `NoDimension <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/dimension/NoDimension.html>`_ does not constrain the dimension of the widget, so the widget will take all the space granted by its parent container.
-- `OptimalDimension <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/dimension/OptimalDimension.html>`_ constrains the dimension of the widget to its optimal size, which is given by the `computeContentOptimalSize() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#computeContentOptimalSize-ej.mwt.util.Size->`_ method of the widget.
-- `FixedDimension <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/dimension/FixedDimension.html>`_ constrains the dimension of the widget to a fixed absolute size.
-- `RelativeDimension <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/dimension/RelativeDimension.html>`_ constrains the dimension of the widget to a percentage of the size of its parent container.
+- `NoDimension`_ does not constrain the dimension of the widget, so the widget will take all the space granted by its parent container.
+- `OptimalDimension`_ constrains the dimension of the widget to its optimal size, which is given by the `computeContentOptimalSize()`_ method of the widget.
+- `FixedDimension`_ constrains the dimension of the widget to a fixed absolute size.
+- `RelativeDimension`_ constrains the dimension of the widget to a percentage of the size of its parent container.
+
+.. _NoDimension: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/dimension/NoDimension.html
+.. _OptimalDimension: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/dimension/OptimalDimension.html
+.. _computeContentOptimalSize(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#computeContentOptimalSize-ej.mwt.util.Size-
+.. _FixedDimension: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/dimension/FixedDimension.html
+.. _RelativeDimension: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/dimension/RelativeDimension.html
 
 Alignment
 ~~~~~~~~~
 
 The horizontal and vertical alignments are used to position the content of the widget within its bounds.
 
-The alignment is used by the framework to position the widget within its available space if the size of the widget has been constrained with a `Dimension <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/dimension/Dimension.html>`_.
+The alignment is used by the framework to position the widget within its available space if the size of the widget has been constrained with a `Dimension`_.
 
-The alignment can also be used in the `renderContent() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#requestRender-int-int-int-int->`_ method in order to position the drawings of the widget (such as a text or an image) within its content bounds.
+The alignment can also be used in the `renderContent()`_ method in order to position the drawings of the widget (such as a text or an image) within its content bounds.
+
+.. _Dimension: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/dimension/Dimension.html
+.. _renderContent(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#requestRender-int-int-int-int-
 
 Outlines
 ~~~~~~~~
@@ -135,14 +162,20 @@ The margin, border and padding are the 3 outlines which wrap the content of the 
 
 MWT provides multiple implementations of invisible outlines which are usually used for margin and padding:
 
-- `NoOutline <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/outline/NoOutline.html>`_ does not wrap the widget in an outline.
-- `UniformOutline <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/outline/UniformOutline.html>`_ wraps the widget in an outline which thickness is equal on all sides.
-- `FlexibleOutline <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/outline/FlexibleOutline.html>`_ wraps the widget in an outline which thickness can be configured for each side.
+- `NoOutline`_ does not wrap the widget in an outline.
+- `UniformOutline`_ wraps the widget in an outline which thickness is equal on all sides.
+- `FlexibleOutline`_ wraps the widget in an outline which thickness can be configured for each side.
 
 MWT also provides multiple implementations of visible outlines which are usually used for border:
 
-- `RectangularBorder <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/outline/border/RectangularBorder.html>`_ draws a plain rectangle around the widget.
-- `RoundedBorder <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/outline/border/RoundedBorder.html>`_ draws a plain rounded rectangle around the widget.
+- `RectangularBorder`_ draws a plain rectangle around the widget.
+- `RoundedBorder`_ draws a plain rounded rectangle around the widget.
+
+.. _NoOutline: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/outline/NoOutline.html
+.. _UniformOutline: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/outline/UniformOutline.html
+.. _FlexibleOutline: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/outline/FlexibleOutline.html
+.. _RectangularBorder: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/outline/border/RectangularBorder.html
+.. _RoundedBorder: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/outline/border/RoundedBorder.html
 
 Background
 ~~~~~~~~~~
@@ -152,10 +185,15 @@ The background covers the border, the padding and the content of the widget, but
 
 MWT provides multiple implementations of backgrounds:
 
-- `NoBackground <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/background/NoBackground.html>`_ leaves a transparent background behind the widget.
-- `RectangularBackground <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/background/RectangularBackground.html>`_ draws a plain rectangle behind the widget.
-- `RoundedBackground <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/background/RoundedBackground.html>`_ draws a plain rounded rectangle behind the widget.
-- `ImageBackground <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/background/ImageBackground.html>`_ draws an image behinds the widget.
+- `NoBackground`_ leaves a transparent background behind the widget.
+- `RectangularBackground`_ draws a plain rectangle behind the widget.
+- `RoundedBackground`_ draws a plain rounded rectangle behind the widget.
+- `ImageBackground`_ draws an image behinds the widget.
+
+.. _NoBackground: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/background/NoBackground.html
+.. _RectangularBackground: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/background/RectangularBackground.html
+.. _RoundedBackground: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/background/RoundedBackground.html
+.. _ImageBackground: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/background/ImageBackground.html
 
 Color
 ~~~~~
@@ -181,10 +219,10 @@ A stylesheet allows to customize the appearance of all the widgets of a desktop 
 
 MWT provides multiple implementations of stylesheets:
 
-- `VoidStylesheet <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/VoidStylesheet.html>`_ assigns the same default style for every widget.
-- `CascadingStylesheet <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html>`_ assigns styles to widgets using selectors, similarly to CSS.
+- `VoidStylesheet`_ assigns the same default style for every widget.
+- `CascadingStylesheet`_ assigns styles to widgets using selectors, similarly to CSS.
 
-For example, the following code customizes the style of every `Label <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Label.html>`_ widget of the desktop:
+For example, the following code customizes the style of every `Label`_ widget of the desktop:
 
 .. code-block:: Java
 
@@ -196,15 +234,21 @@ For example, the following code customizes the style of every `Label <https://re
 
 	desktop.setStylesheet(stylesheet);
 
+.. _VoidStylesheet: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/VoidStylesheet.html
+.. _CascadingStylesheet: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html
+.. _Label: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Label.html
+
 .. _section_animations:
 
 Animations
 ----------
 
-MWT provides a utility class in order to animate widgets: `Animator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animator.html>`_.
+MWT provides a utility class in order to animate widgets: `Animator`_.
 When a widget is being animated by an animator, the widget is notified each time that the display is flushed. The widget can use this interrupt in order to update its state and request a new rendering.
 
 See chapter :ref:`section_animate_widget` for more information on animating a widget.
+
+.. _Animator: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animator.html
 
 Partial buffer considerations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -225,7 +269,7 @@ Desktop and widget states
 Desktop and widgets pass through different states. Once created, they can be attached, then they can be shown.
 
 A desktop is attached automatically as soon as it is shown on the display.
-It can also be attached manually by calling `Desktop.setAttached() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#setAttached-->`_. It could be used to render the desktop (and its widgets) on an image for example.
+It can also be attached manually by calling `Desktop.setAttached()`_. It could be used to render the desktop (and its widgets) on an image for example.
 
 A widget is considered as attached when it is contained by a desktop that is attached.
 
@@ -240,6 +284,8 @@ Once a widget is shown, it means that it is intended to be rendered on the displ
    :align: center
 
 The following sections will present several ways to customize and extend the framework to better fit your needs.
+
+.. _Desktop.setAttached(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#setAttached--
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
