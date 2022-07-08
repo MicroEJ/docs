@@ -1,9 +1,3 @@
-..
-.. ReStructuredText
-..
-.. Copyright 2020-2022 MicroEJ Corp. All rights reserved.
-.. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
-..
 
 .. _js.java:
 
@@ -173,19 +167,22 @@ Passing Values Between JavaScript and Java
 JavaScript base types are represented by Java objects and not Java base types. 
 The following table shows the mapping between types in both languages: 
 
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| JavaScript | Java                                                                                                                                                                                                         |
-+============+==============================================================================================================================================================================================================+
-| Number     | `java.lang.Integer <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Integer.html>`_ or `java.lang.Double <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Double.html>`_ |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Boolean    | `java.lang.Boolean <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Boolean.html>`_                                                                                                        |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| String     | `java.lang.String <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html>`_                                                                                                          |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Null       | ``null`` value                                                                                                                                                                                               |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Undefined  | ``JsRuntime.JS_UNDEFINED_OBJECT`` singleton                                                                                                                                                                  |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. list-table::
+    :widths: 20 40
+
+    * - **JavaScript**
+      - **Java**
+    * - Number
+      - `java.lang.Integer <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Integer.html>`_ or `java.lang.Double <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Double.html>`_
+    * - Boolean
+      - `java.lang.Boolean <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Boolean.html>`_
+    * - String
+      - `java.lang.String <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html>`_
+    * - Null
+      - ``null`` value
+    * - Undefined
+      - ``JsRuntime.JS_UNDEFINED_OBJECT`` singleton
+
 
 In JavaScript, a ``Number`` type is a 64-bits floating-point value. 
 Nevertheless, Kifaru may use integer values (``Integer`` Java type) when 
@@ -276,3 +273,11 @@ We can now pass the callback to the job. The Java code will wait on the
     JsRuntime.ENGINE.addJob(functionObject, JsRuntime.JS_GLOBAL_OBJECT, new Integer(5), new Integer(3), callback);
     Integer returnedValue = callback.getValue();
     System.out.println("Result is " + returnedValue);
+
+
+..
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
