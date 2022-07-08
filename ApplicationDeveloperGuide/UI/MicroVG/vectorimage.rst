@@ -6,7 +6,7 @@ Vector Images
 Overview
 --------
 
-Vector Images are graphical resources that can be accessed with a call to `ej.microvg.VectorImage.getImage` <FIXME link to api page>. The images are converted at build-time (using the image generator tool) to immutable resources.
+Vector Images are graphical resources that can be accessed with a call to `ej.microvg.VectorImage.getImage() <zzz_javadocurl_zzz/ej/microvg/VectorImage.html#getImage-java.lang.String->`_. The images are converted at build-time (using the image generator tool) to immutable resources.
 
 Images that must be processed by the image generator tool are declared in ``*.vectorimages.list`` files. The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the MicroEJ classpath root referring to a vector image file (e.g. ``.svg``, ``.xml``). The resource must be followed by a parameter (separated by a ``:``) which defines and/or describes the image output file format (raw format).
 
@@ -47,11 +47,11 @@ Drawing Images
 Drawing and Transforming Images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once an image has been loaded it can be drawn in the graphic context with a call to `ej.microvg.VectorGraphicsPainter.drawImage()` <FIXME link to api page>.
+Once an image has been loaded it can be drawn in the graphic context with a call to `ej.microvg.VectorGraphicsPainter.drawImage() <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html#drawImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-float-float->`_.
 
 The image is associated with a transformation :ref:`Matrix` that will be applied in order to translate, scale and/or rotate the image. 
 
-The application can get the width and the height of the image with `ej.microvg.VectorImage.getWidth()` <XXX link to api page> and `ej.microvg.VectorImage.getHeight()` <FIXME link to api page> to correctly scale and position the image in the application window.
+The application can get the width and the height of the image with `ej.microvg.VectorImage.getWidth() <zzz_javadocurl_zzz/ej/microvg/VectorImage.html#getWidth-->`_ and `ej.microvg.VectorImage.getHeight() <zzz_javadocurl_zzz/ej/microvg/VectorImage.html#getHeight-->`_ to correctly scale and position the image in the application window.
 
 The following example describes how an Android Vector Drawable file can be drawn and positioned on the display.
 
@@ -169,7 +169,7 @@ The resulting color components are computed as:
  
 If the resulting component value is below 0 or above 255, the component value is clamped to these limits.
 
-A VectorImage object can also be drawn associated to a color matrix by a call to `ej.microvg.VectorGraphicsPainter.drawFilteredImage` <FIXME link to api page>.
+A VectorImage object can also be drawn associated to a color matrix by a call to `ej.microvg.VectorGraphicsPainter.drawFilteredImage() <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html#drawFilteredImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-ej.microvg.Matrix-float:A->`_.
  
 The following example illustrates this feature.
 
@@ -215,9 +215,9 @@ Animated Vector Images
 
 The Android Vector Drawable format provides the ability to change the properties of vector graphics over time, in order to create animated effects.
 
-The transformations of the objects over the time are embedded in the Vector image file and a call to `ej.microvg.VectorGraphicsPainter.drawAnimatedImage` <FIXME link to api page> or `ej.microvg.VectorGraphicsPainter.drawFilteredAnimatedImage` <FIXME link to api page> will draw the image for a specific time frame.
+The transformations of the objects over the time are embedded in the Vector image file and a call to `ej.microvg.VectorGraphicsPainter.drawAnimatedImage() <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html#drawAnimatedImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-float-float-long->`_ or `ej.microvg.VectorGraphicsPainter.drawFilteredAnimatedImage() <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html#drawFilteredAnimatedImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-ej.microvg.Matrix-long-float:A->`_ will draw the image for a specific time frame.
 
-The application can get the duration of the image animation with a call to `ej.microvg.VectorImage.getDuration()` <FIXME link to api page>.
+The application can get the duration of the image animation with a call to `ej.microvg.VectorImage.getDuration() <zzz_javadocurl_zzz/ej/microvg/VectorImage.html#getDuration-->`_.
 
 Every image object that is animated outside the image viewbox is clipped at the image boundary. In any cases, especially when the image is rotated, the image boundary is the rectangle that contains all the corners of the original image.
 
