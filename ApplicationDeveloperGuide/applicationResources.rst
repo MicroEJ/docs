@@ -7,13 +7,10 @@ An Application resource is the contents of a file identified its relative path f
 
 An Application resource is one of the following type:
 
--  :ref:`Raw Resource <section.classpath.elements.raw_resources>`
-
--  :ref:`Image <section.ui.Images>`
-
--  :ref:`Font <section.ui.Fonts>`
-
--  :ref:`Internationalized String (Native Language Support) <chapter.nls>`
+-  Raw Resource,
+-  Image,
+-  Font,
+-  Internationalized Message (Native Language Support).
 
 The resource may be stored in RAM, flash, or external flash; and it is the responsibility of the Core Engine and/or the BSP to retrieve and load it.
 
@@ -87,6 +84,16 @@ The following figure summarized how to declare resources:
   }
   
   }
+
+For more details on how to use Application resources, refer to the following dedicated sections:
+
+-  :ref:`Raw Resource <section.classpath.elements.raw_resources>`
+
+-  :ref:`Image <section.ui.Images>`
+
+-  :ref:`Font <section.ui.Fonts>`
+
+-  :ref:`Internationalized String (Native Language Support) <chapter.nls>`
 
 
 ..
