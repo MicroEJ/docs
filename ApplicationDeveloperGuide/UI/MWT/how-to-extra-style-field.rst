@@ -24,7 +24,7 @@ For example, the following snippet defines an extra field for a secondary color:
 Setting an extra field in the stylesheet
 ----------------------------------------
 
-The value of an extra field may be set in the stylesheet in a similar fashion to built-in style fields, using one of the ``setExtraXXX()`` methods of ``EditableStyle``.
+The value of an extra field may be set in the stylesheet in a similar fashion to built-in style fields, using one of the ``setExtraXXX()`` methods of `EditableStyle`_.
 
 For example, the following snippet sets the value of an extra field for all the instances of a widget subtype:
 
@@ -33,10 +33,12 @@ For example, the following snippet sets the value of an extra field for all the 
 	EditableStyle style = stylesheet.getSelectorStyle(new TypeSelector(MyWidget.class));
 	style.setExtraInt(MyWidget.SECONDARY_COLOR_FIELD, Colors.RED);
 
+.. _EditableStyle: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/EditableStyle.html
+
 Getting an extra field during rendering
 ---------------------------------------
 
-The value of an extra field may be retrieved from the style of a widget in a similar fashion to built-in style fields, using one of the ``getExtraXXX()`` methods of ``Style``.
+The value of an extra field may be retrieved from the style of a widget in a similar fashion to built-in style fields, using one of the ``getExtraXXX()`` methods of `Style`_.
 When calling one of these methods, a default value has to be given in case the extra field is not set for this widget.
 
 For example, the following snippet gets the value of an extra field of the widget:
@@ -45,6 +47,8 @@ For example, the following snippet gets the value of an extra field of the widge
 
 	Style style = getStyle();
 	int secondaryColor = style.getExtraInt(SECONDARY_COLOR_FIELD, Colors.BLACK);
+
+.. _Style: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/Style.html
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

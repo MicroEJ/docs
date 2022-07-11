@@ -140,7 +140,7 @@ Font Designer features three drop-downs, one for each of ``BOLD``, ``ITALIC``, a
 * The style option ``Dynamic`` (that targets the runtime style) is forbidden; select ``None`` instead.
 * The syle ``UNDERLINED`` is forbidden; select ``None`` instead.
 
-The styles options ``Built-in`` tag the font as bold, italic, or bold and italic. This style can be retrieved by the MicroEJ Application thanks the methods ``Font.isBold()`` and ``Font.isItalic()``. Adjust the styles options according to the font:
+The styles options ``Built-in`` tag the font as bold, italic, or bold and italic. This style can be retrieved by the MicroEJ Application thanks the methods `Font.isBold()`_ and `Font.isItalic()`_. Adjust the styles options according to the font:
 
 * The font is a `plain` font: select ``None`` option for each style.
 * The font is a `bold` font: select ``Built-in`` for the style `bold` and ``None`` for the other styles.
@@ -148,6 +148,9 @@ The styles options ``Built-in`` tag the font as bold, italic, or bold and italic
 * The font is a `bold` and `italic` font: select ``Built-in`` for the styles `bold` and `italic` and ``None`` for ``UNDERLINED``.
 
 .. warning:: When a font holds a dynamic style or when the style ``UNDERLINED`` is not ``None``, an error at MicroEJ application compile-time is thrown (incompatible font file).
+
+.. _Font.isBold(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#isBold--
+.. _Font.isItalic(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#isItalic--
 
 Identifiers
 ^^^^^^^^^^^
