@@ -143,6 +143,16 @@ SDK Distribution Changelog
 SDK Changelog
 -------------
 
+.. _changelog-5.6.1:
+
+[5.6.1] - 2022-07-08
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+-  Removed check on JRE version when opening a workspace.
+
 .. _changelog-5.6.0:
 
 [5.6.0] - 2022-06-29
