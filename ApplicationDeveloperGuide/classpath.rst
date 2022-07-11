@@ -184,7 +184,7 @@ resource. Example:
    com/mycompany/MyResource.txt
 
 
-.. _Class.getResourceAsStream(java.io.InputStream): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
+.. _java.lang.Class.getResourceAsStream(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
 
 .. _section.classpath.elements.immutables:
 
