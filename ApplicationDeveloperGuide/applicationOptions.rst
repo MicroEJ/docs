@@ -107,7 +107,13 @@ In order to export options defined in a ``.launch`` file to a properties file, p
 3. Browse the desired output ``.properties`` file,
 4. Press the :guilabel:`Finish` button.
 
+.. warning::
+   The Simulator uses some system properties to configure internal memory limits.
+   See :ref:`simulator_options` for more information.
+
 .. include:: sectionArchitectureOptions.rst
+
+.. include:: sectionSimulatorOptions.rst
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
