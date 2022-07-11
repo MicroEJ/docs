@@ -56,7 +56,7 @@ The ``soar/<main class>.xml`` file can be opened using any XML editor.
 This file contains the list of the following embedded elements:
 
 - method (in ``selected_methods`` tag)
-- :ref:`resource <section.classpath.elements.resources>` (in ``selected_resources`` tag)
+- :ref:`resource <chapter.microej.applicationResources>` (in ``selected_resources`` tag)
 - :ref:`system property <system_properties>` (in ``java_properties`` tag)
 - string (in ``selected_internStrings`` tag)
 - :ref:`type <section.classpath.elements.types>` (in ``selected_types`` tag)
