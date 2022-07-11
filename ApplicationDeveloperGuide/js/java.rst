@@ -173,11 +173,11 @@ The following table shows the mapping between types in both languages:
     * - **JavaScript**
       - **Java**
     * - Number
-      - `java.lang.Integer <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Integer.html>`_ or `java.lang.Double <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Double.html>`_
+      - `java.lang.Integer`_ or `java.lang.Double`_
     * - Boolean
-      - `java.lang.Boolean <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Boolean.html>`_
+      - `java.lang.Boolean`_
     * - String
-      - `java.lang.String <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html>`_
+      - `java.lang.String`_
     * - Null
       - ``null`` value
     * - Undefined
@@ -274,6 +274,11 @@ We can now pass the callback to the job. The Java code will wait on the
     Integer returnedValue = callback.getValue();
     System.out.println("Result is " + returnedValue);
 
+
+.. _java.lang.Integer: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Integer.html
+.. _java.lang.Double: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Double.html
+.. _java.lang.Boolean: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Boolean.html
+.. _java.lang.String: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
