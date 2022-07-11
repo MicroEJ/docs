@@ -25,7 +25,7 @@ content:
     Folder for future sources;
 
 ``src/main/resources``
-    Folder for future resources (images, fonts, etc.);
+    Folder for future resources (raw resources, images, fonts, nls);
 
 ``META-INF``
     Sandboxed Application configuration and resources;

@@ -23,7 +23,7 @@ Create a MicroEJ Standalone Application
 
    -  ``src/main/java``: Folder for future sources
 
-   -  ``src/main/resources``: Folder for future resources (images, fonts, etc.)
+   -  ``src/main/resources``: Folder for future resources (raw resources, images, fonts, nls)
 
    -  ``module.ivy``: :ref:`Module description file <mmm_module_description>`, dependencies description for the
       current project

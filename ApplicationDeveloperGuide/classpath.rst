@@ -78,11 +78,9 @@ The MicroEJ Classpath contains the following elements:
 
 -  Types in ``.class`` files, described in section :ref:`section.classpath.elements.types`;
 
--  Raw resources, described in section :ref:`section.classpath.elements.resources`;
-
 -  Immutables Object data files, described in Section :ref:`section.classpath.elements.immutables`;
 
--  Images, Fonts and Native Language Support (NLS) resources, described in :ref:`chapter.microej.applicationResources`;
+-  Raw Resources, Images, Fonts and Native Language Support (NLS) described in :ref:`chapter.microej.applicationResources`;
 
 -  ``*.[extension].list`` files, declaring contents to load. Supported
    list file extensions and format is specific to declared application
@@ -142,19 +140,41 @@ listing the fully qualified name of a type. Example:
    com.mycompany.MyImplementation
    java.util.Vector
 
+
 .. _Class.forName(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#forName-java.lang.String-
 .. _Class.getName(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getName--
 
-.. _section.classpath.elements.resources:
+.. _section.classpath.elements.raw_resources:
 
-Raw Resources
--------------
+Resources
+---------
 
-Raw resources are binary files that need to be embedded by the
-application so that they may be dynamically retrieved with a call to
-`Class.getResourceAsStream(java.io.InputStream)`_. Raw Resources are
-declared in MicroEJ Classpath using ``*.resources.list`` files. The file
-format is a standard Java properties file, each line is a relative ``/``
+Resources are binary files that need to be embedded by the application. 
+
+.. note::
+
+   For more details on all supported resources types, please refer to :ref:`chapter.microej.applicationResources` chapter.
+
+Raw resources are resources that can be dynamically retrieved with a call to
+`java.lang.Class.getResourceAsStream(String)`_.
+Raw Resources are declared in ``*.resources.list`` files (**and** in ``*.externresources.list`` for external resources, see :ref:`chapter.microej.applicationResources`).
+
+.. graphviz::
+
+  digraph D {
+  
+      internalRaw [shape=diamond, label="internal?"]
+      rawList [shape=box, label="*.resources.list"]
+      rawExt [shape=box, label="*.resources.list +\l*.externresources.list"]
+      subgraph cluster_Raw {
+          label ="Raw Resource"
+          internalRaw -> rawList [label="yes"]
+          internalRaw -> rawExt [label="no=external"]
+      }
+  }
+
+
+The file format is a standard Java properties file, each line is a relative ``/``
 separated name of a file in MicroEJ Classpath to be embedded as a
 resource. Example:
 
@@ -163,8 +183,6 @@ resource. Example:
    # The following resource is embedded as a raw resource
    com/mycompany/MyResource.txt
 
-Others resources types are supported in MicroEJ Classpath, 
-see :ref:`chapter.microej.applicationResources` for more details.
 
 .. _Class.getResourceAsStream(java.io.InputStream): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
 

@@ -12,7 +12,7 @@ This page describes the most common module natures as follows:
   Any module nature can be created with the default wizard from :guilabel:`File` > :guilabel:`New` > :guilabel:`Module Project`.
 - **Configuration**: properties that can be defined to configure the module. Properties are defined inside the ``ea:build`` tag of the :ref:`module.ivy <mmm_module_description>` file,
   using ``ea:property`` tag as described in the section :ref:`mmm_build_options`.
-  A module nature also inherits the configuration properties from the listed :ref:`module_natures.plugins`.
+  A module nature also inherits the build options from the listed :ref:`module_natures.plugins`.
 
 .. _module_natures.addon_lib:
 
@@ -29,7 +29,7 @@ Add-On Library
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following plugins:
+This module nature inherits the build options of the following plugins:
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.platform_loader`
@@ -48,7 +48,7 @@ Add-On Processor
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following plugins:
+This module nature inherits the build options of the following plugins:
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.unittests`
@@ -67,13 +67,13 @@ Foundation Library API
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following plugins:
+This module nature inherits the build options of the following plugins:
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.javadoc`
 - :ref:`module_natures.plugins.artifact_checker`
 
-This module nature defines the following dedicated configuration properties:
+This module nature defines the following dedicated build options:
 
 .. list-table:: 
     :widths: 25 65 15
@@ -104,13 +104,13 @@ Foundation Library Implementation
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following plugins:
+This module nature inherits the build options of the following plugins:
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.testsuite`
 - :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
 
-This module nature defines the following dedicated configuration properties:
+This module nature defines the following dedicated build options:
 
 .. list-table:: 
     :widths: 25 65 15
@@ -137,14 +137,14 @@ Kernel Application
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following plugins:
+This module nature inherits the build options of the following plugins:
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.platform_loader`
 - :ref:`module_natures.plugins.javadoc`
 - :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
 
-This module nature defines the following dedicated configuration properties:
+This module nature defines the following dedicated build options:
 
 .. list-table:: 
    :widths: 25 65 15
@@ -157,13 +157,13 @@ This module nature defines the following dedicated configuration properties:
      - Full Qualified Name of the main class of the kernel. This option is required.
      - Not set
    * - runtime.api.name
-     - Name of the Runtime API of the kernel. This option is required, 
-       unless a :ref:`Runtime API <runtime_environment>` is declared in the dependencies.
-     - Not set
+     - Name of the Runtime API of the kernel. This option is ignored 
+       when a :ref:`Runtime API <runtime_environment>` is declared in the dependencies.
+     - ``RUNTIME``
    * - runtime.api.version
-     - Version of the Runtime API of the kernel. This option is required, 
-       unless a :ref:`Runtime API <runtime_environment>` is declared in the dependencies..
-     - Not set
+     - Version of the Runtime API of the kernel. This option is ignored 
+       when a :ref:`Runtime API <runtime_environment>` is declared in the dependencies.
+     - ``1.0``
    * - skip.build.virtual.device
      - When this property is set (any value), the virtual device is not built.
      - Not set
@@ -184,7 +184,7 @@ Meta Build
 
 **Configuration**:
 
-This module nature defines the following dedicated configuration properties:
+This module nature defines the following dedicated build options:
 
 .. list-table:: 
     :widths: 25 65 15
@@ -216,7 +216,7 @@ Mock
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following plugins:
+This module nature inherits the build options of the following plugins:
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.unittests`
@@ -235,11 +235,11 @@ Module Repository
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following plugins:
+This module nature inherits the build options of the following plugins:
 
 - :ref:`module_natures.plugins.artifact_checker`
 
-This module nature defines the following dedicated configuration properties:
+This module nature defines the following dedicated build options:
 
 .. list-table:: 
    :widths: 25 65 15
@@ -308,6 +308,23 @@ This module nature defines the following dedicated configuration properties:
      - Prevents the generation of any deprecated API at all in the javadoc.
      - ``true``
 
+.. _module_natures.runtime_environment:
+
+Runtime Environment
+-------------------
+
+**Skeleton Name**: ``runtime-api``
+
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-runtime-api``
+
+**Documentation**: :ref:`runtime_environment`
+
+**Configuration**:
+
+This module nature inherits the configuration properties of the following plugins:
+
+- :ref:`module_natures.plugins.artifact_checker`
+
 .. _module_natures.sandboxed_application:
 
 Sandboxed Application
@@ -323,7 +340,7 @@ Sandboxed Application
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following plugins:
+This module nature inherits the build options of the following plugins:
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.platform_loader`
@@ -346,7 +363,7 @@ Standalone Application
 
 **Configuration**:
 
-This module nature inherits the configuration properties of the following plugins:
+This module nature inherits the build options of the following plugins:
 
 - :ref:`module_natures.plugins.compilation`
 - :ref:`module_natures.plugins.platform_loader`
@@ -354,7 +371,7 @@ This module nature inherits the configuration properties of the following plugin
 - :ref:`module_natures.plugins.testsuite` [#require_sdk_5_5]_
 - :ref:`module_natures.plugins.artifact_checker` [#require_sdk_5_5]_
 
-This module nature defines the following dedicated configuration properties:
+This module nature defines the following dedicated build options:
 
 .. list-table:: 
    :widths: 25 65 15
@@ -405,7 +422,7 @@ This plugin is used by the following module natures:
 
 **Configuration**:
 
-This plugin defines the following configuration properties:
+This plugin defines the following build options:
 
 .. list-table:: 
    :widths: 25 65 15
@@ -442,7 +459,7 @@ This plugin is used by the following module natures:
 
 **Configuration**:
 
-This plugin defines the following configuration properties:
+This plugin defines the following build options:
 
 .. list-table:: 
    :widths: 25 65 15
@@ -486,7 +503,7 @@ This plugin is used by the following module natures:
 
 **Configuration**:
 
-This plugin defines the following configuration properties:
+This plugin defines the following build options:
 
 .. list-table:: 
    :widths: 25 65 15
@@ -548,7 +565,7 @@ This plugin is used by the following module natures:
 
 **Configuration**:
 
-This plugin defines the following configuration properties:
+This plugin defines the following build options:
 
 .. list-table:: 
    :widths: 25 55 25
@@ -607,7 +624,7 @@ This plugin is used by the following module natures:
 
 **Configuration**:
 
-This plugin defines the following configuration properties:
+This plugin defines the following build options:
 
 .. list-table:: 
    :widths: 25 65 15
@@ -646,7 +663,7 @@ This plugin is used by the following module natures:
 
 **Configuration**:
 
-This plugin defines the following configuration properties:
+This plugin defines the following build options:
 
 .. list-table:: 
    :widths: 25 65 15
@@ -679,6 +696,24 @@ This plugin defines the following configuration properties:
    * - skip.retrieve.checker
      - When this property is set to true, the retrieve checker is not executed.
      - Not set
+
+.. _global_build_options:
+
+Global Build Options
+--------------------
+
+The following :ref:`mmm_build_options` are available in any module:
+
+.. list-table::
+   :widths: 1 5 3
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - ``target``
+     - Path of the build directory ``target~``.
+     - ``${basedir}/target~``
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

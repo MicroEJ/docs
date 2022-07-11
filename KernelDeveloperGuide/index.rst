@@ -9,8 +9,9 @@ Kernel Developer Guide
    overview
    kf
    gettingStarted
-   firmwareCreation
+   kernelCreation
    kernelAPI
+   runtimeEnvironment
    kernelUID
    featuresCommunication
    kfEnabledLibraries
