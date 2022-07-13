@@ -125,7 +125,7 @@ Here is a list of known libraries using an Add-On Processor:
 
 - NLS::
 
-   <dependency org="com.microej.library.runtime" name="nls-po" rev="2.3.0"/>
+   <dependency org="com.microej.library.runtime" name="binary-nls" rev="2.4.2"/>
 
 - Wadapps::
 
