@@ -126,17 +126,14 @@ Here is a list of known libraries using an Add-On Processor:
 - NLS::
 
    <dependency org="com.microej.library.runtime" name="nls-po" rev="2.3.0"/>
-   <dependency org="com.microej.tool.addon.runtime" name="nls-po-processor" rev="2.3.0" conf="addon-processor" />	
 
 - Wadapps::
 
    <dependency org="ej.library.wadapps" name="wadapps" rev="2.2.0"/>
-   <dependency org="ej.tool.addon.wadapps" name="wadapps-processor" rev="2.1.1" conf="addon-processor"/>
 
 - JavaScript::
 
    <dependency org="com.microej.library.runtime" name="js" rev="0.13.0"/>
-   <dependency org="com.microej.tool.addon.runtime" name="js-processor" rev="0.13.0" conf="addon-processor"/>
 
 Use a Runtime Environment in an Application
 -------------------------------------------
