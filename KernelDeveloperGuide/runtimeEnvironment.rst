@@ -79,10 +79,10 @@ Kernel APIs as Project File
 The Kernel APIs can also be defined in a file in the Runtime Environment directly.
 The file must be named ``kernel.api`` and stored in the ``src/main/resources`` folder.
 
-Add Addon Processors
-~~~~~~~~~~~~~~~~~~~~
+Add Add-On Processors
+~~~~~~~~~~~~~~~~~~~~~
 
-If the Applications need a library which uses an Addon Processor, this Addon Processor must be declared as a direct dependency in the Runtime Environment.
+If the Applications need a library which uses an Add-On Processor, this Add-On Processor must be declared as a direct dependency in the Runtime Environment.
 Here is the list of the libraries using an Addon Processor and how to declare them in a Runtime Environment:
 
 - NLS::
