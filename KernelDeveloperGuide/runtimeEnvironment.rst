@@ -35,7 +35,7 @@ A Runtime Environment :ref:`module project <mmm_module_skeleton>` is created wit
 .. code:: xml
 
    <info organisation="com.mycompany" module="myruntimeapi" status="integration" revision="1.0.0">
-      <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="3.0.+">
+      <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="4.0.+">
       </ea:build>
    </info>
 
