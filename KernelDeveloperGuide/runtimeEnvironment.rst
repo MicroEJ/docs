@@ -82,8 +82,46 @@ The file must be named ``kernel.api`` and stored in the ``src/main/resources`` f
 Add Add-On Processors
 ~~~~~~~~~~~~~~~~~~~~~
 
-If the Applications need a library which uses an Add-On Processor, this Add-On Processor must be declared as a direct dependency in the Runtime Environment.
-Here is the list of the libraries using an Addon Processor and how to declare them in a Runtime Environment:
+When the Runtime Environment includes an Add-On Library which uses an Add-On Processor, this Add-On Processor must be declared as a direct dependency in the Runtime Environment.
+
+The Add-On Processor dependency line can be retrieved as following: 
+
+- Open the Add-On Library ``ivy-[version].xml`` file
+- Search for the dependency line with ``conf="addon-processor->addon-processor"``
+
+   .. code-block:: xml
+      :emphasize-lines: 15
+
+      <ivy-module xmlns:ea="http://www.easyant.org" xmlns:ej="https://developer.microej.com" xmlns:m="http://ant.apache.org/ivy/maven" version="2.0" ej:version="2.0.0">
+         <info organisation="com.mycompany" module="mylibrary" revision="M.m.p" status="release" publication="20220523165033">
+            ...
+         </info>
+         <configurations>
+            ...
+            <conf name="addon-processor" visibility="public" description="Addon processors dependencies."/>
+         </configurations>
+         <publications>
+            ...
+         </publications>
+         <dependencies>
+            <dependency org="ej.api" name="edc" rev="1.3.3" conf="default->default;provided->provided"/>
+            ...
+            <dependency org="com.mycompany.addon" name="mylibrary-processor" rev="x.y.z" conf="addon-processor->addon-processor"/>
+            ...
+         </dependencies>
+      </ivy-module>
+- In the Runtime Environment :ref:`module description file <mmm_module_description>`, declare the ``addon-processor`` configuration in the in the list of ``configurations``
+  
+  .. code-block:: xml
+      
+      <conf name="addon-processor" visibility="public" description="Add-On Processors dependencies."/>
+- Paste the Add-On Processor dependency line
+
+.. warning::
+
+   If the Add-On library version is changed, the Add-On Processor version must be updated.
+
+Here is a list of known libraries using an Add-On Processor:
 
 - NLS::
 
@@ -99,10 +137,6 @@ Here is the list of the libraries using an Addon Processor and how to declare th
 
    <dependency org="com.microej.library.runtime" name="js" rev="0.13.0"/>
    <dependency org="com.microej.tool.addon.runtime" name="js-processor" rev="0.13.0" conf="addon-processor"/>
-
-The ``addon-processor`` must also be added in the list of ``configurations``::
-
-   <conf name="addon-processor" visibility="public" description="Addon processors dependencies."/>
 
 Use a Runtime Environment in an Application
 -------------------------------------------
