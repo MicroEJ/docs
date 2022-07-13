@@ -41,41 +41,47 @@ connection on a hardware device.
    connection kind and its configuration are fixed by the parameter
    ``String connectionString`` of the method ``Connection.open``.
 
-2. Step 2 consists of opening an ``InputStream`` on the connection. This
+2. Step 2 consists of opening an `InputStream`_ on the connection. This
    stream allows the MicroEJ Application to access the "RX" feature of
    the hardware device.
 
-3. Step 3 consists of using the ``InputStream`` APIs to receive in the
+3. Step 3 consists of using the `InputStream`_ APIs to receive in the
    MicroEJ Application all hardware device data.
 
-4. Step 4 consists of opening an ``OutputStream`` on the connection.
+4. Step 4 consists of opening an `OutputStream`_ on the connection.
    This stream allows the MicroEJ Application to access the "TX" feature
    of the hardware device.
 
-5. Step 5 consists of using the ``OutputStream`` APIs to transmit some
+5. Step 5 consists of using the `OutputStream`_ APIs to transmit some
    data from the MicroEJ Application to the hardware device.
 
 Note that steps 2 and 4 may be performed in parallel, and do not depend
 on each other.
 
+.. _InputStream: https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html
+.. _OutputStream: https://repository.microej.com/javadoc/microej_5.x/apis/java/io/OutputStream.html
 
 .. _section_ecom_dm:
 
 Device Management API
 =====================
 
-A device is defined by implementing ``ej.ecom.Device``. It is identified
-by a name and a descriptor (``ej.ecom.HardwareDescriptor``), which is
+A device is defined by implementing `ej.ecom.Device`_. It is identified
+by a name and a descriptor (`ej.ecom.HardwareDescriptor`_), which is
 composed of a set of MicroEJ properties. A device can be
-registered/unregistered in the ``ej.ecom.DeviceManager``.
+registered/unregistered in the `ej.ecom.DeviceManager`_.
 
 A device registration listener is defined by implementing
-``ej.ecom.RegistrationListener``. When a device is registered to or
+`ej.ecom.RegistrationListener`_. When a device is registered to or
 unregistered from the device manager, listeners registered for the
 device type are notified. The notification mechanism is done in a
 dedicated Java thread. The mechanism can be enabled or disabled (see
 :ref:`application_options`).
 
+.. _ej.ecom.Device: https://repository.microej.com/javadoc/microej_5.x/apis/ej/ecom/Device.html
+.. _ej.ecom.HardwareDescriptor: https://repository.microej.com/javadoc/microej_5.x/apis/ej/ecom/HardwareDescriptor.html
+.. _ej.ecom.DeviceManager: https://repository.microej.com/javadoc/microej_5.x/apis/ej/ecom/DeviceManager.html
+.. _ej.ecom.RegistrationListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/ecom/RegistrationListener.html
 
 Dependencies
 ============
