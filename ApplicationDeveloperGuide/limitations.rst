@@ -40,7 +40,7 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
    * - Numbers of exception handlers per method
      - 63
      - 63
-   * - Number of paramaters for an SNI method
+   * - Number of parameters for an SNI method
      - 15
      - 15
    * - Number of instance fields [2]_ (Base type)
