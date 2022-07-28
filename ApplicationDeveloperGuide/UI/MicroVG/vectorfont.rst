@@ -174,6 +174,11 @@ Colored Emojis
 
 The library supports the drawing of colored multilayer glyphs, but only for the embedded implementation. The simulator implementation draws the full emoji glyph with the color of the graphics context.
 
+Only font files with CPAL/COLR tables are supported.
+
+Font files with CBDT/CBLC tables are not supported.
+
+ 
 .. _metrics_and_text_positioning:
 
 Metrics and Text Positioning
