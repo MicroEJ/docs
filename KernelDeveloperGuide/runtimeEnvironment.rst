@@ -84,7 +84,7 @@ Add Add-On Processors
 
 When the Runtime Environment includes an Add-On Library which uses an Add-On Processor, this Add-On Processor must be declared as a direct dependency in the Runtime Environment.
 
-The Add-On Processor dependency line can be retrieved as following: 
+The Add-On Processor dependency line can be retrieved as follows: 
 
 - Open the Add-On Library ``ivy-[version].xml`` file
 - Search for the dependency line with ``conf="addon-processor->addon-processor"``
@@ -110,11 +110,13 @@ The Add-On Processor dependency line can be retrieved as following:
             ...
          </dependencies>
       </ivy-module>
-- In the Runtime Environment :ref:`module description file <mmm_module_description>`, declare the ``addon-processor`` configuration in the in the list of ``configurations``
+
+- In the Runtime Environment :ref:`module description file <mmm_module_description>`, declare the ``addon-processor`` configuration in the list of ``configurations``
   
   .. code-block:: xml
       
       <conf name="addon-processor" visibility="public" description="Add-On Processors dependencies."/>
+
 - Paste the Add-On Processor dependency line
 
 .. warning::
