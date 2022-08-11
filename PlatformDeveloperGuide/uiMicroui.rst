@@ -154,8 +154,17 @@ is defined during the pre-generation of a font (see
 Installation
 ============
 
-The MicroUI library is an additional module. In the platform
-configuration file, check :guilabel:`UI` > :guilabel:`MicroUI` to install the library.
+The MicroUI library is an additional module.
+In order to use this library add the UI pack corresponding to your MicroEJ Architecture in your Platform dependencies.
+
+For example a Platform using an Architecture ``flopi4G25`` will need the module ``flopi4G25-ui-pack``:
+
+.. code-block:: xml
+
+	<dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25" rev="7.14.0" />
+	<dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="13.0.6"/>
+
+In the platform configuration file, check :guilabel:`UI` > :guilabel:`MicroUI` to install the library.
 When checked, the XML file ``microui/microui.xml`` is required
 during platform creation in order to configure the module. This
 configuration step is used to extend the MicroUI library. Refer to the
