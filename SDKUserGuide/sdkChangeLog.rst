@@ -185,6 +185,7 @@ Build Types
 ^^^^^^^^^^^
 
 -  Added support for Kernel Runtime Environments (``build-firmware-multiapp``, ``build-runtime-api`` and ``build-application``).
+-  Added option ``javadoc.modules.excludes`` to exclude modules from Javadoc generation when building a module repository.
 
 Build Plugins
 ^^^^^^^^^^^^^
