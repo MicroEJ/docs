@@ -294,6 +294,9 @@ This module nature defines the following dedicated build options:
    * - javadoc.includes
      - Comma-separated list of packages to include in the javadoc.
      - ``**`` (all packages)
+   * - javadoc.modules.excludes [#require_sdk_5_6]_
+     - Comma-separated list of modules to exclude from the javadoc.
+     - Empty string
    * - skip.artifact.checker
      - When this property is set to true, all artifact checkers are skipped.
      - Not set
@@ -307,6 +310,8 @@ This module nature defines the following dedicated build options:
    * - skip.javadoc.deprecated
      - Prevents the generation of any deprecated API at all in the javadoc.
      - ``true``
+
+.. [#require_sdk_5_6] Require SDK version ``5.6.0`` or higher.
 
 .. _module_natures.runtime_environment:
 
