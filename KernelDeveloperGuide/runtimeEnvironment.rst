@@ -35,7 +35,7 @@ A Runtime Environment :ref:`module project <mmm_module_skeleton>` is created wit
 .. code:: xml
 
    <info organisation="com.mycompany" module="myruntimeapi" status="integration" revision="1.0.0">
-      <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="3.0.+">
+      <ea:build organisation="com.is2t.easyant.buildtypes" module="build-runtime-api" revision="4.0.+">
       </ea:build>
    </info>
 
@@ -79,6 +79,64 @@ Kernel APIs as Project File
 The Kernel APIs can also be defined in a file in the Runtime Environment directly.
 The file must be named ``kernel.api`` and stored in the ``src/main/resources`` folder.
 
+Add Add-On Processors
+~~~~~~~~~~~~~~~~~~~~~
+
+When the Runtime Environment includes an Add-On Library which uses an Add-On Processor, this Add-On Processor must be declared as a direct dependency in the Runtime Environment.
+
+The Add-On Processor dependency line can be retrieved as follows: 
+
+- In your target :ref:`module repository <module_repository>`, go to the Add-On Library folder,
+- Open the ``ivy-[version].xml`` file,
+- Search for the dependency line with ``conf="addon-processor->addon-processor"``
+
+   .. code-block:: xml
+      :emphasize-lines: 15
+
+      <ivy-module xmlns:ea="http://www.easyant.org" xmlns:ej="https://developer.microej.com" xmlns:m="http://ant.apache.org/ivy/maven" version="2.0" ej:version="2.0.0">
+         <info organisation="com.mycompany" module="mylibrary" revision="M.m.p" status="release" publication="20220523165033">
+            ...
+         </info>
+         <configurations>
+            ...
+            <conf name="addon-processor" visibility="public" description="Addon processors dependencies."/>
+         </configurations>
+         <publications>
+            ...
+         </publications>
+         <dependencies>
+            <dependency org="ej.api" name="edc" rev="1.3.3" conf="default->default;provided->provided"/>
+            ...
+            <dependency org="com.mycompany.addon" name="mylibrary-processor" rev="x.y.z" conf="addon-processor->addon-processor"/>
+            ...
+         </dependencies>
+      </ivy-module>
+
+- In the Runtime Environment :ref:`module description file <mmm_module_description>`, declare the ``addon-processor`` configuration in the list of ``configurations``
+  
+  .. code-block:: xml
+      
+      <conf name="addon-processor" visibility="public" description="Add-On Processors dependencies."/>
+
+- Paste the Add-On Processor dependency line
+
+.. warning::
+
+   If the Add-On library version is changed, the Add-On Processor version must be updated.
+
+Here is a list of known libraries using an Add-On Processor:
+
+- `NLS <https://repository.microej.com/modules/com/microej/library/runtime/binary-nls/>`_::
+
+   <dependency org="com.microej.tool.addon.runtime" name="binary-nls-processor" rev="<version>" conf="addon-processor->addon-processor"/>
+
+- `Wadapps <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/library/wadapps/wadapps/>`_::
+
+   <dependency org="ej.tool.addon.wadapps" name="wadapps-processor" rev="<version>" conf="addon-processor->addon-processor"/>
+
+- `JavaScript <https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/library/runtime/js/>`_::
+
+   <dependency org="com.microej.tool.addon.runtime" name="js-processor" rev="<version>" conf="addon-processor->addon-processor"/>
 
 Use a Runtime Environment in an Application
 -------------------------------------------
