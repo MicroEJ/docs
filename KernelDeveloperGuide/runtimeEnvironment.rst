@@ -86,7 +86,8 @@ When the Runtime Environment includes an Add-On Library which uses an Add-On Pro
 
 The Add-On Processor dependency line can be retrieved as follows: 
 
-- Open the Add-On Library ``ivy-[version].xml`` file
+- In your target :ref:`module repository <module_repository>`, go to the Add-On Library folder,
+- Open the ``ivy-[version].xml`` file,
 - Search for the dependency line with ``conf="addon-processor->addon-processor"``
 
    .. code-block:: xml
