@@ -126,17 +126,17 @@ The Add-On Processor dependency line can be retrieved as follows:
 
 Here is a list of known libraries using an Add-On Processor:
 
-- NLS::
+- `NLS <https://repository.microej.com/modules/com/microej/library/runtime/binary-nls/>`_::
 
-   <dependency org="com.microej.library.runtime" name="binary-nls" rev="2.4.2"/>
+   <dependency org="com.microej.tool.addon.runtime" name="binary-nls-processor" rev="<version>" conf="addon-processor->addon-processor"/>
 
-- Wadapps::
+- `Wadapps <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/library/wadapps/wadapps/>`_::
 
-   <dependency org="ej.library.wadapps" name="wadapps" rev="2.2.0"/>
+   <dependency org="ej.tool.addon.wadapps" name="wadapps-processor" rev="<version>" conf="addon-processor->addon-processor"/>
 
-- JavaScript::
+- `JavaScript <https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/library/runtime/js/>`_::
 
-   <dependency org="com.microej.library.runtime" name="js" rev="0.13.0"/>
+   <dependency org="com.microej.tool.addon.runtime" name="js-processor" rev="<version>" conf="addon-processor->addon-processor"/>
 
 Use a Runtime Environment in an Application
 -------------------------------------------
