@@ -8,7 +8,7 @@ This page describes the most common module natures as follows:
 - **Skeleton Name**: the :ref:`project skeleton <mmm_module_skeleton>` name.
 - **Build Type Name**: the build type name, derived from the module nature name: ``com.is2t.easyant.buildtypes#build-[NATURE_NAME]``.
 - **Documentation**: a link to the documentation.
-- **SDK Menu**: the menu to the direct wizard in MicroEJ SDK (if available). 
+- **SDK Menu**: the menu to the direct wizard in the SDK (if available). 
   Any module nature can be created with the default wizard from :guilabel:`File` > :guilabel:`New` > :guilabel:`Module Project`.
 - **Configuration**: properties that can be defined to configure the module. Properties are defined inside the ``ea:build`` tag of the :ref:`module.ivy <mmm_module_description>` file,
   using ``ea:property`` tag as described in the section :ref:`mmm_build_options`.
@@ -294,6 +294,9 @@ This module nature defines the following dedicated build options:
    * - javadoc.includes
      - Comma-separated list of packages to include in the javadoc.
      - ``**`` (all packages)
+   * - javadoc.modules.excludes [#require_sdk_5_6]_
+     - Comma-separated list of modules to exclude from the javadoc.
+     - Empty string
    * - skip.artifact.checker
      - When this property is set to true, all artifact checkers are skipped.
      - Not set
@@ -307,6 +310,8 @@ This module nature defines the following dedicated build options:
    * - skip.javadoc.deprecated
      - Prevents the generation of any deprecated API at all in the javadoc.
      - ``true``
+
+.. [#require_sdk_5_6] Require SDK version ``5.6.0`` or higher.
 
 .. _module_natures.runtime_environment:
 
@@ -390,7 +395,7 @@ This module nature defines the following dedicated build options:
      - When this property is set (any value), the firmware is not built.
      - Not set
 
-.. [#require_sdk_5_5] MicroEJ SDK version ``5.5.0`` or higher.
+.. [#require_sdk_5_5] Require SDK version ``5.5.0`` or higher.
 
 .. _module_natures.plugins:
 
@@ -602,7 +607,7 @@ This plugin defines the following build options:
      - When this property is set (any value), the tests are not executed.
      - Not set
 
-.. [#warning_check_sdk_5_5] Option ``cc.src.folders`` is not set by default for MicroEJ SDK versions lower than ``5.5.0``.
+.. [#warning_check_sdk_5_5] Option ``cc.src.folders`` is not set by default for SDK versions lower than ``5.5.0``.
 
 .. _module_natures.plugins.unittests:
 
