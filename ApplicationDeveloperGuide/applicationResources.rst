@@ -47,9 +47,9 @@ The following figure summarized how to declare resources:
       rawList [shape=box, label="*.resources.list"]
       rawExt [shape=box, label="*.resources.list +\l*.externresources.list"]
       imagesList [shape=box, label="*.images.list"]
-      imagesExt [shape=box, label="*.extimages.list"]
+      imagesExt [shape=box, label="*.imagesext.list"]
       fontsList [shape=box, label="*.fonts.list"]
-      fontsExt [shape=box, label="*.extfonts.list"]
+      fontsExt [shape=box, label="*.fontsext.list"]
       NLSList [shape=box, label="*.nls.list"]
       NLSExt [shape=box, label="*.nls.list +\l*.externresources.list"]
   
