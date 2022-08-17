@@ -25,7 +25,7 @@ Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*
   
       internalImage [shape=diamond, label="internal?"]
       imagesList [shape=box, label="*.images.list"]
-      imagesExt [shape=box, label="*.extimages.list"]
+      imagesExt [shape=box, label="*.imagesext.list"]
       subgraph cluster_image {
           label ="Image"
           internalImage -> imagesList [label="yes"]

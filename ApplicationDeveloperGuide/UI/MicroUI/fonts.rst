@@ -15,7 +15,7 @@ Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list
   
       internalFont [shape=diamond, label="internal?"]
       fontsList [shape=box, label="*.fonts.list"]
-      fontsExt [shape=box, label="*.extfonts.list"]
+      fontsExt [shape=box, label="*.fontsext.list"]
       subgraph cluster_font {
           label ="Font"
           internalFont -> fontsList [label="yes"]
