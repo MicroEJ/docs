@@ -180,11 +180,11 @@ behavior is implemented in native using the following three functions:
 
 This behavior is implemented in a Mock using the following methods on a ``lock`` object:
 
-- ``Object.wait(long timeout)``: Causes the current thread to wait
-  until another thread invokes the ``notify()`` method or the
-  ``notifyAll()`` method for this object.
+- `Object.wait(long timeout)`_: Causes the current thread to wait
+  until another thread invokes the `notify()`_ method or the
+  `notifyAll()`_ method for this object.
 
-- ``Object.notifyAll()``: Wakes up all the threads that are waiting on
+- `Object.notifyAll()`_: Wakes up all the threads that are waiting on
   this object's monitor.
 
 - ``NativeInterface.notifySuspendStart()``: Notifies the Simulator that the current native is suspended so it can schedule a thread with a lower priority.
@@ -224,6 +224,11 @@ This behavior is implemented in a Mock using the following methods on a ``lock``
                lock.notifyAll();
          }
    }
+
+.. _Object.wait(long timeout): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#wait-long-
+.. _notify(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#notify--
+.. _notifyAll(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#notifyAll--
+.. _Object.notifyAll(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#notifyAll--
 
 Resource Management
 -------------------

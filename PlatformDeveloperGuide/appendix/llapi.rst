@@ -332,12 +332,12 @@ This describes succinctly some ``LLUI_DISPLAY_IMPL`` functions. Please refer to 
 Initialization
 --------------
 
-Each Graphics Engine gets initialized by calling the function ``LLUI_DISPLAY_IMPL_initialize``: It asks its display driver to initialize itself. The implementation function has to fill the given structure ``LLUI_DISPLAY_SInitData``. This structure allows to retrieve the size of the virtual and physical screen, the back buffer address (where MicroUI is drawing). The implementation has too `give` two binary semaphores.
+Each Graphics Engine gets initialized by calling the function ``LLUI_DISPLAY_IMPL_initialize``: It asks its display driver to initialize itself. The implementation function has to fill the given structure ``LLUI_DISPLAY_SInitData``. This structure allows to retrieve the size of the virtual and physical screen, the back buffer address (where MicroUI is drawing). The implementation has to `give` two binary semaphores.
 
 Image Heap
 ----------
 
-The display driver must reserve a runtime memory buffer for creating dynamic images when using MicroUI ``ResouceImage`` and ``BufferedImage`` classes methods. The display driver may choose to reserve an empty buffer. Thus, calling MicroUI methods will result in a ``MicroUIException`` exception.
+The display driver must reserve a runtime memory buffer for creating dynamic images when using MicroUI `ResourceImage`_ and `BufferedImage`_ classes methods. The display driver may choose to reserve an empty buffer. Thus, calling MicroUI methods will result in a `MicroUIException`_ exception.
 
 The section name is ``.bss.microui.display.imagesHeap``.
 
@@ -347,12 +347,18 @@ This implementation is using a best fit allocator.
 It can be updated to log the allocations, the remaining space, etc. 
 When no implementation is included in the BSP, the default Graphics Engine'a allocator (a best fit allocator) is used.
 
+.. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html
+.. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html
+.. _MicroUIException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUIException.html
+
 External Font Heap
 ------------------
 
-The display driver must reserve a runtime memory buffer for loading external fonts (fonts located outside CPU addresses ranges). The display driver may choose to reserve an empty buffer. Thus, calling MicroUI ``Font`` methods will result in empty drawings of some characters.
+The display driver must reserve a runtime memory buffer for loading external fonts (fonts located outside CPU addresses ranges). The display driver may choose to reserve an empty buffer. Thus, calling MicroUI `Font`_ methods will result in empty drawings of some characters.
 
 The section name is ``.bss.microui.display.externalFontsHeap``.
+
+.. _Font: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html
 
 Flush and Synchronization
 -------------------------
@@ -364,11 +370,13 @@ As soon as the application performs a new drawing, the Graphics Engine locks the
 Display Characteristics
 -----------------------
 
-Function ``LLUI_DISPLAY_IMPL_isColor`` directly implements the method from the MicroUI ``Display`` class of the same name. The default implementation always returns ``true`` when the number of bits per pixel is higher than 4.
+Function ``LLUI_DISPLAY_IMPL_isColor`` directly implements the method from the MicroUI `Display`_ class of the same name. The default implementation always returns ``true`` when the number of bits per pixel is higher than 4.
 
-Function ``LLUI_DISPLAY_IMPL_getNumberOfColors`` directly implements the method from the MicroUI ``Display`` class of the same name. The default implementation returns a value according to the number of bits by pixel, without taking into consideration the alpha bit(s).
+Function ``LLUI_DISPLAY_IMPL_getNumberOfColors`` directly implements the method from the MicroUI `Display`_ class of the same name. The default implementation returns a value according to the number of bits by pixel, without taking into consideration the alpha bit(s).
 
-Function ``LLUI_DISPLAY_IMPL_isDoubleBuffered`` directly implements the method from the MicroUI ``Display`` class of the same name. The default implementation returns ``true``. When LLAPI implementation targets a display in ``direct`` mode, this function must be implemented and return ``false``.
+Function ``LLUI_DISPLAY_IMPL_isDoubleBuffered`` directly implements the method from the MicroUI `Display`_ class of the same name. The default implementation returns ``true``. When LLAPI implementation targets a display in ``direct`` mode, this function must be implemented and return ``false``.
+
+.. _Display: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html
 
 Contrast
 --------
