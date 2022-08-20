@@ -104,7 +104,9 @@ It offers the same capacity to override some built-in drawing algorithms (intern
 Widget Display
 ==============
 
-The widget Display implements the interface ``ej.microui.display.LLUIDisplayImpl`` to be compatible with the implementation of the MicroUI class `Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_.
+The widget Display implements the interface ``ej.microui.display.LLUIDisplayImpl`` to be compatible with the implementation of the MicroUI class `Display`_.
+
+.. _Display: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html
 
 Features
 --------
@@ -240,12 +242,14 @@ This chapter describes how to override the method ``fillRectangle()``.
 Explanations:
 
 * The Front Panel framework is running over AWT. 
-* The method ``gc.getImage()`` returns a ``ej.fp.Image``. It is the representation of a MicroUI Image in the Front Panel framework. The method ``gc.getImage().getRAWImage()`` returns the implementation of the Front Panel image on the J2SE framework: a AWT ``BufferedImage``. From this image, retrieve the AWT graphics.
+* The method ``gc.getImage()`` returns a ``ej.fp.Image``. It is the representation of a MicroUI Image in the Front Panel framework. The method ``gc.getImage().getRAWImage()`` returns the implementation of the Front Panel image on the J2SE framework: a `AWT BufferedImage`_. From this image, retrieve the AWT graphics.
 * The MicroUI color (``gc.getRenderingColor()``) is converted in an AWT color.
 * Before drawing, the MicroUI clip is checked (the MicroUI drawing can be outside the clip and/or the image itself).
 * After drawing, the implementation updates the Graphics Engine dirty area by calling ``gc.setDrawingLimits()``.
 
 .. note:: More details are available in LLUIPainter, UIDrawing, LLUIDisplay, and LLUIDisplayImpl classes.
+
+.. _AWT BufferedImage: https://docs.oracle.com/javase/7/docs/api/java/awt/image/BufferedImage.html
 
 New Drawings
 ============
@@ -305,37 +309,46 @@ This chapter describes how to implement the method ``drawSomething()``.
 Inputs Extensions
 =================
 
-The input device widgets (button, joystick, touch, etc.) require a listener to know how to react on input events (press, release, move, etc.). The aim of this listener is to generate an event compatible with MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_. Thereby, a button press action can become a MicroUI `Buttons <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html>`_ press event or a `Command <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Command.html>`_ event or anything else. 
+The input device widgets (button, joystick, touch, etc.) require a listener to know how to react on input events (press, release, move, etc.). The aim of this listener is to generate an event compatible with MicroUI `Event Generator`_. Thereby, a button press action can become a MicroUI `Buttons`_ press event or a `Command`_ event or anything else. 
 
-A MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_ is known by its name. This name is fixed during the MicroUI static initialization (see :ref:`section_static_init`). To generate an event to a specific event generator, the widget has to use the event generator name as identifier. 
+A MicroUI `Event Generator`_ is known by its name. This name is fixed during the MicroUI static initialization (see :ref:`section_static_init`). To generate an event to a specific event generator, the widget has to use the event generator name as identifier. 
 
 A Front Panel widget can:
 
-* Force the behavior of an input action: the associated MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_ type is hardcoded (`Buttons <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html>`_, `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_, etc.), the event is hardcoded (for instance: widget button press action may be hardcoded on event generator `Buttons <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html>`_ and on the event `pressed`). Only the event generator name (identifier) should be editable by the Front Panel extension project.
-* Propose a default behavior of an input action: contrary to first point, the Front Panel extension project is able to change the default behavior. For instance a joystick can simulate a MicroUI `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_.
-* Do nothing: the widget requires the Front Panel extension project to give a listener. This listener will receive all widgets action (press, release, etc.) and will have to react on it. The action should be converted on a MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_ event or might be dropped.
+* Force the behavior of an input action: the associated MicroUI `Event Generator`_ type is hardcoded (`Buttons`_, `Pointer`_, etc.), the event is hardcoded (for instance: widget button press action may be hardcoded on event generator `Buttons`_ and on the event `pressed`). Only the event generator name (identifier) should be editable by the Front Panel extension project.
+* Propose a default behavior of an input action: contrary to first point, the Front Panel extension project is able to change the default behavior. For instance a joystick can simulate a MicroUI `Pointer`_.
+* Do nothing: the widget requires the Front Panel extension project to give a listener. This listener will receive all widgets action (press, release, etc.) and will have to react on it. The action should be converted on a MicroUI `Event Generator`_ event or might be dropped.
 
 This choice of behavior is widget dependant. Please refer to the widget documentation to have more information about the chosen behavior.
+
+.. _Event Generator: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html
+.. _Buttons: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html
+.. _Command: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Command.html
+.. _Pointer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html
 
 Heap Simulation
 ===============
 
 Graphics Engine is using two dedicated heaps: for the images (see :ref:`section_image_loader_memory` ) and the external fonts (see :ref:`section_font_loader_memory`). Front Panel partly simulates the heaps usage.
 
-* Images heap: Front Panel simulates the heap usage when the application is creating a `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#>`_, when it loads and decodes an image (PNG, BMP, etc.) which is not a raw resource and when it converts an image in MicroEJ format in another MicroEJ format. However it does not simulate the external image copy in heap (see :ref:`section_image_external_memory`).
+* Images heap: Front Panel simulates the heap usage when the application is creating a `BufferedImage`_, when it loads and decodes an image (PNG, BMP, etc.) which is not a raw resource and when it converts an image in MicroEJ format in another MicroEJ format. However it does not simulate the external image copy in heap (see :ref:`section_image_external_memory`).
 * External fonts heap: Front Panel does not simulate this heap (see :ref:`section_font_loader_memory`). There is no rendering limitation when application is using a font which is located outside CPU addresses ranges.
+
+.. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#
 
 .. _fp_ui_decoder:
 
 Image Decoders
 ==============
 
-Front Panel uses its own internal image decoders when the associated modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Some additional decoders can be added like the C-side for the embedded platform (see :ref:`external image decoders<image_external_decoder>`).  Front Panel uses the Java AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_ API to load the encoded images. 
+Front Panel uses its own internal image decoders when the associated modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Some additional decoders can be added like the C-side for the embedded platform (see :ref:`external image decoders<image_external_decoder>`).  Front Panel uses the Java AWT `ImageIO`_ API to load the encoded images. 
+
+.. _ImageIO: https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html
 
 Generic Image Decoders
 ----------------------
 
-The Java AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_  class holds a limited list of additional decoders.
+The Java AWT `ImageIO`_  class holds a limited list of additional decoders.
 To be compliant with the embedded side, these decoders are disabled by default.
 To add an additional decoder, specify the property ``hardwareImageDecoders.list`` in Front Panel configuration properties file (see :ref:`fp_ui_installation`) with one or several property values:
 
@@ -362,7 +375,7 @@ The decoders list is comma (*,*) separated. Example:
 Custom Image Decoders
 ---------------------
 
-Additionally, the Java AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_  class offers the possibility to add some custom image decoders by using the service ``javax.imageio.spi.ImageReaderSpi``.
+Additionally, the Java AWT `ImageIO`_  class offers the possibility to add some custom image decoders by using the service ``javax.imageio.spi.ImageReaderSpi``.
 
 Since UI Pack 13.2.0, Front Panel automatically includes new image decoders (new ImageIO services, see the method ``LLUIDisplayImpl.decode()``), compiled in JAR files that follow this convention:
 

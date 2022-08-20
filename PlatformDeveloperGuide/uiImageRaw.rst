@@ -332,8 +332,8 @@ Disadvantages:
 
 The following table lists the original formats that can be decoded at run-time and / or compile-time:
 
-* Image Generator: the off-board tool that converts an image in an output format. All AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_ default formats are supported and always enabled.
-* Front Panel: the decoders embedded by the simulator part. All AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_ default formats are supported but disabled by default.
+* Image Generator: the off-board tool that converts an image in an output format. All AWT `ImageIO`_ default formats are supported and always enabled.
+* Front Panel: the decoders embedded by the simulator part. All AWT `ImageIO`_ default formats are supported but disabled by default.
 * Runtime Decoders: the decoders embedded by the embedded part. 
 
 .. table:: Original Image Formats
@@ -368,3 +368,13 @@ The following table lists the original formats that can be decoded at run-time a
       <dependency org="com.microej.clibrary.thirdparty" name="libwebp" rev="1.0.1"/>
 
 * (6): The UI-pack does not provide some runtime decoders for these formats but a BSP can add its own decoders (see :ref:`image_runtime_decoder`).
+
+.. _ImageIO: https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html
+
+
+..
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

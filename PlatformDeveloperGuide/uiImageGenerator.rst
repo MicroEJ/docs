@@ -139,7 +139,7 @@ This service allows to add a custom image reader.
 ImageReaderSpi
 --------------
 
-This extension is part of AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_.
+This extension is part of AWT `ImageIO`_.
 By default, the ImageIO class only manages the standard image formats JPG, PNG, BMP and GIF.
 It allows to add some image readers by adding some implementations of the service `javax.imageio.spi.ImageReaderSpi`.
 
@@ -150,6 +150,8 @@ Since UI Pack 13.2.0, the Image Generator automatically includes new image decod
 3. The JAR location is the platform configuration project's ``dropins/tools/`` directory.
 
 .. note:: The same JAR is used by the Image Generator and by the :ref:`Front Panel <fp_ui_decoder>`.
+
+.. _ImageIO: https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html
 
 .. _section_image_custom_format:
 
@@ -297,7 +299,7 @@ Use
 ===
 
 The MicroUI Image APIs are available in the class
-`ej.microui.display.Image <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#>`_ ant its subclasses. There are no specific APIs that use a
+`ej.microui.display.Image`_ ant its subclasses. There are no specific APIs that use a
 pre-generated image. When an image has been pre-processed, the MicroUI
 Image APIs ``getImage`` and ``loadImage`` will get/load the images.
 
@@ -305,6 +307,7 @@ Refer to the chapter :ref:`application_options` (:guilabel:`Libraries` >
 :guilabel:`MicroUI` > :guilabel:`Image`) for more information about specifying the image
 configuration file.
 
+.. _ej.microui.display.Image: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

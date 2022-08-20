@@ -22,7 +22,7 @@ MicroUI Implementation
 	
 **Changed**	
 	
-* Use `.rodata` sections instead of `.text` sections.
+* Use ``.rodata`` sections instead of ``.text`` sections.
 	
 **Fixed**
 
@@ -32,23 +32,29 @@ MicroUI Implementation
 * Fix the drawing of antialiased arc: caps are drawn over the arc itself (rendering issue when the GraphicsContext's background color is set).
 * Fix the drawing of antialiased arc: arc is not fully drawn when (int)startAngle == (int)((startAngle + arcAngle) % 360)).
 * Fix the input queue size when not already set by the application launcher.
-* Fix the use of a negative `scanLength` in `GraphicsContext.readPixels()` and `Image.readPixels()`.  
+* Fix the use of a negative ``scanLength`` in `GraphicsContext.readPixels()`_ and `Image.readPixels()`_.  
+
+.. _GraphicsContext.readPixels(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#readPixel-int-int-
+.. _Image.readPixels(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#readPixel-int-int-
 
 Front Panel
 """""""""""
 
 **Added**
 
-* Add the property `-Dej.fp.hil=true` in the application launcher to force to run the FrontPanel with the Graphics Engine as a standard HIL mock (requires MicroEJ Architecture 7.17.0 or higher).
-* Add `LLUIDisplayImpl.decode()`: the Front Panel project is able to read encoded image like the embedded side.
+* Add the property ``-Dej.fp.hil=true`` in the application launcher to force to run the FrontPanel with the Graphics Engine as a standard HIL mock (requires MicroEJ Architecture 7.17.0 or higher).
+* Add ``LLUIDisplayImpl.decode()``: the Front Panel project is able to read encoded image like the embedded side.
 * Include automatically the AWT ImageIO services.
-* Add `MicroUIImage.readPixel()` to read an image's pixel color.
+* Add ``MicroUIImage.readPixel()`` to read an image's pixel color.
  
 **Fixed**
 
 * Fix the "display context switch" and the loading of feature's font. 
 * Fix OOM (Java heap space) when opening/closing several hundreds of big RAW Images. 
-* Fix the synchronization with the Graphics Engine when calling `GraphicsContext.setColor()` or `GraphicsContext.enableEllipsis()`.
+* Fix the synchronization with the Graphics Engine when calling `GraphicsContext.setColor()`_ or `GraphicsContext.enableEllipsis()`_.
+
+.. _GraphicsContext.setColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setColor-int-
+.. _GraphicsContext.enableEllipsis(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#enableEllipsis-int-
  
 Image Generator
 """""""""""""""
@@ -64,7 +70,7 @@ LLAPIs
 
 **Added**
 
-* Add `LLUI_DISPLAY_readPixel` to read an image's pixel color. 
+* Add ``LLUI_DISPLAY_readPixel`` to read an image's pixel color. 
 
 BSP
 """
@@ -153,8 +159,11 @@ MicroUI Implementation
 **Fixed**
 
 * Allow to open a font in format made with UI Pack 12.x (but cannot manage ``Dynamic`` styles).
-* ``Display.flush()`` method is called once when MicroUI pump thread has a higher priority than the caller of ``Display.requestFlush()``.
-* ``Display.requestFlush()`` is only executed once from a feature (UI deadlock).
+* `Display.flush()`_ method is called once when MicroUI pump thread has a higher priority than the caller of `Display.requestFlush()`_.
+* `Display.requestFlush()`_ is only executed once from a feature (UI deadlock).
+
+.. _Display.flush(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush--
+.. _Display.requestFlush(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestFlush--
 
 Misc
 """"
@@ -225,7 +234,9 @@ MicroUI Implementation
 * Cap thickness and fade in thick drawing algorithms.
 * Clip is not checked when filling arcs, circles and ellipsis.
 * Image path when loading an external image (``LLEXT``).
-* ``InternalLimitsError`` when calling ``MicroUI.callSerially()`` from a feature.
+* ``InternalLimitsError`` when calling `MicroUI.callSerially()`_ from a feature.
+
+.. _MicroUI.callSerially(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#callSerially-java.lang.Runnable-
 
 Drawing Implementation
 """"""""""""""""""""""
@@ -267,7 +278,11 @@ MicroUI Implementation
 * Reduce Java heap usage.
 * Fix empty images heap.
 * Draw image algorithm does not respect image stride in certain circumstances.
-* Fix flush limits of ``drawThickFadedLine``, ``drawThickEllipse`` and ``drawThickFadedEllipse``.
+* Fix flush limits of `drawThickFadedLine`_, `drawThickEllipse`_ and `drawThickFadedEllipse`_.
+
+.. _drawThickFadedLine: https://repository.microej.com/javadoc/microej_5.x/apis/ej/drawing/ShapePainter.html#drawThickFadedLine-ej.microui.display.GraphicsContext-int-int-int-int-int-int-ej.drawing.ShapePainter.Cap-ej.drawing.ShapePainter.Cap-
+.. _drawThickEllipse: https://repository.microej.com/javadoc/microej_5.x/apis/ej/drawing/ShapePainter.html#drawThickEllipse-ej.microui.display.GraphicsContext-int-int-int-int-int-
+.. _drawThickFadedEllipse: https://repository.microej.com/javadoc/microej_5.x/apis/ej/drawing/ShapePainter.html#drawThickFadedEllipse-ej.microui.display.GraphicsContext-int-int-int-int-int-int-
  
 [13.0.2] - 2020-10-02
 =====================
@@ -298,11 +313,14 @@ MicroUI Implementation
 
 * Throw an exception when there is no display.
 * Antialiased circle may be cropped.
-* ``FillRoundRectangle`` can give invalid arguments to ``FillRectangle``.
+* `FillRoundedRectangle`_ can give invalid arguments to `FillRectangle`_.
 * Flush bounds may be invalid.
 * Reduce memory footprint (java heap and immortal heap).
 * No font is loaded when an external font is not available.
 * A8 color is cropped to display limitation too earlier on simulator.
+
+.. _FillRoundedRectangle: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html#fillRoundedRectangle-ej.microui.display.GraphicsContext-int-int-int-int-int-int-
+.. _FillRectangle: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html#fillRectangle-ej.microui.display.GraphicsContext-int-int-int-int-
 
 LLAPIs
 """"""
@@ -521,8 +539,10 @@ MicroUI Implementation
 **Fixed**
 
 * Pending flush cannot be added after an ``OutOfEventException``.
-* ``Display.isColor()`` returns an invalid value.
+* `Display.isColor()`_ returns an invalid value.
 * Draw/fill circle/ellipse arc is not drawn when angle is negative.
+
+.. _Display.isColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#isColor--
 
 [12.0.2] - 2019-09-23
 =====================
@@ -596,8 +616,10 @@ MicroUI Implementation
 * The format of a RAW image using "display" format is wrong.
 * Dynamic image width for platform C1/2/4 may be wrong.
 * Wrong pixel address when reading from a C2/4 display.
-* ``getDisplayColor()`` can return a color with transparency (spec is ``0x00RRGGBB``).
+* `getDisplayColor()`_ can return a color with transparency (spec is ``0x00RRGGBB``).
 * A fully opaque image is tagged as transparent (ARGB8888 platform).
+
+.. _getDisplayColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#getDisplayColor-int-
 
 Simulator
 """""""""
@@ -887,7 +909,9 @@ MicroUI Implementation
 
 * Draw region of the display on the display does not support overlap.
 * Unspecified exception while loading an image with an empty name.
-* ``Display.flush()``: ymax can be higher than display.height.
+* `Display.flush()`_: ymax can be higher than display.height.
+
+.. _Display.flush(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush--
 
 ImageGenerator
 """"""""""""""
@@ -956,11 +980,13 @@ MicroUI Implementation
 
 * ImageScale bugs.
 * Draw string: some errors are not thrown.
-* ``Font.getWidth()`` and ``getHeight()`` don't use ratio factor.
+* ``Font.getWidth()`` and `getHeight()`_ don't use ratio factor.
 * Draw antialiased circle arc render issue.
 * Draw antialiased circle arc render bug with 45° angles.
 * MicroUI lib expects the dynamic image decoder default format.
 * Wrong error code is returned when converting an image.
+
+.. _getHeight(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getHeight--
 
 ImageGenerator
 """"""""""""""
