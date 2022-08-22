@@ -68,7 +68,7 @@ This glossary defines the technical terms upon which a `MICROEJ VEE (Virtual Exe
       MICROEJ VEE is an applications container. VEE stands for Virtual Execution Environment, and refers to the first implementation that embeds a virtual 32-bit processor, hence the term "Virtual". MICROEJ VEE runs on any OS/RTOS commonly used in embedded systems (FreeRTOS, QP/C, uc/OS, ThreadX, embOS, Mbed OS, Zephyr OS, VxWorks, PikeOS, Integrity, Linux, QNX, …) and can also run without RTOS (bare-metal) or proprietary RTOS. MICROEJ VEE includes the small MEJ32, along with a wide range of libraries (Add-On Libraries and Foundation Libraries).
 
    Virtual Device
-      A Virtual Device is a software package that includes the simulation part of an Executable: runtime, libraries and application(s). It can be run on any PC without the need of the SDK. In case of a Multi-Sandbox Firmware, it is also used for developing a Sandboxed Application in the SDK. 
+      A Virtual Device is a software package that includes the simulation part of an Executable: runtime, libraries and application(s). It can be run on any desktop computer without the need of the SDK. In case of a Multi-Sandbox Firmware, it is also used for developing a Sandboxed Application in the SDK. 
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
