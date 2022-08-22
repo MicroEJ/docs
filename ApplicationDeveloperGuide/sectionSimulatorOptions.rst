@@ -30,7 +30,7 @@ Option: Java Heap Size
 *Description*:
 
 Heap Size allocated by the Simulator. It is used to allocate object on Java Heap,
-but also immutable objectss. It thus must be at least equal to the sum of option_java_heap_ 
+but also immutable objects. It thus must be at least equal to the sum of option_java_heap_ 
 and option_immortal_heap_. Value is in kilobytes.
 
 
