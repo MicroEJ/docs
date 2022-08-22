@@ -65,7 +65,7 @@ Some fundamental points:
 
 .. note::
 
-   You can go further by reading `the Kernel & Features Specification <http://www.e-s-r.net/download/specification/ESR-SPE-0020-KF-1.4-F.pdf>`_.
+   You can go further by reading `the Kernel & Features Specification <_kf_specification>`.
 
 
 ..
