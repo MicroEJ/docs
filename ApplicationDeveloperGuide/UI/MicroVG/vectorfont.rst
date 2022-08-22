@@ -218,7 +218,7 @@ These methods can measure a specific glyph width and height using a one characte
 
 .. note::
 
-The metrics are extracted from the character glyph metrics without considering the antialiasing introduced by the glyphs rasterizer.
+   The metrics are extracted from the character glyph metrics without considering the antialiasing introduced by the glyphs rasterizer.
 
 .. _drawOnCircle:
 

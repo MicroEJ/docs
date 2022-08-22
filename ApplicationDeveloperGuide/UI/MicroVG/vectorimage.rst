@@ -34,7 +34,7 @@ The image generator tool supports the following input file formats:
 
 Refer to the :ref:`vectorimage_limitations` section for the list of supported features for these file formats.
 
-The vector image objects are extracted and converted to paths made of `Move`, `Line`` and `Curve` commands. 
+The vector image objects are extracted and converted to paths made of `Move`, `Line` and `Curve` commands. 
 
 Each path is associated with either a fill color or a linear gradient. All object strokes are converted to filled paths at build-time.
 
@@ -832,7 +832,12 @@ The MicroVG library supports most of the Android Vector Drawable features with t
 - `clip-path` feature is only supported for static images.
 - `trim-path` animation is not supported.
 - morphing animations are not supported for paths with stroke.
-- `drawImage` with alpha is not supported if the image contains overlapping paths.
+- usage of path opacity is limited
+  
+   - `drawImage` with alpha is not supported if the image contains overlapping paths.
+   - images with global alpha(`android:alpha` attribute of `vector` element) and overlapping paths are not supported.
+   - Beware that using `android:fillColor` and `android:strokeColor` attributes on the same path leads to overlapping paths.
+  
 - `radial` and `sweep` gradient types are not supported.
 - `tint`, `tintMode` and `autoMirrored` features are not supported.
 - `trimPath` feature is not supported.
