@@ -53,7 +53,7 @@ This glossary defines the technical terms upon which a `MICROEJ VEE (Virtual Exe
       MicroEJ Module Manager (MMM) downloads, installs and controls the consistency of all the dependencies and versions required to build and publish a MicroEJ asset. It is based on `Semantic Versioning <https://semver.org>`_ specification.
 
    Port
-      A Port integrates a MICROEJ VEE for the target Device from an Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP). It also includes associated Mocks for the Simulator. (formerly called Platform)
+      A Port integrates a MICROEJ VEE for the target device from an Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP). It also includes associated Mocks for the Simulator. (formerly called Platform)
 
    SDK
       MICROEJ SDK provides the tools for developers to build a MICROEJ VEE for their device.
