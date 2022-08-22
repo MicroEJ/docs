@@ -17,9 +17,8 @@ Sandboxed Applications can be linked statically to the Multi-Sandbox Firmware or
 
 Typical use cases for a Sandboxed Application are:
 
-- the same Application must be installed in multiple Firmwares and devices. 
-  The application is developed once, then used in the Firmwares and the devices.
-- the Application must be installed dynamically on a device.
+- over the air provisioning: the Application is dynamically installed or updated on a device.
+- modularization: a monolithic Standalone Application is separated to multiple Sandboxed Applications; each of them can be started or stopped separately.
 
 The Application development flow requires the following elements:
 
