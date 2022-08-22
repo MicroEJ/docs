@@ -44,7 +44,7 @@ Option: System Chars Size
 
 *Launchscripts value*: ``1024``
 
-*Recomended value*: ``3000``
+*Recommended value*: ``3000``
 
 *Description*:
 
