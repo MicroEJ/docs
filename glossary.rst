@@ -35,7 +35,7 @@ This glossary defines the technical terms upon which a `MICROEJ VEE (Virtual Exe
       `The Core Engine, also named MEJ32, is a scalable 32-bit core <https://developer.microej.com/mej32-virtual-machine-for-embedded-systems/>`_ for resource-constrained embedded devices. It is delivered in various flavors, mostly as a binary software package. The Core Engine allows applications written in various languages to run in a safe container.
 
    Executable
-      An Executable is the result of the binary link of a Standalone Application with a Platform. It can be programmed into the flash memory of a device. (formerly called a Firmware)
+      An Executable is the result of the binary link of a Standalone Application with a Port. It can be programmed into the flash memory of a device. (formerly called a Firmware)
 
          Mono-Sandbox Executable
             A Mono-Sandbox Executable is an Executable that implements an unmodifiable set of functions. (formerly called a Single-app Firmware)
@@ -52,8 +52,8 @@ This glossary defines the technical terms upon which a `MICROEJ VEE (Virtual Exe
    Module Manager
       MicroEJ Module Manager (MMM) downloads, installs and controls the consistency of all the dependencies and versions required to build and publish a MicroEJ asset. It is based on `Semantic Versioning <https://semver.org>`_ specification.
 
-   Platform
-      A Platform integrates a MICROEJ VEE, an Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP) for the target Device. It also includes associated Mocks for the Simulator.
+   Port
+      A Port integrates a MICROEJ VEE for the target Device from an Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP). It also includes associated Mocks for the Simulator. (formerly called Platform)
 
    SDK
       MICROEJ SDK provides the tools for developers to build a MICROEJ VEE for their device.
