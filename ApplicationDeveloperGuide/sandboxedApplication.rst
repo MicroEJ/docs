@@ -12,7 +12,7 @@ Sandboxed Application
    sandboxedAppDeploy
    sandboxedAppSharedInterface
 
-A **Sandboxed Application** is a **Java Application** that can run over a **Multi-Sandbox Firmware**.
+A Sandboxed Application is a Java Application that can run over a Multi-Sandbox Firmware.
 Sandboxed Applications can be linked statically to the Multi-Sandbox Firmware or installed dynamically on the device.
 
 Typical use cases for a Sandboxed Application are:
@@ -23,7 +23,7 @@ Typical use cases for a Sandboxed Application are:
 
 The Application development flow requires the following elements:
 
-- a **MicroEJ Virtual Device**, a software package including the resources and tools required for building and testing an application for a specific MicroEJ-ready device.
+- a Virtual Device, a software package including the resources and tools required for building and testing an application for a specific device.
   A Virtual Device will simulate all capabilities of the corresponding hardware board:
 
   - Computation and Memory
@@ -31,11 +31,10 @@ The Application development flow requires the following elements:
   - Display
   - User interaction
 
-- a **MicroEJ-ready device**, an hardware device that has been previously programmed with a MicroEJ Multi-Sandbox Firmware. 
-  A MicroEJ Firmware is a binary instance of MicroEJ runtime for a target hardware board.
-  MicroEJ Virtual Devices and MicroEJ Firmwares share the same version (there is a 1:1 mapping).
+- an hardware device that has been previously programmed with a Multi-Sandbox Firmware. 
+  Virtual Devices and Multi-Sandbox Firmware share the same version (there is a 1:1 mapping).
 
-Please refer to the :ref:`kernel-developer-guide` to learn more on Multi-Sandbox Firmwares and Virtual Devices, and how to create them.
+Please refer to the :ref:`kernel-developer-guide` to learn more on Multi-Sandbox Firmware and Virtual Devices, and how to create them.
 
 The next chapters explain how to create, test and publish Sandboxed Applications.
 But before starting, there are fundamental concepts that need to be understood about Sandboxed Applications.
