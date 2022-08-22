@@ -14,7 +14,7 @@ This glossary defines the technical terms upon which a `MICROEJ VEE (Virtual Exe
       An Abstraction Layer is the C code that implements a Foundation Library's low-level APIs over a board support package (BSP) or a C library.
 
    Application
-      An Application is a software program that runs on a Powered by MicroEJ device.
+      An Application is a software program that runs on a MICROEJ VEE.
 
          Standalone Application
             A Standalone Application is an Application that is directly linked to the C code to produce a Mono-Sandbox Firmware.
