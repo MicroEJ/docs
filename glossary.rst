@@ -56,7 +56,7 @@ This glossary defines the technical terms upon which a `MICROEJ VEE (Virtual Exe
       A Platform integrates a MICROEJ VEE, an Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP) for the target Device. It also includes associated Mocks for the Simulator.
 
    SDK
-      MICROEJ SDK allows Firmware developers to build a Powered by MicroEJ device, by integrating an Architecture with both Java and C software on their device.
+      MICROEJ SDK provides the tools for developers to build a MICROEJ VEE for their device.
 
    Simulator
       The Simulator allows running Applications on a target hardware simulator on the developer’s desktop computer. The Simulator runs one or more Mock that mimics the hardware functionality. It enables developers to develop their Applications without the need of hardware.
