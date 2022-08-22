@@ -3,25 +3,22 @@
 Run on the Device
 =================
 
-A Sandboxed Application can be deployed on a device in several ways:
+The deployment of a Sandboxed Application over a Multi-Sandbox Firmware depends on the Kernel implementation. However we can group them in two categories:
 
-- Local Deployment: the device is connected to the developer's computer and the SDK transfers the Application on it.
-- Remote Deployment: the device connects to a Repository where the Application is stored, and deploys it over the network.
-
-In both cases, the Multi-Sandbox Firmware must be previously flashed on the device.
-Please refer to the :ref:`kernel-developer-guide` to learn how to do it and to 
-the `Resources Repository <https://repository.microej.com/index.php?resource=FIRM&topic=ALL&version=ANY&edition=ANY>`_ 
-for the available Multi-Sandbox demo Firmwares.
+- Local Deployment: the device is connected to the developer's computer and the SDK transfers the Application project on it. (recommended during application development)
+- Remote Deployment: the Application is built, then the device connects a Repository where the Application is stored, and deploys it over the air using a device management system. (production deployment)
 
 Local Deployment
 ----------------
 
-Deploying a Application on a device through Local Deployment is the easiest way to test it since it only requires to:
+Deploying a Application on a device locally is the easiest way to test it since it only requires:
 
-- have the device with the Multi-Sandbox Firmware
-- connect the device to the developer's computer
+- the Application project sources imported in the SDK,
+- the device programmed with a Multi-Sandbox Firmware that provides the Local Deployment capability (you can browse the `Resources Repository <https://repository.microej.com/index.php?resource=FIRM&topic=ALL&version=ANY&edition=ANY>`_
+  for available demos of such Multi-Sandbox Firmware),
+- the device connected to the developer's computer either on the same network (LAN) or using a serial wire, depending on the Firmware capabilities.
 
-Once these prerequisite are fullfilled:
+If these prerequisites are fulfilled:
 
 - duplicate the Run Configuration created in the chapter :ref:`chapter.application.sim`,
 
@@ -69,14 +66,10 @@ You can use a Serial terminal to get the traces of the Application::
 Remote Deployment
 -----------------
 
-An Application can also be deployed remotely, from a MicroEJ Forge instance.
-
-This requires to create and publish the WPK file that is intended to
-be published on the MicroEJ Forge instance.
-
+Remote Deployment requires to build and publish the Standalone Application.
 To do so, in the SDK, right-click on the Sandboxed Application project and click on ``Build Module``.
 
-The WPK build process will display messages in the console, ending up the following message:
+The build process will display messages in the console, ending up the following message:
 
 ::
 
@@ -86,11 +79,15 @@ The WPK build process will display messages in the console, ending up the follow
 
     Total time: 1 minute 6 seconds
 
-The WPK file produced by the build process is located in a dedicated
+The files produced by the build process is located in a dedicated
 ``target~/artifacts`` folder in the project and is published to the 
 target module repository declared in :ref:`MicroEJ Module Manager settings file <mmm_settings_file>`.
 
-The module repository can be a `MicroEJ Forge instance <https://www.microej.com/product/forge/>`_.
+The file that ends with `.wpk` (the WPK file) is a portable file that contains all necessary binary data to build link `.fo` on any compatible Multi-Sandbox Firmware.
+Then, the WPK file can be published to a `MICROEJ FORGE instance <https://www.microej.com/product/forge/>`_.
+Please contact :ref:`our support team <get_support>` if you want to get more information on MICROEJ FORGE and automated Applications deployment through a device management system.
+
+
 
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
