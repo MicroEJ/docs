@@ -21,8 +21,18 @@ The project creation window is displayed:
 
    Sandboxed Application Project Creation Form
 
-Once the Application information are fullfilled and validated, the project is created.
-The following sections describes the most important files.
+Once the Application information are fulfilled and validated, the project is created with the following structure:
+
+``src/main/java``
+    Application Java sources;
+
+``src/main/resources``
+    Application resources (raw resources, images, fonts, nls);
+
+``module.ivy``
+    :ref:`Module description file <mmm_module_description>`, containing build information and dependencies of the project.
+
+The next sections describe the required files to have your first basic Application.
 
 Entry Point
 -----------
