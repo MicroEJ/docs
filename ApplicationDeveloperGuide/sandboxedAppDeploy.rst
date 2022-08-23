@@ -34,8 +34,8 @@ If these prerequisites are fulfilled:
    Duplicate Run Configuration
 
 - rename the duplicated Run Configuration, for example by prefixing by ``(Local)``,
-- in the ``Execution`` tab, modify the ``Execution`` mode to ``Execute on Device``,
-- select the option ``Local Deployment (Socket)`` in the ``Settings`` list.
+- in the :guilabel:`Execution` tab, modify the :guilabel:`Execution` mode to :guilabel:`Execute on Device`,
+- select the option :guilabel:`Local Deployment (Socket)` in the :guilabel:`Settings` list.
   Note that depending on the device capability, the virtual device may implement a local deployment over a Comm Port.
 
 .. figure:: images/sandboxed-application-configure-run-conf.png
@@ -44,10 +44,10 @@ If these prerequisites are fulfilled:
 
    Configure Run Configuration
 
-- go to the ``Configuration`` tab,
-- select the item ``Local Deployment (Socket)``,
-- set the IP address of the device in the ``Host`` field,
-- click on the ``Run`` button to deploy the Application on the board.
+- go to the :guilabel:`Configuration` tab,
+- select the item :guilabel:`Local Deployment (Socket)`,
+- set the IP address of the device in the :guilabel:`Host` field,
+- click on the :guilabel:`Run` button to deploy the Application on the board.
 
 The Console output should be::
 
@@ -71,8 +71,17 @@ You can use a Serial terminal to get the traces of the Application::
 Remote Deployment
 -----------------
 
+<<<<<<< feature/M0078DDG-480_sandboxed-application_review_friviere
 Remote Deployment requires to build and publish the Sandboxed Application module.
 To do so, in the SDK, right-click on the Sandboxed Application project and click on ``Build Module``.
+=======
+An Application can also be deployed remotely, from a MicroEJ Forge instance.
+
+This requires to create and publish the WPK file that is intended to
+be published on the MicroEJ Forge instance.
+
+To do so, in the SDK, right-click on the Sandboxed Application project and click on :guilabel:`Build Module`.
+>>>>>>> 2e593f5 M0078DDG-480 Use guilabel for SDK labels
 
 The build process will display messages in the console, ending up the following message:
 
