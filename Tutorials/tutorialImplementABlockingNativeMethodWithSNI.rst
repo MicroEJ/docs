@@ -156,7 +156,7 @@ the API.
     
   .. code-block:: C
   
-      SNI_suspendCurrentJavaThreadWithCallback(0, (SNI_callback*)waitButton_callback, NULL);
+      SNI_suspendCurrentJavaThreadWithCallback(0, (SNI_callback)waitButton_callback, NULL);
 
 The function ``SNI_suspendCurrentJavaThreadWithCallback()`` returns immediately. The current thread is actually 
 suspended when the native function returns. 
