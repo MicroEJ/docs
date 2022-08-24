@@ -174,7 +174,7 @@ The updated ``Java_example_NativeCCallExample_waitButton()`` function should loo
         
         java_thread_id = SNI_getCurrentJavaThreadID();
 
-        SNI_suspendCurrentJavaThreadWithCallback(0, (SNI_callback*)waitButton_callback, NULL);
+        SNI_suspendCurrentJavaThreadWithCallback(0, (SNI_callback)waitButton_callback, NULL);
 
         return SNI_IGNORED_RETURNED_VALUE; // Returned value not used
     }
@@ -188,7 +188,7 @@ Update it this way:
 .. code:: C
 
     int buttonIRQ(int button_index){    
-        SNI_resumeJavaThreadWithArg(java_thread_id, button_index);
+        SNI_resumeJavaThreadWithArg(java_thread_id, (void*)button_index);
     }
 
 The button's index is passed to the function ``SNI_resumeJavaThreadWithArg()`` so that the callback retrieves it
