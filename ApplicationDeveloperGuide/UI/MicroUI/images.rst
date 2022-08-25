@@ -3,29 +3,40 @@
 Images
 ======
 
-Overview
---------
+Immutable Images
+----------------
 
-Images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_. To be displayed, these
-images have to be converted from their source format to the display raw
+Overview
+~~~~~~~~
+
+Immutable images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_. As their name suggests, immutable images can not be modified. Therefore, there is no way to get a Graphics Context to draw into these images. To be displayed, these
+images have to be converted from their source format to a RAW
 format. The conversion can either be done at:
 
 -  build-time (using the image generator tool),
 
 -  run-time (using the relevant decoder library).
 
-Images that must be processed by the image generator tool are declared
-in :ref:`MicroEJ Classpath<chapter.microej.classpath>` ``*.images.list`` files. The file format is a
-standard Java properties file, each line representing a ``/`` separated
-resource path relative to the MicroEJ classpath root referring to a
-standard image file (e.g. ``.png``, ``.jpg``). The resource may be
-followed by an optional parameter (separated by a ``:``) which defines
-and/or describes the image output file format (raw format). When no
-option is specified, the image is embedded as-is and will be decoded at
-run-time (although listing files without format specifier has no impact
-on the image generator processing, it is advised to specify them in the
-``*.images.list`` files anyway, as it makes the run-time processing
-behavior explicit). Example:
+Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.images.list`` files (**or** in ``*.imagesext.list`` for an external resource, see :ref:`chapter.microej.applicationResources`).
+
+.. graphviz::
+
+  digraph D {
+  
+      internalImage [shape=diamond, label="internal?"]
+      imagesList [shape=box, label="*.images.list"]
+      imagesExt [shape=box, label="*.imagesext.list"]
+      subgraph cluster_image {
+          label ="Image"
+          internalImage -> imagesList [label="yes"]
+          internalImage -> imagesExt [label="no=external"]
+      }
+  }
+
+The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a standard image file (e.g. ``.png``, ``.jpg``).
+The resource may be followed by an optional parameter (separated by a ``:``) which defines and/or describes the image output file format (RAW format).
+When no option is specified, the image is embedded as-is and will be decoded at run-time.
+Example:
 
 ::
 
@@ -44,7 +55,7 @@ behavior explicit). Example:
 .. _image_gen_tool:
 
 Configuration File
-------------------
+~~~~~~~~~~~~~~~~~~
 
 Here is the format of the ``*.images.list`` files.
 
@@ -58,39 +69,21 @@ Here is the format of the ``*.images.list`` files.
    Letter              ::= 'a-zA-Z_$'
    LetterOrDigit       ::= 'a-zA-Z_$0-9'
 
-.. _images_heap:
-
-Images Heap
------------
-
-The images heap is used to allocate the pixel data of:
-
-- mutable images (i.e. `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html>`_  instances)
-- images which are not byte-addressable, such as images opened with an input stream
-- images which are byte-addressable but converted to a different output format
-
-In other words, every image which can not be retrieved using `Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_  is saved on the images heap.
-
-The size of the images heap can be configured with the ``ej.microui.memory.imagesheap.size`` property.
-
-Output Formats
---------------
-
-Without Compression
-~~~~~~~~~~~~~~~~~~~
+Unspecified Output Format
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When no output format is set in the images list file, the image is
 embedded without any conversion / compression. This allows you to embed
-the resource as well, in order to keep the source image characteristics
+the resource as-is, in order to keep the source image characteristics
 (compression, bpp, etc.). This option produces the same result as
-specifiying an image as a resource in the MicroEJ launcher.
+specifying an image as a resource in the MicroEJ launcher (i.e. in a ``.resources.list`` file).
 
-Advantages:
+**Advantages**
 
 - Preserves the image characteristics;
 - Preserves the original image compression.
 
-Disadvantages:
+**Disadvantages**
 
 - Requires an image runtime decoder;
 - Requires some RAM in which to store the decoded image;
@@ -108,7 +101,7 @@ available. Some formats may be directly managed by the BSP display
 driver. Refer to the platform specification to retrieve the list of
 natively supported formats.
 
-Advantages:
+**Advantages**
 
 -  The pixels layout and bits format are standard, so it is easy to
    manipulate these images on the C-side;
@@ -119,7 +112,7 @@ Advantages:
 -  Supports or not the alpha encoding: select the most suitable format
    for the image to encode.
 
-Disadvantages:
+**Disadvantages**
 
 - No compression: the image size in bytes is proportional to the number   of pixels, the transparency, and the bits-per-pixel;
 - Slower than ``display`` format when the display driver does not recognize the  format: a pixel conversion is required at runtime.
@@ -297,13 +290,13 @@ memory space.
 
 .. note:: When the display memory representation is standard, the display output format is automatically replaced by a standard format.
 
-Advantages:
+**Advantages**
 
 -  Drawing an image is very fast because no pixel conversion is required at runtime;
 
 -  Supports alpha encoding when display pixel format allow it.
 
-Disadvantages:
+**Disadvantages**
 
 -  No compression: the image size in bytes is proportional to the number
    of pixels.
@@ -339,14 +332,14 @@ transparent).
 
    -  16-bit word specifies how many consecutive pixels are transparent.
 
-Advantages:
+**Advantages**
 
 -  Supports fully opaque and fully transparent encoding.
 
 -  Good compression when several consecutive pixels respect one of the
    three previous rules.
 
-Disadvantages:
+**Disadvantages**
 
 -  Drawing an image is slightly slower than when using Display format.
 - Not designed for images with many different pixel colors: in such case, the output file size may be larger than the original image file.
@@ -356,7 +349,7 @@ Disadvantages:
    image1:RLE1
 
 Image Generator Error Messages
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 These errors can occur while preprocessing images.
 
@@ -422,6 +415,56 @@ These errors can occur while preprocessing images.
    | 17     | Error   | The image has been already loaded with another      |
    |        |         | output format.                                      |
    +--------+---------+-----------------------------------------------------+
+
+
+Mutable Images
+--------------
+
+Overview
+~~~~~~~~
+
+Unlike immutable images, mutable images are graphical resources that can be created and modified at runtime. The application can draw into such images using the Painter classes with the image's `Graphics Context <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#getGraphicsContext-->`_ as the destination.
+Mutable images can be created with a call to constructor `ej.microui.display.BufferedImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#BufferedImage-int-int->`_. 
+
+.. code:: java
+
+   BufferedImage image = new BufferedImage(320,  240);
+   GraphicsContext g = image.getGraphicsContext();
+   g.setColor(Colors.BLACK);
+   Painter.fillRectangle(g, 0, 0, 320, 240);
+   g.setColor(Colors.RED);
+   Painter.drawHorizontalLine(g, 50, 50, 100);
+   image.close();
+
+
+Transparency
+~~~~~~~~~~~~
+
+The output format of `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html>`_ matches the pixel organization (layout, depth, etc.) of the display.
+The algorithms used to draw in such an image are the same as those used to draw on the display (for footprint purposes). 
+Since the display buffer is opaque, the algorithms cannot draw transparent pixels.
+
+In addition, `GraphicsContext.setColor() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setColor-int->`_ does not take the alpha channel into account and only accepts RGB values. 
+The given color value is interpreted as a 24-bit RGB color, where the high-order byte is ignored, and the remaining bytes contain the red, green, and blue channels, respectively.
+
+.. _images_heap:
+
+Images Heap
+-----------
+
+The images heap is used to allocate the pixel data of:
+
+- mutable images (i.e. `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html>`_  instances)
+- immutable images decoded at runtime, typically a PNG: the heap is used to store the decoded image **and** the runtime decoder's temporary buffers, required during the decoding step. After the decoding step, all the temporary buffers are freed. Note that the size of the temporary buffers depend on the decoder **and** on the original image itself (compression level, pixel encoding, etc.)
+- immutable images which are not byte-addressable, such as images opened with an input stream (i.e. `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_  instances)
+- immutable images which are byte-addressable but converted to a different output format (i.e. `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_  instances)
+
+In other words, every image which can not be retrieved using `Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_  is saved on the images heap.
+
+The size of the images heap can be configured with the ``ej.microui.memory.imagesheap.size`` property.
+
+.. warning:: A `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_  allocated on the images heap must be closed manually by the application (`ResourceImage.close() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#close-->`_); otherwise, a memory leak will occur on the images heap.
+
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

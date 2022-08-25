@@ -34,12 +34,12 @@ The Embedded Device Configuration specification defines the minimal
 standard runtime environment for embedded devices. It defines all
 default API packages:
 
--  java.io
--  java.lang
--  java.lang.annotation
--  java.lang.ref
--  java.lang.reflect
--  java.util
+-  `java.io <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/package-frame.html>`_
+-  `java.lang <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/package-frame.html>`_
+-  `java.lang.annotation <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/annotation/package-frame.html>`_
+-  `java.lang.ref <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ref/package-frame.html>`_
+-  `java.lang.reflect <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/reflect/package-frame.html>`_
+-  `java.util <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/package-frame.html>`_
 
 .. list-table::
    :widths: 10 30
@@ -132,22 +132,21 @@ and more generally the :ref:`kernel-developer-guide` chapter.
 Scheduler
 ---------
 
-The Core Engine features a `Green Threads model <https://en.wikipedia.org/wiki/Green_threads>`_ that can
-interact with the C world using :ref:`[SNI] <runtime_sni>`. The (green) thread policy is as
-follows:
+The Core Engine features a `Green Threads model <https://en.wikipedia.org/wiki/Green_threads>`_. The semantic is as follows:
 
 -  preemptive for different priorities,
 -  round-robin for same priorities,
 -  "priority inheritance protocol" when priority inversion occurs. [3]_
 
-Threads stacks automatically adapt their sizes according to the thread requirements: once the thread has
-finished, its associated stack is reclaimed, freeing the corresponding RAM memory.
+Threads stacks automatically adapt their sizes according to the thread requirements: once a thread terminates,
+its associated stack is reclaimed, freeing the corresponding RAM memory.
+
 
 .. [3]
-   This protocol raises the priority of a thread (that is holding a
-   resource needed by a higher priority task) to the priority of that
-   task.
 
+	This protocol raises the priority of a thread that is holding a monitor needed by a higher-priority thread,
+	to the priority of that higher-priority thread (until exiting the monitor).
+	
 Garbage Collector
 -----------------
 

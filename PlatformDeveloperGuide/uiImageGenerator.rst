@@ -28,7 +28,7 @@ Process overview (see too :ref:`section_image_core_process`)
 2. The Image Generator outputs a binary file for each image to convert.
 3. The raw files are embedded as (hidden) resources within the MicroEJ
    Application. The binary files' data are linked into the FLASH memory.
-4. When the MicroEJ Application creates a MicroUI Image object which
+4. When the application creates a MicroUI Image object which
    targets a pre-generated image, the Image Engine has only to
    create a link from the MicroUI image object to the data in the FLASH
    memory. Therefore, the loading is very fast; only the image data from
@@ -66,7 +66,7 @@ Extended Mode
 To increase the capabilities of Image Generator, the extension must be built and added in the platform. As described above this extension will be able to:
 
 * read more input image file formats,
-* extand the MicroEJ format with platform characteristics,
+* extend the MicroEJ format with platform characteristics,
 * encode images in a third-party binary format.
 
 To do that the Image Generator provides some services to implement. This chapter explain how to create and include this extension in the platform. Next chapters explain the aim of each service.
@@ -115,25 +115,48 @@ To do that the Image Generator provides some services to implement. This chapter
 
 .. warning:: The dropins folder must be updated (and platform built again) after any changes in the image generator extension project.
 
+.. _section_image_generator_imageio:
+
 Service Image Loader
 ====================
 
 The standalone Image Generator is not able to load all images formats, for instance SVG format. The service loader can be used to add this feature in order to generate an image file in MicroEJ format. 
+There are two ways to populate the service loader: create a custom implementation of ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` or ``javax.imageio.spi.ImageReaderSpi``.
+
+MicroUIRawImageGeneratorExtension
+---------------------------------
+
+This service allows to add a custom image reader. 
 
 1. Open image generator extension project.
 2. Create an implementation of interface ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension``.
 3. Create the file ``META-INF/services/com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` and open it.
 4. Note down the name of created class, with its package and classname.
-5. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
+5. Rebuild the image generator extension, copy it in platform configuration project (``dropins/tools/``) and rebuild the platform (see above).
 
 .. note:: The class ``com.microej.tool.ui.generator.BufferedImageLoader`` already implements the interface. This implementation is used to load standard images. It can be sub-classed to add some behavior.
+
+ImageReaderSpi
+--------------
+
+This extension is part of AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_.
+By default, the ImageIO class only manages the standard image formats JPG, PNG, BMP and GIF.
+It allows to add some image readers by adding some implementations of the service `javax.imageio.spi.ImageReaderSpi`.
+
+Since UI Pack 13.2.0, the Image Generator automatically includes new image decoders (new ImageIO services, see the class ``com.microej.tool.ui.generator.BufferedImageLoader``), compiled in JAR files that follow this convention:
+
+1. The JAR contains the service declaration ``/META-INF/services/javax.imageio.spi.ImageReaderSpi``,
+2. The JAR filename's prefix is `imageio-`,
+3. The JAR location is the platform configuration project's ``dropins/tools/`` directory.
+
+.. note:: The same JAR is used by the Image Generator and by the :ref:`Front Panel <fp_ui_decoder>`.
 
 .. _section_image_custom_format:
 
 Custom MicroEJ Format
 =====================
 
-As mentionned above (:ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`), the MicroEJ format can be extanded by notions specific to the platform (and often to the GPU the platform is using). The generated file stays a MicroEJ file format, usable by the Image Renderer. Additionally, the file becomes compatible with the platform constraints. 
+As mentionned above (:ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`), the MicroEJ format can be extended by notions specific to the platform (and often to the GPU the platform is using). The generated file stays a MicroEJ file format, usable by the Image Renderer. Additionally, the file becomes compatible with the platform constraints. 
 
 1. Open image generator extension project.
 2. Create a subclass of ``com.microej.tool.ui.generator.BufferedImageLoader`` (to be able to load standard images) or create an implementation of interface ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` (to load custom images).
@@ -144,7 +167,7 @@ As mentionned above (:ref:`section_image_display_raw` and :ref:`section_image_gp
 7. Note down the name of created class, with its package and classname.
 8. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
 
-If the only constraint is the pixels array aligment, the Image Generator extension is not useful:
+If the only constraint is the pixels array alignment, the Image Generator extension is not useful:
 
 1. Open platform configuration file ``display/display.properties``.
 2. Add the property ``imageBuffer.memoryAlignment``.
@@ -173,7 +196,7 @@ application classpath.
 
 .. note::
 
-   The list file must be specified in the MicroEJ Application launcher (see :ref:`application_options`). However, all the files in the application classpath with suffix ``.images.list`` are automatically parsed by the Image Generator tool.
+   The list file must be specified in the application launcher (see :ref:`application_options`). However, all the files in the application classpath with suffix ``.images.list`` are automatically parsed by the Image Generator tool.
 
 Each line can add optional parameters (separated by a ':') which define and/or describe the output file format (raw format). When no option is specified, the image is not converted and embedded as well.
 
@@ -232,7 +255,7 @@ Linker File
 
 In addition to images binary files, the Image Generator module generates a linker file (``*.lscf``). This linker file declares an image section called ``.rodata.images``. This section follows the next rules:
 
-* The files are always listed in same order between two MicroEJ application builds.
+* The files are always listed in same order between two application builds.
 * The section is aligned on the value specified by the Display module property ``imageBuffer.memoryAlignment`` (32 bits by default).
 * Each file is aligned on section alignment value.
 

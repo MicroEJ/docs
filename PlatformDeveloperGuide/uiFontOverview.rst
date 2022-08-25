@@ -44,7 +44,7 @@ Process overview:
 5. The raw files are embedded as (hidden) resources within the MicroEJ
    Application. The raw files' data are linked into the FLASH memory.
 
-6. When the MicroEJ Application creates a MicroUI Font object
+6. When the application creates a MicroUI Font object
    which targets a pre-generated image, the Font Engine Core only has to
    link from the MicroUI Font object to the data in the FLASH
    memory. Therefore, the loading is very fast; only the font data from

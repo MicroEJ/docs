@@ -37,7 +37,7 @@ The basic schema:
 Shared Interface Creation
 -------------------------
 
-Creation of a shared interface follows three steps:
+Creation of a Shared Interface follows three steps:
 
 -  Interface definition,
 
@@ -48,7 +48,7 @@ Creation of a shared interface follows three steps:
 Interface Definition
 ~~~~~~~~~~~~~~~~~~~~
 
-The definition of a shared interface starts by defining a standard Java
+The definition of a Shared Interface starts by defining a standard Java
 interface.
 
 .. code:: java
@@ -58,8 +58,8 @@ interface.
        void foo();
    }
 
-To declare an interface as a shared interface, it must be registered in
-a shared interfaces identification file. A shared interface
+To declare an interface as a Shared Interface, it must be registered in
+a Shared Interfaces identification file. A Shared Interface
 identification file is an XML file with the ``.si`` suffix with the
 following format:
 
@@ -69,11 +69,11 @@ following format:
        <sharedInterface name="mypackage.MyInterface"/>
    </sharedInterfaces>
 
-Shared interface identification files must be placed at the root of a
+Shared Interface identification files must be placed at the root of a
 path of the application classpath. For a MicroEJ Sandboxed Application
 project, it is typically placed in ``src/main/resources`` folder.
 
-Some restrictions apply to shared interface compared to standard java
+Some restrictions apply to Shared Interfaces compared to standard java
 interfaces:
 
 -  Types for parameters and return values must be transferable types;
@@ -86,7 +86,7 @@ Transferable Types
 ~~~~~~~~~~~~~~~~~~
 
 In the process of a cross-application method call, parameters and return
-value of methods declared in a shared interface must be transferred back
+value of methods declared in a Shared Interface must be transferred back
 and forth between application boundaries.
 
 .. figure:: images/SI_3.png
@@ -162,40 +162,52 @@ element to be transferred.
       - Application
       - Forbidden
 
-Objects created by an application which class is owned by the
-Kernel can be transferred to another application if this has been
-authorized by the Kernel. The list of eligible types that can be
-transferred is Kernel specific, so you have to consult the firmware
-specification. :ref:`table.si.transfer.firmware` lists
-Kernel types allowed to be transferred through a shared interface
-call. When an argument transfer is forbidden, the call is abruptly
-stopped and a ``java.lang.IllegalAccessError`` is thrown by MicroEJ Core
-Engine.
+Objects created by a Sandboxed Application which type is owned by the Kernel 
+can be transferred to another Sandboxed Application provided this has been authorized by the Kernel. 
+The list of Kernel types that can be transferred is Kernel specific, so you have to consult your Kernel specification.
+When an argument transfer is forbidden, the call is abruptly stopped and a `java.lang.IllegalAccessError`_ is thrown by the :ref:`Core Engine <core_engine>`.
 
-.. _table.si.transfer.firmware:
+.. _java.lang.IllegalAccessError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalAccessError.html
+
+.. note::
+
+   For these types to be transferable, a dedicated :ref:`Kernel Type Converter <kernel_type_converter>` must have been registered in
+   the Kernel.
+
+The table below lists typical Kernel types allowed to be transferred through a Shared Interface
+call on Evaluation Firmware distributed by MicroEJ Corp.
 
 .. list-table:: MicroEJ Evaluation Firmware Example of Transfer Types
    :header-rows: 1
 
-   - 
-
-      - Type
+   -  - Type
       - Rule
-
-   - 
-
-      - ``java.lang.String``
+   -  - `java.lang.Boolean <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Boolean.html>`_
       - Clone by copy
-
-   - 
-
-      - ``java.io.InputStream``
-      - Proxy reference creation
-
-   - 
-
-      - ``java.util.Map<String,String>``
-      - Clone by deep copy
+   -  - `java.lang.Byte <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Byte.html>`_
+      - Clone by copy
+   -  - `java.lang.Character <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Character.html>`_
+      - Clone by copy
+   -  - `java.lang.Short <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Short.html>`_
+      - Clone by copy
+   -  - `java.lang.Integer <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Integer.html>`_
+      - Clone by copy
+   -  - `java.lang.Float <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Float.html>`_
+      - Clone by copy
+   -  - `java.lang.Long <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Long.html>`_
+      - Clone by copy
+   -  - `java.lang.Double <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Double.html>`_
+      - Clone by copy
+   -  - `java.lang.String <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html>`_
+      - Clone by copy
+   -  - `java.io.InputStream <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html>`_
+      - Create a Proxy reference
+   -  - `java.util.Date <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Date.html>`_
+      - Clone by copy
+   -  - `java.util.List<T> <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/List.html>`_
+      - Clone by copy with recursive element conversion
+   -  - `java.util.Map<K,V> <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Map.html>`_
+      - Clone by copy with recursive keys and values conversion
 
 .. _section.proxy.implementation:
 
@@ -248,11 +260,13 @@ Each implemented method of the proxy class is responsible for performing
 the remote call and catching all errors from the server side and to
 provide an appropriate answer to the client application call according
 to the interface method specification (contract). Remote invocation
-methods are defined in the super class ``ej.kf.Proxy`` and are named
+methods are defined in the super class `ej.kf.Proxy`_ and are named
 ``invokeXXX()`` where ``XXX`` is the kind of return type. As this class
 is part of the application, the application developer has the full
 control on the Proxy implementation and is free to insert additional
 code such as logging calls and errors for example.
+
+.. _ej.kf.Proxy: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html
 
 .. list-table:: Proxy Remote Invocation Built-in Methods
    :widths: 31 41
@@ -265,22 +279,31 @@ code such as logging calls and errors for example.
 
    - 
 
-      - void invoke()
+      - void `invoke()`_
       - Remote invocation for a proxy method that returns void
 
    - 
 
-      - Object invokeRef()
+      - Object `invokeRef()`_
       - Remote invocation for a proxy method that returns a reference
 
    - 
 
-      - boolean invokeBoolean(), byte invokeByte(), char invokeChar(),
-        short invokeShort(), int invokeInt(), long invokeLong(), double
-        invokeDouble(), float invokeFloat()
+      - boolean `invokeBoolean()`_, byte `invokeByte()`_, char `invokeChar()`_,
+        short `invokeShort()`_, int `invokeInt()`_, long `invokeLong()`_, double
+        `invokeDouble()`_, float `invokeFloat()`_
       - Remote invocation for a proxy method that returns a base type
 
-
+.. _invoke(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invoke--
+.. _invokeRef(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeRef--
+.. _invokeBoolean(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeBoolean--
+.. _invokeByte(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeByte--
+.. _invokeChar(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeChar--
+.. _invokeShort(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeShort--
+.. _invokeInt(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeInt--
+.. _invokeLong(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeLong--
+.. _invokeDouble(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeDouble--
+.. _invokeFloat(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeFloat--
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

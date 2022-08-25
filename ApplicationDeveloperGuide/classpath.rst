@@ -78,11 +78,9 @@ The MicroEJ Classpath contains the following elements:
 
 -  Types in ``.class`` files, described in section :ref:`section.classpath.elements.types`;
 
--  Raw resources, described in section :ref:`section.classpath.elements.resources`;
-
 -  Immutables Object data files, described in Section :ref:`section.classpath.elements.immutables`;
 
--  Images, Fonts and Native Language Support (NLS) resources, described in :ref:`chapter.microej.applicationResources`;
+-  Raw Resources, Images, Fonts and Native Language Support (NLS) described in :ref:`chapter.microej.applicationResources`;
 
 -  ``*.[extension].list`` files, declaring contents to load. Supported
    list file extensions and format is specific to declared application
@@ -104,8 +102,11 @@ application kind:
    using the option ``application.main.class``.
 
 -  In case of a MicroEJ Sandboxed Application, it is a class that
-   implements ``ej.kf.FeatureEntryPoint``, declared in the
+   implements `ej.kf.FeatureEntryPoint`_, declared in the
    ``Application-EntryPoint`` entry in ``META-INF/MANIFEST.MF`` file.
+
+
+.. _ej.kf.FeatureEntryPoint: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html
 
 .. _section.classpath.elements.types:
 
@@ -120,10 +121,10 @@ A type can be declared as a *Required type* in order to enable the
 following usages:
 
 -  to be dynamically loaded from its name (with a call to
-   ``Class.forName(String)``);
+   `Class.forName(String)`_);
 
 -  to retrieve its fully qualified name (with a call to
-   ``Class.getName()``).
+   `Class.getName()`_).
 
 A type that is not declared as a *Required type* may not have its fully
 qualified name (FQN) embedded. Its FQN can be retrieved using the stack
@@ -139,16 +140,41 @@ listing the fully qualified name of a type. Example:
    com.mycompany.MyImplementation
    java.util.Vector
 
-.. _section.classpath.elements.resources:
 
-Raw Resources
--------------
+.. _Class.forName(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#forName-java.lang.String-
+.. _Class.getName(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getName--
 
-Raw resources are binary files that need to be embedded by the
-application so that they may be dynamically retrieved with a call to
-``Class.getResourceAsStream(java.io.InputStream)``. Raw Resources are
-declared in MicroEJ Classpath using ``*.resources.list`` files. The file
-format is a standard Java properties file, each line is a relative ``/``
+.. _section.classpath.elements.raw_resources:
+
+Resources
+---------
+
+Resources are binary files that need to be embedded by the application. 
+
+.. note::
+
+   For more details on all supported resources types, please refer to :ref:`chapter.microej.applicationResources` chapter.
+
+Raw resources are resources that can be dynamically retrieved with a call to
+`java.lang.Class.getResourceAsStream(String)`_.
+Raw Resources are declared in ``*.resources.list`` files (**and** in ``*.externresources.list`` for external resources, see :ref:`chapter.microej.applicationResources`).
+
+.. graphviz::
+
+  digraph D {
+  
+      internalRaw [shape=diamond, label="internal?"]
+      rawList [shape=box, label="*.resources.list"]
+      rawExt [shape=box, label="*.resources.list +\l*.externresources.list"]
+      subgraph cluster_Raw {
+          label ="Raw Resource"
+          internalRaw -> rawList [label="yes"]
+          internalRaw -> rawExt [label="no=external"]
+      }
+  }
+
+
+The file format is a standard Java properties file, each line is a relative ``/``
 separated name of a file in MicroEJ Classpath to be embedded as a
 resource. Example:
 
@@ -157,8 +183,8 @@ resource. Example:
    # The following resource is embedded as a raw resource
    com/mycompany/MyResource.txt
 
-Others resources types are supported in MicroEJ Classpath, 
-see :ref:`chapter.microej.applicationResources` for more details.
+
+.. _java.lang.Class.getResourceAsStream(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
 
 .. _section.classpath.elements.immutables:
 
@@ -166,7 +192,7 @@ Immutable Objects
 -----------------
 
 Immutables objects are regular read-only objects that can be retrieved
-with a call to ``ej.bon.Immutables.get(String)``. Immutables objects are
+with a call to `ej.bon.Immutables.get(String)`_. Immutables objects are
 declared in files called *immutable objects data files*, which format is
 described in the :ref:`[BON] specification <runtime_bon>`.
 Immutables objects data files are declared in MicroEJ Classpath using
@@ -180,6 +206,7 @@ Example:
    # The following file is loaded as an Immutable objects data files
    com/mycompany/MyImmutables.data
 
+.. _ej.bon.Immutables.get(String): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Immutables.html#get-java.lang.String-
 
 .. _system_properties:
 
@@ -187,7 +214,7 @@ System Properties
 -----------------
 
 System Properties are key/value string pairs that can be accessed with a
-call to `System.getProperty(String) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#getProperty-java.lang.String->`_. 
+call to `System.getProperty(String)`_. 
 
 System Properties are defined when building a :ref:`standalone_application`,
 by declaring ``*.properties.list`` files in MicroEJ Classpath. 
@@ -230,6 +257,8 @@ Option can also be set in the ``VM arguments`` field of the ``JRE`` tab of the l
 
    When building a :ref:`sandboxed_application`, ``*.properties.list`` files found in MicroEJ Classpath are silently skipped.
 
+.. _System.getProperty(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#getProperty-java.lang.String-
+
 .. _section.classpath.elements.constants:
 
 Constants
@@ -240,7 +269,7 @@ Constants
    which is available in MicroEJ Runtime starting from MicroEJ Architecture version ``7.11.0``.
 
 Constants are key/value string pairs that can be accessed with a
-call to ``ej.bon.Constants.get[Type](String)``, where ``Type`` if one of:
+call to `ej.bon.Constants.get[Type](String)`_, where ``Type`` if one of:
 
 - Boolean,
 - Byte,
@@ -274,6 +303,8 @@ The String key parameter must be resolved as an inlined String:
 - or a ``static final String`` field resolved as a String constant
 
 The String value is converted to the desired type using conversion rules described by the :ref:`[BON] <runtime_bon>` API.
+
+.. _ej.bon.Constants.get[Type](String): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Constants.html
 
 .. _if_constant_removal:
 

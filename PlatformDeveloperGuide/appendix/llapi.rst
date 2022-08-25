@@ -636,6 +636,81 @@ This C header file contains functions to implement:
    Defines a set of functions that the BSP must implement to link the platform watchdog timer
    to the Watchdog Timer library.
 
+.. _LLSECURITY-API-SECTION:
+
+LLSEC: Security
+===============
+
+Naming Convention
+-----------------
+
+The Low Level Security API (LLSEC) provides functions that allow the use of this API at the
+BSP level in C. The names of these functions match the ``LLSEC_*_IMPL_*`` pattern.
+
+Header Files
+------------
+
+Several C header files are provided:
+
+-  LLSEC_CIPHER_impl.h
+
+   Defines a set of functions that must be implemented by the BSP in order
+   to decrypt and encrypt data using cryptographic ciphers.
+
+-  LLSEC_CONSTANTS.h
+
+   Defines constants for certificates encoding formats.
+
+-  LLSEC_DIGEST_impl.h
+
+   Defines a set of functions that must be implemented by the BSP in order
+   to support message digest algorithms such as SHA-1 or SHA-256.
+
+-  LLSEC_ERRORS.h
+
+   Defines the Security API error return codes.
+
+-  LLSEC_KEY_FACTORY_impl.h
+
+   Defines a set of functions that must be implemented by the BSP in order
+   to get keys informations such as algorithm or encoded form.
+
+-  LLSEC_KEY_PAIR_GENERATOR_impl.h
+
+   Defines a set of functions that must be implemented by the BSP in order
+   to generate private/public key pairs.
+
+-  LLSEC_MAC_impl.h
+
+   Defines a set of functions that must be implemented by the BSP in order
+   to support MAC algorithms.
+
+-  LLSEC_PRIVATE_KEY_impl.h
+
+   Defines a set of functions that must be implemented by the BSP in order
+   to encode private keys in DER format.
+
+-  LLSEC_PUBLIC_KEY_impl.h
+
+   Defines a set of functions that must be implemented by the BSP in order
+   to encode public keys.
+
+-  LLSEC_RANDOM_impl.h
+
+   Defines a set of functions that must be implemented by the BSP in order
+   to generate random data.
+
+-  LLSEC_SIG_impl.h
+
+   Defines a set of functions that must be implemented by the BSP in order
+   to support signatures functionalities.
+
+-  LLSEC_X509_CERT_impl.h
+
+   Defines a set of functions that must be implemented by the BSP in order
+   to manage X509 certificates operations like getting the public key,
+   extracting the issuer, etc.
+
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

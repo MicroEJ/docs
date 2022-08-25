@@ -4,9 +4,20 @@
 Image Format
 ============
 
-The Image Engine makes the distinction between the `input formats` (how an image is encoded) and the `output formats` (how the image is used by the platform and/or the Image Renderer).The Image Engine manages several standard formats in input: PNG, JPEG, BMP, etc. In addition, an input format may be custom (platform dependant, unsupported image format by default). It manages two formats in output: the MicroEJ format (known by the Image Renderer) and the binary format.
+The Image Engine makes the distinction between:
 
-Each Image Engine can manage one or several input formats. However the Image Renderer manages only the MicroEJ format (:ref:`section_image_standard_raw`, :ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`). The binary output format (:ref:`section_image_binary_raw`)is fully platform dependant and can be used to encode some images which are not usable by MicroUI standard API.
+* the `input format`: how the original image is encoded, 
+* the `output format`: how the image is used by the platform and/or the Image Renderer,
+* the `embedded format`: how the image is embedded by the application. 
+
+The Image Engine manages several standard formats in input: PNG, JPEG, BMP, etc. In addition, an input format may be custom (platform dependant). It manages two formats in output: the MicroEJ format and the binary format. The Image Renderer manages only the MicroEJ format (:ref:`section_image_standard_raw`, :ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`). The binary output format (:ref:`section_image_binary_raw`) is fully platform dependant and can be used to encode some images which are not usable by MicroUI standard API.
+
+The output format is generated from the input format
+
+* by using the off-board tool :ref:`section_image_generator` at application compile-time 
+* or by using a :ref:`runtime decoder <image_runtime_decoder>` of the :ref:`section_image_loader` at application run-time.
+
+The embedded format may be the one of the output formats or the :ref:`original input format <section_image_asis>`.
 
 .. _section_image_standard_raw:
 
@@ -305,8 +316,8 @@ Disadvantages:
 
 .. _section_image_asis:
 
-Without Compression
-===================
+Original Input Format
+=====================
 
 An image can be embedded without any conversion / compression. This allows to embed the resource as it is, in order to keep the source image characteristics (compression, bpp, etc.). This option produces the same result as specifying an image as a resource in the MicroEJ launcher.
 
@@ -316,5 +327,44 @@ Advantages:
 
 Disadvantages:
 
-* Requires an image runtime decoder.
+* Requires an image :ref:`runtime decoder <image_runtime_decoder>`.
 * Requires some RAM in which to store the decoded image in MicroEJ format.
+
+The following table lists the original formats that can be decoded at run-time and / or compile-time:
+
+* Image Generator: the off-board tool that converts an image in an output format. All AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_ default formats are supported and always enabled.
+* Front Panel: the decoders embedded by the simulator part. All AWT `ImageIO <https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html>`_ default formats are supported but disabled by default.
+* Runtime Decoders: the decoders embedded by the embedded part. 
+
+.. table:: Original Image Formats
+
+   +-----------------------------------------+-----------------+-------------+------------------+
+   | Type                                    | Image Generator | Front Panel | Runtime Decoders |
+   +=========================================+=================+=============+==================+
+   | Graphics Interchange Format (GIF)       | yes             | yes (1)     | no (6)           |
+   +-----------------------------------------+-----------------+-------------+------------------+
+   | Joint Photographic Experts Group (JPEG) | yes             | yes (1)     | no (6)           |
+   +-----------------------------------------+-----------------+-------------+------------------+
+   | Portable Network Graphics (PNG)         | yes             | yes (2)     | yes (2)          |
+   +-----------------------------------------+-----------------+-------------+------------------+
+   | Windows bitmap (BMP)                    | yes             | yes (3)     | yes/no (3)       |
+   +-----------------------------------------+-----------------+-------------+------------------+
+   | Web Picture (WebP)                      | yes (4)         | yes (4)     | yes (5)          |
+   +-----------------------------------------+-----------------+-------------+------------------+
+
+* (1): The formats are disabled by default, see :ref:`fp_ui_decoder`.
+* (2): The PNG format is supported when the module ``PNG`` is selected in the platform configuration file (see :ref:`image_runtime_decoder`).
+* (3): The Monochrome BMP is supported when the module ``BMPM`` is selected in the platform configuration file (see :ref:`image_runtime_decoder`); the `colored` BMP format is only supported by the Front Panel (disabled by default, see :ref:`fp_ui_decoder`).
+* (4): Install the tool ``com.microej.tool.imageio-webp`` from the :ref:`developer_repository` in the platform to support the WEBP format (see :ref:`section_image_generator_imageio` and :ref:`fp_ui_decoder`).
+
+   .. code:: xml
+
+      <dependency org="com.microej.tool" name="imageio-webp" rev="1.0.1"/>
+
+* (5): Install the C component ``com.microej.clibrary.thirdparty.libwebp`` in the BSP to support the WEBP format at runtime.
+
+   .. code:: xml
+
+      <dependency org="com.microej.clibrary.thirdparty" name="libwebp" rev="1.0.1"/>
+
+* (6): The UI-pack does not provide some runtime decoders for these formats but a BSP can add its own decoders (see :ref:`image_runtime_decoder`).

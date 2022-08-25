@@ -2,11 +2,26 @@
 SDK Distribution Changelog
 --------------------------
 
+[22.06] - 2022-06-29
+~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+   
+   This release requires a JDK 11 and therefore an Architecture ``7.17.0`` or higher.
+   Please refer to :ref:`system-requirements` for more details.
+
+-  Included :ref:`SDK 5.6.0 <changelog-5.6.0>`.
+-  Added support for macOS AArch64 (M1).
+-  Updated to Eclipse version ``2022-03``.
+-  Changed required Java Runtime to JDK 11 (JRE and other versions are not supported anymore).
+
 [21.11] - 2021-11-15
 ~~~~~~~~~~~~~~~~~~~~
 
-**NOTE:** This release prepares for a future JRE 11 support.
-However, the only officially supported JRE version is still JRE 8. Please refer to :ref:`system-requirements` for more details.
+.. note::
+
+   This release prepares for a future JRE 11 support.
+   However, the only officially supported JRE version is still JRE 8. Please refer to :ref:`system-requirements` for more details.
 
 -  Included :ref:`SDK 5.5.0 <changelog-5.5.0>`.
 -  Updated installer to accept both JRE 8 and JRE 11.
@@ -63,11 +78,13 @@ However, the only officially supported JRE version is still JRE 8. Please refer 
 -  Updated to Eclipse version ``2020-06``
 -  Fixed low quality MacOS SDK icons
 
-**NOTE:** Starting with this release, only 64bits JRE are supported
-because 32bits JRE support has been removed since Eclipse version
-``2018-12``. See `this
-link <https://www.eclipse.org/eclipse/news/4.10/platform.php#java32-removal>`__
-for more details.
+.. note::
+
+   Starting with this release, only 64bits JRE are supported
+   because 32bits JRE support has been removed since Eclipse version
+   ``2018-12``. See `this
+   link <https://www.eclipse.org/eclipse/news/4.10/platform.php#java32-removal>`__
+   for more details.
 
 .. _known-issues-20.10:
 
@@ -126,6 +143,72 @@ for more details.
 SDK Changelog
 -------------
 
+.. _changelog-5.6.1:
+
+[5.6.1] - 2022-07-08
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+-  Removed check on JRE version when opening a workspace.
+
+.. _changelog-5.6.0:
+
+[5.6.0] - 2022-06-29
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+-  Added support for JDK 11.
+-  Changed Easyant targets executed by ``mmm build`` from ``clean,verify`` to ``clean,package``.
+-  Upgraded Front Panel plugin to version 6.1.3 to remove warning on fp framework.
+-  Updated Workspace settings to ignore errors in Ant build files by default.
+-  Fixed error when opening a Heap Dump file not part of the workspace.
+-  Fixed error when opening a Map file not part of the workspace.
+-  Removed Resources Center view.
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+General
+^^^^^^^
+
+-  Added the capability to override module organisation/name/revision with :ref:`mmm_build_system_options`.
+-  Added error message when using non-supported Eclipse Link Folders.
+-  Updated End User License Agreement.
+-  Fixed MMM failure when resolving a dependency with a version containing a number with 4 digits.
+-  Fixed error when building a meta-build project with public sub-modules and using target ``verify``.
+
+Build Types
+^^^^^^^^^^^
+
+-  Added support for Kernel Runtime Environments (``build-firmware-multiapp``, ``build-runtime-api`` and ``build-application``).
+-  Added option ``javadoc.modules.excludes`` to exclude modules from Javadoc generation when building a module repository.
+
+Build Plugins
+^^^^^^^^^^^^^
+
+-  Updated ``elf-utils`` plugin to load the ELF related tools from the architecture/platform.
+
+Skeletons
+^^^^^^^^^
+
+-  Added JUnit dependency to all Java module skeletons (including default JUnit tests pattern).
+-  Updated ``firmware-singleapp`` and ``firmware-multiapp`` skeletons for building the executable by default.
+-  Updated Sandboxed Application skeleton (``application``) to be compatible with any Kernel (based on KF ``FeatureEntryPoint``).
+
+.. _changelog-5.5.3:
+
+[5.5.3] - 2022-05-03
+~~~~~~~~~~~~~~~~~~~~
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+-  Fixed error ``Can't parse module descriptor`` when building a Module on Windows with a JDK 8.0.331+.
+
 .. _changelog-5.5.2:
 
 [5.5.2] - 2021-12-22
@@ -159,8 +242,10 @@ General
 [5.5.0] - 2021-11-15
 ~~~~~~~~~~~~~~~~~~~~
 
-**NOTE:** This release prepares for a future JRE 11 support.
-However, the only officially supported JRE version is still JRE 8. Please refer to :ref:`system-requirements` for more details.
+.. note::
+   
+   This release prepares for a future JRE 11 support.
+   However, the only officially supported JRE version is still JRE 8. Please refer to :ref:`system-requirements` for more details.
 
 General
 """""""
@@ -205,9 +290,11 @@ MicroEJ Module Manager
 [5.4.1] - 2021-04-16
 ~~~~~~~~~~~~~~~~~~~~
 
-**NOTE:** This release is both compatible with Eclipse version ``2020-06``
-and Eclipse Oxygen, so it can still be installed on a previous
-SDK Distribution.
+.. note::
+   
+   This release is both compatible with Eclipse version ``2020-06``
+   and Eclipse Oxygen, so it can still be installed on a previous
+   SDK Distribution.
 
 MicroEJ Module Manager
 """"""""""""""""""""""
@@ -230,9 +317,11 @@ MicroEJ Module Manager
 [5.4.0] - 2021-03-25
 ~~~~~~~~~~~~~~~~~~~~
 
-**NOTE:** This release is both compatible with Eclipse version ``2020-06``
-and Eclipse Oxygen, so it can still be installed on a previous
-SDK Distribution.
+.. note::
+   
+   This release is both compatible with Eclipse version ``2020-06``
+   and Eclipse Oxygen, so it can still be installed on a previous
+   SDK Distribution.
 
 .. _known-issues-5.4.0:
 
@@ -326,9 +415,11 @@ Skeletons
 [5.3.1] - 2020-12-11
 ~~~~~~~~~~~~~~~~~~~~
 
-**NOTE:** This release is both compatible with Eclipse version
-``2020-06`` and Eclipse Oxygen, so it can still be installed on a
-previous SDK Distribution.
+.. note::
+   
+   This release is both compatible with Eclipse version
+   ``2020-06`` and Eclipse Oxygen, so it can still be installed on a
+   previous SDK Distribution.
 
 General
 """""""
@@ -360,9 +451,11 @@ Skeletons
 [5.3.0] - 2020-10-30
 ~~~~~~~~~~~~~~~~~~~~
 
-**NOTE:** This release is both compatible with Eclipse version
-``2020-06`` and Eclipse Oxygen, so it can still be installed on a
-previous SDK Distribution.
+.. note::
+   
+   This release is both compatible with Eclipse version
+   ``2020-06`` and Eclipse Oxygen, so it can still be installed on a
+   previous SDK Distribution.
 
 .. _known-issues-5.3.0:
 
@@ -675,7 +768,7 @@ Build Plugins
 -  Fixed useless ``unknown resolver trace`` when cache is
    used by multiple Ivy settings configurations with different resolver
    names.
--  Fixed slow Add-on Processor generation. The classpath
+-  Fixed slow Add-On Processor generation. The classpath
    passed to ADP modules could contain the same entry multiple times,
    which leads each ADP module to process the same classpath multiple
    times.
@@ -691,7 +784,7 @@ Build Plugins
    with an Ivy branch
 -  Fixed character ``'-'`` rejected in module organisation
    (according to MMM specification ``2.0-B``)
--  Fixed ADP resolution error when the Add-on Processor
+-  Fixed ADP resolution error when the Add-On Processor
    module was only available in the cache
 -  Fixed potential build crash depending on the build kit
    classpath order (error was ``This module requires easyant [0.9,+]``)
@@ -781,7 +874,7 @@ Build Plugins
 -  Added IvyDE resolution from properties defined in
    :guilabel:`Windows` > :guilabel:`Preferences` > :guilabel:`Ant` > :guilabel:`Runtime` > :guilabel:`Properties`
 -  Fixed *Illegal character in path* error that may occur
-   when running an Add-on Processor
+   when running an Add-On Processor
 -  Fixed IvyDE crash when defining an Ant property file
    with Eclipse variables
 
@@ -806,7 +899,7 @@ Build Types
 -  Updated Virtual Device Builder to generate with ``.vde``
    extension
 -  Updated Multi-app Firmware Builder to embed (Sim/Emb)
-   specific modules (Add-on libraries and System Applications)
+   specific modules (Add-On libraries and System Applications)
 -  Fixed ``build-microej-ri`` v1.2.1 missing dependencies
    (embedded in SDK 4.1.5)
 

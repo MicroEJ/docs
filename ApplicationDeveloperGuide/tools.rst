@@ -32,11 +32,11 @@ tab then contains the options relevant to the selected tool.
    codeCoverageAnalyzer
    heapUsageMonitoring
    heapAnalyzer   
-   elfToMapGenerator
    serialToSocketTransmitter
    memoryMapAnalyzer
    trace
    nullAnalysis
+   dependencyDiscoverer
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

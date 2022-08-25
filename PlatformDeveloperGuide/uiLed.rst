@@ -17,11 +17,11 @@ Functional Description
 
 The LED module implements the MicroUI `Leds <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/led/Leds.html>`_ framework. ``LLUI_LED`` specifies the Low Level APIs that receive orders from the Java world.
 
-The Low Level APIs are the same for the LED which is connected to a ``GPIO`` (``0`` or ``1``), to a ``PWM``, to a bus (``I2C``, ``SPI``), etc. The BSP has the responsibility of interpreting the MicroEJ Application parameter ``intensity``.
+The Low Level APIs are the same for the LED which is connected to a ``GPIO`` (``0`` or ``1``), to a ``PWM``, to a bus (``I2C``, ``SPI``), etc. The BSP has the responsibility of interpreting the application parameter ``intensity``.
 
 Typically, when the LED is connected to a ``GPIO``, the ``intensity`` "0" means "OFF", and all other values "ON". When the LED is connected via a ``PWM``, the ``intensity`` "0" means "OFF", and all other values must configure the ``PWM`` duty cycle signal.
 
-The BSP should be able to return the state of an LED. If it is not able to do so (for example ``GPIO`` is not accessible in read mode), the BSP has to save the LED state in a global variable. If not, the returned value may be wrong and the MicroEJ Application may not be able to know the LEDs states.
+The BSP should be able to return the state of an LED. If it is not able to do so (for example ``GPIO`` is not accessible in read mode), the BSP has to save the LED state in a global variable. If not, the returned value may be wrong and the application may not be able to know the LEDs states.
 
 .. _section_leds_llapi:
 
@@ -40,6 +40,49 @@ The Low Level APIs to implement are listed in the header file ``LLUI_LEDS_impl.h
    Led Low Level API
 
 When there is no LED on the board, a *stub* implementation of C library is available. This C library must be linked by the third-party C IDE when the MicroUI module is installed in the MicroEJ Platform. This stub library does not provide any Low Level API files.
+
+Typical Implementation
+======================
+
+This chapter helps to write a basic ``LLUI_LEDS_impl.h`` implementation.
+This implementation manages some two-state LEDs: on or off.
+
+The pseudo-code calls external functions such as ``LEDS_DRIVER_xxx`` to symbolize the use of external drivers.
+
+.. code:: c
+
+   static void get_led_port_and_pin(int32_t ledID, int32_t* port, int32_t* pin)
+   {
+      switch(ledID)
+      {
+         /* TODO */
+         *port = ...;
+         *pin = ...;
+      }
+   }	
+
+   jint LLUI_LED_IMPL_getIntensity(jint ledID)
+   {
+      int32_t port;
+      int32_t pin;
+      get_led_port_and_pin(ledID, &port, &pin);
+
+      return GPIO_ReadPin(port, pin) == GPIO_PIN_RESET ? LLUI_LED_MAX_INTENSITY : LLUI_LED_MIN_INTENSITY;
+   }
+
+   jint LLUI_LED_IMPL_initialize(void)
+   {
+      return DRIVER_LEDS_Init();  // return the available number of leds
+   }
+
+   void LLUI_LED_IMPL_setIntensity(jint ledID, jint intensity)
+   {
+      int32_t port;
+      int32_t pin;
+      get_led_port_and_pin(ledID, &port, &pin);
+
+      GPIO_WritePin(port, pin, 0 == intensity ? GPIO_PIN_RESET : GPIO_PIN_SET);
+   }
 
 Dependencies
 ============

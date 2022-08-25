@@ -127,6 +127,32 @@ When the timer fires, it must call the ``LLMJVM_schedule`` function,
 which tells the platform to execute a green thread context switch (which
 gives another MicroEJ thread a chance to run).
 
+When several MicroEJ threads with the same priority are eligible for execution,
+the round-robin algorithm will automatically switch between these threads after a certain amount of time, 
+called the `time slice`. 
+The time slice is expressed in milliseconds, and its default value is ``20`` ms. 
+It can be configured at link time with the symbol
+``_java_round_robin_period``, defined in the :ref:`linker configuration file <linker_lscf>` 
+``linkVMConfiguration.lscf`` located in the Platform folder ``/MICROJVM/link/``.
+To override the content of this file, create, in the Platform configuration project,
+a folder named ``/dropins/MICROJVM/link/``, and copy into this folder the file
+``linkVMConfiguration.lscf`` retrieved from an existing Platform.
+Since a symbol cannot be null, the actual time slice value in milliseconds is
+``_java_round_robin_period - 1``. Set the symbol to 1 (i.e., time slice to 0) 
+to disable the round-robin scheduling.
+
+.. warning::
+	Modifying the time slice value is an advanced configuration that
+	can impact the performances.
+	
+	Decreasing the time slice will increase the number of context switches.
+	Therefore scheduler will use more CPU time.
+	
+	Increasing the time slice can create a latency with intensive threads
+	monopolizing the CPU.
+
+
+
 Idle Mode
 ---------
 

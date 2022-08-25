@@ -6,22 +6,32 @@ Fonts
 Overview
 --------
 
-Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_. To be displayed, these fonts have
-to be converted at build-time from their source format to the display
-raw format by the font generator tool. Fonts that must be processed by
-the font generator tool are declared in MicroEJ Classpath
-``*.fonts.list`` files. The file format is a standard Java properties
-file, each line representing a ``/`` separated resource path relative to
-the MicroEJ classpath root referring to a MicroEJ font file (usually
-with a ``.ejf`` file extension). The resource may be followed by
-optional parameters which define :
+Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
+Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (**or** in ``*.fontsext.list`` for an external resource, see :ref:`chapter.microej.applicationResources`).
+
+.. graphviz::
+
+  digraph D {
+  
+      internalFont [shape=diamond, label="internal?"]
+      fontsList [shape=box, label="*.fonts.list"]
+      fontsExt [shape=box, label="*.fontsext.list"]
+      subgraph cluster_font {
+          label ="Font"
+          internalFont -> fontsList [label="yes"]
+          internalFont -> fontsExt [label="no=external"]
+      }
+  }
+
+The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a Font file (usually with a ``.ejf`` file extension).
+The resource may be followed by optional parameters which define :
 
 -  some ranges of characters to embed in the final raw file;
 
 -  the required pixel depth for transparency.
 
-By default, all characters available in the input font file are
-embedded, and the pixel depth is ``1`` (i.e 1 bit-per-pixel). Example:
+By default, all characters available in the input font file are embedded, and the pixel depth is ``1`` (i.e 1 bit-per-pixel).
+Example:
 
 ::
 
@@ -37,7 +47,7 @@ embedded, and the pixel depth is ``1`` (i.e 1 bit-per-pixel). Example:
    # with 2 levels of transparency
    com/mycompany/MyFont2.ejf::2
 
-MicroEJ font files conventionally end with the ``.ejf`` suffix and are
+Font files conventionally end with the ``.ejf`` suffix and are
 created using the Font Designer (see :ref:`section.tool.fontdesigner`).
 
 .. _fonts_list_grammar:
@@ -66,6 +76,8 @@ Here is the format of the ``*.fonts.list`` files.
    Digit16             ::= 'a-fA-F0-9'
    Digit10             ::= '0-9'
    BitsPerPixel        ::= '1' | '2' | '4' | '8'
+
+.. _fonts_range:
 
 Font Range
 ----------
@@ -556,6 +568,21 @@ Font Generator Error Messages
    | 24     | Error   | Underlined style is not supported. Only a BOLD and  |
    |        |         | ITALIC font can be set.                             |
    +--------+---------+-----------------------------------------------------+
+
+Default Character
+-----------------
+
+The application may request the rendering of a string where some characters are not available in the selected font.
+In that case, a default character is drawn instead: it is the first available character in the font.
+For example, the first available character for a font where the range matches the ASCII printable characters (``0x21-0x7E``) would be the exclamation mark (``0x21``). 
+
+The characters of a font are referenced by their Unicode value.
+For a given :ref:`font range <fonts_range>`, the default character is the first character of the first range.
+Consequently, the default character may not be the same for two given fonts of an application: it depends on the specified character range for each font.
+
+
+To help developers identify quickly why a string is rendered with unexpected characters, it is recommended that the font maker sets a default character that is easy to recognize (a symbol, for example, a rectangle).
+This character must have the first character index (index ``0`` is allowed).
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

@@ -32,13 +32,71 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+.. _changelog-7.17.0:
+
+[7.17.0] - 2022-06-13
+---------------------
+
+Core Engine
+~~~~~~~~~~~
+
+-  Fixed potential premature evaluation timeout when Core Engine is not started at the same time as the device.
+-  Fixed potential crash during the call of ``LLMJVM_dump`` when printing information about the Garbage Collector.
+-  Added new functions to Low Level API ``LLMJVM_MONITOR_impl.h`` (see :ref:`Advanced-Event-Tracing`):
+
+  
+   -  ``void LLMJVM_MONITOR_IMPL_on_invoke_method(void* method)``: called by the MicroEJ Core Engine when an method is invoked.
+   -  ``void LLMJVM_MONITOR_IMPL_on_return_method(void* method)``: called by the MicroEJ Core Engine when a method returns.
+
+-  [Cortex-M] - Added support for MCU configuration with unaligned access traps enabled (``UNALIGN_TRP`` bit set in ``CCR`` register).
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+-  Updated ``KF`` to version ``1.6``:
+  
+   -  Added `Kernel.canUninstall() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#canUninstall-ej.kf.Feature->`_ method.
+
+Integration
+~~~~~~~~~~~
+
+-  Fixed some Architecture tools compatibility issues with SDKs running on JDK 11.
+-  Fixed missing default value for ShieldedPlug server port when running it with MMM (``10082``).
+-  Updated Memory Map Scripts for ``ej.microvg`` library.
+-  Updated Architecture End User License Agreement to version ``SDK 3.1-A``.
+
+Simulator
+~~~~~~~~~
+
+-  Added class file major version check (<=51). Classes must be compiled for Java 7 or lower. Set the options property ``S3.DisableClassFileVersionCheck`` to ``false`` to disable this verification.
+-  Added native method signature in the stack trace of the `UnsatisfiedLinkError <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/UnsatisfiedLinkError.html>`_ thrown when a native method is missing.
+-  Fixed HIL engine method ``NativeInterface.getResourceContent()`` that generates a runtime error in the Simulator.
+-  Fixed error "Internal limits reached ... S3 internal heap is full" when repeatedly loading a resource that is available in the classpath but not referenced in a ``.resources.list`` file.
+-  Fixed `OutOfMemoryError <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html>`_ when loading a large resource with `Class.getResourceAsStream() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String->`_.
+-  Fixed ``A[].class.isAssignableFrom(B[].class)`` returning ``false`` instead of ``true`` when  ``B`` is a subclass of ``A``.
+-  Fixed potential "Internal limits reached" error when an `OutOfMemoryError <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html>`_ is thrown. 
+-  Fixed error "Cannot pin objects anymore" when passing repeatedly immutable objects to a native method.
+-  Fixed properties not passed correctly to the mocks when the Virtual Device is executed from a path that contains spaces.
+-  [Multi] - Fixed unexpected error when ``kernel.kf`` file is missing and KF library is used: "Please specify a 'kernel.kf' file to enable Kernel & Features semantics."
+-  [Multi] - Fixed type ``double[]`` not recognized in ``kernel.api`` file.
+
+SOAR
+~~~~
+
+-  Fixed internal error when using a BON constant in an if statement at the end of a ``try`` block.
+-  Fixed internal error when a ``try`` block ends with an ``assert`` expression while assertions are disabled.
+-  [Multi] - Raise a warning instead of an error when duplicated ``.kf`` files are detected in the Kernel classpath. Usual classpath resolution order is used to load the file (see :ref:`chapter.microej.classpath`).
+-  [Multi] - Fixed SOAR error when building a Feature that uses an array of basetypes that is not explicitly declared in the ``kernel.api`` file of the Kernel.
+-  [Multi] - Optimized "Build Dynamic Feature" scripts speed by removing unnecessary steps.
+
+
 [7.16.0] - 2021-06-24
 ---------------------
 
 Known Issues
 ~~~~~~~~~~~~
 
-- [Multi] SOAR may fail to build a Feature with the following message:
+- [Multi] - SOAR may fail to build a Feature with the following message:
   
   .. code-block:: 
   
@@ -72,10 +130,10 @@ Core Engine
    ``LLMJVM_IMPL_initialize()``, ``LLMJVM_IMPL_vmTaskStarted()``, or
    ``LLMJVM_IMPL_shutdown()`` fails. Previously the generic error code
    ``LLMJVM_E_MAIN_THREAD_ALLOC (-5)`` was returned.
--  Added automatic heap consumption monitoring when option ``com.microej.runtime.debug.heap.monitoring.enabled`` is set to ``true``
+-  Added automatic heap consumption fing when option ``com.microej.runtime.debug.heap.monitoring.enabled`` is set to ``true``
 -  Fixed some parts of ``LLMJVM_checkIntegrity()`` code were embedded even if not called
--  [Multi] Fixed potential crash during the call of
-   ``LLMJVM_checkIntegrity`` when analyzing a corrupted Java stack (make
+-  [Multi] - Fixed potential crash during the call of
+   ``LLMJVM_checkIntegrity()`` when analyzing a corrupted Java stack (make
    this function robust to object references with an invalid memory
    address)
 
@@ -89,14 +147,14 @@ Foundation Libraries
 -  Updated ``ResourceManager`` implementation with annotations for Null analysis
 -  Updated ``KF`` implementation:
   
-   -  Added missing ``Kernel.getAllFeatureStateListeners()`` method
+   -  Added missing `Kernel.getAllFeatureStateListeners() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#getAllFeatureStateListeners-->`_ method
    -  Updated code for correct Null analysis detection
-   -  Fixed ``Feature.getCriticality()`` to throw
-      ``IllegalStateException`` if it is in state ``UNINSTALLED``
-      (instead of returning ``NORM_CRITICALITY``)
+   -  Fixed `Feature.getCriticality() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#getCriticality-->`_ to throw
+      `IllegalStateException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalStateException.html>`_ 
+      if it is in state ``UNINSTALLED`` (instead of returning ``NORM_CRITICALITY``)
    -  Fixed potential race condition between
-      ``Kernel.addResourceControlListener()`` and
-      ``Kernel.removeResourceControlListener()``. Adding a new listener
+      `Kernel.addResourceControlListener() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#addResourceControlListener-ej.kf.ResourceControlListener->`_ and
+      `Kernel.removeResourceControlListener() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#removeResourceControlListener-ej.kf.ResourceControlListener->`_. Adding a new listener
       may not register it if another one is removed at the same time.
 
 Integration
@@ -142,17 +200,17 @@ SOAR
    -  potential ``Stacks merging coherence error`` may be thrown when the
       block contains a nested ``try-catch`` statement
    -  potential ``Stacks merging coherence error`` when declaring a
-      ternary expression with ``Constants.getBoolean()`` in condition
+      ternary expression with `Constants.getBoolean() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Constants.html#getBoolean-java.lang.String->`_ in condition
       expression
 
 -  Fixed ``assert`` statement removal when it is located at the end of a
    ``then`` block: the ``else`` block may be executed instead of jumping
    over
 -  Removed names of arrays of basetype unless ``soar.generate.classnames`` option is set to ``true``
--  [Multi] Fixed potential link exception when a Feature use one of the
+-  [Multi] - Fixed potential link exception when a Feature use one of the
    ``ej_bon_ByteArray`` methods
    (e.g. ``ej.kf.InvalidFormatException: code=51:ON_ej_bon_ByteArray_method_readUnsignedByte_AB_I_I``)
--  [Multi] Fixed SOAR error (``Invalid SNI method``) when one of the
+-  [Multi] - Fixed SOAR error (``Invalid SNI method``) when one of the
    ``ej.bon.Constants.getXXX()`` methods is declared in a ``kernel.api``
    file. This issue was preventing from using BON Constants in Feature
    code.
@@ -183,7 +241,7 @@ Tools
 SOAR
 ~~~~
 
--  [Multi] Fixed potential VM crash when declaring a Proxy class which
+-  [Multi] - Fixed potential VM crash when declaring a Proxy class which
    is ``abstract``.
 
 .. _section-1:
@@ -237,7 +295,7 @@ Tools
 Core Engine
 ~~~~~~~~~~~
 
--  [Multi/x86/QNX7] Fixed missing multi-sandbox version
+-  [Multi/x86/QNX7] - Fixed missing multi-sandbox version
 
 .. _tools-1:
 
@@ -280,8 +338,8 @@ Foundation Libraries
 
 -  Updated ``EDC`` UTF-8 encoder to support Unicode code points as
    supplementary characters
--  Fixed ``java.lang.NullPointerException`` thrown when
-   ``java.util.WeakHashMap.put()`` method is called with a ``null`` key
+-  Fixed `java.lang.NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_ thrown when
+   `java.util.WeakHashMap.put() <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/WeakHashMap.html#put-K-V->`_ method is called with a ``null`` key
    (introduced in version :ref:`7.11.0 <changelog-7.11.0>`)
 
 .. _integration-1:
@@ -321,7 +379,7 @@ SOAR
    file indicating which types, methods and static fields are exposed as
    Kernel APIs
 -  [Multi] - Fixed potential link error when calling
-   ``java.lang.Object.clone`` method on an array in Feature mode
+   `java.lang.Object.clone() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#clone-->`_ method on an array in Feature mode
 
 .. _tools-2:
 
@@ -426,7 +484,7 @@ Core Engine
    -  Updated the documentation of some functions to clarify the
       behavior
 
--  Added a message to ``IllegalArgumentException`` thrown in an SNI call
+-  Added a message to `IllegalArgumentException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalArgumentException.html>`_ thrown in an SNI call
    when passing a non-immortal array in SNI (only in case the Platform
    is configured to disallow the use of non-immortal arrays in SNI
    native calls)
@@ -454,17 +512,17 @@ Core Engine
    ``SLEEP`` state
 -  Fixed ``sni.h`` header file function prototypes using the
    ``SNI_callback`` typedef
--  Fixed crash when an ``OutOfMemoryError`` is thrown while creating a
+-  Fixed crash when an `OutOfMemoryError <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html>`_ is thrown while creating a
    native exception in SNI
 -  [Multi] - Fixed runtime exceptions that can be implicitly thrown
-   (such as ``NullPointerException``) which were not automatically
-   exposed by the Kernel
+   (such as `NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_)
+   which were not automatically exposed by the Kernel
 -  [Multi] - Fixed passing Kernel array parameters through a shared
    interface method call. These parameters were passed by copy instead
    of by reference as specified by ``KF`` specification
 -  [Multi] - Fixed execution context when jumping in a catch block of a
-   ``ej.kf.Proxy`` method (the catch block was executed in the Kernel
-   context instead of the Feature context)
+   `ej.kf.Proxy <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html>`_
+   method (the catch block was executed in the Kernel context instead of the Feature context)
 -  [ARMCC5] - Fixed link error
    ``Undefined symbol _java_Ljava_lang_OutOfMemoryError_field_OOMEMethodAddr_I``
    with ARM Compiler 5 linker (introduced in version :ref:`7.12.0 <changelog-7.12.0>`)
@@ -477,24 +535,24 @@ Foundation Libraries
 -  Updated ``SNI`` to version ``1.4``
 -  Updated internal library ``Resource-Manager-1.0`` as deprecated. Use
    ``SNI-1.4`` native resources instead
--  Updated ``java.lang.Thread.getId()`` method implementation to return
-   the same value than ``SNI_getCurrentJavaThreadID()`` function
--  Optimized ``ej.sni.SNI.toCString()`` method by removing a useless
-   temporary buffer copy
--  Fixed ``EDC`` implementation of ``String(byte[],int,int)``
+-  Updated `Thread.getId() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#getId-->`_
+   method implementation to return the same value than ``SNI_getCurrentJavaThreadID()`` function
+-  Optimized `SNI.toCString() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/sni/SNI.html#toCString-java.lang.String-byte:A->`_
+   method by removing a useless temporary buffer copy
+-  Fixed ``EDC`` implementation of `String(byte[],int,int) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html#String-byte:A-int-int->`_
    constructor which could allocate a too large temporary buffer
--  Fixed ``EDC`` implementation of ``Thread.interrupt()`` method to
-   throw a ``java.lang.SecurityException`` when the interrupted thread
-   cannot be modified by the the current thread
+-  Fixed ``EDC`` implementation of `Thread.interrupt() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#interrupt-->`_
+   method to throw a `java.lang.SecurityException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityException.html>`_
+   when the interrupted thread cannot be modified by the the current thread
 -  Fixed ``EDC`` implementation to remove remaining references to
-   ``java.util.SecurityManager`` class when it is disabled
--  Fixed ``EDC`` implementation of ``java.lang.Thread.interrupt()``
+   `java.util.SecurityManager <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html>`_ class when it is disabled
+-  Fixed ``EDC`` implementation of `Thread.interrupt() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#interrupt-->`_
    method that was declared ``final``
--  Fixed ``EDC`` API of ``java.lang.Thread.interrupt()`` to clarify the
-   behavior of the method
--  Fixed ``EDC`` API of ``java.util.Calendar`` method to specify that
-   non-lenient mode is not supported
--  Fixed ``EDC`` API of ``java.io.FilterInputStream.in`` field to be
+-  Fixed ``EDC`` API of `Thread.interrupt() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#interrupt-->`_
+   to clarify the behavior of the method
+-  Fixed ``EDC`` API of `java.util.Calendar <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Calendar.html>`_
+   method to specify that non-lenient mode is not supported
+-  Fixed ``EDC`` API of `java.io.FilterInputStream.in <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/FilterInputStream.html#in>`_ field to be
    marked ``@Nullable``
 
 .. _integration-2:
@@ -603,7 +661,7 @@ Tools
 Core Engine
 ~~~~~~~~~~~
 
--  Updated implementation of internal ``java.lang.OutOfMemoryError``
+-  Updated implementation of internal `OutOfMemoryError <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html>`_
    thrown with the maximum number of frames that can be dumped
 -  Updated ``LLMJVM_dump()`` output with the following new information:
 
@@ -613,7 +671,7 @@ Core Engine
    -  Current number of stack blocks used
    -  Objects referenced by each stack frame: address, type, length (in
       case of arrays), string content (in case of String objects)
-   -  [Multi] Kernel stale references with the name of the Feature
+   -  [Multi] - Kernel stale references with the name of the Feature
       stopped
 
 .. _foundation-libraries-3:
@@ -621,23 +679,23 @@ Core Engine
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
--  Fixed ``EDC`` implementation of ``Throwable.getStackTrace()`` when
-   called on a ``java.lang.OutOfMemoryError`` thrown by Core Engine or
-   Simulator (either the returned stack trace array was empty or a
-   ``java.lang.NullPointerException`` was thrown)
--  [Tiny] Fixed ``EDC`` implementation of
-   ``StackTraceElement.toString()`` (removed the character ``.`` before
-   the type)
--  [Multi] Fixed ``KF`` implementation of ``Feature.start()`` to throw a
-   ``java.lang.ExceptionInInitializerError`` when an exception is thrown
-   in a Feature clinit method
+-  Fixed ``EDC`` implementation of `Throwable.getStackTrace() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html#getStackTrace-->`_ when
+   called on a `OutOfMemoryError <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html>`_
+   thrown by Core Engine or Simulator (either the returned stack trace array was empty or a
+   `java.lang.NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_ was thrown)
+-  [Tiny] - Fixed ``EDC`` implementation of
+   `StackTraceElement.toString() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/StackTraceElement.html#toString-->`_
+   (removed the character ``.`` before the type)
+-  [Multi] - Fixed ``KF`` implementation of `Feature.start() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#start-->`_ 
+   to throw an `ExceptionInInitializerError <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/ExceptionInInitializerError.html>`_ 
+   when an exception is thrown in a Feature clinit method
 
 .. _simulator-2:
 
 Simulator
 ~~~~~~~~~
 
--  Updated implementation of internal ``java.lang.OutOfMemoryError``
+-  Updated implementation of internal `OutOfMemoryError <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html>`_
    thrown with more than one frames dumped per thread
 
    -  By default the ``20`` top frames per thread are dumped. This can
@@ -648,17 +706,17 @@ Simulator
 -  Fixed error parsing of an array of ``byte`` when an element is
    declared with the unsigned hexadecimal notation (e.g. ``0xFF``)
    (introduced in version :ref:`7.10.0 <changelog-7.10.0>`)
--  Fixed crash when ``ej.bon.ResourceBuffer.readString()`` is called on
-   a String greater than ``63`` characters (introduced in version
+-  Fixed crash when `ResourceBuffer.readString() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html#readString-->`_
+   is called on a String greater than ``63`` characters (introduced in version
    :ref:`7.10.0 <changelog-7.10.0>`)
 -  Fixed code coverage ``.cc`` generation of classpath directories
 -  Fixed crash during a GC when computing the references map of a
    complex method (an error message is dumped with the involved method
    name and suggest to increase the internal stack using
    ``S3.JavaMemory.ThreadStackSize`` system property)
--  [Multi] Added validity check of Shared Interface declaration files
+-  [Multi] - Added validity check of Shared Interface declaration files
    (``.si``) according to ``KF`` specification
--  [Multi] Fixed processing of Resource Buffers declared in Feature
+-  [Multi] - Fixed processing of Resource Buffers declared in Feature
    classpath
 
 .. _soar-4:
@@ -668,7 +726,8 @@ SOAR
 
 -  Added a new option ``core.memory.oome.nb.frames`` to configure the
    maximum number of stack frames that can be dumped when an internal
-   ``java.lang.OutOfMemoryError`` is thrown by Core Engine
+   `OutOfMemoryError <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html>`_
+   is thrown by Core Engine
 
 .. _tools-6:
 
@@ -738,8 +797,8 @@ Core Engine
 ~~~~~~~~~~~
 
 -  Added ``EDC-1.3`` support for daemon threads
--  Added ``BON`` support for ``ej.bon.Util.newArray(T[],int)``
--  [Multi/ARMCC5] Fixed unused undefined symbol that prevent Keil
+-  Added ``BON`` support for `ej.bon.Util.newArray(T[],int) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Util.html#newArray-java.lang.Class-int->`_
+-  [Multi/ARMCC5] - Fixed unused undefined symbol that prevent Keil
    MDK-ARM to link properly
 
 .. _foundation-libraries-4:
@@ -753,22 +812,22 @@ Foundation Libraries
    -  Updated the implementation code for correct Null analysis
       detection (added assertions, extracted multiple field accesses
       into a local)
-   -  Fixed ``java.io.PrintStream.PrintStream(OutputStream, boolean)``
+   -  Fixed `PrintStream.PrintStream(OutputStream, boolean) <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/PrintStream.html#PrintStream-java.io.OutputStream-boolean->`_
       writer initialization
-   -  Removed useless String literals in ``java.lang.Throwable``
+   -  Removed useless String literals in `java.lang.Throwable <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html>`_
 
 -  Updated UTF-8 decoder to support Unicode code points
 -  Updated ``BON`` to version ``1.4`` (see `BON-1.4 API
    Changelog <https://repository.microej.com/5/artifacts/ej/api/bon/1.4.0/CHANGELOG-1.4.0.md>`__)
 -  Updated ``TRACE`` to version ``1.1``
 
-   -  Added ``ej.trace.Tracer.getGroupID()``
+   -  Added `ej.trace.Tracer.getGroupID() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#getGroupID-->`_
    -  Added a BON Constant (``core.trace.enabled``) to remove trace
       related code when tracing is disabled
 
 -  Fixed ``KF`` to call the registered
-   ``Thread.UncaughtExceptionHandler`` when an exception is thrown by
-   the first Feature thread
+   `Thread.UncaughtExceptionHandler <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.UncaughtExceptionHandler.html>`_
+   when an exception is thrown by the first Feature thread
 
 .. _integration-3:
 
@@ -804,27 +863,27 @@ Simulator
 -  Added ``EDC-1.3`` support for daemon threads
 -  Added ``BON-1.4`` support for compile-time constants (load of
    ``.constants.list`` resources)
--  Added ``BON-1.4`` support for ``ej.bon.Util.newArray()``
+-  Added ``BON-1.4`` support for `ej.bon.Util.newArray() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Util.html#newArray-java.lang.Class-int->`_
 -  Added Front Panel framework
 -  Updated error message when reaching S3 simulator limits
 -  Removed the ``Bootstrapping a Smart Software Simulator`` message when
    verbose mode in enabled
--  Fixed ``Object.clone()`` on an immutable object to return a new
+-  Fixed `Object.clone() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#clone-->`_ on an immutable object to return a new
    (mutable) object instead of an immutable one
--  Fixed ``Object.clone()`` crash when an OutOfMemory occurs
+-  Fixed `Object.clone() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#clone-->`_ crash when an OutOfMemory occurs
 -  Fixed potential crash when calling an abstract method (some
    interfaces of the hierarchy were not taken into account - introduced
    in version :ref:`7.10.0 <changelog-7.10.0>`)
--  Fixed OutOfMemory errors even if the heap is not full (resources
-   loaded from ``Class.getResourceAsStream`` and
-   ``ResourceBuffer.open()`` were taken into account in simulated heap
+-  Fixed ``OutOfMemory`` errors even if the heap is not full (resources
+   loaded from `Class.getResourceAsStream() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String->`_
+   and ``ResourceBuffer.open()`` were taken into account in simulated heap
    memory - introduced in version :ref:`7.10.0 <changelog-7.10.0>`)
--  Fixed potential crash when a GC occurs while a ``ResourceBuffer`` is
-   open (introduced in version :ref:`7.10.0 <changelog-7.10.0>`)
+-  Fixed potential crash when a GC occurs while a `ResourceBuffer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html>`_
+   is opened (introduced in version :ref:`7.10.0 <changelog-7.10.0>`)
 -  Fixed potential debugger hangs when an exception was thrown but not
    caught in the same method
--  [Multi] Fixed wrong class loading in some cases
--  [Multi] Fixed wrong immutable loading in some cases
+-  [Multi] - Fixed wrong class loading in some cases
+-  [Multi] - Fixed wrong immutable loading in some cases
 
 .. _soar-5:
 
@@ -906,8 +965,8 @@ Tools
 Simulator
 ~~~~~~~~~
 
--  Fixed ``Object.getClass()`` may return a Class instance owned by a
-   Feature for type owned by the Kernel
+-  Fixed `Object.getClass() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#getClass-->`_
+   may return a Class instance owned by a Feature for type owned by the Kernel
 
 .. _changelog-7.10.0:
 
@@ -923,9 +982,10 @@ Core Engine
    are not allowed to overlap with ``LLBSP_IMPL_isInReadOnlyMemory()``
 -  [Multi] - Updated Feature Kill implementation to prepare future RAM
    Control (fully managed by Core Engine)
--  [Multi] - Updated implementation of ``ej.kf.Kernel``: all APIs taking
-   a Feature argument now will throw a
-   ``java.lang.IllegalStateException`` when the Feature is not started
+-  [Multi] - Updated implementation of `ej.kf.Kernel <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html>`_:
+   all APIs taking a Feature argument now will throw a
+   `java.lang.IllegalStateException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalStateException.html>`_ 
+   when the Feature is not started
 
 .. _foundation-libraries-5:
 
@@ -968,14 +1028,14 @@ Simulator
       -  Kernel API (Type grained only)
       -  Shared Interfaces are binded using direct reference links (no
          Proxy execution)
-      -  ``Feature.stop()`` does not perform the safe kill. The
+      -  `Feature.stop() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#stop-->`_ does not perform the safe kill. The
          application cannot be stopped unless it has correctly removed
          all its shared references.
 
    -  Not implemented:
 
       -  Dynamic Feature installation from
-         ``Kernel.install(java.io.InputStream)``
+         `Kernel.install(java.io.InputStream) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream->`_
       -  Execution Rules Runtime checks
 
 .. _tools-8:
@@ -1019,7 +1079,8 @@ Tools
 Core Engine
 ~~~~~~~~~~~
 
--  Fixed ``OutOfMemoryError`` thrown when allocating an object of the size of free memory in immortals heap
+-  Fixed `OutOfMemoryError <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html>`_
+   thrown when allocating an object of the size of free memory in immortals heap
 
 .. _soar-6:
 
@@ -1053,7 +1114,7 @@ Core Engine
 ~~~~~~~~~~~
 
 -  Added a permanent hook ``LLMJVM_on_Runtime_gc_done`` called after an
-   explicit ``java.lang.Runtime.gc()``
+   explicit `java.lang.Runtime.gc() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#gc-->`_
 -  Updated internal heap header for memory dump
 
 .. _soar-7:
@@ -1081,7 +1142,7 @@ Tools
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
--  [Multi] Updated ``BON`` library: a Timer owned by the Kernel can
+-  [Multi] - Updated ``BON`` library: a Timer owned by the Kernel can
    execute a TimerTask owned by a Feature
 
 .. _section-17:
@@ -1113,16 +1174,17 @@ Core Engine
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
--  Updated ``ej.bon.Timer`` to schedule ``ej.bon.TimerTask`` owned by
-   multiple Features
+-  Updated `ej.bon.Timer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html>`_
+   to schedule `ej.bon.TimerTask <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/TimerTask.html>`_
+   owned by multiple Features
 
 .. _simulator-6:
 
 Simulator
 ~~~~~~~~~
 
--  Fixed implementation of ``java.lang.Class.getResourceAsStream()`` to
-   throw a ``java.io.IOException`` when the stream is closed
+-  Fixed implementation of `Class.getResourceAsStream() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String->`_ 
+   to throw an `IOException <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/IOException.html>`_ when the stream is closed
 
 .. _soar-8:
 
@@ -1180,13 +1242,13 @@ Simulator
 -  Added a hook in the mockup that is automatically called during the
    HIL Engine startup
 -  Added dump of loaded classes when ``verbose`` option is enabled
--  Fixed ``java.lang.Runtime.freeMemory()`` call freeze when
-   ``Emb Characteristics`` option is enabled
+-  Fixed `Runtime.freeMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#freeMemory-->`_ 
+   call freeze when ``Emb Characteristics`` option is enabled
 -  Fixed ShieldedPlug server error after interrupting a thread that is
    waiting for a database block
 -  Fixed crash ``Access to a wrong reference`` in some cases
--  Fixed ``java.lang.NullPointerException`` when interrupting a thread
-   that has not been started
+-  Fixed `java.lang.NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_
+   when interrupting a thread that has not been started
 -  Fixed crash when closing an HIL connection in some cases
 -  [Multi] - Fixed KF & Watchdog library link when
    ``Emb Characteristics`` option is enabled
@@ -1222,8 +1284,8 @@ Core Engine
 Simulator
 ~~~~~~~~~
 
--  Fixed ``java.lang.Runtime.freeMemory()`` call freeze when
-   ``Emb Characteristics`` option is enabled
+-  Fixed `Runtime.freeMemory() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#freeMemory-->`_
+   call freeze when ``Emb Characteristics`` option is enabled
 -  [Multi] - Fixed KF & Watchdog library link when
    ``Emb Characteristics`` option is enabled
 -  [Multi] - Fixed XML Parsing error when ``Emb Characteristics`` option
@@ -1293,7 +1355,8 @@ Core Engine
 
 -  Added SNI-1.3 support
 -  ``SNI_suspendCurrentJavaThread()`` is not interruptible via
-   ``java.lang.Thread.interrupt()`` anymore
+   `Thread.interrupt() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#interrupt-->`_
+   anymore
 
 .. _foundation-libraries-8:
 
@@ -1432,7 +1495,7 @@ Tools
 Core Engine
 ~~~~~~~~~~~
 
--  Added support for ``ej.bon.ResourceBuffer``
+-  Added support for `ej.bon.ResourceBuffer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html>`_
 
 .. _foundation-libraries-11:
 
@@ -1466,8 +1529,8 @@ Tools
 Core Engine
 ~~~~~~~~~~~
 
--  Added a trace when ``java.lang.IllegalMonitorStateException`` is
-   thrown on a ``monitorexit``
+-  Added a trace when `IllegalMonitorStateException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalMonitorStateException.html>`_
+   is thrown on a ``monitorexit``
 
 .. _tools-20:
 
@@ -1525,7 +1588,7 @@ Foundation Libraries
 Core Engine
 ~~~~~~~~~~~
 
--  Optimized ``java.lang.Runtime.gc()`` (removed useless heap compaction
+-  Optimized `Runtime.gc() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html#gc-->`_ (removed useless heap compaction
    in some cases)
 
 .. _section-36:

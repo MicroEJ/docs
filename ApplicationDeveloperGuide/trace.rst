@@ -38,8 +38,11 @@ To enable the MicroEJ Core Engine trace system, set the :ref:`Application Option
 Then, multiple ways are available to start and stop the trace recording:
   
 - by setting the :ref:`Application Option <application_options>` named ``core.trace.autostart`` to ``true`` to automatically start at startup (see also :ref:`launch configuration <architecture_options_group_trace>`),
-- using the Java API methods ``ej.trace.Tracer.startTrace()`` and ``ej.trace.Tracer.stopTrace()``,
+- using the Java API methods `ej.trace.Tracer.startTrace()`_ and `ej.trace.Tracer.stopTrace()`_,
 - using the C API functions ``LLTRACE_IMPL_start(void)`` and ``LLTRACE_IMPL_stop(void)``.
+
+.. _ej.trace.Tracer.startTrace(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#startTrace--
+.. _ej.trace.Tracer.stopTrace(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#stopTrace--
 
 Java API Usage
 ==============
@@ -54,15 +57,15 @@ The second parameter, ``nbEventTypes``, is an integer representing the maximum n
 
    Tracer tracer = new Tracer("MyGroup", 10);
 
-Then, you can record an event by calling the ``recordEvent(int eventId)`` method. 
+Then, you can record an event by calling the `recordEvent(int eventId)`_ method. 
 The event ID needs to be in the range ``0`` to ``nbEventTypes-1`` with ``nbEventTypes`` the maximum number of event types set when initializing the ``Tracer`` object.
 Methods named ``recordEvent(...)`` always needs the event ID as the first parameter and can have up to ten integer parameters as custom values for the event.
 
-To record the end of an event, call the method ``recordEventEnd(int eventID)``. 
-It will trace the duration of an event previously recorded with one of the ``recordEvent(int)`` methods.
+To record the end of an event, call the method `recordEventEnd(int eventID)`_. 
+It will trace the duration of an event previously recorded with one of the `recordEvent(int eventID)`_ methods.
 The ``recordEventEnd(...)`` method can also have another integer parameter for a custom value for the event end. One can use it to trace the returned value of a method.
 
-The Trace API also provides a String constant ``Tracer.TRACE_ENABLED_CONSTANT_PROPERTY`` representing the :ref:`Constant <section.classpath.elements.constants>` value of ``core.trace.enabled`` option.
+The Trace API also provides a String constant `Tracer.TRACE_ENABLED_CONSTANT_PROPERTY`_ representing the :ref:`Constant <section.classpath.elements.constants>` value of ``core.trace.enabled`` option.
 This constant can be used to :ref:`remove at build time <if_constant_removal>` portions of code when the trace system is disabled. 
 To do that, just surround tracer record calls with a if statement that checks the constant's state. 
 When the constant is set to ``false``, the code inside the if statement will not be embedded with the application and thus will not impact the performances.
@@ -124,6 +127,11 @@ Examples:
     [TRACE] [1] Event 0x1 (14 [0xE],54 [0x36])
     [TRACE] [1] Event End 0x1 (68 [0x44])
 
+
+.. _recordEvent(int eventId): https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#recordEvent-int-
+.. _recordEventEnd(int eventID): https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#recordEventEnd-int-
+.. _Tracer.TRACE_ENABLED_CONSTANT_PROPERTY: https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html#TRACE_ENABLED_CONSTANT_PROPERTY
+
 .. _trace_implementations:
 
 Platform Implementation
@@ -136,12 +144,24 @@ It only prints the ID of the recorded event followed by the values given in para
 
 A Platform can connect its own implementation by overriding the functions defined in the ``LLTRACE_impl.h`` file.
 
-MicroEJ provides an implementation that redirects the events to :ref:`systemview` tool, 
+MicroEJ Corp. provides an implementation that redirects the events to :ref:`systemview` tool, 
 the real-time recording and visualization tool from `Segger <https://www.segger.com/>`_. It is perfect for a finer understanding of the runtime behavior by showing events sequence and duration.
 
 A implementation example for the `NXP OM13098 development board <https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/general-purpose-mcus/lpc54000-cortex-m4-/lpcxpresso54628-development-board:OM13098>`_ with SystemView support is available `here <https://developer.microej.com/packages/referenceimplementations/U3OER/2.0.1/OM13098-U3OER-fullPackaging-eval-2.0.1.zip>`__.
+
 Please contact :ref:`our support team <get_support>` for more information about how to integrate this Platform module.
-    
+
+Advanced Event Tracing
+======================
+
+Method invocation can be :ref:`profiled <Advanced-Event-Tracing>`.
+
+.. note::
+   This feature requires Architecture version ``7.17.0`` or higher and is only available on MicroEJ Core Engine, not on Simulator.
+
+MicroEJ Corp. provides an implementation on Linux targets to profile an Application and generate a flamegraph for the `Trace Compass <https://www.eclipse.org/tracecompass/>`_ tool.
+
+Please contact :ref:`our support team <get_support>` for more information about how to generate flamegraph.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

@@ -16,7 +16,7 @@ Application Developer Guide
    repository
    classpath
    applicationResources
-   nlsExternalLoader
+   nls
    debug
    platformSelection
    tools

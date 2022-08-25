@@ -1,27 +1,132 @@
+.. _chapter.nls:
+
+Native Language Support
+=======================
+
+Overview
+--------
+
+Native Language Support (NLS) allows the application to facilitate internationalization.
+It provides support to manipulate messages and translate them in different languages.
+Each message to be internationalized is referenced by a key, which can be used in the application code instead of using the message directly.
+
+Messages must be defined in `PO files <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`_, located in the Classpath of the application (for example in the ``src/main/resources`` folder).
+Here is an example:
+
+::
+
+   msgid ""
+   msgstr ""
+   "Language: en_US\n"
+   "Language-Team: English\n"
+   "MIME-Version: 1.0\n"
+   "Content-Type: text/plain; charset=UTF-8\n"
+
+   msgid "Label1"
+   msgstr "My label 1"
+
+   msgid "Label2"
+   msgstr "My label 2"
+
+PO files are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.nls.list`` files (**and** to ``*.externresources.list`` for an external resource, see :ref:`chapter.microej.applicationResources`).
+
+.. graphviz::
+
+  digraph D {
+  
+      internalNLS [shape=diamond, label="internal?"]
+      NLSList [shape=box, label="*.nls.list"]
+      NLSExt [shape=box, label="*.nls.list +\l*.externresources.list"]
+      subgraph cluster_NLS {
+          label ="NLS"
+          internalNLS -> NLSList [label="yes"]
+          internalNLS -> NLSExt [label="no=external"]
+      }
+  }
+
+The file format is a standard Java properties file, each line represents the Full Qualified Name of a Java interface that will be generated and used in the application.
+Example:
+
+.. code-block::
+
+   com.mycompany.myapp.Labels
+   com.mycompany.myapp.Messages
+
+The message can be accessed with a call to `ej.nls.NLS.getMessage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#getMessage-int->`_.
+Example:
+
+.. code-block:: java
+
+   import com.mycompany.myapp.Labels;
+
+   public class MyClass {
+
+      String label = Labels.NLS.getMessage(Labels.Label1);
+
+      ...
+
+.. _nls_usage:
+
+Usage
+-----
+
+For each line, PO files whose name starts with the interface name (``Messages`` and ``Labels``
+in the example) are retrieved from the Classpath and used to generate:
+
+- a Java interface with the given FQN, containing a field for each ``msgid`` of the PO files
+- a NLS binary file containing the translations
+
+So, in the example, the generated interface ``com.mycompany.myapp.Labels`` will gather all the 
+translations from files named ``Labels*.po`` and located in the Classpath.
+PO files are generally suffixed by their locale (``Labels_en_US.po``) but it is only for convenience
+since the suffix is not used, the locale is extracted from the PO file's metadata.
+
+Once the generation is done, the application can use the Java interfaces to get internationalized 
+messages, for example:
+
+.. code-block:: java
+
+   import com.mycompany.myapp.Labels;
+
+   public class MyClass {
+
+      String label = Labels.NLS.getMessage(Labels.Label1);
+
+      ...
+
+The generation is triggered when building the application or after a change done in any PO or ``*.nls.list`` files.
+This allows to always have the Java interfaces up-to-date with the translations and to use them immediately.
+
+The `NLS-PO module <https://repository.microej.com/modules/com/microej/library/runtime/nls-po>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the Application project.
+
+::
+
+  <dependency org="com.microej.library.runtime" name="nls-po" rev="2.2.0"/>
+
 .. _chapter.microej.nlsExternalLoader:
 
 NLS External Loader
-===================
+-------------------
 
-The NLS External Loader allows to update the :ref:`PO files <section.applicationResources.nls>` of an application without rebuilding it.
-PO files can be dropped in a given location in the Virtual Device folders to dynamically replace the language strings embedded in the application.
+The NLS External Loader allows to update the PO files of an application executed on a Virtual Device without rebuilding it.
+PO files can be dropped in a given location in the Virtual Device folders to dynamically replace the language strings packaged in the application.
 
 This is typically useful when testing or translating an application in order to have a quick feedback when changing the PO files.
 Once the PO files are updated, a simple restart of the Virtual Device allows to immediately see the result.
 
 Installation
-------------
+^^^^^^^^^^^^
 
-To enable the NLS External Loader in the Virtual Device, add the following dependency to the ``module.ivy`` file of the MicroEJ Firmware project:
+To enable the NLS External Loader in the Virtual Device, add the following dependency to the ``module.ivy`` file of the Firmware project:
 
 .. code-block:: xml
 
    <dependency org="com.microej.tool" name="nls-po-external-loader" rev="2.3.0" transitive="false"/>
 
-Then rebuild the MicroEJ Firmware project to produce the Virtual Device.
+Then rebuild the Firmware project to produce the Virtual Device.
 
 Usage
------
+^^^^^
 
 Once the project built:
 
@@ -36,12 +141,12 @@ Once the project built:
    externalPoLoaderInit:loadPo:
       [mkdir] Created dir: <PATH>\tmp\microejlaunch1307817858\resourcebuffer
    [po-to-nls] *.nls files found in <PATH>\output\<FIRMWARE>\resourceBuffer :
-   [po-to-nls]   - <CLASSPATH>.<CLASSNAME>
-   [po-to-nls]   - <CLASSPATH>.<CLASSNAME>
-   [po-to-nls] Loading *.po files for NLS interface f<CLASSPATH>.<CLASSNAME>
-   [po-to-nls]   => loaded locales : fr_DA,fr_ES,fr_NL,fr_FI,fr_RU,fr_SV,fr_DE,fr_NO,fr_IT,fr_FR,fr_PL,fr_EN
-   [po-to-nls] Loading *.po files for NLS interface <CLASSPATH>.<CLASSNAME>
-   [po-to-nls]   => loaded locales : fr_DA,fr_ES,fr_NL,fr_FI,fr_RU,fr_SV,fr_DE,fr_NO,fr_IT,fr_FR,fr_PL,fr_EN
+   [po-to-nls]   - com.mycompany.Messages1
+   [po-to-nls]   - com.mycompany.Messages2
+   [po-to-nls] Loading *.po files for NLS interface com.mycompany.Messages1
+   [po-to-nls]   => loaded locales : fr_FR,de_DE,ja_JP,en_US
+   [po-to-nls] Loading *.po files for NLS interface com.mycompany.Messages2
+   [po-to-nls]   => loaded locales : fr_FR,de_DE,ja_JP,en_US
 
 - update the languages strings in the PO files of the Virtual Device (the files in the `translations/` folder).
 - restart the Virtual Device and check the changes.
@@ -62,10 +167,10 @@ It is important to know the following rules about the NLS External Loader:
 
 
 Troubleshooting
----------------
+^^^^^^^^^^^^^^^
 
 java.io.IOException: NLS-PO:S=4
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""""""""
 
 The following error occurs when at least 1 PO file is missing for a language::
 
@@ -83,13 +188,13 @@ Make sure that all PO files are copied in the ``translations`` folder.
 
 
 Crowdin
--------
+^^^^^^^
 
 Crowdin is a cloud-based localization platform which allows to manage multilingual content.
 The NLS External Loader can fetch translations directly from Crowdin to make the translation process even easier.
 Translators can then contribute and validate their translations in Crowdin and apply them automatically in the Virtual Device.
 
-A new dependency must be added to the ``module.ivy`` file of the MicroEJ Firmware project to enable this integration:
+A new dependency must be added to the ``module.ivy`` file of the Firmware project to enable this integration:
 
 .. code-block:: xml
 
@@ -106,7 +211,7 @@ The PO files retrieved from Crowdin are automatically pasted in the folder ``tra
 therefore the new translations are applied after the next Virtual Device restart.
 
 ..
-   | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2020-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

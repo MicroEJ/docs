@@ -18,7 +18,7 @@ Standard Versions
 +-----------------+--------------------+---------------------------------------------------------+
 | UI Pack Range   | Architecture Range | Comment                                                 |
 +=================+====================+=========================================================+
-| [13.0.0-13.1.0] | [7.13.0-8.0.0[     | SNI 1.3                                                 |
+| [13.0.0-13.2.0] | [7.13.0-8.0.0[     | SNI 1.3                                                 |
 +-----------------+--------------------+---------------------------------------------------------+
 | [12.0.0-12.1.5] | [7.11.0-8.0.0[     | Move Front Panel in MicroEJ Architecture                |
 +-----------------+--------------------+---------------------------------------------------------+
@@ -58,6 +58,9 @@ The following table describes Foundation Libraries API versions implemented in M
    * - UI Pack Range
      - MicroUI
      - Drawing
+   * - 13.2.0
+     - 3.1.1
+     - `1.0.3 <https://repository.microej.com/modules/ej/api/drawing/1.0.3/>`_
    * - 13.1.0
      - `3.1.0 <https://repository.microej.com/modules/ej/api/microui/3.1.0/>`_
      - `1.0.3 <https://repository.microej.com/modules/ej/api/drawing/1.0.3/>`_
@@ -107,7 +110,7 @@ Display
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-13.1.0] | *UI3* format: implement ``LLUI_DISPLAY_impl.h``:                 |
+| [13.0.0-13.2.0] | *UI3* format: implement ``LLUI_DISPLAY_impl.h``:                 |
 |                 |                                                                  |
 |                 | * ``void LLUI_DISPLAY_IMPL_initialize([...]);``                  |
 |                 | * ``void LLUI_DISPLAY_IMPL_binarySemaphoreTake([...]);``         |
@@ -138,7 +141,7 @@ Input
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-13.1.0] | *UI3* format: implement ``LLUI_INPUT_impl.h``:                   |
+| [13.0.0-13.2.0] | *UI3* format: implement ``LLUI_INPUT_impl.h``:                   |
 |                 |                                                                  |
 |                 | * ``void LLUI_INPUT_IMPL_initialize([...]);``                    |
 |                 | * ``jint LLUI_INPUT_IMPL_getInitialStateValue([...]);``          |
@@ -159,7 +162,7 @@ LED
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-13.1.0] | *UI3* format: implement ``LLUI_LED_impl.h``:                     |
+| [13.0.0-13.2.0] | *UI3* format: implement ``LLUI_LED_impl.h``:                     |
 |                 |                                                                  |
 |                 | * ``jint LLUI_LED_IMPL_initialize([...]);``                      |
 |                 | * ``jint LLUI_LED_IMPL_getIntensity([...]);``                    |
@@ -181,7 +184,7 @@ The module version is the MicroEJ Generic UI Pack version, that is always aligne
 +-----------------+---------------------------------------------+-------------------+
 | UI Pack Range   | Module                                      | Version           |
 +=================+=============================================+===================+
-| [13.0.0-13.1.0] | ``com.microej.pack.ui.ui-pack(frontpanel)`` | |UIPACKVERSION|   |
+| [13.0.0-13.2.0] | ``com.microej.pack.ui.ui-pack(frontpanel)`` | |UIPACKVERSION|   |
 +-----------------+---------------------------------------------+-------------------+
 | [12.0.0-12.1.5] | ``ej.tool.frontpanel.widget-microui``       | 1.0.0             |
 +-----------------+---------------------------------------------+-------------------+
@@ -197,7 +200,7 @@ The module version is the MicroEJ Generic UI Pack version, that is always aligne
 +-----------------+-------------------------------------------------+-------------------+
 | UI Pack Range   | Module                                          | Version           |
 +=================+=================================================+===================+
-| [13.0.0-13.1.0] | ``com.microej.pack.ui.ui-pack(imagegenerator)`` | |UIPACKVERSION|   |
+| [13.0.0-13.2.0] | ``com.microej.pack.ui.ui-pack(imagegenerator)`` | |UIPACKVERSION|   |
 +-----------------+-------------------------------------------------+-------------------+
 
 .. note:: Before MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on classpath variable ``IMAGE-GENERATOR-x.x``.
@@ -219,7 +222,7 @@ The following table describes the compatibility versions between the C modules a
 +-----------------+------------------+
 | C Module Range  | UI Pack Range    |
 +=================+==================+
-| 1.1.0           | 13.1.0           | 
+| [1.1.0-1.1.1]   | [13.1.0-13.2.0]  | 
 +-----------------+------------------+
 | [1.0.0-1.0.3]   | [13.0.0-13.1.0]  |
 +-----------------+------------------+

@@ -115,15 +115,9 @@ A Platform Test Suite contains one or more tests.  For each test, the Test Suite
 Test Suite Versioning
 =====================
 
-Foundation Libraries are integrated in a MicroEJ Platform by MicroEJ
-Packs (see :ref:`pack_import`).  Use the Test Suite version compliant
-with the Foundation Library version to validate the Abstraction Layer
-implementation.  For example, the `Test Suite FS module 3.0.3
-<https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/>`_
-should be used to validate the Abstraction Layer implementation of the
-:ref:`Low Level API FS <LLFS-API-SECTION>` provided by the `FS Pack
-5.1.2
-<https://repository.microej.com/modules/com/microej/pack/fs/5.1.2/>`_.
+Foundation Libraries are integrated in a MicroEJ Platform by MicroEJ Packs (see :ref:`pack_import`).
+Use the Test Suite version compliant with the API version provided by the Foundation Library to validate the Abstraction Layer implementation.
+For example, the `Test Suite FS module 3.0.3 <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/>`_ should be used to validate the Abstraction Layer implementation of the :ref:`Low Level API FS <LLFS-API-SECTION>` provided by the `FS Pack 5.1.2 <https://repository.microej.com/modules/com/microej/pack/fs/5.1.2/>`_.
 
 .. note:: A MicroEJ Pack can provide several Foundation Libraries.
 
@@ -151,9 +145,9 @@ UI Pack
    * - UI Pack
      - C Test Suite
    * - 13.0.0 or higher (UI3)
-     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/tests/ui/ui3/README.rst>`__
+     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/tests/ui/ui3>`__
    * - [6.0.0-12.1.5] (UI2)
-     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/tests/ui/ui2/README.rst>`__
+     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/tests/ui/ui2>`__
 
 .. _test_suite_versioning_fs:
 
