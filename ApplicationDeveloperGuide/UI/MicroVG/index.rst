@@ -12,7 +12,7 @@ MicroVG
    gradient
    vectorfont
    vectorimage
-   helperlib
+   avdLoader
 
 
 ..
