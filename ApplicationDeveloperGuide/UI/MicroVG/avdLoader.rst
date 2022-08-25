@@ -114,10 +114,9 @@ The resulting vector image can then be drawn on the display:
 
 |endTable|
 
-
 .. note::
 
-   The image must be provided as a resource of the application, either :ref:`internal or external <section.applicationResources.internal_and_external_resources>`. For external resource loading, the BSP must implement the proper Low Level API (LLAPI), see :ref:`section_externalresourceloader` for more information on the implementation.
+   The image must be provided as a resource of the application, either :ref:`internal or external <chapter.microej.applicationResources>`. For external resource loading, the BSP must implement the proper Low Level API (LLAPI), see :ref:`section_externalresourceloader` for more information on the implementation.
 
 Limitations
 -----------
