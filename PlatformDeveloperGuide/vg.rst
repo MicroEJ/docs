@@ -20,7 +20,6 @@ Vector Graphics
     vgPath
     vgGradient
     vgFont
-    ..vgImage
     vgSimulation
     vgReleaseNotes
     vgChangeLog
