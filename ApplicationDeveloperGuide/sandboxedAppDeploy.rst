@@ -79,7 +79,7 @@ The build process will display messages in the console, ending up the following 
 
     Total time: 1 minute 6 seconds
 
-The files produced by the build process is located in a dedicated
+The files produced by the build process are located in a dedicated
 ``target~/artifacts`` folder in the project and is published to the 
 target module repository declared in :ref:`MicroEJ Module Manager settings file <mmm_settings_file>`.
 
