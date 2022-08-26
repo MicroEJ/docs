@@ -66,7 +66,7 @@ You can use a Serial terminal to get the traces of the Application::
 Remote Deployment
 -----------------
 
-Remote Deployment requires to build and publish the Standalone Application.
+Remote Deployment requires to build and publish the Sandboxed Application module.
 To do so, in the SDK, right-click on the Sandboxed Application project and click on ``Build Module``.
 
 The build process will display messages in the console, ending up the following message:
