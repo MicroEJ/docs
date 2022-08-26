@@ -3,7 +3,7 @@
 Run on the Device
 =================
 
-The deployment of a Sandboxed Application over a Multi-Sandbox Firmware depends on the Kernel implementation. However we can group them in two categories:
+The deployment of a Sandboxed Application on a device depends on the Kernel implementation. We can group them in two categories:
 
 - Local Deployment: the device is connected to the developer's computer and the SDK transfers the Application project on it. (recommended during application development)
 - Remote Deployment: the Application is built, then the device connects a Repository where the Application is stored, and deploys it over the air using a device management system. (production deployment)
