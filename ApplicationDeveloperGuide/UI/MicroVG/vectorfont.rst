@@ -307,6 +307,7 @@ The position where the text starts along the circle is the 3 o'clock position (p
 
 |endTable|
 
+.. _section_vg_font_complex:
 
 Complex Text Layout
 -------------------	
