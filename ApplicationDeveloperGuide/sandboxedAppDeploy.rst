@@ -5,8 +5,8 @@ Run on the Device
 
 The deployment of a Sandboxed Application on a device depends on the Kernel implementation. We can group them in two categories:
 
-- Local Deployment: the device is connected to the developer's computer and the SDK transfers the Application project on it. (recommended during application development)
-- Remote Deployment: the Application is built, then the device connects a Repository where the Application is stored, and deploys it over the air using a device management system. (production deployment)
+- Local Deployment: the device is connected to the developer's computer, the SDK builds the ``.fo`` from the workspace project classes and transfers it on the device (recommended during application development).
+- Remote Deployment: the Application is built, then the device connects a Repository where the Application is stored, and deploys it over the air using a device management system (production deployment).
 
 Local Deployment
 ----------------
