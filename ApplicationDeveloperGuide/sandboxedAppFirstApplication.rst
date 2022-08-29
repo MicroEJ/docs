@@ -1,7 +1,7 @@
 .. _chapter.application.firstApplication:
 
-First Application
-=================
+Create a First Application
+==========================
 
 Now that the :ref:`purposes and concepts of the Sandboxed Applications have been explained <sandboxed_application>`, let's create a first application.
 
