@@ -54,11 +54,13 @@ External Resource
 Principle
 ---------
 
-An image is retrieved by its path (except for `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#>`_). The path describes a location in the application classpath. The resource may be generated at the same time as the application (internal resource) or be external (external resource). The Image Loader can load some images located outside the CPU addresses' space range. It uses the External Resource Loader.
+An image is retrieved by its path (except for `BufferedImage`_). The path describes a location in the application classpath. The resource may be generated at the same time as the application (internal resource) or be external (external resource). The Image Loader can load some images located outside the CPU addresses' space range. It uses the External Resource Loader.
 
 When an image is located in such memory, the Image Loader copies it into RAM (into the CPU addresses' space range). Then it considers the image as an internal resource: it can continue to load the image (see following chapters). The RAM section used to load the external image is automatically freed when the Image Loader does not need it again.
 
 The image may be located in external memory but be available in CPU addresses' space ranges (byte-addressable). In this case, the Image Loader considers the image as `internal` and does not need to copy its content in RAM. 
+
+.. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#
 
 Configuration File
 ------------------
@@ -77,7 +79,7 @@ This chapter describes the steps to open an external resource from the applicati
 5. Deploy the external resources in the external memory (SDCard, flash, etc.).
 6. (optional) Update the implementation of the :ref:`section_externalresourceloader`.
 7. Build and link the application with the BSP.
-8. The application loads the external resource using `Image.loadImage(String) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_.
+8. The application loads the external resource using `ResourceImage.loadImage(String)`_.
 9. The image loader looks for the image and copies it in the :ref:`images heap<section_image_loader_memory>` (no copy if the external memory is byte-addressable).
 10. (optional) The image may be decoded (for instance: PNG), and the source image is removed from the images heap.
 11. The external resource is immediately closed: the image's bytes have been copied in the images heap, or the image's bytes are always available (byte-addressable memory).
@@ -86,6 +88,7 @@ This chapter describes the steps to open an external resource from the applicati
 
 .. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``.imagesext.list`` files are generated in the external resources folder, and this folder is added to the simulator's classpath. 
 
+.. _ResourceImage.loadImage(String): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String-
 
 Image in MicroEJ Format
 =======================
@@ -160,10 +163,12 @@ Use
 ===
 
 The MicroUI Image APIs are available in the class
-``ej.microui.display.Image``. There is no specific API that uses a
+`ej.microui.display.Image`_. There is no specific API that uses a
 runtime image. When an image has not been pre-processed (see
 :ref:`section_image_generator`), the MicroUI Image APIs
 ``createImage*`` will load this image.
+
+.. _ej.microui.display.Image: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

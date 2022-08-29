@@ -64,7 +64,7 @@ handy guide to selecting the appropriate buffer mode according to the hardware c
 Implementation
 --------------
 
-The Graphics Engine does not depend on the type of buffer mode. The implementation of `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_  calls the Low Level API ``LLUI_DISPLAY_IMPL_flush`` to let the BSP to update the display data. This function should be atomic and the implementation has to return the new graphics buffer address (back buffer address). In
+The Graphics Engine does not depend on the type of buffer mode. The implementation of `Display.flush()`_  calls the Low Level API ``LLUI_DISPLAY_IMPL_flush`` to let the BSP to update the display data. This function should be atomic and the implementation has to return the new graphics buffer address (back buffer address). In
 ``direct`` and ``copy`` modes, this address never changes and the implementation has always to return the back buffer address. In ``switch`` mode, the implementation has to return the old display frame buffer address.
 
 The next sections describe the work to do for each mode.
@@ -226,16 +226,20 @@ Application Limitations
 
 Using a partial buffer rather than a complete buffer may require adapting the code of the application, since rendering a graphical element may require multiple passes. If the application uses MWT, a :ref:`custom render policy <section_render_policy>` has to be used.
 
-Besides, the `GraphicsContext.readPixel() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#readPixel-int-int->`_
-and the `GraphicsContext.readPixels() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#readPixels-int:A-int-int-int-int-int-int->`_ APIs
+Besides, the `GraphicsContext.readPixel()`_
+and the `GraphicsContext.readPixels()`_ APIs
 can not be used on the graphics context of the display in partial buffer mode.
 Indeed, we cannot rely on the current content of the back buffer as it doesn't contain what is seen on the screen.
 
-Likewise, the `Painter.drawDisplayRegion() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html>`_ API can not be used in partial buffer mode.
+Likewise, the `Painter.drawDisplayRegion()`_ API can not be used in partial buffer mode.
 Indeed, this API reads the content of the back buffer in order to draw a region of the display.
 Instead of relying on the drawings which were performed previously, this API should be avoided and the drawings should be performed again.
 
 Using a partial buffer can have a significant impact on animation performance. Refer to :ref:`section_animations` for more information on the development of animations in an application.
+
+.. _GraphicsContext.readPixel(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#readPixel-int-int-
+.. _GraphicsContext.readPixels(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#readPixels-int:A-int-int-int-int-int-int-
+.. _Painter.drawDisplayRegion(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html
 
 Implementation Example
 ----------------------
@@ -695,11 +699,13 @@ Required Low Level API
 
 Some four Low Level APIs are required to connect the Graphics Engine on the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``. 
 
-* ``LLUI_DISPLAY_IMPL_initialize``: The initialization function is called when the application is calling ``MicroUI.start()``. Before this call, the display is useless and don't need to be initialized. This function consists in initializing the LCD driver and in filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on the two binary semaphores, the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels (``lcd_width`` and ``lcd_height``) and optionally the display *physical* size in pixels (``memory_width`` and ``memory_height``). 
+* ``LLUI_DISPLAY_IMPL_initialize``: The initialization function is called when the application is calling `MicroUI.start()`_. Before this call, the display is useless and don't need to be initialized. This function consists in initializing the LCD driver and in filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on the two binary semaphores, the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels (``lcd_width`` and ``lcd_height``) and optionally the display *physical* size in pixels (``memory_width`` and ``memory_height``). 
 
 * ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: Two distinct functions have to be implemented to *take* and *give* a binary semaphore. 
 
 * ``LLUI_DISPLAY_IMPL_flush``: According the display buffer mode (see :ref:`section_display_modes`), the ``flush`` function has to be implemented. This function must not be blocking and not performing the copy directly. Another OS task or a dedicated hardware must be configured to perform the buffer copy. 
+
+.. _MicroUI.start(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start--
 
 Optional Low Level API
 ----------------------
@@ -709,15 +715,18 @@ Several optional Low Level API are available in ``LLUI_DISPLAY_impl.h``. They ar
 Painter Low Level API
 ---------------------
 
-All MicroUI drawings (available in ``Painter`` class) are calling a native function. The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h``. The implementation must take care about a lot of constraints: synchronization between drawings, Graphics Engine notification, MicroUI ``GraphicsContext`` clip and colors, flush dirty area, etc. The principle of implementing a MicroUI drawing function is described in the chapter :ref:`display_drawing_native`. 
+All MicroUI drawings (available in `Painter`_ class) are calling a native function. The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h``. The implementation must take care about a lot of constraints: synchronization between drawings, Graphics Engine notification, MicroUI `GraphicsContext`_ clip and colors, flush dirty area, etc. The principle of implementing a MicroUI drawing function is described in the chapter :ref:`display_drawing_native`. 
 
-An implementation of ``LLUI_PAINTER_impl.h`` is already available on the :ref:`C module<section_ui_releasenotes_cmodule>`. This implementation respects the synchronization between drawings, the Graphics Engine notification, reduce (when possible) the MicroUI ``GraphicsContext`` clip constraints and update (when possible) the flush dirty area. This implementation does not perform the drawings. It only calls the equivalent of drawing available in ``ui_drawing.h``. This allows to simplify how to use a GPU (or a third-party library) to perform a drawing: the ``ui_drawing.h`` implementation has just to take in consideration the  MicroUI ``GraphicsContext`` clip and colors and flush dirty area. Synchronization with the Graphics Engine is already performed.
+An implementation of ``LLUI_PAINTER_impl.h`` is already available on the :ref:`C module<section_ui_releasenotes_cmodule>`. This implementation respects the synchronization between drawings, the Graphics Engine notification, reduce (when possible) the MicroUI `GraphicsContext`_ clip constraints and update (when possible) the flush dirty area. This implementation does not perform the drawings. It only calls the equivalent of drawing available in ``ui_drawing.h``. This allows to simplify how to use a GPU (or a third-party library) to perform a drawing: the ``ui_drawing.h`` implementation has just to take in consideration the MicroUI `GraphicsContext`_ clip and colors and flush dirty area. Synchronization with the Graphics Engine is already performed.
 
 In addition to the implementation of ``LLUI_PAINTER_impl.h``, an implementation of ``ui_drawing.h`` is already available in Graphics Engine (in *weak* mode). This allows to implement only the functions the GPU is able to perform. For a given drawing, the weak function implementation is calling the equivalent of drawing available in ``ui_drawing_soft.h``. This file lists all drawing functions implemented by the Graphics Engine.
 
 The Graphics Engine implementation of ``ui_drawing_soft.h`` is performing the drawings in software. However some drawings can call another ``ui_drawing.h`` function. For instance ``UI_DRAWING_SOFT_drawHorizontalLine`` is calling ``UI_DRAWING_fillRectangle`` in order to use a GPU if available. If not available, the weak implementation of ``UI_DRAWING_fillRectangle`` is calling ``UI_DRAWING_SOFT_fillRectangle`` and so on.
 
 The BSP implementation is also allowed to call ``ui_drawing_soft.h`` algorithms, one or several times per function to implement. For instance, a GPU may be able to draw an image whose format is RGB565. But if the image format is ARGB1555, BSP implementation can call ``UI_DRAWING_SOFT_drawImage`` function.
+
+.. _Painter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html
+.. _GraphicsContext: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html
 
 Graphics Engine API
 --------------------
@@ -1325,7 +1334,7 @@ Drawing Native
 
 As explained before, MicroUI implementation provides a dedicated header file which lists all MicroUI Painter drawings native function. The implementation of these functions has to respect several rules to not corrupt the MicroUI execution (flickering, memory corruption, unknown behavior, etc.). These rules are already respected in the default Abstraction Layer implementation modules available on the :ref:`C module<section_ui_releasenotes_cmodule>`. In addition, MicroUI allows to add some custom drawings. The implementation of MicroUI Painter native drawings should be used as model to implement the custom drawings.
 
-All native functions must have a ``MICROUI_GraphicsContext*`` as parameter (often first parameter). This identifies the destination target: the MicroUI `GraphicsContext <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html>`_. This target is retrieved in application calling the method ``GraphicsContext.getSNIContext()``. This method returns a byte array which is directly mapped on the ``MICROUI_GraphicsContext`` structure in MicroUI native drawing function declaration.
+All native functions must have a ``MICROUI_GraphicsContext*`` as parameter (often first parameter). This identifies the destination target: the MicroUI `GraphicsContext`_. This target is retrieved in application calling the method ``GraphicsContext.getSNIContext()``. This method returns a byte array which is directly mapped on the ``MICROUI_GraphicsContext`` structure in MicroUI native drawing function declaration.
  
 A graphics context holds a clip and the drawer is not allowed to perform a drawing outside this clip (otherwise the behavior is unknown). Note the bottom-right coordinates might be smaller than top-left (in x and/or y) when the clip width and/or height is null. The clip may be disabled (when the current drawing fits the clip); this allows to reduce runtime. See ``LLUI_DISPLAY_isClipEnabled()``.
 
@@ -1335,7 +1344,7 @@ A graphics context holds a clip and the drawer is not allowed to perform a drawi
 
 The Graphics Engine requires the synchronization between the drawings. To do that, it requires a call to ``LLUI_DISPLAY_requestDrawing`` at the beginning of native function implementation. This function takes as parameter the graphics context and the pointer on the native function itself. This pointer must be casted in a ``SNI_callback``. 
 
-The drawing function must update the next `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_ area (dirty area). If not performed, the next call to `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_ will not call ``LLUI_DISPLAY_IMPL_flush()`` function.
+The drawing function must update the next `Display.flush()`_ area (dirty area). If not performed, the next call to `Display.flush()`_ will not call ``LLUI_DISPLAY_IMPL_flush()`` function.
  
 The native function implementation pattern is:
 
@@ -1360,6 +1369,8 @@ The native function implementation pattern is:
       // else: refused drawing
    }
 
+.. _Display.flush(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush--
+
 Display Synchronization
 =======================
 
@@ -1372,7 +1383,7 @@ The Graphics Engine is designed to be synchronized with the display refresh rate
 
 Captions definition:
 
-* UI: It is the UI task which performs the drawings in the back buffer. At the end of the drawings, the examples consider that the UI thread calls `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_ 1 millisecond after the end of the drawings. At this moment, a flush can start (the call to `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_ is symbolized by a simple `peak` in chronograms).
+* UI: It is the UI task which performs the drawings in the back buffer. At the end of the drawings, the examples consider that the UI thread calls `Display.flush()`_ 1 millisecond after the end of the drawings. At this moment, a flush can start (the call to `Display.flush()`_ is symbolized by a simple `peak` in chronograms).
 * Flush: In :ref:`copy<copyBufferMode>` mode, it is the time to transfer the content of back buffer to display buffer. In :ref:`switch<switchBufferMode>` mode, it is the time to swap back and display buffers (often instantaneous) and the time to recopy the content of new display buffer to new back buffer. During this time, the back buffer is `in use` and UI task has to wait the end of copy before starting a new drawing. 
 * Tearing: The peaks show the tearing signals.
 * Rendering frequency: the frequency between the start of a drawing to the end of flush.
@@ -1380,7 +1391,7 @@ Captions definition:
 Tearing Signal
 --------------
 
-In this example, the drawing time is 7ms, the time between the end of drawing and the call to `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_ is 1ms and the flush time is 6ms. So the expected rendering frequency is 7 + 1 + 6 = 14ms (71.4Hz). Flush starts just after the call to `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. By consequence the display content is refreshed during the display refresh time. The content can be corrupted: flickering, glitches, etc. The rendering frequency is faster than display refresh rate.
+In this example, the drawing time is 7ms, the time between the end of drawing and the call to `Display.flush()`_ is 1ms and the flush time is 6ms. So the expected rendering frequency is 7 + 1 + 6 = 14ms (71.4Hz). Flush starts just after the call to `Display.flush()`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. By consequence the display content is refreshed during the display refresh time. The content can be corrupted: flickering, glitches, etc. The rendering frequency is faster than display refresh rate.
 
 .. figure:: images/uiDisplaySync01.*
    :width: 100%
@@ -1390,7 +1401,7 @@ In this example, the times are identical to previous example. The tearing signal
 .. figure:: images/uiDisplaySync02.*
    :width: 100%
 
-In this example, the drawing time is 14ms, the time between the end of drawing and the call to `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_ is 1ms and the flush time is 6ms. So the expected rendering frequency is 14 + 1 + 6 = 21ms (47.6Hz). Flush starts just after the call to `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. 
+In this example, the drawing time is 14ms, the time between the end of drawing and the call to `Display.flush()`_ is 1ms and the flush time is 6ms. So the expected rendering frequency is 14 + 1 + 6 = 21ms (47.6Hz). Flush starts just after the call to `Display.flush()`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. 
 
 .. figure:: images/uiDisplaySync03.*
    :width: 100%
@@ -1405,12 +1416,12 @@ Additional Buffer
 
 Some devices take a lot of time to send back buffer content to display buffer. The following examples demonstrate the consequence on rendering frequency. The use of an additional buffer optimizes this frequency, however it uses a lot of RAM memory.
 
-In this example, the drawing time is 7ms, the time between the end of drawing and the call to `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_ is 1ms and the flush time is 12ms. So the expected rendering frequency is 7 + 1 + 12 = 20ms (50Hz). Flush starts just after the call to `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. The rendering frequency is cadenced on drawing time + flush time.
+In this example, the drawing time is 7ms, the time between the end of drawing and the call to `Display.flush()`_ is 1ms and the flush time is 12ms. So the expected rendering frequency is 7 + 1 + 12 = 20ms (50Hz). Flush starts just after the call to `Display.flush()`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. The rendering frequency is cadenced on drawing time + flush time.
 
 .. figure:: images/uiDisplaySync05.*
    :width: 100%
 
-As mentionned above, the idea is to use two back buffers. First, UI task is drawing in back buffer ``A``. Just after the call to `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_, the flush can start. At same moment, the content of back buffer ``A`` is copied in back buffer ``B`` (use a DMA, copy time is 1ms). During the flush time (copy of back buffer ``A`` to display buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When the drawings in back buffer ``B`` are done (and after call to `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_), the DMA copy of back buffer ``B`` to back buffer ``A`` cannot start: the copy can only start when the flush is fully done because the flush is using the back buffer ``A``. As soon as the flush is done, a new flush (and DMA copy) can start. The rendering frequency is cadenced on flush time, ie 12ms (83.3Hz).
+As mentionned above, the idea is to use two back buffers. First, UI task is drawing in back buffer ``A``. Just after the call to `Display.flush()`_, the flush can start. At same moment, the content of back buffer ``A`` is copied in back buffer ``B`` (use a DMA, copy time is 1ms). During the flush time (copy of back buffer ``A`` to display buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When the drawings in back buffer ``B`` are done (and after call to `Display.flush()`_), the DMA copy of back buffer ``B`` to back buffer ``A`` cannot start: the copy can only start when the flush is fully done because the flush is using the back buffer ``A``. As soon as the flush is done, a new flush (and DMA copy) can start. The rendering frequency is cadenced on flush time, ie 12ms (83.3Hz).
 
 .. figure:: images/uiDisplaySync06.*
    :width: 100%
@@ -1426,7 +1437,7 @@ Time Sum-up
 The following table resumes the previous examples times:
 
 * It consider the display frequency is 62.5Hz (16ms). 
-* *Drawing time* is the time let to the application to perform its drawings and call `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_. In our examples, the time between the last drawing and the call to `Display.flush() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush-->`_ is 1ms.
+* *Drawing time* is the time let to the application to perform its drawings and call `Display.flush()`_. In our examples, the time between the last drawing and the call to `Display.flush()`_ is 1ms.
 * *FPS* and *CPU load* are calculated from examples times.
 * *Max drawing time* is the maximum time let to the application to perform its drawings, without overlapping next display tearing signal (when tearing is enabled). 
 
@@ -1468,8 +1479,10 @@ Background Color
 
 For each pixel to draw, the antialiasing process blends the foreground color with a background color. This background color can be specified or not by the application:
 
-- *specified*: The background color is fixed by the application  (`GraphicsContext.setBackgroundColor() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setBackgroundColor-int->`_).
+- *specified*: The background color is fixed by the application  (`GraphicsContext.setBackgroundColor()`_).
 -  *not specified*: The background color is the original color of the destination pixel (a "read pixel" operation is performed for each pixel).
+
+.. _GraphicsContext.setBackgroundColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setBackgroundColor-int-
 
 .. _display_lut:
 
@@ -1526,8 +1539,8 @@ There are five pixel *conversion* modes:
 -  Draw an image without transformation and without global alpha blending: copy a pixel from a format to the destination format (display format).
 -  Draw an image without transformation and with global alpha blending: copy a pixel with alpha blending from a format to the destination format (display format).
 -  Draw an image with transformation and with or without alpha blending: draw an ARGB8888 pixel in destination format (display format).
--  Load a `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_ with an output format: convert an ARGB8888 pixel to the output format.
--  Read a pixel from an image (`Image.readPixel() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#readPixel-int-int->`_ or to draw an image with transformation or to convert an image): read any pixel formats and convert it in ARGB8888.
+-  Load a `ResourceImage`_ with an output format: convert an ARGB8888 pixel to the output format.
+-  Read a pixel from an image (`Image.readPixel()`_ or to draw an image with transformation or to convert an image): read any pixel formats and convert it in ARGB8888.
 
 .. table:: Pixel Conversion
 
@@ -1547,6 +1560,9 @@ There are five pixel *conversion* modes:
    +------------------------------------------+-------------+-------------+-------------+
 
 There are ``22x1 + 22x1 + 2x1 + 1x6 + 22x1 = 74`` functions. Each function takes between 50 and 200 bytes depending on its complexity and the C compiler. 
+
+.. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html
+.. _Image.readPixel(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#readPixel-int-int-
 
 Linker File
 -----------
