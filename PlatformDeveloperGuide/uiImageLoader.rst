@@ -79,7 +79,7 @@ This chapter describes the steps to open an external resource from the applicati
 5. Deploy the external resources in the external memory (SDCard, flash, etc.).
 6. (optional) Update the implementation of the :ref:`section_externalresourceloader`.
 7. Build and link the application with the BSP.
-8. The application loads the external resource using `Image.loadImage(String)`_.
+8. The application loads the external resource using `ResourceImage.loadImage(String)`_.
 9. The image loader looks for the image and copies it in the :ref:`images heap<section_image_loader_memory>` (no copy if the external memory is byte-addressable).
 10. (optional) The image may be decoded (for instance: PNG), and the source image is removed from the images heap.
 11. The external resource is immediately closed: the image's bytes have been copied in the images heap, or the image's bytes are always available (byte-addressable memory).
@@ -88,7 +88,7 @@ This chapter describes the steps to open an external resource from the applicati
 
 .. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``.imagesext.list`` files are generated in the external resources folder, and this folder is added to the simulator's classpath. 
 
-.. _Image.loadImage(String): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String-
+.. _ResourceImage.loadImage(String): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String-
 
 Image in MicroEJ Format
 =======================
