@@ -38,8 +38,8 @@ connection on a hardware device.
    ECOM Flow
 
 1. Step 1 consists of opening a connection on a hardware device. The
-   connection kind and its configuration are fixed by the parameter
-   ``String connectionString`` of the method ``Connection.open``.
+   connection kind and its configuration are fixed by the String parameter
+   of the method `Connector.open(String)`_.
 
 2. Step 2 consists of opening an `InputStream`_ on the connection. This
    stream allows the MicroEJ Application to access the "RX" feature of
@@ -60,6 +60,7 @@ on each other.
 
 .. _InputStream: https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html
 .. _OutputStream: https://repository.microej.com/javadoc/microej_5.x/apis/java/io/OutputStream.html
+.. _Connector.open(String): https://repository.microej.com/javadoc/microej_5.x/apis/ej/ecom/io/Connector.html#open-java.lang.String-
 
 .. _section_ecom_dm:
 
