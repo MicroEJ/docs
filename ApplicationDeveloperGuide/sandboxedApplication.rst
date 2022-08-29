@@ -33,7 +33,7 @@ The Application development flow requires the following elements:
 - an hardware device that has been previously programmed with a Multi-Sandbox Firmware. 
   Virtual Devices and Multi-Sandbox Firmware share the same version (there is a 1:1 mapping).
 
-Please refer to the :ref:`kernel-developer-guide` to learn more on Multi-Sandbox Firmware and Virtual Devices, and how to create them.
+Please refer to the :ref:`kernel-developer-guide` to learn more on writing Kernel Applications and building Multi-Sandbox Firmware and Virtual Devices.
 
 The next chapters explain how to create, test and publish Sandboxed Applications.
 But before starting, there are fundamental concepts that need to be understood about Sandboxed Applications.
@@ -63,7 +63,7 @@ Some fundamental points:
 
 .. note::
 
-   You can go further by reading `the Kernel & Features Specification <_kf_specification>`.
+   You can go further by reading :ref:`the Kernel & Features Specification <kf_specification>`.
 
 
 ..
