@@ -926,7 +926,7 @@ Simulator
    in version :ref:`7.10.0 <changelog-7.10.0>`)
 -  Fixed ``OutOfMemory`` errors even if the heap is not full (resources
    loaded from `Class.getResourceAsStream()`_
-   and ``ResourceBuffer.open()`` were taken into account in simulated heap
+   and `ResourceBuffer`_ creation were taken into account in simulated heap
    memory - introduced in version :ref:`7.10.0 <changelog-7.10.0>`)
 -  Fixed potential crash when a GC occurs while a `ResourceBuffer`_
    is opened (introduced in version :ref:`7.10.0 <changelog-7.10.0>`)
