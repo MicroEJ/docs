@@ -45,10 +45,10 @@ But before starting, there are fundamental concepts that need to be understood a
 The concepts of Sandboxed Application and Multi-Sandbox Firmware are based on the Kernel & Features semantic (KF).
 It allows an application code to be split between multiples parts: 
 
-- the main application, called the Kernel
+- the main application, called the Kernel,
 - zero or more Sandboxed Applications called Features.
 
-Therefore, in the next chapters, the terms **Kernel** and **Multi-Sandbox Firmware** are equivalent, as well as the terms **Sandboxed Application** and **Feature**.
+Therefore, in the next chapters, the term *Kernel* represents a Kernel Application, and the term *Feature* represents a Sandboxed Application.
 
 Some fundamental points:
 
