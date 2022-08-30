@@ -54,10 +54,16 @@ There are two distinct Low Level API header files (see :ref:`LLVG-PATH-API-SECTI
 
 .. figure:: images/vg_llapi_path.*
    :alt: MicroVG Path Low Level
-   :width: 200px
+   :width: 400px
    :align: center
 
    Path Low Level API
+
+* MicroVG library calls the BSP functions through the header files ``LLVG_PATH_impl.h`` and ``LLVG_PATH_PAINTER_impl.h``.
+* The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_PATH_impl.h``: it manages the path buffer creation and filling, then redirect the command encoding to ``microvg_path.h``.
+* The :ref:`C module MicroVG-VGLite <section_vg_c_module_microvg>` provides an implementation of ``LLVG_PATH_PAINTER_impl.h`` and ``microvg_path.h``: it encodes the path commands and implements the drawings over the Vivante VGLite library.
+* The drawer also manages the :ref:`section_vg_gradient`.
+* These files are automatically copied in the BSP project when fetching the C modules during the platform build.
 
 Use
 ===

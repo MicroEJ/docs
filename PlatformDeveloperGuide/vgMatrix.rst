@@ -46,6 +46,10 @@ The Low Level APIs to implement are listed in the header file ``LLVG_MATRIX_impl
 
    Matrix Low Level API
 
+* MicroVG library calls the BSP functions through the header file ``LLVG_MATRIX_impl.h``.
+* The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of this header file: ``LLVG_MATRIX_impl.c``. 
+* This file is automatically copied in the BSP project when fetching the C module during the platform build.
+
 Use
 ===
 

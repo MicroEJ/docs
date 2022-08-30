@@ -17,7 +17,7 @@ Embedded Platform
 
 .. figure:: images/vg_llapi_emb.*
    :alt: MicroVG Low Level
-   :width: 100.0%
+   :width: 70.0%
    :align: center
 
    MicroVG Embedded Low Level API
@@ -36,7 +36,7 @@ Simulator
 
 .. figure:: images/vg_llapi_sim.*
    :alt: MicroVG Low Level
-   :width: 100.0%
+   :width: 70.0%
    :align: center
 
    MicroVG Simulator Low Level API

@@ -44,10 +44,18 @@ There are two distinct Low Level API header files (see :ref:`LLVG-FONT-API-SECTI
 
 .. figure:: images/vg_llapi_font.*
    :alt: MicroVG Font Low Level
-   :width: 200px
+   :width: 400px
    :align: center
 
    Font Low Level API
+
+* MicroVG library calls the BSP functions through the header files ``LLVG_FONT_impl.h`` and ``LLVG_FONT_PAINTER_impl.h``.
+* The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_FONT_impl.h`` over Freetype.
+* The :ref:`C module Freetype <section_vg_c_module_microvg>` provides an implementation of ``LLVG_FONT_PAINTER_impl.h`` over the Vivante VGLite library. It also redirects the :ref:`complex layout <section_vg_font_complex>` to a third party C module. 
+* The drawer also manages the :ref:`section_vg_gradient`.
+* The :ref:`C module Harfbuzz <section_vg_c_module_microvg>` provides an implementation of :ref:`complex layout <section_vg_font_complex>`.
+* These files are automatically copied in the BSP project when fetching the C modules during the platform build.
+
 
 Use
 ===

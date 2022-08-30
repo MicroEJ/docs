@@ -35,10 +35,16 @@ The Low Level APIs to implement are listed in the header file ``LLVG_GRADIENT_im
 
 .. figure:: images/vg_llapi_gradient.*
    :alt: MicroVG Gradient Low Level
-   :width: 200px
+   :width: 400px
    :align: center
 
    Gradient Low Level API
+
+* MicroVG library calls the BSP functions through the header files ``LLVG_GRADIENT_impl.h``, ``LLVG_PATH_PAINTER_impl.h`` and  ``LLVG_FONT_PAINTER_impl.h``.
+* The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_GRADIENT_impl.h``: it manages the gradient buffer creation and filling, then redirect the gradient encoding to ``microvg_gradient.h``.
+* The :ref:`C module MicroVG-VGLte <section_vg_c_module_microvg>` provides an implementation of ``LLVG_PATH_PAINTER_impl.h``, ``LLVG_FONT_PAINTER_impl.h`` and ``microvg_gradient.h``: it encodes the gradient and implements the drawings over the Vivante VGLite library and Freetype.
+* These files are automatically copied in the BSP project when fetching the C modules during the platform build.
+
 
 Use
 ===
