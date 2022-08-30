@@ -7,18 +7,18 @@ Matrix
 Principle
 =========
 
-The Matrix module contains the C part of the MicroVG implementation which manages arithmetics matrices.
-This module is composed of only one element: an implementation of Low Level APIs to create and manipulate the matrices.
+The Matrix module contains the C part of the MicroVG implementation, which manages arithmetics matrices.
+This module is composed of only one element: an implementation of Low-Level APIs to create and manipulate the matrices.
 
 .. _section_vg_matrix_implementation:
 
 Functional Description
 ======================
 
-The Matrix module implements the MicroVG `Matrix <zzz_javadocurl_zzz/ej/microvg/Matrix.html>`_ framework. 
-It provides Low Level APIs that consist in manipulating the matrices: fill an identity matrix, make a translation, a rotation or a scaling and concatenate two matrices.
+The Matrix module implements the framework of the MicroVG `Matrix <zzz_javadocurl_zzz/ej/microvg/Matrix.html>`_. 
+It provides Low-Level APIs that manipulate the matrices: fill an identity matrix, do a translation, a rotation, or a scaling and concatenate two matrices.
 
-A matrix is a 3x3 matrix and its elements are encoded in ``float`` (32-bit values):
+A matrix is a 3x3 matrix, and its elements are encoded in ``float`` (32-bit values):
 
 * matrix_memory[0] = matrix[0][0];
 * matrix_memory[1] = matrix[0][1];
@@ -34,17 +34,17 @@ The buffer where the matrix is encoded is stored in the Java heap.
 
 .. _section_vg_matrix_llapi:
 
-Low Level API
+Low-Level API
 =============
 
-The low level APIs that have to be implemented are listed in the header file ``LLVG_MATRIX_impl.h`` (see :ref:`LLVG-MATRIX-API-SECTION`):
+The low-level APIs that have to be implemented are listed in the header file ``LLVG_MATRIX_impl.h`` (see :ref:`LLVG-MATRIX-API-SECTION`):
 
 .. figure:: images/vg_llapi_matrix.*
    :alt: MicroVG Matrix Low Level
    :width: 200px
    :align: center
 
-   Matrix Low Level API
+   Matrix Low-Level API
 
 * MicroVG library calls the BSP functions through the header file ``LLVG_MATRIX_impl.h``.
 * The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of this header file: ``LLVG_MATRIX_impl.c``. 

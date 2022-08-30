@@ -7,11 +7,11 @@ Font
 Principle
 =========
 
-The Font module contains the C part of the MicroVG implementation which manages fonts.
+The Font module contains the C part of the MicroVG implementation, which manages fonts.
 This module is composed of two elements: 
 
-* an implementation of Low Level APIs to manipulate font files,
-* an implementation of Low Level APIs for MicroVG drawings.
+* an implementation of Low-Level APIs to manipulate font files,
+* an implementation of Low-Level APIs for MicroVG drawings.
 
 .. _section_vg_font_implementation:
 
@@ -19,7 +19,7 @@ Functional Description
 ======================
 
 The Font module implements the MicroVG `VectorFont <zzz_javadocurl_zzz/ej/microvg/VectorFont.html>`_ framework. 
-It provides Low Level APIs that consist in opening and decoding a font file and to get font's characteristics. 
+It provides Low-Level APIs that consist of opening and decoding a font file and getting the font's characteristics. 
 
 A font file:
 
@@ -27,27 +27,27 @@ A font file:
 * is identified by the resource name,
 * can be stored as internal resource or external (see :ref:`chapter.microej.applicationResources`).
 
-No data is stored in the Java heap . 
-The implementation is responsible about font's cycle life: allocation and release.
+No data is stored in the Java heap. 
+The implementation is responsible for the font's cycle life: allocation and release.
 
 A font is used to draw a string with a color or with a :ref:`linear gradient<section_vg_gradient>`.
 
 .. _section_vg_font_llapi:
 
-Low Level API
+Low-Level API
 =============
 
-There are two distinct Low Level API header files (see :ref:`LLVG-FONT-API-SECTION`):
+There are two separate Low-Level API header files (see :ref:`LLVG-FONT-API-SECTION`):
 
-* ``LLVG_FONT_impl.h`` specifies the Low Level APIs used to open and retrieve font's characteristics.
-* ``LLVG_FONT_PAINTER_impl.h`` lists the Low Level APIs called by  `VectorGraphicsPainter <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html>`_ to draw a string with the font.
+* ``LLVG_FONT_impl.h`` specifies the Low-Level APIs used to open and retrieve the font's characteristics.
+* ``LLVG_FONT_PAINTER_impl.h`` lists the Low-Level APIs called by  `VectorGraphicsPainter <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html>`_ to draw a string with the font.
 
 .. figure:: images/vg_llapi_font.*
    :alt: MicroVG Font Low Level
    :width: 400px
    :align: center
 
-   Font Low Level API
+   Font Low-Level API
 
 * MicroVG library calls the BSP functions through the header files ``LLVG_FONT_impl.h`` and ``LLVG_FONT_PAINTER_impl.h``.
 * The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_FONT_impl.h`` over Freetype.

@@ -7,14 +7,14 @@ C Modules
 Principle
 =========
 
-Several C modules implement the VG Pack's Low Level APIs.
-Some on them are generic, some on them are platform specific dependent (more specifically: GPU dependent).
-The generic modules provide some header files to be extended by the specific modules. 
+Several C modules implement the VG Pack's Low-Level APIs.
+Some are generic, and some are platform-specific dependent (more precisely: GPU dependent).
+The generic modules provide header files to be extended by the specific modules. 
 The generic C modules are available on `MicroEJ Central Repository <zzz_centralrepourl_zzz/modules>`_  and the specific C modules on the `Developer Repository <zzz_devrepourl_zzz/microej-developer-repository-release>`_.
 
 The following picture illustrates the available C modules and their relations. 
 It is a simplified view: all sources and headers files of each C module are not visible.
-The next chapters explain the aim and relations of each C module.
+The following chapters explain the aim and relations of each C module.
 
 .. figure:: images/vg_cco.*
    :alt: MicroVG C Modules
@@ -68,7 +68,7 @@ The header files are described in the dedicated chapters: :ref:`Matrix module <s
 
 The VG Pack is an extension of the UI Pack.
 The VG Pack's header files require the UI Pack's header files to manipulate the MicroUI concepts.
-By consequence, the VG Pack requires to be installed on a platform that fetches an UI Pack.
+Consequently, the VG Pack must be installed on a platform that fetches a UI Pack.
 
 The VG Pack and its header files are available on the Central Repository: XXXX_zzzz_link.
 
@@ -92,7 +92,7 @@ This C module is available on the Central Repository: XXXX_zzzz_link.
 Dependencies
 ------------
 
-This generic C module require some specific modules:
+This generic C module requires some specific modules:
 
 * Path and Gradient require a C module specific to a platform (to a GPU format).
 * Font requires the Freetype library and optionally the Harfbuzz library to manage the :ref:`complex layout <section_vg_font_complex>`.
@@ -103,18 +103,18 @@ Configuration
 This C module uses a configuration file.
 This file (a header file with some C defines) enables (or disables) and configures some options:
 
-* ``VG_FEATURE_PATH``: set this define to embed the full implementation of ``Path`` feature. Otherwise a stub implementation is used and all ``Path`` drawings are dropped.
+* ``VG_FEATURE_PATH``: set this define to embed the full implementation of ``Path`` feature. Otherwise, a stub implementation is used, and all ``Path`` drawings are dropped.
 * ``VG_FEATURE_GRADIENT``: configure this define to embed the full implementation of ``LinearGradient`` or a stub implementation that only manages one color (linear gradient's first color). The respective options are ``VG_FEATURE_GRADIENT_FULL`` and ``VG_FEATURE_GRADIENT_FIRST_COLOR``.
-* ``VG_FEATURE_FONT``: configure this define to specify the Font Engine and the Font Engine's backend. Two options are currently available: the Freetype engine with a vectotial backend and the Freetype engine with a bitmap backend. The respective options are ``VG_FEATURE_FONT_FREETYPE_VECTOR`` and ``VG_FEATURE_FONT_FREETYPE_BITMAP``.
+* ``VG_FEATURE_FONT``: configure this define to specify the Font Engine and the Font Engine's backend. Two options are currently available: the Freetype engine with a vectorial backend and the Freetype engine with a bitmap backend. The respective options are ``VG_FEATURE_FONT_FREETYPE_VECTOR`` and ``VG_FEATURE_FONT_FREETYPE_BITMAP``.
 * ``VG_FEATURE_FREETYPE_TTF``: set this define to enable the support of TTF font files in Freetype.
 * ``VG_FEATURE_FREETYPE_OTF``: set this define to enable the support of OTF font files in Freetype.
 * ``VG_FEATURE_FREETYPE_COLORED_EMOJI``: set this define to enable the support of colored emoji in Freetype.
 * ``VG_FEATURE_FONT_COMPLEX_LAYOUT``:  set this define to enable the support of :ref:`complex layout<section_vg_font_complex>`. This option is managed by the C module ``Harfbuzz`` (see upper).
-* ``VG_FEATURE_FONT_EXTERNAL``: set this define to allow to load external font files (outside the application classpath). See :ref:`chapter.microej.applicationResources`.
+* ``VG_FEATURE_FONT_EXTERNAL``: set this define to allow loading of external font files (outside the application classpath). See :ref:`chapter.microej.applicationResources`.
 * ``VG_FEATURE_FREETYPE_HEAP_SIZE``: specify the Freetype engine's heap size.
 * ``VG_FEATURE_FONT_COMPLEX_LAYOUT_HEAP_SIZE``: specify the Harfbuzz engine's heap size.
 
-.. note:: This option list is not exhaustive. Please consult the C module's readme file for more information.
+.. note:: This options list is not exhaustive. Please consult the C module's readme file for more information.
 
 Library: Freetype
 =================
@@ -136,7 +136,7 @@ C Module: MicroVG Over VGLite
 This C module is a specific implementation of the VG Pack drawing LLAPIs: ``LLVG_PAINTER_PATH_impl.h`` and ``LLVG_PAINTER_FONT_impl.h``.
 It implements a set of drawings over the official Vivante VGLite library (that targets some GPU with vector graphics acceleration): ``LLVG_PAINTER_PATH_vglite.c`` and ``LLVG_PAINTER_FONT_freetype_vglite.c``.
 
-The implementation require:
+The implementation requires:
 
 * the concepts of the C module MicroVG,
 * the concepts of the C module MicroUI over VGLite,
@@ -148,7 +148,7 @@ This C module is available on the Developer Repository: `<zzz_devrepourl_zzz/com
 Compatibility
 =============
 
-The compatibility between the different components (Packs, C modules and Libraries) are described in the :ref:`section_vg_releasenotes`.
+The compatibility between the components (Packs, C modules, and Libraries) is described in the :ref:`section_vg_releasenotes`.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

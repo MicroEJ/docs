@@ -8,22 +8,22 @@ MicroVG
 Principle
 =========
 
-MicroVG library is an extension of MicroUI library and provides vector drawing capabilities.
+MicroVG library is an extension of the MicroUI library and provides vector drawing capabilities.
 
 .. _section_vg_architecture:
 
 Architecture
 ============
 
-MicroVG library is the entry point to perform some vectorial drawings on a display. 
-This library contains only a minimal set of basic APIs. High-level libraries can be used to have more expressive power. 
-In addition to this restricted set of APIs, the MicroVG implementation has been designed so that the EDC, BON and MicroUI footprint is minimal. 
+MicroVG library is the entry point to perform some vectorial drawings on display. 
+This library contains only a minimal set of basic APIs. As a result, high-level libraries can be used to have more expressive power. 
+In addition to this restricted set of APIs, the MicroVG implementation has been designed to minimize the EDC, BON, and MicroUI footprint. 
 
 Native Calls
 ============
 
 Like MicroUI, the MicroVG implementation for MicroEJ uses native methods to perform some actions (manipulate matrices, perform drawings, decode and render fonts, etc.). 
-The library implementation has been designed to not use blocking native methods (wait end of drawing, etc.) which can lock the full MicroEJ Core Engine execution. 
+The library implementation has been designed not to block native methods (wait until the end of the drawing, etc.), which can lock the complete MicroEJ Core Engine execution. 
 
 Refer to the :ref:`MicroUI implementation <section_microui_native_calls>` to have more details about the native calls.
 
@@ -37,7 +37,7 @@ In the platform configuration's :ref:`module description file <mmm_module_descri
 
 .. code-block:: XML
 
-	<dependency org="com.microej.pack.vg" name="vg-pack" rev="1.1.0" conf="default->default"/>
+   <dependency org="com.microej.pack.vg" name="vg-pack" rev="1.1.0" conf="default->default"/>
 
 The VG Pack will be automatically available after a platform rebuild.
 

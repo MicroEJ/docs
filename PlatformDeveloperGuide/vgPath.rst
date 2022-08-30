@@ -7,23 +7,23 @@ Path
 Principle
 =========
 
-The Path module contains the C part of the MicroVG implementation which manages vector paths.
+The Path module contains the C part of the MicroVG implementation, which manages vector paths.
 This module is composed of two elements: 
 
-* an implementation of Low Level APIs to create path elements compatible with the hardware,
-* an implementation of Low Level APIs for MicroVG drawings.
+* an implementation of Low-Level APIs to create path elements compatible with the hardware,
+* an implementation of Low-Level APIs for MicroVG drawings.
 
 .. _section_vg_path_implementation:
 
 Functional Description
 ======================
 
-The Path module implements the MicroVG `Path <zzz_javadocurl_zzz/ej/microvg/Path.html>`_ framework. 
-It provides Low Level APIs that consist in creating and merging some paths in platform specific format. 
-After the path creation and encoding, the path data should not change when the application draws it: the encoded format should be the one used by the platform specific implementation (generally GPU).
+The Path module implements the framework of the MicroVG `Path <zzz_javadocurl_zzz/ej/microvg/Path.html>`_. 
+It provides Low-Level APIs that create and merge some paths in a platform-specific format. 
+After the path creation and encoding, the path data should not change when the application draws it: the encoded format should be used by the platform-specific implementation (generally GPU).
 
 A path is a succession of commands.
-The command encoding is implementation specific; however the ``float`` format is recommended.
+The command encoding is implementation specific; however, the ``float`` format is recommended.
 
 List of commands:
 
@@ -38,26 +38,26 @@ List of commands:
 * ``LLVG_PATH_CMD_CUBIC_REL``: MicroVG "CUBIC REL" command.
 
 The buffer where the commands are encoded is stored in the Java heap.
-The buffer size is automatically increased by the MicroVG implementation when no more command can be added into.
+The buffer size is automatically increased by the MicroVG implementation when no more commands can be added.
 
 A path is drawn with a color or with a :ref:`linear gradient<section_vg_gradient>`.
 
 .. _section_vg_path_llapi:
 
-Low Level API
+Low-Level API
 =============
 
-There are two distinct Low Level API header files (see :ref:`LLVG-PATH-API-SECTION`):
+There are two separate Low Level API header files (see :ref:`LLVG-PATH-API-SECTION`):
 
-* ``LLVG_PATH_impl.h`` specifies the Low Level APIs used to create and encode the path.
-* ``LLVG_PATH_PAINTER_impl.h`` lists the Low Level APIs called by  `VectorGraphicsPainter <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html>`_ to draw the path.
+* ``LLVG_PATH_impl.h`` specifies the Low-Level APIs used to create and encode the path.
+* ``LLVG_PATH_PAINTER_impl.h`` lists the Low-Level APIs called by  `VectorGraphicsPainter <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html>`_ to draw the path.
 
 .. figure:: images/vg_llapi_path.*
    :alt: MicroVG Path Low Level
    :width: 400px
    :align: center
 
-   Path Low Level API
+   Path Low-Level API
 
 * MicroVG library calls the BSP functions through the header files ``LLVG_PATH_impl.h`` and ``LLVG_PATH_PAINTER_impl.h``.
 * The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_PATH_impl.h``: it manages the path buffer creation and filling, then redirect the command encoding to ``microvg_path.h``.

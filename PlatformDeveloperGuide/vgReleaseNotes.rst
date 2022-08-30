@@ -8,7 +8,7 @@ UI Pack Compatibility Version
 =============================
 
 The current VG Pack version is 1.1.0.
-The following table describes the compatibility ranges between the VG Packs and the UI Packs. 
+The following table describes the compatibility ranges between VG and UI Packs. 
 
 +---------------+-----------------+------------------+
 | VG Pack Range | UI Pack Range   | Comment          |
@@ -42,7 +42,7 @@ C Modules Compatibility Version
 The C modules are described :ref:`here <section_vg_cco>`.
 
 Several generic C modules are available for a given version of the VG Pack.
-In addition with generic C modules, the specific implementation of the VG Pack over Vivante VGLite depends on:
+In addition to generic C modules, the specific implementation of the VG Pack over Vivante VGLite depends on:
 
 * the UI Pack (see upper),
 * the UI Pack C module: see :ref:`UI Pack <section_display_llapi>`,
@@ -58,7 +58,7 @@ The following table describes the compatibility ranges between the VG Packs and 
 | [1.0.0-1.1.0[ | n/a     | n/a      | n/a      | n/a            | n/a            |
 +---------------+---------+----------+----------+----------------+----------------+
 
-.. note:: The C module ``MicroVG over VGLite`` fetches automatically by transitivity the other C modules. No need to fetch explicitly the other modules (except the C module ``Harfbuzz``). An update of this C module updates (if necessary) the other C modules.
+.. note:: The C module ``MicroVG over VGLite`` fetches automatically by transitivity to the other C modules. No need to fetch explicitly the different modules (except the C module ``Harfbuzz``). An update of this C module updates (if necessary) the other C modules.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
