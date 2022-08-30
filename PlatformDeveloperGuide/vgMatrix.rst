@@ -37,7 +37,7 @@ The buffer where the matrix is encoded is stored in the Java heap.
 Low Level API
 =============
 
-The Low Level APIs to implement are listed in the header file ``LLVG_MATRIX_impl.h`` (see :ref:`LLVG-MATRIX-API-SECTION`):
+The low level APIs that have to be implemented are listed in the header file ``LLVG_MATRIX_impl.h`` (see :ref:`LLVG-MATRIX-API-SECTION`):
 
 .. figure:: images/vg_llapi_matrix.*
    :alt: MicroVG Matrix Low Level

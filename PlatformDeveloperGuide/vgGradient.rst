@@ -31,7 +31,7 @@ The buffer size is automatically increased by the MicroVG implementation on dema
 Low Level API
 =============
 
-The Low Level APIs to implement are listed in the header file ``LLVG_GRADIENT_impl.h`` (see :ref:`LLVG-GRADIENT-API-SECTION`):
+The low level APIs that have to be implemented are listed in the header file ``LLVG_GRADIENT_impl.h`` (see :ref:`LLVG-GRADIENT-API-SECTION`):
 
 .. figure:: images/vg_llapi_gradient.*
    :alt: MicroVG Gradient Low Level
