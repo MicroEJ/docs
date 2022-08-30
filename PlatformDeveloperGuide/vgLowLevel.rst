@@ -8,7 +8,7 @@ Principle
 =========
 
 The MicroVG implementation for MicroEJ requires a Low Level implementation. 
-The Low Level implementation consists of a set of headers files to implement in C to target the hardware drivers.
+The Low Level implementation consists of a set of header files to implement in C to target the hardware drivers.
 
 For the simulator, the VG Pack's embedded Front Panel extension implements all MicroVG features.
 

@@ -21,7 +21,7 @@ The four modules are grouped together in a module called :ref:`Front Panel <sect
 The Front Panel is and extension of the :ref:`UI Pack's Front Panel mock <section_ui_simulation>`.
 
 The Matrix, Path and Gradient modules also manage vectorial images. 
-The images are pre-processed before compiling the application (thanks a MicroUI :ref:`section_image_generator` extension.)
+The images are pre-processed before compiling the application (thanks to a MicroUI :ref:`section_image_generator` extension.)
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

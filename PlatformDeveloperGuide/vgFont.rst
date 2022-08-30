@@ -19,7 +19,7 @@ Functional Description
 ======================
 
 The Font module implements the MicroVG `VectorFont <zzz_javadocurl_zzz/ej/microvg/VectorFont.html>`_ framework. 
-It provides Low Level APIs that consist to open and decode a font file and to get font's characteristics. 
+It provides Low Level APIs that consist in opening and decoding a font file and to get font's characteristics. 
 
 A font file:
 

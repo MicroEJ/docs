@@ -493,15 +493,15 @@ The Low Level APIs rely on functions that must be implemented. The naming conven
 Creation
 --------
 
-The header file ``LLVG_PATH_impl.h`` allows to convert a path in MicroVG library format in a buffer that represents the path in platform specific format (often GPU format). 
+The header file ``LLVG_PATH_impl.h`` allows to convert a MicroVG library format path in a buffer that represents the same vectorial path in the platform specific format (generally GPU format).
 
 The first function called is ``LLVG_PATH_IMPL_initializePath``, which allows the implementation to initialize the path buffer.
 The buffer is allocated in the Java heap and its size is fixed by the MicroVG implementation.
-In case of the buffer is too small for the platform specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
+When the buffer is too small for the platform specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
 
-The next steps consist to append some commands in the path buffer.
+The next steps consist in appending some commands in the path buffer.
 The command encoding depends on the platform specific format.
-In case of the buffer is too small to add the new command, the implementation has to return a value that indicates the number of bytes the array must be enlarged. 
+When the buffer is too small to add the new command, the implementation has to return a value that indicates the number of bytes the array must be enlarged with. 
 
 List of commands:
 
@@ -510,20 +510,26 @@ List of commands:
 * ``LLVG_PATH_CMD_MOVE_REL``: MicroVG "MOVE REL" command.
 * ``LLVG_PATH_CMD_LINE``: MicroVG "LINE ABS" command.
 * ``LLVG_PATH_CMD_LINE_REL``: MicroVG "LINE REL" command.
-* ``LLVG_PATH_CMD_QUAD``: MicroVG "QUAD EBS" command.
+* ``LLVG_PATH_CMD_QUAD``: MicroVG "QUAD ABS" command.
 * ``LLVG_PATH_CMD_QUAD_REL``: MicroVG "QUAD REL" command.
 * ``LLVG_PATH_CMD_CUBIC``: MicroVG "CUBIC ABS" command.
 * ``LLVG_PATH_CMD_CUBIC_REL``: MicroVG "CUBIC REL" command.
 
+List of operations:
+
+* ``LLVG_PATH_IMPL_appendPathCommand1``: Adds a command with 1 point parameter in the array.
+* ``LLVG_PATH_IMPL_appendPathCommand2``: Adds a command with 2 points parameter in the array.
+* ``LLVG_PATH_IMPL_appendPathCommand3``: Adds a command with 3 points parameter in the array.
+ 
 A path is automatically closed by the MicroVG implementation (by adding the command ``LLVG_PATH_CMD_CLOSE``).
-A path can be reopened, that consists to remove the last added command (``LLVG_PATH_CMD_CLOSE`` command) from the buffer.
+A path can be reopened (function ``LLVG_PATH_IMPL_reopenPath``), that consists in removing the last added command (``LLVG_PATH_CMD_CLOSE`` command) from the buffer.
 
 Merging
 -------
 
 The function ``LLVG_PATH_IMPL_mergePaths`` allows to merge two paths in a third one.
 The two paths must have the same list of commands.
-The third path's points are calculated based on the source paths points coordinates and a ratio.
+The resulting path's points are calculated based on the source paths points coordinates and a ratio.
 
 * If ratio = 0, resulting point will equal the first path point.
 * If ratio = 1, resulting point will equal the second path point.
@@ -558,11 +564,11 @@ Implementation
 --------------
 
 Only one function has to be implemented: ``LLVG_GRADIENT_IMPL_initializeGradient``.
-It consists to encode the MicroVG LinearGradient in a buffer that represents the linear gradient in platform specific format (often GPU format).  
+It consists in encoding the MicroVG LinearGradient in a buffer that represents the linear gradient in platform specific format (generally GPU format).  
 
 This function allows the implementation to initialize the gradient buffer.
 The buffer is allocated in the Java heap and its size is fixed by the MicroVG implementation.
-In case of the buffer is too small for the platform specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
+When the buffer is too small for the platform specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
 
 .. _LLVG-FONT-API-SECTION:
 
@@ -572,7 +578,7 @@ LLVG_FONT: Vector Font
 Principle
 ---------
 
-The :ref:`Font module <section_vg_font>` provides Low Level APIs for decoding fonts (``LLVG_FONT_impl.h``) and rendering texts (``LLVG_FONT_PAINTER_impl.h``). The both header files, which come with the Font module, defines the API headers to be implemented.
+The :ref:`Font module <section_vg_font>` provides Low Level APIs for decoding fonts (``LLVG_FONT_impl.h``) and rendering texts (``LLVG_FONT_PAINTER_impl.h``). Both header files, which come with the Font module, define the API headers to be implemented.
 
 Naming Convention
 -----------------
@@ -583,7 +589,7 @@ Initialization
 --------------
 
 The first function called is ``LLVG_FONT_IMPL_load_font``, which allows the driver to open a font file from its name. 
-This function gives a parameter to configure the text rendering engine:
+This function takes a parameter to configure the text rendering engine:
 
 - Simple layout: uses the glyph advance metrics and the font kerning table.
 - Complex layout: uses the font GPOS and GSUB tables.
@@ -596,7 +602,7 @@ The font's data are disposed by a call to ``LLVG_FONT_IMPL_dispose``.
 Font Characteristics
 --------------------
 
-The other functions in ``LLVG_FONT_PAINTER_impl.h`` consist to retrieve some font characteristics according a text and a font size: string width, string height, baseline, etc.
+The other functions in ``LLVG_FONT_PAINTER_impl.h`` consist in retrieving some font characteristics according a text and a font size: string width, string height, baseline, etc.
 
 See `VectorFont <zzz_javadocurl_zzz/ej/microvg/VectorFont.html>`_ for more information.
 

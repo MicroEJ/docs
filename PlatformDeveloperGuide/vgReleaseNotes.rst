@@ -78,8 +78,8 @@ This module requires the C module `MicroUI over VGLite`: `<zzz_devrepourl_zzz/co
 Compatibility
 -------------
 
-The C module `MicroVG-VGLite` fetches automatically by transitivity the other C modules.
-No need to fetch explicitly the other modules.
+The C module ``MicroVG-VGLite`` fetches automatically by transitivity the other C modules.
+No need to fetch explicitly the other modules (except the C module ``Harfbuzz``).
 An update of this C module updates (if necessary) the other C modules.
 The following table describes the compatibility versions between this C module and the MicroEJ VG Packs:
 
@@ -91,8 +91,38 @@ The following table describes the compatibility versions between this C module a
 | [1.0.0-2.0.0] *deprecated*  | n/a           |
 +-----------------------------+---------------+
 
+The C module ``Harfbuzz`` is optional.
+When not available, the Font :ref:`complex <section_vg_font_complex>` mode is not supported. 
+The following table describes the compatibility versions between the C module ``Harfbuzz`` and the C module ``MicroVG-VGLite``:
+
++-----------------------+-----------------------------+
+| Harfbuzz Module Range | MicroVG-VGLite Module Range |
++=======================+=============================+
+| 1.0.0                 | 3.0.0                       |
++-----------------------+-----------------------------+
+
+Configuration
+-------------
+
+The C module ``MicroVG`` (fetched automatically by transitivity when fetching the C module ``MicroVG-VGLite``) uses a configuration file.
+This file (a header file with some C defines) enables (or disables) and configures some options:
+
+* ``VG_FEATURE_PATH``: set this define to embed the full implementation of ``Path`` feature. Otherwise a stub implementation is used and all ``Path`` drawings are dropped.
+* ``VG_FEATURE_GRADIENT``: configure this define to embed the full implementation of ``LinearGradient`` or a stub implementation that only manages one color (linear gradient's first color). The respective options are ``VG_FEATURE_GRADIENT_FULL`` and ``VG_FEATURE_GRADIENT_FIRST_COLOR``.
+* ``VG_FEATURE_FONT``: configure this define to specify the Font Engine and the Font Engine's backend. Two options are currently available: the Freetype engine with a vectotial backend and the Freetype engine with a bitmap backend. The respective options are ``VG_FEATURE_FONT_FREETYPE_VECTOR`` and ``VG_FEATURE_FONT_FREETYPE_BITMAP``.
+* ``VG_FEATURE_FREETYPE_TTF``: set this define to enable the support of TTF font files in Freetype.
+* ``VG_FEATURE_FREETYPE_OTF``: set this define to enable the support of OTF font files in Freetype.
+* ``VG_FEATURE_FREETYPE_COLORED_EMOJI``: set this define to enable the support of colored emoji in Freetype.
+* ``VG_FEATURE_FONT_COMPLEX_LAYOUT``:  set this define to enable the support of :ref:`complex layout<section_vg_font_complex>`. This option is managed by the C module ``Harfbuzz`` (see upper).
+* ``VG_FEATURE_FONT_EXTERNAL``: set this define to allow to load external font files (outside the application classpath). See :ref:`chapter.microej.applicationResources`.
+* ``VG_FEATURE_FREETYPE_HEAP_SIZE``: specify the Freetype engine's heap size.
+* ``VG_FEATURE_FONT_COMPLEX_LAYOUT_HEAP_SIZE``: specify the Harfbuzz engine's heap size.
+
+.. note:: This option list is not exhaustive. Please consult the C module's readme file for more information.
+
+
 ..
-   | Copyright 2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

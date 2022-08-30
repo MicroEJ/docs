@@ -19,8 +19,8 @@ Functional Description
 ======================
 
 The Path module implements the MicroVG `Path <zzz_javadocurl_zzz/ej/microvg/Path.html>`_ framework. 
-It provides Low Level APIs that consist to create and merge some paths in platform specific format. 
-After the path creation and encoding, the path data should not change when the application draws it: the encoded format should be the one used by the GPU.
+It provides Low Level APIs that consist in creating and merging some paths in platform specific format. 
+After the path creation and encoding, the path data should not change when the application draws it: the encoded format should be the one used by the platform specific implementation (generally GPU).
 
 A path is a succession of commands.
 The command encoding is implementation specific; however the ``float`` format is recommended.
@@ -32,7 +32,7 @@ List of commands:
 * ``LLVG_PATH_CMD_MOVE_REL``: MicroVG "MOVE REL" command.
 * ``LLVG_PATH_CMD_LINE``: MicroVG "LINE ABS" command.
 * ``LLVG_PATH_CMD_LINE_REL``: MicroVG "LINE REL" command.
-* ``LLVG_PATH_CMD_QUAD``: MicroVG "QUAD EBS" command.
+* ``LLVG_PATH_CMD_QUAD``: MicroVG "QUAD ABS" command.
 * ``LLVG_PATH_CMD_QUAD_REL``: MicroVG "QUAD REL" command.
 * ``LLVG_PATH_CMD_CUBIC``: MicroVG "CUBIC ABS" command.
 * ``LLVG_PATH_CMD_CUBIC_REL``: MicroVG "CUBIC REL" command.
