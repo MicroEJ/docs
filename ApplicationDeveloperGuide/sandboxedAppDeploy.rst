@@ -8,6 +8,11 @@ The deployment of a Sandboxed Application on a device depends on the Kernel impl
 - Local Deployment: the device is connected to the developer's computer, the SDK builds the ``.fo`` from the workspace project classes and transfers it on the device (recommended during application development).
 - Remote Deployment: the Application is built, then the device connects a Repository where the Application is stored, and deploys it over the air using a device management system (production deployment).
 
+In both cases, deploying a Sandboxed Application requires that a Multi-Sandbox Firmware is running on the device.
+Please refer to the :ref:`kernel-developer-guide` to learn how to build it or browse 
+the `Resources Repository <https://repository.microej.com/index.php?resource=FIRM&topic=ALL&version=ANY&edition=ANY>`_ 
+for Multi-Sandbox demo Firmware available for popular hardware evaluation kits.
+
 Local Deployment
 ----------------
 
