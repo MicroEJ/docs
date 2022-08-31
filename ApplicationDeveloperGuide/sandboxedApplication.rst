@@ -5,10 +5,38 @@ Sandboxed Application
 
 .. toctree::
    :maxdepth: 2
+   :hidden:
 
-   sandboxedAppDevelopment
-   applicationPublication
-   sharedInterface
+   sandboxedAppFirstApplication
+   sandboxedAppSim
+   sandboxedAppDeploy
+   sandboxedAppFundamentalConcepts
+   sandboxedAppSharedInterface
+
+A Sandboxed Application is a Java Application that can run over a Multi-Sandbox Firmware.
+Sandboxed Applications can be linked statically to the Multi-Sandbox Firmware or installed dynamically on the device.
+
+Typical use cases for a Sandboxed Application are:
+
+- over the air provisioning: the Application is dynamically installed or updated on a fleet of heterogenous devices.
+- modularization: a monolithic application is split into multiple Sandboxed Applications; each of them can be started or stopped separately.
+
+The Application development flow requires the following elements:
+
+- a Virtual Device, a software package including the resources and tools required for building and testing an application for a specific device.
+  A Virtual Device will simulate all capabilities of the corresponding hardware board:
+
+  - Computation and Memory
+  - Communication channels (e.g. Network, USB ...)
+  - Display
+  - User interaction
+
+- an hardware device that has been previously programmed with a Multi-Sandbox Firmware. 
+  Virtual Devices and Multi-Sandbox Firmware share the same version (there is a 1:1 mapping).
+
+Please refer to the :ref:`kernel-developer-guide` to learn more on writing Kernel Applications and building Multi-Sandbox Firmware and Virtual Devices.
+
+The next chapters explain how to create, test and publish Sandboxed Applications.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

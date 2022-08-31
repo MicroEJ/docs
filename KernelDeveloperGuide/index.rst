@@ -13,6 +13,7 @@ Kernel Developer Guide
    kernelAPI
    runtimeEnvironment
    kernelUID
+   sandboxedAppLifecycle
    featuresCommunication
    kfEnabledLibraries
    kfTestsuite

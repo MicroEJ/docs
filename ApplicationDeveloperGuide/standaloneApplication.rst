@@ -5,6 +5,7 @@ Standalone Application
 
 .. toctree::
    :maxdepth: 2
+   :hidden:
 
    platform
    buildAndRunApplication
@@ -12,6 +13,9 @@ Standalone Application
    launches
    applicationOptions
    soar
+
+A Standalone Application is a Java Application that is directly linked to the C code to produce a Firmware.
+Such application must define a main entry point, i.e. a class containing a ``public static void main(String[])`` method.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
