@@ -10,7 +10,7 @@ It allows an application code to be split between multiples parts:
 - the main application, called the Kernel,
 - zero or more applications called Features.
 
-Therefore, in the next chapters, a Kernel Application relates to the *Kernel* concept, and a Sandboxed Application relates to the *Feature* concept.
+Therefore, a Kernel Application relates to the *Kernel* concept and a Sandboxed Application relates to the *Feature* concept.
 
 Some fundamental points:
 
