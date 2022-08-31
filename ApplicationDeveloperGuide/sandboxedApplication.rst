@@ -10,6 +10,7 @@ Sandboxed Application
    sandboxedAppFirstApplication
    sandboxedAppSim
    sandboxedAppDeploy
+   sandboxedAppFundamentalConcepts
    sandboxedAppSharedInterface
 
 A Sandboxed Application is a Java Application that can run over a Multi-Sandbox Firmware.
@@ -36,35 +37,6 @@ The Application development flow requires the following elements:
 Please refer to the :ref:`kernel-developer-guide` to learn more on writing Kernel Applications and building Multi-Sandbox Firmware and Virtual Devices.
 
 The next chapters explain how to create, test and publish Sandboxed Applications.
-But before starting, there are fundamental concepts that need to be understood about Sandboxed Applications.
-
- |
-
-**Fundamental Concepts**
-
-The concepts of Sandboxed Application and Multi-Sandbox Firmware are based on the Kernel & Features semantic (KF).
-It allows an application code to be split between multiples parts: 
-
-- the main application, called the Kernel,
-- zero or more Sandboxed Applications called Features.
-
-Therefore, in the next chapters, the term *Kernel* represents a Kernel Application, and the term *Feature* represents a Sandboxed Application.
-
-Some fundamental points:
-
-- The Kernel is mandatory. It is assumed to be reliable, trusted and cannot be modified.
-- A Feature is an application "extension" managed by the Kernel.
-- A Feature is fully controlled by the Kernel: it can be installed (dynamically or statically pre-installed), started, stopped and
-  uninstalled at any time independent of the system state (particularly, a Feature never depends on
-  another Feature to be stopped).
-- A Feature is optional, potentially not-trusted, maybe unreliable and
-  can be executed without jeopardizing the safety of the Kernel execution and other Features.
-- Resources accesses (RAM, hardware peripherals, CPU time, ...) are under control of the Kernel.
-
-.. note::
-
-   You can go further by reading :ref:`the Kernel & Features Specification <kf_specification>`.
-
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
