@@ -71,17 +71,8 @@ You can use a Serial terminal to get the traces of the Application::
 Remote Deployment
 -----------------
 
-<<<<<<< feature/M0078DDG-480_sandboxed-application_review_friviere
 Remote Deployment requires to build and publish the Sandboxed Application module.
-To do so, in the SDK, right-click on the Sandboxed Application project and click on ``Build Module``.
-=======
-An Application can also be deployed remotely, from a MicroEJ Forge instance.
-
-This requires to create and publish the WPK file that is intended to
-be published on the MicroEJ Forge instance.
-
 To do so, in the SDK, right-click on the Sandboxed Application project and click on :guilabel:`Build Module`.
->>>>>>> 2e593f5 M0078DDG-480 Use guilabel for SDK labels
 
 The build process will display messages in the console, ending up the following message:
 
