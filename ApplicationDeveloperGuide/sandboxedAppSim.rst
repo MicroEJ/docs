@@ -6,7 +6,7 @@ Run on the Simulator
 Once :ref:`a Sandboxed Application project has been created <chapter.application.firstApplication>`, it can be tested on the Simulator.
 
 The Simulator requires a Virtual Device to execute the Application.
-Please refer to the :ref:`kernel-developer-guide` to learn to get or create one.
+Please refer to the :ref:`kernel-developer-guide` to learn how to get or create one.
 
 From the SDK
 ------------
