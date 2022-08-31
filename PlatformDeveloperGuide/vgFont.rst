@@ -7,7 +7,7 @@ Font
 Principle
 =========
 
-The Font module contains the C part of the MicroVG implementation, which manages fonts.
+The Font module contains the C part of the MicroVG implementation, which manages vectorial fonts.
 This module is composed of two elements: 
 
 * an implementation of Low-Level APIs to manipulate font files,

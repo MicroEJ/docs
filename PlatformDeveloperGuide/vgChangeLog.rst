@@ -15,21 +15,21 @@ MicroVG Implementation
 **Changed**
 
 * Compatible with `MicroVG API 1.1.0 <zzz_centralrepourl_zzz/modules/ej/api/microvg/1.1.0/>`_.
-* Allow to load a VectorFont from the external resources. 
+* Allow loading a VectorFont from external resources. 
 * Change color animation interpolation (match Android formula).
-	
+   
 **Fixed**
 
 * Fix NullPointerException while sorting TranslateXY VectorDrawableObjectAnimator in vectorimage-converter.
 
 LLAPIs
 """"""
-	
+   
 **Added**
 
 * Add LLAPI to close a font: ``LLVG_FONT_IMPL_dispose()``.
 
-**Changed**	
+**Changed** 
 
 * Manage the font :ref:`complex layout <section_vg_font_complex>`.
 * Returns an error code when drawing something.
@@ -44,7 +44,7 @@ MicroVG Implementation
 
 **Fixed**
 
-* Fix incorrect transformation of animated paths while creating a filteredImage.
+* Fix incorrect transformation of animated paths while creating a filtered image.
 
 [1.0.0] - 2022-05-13
 ====================

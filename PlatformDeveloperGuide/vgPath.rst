@@ -47,7 +47,7 @@ A path is drawn with a color or with a :ref:`linear gradient<section_vg_gradient
 Low-Level API
 =============
 
-There are two separate Low Level API header files (see :ref:`LLVG-PATH-API-SECTION`):
+There are two separate Low-Level API header files (see :ref:`LLVG-PATH-API-SECTION`):
 
 * ``LLVG_PATH_impl.h`` specifies the Low-Level APIs used to create and encode the path.
 * ``LLVG_PATH_PAINTER_impl.h`` lists the Low-Level APIs called by  `VectorGraphicsPainter <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html>`_ to draw the path.

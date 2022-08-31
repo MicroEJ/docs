@@ -7,7 +7,7 @@ The diagram below shows a simplified view of the components involved in the prov
 
 .. figure:: images/java-c-vg-interface.*
    :alt: Overview
-   :width: 600px
+   :width: 50%
    :align: center   
 
    Overview

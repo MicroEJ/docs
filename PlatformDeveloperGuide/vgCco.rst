@@ -8,13 +8,20 @@ Principle
 =========
 
 Several C modules implement the VG Pack's Low-Level APIs.
-Some are generic, and some are platform-specific dependent (more precisely: GPU dependent).
+Some are generic, and some are platform dependent (more precisely: GPU dependent).
 The generic modules provide header files to be extended by the specific modules. 
-The generic C modules are available on `MicroEJ Central Repository <zzz_centralrepourl_zzz/modules>`_  and the specific C modules on the `Developer Repository <zzz_devrepourl_zzz/microej-developer-repository-release>`_.
+The generic C modules are available on the :ref:`central_repository` and the specific C modules on the :ref:`developer_repository`.
 
 The following picture illustrates the available C modules and their relations. 
-It is a simplified view: all sources and headers files of each C module are not visible.
+The following picture illustrates the available C modules and their relations for an implementation that uses:
+
+* Freetype library for the font renderer and the font layouter in simple layout mode.
+* Harfbuzz library for the font layouter in complex layout mode.
+* Vivante VGLite library for the drawing of vector paths
+
 The following chapters explain the aim and relations of each C module.
+
+.. note:: It is a simplified view: all sources and headers files of each C module are not visible.
 
 .. figure:: images/vg_cco.*
    :alt: MicroVG C Modules
@@ -55,10 +62,10 @@ This C module is available on the Developer Repository: XXXX_zzzz_link.
 Library: Vivante VGLite
 =======================
 
-This library symbolizes the official Vivante VGLite library.
+This library is the official Vivante VGLite library.
 The C modules use its header files to target the GPU.
 
-.. note:: The library must be patched to be compatible with the C module "MicroUI over VGLite". Consult the C module's ReadMe file to have more information.
+.. note:: The library must be patched to be compatible with the C module "MicroUI over VGLite". Consult the C module's ReadMe file for more information.
 
 VG Pack
 =======
