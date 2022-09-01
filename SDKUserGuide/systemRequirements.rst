@@ -28,11 +28,11 @@ This table lists the supported combinations:
      - Architecture
      - JRE/JDK
    * - 22.06
-     - 5.6.0
+     - >= 5.6.0
      - >= 7.17.0
      - JDK 11
    * - <= 21.11
-     - 5.6.0
+     - >= 5.6.0
      - >= 7.17.0
      - JRE or JDK 8 or 11
    * - <= 21.11
