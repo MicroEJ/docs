@@ -10,8 +10,8 @@ Principle
 
 The HIL engine is a Java standard-based engine that runs Mocks. A Mock
 is a jar file containing some Java classes that simulate natives for the
-Simulator. Mocks allow applications to be run unchanged in the Simulator
-while still (apparently) interacting with native code.
+Simulator. Mocks allow applications to be run unchanged in the Virtual Device
+while still appearing to interact with native code.
 
 
 Functional Description
