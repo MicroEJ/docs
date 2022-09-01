@@ -4,6 +4,50 @@
 Changelog
 =========
 
+13.3.0 - 2022-09-xx
+===================
+
+* Compatible with Architecture 7.13.0 or higher.
+
+MicroUI Implementation
+""""""""""""""""""""""
+	
+**Fixed**
+
+* Fix the Cx (x == 1 | 2 | 4) Graphics Engine's when memory layout is "column". 
+* Fix the consistency between `Image.getImage()` and `Font.getFont()` about starting MicroUI.
+
+Front Panel
+"""""""""""
+
+**Added**
+
+* Add custom image formats and a service to prepare for future MicroUI functionality.
+ 
+Image Generator
+"""""""""""""""
+
+**Fixed**
+
+* Fix the stride stored in the image when the Graphics Engine's memory layout is "column". 
+
+LLAPIs
+""""""
+
+**Added**
+
+* Add custom image formats to prepare for future MicroUI functionality.
+* Add LLAPI to adjust new image characteristics (size and alignment).
+* Add API: `UI_DRAWING_copyImage` and `UI_DRAWING_drawRegion`. 
+* Add the LLUI version (== UI Pack version) in header files.
+
+**Changed**
+
+* Use type `jbyte` to identify an image format instead of `MICROUI_ImageFormat` (prevent C compiler optimization).
+ 
+**Removed**
+
+* Remove the MicroUI's native functions declaration with macros *(not backward compatible)*.
 
 13.2.0 - 2022-05-05
 ===================
