@@ -3,22 +3,10 @@
 Kernel & Features Specification
 ===============================
 
-MicroEJ Multi-Sandboxing is based on the Kernel & Features semantic (KF).
-It allows an application code to be split
-between multiples parts: the main application, called the *Kernel* and
-zero or more sandboxed applications called *Features*.
+Multi-Sandboxing is based on the Kernel & Features specification (KF). 
+The fundamental concepts are introduced in the :ref:`Sandboxed Application chapter <sandboxed_application_fundamental_concepts>`. 
 
-The Kernel part is mandatory and is assumed to be reliable, trusted and
-cannot be modified. If there is only one application, i.e only one
-``main`` entry point that the system starts with, then this application
-is considered as the Kernel and called a Standalone Application. Even if
-there are more applications in the platform, there is still only one
-entry point. This entry point is the Kernel. Applications (downloaded or
-preinstalled) are "code extensions" (called "Features"), that are called
-by the Kernel. These Features are fully controlled by the Kernel: they
-can be installed, started, stopped and uninstalled at any time
-independently of the system state (particularly, a Feature never
-depends on an other Feature to be stopped).
+The following table provides links to the complete KF APIs & specification.
 
 .. list-table::
    :widths: 10 30

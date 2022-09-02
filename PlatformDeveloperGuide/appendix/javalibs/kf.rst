@@ -22,31 +22,36 @@ defined using two files that shall be in Application classpath:
 
 .. _table_kf-feature-keys:
 .. tabularcolumns:: |p{2.5cm}|p{2cm}|p{10.5cm}|
-.. table:: Feature definition file properties
+.. list-table:: Feature definition file properties
+   :widths: 1 1 8
+   :header-rows: 1
 
-   +---------------+-----------+-------------------------------------------------------------------------+
-   | Key           | Usage     | Description                                                             |
-   +===============+===========+=========================================================================+
-   | entryPoint    | Mandatory | The fully qualified name of the class that                              |
-   |               |           | implements ``ej.kf.FeatureEntryPoint``                                  |
-   +---------------+-----------+-------------------------------------------------------------------------+
-   | immutables    | Optional  | Semicolon separated list of paths to :ref:`[BON] <runtime_bon>`         |
-   |               |           | immutable files owned by the Feature. ``[BON]``                         |
-   |               |           | immutable file is defined by a ``/`` separated path relative to         |
-   |               |           | application classpath                                                   |
-   +---------------+-----------+-------------------------------------------------------------------------+
-   | resources     | Optional  | Semicolon separated list of resource names owned by the Feature.        |
-   |               |           | Resource name is defined by ``Class.getResourceAsStream(String)``       |
-   +---------------+-----------+-------------------------------------------------------------------------+
-   | requiredTypes | Optional  | Comma separated list of fully qualified names of required types. (Types |
-   |               |           | that may be dynamically loaded using ``Class.forName()``).              |
-   +---------------+-----------+-------------------------------------------------------------------------+
-   | types         | Optional  | Comma separated list of fully qualified names of types owned by the     |
-   |               |           | Feature. A wildcard is allowed as terminal character to embed all       |
-   |               |           | types starting with the given qualified name (``a.b.C,x.y.*``)          |
-   +---------------+-----------+-------------------------------------------------------------------------+
-   | version       | Mandatory | String version, that can retrieved using ``ej.kf.Module.getVersion()``  |
-   +---------------+-----------+-------------------------------------------------------------------------+
+   * - Key
+     - Usage
+     - Description
+   * - entryPoint
+     - Mandatory
+     - The fully qualified name of the class that implements `ej.kf.FeatureEntryPoint`_
+   * - immutables
+     - Optional
+     - Semicolon separated list of paths to :ref:`[BON] <runtime_bon>` immutable files owned by the Feature. ``[BON]`` immutable file is defined by a ``/`` separated path relative to application classpath
+   * - resources
+     - Optional
+     - Semicolon separated list of resource names owned by the Feature. Resource name is defined by `Class.getResourceAsStream(String)`_
+   * - requiredTypes
+     - Optional
+     - Comma separated list of fully qualified names of required types. (Types that may be dynamically loaded using `Class.forName()`_).
+   * - types
+     - Optional
+     - Comma separated list of fully qualified names of types owned by the Feature. A wildcard is allowed as terminal character to embed all types starting with the given qualified name (``a.b.C,x.y.*``)
+   * - version
+     - Mandatory
+     - String version, that can retrieved using `ej.kf.Module.getVersion()`_
+
+.. _ej.kf.FeatureEntryPoint: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html
+.. _Class.getResourceAsStream(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
+.. _Class.forName(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#forName-java.lang.String-
+.. _ej.kf.Module.getVersion(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#getVersion--
 
 Kernel Definition Files
 -----------------------
@@ -66,7 +71,7 @@ Access Error Codes
 ------------------
 
 When an instruction is executed that will break a :ref:`[KF] specification <kf_specification>` insulation
-semantic rule, a ``java.lang.IllegalAccessError`` is thrown, with an
+semantic rule, a `java.lang.IllegalAccessError`_ is thrown, with an
 error code composed of two parts: ``[source][errorKind]``.
 
 -  ``source``: a single character indicating the kind of Java element on
@@ -121,6 +126,7 @@ error code composed of two parts: ``[source][errorKind]``.
    |         | monitor                                                    |
    +---------+------------------------------------------------------------+
 
+.. _java.lang.IllegalAccessError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalAccessError.html
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

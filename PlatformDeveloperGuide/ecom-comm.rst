@@ -11,8 +11,8 @@ Principle
 The ECOM Comm Java library provides support for serial communication.
 ECOM Comm extends ECOM to allow stream communication via serial
 communication ports (typically UARTs). In the MicroEJ Application, the
-connection is established using the ``Connector.open()`` method. The
-returned connection is a ``ej.ecom.io.CommConnection``, and the input
+connection is established using the `Connector.open()`_ method. The
+returned connection is a `ej.ecom.io.CommConnection`_, and the input
 and output streams can be used for full duplex communication.
 
 The use of ECOM Comm in a custom platform requires the implementation of
@@ -30,6 +30,8 @@ This ECOM Comm implementation also allows dynamic add or remove of a
 connection to the pool of available connections (typically hot-plug of a
 USB Comm port).
 
+.. _Connector.open(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/ecom/io/Connector.html
+.. _ej.ecom.io.CommConnection: https://repository.microej.com/javadoc/microej_5.x/apis/ej/ecom/io/CommConnection.html
 
 Functional Description
 ======================
@@ -90,7 +92,7 @@ exist to support a Buffered connection.
 The connection is implemented with three objects  [1]_ :
 
 -  The Java object used by the application; an instance of
-   ``ej.ecom.io.CommConnection``
+   `ej.ecom.io.CommConnection`_
 
 -  The connection object within the ECOM Comm C module
 
@@ -166,7 +168,7 @@ The ECOM Comm stack allows to dynamically add and remove connections
 from the :ref:`section_ecomcomm_driver`. When a connection is added,
 it can be immediately open by the application. When a connection is
 removed, the connection cannot be open anymore and
-``java.io.IOException`` is thrown in threads that are using it.
+`java.io.IOException`_ is thrown in threads that are using it.
 
 In addition, a dynamic connection can be registered and unregistered in
 ECOM device manager (see :ref:`section_ecom_dm`). The registration
@@ -188,13 +190,14 @@ connection with ECOM registration mechanism enabled.
 
     Dynamic Connection Lifecycle
 
+.. _java.io.IOException: https://repository.microej.com/javadoc/microej_5.x/apis/java/io/IOException.html
 
 Java API
 ========
 
 Opening a connection is done using
-``ej.ecom.io.Connector.open(String name)``. The connection string (the
-``name`` parameter) must start with "comm:", followed by the Comm port
+`ej.ecom.io.Connector.open(String url)`_. The connection string (the
+``url`` parameter) must start with "comm:", followed by the Comm port
 identifier, and a semicolon-separated list of options. Options are the
 baudrate, the parity, the number of bits per character, and the number
 of stop bits:
@@ -208,8 +211,10 @@ of stop bits:
 -  parity=x where x is odd, even or none (none by default)
 
 All of these are optional. Illegal or unrecognized parameters cause an
-``IllegalArgumentException``.
+`IllegalArgumentException`_.
 
+.. _ej.ecom.io.Connector.open(String url): https://repository.microej.com/javadoc/microej_5.x/apis/ej/ecom/io/Connector.html#open-java.lang.String-
+.. _IllegalArgumentException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalArgumentException.html
 
 .. _section_ecomcomm_driver:
 

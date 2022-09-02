@@ -30,11 +30,13 @@ The properties file must / can contain the following properties:
 
 -  ``architecture`` [optional, default value is "Virtual Device"]:
    Defines the value returned by the
-   ``ej.util.Device.getArchitecture()`` method on the Simulator.
+   `ej.util.Device.getArchitecture()`_ method on the Simulator.
 
 -  ``id.length`` [optional]: Defines the size of the ID returned by the
-   ``ej.util.Device.getId()`` method on the Simulator.
+   `ej.util.Device.getId()`_ method on the Simulator.
 
+.. _ej.util.Device.getArchitecture(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/Device.html#getArchitecture--
+.. _ej.util.Device.getId(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/Device.html#getId--
 
 Use
 ===

@@ -76,8 +76,9 @@ Image Renderer module is part of the MicroUI module and Display module. Install 
 Use
 ===
 
-The MicroUI image APIs are available in the class
-``ej.microui.display.Image``.
+The MicroUI image APIs are available in the class `ej.microui.display.Image`_.
+
+.. _ej.microui.display.Image: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

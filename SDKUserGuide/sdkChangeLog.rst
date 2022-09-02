@@ -143,6 +143,30 @@ SDK Distribution Changelog
 SDK Changelog
 -------------
 
+.. _changelog-5.6.2:
+
+[5.6.2] - 2022-08-31
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+-  Fixed error when opening some heap dump files.
+-  Fixed error when saving a EJF file with the Font Designer.
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+General
+^^^^^^^
+
+-  Fixed invalid module name when using spaces in the project name.
+
+Skeletons
+^^^^^^^^^
+
+-  Fixed wrong package name in the class generated when creating a firmware-multiapp project.
+
 .. _changelog-5.6.1:
 
 [5.6.1] - 2022-07-08

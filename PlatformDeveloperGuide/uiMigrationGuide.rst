@@ -147,8 +147,8 @@ Front Panel API
 	* [Added] ``getDisplayPixelDepth()``: replaces ``MicroUIDisplay.getNbBitsPerPixel()``.
 	* [Added] ``getDWDrawerSoftware()``: gives the unique instance of graphical engine's internal software drawer (instance of ``DWDrawing``).
 	* [Added] ``getUIDrawerSoftware()``: gives the unique instance of graphical engine's internal software drawer (instance of ``UIDrawing``).
-	* [Added] ``mapMicroUIGraphicsContext(byte[])`` and ``newMicroUIGraphicsContext(byte[])``: maps the graphics context byte array (``GraphicsContext.getSNIContext()``) on an object which represents the graphics context in front panel. 
-	* [Added] ``mapMicroUIImage(byte[])`` and ``newMicroUIImage(byte[])``: maps the image byte array (``Image.getSNIContext()``) on an object which represents the image in front panel. 
+	* [Added] ``mapMicroUIGraphicsContext(byte[])`` and ``newMicroUIGraphicsContext(byte[])``: maps the graphics context byte array (`GraphicsContext.getSNIContext()`_) on an object which represents the graphics context in front panel. 
+	* [Added] ``mapMicroUIImage(byte[])`` and ``newMicroUIImage(byte[])``: maps the image byte array (`Image.getSNIContext()`_) on an object which represents the image in front panel. 
 	* [Added] ``requestFlush(boolean)``: requests a call to ``LLUIDisplayImpl.flush()``.
 	* [Added] ``requestRender(void)``: requests a call to ``Displayable.render()``.
 
@@ -161,9 +161,9 @@ Front Panel API
 * ``ej.microui.display.LLUIPainter``
 
 	* [Added] Equivalent of module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_ (``LLUI_PAINTER_impl.c``): implements all ``ej.api.microui`` natives and redirect them to the interface ``UIDrawing``.
-	* [Added] ``MicroUIGraphicsContext``: representation of a MicroUI ``GraphicsContext`` in front panel. This interface (implemented by the graphical engine) provides several function to get information on graphics context, clip, etc.
+	* [Added] ``MicroUIGraphicsContext``: representation of a MicroUI `GraphicsContext`_ in front panel. This interface (implemented by the graphical engine) provides several function to get information on graphics context, clip, etc.
 	* [Added] ``MicroUIGraphicsContext#requestDrawing()``: allows to take the hand on the drawing buffer.
-	* [Added] ``MicroUIImage``: representation of a MicroUI ``Image`` in front panel. This interface (implemented by the graphical engine) provides several function to get information on image.
+	* [Added] ``MicroUIImage``: representation of a MicroUI `Image`_ in front panel. This interface (implemented by the graphical engine) provides several function to get information on image.
 	* [Added] ``setDrawer(UIDrawing)``: allows to configure the implementation of ``UIDrawing`` the ``LLUIPainter`` has to use. When no drawer is configured, ``LLUIPainter`` redirects all drawings to the internal graphical engine software algorithms.
 	* 
 * ``ej.microui.display.UIDrawing``
@@ -207,6 +207,11 @@ Front Panel API
 
 	* [Added] Replaces ``MicroUILED``.
 
+.. _GraphicsContext.getSNIContext(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#getSNIContext--
+.. _Image.getSNIContext(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getSNIContext--
+.. _GraphicsContext: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html
+.. _Image: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html
+
 Image Generator
 """""""""""""""
 
@@ -247,7 +252,7 @@ This chapter only concerns platform with a custom display. In this case a dedica
 The artifact name prefix must be ``imageGenerator-``.
 
 * Update project classpath: remove classpath variable ``IMAGE-GENERATOR-x.x`` and add ivy file dependency
-* Instead of implement ``GenericDisplayExtension``, the extension class must extend ``BufferedImageLoader`` class; check class methods to override.
+* Instead of implementing ``GenericDisplayExtension``, the extension class must extend ``BufferedImageLoader`` class; check class methods to override.
 * Add the file ``src/main/resources/META-INF/services/com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension``; this file has to specify the class which extends the ``BufferedImageLoader`` class, for instance:
 
    .. code-block:: java
@@ -462,9 +467,9 @@ LLAPI
 * ``LLUI_PAINTER_impl.h``
 
 	* [Added] List of ``ej.api.microui`` library's native functions implemented in module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_.
-	* [Added] ``MICROUI_ImageFormat``: MicroUI ``Image`` pixel format.
-	* [Added] ``MICROUI_Image``: MicroUI ``Image`` representation.
-	* [Added] ``MICROUI_GraphicsContext``: MicroUI ``GraphicsContext`` representation.
+	* [Added] ``MICROUI_ImageFormat``: MicroUI `Image`_ pixel format.
+	* [Added] ``MICROUI_Image``: MicroUI `Image`_ representation.
+	* [Added] ``MICROUI_GraphicsContext``: MicroUI `GraphicsContext`_ representation.
 
 * ``ui_drawing_soft.h``
 
