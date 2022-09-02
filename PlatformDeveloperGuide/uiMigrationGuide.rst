@@ -6,6 +6,30 @@
 Migration Guide
 ===============
 
+From 13.2.x to 13.3.x
+=====================
+
+Front Panel
+"""""""""""
+
+* Set the explicit dependency to the UI Pack 13.3.0: 
+
+  .. code-block:: xml
+
+	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.3.0">
+		<artifact name="frontpanel" type="jar"/>
+	 </dependency>
+
+BSP
+"""
+
+* Install the  :ref:`MicroUI C module 2.0.0 <section_ui_releasenotes_cmodule>`.
+* The signatures of `LLUI_DISPLAY_IMPL_decodeImage` and `LLUI_DISPLAY_IMPL_getNewImageStrideInBytes` have changed: 
+ 
+	* use `jbyte` in functions signatures
+	* add a cast to `MICROUI_Image` in the implementation.
+  
+
 From 13.1.x to 13.2.x
 =====================
 
