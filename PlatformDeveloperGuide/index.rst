@@ -20,6 +20,7 @@ Platform Developer Guide
    externalResourceLoader
    serialCommunications
    ui
+   vg
    net
    fs
    hal
