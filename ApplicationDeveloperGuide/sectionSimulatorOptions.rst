@@ -48,7 +48,8 @@ Option: System Chars Size
 
 *Description*:
 
-Memory allocated to system strings. Value is in kilobytes.
+Memory allocated to system interned strings. System interned strings are all
+the strings interned by the debugger. Value is in kilobytes.
 
 
 Option: Application Chars Size
@@ -63,7 +64,8 @@ Option: Application Chars Size
 
 *Description*:
 
-Memory allocated to application strings. Value is in kilobytes.
+Memory allocated to application interned strings. Application interned strings
+are all the strings interned by the application. Value is in kilobytes.
 
 
 Group: Statics and Methods
@@ -103,7 +105,7 @@ Option: Thread Stack Size
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-*Option Name*: ``S3.JavaMemory.MethodsSize``
+*Option Name*: ``S3.JavaMemory.ThreadStackSize``
 
 *Default value*: ``300``
 
@@ -115,18 +117,6 @@ Memory space allocated for each thread stack. Value is in kilobytes.
 
 Group: Icetea Heap Size
 -----------------------
-
-Option: Icetea Heap Start
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-*Option Name*: ``IceteaRuntimeSupport.S3.HeapStart``
-
-*Default value*: ``200``
-
-*Description*:
-
-Internal heap start address used by the Simulator to manage its own memory. It is an adress in bytes.
 
 
 Option: Icetea Heap End
