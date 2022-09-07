@@ -18,7 +18,7 @@ This module is composed of two elements:
 Functional Description
 ======================
 
-The Font module implements the MicroVG `VectorFont <zzz_javadocurl_zzz/ej/microvg/VectorFont.html>`_ framework. 
+The Font module implements the MicroVG `VectorFont <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html>`_ framework. 
 It provides Low-Level APIs that consist of opening and decoding a font file and getting the font's characteristics. 
 
 A font file:
@@ -40,7 +40,7 @@ Low-Level API
 There are two separate Low-Level API header files (see :ref:`LLVG-FONT-API-SECTION`):
 
 * ``LLVG_FONT_impl.h`` specifies the Low-Level APIs used to open and retrieve the font's characteristics.
-* ``LLVG_FONT_PAINTER_impl.h`` lists the Low-Level APIs called by  `VectorGraphicsPainter <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html>`_ to draw a string with the font.
+* ``LLVG_FONT_PAINTER_impl.h`` lists the Low-Level APIs called by  `VectorGraphicsPainter <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html>`_ to draw a string with the font.
 
 .. figure:: images/vg_llapi_font.*
    :alt: MicroVG Font Low Level
@@ -60,7 +60,7 @@ There are two separate Low-Level API header files (see :ref:`LLVG-FONT-API-SECTI
 Use
 ===
 
-The MicroVG Font APIs are available in the class `ej.microvg.VectorFont <zzz_javadocurl_zzz/ej/microvg/VectorFont.html>`_.
+The MicroVG Font APIs are available in the class `ej.microvg.VectorFont <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html>`_.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

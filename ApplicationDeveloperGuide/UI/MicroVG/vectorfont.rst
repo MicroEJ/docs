@@ -23,13 +23,13 @@ Loading a Font File
 
 Font files must be declared as ressources in a `.resources.list` file available in the classpath(:ref:`chapter.microej.applicationResources`).
 
-Then the font has to be loaded in a `VectorFont` object with a call to `ej.microvg.VectorFont.loadFont() <zzz_javadocurl_zzz/ej/microvg/VectorFont.html#loadFont-java.lang.String->`_. This `VectorFont` object can then be used to draw text strings.
+Then the font has to be loaded in a `VectorFont` object with a call to `ej.microvg.VectorFont.loadFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#loadFont-java.lang.String->`_. This `VectorFont` object can then be used to draw text strings.
 
 
 Text String Drawing
 -------------------
 
-A string can be drawn in the graphics context with a call to `ej.microvg.VectorGraphicsPainter.drawString() <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html#drawString-ej.microui.display.GraphicsContext-java.lang.String-ej.microvg.VectorFont-float-float-float->`_.
+A string can be drawn in the graphics context with a call to `ej.microvg.VectorGraphicsPainter.drawString() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawString-ej.microui.display.GraphicsContext-java.lang.String-ej.microvg.VectorFont-float-float-float->`_.
 
 The text string height is scalable, and multiple font files can be used in parrallel.
 
@@ -184,7 +184,7 @@ Font files with CBDT/CBLC tables are not supported.
 Metrics and Text Positioning
 ----------------------------
 
-All metrics provided by the `ej.microvg.VectorFont <zzz_javadocurl_zzz/ej/microvg/VectorFont.html>`_ class are given for a specific font size. The font size defines the height to which each character bounding box will be scaled.
+All metrics provided by the `ej.microvg.VectorFont <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html>`_ class are given for a specific font size. The font size defines the height to which each character bounding box will be scaled.
 
 The following figure presents some concepts of font metrics standarts:
 
@@ -192,21 +192,21 @@ The following figure presents some concepts of font metrics standarts:
 	:align: center
 
 
-When a string is drawn with a call to `ej.microvg.VectorGraphicsPainter.drawString() <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html#drawString-ej.microui.display.GraphicsContext-java.lang.String-ej.microvg.VectorFont-float-float-float->`_ or `ej.microvg.VectorGraphicsPainter.drawGradientString() <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html#drawGradientString-ej.microui.display.GraphicsContext-java.lang.String-ej.microvg.VectorFont-float-ej.microvg.Matrix-ej.microvg.LinearGradient-int-ej.microvg.BlendMode-float->`_, the anchor point of the string is the top left corner of the text rendering box. This anchor point is located horizontally on the first pixel of the first drawn glyph and vertically on the max ascent line.
+When a string is drawn with a call to `ej.microvg.VectorGraphicsPainter.drawString() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawString-ej.microui.display.GraphicsContext-java.lang.String-ej.microvg.VectorFont-float-float-float->`_ or `ej.microvg.VectorGraphicsPainter.drawGradientString() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawGradientString-ej.microui.display.GraphicsContext-java.lang.String-ej.microvg.VectorFont-float-ej.microvg.Matrix-ej.microvg.LinearGradient-int-ej.microvg.BlendMode-float->`_, the anchor point of the string is the top left corner of the text rendering box. This anchor point is located horizontally on the first pixel of the first drawn glyph and vertically on the max ascent line.
 
 .. figure:: images/anchorPoint.png
 	:align: center
 	:width: 600px
 
 
-The `ej.microvg.VectorFont.getBaselinePosition() <zzz_javadocurl_zzz/ej/microvg/VectorFont.html#getBaselinePosition-float->`_ method can be used to position the text baseline on a horizontal line.
+The `ej.microvg.VectorFont.getBaselinePosition() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#getBaselinePosition-float->`_ method can be used to position the text baseline on a horizontal line.
 
-The `ej.microvg.VectorFont.getHeight() <zzz_javadocurl_zzz/ej/microvg/VectorFont.html#getHeight-float->`_ method can be used to center a text inside a label, by positionning the anchor point in order to have the same space above and below the text string.
+The `ej.microvg.VectorFont.getHeight() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#getHeight-float->`_ method can be used to center a text inside a label, by positionning the anchor point in order to have the same space above and below the text string.
 
 Two other methods are available to position a known text in a label:
 
-- `ej.microvg.VectorFont.measureStringHeight() <zzz_javadocurl_zzz/ej/microvg/VectorFont.html#measureStringHeight-java.lang.String-float->`_
-- `ej.microvg.VectorFont.measureStringWidth()  <zzz_javadocurl_zzz/ej/microvg/VectorFont.html#measureStringWidth-java.lang.String-float->`_
+- `ej.microvg.VectorFont.measureStringHeight() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#measureStringHeight-java.lang.String-float->`_
+- `ej.microvg.VectorFont.measureStringWidth()  <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#measureStringWidth-java.lang.String-float->`_
 
 These methods return the width and height of a string drawing. They are computed from the width and height of the glyphs composing the string.
 
@@ -225,7 +225,7 @@ These methods can measure a specific glyph width and height using a one characte
 Drawing a Text on a Circle
 --------------------------
 
-The library proposes the drawing of a text on a circle by a call to `ej.microvg.VectorGraphicsPainter.drawStringOnCircle() <zzz_javadocurl_zzz/ej/microvg/VectorGraphicsPainter.html#drawStringOnCircle-ej.microui.display.GraphicsContext-java.lang.String-ej.microvg.VectorFont-float-ej.microvg.Matrix-float-ej.microvg.VectorGraphicsPainter.Direction->`_. The string is rendered as if the baseline of the string was a circle arc. 
+The library proposes the drawing of a text on a circle by a call to `ej.microvg.VectorGraphicsPainter.drawStringOnCircle() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawStringOnCircle-ej.microui.display.GraphicsContext-java.lang.String-ej.microvg.VectorFont-float-ej.microvg.Matrix-float-ej.microvg.VectorGraphicsPainter.Direction->`_. The string is rendered as if the baseline of the string was a circle arc. 
 
 The string direction can be either clockwise or counter clockwise.
 
