@@ -1,7 +1,7 @@
 .. _simulator_options:
 
-Category: Simulator Limits
-==========================
+Group: Advanced Options
+-----------------------
 
 ``OutOfMemory`` errors can occur in several memory sections. To resolve these problems you may need
 to set some system properties to increase these sections. 
@@ -15,9 +15,6 @@ Set a property in the :guilabel:`VM arguments` group following the pattern ``-D[
    :width: 998px
    :height: 551px
 
-
-Group: RAM Size
----------------
 
 Option: Java Heap Size
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -67,10 +64,6 @@ Option: Application Chars Size
 Memory allocated to application interned strings. Application interned strings
 are all the strings interned by the application. Value is in kilobytes.
 
-
-Group: Statics and Methods
---------------------------
-
 Option: Statics Size
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -112,12 +105,6 @@ Option: Thread Stack Size
 *Description*:
 
 Memory space allocated for each thread stack. Value is in kilobytes.
-
-
-
-Group: Icetea Heap Size
------------------------
-
 
 Option: Icetea Heap End
 ^^^^^^^^^^^^^^^^^^^^^^^

@@ -318,6 +318,8 @@ Option(text): Server socket port
 
 Set the Shielded Plug server socket port.
 
+.. include:: sectionSimulatorOptions.rst
+
 .. _category.code.coverage:
 
 Category: Code Coverage
