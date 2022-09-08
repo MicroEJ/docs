@@ -12,11 +12,11 @@ From 13.2.x to 13.3.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the UI Pack 13.3.0: 
+* Set the explicit dependency to the UI Pack 13.3.1: 
 
   .. code-block:: xml
 
-	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.3.0">
+	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.3.1">
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
 

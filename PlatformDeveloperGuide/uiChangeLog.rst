@@ -4,7 +4,30 @@
 Changelog
 =========
 
-13.3.0 - 2022-09-xx
+13.3.1 - 2022-09-xx
+===================
+
+* Compatible with Architecture 7.13.0 or higher.
+ 
+Image Generator
+""""""""""""""" 
+
+**Added**
+
+* Add an :ref:`Application Option <application_options>` to quickly test an Image Generator Extension project.
+
+**Changed**
+
+* Increase logs when application verbosity is enabled. 
+* Check the stride defined by the Image Generator Extension project (throw an error if the value is incompatible with the memory alignment).
+
+**Fixed**
+
+* Fix the external resource generation: they were no longer generated (UI pack 13.3.0 regression). 
+* Fix the twice generation (as internal and external resources) of the custom ``.list`` file images (manage only custom ``.list`` file images as external resources when the prefix of the list file extension starts with ``extern``).
+* Fix the internal limit error when converting images with BPP lower than 8 bits (platforms that define a rule for the image stride through an Image Generator Extension project). 
+
+13.3.0 - 2022-09-02
 ===================
 
 * Compatible with Architecture 7.13.0 or higher.
