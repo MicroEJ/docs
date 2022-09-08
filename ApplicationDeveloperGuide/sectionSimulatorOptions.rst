@@ -6,16 +6,6 @@ Group: Advanced Options
 ``OutOfMemory`` errors can occur in several memory sections. To resolve these problems you may need
 to set some system properties to increase these sections. 
 
-These properties are system properties. They must be set in the :guilabel:`JRE` tab from the application launch configuration. 
-Set a property in the :guilabel:`VM arguments` group following the pattern ``-D[OPTION_KEY]>=[OPTION_VALUE]``
-
-
-.. figure:: images/architecture_options/img24.png
-   :align: center
-   :width: 998px
-   :height: 551px
-
-
 Option: Java Heap Size
 ^^^^^^^^^^^^^^^^^^^^^^
 

@@ -42,7 +42,9 @@ To set an option in a launcher, perform the following steps:
 1. In MicroEJ SDK, select :guilabel:`Run` > :guilabel:`Run Configurations...` menu,
 2. Select the launcher of the application under :guilabel:`MicroEJ Application` or create a new one,
 3. Select the :guilabel:`Configuration` tab,
-4. Find the desired option and set it to the desired value.
+4. Find the desired option and set it to the desired value. If the option does not appear in the page, there are two cases:
+   - the option has been introduced in a newer Architecture version,
+   - the option is an advanced option. It is set using a system property in the :guilabel:`JRE Tab`. See the :ref:`JRE Tab <launch_jre_tab>` section for more details.
 
 It is recommended to index the launcher configuration to your version control system. To export launcher options to the filesystem, perform the following steps:
 
