@@ -1,114 +1,116 @@
 .. _simulator_options:
 
-Group: Advanced Options
------------------------
+Group: Advanced Simulation Options
+----------------------------------
 
-``OutOfMemory`` errors can occur in several memory sections. To resolve these problems you may need
-to set some system properties to increase these sections. 
+When running large applications, the Simulator can abruptly reach a memory limit with the following trace:
 
-Option: Java Heap Size
-^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: console
 
+   [...] An error message [...]
+   "Internal limits reached. Please contact support@microej.com"
+   See error log file: /tmp/microej/s3/s3_1616489929186.log
+
+
+Depending on the error message, one of the following option must be set to increase the size of the memory area which is full.
+
+Option: Objects Heap Size
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*Error Message*: ``java.lang.OutOfMemoryError`` exception thrown
 
 *Option Name*: ``S3.JavaMemory.HeapSize``
 
-*Default value*: ``4096``
+*Default value*: ``4096`` (kilobytes)
 
 *Description*:
 
-Heap Size allocated by the Simulator. It is used to allocate object on Java Heap,
-but also immutable objects. It thus must be at least equal to the sum of option_java_heap_ 
-and option_immortal_heap_. Value is in kilobytes.
-
+This memory area contains any kind of objects (regular, immortal and immutable objects). 
+If you get a ``java.lang.OutOfMemoryError`` exception but your Java Heap is not full, most likely you should augment this option.
+It must be greater than the sum of :ref:`Java Heap <option_java_heap>` and :ref:`Immortal Heap <option_immortal_heap>`.
 
 Option: System Chars Size
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+*Error Message*: ``Failed to allocate internString.``
 
 *Option Name*: ``S3.JavaMemory.SystemCharsSize``
 
-*Default value*: ``100``
-
-*Launchscripts value*: ``1024``
-
-*Recommended value*: ``3000``
+*Default value*: ``1024`` (kilobytes)
 
 *Description*:
 
-Memory allocated to system interned strings. System interned strings are all
-the strings interned by the debugger. Value is in kilobytes.
+This memory area contains system interned strings. System interned strings are likely allocated by the debugger.
+If you get a ``Failed to allocate internString.`` message while debugging an Application, most likely you should augment this option.
 
 
 Option: Application Chars Size
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+*Error Message*: ``Failed to allocate internString.``
 
 *Option Name*: ``S3.JavaMemory.ApplicationCharsSize``
 
-*Default value*: ``250``
-
-*Launchscripts value*: ``4096``
+*Default value*: ``4096`` (kilobytes)
 
 *Description*:
 
-Memory allocated to application interned strings. Application interned strings
-are all the strings interned by the application. Value is in kilobytes.
-
-Option: Statics Size
-^^^^^^^^^^^^^^^^^^^^
-
-
-*Option Name*: ``S3.JavaMemory.StaticsSize``
-
-*Default value*: ``200``
-
-*Description*:
-
-Memory space allocated for statics. Value is in kilobytes.
-
+This memory area contains Application interned strings (String literals).
+If you get a ``Failed to allocate internString.`` message while the Simulator is starting the Application, most likely you should augment this option.
 
 Option: Methods Size
 ^^^^^^^^^^^^^^^^^^^^
 
+*Error Message*: ``Failed to allocate method's code.``
 
 *Option Name*: ``S3.JavaMemory.MethodsSize``
 
-*Default value*: ``1500``
-
-*Launchscripts value*: ``10000``
-
-*Recomended value*: ``20000``
+*Default value*: ``10000`` (kilobytes)
 
 *Description*:
 
-Memory space allocated for methods. Value is in kilobytes.
+This memory area contains loaded methods code.
 
 
 Option: Thread Stack Size
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+*Error Message*: ``The simulator has encountered a stack overflow error while analyzing method [...]``
 
 *Option Name*: ``S3.JavaMemory.ThreadStackSize``
-
-*Default value*: ``300``
+ 
+*Default value*: ``300`` (kilobytes)
 
 *Description*:
 
-Memory space allocated for each thread stack. Value is in kilobytes.
+This memory area contains all Application threads stacks.
 
 Option: Icetea Heap End
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+*Error Message*: ``S3 internal heap is full.``
 
 *Option Name*: ``IceteaRuntimeSupport.S3.HeapEnd``
 
-*Default value*: ``40000000``
-
-*Recomended value*: ``60000000``
+*Default value*: ``64000000`` (bytes)
 
 *Description*:
 
-Internal heap end address used by the Simulator to manage its own memory. It is an adress in bytes.
+This is the overall Simulator memory limit. It includes fixed sizes internal structures and all memory areas.
+The value must be greater than the size of the memory areas that can be parameterized above.
+
+Option: Symbol Table Size
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*Error Message*: ``Symbols table area is full.``
+
+*Option Name*: ``S3.SymbolTable.MaxNbState``
+
+*Default value*: ``500000``
+
+*Description*:
+ 
+This is the number of symbols that can be handled by the internal symbol table (any kind of names: class names, method names, ...).
 
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
