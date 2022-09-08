@@ -126,13 +126,13 @@ This file (a header file with some C defines) enables (or disables) and configur
 Library: Freetype
 =================
 
-The library Freetype compatible with MicroEJ is packaged in a C module: `<https://repository.microej.com/modules/com/microej/clibrary/thirdparty/freetype>`_.
+The library Freetype compatible with MicroEJ is packaged in a C module: `<zzz_devrepourl_zzz/com/microej/clibrary/thirdparty/freetype>`_.
 This C module provides a fork of Freetype 2.11.0.
 
 Library: Harfbuzz
 =================
 
-The library Harfbuzz compatible with MicroEJ is packaged in a C module `<https://repository.microej.com/modules/com/microej/clibrary/thirdparty/harfbuzz>`_. 
+The library Harfbuzz compatible with MicroEJ is packaged in a C module `<zzz_devrepourl_zzz/com/microej/clibrary/thirdparty/harfbuzz>`_. 
 This C module provides a fork of Harfbuzz 4.2.1.
 
 .. _section_vg_c_module_microvg_vglite:
