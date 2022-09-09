@@ -12,7 +12,7 @@ When running large applications, the Simulator can abruptly reach a memory limit
    See error log file: /tmp/microej/s3/s3_1616489929186.log
 
 
-Depending on the error message, one of the following option must be set to increase the size of the memory area which is full.
+Depending on the error message, one of the following options must be set to increase the size of the memory area which is full.
 
 Option: Objects Heap Size
 ^^^^^^^^^^^^^^^^^^^^^^^^^
