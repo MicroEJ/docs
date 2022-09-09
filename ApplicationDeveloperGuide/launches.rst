@@ -68,8 +68,8 @@ verbose options (advanced debug purpose options).
 Configuration Tab
 -----------------
 
-The next tab is the :guilabel:`Configuration` tab. This tab contains all
-platform-specific options.
+The next tab is the :guilabel:`Configuration` tab. This tab shows the available
+:ref:`Application options <application_options>`.
 
 .. figure:: images/configurationTab.png
    :alt: Configuration Tab
@@ -78,6 +78,8 @@ platform-specific options.
    :height: 640px
 
    Configuration Tab
+
+.. _launch_jre_tab:
 
 JRE Tab
 -------
@@ -94,6 +96,12 @@ are typically used to increase memory spaces:
    ``-XX:PermSize=256M -XX:MaxPermSize=256M`` options.
 
 -  To set thread stack space to 512MB, set the ``-Xss512M`` option.
+
+-  To set an :ref:`advanced Application option <define_option_in_launcher>`, declare a system property with the following pattern ``-D[OPTION_KEY]>=[OPTION_VALUE]``
+  
+   .. figure:: images/jreTab.png
+      :align: center
+      :scale: 100%
 
 .. _launch_source_tab:
 
