@@ -872,25 +872,66 @@ If the following message appears when resolving module dependencies:
 .. code:: console
          
    HttpClientHandler: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target url=[artifactory address]
-         
-The server may use a self-signed certificate that has to be added to the JRE trust store that is running MicroEJ Module Manager. Here is a way to do it: 
-         
-#. Install `Keystore Explorer <http://keystore-explorer.org/downloads.html>`_,
-#. Start Keystore Explorer, and open file ``[JRE_HOME]/lib/security/cacerts`` or ``[JDK_HOME]/jre/lib/security/cacerts`` with the password ``changeit``. You may not have the right to modify this file. Edit rights if needed before opening it,
-#. Click on :guilabel:`Tools`, then :guilabel:`Import Trusted Certificate`,
-#. Select your certificate,
-#. Save the ``cacerts`` file.
 
-If the problem still occurs, add the following option to enable SSL protocol traces:
+This can be raised in several cases, such as:
 
-      .. code-block:: shell
-   
-         -Djavax.net.debug=all
+- an artifact repository configured in the MicroEJ Module Manager settings using a self-signed SSL certificate or a SSL certificate not trusted by the JDK.
+- the requests to an artifact repository configured in the MicroEJ Module Manager settings are redirected to a proxy server using a SSL certificate not trusted by the JDK.
 
-This is useful to detect advanced errors such as:
+In all cases, the SSL certificate (used by the artifact repository server or the proxy) must be added to the JDK trust store that is running MicroEJ Module Manager.
+Ask your System Administrator, or retrieve the SSL certificate and add it to the JDK trust store:
 
-- invalid certificate chain: one of root or intermediate certificate may be missing in the JRE/JDK truststore.
-- TLS protocol negotiation issues.
+- on Windows
+
+  #. Install `Keystore Explorer <http://keystore-explorer.org/downloads.html>`_,
+  #. Start Keystore Explorer, and open file ``[JRE_HOME]/lib/security/cacerts`` or ``[JDK_HOME]/jre/lib/security/cacerts`` with the password ``changeit``.
+     You may not have the right to modify this file. Edit rights if needed before opening it,
+  #. Click on :guilabel:`Tools`, then :guilabel:`Import Trusted Certificate`,
+  #. Select your certificate,
+  #. Save the ``cacerts`` file.
+
+- on Linux/macOS
+
+  #. Open a terminal,
+  #. Make sure the JDK's ``bin`` folder is in the ``PATH`` environment variable,
+  #. Execute the following command::
+
+      keytool -importcert -v -noprompt -trustcacerts -alias myAlias -file /path/to/the/certificate.pem -keystore /path/to/the/truststore -storepass changeit
+
+If the problem still occurs, set the ``javax.net.debug`` property to ``all`` to enable SSL protocol traces:
+
+- when using the MMM CLI, add the property in the command line with: ``-Djavax.net.debug=all``
+- when using the :guilabel:`Build Module` button in the SDK, add the property in the MicroEJ Module Manager options as described in the section :ref:`mmm_options`
+- when resolving the dependencies on a project in the SDK with the button :guilabel:`Ivy` > :guilabel:`Resolve`, 
+  add the following line at the end of the file ``MicroEJ-SDK.ini`` located at the root of the SDK installation:
+
+   .. code-block:: shell
+
+      -Djavax.net.debug=all
+
+  and start the SDK from a terminal.
+
+In all cases, such logs should appear in the terminal or in the SDK console:
+
+   .. code-block:: shell
+
+      ...
+      javax.net.ssl|DEBUG|01|main|2022-09-09 18:22:20.828 CEST|SSLContextImpl.java:428|System property jdk.tls.client.cipherSuites is set to 'null'
+      javax.net.ssl|DEBUG|01|main|2022-09-09 18:22:20.871 CEST|SSLCipher.java:464|jdk.tls.keyLimits:  entry = AES/GCM/NoPadding KeyUpdate 2^37. AES/GCM/NOPADDING:KEYUPDATE = 137438953472
+      javax.net.ssl|DEBUG|01|main|2022-09-09 18:22:20.892 CEST|SSLContextImpl.java:402|Ignore disabled cipher suite: TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA
+      ...
+
+There should be a trace at the beginning which indicates the path of the truststore used by the JDK::
+
+   javax.net.ssl|FINE|01|main|2022-09-05 14:34:38.631 CEST|TrustStoreManager.java:112|trustStore is: /path/to/the/truststore
+
+The error very probably occurs during the handshake phase of the SSL negotiation.
+There should be the following trace before the error::
+
+   Consuming server Certificate handshake message
+
+The traces below this one indicates the SSL certificate (or the SSL certificates chain) presented by the server.
+This certificate or one of the root or intermediate certificates must be added in the JDK truststore as explained previously.
 
 Target "simulator:run" does not exist
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
