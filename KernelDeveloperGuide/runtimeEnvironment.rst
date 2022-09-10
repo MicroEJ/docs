@@ -155,14 +155,14 @@ Extend a Runtime Environment
 ----------------------------
 
 In a Kernel, Foundation and Add-On libraries can be extended by adding new methods to their existing classes.
-For example, it allows to add new methods to the class ``java.lang.String`` of the module ``ej.api#edc``.
+For example, it allows to add new methods to the class `java.lang.String`_ of the module ``ej.api#edc``.
 This is done thanks to the `Class Extender tool <https://repository.microej.com/modules/com/microej/tool/class-extender/>`_.
 This tool works at binary level and is able to inject methods from one class to another.
 Extensions can thus be independently compiled and be retrieved by the Kernel and applied during a Multi-Sandbox Firmware build.
 
 To make the extensions available to Application developers, the Runtime Environment has to be extended too. 
 
-The following diagram illustrates the process of extending the default `String <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html>`_ class from :ref:`[EDC] <runtime_edc>` from a Kernel developer point of view:
+The following diagram illustrates the process of extending the default `java.lang.String`_ class from :ref:`[EDC] <runtime_edc>` from a Kernel developer point of view:
 
 .. image:: png/graph_build_string_methods.png
    :align: center
@@ -174,7 +174,7 @@ The extension must be applied in 2 locations:
       The custom Runtime Environment must contain the following element:
 
       - the API to extend, as a dependency. 
-        Here this is the EDC Foundation Library API, which contains the ``java.lang.String`` class we want to extend.
+        Here this is the EDC Foundation Library API, which contains the `java.lang.String`_ class we want to extend.
         We can add it transitively through its kernelapi::
 
          <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6"/>
@@ -215,6 +215,7 @@ The extension must be applied in 2 locations:
       - `com.microej.library.runtime#string-regex <https://repository.microej.com/modules/com/microej/library/runtime/string-regex/>`_: String methods based on Regular Expressions (e.g. ``String.split()``, ``String.replaceAll()``)
       - `com.microej.library.runtime#string-format <https://repository.microej.com/modules/com/microej/library/runtime/string-format/>`_: String formatting utility methods (e.g. ``String.format()``)
 
+.. _java.lang.String: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
