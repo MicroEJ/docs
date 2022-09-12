@@ -24,8 +24,8 @@ Image Generator
 **Fixed**
 
 * Fix the external resource generation: they were no longer generated (UI pack 13.3.0 regression). 
-* Fix the twice generation (as internal and external resources) of the custom ``.list`` file images (manage only custom ``.list`` file images as external resources when the prefix of the list file extension starts with ``extern``).
-* Fix the internal limit error when converting images with BPP lower than 8 bits (platforms that define a rule for the image stride through an Image Generator Extension project). 
+* Fix the duplicate generation (as internal and external resources) of the custom ``.list`` file images (consider only custom ``.list`` file images as external resources when the prefix of the list file extension starts with ``extern``).
+* Fix the internal limit error when converting images with BPP lower than 8 bits (for platforms that define a rule for the image stride through an Image Generator Extension project). 
 
 13.3.0 - 2022-09-02
 ===================

@@ -113,12 +113,18 @@ To do that the Image Generator provides some services to implement. This chapter
 5. Copy the generated jar: ``target~/artifacts/imageGeneratorMyPlatform.jar`` in the platform configuration project folder: ``MyPlatform-configuration/dropins/tools/``
 6. Rebuild the platform.
 
-To quickly test a project without rebuilding the Platform or manually exporting the project, add the add the :ref:`Application Option <application_options>` ``ej.imagegenerator.extension.project`` to the absolute path of an Image Generator Extension project (e.g. ``c:\\mycompany\\myimagegeneratorextension``). 
-The Image Generator will use the specified Image Generator Extension project before the one included by the Platform.
+Advanced: Test the Extension Project
+------------------------------------
 
-.. note:: This feature only works if the Platform has been built with the Image Generator module enabled.
+To quickly test an extension project without rebuilding the Platform or manually exporting the project, add the :ref:`Application Option <application_options>` ``ej.imagegenerator.extension.project`` to the absolute path of an Image Generator Extension project (e.g. ``c:\mycompany\myimagegeneratorextension``). 
+The Image Generator will use the specified Image Generator Extension project instead of the one included in the Platform.
+This feature is useful for locally testing certain changes in the Image Generator Extension project. 
 
-.. warning:: This feature is useful for locally testing certain changes in the Image Generator Extension project. The Platform does not contain these changes. The Platform dropins folder must be updated (and the Platform recompiled) after any changes to the Image Generator Extension project. 
+.. code-block:: console
+
+   -Dej.imagegenerator.extension.project=${project_loc:myimagegeneratorextension}
+
+.. warning:: This feature only works if the Platform has been built with the Image Generator module enabled and the Platform does not contain the changes until a new Platform is built: the Platform dropins folder must be updated after any changes to the Image Generator Extension project. 
 
 .. _section_image_generator_imageio:
 
