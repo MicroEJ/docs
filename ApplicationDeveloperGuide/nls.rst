@@ -3,24 +3,23 @@
 Native Language Support
 =======================
 
-Overview
---------
+Introduction
+------------
 
 Native Language Support (NLS) allows the application to facilitate internationalization.
 It provides support to manipulate messages and translate them in different languages.
 Each message to be internationalized is referenced by a key, which can be used in the application code instead of using the message directly.
 
-Messages must be defined in `PO files <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`_, located in the Classpath of the application (for example in the ``src/main/resources`` folder).
-Here is an example:
+Localization Source Files
+-------------------------
+
+Messages must be defined in localization source files, located in the Classpath of the application (for example in the ``src/main/resources`` folder).
+
+Localization source files can be either `PO files <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`_ or `Android String resources <https://developer.android.com/guide/topics/resources/string-resource>`_.
+
+Here is an example of a PO file:
 
 ::
-
-   msgid ""
-   msgstr ""
-   "Language: en_US\n"
-   "Language-Team: English\n"
-   "MIME-Version: 1.0\n"
-   "Content-Type: text/plain; charset=UTF-8\n"
 
    msgid "Label1"
    msgstr "My label 1"
@@ -28,7 +27,24 @@ Here is an example:
    msgid "Label2"
    msgstr "My label 2"
 
-PO files are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.nls.list`` files (**and** to ``*.externresources.list`` for an external resource, see :ref:`chapter.microej.applicationResources`).
+And here is an example of an Android String resource:
+
+.. code-block:: xml
+
+   <resources>
+      <string name="Label1">My label 1</string>
+      <string name="Label2">My label 2</string>
+   </resources>
+
+.. note::
+
+   When using Android String resources, `string arrays <https://developer.android.com/guide/topics/resources/string-resource#StringArray>`_ are also supported.
+   However, `plurals <https://developer.android.com/guide/topics/resources/string-resource#Plurals>`_ are not supported.
+
+NLS List Files
+--------------
+
+Localization source files are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.nls.list`` files (**and** to ``*.externresources.list`` for an external resource, see :ref:`chapter.microej.applicationResources`).
 
 .. graphviz::
 
@@ -52,56 +68,36 @@ Example:
    com.mycompany.myapp.Labels
    com.mycompany.myapp.Messages
 
-The message can be accessed with a call to `ej.nls.NLS.getMessage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#getMessage-int->`_.
-Example:
-
-.. code-block:: java
-
-   import com.mycompany.myapp.Labels;
-
-   public class MyClass {
-
-      String label = Labels.NLS.getMessage(Labels.Label1);
-
-      ...
-
 .. _nls_usage:
 
 Usage
 -----
 
-For each line, PO files whose name starts with the interface name (``Messages`` and ``Labels``
-in the example) are retrieved from the Classpath and used to generate:
+The `binary-nls module <https://repository.microej.com/modules/com/microej/library/runtime/binary-nls>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the Application project.
 
-- a Java interface with the given FQN, containing a field for each ``msgid`` of the PO files
+::
+
+  <dependency org="com.microej.library.runtime" name="binary-nls" rev="2.4.2"/>
+
+This module includes an Add-On Processor which parses the localization source files.
+For each interface declared in the NLS list files, all the localization source files whose names start with the interface name are used to generate:
+
+- a Java interface with the given FQN, containing a field for each message of the localization source files
 - a NLS binary file containing the translations
 
 So, in the example, the generated interface ``com.mycompany.myapp.Labels`` will gather all the 
-translations from files named ``Labels*.po`` and located in the Classpath.
-PO files are generally suffixed by their locale (``Labels_en_US.po``) but it is only for convenience
-since the suffix is not used, the locale is extracted from the PO file's metadata.
+translations from files named ``Labels*`` and located in any package of the Classpath.
+The names of the localization source files should be suffixed by their locale (for example ``Labels_en_US.po``).
+
+The generation is triggered when building the application or after a change done in any localization source file or ``*.nls.list`` files.
+This allows to always have the Java interfaces up-to-date with the translations and to use them immediately.
 
 Once the generation is done, the application can use the Java interfaces to get internationalized 
 messages, for example:
 
 .. code-block:: java
 
-   import com.mycompany.myapp.Labels;
-
-   public class MyClass {
-
-      String label = Labels.NLS.getMessage(Labels.Label1);
-
-      ...
-
-The generation is triggered when building the application or after a change done in any PO or ``*.nls.list`` files.
-This allows to always have the Java interfaces up-to-date with the translations and to use them immediately.
-
-The `NLS-PO module <https://repository.microej.com/modules/com/microej/library/runtime/nls-po>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the Application project.
-
-::
-
-  <dependency org="com.microej.library.runtime" name="nls-po" rev="2.2.0"/>
+   String label = Labels.NLS.getMessage(Labels.Label1);
 
 .. _chapter.microej.nlsExternalLoader:
 
