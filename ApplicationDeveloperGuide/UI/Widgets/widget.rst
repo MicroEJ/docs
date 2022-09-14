@@ -1,3 +1,5 @@
+.. _widget_library:
+
 Widget Library
 ==============
 
