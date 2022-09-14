@@ -22,8 +22,8 @@ Unsupported Statements
 
 The following syntaxes are not supported by the MicroEJ JavaScript engine:
 
-- ``with (x) { }`` : the ``with`` statement is not supported in MicroEJ since its usage is not recommended. 
-  See `the reference documentation <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with#ambiguity_contra>`_ for more information.
+- ``with (x) { }`` : the ``with`` statement is not supported in MicroEJ since its usage is not recommended.
+  See `the reference documentation <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with>`_ for more information.
 
 Unsupported Built-in Objects
 ****************************
