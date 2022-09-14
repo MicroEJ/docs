@@ -19,14 +19,14 @@ the SDK offers unique services like hardware simulation and local deployment to 
 
    MicroEJ Application Development Overview
 
-The SDK is composed of the following main elements:
+The integrated environment is composed of the following main elements:
 
-- **SDK Version 5.x**, an Integrated Development Environment (IDE) for writing Applications and building Firmware.
+- **SDK Version 5.x**, an Integrated Development Environment (IDE) for writing and building Applications.
   It is based on Eclipse Java edition and relies on the integrated Java compiler (JDT).
   
   It is also packaged with Eclipse to produce a **SDK Distribution**.
 
-- **MicroEJ Module Manager**, the module and build manager used to compile and package any kind of :ref:`MicroEJ modules natures <module_natures>`.
+- **MicroEJ Module Manager**, the module and build manager used to compile and package any kind of :ref:`modules natures <module_natures>`.
   It provides a Command Line Interface to build modules, especially used in a Continuous Integration environment.
   See :ref:`mmm` section for more details.
 
@@ -59,7 +59,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    licenses
    repository
    github
-   workspace
+   ide
    version
    mmm
    sdkReleaseNotes
