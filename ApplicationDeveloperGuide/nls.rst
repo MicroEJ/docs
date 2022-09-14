@@ -13,7 +13,7 @@ Each message to be internationalized is referenced by a key, which can be used i
 Localization Source Files
 -------------------------
 
-Messages must be defined in localization source files, located in the Classpath of the application (for example in the ``src/main/resources`` folder).
+Messages must be defined in localization source files, located in the Classpath of the application (i.e. in the ``src/main/resources`` folder).
 
 Localization source files can be either `PO files <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`_ or `Android String resources <https://developer.android.com/guide/topics/resources/string-resource>`_.
 
