@@ -10,11 +10,15 @@ Two Kernels built from the same Kernel Application code will not share the same 
 The Kernel UID is used by :ref:`core_engine` to check if an Application can be installed on a Kernel.
 During the :ref:`Application build <soar_build_phases>`, the resulting ``.fo`` file embeds the Kernel UID on which it has been built.
 
-During `Kernel.install() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream->`_, the UID embedded in the ``.fo`` is compared with the Kernel UID.
+During `Kernel.install()`_, the UID embedded in the ``.fo`` is compared with the Kernel UID.
 By default, if both UIDs are equal the Application installation continues. Otherwise it is stopped.
 See also :ref:`feature_portability_control` for ``.fo`` installation on different Kernels.
 
-The Kernel UID can be retrieved at runtime using `Kernel.getInstance() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#getInstance-->`_ `.getUID() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#getUID-->`_.
+The Kernel UID can be retrieved at runtime using `Kernel.getInstance()`_ `.getUID()`_.
+
+.. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
+.. _Kernel.getInstance(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#getInstance--
+.. _.getUID(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#getUID--
 
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 

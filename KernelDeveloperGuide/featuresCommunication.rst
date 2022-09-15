@@ -15,7 +15,7 @@ The Shared Interface mechanism allows to transfer an object instance of
 a Kernel type from one Feature to an other (see :ref:`section.transferable.types` section). 
 
 To do that, the Kernel must register a new Kernel type converter.
-See the `Converter <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Converter.html>`_ class and `Kernel.addConverter() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#addConverter-ej.kf.Converter->`_ method for more details.
+See the `Converter`_ class and `Kernel.addConverter()`_ method for more details.
 
 The table below shows some converters defined in the `com.microej.library.util#kf-util <https://repository.microej.com/modules/com/microej/library/util/kf-util/>`_ library.
 
@@ -64,6 +64,9 @@ The table below shows some converters defined in the `com.microej.library.util#k
    -  - `java.util.Map<K,V> <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Map.html>`_
       - `MapConverter <https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/MapConverter.html>`_
       - Clone by copy with recursive keys and values conversion
+
+.. _Converter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Converter.html
+.. _Kernel.addConverter(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#addConverter-ej.kf.Converter-
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

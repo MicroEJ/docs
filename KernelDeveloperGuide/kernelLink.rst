@@ -45,7 +45,7 @@ It produces a ``.kdat`` file that will be used to link the Sandboxed Application
    Kernel Metadata Generator
 
 The ``.kdat`` file is optimized for size. When linking a Sandboxed Application ``.fso`` file, only the required metadata will be loaded in Java heap.
-It will be loaded from a standard `InputStream <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html>`_,
+It will be loaded from a standard `InputStream`_,
 so that it can be stored to a non byte-addressable memory.
 
 .. note::
@@ -53,6 +53,8 @@ so that it can be stored to a non byte-addressable memory.
    The Kernel Metadata ``.kdat`` file can also be integrated in a Firmware executable file using post-link tools such as binutils objcopy,
    provided a dedicated section has been reserved by the third-party linker.
 
+
+.. _InputStream: https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html
 
 .. _firmware_linker:
 
@@ -82,7 +84,9 @@ It is also available as a :ref:`MicroEJ Tool <MicroEJToolsSection>` named :guila
    
 .. warning::
 
-   Features linked using the Firmware Linker tool cannot be dynamically uninstalled using `Kernel.uninstall(Feature) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#uninstall-ej.kf.Feature->`_ method.
+   Features linked using the Firmware Linker tool cannot be dynamically uninstalled using `Kernel.uninstall(Feature)`_ method.
+
+.. _Kernel.uninstall(Feature): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#uninstall-ej.kf.Feature-
 
 .. _feature_portability_control:
 
