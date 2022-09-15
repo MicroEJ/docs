@@ -42,7 +42,7 @@ Integration
 
 - Added support for Windows 11.
 - Added License Manager support for macOS AArch64 (M1).
-- Removed warning when launching Application or Tools with JDK 11 (`Warning: Nashorn engine is planned to be removed from a future JDK release`).
+- Removed warning when launching Applications or Tools with JDK 11 (`Warning: Nashorn engine is planned to be removed from a future JDK release`).
 
 SOAR
 ~~~~
