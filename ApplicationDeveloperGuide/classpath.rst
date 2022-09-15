@@ -97,13 +97,12 @@ Application Entry Points
 MicroEJ Application entry point declaration differs depending on the
 application kind:
 
--  In case of a MicroEJ Standalone Application, it is a class that
-   contains a ``public static void main(String[])`` method, declared
-   using the option ``application.main.class``.
+- In case of a Standalone Application, it is a class that
+  contains a ``public static void main(String[])`` method, declared
+  using the option ``application.main.class``.
 
--  In case of a MicroEJ Sandboxed Application, it is a class that
-   implements `ej.kf.FeatureEntryPoint`_, declared in the
-   ``Application-EntryPoint`` entry in ``META-INF/MANIFEST.MF`` file.
+- In case of a Sandboxed Application, it is a class that implements `ej.kf.FeatureEntryPoint`_, 
+  declared using the ``entryPoint`` property in the ``.kf`` file in the ``src/main/resources/`` folder.
 
 
 .. _ej.kf.FeatureEntryPoint: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html
