@@ -189,6 +189,11 @@ ESP32
      - `simikou2 <https://repository.microej.com/modules/com/microej/architecture/ESP32/GNUv52b96_xtensa-esp32-psram/simikou2/>`__
      - ``7.12.2`` or higher
    * - GCC (ESP-IDF)
+     - 8.2.0 (crosstool-NG esp-2019r2)
+     - ``-mlongcalls``
+     - `simikou3 <https://repository.microej.com/modules/com/microej/architecture/ESP32/GNUv82_xtensa-esp32s2/simikou3/>`__
+     - ``7.16.0`` or higher
+   * - GCC (ESP-IDF)
      - 5.2.0 (crosstool-ng-1.22.0-97-gc752ad5)
      - ``-mlongcalls -mfix-esp32-psram-cache-issue``
      - ``simikou4``
