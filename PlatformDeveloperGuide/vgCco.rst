@@ -12,7 +12,6 @@ Some are generic, and some are platform dependent (more precisely: GPU dependent
 The generic modules provide header files to be extended by the specific modules. 
 The generic C modules are available on the :ref:`central_repository` and the specific C modules on the :ref:`developer_repository`.
 
-The following picture illustrates the available C modules and their relations. 
 The following picture illustrates the available C modules and their relations for an implementation that uses:
 
 * Freetype library for the font renderer and the font layouter in simple layout mode.
