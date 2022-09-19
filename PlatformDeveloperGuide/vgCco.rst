@@ -57,7 +57,9 @@ It implements a set of drawings over the official Vivante VGLite library (that t
 
 This C module also provides a set of header files (and their implementations) to manipulate some MicroUI concepts over the VGLite library: image management, path format, etc.: ``display_vglite.h`` and ``vglite_path.h``.
 
-This C module is available on the Developer Repository: XXXX_zzzz_link.
+This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microui-vglite`_.
+
+.. _com.microej.clibrary.llimpl#microui-vglite: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite
 
 Library: Vivante VGLite
 =======================
@@ -77,7 +79,9 @@ The VG Pack is an extension of the UI Pack.
 The VG Pack's header files require the UI Pack's header files to manipulate the MicroUI concepts.
 Consequently, the VG Pack must be installed on a platform that fetches a UI Pack.
 
-The VG Pack and its header files are available on the Central Repository: XXXX_zzzz_link.
+The VG Pack and its header files are available on the :ref:`central_repository`: `com.microej.pack.vg#vg-pack`_.
+
+.. _com.microej.pack.vg#vg-pack: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/
 
 .. _section_vg_c_module_microvg:
 
@@ -94,7 +98,9 @@ This generic C module provides an implementation of MicroVG concepts: matrix, pa
 * Gradient (see Gradient module's :ref:`section_vg_gradient_llapi`): a generic implementation that manages the gradient buffer's life cycle and dispatches the gradient encoding to a 3rd-party header file ``microvg_gradient.h``.
 * Font (see Font module's :ref:`section_vg_font_llapi`): an implementation of vector font over Freetype: open font file and retrieve font's characteristics.
 
-This C module is available on the Central Repository: XXXX_zzzz_link.
+This C module is available on the :ref:`central_repository`: `com.microej.clibrary.llimpl#microvg`_.
+
+.. _com.microej.clibrary.llimpl#microvg: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microvg/
 
 Dependencies
 ------------
@@ -126,13 +132,19 @@ This file (a header file with some C defines) enables (or disables) and configur
 Library: Freetype
 =================
 
-The library Freetype compatible with MicroEJ is packaged in a C module: `<zzz_devrepourl_zzz/com/microej/clibrary/thirdparty/freetype>`_.
+The library Freetype compatible with MicroEJ is packaged in a C module on the :ref:`developer_repository`: `com.microej.clibrary.thirdparty#freetype`_.
+
+.. _com.microej.clibrary.thirdparty#freetype: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/freetype/
+
 This C module provides a fork of Freetype 2.11.0.
 
 Library: Harfbuzz
 =================
 
-The library Harfbuzz compatible with MicroEJ is packaged in a C module `<zzz_devrepourl_zzz/com/microej/clibrary/thirdparty/harfbuzz>`_. 
+The library Harfbuzz compatible with MicroEJ is packaged in a C module on the :ref:`developer_repository`: `com.microej.clibrary.thirdparty#harfbuzz`_.
+
+.. _com.microej.clibrary.thirdparty#harfbuzz: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/harfbuzz/
+
 This C module provides a fork of Harfbuzz 4.2.1.
 
 .. _section_vg_c_module_microvg_vglite:
@@ -150,7 +162,9 @@ The implementation requires:
 * the Freetype library,
 * the Vivante VGLite library.
 
-This C module is available on the Developer Repository: `<zzz_devrepourl_zzz/com/microej/clibrary/llimpl/microvg-vglite>`_.
+This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microvg-vglite`_.
+
+.. _com.microej.clibrary.llimpl#microvg-vglite: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/
 
 Compatibility
 =============
