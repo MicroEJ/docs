@@ -1,6 +1,6 @@
 
 
-.. |UIPACKVERSION| replace:: 13.3.0
+.. |UIPACKVERSION| replace:: 13.3.1
 
 ..
    Copyright 2021-2022, MicroEJ Corp. Confidentiality and Intellectual Property. All rights reserved. 
