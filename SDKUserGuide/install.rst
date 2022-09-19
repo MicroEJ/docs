@@ -24,13 +24,63 @@ Installation process
 --------------------
 
 - Launch the installer and click on `Next` button.
+
+
+.. figure:: images/installation_process/welcome_screen.png
+   :alt: Welcome screen
+   :align: center
+
+   Welcome to the installer
+
 - Be aware of the licensing agreement.
 - Select `I accept the terms of this license agreement.`. Click on `Next` button.
+
+.. figure:: images/installation_process/license_screen.png
+   :alt: License screen
+   :align: center
+
+   Accept the terms of this license agreement
+
 - Select the installation path of your SDK. By default it is ``C:/Program Files/MicroEJ/MicroEJ-SDK-{SDK_VERSION}``. Click on `Next` button.
+
+.. figure:: images/installation_process/installation_path_screen.png
+   :alt: Installation path screen
+   :align: center
+
+   Choose the installation path
+
 - Click on `OK` button to confirm the installation path.
+
+
+.. figure:: images/installation_process/installation_validation_screen.png
+   :alt: Confirm path screen
+   :align: center
+
+   Confirm your installation path
+
 - Wait until the installation is done. Click on `Next` button.
+
+.. figure:: images/installation_process/installation_progress_screen.png
+   :alt:  Installation screen
+   :align: center
+
+   Installation in progress
+
 - Select options depending on your own preferences. Click on `Next` button.
+
+.. figure:: images/installation_process/options_screen.png
+   :alt: Options screen
+   :align: center
+
+   Select the options
+
 - The installation has completed successfully. Click on `Done` button.
+
+.. figure:: images/installation_process/installation_finished_screen.png
+   :alt: End screen
+   :align: center
+
+   Your installation has completed successfully
 
 The SDK is now installed on your computer. 
 
