@@ -437,6 +437,194 @@ This UI extension provides support to efficiently implement the set of methods t
 
 -  ``LLUI_LED_IMPL_setIntensity``: Set the intensity of an LED using its ID.
 
+.. _LLVG-API-SECTION:
+
+LLVG: VectorGraphics
+====================
+
+Principle
+---------
+
+The :ref:`VG Pack <pack_vg>` provides a Low Level API for initializing the Vector Graphics engine. The file ``LLVG_impl.h``, which comes with the VG Pack, defines the API headers to be implemented.
+
+Naming Convention
+-----------------
+
+The Low Level APIs rely on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
+
+Initialization
+--------------
+
+The function ``LLVG_IMPL_initialize`` is the first native function called by the MicroVG implementation.
+It allows to initialize all C components: GPU initialization, Font engine, heap management, etc.
+
+.. _LLVG-MATRIX-API-SECTION:
+
+LLVG_MATRIX: Matrix
+===================
+
+Principle
+---------
+
+The :ref:`Matrix module <section_vg_matrix>` provides Low Level APIs for manipulating matrices. The file ``LLVG_MATRIX_impl.h``, which comes with the Matrix module, defines the API headers to be implemented.
+
+Naming Convention
+-----------------
+
+The Low Level APIs rely on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
+
+Implementation
+--------------
+
+The matrix functions are divided in four groups:
+
+1. identity and copy: fill an identity matrix or copy a matrix to another one.
+2. setXXX: erase the content of the matrix by an operation (translate, rotation, scaling, concatenate).
+3. xxx (no prefix): perform an operation with the matrix as first argument: ``M' = M * xxx(x, y)`` where ``xxx`` is the operation (translate, rotation, scaling, concatenate).
+4. postXXX: perform an operation with the matrix as second argument: ``M' = xxx(x, y) * M`` where ``xxx`` is the operation (translate, rotation, scaling, concatenate).
+
+.. _LLVG-PATH-API-SECTION:
+
+LLVG_PATH: Vector Path
+======================
+
+Principle
+---------
+
+The :ref:`Path module <section_vg_path>` provides Low Level APIs for creating paths in platform specific format. The file ``LLVG_PATH_impl.h``, which comes with the Path module, defines the API headers to be implemented.
+
+Naming Convention
+-----------------
+
+The Low Level APIs rely on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
+
+Creation
+--------
+
+The header file ``LLVG_PATH_impl.h`` allows to convert a MicroVG library format path in a buffer that represents the same vectorial path in the platform specific format (generally GPU format).
+
+The first function called is ``LLVG_PATH_IMPL_initializePath``, which allows the implementation to initialize the path buffer.
+The buffer is allocated in the Java heap and its size is fixed by the MicroVG implementation.
+When the buffer is too small for the platform specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
+
+The next steps consist in appending some commands in the path buffer.
+The command encoding depends on the platform specific format.
+When the buffer is too small to add the new command, the implementation has to return a value that indicates the number of bytes the array must be enlarged with. 
+
+List of commands:
+
+* ``LLVG_PATH_CMD_CLOSE``: MicroVG "CLOSE" command.
+* ``LLVG_PATH_CMD_MOVE``: MicroVG "MOVE ABS" command.
+* ``LLVG_PATH_CMD_MOVE_REL``: MicroVG "MOVE REL" command.
+* ``LLVG_PATH_CMD_LINE``: MicroVG "LINE ABS" command.
+* ``LLVG_PATH_CMD_LINE_REL``: MicroVG "LINE REL" command.
+* ``LLVG_PATH_CMD_QUAD``: MicroVG "QUAD ABS" command.
+* ``LLVG_PATH_CMD_QUAD_REL``: MicroVG "QUAD REL" command.
+* ``LLVG_PATH_CMD_CUBIC``: MicroVG "CUBIC ABS" command.
+* ``LLVG_PATH_CMD_CUBIC_REL``: MicroVG "CUBIC REL" command.
+
+List of operations:
+
+* ``LLVG_PATH_IMPL_appendPathCommand1``: Adds a command with 1 point parameter in the array.
+* ``LLVG_PATH_IMPL_appendPathCommand2``: Adds a command with 2 points parameter in the array.
+* ``LLVG_PATH_IMPL_appendPathCommand3``: Adds a command with 3 points parameter in the array.
+ 
+A path is automatically closed by the MicroVG implementation (by adding the command ``LLVG_PATH_CMD_CLOSE``).
+A path can be reopened (function ``LLVG_PATH_IMPL_reopenPath``), that consists in removing the last added command (``LLVG_PATH_CMD_CLOSE`` command) from the buffer.
+
+Merging
+-------
+
+The function ``LLVG_PATH_IMPL_mergePaths`` allows to merge two paths in a third one.
+The two paths must have the same list of commands.
+The resulting path's points are calculated based on the source paths points coordinates and a ratio.
+
+* If ratio = 0, resulting point will equal the first path point.
+* If ratio = 1, resulting point will equal the second path point.
+
+Drawing
+-------
+
+The header file ``LLVG_PATH_PAINTER_impl.h`` provides the functions called by the application via VectorGraphicsPainter to draw a path.
+
+- A path can be drawn with a 32-bit color (ARGB8888): ``LLVG_PATH_PAINTER_IMPL_drawPath``.
+- A path can be drawn with a :ref:`linear gradient <section_vg_gradient>`: ``LLVG_PATH_PAINTER_IMPL_drawGradient``.
+
+The drawing destination is symbolized by a MicroUI GraphicsContext: a pointer to a ``MICROUI_GraphicsContext`` instance. 
+Like MicroUI Painter natives, the implementation has to :ref:`synchronize the drawings <display_drawing_native>`  with the MicroUI Graphics Engine.
+
+.. _LLVG-GRADIENT-API-SECTION:
+
+LLVG_GRADIENT: Vector Linear Gradient
+=====================================
+
+Principle
+---------
+
+The :ref:`Gradient module <section_vg_gradient>` provides Low Level APIs for creating linear gradients in platform specific format. The file ``LLVG_GRADIENT_impl.h``, which comes with the Gradient module, defines the API headers to be implemented.
+
+Naming Convention
+-----------------
+
+The Low Level APIs rely on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
+
+Implementation
+--------------
+
+Only one function has to be implemented: ``LLVG_GRADIENT_IMPL_initializeGradient``.
+It consists in encoding the MicroVG LinearGradient in a buffer that represents the linear gradient in platform specific format (generally GPU format).  
+
+This function allows the implementation to initialize the gradient buffer.
+The buffer is allocated in the Java heap and its size is fixed by the MicroVG implementation.
+When the buffer is too small for the platform specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
+
+.. _LLVG-FONT-API-SECTION:
+
+LLVG_FONT: Vector Font
+======================
+
+Principle
+---------
+
+The :ref:`Font module <section_vg_font>` provides Low Level APIs for decoding fonts (``LLVG_FONT_impl.h``) and rendering texts (``LLVG_FONT_PAINTER_impl.h``). Both header files, which come with the Font module, define the API headers to be implemented.
+
+Naming Convention
+-----------------
+
+The Low Level APIs rely on functions that must be implemented. The naming convention for such functions is that their names match the ``*_IMPL_*`` pattern.
+
+Initialization
+--------------
+
+The first function called is ``LLVG_FONT_IMPL_load_font``, which allows the driver to open a font file from its name. 
+This function takes a parameter to configure the text rendering engine:
+
+- Simple layout: uses the glyph advance metrics and the font kerning table.
+- Complex layout: uses the font GPOS and GSUB tables.
+
+See `VectorFont <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html>`_ for more information.
+
+The implementation must manage its own heap to keep the font opened.
+The font's data are disposed by a call to ``LLVG_FONT_IMPL_dispose``.
+
+Font Characteristics
+--------------------
+
+The other functions in ``LLVG_FONT_PAINTER_impl.h`` consist in retrieving some font characteristics according a text and a font size: string width, string height, baseline, etc.
+
+See `VectorFont <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html>`_ for more information.
+
+Drawing
+-------
+
+The header file ``LLVG_FONT_PAINTER_impl.h`` provides the functions called by the application via VectorGraphicsPainter to draw a path.
+
+- A string can be drawn with a 32-bit color (ARGB8888): ``LLVG_FONT_PAINTER_IMPL_draw_string``.
+- A string can be drawn with a :ref:`linear gradient <section_vg_gradient>`: ``LLVG_FONT_PAINTER_IMPL_draw_string_gradient``.
+- A string can be draw on a circle: ``LLVG_FONT_PAINTER_IMPL_draw_string_on_circle`` and ``LLVG_FONT_PAINTER_IMPL_draw_string_on_circle_gradient``.
+
+The drawing destination is symbolized by a MicroUI GraphicsContext: a pointer to a ``MICROUI_GraphicsContext`` instance. 
+Like MicroUI Painter natives, the implementation has to :ref:`synchronize the drawings <display_drawing_native>`  with the MicroUI Graphics Engine.
 
 .. _LLNET-API-SECTION:
 

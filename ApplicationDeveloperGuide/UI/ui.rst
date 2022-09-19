@@ -22,6 +22,7 @@ The following schema shows the overall architecture and modules:
    :maxdepth: 2
 
    MicroUI/index
+   MicroVG/index
    MWT/index
    Widgets/index
    Advanced/index

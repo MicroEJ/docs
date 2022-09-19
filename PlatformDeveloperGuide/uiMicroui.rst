@@ -79,6 +79,8 @@ The thread cannot be stopped with a Java exception: the exceptions are always ch
 
 When an exception occurs in a user method called by the internal thread (for instance `render() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Displayable.html#render-ej.microui.display.GraphicsContext->`_), the current ``UncaughtExceptionHandler`` receives the exception. When no exception handler is set, a default handler prints the stack trace.
 
+.. _section_microui_native_calls:
+
 Native Calls
 ============
 

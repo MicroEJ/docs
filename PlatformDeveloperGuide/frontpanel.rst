@@ -387,12 +387,18 @@ The properties file must / can contain the following properties:
 -  ``fpFile.name`` [optional, default value is "" (*empty*)]: Defines
    the Front Panel file (\*.fp) the application has to use by default when several ``fp`` files are available in project.
 
-To test a Front Panel project without rebuilding the platform or without exporting manually the project, add the :ref:`Application Option <application_options>` ``ej.fp.project`` to a Front Panel Project absolute path (e.g. ``c:\\mycompany\\myfrontpanel.fp``). The Simulator will use the specified Front Panel project prior to the one included by the Platform. 
+Advanced: Test the Front Panel Project
+--------------------------------------
 
-.. note:: This feature works only if the Platform has been built with the Front Panel module enabled.
+To quickly test a Front Panel project without rebuilding the Platform or manually exporting the project, add the :ref:`Application Option <application_options>` ``ej.fp.project`` to the absolute path of a Front Panel project (e.g. ``c:\mycompany\myfrontpanel-fp``). 
+The Simulator will use the Front Panel project specified instead of the one included in the Platform. 
+This feature is useful for locally testing some changes in the Front Panel project. 
 
-.. warning:: This feature is useful to test locally some changes in Front Panel project. The Platform does not contain the changes until a new Platform is built.
+.. code-block:: console
 
+   -Dej.fp.project=${project_loc:myfrontpanel-fp}
+
+.. warning:: This feature only works if the Platform has been built with the Front Panel module enabled and the Platform does not contain the changes until a new Platform is built.
 
 Use
 ===
