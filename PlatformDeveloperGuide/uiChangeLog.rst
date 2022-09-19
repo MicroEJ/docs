@@ -4,7 +4,7 @@
 Changelog
 =========
 
-13.3.1 - 2022-09-xx
+13.3.1 - 2022-09-09
 ===================
 
 * Compatible with Architecture 7.13.0 or higher.

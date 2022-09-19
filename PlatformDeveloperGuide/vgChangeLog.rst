@@ -4,8 +4,8 @@
 Changelog
 =========
 
-[1.1.0] - 2022-xxxxxx
-=====================
+[1.1.0] - 2022-09-05
+====================
 
 * Compatible with UI Pack 13.3.0 or higher.
 
@@ -14,7 +14,7 @@ MicroVG Implementation
 
 **Changed**
 
-* Compatible with `MicroVG API 1.1.0 <https://repository.microej.com/modules/ej/api/microvg/1.1.0/>`_.
+* Compatible with `MicroVG API 1.1 <https://repository.microej.com/modules/ej/api/microvg/1.1.0/>`_.
 * Allow loading a VectorFont from external resources. 
 * Change color animation interpolation (match Android formula).
    
