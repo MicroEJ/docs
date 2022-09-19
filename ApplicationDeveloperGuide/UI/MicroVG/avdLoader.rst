@@ -19,7 +19,7 @@ To use the AVD Loader library, add the following dependency to a :ref:`module de
 
 .. note::
 
-   The AVD Loader library requires MicroVG library 1.1.0 and above.
+   The AVD Loader library requires MicroVG library 1.1 and above.
 
 .. _section.avdloader.format:
 

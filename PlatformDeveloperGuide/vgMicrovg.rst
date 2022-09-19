@@ -37,7 +37,7 @@ In the platform configuration's :ref:`module description file <mmm_module_descri
 
 .. code-block:: XML
 
-   <dependency org="com.microej.pack.vg" name="vg-pack" rev="1.1.0" conf="default->default"/>
+   <dependency org="com.microej.pack.vg" name="vg-pack" rev="1.1.1" conf="default->default"/>
 
 The VG Pack will be automatically available after a platform rebuild.
 
