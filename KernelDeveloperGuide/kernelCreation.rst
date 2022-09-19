@@ -83,7 +83,7 @@ Add System Applications
 -----------------------
 
 A MicroEJ Sandboxed Application can be dynamically installed using 
-`Kernel.install() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream->`_ 
+`Kernel.install()`_ 
 or can be directly linked into the Firmware binary at built-time. 
 In this case, it is called a System Application.
 
@@ -105,6 +105,9 @@ declare the dependency with the configuration ``systemapp-fw`` instead of ``syst
 .. code:: xml
 
    <dependency org="com.microej.app.wadapps" name="management" rev="2.2.2" conf="systemapp-fw->application"/>
+
+
+.. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
 
 Build Firmware using Meta Build
 -------------------------------
