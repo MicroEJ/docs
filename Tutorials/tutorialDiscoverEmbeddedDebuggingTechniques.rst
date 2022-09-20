@@ -43,7 +43,7 @@ Events Tracing and Logging
 
 When an application has issues, the first step is to understand what is happening inside the system.
 
-- The `Trace Library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html>`__ is a real-time event recording library. Use it to trace the beginning and the ending of events.
+- The `Trace Library`_ is a real-time event recording library. Use it to trace the beginning and the ending of events.
 
    .. code-block:: java
       :emphasize-lines: 4,9
@@ -66,7 +66,7 @@ When an application has issues, the first step is to understand what is happenin
       :align: center
       :scale: 75
 
-- The `Message Library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/basic/BasicMessageLogger.html>`__ is a small RAM/ROM/CPU footprint API to log errors, warnings, and misc information.
+- The `Message Library`_ is a small RAM/ROM/CPU footprint API to log errors, warnings, and misc information.
 
    .. code-block:: java 
       :emphasize-lines: 9
@@ -82,7 +82,7 @@ When an application has issues, the first step is to understand what is happenin
          BasicMessageLogger.INSTANCE.log(Level.INFO, LOG_CATEGORY, LOG_ID, previousState, currentState);
       }     
 
-- The `Logging Library <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html>`__ implements a subset of the standard Java ``java.util.logging``.
+- The `Logging Library`_ implements a subset of the standard Java ``java.util.logging``.
 
    .. code-block:: java
       :emphasize-lines: 5,6,7
@@ -98,12 +98,16 @@ When an application has issues, the first step is to understand what is happenin
 
 Please refer to the tutorial :ref:`tutorial_instrument_java_code_for_logging` for a comparison of these libraries.
 
+.. _Trace Library: https://repository.microej.com/javadoc/microej_5.x/apis/ej/trace/Tracer.html
+.. _Message Library: https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/basic/BasicMessageLogger.html
+.. _Logging Library: https://repository.microej.com/javadoc/microej_5.x/apis/java/util/logging/Logger.html
+
 .. _tutorial_discover_embedded_debugging_techniques.tools.runtime_state_dump:
 
 Runtime State Dump
 ~~~~~~~~~~~~~~~~~~
 
-- Output information on the standard output ``System.out`` and use the :ref:`stack_trace_reader` to read and decode the MicroEJ stack traces.
+- Output information on the standard output `System.out`_ and use the :ref:`stack_trace_reader` to read and decode the MicroEJ stack traces.
 
   |fig1| |fig2|
 
@@ -198,6 +202,9 @@ Runtime State Dump
       --------------------------------------------------------------------------------
       ================================================================================
 
+
+.. _System.out: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#out
+
 .. _tutorial_discover_embedded_debugging_techniques.tools.memory_inspection:
 
 Memory Inspection
@@ -254,11 +261,12 @@ Static Analysis Tools
 Static analysis tools are helpful allies to prevent several classes of bugs.
 
 * :ref:`SonarQube™<sonar_code_analysis>` provides reports on duplicated code, coding standards, unit tests, code coverage, code complexity, potential bugs, comments, and architecture.
-* Use the :ref:`Null Analysis tool<null_analysis>` to detect and prevent `NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_, one of the most common causes of runtime failure of Java programs.
+* Use the :ref:`Null Analysis tool<null_analysis>` to detect and prevent `NullPointerException`_, one of the most common causes of runtime failure of Java programs.
 
    .. figure:: ../ApplicationDeveloperGuide/images/null_analysis_example.png
       :alt: Example of Null Analysis Detection
 
+.. _NullPointerException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html
 
 .. _tutorial_discover_embedded_debugging_techniques.tools.gui_debugging_tools:
 
@@ -486,7 +494,7 @@ Display Pump thread) does not process display events.
 
 Let's make the heartbeat snippet above execute in the UI
 thread. Simply wraps the ``System.out.println("Alive")`` with a
-``callSerially``:
+`callSerially()`_:
 
 .. code-block:: java
 
@@ -523,7 +531,7 @@ the freeze occurs, then there are a few options:
    -  infinite/indeterminate loops
    -  network/database access
    -  heavy computations
-   -  ``Thread.sleep()``/``Object.wait()``
+   -  `Thread.sleep()`_/`Object.wait()`_
    -  ``SNI_suspendCurrentJavaThread()`` in native call
 
    When doing so, any other UI-related operation will not be processed
@@ -531,11 +539,11 @@ the freeze occurs, then there are a few options:
    that runs in the UI thread might be responsible. Look for code
    executed as a result of calls to:
 
-   -  ``repaint()``: code in ``renderContent()``
+   -  ``repaint()``: code in `renderContent()`_
    -  ``revalidate()``/``revalidateSubTree()``: code in
       ``validateContent()`` and ``setBoundsContent()``
-   -  ``handleEvent()``
-   -  ``callSerially()``: code wrapped in such calls will be executed
+   -  `handleEvent()`_
+   -  `callSerially()`_: code wrapped in such calls will be executed
       in the UI thread
 
 -  The UI thread has terminated.
@@ -565,6 +573,14 @@ follow the general pattern and use a dedicated thread/executor instead:
        });
        }
    });
+
+
+.. _callSerially(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#callSerially-java.lang.Runnable-
+.. _Thread.sleep(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html#sleep-long-
+.. _Object.wait(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#wait--
+.. _renderContent(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#renderContent-ej.microui.display.GraphicsContext-int-int-
+.. _handleEvent(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#handleEvent-int-
+
 
 Check Input Events Processing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -601,12 +617,15 @@ Implementation Details
 Java Threads Creation
 +++++++++++++++++++++
 
-The number of threads in the MicroEJ Application must be sufficient to support the creation of additional threads when using ``Timer`` and ``Thread``.
+The number of threads in the MicroEJ Application must be sufficient to support the creation of additional threads when using `Timer`_ and `Thread`_.
 The number of available threads can be updated in the launch configuration of the application (see :ref:`option_number_of_threads`).
 
 If it is not possible to increase the number of available threads (for
 example, because the memory is full), try to reuse another thread but
 not the UI thread.
+
+.. _Timer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/Timer.html
+.. _Thread: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Thread.html
 
 UART Not Available
 ++++++++++++++++++
