@@ -17,7 +17,7 @@ Download
    A newer version, the ``22.06``, is also available but it requires to have an :ref:`Architecture <architecture_overview>` ``7.17`` or more.
    So make sure to use the right Architecture version if you want to use this newer SDK Distribution version.
 
-Here is the list of all SDK Distributions available: 
+Here is the list of all available SDK Distributions: 
 
 .. list-table::
 
