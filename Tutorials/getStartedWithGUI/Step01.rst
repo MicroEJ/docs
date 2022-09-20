@@ -80,7 +80,7 @@ Desktop Usage
 Displaying a Label
 ------------------
 
-#. To add a label, just instantiate a ``Label`` object and add it to the
+#. To add a label, just instantiate a `Label`_ object and add it to the
    desktop as the root widget.
 
    .. code:: java
@@ -103,6 +103,7 @@ Displaying a Label
    .. image:: images/hello.png
     :align: center
 
+.. _Label: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Label.html
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
