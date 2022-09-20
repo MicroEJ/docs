@@ -6,7 +6,7 @@ SDK User Guide
 MICROEJ SDK is an integrated environment to create software applications for MicroEJ-ready devices.
 The SDK provides tools to write applications and run them on a virtual (simulated) or real device.
 The capability to execute an application in a simulated environment allows to quickly test changes done 
-in the application code and hence provide a short development feedback loop.
+in the application code and hence provides a short development feedback loop.
 
 Since the purpose of the SDK is to develop for targeted MCU/MPU computers (IoT, wearable, etc.), it is a cross-development tool.
 But unlike standard low-level cross-development tools, 
