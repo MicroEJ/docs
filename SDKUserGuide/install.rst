@@ -23,7 +23,7 @@ Once downloaded, execute the installer and follow the :ref:`installation process
 Installation
 --------------------
 
-- Launch the installer and click on :guilabel:`Next` button.
+- Launch the installer and click on the :guilabel:`Next` button.
 
 
 .. figure:: images/installation_process/welcome_screen.png
@@ -33,7 +33,7 @@ Installation
    Welcome to the installer
 
 - Be aware of the licensing agreement.
-- Select :guilabel:`I accept the terms of this license agreement.`. Click on :guilabel:`Next` button.
+- Select :guilabel:`I accept the terms of this license agreement.`. Then click on the :guilabel:`Next` button.
 
 .. figure:: images/installation_process/license_screen.png
    :alt: License screen
@@ -41,7 +41,7 @@ Installation
 
    Accept the terms of this license agreement
 
-- Select the installation path of your SDK. By default it is ``C:/Program Files/MicroEJ/MicroEJ-SDK-{SDK_VERSION}`` for Windows. Click on :guilabel:`Next` button.
+- Select the installation path of your SDK. By default it is ``C:/Program Files/MicroEJ/MicroEJ-SDK-{SDK_VERSION}`` for Windows. Then click on the :guilabel:`Next` button.
 
 .. figure:: images/installation_process/installation_path_screen.png
    :alt: Installation path screen
@@ -49,7 +49,7 @@ Installation
 
    Choose the installation path
 
-- Click on :guilabel:`OK` button to confirm the installation path.
+- Click on the :guilabel:`OK` button to confirm the installation path.
 
 
 .. figure:: images/installation_process/installation_validation_screen.png
@@ -58,7 +58,7 @@ Installation
 
    Confirm your installation path
 
-- Wait until the installation is done. Click on :guilabel:`Next` button.
+- Wait until the installation is done. Then click on the :guilabel:`Next` button.
 
 .. figure:: images/installation_process/installation_progress_screen.png
    :alt:  Installation screen
@@ -66,7 +66,7 @@ Installation
 
    Installation in progress
 
-- Select options depending on your own preferences. Click on :guilabel:`Next` button.
+- Select options depending on your own preferences. Then click on the :guilabel:`Next` button.
 
 .. figure:: images/installation_process/options_screen.png
    :alt: Options screen
@@ -74,7 +74,7 @@ Installation
 
    Select the options
 
-- The installation has completed successfully. Click on :guilabel:`Done` button.
+- The installation has completed successfully. Click on the :guilabel:`Done` button.
 
 .. figure:: images/installation_process/installation_finished_screen.png
    :alt: End screen
@@ -84,7 +84,7 @@ Installation
 
 The SDK is now installed on your computer. You can launch it from your application launcher or by executing the :guilabel:`MicroEJ` executable in the installation path.
 
-At the first launch, please check if there is a newer version available (Select :guilabel:`Help` > :guilabel:`Check for updates`. If so, please install it. 
+At the first launch, please check if there is a newer version available (Select :guilabel:`Help` > :guilabel:`Check for updates`). If so, please install it. 
 
 
 
