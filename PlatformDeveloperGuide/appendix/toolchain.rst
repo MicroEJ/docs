@@ -242,6 +242,16 @@ as illegal code by IAR linker, causing the following error:
 The option ``--diag_suppress=Lp029`` tells IAR linker to ignore
 instructions validation errors.
 
+GNU LD Specific Options
+=======================
+
+``--start-group --end-group``
+-----------------------------
+
+By default the GNU linker does not search unresolved symbols in previously loaded files and can cause undefined reference errors.
+To solve this issue, either change the load order of libraries (put ``microejapp.o`` first) or guard the libraries with the
+options ``--start-group`` and ``--end-group``.
+
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
