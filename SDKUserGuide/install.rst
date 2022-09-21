@@ -8,32 +8,15 @@ Download and Install
 Download
 --------
 
-- Check the :ref:`system-requirements` page for the list of supported environments.
-- The SDK is available for download at https://repository.microej.com/packages/SDK/21.11/.
+The SDK is available for download at https://developer.microej.com/microej-sdk-software-development-kit. Check the :ref:`system-requirements` page for the list of supported environments.
 
 .. note::
 
    The SDK Distribution proposed by default is the version ``21.11``.
-   A newer version, the ``22.06``, is also available but it requires to have an :ref:`Architecture <architecture_overview>` ``7.17`` or more.
+   A newer version, the ``22.06``, is also available in the `SDK Downloads Page <https://repository.microej.com/packages/SDK/>`_ but it requires to have an :ref:`Architecture <architecture_overview>` ``7.17`` or more.
    So make sure to use the right Architecture version if you want to use this newer SDK Distribution version.
 
-Here is the list of all available SDK Distributions: 
-
-.. list-table::
-
-   * - **SDK Distribution**
-     - `3.1.2 <https://repository.microej.com/packages/SDK/3.1.2/>`_
-     - `4.0 <https://repository.microej.com/packages/SDK/4.0/>`_
-     - `4.1.5 <https://repository.microej.com/packages/SDK/4.1.5/>`_
-     - `19.05 <https://repository.microej.com/packages/SDK/19.05/>`_
-     - `20.10 <https://repository.microej.com/packages/SDK/20.10/>`_
-     - `20.12 <https://repository.microej.com/packages/SDK/20.12/>`_
-     - `21.03 <https://repository.microej.com/packages/SDK/21.03/>`_
-     - `21.11 <https://repository.microej.com/packages/SDK/21.11/>`_
-     - `22.06 <https://repository.microej.com/packages/SDK/22.06/>`_
-
-
-- Once downloaded, execute the installer and follow the :ref:`installation process <sdk_installation_process>`.
+Once downloaded, execute the installer and follow the :ref:`installation process <sdk_installation_process>`.
 
 .. _sdk_installation_process:
 
@@ -58,7 +41,7 @@ Installation process
 
    Accept the terms of this license agreement
 
-- Select the installation path of your SDK. By default it is ``C:/Program Files/MicroEJ/MicroEJ-SDK-{SDK_VERSION}``. Click on :guilabel:`Next` button.
+- Select the installation path of your SDK. By default it is ``C:/Program Files/MicroEJ/MicroEJ-SDK-{SDK_VERSION}`` for Windows. Click on :guilabel:`Next` button.
 
 .. figure:: images/installation_process/installation_path_screen.png
    :alt: Installation path screen
@@ -99,8 +82,9 @@ Installation process
 
    Your installation has completed successfully
 
-The SDK is now installed on your computer. 
+The SDK is now installed on your computer. You can launch it from your application launcher or by executing the :guilabel:`MicroEJ` executable in the installation path.
 
+At the first launch, please check if there is a newer version available (Select :guilabel:`Help` > :guilabel:`Check for updates`. If so, please install it. 
 
 
 
