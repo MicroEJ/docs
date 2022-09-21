@@ -20,7 +20,7 @@ Once downloaded, execute the installer and follow the :ref:`installation process
 
 .. _sdk_installation_process:
 
-Installation process
+Installation
 --------------------
 
 - Launch the installer and click on :guilabel:`Next` button.
