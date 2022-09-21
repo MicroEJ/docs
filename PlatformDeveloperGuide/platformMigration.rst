@@ -33,11 +33,19 @@ The migration steps are:
 #. Configure the :ref:`BSP Connection <bsp_connection>`.
 #. Add the :ref:`Build Script <bsp_connection_build_script>` and :ref:`Run Script <bsp_connection_run_script>`.
 
+
+.. _platform_migration_repository:
+
 Create an Architecture Repository
 ---------------------------------
 
-The first step is to create an Architecture Repository. 
-The MicroEJ Architecture and MicroEJ Packs are provided in the ``platformArchitecture`` directory of the `fullPackaging` package.
+The first step is to create an Architecture Repository, using the MicroEJ Architecture 
+and MicroEJ Packs provided in the ``platformArchitecture`` directory of the `fullPackaging` package.
+
+.. note:: If the Architecture and Packs used by the Platform are already stored on the 
+  module repositories provided by MicroEJ Corp (:ref:`Central Repository <central_repository>`, :ref:`Developer Repository <developer_repository>`),
+  or on your organization's repositories, then move to the next step.
+
 
 By default, we provide the steps to extend the default :ref:`MicroEJ SDK settings file configuration <mmm_configuration>`
 with local MicroEJ Architecture and MicroEJ Packs modules.
@@ -148,10 +156,23 @@ Here is the layout of the Architecture Repository for STM32F746G-DISCO.
    
    Architecture Repository for STM32F746G-DISCO `fullPackaging`
 
+
+Import the Former Platform Sources
+----------------------------------
+
+- Go to :guilabel:`File` > :guilabel:`Import...` > 
+  :guilabel:`General` > :guilabel:`Existing Projects into Workspace`.
+- Browse to the archive file that contains the platform sources, like in the example below.
+.. figure:: images/platformMigration-import.png
+   :align: center
+- Select the ``-configuration``, ``-fp`` and ``-bsp`` projects prefixed with the Platform name (e.g., ``STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS``).
+- Click ``Finish``.
+
+
 Install the Platform Configuration Additions
 --------------------------------------------
 
-- Rename the file ``bsp.properties`` to ``bsp2.properties`` (save it
+- Rename the file ``bsp.properties`` located in the Platform Configuration Project to ``bsp2.properties`` (save it
   for later).
 - Install `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/>`_, 
   by following instructions described at https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/README.rst.
@@ -193,8 +214,8 @@ Here is the module dependencies declared for the STM32F746G-DISCO Platform.
    </dependencies>
       
 
-Update Front Panel Configuration
---------------------------------
+Update the Front Panel Configuration
+------------------------------------
 
 - In ``-configuration/frontpanel/frontpanel.properties`` set the
   ``project.name`` to the folder name that contains the frontpanel
@@ -205,13 +226,30 @@ can check that everything is properly configured so far by building it:
 
 - Right-click on the ``-configuration`` project and select
   :guilabel:`Build Module`
-- Import the MicroEJ Platform built into the workspace by following instructions available at the end of the build logs).
+- Import the MicroEJ Platform built into the workspace by following the instructions available at the end of the build logs (see logs example below).
 
-At this stage the MicroEJ Platform is built, so you can create a MicroEJ Standalone Application and run it on the
+.. code-block::
+
+  module-platform:report:
+      [echo]     ============================================================================================================
+      [echo]     Platform has been built in this directory 'C:\STM32F746GDISCO-Platform-CM7hardfp_ARMCC5-0.1.0'.
+      [echo]     To import this project in your MicroEJ SDK workspace (if not already available):
+      [echo]      - Select 'File' > 'Import...' > 'General' > 'Existing Projects into Workspace' > 'Next'
+      [echo]      - Check 'Select root directory' and browse 'C:\STM32F746GDISCO-Platform-CM7hardfp_ARMCC5-0.1.0' > 'Finish'
+      [echo]     ============================================================================================================
+
+At this stage the MicroEJ Platform is built and imported in the workspace, so you can create a MicroEJ Standalone Application and run it on the
 Simulator (see :ref:`simulator_execution`).
 
-Configure BSP Connection
-------------------------
+.. note:: 
+
+  If the build failed, it might be because the Architecture and Packs could not be retrieved from the Architecture Repository.
+  Ensure that the Architecture Repository is correctly configured and that it contains the required artifacts (as described in :ref:`the first step <platform_migration_repository>`).
+
+
+
+Configure the BSP Connection
+----------------------------
 
 This section explains how to configure a full BSP Connection on the
 STM32F746G-DISCO Platform.  See :ref:`bsp_connection` for more
@@ -292,16 +330,18 @@ the STM32F746G-DISCO project, the BSP configuration is located at
 At this stage the MicroEJ Platform is connected to the BSP so you can 
 build and program a MicroEJ Firmware (see :ref:`device_build`).
 
-Add Build Script and Run Script
--------------------------------
+Add the Build and Run Scripts
+-----------------------------
 
-The final stage consists of adding the Build Script, to automate the build a
-MicroEJ Firmware, and the Run Script, to automate the program a MicroEJ Firmware
+The final stage consists of adding the :ref:`Build Script <bsp_connection_build_script>`, 
+to automate the build of a MicroEJ Firmware, and the :ref:`Run Script <bsp_connection_run_script>`, to automate the programming of a MicroEJ Firmware
 onto the device.
 
 The `Platform Qualification Tools`_ provides examples of Build Script
 and Run Script for various C TOOLCHAIN `here
-<https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`__.
+<https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`__. 
+:ref:`This tutorial <tutorial_create_platform_build_and_run_scripts>` also describes the steps to create 
+and use these scripts.
 
 On the STM32F746G-DISCO, the C TOOLCHAIN used is Keil uVision.
 
