@@ -425,7 +425,7 @@ The 3 most common integration cases are:
   
   The MicroEJ Platform includes the BSP.
 
-  BSP connection is configured when building the MicroEJ Platform (relative locations within the BSP), 
+  BSP connection is configured when building the Platform (relative locations within the BSP), 
   as well as the BSP root location (absolute directory).
   No BSP connection configuration is required when building the MicroEJ Application.
 

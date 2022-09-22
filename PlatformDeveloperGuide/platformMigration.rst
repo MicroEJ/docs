@@ -42,9 +42,9 @@ Create an Architecture Repository
 The first step is to create an Architecture Repository, using the MicroEJ Architecture 
 and MicroEJ Packs provided in the ``platformArchitecture`` directory of the `fullPackaging` package.
 
-.. note:: If the Architecture and Packs used by the Platform are already stored on the 
+.. note:: If the Architecture and Packs used by the Platform are already stored in the 
   module repositories provided by MicroEJ Corp (:ref:`Central Repository <central_repository>`, :ref:`Developer Repository <developer_repository>`),
-  or on your organization's repositories, then move to the next step.
+  or in your organization's repositories, then move to the next step.
 
 
 By default, we provide the steps to extend the default :ref:`MicroEJ SDK settings file configuration <mmm_configuration>`
@@ -226,7 +226,7 @@ can check that everything is properly configured so far by building it:
 
 - Right-click on the ``-configuration`` project and select
   :guilabel:`Build Module`
-- Import the MicroEJ Platform built into the workspace by following the instructions available at the end of the build logs (see logs example below).
+- Import the Platform built into the workspace by following the instructions available at the end of the build logs (see logs example below).
 
 .. code-block::
 
@@ -238,12 +238,12 @@ can check that everything is properly configured so far by building it:
       [echo]      - Check 'Select root directory' and browse 'C:\STM32F746GDISCO-Platform-CM7hardfp_ARMCC5-0.1.0' > 'Finish'
       [echo]     ============================================================================================================
 
-At this stage the MicroEJ Platform is built and imported in the workspace, so you can create a MicroEJ Standalone Application and run it on the
+At this stage the Platform is built and imported in the workspace, so you can create a Standalone Application and run it on the
 Simulator (see :ref:`simulator_execution`).
 
 .. note:: 
 
-  If the build failed, it might be because the Architecture and Packs could not be retrieved from the Architecture Repository.
+  If the build failed, it might be because the Architecture and Packs can not be retrieved from the Architecture Repository.
   Ensure that the Architecture Repository is correctly configured and that it contains the required artifacts (as described in :ref:`the first step <platform_migration_repository>`).
 
 
@@ -334,7 +334,7 @@ Add the Build and Run Scripts
 -----------------------------
 
 The final stage consists of adding the :ref:`Build Script <bsp_connection_build_script>`, 
-to automate the build of a MicroEJ Firmware, and the :ref:`Run Script <bsp_connection_run_script>`, to automate the programming of a MicroEJ Firmware
+to automate the build of a Firmware, and the :ref:`Run Script <bsp_connection_run_script>`, to automate the programming of a Firmware
 onto the device.
 
 The `Platform Qualification Tools`_ provides examples of Build Script
