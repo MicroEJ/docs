@@ -8,15 +8,25 @@ Download and Install
 Download
 --------
 
-The SDK is available for download at https://developer.microej.com/microej-sdk-software-development-kit. Check the :ref:`system-requirements` page for the list of supported environments.
+The SDK Distribution ``21.11`` is available for differents operating systems:
+
+   - `Windows <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Win64-21.11.exe>`_.
+   - `Linux <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Linux64-21.11.zip>`_.
+   - `MacOS Intel <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-MacOS-21.11.zip>`_.
+
+
+Check the :ref:`system-requirements` page for the list of supported environments.
 
 .. note::
 
-   The SDK Distribution proposed by default is the version ``21.11``.
-   A newer version, the ``22.06``, is also available in the `SDK Downloads Page <https://repository.microej.com/packages/SDK/>`_ but it requires to have an :ref:`Architecture <architecture_overview>` ``7.17`` or more.
+   A newer version, the ``22.06``, is also available for the following operating systems: `Windows <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Win64-22.06.exe>`_, `Linux <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Linux64-22.06.zip>`_, `MacOS Intel <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-22.06.zip>`_ and `MacOS M1 <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-A64-22.06.zip>`_. It requires to have an :ref:`Architecture <architecture_overview>` ``7.17`` or more.
    So make sure to use the right Architecture version if you want to use this newer SDK Distribution version.
 
-Once downloaded, execute the installer and follow the :ref:`installation process <sdk_installation_process>`.
+
+Once downloaded, execute the installer and follow the installation process.
+
+If you need an older distribution of the SDK, it is available in the `SDK Downloads Page <https://repository.microej.com/packages/SDK/>`_.
+
 
 .. _sdk_installation_process:
 
