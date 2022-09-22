@@ -8,7 +8,7 @@ Using PO Files
 - Documentation is available `here <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`__.
 - In this example, let's create two PO files for two different languages(English and Portuguese) and add them to **resources/nls**.
 
-  Labels_en_us.po:
+  ``Labels_en_us.po``:
 
   .. code:: po
 
@@ -25,7 +25,7 @@ Using PO Files
     msgid "Label2"
     msgstr "My label 2"
 
-  Labels_pt_br.po:
+  ``Labels_pt_br.po``:
 
   .. code:: po
 

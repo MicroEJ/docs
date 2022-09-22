@@ -35,9 +35,9 @@ Basic Drawing on Screen
 Drawing Basic Shapes
 --------------------
 
-- The ``Painter`` class contains several primitives to draw geometric objects.
+- The `Painter`_ class contains several primitives to draw geometric objects.
 - The code below draws each component with the selected color (yellow, purple, green).
-- The ``drawLine()`` method uses the starting and finishing point with x and y coordinates.
+- The `drawLine()`_ method uses the starting and finishing point with x and y coordinates.
 - Fill rectangle and ellipse methods use x and y coordinates and also width and height.
 - Draw circle uses x and y and a diameter.
 
@@ -59,7 +59,7 @@ Drawing Basic Shapes
 Drawing Images
 --------------
 
-- The ``Painter`` class contains several primitives to draw images.
+- The `Painter`_ class contains several primitives to draw images.
 
   .. code:: java
 
@@ -73,7 +73,7 @@ Drawing Images
 Drawing Thick Shapes
 --------------------
 
-- The ``ShapePainter`` class offers a set of primitives to render thick shapes with or without anti-aliasing.
+- The `ShapePainter`_ class offers a set of primitives to render thick shapes with or without anti-aliasing.
 - The code below shows how to draw a thick faded line.
 
   .. code:: java
@@ -88,6 +88,10 @@ Drawing Thick Shapes
 
   .. image:: images/thickshapes.png
    :align: center
+
+.. _Painter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html
+.. _drawLine(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html#drawLine-ej.microui.display.GraphicsContext-int-int-int-int- 
+.. _ShapePainter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/drawing/ShapePainter.html
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

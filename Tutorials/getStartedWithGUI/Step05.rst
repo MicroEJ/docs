@@ -32,7 +32,7 @@ Class Selector
 
     EditableStyle style = css.getSelectorStyle(new ClassSelector(BUTTON));
 
-- Finally, lets add an Image Background to this Button:
+- Finally, lets add an `Image Background`_ to this Button:
 
   .. code:: java
 
@@ -66,6 +66,8 @@ Class Selector
 
 .. image:: images/imagebackgroundexample.png
  :align: center 
+
+.. _Image Background: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/background/ImageBackground.html
 
 Combinator and Conditional Style
 --------------------------------
