@@ -1,14 +1,14 @@
 .. _tutorialUnderstandMicroEJFirmwareBuild:
 
-Understand how to build a MicroEJ Firmware and its dependencies
-===============================================================
+Understand How to Build a Firmware and its Dependencies
+=======================================================
 
-A MicroEJ Firmware is built from several input resources and tools.
+A Firmware is built from several input resources and tools.
 Each component has dependencies and requirements that must be
-carefully respected in order to build a firmware.
+carefully respected in order to build a Firmware.
 
 This document describes the components, their dependencies and the
-process involved in the build of a MicroEJ Firmware.
+process involved in the build of a Firmware.
 
 Good knowledge of the :ref:`chapter-glossary` is required.
 
@@ -16,7 +16,7 @@ The Components
 --------------
 
 As depicted in the following image, several resources and tools are
-used to build a MicroEJ Firmware.
+used to build a Firmware.
 
 .. image:: images/qa_resources-v3.PNG
     :scale: 70
@@ -53,10 +53,10 @@ Platform Sources
 
 A :ref:`Platform <platform_overview>` includes development tools and a runtime environment:
 
-* the Architecture and MicroEJ Packs
-* the Abstraction Layers implementations
-* the Simulator and its associated Mocks
-* a C Board Support Package (BSP) with C drivers and an optional RTOS
+* the Architecture and :ref:`pack_overview`,
+* the Abstraction Layers implementations,
+* the Simulator and its associated Mocks,
+* a C Board Support Package (BSP) with C drivers and an optional RTOS.
 
 The Platform sources consists in the following projects:
 
@@ -155,7 +155,7 @@ Dependencies Between Components
 How to Build
 ------------
 
-The process of building a MicroEJ Firmware is two-fold:
+The process of building a Firmware is two-fold:
 
 1. Build a Platform,
 2. Compile/link the application and BSP using the C toolchain.
@@ -173,8 +173,8 @@ The next schema presents the components and process to build a Platform.
     :scale: 80
     :align: center
 
-Build a MicroEJ Firmware
-~~~~~~~~~~~~~~~~~~~~~~~~
+Build a Firmware
+~~~~~~~~~~~~~~~~
 
 The next schema presents the build flow of a Mono-Sandbox
 Firmware (previously known as a MicroEJ Single-app Firmware). The steps
@@ -187,7 +187,7 @@ are:
 
 3. Link the BSP files (``.o``), the Application (``microejapp.o``) and
    the Platform runtime library (``microejruntime.a``) using the C toolchain to produce the
-   final ELF or binary, called MicroEJ Firmware (e.g. ``application.out``).
+   final executable (ELF or binary, for example ``application.out``).
 
 .. image:: images/build_microej_mono_sandbox_firmware_numbered.PNG
     :scale: 80
@@ -202,7 +202,7 @@ Dependencies Between Processes
 
   * When the Architecture (``.xpf``) changes.
 
-  * When a Foundation Library provided by MicroEJ (``.xpfp``) changes.
+  * When a :ref:`Pack <pack_overview>` provided by MicroEJ (``.xpfp``) changes.
 
   * When a Foundation Library changes, either when
 
@@ -230,7 +230,7 @@ Dependencies Between Processes
 
   * When the Platform changes.
 
-* Rebuild the MicroEJ Firmware:
+* Rebuild the Firmware:
 
   * When the Application (``microejapp.o``) changes.
 
