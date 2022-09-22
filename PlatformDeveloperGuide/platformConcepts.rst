@@ -43,7 +43,7 @@ platform creation.
 Modules
 -------
 
-The primary mechanism for augmenting the capabilities of a platform is to add modules to it.
+The primary mechanism for augmenting the capabilities of a Platform is to add modules to it.
 
 A MicroEJ module is a group of related files (Foundation Libraries,
 scripts, link files, C libraries, Simulator, tools, etc.) that together

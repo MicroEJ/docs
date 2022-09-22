@@ -42,9 +42,9 @@ Create an Architecture Repository
 The first step is to create an Architecture Repository containing the Architecture 
 and Packs provided in the ``platformArchitecture`` directory of the `fullPackaging` package.
 
-.. note:: If the Architecture and Packs used by the Platform are already stored on the 
+.. note:: If the Architecture and Packs used by the Platform are already stored in the 
   module repositories provided by MicroEJ Corp (:ref:`Central Repository <central_repository>`, :ref:`Developer Repository <developer_repository>`),
-  or on your organization's repositories, then move to the next step.
+  or in your organization's repositories, then move to the next step.
 
 
 By default, we provide the steps to extend the default :ref:`MicroEJ SDK settings file configuration <mmm_configuration>`
@@ -239,7 +239,7 @@ Simulator (see :ref:`simulator_execution`).
 
 .. note:: 
 
-  If the build failed, it might be because the Architecture and Packs could not be retrieved from the Architecture Repository.
+  If the build failed, it might be because the Architecture and Packs can not be retrieved from the Architecture Repository.
   Ensure that the Architecture Repository is correctly configured and that it contains the required artifacts (as described in :ref:`the first step <platform_migration_repository>`).
 
 
