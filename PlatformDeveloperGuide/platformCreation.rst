@@ -332,7 +332,7 @@ It can be enabled by setting the ``skip.publish`` property defined in the file `
 the Platform configuration project to ``false``.
 
 The publication is kept disabled by default in the project sources because developers usually use the locally built platform in the workspace.
-In a Continuous Integration environment however, the publication is required.
+However, the publication is required in a Continuous Integration environment. 
 This can be done by leaving the ``skip.publish`` property to ``true`` in the project sources 
 and by overwriting it in the command launched by the Continuous Integration environment, for example:
 
