@@ -58,7 +58,7 @@ A :ref:`Platform <platform_overview>` includes development tools and a runtime e
 * the Simulator and its associated Mocks,
 * a C Board Support Package (BSP) with C drivers and an optional RTOS.
 
-The Platform sources consists in the following projects:
+The Platform sources contains the following projects:
 
 * ``<platform>-configuration``: The Platform Configuration project.
 * ``<platform>-bsp``: The C code for the board-specific files
