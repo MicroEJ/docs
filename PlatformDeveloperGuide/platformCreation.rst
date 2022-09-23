@@ -300,7 +300,7 @@ Platform Customization
 
 The configuration project (the project which contains the
 :guilabel:`.platform` file) can contain an optional :guilabel:`dropins` folder.
-The contents of this folder will be copied in full in the Platform during the Platform build. 
+The full content of this folder will be copied in the Platform during the build. 
 This feature allows to add some additional libraries, tools
 etc. into the Platform.
 
