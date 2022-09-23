@@ -60,7 +60,7 @@ A :ref:`Platform <platform_overview>` includes development tools and a runtime e
 
 The Platform sources consists in the following projects:
 
-* ``<platform>-configuration``: The Platform Configuration Project.
+* ``<platform>-configuration``: The Platform Configuration project.
 * ``<platform>-bsp``: The C code for the board-specific files
   (drivers).
 * ``<platform>-fp``: Front Panel mockup for the simulator.
@@ -80,7 +80,7 @@ An Application is a Java project that can be configured (in the
 
 1. to either run on:
 
-  * a the Simulator (computer desktop),
+  * the Simulator (computer desktop),
   * a device (actual embedded hardware).
 
 2. to setup:
@@ -181,7 +181,7 @@ Firmware (previously known as a MicroEJ Single-app Firmware). The steps
 are:
 
 
-1. Build the Application using MicroEJ SDK (generates a ``microejapp.o`` file).
+1. Build the Application using the SDK (generates a ``microejapp.o`` file).
 
 2. Compile the BSP C sources using the C toolchain (generates ``.o`` files).
 
