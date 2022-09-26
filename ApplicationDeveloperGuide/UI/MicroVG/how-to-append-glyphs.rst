@@ -9,7 +9,7 @@ However, emojis fonts usually do not contain many characters other than emojis, 
 to use multiple fonts to handle all use cases.
 
 One solution to minimize the number of fonts used by an application is to add emojis to another font (i.e., combine fonts into one).
-This article shows how to do it using FontLab, a third-party font editor.
+This article shows how to achieve this using FontLab, a third-party font editor.
 
 .. note::
 
