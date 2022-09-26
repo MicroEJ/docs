@@ -67,6 +67,9 @@ The next step is to create a MicroEJ Platform configuration project:
      
      </dependencies>
 
+  The name of the module dependency needed for your Platform can be found in the chapter :ref:`architectures_toolchains`.
+  Check the table of your corresponding Architecture and follow the link in the :guilabel:`Module Name` column.
+
   For example, to declare the MicroEJ Evaluation Architecture version ``7.14.0`` for Arm® Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
 
   .. code-block:: xml
@@ -79,6 +82,8 @@ The next step is to create a MicroEJ Platform configuration project:
           </dependency>
       
       </dependencies>
+
+ And the module for this Architecture is located in the :ref:`Central Repository <central_repository>` at `https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/7.14.0/`_.
 
   .. note:: The Platform Configuration Additions allow to select the Architecture ``USAGE`` using the option ``com.microej.platformbuilder.architecture.usage``.  Edit the file ``module.properties`` to set the property to ``prod`` to use a Production Architecture and to ``eval`` to use an Evaluation Architecture.
       
