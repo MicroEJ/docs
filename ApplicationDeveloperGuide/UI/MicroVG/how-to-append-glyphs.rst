@@ -8,7 +8,7 @@ Multicolor fonts are mainly used for providing a set of colorful emojis in messa
 However, emojis fonts usually do not contain many characters other than emojis, which requires applications 
 to use multiple fonts to handle all use cases.
 
-One solution to minimize the number of fonts used by the application is to add emojis to another font.
+One solution to minimize the number of fonts used by an application is to add emojis to another font (i.e., combine fonts into one).
 This article shows how to do it using FontLab, a third-party font editor.
 
 .. note::
