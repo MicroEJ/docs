@@ -55,6 +55,6 @@ This article shows how to do it using FontLab, a third-party font editor.
 .. warning::
 
     There are multiple ways of implementing emojis in fonts. The four main formats are 
-    COLR/CPAL (Microsoft), CBDT/CBLC (Google), SVG (Adobe/Firefox), sbix (Apple).
+    COLR/CPAL (Microsoft), CBDT/CBLC (Google), SVG (Adobe/Firefox) and sbix (Apple).
     Each format uses custom tables in fonts to describe the emojis glyphs. 
     MicroVG supports COLR/CPAL tables and this article only applies to this case.
