@@ -78,7 +78,7 @@ latex_logo = '_themes/microej/static/mascot.pdf'
 pygments_style = 'microej.MicroEJStyle'
 
 # ignoring Github links with anchors at linkcheck
-linkcheck_ignore = ["https://repository.microej.com/packages/SDK"]
+linkcheck_ignore = ["https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Win64-21.11.exe", "https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Linux64-21.11.zip", "https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-MacOS-21.11.zip", "https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Win64-22.06.exe", "https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Linux64-22.06.zip", "https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-22.06.zip", "https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-A64-22.06.zip"]
 
 linkcheck_timeout = 20
 
