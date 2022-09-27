@@ -99,13 +99,18 @@ messages, for example:
 
    String label = Labels.NLS.getMessage(Labels.Label1);
 
+For the application to know which language to use among those made available and when, you can set it and change it at any point using the `setCurrentLocale(locale)`_ method. If no locale has been set yet when getting a message, the translation for the first locale available in alphabetical order will be used by default. However, you can also pick this locale to default to yourself by adding a `com.microej.binarynls.defaultLocale` property followed by a locale name in a ``.properties.list`` file. 
+
+
+.. _setCurrentLocale(locale): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#getCurrentLocale--
+
 
 Dealing With Missing Translations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default, if a translation is missing for a given ``msgid`` in the PO file or Android String resource for a given language, the message returned by the `ej.nls.NLS.getMessage()`_ method with the locale set to this language will simply be the ``msgid`` itself. However if returning this identifier is not a suitable solution for your application, you might want to set a fallback locale corresponding to a language to print the translation for a message in in case it is not available in the current language.
 
-You can set this fallback locale by specifying a locale name in a ``.nls.list`` file after the name of the interface you want this locale to be the fallback for, separated by a ``:``. For example, with the following ``.nls.list`` file, the messages for which a translation is missing in a language in the ``Labels`` and ``Messages`` PO files will be translated to ``en_US`` instead of just returning the ``msgid`` of the message.
+You can set this fallback locale by specifying a locale name in a ``.nls.list`` file after the name of the interface you want this locale to be the fallback for, separated by a colon ``:``. For example, with the following ``.nls.list`` file, the messages for which a translation is missing in a language in the ``Labels`` and ``Messages`` PO files will be translated to ``en_US`` instead of just returning the ``msgid`` of the message.
 
 .. code-block::
 
