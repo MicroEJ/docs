@@ -99,6 +99,36 @@ messages, for example:
 
    String label = Labels.NLS.getMessage(Labels.Label1);
 
+
+Dealing With Missing Translations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, if a translation is missing for a given ``msgid`` in the PO file or Android String resource for a given language, the message returned by the `ej.nls.NLS.getMessage()`_ method with the locale set to this language will simply be the ``msgid`` itself. However if returning this identifier is not a suitable solution for your application, you might want to set a fallback locale corresponding to a language to print the translation for a message in in case it is not available in the current language.
+
+You can set this fallback locale by specifying a locale name in a ``.nls.list`` file after the name of the interface you want this locale to be the fallback for, separated by a ``:``. For example, with the following ``.nls.list`` file, the messages for which a translation is missing in a language in the ``Labels`` and ``Messages`` PO files will be translated to ``en_US`` instead of just returning the ``msgid`` of the message.
+
+.. code-block::
+
+   # Missing translations for Labels and Messages will fall back to en_US
+   com.mycompany.myapp.Labels:en_US
+   com.mycompany.myapp.Messages:en_US
+
+As such, you can specify a different fallback locale for each interface in a ``.nls.list`` file. For example, with the following ``.nls.list`` file, the messages in ``Labels`` will not have a fallback language set and will only return the ``msgid`` if a translation is missing, while missing translations will default to ``en_US`` for the messages in ``Messages``, and to ``ja_JP`` for the messages in ``Content`` :
+
+.. code-block::
+
+   # Missing translations for Labels will fall back to their msgid
+   com.mycompany.myapp.Labels
+
+   # Missing translations for Messages will fall back to en_US
+   com.mycompany.myapp.Messages:en_US
+
+   # Missing translations for Content will fall back to ja_JP
+   com.mycompany.myapp.Content:ja_JP
+
+
+.. _ej.nls.NLS.getMessage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#getMessage-int-
+
 .. _chapter.microej.nlsExternalLoader:
 
 NLS External Loader
