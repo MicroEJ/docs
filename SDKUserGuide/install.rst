@@ -94,9 +94,64 @@ Installation
 
 The SDK is now installed on your computer. You can launch it from your application launcher or by executing the :guilabel:`MicroEJ` executable in the installation path.
 
-At the first launch, please check if there is a newer version available (Select :guilabel:`Help` > :guilabel:`Check for updates`). If so, please install it. 
+At the first launch, please check if there is a newer version available. If so, please update your SDK. 
 
+.. _sdk_update:
 
+Update the version
+------------------
+
+- Select :guilabel:`Help` > :guilabel:`Check for updates`.
+
+.. figure:: images/installation_process/check_update.png
+   :alt: End screen
+   :align: center
+
+   Check for updates
+
+- If there is no update available, you will see the following screen:
+
+.. figure:: images/installation_process/no_update.png
+   :alt: End screen
+   :align: center
+
+   No update available
+
+- If there is an update available, you will see the following screen: 
+
+.. figure:: images/installation_process/update_available.png
+   :alt: End screen
+   :align: center
+
+   Update available
+
+- Check the update you want to install. Then click on the :guilabel:`Next` button.
+- Review and confirm the updates. Then click on the :guilabel:`Next` button.
+
+.. figure:: images/installation_process/review_update.png
+   :alt: End screen
+   :align: center
+
+   Review the updates
+
+- Be aware of the licensing agreement.
+- Select :guilabel:`I accept the terms of the license agreements.`. Then click on the :guilabel:`Finish` button.
+
+.. figure:: images/installation_process/license_update.png
+   :alt: End screen
+   :align: center
+
+   Accept the terms of the license agreement
+
+- Wait until the Software Update pop-up appears. Then click on the :guilabel:`Restart Now` button.
+
+.. figure:: images/installation_process/restart_update.png
+   :alt: End screen
+   :align: center
+
+   Restart your SDK.
+
+The update of your SDK is done. 
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
