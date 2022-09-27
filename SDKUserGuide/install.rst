@@ -49,7 +49,7 @@ If you need an older distribution of the SDK, it is available in the `SDK Downlo
 .. _sdk_installation_process:
 
 Installation
---------------------
+------------
 
 - Launch the installer and click on the :guilabel:`Next` button.
 
