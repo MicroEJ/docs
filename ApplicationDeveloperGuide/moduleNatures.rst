@@ -248,6 +248,10 @@ This module nature defines the following dedicated build options:
    * - Name
      - Description
      - Default
+   * - architecture.configurations.includes [#require_sdk_5_4]_
+     - Comma-separated list of configurations to include for the Architecture modules.
+       Set ``dist,eval`` or ``dist,prod`` to include only evaluation or production Architectures or ``dist,eval,prod`` to include both.
+     - ``dist,eval``
    * - bar.check.as.v2.module
      - When this property is set to true, the artifact checker uses the MicroEJ Module Manager semantic.
      - ``false``
@@ -311,6 +315,7 @@ This module nature defines the following dedicated build options:
      - Prevents the generation of any deprecated API at all in the javadoc.
      - ``true``
 
+.. [#require_sdk_5_4] Require SDK version ``5.4.0`` or higher.
 .. [#require_sdk_5_6] Require SDK version ``5.6.0`` or higher.
 
 .. _module_natures.runtime_environment:
