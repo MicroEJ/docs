@@ -13,7 +13,6 @@ MicroVG
    vectorfont
    vectorimage
    avdLoader
-   how-to-append-glyphs
 
 
 ..

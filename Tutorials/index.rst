@@ -19,6 +19,7 @@ Tutorials
    tutorialImplementABlockingNativeMethodWithSNI
    getStartedWithGUI/index
    tutorialDiscoverEmbeddedDebuggingTechniques
+   tutorialAppendEmojisToVectorFont
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

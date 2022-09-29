@@ -1,5 +1,7 @@
 .. include:: aliases.rst
 
+.. _section_vector_fonts:
+
 Vector Fonts
 ============
 
@@ -168,6 +170,8 @@ The inter character distance can be adjusted for each string drawing. By default
    :align: center
 
 |endTable| 
+
+.. _colored_emojis:
 
 Colored Emojis
 ~~~~~~~~~~~~~~
