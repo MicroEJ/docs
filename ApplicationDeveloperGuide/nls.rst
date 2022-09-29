@@ -99,7 +99,9 @@ messages, for example:
 
    String label = Labels.NLS.getMessage(Labels.Label1);
 
-For the application to know which language to use among those made available and when, you can set it and change it at any point using the `setCurrentLocale(locale)`_ method. If no locale has been set yet when getting a message, the translation for the first locale available in alphabetical order will be used by default. However, you can also pick this locale to default to yourself by adding a `com.microej.binarynls.defaultLocale` property followed by a locale name in a ``.properties.list`` file. 
+For the application to know which language to use among those made available and when, you can set it and change it at any point using the `setCurrentLocale(locale)`_ method. 
+If no locale has been set yet when getting a message, the translation for the first locale available in alphabetical order will be used by default. 
+However, you can also pick this locale to default to yourself, by adding a `com.microej.binarynls.defaultLocale` property followed by a locale name in a ``.properties.list`` file. 
 
 
 .. _setCurrentLocale(locale): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#getCurrentLocale--
@@ -108,9 +110,13 @@ For the application to know which language to use among those made available and
 Dealing With Missing Translations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, if a translation is missing for a given ``msgid`` in a PO file or a ``string`` element in an XML Android String resource for a given language, the message returned by the `ej.nls.NLS.getMessage()`_ method with the locale set to this language will simply be the ``msgid`` itself or the ``name`` attribute for the string, respectively. However if returning this identifier is not a suitable solution for your application, you might want to set a fallback locale corresponding to a language to print the translation for a message in in case it is not available in the current language.
+By default, if a translation is missing for a given ``msgid`` in a PO file in a given language, the message returned by the `ej.nls.NLS.getMessage()`_ method with the locale set to this language will simply be the ``msgid`` itself. 
+In the case of an XML Android String resource, the ``name`` attribute of a missing ``string`` element will be returned. 
+However if returning this identifier is not a suitable solution, you might want to set a fallback locale parameter for an interface. 
+This parameter corresponds to a language to print the translation for a message in, in case it is not available in the current language.
 
-You can set this fallback locale by specifying a locale name in a ``.nls.list`` file after the name of the interface you want this locale to be the fallback for, separated by a colon ``:``. For example, with the following ``.nls.list`` file, the messages for which a translation is missing in a language in the ``Labels`` and ``Messages`` PO/XML files will be translated to ``en_US`` instead of just returning the ``msgid``/``name`` of the message.
+You can set this fallback locale by specifying a locale name in a ``.nls.list`` file, after the name of the interface you want this locale to be the fallback for, separated by a colon ``:``. 
+For example, with the following ``.nls.list`` file, if a translation is missing in a language for a message in the ``Labels`` and ``Messages`` PO/XML files, the message will be translated to ``en_US`` instead of just returning its ``msgid``/``name``.
 
 .. code-block::
 
@@ -118,7 +124,8 @@ You can set this fallback locale by specifying a locale name in a ``.nls.list`` 
    com.mycompany.myapp.Labels:en_US
    com.mycompany.myapp.Messages:en_US
 
-As such, you can specify a different fallback locale for each interface in a ``.nls.list`` file. For example, with the following ``.nls.list`` file, the messages in ``Labels`` will not have a fallback language set and will only return the ``msgid``/``name`` if a translation is missing, while missing translations will default to ``en_US`` for the messages in ``Messages``, and to ``ja_JP`` for the messages in ``Content`` :
+As such, you can specify a different fallback locale for each interface in a ``.nls.list`` file. 
+For example, with the following ``.nls.list`` file, the messages in ``Labels`` will not have a fallback language set and will only return the ``msgid``/``name`` if a translation is missing, while missing translations will default to ``en_US`` for the messages in ``Messages``, and to ``ja_JP`` for the messages in ``Content`` :
 
 .. code-block::
 
