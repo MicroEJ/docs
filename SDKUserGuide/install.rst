@@ -124,15 +124,24 @@ Now you can check if there is a newer SDK version available.
 Update SDK Version
 ------------------
 
+SDK versions are uploaded to an Eclipse P2 repository located at https://repository.microej.com/p2/sdk/.
+
+.. note::
+
+   To get the current SDK version installed in your SDK Distribution, see the :ref:`get_sdk_version` chapter.
+
+To update your SDK Distribution to a newer SDK version, follow the next steps:
+
 - Select :guilabel:`Help` > :guilabel:`Check for updates`.
 
 .. figure:: images/installation_process/check_update.png
    :alt: End screen
    :align: center
+   :scale: 75%
 
    Check for updates
 
-- If there is no update available, you will see the following screen:
+- If your SDK is up-to-date, you will see the following screen:
 
 .. figure:: images/installation_process/no_update.png
    :alt: End screen
@@ -140,7 +149,7 @@ Update SDK Version
 
    No update available
 
-- If there is an update available, you will see the following screen: 
+- If an update is available, you will see the following screen: 
 
 .. figure:: images/installation_process/update_available.png
    :alt: End screen
@@ -148,7 +157,7 @@ Update SDK Version
 
    Update available
 
-- Check the update you want to install. Then click on the :guilabel:`Next` button.
+- Check the version you want to install. Then click on the :guilabel:`Next` button.
 - Review and confirm the updates. Then click on the :guilabel:`Next` button.
 
 .. figure:: images/installation_process/review_update.png
@@ -157,7 +166,6 @@ Update SDK Version
 
    Review the updates
 
-- Be aware of the licensing agreement.
 - Select :guilabel:`I accept the terms of the license agreements.`. Then click on the :guilabel:`Finish` button.
 
 .. figure:: images/installation_process/license_update.png
