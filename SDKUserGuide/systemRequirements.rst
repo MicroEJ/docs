@@ -53,7 +53,7 @@ For the supported combinations, tests have been done with both the Oracle and th
 
 
 .. warning:: 
-   When installing the AdoptOpenJDK build on Windows, the option ``JavaSoft (Oracle) registry keys`` must be enabled:
+   When installing the Eclipse Temurin/AdoptOpenJDK build on Windows, the option ``JavaSoft (Oracle) registry keys`` must be enabled:
 
    .. figure:: images/adoptopenjdk-install.png
       :align: center
