@@ -5,54 +5,58 @@ Download and Install
 
 .. _sdk_download:
 
-Download
---------
+Download SDK Distribution
+-------------------------
+
+If you are evaluating MicroEJ, you must install the SDK Distribution mentioned in the Getting Started page.
+If you are starting a new project, we recommend to install the latest SDK Distribution ``22.06``.
+
+.. note::
+
+   SDK Distribution ``22.06`` requires an :ref:`Architecture <architecture_overview>` ``7.17.0`` or higher for JDK 11 compatibility.
+   Check the :ref:`system-requirements` page for the list of supported environments.
 
 .. list-table::
-   :widths: 10 5 10 30 30 30 30 
+   :widths: 10 5 30 30 30 30 10
+
 
    * - **SDK Distribution**
      - **JDK Version**
-     - **Eclipse Version**
      - **Windows**
      - **Linux**
      - **macOS x86_64 (Intel chip)**
      - **macOS aarch64 (M1 chip)**
-   * - ``21.11``
-     - ``8``
-     - ``2020-06``
-     - `Download for Windows <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Win64-21.11.exe>`__
-     - `Download for Linux <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Linux64-21.11.zip>`__
-     - `Download for macOS Intel <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-MacOS-21.11.zip>`__
-     - `N/A`
+     - **Eclipse Version**
    * - ``22.06``
      - ``11``
-     - ``2022-03``
      - `Download for Windows <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Win64-22.06.exe>`__
      - `Download for Linux <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Linux64-22.06.zip>`__
      - `Download for macOS Intel <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-22.06.zip>`__
      - `Download for macOS M1 <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-A64-22.06.zip>`__
-
-Check the :ref:`system-requirements` page for the list of supported environments.
-
-.. note::
-
-   SDK Distribution ``22.06`` requires to have an :ref:`Architecture <architecture_overview>` ``7.17`` or more.
-   So make sure to use the right Architecture version if you want to use this newer SDK Distribution version.
-
+     - ``2022-03``
+   * - ``21.11``
+     - ``8``
+     - `Download for Windows <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Win64-21.11.exe>`__
+     - `Download for Linux <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Linux64-21.11.zip>`__
+     - `Download for macOS Intel <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-MacOS-21.11.zip>`__
+     - `N/A`
+     - ``2020-06``
 
 Once downloaded, execute the installer and follow the installation process.
 
 If you need an older distribution of the SDK, it is available in the `SDK Downloads Page <https://repository.microej.com/packages/SDK/>`_.
 
 
-.. _sdk_installation_process:
+.. _sdk_installation_installer:
 
-Installation
-------------
+Install SDK Distribution
+------------------------
 
-- Launch the installer and click on the :guilabel:`Next` button.
+.. note:: 
 
+   Launching the SDK Distribution installer requires administrator privileges. If you don't have them, please jump to :ref:`sdk_installation_portable` section.
+
+- Launch the installer 
 
 .. figure:: images/installation_process/welcome_screen.png
    :alt: Welcome screen
@@ -60,7 +64,8 @@ Installation
 
    Welcome to the installer
 
-- Be aware of the licensing agreement.
+-  Click on the :guilabel:`Next` button.
+
 - Select :guilabel:`I accept the terms of this license agreement.`. Then click on the :guilabel:`Next` button.
 
 .. figure:: images/installation_process/license_screen.png
@@ -110,13 +115,13 @@ Installation
 
    Your installation has completed successfully
 
-The SDK is now installed on your computer. You can launch it from your application launcher or by executing the :guilabel:`MicroEJ` executable in the installation path.
+The SDK Distribution is now installed on your computer. You can launch it from your application launcher or by executing the :guilabel:`MicroEJ` executable in the installation path.
 
-At the first launch, please check if there is a newer version available. If so, please update your SDK. 
+Now you can check if there is a newer SDK version available.
 
 .. _sdk_update:
 
-Update the version
+Update SDK Version
 ------------------
 
 - Select :guilabel:`Help` > :guilabel:`Check for updates`.
