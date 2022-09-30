@@ -28,13 +28,13 @@ Architecture
 A :ref:`MicroEJ Architecture <architecture_overview>` contains the runtime port to a target
 instruction set (ISA), a C compiler (CC) and Foundation Libraries.
 
-The Architectures are distributed in two versions:
+Architectures are distributed in two versions:
 
 * :ref:`Evaluation Architectures <evaluation_license>`: license with runtime limitations (explained in the :ref:`Application Developer Guide <limitations>`).
 
 * :ref:`Production Architectures <production_license>`: license suitable for production.
 
-A selection of supported embedded architectures can be found here:
+A selection of supported embedded Architectures can be found here:
 `<https://developer.microej.com/mej32-embedded-runtime-architectures/>`_
 
 The Architecture is either provided from:
