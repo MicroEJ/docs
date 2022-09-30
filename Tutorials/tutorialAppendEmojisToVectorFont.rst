@@ -1,4 +1,4 @@
-.. include:: aliases.rst
+.. _tutorial_append_emojis:
 
 How to Add Emojis to a Vector Font
 ==================================
