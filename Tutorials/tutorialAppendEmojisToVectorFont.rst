@@ -31,7 +31,7 @@ wishing to familiarize themselves with the vector features of :ref:`MicroVG <sec
 Prerequisites
 -------------
 
-* Windows 10 (and higher) or MacOS 10.14 (and higher),
+* Windows 10 (and higher) or macOS 10.14 (and higher),
 * An COLR/CPAL emoji font (e.g., Segoe UI Emoji),
 * A target font (i.e., a TTF/OTF font to append emojis to).
 
@@ -75,6 +75,8 @@ Append the Emoji Glyphs
 
 
 The exported font can then be used in an application, as described in the :ref:`Application Developer Guide <section_vector_fonts>`.
+
+This procedure can also be used to add non-emoji glyphs to a font.
 
 .. warning::
 
