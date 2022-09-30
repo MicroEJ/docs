@@ -104,7 +104,7 @@ If no locale has been set yet when getting a message, the translation for the fi
 However, you can also pick this locale to default to yourself, by adding a `com.microej.binarynls.defaultLocale` property followed by a locale name in a ``.properties.list`` file. 
 
 
-.. _setCurrentLocale(locale): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#getCurrentLocale--
+.. _setCurrentLocale(locale): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#setCurrentLocale-java.lang.String-
 
 
 Dealing With Missing Translations
