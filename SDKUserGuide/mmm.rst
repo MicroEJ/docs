@@ -883,11 +883,11 @@ Ask your System Administrator, or retrieve the SSL certificate and add it to the
 
 - on Windows
 
-  #. Install `Keystore Explorer <http://keystore-explorer.org/downloads.html>`_,
+  #. Install `Keystore Explorer <http://keystore-explorer.org/downloads.html>`_.
   #. Start Keystore Explorer, and open file ``[JRE_HOME]/lib/security/cacerts`` or ``[JDK_HOME]/jre/lib/security/cacerts`` with the password ``changeit``.
-     You may not have the right to modify this file. Edit rights if needed before opening it,
-  #. Click on :guilabel:`Tools`, then :guilabel:`Import Trusted Certificate`,
-  #. Select your certificate,
+     You may not have the right to modify this file. Edit rights if needed before opening it or open Keystore Explorer with admin rights.
+  #. Click on :guilabel:`Tools`, then :guilabel:`Import Trusted Certificate`.
+  #. Select your certificate.
   #. Save the ``cacerts`` file.
 
 - on Linux/macOS
