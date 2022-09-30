@@ -160,8 +160,10 @@ Import the Former Platform Sources
 - Go to :guilabel:`File` > :guilabel:`Import...` > 
   :guilabel:`General` > :guilabel:`Existing Projects into Workspace`.
 - Browse to the archive file that contains the platform sources, like in the example below.
-.. figure:: images/platformMigration-import.png
-   :align: center
+
+  .. figure:: images/platformMigration-import.png
+     :align: center
+
 - Select the ``-configuration``, ``-fp`` and ``-bsp`` projects prefixed with the Platform name (e.g., ``STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS``).
 - Click ``Finish``.
 
