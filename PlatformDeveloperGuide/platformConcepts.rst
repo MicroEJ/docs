@@ -43,7 +43,7 @@ platform creation.
 Modules
 -------
 
-The primary mechanism for augmenting the capabilities of a :ref:`concepts-jpf` is to add modules to it.
+The primary mechanism for augmenting the capabilities of a Platform is to add modules to it.
 
 A MicroEJ module is a group of related files (Foundation Libraries,
 scripts, link files, C libraries, Simulator, tools, etc.) that together
@@ -64,9 +64,9 @@ Low Level API Pattern
 Principle
 ~~~~~~~~~
 
-Each time the user must supply C code that connects a platform component
-to the target, a *Low Level API* is defined. There is a standard pattern
-for the implementation of these APIs. Each interface has a name and is
+Each time the user has to supply the C code that links a platform component
+to the target hardware, a *Low Level API* is defined. There is a standard pattern
+for the definition and implementation of these APIs. Each interface has a name and is
 specified by two header files:
 
 -  ``[INTERFACE_NAME].h`` specifies the functions that make up the
