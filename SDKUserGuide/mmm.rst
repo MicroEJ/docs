@@ -892,8 +892,8 @@ Ask your System Administrator, or retrieve the SSL certificate and add it to the
 
 - on Linux/macOS
 
-  #. Open a terminal,
-  #. Make sure the JDK's ``bin`` folder is in the ``PATH`` environment variable,
+  #. Open a terminal.
+  #. Make sure the JDK's ``bin`` folder is in the ``PATH`` environment variable.
   #. Execute the following command::
 
       keytool -importcert -v -noprompt -trustcacerts -alias myAlias -file /path/to/the/certificate.pem -keystore /path/to/the/truststore -storepass changeit
