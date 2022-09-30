@@ -20,8 +20,8 @@ The flow layout lays out any number of children horizontally or vertically, usin
 
 Creating a flow layout:
 
-- First, instantiate a ``Flow`` container, then add two ``Label`` objets to this container. 
-- Finally, add the ``Flow`` container to the ``Desktop``.
+- First, instantiate a `Flow`_ container, then add two `Label`_ objets to this container. 
+- Finally, add the `Flow`_ container to the `Desktop`_.
 
 .. code:: java
 
@@ -50,10 +50,10 @@ Using a Canvas
 
 A canvas lays out any number of children freely.
 
-To add a widget to a ``Canvas``, specify its position and size.
+To add a widget to a `Canvas`_, specify its position and size.
 
 .. note::
-   Using ``Widget.NO_CONSTRAINT`` sets the width and height to the optimal size of the widget.
+   Using `Widget.NO_CONSTRAINT`_ sets the width and height to the optimal size of the widget.
 
 .. code:: java
 
@@ -74,7 +74,11 @@ To add a widget to a ``Canvas``, specify its position and size.
 .. image:: images/canvassample.png
  :align: center 
 
-
+.. _Flow: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/Flow.html
+.. _Label: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Label.html
+.. _Desktop: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html
+.. _Canvas: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/Canvas.html
+.. _Widget.NO_CONSTRAINT: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#NO_CONSTRAINT
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

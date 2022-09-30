@@ -18,8 +18,8 @@ The goals are:
 Usage
 -----
 
-- An animation can be created by implemeting ``Animation`` interface and its ``tick()`` method.
-- The ``tick()`` method is called for each step of the animation.
+- An animation can be created by implementing the `Animation`_ interface and its `tick()`_ method.
+- The `tick()`_ method is called for each step of the animation.
 - Every time the method is called, the widget should be re-rendered.
 - The animation can be stopped by returning ``false``.
    
@@ -73,6 +73,10 @@ Usage
        desktop.setWidget(flow);
        desktop.requestShow();
     }
+
+
+.. _Animation: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animation.html
+.. _tick(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animation.html#tick-long-
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

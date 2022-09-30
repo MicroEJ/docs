@@ -36,7 +36,7 @@ Adding Images
 Displaying an Image
 -------------------
 
-- To display this image, first create an instance of the widget ``ImageWidget``, specifying the path to the image in the constructor:
+- To display this image, first create an instance of the widget `ImageWidget`_, specifying the path to the image in the constructor:
 
   .. code:: java
 
@@ -77,6 +77,8 @@ Displaying an Image
 
   .. image:: images/imagessimulator.png
     :align: center 
+
+.. _ImageWidget: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/ImageWidget.html
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

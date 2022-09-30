@@ -1,9 +1,11 @@
 Fonts
 =====
 
-- Fonts are graphical resources that can be accessed with a call to ``ej.microui.display.Font.getFont()``.
+- Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont()`_.
   To be displayed, these fonts have to be converted at build-time from their source format to the display raw format by the font generator tool.
 - Fonts, just like images, must be declared in a ``*.fonts.list`` file. 
+
+.. _ej.microui.display.Font.getFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String-
 
 Creating a font
 ---------------

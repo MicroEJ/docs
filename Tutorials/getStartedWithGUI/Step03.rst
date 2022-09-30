@@ -1,13 +1,20 @@
 Style
 =====
 
-Instances of Desktop, Widget, and Container classes are semantic elements of the GUI, describing the structure and meaning of the content.
+Instances of `Desktop`_, `Widget`_, and `Container`_ classes are semantic elements of the GUI, describing the structure and meaning of the content.
 
-The Style API (ej.mwt.style) defines style options for widgets, allowing for a clear separation of the core structure (content) and the design aspects (colors, fonts, spacing, background, etc.).
+The Style API (`ej.mwt.style`_) defines style options for widgets, allowing for a clear separation of the core structure (content) and the design aspects (colors, fonts, spacing, background, etc.).
    
 .. note::
    Some of the attributes are inspired by CSS, like Background, Border, Color, Dimension, Font, Alignment, Margin/Padding.
-   And the CascadingStylesheet manages the order of the selectors (with their specificity), the cascading, etc.
+   And the `CascadingStylesheet`_ manages the order of the selectors (with their specificity), the cascading, etc.
+
+
+.. _Desktop: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html
+.. _Widget: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html
+.. _Container: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Container.html
+.. _ej.mwt.style: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/package-summary.html
+.. _CascadingStylesheet: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html
 
 Selectors
 ---------
@@ -24,7 +31,7 @@ Selectors determine the widget(s) to which a style applies. There are three main
 Usage
 `````
 
-- With a CascadingStylesheet, we can define a style for all labels using a TypeSelector:
+- With a `CascadingStylesheet`_, we can define a style for all labels using a TypeSelector:
 
   .. code:: java
 

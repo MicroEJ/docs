@@ -4,8 +4,8 @@ Creating a Contact List using Scroll List
 Creating the Contact Widget
 ---------------------------
 
-- As explained in Creating Widget, it is possible to create our own widget by
-  just extending the Widget class.
+- As explained in :ref:`ui-creating-widgets`, it is possible to create our own widget by
+  just extending the `Widget`_ class.
 - First, let's create a constructor with all the things that we are
   going to need for this.
 
@@ -16,7 +16,7 @@ Creating the Contact Widget
        this.image = image;
     }
 
-- Then, overriding the two abstract methods of Widget
+- Then, overriding the two abstract methods of ``Widget``
 
   .. code:: java
 
@@ -88,6 +88,7 @@ Creating the Contact Widget
   .. image:: images/listcontact.png
    :align: center
 
+.. _Widget: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

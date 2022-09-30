@@ -1,13 +1,15 @@
+.. _ui-creating-widgets:
+
 Creating Widgets
 ================
 
-- To create a widget, we need to create a class that extends the ``Widget`` superclass.
+- To create a widget, we need to create a class that extends the `Widget`_ superclass.
 - In this example, we are going to create a simple progress bar.
 - So create a MyProgressBarWidget class extending Widget.
 
 .. note::
     
-   The ``computeContentOptimalSize()`` and ``renderContent()`` methods must be overridden:
+   The `computeContentOptimalSize()`_ and `renderContent()`_ methods must be overridden:
 
    .. code:: java
 
@@ -99,6 +101,9 @@ Using with Animator
   .. image:: images/progressbar.png
    :align: center
 
+.. _Widget: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html
+.. _computeContentOptimalSize(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#computeContentOptimalSize-ej.mwt.util.Size-
+.. _renderContent(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#renderContent-ej.microui.display.GraphicsContext-int-int-
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
