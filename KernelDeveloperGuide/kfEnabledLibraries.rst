@@ -29,7 +29,7 @@ The physical display is owned by only one context at a time (the Kernel
 or one Feature). The following cases may trigger a physical display
 owner switch:
 
--  during a call to  `Display.requestShow(Displayable)`_, `Display.requestHide(Displayable)`_ or `Display.requestRender()`_: after the successful permission check, it is assigned to the context owner.
+-  during a call to  `Display.requestShow(Displayable)`_, `Display.requestHide(Displayable)`_, `Display.requestRender()`_ or `Display.requestFlush()`_: after the successful permission check, it is assigned to the context owner.
 
 -  during a call to `MicroUI.callSerially(Runnable)`_: after the successful permission check it is assigned to owner of the ``Runnable`` instance.
 
@@ -55,6 +55,7 @@ The call to `Display.callOnFlushCompleted(Runnable)`_ has no effect when the dis
 .. _Display.requestShow(Displayable): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestShow-ej.microui.display.Displayable-
 .. _Display.requestHide(Displayable): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestHide-ej.microui.display.Displayable-
 .. _Display.requestRender(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestRender--
+.. _Display.requestFlush(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestFlush--
 .. _MicroUI.callSerially(Runnable): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#callSerially-java.lang.Runnable-
 .. _Displayable: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Displayable.html
 .. _Displayable.onHidden(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Displayable.html#onHidden--
