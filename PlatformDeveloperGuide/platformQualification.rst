@@ -60,14 +60,14 @@ The Platform Qualification Tools provide the following components:
 - Build and Run Scripts examples:
 
   - Used to generate and deploy a MicroEJ Firmware on a device by
-    invoking a third-party toolchain for the BSP
+    invoking a third-party toolchain for the BSP.
   - Added when integrating the BSP to the Platform (see
     :ref:`bsp_connection_build_script` and
     :ref:`bsp_connection_run_script` or check the tutorial :ref:`tutorial_create_platform_build_and_run_scripts`).
 
 - C and Java Test Suites:
 
-  - Used to validate the Low Level APIs implementations
+  - Used to validate the Low Level APIs implementations.
   - Validated during the BSP development and whenever an Abstraction
     Layer implementation is added or changed (see
     :ref:`platform_testsuite` or check the tutorial

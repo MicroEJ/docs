@@ -1,4 +1,4 @@
-
+.. _platform_overview:
 
 Introduction
 ------------
