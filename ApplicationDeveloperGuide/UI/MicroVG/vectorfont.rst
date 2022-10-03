@@ -1,5 +1,7 @@
 .. include:: aliases.rst
 
+.. _section_vector_fonts:
+
 Vector Fonts
 ============
 
@@ -169,6 +171,8 @@ The inter character distance can be adjusted for each string drawing. By default
 
 |endTable| 
 
+.. _colored_emojis:
+
 Colored Emojis
 ~~~~~~~~~~~~~~
 
@@ -177,6 +181,8 @@ The library supports the drawing of colored multilayer glyphs, but only for the 
 Only font files with CPAL/COLR tables are supported.
 
 Font files with CBDT/CBLC tables are not supported.
+
+To add colored emojis to a font, see the tutorial :ref:`tutorial_append_emojis`.
 
  
 .. _metrics_and_text_positioning:
