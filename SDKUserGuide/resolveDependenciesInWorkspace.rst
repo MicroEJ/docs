@@ -56,14 +56,14 @@ Beside Foundation Library projects, there is usually a :ref:`Mock <mock>` projec
 
 When the API is set as a dependency, the Implementation project is automatically used at runtime if it is opened in the workspace.
 
-If a Mock project is also opened in the workspace, it is automatically used for execution on Simulator. 
+If a Mock project or a Front Panel project is also opened in the workspace, it is automatically used for execution on Simulator. 
 
 .. note::
 
-   When opened in the workspace, the Implementation project and the Mock project are used regardless of their version 
-   or if they are set as dependencies.
+   When opened in the workspace, Foundation Library Implementation projects, Mock projects and Front Panel projects
+   are loaded, regardless of their version, prior to the ones provided by the Platform (if any).
 
-To avoid the use of the Implementation project and the Mock project, 
+To avoid the use of an Implementation project, a Mock project or a Front Panel project, 
 uncheck the :guilabel:`Resolve Foundation Library in workspace` option in :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Settings`.
 
 .. figure:: images/resolve.png
