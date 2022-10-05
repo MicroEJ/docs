@@ -55,7 +55,6 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    :maxdepth: 1
 
    install
-   systemRequirements
    licenses
    repository
    github
