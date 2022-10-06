@@ -3,7 +3,7 @@
 Null Analysis
 =============
 
-`NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_ thrown at runtime is one of the most common causes for failure of Java programs.
+`NullPointerException`_ thrown at runtime is one of the most common causes for failure of Java programs.
 The Null Analysis tool can detect such programming errors (misuse of potential ``null`` Java values) at compile-time.
 
 The following example of code shows a typical Null Analysis error detection in MicroEJ SDK.
@@ -12,6 +12,8 @@ The following example of code shows a typical Null Analysis error detection in M
    :alt: Example of Null Analysis Detection
      
    Example of Null Analysis Detection
+
+.. _NullPointerException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html
 
 Principle
 ---------
@@ -26,17 +28,17 @@ Java Code Annotation
 
 MicroEJ defines its own annotations:
 
-- `@NonNullByDefault <https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNullByDefault.html>`_: Indicates that all fields, method return values or parameters can never be null in the annotated package or type.
+- `@NonNullByDefault`_: Indicates that all fields, method return values or parameters can never be null in the annotated package or type.
   This rule can be overridden on each element by using the Nullable annotation.
   
-- `@Nullable <https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/Nullable.html>`_: Indicates that a field, local variable, method return value or parameter can be null.
+- `@Nullable`_: Indicates that a field, local variable, method return value or parameter can be null.
 
-- `@NonNull <https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNull.html>`_: Indicates that a field, local variable, method return value or parameter can never be null.
+- `@NonNull`_: Indicates that a field, local variable, method return value or parameter can never be null.
 
 MicroEJ recommends to annotate the Java code as follows:
 
 - In each Java package, create a ``package-info.java`` file and annotate the Java package with ``@NonNullByDefault``.
-  This is a common good practice to deal with non ``null`` elements by default to avoid undesired `NullPointerException <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html>`_.
+  This is a common good practice to deal with non ``null`` elements by default to avoid undesired `NullPointerException`_.
   It enforces the behavior which is already widely outlined in Java coding rules.
 
   .. figure:: images/null_analysis_packageinfo.png
@@ -48,7 +50,14 @@ MicroEJ recommends to annotate the Java code as follows:
 
 .. note::
    
-   MicroEJ SDK ``5.3.0`` or higher requires annotations declared in `EDC-1.3.3 <https://repository.microej.com/modules/ej/api/edc/1.3.3/>`_ or higher. See `EDC 1.3.3 Changelog <https://repository.microej.com/modules/ej/api/edc/1.3.3/CHANGELOG-1.3.3.md>`_ for more details.
+   MicroEJ SDK ``5.3.0`` or higher requires annotations declared in `EDC-1.3.3`_ or higher. See `EDC 1.3.3 Changelog`_ for more details.
+
+
+.. _@NonNullByDefault: https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNullByDefault.html
+.. _@Nullable: https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/Nullable.html
+.. _@NonNull: https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNull.html
+.. _EDC-1.3.3: https://repository.microej.com/modules/ej/api/edc/1.3.3/
+.. _EDC 1.3.3 Changelog: https://repository.microej.com/modules/ej/api/edc/1.3.3/CHANGELOG-1.3.3.md
 
 Module Project Configuration 
 ----------------------------
@@ -96,12 +105,16 @@ Many libraries available on :ref:`central_repository` are annotated with Null An
 For the benefit of Null Analysis, some APIs have been slightly constrained compared to the Javadoc description.
 Here are some examples to illustrate the philosophy:
 
-- `System.getProperty(String key, String def) <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#getProperty-java.lang.String-java.lang.String->`_ does not accept a ``null`` default value, which allows to ensure the returned value is always non ``null``.
-- Collections of the Java Collections Framework that can hold ``null`` elements (e.g. `HashMap <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/HashMap.html>`_) do not accept ``null`` elements. 
-  This allows APIs to return ``null`` (e.g. `HashMap.get(Object) <https://repository.microej.com/javadoc/microej_5.x/apis/java/util/HashMap.html#get-java.lang.Object->`_) only when an element is not contained in the collection.
+- `System.getProperty(String key, String def)`_ does not accept a ``null`` default value, which allows to ensure the returned value is always non ``null``.
+- Collections of the Java Collections Framework that can hold ``null`` elements (e.g. `HashMap`_) do not accept ``null`` elements. 
+  This allows APIs to return ``null`` (e.g. `HashMap.get(Object)`_) only when an element is not contained in the collection.
 
 Implementations are left unchanged and still comply with the Javadoc description whether the Null Analysis is enabled or not. 
 So if these additional constraints are not acceptable for your project, please disable Null Analysis.
+
+.. _System.getProperty(String key, String def): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#getProperty-java.lang.String-java.lang.String-
+.. _HashMap: https://repository.microej.com/javadoc/microej_5.x/apis/java/util/HashMap.html
+.. _HashMap.get(Object): https://repository.microej.com/javadoc/microej_5.x/apis/java/util/HashMap.html#get-java.lang.Object->
 
 
 Advanced Use

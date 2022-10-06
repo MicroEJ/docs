@@ -24,7 +24,7 @@ The Static MicroUI Initializer tool takes as entry point the initialization file
 
 The Static MicroUI Initializer tool is able to generate two files:
 
--  A Java library which extends MicroUI library. This library is automatically added to the :ref:`MicroEJ Application classpath<chapter.microej.classpath>` when MicroUI API library is fetched. This library is used at MicroUI startup to create all instances of I/O devices (`Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_, `EventGenerator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_, etc.) and contains the fonts described into the configuration file (these fonts are also called "system fonts").
+-  A Java library which extends MicroUI library. This library is automatically added to the :ref:`MicroEJ Application classpath<chapter.microej.classpath>` when MicroUI API library is fetched. This library is used at MicroUI startup to create all instances of I/O devices (`Display`_, `EventGenerator`_, etc.) and contains the fonts described into the configuration file (these fonts are also called "system fonts").
 
 .. warning:: This MicroUI extension library is always generated and MicroUI library cannot run without this extension.
 
@@ -40,6 +40,9 @@ The Static MicroUI Initializer tool is able to generate two files:
    :align: center
 
    Static MicroUI Initializer Process
+
+.. _Display: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.htmls
+.. _EventGenerator: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html
 
 XML File
 ========
@@ -87,9 +90,9 @@ The XML file grammar is detailed :ref:`here<muiStaticInit>`. The following list 
 
 * Event generators element: The ``eventgenerators`` element augments the initialization file with:
 
-    -  the configuration of the predefined MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_: `Command <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Command.html>`_, `Buttons <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html>`_, `States <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/States.html>`_, `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ and Touch.
+    -  the configuration of the predefined MicroUI `EventGenerator`_: `Command`_, `Buttons`_, `States`_, `Pointer`_ and Touch.
 
-    -  the configuration of the generic MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_.
+    -  the configuration of the generic MicroUI `EventGenerator`_.
 
     The following snippet is an example of ``eventgenerators`` element:
 
@@ -124,22 +127,28 @@ The XML file grammar is detailed :ref:`here<muiStaticInit>`. The following list 
             <elem value="1"/>
         </array>
 
+
+.. _Command: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Command.html
+.. _Buttons: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html
+.. _States: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/States.html
+.. _Pointer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html
+
 XML File Example
 ================
 
 This common MicroUI initialization file initializes MicroUI with:
 
--  a `Display <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html>`_,
+-  a `Display`_,
 
--  a `Command <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Command.html>`_ event generator,
+-  a `Command`_ event generator,
 
--  a `Buttons <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html>`_ event generator which targets *n* buttons (3 first buttons having extended features),
+-  a `Buttons`_ event generator which targets *n* buttons (3 first buttons having extended features),
 
--  a `Buttons <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html>`_ event generator which targets the buttons of a joystick,
+-  a `Buttons`_ event generator which targets the buttons of a joystick,
 
--  a `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ event generator which targets a touch panel,
+-  a `Pointer`_ event generator which targets a touch panel,
 
--  a `Font <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html>`_ whose path is relative to this file.
+-  a `Font`_ whose path is relative to this file.
 
 ::
 
@@ -160,6 +169,7 @@ This common MicroUI initialization file initializes MicroUI with:
 
    </microui>
 
+.. _Font: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html
 
 Dependencies
 ============

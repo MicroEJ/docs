@@ -15,7 +15,7 @@ This module is composed of only one element: an implementation of Low-Level APIs
 Functional Description
 ======================
 
-The Matrix module implements the framework of the MicroVG `Matrix <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/Matrix.html>`_. 
+The Matrix module implements the framework of the MicroVG `Matrix`_. 
 It provides Low-Level APIs that manipulate the matrices: fill an identity matrix, do a translation, a rotation, or a scaling and concatenate two matrices.
 
 A matrix is a 3x3 matrix, and its elements are encoded in ``float`` (32-bit values):
@@ -31,6 +31,8 @@ A matrix is a 3x3 matrix, and its elements are encoded in ``float`` (32-bit valu
 * matrix_memory[8] = matrix[2][2];
 
 The buffer where the matrix is encoded is stored in the Java heap. 
+
+.. _Matrix: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/Matrix.html
 
 .. _section_vg_matrix_llapi:
 
@@ -53,7 +55,7 @@ The low-level APIs that have to be implemented are listed in the header file ``L
 Use
 ===
 
-The MicroVG Matrix APIs are available in the class `ej.microvg.Matrix <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/Matrix.html>`_.
+The MicroVG Matrix APIs are available in the class ``ej.microvg.`` `Matrix`_.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
