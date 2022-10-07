@@ -5,7 +5,8 @@ Install Latest SDK Distribution
 
 This section will guide you to install the latest SDK Distribution ``22.06`` using the step-by-step executable installer.
 
-The SDK Distribution ``22.06`` requires a JDK 11 and thus can only work with an :ref:`Architecture <architecture_overview>` ``7.17.0`` or higher.
+The SDK Distribution ``22.06`` requires a JDK 11 and thus can only work with an :ref:`Architecture 7.17.0 <changelog-7.17.0>` or higher.
+In all other cases, please jump to :ref:`sdk_installation_21_11` section.
 See also the :ref:`system-requirements` page for more information on the list of supported environments.
 
 .. note:: 
