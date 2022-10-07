@@ -20,8 +20,8 @@ Download the SDK Distribution ``22.06`` installer for your operating system:
 
 - `Windows (.exe) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Win64-22.06.exe>`__
 - `Linux  (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Linux64-22.06.zip>`__
-- `macOS Intel (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-22.06.zip>`__
-- `macOS M1 (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-A64-22.06.zip>`__
+- `macOS x86_64 - Intel chip (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-22.06.zip>`__
+- `macOS aarch64 - M1 chip (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-A64-22.06.zip>`__
 
 Check JDK Version
 -----------------
