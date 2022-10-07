@@ -6,7 +6,6 @@ Install Latest SDK Distribution
 This section will guide you to install the latest SDK Distribution ``22.06`` using the step-by-step executable installer.
 
 The SDK Distribution ``22.06`` requires a JDK 11 and thus can only work with an :ref:`Architecture <architecture_overview>` ``7.17.0`` or higher.
-If you want to evaluate MicroEJ, please refer to the :ref:`getting_started` chapter that will guide you to install a SDK Distribution compatible with the Getting Started page.
 See also the :ref:`system-requirements` page for more information on the list of supported environments.
 
 .. note:: 
