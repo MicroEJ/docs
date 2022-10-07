@@ -66,7 +66,7 @@ Install SDK Distribution
 
    Accept the terms of this license agreement
 
-- Select the installation path of your SDK. By default it is ``C:/Program Files/MicroEJ/MicroEJ-SDK-{SDK_VERSION}`` for Windows. Then click on the :guilabel:`Next` button.
+- Select the installation path of your SDK. By default it is ``C:\Program Files\MicroEJ\MicroEJ-SDK-21.11`` for Windows. Then click on the :guilabel:`Next` button.
 
 .. figure:: images/installation_process/SDK21_11/installation_path_screen.png
    :alt: Installation path screen
