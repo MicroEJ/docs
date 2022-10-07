@@ -52,7 +52,7 @@ Install SDK Distribution
   - On Linux, unzip ``MicroEJ-SDK-Installer-Linux64-22.06.zip`` and start ``MicroEJ-SDK-Installer-Linux64-1.0.0.sh``.
   - On macOS, unzip ``MicroEJ-SDK-Installer-Linux64-22.06.zip`` and start ``MicroEJ-SDK-Installer-MacOS-1.0.0.app``.
 
-.. figure:: images/installation_process/welcome_screen.png
+.. figure:: images/installation_process/SDK22_06/welcome_screen.png
    :alt: Welcome screen
    :align: center
 
@@ -62,7 +62,7 @@ Install SDK Distribution
 
 - Select :guilabel:`I accept the terms of this license agreement.`. Then click on the :guilabel:`Next` button.
 
-.. figure:: images/installation_process/license_screen.png
+.. figure:: images/installation_process/SDK22_06/license_screen.png
    :alt: License screen
    :align: center
 
@@ -70,7 +70,7 @@ Install SDK Distribution
 
 - Select the installation path of your SDK. By default it is ``C:/Program Files/MicroEJ/MicroEJ-SDK-{SDK_VERSION}`` for Windows. Then click on the :guilabel:`Next` button.
 
-.. figure:: images/installation_process/installation_path_screen.png
+.. figure:: images/installation_process/SDK22_06/installation_path_screen.png
    :alt: Installation path screen
    :align: center
 
@@ -79,7 +79,7 @@ Install SDK Distribution
 - Click on the :guilabel:`OK` button to confirm the installation path.
 
 
-.. figure:: images/installation_process/installation_validation_screen.png
+.. figure:: images/installation_process/SDK22_06/installation_validation_screen.png
    :alt: Confirm path screen
    :align: center
 
@@ -87,7 +87,7 @@ Install SDK Distribution
 
 - Wait until the installation is done. Then click on the :guilabel:`Next` button.
 
-.. figure:: images/installation_process/installation_progress_screen.png
+.. figure:: images/installation_process/SDK22_06/installation_progress_screen.png
    :alt:  Installation screen
    :align: center
 
@@ -95,7 +95,7 @@ Install SDK Distribution
 
 - Select options depending on your own preferences. Then click on the :guilabel:`Next` button.
 
-.. figure:: images/installation_process/options_screen.png
+.. figure:: images/installation_process/SDK22_06/options_screen.png
    :alt: Options screen
    :align: center
 
@@ -103,7 +103,7 @@ Install SDK Distribution
 
 - The installation has completed successfully. Click on the :guilabel:`Done` button.
 
-.. figure:: images/installation_process/installation_finished_screen.png
+.. figure:: images/installation_process/SDK22_06/installation_finished_screen.png
    :alt: End screen
    :align: center
 
