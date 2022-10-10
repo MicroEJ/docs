@@ -16,7 +16,7 @@ Or when launching the SDK, you may get the following error: :guilabel:`Version: 
 
 The default Java version installed on your system is not compatible. You have two options:
 
-- either install a JDK 11 as your default JVM,
+- either install a JDK 11 as your default JVM. If you are on Windows OS, ensure you enabled ``JavaSoft (Oracle) registry keys`` during the JDK installation (see :ref:`get_jdk`),
 - or install the :ref:`portable SDK Distribution <sdk_installation_portable>` if you don't want to modify your default JVM version. 
   
 This latter case is recommended if you are installing SDK Dist. ``22.06`` while you already have active projects based on SDK Dist. ``21.11``.
