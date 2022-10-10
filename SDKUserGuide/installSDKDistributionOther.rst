@@ -6,10 +6,10 @@ Install Other SDK Distributions
   installSDKDistributionPortable
   installSDKDistribution21_11
 
-The following table summarize all SDK Distributions based on version ``5.x``.
+The following table gathers all SDK Distributions links for SDK version ``5.x``.
 
 .. list-table::
-   :widths: 10 5 30 30 30 30 10
+   :widths: 10 10 20 20 20 20 15 15
 
 
    * - **SDK Distribution**
@@ -18,21 +18,72 @@ The following table summarize all SDK Distributions based on version ``5.x``.
      - **Linux**
      - **macOS x86_64 (Intel chip)**
      - **macOS aarch64 (M1 chip)**
+     - **SDK Version**
      - **Eclipse Version**
    * - ``22.06``
      - ``11``
-     - `Download for Windows <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Win64-22.06.exe>`__
-     - `Download for Linux <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Linux64-22.06.zip>`__
-     - `Download for macOS Intel <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-22.06.zip>`__
-     - `Download for macOS M1 <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-A64-22.06.zip>`__
+     - `Installer (.exe) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Win64-22.06.exe>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Linux64-22.06.zip>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-22.06.zip>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-A64-22.06.zip>`__
+     - ``5.6.0``
      - ``2022-03``
    * - ``21.11``
      - ``8``
-     - `Download for Windows <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Win64-21.11.exe>`__
-     - `Download for Linux <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Linux64-21.11.zip>`__
-     - `Download for macOS Intel <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-MacOS-21.11.zip>`__
+     - `Installer (.exe) <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Win64-21.11.exe>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Linux64-21.11.zip>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-MacOS-21.11.zip>`__
      - `N/A`
-     - ``2020-06``  
+     - ``5.5.0``
+     - ``2020-06`` 
+   * - ``21.03``
+     - ``8``
+     - `Installer (.exe) <https://repository.microej.com/packages/SDK/21.03/MicroEJ-SDK-Installer-Win64-21.03.exe>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/21.03/MicroEJ-SDK-Installer-Linux64-21.03.zip>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/21.03/MicroEJ-SDK-Installer-MacOS-21.03.zip>`__
+     - `N/A`
+     - ``5.4.0``
+     - ``2020-06`` 
+   * - ``20.12``
+     - ``8``
+     - `Installer (.exe) <https://repository.microej.com/packages/SDK/20.12/MicroEJ-SDK-Installer-Win64-20.12.exe>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/20.12/MicroEJ-SDK-Installer-Linux64-20.12.zip>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/20.12/MicroEJ-SDK-Installer-MacOS-20.12.zip>`__
+     - `N/A`
+     - ``5.3.1``
+     - ``2020-06`` 
+   * - ``20.10``
+     - ``8``
+     - `Installer (.exe) <https://repository.microej.com/packages/SDK/20.10/MicroEJ-SDK-Installer-Win64-20.10.exe>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/20.10/MicroEJ-SDK-Installer-Linux64-20.10.zip>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/20.10/MicroEJ-SDK-Installer-MacOS-20.10.zip>`__
+     - `N/A`
+     - ``5.3.0``
+     - ``2020-06`` 
+   * - ``20.07``
+     - ``8``
+     - `Installer (.exe) <https://repository.microej.com/packages/SDK/20.07/MicroEJ-SDK-Installer-Win64-20.07.exe>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/20.07/MicroEJ-SDK-Installer-Linux64-20.07.zip>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/20.07/MicroEJ-SDK-Installer-MacOS-20.07.zip>`__
+     - `N/A`
+     - ``5.2.0``
+     - ``4.7.2`` 
+   * - ``19.05``
+     - ``8``
+     - `Installer (.exe) <https://repository.microej.com/packages/SDK/19.05/MicroEJ-SDK-Installer-Win64-19.05.exe>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/19.05/MicroEJ-SDK-Installer-Linux64-19.05.zip>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/19.05/MicroEJ-SDK-Installer-MacOS-19.05.zip>`__
+     - `N/A`
+     - ``5.1.0``
+     - ``4.7.2``  
+   * - ``19.02``
+     - ``8``
+     - `Installer (.exe) <https://repository.microej.com/packages/SDK/19.02/MicroEJ-SDK-Installer-Win64-19.02.exe>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/19.02/MicroEJ-SDK-Installer-Linux64-19.02.zip>`__
+     - `Installer (.zip) <https://repository.microej.com/packages/SDK/19.02/MicroEJ-SDK-Installer-MacOS-19.02.zip>`__
+     - `N/A`
+     - ``5.0.1``
+     - ``4.7.2`` 
 
 If you need an older distribution of the SDK, it is available in the `SDK Downloads Page <https://repository.microej.com/packages/SDK/>`_.
 

@@ -5,8 +5,8 @@ Install Latest SDK Distribution
 
 This section will guide you to install the latest SDK Distribution ``22.06`` using the step-by-step executable installer.
 
-The SDK Distribution ``22.06`` requires a JDK 11 and thus can only work with an :ref:`Architecture <architecture_overview>` ``7.17.0`` or higher.
-If you want to evaluate MicroEJ, please refer to the :ref:`getting_started` chapter that will guide you to install a SDK Distribution compatible with the Getting Started page.
+The SDK Distribution ``22.06`` requires a JDK 11 and thus can only work with an :ref:`Architecture 7.17.0 <changelog-7.17.0>` or higher.
+In all other cases, please jump to :ref:`sdk_installation_21_11` section.
 See also the :ref:`system-requirements` page for more information on the list of supported environments.
 
 .. note:: 
@@ -21,8 +21,8 @@ Download the SDK Distribution ``22.06`` installer for your operating system:
 
 - `Windows (.exe) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Win64-22.06.exe>`__
 - `Linux  (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Linux64-22.06.zip>`__
-- `macOS Intel (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-22.06.zip>`__
-- `macOS M1 (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-A64-22.06.zip>`__
+- `macOS x86_64 - Intel chip (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-22.06.zip>`__
+- `macOS aarch64 - M1 chip (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-A64-22.06.zip>`__
 
 Check JDK Version
 -----------------
@@ -68,7 +68,7 @@ Install SDK Distribution
 
    Accept the terms of this license agreement
 
-- Select the installation path of your SDK. By default it is ``C:/Program Files/MicroEJ/MicroEJ-SDK-{SDK_VERSION}`` for Windows. Then click on the :guilabel:`Next` button.
+- Select the installation path of your SDK. By default it is ``C:\Program Files\MicroEJ\MicroEJ-SDK-22.06`` for Windows. Then click on the :guilabel:`Next` button.
 
 .. figure:: images/installation_process/SDK22_06/installation_path_screen.png
    :alt: Installation path screen

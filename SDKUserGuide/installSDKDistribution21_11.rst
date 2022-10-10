@@ -20,7 +20,7 @@ Download the SDK Distribution ``21.11`` installer for your operating system:
 
    - `Windows (.exe) <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Win64-21.11.exe>`__.
    - `Linux (.zip) <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Linux64-21.11.zip>`__.
-   - `macOS Intel (.zip) <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-MacOS-21.11.zip>`__.
+   - `macOS x86_64 - Intel chip (.zip) <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-MacOS-21.11.zip>`__.
 
 Check JDK Version
 -----------------
@@ -66,7 +66,7 @@ Install SDK Distribution
 
    Accept the terms of this license agreement
 
-- Select the installation path of your SDK. By default it is ``C:/Program Files/MicroEJ/MicroEJ-SDK-{SDK_VERSION}`` for Windows. Then click on the :guilabel:`Next` button.
+- Select the installation path of your SDK. By default it is ``C:\Program Files\MicroEJ\MicroEJ-SDK-21.11`` for Windows. Then click on the :guilabel:`Next` button.
 
 .. figure:: images/installation_process/SDK21_11/installation_path_screen.png
    :alt: Installation path screen
