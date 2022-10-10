@@ -11,6 +11,8 @@ If you want to evaluate MicroEJ, we recommend to refer to the :ref:`getting_star
 .. figure:: images/installation_process/splash.png
    :align: center
 
+   SDK Splash Screen
+
 .. toctree::
 
    installSDKDistributionLatest
