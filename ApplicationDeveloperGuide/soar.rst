@@ -10,13 +10,13 @@ To get more details on its internal structure, please refer to :ref:`soar_build_
 Java Symbols Encoding
 ---------------------
 
-Java symbols are any of package, type, method, field or local names. 
-In ``.class`` files they are ``UTF-8`` encoded.
+Java symbols are any of package, type, method, field, or local names. 
+In ``.class`` files, they are encoded in ``UTF-8``.
 However, SOAR only supports Java symbols composed of characters that can be stored on 8 bits (unsigned byte). 
 
 This is typically the case of `ISO-8859-X <https://en.wikipedia.org/wiki/ISO/IEC_8859>`_ encoding family.
 
-If you try to build an Application which includes an unsupported Java symbol you will get the following error:
+If you try to build an Application that includes an unsupported Java symbol you will get the following error:
 
 .. code-block::
    
@@ -24,8 +24,8 @@ If you try to build an Application which includes an unsupported Java symbol you
 
 .. note:: 
 
-   Classpath ``*.list`` files are `standard Java properties file <https://en.wikipedia.org/wiki/.properties>`_ which are ``ISO-8859-1`` encoded (Latin-1).
-   If you need to refer a Java Symbol which contains a character out of this charset, you must declare the character using the ``\uHHHH`` notation where HHHH is the hexadecimal index of the character in the Unicode character set.
+   Classpath ``*.list`` files are `standard Java properties files <https://en.wikipedia.org/wiki/.properties>`_ that are ``ISO-8859-1`` encoded (Latin-1).
+   If you need to refer to a Java Symbol that contains a character out of this charset, you must declare the character using the ``\uHHHH`` notation where HHHH is the hexadecimal index of the character in the Unicode character set.
 
 .. _soar_clinit:
 
