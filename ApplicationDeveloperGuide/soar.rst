@@ -24,7 +24,7 @@ If you try to build an Application that includes an unsupported Java symbol you 
 
 .. note:: 
 
-   Classpath ``*.list`` files are `standard Java properties files <https://en.wikipedia.org/wiki/.properties>`_ that are ``ISO-8859-1`` encoded (Latin-1).
+   Classpath ``*.list`` files are `standard Java properties files <https://en.wikipedia.org/wiki/.properties>`_ that are encoded in ``ISO-8859-1`` (Latin-1).
    If you need to refer to a Java Symbol that contains a character out of this charset, you must declare the character using the ``\uHHHH`` notation where HHHH is the hexadecimal index of the character in the Unicode character set.
 
 .. _soar_clinit:
