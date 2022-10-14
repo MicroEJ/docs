@@ -191,7 +191,9 @@ to the MicroEJ world:
 
 -  ``LLMJVM_IMPL_setApplicationTime``: must set the difference between
    the current time and midnight, January 1, 1970, UTC.
-
+   Implementations may apply this time to the whole underlying system
+   or only to the Core Engine (i.e., the value returned by
+   ``LLMJVM_IMPL_getCurrentTime(0)``).
 
 .. _core_engine_error_codes:
 
