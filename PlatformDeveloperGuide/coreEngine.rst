@@ -182,8 +182,8 @@ to the MicroEJ world:
 -  ``LLMJVM_IMPL_getCurrentTime``: must return the monotonic time in 
    milliseconds if the given parameter is ``1``, otherwise must return the 
    application time in milliseconds. 
-   This function is called by the MicroEJ method 
-   ``System.currentTimeMillis()``. It is also used by the platform
+   This function is called by the method `java.lang.System.currentTimeMillis() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#currentTimeMillis-->`_
+   It is also used by the platform
    scheduler, and should be implemented efficiently.
 
 -  ``LLMJVM_IMPL_getTimeNanos``: must return the monotonic time in
