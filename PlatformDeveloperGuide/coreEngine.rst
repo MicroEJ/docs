@@ -168,27 +168,32 @@ Time
 
 The platform defines two times:
 
--  the application time: The difference, measured in milliseconds,
+-  the application time: the difference, measured in milliseconds,
    between the current time and midnight, January 1, 1970, UTC.
 
--  the system time: The time since the start of the device. This time is
-   independent of any user considerations, and cannot be set.
+-  the monotonic time: this time always moves forward and is not impacted 
+   by application time modifications (NTP or Daylight Savings Time updates).
+   It can be implemented by returning the running time since the start of 
+   the device.
 
 The platform relies on the following C functions to provide those times
 to the MicroEJ world:
 
--  ``LLMJVM_IMPL_getCurrentTime``: Depending on the parameter (``true``
-   / ``false``) must return the application time or the system time.
-   This function is called by the MicroEJ method
-   ``System.currentTimeMillis()``. It is also used by the platform
+-  ``LLMJVM_IMPL_getCurrentTime``: must return the monotonic time in 
+   milliseconds if the given parameter is ``1``, otherwise must return the 
+   application time in milliseconds. 
+   This function is called by the method `java.lang.System.currentTimeMillis() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#currentTimeMillis-->`_
+   It is also used by the platform
    scheduler, and should be implemented efficiently.
 
--  ``LLMJVM_IMPL_getTimeNanos``: must return the system time in
+-  ``LLMJVM_IMPL_getTimeNanos``: must return a monotonic time in
    nanoseconds.
 
 -  ``LLMJVM_IMPL_setApplicationTime``: must set the difference between
    the current time and midnight, January 1, 1970, UTC.
-
+   Implementations may apply this time to the whole underlying system
+   or only to the Core Engine (i.e., the value returned by
+   ``LLMJVM_IMPL_getCurrentTime(0)``).
 
 .. _core_engine_error_codes:
 
