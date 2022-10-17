@@ -186,7 +186,7 @@ to the MicroEJ world:
    It is also used by the platform
    scheduler, and should be implemented efficiently.
 
--  ``LLMJVM_IMPL_getTimeNanos``: must return the monotonic time in
+-  ``LLMJVM_IMPL_getTimeNanos``: must return a monotonic time in
    nanoseconds.
 
 -  ``LLMJVM_IMPL_setApplicationTime``: must set the difference between
