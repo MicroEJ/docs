@@ -50,7 +50,8 @@ Install SDK Distribution
   
   - On Windows, start ``MicroEJ-SDK-Installer-Win64-22.06.exe``.
   - On Linux, unzip ``MicroEJ-SDK-Installer-Linux64-22.06.zip`` and start ``MicroEJ-SDK-Installer-Linux64-1.0.0.sh``.
-  - On macOS, unzip ``MicroEJ-SDK-Installer-Linux64-22.06.zip`` and start ``MicroEJ-SDK-Installer-MacOS-1.0.0.app``.
+  - On macOS, unzip ``MicroEJ-SDK-Installer-Linux64-22.06.zip`` and start ``MicroEJ-SDK-Installer-MacOS-1.0.0.app``. 
+    In case of error, check your app has not been put in quarantine (see :ref:`macOS troubleshooting <sdk_install_troubleshooting_macos>` section)
 
 .. figure:: images/installation_process/SDK22_06/welcome_screen.png
    :alt: Welcome screen

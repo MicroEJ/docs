@@ -74,6 +74,7 @@ One solution is to configure Eclipse as follows:
 -  Check there is not more SWT/MOZILLA related errors
    (:guilabel:`Window` > :guilabel:`Show View` > :guilabel:`Other...` > :guilabel:`General` > :guilabel:`Error Log`)
 
+.. _sdk_install_troubleshooting_macos:
 
 MacOS Specifics
 ---------------
