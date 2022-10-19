@@ -18,8 +18,8 @@ If you want to evaluate MicroEJ, we recommend to refer to the :ref:`getting_star
    installSDKDistributionLatest
    updateSDKVersion
    installSDKDistributionOther
-   systemRequirements
-   installSDKDistributionTroubleshooting
+   systemRequirements   
+   troubleshooting
    
 
 ..

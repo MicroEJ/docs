@@ -64,7 +64,6 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    sdkReleaseNotes
    sdkChangeLog
    sdkMigrationNotes
-   troubleshooting
    
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
