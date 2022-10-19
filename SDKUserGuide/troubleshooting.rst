@@ -21,6 +21,7 @@ The default Java version installed on your system is not compatible. You have tw
   
 This latter case is recommended if you are installing SDK Dist. ``22.06`` while you already have active projects based on SDK Dist. ``21.11``.
 
+.. _sdk_install_troubleshooting_windows:
 
 Windows Specifics
 -----------------

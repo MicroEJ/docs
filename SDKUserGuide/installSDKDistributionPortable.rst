@@ -53,6 +53,7 @@ Perform the following steps:
 - Start the SDK by executing ``MicroEJ-SDK.exe`` on Windows or ``MicroEJ-SDK`` on Linux or macOS.
 
 Once the SDK is started, it is recommended to check if updates are available (see :ref:`sdk_update` section).
+If your are running SDK on Windows OS, it is also strongly recommended to configure :ref:`Windows defender exclusion rules <sdk_install_troubleshooting_windows>`.
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

@@ -110,6 +110,7 @@ Install SDK Distribution
 The SDK Distribution is now installed on your computer. You can launch it from your application launcher or by executing the :guilabel:`MicroEJ` executable in the installation path.
 
 Once the SDK is started, it is recommended to check if updates are available (see :ref:`sdk_update` section).
+If your are running SDK on Windows OS, it is also strongly recommended to configure :ref:`Windows defender exclusion rules <sdk_install_troubleshooting_windows>`.
 
 
 ..
