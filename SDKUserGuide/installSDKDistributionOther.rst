@@ -1,12 +1,18 @@
 Install Other SDK Distributions
 ===============================
 
-.. toctree:: 
 
-  installSDKDistributionPortable
-  installSDKDistribution21_11
+.. toctree::
+   :hidden: 
 
-The following table gathers all SDK Distributions links for SDK version ``5.x``.
+   installSDKDistributionPortable
+   installSDKDistribution21_11
+
+This section applies when the :ref:`latest SDK Distribution <sdk_installation_latest>` cannot be installed:
+
+- you want to install the latest SDK Distribution based on JDK8, see :ref:`sdk_installation_21_11` section.
+- you want to install a SDK Distribution with no native installer, see :ref:`sdk_installation_portable` section.
+- you want to install an old SDK Distribution. The following table gives you access to all SDK ``5.x`` Distributions download links.
 
 .. list-table::
    :widths: 10 10 20 20 20 20 15 15
@@ -110,7 +116,7 @@ The following table gathers all SDK Distributions links for SDK version ``5.x``.
      - ``5.0.1``
      - ``4.7.2`` 
 
-If you need an older distribution of the SDK, it is available in the `SDK Downloads Page <https://repository.microej.com/packages/SDK/>`_.
+Finally, if you need an older SDK Distribution, browse the `SDK Downloads Page <https://repository.microej.com/packages/SDK/>`_.
 
 
 ..
