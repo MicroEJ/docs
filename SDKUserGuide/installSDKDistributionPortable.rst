@@ -52,7 +52,7 @@ Perform the following steps:
    
 - Start the SDK by executing ``MicroEJ-SDK.exe`` on Windows or ``MicroEJ-SDK`` on Linux or macOS.
 
-Now you can check if there is a newer SDK version available (see :ref:`sdk_update` section).
+Once the SDK is started, it is recommended to check if updates are available (see :ref:`sdk_update` section).
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

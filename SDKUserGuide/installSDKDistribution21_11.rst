@@ -109,7 +109,7 @@ Install SDK Distribution
 
 The SDK Distribution is now installed on your computer. You can launch it from your application launcher or by executing the :guilabel:`MicroEJ` executable in the installation path.
 
-Now you can check if there is a newer SDK version available (see :ref:`sdk_update` section).
+Once the SDK is started, it is recommended to check if updates are available (see :ref:`sdk_update` section).
 
 
 ..
