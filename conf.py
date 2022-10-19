@@ -79,7 +79,6 @@ pygments_style = 'microej.MicroEJStyle'
 
 # ignoring Github links with anchors at linkcheck
 # linkcheck_ignore = [r'https?:\/\/github\.com\/.+#.+']
-linkcheck_ignore = ["https://repository.microej.com/packages/SDK/21.11/", "https://repository.microej.com/packages/SDK/22.06/", "https://repository.microej.com/packages/SDK/21.03/", "https://repository.microej.com/packages/SDK/20.12/", "https://repository.microej.com/packages/SDK/20.10/", "https://repository.microej.com/packages/SDK/20.07/", "https://repository.microej.com/packages/SDK/19.05/", "https://repository.microej.com/packages/SDK/19.02/"]
 
 linkcheck_timeout = 20
 

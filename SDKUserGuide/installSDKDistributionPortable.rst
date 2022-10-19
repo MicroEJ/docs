@@ -3,7 +3,7 @@
 Install Portable SDK Distribution 
 =================================
 
-The portable package allows you to install the SDK Distribution when the use of the SDK Distribution installer is not possible:
+The portable package allows you to install the SDK Distribution when the use of the SDK Distribution installer is not possible or not desired, for example:
 
 - you do not have administrator privileges on your workstation;
 - you want to install SDK Distribution ``22.06`` but JDK 11 is not your default JDK version;
