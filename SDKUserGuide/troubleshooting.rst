@@ -26,7 +26,7 @@ Windows Specifics
 -----------------
 
 If you are using Windows Defender as your default antivirus software,
-The SDK may be slowed down as it manipulates lots of JAR
+the SDK may be slowed down as it manipulates lots of JAR
 files (which are ZIP files) that are regularly analyzed.
 
 To improve the SDK experience, please find below a list of
@@ -37,7 +37,7 @@ folders that should be excluded from Windows Defender monitoring:
 -  ``%USERPROFILE%\.microej``
 -  ``%USERPROFILE%\.p2``
 -  ``%USERPROFILE%\AppData\Local\Temp\microej``
--  ``C:\Program Files\MicroEJ``
+-  ``C:\Program Files\MicroEJ`` or the custom directory where the SDK has been installed
 -  your workspace(s) folder(s)
 
 The exclusion page is available in the ``Settings`` application
