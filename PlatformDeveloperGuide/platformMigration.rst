@@ -33,6 +33,9 @@ The migration steps are:
 #. Configure the :ref:`BSP Connection <bsp_connection>`.
 #. Add the :ref:`Build Script <bsp_connection_build_script>` and :ref:`Run Script <bsp_connection_run_script>`.
 
+.. note::
+
+   The migration of a Platform requires at least the version ``5.4.0`` of the SDK.
 
 .. _platform_migration_repository:
 

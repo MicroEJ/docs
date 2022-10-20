@@ -3,19 +3,24 @@
 Platform Selection
 ===================
 
-Building or running a :ref:`Test Suite <application_testsuite>` on an application module requires a MicroEJ Platform.
+Building or running an Application or a :ref:`Test Suite <application_testsuite>` with MMM requires a Platform.
 
-There are 4 different ways to provide a MicroEJ Platform for a module project:
+There are 4 different ways to provide a Platform for a module project:
 
--  Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.file`` to the path of a MicroEJ Platform file (``.zip``, ``.jpf`` or ``.vde``).
--  Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.dir`` to the path of the ``source`` folder of an already imported :ref:`Source Platform <source_platform_import>`.
--  Declare a :ref:`module dependency <mmm_module_dependencies>` with the conf ``platform``:
+- Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.file`` to the path of a Platform file (``.zip``, ``.jpf`` or ``.vde``).
+- Set the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.dir`` to the path of the ``source`` folder of an already imported :ref:`Source Platform <source_platform_import>`.
+- Declare a :ref:`module dependency <mmm_module_dependencies>` with the conf ``platform``:
 
    .. code:: xml
 
       <dependency org="myorg" name="myname" rev="1.0.0" conf="platform->default" transitive="false"/>
 
--  Copy a MicroEJ Platform file to the dropins folder. The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.dropins``.
+- Copy a Platform file to the dropins folder. The default dropins folder location is ``[module_project_dir]/dropins``. 
+  It can be changed using the :ref:`build option <mmm_build_options>` ``platform-loader.target.platform.dropins``.
+
+.. note::
+
+   Using a Platform in the ``.zip`` format requires at least the version ``5.4.0`` of the SDK.
 
 At least 1 of these 4 ways is required to build an application with a platform.
 If several ways are used, the following rules are applied:
