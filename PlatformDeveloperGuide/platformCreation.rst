@@ -8,6 +8,10 @@ This section describes the steps to create a new MicroEJ Platform in MicroEJ SDK
 and options to connect it to an external Board Support Package (BSP) as well as a third-party C toolchain. 
 
 .. note::
+
+   The creation of a Platform with this guide requires at least the version ``5.4.0`` of the SDK.
+
+.. note::
    
    If you own a legacy Platform, you can either create your Platform again from scratch,
    or follow the :ref:`former_platform_migration` chapter.
