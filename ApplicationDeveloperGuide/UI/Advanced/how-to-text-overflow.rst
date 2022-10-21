@@ -30,7 +30,7 @@ Overriding the onLaidOut() Method
 ---------------------------------
  
 Once the position and size of a wigdet are set during the lay out process, the `onLaidOut()`_ method is called to notify the widget.
-Overriding ``onLaidOut()`` of class ``MyLabel`` is a good place to check whether the text overflows or not.
+Overriding `onLaidOut()`_ of class ``MyLabel`` is a good place to check whether the text overflows or not.
 
 For example, the following snippet compares the text width with the available width: it will print a message if an overflow is detected.
 

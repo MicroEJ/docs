@@ -7,12 +7,12 @@ Starting and stopping the animation
 -----------------------------------
 
 To animate a widget, an `Animator`_ instance is required. This instance can be retrieved from the desktop of the widget by calling `Desktop.getAnimator()`_.
-Make sure that your widget subclass implements the `Animation`_ interface so that it can be used with an ``Animator``.
+Make sure that your widget subclass implements the `Animation`_ interface so that it can be used with an `Animator`_.
 
 An animation can be started at any moment, provided that the widget is shown. For example, the animation can start on a click event.
 Likewise, an animation can be stopped at any moment, for example a few seconds after the animation has started. Once the widget is hidden, its animation should always be stopped to avoid memory leaks and unnecessary operations.
 
-To start the animation of the widget, call the `startAnimation()`_ method of the ``Animator`` instance. To stop it, call the `stopAnimation()`_ method of the same ``Animator`` instance.
+To start the animation of the widget, call the `startAnimation()`_ method of the `Animator`_ instance. To stop it, call the `stopAnimation()`_ method of the same `Animator`_ instance.
 
 For example, the following snippet starts the animation as soon as the widget is shown and stops it once the widget is hidden:
 
@@ -51,7 +51,7 @@ Performing an animation step
 
 The `tick()`_ method is called by the animator in order to update the widget. It is called in the UI thread once the display has been flushed.
 This method should not render the widget but should update its state and request a new render if necessary.
-The ``tick()`` method should return whether or not the animation should continue after this increment.
+The `tick()`_ method should return whether or not the animation should continue after this increment.
 
 For example, the following snippet updates the state of the widget when it is ticked, requests a new render and keeps the animation going until 5 seconds have passed:
 

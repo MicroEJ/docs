@@ -8,16 +8,19 @@ The MicroUI implementation is provided by the MicroEJ UI Pack.
 According the MicroEJ UI Pack used to build the MicroEJ Platform, the application has to be updated.
 
 * Refer to the :ref:`table <section_ui_api>` that illustrates the implemented MicroUI API for each MicroEJ UI Pack.
-* Refer to the latest `MicroUI API Changelog <https://repository.microej.com/modules/ej/api/microui>`_.
-* Refer to the latest `Drawing API Changelog <https://repository.microej.com/modules/ej/api/drawing>`_.
+* Refer to the latest `MicroUI API Changelog`_.
+* Refer to the latest `Drawing API Changelog`_.
 
 The following chapters describe the changes to perform in the application according the MicroEJ UI Pack used to build the MicroEJ Platform.
+
+.. _MicroUI API Changelog: https://repository.microej.com/modules/ej/api/microui
+.. _Drawing API Changelog: https://repository.microej.com/modules/ej/api/drawing
 
 From 12.x to 13.x
 =================
 
-* Update `ej.api#microui <https://repository.microej.com/modules/ej/api/microui/>`_ dependency to the latest available version ``3.x``.
-* Add `ej.api#drawing <https://repository.microej.com/modules/ej/api/drawing/>`_ dependency.
+* Update `ej.api#microui`_ dependency to the latest available version ``3.x``.
+* Add `ej.api#drawing`_ dependency.
 
 .. code-block:: xml
 
@@ -25,6 +28,9 @@ From 12.x to 13.x
       <dependency org="ej.api" name="microui" rev="3.1.0"/>
       <dependency org="ej.api" name="drawing" rev="1.0.3"/>         
    </dependencies>
+
+.. _ej.api#microui: https://repository.microej.com/modules/ej/api/microui
+.. _ej.api#drawing: https://repository.microej.com/modules/ej/api/drawing
 
 From 10.x to 12.x
 =================
