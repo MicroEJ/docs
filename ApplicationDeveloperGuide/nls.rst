@@ -73,7 +73,7 @@ Example:
 Usage
 -----
 
-The `binary-nls module <https://repository.microej.com/modules/com/microej/library/runtime/binary-nls>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the Application project.
+The `binary-nls module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the Application project.
 
 ::
 
@@ -99,16 +99,20 @@ messages, for example:
 
    String label = Labels.NLS.getMessage(Labels.Label1);
 
+.. _binary-nls module: https://repository.microej.com/modules/com/microej/library/runtime/binary-nls
+
 .. _chapter.microej.nlsExternalLoader:
 
 NLS External Loader
 -------------------
 
-The NLS External Loader allows to update the PO files of an application executed on a Virtual Device without rebuilding it.
+The `NLS External Loader`_ allows to update the PO files of an application executed on a Virtual Device without rebuilding it.
 PO files can be dropped in a given location in the Virtual Device folders to dynamically replace the language strings packaged in the application.
 
 This is typically useful when testing or translating an application in order to have a quick feedback when changing the PO files.
 Once the PO files are updated, a simple restart of the Virtual Device allows to immediately see the result.
+
+.. _NLS External Loader: https://repository.microej.com/modules/com/microej/tool/nls-po-external-loader/
 
 Installation
 ^^^^^^^^^^^^
@@ -186,7 +190,7 @@ Make sure that all PO files are copied in the ``translations`` folder.
 Crowdin
 ^^^^^^^
 
-Crowdin is a cloud-based localization platform which allows to manage multilingual content.
+`Crowdin`_ is a cloud-based localization platform which allows to manage multilingual content.
 The NLS External Loader can fetch translations directly from Crowdin to make the translation process even easier.
 Translators can then contribute and validate their translations in Crowdin and apply them automatically in the Virtual Device.
 
@@ -205,6 +209,8 @@ Once the module has been built, edit the file ``platform/tools/crowdin/crowdin.p
 When the configuration is done, the fetch of the Crowdin translations can be done by executing the script ``crowdin.bat`` or ``crowdin.sh`` located in the folder ``platform/tools/crowdin/``.
 The PO files retrieved from Crowdin are automatically pasted in the folder ``translations``,
 therefore the new translations are applied after the next Virtual Device restart.
+
+.. _Crowdin: https://repository.microej.com/modules/com/microej/tool/nls-po-crowdin/
 
 ..
    | Copyright 2020-2022, MicroEJ Corp. Content in this space is free 

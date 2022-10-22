@@ -8,7 +8,7 @@ The default character encoding is ``ISO-8859-1``. It is thus the encoding used w
 
 -  creating a new string from a byte array without specifying the encoding (`String(byte[]) constructor`_),
 
--  getting the byte array from a string without specifying the encoding (`String.getBytes() method <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html#getBytes-->`_),
+-  getting the byte array from a string without specifying the encoding (`String.getBytes() method`_),
 
 -  printing a string to standard output stream (`System.out`_),
 

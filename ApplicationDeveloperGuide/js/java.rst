@@ -40,8 +40,8 @@ gives access to the constructors, static methods and static fields. All the
 classes from the project's classpath can be imported (project's own classes and 
 its dependencies).
 
-For instance, the following code imports ``java.lang.System`` and prints a 
-string calling ``System.out.println()``:
+For instance, the following code imports `java.lang.System`_ and prints a 
+string calling `System.out.println()`_:
 
 .. code-block:: javascript
 
@@ -65,12 +65,15 @@ Here we instantiate a Java ``File`` object and check that it exists:
 
      You cannot instantiate an anonymous class from an interface or an abstract class with the ``new`` keyword and ``JavaImport``. Nevertheless, you can still access to static fields and methods.   
 
+.. _java.lang.System: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html
+.. _System.out.println(): https://repository.microej.com/javadoc/microej_5.x/apis/java/io/PrintStream.html#println--
+
 Implement JavaScript Functions in Java
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We can also implement JavaScript functions in Java by adding their 
 implementation to the global object from Java. For example, here is the code to 
-create a JavaScript function named `javaPrint` in the global scope:
+create a JavaScript function named ``javaPrint`` in the global scope:
 
 .. code-block:: java
 
@@ -92,8 +95,8 @@ The function ``javaPrint`` can then be used in JS:
     javaPrint("foo")
 
 This technique can also be used to share any Java object to JavaScript.
-It is achieved by returning the Java object in the `invoke` method of the ``JsClosure`` object.
-For example, a Java ``Date`` object can be exposed as follows:
+It is achieved by returning the Java object in the ``invoke`` method of the ``JsClosure`` object.
+For example, a Java `Date`_ object can be exposed as follows:
 
 .. code-block:: java
 
@@ -104,7 +107,7 @@ For example, a Java ``Date`` object can be exposed as follows:
 		}
 	}), false);
 
-When a Java object is exposed in JavaScript, all its public methods can be called, therefore the JavaScript code can then use this ``Date`` object and get the time:
+When a Java object is exposed in JavaScript, all its public methods can be called, therefore the JavaScript code can then use this `Date`_ object and get the time:
 
 .. code-block:: javascript
 
@@ -116,7 +119,7 @@ for more information on how these called are managed by the MicroEJ JavaScript e
 
 Java objects can also be shared using one of the other Java JS adapter objects.
 With this solution, the code of the Java object is executed at engine initialisation, contrary to the previous solution where it is executed only when the JavaScript code is called.
-For example, here is the code to expose a Java string named `javaString` in the JavaScript global scope:
+For example, here is the code to expose a Java string named ``javaString`` in the JavaScript global scope:
 
 .. code-block:: java
 
@@ -136,6 +139,8 @@ The available Java JS adapter objects are:
 - ``com.microej.js.objects.JsObjectArray`` : exposes a Java items collection as a JavaScript Array
 - ``com.microej.js.objects.JsObjectBoolean`` : exposes a Java Boolean as a JavaScript Boolean
 - ``com.microej.js.objects.JsObjectNumber`` : exposes a Java Number as a JavaScript Number
+
+.. _Date: https://repository.microej.com/javadoc/microej_5.x/apis/java/util/Date.html
 
 .. _js.java.js_to_java:
 
@@ -185,12 +190,12 @@ The following table shows the mapping between types in both languages:
 
 
 In JavaScript, a ``Number`` type is a 64-bits floating-point value. 
-Nevertheless, Kifaru may use integer values (``Integer`` Java type) when 
-possible for performance reasons. Otherwhise, ``Double`` type will be used.
+Nevertheless, Kifaru may use integer values (`Integer`_ Java type) when 
+possible for performance reasons. Otherwhise, `Double`_ type will be used.
 
 .. note::
 
-    Prefer passing ``Integer`` values as argument to a job added to the JavaScript execution queue, or return ``Integer`` values when implementing a ``JsClosure`` instead of ``Double`` when possible.
+    Prefer passing `Integer`_ values as argument to a job added to the JavaScript execution queue, or return ``Integer`` values when implementing a ``JsClosure`` instead of `Double`_ when possible.
 
 It is not possible to retrieve the returned value of a JavaScript function from 
 Java. For instance, consider the following JavaScript function:
@@ -276,7 +281,9 @@ We can now pass the callback to the job. The Java code will wait on the
 
 
 .. _java.lang.Integer: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Integer.html
+.. _Integer: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Integer.html
 .. _java.lang.Double: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Double.html
+.. _Double: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Double.html
 .. _java.lang.Boolean: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Boolean.html
 .. _java.lang.String: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html
 
