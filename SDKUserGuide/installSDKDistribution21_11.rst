@@ -5,7 +5,7 @@ Install SDK Distribution 21.11
 
 This section will guide you through the installation process of the SDK Distribution ``21.11`` using the step-by-step executable installer.
 
-The SDK Distribution ``21.11`` requires a JDK 8 and is not available for macOS with M1 chips.
+The SDK Distribution ``21.11`` requires a JRE or a JDK 8 and is not available for macOS with M1 chips.
 See the :ref:`system-requirements` page for more information on the list of supported environments.
 
 .. note:: 
