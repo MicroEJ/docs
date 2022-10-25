@@ -4,7 +4,6 @@ Update SDK Version
 ------------------
 
 Once you have an SDK Distribution installed, you can update the included SDK Version to a newer version.
-SDK versions are uploaded to an Eclipse P2 repository located at https://repository.microej.com/p2/sdk/.
 
 .. note::
 
