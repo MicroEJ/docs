@@ -3,7 +3,7 @@
 Install SDK Distribution 21.11
 ==============================
 
-This section will guide you to install the SDK Distribution ``21.11`` using the step-by-step executable installer.
+This section will guide you through the installation process of the SDK Distribution ``21.11`` using the step-by-step executable installer.
 
 The SDK Distribution ``21.11`` requires a JDK 8 and is not available for macOS with M1 chips.
 See the :ref:`system-requirements` page for more information on the list of supported environments.
@@ -18,9 +18,9 @@ Download SDK Distribution
 
 Download the SDK Distribution ``21.11`` installer for your operating system:
 
-   - `Windows (.exe) <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Win64-21.11.exe>`__.
-   - `Linux (.zip) <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Linux64-21.11.zip>`__.
-   - `macOS x86_64 - Intel chip (.zip) <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-MacOS-21.11.zip>`__.
+   - `Windows (.exe) <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Win64-21.11.exe>`__
+   - `Linux (.zip) <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-Linux64-21.11.zip>`__
+   - `macOS x86_64 - Intel chip (.zip) <https://repository.microej.com/packages/SDK/21.11/MicroEJ-SDK-Installer-MacOS-21.11.zip>`__
 
 Check JDK Version
 -----------------
@@ -49,7 +49,7 @@ Install SDK Distribution
   - On Windows, start ``MicroEJ-SDK-Installer-Win64-21.11.exe``.
   - On Linux, unzip ``MicroEJ-SDK-Installer-Linux64-21.11.zip`` and start ``MicroEJ-SDK-Installer-Linux64-21.11.sh``.
   - On macOS, unzip ``MicroEJ-SDK-Installer-Linux64-21.11.zip`` and start ``MicroEJ-SDK-Installer-MacOS-21.11.app``.
-    In case of error, check your app has not been put in quarantine (see :ref:`macOS troubleshooting <sdk_install_troubleshooting_macos>` section)
+    In case of error, check your app has not been put in quarantine (see :ref:`macOS troubleshooting <sdk_install_troubleshooting_macos>` section).
 
 .. figure:: images/installation_process/SDK21_11/welcome_screen.png
    :alt: Welcome screen

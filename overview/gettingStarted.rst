@@ -8,7 +8,7 @@ MicroEJ Getting Started is available on
 
 Starting from scratch, the steps to go through the whole process are:
 
-- Download and install a SDK Distribution;
+- Download and install an SDK Distribution;
 - Select between one of the available boards;
 - Import a demo Application;   
 - Download and install the corresponding Platform for the target hardware;

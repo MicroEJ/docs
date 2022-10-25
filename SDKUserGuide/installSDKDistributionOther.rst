@@ -8,11 +8,11 @@ Install Other SDK Distributions
    installSDKDistributionPortable
    installSDKDistribution21_11
 
-This section applies when the :ref:`latest SDK Distribution <sdk_installation_latest>` cannot be installed:
+This section applies when the installation of the :ref:`latest SDK Distribution <sdk_installation_latest>` via the installer does not fit your case:
 
-- you want to install the latest SDK Distribution based on JDK8, see :ref:`sdk_installation_21_11` section.
-- you want to install a SDK Distribution with no native installer, see :ref:`sdk_installation_portable` section.
-- you want to install an old SDK Distribution. The following table gives you access to all SDK ``5.x`` Distributions download links.
+- you want to install the latest SDK Distribution compatible with JDK8, see :ref:`sdk_installation_21_11` section.
+- you want to install an SDK Distribution with no native installer, see :ref:`sdk_installation_portable` section.
+- you want to install an old SDK Distribution. The following table gives you access to all the SDK ``5.x`` Distributions download links.
 
 .. list-table::
    :widths: 10 10 20 20 20 20 15 15
