@@ -11,7 +11,7 @@ SDK Distribution Changelog
    Please refer to :ref:`system-requirements` for more details.
 
 -  Included :ref:`SDK 5.6.0 <changelog-5.6.0>`.
--  Added support for macOS AArch64 (M1).
+-  Added support for macOS aarch64 (M1 chip).
 -  Updated to Eclipse version ``2022-03``.
 -  Changed required Java Runtime to JDK 11 (JRE and other versions are not supported anymore).
 

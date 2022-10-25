@@ -1,11 +1,33 @@
 Troubleshooting
 ===============
 
+Incompatible Default Java Version
+---------------------------------
+
+When launching the installer, you may get the following error: :guilabel:`The application you are trying to install requires a JDK11`.
+
+.. figure:: images/installation_process/incompatible_default_java_version_installer.png
+   :align: center
+
+Or when launching the SDK, you may get the following error: :guilabel:`Version: 11 or greater is required`.
+
+.. figure:: images/installation_process/incompatible_default_java_version_eclipse.png
+   :align: center
+
+The default Java version installed on your system is not compatible. You have two options:
+
+- either install a JDK 11 as your default JVM. If you are on Windows OS, ensure you enabled ``JavaSoft (Oracle) registry keys`` during the JDK installation (see :ref:`get_jdk`),
+- or install the :ref:`portable SDK Distribution <sdk_installation_portable>` if you don't want to modify your default JVM version. 
+  
+This latter case is recommended if you are installing SDK Dist. ``22.06`` while you already have active projects based on SDK Dist. ``21.11``.
+
+.. _sdk_install_troubleshooting_windows:
+
 Windows Specifics
 -----------------
 
 If you are using Windows Defender as your default antivirus software,
-The SDK may be slowed down as it manipulates lots of JAR
+the SDK may be slowed down as it manipulates lots of JAR
 files (which are ZIP files) that are regularly analyzed.
 
 To improve the SDK experience, please find below a list of
@@ -16,7 +38,7 @@ folders that should be excluded from Windows Defender monitoring:
 -  ``%USERPROFILE%\.microej``
 -  ``%USERPROFILE%\.p2``
 -  ``%USERPROFILE%\AppData\Local\Temp\microej``
--  ``C:\Program Files\MicroEJ``
+-  ``C:\Program Files\MicroEJ`` or the custom directory where the SDK has been installed
 -  your workspace(s) folder(s)
 
 The exclusion page is available in the ``Settings`` application
@@ -52,6 +74,7 @@ One solution is to configure Eclipse as follows:
 -  Check there is not more SWT/MOZILLA related errors
    (:guilabel:`Window` > :guilabel:`Show View` > :guilabel:`Other...` > :guilabel:`General` > :guilabel:`Error Log`)
 
+.. _sdk_install_troubleshooting_macos:
 
 MacOS Specifics
 ---------------
