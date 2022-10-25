@@ -56,7 +56,7 @@ For the supported combinations, tests have been done with both the Oracle and th
 Get JDK
 -------
 
-You can download and install a JDK from https://adoptium.net/temurin/releases/.
+You can download and install a JDK from `Adoptium <https://adoptium.net/temurin/releases/>`__ or `Oracle <https://www.oracle.com/fr/java/technologies/downloads/>`__.
 
 .. warning:: 
    When installing the Eclipse Temurin/AdoptOpenJDK build on Windows, the option ``JavaSoft (Oracle) registry keys`` must be enabled:
