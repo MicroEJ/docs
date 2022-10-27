@@ -32,6 +32,17 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+
+.. _changelog-7.18.1:
+
+[7.18.1] - 2022-10-26
+---------------------
+
+Integration
+~~~~~~~~~~~
+
+- Fixed License Manager issue with JDK 8u351 or higher (``[M65] - License check failed [tampered (3)].``).
+
 .. _changelog-7.18.0:
 
 [7.18.0] - 2022-09-14
