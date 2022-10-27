@@ -183,7 +183,8 @@ Install the Platform Configuration Additions
 - Edit the ``module.properties`` file and set
   ``com.microej.platformbuilder.platform.filename`` to the name of the
   platform configuration file (e.g. ``STM32F746GDISCO.platform``).
-- Fill the ``module.ivy`` with the Architecture and Packs dependencies.
+- Update the default name of the Platform module in the ``module.ivy``. Replace with ``<info organisation="com.microej.platform.st.stm32f746g-disco" module="Platform" status="integration" revision="1.0.0">``.
+- Update the ``module.ivy`` with the Architecture and Packs dependencies.
 
 Here is the module dependencies declared for the STM32F746G-DISCO Platform.
 
@@ -351,7 +352,7 @@ On the STM32F746G-DISCO, the C TOOLCHAIN used is Keil uVision.
 - Copy the example scripts from the `Platform Qualification Tools`_
   for the C TOOLCHAIN of the BSP
   (e.g. ``PlatformQualificationTools/framework/platform/scripts/KEILuV5/``)
-- Configure the scripts.  Refer to the documentation in the scripts
+- Configure the scripts. Refer to the documentation in the scripts
   comments for this step.
 - Enable the execution of the build script: 
 
@@ -360,6 +361,31 @@ On the STM32F746G-DISCO, the C TOOLCHAIN used is Keil uVision.
   - Go to :guilabel:`Configuration` > :guilabel:`Device` > :guilabel:`Deploy`
   - Ensure :guilabel:`Execute the MicroEJ build script (build.bat) at
     a location known by the 3rd-party BSP project.` is checked.
+
+
+
+Use the Platform in Module Projects
+-----------------------------------
+
+Module projects may require the Platform, for example to build an Application or to run a Test Suite.
+One way of selecting the Platform in a module project is to declare it as a module dependency (see :ref:`platform_selection`).
+
+In case a former Platform is loaded this way in your existing module projects, the dependency has to be updated.
+In this example, the Platform would now be selected like this:
+
+  .. code-block:: xml
+
+    <dependency org="com.microej.platform.st.stm32f746g-disco" name="Platform" rev="1.0.0" conf="platform->default" transitive="false"/>
+
+This also requires that your module projects use a compatible version of the associated build type (the build type relates to the :ref:`module_natures`).
+As stated before, loading a Platform in its latest form requires at least the version ``5.4.0`` of the SDK.
+Therefore, make sure to use versions of the build types that come with the SDK ``5.4.0`` and above.
+Here is a brief summary of the minimum version for the most common module natures:
+
+- :ref:`module_natures.addon_lib`: build type ``com.is2t.easyant.buildtypes#build-microej-javalib`` version ``5.0.0`` and above.
+- :ref:`module_natures.standalone_application`: build type ``com.is2t.easyant.buildtypes#build-firmware-singleapp`` version ``1.4.0`` and above.
+- :ref:`module_natures.sandboxed_application`: build type ``com.is2t.easyant.buildtypes#build-application`` version ``8.0.0`` and above.
+
 
 Going further
 -------------
