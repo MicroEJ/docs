@@ -12,7 +12,7 @@ From 13.2.x to 13.3.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the UI Pack 13.3.1: 
+* Set the explicit dependency to the `UI Pack 13.3.1`_: 
 
   .. code-block:: xml
 
@@ -20,14 +20,16 @@ Front Panel
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
 
+.. _UI Pack 13.3.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.3.1/
+
 BSP
 """
 
 * Install the  :ref:`MicroUI C module 2.0.0 <section_ui_releasenotes_cmodule>`.
-* The signatures of `LLUI_DISPLAY_IMPL_decodeImage` and `LLUI_DISPLAY_IMPL_getNewImageStrideInBytes` have changed: 
+* The signatures of ``LLUI_DISPLAY_IMPL_decodeImage`` and ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes`` have changed: 
  
-	* use `jbyte` in functions signatures
-	* add a cast to `MICROUI_Image` in the implementation.
+	* use ``jbyte`` in functions signatures
+	* add a cast to ``MICROUI_Image`` in the implementation.
   
 
 From 13.1.x to 13.2.x
@@ -36,7 +38,7 @@ From 13.1.x to 13.2.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the UI Pack 13.2.0: 
+* Set the explicit dependency to the `UI Pack 13.2.0`_: 
 
   .. code-block:: xml
 
@@ -44,19 +46,23 @@ Front Panel
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
 
+.. _UI Pack 13.2.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.2.0/
+
 From 13.0.x to 13.1.x
 =====================
 
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the UI Pack 13.1.0: 
+* Set the explicit dependency to the `UI Pack 13.1.0`_: 
 
   .. code-block:: xml
 
 	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.1.0">
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
+
+.. _UI Pack 13.1.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.1.0/
 
 BSP
 """
@@ -73,7 +79,7 @@ Platform Configuration Project
 """"""""""""""""""""""""""""""
 
 * Update Architecture version: 7.16.0 or higher.
-* Add the following module in the :ref:`module description file <mmm_module_description>`: 
+* Add `the following module <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.0.3/>`__ in the :ref:`module description file <mmm_module_description>`: 
 
   .. code-block:: xml
 
@@ -85,7 +91,7 @@ Hardware Accelerator
 """"""""""""""""""""
 
 * Open :guilabel:`-configuration` project > :guilabel:`display` > :guilabel:`display.properties`
-* Remove optional property ``hardwareAccelerator``. If old value was ``dma2d``, add the following module in the :ref:`module description file <mmm_module_description>`: 
+* Remove optional property ``hardwareAccelerator``. If old value was ``dma2d``, add `the following module <https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.6/>`__ in the :ref:`module description file <mmm_module_description>`: 
   
   .. code-block:: xml
   
@@ -117,7 +123,7 @@ Front Panel API
 
 * ``ej.drawing.LLDWPainter``
 
-	* [Added] Equivalent of module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_ (``LLDW_PAINTER_impl.c``): implements all ``ej.api.drawing`` natives and redirect them to the interface ``DWDrawing``.
+	* [Added] Equivalent of module `com.microej.clibrary.llimpl#microui`_ (``LLDW_PAINTER_impl.c``): implements all ``ej.api.drawing`` natives and redirect them to the interface ``DWDrawing``.
 	* [Added] ``setDrawer(DWDrawing)``: allows to configure the implementation of ``DWDrawing`` the ``LLDWPainter`` has to use. When no drawer is configured, ``LLDWPainter`` redirects all drawings to the internal graphical engine software algorithms.
 
 * ``ej.fp.event.MicroUIButtons``
@@ -184,7 +190,7 @@ Front Panel API
 
 * ``ej.microui.display.LLUIPainter``
 
-	* [Added] Equivalent of module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_ (``LLUI_PAINTER_impl.c``): implements all ``ej.api.microui`` natives and redirect them to the interface ``UIDrawing``.
+	* [Added] Equivalent of module `com.microej.clibrary.llimpl#microui`_ (``LLUI_PAINTER_impl.c``): implements all ``ej.api.microui`` natives and redirect them to the interface ``UIDrawing``.
 	* [Added] ``MicroUIGraphicsContext``: representation of a MicroUI `GraphicsContext`_ in front panel. This interface (implemented by the graphical engine) provides several function to get information on graphics context, clip, etc.
 	* [Added] ``MicroUIGraphicsContext#requestDrawing()``: allows to take the hand on the drawing buffer.
 	* [Added] ``MicroUIImage``: representation of a MicroUI `Image`_ in front panel. This interface (implemented by the graphical engine) provides several function to get information on image.
@@ -231,6 +237,7 @@ Front Panel API
 
 	* [Added] Replaces ``MicroUILED``.
 
+.. _com.microej.clibrary.llimpl#microui: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui
 .. _GraphicsContext.getSNIContext(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#getSNIContext--
 .. _Image.getSNIContext(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getSNIContext--
 .. _GraphicsContext: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html
@@ -437,7 +444,7 @@ LLAPI
  
 * ``LLDW_PAINTER_impl.h``
 
-	* [Added] List of ``ej.api.drawing`` library's native functions implemented in module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_.
+	* [Added] List of ``ej.api.drawing`` library's native functions implemented in module `com.microej.clibrary.llimpl#microui`_.
 
 * ``LLLEDS_impl.h`` and ``intern/LLLEDS_impl.h`` merged in ``LLUI_LED_impl.h``
 
@@ -490,7 +497,7 @@ LLAPI
 
 * ``LLUI_PAINTER_impl.h``
 
-	* [Added] List of ``ej.api.microui`` library's native functions implemented in module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_.
+	* [Added] List of ``ej.api.microui`` library's native functions implemented in module `com.microej.clibrary.llimpl#microui`_.
 	* [Added] ``MICROUI_ImageFormat``: MicroUI `Image`_ pixel format.
 	* [Added] ``MICROUI_Image``: MicroUI `Image`_ representation.
 	* [Added] ``MICROUI_GraphicsContext``: MicroUI `GraphicsContext`_ representation.

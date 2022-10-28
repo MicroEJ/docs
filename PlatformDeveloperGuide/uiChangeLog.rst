@@ -10,7 +10,7 @@ Changelog
 * Compatible with Architecture 7.13.0 or higher.
  
 Image Generator
-""""""""""""""" 
+"""""""""""""""
 
 **Added**
 
@@ -38,7 +38,10 @@ MicroUI Implementation
 **Fixed**
 
 * Fix the Cx (x == 1 | 2 | 4) Graphics Engine's when memory layout is "column". 
-* Fix the consistency between `Image.getImage()` and `Font.getFont()` about starting MicroUI.
+* Fix the consistency between `Image.getImage()`_ and `Font.getFont()`_ about starting MicroUI.
+
+.. _Image.getImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String-
+.. _Font.getFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String-
 
 Front Panel
 """""""""""
@@ -61,12 +64,12 @@ LLAPIs
 
 * Add custom image formats to prepare for future MicroUI functionality.
 * Add LLAPI to adjust new image characteristics (size and alignment).
-* Add API: `UI_DRAWING_copyImage` and `UI_DRAWING_drawRegion`. 
+* Add API: ``UI_DRAWING_copyImage`` and ``UI_DRAWING_drawRegion``. 
 * Add the LLUI version (== UI Pack version) in header files.
 
 **Changed**
 
-* Use type `jbyte` to identify an image format instead of `MICROUI_ImageFormat` (prevent C compiler optimization).
+* Use type ``jbyte`` to identify an image format instead of ``MICROUI_ImageFormat`` (prevent C compiler optimization).
  
 **Removed**
 
@@ -163,7 +166,7 @@ MicroUI Implementation
 
 **Changed**
 
-* Compatible with `MicroUI API 3.1.0 <https://repository.microej.com/modules/ej/api/microui/3.1.0/>`_.
+* Compatible with `MicroUI API 3.1.0`_.
 * Check Immortals heap minimal size required by MicroUI implementation.
 * Change the EventGenerator Pointer event format.
 * Do no systematically use the GPU to draw intermediate steps of a shape.  
@@ -177,12 +180,16 @@ MicroUI Implementation
 * Manage the system fonts when the font generator is not embedded in the platform.
 * Have to wait the end of current drawing before closing an image.
 
+.. _MicroUI API 3.1.0: https://repository.microej.com/modules/ej/api/microui/3.1.0/
+
 Drawing Implementation
 """"""""""""""""""""""
 
 **Changed**
 
-* Compatible with `Drawing API 1.0.3 <https://repository.microej.com/modules/ej/api/drawing/1.0.3/>`_.
+* Compatible with `Drawing API 1.0.3`_.
+
+.. _Drawing API 1.0.3: https://repository.microej.com/modules/ej/api/drawing/1.0.3/
 
 LLAPIs
 """"""
@@ -265,11 +272,15 @@ MicroUI Implementation
 
 **Fixed**
 
-* A feature was not able to call Display.callOnFlushCompleted().
-* Stop feature: prevent NullPointerException when a kernel's EventGenerator is removed from event generators pool.
-* Filter DeadFeatureException in MicroUI pump.
+* A feature was not able to call `Display.callOnFlushCompleted()`_.
+* Stop feature: prevent `NullPointerException`_ when a kernel's EventGenerator is removed from event generators pool.
+* Filter `DeadFeatureException`_ in MicroUI pump.
 * Drawing of thick arcs which represent an almost full circle.
 * Drawing of thick faded arcs which pass by 0° angle.
+
+.. _Display.callOnFlushCompleted(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#callOnFlushCompleted-java.lang.Runnable-
+.. _NullPointerException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html
+.. _DeadFeatureException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/DeadFeatureException.html
 
 Simulator
 """""""""
@@ -288,8 +299,11 @@ MicroUI API
 
 **Changed**
 
-* [Changed] Include `MicroUI API 3.0.3 <https://repository.microej.com/modules/ej/api/microui/3.0.3/>`_.
-* [Changed] Include `MicroUI Drawing API 1.0.2 <https://repository.microej.com/modules/ej/api/drawing/1.0.2/>`_.
+* [Changed] Include `MicroUI API 3.0.3`_.
+* [Changed] Include `MicroUI Drawing API 1.0.2`_.
+
+.. _MicroUI API 3.0.3: https://repository.microej.com/modules/ej/api/microui/3.0.3/
+.. _MicroUI Drawing API 1.0.2: https://repository.microej.com/modules/ej/api/drawing/1.0.2/
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -317,12 +331,14 @@ ImageGenerator
 
 **Changed**
 
-* Compatible with `com.microej.pack.ui#ui-pack(imageGenerator)#13.0.4 <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.4/>`_.
+* Compatible with `com.microej.pack.ui#ui-pack(imageGenerator)#13.0.4`_.
 	
 **Fixed**
 
-* ``NullPointerException`` when trying to convert an unknown image.
+* `NullPointerException`_ when trying to convert an unknown image.
 * Restore external resources option in MicroEJ launcher.
+
+.. _com.microej.pack.ui#ui-pack(imageGenerator)#13.0.4: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.4/
 
 [13.0.3] - 2020-12-03
 =====================
@@ -371,7 +387,9 @@ MicroUI API
 
 **Changed**
 
-* Include `MicroUI API 3.0.1 <https://repository.microej.com/modules/ej/api/microui/3.0.1/>`_.
+* Include `MicroUI API 3.0.1`_.
+
+.. _MicroUI API 3.0.1: https://repository.microej.com/modules/ej/api/microui/3.0.1/
  
 MicroUI Implementation
 """"""""""""""""""""""
@@ -422,8 +440,11 @@ MicroUI API
 
 **Changed**
 
-* [Changed] Include `MicroUI API 3.0.0 <https://repository.microej.com/modules/ej/api/microui/3.0.0/>`_.
-* [Changed] Include `MicroUI Drawing API 1.0.0 <https://repository.microej.com/modules/ej/api/drawing/1.0.0/>`_.
+* [Changed] Include `MicroUI API 3.0.0`_.
+* [Changed] Include `MicroUI Drawing API 1.0.0`_.
+
+.. _MicroUI API 3.0.0: https://repository.microej.com/modules/ej/api/microui/3.0.0/
+.. _MicroUI Drawing API 1.0.0: https://repository.microej.com/modules/ej/api/drawing/1.0.0/
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -459,7 +480,7 @@ LLAPIs
 
 * Some new functions are mandatory: see header files list, tag *mandatory*.
 * Some new functions are optional: see header files list, tag *optional*.
-* Some header files list the libraries ``ej.api.microui`` and ``ej.api.drawing`` natives. Provided by Abstraction Layer implementation module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_.
+* Some header files list the libraries ``ej.api.microui`` and ``ej.api.drawing`` natives. Provided by Abstraction Layer implementation module `com.microej.clibrary.llimpl#microui`_.
 * Some header files list the drawing algorithms the platform can implement; all algorithms are optional.
 * Some header files list the internal graphical engine software algorithms the platform can call.
 	
@@ -467,6 +488,8 @@ LLAPIs
 
 * All old header files and functions have been renamed or shared.
 * See :ref:`Migration notes<section_ui_migration_llapi_13x>` that describe the available changes in LLAPI.
+
+.. _com.microej.clibrary.llimpl#microui: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui
 
 Simulator
 """""""""
@@ -477,12 +500,14 @@ Simulator
 	
 **Changed**
 
-* Compatible with `com.microej.pack.ui#ui-pack(frontpanel)#13.0.0 <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/>`_.
+* Compatible with `com.microej.pack.ui#ui-pack(frontpanel)#13.0.0`_.
 * See :ref:`Migration notes<section_ui_migration_frontpanelapi_13x>` that describe the available changes in Front Panel API.
 	
 **Removed**
 
 * ``ej.tool.frontpanel#widget-microui`` has been replaced by ``com.microej.pack.ui#ui-pack(frontpanel)``.
+
+.. _com.microej.pack.ui#ui-pack(frontpanel)#13.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/
  
 ImageGenerator
 """"""""""""""
@@ -495,7 +520,7 @@ ImageGenerator
 	
 **Changed**
 
-* Compatible with `com.microej.pack.ui#ui-pack(imageGenerator)#13.0.0 <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/>`_.
+* Compatible with `com.microej.pack.ui#ui-pack(imageGenerator)#13.0.0`_.
 * See :ref:`Migration notes<section_ui_migration_imagegeneratorapi_13x>` that describe the available changes in Image Generator API.
 * Uses a service loader to loads the image generator extension classes.
 * Manages image data (pixels) address alignment.
@@ -503,6 +528,8 @@ ImageGenerator
 **Removed**
 
 * Classpath variable ``IMAGE-GENERATOR-x.x``: Image generator extension project has to use ivy dependency ``com.microej.pack.ui#ui-pack(imageGenerator)`` instead.
+
+.. _com.microej.pack.ui#ui-pack(imageGenerator)#13.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/
 
 FontGenerator
 """""""""""""
@@ -581,7 +608,7 @@ MicroUI Implementation
 
 **Fixed**
 
-* Pending flush cannot be added after an OutOfEventException.
+* Pending flush cannot be added after an ``OutOfEventException``.
 
 [12.1.0] - 2019-10-16
 =====================
@@ -593,7 +620,9 @@ MicroUI API
 
 **Changed**
 
-* Include `MicroUI API 2.4.0 <https://repository.microej.com/modules/ej/api/microui/2.4.0/>`_.
+* Include `MicroUI API 2.4.0`_.
+
+.. _MicroUI API 2.4.0: https://repository.microej.com/modules/ej/api/microui/2.4.0/
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -758,7 +787,9 @@ MicroUI API
 
 **Changed**
 
-* Include `MicroUI API 2.3.0 <https://repository.microej.com/modules/ej/api/microui/2.3.0/>`_.
+* Include `MicroUI API 2.3.0`_.
+
+.. _MicroUI API 2.3.0: https://repository.microej.com/modules/ej/api/microui/2.3.0/
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -891,7 +922,7 @@ MicroUI Implementation
 	
 **Fixed**
 
-* Memory leak when an ``OutOfEvent`` exception is thrown.
+* Memory leak when an ``OutOfEventException`` is thrown.
 * A null Java object is not checked when using a font.
   
 [9.3.1] - 2017-09-28
@@ -956,7 +987,9 @@ MicroUI API
 
 **Changed**
 
-* Include `MicroUI API 2.2.0 <https://repository.microej.com/modules/ej/api/microui/2.2.0/>`_.
+* Include `MicroUI API 2.2.0`_.
+
+.. _MicroUI API 2.2.0: https://repository.microej.com/modules/ej/api/microui/2.2.0/
   
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1164,7 +1197,9 @@ MicroUI API
 
 **Changed**
 
-* Include `MicroUI API 2.0.6 <https://repository.microej.com/modules/ej/api/microui/2.0.6/>`_.
+* Include `MicroUI API 2.0.6`_.
+
+.. _MicroUI API 2.0.6: https://repository.microej.com/modules/ej/api/microui/2.0.6/
 
 MicroUI Implementation
 """"""""""""""""""""""
