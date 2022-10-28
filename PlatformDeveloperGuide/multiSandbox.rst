@@ -87,8 +87,7 @@ configuration file, check :guilabel:`Multi Applications`.
 Use
 ===
 
-The `KF API Module <https://repository.microej.com/modules/ej/api/kf/>`_ 
-must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `KF API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project to use :ref:`[KF] <kf_specification>` library.
 
 ::
@@ -97,6 +96,8 @@ Application project to use :ref:`[KF] <kf_specification>` library.
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
+
+.. _KF API Module: https://repository.microej.com/modules/ej/api/kf/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

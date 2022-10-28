@@ -10,7 +10,7 @@ SSL (Secure Sockets Layer) library provides APIs to create and establish
 an encrypted connection between a server and a client. It implements the
 standard SSL/TLS (Transport Layer Security) protocol that manages client
 or server authentication and encrypted communication. Mutual authentication
-is supported since `SSL API 2.1.0 <https://repository.microej.com/modules/ej/api/ssl/>`_.
+is supported since `SSL API` 2.1.0`_.
 
 
 Functional Description
@@ -48,13 +48,14 @@ SSL is an additional module. In the platform configuration file, check
 Use
 ===
 
-The `SSL API module <https://repository.microej.com/modules/ej/api/ssl/>`_
-must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
+The `SSL API`_ module must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
 Application project to use the SSL library.
 
 ::
 
   <dependency org="ej.api" name="ssl" rev="2.2.0"/>
+
+.. _SSL API: https://repository.microej.com/modules/ej/api/ssl/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

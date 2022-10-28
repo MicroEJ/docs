@@ -502,8 +502,7 @@ is required during platform creation to configure the module (see
 Use
 ===
 
-The `ECOM Comm API Module <https://repository.microej.com/modules/ej/api/ecom-comm/>`_ 
-must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `ECOM Comm API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project to use the ECOM Comm library. 
 
 ::
@@ -516,6 +515,8 @@ serial communication mode.
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
+
+.. _ECOM Comm API Module: https://repository.microej.com/modules/ej/api/ecom-comm/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

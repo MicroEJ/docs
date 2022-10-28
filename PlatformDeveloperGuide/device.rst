@@ -41,13 +41,14 @@ The properties file must / can contain the following properties:
 Use
 ===
 
-The `Device API Module <https://repository.microej.com/modules/ej/api/device/>`_ 
-must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `Device API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project to use the Device library.
 
 ::
 
    <dependency org="ej.api" name="device" rev="1.0.2"/>
+
+.. _Device API Module: https://repository.microej.com/modules/ej/api/device/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

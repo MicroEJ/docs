@@ -23,10 +23,13 @@ Naming Convention
 
 MicroEJ Packs are distributed in two packages:
 
-- MicroEJ Architecture Specific Pack under the `com/microej/architecture/* <https://repository.microej.com/modules/com/microej/architecture>`_ organization.
-- MicroEJ Generic Pack under the `com/microej/pack/* <https://repository.microej.com/modules/com/microej/pack/>`_ organization.
+- MicroEJ Architecture Specific Pack under the `com/microej/architecture/*`_ organization.
+- MicroEJ Generic Pack under the `com/microej/pack/*`_ organization.
 
 See :ref:`pack_import` for usage.
+
+.. _com/microej/architecture/*: https://repository.microej.com/modules/com/microej/architecture
+.. _com/microej/pack/*: https://repository.microej.com/modules/com/microej/pack/
 
 .. _pack_architecture_specific:
 
