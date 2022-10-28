@@ -119,8 +119,8 @@ To declare a MicroEJ Pack dependency, edit the :ref:`mmm_module_description` ``m
 
     </dependencies>
 
-For example, to declare the MicroEJ Architecture Specific Pack UI
-version ``13.0.4`` for MicroEJ Architecture ``flopi4G25`` on Arm®
+For example, to declare the `MicroEJ Architecture Specific Pack UI
+version 13.0.4`_ for MicroEJ Architecture ``flopi4G25`` on Arm®
 Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
 
 .. code-block:: xml
@@ -132,7 +132,7 @@ Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
 
    </dependencies>
 
-To declare the MicroEJ Generic Pack Bluetooth version ``2.1.0``:
+To declare the `MicroEJ Generic Pack Bluetooth version 2.1.0`_:
 
 .. code-block:: xml
    :emphasize-lines: 3
@@ -143,7 +143,7 @@ To declare the MicroEJ Generic Pack Bluetooth version ``2.1.0``:
 
    </dependencies>
 
-And to declare the Legacy MicroEJ Generic Pack Net version ``9.2.3``:
+And to declare the `Legacy MicroEJ Generic Pack Net version 9.2.3`_:
 
 .. code-block:: xml
    :emphasize-lines: 3
@@ -158,6 +158,10 @@ And to declare the Legacy MicroEJ Generic Pack Net version ``9.2.3``:
    
    :ref:`MicroEJ Architecture Specific Packs <pack_architecture_specific>` and :ref:`Legacy MicroEJ Generic Packs <pack_generic_legacy>` provide Platform modules
    that are **not installed** by default. See :ref:`platform_module_configuration` section for more details.
+
+.. _MicroEJ Architecture Specific Pack UI version 13.0.4: https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25-ui-pack/13.0.4/
+.. _MicroEJ Generic Pack Bluetooth version 2.1.0: https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-pack/2.1.0/
+.. _Legacy MicroEJ Generic Pack Net version 9.2.3: https://repository.microej.com/modules/com/microej/pack/net/9.2.3/
 
 .. _platform_build:
 

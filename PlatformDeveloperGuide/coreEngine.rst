@@ -182,7 +182,7 @@ to the MicroEJ world:
 -  ``LLMJVM_IMPL_getCurrentTime``: must return the monotonic time in 
    milliseconds if the given parameter is ``1``, otherwise must return the 
    application time in milliseconds. 
-   This function is called by the method `java.lang.System.currentTimeMillis() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#currentTimeMillis-->`_
+   This function is called by the method `java.lang.System.currentTimeMillis()`_
    It is also used by the platform
    scheduler, and should be implemented efficiently.
 
@@ -194,6 +194,8 @@ to the MicroEJ world:
    Implementations may apply this time to the whole underlying system
    or only to the Core Engine (i.e., the value returned by
    ``LLMJVM_IMPL_getCurrentTime(0)``).
+
+.. _java.lang.System.currentTimeMillis(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#currentTimeMillis--
 
 .. _core_engine_error_codes:
 
@@ -526,9 +528,11 @@ A typical use of this API is to verify that a native implementation does not cor
 Generic Output
 ==============
 
-The ``System.err`` stream is connected to the ``System.out`` print
+The `System.err`_ stream is connected to the `System.out`_ print
 stream. See below for how to configure the destination of these streams.
 
+.. _System.err: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#err
+.. _System.out: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#out
 
 .. _core_engine_link:
 
@@ -598,7 +602,7 @@ application" mode is installed.
 Use
 ===
 
-The `EDC API Module <https://repository.microej.com/modules/ej/api/edc/>`_ must 
+The `EDC API Module`_ must 
 be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ Application 
 Project. This MicroEJ module is always required in the build path of a MicroEJ project; 
 and all others libraries depend on it. This library provides a set of options.
@@ -608,13 +612,17 @@ Refer to the chapter :ref:`application_options` which lists all available option
 
    <dependency org="ej.api" name="edc" rev="1.3.3"/>
 
-The `BON API Module <https://repository.microej.com/modules/ej/api/bon/>`_
+The `BON API Module`_
 must also be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to access the :ref:`[BON] library <runtime_bon>`.
 
 ::
 
    <dependency org="ej.api" name="bon" rev="1.4.0"/>
+
+
+.. _EDC API Module: https://repository.microej.com/modules/ej/api/edc/
+.. _BON API Module: https://repository.microej.com/modules/ej/api/bon/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
