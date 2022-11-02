@@ -18,7 +18,7 @@ This module is composed of two elements:
 Functional Description
 ======================
 
-The Path module implements the framework of the MicroVG `Path <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/Path.html>`_. 
+The Path module implements the framework of the MicroVG `Path`_. 
 It provides Low-Level APIs that create and merge some paths in a platform-specific format. 
 After the path creation and encoding, the path data should not change when the application draws it: the encoded format should be used by the platform-specific implementation (generally GPU).
 
@@ -42,6 +42,8 @@ The buffer size is automatically increased by the MicroVG implementation when no
 
 A path is drawn with a color or with a :ref:`linear gradient<section_vg_gradient>`.
 
+.. _Path: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/Path.html
+
 .. _section_vg_path_llapi:
 
 Low-Level API
@@ -50,7 +52,7 @@ Low-Level API
 There are two separate Low-Level API header files (see :ref:`LLVG-PATH-API-SECTION`):
 
 * ``LLVG_PATH_impl.h`` specifies the Low-Level APIs used to create and encode the path.
-* ``LLVG_PATH_PAINTER_impl.h`` lists the Low-Level APIs called by  `VectorGraphicsPainter <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html>`_ to draw the path.
+* ``LLVG_PATH_PAINTER_impl.h`` lists the Low-Level APIs called by  `VectorGraphicsPainter`_ to draw the path.
 
 .. figure:: images/vg_llapi_path.*
    :alt: MicroVG Path Low Level
@@ -65,10 +67,12 @@ There are two separate Low-Level API header files (see :ref:`LLVG-PATH-API-SECTI
 * The drawer also manages the :ref:`section_vg_gradient`.
 * These files are automatically copied in the BSP project when fetching the C modules during the platform build.
 
+.. _VectorGraphicsPainter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html
+
 Use
 ===
 
-The MicroVG Path APIs are available in the class `ej.microvg.Path <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/Path.html>`_.
+The MicroVG Path APIs are available in the class ``ej.microvg.`` `Path`_.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

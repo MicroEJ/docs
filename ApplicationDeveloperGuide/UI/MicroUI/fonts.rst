@@ -6,7 +6,7 @@ Fonts
 Overview
 --------
 
-Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String->`_.
+Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont()`_.
 Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (**or** in ``*.fontsext.list`` for an external resource, see :ref:`chapter.microej.applicationResources`).
 
 .. graphviz::
@@ -49,6 +49,8 @@ Example:
 
 Font files conventionally end with the ``.ejf`` suffix and are
 created using the Font Designer (see :ref:`section.tool.fontdesigner`).
+
+.. _ej.microui.display.Font.getFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String-
 
 .. _fonts_list_grammar:
 

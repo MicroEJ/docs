@@ -102,7 +102,7 @@ The Front Panel project is a regular MicroEJ Module project. Its ``module.ivy`` 
       </dependencies>
    </ivy-module>
 
-The dependency ``ej.tool.frontpanel#widget`` is only useful for MicroUI application (see :ref:`section_ui_simulation`). The dependencies block must be manually updated to depend only on the Front Panel framework. This framework contains the Front Panel core classes:
+The dependency `ej.tool.frontpanel#widget`_ is only useful for MicroUI application (see :ref:`section_ui_simulation`). The dependencies block must be manually updated to depend only on the `Front Panel framework`_. This framework contains the Front Panel core classes:
 
 .. code-block:: xml
    :emphasize-lines: 2
@@ -111,7 +111,10 @@ The dependency ``ej.tool.frontpanel#widget`` is only useful for MicroUI applicat
       <dependency org="ej.tool.frontpanel" name="framework" rev="1.0.0"/>
    </dependencies>
 
-The Front Panel framework does not provide any widgets. Widgets have to be added to simulate user interactions. 
+The `Front Panel framework`_ does not provide any widgets. Widgets have to be added to simulate user interactions. 
+
+.. _ej.tool.frontpanel#widget: https://repository.microej.com/modules/ej/tool/frontpanel/widget/
+.. _Front Panel framework: https://repository.microej.com/modules/ej/tool/frontpanel/framework/
 
 Front Panel File
 ================

@@ -60,14 +60,14 @@ The Platform Qualification Tools provide the following components:
 - Build and Run Scripts examples:
 
   - Used to generate and deploy a MicroEJ Firmware on a device by
-    invoking a third-party toolchain for the BSP
+    invoking a third-party toolchain for the BSP.
   - Added when integrating the BSP to the Platform (see
     :ref:`bsp_connection_build_script` and
     :ref:`bsp_connection_run_script` or check the tutorial :ref:`tutorial_create_platform_build_and_run_scripts`).
 
 - C and Java Test Suites:
 
-  - Used to validate the Low Level APIs implementations
+  - Used to validate the Low Level APIs implementations.
   - Validated during the BSP development and whenever an Abstraction
     Layer implementation is added or changed (see
     :ref:`platform_testsuite` or check the tutorial
@@ -117,7 +117,7 @@ Test Suite Versioning
 
 Foundation Libraries are integrated in a MicroEJ Platform by MicroEJ Packs (see :ref:`pack_import`).
 Use the Test Suite version compliant with the API version provided by the Foundation Library to validate the Abstraction Layer implementation.
-For example, the `Test Suite FS module 3.0.3 <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/>`_ should be used to validate the Abstraction Layer implementation of the :ref:`Low Level API FS <LLFS-API-SECTION>` provided by the `FS Pack 5.1.2 <https://repository.microej.com/modules/com/microej/pack/fs/5.1.2/>`_.
+For example, the `Test Suite FS module 3.0.3`_ should be used to validate the Abstraction Layer implementation of the :ref:`Low Level API FS <LLFS-API-SECTION>` provided by the `FS Pack 5.1.2`_.
 
 .. note:: A MicroEJ Pack can provide several Foundation Libraries.
 
@@ -133,6 +133,9 @@ Core Engine
      - Test Suite
    * - 7.0.0 or higher
      - `Core Engine Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`__
+
+.. _Test Suite FS module 3.0.3: https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/
+.. _FS Pack 5.1.2: https://repository.microej.com/modules/com/microej/pack/fs/5.1.2/
 
 .. _test_suite_versioning_ui:
 

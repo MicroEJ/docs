@@ -8,6 +8,10 @@ This section describes the steps to create a new MicroEJ Platform in MicroEJ SDK
 and options to connect it to an external Board Support Package (BSP) as well as a third-party C toolchain. 
 
 .. note::
+
+   The creation of a Platform with this guide requires at least the version ``5.4.0`` of the SDK.
+
+.. note::
    
    If you own a legacy Platform, you can either create your Platform again from scratch,
    or follow the :ref:`former_platform_migration` chapter.
@@ -115,8 +119,8 @@ To declare a MicroEJ Pack dependency, edit the :ref:`mmm_module_description` ``m
 
     </dependencies>
 
-For example, to declare the MicroEJ Architecture Specific Pack UI
-version ``13.0.4`` for MicroEJ Architecture ``flopi4G25`` on Arm®
+For example, to declare the `MicroEJ Architecture Specific Pack UI
+version 13.0.4`_ for MicroEJ Architecture ``flopi4G25`` on Arm®
 Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
 
 .. code-block:: xml
@@ -128,7 +132,7 @@ Cortex®-M4 microcontrollers compiled with GNU CC toolchain:
 
    </dependencies>
 
-To declare the MicroEJ Generic Pack Bluetooth version ``2.1.0``:
+To declare the `MicroEJ Generic Pack Bluetooth version 2.1.0`_:
 
 .. code-block:: xml
    :emphasize-lines: 3
@@ -139,7 +143,7 @@ To declare the MicroEJ Generic Pack Bluetooth version ``2.1.0``:
 
    </dependencies>
 
-And to declare the Legacy MicroEJ Generic Pack Net version ``9.2.3``:
+And to declare the `Legacy MicroEJ Generic Pack Net version 9.2.3`_:
 
 .. code-block:: xml
    :emphasize-lines: 3
@@ -154,6 +158,10 @@ And to declare the Legacy MicroEJ Generic Pack Net version ``9.2.3``:
    
    :ref:`MicroEJ Architecture Specific Packs <pack_architecture_specific>` and :ref:`Legacy MicroEJ Generic Packs <pack_generic_legacy>` provide Platform modules
    that are **not installed** by default. See :ref:`platform_module_configuration` section for more details.
+
+.. _MicroEJ Architecture Specific Pack UI version 13.0.4: https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25-ui-pack/13.0.4/
+.. _MicroEJ Generic Pack Bluetooth version 2.1.0: https://repository.microej.com/modules/com/microej/pack/bluetooth/bluetooth-pack/2.1.0/
+.. _Legacy MicroEJ Generic Pack Net version 9.2.3: https://repository.microej.com/modules/com/microej/pack/net/9.2.3/
 
 .. _platform_build:
 
@@ -178,7 +186,7 @@ To build the MicroEJ Platform from the MMM CLI:
 	
   - From the Platform Configuration project, execute the command: ``mmm``
 
-In both cases the build starts and the build logs are redirected to the integrated console.
+In both cases, the build starts and the build logs are redirected to the integrated console.
 Once the build is terminated, you should get the following message:
 
     .. code-block:: console
@@ -207,7 +215,7 @@ in the workspace available for the MicroEJ Application project to run on. You ca
    MicroEJ Platform Project
  
 This step is only required the first time the Platform is built, or if the Platform properties have changed (i.e, name, version). 
-When the same Platform is built again, the Platform project should be automatically refreshed after few seconds. 
+When the same Platform is built again, the Platform project should be automatically refreshed after a few seconds. 
 In case of any doubt, right-click on the Platform project and select :guilabel:`Refresh` to get the new content.
 
 .. _platform_module_configuration:
@@ -226,7 +234,7 @@ Platform modules provided by :ref:`MicroEJ Generic Packs <pack_generic>` are aut
 and do not require extra configuration. They are not displayed in the Platform Editor.
 
 Platform modules provided by :ref:`MicroEJ Architectures <architecture_overview>`, :ref:`MicroEJ Architecture Specific Packs <pack_architecture_specific>`
-and :ref:`Legacy MicroEJ Generic Packs <pack_generic_legacy>` following list are **not installed** by default.
+and :ref:`Legacy MicroEJ Generic Packs <pack_generic_legacy>` are **not installed** by default.
 They must be enabled and configured using the Platform Editor.
 
 Before opening the Platform Editor, the Platform must have been built once to let :ref:`mmm` resolve and download MicroEJ Architecture and Packs locally.
@@ -242,15 +250,15 @@ Once imported, double-click on the :guilabel:`default.platform` file to open the
 From the Platform Editor, select the :guilabel:`Content` tab to access the
 modules selection.  Platform modules can be selected/deselected from the :guilabel:`Modules` frame.
 
-Platform modules are organized into groups.
-When a group is selected, by default, all its modules are selected.
+Platform modules are organized in groups.
+When a group is selected, by default all its modules are selected.
 To view all the modules making up a group, click on the Expand All icon on the top-right of the frame. 
-This will let you select/deselect on a per module basis. Note that individual module selection is not
-recommended and that it is only available when the module have been
+This will let you select/deselect on a per-module basis. Note that individual module selection is not
+recommended and that it is only available when the module has been
 imported.
 
 The description and contents of an item (group or module) are displayed
-beside the list on item selection.
+next to the list when an item is selected.
 
 All the selected Platform modules will be installed in the Platform.
 
@@ -261,7 +269,7 @@ All the selected Platform modules will be installed in the Platform.
    MicroEJ Platform Configuration Modules Selection
 
 Each selected Platform module can be customized by creating a :guilabel:`[module]`
-folder named after the module beside the :guilabel:`.platform` file definition. 
+folder (named after the module name), next to the :guilabel:`.platform` file definition. 
 It may contain:
 
 -  A :guilabel:`[module].properties` file named after the module name.
@@ -295,8 +303,8 @@ Modifying one of these files requires to :ref:`build the Platform <platform_buil
 
 .. note::
 
-  It is possible to quickly rebuild the Platform from the Platform Editor if only Platform module configuration has changed.
-  Click on the :guilabel:`Build Platform` link on the Platform configuration :guilabel:`Overview` tab.
+  It is possible to quickly rebuild the Platform from the Platform Editor if only the Platform module configuration has changed.
+  Click on the :guilabel:`Build Platform` link on the :guilabel:`Overview` tab of the Platform Editor.
 
 .. _platformCustomization:
 
@@ -305,23 +313,23 @@ Platform Customization
 
 The configuration project (the project which contains the
 :guilabel:`.platform` file) can contain an optional :guilabel:`dropins` folder.
-The contents of this folder will be copied integrally into the final
-Platform. This feature allows to add some additional libraries, tools
+The full content of this folder will be copied in the Platform during the build. 
+This feature allows to add or overwrite libraries, tools,
 etc. into the Platform.
 
-The dropins folder organization should respect the final Platform files
+The dropins folder organization should respect the Platform files
 and folders organization. For instance, the tools are located in the
 sub-folder :guilabel:`tools`. Launch a Platform build without the dropins folder
-to see how the Platform files and folders organization is. Then fill the
+to see how the Platform files and folders are organized. Then fill the
 dropins folder with additional features and build again the Platform to
-obtain an advanced Platform.
+get a customized Platform.
 
-The dropins folder files are kept in priority. If one file has the same
-path and name as another file already installed into the Platform, the
-dropins folder file will be kept.
+Files in the dropins folder have priority. If one file has the same
+path and name as a file already installed in the Platform, the file from the
+dropins folder will be selected first.
 
 Platform build can also be customized by updating the :guilabel:`configuration.xml` file
-beside the :guilabel:`.platform` file. This Ant script can extend one or
+next to the :guilabel:`.platform` file. This Ant script can extend one or
 several of the extension points available. By default, you should not have to change 
 the default configuration script.
 
@@ -336,8 +344,8 @@ The publication of the built Platform to a :ref:`module repository <module_repos
 It can be enabled by setting the ``skip.publish`` property defined in the file ``module.properties`` of 
 the Platform configuration project to ``false``.
 
-The publication is generally kept disabled by default in the project sources since developers use the locally built platform,
-but must be enabled in the Continuous Integration environment.
+The publication is kept disabled by default in the project sources because developers usually use the locally built platform in the workspace.
+However, the publication is required in a Continuous Integration environment. 
 This can be done by leaving the ``skip.publish`` property to ``true`` in the project sources 
 and by overwriting it in the command launched by the Continuous Integration environment, for example:
 
@@ -430,7 +438,7 @@ The 3 most common integration cases are:
   
   The MicroEJ Platform includes the BSP.
 
-  BSP connection is configured when building MicroEJ Platform (relative locations within the BSP), 
+  BSP connection is configured when building the Platform (relative locations within the BSP), 
   as well as the BSP root location (absolute directory).
   No BSP connection configuration is required when building the MicroEJ Application.
 

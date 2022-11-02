@@ -5,7 +5,7 @@ MicroUI Foundation Library provides access to a pixel-based display and inputs.
 
 The aim of this library is to enable the creation of user interface in Java by reifying hardware capabilities.
 
-To use the MicroUI Foundation Library, add `MicroUI API module <https://repository.microej.com/modules/ej/api/microui/>`_ to a :ref:`module description file <mmm_module_description>`:
+To use the MicroUI Foundation Library, add `MicroUI API module`_ to a :ref:`module description file <mmm_module_description>`:
 
 .. code-block:: XML
 
@@ -17,13 +17,16 @@ Drawing Foundation Library extends MicroUI drawing APIs [#note_microui_2]_ with 
 - polygon
 - image deformation and rotation
 
-To use the Drawing Foundation Library, add `Drawing API module <https://repository.microej.com/modules/ej/api/microui/>`_ to a :ref:`module description file <mmm_module_description>`:
+To use the Drawing Foundation Library, add `Drawing API module`_ to a :ref:`module description file <mmm_module_description>`:
 
 .. code-block:: XML
 
 	<dependency org="ej.api" name="drawing" rev="1.0.3"/>
 
 .. [#note_microui_2] These APIs were formerly included in MicroUI ``2.x``
+
+.. _MicroUI API module: https://repository.microej.com/modules/ej/api/microui/
+.. _Drawing API module: https://repository.microej.com/modules/ej/api/drawing/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

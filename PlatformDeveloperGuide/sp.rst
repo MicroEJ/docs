@@ -196,8 +196,7 @@ its relative tools.
 Use
 ===
 
-The `Shielded Plug API Module <https://repository.microej.com/modules/ej/api/sp/>`_
-must be added to the :ref:`module.ivy <mmm_module_description>` of the 
+The `Shielded Plug API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the 
 Application project.
 
 ::
@@ -206,6 +205,8 @@ Application project.
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
+
+.. _Shielded Plug API Module: https://repository.microej.com/modules/ej/api/sp/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

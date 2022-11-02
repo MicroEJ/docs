@@ -7,7 +7,7 @@ Scope
 This document explains how the core features of MicroEJ Architecture are
 accessed, configured and used by the MicroEJ Platform builder. It
 describes the process for creating and augmenting a MicroEJ
-Architecture. This document is concise, but attempts to be exact and
+Architecture. This document is concise but attempts to be exact and
 complete. Semantics of implemented Foundation Libraries are described in
 their respective specifications. This document includes an outline of
 the required low level drivers (LLAPI) for porting the MicroEJ

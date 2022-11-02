@@ -299,21 +299,13 @@ Check Activation on SDK
 
    Platform License Status OK
 
-.. _production_license_troubleshooting:
+.. _production_license_linux:
 
-Troubleshooting
-~~~~~~~~~~~~~~~
+USB Dongle on GNU/Linux
+~~~~~~~~~~~~~~~~~~~~~~~
 
-This section contains instructions to check that your
-operating system correctly recognizes your USB dongle.
-
-GNU/Linux Troubleshooting
-"""""""""""""""""""""""""
-
-For GNU/Linux Users (Ubuntu at least), by default, the dongle access has
-not been granted to the user, you have to modify udev rules. Please
-create a ``/etc/udev/rules.d/91-usbdongle.rules`` file with the
-following contents:
+For GNU/Linux Users (Ubuntu at least), by default, the dongle access has not been granted to the user, you have to modify udev rules.
+Please create a ``/etc/udev/rules.d/91-usbdongle.rules`` file with the following contents:
 
 ::
 
@@ -330,10 +322,48 @@ following contents:
 
 Then, restart udev: ``/etc/init.d/udev restart``
 
-You can check that the device is recognized by running the ``lsusb``
-command. The output of the command should contain a line similar to the
-one below for each dongle:
+You can check that the device is recognized by running the ``lsusb`` command.
+The output of the command should contain a line similar to the one below for each dongle:
 ``Bus 002 Device 003: ID 096e:0006 Feitian Technologies, Inc.``
+
+.. _production_license_docker_linux:
+
+USB Dongle with Docker on Linux
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you use the `SDK Docker image <https://hub.docker.com/r/microej/sdk>`__ on a Linux host to build a Firmware, 
+the dongle must be mapped to the Docker container.
+First, it requires to add a symlink on the dongle by following the instructions of the :ref:`production_license_linux` section but
+with this ``/etc/udev/rules.d/91-usbdongle.rules`` file:
+
+::
+
+   ACTION!="add", GOTO="usbdongle_end"
+       SUBSYSTEM=="usb", GOTO="usbdongle_start"
+       SUBSYSTEMS=="usb", GOTO="usbdongle_start"
+       GOTO="usbdongle_end"
+       
+       LABEL="usbdongle_start"
+       
+       ATTRS{idVendor}=="096e" , ATTRS{idProduct}=="0006" , MODE="0666" , SYMLINK+="microej_dongle"
+       
+       LABEL="usbdongle_end"
+
+Then the symlink has to be mapped in the Docker container by adding the following option in the Docker container creation command line:
+
+::
+
+   --device /dev/microej_dongle:/dev/bus/usb/999/microej_dongle
+
+The ``/dev/microej_dongle`` symlink can be mapped to any device path as long as it is in ``/dev/bus/usb``.
+
+.. _production_license_troubleshooting:
+
+Troubleshooting
+~~~~~~~~~~~~~~~
+
+This section contains instructions to check that your
+operating system correctly recognizes your USB dongle.
 
 Windows Troubleshooting
 """""""""""""""""""""""

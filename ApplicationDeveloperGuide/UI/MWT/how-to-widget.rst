@@ -21,7 +21,7 @@ The `computeContentOptimalSize()`_ method is called by the MWT framework in orde
 The optimal size of the widget is the size of the smallest possible area which would still allow to represent the widget.
 Unless the widget is using an `OptimalDimension`_ in its style, the actual size of the widget will most likely be bigger than the optimal size returned in this method.
 
-The ``size`` parameter of the ``computeContentOptimalSize()`` method initially contains the size available for the widget.
+The ``size`` parameter of the `computeContentOptimalSize()`_ method initially contains the size available for the widget.
 An available width or height equal to `Widget.NO_CONSTRAINT`_ means that the optimal size should be computed without considering any restriction on the respective axis.
 Before the method returns, the size object should be set to the optimal size of the widget.
 
@@ -105,7 +105,7 @@ The following guidelines are recommended to decide when to consume an event and 
 .. note::
 
    If the event is `Pointer.PRESSED`_, do not consume the event unless it is required that the subsequent widgets in the hierarchy do not receive it.
-   The ``Pointer.PRESSED`` event is special because pressing a widget is usually not the deciding factor to trigger an action.
+   The `Pointer.PRESSED`_ event is special because pressing a widget is usually not the deciding factor to trigger an action.
    The user has to release or to drag the widget to trigger an action.
    If the user presses a widget and then drags the pointer (e.g. their finger or a stylus) out of the widget before releasing it, the action is not triggered.
 

@@ -1,5 +1,7 @@
 .. include:: aliases.rst
 
+.. _section_vector_fonts:
+
 Vector Fonts
 ============
 
@@ -10,7 +12,7 @@ The MicroVG library enables the usage of Vector Fonts.
 
 Compared to MicroUI :ref:`section.ui.Fonts`, Vector Fonts brings the following features:
 
-- the text strings are scalable and can be transformed using a `Matrix` object.
+- the text strings are scalable and can be transformed using a `Matrix`_ object.
 - the TTF/OTF font files don't need to be preprocessed.
 - the text strings can be drawn with opacity, a color or a linear gradient.
 
@@ -18,18 +20,22 @@ The library also considers the `Kerning` space described in the font file kernin
 
 It also provides metrics measurement methods to correctly place the text within the surrounding drawing elements (i.e. in a label).
 
+.. _Matrix: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/Matrix.html
+
 Loading a Font File
 -------------------
 
 Font files must be declared as ressources in a `.resources.list` file available in the classpath(:ref:`chapter.microej.applicationResources`).
 
-Then the font has to be loaded in a `VectorFont` object with a call to `ej.microvg.VectorFont.loadFont() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#loadFont-java.lang.String->`_. This `VectorFont` object can then be used to draw text strings.
+Then the font has to be loaded in a `VectorFont`_ object with a call to `ej.microvg.VectorFont.loadFont()`_. This `VectorFont`_ object can then be used to draw text strings.
 
+.. _VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/
+.. _ej.microvg.VectorFont.loadFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#loadFont-java.lang.String-
 
 Text String Drawing
 -------------------
 
-A string can be drawn in the graphics context with a call to `ej.microvg.VectorGraphicsPainter.drawString() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawString-ej.microui.display.GraphicsContext-java.lang.String-ej.microvg.VectorFont-float-float-float->`_.
+A string can be drawn in the graphics context with a call to `ej.microvg.VectorGraphicsPainter.drawString()`_.
 
 The text string height is scalable, and multiple font files can be used in parrallel.
 
@@ -73,6 +79,8 @@ The text string height is scalable, and multiple font files can be used in parra
 
 |endTable| 
 
+.. _ej.microvg.VectorGraphicsPainter.drawString(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawString-ej.microui.display.GraphicsContext-java.lang.String-ej.microvg.VectorFont-float-float-float-
+
 Text Color
 ~~~~~~~~~~
 
@@ -106,7 +114,7 @@ The text string can be colored with the graphics context color or a with a linea
 Text Transformations
 ~~~~~~~~~~~~~~~~~~~~
 
-The text string can also be transformed with a `Matrix` to translate, rotate, scale the drawing.
+The text string can also be transformed with a `Matrix`_ to translate, rotate, scale the drawing.
 
 |startTable|
 
@@ -169,6 +177,8 @@ The inter character distance can be adjusted for each string drawing. By default
 
 |endTable| 
 
+.. _colored_emojis:
+
 Colored Emojis
 ~~~~~~~~~~~~~~
 
@@ -177,6 +187,8 @@ The library supports the drawing of colored multilayer glyphs, but only for the 
 Only font files with CPAL/COLR tables are supported.
 
 Font files with CBDT/CBLC tables are not supported.
+
+To add colored emojis to a font, see the tutorial :ref:`tutorial_append_emojis`.
 
  
 .. _metrics_and_text_positioning:

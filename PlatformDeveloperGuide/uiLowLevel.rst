@@ -54,7 +54,7 @@ In the simulator the three UI engines are grouped in a mock called Front Panel. 
 
 The specification of class names is:
 
-- Package are the same than the MicroUI library (``ej.microui.display``, ``ej.microui.event``, ``ej.microui.led``).
+- Package are the same than the MicroUI library (`ej.microui.display`_, `ej.microui.event`_, `ej.microui.led`_).
 - Name start with ``LLUI``.
 - Second part name refers the UI engine: ``Display``, ``Input``, ``Led``.
 - Files whose name ends with  ``Impl`` list methods to implement like embedded platform.
@@ -67,6 +67,10 @@ There are some exceptions :
 - ``EventXXX`` list methods to create input events compatible with MicroUI implementation.
 
 All files and their aims are described in :ref:`section_ui_simulation`. 
+
+.. _ej.microui.display: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/package-summary.html
+.. _ej.microui.event: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/package-summary.html
+.. _ej.microui.led: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/led/package-summary.html
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

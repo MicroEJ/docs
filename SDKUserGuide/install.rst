@@ -1,19 +1,29 @@
 .. _sdk_install:
 
-Download and Install
-====================
+Installation
+============
 
-The SDK is available for download at https://developer.microej.com/microej-sdk-software-development-kit.
-Check the :ref:`system-requirements` page for the list of supported environments.
+This chapter will guide you through the installation process of the SDK Distribution on your workstation.
 
-.. note::
+If you want to evaluate MicroEJ, we recommend that you refer to the :ref:`getting_started` chapter, 
+which will guide you to install an SDK Distribution compatible with the Getting Started tutorials.
 
-   The SDK Distribution proposed by default for download is the version ``21.11``.
-   A newer version, the ``22.06``, is also available in the `SDK Downloads page <https://repository.microej.com/packages/SDK/>`_, 
-   but it requires to have an :ref:`Architecture <architecture_overview>` ``7.17`` or more.
-   So make sure to use the right Architecture version if you want to use this newer SDK Distribution version.
+Otherwise, follow the instructions of the :ref:`sdk_installation_latest` page to install the latest SDK Distribution compatible with your needs.
+
+.. figure:: images/installation_process/splash.png
+   :align: center
+
+   SDK Splash Screen
+
+.. toctree::
+   :hidden:
+
+   installSDKDistributionLatest
+   updateSDKVersion
+   installSDKDistributionOther
+   systemRequirements   
+   troubleshooting
    
-Once downloaded, execute the installer and follow the installation process.
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

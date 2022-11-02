@@ -602,17 +602,19 @@ This function takes a parameter to configure the text rendering engine:
 - Simple layout: uses the glyph advance metrics and the font kerning table.
 - Complex layout: uses the font GPOS and GSUB tables.
 
-See `VectorFont <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html>`_ for more information.
+See `VectorFont`_ for more information.
 
 The implementation must manage its own heap to keep the font opened.
 The font's data are disposed by a call to ``LLVG_FONT_IMPL_dispose``.
+
+.. _VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html
 
 Font Characteristics
 --------------------
 
 The other functions in ``LLVG_FONT_PAINTER_impl.h`` consist in retrieving some font characteristics according a text and a font size: string width, string height, baseline, etc.
 
-See `VectorFont <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html>`_ for more information.
+See `VectorFont`_ for more information.
 
 Drawing
 -------

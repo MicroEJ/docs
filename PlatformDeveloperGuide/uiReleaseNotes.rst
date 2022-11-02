@@ -178,39 +178,43 @@ LED
 Front Panel API
 ===============
 
-Since MicroEJ UI Pack ``13.0.0``, the Front Panel project must depend on module `com.microej.pack.ui.ui-pack(frontpanel) <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/>`_. 
+Since MicroEJ UI Pack ``13.0.0``, the Front Panel project must depend on module `com.microej.pack.ui.ui-pack(frontpanel)`_. 
 The module version is the MicroEJ Generic UI Pack version, that is always aligned with the MicroEJ UI Packs specific for MCUs.
 
 +-----------------+---------------------------------------------+-------------------+
 | UI Pack Range   | Module                                      | Version           |
 +=================+=============================================+===================+
-| [13.0.0-13.3.1] | ``com.microej.pack.ui.ui-pack(frontpanel)`` | |UIPACKVERSION|   |
+| [13.0.0-13.3.1] | `com.microej.pack.ui.ui-pack(frontpanel)`_  | |UIPACKVERSION|   |
 +-----------------+---------------------------------------------+-------------------+
 | [12.0.0-12.1.5] | ``ej.tool.frontpanel.widget-microui``       | 1.0.0             |
 +-----------------+---------------------------------------------+-------------------+
 
 .. note:: Before MicroEJ UI Pack ``12.0.0``, the Front Panel project must depend on classpath variable ``FRONTPANEL_WIDGETS_HOME``.
 
+.. _com.microej.pack.ui.ui-pack(frontpanel): https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/
+
 Image Generator API
 ===================
 
-Since MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on module `com.microej.pack.ui.ui-pack(imagegenerator) <https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/>`_.
+Since MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on module `com.microej.pack.ui.ui-pack(imagegenerator)`_.
 The module version is the MicroEJ Generic UI Pack version, that is always aligned with the MicroEJ UI Packs specific for MCUs.
 
 +-----------------+-------------------------------------------------+-------------------+
 | UI Pack Range   | Module                                          | Version           |
 +=================+=================================================+===================+
-| [13.0.0-13.3.1] | ``com.microej.pack.ui.ui-pack(imagegenerator)`` | |UIPACKVERSION|   |
+| [13.0.0-13.3.1] | `com.microej.pack.ui.ui-pack(imagegenerator)`_  | |UIPACKVERSION|   |
 +-----------------+-------------------------------------------------+-------------------+
 
 .. note:: Before MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on classpath variable ``IMAGE-GENERATOR-x.x``.
+
+.. _com.microej.pack.ui.ui-pack(imagegenerator): https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/
 
 .. _section_ui_releasenotes_cmodule:
 
 C Module
 ========
 
-A C module `<https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_ is available on MicroEJ Central Repository. 
+A `C module`_ is available on MicroEJ Central Repository. 
 This C module provides default implementations for:
 
 * ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``: see :ref:`section_display_llapi`,
@@ -228,6 +232,8 @@ The following table describes the compatibility versions between the C modules a
 +----------------+-----------------+
 | [1.0.0-1.0.3]  | [13.0.0-13.1.0] |
 +----------------+-----------------+
+
+.. _C module: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

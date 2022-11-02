@@ -6,7 +6,7 @@ SDK User Guide
 MICROEJ SDK is an integrated environment to create software applications for MicroEJ-ready devices.
 The SDK provides tools to write applications and run them on a virtual (simulated) or real device.
 The capability to execute an application in a simulated environment allows to quickly test changes done 
-in the application code and hence provide a short development feedback loop.
+in the application code and hence provides a short development feedback loop.
 
 Since the purpose of the SDK is to develop for targeted MCU/MPU computers (IoT, wearable, etc.), it is a cross-development tool.
 But unlike standard low-level cross-development tools, 
@@ -19,14 +19,14 @@ the SDK offers unique services like hardware simulation and local deployment to 
 
    MicroEJ Application Development Overview
 
-The SDK is composed of the following main elements:
+The integrated environment is composed of the following main elements:
 
-- **SDK Version 5.x**, an Integrated Development Environment (IDE) for writing Applications and building Firmware.
+- **SDK Version 5.x**, an Integrated Development Environment (IDE) for writing and building Applications.
   It is based on Eclipse Java edition and relies on the integrated Java compiler (JDT).
   
   It is also packaged with Eclipse to produce a **SDK Distribution**.
 
-- **MicroEJ Module Manager**, the module and build manager used to compile and package any kind of :ref:`MicroEJ modules natures <module_natures>`.
+- **MicroEJ Module Manager**, the module and build manager used to compile and package any kind of :ref:`modules natures <module_natures>`.
   It provides a Command Line Interface to build modules, especially used in a Continuous Integration environment.
   See :ref:`mmm` section for more details.
 
@@ -55,17 +55,15 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    :maxdepth: 1
 
    install
-   systemRequirements
    licenses
    repository
    github
-   workspace
+   ide
    version
    mmm
    sdkReleaseNotes
    sdkChangeLog
    sdkMigrationNotes
-   troubleshooting
    
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

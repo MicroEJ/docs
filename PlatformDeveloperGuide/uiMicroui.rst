@@ -19,9 +19,9 @@ MicroUI library is the entry point to perform some drawings on a display and to 
 
 At application startup all MicroUI objects relative to the I/O devices are created and accessible. The following MicroUI methods allow you to access these objects:
 
--  `Display.getDisplay() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#getDisplay-->`_ : returns the instance of the display which drives the main display screen.
+-  `Display.getDisplay()`_ : returns the instance of the display which drives the main display screen.
 
--  `Leds.getNumberOfLeds() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/led/Leds.html#getNumberOfLeds-->`_: returns the numbers of available LEDs.
+-  `Leds.getNumberOfLeds()`_: returns the numbers of available LEDs.
 
 MicroUI is not a standalone library. It requires a configuration step and several extensions to drive I/O devices (display, inputs, LEDs).
 
@@ -49,6 +49,8 @@ The embedded platform requires some additional C libraries to drive the I/O devi
 The simulation platform uses a mock which simulates all I/O devices.
 Refer to the chapter :ref:`section_ui_simulation`.
 
+.. _Display.getDisplay(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#getDisplay--
+.. _Leds.getNumberOfLeds(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/led/Leds.html#getNumberOfLeds--
 
 Thread
 =======
@@ -56,16 +58,22 @@ Thread
 Principle
 ---------
 
-The MicroUI implementation for MicroEJ uses one internal thread. This thread is created during the MicroUI initialization step, and is started by a call to `MicroUI.start() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start-->`_. 
+The MicroUI implementation for MicroEJ uses one internal thread. This thread is created during the MicroUI initialization step, and is started by a call to `MicroUI.start()`_.
+
+.. _MicroUI.start(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start--
 
 Role
 ----
 
 This thread has several roles:
 
-- It manages all display events (`requestRender() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestRender-->`_, `requestShow() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestShow-ej.microui.display.Displayable->`_, etc.).
+- It manages all display events (`requestRender()`_, `requestShow()`_, etc.).
 - It reads the I/O devices inputs and dispatches them into the event generators' listeners. See input section: :ref:`section_input`. 
-- It allows to run some piece of code using the `callSerially() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#callSerially-java.lang.Runnable->`_ method.
+- It allows to run some piece of code using the `callSerially()`_ method.
+
+.. _requestRender(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestRender--
+.. _requestShow(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#requestShow-ej.microui.display.Displayable-
+.. _callSerially(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#callSerially-java.lang.Runnable-
 
 Memory
 ------
@@ -77,7 +85,9 @@ Exceptions
 
 The thread cannot be stopped with a Java exception: the exceptions are always checked by the framework.
 
-When an exception occurs in a user method called by the internal thread (for instance `render() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Displayable.html#render-ej.microui.display.GraphicsContext->`_), the current ``UncaughtExceptionHandler`` receives the exception. When no exception handler is set, a default handler prints the stack trace.
+When an exception occurs in a user method called by the internal thread (for instance `render()`_), the current ``UncaughtExceptionHandler`` receives the exception. When no exception handler is set, a default handler prints the stack trace.
+
+.. _render(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Displayable.html#render-ej.microui.display.GraphicsContext-
 
 .. _section_microui_native_calls:
 

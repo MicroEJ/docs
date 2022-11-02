@@ -73,7 +73,7 @@ Example:
 Usage
 -----
 
-The `binary-nls module <https://repository.microej.com/modules/com/microej/library/runtime/binary-nls>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the Application project.
+The `binary-nls module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the Application project.
 
 ::
 
@@ -104,8 +104,8 @@ If no locale has been set yet when getting a message, the translation for the fi
 However, you can also pick this locale to default to yourself, by adding a ``com.microej.binarynls.defaultLocale`` property followed by a locale name in a ``.properties.list`` file. 
 
 
+.. _binary-nls module: https://repository.microej.com/modules/com/microej/library/runtime/binary-nls
 .. _setCurrentLocale(locale): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#setCurrentLocale-java.lang.String-
-
 
 Dealing With Missing Translations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -115,7 +115,7 @@ In the case of an XML Android String resource, the ``name`` attribute of a missi
 However if returning this identifier is not a suitable solution, you might want to set a fallback locale parameter for an interface. 
 This parameter corresponds to a language to print the translation for a message in, in case it is not available in the current language.
 
-Starting with version 2.5.0 of the binary-nls module, you can set this fallback locale by specifying a locale name in a ``.nls.list`` file, after the name of the interface you want this locale to be the fallback for, separated by a colon ``:``. 
+Starting with version 2.5.0 of the `binary-nls module`_, you can set this fallback locale by specifying a locale name in a ``.nls.list`` file, after the name of the interface you want this locale to be the fallback for, separated by a colon ``:``. 
 For example, with the following ``.nls.list`` file, if a translation is missing in a language for a message in the ``Labels`` and ``Messages`` PO/XML files, the message will be translated to ``en_US`` instead of just returning its ``msgid``/``name``.
 
 .. code-block::
@@ -146,11 +146,13 @@ For example, with the following ``.nls.list`` file, the messages in ``Labels`` w
 NLS External Loader
 -------------------
 
-The NLS External Loader allows to update the PO files of an application executed on a Virtual Device without rebuilding it.
+The `NLS External Loader`_ allows to update the PO files of an application executed on a Virtual Device without rebuilding it.
 PO files can be dropped in a given location in the Virtual Device folders to dynamically replace the language strings packaged in the application.
 
 This is typically useful when testing or translating an application in order to have a quick feedback when changing the PO files.
 Once the PO files are updated, a simple restart of the Virtual Device allows to immediately see the result.
+
+.. _NLS External Loader: https://repository.microej.com/modules/com/microej/tool/nls-po-external-loader/
 
 Installation
 ^^^^^^^^^^^^
@@ -228,7 +230,7 @@ Make sure that all PO files are copied in the ``translations`` folder.
 Crowdin
 ^^^^^^^
 
-Crowdin is a cloud-based localization platform which allows to manage multilingual content.
+`Crowdin`_ is a cloud-based localization platform which allows to manage multilingual content.
 The NLS External Loader can fetch translations directly from Crowdin to make the translation process even easier.
 Translators can then contribute and validate their translations in Crowdin and apply them automatically in the Virtual Device.
 
@@ -247,6 +249,8 @@ Once the module has been built, edit the file ``platform/tools/crowdin/crowdin.p
 When the configuration is done, the fetch of the Crowdin translations can be done by executing the script ``crowdin.bat`` or ``crowdin.sh`` located in the folder ``platform/tools/crowdin/``.
 The PO files retrieved from Crowdin are automatically pasted in the folder ``translations``,
 therefore the new translations are applied after the next Virtual Device restart.
+
+.. _Crowdin: https://repository.microej.com/modules/com/microej/tool/nls-po-crowdin/
 
 ..
    | Copyright 2020-2022, MicroEJ Corp. Content in this space is free 

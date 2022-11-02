@@ -32,6 +32,17 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+
+.. _changelog-7.18.1:
+
+[7.18.1] - 2022-10-26
+---------------------
+
+Integration
+~~~~~~~~~~~
+
+- Fixed License Manager issue with JDK 8u351 or higher (``[M65] - License check failed [tampered (3)].``).
+
 .. _changelog-7.18.0:
 
 [7.18.0] - 2022-09-14
@@ -41,7 +52,7 @@ Integration
 ~~~~~~~~~~~
 
 - Added support for Windows 11.
-- Added License Manager support for macOS AArch64 (M1).
+- Added License Manager support for macOS aarch64 (M1 chip).
 - Removed warning when launching Applications or Tools with JDK 11 (`Warning: Nashorn engine is planned to be removed from a future JDK release`).
 
 SOAR
@@ -144,7 +155,9 @@ Notes
 
 The ``Device`` module provided by the MicroEJ Architecture is deprecated
 and will be removed in a future version. It has been moved to the
-`Device Pack <https://repository.microej.com/modules/com/microej/pack/device/device-pack/>`_. Please update your Platforms.
+`Device Pack`_. Please update your Platforms.
+
+.. _Device Pack: https://repository.microej.com/modules/com/microej/pack/device/device-pack/
 
 Core Engine
 ~~~~~~~~~~~
@@ -416,7 +429,7 @@ SOAR
    file indicating which types, methods and static fields are exposed as
    Kernel APIs
 -  [Multi] - Fixed potential link error when calling
-   `java.lang.Object.clone() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#clone-->`_ method on an array in Feature mode
+   `Object.clone()`_ method on an array in Feature mode
 
 .. _tools-2:
 
@@ -444,8 +457,10 @@ Core Engine
 Simulator
 ~~~~~~~~~
 
--  Fixed unnecessary stacktrace dump on ``Long.parseLong()`` error
+-  Fixed unnecessary stacktrace dump on `Long.parseLong(...)`_ error
 -  Fixed UTF-8 encoded Strings not correctly printed
+
+.. _Long.parseLong(...): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Long.html#parseLong-java.lang.String-
 
 .. _tools-3:
 
@@ -1480,7 +1495,7 @@ Core Engine
 
 .. _section-27:
 
-[6.17.0) - 2017-10-10
+[6.17.0] - 2017-10-10
 ---------------------
 
 .. _tools-16:

@@ -18,7 +18,7 @@ This module is composed of two elements:
 Functional Description
 ======================
 
-The Font module implements the MicroVG `VectorFont <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html>`_ framework. 
+The Font module implements the MicroVG `VectorFont`_ framework. 
 It provides Low-Level APIs that consist of opening and decoding a font file and getting the font's characteristics. 
 
 A font file:
@@ -32,6 +32,8 @@ The implementation is responsible for the font's cycle life: allocation and rele
 
 A font is used to draw a string with a color or with a :ref:`linear gradient<section_vg_gradient>`.
 
+.. _VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html
+
 .. _section_vg_font_llapi:
 
 Low-Level API
@@ -40,7 +42,7 @@ Low-Level API
 There are two separate Low-Level API header files (see :ref:`LLVG-FONT-API-SECTION`):
 
 * ``LLVG_FONT_impl.h`` specifies the Low-Level APIs used to open and retrieve the font's characteristics.
-* ``LLVG_FONT_PAINTER_impl.h`` lists the Low-Level APIs called by  `VectorGraphicsPainter <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html>`_ to draw a string with the font.
+* ``LLVG_FONT_PAINTER_impl.h`` lists the Low-Level APIs called by  `VectorGraphicsPainter`_ to draw a string with the font.
 
 .. figure:: images/vg_llapi_font.*
    :alt: MicroVG Font Low Level
@@ -56,11 +58,12 @@ There are two separate Low-Level API header files (see :ref:`LLVG-FONT-API-SECTI
 * The :ref:`C module Harfbuzz <section_vg_c_module_microvg>` provides an implementation of :ref:`complex layout <section_vg_font_complex>`.
 * These files are automatically copied in the BSP project when fetching the C modules during the platform build.
 
+.. _VectorGraphicsPainter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html
 
 Use
 ===
 
-The MicroVG Font APIs are available in the class `ej.microvg.VectorFont <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html>`_.
+The MicroVG Font APIs are available in the class ``ej.microvg.`` `VectorFont`_.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

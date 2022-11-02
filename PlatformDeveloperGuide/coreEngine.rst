@@ -27,10 +27,10 @@ are performed within the C IDE.
 1. Step 1 consists in writing a MicroEJ Application against a set of
    Foundation Libraries available in the platform.
 
-2. Step 2 consists in compiling the MicroEJ Application code and the
+2. Step 2 consists in compiling the Application code and the
    required libraries in an ELF library, using the SOAR.
 
-3. Step 3 consists in linking the previous ELF file with the MicroEJ
+3. Step 3 consists in linking the previous ELF file with the 
    Core Engine library and a third-party BSP (OS, drivers, etc.). This
    step may require a third-party linker provided by a C toolchain.
 
@@ -38,7 +38,7 @@ are performed within the C IDE.
 Architecture
 ============
 
-The MicroEJ Core Engine and its components have been compiled for one
+The Core Engine and its components have been compiled for one
 specific CPU architecture and for use with a specific C compiler.
 
 The architecture of the platform engine is called green thread
@@ -47,7 +47,7 @@ scheduling MicroEJ threads. The scheduler implements a priority
 preemptive scheduling policy with round robin for the MicroEJ threads
 with the same priority. In the following explanations the term "RTOS
 task" refers to the tasks scheduled by the underlying OS; and the term
-"MicroEJ thread" refers to the Java threads scheduled by the MicroEJ Core Engine.
+"MicroEJ thread" refers to the Java threads scheduled by the Core Engine.
 
 .. figure:: images/mjvm_gt.*
    :alt: A Green Threads Architecture Example
@@ -56,8 +56,8 @@ task" refers to the tasks scheduled by the underlying OS; and the term
 
    A Green Threads Architecture Example
 
-The activity of the platform is defined by the MicroEJ Application. When
-the MicroEJ Application is blocked (when all MicroEJ threads are
+The activity of the platform is defined by the Application. When
+the Application is blocked (when all MicroEJ threads are
 sleeping), the platform sleeps entirely: The RTOS task that runs the
 platform sleeps.
 
@@ -68,7 +68,7 @@ the precision is 1 millisecond.
 Capabilities
 ============
 
-MicroEJ Core Engine defines 3 exclusive capabilities:
+The Core Engine defines 3 exclusive capabilities:
 
 -  Mono-sandbox: capability to produce a monolithic firmware
    (default one).
@@ -80,7 +80,7 @@ MicroEJ Core Engine defines 3 exclusive capabilities:
 -  Tiny application: capability to produce a compacted firmware
    (optimized for size). See section :ref:`core-tiny`.
 
-All MicroEJ Core Engine capabilities may not be available on all
+All the Core Engine capabilities may not be available on all
 architectures. Refer to section :ref:`appendix_matrixcapabilities`
 for more details.
 
@@ -90,10 +90,10 @@ for more details.
 Implementation
 ==============
 
-The MicroEJ Core Engine implements the :ref:`[SNI] specification <runtime_sni>`. 
+The Core Engine implements the :ref:`[SNI] specification <runtime_sni>`. 
 It is created and initialized with the C function ``SNI_createVM``.
 Then it is started and executed in the current RTOS task by calling ``SNI_startVM``.
-The function ``SNI_startVM`` returns when the MicroEJ Application exits or if
+The function ``SNI_startVM`` returns when the Application exits or if
 an error occurs (see section :ref:`core_engine_error_codes`).
 The function ``SNI_destroyVM`` handles the platform termination.
 
@@ -103,7 +103,7 @@ to be implemented. See section :ref:`LLMJVM-API-SECTION`.
 Initialization
 --------------
 
-The Low Level MicroEJ Core Engine API deals with two objects: the
+The Low Level Core Engine API deals with two objects: the
 structure that represents the platform, and the RTOS task that runs the
 platform. Two callbacks allow engineers to interact with the
 initialization of both objects:
@@ -168,27 +168,34 @@ Time
 
 The platform defines two times:
 
--  the application time: The difference, measured in milliseconds,
+-  the application time: the difference, measured in milliseconds,
    between the current time and midnight, January 1, 1970, UTC.
 
--  the system time: The time since the start of the device. This time is
-   independent of any user considerations, and cannot be set.
+-  the monotonic time: this time always moves forward and is not impacted 
+   by application time modifications (NTP or Daylight Savings Time updates).
+   It can be implemented by returning the running time since the start of 
+   the device.
 
 The platform relies on the following C functions to provide those times
 to the MicroEJ world:
 
--  ``LLMJVM_IMPL_getCurrentTime``: Depending on the parameter (``true``
-   / ``false``) must return the application time or the system time.
-   This function is called by the MicroEJ method
-   ``System.currentTimeMillis()``. It is also used by the platform
+-  ``LLMJVM_IMPL_getCurrentTime``: must return the monotonic time in 
+   milliseconds if the given parameter is ``1``, otherwise must return the 
+   application time in milliseconds. 
+   This function is called by the method `java.lang.System.currentTimeMillis()`_
+   It is also used by the platform
    scheduler, and should be implemented efficiently.
 
--  ``LLMJVM_IMPL_getTimeNanos``: must return the system time in
+-  ``LLMJVM_IMPL_getTimeNanos``: must return a monotonic time in
    nanoseconds.
 
 -  ``LLMJVM_IMPL_setApplicationTime``: must set the difference between
    the current time and midnight, January 1, 1970, UTC.
+   Implementations may apply this time to the whole underlying system
+   or only to the Core Engine (i.e., the value returned by
+   ``LLMJVM_IMPL_getCurrentTime(0)``).
 
+.. _java.lang.System.currentTimeMillis(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#currentTimeMillis--
 
 .. _core_engine_error_codes:
 
@@ -196,7 +203,7 @@ Error Codes
 -----------
 
 The C function ``SNI_createVM`` returns a negative value if an error 
-occurred during the MicroEJ Core Engine initialization or execution.
+occurred during the Core Engine initialization or execution.
 The file ``LLMJVM.h`` defines the platform-specific error code constants.
 The following table describes these error codes.
 
@@ -286,7 +293,7 @@ The following table describes these error codes.
 Example
 -------
 
-The following example shows how to create and launch the MicroEJ Core
+The following example shows how to create and launch the Core
 Engine from the C world. This function (``microej_main``) should be called
 from a dedicated RTOS task.
 
@@ -357,7 +364,7 @@ from a dedicated RTOS task.
 Dump the States of the Core Engine
 ----------------------------------
 
-The internal MicroEJ Core Engine function called ``LLMJVM_dump`` allows
+The internal Core Engine function called ``LLMJVM_dump`` allows
 you to dump the state of all MicroEJ threads: name, priority, stack
 trace, etc. This function must only be called from the MicroJvm virtual machine thread context and only from a native function or callback.
 Calling this function from another context may lead to undefined behavior and should be done only for debug purpose.
@@ -484,7 +491,7 @@ Requirements:
 Check Internal Structure Integrity
 ----------------------------------
 
-The internal MicroEJ Core Engine function called ``LLMJVM_checkIntegrity`` checks the internal structure integrity of the MicroJvm virtual machine and returns its checksum.
+The internal Core Engine function called ``LLMJVM_checkIntegrity`` checks the internal structure integrity of the MicroJvm virtual machine and returns its checksum.
 
 - If an integrity error is detected, the ``LLMJVM_on_CheckIntegrity_error`` hook is called and this method returns ``0``.
 - If no integrity error is detected, a non-zero checksum is returned.
@@ -521,16 +528,18 @@ A typical use of this API is to verify that a native implementation does not cor
 Generic Output
 ==============
 
-The ``System.err`` stream is connected to the ``System.out`` print
+The `System.err`_ stream is connected to the `System.out`_ print
 stream. See below for how to configure the destination of these streams.
 
+.. _System.err: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#err
+.. _System.out: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#out
 
 .. _core_engine_link:
 
 Link
 ====
 
-Several sections are defined by the MicroEJ Core Engine. Each section
+Several sections are defined by the Core Engine. Each section
 must be linked by the third-party linker.
 
 .. table:: Linker Sections
@@ -571,12 +580,12 @@ must be linked by the third-party linker.
    +-----------------------------+-----------------------------+-------------+------------+
 
 .. note::
-	Sections ``ICETEA_HEAP``, ``_java_heap`` and ``_java_immortals`` are zero-initialized at MicroEJ Core Engine startup. 
+	Sections ``ICETEA_HEAP``, ``_java_heap`` and ``_java_immortals`` are zero-initialized at Core Engine startup. 
 
 Dependencies
 ============
 
-The MicroEJ Core Engine requires an implementation of its low level APIs
+The Core Engine requires an implementation of its low level APIs
 in order to run. Refer to the chapter :ref:`core_engine_implementation` for more
 information.
 
@@ -584,17 +593,17 @@ information.
 Installation
 ============
 
-The MicroEJ Core Engine and its components are mandatory. In the
+The Core Engine and its components are mandatory. In the
 platform configuration file, check :guilabel:`Multi Applications` to install the
-MicroEJ Core Engine in "Multi-Sandbox" mode. Otherwise, the "Single
+Core Engine in "Multi-Sandbox" mode. Otherwise, the "Single
 application" mode is installed.
 
 
 Use
 ===
 
-The `EDC API Module <https://repository.microej.com/modules/ej/api/edc/>`_ must 
-be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ Application 
+The `EDC API Module`_ must 
+be added to the :ref:`module.ivy <mmm_module_description>` of the Application 
 Project. This MicroEJ module is always required in the build path of a MicroEJ project; 
 and all others libraries depend on it. This library provides a set of options.
 Refer to the chapter :ref:`application_options` which lists all available options.
@@ -603,13 +612,17 @@ Refer to the chapter :ref:`application_options` which lists all available option
 
    <dependency org="ej.api" name="edc" rev="1.3.3"/>
 
-The `BON API Module <https://repository.microej.com/modules/ej/api/bon/>`_
-must also be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `BON API Module`_
+must also be added to the :ref:`module.ivy <mmm_module_description>` of the 
 Application project in order to access the :ref:`[BON] library <runtime_bon>`.
 
 ::
 
    <dependency org="ej.api" name="bon" rev="1.4.0"/>
+
+
+.. _EDC API Module: https://repository.microej.com/modules/ej/api/edc/
+.. _BON API Module: https://repository.microej.com/modules/ej/api/bon/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

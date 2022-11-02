@@ -20,13 +20,13 @@ Functional Description
 
 The Input module implements the MicroUI ``int``-based event generators' framework. ``LLUI_INPUT`` specifies the Low Level APIs that send events to the Java world.
 
-Drivers for input devices must generate events that are sent, via a MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_, to the application. An event generator accepts notifications from devices, and generates an event in a standard format that can be handled by the application. Depending on the MicroUI configuration, there can be several different types of event generator in the system, and one or more instances of each type. 
+Drivers for input devices must generate events that are sent, via a MicroUI `Event Generator`_, to the application. An event generator accepts notifications from devices, and generates an event in a standard format that can be handled by the application. Depending on the MicroUI configuration, there can be several different types of event generator in the system, and one or more instances of each type. 
 
-Each MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_ represents one side of a pair of collaborative components that communicate using a shared buffer:
+Each MicroUI `Event Generator`_ represents one side of a pair of collaborative components that communicate using a shared buffer:
 
 -  The producer: the C driver connected to the hardware. As a producer, it sends its data into the communication buffer.
 
--  The consumer: the MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html>`_. As a consumer, it reads (and removes) the data from the communication buffer.
+-  The consumer: the MicroUI `Event Generator`_. As a consumer, it reads (and removes) the data from the communication buffer.
 
 .. figure:: images/drivers-microui-comms.*
    :alt: Drivers and MicroUI Event Generators Communication
@@ -37,7 +37,7 @@ Each MicroUI `Event Generator <https://repository.microej.com/javadoc/microej_5.
 
 The ``LLUI_INPUT`` API allows multiple pairs of ``<driver - event generator>`` to use the same buffer, and associates drivers and event generators using an int ID. The ID used is the event generator ID held within the MicroUI global registry. Apart from sharing the ID used to "connect" one driver's data to its respective event generator, both entities are completely decoupled.
 
-The `MicroUI <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html>`_ thread waits for data to be published by drivers into the "input buffer", and dispatches to the correct (according to the ID) event generator to read the received data. This "driver-specific-data" is then transformed into MicroUI events by event generators and sent to objects that listen for input activity.
+The `MicroUI`_ thread waits for data to be published by drivers into the "input buffer", and dispatches to the correct (according to the ID) event generator to read the received data. This "driver-specific-data" is then transformed into MicroUI events by event generators and sent to objects that listen for input activity.
 
 .. figure:: images/microui-events.png
    :alt: MicroUI Events Framework
@@ -45,6 +45,10 @@ The `MicroUI <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui
    :scale: 75%
 
    MicroUI Events Framework
+
+
+.. _Event Generator: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html
+.. _MicroUI: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html
 
 .. _section_inputs_implementation:
 
@@ -65,29 +69,36 @@ decoupling has two major benefits:
 Static Initialization
 =====================
 
-The event generators available on MicroUI startup (after the call to `MicroUI.start() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start-->`_) are the event generators listed in the MicroUI description file (XML file). This file is a part of the MicroUI Static Initialization step (:ref:`section_static_init`). 
+The event generators available on MicroUI startup (after the call to `MicroUI.start()`_) are the event generators listed in the MicroUI description file (XML file). This file is a part of the MicroUI Static Initialization step (:ref:`section_static_init`). 
 
 The order of event generators defines the unique identifier for each event generator. These identifiers are generated in a header file called ``microui_constants.h``. The input driver (or its listener) has to use these identifiers to target a specific event generator.
 
-If an unknown identifier is used or if two identifiers are swapped, the associated event may be never received by the application or may be misinterpreted. 
+If an unknown identifier is used or if two identifiers are swapped, the associated event may be never received by the application or may be misinterpreted.
+
+.. _MicroUI.start(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start--
 
 Standard Event Generators
 =========================
 
-MicroUI provides a set of standard event generators: `Command <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Command.html>`_, `Buttons <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html>`_, `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ and `States <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/States.html>`_. For each standard generator, the Input Engine proposes a set of functions to create and send an event to this generator.
+MicroUI provides a set of standard event generators: `Command`_, `Buttons`_, `Pointer`_ and `States`_. For each standard generator, the Input Engine proposes a set of functions to create and send an event to this generator.
 
-Static Initialization proposes an additional event generator: ``Touch``. A touch event generator is a `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ event generator whose area size is the display size where the touch panel is placed. Furthermore, contrary to a pointer, a *press* action is required to be able to have a *move* action (and so a *drag* action). The Input Engine proposes a set of functions to target a touch event generator (equal to a pointer event generator but with some constraints). The touch event generator is identified as a standard `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ event generator, by consequence the Java application has to use the `Pointer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html>`_ API to deal with a touch event generator.
+Static Initialization proposes an additional event generator: ``Touch``. A touch event generator is a `Pointer`_ event generator whose area size is the display size where the touch panel is placed. Furthermore, contrary to a pointer, a *press* action is required to be able to have a *move* action (and so a *drag* action). The Input Engine proposes a set of functions to target a touch event generator (equal to a pointer event generator but with some constraints). The touch event generator is identified as a standard `Pointer`_ event generator, by consequence the Java application has to use the `Pointer`_ API to deal with a touch event generator.
 
 According to the event generator, one or several parameters are required. The parameter format is event generator dependant. For instance a ``Pointer`` X-coordinate is encoded on 16 bits (0-65535 pixels). 
 
 .. note:: ``Pointer`` and ``Touch`` origin (point ``0,0``) is the top-left point.
+
+.. _Command: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Command.html
+.. _Buttons: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html
+.. _Pointer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Pointer.html
+.. _States: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/States.html
 
 .. _section_inputs_genericEventGenerators:
 
 Generic Event Generators
 ========================
 
-MicroUI provides an abstract class `GenericEventGenerator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/GenericEventGenerator.html>`_ (package ``ej.microui.event``). The aim of a generic event generator is to be able to send custom events from native world to the application. These events may be constituted by only one 32-bit word or by several 32-bit words (maximum 255). 
+MicroUI provides an abstract class `GenericEventGenerator`_ (package ``ej.microui.event``). The aim of a generic event generator is to be able to send custom events from native world to the application. These events may be constituted by only one 32-bit word or by several 32-bit words (maximum 255). 
 
 On the application side, a subclass must be implemented by clients who want to define their own event generators.  Two abstract methods must be implemented by subclasses:
 
@@ -98,6 +109,8 @@ On the application side, a subclass must be implemented by clients who want to d
 The event generator is responsible for converting incoming data into a MicroUI event and sending the event to its listener. It should be defined during MicroUI Static Initialization step (in the XML file, see :ref:`section_static_init`). This allows the MicroUI implementation to instantiate the event generator on startup. 
 
 If the event generator is not available in the application classpath, a warning is thrown (with a stack trace) and the application continues. In this case, all events sent by BSP to this event generator are ignored because no event generator is able to decode them.
+
+.. _GenericEventGenerator: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/GenericEventGenerator.html
 
 .. _section_input_llapi:
 

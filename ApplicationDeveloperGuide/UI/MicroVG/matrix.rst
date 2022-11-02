@@ -5,7 +5,7 @@
 Matrix
 ======
 
-A `Matrix` is composed of an array of numbers with three rows and three columns. It is used to apply an affine transformations to `Path` points. (Refer to <https://en.wikipedia.org/wiki/Transformation_matrix#Affine_transformations> to get more information about affine transformations).
+A `Matrix` is composed of an array of numbers with three rows and three columns. It is used to apply an affine transformations to `Path` points. (Refer to https://en.wikipedia.org/wiki/Transformation_matrix#Affine_transformations to get more information about affine transformations).
 
 The available transformations are:
 

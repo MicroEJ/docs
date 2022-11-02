@@ -50,9 +50,9 @@ This may be done by using a `DesktopEventGenerator`_. Its `buildEvent()`_ method
 Initializing and disposing the dispatcher
 -----------------------------------------
 
-``EventDispatcher`` subclasses may override the `initialize()`_ and `dispose()`_ methods in order to allocate and free the necessary resources.
+`EventDispatcher`_ subclasses may override the `initialize()`_ and `dispose()`_ methods in order to allocate and free the necessary resources.
 
-For example, the ``initialize()`` method may be overridden to create an event generator and to add it to the system pool of MicroUI:
+For example, the `initialize()`_ method may be overridden to create an event generator and to add it to the system pool of MicroUI:
 
 .. code-block:: Java
 
@@ -62,7 +62,7 @@ For example, the ``initialize()`` method may be overridden to create an event ge
 		this.eventGenerator.addToSystemPool();
 	}
 
-Likewise, the ``dispose()`` method may be overridden to remove the event generator from the system pool of MicroUI:
+Likewise, the `dispose()`_ method may be overridden to remove the event generator from the system pool of MicroUI:
 
 .. code-block:: Java
 
