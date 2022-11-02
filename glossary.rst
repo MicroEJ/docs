@@ -18,7 +18,7 @@ MicroEJ Glossary
             A Standalone Application is the main application that is booted by MICROEJ VEE. It is linked statically to produce a Mono-Sandbox Executable.
 
          Sandboxed Application
-            A Sandboxed Application is an Application that can run over a Multi-Sandbox Executable. It can be linked either statically or dynamically.
+            A Sandboxed Application is an Application that can run over a Multi-Sandbox Executable. It is linked dynamically.
 
          System Application
             A System Application (formerly called a Resident Application) is a Sandboxed Application that is statically linked to a Multi-Sandbox Executable, as it is part of the initial image and cannot be removed.
