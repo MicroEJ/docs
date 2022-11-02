@@ -3,8 +3,6 @@
 MicroEJ Glossary
 ================
 
-This glossary defines the technical terms upon which a `MICROEJ VEE (Virtual Execution Environment) <https://developer.microej.com/microej-vee-virtual-execution-environment>`_ is built.
-
 .. glossary::
 
    Add-On Library
