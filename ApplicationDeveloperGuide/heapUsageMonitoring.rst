@@ -88,7 +88,7 @@ usage of the application.
 .. note::
    When heap usage monitoring is disabled, the heap size is fixed, and so 
    `totalMemory()`_ 
-   and `maxMemory()>`_ 
+   and `maxMemory()`_ 
    return the same value.
 
 .. _Runtime: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Runtime.html

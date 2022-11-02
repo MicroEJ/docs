@@ -114,7 +114,7 @@ So if these additional constraints are not acceptable for your project, please d
 
 .. _System.getProperty(String key, String def): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#getProperty-java.lang.String-java.lang.String-
 .. _HashMap: https://repository.microej.com/javadoc/microej_5.x/apis/java/util/HashMap.html
-.. _HashMap.get(Object): https://repository.microej.com/javadoc/microej_5.x/apis/java/util/HashMap.html#get-java.lang.Object->
+.. _HashMap.get(Object): https://repository.microej.com/javadoc/microej_5.x/apis/java/util/HashMap.html#get-java.lang.Object-
 
 
 Advanced Use

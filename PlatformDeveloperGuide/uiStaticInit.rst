@@ -41,7 +41,7 @@ The Static MicroUI Initializer tool is able to generate two files:
 
    Static MicroUI Initializer Process
 
-.. _Display: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.htmls
+.. _Display: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html
 .. _EventGenerator: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html
 
 XML File
