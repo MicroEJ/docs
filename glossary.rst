@@ -56,7 +56,7 @@ This glossary defines the technical terms upon which a `MICROEJ VEE (Virtual Exe
       A VEE Port is an implementation of MICROEJ VEE for a target device. It integrates an Architecture, one or more Foundation Libraries with their respective Abstraction Layers, and the board support package (BSP). It also includes associated Mocks for the Simulator. (formerly called Platform)
 
    SDK
-      MICROEJ SDK provides the tools for developers to build a MICROEJ VEE for their device.
+      MICROEJ SDK is a comprehensive tools suite for developers to build VEE Ports for their devices, create Applications, build Executable and run Virtual Devices.
 
    Simulator
       The Simulator allows running Applications on a target hardware simulator on the developer’s desktop computer. The Simulator runs one or more Mock that mimics the hardware functionality. It enables developers to develop their Applications without the need of hardware.
