@@ -15,7 +15,7 @@ This module is composed of only one element: an implementation of the Low-Level 
 Functional Description
 ======================
 
-The Gradient module implements the framework of the MicroVG `LinearGradient <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/LinearGradient.html>`_. 
+The Gradient module implements the framework of the MicroVG `LinearGradient`_. 
 It provides Low-Level APIs that consist in creating a linear gradient in a platform-specific format. 
 After the gradient creation and encoding, the gradient data should not change when the application draws it: the encoded format should be used by the platform-specific implementation (generally GPU).
 
@@ -25,6 +25,8 @@ The color encoding in the gradient is a platform-specific implementation.
 
 The buffer where the gradient is encoded is stored in the Java heap.
 The MicroVG implementation on demand automatically increases the buffer size.
+
+.. _LinearGradient: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/LinearGradient.html
 
 .. _section_vg_gradient_llapi:
 
@@ -49,7 +51,7 @@ The low-level APIs that have to be implemented are listed in the header file ``L
 Use
 ===
 
-The MicroVG Gradient APIs are available in the class `ej.microvg.LinearGradient <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/LinearGradient.html>`_.
+The MicroVG Gradient APIs are available in the class ``ej.microvg.`` `LinearGradient`_.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

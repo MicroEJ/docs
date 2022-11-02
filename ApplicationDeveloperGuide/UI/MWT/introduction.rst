@@ -1,15 +1,17 @@
 Introduction
 ============
 
-MWT is a toolkit that simplifies the creation and use of graphical user interface widgets on a pixel-based display.
+`MWT`_` is a toolkit that simplifies the creation and use of graphical user interface widgets on a pixel-based display.
 
 The aim of this library is to be sufficient to create complex applications with a minimal framework. It provides the main concepts without managing particular needs. Specific needs can be met by a MWT expert by creating new widgets, adding more complex concepts, etc. The flexibility of the MWT open framework allows the selection of only what is necessary for the application in order to guarantee lightweight applications and fast execution.
 
-To use the MWT library, add the following line to a :ref:`module description file <mmm_module_description>`:
+To use the `MWT`_ library, add the following line to a :ref:`module description file <mmm_module_description>`:
 
 .. code-block:: XML
 
 	<dependency org="ej.library.ui" name="mwt" rev="3.3.0"/>
+
+.. _MWT: https://repository.microej.com/modules/ej/library/ui/mwt/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

@@ -90,8 +90,7 @@ SDK Distribution Changelog
 
 **KNOWN ISSUES**:
 
--  Projects configured with Null Analysis must be updated to import `EDC
-   API 1.3.3 <https://repository.microej.com/modules/ej/api/edc/1.3.3/>`__
+-  Projects configured with Null Analysis must be updated to import `EDC API 1.3.3`_
    or higher in order to avoid an Eclipse JDT builder error (see also
    `this link <https://bugs.eclipse.org/bugs/show_bug.cgi?id=566599>`__
    for more details).
@@ -108,6 +107,8 @@ SDK Distribution Changelog
    install/update a newer SDK version. The CDT documentation
    explains that this can be bypassed by disabling the option
    :guilabel:`Windows` > :guilabel:`Preferences` > :guilabel:`Install/Update` > :guilabel:`Verify provisioning operation is compatible with currently running JRE`.
+
+.. _EDC API 1.3.3: https://repository.microej.com/modules/ej/api/edc/1.3.3/
 
 [20.07] - 2020-07-28
 ~~~~~~~~~~~~~~~~~~~~
@@ -465,8 +466,7 @@ Build Plugins
 Skeletons
 ^^^^^^^^^
 
--  Fixed skeleton dependency to
-   `EDC-1.3.3 <https://repository.microej.com/modules/ej/api/edc/1.3.3/>`__
+-  Fixed skeleton dependency to `EDC API 1.3.3`_
    to avoid an Eclipse JDT builder error when Null Analysis is enabled
    (see :ref:`known issues of SDK Distribution 20.10 <known-issues-20.10>`)
 

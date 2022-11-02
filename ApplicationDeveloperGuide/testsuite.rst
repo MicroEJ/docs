@@ -3,15 +3,17 @@
 Test Suite with JUnit
 =====================
 
-MicroEJ allows to run unit tests using the standard JUnit API during
+MicroEJ allows to run unit tests using the standard `JUnit`_ API during
 the build process of a MicroEJ library or a MicroEJ Application. The
 :ref:`testsuite_engine` runs tests on a target Platform and outputs a
 JUnit XML report.
 
+.. _JUnit: https://repository.microej.com/modules/ej/library/test/junit/
+
 Principle
 ---------
 
-JUnit testing can be enabled when using the ``microej-javalib`` (MicroEJ
+`JUnit`_ testing can be enabled when using the ``microej-javalib`` (MicroEJ
 Add-On Library) or the ``microej-application`` (MicroEJ Applications)
 build type. JUnit test cases processing is automatically enabled when
 the following dependency is declared in the ``module.ivy`` file of the

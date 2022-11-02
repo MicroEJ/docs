@@ -13,7 +13,7 @@ The `apply(Outlineable)`_ method is called by the MWT framework in order to subt
 
 The `Outlineable`_ parameter of the method initially contains the size or bounds of the box, including the outline.
 Before the method returns, the outlineable object should be modified by subtracting the outline.
-In order to remove the outline from the object, the `removeOutline()`_ method of ``Outlineable`` should be used, passing as argument the thickness on each side.
+In order to remove the outline from the object, the `removeOutline()`_ method of `Outlineable`_ should be used, passing as argument the thickness on each side.
 
 For example, the following snippet applies an outline of 1 pixel on every side:
 
@@ -37,7 +37,7 @@ The `apply(GraphicsContext, Size)`_ method is called by the MWT framework in ord
 
 The ``Size`` parameter of the method initially contains the size of the box, including the outline.
 Before the method returns, the size object should be modified by subtracting the outline.
-In order to remove the outline from the object, the `removeOutline()`_ method of ``Outlineable`` should be used, passing as argument the thickness on each side.
+In order to remove the outline from the object, the `removeOutline()`_ method of `Outlineable`_ should be used, passing as argument the thickness on each side.
 
 For example, the following snippet applies an outline of 1 pixel on every side:
 

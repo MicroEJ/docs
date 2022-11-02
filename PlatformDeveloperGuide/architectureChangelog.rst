@@ -155,7 +155,9 @@ Notes
 
 The ``Device`` module provided by the MicroEJ Architecture is deprecated
 and will be removed in a future version. It has been moved to the
-`Device Pack <https://repository.microej.com/modules/com/microej/pack/device/device-pack/>`_. Please update your Platforms.
+`Device Pack`_. Please update your Platforms.
+
+.. _Device Pack: https://repository.microej.com/modules/com/microej/pack/device/device-pack/
 
 Core Engine
 ~~~~~~~~~~~
@@ -427,7 +429,7 @@ SOAR
    file indicating which types, methods and static fields are exposed as
    Kernel APIs
 -  [Multi] - Fixed potential link error when calling
-   `java.lang.Object.clone() <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Object.html#clone-->`_ method on an array in Feature mode
+   `Object.clone()`_ method on an array in Feature mode
 
 .. _tools-2:
 

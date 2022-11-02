@@ -9,7 +9,7 @@ Immutable Images
 Overview
 ~~~~~~~~
 
-Immutable images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_ or `ej.microui.display.ResourceImage.loadImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String->`_. As their name suggests, immutable images can not be modified. Therefore, there is no way to get a Graphics Context to draw into these images. To be displayed, these
+Immutable images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage()`_ or `ej.microui.display.ResourceImage.loadImage()`_. As their name suggests, immutable images can not be modified. Therefore, there is no way to get a Graphics Context to draw into these images. To be displayed, these
 images have to be converted from their source format to a RAW
 format. The conversion can either be done at:
 
@@ -51,6 +51,10 @@ Example:
    # The following image is embedded 
    # as a 16 bits format with transparency (decoded at build-time)
    com/mycompany/MyImage3.png:ARGB1555
+
+
+.. _ej.microui.display.Image.getImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String-
+.. _ej.microui.display.ResourceImage.loadImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String-
 
 .. _image_gen_tool:
 
@@ -423,8 +427,8 @@ Mutable Images
 Overview
 ~~~~~~~~
 
-Unlike immutable images, mutable images are graphical resources that can be created and modified at runtime. The application can draw into such images using the Painter classes with the image's `Graphics Context <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#getGraphicsContext-->`_ as the destination.
-Mutable images can be created with a call to constructor `ej.microui.display.BufferedImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#BufferedImage-int-int->`_. 
+Unlike immutable images, mutable images are graphical resources that can be created and modified at runtime. The application can draw into such images using the Painter classes with the image's `Graphics Context`_ as the destination.
+Mutable images can be created with a call to constructor `ej.microui.display.BufferedImage()`_. 
 
 .. code:: java
 
@@ -437,15 +441,21 @@ Mutable images can be created with a call to constructor `ej.microui.display.Buf
    image.close();
 
 
+.. _Graphics Context: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#getGraphicsContext--
+.. _ej.microui.display.BufferedImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#BufferedImage-int-int-
+
 Transparency
 ~~~~~~~~~~~~
 
-The output format of `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html>`_ matches the pixel organization (layout, depth, etc.) of the display.
+The output format of `BufferedImage`_ matches the pixel organization (layout, depth, etc.) of the display.
 The algorithms used to draw in such an image are the same as those used to draw on the display (for footprint purposes). 
 Since the display buffer is opaque, the algorithms cannot draw transparent pixels.
 
-In addition, `GraphicsContext.setColor() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setColor-int->`_ does not take the alpha channel into account and only accepts RGB values. 
+In addition, `GraphicsContext.setColor()`_ does not take the alpha channel into account and only accepts RGB values. 
 The given color value is interpreted as a 24-bit RGB color, where the high-order byte is ignored, and the remaining bytes contain the red, green, and blue channels, respectively.
+
+.. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html
+.. _GraphicsContext.setColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setColor-int-
 
 .. _images_heap:
 
@@ -454,17 +464,19 @@ Images Heap
 
 The images heap is used to allocate the pixel data of:
 
-- mutable images (i.e. `BufferedImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html>`_  instances)
+- mutable images (i.e. `BufferedImage`_  instances)
 - immutable images decoded at runtime, typically a PNG: the heap is used to store the decoded image **and** the runtime decoder's temporary buffers, required during the decoding step. After the decoding step, all the temporary buffers are freed. Note that the size of the temporary buffers depend on the decoder **and** on the original image itself (compression level, pixel encoding, etc.)
-- immutable images which are not byte-addressable, such as images opened with an input stream (i.e. `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_  instances)
-- immutable images which are byte-addressable but converted to a different output format (i.e. `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_  instances)
+- immutable images which are not byte-addressable, such as images opened with an input stream (i.e. `ResourceImage`_  instances)
+- immutable images which are byte-addressable but converted to a different output format (i.e. `ResourceImage`_  instances)
 
-In other words, every image which can not be retrieved using `Image.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String->`_  is saved on the images heap.
+In other words, every image which can not be retrieved using `ej.microui.display.Image.getImage()`_  is saved on the images heap.
 
 The size of the images heap can be configured with the ``ej.microui.memory.imagesheap.size`` property.
 
-.. warning:: A `ResourceImage <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html>`_  allocated on the images heap must be closed manually by the application (`ResourceImage.close() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#close-->`_); otherwise, a memory leak will occur on the images heap.
+.. warning:: A `ResourceImage`_  allocated on the images heap must be closed manually by the application (`ResourceImage.close()`_); otherwise, a memory leak will occur on the images heap.
 
+.. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html
+.. _ResourceImage.close(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#close--
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

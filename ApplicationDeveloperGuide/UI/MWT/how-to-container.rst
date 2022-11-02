@@ -21,7 +21,7 @@ The optimal size of the container should be big enough so that each child can be
 The container is responsible for computing the optimal size of every child. To do so, the `computeChildOptimalSize()`_ method should be called for every child.
 After this method is called, the optimal size of the child can be retrieved by calling `getWidth()`_ and `getHeight()`_ on the child widget.
 
-The ``Size`` parameter of the ``computeContentOptimalSize()`` method initially contains the size available for the container.
+The ``Size`` parameter of the `computeContentOptimalSize()`_ method initially contains the size available for the container.
 An available width or height equal to `Widget.NO_CONSTRAINT`_ means that the optimal size should be computed without considering any restriction on the respective axis.
 Before the method returns, the size object should be set to the optimal size of the container.
 
@@ -71,7 +71,7 @@ Managing the visibility of the children of the container
 --------------------------------------------------------
 
 By default, when a container is shown, each of its children is shown too.
-This behavior can be changed by overriding the `setShownChildren()`_ method of ``Container``.
+This behavior can be changed by overriding the `setShownChildren()`_ method of `Container`_.
 When implementing this method, the `setShownChild()`_ method should be called for each child which should be shown when the container is shown.
 
 At any time while the container is visible, children may be shown or hidden by calling `setShownChild()`_ or `setHiddenChild()`_.
@@ -86,7 +86,7 @@ When a container is hidden, each of its children is hidden too (unless it is alr
 Providing APIs to change the children list of the container
 -----------------------------------------------------------
 
-The ``Container`` class introduces ``protected`` APIs in order to manipulate the list of children of the container.
+The `Container`_ class introduces ``protected`` APIs in order to manipulate the list of children of the container.
 These methods may be overridden in the container subclass and set as ``public`` in order to make these APIs available for the user.
 
 Each of the following methods may be overridden individually:

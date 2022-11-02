@@ -8,7 +8,7 @@ Vector Images
 Overview
 --------
 
-Vector Images are graphical resources that can be accessed with a call to `ej.microvg.VectorImage.getImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorImage.html#getImage-java.lang.String->`_. The images are converted at build-time (using the image generator tool) to immutable resources.
+Vector Images are graphical resources that can be accessed with a call to `ej.microvg.VectorImage.getImage()`_. The images are converted at build-time (using the image generator tool) to immutable resources.
 
 Images that must be processed by the image generator tool are declared in ``*.vectorimages.list`` files. The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the MicroEJ classpath root referring to a vector image file (e.g. ``.svg``, ``.xml``). The resource must be followed by a parameter (separated by a ``:``) which defines and/or describes the image output file format (raw format).
 
@@ -26,6 +26,8 @@ Example:
    /com/mycompany/MyImage1.svg:VGF
    /com/mycompany/androidVectorDrawable.xml:VG8
 
+.. _ej.microvg.VectorImage.getImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorImage.html#getImage-java.lang.String-
+
 Supported Input Files
 ---------------------
 
@@ -36,7 +38,7 @@ The image generator tool supports the following input file formats:
 
 Refer to the :ref:`vectorimage_limitations` section for the list of supported features for these file formats.
 
-The vector image objects are extracted and converted to paths made of `Move`, `Line` and `Curve` commands. 
+The vector image objects are extracted and converted to paths made of ``Move``, ``Line`` and ``Curve`` commands. 
 
 Each path is associated with either a fill color or a linear gradient. All object strokes are converted to filled paths at build-time.
 
@@ -49,11 +51,11 @@ Drawing Images
 Drawing and Transforming Images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once an image has been loaded it can be drawn in the graphic context with a call to `ej.microvg.VectorGraphicsPainter.drawImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-float-float->`_.
+Once an image has been loaded it can be drawn in the graphic context with a call to `ej.microvg.VectorGraphicsPainter.drawImage()`_.
 
 The image is associated with a transformation :ref:`Matrix` that will be applied in order to translate, scale and/or rotate the image. 
 
-The application can get the width and the height of the image with `ej.microvg.VectorImage.getWidth() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorImage.html#getWidth-->`_ and `ej.microvg.VectorImage.getHeight() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorImage.html#getHeight-->`_ to correctly scale and position the image in the application window.
+The application can get the width and the height of the image with `ej.microvg.VectorImage.getWidth()`_ and `ej.microvg.VectorImage.getHeight()`_ to correctly scale and position the image in the application window.
 
 The following example describes how an Android Vector Drawable file can be drawn and positioned on the display.
 
@@ -110,6 +112,10 @@ The following example describes how an Android Vector Drawable file can be drawn
    :align: center
 
 |endTable|
+
+.. _ej.microvg.VectorGraphicsPainter.drawImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-float-float-
+.. _ej.microvg.VectorImage.getWidth(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorImage.html#getWidth--
+.. _ej.microvg.VectorImage.getHeight(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorImage.html#getHeight--
 
 Drawing With Opacity
 ~~~~~~~~~~~~~~~~~~~~
@@ -171,7 +177,7 @@ The resulting color components are computed as:
  
 If the resulting component value is below 0 or above 255, the component value is clamped to these limits.
 
-A VectorImage object can also be drawn associated to a color matrix by a call to `ej.microvg.VectorGraphicsPainter.drawFilteredImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawFilteredImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-ej.microvg.Matrix-float:A->`_.
+A VectorImage object can also be drawn associated to a color matrix by a call to `ej.microvg.VectorGraphicsPainter.drawFilteredImage()`_.
  
 The following example illustrates this feature.
 
@@ -212,22 +218,29 @@ The following example illustrates this feature.
 
 |endTable|
 
+.. _ej.microvg.VectorGraphicsPainter.drawFilteredImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawFilteredImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-ej.microvg.Matrix-float:A-
+
 Animated Vector Images
 ----------------------
 
 The Android Vector Drawable format provides the ability to change the properties of vector graphics over time, in order to create animated effects.
 
-The transformations of the objects over the time are embedded in the Vector image file and a call to `ej.microvg.VectorGraphicsPainter.drawAnimatedImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawAnimatedImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-float-float-long->`_ or `ej.microvg.VectorGraphicsPainter.drawFilteredAnimatedImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawFilteredAnimatedImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-ej.microvg.Matrix-long-float:A->`_ will draw the image for a specific time frame.
+The transformations of the objects over the time are embedded in the Vector image file and a call to `ej.microvg.VectorGraphicsPainter.drawAnimatedImage()`_ or `ej.microvg.VectorGraphicsPainter.drawFilteredAnimatedImage()`_ will draw the image for a specific time frame.
 
-The application can get the duration of the image animation with a call to `ej.microvg.VectorImage.getDuration() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorImage.html#getDuration-->`_.
+The application can get the duration of the image animation with a call to `ej.microvg.VectorImage.getDuration()`_.
 
 Every image object that is animated outside the image viewbox is clipped at the image boundary. In any cases, especially when the image is rotated, the image boundary is the rectangle that contains all the corners of the original image.
 
-The supported file format is an Animated Vector Drawable xml file with animations and vector definition in the same file as described in `Android API <https://developer.android.com/reference/android/graphics/drawable/AnimatedVectorDrawable#define-an-animatedvectordrawable-all-in-one-xml-file>`_.
+The supported file format is an Animated Vector Drawable xml file with animations and vector definition in the same file as described in `Android API`_.
 
 The SVG format also supports the animation of vector graphics objects, but this feature is not yet implemented in the MicroVG library for this file format.
 
 SVG files that need to be animated should be converted to Android Vector Drawable format with the Android Vector Asset tool and then animated manually or with a tool like `Shapeshifter <https://shapeshifter.design/>`_.
+
+.. _ej.microvg.VectorGraphicsPainter.drawAnimatedImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawAnimatedImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-float-float-long-
+.. _ej.microvg.VectorGraphicsPainter.drawFilteredAnimatedImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawFilteredAnimatedImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-ej.microvg.Matrix-long-float:A-
+.. _ej.microvg.VectorImage.getDuration(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorImage.html#getDuration--
+.. _Android API: https://developer.android.com/reference/android/graphics/drawable/AnimatedVectorDrawable#define-an-animatedvectordrawable-all-in-one-xml-file
 
 Supported animations
 ~~~~~~~~~~~~~~~~~~~~
@@ -488,7 +501,7 @@ A group in the Android Vector Drawable can be rotated around a pivot point. The 
 Morphing
 ********
 
-The Android Vector Drawable format supports the animation of the `pathData` attribute of a path. With this type of animation a shape can be transformed to a totally different other shape. The only constraint is that the origin and destination `pathData` must have the same commands format.
+The Android Vector Drawable format supports the animation of the ``pathData`` attribute of a path. With this type of animation a shape can be transformed to a totally different other shape. The only constraint is that the origin and destination ``pathData`` must have the same commands format.
 
 Lets take, for instance, the morphing of a rectangle to a circle which have the following commands.
 
@@ -831,18 +844,18 @@ Android Vector Drawable
 
 The MicroVG library supports most of the Android Vector Drawable features with the following limitations:
 
-- `clip-path` feature is only supported for static images.
-- `trim-path` animation is not supported.
+- ``clip-path`` feature is only supported for static images.
+- ``trim-path`` animation is not supported.
 - morphing animations are not supported for paths with stroke.
 - usage of path opacity is limited
   
-   - `drawImage` with alpha is not supported if the image contains overlapping paths.
-   - images with global alpha(`android:alpha` attribute of `vector` element) and overlapping paths are not supported.
-   - Beware that using `android:fillColor` and `android:strokeColor` attributes on the same path leads to overlapping paths.
+   - ``drawImage`` with alpha is not supported if the image contains overlapping paths.
+   - images with global alpha(``android:alpha`` attribute of ``vector`` element) and overlapping paths are not supported.
+   - Beware that using ``android:fillColor`` and ``android:strokeColor`` attributes on the same path leads to overlapping paths.
   
-- `radial` and `sweep` gradient types are not supported.
-- `tint`, `tintMode` and `autoMirrored` features are not supported.
-- `trimPath` feature is not supported.
+- ``radial`` and ``sweep`` gradient types are not supported.
+- ``tint``, ``tintMode`` and ``autoMirrored`` features are not supported.
+- ``trimPath`` feature is not supported.
 
 
 SVG

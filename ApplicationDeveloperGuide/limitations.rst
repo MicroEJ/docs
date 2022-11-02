@@ -92,7 +92,9 @@ Please consult :ref:`architecture_changelog` for limitations changes on former v
    time is defined by the :ref:`maximum number of monitors per thread Application option <option_maximum_number_of_monitors_per_thread>`.
 
 .. [4]
-   The Java heap Garbage Collection limit may throw unexpected cascading `java.lang.OutOfMemoryError <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html>`_ exceptions before the MicroEJ Core Engine exits.
+   The Java heap Garbage Collection limit may throw unexpected cascading `java.lang.OutOfMemoryError`_ exceptions before the MicroEJ Core Engine exits.
+
+.. _java.lang.OutOfMemoryError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/OutOfMemoryError.html
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

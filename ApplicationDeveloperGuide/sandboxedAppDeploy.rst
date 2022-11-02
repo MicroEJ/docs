@@ -10,8 +10,10 @@ The deployment of a Sandboxed Application on a device depends on the Kernel impl
 
 In both cases, deploying a Sandboxed Application requires that a Multi-Sandbox Firmware is running on the device.
 Please refer to the :ref:`kernel-developer-guide` to learn how to build it or browse 
-the `Resources Repository <https://repository.microej.com/index.php?resource=FIRM&topic=ALL&version=ANY&edition=ANY>`_ 
+the `Resources Repository`_ 
 for Multi-Sandbox demo Firmware available for popular hardware evaluation kits.
+
+.. _Resources Repository: https://repository.microej.com/index.php?resource=FIRM&topic=ALL&version=ANY&edition=ANY
 
 Local Deployment
 ----------------
@@ -19,7 +21,7 @@ Local Deployment
 Deploying a Application on a device locally is the easiest way to test it since it only requires:
 
 - the Application project sources imported in the SDK,
-- the device programmed with a Multi-Sandbox Firmware that provides the Local Deployment capability (you can browse the `Resources Repository <https://repository.microej.com/index.php?resource=FIRM&topic=ALL&version=ANY&edition=ANY>`_
+- the device programmed with a Multi-Sandbox Firmware that provides the Local Deployment capability (you can browse the `Resources Repository`_
   for available demos of such Multi-Sandbox Firmware),
 - the device connected to the developer's computer either on the same network (LAN) or using a serial wire, depending on the Firmware capabilities.
 

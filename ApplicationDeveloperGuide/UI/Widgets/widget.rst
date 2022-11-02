@@ -1,10 +1,12 @@
 Widget Library
 ==============
 
-The widget library provides very common widgets with basic implementations.
+The `Widget library`_ provides very common widgets with basic implementations.
 These simple widgets may not provide every desired feature, but they can easily be forked since their implementation is very simple.
 
 The widget library does not provide any example. However, the widget demo provides examples for these widgets.
+
+.. _Widget library: https://repository.microej.com/modules/ej/library/ui/widget/4.1.0/
 
 Source
 ------
@@ -23,37 +25,53 @@ Provided Widgets
 
 Widgets:
 
-- `Label <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Label.html>`_: displays a text.
-- `ImageWidget <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/ImageWidget.html>`_: displays an image which is loaded from a resource.
-- `Button <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Button.html>`_: displays a text and reacts to click events.
-- `ImageButton <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/ImageButton.html>`_: displays an image which is loaded from a resource and reacts to click events.
+- `Label`_: displays a text.
+- `ImageWidget`_: displays an image which is loaded from a resource.
+- `Button`_: displays a text and reacts to click events.
+- `ImageButton`_: displays an image which is loaded from a resource and reacts to click events.
 
 Containers:
 
-- `List <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/List.html>`_: lays out any number of children horizontally or vertically.
-- `Flow <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/Flow.html>`_: lays out any number of children horizontally or vertically, using multiple rows if necessary.
-- `Grid <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/Grid.html>`_: lays out any number of children in a grid.
-- `Dock <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/Dock.html>`_: lays out any number of children by docking each child one by one on a side.
-- `SimpleDock <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/SimpleDock.html>`_: lays out three children horizontally or vertically.
-- `OverlapContainer <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/OverlapContainer.html>`_: lays out any number of children by stacking them.
-- `Canvas <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/Canvas.html>`_: lays out any number of children freely.
+- `List`_: lays out any number of children horizontally or vertically.
+- `Flow`_: lays out any number of children horizontally or vertically, using multiple rows if necessary.
+- `Grid`_: lays out any number of children in a grid.
+- `Dock`_: lays out any number of children by docking each child one by one on a side.
+- `SimpleDock`_: lays out three children horizontally or vertically.
+- `OverlapContainer`_: lays out any number of children by stacking them.
+- `Canvas`_: lays out any number of children freely.
+
+.. _Label: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Label.html
+.. _ImageWidget: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/ImageWidget.html
+.. _Button: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Button.html
+.. _ImageButton: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/ImageButton.html
+.. _List: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/List.html
+.. _Flow: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/Flow.html
+.. _Grid: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/Grid.html
+.. _Dock: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/Dock.html
+.. _SimpleDock: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/SimpleDock.html
+.. _OverlapContainer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/OverlapContainer.html
+.. _Canvas: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/Canvas.html
 
 Color Utilities
 ---------------
 
 The widget library offers some color utilities.
 
-The `ColorHelper <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/color/ColorHelper.html>`_ is helpful for decomposing colors into components (alpha, red, blue, green) and building back a color from components.
+The `ColorHelper`_ is helpful for decomposing colors into components (alpha, red, blue, green) and building back a color from components.
 
-The `GradientHelper <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/color/GradientHelper.html>`_ can blend two colors and create a gradient from two colors.
+The `GradientHelper`_ can blend two colors and create a gradient from two colors.
 
 The resulting gradient is a list of distinct colors from the start color to the end color.
 The colors are truncated to the display color depth.
 As a consequence, for the same start and end colors, a gradient created for a 32-bit display will contain more colors than on a 16-bit display.
 
-The `LightHelper <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/color/LightHelper.html>`_ proposes several primitives concerning the luminance of the colors.
+The `LightHelper`_ proposes several primitives concerning the luminance of the colors.
 The luminance of a color is computed from the luminance and the quantity of each of its components.
 The green being the brighter, then the red and finally the blue.
+
+.. _ColorHelper: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/color/ColorHelper.html
+.. _GradientHelper: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/color/GradientHelper.html
+.. _LightHelper: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/color/LightHelper.html
 
 .. _widget_library_debug_utilities:
 
@@ -65,7 +83,7 @@ A few utilities useful for debugging are available in the package ``ej.widget.ut
 Print the Hierarchy of Widgets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The method `HierarchyInspector.hierarchyToString(Widget) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#hierarchyToString-ej.mwt.Widget->`_ returns a String representing the hierarchy of a widget.
+The method `HierarchyInspector.hierarchyToString(Widget)`_ returns a String representing the hierarchy of a widget.
 In other words, it prints the widget and its children recursively in a tree format.
 
 It may be used to analyse the content of a page and have a quick estimation of the number of widgets and the depth of the hierarchy.
@@ -81,37 +99,47 @@ For example:
     |  |  +--ImageWidget
     |  |  +--Label
     |  +--Label
+
+.. _HierarchyInspector.hierarchyToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#hierarchyToString-ej.mwt.Widget-
   
 Print the Path to a Widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The method `HierarchyInspector.pathToWidgetToString(Widget) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#pathToWidgetToString-ej.mwt.Widget->`_ returns a String representing the list of ancestors of the widget.
+The method `HierarchyInspector.pathToWidgetToString(Widget)`_ returns a String representing the list of ancestors of the widget.
 For example: ``Desktop > Scroll > ScrollableList > Label``.
 
 It may be used to identify a widget in a trace.
 
-It is also possible to choose the separator by using `HierarchyInspector.pathToWidgetToString(Widget, char) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#pathToWidgetToString-ej.mwt.Widget-char->`_ method.
+It is also possible to choose the separator by using `HierarchyInspector.pathToWidgetToString(Widget, char)`_ method.
 For example: ``Desktop ; Scroll ; ScrollableList ; Label``.
+
+.. _HierarchyInspector.pathToWidgetToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#pathToWidgetToString-ej.mwt.Widget-
+.. _HierarchyInspector.pathToWidgetToString(Widget, char): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#pathToWidgetToString-ej.mwt.Widget-char-
 
 Count the Number of Widgets or Containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The methods `HierarchyInspector.countNumberOfWidgets(Widget) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#countNumberOfWidgets-ej.mwt.Widget->`_ and `HierarchyInspector.countNumberOfContainers(Widget) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#countNumberOfContainers-ej.mwt.Widget->`_ respectively count the number of widgets and containers in a hierarchy.
+The methods `HierarchyInspector.countNumberOfWidgets(Widget)`_ and `HierarchyInspector.countNumberOfContainers(Widget)`_ respectively count the number of widgets and containers in a hierarchy.
 
 It may be used to evaluate the complexity of a hierarchy of widgets.
+
+.. _HierarchyInspector.countNumberOfWidgets(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#countNumberOfWidgets-ej.mwt.Widget-
+.. _HierarchyInspector.countNumberOfContainers(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#countNumberOfContainers-ej.mwt.Widget-
 
 Count the Maximum Depth of a Hierarchy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The method `HierarchyInspector.countMaxDepth(Widget) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#countMaxDepth-ej.mwt.Widget->`_ counts the maximum depth of a hierarchy.
+The method `HierarchyInspector.countMaxDepth(Widget)`_ counts the maximum depth of a hierarchy.
 In other words, the depth of the widget with the biggest number of parents recursively.
 
 It may be used to evaluate the complexity of a hierarchy of widgets.
 
+.. _HierarchyInspector.countMaxDepth(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#countMaxDepth-ej.mwt.Widget-
+
 Print the Bounds of a Widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The method `BoundsInspector.boundsToString(Widget) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/BoundsInspector.html#boundsToString-ej.mwt.Widget->`_ returns a String with the widget type and its bounds.
+The method `BoundsInspector.boundsToString(Widget)`_ returns a String with the widget type and its bounds.
 The returned String contains:
 
 - the simple name of the class of the widget,
@@ -121,10 +149,12 @@ The returned String contains:
 
 For example: ``Label: 0,0 7x25 (absolute: 75,75)``
 
+.. _BoundsInspector.boundsToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/BoundsInspector.html#boundsToString-ej.mwt.Widget-
+
 Print the bounds of all the widgets in a hierarchy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The method `BoundsInspector.boundsRecursiveToString(Widget) <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/BoundsInspector.html#boundsRecursiveToString-ej.mwt.Widget->`_ returns a String representing the type and bounds of each widget in the hierarchy of a widget.
+The method `BoundsInspector.boundsRecursiveToString(Widget)`_ returns a String representing the type and bounds of each widget in the hierarchy of a widget.
 
 For example:
 
@@ -138,6 +168,8 @@ For example:
     |  |  +--Label: 70,0 202x50 (absolute: 70,50)
     |  +--Label: 0,100 480x50 (absolute: 0,100)
   
+
+.. _BoundsInspector.boundsRecursiveToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/BoundsInspector.html#boundsRecursiveToString-ej.mwt.Widget-
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
