@@ -47,7 +47,7 @@ This glossary defines the technical terms upon which a `MICROEJ VEE (Virtual Exe
       A Foundation Library is a library that provides core or hardware-dependent functionalities. A Foundation Library combines `managed code <https://en.wikipedia.org/wiki/Managed_code>`_ (Java) and low-level APIs (C) implemented by one or more Abstraction Layers through a native interface (:ref:`SNI <sni>`).
 
    Mock
-      A Mock is a mockup of a board support package (BSP) capability that mimics an hardware functionality for the Simulator.
+      A Mock is a mockup of a board support package (BSP) capability that mimics a hardware functionality for the Simulator.
 
    Module Manager
       MicroEJ Module Manager (MMM) downloads, installs and controls the consistency of all the dependencies and versions required to build and publish a MicroEJ asset. It is based on `Semantic Versioning <https://semver.org>`_ specification.

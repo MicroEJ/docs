@@ -118,7 +118,7 @@ three ways:
    port will carry (for example, "debug traces" or "GPS data").
 
 -  A platform port number. This is specific to the platform, and may
-   directly identify an hardware device  [2]_.
+   directly identify a hardware device  [2]_.
 
 -  A platform port name. This is mostly used for dynamic connections or
    on platforms having a file-system based device mapping.

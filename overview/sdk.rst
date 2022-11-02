@@ -31,7 +31,7 @@ Using the SDK, an application developer will be able to:
 -  Import Virtual Devices matching his target hardware in order to
    develop and test applications on the Simulator;
 
--  Deploy the application locally on an hardware device equipped with
+-  Deploy the application locally on a hardware device equipped with
    the Firmware;
 
 -  Package and publish the application on a MicroEJ Forge Instance,
