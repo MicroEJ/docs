@@ -101,7 +101,7 @@ messages, for example:
 
 For the application to know which language to use among those made available and when, you can set it and change it at any point using the `setCurrentLocale(locale)`_ method. 
 If no locale has been set yet when getting a message, the translation for the first locale available in alphabetical order will be used by default. 
-However, you can also pick this locale to default to yourself, by adding a `com.microej.binarynls.defaultLocale` property followed by a locale name in a ``.properties.list`` file. 
+However, you can also pick this locale to default to yourself, by adding a ``com.microej.binarynls.defaultLocale`` property followed by a locale name in a ``.properties.list`` file. 
 
 
 .. _setCurrentLocale(locale): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#setCurrentLocale-java.lang.String-
@@ -115,7 +115,7 @@ In the case of an XML Android String resource, the ``name`` attribute of a missi
 However if returning this identifier is not a suitable solution, you might want to set a fallback locale parameter for an interface. 
 This parameter corresponds to a language to print the translation for a message in, in case it is not available in the current language.
 
-You can set this fallback locale by specifying a locale name in a ``.nls.list`` file, after the name of the interface you want this locale to be the fallback for, separated by a colon ``:``. 
+Starting with version 2.5.0 of the binary-nls module, you can set this fallback locale by specifying a locale name in a ``.nls.list`` file, after the name of the interface you want this locale to be the fallback for, separated by a colon ``:``. 
 For example, with the following ``.nls.list`` file, if a translation is missing in a language for a message in the ``Labels`` and ``Messages`` PO/XML files, the message will be translated to ``en_US`` instead of just returning its ``msgid``/``name``.
 
 .. code-block::
