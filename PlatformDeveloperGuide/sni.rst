@@ -143,7 +143,7 @@ No dependency.
 Installation
 ============
 
-The ``[SNI]`` library is a built-in feature of the Architecture, so there is no
+The :ref:`[SNI] <runtime_sni>` library is a built-in feature of the Architecture, so there is no
 additional dependency to call native code from Java. In the Platform
 configuration file, check :guilabel:`Java to C Interface` > :guilabel:`SNI API` to
 install the additional Java APIs in order to manipulate the data arrays.
@@ -152,14 +152,14 @@ install the additional Java APIs in order to manipulate the data arrays.
 Use
 ===
 
-The `SNI API module <https://repository.microej.com/modules/ej/api/sni/>`_ must be added 
-to the :ref:`module.ivy <mmm_module_description>` of the Application project
+The `SNI API module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the Application project
 to use the :ref:`[SNI] <runtime_sni>` library.
 
 ::
 
   <dependency org="ej.api" name="sni" rev="1.3.1"/>
 
+.. _SNI API module: https://repository.microej.com/modules/ej/api/sni/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

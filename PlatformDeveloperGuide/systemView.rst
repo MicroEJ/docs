@@ -85,13 +85,13 @@ This file can be modified to fit with your system configuration:
             SEGGER_SYSVIEW_SetRAMBase(SYSVIEW_RAM_BASE);
          }
 
-5. Add in your BSP the MicroEJ C module files for SystemView: `com.microej.clibrary.thirdparty#systemview <https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview/1.3.1/>`_ (or check the differences between pre-installed SystemView and C files provided by this module)
+5. Add in your BSP the MicroEJ C module files for SystemView: `com.microej.clibrary.thirdparty#systemview`_ (or check the differences between pre-installed SystemView and C files provided by this module)
 6. Add in your BSP the MicroEJ C module files for SystemView FreeRTOS support (or check the differences between pre-installed SystemView and C files provided by this module)
    
-   - FreeRTOS 10: `com.microej.clibrary.thirdparty#systemview-freertos10 <https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview-freertos10/1.1.1/>`_ 
+   - FreeRTOS 10: `com.microej.clibrary.thirdparty#systemview-freertos10`_ 
    - FreeRTOS 9: please contact :ref:`our support team <get_support>` to get the latest maintenance version of ``com.microej.clibrary.thirdparty#systemview-freertos9`` module.
 
-7. Install the Abstraction Layer implementation of the :ref:`Java Trace API <trace_implementations>` for SystemView by adding C module files in your BSP: `com.microej.clibrary.llimpl#trace-systemview <https://repository.microej.com/modules/com/microej/clibrary/llimpl/trace-systemview/2.1.1/>`_
+7. Install the Abstraction Layer implementation of the :ref:`Java Trace API <trace_implementations>` for SystemView by adding C module files in your BSP: `com.microej.clibrary.llimpl#trace-systemview`_
 8. Make FreeRTOS compatible with SystemView: open  ``FreeRTOSConfig.h`` and:
 
    * add ``#define INCLUDE_xTaskGetIdleTaskHandle 1``
@@ -117,7 +117,9 @@ This file can be modified to fit with your system configuration:
 
 12. Copy the file ``/YourPlatformProject-bsp/projects/microej/trace/systemview/SYSVIEW_MicroEJ.txt`` to the SystemView install path such as: ``SEGGER/SystemView_V252a/Description/``. If you use MicroUI traces, you can also copy the file in section :ref:`microui_traces`
 
-
+.. _com.microej.clibrary.thirdparty#systemview: https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview/1.3.1/
+.. _com.microej.clibrary.thirdparty#systemview-freertos10: https://repository.microej.com/modules/com/microej/clibrary/thirdparty/systemview-freertos10/1.1.1/
+.. _com.microej.clibrary.llimpl#trace-systemview: https://repository.microej.com/modules/com/microej/clibrary/llimpl/trace-systemview/2.1.1/
 
 MicroEJ Core Engine OS Task
 ===========================
@@ -228,7 +230,7 @@ RTT block found by SystemView but no traces displayed
 Bus hardfault when running SystemView without Java Virtual Machine (JVM)
 ========================================================================
 
-The  function  ``LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();`` triggers  a  ``Bus  Hardfault`` when no JVM is launched.
+The function  ``LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();`` triggers  a  ``Bus Hardfault`` when no JVM is launched.
 To solve this issue, comment this function call in ``SEGGER_SYSVIEW_Config_FreeRTOS.c`` when you run SystemView without launching the JVM.
 
 

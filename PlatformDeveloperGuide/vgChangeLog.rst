@@ -14,13 +14,15 @@ MicroVG Implementation
 
 **Changed**
 
-* Compatible with `MicroVG API 1.1 <https://repository.microej.com/modules/ej/api/microvg/1.1.1/>`_.
+* Compatible with `MicroVG API 1.1`_.
 * Allow loading a VectorFont from external resources. 
 * Change color animation interpolation (match Android formula).
    
 **Fixed**
 
 * Fix NullPointerException while sorting TranslateXY VectorDrawableObjectAnimator in vectorimage-converter.
+
+.. _MicroVG API 1.1: https://repository.microej.com/modules/ej/api/microvg/1.1.1/
 
 LLAPIs
 """"""

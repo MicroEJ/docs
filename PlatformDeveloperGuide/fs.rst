@@ -149,13 +149,14 @@ The following snippet can be used as a template for ``fs.properties`` file:
 Use
 ===
 
-The `FS API Module <https://repository.microej.com/modules/ej/api/fs/>`_
-must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `FS API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project to use the FS library.
 
 .. code-block:: xml
 
    <dependency org="ej.api" name="fs" rev="2.0.6"/>
+
+.. _FS API Module: https://repository.microej.com/modules/ej/api/fs/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

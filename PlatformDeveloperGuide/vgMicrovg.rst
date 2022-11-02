@@ -8,14 +8,14 @@ MicroVG
 Principle
 =========
 
-MicroVG library is an extension of the MicroUI library and provides vector drawing capabilities.
+`MicroVG library`_ is an extension of the MicroUI library and provides vector drawing capabilities.
 
 .. _section_vg_architecture:
 
 Architecture
 ============
 
-MicroVG library is the entry point to perform some vectorial drawings on display. 
+`MicroVG library`_ is the entry point to perform some vectorial drawings on display. 
 This library contains only a minimal set of basic APIs. As a result, high-level libraries can be used to have more expressive power. 
 In addition to this restricted set of APIs, the MicroVG implementation has been designed to minimize the EDC, BON, and MicroUI footprint. 
 
@@ -32,7 +32,7 @@ Refer to the :ref:`MicroUI implementation <section_microui_native_calls>` to hav
 Installation
 ============
 
-The MicroVG library is an additional module. 
+The `MicroVG library`_ is an additional module. 
 In the platform configuration's :ref:`module description file <mmm_module_description>`, add the VG Pack dependency:
 
 .. code-block:: XML
@@ -40,6 +40,8 @@ In the platform configuration's :ref:`module description file <mmm_module_descri
    <dependency org="com.microej.pack.vg" name="vg-pack" rev="1.1.1" conf="default->default"/>
 
 The VG Pack will be automatically available after a platform rebuild.
+
+.. _MicroVG library: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/
 
 Use
 ===

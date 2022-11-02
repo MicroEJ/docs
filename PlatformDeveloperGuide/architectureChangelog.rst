@@ -457,8 +457,10 @@ Core Engine
 Simulator
 ~~~~~~~~~
 
--  Fixed unnecessary stacktrace dump on ``Long.parseLong()`` error
+-  Fixed unnecessary stacktrace dump on `Long.parseLong(...)`_ error
 -  Fixed UTF-8 encoded Strings not correctly printed
+
+.. _Long.parseLong(...): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Long.html#parseLong-java.lang.String-
 
 .. _tools-3:
 
@@ -1493,7 +1495,7 @@ Core Engine
 
 .. _section-27:
 
-[6.17.0) - 2017-10-10
+[6.17.0] - 2017-10-10
 ---------------------
 
 .. _tools-16:

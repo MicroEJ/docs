@@ -101,8 +101,7 @@ the library.
 Use
 ===
 
-The `ECOM API Module <https://repository.microej.com/modules/ej/api/ecom/>`_ 
-must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `ECOM API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project to use the ECOM library.
 
 ::
@@ -112,6 +111,8 @@ Application project to use the ECOM library.
 This Foundation Library is always required when developing a MicroEJ Application which
 communicates with some external devices. It is automatically embedded as
 soon as a sub communication library is added in the classpath.
+
+.. _ECOM API Module: https://repository.microej.com/modules/ej/api/ecom/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

@@ -65,7 +65,7 @@ set to be owned by a Feature.
 Kernel API Files
 ----------------
 
-Kernel API file definition is explained here :ref:`Kernel API <kernel.api.def>`.
+Kernel API file definition is explained here: :ref:`Kernel API <kernel.api.def>`.
 
 Access Error Codes
 ------------------

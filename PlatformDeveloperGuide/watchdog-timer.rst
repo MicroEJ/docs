@@ -87,21 +87,21 @@ which is required by the Watchdog C implementation.
 Use in an Application
 =====================
 
-The `WatchdogTimer API Module <https://repository.microej.com/modules/ej/api/watchdog-timer/>`_
-must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `WatchdogTimer API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project in order to allow access to the Watchdog library.
 
 ::
 
 	<dependency org="ej.api" name="watchdog-timer" rev="2.0.0"/>
 
+.. _WatchdogTimer API Module: https://repository.microej.com/modules/ej/api/watchdog-timer/
 
 Code example in Java
 ====================
 
 Here is an example that summarizes all features in a simple use case.
 The checkpoint is performed in a TimerTask scheduled to run every 5 seconds.
-To use TimerTask in your Java application, add the following dependency:
+To use TimerTask in your Java application, add the following `BON API`_ dependency:
 
 ::
 
@@ -162,7 +162,7 @@ Then, you can use this example code:
 		System.out.println("Monitored task stopped and Watchdog timer stopped.");
 	}
 
-
+.. _BON API: https://repository.microej.com/modules/ej/api/bon/
 
 Use in C inside the BSP
 =======================
