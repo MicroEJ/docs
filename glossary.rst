@@ -20,9 +20,6 @@ MicroEJ Glossary
          Sandboxed Application
             A Sandboxed Application is an Application that can run over a Multi-Sandbox Executable. It is linked dynamically.
 
-         System Application
-            A System Application (formerly called a Resident Application) is a Sandboxed Application that is statically linked to a Multi-Sandbox Executable, as it is part of the initial image and cannot be removed.
-
          Kernel Application
             A Kernel Application is a Standalone Application that implements the ability to be extended to produce a Multi-Sandbox Executable.
 
