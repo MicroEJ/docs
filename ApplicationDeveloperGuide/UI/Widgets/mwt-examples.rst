@@ -156,6 +156,26 @@ The grid is a custom container (``MaskingGrid``) that exposes an API to change t
 When requested to render, the grid only renders the children marked as visible.
 
 |endTable|
+
+`MVC <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/mvc>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|startTable| 
+
+.. image:: images/mvc.gif
+   :align: center
+
+|midTable|
+
+This example shows how to create and use an MVC design pattern (Model, View, Controller).
+The value of the model can be changed by clicking on the physical button.
+
+It is also possible to resize all the widgets at once.
+
+|endTable|
+
+
+
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
