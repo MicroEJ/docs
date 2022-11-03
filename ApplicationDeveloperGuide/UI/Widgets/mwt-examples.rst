@@ -127,13 +127,35 @@ When the joystick directions (up, down, left, right) are pressed, the focus chan
 |endTable|
 
 `Immutable Stylesheet <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/immutable-stylesheet>`_
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This example shows how to create and use an immutable stylesheet.
 The immutable stylesheet resolves the style for a widget with the same algorithm as the `cascading stylesheet <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html>`_.
 The difference is that the immutable stylesheet is described in an immutable file instead of Java code.
 
+`Lazy Stylesheet <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/lazy-stylesheet>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+This example shows how to create and use a "lazy" stylesheet. 
+The lazy stylesheet resolves the style for a widget with the same algorithm as the `cascading stylesheet <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html>`_.
+The difference is that the lazy stylesheet associates style factories with selectors (rather than styles).
+As a result, the style elements are allocated "on demand" when a rule's selector applies to a widget.
+
+`Masking Grid <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/masking-grid>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|startTable| 
+
+.. image:: images/masking-grid.gif
+   :align: center
+
+|midTable|
+
+This example shows how to mask a widget temporarily.
+The grid is a custom container (``MaskingGrid``) that exposes an API to change the visibility of its children (visible or invisible).
+When requested to render, the grid only renders the children marked as visible.
+
+|endTable|
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
