@@ -174,7 +174,22 @@ It is also possible to resize all the widgets at once.
 
 |endTable|
 
+`Popup <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/popup>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+|startTable| 
+
+.. image:: images/popup.gif
+   :align: center
+
+|midTable|
+
+This example shows how to show a popup in an application.
+
+Two types of popups are illustrated.
+The information popup can be dismissed by clicking outside of its bounds. The action popup needs the user to click on a button to close it.
+
+|endTable|
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
