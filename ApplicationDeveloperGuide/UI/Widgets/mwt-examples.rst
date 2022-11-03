@@ -206,6 +206,21 @@ The layout adapts automatically to the number of items because ``requestLayout()
 
 |endTable|
 
+`Slide Container <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/slide-container>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|startTable| 
+
+.. image:: images/slide-container.gif
+   :align: center
+
+|midTable|
+
+This example shows a slide container. This is a container that shows only its last child.
+An animation is done when adding/removing a child by translating the widgets from/to the right.
+
+|endTable|
+
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
