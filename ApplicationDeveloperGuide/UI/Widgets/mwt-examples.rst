@@ -126,6 +126,14 @@ When the joystick directions (up, down, left, right) are pressed, the focus chan
 
 |endTable|
 
+`Immutable Stylesheet <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/immutable-stylesheet>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This example shows how to create and use an immutable stylesheet.
+The immutable stylesheet resolves the style for a widget with the same algorithm as the `cascading stylesheet <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html>`_.
+The difference is that the immutable stylesheet is described in an immutable file instead of Java code.
+
+
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
