@@ -158,7 +158,7 @@ When requested to render, the grid only renders the children marked as visible.
 |endTable|
 
 `MVC <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/mvc>`_
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |startTable| 
 
@@ -175,7 +175,7 @@ It is also possible to resize all the widgets at once.
 |endTable|
 
 `Popup <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/popup>`_
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |startTable| 
 
@@ -188,6 +188,21 @@ This example shows how to show a popup in an application.
 
 Two types of popups are illustrated.
 The information popup can be dismissed by clicking outside of its bounds. The action popup needs the user to click on a button to close it.
+
+|endTable|
+
+`Remove Widget <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/remove-widget>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|startTable| 
+
+.. image:: images/remove-widget.gif
+   :align: center
+
+|midTable|
+
+This example shows how to add and remove widgets in a widget hierarchy.
+The layout adapts automatically to the number of items because ``requestLayout()`` is called for each addition/deletion on the container.
 
 |endTable|
 
