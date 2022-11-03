@@ -48,7 +48,7 @@ Provided Examples
 -----------------
 
 `Attribute Selectors <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/attribute-selectors>`_
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |startTable| 
 
@@ -64,7 +64,7 @@ In this case, the background color of a label switches depending on the value of
 |endTable|
 
 `Buffered Image Pool <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/buffered-image-pool>`_
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |startTable| 
 
@@ -79,7 +79,7 @@ In this demo, there is one image in the pool, which is shared between the histog
 |endTable|
 
 `Context-Sensitive Container <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/context-sensitive-container>`_
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |startTable| 
 
@@ -96,7 +96,7 @@ For demonstration purposes, the example displays a virtual watch to simulate the
 |endTable|
 
 `Drag'n'Drop <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/drag-and-drop>`_
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |startTable| 
 
@@ -105,7 +105,24 @@ For demonstration purposes, the example displays a virtual watch to simulate the
 
 |midTable|
    
-This example shows an example of drag'n'drop in a grid.
+This example shows how to implement drag'n'drop support in a grid.
+
+|endTable|
+
+`Focus <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/focus>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|startTable| 
+
+.. image:: images/focus.gif
+   :align: center
+
+|midTable|
+   
+This example shows how to introduce focus management in a project when using peripherals like buttons or a joystick.
+
+The virtual joystick (on the right) is used to simulate a hardware joystick. 
+When the joystick directions (up, down, left, right) are pressed, the focus changes on the items in the same way as when using the touch pointer.
 
 |endTable|
 
