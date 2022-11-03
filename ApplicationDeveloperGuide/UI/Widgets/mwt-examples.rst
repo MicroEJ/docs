@@ -221,6 +221,59 @@ An animation is done when adding/removing a child by translating the widgets fro
 
 |endTable|
 
+`Stack Container <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/stack-container>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|startTable| 
+
+.. image:: images/stack-container.gif
+   :align: center
+
+|midTable|
+
+This example shows a stack container. This is a container that stacks its children on top of each other.
+An animation is done when adding/removing a child by translating the widget from/to the right.
+
+|endTable|
+
+`Stashing Grid <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/stashing-grid>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|startTable| 
+
+.. image:: images/stashing-grid.gif
+   :align: center
+
+|midTable|
+
+This example shows how to stash a widget temporarily.
+
+The grid is a custom container (``StashingGrid``) that exposes an API to change the visibility of its children (visible or invisible).
+When requested to lay out, the grid only lays out the children marked as visible. 
+When requested to render, the grid only renders the children marked as visible.
+
+|endTable|
+
+`Virtual Watch <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/virtual-watch>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|startTable| 
+
+.. image:: images/virtual-watch.gif
+   :align: center
+
+|midTable|
+
+This example shows how to simulate the skin and inputs of a device with a different device (e.g., an evaluation board).
+This can be a convenient option when the target hardware is not yet available.
+
+Here, it simulates a watch with a round screen and 3 buttons.
+The actual application is shown in a round area of the screen and receives events from the virtual buttons.
+The virtual buttons send `commands <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Command.html>`_ when clicked, the same way a target device would have sent events from the native world.
+The goal is to be able to migrate the application on the target device without modifying the application code.
+
+|endTable|
+
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
