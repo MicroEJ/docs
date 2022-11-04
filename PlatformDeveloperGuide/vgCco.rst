@@ -137,7 +137,9 @@ The Freetype library compatible with MicroEJ is packaged in a C module on the :r
 
 This C module provides a fork of Freetype 2.11.0.
 
-The Freetype library requires a memory Heap for Freetype internal objects (see https://freetype.org/freetype2/docs/design/design-4.html) allocated when a font file is loaded. The size of this heap depends on the number of font loaded in parallel and on the fonts themself. This size is defined by ``VG_FEATURE_FREETYPE_HEAP_SIZE_HEAP`` in ``microvg_configuration.h``.
+The Freetype library requires a memory Heap for Freetype internal objects allocated when a font file is loaded (see https://freetype.org/freetype2/docs/design/design-4.html). 
+The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves. 
+This size is defined by ``VG_FEATURE_FREETYPE_HEAP_SIZE_HEAP`` in ``microvg_configuration.h``.
 
 All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``microvg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the Freetype heap evolution.
 
@@ -150,7 +152,9 @@ The library Harfbuzz compatible with MicroEJ is packaged in a C module on the :r
 
 This C module provides a fork of Harfbuzz 4.2.1.
 
-The Harfbuzz library requires a memory Heap for Harfbuzz internal objects allocated when a font file is loaded. The size of this heap depends on the number of font loaded in parallel and on the fonts themself. This size is defined by ``VG_FEATURE_HARFBUZZ_HEAP_SIZE_HEAP`` in ``microvg_configuration.h``.
+The Harfbuzz library requires a memory Heap for Harfbuzz internal objects allocated when a font file is loaded. 
+The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves. 
+This size is defined by ``VG_FEATURE_HARFBUZZ_HEAP_SIZE_HEAP`` in ``microvg_configuration.h``.
 
 All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``microvg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the Harfbuzz heap evolution.
 
