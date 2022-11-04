@@ -40,7 +40,6 @@ project appearance order (top to bottom).
 .. figure:: images/ClassPath_4.png
    :alt: MicroEJ Application Classpath Mapping
    :align: center
-   :scale: 70%
 
    MicroEJ Application Classpath Mapping
 
