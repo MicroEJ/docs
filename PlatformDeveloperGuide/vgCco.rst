@@ -131,11 +131,17 @@ This file (a header file with some C defines) enables (or disables) and configur
 Library: Freetype
 =================
 
-The library Freetype compatible with MicroEJ is packaged in a C module on the :ref:`developer_repository`: `com.microej.clibrary.thirdparty#freetype`_.
+The Freetype library compatible with MicroEJ is packaged in a C module on the :ref:`developer_repository`: `com.microej.clibrary.thirdparty#freetype`_.
 
 .. _com.microej.clibrary.thirdparty#freetype: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/freetype/
 
 This C module provides a fork of Freetype 2.11.0.
+
+The Freetype library requires a memory Heap for Freetype internal objects allocated when a font file is loaded (see https://freetype.org/freetype2/docs/design/design-4.html). 
+The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves. 
+This size is defined by ``VG_FEATURE_FREETYPE_HEAP_SIZE_HEAP`` in ``microvg_configuration.h``.
+
+All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``microvg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the Freetype heap evolution.
 
 Library: Harfbuzz
 =================
@@ -145,6 +151,14 @@ The library Harfbuzz compatible with MicroEJ is packaged in a C module on the :r
 .. _com.microej.clibrary.thirdparty#harfbuzz: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/harfbuzz/
 
 This C module provides a fork of Harfbuzz 4.2.1.
+
+The Harfbuzz library requires a memory Heap for Harfbuzz internal objects allocated when a font file is loaded. 
+The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves. 
+This size is defined by ``VG_FEATURE_HARFBUZZ_HEAP_SIZE_HEAP`` in ``microvg_configuration.h``.
+
+All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``microvg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the Harfbuzz heap evolution.
+
+Freetype and Harfbuzz libraries are not sharing the same heap, but this could easilly be done by updating ``ft_system.c`` and ``hb-alloc.c`` files.
 
 .. _section_vg_c_module_microvg_vglite:
 
