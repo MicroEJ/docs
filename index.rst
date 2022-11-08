@@ -24,6 +24,7 @@ Browse the following chapters to familiarize yourself and understand the princip
    Glossary <glossary>
    overview/index
    SDKUserGuide/index
+   SDK6UserGuide/index
    ApplicationDeveloperGuide/index
    VEEPortingGuide/index
    KernelDeveloperGuide/index
