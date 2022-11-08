@@ -1,7 +1,7 @@
 .. _sdk_user_guide:
 
-SDK User Guide
-==============
+SDK 5 User Guide
+================
 
 MICROEJ SDK is an integrated environment to create software applications for MicroEJ-ready devices.
 The SDK provides tools to write applications and run them on a virtual (simulated) or real device.
