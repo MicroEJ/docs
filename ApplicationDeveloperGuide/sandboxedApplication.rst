@@ -11,7 +11,6 @@ Sandboxed Application
    sandboxedAppSim
    sandboxedAppDeploy
    sandboxedAppFundamentalConcepts
-   sandboxedAppLibraries
    sandboxedAppSharedInterface
 
 A Sandboxed Application is a Java Application that can run over a Multi-Sandbox Firmware.
