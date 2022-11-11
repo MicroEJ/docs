@@ -20,7 +20,7 @@ A Kernel API file is an XML file named ``kernel.api`` declared at the root of on
 
 .. _fig_kf-api-xsd:
 .. code-block:: xml
-   :caption: Kernel API Example for exposing ``System.out.println`` API
+   :caption: Kernel API Example for exposing `System.out.println`_ API
 
     <require>
         <type name="java.io.PrintStream"/>
@@ -56,6 +56,7 @@ The table below describes the format of the XML elements. The full XML schema is
 
 
 .. _Class.forName(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#forName-java.lang.String-
+.. _system.out.println: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#out
 
 Writing Kernel APIs
 ===================
@@ -66,10 +67,12 @@ Default Kernel APIs Derivation
 ------------------------------
 
 MicroEJ Corp. provides predefined kernel API files for the most common libraries provided by a Kernel. 
-These files are packaged as MicroEJ modules in the :ref:`developer_repository` under the `com/microej/kernelapi <https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/kernelapi/>`_ organisation.
+These files are packaged as MicroEJ modules in the :ref:`developer_repository` under the `com/microej/kernelapi`_ organisation.
 
 The packaged file ``kernel.api`` can be extracted from the JAR file and edited
 in order to keep only desired types, methods and fields.
+
+.. _com/microej/kernelapi: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/kernelapi/
 
 Kernel API Generator
 --------------------

@@ -44,7 +44,7 @@ Kernel APIs as Dependencies
 
 The Kernel APIs can be declared as dependencies of the module.
 For example, the following dependencies declare a Runtime Environment that aggregates all classes, methods and fields
-defined by ``EDC,KF,BON,Wadapps,MicroUI`` Kernel APIs modules.
+defined by ``EDC``, ``KF``, ``BON``, ``Wadapps``, ``MicroUI`` Kernel APIs modules.
 
 .. code:: xml
 
@@ -57,7 +57,7 @@ defined by ``EDC,KF,BON,Wadapps,MicroUI`` Kernel APIs modules.
    </dependencies>
 
 The libraries modules are fetched transitively from the Kernel APIs dependencies.
-For example, the dependency ``com.microej.kernelapi#edc;1.0.6`` fetches the library ``ej.api#edc;1.2.3``.
+For example, the dependency ``com.microej.kernelapi#edc;1.0.6`` fetches the library `ej.api#edc;1.2.3`_.
 
 It is also possible to force the version of the libraries to use by declaring them as direct dependencies.
 This is typically used to get a latest version of the library with improvements such as Javadoc fixes or Null Analysis annotations.
@@ -72,6 +72,8 @@ In this example:
    </dependencies>
 
 The Runtime Environment uses the version ``1.3.4`` of the EDC library instead of the version ``1.2.3`` fetched transitively by the dependency ``com.microej.kernelapi#edc;1.0.6``.
+
+.. _ej.api#edc;1.2.3: https://repository.microej.com/modules/ej/api/edc/1.2.3/
 
 Kernel APIs as Project File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -155,8 +157,8 @@ Extend a Runtime Environment
 ----------------------------
 
 In a Kernel, Foundation and Add-On libraries can be extended by adding new methods to their existing classes.
-For example, it allows to add new methods to the class `java.lang.String`_ of the module ``ej.api#edc``.
-This is done thanks to the `Class Extender tool <https://repository.microej.com/modules/com/microej/tool/class-extender/>`_.
+For example, it allows to add new methods to the class `java.lang.String`_ of the module `ej.api#edc`_.
+This is done thanks to the `Class Extender tool`_.
 This tool works at binary level and is able to inject methods from one class to another.
 Extensions can thus be independently compiled and be retrieved by the Kernel and applied during a Multi-Sandbox Firmware build.
 
@@ -201,21 +203,26 @@ The extension must be applied in 2 locations:
          	   System.out.println("Hello!");
          	}
 
-        This class overrides the ``java.lang.String`` class fetched from the EDC dependency.     
+        This class overrides the `java.lang.String`_ class fetched from the EDC dependency.     
 
       Once built, the custom Runtime Environment contains the new methods and can be used in the Applications projects.
 
    2. In the Kernel.
       The EDC implementation is extended during the Kernel build thanks to the Class Extender tool. 
-      Refer to the `Class Extender tool README <https://repository.microej.com/modules/com/microej/tool/class-extender/1.0.4/README-1.0.4.md>`_ 
+      Refer to the `Class Extender tool README`_ 
       and especially to the chapter ``Include Class Extender During Firmware Project Build`` to learn how to integrate it in a Kernel build.
 
       MicroEJ Corp. provides some ready-to-use extension modules:
       
-      - `com.microej.library.runtime#string-regex <https://repository.microej.com/modules/com/microej/library/runtime/string-regex/>`_: String methods based on Regular Expressions (e.g. ``String.split()``, ``String.replaceAll()``)
-      - `com.microej.library.runtime#string-format <https://repository.microej.com/modules/com/microej/library/runtime/string-format/>`_: String formatting utility methods (e.g. ``String.format()``)
+      - `com.microej.library.runtime#string-regex`_: String methods based on Regular Expressions (e.g. ``String.split()``, ``String.replaceAll()``)
+      - `com.microej.library.runtime#string-format`_: String formatting utility methods (e.g. ``String.format()``)
 
 .. _java.lang.String: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/String.html
+.. _ej.api#edc: https://repository.microej.com/modules/ej/api/edc/
+.. _Class Extender tool: https://repository.microej.com/modules/com/microej/tool/class-extender/
+.. _Class Extender tool README: https://repository.microej.com/modules/com/microej/tool/class-extender/1.0.4/README-1.0.4.md
+.. _com.microej.library.runtime#string-regex: https://repository.microej.com/modules/com/microej/library/runtime/string-regex/
+.. _com.microej.library.runtime#string-format: https://repository.microej.com/modules/com/microej/library/runtime/string-format/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
