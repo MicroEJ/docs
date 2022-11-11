@@ -51,13 +51,15 @@ The explanation can be adapted to run the test suite on any other
 MicroEJ Platform providing:
 
 - An implementation of :ref:`LLFS-API-SECTION` version 1.0.2 in
-  ``com.microej.pack#fs-4.0.3``.
+  `com.microej.pack#fs-4.0.3`_.
 - A partial or full :ref:`bsp_connection`.
 
 .. note::
 
    This tutorial can also be adapted to run other test suites in addition to the
    Filesystem Test Suite presented here.
+
+.. _com.microej.pack#fs-4.0.3: https://repository.microej.com/modules/com/microej/pack/fs/4.0.3/
 
 Introduction
 ------------
@@ -74,11 +76,14 @@ In essence, a Foundation Library provides an API to be used by an Application or
 
    MicroEJ Foundation Libraries, Add-On Libraries and MicroEJ Application
 
-For example, the Java file system API ``java.io.File`` is provided by
-the MicroEJ Foundation Library named ``FS``. The Abstraction Layer of
+For example, the Java file system API `java.io.File`_ is provided by
+the MicroEJ Foundation Library named `FS`_. The Abstraction Layer of
 each Foundation API must be implemented in C in the Board Support
 Package.  The Test Suite is used to validate the C code implementation
 of the Abstraction Layer.
+
+.. _java.io.File: https://repository.microej.com/javadoc/microej_5.x/apis/java/io/File.html
+.. _FS: https://repository.microej.com/modules/com/microej/pack/fs/
 
 Import the Test Suite
 ---------------------

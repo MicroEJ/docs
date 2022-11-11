@@ -42,7 +42,9 @@ It is also a good idea to run basic hardware tests like:
 * Internal and external flash programming and verification
 * RAM 8/16/32 -bit read/write operations (internal and external if any)
 * EEMBC Coremark benchmark to verify the CPU/buses/memory/compiler configuration
-* See the `Platform Qualification Tools <https://github.com/MicroEJ/PlatformQualificationTools>`_ used to qualify MicroEJ Platforms.
+* See the `Platform Qualification Tools`_ used to qualify MicroEJ Platforms.
+
+.. _Platform Qualification Tools: https://github.com/MicroEJ/PlatformQualificationTools
 
 A MicroEJ Platform Project is already available for the same MCU/RTOS/C Compiler
 --------------------------------------------------------------------------------
@@ -137,7 +139,7 @@ Start a new project with the compiler IDE that includes the LL drivers and start
 Platform Validation
 -------------------
 
-Use the `Platform Qualification Tools <https://github.com/MicroEJ/PlatformQualificationTools>`_ to qualify the MicroEJ Platform built.
+Use the `Platform Qualification Tools`_ to qualify the MicroEJ Platform built.
 
 Further Assistance Needed
 -------------------------

@@ -19,12 +19,14 @@ XML
 XML Module
 ~~~~~~~~~~
 
-The `XML Module <https://repository.microej.com/modules/org/kxml2/kxml2/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `XML Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project to use the KXML library.
 
 ::
 
 	<dependency org="org.kxml2" name="kxml2" rev="2.3.2"/>
+
+.. _XML Module: https://repository.microej.com/modules/org/kxml2/kxml2/
 
 Example Of Use
 ~~~~~~~~~~~~~~
@@ -118,7 +120,7 @@ JSON is easily readable by humans compared to XML. To parse this data format, se
 JSON Module
 ~~~~~~~~~~~
 
-The `JSON Module <https://repository.microej.com/modules/org/json/me/json/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `JSON Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project to use the JSON library.
 
 ::
@@ -129,6 +131,7 @@ The instantiation and use of the parser is pretty straightforward.
 First you need to get the JSON content as a ``String``,  and then create a `JSONObject`_ instance with the string. 
 If the string content is a valid JSON content, you should have an workable `JSONObject`_ to browse.
 
+.. _JSON Module: https://repository.microej.com/modules/org/json/me/json/
 .. _JSONObject: https://repository.microej.com/javadoc/microej_5.x/apis/org/json/me/JSONObject.html
 
 Example Of Use
@@ -259,15 +262,19 @@ CBOR
 
 The `CBOR (Concise Binary Object Representation) <https://cbor.io/>`_ binary data serialization format is a lightweight data-interchange format similar to JSON but with a smaller footprint, making it very practical for embedded applications, though its messages are often less easily readable by humans.
 
+.. _cbor_module:
+
 CBOR Module
 ~~~~~~~~~~~
 
-The `CBOR Module <https://repository.microej.com/modules/ej/library/iot/cbor/>`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `CBOR Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
 Application project to use the CBOR library.
 
 ::
 
 	<dependency org="ej.library.iot" name="cbor" rev="1.1.0"/>
+
+.. _CBOR Module: https://repository.microej.com/modules/ej/library/iot/cbor/
 
 Example Of Use
 ~~~~~~~~~~~~~~
@@ -304,7 +311,7 @@ The execution of this example on the MicroEJ Simulator should print the followin
 	}
 	=============== [ Completed Successfully ] ===============
 
-Another example showing how to use the :ref:`JSON Module <json_module>` along with the `CBOR Module <https://repository.microej.com/modules/ej/library/iot/cbor/>`_ to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.json.
+Another example showing how to use the :ref:`JSON <json_module>` module along with the :ref:`CBOR <cbor_module>` module to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.json.
 
 The execution of this example on the MicroEJ Simulator should print the following trace:
 

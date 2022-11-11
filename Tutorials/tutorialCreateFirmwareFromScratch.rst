@@ -48,8 +48,7 @@ The following steps are usually followed when starting a new project:
    the Board Support Package (BSP).
 #. Implement :ref:`Low Level API<LLAPI-CHAPTER>`.
 #. Validate the resulting MicroEJ Platform with the `Platform
-   Qualification Tools (PQT)
-   <https://github.com/microej/PlatformQualificationTools>`_.
+   Qualification Tools (PQT)`_.
 #. Develop the :ref:`MicroEJ Application
    <simulator_execution>`.
 
@@ -70,8 +69,7 @@ at https://github.com/MicroEJ/FreeRTOS/tree/tuto-microej-firmware-from-scratch.
 .. note::
 
   The implementation of the Low Level API and their validation with
-  the `Platform Qualification Tools (PQT)
-  <https://github.com/microej/PlatformQualificationTools>`_ will be
+  the `Platform Qualification Tools (PQT)`_ will be
   the topic of another tutorial.
 
 Prerequisites
@@ -92,6 +90,8 @@ Prerequisites
       In WSL, use the command ``lsb_release -a`` to print the current Ubuntu version.
 
 A code editor such as Visual Studio Code is also recommended to edit BSP files.
+
+.. _Platform Qualification Tools (PQT): https://github.com/microej/PlatformQualificationTools
 
 Overview
 --------

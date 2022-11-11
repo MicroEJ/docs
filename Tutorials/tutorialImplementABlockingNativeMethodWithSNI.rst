@@ -39,8 +39,11 @@ Requirements
 
 A MicroEJ Platform with (at least):
 
-- EDC-1.3.
-- SNI-1.4.
+- `EDC`_-1.3.
+- `SNI`_-1.4.
+
+.. _EDC: https://repository.microej.com/modules/ej/api/edc/
+.. _SNI: https://repository.microej.com/modules/ej/api/sni/
 
 Example Code
 ============
