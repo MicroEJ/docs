@@ -1,4 +1,4 @@
-.. _section.firmware:
+.. _vee:
 
 MICROEJ VEE
 ===========
@@ -14,7 +14,7 @@ MicroEJ VEE provides a fully configurable set of services that can be expanded, 
 - a storage framework (file system)
 - a Java Cryptography Architecture (JCA) implementation.
 
-.. figure:: images/firmware.png
+.. figure:: images/vee.png
    :alt: MICROEJ VEE Overview
    :align: center
    :scale: 80%

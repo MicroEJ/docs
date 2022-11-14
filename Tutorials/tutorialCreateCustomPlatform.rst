@@ -13,7 +13,7 @@ It contains the MicroEJ configuration and the BSP (C source files).
 MicroEJ Corp. provides MicroEJ Evaluation Architectures at https://repository.microej.com/modules/,
 and MicroEJ Platform demo projects for various evaluation boards at https://repository.microej.com/index.php?resource=JPF.
 
-We recommend reading the :ref:`section.firmware` section to get an overview of MicroEJ Firmware build flow.
+We recommend reading the :ref:`vee` section to get an overview of MicroEJ Firmware build flow.
 
 The following document assumes the reader is familiar with the :ref:`vee-porting-guide`.
 
