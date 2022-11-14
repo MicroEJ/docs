@@ -391,7 +391,7 @@ Since UI Pack 13.2.0, Front Panel automatically includes new image decoders (new
 Classpath
 ---------
 
-A standard mock is running on the same JVM as the HIL Engine (link to https://docs.microej.com/en/latest/PlatformDeveloperGuide/mock.html) (it shares the same classpath).
+A standard mock is running on the same JVM than the HIL Engine (see :ref:`mock` chapter). It shares the same classpath.
 When the application is not using the MicroUI library (i.e., it is not an UI application, whether the platform holds the MicroEJ Graphics Engine or not), the Front Panel mock runs a standard mock.
 When the application is using the MicroUI library, the Front Panel _UI_ mock runs on the same JVM than the MicroEJ Simulator. 
 In this case, the other mocks don't share the same classpath than the Front Panel mock.
