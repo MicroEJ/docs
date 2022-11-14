@@ -632,7 +632,7 @@ Option(checkbox): Use a custom Java output stream
 Select this option to specify another Java ``System.out`` print stream.
 
 If selected, the default Java output stream is not used by the Java
-application. the JPF will not use the default Java output stream at startup.
+application. The Core Engine will not use the default Java output stream at startup.
 
 Option(text): Class
 """""""""""""""""""
@@ -649,8 +649,8 @@ Option(text): Class
 
 Defines the Java class used to manage ``System.out``.
 
-At startup the JPF will try to load this class using the ``Class.forName()``
-method. If the given class is not available, the JPF will use the default
+At startup the Core Engine will try to load this class using the ``Class.forName()``
+method. If the given class is not available, it will use the default
 Java output stream as usual. The specified class must be available in the
 application classpath.
 

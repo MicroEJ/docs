@@ -1446,7 +1446,7 @@ Misc
 
 **Changed**
 
-* Remove jpf property header *(not backward compatible)*.
+* Remove ``@jpf.property.header@`` prefix to Application options *(not backward compatible)*.
   
 [6.0.1] - 2015-12-17
 ====================
