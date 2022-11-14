@@ -40,9 +40,14 @@ project appearance order (top to bottom).
 .. figure:: images/ClassPath_4.png
    :alt: MicroEJ Application Classpath Mapping
    :align: center
-   :scale: 70%
 
    MicroEJ Application Classpath Mapping
+
+.. note::
+   For Sandboxed Applications, when a library cannot be :ref:`added as a dependency <mmm_module_dependencies>` 
+   (because it is not available in a repository for example),
+   its JAR file can be directly added in the ``META-INF/libraries`` folder of the Application project.
+   It is then automatically added in the compilation classpath and is available for the Application.
 
 .. _section.microej.link.and.load.model:
 
