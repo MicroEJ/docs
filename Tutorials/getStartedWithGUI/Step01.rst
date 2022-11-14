@@ -1,7 +1,7 @@
 Starting MicroUI
 ================
 
-#. To get started, first we need to add MicroUI, a Foundation Library
+#. To get started, first we need to add `MicroUI`_, a Foundation Library
    that provides an abstraction layer to access the low-level UI inputs
    and outputs.
 #. Look for ``module.ivy``, and replace dependencies with the following:
@@ -37,11 +37,12 @@ Starting MicroUI
    .. image:: images/simulator.png
     :align: center
 
+.. _MicroUI: https://repository.microej.com/modules/ej/api/microui/
 
 Widgets
 -------
 
-#. The widget library provides a collection of common widgets and
+#. The `widget library`_ provides a collection of common widgets and
    containers. It is based on MWT, a base library that defines core
    type graphical elements for designing rich graphical user interface
    embedded applications.
@@ -58,6 +59,8 @@ Widgets
     There's no need to add MWT or MicroUI, as both
     are dependencies of the Widget library. They will be
     automatically resolved with the correct version. 
+
+.. _widget library: https://repository.microej.com/modules/ej/library/ui/widget/
        
 Desktop Usage 
 --------------

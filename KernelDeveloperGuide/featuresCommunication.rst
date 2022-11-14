@@ -17,7 +17,7 @@ a Kernel type from one Feature to an other (see :ref:`section.transferable.types
 To do that, the Kernel must register a new Kernel type converter.
 See the `Converter`_ class and `Kernel.addConverter()`_ method for more details.
 
-The table below shows some converters defined in the `com.microej.library.util#kf-util <https://repository.microej.com/modules/com/microej/library/util/kf-util/>`_ library.
+The table below shows some converters defined in the `com.microej.library.util#kf-util`_ library.
 
 .. list-table:: Example of Available Kernel Types Converters
    :header-rows: 1
@@ -67,6 +67,7 @@ The table below shows some converters defined in the `com.microej.library.util#k
 
 .. _Converter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Converter.html
 .. _Kernel.addConverter(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#addConverter-ej.kf.Converter-
+.. _com.microej.library.util#kf-util: https://repository.microej.com/modules/com/microej/library/util/kf-util/
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

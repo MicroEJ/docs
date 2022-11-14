@@ -53,7 +53,7 @@ Configuring NLS in MicroEJ
   .. code:: xml
 
     <dependency org="ej.library.runtime" name="nls" rev="3.0.1"/> 
-    <dependency org="com.microej.library.runtime" name="nls-po" rev="2.2.0"/>
+    <dependency org="com.microej.library.runtime" name="binary-nls" rev="2.5.0"/>
 
 - Then, let's create a ``myapp.nls.list`` file, and put it in the **resources/list** folder. The file looks like this:
 

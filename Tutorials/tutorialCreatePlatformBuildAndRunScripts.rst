@@ -30,7 +30,7 @@ Build and Run scripts are normalized entry points to
 
 External tools only need to run these scripts without additional knowledge about the toolchain or deployment tools.
 
-See :ref:`bsp_connection_build_script` and :ref:`bsp_connection_run_script` sections for more information about these scripts. Script examples are provided in `Platform Qualification Tools <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_ repository.
+See :ref:`bsp_connection_build_script` and :ref:`bsp_connection_run_script` sections for more information about these scripts. Script examples are provided in `Platform Qualification Tools`_ repository.
 
 Overview
 --------
@@ -379,9 +379,11 @@ Going Further
 -------------
 
 - More about build and run scripts in :ref:`bsp_connection_build_script` and :ref:`bsp_connection_run_script` sections
-- Some build scripts examples from `Platform Qualification Tools <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_
+- Some build scripts examples from `Platform Qualification Tools`_
 - Perform the :ref:`tutorial_run_test_suite_on_device` tutorial to learn how to run an automated testsuite
 - Perform the :ref:`tutorial_setup_automated_build_using_jenkins_and_artifactory` tutorial to learn how to automate the build of a MicroEJ Platform module
+
+.. _Platform Qualification Tools: https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

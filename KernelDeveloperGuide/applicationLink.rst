@@ -91,9 +91,9 @@ Here are the typical steps to achieve:
 - Transfer the ``.kdat`` file on Device by any mean,
 - Write a MicroEJ Standalone Application for building the ``.fso`` file:
   
-  - implement a ``com.microej.soar.KernelMetadataProvider`` to provide an InputStream to load the ``.kdat`` file,
-  - provide an InputStream to load the ``.fso`` file,
-  - provide an OutputStream to store the ``.fo`` file,
+  - implement a ``com.microej.soar.KernelMetadataProvider`` to provide an `InputStream`_ to load the ``.kdat`` file,
+  - provide an `InputStream`_ to load the ``.fso`` file,
+  - provide an `OutputStream`_ to store the ``.fo`` file,
   - call ``FeatureOptimizer.build()`` method.
 
 Then the ``.fo`` file can be dynamically installed using `Kernel.install()`_.
@@ -109,6 +109,9 @@ Then the ``.fo`` file can be dynamically installed using `Kernel.install()`_.
 
    Although this is common, it is not required to run the SOAR Optimizer phase on the Kernel that will dynamically install the ``.fo``. 
    There is no relationship between ``SOAR`` and ``KF`` Foundation Libraries.
+
+.. _InputStream: https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html
+.. _OutputStream: https://repository.microej.com/javadoc/microej_5.x/apis/java/io/OutputStream.html
 
 Implement the Kernel 
 ~~~~~~~~~~~~~~~~~~~~
