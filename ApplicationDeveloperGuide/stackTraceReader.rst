@@ -44,7 +44,7 @@ No dependency.
 Installation
 ============
 
-This tool is a built-in platform tool.
+This tool is a built-in Architecture tool.
 
 
 Use (Standalone Application)

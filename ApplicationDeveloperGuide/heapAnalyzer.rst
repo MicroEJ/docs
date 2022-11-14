@@ -8,7 +8,7 @@ Introduction
 
 Heap Dumper is a tool that takes a snapshot of the heap. Generated files
 (with the ``.heap`` extension) are available in the application output
-folder. Note that it works only on simulations. It is a built-in platform tool and has no dependencies.
+folder.
 
 The Heap Analyzer is a set of tools to help developers understand the
 contents of the Java heap and find problems such as memory leaks.

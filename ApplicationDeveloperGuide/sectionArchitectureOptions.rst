@@ -442,7 +442,7 @@ This group defines parameters for MicroEJ Simulator log activity. Note that
 logs can only be generated if the ``Simulator > Use target characteristics``
 option is selected.
 
-Some logs are sent when the platform executes some specific action (such as
+Some logs are sent when the Simulator executes some specific action (such as
 start thread, start GC, etc), other logs are sent periodically (according to
 defined log level and the log periodicity).
 
@@ -455,7 +455,7 @@ Option(checkbox): system
 
 *Description*:
 
-When selected, System logs are sent when the platform executes the following
+When selected, System logs are sent when the Simulator executes the following
 actions:
 
 
@@ -515,7 +515,7 @@ Option(checkbox): schedule
 
 *Description*:
 
-When selected, a log is sent when the platform schedules a thread.
+When selected, a log is sent when the Simulator schedules a thread.
 
 Option(checkbox): monitors
 """"""""""""""""""""""""""
