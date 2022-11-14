@@ -5,7 +5,7 @@ Platform Import
 
 A Platform is required to run a Standalone Application on the Simulator or build the Firmware binary for the target device.
 
-The :ref:`platform-developer-guide` describes how to create a Platform from scratch for any kind of device. 
+The :ref:`vee-porting-guide` describes how to create a Platform from scratch for any kind of device. 
 In addition, MicroEJ Corp. provides Platforms for various development boards (see https://repository.microej.com/index.php?resource=JPF).
 
 Platforms are distributed in two packages:

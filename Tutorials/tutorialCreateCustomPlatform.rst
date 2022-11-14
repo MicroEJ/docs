@@ -15,7 +15,7 @@ and MicroEJ Platform demo projects for various evaluation boards at https://repo
 
 We recommend reading the :ref:`section.firmware` section to get an overview of MicroEJ Firmware build flow.
 
-The following document assumes the reader is familiar with the :ref:`platform-developer-guide`.
+The following document assumes the reader is familiar with the :ref:`vee-porting-guide`.
 
 Each MicroEJ Platform is specific to:
 
@@ -63,7 +63,7 @@ In MicroEJ SDK
 
   .. image:: images/tuto_microej_platform_how_to_select_modules.PNG
 
-  More details on available modules can be found in the :ref:`platform-developer-guide`.
+  More details on available modules can be found in the :ref:`vee-porting-guide`.
 
 
 BSP

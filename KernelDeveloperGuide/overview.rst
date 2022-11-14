@@ -30,7 +30,7 @@ Here is a non-exhaustive list of the activities to be done by Kernel Developers:
 -  Controlling and monitoring resources
 
 This document takes as prerequisite that a Platform is available
-for the target device (see :ref:`platform-developer-guide`).
+for the target device (see :ref:`vee-porting-guide`).
 This document also assumes that the reader is familiar with the
 development and deployment of Applications (see :ref:`application-developer-guide`)
 and specifics of developing Sandboxed Applications (see :ref:`sandboxed_application`).
@@ -43,7 +43,7 @@ a Multi-Sandbox Firmware.
 
 A *Multi-Sandbox Platform* is a Platform with the Multi Sandbox
 capability of the Core Engine enabled (see the chapter
-*Multi-Sandbox* of the :ref:`platform-developer-guide`).
+*Multi-Sandbox* of the :ref:`vee-porting-guide`).
 A Multi-Sandbox Firmware can only be built with a Multi-Sandbox Platform.
 
 A *Mono-Sandbox Firmware* is produced by building and linking a Standalone

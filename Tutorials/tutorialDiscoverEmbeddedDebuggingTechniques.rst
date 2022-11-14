@@ -25,7 +25,7 @@ Debugging Tools
 ---------------
 
 This section presents an overview of the main tools available to debug an embedded application.
-Please refer to the developer guides for the complete reference (:ref:`application-developer-guide`, :ref:`platform-developer-guide`, :ref:`kernel-developer-guide`).
+Please refer to the developer guides for the complete reference (:ref:`application-developer-guide`, :ref:`vee-porting-guide`, :ref:`kernel-developer-guide`).
 
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.events_tracing_and_logging`
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.runtime_state_dump`
