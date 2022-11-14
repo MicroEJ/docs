@@ -27,7 +27,7 @@ When an exception is thrown by the implementation of the MicroUI API, the except
    * - -6
      - The resource has been closed and cannot be used anymore.
    * - -7
-     - Out of memory. Not enough memory to allocate the `Image`_'s buffer. Try to close some useless images and retry opening the new image, or increase the size of the MicroUI images heap.
+     - Out of memory. Not enough memory to allocate the `Image`_'s buffer. Try to close some useless images and retry opening the new image, or increase the size of the :ref:`MicroUI images heap<images_heap>`.
    * - -8
      - The platform cannot decode this kind of image, because the required runtime image decoder is not available in the platform.
    * - -9
