@@ -46,6 +46,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    install
    moduleNatures
    createProject
+   buildProject
 
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
