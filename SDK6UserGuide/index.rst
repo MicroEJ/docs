@@ -47,6 +47,8 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    moduleNatures
    createProject
    buildProject
+   runOnSimulator
+   platformSelection
 
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
