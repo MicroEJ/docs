@@ -24,12 +24,27 @@ Notice that some options may not be available, in the following cases:
 - Option has been introduced in a newer version of the MicroEJ Architecture which is integrated in the targeted Platform.
 - Options related to :ref:`Board Support Package (BSP) connection <bsp_connection_application_options>`.
 
+.. _sdk_6_define_option:
+
+Defining an Option with SDK 6
+=============================
+
+With the SDK 6, the Applications options can be defined in a properties file located in the ``src/main/resources/build`` folder of the project.
+Usually, the options are defined in a file named ``common.properties``, 
+but all properties files located in this folder are loaded, no matter what their name is.
+
+To set an option in a properties file, open the file in a text editor and add a line to set the desired option to the desired value, 
+for example::
+   
+   soar.generate.classnames=false
+
+
 .. _define_option:
 
-Defining an Option
-==================
+Defining an Option with SDK 5 or lower
+======================================
 
-A MicroEJ Standalone Application option can be defined either from a launcher or from a properties file.
+With the SDK 5 or lower, a Standalone Application option can be defined either from a launcher or from a properties file.
 It is also possible to use both together. Each MicroEJ Architecture and MicroEJ Pack option comes with a default value, which is used if the option has not been set by the user.
 
 .. _define_option_in_launcher:
