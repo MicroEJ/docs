@@ -97,12 +97,33 @@ But let's continue the installation process to have a complete development envir
 Install the IDE
 ---------------
 
-MicroEJ supports 2 IDEs for the development of projects: 
-`Eclipse IDE <https://www.eclipse.org/downloads/packages/>`__ and `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__.
+Using the IDE is highly recommended to develop MicroEJ projects. 
+The two following IDEs are supported: 
+
+- `Eclipse IDE <https://www.eclipse.org/downloads/packages/>`__ - Minimum supported version is ``2022-03``.
+- `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ - Minimum supported version is ``2022.2``.
+
 Please follow their respective documentation to install one of them.
 
 These 2 IDEs come with the Gradle plugin installed by default, so you don't have anything else to do then, 
 you are ready to start developing MicroEJ projects.
+
+System Requirements
+-------------------
+
+- **Hardware**
+   - Intel x64 (Dual-core i5 minimum) or macOS AArch64 (M1) processor
+   - 4GB RAM (minimum)
+   - 2GB Disk (minimum)
+
+- **Operating Systems**
+   - Windows 11 or Windows 10
+   - Linux distributions (tested on Ubuntu 20.04 and 22.04)
+   - macOS x86_64 with Intel chip
+   - macOS aarch64 with M1 chip
+
+- **Java Runtime Environment**
+    - JDK 11 - Eclipse Temurin or Oracle Distributions
 
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
