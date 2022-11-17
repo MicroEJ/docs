@@ -96,57 +96,68 @@ JUnit Test Case to MicroEJ Test Case
 The :ref:`testsuite_engine` allows to select the classes that will be
 executed, by adding the following configuration in the project build file:
 
-.. code-block:: xml
-   :caption: module.ivy
+.. tabs::
 
-   <ea:property name="test.run.includes.pattern" value="[MicroEJ Test Case Include Pattern]"/>
+   .. tab:: MMM (module.ivy)
 
-.. code-block:: java
-   :caption: build.gradle.kts
+      .. code-block:: xml
 
-   tasks.test {
-      filter {
-         includeTestsMatching([MicroEJ Test Case Include Pattern])
-      }
-   }
+         <ea:property name="test.run.includes.pattern" value="[MicroEJ Test Case Include Pattern]"/>
+
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         tasks.test {
+            filter {
+               includeTestsMatching([MicroEJ Test Case Include Pattern])
+            }
+         }
 
 The following configuration considers all JUnit test methods of the same class as
 a single MicroEJ test case (default behavior). If at least one JUnit
 test method fails, the whole test case fails in the JUnit report.
 
+.. tabs::
 
-.. code-block:: xml
-   :caption: module.ivy
+   .. tab:: MMM (module.ivy)
 
-   <ea:property name="test.run.includes.pattern" value="**/_AllTests_*.class"/>
+      .. code-block:: xml
 
-.. code-block:: java
-   :caption: build.gradle.kts
+         <ea:property name="test.run.includes.pattern" value="**/_AllTests_*.class"/>
 
-   tasks.test {
-      filter {
-         includeTestsMatching("*._AllTests_*")
-      }
-   }
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         tasks.test {
+            filter {
+               includeTestsMatching("*._AllTests_*")
+            }
+         }
 
 The following configuration considers each JUnit test method as a dedicated
 MicroEJ test case. Each test method is viewed independently in the JUnit
 report, but this may slow down the test suite execution because a new
 deployment is done for each test method.
 
-.. code-block:: xml
-   :caption: module.ivy
+.. tabs::
 
-   <ea:property name="test.run.includes.pattern" value="**/_SingleTest_*.class"/>
+   .. tab:: MMM (module.ivy)
 
-.. code-block:: java
-   :caption: build.gradle.kts
+      .. code-block:: xml
 
-   tasks.test {
-      filter {
-         includeTestsMatching("*._SingleTest_*")
-      }
-   }
+         <ea:property name="test.run.includes.pattern" value="**/_SingleTest_*.class"/>
+
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         tasks.test {
+            filter {
+               includeTestsMatching("*._SingleTest_*")
+            }
+         }
 
 .. _testsuite_options:
 
