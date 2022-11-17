@@ -52,6 +52,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    platformSelection
    addDependency
    testProject
+   migrateMMMProject
 
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
