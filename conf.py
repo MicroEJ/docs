@@ -35,6 +35,7 @@ sphinx_tabs_disable_tab_closing = True
 templates_path = ['_templates']
 html_theme_path = ['_themes']
 master_doc = 'index'
+sphinx_tabs_valid_builders = ['linkcheck']
 
 # Generic options
 exclude_patterns = [
