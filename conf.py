@@ -80,5 +80,9 @@ pygments_style = 'microej.MicroEJStyle'
 # ignoring Github links with anchors at linkcheck
 # linkcheck_ignore = [r'https?:\/\/github\.com\/.+#.+']
 
+# Ignore local index links flagged as broken by linkcheck
+# Hopefully temporary solution until https://github.com/sphinx-doc/sphinx/issues/9383 is resolved.
+linkcheck_ignore = [r'^((?!:\/\/|#|@).)*$']
+
 linkcheck_timeout = 20
 
