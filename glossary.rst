@@ -15,7 +15,7 @@ MicroEJ Glossary
       An Application is a software program that runs on a MICROEJ VEE.
 
          Standalone Application
-            A Standalone Application is the main application that is booted by MICROEJ VEE. It is linked statically to produce a Mono-Sandbox Executable.
+            A Standalone Application is the main application that is executed by MICROEJ VEE. It is linked statically to produce a Mono-Sandbox Executable.
 
          Sandboxed Application
             A Sandboxed Application is an Application that can run over a Multi-Sandbox Executable. It is linked dynamically.
