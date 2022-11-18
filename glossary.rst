@@ -30,7 +30,7 @@ MicroEJ Glossary
       `The Core Engine, also named MEJ32, is a scalable 32-bit core <https://developer.microej.com/mej32-virtual-machine-for-embedded-systems/>`_ for resource-constrained embedded devices. It is delivered in various flavors, mostly as a binary software package. The Core Engine allows applications written in various languages to run in a safe container.
 
    Executable
-      An Executable is the result of the binary link of a Standalone Application with a Port. It can be programmed into the flash memory of a device. (formerly called a Firmware)
+      An Executable is the result of the binary link of a Standalone Application with a VEE Port. It can be programmed into the flash memory of a device. (formerly called a Firmware)
 
          Mono-Sandbox Executable
             A Mono-Sandbox Executable is an Executable that implements an unmodifiable set of functions. (formerly called a Single-app Firmware)
