@@ -26,7 +26,7 @@ Add-On Library sources are packaged in a dedicated file named ``[module_name]-so
 
       Add-On Library Sources Location
 
-In MicroEJ SDK, sources are automatically connected to Eclipse JDT when the new Add-On Library is added as a :ref:`module dependency <mmm_module_dependencies>`.
+In the SDK, sources are automatically connected to Eclipse JDT when the new Add-On Library is added as a :ref:`module dependency <mmm_module_dependencies>`.
 
 On any Java element (type, method, field), press ``F3`` or ``CTRL-Click`` to open the implementation:
 
@@ -64,7 +64,7 @@ They are located in the following Platform folders:
 
       Foundation Library Platform Folders
    
-In MicroEJ SDK, sources can be connected while debugging an Application on Simulator.
+In the SDK, sources can be connected while debugging an Application on Simulator.
 This ensures to get the exact source code which is executed on your Platform.
 
 Here are the steps to attach Foundation Library sources from a Platform loaded in the workspace:

@@ -57,7 +57,7 @@ As the MCU, RTOS and compiler are the same, only the device specific code needs 
 Platform
 ::::::::
 
-In MicroEJ SDK
+In the SDK
 
 * modify the ``.platform`` from the MicroEJ Platform (``xxx-configuration`` project) to match the device features and its associated configuration (e.g. ``UI->Display``).
 
@@ -87,7 +87,7 @@ Required actions:
 Simulator
 :::::::::
 
-In MicroEJ SDK
+In the SDK
 
 * modify the existing Simulator Front Panel ``xxx-fp`` project
 
@@ -102,12 +102,12 @@ Look for an available MicroEJ Platform that will match in order of priority:
 
 At this point, consider either to modify the closest MicroEJ Platform
 
-* In MicroEJ SDK: modify the platform configuration.
+* In the SDK: modify the platform configuration.
 * in the C IDE: start from an empty project that match with the MCU.
 
 Or to start from scratch a new MicroEJ Platform
 
-* In MicroEJ SDK: create the MicroEJ Platform and refer to the selected MicroEJ Platform as a model for implementation. (refer to :ref:`platform_configuration_creation`)
+* In the SDK: create the MicroEJ Platform and refer to the selected MicroEJ Platform as a model for implementation. (refer to :ref:`platform_configuration_creation`)
 * in the C IDE: start from an empty project and implement the drivers of each of the LL drivers API. 
   
   Make sure to link with:

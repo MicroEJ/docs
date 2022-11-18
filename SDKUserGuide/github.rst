@@ -22,7 +22,7 @@ First, from the GitHub page, copy the repository URI (HTTP address) from the ded
    :alt: Address to clone
    :align: center
 
-In MicroEJ SDK, to clone and import the project from the remote Git repository into the MicroEJ workspace, select :guilabel:`File` > :guilabel:`Import` > :guilabel:`Git` > :guilabel:`Projects from Git` wizard.
+In the SDK, to clone and import the project from the remote Git repository into the MicroEJ workspace, select :guilabel:`File` > :guilabel:`Import` > :guilabel:`Git` > :guilabel:`Projects from Git` wizard.
 
 .. figure:: images/1-import-type.png
    :alt: Import type
