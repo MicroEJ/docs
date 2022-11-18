@@ -388,7 +388,7 @@ and the ``build.bat`` or ``build.sh`` file is executed to produce the final exec
 
    - Use MicroEJ SDK to produce the final executable file of a Mono-Sandbox Firmware (recommended).
    - Use MicroEJ SDK to run a :ref:`MicroEJ Test Suite <platform_testsuite>` on device.
-   - Build a Multi-Sandbox Firmware.
+   - Build a Multi-Sandbox Executable.
 
 .. _bsp_connection_cases:
 

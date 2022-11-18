@@ -160,7 +160,7 @@ In a Kernel, Foundation and Add-On libraries can be extended by adding new metho
 For example, it allows to add new methods to the class `java.lang.String`_ of the module `ej.api#edc`_.
 This is done thanks to the `Class Extender tool`_.
 This tool works at binary level and is able to inject methods from one class to another.
-Extensions can thus be independently compiled and be retrieved by the Kernel and applied during a Multi-Sandbox Firmware build.
+Extensions can thus be independently compiled and be retrieved by the Kernel and applied during a Multi-Sandbox Executable build.
 
 To make the extensions available to Application developers, the Runtime Environment has to be extended too. 
 

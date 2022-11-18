@@ -11,7 +11,7 @@ Please refer to the :ref:`kernel-developer-guide` to learn how to get or create 
 From the SDK
 ------------
 
-In order to test a Sandboxed Application in the SDK, the first thing to do is to import the Virtual Device of the Multi-Sandbox Firmware:
+In order to test a Sandboxed Application in the SDK, the first thing to do is to import the Virtual Device of the Multi-Sandbox Executable:
 
 - go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Virtual Devices`
 - click on :guilabel:`Import...`

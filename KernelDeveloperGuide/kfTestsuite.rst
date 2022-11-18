@@ -5,7 +5,7 @@ A KF test suite can be executed when building a Foundation Library or an Add-On 
 and usually extends the tests written for the :ref:`default library test suite <application_testsuite>` to verify the behavior
 of this library when its APIs are exposed by a Kernel.
 
-A KF test suite is composed of a set of KF tests, each KF test itself is a minimal MicroEJ Multi-Sandbox Firmware composed of a Kernel and zero or more Features.
+A KF test suite is composed of a set of KF tests, each KF test itself is a minimal Multi-Sandbox Executable composed of a Kernel and zero or more Features.
 
 
 Enable the Test Suite

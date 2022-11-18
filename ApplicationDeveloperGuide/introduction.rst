@@ -34,7 +34,7 @@ application must define a main entry point, i.e. a class containing a
 ``public static void main(String[])`` method.
 
 A MicroEJ Sandboxed Application is a MicroEJ Application that can run
-over a Multi-Sandbox Firmware. It can be linked either statically or
+over a Multi-Sandbox Executable. It can be linked either statically or
 dynamically. If it is statically linked, it is then called a System
 Application as it is part of the initial image and cannot be removed.
 
