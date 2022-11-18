@@ -46,7 +46,7 @@ capability of the Core Engine enabled (see the chapter
 *Multi-Sandbox* of the :ref:`vee-porting-guide`).
 A Multi-Sandbox Executable can only be built with a Multi-Sandbox Platform.
 
-A *Mono-Sandbox Firmware* is produced by building and linking a Standalone
+A *Mono-Sandbox Executable* is produced by building and linking a Standalone
 Application with a Platform.
 
 A *Virtual Device* is the Multi-Sandbox Executable counterpart for developing
