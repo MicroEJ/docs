@@ -21,7 +21,7 @@ for application developers targeting this device.
 Using the SDK, a firmware developer will produce two
 versions of the MicroEJ binary, each one able to run applications:
 
--  A Firmware binary to be flashed on OEM devices;
+-  An Executable binary to be flashed on OEM devices;
 
 -  A Virtual Device which will be used as a device simulator by
    application developers.
