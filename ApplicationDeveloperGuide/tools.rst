@@ -27,7 +27,6 @@ tab then contains the options relevant to the selected tool.
 .. toctree::
    :maxdepth: 2
 
-   testsuite
    stackTraceReader
    codeCoverageAnalyzer
    heapUsageMonitoring
