@@ -1,0 +1,102 @@
+@startuml
+
+participant "Custom\nKernel" as Kernel
+participant "MicroEJ\nMEJ32" as MEJ32
+participant "Custom\nBSP" as BSP
+database "Kernel\nWorking Buffer" as WB
+database "Java\nHeap" as Heap
+database "Features\nROM Area" as ROM
+database "Features\nRAM Area" as RAM
+
+title INSTALL (Default In-Place Location)
+
+"Kernel" -> "MEJ32": Install 'myapp.fo'\nKernel.install(InputStream)
+"MEJ32" -> "Heap": Load Metadata
+"MEJ32" -> "BSP": Allocate Feature\nLLKERNEL_IMPL_allocateFeature(ROM_size, RAM_size)
+"BSP" --> "MEJ32": NULL feature_handle
+loop Nb sections
+	"MEJ32" -> "BSP": Allocate Section\nLLKERNEL_IMPL_allocateWorkingBuffer(section_size)
+	"BSP" -> "WB": Allocate
+	"BSP" --> "MEJ32": section_address
+	"MEJ32" -> "MEJ32": .fo stream bytes transfer to Kernel Working Buffer
+end
+"MEJ32" -> "MEJ32": Link Application In Place\n(Resolve & Apply relocations & Initialize)
+"MEJ32" --> "Kernel": new Feature instance\nej.kf.Feature
+note over Heap: Metadata Objects\nautomatically reclaimed
+note over WB: No persistent state\n(Reboot requires\nto install .fo again)
+
+newpage UNINSTALL (Default In-Place Location)
+
+"Kernel" -> "MEJ32": Uninstall\nKernel.uninstall(Feature)
+loop Nb sections
+	"MEJ32" -> "BSP": Free Section\nLLKERNEL_IMPL_freeWorkingBuffer(section_address)
+	"BSP" -> "WB": Free
+end
+
+
+newpage INSTALL (New Target Location)
+
+"Kernel" -> "MEJ32": Install 'myapp.fo'\nKernel.install(InputStream)
+"MEJ32" -> "Heap": Load Metadata
+"MEJ32" -> "BSP": Allocate Feature\nLLKERNEL_IMPL_allocateFeature(ROM_size, RAM_size)
+"BSP" -> "ROM": Allocate
+"BSP" -> "RAM": Allocate
+"BSP" -> "BSP": Allocate internal structures
+"BSP" --> "MEJ32": NON NULL feature_handle
+"MEJ32" -> "BSP": Get Feature image target address\nLLKERNEL_IMPL_getFeatureAddressROM(feature_handle)
+"BSP" --> "MEJ32": ROM_address_start
+"MEJ32" -> "BSP": Get Feature runtime target address\nLLKERNEL_IMPL_getFeatureAddressRAM(feature_handle)
+"BSP" --> "MEJ32": RAM_address_start
+loop Nb sections
+	alt Code section
+		"MEJ32" -> "BSP": Allocate Section\nLLKERNEL_IMPL_allocateWorkingBuffer(section_size)
+		"BSP" -> "WB": Allocate
+		"BSP" --> "MEJ32": section_address
+		"MEJ32" -> "MEJ32": .fo stream bytes transfer to Kernel Working Buffer
+	else Resource section
+	    loop
+	    "MEJ32" -> "MEJ32": .fo stream bytes read resource chunk
+		"MEJ32" -> "ROM": Copy resource chunk to ROM Area\nLLKERNEL_IMPL_copyToROM(dest, src, size)
+		end
+	end
+end
+"MEJ32" -> "MEJ32": Link Application (Resolve & Apply relocations)
+"MEJ32" -> "RAM": Initialize RAM Area\n(init internal structures, zero-initialize statics)
+"MEJ32" -> "ROM": Copy linked code to ROM Area\nLLKERNEL_IMPL_copyToROM(dest, src, size)
+"MEJ32" -> "ROM": LLKERNEL_IMPL_flushCopyToROM()
+
+loop Nb temporary sections
+	"MEJ32" -> "BSP": Free section\nLLKERNEL_IMPL_freeWorkingBuffer(section_address)
+	"BSP" -> "WB": Free
+end
+"MEJ32" --> "Kernel": new Feature instance\nej.kf.Feature
+note over Heap: Metadata Objects\nautomatically reclaimed
+note over BSP: Persistent state\nafter reboot\n(optional)
+
+newpage UNINSTALL (New Target Location)
+
+"Kernel" -> "MEJ32": Uninstall\nKernel.uninstall(Feature)
+"MEJ32" -> "BSP": LLKERNEL_IMPL_freeFeature(feature_handle)
+"BSP" -> "ROM": Free
+"BSP" -> "RAM": Free
+"BSP" -> "BSP": Free internal structures 
+
+
+newpage MEJ32 BOOT
+"Kernel" -> "MEJ32": Kernel <clinit>
+"MEJ32" -> "BSP": LLKERNEL_IMPL_getNbInstalledFeatures()
+"BSP" --> "MEJ32": nb_installed_features
+loop feature_id: 0..nb_installed_features-1
+	"MEJ32" -> "BSP": Get Feature handle\nLLKERNEL_IMPL_getInstalledFeature(feature_id)
+	"BSP" --> "MEJ32": NON NULL feature_handle
+	"MEJ32" -> "BSP": Get Feature image target address\nLLKERNEL_IMPL_getFeatureAddressROM(feature_handle)
+	"BSP" --> "MEJ32": ROM_address_start
+	"MEJ32" -> "BSP": Get Feature runtime target address\nLLKERNEL_IMPL_getFeatureAddressRAM(feature_handle)
+	"BSP" --> "MEJ32": RAM_address_start
+end
+...
+"Kernel" -> "MEJ32": Get the list of installed Features\nKernel.getAllLoadedFeatures()
+"MEJ32" --> "Kernel": new array of Features\nej.kf.Feature[]
+
+
+@enduml
