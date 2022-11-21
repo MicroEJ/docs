@@ -44,8 +44,7 @@ This tutorial assumes the following:
 
 - The `WROVER Platform
   <https://github.com/MicroEJ/Platform-Espressif-ESP-WROVER-KIT-V4.1/tree/1.6.2>`__
-  has been properly setup (i.e., it can be used to generate a MicroEJ
-  Mono-Sandbox Firmware).
+  has been properly setup (i.e., it can be used to generate a Mono-Sandbox Executable).
 
 The explanation can be adapted to run the test suite on any other
 MicroEJ Platform providing:

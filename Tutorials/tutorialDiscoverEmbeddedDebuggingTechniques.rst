@@ -25,7 +25,7 @@ Debugging Tools
 ---------------
 
 This section presents an overview of the main tools available to debug an embedded application.
-Please refer to the developer guides for the complete reference (:ref:`application-developer-guide`, :ref:`platform-developer-guide`, :ref:`kernel-developer-guide`).
+Please refer to the developer guides for the complete reference (:ref:`application-developer-guide`, :ref:`vee-porting-guide`, :ref:`kernel-developer-guide`).
 
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.events_tracing_and_logging`
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.runtime_state_dump`
@@ -61,7 +61,7 @@ When an application has issues, the first step is to understand what is happenin
 
   This API is most useful with the :ref:`SystemView Event tracer<systemview>` to visualize the timeline of events.
 
-   .. figure:: ../PlatformDeveloperGuide/images/STM32F7508-DK-demoWidget-SystemView.png
+   .. figure:: ../VEEPortingGuide/images/STM32F7508-DK-demoWidget-SystemView.png
       :alt: SystemView analysis of DemoWidget on STM32F7508 Platform
       :align: center
       :scale: 75
@@ -231,7 +231,7 @@ After porting or adding a feature to a MicroEJ Platform, it is necessary to vali
 
 The project is available on GitHub: https://github.com/MicroEJ/PlatformQualificationTools
 
-.. figure:: ../PlatformDeveloperGuide/images/overview-platform-qualification.png
+.. figure:: ../VEEPortingGuide/images/overview-platform-qualification.png
    :align: center
    :scale: 80%
 

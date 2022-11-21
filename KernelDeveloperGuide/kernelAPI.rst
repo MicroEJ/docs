@@ -81,7 +81,7 @@ MicroEJ Kernel API Generator is a tool that help to generate a ``kernel.api`` fi
 Java classpath.
 
 
-In MicroEJ SDK, create a new MicroEJ Tool launch,
+In the SDK, create a new MicroEJ Tool launch,
 :guilabel:`Run` > :guilabel:`Run Configurations` > :guilabel:`MicroEJ Tool`, choose your Platform,
 select :guilabel:`Kernel API Generator` for the :guilabel:`Settings` options, and don't
 forget to set the output folder.

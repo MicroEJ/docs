@@ -8,7 +8,7 @@ The deployment of a Sandboxed Application on a device depends on the Kernel impl
 - Local Deployment: the device is connected to the developer's computer, the SDK builds the ``.fo`` from the workspace project classes and transfers it on the device (recommended during application development).
 - Remote Deployment: the Application is built, then the device connects a Repository where the Application is stored, and deploys it over the air using a device management system (production deployment).
 
-In both cases, deploying a Sandboxed Application requires that a Multi-Sandbox Firmware is running on the device.
+In both cases, deploying a Sandboxed Application requires that a Multi-Sandbox Executable is running on the device.
 Please refer to the :ref:`kernel-developer-guide` to learn how to build it or browse 
 the `Resources Repository`_ 
 for Multi-Sandbox demo Firmware available for popular hardware evaluation kits.
@@ -21,8 +21,8 @@ Local Deployment
 Deploying a Application on a device locally is the easiest way to test it since it only requires:
 
 - the Application project sources imported in the SDK,
-- the device programmed with a Multi-Sandbox Firmware that provides the Local Deployment capability (you can browse the `Resources Repository`_
-  for available demos of such Multi-Sandbox Firmware),
+- the device programmed with a Multi-Sandbox Executable that provides the Local Deployment capability (you can browse the `Resources Repository`_
+  for available demos of such Multi-Sandbox Executable),
 - the device connected to the developer's computer either on the same network (LAN) or using a serial wire, depending on the Firmware capabilities.
 
 If these prerequisites are fulfilled:
@@ -90,7 +90,7 @@ The files produced by the build process are located in a dedicated
 ``target~/artifacts`` folder in the project and is published to the 
 target module repository declared in :ref:`MicroEJ Module Manager settings file <mmm_settings_file>`.
 
-The file that ends with `.wpk` (the WPK file) is a portable file that contains all necessary binary data to build `.fo` files on any compatible Multi-Sandbox Firmware.
+The file that ends with `.wpk` (the WPK file) is a portable file that contains all necessary binary data to build `.fo` files on any compatible Multi-Sandbox Executable.
 Then, the WPK file can be published to a `MICROEJ FORGE instance <https://www.microej.com/product/forge/>`_.
 Please contact :ref:`our support team <get_support>` if you want to get more information on MICROEJ FORGE and automated Applications deployment through a device management system.
 

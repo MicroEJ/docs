@@ -4,15 +4,11 @@ MicroEJ Launch
 ==============
 
 The MicroEJ launch configuration sets up the 
-:ref:`MicroEJ Applications <concepts-microejapplications>` environment (main class,
-resources, target platform, and platform-specific options), and then
-launches a MicroEJ launch script for execution.
+:ref:`MicroEJ Applications <concepts-microejapplications>` environment (main class, target, and Application options), and then
+launches a script for execution.
 
-Execution is done on either the MicroEJ Platform or the MicroEJ
-Simulator. The launch operation is platform-specific. It may depend on
-external tools that the platform requires (such as target memory
-programming). Refer to the platform-specific documentation for more
-information about available launch settings.
+Execution is done either on the Simulator or on the Device. In this latter case, it may depend on
+external tools such as target memory programming. 
 
 Main Tab
 --------

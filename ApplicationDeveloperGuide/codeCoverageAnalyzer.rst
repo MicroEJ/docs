@@ -8,7 +8,7 @@ Code Coverage Analyzer
 Principle
 =========
 
-The MicroEJ Simulator features an option to output .cc (Code Coverage)
+The Simulator features an option to output .cc (Code Coverage)
 files that represent the use rate of functions of an application. It
 traces how the opcodes are really executed.
 
@@ -41,7 +41,7 @@ is considered to be a dependency of the Code Coverage Analyzer.
 Installation
 ============
 
-This tool is a built-in platform tool.
+This tool is a built-in Architecture tool.
 
 
 .. _codeCoverageAnalyzerTool:

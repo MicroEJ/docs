@@ -13,7 +13,7 @@ architects who plan to design and build their own firmware.
 
 Here is a non-exhaustive list of the activities to be done by Kernel Developers:
 
--  Integrating the Kernel Application with a Platform to produce a Multi-Sandbox Firmware and Virtual Device
+-  Integrating the Kernel Application with a Platform to produce a Multi-Sandbox Executable and Virtual Device
 
 -  :ref:`Defining the set of APIs <define_apis>` that will be exposed to Applications, optionally by maintaining a custom :ref:`Runtime Environment <runtime_environment>`
 
@@ -30,7 +30,7 @@ Here is a non-exhaustive list of the activities to be done by Kernel Developers:
 -  Controlling and monitoring resources
 
 This document takes as prerequisite that a Platform is available
-for the target device (see :ref:`platform-developer-guide`).
+for the target device (see :ref:`vee-porting-guide`).
 This document also assumes that the reader is familiar with the
 development and deployment of Applications (see :ref:`application-developer-guide`)
 and specifics of developing Sandboxed Applications (see :ref:`sandboxed_application`).
@@ -39,17 +39,17 @@ Terms and Definitions
 ---------------------
 
 A *System Application* is a Sandboxed Application that is linked into
-a Multi-Sandbox Firmware.
+a Multi-Sandbox Executable.
 
 A *Multi-Sandbox Platform* is a Platform with the Multi Sandbox
 capability of the Core Engine enabled (see the chapter
-*Multi-Sandbox* of the :ref:`platform-developer-guide`).
-A Multi-Sandbox Firmware can only be built with a Multi-Sandbox Platform.
+*Multi-Sandbox* of the :ref:`vee-porting-guide`).
+A Multi-Sandbox Executable can only be built with a Multi-Sandbox Platform.
 
-A *Mono-Sandbox Firmware* is produced by building and linking a Standalone
+A *Mono-Sandbox Executable* is produced by building and linking a Standalone
 Application with a Platform.
 
-A *Virtual Device* is the Multi-Sandbox Firmware counterpart for developing
+A *Virtual Device* is the Multi-Sandbox Executable counterpart for developing
 a Sandboxed Application. It provides the firmware
 functional simulation part. Usually it also provides a mean to directly
 deploy a Sandboxed Application on the target device running a Multi-Sandbox

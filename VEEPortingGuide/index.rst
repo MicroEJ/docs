@@ -1,7 +1,7 @@
-.. _platform-developer-guide:
+.. _vee-porting-guide:
 
-Platform Developer Guide
-========================
+VEE Porting Guide
+=================
 
 .. toctree::
    :maxdepth: 3

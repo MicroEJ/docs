@@ -442,7 +442,7 @@ This group defines parameters for MicroEJ Simulator log activity. Note that
 logs can only be generated if the ``Simulator > Use target characteristics``
 option is selected.
 
-Some logs are sent when the platform executes some specific action (such as
+Some logs are sent when the Simulator executes some specific action (such as
 start thread, start GC, etc), other logs are sent periodically (according to
 defined log level and the log periodicity).
 
@@ -455,7 +455,7 @@ Option(checkbox): system
 
 *Description*:
 
-When selected, System logs are sent when the platform executes the following
+When selected, System logs are sent when the Simulator executes the following
 actions:
 
 
@@ -515,7 +515,7 @@ Option(checkbox): schedule
 
 *Description*:
 
-When selected, a log is sent when the platform schedules a thread.
+When selected, a log is sent when the Simulator schedules a thread.
 
 Option(checkbox): monitors
 """"""""""""""""""""""""""
@@ -632,7 +632,7 @@ Option(checkbox): Use a custom Java output stream
 Select this option to specify another Java ``System.out`` print stream.
 
 If selected, the default Java output stream is not used by the Java
-application. the JPF will not use the default Java output stream at startup.
+application. The Core Engine will not use the default Java output stream at startup.
 
 Option(text): Class
 """""""""""""""""""
@@ -649,8 +649,8 @@ Option(text): Class
 
 Defines the Java class used to manage ``System.out``.
 
-At startup the JPF will try to load this class using the ``Class.forName()``
-method. If the given class is not available, the JPF will use the default
+At startup the Core Engine will try to load this class using the ``Class.forName()``
+method. If the given class is not available, it will use the default
 Java output stream as usual. The specified class must be available in the
 application classpath.
 

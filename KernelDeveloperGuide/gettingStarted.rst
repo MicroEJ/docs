@@ -4,7 +4,7 @@ Getting Started
 Online Getting Started
 ----------------------
 
-The MicroEJ Multi-Sandbox Firmware Getting Started is available on MicroEJ
+The Multi-Sandbox Executable Getting Started is available on MicroEJ
 GitHub repository, at
 `<https://github.com/MicroEJ/Example-MinimalMultiAppFirmware>`_.
 

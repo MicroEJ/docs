@@ -15,7 +15,7 @@ transfers all bytes from a serial port to a tcp client or tcp server.
 Installation
 ============
 
-This tool is a built-in platform tool.
+This tool is a built-in Architecture tool.
 
 
 Use

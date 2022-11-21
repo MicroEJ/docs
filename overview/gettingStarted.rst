@@ -11,7 +11,7 @@ Starting from scratch, the steps to go through the whole process are:
 - Download and install an SDK Distribution;
 - Select between one of the available boards;
 - Import a demo Application;   
-- Download and install the corresponding Platform for the target hardware;
+- Download and install the corresponding VEE Port for the target hardware;
 - Run the Application on Simulator with a Virtual Device;
 - Build the Application for the target hardware to produce a Firmware;
 - Deploy the Firmware on the board.

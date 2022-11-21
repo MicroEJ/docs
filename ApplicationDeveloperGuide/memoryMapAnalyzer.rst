@@ -37,7 +37,7 @@ No dependency.
 Installation
 ============
 
-This tool is a built-in platform tool.
+This tool is a built-in SDK tool.
 
 
 Use
