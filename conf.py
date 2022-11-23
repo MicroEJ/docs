@@ -26,7 +26,11 @@ extensions = [
     'microej',
     'sphinx.ext.graphviz',
     'sphinx_copybutton',
+    'sphinx_tabs.tabs',
 ]
+
+sphinx_tabs_valid_builders = ['linkcheck']
+sphinx_tabs_disable_tab_closing = True
 
 templates_path = ['_templates']
 html_theme_path = ['_themes']

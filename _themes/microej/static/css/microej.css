@@ -1700,3 +1700,14 @@ padding-bottom: 7px;
 .note {
   margin-top: 10px;
 }
+
+.sphinx-tabs .sphinx-tabs-panel .notranslate {
+  margin: 0px;
+}
+
+.sphinx-tabs .sphinx-tabs-tab {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: #4b5357;
+  font-family: 'Source Sans Pro';
+}
