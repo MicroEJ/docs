@@ -583,7 +583,8 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             +--------------------------------+-----------------------------+-------------+------------+
 
         .. note::
-            Sections ``.bss.microej.runtime``, ``.bss.microej.heap`` and ``.bss.microej.immortals`` are zero-initialized at Core Engine startup. 
+            
+            During its startup, the Core Engine automatically zero-initializes the sections ``.bss.microej.runtime``, ``.bss.microej.heap`` and ``.bss.microej.immortals``. 
 
     .. tab:: Linker Sections (Architecture ``7.x``)
 
@@ -625,7 +626,8 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             +-----------------------------+-----------------------------+-------------+------------+
 
         .. note::
-            Sections ``ICETEA_HEAP``, ``_java_heap`` and ``_java_immortals`` are zero-initialized at Core Engine startup. 
+            
+            During its startup, the Core Engine automatically zero-initializes the sections ``ICETEA_HEAP``, ``_java_heap`` and ``_java_immortals``. 
 
 Dependencies
 ============
