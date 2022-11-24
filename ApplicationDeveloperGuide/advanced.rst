@@ -6,6 +6,7 @@ Advanced Tools
 
    linker
    testsuiteEngine
+   debuggerProxy
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
