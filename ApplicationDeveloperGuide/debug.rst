@@ -3,14 +3,45 @@
 Debug an Application
 ====================
 
+Debug on Simulator
+------------------
+
 To debug an application on Simulator, select it in the left panel then right-click
 and select :guilabel:`Debug As` > :guilabel:`MicroEJ Application`.
 
 .. figure:: images/debug1.png
-   :alt: MicroEJ Development Tools Overview of the Debugger
+   :alt: MicroEJ Development Tools Overview of the Debugger on Simulator
    :align: center
 
-   MicroEJ Development Tools Overview of the Debugger
+   MicroEJ Development Tools Overview of the Debugger on Simulator
+
+Debug on Board
+--------------
+
+To debug an application on Board, first run the MicroEJ debugger proxy see :ref:`here <MicroEJ-Debugger-Proxy>`, and run a Remote Java Application launcher:
+
+- Go to `Run ` > `Debug Configurations` > `Remote Java Application`
+  
+- Set the informations about the project to debug, the proxy connections properties, etc.
+  
+- Click on `Debug`
+
+.. figure:: images/debug2.png
+   :alt: MicroEJ Development Tools Overview of the Remote Java Application Launch
+   :align: center
+
+   MicroEJ Development Tools Overview of the Remote Java Application
+
+
+Select the MicroeEJ SDK Debug view to show the current Debug process.
+
+
+.. figure:: images/debug3.png
+   :alt: MicroEJ Development Tools Overview of the Debugger on Board
+   :align: center
+
+   MicroEJ Development Tools Overview of the Debugger on Board
+
 
 It makes use of Eclipse Java debugger client.
 If you are unfamiliar with Java debugging or Eclipse IDE, see `Debugging the Eclipse IDE for Java Developers`_ to get started.
