@@ -554,7 +554,7 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             |                                |                             |             | (in bytes) |
             +================================+=============================+=============+============+
             | ``.bss.microej.features``      | System Applications         | RW          | 4          |
-            |                                | statics                     |             |            |
+            |                                | static fields               |             |            |
             +--------------------------------+-----------------------------+-------------+------------+
             | ``.bss.microej.heap``          | Application heap            | RW          | 4          |
             +--------------------------------+-----------------------------+-------------+------------+
@@ -595,7 +595,7 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             |                             |                             |             | (in bytes) |
             +=============================+=============================+=============+============+
             | ``.bss.features.installed`` | System Applications         | RW          | 4          |
-            |                             | statics                     |             |            |
+            |                             | static fields               |             |            |
             +-----------------------------+-----------------------------+-------------+------------+
             | ``.bss.soar``               | Application static fields   | RW          | 8          |
             +-----------------------------+-----------------------------+-------------+------------+
