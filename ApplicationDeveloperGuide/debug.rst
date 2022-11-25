@@ -3,6 +3,10 @@
 Debug an Application
 ====================
 
+.. note::
+   This page is releated to the version 5 and lower of the SDK. 
+   If you use the SDK 6, please refer to the page :ref:`sdk_6_debug_on_simulator`.
+
 To debug an application on Simulator, select it in the left panel then right-click
 and select :guilabel:`Debug As` > :guilabel:`MicroEJ Application`.
 
