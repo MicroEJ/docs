@@ -114,7 +114,7 @@ Configuration
 
 The configuration of a MMM build is only done with ``ea:property`` tags in the ``module.ivy`` file, 
 whereas it can take multiple form in Gradle. 
-You can refer to the :ref:`gradle_module_natures` page for a complete list of configurations.
+You can refer to the :ref:`sdk6_module_natures` page for a complete list of configurations.
 
 As a first example, the main class is defined in MMM with the property ``application.main.class``::
 

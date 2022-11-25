@@ -5,11 +5,22 @@ Introduction
 
 MicroVG Foundation Library provides vector drawing capabilities.
 
-To use the MicroVG Foundation Library, add `MicroVG API module`_ to a :ref:`module description file <mmm_module_description>`:
+To use the MicroVG Foundation Library, add `MicroVG API module`_ to the project build file:
 
-.. code-block:: XML
+.. tabs::
 
-	<dependency org="ej.api" name="microvg" rev="1.1.1"/>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("ej.api:microvg:1.1.1")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="microvg" rev="1.1.1"/>
+
 
 The MicroVG Library brings the following features:
 
