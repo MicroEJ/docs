@@ -5,7 +5,7 @@ Test a Project
 
 The SDK provides the capabilities to implement and run tests for a project.
 It relies on the standard `JUnit`_ API.
-The tests are executed on a target Platform and generate a JUnit XML report.
+The tests are executed on a target VEE Port and generate a JUnit XML report.
 
 There are different types of tests:
 
@@ -53,10 +53,10 @@ or Application projects (plugin ``com.microej.gradle.application``).
   - IntelliJ IDEA: right-clicking on the ``src/test/java`` folder 
     and select :guilabel:`New` > :guilabel:`Java Class``, then press ``Alt`` + ``Insert`` and select ``Test Method``.
 
-Setup a Platform
+Setup a VEE Port
 ~~~~~~~~~~~~~~~~
 
-Before running tests, a target platform must be configured using one of the methods described in the :ref:`sdk_6_platform_selection` page.
+Before running tests, a target VEE Port must be configured using one of the methods described in the :ref:`sdk_6_veeport_selection` page.
 
 Execute the Tests
 ~~~~~~~~~~~~~~~~~
@@ -134,7 +134,7 @@ Each test can be run independently by using the ``--tests`` option of the ``test
 
 The test must be referenced by the Full Qualified Name of the generated class.
 
-The test is executed on the Platform defined in the project build file 
+The test is executed on the VEE Port defined in the project build file 
 and the output result is dumped into the console.
 
 Test Suite Reports
