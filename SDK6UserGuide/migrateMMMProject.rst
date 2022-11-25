@@ -109,6 +109,10 @@ will be converted to:
    group = "com.mycompany"
    version = "0.1.0"
 
+.. note::
+
+   Please refer to :ref:`sdk6_plugin_rules_versioning` section for more information on the way to define the module version.
+
 Configuration
 ~~~~~~~~~~~~~
 
