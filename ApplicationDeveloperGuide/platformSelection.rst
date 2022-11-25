@@ -5,7 +5,7 @@ Platform Selection
 
 .. note::
    This page is releated to the version 5 and lower of the SDK. 
-   If you use the SDK 6, please refer to the page :ref:`sdk_6_platform_selection`.
+   If you use the SDK 6, please refer to the page :ref:`sdk_6_veeport_selection`.
 
 Building or running an Application or a :ref:`Test Suite <application_testsuite>` with MMM requires a Platform.
 
