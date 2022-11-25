@@ -616,8 +616,6 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             | ``.rodata.soar.features``   | System Applications code    | RO          | 4          |
             |                             | and resources               |             |            |
             +-----------------------------+-----------------------------+-------------+------------+
-            | ``.shieldedplug``           | Shielded Plug data          | RO          | 4          |
-            +-----------------------------+-----------------------------+-------------+------------+
             | ``.text.soar``              | Application and library     | RO          | 16         |
             |                             | code                        |             |            |
             +-----------------------------+-----------------------------+-------------+------------+
