@@ -50,6 +50,7 @@ the verbose mode can be enabled by using the ``--info`` Gradle option::
 
    gradle runOnSimulator --info
 
+.. _sdk_6_debug_on_simulator:
 
 Debug on Simulator
 ------------------
