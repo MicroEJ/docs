@@ -3,6 +3,10 @@
 Create a First Application
 ==========================
 
+.. note::
+   This page is releated to the version 5 and lower of the SDK. 
+   If you use the SDK 6, please refer to the page :ref:`sdk_6_create_project`.
+
 Now that the :ref:`purposes of the Sandboxed Applications have been explained <sandboxed_application>`, let's create a first application.
 
 A Sandboxed Application project can be created in the SDK with the menu :guilabel:`File` > :guilabel:`New` > :guilabel:`Sandboxed Application Project`.
