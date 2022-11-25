@@ -1,4 +1,4 @@
-.. _gradle_module_natures:
+.. _sdk6_module_natures:
 
 Module Natures
 ==============
@@ -10,7 +10,7 @@ This page describes the most common module natures as follows:
 - **Tasks**: tasks available from the module nature, with the graph of their relationships.
 - **Configuration**: properties that can be defined to configure the module. Properties are defined inside the ``microej`` block of the ``build.gradle.kts`` file.
 
-.. _gradle_module_natures.addon_lib:
+.. _sdk6_module_natures.addon_lib:
 
 Add-On Library
 --------------
@@ -24,13 +24,13 @@ Add-On Library
 This plugin adds the following tasks to your project:
 
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
-- :ref:`gradle_module_natures.tasks.adp`
-- :ref:`gradle_module_natures.tasks.loadPlatform`
-- :ref:`gradle_module_natures.tasks.loadApplicationConfiguration`
-- :ref:`gradle_module_natures.tasks.runOnSimulator`
-- :ref:`gradle_module_natures.tasks.loadTestApplicationConfiguration`
-- :ref:`gradle_module_natures.tasks.testOnSimulator`
-- :ref:`gradle_module_natures.tasks.checkArtifact`
+- :ref:`sdk6_module_natures.tasks.adp`
+- :ref:`sdk6_module_natures.tasks.loadPlatform`
+- :ref:`sdk6_module_natures.tasks.loadApplicationConfiguration`
+- :ref:`sdk6_module_natures.tasks.runOnSimulator`
+- :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
+- :ref:`sdk6_module_natures.tasks.testOnSimulator`
+- :ref:`sdk6_module_natures.tasks.checkArtifact`
 
 .. graphviz:: graphJavaModule.dot
 
@@ -39,7 +39,7 @@ This plugin adds the following tasks to your project:
 This module nature inherits from the configuration of all its tasks.
 
 
-.. _gradle_module_natures.application:
+.. _sdk6_module_natures.application:
 
 Application
 -----------
@@ -53,18 +53,18 @@ Application
 This plugin adds the following tasks to your project:
 
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
-- :ref:`gradle_module_natures.tasks.adp`
-- :ref:`gradle_module_natures.tasks.loadPlatform`
-- :ref:`gradle_module_natures.tasks.loadApplicationConfiguration`
-- :ref:`gradle_module_natures.tasks.runOnSimulator`
-- :ref:`gradle_module_natures.tasks.loadTestApplicationConfiguration`
-- :ref:`gradle_module_natures.tasks.testOnSimulator`
-- :ref:`gradle_module_natures.tasks.checkArtifact`
+- :ref:`sdk6_module_natures.tasks.adp`
+- :ref:`sdk6_module_natures.tasks.loadPlatform`
+- :ref:`sdk6_module_natures.tasks.loadApplicationConfiguration`
+- :ref:`sdk6_module_natures.tasks.runOnSimulator`
+- :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
+- :ref:`sdk6_module_natures.tasks.testOnSimulator`
+- :ref:`sdk6_module_natures.tasks.checkArtifact`
 
 .. graphviz:: graphJavaModule.dot
 
 
-.. _gradle_module_natures.tasks:
+.. _sdk6_module_natures.tasks:
 
 Tasks
 -----
@@ -75,7 +75,7 @@ This page describes the module nature tasks as follows:
 - **Module Natures**: list of :ref:`module_natures` using this task.
 - **Configuration**: properties that can be defined to configure the task.
 
-.. _gradle_module_natures.tasks.adp:
+.. _sdk6_module_natures.tasks.adp:
 
 adp
 ^^^
@@ -86,13 +86,13 @@ adp
 
 This task is used by the following module natures:
 
-- :ref:`gradle_module_natures.addon_lib`
-- :ref:`gradle_module_natures.application`
+- :ref:`sdk6_module_natures.addon_lib`
+- :ref:`sdk6_module_natures.application`
 
 **Configuration**:
 
 
-.. _gradle_module_natures.tasks.loadPlatform:
+.. _sdk6_module_natures.tasks.loadPlatform:
 
 loadPlatform
 ^^^^^^^^^^^^
@@ -103,8 +103,8 @@ loadPlatform
 
 This task is used by the following module natures:
 
-- :ref:`gradle_module_natures.addon_lib`
-- :ref:`gradle_module_natures.application`
+- :ref:`sdk6_module_natures.addon_lib`
+- :ref:`sdk6_module_natures.application`
 
 **Configuration**:
 
@@ -132,7 +132,7 @@ For example:
     platformDir = "/path/to/my/platform"
   }
 
-.. _gradle_module_natures.tasks.loadApplicationConfiguration:
+.. _sdk6_module_natures.tasks.loadApplicationConfiguration:
 
 loadApplicationConfiguration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -143,8 +143,8 @@ loadApplicationConfiguration
 
 This task is used by the following module natures:
 
-- :ref:`gradle_module_natures.addon_lib`
-- :ref:`gradle_module_natures.application`
+- :ref:`sdk6_module_natures.addon_lib`
+- :ref:`sdk6_module_natures.application`
 
 **Configuration**:
 
@@ -169,7 +169,7 @@ For example:
     applicationMainClass = "com.company.Main"
   }
 
-.. _gradle_module_natures.tasks.runOnSimulator:
+.. _sdk6_module_natures.tasks.runOnSimulator:
 
 runOnSimulator
 ^^^^^^^^^^^^^^
@@ -180,11 +180,11 @@ runOnSimulator
 
 This task is used by the following module natures:
 
-- :ref:`gradle_module_natures.addon_lib`
-- :ref:`gradle_module_natures.application`
+- :ref:`sdk6_module_natures.addon_lib`
+- :ref:`sdk6_module_natures.application`
 
 
-.. _gradle_module_natures.tasks.loadTestApplicationConfiguration:
+.. _sdk6_module_natures.tasks.loadTestApplicationConfiguration:
 
 loadTestApplicationConfiguration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -195,11 +195,11 @@ loadTestApplicationConfiguration
 
 This task is used by the following module natures:
 
-- :ref:`gradle_module_natures.addon_lib`
-- :ref:`gradle_module_natures.application`
+- :ref:`sdk6_module_natures.addon_lib`
+- :ref:`sdk6_module_natures.application`
 
 
-.. _gradle_module_natures.tasks.testOnSimulator:
+.. _sdk6_module_natures.tasks.testOnSimulator:
 
 testOnSimulator
 ^^^^^^^^^^^^^^^
@@ -210,8 +210,8 @@ testOnSimulator
 
 This task is used by the following module natures:
 
-- :ref:`gradle_module_natures.addon_lib`
-- :ref:`gradle_module_natures.application`
+- :ref:`sdk6_module_natures.addon_lib`
+- :ref:`sdk6_module_natures.application`
 
 **Configuration**:
 
@@ -230,7 +230,7 @@ For example:
     }
   }
 
-.. _gradle_module_natures.tasks.checkArtifact:
+.. _sdk6_module_natures.tasks.checkArtifact:
 
 checkArtifact
 ^^^^^^^^^^^^^
@@ -241,8 +241,8 @@ checkArtifact
 
 This task is used by the following module natures:
 
-- :ref:`gradle_module_natures.addon_lib`
-- :ref:`gradle_module_natures.application`
+- :ref:`sdk6_module_natures.addon_lib`
+- :ref:`sdk6_module_natures.application`
 
 **Configuration**:
 
