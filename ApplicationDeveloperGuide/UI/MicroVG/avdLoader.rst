@@ -10,11 +10,21 @@ The AVD Loader is an Add-on Library that can load vector images from Android Vec
 Unlike the vector images that are loaded using a raw output file format (see :ref:`Vector Images <vectorimage_overview>`), the XML parsing and interpreting is done at runtime.
 This is useful for loading a vector image as an external resource, especially when the resource has to be loaded dynamically (i.e., not known at build-time).
 
-To use the AVD Loader library, add the following dependency to a :ref:`module description file <mmm_module_description>`:
+To use the AVD Loader library, add the following dependency to the project build file:
 
-.. code-block:: XML
+.. tabs::
 
-	<dependency org="ej.library.ui" name="vectorimage-loader" rev="1.1.0"/>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("ej.library.ui:vectorimage-loader:1.1.0")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.library.ui" name="vectorimage-loader" rev="1.1.0"/>
 
 
 .. note::
