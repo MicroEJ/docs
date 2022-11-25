@@ -26,7 +26,7 @@ In order to create a MicroEJ project, the best way is to use the ``basic`` templ
         id("com.microej.gradle.library") version "0.3.0"
     }
 
-  Please refer to the page :ref:`gradle_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+  Please refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
 Eclipse
 -------
@@ -60,7 +60,7 @@ The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
         id("com.microej.gradle.library") version "0.3.0"
     }
 
-  Please refer to the page :ref:`gradle_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+  Please refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
 - remove the ``repositories`` block.
 - replace the content of the ``dependencies`` block by the dependencies required by your project. For example::
