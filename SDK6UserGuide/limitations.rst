@@ -3,11 +3,11 @@
 Scope and Limitations
 =====================
 
-The scope of the SDK 6 is:
+The SDK 6 allows to:
 
-- build of the Java artifact of Applications and Add-On Libraries.
-- execution of project tests with the Simulator.
-- execution of the Artifact Checker.
+- build the Java artifact of Applications and Add-On Libraries.
+- execute the tests of a project with the Simulator.
+- execute the Artifact Checker on a project.
 - run Applications with the Simulator.
 
 Therefore, it does not support all the features of the SDK 5, especially:
