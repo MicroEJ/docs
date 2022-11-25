@@ -14,13 +14,19 @@ It can be executed with the command line interface::
 
 or from Eclipse and IntelliJ IDEA, by double-clicking on the ``build`` task in the Gradle tasks view:
 
-|pic1| |pic2|
+.. tabs::
 
-.. |pic1| image:: images/eclipse-build-gradle-project.png
-   :width: 50%
+   .. tab:: Eclipse
 
-.. |pic2| image:: images/intellij-build-gradle-project.png
-   :width: 30%
+      .. image:: images/eclipse-build-gradle-project.png
+         :width: 50%
+         :align: center
+
+   .. tab:: IntelliJ IDEA
+
+      .. image:: images/intellij-build-gradle-project.png
+         :width: 30%
+         :align: center
 
 Gradle stores the artifacts produced by the build in the ``build/libs`` folder.
 
