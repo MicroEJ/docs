@@ -242,12 +242,13 @@ Each line can add optional parameters (separated by a ':') which define and/or d
       image2:RGB565
       image3:A4
 
-* MicroEJ RLE1 output format: to encode the image in RLE1 format, specify ``RLE1`` as output format:
+* MicroEJ ARGB1565_RLE output format (formerly RLE1): to encode the image in ARGB1565_RLE format, specify ``ARGB1565_RLE`` as output format:
 
    .. code-block::
-      :caption: RLE1 Output Format Example
+      :caption: ARGB1565_RLE Output Format Example
 
-      image1:RLE1
+      image1:ARGB1565_RLE
+      image1:RLE1 # Deprecated
 
 * Without Compression: to keep original file, do not specify any format:
 

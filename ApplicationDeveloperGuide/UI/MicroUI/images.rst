@@ -309,14 +309,13 @@ memory space.
 
    image1:display
 
+.. _image_format_argb1565_rle:
 
-RLE1 Output Format
-~~~~~~~~~~~~~~~~~~
+ARGB1565_RLE Output Format
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The image engine can display embedded images that are encoded into a compressed format which encodes several consecutive pixels into one or
-more 16-bit words. This encoding manages a maximum alpha level of 2
-(alpha level is always assumed to be 2, even if the image is not
-transparent).
+The image engine can display embedded images that are encoded into a compressed format which encodes several consecutive pixels into one or more 16-bit words.
+This encoding only manages fully opaque and fully transparent pixels.
 
 -  Several consecutive pixels have the same color (2 words):
 
@@ -336,6 +335,8 @@ transparent).
 
    -  16-bit word specifies how many consecutive pixels are transparent.
 
+.. note:: This format was formerly named `RLE1` up to UI Pack 13.3.X. This older name can still be used in the images list file.
+
 **Advantages**
 
 -  Supports fully opaque and fully transparent encoding.
@@ -346,11 +347,56 @@ transparent).
 **Disadvantages**
 
 -  Drawing an image is slightly slower than when using Display format.
-- Not designed for images with many different pixel colors: in such case, the output file size may be larger than the original image file.
+-  Not designed for images with many different pixel colors: in such case, the output file size may be larger than the original image file.
 
 ::
 
-   image1:RLE1
+   image1:ARGB1565_RLE
+   image2:RLE1 # Deprecated
+
+.. _image_format_rleA8:
+
+RLEA8 Output Format
+~~~~~~~~~~~~~~~~~~~
+
+The image engine can display embedded images that are encoded into a compressed format which encodes several consecutive pixels into one or more 8-bit words.
+This encoding only manages fully opaque and fully transparent pixels.
+
+-  Several consecutive pixels have the same color (2 words):
+
+   -  First 16-bit word specifies how many consecutive pixels have the
+      same color (pixels colors converted in RGB565 format, without opacity data).
+
+   -  Second 16-bit word is the pixels' color in RGB565 format.
+
+-  Several consecutive pixels have their own color (1 + n words):
+
+   -  First 16-bit word specifies how many consecutive pixels have their
+      own color;
+
+   -  Next 16-bit word is the next pixel color.
+
+-  Several consecutive pixels are transparent (1 word):
+
+   -  16-bit word specifies how many consecutive pixels are transparent.
+
+.. note:: This format was formerly named `RLE1` up to UI Pack 13.3.X. This older name can still be used in the images list file.
+
+**Advantages**
+
+-  Supports fully opaque and fully transparent encoding.
+
+-  Good compression when several consecutive pixels respect one of the
+   three previous rules.
+
+**Disadvantages**
+
+-  Drawing an image is slightly slower than when using Display format.
+-  Not designed for images with many different pixel colors: in such case, the output file size may be larger than the original image file.
+
+::
+
+   image1:RLEA8
 
 Image Generator Error Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

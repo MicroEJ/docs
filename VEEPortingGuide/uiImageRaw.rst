@@ -263,40 +263,10 @@ The row stride allows to add some padding at the end of each line in order to st
 .. figure:: images/uiFormat02.*
    :width: 50.0%
 
-MicroEJ Format: RLE1
-====================
+MicroEJ Format: ARGB1565_RLE
+============================
 
-The Image Engine can display embedded images that are encoded into a compressed format which encodes several consecutive pixels into one or more 16-bit words. This encoding only manages fully opaque and fully transparent pixels.
-
--  Several consecutive pixels have the same color (2 words).
-
-   -  First 16-bit word specifies how many consecutive pixels have the
-      same color (pixels colors converted in RGB565 format, without opacity data).
-
-   -  Second 16-bit word is the pixels' color in RGB565 format.
-
--  Several consecutive pixels have their own color  (1 + n words).
-
-   -  First 16-bit word specifies how many consecutive pixels have their
-      own color.
-
-   -  Next 16-bit word is the next pixel color.
-
--  Several consecutive pixels are transparent (1 word).
-
-   -  16-bit word specifies how many consecutive pixels are transparent.
-   - Not designed for images with many different pixel colors: in such case, the output file size may be larger than the original image file.
-
-Advantages:
-
-* Supports fully opaque and fully transparent encoding.
-* Good compression when several consecutive pixels respect one of the three previous rules.
-
-Disadvantages:
-
-* Drawing an image is slightly slower than when using Display format.
-
-The file format is quite similar to :ref:`section_image_standard_raw`.
+See :ref:`ARGB1565_RLE Output Format <image_format_argb1565_rle>`.
 
 .. _section_image_binary_raw:
 
