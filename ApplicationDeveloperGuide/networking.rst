@@ -63,8 +63,8 @@ Foundation Libraries
       -  Client and Server secure sockets layer using Transport Layer Security (TLS) protocols.
       -  `ssl <https://repository.microej.com/modules/ej/api/ssl/>`_
       -  `java.net.ssl package <https://repository.microej.com/javadoc/microej_5.x/apis/javax/net/ssl/package-summary.html>`_
-      -  -  `SSL mutual client Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.mutual>`_
-         -  `SSL mutual server Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.mutual.server>`_
+      -  -  `SSL mutual client Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/ssl.mutual>`_
+         -  `SSL mutual server Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/ssl.mutual.server>`_
          -  `SSL utility Library <https://repository.microej.com/modules/ej/library/iot/ssl-util/>`_
 
 
@@ -88,14 +88,13 @@ IoT Libraries
       -  Network connection state and notifications.
       -  `android-connectivity <https://repository.microej.com/modules/ej/library/iot/android-connectivity/>`_
       -  `ConnectivityManager class <https://repository.microej.com/javadoc/microej_5.x/apis/android/net/ConnectivityManager.html>`_
-      -  - `Connectivity Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.androidconnectivity>`_
+      -  - `Connectivity Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/androidconnectivity>`_
 
    *  -  ``HTTP Client``
       -  OpenJDK HTTP client.
       -  `httpclient <https://repository.microej.com/modules/ej/library/eclasspath/httpclient/>`_, `httpsclient <https://repository.microej.com/modules/ej/library/eclasspath/httpsclient/>`_
       -  `HttpURLConnection class <https://repository.microej.com/javadoc/microej_5.x/apis/java/net/HttpURLConnection.html>`_
       -  - `HTTP client README <https://repository.microej.com/modules/ej/library/eclasspath/httpclient/1.3.0/README-1.3.0.md>`_
-         - See also `REST client Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.rest>`_
    
    *  -  ``HTTP Server (Hoka)``
       -  Tiny footprint yet extensible web server. 
@@ -109,21 +108,20 @@ IoT Libraries
       -  `micropaho <https://repository.microej.com/modules/ej/library/iot/micropaho/1.0.0/>`_
       -  `MqttClient class <https://repository.microej.com/javadoc/microej_5.x/apis/org/eclipse/paho/client/mqttv3/MqttClient.html>`_
       -  - `MicroPaho README <https://repository.microej.com/modules/ej/library/iot/micropaho/1.0.0/README-1.0.0.md>`_
-         - `MQTT publish Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.mqtt.publisher>`_  
-         - `MQTT subscribe Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.mqtt.subscriber>`_
+         - `MQTT publish Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/mqtt.publisher>`_  
+         - `MQTT subscribe Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/ssl.mqtt.subscriber>`_
 
    *  -  ``REST Client``
       -  REpresentational State Tranfer (REST) client.
       -  `restclient <https://repository.microej.com/modules/ej/library/iot/restclient/>`_
       -  `Resty class <https://repository.microej.com/javadoc/microej_5.x/apis/ej/rest/web/Resty.html>`_
       -  - `REST client README <https://repository.microej.com/modules/ej/library/iot/restclient/1.1.0/README-1.1.0.md>`_
-         - `REST client Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.rest>`_
 
    *  -  ``REST Server``
       -  REpresentational State Tranfer (REST) server using on Hoka HTTP Server.
       -  `restserver <https://repository.microej.com/modules/ej/library/iot/restserver/>`_
       -  `RestServer class <https://repository.microej.com/javadoc/microej_5.x/apis/ej/restserver/RestServer.html>`_
-      -  - `REST server Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.dynamic-restserver>`_
+      -  - `REST server Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/dynamic-restserver>`_
 
    *  -  ``SNTP Client``
       -  Simple Network Time Protocol (SNTP) client, used to retrieve the current time from an NTP server.
@@ -136,7 +134,7 @@ IoT Libraries
       -  `websocket <https://repository.microej.com/modules/ej/library/iot/websocket/>`_, `websocket-secure <https://repository.microej.com/modules/ej/library/iot/websocket-secure/>`_
       -  `WebSocket class <https://repository.microej.com/javadoc/microej_5.x/apis/index.html?ej/websocket/WebSocket.html>`_
       -  - `WebSocket client README <https://repository.microej.com/modules/ej/library/iot/websocket/2.0.0/README-2.0.0.md>`_
-         - `WebSocket client Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.ssl.websocket>`_  
+         - `WebSocket client Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/ssl.websocket>`_  
 
 
 Data Serialization Libraries
