@@ -25,7 +25,7 @@ Let's have a look at the mostly used configurations:
 - **api**  (from Gradle Java Library plugin) - Same as the **implementation** configuration, except that the dependency is also exposed to the consumers of your project.
 - **testImplementation** (from Gradle Java plugin) - Dependencies used by the test classes of the project.
   This configures extends the **implementation** configuration, so it inherits from all the dependencies declared with the **implementation** configuration.
-- **microejPlatform** - Platform used by the project for build and test.
+- **microejVeePort** - VEE Port used by the project for build and test.
 
 Here is an example of dependencies declaration for a project::
 
@@ -34,7 +34,7 @@ Here is an example of dependencies declaration for a project::
 
       testImplementation("ej.library.test:junit:1.7.1")
 
-      microejPlatform("com.microej.platform.esp32.esp-wrover-kit-v41:HDAHT:1.8.0")
+      microejVeePort("com.microej.platform.esp32.esp-wrover-kit-v41:HDAHT:1.8.0")
    }
 
 For an exhaustive list of the available configurations and more details on how to manage dependencies, 
