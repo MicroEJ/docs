@@ -17,18 +17,44 @@ All JavaScript files (``*.js``) found in this folder, at any level, are consider
 In order to setup JavaScript tests for your application, follow these steps:
 
 - create an :ref:`Add-On Library <libraries>` project or a :ref:`Standalone Application <standalone_application>` project
-- define the following properties in the module.ivy file of the project inside the ``ea:build`` tag (if the properties already exist, replace them):
+- define the following configuration in the build file of the project:
 
-.. code-block:: xml
+.. tabs::
 
-    <ea:property name="test.run.includes.pattern" value="**/_JsTest_*Code.class"/>
-    <ea:property name="target.main.classes" value="${basedir}/target~/test/classes"/>
+   .. tab:: Gradle (build.gradle.kts)
 
-- add the MicroEJ JavaScript dependency in the module.ivy file of the project:
+      .. code-block:: java
+      
+         tasks.test {
+            filter {
+               includeTestsMatching("*._JsTest_*Code")
+            }
+         }
 
-.. code-block:: xml
+   .. tab:: MMM (module.ivy)
 
-    <dependency org="com.microej.library.runtime" name="js" rev="0.13.0"/>
+      Add these properties nside the ``ea:build`` tag (if the properties already exist, replace them):
+
+      .. code-block:: xml
+
+         <ea:property name="test.run.includes.pattern" value="**/_JsTest_*Code.class"/>
+         <ea:property name="target.main.classes" value="${basedir}/target~/test/classes"/>
+
+- add the MicroEJ JavaScript dependency in the build file of the project:
+
+.. tabs::
+
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("com.microej.library.runtime:js:0.13.0")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.library.runtime" name="js" rev="0.13.0"/>
 
 - define the platform to use to run the tests with one of the options described in :ref:`platform_selection` section
 - create a file ``assert.js`` in the folder ``src/test/resources`` with the following content:

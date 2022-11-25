@@ -3,6 +3,10 @@
 Run on the Simulator
 ====================
 
+.. note::
+   This page is releated to the version 5 and lower of the SDK. 
+   If you use the SDK 6, please refer to the page :ref:`sdk_6_run_on_simulator`.
+
 Once :ref:`a Sandboxed Application project has been created <chapter.application.firstApplication>`, it can be tested on the Simulator.
 
 The Simulator requires a Virtual Device to execute the Application.

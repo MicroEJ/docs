@@ -6,6 +6,10 @@ Build and Run an Application
 Create a MicroEJ Standalone Application
 ---------------------------------------
 
+.. note::
+   This section is releated to the version 5 and lower of the SDK. 
+   If you use the SDK 6, please refer to the page :ref:`sdk_6_create_project`.
+
 -  Create a project in your workspace. Select :guilabel:`File` > :guilabel:`New` >
    :guilabel:`Standalone Application Project`.
 
@@ -43,6 +47,10 @@ Create a MicroEJ Standalone Application
 
 Run on the Simulator
 --------------------
+
+.. note::
+   This section is releated to the version 5 and lower of the SDK. 
+   If you use the SDK 6, please refer to the page :ref:`sdk_6_run_on_simulator`.
 
 .. note::
 

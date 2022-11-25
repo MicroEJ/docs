@@ -22,12 +22,24 @@ From 12.x to 13.x
 * Update `ej.api#microui`_ dependency to the latest available version ``3.x``.
 * Add `ej.api#drawing`_ dependency.
 
-.. code-block:: xml
+.. tabs::
 
-   <dependencies>
-      <dependency org="ej.api" name="microui" rev="3.1.0"/>
-      <dependency org="ej.api" name="drawing" rev="1.0.3"/>         
-   </dependencies>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("ej.api:microui:3.1.0")
+         implementation("ej.api:drawing:1.0.3")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependencies>
+            <dependency org="ej.api" name="microui" rev="3.1.0"/>
+            <dependency org="ej.api" name="drawing" rev="1.0.3"/>         
+         </dependencies>
+
 
 .. _ej.api#microui: https://repository.microej.com/modules/ej/api/microui
 .. _ej.api#drawing: https://repository.microej.com/modules/ej/api/drawing
