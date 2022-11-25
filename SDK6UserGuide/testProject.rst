@@ -48,10 +48,17 @@ or Application projects (plugin ``com.microej.gradle.application``).
 - create a JUnit class in the ``src/test/java`` folder.
   This can be done manually or with IDE menu:
   
-  - Eclipse: right-clicking on the ``src/test/java`` folder 
-    and select :guilabel:`New`` > :guilabel:`Other…` > :guilabel:`Java` > :guilabel:`JUnit` > :guilabel:`New JUnit Test Case`
-  - IntelliJ IDEA: right-clicking on the ``src/test/java`` folder 
-    and select :guilabel:`New` > :guilabel:`Java Class``, then press ``Alt`` + ``Insert`` and select ``Test Method``.
+.. tabs::
+
+   .. tab:: Eclipse
+
+      - right-click on the ``src/test/java`` folder.
+      - select :guilabel:`New`` > :guilabel:`Other…` > :guilabel:`Java` > :guilabel:`JUnit` > :guilabel:`New JUnit Test Case`.
+
+   .. tab:: IntelliJ IDEA
+
+      - right-click on the ``src/test/java`` folder.
+      - select :guilabel:`New` > :guilabel:`Java Class``, then press ``Alt`` + ``Insert`` and select ``Test Method``.
 
 Setup a VEE Port
 ~~~~~~~~~~~~~~~~
