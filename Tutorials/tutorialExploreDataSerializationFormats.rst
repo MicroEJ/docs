@@ -279,7 +279,7 @@ Application project to use the CBOR library.
 Example Of Use
 ~~~~~~~~~~~~~~
 
-An example is available at https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.
+An example is available at https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/cbor.
 It shows how to use the CBOR library in your MicroEJ Application by encoding some data and reading it back, printing it on the standard output both as a raw byte string and in a JSON-like format.
 You can use tools like cbor.me to convert the byte string output to a JSON format and check that it matches the encoded data. The project can run on any MicroEJ Platform (no external dependencies).
 
@@ -311,7 +311,7 @@ The execution of this example on the MicroEJ Simulator should print the followin
 	}
 	=============== [ Completed Successfully ] ===============
 
-Another example showing how to use the :ref:`JSON <json_module>` module along with the :ref:`CBOR <cbor_module>` module to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/com.microej.example.iot.cbor.json.
+Another example showing how to use the :ref:`JSON <json_module>` module along with the :ref:`CBOR <cbor_module>` module to convert data from JSON to CBOR is available here : https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/cbor.json.
 
 The execution of this example on the MicroEJ Simulator should print the following trace:
 
