@@ -11,11 +11,21 @@ The widget library does not provide any example. However, the widget demo provid
 Source
 ------
 
-To use the widgets provided by the widget library, add the following line to a :ref:`module description file <mmm_module_description>`:
+To use the widgets provided by the widget library, add the following line to the project build file:
 
-.. code-block:: XML
+.. tabs::
 
-	<dependency org="ej.library.ui" name="widget" rev="4.1.0"/>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("ej.library.ui:widget:4.1.0")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.library.ui" name="widget" rev="4.1.0"/>
 
 To fork one of the provided widgets, duplicate the associated Java class from the widget library JAR into the source code of your application.
 It is recommended to move the duplicated class to an other package and to rename the class in order to avoid confusion between your forked class and the original class.

@@ -5,7 +5,7 @@ Build a Project
 
 Generally speaking, building a project means compiling the source files, executing the tests and generating the module artifact.
 Depending on the nature of the project, the build can include other specific phases.
-Please refer to the :ref:`gradle_module_natures` page for a complete description of the build phases.
+Please refer to the :ref:`sdk6_module_natures` page for a complete description of the build phases.
 
 The build of project is done by executing the Gradle ``build`` task.
 It can be executed with the command line interface::
