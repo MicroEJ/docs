@@ -20,7 +20,7 @@ Used with your favorite IDE (Eclipse or IntelliJ IDEA) to provide a complete dev
 
 .. note::
   The SDK 6 is limited to the build, test and simulation of Applications and Add-on Libraries (see :ref:`sdk_6_limitations` for more information).
-  If you need other features, such as creating an Executable or a Platform, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
+  If you need other features, such as creating an Executable or a VEE Port, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
 
 The SDK is composed of the following main elements:
 
@@ -49,7 +49,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    createProject
    buildProject
    runOnSimulator
-   platformSelection
+   veePortSelection
    addDependency
    testProject
    migrateMMMProject
