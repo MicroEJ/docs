@@ -5,7 +5,7 @@ VEE Port Selection
 
 Building or running an Application or a Test Suite with the SDK requires a VEE Port.
 
-There are 4 different ways to provide a VEE Port for a module project:
+There are 3 different ways to provide a VEE Port for a module project:
 
 - Set the build property ``veePortFile`` to the path of a VEE Port file (``.zip``, ``.jpf`` or ``.vde``).
 - Set the build property ``veePortDir`` to the path of the ``source`` folder of an already imported :ref:`Source VEE Port <source_platform_import>`.
