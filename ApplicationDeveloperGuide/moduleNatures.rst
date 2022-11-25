@@ -3,6 +3,10 @@
 Module Natures
 ==============
 
+.. note::
+   This page is releated to the version 5 and lower of the SDK. 
+   If you use the SDK 6, please refer to the page :ref:`sdk6_module_natures`.
+
 This page describes the most common module natures as follows:
 
 - **Skeleton Name**: the :ref:`project skeleton <mmm_module_skeleton>` name.
