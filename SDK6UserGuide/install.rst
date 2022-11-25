@@ -46,67 +46,8 @@ the :ref:`Central <central_repository>` and :ref:`Developer <developer_repositor
 There are several ways to declare repositories.
 For starting you can declare them globally to make them available in all your projects:
 
-- create a file ``microej.gradle.kts`` in the folder ``<user.home>/.gradle/init.d`` (create the folders if they do not exist).
-- copy the following content in this file::
-
-   settingsEvaluated {
-
-      allprojects {
-         /**
-          * Fetch repositories
-          */
-         repositories {
-            ivy {
-                name = "microEJCentral"
-                url = uri("https://repository.microej.com/5/artifacts/")
-                patternLayout {
-                    artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
-                    ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
-                    setM2compatible(true)
-                }
-            }
-            ivy {
-                name = "microEJForgeCentral"
-                url = uri("https://forge.microej.com/artifactory/microej-central-repository-release")
-                patternLayout {
-                    artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
-                    ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
-                    setM2compatible(true)
-                }
-            }
-            ivy {
-                name = "microEJForgeDeveloper"
-                url = uri("https://forge.microej.com/artifactory/microej-central-repository-release")
-                patternLayout {
-                    artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
-                    ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
-                    setM2compatible(true)
-                }
-            }
-         }
-      }
-
-
-      /**
-       * Plugins repositories
-       */
-      pluginManagement {
-         repositories {
-            maven {
-                name = "microEJCentral"
-                url = uri("https://repository.microej.com/5/artifacts/")
-            }
-            maven {
-                name = "microEJForgeCentral"
-                url = uri("https://forge.microej.com/artifactory/microej-central-repository-release")
-            }
-            maven {
-                name = "microEJForgeDeveloper"
-                url = uri("https://forge.microej.com/artifactory/microej-central-repository-release")
-            }
-         }
-      }
-   }
+- create the folder ``<user.home>/.gradle/init.d`` if they do not exist.
+- download and copy :download:`this file <resources/microej.init.gradle.kts>` in the previously created folder.
 
 At this stage, you can already build a project from the command line, 
 for example by executing the command ``gradle build`` at the root of the project.
