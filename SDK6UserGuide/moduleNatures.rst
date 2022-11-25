@@ -25,7 +25,7 @@ This plugin adds the following tasks to your project:
 
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.adp`
-- :ref:`sdk6_module_natures.tasks.loadPlatform`
+- :ref:`sdk6_module_natures.tasks.loadVeePort`
 - :ref:`sdk6_module_natures.tasks.loadApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.runOnSimulator`
 - :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
@@ -54,7 +54,7 @@ This plugin adds the following tasks to your project:
 
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.adp`
-- :ref:`sdk6_module_natures.tasks.loadPlatform`
+- :ref:`sdk6_module_natures.tasks.loadVeePort`
 - :ref:`sdk6_module_natures.tasks.loadApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.runOnSimulator`
 - :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
@@ -92,12 +92,12 @@ This task is used by the following module natures:
 **Configuration**:
 
 
-.. _sdk6_module_natures.tasks.loadPlatform:
+.. _sdk6_module_natures.tasks.loadVeePort:
 
-loadPlatform
+loadVeePort
 ^^^^^^^^^^^^
 
-**Description**: Loads the Platform.
+**Description**: Loads the VEE Port.
 
 **Module Natures**:
 
@@ -117,11 +117,11 @@ This task provides the following properties that can be defined in the ``microej
    * - Name
      - Description
      - Default    
-   * - ``platformDir``
-     - Path of the root folder of the platform to use in the build.
+   * - ``veePortDir``
+     - Path of the root folder of the VEE Port to use in the build.
      - Not set
-   * - ``platformFile``
-     - Path of the platform file to use in the build. 
+   * - ``veePortFile``
+     - Path of the VEE Port file to use in the build. 
      - Not set
 
 For example:
@@ -129,7 +129,7 @@ For example:
 .. code::
 
   microej {
-    platformDir = "/path/to/my/platform"
+    veePortDir = "/path/to/my/veePort"
   }
 
 .. _sdk6_module_natures.tasks.loadApplicationConfiguration:
