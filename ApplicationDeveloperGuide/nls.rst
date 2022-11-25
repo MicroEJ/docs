@@ -73,11 +73,21 @@ Example:
 Usage
 -----
 
-The `binary-nls module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the Application project.
+The `binary-nls module`_ must be added to the Application project build file:
 
-::
+.. tabs::
 
-  <dependency org="com.microej.library.runtime" name="binary-nls" rev="2.5.0"/>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("com.microej.library.runtime:binary-nls:2.5.0")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.library.runtime" name="binary-nls" rev="2.5.0"/>
 
 This module includes an Add-On Processor which parses the localization source files.
 For each interface declared in the NLS list files, all the localization source files whose names start with the interface name are used to generate:
@@ -174,11 +184,21 @@ Once the PO files are updated, a simple restart of the Virtual Device allows to 
 Installation
 ^^^^^^^^^^^^
 
-To enable the NLS External Loader in the Virtual Device, add the following dependency to the ``module.ivy`` file of the Firmware project:
+To enable the NLS External Loader in the Virtual Device, add the following dependency to the Firmware project:
 
-.. code-block:: xml
+.. tabs::
 
-   <dependency org="com.microej.tool" name="nls-po-external-loader" rev="2.3.0" transitive="false"/>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("com.microej.tool:nls-po-external-loader:2.3.0")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.tool" name="nls-po-external-loader" rev="2.3.0" transitive="false"/>
 
 Then rebuild the Firmware project to produce the Virtual Device.
 
@@ -251,11 +271,22 @@ Crowdin
 The NLS External Loader can fetch translations directly from Crowdin to make the translation process even easier.
 Translators can then contribute and validate their translations in Crowdin and apply them automatically in the Virtual Device.
 
-A new dependency must be added to the ``module.ivy`` file of the Firmware project to enable this integration:
+A new dependency must be added to Firmware project dependencies to enable this integration:
 
-.. code-block:: xml
+.. tabs::
 
-   <dependency org="com.microej.tool" name="nls-po-crowdin" rev="1.0.0" transitive="false"/>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("com.microej.tool:nls-po-crowdin:1.0.0")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.tool" name="nls-po-crowdin" rev="1.0.0" transitive="false"/>
+
 
 Once the module has been built, edit the file ``platform/tools/crowdin/crowdin.properties`` to configure the Crowdin connection:
 
