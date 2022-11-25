@@ -13,8 +13,8 @@ The prerequisites of this task are:
      applicationMainClass = "com.mycompany.Main"
    }
 
-- the target Platform must be defined.
-  Refer to the :ref:`sdk_6_platform_selection` page to know the different ways to provide a Platform for a module project.
+- the target VEE Port must be defined.
+  Refer to the :ref:`sdk_6_veeport_selection` page to know the different ways to provide a VEE Port for a module project.
 
 Once these prerequisites are fulfilled, the Application can be started with the Simulator with the command line interface::
 
