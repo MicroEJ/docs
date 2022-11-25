@@ -12,12 +12,12 @@ The scope of the SDK 6 is:
 
 Therefore, it does not support all the features of the SDK 5, especially:
 
-- build of Foundation Libraries, Mocks, Platforms or any other component type except Applications and Add-On Libraries.
+- build of Foundation Libraries, Mocks, VEE Ports or any other component type except Applications and Add-On Libraries.
 - build of a Standalone Application Executable.
 - build of the Virtual Device of an Standalone Application.
 - build of the Feature file (.fo) of a Sandboxed Application.
 - build of the WPK of a Sandboxed Application.
-- load of the Platform from the dropins folder.
+- load of the VEE Port from the dropins folder.
 - execution of tests on a device.
 - execution of a test project on a device.
 - resolve dependencies in the IDE.

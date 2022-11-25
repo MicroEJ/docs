@@ -11,7 +11,7 @@ digraph mygraph {
     edge [fontname="Helvetica,Arial,sans-serif"]
     "adp" [fillcolor = "#f76241"]
     "checkArtifact" [fillcolor = "#f76241"]
-    "loadPlatform" [fillcolor = "#f76241"]
+    "loadVeePort" [fillcolor = "#f76241"]
     "loadApplicationConfiguration" [fillcolor = "#f76241"]
     "loadTestApplicationConfiguration" [fillcolor = "#f76241"]
     "runOnSimulator" [fillcolor = "#f76241"]
@@ -25,7 +25,7 @@ digraph mygraph {
     "testOnSimulator" -> "loadTestApplicationConfiguration"
     "testClasses" -> "compileTestJava"
     "testClasses" -> "processTestResources"
-    "loadTestApplicationConfiguration" -> "loadPlatform"
+    "loadTestApplicationConfiguration" -> "loadVeePort"
     "processResources" -> "adp"
     "processTestResources" -> "adp"
     "processTestResources" -> "classes"
@@ -40,7 +40,7 @@ digraph mygraph {
     "runOnSimulator" -> "classes"
     "runOnSimulator" -> "loadApplicationConfiguration"
     "debugOnSimulator" -> "loadApplicationConfiguration"
-    "loadApplicationConfiguration" -> "loadPlatform"
+    "loadApplicationConfiguration" -> "loadVeePort"
     "checkArtifact" -> "assemble"
     "check" -> "checkArtifact"
 }
