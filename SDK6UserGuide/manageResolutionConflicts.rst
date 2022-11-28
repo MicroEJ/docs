@@ -1,49 +1,9 @@
-.. _sdk6_plugin_rules:
+.. _sdk6_manage_resolution_conflicts:
 
-Gradle Plugin Rules
-===================
+Manage Resolution Conflicts
+===========================
 
 The MicroEJ Gradle plugin adds specific rules for compilation, building, resolving dependencies, versioning and publishing.
-
-.. _sdk6_plugin_rules_versioning:
-
-Versioning
-----------
-
-Dependencies
-~~~~~~~~~~~~
-
-Contrary to the SDK 5, the version declared in the dependencies of a build file are explicit in the SDK 6, meaning that:
-
-- a fixed version (i.e. ``1.0.0``) refers to a release version only, not to its snapshot versions (``-RC``) as well.
-- to depends on a snapshot version (``-RC``) of a module, it must be declared explicitly with the ``-RC+`` suffix, i.e. ``1.0.0-RC+``.
-
-Module Version
-~~~~~~~~~~~~~~
-
-The SDK 5 used a specific notation for the snapshot versions. 
-Instead of using the ``-SNAPSHOT`` prefix (i.e. ``1.0.0-SNAPSHOT``), 
-it used the ``-RCxxx`` prefix, where ``xxx`` is the timestamp (i.e. ``1.0.0-RC202212021535``).
-
-In order to be able to transition from SDK 5 to SDK 6 smoothly, it is recommended to continue to publish snapshot versions with the ``-RCxxx`` prefix.
-This can be done by setting the Gradle module version with the ``-RC`` prefix. For example::
-
-  .. code::
-
-    version = "1.0.0-RC"
-
-The SDK will automatically append the timestamp to the version to keep the same notation than MMM.
-This way, SDK 5 projects will be able to fetch modules published by the SDK 6.
-
-.. note::
-
-  You are free to use any version number notation you want but you have to be aware that SDK 5 projects 
-  will not be able to depend on snapshot modules published wihtout the ``-RCxxx`` prefix.
-
-.. _sdk6_plugin_rules_conflicts:
-
-Conflict Resolution Rules
--------------------------
 
 Gradle comes with a powerful dependency manager.
 One of its job is to resolve the conflicts in the dependencies graph, to determine which version should be added to the graph.
