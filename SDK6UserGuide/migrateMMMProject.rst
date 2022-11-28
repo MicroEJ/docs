@@ -88,9 +88,9 @@ Module Information
 
 The module information defined by the ``info`` tag in the ``module.ivy`` file are replaced by:
 
-- the project property ``group`` in the ``build.gradle.kts`` file for the ``organisation`` attribute
-- the property ``rootProject.name`` in the ``settings.gradle.kts`` file for the ``module`` attribute
-- the project property ``version`` in the ``build.gradle.kts`` file for the ``revision`` attribute
+- the project property ``group`` in the ``build.gradle.kts`` file for the ``organisation`` attribute.
+- the property ``rootProject.name`` in the ``settings.gradle.kts`` file for the ``module`` attribute.
+- the project property ``version`` in the ``build.gradle.kts`` file for the ``revision`` attribute.
 
 So for example, the following ``info`` tag::
 
