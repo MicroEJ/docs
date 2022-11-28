@@ -27,6 +27,7 @@ Install Gradle
 --------------
 
 The first step is to install Gradle by following `the official documentation <https://gradle.org/install/>`__.
+The minimum required version is ``7.3``.
 Once done, you can verify your installation by opening a terminal and run the command ``gradle -v``.
 It should display the Gradle version, for example:
 
