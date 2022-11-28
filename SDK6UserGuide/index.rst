@@ -56,6 +56,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    manageResolutionConflicts
    migrateMMMProject
    moduleNatures
+   troubleshooting
 
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
