@@ -49,12 +49,13 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    importProject
    buildProject
    runOnSimulator
-   veePortSelection
    addDependency
+   selectVeePort
    testProject
-   moduleNatures
+   manageVersion
+   manageResolutionConflicts
    migrateMMMProject
-   pluginRules
+   moduleNatures
 
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
