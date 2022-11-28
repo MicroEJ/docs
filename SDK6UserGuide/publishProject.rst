@@ -9,12 +9,12 @@ Publishing a module to a repository is achieved by executing the ``publish`` tas
 
 The following artifacts are automatically published:
 
-- the main artifact, which is the JAR file for Application and Add-On Library natures
-- the README.md file
-- the CHANGELOG.md file
-- the LICENSE.txt file
-- the Gradle module descriptor file
-- the Ivy descriptor file (to allow SDK 5 project to fetch it)
+- the main artifact, which is the JAR file for Application and Add-On Library natures.
+- the README.md file.
+- the CHANGELOG.md file.
+- the LICENSE.txt file.
+- the Gradle module descriptor file.
+- the Ivy descriptor file (to allow SDK 5 project to fetch it).
 
 The only requirement is to have a ``maven`` publication repository configured.
 This can be done in the build file for example, with::
