@@ -63,7 +63,7 @@ or Application projects (plugin ``com.microej.gradle.application``).
 Setup a VEE Port
 ~~~~~~~~~~~~~~~~
 
-Before running tests, a target VEE Port must be configured using one of the methods described in the :ref:`sdk_6_veeport_selection` page.
+Before running tests, a target VEE Port must be configured using one of the methods described in the :ref:`sdk_6_select_veeport` page.
 
 Execute the Tests
 ~~~~~~~~~~~~~~~~~

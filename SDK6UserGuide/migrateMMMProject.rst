@@ -111,7 +111,7 @@ will be converted to:
 
 .. note::
 
-   Please refer to :ref:`sdk6_plugin_rules_versioning` section for more information on the way to define the module version.
+   Please refer to :ref:`sdk6_manage_versioning` section for more information on the way to define the module version.
 
 Configuration
 ~~~~~~~~~~~~~
