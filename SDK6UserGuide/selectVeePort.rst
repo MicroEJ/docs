@@ -1,7 +1,7 @@
-.. _sdk_6_veeport_selection:
+.. _sdk_6_select_veeport:
 
-VEE Port Selection
-==================
+Select a VEE Port
+=================
 
 Building or running an Application or a Test Suite with the SDK requires a VEE Port.
 
