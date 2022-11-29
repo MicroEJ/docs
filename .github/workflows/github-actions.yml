@@ -1,0 +1,9 @@
+
+name: github-actions-docs
+on: [push]
+jobs:
+  # check-rtd-build-status:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "test github actions"
