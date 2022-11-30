@@ -11,6 +11,8 @@ To use the `MWT`_ library, add the following line to a :ref:`module description 
 
 	<dependency org="ej.library.ui" name="mwt" rev="3.3.0"/>
 
+here is a `fake link <http://microej.com/wronglink>`_ for testing purposes
+
 .. _MWT: https://repository.microej.com/modules/ej/library/ui/mwt/
 
 ..
