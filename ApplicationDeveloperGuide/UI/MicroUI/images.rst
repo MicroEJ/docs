@@ -9,13 +9,14 @@ Immutable Images
 Overview
 ~~~~~~~~
 
-Immutable images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage()`_ or `ej.microui.display.ResourceImage.loadImage()`_. As their name suggests, immutable images can not be modified. Therefore, there is no way to get a Graphics Context to draw into these images. To be displayed, these
-images have to be converted from their source format to a RAW
-format. The conversion can either be done at:
+Immutable images are graphical resources that can be accessed with a call to `ej.microui.display.Image.getImage()`_ or `ej.microui.display.ResourceImage.loadImage()`_.
+As their name suggests, immutable images can not be modified.
+Therefore, there is no way to get a Graphics Context to draw into these images.
+To be displayed, these images have to be converted from their source format to a RAW format.
+The conversion can either be done:
 
--  build-time (using the image generator tool),
-
--  run-time (using the relevant decoder library).
+- At build-time, using the image generator tool.
+- At run-time, using the relevant decoder library.
 
 Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.images.list`` files (**or** in ``*.imagesext.list`` for an external resource, see :ref:`chapter.microej.applicationResources`).
 
@@ -33,23 +34,24 @@ Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*
       }
   }
 
-The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the Classpath root referring to a standard image file (e.g. ``.png``, ``.jpg``).
+The file format is a standard Java properties file.
+Each line contains a ``/``-separated resource path relative to the Classpath root referring to a standard image file (e.g. ``.png``, ``.jpg``).
 The resource may be followed by an optional parameter (separated by a ``:``) which defines and/or describes the image output file format (RAW format).
 When no option is specified, the image is embedded as-is and will be decoded at run-time.
 Example:
 
 ::
 
-   # The following image is embedded 
-   # as a PNG resource (decoded at run-time)
+   # The following image is embedded as
+   # a PNG resource (decoded at run-time)
    com/mycompany/MyImage1.png
 
-   # The following image is embedded 
-   # as a 16 bits format without transparency (decoded at build-time)
+   # The following image is embedded as
+   # a 16-bit encoding without transparency (decoded at build-time)
    com/mycompany/MyImage2.png:RGB565
 
-   # The following image is embedded 
-   # as a 16 bits format with transparency (decoded at build-time)
+   # The following image is embedded as
+   # a 16-bit encoding with transparency (decoded at build-time)
    com/mycompany/MyImage3.png:ARGB1555
 
 
@@ -73,206 +75,89 @@ Here is the format of the ``*.images.list`` files.
    Letter              ::= 'a-zA-Z_$'
    LetterOrDigit       ::= 'a-zA-Z_$0-9'
 
+.. _section_image_unspecified_output:
+
 Unspecified Output Format
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When no output format is set in the images list file, the image is
-embedded without any conversion / compression. This allows you to embed
-the resource as-is, in order to keep the source image characteristics
-(compression, bpp, etc.). This option produces the same result as
-specifying an image as a resource in the MicroEJ launcher (i.e. in a ``.resources.list`` file).
+When no output format is set in the image list file, the image is embedded without any conversion / compression.
+This allows you to embed the resource as-is, in order to keep the source image characteristics (compression, bpp, size, etc.).
+This option produces the same result as specifying an image as a resource in the MicroEJ launcher (i.e. in a ``.resources.list`` file).
+
+Refer to the platform specification to retrieve the list of runtime decoders.
 
 **Advantages**
 
-- Preserves the image characteristics;
+- Preserves the image characteristics.
 - Preserves the original image compression.
 
 **Disadvantages**
 
-- Requires an image runtime decoder;
-- Requires some RAM in which to store the decoded image;
+- Requires an image runtime decoder.
+- Requires some RAM in which to store the decoded image.
 - Requires execution time to decode the image.
 
 ::
 
    image1
    
-Standard Output Formats
-~~~~~~~~~~~~~~~~~~~~~~~
+.. _section_image_display_output:
 
-Depending on the target hardware, several generic output formats are
-available. Some formats may be directly managed by the BSP display
-driver. Refer to the platform specification to retrieve the list of
-natively supported formats.
+Display Output Format
+~~~~~~~~~~~~~~~~~~~~~
+
+It encodes the image into the exact display memory representation.
+If the image to encode contains some transparent pixels, the output file will embed the transparency according to the display's implementation capacity.
+When all pixels are fully opaque, no extra information will be stored in the output file in order to free up some memory space.
+
+.. note:: When the display memory representation is standard, the display output format is automatically replaced by a standard format.
 
 **Advantages**
 
--  The pixels layout and bits format are standard, so it is easy to
-   manipulate these images on the C-side;
-
--  Drawing an image is very fast when the display driver recognizes the
-   format (with or without transparency);
-
--  Supports or not the alpha encoding: select the most suitable format
-   for the image to encode.
+- Drawing an image is very fast because no pixel conversion is required at runtime.
+- Supports alpha encoding when the display pixel format allows it.
 
 **Disadvantages**
 
-- No compression: the image size in bytes is proportional to the number   of pixels, the transparency, and the bits-per-pixel;
-- Slower than ``display`` format when the display driver does not recognize the  format: a pixel conversion is required at runtime.
+- No compression: the image size in bytes is proportional to the number of pixels.
 
-Select one the following format to use a generic format among this list: ``ARGB8888``, ``RGB888``, ``ARGB4444``, ``ARGB1555``, ``RGB565``, ``A8``, ``A4``, ``A2``, ``A1``, ``C4``, ``C2``, ``C1``, ``AC44``, ``AC22`` and ``AC11``. The following snippets describe the color conversion for each format:
+::
 
--  ARGB8888: 32 bits format, 8 bits for transparency, 8 per color.
+   image1:display
 
-   ::
+.. _section_image_standard_output:
 
-      int convertARGB8888toRAWFormat(int c){
-          return c;
-      }
+Standard Output Formats
+~~~~~~~~~~~~~~~~~~~~~~~
 
--  RGB888: 24 bits format, 8 per color. Image is always fully opaque.
+Some image formats are well known and commonly implemented by GPUs.
 
-   ::
+Refer to the platform specification to retrieve the list of natively supported formats.
 
-      int convertARGB8888toRAWFormat(int c){
-          return c & 0xffffff;
-      }
+**Advantages**
 
--  ARGB4444: 16 bits format, 4 bits for transparency, 4 per color.
+- The pixel layout and bit format are standard, so it is easy to manipulate these images on the C-side.
+- Drawing an image is very fast when the display driver recognizes the format (with or without transparency).
 
-   ::
+**Disadvantages**
 
-      int convertARGB8888toRAWFormat(int c){
-          return 0
-                  | ((c & 0xf0000000) >> 16)
-                  | ((c & 0x00f00000) >> 12)
-                  | ((c & 0x0000f000) >> 8)
-                  | ((c & 0x000000f0) >> 4)
-                  ;
-      }
+- No compression: the image size in bytes is proportional to the number of pixels.
+- Slower than ``display`` format when the display driver does not recognize the format: a pixel conversion is required at runtime.
 
--  ARGB1555: 16 bits format, 1 bit for transparency, 5 per color.
+Here is the list of the standard formats:
 
-   ::
-
-      int convertARGB8888toRAWFormat(int c){
-          return 0
-                  | (((c & 0xff000000) == 0xff000000) ? 0x8000 : 0)
-                  | ((c & 0xf80000) >> 9)
-                  | ((c & 0x00f800) >> 6)
-                  | ((c & 0x0000f8) >> 3)
-                  ;
-      }
-
--  RGB565: 16 bits format, 5 or 6 per color. Image is always fully
-   opaque.
-
-   ::
-
-      int convertARGB8888toRAWFormat(int c){
-          return 0
-                  | ((c & 0xf80000) >> 8)
-                  | ((c & 0x00fc00) >> 5)
-                  | ((c & 0x0000f8) >> 3)
-                  ;
-      }
-
--  A8: 8 bits format, only transparency is encoded. The color to apply
-   when drawing the image, is the current GraphicsContext color.
-
-   ::
-
-      int convertARGB8888toRAWFormat(int c){
-          return 0xff - (toGrayscale(c) & 0xff);
-      }
-
--  A4: 4 bits format, only transparency is encoded. The color to apply
-   when drawing the image, is the current GraphicsContext color.
-
-   ::
-
-      int convertARGB8888toRAWFormat(int c){
-          return (0xff - (toGrayscale(c) & 0xff)) / 0x11;
-      }
-
--  A2: 2 bits format, only transparency is encoded. The color to apply
-   when drawing the image, is the current GraphicsContext color.
-
-   ::
-
-      int convertARGB8888toRAWFormat(int c){
-          return (0xff - (toGrayscale(c) & 0xff)) / 0x55;
-      }
-
--  A1: 1 bit format, only transparency is encoded. The color to apply
-   when drawing the image, is the current GraphicsContext color.
-
-   ::
-
-      int convertARGB8888toRAWFormat(int c){
-          return (0xff - (toGrayscale(c) & 0xff)) / 0xff;
-      }
-
--  C4: 4 bits format with grayscale conversion. Image is always fully
-   opaque.
-
-   ::
-
-      int convertARGB8888toRAWFormat(int c){
-          return (toGrayscale(c) & 0xff) / 0x11;
-      }
-
--  C2: 2 bits format with grayscale conversion. Image is always fully
-   opaque.
-
-   ::
-
-      int convertARGB8888toRAWFormat(int c){
-          return (toGrayscale(c) & 0xff) / 0x55;
-      }
-
--  C1: 1 bit format with grayscale conversion. Image is always fully
-   opaque.
-
-   ::
-
-      int convertARGB8888toRAWFormat(int c){
-          return (toGrayscale(c) & 0xff) / 0xff;
-      }
-
--  AC44: 4 bits for transparency, 4 bits with grayscale conversion.
-
-   ::
-
-      int convertARGB8888toRAWFormat(int c){
-          return 0
-              | ((color >> 24) & 0xf0)
-              | ((toGrayscale(color) & 0xff) / 0x11)
-              ;
-      }
-
--  AC22: 2 bits for transparency, 2 bits with grayscale conversion.
-
-   ::
-
-      int convertARGB8888toRAWFormat(int c){
-          return 0
-              | ((color >> 28) & 0xc0)
-              | ((toGrayscale(color) & 0xff) / 0x55)
-              ;
-      }
-
--  AC11: 1 bit for transparency, 1 bit with grayscale conversion.
-
-   ::
-
-      int convertARGB8888toRAWFormat(int c){
-          return 0
-              | ((c & 0xff000000) == 0xff000000 ? 0x2 : 0x0)
-              | ((toGrayscale(color) & 0xff) / 0xff)
-              ;
-      }
+- Transparent images:
+   - ARGB8888: 32-bit format, 8 bits for transparency, 8 per color.
+   - ARGB4444: 16-bit format, 4 bits for transparency, 4 per color.
+   - ARGB1555: 16-bit format, 1 bit for transparency, 5 per color.
+- Opaque images:
+   - RGB888: 24-bit format, 8 per color,
+   - RGB565: 16-bit format, 5 for red, 6 for green, 5 for blue.
+- Alpha images, only transparency is encoded (the color applied when drawing the image is the current GraphicsContext color):
+   - A8: 8-bit format,
+   - A4: 4-bit format,
+   - A2: 2-bit format,
+   - A1: 1-bit format.
 
 Examples:
 
@@ -282,121 +167,69 @@ Examples:
    image2:RGB565
    image3:A4
 
-Display Output Format
-~~~~~~~~~~~~~~~~~~~~~
+.. _section_image_grayscale_output:
 
-This format encodes the image into the exact display memory
-representation. If the image to encode contains some transparent pixels,
-the output file will embed the transparency according to the display's
-implementation capacity. When all pixels are fully opaque, no extra
-information will be stored in the output file in order to free up some
-memory space.
+Grayscale Output Formats
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note:: When the display memory representation is standard, the display output format is automatically replaced by a standard format.
+Some grayscale formats may be useful on grayscale or black and white displays.
 
 **Advantages**
 
--  Drawing an image is very fast because no pixel conversion is required at runtime;
-
--  Supports alpha encoding when display pixel format allow it.
+- Reduced footprint with less bits per pixels.
 
 **Disadvantages**
 
--  No compression: the image size in bytes is proportional to the number
-   of pixels.
+- No compression: the image size in bytes is proportional to the number of pixels.
+- Slower: a pixel conversion is required at runtime.
+
+Here is the list of the grayscale formats:
+
+- With transparency:
+   - AC44: 4 bits for transparency, 4 bits with grayscale conversion.
+   - AC22: 2 bits for transparency, 2 bits with grayscale conversion.
+   - AC11: 1 bit for transparency, 1 bit with grayscale conversion.
+- Without transparency:
+   - C4: 4 bits with grayscale conversion.
+   - C2: 2 bits with grayscale conversion.
+   - C1: 1 bit with grayscale conversion.
+
+Examples:
 
 ::
 
-   image1:display
+   image1:AC44
+   image2:C2
 
-.. _image_format_argb1565_rle:
+.. _section_image_rle_output:
 
-ARGB1565_RLE Output Format
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Compressed Output Formats
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The image engine can display embedded images that are encoded into a compressed format which encodes several consecutive pixels into one or more 16-bit words.
-This encoding only manages fully opaque and fully transparent pixels.
-
--  Several consecutive pixels have the same color (2 words):
-
-   -  First 16-bit word specifies how many consecutive pixels have the
-      same color (pixels colors converted in RGB565 format, without opacity data).
-
-   -  Second 16-bit word is the pixels' color in RGB565 format.
-
--  Several consecutive pixels have their own color (1 + n words):
-
-   -  First 16-bit word specifies how many consecutive pixels have their
-      own color;
-
-   -  Next 16-bit word is the next pixel color.
-
--  Several consecutive pixels are transparent (1 word):
-
-   -  16-bit word specifies how many consecutive pixels are transparent.
-
-.. note:: This format was formerly named `RLE1` up to UI Pack 13.3.X. This older name can still be used in the images list file.
+Some image formats are compressed using run-length encoding.
+This compression is lossless.
+The principle is that identical consecutive pixels are stored as one entry (value and count).
+The more the consecutive pixels are identical, the more the compression is efficient.
 
 **Advantages**
 
--  Supports fully opaque and fully transparent encoding.
-
--  Good compression when several consecutive pixels respect one of the
-   three previous rules.
+- Good compression when there are a lot of identical consecutive pixels.
 
 **Disadvantages**
 
--  Drawing an image is slightly slower than when using Display format.
--  Not designed for images with many different pixel colors: in such case, the output file size may be larger than the original image file.
+- Drawing an image may be slightly slower than using an uncompressed format supported by the GPU.
+- Not designed for images with many different pixel colors: in such case, the output file size may be larger than the original image file.
+
+Here is the list of the compressed formats:
+
+- ARGB1565_RLE: 16-bit format, 1 bit for transparency, 5 for red, 6 for green, 5 for blue. (Formerly named RLE1 up to UI Pack 13.3.X.)
+- A8_RLE: similar to A8.
 
 ::
 
    image1:ARGB1565_RLE
    image2:RLE1 # Deprecated
-
-.. _image_format_rleA8:
-
-RLEA8 Output Format
-~~~~~~~~~~~~~~~~~~~
-
-The image engine can display embedded images that are encoded into a compressed format which encodes several consecutive pixels into one or more 8-bit words.
-This encoding only manages fully opaque and fully transparent pixels.
-
--  Several consecutive pixels have the same color (2 words):
-
-   -  First 16-bit word specifies how many consecutive pixels have the
-      same color (pixels colors converted in RGB565 format, without opacity data).
-
-   -  Second 16-bit word is the pixels' color in RGB565 format.
-
--  Several consecutive pixels have their own color (1 + n words):
-
-   -  First 16-bit word specifies how many consecutive pixels have their
-      own color;
-
-   -  Next 16-bit word is the next pixel color.
-
--  Several consecutive pixels are transparent (1 word):
-
-   -  16-bit word specifies how many consecutive pixels are transparent.
-
-.. note:: This format was formerly named `RLE1` up to UI Pack 13.3.X. This older name can still be used in the images list file.
-
-**Advantages**
-
--  Supports fully opaque and fully transparent encoding.
-
--  Good compression when several consecutive pixels respect one of the
-   three previous rules.
-
-**Disadvantages**
-
--  Drawing an image is slightly slower than when using Display format.
--  Not designed for images with many different pixel colors: in such case, the output file size may be larger than the original image file.
-
-::
-
-   image1:RLEA8
+   image3:A8_RLE
 
 Image Generator Error Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -508,14 +341,16 @@ The given color value is interpreted as a 24-bit RGB color, where the high-order
 Images Heap
 -----------
 
-The images heap is used to allocate the pixel data of:
+The image heap is used to allocate the pixel data of:
 
-- mutable images (i.e. `BufferedImage`_  instances)
-- immutable images decoded at runtime, typically a PNG: the heap is used to store the decoded image **and** the runtime decoder's temporary buffers, required during the decoding step. After the decoding step, all the temporary buffers are freed. Note that the size of the temporary buffers depend on the decoder **and** on the original image itself (compression level, pixel encoding, etc.)
-- immutable images which are not byte-addressable, such as images opened with an input stream (i.e. `ResourceImage`_  instances)
-- immutable images which are byte-addressable but converted to a different output format (i.e. `ResourceImage`_  instances)
+- Mutable images (i.e. `BufferedImage`_  instances).
+- Immutable images decoded at runtime, typically a PNG: the heap is used to store the decoded image **and** the runtime decoder's temporary buffers, required during the decoding step.
+  After the decoding step, all the temporary buffers are freed.
+  Note that the size of the temporary buffers depends on the decoder **and** on the original image itself (compression level, pixel encoding, etc.).
+- Immutable images which are not byte-addressable, such as images opened with an input stream (i.e. `ResourceImage`_  instances).
+- Immutable images which are byte-addressable but converted to a different output format (i.e. `ResourceImage`_  instances).
 
-In other words, every image which can not be retrieved using `ej.microui.display.Image.getImage()`_  is saved on the images heap.
+In other words, every image which cannot be retrieved using `ej.microui.display.Image.getImage()`_  is saved on the image heap.
 
 The size of the images heap can be configured with the ``ej.microui.memory.imagesheap.size`` property.
 
