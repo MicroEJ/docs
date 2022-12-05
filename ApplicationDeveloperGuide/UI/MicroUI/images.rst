@@ -147,13 +147,18 @@ Refer to the platform specification to retrieve the list of natively supported f
 Here is the list of the standard formats:
 
 - Transparent images:
-   - ARGB8888: 32-bit format, 8 bits for transparency, 8 per color.
-   - ARGB4444: 16-bit format, 4 bits for transparency, 4 per color.
+
+   - ARGB8888: 32-bit format, 8 bits for transparency, 8 per color,
+   - ARGB4444: 16-bit format, 4 bits for transparency, 4 per color,
    - ARGB1555: 16-bit format, 1 bit for transparency, 5 per color.
+
 - Opaque images:
+
    - RGB888: 24-bit format, 8 per color,
    - RGB565: 16-bit format, 5 for red, 6 for green, 5 for blue.
+
 - Alpha images, only transparency is encoded (the color applied when drawing the image is the current GraphicsContext color):
+
    - A8: 8-bit format,
    - A4: 4-bit format,
    - A2: 2-bit format,
@@ -186,12 +191,15 @@ Some grayscale formats may be useful on grayscale or black and white displays.
 Here is the list of the grayscale formats:
 
 - With transparency:
-   - AC44: 4 bits for transparency, 4 bits with grayscale conversion.
-   - AC22: 2 bits for transparency, 2 bits with grayscale conversion.
+
+   - AC44: 4 bits for transparency, 4 bits with grayscale conversion,
+   - AC22: 2 bits for transparency, 2 bits with grayscale conversion,
    - AC11: 1 bit for transparency, 1 bit with grayscale conversion.
+
 - Without transparency:
-   - C4: 4 bits with grayscale conversion.
-   - C2: 2 bits with grayscale conversion.
+
+   - C4: 4 bits with grayscale conversion,
+   - C2: 2 bits with grayscale conversion,
    - C1: 1 bit with grayscale conversion.
 
 Examples:
@@ -288,7 +296,22 @@ The following table summarizes the usage of the different formats and the actual
    | A8_RLE       | .. image:: images/picto.png        | .. image:: images/a8.png            |
    +--------------+------------------------------------+-------------------------------------+
 
+Usage Advice
+~~~~~~~~~~~~
 
+- When the image is rarely used, or when there is little Flash and enough RAM: embed the image in its original compressed format (PNG or JPG for instance).
+- For an opaque image: `RGB565` is usually sufficient.
+- For a transparent image: `ARGB4444` is usually sufficient.
+- For a transparent image that contains only shape(s) with horizontal or vertical edges:
+
+   - `ARGB1555` may be interesting to have more colors,
+   - for a smaller footprint if the image matches the RLE rule, `ARGB1565_RLE` is best.
+
+- For a pictogram to colorize:
+
+   - `A4` is usually sufficient,
+   - `A8` may be necessary for pictograms with long gradients,
+   - for a smaller footprint if the image matches the RLE rule, `A8_RLE` is best.
 
 Image Generator Error Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
