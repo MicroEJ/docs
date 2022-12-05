@@ -6,7 +6,7 @@ Troubleshooting
 Java compiler version issue
 ---------------------------
 
-The SDK: requires a JDK 11, so when a JDK 8 is used, the following kind of error is raised::
+The SDK requires a JDK 11, so when a JDK 8 is used, the following kind of error is raised::
 
 	A problem occurred configuring root project 'myProject'.
 	> Could not resolve all files for configuration ':classpath'.
