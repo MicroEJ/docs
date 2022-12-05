@@ -15,6 +15,7 @@ digraph mygraph {
     "loadApplicationConfiguration" [fillcolor = "#f76241"]
     "loadTestApplicationConfiguration" [fillcolor = "#f76241"]
     "runOnSimulator" [fillcolor = "#f76241"]
+    "debugOnSimulator" [fillcolor = "#f76241"]
     "testOnSimulator" [fillcolor = "#f76241"]
     "build" -> "check"
     "check" -> "test"
@@ -43,4 +44,12 @@ digraph mygraph {
     "loadApplicationConfiguration" -> "loadVeePort"
     "checkArtifact" -> "assemble"
     "check" -> "checkArtifact"
+
+    subgraph cluster_legend {
+        label="Legend";
+        microej [fillcolor="#f76241" label="MicroEJ task"];
+        java [fillcolor="#7dc5dc" label="Java plugin or Base plugin task"];
+        microej -> java [style=invis];
+        java -> microej [style=invis];
+    }
 }
