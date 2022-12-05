@@ -10,6 +10,10 @@ This chapter explains how to import a project in an IDE.
 Eclipse
 -------
 
+.. warning::
+   Only the IntelliJ IDEA IDE is fully supported for the moment, so it is recommend to use it instead of Eclipse.
+   The support of Eclipse will come soon. 
+
 In order to import an existing Gradle project in Eclipse, follow these steps:
 
 - click on ``File`` > ``Import...``.
