@@ -28,6 +28,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.loadVeePort`
 - :ref:`sdk6_module_natures.tasks.loadApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.runOnSimulator`
+- :ref:`sdk6_module_natures.tasks.debugOnSimulator`
 - :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.testOnSimulator`
 - :ref:`sdk6_module_natures.tasks.checkArtifact`
@@ -57,6 +58,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.loadVeePort`
 - :ref:`sdk6_module_natures.tasks.loadApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.runOnSimulator`
+- :ref:`sdk6_module_natures.tasks.debugOnSimulator`
 - :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.testOnSimulator`
 - :ref:`sdk6_module_natures.tasks.checkArtifact`
@@ -183,6 +185,38 @@ This task is used by the following module natures:
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
 
+.. _sdk6_module_natures.tasks.debugOnSimulator:
+
+debugOnSimulator
+^^^^^^^^^^^^^^^^
+
+**Description**: Executes the Application with the Simulator in debug mode.
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.addon_lib`
+- :ref:`sdk6_module_natures.application`
+
+This task provides the following properties that can be defined with a system property:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default    
+   * - ``debug.port``
+     - Debug port.
+     - 12000
+
+For example:
+
+.. code::
+
+  $ gradle debugOnSimulator -Ddebug.port=8000
 
 .. _sdk6_module_natures.tasks.loadTestApplicationConfiguration:
 
