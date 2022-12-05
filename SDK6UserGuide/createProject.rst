@@ -65,39 +65,44 @@ so it must be updated to be a MicroEJ project:
 Eclipse
 -------
 
-The creation of a project with Eclipse is done as follows:
+.. warning::
+   Only the IntelliJ IDEA IDE is fully supported for the moment, so it is recommend to use it instead of Eclipse.
+   The support of Eclipse will come soon. 
 
-- click on ``File`` > ``New`` > ``Project...``.
-- select the project type ``Gradle > Gradle Project`` and click on the ``Next`` button.
+..
+  The creation of a project with Eclipse is done as follows:
 
-.. figure:: images/eclipse-create-gradle-project-01.png
-   :alt: Project Type Selection in Eclipse
-   :align: center
-   :scale: 70%
+  - click on ``File`` > ``New`` > ``Project...``.
+  - select the project type ``Gradle > Gradle Project`` and click on the ``Next`` button.
 
-   Project Type Selection in Eclipse
+  .. figure:: images/eclipse-create-gradle-project-01.png
+    :alt: Project Type Selection in Eclipse
+    :align: center
+    :scale: 70%
 
-- fill the name of the project in the ``Name`` field and click on the ``Next`` button.
+    Project Type Selection in Eclipse
 
-.. figure:: images/eclipse-create-gradle-project-02.png
-   :alt: Project root folder in Eclipse
-   :align: center
-   :scale: 70%
+  - fill the name of the project in the ``Name`` field and click on the ``Next`` button.
 
-   Project root folder in Eclipse
+  .. figure:: images/eclipse-create-gradle-project-02.png
+    :alt: Project root folder in Eclipse
+    :align: center
+    :scale: 70%
 
-- in the ``Options`` screen, leave the default values and click on the ``Next`` button.
-- click on the ``Next`` button and finally on the ``Finish`` button.
+    Project root folder in Eclipse
 
-   
+  - in the ``Options`` screen, leave the default values and click on the ``Next`` button.
+  - click on the ``Next`` button and finally on the ``Finish`` button.
 
-The project created by Eclipse is a multi-project build containing a root project and a single subproject (named ``lib``).
-The ``lib`` subproject is a standard Java Library project (Gradle ``java-library`` plugin).
-The ``build.gradle.kts`` file of the ``lib`` subproject has to be updated to make it a MicroEJ project:
+    
 
-...
+  The project created by Eclipse is a multi-project build containing a root project and a single subproject (named ``lib``).
+  The ``lib`` subproject is a standard Java Library project (Gradle ``java-library`` plugin).
+  The ``build.gradle.kts`` file of the ``lib`` subproject has to be updated to make it a MicroEJ project:
 
-**OR**
+  ...
+
+  **OR**
 
 The Eclipse creation wizard for Gradle Project is quite limited, 
 and produces a multi-project build with a Java Library subproject (Gradle ``java-library`` plugin).
