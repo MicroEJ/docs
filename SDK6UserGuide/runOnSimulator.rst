@@ -22,13 +22,19 @@ Once these prerequisites are fulfilled, the Application can be started with the 
 
 or from Eclipse and IntelliJ IDEA, by double-clicking on the ``runOnSimulator`` task in the Gradle tasks view:
 
-|pic1| |pic2|
+.. tabs::
 
-.. |pic1| image:: images/eclipse-run-gradle-project.png
-   :width: 48%
+   .. tab:: Eclipse
 
-.. |pic2| image:: images/intellij-run-gradle-project.png
-   :width: 30%
+      .. image:: images/eclipse-run-gradle-project.png
+         :width: 50%
+         :align: center
+
+   .. tab:: IntelliJ IDEA
+
+      .. image:: images/intellij-run-gradle-project.png
+         :width: 30%
+         :align: center
 
 With a simple Hello World Application, the output should be::
 
@@ -55,6 +61,9 @@ the verbose mode can be enabled by using the ``--info`` Gradle option::
 Debug on Simulator
 ------------------
 
+.. warning::
+   IntelliJ IDEA cannot be used as the debugger client for the moment, so it is recommend to use Eclipse instead.
+
 The SDK allows to run an Application with the Simulator in debug mode thanks to the Gradle task ``debugOnSimulator``::
 
    gradle debugOnSimulator
@@ -76,15 +85,17 @@ If you want to connect the Eclipse debugger:
 - set the debug host and port.
 - click on the ``Debug`` button.
 
-If you want to connect the IntelliJ IDEA debugger:
 
-- add a breakpoint in your Application code.
-- click on ``Run > Debug...``.
-- click on ``Edit Configurations...``.
-- click on the ``+`` button in the top bar and select ``Remote JVM Debug``.
-- give a name to the launcher in the ``Name`` field.
-- set the debug host and port.
-- click on the ``Debug`` button.
+..
+   If you want to connect the IntelliJ IDEA debugger:
+
+   - add a breakpoint in your Application code.
+   - click on ``Run > Debug...``.
+   - click on ``Edit Configurations...``.
+   - click on the ``+`` button in the top bar and select ``Remote JVM Debug``.
+   - give a name to the launcher in the ``Name`` field.
+   - set the debug host and port.
+   - click on the ``Debug`` button.
 
 The debugger should connect to the Simulator and you should be able to debug your Application.
 
