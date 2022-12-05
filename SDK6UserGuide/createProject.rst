@@ -51,6 +51,9 @@ so it must be updated to be a MicroEJ project:
         id("com.microej.gradle.application") version "0.3.0"
     }
 
+  .. note::
+    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
+
   Please refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
 - remove the ``repositories`` block.
