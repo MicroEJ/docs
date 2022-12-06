@@ -61,6 +61,18 @@ In order to import an existing Gradle project in IntelliJ IDEA, follow the follo
 
 The Gradle project should now be imported in IntelliJ IDEA.
 
+.. note::
+   A message ``Project JDK is not defined`` is displayed at the top of the editor.
+   This message can be ignored.
+   It warns that the project does not have a JDK defined, which is expected since a MicroEJ project does not rely on a standard JDK.
+
+   .. figure:: images/intellij-project-sdk-message.png
+      :alt: Project JDK message in IntelliJ IDEA
+      :align: center
+      :scale: 70%
+
+      Project JDK message in IntelliJ IDEA
+
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
