@@ -1,3 +1,5 @@
+.. _ui-event-handling:
+
 Event Handling
 ==============
 
@@ -81,6 +83,8 @@ When running the modified sample, this is shown in the console:
 .. _setEnabled(true): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#setEnabled-boolean-
 .. _OnClickListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/OnClickListener.html
 .. _handleClick: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Button.html#handleClick--
+
+**Next step:** :ref:`ui-fonts`
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

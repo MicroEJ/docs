@@ -1,3 +1,5 @@
+.. _ui-using-layouts:
+
 Using Layouts
 =============
 
@@ -79,6 +81,8 @@ To add a widget to a `Canvas`_, specify its position and size.
 .. _Desktop: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html
 .. _Canvas: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/container/Canvas.html
 .. _Widget.NO_CONSTRAINT: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#NO_CONSTRAINT
+
+**Next step:** :ref:`ui-style`
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

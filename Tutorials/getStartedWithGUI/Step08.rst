@@ -1,3 +1,5 @@
+.. _ui-animation:
+
 Animation
 =========
 
@@ -77,6 +79,8 @@ Usage
 
 .. _Animation: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animation.html
 .. _tick(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animation.html#tick-long-
+
+**Next step:** :ref:`ui-creating-widgets`
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

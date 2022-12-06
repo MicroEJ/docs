@@ -1,3 +1,5 @@
+.. _ui-style:
+
 Style
 =====
 
@@ -119,6 +121,7 @@ Padding and Margin
   .. image:: images/tuto_microej_gettingstarted_oversizedmarginandpadding.png  
    :align: center
 
+**Next step:** :ref:`ui-images`
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
