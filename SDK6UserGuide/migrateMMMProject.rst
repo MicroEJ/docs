@@ -18,8 +18,8 @@ Project structure
 The structure of a SDK 6 Gradle project is similar to a MMM project.
 The differences are:
 
-- the ``module.ivy`` file is replaced by a ``build.gradle.kts`` file and a ``settings.gradle.kts`` file (see :ref:`sdk_6_migrate_build_scripts`).
-- the ``module.ant`` and ``override.module.ant`` files are removed (see :ref:`sdk_6_migrate_build_file`).
+- the ``module.ivy`` file is replaced by a ``build.gradle.kts`` file and a ``settings.gradle.kts`` file (see :ref:`sdk_6_migrate_build_file`).
+- the ``module.ant`` and ``override.module.ant`` files are removed (see :ref:`sdk_6_migrate_build_scripts`).
 - the ``build`` folder located at the root of the project and containing the Application configuration properties is moved to the ``src/main/resources`` folder.
   This change is required since Gradle uses the ``build`` to store the generated files and artifacts (equivalent of the MMM ``target~`` folder).
 
@@ -138,7 +138,7 @@ whereas it is defined by the ``filter`` object of the ``test`` task in Gradle::
 
    tasks.test {
       filter {
-         includeTestsMatching("*._AllTests_*")
+         includeTestsMatching("*_AllTests_*")
       }
    }
 
