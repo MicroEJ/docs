@@ -17,6 +17,24 @@ There are 3 different ways to provide a VEE Port for a module project:
          microejVeePort("com.mycompany:myveeport:1.0.0")
       }
 
+   .. note::
+
+      For dependencies stored in an Ivy repository, Gradle fetches them with the configuration ``default``.
+      If several artifacts are published with this configuration, the build will fail because it doesn't know which artifact to choose.
+      You can select the right artifact by adding information on the one to fetch in the ``artifact`` block, for example::
+
+         microejVeePort("com.mycompany:myveeport:1.0.0") {
+            artifact {
+               name = "artifact-name"
+               type = "zip"
+            }
+         }
+
+      This will select the artifact with the name ``artifact-name`` and with the type ``zip``.
+      
+      Please refer to `the Gradle documentation <https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html>`__ 
+      to learn all the options to select dependencies.
+
 At least 1 of these 3 ways is required to build an Application with a VEE Port.
 If several ways are used, the following rules are applied:
 
