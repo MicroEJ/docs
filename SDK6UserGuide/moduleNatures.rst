@@ -216,7 +216,7 @@ For example:
 
 .. code::
 
-  $ gradle debugOnSimulator -Ddebug.port=8000
+  $ gradle debugOnSimulator -Ddebug.port=8000 --no-daemon
 
 .. _sdk6_module_natures.tasks.loadTestApplicationConfiguration:
 
