@@ -1,3 +1,5 @@
+.. _ui-contact-list:
+
 Creating a Contact List using Scroll List
 =========================================
 
@@ -89,6 +91,8 @@ Creating the Contact Widget
    :align: center
 
 .. _Widget: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html
+
+**Next step:** :ref:`ui-internationalization`
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

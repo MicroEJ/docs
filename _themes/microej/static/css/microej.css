@@ -394,6 +394,11 @@ footer .btn {
   box-shadow: none;
 }
 
+/* remove next/previous buttons */
+footer .btn {
+  display: none;
+}
+
 footer .btn:hover {
   color:#fff !important;
   background-color:#f76241 !important;
@@ -773,8 +778,6 @@ footer span.commit .rst-content tt,
 }
 
 footer {
-  margin-top: 50px;
-  border-top: solid 1px #e5e9eb;
   padding-top: 24px;
 }
 

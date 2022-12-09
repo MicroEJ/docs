@@ -1,3 +1,5 @@
+.. _ui-starting-microui:
+
 Starting MicroUI
 ================
 
@@ -107,6 +109,8 @@ Displaying a Label
     :align: center
 
 .. _Label: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Label.html
+
+**Next step:** :ref:`ui-basic-drawing-on-screen`
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

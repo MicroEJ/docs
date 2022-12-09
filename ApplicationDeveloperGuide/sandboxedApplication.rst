@@ -36,7 +36,7 @@ The Application development flow requires the following elements:
 
 Please refer to the :ref:`kernel-developer-guide` to learn more on writing Kernel Applications and building Multi-Sandbox Executable and Virtual Devices.
 
-The next chapters explain how to create, test and publish Sandboxed Applications.
+The :ref:`next chapters <chapter.application.firstApplication>` explain how to create, test and publish Sandboxed Applications.
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 

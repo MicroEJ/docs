@@ -1,3 +1,5 @@
+.. _ui-scroll-list:
+
 Scroll List
 ===========
 
@@ -77,6 +79,8 @@ Scrollable List
         desktop.setWidget(scroll);
         desktop.requestShow();
      }
+
+**Next step:** :ref:`ui-contact-list`
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

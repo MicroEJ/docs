@@ -90,6 +90,8 @@ Combinator and Conditional Style
 .. image:: images/classselectorexample.png
  :align: center
 
+**Next step:** :ref:`ui-event-handling`
+
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
