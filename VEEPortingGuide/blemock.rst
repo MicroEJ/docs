@@ -17,8 +17,8 @@ means the Simulator uses a real Bluetooth LE device to scan other devices,
 advertise, discover services, connect, pair, etc... This design enables
 testing of apps in a real-world environment.
 
-The Bluetooth LE mock controller implementation is provided for the `ESP32-DevKitC
-board reference <https://www.espressif.com/en/products/hardware/esp32-devkitc/overview>`__.
+The Bluetooth LE mock controller implementation is provided for the `ESP32-S3-DevKitC-1
+board reference <https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html>`__.
 Other implementations or sources can be provided on request.
 
 .. _ej.api.bluetooth: https://repository.microej.com/modules/ej/api/bluetooth/
@@ -26,10 +26,10 @@ Other implementations or sources can be provided on request.
 Requirements
 ------------
 
-- A ESP32-DevKitC board.
+- A ESP32-S3-DevKitC-1 board.
 - A Bluetooth LE mock controller firmware_.
 - A tool to flash the firmware like
-  https://www.espressif.com/en/tools-type/flash-download-tools.
+  https://www.espressif.com/en/support/download/other-tools.
 
 Usage
 -----
@@ -47,15 +47,17 @@ Controller Setup
 
 To set up the controller, follow these steps:
 
-- Plug-in the ESP32-DevKitC board to your computer,
+- Plug-in the ESP32-S3-DevKitC-1 board to your computer,
 - Find the associated COM port,
 - In the flash tool:
 
-  - select the chip "ESP32 DownloadTool"
+  - select the chip "ESP32-S3"
   - browse for the firmware file
   - set the offset to 0x000000
+  - set the SPI speed to 80 Mhz
+  - set the SPI mode to DIO
   - set the COM port
-  - set the baudrate to 921 600
+  - set the baudrate to 460 800
   - start the flash download
 
 With the flash download tool from Espressif, you should end with something similar to this :
@@ -90,6 +92,8 @@ To configure the network:
    Additionally, the serial output of the device shows connection status.
 #. Connect your computer back to this network: your computer and the
    controller must be in the same network.
+#. Reboot the ESP32-S3-DevKitC-1 board. 
+
 
 Simulation
 ~~~~~~~~~~
@@ -102,6 +106,7 @@ The IP address of the controller is available in the logs :
 
 .. image:: images/blemock-controller-ip.png
    :align: center
+   :scale: 80%
 
 Before running your Bluetooth LE application on the Simulator, in the
 :ref:`Run configuration <concepts-microejlaunches>` panel, set the simulation mode
@@ -141,6 +146,12 @@ If the Wi-Fi credentials are not valid anymore, the controller restarts the
 network setup phase. Yet, in case the credentials are valid but you want to
 change them, erase the flash and reflash the firmware.
 
+"Invalid parameter type: 0x47 expected 0x53" error
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Reboot the ESP32-S3-DevKitC-1 board. The controller restarts and connects to the Wi-Fi.
+
+
 Simulation Errors
 ~~~~~~~~~~~~~~~~~
 
@@ -153,7 +164,7 @@ with the controller. Please check that the device is connected to the network
 network.
 
 .. _developer.microej.com: https://developer.microej.com/getting-started-sdk-esp32-wrover-5.html
-.. _firmware: http://repository.microej.com/packages/ble-mock/bluetooth-controller-ESP32WROOM-0.1.0.bin
+.. _firmware: https://repository.microej.com/packages/ble-mock/Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.bin
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
