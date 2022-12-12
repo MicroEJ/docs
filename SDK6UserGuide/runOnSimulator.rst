@@ -18,7 +18,7 @@ The prerequisites of this task are:
 
 Once these prerequisites are fulfilled, the Application can be started with the Simulator with the command line interface::
 
-    $ gradle runOnSimulator --no-daemon
+    $ gradle runOnSimulator
 
 or from Eclipse and IntelliJ IDEA, by double-clicking on the ``runOnSimulator`` task in the Gradle tasks view:
 
@@ -54,7 +54,7 @@ Verbose mode
 If you need more information about the execution of the Application with the Simulator, 
 the verbose mode can be enabled by using the ``--info`` Gradle option::
 
-   gradle runOnSimulator --no-daemon --info
+   gradle runOnSimulator --info
 
 .. _sdk_6_debug_on_simulator:
 
@@ -66,12 +66,12 @@ Debug on Simulator
 
 The SDK allows to run an Application with the Simulator in debug mode thanks to the Gradle task ``debugOnSimulator``::
 
-   gradle debugOnSimulator --no-daemon
+   gradle debugOnSimulator
 
 This task activates the debug mode on the port ``12000`` by default. 
 The port can be changed by using the System Property ``debug.port``::
 
-   gradle debugOnSimulator -Ddebug.port=8000 --no-daemon
+   gradle debugOnSimulator -Ddebug.port=8000
 
 Once started, the Simulator waits for the connection of a debugger.
 
