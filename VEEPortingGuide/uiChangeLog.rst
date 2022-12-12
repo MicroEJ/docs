@@ -4,6 +4,52 @@
 Changelog
 =========
 
+13.4.0 - 2022-12-13
+===================
+
+* Compatible with Architecture 7.13.0 or higher.
+
+MicroUI Implementation
+""""""""""""""""""""""
+	
+**Fixed**
+
+* Fix the unexpected resuming of the pump Java thread when a new event is added to the queue if it is an other component than the MicroUI queue that has suspended the pump Java thread.
+* Fix the flush bounds of drawCircleArc and drawEllipseArc.   
+
+FrontPanel
+""""""""""
+
+**Added**
+
+* Add some checks to not perform a drawing when it is unnecessary. 
+
+**Fixed**
+
+* Fix the Front Panel representation of a BufferedImage: it is always opaque. 
+
+ImageGenerator
+""""""""""""""
+
+**Added**
+
+* Add the image format A8_RLE.
+
+**Changed**
+
+* Rename RLE1 format in ARGB1565_RLE (keep RLE1 for backward compatibility).
+
+**Fixed**
+
+* Fix the non-generation of external images for the features.
+
+FontGenerator
+"""""""""""""
+
+**Fixed**
+
+* Fix the external fonts output folder for the features.
+
 13.3.1 - 2022-09-09
 ===================
 
