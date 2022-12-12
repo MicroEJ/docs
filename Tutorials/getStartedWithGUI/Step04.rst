@@ -1,3 +1,5 @@
+.. _ui-images:
+
 Images
 ======
 
@@ -79,6 +81,8 @@ Displaying an Image
     :align: center 
 
 .. _ImageWidget: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/ImageWidget.html
+
+**Next step:** :ref:`ui-advanced-styling`
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 

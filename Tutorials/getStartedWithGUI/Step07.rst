@@ -1,3 +1,5 @@
+.. _ui-basic-drawing-on-screen:
+
 Basic Drawing on Screen
 =======================
 
@@ -92,6 +94,8 @@ Drawing Thick Shapes
 .. _Painter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html
 .. _drawLine(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html#drawLine-ej.microui.display.GraphicsContext-int-int-int-int- 
 .. _ShapePainter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/drawing/ShapePainter.html
+
+**Next step:** :ref:`ui-animation`
 
 ..
    | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
