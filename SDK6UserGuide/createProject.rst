@@ -37,33 +37,36 @@ The ``app`` subproject is a standard Java Application project (Gradle ``java`` p
 so it must be updated to be a MicroEJ project:
 
 - open the project in your favorite editor.
-- open the ``app/build.gradle.kts`` file.
-- replace the ``application`` plugin in the ``plugins`` block by the MicroEJ plugin, 
-  depending on the module nature you want to build, for example for an Add-On Library::
+- in the ``app/build.gradle.kts`` file:
 
-    plugins {
+  - replace the ``application`` plugin in the ``plugins`` block by the MicroEJ plugin, 
+    depending on the module nature you want to build, for example for an Add-On Library::
+
+      plugins {
         id("com.microej.gradle.library") version "0.3.0"
-    }
+      }
 
-  or for an Application::
+    or for an Application::
 
-    plugins {
-        id("com.microej.gradle.application") version "0.3.0"
-    }
+      plugins {
+          id("com.microej.gradle.application") version "0.3.0"
+      }
 
-  .. note::
-    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
+    .. note::
+      The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
 
-  Please refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+    Please refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
-- remove the ``repositories`` block.
-- replace the content of the ``dependencies`` block by the dependencies required by your project. For example::
+  - remove the ``repositories`` block.
+  - replace the content of the ``dependencies`` block by the dependencies required by your project. For example::
 
-    dependencies {
-        implementation("ej.api:edc:1.3.5")
-    }
+      dependencies {
+          implementation("ej.api:edc:1.3.5")
+      }
 
-- remove the ``application`` block.
+  - remove the ``application`` block.
+
+- delete the test class in the folder ``app/src/test/java``.
 
 Eclipse
 -------
