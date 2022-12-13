@@ -7,8 +7,18 @@ Building or running an Application or a Test Suite with the SDK requires a VEE P
 
 There are 3 different ways to provide a VEE Port for a module project:
 
-- Set the build property ``veePortFile`` to the path of a VEE Port file (``.zip``, ``.jpf`` or ``.vde``).
-- Set the build property ``veePortDir`` to the path of the ``source`` folder of an already imported :ref:`Source VEE Port <source_platform_import>`.
+- Set the build property ``veePortFile`` in the ``microej`` configuration block to the path of a VEE Port file (``.zip``, ``.jpf`` or ``.vde``)::
+
+   microej {
+     veePortFile = "/path/to/my/veePort/file.zip"
+   }
+
+- Set the build property ``veePortDir`` in the ``microej`` configuration block to the path of the ``source`` folder of an already imported :ref:`Source VEE Port <source_platform_import>`::
+
+   microej {
+     veePortDir = "/path/to/my/veePort/folder"
+   }
+
 - Declare a module dependency with the conf ``microejVeePort``:
 
    .. code:: java
