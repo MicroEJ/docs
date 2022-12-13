@@ -5,7 +5,7 @@ Select a VEE Port
 
 Building or running an Application or a Test Suite with the SDK requires a VEE Port.
 
-There are 3 different ways to provide a VEE Port for a module project:
+There are 3 different ways to provide a VEE Port in the build file of the project:
 
 - Set the build property ``veePortFile`` in the ``microej`` configuration block to the path of a VEE Port file (``.zip``, ``.jpf`` or ``.vde``)::
 
