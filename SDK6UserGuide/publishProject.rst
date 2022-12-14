@@ -28,7 +28,7 @@ This can be done in the build file for example, with::
       }
   }
 
-Please refer to `the official documentation <https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:repositories>`__ for more information on publication repositories.
+Refer to `the official documentation <https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:repositories>`__ for more information on publication repositories.
 
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
