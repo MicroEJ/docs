@@ -9,7 +9,7 @@ This chapter explains the different ways to create a new project.
   The different project creation systems do not produce exactly the same project content and structure.
   Especially, the IntelliJ IDEA wizard produces a simple project whereas the CLI and Eclipse wizards create multi-projects builds.
   Both structures (single and multi projects) can be used, the recommended one depends on the context (components, size of the project, ...).
-  Please refer to `the official Gradle documentation <https://docs.gradle.org/current/userguide/multi_project_builds.html>`__ for more information.
+  Refer to `the official Gradle documentation <https://docs.gradle.org/current/userguide/multi_project_builds.html>`__ for more information.
 
 .. _sdk_6_create_project_cli:
 
@@ -18,7 +18,7 @@ Command Line Interface
 
 The creation of a project can be done via the command line interface via the Gradle ``init`` task.
 This task guides you through multiple steps to configure and select the project template to use.
-Please refer to `the official documentation <https://docs.gradle.org/current/userguide/build_init_plugin.html>`__ for the full list of templates and options.
+Refer to `the official documentation <https://docs.gradle.org/current/userguide/build_init_plugin.html>`__ for the full list of templates and options.
 
 In order to create a MicroEJ project, the best way is to use the ``application`` template:
 
@@ -55,7 +55,7 @@ so it must be updated to be a MicroEJ project:
     .. note::
       The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
 
-    Please refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+    Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
   - remove the ``repositories`` block.
   - replace the content of the ``dependencies`` block by the dependencies required by your project. For example::
@@ -146,7 +146,7 @@ The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
         id("com.microej.gradle.library") version "0.3.0"
     }
 
-  Please refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+  Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
 - remove the ``repositories`` block.
 - replace the content of the ``dependencies`` block by the dependencies required by your project. For example::
