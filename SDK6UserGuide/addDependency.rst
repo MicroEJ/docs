@@ -45,7 +45,7 @@ the ``ej.library.test:junit`` module is used for the tests compilation and execu
 and the ``com.microej.platform.esp32.esp-wrover-kit-v41:HDAHT`` module is the VEE Port used for build and test.
 
 For an exhaustive list of the available configurations and more details on how to manage dependencies, 
-please refer to the following official documentations:
+refer to the following official documentations:
 
 - `Declaring dependencies <https://docs.gradle.org/current/userguide/declaring_dependencies.html>`__
 - `Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management>`__
