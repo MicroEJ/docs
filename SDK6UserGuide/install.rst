@@ -4,7 +4,7 @@ Installation
 ============
 
 This chapter will guide you through the installation process of the SDK on your workstation.
-Please first check the System Requirements before proceding.
+First check the System Requirements before proceding.
 
 System Requirements
 -------------------
@@ -63,7 +63,7 @@ The two following IDEs are supported:
 - `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ - Minimum supported version is ``2021.2``.
 - `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/release/2022-09/r/eclipse-ide-java-developers>`__ - Minimum supported version is ``2022-03``.
 
-Please follow their respective documentation to install one of them.
+Follow their respective documentation to install one of them.
 
 .. warning::
    Only the IntelliJ IDEA IDE is fully supported for the moment, so it is recommend to use it instead of Eclipse.
@@ -82,7 +82,7 @@ IntelliJ IDEA
 Install the stable version
 ##########################
 
-Please follow these steps to install the latest stable version of the MicroEJ plugin for IntelliJ IDEA:
+Follow these steps to install the latest stable version of the MicroEJ plugin for IntelliJ IDEA:
 
 - in IntelliJ IDEA, go to ``File > Settings...``.
 - go to ``Plugins`` menu.

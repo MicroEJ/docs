@@ -42,7 +42,7 @@ There are 3 different ways to provide a VEE Port in the build file of the projec
 
       This will select the artifact with the name ``artifact-name`` and with the type ``zip``.
       
-      Please refer to `the Gradle documentation <https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html>`__ 
+      Refer to `the Gradle documentation <https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html>`__ 
       to learn all the options to select dependencies.
 
 At least 1 of these 3 ways is required to build an Application with a VEE Port.
