@@ -111,7 +111,7 @@ will be converted to:
 
 .. note::
 
-   Please refer to :ref:`sdk6_manage_versioning` section for more information on the way to define the module version.
+   Refer to :ref:`sdk6_manage_versioning` section for more information on the way to define the module version.
 
 Configuration
 ~~~~~~~~~~~~~
@@ -165,7 +165,7 @@ will be converted to::
 
    testImplementation("ej.library.test:junit:1.7.1")
 
-Please refer to the :ref:`sdk_6_add_dependency` page to go further on the Gradle dependencies and configurations.
+Refer to the :ref:`sdk_6_add_dependency` page to go further on the Gradle dependencies and configurations.
 
 Example
 ~~~~~~~
