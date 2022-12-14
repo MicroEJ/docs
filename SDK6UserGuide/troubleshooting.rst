@@ -63,6 +63,33 @@ The solution is to use a JDK 11 to fix this error:
 
 		Project JDK in IntelliJ IDEA
 
+Failing resolution in ``adp`` task
+----------------------------------
+
+During the build of a project, the error ``Cannot locate module version for non-maven layout`` may be raised::
+
+	Execution failed for task ':adp'.
+	> Could not resolve all files for configuration ':addonProcessorClasspath'.
+		> Could not download binary-nls-processor-2.4.2.adp (com.microej.tool.addon.runtime:binary-nls-processor:2.4.2)
+			> Cannot locate module version for non-maven layout.
+		> Could not download js-processor-0.13.0.adp (com.microej.tool.addon.runtime:js-processor:0.13.0)
+			> Cannot locate module version for non-maven layout.
+		> Could not download junit-processor-1.7.1.adp (ej.tool.addon.test:junit-processor:1.7.1)
+			> Cannot locate module version for non-maven layout.
+
+This is due to a wrong pattern in the declaration of the Ivy repositories.
+Check your Ivy repositories and make sure the value of the ``artifact`` of the ``patternLayout`` block is set to ``[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])``.
+For example::
+
+	ivy {
+		url = uri("https://repository.microej.com/5/artifacts/")
+		patternLayout {
+			artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
+			ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
+			setM2compatible(true)
+		}
+	}
+
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
