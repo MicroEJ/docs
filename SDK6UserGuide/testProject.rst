@@ -26,7 +26,7 @@ MicroEJ JUnit processor supports the following annotations: ``@After``,
 ``@AfterClass``, ``@Before``, ``@BeforeClass``, ``@Ignore``, ``@Test``.
 
 Each test case entry point must be declared using the ``org.junit.Test`` annotation (``@Test`` before a method declaration). 
-Please refer to JUnit documentation to get details on usage of other annotations.
+Refer to JUnit documentation to get details on usage of other annotations.
 
 Test on Simulator
 -----------------
