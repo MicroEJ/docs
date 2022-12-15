@@ -27,7 +27,7 @@ Requirements
 ------------
 
 - A ESP32-S3-DevKitC-1 board.
-- A Bluetooth LE mock controller firmware_.
+- A Bluetooth LE mock controller firmware_ (this Bluetooth controller executable only works with Bluetooth pack v2).
 - A tool to flash the firmware like
   https://www.espressif.com/en/support/download/other-tools.
 
@@ -44,6 +44,9 @@ If your are facing any issues, check the :ref:`Troubleshooting <blemock-troubles
 
 Controller Setup
 ~~~~~~~~~~~~~~~~
+
+Unzip ``Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.zip``. 
+Inside it you will find the firmware file: ``Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.bin``. 
 
 To set up the controller, follow these steps:
 
@@ -164,7 +167,7 @@ with the controller. Please check that the device is connected to the network
 network.
 
 .. _developer.microej.com: https://developer.microej.com/getting-started-sdk-esp32-wrover-5.html
-.. _firmware: https://repository.microej.com/packages/ble-mock/Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.bin
+.. _firmware: https://repository.microej.com/packages/ble-mock/Executable-Bluetooth-Mock-Controller-ESP32-S3-1.0.0.zip
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
