@@ -28,7 +28,7 @@ For each project, please refer to its ``README.md`` file for more details about 
 Run the Examples
 ----------------
 
-Make sure to have a valid Platform in the workspace.
+Make sure to have a valid VEE port in the workspace.
 The examples can be tested with the Platform `STM32F7508-DK <https://github.com/MicroEJ/Platform-STMicroelectronics-STM32F7508-DK/tree/1.5.0>`_.
 
 To run the examples in the simulator:
@@ -41,7 +41,7 @@ To run the examples in the simulator:
    Some of the examples may require extra configuration, please refer to their README for more details.
 
 
-To run the examples on a device :ref:`adapt the Run Configuration <device_build>`, then refer to the Platform documentation.
+To run the examples on a device, :ref:`adapt the Run Configuration <device_build>`, then refer to the VEE port documentation.
 
 
 Provided Examples
@@ -156,7 +156,7 @@ The difference is that the immutable stylesheet is described in an immutable fil
 
 This example shows how to create and use a "lazy" stylesheet. 
 The lazy stylesheet resolves the style for a widget with the same algorithm as the `cascading stylesheet <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html>`_.
-The difference is that the lazy stylesheet associates style factories with selectors (rather than styles).
+The difference is that the lazy stylesheet associates style factories with selectors (rather than style instances).
 As a result, the style elements are allocated "on demand" when a rule's selector applies to a widget.
 
 |endTable|
