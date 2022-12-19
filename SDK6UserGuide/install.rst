@@ -23,6 +23,19 @@ System Requirements
 - **Java Runtime Environment**
     - JDK 11 - Eclipse Temurin or Oracle Distributions
 
+Check your JDK version
+----------------------
+
+The SDK requires a JDK 11 to be installed.
+To check, run ``java -version`` in a terminal::
+
+   $ java -version
+   openjdk version "11.0.15" 2022-04-19
+   OpenJDK Runtime Environment Temurin-11.0.15+10 (build 11.0.15+10)
+   OpenJDK 64-Bit Server VM Temurin-11.0.15+10 (build 11.0.15+10, mixed mode)
+
+If you don't have a JDK 11 installed, see the :ref:`get_jdk` section.
+
 Install Gradle
 --------------
 
