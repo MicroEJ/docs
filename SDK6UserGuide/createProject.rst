@@ -128,6 +128,7 @@ The creation of a project with IntelliJ IDEA is done as follows:
 - select the language ``Java`` in the ``Language`` field.
 - select ``Gradle`` for the ``Build system`` field.
 - select your prefered language for the field ``Gradle DSL``.
+- check the ``Add sample code`` checkbox.
 - click on ``Create`` button.
 
 .. figure:: images/intellij-create-gradle-project.png
