@@ -161,6 +161,9 @@ clicking on :guilabel:`Remove` button.
 Troubleshooting
 ~~~~~~~~~~~~~~~
 
+Unable to add an Evaluation license key
+"""""""""""""""""""""""""""""""""""""""
+
 Consider this section when an error message appears while adding the
 Evaluation license key. Before contacting :ref:`our support team <get_support>`, please check the
 following conditions:
@@ -186,6 +189,12 @@ following conditions:
 
    Invalid License Key Error Message
 
+Machine UID has changed
+"""""""""""""""""""""""
+
+This can occur when the hardware configuration of the machine is changed (especially when the network interfaces have changed).
+
+In this case, you can either request a new activation key for this new UID or go back to the previous hardware configuration.
 
 .. _production_license:
 
