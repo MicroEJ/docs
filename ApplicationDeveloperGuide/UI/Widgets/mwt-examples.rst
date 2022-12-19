@@ -31,7 +31,7 @@ Run the Examples
 Make sure to have a valid Platform in the workspace.
 The examples can be tested with the Platform `STM32F7508-DK <https://github.com/MicroEJ/Platform-STMicroelectronics-STM32F7508-DK/tree/1.5.0>`_.
 
-To run the examples in a Virtual Device:
+To run the examples in the simulator:
 
 * Right-click on a project.
 * Select :guilabel:`Run As` > :guilabel:`MicroEJ Application`.
@@ -41,7 +41,7 @@ To run the examples in a Virtual Device:
    Some of the examples may require extra configuration, please refer to their README for more details.
 
 
-To run the examples on a device, :ref:`adapt the Run Configuration <device_build>`, then refer to the Platform documentation.
+To run the examples on a device :ref:`adapt the Run Configuration <device_build>`, then refer to the Platform documentation.
 
 
 Provided Examples
@@ -129,17 +129,37 @@ When the joystick directions (up, down, left, right) are pressed, the focus chan
 `Immutable Stylesheet <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/immutable-stylesheet>`_
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+|startTable| 
+
+.. image:: images/immutable-stylesheet.gif
+   :align: center
+
+|midTable|
+
 This example shows how to create and use an immutable stylesheet.
 The immutable stylesheet resolves the style for a widget with the same algorithm as the `cascading stylesheet <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html>`_.
-The difference is that the immutable stylesheet is described in an immutable file instead of Java code.
+The difference is that the immutable stylesheet is described in an immutable file instead of Java code. Therefore, the style objects are allocated in flash instead of the Java heap.
+
+|endTable|
 
 `Lazy Stylesheet <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/lazy-stylesheet>`_
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+|startTable| 
+
+.. image:: images/lazy-stylesheet.gif
+   :align: center
+
+|midTable|
 
 This example shows how to create and use a "lazy" stylesheet. 
 The lazy stylesheet resolves the style for a widget with the same algorithm as the `cascading stylesheet <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html>`_.
 The difference is that the lazy stylesheet associates style factories with selectors (rather than styles).
 As a result, the style elements are allocated "on demand" when a rule's selector applies to a widget.
+
+|endTable|
 
 `Masking Grid <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/masking-grid>`_
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
