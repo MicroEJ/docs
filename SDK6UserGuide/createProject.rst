@@ -43,13 +43,13 @@ so it must be updated to be a MicroEJ project:
     depending on the module nature you want to build, for example for an Add-On Library::
 
       plugins {
-        id("com.microej.gradle.library") version "0.3.0"
+        id("com.microej.gradle.library") version "0.3.1"
       }
 
     or for an Application::
 
       plugins {
-          id("com.microej.gradle.application") version "0.3.0"
+          id("com.microej.gradle.application") version "0.3.1"
       }
 
     .. note::
@@ -144,7 +144,7 @@ The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
 - use the MicroEJ Gradle plugin, depending on the module nature you want to build, for example for an Add-On Library::
 
     plugins {
-        id("com.microej.gradle.library") version "0.3.0"
+        id("com.microej.gradle.library") version "0.3.1"
     }
 
   Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
