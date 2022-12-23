@@ -4,7 +4,7 @@ Installation
 ============
 
 This chapter will guide you through the installation process of the SDK on your workstation.
-First check the System Requirements before proceding.
+First check the System Requirements before proceeding.
 
 System Requirements
 -------------------
@@ -58,19 +58,19 @@ Configure repositories
 In order to use the SDK Gradle plugins and modules in your project, 
 the :ref:`Central <central_repository>` and :ref:`Developer <developer_repository>` repositories must be configured.
 There are several ways to declare repositories.
-For starting you can declare them globally to make them available in all your projects:
+To get started, you can declare them globally to make them available in all your projects:
 
 - create the folder ``<user.home>/.gradle/init.d`` if they do not exist.
 - download and copy :download:`this file <resources/microej.init.gradle.kts>` in the previously created folder.
 
 At this stage, you can already build a project from the command line, 
-for example by executing the command ``gradle build`` at the root of the project.
+for example, by executing the command ``gradle build`` at the root of the project.
 But let's continue the installation process to have a complete development environment.
 
 Install the IDE
 ---------------
 
-Using an IDE is highly recommended to develop MicroEJ projects, as it makes the development more confortable and increases the productivity. 
+Using an IDE is highly recommended for developing MicroEJ projects, making the development more comfortable and increasing productivity.
 The two following IDEs are supported: 
 
 - `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ - Minimum supported version is ``2021.2``.
