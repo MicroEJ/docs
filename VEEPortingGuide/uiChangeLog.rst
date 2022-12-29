@@ -528,7 +528,7 @@ LLAPIs
 * Some new functions are optional: see header files list, tag *optional*.
 * Some header files list the libraries ``ej.api.microui`` and ``ej.api.drawing`` natives. Provided by Abstraction Layer implementation module `com.microej.clibrary.llimpl#microui`_.
 * Some header files list the drawing algorithms the platform can implement; all algorithms are optional.
-* Some header files list the internal graphical engine software algorithms the platform can call.
+* Some header files list the internal Graphics Engine software algorithms the platform can call.
 	
 **Changed**
 
@@ -628,7 +628,7 @@ MicroUI Implementation
 
 **Fixed**
 
-* Fix graphical engine empty clip (empty clip had got a size of 1 pixel).
+* Fix Graphics Engine empty clip (empty clip had got a size of 1 pixel).
 * Clip not respected when clip is set "just after or before" graphics context drawable area: first (or last) line (or column) of graphics context was rendered.
 
 [12.1.1] - 2019-10-29
@@ -641,7 +641,7 @@ MicroUI Implementation
 
 **Fixed**
 
-* Fix graphical engine clip (cannot be outside graphics context).
+* Fix Graphics Engine clip (cannot be outside graphics context).
 
 [(maint) 8.0.0] - 2019-10-18
 ============================
