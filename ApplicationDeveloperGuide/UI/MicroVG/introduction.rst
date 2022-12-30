@@ -9,7 +9,7 @@ To use the MicroVG Foundation Library, add `MicroVG API module`_ to a :ref:`modu
 
 .. code-block:: XML
 
-	<dependency org="ej.api" name="microvg" rev="1.1.1"/>
+	<dependency org="ej.api" name="microvg" rev="1.2.0"/>
 
 The MicroVG Library brings the following features:
 

@@ -7,13 +7,13 @@ Release Notes
 UI Pack Compatibility Version
 =============================
 
-The current VG Pack version is 1.1.0.
+The current VG Pack version is 1.2.0.
 The following table describes the compatibility ranges between VG and UI Packs. 
 
 +---------------+-----------------+------------------+
 | VG Pack Range | UI Pack Range   | Comment          |
 +===============+=================+==================+
-| 1.1.0         | [13.3.0-14.0.0[ | Internal feature |
+| [1.1.0-1.2.0] | [13.3.0-14.0.0[ | Internal feature |
 +---------------+-----------------+------------------+
 | [1.0.0-1.0.1] | [13.2.0-14.0.0[ |                  |
 +---------------+-----------------+------------------+
@@ -31,6 +31,8 @@ The following table describes Foundation Libraries API versions implemented in M
 
    * - VG Pack Range
      - MicroVG
+   * - 1.2.0
+     - 1.2.0
    * - 1.1.0
      - 1.1.0
    * - [1.0.0-1.0.1]
@@ -53,6 +55,8 @@ The following table describes the compatibility ranges between the VG Packs and 
 +---------------+---------+----------+----------+----------------+----------------+
 | VG Pack       | MicroVG | Freetype | Harfbuzz | MicroUI-VGLite | MicroVG-VGLite |
 +===============+=========+==========+==========+================+================+
+| 1.2.0         | 2.1.0   | 2.0.2    | 1.0.2    | 4.0.1          | 4.0.0          |
++---------------+---------+----------+----------+----------------+----------------+
 | 1.1.0         | 2.0.0   | 2.0.2    | 1.0.2    | 3.0.0          | 3.0.2          |
 +---------------+---------+----------+----------+----------------+----------------+
 | [1.0.0-1.1.0[ | n/a     | n/a      | n/a      | n/a            | n/a            |

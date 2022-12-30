@@ -4,6 +4,35 @@
 Changelog
 =========
 
+[1.2.0] - 2022-12-30
+====================
+
+* Compatible with UI Pack 13.3.0 or higher.
+
+MicroVG Implementation
+""""""""""""""""""""""
+
+**Changed**
+
+* Compatible with `MicroVG API 1.2`_.
+* Change the VectorImage internal format: _raw_ format instead of _immutables_ format. 
+ 
+.. _MicroVG API 1.2: https://repository.microej.com/modules/ej/api/microvg/1.2.0/
+
+Front Panel
+"""""""""""
+
+**Fixed**
+
+* Fix the redirection of fillEllipseArc to the right software algorithm. 
+
+Vector Image Converter
+""""""""""""""""""""""
+
+**Added**
+
+* Add "fill alpha" animations to gradient elements.
+
 [1.1.0] - 2022-09-05
 ====================
 
