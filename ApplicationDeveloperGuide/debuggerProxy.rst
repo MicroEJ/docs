@@ -6,7 +6,7 @@ MicroEJ Debugger Proxy
 Principle
 =========
 
-The MicroEJ debugger proxy is a Java Debug Wire protocol implementation on top of MicroEJ VEE enabling on board debugging.
+The MicroEJ debugger proxy is a Java Debug Wire protocol implementation (JDWP) on top of MicroEJ VEE enabling on board debugging.
 It consists of a TCP server implementing the JDWP protocol and acting as a proxy between the debugger and the VEE running on the board.
 
 .. figure:: images/debugger_proxy1.png
@@ -19,7 +19,8 @@ It consists of a TCP server implementing the JDWP protocol and acting as a proxy
 .. note::
    This feature requires Architecture version ``8.0.0`` or higher.
 
-The MicroeEJ debugger proxy only allow a postmortem debug now so it requires among other things a core dump file of a running MicroEJ VEE process.
+The MicroeEJ debugger proxy only allows a postmortem debug now so it requires among other things a core dump file of a running MicroEJ VEE process.
+
 
 Generate a coredump file for MicroEJ VEE Linux using GDB
 ========================================================
@@ -62,7 +63,7 @@ Open a shell terminal and run the following command
 * **debugger.out.format**: VEE .out file format, default to elf
 *  **debugger.out.bigEndianness**: VEE .out file big endian, default to false
 * **loader.path**: The path to the platform ``soarModelReader.jar`` and ``vmModelReader.jar`` needs to be provided here.
-  This is a Comma-separated Classpath, such as `lib,${HOME}/app/lib`.
+  This is a Comma-separated Classpath, such as `${PLATFORM}/tools/soarModelReader.jar,${PLATFORM}/tools/soarModelReader.jar`.
   Earlier entries take precedence, like a regular -classpath on the javac command line. 
   Other runtime jars can be provided using this property.
 
