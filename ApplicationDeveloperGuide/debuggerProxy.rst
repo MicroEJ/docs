@@ -33,9 +33,35 @@ Open a shell terminal and enter the following commands:
     echo 0x37 > /proc/self/coredump_filter
     # Stard gdb.
     gdb ./application.out
-    # In the gdb console run you program.
+
+Suppose we want to generate a corefile when the the signal ``SIGUSR1`` is received or when a garbage collection (GC) is done, enter the following commands:
+
+.. code-block:: sh
+
+   # In the gdb console.
+   catch signal SIGUSR1 # catch the SIGUSR1 signal
+   break LLMJVM_on_Runtime_gc_done # break in the LLMJVM_on_Runtime_gc_done function
+   commands 
+   silent
+   generate-core-file [file] # the argument `file` specifies the file name where to put the core dump
+   cont
+   end
+
+Run the program:
+
+.. code-block:: sh
+
+    # In the gdb console.
     run
-    # When you want to generate the coredump file, suspend first the process with Ctrl-C and then generate the core dump file.
+
+
+A coredump file will be generated automatically when the ``LLMJVM_on_Runtime_gc_done`` function is called or the ``SIGUSR1`` signal is received.
+You can also suspend the process and generate the core dump file yourself:
+
+.. code-block:: sh
+
+    # In the gdb console.
+    # suspend first the process with Ctrl-C and then generate the core dump file.
     generate-core-file [file] # the argument `file` specifies the file name where to put the core dump
 
 
