@@ -1,6 +1,6 @@
 ..  _MicroEJ-Debugger-Proxy:
 
-MicroEJ Debugger Proxy
+VEE Debugger Proxy
 ######################
 
 Principle
@@ -13,7 +13,7 @@ It consists of a TCP server implementing the JDWP protocol and acting as a proxy
    :alt: MicroEJ Development Tools Overview of the Debugger on Simulator
    :align: center
 
-   MicroEJ Development Tools Overview of the Debugger on Simulator
+   MicroEJ Development Tools Overview of the Debugger on Board
 
 
 .. note::
@@ -78,10 +78,10 @@ You can also suspend the process and generate the core dump file yourself:
     generate-core-file [file] # the argument `file` specifies the file name where to put the core dump
 
 
-Run the MicroEJ Debugger proxy
+Run the VEE Debugger proxy
 ==============================
 
-Please contact :ref:`our support team <get_support>` to get the MicroeEJ Debugger proxy program.
+Please contact :ref:`our support team <get_support>` to get the VEE Debugger Proxy program.
 
 Open a shell terminal and run the following command
 
