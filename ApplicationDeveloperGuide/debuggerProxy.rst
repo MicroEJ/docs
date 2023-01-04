@@ -8,9 +8,10 @@ Principle
 
 The MicroEJ debugger proxy is a Java Debug Wire protocol implementation (JDWP) on top of MicroEJ VEE enabling on board debugging.
 It consists of a TCP server implementing the JDWP protocol and acting as a proxy between the IDE (debugger) and the VEE (debuggee) running on the board.
+This tool can be used to load and inspect a core dump file generated when a process crashes to get a postmortem view of the VEE state when the crache occurred.
 
 .. figure:: images/debugger_proxy1.png
-   :alt: MicroEJ Development Tools Overview of the Debugger on Simulator
+   :alt: MicroEJ Development Tools Overview of the Debugger on Board
    :align: center
 
    MicroEJ Development Tools Overview of the Debugger on Board
