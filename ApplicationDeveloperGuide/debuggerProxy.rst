@@ -34,12 +34,25 @@ Open a shell terminal and enter the following commands:
     # Stard gdb.
     gdb ./application.out
 
-Suppose we want to generate a corefile when the the signal ``SIGUSR1`` is received or when a garbage collection (GC) is done, enter the following commands:
+Suppose we want to generate a corefile when the the signal ``SIGUSR1`` is received, or when a out of memory error occurs, or when a garbage collection (GC) is done, enter the following commands:
 
 .. code-block:: sh
 
    # In the gdb console.
    catch signal SIGUSR1 # catch the SIGUSR1 signal
+   commands 
+   silent
+   generate-core-file [file] # the argument `file` specifies the file name where to put the core dump
+   cont
+   end
+
+   break LLMJVM_on_OutOfMemoryError_thrown # break in the LLMJVM_on_OutOfMemoryError_thrown, this function is called when an out of memory error occurs
+   commands 
+   silent
+   generate-core-file [file] # the argument `file` specifies the file name where to put the core dump
+   cont
+   end
+
    break LLMJVM_on_Runtime_gc_done # break in the LLMJVM_on_Runtime_gc_done function
    commands 
    silent
