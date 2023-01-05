@@ -38,34 +38,30 @@ The ``app`` subproject is a standard Java Application project (Gradle ``java`` p
 so it must be updated to be a MicroEJ project:
 
 - open the project in your favorite editor.
-- in the ``app/build.gradle.kts`` file:
+- open the ``app/build.gradle.kts`` file.
+- erase its whole content.
+- add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
 
-  - replace the ``application`` plugin in the ``plugins`` block by the MicroEJ plugin, 
-    depending on the module nature you want to build, for example for an Add-On Library::
-
-      plugins {
+    plugins {
         id("com.microej.gradle.library") version "0.3.1"
-      }
+    }
 
-    or for an Application::
+  or for an Application::
 
-      plugins {
-          id("com.microej.gradle.application") version "0.3.1"
-      }
+    plugins {
+        id("com.microej.gradle.application") version "0.3.1"
+    }
 
-    .. note::
-      The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
+  .. note::
+    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
 
-    Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+  Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
-  - remove the ``repositories`` block.
-  - replace the content of the ``dependencies`` block by the dependencies required by your project. For example::
+- declare the dependencies required by your project in the ``dependencies`` block. For example::
 
       dependencies {
           implementation("ej.api:edc:1.3.5")
       }
-
-  - remove the ``application`` block.
 
 - delete the test class in the folder ``app/src/test/java``.
 
