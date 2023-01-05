@@ -22,14 +22,15 @@ Refer to `the official documentation <https://docs.gradle.org/current/userguide/
 
 In order to create a MicroEJ project, the best way is to use the ``application`` template:
 
-- execute the command ``gradle init``.
+- in a new empty directory, execute the command ``gradle init``.
 - select the ``application`` project type.
 - select the ``Java`` implementation language.
 - for the step ``Split functionality across multiple subprojects?``, select ``no``.
 - select your prefered build script DSL language.
-- decide if you want to use new APIs and behavior.
+- decide if you want to use Gradle new APIs and behavior in your build script.
+  If you are new to Gradle, choose 'no'.
 - for the test framework, select ``JUnit 4``.
-- choose the name of the project (defaults to the name of the parent folder).
+- choose the name of the project (defaults to the name of the parent directory).
 - choose the package name for the source files.
 
 The created project is a multi-project build containing a root project and a single subproject (named ``app``).
