@@ -56,7 +56,7 @@ It should display the Gradle version, for example:
 
    ...
 
-Configure repositories
+Configure Repositories
 ----------------------
 
 In order to use the SDK Gradle plugins and modules in your project, 
@@ -88,7 +88,7 @@ Follow their respective documentation to install one of them.
 
 These 2 IDEs come with the Gradle plugin installed by default.
 
-Install the IDE plugin
+Install the IDE Plugin
 ----------------------
 
 Once your favorite IDE is installed, the MicroEJ plugin must be installed.
@@ -96,7 +96,7 @@ Once your favorite IDE is installed, the MicroEJ plugin must be installed.
 IntelliJ IDEA
 ~~~~~~~~~~~~~
 
-Install the stable version
+Install the Stable Version
 ##########################
 
 Follow these steps to install the latest stable version of the MicroEJ plugin for IntelliJ IDEA:
@@ -115,7 +115,7 @@ Follow these steps to install the latest stable version of the MicroEJ plugin fo
 - click on the ``Install`` button.
 - click on the ``Restart IDE`` button.
 
-Install the snapshot version
+Install the Snapshot Version
 ############################
 
 If you want to test the version under development, the latest snapshot version of the plugin can be installed:
