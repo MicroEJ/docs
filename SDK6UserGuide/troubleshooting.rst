@@ -3,7 +3,7 @@
 Troubleshooting
 ===============
 
-Java compiler version issue
+Java Compiler Version Issue
 ---------------------------
 
 The SDK requires a JDK 11, so when a JDK 8 is used, the following kind of errors are raised:
@@ -63,7 +63,7 @@ The solution is to use a JDK 11 to fix this error:
 
 		Project JDK in IntelliJ IDEA
 
-Failing resolution in ``adp`` task
+Failing Resolution in ``adp`` Task
 ----------------------------------
 
 During the build of a project, the error ``Cannot locate module version for non-maven layout`` may be raised::
