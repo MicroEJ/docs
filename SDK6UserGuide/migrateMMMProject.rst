@@ -59,7 +59,7 @@ so it should be set to the value of the ``module`` attribute of the ``info`` tag
 
 The ``build.gradle.kts`` file will contain all the other information of the ``module.ivy`` file.
 
-Build type
+Build Type
 ~~~~~~~~~~
 
 The MMM build type defined in the ``module.ivy`` file with the ``ea:build`` tag is replaced by a plugin in the ``build.gradle.kts`` file.
