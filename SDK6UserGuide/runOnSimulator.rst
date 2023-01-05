@@ -48,7 +48,7 @@ With a simple Hello World Application, the output should be::
    SUCCESS
 
 
-Verbose mode
+Verbose Mode
 ------------
 
 If you need more information about the execution of the Application with the Simulator, 
