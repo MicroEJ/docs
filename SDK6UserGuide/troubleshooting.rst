@@ -90,6 +90,16 @@ For example::
 		}
 	}
 
+Missing Version for Publication
+-------------------------------
+
+If the following message is displayed when publishing a module::
+
+	The project version must be defined.
+
+it means the ``version`` property is missing and should be defined in the module build file.
+See :ref:`sdk_6_publish_project` for more information.
+
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
