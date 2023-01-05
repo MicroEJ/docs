@@ -62,7 +62,7 @@ Debug on Simulator
 ------------------
 
 .. warning::
-   IntelliJ IDEA cannot be used as the debugger client for the moment, so it is recommend to use Eclipse instead.
+   IntelliJ IDEA cannot be used as the debugger client for the moment, use Eclipse instead.
 
 The SDK allows to run an Application with the Simulator in debug mode thanks to the Gradle task ``debugOnSimulator``::
 
