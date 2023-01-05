@@ -83,7 +83,7 @@ The two following IDEs are supported:
 Follow their respective documentation to install one of them.
 
 .. warning::
-   Only the IntelliJ IDEA IDE is fully supported for the moment, so it is recommend to use it instead of Eclipse.
+   Only the IntelliJ IDEA IDE is fully supported for the moment.
    The support of Eclipse will come soon. 
 
 These 2 IDEs come with the Gradle plugin installed by default.
