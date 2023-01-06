@@ -45,28 +45,7 @@ Memory Considerations
 =====================
 
 Multi-Sandbox memory overhead of MicroEJ Core Engine runtime
-elements are described in :ref:`the table below <table_kf-overhead>`.
-
-.. _table_kf-overhead:
-.. table:: Multi-Sandbox Memory Overhead
-
-   +-----------+-----------+-----------------------------------------------+
-   | Runtime   | Memory    | Description                                   |
-   | element   |           |                                               |
-   +===========+===========+===============================================+
-   | Object    | RW        | 4 bytes                                       |
-   +-----------+-----------+-----------------------------------------------+
-   | Thread    | RW        | 24 bytes                                      |
-   +-----------+-----------+-----------------------------------------------+
-   | Stack     | RW        | 8 bytes                                       |
-   | Frame     |           |                                               |
-   +-----------+-----------+-----------------------------------------------+
-   | Class     | RO        | 4 bytes                                       |
-   | Type      |           |                                               |
-   +-----------+-----------+-----------------------------------------------+
-   | Interface | RO        | 8 bytes                                       |
-   | Type      |           |                                               |
-   +-----------+-----------+-----------------------------------------------+
+elements are described in :ref:`Memory Considerations table <memory-considerations>`.
 
 
 Dependencies
@@ -100,7 +79,7 @@ This library provides a set of options. Refer to the chapter
 .. _KF API Module: https://repository.microej.com/modules/ej/api/kf/
 
 ..
-   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

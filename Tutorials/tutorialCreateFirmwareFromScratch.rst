@@ -953,8 +953,7 @@ link time.
 
 The RAM requirements of the BSP (with printf), FreeRTOS, the MicroEJ
 Application and MicroEJ Runtime do not fit in the 8k of SRAM. It is
-possible to link within 8k of RAM by customizing a :ref:`MicroEJ Tiny
-Application<core-tiny>` on a baremetal device (without a RTOS) but
+possible to link within 8k of RAM by customizing a :ref:`MicroEJ Tiny-Sandbox <core-tiny>` on a baremetal device (without a RTOS) but
 this is not the purpose of this tutorial.
 
 Instead, this tutorial will switch to another device, the Luminary
@@ -1294,7 +1293,7 @@ The next steps recommended are:
 * Follow the :ref:`tutorial_create_platform_build_and_run_scripts` tutorial to get this MicroEJ Platform fully automated for build and execution. 
 
 ..
-   | Copyright 2020-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2020-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
