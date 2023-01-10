@@ -26,7 +26,12 @@ In order to create a MicroEJ project, the best way is to use the ``application``
 - select the ``application`` project type.
 - select the ``Java`` implementation language.
 - for the step ``Split functionality across multiple subprojects?``, select ``no``.
-- select your prefered build script DSL language.
+- select build script DSL ``Kotlin``.
+
+.. note::
+  MicroEJ uses Kotlin as the default Gradle build script DSL. 
+  The use of the Groovy build script DSL is still possible but not officially supported.
+
 - decide if you want to use Gradle new APIs and behavior in your build script.
   If you are new to Gradle, choose 'no'.
 - for the test framework, select ``JUnit 4``.
