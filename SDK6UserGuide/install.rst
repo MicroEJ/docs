@@ -26,7 +26,18 @@ System Requirements
 Check your JDK version
 ----------------------
 
-The SDK requires a JDK 11 to be installed.
+The SDK requires a JDK 11 to be installed and:
+
+- the ``JAVA_HOME`` environment variable set to the path of a JDK 11.
+
+OR
+
+- the ``java`` executable of a JDK 11 available in the ``PATH``.
+
+If the ``JAVA_HOME`` is set to a JDK, make sure that it is a JDK 11.
+If it is not a JDK 11, the SDK will use and fail.
+
+If the ``JAVA_HOME`` is not set, make sure a JDK 11 execuatble is available in the ``PATH`` environment variable.
 To check, run ``java -version`` in a terminal::
 
    $ java -version
@@ -34,27 +45,34 @@ To check, run ``java -version`` in a terminal::
    OpenJDK Runtime Environment Temurin-11.0.15+10 (build 11.0.15+10)
    OpenJDK 64-Bit Server VM Temurin-11.0.15+10 (build 11.0.15+10, mixed mode)
 
-If you don't have a JDK 11 installed, see the :ref:`get_jdk` section.
+If you don't have a JDK 11 installed, 
+you can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`__ or `Oracle <https://www.oracle.com/fr/java/technologies/downloads/>`__.
 
 Install Gradle
 --------------
 
-The first step is to install Gradle by following `the official documentation <https://gradle.org/install/>`__.
+Once a JDK is correctly configured, the next step is to install Gradle by following `the official documentation <https://gradle.org/install/>`__.
 The minimum required version is ``7.3``.
 Once done, you can verify your installation by opening a terminal and run the command ``gradle -v``.
-It should display the Gradle version, for example:
+It should display, amongst other information, the Gradle and the JVM versions:
 
 .. code:: console
 
    $ gradle -v
    
-   ...
-
    ------------------------------------------------------------
-   Gradle 7.5.1
+   Gradle 7.6
    ------------------------------------------------------------
 
-   ...
+   Build time:   2022-11-25 13:35:10 UTC
+   Revision:     daece9dbc5b79370cc8e4fd6fe4b2cd400e150a8
+
+   Kotlin:       1.7.10
+   Groovy:       3.0.13
+   Ant:          Apache Ant(TM) version 1.10.11 compiled on July 10 2021
+   JVM:          11.0.17 (Eclipse Adoptium 11.0.17+8)
+   OS:           Linux 5.15.0-56-generic amd64
+
 
 Configure Repositories
 ----------------------
