@@ -7,6 +7,7 @@ How-to Guides
    :maxdepth: 1
 
    gradleJavaHome
+   gradleSystemProperty
 
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
