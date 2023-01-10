@@ -10,14 +10,20 @@ There are 3 different ways to provide a VEE Port in the build file of the projec
 - Set the build property ``veePortFile`` in the ``microej`` configuration block to the path of a VEE Port file (``.zip``, ``.jpf`` or ``.vde``)::
 
    microej {
-     veePortFile = "/path/to/my/veePort/file.zip"
+     veePortFile = "C:\\path\\to\\my\\veePort\\file.zip"
    }
 
 - Set the build property ``veePortDir`` in the ``microej`` configuration block to the path of the ``source`` folder of an already imported :ref:`Source VEE Port <source_platform_import>`::
 
    microej {
-     veePortDir = "/path/to/my/veePort/folder"
+     veePortDir = "C:\\path\\to\\my\\veePort\\directory"
    }
+
+.. note::
+
+   This file, as well as other Gradle configuration files, respects the Java properties file convention: 
+   the OS path	must use the UNIX path convention (path separator is "/"). 
+   The Windows paths must have been converted manually replacing "\" by "/" or by "\\".
 
 - Declare a module dependency with the conf ``microejVeePort``:
 
