@@ -131,7 +131,7 @@ For example:
 .. code::
 
   microej {
-    veePortDir = "/path/to/my/veePort"
+    veePortDir = "C:\\path\\to\\my\\veePort\\directory"
   }
 
 .. _sdk6_module_natures.tasks.loadApplicationConfiguration:
