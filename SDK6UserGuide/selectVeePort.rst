@@ -22,8 +22,8 @@ There are 3 different ways to provide a VEE Port in the build file of the projec
 .. note::
 
    This file, as well as other Gradle configuration files, respects the Java properties file convention: 
-   the OS path	must use the UNIX path convention (path separator is "/"). 
-   The Windows paths must have been converted manually replacing "\" by "/" or by "\\".
+   the OS path	must use the UNIX path convention (path separator is ``/``). 
+   The Windows paths must have been converted manually replacing ``\`` by ``/`` or by ``\\``.
 
 - Declare a module dependency with the conf ``microejVeePort``:
 
