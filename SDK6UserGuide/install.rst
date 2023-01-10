@@ -12,7 +12,7 @@ System Requirements
 - **Hardware**
    - Intel x64 (Dual-core i5 minimum) or macOS AArch64 (M1) processor
    - 4GB RAM (minimum)
-   - 2GB Disk (minimum)
+   - 16GB Disk (minimum)
 
 - **Operating Systems**
    - Windows 11 or Windows 10
