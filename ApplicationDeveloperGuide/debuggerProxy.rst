@@ -1,4 +1,4 @@
-..  _MicroEJ-Debugger-Proxy:
+..  _debugger_proxy:
 
 VEE Debugger Proxy
 ######################
