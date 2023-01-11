@@ -1,7 +1,7 @@
 .. _architecture_changelog:
 
-MicroEJ Architectures Changelog
-===============================
+Architectures Changelog
+========================
 
 Notation
 --------
@@ -133,8 +133,8 @@ Core Engine
 -  Added new functions to Low Level API ``LLMJVM_MONITOR_impl.h`` (see :ref:`Advanced-Event-Tracing`):
 
   
-   -  ``void LLMJVM_MONITOR_IMPL_on_invoke_method(void* method)``: called by the MicroEJ Core Engine when an method is invoked.
-   -  ``void LLMJVM_MONITOR_IMPL_on_return_method(void* method)``: called by the MicroEJ Core Engine when a method returns.
+   -  ``void LLMJVM_MONITOR_IMPL_on_invoke_method(void* method)``: called by the Core Engine when an method is invoked.
+   -  ``void LLMJVM_MONITOR_IMPL_on_return_method(void* method)``: called by the Core Engine when a method returns.
 
 -  [Cortex-M] - Added support for MCU configuration with unaligned access traps enabled (``UNALIGN_TRP`` bit set in ``CCR`` register).
 
@@ -213,7 +213,7 @@ Known Issues
 Notes
 ~~~~~
 
-The ``Device`` module provided by the MicroEJ Architecture is deprecated
+The ``Device`` module provided by the Architecture is deprecated
 and will be removed in a future version. It has been moved to the
 `Device Pack`_. Please update your Platforms.
 
@@ -275,7 +275,7 @@ Integration
          
          <addSection file="${executable.file}" sectionFile="${section.file}" sectionName="${section.name}" sectionAlignment="${section.alignment}" outputDir="${output.dir}" outputName="${output.name}" />
 -  Updated Architecture End User License Agreement to version ``SDK 3.0-C``
--  Updated copyright notice of Low Level APIs header files to latest MicroEJ SDK default license
+-  Updated copyright notice of Low Level APIs header files to latest SDK default license
 -  Updated Architecture module with required files and configurations for correct publication in a module repository (``README.md``,
    ``LICENSE.txt``, and ``CHANGELOG.md``)
 
@@ -330,7 +330,7 @@ Tools
    -  Automatically configure ``src/main/java`` source directory
       beside a ``/bin`` directory if available
    -  Added an option (``cc.src.folders``) to specify the source directory
-      (require MicroEJ SDK ``5.4.1`` or higher)
+      (require SDK ``5.4.1`` or higher)
    -  Removed the analysis of generated code for ``synchronized``
       statements
    -  Fixed crash when loading source code with annotations
@@ -549,7 +549,7 @@ Core Engine
 Tools
 ~~~~~
 
--  Fixed Feature build script for MicroEJ SDK 5.x (introduced in version
+-  Fixed Feature build script for SDK 5.x (introduced in version
    :ref:`7.13.0 <changelog-7.13.0>`)
 -  Updated Memory Map Scripts for MicroUI 3 and Service libraries
 
@@ -705,10 +705,10 @@ Simulator
    options in ``Simulator`` > ``Kernel`` > ``Kernel UID``)
 -  Added object size in generated ``.heap`` dump files
 -  Optimized file accesses from the Application
--  Fixed crash in debug mode when paused on a breakpoint in MicroEJ SDK
+-  Fixed crash in debug mode when paused on a breakpoint in SDK
    and hovering a Java variable with the mouse
 -  Fixed potential crash in debug mode when putting a breakpoint in
-   MicroEJ SDK on a line of code declared in an inner class
+   the SDK on a line of code declared in an inner class
 -  Fixed potential crash in debug mode
    (`java.lang.NullPointerException`_) when a breakpoint set on a field
    access is hit
@@ -1092,7 +1092,7 @@ Tools
          unchanged (``project.file`` option in collaboration with
          ``augmentCProject`` scripts)
 
-   -  Launch configuration: ``Device > Deploy`` options allow to override the default Platform configuration in order to deploy each MicroEJ file into a separate folder.
+   -  Launch configuration: ``Device > Deploy`` options allow to override the default Platform configuration in order to deploy each file into a separate folder.
 
 -  Fixed wrong ELF file generation when a section included in a LOAD
    segment was generated before one of the sections included in a LOAD
@@ -1791,7 +1791,7 @@ SOAR
 [6.9.0] - 2017-03-15
 --------------------
 
-*Base version, included into MicroEJ SDK 4.1.*
+*Base version, included into SDK 4.1.*
 
 
 ..
