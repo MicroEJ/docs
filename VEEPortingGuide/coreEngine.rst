@@ -561,10 +561,10 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             | ``.bss.microej.immortals``     | Application immortal heap   | RW          | 4          |
             |                                |                             |             |            |
             +--------------------------------+-----------------------------+-------------+------------+
-            | ``.bss.microej.runtime``       | Core Engine                 | Internal RW | 8          |
-            |                                | internal heap               |             |            |
+            | ``.bss.microej.runtime``       | Core Engine                 | RW [1]_     | 8          |
+            |                                | internal structures         |             |            |
             +--------------------------------+-----------------------------+-------------+------------+
-            | ``.bss.microej.stacks``        | Application threads stack   | RW          | 8          |
+            | ``.bss.microej.stacks``        | Application threads stack   | RW [1]_     | 8          |
             |                                | blocks                      |             |            |
             +--------------------------------+-----------------------------+-------------+------------+
             | ``.bss.microej.statics``       | Application static fields   | RW          | 8          |
@@ -602,10 +602,10 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             | ``.bss.vm.stacks.java``     | Application threads stack   | RW          | 8          |
             |                             | blocks                      |             |            |
             +-----------------------------+-----------------------------+-------------+------------+
-            | ``ICETEA_HEAP``             | Core Engine                 | Internal RW | 8          |
-            |                             | internal heap               |             |            |
+            | ``ICETEA_HEAP``             | Core Engine                 | RW [1]_     | 8          |
+            |                             | internal structures         |             |            |
             +-----------------------------+-----------------------------+-------------+------------+
-            | ``_java_heap``              | Application heap            | RW          | 4          |
+            | ``_java_heap``              | Application heap            | RW [1]_     | 4          |
             +-----------------------------+-----------------------------+-------------+------------+
             | ``_java_immortals``         | Application immortal heap   | RW          | 4          |
             |                             |                             |             |            |
@@ -626,6 +626,9 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
         .. note::
             
             During its startup, the Core Engine automatically zero-initializes the sections ``ICETEA_HEAP``, ``_java_heap`` and ``_java_immortals``. 
+
+.. [1]
+   Among all RW sections, those should be always placed to internal RAM for performance purpose.
 
 Dependencies
 ============
