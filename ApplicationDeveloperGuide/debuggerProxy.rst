@@ -35,7 +35,11 @@ Open a shell terminal and enter the following commands:
     # Stard gdb.
     gdb ./application.out
 
-Suppose we want to generate a corefile when the the signal ``SIGUSR1`` is received, or when a out of memory error occurs, or when a garbage collection (GC) is done, enter the following commands:
+The following GDB script generates a core dump file when:
+
+- the signal ``SIGUSR1`` is received,
+- or when a out of memory error occurs, 
+- or when an explicit garbage collection (GC) is done.
 
 .. code-block:: sh
 
@@ -69,8 +73,9 @@ Run the program:
     run
 
 
-A coredump file will be generated automatically when the ``LLMJVM_on_Runtime_gc_done`` function is called or the ``SIGUSR1`` signal is received.
-You can also suspend the process and generate the core dump file yourself:
+A core dump file will be generated once the Executable reach one of the breaking conditions described previously.
+
+You can also suspend the process and generate the core dump file by yourself:
 
 .. code-block:: sh
 
