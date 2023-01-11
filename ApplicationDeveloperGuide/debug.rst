@@ -50,6 +50,10 @@ If you are unfamiliar with Java debugging or Eclipse IDE, see `Debugging the Ecl
 
 .. _Debugging the Eclipse IDE for Java Developers:  https://www.eclipse.org/community/eclipse_newsletter/2017/june/article1.php
 
+
+Get Library Sources
+-------------------
+
 All libraries included in MicroEJ SDK are provided with their source code and resources.
 The way the sources are retrieved depends on the kind of library (Add-On Library or Foundation Library).
 
