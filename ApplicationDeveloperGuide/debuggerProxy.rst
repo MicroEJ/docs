@@ -21,7 +21,6 @@ The debugger proxy allows a postmortem debug from a core dump of a running MICRO
 .. note::
    This feature requires Architecture version ``8.0.0`` or higher.
 
-The MicroeEJ debugger proxy only allows a postmortem debug now so it requires among other things a core dump file of a running MicroEJ VEE process.
 
 
 Generate a Core Dump File on Linux using GDB
