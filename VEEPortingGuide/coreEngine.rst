@@ -629,10 +629,10 @@ The memory consumption of main Core Engine runtime elements are described in :re
    +-----------+-----------+-----------------+-----------------+-----------------+
 
 .. note::
-	To get the full size of the Object, you can go in the :ref:`SOAR Information File <soar_info_file>` of your application and add to the header the types with the attribute ``instancesize=``. 
+	To get the full size of an Object, search for the type in the :ref:`SOAR Information File <soar_info_file>` and read the attribute ``instancesize`` (this includes the Object header). 
 
 .. note::
-	To get the full size of the Stack Frame, you can go in the :ref:`SOAR Information File <soar_info_file>` of your application and add to the header all the methods with the attribute ``stacksize=``. 
+	To get the full size of a Stack Frame, search for the method in the :ref:`SOAR Information File <soar_info_file>` and read the attribute ``stacksize`` (this includes the Stack Frame header). 
 
 Use
 ===
