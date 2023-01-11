@@ -46,8 +46,8 @@ In the the MicroeEJ SDK, open the Debug perperctive :guilabel:`Window` > :guilab
    MicroEJ Development Tools Overview of the Debugger on Board
 
 
-Library Sources
----------------
+Get Library Sources
+-------------------
 
 All libraries included in MicroEJ SDK are provided with their source code and resources.
 The way the sources are retrieved depends on the kind of library (Add-On Library or Foundation Library).
