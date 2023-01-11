@@ -1,23 +1,22 @@
-.. _core-tiny:
+.. _tinysandbox:
 
-================
-Tiny Application
-================
+============
+Tiny-Sandbox
+============
 
 
 Principle
 =========
 
-The Tiny application capability of the MicroEJ Core Engine allows to
-build a main application optimized for size. This capability is suitable
+The Tiny-Sandbox capability of the Core Engine allows to
+build a Standalone Application optimized for size. This capability is suitable
 for environments requiring a small memory footprint.
 
 
 Installation
 ============
 
-Tiny application is an option disabled by default. To enable Tiny
-application of the MicroEJ Core Engine, set the property
+Tiny-Sandbox is an option disabled by default. To enable Tiny-Sandbox of the MicroEJ Core Engine, set the property
 ``mjvm.standalone.configuration`` in ``configuration.xml`` file as
 follows:
 
@@ -41,7 +40,7 @@ In addition to general :ref:`limitations`:
    embedded.
 
 ..
-   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

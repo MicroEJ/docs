@@ -70,15 +70,15 @@ Capabilities
 
 The Core Engine defines 3 exclusive capabilities:
 
--  Mono-sandbox: capability to produce a monolithic firmware
+-  Mono-Sandbox: capability to produce a monolithic firmware
    (default one).
 
 -  Multi-Sandbox: capability to produce a extensible firmware on
    which new applications can be dynamically installed. See section
    :ref:`multisandbox`.
 
--  Tiny application: capability to produce a compacted firmware
-   (optimized for size). See section :ref:`core-tiny`.
+-  Tiny-Sandbox: capability to produce a compacted firmware
+   (optimized for size). See section :ref:`tinysandbox`.
 
 All the Core Engine capabilities may not be available on all
 architectures. Refer to section :ref:`appendix_matrixcapabilities`
@@ -598,6 +598,41 @@ platform configuration file, check :guilabel:`Multi Applications` to install the
 Core Engine in "Multi-Sandbox" mode. Otherwise, the "Single
 application" mode is installed.
 
+.. _memory-considerations:
+
+Memory Considerations
+=====================
+
+The memory consumption of main Core Engine runtime elements are described in :ref:`the table below <table-memory>`. 
+
+.. _table-memory:
+.. table:: Memory Considerations
+
+   +-----------+-----------+-----------------+-----------------+-----------------+
+   | Runtime   | Memory    | Size in bytes   | Size in bytes   | Size in bytes   |
+   | element   |           | (Mono-sandbox)  | (Multi-Sandbox) | (Tiny-Sandbox)  |
+   +===========+===========+=================+=================+=================+
+   | Object    | RW        | 4               | 8 (+4)          | 4               |
+   | Header    |           |                 |                 |                 |
+   +-----------+-----------+-----------------+-----------------+-----------------+
+   | Thread    | RW        | 168             | 192 (+24)       | 168             |
+   +-----------+-----------+-----------------+-----------------+-----------------+
+   | Stack     | RW        | 12              | 20 (+8)         | 12              |
+   | Frame     |           |                 |                 |                 |
+   | Header    |           |                 |                 |                 |
+   +-----------+-----------+-----------------+-----------------+-----------------+
+   | Class     | RO        | 32              | 36 (+4)         | 32              |
+   | Type      |           |                 |                 |                 |
+   +-----------+-----------+-----------------+-----------------+-----------------+
+   | Interface | RO        | 16              | 24 (+8)         | 16              |
+   | Type      |           |                 |                 |                 |
+   +-----------+-----------+-----------------+-----------------+-----------------+
+
+.. note::
+	To get the full size of an Object, search for the type in the :ref:`SOAR Information File <soar_info_file>` and read the attribute ``instancesize`` (this includes the Object header). 
+
+.. note::
+	To get the full size of a Stack Frame, search for the method in the :ref:`SOAR Information File <soar_info_file>` and read the attribute ``stacksize`` (this includes the Stack Frame header). 
 
 Use
 ===
@@ -625,7 +660,7 @@ Application project in order to access the :ref:`[BON] library <runtime_bon>`.
 .. _BON API Module: https://repository.microej.com/modules/ej/api/bon/
 
 ..
-   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
