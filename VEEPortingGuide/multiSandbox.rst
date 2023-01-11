@@ -44,7 +44,7 @@ especially :ref:`Multi-Sandbox Kernel link <kernel_link>` and :ref:`Sandboxed Ap
 Memory Considerations
 =====================
 
-Multi-Sandbox memory overhead of MicroEJ Core Engine runtime
+Multi-Sandbox memory overhead of Core Engine runtime
 elements are described in :ref:`Memory Considerations table <memory-considerations>`.
 
 

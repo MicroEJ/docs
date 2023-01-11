@@ -8,8 +8,8 @@ Tiny-Sandbox
 Principle
 =========
 
-The Tiny-Sandbox capability of the MicroEJ Core Engine allows to
-build a main application optimized for size. This capability is suitable
+The Tiny-Sandbox capability of the Core Engine allows to
+build a Standalone Application optimized for size. This capability is suitable
 for environments requiring a small memory footprint.
 
 
