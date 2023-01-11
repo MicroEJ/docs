@@ -16,12 +16,12 @@ and select :guilabel:`Debug As` > :guilabel:`MicroEJ Application`.
    MicroEJ Development Tools Overview of the Debugger on Simulator
 
 
-.. _application_debugger_on_board:
+.. _debug_on_device:
 
-Debug on Board
---------------
+Debug on Device
+---------------
 
-To debug an application on Board, first run the :ref:`MicroEJ debugger proxy <MicroEJ-Debugger-Proxy>`, and run a Remote Java Application launch:
+To debug an application on device, first run the :ref:`MicroEJ debugger proxy <MicroEJ-Debugger-Proxy>`, and run a Remote Java Application launch:
 
 - Go to :guilabel:`Run` > :guilabel:`Debug Configurations` > :guilabel:`Remote Java Application`
   
