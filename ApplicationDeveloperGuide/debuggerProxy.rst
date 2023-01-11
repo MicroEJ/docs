@@ -1,14 +1,15 @@
 ..  _debugger_proxy:
 
 VEE Debugger Proxy
-######################
+##################
 
 Principle
 =========
 
-The MicroEJ debugger proxy is a Java Debug Wire protocol implementation (JDWP) on top of MicroEJ VEE enabling on board debugging.
-It consists of a TCP server implementing the JDWP protocol and acting as a proxy between the IDE (debugger) and the VEE (debuggee) running on the board.
-This tool can be used to load and inspect a core dump file generated when a process crashes to get a postmortem view of the VEE state when the crache occurred.
+The VEE debugger proxy is an implementation of the Java Debug Wire protocol (JDWP) for debugging Applications executed by MICROEJ VEE.
+It consists of a TCP server implementing the JDWP protocol and acting as a proxy between the IDE (debugger) and the Executable (debuggee) running on the device.
+
+The debugger proxy allows a postmortem debug from a core dump of a running MICROEJ VEE Executable.
 
 .. figure:: images/debugger_proxy1.png
    :alt: MicroEJ Development Tools Overview of the Debugger on Board
@@ -23,8 +24,8 @@ This tool can be used to load and inspect a core dump file generated when a proc
 The MicroeEJ debugger proxy only allows a postmortem debug now so it requires among other things a core dump file of a running MicroEJ VEE process.
 
 
-Generate a coredump file for MicroEJ VEE Linux using GDB
-========================================================
+Generate a Core Dump File on Linux using GDB
+============================================
 
 Open a shell terminal and enter the following commands:
 
@@ -79,8 +80,8 @@ You can also suspend the process and generate the core dump file yourself:
     generate-core-file [file] # the argument `file` specifies the file name where to put the core dump
 
 
-Run the VEE Debugger proxy
-==============================
+Start the Proxy
+===============
 
 Please contact :ref:`our support team <get_support>` to get the VEE Debugger Proxy program.
 
@@ -90,15 +91,15 @@ Open a shell terminal and run the following command
 
     java -Dloader.path=<Path to runtime jars> \
         -Ddebugger.port=<8000> \
-        -Ddebugger.out.path=<Path to VEE .out file> \
-        -Ddebugger.out.coredump.path=<Path to VEE .out coredump file> \
+        -Ddebugger.out.path=<path to the Executable file (``application.out``)> \
+        -Ddebugger.out.coredump.path=<path to the core dump file> \
         -Ddebugger.out.format=<elf> \
         -Ddebugger.out.bigEndianness=<false> \
         -jar microej-debugger-proxy.jar
 
 
 * **debugger.port**: TCP server port, defaults to ``8000``
-* **debugger.out.path**: path to the Executable file
+* **debugger.out.path**: path to the Executable file (``application.out``)
 * **debugger.out.coredump.path**: path to the core dump file
 * **debugger.out.format**: VEE .out file format, default to elf
 *  **debugger.out.bigEndianness**: VEE .out file big endian, default to false
