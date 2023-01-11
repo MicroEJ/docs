@@ -628,7 +628,7 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             During its startup, the Core Engine automatically zero-initializes the sections ``ICETEA_HEAP``, ``_java_heap``, and ``_java_immortals``. 
 
 .. [1]
-   Among all RW sections, those should be always placed to internal RAM for performance purpose.
+   Among all RW sections, those should be always placed into internal RAM for performance purpose.
 
 Dependencies
 ============
