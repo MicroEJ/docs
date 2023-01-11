@@ -21,7 +21,7 @@ and select :guilabel:`Debug As` > :guilabel:`MicroEJ Application`.
 Debug on Device
 ---------------
 
-To debug an application on device, first run the :ref:`MicroEJ debugger proxy <MicroEJ-Debugger-Proxy>`, and run a Remote Java Application launch:
+To debug an application on device, first run the :ref:`MicroEJ debugger proxy <debugger_proxy>`, and run a Remote Java Application launch:
 
 - Go to :guilabel:`Run` > :guilabel:`Debug Configurations` > :guilabel:`Remote Java Application`
   
