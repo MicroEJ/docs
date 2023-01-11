@@ -553,24 +553,15 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             | Section name                   | Aim                         | Location    | Alignment  |
             |                                |                             |             | (in bytes) |
             +================================+=============================+=============+============+
-            | ``.bss.microej.features``      | System Applications         | RW          | 4          |
-            |                                | static fields               |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
             | ``.bss.microej.heap``          | Application heap            | RW          | 4          |
             +--------------------------------+-----------------------------+-------------+------------+
             | ``.bss.microej.immortals``     | Application immortal heap   | RW          | 4          |
             |                                |                             |             |            |
             +--------------------------------+-----------------------------+-------------+------------+
-            | ``.bss.microej.runtime``       | Core Engine                 | RW [1]_     | 8          |
-            |                                | internal structures         |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
             | ``.bss.microej.stacks``        | Application threads stack   | RW [1]_     | 8          |
             |                                | blocks                      |             |            |
             +--------------------------------+-----------------------------+-------------+------------+
             | ``.bss.microej.statics``       | Application static fields   | RW          | 8          |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.rodata.microej.features``   | System Applications code    | RO          | 4          |
-            |                                | and resources               |             |            |
             +--------------------------------+-----------------------------+-------------+------------+
             | ``.rodata.microej.resource.*`` | Application resources       | RO          | 16         |
             |                                | (one section per resource)  |             |            |
@@ -578,8 +569,17 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             | ``.rodata.microej.soar``       | Application and library     | RO          | 16         |
             |                                | code                        |             |            |
             +--------------------------------+-----------------------------+-------------+------------+
+            | ``.bss.microej.runtime``       | Core Engine                 | RW [1]_     | 8          |
+            |                                | internal structures         |             |            |
+            +--------------------------------+-----------------------------+-------------+------------+
             | ``.text.__icetea__*``          | Core Engine                 | RX          | ISA        |
             |                                | generated code              |             | Specific   |
+            +--------------------------------+-----------------------------+-------------+------------+
+            | ``.bss.microej.features``      | System Applications         | RW          | 4          |
+            |                                | static fields               |             |            |
+            +--------------------------------+-----------------------------+-------------+------------+
+            | ``.rodata.microej.features``   | System Applications code    | RO          | 4          |
+            |                                | and resources               |             |            |
             +--------------------------------+-----------------------------+-------------+------------+
 
         .. note::
@@ -594,16 +594,10 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             | Section name                | Aim                         | Location    | Alignment  |
             |                             |                             |             | (in bytes) |
             +=============================+=============================+=============+============+
-            | ``.bss.features.installed`` | System Applications         | RW          | 4          |
-            |                             | static fields               |             |            |
-            +-----------------------------+-----------------------------+-------------+------------+
             | ``.bss.soar``               | Application static fields   | RW          | 8          |
             +-----------------------------+-----------------------------+-------------+------------+
             | ``.bss.vm.stacks.java``     | Application threads stack   | RW          | 8          |
             |                             | blocks                      |             |            |
-            +-----------------------------+-----------------------------+-------------+------------+
-            | ``ICETEA_HEAP``             | Core Engine                 | RW [1]_     | 8          |
-            |                             | internal structures         |             |            |
             +-----------------------------+-----------------------------+-------------+------------+
             | ``_java_heap``              | Application heap            | RW [1]_     | 4          |
             +-----------------------------+-----------------------------+-------------+------------+
@@ -613,14 +607,20 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             | ``.rodata.resources``       | Application resources       | RO          | 16         |
             |                             |                             |             |            |
             +-----------------------------+-----------------------------+-------------+------------+
-            | ``.rodata.soar.features``   | System Applications code    | RO          | 4          |
-            |                             | and resources               |             |            |
-            +-----------------------------+-----------------------------+-------------+------------+
             | ``.text.soar``              | Application and library     | RO          | 16         |
             |                             | code                        |             |            |
             +-----------------------------+-----------------------------+-------------+------------+
+            | ``ICETEA_HEAP``             | Core Engine                 | RW [1]_     | 8          |
+            |                             | internal structures         |             |            |
+            +-----------------------------+-----------------------------+-------------+------------+
             | ``.text.__icetea__*``       | Core Engine                 | RX          | ISA        |
             |                             | generated code              |             | Specific   |
+            +-----------------------------+-----------------------------+-------------+------------+
+            | ``.bss.features.installed`` | System Applications         | RW          | 4          |
+            |                             | static fields               |             |            |
+            +-----------------------------+-----------------------------+-------------+------------+
+            | ``.rodata.soar.features``   | System Applications code    | RO          | 4          |
+            |                             | and resources               |             |            |
             +-----------------------------+-----------------------------+-------------+------------+
 
         .. note::
