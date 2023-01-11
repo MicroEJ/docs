@@ -87,7 +87,7 @@ You can also suspend the process and generate the core dump file by yourself:
 Start the Proxy
 ===============
 
-Please contact :ref:`our support team <get_support>` to get the VEE Debugger Proxy program.
+Please contact :ref:`our support team <get_support>` to get the VEE Debugger Proxy tool compatible with your Architecture version.
 
 Open a shell terminal and run the following command
 
