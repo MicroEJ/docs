@@ -1,4 +1,4 @@
-.. _core-tiny:
+.. _tinysandbox:
 
 ================
 Tiny-Sandbox

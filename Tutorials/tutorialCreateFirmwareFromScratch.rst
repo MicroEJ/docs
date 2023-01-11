@@ -953,7 +953,7 @@ link time.
 
 The RAM requirements of the BSP (with printf), FreeRTOS, the MicroEJ
 Application and MicroEJ Runtime do not fit in the 8k of SRAM. It is
-possible to link within 8k of RAM by customizing a :ref:`MicroEJ Tiny-Sandbox <core-tiny>` on a baremetal device (without a RTOS) but
+possible to link within 8k of RAM by customizing a :ref:`MicroEJ Tiny-Sandbox <tinysandbox>` on a baremetal device (without a RTOS) but
 this is not the purpose of this tutorial.
 
 Instead, this tutorial will switch to another device, the Luminary

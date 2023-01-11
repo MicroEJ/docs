@@ -78,7 +78,7 @@ The Core Engine defines 3 exclusive capabilities:
    :ref:`multisandbox`.
 
 -  Tiny-Sandbox: capability to produce a compacted firmware
-   (optimized for size). See section :ref:`core-tiny`.
+   (optimized for size). See section :ref:`tinysandbox`.
 
 All the Core Engine capabilities may not be available on all
 architectures. Refer to section :ref:`appendix_matrixcapabilities`
