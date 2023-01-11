@@ -97,9 +97,9 @@ Open a shell terminal and run the following command
         -jar microej-debugger-proxy.jar
 
 
-* **debugger.port**: TCP server port, default to 8000
-* **debugger.out.path**: path to VEE .out file
-* **debugger.out.coredump.path**: path to VEE .out coredump file
+* **debugger.port**: TCP server port, defaults to ``8000``
+* **debugger.out.path**: path to the Executable file
+* **debugger.out.coredump.path**: path to the core dump file
 * **debugger.out.format**: VEE .out file format, default to elf
 *  **debugger.out.bigEndianness**: VEE .out file big endian, default to false
 * **loader.path**: The path to the platform ``soarModelReader.jar`` and ``vmModelReader.jar`` needs to be provided here.
