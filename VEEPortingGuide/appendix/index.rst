@@ -9,6 +9,7 @@ Appendices
     tools/index
     toolchain
     ../platformMigration
+    ../architecture7Migration
 
 ..
    | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
