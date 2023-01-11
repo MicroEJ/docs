@@ -12,10 +12,10 @@ It consists of a TCP server implementing the JDWP protocol and acting as a proxy
 The debugger proxy allows a postmortem debug from a core dump of a running MICROEJ VEE Executable.
 
 .. figure:: images/debugger_proxy1.png
-   :alt: MicroEJ Development Tools Overview of the Debugger on Board
+   :alt: Debugger Proxy Principle
    :align: center
 
-   MicroEJ Development Tools Overview of the Debugger on Board
+   Debugger Proxy Principle
 
 
 .. note::
