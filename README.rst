@@ -3,6 +3,14 @@ MicroEJ Documentation
 
 This repository holds the official MicroEJ documentation available at https://docs.microej.com/.
 
+Prerequisites
+-------------
+
+The documentation build is based on `Sphinx <https://www.sphinx-doc.org/en/master/>`_. The following tools must be installed:
+
+- Python 3.7 or higher,
+- Package installer for Python (`Pip <https://pip.pypa.io/en/stable/installation/>`_).
+
 Building
 --------
 
