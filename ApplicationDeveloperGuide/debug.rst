@@ -58,7 +58,7 @@ All libraries included in MicroEJ SDK are provided with their source code and re
 The way the sources are retrieved depends on the kind of library (Add-On Library or Foundation Library).
 
 Add-On Library Sources
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 Add-On Library sources are packaged in a dedicated file named ``[module_name]-source.jar`` available in the module directory:
 
@@ -90,7 +90,7 @@ Then the implementation class is open in read-only mode.
 .. _foundation_library_sources:
 
 Foundation Library Sources
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Foundation Library sources are directly included in the implementation file (JAR file) provided by the Platform.
 
