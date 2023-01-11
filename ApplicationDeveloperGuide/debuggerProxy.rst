@@ -107,7 +107,7 @@ Open a shell terminal and run the following command
   Earlier entries take precedence, like a regular -classpath on the javac command line. 
   Other runtime jars can be provided using this property.
 
-Open the MicroEJ SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` to debug your code.
+Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` to debug your code.
 
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
