@@ -584,7 +584,7 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
 
         .. note::
             
-            During its startup, the Core Engine automatically zero-initializes the sections ``.bss.microej.runtime``, ``.bss.microej.heap`` and ``.bss.microej.immortals``. 
+            During its startup, the Core Engine automatically zero-initializes the sections ``.bss.microej.runtime``, ``.bss.microej.heap``, and ``.bss.microej.immortals``. 
 
     .. tab:: Linker Sections (Architecture ``7.x``)
 
