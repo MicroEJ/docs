@@ -603,13 +603,13 @@ application" mode is installed.
 Memory Considerations
 =====================
 
-The memory consumption of main MicroEJ Core Engine runtime elements are described in :ref:`the table below <table-memory>`. 
+The memory consumption of main Core Engine runtime elements are described in :ref:`the table below <table-memory>`. 
 
 .. _table-memory:
 .. table:: Memory Considerations
 
    +-----------+-----------+-----------------+-----------------+-----------------+
-   | Runtime   | Memory    | Sizing bytes    | Sizing bytes    | Sizing bytes    |
+   | Runtime   | Memory    | Size in bytes   | Size in bytes   | Size in bytes   |
    | element   |           | (Mono-sandbox)  | (Multi-Sandbox) | (Tiny-Sandbox)  |
    +===========+===========+=================+=================+=================+
    | Object    | RW        | 4               | 8 (+4)          | 4               |
