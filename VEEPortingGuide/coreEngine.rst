@@ -541,46 +541,94 @@ Link
 
 Several sections are defined by the Core Engine. Each section
 must be linked by the third-party linker.
+Starting from Architecture ``8.x``, sections have been renamed to follow the standard ELF naming convention.
 
-.. table:: Linker Sections
+.. tabs::
 
-   +-----------------------------+-----------------------------+-------------+------------+
-   | Section name                | Aim                         | Location    | Alignment  |
-   |                             |                             |             | (in bytes) |
-   +=============================+=============================+=============+============+
-   | ``.bss.features.installed`` | System Applications         | RW          | 4          |
-   |                             | statics                     |             |            |
-   +-----------------------------+-----------------------------+-------------+------------+
-   | ``.bss.soar``               | Application static          | RW          | 8          |
-   +-----------------------------+-----------------------------+-------------+------------+
-   | ``.bss.vm.stacks.java``     | Application threads stack   | RW          | 8          |
-   |                             | blocks                      |             |            |
-   +-----------------------------+-----------------------------+-------------+------------+
-   | ``ICETEA_HEAP``             | MicroEJ Core Engine         | Internal RW | 8          |
-   |                             | internal heap               |             |            |
-   +-----------------------------+-----------------------------+-------------+------------+
-   | ``_java_heap``              | Application heap            | RW          | 4          |
-   +-----------------------------+-----------------------------+-------------+------------+
-   | ``_java_immortals``         | Application immortal heap   | RW          | 4          |
-   |                             |                             |             |            |
-   +-----------------------------+-----------------------------+-------------+------------+
-   | ``.rodata.resources``       | Application resources       | RO          | 16         |
-   |                             |                             |             |            |
-   +-----------------------------+-----------------------------+-------------+------------+
-   | ``.rodata.soar.features``   | System Applications code    | RO          | 4          |
-   |                             | and resources               |             |            |
-   +-----------------------------+-----------------------------+-------------+------------+
-   | ``.shieldedplug``           | Shielded Plug data          | RO          | 4          |
-   +-----------------------------+-----------------------------+-------------+------------+
-   | ``.text.soar``              | Application and library     | RO          | 16         |
-   |                             | code                        |             |            |
-   +-----------------------------+-----------------------------+-------------+------------+
-   | ``.text.__icetea__*``       | MicroEJ Core Engine         | RX          | ISA        |
-   |                             | generated code              |             | Specific   |
-   +-----------------------------+-----------------------------+-------------+------------+
+    .. tab:: Linker Sections (Architecture ``8.x``)
 
-.. note::
-	Sections ``ICETEA_HEAP``, ``_java_heap`` and ``_java_immortals`` are zero-initialized at Core Engine startup. 
+        .. table:: 
+        
+            +--------------------------------+-----------------------------+-------------+------------+
+            | Section name                   | Aim                         | Location    | Alignment  |
+            |                                |                             |             | (in bytes) |
+            +================================+=============================+=============+============+
+            | ``.bss.microej.heap``          | Application heap            | RW          | 4          |
+            +--------------------------------+-----------------------------+-------------+------------+
+            | ``.bss.microej.immortals``     | Application immortal heap   | RW          | 4          |
+            |                                |                             |             |            |
+            +--------------------------------+-----------------------------+-------------+------------+
+            | ``.bss.microej.stacks``        | Application threads stack   | RW [1]_     | 8          |
+            |                                | blocks                      |             |            |
+            +--------------------------------+-----------------------------+-------------+------------+
+            | ``.bss.microej.statics``       | Application static fields   | RW          | 8          |
+            +--------------------------------+-----------------------------+-------------+------------+
+            | ``.rodata.microej.resource.*`` | Application resources       | RO          | 16         |
+            |                                | (one section per resource)  |             |            |
+            +--------------------------------+-----------------------------+-------------+------------+
+            | ``.rodata.microej.soar``       | Application and library     | RO          | 16         |
+            |                                | code                        |             |            |
+            +--------------------------------+-----------------------------+-------------+------------+
+            | ``.bss.microej.runtime``       | Core Engine                 | RW [1]_     | 8          |
+            |                                | internal structures         |             |            |
+            +--------------------------------+-----------------------------+-------------+------------+
+            | ``.text.__icetea__*``          | Core Engine                 | RX          | ISA        |
+            |                                | generated code              |             | Specific   |
+            +--------------------------------+-----------------------------+-------------+------------+
+            | ``.bss.microej.features``      | System Applications         | RW          | 4          |
+            |                                | static fields               |             |            |
+            +--------------------------------+-----------------------------+-------------+------------+
+            | ``.rodata.microej.features``   | System Applications code    | RO          | 4          |
+            |                                | and resources               |             |            |
+            +--------------------------------+-----------------------------+-------------+------------+
+
+        .. note::
+            
+            During its startup, the Core Engine automatically zero-initializes the sections ``.bss.microej.runtime``, ``.bss.microej.heap``, and ``.bss.microej.immortals``. 
+
+    .. tab:: Linker Sections (Architecture ``7.x``)
+
+        .. table:: 
+                
+            +-----------------------------+-----------------------------+-------------+------------+
+            | Section name                | Aim                         | Location    | Alignment  |
+            |                             |                             |             | (in bytes) |
+            +=============================+=============================+=============+============+
+            | ``.bss.soar``               | Application static fields   | RW          | 8          |
+            +-----------------------------+-----------------------------+-------------+------------+
+            | ``.bss.vm.stacks.java``     | Application threads stack   | RW          | 8          |
+            |                             | blocks                      |             |            |
+            +-----------------------------+-----------------------------+-------------+------------+
+            | ``_java_heap``              | Application heap            | RW [1]_     | 4          |
+            +-----------------------------+-----------------------------+-------------+------------+
+            | ``_java_immortals``         | Application immortal heap   | RW          | 4          |
+            |                             |                             |             |            |
+            +-----------------------------+-----------------------------+-------------+------------+
+            | ``.rodata.resources``       | Application resources       | RO          | 16         |
+            |                             |                             |             |            |
+            +-----------------------------+-----------------------------+-------------+------------+
+            | ``.text.soar``              | Application and library     | RO          | 16         |
+            |                             | code                        |             |            |
+            +-----------------------------+-----------------------------+-------------+------------+
+            | ``ICETEA_HEAP``             | Core Engine                 | RW [1]_     | 8          |
+            |                             | internal structures         |             |            |
+            +-----------------------------+-----------------------------+-------------+------------+
+            | ``.text.__icetea__*``       | Core Engine                 | RX          | ISA        |
+            |                             | generated code              |             | Specific   |
+            +-----------------------------+-----------------------------+-------------+------------+
+            | ``.bss.features.installed`` | System Applications         | RW          | 4          |
+            |                             | static fields               |             |            |
+            +-----------------------------+-----------------------------+-------------+------------+
+            | ``.rodata.soar.features``   | System Applications code    | RO          | 4          |
+            |                             | and resources               |             |            |
+            +-----------------------------+-----------------------------+-------------+------------+
+
+        .. note::
+            
+            During its startup, the Core Engine automatically zero-initializes the sections ``ICETEA_HEAP``, ``_java_heap``, and ``_java_immortals``. 
+
+.. [1]
+   Among all RW sections, those should be always placed into internal RAM for performance purpose.
 
 Dependencies
 ============
