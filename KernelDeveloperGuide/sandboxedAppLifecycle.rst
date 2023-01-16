@@ -21,7 +21,7 @@ An Application is in one of the following states:
 - **UNINSTALLED**: the Application has been unlinked from the Kernel.
 
 ..
-   | Copyright 2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2022-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

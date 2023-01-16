@@ -113,7 +113,7 @@ Option: Symbol Table Size
 This is the number of symbols that can be handled by the internal symbol table (any kind of names: class names, method names, ...).
 
 ..
-   | Copyright 2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2022-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

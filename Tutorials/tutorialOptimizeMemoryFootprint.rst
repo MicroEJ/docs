@@ -450,7 +450,7 @@ MicroUI Images Heap
 .. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html
 
 ..
-   | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

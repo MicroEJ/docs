@@ -61,7 +61,7 @@ The following table describes the compatibility ranges between the VG Packs and 
 .. note:: The C module ``MicroVG over VGLite`` fetches automatically by transitivity to the other C modules. No need to fetch explicitly the different modules (except the C module ``Harfbuzz``). An update of this C module updates (if necessary) the other C modules.
 
 ..
-   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
