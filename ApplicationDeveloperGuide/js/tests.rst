@@ -1,10 +1,3 @@
-..
-.. ReStructuredText
-..
-.. Copyright 2021 MicroEJ Corp. All rights reserved.
-.. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
-..
-
 .. _js.tests:
 
 Tests
@@ -60,3 +53,10 @@ This method ``assert`` will be available in all tests to do assertions.
 - build the application in the SDK or in command line with the :ref:`MMM CLI <mmm_build_kit>`
 
 The execution of the tests produces a report available in the folder ``target~/test/html`` for the project.
+
+..
+   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

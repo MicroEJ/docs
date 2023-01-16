@@ -1,10 +1,3 @@
-..
-.. ReStructuredText
-..
-.. Copyright 2021 MicroEJ Corp. All rights reserved.
-.. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
-..
-
 .. _js.sources:
 
 Sources Management
@@ -76,3 +69,10 @@ JavaScript sources need to be processed before being executed. This processing i
 - when building the project with :ref:`MMM <mmm>`.
 - when developing the project in MicroEJ SDK.
   The MicroEJ SDK detects any change in JavaScript sources folder (addition/update/deletion) to trigger the processing.
+
+..
+   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

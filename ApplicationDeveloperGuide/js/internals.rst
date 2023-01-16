@@ -1,10 +1,3 @@
-..
-.. ReStructuredText
-..
-.. Copyright 2021 MicroEJ Corp. All rights reserved.
-.. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
-..
-
 .. _js.internals:
 
 Internals
@@ -89,3 +82,10 @@ In this case, the generated method in `JsFfi` looks like:
 		}
 		throw new JsErrorWrapper(new JsObjectError.TypeError("getTime"));
 	}
+
+..
+   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
