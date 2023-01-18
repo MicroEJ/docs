@@ -1,9 +1,3 @@
-..
-.. ReStructuredText
-..
-.. Copyright 2021 MicroEJ Corp. All rights reserved.
-.. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
-..
 
 Create a JavaScript API from Java
 =================================
@@ -77,3 +71,10 @@ Finally, build and execute the application with the :ref:`MMM CLI <mmm_build_kit
 The length of the string ``Hello World!`` (12) should be displayed.
 
 For more information about communication between Java and JavaScript please refer to the :ref:`js.java` page.
+
+..
+   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

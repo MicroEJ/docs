@@ -174,7 +174,7 @@ For example:
 .. _BoundsInspector.boundsRecursiveToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/BoundsInspector.html#boundsRecursiveToString-ej.mwt.Widget-
 
 ..
-   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

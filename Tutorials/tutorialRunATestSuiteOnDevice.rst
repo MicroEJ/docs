@@ -283,7 +283,7 @@ The following image shows the test suite report fully passed:
 .. image:: ./images/tuto_testsuite_fs_all_tests_passed.PNG
 
 ..
-   | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

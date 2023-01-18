@@ -171,7 +171,7 @@ runtime image. When an image has not been pre-processed (see
 .. _ej.microui.display.Image: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html
 
 ..
-   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
