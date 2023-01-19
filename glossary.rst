@@ -6,7 +6,7 @@ MicroEJ Glossary
 .. glossary::
 
    Add-On Library
-      An Add-On Library is a pure `managed code <https://en.wikipedia.org/wiki/Managed_code>`_ (Java) library. It runs over one or more Foundation Libraries.
+      An Add-On Library is a pure `managed code <https://developer.microej.com/managed-code/>`_ (Java) library. It runs over one or more Foundation Libraries.
 
    Abstraction Layer
       An Abstraction Layer is the C code that implements a Foundation Library's low-level APIs over a board support package (BSP) or a C library.
