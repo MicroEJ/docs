@@ -6,7 +6,7 @@ MicroEJ Glossary
 .. glossary::
 
    Add-On Library
-      An Add-On Library is a pure `managed code <https://en.wikipedia.org/wiki/Managed_code>`_ (Java) library. It runs over one or more Foundation Libraries.
+      An Add-On Library is a pure `Managed Code`_ (Java) library. It runs over one or more Foundation Libraries.
 
    Abstraction Layer
       An Abstraction Layer is the C code that implements a Foundation Library's low-level APIs over a board support package (BSP) or a C library.
@@ -39,7 +39,7 @@ MicroEJ Glossary
             A Multi-Sandbox Executable is an Executable that implements the ability to be extended, by exposing a set of APIs and a memory space to link Sandboxed Applications. (formerly called a Multi-app Firmware) 
 
    Foundation Library
-      A Foundation Library is a library that provides core or hardware-dependent functionalities. A Foundation Library combines `managed code <https://en.wikipedia.org/wiki/Managed_code>`_ (Java) and low-level APIs (C) implemented by one or more Abstraction Layers through a native interface (:ref:`SNI <sni>`).
+      A Foundation Library is a library that provides core or hardware-dependent functionalities. A Foundation Library combines `Managed Code`_ (Java) and low-level APIs (C) implemented by one or more Abstraction Layers through a native interface (:ref:`SNI <sni>`).
 
    MICROEJ SDK
       MICROEJ SDK is a comprehensive tools suite for developers to build VEE Ports for their devices, create Applications, build Executable, and run Virtual Devices.
@@ -61,6 +61,9 @@ MicroEJ Glossary
 
    Virtual Device
       A Virtual Device is a software package that includes the simulation part of an Executable: runtime, libraries and application(s). It can be run on any desktop computer without the need of the SDK.
+      
+.. _Managed Code: https://developer.microej.com/managed-code/
+
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
