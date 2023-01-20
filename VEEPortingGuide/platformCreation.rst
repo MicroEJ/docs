@@ -4,7 +4,7 @@
 Platform Creation
 =================
 
-This section describes the steps to create a new MicroEJ Platform in MicroEJ SDK, 
+This section describes the steps to create a new MicroEJ Platform in the SDK, 
 and options to connect it to an external Board Support Package (BSP) as well as a third-party C toolchain. 
 
 .. note::
@@ -204,7 +204,7 @@ Once the build is terminated, you should get the following message:
 
       Total time: 43 seconds
 
-Then, import the Platform directory to your MicroEJ SDK workspace as mentioned in the report. You should get a ready-to-use MicroEJ Platform project
+Then, import the Platform directory to your SDK workspace as mentioned in the report. You should get a ready-to-use MicroEJ Platform project
 in the workspace available for the MicroEJ Application project to run on. You can also check the MicroEJ Platform availability in:
 :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
 
@@ -238,7 +238,7 @@ and :ref:`Legacy MicroEJ Generic Packs <pack_generic_legacy>` are **not installe
 They must be enabled and configured using the Platform Editor.
 
 Before opening the Platform Editor, the Platform must have been built once to let :ref:`mmm` resolve and download MicroEJ Architecture and Packs locally.
-Then import them in MicroEJ SDK as follows:
+Then import them in the SDK as follows:
 
 - Select :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` > :guilabel:`Architectures`,
 - Browse :guilabel:`myplatform-configuration/target~/dependencies` folder (contains ``.xpf`` and ``.xpfp`` files once the Platform is built),
@@ -381,13 +381,13 @@ and the ``build.bat`` or ``build.sh`` file is executed to produce the final exec
 
 .. note::
 
-   The final build stage to produce the executable file can be done outside of MicroEJ SDK, and thus 
+   The final build stage to produce the executable file can be done outside of the SDK, and thus 
    the BSP connection configuration is optional.
    
    BSP connection configuration is only required in the following cases:
 
-   - Use MicroEJ SDK to produce the final executable file of a Mono-Sandbox Executable (recommended).
-   - Use MicroEJ SDK to run a :ref:`MicroEJ Test Suite <platform_testsuite>` on device.
+   - Use the SDK to produce the final executable file of a Mono-Sandbox Executable (recommended).
+   - Use the SDK to run a :ref:`MicroEJ Test Suite <platform_testsuite>` on device.
    - Build a Multi-Sandbox Executable.
 
 .. _bsp_connection_cases:
@@ -412,7 +412,7 @@ The 3 most common integration cases are:
 
   This case is recommended when:
 
-  - the MicroEJ Firmware is built outside MicroEJ SDK.
+  - the MicroEJ Firmware is built outside the SDK.
   - the same MicroEJ Platform is intended to be reused on multiple BSP projects which do not share the same structure.
 
 - Case 2: Partial BSP connection
@@ -527,7 +527,7 @@ The following table describes the Application options, which can be set as regul
 
 For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a summary of the options to set: 
 
-- No BSP connection, executable file built outside MicroEJ SDK
+- No BSP connection, executable file built outside the SDK
   :: 
 
     Platform Options:
@@ -536,7 +536,7 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
     Application Options:
       [NONE]
 
-- No BSP connection, executable file built using MicroEJ SDK
+- No BSP connection, executable file built using the SDK
   :: 
 
     Platform Options:
@@ -548,7 +548,7 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
       deploy.dir.microejinc=[absolute_path]
       deploy.dir.microejscript=[absolute_path]
 
-- Partial BSP connection, executable file built outside MicroEJ SDK
+- Partial BSP connection, executable file built outside the SDK
   :: 
 
     Platform Options:
@@ -559,7 +559,7 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
     Application Options:
       deploy.bsp.root.dir=[absolute_path]
 
-- Partial BSP connection, executable file built using MicroEJ SDK
+- Partial BSP connection, executable file built using the SDK
   :: 
 
     Platform Options:
@@ -572,7 +572,7 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
       deploy.bsp.root.dir=[absolute_path]
       deploy.bsp.microejscript=true
 
-- Full BSP connection, executable file built using MicroEJ SDK
+- Full BSP connection, executable file built using the SDK
   :: 
 
     Platform Options:
