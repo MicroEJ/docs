@@ -366,7 +366,7 @@ The result of this compilation is a ``microejapp.o`` file.
 
 This file has to be linked with the MicroEJ Platform runtime file (``microejruntime.a``) 
 and a third-party C project, called the Board Support Package (BSP),
-to obtain the final binary file (MicroEJ Firmware).
+to obtain the final binary file (the Executable).
 For more information, please consult the :ref:`MicroEJ build process overview <build_process_overview>`.
 
 The BSP connection can be configured by defining 4 folders where the following files are located:
@@ -377,18 +377,18 @@ The BSP connection can be configured by defining 4 folders where the following f
 - BSP project :ref:`build script <bsp_connection_build_script>` file (``build.bat`` or ``build.sh``).
 
 Once the MicroEJ Application file (``microejapp.o``) is built, the files are then copied to these locations 
-and the ``build.bat`` or ``build.sh`` file is executed to produce the final executable file (``application.out``).
+and the ``build.bat`` or ``build.sh`` file is executed to produce the Executable (``application.out``).
 
 .. note::
 
-   The final build stage to produce the executable file can be done outside of the SDK, and thus 
+   The final build stage to produce the Executable can be done outside of the SDK, and thus 
    the BSP connection configuration is optional.
    
    BSP connection configuration is only required in the following cases:
 
-   - Use the SDK to produce the final executable file of a Mono-Sandbox Executable (recommended).
+   - Use the SDK to produce the Executable of a Mono-Sandbox Application (recommended).
    - Use the SDK to run a :ref:`MicroEJ Test Suite <platform_testsuite>` on device.
-   - Build a Multi-Sandbox Executable.
+   - Build a the Executable of a Multi-Sandbox Application.
 
 .. _bsp_connection_cases:
 
@@ -412,7 +412,7 @@ The 3 most common integration cases are:
 
   This case is recommended when:
 
-  - the MicroEJ Firmware is built outside the SDK.
+  - the Executable is built outside the SDK.
   - the same MicroEJ Platform is intended to be reused on multiple BSP projects which do not share the same structure.
 
 - Case 2: Partial BSP connection
@@ -432,7 +432,7 @@ The 3 most common integration cases are:
   This case is recommended when:
   
   - the MicroEJ Platform is used to build one MicroEJ Application on top of one BSP. 
-  - the Application and BSP are slightly coupled, thus making a change in the BSP just requires to build the firmware again.
+  - the Application and BSP are slightly coupled, thus making a change in the BSP just requires to build the Executable again.
 
 - Case 3: Full BSP connection
   
@@ -522,12 +522,12 @@ The following table describes the Application options, which can be set as regul
 
    It is also possible to configure the BSP root directory by setting the :ref:`build option <mmm_build_options>` ``toolchain.dir``, 
    instead of the application option ``deploy.bsp.root.dir``.
-   This allows to configure a MicroEJ Firmware by specifying both the Platform (using the ``target.platform.dir`` option) and the BSP 
+   This allows to build the Executable by specifying both the Platform (using the ``target.platform.dir`` option) and the BSP 
    at build level, without having to modify the application options files.
 
 For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a summary of the options to set: 
 
-- No BSP connection, executable file built outside the SDK
+- No BSP connection, Executable built outside the SDK
   :: 
 
     Platform Options:
@@ -536,7 +536,7 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
     Application Options:
       [NONE]
 
-- No BSP connection, executable file built using the SDK
+- No BSP connection, Executable built using the SDK
   :: 
 
     Platform Options:
@@ -548,7 +548,7 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
       deploy.dir.microejinc=[absolute_path]
       deploy.dir.microejscript=[absolute_path]
 
-- Partial BSP connection, executable file built outside the SDK
+- Partial BSP connection, Executable built outside the SDK
   :: 
 
     Platform Options:
@@ -559,7 +559,7 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
     Application Options:
       deploy.bsp.root.dir=[absolute_path]
 
-- Partial BSP connection, executable file built using the SDK
+- Partial BSP connection, Executable built using the SDK
   :: 
 
     Platform Options:
@@ -572,7 +572,7 @@ For each :ref:`Platform BSP connection case <bsp_connection_cases>`, here is a s
       deploy.bsp.root.dir=[absolute_path]
       deploy.bsp.microejscript=true
 
-- Full BSP connection, executable file built using the SDK
+- Full BSP connection, Executable built using the SDK
   :: 
 
     Platform Options:
@@ -591,7 +591,7 @@ Build Script File
 -----------------
 
 The BSP build script file is used to invoke the third-party C toolchain (compiler and linker)
-to produce the final executable file (``application.out``).
+to produce the Executable (``application.out``).
 
 The build script must comply with the following specification:
 
@@ -600,7 +600,7 @@ The build script must comply with the following specification:
 - On error, the script must end with a non zero exit code.
 - On success
 
-  - The executable must be copied to a file named ``application.out`` in the directory from
+  - The Executable must be copied to a file named ``application.out`` in the directory from
     where the script has been executed.
   - The script must end with zero exit code.
 
@@ -609,7 +609,7 @@ Many build script templates are available for most commonly used C toolchains in
 
 .. note::
 
-    The final executable file must be an ELF executable file.  On
+    The Executable must be an ELF executable file.  On
     Unix, the command ``file(1)`` can be use to check the format of a
     file.  For example:
 
@@ -625,17 +625,17 @@ Run Script File
 
 This script is required only for Platforms intended to run a :ref:`MicroEJ Testsuite <platform_testsuite>` on device.
 
-The BSP run script is used to invoke a third-party tool to upload and start the executable file on device.
+The BSP run script is used to invoke a third-party tool to upload and start the Executable on device.
 
 The run script must comply with the following specification:
 
 - On Windows operating system, it is a Windows batch file named ``run.bat``.
 - On macOS or Linux operating systems, it is a shell script named ``run.sh``, with execution permission enabled.
-- The executable file is passed as first script parameter if there is one, otherwise it is the ``application.out`` file located in the directory from where the script has been executed.
+- The Executable filename is passed as first script parameter if there is one, otherwise it is the ``application.out`` file located in the directory from where the script has been executed.
 - On error, the script must end with a non zero exit code.
 - On success:
 
-  - The executable file (``application.out``) has been uploaded and started on the device
+  - The Executable (``application.out``) has been uploaded and started on the device
   - The script must end with zero exit code.
 
 The run script can optionally redirect execution traces. If it does not implement execution traces redirection,
