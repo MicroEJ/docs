@@ -594,15 +594,15 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             | Section name                | Aim                         | Location    | Alignment  |
             |                             |                             |             | (in bytes) |
             +=============================+=============================+=============+============+
-            | ``.bss.soar``               | Application static fields   | RW          | 8          |
-            +-----------------------------+-----------------------------+-------------+------------+
-            | ``.bss.vm.stacks.java``     | Application threads stack   | RW          | 8          |
-            |                             | blocks                      |             |            |
-            +-----------------------------+-----------------------------+-------------+------------+
-            | ``_java_heap``              | Application heap            | RW [1]_     | 4          |
+            | ``_java_heap``              | Application heap            | RW          | 4          |
             +-----------------------------+-----------------------------+-------------+------------+
             | ``_java_immortals``         | Application immortal heap   | RW          | 4          |
             |                             |                             |             |            |
+            +-----------------------------+-----------------------------+-------------+------------+
+            | ``.bss.vm.stacks.java``     | Application threads stack   | RW [1]_     | 8          |
+            |                             | blocks                      |             |            |
+            +-----------------------------+-----------------------------+-------------+------------+
+            | ``.bss.soar``               | Application static fields   | RW          | 8          |
             +-----------------------------+-----------------------------+-------------+------------+
             | ``.rodata.resources``       | Application resources       | RO          | 16         |
             |                             |                             |             |            |
