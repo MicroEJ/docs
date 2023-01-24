@@ -35,9 +35,8 @@ OR
 - the ``java`` executable of a JDK 11 available in the ``PATH``.
 
 If the ``JAVA_HOME`` is set to a JDK, make sure that it is a JDK 11.
-If it is not a JDK 11, the SDK will use and fail.
 
-If the ``JAVA_HOME`` is not set, make sure a JDK 11 execuatble is available in the ``PATH`` environment variable.
+If the ``JAVA_HOME`` is not set, make sure a JDK 11 executable is available in the ``PATH`` environment variable.
 To check, run ``java -version`` in a terminal::
 
    $ java -version
