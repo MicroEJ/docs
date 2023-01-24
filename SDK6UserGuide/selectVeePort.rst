@@ -7,7 +7,7 @@ Building or running an Application or a Test Suite with the SDK requires a VEE P
 
 There are 3 different ways to provide a VEE Port in the build file of the project:
 
-- Set the build property ``veePortFile`` in the ``microej`` configuration block to the path of a VEE Port file (``.zip``, ``.jpf`` or ``.vde``)::
+- Set the build property ``veePortFile`` in the ``microej`` configuration block to the path of a VEE Port file (``.zip``, ``.jpf``, or ``.vde``)::
 
    microej {
      veePortFile = "C:\\path\\to\\my\\veePort\\file.zip"
@@ -55,7 +55,7 @@ At least 1 of these 3 ways is required to build an Application with a VEE Port.
 If several ways are used, the following rules are applied:
 
 - If ``veePortFile`` or ``veePortDir`` is set, the other options are ignored.
-- If the module project defined several VEE Ports, the build fails. For example the following cases are not allowed:
+- If the module project defined several VEE Ports, the build fails. For example, the following cases are not allowed:
 
   - Setting a VEE Port with the option ``veePortFile`` and another one with the option ``veePortDir``
   - Declaring 2 VEE Ports as Dependencies
