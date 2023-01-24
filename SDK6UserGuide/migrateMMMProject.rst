@@ -1,7 +1,7 @@
 .. _sdk_6_migrate_mmm_project:
 
-Migrate a MMM Project
-=====================
+Migrate an MMM Project
+======================
 
 This page explains how to migrate a project created with the SDK 5 or lower to the SDK 6.
 It covers the following items:
@@ -15,13 +15,13 @@ It covers the following items:
 Project structure
 -----------------
 
-The structure of a SDK 6 Gradle project is similar to a MMM project.
+The structure of an SDK 6 Gradle project is similar to an MMM project.
 The differences are:
 
 - the ``module.ivy`` file is replaced by a ``build.gradle.kts`` file and a ``settings.gradle.kts`` file (see :ref:`sdk_6_migrate_build_file`).
 - the ``module.ant`` and ``override.module.ant`` files are removed (see :ref:`sdk_6_migrate_build_scripts`).
 - the ``build`` folder located at the root of the project and containing the Application configuration properties is moved to the ``src/main/resources`` folder.
-  This change is required since Gradle uses the ``build`` to store the generated files and artifacts (equivalent of the MMM ``target~`` folder).
+  This change is required since Gradle uses the ``build`` folder to store the generated files and artifacts (equivalent of the MMM ``target~`` folder).
 
 Therefore, here are the 2 project structures side by side: 
 
@@ -116,7 +116,7 @@ will be converted to:
 Configuration
 ~~~~~~~~~~~~~
 
-The configuration of a MMM build is only done with ``ea:property`` tags in the ``module.ivy`` file, 
+The configuration of an MMM build is only done with ``ea:property`` tags in the ``module.ivy`` file, 
 whereas it can take multiple form in Gradle. 
 You can refer to the :ref:`sdk6_module_natures` page for a complete list of configurations.
 
