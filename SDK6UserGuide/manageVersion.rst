@@ -4,8 +4,8 @@ Manage Versioning
 =================
 
 The SDK 5 used a specific notation for the snapshot versions. 
-Instead of using the ``-SNAPSHOT`` prefix (i.e. ``1.0.0-SNAPSHOT``), 
-it used the ``-RCxxx`` prefix, where ``xxx`` is the timestamp (i.e. ``1.0.0-RC202212021535``).
+Instead of using the ``-SNAPSHOT`` prefix (e.g.,``1.0.0-SNAPSHOT``), 
+it used the ``-RCxxx`` prefix, where ``xxx`` is the timestamp (e.g., ``1.0.0-RC202212021535``).
 
 In order to be able to transition from SDK 5 to SDK 6 smoothly, it is recommended to continue to publish snapshot versions with the ``-RCxxx`` prefix.
 This can be done by setting the Gradle module version with the ``-RC`` prefix. For example::
@@ -17,7 +17,7 @@ This way, SDK 5 projects will be able to fetch modules published by the SDK 6.
 
 .. note::
 
-  You are free to use any version number notation you want but you have to be aware that SDK 5 projects 
+  You are free to use any version number notation you want, but you have to be aware that SDK 5 projects 
   will not be able to depend on snapshot modules published without the ``-RCxxx`` prefix.
 
 
