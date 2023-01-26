@@ -9,6 +9,7 @@ The SDK 6 allows to:
 - execute the tests of a project with the Simulator.
 - execute the Artifact Checker on a project.
 - run Applications with the Simulator.
+- load the VEE Port from its archive file path, its folder path, a dependency or from the ``dropins`` folder.
 
 Therefore, it does not support all the features of the SDK 5, especially:
 
@@ -17,7 +18,6 @@ Therefore, it does not support all the features of the SDK 5, especially:
 - build of the Virtual Device of an Standalone Application.
 - build of the Feature file (.fo) of a Sandboxed Application.
 - build of the WPK of a Sandboxed Application.
-- load of the VEE Port from the dropins folder.
 - execution of tests on a device.
 - execution of a test project on a device.
 - resolve dependencies in the IDE.
