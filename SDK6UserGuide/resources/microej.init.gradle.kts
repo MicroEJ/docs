@@ -1,7 +1,14 @@
 settingsEvaluated {
 
+   val userHome = System.getProperty("user.home")
+
    allprojects {
       repositories {
+         /* Local Repository */
+         maven {
+            name = "localRepository"
+            url = uri("${userHome}/.microej/repository")
+         }
          /* MicroEJ Central repository for Maven/Gradle modules */
          maven {
              name = "microEJForgeCentral"
@@ -46,6 +53,20 @@ settingsEvaluated {
                  ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
                  setM2compatible(true)
              }
+         }
+      }
+
+      /**
+       * Publish repositories
+       */
+      pluginManager.withPlugin("maven-publish") {
+         configure<PublishingExtension> {
+            repositories {
+               maven {
+                  name = "localRepository"
+                  url = uri("${userHome}/.microej/repository")
+               }
+            }
          }
       }
    }
