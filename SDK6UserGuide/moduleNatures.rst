@@ -31,7 +31,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.debugOnSimulator`
 - :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.testOnSimulator`
-- :ref:`sdk6_module_natures.tasks.checkArtifact`
+- :ref:`sdk6_module_natures.tasks.checkModule`
 
 .. graphviz:: graphJavaModule.dot
 
@@ -61,7 +61,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.debugOnSimulator`
 - :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.testOnSimulator`
-- :ref:`sdk6_module_natures.tasks.checkArtifact`
+- :ref:`sdk6_module_natures.tasks.checkModule`
 
 .. graphviz:: graphJavaModule.dot
 
@@ -264,10 +264,10 @@ For example:
     }
   }
 
-.. _sdk6_module_natures.tasks.checkArtifact:
+.. _sdk6_module_natures.tasks.checkModule:
 
-checkArtifact
-^^^^^^^^^^^^^
+checkModule
+^^^^^^^^^^^
 
 **Description**: Checks the compliance of the module.
 
@@ -280,6 +280,9 @@ This task is used by the following module natures:
 
 **Configuration**:
 
+This task is not bound by default on any lifecyce task, 
+which means that it should be called explicitly if it muust be executed.
+
 This task provides the following properties that can be defined in the ``microej`` extension:
 
 .. list-table:: 
@@ -289,9 +292,6 @@ This task provides the following properties that can be defined in the ``microej
    * - Name
      - Description
      - Default
-   * - ``runArtifactChecker``
-     - When this property is set to ``true``, the artifact checker is executed.
-     - ``false``
    * - ``checkers``
      - Comma-separated list of the names of the checkers to execute. 
        An empty list means that all checkers are executed.
@@ -306,7 +306,6 @@ For example:
 .. code::
 
   microej {
-    runArtifactChecker = true
     checkers = "readme,license"
   }
 
@@ -338,7 +337,7 @@ For example:
   }
 
 ..
-   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
