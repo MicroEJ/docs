@@ -10,7 +10,7 @@ digraph mygraph {
     ]
     edge [fontname="Helvetica,Arial,sans-serif"]
     "adp" [fillcolor = "#f76241"]
-    "checkArtifact" [fillcolor = "#f76241"]
+    "checkModule" [fillcolor = "#f76241"]
     "loadVeePort" [fillcolor = "#f76241"]
     "loadApplicationConfiguration" [fillcolor = "#f76241"]
     "loadTestApplicationConfiguration" [fillcolor = "#f76241"]
@@ -42,8 +42,8 @@ digraph mygraph {
     "runOnSimulator" -> "loadApplicationConfiguration"
     "debugOnSimulator" -> "loadApplicationConfiguration"
     "loadApplicationConfiguration" -> "loadVeePort"
-    "checkArtifact" -> "assemble"
-    "check" -> "checkArtifact"
+    "checkModule" -> "assemble"
+    "check" -> "checkModule"
 
     subgraph cluster_legend {
         label="Legend";
