@@ -118,7 +118,8 @@ Install the Stable Version
 
 Follow these steps to install the latest stable version of the MicroEJ plugin for IntelliJ IDEA:
 
-- in IntelliJ IDEA, go to ``File > Settings...``.
+- in IntelliJ IDEA, open the Settings window (menu ``File > Settings...`` on Windows and Linux, 
+  menu ``IntelliJ IDEA > Preferences...`` on macOS).
 - go to ``Plugins`` menu.
 - in the search field, type ``MicroEJ``:
 
