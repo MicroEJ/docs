@@ -81,6 +81,8 @@ Core Engine
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
+- Removed foundation libraries API Jars and Javadoc.
+
 Integration
 ~~~~~~~~~~~
 
@@ -88,11 +90,16 @@ Integration
 Simulator
 ~~~~~~~~~
 
+- Added missing default values for the properties ``s3.slow``, ``console.logs.period``, and ``s3.hil.timeout`` when launching the Simulator from the command line.
+
 SOAR
 ~~~~
 
 Tools
 ~~~~~
+
+- Removed :ref:`Test Suite Engine <testsuite_engine>`. If needed, the Test Suite Engine is available in the :ref:`Build Kit <mmm_build_kit>`.
+- Removed Immutables NLS library. Use :ref:`Binary NLS <chapter.nls>` add-on library instead. 
 
 
 .. _changelog-7.18.1:
