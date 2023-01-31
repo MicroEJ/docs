@@ -40,7 +40,7 @@ The MicroEJ Gradle plugin adds the 2 following rules:
            |- moduleA:1.1.0
 
 If you want to come back to the Gradle default behavior,
-these 2 rules can be disabled in the project build file by setting the ``microejConflictResolutionRulesEnabled`` 
+these 2 rules can be disabled by setting the ``microejConflictResolutionRulesEnabled`` 
 property of the ``microej`` configuration block to ``false`` in the project build file:
 
 .. code:: java
