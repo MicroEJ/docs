@@ -20,24 +20,18 @@ The MicroEJ Gradle plugin adds the 2 following rules:
   So, it means that if 2 versions do not have the same major version, the build fails.
   For example, this dependency graph makes the build fail because the ``moduleC`` dependency is requested in 2 incompatible versions:
 
-  .. code::
+  .. graphviz:: graphDependencies01.dot
+    :align: center
 
-    - rootModule
-       |- moduleA:1.0.0
-           |- moduleC:2.0.0
-       |- moduleB:1.0.0
-           |- moduleC:3.0.0
+|
 
 - The resolution fails when a direct dependency is resolved with a higher minor version than the one declared.
   For example, this dependency graphs makes the build fails because the ``moduleA`` dependency is resolved in version ``1.1.0`` (the highest one), 
   which is higher than the direct declared version (``1.0.0``):
 
-  .. code::
+  .. graphviz:: graphDependencies02.dot
+    :align: center
 
-    - rootModule
-       |- moduleA:1.0.0
-       |- moduleB:1.0.0
-           |- moduleA:1.1.0
 
 If you want to come back to the Gradle default behavior,
 these 2 rules can be disabled by setting the ``microejConflictResolutionRulesEnabled`` 
