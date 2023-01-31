@@ -129,7 +129,12 @@ The creation of a project with IntelliJ IDEA is done as follows:
 - select the location of the project in the ``Location`` field.
 - select the language ``Java`` in the ``Language`` field.
 - select ``Gradle`` for the ``Build system`` field.
-- select your prefered language for the field ``Gradle DSL``.
+- select build script DSL ``Kotlin``.
+
+.. note::
+  MicroEJ uses Kotlin as the default Gradle build script DSL. 
+  The use of the Groovy build script DSL is still possible but not officially supported.
+
 - check the ``Add sample code`` checkbox.
 - click on ``Create`` button.
 
