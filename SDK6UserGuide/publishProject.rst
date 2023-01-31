@@ -7,9 +7,13 @@ Publishing is the process by which the built artifacts of a module is made avail
 
 The requirements to publish a module are:
 
-- defining the ``group``, ``name`` and ``version`` properties.
-  The ``name`` can be set in the ``settings.gradle.kts`` file, thanks to the property ``rootProject.name`` (for example ``rootProject.name = "myModule"``).
-  The ``group`` and version ``version`` properties can be set in the ``build.gradle.kts`` file::
+- defining the ``name`` of the module. It is set by default to the name of the module folder,
+  and can be changed in the ``settings.gradle.kts`` file located at the root of the module, thanks to the property ``rootProject.name``::
+    
+    rootProject.name = "myModule"
+
+- defining the ``group`` and ``version`` properties.
+  They can be set in the ``build.gradle.kts`` file::
 
     group = "com.mycompany"
     version = "1.0.0"
