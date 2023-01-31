@@ -1,0 +1,16 @@
+digraph mygraph {
+    bgcolor="transparent"
+    fontname="Helvetica,Arial,sans-serif"
+    node [
+        shape = box
+        width = 1.5
+        color = "#7dc5dc"
+        style = filled
+        fontname="Helvetica,Arial,sans-serif"
+    ]
+    edge [fontname="Helvetica,Arial,sans-serif"]
+    "rootModule" -> "moduleA:1.0.0"
+    "moduleA:1.0.0" -> "moduleC:2.0.0"
+    "rootModule" -> "moduleB:1.0.0"
+    "moduleB:1.0.0" -> "moduleC:3.0.0"
+}
