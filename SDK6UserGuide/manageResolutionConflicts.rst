@@ -22,10 +22,11 @@ The MicroEJ Gradle plugin adds the 2 following rules:
 
   .. code::
 
-    - moduleA:1.0.0
-       |- moduleC:2.0.0
-    - moduleB:1.0.0
-       |- moduleC:3.0.0
+    - rootModule
+       |- moduleA:1.0.0
+           |- moduleC:2.0.0
+       |- moduleB:1.0.0
+           |- moduleC:3.0.0
 
 - The resolution fails when a direct dependency is resolved with a higher minor version than the one declared.
   For example, this dependency graphs makes the build fails because the ``moduleA`` dependency is resolved in version ``1.1.0`` (the highest one), 
@@ -33,9 +34,10 @@ The MicroEJ Gradle plugin adds the 2 following rules:
 
   .. code::
 
-    - moduleA:1.0.0
-    - moduleB:1.0.0
-       |- moduleA:1.1.0
+    - rootModule
+       |- moduleA:1.0.0
+       |- moduleB:1.0.0
+           |- moduleA:1.1.0
 
 If you want to come back to the Gradle default behavior,
 these 2 rules can be disabled in the project build file by setting the ``microejConflictResolutionRulesEnabled`` 
