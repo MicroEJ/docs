@@ -6,7 +6,7 @@ Manage Resolution Conflicts
 The MicroEJ Gradle plugin adds specific rules for compilation, building, resolving dependencies, versioning, and publishing.
 
 Gradle comes with a powerful dependency manager.
-One of its job is to resolve the conflicts in the dependencies graph, to determine which version should be added to the graph.
+One of its job is to resolve the conflicts in the dependency graph, to determine which version should be added to the graph.
 By default, Gradle selects the highest version amongst all the versions requested for a dependency. 
 There are ways to influence the dependencies resolution, 
 but we believe additional rules should be added to provide a better and safer conflict resolution.
@@ -26,7 +26,7 @@ The MicroEJ Gradle plugin adds the 2 following rules:
 |
 
 - The resolution fails when a direct dependency is resolved with a higher minor version than the one declared.
-  For example, this dependency graphs makes the build fails because the ``moduleA`` dependency is resolved in version ``1.1.0`` (the highest one), 
+  For example, this dependency graph makes the build fails because the ``moduleA`` dependency is resolved in version ``1.1.0`` (the highest one), 
   which is higher than the direct declared version (``1.0.0``):
 
   .. graphviz:: graphDependencies02.dot
