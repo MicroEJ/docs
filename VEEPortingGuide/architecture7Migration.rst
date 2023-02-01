@@ -5,7 +5,7 @@ Architecture 7.x Migration
 
 This chapter describes the steps to migrate a VEE Port from Architecture ``7.x`` to Architecture ``8.0.0``.
 
-As a reminder, refer to the :ref:`Architecture 8.0.0 Changelog <changelog-8.0.0>` section for getting the full list of changes and updates.
+As a reminder, refer to the :ref:`Architecture 8.0.0 Changelog <changelog-8.0.0>` section for the complete list of changes and updates.
 
 Update Platform Configuration Additions
 ---------------------------------------
