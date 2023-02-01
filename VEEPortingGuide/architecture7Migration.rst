@@ -21,7 +21,7 @@ The Core Engine sections have been renamed to respect the standard ELF conventio
 
 All references to section names in your BSP must be updated. 
 This is usually only used in your linker script file, but section names are sometimes also hardcoded in the C Code.
-Here is an example of GNU LD script that highlights the typical changes that must be done:
+Here is an example of a GNU LD script highlighting the typical changes that must be made:
 
 .. figure:: images/ExampleLD-Architecture7diff8.png
    :alt: Example of LD Script File Migration
