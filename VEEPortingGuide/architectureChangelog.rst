@@ -76,7 +76,7 @@ Core Engine
 
 - Renamed :ref:`Core Engine sections <core_engine_link>` to fully respect the ELF standard naming convention. 
 - Removed check when passing a non-immortal array in SNI if VEE Port option ``core.sni.nonimmortal.access`` was set to ``false``.
-- Removed `LLBSP_isInReadOnlyMemory` in Core Engine Abstraction Layer (`LLBSP.h` file).
+- Removed ``LLBSP_isInReadOnlyMemory`` in Core Engine Abstraction Layer (``LLBSP.h`` file).
 
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
