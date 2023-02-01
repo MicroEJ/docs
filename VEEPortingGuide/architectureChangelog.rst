@@ -98,7 +98,7 @@ Tools
 [8.0.0] - 2023-MM-DD
 --------------------
 
-This major Architecture version introduces the following main features:
+This major Architecture version update introduces the following main features:
 
 - Added compatibility with dynamic linkers enabling Address Space Layout Randomization (ASLR).
 - Added :ref:`Feature build on device <build_feature_on_device>`. For that, the SOAR has been deeply redesigned and split into multiple phases.
