@@ -71,7 +71,7 @@ Migrate ECOM-COMM Module
 There are two options:
   
 - either migrate to the latest ECOM-COMM Pack,
-- or integrate the legacy ECOM-COMM Pack files as-is into your VEE Port ``dropins`` folder,
+- or integrate the legacy ECOM-COMM Pack files as-is into your VEE Port ``dropins`` folder.
 
 Contact `our support team <https://www.microej.com/contact/#form_2>`_ to get the best migration strategy and detailed instructions. 
 
