@@ -12,7 +12,7 @@ Update Platform Configuration Additions
 
 Architecture ``8.0.0`` now directly integrates the :ref:`bsp_connection` mechanism.
 The Platform Configuration Additions must be updated accordingly. 
-Contact `our support team <https://www.microej.com/contact/#form_2>`_ to get the detailed instructions. 
+Contact `our support team <https://www.microej.com/contact/#form_2>`_ to get detailed instructions. 
 
 Update BSP with new Sections Names
 ----------------------------------
