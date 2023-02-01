@@ -59,7 +59,7 @@ The latest `Device Pack`_ available on the :ref:`central_repository` is backward
 
 .. _Device Pack: https://repository.microej.com/modules/com/microej/pack/device/device-pack/
 
-The following dependency must be added the :ref:`module.ivy <mmm_module_description>` of the VEE Port configuration project:
+The following dependency must be added to the :ref:`module.ivy <mmm_module_description>` of the VEE Port configuration project:
       
   .. code:: xml
       
