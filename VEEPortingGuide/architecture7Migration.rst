@@ -17,7 +17,7 @@ Contact `our support team <https://www.microej.com/contact/#form_2>`_ to get det
 Update BSP with new Sections Names
 ----------------------------------
 
-The Core Engine sections have been renamed to respect the standard ELF convention. See :ref:`Core Engine Link <core_engine_link>` section.
+The Core Engine sections have been renamed to respect the standard ELF convention. See :ref:`Core Engine Link <core_engine_link>` section for further details.
 
 All references to section names in your BSP must be updated. 
 This is usually only used in your linker script file, but section names are sometimes also hardcoded in the C Code.
