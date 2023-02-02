@@ -26,7 +26,7 @@ The debugger proxy allows a postmortem debug from a core dump of a running MICRO
 Generate a Core Dump File on Linux using GDB
 ============================================
 
-Open a shell terminal and enter the following commands:
+Open a shell terminal on the device and enter the following commands:
 
 .. code-block:: sh
 
@@ -83,13 +83,15 @@ You can also suspend the process and generate the core dump file by yourself:
     # suspend first the process with Ctrl-C and then generate the core dump file.
     generate-core-file [file] # the argument `file` specifies the file name where to put the core dump
 
+.. note::
+    This function must only be called from the MicroJvm virtual machine thread context and only from a native function or callback.
 
 Start the Proxy
 ===============
 
 Please contact :ref:`our support team <get_support>` to get the VEE Debugger Proxy tool compatible with your Architecture version.
 
-Open a shell terminal and run the following command
+Open a shell terminal on your workstation and run the following command
 
 .. code-block:: sh
 
@@ -115,7 +117,7 @@ Open a shell terminal and run the following command
 Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` to debug your code.
 
 ..
-   | Copyright 2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2022-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
