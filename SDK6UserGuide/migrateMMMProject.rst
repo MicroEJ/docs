@@ -34,11 +34,13 @@ Therefore, here are the 2 project structures side by side:
 |    |   |- main                 |    |   |- main                            |
 |    |   |   |- java             |    |   |   |- java                        |
 |    |   |   |- resources        |    |   |   |- resources                   |
+|    |   |                       |    |   |       |- build                   |
+|    |   |                       |    |   |           |- common.properties   |
 |    |   |- test                 |    |   |- test                            |
 |    |       |- java             |    |       |- java                        |
 |    |       |- resources        |    |       |- resources                   |
-|    |- build                    |    |           |- build                   |
-|    |   |- common.properties    |    |               |- common.properties   |
+|    |- build                    |    |                                      |
+|    |   |- common.properties    |    |                                      |
 |    |- module.ivy               |    |- build.gradle.kts                    |
 |    |- module.ant               |    |- settings.gradle.kts                 |
 |                                |                                           |
