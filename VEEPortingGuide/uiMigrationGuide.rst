@@ -12,15 +12,15 @@ From 13.3.x to 13.4.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the `UI Pack 13.4.0`_: 
+* Set the explicit dependency to the `UI Pack 13.4.1`_: 
 
   .. code-block:: xml
 
-	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.4.0">
+	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.4.1">
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
 
-.. _UI Pack 13.4.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.4.0/
+.. _UI Pack 13.4.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.4.1/
 
 BSP
 """
@@ -94,7 +94,7 @@ BSP
 * Add a cast when using ``MICROUI_Image*`` object: ``(MICROUI_ImageFormat)image->format`` .
 * Remove parameter ``MICROUI_GraphicsContext*`` when calling ``LLUI_DISPLAY_setDrawingLimits()``. 
 * Ensure to call ``LLUI_DISPLAY_setDrawingLimits()`` before calling ``LLUI_DISPLAY_setDrawingStatus()`` or ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``.
-* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available on the :ref:`C module<section_ui_releasenotes_cmodule>`. 
+* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`. 
 
 From 12.x to 13.x
 =================

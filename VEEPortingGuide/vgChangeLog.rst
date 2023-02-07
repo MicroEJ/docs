@@ -4,6 +4,16 @@
 Changelog
 =========
 
+[1.2.1] - 2023-02-06
+====================
+
+Front Panel
+"""""""""""
+
+**Fixed**
+
+* Fix the cropped images when using GraphicsContext clip and translation.
+
 [1.2.0] - 2022-12-30
 ====================
 

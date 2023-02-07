@@ -668,7 +668,7 @@ Overview
 * MicroUI library calls the BSP functions through the Graphics Engine and header file ``LLUI_DISPLAY_impl.h``. 
 * Implementation of ``LLUI_DISPLAY_impl.h`` can call Graphics Engine functions through ``LLUI_DISPLAY.h``.
 * To perform some drawings, MicroUI uses ``LLUI_PAINTER_impl.h`` functions.
-* The :ref:`C module<section_ui_releasenotes_cmodule>` provides a default implementation of the drawing native functions of ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``: 
+* The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` provides a default implementation of the drawing native functions of ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``: 
  
   * It implements the synchronization layer, then redirects drawings implementations to ``ui_drawing.h`` and ``dw_drawing.h``
   * ``ui_drawing.h`` and ``dw_drawing.h`` are already implemented by built-in software algorithms (library provided by the UI Pack).
@@ -718,7 +718,7 @@ Painter Low Level API
 
 All MicroUI drawings (available in `Painter`_ class) are calling a native function. The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h``. The implementation must take care about a lot of constraints: synchronization between drawings, Graphics Engine notification, MicroUI `GraphicsContext`_ clip and colors, flush dirty area, etc. The principle of implementing a MicroUI drawing function is described in the chapter :ref:`display_drawing_native`. 
 
-An implementation of ``LLUI_PAINTER_impl.h`` is already available on the :ref:`C module<section_ui_releasenotes_cmodule>`. This implementation respects the synchronization between drawings, the Graphics Engine notification, reduce (when possible) the MicroUI `GraphicsContext`_ clip constraints and update (when possible) the flush dirty area. This implementation does not perform the drawings. It only calls the equivalent of drawing available in ``ui_drawing.h``. This allows to simplify how to use a GPU (or a third-party library) to perform a drawing: the ``ui_drawing.h`` implementation has just to take in consideration the MicroUI `GraphicsContext`_ clip and colors and flush dirty area. Synchronization with the Graphics Engine is already performed.
+An implementation of ``LLUI_PAINTER_impl.h`` is already available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`. This implementation respects the synchronization between drawings, the Graphics Engine notification, reduce (when possible) the MicroUI `GraphicsContext`_ clip constraints and update (when possible) the flush dirty area. This implementation does not perform the drawings. It only calls the equivalent of drawing available in ``ui_drawing.h``. This allows to simplify how to use a GPU (or a third-party library) to perform a drawing: the ``ui_drawing.h`` implementation has just to take in consideration the MicroUI `GraphicsContext`_ clip and colors and flush dirty area. Synchronization with the Graphics Engine is already performed.
 
 In addition to the implementation of ``LLUI_PAINTER_impl.h``, an implementation of ``ui_drawing.h`` is already available in Graphics Engine (in *weak* mode). This allows to implement only the functions the GPU is able to perform. For a given drawing, the weak function implementation is calling the equivalent of drawing available in ``ui_drawing_soft.h``. This file lists all drawing functions implemented by the Graphics Engine.
 
@@ -1333,7 +1333,7 @@ A dedicated OS task is required to perform this copy.
 Drawing Native
 ==============
 
-As explained before, MicroUI implementation provides a dedicated header file which lists all MicroUI Painter drawings native function. The implementation of these functions has to respect several rules to not corrupt the MicroUI execution (flickering, memory corruption, unknown behavior, etc.). These rules are already respected in the default Abstraction Layer implementation modules available on the :ref:`C module<section_ui_releasenotes_cmodule>`. In addition, MicroUI allows to add some custom drawings. The implementation of MicroUI Painter native drawings should be used as model to implement the custom drawings.
+As explained before, MicroUI implementation provides a dedicated header file which lists all MicroUI Painter drawings native function. The implementation of these functions has to respect several rules to not corrupt the MicroUI execution (flickering, memory corruption, unknown behavior, etc.). These rules are already respected in the default Abstraction Layer implementation modules available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`. In addition, MicroUI allows to add some custom drawings. The implementation of MicroUI Painter native drawings should be used as model to implement the custom drawings.
 
 All native functions must have a ``MICROUI_GraphicsContext*`` as parameter (often first parameter). This identifies the destination target: the MicroUI `GraphicsContext`_. This target is retrieved in application calling the method ``GraphicsContext.getSNIContext()``. This method returns a byte array which is directly mapped on the ``MICROUI_GraphicsContext`` structure in MicroUI native drawing function declaration.
  
@@ -1598,6 +1598,7 @@ Dependencies
    :ref:`section_display_implementation` and
    :ref:`LLDISPLAY-API-SECTION`).
 
+- The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`.
 
 .. _section_display_installation:
 
