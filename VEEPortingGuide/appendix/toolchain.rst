@@ -61,8 +61,8 @@ by MicroEJ Architectures.
    +-----------------+------------------------+-------------+-------------+--------------+
    | MicroEJ Core Engine Architectures        | Capabilities                             |
    +-----------------+------------------------+-------------+-------------+--------------+
-   | MCU             | Compiler               | Single      | Tiny        | Multi        |
-   |                 |                        | application | application | applications |
+   | MCU             | Compiler               | Mono-       | Tiny-       | Multi-       |
+   |                 |                        | Sandbox     | Sandbox     | Sandbox      |
    +-----------------+------------------------+-------------+-------------+--------------+
    | ARM Cortex-M0   | GCC                    | YES         | YES         | NO           |
    |                 |                        |             |             |              |
@@ -253,7 +253,7 @@ To solve this issue, either change the load order of libraries (put ``microejapp
 options ``--start-group`` and ``--end-group``.
 
 ..
-   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

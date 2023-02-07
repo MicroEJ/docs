@@ -55,11 +55,25 @@ is issued, where ``<messageId>`` meaning is defined in the following table:
      - Argument must be a positive number.
    * - 6
      - Invalid radix used. Must be from `Character.MIN_RADIX`_ to `Character.MAX_RADIX`_.
+   * - 7
+     - Operation `Reader.reset()`_ is not supported.
+   * - 8
+     - String is empty.
+   * - 9
+     - Start index is out of range.
+   * - 10
+     - End index is out of range.
+   * - 11
+     - A throwable cannot suppress itself in `Throwable.addSuppressed(Throwable exception)`_.
+   * - 12
+     - Given exception is null in `Throwable.addSuppressed(Throwable exception)`_.
 
 .. _Reader.mark(): https://repository.microej.com/javadoc/microej_5.x/apis/java/io/Reader.html#mark-int-
+.. _Reader.reset(): https://repository.microej.com/javadoc/microej_5.x/apis/java/io/Reader.html#reset--
 .. _Reader(Object lock): https://repository.microej.com/javadoc/microej_5.x/apis/java/io/Reader.html#Reader-java.lang.Object-
 .. _Character.MIN_RADIX: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Character.html#MIN_RADIX
 .. _Character.MAX_RADIX: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Character.html#MAX_RADIX
+.. _Throwable.addSuppressed(Throwable exception): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html#addSuppressed-java.lang.Throwable-
 
 .. _edc_exit_codes:
 
@@ -80,7 +94,7 @@ The error codes returned by ``SNI_startVM()`` are defined in the section
 .. _System.exit(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#exit-int-
 
 ..
-   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

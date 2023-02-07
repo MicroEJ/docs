@@ -1,10 +1,3 @@
-..
-.. ReStructuredText
-..
-.. Copyright 2020-2022 MicroEJ Corp. All rights reserved.
-.. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
-..
-
 .. _js.getting_started:
 
 ===============
@@ -87,3 +80,10 @@ You should see the following output:
     My first  MicroEJ Javascript application!
 
 You can now go further by exploring the :ref:`capabilities of the MicroEJ Javascript engine <js.api>` and discovering the :ref:`commands available in the CLI <mmm_cli>`.
+
+..
+   | Copyright 2020-2023, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

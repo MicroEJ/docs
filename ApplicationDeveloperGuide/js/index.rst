@@ -1,10 +1,3 @@
-..
-.. ReStructuredText
-..
-.. Copyright 2020 MicroEJ Corp. All rights reserved.
-.. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
-..
-
 .. _javascript:
 
 ============
@@ -39,3 +32,10 @@ You can start playing with it by following the :ref:`Getting Started <js.getting
    limitations
    troubleshooting
    internals
+
+..
+   | Copyright 2020-2023, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

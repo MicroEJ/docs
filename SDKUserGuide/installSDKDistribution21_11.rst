@@ -115,7 +115,7 @@ If your are running SDK on Windows OS, it is also strongly recommended to config
 
 
 ..
-   | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

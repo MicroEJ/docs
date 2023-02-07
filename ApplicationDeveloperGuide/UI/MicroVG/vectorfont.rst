@@ -383,7 +383,7 @@ The simulator rendering of complex layout mode for :ref:`drawOnCircle` feature i
 The letterSpacing feature is not supported by the simulator implementation. Texts will be displayed with a letterspacing value of 0.
 
 ..
-   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

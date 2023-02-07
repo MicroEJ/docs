@@ -61,8 +61,10 @@ You can have a look at the widget demo project, which contains multiple samples 
 .. image:: images/widgetdemo.png
    :align: center
 
+**Next step:** :ref:`ui-starting-microui`
+
 ..
-   | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

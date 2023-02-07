@@ -1,10 +1,3 @@
-..
-.. ReStructuredText
-..
-.. Copyright 2021 MicroEJ Corp. All rights reserved.
-.. MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
-..
-
 .. _js.examples.simple_app:
 
 Simple Application
@@ -60,3 +53,10 @@ This makes the JavaScript engine process the job queue forever until the program
     $ mmm run
 
 The message ``My Simple Application`` should be displayed.
+
+..
+   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.

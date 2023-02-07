@@ -239,7 +239,7 @@ MicroEJ Platform Configuration
 The following configuration guidelines are recommended in order to minimize the size of the application:
 
 - Check MicroEJ Architecture and Packs versions and changelogs regularly. Latest versions may be more optimized.
-- Configure the Platform to use the :ref:`tiny <core-tiny>` capability of the MicroEJ Core Engine. It reduces application code size by ~20%, provided that the application code size is lower than 256KB (resources excluded).
+- Configure the Platform to use the :ref:`tiny <tinysandbox>` capability of the MicroEJ Core Engine. It reduces application code size by ~20%, provided that the application code size is lower than 256KB (resources excluded).
 - Disable unnecessary modules in the ``.platform`` file. For example, disable the ``Image PNG Decoder`` module if the application does not load PNG images at runtime.
 - Don't embed unnecessary :ref:`pixel conversion <display_pixel_conversion>` algorithms. This can save up to ~8KB of code size but it requires knowing the format of the resources used in the application.
 - Select your embedded C compilation toolchain with care, prefer one which will allow low ROM footprint with optimal performance. Check the compiler options:
@@ -450,7 +450,7 @@ MicroUI Images Heap
 .. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html
 
 ..
-   | Copyright 2021-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

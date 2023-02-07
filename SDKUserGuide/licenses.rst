@@ -161,6 +161,9 @@ clicking on :guilabel:`Remove` button.
 Troubleshooting
 ~~~~~~~~~~~~~~~
 
+Unable to add an Evaluation license key
+"""""""""""""""""""""""""""""""""""""""
+
 Consider this section when an error message appears while adding the
 Evaluation license key. Before contacting :ref:`our support team <get_support>`, please check the
 following conditions:
@@ -186,6 +189,12 @@ following conditions:
 
    Invalid License Key Error Message
 
+Machine UID has changed
+"""""""""""""""""""""""
+
+This can occur when the hardware configuration of the machine is changed (especially when the network interfaces have changed).
+
+In this case, you can either request a new activation key for this new UID or go back to the previous hardware configuration.
 
 .. _production_license:
 
@@ -390,13 +399,6 @@ Windows Troubleshooting
 
      Invalid license check (Dongle found is not compatible).
 
-..
-   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
-   is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
-   copyrights are the property of their respective owners.
-
 VirtualBox Troubleshooting
 """"""""""""""""""""""""""
 
@@ -416,7 +418,7 @@ There are many hardware and software solutions available on the market. Among ot
 Please contact :ref:`our support team <get_support>` for more details.
 
 ..
-   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

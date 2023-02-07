@@ -3,7 +3,7 @@
 .. |UIPACKVERSION| replace:: 13.4.0
 
 ..
-   Copyright 2021-2022, MicroEJ Corp. Confidentiality and Intellectual Property. All rights reserved. 
+   Copyright 2021-2023, MicroEJ Corp. Confidentiality and Intellectual Property. All rights reserved. 
    Information, technical data and tutorials contained in this document are confidential and proprietary under copyright Law of Industrial Smart Software Technology (MicroEJ S.A.) operating under the brand name MicroEJ®. Without written permission from MicroEJ S.A., copying or sending parts of the document or the entire document by any means to third parties is not permitted. Granted authorizations for using parts of the document or the entire document do not mean MicroEJ S.A. gives public full access rights.
    The information contained herein is not warranted to be error-free.
    MicroEJ® and all relative logos are trademarks or registered trademarks of MicroEJ S.A. in France and other Countries.
