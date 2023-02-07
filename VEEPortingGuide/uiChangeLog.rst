@@ -4,6 +4,31 @@
 Changelog
 =========
 
+13.4.1 (2023-02-06)
+===================
+	
+Drawing Implementation
+""""""""""""""""""""""
+
+**Fixed**
+
+* Fix thick lines drawing (when thickness is larger than length).
+* Fix circle and ellipse drawing (when the diameter/axis has an even length).
+
+FrontPanel
+""""""""""
+
+**Changed**
+
+* Increase the speed of RAW image decoding step.
+
+ImageGenerator
+""""""""""""""
+
+**Fixed**
+
+* Fix the VEE Port's memory alignment constraint.
+
 13.4.0 - 2022-12-13
 ===================
 
