@@ -255,14 +255,14 @@ The following table describes the accelerated features:
 +----------------+------------------------------------------------------+
 | Feature        | Comment                                              |
 +================+======================================================+
-| fill rectangle |                                                      |
+| Fill rectangle |                                                      |
 +----------------+------------------------------------------------------+
-| draw image     | ARGB8888, RGB888, RGB565, ARGB1555, ARGB4444, A8, A4 |
+| Draw image     | ARGB8888, RGB888, RGB565, ARGB1555, ARGB4444, A8, A4 |
 +----------------+------------------------------------------------------+
-| flush (copy)   | copy of data from back buffer to frame buffer        |
+| Flush (copy)   | Copy of data from back buffer to frame buffer        |
 +----------------+------------------------------------------------------+
 
-The following table describes the compatibility versions between the C module and the MicroEJ UI Packs:
+The following table describes the version compatibility between the C module and the MicroEJ UI Packs:
 
 +----------------+-----------------+
 | C Module Range | UI Pack Range   |
@@ -282,67 +282,67 @@ The VG-Lite C module `com.microej.clibrary.llimpl(microui-vglite)`_ targets the 
 
 This C module provides some drawing algorithms that are disabled by default. 
 
-* The rendering time of a simple shape with the GPU (time in the VG-Lite library + GPU setup time + rendering time) is more important than the direct rendering in software. To enable the hardware rendering for the simple shapes, set the define ``VGLITE_USE_GPU_FOR_SIMPLE_DRAWINGS``  in ``display_configuration.h``.
-* The rendering time of a RGB565 image on a RGB565 buffer without applying an opacity (alpha == 0xff) is more important than the direct rendering in software (this kind of drawing consists in performing a simple memory copy). To enable the hardware rendering for the RGB565 images, set the define ``VGLITE_USE_GPU_FOR_RGB565_IMAGES``  in ``display_configuration.h``.
-* Depending on the VG-Lite GPU revision, the transparent images ARGB8888, ARGB1555 and ARGB4444 are not compatible. The old GPU revisions don't render correctly the transparent images because the pre-multiplication of the pixel opacity is not propagated to the pixel color components. To enable the hardware rendering for the transparent images, set the define ``VGLITE_USE_GPU_FOR_TRANSPARENT_IMAGES``  in ``display_configuration.h``. Note this limitation does not concern the A8 and A4 formats.
+* The rendering time of a simple shape with the GPU (time in the VG-Lite library + GPU setup time + rendering time) is longer than with software rendering. To enable the hardware rendering for simple shapes, uncomment the definition of ``VGLITE_USE_GPU_FOR_SIMPLE_DRAWINGS``  in ``display_configuration.h``.
+* The rendering time of an RGB565 image into an RGB565 buffer without applying an opacity (alpha == 0xff) is longer than than with software rendering (as this kind of drawing consists in performing a mere memory copy). To enable the hardware rendering for RGB565 images, uncomment the definition of ``VGLITE_USE_GPU_FOR_RGB565_IMAGES``  in ``display_configuration.h``.
+* ARGB8888, ARGB1555 and ARGB4444 transparent images are not compatible with some revisions of the VG-Lite GPU. Older GPU revisions do not render correctly transparent images because the pre-multiplication of the pixel opacity is not propagated to the pixel color components. To enable the hardware rendering for transparent images, uncomment the definition of ``VGLITE_USE_GPU_FOR_TRANSPARENT_IMAGES``  in ``display_configuration.h``. Note that this limitation does not concern the A8 and A4 formats.
 
 The following table describes the accelerated features:
 
 +-----------------------------+-----------------------------------------------------------+
 | Feature                     | Comment                                                   |
 +=============================+===========================================================+
-| draw line                   | disabled by default (see upper)                           |
+| Draw line                   | Disabled by default (see above)                           |
 +-----------------------------+-----------------------------------------------------------+
-| fill rectangle              | disabled by default (see upper)                           |
+| Fill rectangle              | Disabled by default (see above)                           |
 +-----------------------------+-----------------------------------------------------------+
-| draw rounded rectangle      | disabled by default (see upper)                           |
+| Draw rounded rectangle      | Disabled by default (see above)                           |
 +-----------------------------+-----------------------------------------------------------+
-| fill rounded rectangle      |                                                           |
+| Fill rounded rectangle      |                                                           |
 +-----------------------------+-----------------------------------------------------------+
-| draw circle arc             | disabled by default (see upper)                           |
+| Draw circle arc             | Disabled by default (see above)                           |
 +-----------------------------+-----------------------------------------------------------+
-| fill circle arc             |                                                           |
+| Fill circle arc             |                                                           |
 +-----------------------------+-----------------------------------------------------------+
-| draw ellipse arc            | disabled by default (see upper)                           |
+| Draw ellipse arc            | Disabled by default (see above)                           |
 +-----------------------------+-----------------------------------------------------------+
-| fill ellipse arc            |                                                           |
+| Fill ellipse arc            |                                                           |
 +-----------------------------+-----------------------------------------------------------+
-| draw ellipse arc            | disabled by default (see upper)                           |
+| Draw ellipse arc            | Disabled by default (see above)                           |
 +-----------------------------+-----------------------------------------------------------+
-| fill ellipse arc            |                                                           |
+| Fill ellipse arc            |                                                           |
 +-----------------------------+-----------------------------------------------------------+
-| draw circle                 | disabled by default (see upper)                           |
+| Draw circle                 | Disabled by default (see above)                           |
 +-----------------------------+-----------------------------------------------------------+
-| fill circle                 |                                                           |
+| Fill circle                 |                                                           |
 +-----------------------------+-----------------------------------------------------------+
-| draw image                  | RGB565, A8, A4 + ARGB8888, ARGB1555, ARGB4444 (see upper) |
+| Draw image                  | RGB565, A8, A4 + ARGB8888, ARGB1555, ARGB4444 (see above) |
 +-----------------------------+-----------------------------------------------------------+
-| draw thick faded point      | only with fade <= 1                                       |
+| Draw thick faded point      | Only with fade <= 1                                       |
 +-----------------------------+-----------------------------------------------------------+
-| draw thick faded line       | only with fade <= 1                                       |
+| Draw thick faded line       | Only with fade <= 1                                       |
 +-----------------------------+-----------------------------------------------------------+
-| draw thick faded circle     | only with fade <= 1                                       |
+| Draw thick faded circle     | Only with fade <= 1                                       |
 +-----------------------------+-----------------------------------------------------------+
-| draw thick faded circle arc | only with fade <= 1                                       |
+| Draw thick faded circle arc | Only with fade <= 1                                       |
 +-----------------------------+-----------------------------------------------------------+
-| draw thick faded ellipse    | only with fade <= 1                                       |
+| Draw thick faded ellipse    | Only with fade <= 1                                       |
 +-----------------------------+-----------------------------------------------------------+
-| draw thick line             |                                                           |
+| Draw thick line             |                                                           |
 +-----------------------------+-----------------------------------------------------------+
-| draw thick circle           |                                                           |
+| Draw thick circle           |                                                           |
 +-----------------------------+-----------------------------------------------------------+
-| draw thick circle arc       |                                                           |
+| Draw thick circle arc       |                                                           |
 +-----------------------------+-----------------------------------------------------------+
-| draw thick ellipse          |                                                           |
+| Draw thick ellipse          |                                                           |
 +-----------------------------+-----------------------------------------------------------+
-| draw flipped image          | see draw image                                            |
+| Draw flipped image          | See draw image                                            |
 +-----------------------------+-----------------------------------------------------------+
-| draw rotated image          | see draw image                                            |
+| Draw rotated image          | See draw image                                            |
 +-----------------------------+-----------------------------------------------------------+
-| draw scaled image           | see draw image                                            |
+| Draw scaled image           | See draw image                                            |
 +-----------------------------+-----------------------------------------------------------+
 
-The following table describes the compatibility versions between the C module and the MicroEJ UI Packs:
+The following table describes the version compatibility between the C module and the MicroEJ UI Packs:
 
 +----------------+-----------------+
 | C Module Range | UI Pack Range   |
@@ -353,7 +353,7 @@ The following table describes the compatibility versions between the C module an
 +----------------+-----------------+
 
 
-The following table describes the compatibility versions between the C module and the VG-Lite libraries (officially supported):
+The following table describes the version compatibility between the C module and the VG-Lite libraries (officially supported):
 
 +----------------+---------------------------+
 | C Module Range | VG-Lite Libraries Range   |

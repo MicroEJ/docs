@@ -25,7 +25,7 @@ MicroVG Implementation
 **Changed**
 
 * Compatible with `MicroVG API 1.2`_.
-* Change the VectorImage internal format: _raw_ format instead of _immutables_ format. 
+* Change the VectorImage internal format: *raw* format instead of *immutables* format. 
  
 .. _MicroVG API 1.2: https://repository.microej.com/modules/ej/api/microvg/1.2.0/
 
