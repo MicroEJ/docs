@@ -170,6 +170,9 @@ This module nature defines the following dedicated build options:
    * - virtual.device.sim.only
      - When this property is set (any value), the firmware is not built.
      - Not set
+   * - launch.properties.jvm
+     - Additional options to pass to the JVM for building the executable.
+     - -Xmx1024M
 
 .. _module_natures.meta_build:
 
@@ -399,6 +402,9 @@ This module nature defines the following dedicated build options:
    * - virtual.device.sim.only
      - When this property is set (any value), the firmware is not built.
      - Not set
+   * - launch.properties.jvm
+     - Additional options to pass to the JVM for building the executable.
+     - -Xmx1024M
 
 .. [#require_sdk_5_5] Require SDK version ``5.5.0`` or higher.
 
