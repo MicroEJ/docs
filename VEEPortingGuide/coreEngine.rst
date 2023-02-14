@@ -598,6 +598,13 @@ platform configuration file, check :guilabel:`Multi Applications` to install the
 Core Engine in "Multi-Sandbox" mode. Otherwise, the "Single
 application" mode is installed.
 
+Abstraction Layer
+=================
+
+MicroEJ Core Engine Abstraction Layer implementation can be found on `MicroEJ Github`_ for several RTOS.
+
+.. _MicroEJ Github: https://github.com/orgs/MicroEJ/repositories?q=AbstractionLayer-Core&type=all&language=&sort=
+
 .. _memory-considerations:
 
 Memory Considerations
@@ -637,27 +644,7 @@ The memory consumption of main Core Engine runtime elements are described in :re
 Use
 ===
 
-The `EDC API Module`_ must 
-be added to the :ref:`module.ivy <mmm_module_description>` of the Application 
-Project. This MicroEJ module is always required in the build path of a MicroEJ project; 
-and all others libraries depend on it. This library provides a set of options.
-Refer to the chapter :ref:`application_options` which lists all available options.
-
-::
-
-   <dependency org="ej.api" name="edc" rev="1.3.3"/>
-
-The `BON API Module`_
-must also be added to the :ref:`module.ivy <mmm_module_description>` of the 
-Application project in order to access the :ref:`[BON] library <runtime_bon>`.
-
-::
-
-   <dependency org="ej.api" name="bon" rev="1.4.0"/>
-
-
-.. _EDC API Module: https://repository.microej.com/modules/ej/api/edc/
-.. _BON API Module: https://repository.microej.com/modules/ej/api/bon/
+Refer to the :ref:`MicroEJ Runtime <runtime_core_libraries>` documentation.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
