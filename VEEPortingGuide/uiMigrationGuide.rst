@@ -6,6 +6,30 @@
 Migration Guide
 ===============
 
+From 13.3.x to 13.4.x
+=====================
+
+Front Panel
+"""""""""""
+
+* Set the explicit dependency to the `UI Pack 13.4.1`_: 
+
+  .. code-block:: xml
+
+	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.4.1">
+		<artifact name="frontpanel" type="jar"/>
+	 </dependency>
+
+.. _UI Pack 13.4.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.4.1/
+
+BSP
+"""
+
+* The signatures of `LLUI_DISPLAY_IMPL_decodeImage` and `LLUI_DISPLAY_IMPL_getNewImageStrideInBytes` have changed: 
+   * use `jbyte` in functions signatures.
+   * add a cast to `MICROUI_Image` in implementation.
+* Use the MicroUI C module 2.0.1.
+
 From 13.2.x to 13.3.x
 =====================
 
@@ -70,7 +94,7 @@ BSP
 * Add a cast when using ``MICROUI_Image*`` object: ``(MICROUI_ImageFormat)image->format`` .
 * Remove parameter ``MICROUI_GraphicsContext*`` when calling ``LLUI_DISPLAY_setDrawingLimits()``. 
 * Ensure to call ``LLUI_DISPLAY_setDrawingLimits()`` before calling ``LLUI_DISPLAY_setDrawingStatus()`` or ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``.
-* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available on the :ref:`C module<section_ui_releasenotes_cmodule>`. 
+* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`. 
 
 From 12.x to 13.x
 =================
@@ -118,13 +142,13 @@ Front Panel API
 
 * ``ej.drawing.DWDrawing``
 
-	* [Added] Equivalent of ``dw_drawing.h`` and ``dw_drawing_soft.h**``: allows to implement some drawing algorithms and/or to use the ones provided by the graphical engine. The drawing methods are related to the library ``ej.api.drawing``.
-	* [Added] Interface ``DWDrawingDefault``: default implementation of ``DWDrawing`` which calls the graphical engine algorithms.
+	* [Added] Equivalent of ``dw_drawing.h`` and ``dw_drawing_soft.h**``: allows to implement some drawing algorithms and/or to use the ones provided by the Graphics Engine. The drawing methods are related to the library ``ej.api.drawing``.
+	* [Added] Interface ``DWDrawingDefault``: default implementation of ``DWDrawing`` which calls the Graphics Engine algorithms.
 
 * ``ej.drawing.LLDWPainter``
 
 	* [Added] Equivalent of module `com.microej.clibrary.llimpl#microui`_ (``LLDW_PAINTER_impl.c``): implements all ``ej.api.drawing`` natives and redirect them to the interface ``DWDrawing``.
-	* [Added] ``setDrawer(DWDrawing)``: allows to configure the implementation of ``DWDrawing`` the ``LLDWPainter`` has to use. When no drawer is configured, ``LLDWPainter`` redirects all drawings to the internal graphical engine software algorithms.
+	* [Added] ``setDrawer(DWDrawing)``: allows to configure the implementation of ``DWDrawing`` the ``LLDWPainter`` has to use. When no drawer is configured, ``LLDWPainter`` redirects all drawings to the internal Graphics Engine software algorithms.
 
 * ``ej.fp.event.MicroUIButtons``
 
@@ -156,8 +180,8 @@ Front Panel API
 
 * ``ej.fp.widget.MicroUIDisplay``
 
-	* [Removed] Replaced by ``LLUIDisplayImpl``. Abstract widget display class has been replaced by an interface that a widget (which should simulate a display) has to implement to be compatible with the graphical engine.
-	* [Removed] ``AbstractDisplayExtension``, all available implementations and ``setExtensionClass(String)``: the standard display formats (RGB565, etc.) are internally managed by the graphical engine. For generic formats, some APIs are available in ``LLUIDisplayImpl``.
+	* [Removed] Replaced by ``LLUIDisplayImpl``. Abstract widget display class has been replaced by an interface that a widget (which should simulate a display) has to implement to be compatible with the Graphics Engine.
+	* [Removed] ``AbstractDisplayExtension``, all available implementations and ``setExtensionClass(String)``: the standard display formats (RGB565, etc.) are internally managed by the Graphics Engine. For generic formats, some APIs are available in ``LLUIDisplayImpl``.
 	* [Removed] ``finalizeConfiguration()``, ``getDisplayHeight()``, ``getDisplayWidth()``, ``getDrawingBuffer()``, ``setDisplayWidth(int)``, ``setDisplayHeight(int)``, ``start()``: ``LLUIDisplayImpl`` is not an abstract widget anymore, these notions are widget dependent.
 	* [Removed] ``flush()``.
 	* [Removed] ``getNbBitsPerPixel()``.
@@ -165,18 +189,18 @@ Front Panel API
 
 * ``ej.fp.widget.MicroUILED``
 
-	* [Removed] Replaced by ``LLUILedImpl``. Abstract widget LED class has been replaced by an interface that a widget (which should simulate a LED) has to implement to be compatible with the graphical engine.
+	* [Removed] Replaced by ``LLUILedImpl``. Abstract widget LED class has been replaced by an interface that a widget (which should simulate a LED) has to implement to be compatible with the Graphics Engine.
 	* [Removed] ``finalizeConfiguration()``: ``LLUILedImpl`` is not an abstract widget anymore, this notion is widget dependent.
 	* [Removed] ``getID()``: MicroUI uses the widget (which implements the interface ``LLUILedImpl``)'s label to retrieve the LED. The LED labels must be integers from 0 to ``n-1``.
 
 * ``ej.microui.display.LLUIDisplay``
 
-	* [Added] Equivalent of ``LLUI_DISPLAY.h``: several functions to interact with the graphical engine.
+	* [Added] Equivalent of ``LLUI_DISPLAY.h``: several functions to interact with the Graphics Engine.
 	* [Added] ``blend(int,int,int)``: blends two ARGB colors and opacity level.
 	* [Added] ``convertARGBColorToColorToDraw(int)``: crops given color to display capacities.
 	* [Added] ``getDisplayPixelDepth()``: replaces ``MicroUIDisplay.getNbBitsPerPixel()``.
-	* [Added] ``getDWDrawerSoftware()``: gives the unique instance of graphical engine's internal software drawer (instance of ``DWDrawing``).
-	* [Added] ``getUIDrawerSoftware()``: gives the unique instance of graphical engine's internal software drawer (instance of ``UIDrawing``).
+	* [Added] ``getDWDrawerSoftware()``: gives the unique instance of Graphics Engine's internal software drawer (instance of ``DWDrawing``).
+	* [Added] ``getUIDrawerSoftware()``: gives the unique instance of Graphics Engine's internal software drawer (instance of ``UIDrawing``).
 	* [Added] ``mapMicroUIGraphicsContext(byte[])`` and ``newMicroUIGraphicsContext(byte[])``: maps the graphics context byte array (`GraphicsContext.getSNIContext()`_) on an object which represents the graphics context in front panel. 
 	* [Added] ``mapMicroUIImage(byte[])`` and ``newMicroUIImage(byte[])``: maps the image byte array (`Image.getSNIContext()`_) on an object which represents the image in front panel. 
 	* [Added] ``requestFlush(boolean)``: requests a call to ``LLUIDisplayImpl.flush()``.
@@ -185,21 +209,21 @@ Front Panel API
 * ``ej.microui.display.LLUIDisplayImpl``
 
 	* [Added] Replaces ``MicroUIDisplay``, equivalent of ``LLUI_DISPLAY_impl.h``.
-	* [Added] ``initialize()``: asks to initialize the widget and to return a front panel image where the graphical engine will perform the MicroUI drawings.
+	* [Added] ``initialize()``: asks to initialize the widget and to return a front panel image where the Graphics Engine will perform the MicroUI drawings.
 	* [Changed] ``flush(MicroUIGraphicsContext, Image, int, int, int, int)``: asks to flush the graphics context drawn by MicroUI in image returned by ``initialize()``.
 
 * ``ej.microui.display.LLUIPainter``
 
 	* [Added] Equivalent of module `com.microej.clibrary.llimpl#microui`_ (``LLUI_PAINTER_impl.c``): implements all ``ej.api.microui`` natives and redirect them to the interface ``UIDrawing``.
-	* [Added] ``MicroUIGraphicsContext``: representation of a MicroUI `GraphicsContext`_ in front panel. This interface (implemented by the graphical engine) provides several function to get information on graphics context, clip, etc.
+	* [Added] ``MicroUIGraphicsContext``: representation of a MicroUI `GraphicsContext`_ in front panel. This interface (implemented by the Graphics Engine) provides several function to get information on graphics context, clip, etc.
 	* [Added] ``MicroUIGraphicsContext#requestDrawing()``: allows to take the hand on the drawing buffer.
-	* [Added] ``MicroUIImage``: representation of a MicroUI `Image`_ in front panel. This interface (implemented by the graphical engine) provides several function to get information on image.
-	* [Added] ``setDrawer(UIDrawing)``: allows to configure the implementation of ``UIDrawing`` the ``LLUIPainter`` has to use. When no drawer is configured, ``LLUIPainter`` redirects all drawings to the internal graphical engine software algorithms.
+	* [Added] ``MicroUIImage``: representation of a MicroUI `Image`_ in front panel. This interface (implemented by the Graphics Engine) provides several function to get information on image.
+	* [Added] ``setDrawer(UIDrawing)``: allows to configure the implementation of ``UIDrawing`` the ``LLUIPainter`` has to use. When no drawer is configured, ``LLUIPainter`` redirects all drawings to the internal Graphics Engine software algorithms.
 	* 
 * ``ej.microui.display.UIDrawing``
 
-	* [Added] Equivalent of ``ui_drawing.h`` and ``ui_drawing_soft.h**``: allows to implement some drawing algorithms and/or to use the ones provided by the graphical engine. The drawing methods are related to the library ``ej.api.microui``.
-	* [Added] Interface ``UIDrawingDefault``: default implementation of ``UIDrawing`` which calls the graphical engine algorithms.
+	* [Added] Equivalent of ``ui_drawing.h`` and ``ui_drawing_soft.h**``: allows to implement some drawing algorithms and/or to use the ones provided by the Graphics Engine. The drawing methods are related to the library ``ej.api.microui``.
+	* [Added] Interface ``UIDrawingDefault``: default implementation of ``UIDrawing`` which calls the Graphics Engine algorithms.
 
 * ``ej.microui.event.EventButton``
 
@@ -325,7 +349,7 @@ Image Generator API
 
 * ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension``
 
-	* [Added] Graphical engine RAW image converter: used when the image (listed in ``images.list``) targets a RAW format known by the graphical engine.
+	* [Added] Graphics Engine RAW image converter: used when the image (listed in ``images.list``) targets a RAW format known by the Graphics Engine.
 
 Font
 """"
@@ -373,7 +397,7 @@ LLAPI
 
 * ``dw_drawing_soft.h``
 
-	* [Added] List of internal graphical engine software algorithms to perform some drawings (related to library ``ej.api.drawing``).
+	* [Added] List of internal Graphics Engine software algorithms to perform some drawings (related to library ``ej.api.drawing``).
 
 * ``dw_drawing.h``
 
@@ -481,12 +505,12 @@ LLAPI
 * ``LLUI_DISPLAY.h`` 
 
 	* [Added] Renaming of ``LLDISPLAY_UTILS.h``.
-	* [Added] Several functions to interact with the graphical engine and to get information on images, graphics context, clip, etc.
+	* [Added] Several functions to interact with the Graphics Engine and to get information on images, graphics context, clip, etc.
 	* [Added] ``LLUI_DISPLAY_requestFlush(bool)``: requests a call to ``LLUI_DISPLAY_IMPL_flush()``.
 	* [Added] ``LLUI_DISPLAY_requestRender(void)``: requests a call to ``Displayable.render()``.
 	* [Added] ``LLUI_DISPLAY_freeImageBuffer(MICROUI_Image*)``: frees an image previously allocated by ``LLUI_DISPLAY_allocateImageBuffer(MICROUI_Image*,uint8_t)``.
 	* [Added] ``LLUI_DISPLAY_requestDrawing(MICROUI_GraphicsContext*,SNI_callback)``: allows to take the hand on the shared drawing buffer.
-	* [Added] ``LLUI_DISPLAY_setDrawingStatus(DRAWING_Status)``: specifies the drawing status to the graphical engine.
+	* [Added] ``LLUI_DISPLAY_setDrawingStatus(DRAWING_Status)``: specifies the drawing status to the Graphics Engine.
  
 * ``LLUI_DISPLAY_impl.h``
 
@@ -504,7 +528,7 @@ LLAPI
 
 * ``ui_drawing_soft.h``
 
-	* [Added] List of internal graphical engine software algorithms to perform some drawings (related to library ``ej.api.microui``).
+	* [Added] List of internal Graphics Engine software algorithms to perform some drawings (related to library ``ej.api.microui``).
 
 * ``ui_drawing.h``
 

@@ -502,7 +502,7 @@ The following steps describe how the dump is performed:
 
 .. warning:: The dump of MicroUI objects linked to the `future` events is only available with the MicroEJ Architectures 7.16 and higher. With older MicroEJ Architectures, nothing is dumped.
  
-An implementation is available on the :ref:`C module<section_ui_releasenotes_cmodule>`. This logger is constituted with two files:
+An implementation is available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`. This logger is constituted with two files:
 
 * ``LLUI_INPUT_LOG_impl.c``: this file holds some metadata for each event. When the event engine calls ``LLUI_INPUT_IMPL_log_dump()``, the logger retrieves the event metadata and calls ``microui_event_decoder.c`` functions. To enable this logger, set the define ``MICROUIEVENTDECODER_ENABLED`` in ``microui_event_decoder_conf.h``. 
 * ``microui_event_decoder.c``: this file describes the MicroUI events. It has to be customized with the MicroUI event generators identifiers. See ``microui_event_decoder_conf.h``.
@@ -559,7 +559,7 @@ Notes:
 * The indices of old events are out-of-date: the memory slot is now null or reused by a newer event.
 * The event ``25`` targets the event generator ``3``; the identifier is available in ``microui_constants.h`` (created during the MicroEJ Platform build, see :ref:`section_inputs_static_init`). 
 * The events ``27`` to ``99`` cannot be identified (no metadata or partial event content due to circular queue management).
-* Refers to the implementation on the :ref:`C module<section_ui_releasenotes_cmodule>` to have more information about the format of the event; this implementation is always up-to-date with the MicroUI implementation.
+* Refers to the implementation on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` to have more information about the format of the event; this implementation is always up-to-date with the MicroUI implementation.
 
 Dependencies
 ============
@@ -570,6 +570,7 @@ Dependencies
 
 -  ``LLUI_INPUT_impl.h`` implementation (see :ref:`LLINPUT-API-SECTION`).
 
+- The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` to optionally use the :ref:`default input logger <section_inputs_eventbuffer>`.
 
 .. _section_inputs_installation:
 

@@ -4,6 +4,77 @@
 Changelog
 =========
 
+13.4.1 (2023-02-06)
+===================
+	
+Drawing Implementation
+""""""""""""""""""""""
+
+**Fixed**
+
+* Fix thick lines drawing (when thickness is larger than length).
+* Fix circle and ellipse drawing (when the diameter/axis has an even length).
+
+FrontPanel
+""""""""""
+
+**Changed**
+
+* Increase the speed of RAW image decoding step.
+
+ImageGenerator
+""""""""""""""
+
+**Fixed**
+
+* Fix the VEE Port's memory alignment constraint.
+
+13.4.0 - 2022-12-13
+===================
+
+* Compatible with Architecture 7.13.0 or higher.
+
+MicroUI Implementation
+""""""""""""""""""""""
+	
+**Fixed**
+
+* Fix the unexpected resuming of the pump Java thread when a new event is added to the queue if it is an other component than the MicroUI queue that has suspended the pump Java thread.
+* Fix the flush bounds of drawCircleArc and drawEllipseArc.   
+
+FrontPanel
+""""""""""
+
+**Added**
+
+* Add some checks to not perform a drawing when it is unnecessary. 
+
+**Fixed**
+
+* Fix the Front Panel representation of a BufferedImage: it is always opaque. 
+
+ImageGenerator
+""""""""""""""
+
+**Added**
+
+* Add the image format A8_RLE.
+
+**Changed**
+
+* Rename RLE1 format in ARGB1565_RLE (keep RLE1 for backward compatibility).
+
+**Fixed**
+
+* Fix the non-generation of external images for the features.
+
+FontGenerator
+"""""""""""""
+
+**Fixed**
+
+* Fix the external fonts output folder for the features.
+
 13.3.1 - 2022-09-09
 ===================
 
@@ -482,7 +553,7 @@ LLAPIs
 * Some new functions are optional: see header files list, tag *optional*.
 * Some header files list the libraries ``ej.api.microui`` and ``ej.api.drawing`` natives. Provided by Abstraction Layer implementation module `com.microej.clibrary.llimpl#microui`_.
 * Some header files list the drawing algorithms the platform can implement; all algorithms are optional.
-* Some header files list the internal graphical engine software algorithms the platform can call.
+* Some header files list the internal Graphics Engine software algorithms the platform can call.
 	
 **Changed**
 
@@ -582,7 +653,7 @@ MicroUI Implementation
 
 **Fixed**
 
-* Fix graphical engine empty clip (empty clip had got a size of 1 pixel).
+* Fix Graphics Engine empty clip (empty clip had got a size of 1 pixel).
 * Clip not respected when clip is set "just after or before" graphics context drawable area: first (or last) line (or column) of graphics context was rendered.
 
 [12.1.1] - 2019-10-29
@@ -595,7 +666,7 @@ MicroUI Implementation
 
 **Fixed**
 
-* Fix graphical engine clip (cannot be outside graphics context).
+* Fix Graphics Engine clip (cannot be outside graphics context).
 
 [(maint) 8.0.0] - 2019-10-18
 ============================

@@ -18,7 +18,7 @@ Standard Versions
 +-----------------+--------------------+---------------------------------------------------------+
 | UI Pack Range   | Architecture Range | Comment                                                 |
 +=================+====================+=========================================================+
-| [13.0.0-13.3.1] | [7.13.0-8.0.0[     | SNI 1.3                                                 |
+| [13.0.0-13.4.1] | [7.13.0-8.0.0[     | SNI 1.3                                                 |
 +-----------------+--------------------+---------------------------------------------------------+
 | [12.0.0-12.1.5] | [7.11.0-8.0.0[     | Move Front Panel in MicroEJ Architecture                |
 +-----------------+--------------------+---------------------------------------------------------+
@@ -58,7 +58,7 @@ The following table describes Foundation Libraries API versions implemented in M
    * - UI Pack Range
      - MicroUI
      - Drawing
-   * - [13.2.0-13.3.1]
+   * - [13.2.0-13.4.1]
      - `3.1.1 <https://repository.microej.com/modules/ej/api/microui/3.1.1/>`_
      - `1.0.4 <https://repository.microej.com/modules/ej/api/drawing/1.0.4/>`_
    * - 13.1.0
@@ -110,7 +110,7 @@ Display
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-13.3.1] | *UI3* format: implement ``LLUI_DISPLAY_impl.h``:                 |
+| [13.0.0-13.4.1] | *UI3* format: implement ``LLUI_DISPLAY_impl.h``:                 |
 |                 |                                                                  |
 |                 | * ``void LLUI_DISPLAY_IMPL_initialize([...]);``                  |
 |                 | * ``void LLUI_DISPLAY_IMPL_binarySemaphoreTake([...]);``         |
@@ -141,7 +141,7 @@ Input
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-13.3.1] | *UI3* format: implement ``LLUI_INPUT_impl.h``:                   |
+| [13.0.0-13.4.1] | *UI3* format: implement ``LLUI_INPUT_impl.h``:                   |
 |                 |                                                                  |
 |                 | * ``void LLUI_INPUT_IMPL_initialize([...]);``                    |
 |                 | * ``jint LLUI_INPUT_IMPL_getInitialStateValue([...]);``          |
@@ -162,7 +162,7 @@ LED
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-13.3.1] | *UI3* format: implement ``LLUI_LED_impl.h``:                     |
+| [13.0.0-13.4.1] | *UI3* format: implement ``LLUI_LED_impl.h``:                     |
 |                 |                                                                  |
 |                 | * ``jint LLUI_LED_IMPL_initialize([...]);``                      |
 |                 | * ``jint LLUI_LED_IMPL_getIntensity([...]);``                    |
@@ -184,7 +184,7 @@ The module version is the MicroEJ Generic UI Pack version, that is always aligne
 +-----------------+---------------------------------------------+-------------------+
 | UI Pack Range   | Module                                      | Version           |
 +=================+=============================================+===================+
-| [13.0.0-13.3.1] | `com.microej.pack.ui.ui-pack(frontpanel)`_  | |UIPACKVERSION|   |
+| [13.0.0-13.4.1] | `com.microej.pack.ui.ui-pack(frontpanel)`_  | |UIPACKVERSION|   |
 +-----------------+---------------------------------------------+-------------------+
 | [12.0.0-12.1.5] | ``ej.tool.frontpanel.widget-microui``       | 1.0.0             |
 +-----------------+---------------------------------------------+-------------------+
@@ -202,20 +202,23 @@ The module version is the MicroEJ Generic UI Pack version, that is always aligne
 +-----------------+-------------------------------------------------+-------------------+
 | UI Pack Range   | Module                                          | Version           |
 +=================+=================================================+===================+
-| [13.0.0-13.3.1] | `com.microej.pack.ui.ui-pack(imagegenerator)`_  | |UIPACKVERSION|   |
+| [13.0.0-13.4.1] | `com.microej.pack.ui.ui-pack(imagegenerator)`_  | |UIPACKVERSION|   |
 +-----------------+-------------------------------------------------+-------------------+
 
 .. note:: Before MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on classpath variable ``IMAGE-GENERATOR-x.x``.
 
 .. _com.microej.pack.ui.ui-pack(imagegenerator): https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/
-
+ 
 .. _section_ui_releasenotes_cmodule:
 
-C Module
-========
+C Modules
+=========
 
-A `C module`_ is available on MicroEJ Central Repository. 
-This C module provides default implementations for:
+MicroUI C Module
+""""""""""""""""
+
+The MicroUI C module `com.microej.clibrary.llimpl(microui)`_ is available on MicroEJ Central Repository. 
+This C module is **mandatory** and provides default implementations for:
 
 * ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``: see :ref:`section_display_llapi`,
 * Images heap allocator: see :ref:`section_image_loader_memory`,
@@ -226,14 +229,143 @@ The following table describes the compatibility versions between the C modules a
 +----------------+-----------------+
 | C Module Range | UI Pack Range   |
 +================+=================+
-| 2.0.0          | [13.3.0-13.3.1] |
+| [2.0.0-2.0.1]  | [13.3.0-13.4.1] |
 +----------------+-----------------+
 | [1.1.0-1.1.1]  | [13.1.0-13.2.0] |
 +----------------+-----------------+
 | [1.0.0-1.0.3]  | [13.0.0-13.1.0] |
 +----------------+-----------------+
 
-.. _C module: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui
+.. _com.microej.clibrary.llimpl(microui): https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/
+
+Extended C Modules
+""""""""""""""""""
+
+Some C modules extend the main MicroUI C module.
+They override the default implementation to use a GPU to perform some drawings.
+Contrary to the main MicroUI C module, they are optional: when they are not available, the default implementation of drawings is used.
+The default implementations use the Graphics Engine software algorithms.
+
+**STM32 Chrom-ART**
+
+The DMA2D C module `com.microej.clibrary.llimpl(display-dma2d)`_ targets the STM32 CPU that provides the Chrom-ART accelerator. 
+
+The following table describes the accelerated features:
+
++----------------+------------------------------------------------------+
+| Feature        | Comment                                              |
++================+======================================================+
+| Fill rectangle |                                                      |
++----------------+------------------------------------------------------+
+| Draw image     | ARGB8888, RGB888, RGB565, ARGB1555, ARGB4444, A8, A4 |
++----------------+------------------------------------------------------+
+| Flush (copy)   | Copy of data from back buffer to frame buffer        |
++----------------+------------------------------------------------------+
+
+The following table describes the version compatibility between the C module and the MicroEJ UI Packs:
+
++----------------+-----------------+
+| C Module Range | UI Pack Range   |
++================+=================+
+| [3.0.0-3.0.2]  | [13.3.0-13.4.1] |
++----------------+-----------------+
+| [2.0.0-2.1.0]  | [13.1.0-13.2.0] |
++----------------+-----------------+
+| [1.0.6-1.0.8]  | [13.0.0-13.0.7] |
++----------------+-----------------+
+
+.. _com.microej.clibrary.llimpl(display-dma2d): https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/
+
+**Vivante VG-Lite**
+
+The VG-Lite C module `com.microej.clibrary.llimpl(microui-vglite)`_ targets the NXP CPU that provides the Vivante VG-Lite accelerator. 
+
+This C module provides some drawing algorithms that are disabled by default. 
+
+* The rendering time of a simple shape with the GPU (time in the VG-Lite library + GPU setup time + rendering time) is longer than with software rendering. To enable the hardware rendering for simple shapes, uncomment the definition of ``VGLITE_USE_GPU_FOR_SIMPLE_DRAWINGS``  in ``display_configuration.h``.
+* The rendering time of an RGB565 image into an RGB565 buffer without applying an opacity (alpha == 0xff) is longer than with software rendering (as this kind of drawing consists in performing a mere memory copy). To enable the hardware rendering for RGB565 images, uncomment the definition of ``VGLITE_USE_GPU_FOR_RGB565_IMAGES``  in ``display_configuration.h``.
+* ARGB8888, ARGB1555 and ARGB4444 transparent images are not compatible with some revisions of the VG-Lite GPU. Older GPU revisions do not render correctly transparent images because the pre-multiplication of the pixel opacity is not propagated to the pixel color components. To enable the hardware rendering for transparent images, uncomment the definition of ``VGLITE_USE_GPU_FOR_TRANSPARENT_IMAGES``  in ``display_configuration.h``. Note that this limitation does not concern the A8 and A4 formats.
+
+The following table describes the accelerated features:
+
++-----------------------------+-----------------------------------------------------------+
+| Feature                     | Comment                                                   |
++=============================+===========================================================+
+| Draw line                   | Disabled by default (see above)                           |
++-----------------------------+-----------------------------------------------------------+
+| Fill rectangle              | Disabled by default (see above)                           |
++-----------------------------+-----------------------------------------------------------+
+| Draw rounded rectangle      | Disabled by default (see above)                           |
++-----------------------------+-----------------------------------------------------------+
+| Fill rounded rectangle      |                                                           |
++-----------------------------+-----------------------------------------------------------+
+| Draw circle arc             | Disabled by default (see above)                           |
++-----------------------------+-----------------------------------------------------------+
+| Fill circle arc             |                                                           |
++-----------------------------+-----------------------------------------------------------+
+| Draw ellipse arc            | Disabled by default (see above)                           |
++-----------------------------+-----------------------------------------------------------+
+| Fill ellipse arc            |                                                           |
++-----------------------------+-----------------------------------------------------------+
+| Draw ellipse arc            | Disabled by default (see above)                           |
++-----------------------------+-----------------------------------------------------------+
+| Fill ellipse arc            |                                                           |
++-----------------------------+-----------------------------------------------------------+
+| Draw circle                 | Disabled by default (see above)                           |
++-----------------------------+-----------------------------------------------------------+
+| Fill circle                 |                                                           |
++-----------------------------+-----------------------------------------------------------+
+| Draw image                  | RGB565, A8, A4 + ARGB8888, ARGB1555, ARGB4444 (see above) |
++-----------------------------+-----------------------------------------------------------+
+| Draw thick faded point      | Only with fade <= 1                                       |
++-----------------------------+-----------------------------------------------------------+
+| Draw thick faded line       | Only with fade <= 1                                       |
++-----------------------------+-----------------------------------------------------------+
+| Draw thick faded circle     | Only with fade <= 1                                       |
++-----------------------------+-----------------------------------------------------------+
+| Draw thick faded circle arc | Only with fade <= 1                                       |
++-----------------------------+-----------------------------------------------------------+
+| Draw thick faded ellipse    | Only with fade <= 1                                       |
++-----------------------------+-----------------------------------------------------------+
+| Draw thick line             |                                                           |
++-----------------------------+-----------------------------------------------------------+
+| Draw thick circle           |                                                           |
++-----------------------------+-----------------------------------------------------------+
+| Draw thick circle arc       |                                                           |
++-----------------------------+-----------------------------------------------------------+
+| Draw thick ellipse          |                                                           |
++-----------------------------+-----------------------------------------------------------+
+| Draw flipped image          | See draw image                                            |
++-----------------------------+-----------------------------------------------------------+
+| Draw rotated image          | See draw image                                            |
++-----------------------------+-----------------------------------------------------------+
+| Draw scaled image           | See draw image                                            |
++-----------------------------+-----------------------------------------------------------+
+
+The following table describes the version compatibility between the C module and the MicroEJ UI Packs:
+
++----------------+-----------------+
+| C Module Range | UI Pack Range   |
++================+=================+
+| [3.0.0-5.0.1]  | [13.3.0-13.4.1] |
++----------------+-----------------+
+| [1.0.0-2.0.0]  | [13.1.0-13.2.0] |
++----------------+-----------------+
+
+
+The following table describes the version compatibility between the C module and the VG-Lite libraries (officially supported):
+
++----------------+---------------------------+
+| C Module Range | VG-Lite Libraries Range   |
++================+===========================+
+| [4.0.0-5.0.1]  | 3.0.15_rev4               |
++----------------+---------------------------+
+| [2.0.0-3.0.0]  | 3.0.11_rev3               |
++----------------+---------------------------+
+| 1.0.0          | 3.0.4_rev2 and 3.0.4_rev4 |
++----------------+---------------------------+
+
+.. _com.microej.clibrary.llimpl(microui-vglite): https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/
 
 ..
    | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
