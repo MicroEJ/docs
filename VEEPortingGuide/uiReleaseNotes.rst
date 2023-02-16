@@ -283,7 +283,7 @@ The VG-Lite C module `com.microej.clibrary.llimpl(microui-vglite)`_ targets the 
 This C module provides some drawing algorithms that are disabled by default. 
 
 * The rendering time of a simple shape with the GPU (time in the VG-Lite library + GPU setup time + rendering time) is longer than with software rendering. To enable the hardware rendering for simple shapes, uncomment the definition of ``VGLITE_USE_GPU_FOR_SIMPLE_DRAWINGS``  in ``display_configuration.h``.
-* The rendering time of an RGB565 image into an RGB565 buffer without applying an opacity (alpha == 0xff) is longer than than with software rendering (as this kind of drawing consists in performing a mere memory copy). To enable the hardware rendering for RGB565 images, uncomment the definition of ``VGLITE_USE_GPU_FOR_RGB565_IMAGES``  in ``display_configuration.h``.
+* The rendering time of an RGB565 image into an RGB565 buffer without applying an opacity (alpha == 0xff) is longer than with software rendering (as this kind of drawing consists in performing a mere memory copy). To enable the hardware rendering for RGB565 images, uncomment the definition of ``VGLITE_USE_GPU_FOR_RGB565_IMAGES``  in ``display_configuration.h``.
 * ARGB8888, ARGB1555 and ARGB4444 transparent images are not compatible with some revisions of the VG-Lite GPU. Older GPU revisions do not render correctly transparent images because the pre-multiplication of the pixel opacity is not propagated to the pixel color components. To enable the hardware rendering for transparent images, uncomment the definition of ``VGLITE_USE_GPU_FOR_TRANSPARENT_IMAGES``  in ``display_configuration.h``. Note that this limitation does not concern the A8 and A4 formats.
 
 The following table describes the accelerated features:
