@@ -505,6 +505,11 @@ a.wy-text-info:hover, a.wy-text-info:visited:hover {
   margin-top: -75px;
 }
 
+.rst-content .footnote-reference {
+  padding-top: 72px; 
+  margin-top: -72px;
+}
+
 h3,
 h4,
 h5,
