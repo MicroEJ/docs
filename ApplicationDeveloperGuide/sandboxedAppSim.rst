@@ -49,6 +49,24 @@ With the Application created in the section :ref:`chapter.application.firstAppli
 
    SUCCESS
 
+Run Multiple Sandboxed Applications 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is possible to execute additional Sandboxed Applications besides the main Sandboxed Application project.
+This is typically useful when you want to test the integration of a Sandboxed Application that communicates with an other one, 
+for example through a :ref:`Shared Interface <chapter.shared.interfaces>`.
+
+The additional Sandboxed Applications must have been previously built in its binary format (WPK, see :ref:`remote_deployment_wpk` section). Then, to include them:
+
+- Select the Sandboxed Application project,
+- Create the ``META-INF/wpk`` folders,
+- Drop any ``*.wpk`` files in the ``META-INF/wpk`` folder.
+  
+Your Sandboxed Application project shall look like:
+  
+  .. figure:: images/sandboxed-application-wpk-dropins.png
+
+Now, when launching the Sandboxed Application project, these additional Sandboxed Applications will also be executed on the Virtual Device.
 
 From the Command Line Interface
 -------------------------------
