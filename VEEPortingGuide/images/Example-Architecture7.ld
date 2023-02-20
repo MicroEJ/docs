@@ -1,49 +1,44 @@
-/*
-*****************************************************************************
-**  File        : LinkerScript.ld
-*****************************************************************************
-*/
-
+/* Linker Script Template for Architecture 7.x */
 SECTIONS
 {
+  /* .text sections (code) */
   .text_ro :
   {
     . = ALIGN(4);
+    *(.text)
+    *(.text*)
+  } >ROM
 
-    *libgcc.a:(.text .text.*)
-    *lib_a-nano*.o(.text .text.*)
-    *(.text)           /* .text sections (code) */
-    *(.text*)          /* .text* sections (code) */
-
-    . = ALIGN(4);
-  } >FLASH
-
+  /* .rodata sections (constants, strings, etc.) */
   .rodata_ro :
   {
     . = ALIGN(4);
-
-    *(.rodata)         /* .rodata sections (constants, strings, etc.) */
-    *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
+    *(.rodata)
+    *(.rodata*)
     *(.text.soar)
     *(.rodata.resources)
     *(.text.features.installed)
-
+  } >ROM
+  
+  /* readwrite region initializers (mandatory) */
+  .data :
+  {
     . = ALIGN(4);
-  } >FLASH
-
+    *(.data)
+    *(.data*)
+  } >RAM AT> ROM
+  
+  /* .bss sections (statics, buffers, etc.) */
   .bss_rw :
   {
     . = ALIGN(4);
     *(.bss)
     *(.bss*)
-    *(COMMON)
-    
+    *(COMMON)    
     *(.bss.vm.stacks.java)
     *(ICETEA_HEAP)
     *(_java_heap)
     *(_java_immortals)
-    *(.bss.features.installed)    
-
-    . = ALIGN(4);
+    *(.bss.features.installed)
   } >RAM
 }
