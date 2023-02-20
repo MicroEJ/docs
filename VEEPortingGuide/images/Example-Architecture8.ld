@@ -24,7 +24,7 @@ SECTIONS
 
     *(.rodata)         /* .rodata sections (constants, strings, etc.) */
     *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
-    *(.rodata.microej.soar.*)
+    *(.rodata.microej.soar)
     *(.rodata.microej.resource.*)
     *(.rodata.microej.features)
 
