@@ -33,7 +33,7 @@ Here is an example of a GNU LD script highlighting the typical changes that must
 Remove LLBSP_IMPL_isInReadOnlyMemory
 ------------------------------------
 
-The ``LLBSP_IMPL_isInReadOnlyMemory`` has been removed since it is no more called by the Core Engine. You can simply remove your implementation function.
+The ``LLBSP_IMPL_isInReadOnlyMemory`` function has been removed since it is no more called by the Core Engine. You can simply remove your implementation function.
 
 Migrate Built-in Modules
 ------------------------
