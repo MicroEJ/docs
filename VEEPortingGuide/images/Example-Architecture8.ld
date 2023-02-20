@@ -1,49 +1,44 @@
-/*
-*****************************************************************************
-**  File        : LinkerScript.ld
-*****************************************************************************
-*/
-
+/* Linker Script Template for Architecture 8.x */
 SECTIONS
 {
+  /* .text sections (code) */
   .text_ro :
   {
     . = ALIGN(4);
+    *(.text)
+    *(.text*)
+  } >ROM
 
-    *libgcc.a:(.text .text.*)
-    *lib_a-nano*.o(.text .text.*)
-    *(.text)           /* .text sections (code) */
-    *(.text*)          /* .text* sections (code) */
-
-    . = ALIGN(4);
-  } >FLASH
-
+  /* .rodata sections (constants, strings, etc.) */
   .rodata_ro :
   {
     . = ALIGN(4);
-
-    *(.rodata)         /* .rodata sections (constants, strings, etc.) */
-    *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
+    *(.rodata)
+    *(.rodata*)
     *(.rodata.microej.soar)
     *(.rodata.microej.resource.*)
     *(.rodata.microej.features)
-
+  } >ROM
+  
+  /* readwrite region initializers (mandatory) */
+  .data :
+  {
     . = ALIGN(4);
-  } >FLASH
-
+    *(.data)
+    *(.data*)
+  } >RAM AT> ROM
+  
+  /* .bss sections (statics, buffers, etc.) */
   .bss_rw :
   {
     . = ALIGN(4);
     *(.bss)
     *(.bss*)
-    *(COMMON)
-    
+    *(COMMON)    
     *(.bss.microej.stacks)
     *(.bss.microej.runtime)
     *(.bss.microej.heap)
     *(.bss.microej.immortals)
-    *(.bss.microej.features)    
-
-    . = ALIGN(4);
+    *(.bss.microej.features)
   } >RAM
 }
