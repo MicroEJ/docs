@@ -14,7 +14,6 @@ SECTIONS
     *lib_a-nano*.o(.text .text.*)
     *(.text)           /* .text sections (code) */
     *(.text*)          /* .text* sections (code) */
-    *(.rodata.microej.features)
 
     . = ALIGN(4);
   } >FLASH
@@ -27,6 +26,7 @@ SECTIONS
     *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
     *(.rodata.microej.soar.*)
     *(.rodata.microej.resource.*)
+    *(.rodata.microej.features)
 
     . = ALIGN(4);
   } >FLASH
@@ -42,9 +42,8 @@ SECTIONS
     *(.bss.microej.runtime)
     *(.bss.microej.heap)
     *(.bss.microej.immortals)
+    *(.bss.microej.features)    
 
     . = ALIGN(4);
-  } >DTCM
-
-
+  } >RAM
 }
