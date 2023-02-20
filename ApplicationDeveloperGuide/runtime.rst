@@ -33,8 +33,13 @@ Embedded Device Configuration (EDC)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Embedded Device Configuration specification defines the minimal
-standard runtime environment for embedded devices. It defines all
-default API packages:
+standard runtime environment for embedded devices. 
+
+This module is always required in the build path of an Application project; 
+and all others libraries depend on it. This library provides a set of options.
+Refer to the chapter :ref:`application_options` which lists all available options.
+
+It defines all default API packages:
 
 -  `java.io <https://repository.microej.com/javadoc/microej_5.x/apis/java/io/package-frame.html>`_
 -  `java.lang <https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/package-frame.html>`_
@@ -53,6 +58,18 @@ default API packages:
    * - Module
      - https://repository.microej.com/modules/ej/api/edc/
 
+
+**Use**
+
+The `EDC API Module`_ must 
+be added to the :ref:`module.ivy <mmm_module_description>` of the Application 
+Project:
+
+::
+
+   <dependency org="ej.api" name="edc" rev="1.3.5"/>
+
+.. _EDC API Module: https://repository.microej.com/modules/ej/api/edc/
 
 .. _runtime_bon:
 
@@ -86,6 +103,16 @@ allows:
    * - Module
      - https://repository.microej.com/modules/ej/api/bon/
  
+**Use**
+
+Add the following dependency to the :ref:`module.ivy <mmm_module_description>` of the Application 
+Project to use the `BON API Module`_:
+
+::
+
+   <dependency org="ej.api" name="bon" rev="1.4.2"/>
+
+.. _BON API Module: https://repository.microej.com/modules/ej/api/bon/
 
 .. _runtime_sni:
 
