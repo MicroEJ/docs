@@ -490,6 +490,26 @@ a.wy-text-info:hover, a.wy-text-info:visited:hover {
   color: #f8a331 !important;
 }
 
+.rst-content .wy-table-responsive.footnote {
+  overflow: unset;
+}
+
+.rst-content table.docutils.footnote,
+.rst-content table.docutils.footnote colgroup {
+  display: block;
+}
+
+.rst-content table.docutils.footnote colgroup col {
+  display: block;
+  padding-top: 75px; 
+  margin-top: -75px;
+}
+
+.rst-content .footnote-reference {
+  padding-top: 72px; 
+  margin-top: -72px;
+}
+
 h3,
 h4,
 h5,
