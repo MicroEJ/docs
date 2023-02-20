@@ -10,11 +10,10 @@ SECTIONS
   {
     . = ALIGN(4);
 
-	  *libgcc.a:(.text .text.*)
+    *libgcc.a:(.text .text.*)
     *lib_a-nano*.o(.text .text.*)
     *(.text)           /* .text sections (code) */
     *(.text*)          /* .text* sections (code) */
-    *(.text.features.installed)
 
     . = ALIGN(4);
   } >FLASH
@@ -27,6 +26,7 @@ SECTIONS
     *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
     *(.text.soar)
     *(.rodata.resources)
+    *(.text.features.installed)
 
     . = ALIGN(4);
   } >FLASH
@@ -42,9 +42,8 @@ SECTIONS
     *(ICETEA_HEAP)
     *(_java_heap)
     *(_java_immortals)
+    *(.bss.features.installed)    
 
     . = ALIGN(4);
   } >RAM
-
-  
 }
