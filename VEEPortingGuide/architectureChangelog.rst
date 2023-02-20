@@ -49,7 +49,7 @@ This major Architecture version update introduces the following main features:
     The VEE Port C code can be modified and relinked without requiring to rebuild the ``.fo`` file anymore.
   
   - On different Kernel Applications provided some conditions are met. 
-    Basically, A ``.fo`` built on Kernel 1 can be installed on Kernel 2 if the exposed Kernel APIs are left unchanged.
+    Basically, a ``.fo`` built on Kernel 1 can be installed on Kernel 2 if the exposed Kernel APIs are left unchanged.
     See :ref:`feature_portability_control` for more details.
 
 If you plan to migrate a VEE Port from Architecture ``7.x`` to Architecture ``8.x``, consider the :ref:`architecture7_migration` chapter.
@@ -64,7 +64,7 @@ Core Engine
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
-- Removed foundation libraries API Jars and Javadoc.
+- Removed Foundation Libraries API Jars and Javadoc.
 
 Integration
 ~~~~~~~~~~~
