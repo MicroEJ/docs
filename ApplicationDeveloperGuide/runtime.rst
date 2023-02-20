@@ -35,7 +35,7 @@ Embedded Device Configuration (EDC)
 The Embedded Device Configuration specification defines the minimal
 standard runtime environment for embedded devices. 
 
-This MicroEJ module is always required in the build path of a MicroEJ project; 
+This module is always required in the build path of an Application project; 
 and all others libraries depend on it. This library provides a set of options.
 Refer to the chapter :ref:`application_options` which lists all available options.
 
