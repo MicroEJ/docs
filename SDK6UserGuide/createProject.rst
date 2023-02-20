@@ -148,22 +148,47 @@ The creation of a project with IntelliJ IDEA is done as follows:
 The project created by IntelliJ IDEA is a standard Java project (Gradle ``java`` plugin).
 The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
 
-- use the MicroEJ Gradle plugin, depending on the module nature you want to build, for example for an Add-On Library::
+- open the ``build.gradle.kts`` file.
+- erase its whole content.
+- add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
 
     plugins {
         id("com.microej.gradle.library") version "0.4.0"
     }
 
-  Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+  or for an Application::
 
-- remove the ``repositories`` block.
-- replace the content of the ``dependencies`` block by the dependencies required by your project. For example::
-
-    dependencies {
-        implementation("ej.api:edc:1.3.5")
+    plugins {
+        id("com.microej.gradle.application") version "0.4.0"
     }
 
-- remove the block related to the ``test`` task.
+  .. note::
+    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
+
+  Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+
+- declare the dependencies required by your project in the ``dependencies`` block. For example::
+
+      dependencies {
+          implementation("ej.api:edc:1.3.5")
+      }
+
+.. note::
+   By default, IntelliJ IDEA automatically saves any file change, 
+   but requires the user to explicitly trigger the reload of a Gradle project when its configuration has changed.
+   Therefore, when the configuration of a Gradle project has been updated, 
+   you have to click on the reload icon button which appears on the right of the editor:
+
+   .. figure:: images/intellij-reload-gradle-project.png
+      :alt: Gradle Project reload in IntelliJ IDEA
+      :align: center
+      :scale: 70%
+
+      Gradle Project reload in IntelliJ IDEA
+
+When the Gradle project has been reloaded, it should compile successfully, without any error.
+You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
+or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
 
 .. note::
    A message ``Project JDK is not defined`` is displayed at the top of the editor.
