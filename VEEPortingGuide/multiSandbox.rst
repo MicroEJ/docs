@@ -58,7 +58,7 @@ Installation
 
 Multi-Sandbox capability is an additional Core Engine module, disabled by default.
 
-To enable Multi-Sandbox capability of the MicroEJ Core Engine, in the platform
+To enable the Multi-Sandbox capability of the MicroEJ Core Engine, in the platform
 configuration file, check :guilabel:`Multi Applications`.
 
 
@@ -86,15 +86,15 @@ Feature Installation
 Feature installation is the process of linking a ``.fo`` file in memory.
 It is triggered by a call to the `Kernel.install(InputStream)`_ method. It consists of:
 
-- transfer the Feature content (code and resources) to target memory location,
-- apply relocations to code (e.g. resolving final addresses to instructions such as method call, static field access, ...).
+- transferring the Feature content (code and resources) to the target memory location,
+- applying relocations to code (e.g., resolving final addresses in instructions such as method call, static field access, ...).
 
 The ``LLKERNEL_impl.h`` Abstraction Layer interface provides Low Level APIs for allocating and transferring Feature content in different memory areas.
 
-There are 2 kinds of installation:
+There are two kinds of installation:
 
-- In-place Installation: The Feature content is allocated in RAM.
-- Custom Installation: The Feature content is copied to any byte-addressable memory, including ROM.
+- In-place installation: The Feature content is allocated in RAM.
+- Custom installation: The Feature content is copied to any byte-addressable memory, including ROM.
 
 Both installation modes require a certain amount of RAM:
 
@@ -104,7 +104,7 @@ Both installation modes require a certain amount of RAM:
 In-Place Installation
 ---------------------
 
-This is the fastest way to go with Feature installation, since it only requires to connect a ``malloc/free`` implementation.
+This is the fastest way to go with Feature installation since it only requires connecting a ``malloc/free`` implementation.
 
 .. figure:: images/multisandbox-link-inplace-overview.png
    :alt: In-Place Feature Installation Steps
@@ -145,10 +145,10 @@ Custom Installation
 -------------------
 
 Custom Feature Installation allows to install a Feature in any byte-addressable memory. 
-The Abstraction Layer implementation is responsible to provide:
+The Abstraction Layer implementation is responsible for providing the following elements:
 
 - the address location where the Feature will be installed,
-- the implementation to copy chunk of bytes to the target location.
+- the implementation to copy a chunk of bytes to the target location.
 
 
 .. figure:: images/multisandbox-link-custom-overview.png
@@ -189,7 +189,7 @@ The custom uninstallation flow is described in the following sequence diagram:
 Feature Persistency
 -------------------
 
-If the Abstraction Layer implementation installs it in a Read-Only memory, the Abstraction Layer implementation can so that the Feature will be available after the Core Engine or the device restarts.
+If the Abstraction Layer implementation installs a Feature in a Read-Only memory, it will be available after the Core Engine or the device restarts.
 
 .. figure:: images/multisandbox-link-boot-flow.png
    :alt: Feature Installation Boot Flow
@@ -223,7 +223,7 @@ The number of relocations to apply in batch can be configured with the following
 **Default Value**: ``128``
 
 Once the Core Engine has processed the given number of relocations, it yields the execution to other threads than the one that is calling the `Kernel.install(InputStream)`_ method.
-A small number will give more smooth execution for threads but a slowest installation execution. A large number will make the Core Engine blocking for applying relocations for a faster installation execution.
+A small number will give more smooth execution for threads but a slowest installation execution. A large number will make the Core Engine block for applying relocations but a faster installation execution.
 
 .. _Kernel.install(InputStream): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
 
