@@ -168,8 +168,11 @@ This module nature defines the following dedicated build options:
      - When this property is set (any value), the virtual device is not built.
      - Not set
    * - virtual.device.sim.only
-     - When this property is set (any value), the firmware is not built.
+     - When this property is set (any value), the Executable is not built.
      - Not set
+   * - launch.properties.jvm
+     - Additional options to pass to the JVM for building the Executable.
+     - -Xmx1024M
 
 .. _module_natures.meta_build:
 
@@ -397,8 +400,11 @@ This module nature defines the following dedicated build options:
      - When this property is set (any value), the virtual device is not built.
      - Not set
    * - virtual.device.sim.only
-     - When this property is set (any value), the firmware is not built.
+     - When this property is set (any value), the Executable is not built.
      - Not set
+   * - launch.properties.jvm
+     - Additional options to pass to the JVM for building the Executable.
+     - -Xmx1024M
 
 .. [#require_sdk_5_5] Require SDK version ``5.5.0`` or higher.
 
@@ -697,6 +703,9 @@ This plugin defines the following build options:
    * - skip.license.checker
      - When this property is set to true, the license checker is not executed.
      - Not set
+   * - skip.nullanalysis.checker [#require_sdk_5_5_0]_
+     - When this property is set to true, the null analysis checker is not executed.
+     - Not set
    * - skip.publicconf.checker
      - When this property is set to true, the public configurations checker is not executed.
      - Not set
@@ -706,6 +715,8 @@ This plugin defines the following build options:
    * - skip.retrieve.checker
      - When this property is set to true, the retrieve checker is not executed.
      - Not set
+
+.. [#require_sdk_5_5_0] Require SDK version ``5.5.0`` or higher.
 
 .. _global_build_options:
 

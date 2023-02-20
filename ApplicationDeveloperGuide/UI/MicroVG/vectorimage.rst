@@ -8,9 +8,9 @@ Vector Images
 Overview
 --------
 
-Vector Images are graphical resources that can be accessed with a call to `ej.microvg.VectorImage.getImage()`_. The images are converted at build-time (using the image generator tool) to immutable resources.
+Vector Images are graphical resources that can be accessed with a call to `ej.microvg.VectorImage.getImage()`_. The images are converted at build-time (using the image generator tool) to binary resources.
 
-Images that must be processed by the image generator tool are declared in ``*.vectorimages.list`` files. The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the MicroEJ classpath root referring to a vector image file (e.g. ``.svg``, ``.xml``). The resource must be followed by a parameter (separated by a ``:``) which defines and/or describes the image output file format (raw format).
+Images that must be processed by the image generator tool are declared in ``*.vectorimages.list`` files (**or** in ``*.externvectorimages.list`` for an external resource, see :ref:`chapter.microej.applicationResources`). The file format is a standard Java properties file, each line representing a ``/`` separated resource path relative to the MicroEJ classpath root referring to a vector image file (e.g. ``.svg``, ``.xml``). The resource must be followed by a parameter (separated by a ``:``) which defines and/or describes the image output file format (raw format).
 
 Currently accepted formats are : 
 
@@ -177,7 +177,9 @@ The resulting color components are computed as:
  
 If the resulting component value is below 0 or above 255, the component value is clamped to these limits.
 
-A VectorImage object can also be drawn associated to a color matrix by a call to `ej.microvg.VectorGraphicsPainter.drawFilteredImage()`_.
+.. note:: The new image is a ResourceVectorImage. The image buffer is allocated in the MicroUI image heap. The application must manage the image cycle life and close the image to free the image buffer.
+
+A VectorImage object can also be drawn associated to a color matrix by a call to `ej.microvg.VectorGraphicsPainter.drawFilteredImage() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawFilteredImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-ej.microvg.Matrix-float:A->`_.
  
 The following example illustrates this feature.
 
