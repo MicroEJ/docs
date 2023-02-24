@@ -51,7 +51,7 @@ Install Gradle
 --------------
 
 Once a JDK is correctly configured, the next step is to install Gradle by following `the official documentation <https://gradle.org/install/>`__.
-The minimum required version is ``7.3``.
+The SDK is only compatible with the Gradle ``7.x``, so make sure to install a right version.
 Once done, you can verify your installation by opening a terminal and run the command ``gradle -v``.
 It should display, amongst other information, the Gradle and the JVM versions:
 
