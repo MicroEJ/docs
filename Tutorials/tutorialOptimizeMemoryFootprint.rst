@@ -195,7 +195,7 @@ The following application code guidelines are recommended in order to minimize t
 
 - Avoid manipulating wrappers such as `Integer`_ and `Long`_ objects, use primitive types instead. Such objects have to be allocated in Java heap memory and require additional code for boxing and unboxing.
 - Avoid declaring Java Enumerations (``enum``), declare compile-time constants of primitives types instead (e.g. ``static final int I = 0;``). 
-  The Java compiler creates an `Enum`_ object for each enumeration item in the Java heap, as well as complex class initialization code.
+  The Java compiler creates an `Enum`_ object  in the Java heap for each enumeration item, as well as complex class initialization code.
 - Avoid using the `service`_ library, use singletons or `Constants.getClass()`_ instead. The service library requires embedding class reflection methods and the type names of both interfaces and implementations.
 - Avoid using the Java Collections Framework. This OpenJDK standard library has not been designed for memory constrained devices.
   
