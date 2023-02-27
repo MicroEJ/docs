@@ -48,9 +48,7 @@ MicroEJ recommends to annotate the Java code as follows:
 
   .. figure:: images/null_analysis_field_and_method.png
 
-.. note::
-   
-   MicroEJ SDK ``5.3.0`` or higher requires annotations declared in `EDC-1.3.3`_ or higher. See `EDC 1.3.3 Changelog`_ for more details.
+
 
 
 .. _@NonNullByDefault: https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNullByDefault.html
@@ -61,6 +59,15 @@ MicroEJ recommends to annotate the Java code as follows:
 
 Module Project Configuration 
 ----------------------------
+
+Requirements
+~~~~~~~~~~~~
+
+`EDC-1.3.3`_ or higher is required when MicroEJ SDK ``5.3.0`` or higher is used. See `EDC 1.3.3 Changelog`_ for more details.
+
+
+Project configuration
+~~~~~~~~~~~~~~~~~~~~~
 
 To enable the Null Analysis tool, a :ref:`module project <mmm_module_skeleton>` must be configured as follows:
 
@@ -121,6 +128,21 @@ Advanced Use
 ------------
 
 For more information about Null Analysis and inter-procedural analysis, please visit `Eclipse JDT Null Analysis documentation <https://help.eclipse.org/2020-06/index.jsp?topic=/org.eclipse.jdt.doc.user/tasks/task-using_null_annotations.htm>`_.
+
+
+
+Troubleshooting
+---------------
+
+The project cannot build anymore after Null Analysis setup
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: images/null_analysis_troubleshooting_edc_version.png
+  :alt: Null Analysis wrong edc version
+
+You may encounter the two popup windows above when your version of ``EDC`` is too old. To fix this issue, please use `EDC-1.3.3`_ or higher with MicroEJ SDK ``5.3.0`` or higher.
+
+
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
