@@ -77,7 +77,7 @@ The `binary-nls module`_ must be added to the :ref:`module.ivy <mmm_module_descr
 
 ::
 
-  <dependency org="com.microej.library.runtime" name="binary-nls" rev="2.4.2"/>
+  <dependency org="com.microej.library.runtime" name="binary-nls" rev="2.5.0"/>
 
 This module includes an Add-On Processor which parses the localization source files.
 For each interface declared in the NLS list files, all the localization source files whose names start with the interface name are used to generate:
