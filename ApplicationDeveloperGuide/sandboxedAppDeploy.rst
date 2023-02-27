@@ -92,7 +92,7 @@ The files produced by the build process are located in a dedicated
 ``target~/artifacts`` folder in the project and is published to the 
 target module repository declared in :ref:`MicroEJ Module Manager settings file <mmm_settings_file>`.
 
-The file that ends with `.wpk` (the WPK file) is a portable file that contains all necessary binary data to build ``.fo`` files on any compatible Multi-Sandbox Executable.
+The file that ends with ``.wpk`` (the WPK file) is a portable file that contains all necessary binary data to build ``.fo`` files on any compatible Multi-Sandbox Executable.
 Then, the WPK file can be published to a `MICROEJ FORGE instance <https://www.microej.com/product/forge/>`_.
 Please contact :ref:`our support team <get_support>` if you want to get more information on MICROEJ FORGE and automated Applications deployment through a device management system.
 
