@@ -33,7 +33,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.testOnSimulator`
 - :ref:`sdk6_module_natures.tasks.checkModule`
 
-.. graphviz:: graphJavaModule.dot
+.. graphviz:: graphAddonLibraryModule.dot
 
 **Configuration**:
 
@@ -63,8 +63,9 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.testOnSimulator`
 - :ref:`sdk6_module_natures.tasks.checkModule`
 - :ref:`sdk6_module_natures.tasks.buildExecutable`
+- :ref:`sdk6_module_natures.tasks.buildWPK`
 
-.. graphviz:: graphJavaModule.dot
+.. graphviz:: graphApplicationModule.dot
 
 
 .. _sdk6_module_natures.tasks:
@@ -322,6 +323,20 @@ buildExecutable
 This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.application`
+
+.. _sdk6_module_natures.tasks.buildWPK:
+
+buildWPK
+^^^^^^^^
+
+**Description**: Builds the WPK of the Application.
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
+
 
 .. _gradle_global_build_options:
 
