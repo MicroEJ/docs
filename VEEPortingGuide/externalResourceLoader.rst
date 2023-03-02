@@ -72,6 +72,8 @@ target the external resource bytes without using the other ``LLEXT_RES``
 APIs such as ``read``, ``mark`` etc.
 
 
+.. _external_resources_folder:
+
 External Resources Folder
 =========================
 
