@@ -3,9 +3,9 @@
 Install Latest SDK Distribution
 ===============================
 
-This section will guide you through the installation process of the latest SDK Distribution ``22.06`` using the step-by-step executable installer.
+This section will guide you through the installation process of the latest SDK Distribution ``23.02`` using the step-by-step executable installer.
 
-The SDK Distribution ``22.06`` requires a JDK 11 and thus can only work with an :ref:`Architecture 7.17.0 <changelog-7.17.0>` or higher.
+The SDK Distribution ``23.02`` requires a JDK 11 and thus can only work with an :ref:`Architecture 7.17.0 <changelog-7.17.0>` or higher.
 In all other cases, please jump to :ref:`sdk_installation_21_11` section.
 See also the :ref:`system-requirements` page for more information on the list of supported environments.
 
@@ -17,17 +17,17 @@ See also the :ref:`system-requirements` page for more information on the list of
 Download SDK Distribution
 -------------------------
 
-Download the SDK Distribution ``22.06`` installer for your operating system:
+Download the SDK Distribution ``23.02`` installer for your operating system:
 
-- `Windows (.exe) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Win64-22.06.exe>`__
-- `Linux  (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-Linux64-22.06.zip>`__
-- `macOS x86_64 - Intel chip (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-22.06.zip>`__
-- `macOS aarch64 - M1 chip (.zip) <https://repository.microej.com/packages/SDK/22.06/MicroEJ-SDK-Installer-MacOS-A64-22.06.zip>`__
+- `Windows (.exe) <https://repository.microej.com/packages/SDK/23.02/MicroEJ-SDK-Installer-Win64-23.02.exe>`__
+- `Linux  (.zip) <https://repository.microej.com/packages/SDK/23.02/MicroEJ-SDK-Installer-Linux64-23.02.zip>`__
+- `macOS x86_64 - Intel chip (.zip) <https://repository.microej.com/packages/SDK/23.02/MicroEJ-SDK-Installer-MacOS-23.02.zip>`__
+- `macOS aarch64 - M1 chip (.zip) <https://repository.microej.com/packages/SDK/23.02/MicroEJ-SDK-Installer-MacOS-A64-23.02.zip>`__
 
 Check JDK Version
 -----------------
 
-The SDK Distribution ``22.06`` installer requires a JDK 11 installed by default on your workstation.
+From the version ``22.06``, the SDK Distribution installer requires a JDK 11 installed by default on your workstation.
 If you don't have any JDK installed, see the :ref:`get_jdk` section.
 
 Check the default Java version by running the following command in a new terminal:

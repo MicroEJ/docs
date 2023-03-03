@@ -2,6 +2,17 @@
 SDK Distribution Changelog
 --------------------------
 
+[23.02] - 2022-02-28
+~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+   
+   This release requires a JDK 11 and therefore an Architecture ``7.17.0`` or higher.
+   Please refer to :ref:`system-requirements` for more details.
+
+-  Included :ref:`SDK 5.7.0 <changelog-5.7.0>`.
+-  Updated to Eclipse version ``2022-12``.
+
 [22.06] - 2022-06-29
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -143,6 +154,57 @@ SDK Distribution Changelog
 -------------
 SDK Changelog
 -------------
+
+.. _changelog-5.7.0:
+
+[5.7.0] - 2023-02-27
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+- Added latest BSD license and SDK/BSD license and deprecate ESR.
+- Added the capability to resolve a Front Panel dependency as a project in the workspace, as any other module type.
+- Added the capability to resolve a Front Panel Mock dependency as a project in the workspace, as any other module type.
+- Added the support to fetch Maven modules from MMM projects.
+- Changed the error message displayed by the Memory Map Analyzer to show the real error message.
+- Fixed build error when an ADP is opened in the workspace.
+- Fixed slowness issue during Ivy resolution on Windows with JDK 11.
+- Fixed syntaxic coloration lost in an opened module.ivy file after an SDK restart.
+- Fixed inadequate colors in editors and console in Dark theme.
+- Fixed failing Ivy resolution after an SDK restart.
+- Fixed the freeze of the Heap Analyzer when opening a large heap file or clicking on a large byte array.
+- Fixed error when building a VEE Port using the Build Platform button in the ``.platform`` file.
+- Fixed "Resolve Foundation Library in workspace" option unchecked after closing and re-opening the workspace.
+- Fixed Addon Processor modules not resolved when opened in the workspace.
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+General
+^^^^^^^
+
+- Fixed release version of a runtime API module.
+- Fixed build of a module that uses the ``obf-proguard`` plugin with Java 11.
+- Upgraded ProGuard to version 7.2.1 to support Java 11.
+- Fixed Application external jars resolution at compile time.
+- Fixed resolution in workspace error depending on a Mock's name. 
+- Fixed error message when an Easyant target is executed in a folder that does not contain a ``module.ivy`` file.
+
+Build Types
+^^^^^^^^^^^
+
+- Fixed ``build-std-javalib`` compilation with Java 11.
+- Fixed Artifact Checker's execution on ``build-std-javalib``.
+- Fixed ``build-artifact-repository`` build type which couldn't find the previous release of the repository to merge it.
+
+Skeletons
+^^^^^^^^^
+
+- Aligned Kernel APIs dependencies between runtime-api and firmware-multiapp skeletons.
+- Changed default compilation level to Java 8 for Mock projects.
+- Fixed Build Executable options to make the "No BSP Connection" work.
+
 
 .. _changelog-5.6.2:
 
