@@ -27,7 +27,7 @@ This table lists the supported combinations:
      - SDK
      - Architecture
      - JRE/JDK
-   * - 22.06
+   * - >= 22.06
      - >= 5.6.0
      - >= 7.17.0
      - JDK 11

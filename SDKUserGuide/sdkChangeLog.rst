@@ -2,6 +2,17 @@
 SDK Distribution Changelog
 --------------------------
 
+[23.02] - 2022-02-28
+~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+   
+   This release requires a JDK 11 and therefore an Architecture ``7.17.0`` or higher.
+   Please refer to :ref:`system-requirements` for more details.
+
+-  Included :ref:`SDK 5.7.0 <changelog-5.7.0>`.
+-  Updated to Eclipse version ``2022-12``.
+
 [22.06] - 2022-06-29
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -174,7 +185,7 @@ General
 ^^^^^^^
 
 - Fixed release version of a runtime API module.
-- Fixed build of a module that uses the `obf-proguard` plugin with Java 11.
+- Fixed build of a module that uses the ``obf-proguard`` plugin with Java 11.
 - Upgraded ProGuard to version 7.2.1 to support Java 11.
 - Fixed Application external jars resolution at compile time.
 - Fixed resolution in workspace error depending on a Mock's name. 
