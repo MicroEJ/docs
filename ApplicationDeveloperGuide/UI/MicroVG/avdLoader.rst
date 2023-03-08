@@ -7,19 +7,19 @@ Overview
 --------
 
 The AVD Loader is an Add-on Library that can load vector images from Android Vector Drawable XML files.
-Unlike :ref:`vector images <vectorimage_overview>`, the XML parsing and interpreting is done at runtime.
+Unlike the vector images that are loaded using a raw output file format (see :ref:`Vector Images <vectorimage_overview>`), the XML parsing and interpreting is done at runtime.
 This is useful for loading a vector image as an external resource, especially when the resource has to be loaded dynamically (i.e., not known at build-time).
 
 To use the AVD Loader library, add the following dependency to a :ref:`module description file <mmm_module_description>`:
 
 .. code-block:: XML
 
-	<dependency org="ej.library.ui" name="vectorimage-loader" rev="1.0.0"/>
+	<dependency org="ej.library.ui" name="vectorimage-loader" rev="1.1.0"/>
 
 
 .. note::
 
-   The AVD Loader library requires MicroVG library 1.1 and above.
+   The AVD Loader library requires the VG Pack 1.2 and above.
 
 .. _section.avdloader.format:
 
@@ -85,7 +85,7 @@ Loading a Vector Drawable
 -------------------------
 
 The following code loads the Vector Drawable ``myImage.xml`` with the ``AvdImageLoader.loadImage()`` method. 
-This method has one parameter which is the path to the Vector Drawable file, provided as a resource of the application.
+This method has one parameter which is the path to the Vector Drawable file, provided as :ref:`a raw resource of the application <section.classpath.elements.raw_resources>`.
 The resulting vector image can then be drawn on the display:
 
 
@@ -99,11 +99,16 @@ The resulting vector image can then be drawn on the display:
       Display display = Display.getDisplay();
       GraphicsContext g = display.getGraphicsContext();
       
-      VectorImage image = AvdImageLoader.loadImage("/images/myImage.xml");
-      VectorGraphicsPainter.drawImage(g, image, 100, 100);
-      
-      display.requestFlush();
+      try (ResourceVectorImage image = AvdImageLoader.loadImage("/images/myImage.xml")) {
+         VectorGraphicsPainter.drawImage(g, image, 100, 100);
+         display.requestFlush();
+      }
    }
+
+.. code-block::
+   :caption: Declaration of the resource in a ``*.resources.list`` file.
+      
+   /images/myImage.xml
 
 |midTable|
   
@@ -116,7 +121,10 @@ The resulting vector image can then be drawn on the display:
 
 .. note::
 
-   The image must be provided as a resource of the application, either :ref:`internal or external <chapter.microej.applicationResources>`. For external resource loading, the BSP must implement the proper Low Level API (LLAPI), see :ref:`section_externalresourceloader` for more information on the implementation.
+   The image must be provided as a raw resource of the application, either :ref:`internal or external <chapter.microej.applicationResources>`. For external resource loading, the BSP must implement the proper Low Level API (LLAPI), see :ref:`section_externalresourceloader` for more information on the implementation.
+
+.. warning::
+   The new image is a ``ResourceVectorImage``. In the current implementation, an image loaded with the ``AvdImageLoader`` is allocated in the Java heap. To release memory, the application must close the image and remove any references to it.
 
 Limitations
 -----------
