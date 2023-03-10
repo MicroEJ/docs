@@ -141,8 +141,8 @@ For example, with the following ``.nls.list`` file, the messages in ``Labels`` w
 
 .. _ej.nls.NLS.getMessage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#getMessage-int-
 
-Build Phases
-------------
+BinaryNLS Resource Generation
+-----------------------------
 
 If the classpath of the Application contains ``.po``/``.xml`` files and ``.nls.list`` files, the ``binary-nls`` Add-On Processor will generate the following source files for each NLS interface:
 
