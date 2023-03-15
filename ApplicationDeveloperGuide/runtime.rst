@@ -6,7 +6,7 @@ MicroEJ Runtime
 Language
 --------
 
-MicroEJ allows to develop Applications in the `Java® Language Specification version 7 <https://docs.oracle.com/javase/specs/jls/se7/jls7.pdf>`_, and supports code extensions written in :ref:`JavaScript <javascript>`.
+MicroEJ allows to develop Applications in the `Java® Language Specification version 7 <https://docs.oracle.com/javase/specs/jls/se7/jls7.pdf>`_ with :ref:`some limitations <java_limitations>`, and supports code extensions written in :ref:`JavaScript <javascript>`.
 
 Basically, Java source code is compiled by the Java compiler [1]_ into the binary format specified in the JVM specification [2]_. 
 This binary code is linked by a tool named :ref:`SOAR <soar>` before execution: ``.class`` files and some other application-related files (see :ref:`Classpath <chapter.microej.classpath>` chapter) are linked to produce the final binary file that the :ref:`Core Engine <core_engine>` will execute.
@@ -184,6 +184,39 @@ system, the Garbage Collector (GC). It manages a bounded piece of RAM
 memory, devoted to the Java world. The GC automatically frees dead Java
 objects, and defragments the memory in order to optimize RAM usage. This
 is done transparently while the Application keep running.
+
+.. _java_limitations:
+
+Limitations
+-----------
+
+Primitive Types
+~~~~~~~~~~~~~~~
+
+Getting a Class instance of a primitive type is not supported:
+
+- ``boolean.class``,
+- ``byte.class``,
+- ``char.class``,
+- ``short.class``,
+- ``int.class``,
+- ``long.class``,
+- ``float.class``,
+- ``double.class``.
+
+On Architecture ``8.x``, you will get the following dedicated error message:
+
+.. code-block::
+
+    Unsupported access to the Class instance of a primitive type (found 'boolean.class' in method 'com.mycompany.MyClass.myMethod()void')
+
+On Architecture ``7.x`` you will get the following default error message:
+
+.. code-block::
+
+    No such field TYPE at com/mycompany/MyClass.myMethod()V.
+
+
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
