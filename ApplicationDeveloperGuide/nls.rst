@@ -158,6 +158,8 @@ However, if the classpath of the Application contains an ``.externresources.list
 
 The BinaryNLS library provides the localization data to the Application by reading the resource.
 
+For more information, see :ref:`Loading Translations as an External Resource<nls_external_resource>`.
+
 .. _chapter.microej.nlsExternalLoader:
 
 NLS External Loader
