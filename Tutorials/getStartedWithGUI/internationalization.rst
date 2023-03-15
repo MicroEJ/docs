@@ -145,14 +145,14 @@ Follow the steps below to declare translations as external resources:
   
   .. code::
   
-   com/mycompany/myapp/generated/Label.nls
+   /com/mycompany/myapp/generated/Labels.nls
    
-  This path can be found in ``com/mycompany/myapp/generated/Label.nls.resources.list``
+  This path can be found in ``src-adpgenerated/binarynls/java/com/mycompany/myapp/generated/Labels.nls.resources.list``
 
 - Build the application for the target,
 - Open the ``SOAR.map`` file to check that the resource is not embedded anymore in the application binary.
-  The ``xxx_Label.nls`` line should not appear anymore in the ``ApplicationResources`` section.
-- The resource containing translations is now located in the ``com/mycompany/myapp/Main/externalResources/Label.nls`` folder.
+  The ``xxx_Labels.nls`` line should not appear anymore in the ``ApplicationResources`` section.
+- The resource containing translations is now located in the ``com.mycompany.myapp.Main/externalResources`` folder.
   This resource must be embedded on the target and loaded using the External Resources Loader.
 
 A simple implementation of the External Resources Loader is available on GitHub:
