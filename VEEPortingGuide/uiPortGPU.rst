@@ -26,7 +26,7 @@ Existing C Modules
 
 Some C modules are available on the MicroEJ Repository.
 These C modules already implement compatible features with a GPU.
-Add the C module dependency into the VEE Port Configuration project (or unzip the C module in the BSP) to use the associated GPU.
+Unzip them in the BSP project to use the associated GPU (and add the CCO's include folder to the BSP project's include directories list).
 Refer to :ref:`section_ui_releasenotes_cmodule` to have more information.
 
 Port a GPU
@@ -155,12 +155,11 @@ For the compile-time images, the BSP has to implement the LLAPI ``LLUI_DISPLAY_I
    }
 
 Test Suite
-----------
+==========
 
-Once implemented, run the UI test suite of the Port Qualification Toolkit to validate the implementation.
-This test suite fetches a library with many tests to check the custom implementation over a GPU.
-Refer to :ref:`platform_testsuite` to have more information.
-
+As described :ref:`here <ui_port_bsp_testsuite>`, the Port Qualification Toolkit (PQT) provides a UI test suite to validate the UI Port.
+The second block of the UI test suite (extended *Display* test suite) uses a library that tests several MicroUI drawings.
+This test suite **must** be executed to validate the UI Port over a GPU and after each modification on this UI Port (for instance, after changes to improve performances).
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

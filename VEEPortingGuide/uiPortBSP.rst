@@ -35,18 +35,14 @@ This C module
 Before all, install the MicroUI C Module:
 
 1. Find the correct version of the C module according to the UI Pack version; see :ref:`section_ui_releasenotes_cmodule`.
-2. Add the C module dependency in the VEE Port ivy file (or unzip it in the BSP project):
-
-.. code-block:: xml
-
-   <dependency org="com.microej.clibrary.llimpl" name="microui" rev="2.0.1"/>
-
+2. Unzip it in the BSP project.
 3. Add the mandatory files in the BSP project: ``LLDW_PAINTER_impl.c`` and ``LLUI_PAINTER_impl.c``.
-4. Add the optional files in the BSP project: 
+4. Add the optional files in the BSP project (if their associated feature is used/needed): 
  
    - ``LLUI_DISPLAY_HEAP_impl.c``: to use another image heap allocator,
    - ``LLUI_INPUT_LOG_impl.c`` and ``microui_event_decoder.c``: to decode the MicroUI event (input events and MicroUI internal events).
-  
+
+5. Add the CCO's include folder to the BSP project's include directories list.
 
 LEDs
 ====
@@ -92,9 +88,6 @@ The mandatory functions to implement are:
 Refer to :ref:`section_display_llapi` to have more information.
 Refer too to the C-doc in the header file itself.
 
-Once implemented, run the UI test suite of the Port Qualification Toolkit to validate the implementation.
-Refer to :ref:`platform_testsuite` to have more information.
-
 Display: LCD Constraints
 ========================
 
@@ -133,13 +126,37 @@ To add another allocator, implement these functions:
 
 **MicroUI Image Management**
 
-The three functions are only helpful for compatibility with a GPU; see :ref:`ui_port_gpu`.
+These three functions are only helpful for compatibility with a GPU; see :ref:`ui_port_gpu`.
 
 - ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes``
 - ``LLUI_DISPLAY_IMPL_adjustNewImageCharacteristics``
 - ``LLUI_DISPLAY_IMPL_initializeNewImage``
 
+.. _ui_port_bsp_testsuite:
 
+Test Suite
+==========
+
+The Port Qualification Toolkit (PQT) provides a UI test suite to validate the UI Port (see :ref:`platform_testsuite` to have more information).
+This test suite **must** be executed to validate the UI Port and after each modification on this UI Port (for instance, after changes to improve performances).
+
+The UI Port test suite is available here: https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/tests/ui/ui3.
+
+The test suite is constituted of two blocks:
+
+- The minimal *Display* test suite: a simple application test (with source code) to validate the mandatory functions to implement to target a Display.
+- An extended *Display* test suite: a library that tests several MicroUI drawings. This test suite only applies when the BSP uses a GPU to perform the drawings. See :ref:`ui_port_gpu`.
+
+The test suite does not check all UI Port features.
+However, some example projects are available in MicroEJ GitHub:
+
+- LED: refer to the application https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/com.microej.example.foundation.microui.led.
+- Input: refer to the application https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/com.microej.example.foundation.microui.input
+
+Some other example projects are also available in MicroEJ GitHub and can be used to check if the UI Port is valid:
+
+- Hello World: https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/com.microej.example.foundation.microui.helloworld
+- Use of images: https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/com.microej.example.foundation.microui.image
 
 
 ..
