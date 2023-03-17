@@ -90,6 +90,10 @@ and is displayed in a window on the user's development machine when the applicat
 
 When a Front Panel project is opened in the workspace, it is automatically used at runtime when launching the Simulator.
 
+.. note::
+
+   This feature requires SDK version ``5.7.0`` or higher and Architecture version ``8.0`` or higher.
+
 If the workspace contains several Front Panel projects, they are all automatically used by the Simulator, which can very probably causes issues.
 You can select the Front Panel you want to use by closing all the other Front Panel projects.
 
