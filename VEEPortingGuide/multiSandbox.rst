@@ -227,6 +227,70 @@ A small number will give more smooth execution for threads but a slowest install
 
 .. _Kernel.install(InputStream): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
 
+
+Determining the Amount of Required Memory
+-----------------------------------------
+
+The amount of memory required for installing a ``.fo`` file is determined by analyzing the sizes of the ELF sections.
+
+Sections can be dumped using the standard binutils ``readelf`` tool:
+
+.. code:: console
+
+   readelf -WS application.fo
+   There are 8 section headers, starting at offset 0x34:
+
+   Section Headers:
+   [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+   [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+   [ 1] .soar.rel         LOPROC+0        00000000 000174 000bcc 00      6   0  4
+   [ 2] .strtab           STRTAB          00000000 000d40 000063 00      0   0  1
+   [ 3] .symtab           SYMTAB          00000000 000da4 000050 10      2   1  4
+   [ 4] .bss.soar.feature NOBITS          00000000 000df4 000050 00   A  0   0  4
+   [ 5] .rodata.microej.resources PROGBITS        00000000 000e00 079080 00   A  0   0 64
+   [ 6] .rodata           PROGBITS        00000000 079e80 001974 00   A  0   0 16
+   [ 7] .shstrtab         STRTAB          00000000 07b7f4 000059 00      0   0  1
+
+The following table summarizes the sections and their content:
+
+.. list-table::
+   :widths: 30 30 30 30
+
+   * - **Section**
+     - **Description**
+     - **Temporary Memory Location**
+     - **Target Memory Location**
+   * - ``.soar.rel``
+     - Metadata
+     - Java Heap
+     - None
+   * - ``.strtab``
+     - Metadata
+     - Java Heap
+     - None
+   * - ``.symbtab``
+     - Metadata
+     - Java Heap
+     - None
+   * - ``.bss.soar.feature``
+     - Static fields,
+       internal structures
+     - None
+     - RAM area
+   * - ``.rodata.microej.resources``
+     - Application Resources
+     - None
+     - ROM area
+   * - ``.rodata``
+     - Application Code
+     - Kernel Working Buffer
+     - ROM area
+   * - ``.shstrtab``
+     - Metadata
+     - Java Heap
+     - None
+
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
