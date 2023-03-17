@@ -185,8 +185,8 @@ General
 ^^^^^^^
 
 - Fixed release version of a runtime API module.
-- Fixed build of a module that uses the ``obf-proguard`` plugin with Java 11.
-- Upgraded ProGuard to version 7.2.1 to support Java 11.
+- Fixed build of a module that uses the ``obf-proguard`` plugin with JDK 11.
+- Upgraded ProGuard to version 7.2.1 to support JDK 11.
 - Fixed Application external jars resolution at compile time.
 - Fixed resolution in workspace error depending on a Mock's name. 
 - Fixed error message when an Easyant target is executed in a folder that does not contain a ``module.ivy`` file.
@@ -194,7 +194,7 @@ General
 Build Types
 ^^^^^^^^^^^
 
-- Fixed ``build-std-javalib`` compilation with Java 11.
+- Fixed ``build-std-javalib`` compilation with JDK 11.
 - Fixed Artifact Checker's execution on ``build-std-javalib``.
 - Fixed ``build-artifact-repository`` build type which couldn't find the previous release of the repository to merge it.
 
