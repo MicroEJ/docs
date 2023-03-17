@@ -9,7 +9,8 @@ Prerequisites
 The documentation build is based on `Sphinx <https://www.sphinx-doc.org/en/master/>`_. The following tools must be installed:
 
 - Python 3.7 or higher,
-- Package installer for Python (`Pip <https://pip.pypa.io/en/stable/installation/>`_).
+- Package installer for Python (`Pip <https://pip.pypa.io/en/stable/installation/>`_),
+- Graphviz (https://gitlab.com/graphviz/graphviz/-/releases).
 
 Building
 --------

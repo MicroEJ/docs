@@ -192,6 +192,8 @@ Within the XML editor, content-assist is obtained by pressing
 ``CTRL + SPACE`` keys.  The editor will list all the elements valid at the cursor
 position, and insert a template for the selected element.
 
+.. _section_frontpanel_multiple_fp_files:
+
 Multiple Front Panel Files
 --------------------------
 
@@ -392,6 +394,19 @@ The properties file must / can contain the following properties:
 
 Advanced: Test the Front Panel Project
 --------------------------------------
+
+.. note::
+
+   Starting from SDK 5.7.0 and Architecture 8.0, the Front Panel projects are automatically resolved in the workspace,
+   so this section and the property ``ej.fp.project`` are obsolete since. 
+   See :ref:`resolve_foundation_libraries_in_workspace` for more details.
+
+   If the Front Panel project has been created with a SDK version lower than 5.7.0, a project option must be updated:
+   
+   - right-click on the ``Module Dependencies`` entry.
+   - click on ``Properties``.
+   - go to the ``Classpath`` tab.
+   - check the ``Resolve dependencies in workspace`` option.
 
 To quickly test a Front Panel project without rebuilding the Platform or manually exporting the project, add the :ref:`Application Option <application_options>` ``ej.fp.project`` to the absolute path of a Front Panel project (e.g. ``c:\mycompany\myfrontpanel-fp``). 
 The Simulator will use the Front Panel project specified instead of the one included in the Platform. 

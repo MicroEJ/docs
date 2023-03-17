@@ -56,14 +56,14 @@ Beside Foundation Library projects, there is usually a :ref:`Mock <mock>` projec
 
 When the API is set as a dependency, the Implementation project is automatically used at runtime if it is opened in the workspace.
 
-If a Mock project is also opened in the workspace, it is automatically used for execution on Simulator. 
+If a Mock project or a Front Panel project is also opened in the workspace, it is automatically used for execution on Simulator. 
 
 .. note::
 
-   When opened in the workspace, the Implementation project and the Mock project are used regardless of their version 
-   or if they are set as dependencies.
+   When opened in the workspace, Foundation Library Implementation projects, Mock projects and Front Panel projects
+   are loaded, regardless of their version, prior to the ones provided by the Platform (if any).
 
-To avoid the use of the Implementation project and the Mock project, 
+To avoid the use of an Implementation project, a Mock project or a Front Panel project, 
 uncheck the :guilabel:`Resolve Foundation Library in workspace` option in :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Settings`.
 
 .. figure:: images/resolve.png
@@ -74,7 +74,27 @@ uncheck the :guilabel:`Resolve Foundation Library in workspace` option in :guila
    Resolve Foundation Library in workspace
 
 
+.. _resolve_front_panel_in_workspace:
 
+--------------------------------
+Resolve Front Panel in Workspace
+--------------------------------
+
+A Front Panel is a "mock" of the control panel of the device. 
+The Front Panel generates a graphical representation of the device, 
+and is displayed in a window on the user's development machine when the application is executed in the Simulator.
+
+.. note::
+
+   To learn more about Front Panels, consult the :ref:`Front Panel section <section_frontpanel>`.
+
+When a Front Panel project is opened in the workspace, it is automatically used at runtime when launching the Simulator.
+
+If the workspace contains several Front Panel projects, they are all automatically used by the Simulator, which can very probably causes issues.
+You can select the Front Panel you want to use by closing all the other Front Panel projects.
+
+Also, a Front Panel project can contain several Front Panel descriptor files.
+Refer to the :ref:`section_frontpanel_multiple_fp_files` section to know how to select the file you want to use.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
