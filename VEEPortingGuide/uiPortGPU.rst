@@ -26,7 +26,7 @@ Existing C Modules
 
 Some C modules are available on the MicroEJ Repository.
 These C modules already implement compatible features with a GPU.
-Unzip them in the BSP project to use the associated GPU (and add the CCO's include folder to the BSP project's include directories list).
+Add the mandatory files to the list of the BSP project's compiled files to use the associated GPU (and add the CCO's include folder to the BSP project's include directories list).
 Refer to :ref:`section_ui_releasenotes_cmodule` to have more information.
 
 Port a GPU
