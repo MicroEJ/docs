@@ -1,6 +1,6 @@
-=============================
-HOKA web server documentation
-=============================
+HOKA Web Server
+===============
+
 HOKA is a tiny extensible Java web server for embedded applications.
 
 It comes with the support of HTTP, HTTPS, Server session, and routing for REST API.
@@ -454,19 +454,19 @@ Web Server Configuration
 
 .. code-block:: java
 
-    HttpServer http = HttpServer.builder() //
-        .port(8080) // setup the port number to bind the server socket on. Use 0 for a random port
-        .simultaneousConnections(3) // setup the max simultaneous connections accepted by the server
-        .workerCount(3) // setup the number of threads to handle incoming connections
-        .connectionTimeout(60 * 1000) // setup connection timeout
-        .encodingRegistry(new EncodingRegistry()) // register a custom the content encoding & transfer-coding registry
-        .secure(SSLContext#getServerSocketFactory()) // setup SSL / HTTPS
-        .apiBase("/api/v1/") // setup a common URI base for all relative registered path. relative means, the path do not starting with a /
-        .staticFilesHandler(staticFilesHandler) // setup the static files handler
-        .withTrailingSlashSupport() // process route with trailing slash as different routes
-        .withStrictAcceptContentEncoding() // activate strict content acceptance. return 406 Not Acceptable for unknown content-encoding
-        .developmentMode()// enable development mode, send error stack trace to the client side as in html
-        .build();
+        HttpServer http = HttpServer.builder() 
+            .port(8080) // setup the port number to bind the server socket on. Use 0 for a random port
+            .simultaneousConnections(3) // setup the max simultaneous connections accepted by the server
+            .workerCount(3) // setup the number of threads to handle incoming connections
+            .connectionTimeout(60 * 1000) // setup connection timeout
+            .encodingRegistry(new EncodingRegistry()) // register a custom the content encoding & transfer-coding registry
+            .secure(/**SSLContext#getServerSocketFactory()*/) // setup SSL / HTTPS
+            .apiBase("/api/v1/") // setup a common URI base for all relative registered path. relative means, the path do not starting with a /
+            .staticFilesHandler(staticFilesHandler) // setup the static files handler
+            .withTrailingSlashSupport() // process route with trailing slash as different routes
+            .withStrictAcceptContentEncoding() // activate strict content acceptance. return 406 Not Acceptable for unknown content-encoding
+            .developmentMode()// enable development mode, send error stack trace to the client side as in html
+            .build();
  
 
 Trailing slash matching
@@ -560,7 +560,7 @@ HOKA configuration
 ##################
 The server can be configured by creating a property file in `src/main/resources` named `hoka.properties`  
 
-.. code-block:: java
+.. code-block::
 
               # Copyright 2021 MicroEJ Corp. All rights reserved.
               # Use of this source code is governed by a BSD-style license that can be found with this software.
