@@ -9,8 +9,6 @@ It comes with the support of HTTP, HTTPS, Server session, and routing for REST A
 
     This is the documentation of the latest version of HOKA library 8.X.X
 
-    For previous version updates, see `changelog <CHANGELOG.md>`_.
-
 Intended audience
 #################
 The intended audience for this document is Java developers who are familiar with socket communication, the HTTP 1.1 protocol, and web server concepts.
@@ -273,7 +271,7 @@ to stop a request processing and return immediately. The following static method
 
 This will cause the request handler to stop immediately and the response will be returned to the client without executing other filters.
 
-This is usefull for error handling for example.
+This is useful for error handling for example.
 
 .. code-block:: java
 
@@ -387,10 +385,10 @@ The 404 not found error can be customized by using the ``HttpServer#notFoundErro
       HttpServer http = HttpServer.builder().port(8080).build();
 
       // html, The html page can be loaded form a file
-      http.notFoundError("<html><body><h1>404 Page doen't exist</h1></body></html>");
+      http.notFoundError("<html><body><h1>404 Page doesn't exist</h1></body></html>");
 
       // json format
-      http.notFoundError("{\"message\":\"404 Page doen't exist\"}", "application/json");
+      http.notFoundError("{\"message\":\"404 Page doesn't exist\"}", "application/json");
 
 
 Internal Server Error
