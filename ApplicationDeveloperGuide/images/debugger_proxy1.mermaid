@@ -1,0 +1,6 @@
+graph LR 
+    IDE(IDE/Debugger) --> |cmd jdwp| JDWP(Proxy JDWP/VEE Data) 
+    JDWP --> |cmd reply jdwp| IDE
+    JDWP -.-> |events jdwp| IDE
+    JDWP --> |load file| ELF(VEE.out)
+    JDWP --> |load file| MEMDUMP(VEE-Memory.dump)

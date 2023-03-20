@@ -19,7 +19,7 @@ The debugger proxy allows a postmortem debug from a core dump of a running MICRO
 
 
 .. note::
-   This feature requires Architecture version ``8.0.0`` or higher.
+   This feature requires Architecture version ``8.0.0`` or higher and only works on Linux and QNX platform.
 
 
 
@@ -61,7 +61,7 @@ The following GDB script generates a core dump file when:
    break LLMJVM_on_Runtime_gc_done # break in the LLMJVM_on_Runtime_gc_done function
    commands 
    silent
-   generate-core-file [file] # the argument `file` specifies the file name where to put the core dump
+   generate-core-file [file] # the argument `file` is optional and you can replace it with the file name where to put the core dump if you want
    cont
    end
 
@@ -83,7 +83,7 @@ You can also suspend the process and generate the core dump file by yourself:
     # suspend first the process with Ctrl-C and then generate the core dump file.
     generate-core-file [file] # the argument `file` specifies the file name where to put the core dump
 
-.. note::
+.. warning::
     This function must only be called from the MicroJvm virtual machine thread context and only from a native function or callback.
 
 Start the Proxy
