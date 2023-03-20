@@ -29,7 +29,7 @@ Requirements
 - A ESP32-S3-DevKitC-1 board.
 - A Bluetooth LE mock controller firmware_ (this Bluetooth controller executable only works with Bluetooth pack v2).
 - A tool to flash the firmware like
-  https://www.espressif.com/en/support/download/other-tools.
+  ``https://www.espressif.com/en/support/download/other-tools``.
 
 Usage
 -----
