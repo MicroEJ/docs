@@ -47,7 +47,6 @@ With a simple Hello World Application, the output should be::
    
    SUCCESS
 
-
 Verbose Mode
 ------------
 
@@ -99,8 +98,80 @@ If you want to connect the Eclipse debugger:
 
 The debugger should connect to the Simulator and you should be able to debug your Application.
 
+.. _sdk_6_run_or_debug_on_with_multiple_vee_ports:
+
+Run or Debug an Application with multiple VEE Ports
+---------------------------------------------------
+
+Only one VEE Port can be used to run or debug an Application on the Simulator.
+If multiple VEE Ports are defined, the task fails with a message listing the command lines to use for each VEE Port::
+
+   > More than one VEE Ports have been defined. 
+     A VEE Port must be selected by defining the veePort property. Use one of the following commands to run the Application on the Simulator:
+  	    ./gradlew runOnSimulator -PveePort="veePort1"
+  	    ./gradlew runOnSimulator -PveePort="veePort2"
+ 
+
+To run or debug an Application, you must select the VEE Port to use by setting the ``veePort`` property to the 
+:ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port when calling 
+the ``runOnSimulator`` or ``debugOnSimulator`` task::
+
+   gradle runOnSimulator -PveePort="veePortName"
+
+If you want to add the property in IntelliJ IDEA : 
+
+- Go to ``Run`` > ``Edit Configurations...``
+- Click on the ``+`` button and select ``Gradle``
+- Choose a name for the new configuration in the ``Name`` input field
+- Add the task name with the ``veePort`` property in the ``Run`` dialog : ``runOnSimulator -PveePort="veePortName"``:
+
+  .. figure:: images/intellij-runOnSimulator-run-configuration.png
+     :alt: IntelliJ runOnSimulator Run Configuration Window
+     :align: center
+     :scale: 100%
+
+     IntelliJ runOnSimulator Run Configuration Window
+
+- Click on ``OK``
+- Run the task by double clicking on the newly created Run Configuration in the Gradle view:
+
+  .. figure:: images/intellij-runOnSimulator-run-configuration-gradle-view.png
+     :alt: IntelliJ runOnSimulator Run Configuration in Gradle view
+     :align: center
+     :scale: 100%
+
+     IntelliJ runOnSimulator Run Configuration in Gradle view
+
+If you want to add the property in Eclipse : 
+
+- Go to ``Run`` > ``Run Configurations...``
+- Create a new Gradle Configuration
+- Choose a name for the new configuration in the ``Name`` input field
+- In the ``Gradle Tasks``, add the ``runOnSimulator`` task :
+
+  .. figure:: images/eclipse-runOnSimulator-gradle-tasks.png
+     :alt: Eclipse runOnSimulator task Gradle Tasks tab
+     :align: center
+     :scale: 100%
+     
+     Eclipse runOnSimulator task Gradle Tasks tab
+
+- Go to the ``Project Settings`` tab
+- Check ``Override project settings``
+- Select ``Gradle Wrapper``
+- Add the property as a Program Argument :
+
+  .. figure:: images/eclipse-runOnSimulator-project-settings.png
+     :alt: Eclipse runOnSimulator task Project Settings tab
+     :align: center
+     :scale: 100%
+     
+     Eclipse runOnSimulator task Project Settings tab
+
+- Click on ``Run``
+  
 ..
-   | Copyright 2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2022-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
