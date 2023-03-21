@@ -7,17 +7,23 @@ Building or running an Application or a Test Suite with the SDK requires a VEE P
 
 There are 4 different ways to provide a VEE Port in the build file of the project:
 
-- Set the build property ``veePortFile`` in the ``microej`` configuration block to the path of a VEE Port file (``.zip``, ``.jpf``, or ``.vde``)::
+- Set the build property ``veePortFiles`` in the ``microej`` configuration block to the path of a VEE Port file (``.zip``, ``.jpf``, or ``.vde``)::
 
    microej {
-     veePortFile = "C:\\path\\to\\my\\veePort\\file.zip"
+     veePortFiles = listOf("C:\\path\\to\\my\\veePort\\file.zip")
    }
 
-- Set the build property ``veePortDir`` in the ``microej`` configuration block to the path of the ``source`` folder of an already imported :ref:`Source VEE Port <source_platform_import>`::
+The ``veePortFiles`` property is defined as a list in order to provide multiple VEE Port files if it is needed.
+See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
+
+- Set the build property ``veePortDirs`` in the ``microej`` configuration block to the path of the ``source`` folder of an already imported :ref:`Source VEE Port <source_platform_import>`::
 
    microej {
-     veePortDir = "C:\\path\\to\\my\\veePort\\directory"
+     veePortDirs = listOf("C:\\path\\to\\my\\veePort\\directory")
    }
+
+The ``veePortDirs`` property is defined as a list in order to provide multiple VEE Port ``source`` folders if it is needed.
+See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
 
 .. note::
 
@@ -32,7 +38,7 @@ There are 4 different ways to provide a VEE Port in the build file of the projec
       dependencies {
          microejVeePort("com.mycompany:myveeport:1.0.0")
       }
-
+   
    .. note::
 
       For dependencies stored in an Ivy repository, Gradle fetches them with the configuration ``default``.
@@ -50,7 +56,7 @@ There are 4 different ways to provide a VEE Port in the build file of the projec
       
       Refer to `the Gradle documentation <https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html>`__ 
       to learn all the options to select dependencies.
-      
+
 - Copy a VEE port archive file to the ``dropins`` folder. The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the build property ``veePortDropinsDir``::
 
    microej {
@@ -58,15 +64,37 @@ There are 4 different ways to provide a VEE Port in the build file of the projec
    }
 
 At least 1 of these 4 ways is required to build an Application with a VEE Port.
-If several ways are used, the following rules are applied:
 
-- If ``veePortFile`` or ``veePortDir`` is set, the other options are ignored.
-- If the module project defined several VEE Ports, the build fails. For example, the following cases are not allowed:
+.. _sdk_6_select_multiple_vee_ports:
 
-  - Setting a VEE Port with the option ``veePortFile`` and another one with the option ``veePortDir``
-  - Declaring a VEE Port as a dependency and adding a VEE Port in the ``dropins`` folder
-  - Declaring 2 VEE Ports as Dependencies
-  - Adding 2 VEE Ports in the ``dropins`` folder
+Select multiple VEE Ports
+-------------------------
+
+If multiple :ref:`VEE Ports are defined <sdk_6_select_veeport>` for a project, they are all used.
+For example, you can set the ``veePortDirs`` to the path of a ``source`` folder of a VEE Port, 
+declare 2 dependencies with the ``microejVeePort`` configuration and copy an archive file to the ``dropins`` folder.
+
+To add several VEE Ports using the ``veePortFiles`` or the ``veePortDirs`` property, the paths must be separated by a comma. 
+For example::
+
+   microej {
+     veePortFiles = listOf("C:\\path\\to\\my\\veePort1\\file.zip","C:\\path\\to\\my\\veePort2\\file.zip")
+   } 
+
+.. _sdk_6_vee_port_unique_name:
+
+VEE Port unique name
+--------------------
+
+VEE Ports are referenced by a unique name following the pattern ``{name}-{toolchain}-{version}``, 
+where ``name``, ``toolchain`` and ``version`` values are the ones defined in the ``release.properties`` file of the VEE Port. 
+For example : `Platform-CM7hardfp_GCC48-0.1.0`
+
+If multiple VEE Ports are defined, this name can be used to select the VEE Port on which 
+you want to :ref:`run an Application <sdk_6_run_or_debug_on_with_multiple_vee_ports>` 
+or :ref:`execute a testsuite <sdk_6_test_with_multiple_vee_ports>`.
+
+
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
