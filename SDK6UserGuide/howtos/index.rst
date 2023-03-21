@@ -8,6 +8,7 @@ How-to Guides
 
    gradleJavaHome
    gradleSystemProperty
+   gradleSkipTask
 
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
