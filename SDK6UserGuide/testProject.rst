@@ -134,7 +134,6 @@ or from Eclipse and IntelliJ IDEA, by double-clicking on the task in the Gradle 
          :width: 30%
          :align: center
 
-
 Run a Single Test Manually
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -209,9 +208,80 @@ This can be done by defining a file with the same name as the generated test cas
 but with the ``.properties`` extension instead of the ``.java`` extension. 
 The file must be put in the ``src/test/resources`` folder and within the same package than the test case file.
 
+.. _sdk_6_test_with_multiple_vee_ports:
+
+Test a Project with multiple VEE Ports
+--------------------------------------
+
+If multiple VEE Ports are defined, the tests are executed on each VEE Port sequentially.
+If you want to execute the tests on only one VEE Port, you must select it by setting the ``veePort`` property 
+to the :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port in the command line::
+
+   gradle test -PveePort="veePortName"
+
+If you want to add the property from IntelliJ IDEA : 
+
+- Go to ``Run`` > ``Edit Configurations...``
+- Click on the ``+`` button and select ``Gradle``
+- Choose a name for the new Configuration
+- Add the command line with the ``veePort`` property in the Run dialog : ``test -PveePort="veePortName"``:
+
+  .. figure:: images/intellij-test-run-configuration.png
+     :alt: IntelliJ test Run Configuration Window
+     :align: center
+     :scale: 100%
+
+     IntelliJ test Run Configuration Window
+
+- Click on ``OK``
+- Run the task by double clicking on the newly created Run Configuration in the Gradle task view:
+
+  .. figure:: images/intellij-test-run-configuration-gradle-view.png
+     :alt: IntelliJ test Run Configuration in Gradle tasks view
+     :align: center
+     :scale: 100%
+
+     IntelliJ test Run Configuration in Gradle tasks view
+
+If you want to add the property from Eclipse : 
+
+- Go to ``Run`` > ``Run Configurations...``
+- Create a new Gradle Configuration
+- In the ``Gradle Tasks``, add the ``test`` task :
+
+  .. figure:: images/eclipse-test-gradle-tasks.png
+     :alt: Eclipse test task Gradle Tasks tab
+     :align: center
+     :scale: 100%
+     
+     Eclipse test task Gradle Tasks tab
+
+- Go to the ``Project Settings`` tab
+- Check ``Override project settings``
+- Select ``Gradle Wrapper``
+- Add the property as a Program Argument :
+
+  .. figure:: images/eclipse-test-project-settings.png
+     :alt: Eclipse test task Project Settings tab
+     :align: center
+     :scale: 100%
+     
+     Eclipse test task Project Settings tab
+
+- Click on ``Run``
+  
+The name of each VEE Port can be found by executing the tests with the verbose mode enabled::
+
+   gradle test --info
+
+The list of the VEE Ports is displayed before running the testsuite::
+
+   The testsuite will be run on each of the following VEE Ports:
+   - "veePort1"
+   - "veePort2"
 
 ..
-   | Copyright 2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2022-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
