@@ -62,6 +62,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.testOnSimulator`
 - :ref:`sdk6_module_natures.tasks.checkModule`
+- :ref:`sdk6_module_natures.tasks.buildExecutable`
 
 .. graphviz:: graphJavaModule.dot
 
@@ -309,6 +310,18 @@ For example:
     checkers = "readme,license"
   }
 
+.. _sdk6_module_natures.tasks.buildExecutable:
+
+buildExecutable
+^^^^^^^^^^^^^^^
+
+**Description**: Build the Executable of an Application.
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
 
 .. _gradle_global_build_options:
 
