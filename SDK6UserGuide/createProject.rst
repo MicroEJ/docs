@@ -48,13 +48,13 @@ so it must be updated to be a MicroEJ project:
 - add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
 
     plugins {
-        id("com.microej.gradle.library") version "0.4.0"
+        id("com.microej.gradle.library") version "0.5.0"
     }
 
   or for an Application::
 
     plugins {
-        id("com.microej.gradle.application") version "0.4.0"
+        id("com.microej.gradle.application") version "0.5.0"
     }
 
   .. note::
@@ -153,13 +153,13 @@ The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
 - add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
 
     plugins {
-        id("com.microej.gradle.library") version "0.4.0"
+        id("com.microej.gradle.library") version "0.5.0"
     }
 
   or for an Application::
 
     plugins {
-        id("com.microej.gradle.application") version "0.4.0"
+        id("com.microej.gradle.application") version "0.5.0"
     }
 
   .. note::
@@ -203,7 +203,7 @@ or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of
       Project JDK message in IntelliJ IDEA
 
 ..
-   | Copyright 2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2022-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
