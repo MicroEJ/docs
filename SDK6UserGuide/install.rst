@@ -51,7 +51,7 @@ Install Gradle
 --------------
 
 Once a JDK is correctly configured, the next step is to install Gradle by following `the official documentation <https://gradle.org/install/>`__.
-The SDK is only compatible with the Gradle ``7.x``, so make sure to install a right version.
+The SDK is only compatible with the Gradle ``8.0.2`` and higher, so make sure to install a right version.
 Once done, you can verify your installation by opening a terminal and run the command ``gradle -v``.
 It should display, amongst other information, the Gradle and the JVM versions:
 
@@ -59,18 +59,18 @@ It should display, amongst other information, the Gradle and the JVM versions:
 
    $ gradle -v
    
-   ------------------------------------------------------------
-   Gradle 7.6
-   ------------------------------------------------------------
+  ------------------------------------------------------------
+  Gradle 8.0.2
+  ------------------------------------------------------------
 
-   Build time:   2022-11-25 13:35:10 UTC
-   Revision:     daece9dbc5b79370cc8e4fd6fe4b2cd400e150a8
+  Build time:   2023-03-03 16:41:37 UTC
+  Revision:     7d6581558e226a580d91d399f7dfb9e3095c2b1d
 
-   Kotlin:       1.7.10
-   Groovy:       3.0.13
-   Ant:          Apache Ant(TM) version 1.10.11 compiled on July 10 2021
-   JVM:          11.0.17 (Eclipse Adoptium 11.0.17+8)
-   OS:           Linux 5.15.0-56-generic amd64
+  Kotlin:       1.8.10
+  Groovy:       3.0.13
+  Ant:          Apache Ant(TM) version 1.10.11 compiled on July 10 2021
+  JVM:          11.0.18 (Eclipse Adoptium 11.0.18+10)
+  OS:           Windows 10 10.0 amd64
 
 
 Configure Repositories
@@ -171,7 +171,7 @@ Eclipse
 The MicroEJ plugin for Eclipse is not available yet, so it is recommended to use IntelliJ IDEA for the moment.
 
 ..
-   | Copyright 2022, MicroEJ Corp. Content in this space is free 
+   | Copyright 2022-2023, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
