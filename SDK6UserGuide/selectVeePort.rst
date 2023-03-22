@@ -91,8 +91,9 @@ where ``name``, ``toolchain`` and ``version`` values are the ones defined in the
 For example : `Platform-CM7hardfp_GCC48-0.1.0`
 
 If multiple VEE Ports are defined, this name can be used to select the VEE Port on which 
-you want to :ref:`run an Application <sdk_6_run_or_debug_on_with_multiple_vee_ports>` 
-or :ref:`execute a testsuite <sdk_6_test_with_multiple_vee_ports>`.
+you want to :ref:`run an Application <sdk_6_run_or_debug_on_with_multiple_vee_ports>`,
+:ref:`execute a testsuite <sdk_6_test_with_multiple_vee_ports>` 
+or :ref:`build an Executable <sdk_6_buildExecutable_with_multiple_vee_ports>` .
 
 
 
