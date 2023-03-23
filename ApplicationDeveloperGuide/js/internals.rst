@@ -8,7 +8,7 @@ JavaScript Sources Processing
 
 The JavaScript code is not executed directly, it is first translated in Java code and compiled with the Java application code.
 This transpilation is done by the JavaScript Add-On Processor.
-This processor uses the `Java Nashorn library <https://openjdk.java.net/projects/nashorn/>`_ (extracted from `jre1.8.0_92`) to parse the Javascript files. 
+This processor uses the OpenJDK Nashorn library (extracted from `jre1.8.0_92`) to parse the Javascript files. 
 
 The operations performed by this processor are summarized in this diagram:
 
