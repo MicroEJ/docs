@@ -9,7 +9,7 @@ It comes with the support of HTTP, HTTPS, Server session, and routing for REST A
 
     This is the documentation of the latest version of HOKA library 8.X.X
 
-Intended audience
+Intended Audience
 #################
 The intended audience for this document is Java developers who are familiar with socket communication, the HTTP 1.1 protocol, and web server concepts.
 
@@ -123,7 +123,7 @@ For example, to map two content types on the same path,  do the following:
         });
 
 
-Path parameters
+Path Parameters
 -----------------
 The request path can contain named parameters called path parameters. 
 Those parameters are made available through the ``request`` instance of the ``process()`` method of the ``RequestHandler``. 
@@ -142,7 +142,7 @@ The path parameter can be accessed by calling ``HttpRequest#getPathParam(String 
           }
         });
 
-Splat parameters
+Splat Parameters
 ----------------
 The request path also supports splat parameters using wildcard '*'.
 Those parameters are made available through the ``request`` instance of the ``process()`` method of the ``RequestHandler``. 
@@ -178,7 +178,7 @@ Request
 - ``HttpRequest#parseBody(BodyParser)``: parses the body of the request with the given parser.
 - ``HttpRequest#getRequestBody()``: return the request InputStream to be used for any custom request handling.
 
-Body parsers
+Body Parsers
 ------------
 The ``HttpRequest#parseBody(BodyParser)`` is used to read the body (data) of a request.  
 
@@ -219,7 +219,7 @@ Build a ``HttpResponse`` based on the request with the following data :
                                        .httpOnly()
                                        .build();
 
-MIME types
+MIME Types
 ----------
 The ``Mime`` class provides constant values for commonly used MIME types and utility methods to return the MIME type of a resource name based on file extensions.
 
@@ -265,7 +265,7 @@ Extension MIME type
 ".xml"    ``MIME_XML``
 ========= =========
 
-Halt request processing chain
+Halt Request Processing Chain
 #############################
 to stop a request processing and return immediately. The following static methods form ``HttpServer`` class should be used.
 
@@ -428,7 +428,7 @@ An exception can be mapped to a custom handler to return specific errors.
         }
       });
 
-Static files
+Static Files
 ############
 A specific static file handler can be set to serve files from the application classpath by using ``ClasspathFilesHandler`` class.
 
@@ -469,7 +469,7 @@ Web Server Configuration
             .build();
  
 
-Trailing slash matching
+Trailing Slash Matching
 -----------------------
 By default, the HOKA server ignores the trailing forward slash at the ends of the request URI.
 
@@ -484,7 +484,7 @@ This behavior can be deactivated by calling the method ``HttpServer#builder()#wi
 
 Note that ``host`` and ``host/`` will link to the same request handler whatever the Trailing Slash Match is activated or not.
 
-Development mode
+Development Mode
 ----------------
 Development mode can be activated by calling ``HttpServer#builder()#developmentMode()```.
 
@@ -496,10 +496,10 @@ Internal Error" response is sent.
 Note: when development mode is active, internal error page customization is deactivated. The development mode page is returned instead.
 
 
-Handle encoding
+Handle Encoding
 ###############
 
-Content and transfer encoding
+Content And Transfer Encoding
 -----------------------------
 The HTTP protocol specifies how to send the request/response payload (the
 body) with a specific encoding. To guarantee that the receiver can understand
@@ -514,7 +514,7 @@ the header value is used to determine the available encoding with the highest qu
 
 By default, the registry contains the "identity" encoding handler and the "chunked" transfer-coding handlers.
 
-Request and response encoding
+Request And Response Encoding
 -----------------------------
 When parsing the request, ``HttpRequest`` wraps the body with the appropriate decoder or, if not found, sends a "406 Not Acceptable" response. The body-parser will receive the wrapped (decoded) stream as input to not have to deal with encodings. The same for ``HttpResponse`` uses the encoder wrapper to
 write the response into the encoded stream sent to the socket. Also, when using
@@ -524,7 +524,7 @@ When using a String as the response data, use the
 ``HttpResponse#setData(String, String)`` to specify the encoding of the
 string (by default, ``ISO-8859-1`` is used).
 
-URL encoding
+URL Encoding
 ------------
 The percent-encoded special characters in the URI and in the query (parameters)
 are automatically decoded at parsing.
@@ -556,7 +556,7 @@ Here is an example of how to use it.
         String username = (String) session.getAttribute("username"); // access the username for example.
 
 
-HOKA configuration
+HOKA Configuration
 ##################
 The server can be configured by creating a property file in `src/main/resources` named `hoka.properties`  
 
