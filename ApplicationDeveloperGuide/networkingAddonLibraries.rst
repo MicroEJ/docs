@@ -1,3 +1,5 @@
+.. _networkingAddonLibraries:
+
 Add-On Libraries
 ================
 

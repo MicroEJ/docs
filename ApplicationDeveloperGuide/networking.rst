@@ -23,8 +23,8 @@ The following schema shows the overall architecture and modules:
    Network Libraries Overview
 
 
-.. include:: networkingFoundationLibraries.rst
-.. include:: networkingAddonLibraries.rst
+- :ref:`networkingFoundationLibraries`
+- :ref:`networkingAddonLibraries`
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free

@@ -1,3 +1,5 @@
+.. _networkingFoundationLibraries:
+
 Foundation Libraries
 ====================
 
