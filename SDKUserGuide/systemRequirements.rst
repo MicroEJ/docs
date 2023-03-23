@@ -48,7 +48,7 @@ The combinations not listed here are not supported.
 For the supported combinations, tests have been done with both the Oracle and the Eclipse Adoptium JDK builds.
 
 .. warning::
-   It is important to note that the SDK Distribution ``22.06`` requires a JDK ``11`` (not a JRE) 
+   It is important to note that the SDK Distributions ``22.06`` and higher require a JDK ``11`` (not a JRE) 
    and can be used only with an :ref:`Architecture <architecture_overview>` ``7.17.0`` or more.
 
 .. _get_jdk:

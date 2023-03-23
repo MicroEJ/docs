@@ -48,9 +48,9 @@ Install SDK Distribution
 
 - Launch the installer executable
   
-  - On Windows, start ``MicroEJ-SDK-Installer-Win64-22.06.exe``.
-  - On Linux, unzip ``MicroEJ-SDK-Installer-Linux64-22.06.zip`` and start ``MicroEJ-SDK-Installer-Linux64-1.0.0.sh``.
-  - On macOS, unzip ``MicroEJ-SDK-Installer-Linux64-22.06.zip`` and start ``MicroEJ-SDK-Installer-MacOS-1.0.0.app``. 
+  - On Windows, start ``MicroEJ-SDK-Installer-Win64-23.02.exe``.
+  - On Linux, unzip ``MicroEJ-SDK-Installer-Linux64-23.02.zip`` and start ``MicroEJ-SDK-Installer-Linux64-1.1.0.sh``.
+  - On macOS, unzip ``MicroEJ-SDK-Installer-Linux64-23.02.zip`` and start ``MicroEJ-SDK-Installer-MacOS-1.1.0.app``. 
     In case of error, check your app has not been put in quarantine (see :ref:`macOS troubleshooting <sdk_install_troubleshooting_macos>` section)
 
 .. figure:: images/installation_process/SDK22_06/welcome_screen.png
@@ -69,7 +69,7 @@ Install SDK Distribution
 
    Accept the terms of this license agreement
 
-- Select the installation path of your SDK. By default it is ``C:\Program Files\MicroEJ\MicroEJ-SDK-22.06`` for Windows. Then click on the :guilabel:`Next` button.
+- Select the installation path of your SDK. By default it is ``C:\Program Files\MicroEJ\MicroEJ-SDK-23.02`` for Windows. Then click on the :guilabel:`Next` button.
 
 .. figure:: images/installation_process/SDK22_06/installation_path_screen.png
    :alt: Installation path screen
