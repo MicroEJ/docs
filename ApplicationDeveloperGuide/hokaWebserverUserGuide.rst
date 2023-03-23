@@ -1,5 +1,11 @@
+.. _hokaWebserverUserGuide:
+
 HOKA Web Server
 ===============
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
 
 HOKA is a tiny extensible Java web server for embedded applications.
 
@@ -579,3 +585,10 @@ The server can be configured by creating a property file in `src/main/resources`
 
               # I/O buffer size used to read/write data from/to request/response
               #hoka.buffer.size=4096
+
+..
+   | Copyright 2019-2023, MicroEJ Corp. Content in this space is free
+   for read and redistribute. Except if otherwise stated, modification
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and
+   copyrights are the property of their respective owners.
