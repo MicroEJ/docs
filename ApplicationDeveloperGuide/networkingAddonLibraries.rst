@@ -49,12 +49,6 @@ IoT Libraries
       -  `Resty class <https://repository.microej.com/javadoc/microej_5.x/apis/ej/rest/web/Resty.html>`_
       -  - `REST client README <https://repository.microej.com/modules/ej/library/iot/restclient/1.1.0/README-1.1.0.md>`_
 
-   *  -  ``REST Server``
-      -  REpresentational State Tranfer (REST) server using on Hoka HTTP Server.
-      -  `restserver <https://repository.microej.com/modules/ej/library/iot/restserver/>`_
-      -  `RestServer class <https://repository.microej.com/javadoc/microej_5.x/apis/ej/restserver/RestServer.html>`_
-      -  - `REST server Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/dynamic-restserver>`_
-
    *  -  ``SNTP Client``
       -  Simple Network Time Protocol (SNTP) client, used to retrieve the current time from an NTP server.
       -  `sntpclient <https://repository.microej.com/modules/ej/library/iot/sntpclient/>`_
