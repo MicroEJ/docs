@@ -100,7 +100,7 @@ IoT Libraries
       -  Tiny footprint yet extensible web server. 
       -  `hoka <https://repository.microej.com/modules/ej/library/iot/hoka/>`_
       -  `HttpServer class <https://repository.microej.com/javadoc/microej_5.x/apis/ej/hoka/http/HttpServer.html>`_
-      -  - `Hoka user manual <https://github.com/MicroEJ/LibraryJava-hoka/blob/master/hoka/user-manual.rst>`_
+      -  - `Hoka user manual <hokaWebserverUserGuide.html>`_
          - `Hoka Example <https://github.com/MicroEJ/Example-Hoka>`_   
 
    *  -  ``MQTT Client (MicroPaho)``
