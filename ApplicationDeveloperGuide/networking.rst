@@ -3,6 +3,12 @@
 Networking
 ==========
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   hokaWebserverUserGuide
+
 This section presents networking libraries.
 
 The following schema shows the overall architecture and modules:
