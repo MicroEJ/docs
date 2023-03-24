@@ -44,7 +44,7 @@ And here is an example of an Android String resource:
 NLS List Files
 --------------
 
-Localization source files are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.nls.list`` files (**and** to ``*.externresources.list`` for an external resource, see :ref:`chapter.microej.applicationResources`).
+Localization source files are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.nls.list`` files (**and** to ``*.externresources.list`` for an external resource, see :ref:`chapter.microej.applicationResources` and :ref:`Loading Translations as an External Resource<nls_external_resource>`).
 
 .. graphviz::
 
