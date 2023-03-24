@@ -38,6 +38,11 @@ for example::
    
    soar.generate.classnames=false
 
+If multiple VEE Ports are defined, the options defined in the ``src/main/resources/build`` folder are common to all VEE Ports.
+Besides these options, it is possible to define options specific to a VEE Port in a properties file located 
+in the ``src/main/resources/build/veePortName`` folder of the project, 
+where ``veePortName`` is the :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port.
+
 
 .. _define_option:
 
