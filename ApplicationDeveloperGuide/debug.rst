@@ -32,6 +32,7 @@ To debug an application on device, first run the :ref:`MicroEJ debugger proxy <d
 .. figure:: images/debug2.png
    :alt: MicroEJ Development Tools Overview of the Remote Java Application Launch
    :align: center
+   :scale: 80%
 
    MicroEJ Development Tools Overview of the Remote Java Application
 
