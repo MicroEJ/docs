@@ -14,6 +14,7 @@ The debugger proxy allows a postmortem debug from a core dump of a running MICRO
 .. figure:: images/debugger_proxy1.png
    :alt: Debugger Proxy Principle
    :align: center
+   :scale: 70%
 
    Debugger Proxy Principle
 
