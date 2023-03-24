@@ -20,7 +20,7 @@ The debugger proxy allows a postmortem debug from a core dump of a running MICRO
 
 
 .. note::
-   This feature requires Architecture version ``8.0.0`` or higher and only works on Linux and QNX platform.
+   This feature requires Architecture version ``8.0.0`` or higher and only works for Linux and QNX.
 
 
 
@@ -108,12 +108,12 @@ Open a shell terminal on your workstation and run the following command
 * **debugger.port**: TCP server port, defaults to ``8000``
 * **debugger.out.path**: path to the Executable file (``application.out``)
 * **debugger.out.coredump.path**: path to the core dump file
-* **debugger.out.format**: VEE .out file format, default to elf
-*  **debugger.out.bigEndianness**: VEE .out file big endian, default to false
-* **loader.path**: The path to the platform ``soarModelReader.jar`` and ``vmModelReader.jar`` needs to be provided here.
-  This is a Comma-separated Classpath, such as `${PLATFORM}/tools/soarModelReader.jar,${PLATFORM}/tools/soarModelReader.jar`.
-  Earlier entries take precedence, like a regular -classpath on the javac command line. 
-  Other runtime jars can be provided using this property.
+* **debugger.out.format**: Executable file format (defaults to ``elf``)
+*  **debugger.out.bigEndianness**: Executable file endianness (default to ``false``: little endian)
+* **loader.path**: The path to the VEE Port ``soarModelReader.jar`` and ``vmModelReader.jar`` needs to be provided here.
+  This is a comma-separated classpath, such as ``${VEEPortDir}/tools/soarModelReader.jar,${VEEPortDir}/tools/soarModelReader.jar``.
+  Earlier entries take precedence, like a regular ``-classpath`` on the javac command line. 
+  Other runtime jars can be provided using this option.
 
 Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` to debug your code.
 
