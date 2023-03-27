@@ -149,11 +149,6 @@ The default NLS implementation fetches text resources from internal flash, but y
 
 See :ref:`section_externalresourceloader` documentation for additional information on external resources management.
 
-Compression
-"""""""""""
-
-The default NLS implementation relies on text resources that are not compressed, but you can use your own encoding to load them from compressed resources.
-
 Images
 ^^^^^^
 
