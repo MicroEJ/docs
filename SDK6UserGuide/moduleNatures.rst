@@ -62,6 +62,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.testOnSimulator`
 - :ref:`sdk6_module_natures.tasks.checkModule`
+- :ref:`sdk6_module_natures.tasks.loadExecutableConfiguration`
 - :ref:`sdk6_module_natures.tasks.buildExecutable`
 - :ref:`sdk6_module_natures.tasks.buildWPK`
 
@@ -121,10 +122,10 @@ This task provides the following properties that can be defined in the ``microej
    * - Name
      - Description
      - Default    
-   * - ``veePortDir``
+   * - ``veePortDirs``
      - Path of the root folder of the VEE Port to use in the build.
      - Not set
-   * - ``veePortFile``
+   * - ``veePortFiles``
      - Path of the VEE Port file to use in the build. 
      - Not set
 
@@ -133,7 +134,7 @@ For example:
 .. code::
 
   microej {
-    veePortDir = "C:\\path\\to\\my\\veePort\\directory"
+    veePortDirs = listOf("C:\\path\\to\\my\\veePort\\directory")
   }
 
 .. _sdk6_module_natures.tasks.loadApplicationConfiguration:
@@ -310,6 +311,19 @@ For example:
   microej {
     checkers = "readme,license"
   }
+
+.. _sdk6_module_natures.tasks.loadExecutableConfiguration:
+
+loadExecutableConfiguration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Loads the configuration to build the Executable of an Application.
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
 
 .. _sdk6_module_natures.tasks.buildExecutable:
 
