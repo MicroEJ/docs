@@ -7,7 +7,7 @@ Simulation
 Principle
 =========
 
-The simulation involves creating or extending a Front Panel project to be UI Pack compatible.
+The simulation part of the UI port requires the creation (or extension) of a Front Panel project which is compatible with the UI Pack.
 
 First, if no Front Panel project exists, follow the steps described here: :ref:`section_frontpanel`.
 Then, follow the next chapters to extend the Front Panel project with UI Pack notions.
@@ -40,12 +40,12 @@ When the VEE Port Configuration project LEDs module is checked, the Front Panel 
    <ej.fp.widget.LED label="0" x="170" y="753" ledOff="Led-0.png" ledOn="Led-GREEN.png" overlay="false"/>
 
 The label must have an integer value from 0 to ``NUMBER_OF_LEDS - 1``.
-The ``ej.microui.led.Leds`` class used this value as the led identifier in ``setLedOff(int ledId)``, ``setLedOn(int ledId)``, and other methods of the class.
+The ``ej.microui.led.Leds`` class uses this value as the LED identifier in ``setLedOff(int ledId)``, ``setLedOn(int ledId)``, and other methods of the class.
 
 Buttons
 =======
 
-The widget ``Button`` should simulate each hardware button (if any).
+The widget ``Button`` can simulate any hardware button.
 
 1. With an image editor, create an image for the button released and an image for the button pressed. Both images must have the same size. 
 2. Create a couple of images for each button.
@@ -150,9 +150,11 @@ Here is an example of a handler:
 Button to Command Event
 -----------------------
 
-To be more independent, the widget should send a MicroUI Command event, which is more generic, and the application code is better.
-For instance, instead of reacting on Button event 0, the application will respond on Command ``Enter`` or ``Up``. 
-The application does not care about the source of the Command event: maybe it is the button 0, 1, 10, or any other input device.
+A recommended approach is to favor Command events over Buttons events. 
+MicroUI Command events are more generic because not they are not tied to a hardware component like a physical button. 
+Command events make the application code more flexible to hardware changes.
+For instance, instead of reacting to Button event 0, the application will respond to Command event ``Enter`` or ``Up``. 
+The application does not care about the source of the Command event: it may be the button 0, 1, 10, or any other input device.
 
 To map a MicroUI Command on the widget Button:
 
@@ -223,7 +225,7 @@ The application code becomes:
 Touch Panel
 ===========
 
-Contrary to the other input devices, no image is required: a touch panel is over the display.
+Contrary to the other input devices, no image is required because a touch panel covers the display area.
 
 1. Retrieve the display size in pixels.
 2. In the Front Panel description file, add this line:
@@ -235,7 +237,7 @@ Contrary to the other input devices, no image is required: a touch panel is over
 By default, the widget sends a MicroUI Pointer event to the Pointer Event Generator, whose name is ``TOUCH`` (a touch panel is considered a Pointer with only dragged events).
 To target another Pointer Event Generator, refer to the chapter :ref:`section_ui_simulation_input`.
 
-A snippet of application code:
+A snippet of application code that handles Pointer events:
 
 
 .. code-block:: java
@@ -274,7 +276,7 @@ For more information, refer to the java-doc of the widget Display and the chapte
 Build
 =====
 
-Once the Front Panel project is created or modified, the VEE Port must be built again as the front panel is built simultaneously with the VEE Port; see :ref:`platform_build`.
+Once the Front Panel project is created or modified, the VEE Port must be built again (the front panel is built simultaneously with the VEE Port; see :ref:`platform_build`).
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

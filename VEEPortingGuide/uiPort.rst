@@ -4,13 +4,13 @@
 UI Port
 =======
 
-This chapter describes all steps to port the UI Pack: from the VEE Port Configuration project to the advanced features by using a GPU.
+This chapter describes all the steps to port the UI Pack: from the VEE Port Configuration project to more advanced features like using a GPU.
 This chapter makes a lot of references to the previous chapters. 
 The concepts are overviewed and incomplete (only the typical case is described).
 
-Follow the steps in the correct order:
+It is recommended to follow the steps in this order:
 
-1. Fill the VEE Port Configuration project to add the UI Pack dependency and configuration,
+1. Edit the VEE Port Configuration project to add the UI Pack dependency and configuration,
 2. Create the Simulator extension project,
 3. Port the minimal implementation of the BSP,
 4. Extend the implementation by connecting a GPU.

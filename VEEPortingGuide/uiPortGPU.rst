@@ -47,10 +47,10 @@ For example:
       // TODO
    }
 
-The drawing function has to respect these elements:
+The drawing function has to take into account these properties:
 
 - the color: the structure ``MICROUI_GraphicsContext`` gives the shape color (always fully opaque),
-- the clip: the LLUI_DISPLAY.h file provides some functions to retrieve the current ``MICROUI_GraphicsContext``'s clip,
+- the clip: the ``LLUI_DISPLAY.h`` file provides some functions to retrieve the current ``MICROUI_GraphicsContext``'s clip,
 - the buffer destination address by calling the ``LLUI_DISPLAY_getBufferAddress`` function,
 - the shape bounds: the drawing function parameters.
 
@@ -58,10 +58,10 @@ The drawing function must return the drawing status.
 This status indicates to the Graphics Engine the kind of drawing: 
 
 - synchronous drawing: the drawing is performed by the GPU and entirely performed before returning. In that case, the drawing function has to return ``DRAWING_DONE``.
-- asynchronous drawing: the drawing is launched, maybe started by the GPU (or even finished) before returning. In that case, the drawing function has to return ``DRAWING_RUNNING``.
+- asynchronous drawing: the drawing is started, maybe processed by the GPU before returning. In that case, the drawing function has to return ``DRAWING_RUNNING``.
 
 As explained above, the second case should be the rule.
-That means the Graphics Engine cannot ask for another drawing (accelerated or not) before the end of the drawing currently performed by the GPU.
+That means that the Graphics Engine cannot ask for another drawing (accelerated or not) before the end of the drawing currently performed by the GPU.
 To unlock the Graphics Engine, the GPU interrupt routine must call the Graphics Engine function ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd`` to notify the end of the drawing.
 The Graphics Engine manages the synchronization alone; no extra support in the BSP is mandatory.
 
@@ -70,7 +70,7 @@ The Graphics Engine manages the synchronization alone; no extra support in the B
 Fallback
 --------
 
-A GPU may not be able to manage all drawing function use cases.
+A GPU may not be able to manage all the drawing functions.
 For instance, it cannot manage all image formats, or it cannot manage all rotation angles, etc.
 In that case, the drawing function can call the software drawing function instead.
 
@@ -93,7 +93,7 @@ In that case, the drawing function can call the software drawing function instea
 Image Constraints
 =================
 
-A GPU may require some constraints on the images:
+The GPU may have strong requirements on the images:
 
 - the pixels buffer start address alignment,
 - an image stride different than the image width.
@@ -105,15 +105,15 @@ Address Alignment
 
 In the VEE Port Configuration project, specify the property ``imageBuffer.memoryAlignment`` in the ``display.properties`` file. 
 The value is the alignment in bits.
-This value will be respected by the compile-time images (Image Generator) and the runtime images.
+This value will be taken into account by the compile-time images (Image Generator) and the runtime images.
 
-.. note:: For the runtime image, this alignment value may be customized thanks to the function again ``LLUI_DISPLAY_IMPL_adjustNewImageCharacteristics``.
+.. note:: For the runtime images, this alignment value may be customized thanks to the function ``LLUI_DISPLAY_IMPL_adjustNewImageCharacteristics``.
 
 Stride (Compile-time Images)
 ----------------------------
 
 The stride is dynamic, often depending on the image format and width.
-Consequently, the stride cannot be described thanks to a property in the ``display.properties`` file. 
+Consequently, the stride cannot be set as a property in the ``display.properties`` file for example. 
 
 For the compile-time images (Image Generator), a specific extension of the ImageGenerator is required.
 

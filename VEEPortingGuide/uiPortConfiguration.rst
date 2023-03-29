@@ -7,19 +7,20 @@ UI Port Configuration
 Principle
 =========
 
-The first step consists of updating the VEE Port Configuration project (often called ``xxx-configuration``): the project that holds the :ref:`mmm_module_description` ``module.ivy``.
-This update consists of several steps described in the chapters below. All steps are not mandatory according to the board capabilities.
+The first step is to update the :ref:`VEE Port Configuration project <platform_configuration_creation>` (often named ``xxx-configuration``): this project holds the :ref:`mmm_module_description` (``module.ivy``).
+This update is done in several steps, described in the sections below. Some steps are optional, depending on the capabilities of the hardware.
 
-.. warning:: This chapter considers the VEE Port is performed and functional (see :ref:`new_platform_creation`).
+.. warning:: This chapter assumes that a valid VEE Port has been created (as described in the chapter :ref:`new_platform_creation`).
 
 UI Pack Selection
 =================
 
-The UI Pack holds several modules, including the Graphics Engine.
+The UI Pack bundles several modules, including the Graphics Engine.
 The Graphics Engine is a library already compiled for an MCU and a C compiler.
-Consequently, the MicroEJ Central Repository offers several UI Packs according to the couple MCU/Compiler (as the MicroEJ Architecture).
+The :ref:`MicroEJ Central Repository <central_repository>` provides UI Packs for a set of MCU/Compiler pairs (like for MicroEJ Architectures).
 
-Refer to the chapter :ref:`pack_import` to add the expected UI Pack:
+Refer to the chapter :ref:`pack_import` to add the required UI Pack. 
+As an example, the module dependency to add for a Cortex-M4 and GCC toolchain would be:
 
 .. code-block:: xml
    :emphasize-lines: 3
@@ -32,31 +33,27 @@ Refer to the chapter :ref:`pack_import` to add the expected UI Pack:
 UI Pack Modules
 ===============
 
-The UI Pack holds several modules. 
-Following chapters describe each module (aim and configuration).
+The following sections describe each module that comes with the UI Pack (purpose and configuration).
 
 The modules provided by the UI Pack are **not installed** by default.
-They must be enabled and configured using the Platform Editor.
+When a module is required, it has to be enabled and configured using the Platform Editor.
 
 .. figure:: images/ui_modules.*
    :alt: UI Pack Modules
 
    UI Pack Modules
 
-Refers to the chapter :ref:`platform_module_configuration` to add the UI Pack modules.
+Refer to the chapter :ref:`platform_module_configuration` to add the UI Pack modules.
 
 Module MicroUI
 ==============
 
-This module holds the MicroUI implementation library. 
-Refers to the chapter :ref:`section_microui` to have more information.
-
-This module is **not optional** and must be checked.
-
-This module requires a static initialization to specify the MicroUI features the application can use.
+MicroUI is a Foundation Library that defines a Low Level UI framework (refer to the chapter :ref:`section_microui` for more information).
+The **mandatory** module MicroUI (it must be checked in the VEE Port configuration file) provides the MicroUI implementation library.
+It requires a static initialization step to specify what MicroUI features are available for the application layer:
 
 1. Create the file ``[VEE Port Configuration project]/microui/microui.xml`` 
-2. Fill the file as described here: :ref:`section_static_init`.
+2. Edit the file as described here: :ref:`section_static_init`.
 
 .. code-block:: xml
 
@@ -82,48 +79,48 @@ Module LEDs
 
 MicroUI provides some API to manipulate the LEDs.
 This module allows the UI Port to drive the LEDs.
-Refers to the chapter :ref:`section_leds` to have more information.
+Refer to the chapter :ref:`section_leds` to have more information.
 
-This module is optional: when not selected, a stub implementation is used, and the UI Port does not need to provide a stub implementation.
+This module is optional: when not selected, a stub implementation is used, and the UI Port does not need to provide one.
 
 Modules Image Decoders
 ======================
 
-.. note:: This chapter only applies when the board holds a display. 
+.. note:: This chapter only applies when the device has a display. 
 
-This module adds an internal image decoder that allows the application to embed an encoded image (PNG or BMP Monochrom) and to let the Graphics Engine decodes it at runtime.
+This module adds an internal image decoder: it allows the application to embed an encoded image (e.g., PNG or BMP Monochrom) and let the Graphics Engine decode it at runtime.
 Both decoders (PNG and BMP Monochrom) are optional and can be selected (or not) independently.
-Refers to the chapter :ref:`image_runtime_decoder` to have more information.
+Refer to the chapter :ref:`image_runtime_decoder` to have more information.
 
-This module is optional: when no image decoder is embedded, the Graphics Engine asks the UI Port (thanks to Low-level API) to decode the encoded images.
+This module is optional: when no image decoder is embedded, the Graphics Engine relies on the UI Port (thanks to Low-level API) to decode the images.
 
 Module Image Generator
 ======================
 
-.. note:: This chapter only applies when the board holds a display. 
+.. note:: This chapter only applies when the device has a display. 
 
 This module allows decoding the application's images at compile-time.
 The application's images are decoded and stored in a binary format compatible with the Graphics Engine.
-The footprint is bigger, but the image loading at runtime is null.
-Refers to the chapter :ref:`section_image_generator` to have more information.
+The memory footprint of the application is higher, but the image loading time at runtime is very low.
+Refer to the chapter :ref:`section_image_generator` to have more information.
 
 This module is optional: when not selected, the application cannot embed generated images compatible with the Graphics Engine.
 
 Module Font Generator
-======================
+=====================
 
-.. note:: This chapter only applies when the board holds a display. 
+.. note:: This chapter only applies when the device has a display. 
 
-This module allows embedding the application's fonts.
+This module allows for embedding the MicroEJ bitmap fonts of the application.
 The application's fonts (EJF files) are decoded and stored in a binary format compatible with the Graphics Engine.
-Refers to the chapter :ref:`section_fontgen` to have more information.
+Refer to the chapter :ref:`section_fontgen` to have more information.
 
 This module is optional: when not selected, the application cannot embed fonts compatible with the Graphics Engine.
 
 Module Display
 ==============
 
-.. note:: This chapter only applies when the board holds a display. 
+.. note:: This chapter only applies when the device has a display. 
 
 This chapter takes the concepts described in chapter :ref:`section_display`. 
 The first step is determining the kind of display: size, pixel format, and constraints.
@@ -145,8 +142,8 @@ The display pixel format (or pixel structure) gives two notions: the number of b
 
 The number of bits-per-pixel (bpp) is an integer value among this list: 1, 2, 4, 8, 16, 24, or 32.
 
-The color components organization explains how the color components (Red, Green, and Blue) are distributed in the pixel.
-A more oversized display pixel format is (in bits) better in the definition.
+The color components organization defines how the color components (Red, Green, and Blue) are distributed in the pixel.
+The greater the display pixel format (in bits), the better is the definition.
 This format also indicates the number of bits-per-pixel.
 For instance, the format RGB565 is a 16-BPP format, indicating that the five MSB bits are for the Red color component, the six next bits are for the Green component, and the five LSB bits are for the Blue component.
 This pixel format can be symbolized by ``RRRRRGGGGGGBBBBB`` or ``RRRR RGGG GGGB BBBB``.
@@ -154,15 +151,15 @@ This pixel format can be symbolized by ``RRRRRGGGGGGBBBBB`` or ``RRRR RGGG GGGB 
 The display pixel format is often fixed by the display itself (its capabilities) and by the memory bus between the MCU and the LCD module. 
 However, the display pixel format is often configurable by the LCD controller. 
 Note that the number of bits-per-pixel and the display size fix the required memory to allocate: ``memory_size = width x height x bpp / 8``.
-Consequently, the pixel format may be less precise than the display capabilities to preserve memory.
-For instance, RGB565, whereas the display is a 24-bit display (RGB888).
+Consequently, the pixel format may be less precise than the display capabilities depending on the memory available on the device.
+For instance, the RGB565 format may be used whereas the display is a 24-bit display (RGB888).
 
 Constraints
 -----------
 
-The hardware (display, bus, memory, etc.) may require some constraints:
+The hardware constraints (display, bus, memory, etc.) may drive the configuration:
 
-- The pixel format: Some hardware cannot use another pixel format other than the display. This format may be standard or custom. See :ref:`display_pixel_structure`.
+- The pixel format: Some hardware cannot use another pixel format other than the one of the display. This format may be standard or custom. See :ref:`display_pixel_structure`.
 - The size of the buffers: The available memory may be limited. This limitation can drive the chosen pixel format.
 - Memory alignment: Some LCD controllers require a memory alignment on the display buffer (alignment on 64 bits, for instance).
 - Buffer width alignment: Some LCD controllers also require an alignment for each line. The line size (in pixels) in memory may be larger than the display line size (width): this is the stride. The alignment constraint may be expressed in pixels or bytes. The required memory to allocate becomes: ``memory_size = stride (in pixels) x height x bpp / 8``.
