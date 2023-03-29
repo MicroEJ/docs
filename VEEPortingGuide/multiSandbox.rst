@@ -114,7 +114,7 @@ This is the fastest way to go with Feature installation since it only requires c
    In-Place Feature Installation Steps
 
 In-Place Feature installation only applies in RAM: the whole Feature content (code and resources) is allocated in the Kernel Working Buffer. 
-When the Core Engine or the device restarts the Kernel Working Buffer is reset, thus there is no persistent Feature. 
+When the Core Engine or the device restarts, the Kernel Working Buffer is reset; thus there is no persistent Feature. 
 
 .. figure:: images/multisandbox-link-inplace-memories.png
    :alt: In-Place Feature Installation Memory Map
@@ -222,7 +222,7 @@ The number of relocations to apply in batch can be configured with the following
 
 **Default Value**: ``128``
 
-Once the Core Engine has processed the given number of relocations, it yields the execution to other threads than the one that is calling the `Kernel.install(InputStream)`_ method.
+Once the Core Engine has processed the given number of relocations, the thread that called the `Kernel.install(InputStream)`_ method yields the execution to other threads.
 A small number will give more smooth execution for threads but a slowest installation execution. A large number will make the Core Engine block for applying relocations but a faster installation execution.
 
 .. _Kernel.install(InputStream): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
