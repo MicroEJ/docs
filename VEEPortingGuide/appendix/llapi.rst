@@ -726,6 +726,50 @@ Three header files are provided:
    an X.509 digital certificate and returns its encoded format type :
    Distinguished Encoding Rules (DER) or Privacy-Enchanced Mail (PEM).
 
+.. _LLECOM_NETWORK-API-SECTION:
+
+LLECOM_NETWORK: Network Interfaces
+==================================
+
+Naming Convention
+-----------------
+
+The Low Level Network Interfaces API (LLECOM_NETWORK), relies on functions that need to
+be implemented by engineers in a driver. The names of these functions
+match the ``LLECOM_NETWORK_IMPL_*`` pattern.
+
+Header Files
+------------
+
+One header file is provided:
+
+-  LLECOM_NETWORK_impl.h
+
+   Defines the set of functions that the BSP must implement to manage and configure
+   and TCP/IP network interfaces.
+
+
+.. _LLECOM_WIFI-API-SECTION:
+
+LLECOM_WIFI: Wi-Fi Management
+=============================
+
+Naming Convention
+-----------------
+
+The Low Level Wi-FI API (LLECOM_WIFI), relies on functions that need to
+be implemented by engineers in a driver. The names of these functions
+match the ``LLECOM_WIFI_IMPL_*`` pattern.
+
+Header Files
+------------
+
+One header file is provided:
+
+-  LLECOM_WIFI_impl.h
+
+   Defines the set of functions that the BSP must implement to manage and configure
+   Wi-FI access points.
 
 .. _LLFS-API-SECTION:
 
