@@ -113,7 +113,9 @@ This is the fastest way to go with Feature installation since it only requires c
 
    In-Place Feature Installation Steps
 
-In-Place Feature installation only applies in RAM: the whole Feature content (code and resources) is allocated in the Kernel Working Buffer. 
+Features are installed in RAM. The required memory is allocated in the Kernel Working Buffer. 
+This includes code, resources, static fields and internal structures.
+When the Feature is uninstalled, allocated memory is reclaimed. 
 When the Core Engine or the device restarts, the Kernel Working Buffer is reset; thus there is no persistent Feature. 
 
 .. figure:: images/multisandbox-link-inplace-memories.png
