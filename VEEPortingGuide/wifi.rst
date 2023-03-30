@@ -7,7 +7,7 @@ Wi-Fi
 Overview
 ========
 
-The WiFi Foundation Library provides a way to manage and configure Wi-Fi access points.
+The Wi-Fi Foundation Library provides a way to manage and configure Wi-Fi access points.
 
 Dependencies
 ============
@@ -19,7 +19,7 @@ Dependencies
 Installation
 ============
 
-The WiFi :ref:`Pack <pack_overview>` module must be installed in your VEE Port.
+The Wi-Fi :ref:`Pack <pack_overview>` module must be installed in your VEE Port.
 
 In the Platform configuration project, (``-configuration`` suffix), add
 the following dependency to the :ref:`module.ivy <mmm_module_description>` file:
@@ -33,14 +33,14 @@ The Platform project must be rebuilt (:ref:`platform_build`).
 Use
 ===
 
-The `WiFi API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` file of the 
+The `Wi-Fi API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` file of the 
 Application project: 
 
 ::
 
 	<dependency org="ej.api" name="ecom-wifi" rev="2.2.2"/>
 
-.. _WiFi API Module: https://repository.microej.com/modules/ej/api/ecom-wifi/
+.. _Wi-Fi API Module: https://repository.microej.com/modules/ej/api/ecom-wifi/
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
