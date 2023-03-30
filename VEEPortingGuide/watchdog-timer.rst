@@ -68,18 +68,18 @@ Dependencies
 Installation
 ============
 
-Watchdog Timer is an API composed of a ``Pack`` module and a C component module.
-You need both of them in your Platform to install the API.
+Watchdog Timer is an API composed of a :ref:`Pack <pack_overview>` module and a C component module.
+You need both of them in your VEE Port to install the API.
 
-In the Platform configuration project, the one with ``-configuration`` extension, add
-the dependency to the two required modules in the file ``module.ivy``:
+In the Platform configuration project, (``-configuration`` suffix), add
+the following dependencies to :ref:`module.ivy <mmm_module_description>` file:
 
 ::
 
 	<dependency org="com.microej.pack.watchdog-timer" name="watchdog-timer-pack" rev="2.0.1" />
 	<dependency org="com.microej.clibrary.llimpl" name="watchdog-timer-generic" rev="3.0.1"/>
 
-The Platform must be rebuilt (:ref:`platform_build`).
+The Platform project must be rebuilt (:ref:`platform_build`).
 
 Then, you have to implement functions that match the ``LLWATCHDOG_TIMER_IMPL_*_action`` pattern
 which is required by the Watchdog C implementation.
@@ -87,7 +87,7 @@ which is required by the Watchdog C implementation.
 Use in an Application
 =====================
 
-The `WatchdogTimer API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `WatchdogTimer API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the
 Application project in order to allow access to the Watchdog library.
 
 ::
