@@ -22,6 +22,7 @@ VEE Porting Guide
    ui
    vg
    net
+   bluetooth
    fs
    hal
    device
