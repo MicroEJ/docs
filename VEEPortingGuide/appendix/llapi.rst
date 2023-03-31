@@ -771,6 +771,28 @@ One header file is provided:
    Defines the set of functions that the BSP must implement to manage and configure
    Wi-FI access points.
 
+.. _LLBLUETOOTH-API-SECTION:
+
+LLBLUETOOTH: Bluetooth
+======================
+
+Naming Convention
+-----------------
+
+The Low Level Bluetooth API (LLBLUETOOTH), relies on functions that need to
+be implemented by engineers in a driver. The names of these functions
+match the ``LLBLUETOOTH_IMPL_*`` pattern.
+
+Header Files
+------------
+
+One header file is provided:
+
+-  LLBLUETOOTH_impl.h
+
+   Defines the set of functions that the BSP must implement to manage and configure
+   and Bluetooth module.
+
 .. _LLFS-API-SECTION:
 
 LLFS: File System
