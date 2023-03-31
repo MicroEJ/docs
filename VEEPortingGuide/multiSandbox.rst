@@ -83,11 +83,12 @@ This library provides a set of options. Refer to the chapter
 Feature Installation
 ====================
 
-Feature installation is the process of linking a ``.fo`` file in memory.
-It is triggered by a call to the `Kernel.install(InputStream)`_ method. It consists of:
+Feature installation is triggered by a call to the `Kernel.install(InputStream)`_ method. It consists of the following steps:
 
-- transferring the Feature content (code and resources) to the target memory location,
-- applying relocations to code (e.g., resolving final addresses in instructions such as method call, static field access, ...).
+- loading Feature's content from ``.fo`` file,
+- linking Feature's code with the Kernel,
+- storing Feature's content into the target memory.
+
 
 The ``LLKERNEL_impl.h`` Abstraction Layer interface provides Low Level APIs for allocating and transferring Feature content in different memory areas.
 
