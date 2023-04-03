@@ -74,6 +74,7 @@ Simulator
 ~~~~~~~~~
 
 - Added missing default values for the properties ``s3.slow``, ``console.logs.period``, and ``s3.hil.timeout`` when launching the Simulator from the command line.
+- Fixed "Internal limits" error in HIL engine when too many array arguments are used at the same time by one or several native methods.
 
 SOAR
 ~~~~
