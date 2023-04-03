@@ -33,23 +33,6 @@ specific configuration:
    -  ``QNX70``: BlackBerry QNX 7.0
    -  ``Clang``: Clang
 
-.. _changelog-7.19.0:
-
-[7.19.0] - 2023-02-16
----------------------
-
-Core Engine
-~~~~~~~~~~~
-
-- Added the capability to customize implementation of the functions that convert strings to float/double values and vice-versa.
-- [Cortex-A/Clang] - Fixed wrong float/double arguments passed to the SNI natives.
-
-Tools
-~~~~~
-
-- Removed dependency on GNU ``ar`` program to create ``microejruntime.a`` archive file.
-
-
 .. _changelog-8.0.0:
 
 [8.0.0] - 2023-MM-DD
@@ -91,6 +74,7 @@ Simulator
 ~~~~~~~~~
 
 - Added missing default values for the properties ``s3.slow``, ``console.logs.period``, and ``s3.hil.timeout`` when launching the Simulator from the command line.
+- Fixed "Internal limits" error in HIL engine when too many array arguments are used at the same time by one or several native methods.
 
 SOAR
 ~~~~
@@ -100,6 +84,22 @@ Tools
 
 - Removed :ref:`Test Suite Engine <testsuite_engine>`. If needed, the Test Suite Engine is available in the :ref:`Build Kit <mmm_build_kit>`.
 - Removed Immutables NLS library. Use :ref:`Binary NLS <chapter.nls>` add-on library instead. 
+
+.. _changelog-7.19.0:
+
+[7.19.0] - 2023-02-16
+---------------------
+
+Core Engine
+~~~~~~~~~~~
+
+- Added the capability to customize implementation of the functions that convert strings to float/double values and vice-versa.
+- [Cortex-A/Clang] - Fixed wrong float/double arguments passed to the SNI natives.
+
+Tools
+~~~~~
+
+- Removed dependency on GNU ``ar`` program to create ``microejruntime.a`` archive file.
 
 
 .. _changelog-7.18.1:
