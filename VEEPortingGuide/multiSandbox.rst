@@ -83,12 +83,28 @@ This library provides a set of options. Refer to the chapter
 Feature Installation
 ====================
 
+Introduction
+------------
+
 Feature installation is triggered by a call to the `Kernel.install(InputStream)`_ method. It consists of the following steps:
 
 - loading Feature's content from ``.fo`` file,
 - linking Feature's code with the Kernel,
 - storing Feature's content into the target memory.
 
+A Feature ``.fo`` file is composed of the following elements:
+
+- Code: Application code (methods, types, ...) as well as built-in objects (strings and immutables),
+- RO Data: :ref:`Application Resources <chapter.microej.applicationResources>` that do not require content modification,
+- RW Data: Reserved memory for Feature execution (Application static fields and Feature internal structures),
+- Metadata: Temporary information required during the installation phase, such as code relocations.
+
+.. figure:: images/multisandbox-fo-content.png
+   :alt: Feature ``.fo`` File Content
+   :align: center
+   :scale: 70%
+
+   Feature ``.fo`` File Content
 
 The ``LLKERNEL_impl.h`` Abstraction Layer interface provides Low Level APIs for allocating and transferring Feature content in different memory areas.
 
@@ -97,34 +113,28 @@ There are two kinds of installation:
 - In-place installation: The Feature content is allocated in RAM.
 - Custom installation: The Feature content is copied to any byte-addressable memory, including ROM.
 
-Both installation modes require a certain amount of RAM:
+Installation kinds are not exclusive. It is possible to link a Feature using In-place installation and an other one using Custom installation. 
+In all cases, a certain amount of RAM is required:
 
-- code relocations are allocated in the Java heap,
-- the rest is allocated in a memory area called the Kernel Working Buffer (see below).
+- Metadata is allocated in the Java heap,
+- Code is first allocated in a memory area called the Kernel Working Buffer (see more details below).
 
 In-Place Installation
 ---------------------
 
 This is the fastest way to go with Feature installation since it only requires connecting a ``malloc/free`` implementation.
 
-.. figure:: images/multisandbox-link-inplace-overview.png
-   :alt: In-Place Feature Installation Steps
-   :align: center
-   :scale: 70%
-
-   In-Place Feature Installation Steps
-
-Features are installed in RAM. The required memory is allocated in the Kernel Working Buffer. 
+Feature content is installed in RAM. The required memory is allocated in the Kernel Working Buffer. 
 This includes code, resources, static fields and internal structures.
 When the Feature is uninstalled, allocated memory is reclaimed. 
 When the Core Engine or the device restarts, the Kernel Working Buffer is reset; thus there is no persistent Feature. 
 
-.. figure:: images/multisandbox-link-inplace-memories.png
-   :alt: In-Place Feature Installation Memory Map
+.. figure:: images/multisandbox-link-inplace-overview.png
+   :alt: In-Place Feature Installation Overview
    :align: center
    :scale: 70%
 
-   In-Place Feature Installation Memory Map
+   In-Place Feature Installation Overview
 
 The In-Place installation flow is described in the following sequence diagram:
 
@@ -147,33 +157,26 @@ The In-Place uninstallation flow is described in the following sequence diagram:
 Custom Installation
 -------------------
 
-Custom Feature Installation allows to install a Feature in any byte-addressable memory. 
-The Abstraction Layer implementation is responsible for providing the following elements:
-
-- the address location where the Feature will be installed,
-- the implementation to copy a chunk of bytes to the target location.
-
+Custom Feature Installation allows to install a Feature in any byte-addressable memory, including ROM. 
+The Code is temporarily allocated to the Kernel Working Buffer before being linked. Then it is transferred to the target location.
+RO Data (Application Resources) is directly transferred to the target location.
 
 .. figure:: images/multisandbox-link-custom-overview.png
-   :alt: Custome Feature Installation Steps
+   :alt: Custom Feature Installation Overview
    :align: center
    :scale: 70%
 
    Custom Feature Installation Steps
 
+The Abstraction Layer implementation is responsible for providing the following elements:
 
-
-.. figure:: images/multisandbox-link-custom-memories.png
-   :alt: Custom Feature Installation Memory Map
-   :align: center
-   :scale: 70%
-
-   Custom Feature Installation Memory Map
+- the address location where the Feature will be installed,
+- the implementation to copy a chunk of bytes to the target location.
 
 The custom installation flow is described in the following sequence diagram:
 
 .. figure:: images/multisandbox-link-custom-installation-flow.png
-   :alt: Custom Feature Installation Flow
+   :alt: Custom Feature Installation Overview
    :align: center
    :scale: 100%
 
@@ -276,18 +279,17 @@ The following table summarizes the sections and their content:
      - Java Heap
      - None
    * - ``.bss.soar.feature``
-     - Static fields,
-       internal structures
+     - RW Data
      - None
-     - RAM area
+     - Features RAM area
    * - ``.rodata.microej.resources``
-     - Application Resources
+     - RO Data
      - None
-     - ROM area
+     - Features ROM area
    * - ``.rodata``
-     - Application Code
+     - Code
      - Kernel Working Buffer
-     - ROM area
+     - Features ROM area
    * - ``.shstrtab``
      - Metadata
      - Java Heap
