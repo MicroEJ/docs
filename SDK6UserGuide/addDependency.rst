@@ -65,6 +65,18 @@ The version declared in the dependencies of a build file are explicit:
    or a snapshot version (e.g., ``1.0.0-RCxxx``) otherwise. 
    This is not the case anymore in the SDK 6.
 
+Dependencies Repositories
+-------------------------
+
+Gradle needs to know in which repositories the modules must be fetched and published.
+The :ref:`SDK 6 installation process <sdk_6_install>` provides a Gradle Init Script to declare all the MicroEJ public repositories.
+Of course you can declare other repositories, either in the same Gradle Init Script and in any other location supported by Gradle.
+Refer to `the official documentation <https://docs.gradle.org/current/userguide/declaring_repositories.html>`__` for 
+more information on repositories configuration.
+
+It is important to note that the declaration order of the repositories matters.
+Gradle requests the repositories in the order they are declared and stops as soon as it finds a matching version.
+
 ..
    | Copyright 2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
