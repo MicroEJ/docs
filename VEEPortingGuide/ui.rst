@@ -24,6 +24,7 @@ Graphical User Interface
     uiImage
     uiFont
     uiSimulation
+    uiPort
     uiReleaseNotes
     uiChangeLog
     uiMigrationGuide

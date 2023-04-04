@@ -713,6 +713,8 @@ Optional Low Level API
 
 Several optional Low Level API are available in ``LLUI_DISPLAY_impl.h``. They are already implemented as *weak* functions in the Graphics Engine and return no error. These optional features concern the display backlight and constrast, display characteristics (is colored display, double buffer), colors conversions (see :ref:`display_pixel_structure` and :ref:`display_lut`), etc. Refer to each function comment to have more information about the default behavior.
 
+.. _section_display_llapi_painter:
+
 Painter Low Level API
 ---------------------
 
