@@ -33,6 +33,22 @@ specific configuration:
    -  ``QNX70``: BlackBerry QNX 7.0
    -  ``Clang``: Clang
 
+.. _changelog-7.20.0:
+
+[7.20.0] - 2023-04-04
+---------------------
+
+Core Engine
+~~~~~~~~~~~
+
+- Added the capability to customize implementation of the function that performs an atomic exchange operation.
+- [ESP32] - Remove default implementation of the function that performs an atomic exchange operation. The Core Engine abstraction layer implementation has to implement the C function ``int32_t LLBSP_IMPL_atomic_exchange(int32_t* ptr, int32_t value)``.
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+- Fixed uninitialized pointer access in the :ref:`External Resources Loader<section_externalresourceloader>`, which can cause a system crash when reading data from a resource.
+
 .. _changelog-7.19.0:
 
 [7.19.0] - 2023-02-16
