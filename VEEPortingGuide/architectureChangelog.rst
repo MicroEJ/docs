@@ -33,10 +33,31 @@ specific configuration:
    -  ``QNX70``: BlackBerry QNX 7.0
    -  ``Clang``: Clang
 
+.. _changelog-7.20.1:
+
+[7.20.1] - 2023-04-10
+---------------------
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+-  Fixed `Float.parseFloat(...)`_ and `Double.parseDouble(...)`_ that don't throw a `NumberFormatException`_ when the given string is empty.
+-  Fixed float and double to string conversions that contain an unecessary ``+`` sign in the exponent.
+
+.. _Float.parseFloat(...): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Float.html#parseFloat-java.lang.String-
+.. _Double.parseDouble(...): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Double.html#parseDouble-java.lang.String-
+.. _NumberFormatException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NumberFormatException.html
+
 .. _changelog-7.20.0:
 
 [7.20.0] - 2023-04-04
 ---------------------
+
+Known Issues
+~~~~~~~~~~~~
+
+-  `Float.parseFloat(...)`_ and `Double.parseDouble(...)`_ don't throw a `NumberFormatException`_ when the given string is empty.
+-  Float and double to string conversions contain an unecessary ``+`` sign in the exponent.
 
 Core Engine
 ~~~~~~~~~~~
@@ -53,6 +74,12 @@ Foundation Libraries
 
 [7.19.0] - 2023-02-16
 ---------------------
+
+Known Issues
+~~~~~~~~~~~~
+
+-  `Float.parseFloat(...)`_ and `Double.parseDouble(...)`_ don't throw a `NumberFormatException`_ when the given string is empty.
+-  Float and double to string conversions contain an unecessary ``+`` sign in the exponent.
 
 Core Engine
 ~~~~~~~~~~~
