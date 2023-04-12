@@ -84,10 +84,10 @@ newpage UNINSTALL (New Target Location)
 
 newpage MEJ32 BOOT
 "Kernel" -> "MEJ32": Kernel <clinit>
-"MEJ32" -> "BSP": LLKERNEL_IMPL_getNbInstalledFeatures()
-"BSP" --> "MEJ32": nb_installed_features
-loop feature_id: 0..nb_installed_features-1
-	"MEJ32" -> "BSP": Get Feature handle\nLLKERNEL_IMPL_getInstalledFeature(feature_id)
+"MEJ32" -> "BSP": LLKERNEL_IMPL_getAllocatedFeaturesCount()
+"BSP" --> "MEJ32": allocated_features_count
+loop allocation_index: 0..allocated_features_count-1
+	"MEJ32" -> "BSP": Get Feature handle\nLLKERNEL_IMPL_getFeatureHandle(allocation_index)
 	"BSP" --> "MEJ32": NON NULL feature_handle
 	"MEJ32" -> "BSP": Get Feature image target address\nLLKERNEL_IMPL_getFeatureAddressROM(feature_handle)
 	"BSP" --> "MEJ32": ROM_address_start
