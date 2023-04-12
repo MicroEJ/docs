@@ -119,6 +119,8 @@ In all cases, a certain amount of RAM is required:
 - Metadata is allocated in the Java heap,
 - Code is first allocated in a memory area called the Kernel Working Buffer (see more details below).
 
+.. _feature_inplace_installation:
+
 In-Place Installation
 ---------------------
 
@@ -153,6 +155,8 @@ The In-Place uninstallation flow is described in the following sequence diagram:
    :scale: 100%
 
    In-Place Feature Uninstallation Flow
+
+.. _feature_custom_installation:
 
 Custom Installation
 -------------------
