@@ -79,6 +79,70 @@ There are two options:
 
 Contact `our support team <https://www.microej.com/contact/#form_2>`_ to get the best migration strategy and detailed instructions. 
 
+Migrate Your LLKERNEL Implementation
+------------------------------------
+
+The following code is a ``LLKERNEL_impl.c`` template for migrating your current implementation of Feature installation in RAM.
+This is now called :ref:`In-Place Installation <feature_inplace_installation>`. 
+Your code logic for managing allocated blocks does not need to be changed.
+:ref:`Custom Installation <feature_custom_installation>` is disabled, so most of the new functions do not need to be implemented.
+
+.. code-block:: c
+
+   #include "LLKERNEL_impl.h"
+
+   void* LLKERNEL_IMPL_allocateWorkingBuffer(int32_t size) {
+      // Paste here the code of your former 'LLKERNEL_IMPL_allocate' function
+   }
+
+   void LLKERNEL_IMPL_freeWorkingBuffer(void* chunk_address) {
+      // Paste here the code of your former 'LLKERNEL_IMPL_free' function
+   }
+
+   int32_t LLKERNEL_IMPL_allocateFeature(int32_t size_ROM, int32_t size_RAM) {
+      return 0;
+   }
+
+   int32_t LLKERNEL_IMPL_getAllocatedFeaturesCount(void) {
+      return 0;
+   }
+
+   void LLKERNEL_IMPL_freeFeature(int32_t handle) {
+      // Paste here your implementation of 'ASSERT(0)'
+   }
+
+   int32_t LLKERNEL_IMPL_getFeatureHandle(int32_t allocation_index) {
+      // Paste here your implementation of 'ASSERT(0)'
+      return 0;
+   }
+
+   void* LLKERNEL_IMPL_getFeatureAddressRAM(int32_t handle) {
+      // Paste here your implementation of 'ASSERT(0)'
+      return 0;
+   }
+
+   void* LLKERNEL_IMPL_getFeatureAddressROM(int32_t handle) {
+      // Paste here your implementation of 'ASSERT(0)'
+      return 0;
+   }
+
+   int32_t LLKERNEL_IMPL_copyToROM(void* dest_address_ROM, void* src_address, int32_t size) {
+      // Paste here your implementation of 'ASSERT(0)'
+      return 0;
+   }
+
+   int32_t LLKERNEL_IMPL_flushCopyToROM(void) {
+      // Paste here your implementation of 'ASSERT(0)'
+      return 0;
+   }
+
+   int32_t LLKERNEL_IMPL_onFeatureInitializationError(int32_t handle, int32_t error_code) {
+      // Paste here your implementation of 'ASSERT(0)'
+      return 0;
+   }
+
+
+
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
