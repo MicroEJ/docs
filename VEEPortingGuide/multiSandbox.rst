@@ -113,7 +113,7 @@ There are two kinds of installation:
 - In-place installation: The Feature content is allocated in RAM.
 - Custom installation: The Feature content is copied to any byte-addressable memory, including ROM.
 
-Installation kinds are not exclusive. It is possible to link a Feature using In-place installation and an other one using Custom installation. 
+Installation kinds are not exclusive. It is possible to link a Feature using In-place installation and another one using Custom installation. 
 In all cases, a certain amount of RAM is required:
 
 - Metadata is allocated in the Java heap,
@@ -125,7 +125,7 @@ In-Place Installation
 This is the fastest way to go with Feature installation since it only requires connecting a ``malloc/free`` implementation.
 
 Feature content is installed in RAM. The required memory is allocated in the Kernel Working Buffer. 
-This includes code, resources, static fields and internal structures.
+This includes code, resources, static fields, and internal structures.
 When the Feature is uninstalled, allocated memory is reclaimed. 
 When the Core Engine or the device restarts, the Kernel Working Buffer is reset; thus there is no persistent Feature. 
 
