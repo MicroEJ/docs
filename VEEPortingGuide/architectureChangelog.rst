@@ -51,6 +51,9 @@ This major Architecture version update introduces the following main features:
   - On different Kernel Applications provided some conditions are met. 
     Basically, a ``.fo`` built on Kernel 1 can be installed on Kernel 2 if the exposed Kernel APIs are left unchanged.
     See :ref:`feature_portability_control` for more details.
+- Redesigned :ref:`Feature installation <feature_memory_installation>` flow. A Feature can now be installed in any byte-addressable memory, including ROM.
+  Former Feature installation in RAM is preserved and is now called :ref:`In-Place Installation <feature_inplace_installation>`. 
+  For that, ``LLKERNEL`` Low Level APIs have been fully rewritten.
 
 If you plan to migrate a VEE Port from Architecture ``7.x`` to Architecture ``8.x``, consider the :ref:`architecture7_migration` chapter.
 
@@ -64,6 +67,7 @@ Core Engine
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
+- Updated ``KF`` dynamic loader to support :ref:`Feature Custom Installation <feature_custom_installation>` mode.
 - Removed Foundation Libraries API Jars and Javadoc.
 
 Integration
