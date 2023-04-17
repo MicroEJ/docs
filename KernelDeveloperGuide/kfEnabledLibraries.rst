@@ -3,14 +3,173 @@
 Multi-Sandbox Enabled Libraries
 ===============================
 
-A Multi-Sandbox enabled library is a Foundation or Add-On Library which can
-be embedded into the Kernel and exposed as API. MicroEJ Foundation
-Libraries provided in MicroEJ SDK are already Multi-Sandbox enabled. A
-stateless library - i.e. a library that does not contain any method
-modifying an internal global state - is Multi-Sandbox enabled by default.
+A Multi-Sandbox enabled library is a Foundation Library or an Add-On Library that can be embedded
+by a Kernel with its APIs exposed to Features.
+
+A library requires specific code for enabling Multi-Sandbox in the following cases:
+
+- it implements and internal global state: lazy initialization of a singleton, registry of callbacks, internal cache, ...,
+- it provides access to native resources that must be controlled using a Security Manager.
+
+Otherwise the library is called a stateless library.
+A stateless library is Multi-Sandbox enabled by default: it can be embedded by the Kernel and its APIs directly exposed to Features without code modification.
+
+.. note::
+   
+   This chapter applies more generally to any Kernel code, not only to Libraries.
+
+Manage Internal Global State
+----------------------------
+
+A Library may define code that performs modifications of its internal state, for example:
+
+- lazy initialization of a singleton,
+- registering/un-registering a callback,
+- maintaining an internal global cache, ...
+
+By default, calling one of these APIs from a Feature context will throw one of the following error:
+
+.. code-block:: 
+   
+   java.lang.IllegalAccessError: KF:E=S1
+      at <Kernel Method>
+      ...
+      at <Feature Method>
+
+   java.lang.IllegalAccessError: KF:E=F1
+      at <Kernel Method>
+      ...
+      at <Feature Method>
+
+The reason is that the Core Engine rejects the assignment of a Feature object in a static field or an instance field owned by the Kernel.
+See the :ref:`KF library access error codes <kf-access-error-codes>` for more details.
+This prevents to create unwanted object links from the Feature to the Kernel, which would lead to stale references when stopping the Feature.
+
+The library code must be adapted to implement the desired behavior when the code is called from a Feature context. 
+Next sections describe the most common strategies applied on a concrete example:
+
+- declaring a static field local to the Feature,
+- allowing a field assignment in Kernel mode,
+- using existing Multi-Sandbox enabled data structures.
+
+Declare a Static Field Local to the Feature
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The :ref:`kf_specification` defines Context Local Storage for static fields.
+This indicates the Core Engine to allocate a dedicated memory slot to store the static field for each execution context (the Kernel and each Feature).
+
+Context Local Storage for static fields is typically used when the Library defines a lazy initialized singleton. 
+A lazy initialized singleton is a singleton that is only allocated the first time it is required.
+This is how is implemented the well known `Math.random()`_ method:
+
+.. code-block:: java
+
+   public class Math{
+      private static Random RandomGenerator;
+
+      public static double random() {
+         if(RandomGenerator == null) {
+            RandomGenerator = new Random();
+         }
+         return RandomGenerator.nextDouble();
+      }
+   }
+
+To enable this code for Multi-Sandbox, you simply can declare the static field local to the Context.
+
+.. code-block:: xml
+
+   <kernel>
+      <contextLocalStorage name="java.lang.Math.RandomGenerator"/>
+   </kernel>
+
+When the method is called in a new context, the static field is read to ``null``, then a new object will be allocated and assigned to the local static field.
+Thus, each context will create its own instance of the ``Random`` singleton on demand.
+
+.. note:: 
+
+   By default, reading a static field for the first time in a new context returns ``null``.
+   It is possible to write dedicated code for initializing the static field before it first read access.
+   See section `§4.3.3 Context Local Static Field References` of the :ref:`kf_specification` for more details.
+
+   
+.. _Math.random(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Math.html#random--
+
+Allow a Field Assignment in Kernel Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is possible to assign a Feature object in a static field or an instance field owned by the Kernel, provided the current context is owned by the Kernel.
+Such assignment must be removed before stopping the Feature. 
+The common way is to register a `FeatureStateListener`_ at Kernel boot. This gives a hook to remove Kernel links to Feature objects when a Feature is moving to the ``STOPPED`` state.
+
+.. code-block:: java
+
+   Kernel.addFeatureStateListener(new FeatureStateListener() {
+
+      @Override
+      public synchronized void stateChanged(Feature feature, State previousState) {
+         if (feature.getState() == State.STOPPED) {
+            // Here, remove Kernel->Feature references
+         }
+      }
+   };
+
+Without this, the Feature will remain in the ``STOPPED`` state. It will not be possible to uninstall it or to start it again until the link is removed.
+Remaining Feature objects references by the Kernel are called Kernel stale references.
+
+.. note:: 
+
+   To help debugging your Kernel, Kernel stale references are displayed by the :ref:`Core Engine dump <vm_dump>`.
+
+.. _FeatureStateListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureStateListener.html
+
+Use Existing Multi-Sandbox Enabled Data Structures
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+MicroEJ Corp. provides ready-to-use classes on the shelf that are Multi-Sandbox enabled. 
+Among we can cite:
+
+- ``KernelObservable``: Implementation of Observable which can handle observers from any Module.
+- ``KFList``: Implementation of a Collection with multi-context support.
+- ``SharedPropertyRegistry``: Map of key/value properties.
+- ``SharedServiceRegistry``: Map of api/implementation services.
+
+Please contact :ref:`our support team <get_support>` for more details on usage.
+
+Writing a Security Manager
+--------------------------
+
+A Multi-Sandbox enabled Foundation Library must protect its access to native resources.
+The following code snippet describes the typical that must be API entries.
+
+
+.. code-block:: java
+
+   void myAPIThatOpensAccessToANativeResource(){
+
+      if (Constants.getBoolean("com.microej.library.edc.securitymanager.enabled")) {
+         // Here, the Security Manager support is enabled
+         SecurityManager securityManager = System.getSecurityManager();
+         if (securityManager != null) {
+            // Here, the Kernel has registered a Security Manager
+
+            // Create a Permission with relevant parameters for the security manager to render the Permission
+            MyResourcePermission = new MyResourcePermission();
+
+            //
+            securityManager.checkPermission(p);
+         }
+      }
+   }
+
+Known Foundation Libraries Behavior
+-----------------------------------
 
 This section details the Multi-Sandbox semantic that have been added to
-MicroEJ Foundation Libraries in order to be Multi-Sandbox enabled.
+Foundation Libraries in order to be Multi-Sandbox enabled.
+Usually, most of the Foundation Libraries provided by MicroEJ Corp. are Multi-Sandbox enabled,
+unless the library documentation (e.g. ``README.md``) mentions specific limitations.
+
 
 MicroUI
 ~~~~~~~
