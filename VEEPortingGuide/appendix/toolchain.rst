@@ -165,7 +165,7 @@ ARM Cortex-M7
      - ``--cpu Cortex-M7 --fpu VFPv5_sp``
      - `flopi7I36 <https://repository.microej.com/modules/com/microej/architecture/CM7/CM7hardfp_IAR83/flopi7I36/>`__
 
-ARMv7A (ARM Cortex-A with no integer division extension: Cortex-A5/Cortex-A8/Cortex-A9)
+ARMv7A (ARMv7-A without integer division extension: Cortex-A5/Cortex-A8/Cortex-A9)
 ================================================================================================
 
 .. list-table:: ARMv7A Compilers
@@ -183,7 +183,7 @@ ARMv7A (ARM Cortex-A with no integer division extension: Cortex-A5/Cortex-A8/Cor
      - ``-mabi=aapcs-linux -march=armv7-a -mlittle-endian -mfpu=vfp -mfloat-abi=hard -mthumb``
      - ``oliveARMv7A_2``
 
-ARMv7VE (ARM Cortex-A with integer division extension: Cortex-A7/Cortex-A15)
+ARMv7VE (ARMv7-A with integer division extension: Cortex-A7/Cortex-A15)
 =====================================================================================
 
 .. list-table:: ARMv7VE Compilers
