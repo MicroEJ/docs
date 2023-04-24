@@ -83,7 +83,11 @@ When launching the SDK using the ``.app`` file, you may encounter the following 
 
    "MicroEJ-SDK-xx.xx" is damaged and can't be opened. You should move it to the Trash.
 
-This is due to MacOS putting applications in quarantine when downloaded with a browser.
+or this one::
+
+   "MicroEJ-SDK-xx.xx" cannot be opened because the developer cannot be verified.
+
+This is due to macOS putting applications in quarantine when downloaded with a browser.
 Use this command to remove the SDK application from quarantine::
 
    sudo xattr -rd com.apple.quarantine sdk.app
