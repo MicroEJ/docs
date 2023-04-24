@@ -181,7 +181,7 @@ ARMv7A (ARM Cortex-A with no integer division extension: Cortex-A5/Cortex-A8/Cor
      - 10.3
      - 4.x, 5.x, 6.x, 7.x, 8.x, 9.x, 10.x
      - ``-mabi=aapcs-linux -march=armv7-a -mlittle-endian -mfpu=vfp -mfloat-abi=hard -mthumb``
-     - `oliveARMv7A_2 <https://repository.microej.com/modules/com/microej/architecture/ARMv7A/GNUv103_ARMv7A_HF_Thumb2_Linux/oliveARMv7A_2/>`__
+     - ``oliveARMv7A_2``
 
 ARMv7VE (ARM Cortex-A with integer division extension: Cortex-A7/Cortex-A15)
 =====================================================================================
@@ -199,7 +199,7 @@ ARMv7VE (ARM Cortex-A with integer division extension: Cortex-A7/Cortex-A15)
      - 10.3
      - 4.x, 5.x, 6.x, 7.x, 8.x, 9.x, 10.x
      - ``-mabi=aapcs-linux -march=armv7ve -mlittle-endian -mfpu=vfp -mfloat-abi=hard -mthumb``
-     - `oliveARMv7VE_1 <https://repository.microej.com/modules/com/microej/architecture/ARMv7VE/GNUv103_ARMv7VE_HF_Thumb2_Linux/oliveARMv7VE_1/>`__
+     - ``oliveARMv7VE_1``
 
 ESP32
 =====
