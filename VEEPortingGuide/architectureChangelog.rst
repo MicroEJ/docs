@@ -79,7 +79,7 @@ Simulator
 
 - Added missing default values for the properties ``s3.slow``, ``console.logs.period``, and ``s3.hil.timeout`` when launching the Simulator from the command line.
 - Fixed "Internal limits" error in HIL engine when too many array arguments are used at the same time by one or several native methods.
-- Fixed slow reading with an array of bytes of the input stream returned by Class.getResourceAsStream
+- Fixed slow reading with an array of bytes of the input stream returned by `Class.getResourceAsStream(String)`_
 
 SOAR
 ~~~~
@@ -127,6 +127,9 @@ Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
 - Fixed uninitialized pointer access in the :ref:`External Resources Loader<section_externalresourceloader>`, which can cause a system crash when reading data from a resource.
+
+.. _Class.getResourceAsStream(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
+
 
 .. _changelog-7.19.0:
 
