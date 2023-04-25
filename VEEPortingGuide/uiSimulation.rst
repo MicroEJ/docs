@@ -91,10 +91,20 @@ As described :ref:`here<section_ui_low_level>`, the Front Panel uses an equivale
 This set of classes and interfaces is available in the module `com.microej.pack.ui#ui-pack`_.
 It offers the same capacity to override some built-in drawing algorithms (internal Graphics Engine drawing algorithms), to add some custom drawing algorithms, to manipulate the MicroUI concepts (GraphicsContext, Image, etc.) in the Front Panel project, etc.
 
-* The interface ``ej.microui.display.LLUIDisplay`` represents the MicroUI Graphics Engine (MicroUI framework). It provides some methods to map MicroUI byte arrays in MicroUI Graphics Context objects, manipulate MicroUI colors, etc. An instance of this framework is available via the field ``Instance``. 
-* The interface ``ej.microui.display.LLUIDisplayImpl`` all methods required by MicroUI implementation to be compatible with the MicroUI Display class implementation. See :ref:`section_ui_simulation_display`.
-* The class ``ej.microui.display.LLUIPainter`` implements all MicroUI drawing natives. It defines some interfaces and classes to manipulate the MicroUI concepts (GraphicsContext, Image, etc.) in the Front Panel project. Like the embedded side, this class manages the synchronization with the Graphics Engine and delegates the drawing to the interface ``ej.microui.display.UIDrawing``. 
-* Like the embedded side, the default implementation of the interface ``ej.microui.display.UIDrawing``: ``ej.microui.display.UIDrawing.UIDrawingDefault`` calls the internal Graphics Engine algorithms (software algorithms). Each algorithm can be overridden independently. 
+* The interface ``ej.microui.display.LLUIDisplay`` represents the MicroUI Graphics Engine (MicroUI framework).
+  It provides some methods to map MicroUI byte arrays in MicroUI Graphics Context objects, manipulate MicroUI colors, clip, etc.
+  An instance of this framework is available via the field ``Instance``. 
+* The interface ``ej.microui.display.LLUIDisplayImpl`` all methods required by MicroUI implementation to be compatible with the MicroUI Display class implementation.
+  See :ref:`section_ui_simulation_display`.
+* The class ``ej.microui.display.LLUIPainter`` implements all MicroUI drawing natives.
+  It defines some interfaces and classes to manipulate the MicroUI concepts (GraphicsContext, Image, etc.) in the Front Panel project.
+  Like the embedded side, this class manages the synchronization with the Graphics Engine and delegates the drawing to the interface ``ej.microui.display.UIDrawing``. 
+* The interface ``ej.microui.display.UIDrawing`` defines all the drawing methods available in MicroUI.
+  The default implementation of the methods involving images calls the matching method in the ``ej.microui.display.UIImageDrawing``.
+  The default implementation of the other methods reports the error that the drawing is not done.
+* The interface ``ej.microui.display.UIImageDrawing`` defines all the methods that draw an image.
+  The default implementation of the methods reports the error that the drawing is not done.
+* The class ``ej.microui.display.DisplayDrawer`` implements ``ej.microui.display.UIDrawing`` that draws using the Graphics Engine software algorithms.
 * The classes in the package ``ej.drawing`` implement the native of the MicroUI extended library: `Drawing`_
 * The classes in the package ``ej.microui.event`` manage the input events, see :ref:`section_ui_simulation_input`.
 * The classes in the package ``ej.microui.led`` manage the LEDs.
