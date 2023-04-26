@@ -5,7 +5,7 @@ Test Suite with JUnit
 
 The SDK allows to run unit tests using the standard `JUnit`_ API during
 the build process of a Library or an Application. The
-:ref:`testsuite_engine` runs tests on a target VEE Port and outputs a
+:ref:`testsuite_engine` runs tests on a VEE Port and outputs a
 JUnit XML report.
 
 .. _JUnit: https://repository.microej.com/modules/ej/library/test/junit/
@@ -42,12 +42,12 @@ JUnit documentation to get details on usage of other annotations.
 Setup a VEE Port for Tests
 --------------------------
 
-Before running tests, a target VEE Port must be configured.
+Before running tests, a VEE Port must be configured.
 
 Execution in SDK
 ~~~~~~~~~~~~~~~~
 
-In order to execute the Test Suite in the SDK, a target VEE Port must be configured in the SDK workspace.
+In order to execute the Test Suite in the SDK, a VEE Port must be configured in the SDK workspace.
 The following steps assume that a VEE Port has been previously imported into the SDK Repository or available in the workspace:
 
 - Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms` (or :guilabel:`Platforms in workspace`).
