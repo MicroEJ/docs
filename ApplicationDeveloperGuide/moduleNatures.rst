@@ -600,7 +600,12 @@ This plugin defines the following build options:
      - ``0``
    * - microej.testsuite.timeout
      - The time in seconds before a test is considered as failed. Set it to ``0`` to disable the timeout.
-     - ``60``     
+     - ``60``  
+   * - microej.testsuite.properties.[name]
+     - Inject an :ref:`Application Option <application_options>` named ``[name]`` for all tests.
+       
+       For example, declaring the build option ``microej.testsuite.properties.core.memory.javaheap.size`` will configure the Java heap size of all tests.
+     - Not applicable
    * - microej.testsuite.properties.launch.test.trace.file
      - Set this property to ``true`` if your :ref:`VEE Port Run script <bsp_connection_run_script>` redirects execution traces.
      - Not set
@@ -634,13 +639,6 @@ This plugin defines the following build options:
    * - skip.test
      - When this property is set (any value), the tests are not executed.
      - Not set
-
-It is possible to inject any :ref:`Application Option <application_options>` for all the tests, by adding to the original option the ``microej.testsuite.properties.`` prefix:
-
-.. code-block:: xml 
-  
-   <ea:property name="microej.testsuite.properties.[application_option_name]" value="[application_option_value]"/> 
-
 
 .. [#warning_check_sdk_5_5] Option ``cc.src.folders`` is not set by default for SDK versions lower than ``5.5.0``.
 
