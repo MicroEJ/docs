@@ -602,8 +602,7 @@ This plugin defines the following build options:
      - The time in seconds before a test is considered as failed. Set it to ``0`` to disable the timeout.
      - ``60``  
    * - microej.testsuite.properties.[name]
-     - Inject an :ref:`Application Option <application_options>` named ``[name]`` for all tests.
-       
+     - Inject an :ref:`Application Option <application_options>` named ``[name]`` for all tests.       
        For example, declaring the build option ``microej.testsuite.properties.core.memory.javaheap.size`` will configure the Java heap size of all tests.
      - Not applicable
    * - microej.testsuite.properties.launch.test.trace.file
