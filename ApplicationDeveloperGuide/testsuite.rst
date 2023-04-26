@@ -13,9 +13,9 @@ JUnit XML report.
 Principle
 ---------
 
-`JUnit`_ testing can be enabled when using the ``microej-javalib`` (MicroEJ
-Add-On Library) or the ``microej-application`` (MicroEJ Applications)
-build type. JUnit test cases processing is automatically enabled when
+`JUnit`_ testing can be enabled on any :ref:`Module Nature <module_natures>`
+that supports the :ref:`Test Suite plugin <module_natures.plugins.testsuite>`. 
+JUnit test cases processing is automatically enabled when
 the following dependency is declared in the ``module.ivy`` file of the
 project.
 
