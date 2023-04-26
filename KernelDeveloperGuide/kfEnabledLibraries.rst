@@ -136,31 +136,48 @@ Among we can cite:
 
 Please contact :ref:`our support team <get_support>` for more details on usage.
 
-Writing a Security Manager
---------------------------
+Implementing a Security Manager Check
+-------------------------------------
 
-A Multi-Sandbox enabled Foundation Library must protect its access to native resources.
-The following code snippet describes the typical that must be API entries.
+A Multi-Sandbox enabled Foundation Library should protect Feature accesses to native resources.
+This is done by requesting a check to the current `SecurityManager`_ defined by the Kernel.
 
+The following code is the typical code that must be written at the beginning of API methods.
 
 .. code-block:: java
 
    void myAPIThatOpensAccessToANativeResource(){
 
       if (Constants.getBoolean("com.microej.library.edc.securitymanager.enabled")) {
-         // Here, the Security Manager support is enabled
+         // Here, the Security Manager support is enabled. 
+
          SecurityManager securityManager = System.getSecurityManager();
          if (securityManager != null) {
             // Here, the Kernel has registered a Security Manager
 
-            // Create a Permission with relevant parameters for the security manager to render the Permission
+            // Create a Permission with relevant parameters for the Security Manager to render the permission
             MyResourcePermission = new MyResourcePermission();
 
-            //
+            // Request the permission check. 
+            // If the Kernel rejects the permission it will throw a SecurityException
             securityManager.checkPermission(p);
          }
       }
+
+      // Implementation code
+      // ...
+
    }
+
+.. note::
+
+   The code is wrapped by a static check of the :ref:`option_enable_security_manager`.
+   By default, this option is disabled, so the code is automatically removed by the SOAR.
+   This allows to use your library in a Mono-Sandbox environment where ROM footprint matters.
+   This option shall be enabled by your Kernel to enable the Security Manager check.
+
+.. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
+
 
 Known Foundation Libraries Behavior
 -----------------------------------
