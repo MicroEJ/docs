@@ -10,6 +10,10 @@ JUnit XML report.
 
 .. _JUnit: https://repository.microej.com/modules/ej/library/test/junit/
 
+The following sections will guide you to setup a JUnit Test Suite.
+By default, the Test Suite will be executed on Simulator. 
+Then you can configure it to execute on your Device (see :ref:`testsuite_on_device` section).
+
 Principle
 ---------
 
@@ -132,13 +136,14 @@ Once a test suite is completed, the following test suite reports are generated:
 If executed on device, the Firmware binary produced for each test
 is available in module project location ``target~/test/xml/<TIMESTAMP>/bin/<FULLY-QUALIFIED-CLASSNAME>/application.out``.
 
-Configure the Execution on the Device
--------------------------------------
+.. _testsuite_on_device:
 
-By default, the Test Suite is configured to execute tests on the Simulator using Mocks declared by the target VEE Port.
-You can switch the default configuration to execute tests on the device. 
+Configure the Execution on your Device
+--------------------------------------
 
-For that, your VEE Port must implement the :ref:`BSP Connection <bsp_connection>`. 
+By default, the Test Suite is configured to execute tests on the Simulator using Mocks declared by the VEE Port.
+You can switch the default configuration to execute tests on your Device. For that, your VEE Port must implement the :ref:`BSP Connection <bsp_connection>`. 
+
 Also, a device must be connected to your workstation both for programming the Executable and getting output traces. Consult your VEE Port specific documentation for setup.
 
 Here is a summary of the options to add (see :ref:`Testsuite Options <testsuite_options>` and :ref:`BSP Connection Options <bsp_connection>` for more details).
