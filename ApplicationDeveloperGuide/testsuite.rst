@@ -63,38 +63,6 @@ Execution during module build
 In order to execute the Test Suite during the build of the module, 
 a target platform must be configured in the module project as described in the section :ref:`platform_selection`.
 
-Configure the Execution on the Device
--------------------------------------
-
-By default, the Test Suite is configured to execute tests on the Simulator using Mocks declared by the target VEE Port.
-You can switch the default configuration to execute tests on the device. 
-
-For that, your VEE Port must implement the :ref:`BSP Connection <bsp_connection>`. 
-Also, a device must be connected to your workstation both for programming the Executable and getting output traces. Consult your VEE Port specific documentation for setup.
-
-Here is a summary of the options to add (see :ref:`Testsuite Options <testsuite_options>` and :ref:`BSP Connection Options <bsp_connection>` for more details).
-
-.. code-block:: xml
-   
-   <!-- Execute tests on Device -->
-   <ea:property name="target.vm.name" value="MICROJVM"/>
-   
-   <!-- Enable Executable built using the SDK -->
-   <ea:property name="microej.testsuite.properties.deploy.bsp.microejscript" value="true"/>
-   <ea:property name="microej.testsuite.properties.microejtool.deploy.name" value="deployToolBSPRun"/>
-   
-   <!-- Tell the testsuite engine that your VEE Port Run script redirects execution traces -->
-   <ea:property name="microej.testsuite.properties.launch.test.trace.file" value="true"/>
-   <!-- Configure TCP/IP address and port if your VEE Port Run script does not redirect execution traces -->
-   <ea:property name="microej.testsuite.properties.testsuite.trace.ip" value="127.0.0.1"/>
-   <ea:property name="microej.testsuite.properties.testsuite.trace.port" value="5555"/>
-
-
-.. warning::
-
-   If your VEE Port Run script does not redirect execution traces, the :ref:`tool_serial_to_socket` tool must have been started before running the Test Suite.
-
-
 Setup a Project with a JUnit Test Case
 --------------------------------------
 
@@ -164,6 +132,36 @@ Once a test suite is completed, the following test suite reports are generated:
 If executed on device, the Firmware binary produced for each test
 is available in module project location ``target~/test/xml/<TIMESTAMP>/bin/<FULLY-QUALIFIED-CLASSNAME>/application.out``.
 
+Configure the Execution on the Device
+-------------------------------------
+
+By default, the Test Suite is configured to execute tests on the Simulator using Mocks declared by the target VEE Port.
+You can switch the default configuration to execute tests on the device. 
+
+For that, your VEE Port must implement the :ref:`BSP Connection <bsp_connection>`. 
+Also, a device must be connected to your workstation both for programming the Executable and getting output traces. Consult your VEE Port specific documentation for setup.
+
+Here is a summary of the options to add (see :ref:`Testsuite Options <testsuite_options>` and :ref:`BSP Connection Options <bsp_connection>` for more details).
+
+.. code-block:: xml
+   
+   <!-- Execute tests on Device -->
+   <ea:property name="target.vm.name" value="MICROJVM"/>
+   
+   <!-- Enable Executable built using the SDK -->
+   <ea:property name="microej.testsuite.properties.deploy.bsp.microejscript" value="true"/>
+   <ea:property name="microej.testsuite.properties.microejtool.deploy.name" value="deployToolBSPRun"/>
+   
+   <!-- Tell the testsuite engine that your VEE Port Run script redirects execution traces -->
+   <ea:property name="microej.testsuite.properties.launch.test.trace.file" value="true"/>
+   <!-- Configure TCP/IP address and port if your VEE Port Run script does not redirect execution traces -->
+   <ea:property name="microej.testsuite.properties.testsuite.trace.ip" value="127.0.0.1"/>
+   <ea:property name="microej.testsuite.properties.testsuite.trace.port" value="5555"/>
+
+
+.. warning::
+
+   If your VEE Port Run script does not redirect execution traces, the :ref:`tool_serial_to_socket` tool must have been started before running the Test Suite.
 
 Advanced Configurations
 -----------------------
