@@ -3,8 +3,8 @@
 Test Suite with JUnit
 =====================
 
-MicroEJ allows to run unit tests using the standard `JUnit`_ API during
-the build process of a MicroEJ library or a MicroEJ Application. The
+The SDK allows to run unit tests using the standard `JUnit`_ API during
+the build process of a Library or an Application. The
 :ref:`testsuite_engine` runs tests on a target VEE Port and outputs a
 JUnit XML report.
 
@@ -31,7 +31,7 @@ files are automatically managed and must not be edited manually.
 JUnit Compliance
 ----------------
 
-MicroEJ is compliant with a subset of JUnit version 4. MicroEJ JUnit
+MicroEJ JUnit is compliant with a subset of JUnit version 4. MicroEJ JUnit
 processor supports the following annotations: ``@After``,
 ``@AfterClass``, ``@Before``, ``@BeforeClass``, ``@Ignore``, ``@Test``.
 
@@ -47,8 +47,8 @@ Before running tests, a target VEE Port must be configured.
 Execution in SDK
 ~~~~~~~~~~~~~~~~
 
-In order to execute the Test Suite in the SDK, a target VEE Port must be configured in the MicroEJ workspace.
-The following steps assume that a VEE Port has been previously imported into the MicroEJ Repository or available in the Workspace:
+In order to execute the Test Suite in the SDK, a target VEE Port must be configured in the SDK workspace.
+The following steps assume that a VEE Port has been previously imported into the SDK Repository or available in the workspace:
 
 - Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms` (or :guilabel:`Platforms in workspace`).
 - Select the desired VEE Port on which to run the tests.
@@ -67,7 +67,7 @@ Setup a Project with a JUnit Test Case
 --------------------------------------
 
 This section describes how to create a new JUnit Test Case starting from
-a new MicroEJ library project.
+a new Add-On Library project.
 
 - First create a new :ref:`module project <mmm_module_skeleton>` using the ``microej-javalib`` skeleton.
   A new project named ``mylibrary`` is created in the workspace.
@@ -97,7 +97,7 @@ with
    Assert.assertTrue(true);
 
 - Right-click again on the ``mylibrary`` project and select :guilabel:`Build Module`.
-  The test is now successfully executed on the target platform so the MicroEJ Add-On Library is fully built and published without errors.
+  The test is now successfully executed on the target platform so the Add-On Library is fully built and published without errors.
 - Double-click on the JUnit test suite report to see the test has been successfully executed.
 
 .. _testsuite_report:
@@ -111,23 +111,23 @@ Once a test suite is completed, the following test suite reports are generated:
   This report contains a summary and the execution trace of every executed test.
 
   .. figure:: images/testsuiteReportHTMLExample.png
-     :alt: Example of MicroEJ Test Suite HTML Report
+     :alt: Example of Test Suite HTML Report
      
-     Example of MicroEJ Test Suite HTML Report
+     Example of Test Suite HTML Report
 
 - JUnit XML report in the module project location ``target~/test/xml/TEST-test-report.xml``.
 
   .. figure:: images/testsuiteReportXMLExample.png
-     :alt: Example of MicroEJ Test Suite XML Report
+     :alt: Example of Test Suite XML Report
      
-     Example of MicroEJ Test Suite XML Report
+     Example of Test Suite XML Report
   
   XML report file can also be open in the JUnit View. Right-click on the file > :guilabel:`Open With` >  :guilabel:`JUnit View`:
 
   .. figure:: images/testsuiteReportXMLExampleJunitView.png
-     :alt: Example of MicroEJ Test Suite XML Report in JUnit View
+     :alt: Example of Test Suite XML Report in JUnit View
      
-     Example of MicroEJ Test Suite XML Report in JUnit View
+     Example of Test Suite XML Report in JUnit View
 
 If executed on device, the Firmware binary produced for each test
 is available in module project location ``target~/test/xml/<TIMESTAMP>/bin/<FULLY-QUALIFIED-CLASSNAME>/application.out``.
