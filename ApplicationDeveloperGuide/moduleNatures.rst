@@ -593,12 +593,30 @@ This plugin defines the following build options:
    * - microej.testsuite.cc.excludes.classes
      - Pattern of classes excluded from the code coverage analysis.
      - Not set
+   * - microej.testsuite.retry.count
+     - A test execution may not be able to produce the success trace for an external reason,
+       for example an unreliable harness script that may lose some trace characters or crop the end of the trace.
+       For all these unlikely reasons, it is possible to configure the number of retries before a test is considered to have failed.
+     - ``0``
    * - microej.testsuite.timeout
      - The time in seconds before a test is considered as failed. Set it to ``0`` to disable the timeout.
-     - ``60``
+     - ``60``  
+   * - microej.testsuite.properties.[name]
+     - Inject an :ref:`Application Option <application_options>` named ``[name]`` for all tests.       
+       For example, declaring the build option ``microej.testsuite.properties.core.memory.javaheap.size`` will configure the Java heap size of all tests.
+     - Not applicable
+   * - microej.testsuite.properties.launch.test.trace.file
+     - Set this property to ``true`` if your :ref:`VEE Port Run script <bsp_connection_run_script>` redirects execution traces.
+     - Not set
    * - microej.testsuite.properties.s3.cc.activated
      - When this property is set to true, the code coverage analysis is enabled.
      - ``true``
+   * - microej.testsuite.properties.testsuite.trace.ip
+     - The TCP/IP address to connect for retrieving test execution traces. This property is required if your :ref:`VEE Port Run script <bsp_connection_run_script>` does not redirect execution traces.
+     - Not set
+   * - microej.testsuite.properties.testsuite.trace.port
+     - The TCP/IP port to connect for retrieving test execution traces. This property is required if your :ref:`VEE Port Run script <bsp_connection_run_script>` does not redirect execution traces.
+     - Not set
    * - cc.src.folders
      - Path to the folders containing the Java sources used for code coverage analysis.
      - Java source folder (``src/main/java``) and Add-On Processor generated source folders (``src-adpgenerated/*``) [#warning_check_sdk_5_5]_
@@ -611,6 +629,9 @@ This plugin defines the following build options:
    * - test.run.failonerror
      - When this property is set to true, the build fails if an error is raised.
      - ``true``
+   * - target.vm.name
+     - The execution target (``S3`` to execute on Simulator, ``MICROJVM`` to execute on the Device).
+     - ``S3``
    * - test.run.includes.pattern
      - Pattern of classes included in the test suite execution.
      - ``**/*`` (all tests)
