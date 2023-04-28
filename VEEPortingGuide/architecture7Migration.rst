@@ -142,6 +142,76 @@ Your code logic for managing allocated blocks does not need to be changed.
    }
 
 
+Migrate Trace C Library Usage
+-----------------------------
+
+In Architecture ``8.0.0``, the ``Trace`` C library's version has been updated from ``1.0.0`` to ``2.0.0``.
+This new version introduces the following backward incompatible changes:
+
+- C header file ``trace.h`` has been renamed into ``LLTRACE.h``.
+- The functions declared in this header have been renamed from ``TRACE_xxx`` to ``LLTRACE_xxx``.
+
+If you have included ``trace.h`` in a C file, the compilation will fail with an error message similar 
+to one of the following messages:
+
+- ``fatal error: trace.h: No such file or directory``
+- ``Fatal Error[Pe1696]: cannot open source file "trace.h"``
+
+To fix this issue, you can either migrate to version ``2.0.0`` of the ``Trace`` library or 
+provide a backward compatibility layer.
+
+To migrate to version ``2.0.0``, you need to make the following changes:
+
+- Replace the directives ``#include "trace.h"`` with ``#include "LLTRACE.h"``.
+- Replace any references to the ``TRACE_xxx`` functions (e.g., ``TRACE_record_event_void``)
+  with references to the corresponding ``LLTRACE_xxx`` function (e.g., ``LLTRACE_record_event_void``).
+
+
+If you decide not to modify existing code, you can create and add to your project a ``trace.h`` file with 
+the following content:
+
+.. code-block:: c
+
+	#ifndef TRACE_H
+	#define TRACE_H
+
+	/**
+	 * Trace library API backward compatibility layer.
+	 * Allows to use Trace API 1.0.0 (Architecture 7.x) in a VEE Port 
+	 * that includes Trace API 2.0.0 (Architecture 8.x).
+	 */
+
+	#include "LLTRACE.h"
+
+	#ifdef __cplusplus
+		extern "C" {
+	#endif
+
+	#define TRACE_start LLTRACE_start
+	#define TRACE_start LLTRACE_start
+	#define TRACE_stop LLTRACE_stop
+	#define TRACE_is_started LLTRACE_is_started
+	#define TRACE_declare_event_group LLTRACE_declare_event_group
+	#define TRACE_record_event_void LLTRACE_record_event_void
+	#define TRACE_record_event_u32 LLTRACE_record_event_u32
+	#define TRACE_record_event_u32x2 LLTRACE_record_event_u32x2
+	#define TRACE_record_event_u32x3 LLTRACE_record_event_u32x3
+	#define TRACE_record_event_u32x4 LLTRACE_record_event_u32x4
+	#define TRACE_record_event_u32x5 LLTRACE_record_event_u32x5
+	#define TRACE_record_event_u32x6 LLTRACE_record_event_u32x6
+	#define TRACE_record_event_u32x7 LLTRACE_record_event_u32x7
+	#define TRACE_record_event_u32x8 LLTRACE_record_event_u32x8
+	#define TRACE_record_event_u32x9 LLTRACE_record_event_u32x9
+	#define TRACE_record_event_u32x10 LLTRACE_record_event_u32x10
+	#define TRACE_record_event_end LLTRACE_record_event_end
+	#define TRACE_record_event_end_u32 LLTRACE_record_event_end_u32
+
+	#ifdef __cplusplus
+		}
+	#endif
+
+	#endif //TRACE_H
+
 
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
