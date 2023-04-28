@@ -66,6 +66,12 @@ Core Engine
 - Removed check when passing a non-immortal array in SNI if VEE Port option ``core.sni.nonimmortal.access`` was set to ``false``.
 - Removed ``LLBSP_isInReadOnlyMemory`` in Core Engine Abstraction Layer (``LLBSP.h`` file).
 - Fixed potential crash when Core Engine is restarted after a call to `System.exit(int)`_.
+- Updated ``Trace`` C library from version ``1.0.0`` to ``2.0.0``:
+
+  - Renamed header file ``trace.h`` into ``LLTRACE.h`` to avoid filename conflicts.
+  
+  - Renamed C functions ``TRACE_xxx`` into ``LLTRACE_xxx``.
+
 
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
