@@ -283,8 +283,8 @@ This task is used by the following module natures:
 
 **Configuration**:
 
-This task is not bound by default on any lifecyce task, 
-which means that it should be called explicitly if it muust be executed.
+This task is not bound by default on any lifecycle task, 
+which means that it should be called explicitly if it must be executed.
 
 This task provides the following properties that can be defined in the ``microej`` extension:
 
