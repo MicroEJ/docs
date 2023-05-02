@@ -29,7 +29,7 @@ Notice that some options may not be available, in the following cases:
 Defining an Option with SDK 6
 =============================
 
-With the SDK 6, the Applications options can be defined in a properties file located in the ``src/main/resources/build`` folder of the project.
+With the SDK 6, the Applications options can be defined in a properties file located in the ``configuration`` folder of the project.
 Usually, the options are defined in a file named ``common.properties``, 
 but all properties files located in this folder are loaded, no matter what their name is.
 
@@ -38,9 +38,9 @@ for example::
    
    soar.generate.classnames=false
 
-If multiple VEE Ports are defined, the options defined in the ``src/main/resources/build`` folder are common to all VEE Ports.
+If multiple VEE Ports are defined, the options defined in the ``configuration`` folder are common to all VEE Ports.
 Besides these options, it is possible to define options specific to a VEE Port in a properties file located 
-in the ``src/main/resources/build/veePortName`` folder of the project, 
+in the ``configuration/veePortName`` folder of the project,
 where ``veePortName`` is the :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port.
 
 
