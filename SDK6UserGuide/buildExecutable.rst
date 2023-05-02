@@ -46,7 +46,7 @@ Build an Executable with multiple VEE Ports
 
 If multiple VEE Ports are defined, the Executable file is built for each VEE Port sequentially.
 It is possible to define properties specific to a VEE Port by adding the properties files in 
-the ``src/main/resources/build/veePortName`` folder, 
+the ``configuration/veePortName`` folder,
 where ``veePortName`` is the :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port.
 
 If you want to build the Executable for only one VEE Port, you must select it by setting the ``veePort`` property 
