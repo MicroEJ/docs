@@ -104,14 +104,13 @@ Run or Debug an Application with multiple VEE Ports
 ---------------------------------------------------
 
 Only one VEE Port can be used to run or debug an Application on the Simulator.
-If multiple VEE Ports are defined, the task fails with a message listing the command lines to use for each VEE Port::
+If multiple VEE Ports are defined, the task fails with a message listing all the VEE Ports that can be used::
 
-   > More than one VEE Ports have been defined. 
-     A VEE Port must be selected by defining the veePort property. Use one of the following commands to run the Application on the Simulator:
-  	    ./gradlew runOnSimulator -PveePort="veePort1"
-  	    ./gradlew runOnSimulator -PveePort="veePort2"
+   More than one VEE Port have been defined.
+   A VEE Port must be selected using the 'veePort' property ('-PveePort="veePortName"'). The following VEE Ports are available:
+   - "veePort1"
+   - "veePort2"
  
-
 To run or debug an Application, you must select the VEE Port to use by setting the ``veePort`` property to the 
 :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port when calling 
 the ``runOnSimulator`` or ``debugOnSimulator`` task::
