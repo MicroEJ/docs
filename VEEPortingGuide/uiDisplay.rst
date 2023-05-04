@@ -11,8 +11,8 @@ Principle
 The Display module contains the C part of the MicroUI implementation which manages graphical displays. This module is composed of three elements:
 
 - the C part of MicroUI Display API (a built-in C archive) called Graphics Engine,
-- an implementation of a Low Level APIs for the displays (LLUI_DISPLAY) that the BSP must provide (see :ref:`LLDISPLAY-API-SECTION`),
-- an implementation of a Low Level APIs for MicroUI drawings.
+- an implementation of Abstraction Layer APIs for the displays (LLUI_DISPLAY) that the BSP must provide (see :ref:`LLDISPLAY-API-SECTION`),
+- an implementation of Abstraction Layer APIs for MicroUI drawings.
 
 
 Functional Description
@@ -21,7 +21,7 @@ Functional Description
 The Display module implements the MicroUI graphics framework. This framework is constituted of several notions: the display characteristics (size, format, backlight, contrast, etc.), the drawing state machine (render, flush, wait flush completed), the images life cycle, the fonts and drawings. The main part of the Display module is provided by a built-in C archive called Graphics Engine. This library manages the drawing state machine mechanism, the images and fonts. The display characteristics and the drawings are managed by the ``LLUI_DISPLAY`` implementation.   
 
 The Graphics Engine is designed to let the BSP use an optional graphics processor unit (GPU) or an optional third-party drawing library. Each drawing can be implemented independently. If no extra framework is available, the Graphics Engine performs all drawings in software. 
-In this case, the BSP has to perform a very simple implementation (four functions) of the Graphics Engine low-level APIs.
+In this case, the BSP has to perform a very simple implementation (four functions) of the Graphics Engine Abstraction Layer.
 
 MicroUI library also gives the possibility to perform some additional drawings which are not available as API in MicroUI library. The Graphics Engine gives a set of functions to synchronize the drawings between them, to get the destination (and sometimes source) characteristics, to call internal software drawings, etc. 
 
@@ -64,7 +64,7 @@ handy guide to selecting the appropriate buffer mode according to the hardware c
 Implementation
 --------------
 
-The Graphics Engine does not depend on the type of buffer mode. The implementation of `Display.flush()`_  calls the Low Level API ``LLUI_DISPLAY_IMPL_flush`` to let the BSP to update the display data. This function should be atomic and the implementation has to return the new graphics buffer address (back buffer address). In
+The Graphics Engine does not depend on the type of buffer mode. The implementation of `Display.flush()`_  calls the Abstraction Layer API ``LLUI_DISPLAY_IMPL_flush`` to let the BSP to update the display data. This function should be atomic and the implementation has to return the new graphics buffer address (back buffer address). In
 ``direct`` and ``copy`` modes, this address never changes and the implementation has always to return the back buffer address. In ``switch`` mode, the implementation has to return the old display frame buffer address.
 
 The next sections describe the work to do for each mode.
@@ -409,7 +409,7 @@ No specific support is required as soon as a MicroEJ Platform is using a standar
 * convert at runtime MicroUI 32-bit colors in display pixel format,
 * simulate at runtime the display pixel format.
 
-.. note:: The custom implementations of the image generator, low-level APIs, and Front Panel APIs are ignored by the Display module when a standard pixel representation is selected.
+.. note:: The custom implementations of the image generator, some Abstraction Layer APIs, and Front Panel APIs are ignored by the Display module when a standard pixel representation is selected.
 
 According to the chosen format, some color data can be lost or cropped.
 
@@ -652,18 +652,18 @@ and blue[5]):
 
 .. _section_display_llapi:
 
-Low Level API
-=============
+Abstraction Layer API
+=====================
 
 Overview
 --------
 
 .. figure:: images/ui_llapi_display.*
-   :alt: MicroUI Display Low Level
+   :alt: MicroUI Display Abstraction Layer
    :width: 70%
    :align: center
 
-   Display Low Level API
+   Display Abstraction Layer API
 
 * MicroUI library calls the BSP functions through the Graphics Engine and header file ``LLUI_DISPLAY_impl.h``. 
 * Implementation of ``LLUI_DISPLAY_impl.h`` can call Graphics Engine functions through ``LLUI_DISPLAY.h``.
@@ -678,7 +678,7 @@ Overview
 Display Size
 ------------
 
-The Low-Level APIs distinguish between the display *virtual* size and the display *physical* size (in pixels).
+The Abstraction Layer distinguishes between the display *virtual* size and the display *physical* size (in pixels).
 
 * The display *virtual* size is the size of the area where the drawings are visible. Virtual memory size is: ``lcd_width * lcd_height * bpp / 8``.
 * The display *physical* size is the required memory size where the *virtual* area is located. On some devices, the memory width (in pixels) is higher than the virtual width. In this way, the graphics buffer memory size is: ``memory_width * memory_height * bpp / 8``.
@@ -695,10 +695,10 @@ The implementation must create its semaphores in addition to these dedicated Gra
 
 The binary semaphores must be configured in a state such that the semaphore must first be *given* before it can be *taken* (this initialization must be performed in ``LLUI_DISPLAY_IMPL_initialize`` function).
 
-Required Low Level API
-----------------------
+Required Abstraction Layer API
+------------------------------
 
-Some four Low Level APIs are required to connect the Graphics Engine on the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``. 
+Some four Abstraction Layer APIs are required to connect the Graphics Engine on the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``. 
 
 * ``LLUI_DISPLAY_IMPL_initialize``: The initialization function is called when the application is calling `MicroUI.start()`_. Before this call, the display is useless and don't need to be initialized. This function consists in initializing the LCD driver and in filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on the two binary semaphores, the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels (``lcd_width`` and ``lcd_height``) and optionally the display *physical* size in pixels (``memory_width`` and ``memory_height``). 
 
@@ -708,15 +708,15 @@ Some four Low Level APIs are required to connect the Graphics Engine on the disp
 
 .. _MicroUI.start(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start--
 
-Optional Low Level API
-----------------------
+Optional Abstraction Layer API
+------------------------------
 
-Several optional Low Level API are available in ``LLUI_DISPLAY_impl.h``. They are already implemented as *weak* functions in the Graphics Engine and return no error. These optional features concern the display backlight and constrast, display characteristics (is colored display, double buffer), colors conversions (see :ref:`display_pixel_structure` and :ref:`display_lut`), etc. Refer to each function comment to have more information about the default behavior.
+Several optional Abstraction Layer API are available in ``LLUI_DISPLAY_impl.h``. They are already implemented as *weak* functions in the Graphics Engine and return no error. These optional features concern the display backlight and constrast, display characteristics (is colored display, double buffer), colors conversions (see :ref:`display_pixel_structure` and :ref:`display_lut`), etc. Refer to each function comment to have more information about the default behavior.
 
 .. _section_display_llapi_painter:
 
-Painter Low Level API
----------------------
+Painter Abstraction Layer API
+-----------------------------
 
 All MicroUI drawings (available in `Painter`_ class) are calling a native function. The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h``. The implementation must take care about a lot of constraints: synchronization between drawings, Graphics Engine notification, MicroUI `GraphicsContext`_ clip and colors, flush dirty area, etc. The principle of implementing a MicroUI drawing function is described in the chapter :ref:`display_drawing_native`. 
 
@@ -1506,7 +1506,7 @@ Alpha Blending
 
 MicroUI and the Graphics Engine use blending when drawing some texts or anti-aliased shapes. For each pixel to draw, the display stack blends the current application foreground color with the targeted pixel current color or with the current application background color (when enabled). This blending *creates* some  intermediate colors which are managed by the display driver. 
 
-Most of time the intermediate colors do not match with the palette. The default color is so returned and the rendering becomes wrong. To prevent this use case, the Graphics Engine offers a specific Low Level API ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors(void* foreground, void* background)``. 
+Most of time the intermediate colors do not match with the palette. The default color is so returned and the rendering becomes wrong. To prevent this use case, the Graphics Engine offers a specific Abstraction Layer API ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors(void* foreground, void* background)``. 
 
 This API is only used when a blending is required and when the background color is enabled. The Graphics Engine calls the API just before the blending and gives as parameter the pointers on the both ARGB colors. The display driver should replace the ARGB colors by the CLUT indices. Then the Graphics Engine will only use between both indices. 
 
@@ -1586,7 +1586,7 @@ The linker file holds five tables, one for each use case, respectively ``IMAGE_U
 Library ej.api.Drawing
 ======================
 
-This Foundation Library provides additional drawing APIs. This library is fully integrated in Display module. It requires an implementation of its Low Level API: ``LLDW_PAINTER_impl.h``. These functions are implemented in the Abstraction Layer implementation module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_. Like MicroUI painter's natives, the functions are redirected to ``dw_drawing.h``. A default implementation of these functions is available in Software Algorithms module (in weak). This allows the BSP to override one or several APIs.
+This Foundation Library provides additional drawing APIs. This library is fully integrated in Display module. It requires an implementation of its Abstraction Layer API: ``LLDW_PAINTER_impl.h``. These functions are implemented in the Abstraction Layer implementation module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_. Like MicroUI painter's natives, the functions are redirected to ``dw_drawing.h``. A default implementation of these functions is available in Software Algorithms module (in weak). This allows the BSP to override one or several APIs.
 
 .. _section_display_implementation:
 

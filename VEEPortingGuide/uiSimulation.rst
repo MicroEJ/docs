@@ -48,7 +48,7 @@ It depends at least on the Front Panel framework. This framework contains the Fr
       <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.0"/>
    </dependencies>
 
-To be compatible with Display module's Graphics Engine, the project must depend on an extension of Front Panel framework. This extension provides some interfaces and classes the Front Panel is using to target simulated display and input devices. The extension does not provide any widgets. It is the equivalent of the embedded Low Level API. It fetches by transitivity the Front Panel framework, so the Front Panel framework dependency does not need to be specified explicitly: 
+To be compatible with Display module's Graphics Engine, the project must depend on an extension of Front Panel framework. This extension provides some interfaces and classes the Front Panel is using to target simulated display and input devices. The extension does not provide any widgets. It is the equivalent of the embedded Abstraction Layer APIs. It fetches by transitivity the Front Panel framework, so the Front Panel framework dependency does not need to be specified explicitly: 
 
 ::
 
@@ -84,7 +84,7 @@ MicroUI Implementation
 As described :ref:`here<section_ui_low_level>`, the Front Panel uses an equivalent of embedded side's header files that implement MicroUI native methods.
 
 .. figure:: images/ui_llapi_sim.*
-   :alt: MicroUI Low Level
+   :alt: MicroUI Abstraction Layer
    :width: 100.0%
    :align: center
 

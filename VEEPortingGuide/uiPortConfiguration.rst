@@ -92,7 +92,7 @@ This module adds an internal image decoder: it allows the application to embed a
 Both decoders (PNG and BMP Monochrom) are optional and can be selected (or not) independently.
 Refer to the chapter :ref:`image_runtime_decoder` to have more information.
 
-This module is optional: when no image decoder is embedded, the Graphics Engine relies on the UI Port (thanks to Low-level API) to decode the images.
+This module is optional: when no image decoder is embedded, the Graphics Engine relies on the UI Port (thanks to Abstraction Layer API) to decode the images.
 
 Module Image Generator
 ======================

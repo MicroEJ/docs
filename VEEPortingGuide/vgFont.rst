@@ -10,8 +10,8 @@ Principle
 The Font module contains the C part of the MicroVG implementation, which manages vectorial fonts.
 This module is composed of two elements: 
 
-* an implementation of Low-Level APIs to manipulate font files,
-* an implementation of Low-Level APIs for MicroVG drawings.
+* an implementation of Abstraction Layer APIs to manipulate font files,
+* an implementation of Abstraction Layer APIs for MicroVG drawings.
 
 .. _section_vg_font_implementation:
 
@@ -19,7 +19,7 @@ Functional Description
 ======================
 
 The Font module implements the MicroVG `VectorFont`_ framework. 
-It provides Low-Level APIs that consist of opening and decoding a font file and getting the font's characteristics. 
+It provides Abstraction Layer APIs that consist of opening and decoding a font file and getting the font's characteristics. 
 
 A font file:
 
@@ -36,20 +36,20 @@ A font is used to draw a string with a color or with a :ref:`linear gradient<sec
 
 .. _section_vg_font_llapi:
 
-Low-Level API
-=============
+Abstraction Layer API
+=====================
 
-There are two separate Low-Level API header files (see :ref:`LLVG-FONT-API-SECTION`):
+There are two separate Abstraction Layer API header files (see :ref:`LLVG-FONT-API-SECTION`):
 
-* ``LLVG_FONT_impl.h`` specifies the Low-Level APIs used to open and retrieve the font's characteristics.
-* ``LLVG_FONT_PAINTER_impl.h`` lists the Low-Level APIs called by  `VectorGraphicsPainter`_ to draw a string with the font.
+* ``LLVG_FONT_impl.h`` specifies the Abstraction Layer APIs used to open and retrieve the font's characteristics.
+* ``LLVG_FONT_PAINTER_impl.h`` lists the Abstraction Layer APIs called by  `VectorGraphicsPainter`_ to draw a string with the font.
 
 .. figure:: images/vg_llapi_font.*
-   :alt: MicroVG Font Low Level
+   :alt: MicroVG Font Abstraction Layer
    :width: 400px
    :align: center
 
-   Font Low-Level API
+   Font Abstraction Layer API
 
 * MicroVG library calls the BSP functions through the header files ``LLVG_FONT_impl.h`` and ``LLVG_FONT_PAINTER_impl.h``.
 * The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_FONT_impl.h`` over Freetype.

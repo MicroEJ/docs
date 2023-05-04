@@ -10,8 +10,8 @@ Principle
 The Path module contains the C part of the MicroVG implementation, which manages vector paths.
 This module is composed of two elements: 
 
-* an implementation of Low-Level APIs to create path elements compatible with the hardware,
-* an implementation of Low-Level APIs for MicroVG drawings.
+* an implementation of Abstraction Layer APIs to create path elements compatible with the hardware,
+* an implementation of Abstraction Layer APIs for MicroVG drawings.
 
 .. _section_vg_path_implementation:
 
@@ -19,7 +19,7 @@ Functional Description
 ======================
 
 The Path module implements the framework of the MicroVG `Path`_. 
-It provides Low-Level APIs that create and merge some paths in a platform-specific format. 
+It provides Abstraction Layer APIs that create and merge some paths in a platform-specific format. 
 After the path creation and encoding, the path data should not change when the application draws it: the encoded format should be used by the platform-specific implementation (generally GPU).
 
 A path is a succession of commands.
@@ -46,20 +46,20 @@ A path is drawn with a color or with a :ref:`linear gradient<section_vg_gradient
 
 .. _section_vg_path_llapi:
 
-Low-Level API
-=============
+Abstraction Layer API
+=====================
 
-There are two separate Low-Level API header files (see :ref:`LLVG-PATH-API-SECTION`):
+There are two separate Abstraction Layer API header files (see :ref:`LLVG-PATH-API-SECTION`):
 
-* ``LLVG_PATH_impl.h`` specifies the Low-Level APIs used to create and encode the path.
-* ``LLVG_PATH_PAINTER_impl.h`` lists the Low-Level APIs called by  `VectorGraphicsPainter`_ to draw the path.
+* ``LLVG_PATH_impl.h`` specifies the Abstraction Layer APIs used to create and encode the path.
+* ``LLVG_PATH_PAINTER_impl.h`` lists the Abstraction Layer APIs called by  `VectorGraphicsPainter`_ to draw the path.
 
 .. figure:: images/vg_llapi_path.*
-   :alt: MicroVG Path Low Level
+   :alt: MicroVG Path Abstraction Layer
    :width: 400px
    :align: center
 
-   Path Low-Level API
+   Path Abstraction Layer API
 
 * MicroVG library calls the BSP functions through the header files ``LLVG_PATH_impl.h`` and ``LLVG_PATH_PAINTER_impl.h``.
 * The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_PATH_impl.h``: it manages the path buffer creation and filling, then redirect the command encoding to ``microvg_path.h``.

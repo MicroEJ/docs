@@ -1,16 +1,16 @@
 .. _section_ui_low_level:
 
-=============
-Low Level API
-=============
+=====================
+Abstraction Layer API
+=====================
 
 
 Principle
 =========
 
-The MicroUI implementation for MicroEJ requires a Low Level implementation. This Low Level implementation finalizes the MicroUI implementation started with the static initialization step (see :ref:`section_static_init`) for a given MicroEJ Platform.
+The MicroUI implementation for MicroEJ requires an Abstraction Layer implementation. This Abstraction Layer implementation finalizes the MicroUI implementation started with the static initialization step (see :ref:`section_static_init`) for a given MicroEJ Platform.
 
-The Low Level implementation consists of a set of headers files to implement in C to target the hardware drivers. Some functions are mandatory, others are not. Some other headers files are also available to call UI engines internal functions.
+The Abstraction Layer implementation consists of a set of headers files to implement in C to target the hardware drivers. Some functions are mandatory, others are not. Some other headers files are also available to call UI engines internal functions.
 
 For the simulator, some Front Panel interfaces and classes allow to specify the simulated platform characteristics. 
 
@@ -18,11 +18,11 @@ Embedded Platform
 =================
 
 .. figure:: images/ui_llapi_emb.*
-   :alt: MicroUI Low Level
+   :alt: MicroUI Abstraction Layer
    :width: 100.0%
    :align: center
 
-   MicroUI Embedded Low Level API
+   MicroUI Embedded Abstraction Layer API
 
 The specification of header files names is:
 
@@ -44,11 +44,11 @@ Simulator
 =========
 
 .. figure:: images/ui_llapi_sim.*
-   :alt: MicroUI Low Level
+   :alt: MicroUI Abstraction Layer
    :width: 100.0%
    :align: center
 
-   MicroUI Simulator Low Level API
+   MicroUI Simulator Abstraction Layer API
 
 In the simulator the three UI engines are grouped in a mock called Front Panel. The Front Panel comes with a set of classes and interfaces which are the equivalent of headers file (``*.h``) of Embedded Platform.
 

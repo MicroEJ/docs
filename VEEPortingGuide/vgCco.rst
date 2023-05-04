@@ -7,7 +7,7 @@ C Modules
 Principle
 =========
 
-Several C modules implement the VG Pack's Low-Level APIs.
+Several C modules implement the VG Pack's Abstraction Layer APIs.
 Some are generic, and some are platform dependent (more precisely: GPU dependent).
 The generic modules provide header files to be extended by the specific modules. 
 The generic C modules are available on the :ref:`central_repository` and the specific C modules on the :ref:`developer_repository`.

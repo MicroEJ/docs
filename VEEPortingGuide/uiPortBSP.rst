@@ -7,7 +7,7 @@ BSP Port
 Principle
 =========
 
-The BSP Port (or Embedded Port) involves implementing some Low-level API.
+The BSP Port (or Embedded Port) involves implementing some Abstraction Layer APIs (low-level APIs: LLAPI).
 There are several kinds of LLAPI:
 
 - The mandatory LLAPI to manipulate the LEDs,
@@ -18,7 +18,7 @@ There are several kinds of LLAPI:
 - The optional LLAPI to add some features as new image decoders,
 - The optional LLAPI to use a GPU.
 
-The following chapters describe each group of Low-level API, except the GPU acceleration (see the dedicated section :ref:`ui_port_gpu`).
+The following chapters describe each group of Abstraction Layer APIs, except the GPU acceleration (see the dedicated section :ref:`ui_port_gpu`).
 
 MicroUI C Module
 ================
