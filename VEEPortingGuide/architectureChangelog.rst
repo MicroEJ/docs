@@ -33,6 +33,8 @@ specific configuration:
    -  ``QNX70``: BlackBerry QNX 7.0
    -  ``Clang``: Clang
 
+
+
 .. _changelog-8.0.0:
 
 [8.0.0] - 2023-MM-DD
@@ -103,7 +105,7 @@ Tools
 
 - Removed :ref:`Test Suite Engine <testsuite_engine>`. If needed, the Test Suite Engine is available in the :ref:`Build Kit <mmm_build_kit>`.
 - Removed Immutables NLS library. Use :ref:`Binary NLS <chapter.nls>` add-on library instead. 
-   
+
 
 .. _changelog-7.20.1:
 
