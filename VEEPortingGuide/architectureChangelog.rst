@@ -95,6 +95,9 @@ Simulator
 SOAR
 ~~~~
 
+ - Added check of legacy ``.system.properties`` files in the :ref:`Application Classpath <chapter.microej.classpath>`. The build process is stopped and an error is reported.
+   These files must be migrated to :ref:`system_properties`.
+
 Tools
 ~~~~~
 
