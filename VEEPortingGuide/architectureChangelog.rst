@@ -71,6 +71,7 @@ Foundation Libraries
 - Updated ``KF`` dynamic loader to support :ref:`Feature Custom Installation <feature_custom_installation>` mode.
 - Removed Foundation Libraries API Jars and Javadoc.
 - Fixed :ref:`option_embed_utf8` defaults to ``true`` when building a Standalone Application using MMM.
+- Removed _Unknown product - Unknown version_ comment in auto-generated Low Level API header files.
 
 Integration
 ~~~~~~~~~~~
