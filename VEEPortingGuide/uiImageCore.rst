@@ -7,12 +7,12 @@ Image Renderer
 Principle
 =========
 
-The Image Renderer is an on-board engine that reads and draws the image encoded in MicroEJ format (see :ref:`section_image_raw`). It calls Low LevelLow Level APIs to draw and transform the images (rotation, scaling, deformation, etc.). It also includes software algorithms to perform the rendering.
+The Image Renderer is an on-board engine that reads and draws the image encoded in MicroEJ format (see :ref:`section_image_raw`). It calls Abstraction Layer APIs to draw and transform the images (rotation, scaling, deformation, etc.). It also includes software algorithms to perform the rendering.
 
 Functional Description
 ======================
 
-The engine redirects all MicroUI images drawings to a set of Low Level API. All Low Level API are implemented by weak functions which call software algorithms. The BSP has the possibility to override this default behavior for each Low Level API independently. Furthermore, the BSP can override a Low Level API for a specific MicroEJ format (for instance ``ARGB8888``) and call the software algorithms for all other formats.
+The engine redirects all MicroUI images drawings to a set of Abstraction Layer APIs. All Abstraction Layer APIs are implemented by weak functions which call software algorithms. The BSP has the possibility to override this default behavior for each Abstraction Layer API independently. Furthermore, the BSP can override an Abstraction Layer API for a specific MicroEJ format (for instance ``ARGB8888``) and call the software algorithms for all other formats.
 
 .. graphviz::
 

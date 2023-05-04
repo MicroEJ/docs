@@ -8,7 +8,7 @@ Principle
 =========
 
 The Matrix module contains the C part of the MicroVG implementation, which manages arithmetics matrices.
-This module is composed of only one element: an implementation of Low-Level APIs to create and manipulate the matrices.
+This module is composed of only one element: an implementation of Abstraction Layer APIs to create and manipulate the matrices.
 
 .. _section_vg_matrix_implementation:
 
@@ -16,7 +16,7 @@ Functional Description
 ======================
 
 The Matrix module implements the framework of the MicroVG `Matrix`_. 
-It provides Low-Level APIs that manipulate the matrices: fill an identity matrix, do a translation, a rotation, or a scaling and concatenate two matrices.
+It provides Abstraction Layer APIs that manipulate the matrices: fill an identity matrix, do a translation, a rotation, or a scaling and concatenate two matrices.
 
 A matrix is a 3x3 matrix, and its elements are encoded in ``float`` (32-bit values):
 
@@ -36,17 +36,17 @@ The buffer where the matrix is encoded is stored in the Java heap.
 
 .. _section_vg_matrix_llapi:
 
-Low-Level API
-=============
+Abstraction Layer API
+=====================
 
-The low-level APIs that have to be implemented are listed in the header file ``LLVG_MATRIX_impl.h`` (see :ref:`LLVG-MATRIX-API-SECTION`):
+The Abstraction Layer APIs that have to be implemented are listed in the header file ``LLVG_MATRIX_impl.h`` (see :ref:`LLVG-MATRIX-API-SECTION`):
 
 .. figure:: images/vg_llapi_matrix.*
-   :alt: MicroVG Matrix Low Level
+   :alt: MicroVG Matrix Abstraction Layer
    :width: 200px
    :align: center
 
-   Matrix Low-Level API
+   Matrix Abstraction Layer API
 
 * MicroVG library calls the BSP functions through the header file ``LLVG_MATRIX_impl.h``.
 * The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of this header file: ``LLVG_MATRIX_impl.c``. 

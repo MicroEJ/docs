@@ -11,7 +11,7 @@ The MicroUI implementation for MicroEJ requires a configuration step (also calle
 
 This XML file (also called the initialization file) defines:
 
--  The MicroUI event generators that will exist in the application in relation to Low Level drivers that provide data to these event generators (see :ref:`section_input`).
+-  The MicroUI event generators that will exist in the application in relation to low-level drivers that provide data to these event generators (see :ref:`section_input`).
 -  Whether the application has a display; and if so, it provides its logical name.
 -  Which fonts will be provided to the application.
 

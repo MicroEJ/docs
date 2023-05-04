@@ -1,14 +1,14 @@
 .. _section_vg_low_level:
 
-=============
-Low-Level API
-=============
+=====================
+Abstraction Layer API
+=====================
 
 Principle
 =========
 
-The MicroVG implementation for MicroEJ requires a Low-Level implementation. 
-The Low-Level implementation consists of a set of header files to implement in C to target the hardware drivers.
+The MicroVG implementation for MicroEJ requires an Abstraction Layer implementation. 
+The Abstraction Layer implementation consists of a set of header files to implement in C to target the hardware drivers.
 
 The VG Pack's embedded Front Panel extension implements all MicroVG features for the simulator.
 
@@ -16,11 +16,11 @@ Embedded Platform
 =================
 
 .. figure:: images/vg_llapi_emb.*
-   :alt: MicroVG Low Level
+   :alt: MicroVG Abstraction Layer
    :width: 70.0%
    :align: center
 
-   MicroVG Embedded Low-Level API
+   MicroVG Embedded Abstraction Layer API
 
 The specification of header files names is:
 
@@ -35,11 +35,11 @@ Simulator
 =========
 
 .. figure:: images/vg_llapi_sim.*
-   :alt: MicroVG Low Level
+   :alt: MicroVG Abstraction Layer
    :width: 70.0%
    :align: center
 
-   MicroVG Simulator Low-Level API
+   MicroVG Simulator Abstraction Layer API
 
 The Simulator's four VG engines are grouped in a :ref:`Front Panel extension <section_ui_simulation>`. 
 

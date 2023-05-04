@@ -246,7 +246,7 @@ When the MicroEJ format holds another header (called ``custom_header``), the req
 
 The row stride allows to add some padding at the end of each line in order to start the next line at an address with a specific memory alignment; it is often required by hardware accelerators (GPU).
 The row stride is by default a value in relation with the image width: ``row_stride_in_bytes = image_width * bpp / 8``.
-It can be customized at image buffer creation thanks to the Low Level API ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes``.
+It can be customized at image buffer creation thanks to the Abstraction Layer API ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes``.
 The required memory becomes:
 ::
 
