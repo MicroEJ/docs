@@ -15,6 +15,7 @@ Graphical User Interface
     :maxdepth: 2
 
     uiIntroduction
+    uiPort
     uiMicroui
     uiStaticInit
     uiLowLevel
@@ -24,7 +25,6 @@ Graphical User Interface
     uiImage
     uiFont
     uiSimulation
-    uiPort
     uiReleaseNotes
     uiChangeLog
     uiMigrationGuide
