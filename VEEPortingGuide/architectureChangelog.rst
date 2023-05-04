@@ -89,6 +89,7 @@ Tools
 
 - Removed :ref:`Test Suite Engine <testsuite_engine>`. If needed, the Test Suite Engine is available in the :ref:`Build Kit <mmm_build_kit>`.
 - Removed Immutables NLS library. Use :ref:`Binary NLS <chapter.nls>` add-on library instead. 
+- Fixed Many symbols are not grouped correctly in map analyzer. 
 
 .. _Class.getResourceAsStream(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
 
