@@ -793,6 +793,31 @@ One header file is provided:
    Defines the set of functions that the BSP must implement to manage and configure
    and Bluetooth module.
 
+.. _LLEVENT-API-SECTION:
+
+LLEVENT: Event Queue
+====================
+
+Naming Convention
+-----------------
+
+The Low Level Event Queue API (LLEVENT), relies on functions that need to
+be implemented by engineers in a driver. The names of these functions
+match the ``LLEVENT_IMPL_*`` pattern.
+
+Header Files
+------------
+
+Two header files are provided:
+
+-  LLEVENT_impl.h
+
+   Defines the set of functions that the BSP must implement to manage, offer/handle events from the Event Queue.
+
+-  microej_event.h
+
+   Defines the set of functions that the BSP must implement to use the Event Queue from the native side.
+
 .. _LLFS-API-SECTION:
 
 LLFS: File System
