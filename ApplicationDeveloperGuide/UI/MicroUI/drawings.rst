@@ -1,20 +1,14 @@
-.. _section_app_microui:
+.. _section.ui.Drawings:
 
-MicroUI
-=======
+Drawings
+========
 
-.. toctree::
-   :maxdepth: 2
+XXX TODO XXX
 
-   introduction
-   drawings
-   images
-   fonts
-   fontDesigner
-   applicationOptions
-   traces
-   errors
-   releaseNotes
+* introduce drawing logs
+* implementation checks the drawings flags at flush time
+* option to disable the check at flush time
+* how to use getAndClear to debug
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

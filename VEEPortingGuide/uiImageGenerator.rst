@@ -166,10 +166,10 @@ Since UI Pack 13.2.0, the Image Generator automatically includes new image decod
 
 .. _section_image_custom_format:
 
-Custom MicroEJ Format
-=====================
+Customize MicroEJ Standard Format
+=================================
 
-As mentionned above (:ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`), the MicroEJ format can be extended by notions specific to the platform (and often to the GPU the platform is using). The generated file stays a MicroEJ file format, usable by the Image Renderer. Additionally, the file becomes compatible with the platform constraints. 
+As mentioned above (:ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`), the MicroEJ format can be extended by notions specific to the platform (and often to the GPU the platform is using). The generated file stays a MicroEJ file format, usable by the Image Renderer. Additionally, the file becomes compatible with the platform constraints. 
 
 1. Open image generator extension project.
 2. Create a subclass of ``com.microej.tool.ui.generator.BufferedImageLoader`` (to be able to load standard images) or create an implementation of interface ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` (to load custom images).
@@ -188,16 +188,28 @@ If the only constraint is the pixels array alignment, the Image Generator extens
 
 This alignment will be used by the Image Generator and also by the Image Loader.
 
-Platform Binary Format
+VEE Port MicroEJ Custom Format
+==============================
+
+XXX TODO XXX
+
+* how to create
+* how to use  : cf chapter renderer
+
+VEE Port Binary Format
 ======================
 
-As mentionned above (:ref:`section_image_binary_raw`), the Image Generator is able to generate a binary file compatible with platform (and not compatible with Image Renderer). This is very useful when a platform library offers the possibility to use other kinds of images than MicroUI library. The binary file can be encoded according to the options the user gives in the images list file.
+As mentioned XXX virer le n above (:ref:`section_image_binary_raw`), the Image Generator is able to generate a binary file compatible with platform (and not compatible with Image Renderer). This is very useful when a platform library offers the possibility to use other kinds of images than MicroUI library. The binary file can be encoded according to the options the user gives in the images list file.
 
 1. Open image generator extension project.
 2. Create an implementation of the interface ``com.microej.tool.ui.generator.ImageConverter``.
 3. Create the file ``META-INF/services/com.microej.tool.ui.generator.ImageConverter`` and open it.
 4. Note down the name of created class, with its package and classname.
 5. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
+
+XXX TODO XXX
+
+* how to use it ?
 
 .. _section_image_generator_conffile:
 

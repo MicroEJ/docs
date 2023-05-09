@@ -14,6 +14,20 @@ Functional Description
 
 The engine redirects all MicroUI images drawings to a set of Abstraction Layer APIs. All Abstraction Layer APIs are implemented by weak functions which call software algorithms. The BSP has the possibility to override this default behavior for each Abstraction Layer API independently. Furthermore, the BSP can override an Abstraction Layer API for a specific MicroEJ format (for instance ``ARGB8888``) and call the software algorithms for all other formats.
 
+Standard image only
+===================
+
+XXX TODO XXX
+
+* vee port does not allow to draw custom image. in not cf next chapter
+
+emb
+---
+
+* xxx copy hackmd graph
+* c module: option to disable
+
+
 .. graphviz::
 
    digraph {
@@ -58,6 +72,31 @@ The engine redirects all MicroUI images drawings to a set of Abstraction Layer A
       bsp -> gpu -> hard
    }
 
+sim
+---
+
+* xxx copy hackmd graph
+* nothing to do
+
+Custom image format
+===================
+
+* vee allows custom format.
+* to draw it, can use shapes drawings
+* examples of use cases ? command vs pixels
+
+emb
+---
+
+* More complex and more footprint (#define xxxx)
+* xxx copier hackmd graph
+
+sim
+---
+
+* service xxx UIImageDrawing
+* xxx copy hackmd graph
+* xxx notion decode (cf UIImageDrawing.decode())
 
 Dependencies
 ============
