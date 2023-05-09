@@ -12,7 +12,7 @@ The Input module contains the C part of the MicroUI implementation which manages
 
 -  the C part of MicroUI input API (a built-in C archive) called Input Engine,
 
--  an implementation of a Abstraction Layer APIs for the input devices
+-  an implementation of Abstraction Layer APIs for the input devices
    that must be provided by the BSP (see :ref:`LLINPUT-API-SECTION`).
 
 Functional Description
