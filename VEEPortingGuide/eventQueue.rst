@@ -111,8 +111,7 @@ Application project to use the Event Queue Foundation Library.
 
    <dependency org="ej.api" name="event" rev="1.0.0"/>
 
-.. _Event Queue API Module: https://repository.microej.com/modules/ej/api/event/
-
+.. _Event Queue API Module: https://repository.microej.com/modules/ej/api/
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
