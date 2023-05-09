@@ -22,6 +22,7 @@ Graphical User Interface
     uiLed
     uiInput
     uiDisplay
+    uiDrawings
     uiImage
     uiFont
     uiCco

@@ -255,6 +255,21 @@ The required memory becomes:
 .. figure:: images/uiFormat02.*
    :width: 50.0%
 
+.. _section_image_custom_raw:
+
+MicroEJ Format: Custom
+======================
+
+XXX TODO XXX
+
+* custom format = formats between 0 and 7; link to microui class
+* can be used as MicroUI image like standard images
+* how to create it at compile time: cf chapter  "MicroEJ Custom Format" in uiImageGenerator 
+   * sim: have to decode: cf xxx
+* how to create it at runtime: cf chapter  cf chapter in uiBufferedImage
+* how to use it as source (to draw the image) : cf chapter "image custom format" dans uiImageCore
+* how to use it as destination (to draw into the image): cf chapter in uiBufferedImage
+
 .. _section_image_binary_raw:
 
 Binary Format

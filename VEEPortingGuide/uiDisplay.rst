@@ -1335,6 +1335,9 @@ A dedicated OS task is required to perform this copy.
 Drawing Native
 ==============
 
+xxx to move in uiDrawings
+
+
 As explained before, MicroUI implementation provides a dedicated header file which lists all MicroUI Painter drawings native function. The implementation of these functions has to respect several rules to not corrupt the MicroUI execution (flickering, memory corruption, unknown behavior, etc.). These rules are already respected in the default Abstraction Layer implementation modules available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`. In addition, MicroUI allows to add some custom drawings. The implementation of MicroUI Painter native drawings should be used as model to implement the custom drawings.
 
 All native functions must have a ``MICROUI_GraphicsContext*`` as parameter (often first parameter). This identifies the destination target: the MicroUI `GraphicsContext`_. This target is retrieved in application calling the method ``GraphicsContext.getSNIContext()``. This method returns a byte array which is directly mapped on the ``MICROUI_GraphicsContext`` structure in MicroUI native drawing function declaration.
@@ -1424,7 +1427,7 @@ In this example, the drawing time is 7ms, the time between the end of drawing an
 .. figure:: images/uiDisplaySync05.*
    :width: 100%
 
-As mentionned above, the idea is to use two back buffers. First, UI task is drawing in back buffer ``A``. Just after the call to `Display.flush()`_, the flush can start. At same moment, the content of back buffer ``A`` is copied in back buffer ``B`` (use a DMA, copy time is 1ms). During the flush time (copy of back buffer ``A`` to display buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When the drawings in back buffer ``B`` are done (and after call to `Display.flush()`_), the DMA copy of back buffer ``B`` to back buffer ``A`` cannot start: the copy can only start when the flush is fully done because the flush is using the back buffer ``A``. As soon as the flush is done, a new flush (and DMA copy) can start. The rendering frequency is cadenced on flush time, ie 12ms (83.3Hz).
+As mentioned above, the idea is to use two back buffers. First, UI task is drawing in back buffer ``A``. Just after the call to `Display.flush()`_, the flush can start. At same moment, the content of back buffer ``A`` is copied in back buffer ``B`` (use a DMA, copy time is 1ms). During the flush time (copy of back buffer ``A`` to display buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When the drawings in back buffer ``B`` are done (and after call to `Display.flush()`_), the DMA copy of back buffer ``B`` to back buffer ``A`` cannot start: the copy can only start when the flush is fully done because the flush is using the back buffer ``A``. As soon as the flush is done, a new flush (and DMA copy) can start. The rendering frequency is cadenced on flush time, ie 12ms (83.3Hz).
 
 .. figure:: images/uiDisplaySync06.*
    :width: 100%
