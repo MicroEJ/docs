@@ -23,6 +23,7 @@ The Event Queue Foundation Library allows the user to send events from the nativ
 .. figure:: images/event-queue-overview.png
    :alt: Event Queue Overview
    :align: center
+   :scale: 65%
 
    Event Queue Overview
 
@@ -40,6 +41,7 @@ The Event Queue Foundation Library use a dedicated Java thread to forward and pr
 .. figure:: images/event-queue-architecture.png
    :alt: Event Queue Architecture
    :align: center
+   :scale: 65%
 
    Event Queue Architecture
 
@@ -49,6 +51,7 @@ Events reading operations are done using SNI mechanism. Event Queue Java thread 
 .. figure:: images/event-queue-synchronization.png
    :alt: Event Queue Task Synchronization
    :align: center
+   :scale: 65%
 
    Event Queue Task Synchronization
 
