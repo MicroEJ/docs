@@ -63,6 +63,7 @@ Core Engine
 - Renamed :ref:`Core Engine sections <core_engine_link>` to fully respect the ELF standard naming convention. 
 - Removed check when passing a non-immortal array in SNI if VEE Port option ``core.sni.nonimmortal.access`` was set to ``false``.
 - Removed ``LLBSP_isInReadOnlyMemory`` in Core Engine Abstraction Layer (``LLBSP.h`` file).
+- Fixed potential crash when Core Engine is restarted after a call to `System.exit(int)`_.
 
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
@@ -100,6 +101,7 @@ Tools
 - Removed Immutables NLS library. Use :ref:`Binary NLS <chapter.nls>` add-on library instead. 
 
 .. _Class.getResourceAsStream(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
+.. _System.exit(int): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#exit-int-
 
 
 .. _changelog-7.19.0:
