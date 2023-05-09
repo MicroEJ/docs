@@ -86,6 +86,7 @@ Simulator
 - Added HIL Engine debug logs when verbose option is enabled.
 - Added log of the Mock classpath when verbose option is enabled.
 - Added log of Mock resolution errors (class or method not found).
+- Fixed configuration of the Java heap size using :ref:`option_java_heap`. The legacy ``core.memory.javaheapsum.size`` option is not more supported.
 
 SOAR
 ~~~~
