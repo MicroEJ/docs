@@ -217,13 +217,7 @@ C Modules
 MicroUI C Module
 """"""""""""""""
 
-The MicroUI C module `com.microej.clibrary.llimpl(microui)`_ is available on MicroEJ Central Repository. 
-This C module is **mandatory** and provides default implementations for:
-
-* ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``: see :ref:`section_display_llapi`,
-* Images heap allocator: see :ref:`section_image_loader_memory`,
-* ``LLUI_INPUT_IMPL_log_queue_xxx()``: see :ref:`section_inputs_eventbuffer`.
-
+The MicroUI C module `com.microej.clibrary.llimpl(microui)`_ is available on MicroEJ Central Repository, see :ref:`section_ui_cco`.
 The following table describes the compatibility versions between the C modules and the MicroEJ UI Packs:
 
 +----------------+-----------------+
@@ -248,19 +242,7 @@ The default implementations use the Graphics Engine software algorithms.
 
 **STM32 Chrom-ART**
 
-The DMA2D C module `com.microej.clibrary.llimpl(display-dma2d)`_ targets the STM32 CPU that provides the Chrom-ART accelerator. 
-
-The following table describes the accelerated features:
-
-+----------------+------------------------------------------------------+
-| Feature        | Comment                                              |
-+================+======================================================+
-| Fill rectangle |                                                      |
-+----------------+------------------------------------------------------+
-| Draw image     | ARGB8888, RGB888, RGB565, ARGB1555, ARGB4444, A8, A4 |
-+----------------+------------------------------------------------------+
-| Flush (copy)   | Copy of data from back buffer to frame buffer        |
-+----------------+------------------------------------------------------+
+The :ref:`DMA2D C module <section_ui_c_module_microui_dma2d>` targets the STM32 CPU that provides the Chrom-ART accelerator. 
 
 The following table describes the version compatibility between the C module and the MicroEJ UI Packs:
 
@@ -274,73 +256,9 @@ The following table describes the version compatibility between the C module and
 | [1.0.6-1.0.8]  | [13.0.0-13.0.7] |
 +----------------+-----------------+
 
-.. _com.microej.clibrary.llimpl(display-dma2d): https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/
-
 **Vivante VG-Lite**
 
-The VG-Lite C module `com.microej.clibrary.llimpl(microui-vglite)`_ targets the NXP CPU that provides the Vivante VG-Lite accelerator. 
-
-This C module provides some drawing algorithms that are disabled by default. 
-
-* The rendering time of a simple shape with the GPU (time in the VG-Lite library + GPU setup time + rendering time) is longer than with software rendering. To enable the hardware rendering for simple shapes, uncomment the definition of ``VGLITE_USE_GPU_FOR_SIMPLE_DRAWINGS``  in ``display_configuration.h``.
-* The rendering time of an RGB565 image into an RGB565 buffer without applying an opacity (alpha == 0xff) is longer than with software rendering (as this kind of drawing consists in performing a mere memory copy). To enable the hardware rendering for RGB565 images, uncomment the definition of ``VGLITE_USE_GPU_FOR_RGB565_IMAGES``  in ``display_configuration.h``.
-* ARGB8888, ARGB1555 and ARGB4444 transparent images are not compatible with some revisions of the VG-Lite GPU. Older GPU revisions do not render correctly transparent images because the pre-multiplication of the pixel opacity is not propagated to the pixel color components. To enable the hardware rendering for transparent images, uncomment the definition of ``VGLITE_USE_GPU_FOR_TRANSPARENT_IMAGES``  in ``display_configuration.h``. Note that this limitation does not concern the A8 and A4 formats.
-
-The following table describes the accelerated features:
-
-+-----------------------------+-----------------------------------------------------------+
-| Feature                     | Comment                                                   |
-+=============================+===========================================================+
-| Draw line                   | Disabled by default (see above)                           |
-+-----------------------------+-----------------------------------------------------------+
-| Fill rectangle              | Disabled by default (see above)                           |
-+-----------------------------+-----------------------------------------------------------+
-| Draw rounded rectangle      | Disabled by default (see above)                           |
-+-----------------------------+-----------------------------------------------------------+
-| Fill rounded rectangle      |                                                           |
-+-----------------------------+-----------------------------------------------------------+
-| Draw circle arc             | Disabled by default (see above)                           |
-+-----------------------------+-----------------------------------------------------------+
-| Fill circle arc             |                                                           |
-+-----------------------------+-----------------------------------------------------------+
-| Draw ellipse arc            | Disabled by default (see above)                           |
-+-----------------------------+-----------------------------------------------------------+
-| Fill ellipse arc            |                                                           |
-+-----------------------------+-----------------------------------------------------------+
-| Draw ellipse arc            | Disabled by default (see above)                           |
-+-----------------------------+-----------------------------------------------------------+
-| Fill ellipse arc            |                                                           |
-+-----------------------------+-----------------------------------------------------------+
-| Draw circle                 | Disabled by default (see above)                           |
-+-----------------------------+-----------------------------------------------------------+
-| Fill circle                 |                                                           |
-+-----------------------------+-----------------------------------------------------------+
-| Draw image                  | RGB565, A8, A4 + ARGB8888, ARGB1555, ARGB4444 (see above) |
-+-----------------------------+-----------------------------------------------------------+
-| Draw thick faded point      | Only with fade <= 1                                       |
-+-----------------------------+-----------------------------------------------------------+
-| Draw thick faded line       | Only with fade <= 1                                       |
-+-----------------------------+-----------------------------------------------------------+
-| Draw thick faded circle     | Only with fade <= 1                                       |
-+-----------------------------+-----------------------------------------------------------+
-| Draw thick faded circle arc | Only with fade <= 1                                       |
-+-----------------------------+-----------------------------------------------------------+
-| Draw thick faded ellipse    | Only with fade <= 1                                       |
-+-----------------------------+-----------------------------------------------------------+
-| Draw thick line             |                                                           |
-+-----------------------------+-----------------------------------------------------------+
-| Draw thick circle           |                                                           |
-+-----------------------------+-----------------------------------------------------------+
-| Draw thick circle arc       |                                                           |
-+-----------------------------+-----------------------------------------------------------+
-| Draw thick ellipse          |                                                           |
-+-----------------------------+-----------------------------------------------------------+
-| Draw flipped image          | See draw image                                            |
-+-----------------------------+-----------------------------------------------------------+
-| Draw rotated image          | See draw image                                            |
-+-----------------------------+-----------------------------------------------------------+
-| Draw scaled image           | See draw image                                            |
-+-----------------------------+-----------------------------------------------------------+
+The :ref:`VG-Lite C module <section_ui_c_module_microui_vglite>` targets the NXP CPU that provides the Vivante VG-Lite accelerator. 
 
 The following table describes the version compatibility between the C module and the MicroEJ UI Packs:
 
@@ -351,7 +269,6 @@ The following table describes the version compatibility between the C module and
 +----------------+-----------------+
 | [1.0.0-2.0.0]  | [13.1.0-13.2.0] |
 +----------------+-----------------+
-
 
 The following table describes the version compatibility between the C module and the VG-Lite libraries (officially supported):
 
@@ -364,8 +281,6 @@ The following table describes the version compatibility between the C module and
 +----------------+---------------------------+
 | 1.0.0          | 3.0.4_rev2 and 3.0.4_rev4 |
 +----------------+---------------------------+
-
-.. _com.microej.clibrary.llimpl(microui-vglite): https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/
 
 ..
    | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
