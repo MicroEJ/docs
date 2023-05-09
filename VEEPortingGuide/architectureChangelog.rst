@@ -88,6 +88,7 @@ Simulator
 - Added log of Mock resolution errors (class or method not found).
 - Fixed configuration of the Java heap size using :ref:`option_java_heap`. The legacy ``core.memory.javaheapsum.size`` option is not more supported.
 - Fixed :ref:`option_immortal_heap` default value when running a Standalone Application using MMM.
+- Fixed stop of the HIL Engine if Simulator was terminated before the connection is established.
 
 SOAR
 ~~~~
