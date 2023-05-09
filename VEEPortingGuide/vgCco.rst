@@ -29,36 +29,11 @@ The following chapters explain the aim and relations of each C module.
 
    MicroVG C Modules
 
-UI Pack
-=======
+UI Pack & MicroUI C Modules
+===========================
 
 The UI Pack provides a header file to implement the MicroUI drawings: ``LLUI_PAINTER_impl.h``.
-See :ref:`UI Pack <section_display_llapi>` chapter to have more information.
-
-The UI Pack and its header files are available on the Central Repository: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/. 
-
-C Module: MicroUI
-=================
-
-This generic C module provides an implementation of all MicroUI drawings (``LLUI_PAINTER_impl.c``).
-It manages the synchronization with the Graphics Engine and redirects all drawings to an implementation of ``ui_drawing.h``.
-See :ref:`UI Pack <section_display_llapi>` chapter to have more information.
-
-This C module is available on the Central Repository: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/.
-
-.. _section_vg_c_module_microui_vglite:
-
-C Module: MicroUI Over VGLite
-=============================
-
-This C module is a specific implementation of the C module MicroUI over Vivante VGLite.
-It implements a set of drawings over the official Vivante VGLite library (that targets some GPU with vector graphics acceleration): ``drawing_vglite.c``.
-
-This C module also provides a set of header files (and their implementations) to manipulate some MicroUI concepts over the VGLite library: image management, path format, etc.: ``display_vglite.h`` and ``vglite_path.h``.
-
-This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microui-vglite`_.
-
-.. _com.microej.clibrary.llimpl#microui-vglite: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite
+See :ref:`section_ui_cco` chapter to have more information.
 
 Library: Vivante VGLite
 =======================

@@ -48,7 +48,7 @@ In addition to generic C modules, the specific implementation of the VG Pack ove
 
 * the UI Pack (see upper),
 * the UI Pack C module: see :ref:`UI Pack <section_display_llapi>`,
-* and by consequence, the specific C module MicroUI over VGLite: see :ref:`section_vg_c_module_microui_vglite`.
+* and by consequence, the specific C module MicroUI over VGLite: see :ref:`section_ui_c_module_microui_vglite`.
 
 The following table describes the compatibility ranges between the VG Packs and the C modules (generic and specific):
 
