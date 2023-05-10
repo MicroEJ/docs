@@ -84,6 +84,8 @@ Simulator
 SOAR
 ~~~~
 
+- Fixed ARMCC linker fails on undefined symbols _java_stackgroup_table and _java_stackgroup_table_length even if they are not embedded
+
 Tools
 ~~~~~
 
