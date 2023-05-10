@@ -4,6 +4,76 @@
 Changelog
 =========
 
+13.5.0 (2023-05-03)
+===================
+
+* Compatible with Architecture 7.13.0 or higher.
+
+MicroUI Implementation
+""""""""""""""""""""""
+
+**Changed**
+
+- Implement MicroUI 3.2 (multi mutable image formats, drawing log flags, etc.).
+
+**Fixed**
+
+- Fix ellipse fading.
+
+Drawing Implementation
+""""""""""""""""""""""
+
+**Fixed**
+
+- Fix the position of arc caps.
+
+LLAPIs
+""""""
+	
+**Added**
+
+* Add some functions in `LLUI_DISPLAY.h` to manage the MicroUI Drawing Log flags.
+* Add some functions in `LLUI_DISPLAY.h` to change the MicroUI clip and colors.
+* Add the notion of "drawer" to identify the available drawer for a given MicroUI Image format.
+
+**Changed**
+
+* Change the MicroUI image format `MICROUI_IMAGE_FORMAT_LCD` by `MICROUI_IMAGE_FORMAT_DISPLAY`.
+* Change the signature of `xx_drawing_soft.h`: all functions return a drawing status. 
+
+**Removed**
+
+* Remove `ui_drawing.h` and `dw_drawing.h` (move them in MicroUI CCO).
+
+FrontPanel
+""""""""""
+	
+**Added**
+
+* Add a service to decode immutable images with a custom format. 
+* Add a service to create mutable images with a custom format. 
+* Add a service to draw into mutable images with a format different than the display format. 
+* Add some methods to manage the MicroUI Drawing Log flags.
+* Add some methods to change the MicroUI clip and colors.
+
+**Changed**
+
+* Merge `DWDrawing` in `UIDrawing`.
+* Turn `UIDrawing` as a service to handle drawings for a specific format.
+* Change the mechanism to get the software drawer.
+* Change the MicroUI image format `MICROUI_IMAGE_FORMAT_LCD` by `MICROUI_IMAGE_FORMAT_DISPLAY`.
+
+**Removed**
+
+* Remove the interfaces `UIDrawingDefault` and `DWDrawingDefault` (implement the interface `UIDrawing` instead).
+
+ImageGenerator
+""""""""""""""
+
+**Added**
+
+* Add the compatibility with the Architecture 8.
+
 13.4.1 (2023-02-06)
 ===================
 	

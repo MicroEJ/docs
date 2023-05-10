@@ -6,6 +6,80 @@
 Migration Guide
 ===============
 
+From 13.4.x to 13.5.x
+=====================
+
+Front Panel
+"""""""""""
+
+* Set the explicit dependency to the UI Pack 13.5.0:
+
+  .. code-block:: xml
+
+		<dependency org="com.microej.pack.ui" name="ui-pack" rev="13.5.0">
+			<artifact name="frontpanel" type="jar"/>
+		</dependency>
+
+* Replace any calls to ``LLUIPainter.setDrawer()`` and ``LLDWPainter.setDrawer()`` to ``LLUIPainter.Instance.registerUIDrawer()``.
+* Replace any calls to ``LLUIPainter.getDrawer()`` and ``LLDWPainter.getDrawer()`` to  ``LLUIDisplay.Instance.getUIDrawer()``.
+* Replace any calls to ``LLUIDisplay.getDWDrawerSoftware()`` to  ``LLUIDisplay.Instance.getUIDrawerSoftware()``.
+* Implementation of the interface ``UIDrawingDefault``: implement the interface ``UIDrawing`` instead.
+* Implementation of the interfaces ``DWDrawing`` and ``DWDrawingDefault``: implement the interface ``UIDrawing`` instead.
+* Implementation of the service ``BufferedImageProvider``: implement ``handledFormat()`` and remove the parameter ``format`` from ``newBufferedImage()``.
+* Replace any occurrences of ``MICROUI_IMAGE_FORMAT_LCD`` by ``MICROUI_IMAGE_FORMAT_DISPLAY``.
+
+BSP without GPU
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+  	* Fetch UI Pack 13.5.0 and CCO MicroUI 3.0.0.
+
+* *[BSP project]*
+
+	* Delete the VEE Port ``include`` folder (often ``/platform/inc``).
+	* Delete the properties file ``cco_microui.properties``.
+	* In the C project configuration, include the new C files ``ui_drawing.c``, ``ui_image_drawing.c`` and ``ui_drawing_stub.c``.
+
+* Build the VEE Port and the BSP.
+
+BSP with DMA2D
+""""""""""""""
+
+* Follow the migration steps of "BSP without GPU".
+* *[VEE Port configuration project]*
+
+	* Fetch CCO Display-DMA2D 4.0.0.
+
+* *[BSP project]*
+
+	* Delete the properties file ``cco_display-dma2d.properties``.
+	* Delete the C files ``drawing_dma2d.h`` and  ``drawing_dma2d.c`` and remove them from the C project configuration.
+	* In the C project configuration, include the new C file ``ui_drawing_dma2d.c``.
+	* Replace the import ``drawing_dma2d.h`` by ``ui_drawing_dma2d.h``.
+	* Replace the calls to functions ``DRAWING_DMA2D_xxx()`` by ``UI_DRAWING_DMA2D_xxx()``.
+
+* Build the VEE Port and the BSP.
+
+.. _section_ui_migrationguide_13.5_vglite:
+
+BSP with VG-Lite
+""""""""""""""""
+
+* Follow the migration steps of "BSP without GPU".
+* *[VEE Port configuration project]*
+
+	* Fetch CCO MicroUI-VGLite 6.0.0.
+  
+* *[BSP project]*
+	
+	* Delete the properties file ``cco_microui-vglite.properties``.
+	* Delete the C files ``vg_drawer.h`` and  ``vg_drawer.c`` and remove them from the C project configuration.
+	* Verify the options in ``display_configuration.h``. 
+	* In the C project configuration, include the new C file ``ui_drawing_vglite.c``.
+
+* Build the VEE Port and the BSP.
+
 From 13.3.x to 13.4.x
 =====================
 
@@ -25,9 +99,11 @@ Front Panel
 BSP
 """
 
-* The signatures of `LLUI_DISPLAY_IMPL_decodeImage` and `LLUI_DISPLAY_IMPL_getNewImageStrideInBytes` have changed: 
-   * use `jbyte` in functions signatures.
-   * add a cast to `MICROUI_Image` in implementation.
+* The signatures of ``LLUI_DISPLAY_IMPL_decodeImage`` and ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes`` have changed: 
+ 
+	* use ``jbyte`` in functions signatures.
+	* add a cast to ``MICROUI_Image`` in implementation.
+
 * Use the MicroUI C module 2.0.1.
 
 From 13.2.x to 13.3.x
