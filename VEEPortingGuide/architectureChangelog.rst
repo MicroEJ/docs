@@ -82,7 +82,10 @@ Simulator
 
 - Added missing default values for the properties ``s3.slow``, ``console.logs.period``, and ``s3.hil.timeout`` when launching the Simulator from the command line.
 - Fixed "Internal limits" error in HIL engine when too many array arguments are used at the same time by one or several native methods.
-- Fixed slow reading with an array of bytes of the input stream returned by `Class.getResourceAsStream(String)`_
+- Fixed slow reading with an array of bytes of the input stream returned by `Class.getResourceAsStream(String)`_.
+- Added HIL Engine debug logs when verbose option is enabled.
+- Added log of the Mock classpath when verbose option is enabled.
+- Added log of Mock resolution errors (class or method not found).
 
 SOAR
 ~~~~
@@ -809,7 +812,7 @@ Integration
 Simulator
 ~~~~~~~~~
 
--  Added ``SNI-1.4`` support, with the following new HIL APIs:
+-  Added ``SNI-1.4`` support, with the following new HIL engine APIs:
 
    -  Added methods ``NativeInterface.suspendStart()`` and
       ``NativeInterface.suspendStop()`` to notify the simulator that a
@@ -877,7 +880,7 @@ SOAR
 Tools
 ~~~~~
 
--  Added ``SNI-1.4`` support to HIL Engine
+-  Added ``SNI-1.4`` support to HIL engine
 -  Updated Heap Dumper to verbose information about the memory section
    when an overlap is detected in the HEX file
 -  Updated Memory Map Scripts (Security, DTLS, Device)
@@ -885,7 +888,7 @@ Tools
    VEE Port is built using ``Build Module`` button
 -  Fixed License Manager (Evaluation) wrong UID computation after reboot
    when Windows 10 Hyper-V feature is enabled
--  Fixed HIL Engine to exit as soon as the Simulator is disconnected
+-  Fixed HIL engine to exit as soon as the Simulator is disconnected
    (avoid remaining detached processes)
 -  Fixed ELF to Map generating symbol addresses different from the ELF
    symbol addresses (introduced in version :ref:`7.11.0 <changelog-7.11.0>`)
@@ -1518,7 +1521,7 @@ Simulator
 ~~~~~~~~~
 
 -  Added a hook in the mockup that is automatically called during the
-   HIL Engine startup
+   HIL engine startup
 -  Added dump of loaded classes when ``verbose`` option is enabled
 -  Fixed `Runtime.freeMemory()`_ 
    call freeze when ``Emb Characteristics`` option is enabled
@@ -1527,7 +1530,7 @@ Simulator
 -  Fixed crash ``Access to a wrong reference`` in some cases
 -  Fixed `java.lang.NullPointerException`_
    when interrupting a thread that has not been started
--  Fixed crash when closing an HIL connection in some cases
+-  Fixed crash when closing an HIL engine connection in some cases
 -  [Multi] - Fixed KF & Watchdog library link when
    ``Emb Characteristics`` option is enabled
 -  [Multi] - Fixed XML Parsing error when ``Emb Characteristics`` option
