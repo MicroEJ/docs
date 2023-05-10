@@ -66,7 +66,7 @@ The following table describes the accelerated features:
 
 This C module is available on the :ref:`central_repository`: `com.microej.clibrary.llimpl#display-dma2d`_.
 
-.. _com.microej.clibrary.llimpl#display-dma2d: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/.
+.. _com.microej.clibrary.llimpl#display-dma2d: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/
 
 .. _section_ui_c_module_microui_vglite:
 
