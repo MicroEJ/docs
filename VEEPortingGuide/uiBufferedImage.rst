@@ -6,7 +6,7 @@ Buffered Image
 
 XXX TODO XXX
 
-MicroUI application is able to create an image where it is allowed to draw into: the MicroUI `BufferedImage`_. 
+MicroUI application is able to create an image where it is allowed to draw into: the MicroUI `BufferedImage`. 
 
 Display
 =======
