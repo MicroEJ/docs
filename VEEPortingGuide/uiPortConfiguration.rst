@@ -27,7 +27,7 @@ As an example, the module dependency to add for a Cortex-M4 and GCC toolchain wo
 
    <dependencies>
        <!-- MicroEJ Architecture Specific Pack -->
-       <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="13.4.1"/>
+       <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="13.5.0"/>
    </dependencies>
 
 UI Pack Modules
