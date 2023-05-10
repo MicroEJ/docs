@@ -73,6 +73,8 @@ Foundation Libraries
 Integration
 ~~~~~~~~~~~
 
+- Updated vendorURL in architectures
+
 
 Simulator
 ~~~~~~~~~
