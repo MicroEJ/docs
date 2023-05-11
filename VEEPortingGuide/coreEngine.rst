@@ -47,10 +47,9 @@ In the following explanations the term "RTOS
 task" refers to the tasks scheduled by the underlying OS; and the term
 "MicroEJ thread" refers to the Java threads scheduled by the Core Engine.
 
-.. figure:: images/mjvm_gt.*
+.. figure:: images/mjvm_gt.png
    :alt: A Green Threads Architecture Example
    :align: center
-   :scale: 75%
 
    A Green Threads Architecture Example
 
@@ -61,6 +60,7 @@ platform sleeps.
 
 The platform is responsible for providing the time to the MicroEJ world:
 the precision is 1 millisecond.
+
 
 
 Capabilities
