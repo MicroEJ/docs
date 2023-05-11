@@ -74,7 +74,7 @@ Integration
 ~~~~~~~~~~~
 
 - Updated default value of VEE Port configuration option ``vendorURL``.
-- Removed "dynamic" from launchers.
+- Renamed MicroEJ launch :guilabel:`Build dynamic Feature` to :guilabel:`Build Feature`.
 
 
 Simulator
