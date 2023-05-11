@@ -41,11 +41,9 @@ Architecture
 The Core Engine and its components have been compiled for one
 specific CPU architecture and for use with a specific C compiler.
 
-The architecture of the platform engine is called green thread
-architecture, it runs in a single RTOS task. Its behavior consists in
-scheduling MicroEJ threads. The scheduler implements a priority
-preemptive scheduling policy with round robin for the MicroEJ threads
-with the same priority. In the following explanations the term "RTOS
+The Core Engine implements a :ref:`green thread architecture <runtime_gt>`. It runs in a single RTOS task. 
+
+In the following explanations the term "RTOS
 task" refers to the tasks scheduled by the underlying OS; and the term
 "MicroEJ thread" refers to the Java threads scheduled by the Core Engine.
 
