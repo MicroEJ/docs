@@ -53,15 +53,9 @@ task" refers to the tasks scheduled by the underlying OS; and the term
 
    A Green Threads Architecture Example
 
-The activity of the platform is defined by the Application. When
+The activity of the Core Engine is defined by the Application. When
 the Application is blocked (when all MicroEJ threads are
-sleeping), the platform sleeps entirely: The RTOS task that runs the
-platform sleeps.
-
-The platform is responsible for providing the time to the MicroEJ world:
-the precision is 1 millisecond.
-
-
+sleeping), the RTOS task that runs the Core Engine sleeps.
 
 Capabilities
 ============
