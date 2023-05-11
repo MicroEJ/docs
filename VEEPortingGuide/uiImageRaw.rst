@@ -7,37 +7,76 @@ Image Format
 The Image Engine makes the distinction between:
 
 * the `input format`: how the original image is encoded, 
-* the `output format`: how the image is used by the platform and/or the Image Renderer,
+* the `output format`: how the image is used by the VEE Port and/or the Image Renderer,
 * the `embedded format`: how the image is embedded by the application. 
 
-The Image Engine manages several standard formats in input: PNG, JPEG, BMP, etc. In addition, an input format may be custom (platform-dependent).
-It manages two formats in output: the MicroEJ format and the binary format.
-The Image Renderer manages only the MicroEJ format (:ref:`section_image_standard_raw`, :ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`).
-The binary output format (:ref:`section_image_binary_raw`) is fully platform-dependent and can be used to encode some images which are not usable by MicroUI standard API.
+The Image Engine manages several standard formats in input: PNG, JPEG, BMP, etc. In addition, an input format may be custom (VEE Port dependent).
+It manages several formats in output: the MicroEJ formats and the binary format.
+The Image Renderer manages only the MicroEJ formats (:ref:`section_image_standard_raw`, :ref:`section_image_display_raw`, :ref:`section_image_gpu_raw` and :ref:`section_image_custom_raw`).
+The binary output format (:ref:`section_image_binary_raw`) is fully VEE Port dependent and can be used to encode some images which are not usable by MicroUI standard API.
 
-The output format is generated from the input format:
+The output format can be:
 
-* by using the off-board tool :ref:`section_image_generator` at application compile-time 
-* or by using a :ref:`runtime decoder <image_runtime_decoder>` of the :ref:`section_image_loader` at application run-time.
+* generated from the input format by using the off-board tool :ref:`section_image_generator` at application compile-time 
+* generated from the input format by using a :ref:`runtime decoder <image_runtime_decoder>` of the :ref:`section_image_loader` at application run-time.
+* dynamically created when using `BufferedImage`_.
 
 The embedded format may be the one of the output formats or the :ref:`original input format <section_image_asis>`.
+
+The following table illustrates how an image xxx
+
+XXX TODO XXX
+
+not satisfied: 
+
+* how to distinguish between input from image generator, input from runtime decoder, output from both, embedded, buffered image etc.
+* overview: buffered image not listed
+* maybe the chapter "image" only concerns the image / resource image and not buffered image ? 
+
++-----------+---------+--------+----------+---------------+
+| Format    | Input   | Output | Embedded | BufferedImage |
++===========+=========+========+==========+===============+
+| Display   | no      | yes    | yes      | yes           |
++-----------+---------+--------+----------+---------------+
+| Standard  | no      | yes    | yes      | yes (1)       |
++-----------+---------+--------+----------+---------------+
+| Grayscale | no      | yes    | yes      | yes (1)       |
++-----------+---------+--------+----------+---------------+
+| RLE       | no      | yes    | yes      | no            |
++-----------+---------+--------+----------+---------------+
+| GPU       | no      | yes    | yes      | yes           |
++-----------+---------+--------+----------+---------------+
+| Custom    | yes (2) | yes    | yes      | yes (3)       |
++-----------+---------+--------+----------+---------------+
+| Binary    | yes (2) | yes    | yes      | no            |
++-----------+---------+--------+----------+---------------+
+| Original  | yes     | no     | yes      | no            |
++-----------+---------+--------+----------+---------------+
+
+The following chapters describe each format an image can be encoded.
 
 .. _section_image_display_raw:
 
 MicroEJ Format: Display
 =======================
 
-See :ref:`section_image_display_output`.
+The display buffer holds a pixel encoding which is:
 
-The display can hold a pixel encoding which is not standard (see :ref:`display_pixel_structure`).
-The MicroEJ format can be customized to encode the pixel in the same encoding as the display.
+* standard: see :ref:`section_image_standard_output`,
+* grayscale: see :ref:`section_image_grayscale_output`,
+* non-standard: see :ref:`section_image_display_output` and :ref:`display_pixel_structure`.
+
+The non-standard display format can be customized to encode the pixel in the same encoding as the display.
 The number of bits per pixels and the pixel bit organization is asked during the MicroEJ format generation and when the ``drawImage`` algorithms are running.
-If the image to encode contains some transparent pixels, the output file will embed the transparency according to the display’s implementation capacity.
+If the image to encode contains some transparent pixels, the output file will embed the transparency according to the display's implementation capacity.
 When all pixels are fully opaque, no extra information will be stored in the output file in order to free up some memory space.
 
-.. note:: From the Image Engine point of view, the format stays a MicroEJ format, readable by the Image Renderer.
+Notes:
 
-The required memory is similar to :ref:`section_image_standard_raw`.
+* From the Image Engine point of view, the non-standard display format stays a MicroEJ format, readable by the Image Renderer.
+* The required memory to encode an image with a non-standard display format is similar to :ref:`section_image_standard_raw`.
+* When the display format is standard or grayscale, the encoded image format is replaced by the related standard format.
+* The :ref:`Graphics Engine's drawing software algorithms <section_drawings_soft>` only target (are only compatible with) the buffered images whose format is the same as the display format (standard or non-standard).
 
 .. _section_image_standard_raw:
 
@@ -141,6 +180,8 @@ The pixel order follows this rule:
 
          pixel_offset = (pixel_Y * image_width + pixel_X) * bpp / 8;
 
+.. _section_image_grayscale_raw:
+
 MicroEJ Format: Grayscale
 =========================
 
@@ -218,7 +259,8 @@ See :ref:`section_image_rle_output`.
 MicroEJ Format: GPU
 ===================
 
-The MicroEJ format may be customized to be compatible with the platform's GPU. It can be extended by one or several restrictions on the pixels array: 
+The MicroEJ formats :ref:`display <section_image_display_raw>`, :ref:`standard <section_image_standard_raw>` and :ref:`grayscale <section_image_grayscale_raw>` may be customized to be compatible with the platform's GPU. 
+It can be extended by one or several restrictions on the pixels array: 
 
 * Its start address has to be aligned on a higher value than the number of bits-per-pixels. 
 * A padding has to be added after each line (row stride).
@@ -260,9 +302,21 @@ The required memory becomes:
 MicroEJ Format: Custom
 ======================
 
+A custom format embeds a buffer whose data are VEE Port specific. 
+This data may be:
+
+* a pixel buffer whose encoding is different than display, standard and grayscale formats,
+* a buffer which is not a pixel buffer.
+
+This format is identified by a specific format value, between 0 and 7: see xxxx custom format = formats between 0 and 7; link to microui class xxxx
+
+From Image Engine point of view, the format stays a MicroEJ format, readable by the Image Engine Renderer.
+However it requires an implementation of some Abstraction Layer APIs to draw this kind of images.
+
+
 XXX TODO XXX
 
-* custom format = formats between 0 and 7; link to microui class
+
 * can be used as MicroUI image like standard images
 * how to create it at compile time: cf chapter  "MicroEJ Custom Format" in uiImageGenerator 
    * sim: have to decode: cf xxx
@@ -337,8 +391,9 @@ The following table lists the original formats that can be decoded at run-time a
 
 * (6): The UI-pack does not provide some runtime decoders for these formats but a BSP can add its own decoders (see :ref:`image_runtime_decoder`).
 
-.. _ImageIO: https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html
 
+.. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#
+.. _ImageIO: https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
