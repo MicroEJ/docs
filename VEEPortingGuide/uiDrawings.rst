@@ -31,6 +31,8 @@ This destination buffer format can be a :ref:`standard format <section_image_sta
 
 See :ref:`section_buffered_image` to have more information how to create buffered images with another format than the display format and how to draw into.
 
+.. _section_drawings_soft:
+
 Graphics Engine Software Algorithms
 ===================================
 
