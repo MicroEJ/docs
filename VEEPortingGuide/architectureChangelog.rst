@@ -73,7 +73,7 @@ Foundation Libraries
 Integration
 ~~~~~~~~~~~
 
-- Updated vendorURL in architectures
+- Updated default value of VEE Port configuration option ``vendorURL`` 
 
 
 Simulator
