@@ -551,7 +551,7 @@ The header file ``LLVG_PATH_PAINTER_impl.h`` provides the functions called by th
 - A path can be drawn with a :ref:`linear gradient <section_vg_gradient>`: ``LLVG_PATH_PAINTER_IMPL_drawGradient``.
 
 The drawing destination is symbolized by a MicroUI GraphicsContext: a pointer to a ``MICROUI_GraphicsContext`` instance. 
-Like MicroUI Painter natives, the implementation has to :ref:`synchronize the drawings <display_drawing_native>`  with the MicroUI Graphics Engine.
+Like MicroUI Painter natives, the implementation has to :ref:`synchronize the drawings <section_drawings_custom>`  with the MicroUI Graphics Engine.
 
 .. _LLVG-GRADIENT-API-SECTION:
 
@@ -626,7 +626,7 @@ The header file ``LLVG_FONT_PAINTER_impl.h`` provides the functions called by th
 - A string can be draw on a circle: ``LLVG_FONT_PAINTER_IMPL_draw_string_on_circle`` and ``LLVG_FONT_PAINTER_IMPL_draw_string_on_circle_gradient``.
 
 The drawing destination is symbolized by a MicroUI GraphicsContext: a pointer to a ``MICROUI_GraphicsContext`` instance. 
-Like MicroUI Painter natives, the implementation has to :ref:`synchronize the drawings <display_drawing_native>`  with the MicroUI Graphics Engine.
+Like MicroUI Painter natives, the implementation has to :ref:`synchronize the drawings <section_drawings_custom>`  with the MicroUI Graphics Engine.
 
 .. _LLNET-API-SECTION:
 
