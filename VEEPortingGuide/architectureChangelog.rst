@@ -73,6 +73,8 @@ Foundation Libraries
 Integration
 ~~~~~~~~~~~
 
+- Updated default value of VEE Port configuration option ``vendorURL`` 
+
 
 Simulator
 ~~~~~~~~~
