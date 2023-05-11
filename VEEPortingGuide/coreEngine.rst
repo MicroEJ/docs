@@ -54,8 +54,8 @@ task" refers to the tasks scheduled by the underlying OS; and the term
    A Green Threads Architecture Example
 
 The activity of the Core Engine is defined by the Application. When
-the Application is blocked (when all MicroEJ threads are
-sleeping), the RTOS task that runs the Core Engine sleeps.
+the Application is blocked (i.e., when all the MicroEJ threads
+sleep), the RTOS task running the Core Engine sleeps.
 
 Capabilities
 ============
