@@ -73,7 +73,8 @@ Foundation Libraries
 Integration
 ~~~~~~~~~~~
 
-- Updated default value of VEE Port configuration option ``vendorURL`` 
+- Updated default value of VEE Port configuration option ``vendorURL``.
+- Renamed MicroEJ launch :guilabel:`Build dynamic Feature` to :guilabel:`Build Feature`.
 
 
 Simulator
