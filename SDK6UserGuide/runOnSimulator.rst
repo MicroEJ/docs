@@ -70,7 +70,7 @@ The SDK allows to run an Application with the Simulator in debug mode thanks to 
 This task activates the debug mode on the port ``12000`` by default. 
 The port can be changed by using the System Property ``debug.port``::
 
-   gradle debugOnSimulator -Ddebug.port=8000
+   gradle debugOnSimulator -P"debug.port"=8000
 
 Once started, the Simulator waits for the connection of a debugger.
 
