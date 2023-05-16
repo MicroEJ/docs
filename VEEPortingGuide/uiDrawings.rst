@@ -664,8 +664,144 @@ Drawing logs
 XXX TODO XXX
 
 * link to app dev guide
-* emb: how to flag + example
-* sim: how to flag + example
+
+When performing drawing operations, it may happen that the program fails or encounters an incident of some kind.
+MicroUI offers a mechanism allowing the VEE port to report such incidents to the application through the use of flags.
+
+Usage overview
+--------------
+
+When an incident occurs, the VEE port can report it to the application by setting the *drawing log flags* stored in the graphics context.
+The flags will then be made available to the application.
+
+Without an intervention from the application, the drawing log flags retain their values through every call to drawing functions and are cleared when a flush is performed.
+
+.. note::
+
+   The clearing of drawing log flags can be disabled at build time by the application developer.
+
+Incidents are split in two categories:
+
+* *Non-critical* incidents, or *warnings*, are incidents that the application developer may ignore.
+  The flags are made available for the application to check them, but without an explicit statement in the application, these incidents will be ignored silently.
+* *Critical* incidents, or *errors*, are failures important enough that the application developer should not ignore them.
+  As for warnings, the application may check the drawing log flags explicitly.
+  However, when flushing the display, the application will check the flags and throw an exception if an error was reported.
+
+.. warning::
+
+   As this behavior can be disabled at build time, the drawing log flags are meant to be used as a **debugging hint** when the application does not display what the developer expects.
+   The VEE port must **not** rely on applications throwing an exception if an error was reported, or on the drawing log flags being reset after the display is flushed.
+
+.. note::
+
+   Any type of incident may be either a *warning* or an *error*.
+   They are differentiated with the special flag ``DRAWING_LOG_ERROR``.
+
+Available constants
+-------------------
+
+MicroUI offers a set of flag constants to report incidents.
+They are defined and documented in ``LLUI_PAINTER_impl.h`` (for embedded targets) and ``LLUIPainter`` (for front panels).
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 10 60
+
+   * - Constant
+     - Value
+     - Description
+   * - ``DRAWING_LOG_NOT_IMPLEMENTED``
+     - ``1 << 0``
+     - This function is not implemented.
+   * - ``DRAWING_LOG_FORBIDDEN``
+     - ``1 << 1``
+     - This function must not be called in this situation.
+   * - ``DRAWING_LOG_OUT_OF_MEMORY``
+     - ``1 << 2``
+     - The system ran out of memory.
+   * - ``DRAWING_LOG_CLIP_MODIFIED``
+     - ``1 << 3``
+     - The VEE port modified clip values in the graphics context.
+   * - ``DRAWING_LOG_LIBRARY_INCIDENT``
+     - ``1 << 29``
+     - An incident occurred in an unterlying library.
+   * - ``DRAWING_LOG_UNKNOWN_INCIDENT``
+     - ``1 << 30``
+     - An incident that does not match other flags occurred.
+   * - ``DRAWING_LOG_ERROR``
+     - ``1 << 31``
+     - Special flag denoting critical incidents.
+
+The special value ``DRAWING_SUCCESS`` (defined as ``0``) represents a state where no drawing log flags are set, so encountering this value means that no incident was reported.
+
+New flag constants may be added in future versions of MicroUI.
+Also, their actual values may change and the developer should not rely on them.
+
+.. hint::
+
+   Sometimes, incidents may match more than one flag constant.
+   In such cases, the VEE port may report the incident with multiple flags by combining them with the bitwise OR operator (``|``) just like any other flags.
+   For example, an out-of-memory incident occurring in an underlying drawing library may be reported with the value ``DRAWING_LIBRARY_INCIDENT | DRAWING_OUT_OF_MEMORY``.
+
+Embedded targets
+----------------
+
+MicroUI exposes two functions to be used in the VEE port.
+Both functions are declared in ``LLUI_DISPLAY.h`` and their documentation is available in that file.
+
+* ``LLUI_DISPLAY_reportWarning`` reports a warning to the application.
+  It will set the flags passed as an argument in the graphics context.
+  It will *not* reset the previous flag values, thus retaining all reported incidents until the flags are cleared by the application.
+* ``LLUI_DISPLAY_reportError`` reports an error to the application.
+  It behaves similarly to ``LLUI_DISPLAY_reportWarning``, except it will additionally set the flag ``DRAWING_LOG_ERROR``.
+  This special flag will cause an exception to be thrown in the application the next time the display is flushed.
+
+For example, if the VEE port contains a custom implementation to draw a line that may cause an out-of-memory error, it could report this error this way:
+
+.. code:: c
+
+   void LLUI_PAINTER_IMPL_drawLine(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY) {
+      // This could cause an out-of-memory error.
+      unsigned int result = custom_line_drawing();
+
+      // Check if an error occurred.
+      if (result == OUT_OF_MEMORY) {
+         // If an error occurred, set the corresponding flag.
+         LLUI_DISPLAY_reportError(gc, DRAWING_LOG_OUT_OF_MEMORY);
+      }
+   }
+
+Simulator
+---------
+
+Similarly, MicroUI exposes two functions to set drawing log flags in the front panel implementation.
+Both functions are declared as methods of the interface ``MicroUIGraphicsContext`` and are documented there.
+The graphics engine provides an implementation for these methods.
+
+* ``MicroUIGraphicsContext.reportWarning`` behaves like ``LLUI_DISPLAY_reportWarning`` and reports a warning to the application.
+* ``MicroUIGraphicsContext.reportError`` behaves like ``LLUI_DISPLAY_reportError`` and reports an error to the application.
+
+The front panel version of the previous example that reported an out-of-memory error would look like this:
+
+.. code:: java
+
+   public static void drawLine(byte[] target, int startX, int startY, int endX, int endY) {
+      LLUIDisplay engine = LLUIDisplay.Instance;
+
+      synchronized (engine) {
+         MicroUIGraphicsContext gc = engine.mapMicroUIGraphicsContext(target);
+
+         // This could cause an out-of-memory error.
+         int result = CustomDrawings.drawLine();
+
+         // Check if an error occurred.
+         if (result == Constants.OUT_OF_MEMORY) {
+            // If an error occurred, set the corresponding flag.
+            gc.reportError(gc, DRAWING_LOG_OUT_OF_MEMORY);
+         }
+      }
+   }
 
 
 .. _AWT BufferedImage: https://docs.oracle.com/javase/7/docs/api/java/awt/image/BufferedImage.html
