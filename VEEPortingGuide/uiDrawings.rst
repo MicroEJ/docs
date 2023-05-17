@@ -658,6 +658,8 @@ The native drawing function implementation pattern is (see below for the explana
 
 This implementation has to follow the same rules than the custom MicroUI drawings implementation: see :ref:`section_drawings_sim_custom`.
 
+.. _section.veeport.ui.drawings.drawing_logs:
+
 Drawing logs
 ============
 
