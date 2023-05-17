@@ -663,10 +663,6 @@ This implementation has to follow the same rules than the custom MicroUI drawing
 Drawing logs
 ============
 
-XXX TODO XXX
-
-* link to app dev guide
-
 When performing drawing operations, it may happen that the program fails or encounters an incident of some kind.
 MicroUI offers a mechanism allowing the VEE port to report such incidents to the application through the use of flags.
 
@@ -675,6 +671,7 @@ Usage overview
 
 When an incident occurs, the VEE port can report it to the application by setting the *drawing log flags* stored in the graphics context.
 The flags will then be made available to the application.
+See :ref:`section.ui.Drawings` for more information on reading the flags in the application.
 
 Without an intervention from the application, the drawing log flags retain their values through every call to drawing functions and are cleared when a flush is performed.
 
