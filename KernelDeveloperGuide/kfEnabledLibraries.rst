@@ -8,7 +8,7 @@ by a Kernel with its APIs exposed to Features.
 
 A library requires specific code for enabling Multi-Sandbox in the following cases:
 
-- it implements and internal global state: lazy initialization of a singleton, registry of callbacks, internal cache, ...,
+- it implements an internal global state: lazy initialization of a singleton, registry of callbacks, internal cache, ...,
 - it provides access to native resources that must be controlled using a Security Manager.
 
 Otherwise the library is called a stateless library.
