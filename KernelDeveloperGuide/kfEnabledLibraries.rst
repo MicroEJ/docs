@@ -75,7 +75,8 @@ This is how is implemented the well known `Math.random()`_ method:
       }
    }
 
-To enable this code for Multi-Sandbox, you simply can declare the static field local to the Context.
+To enable this code for Multi-Sandbox, you can simply declare the static field local to the context.
+For that, create a ``kernel.intern`` file at the root of the application classpath (e.g. in ``src/main/resources`` directory) with the following content:
 
 .. code-block:: xml
 
