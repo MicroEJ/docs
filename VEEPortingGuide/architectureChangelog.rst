@@ -78,6 +78,7 @@ Foundation Libraries
 - Removed Foundation Libraries API Jars and Javadoc.
 - Fixed :ref:`option_embed_utf8` defaults to ``true`` when building a Standalone Application using MMM.
 - Removed `Unknown product - Unknown version` comment in auto-generated Low Level API header files.
+- Removed the ``Serial Communication`` modules group, including the Foundation Libraries ``ECOM`` and ``ECOM-COMM``.
 
 Integration
 ~~~~~~~~~~~
