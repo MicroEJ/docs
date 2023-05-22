@@ -63,14 +63,15 @@ Debug on Simulator
 .. warning::
    IntelliJ IDEA cannot be used as the debugger client for the moment, use Eclipse instead.
 
-The SDK allows to run an Application with the Simulator in debug mode thanks to the Gradle task ``debugOnSimulator``::
+The SDK allows to run an Application with the Simulator in debug mode by setting the System property ``debug.mode`` to ``true`` 
+when executing the runOnSimulator task::
 
-   gradle debugOnSimulator
+   gradle runOnSimulator -P"debug.mode"=true
 
-This task activates the debug mode on the port ``12000`` by default. 
+The debug mode is activated on the port ``12000`` by default. 
 The port can be changed by using the System Property ``debug.port``::
 
-   gradle debugOnSimulator -P"debug.port"=8000
+   gradle runOnSimulator -P"debug.mode"=true -P"debug.port"=8000
 
 Once started, the Simulator waits for the connection of a debugger.
 
@@ -113,7 +114,7 @@ If multiple VEE Ports are defined, the task fails with a message listing all the
  
 To run or debug an Application, you must select the VEE Port to use by setting the ``veePort`` property to the 
 :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port when calling 
-the ``runOnSimulator`` or ``debugOnSimulator`` task::
+the ``runOnSimulator`` task::
 
    gradle runOnSimulator -PveePort="veePortName"
 
