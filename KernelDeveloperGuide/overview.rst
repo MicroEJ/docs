@@ -162,14 +162,8 @@ Firmware implementations must cover the following topics:
    extending them with features that are specific to the firmware, like
    deployment of an application, a management console, ...
 
--  System Applications: pre-built applications that can be embedded as
-   System Apps into a firmware. Some of them are user-land counter
-   parts of the Kernel, implementing the application lifecycle for the
-   firmware's application framework (e.g. the Wadapps Framework). These
-   "Kernel System Applications" rely on a dedicated set of interfaces to
-   interact with the Kernel, this interface being defined in a dedicated
-   module.
-
+-  System Applications: pre-built applications that can be embedded 
+   into a firmware. Some of them are user-land counter parts of the Kernel.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
