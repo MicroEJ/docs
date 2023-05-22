@@ -55,6 +55,7 @@ To remove these modules, open the ``.platform`` file using a text editor and rem
     <group name="device"/>
     <group name="ecom"/>
 
+.. _architecture7_migration_device:
 
 Migrate Device Module
 ~~~~~~~~~~~~~~~~~~~~~
