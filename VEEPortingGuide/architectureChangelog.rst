@@ -86,6 +86,7 @@ Integration
 
 - Updated default value of VEE Port configuration option ``vendorURL``.
 - Renamed MicroEJ launch :guilabel:`Build dynamic Feature` to :guilabel:`Build Feature`.
+- Removed deprecated ``Device`` module. See :ref:`architecture7_migration_device`.
 
 Simulator
 ~~~~~~~~~
