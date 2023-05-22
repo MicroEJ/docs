@@ -17,7 +17,6 @@ digraph mygraph {
     "loadExecutableConfiguration" [fillcolor = "#f76241"] 
     "loadTestApplicationConfiguration" [fillcolor = "#f76241"]
     "runOnSimulator" [fillcolor = "#f76241"]
-    "debugOnSimulator" [fillcolor = "#f76241"]
     "testOnSimulator" [fillcolor = "#f76241"]
     "buildWPK" [fillcolor = "#f76241"]
     "buildExecutable" [fillcolor = "#f76241"]
@@ -44,7 +43,6 @@ digraph mygraph {
     "jar" -> "classes"
     "runOnSimulator" -> "classes"
     "runOnSimulator" -> "loadApplicationConfiguration"
-    "debugOnSimulator" -> "loadApplicationConfiguration"
     "loadApplicationConfiguration" -> "loadVeePort"
     "checkModule" -> "assemble"
     "check" -> "checkModule"
