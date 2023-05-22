@@ -18,7 +18,7 @@ Each drawing can be overwritten independently in the VEE Port:
 - to target a destination whose format is different than the display buffer format,
 - etc.
  
-The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h`` (for the `Drawing`_ library) for the Embedded VEE Port and, respectively ``LUIPainterImpl.java`` and ``LLDWPainterImpl.java`` for the Simulation VEE Port. 
+The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h`` (for the `Drawing`_ library) for the Embedded VEE Port and, respectively ``LUIPainter.java`` and ``LLDWPainter.java`` for the Simulation VEE Port. 
 
 The implementation must take care about a lot of constraints: synchronization between drawings, Graphics Engine notification, MicroUI `GraphicsContext`_ clip and colors, flush dirty area, etc. 
 The principle of implementing a MicroUI drawing function is described in the chapter :ref:`section_drawings_custom`. 
@@ -29,7 +29,7 @@ Destination Format
 Since MicroUI 3.2, the destination buffer of the drawings can be different than the display buffer format (see :ref:`section_image_display_raw`).
 This destination buffer format can be a :ref:`standard format <section_image_standard_raw>` (ARGB8888, A8, etc.) or a :ref:`custom format <section_image_custom_raw>`. 
 
-See :ref:`section_buffered_image` to have more information how to create buffered images with another format than the display format and how to draw into.
+See :ref:`section_buffered_image` to have more information about how to create buffered images with another format than the display format and how to draw into.
 
 .. _section_drawings_soft:
 
@@ -43,7 +43,7 @@ These software algorithms:
 * use the current MicroUI GraphicsContext foreground color and optional background color,
 * update the next `Display.flush()`_ dirty area.
 
-The Graphics Engine provides a header file ``ui_drawing_soft.h`` (emb) and a class file ``DisplayDrawer`` (sim) to let the VEE Port using these algorithms.
+The Graphics Engine provides a header file ``ui_drawing_soft.h`` (emb) and an implementation instance of ``UIDrawing`` that can be retrieved with ``ej.microui.display.LLUIDisplay.getUIDrawerSoftware()`` (sim) to let the VEE Port use these algorithms.
 For instance, a GPU may be able to draw an image whose format is RGB565 but not ARGB1555.
 For this image format, BSP implementation can call ``UI_DRAWING_SOFT_drawImage`` function.
 
@@ -323,8 +323,10 @@ Principle
 
 This is the same principle as :ref:`section_drawings_cco` for the Embedded side: 
 
-* there is a cut between the MicroUI native method and the drawing itself: the class ``LLUIPainterImpl`` synchronizes the drawings with the Graphics Engine and dispatches the drawing itself to an implementation of the interface ``UIDrawing``,
-* the Front Panel features ``DisplayDrawer``: an implementation of ``UIDrawing`` that calls the Graphics Engine software algorithms.
+* The drawing primitive natives called the matching method in ``LLUIPainter``.
+* The ``LLUIPainter`` synchronizes the drawings with the Graphics Engine and dispatches the drawing itself to an implementation of the interface ``UIDrawing``.
+* The Front Panel provides a software implementation of ``UIDrawing`` available by calling ``ej.microui.display.LLUIDisplay.getUIDrawerSoftware()``.
+* The ``DisplayDrawer`` implements ``UIDrawing`` and is used to draw in the display buffer and the images with the same format.
 
 These classes are available in the :ref:`UI Pack extension <section_ui_simulation>` of the Front Panel Mock.
 
@@ -334,7 +336,7 @@ Default Implementation
 ----------------------
 
 The default implementation is the most used. 
-It takes into account:
+It considers that:
 
 * there is only one destination format (the display buffer format),
 * no drawing is overwritten in the BSP (no third-party library),
@@ -342,8 +344,8 @@ It takes into account:
 
 The :ref:`UI Pack extension <section_ui_simulation>` is designed to simplify the UI VEE Port:
 
-* just need to add the dependency to the UI Pack extension is the VEE Port Front Panel project,
-* functions indirections are limited (the software drawing algorithm is called as faster as possible).
+* Simply add the dependency to the UI Pack extension in the VEE Port Front Panel project.
+* Functions indirections are limited (the software drawing algorithm is called as fast as possible).
 
 The following graph illustrates the steps to perform a shape drawing (not an image):
 
@@ -409,7 +411,7 @@ The Graphics Engine requires the synchronization between the drawings.
 To do that, the drawing is synchronized on the instance of the Graphics Engine itself.
 
 The target (the Front Panel object that maps the MicroUI `GraphicsContext`_) is retrieved in the native drawing method by asking to the Graphics Engine to map the byte array (returned by ``GraphicsContext.getSNIContext()``).
-Like embedded side, this object holds a clip and the drawer is not allowed to perform a drawing outside this clip (otherwise the behavior is unknown). 
+Like the embedded side, this object holds a clip and the drawer is not allowed to perform a drawing outside this clip (otherwise the behavior is unknown). 
 
 **DisplayDrawer.drawLine** (available in UI Pack extension)
 
@@ -420,8 +422,8 @@ Like embedded side, this object holds a clip and the drawer is not allowed to pe
 		LLUIDisplay.Instance.getUIDrawerSoftware().drawLine(gc, x1, y1, x2, y2);
 	}
 
-The implementation of ``DisplayDrawer`` only consists to call the Graphics Engine' software algorithm. 
-This software algorithm will respect the `GraphicsContext`_ color and clip and will update the `Display.flush()`_ dirty area.
+The implementation of ``DisplayDrawer`` simply calls the Graphics Engine's software algorithm. 
+This software algorithm will use the `GraphicsContext`_ color and clip and will update the `Display.flush()`_ dirty area.
 
 .. _section_drawings_sim_custom:
 
@@ -429,18 +431,18 @@ Custom Implementation
 ---------------------
 
 The custom implementation is useful to connect a third-party library or to simulate the same constraints as the embedded side (the same GPU constraints).
-It takes into account:
+It considers that:
 
 * there is only one destination format (the display buffer format),
 * :ref:`non-standard images <section_image_custom_raw>` cannot be used as source.
 
 The :ref:`UI Pack extension <section_ui_simulation>` is designed to simplify the adding of third-party drawers:
 
-* just need to add the dependency to the UI Pack extension is the VEE Port Front Panel project,
-* add a subclass of ``DisplayDrawer`` (implementation of the interface ``UIDrawing``), 
-* overwrite only the expected drawing(s),
-* a drawing implementation has just to respect the clip and color (synchronization with the Graphics Engine already done),
-* methods indirections are limited (the drawing algorithm is called as faster as possible).
+* Add the dependency to the UI Pack extension in the VEE Port Front Panel project.
+* Create a subclass of ``DisplayDrawer`` (implementation of the interface ``UIDrawing``).
+* Overwrite only the desired drawing(s).
+* Each drawing implementation must comply with the clip and color (synchronization with the Graphics Engine already done).
+* Functions indirections are limited (the drawing algorithm is called as fast as possible).
 
 The following graph illustrates the steps to perform a shape drawing (not an image):
 
@@ -490,7 +492,7 @@ The following graph illustrates the steps to perform a shape drawing (not an ima
 
 |
 
-Take the same example than the default implementation (draw a line): the Front Panel project has just to configure its own drawer as default drawer:
+Let's use the same example as the previous section (draw line function): the Front Panel project has to create its own drawer based on the default drawer:
 
 **MyDrawer** (to write in the Front Panel project)
 
@@ -525,38 +527,49 @@ The Front Panel framework is running over AWT.
 The method ``gc.getImage()`` returns a ``ej.fp.Image``. 
 It is the representation of a MicroUI Image in the Front Panel framework. 
 The method ``gc.getImage().getRAWImage()`` returns the implementation of the Front Panel image on the J2SE framework: a `AWT BufferedImage`_. 
-From this image, retrieve the AWT graphics.
+The AWT graphics 2D can be retrieved from this buffered image.
 
-The MicroUI color (``gc.getRenderingColor()``) is converted in an AWT color.
+The MicroUI color (``gc.getRenderingColor()``) is converted to an AWT color.
 After the drawing, the implementation updates the Graphics Engine dirty area by calling ``gc.setDrawingLimits()``.
 
-The method behavior is exactly the same than the embedded side, see :ref:`section_drawings_cco_custom`.
+The method behavior is exactly the same as the embedded side, see :ref:`section_drawings_cco_custom`.
+
+This newly created drawer must now replace the default display drawer.
+There are two possible ways to register it:
+- Declare it as a UIDrawing service.
+- Declare it programmatically.
 
 **Service UIDrawing**
 
-XXX TODO XXX
+- Create a new file in the resources of the Front Panel project named ``META-INF/services/ej.microui.display.UIDrawing`` and write the fully qualified name of the previously created drawer:
 
-XXX two solutions
+.. code-block::
 
-* use the service loader: does not work because the default display drawer is set after registerAllDrawers and by consequence it erases the previous conf
-* use an empty widget like described here: https://docs.microej.com/en/latest/VEEPortingGuide/uiSimulation.html#custom-drawings: does not work because the method ``com.is2t.microbsp.microui.natives.DisplaySystemWrapper.getDisplayFormat(DisplaySystemWrapper.java:210)`` returns null because the ``DisplaySystemInstance`` is not set yet
+   com.mycompany.MyDrawer
 
-TODO 
+**Programmatically**
 
-* fix both solutions
-* update the chapter
+- Create an empty widget to invoke the new implementation:
+.. code-block:: java
 
-if solution one:
+   @WidgetDescription(attributes = { })
+   public class Init extends Widget{
+      @Override
+      public void start() {
+         super.start();
+         LLUIPainter.setDrawer(new MyDrawer());
+      }
+   }
+   
+- Invokes this widget in the .fp file:
+.. code-block:: java
 
-* new chapter content (describe the meta inf service loader)
-* other ?
-* remove the chapter https://docs.microej.com/en/latest/VEEPortingGuide/uiSimulation.html#custom-drawings
-
-if solution two:
-
-* move chapter https://docs.microej.com/en/latest/VEEPortingGuide/uiSimulation.html#custom-drawings here: The drawer ``MyDrawer`` must be registered as the drawer for the *display* buffers...
-* other ? 
-* remove the chapter https://docs.microej.com/en/latest/VEEPortingGuide/uiSimulation.html#custom-drawings
+   <frontpanel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://developer.microej.com" xsi:schemaLocation="https://developer.microej.com .widget.xsd">
+      <device name="STM32429IEVAL" skin="Board-480-272.png">
+         <com.is2t.microej.fp.Init/>
+         [...]
+      </device>
+   </frontpanel>
 
 .. _section_drawings_custom:
 
@@ -567,9 +580,10 @@ Principle
 ---------
 
 MicroUI allows to add some custom drawings (== a drawing that is not listed in the MicroUI Painter classes).
-A custom drawing has to respect the same rules than the MicroUI drawings to not corrupt the MicroUI execution (flickering, memory corruption, unknown behavior, etc.). 
+A custom drawing has to respect the same rules as the MicroUI drawings to avoid corrupting the MicroUI execution (flickering, memory corruption, unknown behavior, etc.). 
 
-As explained above, MicroUI implementation provides an Abstraction Layer that lists all MicroUI Painter drawings native function and their implementations (:ref:`section_drawings_cco` and :ref:`section_drawings_sim`). The implementation of MicroUI Painter drawings should be used as model to implement the custom drawings.
+As explained above, MicroUI implementation provides an Abstraction Layer that lists all MicroUI Painter drawing native functions and their implementations (:ref:`section_drawings_cco` and :ref:`section_drawings_sim`).
+The implementation of MicroUI Painter drawings should be used as model to implement the custom drawings.
 
 Application Method
 ------------------
