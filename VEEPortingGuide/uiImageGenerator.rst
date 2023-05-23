@@ -41,7 +41,7 @@ Process overview (see too :ref:`section_image_core_process`)
 The image generator can run in two modes: 
 
 * Standalone mode: the image to convert (input files) are standard (PNG, JPEG, etc.), the generated binary files are in MicroEJ format and do not depend on platform characteristics or restrictions (see :ref:`section_image_standard_raw`).
-* Extended mode: the image to convert (input files) may be custom, the generated binary files can be encoded in customized MicroEJ format (can depend on several platform characteristics and restrictions, see :ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`) or the generated files are encoded in another format than MicroEJ format (binary format, see :ref:`section_image_binary_raw`).
+* Extended mode: the image to convert (input files) may be custom, the generated binary files can be encoded in customized MicroEJ format (can depend on several platform characteristics and restrictions, see :ref:`section_image_display_raw`, :ref:`section_image_gpu_raw` and :ref:`section_image_custom_raw`) or the generated files are encoded in another format than MicroEJ format (binary format, see :ref:`section_image_binary_raw`).
 
 Structure
 =========
@@ -191,15 +191,15 @@ This alignment will be used by the Image Generator and also by the Image Loader.
 VEE Port MicroEJ Custom Format
 ==============================
 
-XXX TODO XXX
-
-* how to create
-* how to use  : cf chapter renderer
+The Image Generator does not yet provide a service for generating the :ref:`section_image_custom_raw`.
+A custom image can only be created at runtime, see :ref:`section_buffered_image`.
 
 VEE Port Binary Format
 ======================
 
-As mentioned XXX virer le n above (:ref:`section_image_binary_raw`), the Image Generator is able to generate a binary file compatible with platform (and not compatible with Image Renderer). This is very useful when a platform library offers the possibility to use other kinds of images than MicroUI library. The binary file can be encoded according to the options the user gives in the images list file.
+The Image Generator is able to generate a :ref:`binary file <section_image_binary_raw>` compatible with the VEE Port (and not compatible with the Image Renderer). 
+This is very useful when a VEE Port features a foundation library that offsers the possibility to use other kinds of images than MicroUI library. 
+The binary file can be encoded according to the options the user gives in the images list file.
 
 1. Open image generator extension project.
 2. Create an implementation of the interface ``com.microej.tool.ui.generator.ImageConverter``.
@@ -207,9 +207,10 @@ As mentioned XXX virer le n above (:ref:`section_image_binary_raw`), the Image G
 4. Note down the name of created class, with its package and classname.
 5. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
 
-XXX TODO XXX
+The binary file can have two kind of formats (see the API ``OutputFileType getType()``):
 
-* how to use it ?
+* A simple resource: the output binary file is embedded as a resource; the application (or the library) can retrieve the file by using an API like ``getResourceAsStream()``.
+* An immutable file: the output file contains one or several :ref:`immutable objects <section.classpath.elements.immutables>`; the application (or the library) can retrieve the objects by using the :ref:`runtime_bon` library.
 
 .. _section_image_generator_conffile:
 
