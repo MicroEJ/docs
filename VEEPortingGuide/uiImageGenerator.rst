@@ -188,6 +188,8 @@ If the only constraint is the pixels array alignment, the Image Generator extens
 
 This alignment will be used by the Image Generator and also by the Image Loader.
 
+.. _section_imagegenerator_custom_format:
+
 VEE Port MicroEJ Custom Format
 ==============================
 
