@@ -536,6 +536,7 @@ The method behavior is exactly the same as the embedded side, see :ref:`section_
 
 This newly created drawer must now replace the default display drawer.
 There are two possible ways to register it:
+
 - Declare it as a UIDrawing service.
 - Declare it programmatically.
 
@@ -550,6 +551,7 @@ There are two possible ways to register it:
 **Programmatically**
 
 - Create an empty widget to invoke the new implementation:
+
 .. code-block:: java
 
    @WidgetDescription(attributes = { })
@@ -562,6 +564,7 @@ There are two possible ways to register it:
    }
    
 - Invokes this widget in the .fp file:
+
 .. code-block:: java
 
    <frontpanel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://developer.microej.com" xsi:schemaLocation="https://developer.microej.com .widget.xsd">
