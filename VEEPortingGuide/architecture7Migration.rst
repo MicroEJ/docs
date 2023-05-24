@@ -98,6 +98,8 @@ The following dependency must be added to the :ref:`module.ivy <mmm_module_descr
       
      <dependency org="com.microej.pack.device" name="device-pack" rev="1.1.1" />
 
+.. _architecture7_migration_ecom:
+
 Migrate ECOM-COMM Module
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
