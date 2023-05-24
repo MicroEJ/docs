@@ -688,7 +688,7 @@ Usage overview
 
 When an incident occurs, the VEE port can report it to the application by setting the *drawing log flags* stored in the graphics context.
 The flags will then be made available to the application.
-See :ref:`section.ui.Drawings` for more information on reading the flags in the application.
+See :ref:`section.ui.drawing_logs` for more information on reading the flags in the application.
 
 Without an intervention from the application, the drawing log flags retain their values through every call to drawing functions and are cleared when a flush is performed.
 

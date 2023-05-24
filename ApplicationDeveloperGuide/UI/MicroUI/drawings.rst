@@ -1,7 +1,7 @@
-.. _section.ui.Drawings:
+.. _section.ui.drawing_logs:
 
-Drawings
-========
+Drawing Logs
+============
 
 When performing drawing operations, it may happen that the VEE port reports incidents that occurred during a drawing to the application.
 To do so, graphics contexts hold flags that can be set by the VEE port and read by the application.
