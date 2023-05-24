@@ -12,6 +12,11 @@ and select :guilabel:`Debug As` > :guilabel:`MicroEJ Application`.
 
    MicroEJ Development Tools Overview of the Debugger
 
+It makes use of Eclipse Java debugger client.
+If you are unfamiliar with Java debugging or Eclipse IDE, see `Debugging the Eclipse IDE for Java Developers`_ to get started.
+
+.. _Debugging the Eclipse IDE for Java Developers:  https://www.eclipse.org/community/eclipse_newsletter/2017/june/article1.php
+
 All libraries included in MicroEJ SDK are provided with their source code and resources.
 The way the sources are retrieved depends on the kind of library (Add-On Library or Foundation Library).
 
