@@ -39,7 +39,7 @@ Your VEE Port must be updated to remove files that are now included in Architect
   - ``tools/license-checker.jar``
   - ``workbenchExtension-launchScriptFramework.jar``
 
-- Rebuild your Platform.
+- Rebuild your VEE Port.
 - Rebuild your Executable.
 
 Update BSP with new Sections Names
