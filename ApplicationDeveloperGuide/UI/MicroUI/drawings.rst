@@ -91,8 +91,8 @@ Or the developer could explicitly retrieve the value of the flags:
 
    // This retrieves the values of drawing log flags.
    int flags = gc.getAndClearDrawingLogFlags();
-   // This prints "-2147483647" (DRAWING_LOG_ERROR | DRAWING_LOG_NOT_IMPLEMENTED == 1 << 31 | 1 << 0).
-   System.out.println(flags);
+   // This prints "80000001" (DRAWING_LOG_ERROR | DRAWING_LOG_NOT_IMPLEMENTED == 1 << 31 | 1 << 0).
+   System.out.println(Integer.toHexString(flags));
 
 Configuration
 -------------
