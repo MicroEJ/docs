@@ -13,7 +13,7 @@ Update Platform Configuration Additions
 Architecture ``8.0.0`` now directly integrates the :ref:`bsp_connection` mechanism.
 Consequently, Platform Configuration Additions files have been separated in two directories:
 
-- ``content-sdk-5``: files required for building the Platform using SDK 5.x (MMM)
+- ``content-sdk-5``: files required for building the VEE Port using SDK 5.x (MMM)
 - ``content-architecture-7``: files required for building the Executable using Architecture 7.x. 
 
 See https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/README.rst for more details.
