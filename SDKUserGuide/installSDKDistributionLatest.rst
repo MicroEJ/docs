@@ -22,7 +22,7 @@ Download the SDK Distribution ``23.02`` installer for your operating system:
 - `Windows (.exe) <https://repository.microej.com/packages/SDK/23.02/MicroEJ-SDK-Installer-Win64-23.02.exe>`__
 - `Linux  (.zip) <https://repository.microej.com/packages/SDK/23.02/MicroEJ-SDK-Installer-Linux64-23.02.zip>`__
 - `macOS x86_64 - Intel chip (.zip) <https://repository.microej.com/packages/SDK/23.02/MicroEJ-SDK-Installer-MacOS-23.02.zip>`__
-- `macOS aarch64 - M1 chip (.zip) <https://repository.microej.com/packages/SDK/23.02/MicroEJ-SDK-Installer-MacOS-A64-23.02.zip>`__
+- `macOS aarch64 - M1 chip (.zip) <https://repository.microej.com/packages/SDK/23.02/MicroEJ-SDK-Installer-MacOS-A64-23.02.zip>`__ (requires :ref:`Architecture 7.18.0 or higher <changelog-7.18.0>`)
 
 Check JDK Version
 -----------------
