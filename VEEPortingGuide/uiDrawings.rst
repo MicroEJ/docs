@@ -771,7 +771,7 @@ Both functions are declared in ``LLUI_DISPLAY.h`` and their documentation is ava
   It will *not* reset the previous flag values, thus retaining all reported incidents until the flags are cleared by the application.
 * ``LLUI_DISPLAY_reportError`` reports an error to the application.
   It behaves similarly to ``LLUI_DISPLAY_reportWarning``, except it will additionally set the flag ``DRAWING_LOG_ERROR``.
-  This special flag will cause an exception to be thrown in the application the next time the display is flushed.
+  This special flag will cause an exception to be thrown in the application the next time the application checks the flags.
 
 For example, if the VEE port contains a custom implementation to draw a line that may cause an out-of-memory error, it could report this error this way:
 
