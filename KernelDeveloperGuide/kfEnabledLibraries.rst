@@ -11,23 +11,23 @@ A library requires specific code for enabling Multi-Sandbox in the following cas
 - it implements an internal global state: lazy initialization of a singleton, registry of callbacks, internal cache, ...,
 - it provides access to native resources that must be controlled using a Security Manager.
 
-Otherwise the library is called a stateless library.
-A stateless library is Multi-Sandbox enabled by default: it can be embedded by the Kernel and its APIs directly exposed to Features without code modification.
+Otherwise, the library is called a stateless library.
+A stateless library is Multi-Sandbox enabled by default: it can be embedded by the Kernel, and its APIs are directly exposed to Features without code modification.
 
 .. note::
    
-   This chapter applies more generally to any Kernel code, not only to Libraries.
+   This chapter generally applies to any Kernel code, not just libraries.
 
 Manage Internal Global State
 ----------------------------
 
-A Library may define code that performs modifications of its internal state, for example:
+A library may define code that performs modifications of its internal state, for example:
 
 - lazy initialization of a singleton,
 - registering/un-registering a callback,
 - maintaining an internal global cache, ...
 
-By default, calling one of these APIs from a Feature context will throw one of the following error:
+By default, calling one of these APIs from a Feature context will throw one of the following errors:
 
 .. code-block:: 
    
@@ -41,12 +41,12 @@ By default, calling one of these APIs from a Feature context will throw one of t
       ...
       at <Feature Method>
 
-The reason is that the Core Engine rejects the assignment of a Feature object in a static field or an instance field owned by the Kernel.
+The reason is that the Core Engine rejects assigning a Feature object in a static field or an instance field owned by the Kernel.
 See the :ref:`KF library access error codes <kf-access-error-codes>` for more details.
-This prevents to create unwanted object links from the Feature to the Kernel, which would lead to stale references when stopping the Feature.
+This prevents unwanted object links from the Kernel to the Feature, which would lead to stale references when stopping the Feature.
 
 The library code must be adapted to implement the desired behavior when the code is called from a Feature context. 
-Next sections describe the most common strategies applied on a concrete example:
+The following sections describe the most common strategies applied on a concrete example:
 
 - declaring a static field local to the Feature,
 - allowing a field assignment in Kernel mode,
@@ -56,11 +56,11 @@ Declare a Static Field Local to the Feature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The :ref:`kf_specification` defines Context Local Storage for static fields.
-This indicates the Core Engine to allocate a dedicated memory slot to store the static field for each execution context (the Kernel and each Feature).
+This implies that the Core Engine allocates a dedicated memory slot to store the static field for each execution context (the Kernel and each Feature).
 
-Context Local Storage for static fields is typically used when the Library defines a lazy initialized singleton. 
+Context Local Storage for static fields is typically used when the library defines a lazy initialized singleton. 
 A lazy initialized singleton is a singleton that is only allocated the first time it is required.
-This is how is implemented the well known `Math.random()`_ method:
+This is how is implemented the well-known `Math.random()`_ method:
 
 .. code-block:: java
 
@@ -76,7 +76,7 @@ This is how is implemented the well known `Math.random()`_ method:
    }
 
 To enable this code for Multi-Sandbox, you can simply declare the static field local to the context.
-For that, create a ``kernel.intern`` file at the root of the application classpath (e.g. in ``src/main/resources`` directory) with the following content:
+For that, create a ``kernel.intern`` file at the root of the library or Kernel classpath (e.g., in the ``src/main/resources`` directory) with the following content:
 
 .. code-block:: xml
 
@@ -84,13 +84,13 @@ For that, create a ``kernel.intern`` file at the root of the application classpa
       <contextLocalStorage name="java.lang.Math.RandomGenerator"/>
    </kernel>
 
-When the method is called in a new context, the static field is read to ``null``, then a new object will be allocated and assigned to the local static field.
+When the method is called in a new context, the static field is read to ``null``, and then a new object will be allocated and assigned to the local static field.
 Thus, each context will create its own instance of the ``Random`` singleton on demand.
 
 .. note:: 
 
    By default, reading a static field for the first time in a new context returns ``null``.
-   It is possible to write dedicated code for initializing the static field before it first read access.
+   However, it is possible to write dedicated code to initialize the static field before its first read access.
    See section `§4.3.3 Context Local Static Field References` of the :ref:`kf_specification` for more details.
 
    
@@ -99,9 +99,9 @@ Thus, each context will create its own instance of the ``Random`` singleton on d
 Allow a Field Assignment in Kernel Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It is possible to assign a Feature object in a static field or an instance field owned by the Kernel, provided the current context is owned by the Kernel.
-Such assignment must be removed before stopping the Feature. 
-The common way is to register a `FeatureStateListener`_ at Kernel boot. This gives a hook to remove Kernel links to Feature objects when a Feature is moving to the ``STOPPED`` state.
+It is possible to assign a Feature object in a static field or an instance field owned by the Kernel only if the Kernel owns the current context.
+Such an assignment must be removed before stopping the Feature. 
+The common way is to register a `FeatureStateListener`_ at Kernel boot. This gives a hook to remove Kernel links to Feature objects when a Feature moves to the ``STOPPED`` state.
 
 .. code-block:: java
 
@@ -115,12 +115,12 @@ The common way is to register a `FeatureStateListener`_ at Kernel boot. This giv
       }
    };
 
-Without this, the Feature will remain in the ``STOPPED`` state. It will not be possible to uninstall it or to start it again until the link is removed.
-Remaining Feature objects references by the Kernel are called Kernel stale references.
+Without this, the Feature will remain in the ``STOPPED`` state. Therefore, it will not be possible to uninstall it or start it again until the link is removed.
+The remaining Feature objects referenced by the Kernel are called Kernel stale references.
 
 .. note:: 
 
-   To help debugging your Kernel, Kernel stale references are displayed by the :ref:`Core Engine dump <vm_dump>`.
+   To help debug your Kernel, Kernel stale references are displayed by the :ref:`Core Engine dump <vm_dump>`.
 
 .. _FeatureStateListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureStateListener.html
 
@@ -128,19 +128,19 @@ Use Existing Multi-Sandbox Enabled Data Structures
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 MicroEJ Corp. provides ready-to-use classes on the shelf that are Multi-Sandbox enabled. 
-Among we can cite:
+Among them, we can cite the following:
 
-- ``KernelObservable``: Implementation of Observable which can handle observers from any Module.
+- ``KernelObservable``: Implementation of Observable that can handle observers from any Module.
 - ``KFList``: Implementation of a Collection with multi-context support.
 - ``SharedPropertyRegistry``: Map of key/value properties.
-- ``SharedServiceRegistry``: Map of api/implementation services.
+- ``SharedServiceRegistry``: Map of API/implementation services.
 
 Please contact :ref:`our support team <get_support>` for more details on usage.
 
 Implement a Security Manager Check
 ----------------------------------
 
-A Multi-Sandbox enabled Foundation Library should protect Feature accesses to native resources.
+A Multi-Sandbox enabled Foundation Library should protect Feature from accessing native resources.
 This is done by requesting a check to the current `SecurityManager`_ defined by the Kernel.
 
 The following code is the typical code that must be written at the beginning of API methods.
@@ -160,7 +160,7 @@ The following code is the typical code that must be written at the beginning of 
             MyResourcePermission = new MyResourcePermission();
 
             // Request the permission check. 
-            // If the Kernel rejects the permission it will throw a SecurityException
+            // If the Kernel rejects the permission, it will throw a SecurityException
             securityManager.checkPermission(p);
          }
       }
@@ -173,9 +173,9 @@ The following code is the typical code that must be written at the beginning of 
 .. note::
 
    The code is wrapped by a static check of the :ref:`option_enable_security_manager`.
-   By default, this option is disabled, so the code is automatically removed by the SOAR.
-   This allows to use your library in a Mono-Sandbox environment where ROM footprint matters.
-   This option shall be enabled by your Kernel to enable the Security Manager check.
+   By default, this option is disabled, so the SOAR automatically removes the code.
+   This allows you to use your library in a Mono-Sandbox environment where ROM footprint matters.
+   Your Kernel shall enable this option to trigger the Security Manager checks.
 
 .. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
 
@@ -183,10 +183,10 @@ The following code is the typical code that must be written at the beginning of 
 Known Foundation Libraries Behavior
 -----------------------------------
 
-This section details the Multi-Sandbox semantic that have been added to
+This section details the Multi-Sandbox semantic that has been added to
 Foundation Libraries in order to be Multi-Sandbox enabled.
-Usually, most of the Foundation Libraries provided by MicroEJ Corp. are Multi-Sandbox enabled,
-unless the library documentation (e.g. ``README.md``) mentions specific limitations.
+Most of the Foundation Libraries provided by MicroEJ Corp. are Multi-Sandbox enabled
+unless the library documentation (e.g., ``README.md``) mentions specific limitations.
 
 
 MicroUI
