@@ -131,7 +131,7 @@ They are defined and documented in the class ``GraphicsContext``.
      - The VEE port modified clip values in the graphics context.
    * - ``DRAWING_LOG_LIBRARY_INCIDENT``
      - ``1 << 29``
-     - An incident occurred in an unterlying library.
+     - An incident occurred in an underlying library.
    * - ``DRAWING_LOG_UNKNOWN_INCIDENT``
      - ``1 << 30``
      - An incident that does not match other flags occurred.
