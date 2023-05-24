@@ -551,9 +551,9 @@ invoking ``make`` in the FreeRTOS BSP.
 
 #. The following message appears in the console:
 
-.. code-block:: none
+   .. code-block:: none
 
-	module-platform:report:
+	 module-platform:report:
 		 [echo]     ============================================================================================================
 		 [echo]     Platform has been built in this directory 'C:\Users\user\src\tuto-from-scratch\workspace/lm3s811evb-Platform-CM0_GCC48-0.0.1'.
 		 [echo]     To import this project in your MicroEJ SDK workspace (if not already available):
@@ -561,7 +561,7 @@ invoking ``make`` in the FreeRTOS BSP.
 		 [echo]      - Check 'Select root directory' and browse 'C:\Users\user\src\tuto-from-scratch\workspace/lm3s811evb-Platform-CM0_GCC48-0.0.1' > 'Finish'
 		 [echo]     ============================================================================================================
 
-	BUILD SUCCESSFUL
+	 BUILD SUCCESSFUL
 
 #. Follow the instructions to import the generated platform in the workspace: 
 
@@ -604,7 +604,7 @@ how to build the MicroEJ Application that will run on the target
 device.
 
 For a MicroEJ Application, the BSP connection is configured in the
-``PROJECT-NAME/build/common.properties`` file.
+``PROJECT-NAME/build/emb.properties`` file.
 
 #. Create a file ``HelloWorld/build/emb.properties`` with the
    following content:
@@ -1150,7 +1150,7 @@ the ``libnosys.a`` which provides stub implementation for various
 functions.
 
 .. code-block:: diff
-  :caption: https://github.com/MicroEJ/FreeRTOS/commit/a202f43948c41b848ebfbc8c53610028c454b66f
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/eb208d846f52c0695c06456b540e412ba96e640a
 
   diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
