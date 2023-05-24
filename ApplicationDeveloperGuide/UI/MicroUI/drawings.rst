@@ -97,9 +97,9 @@ Or the developer could explicitly retrieve the value of the flags:
 Configuration
 -------------
 
-When releasing an application, the developer should disable the automatic check of drawing log flags performed when the screen is flushed.
+When releasing an application, the developer should disable the automatic check of drawing log flags performed when the display is flushed.
 This will prevent exceptions from being thrown which would cause an unexpected crash.
-It will also not clear the drawing log flags when the screen is flushed.
+It will also not clear the drawing log flags when the display is flushed.
 
 This can be done by setting the :ref:`constant <section.classpath.elements.constants>` ``com.microej.library.microui.impl.check-drawing-errors-on-flush`` to ``false`` when building the application.
 If it is not set, it defaults to ``true``.
