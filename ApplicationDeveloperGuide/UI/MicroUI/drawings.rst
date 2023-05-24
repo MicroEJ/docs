@@ -64,7 +64,7 @@ For example, if a VEE port that has no implementation to draw circles reports an
    // The VEE port has not implemented this function.
    Painter.drawCircle(gc, 1, 2, 3);
 
-   // This throws a MicroUIException.
+   // This throws a MicroUIException with the error code -13 (DRAWING_ERROR).
    Display.getDisplay().flush();
 
 The application developer could force a check of the drawing log flags:
@@ -74,13 +74,8 @@ The application developer could force a check of the drawing log flags:
    // The VEE port has not implemented this function.
    Painter.drawCircle(gc, 1, 2, 3);
 
-   try {
-      // This throws a MicroUIException.
-      int flags = gc.checkDrawingLogFlags();
-   } catch (MicroUIException e) {
-      // This prints the value of DRAWING_ERROR (-13).
-      System.out.println(e.getErrorCode());
-   }
+   // This throws a MicroUIException with the error code -13 (DRAWING_ERROR).
+   int flags = gc.checkDrawingLogFlags();
 
 Or the developer could explicitly retrieve the value of the flags:
 
