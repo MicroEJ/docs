@@ -617,6 +617,9 @@ This plugin defines the following build options:
    * - microej.testsuite.properties.testsuite.trace.port
      - The TCP/IP port to connect for retrieving test execution traces. This property is required if your :ref:`VEE Port Run script <bsp_connection_run_script>` does not redirect execution traces.
      - Not set
+   * - microej.testsuite.properties.testsuite.trace.timeout
+     - The time in seconds without activity on the standard output before the trace analysis is stopped.
+     - ``75``    
    * - cc.src.folders
      - Path to the folders containing the Java sources used for code coverage analysis.
      - Java source folder (``src/main/java``) and Add-On Processor generated source folders (``src-adpgenerated/*``) [#warning_check_sdk_5_5]_
