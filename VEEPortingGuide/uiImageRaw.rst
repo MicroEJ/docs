@@ -10,7 +10,7 @@ The Image Engine makes the distinction between:
 * The `output format`: the format of image used by the Image Renderer.
 
 Several formats are managed in input: PNG, JPEG, BMP, etc.
-But additional input formats can be supported by a specific VEE Port.
+Additional input formats can be supported by a specific VEE Port.
 
 Several formats are managed in output: the MicroEJ formats and the binary format.
 The output format can be:
@@ -19,29 +19,29 @@ The output format can be:
 * Generated from the input format by using a :ref:`runtime decoder <image_runtime_decoder>` of the :ref:`section_image_loader` at application run-time.
 * Dynamically created when using a `BufferedImage`_.
 
-The Image Renderer manages only the MicroEJ formats (:ref:`section_image_standard_raw`, :ref:`section_image_display_raw`, :ref:`section_image_gpu_raw` and :ref:`section_image_custom_raw`).
+The Image Renderer manages only the MicroEJ formats (:ref:`section_image_standard_raw`, :ref:`section_image_display_raw` and :ref:`section_image_custom_raw`).
 
 The following table list all the formats and their usage.
 
-+-----------+---------+--------+---------------+
-| Format    | Input   | Output | BufferedImage |
-+===========+=========+========+===============+
-| Display   | no      | yes    | yes           |
-+-----------+---------+--------+---------------+
-| Standard  | no      | yes    | yes (1)       |
-+-----------+---------+--------+---------------+
-| Grayscale | no      | yes    | yes (1)       |
-+-----------+---------+--------+---------------+
-| RLE       | no      | yes    | no            |
-+-----------+---------+--------+---------------+
-| GPU       | no      | yes    | yes           |
-+-----------+---------+--------+---------------+
-| Custom    | yes (2) | yes    | yes (3)       |
-+-----------+---------+--------+---------------+
-| Binary    | yes (2) | yes    | no            |
-+-----------+---------+--------+---------------+
-| Original  | yes     | no     | no            |
-+-----------+---------+--------+---------------+
++-----------+---------+---------+----------------------------+
+| Format    | Input   | Output  | BufferedImage              |
++===========+=========+=========+============================+
+| Display   | no      | yes     | yes                        |
++-----------+---------+---------+----------------------------+
+| Standard  | no      | yes     | yes [#note_bufferedimage]_ |
++-----------+---------+---------+----------------------------+
+| Grayscale | no      | yes     | yes [#note_bufferedimage]_ |
++-----------+---------+---------+----------------------------+
+| RLE       | no      | yes     | no                         |
++-----------+---------+---------+----------------------------+
+| Custom    | no      | not yet | yes [#note_bufferedimage]_ |
++-----------+---------+---------+----------------------------+
+| Binary    | no      | yes     | no                         |
++-----------+---------+---------+----------------------------+
+| Original  | yes     | no      | no                         |
++-----------+---------+---------+----------------------------+
+
+.. [#note_bufferedimage] Need some support in the VEE Port to support formats different than the display one (see :ref:`section_buffered_image`).
 
 The following sections list all the formats and their usage.
 
@@ -301,19 +301,26 @@ The following table lists the original formats that can be decoded at run-time a
 
 .. table:: Original Image Formats
 
-   +-----------------------------------------+-----------------+-------------+------------------+
-   | Type                                    | Image Generator | Front Panel | Runtime Decoders |
-   +=========================================+=================+=============+==================+
-   | Graphics Interchange Format (GIF)       | yes             | yes (1)     | no (6)           |
-   +-----------------------------------------+-----------------+-------------+------------------+
-   | Joint Photographic Experts Group (JPEG) | yes             | yes (1)     | no (6)           |
-   +-----------------------------------------+-----------------+-------------+------------------+
-   | Portable Network Graphics (PNG)         | yes             | yes (2)     | yes (2)          |
-   +-----------------------------------------+-----------------+-------------+------------------+
-   | Windows bitmap (BMP)                    | yes             | yes (3)     | yes/no (3)       |
-   +-----------------------------------------+-----------------+-------------+------------------+
-   | Web Picture (WebP)                      | yes (4)         | yes (4)     | yes (5)          |
-   +-----------------------------------------+-----------------+-------------+------------------+
+   +-----------------------------------------+-------------------+-----------------------------+----------------------------+
+   | Type                                    | Image Generator   | Front Panel                 | Runtime Decoders           |
+   +=========================================+===================+=============================+============================+
+   | Graphics Interchange Format (GIF)       | yes               | yes [#note_disabledformat]_ | no [#note_runtimedecoder]_ |
+   +-----------------------------------------+-------------------+-----------------------------+----------------------------+
+   | Joint Photographic Experts Group (JPEG) | yes               | yes [#note_disabledformat]_ | no [#note_runtimedecoder]_ |
+   +-----------------------------------------+-------------------+-----------------------------+----------------------------+
+   | Portable Network Graphics (PNG)         | yes               | yes [#note_png]_            | yes [#note_png]_           |
+   +-----------------------------------------+-------------------+-----------------------------+----------------------------+
+   | Windows bitmap (BMP)                    | yes               | yes [#note_bmp]_            | yes/no [#note_bmp]_        |
+   +-----------------------------------------+-------------------+-----------------------------+----------------------------+
+   | Web Picture (WebP)                      | yes [#note_webp]_ | yes [#note_webp]_           | yes [#note_webpruntime]_   |
+   +-----------------------------------------+-------------------+-----------------------------+----------------------------+
+
+.. [#note_disabledformat] The formats are disabled by default, see :ref:`fp_ui_decoder`.
+.. [#note_png] The PNG format is supported when the module ``PNG`` is selected in the platform configuration file (see :ref:`image_runtime_decoder`).
+.. [#note_bmp] The Monochrome BMP is supported when the module ``BMPM`` is selected in the platform configuration file (see :ref:`image_runtime_decoder`); the `colored` BMP format is only supported by the Front Panel (disabled by default, see :ref:`fp_ui_decoder`).
+.. [#note_webp] Install the tool ``com.microej.tool#imageio-webp-1.0.1`` from the :ref:`developer_repository` in the platform to support the WEBP format (see :ref:`section_image_generator_imageio` and :ref:`fp_ui_decoder`).
+.. [#note_webpruntime] Install the C component ``com.microej.clibrary.thirdparty#libwebp-1.0.1`` in the BSP to support the WEBP format at runtime.
+.. [#note_runtimedecoder] The UI-pack does not provide some runtime decoders for these formats but a BSP can add its own decoders (see :ref:`image_runtime_decoder`).
 
 .. _section_image_gpu_raw:
 
@@ -357,24 +364,6 @@ The required memory becomes:
 
 .. figure:: images/uiFormat02.*
    :width: 50.0%
-
-* (1): The formats are disabled by default, see :ref:`fp_ui_decoder`.
-* (2): The PNG format is supported when the module ``PNG`` is selected in the platform configuration file (see :ref:`image_runtime_decoder`).
-* (3): The Monochrome BMP is supported when the module ``BMPM`` is selected in the platform configuration file (see :ref:`image_runtime_decoder`); the `colored` BMP format is only supported by the Front Panel (disabled by default, see :ref:`fp_ui_decoder`).
-* (4): Install the tool ``com.microej.tool.imageio-webp`` from the :ref:`developer_repository` in the platform to support the WEBP format (see :ref:`section_image_generator_imageio` and :ref:`fp_ui_decoder`).
-
-   .. code:: xml
-
-      <dependency org="com.microej.tool" name="imageio-webp" rev="1.0.1"/>
-
-* (5): Install the C component ``com.microej.clibrary.thirdparty.libwebp`` in the BSP to support the WEBP format at runtime.
-
-   .. code:: xml
-
-      <dependency org="com.microej.clibrary.thirdparty" name="libwebp" rev="1.0.1"/>
-
-* (6): The UI-pack does not provide some runtime decoders for these formats but a BSP can add its own decoders (see :ref:`image_runtime_decoder`).
-
 
 .. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#
 .. _ImageIO: https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html
