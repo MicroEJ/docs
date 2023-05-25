@@ -63,6 +63,7 @@ Core Engine
 - Renamed :ref:`Core Engine sections <core_engine_link>` to fully respect the ELF standard naming convention. 
 - Removed check when passing a non-immortal array in SNI if VEE Port option ``core.sni.nonimmortal.access`` was set to ``false``.
 - Removed ``LLBSP_isInReadOnlyMemory`` in Core Engine Abstraction Layer (``LLBSP.h`` file).
+- Clarified ``LLMJVM_IMPL_getCurrentTime`` API contract in Core Engine Abstraction Layer (``LLMJVM_impl.h`` file).
 - Fixed potential crash when Core Engine is restarted after a call to `System.exit(int)`_.
 - Updated ``Trace`` C library from version ``1.0.0`` to ``2.0.0``:
 
@@ -78,13 +79,14 @@ Foundation Libraries
 - Removed Foundation Libraries API Jars and Javadoc.
 - Fixed :ref:`option_embed_utf8` defaults to ``true`` when building a Standalone Application using MMM.
 - Removed `Unknown product - Unknown version` comment in auto-generated Low Level API header files.
+- Removed the ``Serial Communication`` modules group, including the Foundation Libraries ``ECOM`` and ``ECOM-COMM``. See :ref:`architecture7_migration_ecom`.
+- Removed the deprecated ``Device Information`` module group, including the Foundation Library ``Device``. See :ref:`architecture7_migration_device`.
 
 Integration
 ~~~~~~~~~~~
 
 - Updated default value of VEE Port configuration option ``vendorURL``.
 - Renamed MicroEJ launch :guilabel:`Build dynamic Feature` to :guilabel:`Build Feature`.
-- Removed deprecated ``Device`` module. See :ref:`architecture7_migration_device`.
 
 Simulator
 ~~~~~~~~~
