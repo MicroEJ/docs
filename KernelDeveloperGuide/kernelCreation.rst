@@ -96,7 +96,7 @@ The user can specify the System Applications in two different ways:
 
    .. code:: xml
 
-      <dependency org="com.microej.app.wadapps" name="management" rev="2.2.2" conf="systemapp->application"/>
+      <dependency org="com.mycompany" name="myapp" rev="0.1.0" conf="systemapp->application"/>
 
 All System Applications are also included to the Virtual Device.
 If a System Application must only be linked to the Firmware,
@@ -104,7 +104,7 @@ declare the dependency with the configuration ``systemapp-fw`` instead of ``syst
 
 .. code:: xml
 
-   <dependency org="com.microej.app.wadapps" name="management" rev="2.2.2" conf="systemapp-fw->application"/>
+   <dependency org="com.mycompany" name="myapp" rev="0.1.0" conf="systemapp-fw->application"/>
 
 
 .. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
@@ -228,25 +228,17 @@ where a dependency line is declared:
 
 **Example of minimal firmware dependencies.**
 
-The following example firmware contains one System App (``management``),
-and defines an API that contains all types, methods, and fields from
-``edc,kf,wadapps,components``.
+The following example firmware defines an API that contains all EDC types, methods, and fields and KF APIs for writing Features:
 
 .. code:: xml
 
    <dependencies>
        <dependency org="ej.api" name="edc" rev="1.2.0" conf="provided" />
        <dependency org="ej.api" name="kf" rev="1.4.0" conf="provided" />
-       <dependency org="ej.library.wadapps" name="framework" rev="1.11.0" />
-       <dependency org="com.microej.library.wadapps.kernel" name="common-impl" rev="3.0.0" />
-       <dependency org="com.microej.library.wadapps" name="admin-kf-default" rev="1.2.0" />
+
        <!-- Runtime API (set of Kernel API files) -->
        <dependency org="com.microej.kernelapi" name="edc" rev="1.0.0" conf="kernelapi->default"/>
        <dependency org="com.microej.kernelapi" name="kf" rev="2.0.0" conf="kernelapi->default"/>
-       <dependency org="com.microej.kernelapi" name="wadapps" rev="1.0.0" conf="kernelapi->default"/>
-       <dependency org="com.microej.kernelapi" name="components" rev="1.0.0" conf="kernelapi->default"/>
-       <!-- System Applications -->
-       <dependency org="com.microej.app.wadapps" name="management" rev="2.2.2" conf="systemapp->application"/>
    </dependencies>
                            
 Build only a Firmware
