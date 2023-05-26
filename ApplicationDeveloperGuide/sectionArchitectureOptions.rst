@@ -884,6 +884,8 @@ runtime memory.
 Group: Dynamic Features
 """""""""""""""""""""""
 
+.. _option_maximum_number_of_dynamic_features:
+
 Option(text):
 ~~~~~~~~~~~~~~
 
