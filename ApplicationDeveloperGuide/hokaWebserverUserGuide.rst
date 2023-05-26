@@ -549,10 +549,8 @@ To generate a Self signed public key:
 2. Use the CSR to generate a self signed certificate using openssl by executing the following command:
    ``openssl x509 -req -days 365 -in hoka-csr.pem -CA ca.crt -CAkey ca.key -CAcreateserial -out hoka.crt``
 
-Convert HOKA Private Key
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-The HOKA private key needs to be converted to a format supported by your MicroEJ VEE (e.g. DER format).
+Convert HOKA Private Key to DER Format
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To convert the private key to DER format using openssl execute the following command:
 
