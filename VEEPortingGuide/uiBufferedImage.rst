@@ -443,7 +443,7 @@ This function (actually ``UI_DRAWING_is_drawer_1`` thanks to the define, see abo
     THIRD_PARTY_DRAWER_set_clip(startX, startY, endX, endY);
 
     // draw the line
-    THIRD_PARTY_DRAWER_draw_line(destination_address, startX, startY, endX, endY, /(gc->foreground_color & 0xff) /* use the blue component as opacity level */),
+    THIRD_PARTY_DRAWER_draw_line(destination_address, startX, startY, endX, endY, (gc->foreground_color & 0xff) /* use the blue component as opacity level */),
 
     // here, consider the drawing as done (not asynchronous drawing)
     return DRAWING_DONE;
@@ -626,6 +626,24 @@ Simulation
 services
 
 
+
+Dependencies
+============
+
+-  MicroUI module (see :ref:`section_microui`),
+-  Display module (see :ref:`section_display`).
+
+Installation
+============
+
+BufferedImage module is part of the MicroUI module and Display module. Install them in order to be able to use some buffered images.
+
+Use
+===
+
+The MicroUI image APIs are available in the class `ej.microui.display.BufferedImage`_.
+
+.. _ej.microui.display.BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html
 
 
 
