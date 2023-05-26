@@ -7,6 +7,50 @@ Image Renderer
 Principle
 =========
 
+Functional Description
+======================
+
+Formats
+=======
+
+Standard
+--------
+
+no extra support, similar to drawing: simple flow & custom flow (gpu)
+
+Custom
+------
+
+requires extra support to read / decode / draw 
+
+MicroUI C Module
+================
+
+Principle
+---------
+
+both implems: footprint & cie
+
+Standard Formats Only (Default Implementation)
+----------------------------------------------
+
+simple graph
+
+Custom Format Support 
+---------------------
+
+define à mettre LLUI xxx
+
+complex graf
+
+Simulation
+==========
+
+old chapters below:
+
+Principle
+=========
+
 The Image Renderer is an on-board engine that reads and draws the images (see :ref:`section_image_raw`).
 It calls Abstraction Layer APIs to draw and transform the images (rotation, scaling, deformation, etc.).
 It also includes software algorithms to perform the rendering.
