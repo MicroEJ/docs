@@ -3,9 +3,8 @@ Category: Runtime
 
 
 .. figure:: images/architecture_options/img1.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 Group: Types
 ------------
@@ -78,9 +77,8 @@ Category: Memory
 
 
 .. figure:: images/architecture_options/img2.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 Group: Heaps
 ^^^^^^^^^^^^
@@ -189,9 +187,8 @@ Category: Simulator
 
 
 .. figure:: images/architecture_options/img3.png
+   :scale: 100%
    :align: center
-   :width: 1054px
-   :height: 551px
 
 Group: Options
 --------------
@@ -327,9 +324,8 @@ Category: Code Coverage
 
 
 .. figure:: images/architecture_options/img4.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 Group: Code Coverage
 ^^^^^^^^^^^^^^^^^^^^
@@ -367,9 +363,8 @@ Category: Debug
 
 
 .. figure:: images/architecture_options/img5.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 .. _simulator-remote-debug-options:
 
@@ -401,9 +396,8 @@ Category: Heap Dumper
 
 
 .. figure:: images/architecture_options/img6.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 Group: Heap Inspection
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -429,9 +423,8 @@ Category: Logs
 
 
 .. figure:: images/architecture_options/img7.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 Group: Logs
 ^^^^^^^^^^^
@@ -547,75 +540,75 @@ Option(text): period (in sec.)
 
 Defines the periodicity of periodical logs.
 
-Category: Device
-----------------
+Category: Mock
+--------------
 
 
 .. figure:: images/architecture_options/img8.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
-Group: Device Architecture
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Description*:
 
-Option(checkbox): Use a custom device architecture
-""""""""""""""""""""""""""""""""""""""""""""""""""
+Specify Hardware In the Loop Mock client options
 
-*Option Name*: ``s3.mock.device.architecture.option.use``
+Group: Debug
+^^^^^^^^^^^^
 
-*Default value*: ``false``
+Option(checkbox): Enable Mock debug
+"""""""""""""""""""""""""""""""""""
 
-Option(text): Architecture Name
-"""""""""""""""""""""""""""""""
-
-*Option Name*: ``s3.mock.device.architecture.option``
-
-*Default value*: ``(empty)``
-
-Group: Device Unique ID
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Option(checkbox): Use a custom device unique ID
-"""""""""""""""""""""""""""""""""""""""""""""""
-
-*Option Name*: ``s3.mock.device.id.option.use``
+*Option Name*: ``com.microej.simulator.hil.debug.enabled``
 
 *Default value*: ``false``
 
-Option(text): Unique ID (hexadecimal value)
-"""""""""""""""""""""""""""""""""""""""""""
+Option(text): Port
+""""""""""""""""""
 
-*Option Name*: ``s3.mock.device.id.option``
+*Option Name*: ``com.microej.simulator.hil.debug.port``
 
-*Default value*: ``(empty)``
+*Default value*: ``8002``
 
-Category: Com Port
-------------------
+Category: Kernel
+----------------
 
 
 .. figure:: images/architecture_options/img9.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
+
+Group: Kernel UID
+^^^^^^^^^^^^^^^^^
+
+Option(checkbox): Enable
+""""""""""""""""""""""""
+
+*Option Name*: ``com.microej.simulator.kf.kernel.uid.enabled``
+
+*Default value*: ``false``
+
+Option(text): UID
+"""""""""""""""""
+
+*Option Name*: ``com.microej.simulator.kf.kernel.uid``
+
+*Default value*: ``(empty)``
 
 Category: Libraries
 ===================
 
 
-.. figure:: images/architecture_options/img11.png
+.. figure:: images/architecture_options/img10.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 Category: EDC
 -------------
 
 
-.. figure:: images/architecture_options/img12.png
+.. figure:: images/architecture_options/img11.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 Group: Java System.out
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -691,10 +684,9 @@ Category: Shielded Plug
 -----------------------
 
 
-.. figure:: images/architecture_options/img13.png
+.. figure:: images/architecture_options/img12.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 Group: Shielded Plug configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -714,96 +706,13 @@ Option(browse): Database definition
 
 Choose the database XML definition.
 
-Category: ECOM
---------------
-
-
-.. figure:: images/architecture_options/img14.png
-   :align: center
-   :width: 998px
-   :height: 551px
-
-Group: Device Management
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-Option(checkbox): Enable registration event notifications
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-*Option Name*: ``com.is2t.ecom.eventpump.enabled``
-
-*Default value*: ``false``
-
-*Description*:
-
-Enables notification of listeners when devices are registered or
-unregistered. When a device is registered or unregistered, a new
-``ej.ecom.io.RegistrationEvent`` is added to an event queue. Then events are
-processed by a dedicated thread that notifies registered listeners.
-
-Option(text): Registration events queue size
-""""""""""""""""""""""""""""""""""""""""""""
-
-*Option Name*: ``com.is2t.ecom.eventpump.size``
-
-*Default value*: ``5``
-
-*Description*:
-
-Specifies the size (in number of events) of the registration events queue.
-
-Category: Comm Connection
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-.. figure:: images/architecture_options/img15.png
-   :align: center
-   :width: 998px
-   :height: 551px
-
-Group: Comm Connection Options
-""""""""""""""""""""""""""""""
-
-*Description*:
-
-This group allows comm connections to be enabled and application-platform
-mappings set.
-
-Option(checkbox): Enable comm connections
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-*Option Name*: ``use.comm.connection``
-
-*Default value*: ``false``
-
-*Description*:
-
-When checked application is able to open a ``CommConnection``.
-
-Group: Device Management
-""""""""""""""""""""""""
-
-Option(checkbox): Enable dynamic comm ports registration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-*Option Name*: ``com.is2t.ecom.comm.registryPump.enabled``
-
-*Default value*: ``false``
-
-*Description*:
-
-Enables registration (or unregistration) of ports dynamically added (or
-removed) by the platform. A dedicated thread listens for ports dynamically
-added (or removed) by the platform and adds (or removes) their ``CommPort``
-representation to the ECOM ``DeviceManager``.
-
 Category: External Resources Loader
 -----------------------------------
 
 
-.. figure:: images/architecture_options/img16.png
+.. figure:: images/architecture_options/img13.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 Group: External Resources Loader
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -831,19 +740,17 @@ Category: Device
 ================
 
 
-.. figure:: images/architecture_options/img17.png
+.. figure:: images/architecture_options/img14.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 Category: Core Engine
 ---------------------
 
 
-.. figure:: images/architecture_options/img18.png
+.. figure:: images/architecture_options/img15.png
+   :scale: 100%
    :align: center
-   :width: 1054px
-   :height: 551px
 
 Group: Memory
 ^^^^^^^^^^^^^
@@ -907,10 +814,9 @@ Category: Kernel
 ^^^^^^^^^^^^^^^^
 
 
-.. figure:: images/architecture_options/img19.png
+.. figure:: images/architecture_options/img16.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 Option(checkbox): Check APIs allowed by Kernel
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -936,8 +842,8 @@ time.
 
 .. _architecture_options_group_installed_features:
 
-Group: Installed Features
-"""""""""""""""""""""""""
+Group: Static Features
+""""""""""""""""""""""
 
 Option(text):
 ~~~~~~~~~~~~~~
@@ -948,8 +854,8 @@ Option(text):
 
 *Description*:
 
-Specifies the maximum number of installed Features that can be added to this
-Kernel.
+Specifies the maximum number of Features that can be statically installed to
+this Kernel using Firmware Linker tool.
 
 Option(text):
 ~~~~~~~~~~~~~~
@@ -960,7 +866,8 @@ Option(text):
 
 *Description*:
 
-Specifies the size in bytes reserved for installed Features code.
+Specifies the size in bytes reserved for statically installed Features code and
+resources.
 
 Option(text):
 ~~~~~~~~~~~~~~
@@ -971,16 +878,54 @@ Option(text):
 
 *Description*:
 
-Specifies the size in bytes reserved for installed Features runtime memory.
+Specifies the size in bytes reserved for statically installed Features
+runtime memory.
+
+Group: Dynamic Features
+"""""""""""""""""""""""
+
+Option(text):
+~~~~~~~~~~~~~~
+
+*Option Name*: ``com.microej.runtime.kernel.dynamicfeatures.max``
+
+*Default value*: ``16``
+
+*Description*:
+
+Specifies the maximum number of Features that can be dynamically installed to
+this Kernel (using ``Kernel.install()`` API).
+
+Group: Feature Portability Control
+""""""""""""""""""""""""""""""""""
+
+Option(checkbox): Enable Feature Portability Control
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Option Name*: ``com.microej.soar.kernel.featureportabilitycontrol.enabled``
+
+*Default value*: ``false``
+
+Option(list): Kernel Metadata Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Option Name*:
+``com.microej.soar.kernel.featureportabilitycontrol.metadata.path``
+
+*Default value*: ``(empty)``
+
+*Description*:
+
+Specifies the list of Kernel metadata files for Feature Portability Control.
+Features built on these Kernels can be installed on this Kernel.
 
 Category: Watchdog
 ^^^^^^^^^^^^^^^^^^
 
 
-.. figure:: images/architecture_options/img20.png
+.. figure:: images/architecture_options/img17.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 Option(checkbox): Enable watchdog support
 """""""""""""""""""""""""""""""""""""""""
@@ -1007,74 +952,153 @@ Category: Deploy
 ----------------
 
 
-.. figure:: images/architecture_options/img21.png
+.. figure:: images/architecture_options/img18.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 *Description*:
 
-Configures the output location where store the MicroEJ Application, the MicroEJ
-platform libraries and header files.
+Configures the output locations where store the Application, the Architecture
+libraries and Abstraction Layer header files.
+
+See :ref:`Board Support Package (BSP) connection <bsp_connection_application_options>` chapter for more details.
 
 Group: Configuration
 ^^^^^^^^^^^^^^^^^^^^
 
-Option(checkbox): Deploy the compiled MicroEJ Application in a folder in MicroEJ Application main class project
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Option(checkbox): Deploy the Application (microejapp.o) at a location known by the 3rd-party BSP project.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+*Option Name*: ``deploy.bsp.microejapp``
 
 *Default value*: ``true``
 
 *Description*:
 
-Deploy the compiled MicroEJ Application in a folder in MicroEJ Application's
-main class project.
+Deploy the Application (microejapp.o) at a location known by the 3rd-party
+BSP project.
 
-Option(browse): Output file
-"""""""""""""""""""""""""""
+Option(browse):
+""""""""""""""""
 
-*Option Name*: ``deploy.copy.filename``
+*Option Name*: ``deploy.dir.microejapp``
 
 *Default value*: ``(empty)``
 
 *Description*:
 
-Choose an output file location where copy the compiled MicroEJ Application.
+Choose an output folder where to deploy the Application. An empty value means
+no deployment (file is available in the Application output folder).
+
+Option(checkbox): Deploy the Architecture library (microejruntime.a) at a location known by the 3rd-party BSP project.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+*Option Name*: ``deploy.bsp.microejlib``
+
+*Default value*: ``true``
+
+*Description*:
+
+Deploy the Architecture library (microejruntime.a) at a location known by the
+3rd-party BSP project.
+
+Option(browse):
+""""""""""""""""
+
+*Option Name*: ``deploy.dir.microejlib``
+
+*Default value*: ``(empty)``
+
+*Description*:
+
+Choose an output folder where to deploy the Architecture library. An empty
+value means no deployment (file is available in the Application output folder).
+
+Option(checkbox): Deploy the Abstraction Layer header files (``*.h``) at a location known by the 3rd-party BSP project.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+*Option Name*: ``deploy.bsp.microejinc``
+
+*Default value*: ``true``
+
+*Description*:
+
+Deploy the Abstraction Layer header files (``*.h``) at a location known by the
+3rd-party BSP project.
+
+Option(browse):
+""""""""""""""""
+
+*Option Name*: ``deploy.dir.microejinc``
+
+*Default value*: ``(empty)``
+
+*Description*:
+
+Choose an output folder where to deploy the Architecture library. An empty
+value means no deployment (file is available in the Application output folder).
+
+Option(checkbox): Execute the MicroEJ build script (build.bat) at a location known by the 3rd-party BSP project.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+*Option Name*: ``deploy.bsp.microejscript``
+
+*Default value*: ``false``
+
+*Description*:
+
+Execute the MicroEJ build script (build.bat) at a location known by the
+3rd-party BSP project.
+
+Option(browse):
+""""""""""""""""
+
+*Option Name*: ``deploy.dir.microejscript``
+
+*Default value*: ``(empty)``
+
+*Description*:
+
+Choose an output folder where is located the MicroEJ build script (build.bat)
+to execute. An empty value means no execution.
+
+Option(browse):
+""""""""""""""""
+
+*Option Name*: ``deploy.bsp.root.dir``
+
+*Default value*: ``(empty)``
+
+*Description*:
+
+Choose an output folder where is located the 3rd-party BSP project. An empty
+value means not set (3rd-party BSP project location may have been configured by
+the VEE Port).
 
 Category: Feature
 =================
 
 
-.. figure:: images/architecture_options/img22.png
+.. figure:: images/architecture_options/img19.png
+   :scale: 100%
    :align: center
-   :width: 998px
-   :height: 551px
 
 *Description*:
 
 Specify Feature options
 
-Category: Dynamic Download
---------------------------
-
-
-.. figure:: images/architecture_options/img23.png
-   :align: center
-   :width: 998px
-   :height: 551px
-
-Group: Dynamic Download
-^^^^^^^^^^^^^^^^^^^^^^^
+Group: Build
+------------
 
 Option(text): Output Name
-"""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Option Name*: ``feature.output.basename``
 
 *Default value*: ``application``
 
 Option(browse): Kernel
-""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^
 
 *Option Name*: ``kernel.filename``
 
