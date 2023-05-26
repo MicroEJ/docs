@@ -39,7 +39,7 @@ No extra support in the VEE Port is required to draw this kind of images.
 The image drawing is similar to a :ref:`shape drawing <section_drawings>`. 
 The drawing is performed by default by the :ref:`section_drawings_soft` and can be overridden to use a third-party library or a GPU.
 
-.. _section_buffered_image_drawer_custom:
+.. _section_buffered_image_drawer_custom_format:
 
 Custom
 ------
@@ -76,11 +76,13 @@ MicroUI C Module
 Principle
 ---------
 
-As described above, an :ref:`image drawer <section_buffered_image_drawer_custom>` allows to draw the images whose format is *custom*.
+As described above, an :ref:`image drawer <section_buffered_image_drawer_custom_format>` allows to draw the images whose format is *custom*.
 The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to manage the notion of drawers: it does not *support* the custom formats, but it allows to add some additional drawers.
 
 This support uses several weak functions and tables to redirect the image drawings.
 When this support is useless (when the VEE Port does not need to support *custom* images), this support can be removed to reduce the footprint (by removing tables indirections) and increase the performances (by reducing the number of runtime functions calls).
+
+.. _section_buffered_image_drawer_standard:
 
 Standard Formats Only (Default Implementation)
 ----------------------------------------------
@@ -216,6 +218,8 @@ Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`) but let
    }
 
 The define ``LLUI_IMAGE_CUSTOM_FORMATS`` is not set so the implementation of the weak function only consists to call the Graphics Engine' software algorithm.
+
+.. _section_buffered_image_drawer_custom:
 
 Custom Format Support 
 ---------------------

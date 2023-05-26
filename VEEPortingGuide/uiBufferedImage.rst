@@ -51,7 +51,7 @@ The image format is the same than the display buffer format; in other words, its
 
 * image creation: the Graphics Engine provides the capacity to create this kind of images; no specific support is required in the VEE Port.
 * draw into the image: the rules to draw into this kind of buffered images are the same to draw in the display buffer, see :ref:`section_drawings`.
-* draw the image: the rules to draw this kind of buffered images are described in the chapter image renderer standard xxx.
+* draw the image: the rules to draw this kind of buffered images are described in the chapter :ref:`image renderer standard <section_buffered_image_drawer_standard>`.
 
 Standard
 --------
@@ -67,7 +67,7 @@ Contrary to the display format, the VEE Port must feature a :ref:`drawer <sectio
 
 * image creation: the drawer allows to create this kind of buffered images; if the VEE Port does not feature a drawer for a specific format, the MicroUI ``BufferedImage`` cannot be created and an exception is thrown at runtime.
 * draw into the image: the drawer can implement all MicroUI drawings or just a reduced set; when a drawing is not performed, a :ref:`drawing log <section.veeport.ui.drawings.drawing_logs>` flag is set.
-* draw the image: the image is *standard* so its rendering is *standard* also; the rules to draw this kind of buffered images are described in the chapter image renderer standard xxx.
+* draw the image: the image is *standard* so its rendering is *standard* also; the rules to draw this kind of buffered images are described in the chapter  :ref:`image renderer standard <section_buffered_image_drawer_standard>`.
 
 Custom
 ------
@@ -78,7 +78,7 @@ Like standard formats, the VEE Port must feature a :ref:`drawer <section_buffere
 
 * image creation: the drawer allows to create this kind of buffered images; if the VEE Port does not feature a drawer for a specific format, the MicroUI ``BufferedImage`` cannot be created and an exception is thrown at runtime.
 * draw into the image: the drawer can implement all MicroUI drawings or just a reduced set; when a drawing is not performed, a :ref:`drawing log <section.veeport.ui.drawings.drawing_logs>` flag is set.
-* draw the image: the image is *custom* so its rendering is *custom* also; the rules to draw this kind of buffered images are described in the chapter image renderer custom xxx.
+* draw the image: the image is *custom* so its rendering is *custom* also; the rules to draw this kind of buffered images are described in the chapter  :ref:`image renderer custom <section_buffered_image_drawer_custom>`.
 
 MicroUI C Module
 ================
@@ -150,7 +150,7 @@ Custom Format
 A MicroUI BufferedImage can have a *custom* format as soon as the Multiple Format Implementation is selected.
 However a third-party support is required to render this kind of images. 
 
-.. hint:: In addition with the ``#define LLUI_GC_SUPPORTED_FORMATS``, the ``#define LLUI_IMAGE_CUSTOM_FORMATS`` must be set. This is the same define to render custom RAW images: see renderer XXX.
+.. hint:: In addition with the ``#define LLUI_GC_SUPPORTED_FORMATS``, the ``#define LLUI_IMAGE_CUSTOM_FORMATS`` must be set. This is the same define to render custom RAW images: see :ref:`section_buffered_image_drawer_custom`.
 
 .. _section_buffered_image_c_creation:
 
@@ -455,7 +455,7 @@ It is very similar to :ref:`section_drawings_cco_custom`.
 Draw the Image: Single Format Implementation 
 --------------------------------------------
 
-By definition, the image is a standard image (only display format is allowed) so its drawing is redirected to ``ui_image_drawing.h``, see XXX.
+By definition, the image is a standard image (only display format is allowed) so its drawing is redirected to ``ui_image_drawing.h``, see :ref:`section_buffered_image_drawer_standard`.
 
 .. _section_buffered_image_c_drawit:
 
