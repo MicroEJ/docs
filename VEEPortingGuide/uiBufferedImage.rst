@@ -4,19 +4,6 @@
 Buffered Image
 ===============
 
-xxx
-
-* format standards = A4 ARGB1555 etc.: dedicated / vee port drawings: multi out
-  * emb: graph + define
-  * sim: graph + service (UIImage)
-* c0 -> C7 (microui api link)
-* how to create buffer / allocate
-  * emb: 
-  * sim: 
-* draw into: custom drawings / same graphs as standard formats
-* draw it: cf renderer
-* schema multi out: TBD
-
 Overview
 ========
 
@@ -405,6 +392,7 @@ The implementation only consists to set the :ref:`Drawing log <section.veeport.u
 
 .. code-block:: c
 
+  // this drawer has the index 1
   #define UI_DRAWING_IDENTIFIER_A8_FORMAT 1
   #define UI_DRAWING_A8_is_drawer CONCAT(UI_DRAWING_is_drawer_, UI_DRAWING_IDENTIFIER_A8_FORMAT)
   #define UI_DRAWING_A8_drawLine CONCAT(UI_DRAWING_drawLine_, UI_DRAWING_IDENTIFIER_A8_FORMAT)
@@ -465,7 +453,8 @@ Draw the Image: Multiple Formats Implementation
 Contrary to the Single Format Implementation, the destination may be another format than the display format.
 By consequence, the drawer has to check the image format **and** the destination format.
 
-The following graph illustrates the drawing of an image (draw, rotate or scale) in other image or in display buffer (not a shape, see :ref:`section_buffered_image_c_drawinto`):
+The following graph illustrates the drawing of an image (draw, rotate or scale) in other image or in display buffer (to draw a shape, see :ref:`section_buffered_image_c_drawinto`).
+This graph gathers the both graphs :ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`.
 
 .. graphviz::
 
@@ -600,16 +589,88 @@ The following graph illustrates the drawing of an image (draw, rotate or scale) 
 
 |
 
-XXX complete le multi in
+The following description considers the first both graphs (:ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`) have been read and understood.
+It only describes the *final* use-case: draw a custom image in an unknown destination (unknown destination format):
+
+**UI_IMAGE_DRAWING_draw_custom4** (to write in the BSP)
+
+.. code-block:: c
+
+  // this image drawer manages the custom format 4
+  #define UI_IMAGE_IDENTIFIER_CMD_FORMAT 4
+  #define UI_IMAGE_DRAWING_CMD_draw CONCAT(UI_IMAGE_DRAWING_draw_custom_, UI_IMAGE_IDENTIFIER_CMD_FORMAT)
+
+  // macro to map a custom struct "cmd_image_t*" on the MicroUI Image buffer
+  #define MAP_CMD_ON_IMAGE(image) ((cmd_image_t*) LLUI_DISPLAY_getBufferAddress(image))
+  
+  DRAWING_Status UI_IMAGE_DRAWING_CMD_draw(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha){
+    
+    // retrieve the commands list
+    cmd_image_t* cmd = MAP_CMD_ON_IMAGE(img);
+
+    for(int i = 0; i < cmd->size; i++) {
+      switch (cmd->list[i].kind) {
+
+        case COMMAND_LINE: {
+
+          // change the graphics context color
+          gc->foreground_color = cmd->list[i].color;
+
+          // draw a line as usual
+          UI_DRAWING_drawLine(gc, x + cmd->list[i].args[0], y + cmd->list[i].args[1], x + cmd->list[i].args[2], y + cmd->list[i].args[3]);
+
+          break;
+        }
+
+        // all others commands
+        // [...] 
+      }
+    }
+    
+    // restore the original color
+    gc->foreground_color = original_color;
+
+    return DRAWING_DONE;
+  }
+
+This drawer manages a custom image that holds a commands buffer (a list of drawings). 
+The image drawing consists to decode the commands list and call the standard shapes drawings.
+This drawer does not need to *recognize* the destination: the drawing of the shapes will do it for it.
+
+Thanks to the define ``UI_IMAGE_IDENTIFIER_CMD_FORMAT``, this drawer uses the custom format ``4``.
 
 
+**UI_IMAGE_DRAWING_draw_custom6** (to write in the BSP)
 
-* When the image is standard, its drawing into the destination is similar to draw a shape, see XXX
-* When the image is custom, xxx
+.. code-block:: c
 
-The image is a custom image so its drawing is redirected to XXX
+  // this image drawer manages the custom format 6
+  #define UI_IMAGE_IDENTIFIER_PROPRIETARY_FORMAT 6
+  #define UI_IMAGE_DRAWING_PROPRIETARY_draw CONCAT(UI_IMAGE_DRAWING_draw_custom_, UI_IMAGE_IDENTIFIER_PROPRIETARY_FORMAT)
 
-xxx special case custom: can reuse draw shape
+  DRAWING_Status UI_IMAGE_DRAWING_PROPRIETARY_draw(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha){
+    
+    DRAWING_Status ret;
+
+    // can only draw in an image with same format than display 
+    if (LLUI_DISPLAY_isDisplayFormat(gc->image.format)) {
+      // call a third-party library
+      THIRD_PARTY_LIB_draw_image([...]);
+      ret = DRAWING_DONE; // or DRAWING_RUNNING
+    }
+    else {
+      // cannot draw the image: call stub implementation
+      ret = UI_DRAWING_STUB_drawImage(gc, img, regionX, regionY, width, height, x, y, alpha);
+    }
+
+    return ret;
+  }
+
+This drawer manages an image whose format is *proprietary* . 
+This example considers the third-party library is only able to draw the image in a bufer whose format is the same than the display format.
+Otherwise, the drawing is cancelled and the stub implementation is used.
+
+Thanks to the define ``UI_IMAGE_IDENTIFIER_PROPRIETARY_FORMAT``, this drawer uses the custom format ``6``.
 
 Extended C Modules
 ------------------
