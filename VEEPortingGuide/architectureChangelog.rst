@@ -89,6 +89,8 @@ Foundation Libraries
 - Removed `Unknown product - Unknown version` comment in auto-generated Low Level API header files.
 - Removed the ``Serial Communication`` modules group, including the Foundation Libraries ``ECOM`` and ``ECOM-COMM``. See :ref:`architecture7_migration_ecom`.
 - Removed the deprecated ``Device Information`` module group, including the Foundation Library ``Device``. See :ref:`architecture7_migration_device`.
+- [Single] Fixed an unexpected ``FeatureFinalizer`` exception when a Standalone Application touches a ``KF`` API.
+
 
 .. _Kernel.setReservedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#setReservedMemory-long-
 .. _Feature.setMemoryLimit(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#setMemoryLimit-long-
@@ -316,7 +318,7 @@ Simulator
 -  Fixed potential "Internal limits reached" error when an `OutOfMemoryError`_ is thrown. 
 -  Fixed error "Cannot pin objects anymore" when passing repeatedly immutable objects to a native method.
 -  Fixed properties not passed correctly to the mocks when the Virtual Device is executed from a path that contains spaces.
--  [Multi] - Fixed unexpected error when ``kernel.kf`` file is missing and KF library is used: "Please specify a 'kernel.kf' file to enable Kernel & Features semantics."
+-  [Multi] - Fixed an unexpected error when ``kernel.kf`` file is missing and KF library is used: "Please specify a 'kernel.kf' file to enable Kernel & Features semantics."
 -  [Multi] - Fixed type ``double[]`` not recognized in ``kernel.api`` file.
 
 .. _UnsatisfiedLinkError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/UnsatisfiedLinkError.html
