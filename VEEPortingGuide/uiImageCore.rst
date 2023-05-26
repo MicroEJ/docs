@@ -19,23 +19,54 @@ All Abstraction Layer APIs are implemented by weak functions which call software
 The BSP has the possibility to override this default behavior for each Abstraction Layer API independently.
 Furthermore, the BSP can override an Abstraction Layer API for a specific MicroEJ format (for instance ``ARGB8888``) and call the software algorithms for all other formats.
 
-Formats
-=======
+Destination Format
+==================
+
+Since MicroUI 3.2, the destination buffer of the drawings can be different than the display buffer format (see :ref:`section_image_display_raw`).
+This destination buffer format can be a :ref:`standard format <section_image_standard_raw>` (ARGB8888, A8, etc.) or a :ref:`custom format <section_image_custom_raw>`. 
+
+See :ref:`section_buffered_image` to have more information about how to create buffered images with another format than the display format and how to draw into.
+
+Input Formats
+=============
 
 Standard
 --------
 
 The Image Renderer is by default able to draw all :ref:`standard formats <section_image_standard_raw>`.
-* no extra support, similar to drawing: simple flow & custom flow (gpu)
+No extra support in the VEE Port is required to draw this kind of images.
+
+The image drawing is similar to a :ref:`shape drawing <section_drawings>`. 
+The drawing is performed by default by the :ref:`section_drawings_soft` and can be overridden to use a third-party library or a GPU.
 
 Custom
 ------
 
-The VEE Port can extend the Image Renderer to support the drawing of custom images.
-* requires extra support to read / decode / draw 
-* vee allows custom format.
-* to draw it, can use shapes drawings
-* examples of use cases ? command vs pixels
+A :ref:`section_image_custom_raw` image can be:
+
+* an image with a pixel buffer but whose pixel organization is not standard,
+* an image with a data buffer: an image encoded with a third-party encoder (proprietary format or not),
+* an image with a command buffer: instead of performing the drawings, the image *stores* the drawing actions,
+* etc.
+
+The VEE Port must extend the Image Renderer to support the drawing of these images.
+This extension can consist to:
+
+* decode the image at runtime to draw it,
+* use a compatible GPU to draw it,
+* use a command interpreter to perform some :ref:`shape drawings <section_drawings>`,
+* etc.
+
+To draw the custom images, the Image Renderer introduces the notion of *custom image drawer*.
+This drawer is an engine which has the responsibility to draw the image.
+Each custom image format (``0`` to ``7``) has its own drawer.
+
+Contrary to the standard images or the shapes where the drawing is stubbed when is not performed (by a soft algo or by a GPU), the custom image drawing is redirected to the associated image drawer.
+
+.. note:: A custom image drawer can call again the UI Shapes Drawing API to draw its elements in the destination.
+
+The implementation is not the same between the Embedded side and the Simulation.
+However the concepts are the same and are described in dedicated chapters.
 
 MicroUI C Module
 ================
@@ -43,15 +74,24 @@ MicroUI C Module
 Principle
 ---------
 
-The BSP can implement the functions that draw images (draw, copy, region flip, rotate and scale).
+As described above, the Image Renderer must be extended to feature the support of the custom images.
+The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to manage this extension: it does not *support* the custom formats, but it allows to add some extensions.
 
-* The custom image manager can call again the ui_drawing.h API to draw its elements in the destination.
-* More complex and more footprint (#define xxxx)
-* xxx copier hackmd graph
-both implems: footprint & cie
+This support uses several weak functions and tables to redirect the image drawings.
+When this support is useless (when the VEE Port does not need to support *custom* images), this support can be removed to reduce the footprint (by removing tables indirections) and increase the performances (by reducing the number of runtime functions calls).
 
 Standard Formats Only (Default Implementation)
 ----------------------------------------------
+
+This implementation can only draw images whose format is a :ref:`standard format <section_image_standard_raw>`. 
+In other words, the application is not able to draw a custom image. 
+This is the most frequently used case, which was the only available use-case with MicroUI before version 3.2. 
+
+.. hint:: To select this implementation (to disable the custom format support), the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be unset.
+
+This is the default implementation. 
+
+The following graph illustrates the drawing of an image:
 
 .. graphviz::
 
@@ -116,11 +156,44 @@ Standard Formats Only (Default Implementation)
       UID_stub_h->UID_stub_c->stub
    }
 
+XXX graph to describe
 
 Custom Format Support 
 ---------------------
 
-define à mettre LLUI xxx
+In addition with the :ref:`standard formats <section_image_standard_raw>`, this implementation allows to draw images whose format is a :ref:`custom format <section_image_custom_raw>`. 
+This is an advanced use-case, only available with MicroUI 3.2 or higher. 
+
+.. hint:: To select this implementation, the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be set (no specific value).
+
+The MicroUI C module uses some tables to redirect the image management to the expected extension.
+There is one table per Imagz Abstraction Layer API (draw, copy, region, rotate, scale, flip) in order to not embed all algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
+
+Each table contains ten elements:
+
+.. code:: c
+
+   static const UI_IMAGE_DRAWING_draw_t UI_IMAGE_DRAWING_draw_custom[] = {
+         &UI_DRAWING_STUB_drawImage,
+         &UI_DRAWING_SOFT_drawImage,
+         &UI_IMAGE_DRAWING_draw_custom0,
+         &UI_IMAGE_DRAWING_draw_custom1,
+         &UI_IMAGE_DRAWING_draw_custom2,
+         &UI_IMAGE_DRAWING_draw_custom3,
+         &UI_IMAGE_DRAWING_draw_custom4,
+         &UI_IMAGE_DRAWING_draw_custom5,
+         &UI_IMAGE_DRAWING_draw_custom6,
+         &UI_IMAGE_DRAWING_draw_custom7,
+   };
+
+* ``UI_DRAWING_STUB_drawImage`` is the drawing function called when the drawing function is not implemented,
+* ``UI_DRAWING_SOFT_drawImage`` is the drawing function that redirects the drawing to the :ref:`section_drawings_soft`,
+* ``UI_IMAGE_DRAWING_draw_customX`` (``0`` to ``7``) are the drawing functions for each custom format.
+
+The table index is retrieved by the MicroUI C Module according to the image format.
+
+The following graph illustrates the drawing of an image:
+
 
 .. graphviz::
 
@@ -201,13 +274,14 @@ define à mettre LLUI xxx
       (drawShapes)"]
    }
 
+XXX graph to describe
+
 Simulation
 ==========
 
-Principle
----------
+* service xxx UIImageDrawing
+* xxx notion decode (cf UIImageDrawing.decode())
 
-both implems: footprint & cie
 
 Standard Formats Only (Default Implementation)
 ----------------------------------------------
@@ -351,15 +425,12 @@ Dependencies
 ============
 
 -  MicroUI module (see :ref:`section_microui`),
-
 -  Display module (see :ref:`section_display`).
-
 
 Installation
 ============
 
 Image Renderer module is part of the MicroUI module and Display module. Install them in order to be able to use some images.
-
 
 Use
 ===
