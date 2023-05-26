@@ -39,6 +39,8 @@ No extra support in the VEE Port is required to draw this kind of images.
 The image drawing is similar to a :ref:`shape drawing <section_drawings>`. 
 The drawing is performed by default by the :ref:`section_drawings_soft` and can be overridden to use a third-party library or a GPU.
 
+.. _section_buffered_image_drawer_custom:
+
 Custom
 ------
 
@@ -74,8 +76,8 @@ MicroUI C Module
 Principle
 ---------
 
-As described above, the Image Renderer must be extended to feature the support of the custom images.
-The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to manage this extension: it does not *support* the custom formats, but it allows to add some extensions.
+As described above, an :ref:`image drawer <section_buffered_image_drawer_custom>` allows to draw the images whose format is *custom*.
+The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to manage the notion of drawers: it does not *support* the custom formats, but it allows to add some additional drawers.
 
 This support uses several weak functions and tables to redirect the image drawings.
 When this support is useless (when the VEE Port does not need to support *custom* images), this support can be removed to reduce the footprint (by removing tables indirections) and increase the performances (by reducing the number of runtime functions calls).
@@ -156,7 +158,64 @@ The following graph illustrates the drawing of an image:
       UID_stub_h->UID_stub_c->stub
    }
 
-XXX graph to describe
+.. force a new line
+
+|
+
+**LLUI_PAINTER_IMPL_drawImage** (available in MicroUI C Module)
+
+Similar to ``LLUI_PAINTER_IMPL_drawLine``, see :ref:`section_drawings_cco`.
+
+**UI_DRAWING_drawImage**
+
+.. code-block:: c
+
+   // available in MicroUI C Module
+   #define UI_DRAWING_DEFAULT_drawImage UI_DRAWING_drawImage
+
+   // to write in the BSP (optional)
+   #define UI_DRAWING_GPU_drawImage UI_DRAWING_drawImage
+
+The function names are set thanks some ``define``.
+These names redirections are useful when the VEE Port features more than one destination format (not the use-case here).
+
+**UI_DRAWING_GPU_drawImage** (to write in the BSP)
+
+.. code-block:: c
+
+   // contrary to the MicroUI C Module, this function is not "weak"
+   DRAWING_Status UI_DRAWING_GPU_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha) {
+      
+      DRAWING_Status status;
+
+      if (is_gpu_compatible(xxx)) {
+         
+         // see chapter "Drawings"
+         // [...]
+      }
+      else {
+         // let the image drawer manages the image  (available in the C module)
+         status = UI_IMAGE_DRAWING_draw(gc, img, regionX, regionY, width, height, x, y, alpha);
+      }
+      return status;
+   }
+
+Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`) but let's the image drawer manages the image instead of calling directly the software drawer.
+
+**UI_DRAWING_DEFAULT_drawImage** (available in MicroUI C Module)
+
+.. code-block:: c
+
+   // use the preprocessor 'weak'
+   __weak DRAWING_Status UI_DRAWING_DEFAULT_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha) {
+   #if !defined(LLUI_IMAGE_CUSTOM_FORMATS)
+      return UI_DRAWING_SOFT_drawImage(gc, img, regionX, regionY, width, height, x, y, alpha);
+   #else
+      return UI_IMAGE_DRAWING_draw(gc, img, regionX, regionY, width, height, x, y, alpha);
+   #endif
+   }
+
+The define ``LLUI_IMAGE_CUSTOM_FORMATS`` is not set so the implementation of the weak function only consists to call the Graphics Engine' software algorithm.
 
 Custom Format Support 
 ---------------------
@@ -167,7 +226,7 @@ This is an advanced use-case, only available with MicroUI 3.2 or higher.
 .. hint:: To select this implementation, the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be set (no specific value).
 
 The MicroUI C module uses some tables to redirect the image management to the expected extension.
-There is one table per Imagz Abstraction Layer API (draw, copy, region, rotate, scale, flip) in order to not embed all algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
+There is one table per Image Abstraction Layer API (draw, copy, region, rotate, scale, flip) in order to not embed all algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
 
 Each table contains ten elements:
 
@@ -274,7 +333,77 @@ The following graph illustrates the drawing of an image:
       (drawShapes)"]
    }
 
-XXX graph to describe
+.. force a new line
+
+|
+
+Take the same example than the *Standard Formats Only* implementation (draw an image):
+
+**UI_DRAWING_DEFAULT_drawImage** (available in MicroUI C Module)
+
+.. code-block:: c
+
+   // use the preprocessor 'weak'
+   __weak DRAWING_Status UI_DRAWING_DEFAULT_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha) {
+   #if !defined(LLUI_IMAGE_CUSTOM_FORMATS)
+      return UI_DRAWING_SOFT_drawImage(gc, img, regionX, regionY, width, height, x, y, alpha);
+   #else
+      return UI_IMAGE_DRAWING_draw(gc, img, regionX, regionY, width, height, x, y, alpha);
+   #endif
+   }
+
+The define ``LLUI_IMAGE_CUSTOM_FORMATS`` is set so the implementation of the weak function redirects the image drawing to the image drawers manager (``ui_image_drawing.h``).
+
+**UI_IMAGE_DRAWING_draw** (available in MicroUI C Module)
+
+.. code-block:: c
+
+   static const UI_IMAGE_DRAWING_draw_t UI_IMAGE_DRAWING_draw_custom[] = {
+      &UI_DRAWING_STUB_drawImage,
+      &UI_DRAWING_SOFT_drawImage,
+      &UI_IMAGE_DRAWING_draw_custom0,
+      &UI_IMAGE_DRAWING_draw_custom1,
+      &UI_IMAGE_DRAWING_draw_custom2,
+      &UI_IMAGE_DRAWING_draw_custom3,
+      &UI_IMAGE_DRAWING_draw_custom4,
+      &UI_IMAGE_DRAWING_draw_custom5,
+      &UI_IMAGE_DRAWING_draw_custom6,
+      &UI_IMAGE_DRAWING_draw_custom7,
+   };
+
+   DRAWING_Status UI_IMAGE_DRAWING_draw(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha){
+      return (*UI_IMAGE_DRAWING_draw_custom[_get_table_index(gc, img)])(gc, img, regionX, regionY, width, height, x, y, alpha);
+   }
+
+The implementation in the MicroUI C module redirects the drawing to the expected drawer.
+The drawer is retrieved thanks its format (function ``_get_table_index()``):
+
+* the format is standard but the destination is not a *display* format: index ``0`` is returned,
+* the format is standard and the destination is a *display* format: index ``1`` is returned,
+* the format is custom: index ``2`` to ``9`` is returned,
+
+**UI_IMAGE_DRAWING_draw_custom0** (available in MicroUI C Module)
+
+.. code-block:: c
+
+   // use the preprocessor 'weak'
+   __weak DRAWING_Status UI_IMAGE_DRAWING_draw_custom0(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha){
+      return UI_DRAWING_STUB_drawImage(gc, img, regionX, regionY, width, height, x, y, alpha);
+   }
+
+The default implementation of ``UI_IMAGE_DRAWING_draw_custom0`` (same behavior for ``0`` to ``7``) consists to call the stub implementation.
+
+**UI_DRAWING_STUB_drawImage** (available in MicroUI C Module)
+
+.. code-block:: c
+
+  DRAWING_Status UI_DRAWING_STUB_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha){
+    // set  the drawing log flag "not implemented"
+    LLUI_DISPLAY_reportError(gc, DRAWING_LOG_NOT_IMPLEMENTED);
+    return DRAWING_DONE;
+  }
+
+The implementation only consists to set the :ref:`Drawing log <section.veeport.ui.drawings.drawing_logs>`  ``DRAWING_LOG_NOT_IMPLEMENTED`` to notify to the application that the drawing has not been performed.
 
 Simulation
 ==========
