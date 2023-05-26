@@ -79,6 +79,7 @@ Foundation Libraries
 -  Updated ``KF`` to version ``1.7``:
   
    -  Added heap memory control (`Kernel.setReservedMemory()`_ and `Feature.setMemoryLimit()`_ methods).
+   -  Added load of a Feature resource (`Feature.getResourceAsStream()`_ method).
 
 - Updated ``KF`` dynamic loader to support :ref:`Feature Custom Installation <feature_custom_installation>` mode.
 - Removed Foundation Libraries API Jars and Javadoc.
@@ -89,6 +90,7 @@ Foundation Libraries
 
 .. _Kernel.setReservedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#setReservedMemory-long-
 .. _Feature.setMemoryLimit(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#setMemoryLimit-long-
+.. _Feature.getResourceAsStream(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#getResourceAsStream-java.lang.String-
 
 Integration
 ~~~~~~~~~~~
