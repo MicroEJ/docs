@@ -261,9 +261,9 @@ Images with a custom format can be used as any other image.
 For that, it requires some support at different levels depending on their usage:
 
 * To convert an image to this format at compile-time and embed it, an extension of the image generator is necessary, see :ref:`section_imagegenerator_custom_format`.
-* To create a new one at-runtime, some native extension is necessary, see :ref:`XXX`.
-* To use it as source (to draw the image in another buffer), some native extension is necessary, see :ref:`XXX`.
-* To use it as destination (to draw into the image), some native extension is necessary, see :ref:`XXX`.
+* To create a new one at-runtime, some native extension is necessary, see :ref:`section_buffered_image`.
+* To use it as source (to draw the image in another buffer), some native extension is necessary, see :ref:`section_buffered_image_drawer_custom`.
+* To use it as destination (to draw into the image), some native extension is necessary, see :ref:`section_buffered_image`.
 
 .. _section_image_binary_raw:
 
@@ -367,7 +367,9 @@ The required memory becomes:
 
 .. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#
 .. _ImageIO: https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html
-.. _custom formats: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Format.html#CUSTOM_0
+
+.. XXX to replace by https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Format.html#CUSTOM_0
+.. _custom formats: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
