@@ -42,10 +42,15 @@ The next step is to create a MicroEJ Platform configuration project:
 
 -  Click on :guilabel:`Finish` button. A new empty project is created,
 
--  Install the latest `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/>`_. 
-   Files within the ``content`` folder have to be copied to the configuration project folder,
+-  Install the latest `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/>`_
    by following instructions described at https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/README.rst.
    
+   - Files within the ``content-sdk-5`` folder must be copied to the configuration project folder.
+
+   - Files within the ``content-architecture-7`` must be copied to the configuration project folder only if you are using an Architecture version ``7.x``.
+     If you are using an Architecture version ``8.x``, the files are already included and **must not** be copied.
+   
+
    You should get a MicroEJ Platform configuration project that looks like:
 
    .. figure:: images/platformConfigurationSkeleton.png

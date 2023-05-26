@@ -11,8 +11,36 @@ Update Platform Configuration Additions
 ---------------------------------------
 
 Architecture ``8.0.0`` now directly integrates the :ref:`bsp_connection` mechanism.
-The Platform Configuration Additions must be updated accordingly. 
-Contact `our support team <https://www.microej.com/contact/#form_2>`_ to get detailed instructions. 
+Consequently, Platform Configuration Additions files have been separated in two directories:
+
+- ``content-sdk-5``: files required for building the VEE Port using SDK 5.x (MMM)
+- ``content-architecture-7``: files required for building the Executable using Architecture 7.x. 
+
+See https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/README.rst for more details.
+
+Your VEE Port must be updated to remove files that are now included in Architecture 8:
+
+- Delete ``[name]-configuration/build/module/module-dropins`` directory.
+- Delete ``[name]-configuration/build/module/module-dropins.ant`` file.
+- Delete ``[name]-configuration/build/platform/platform-deploy.ant`` file.
+- Delete ``[name]-configuration/build/platform/platform-kf.ant`` file.
+- Download the latest ``content-sdk-5`` directory. Your local files must be overridden.
+- Edit your `module.ivy` and put back your module `name`, `version`, `organisation` and `<dependencies>` content.
+- Edit your `module.properties` and put back your options (if they have changed from default ones).
+- Delete the following files from your `[name]-configuration/dropins` directory:
+  
+  - ``scripts/init-bsp/*``
+  - ``scripts/init-license-checker/*``
+  - ``scripts/checkOS.xml``
+  - ``scripts/deployInBSP.xml``
+  - ``scripts/deployInBSPCommon.xml``
+  - ``scripts/deployToolBSPRun*``
+  - ``scripts/fullLink*``
+  - ``tools/license-checker.jar``
+  - ``workbenchExtension-launchScriptFramework.jar``
+
+- Rebuild your VEE Port.
+- Rebuild your Executable.
 
 Update BSP with new Sections Names
 ----------------------------------
@@ -78,7 +106,7 @@ Migrate ECOM-COMM Module
 There are two options:
   
 - either migrate to the latest ECOM-COMM Pack,
-- or integrate the legacy ECOM-COMM Pack files as-is into your VEE Port ``dropins`` folder.
+- or integrate the legacy ECOM-COMM Pack files as-is into your VEE Port ``dropins`` directory.
 
 Contact `our support team <https://www.microej.com/contact/#form_2>`_ to get the best migration strategy and detailed instructions. 
 
