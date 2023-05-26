@@ -48,24 +48,24 @@ A :ref:`section_image_custom_raw` image can be:
 
 * an image with a pixel buffer but whose pixel organization is not standard,
 * an image with a data buffer: an image encoded with a third-party encoder (proprietary format or not),
-* an image with a command buffer: instead of performing the drawings, the image *stores* the drawing actions,
+* an image with a "command" buffer: instead of performing the drawings on pixels, the image *stores* the drawing actions to replay them later,
 * etc.
 
 The VEE Port must extend the Image Renderer to support the drawing of these images.
-This extension can consist to:
+This extension can consist in:
 
-* decode the image at runtime to draw it,
-* use a compatible GPU to draw it,
-* use a command interpreter to perform some :ref:`shape drawings <section_drawings>`,
+* decoding the image at runtime to draw it,
+* using a compatible GPU to draw it,
+* using a command interpreter to perform some :ref:`shape drawings <section_drawings>`,
 * etc.
 
 To draw the custom images, the Image Renderer introduces the notion of *custom image drawer*.
 This drawer is an engine which has the responsibility to draw the image.
-Each custom image format (``0`` to ``7``) has its own drawer.
+Each custom image format (``0`` to ``7``) has its own image drawer.
 
-Contrary to the standard images or the shapes where the drawing is stubbed when is not performed (by a soft algo or by a GPU), the custom image drawing is redirected to the associated image drawer.
+Each drawing of a custom image is redirected to the associated image drawer.
 
-.. note:: A custom image drawer can call again the UI Shapes Drawing API to draw its elements in the destination.
+.. note:: A custom image drawer can call the UI Shapes Drawing API to draw its elements in the destination.
 
 The implementation is not the same between the Embedded side and the Simulation.
 However the concepts are the same and are described in dedicated chapters.
@@ -80,20 +80,18 @@ As described above, an :ref:`image drawer <section_buffered_image_drawer_custom_
 The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to manage the notion of drawers: it does not *support* the custom formats, but it allows to add some additional drawers.
 
 This support uses several weak functions and tables to redirect the image drawings.
-When this support is useless (when the VEE Port does not need to support *custom* images), this support can be removed to reduce the footprint (by removing tables indirections) and increase the performances (by reducing the number of runtime functions calls).
+When this support is not used (when the VEE Port does not need to support *custom* images), this support can be removed to reduce the footprint (by removing the indirection tables) and improve the performances (by reducing the number of runtime functions calls).
 
 .. _section_buffered_image_drawer_standard:
 
-Standard Formats Only (Default Implementation)
-----------------------------------------------
+Standard Formats Only (Default)
+-------------------------------
 
-This implementation can only draw images whose format is a :ref:`standard format <section_image_standard_raw>`. 
+The default implementation can only draw images with a :ref:`standard format <section_image_standard_raw>`. 
 In other words, the application is not able to draw a custom image. 
-This is the most frequently used case, which was the only available use-case with MicroUI before version 3.2. 
+This is the most frequent use-case, which was the only available use-case with MicroUI before version 3.2.
 
 .. hint:: To select this implementation (to disable the custom format support), the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be unset.
-
-This is the default implementation. 
 
 The following graph illustrates the drawing of an image:
 
@@ -178,14 +176,16 @@ Similar to ``LLUI_PAINTER_IMPL_drawLine``, see :ref:`section_drawings_cco`.
    // to write in the BSP (optional)
    #define UI_DRAWING_GPU_drawImage UI_DRAWING_drawImage
 
-The function names are set thanks some ``define``.
-These names redirections are useful when the VEE Port features more than one destination format (not the use-case here).
+The function names are set thanks to some ``define``.
+These name redirections are useful when the VEE Port features more than one destination format (not the use-case here).
 
 **UI_DRAWING_GPU_drawImage** (to write in the BSP)
 
+Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`) but let's the image drawer manages the image instead of calling directly the software drawer.
+
 .. code-block:: c
 
-   // contrary to the MicroUI C Module, this function is not "weak"
+   // unlike the MicroUI C Module, this function is not "weak"
    DRAWING_Status UI_DRAWING_GPU_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha) {
       
       DRAWING_Status status;
@@ -202,8 +202,6 @@ These names redirections are useful when the VEE Port features more than one des
       return status;
    }
 
-Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`) but let's the image drawer manages the image instead of calling directly the software drawer.
-
 **UI_DRAWING_DEFAULT_drawImage** (available in MicroUI C Module)
 
 .. code-block:: c
@@ -217,20 +215,20 @@ Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`) but let
    #endif
    }
 
-The define ``LLUI_IMAGE_CUSTOM_FORMATS`` is not set so the implementation of the weak function only consists to call the Graphics Engine' software algorithm.
+The define ``LLUI_IMAGE_CUSTOM_FORMATS`` is not set, so the implementation of the weak function only consists in calling the Graphics Engine' software algorithm.
 
 .. _section_buffered_image_drawer_custom:
 
 Custom Format Support 
 ---------------------
 
-In addition with the :ref:`standard formats <section_image_standard_raw>`, this implementation allows to draw images whose format is a :ref:`custom format <section_image_custom_raw>`. 
-This is an advanced use-case, only available with MicroUI 3.2 or higher. 
+In addition to the :ref:`standard formats <section_image_standard_raw>`, this implementation allows to draw images with a :ref:`custom format <section_image_custom_raw>`. 
+This is an advanced use-case, only available with MicroUI 3.2 or higher.
 
 .. hint:: To select this implementation, the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be set (no specific value).
 
 The MicroUI C module uses some tables to redirect the image management to the expected extension.
-There is one table per Image Abstraction Layer API (draw, copy, region, rotate, scale, flip) in order to not embed all algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
+There is one table per Image Abstraction Layer API (draw, copy, region, rotate, scale, flip) in order to embed only necessary algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
 
 Each table contains ten elements:
 
@@ -341,7 +339,7 @@ The following graph illustrates the drawing of an image:
 
 |
 
-Take the same example than the *Standard Formats Only* implementation (draw an image):
+Take the same example as the *Standard Formats Only* implementation (draw an image):
 
 **UI_DRAWING_DEFAULT_drawImage** (available in MicroUI C Module)
 
@@ -380,10 +378,10 @@ The define ``LLUI_IMAGE_CUSTOM_FORMATS`` is set so the implementation of the wea
    }
 
 The implementation in the MicroUI C module redirects the drawing to the expected drawer.
-The drawer is retrieved thanks its format (function ``_get_table_index()``):
+The drawer is retrieved thanks to its format (function ``_get_table_index()``):
 
-* the format is standard but the destination is not a *display* format: index ``0`` is returned,
-* the format is standard and the destination is a *display* format: index ``1`` is returned,
+* the format is standard but the destination is not the *display* format: index ``0`` is returned,
+* the format is standard and the destination is the *display* format: index ``1`` is returned,
 * the format is custom: index ``2`` to ``9`` is returned,
 
 **UI_IMAGE_DRAWING_draw_custom0** (available in MicroUI C Module)
@@ -395,19 +393,19 @@ The drawer is retrieved thanks its format (function ``_get_table_index()``):
       return UI_DRAWING_STUB_drawImage(gc, img, regionX, regionY, width, height, x, y, alpha);
    }
 
-The default implementation of ``UI_IMAGE_DRAWING_draw_custom0`` (same behavior for ``0`` to ``7``) consists to call the stub implementation.
+The default implementation of ``UI_IMAGE_DRAWING_draw_custom0`` (same behavior for ``0`` to ``7``) consists in calling the stub implementation.
 
 **UI_DRAWING_STUB_drawImage** (available in MicroUI C Module)
 
 .. code-block:: c
 
   DRAWING_Status UI_DRAWING_STUB_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha){
-    // set  the drawing log flag "not implemented"
+    // set the drawing log flag "not implemented"
     LLUI_DISPLAY_reportError(gc, DRAWING_LOG_NOT_IMPLEMENTED);
     return DRAWING_DONE;
   }
 
-The implementation only consists to set the :ref:`Drawing log <section.veeport.ui.drawings.drawing_logs>`  ``DRAWING_LOG_NOT_IMPLEMENTED`` to notify to the application that the drawing has not been performed.
+The implementation only consists in setting the :ref:`Drawing log <section.veeport.ui.drawings.drawing_logs>`  ``DRAWING_LOG_NOT_IMPLEMENTED`` to notify the application that the drawing has not been performed.
 
 Simulation
 ==========
