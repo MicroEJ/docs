@@ -178,6 +178,8 @@ LED
 |                 | * ``void LLLEDS_IMPL_setIntensity([...]);``                      |
 +-----------------+------------------------------------------------------------------+
 
+.. _section_ui_releasenotes_frontpanel:
+
 Front Panel API
 ===============
 

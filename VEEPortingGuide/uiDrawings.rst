@@ -441,8 +441,9 @@ The :ref:`UI Pack extension <section_ui_simulation>` is designed to simplify the
 * Add the dependency to the UI Pack extension in the VEE Port Front Panel project.
 * Create a subclass of ``DisplayDrawer`` (implementation of the interface ``UIDrawing``).
 * Overwrite only the desired drawing(s).
-* Each drawing implementation must comply with the clip and color (synchronization with the Graphics Engine already done).
-* Functions indirections are limited (the drawing algorithm is called as fast as possible).
+   * Each drawing implementation must comply with the clip and color (synchronization with the Graphics Engine already done).
+   * Functions indirections are limited (the drawing algorithm is called as fast as possible).
+* Register this drawer in place of the default display drawer.
 
 The following graph illustrates the steps to perform a shape drawing (not an image):
 
@@ -559,7 +560,7 @@ There are two possible ways to register it:
       @Override
       public void start() {
          super.start();
-         LLUIPainter.setDrawer(new MyDrawer());
+         LLUIDisplay.Instance.registerUIDrawer(new MyDrawer());
       }
    }
    
