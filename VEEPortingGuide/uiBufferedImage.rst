@@ -7,7 +7,7 @@ Buffered Image
 Overview
 ========
 
-MicroUI application is able to create an image where it is allowed to draw into: the MicroUI ``BufferedImage``. 
+MicroUI application is able to create an image where it is possible to draw into: the MicroUI ``BufferedImage``.
 The format of this kind of images is Display (default), Standard or Custom (see next chapters).
 
 .. warning:: The output format Standard and Custom depends on the VEE Port capabilities.
@@ -18,10 +18,10 @@ Drawer
 ======
 
 A buffered image requires a *drawer*.
-A drawer is an engine which has the responsibility:
+A drawer is an engine which has the responsibility to:
 
-* to allow to the application to create Standard and Custom buffered images, 
-* to draw into these images.
+* allow the application to create Standard and Custom buffered images,
+* draw into these images.
 
 The implementation is not the same between the Embedded side and the Simulation.
 However the concepts are the same and are described in dedicated chapters.
@@ -34,59 +34,60 @@ Display
 
 This is the format used by default when no format is specified when creating a MicroUI ``BufferedImage``.
 
-The image format is the same than the display buffer format; in other words, its number of bits-per-pixel and its pixel bits organization are the same (see chapter :ref:`section_image_display_raw`).
+The image format is the same as the display buffer format; in other words, its number of bits-per-pixel and its pixel bits organization are the same (see chapter :ref:`section_image_display_raw`).
 
-* image creation: the Graphics Engine provides the capacity to create this kind of images; no specific support is required in the VEE Port.
-* draw into the image: the rules to draw into this kind of buffered images are the same to draw in the display buffer, see :ref:`section_drawings`.
-* draw the image: the rules to draw this kind of buffered images are described in the chapter :ref:`image renderer standard <section_buffered_image_drawer_standard>`.
+* Image creation: the Graphics Engine provides the capacity to create this kind of images; no specific support is required in the VEE Port.
+* Draw into the image: the rules to draw into this kind of buffered images are the same as to draw in the display buffer, see :ref:`section_drawings`.
+* Draw the image: the rules to draw this kind of buffered images are described in the chapter :ref:`image renderer standard <section_buffered_image_drawer_standard>`.
 
 Standard
 --------
 
-This is the format when a :ref:`section_image_standard_raw` or :ref:`section_image_grayscale_raw` format is specified when creating a MicroUI ``BufferedImage``.
+A MicroUI ``BufferedImage`` can be created specifying a :ref:`section_image_standard_raw` or :ref:`section_image_grayscale_raw` format.
 
 .. note:: 
 
-  When the display format is the same than the standard format used to create the buffered image, the rules to create the image, to draw into and to draw it are the same than the Display format.
-  This chapter describes the use case when the *standard* format is different than the *display* format.
+  When the display format is the same as the standard format used to create the buffered image, the rules to create the image, to draw into and to draw it are the same as the Display format.
+  This chapter describes the use case when the format is different than the *display* format.
 
-Contrary to the display format, the VEE Port must feature a :ref:`drawer <section_buffered_image_drawer>` for each standard format.
+Unlike the display format, the VEE Port must feature a :ref:`drawer <section_buffered_image_drawer>` for each standard format.
 
-* image creation: the drawer allows to create this kind of buffered images; if the VEE Port does not feature a drawer for a specific format, the MicroUI ``BufferedImage`` cannot be created and an exception is thrown at runtime.
-* draw into the image: the drawer can implement all MicroUI drawings or just a reduced set; when a drawing is not performed, a :ref:`drawing log <section.veeport.ui.drawings.drawing_logs>` flag is set.
-* draw the image: the image is *standard* so its rendering is *standard* also; the rules to draw this kind of buffered images are described in the chapter  :ref:`image renderer standard <section_buffered_image_drawer_standard>`.
+* Image creation: the drawer allows to create this kind of buffered images; if the VEE Port does not feature a drawer for a specific format, the MicroUI ``BufferedImage`` cannot be created and an exception is thrown at runtime.
+* Draw into the image: the drawer can implement all MicroUI drawings or just a reduced set; when a drawing is not performed, a :ref:`drawing log <section.veeport.ui.drawings.drawing_logs>` flag is set.
+* Draw the image: the image is *standard* so its rendering is *standard* also; the rules to draw this kind of buffered images are described in the chapter  :ref:`image renderer standard <section_buffered_image_drawer_standard>` (no extra support needed in the VEE Port).
 
 Custom
 ------
 
-This is the format when a :ref:`section_image_custom_raw` format is specified when creating a MicroUI ``BufferedImage``.
+A MicroUI ``BufferedImage`` can be created specifying a :ref:`section_image_custom_raw` formats.
 
 Like standard formats, the VEE Port must feature a :ref:`drawer <section_buffered_image_drawer>` for each custom format.
+It must also feature an image allocator.
 
-* image creation: the drawer allows to create this kind of buffered images; if the VEE Port does not feature a drawer for a specific format, the MicroUI ``BufferedImage`` cannot be created and an exception is thrown at runtime.
-* draw into the image: the drawer can implement all MicroUI drawings or just a reduced set; when a drawing is not performed, a :ref:`drawing log <section.veeport.ui.drawings.drawing_logs>` flag is set.
-* draw the image: the image is *custom* so its rendering is *custom* also; the rules to draw this kind of buffered images are described in the chapter  :ref:`image renderer custom <section_buffered_image_drawer_custom>`.
+* Image creation: the allocator and drawer allow to create this kind of buffered images; if the VEE Port does not feature an allocator and a drawer for a specific format, the MicroUI ``BufferedImage`` cannot be created and an exception is thrown at runtime.
+* Draw into the image: the drawer can implement all MicroUI drawings or just a reduced set; when a drawing is not performed, a :ref:`drawing log <section.veeport.ui.drawings.drawing_logs>` flag is set.
+* Draw the image: the image is *custom* so its rendering is *custom* also; the rules to draw this kind of buffered images are described in the chapter  :ref:`image renderer custom <section_buffered_image_drawer_custom>`.
 
 MicroUI C Module
 ================
 
-Implementations
----------------
+Drawer
+------
 
 As described above, a :ref:`drawer <section_buffered_image_drawer>` allows to create and draw into buffered images whose format is different than the display format.
 The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to manage the notion of drawers: it does not *support* the other formats than display format, but it allows to add some additional drawers.
 
 This support uses several weak functions and tables to redirect the image creation and drawings.
-When this support is useless (when the VEE Port does not need to support *extra* images), this support can be removed to reduce the footprint (by removing tables indirections) and increase the performances (by reducing the number of runtime functions calls).
+When this support is not used (when the VEE Port does not need to support *extra* images), this support can be removed to reduce the footprint (by removing the indirection tables) and increase the performances (by reducing the number of runtime functions calls).
 
-In addition with the Display, Standard and Custom formats, the MicroUI C module implementation introduces the notion of *Single* and *Multiple* formats, more specifically *Single Format Implementation* and *Multiple Format Implementation*.
+In addition with the Display, Standard and Custom formats, the MicroUI C module implementation introduces the notion of *Single* and *Multiple* formats, more specifically *Single Format Implementation* and *Multiple Formats Implementation*.
 
 Single Format Implementation (Default Implementation)
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
-This MicroUI BufferedImage implementation can only target images whose format is identical to the display format. 
+This MicroUI BufferedImage implementation can only target images with the display format. 
 In other words, the application is not able to create a MicroUI BufferedImage with a format different than the display format. 
-This is the most frequently used case, which was the only available use-case with MicroUI before version 3.2. 
+This is the most frequent use-case, which was the only one available with MicroUI before version 3.2. 
 
 .. hint:: To select this implementation (to disable the multi formats support), the define ``LLUI_GC_SUPPORTED_FORMATS`` must be unset or lower than ``2``.
 
@@ -103,7 +104,7 @@ This is an advanced use-case, only available with MicroUI 3.2 or higher.
 .. hint:: To select this implementation, the define ``LLUI_GC_SUPPORTED_FORMATS`` must be set to ``2`` or more. Its value defines the available number of *extra* formats the VEE Port features.
 
 The MicroUI C module uses some tables to redirect the image management to the expected :ref:`drawer <section_buffered_image_drawer>`.
-There is one table per Abstraction Layer API in order to not embed all algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
+There is one table per Abstraction Layer API in order not to embed all algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
 The tables size is dimensioned according to the define value. 
 
 To manipulate the tables, the C module uses 0-based index whose value is different than the image format value.
@@ -112,7 +113,7 @@ This differentiation allows to reduce the tables size: when a format is not supp
 
 .. note:: The index ``0`` is reserved to the *display* format. 
 
-A table holds a list of function for a given algorithm.
+A table holds a list of functions for a given algorithm.
 For instance, the following table allows to redirect the drawing ``writePixel`` to the drawers ``0`` to ``2``:
 
 .. code:: c
@@ -128,16 +129,16 @@ For instance, the following table allows to redirect the drawing ``writePixel`` 
 * ``UI_DRAWING_writePixel_0`` is the drawing function called when the image format is the display format,
 * ``UI_DRAWING_writePixel_1`` and ``UI_DRAWING_writePixel_2`` are the drawing functions called for the images whose format are respectively identified by the index ``1`` and ``2`` (see *Image Creation* below).
 
-By default, the C module only manages until 3 different formats: the *display* format (index ``0``) and two others formats. 
+By default, the C module only manages up to 3 different formats: the *display* format (index ``0``) and two others formats. 
 To add another format, the C module must be customized: look for everywhere the define ``LLUI_GC_SUPPORTED_FORMATS`` is used and add a new cell in the tables.
 
 Custom Format
 """""""""""""
 
-A MicroUI BufferedImage can have a *custom* format as soon as the Multiple Format Implementation is selected.
+A MicroUI BufferedImage can have a *custom* format as soon as the Multiple Formats Implementation is selected.
 However a third-party support is required to render this kind of images. 
 
-.. hint:: In addition with the ``#define LLUI_GC_SUPPORTED_FORMATS``, the ``#define LLUI_IMAGE_CUSTOM_FORMATS`` must be set. This is the same define to render custom RAW images: see :ref:`section_buffered_image_drawer_custom`.
+.. hint:: In addition to the ``#define LLUI_GC_SUPPORTED_FORMATS``, the ``#define LLUI_IMAGE_CUSTOM_FORMATS`` must be set. This is the same ``define`` used to render custom RAW images: see :ref:`section_buffered_image_drawer_custom`.
 
 .. _section_buffered_image_c_creation:
 
@@ -152,38 +153,52 @@ These steps are managed by the Graphics Engine that calls four Abstraction Layer
 These four LLAPI are already implemented by the MicroUI C Module.
 
 According to the support of multiple drawers, the C module redirects or not these LLAPI to some ``ui_drawing.h`` functions.
-The image creation steps are succinctly describes below, refer to the next chapters for more details.
+The image creation steps are succinctly described below, refer to the next chapters for more details.
 
 1. The application asks the creation of a buffered image.
-2. The Graphics Engine calls the LLAPI ``LLUI_DISPLAY_IMPL_getDrawerIdentifier()``: this function allows to get a drawer index related to the image format. The index ``0`` indicates to use the default drawer: the *display* drawer. A positive value indicates a drawer index for all others formats than the display format. A negative index indicates the VEE Port does not support the image format (in that case, the image creation is refused and an exception is thrown in the application). 
-3. According to the image format, the Graphics Engine calculates the minimal stride of the image. This stride can be customized to fit the GPU constraint (see :ref:`section_image_gpu_raw`) by implementing the LLAPI ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes()``. 
-4. The Graphics Engine determinates the image buffer size according to the image format, its size (width and height) and its stride (see previous step). This size and the buffer alignment can be adjusted thanks the LLAPI ``LLUI_DISPLAY_IMPL_adjustNewImageCharacteristics()``. The buffer size should be higher or equal than the buffer size calculated by the Graphics Engine. If smaller, the Graphics Engine will use the initial value. For a *custom* image, the initial value is 0: the VEE Port must set a positive value otherwise the image creation is refused and an exception is thrown in the application. 
+2. The Graphics Engine calls the LLAPI ``LLUI_DISPLAY_IMPL_getDrawerIdentifier()``: this function allows to get a drawer index related to the image format. The index ``0`` indicates to use the default drawer: the *display* drawer.
+   A positive value indicates a drawer index for all other formats than the display format. 
+   A negative index indicates that the VEE Port does not support the image format (in that case, the image creation is refused and an exception is thrown in the application). 
+3. Depending on the image format, the Graphics Engine calculates the minimal stride of the image.
+   This stride can be customized to fit the GPU constraint (see :ref:`section_image_gpu_raw`) by implementing the LLAPI ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes()``. 
+4. The Graphics Engine determinates the image buffer size according to the image format, its size (width and height) and its stride (see previous step).
+   This size and the buffer alignment can be adjusted thanks to the LLAPI ``LLUI_DISPLAY_IMPL_adjustNewImageCharacteristics()``.
+   The buffer size should be higher or equal than the buffer size calculated by the Graphics Engine.
+   If smaller, the Graphics Engine will use the initial value. For a *custom* image, the initial value is 0: the VEE Port must set a positive value otherwise the image creation is refused and an exception is thrown in the application. 
 5. The Graphics Engine allocates the image buffer according to the values adjusted before (size and alignment). 
-6. Finally, the Graphics Engine calls the LLAPI ``LLUI_DISPLAY_IMPL_initializeNewImage()`` that allows to the VEE Port to initialize the image buffer (often only useful for custom images).
+6. Finally, the Graphics Engine calls the LLAPI ``LLUI_DISPLAY_IMPL_initializeNewImage()`` that allows the VEE Port to initialize the image buffer (often only useful for custom images).
 
 Single Format Implementation
 """"""""""""""""""""""""""""
 
-The MicroUI C module implements the four LLAPI to only create a MicroUI BufferedImage with the *display* format.
+The MicroUI C module implements the four LLAPI to create only MicroUI BufferedImages with the *display* format.
 
-* ``LLUI_DISPLAY_IMPL_getDrawerIdentifier()``: the C module checks if the image format is the *display* format. If yes, it returns the index ``0`` that indicates to the Graphics Engine to use the default drawer. If not, it returns a negative index: the image creation is refused.
-* It redirects the three last LLAPI to some ``ui_drawing.h`` functions. These ``ui_drawing.h`` functions are already implemented as ``weak`` functions; that allows to the VEE Port to implement only the required functions:
+* ``LLUI_DISPLAY_IMPL_getDrawerIdentifier()``: the C module checks if the image format is the *display* format.
+  If yes, it returns the index ``0`` that indicates to the Graphics Engine to use the default drawer.
+  If not, it returns a negative index: the image creation is refused.
+* It redirects the three last LLAPI to some ``ui_drawing.h`` functions.
+  These ``ui_drawing.h`` functions are already implemented as ``weak`` functions; that allows the VEE Port to implement only the required functions:
 
-  * implementation of ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes()`` calls ``UI_DRAWING_getNewImageStrideInBytes()``, the weak function returns the stride given as parameter.
-  * implementation of ``LLUI_DISPLAY_IMPL_adjustNewImageCharacteristics()`` calls ``UI_DRAWING_adjustNewImageCharacteristics()``, the weak function does nothing.
-  * implementation of ``LLUI_DISPLAY_IMPL_initializeNewImage()`` calls ``UI_DRAWING_initializeNewImage()``, the weak function does nothing.
+  * Implementation of ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes()`` calls ``UI_DRAWING_getNewImageStrideInBytes()``, the weak function returns the stride given as parameter.
+  * Implementation of ``LLUI_DISPLAY_IMPL_adjustNewImageCharacteristics()`` calls ``UI_DRAWING_adjustNewImageCharacteristics()``, the weak function does nothing.
+  * Implementation of ``LLUI_DISPLAY_IMPL_initializeNewImage()`` calls ``UI_DRAWING_initializeNewImage()``, the weak function does nothing.
 
 Multiple Formats Implementation
 """""""""""""""""""""""""""""""
 
 The MicroUI C module implements the four LLAPI to create a MicroUI BufferedImage with any kind of format.
 
-* ``LLUI_DISPLAY_IMPL_getDrawerIdentifier()``: the C module checks if the image format is the *display* format. If yes, it returns the index ``0`` that indicates to the Graphics Engine to use the default drawer. If not, it calls the function ``UI_DRAWING_is_drawer_1()`` and then ``UI_DRAWING_is_drawer_2()``. The VEE Port has the responsibility to implement at least one function. The index ``1`` or ``2`` will be attributed to the image format according to the VEE Port capabilities. If no drawer is found for the given format, the image creation is refused.
+* ``LLUI_DISPLAY_IMPL_getDrawerIdentifier()``: the C module checks if the image format is the *display* format.
+  If yes, it returns the index ``0`` that indicates to the Graphics Engine to use the default drawer.
+  If not, it calls the function ``UI_DRAWING_is_drawer_1()`` and then ``UI_DRAWING_is_drawer_2()``.
+  The VEE Port has the responsibility to implement at least one function.
+  The index ``1`` or ``2`` will be assigned to the image format according to the VEE Port capabilities.
+  If no drawer is found for the given format, the image creation is refused.
 * It redirects the three last LLAPI to the associated tables: 
 
-  * implementation of ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes()`` calls the functions of the table ``UI_DRAWER_getNewImageStrideInBytes[]``, the weak functions return the stride given as parameter.
-  * implementation of ``LLUI_DISPLAY_IMPL_adjustNewImageCharacteristics()`` calls the functions of the table ``UI_DRAWER_adjustNewImageCharacteristics[]``, the weak functions do nothing.
-  * implementation of ``LLUI_DISPLAY_IMPL_initializeNewImage()`` calls the functions of the table ``UI_DRAWER_initializeNewImage[]``, the weak functions do nothing.
+  * Implementation of ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes()`` calls the functions of the table ``UI_DRAWER_getNewImageStrideInBytes[]``, the weak functions return the stride given as parameter.
+  * Implementation of ``LLUI_DISPLAY_IMPL_adjustNewImageCharacteristics()`` calls the functions of the table ``UI_DRAWER_adjustNewImageCharacteristics[]``, the weak functions do nothing.
+  * Implementation of ``LLUI_DISPLAY_IMPL_initializeNewImage()`` calls the functions of the table ``UI_DRAWER_initializeNewImage[]``, the weak functions do nothing.
 
 Display and Standard Image
 """"""""""""""""""""""""""
@@ -211,8 +226,8 @@ To draw into a buffered image with the display format, the same concepts to draw
 
 The MicroUI C module already implements all ``ui_drawing.h`` functions and the drawing are redirected to the :ref:`section_drawings_soft`.
 However the function names are ``UI_DRAWING_DEFAULT_drawX()`` and not ``UI_DRAWING_drawX()``.
-Thanks to the define ``LLUI_GC_SUPPORTED_FORMATS``, the function names are redefined thanks to C macros.
-This compile-time redirection allows to use the same implementation (``UI_DRAWING_DEFAULT_drawX()``) when the multi image support is disabled or enabled (when the target is an image with the same format than the display).
+Thanks to the define ``LLUI_GC_SUPPORTED_FORMATS``, the function names are redefined with C macros.
+This compile-time redirection allows to use the same implementation (``UI_DRAWING_DEFAULT_drawX()``) when the multiple formats support is disabled or enabled (when the target is an image with the same format as the display).
 
 The weak implementation of the function ``UI_DRAWING_DEFAULT_drawX()`` calls :ref:`section_drawings_soft` .
 This implementation allows to use a GPU or a third-party drawer to perform the rendering (see :ref:`section_drawings` for more details).
@@ -220,7 +235,7 @@ This implementation allows to use a GPU or a third-party drawer to perform the r
 Single Format Implementation
 """"""""""""""""""""""""""""
 
-The define ``LLUI_GC_SUPPORTED_FORMATS`` is unset of lower than ``2``; the compile-time redirection is:
+The define ``LLUI_GC_SUPPORTED_FORMATS`` is unset or lower than ``2``; the compile-time redirection is:
 
 .. code:: c
 
@@ -237,12 +252,12 @@ For the images whose format is the display format (index ``0``, see :ref:`sectio
 
 .. _section_buffered_image_c_drawinto:
 
-Draw into the Image: non-Display Format
+Draw into the Image: Non-Display Format
 ---------------------------------------
 
-To draw into a buffered image with a format different than  display format, the :ref:`section_buffered_image_c_multi` must be selected.
+To draw into a buffered image with a format different than the display format, the :ref:`section_buffered_image_c_multi` must be selected.
 
-For the images whose format is not the display format (index ``1`` and ``2``),  the C module provides the weak implementations that that do nothing (see :ref:`Drawing log <section.veeport.ui.drawings.drawing_logs>`  ``DRAWING_LOG_NOT_IMPLEMENTED``).
+For the images whose format is not the display format (index ``1`` and ``2``), the C module provides the weak implementations that that does nothing (see :ref:`Drawing log <section.veeport.ui.drawings.drawing_logs>`  ``DRAWING_LOG_NOT_IMPLEMENTED``).
 
 The following graph illustrates the drawing of a shape (not an image, see :ref:`section_buffered_image_c_drawit`):
 
@@ -360,9 +375,9 @@ The drawer is identified by the index stored in the ``MICROUI_GraphicsContext`` 
    #define UI_DRAWING_DEFAULT_drawLine UI_DRAWING_drawLine_0
 
 The index ``0`` is reserved to draw into the image whose format is the display format (see above).
-The function name is set thanks a ``define`` to reuse the same code between Single and Multiple Formats Implementations.
+The function name is set thanks to a ``define`` to reuse the same code between Single and Multiple Formats Implementations.
 
-The behavior after this function is similar than :ref:`section_drawings_cco_custom`.
+The behavior after this function is similar to :ref:`section_drawings_cco_custom`.
 
 **UI_DRAWING_drawLine_1** (available in MicroUI C Module)
 
@@ -374,7 +389,7 @@ The behavior after this function is similar than :ref:`section_drawings_cco_cust
     return UI_DRAWING_STUB_drawLine(gc, startX, startY, endX, endY);
   }
 
-The implementation of the weak function only consists to call the stub implementation.
+The implementation of the weak function only consists in calling the stub implementation.
 
 **UI_DRAWING_STUB_drawLine** (available in MicroUI C Module)
 
@@ -386,7 +401,7 @@ The implementation of the weak function only consists to call the stub implement
     return DRAWING_DONE;
   }
 
-The implementation only consists to set the :ref:`Drawing log <section.veeport.ui.drawings.drawing_logs>`  ``DRAWING_LOG_NOT_IMPLEMENTED`` to notify to the application that the drawing has not been performed.
+The implementation only consists in setting the :ref:`Drawing log <section.veeport.ui.drawings.drawing_logs>` ``DRAWING_LOG_NOT_IMPLEMENTED`` to notify the application that the drawing has not been performed.
 
 **UI_DRAWING_drawLine_1**  (to write in the BSP)
 
@@ -399,10 +414,10 @@ The implementation only consists to set the :ref:`Drawing log <section.veeport.u
 
 This example illustrates how to implement the ``drawLine`` function for an image with the format ``A8``.
 The drawer should be written in its own file. 
-However, the MicroUI C module advices to not use directly the name ``UI_DRAWING_drawLine_1`` but to use this mechanism to redirect at compile-time the call to ``UI_DRAWING_A8_drawLine``.
+However, the MicroUI C module advises not to use directly the name ``UI_DRAWING_drawLine_1`` but to use this mechanism to redirect at compile-time the call to ``UI_DRAWING_A8_drawLine``.
 
-* The define ``UI_DRAWING_IDENTIFIER_A8_FORMAT`` defines the index attributed to the A8 drawer, here ``1``.
-* The define ``UI_DRAWING_A8_is_drawer`` sets at compile-time the name of the ``is_drawing`` function, here: ``UI_DRAWING_is_drawer_1``.
+* The define ``UI_DRAWING_IDENTIFIER_A8_FORMAT`` assignes the index to the A8 drawer, here ``1``.
+* The define ``UI_DRAWING_A8_is_drawer`` sets at compile-time the name of the ``is_drawer`` function, here: ``UI_DRAWING_is_drawer_1``.
 * The define ``UI_DRAWING_A8_drawLine``  sets at compile-time the name of the ``drawLine`` function, here: ``UI_DRAWING_drawLine_1``.
 
 **UI_DRAWING_A8_is_drawer**  (to write in the BSP)
@@ -450,7 +465,7 @@ By definition, the image is a standard image (only display format is allowed) so
 Draw the Image: Multiple Formats Implementation 
 -----------------------------------------------
 
-Contrary to the Single Format Implementation, the destination may be another format than the display format.
+Unlike the Single Format Implementation, the destination may be another format than the display format.
 By consequence, the drawer has to check the image format **and** the destination format.
 
 The following graph illustrates the drawing of an image (draw, rotate or scale) in other image or in display buffer (to draw a shape, see :ref:`section_buffered_image_c_drawinto`).
@@ -589,7 +604,7 @@ This graph gathers the both graphs :ref:`draw in a custom image <section_buffere
 
 |
 
-The following description considers the first both graphs (:ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`) have been read and understood.
+The following description considers that previous both graphs (:ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`) have been read and understood.
 It only describes the *final* use-case: draw a custom image in an unknown destination (unknown destination format):
 
 **UI_IMAGE_DRAWING_draw_custom4** (to write in the BSP)
@@ -634,8 +649,8 @@ It only describes the *final* use-case: draw a custom image in an unknown destin
   }
 
 This drawer manages a custom image that holds a commands buffer (a list of drawings). 
-The image drawing consists to decode the commands list and call the standard shapes drawings.
-This drawer does not need to *recognize* the destination: the drawing of the shapes will do it for it.
+The image drawing consists in decoding the commands list and call the standard shapes drawings.
+This drawer does not need to *recognize* the destination: the drawing of the shapes will do it.
 
 Thanks to the define ``UI_IMAGE_IDENTIFIER_CMD_FORMAT``, this drawer uses the custom format ``4``.
 
@@ -667,7 +682,7 @@ Thanks to the define ``UI_IMAGE_IDENTIFIER_CMD_FORMAT``, this drawer uses the cu
   }
 
 This drawer manages an image whose format is *proprietary* . 
-This example considers the third-party library is only able to draw the image in a bufer whose format is the same than the display format.
+This example considers that the third-party library is only able to draw the image in a bufer with the display format.
 Otherwise, the drawing is cancelled and the stub implementation is used.
 
 Thanks to the define ``UI_IMAGE_IDENTIFIER_PROPRIETARY_FORMAT``, this drawer uses the custom format ``6``.
@@ -676,10 +691,10 @@ Extended C Modules
 ------------------
 
 MicroVG enables custom format for the Buffered Vector Image. 
-It uses the mechanisms described upper and can be used as example.
+It uses the mechanisms described above and can be used as example.
 See :ref:`section_vg_cco`.
 
-The drawings to the custom format *BVI* are implemented into the file ``ui_drawing_bvi.c``.
+The drawings in the custom format *BVI* are implemented into the file ``ui_drawing_bvi.c``.
 
 Simulation
 ==========
