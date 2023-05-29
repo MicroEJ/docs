@@ -89,7 +89,7 @@ Standard Formats Only (Default)
 
 The default implementation can only draw images with a :ref:`standard format <section_image_standard_raw>`. 
 In other words, the application is not able to draw a custom image. 
-This is the most frequent use-case, which was the only available use-case with MicroUI before version 3.2.
+This is the most frequent use-case, which was the only one available with MicroUI before version 3.2.
 
 .. hint:: To select this implementation (to disable the custom format support), the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be unset.
 
@@ -602,9 +602,6 @@ It is also possible to declare it programmatically (see where a drawer is regist
 .. code-block:: java
 
    LLUIDisplay.Instance.registerUIImageDrawer(new MyCustomImageDrawer());
-
-
-* xxx notion decode (cf UIImageDrawing.decode())
 
 Dependencies
 ============
