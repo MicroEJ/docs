@@ -410,12 +410,20 @@ The implementation only consists in setting the :ref:`Drawing log <section.veepo
 Simulation
 ==========
 
-* service xxx UIImageDrawing
-* xxx notion decode (cf UIImageDrawing.decode())
+Principle
+---------
 
+As described above, an :ref:`image drawer <section_buffered_image_drawer_custom_format>` allows to draw the images whose format is *custom*.
+The :ref:`Front Panel<section_ui_releasenotes_frontpanel>` is designed to manage the notion of drawers: it does not *support* the custom formats, but it allows to add some additional drawers.
+
+This support is based on Java service loader.
 
 Standard Formats Only (Default Implementation)
 ----------------------------------------------
+
+The default implementation is able to draw images with a standard format.
+
+The following graph illustrates the drawing of an image:
 
 .. graphviz::
 
@@ -474,11 +482,21 @@ Standard Formats Only (Default Implementation)
       UID_stub_c->stub
    }
 
+It is possible to override the image drawers for the standard format the same way as the custom formats.
+
 Custom Format Support 
 ---------------------
 
-* service xxx UIImageDrawing
-* xxx notion decode (cf UIImageDrawing.decode())
+It is possible to draw images with a custom format by implementing the ``UIImageDrawing`` interface.
+This is an advanced use-case, only available with MicroUI 3.2 or higher.
+
+The ``UIImageDrawing`` interface contains one method for each image drawing primitive (draw, copy, region, rotate, scale, flip).
+Only the necessary methods can be implemented.
+Each non-implemented method will result in calling the stub implementation.
+
+Once created, the ``UIImageDrawing`` implementation needs to be registered as a service.
+
+The following graph illustrates the drawing of an image:
 
 .. graphviz::
 
@@ -551,6 +569,42 @@ Custom Format Support
       (drawShapes)"]
    }
 
+Let's implement the image drawer for the `CUSTOM_0` format.
+
+.. code:: java
+
+   public class MyCustomImageDrawer implements UIImageDrawing {
+
+      @Override
+      public MicroUIImageFormat handledFormat() {
+         return MicroUIImageFormat.MICROUI_IMAGE_FORMAT_CUSTOM_0;
+      }
+
+      @Override
+      public void draw(MicroUIGraphicsContext gc, MicroUIImage img, int regionX, int regionY, int width, int height,
+            int x, int y, int alpha) {
+         MyCustomImage customImage = (MyCustomImage) img.getImage().getRAWImage();
+         customImage.drawOn(gc, regionX, regionY, width, height, x, y, alpha);
+      }
+
+   }
+
+Now, this drawer needs to be registered as a service.
+This can be achieved by creating a file in the resources of the Front Panel project named ``META-INF/services/ej.microui.display.UIImageDrawing``.
+And its content containing the fully qualified name of the previously created image drawer.
+
+.. code-block::
+
+   com.mycompany.MyCustomImageDrawer
+
+It is also possible to declare it programmatically (see where a drawer is registered in the :ref:`drawing custom <section_drawings_sim_custom>` section):
+
+.. code-block:: java
+
+   LLUIDisplay.Instance.registerUIImageDrawer(new MyCustomImageDrawer());
+
+
+* xxx notion decode (cf UIImageDrawing.decode())
 
 Dependencies
 ============
