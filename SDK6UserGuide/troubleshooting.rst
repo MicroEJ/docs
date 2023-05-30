@@ -100,6 +100,27 @@ If the following message is displayed when publishing a module::
 it means the ``version`` property is missing and should be defined in the module build file.
 See :ref:`sdk_6_publish_project` for more information.
 
+Fail to load a VEE Port as dependency
+-------------------------------------
+
+When a VEE Port is defined as a dependency, the build of the project can fail with the following message::
+
+	> No 'release.properties' and 'architecture.properties' files found.
+  The given file <path/to/file> is not a VEE Port archive.
+
+If the dependency is a valid VEE Port, this error probably means that several artifacts of the VEE Port have been published
+with the ``default`` Ivy configuration.
+To fix this issue, you can select the right artifact by adding information on the one to fetch in the ``artifact`` block, for example::
+
+	microejVeePort("com.mycompany:myveeport:1.0.0") {
+		artifact {
+			name = "artifact-name"
+			type = "zip"
+		}
+	}
+
+This will select the artifact with the name ``artifact-name`` and with the type ``zip``.
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
