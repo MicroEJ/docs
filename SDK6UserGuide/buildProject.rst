@@ -30,6 +30,16 @@ or from Eclipse and IntelliJ IDEA, by double-clicking on the ``build`` task in t
 
 Gradle stores the artifacts produced by the build in the ``build/libs`` folder.
 
+.. note::
+
+   If the build fails with a message related to the ``Artifact Checker`` such as::
+
+      The Artifact Checker found the following problems:
+   
+   Fix the listed problems or skip the Artifact Checker by adding the following line in the build script file::
+
+      project.gradle.startParameter.excludedTaskNames.add("checkModule")
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
