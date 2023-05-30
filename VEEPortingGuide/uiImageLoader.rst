@@ -13,7 +13,7 @@ The Image Loader module is an on-board engine that
 * retrieves image data that is required to be converted into the format known by the Image Renderer (MicroEJ format),
 * retrieves image in external memories (external memory loader),
 * converts images in MicroEJ format, 
-* creates a runtime buffer to manage MicroUI BufferedImage,
+* creates a runtime buffer to manage MicroUI :ref:`section_buffered_image`,
 * manages dynamic images life cycle.
 
 .. note:: The Image Loader is managing images to be compatible with Image Renderer. It does manage image in custom format (see :ref:`section_image_binary_raw`)
@@ -39,16 +39,6 @@ By default, the Image Loader uses an internal best fit allocator to allocate the
 Some specific :ref:`Abstraction Layer API <LLDISPLAY-API-SECTION>` (LLAPI) are available to override this default implementation. 
 These LLAPIs may be helpful to control the buffers allocation, retrieve the remaining space, etc. 
 When not implemented by the BSP, the default internal Graphics Engine's allocator is used.
-
-BufferedImage
-=============
-
-XXX TODO XXX
-
-* chapter to remove or to move or to make link to the new chapters renderer / formats
-* maybe use this chapter as intro in uiBufferedImage
-
-MicroUI application is able to create an image where it is allowed to draw into: the MicroUI `BufferedImage`_. The image format is the same than the display format; in other words, its number of bits-per-pixel and its pixel bits organization are the same. The display pixel format can be standard or custom (see :ref:`display_pixel_structure`). To create this kind of image, the Image Loader has just to create a buffer in RAM whose size depends on the image size (see :ref:`section_image_display_raw`).
 
 .. _section_image_external_memory:
 

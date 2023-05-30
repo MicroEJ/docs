@@ -7,10 +7,12 @@ Buffered Image
 Overview
 ========
 
-MicroUI application is able to create an image where it is possible to draw into: the MicroUI ``BufferedImage``.
-The format of this kind of images is Display (default), Standard or Custom (see next chapters).
+MicroUI application is able to create an image where it is allowed to draw into: the MicroUI `ej.microui.display.BufferedImage`_. 
+The format of this kind of images is Display (default), Standard or Custom (see next chapters). 
 
 .. warning:: The output format Standard and Custom depends on the VEE Port capabilities.
+
+To create this kind of image, the Image Loader has to create a buffer in the :ref:`images heap <section_image_loader_memory>` whose size depends on the image data size (see :ref:`section_buffered_image_c_creation`).
 
 .. _section_buffered_image_drawer:
 
