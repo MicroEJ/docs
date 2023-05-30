@@ -95,23 +95,30 @@ The following graph illustrates the steps to perform a shape drawing (not an ima
 
       ratio="auto"
       splines="true";
-      node [style=filled fillcolor=white shape=rectangle fontname=monospace fontcolor=black width=3];
+      node [style="filled,rounded" fontname="monospace" fontsize="10"];
+      
+      { //out
+         node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui, UID_soft_c
+      }
+      { // h
+         node [shape="box" color="#00aec7" fontcolor="white"] LLUI_h, UID_h, UID_soft_h
+      }
+      { // c
+         node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c
+      }
+      { // weak
+         node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_c
+      }
          
       // --- ELEMENTS -- //
          
-      mui [label="[MicroUI]
-      Painter.drawXXX();"  shape=ellipse] 
-      LLUI_h [label="[LLUI_PAINTER_impl.h]
-      LLUI_PAINTER_IMPL_drawXXX();" fillcolor=gray]
-      LLUI_c [label="[LLUI_PAINTER_impl.c]
-      LLUI_PAINTER_IMPL_drawXXX();"]
-      UID_h [label="[ui_drawing.h]
-      UI_DRAWING_drawXXX();" fillcolor=gray]
-      UID_weak_c [label="[ui_drawing.c]
-      weak UI_DRAWING_drawXXX();" style=dotted]
-      UID_soft_h [label="[ui_drawing_soft.h]
-      UI_DRAWING_SOFT_drawXXX();" fillcolor=gray]
-      UID_soft_c [label="[Graphics Engine]" shape=ellipse]
+      mui [label="[MicroUI]\nPainter.drawXXX();"] 
+      LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawXXX();"]
+      LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawXXX();"]
+      UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawXXX();"]
+      UID_weak_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawXXX();"]
+      UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawXXX();"]
+      UID_soft_c [label="[Graphics Engine]"]
          
       // --- FLOW -- //
 
@@ -189,46 +196,54 @@ The following graph illustrates the steps to perform a shape drawing (not an ima
 .. graphviz::
 
    digraph {
-      ratio="auto"
+      ratio="auto";
       splines="true";
-      node [style=filled fillcolor=white shape=rectangle fontname=monospace fontcolor=black width=3];
-         
+      node [style="filled,rounded" fontname="monospace" fontsize="10"];
+      
+      { //in/out
+         node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui, UID_soft_c, UID_gpu_hard
+      }
+      { // h
+         node [shape="box" color="#00aec7" fontcolor="white"] LLUI_h, UID_h, UID_soft_h
+      }
+      { // c
+         node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c, UID_gpu_c, UID_gpu_driver
+      }
+      { // weak
+         node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_c
+      }
+      { // choice
+         node [shape="diamond" color="#e5e9eb"] UID_cond, UID_gpu_cond
+      }
+
       // --- SIMPLE FLOW ELEMENTS -- //
 
-      mui [label="[MicroUI]
-      Painter.drawXXX();" shape=ellipse] 
-      LLUI_h [label="[LLUI_PAINTER_impl.h]
-      LLUI_PAINTER_IMPL_drawXXX();" fillcolor=gray]
-      LLUI_c [label="[LLUI_PAINTER_impl.c]
-      LLUI_PAINTER_IMPL_drawXXX();"]
-      UID_h [label="[ui_drawing.h]
-      UI_DRAWING_drawXXX();" fillcolor=gray]
-      UID_weak_c [label="[ui_drawing.c]
-      weak UI_DRAWING_drawXXX();" style=dotted]
-      UID_soft_h [label="[ui_drawing_soft.h]
-      UI_DRAWING_SOFT_drawXXX();" fillcolor=gray]
-      UID_soft_c [label="[Graphics Engine]" shape=ellipse]
+      mui [label="[MicroUI]\nPainter.drawXXX();"] 
+      LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawXXX();"]
+      LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawXXX();"]
+      UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawXXX();"]
+      UID_weak_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawXXX();"]
+      UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawXXX();"]
+      UID_soft_c [label="[Graphics Engine]"]
 
       // --- GPU FLOW ELEMENTS -- //
 
-      UID_cond [label="function implemented ?" shape=diamond]
-      UID_gpu_c [label="[ui_drawing_gpu.c]
-      UI_DRAWING_drawXXX();"]
-      UID_gpu_cond [label="GPU compatible ?" shape=diamond]
+      UID_cond [label="Function implemented?"]
+      UID_gpu_c [label="[ui_drawing_gpu.c]\nUI_DRAWING_drawXXX();"]
+      UID_gpu_cond [label="GPU compatible ?"]
       UID_gpu_driver [label="[GPU driver]"]
-      UID_gpu_hard [label="[GPU]" shape=ellipse]
+      UID_gpu_hard [label="[GPU]"]
 
       // --- FLOW -- //
 
       mui->LLUI_h->LLUI_c->UID_h->UID_cond
-      UID_cond->UID_weak_c [label="no"]
+      UID_cond->UID_weak_c [label="no" fontname="monospace" fontsize="10"]
       UID_weak_c->UID_soft_h->UID_soft_c
-      UID_cond->UID_gpu_c [label="yes"]
+      UID_cond->UID_gpu_c [label="yes" fontname="monospace" fontsize="10"]
       UID_gpu_c->UID_gpu_cond
-      UID_gpu_cond->UID_gpu_driver [label="yes"]
+      UID_gpu_cond->UID_gpu_driver [label="yes" fontname="monospace" fontsize="10"]
       UID_gpu_driver->UID_gpu_hard
-      UID_gpu_cond->UID_soft_h [label="no"]
-
+      UID_gpu_cond->UID_soft_h [label="no" fontname="monospace" fontsize="10"]
    }
 
 .. force a new line
@@ -352,29 +367,36 @@ The following graph illustrates the steps to perform a shape drawing (not an ima
 .. graphviz::
 
    digraph {
-         ratio="auto"
-         splines="true";
-         node [style=filled fillcolor=white shape=rectangle fontname=monospace fontcolor=black width=3];
-            
-         // --- ELEMENTS -- //
-
-         mui [label="[MicroUI]
-         Painter.drawXXX();"  shape=ellipse] 
-         LLUI_c [label="[FrontPanel]
-         LLUIPainter.drawXXX();"]
-         UID_h [label="[FrontPanel]
-         getUIDrawer().drawXXX();" fillcolor=gray]
-         UID_weak_c [label="[FrontPanel]
-         DisplayDrawer.drawXXX();"]
-         UID_soft_h [label="[FrontPanel]
-         getUIDrawerSoftware()
-         .drawXXX();" fillcolor=gray]
-         UID_soft_c [label="[Graphics Engine]" shape=ellipse]
-
-         // --- FLOW -- //
-
-         mui->LLUI_c->UID_h->UID_weak_c->UID_soft_h->UID_soft_c
+      ratio="auto"
+      splines="true";
+      node [style="filled,rounded" fontname="monospace" fontsize="10"];
+      
+      { //in/out
+         node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui, UID_soft_c
       }
+      { // h
+         node [shape="box" color="#00aec7" fontcolor="white"] UID_h, UID_soft_h
+      }
+      { // c
+         node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c
+      }
+      { // weak
+         node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_c
+      }
+         
+      // --- ELEMENTS -- //
+      
+      mui [label="[MicroUI]\nPainter.drawXXX();"] 
+      LLUI_c [label="[FrontPanel]\nLLUIPainter.drawXXX();"]
+      UID_h [label="[FrontPanel]\ngetUIDrawer().drawXXX();"]
+      UID_weak_c [label="[FrontPanel]\nDisplayDrawer.drawXXX();"]
+      UID_soft_h [label="[FrontPanel]\ngetUIDrawerSoftware()\n.drawXXX();"]
+      UID_soft_c [label="[Graphics Engine]"]
+
+      // --- FLOW -- //
+
+      mui->LLUI_c->UID_h->UID_weak_c->UID_soft_h->UID_soft_c
+   }
 
 .. force a new line
 
@@ -452,41 +474,49 @@ The following graph illustrates the steps to perform a shape drawing (not an ima
    digraph {
       ratio="auto"
       splines="true";
-      node [style=filled fillcolor=white shape=rectangle fontname=monospace fontcolor=black width=3];
+      node [style="filled,rounded" fontname="monospace" fontsize="10"];
+      
+      { //in/out
+         node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui, UID_soft_c, UID_gpu_hard
+      }
+      { // h
+         node [shape="box" color="#00aec7" fontcolor="white"] UID_h, UID_soft_h
+      }
+      { // c
+         node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c, UID_gpu_c
+      }
+      { // weak
+         node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_c
+      }
+      { // choice
+         node [shape="diamond" color="#e5e9eb"] UID_cond, UID_gpu_cond
+      }
          
       // --- SIMPLE FLOW ELEMENTS -- //
 
-      mui [label="[MicroUI]
-      Painter.drawXXX();" shape=ellipse] 
-      LLUI_c [label="[FrontPanel]
-      LLUIPAINTER.drawXXX();"]
-      UID_h [label="[FrontPanel]
-      getUIDrawer().drawXXX();" fillcolor=gray]
-      UID_weak_c [label="[FrontPanel]
-      DisplayDrawer.drawXXX();"]
-      UID_soft_h [label="[FrontPanel]
-      getUIDrawerSoftware()
-      .drawXXX();" fillcolor=gray]
-      UID_soft_c [label="[Graphics Engine]" shape=ellipse]
+      mui [label="[MicroUI]\nPainter.drawXXX();"] 
+      LLUI_c [label="[FrontPanel]\nLLUIPAINTER.drawXXX();"]
+      UID_h [label="[FrontPanel]\ngetUIDrawer().drawXXX();"]
+      UID_weak_c [label="[FrontPanel]\nDisplayDrawer.drawXXX();"]
+      UID_soft_h [label="[FrontPanel]\ngetUIDrawerSoftware()\n.drawXXX();"]
+      UID_soft_c [label="[Graphics Engine]"]
 
       // --- GPU FLOW ELEMENTS -- //
 
-      UID_cond [label="method overridden  ?" shape=diamond]
-      UID_gpu_c [label="[VEE Port FP]
-      DisplayDrawerExtension
-      .drawXXX();"]
-      UID_gpu_cond [label="can draw algo ?" shape=diamond]
-      UID_gpu_hard [label="[Third-party lib]" shape=ellipse]
+      UID_cond [label="method overridden?"]
+      UID_gpu_c [label="[VEE Port FP]\nDisplayDrawerExtension\n.drawXXX();"]
+      UID_gpu_cond [label="can draw algo ?"]
+      UID_gpu_hard [label="[Third-party lib]"]
 
       // --- FLOW -- //
 
       mui->LLUI_c->UID_h->UID_weak_c->UID_cond
-      UID_cond->UID_soft_h [label="no"]
+      UID_cond->UID_soft_h [label="no" fontname="monospace" fontsize="10"]
       UID_soft_h->UID_soft_c
-      UID_cond->UID_gpu_c [label="yes"]
+      UID_cond->UID_gpu_c [label="yes" fontname="monospace" fontsize="10"]
       UID_gpu_c->UID_gpu_cond
-      UID_gpu_cond->UID_gpu_hard [label="yes"]
-      UID_gpu_cond->UID_soft_h [label="no"]
+      UID_gpu_cond->UID_gpu_hard [label="yes" fontname="monospace" fontsize="10"]
+      UID_gpu_cond->UID_soft_h [label="no" fontname="monospace" fontsize="10"]
    }
 
 .. force a new line
