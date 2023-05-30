@@ -44,6 +44,12 @@ The following artifacts are automatically published:
 - the LICENSE.txt file.
 - the Gradle module descriptor file.
 - the Ivy descriptor file (to allow SDK 5 project to fetch it).
+- the WPK file, if the project is an Application.
+
+To publish the Executable file of an Application, the ``buildExecutable`` task must be explicitly called::
+
+  $ gradle buildExecutable publish
+
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
