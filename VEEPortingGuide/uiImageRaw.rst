@@ -368,7 +368,7 @@ The required memory becomes:
 .. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#
 .. _ImageIO: https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html
 
-.. XXX to replace by https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Format.html#CUSTOM_0
+.. XXX TODO XXX to replace by https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Format.html#CUSTOM_0
 .. _custom formats: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html
 
 ..
