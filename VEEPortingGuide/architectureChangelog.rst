@@ -123,6 +123,7 @@ Simulator
 SOAR
 ~~~~
 
+ - Added support for :ref:`Resource <section.classpath.elements.raw_resources>` alignment constraint.
  - Added a check for legacy ``.system.properties`` files in the :ref:`Application Classpath <chapter.microej.classpath>`. The build process is stopped and an error is reported.
    These files must be migrated to :ref:`system_properties`.
  - Added a check for unsupported access to the Class instance of a primitive type (e.g. ``byte.class``).
