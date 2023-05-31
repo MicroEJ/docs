@@ -7,7 +7,7 @@ Generally speaking, building a project means compiling the source files, executi
 Depending on the nature of the project, the build can include other specific phases.
 Refer to the :ref:`sdk6_module_natures` page for a complete description of the build phases.
 
-The build of project is done by executing the Gradle ``build`` task.
+The build of a project is done by executing the Gradle ``build`` task.
 It can be executed with the command line interface::
 
     $ gradle build
