@@ -482,6 +482,10 @@ The following graph illustrates the drawing of an image:
       UID_stub_c->stub
    }
 
+.. force a new line
+
+|
+
 It is possible to override the image drawers for the standard format the same way as the custom formats.
 
 Custom Format Support 
@@ -568,6 +572,10 @@ The following graph illustrates the drawing of an image:
       UIIx_impl_d->UID_h2 [style=dotted label="optional
       (drawShapes)"]
    }
+
+.. force a new line
+
+|
 
 Let's implement the image drawer for the `CUSTOM_0` format.
 
