@@ -187,6 +187,19 @@ resource. Example:
    # The following resource is embedded as a raw resource
    com/mycompany/MyResource.txt
 
+A resource is 4-bytes aligned in memory by default.
+As of Architecture :ref:`8.0.0 <changelog-8.0.0>`, it is possible to modify the alignment constraint.
+Example:
+
+::
+
+   # The following resource is linked to a 32-bytes aligned address in memory.
+   com/mycompany/MyResource.txt:32
+
+.. note:: 
+
+   If a Resource is declared multiple times in the classpath, the alignment constraint with the highest value is used. 
+   If the alignment constraints are specific to the target, it is recommended to only declare them in the Application project instead of libraries.
 
 .. _java.lang.Class.getResourceAsStream(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
 
