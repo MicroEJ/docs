@@ -207,7 +207,7 @@ A ``.fso`` file can be linked on any Kernel providing all the following conditio
 - its Architecture version is compatible [#compatible_def]_ with the Architecture version on which the ``.fso`` file has been produced,
 - it provides the required APIs according to the JVM specification [1]_.
 
-A current limitation is that if the Sandboxed Application declares an immutable object, SOAR Optimizer will resolve fields in the same class, not the whole class hierarchy.
+A current limitation is that if the Sandboxed Application declares an immutable object, SOAR Optimizer will resolve fields within the same class rather than considering the entire class hierarchy.
 
 .. [1]
    Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
