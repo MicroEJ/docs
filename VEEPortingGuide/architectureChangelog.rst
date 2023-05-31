@@ -99,6 +99,7 @@ Integration
 
 - Updated default value of VEE Port configuration option ``vendorURL``.
 - Renamed MicroEJ launch :guilabel:`Build dynamic Feature` to :guilabel:`Build Feature`.
+- [Multi] Fixed the SOAR output files from being deleted when the :guilabel:`Clean intermediate files` option is enabled.
 
 Simulator
 ~~~~~~~~~
