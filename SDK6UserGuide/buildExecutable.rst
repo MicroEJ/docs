@@ -20,7 +20,7 @@ Once these prerequisites are fulfilled, the Executable can be built with the com
 
     $ gradle buildExecutable
 
-or from Eclipse and IntelliJ IDEA, by double-clicking on the ``buildExecutable`` task in the Gradle tasks view.
+or from Eclipse and IntelliJ IDEA, by double-clicking on the ``buildExecutable`` task in the Gradle tasks view:
 
 .. tabs::
 
@@ -59,7 +59,7 @@ If you want to add the property in IntelliJ IDEA :
 - Go to ``Run`` > ``Edit Configurations...``
 - Click on the ``+`` button and select ``Gradle``
 - Choose a name for the new Configuration
-- Add the task name with the ``veePort`` property in the Run dialog : ``buildExecutable -PveePort="veePortName"``:
+- Add the task name with the ``veePort`` property in the Run dialog:
 
   .. figure:: images/intellij-buildExecutable-configuration.png
      :alt: IntelliJ buildExecutable Configuration Window
