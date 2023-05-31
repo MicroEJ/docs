@@ -145,7 +145,13 @@ The creation of a project with IntelliJ IDEA is done as follows:
 
    Project Creation in IntelliJ IDEA
 
-The project created by IntelliJ IDEA is a standard Java project (Gradle ``java`` plugin).
+The project created by IntelliJ IDEA is a standard Java project (Gradle ``java`` plugin). 
+The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensure that the project uses the right version :
+
+- open the ``gradle/wrapper/gradle-wrapper.properties`` file.
+- update the Gradle version if it is needed::
+  distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
+
 The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
 
 - open the ``build.gradle.kts`` file.
