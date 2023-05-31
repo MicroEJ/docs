@@ -76,12 +76,19 @@ Core Engine
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
 
+-  Updated ``KF`` to version ``1.7``:
+  
+   -  Added heap memory control (`Kernel.setReservedMemory()`_ and `Feature.setMemoryLimit()`_ methods).
+
 - Updated ``KF`` dynamic loader to support :ref:`Feature Custom Installation <feature_custom_installation>` mode.
 - Removed Foundation Libraries API Jars and Javadoc.
 - Fixed :ref:`option_embed_utf8` defaults to ``true`` when building a Standalone Application using MMM.
 - Removed `Unknown product - Unknown version` comment in auto-generated Low Level API header files.
 - Removed the ``Serial Communication`` modules group, including the Foundation Libraries ``ECOM`` and ``ECOM-COMM``. See :ref:`architecture7_migration_ecom`.
 - Removed the deprecated ``Device Information`` module group, including the Foundation Library ``Device``. See :ref:`architecture7_migration_device`.
+
+.. _Kernel.setReservedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#setReservedMemory-long-
+.. _Feature.setMemoryLimit(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#setMemoryLimit-long-
 
 Integration
 ~~~~~~~~~~~
