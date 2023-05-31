@@ -20,31 +20,31 @@ The differences are:
 
 - the ``module.ivy`` file is replaced by a ``build.gradle.kts`` file and a ``settings.gradle.kts`` file (see :ref:`sdk_6_migrate_build_file`).
 - the ``module.ant`` and ``override.module.ant`` files are removed (see :ref:`sdk_6_migrate_build_scripts`).
-- the ``build`` folder located at the root of the project and containing the Application configuration properties is moved to the ``src/main/resources`` folder.
+- the ``build`` folder located at the root of the project and containing the Application configuration properties is replaced by the ``configuration`` folder.
   This change is required since Gradle uses the ``build`` folder to store the generated files and artifacts (equivalent of the MMM ``target~`` folder).
 
 Therefore, here are the 2 project structures side by side: 
 
-+--------------------------------+-------------------------------------------+
-| MMM Project                    | Gradle Project                            |
-+================================+===========================================+
-| .. code-block::                | .. code-block::                           |
-|                                |                                           |
-|    |- src                      |    |- src                                 |
-|    |   |- main                 |    |   |- main                            |
-|    |   |   |- java             |    |   |   |- java                        |
-|    |   |   |- resources        |    |   |   |- resources                   |
-|    |   |                       |    |   |       |- build                   |
-|    |   |                       |    |   |           |- common.properties   |
-|    |   |- test                 |    |   |- test                            |
-|    |       |- java             |    |       |- java                        |
-|    |       |- resources        |    |       |- resources                   |
-|    |- build                    |    |                                      |
-|    |   |- common.properties    |    |                                      |
-|    |- module.ivy               |    |- build.gradle.kts                    |
-|    |- module.ant               |    |- settings.gradle.kts                 |
-|                                |                                           |
-+--------------------------------+-------------------------------------------+
++--------------------------------+--------------------------------+
+| MMM Project                    | Gradle Project                 |
++================================+================================+
+| .. code-block::                | .. code-block::                |
+|                                |                                |
+|    |- src                      |    |- src                      |
+|    |   |- main                 |    |   |- main                 |
+|    |   |   |- java             |    |   |   |- java             |
+|    |   |   |- resources        |    |   |   |- resources        |
+|    |   |                       |    |   |                       |
+|    |   |                       |    |   |                       |
+|    |   |- test                 |    |   |- test                 |
+|    |       |- java             |    |       |- java             |
+|    |       |- resources        |    |       |- resources        |
+|    |- build                    |    |- configuration            |
+|    |   |- common.properties    |    |   |- common.properties    |
+|    |- module.ivy               |    |- build.gradle.kts         |
+|    |- module.ant               |    |- settings.gradle.kts      |
+|                                |                                |
++--------------------------------+--------------------------------+
 
 .. _sdk_6_migrate_build_file:
 
