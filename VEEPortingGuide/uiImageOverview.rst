@@ -133,6 +133,10 @@ XXX TODO XXX
       {algo gpu} -> hard  [label = ""]
    }
 
+.. force a new line
+
+|
+
 * Colors:
    * blue: off-board elements (tools, files).
    * green: hardware elements (memory, processor).
