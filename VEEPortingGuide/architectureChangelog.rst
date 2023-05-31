@@ -124,6 +124,7 @@ SOAR
 Tools
 ~~~~~
 
+- Updated the serial PC connector to JSSC ``2.9.4``, including support for macOS aarch64 (M1 chip).
 - Removed :ref:`Test Suite Engine <testsuite_engine>`. If needed, the Test Suite Engine is available in the :ref:`Build Kit <mmm_build_kit>`.
 - Removed Immutables NLS library. Use :ref:`Binary NLS <chapter.nls>` add-on library instead. 
 - [Multi] Added Heap Dumper support for dynamically installed Features.
@@ -552,7 +553,7 @@ SOAR
 Tools
 ~~~~~
 
--  Updated serial PC connector to JSSC ``2.9.2`` (COM port could not be
+-  Updated the serial PC connector to JSSC ``2.9.2`` (COM port could not be
    open on Windows 10 using a JRE ``8u261`` or higher)
 
 .. _section-4:
@@ -1762,7 +1763,7 @@ Tools
 ~~~~~
 
 -  Added property ``skip.mergeLibraries`` for Platform Builder.
--  Updated serial PC connector to ``JSSC v2.8.0``
+-  Updated the serial PC connector to JSSC ``2.8.0``.
 
 .. _simulator-12:
 
