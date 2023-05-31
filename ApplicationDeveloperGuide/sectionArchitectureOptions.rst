@@ -674,6 +674,8 @@ Option(checkbox): Embed UTF-8 encoding
 
 Embed UTF-8 encoding.
 
+.. _option_enable_security_manager:
+
 Option(checkbox): Enable SecurityManager checks
 """""""""""""""""""""""""""""""""""""""""""""""
 
