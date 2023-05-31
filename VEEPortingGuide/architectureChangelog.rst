@@ -102,6 +102,7 @@ Simulator
 ~~~~~~~~~
 
 - Added missing default values for the properties ``s3.slow``, ``console.logs.period``, and ``s3.hil.timeout`` when launching the Simulator from the command line.
+- Added a check for unsupported access to the Class instance of a primitive type (e.g. ``byte.class``).
 - Fixed "Internal limits" error in HIL engine when too many array arguments are used at the same time by one or several native methods.
 - Fixed slow reading with an array of bytes of the input stream returned by `Class.getResourceAsStream(String)`_.
 - Added HIL Engine debug logs when verbose option is enabled.
@@ -114,8 +115,9 @@ Simulator
 SOAR
 ~~~~
 
- - Added check of legacy ``.system.properties`` files in the :ref:`Application Classpath <chapter.microej.classpath>`. The build process is stopped and an error is reported.
+ - Added a check for legacy ``.system.properties`` files in the :ref:`Application Classpath <chapter.microej.classpath>`. The build process is stopped and an error is reported.
    These files must be migrated to :ref:`system_properties`.
+ - Added a check for unsupported access to the Class instance of a primitive type (e.g. ``byte.class``).
 
 Tools
 ~~~~~
