@@ -121,6 +121,29 @@ To fix this issue, you can select the right artifact by adding information on th
 
 This will select the artifact with the name ``artifact-name`` and with the type ``zip``.
 
+Forked Java process still running after the interruption of a build
+-------------------------------------------------------------------
+
+If a build is interrupted before the end of its execution, the next build can fail with error such as::
+
+	Failed to delete some children. This might happen because a process has files open or has its working directory set in the 
+	target directory.
+
+This error is probably due to a forked Java process that has been started during the execution of the build and that is still running.
+By default Gradle uses `the Gradle Daemon <https://docs.gradle.org/current/userguide/gradle_daemon.html>`__ 
+to reduce the time to run a build. When a build is interrupted before the end of its execution, 
+the Gradle Daemon does not stop the forked Java processes that have been started during the build.
+To fix this issue, you have to stop the forked Java process manually.
+
+The following tasks use a forked Java process:
+
+- ``runOnSimulator``
+- ``buildExecutable``
+
+It is possible to avoid this issue by disabling the Gradle Daemon with the ``--no-daemon`` flag, for example::
+
+	gradle runOnSimulator --no-daemon
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
