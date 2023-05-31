@@ -90,6 +90,7 @@ Foundation Libraries
 - Removed the ``Serial Communication`` modules group, including the Foundation Libraries ``ECOM`` and ``ECOM-COMM``. See :ref:`architecture7_migration_ecom`.
 - Removed the deprecated ``Device Information`` module group, including the Foundation Library ``Device``. See :ref:`architecture7_migration_device`.
 - [Single] Fixed an unexpected ``FeatureFinalizer`` exception when a Standalone Application touches a ``KF`` API.
+- [Tiny] Fixed an unexpected SOAR error when a Standalone Application touches a ``KF`` API.
 
 
 .. _Kernel.setReservedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#setReservedMemory-long-
