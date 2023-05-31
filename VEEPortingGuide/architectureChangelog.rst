@@ -104,6 +104,7 @@ Integration
 - Updated Memory Map Scripts for ``MicroVG`` library.
 - Updated Memory Map Scripts for Eclasspath ``Executor`` library.
 - Renamed MicroEJ launch :guilabel:`Build dynamic Feature` to :guilabel:`Build Feature`.
+- [Multi] Fixed the SOAR output files from being deleted when the :guilabel:`Clean intermediate files` option is enabled.
 
 Simulator
 ~~~~~~~~~
