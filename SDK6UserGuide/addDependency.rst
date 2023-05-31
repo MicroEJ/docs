@@ -27,7 +27,7 @@ Let's have a look at the mostly used configurations:
 - **implementation** (from Gradle Java plugin) - Dependencies used by the project at compile time and runtime.
 - **api**  (from Gradle Java Library plugin) - Same as the **implementation** configuration, except that the dependency is also exposed to the consumers of your project.
 - **testImplementation** (from Gradle Java plugin) - Dependencies used by the test classes of the project.
-  This configures extends the **implementation** configuration, so it inherits from all the dependencies declared with the **implementation** configuration.
+  This configuration extends the **implementation** configuration, so it inherits from all the dependencies declared with the **implementation** configuration.
 - **microejVeePort** - VEE Port used by the project for build and test.
 
 Here is an example of dependencies declaration for a project::
@@ -71,7 +71,7 @@ Dependencies Repositories
 Gradle needs to know in which repositories the modules must be fetched and published.
 The :ref:`SDK 6 installation process <sdk_6_install>` provides a Gradle Init Script to declare all the MicroEJ public repositories.
 Of course you can declare other repositories, either in the same Gradle Init Script and in any other location supported by Gradle.
-Refer to `the official documentation <https://docs.gradle.org/current/userguide/declaring_repositories.html>`__` for 
+Refer to `the official documentation <https://docs.gradle.org/current/userguide/declaring_repositories.html>`__ for 
 more information on repositories configuration.
 
 It is important to note that the declaration order of the repositories matters.
