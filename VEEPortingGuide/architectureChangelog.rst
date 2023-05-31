@@ -99,8 +99,10 @@ Foundation Libraries
 Integration
 ~~~~~~~~~~~
 
+- Added Memory Map Scripts for Eclasspath ``Math``, ``Formatter`` and ``DateFormat``.
 - Updated default value of VEE Port configuration option ``vendorURL``.
-- Updated Memory Map Scripts for ``ej.microvg`` library.
+- Updated Memory Map Scripts for ``MicroVG`` library.
+- Updated Memory Map Scripts for Eclasspath ``Executor`` library.
 - Renamed MicroEJ launch :guilabel:`Build dynamic Feature` to :guilabel:`Build Feature`.
 
 Simulator
