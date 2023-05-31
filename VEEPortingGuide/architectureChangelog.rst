@@ -99,6 +99,7 @@ Foundation Libraries
 Integration
 ~~~~~~~~~~~
 
+- Added support for resolving :ref:`Front Panel in Workspace <resolve_foundation_libraries_in_workspace>` before the included Front Panel.
 - Added Memory Map Scripts for Eclasspath ``Math``, ``Formatter`` and ``DateFormat``.
 - Updated default value of VEE Port configuration option ``vendorURL``.
 - Updated Memory Map Scripts for ``MicroVG`` library.
