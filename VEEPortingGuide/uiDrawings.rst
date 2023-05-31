@@ -89,13 +89,14 @@ The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to simp
 
 The following graph illustrates the steps to perform a shape drawing (not an image):
 
-.. graphviz::
+.. graphviz:: :align: center
 
    digraph {
 
       ratio="auto"
       splines="true";
-      node [style="filled,rounded" fontname="monospace" fontsize="10"];
+      bgcolor="transparent"
+      node [style="filled,rounded" fontname="courier new" fontsize="10"];
       
       { //out
          node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui, UID_soft_c
@@ -193,12 +194,13 @@ The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to simp
 The following graph illustrates the steps to perform a shape drawing (not an image):
 
 
-.. graphviz::
+.. graphviz:: :align: center
 
    digraph {
       ratio="auto";
       splines="true";
-      node [style="filled,rounded" fontname="monospace" fontsize="10"];
+      bgcolor="transparent"
+      node [style="filled,rounded" fontname="courier new" fontsize="10"];
       
       { //in/out
          node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui, UID_soft_c, UID_gpu_hard
@@ -237,13 +239,13 @@ The following graph illustrates the steps to perform a shape drawing (not an ima
       // --- FLOW -- //
 
       mui->LLUI_h->LLUI_c->UID_h->UID_cond
-      UID_cond->UID_weak_c [label="no" fontname="monospace" fontsize="10"]
+      UID_cond->UID_weak_c [label="no" fontname="courier new" fontsize="10"]
       UID_weak_c->UID_soft_h->UID_soft_c
-      UID_cond->UID_gpu_c [label="yes" fontname="monospace" fontsize="10"]
+      UID_cond->UID_gpu_c [label="yes" fontname="courier new" fontsize="10"]
       UID_gpu_c->UID_gpu_cond
-      UID_gpu_cond->UID_gpu_driver [label="yes" fontname="monospace" fontsize="10"]
+      UID_gpu_cond->UID_gpu_driver [label="yes" fontname="courier new" fontsize="10"]
       UID_gpu_driver->UID_gpu_hard
-      UID_gpu_cond->UID_soft_h [label="no" fontname="monospace" fontsize="10"]
+      UID_gpu_cond->UID_soft_h [label="no" fontname="courier new" fontsize="10"]
    }
 
 .. force a new line
@@ -364,12 +366,13 @@ The :ref:`UI Pack extension <section_ui_simulation>` is designed to simplify the
 
 The following graph illustrates the steps to perform a shape drawing (not an image):
 
-.. graphviz::
+.. graphviz:: :align: center
 
    digraph {
       ratio="auto"
       splines="true";
-      node [style="filled,rounded" fontname="monospace" fontsize="10"];
+      bgcolor="transparent"
+      node [style="filled,rounded" fontname="courier new" fontsize="10"];
       
       { //in/out
          node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui, UID_soft_c
@@ -469,12 +472,13 @@ The :ref:`UI Pack extension <section_ui_simulation>` is designed to simplify the
 
 The following graph illustrates the steps to perform a shape drawing (not an image):
 
-.. graphviz::
-   
+.. graphviz:: :align: center
+
    digraph {
       ratio="auto"
       splines="true";
-      node [style="filled,rounded" fontname="monospace" fontsize="10"];
+      bgcolor="transparent"
+      node [style="filled,rounded" fontname="courier new" fontsize="10"];
       
       { //in/out
          node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui, UID_soft_c, UID_gpu_hard
@@ -511,12 +515,12 @@ The following graph illustrates the steps to perform a shape drawing (not an ima
       // --- FLOW -- //
 
       mui->LLUI_c->UID_h->UID_weak_c->UID_cond
-      UID_cond->UID_soft_h [label="no" fontname="monospace" fontsize="10"]
+      UID_cond->UID_soft_h [label="no" fontname="courier new" fontsize="10"]
       UID_soft_h->UID_soft_c
-      UID_cond->UID_gpu_c [label="yes" fontname="monospace" fontsize="10"]
+      UID_cond->UID_gpu_c [label="yes" fontname="courier new" fontsize="10"]
       UID_gpu_c->UID_gpu_cond
-      UID_gpu_cond->UID_gpu_hard [label="yes" fontname="monospace" fontsize="10"]
-      UID_gpu_cond->UID_soft_h [label="no" fontname="monospace" fontsize="10"]
+      UID_gpu_cond->UID_gpu_hard [label="yes" fontname="courier new" fontsize="10"]
+      UID_gpu_cond->UID_soft_h [label="no" fontname="courier new" fontsize="10"]
    }
 
 .. force a new line
