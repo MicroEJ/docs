@@ -94,6 +94,7 @@ Foundation Libraries
 - [Single] Fixed an unexpected ``FeatureFinalizer`` exception or infinite loop when a Standalone Application touches a ``KF`` API in some cases.
 - [Tiny] Fixed an unexpected SOAR error when a Standalone Application touches a ``KF`` API.
 - [Multi] Fixed exception thrown when calling `Kernel.removeConverter()`_.
+- [Multi] Fixed an unexpected ``NullPointerException`` thrown by ``ej.kf.Kernel.<clinit>`` method in some cases.
 
 .. _Module.getAllocatedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#getAllocatedMemory--
 .. _Kernel.setReservedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#setReservedMemory-long-
