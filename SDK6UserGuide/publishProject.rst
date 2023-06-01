@@ -34,7 +34,7 @@ The requirements to publish a module are:
 
 Then the publication of a module to a repository is achieved by executing the ``publish`` task::
 
-  $ gradle publish
+  $ ./gradlew publish
 
 The following artifacts are automatically published:
 
@@ -48,7 +48,7 @@ The following artifacts are automatically published:
 
 To publish the Executable file of an Application, the ``buildExecutable`` task must be explicitly called::
 
-  $ gradle buildExecutable publish
+  $ ./gradlew buildExecutable publish
 
 
 ..
