@@ -33,10 +33,14 @@ In order to create a MicroEJ project, the best way is to use the ``application``
   The use of the Groovy build script DSL is still possible but not officially supported.
 
 - decide if you want to use Gradle new APIs and behavior in your build script.
-  If you are new to Gradle, choose 'no'.
+  If you are new to Gradle, choose ``no``.
 - for the test framework, select ``JUnit 4``.
 - choose the name of the project (defaults to the name of the parent directory).
 - choose the package name for the source files.
+
+.. note::
+  These steps are the ones proposed when creating a project with Gradle ``8.0.2``, which is the minimum version required by the SDK. 
+  Depending on the Gradle version used, the steps to create a project can be slightly different.
 
 The created project is a multi-project build containing a root project and a single subproject (named ``app``).
 The ``app`` subproject is a standard Java Application project (Gradle ``java`` plugin),
@@ -149,8 +153,13 @@ The project created by IntelliJ IDEA is a standard Java project (Gradle ``java``
 The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensure that the project uses the right version :
 
 - open the ``gradle/wrapper/gradle-wrapper.properties`` file.
-- update the Gradle version if it is needed::
-  distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
+- update the Gradle version if it is needed:
+
+   .. code-block::
+    
+      distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
+
+  
 
 The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
 

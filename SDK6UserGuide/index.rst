@@ -9,7 +9,7 @@ in the application code and hence provides a short development feedback loop.
 
 Since the purpose of the SDK is to develop for targeted MCU/MPU computers (IoT, wearable, etc.), it is a cross-development tool.
 But unlike standard low-level cross-development tools, the SDK offers unique services like hardware simulation.
-Used with your favorite IDE (Eclipse or IntelliJ IDEA) to provide a complete development environment to create your applications:
+Used with your favorite IDE (Eclipse or IntelliJ IDEA), it provides a complete development environment to create your applications:
 
 .. figure:: images/1_overview.png
    :alt: MicroEJ Application Development Overview
@@ -20,7 +20,7 @@ Used with your favorite IDE (Eclipse or IntelliJ IDEA) to provide a complete dev
 
 .. note::
   The SDK 6 is limited to the build, test and simulation of Applications and Add-on Libraries (see :ref:`sdk_6_limitations` for more information).
-  If you need other features, such as creating an Executable or a VEE Port, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
+  If you need other features, such as creating a VEE Port, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
 
 The SDK is composed of the following main elements:
 
