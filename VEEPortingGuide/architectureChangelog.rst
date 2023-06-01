@@ -109,6 +109,7 @@ Integration
 Simulator
 ~~~~~~~~~
 
+- Added :ref:`Mock debug <option_mock_debug>` mode.
 - Added missing default values for the properties ``s3.slow``, ``console.logs.period``, and ``s3.hil.timeout`` when launching the Simulator from the command line.
 - Added a check for unsupported access to the Class instance of a primitive type (e.g. ``byte.class``).
 - Fixed "Internal limits" error in HIL engine when too many array arguments are used at the same time by one or several native methods.
