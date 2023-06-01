@@ -144,7 +144,7 @@ Execute the Tests
 
 Once the testsuite is configured, it can be run thanks to the ``test`` Gradle task::
 
-   gradle test
+   ./gradlew test
 
 This task is bound to the ``check`` and the ``build`` Gradle lifecycle tasks,
 which means that the tests are also executed when launching one of these tasks.
@@ -205,7 +205,7 @@ documentation for the complete list of available filtering methods.
 
 As mentionned earlier, Gradle allows to filter the tests from the command line directly, thanks to the ``--tests`` option::
 
-   gradle check --tests MyTestClass
+   ./gradlew check --tests MyTestClass
 
 This can be convenient to quickly execute one test for example, without requiring a change in the build script file.
 
@@ -504,7 +504,7 @@ For example to inject the property ``core.memory.immortal.size``:
 
 - in the command line with ``-D``::
 
-   gradle test -Dmicroej.testsuite.properties.core.memory.immortal.size=8192
+   ./gradlew test -Dmicroej.testsuite.properties.core.memory.immortal.size=8192
 
 - in the build script file:
 
@@ -552,7 +552,7 @@ If multiple VEE Ports are defined, the tests are executed on each VEE Port seque
 If you want to execute the tests on only one VEE Port, you must select it by setting the ``veePort`` property 
 to the :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port in the command line::
 
-   gradle test -PveePort="veePortName"
+   ./gradlew test -PveePort="veePortName"
 
 If you want to add the property from IntelliJ IDEA : 
 
@@ -607,7 +607,7 @@ If you want to add the property from Eclipse :
   
 The name of each VEE Port can be found by executing the tests with the verbose mode enabled::
 
-   gradle test --info
+   ./gradlew test --info
 
 The list of the VEE Ports is displayed before running the testsuite::
 
