@@ -159,6 +159,7 @@ The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensur
     
       distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
 
+If you want to know more about the Gradle Wrapper, go to the :ref:`sdk_6_create_project_gradle_wrapper` section.
   
 
 The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
@@ -216,6 +217,41 @@ or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of
       :scale: 70%
 
       Project JDK message in IntelliJ IDEA
+
+.. _sdk_6_create_project_gradle_wrapper:
+
+Gradle Wrapper
+--------------
+
+It is recommended to use the Gradle Wrapper to execute a build.
+The Wrapper is a script that ensures that the required version of Gradle is downloaded and used during the build of a project.
+
+When creating a project following one of the project creation systems described in the :ref:`sdk_6_create_project` section, 
+the Wrapper files are automatically generated in the ``gradle/wrapper`` folder of the project.
+It is also possible to add the Wrapper to an existing project by executing the ``wrapper`` task::
+
+  gradle wrapper
+
+The Gradle version used by the project can then be updated in the ``gradle/wrapper/gradle-wrapper.properties`` file. 
+The SDK requires Gradle ``8.0.2`` or higher::
+
+  distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
+
+To use the Wrapper during a build, use ``gradlew`` or ``./gradlew`` depending on your OS instead of ``gradle`` in the command line:
+
+.. tabs::
+
+   .. tab:: Windows
+
+      gradlew build
+
+   .. tab:: Linux
+
+      ./gradlew build
+
+In the following chapters of the documentation, the Linux command ``./gradlew`` is used in all examples to execute a build.
+
+Refer to `the official Gradle documentation <https://docs.gradle.org/current/userguide/gradle_wrapper.html>`__ for more information about the Wrapper.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
