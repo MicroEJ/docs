@@ -121,6 +121,7 @@ Simulator
 - Fixed :ref:`option_immortal_heap` default value when running a Standalone Application using MMM.
 - Fixed stop of the HIL Engine if Simulator was terminated before the connection is established.
 - Fixed load of the Mock classes in the classpath order (left-to-right).
+- Fixed the missing error check when loading an immutable file referencing an external object id (the ``importObject`` directive is required).
 
 SOAR
 ~~~~
