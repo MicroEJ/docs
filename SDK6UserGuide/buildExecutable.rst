@@ -18,7 +18,7 @@ The prerequisites to use this task are:
 
 Once these prerequisites are fulfilled, the Executable can be built with the command::
 
-    $ gradle buildExecutable
+    $ ./gradlew buildExecutable
 
 or from Eclipse and IntelliJ IDEA, by double-clicking on the ``buildExecutable`` task in the Gradle tasks view:
 
@@ -52,7 +52,7 @@ where ``veePortName`` is the :ref:`unique name <sdk_6_vee_port_unique_name>` of 
 If you want to build the Executable for only one VEE Port, you must select it by setting the ``veePort`` property 
 when calling the ``buildExecutable`` task::
 
-   gradle buildExecutable -PveePort="veePortName"
+   ./gradlew buildExecutable -PveePort="veePortName"
 
 If you want to add the property in IntelliJ IDEA : 
 
@@ -108,7 +108,7 @@ If you want to add the property in Eclipse :
   
 The name of each VEE Port can be found by executing the ``buildExecutable`` task with the verbose mode enabled::
 
-   gradle buildExecutable --info
+   ./gradlew buildExecutable --info
 
 The list of the VEE Ports is displayed before building the Executable::
 
