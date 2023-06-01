@@ -488,6 +488,8 @@ The following graph illustrates the drawing of an image:
 
 It is possible to override the image drawers for the standard format the same way as the custom formats.
 
+.. _section_buffered_image_drawer_custom_fp:
+
 Custom Format Support 
 ---------------------
 
@@ -497,6 +499,8 @@ This is an advanced use-case, only available with MicroUI 3.2 or higher.
 The ``UIImageDrawing`` interface contains one method for each image drawing primitive (draw, copy, region, rotate, scale, flip).
 Only the necessary methods can be implemented.
 Each non-implemented method will result in calling the stub implementation.
+
+The method ``handledFormat()`` needs to be implemented and returns the managed format.
 
 Once created, the ``UIImageDrawing`` implementation needs to be registered as a service.
 
