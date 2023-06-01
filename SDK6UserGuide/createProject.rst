@@ -33,14 +33,14 @@ In order to create a MicroEJ project, the best way is to use the ``application``
   The use of the Groovy build script DSL is still possible but not officially supported.
 
 - decide if you want to use Gradle new APIs and behavior in your build script.
-  If you are new to Gradle, choose 'no'.
+  If you are new to Gradle, choose ``no``.
 - for the test framework, select ``JUnit 4``.
 - choose the name of the project (defaults to the name of the parent directory).
 - choose the package name for the source files.
 
 .. note::
-  The project has been created using the minimum Gradle version ``8.0.2`` required by the SDK. Depending on the Gradle version used,
-  the steps to create a project can be slightly different.
+  These steps are the ones proposed when creating a project with Gradle ``8.0.2``, which is the minimum version required by the SDK. 
+  Depending on the Gradle version used, the steps to create a project can be slightly different.
 
 The created project is a multi-project build containing a root project and a single subproject (named ``app``).
 The ``app`` subproject is a standard Java Application project (Gradle ``java`` plugin),
