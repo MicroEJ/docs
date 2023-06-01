@@ -10,7 +10,7 @@ If you want to skip a task, one of the following ways can be used :
 
 - Add the ``-x`` or ``--exclude-task`` option in the command line::
 
-   gradle build -x test
+   ./gradlew build -x test
 
   The task is skipped for this execution only.
 
@@ -49,7 +49,7 @@ It is possible to skip a task but still execute the tasks on which it depends us
   The task is skipped each time the predicate evaluates to ``false``. In this example, 
   the ``test`` task is not executed if the ``skipTest`` property is added in the command line::
 
-   gradle build -PskipTest
+   ./gradlew build -PskipTest
 
 
 ..
