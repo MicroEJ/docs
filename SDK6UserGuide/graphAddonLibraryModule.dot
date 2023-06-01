@@ -16,14 +16,11 @@ digraph mygraph {
     "loadApplicationConfiguration" [fillcolor = "#f76241"]
     "loadTestApplicationConfiguration" [fillcolor = "#f76241"]
     "runOnSimulator" [fillcolor = "#f76241"]
-    "testOnSimulator" [fillcolor = "#f76241"]
     "build" -> "check"
     "check" -> "test"
-    "test" -> "testOnSimulator"
     "test" -> "classes"
     "test" -> "testClasses"
-    "testOnSimulator" -> "testClasses"
-    "testOnSimulator" -> "loadTestApplicationConfiguration"
+    "test" -> "loadTestApplicationConfiguration"
     "testClasses" -> "compileTestJava"
     "testClasses" -> "processTestResources"
     "loadTestApplicationConfiguration" -> "loadVeePort"
