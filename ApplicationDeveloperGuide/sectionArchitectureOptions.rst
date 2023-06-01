@@ -898,7 +898,25 @@ Option(text):
 *Description*:
 
 Specifies the maximum number of Features that can be dynamically installed to
-this Kernel (using ``Kernel.install()`` API).
+this Kernel (see `Kernel.install()`_ method).
+
+.. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
+
+.. _option_feature_stop_timeout:
+
+Option(text):
+~~~~~~~~~~~~~~
+
+*Option Name*: ``com.microej.runtime.kf.waitstop.delay``
+
+*Default value*: ``2000``
+
+*Description*:
+
+Specifies the maximum time allowed for the `FeatureEntryPoint.stop()`_ method to return (value in milliseconds).
+
+.. _FeatureEntryPoint.stop(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html#stop--
+
 
 Group: Feature Portability Control
 """"""""""""""""""""""""""""""""""
