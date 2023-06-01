@@ -501,6 +501,65 @@ Internal Error" response is sent.
 
 Note: when development mode is active, internal error page customization is deactivated. The development mode page is returned instead.
 
+Generate Server Self Signed Key and Certificate for HOKA WebServer TLS
+----------------------------------------------------------------------
+
+This section details the commands and steps to generate a self signed certificate and a DER formatted key for HOKA server to enable TLS.
+
+Generate Root CA Key & Certificate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To generate a root certificate authority (CA) using openssl, execute the following command and follow the instructions by filling the certificate information:
+
+``openssl req -new -x509 -days 3650 -keyout ca.key -out ca.crt``
+
+- ``ca.key``: is the name of the generated root private key in PEM format.
+- ``ca.crt``: is the name of the generated root certificate in PEM format.
+
+.. figure:: images/hoka_generate_root_ca_key_and_certificate.png
+   :alt: Generate Root CA Key and Certificate
+   :align: center
+   :scale: 100%
+
+
+Generate HOKA Server Private Key
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To generate a private key using openssl, execute the following command:
+
+``openssl genrsa -out hoka.key 4096``
+
+- ``hoka.key``: is the name of the generated private key.
+- ``4096``: is the length of the private key.
+
+Generate HOKA Server Self Signed Public Key
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To generate a Self signed public key:
+
+1. Generate a certificate signing request (CSR) using openssl, for that execute the following command and fill in the information:
+   ``openssl req -new -sha256 -key hoka.key -out hoka-csr.pem``
+
+.. figure:: images/hoka_generate_hoka_server_self_signed_public_key.png
+   :alt: Generate HOKA Server Self signed Public Key
+   :align: center
+   :scale: 80%
+
+
+2. Use the CSR to generate a self signed certificate using openssl by executing the following command:
+   ``openssl x509 -req -days 365 -in hoka-csr.pem -CA ca.crt -CAkey ca.key -CAcreateserial -out hoka.crt``
+
+Convert HOKA Private Key to DER Format
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To convert the private key to DER format using openssl execute the following command:
+
+``openssl pkcs8 -inform PEM -in hoka.key -topk8 -outform DER -out hoka.der -v1 PBE-SHA1-3DES -passout pass:changeit``
+
+.. note::
+
+      In the `HOKA SSL example <https://github.com/MicroEJ/ExampleJava-Hoka/tree/master-github/example-https/src/main/resources/https>`__,
+      ``hoka.key`` corresponds to the above ``hoka.der``.
 
 Handle Encoding
 ###############
