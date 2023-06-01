@@ -33,7 +33,7 @@ or from Eclipse and IntelliJ IDEA, by double-clicking on the ``buildExecutable``
    .. tab:: IntelliJ IDEA
 
       .. image:: images/intellij-buildExecutable-gradle-project.png
-         :width: 50%
+         :width: 30%
          :align: center
 
 In case of :ref:`Full BSP Connection <bsp_connection>`, the Executable file is generated in the ``build/output/application/veePortName`` folder of the project,

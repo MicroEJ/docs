@@ -34,8 +34,6 @@ Therefore, here are the 2 project structures side by side:
 |    |   |- main                 |    |   |- main                 |
 |    |   |   |- java             |    |   |   |- java             |
 |    |   |   |- resources        |    |   |   |- resources        |
-|    |   |                       |    |   |                       |
-|    |   |                       |    |   |                       |
 |    |   |- test                 |    |   |- test                 |
 |    |       |- java             |    |       |- java             |
 |    |       |- resources        |    |       |- resources        |
