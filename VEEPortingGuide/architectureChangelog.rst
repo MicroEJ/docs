@@ -60,7 +60,6 @@ If you plan to migrate a VEE Port from Architecture ``7.x`` to Architecture ``8.
 Core Engine
 ~~~~~~~~~~~
 
-- Added option :ref:`com.microej.runtime.kernel.dynamicfeatures.max <option_maximum_number_of_dynamic_features>` to configure the maximum number of Features that can be dynamically installed.
 - Renamed :ref:`Core Engine sections <core_engine_link>` to fully respect the ELF standard naming convention. 
 - Removed check when passing a non-immortal array in SNI if VEE Port option ``core.sni.nonimmortal.access`` was set to ``false``.
 - Removed ``LLBSP_isInReadOnlyMemory`` in Core Engine Abstraction Layer (``LLBSP.h`` file).
@@ -72,6 +71,8 @@ Core Engine
   
   - Renamed C functions ``TRACE_xxx`` into ``LLTRACE_xxx``.
 
+- [Multi] - Added option :ref:`com.microej.runtime.kernel.dynamicfeatures.max <option_maximum_number_of_dynamic_features>` to configure the maximum number of Features that can be dynamically installed.
+- [Multi] - Added option :ref:`com.microej.runtime.kf.waitstop.delay <option_feature_stop_timeout>` to configure the maximum time allowed for a Feature to stop.
 
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
