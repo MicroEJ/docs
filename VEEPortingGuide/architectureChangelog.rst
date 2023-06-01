@@ -93,12 +93,14 @@ Foundation Libraries
 - Removed the deprecated ``Device Information`` module group, including the Foundation Library ``Device``. See :ref:`architecture7_migration_device`.
 - [Single] Fixed an unexpected ``FeatureFinalizer`` exception or infinite loop when a Standalone Application touches a ``KF`` API in some cases.
 - [Tiny] Fixed an unexpected SOAR error when a Standalone Application touches a ``KF`` API.
+- [Multi] Fixed exception thrown when calling `Kernel.removeConverter()`_.
 
 .. _Module.getAllocatedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#getAllocatedMemory--
 .. _Kernel.setReservedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#setReservedMemory-long-
 .. _Feature.setMemoryLimit(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#setMemoryLimit-long-
 .. _Feature.getResourceAsStream(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#getResourceAsStream-java.lang.String-
 .. _FeatureEntryPoint.stop(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html#stop--
+.. _Kernel.removeConverter(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#removeConverter-ej.kf.Converter-
 
 Integration
 ~~~~~~~~~~~
