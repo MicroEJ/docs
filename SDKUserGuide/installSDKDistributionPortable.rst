@@ -21,7 +21,7 @@ Perform the following steps:
      - **Windows**
      - **Linux**
      - **macOS x86_64 (Intel chip)**
-     - **macOS aarch64 (M1 chip)**
+     - **macOS aarch64 (M1 chip)** [#warning_architecture_7_18_0]_
    * - ``23.02``
      - ``11``
      - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.02/zip/microej-sdk-23.02-win_x86_64.zip>`__
@@ -55,6 +55,7 @@ Perform the following steps:
 Once the SDK is started, it is recommended to check if updates are available (see :ref:`sdk_update` section).
 If your are running SDK on Windows OS, it is also strongly recommended to configure :ref:`Windows defender exclusion rules <sdk_install_troubleshooting_windows>`.
 
+.. [#warning_architecture_7_18_0] SDK Distribution for macOS aarch64 (M1 chip) requires :ref:`Architecture 7.18.0 or higher <changelog-7.18.0>`.
 ..
    | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

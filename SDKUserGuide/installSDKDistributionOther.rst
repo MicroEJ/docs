@@ -23,7 +23,7 @@ This section applies when the installation of the :ref:`latest SDK Distribution 
      - **Windows**
      - **Linux**
      - **macOS x86_64 (Intel chip)**
-     - **macOS aarch64 (M1 chip)**
+     - **macOS aarch64 (M1 chip)** [#warning_architecture_7_18_0]_
      - **SDK Version**
      - **Eclipse Version**
    * - ``23.02``
@@ -130,6 +130,7 @@ This section applies when the installation of the :ref:`latest SDK Distribution 
 
 Finally, if you need an older SDK Distribution, browse the `SDK Downloads Page <https://repository.microej.com/packages/SDK/>`_.
 
+.. [#warning_architecture_7_18_0] SDK Distribution for macOS aarch64 (M1 chip) requires :ref:`Architecture 7.18.0 or higher <changelog-7.18.0>`.
 
 ..
    | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 

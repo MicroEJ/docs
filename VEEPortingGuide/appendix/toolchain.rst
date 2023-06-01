@@ -206,8 +206,13 @@ ESP32
    * - GCC (ESP-IDF)
      - 8.4.0 (crosstool-NG esp-2021r1)
      - ``-mlongcalls -mfix-esp32-psram-cache-issue -mfix-esp32-psram-cache-strategy=memw``
-     - ``simikou6``
+     - `simikou6 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv84_xtensa-esp32-psram/simikou6/>`__
      - ``7.16.1`` or higher
+   * - GCC (ESP-IDF)
+     - 11.2.0 (crosstool-NG esp-2022r1)
+     - ``-mlongcalls``
+     - `simikou7 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv112_xtensa-esp32s3/simikou7/>`__
+     - ``7.20.1`` or higher
      
 
 IAR Linker Specific Options
