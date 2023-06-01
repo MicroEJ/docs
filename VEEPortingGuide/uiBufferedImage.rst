@@ -70,6 +70,8 @@ It must also feature an image allocator.
 * Draw into the image: the drawer can implement all MicroUI drawings or just a reduced set; when a drawing is not implemented, a stub implementation (that does nothing) is used.
 * Draw the image: the image is *custom* so its rendering is *custom* also; the rules to draw this kind of buffered images are described in the chapter  :ref:`image renderer custom <section_buffered_image_drawer_custom>`.
 
+.. _section_bufferedimage_cco:
+
 MicroUI C Module
 ================
 
@@ -470,7 +472,7 @@ Draw the Image: Multiple Formats Implementation
 Unlike the Single Format Implementation, the destination may be another format than the display format.
 By consequence, the drawer has to check the image format **and** the destination format.
 
-The following graph illustrates the drawing of an image (draw, rotate or scale) in other image or in display buffer (to draw a shape, see :ref:`section_buffered_image_c_drawinto`).
+The following graph illustrates the drawing of an image (draw, rotate or scale) in another image or in display buffer (to draw a shape, see :ref:`section_buffered_image_c_drawinto`).
 This graph gathers the both graphs :ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`.
 
 .. graphviz::
@@ -701,9 +703,323 @@ The drawings in the custom format *BVI* are implemented into the file ``ui_drawi
 Simulation
 ==========
 
-services
+The simulation behavior is very similar to the :ref:`section_drawings_cco` for the Embedded side
+
+.. _section_buffered_image_fp_drawer:
+
+Drawer
+------
+
+It is possible to draw in images with a format different than the display one by implementing the ``UIDrawing`` interface.
+
+This interface contains one method for each drawing primitive.
+Only the necessary methods can be implemented.
+Each non-implemented method will result in calling the stub implementation.
+
+The method ``handledFormat()`` needs to be implemented and returns the managed format.
+
+Once created, the ``UIDrawing`` implementation needs to be registered as a service.
+
+The creation of an image with a standard format (different than the display one) is supported in the Front Panel as long as a ``UIDrawing`` is defined for this format.
+
+The creation of an image with a custom format also requires to implement the :ref:`image creation<section_buffered_image_fp_creation>` in the VEE Port.
+
+.. _section_buffered_image_fp_creation:
+
+Image Creation
+--------------
+
+It is possible to create images with a custom format by implementing the ``BufferedImageProvider`` interface.
+
+This interface extends ``UIDrawing`` and ``UIImageDrawing`` and contains a method ``newBufferedImage()``.
+This method needs to be implemented to create the custom image.
+It must return an object representing the image.
+This object will be available in the drawing methods (:ref:`section_buffered_image_fp_drawer`).
+
+The method ``handledFormat()`` needs to be implemented and returns the managed format.
+
+Once created, the ``BufferedImageProvider`` implementation needs to be registered as a service.
+
+.. _section_buffered_image_fp_drawinto:
+
+Draw into the Image: Non-Display Format
+---------------------------------------
+
+The following graph illustrates the drawing of a shape (not an image, see :ref:`section_buffered_image_fp_drawit`):
+
+.. graphviz::
+
+  digraph {
+    ratio="auto"
+    splines="true";
+    node [style=filled fillcolor=white shape=rectangle fontname=monospace fontcolor=black width=3];
+        
+    // --- SIMPLE FLOW ELEMENTS -- //
+
+    mui [label="[MicroUI]
+    Painter.drawXXX();" shape=ellipse] 
+    LLUI_c [label="[FrontPanel]
+    LLUIPainter.drawXXX();"]
+    UID_h [label="[FrontPanel]
+    getUIDrawer().drawXXX();" fillcolor=gray]
+    // UID_weak_c [label="[ui_drawing.c]
+    // weak UI_DRAWING_drawXXX();" style=dotted]
+    UID_soft_h [label="[FrontPanel]
+    getUIDrawerSoftware()
+    .drawXXX();" fillcolor=gray]
+    UID_soft_c [label="[Graphics Engine]" shape=ellipse]
+
+    // --- GPU FLOW ELEMENTS -- //
+
+    UID_cond [label="method overridden ?" shape=diamond]
+    // UID_gpu_c [label="[ui_drawing_gpu.c]
+    // UI_DRAWING_drawXXX();"]
+    UID_gpu_cond [label="can draw algo ?" shape=diamond]
+    UID_gpu_hard [label="[Third-party lib]" shape=ellipse]
+
+    // --- MULTIPLE GC FLOW ELEMENTS -- //
+
+    UID_table [label="GC format ?" shape=diamond]
+    UID_c0 [label="[FrontPanel]
+    DisplayDrawer.drawXXX();"]
+    UID_gpu_0_c [label="[VEE Port FP]
+    DisplayDrawerExtension
+    .drawXXX();"]
+    UID_cond_1 [label="available drawer and
+    method implemented ?" shape=diamond]
+    UID_1_c [label="[VEE Port FP]
+    CustomDrawer.drawXXX();"]
+    UID_1_d [label="[custom drawing]" shape=ellipse]
+
+    UID_stub_c [label="[Graphics Engine]
+    StubDrawer.drawXXX();"]
+    stub [label="-" shape=ellipse]
+
+    // --- FLOW -- //
+
+    mui->LLUI_c->UID_h->UID_table
+    UID_table->UID_c0 [label="display format"]
+    UID_c0->UID_cond
+    UID_table->UID_cond_1 [label="other format"]
+    UID_cond->UID_soft_h [label="no"]
+    UID_soft_h->UID_soft_c
+    UID_cond->UID_gpu_0_c [label="yes"]
+    UID_gpu_0_c->UID_gpu_cond
+    UID_cond_1->UID_stub_c [label="no"]
+    UID_stub_c->stub
+    UID_cond_1->UID_1_c [label="yes"]
+    UID_1_c->UID_1_d
+    UID_gpu_cond->UID_soft_h [label="no"]
+    UID_gpu_cond->UID_gpu_hard [label="yes"]
+  }
+
+.. force a new line
+
+|
+
+**Standard Format**
+
+Let's implement the drawer for the `ARGB8888` format (with only the draw line primitive).
+
+.. code:: java
+
+   public class MyARGB8888ImageDrawer implements UIDrawing {
+
+      @Override
+      public MicroUIImageFormat handledFormat() {
+         return MicroUIImageFormat.MICROUI_IMAGE_FORMAT_ARGB8888;
+      }
+
+      @Override
+      public void drawLine(MicroUIGraphicsContext gc, int x1, int y1, int x2, int y2) {
+        Image image = gc.getImage();
+        image.drawLine(x1, y1, x2, y2, gc.getMicroUIColor());
+      }
+
+   }
+
+Now, this drawer needs to be registered as a service.
+This can be achieved by creating a file in the resources of the Front Panel project named ``META-INF/services/ej.microui.display.UIDrawing``.
+And its content containing the fully qualified name of the previously created image drawer.
+
+.. code-block::
+
+   com.mycompany.MyARGB8888ImageDrawer
+
+It is also possible to declare it programmatically (see where a drawer is registered in the :ref:`drawing custom <section_drawings_sim_custom>` section):
+
+.. code-block:: java
+
+   LLUIDisplay.Instance.registerUIDrawer(new MyARGB8888ImageDrawer());
 
 
+**Custom Format**
+
+Let's implement the buffered image provider for the `CUSTOM_0` format (with only the draw line primitive).
+
+.. code:: java
+
+   public class MyCustom0ImageProvider implements BufferedImageProvider {
+
+      @Override
+      public MicroUIImageFormat handledFormat() {
+         return MicroUIImageFormat.MICROUI_IMAGE_FORMAT_CUSTOM_0;
+      }
+
+      @Override
+      public Object newBufferedImage(int width, int height) 
+        // Create the image.
+        return new CustomImage(width, height);
+      }
+
+      @Override
+      public void drawLine(MicroUIGraphicsContext gc, int x1, int y1, int x2, int y2) {
+        // Draw in the image.
+        CustomImage customImage = (CustomImage) gc.getImage().getRAWImage();
+        customImage.drawLine(x1, y1, x2, y2, gc.getMicroUIColor());
+      }
+
+      @Override
+      public void draw(MicroUIGraphicsContext gc, MicroUIImage img, int regionX, int regionY, int width, int height,
+            int x, int y, int alpha) {
+        // Draw the image in another buffer.
+        MyCustomImage customImage = (MyCustomImage) img.getImage().getRAWImage();
+        customImage.drawOn(gc, regionX, regionY, width, height, x, y, alpha);
+      }
+   }
+
+Now, this buffered image provider needs to be registered as a service.
+This can be achieved by creating a file in the resources of the Front Panel project named ``META-INF/services/ej.microui.display.BufferedImageProvider``.
+And its content containing the fully qualified name of the previously created buffered image provider.
+
+.. code-block::
+
+   com.mycompany.MyCustom0ImageProvider
+
+It is also possible to declare it programmatically (see where a drawer is registered in the :ref:`drawing custom <section_drawings_sim_custom>` section):
+
+.. code-block:: java
+
+   LLUIDisplay.Instance.registerBufferedImageProvider(new MyCustom0ImageProvider());
+
+
+.. _section_buffered_image_fp_drawit:
+
+Draw the Image: Multiple Formats Implementation
+-----------------------------------------------
+
+The following graph illustrates the drawing of an image (draw, rotate or scale) in another image or in display buffer (to draw a shape, see :ref:`section_buffered_image_fp_drawinto`).
+This graph gathers the both graphs :ref:`draw in a custom image <section_buffered_image_fp_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom_fp>`.
+
+.. graphviz::
+
+  digraph {
+    ratio="auto"
+    splines="true";
+    node [style=filled fillcolor=white shape=rectangle fontname=monospace fontcolor=black width=3];
+        
+    // --- SIMPLE FLOW ELEMENTS -- //
+
+    mui [label="[MicroUI]
+    Painter.drawXXX();" shape=ellipse] 
+    LLUI_c [label="[FrontPanel]
+    LLUIPainter.drawXXX();"]
+    UID_h [label="[FrontPanel]
+    getUIDrawer().drawXXX();" fillcolor=gray]
+    // UID_weak_c [label="[ui_drawing.c]
+    // weak UI_DRAWING_drawXXX();" style=dotted]
+    UID_soft_h [label="[FrontPanel]
+    getUIDrawerSoftware()
+    .drawXXX();" fillcolor=gray]
+    UID_soft_c [label="[Graphics Engine]" shape=ellipse]
+
+    // --- GPU FLOW ELEMENTS -- //
+
+    UID_cond [label="method overridden ?" shape=diamond]
+    // UID_gpu_c [label="[ui_drawing_gpu.c]
+    // UI_DRAWING_drawXXX();"]
+    UID_gpu_cond [label="can draw image ?" shape=diamond]
+    UID_gpu_hard [label="[Third-party lib]" shape=ellipse]
+
+    // --- MULTIPLE GC FLOW ELEMENTS -- //
+
+    UID_table [label="GC format ?" shape=diamond]
+    UID_c0 [label="[FrontPanel]
+    DisplayDrawer.drawXXX()"]
+    UID_gpu_0_c [label="[VEE Port FP]
+    DisplayDrawerExtension
+    .drawXXX();"]
+    UID_cond_1 [label="available drawer and
+    method implemented ?" shape=diamond]
+
+    UID_1_d [label="[custom drawing]" shape=ellipse]
+    UID_1_i [label="image compatible ?" shape=diamond]
+
+    UID_stub_h [label="[FrontPanel]
+    no op"]
+    stub [label="-" shape=ellipse]
+
+    // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
+
+    UII_h [label="[FrontPanel]
+    getUIImageDrawer()
+    .drawXXX();" fillcolor=gray]
+    UII_cond [label="standard image ?" shape=diamond]
+    UII_gc [label="GC format ?" shape=diamond]
+    UIIx_cond [label="available image drawer
+    and method implemented ?" shape=diamond]
+    UIIx_impl_d [label="[custom drawing]" shape=ellipse]
+    UIIx_gc [label="gc compatible ?" shape=diamond]
+    UIIx_shape [label="can draw shapes ?" shape=diamond]
+
+    UID_h2 [label="[FrontPanel]
+    getUIDrawer().drawXXX();
+    @see Multiple Output Formats;" fillcolor=gray ]
+
+    // --- FLOW -- //
+
+    mui->LLUI_c->UID_h->UID_table
+    UID_table->UID_c0 [label="display format"]
+    UID_c0->UID_cond
+    UID_table->UID_cond_1 [label="other format"]
+
+
+    // dest: display format
+    UID_cond->UII_h [label="no"]
+    UII_h->UII_cond
+    UID_cond->UID_gpu_0_c [label="yes"]
+    UID_gpu_0_c->UID_gpu_cond
+
+    UID_stub_h->stub
+
+    // dest: custom format
+    UID_cond_1->UII_h [label="no"]
+    UID_cond_1->UID_1_i [label="yes"]
+    UID_1_i->UID_1_d [label="yes"]
+    UID_1_i->UII_h [label="no"]
+
+    // gpu
+    UID_gpu_cond->UII_h [label="no"]
+    UID_gpu_cond->UID_gpu_hard [label="yes"]
+
+    UII_cond->UII_gc [label="yes"]
+    UII_cond->UIIx_cond [label="no"]
+    UII_gc->UID_soft_h  [label="display"]
+    UII_gc->UID_stub_h  [label="other"]
+    UID_soft_h->UID_soft_c
+    UIIx_cond->UID_stub_h [label="no"]
+    UIIx_cond->UIIx_gc [label="yes"]
+    UIIx_gc->UIIx_impl_d [label="yes"]
+    UIIx_gc->UIIx_shape [label="no"]
+    UIIx_shape->UID_h2 [label="yes"]
+    UIIx_shape->UID_stub_h [label="no"]
+    UIIx_impl_d->UID_h2 [style=dotted label="optional
+    (drawShapes)"]
+  }
+
+.. force a new line
+
+|
 
 Dependencies
 ============
