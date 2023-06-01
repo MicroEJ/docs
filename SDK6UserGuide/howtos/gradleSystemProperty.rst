@@ -10,7 +10,7 @@ Gradle allows to define System Properties with the command line thanks to the ``
 
 .. code:: console
    
-   $ gradle build -DmyPropertyName="myPropertyValue"
+   $ ./gradlew build -DmyPropertyName="myPropertyValue"
 
 and use them with the API ``providers.systemProperty("myPropertyName").get()``.
 
@@ -25,7 +25,7 @@ and built with:
 
 .. code:: console
 
-   $ gradle build -DmyVeePortDir="C:\\path\\to\\my\\veePort\\directory"
+   $ ./gradlew build -DmyVeePortDir="C:\\path\\to\\my\\veePort\\directory"
 
 The ``providers.systemProperty("myPropertyName")`` API returns a ``org.gradle.api.provider.Provider`` object, which provides other capabilities like:
 
