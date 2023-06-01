@@ -29,7 +29,6 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.loadApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.runOnSimulator`
 - :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
-- :ref:`sdk6_module_natures.tasks.testOnSimulator`
 - :ref:`sdk6_module_natures.tasks.checkModule`
 
 .. graphviz:: graphAddonLibraryModule.dot
@@ -58,7 +57,6 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.loadApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.runOnSimulator`
 - :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
-- :ref:`sdk6_module_natures.tasks.testOnSimulator`
 - :ref:`sdk6_module_natures.tasks.checkModule`
 - :ref:`sdk6_module_natures.tasks.loadExecutableConfiguration`
 - :ref:`sdk6_module_natures.tasks.buildExecutable`
@@ -199,38 +197,6 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
-
-
-.. _sdk6_module_natures.tasks.testOnSimulator:
-
-testOnSimulator
-^^^^^^^^^^^^^^^
-
-**Description**: Executes the tests with the Simulator.
-
-**Module Natures**:
-
-This task is used by the following module natures:
-
-- :ref:`sdk6_module_natures.addon_lib`
-- :ref:`sdk6_module_natures.application`
-
-**Configuration**:
-
-This task uses the `TestFilter <https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/testing/TestFilter.html>`__ object 
-of the Gradle ``test`` task to include/exclude the test classes to executed.
-It supports the methods ``includeTestsMatching`` and ``excludeTestsMatching``.
-
-For example:
-
-.. code::
-
-  tasks.test {
-    filter {
-      includeTestsMatching("*._AllTests_*")
-      excludeTestsMatching("*._AllTests_ExcludedTest")
-    }
-  }
 
 .. _sdk6_module_natures.tasks.checkModule:
 
