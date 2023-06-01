@@ -552,6 +552,8 @@ Category: Mock
 
 Specify Hardware In the Loop Mock client options
 
+.. _option_mock_debug:
+
 Group: Debug
 ^^^^^^^^^^^^
 
