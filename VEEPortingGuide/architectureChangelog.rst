@@ -81,7 +81,7 @@ Foundation Libraries
 
 -  Updated ``KF`` to version ``1.7``:
   
-   -  Added heap memory control (`Kernel.setReservedMemory()`_ and `Feature.setMemoryLimit()`_ methods).
+   -  Added heap memory control: `Module.getAllocatedMemory()`_, `Kernel.setReservedMemory()`_ and `Feature.setMemoryLimit()`_ methods.
    -  Added load of a Feature resource (`Feature.getResourceAsStream()`_ method).
 - Updated ``KF`` dynamic loader to support :ref:`Feature Custom Installation <feature_custom_installation>` mode.
 - Removed Foundation Libraries API Jars and Javadoc.
@@ -93,7 +93,7 @@ Foundation Libraries
 - [Single] Fixed an unexpected ``FeatureFinalizer`` exception or infinite loop when a Standalone Application touches a ``KF`` API in some cases.
 - [Tiny] Fixed an unexpected SOAR error when a Standalone Application touches a ``KF`` API.
 
-
+.. _Module.getAllocatedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#getAllocatedMemory--
 .. _Kernel.setReservedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#setReservedMemory-long-
 .. _Feature.setMemoryLimit(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#setMemoryLimit-long-
 .. _Feature.getResourceAsStream(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#getResourceAsStream-java.lang.String-
@@ -126,6 +126,7 @@ Simulator
 - Fixed stop of the HIL Engine if Simulator was terminated before the connection is established.
 - Fixed load of the Mock classes in the classpath order (left-to-right).
 - Fixed the missing error check when loading an immutable file referencing an external object id (the ``importObject`` directive is required).
+- [Multi] Fixed the computation of object sizes. The 4-byte KF header was missing.
 
 SOAR
 ~~~~
