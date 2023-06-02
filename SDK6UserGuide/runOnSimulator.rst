@@ -18,7 +18,7 @@ The prerequisites of this task are:
 
 Once these prerequisites are fulfilled, the Application can be started with the Simulator with the command line interface::
 
-    $ gradle runOnSimulator
+    $ ./gradlew runOnSimulator
 
 or from Eclipse and IntelliJ IDEA, by double-clicking on the ``runOnSimulator`` task in the Gradle tasks view:
 
@@ -53,7 +53,7 @@ Verbose Mode
 If you need more information about the execution of the Application with the Simulator, 
 the verbose mode can be enabled by using the ``--info`` Gradle option::
 
-   gradle runOnSimulator --info
+   ./gradlew runOnSimulator --info
 
 .. _sdk_6_debug_on_simulator:
 
@@ -66,12 +66,12 @@ Debug on Simulator
 The SDK allows to run an Application with the Simulator in debug mode by setting the System property ``debug.mode`` to ``true`` 
 when executing the runOnSimulator task::
 
-   gradle runOnSimulator -P"debug.mode"=true
+   ./gradlew runOnSimulator -P"debug.mode"=true
 
 The debug mode is activated on the port ``12000`` by default. 
 The port can be changed by using the System Property ``debug.port``::
 
-   gradle runOnSimulator -P"debug.mode"=true -P"debug.port"=8000
+   ./gradlew runOnSimulator -P"debug.mode"=true -P"debug.port"=8000
 
 Once started, the Simulator waits for the connection of a debugger.
 
@@ -116,7 +116,7 @@ To run or debug an Application, you must select the VEE Port to use by setting t
 :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port when calling 
 the ``runOnSimulator`` task::
 
-   gradle runOnSimulator -PveePort="veePortName"
+   ./gradlew runOnSimulator -PveePort="veePortName"
 
 If you want to add the property in IntelliJ IDEA : 
 
