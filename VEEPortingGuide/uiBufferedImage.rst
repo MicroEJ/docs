@@ -270,76 +270,74 @@ The following graph illustrates the drawing of a shape (not an image, see :ref:`
   digraph {
     ratio="auto"
     splines="true";
-    node [style=filled fillcolor=white shape=rectangle fontname=monospace fontcolor=black width=3];
+    node [style="filled,rounded" fontname="courier new" fontsize="10"]
+    
+    { //in/out
+        node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_driver UID_gpu_hard UID_1_d stub
+    }
+    { // h
+        node [shape="box" color="#00aec7" fontcolor="white"] LLUI_h UID_h UID_soft_h UID_stub_h
+    }
+    { // c
+        node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_c UID_c0 UID_c1 UID_gpu_0_c UID_1_c UID_stub_c
+    }
+    { // weak
+        node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_0_c UID_weak_1_c
+    }
+    { // choice
+        node [shape="diamond" color="#e5e9eb"] UID_cond UID_gpu_cond UID_table UID_cond_1
+    }
 
     // --- SIMPLE FLOW ELEMENTS -- //
 
-    mui [label="[MicroUI]
-    Painter.drawXXX();" shape=ellipse] 
-    LLUI_h [label="[LLUI_PAINTER_impl.h]
-    LLUI_PAINTER_IMPL_drawXXX();" fillcolor=gray]
-    LLUI_c [label="[LLUI_PAINTER_impl.c]
-    LLUI_PAINTER_IMPL_drawXXX();"]
-    UID_h [label="[ui_drawing.h]
-    UI_DRAWING_drawXXX();" fillcolor=gray]
-    // UID_weak_c [label="[ui_drawing.c]
-    // weak UI_DRAWING_drawXXX();" style=dotted]
-    UID_soft_h [label="[ui_drawing_soft.h]
-    UI_DRAWING_SOFT_drawXXX();" fillcolor=gray]
-    UID_soft_c [label="[Graphics Engine]" shape=ellipse]
+    mui [label="[MicroUI]\nPainter.drawXXX();"] 
+    LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawXXX();"]
+    LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawXXX();"]
+    UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawXXX();"]
+    UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawXXX();"]
+    UID_soft_c [label="[Graphics Engine]"]
 
     // --- GPU FLOW ELEMENTS -- //
 
-    UID_cond [label="function implemented ?" shape=diamond]
-    // UID_gpu_c [label="[ui_drawing_gpu.c]
-    // UI_DRAWING_drawXXX();"]
-    UID_gpu_cond [label="GPU compatible ?" shape=diamond]
+    UID_cond [label="function implemented?"]
+    UID_gpu_cond [label="GPU compatible?"]
     UID_gpu_driver [label="[GPU driver]"]
-    UID_gpu_hard [label="[GPU]" shape=ellipse]
+    UID_gpu_hard [label="[GPU]"]
 
     // --- MULTIPLE GC FLOW ELEMENTS -- //
 
-    UID_c [label="[ui_drawing.c]
-    UI_DRAWING_drawXXX();"]
-    UID_table [label="GC format ?" shape=diamond]
-    UID_c0 [label="[ui_drawing.c]
-    table[0] = UI_DRAWING_drawXXX_0()"]
-    UID_c1 [label="[ui_drawing.c]
-    table[1] = UI_DRAWING_drawXXX_1()"]
-    UID_weak_0_c [label="[ui_drawing.c]
-    weak UI_DRAWING_drawXXX_0();" style=dotted]
-    UID_gpu_0_c [label="[ui_drawing_gpu.c]
-    UI_DRAWING_drawXXX_0();"]
-    UID_cond_1 [label="function implemented ?" shape=diamond]
-    UID_weak_1_c [label="[ui_drawing.c]
-    weak UI_DRAWING_drawXXX_1();" style=dotted]
-    UID_1_c [label="[ui_drawing_yyy.c]
-    UI_DRAWING_drawXXX_1();"]
-    UID_1_d [label="[custom drawing]" shape=ellipse]
+    UID_c [label="[ui_drawing.c]\nUI_DRAWING_drawXXX();"]
+    UID_table [label="GC format?"]
+    UID_c0 [label="[ui_drawing.c]\ntable[0] = UI_DRAWING_drawXXX_0()"]
+    UID_c1 [label="[ui_drawing.c]\ntable[1] = UI_DRAWING_drawXXX_1()"]
+    UID_weak_0_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawXXX_0();"]
+    UID_gpu_0_c [label="[ui_drawing_gpu.c]\nUI_DRAWING_drawXXX_0();"]
+    UID_cond_1 [label="function implemented?"]
+    UID_weak_1_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawXXX_1();"]
+    UID_1_c [label="[ui_drawing_yyy.c]\nUI_DRAWING_drawXXX_1();"]
+    UID_1_d [label="[custom drawing]"]
 
-    UID_stub_h [label="[ui_drawing_stub.h]
-    UI_DRAWING_STUB_drawXXX();" fillcolor=gray]
-    UID_stub_c [label="[ui_drawing_stub.c]
-    UI_DRAWING_STUB_drawXXX();"]
-    stub [label="-" shape=ellipse]
+    UID_stub_h [label="[ui_drawing_stub.h]\nUI_DRAWING_STUB_drawXXX();"]
+    UID_stub_c [label="[ui_drawing_stub.c]\nUI_DRAWING_STUB_drawXXX();"]
+    stub [label="-"]
 
     // --- FLOW -- //
 
     mui->LLUI_h->LLUI_c->UID_h->UID_c->UID_table
-    UID_table->UID_c0 [label="display format"]
+    UID_table->UID_c0 [label="display format" fontname="courier new" fontsize="10"]
     UID_c0->UID_cond
-    UID_table->UID_c1 [label="other format"]
+    UID_table->UID_c1 [label="other format" fontname="courier new" fontsize="10"]
     UID_c1->UID_cond_1
-    UID_cond->UID_weak_0_c [label="no"]
+    UID_cond->UID_weak_0_c [label="no" fontname="courier new" fontsize="10"]
     UID_weak_0_c->UID_soft_h->UID_soft_c
-    UID_cond->UID_gpu_0_c [label="yes"]
+    UID_cond->UID_gpu_0_c [label="yes" fontname="courier new" fontsize="10"]
     UID_gpu_0_c->UID_gpu_cond
-    UID_cond_1->UID_weak_1_c [label="no"]
+    UID_cond_1->UID_weak_1_c [label="no" fontname="courier new" fontsize="10"]
     UID_weak_1_c->UID_stub_h->UID_stub_c->stub
-    UID_cond_1->UID_1_c [label="yes"]
+    UID_cond_1->UID_1_c [label="yes" fontname="courier new" fontsize="10"]
     UID_1_c->UID_1_d
-    UID_gpu_cond->UID_soft_h [label="no"]
-    UID_gpu_cond->UID_gpu_driver [label="yes"]
+    UID_gpu_cond->UID_soft_h [label="no" fontname="courier new" fontsize="10"]
+    UID_gpu_cond->UID_gpu_driver [label="yes" fontname="courier new" fontsize="10"]
     UID_gpu_driver->UID_gpu_hard
   }
 
@@ -480,128 +478,118 @@ This graph gathers the both graphs :ref:`draw in a custom image <section_buffere
   digraph {
     ratio="auto"
     splines="true";
-    node [style=filled fillcolor=white shape=rectangle fontname=monospace fontcolor=black width=3];
-        
+    node [style="filled,rounded" fontname="courier new" fontsize="10"]
+    
+    { //in/out
+        node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_driver UID_gpu_hard UID_1_d stub UIIx_impl_d
+    }
+    { // h
+        node [shape="box" color="#00aec7" fontcolor="white"] LLUI_h UID_h UID_soft_h UID_stub_h UII_h UID_h2
+    }
+    { // c
+        node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_c UID_c0 UID_c1 UID_gpu_0_c UID_1_c UID_stub_c UII_c UIIx_c UIIx_impl_c
+    }
+    { // weak
+        node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_0_c UID_weak_1_c UIIx_weak_c
+    }
+    { // choice
+        node [shape="diamond" color="#e5e9eb"] UID_cond UID_gpu_cond UID_table UID_cond_1 UID_1_i UII_cond UII_gc UIIx_cond UIIx_gc UIIx_shape
+    }
+
     // --- SIMPLE FLOW ELEMENTS -- //
 
-    mui [label="[MicroUI]
-    Painter.drawXXX();" shape=ellipse] 
-    LLUI_h [label="[LLUI_PAINTER_impl.h]
-    LLUI_PAINTER_IMPL_drawXXX();" fillcolor=gray]
-    LLUI_c [label="[LLUI_PAINTER_impl.c]
-    LLUI_PAINTER_IMPL_drawXXX();"]
-    UID_h [label="[ui_drawing.h]
-    UI_DRAWING_drawXXX();" fillcolor=gray]
-    // UID_weak_c [label="[ui_drawing.c]
-    // weak UI_DRAWING_drawXXX();" style=dotted]
-    UID_soft_h [label="[ui_drawing_soft.h]
-    UI_DRAWING_SOFT_drawXXX();" fillcolor=gray]
-    UID_soft_c [label="[Graphics Engine]" shape=ellipse]
+    mui [label="[MicroUI]\nPainter.drawXXX();"] 
+    LLUI_h [label="[LLUI_PAINTER_impl.h]\nLLUI_PAINTER_IMPL_drawXXX();"]
+    LLUI_c [label="[LLUI_PAINTER_impl.c]\nLLUI_PAINTER_IMPL_drawXXX();"]
+    UID_h [label="[ui_drawing.h]\nUI_DRAWING_drawXXX();"]
+    UID_soft_h [label="[ui_drawing_soft.h]\nUI_DRAWING_SOFT_drawXXX();"]
+    UID_soft_c [label="[Graphics Engine]"]
 
     // --- GPU FLOW ELEMENTS -- //
 
-    UID_cond [label="algo implemented ?" shape=diamond]
-    // UID_gpu_c [label="[ui_drawing_gpu.c]
-    // UI_DRAWING_drawXXX();"]
-    UID_gpu_cond [label="GPU compatible ?" shape=diamond]
+    UID_cond [label="algo implemented?"]
+    UID_gpu_cond [label="GPU compatible?"]
     UID_gpu_driver [label="[GPU driver]"]
-    UID_gpu_hard [label="[GPU]" shape=ellipse]
+    UID_gpu_hard [label="[GPU]"]
 
     // --- MULTIPLE GC FLOW ELEMENTS -- //
 
-    UID_c [label="[ui_drawing.c]
-    UI_DRAWING_drawXXX();"]
-    UID_table [label="GC format ?" shape=diamond]
-    UID_c0 [label="[ui_drawing.c]
-    table[0] = UI_DRAWING_drawXXX_0()"]
-    UID_c1 [label="[ui_drawing.c]
-    table[1] = UI_DRAWING_drawXXX_1()"]
-    UID_weak_0_c [label="[ui_drawing.c]
-    weak UI_DRAWING_drawXXX_0();" style=dotted]
-    UID_gpu_0_c [label="[ui_drawing_gpu.c]
-    UI_DRAWING_drawXXX_0();"]
-    UID_cond_1 [label="implemented ?" shape=diamond]
-    UID_weak_1_c [label="[ui_drawing.c]
-    weak UI_DRAWING_drawXXX_1();" style=dotted]
-    UID_1_c [label="[ui_drawing_yyy.c]
-    UI_DRAWING_drawXXX_1();"]
-    UID_1_d [label="[custom drawing]" shape=ellipse]
-    UID_1_i [label="image compatible ?" shape=diamond]
+    UID_c [label="[ui_drawing.c]\nUI_DRAWING_drawXXX();"]
+    UID_table [label="GC format?"]
+    UID_c0 [label="[ui_drawing.c]\ntable[0] = UI_DRAWING_drawXXX_0()"]
+    UID_c1 [label="[ui_drawing.c]\ntable[1] = UI_DRAWING_drawXXX_1()"]
+    UID_weak_0_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawXXX_0();"]
+    UID_gpu_0_c [label="[ui_drawing_gpu.c]\nUI_DRAWING_drawXXX_0();"]
+    UID_cond_1 [label="implemented?"]
+    UID_weak_1_c [label="[ui_drawing.c]\nweak UI_DRAWING_drawXXX_1();"]
+    UID_1_c [label="[ui_drawing_yyy.c]\nUI_DRAWING_drawXXX_1();"]
+    UID_1_d [label="[custom drawing]"]
+    UID_1_i [label="image compatible?"]
 
-    UID_stub_h [label="[ui_drawing_stub.h]
-    UI_DRAWING_STUB_drawXXX();" fillcolor=gray]
-    UID_stub_c [label="[ui_drawing_stub.c]
-    UI_DRAWING_STUB_drawXXX();"]
-    stub [label="-" shape=ellipse]
+    UID_stub_h [label="[ui_drawing_stub.h]\nUI_DRAWING_STUB_drawXXX();"]
+    UID_stub_c [label="[ui_drawing_stub.c]\nUI_DRAWING_STUB_drawXXX();"]
+    stub [label="-"]
 
     // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-    UII_h [label="[ui_image.h]
-    UI_IMAGE_drawXXX();" fillcolor=gray]
-    UII_c [label="[ui_image.c]
-    UI_IMAGE_drawXXX();"]
-    UII_cond [label="standard image ?" shape=diamond]
-    UII_gc [label="GC format ?" shape=diamond]
-    UIIx_c [label="[ui_image.c]
-    table[x] = UI_IMAGE_drawCustom_x()"]
-    UIIx_weak_c [label="[ui_image.c]
-    weak UI_IMAGE_drawCustom_x();" style=dotted]
-    UIIx_cond [label="implemented ?" shape=diamond]
-    UIIx_impl_c [label="[ui_image_x.c]
-    UI_IMAGE_drawCustom_x()"]
-    UIIx_impl_d [label="[custom drawing]" shape=ellipse]
-    UIIx_gc [label="gc compatible ?" shape=diamond]
-    UIIx_shape [label="can draw shapes ?" shape=diamond]
+    UII_h [label="[ui_image.h]\nUI_IMAGE_drawXXX();"]
+    UII_c [label="[ui_image.c]\nUI_IMAGE_drawXXX();"]
+    UII_cond [label="standard image?"]
+    UII_gc [label="GC format?"]
+    UIIx_c [label="[ui_image.c]\ntable[x] = UI_IMAGE_drawCustom_x()"]
+    UIIx_weak_c [label="[ui_image.c]\nweak UI_IMAGE_drawCustom_x();"]
+    UIIx_cond [label="implemented?"]
+    UIIx_impl_c [label="[ui_image_x.c]\nUI_IMAGE_drawCustom_x()"]
+    UIIx_impl_d [label="[custom drawing]"]
+    UIIx_gc [label="gc compatible?"]
+    UIIx_shape [label="can draw shapes?"]
 
-    UID_h2 [label="[ui_drawing.h]
-    @see Multiple Output Formats;" fillcolor=gray ]
+    UID_h2 [label="[ui_drawing.h]\n@see Multiple Output Formats;"]
 
     // --- FLOW -- //
 
     mui->LLUI_h->LLUI_c->UID_h->UID_c->UID_table
-    UID_table->UID_c0 [label="display format"]
+    UID_table->UID_c0 [label="display format" fontname="courier new" fontsize="10"]
     UID_c0->UID_cond
-    UID_table->UID_c1 [label="other format"]
+    UID_table->UID_c1 [label="other format" fontname="courier new" fontsize="10"]
     UID_c1->UID_cond_1
 
     // dest: display format
-    UID_cond->UID_weak_0_c [label="no"]
+    UID_cond->UID_weak_0_c [label="no" fontname="courier new" fontsize="10"]
     UID_weak_0_c->UII_h->UII_c->UII_cond
-    UID_cond->UID_gpu_0_c [label="yes"]
+    UID_cond->UID_gpu_0_c [label="yes" fontname="courier new" fontsize="10"]
     UID_gpu_0_c->UID_gpu_cond
 
     UID_stub_h->UID_stub_c->stub
 
     // dest: custom format
-    UID_cond_1->UID_weak_1_c [label="no"]
+    UID_cond_1->UID_weak_1_c [label="no" fontname="courier new" fontsize="10"]
     UID_weak_1_c->UII_h
-    UID_cond_1->UID_1_c [label="yes"]
+    UID_cond_1->UID_1_c [label="yes" fontname="courier new" fontsize="10"]
     UID_1_c->UID_1_i
-    UID_1_i->UID_1_d [label="yes"]
-    UID_1_i->UII_h [label="no"]
+    UID_1_i->UID_1_d [label="yes" fontname="courier new" fontsize="10"]
+    UID_1_i->UII_h [label="no" fontname="courier new" fontsize="10"]
 
     // gpu
-    UID_gpu_cond->UII_h [label="no"]
-    UID_gpu_cond->UID_gpu_driver [label="yes"]
+    UID_gpu_cond->UII_h [label="no" fontname="courier new" fontsize="10"]
+    UID_gpu_cond->UID_gpu_driver [label="yes" fontname="courier new" fontsize="10"]
     UID_gpu_driver->UID_gpu_hard
 
-    UII_cond->UII_gc [label="yes"]
-    UII_cond->UIIx_c [label="no"]
-    UII_gc->UID_soft_h  [label="display"]
-    UII_gc->UID_stub_h  [label="other"]
+    UII_cond->UII_gc [label="yes" fontname="courier new" fontsize="10"]
+    UII_cond->UIIx_c [label="no" fontname="courier new" fontsize="10"]
+    UII_gc->UID_soft_h  [label="display" fontname="courier new" fontsize="10"]
+    UII_gc->UID_stub_h  [label="other" fontname="courier new" fontsize="10"]
     UID_soft_h->UID_soft_c
     UIIx_c->UIIx_cond
-    UIIx_cond->UIIx_weak_c [label="no"]
+    UIIx_cond->UIIx_weak_c [label="no" fontname="courier new" fontsize="10"]
     UIIx_weak_c->UID_stub_h
-    UIIx_cond->UIIx_impl_c [label="yes"]
+    UIIx_cond->UIIx_impl_c [label="yes" fontname="courier new" fontsize="10"]
     UIIx_impl_c->UIIx_gc
-    UIIx_gc->UIIx_impl_d [label="yes"]
-    UIIx_gc->UIIx_shape [label="no"]
-    UIIx_shape->UID_h2 [label="yes"]
-    UIIx_shape->UID_stub_h [label="no"]
-    UIIx_impl_d->UID_h2 [style=dotted label="optional
-    (drawShapes)"]
-
+    UIIx_gc->UIIx_impl_d [label="yes" fontname="courier new" fontsize="10"]
+    UIIx_gc->UIIx_shape [label="no" fontname="courier new" fontsize="10"]
+    UIIx_shape->UID_h2 [label="yes" fontname="courier new" fontsize="10"]
+    UIIx_shape->UID_stub_h [label="no" fontname="courier new" fontsize="10"]
+    UIIx_impl_d->UID_h2 [style=dotted label="optional\n(drawShapes)" fontname="courier new" fontsize="10"]
   }
 
 .. force a new line
@@ -754,65 +742,66 @@ The following graph illustrates the drawing of a shape (not an image, see :ref:`
   digraph {
     ratio="auto"
     splines="true";
-    node [style=filled fillcolor=white shape=rectangle fontname=monospace fontcolor=black width=3];
-        
+    node [style="filled,rounded" fontname="courier new" fontsize="10"]
+
+    { //in/out
+        node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_hard UID_1_d stub
+    }
+    { // h
+        node [shape="box" color="#00aec7" fontcolor="white"] UID_h UID_soft_h
+    }
+    { // c
+        node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_c0 UID_gpu_0_c UID_stub_c UID_1_c
+    }
+    { // weak
+        node [shape="box" style="dashed,rounded" color="#ee502e"] 
+    }
+    { // choice
+        node [shape="diamond" color="#e5e9eb"] UID_cond UID_gpu_cond UID_table UID_cond_1
+    }
+
     // --- SIMPLE FLOW ELEMENTS -- //
 
-    mui [label="[MicroUI]
-    Painter.drawXXX();" shape=ellipse] 
-    LLUI_c [label="[FrontPanel]
-    LLUIPainter.drawXXX();"]
-    UID_h [label="[FrontPanel]
-    getUIDrawer().drawXXX();" fillcolor=gray]
-    // UID_weak_c [label="[ui_drawing.c]
-    // weak UI_DRAWING_drawXXX();" style=dotted]
-    UID_soft_h [label="[FrontPanel]
-    getUIDrawerSoftware()
-    .drawXXX();" fillcolor=gray]
-    UID_soft_c [label="[Graphics Engine]" shape=ellipse]
+    mui [label="[MicroUI]\nPainter.drawXXX();"] 
+    LLUI_c [label="[FrontPanel]\nLLUIPainter.drawXXX();"]
+    UID_h [label="[FrontPanel]\ngetUIDrawer().drawXXX();"]
+    UID_soft_h [label="[FrontPanel]\ngetUIDrawerSoftware()\n.drawXXX();"]
+    UID_soft_c [label="[Graphics Engine]"]
 
     // --- GPU FLOW ELEMENTS -- //
 
-    UID_cond [label="method overridden ?" shape=diamond]
-    // UID_gpu_c [label="[ui_drawing_gpu.c]
-    // UI_DRAWING_drawXXX();"]
-    UID_gpu_cond [label="can draw algo ?" shape=diamond]
-    UID_gpu_hard [label="[Third-party lib]" shape=ellipse]
+    UID_cond [label="method overridden?"]
+    UID_gpu_cond [label="can draw algo?"]
+    UID_gpu_hard [label="[Third-party lib]"]
 
     // --- MULTIPLE GC FLOW ELEMENTS -- //
 
-    UID_table [label="GC format ?" shape=diamond]
-    UID_c0 [label="[FrontPanel]
-    DisplayDrawer.drawXXX();"]
-    UID_gpu_0_c [label="[VEE Port FP]
-    DisplayDrawerExtension
-    .drawXXX();"]
-    UID_cond_1 [label="available drawer and
-    method implemented ?" shape=diamond]
-    UID_1_c [label="[VEE Port FP]
-    CustomDrawer.drawXXX();"]
-    UID_1_d [label="[custom drawing]" shape=ellipse]
+    UID_table [label="GC format?"]
+    UID_c0 [label="[FrontPanel]\nDisplayDrawer.drawXXX();"]
+    UID_gpu_0_c [label="[VEE Port FP]\nDisplayDrawerExtension\n.drawXXX();"]
+    UID_cond_1 [label="available drawer and\nmethod implemented?"]
+    UID_1_c [label="[VEE Port FP]\nCustomDrawer.drawXXX();"]
+    UID_1_d [label="[custom drawing]"]
 
-    UID_stub_c [label="[Graphics Engine]
-    StubDrawer.drawXXX();"]
-    stub [label="-" shape=ellipse]
+    UID_stub_c [label="[Graphics Engine]\nStubDrawer.drawXXX();"]
+    stub [label="-"]
 
     // --- FLOW -- //
 
     mui->LLUI_c->UID_h->UID_table
-    UID_table->UID_c0 [label="display format"]
+    UID_table->UID_c0 [label="display format" fontname="courier new" fontsize="10"]
     UID_c0->UID_cond
-    UID_table->UID_cond_1 [label="other format"]
-    UID_cond->UID_soft_h [label="no"]
+    UID_table->UID_cond_1 [label="other format" fontname="courier new" fontsize="10"]
+    UID_cond->UID_soft_h [label="no" fontname="courier new" fontsize="10"]
     UID_soft_h->UID_soft_c
-    UID_cond->UID_gpu_0_c [label="yes"]
+    UID_cond->UID_gpu_0_c [label="yes" fontname="courier new" fontsize="10"]
     UID_gpu_0_c->UID_gpu_cond
-    UID_cond_1->UID_stub_c [label="no"]
+    UID_cond_1->UID_stub_c [label="no" fontname="courier new" fontsize="10"]
     UID_stub_c->stub
-    UID_cond_1->UID_1_c [label="yes"]
+    UID_cond_1->UID_1_c [label="yes" fontname="courier new" fontsize="10"]
     UID_1_c->UID_1_d
-    UID_gpu_cond->UID_soft_h [label="no"]
-    UID_gpu_cond->UID_gpu_hard [label="yes"]
+    UID_gpu_cond->UID_soft_h [label="no" fontname="courier new" fontsize="10"]
+    UID_gpu_cond->UID_gpu_hard [label="yes" fontname="courier new" fontsize="10"]
   }
 
 .. force a new line
@@ -918,105 +907,101 @@ This graph gathers the both graphs :ref:`draw in a custom image <section_buffere
   digraph {
     ratio="auto"
     splines="true";
-    node [style=filled fillcolor=white shape=rectangle fontname=monospace fontcolor=black width=3];
-        
+    node [style="filled,rounded" fontname="courier new" fontsize="10"]
+
+    { //in/out
+        node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_hard UID_1_d stub UIIx_impl_d
+    }
+    { // h
+        node [shape="box" color="#00aec7" fontcolor="white"] UID_h UID_soft_h UID_stub_h UII_h UID_h2
+    }
+    { // c
+        node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_c0 UID_gpu_0_c
+    }
+    { // weak
+        node [shape="box" style="dashed,rounded" color="#ee502e"] 
+    }
+    { // choice
+        node [shape="diamond" color="#e5e9eb"] UID_cond UID_gpu_cond UID_table UID_cond_1 UID_1_i UII_cond UII_gc UIIx_cond UIIx_gc UIIx_shape
+    }
+
     // --- SIMPLE FLOW ELEMENTS -- //
 
-    mui [label="[MicroUI]
-    Painter.drawXXX();" shape=ellipse] 
-    LLUI_c [label="[FrontPanel]
-    LLUIPainter.drawXXX();"]
-    UID_h [label="[FrontPanel]
-    getUIDrawer().drawXXX();" fillcolor=gray]
-    // UID_weak_c [label="[ui_drawing.c]
-    // weak UI_DRAWING_drawXXX();" style=dotted]
-    UID_soft_h [label="[FrontPanel]
-    getUIDrawerSoftware()
-    .drawXXX();" fillcolor=gray]
-    UID_soft_c [label="[Graphics Engine]" shape=ellipse]
+    mui [label="[MicroUI]\nPainter.drawXXX();"] 
+    LLUI_c [label="[FrontPanel]\nLLUIPainter.drawXXX();"]
+    UID_h [label="[FrontPanel]\ngetUIDrawer().drawXXX();"]
+    UID_soft_h [label="[FrontPanel]\ngetUIDrawerSoftware()\n.drawXXX();"]
+    UID_soft_c [label="[Graphics Engine]"]
 
     // --- GPU FLOW ELEMENTS -- //
 
-    UID_cond [label="method overridden ?" shape=diamond]
-    // UID_gpu_c [label="[ui_drawing_gpu.c]
-    // UI_DRAWING_drawXXX();"]
-    UID_gpu_cond [label="can draw image ?" shape=diamond]
-    UID_gpu_hard [label="[Third-party lib]" shape=ellipse]
+    UID_cond [label="method overridden?"]
+    UID_gpu_cond [label="can draw image?"]
+    UID_gpu_hard [label="[Third-party lib]"]
 
     // --- MULTIPLE GC FLOW ELEMENTS -- //
 
-    UID_table [label="GC format ?" shape=diamond]
-    UID_c0 [label="[FrontPanel]
-    DisplayDrawer.drawXXX()"]
-    UID_gpu_0_c [label="[VEE Port FP]
-    DisplayDrawerExtension
-    .drawXXX();"]
-    UID_cond_1 [label="available drawer and
-    method implemented ?" shape=diamond]
+    UID_table [label="GC format?"]
+    UID_c0 [label="[FrontPanel]\nDisplayDrawer.drawXXX()"]
+    UID_gpu_0_c [label="[VEE Port FP]\nDisplayDrawerExtension\n.drawXXX();"]
+    UID_cond_1 [label="available drawer and\nmethod implemented?"]
 
-    UID_1_d [label="[custom drawing]" shape=ellipse]
-    UID_1_i [label="image compatible ?" shape=diamond]
+    UID_1_d [label="[custom drawing]"]
+    UID_1_i [label="image compatible?"]
 
-    UID_stub_h [label="[FrontPanel]
-    no op"]
-    stub [label="-" shape=ellipse]
+    UID_stub_h [label="[FrontPanel]\nno op"]
+    stub [label="-"]
 
     // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-    UII_h [label="[FrontPanel]
-    getUIImageDrawer()
-    .drawXXX();" fillcolor=gray]
-    UII_cond [label="standard image ?" shape=diamond]
-    UII_gc [label="GC format ?" shape=diamond]
-    UIIx_cond [label="available image drawer
-    and method implemented ?" shape=diamond]
-    UIIx_impl_d [label="[custom drawing]" shape=ellipse]
-    UIIx_gc [label="gc compatible ?" shape=diamond]
-    UIIx_shape [label="can draw shapes ?" shape=diamond]
+    UII_h [label="[FrontPanel]\ngetUIImageDrawer()\n.drawXXX();"]
+    UII_cond [label="standard image?"]
+    UII_gc [label="GC format?"]
+    UIIx_cond [label="available image drawer\nand method implemented?"]
+    UIIx_impl_d [label="[custom drawing]"]
+    UIIx_gc [label="gc compatible?"]
+    UIIx_shape [label="can draw shapes?"]
 
-    UID_h2 [label="[FrontPanel]
-    getUIDrawer().drawXXX();
-    @see Multiple Output Formats;" fillcolor=gray ]
+    UID_h2 [label="[FrontPanel]\ngetUIDrawer().drawXXX();\n@see Multiple Output Formats;"]
 
     // --- FLOW -- //
 
     mui->LLUI_c->UID_h->UID_table
-    UID_table->UID_c0 [label="display format"]
+    UID_table->UID_c0 [label="display format" fontname="courier new" fontsize="10"]
     UID_c0->UID_cond
-    UID_table->UID_cond_1 [label="other format"]
+    UID_table->UID_cond_1 [label="other format" fontname="courier new" fontsize="10"]
 
 
     // dest: display format
-    UID_cond->UII_h [label="no"]
+    UID_cond->UII_h [label="no" fontname="courier new" fontsize="10"]
     UII_h->UII_cond
-    UID_cond->UID_gpu_0_c [label="yes"]
+    UID_cond->UID_gpu_0_c [label="yes" fontname="courier new" fontsize="10"]
     UID_gpu_0_c->UID_gpu_cond
 
     UID_stub_h->stub
 
     // dest: custom format
-    UID_cond_1->UII_h [label="no"]
-    UID_cond_1->UID_1_i [label="yes"]
-    UID_1_i->UID_1_d [label="yes"]
-    UID_1_i->UII_h [label="no"]
+    UID_cond_1->UII_h [label="no" fontname="courier new" fontsize="10"]
+    UID_cond_1->UID_1_i [label="yes" fontname="courier new" fontsize="10"]
+    UID_1_i->UID_1_d [label="yes" fontname="courier new" fontsize="10"]
+    UID_1_i->UII_h [label="no" fontname="courier new" fontsize="10"]
 
     // gpu
-    UID_gpu_cond->UII_h [label="no"]
-    UID_gpu_cond->UID_gpu_hard [label="yes"]
+    UID_gpu_cond->UII_h [label="no" fontname="courier new" fontsize="10"]
+    UID_gpu_cond->UID_gpu_hard [label="yes" fontname="courier new" fontsize="10"]
 
-    UII_cond->UII_gc [label="yes"]
-    UII_cond->UIIx_cond [label="no"]
-    UII_gc->UID_soft_h  [label="display"]
-    UII_gc->UID_stub_h  [label="other"]
+    UII_cond->UII_gc [label="yes" fontname="courier new" fontsize="10"]
+    UII_cond->UIIx_cond [label="no" fontname="courier new" fontsize="10"]
+    UII_gc->UID_soft_h  [label="display" fontname="courier new" fontsize="10"]
+    UII_gc->UID_stub_h  [label="other" fontname="courier new" fontsize="10"]
     UID_soft_h->UID_soft_c
-    UIIx_cond->UID_stub_h [label="no"]
-    UIIx_cond->UIIx_gc [label="yes"]
-    UIIx_gc->UIIx_impl_d [label="yes"]
-    UIIx_gc->UIIx_shape [label="no"]
-    UIIx_shape->UID_h2 [label="yes"]
-    UIIx_shape->UID_stub_h [label="no"]
-    UIIx_impl_d->UID_h2 [style=dotted label="optional
-    (drawShapes)"]
+    UIIx_cond->UID_stub_h [label="no" fontname="courier new" fontsize="10"]
+    UIIx_cond->UIIx_gc [label="yes" fontname="courier new" fontsize="10"]
+    UIIx_gc->UIIx_impl_d [label="yes" fontname="courier new" fontsize="10"]
+    UIIx_gc->UIIx_shape [label="no" fontname="courier new" fontsize="10"]
+    UIIx_shape->UID_h2 [label="yes" fontname="courier new" fontsize="10"]
+    UIIx_shape->UID_stub_h [label="no" fontname="courier new" fontsize="10"]
+    UIIx_impl_d->UID_h2 [style=dotted label="optional\n(drawShapes)" fontname="courier new" fontsize="10"]
   }
 
 .. force a new line

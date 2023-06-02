@@ -232,7 +232,7 @@ The following graph illustrates the steps to perform a shape drawing (not an ima
 
       UID_cond [label="Function implemented?"]
       UID_gpu_c [label="[ui_drawing_gpu.c]\nUI_DRAWING_drawXXX();"]
-      UID_gpu_cond [label="GPU compatible ?"]
+      UID_gpu_cond [label="GPU compatible?"]
       UID_gpu_driver [label="[GPU driver]"]
       UID_gpu_hard [label="[GPU]"]
 
@@ -509,7 +509,7 @@ The following graph illustrates the steps to perform a shape drawing (not an ima
 
       UID_cond [label="method overridden?"]
       UID_gpu_c [label="[VEE Port FP]\nDisplayDrawerExtension\n.drawXXX();"]
-      UID_gpu_cond [label="can draw algo ?"]
+      UID_gpu_cond [label="can draw algo?"]
       UID_gpu_hard [label="[Third-party lib]"]
 
       // --- FLOW -- //
