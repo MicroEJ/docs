@@ -19,6 +19,7 @@ Vector Graphics
     vgMatrix
     vgPath
     vgGradient
+    vgImage
     vgFont
     vgCco
     vgSimulation
