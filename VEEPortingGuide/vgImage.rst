@@ -18,14 +18,14 @@ Compile-time Image
 ==================
 
 The Image module implements the MicroVG `VectorImage`_ framework. 
-It provides an offline tool that consist of opening and decoding an image file and some Abstraction Layer APIs that consist of manipulating the image at runtime. 
+It provides an offline tool that consists in opening and decoding an image file and some Abstraction Layer APIs that consist in manipulating the image at runtime. 
 
 A compile-time image file:
 
 * is either an AVD (Android Vector Drawable) or a Scalable Vector Graphics (SVG), 
 * is identified by the resource name,
 * is encoded in a binary format compatible with the :ref:`image renderer <section_vg_image_engine>`,
-* can be stored as internal resource or external (see :ref:`chapter.microej.applicationResources`, but only in a byte-addressable memory),
+* can be stored as internal resource or external one (see :ref:`chapter.microej.applicationResources`, but only in a byte-addressable memory),
 * is an immutable image: the application cannot draw into.
 
 .. _section_vg_image_generator:
@@ -42,21 +42,21 @@ The tool converts :
 * The Scalable Vector Graphics (SVG): this kind of images is partially supported: linear gradients but no animations. It is very advised to convert the SVG files in AVD files before using the Image Converter tool.
 
 The tool generates a binary file (a RAW file) compatible with the :ref:`section_vg_image_engine`.
-The RAW file consists of a series of vector paths and animations.
+The RAW file consists in a series of vector paths and animations.
 
 To list the images to convert, the tool uses the application list files whose extension is ``.vectorimage.list``. 
-The generator provides an option to encode the path data (the path's points): it can be stored on signed 8, 16, 32 bit words or in ``float`` format.
+The generator provides an option to encode the path data (the path's points): it can be stored on signed 8, 16, 32-bit words or in ``float`` format.
 Respectively, the options are ``VG8``, ``VG16``, ``VG32`` and ``VGF``.
 
 This is an example of ``.vectorimage.list`` files:
 
 .. code-block::
 
-   # convert an AVDin float format
+   # convert an AVD in float format
    /avd_image_1.xml:VGF
    # convert an AVD in signed 16-bit format
    /path/to/avd_image_2.xml:VG16
-   # convert a SVG in signed 8-bit format
+   # convert an SVG in signed 8-bit format
    /svg_image.svg:VG8
 
 MicroVG Library
@@ -66,7 +66,7 @@ To load this kind of images, the application has to call `VectorImage.getImage()
 This API takes the image relative path: ``/avd_image_1.xml`` or ``/path/to/avd_image_2.xml`` or ``/svg_image.svg``.
 
 The implementation uses the Abstraction Layer API to retrieve the image. 
-No data is stored in the Java heap (expect the VectorImage object itself).
+No data is stored in the Java heap (expect the `VectorImage`_ object's instance).
 
 Resource Vector Image
 =====================
@@ -81,14 +81,14 @@ This is an extension of the compile-time images (the concepts are exactly the sa
 
 However, the RAW image data must be copied into a byte-addressable memory to use it. 
 No data is stored in the Java heap: the image data should be copied into the MicroUI image heap.
-The implementation is responsible for the image's cycle life: allocation and release (already implemented in the :ref:`section_vg_cco`).
+The implementation is responsible for the image's lifecycle: allocation and release (already implemented in the :ref:`section_vg_cco`).
 
 Filtered Image
 --------------
 
 MicroVG provides the API `VectorImage.filterImage()`_ to decline an image in another image using a 4x5 color matrix.
-The resulted image is a copy of the original image (plus color transformation) stored in the MicroUI images heap.
-The implementation is responsible for the image's cycle life: allocation and release (already implemented in the :ref:`section_vg_cco`).
+The resulting image is a copy of the original image (plus color transformation) stored in the MicroUI images heap.
+The implementation is responsible for the image's lifecycle: allocation and release (already implemented in the :ref:`section_vg_cco`).
 
 Buffered Vector Image
 =====================
@@ -96,15 +96,15 @@ Buffered Vector Image
 This kind of image is a `ResourceVectorImage`_ where the application can draw into.
 More specifically, the drawings are not *performed* but *stored*.
 
-The concept consists to store the compatible MicroUI drawings [#note_uibvi]_ and all MicroVG drawings into a commands list.
-The application can play this list of commands applying (or not) a global transformation.
+The concept consists in storing the compatible MicroUI drawings [#note_uibvi]_ and all MicroVG drawings into a commands list.
+The application can then play this list of commands applying (or not) a global transformation.
 
 .. note:: The implementation uses the concept of MicroUI :ref:`custom <section_image_custom_raw>` format (the custom ``Format.CUSTOM_7``).
 
-The way to register the drawing commands is hardly linked to the targeted GPU:
+The way to register the drawing commands is strongly linked to the targeted GPU:
 
-* the paths and gradients are stored to be used directly by the GPU when rendering the image (prevent runtime modifications before the image rendering)
-* according to the GPU capabilities (a GPU may be able to draw a MicroUI anti-aliased line but not an aliased line), some MicroUI drawing API may be implemented or not (see :ref:`section_buffered_image`).
+* The paths and gradients are stored to be used directly by the GPU when rendering the image (prevent runtime modifications before the image rendering).
+* Depending on the GPU capabilities (a GPU may be able to draw a MicroUI anti-aliased line but not an aliased line), some MicroUI drawing API may be implemented or not (see :ref:`section_buffered_image`).
 
 By consequence, the implementation is dedicated to the GPU.
 The :ref:`section_vg_cco` provide some implementations and the Front Panel (for the Simulation) features the same limitations than the embedded side (it is not possible to store a MicroUI drawing in the simulator if the embedded side is not able to perform it).
@@ -124,9 +124,9 @@ The :ref:`Vector Image Generator <section_vg_image_generator>` can generate a co
 
 .. code-block::
 
-   # convert an AVD in compatible AVD format
+   # convert an AVD in a compatible AVD format
    /avd_image.xml:AVD
-   # convert a SVG in compatible AVD format
+   # convert an SVG in a compatible AVD format
    /svg_image.svg:AVD
 
 .. _section_vg_image_engine:
