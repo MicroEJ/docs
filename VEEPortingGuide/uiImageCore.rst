@@ -70,6 +70,8 @@ Each drawing of a custom image is redirected to the associated image drawer.
 The implementation is not the same between the Embedded side and the Simulation.
 However the concepts are the same and are described in dedicated chapters.
 
+.. _section_renderer_cco:
+
 MicroUI C Module
 ================
 
@@ -413,10 +415,9 @@ Simulation
 Principle
 ---------
 
-As described above, an :ref:`image drawer <section_buffered_image_drawer_custom_format>` allows to draw the images whose format is *custom*.
-The :ref:`Front Panel<section_ui_releasenotes_frontpanel>` is designed to manage the notion of drawers: it does not *support* the custom formats, but it allows to add some additional drawers.
+The simulation behavior is very similar to the :ref:`section_renderer_cco` for the Embedded side.
 
-This support is based on Java service loader.
+The :ref:`Front Panel<section_ui_releasenotes_frontpanel>` defines a support of the drawers based on Java service loader.
 
 Standard Formats Only (Default Implementation)
 ----------------------------------------------
