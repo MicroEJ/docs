@@ -52,7 +52,7 @@ Abstraction Layer API
 There are two separate Abstraction Layer API header files (see :ref:`LLVG-PATH-API-SECTION`):
 
 * ``LLVG_PATH_impl.h`` specifies the Abstraction Layer APIs used to create and encode the path.
-* ``LLVG_PATH_PAINTER_impl.h`` lists the Abstraction Layer APIs called by  `VectorGraphicsPainter`_ to draw the path.
+* ``LLVG_PAINTER_impl.h`` lists the Abstraction Layer APIs called by  `VectorGraphicsPainter`_ to draw the path.
 
 .. figure:: images/vg_llapi_path.*
    :alt: MicroVG Path Abstraction Layer
@@ -61,9 +61,10 @@ There are two separate Abstraction Layer API header files (see :ref:`LLVG-PATH-A
 
    Path Abstraction Layer API
 
-* MicroVG library calls the BSP functions through the header files ``LLVG_PATH_impl.h`` and ``LLVG_PATH_PAINTER_impl.h``.
+* MicroVG library calls the BSP functions through the header files ``LLVG_PATH_impl.h`` and ``LLVG_PAINTER_impl.h``.
 * The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_PATH_impl.h``: it manages the path buffer creation and filling, then redirect the command encoding to ``microvg_path.h``.
-* The :ref:`C module MicroVG-VGLite <section_vg_c_module_microvg>` provides an implementation of ``LLVG_PATH_PAINTER_impl.h`` and ``microvg_path.h``: it encodes the path commands and implements the drawings over the Vivante VGLite library.
+* This C module also provides an implementation of ``LLVG_PAINTER_impl.c`` that synchronizes the drawing with the MicroUI Graphics Engine and redirects the drawing itself to a third-party drawer.
+* A C module dedicated to a GPU provides an implementation of this drawer and ``microvg_path.h``: it encodes the path commands and implements the drawings over the GPU library.
 * The drawer also manages the :ref:`section_vg_gradient`.
 * These files are automatically copied in the BSP project when fetching the C modules during the platform build.
 

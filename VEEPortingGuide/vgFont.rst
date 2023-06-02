@@ -42,7 +42,7 @@ Abstraction Layer API
 There are two separate Abstraction Layer API header files (see :ref:`LLVG-FONT-API-SECTION`):
 
 * ``LLVG_FONT_impl.h`` specifies the Abstraction Layer APIs used to open and retrieve the font's characteristics.
-* ``LLVG_FONT_PAINTER_impl.h`` lists the Abstraction Layer APIs called by  `VectorGraphicsPainter`_ to draw a string with the font.
+* ``LLVG_PAINTER_impl.h`` lists the Abstraction Layer APIs called by  `VectorGraphicsPainter`_ to draw a string with the font.
 
 .. figure:: images/vg_llapi_font.*
    :alt: MicroVG Font Abstraction Layer
@@ -51,9 +51,10 @@ There are two separate Abstraction Layer API header files (see :ref:`LLVG-FONT-A
 
    Font Abstraction Layer API
 
-* MicroVG library calls the BSP functions through the header files ``LLVG_FONT_impl.h`` and ``LLVG_FONT_PAINTER_impl.h``.
+* MicroVG library calls the BSP functions through the header files ``LLVG_FONT_impl.h`` and ``LLVG_PAINTER_impl.h``.
 * The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_FONT_impl.h`` over Freetype.
-* The :ref:`C module Freetype <section_vg_c_module_microvg>` provides an implementation of ``LLVG_FONT_PAINTER_impl.h`` over the Vivante VGLite library. It also redirects the :ref:`complex layout <section_vg_font_complex>` to a third party C module. 
+* This C module also provides an implementation of ``LLVG_PAINTER_impl.c`` that synchronizes the drawing with the MicroUI Graphics Engine and redirects the drawing itself to a third-party drawer.
+* A C module dedicated to a GPU provides an implementation of this drawer. It also redirects the :ref:`complex layout <section_vg_font_complex>` to a third party C module. 
 * The drawer also manages the :ref:`section_vg_gradient`.
 * The :ref:`C module Harfbuzz <section_vg_c_module_microvg>` provides an implementation of :ref:`complex layout <section_vg_font_complex>`.
 * These files are automatically copied in the BSP project when fetching the C modules during the platform build.
