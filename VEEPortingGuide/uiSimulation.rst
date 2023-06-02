@@ -24,7 +24,7 @@ Module Dependencies
 
 The Front Panel project is a regular MicroEJ Module project. Its module.ivy file should look like this example:
 
-::
+.. code-block:: xml
 
    <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:ej="https://developer.microej.com" ej:version="2.0.0"> 
    <info organisation="com.mycompany" module="examplePanel" status="integration" revision="1.0.0"/>      
@@ -42,7 +42,7 @@ The Front Panel project is a regular MicroEJ Module project. Its module.ivy file
 
 It depends at least on the Front Panel framework. This framework contains the Front Panel core classes. The dependencies can be reduced to:
 
-::
+.. code-block:: xml
 
    <dependencies>
       <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.0"/>
@@ -50,7 +50,7 @@ It depends at least on the Front Panel framework. This framework contains the Fr
 
 To be compatible with Display module's Graphics Engine, the project must depend on an extension of Front Panel framework. This extension provides some interfaces and classes the Front Panel is using to target simulated display and input devices. The extension does not provide any widgets. It is the equivalent of the embedded Abstraction Layer APIs. It fetches by transitivity the Front Panel framework, so the Front Panel framework dependency does not need to be specified explicitly: 
 
-::
+.. code-block:: xml
 
    <dependencies>
       <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
@@ -62,7 +62,7 @@ To be compatible with Display module's Graphics Engine, the project must depend 
 
 The Front Panel extension does not provide any widgets. Some compatible widgets are available in a third library. The life cycle of this library is different than the UI pack's one. New widgets can be added to simulate new kind of displays, input devices, etc. This extension fetches by transitivity the Front Panel extension, so this extension dependency does not need to be specified explicitly: 
 
-::
+.. code-block:: xml
 
    <dependencies>
       <dependency org="ej.tool.frontpanel" name="widget" rev="2.0.0"/>
@@ -267,16 +267,31 @@ Since UI Pack 13.2.0, Front Panel automatically includes new image decoders (new
 
 .. note:: The same JAR is used by the Front Panel and by the :ref:`Image Generator <section_image_generator_imageio>`.
 
+Drawings
+========
+
+Front Panel is designed to modify the default behavior for performing :ref:`drawings <section_drawings_sim>`.
+
+Image Rendering
+===============
+
+Front Panel is designed to add the support of :ref:`custom images <section_image_renderer_sim>`.
+
+Buffered Image
+==============
+
+Front Panel is designed to add the support of :ref:`MicroUI BufferedImage <section_bufferedimage_sim>` with a format different than the display format. 
+
 Classpath
----------
+=========
 
 A standard mock is running on the same JVM than the HIL Engine (see :ref:`mock` chapter). It shares the same classpath.
 When the application is not using the MicroUI library (i.e., it is not an UI application, whether the platform holds the MicroEJ Graphics Engine or not), the Front Panel mock runs a standard mock.
-When the application is using the MicroUI library, the Front Panel _UI_ mock runs on the same JVM than the MicroEJ Simulator. 
+When the application is using the MicroUI library, the Front Panel UI mock runs on the same JVM than the MicroEJ Simulator. 
 In this case, the other mocks don't share the same classpath than the Front Panel mock.
-As a consequence, an other mock than the Front Panel mock can not send input events to MicroUI, the object created in the standard mocks's class loader are not available in the Front Panel _UI_'s class loader (and vice versa), etc.
+As a consequence, an other mock than the Front Panel mock can not send input events to MicroUI, the object created in the standard mocks's class loader are not available in the Front Panel UI's class loader (and vice versa), etc.
 
-Since the UI Pack 13.2.0, it is possible to force to run the Front Panel _UI_ mock in the same classpath than the HIL Engine by adding the property ``-Dej.fp.hil=true`` in the application JRE tab. 
+Since the UI Pack 13.2.0, it is possible to force to run the Front Panel UI mock in the same classpath than the HIL Engine by adding the property ``-Dej.fp.hil=true`` in the application JRE tab. 
 Note that this option only works when the version of the MicroEJ Architecture used to build the Platform is 7.17.0 or higher.     
 
 

@@ -74,7 +74,7 @@ To do that the Image Generator provides some services to implement. This chapter
 1. Create a ``std-javalib`` project. The module name must start with the prefix ``imageGenerator`` (for instance ``imageGeneratorMyPlatform``).
 2. Add the dependency:
 
-   :: 
+   .. code-block:: xml
 
       <dependency org="com.microej.pack.ui" name="ui-pack" rev="x.y.z">
          <artifact name="imageGenerator" type="jar"/>
@@ -82,7 +82,7 @@ To do that the Image Generator provides some services to implement. This chapter
 
    Where ``x.y.z`` is the UI pack version used to build the platform (minimum ``13.0.0``). The ``module.ivy`` should look like:
 
-   ::
+   .. code-block:: xml
 
       <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:m="http://www.easyant.org/ivy/maven" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
 

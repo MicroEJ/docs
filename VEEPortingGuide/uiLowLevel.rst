@@ -14,7 +14,7 @@ The Abstraction Layer implementation consists of a set of headers files to imple
 
 For the simulator, some Front Panel interfaces and classes allow to specify the simulated platform characteristics. 
 
-Embedded Platform
+Embedded VEE Port
 =================
 
 .. figure:: images/ui_llapi_emb.png
@@ -43,7 +43,7 @@ The :ref:`MicroUI C module <section_ui_cco>` provides a default implementation o
 - ``ui_drawing.h`` and ``ui_image_drawing.h`` list all drawing methods the platform can implement.
 - ``ui_drawing.c`` and ``ui_image_drawing.c`` are the default implementation of ``ui_drawing.h`` and ``ui_image_drawing.h`` that redirects all drawings to ``ui_drawing_soft.h`` and ``dw_drawing_soft.h``.
 
-The BSP has to implement ``LLUI_xxx`` header files and optionally ``ui_drawing.h`` and ``ui_image_drawing.h`` (to draw using a GPU and/or to draw in a custom BufferedImage).
+The BSP has to implement ``LLUI_xxx`` header files and optionally ``ui_drawing.h`` and ``ui_image_drawing.h`` (to draw using a GPU and/or to draw in a :ref:`custom BufferedImage <section_buffered_image>`).
 
 All header files and their aims are described in next UI engines chapters:  :ref:`LED<section_leds_llapi>`, :ref:`Input<section_input_llapi>` and :ref:`Display<section_display_llapi>`.
 

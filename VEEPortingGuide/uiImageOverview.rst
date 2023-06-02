@@ -34,10 +34,6 @@ The Image Engine is composed of:
 * A set of "Image Decoder" modules, for converting standard image formats into a MicroEJ format (known by the Image Renderer) at runtime. Each Image Decoder is an additional module of the main module "Image Loader".
 * The "Image Renderer" module, for reading and drawing the images in MicroEJ format.
 
-XXX TODO XXX 
-
-* add custom format in this graph ?
-
 .. graphviz::
 
   digraph {

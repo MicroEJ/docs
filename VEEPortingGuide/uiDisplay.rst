@@ -670,9 +670,9 @@ Overview
 * To perform some drawings, MicroUI uses ``LLUI_PAINTER_impl.h`` functions.
 * The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` provides a default implementation of the drawing native functions of ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``: 
  
-  * It implements the synchronization layer, then redirects drawings implementations to ``ui_drawing.h`` and ``dw_drawing.h``
-  * ``ui_drawing.h`` and ``dw_drawing.h`` are already implemented by built-in software algorithms (library provided by the UI Pack).
-  * It is possible to implement some of the ``ui_drawing.h`` and ``dw_drawing.h`` functions in the BSP to provide a custom implementation (for instance, a GPU).
+  * It implements the synchronization layer, then redirects drawings implementations to ``ui_drawing.h``.
+  * ``ui_drawing.h`` is already implemented by built-in software algorithms (library provided by the UI Pack).
+  * It is possible to implement some of the ``ui_drawing.h`` functions in the BSP to provide a custom implementation (for instance, a GPU).
   * Custom implementation is still allowed to call software algorithms declared in ``ui_drawing_soft.h`` and ``dw_drawing_soft.h``.
 
 Display Size

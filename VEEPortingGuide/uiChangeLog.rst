@@ -4,8 +4,8 @@
 Changelog
 =========
 
-13.5.0 (2023-05-03)
-===================
+[13.5.0] (2023-05-03)
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -74,8 +74,8 @@ ImageGenerator
 
 * Add the compatibility with the Architecture 8.
 
-13.4.1 (2023-02-06)
-===================
+[13.4.1] (2023-02-06)
+=====================
 	
 Drawing Implementation
 """"""""""""""""""""""
@@ -99,8 +99,8 @@ ImageGenerator
 
 * Fix the VEE Port's memory alignment constraint.
 
-13.4.0 - 2022-12-13
-===================
+[13.4.0] - 2022-12-13
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -145,8 +145,8 @@ FontGenerator
 
 * Fix the external fonts output folder for the features.
 
-13.3.1 - 2022-09-09
-===================
+[13.3.1] - 2022-09-09
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
  
@@ -168,8 +168,8 @@ Image Generator
 * Fix the duplicate generation (as internal and external resources) of the custom ``.list`` file images (consider only custom ``.list`` file images as external resources when the prefix of the list file extension starts with ``extern``).
 * Fix the internal limit error when converting images with BPP lower than 8 bits (for platforms that define a rule for the image stride through an Image Generator Extension project). 
 
-13.3.0 - 2022-09-02
-===================
+[13.3.0] - 2022-09-02
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -216,8 +216,8 @@ LLAPIs
 
 * Remove the MicroUI's native functions declaration with macros *(not backward compatible)*.
 
-13.2.0 - 2022-05-05
-===================
+[13.2.0] - 2022-05-05
+=====================
 
 * Compatible with Architecture 7.16.0 or higher.
 

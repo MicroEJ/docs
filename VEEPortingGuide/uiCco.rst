@@ -16,12 +16,12 @@ The following picture illustrates the available C modules and the following chap
 
 .. note:: It is a simplified view: all sources and headers files of each C module are not visible.
 
-.. figure:: images/vg_cco.*
+.. figure:: images/ui_cco.*
    :alt: MicroVG C Modules
    :width: 100%
    :align: center
 
-   MicroUI C Modules XXX TODO
+   MicroUI C Modules
 
 UI Pack
 =======
@@ -50,7 +50,7 @@ C Module: MicroUI Over DMA2D
 ============================
 
 This C module is a specific implementation of the C module MicroUI over STM32 DMA2D (Chrom-ART Graphics Accelerator).
-It implements a set of drawings over the official Chrom-ART Graphics Accelerator API: ``drawing_dma2d.c``.
+It implements a set of drawings over the official Chrom-ART Graphics Accelerator API: ``ui_drawing_dma2d.c``.
 
 The following table describes the accelerated features:
 
@@ -74,7 +74,7 @@ C Module: MicroUI Over VGLite
 =============================
 
 This C module is a specific implementation of the C module MicroUI over Vivante VGLite.
-It implements a set of drawings over the official Vivante VGLite library (that targets some GPU with vector graphics acceleration): ``drawing_vglite.c``.
+It implements a set of drawings over the official Vivante VGLite library (that targets some GPU with vector graphics acceleration): ``ui_drawing_vglite.c``.
 
 This C module also provides a set of header files (and their implementations) to manipulate some MicroUI concepts over the VGLite library: image management, path format, etc.: ``display_vglite.h`` and ``vglite_path.h``.
 

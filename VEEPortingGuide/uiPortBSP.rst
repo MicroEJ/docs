@@ -23,7 +23,7 @@ The following chapters describe each group of Abstraction Layer APIs, except the
 MicroUI C Module
 ================
 
-The UI Pack **requires** the MicroUI C module. 
+The UI Pack **requires** the :ref:`MicroUI C module <section_ui_cco>`. 
 This C module 
 
 - implements some MicroUI native functions,
@@ -35,7 +35,7 @@ Before all, install the MicroUI C Module:
 
 1. Find the correct version of the C module according to the UI Pack version; see :ref:`section_ui_releasenotes_cmodule`.
 2. Unzip it in the BSP project.
-3. Add the mandatory files to the list of the BSP project's compiled files: ``LLDW_PAINTER_impl.c`` and ``LLUI_PAINTER_impl.c``.
+3. Add the mandatory files to the list of the BSP project's compiled files: ``LLDW_PAINTER_impl.c``, ``LLUI_PAINTER_impl.c``, ``ui_drawing_stub.c``, ``ui_drawing.c`` and ``ui_image_drawing.c``.
 4. Add the optional files in the BSP project (if their associated feature is used/needed): 
  
    - ``LLUI_DISPLAY_HEAP_impl.c``: to use another image heap allocator,

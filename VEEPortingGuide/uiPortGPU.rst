@@ -7,7 +7,7 @@ GPU Port
 Principle
 =========
 
-MicroUI and MicroUI C modules are designed to be extended using a GPU hardware drawing acceleration.
+MicroUI and :ref:`MicroUI C module <section_ui_cco>` are designed to be extended using a GPU hardware drawing acceleration.
 This acceleration is optional and should be performed after the mandatory operations (see :ref:`ui_port_bsp`).
 
 A GPU can be used to draw shapes and/or images.
@@ -24,7 +24,7 @@ The main advantages of using a GPU are:
 Existing C Modules
 ==================
 
-Some C modules are available on the MicroEJ Repository.
+Some :ref:`section_ui_cco` are available on the MicroEJ Repository.
 These C modules already implement compatible features with a GPU.
 Add the mandatory files to the list of the BSP project's compiled files to use the associated GPU (and add the CCO's include folder to the BSP project's include directories list).
 Refer to :ref:`section_ui_releasenotes_cmodule` to have more information.
@@ -35,7 +35,7 @@ Port a GPU
 Drawing Function
 ----------------
 
-As described in :ref:`section_display_llapi_painter`, the idea of the implementation of ``LLUI_PAINTER_impl.h`` (and ``LLDW_PAINTER_impl.h``) is first to manage the synchronization with the Graphics Engine and then, to dispatch the drawing itself to a third party implementation through the header file ``ui_drawing.h`` (respectively ``dw_drawing.h``).
+As described in :ref:`section_display_llapi_painter`, the idea of the implementation of ``LLUI_PAINTER_impl.h`` (and ``LLDW_PAINTER_impl.h``) is first to manage the synchronization with the Graphics Engine and then, to dispatch the drawing itself to a third party implementation through the header file ``ui_drawing.h``.
 The files ``LLUI_PAINTER_impl.c`` and ``LLDW_PAINTER_impl.c`` available in the MicroUI C module already perform this operation for all MicroUI drawings.
 Consequently, only the drawing itself should be implemented in the BSP.
 
