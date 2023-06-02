@@ -409,6 +409,8 @@ The default implementation of ``UI_IMAGE_DRAWING_draw_custom0`` (same behavior f
 
 The implementation only consists in setting the :ref:`Drawing log <section.veeport.ui.drawings.drawing_logs>`  ``DRAWING_LOG_NOT_IMPLEMENTED`` to notify the application that the drawing has not been performed.
 
+.. _section_image_renderer_sim:
+
 Simulation
 ==========
 

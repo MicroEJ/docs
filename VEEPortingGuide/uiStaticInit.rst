@@ -58,7 +58,7 @@ The XML file grammar is detailed :ref:`here<muiStaticInit>`. The following list 
 
 * Root element: The initialization file root element is ``<microui>`` and contains component-specific elements.
 
-    ::
+    .. code-block:: xml
 
         <microui>
             [ component specific elements ]
@@ -67,7 +67,7 @@ The XML file grammar is detailed :ref:`here<muiStaticInit>`. The following list 
 
 * Display element: The ``display`` element augments the initialization file with the configuration of the display. The following snippet is an example of ``display`` element:
 
-    ::
+    .. code-block:: xml
 
         <display name="DISPLAY"/>
 
@@ -77,7 +77,7 @@ The XML file grammar is detailed :ref:`here<muiStaticInit>`. The following list 
 
     The following snippet is an example of ``fonts`` element:
 
-    ::
+    .. code-block:: xml
 
         <fonts>
             <font file="resources\fonts\myfont.ejf">
@@ -96,7 +96,7 @@ The XML file grammar is detailed :ref:`here<muiStaticInit>`. The following list 
 
     The following snippet is an example of ``eventgenerators`` element:
 
-    ::
+    .. code-block:: xml
 
         <eventgenerators>
             <!-- Generic Event Generators -->
@@ -150,7 +150,7 @@ This common MicroUI initialization file initializes MicroUI with:
 
 -  a `Font`_ whose path is relative to this file.
 
-::
+.. code-block:: xml
 
    <microui>
 
