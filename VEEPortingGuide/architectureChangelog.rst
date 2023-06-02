@@ -147,6 +147,7 @@ Tools
 - Updated the serial PC connector to JSSC ``2.9.4``, including support for macOS aarch64 (M1 chip).
 - Removed :ref:`Test Suite Engine <testsuite_engine>`. If needed, the Test Suite Engine is available in the :ref:`Build Kit <mmm_build_kit>`.
 - Removed Immutables NLS library. Use :ref:`Binary NLS <chapter.nls>` add-on library instead. 
+- Fixed an incorrect generation of a debug file beside the memory file when launching the Heap Dumper.
 - [Multi] Added Heap Dumper support for dynamically installed Features.
 
 
