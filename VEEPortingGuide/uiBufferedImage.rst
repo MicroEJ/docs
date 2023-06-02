@@ -703,7 +703,7 @@ The drawings in the custom format *BVI* are implemented into the file ``ui_drawi
 Simulation
 ==========
 
-The simulation behavior is very similar to the :ref:`section_drawings_cco` for the Embedded side
+The simulation behavior is very similar to the :ref:`section_drawings_cco` for the Embedded side.
 
 .. _section_buffered_image_fp_drawer:
 
