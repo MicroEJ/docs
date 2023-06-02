@@ -33,7 +33,10 @@ The MicroVG implementation on demand automatically increases the buffer size.
 Abstraction Layer API
 =====================
 
-The Abstraction Layer APIs that have to be implemented are listed in the header file ``LLVG_GRADIENT_impl.h`` (see :ref:`LLVG-GRADIENT-API-SECTION`):
+There are two separate Abstraction Layer API header files (see :ref:`LLVG-GRADIENT-API-SECTION`):
+
+* ``LLVG_GRADIENT_impl.h`` specifies the Abstraction Layer APIs used to create and encode the gradient.
+* ``LLVG_PAINTER_impl.h`` lists the Abstraction Layer APIs called by  `VectorGraphicsPainter`_ to draw the path.
 
 .. figure:: images/vg_llapi_gradient.*
    :alt: MicroVG Gradient Abstraction Layer
@@ -42,11 +45,13 @@ The Abstraction Layer APIs that have to be implemented are listed in the header 
 
    Gradient Abstraction Layer API
 
-* MicroVG library calls the BSP functions through the header files ``LLVG_GRADIENT_impl.h``, ``LLVG_PATH_PAINTER_impl.h`` and  ``LLVG_FONT_PAINTER_impl.h``.
+* MicroVG library calls the BSP functions through the header files ``LLVG_GRADIENT_impl.h`` and ``LLVG_PAINTER_impl.h``.
 * The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_GRADIENT_impl.h``: it manages the gradient buffer creation and filling, then redirect the gradient encoding to ``microvg_gradient.h``.
-* The :ref:`C module MicroVG-VGLte <section_vg_c_module_microvg>` provides an implementation of ``LLVG_PATH_PAINTER_impl.h``, ``LLVG_FONT_PAINTER_impl.h`` and ``microvg_gradient.h``: it encodes the gradient and implements the drawings over the Vivante VGLite library and Freetype.
+* This C module also provides an implementation of ``LLVG_PAINTER_impl.c`` that synchronizes the drawing with the MicroUI Graphics Engine and redirects the drawing itself to a third-party drawer.
+* A C module dedicated to a GPU provides an implementation of ``LLVG_PAINTER_impl.h`` and ``microvg_gradient.h``: it encodes the gradient and implements the drawings over the GPU library.
 * These files are automatically copied in the BSP project when fetching the C modules during the platform build.
 
+.. _VectorGraphicsPainter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html
 
 Use
 ===

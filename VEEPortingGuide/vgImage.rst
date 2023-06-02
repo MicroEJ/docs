@@ -68,19 +68,6 @@ This API takes the image relative path: ``/avd_image_1.xml`` or ``/path/to/avd_i
 The implementation uses the Abstraction Layer API to retrieve the image. 
 No data is stored in the Java heap (expect the VectorImage object itself).
 
-Abstraction Layer API
----------------------
-
-The implementation of the MicroVG library is specific to the target (the GPU): the format of the RAW paths, gradients and animations are GPU compliant.
-
-Refer to :ref:`section_vg_cco` for more information.
-
-Simulation
-----------
-
-The implementation of the MicroVG library is included in the VG Pack.
-No specific support is required to retrieve and use the image.
-
 Resource Vector Image
 =====================
 
@@ -157,6 +144,33 @@ Three transformations can be applied when drawing a vector image:
 * an opacity (value between 0 and 255)
 
 The :ref:`section_vg_cco` and the Front Panel already implement this engine.
+
+.. _section_vg_image_llapi:
+
+Abstraction Layer API
+=====================
+
+There are two separate Abstraction Layer API header files (see :ref:`LLVG-FONT-API-SECTION`):
+
+* ``LLVG_BVI_impl.h`` specifies the Abstraction Layer APIs used to open and manage the BufferedVectorImage cycle-life.
+* ``LLVG_PAINTER_impl.h`` lists the Abstraction Layer APIs called by  `VectorGraphicsPainter`_ to draw an image (compile-time, runtime or buffered vector image).
+
+.. figure:: images/vg_llapi_bvi.*
+   :alt: MicroVG BufferedVectorImage Abstraction Layer
+   :width: 400px
+   :align: center
+
+   Image Abstraction Layer API
+
+* MicroVG library calls the BSP functions through the header files ``LLVG_BVI_impl.h`` and ``LLVG_PAINTER_impl.h``.
+* A C module dedicated to a GPU provides an implementation of ``LLVG_BVI_impl.h`` and ``LLVG_PATH_PAINTER_impl.h``: the implementation is specific to the target (the GPU): the format of the RAW paths, gradients and animations are GPU compliant.
+* These files are automatically copied in the BSP project when fetching the C modules during the platform build.
+
+Simulation
+==========
+
+The implementation of the MicroVG library is included in the VG Pack.
+No specific support is required to retrieve and use the images.
 
 Use
 ===

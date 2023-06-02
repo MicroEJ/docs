@@ -12,16 +12,13 @@ The diagram below shows a simplified view of the components involved in the prov
 
    Overview
 
-The modules responsible to manage the Matrix, the Path, the Gradient and the Font are respectively called :ref:`Matrix module <section_vg_matrix>`, :ref:`Path module <section_vg_path>`, :ref:`Gradient module <section_vg_gradient>` and :ref:`Font module <section_vg_font>`.
-These four low-level parts connect the MicroVG library to the user-supplied drivers code (coded in C). 
+The modules responsible to manage the Matrix, the Path, the Gradient, the Image and the Font are respectively called :ref:`Matrix module <section_vg_matrix>`, :ref:`Path module <section_vg_path>`, :ref:`Gradient module <section_vg_gradient>`, :ref:`Image module <section_vg_image>` and :ref:`Font module <section_vg_font>`.
+These five low-level parts connect the MicroVG library to the user-supplied drivers code (coded in C). 
 The drivers can use hardware accelerators like GPU to perform specific actions (matrix computations, path rendering, font decoding, etc.).
 
 The MicroEJ Simulator provides all features of the MicroVG library. 
-The four modules are grouped in a module called :ref:`Front Panel <section_vg_simulation>`. 
+The five modules are grouped in a module called :ref:`Front Panel <section_vg_simulation>`. 
 The Front Panel is an extension of the :ref:`UI Pack's Front Panel mock <section_ui_simulation>`.
-
-The Matrix, Path, and Gradient modules also manage vectorial images. 
-The images are pre-processed before compiling the application (thanks to a MicroUI :ref:`section_image_generator` extension.)
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
