@@ -7,7 +7,7 @@ Simulation
 Principle
 =========
 
-The VG Pack embeds an extension of :ref:`UI Pack's Front Panel mock <section_ui_simulation>` to implement the equivalent of the four embedded modules (Matrix, Path, Gradient, and Font).
+The VG Pack embeds an extension of :ref:`UI Pack's Front Panel mock <section_ui_simulation>` to implement the equivalent of the five embedded modules (Matrix, Path, Gradient, Image and Font).
 
 The implementation simulates the same characteristics and limitations as the embedded modules. 
 

@@ -47,7 +47,7 @@ VG Pack
 =======
 
 The VG Pack provides a set of header files to implement the MicroVG concepts.
-The header files are described in the dedicated chapters: :ref:`Matrix module <section_vg_matrix>`, :ref:`Path module <section_vg_path>`, :ref:`Gradient module <section_vg_gradient>` and :ref:`Font module <section_vg_font>`.
+The header files are described in the dedicated chapters: :ref:`Matrix module <section_vg_matrix>`, :ref:`Path module <section_vg_path>`, :ref:`Gradient module <section_vg_gradient>`, :ref:`Image module <section_vg_image>` and :ref:`Font module <section_vg_font>`.
 
 The VG Pack is an extension of the UI Pack.
 The VG Pack's header files require the UI Pack's header files to manipulate the MicroUI concepts.
@@ -71,6 +71,8 @@ This generic C module provides an implementation of MicroVG concepts: matrix, pa
 * Path (see Path module's :ref:`section_vg_path_llapi`): a generic implementation that manages the command buffer's life cycle and dispatches the command encoding to a 3rd-party header file ``microvg_path.h``.
 * Gradient (see Gradient module's :ref:`section_vg_gradient_llapi`): a generic implementation that manages the gradient buffer's life cycle and dispatches the gradient encoding to a 3rd-party header file ``microvg_gradient.h``.
 * Font (see Font module's :ref:`section_vg_font_llapi`): an implementation of vector font over Freetype: open font file and retrieve font's characteristics.
+* The MicroVG painter native functions are implemented in ``LLVG_PAINTER_impl.c`` and the drawings are redirected to ``vg_drawing.h``.
+* The image management is too specific to the GPU and it is not implemented in this C module.
 
 This C module is available on the :ref:`central_repository`: `com.microej.clibrary.llimpl#microvg`_.
 
@@ -140,8 +142,12 @@ Freetype and Harfbuzz libraries are not sharing the same heap, but this could ea
 C Module: MicroVG Over VGLite
 =============================
 
-This C module is a specific implementation of the VG Pack drawing LLAPIs: ``LLVG_PAINTER_PATH_impl.h`` and ``LLVG_PAINTER_FONT_impl.h``.
-It implements a set of drawings over the official Vivante VGLite library (that targets some GPU with vector graphics acceleration): ``LLVG_PAINTER_PATH_vglite.c`` and ``LLVG_PAINTER_FONT_freetype_vglite.c``.
+This C module is a specific implementation of the VG Pack drawings over the official Vivante VGLite library (that targets some GPU with vector graphics acceleration):
+
+* It implements the MicroVG API ``vg_drawing.h`` in ``vg_drawing_vglite.c`` and ``LLVG_PAINTER_FONT_freetype_vglite.c``.
+* It implements the MicroVG Image management (draw a compile-time image, create a BufferedVectorImage, etc.): ``LLVG_RAW_impl.c``. 
+* It provides an implementation of MicroVG drawings to the MicroVG BufferedVectorImage: ``vg_drawing_bvi.c``.
+* It also provides an implementation of MicroUI drawings to the MicroVG BufferedVectorImage: ``ui_drawing_bvi.c``.
 
 The implementation requires:
 
