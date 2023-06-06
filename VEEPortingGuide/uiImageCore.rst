@@ -516,7 +516,7 @@ The ``UIImageDrawing`` interface contains one method for each image drawing prim
 Only the necessary methods can be implemented.
 Each non-implemented method will result in calling the stub implementation.
 
-The method ``handledFormat()``must be implemented and returns the managed format.
+The method ``handledFormat()`` must be implemented and returns the managed format.
 
 Once created, the ``UIImageDrawing`` implementation must be registered as a service.
 
