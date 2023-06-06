@@ -72,7 +72,7 @@ This generic C module provides an implementation of MicroVG concepts: matrix, pa
 * Gradient (see Gradient module's :ref:`section_vg_gradient_llapi`): a generic implementation that manages the gradient buffer's life cycle and dispatches the gradient encoding to a 3rd-party header file ``microvg_gradient.h``.
 * Font (see Font module's :ref:`section_vg_font_llapi`): an implementation of vector font over Freetype: open font file and retrieve font's characteristics.
 * The MicroVG painter native functions are implemented in ``LLVG_PAINTER_impl.c`` and the drawings are redirected to ``vg_drawing.h``.
-* The image management is too specific to the GPU and it is not implemented in this C module.
+* Image management is too specific to the GPU and is not implemented in this C module.
 
 This C module is available on the :ref:`central_repository`: `com.microej.clibrary.llimpl#microvg`_.
 
@@ -147,7 +147,7 @@ This C module is a specific implementation of the VG Pack drawings over the offi
 * It implements the MicroVG API ``vg_drawing.h`` in ``vg_drawing_vglite.c`` and ``LLVG_PAINTER_FONT_freetype_vglite.c``.
 * It implements the MicroVG Image management (draw a compile-time image, create a BufferedVectorImage, etc.): ``LLVG_RAW_impl.c``. 
 * It provides an implementation of MicroVG drawings to the MicroVG BufferedVectorImage: ``vg_drawing_bvi.c``.
-* It also provides an implementation of MicroUI drawings to the MicroVG BufferedVectorImage: ``ui_drawing_bvi.c``.
+* It also implements MicroUI drawings to the MicroVG BufferedVectorImage: ``ui_drawing_bvi.c``.
 
 The implementation requires:
 

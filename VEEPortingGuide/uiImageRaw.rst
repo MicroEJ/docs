@@ -7,19 +7,19 @@ Image Format
 The Image Engine makes the distinction between:
 
 * The `input format`: the format of the original image.
-* The `output format`: the format of image used by the Image Renderer.
+* The `output format`: the image format used by the Image Renderer.
 
 Several formats are managed in input: PNG, JPEG, BMP, etc.
-Additional input formats can be supported by a specific VEE Port.
+A specific VEE Port can support additional input formats.
 
 Several formats are managed in output: the MicroEJ formats and the binary format.
 The output format can be:
 
-* Generated from the input format by using the off-board tool :ref:`section_image_generator` at application compile-time.
+* Generated from the input format using the off-board tool :ref:`section_image_generator` at application compile-time.
 * Generated from the input format by using a :ref:`runtime decoder <image_runtime_decoder>` of the :ref:`section_image_loader` at application run-time.
 * Dynamically created when using a `BufferedImage`_.
 
-The Image Renderer manages only the MicroEJ formats (:ref:`section_image_standard_raw`, :ref:`section_image_display_raw` and :ref:`section_image_custom_raw`).
+The Image Renderer manages only the MicroEJ formats (:ref:`section_image_standard_raw`, :ref:`section_image_display_raw`, and :ref:`section_image_custom_raw`).
 
 The following table list all the formats and their usage.
 
@@ -57,9 +57,9 @@ The display buffer holds a pixel encoding which is:
 * non-standard: see :ref:`section_image_display_output` and :ref:`display_pixel_structure`.
 
 The non-standard display format can be customized to encode the pixel in the same encoding as the display.
-The number of bits per pixels and the pixel bit organization is asked during the MicroEJ format generation and when the ``drawImage`` algorithms are running.
+The number of bits per pixel and the pixel bit organization is asked during the MicroEJ format generation and when the ``drawImage`` algorithms are running.
 If the image to encode contains some transparent pixels, the output file will embed the transparency according to the display's implementation capacity.
-When all pixels are fully opaque, no extra information will be stored in the output file in order to free up some memory space.
+When all pixels are fully opaque, no extra information will be stored in the output file to free up some memory space.
 
 Notes:
 
@@ -75,13 +75,13 @@ MicroEJ Format: Standard
 
 See :ref:`section_image_standard_output`.
 
-This format requires a small header (around 20 bytes) to store the image size (width, height), format, flags (is_transparent etc.), row stride, etc.
-The required memory also depends on the number of bits per pixels of the MicroEJ format:
+This format requires a small header (around 20 bytes) to store the image size (width, height), format, flags (is_transparent, etc.), row stride, etc.
+The required memory also depends on the number of bits per pixel of the MicroEJ format:
 ::
 
       required_memory = header + (image_width * image_height) * bpp / 8;
 
-The pixels array is stored after the MicroEJ image file header. A padding between the header and the pixels array is added to force to start the pixels array at a memory address aligned on number of bits-per-pixels.
+The pixels array is stored after the MicroEJ image file header. A padding between the header and the pixels array is added to force to start the pixels array at a memory address aligned on the number of bits-per-pixels.
 
 .. figure:: images/uiFormat01.*
    :width: 50.0%
@@ -177,8 +177,8 @@ MicroEJ Format: Grayscale
 
 See :ref:`section_image_grayscale_output`.
 
-This format requires a small header (around 20 bytes) to store the image size (width, height), format, flags (is_transparent etc.), row stride, etc.
-The required memory also depends on the number of bits per pixels of the MicroEJ format:
+This format requires a small header (around 20 bytes) to store the image size (width, height), format, flags (is_transparent, etc.), row stride, etc.
+The required memory also depends on the number of bits per pixel of the MicroEJ format:
 ::
 
       required_memory = header + (image_width * image_height) * bpp / 8;
@@ -253,17 +253,17 @@ A custom format embeds a buffer whose data are VEE Port specific.
 This data may be:
 
 * a pixel buffer whose encoding is different than the formats proposed before,
-* a buffer which is not a pixel buffer.
+* a buffer that is not a pixel buffer.
 
-This format is identified by a specific format value, between 0 and 7: see `custom formats`_.
+This format is identified by a specific format value between 0 and 7: see `custom formats`_.
 
 Images with a custom format can be used as any other image.
 For that, it requires some support at different levels depending on their usage:
 
-* To convert an image to this format at compile-time and embed it, an extension of the image generator is necessary, see :ref:`section_imagegenerator_custom_format`.
-* To create a new one at-runtime, some native extension is necessary, see :ref:`section_buffered_image`.
-* To use it as source (to draw the image in another buffer), some native extension is necessary, see :ref:`section_buffered_image_drawer_custom`.
-* To use it as destination (to draw into the image), some native extension is necessary, see :ref:`section_buffered_image`.
+* To convert an image to this format at compile-time and embed it, an extension of the image generator is necessary; see:ref:`section_imagegenerator_custom_format`.
+* To create a new one at runtime, some native extension is necessary; see:ref:`section_buffered_image`.
+* To use it as a source (to draw the image in another buffer), some native extension is necessary; see:ref:`section_buffered_image_drawer_custom`.
+* To use it as a destination (to draw into the image), some native extension is necessary; see:ref:`section_buffered_image`.
 
 .. _section_image_binary_raw:
 
@@ -271,7 +271,7 @@ Binary Format
 =============
 
 This format is not compatible with the Image Renderer and MicroUI.
-It can be used by MicroUI addon libraries which provide their own image management procedures.
+It can be used by MicroUI addon libraries which provide their image management procedures.
 
 Advantages:
 
@@ -280,7 +280,7 @@ Advantages:
 
 Disadvantages:
 
-* This format cannot be used to target a MicroUI Image (unsupported format).
+* This format cannot target a MicroUI Image (unsupported format).
 
 .. _section_image_asis:
 
@@ -289,13 +289,13 @@ Original Input Format
 
 See :ref:`section_image_unspecified_output`.
 
-An image can be embedded without any conversion / compression.
-This allows to embed the resource as it is, in order to keep the source image characteristics (compression, bpp, etc.).
+An image can be embedded without any conversion/compression.
+This allows embedding the resource as it is to keep the source image characteristics (compression, bpp, etc.).
 This option produces the same result as specifying an image as a resource in the MicroEJ launcher.
 
-The following table lists the original formats that can be decoded at run-time and / or compile-time:
+The following table lists the original formats that can be decoded at run-time and/or compile-time:
 
-* Image Generator: the off-board tool that converts an image in an output format. All AWT `ImageIO`_ default formats are supported and always enabled.
+* Image Generator: the off-board tool that converts an image into an output format. All AWT `ImageIO`_ default formats are supported and always enabled.
 * Front Panel: the decoders embedded by the simulator part. All AWT `ImageIO`_ default formats are supported but disabled by default.
 * Runtime Decoders: the decoders embedded by the embedded part. 
 
@@ -315,12 +315,12 @@ The following table lists the original formats that can be decoded at run-time a
    | Web Picture (WebP)                      | yes [#note_webp]_ | yes [#note_webp]_           | yes [#note_webpruntime]_   |
    +-----------------------------------------+-------------------+-----------------------------+----------------------------+
 
-.. [#note_disabledformat] The formats are disabled by default, see :ref:`fp_ui_decoder`.
+.. [#note_disabledformat] The formats are disabled by default; see:ref:`fp_ui_decoder`.
 .. [#note_png] The PNG format is supported when the module ``PNG`` is selected in the platform configuration file (see :ref:`image_runtime_decoder`).
 .. [#note_bmp] The Monochrome BMP is supported when the module ``BMPM`` is selected in the platform configuration file (see :ref:`image_runtime_decoder`); the `colored` BMP format is only supported by the Front Panel (disabled by default, see :ref:`fp_ui_decoder`).
 .. [#note_webp] Install the tool ``com.microej.tool#imageio-webp-1.0.1`` from the :ref:`developer_repository` in the platform to support the WEBP format (see :ref:`section_image_generator_imageio` and :ref:`fp_ui_decoder`).
 .. [#note_webpruntime] Install the C component ``com.microej.clibrary.thirdparty#libwebp-1.0.1`` in the BSP to support the WEBP format at runtime.
-.. [#note_runtimedecoder] The UI-pack does not provide some runtime decoders for these formats but a BSP can add its own decoders (see :ref:`image_runtime_decoder`).
+.. [#note_runtimedecoder] The UI-pack does not provide some runtime decoders for these formats, but a BSP can add its decoders (see :ref:`image_runtime_decoder`).
 
 .. _section_image_gpu_raw:
 
@@ -332,31 +332,31 @@ It can be extended by one or several restrictions on the pixels array:
 
 * Its start address has to be aligned on a higher value than the number of bits-per-pixels. 
 * A padding has to be added after each line (row stride).
-* The MicroEJ format can hold a platform-dependent header, located between the MicroEJ format header (start of file) and the pixel array.
+* The MicroEJ format can hold a platform-dependent header between the MicroEJ format header (start of file) and the pixel array.
   The MicroEJ format is designed to let the platform encode and decode this additional header.
-  For Image Engine software algorithms, this header is not needed and never used.
+  This header is unnecessary and never used for Image Engine software algorithms.
 
-.. note:: From Image Engine point of view, the format stays a MicroEJ format, readable by the Image Engine Renderer.
+.. note:: From the Image Engine point of view, the format stays a MicroEJ format, readable by the Image Engine Renderer.
 
 Advantages:
 
-* Encoding is recognized by the GPU.
+* The GPU recognizes encoding.
 * Drawing an image is often very fast.
 * Supports opacity encoding.
 
 Disadvantages:
 
 * No compression: the image size in bytes is proportional to the number of pixels.
-  The required memory is similar to :ref:`section_image_standard_raw` when there is no custom header. 
+  The required memory is similar to :ref:`section_image_standard_raw` when no custom header exists. 
 
 When the MicroEJ format holds another header (called ``custom_header``), the required memory is:
 ::
 
       required_memory = header + custom_header + (image_width * image_height) * bpp / 8;
 
-The row stride allows to add some padding at the end of each line in order to start the next line at an address with a specific memory alignment; it is often required by hardware accelerators (GPU).
-The row stride is by default a value in relation with the image width: ``row_stride_in_bytes = image_width * bpp / 8``.
-It can be customized at image buffer creation thanks to the Abstraction Layer API ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes``.
+The row stride allows adding some padding at the end of each line to start the next line at an address with a specific memory alignment; it is often required by hardware accelerators (GPU).
+The row stride is, by default, a value in relation to the image width: ``row_stride_in_bytes = image_width * bpp / 8``.
+Thanks to the Abstraction Layer API ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes``, it can be customized at image buffer creation.
 The required memory becomes:
 ::
 

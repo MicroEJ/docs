@@ -15,8 +15,8 @@ Functional Description
 ======================
 
 All MicroUI image drawings are redirected to a set of Abstraction Layer APIs.
-All Abstraction Layer APIs are implemented by weak functions which call software algorithms.
-The BSP has the possibility to override this default behavior for each Abstraction Layer API independently.
+All Abstraction Layer APIs are implemented by weak functions, which call software algorithms.
+The BSP can override this default behavior for each Abstraction Layer API independently.
 Furthermore, the BSP can override an Abstraction Layer API for a specific MicroEJ format (for instance ``ARGB8888``) and call the software algorithms for all other formats.
 
 Destination Format
@@ -25,7 +25,7 @@ Destination Format
 Since MicroUI 3.2, the destination buffer of the drawings can be different than the display buffer format (see :ref:`section_image_display_raw`).
 This destination buffer format can be a :ref:`standard format <section_image_standard_raw>` (ARGB8888, A8, etc.) or a :ref:`custom format <section_image_custom_raw>`. 
 
-See :ref:`section_buffered_image` to have more information about how to create buffered images with another format than the display format and how to draw into.
+See :ref:`section_buffered_image` for more information about how to create buffered images with another format than the display format and how to draw in them.
 
 Input Formats
 =============
@@ -34,9 +34,9 @@ Standard
 --------
 
 The Image Renderer is by default able to draw all :ref:`standard formats <section_image_standard_raw>`.
-No extra support in the VEE Port is required to draw this kind of images.
+No extra support in the VEE Port is required to draw this kind of image.
 
-The image drawing is similar to a :ref:`shape drawing <section_drawings>`. 
+The image drawing resembles a :ref:`shape drawing <section_drawings>`. 
 The drawing is performed by default by the :ref:`section_drawings_soft` and can be overridden to use a third-party library or a GPU.
 
 .. _section_buffered_image_drawer_custom_format:
@@ -60,15 +60,15 @@ This extension can consist in:
 * etc.
 
 To draw the custom images, the Image Renderer introduces the notion of *custom image drawer*.
-This drawer is an engine which has the responsibility to draw the image.
-Each custom image format (``0`` to ``7``) has its own image drawer.
+This drawer is an engine that has the responsibility to draw the image.
+Each custom image format (``0`` to ``7``) has its image drawer.
 
 Each drawing of a custom image is redirected to the associated image drawer.
 
 .. note:: A custom image drawer can call the UI Shapes Drawing API to draw its elements in the destination.
 
 The implementation is not the same between the Embedded side and the Simulation.
-However the concepts are the same and are described in dedicated chapters.
+However, the concepts are the same and are described in dedicated chapters.
 
 .. _section_renderer_cco:
 
@@ -78,11 +78,11 @@ MicroUI C Module
 Principle
 ---------
 
-As described above, an :ref:`image drawer <section_buffered_image_drawer_custom_format>` allows to draw the images whose format is *custom*.
-The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to manage the notion of drawers: it does not *support* the custom formats, but it allows to add some additional drawers.
+As described above, an :ref:`image drawer <section_buffered_image_drawer_custom_format>` allows drawing the images whose format is *custom*.
+The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to manage the notion of drawers: it does not *support* the custom formats but allows adding some additional drawers.
 
 This support uses several weak functions and tables to redirect the image drawings.
-When this support is not used (when the VEE Port does not need to support *custom* images), this support can be removed to reduce the footprint (by removing the indirection tables) and improve the performances (by reducing the number of runtime functions calls).
+When this support is not used (when the VEE Port does not need to support *custom* images), this support can be removed to reduce the footprint (by removing the indirection tables) and improve the performances (by reducing the number of runtime function calls).
 
 .. _section_buffered_image_drawer_standard:
 
@@ -90,8 +90,8 @@ Standard Formats Only (Default)
 -------------------------------
 
 The default implementation can only draw images with a :ref:`standard format <section_image_standard_raw>`. 
-In other words, the application is not able to draw a custom image. 
-This is the most frequent use-case, which was the only one available with MicroUI before version 3.2.
+In other words, the application cannot draw a custom image. 
+This is the most frequent use case, the only one available with MicroUI before version 3.2.
 
 .. hint:: To select this implementation (to disable the custom format support), the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be unset.
 
@@ -184,11 +184,11 @@ Similar to ``LLUI_PAINTER_IMPL_drawLine``, see :ref:`section_drawings_cco`.
    #define UI_DRAWING_GPU_drawImage UI_DRAWING_drawImage
 
 The function names are set thanks to some ``define``.
-These name redirections are useful when the VEE Port features more than one destination format (not the use-case here).
+These name redirections are helpful when the VEE Port features more than one destination format (not the use-case here).
 
 **UI_DRAWING_GPU_drawImage** (to write in the BSP)
 
-Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`) but let's the image drawer manages the image instead of calling directly the software drawer.
+Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but lets the image drawer manage the image instead of calling the software drawer directly.
 
 .. code-block:: c
 
@@ -229,13 +229,13 @@ The define ``LLUI_IMAGE_CUSTOM_FORMATS`` is not set, so the implementation of th
 Custom Format Support 
 ---------------------
 
-In addition to the :ref:`standard formats <section_image_standard_raw>`, this implementation allows to draw images with a :ref:`custom format <section_image_custom_raw>`. 
-This is an advanced use-case, only available with MicroUI 3.2 or higher.
+In addition to the :ref:`standard formats <section_image_standard_raw>`, this implementation allows drawing images with a :ref:`custom format <section_image_custom_raw>`. 
+This advanced use case is available only with MicroUI 3.2 or higher.
 
 .. hint:: To select this implementation, the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be set (no specific value).
 
 The MicroUI C module uses some tables to redirect the image management to the expected extension.
-There is one table per Image Abstraction Layer API (draw, copy, region, rotate, scale, flip) in order to embed only necessary algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
+There is one table per Image Abstraction Layer API (draw, copy, region, rotate, scale, flip) to embed only necessary algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
 
 Each table contains ten elements:
 
@@ -258,7 +258,7 @@ Each table contains ten elements:
 * ``UI_DRAWING_SOFT_drawImage`` is the drawing function that redirects the drawing to the :ref:`section_drawings_soft`,
 * ``UI_IMAGE_DRAWING_draw_customX`` (``0`` to ``7``) are the drawing functions for each custom format.
 
-The table index is retrieved by the MicroUI C Module according to the image format.
+The MicroUI C Module retrieves the table index according to the image format.
 
 The following graph illustrates the drawing of an image:
 
@@ -424,14 +424,14 @@ Simulation
 Principle
 ---------
 
-The simulation behavior is very similar to the :ref:`section_renderer_cco` for the Embedded side.
+The simulation behavior is similar to the :ref:`section_renderer_cco` for the Embedded side.
 
-The :ref:`Front Panel<section_ui_releasenotes_frontpanel>` defines a support of the drawers based on Java service loader.
+The :ref:`Front Panel<section_ui_releasenotes_frontpanel>` defines support of the drawers based on Java service loader.
 
 Standard Formats Only (Default Implementation)
 ----------------------------------------------
 
-The default implementation is able to draw images with a standard format.
+The default implementation can draw images with a standard format.
 
 The following graph illustrates the drawing of an image:
 
@@ -502,7 +502,7 @@ The following graph illustrates the drawing of an image:
 
 |
 
-It is possible to override the image drawers for the standard format the same way as the custom formats.
+It is possible to override the image drawers for the standard format in the same way as the custom formats.
 
 .. _section_buffered_image_drawer_custom_fp:
 
@@ -510,15 +510,15 @@ Custom Format Support
 ---------------------
 
 It is possible to draw images with a custom format by implementing the ``UIImageDrawing`` interface.
-This is an advanced use-case, only available with MicroUI 3.2 or higher.
+This advanced use case is available only with MicroUI 3.2 or higher.
 
 The ``UIImageDrawing`` interface contains one method for each image drawing primitive (draw, copy, region, rotate, scale, flip).
 Only the necessary methods can be implemented.
 Each non-implemented method will result in calling the stub implementation.
 
-The method ``handledFormat()`` needs to be implemented and returns the managed format.
+The method ``handledFormat()``must be implemented and returns the managed format.
 
-Once created, the ``UIImageDrawing`` implementation needs to be registered as a service.
+Once created, the ``UIImageDrawing`` implementation must be registered as a service.
 
 The following graph illustrates the drawing of an image:
 
@@ -641,7 +641,7 @@ Dependencies
 Installation
 ============
 
-Image Renderer module is part of the MicroUI module and Display module. Install them in order to be able to use some images.
+The image Renderer module is part of the MicroUI module and Display module. Install them to be able to use some images.
 
 Use
 ===
