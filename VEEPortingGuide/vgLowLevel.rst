@@ -12,7 +12,7 @@ The Abstraction Layer implementation consists of a set of header files to implem
 
 The VG Pack's embedded Front Panel extension implements all MicroVG features for the simulator.
 
-Embedded Platform
+Embedded VEE Port
 =================
 
 .. figure:: images/vg_llapi_emb.*

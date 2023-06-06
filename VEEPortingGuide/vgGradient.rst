@@ -16,12 +16,12 @@ Functional Description
 ======================
 
 The Gradient module implements the framework of the MicroVG `LinearGradient`_. 
-It provides Abstraction Layer APIs that consist in creating a linear gradient in a platform-specific format. 
-After the gradient creation and encoding, the gradient data should not change when the application draws it: the encoded format should be used by the platform-specific implementation (generally GPU).
+It provides Abstraction Layer APIs that consist in creating a linear gradient in a VEE Port-specific format. 
+After the gradient creation and encoding, the gradient data should not change when the application draws it: the encoded format should be used by the VEE Port-specific implementation (generally GPU).
 
 A linear gradient is a succession of colors at different positions.
 The colors from the MicroVG library implementation are encoded in the 32-bit format: ARGB8888.
-The color encoding in the gradient is a platform-specific implementation.
+The color encoding in the gradient is a VEE Port-specific implementation.
 
 The buffer where the gradient is encoded is stored in the Java heap.
 The MicroVG implementation on demand automatically increases the buffer size.
@@ -49,7 +49,7 @@ There are two separate Abstraction Layer API header files (see :ref:`LLVG-GRADIE
 * The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_GRADIENT_impl.h``: it manages the gradient buffer creation and filling, then redirect the gradient encoding to ``microvg_gradient.h``.
 * This C module also provides an implementation of ``LLVG_PAINTER_impl.c`` that synchronizes the drawing with the MicroUI Graphics Engine and redirects the drawing itself to a third-party drawer.
 * A C module dedicated to a GPU provides an implementation of ``LLVG_PAINTER_impl.h`` and ``microvg_gradient.h``: it encodes the gradient and implements the drawings over the GPU library.
-* These files are automatically copied in the BSP project when fetching the C modules during the platform build.
+* These files are automatically copied in the BSP project when fetching the C modules during the VEE Port build.
 
 .. _VectorGraphicsPainter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html
 

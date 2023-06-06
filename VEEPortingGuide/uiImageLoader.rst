@@ -147,7 +147,7 @@ The Image Decoders modules are some additional modules to the Display
 module. The decoders belong to distinct modules, and either or several
 may be installed.
 
-In the platform configuration file, check :guilabel:`UI` > :guilabel:`Image PNG Decoder`
+In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Image PNG Decoder`
 to install the runtime PNG decoder. Check :guilabel:`UI` >
 :guilabel:`Image BMP Monochrome Decoder` to install the runtime BMP monochrom
 decoder.

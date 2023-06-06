@@ -716,12 +716,12 @@ Drawing logs
 ============
 
 When performing drawing operations, it may happen that the program fails or encounters an incident of some kind.
-MicroUI offers a mechanism allowing the VEE port to report such incidents to the application through the use of flags.
+MicroUI offers a mechanism allowing the VEE Port to report such incidents to the application through the use of flags.
 
 Usage overview
 --------------
 
-When an incident occurs, the VEE port can report it to the application by setting the *drawing log flags* stored in the graphics context.
+When an incident occurs, the VEE Port can report it to the application by setting the *drawing log flags* stored in the graphics context.
 The flags will then be made available to the application.
 See :ref:`section.ui.drawing_logs` for more information on reading the flags in the application.
 
@@ -742,7 +742,7 @@ Incidents are split in two categories:
 .. warning::
 
    As this behavior can be disabled at build time, the drawing log flags are meant to be used as a **debugging hint** when the application does not display what the developer expects.
-   The VEE port must **not** rely on applications throwing an exception if an error was reported, or on the drawing log flags being reset after the display is flushed.
+   The VEE Port must **not** rely on applications throwing an exception if an error was reported, or on the drawing log flags being reset after the display is flushed.
 
 .. note::
 
@@ -773,7 +773,7 @@ They are defined and documented in ``LLUI_PAINTER_impl.h`` (for embedded targets
      - The system ran out of memory.
    * - ``DRAWING_LOG_CLIP_MODIFIED``
      - ``1 << 3``
-     - The VEE port modified clip values in the graphics context.
+     - The VEE Port modified clip values in the graphics context.
    * - ``DRAWING_LOG_LIBRARY_INCIDENT``
      - ``1 << 29``
      - An incident occurred in an underlying library.
@@ -792,13 +792,13 @@ Also, their actual values may change and the developer should not rely on them.
 .. hint::
 
    Sometimes, incidents may match more than one flag constant.
-   In such cases, the VEE port may report the incident with multiple flags by combining them with the bitwise OR operator (``|``) just like any other flags.
+   In such cases, the VEE Port may report the incident with multiple flags by combining them with the bitwise OR operator (``|``) just like any other flags.
    For example, an out-of-memory incident occurring in an underlying drawing library may be reported with the value ``DRAWING_LIBRARY_INCIDENT | DRAWING_OUT_OF_MEMORY``.
 
 Embedded targets
 ----------------
 
-MicroUI exposes two functions to be used in the VEE port.
+MicroUI exposes two functions to be used in the VEE Port.
 Both functions are declared in ``LLUI_DISPLAY.h`` and their documentation is available in that file.
 
 * ``LLUI_DISPLAY_reportWarning`` reports a warning to the application.
@@ -808,7 +808,7 @@ Both functions are declared in ``LLUI_DISPLAY.h`` and their documentation is ava
   It behaves similarly to ``LLUI_DISPLAY_reportWarning``, except it will additionally set the flag ``DRAWING_LOG_ERROR``.
   This special flag will cause an exception to be thrown in the application the next time the application checks the flags.
 
-For example, if the VEE port contains a custom implementation to draw a line that may cause an out-of-memory error, it could report this error this way:
+For example, if the VEE Port contains a custom implementation to draw a line that may cause an out-of-memory error, it could report this error this way:
 
 .. code:: c
 

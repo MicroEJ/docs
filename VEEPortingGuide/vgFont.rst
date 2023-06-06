@@ -57,7 +57,7 @@ There are two separate Abstraction Layer API header files (see :ref:`LLVG-FONT-A
 * A C module dedicated to a GPU provides an implementation of this drawer. It also redirects the :ref:`complex layout <section_vg_font_complex>` to a third party C module. 
 * The drawer also manages the :ref:`section_vg_gradient`.
 * The :ref:`C module Harfbuzz <section_vg_c_module_microvg>` provides an implementation of :ref:`complex layout <section_vg_font_complex>`.
-* These files are automatically copied in the BSP project when fetching the C modules during the platform build.
+* These files are automatically copied in the BSP project when fetching the C modules during the VEE Port build.
 
 .. _VectorGraphicsPainter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html
 

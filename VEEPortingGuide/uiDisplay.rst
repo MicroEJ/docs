@@ -403,7 +403,7 @@ Standard
 
 When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the Display module considers the pixels representation as **standard**. 
 All standard representations are internally managed by the Display module, by the :ref:`Front Panel<section_ui_simulation>` and by the :ref:`Image Generator<section_image_generator>`. 
-No specific support is required as soon as a MicroEJ Platform is using a standard representation. It can:
+No specific support is required as soon as a VEE Port is using a standard representation. It can:
 
 * generate at compile-time RAW images in the same format than display pixel format,
 * convert at runtime MicroUI 32-bit colors in display pixel format,
@@ -558,7 +558,7 @@ Driver-Specific
 The Display module considers the pixel representation as **driver-specific** when the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``. 
 This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. 
 This mode can also be used when the number of bits for a color component (alpha, red, green, or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut`.
-This mode requires some specific support in the MicroEJ Platform:
+This mode requires some specific support in the VEE Port:
 
 * An extension of the image generator is mandatory: see :ref:`section_image_generator_extended` to convert MicroUI's standard 32-bit ARGB colors to display pixel format.
 * The Front Panel widget ``Display`` requires an extension to convert the MicroUI 32-bit colors in display pixel format and vice-versa, see :ref:`section_ui_simulation_display`.  
@@ -567,9 +567,9 @@ This mode requires some specific support in the MicroEJ Platform:
 The following example illustrates the use of specific format BGR565 (the pixel uses 16 bits-per-pixel (alpha[0], red[5], green[6]
 and blue[5]):
 
-1. Configure the MicroEJ Platform:
+1. Configure the VEE Port:
 
-   * Create or open the Platform configuration project file ``display/display.properties``: 
+   * Create or open the VEE Port configuration project file ``display/display.properties``: 
 
    .. code-block:: java 
 
@@ -597,7 +597,7 @@ and blue[5]):
       com.microej.graphicalengine.generator.MicroUIGeneratorExtension
 
   * Build the module (click on the blue button).
-  * Copy the generated jar file (``imageGeneratorMyPlatform.jar``) in the MicroEJ Platform configuration project: ``/dropins/tools/``.
+  * Copy the generated jar file (``imageGeneratorMyPlatform.jar``) in the VEE Port configuration project: ``/dropins/tools/``.
 
 2. Simulator (Front Panel):
 
@@ -634,7 +634,7 @@ and blue[5]):
 
       <ej.fp.widget.Display x="41" y="33" width="320" height="240" extensionClass="com.microej.fp.MyDisplayExtension"/>
 
-3. Build the MicroEJ Platform as usual
+3. Build the VEE Port as usual
 
 4. Update the ``LLUI_DISPLAY`` implementation by adding the following functions:
 
@@ -1464,7 +1464,7 @@ For instance, when the returned indices are ``20`` and ``27``, the display stack
 This solution requires several conditions:
 
 -  Background color is enabled and it is an available color in the CLUT.
--  Application can only use foreground colors provided by the CLUT. The platform designer should give to the application developer the available list of colors the CLUT manages.
+-  Application can only use foreground colors provided by the CLUT. The VEE Port designer should give to the application developer the available list of colors the CLUT manages.
 -  The CLUT must provide a set of blending ranges the application can use. Each range can have its own size (different number of colors between two colors). Each range is independent. For instance if the foreground color ``RED`` (``0xFFFF0000``) can be blended with two background colors ``WHITE`` (``0xFFFFFFFF``) and ``BLACK`` (``0xFF000000``), two ranges must be provided. Both the ranges have to contain the same index for the color ``RED``.
 -  Application can only use blending ranges provided by the CLUT. Otherwise the display driver is not able to find the range and the default color will be used to perform the blending.
 -  Rendering of dynamic images (images decoded at runtime) may be wrong because the ARGB colors may be out of CLUT range.
@@ -1479,7 +1479,7 @@ Overview
 
 The Graphics Engine is built for a dedicated display pixel format (see :ref:`display_pixel_structure`). For this pixel format, the Graphics Engine must be able to draw images with or without alpha blending and with or without transformation. In addition, it must be able to read all image formats.
 
-The application may not use all MicroUI image drawings options and may not use all images formats. It is not possible to detect what the application needs, so no optimization can be performed at application compiletime. However, for a given application, the platform can be built with a reduced set of pixel support. 
+The application may not use all MicroUI image drawings options and may not use all images formats. It is not possible to detect what the application needs, so no optimization can be performed at application compiletime. However, for a given application, the VEE Port can be built with a reduced set of pixel support. 
 
 All pixel format manipulations (read, write, copy) are using dedicated functions. It is possible to remove some functions or to use generic functions. The advantage is to reduce the memory footprint. The inconvenient is that some features are removed (the application should not use them) or some features are slower (generic functions are slower than the dedicated functions).
 
@@ -1519,16 +1519,16 @@ There are ``22x1 + 22x1 + 2x1 + 1x6 + 22x1 = 74`` functions. Each function takes
 Linker File
 -----------
 
-All pixel functions are listed in a platform linker file. It is possible to edit this file to remove some features or to share some functions (using generic function).
+All pixel functions are listed in a VEE Port linker file. It is possible to edit this file to remove some features or to share some functions (using generic function).
 
 How to get the file:
 
-#. Build platform as usual.
-#. Copy platform file ``[platform]/source/link/display_image_x.lscf`` in platform configuration project: ``[platform configuration project]/dropins/link/``. ``x`` is a number which characterizes the display pixel format (see :ref:`display_pixel_structure`). See next warning.
+#. Build VEE Port as usual.
+#. Copy VEE Port file ``[platform]/source/link/display_image_x.lscf`` in VEE Port configuration project: ``[VEE Port configuration project]/dropins/link/``. ``x`` is a number which characterizes the display pixel format (see :ref:`display_pixel_structure`). See next warning.
 #. Perform some changes into the copied file (see after).
-#. Rebuild the platform: the `dropins` file is copied in the platform instead of the original one.
+#. Rebuild the VEE Port: the `dropins` file is copied in the VEE Port instead of the original one.
 
-.. warning:: When the display format in ``[platform configuration project]/display/display.properties`` changes, the linker file suffix changes too. Perform again all operations in new file with new suffix.
+.. warning:: When the display format in ``[VEE Port configuration project]/display/display.properties`` changes, the linker file suffix changes too. Perform again all operations in new file with new suffix.
 
 The linker file holds five tables, one for each use case, respectively ``IMAGE_UTILS_TABLE_COPY``, ``IMAGE_UTILS_TABLE_COPY_WITH_ALPHA``, ``IMAGE_UTILS_TABLE_DRAW``, ``IMAGE_UTILS_TABLE_SET`` and ``IMAGE_UTILS_TABLE_READ``. For each table, a comment describes how to remove an option (when possible) or how to replace an option by a generic function (if available). 
 
@@ -1558,12 +1558,12 @@ Installation
 
 The Display module is a sub-part of the MicroUI library. When the MicroUI module is
 installed, the Display module must be installed in order to be able to
-connect the physical display with the MicroEJ Platform. If not
+connect the physical display with the VEE Port. If not
 installed, the *stub* module will be used.
 
-In the platform configuration file, check :guilabel:`UI` > :guilabel:`Display` to
+In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Display` to
 install the Display module. When checked, the properties file
-``display/display.properties`` is required during platform creation to
+``display/display.properties`` is required during VEE Port creation to
 configure the module. This configuration step is used to choose the kind
 of implementation (see :ref:`section_display_implementation`).
 
@@ -1668,7 +1668,7 @@ The properties file must / can contain the following properties:
 
 -  ``imageBuffer.memoryAlignment`` [optional, default value is "4"]: Defines the image memory alignment to respect when creating an image. This notion is useful when images drawings are performed by a third party hardware accelerator (GPU): it can require some constraints on the image to draw. This value is used by the Graphics Engine when creating a dynamic image and by the image generator to encode a RAW image. See :ref:`section_image_gpu_raw` and :ref:`section_image_custom_format`. Allowed values are 1, 2, 4, 8, 16, 32, 64, 128 and 256.
 
--  ``imageHeap.size`` [optional, default value is "not set"]: Defines the images heap size. Useful to fix a platform heap size when building a firmware in command line. When using a MicroEJ launcher, the size set in this launcher is priority to the platform value.
+-  ``imageHeap.size`` [optional, default value is "not set"]: Defines the images heap size. Useful to fix a VEE Port heap size when building a firmware in command line. When using a MicroEJ launcher, the size set in this launcher is priority to the VEE Port value.
 
 
 Use

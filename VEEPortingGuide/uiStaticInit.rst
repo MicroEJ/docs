@@ -20,7 +20,7 @@ The next chapters describe succinctly the XML file. For more information about g
 Functional Description
 ======================
 
-The Static MicroUI Initializer tool takes as entry point the initialization file which describes the MicroUI library extension. This tool is automatically launched during the MicroEJ Platform build (see :ref:`section_microui_installation` ). 
+The Static MicroUI Initializer tool takes as entry point the initialization file which describes the MicroUI library extension. This tool is automatically launched during the VEE Port build (see :ref:`section_microui_installation` ). 
 
 The Static MicroUI Initializer tool is able to generate two files:
 
@@ -32,7 +32,7 @@ The Static MicroUI Initializer tool is able to generate two files:
    used to make a link between an input device (buttons, touch) and its
    MicroUI event generator (see :ref:`section_input`).
 
-.. note:: The Front Panel project does not need a configuration file (like C header file for embedded platform).
+.. note:: The Front Panel project does not need a configuration file (like C header file for embedded VEE Port).
 
 .. figure:: images/static_init_process.*
    :alt: Static MicroUI Initializer Process
@@ -47,7 +47,7 @@ The Static MicroUI Initializer tool is able to generate two files:
 XML File
 ========
 
-The XML file must be created in platform configuration project, in folder ``microui`` and called ``microui.xml``.
+The XML file must be created in VEE Port configuration project, in folder ``microui`` and called ``microui.xml``.
 
 .. figure:: images/static_xml.*
    :alt: Static MicroUI Initializer XML File
@@ -191,7 +191,7 @@ Use
 ===
 
 The Static MicroUI Initializer tool is automatically launched during the
-MicroEJ Platform build.
+VEE Port build.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

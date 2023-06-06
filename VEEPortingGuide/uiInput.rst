@@ -133,7 +133,7 @@ These functions take as parameter the MicroUI EventGenerator to target and the d
 
    Input Abstraction Layer API
 
-When there is no input device on the board, a *stub* implementation of C library is available. This C library must be linked by the third-party C IDE when the MicroUI module is installed in the MicroEJ Platform. This stub library does not provide any Abstraction Layer API files.
+When there is no input device on the board, a *stub* implementation of C library is available. This C library must be linked by the third-party C IDE when the MicroUI module is installed in the VEE Port. This stub library does not provide any Abstraction Layer API files.
 
 Typical Implementation
 ======================
@@ -417,7 +417,7 @@ event_generator.c
 This file aims to convert the events (received by ``LLUI_INPUT_impl.c`` and then filtered by ``xxx_helper.c``) to the application through the Input Engine.
 
 This C file should be the only C file to include the header file ``microui_constants.h``.
-This header file has been generated during the Platform build (see :ref:`section_static_init`).
+This header file has been generated during the VEE Port build (see :ref:`section_static_init`).
 It holds some defines that describe the available list of MicroUI Event Generators.
 Each MicroUI Event Generator has its identifier: 0 to *n-1*.
 
@@ -557,7 +557,7 @@ Notes:
 * An object is ``null`` when the memory slot has been used during the application execution but freed at the dump time.
 * The object array' size is the maximum of non-null objects reached during application execution.
 * The indices of old events are out-of-date: the memory slot is now null or reused by a newer event.
-* The event ``25`` targets the event generator ``3``; the identifier is available in ``microui_constants.h`` (created during the MicroEJ Platform build, see :ref:`section_inputs_static_init`). 
+* The event ``25`` targets the event generator ``3``; the identifier is available in ``microui_constants.h`` (created during the VEE Port build, see :ref:`section_inputs_static_init`). 
 * The events ``27`` to ``99`` cannot be identified (no metadata or partial event content due to circular queue management).
 * Refers to the implementation on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` to have more information about the format of the event; this implementation is always up-to-date with the MicroUI implementation.
 

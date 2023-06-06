@@ -50,7 +50,7 @@ The Abstraction Layer APIs that have to be implemented are listed in the header 
 
 * MicroVG library calls the BSP functions through the header file ``LLVG_MATRIX_impl.h``.
 * The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of this header file: ``LLVG_MATRIX_impl.c``. 
-* This file is automatically copied in the BSP project when fetching the C module during the platform build.
+* This file is automatically copied in the BSP project when fetching the C module during the VEE Port build.
 
 Use
 ===

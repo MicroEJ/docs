@@ -22,11 +22,11 @@ The MicroEJ Simulator provides all features of MicroUI library. The three module
 The Display module also manages fonts and images. The fonts and images are pre-processed before compiling the application. The following diagram depicts the components involved in its design, along with the provided tools:
 
 .. figure:: images/ui_overview2.*
-   :alt: The User Interface Extension Components along with a Platform
+   :alt: The User Interface Extension Components along with a VEE Port
    :width: 600px
    :align: center
 
-   The User Interface Extension Components along with a Platform
+   The User Interface Extension Components along with a VEE Port
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
