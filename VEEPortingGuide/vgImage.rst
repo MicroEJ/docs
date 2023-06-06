@@ -150,7 +150,7 @@ The :ref:`section_vg_cco` and the Front Panel already implement this engine.
 Abstraction Layer API
 =====================
 
-There are two separate Abstraction Layer API header files (see :ref:`LLVG-FONT-API-SECTION`):
+There are two separate Abstraction Layer API header files:
 
 * ``LLVG_BVI_impl.h`` specifies the Abstraction Layer APIs used to open and manage the BufferedVectorImage cycle-life.
 * ``LLVG_PAINTER_impl.h`` lists the Abstraction Layer APIs called by  `VectorGraphicsPainter`_ to draw an image (compile-time, runtime or buffered vector image).
