@@ -520,7 +520,7 @@ The method ``handledFormat()`` must be implemented and returns the managed forma
 
 Once created, the ``UIImageDrawing`` implementation must be registered as a service.
 
-The following graph illustrates the drawing of an image:
+The following graph illustrates the drawing of an image: 
 
 .. graphviz:: :align: center
 
