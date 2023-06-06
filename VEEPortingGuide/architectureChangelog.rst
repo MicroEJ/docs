@@ -112,6 +112,8 @@ Integration
 - Updated default value of VEE Port configuration option ``vendorURL``.
 - Updated Memory Map Scripts for ``MicroVG`` library.
 - Updated Memory Map Scripts for Eclasspath ``Executor`` library.
+- Updated output Map file location to ``soar/[application_main_class].map`` (formerly named ``SOAR.map``).
+- Removed unused ``SOAR.o`` file. It is available at ``bsp/microejapp.o``.
 - Renamed MicroEJ launch :guilabel:`Build dynamic Feature` to :guilabel:`Build Feature`.
 - [Multi] Fixed the SOAR output files from being deleted when the :guilabel:`Clean intermediate files` option is enabled.
 
