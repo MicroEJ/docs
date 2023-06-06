@@ -97,21 +97,22 @@ This is the most frequent use-case, which was the only one available with MicroU
 
 The following graph illustrates the drawing of an image:
 
-.. graphviz::
+.. graphviz:: :align: center
 
    digraph {
       ratio="auto"
       splines="true";
+      bgcolor="transparent"
       node [style="filled,rounded" fontname="courier new" fontsize="10"]
 
       { //in/out
-         node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_driver UID_gpu_hard stub
+         node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_hard stub
       }
       { // h
          node [shape="box" color="#00aec7" fontcolor="white"] LLUI_h UID_h UID_soft_h UID_stub_h UII_h
       }
       { // c
-         node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_stub_c UII_c UID_gpu_c
+         node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_stub_c UII_c UID_gpu_c UID_gpu_driver
       }
       { // weak
          node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_c
@@ -144,8 +145,8 @@ The following graph illustrates the drawing of an image:
 
       // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-      UII_h [label="[ui_image.h]\nUI_IMAGE_drawXXX();"]
-      UII_c [label="[ui_image.c]\nUI_IMAGE_drawXXX();"]
+      UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_drawXXX();"]
+      UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_drawXXX();"]
       UII_cond [label="standard image?"]
 
       // --- FLOW -- //
@@ -262,21 +263,22 @@ The table index is retrieved by the MicroUI C Module according to the image form
 The following graph illustrates the drawing of an image:
 
 
-.. graphviz::
+.. graphviz:: :align: center
 
    digraph {
       ratio="auto"
       splines="true";
+      bgcolor="transparent"
       node [style="filled,rounded" fontname="courier new" fontsize="10"]
 
       { //in/out
-         node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_driver UID_gpu_hard stub UIIx_impl_d
+         node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_hard stub UIIx_impl_d
       }
       { // h
          node [shape="box" color="#00aec7" fontcolor="white"] LLUI_h UID_h UID_soft_h UID_stub_h UII_h UID_h2
       }
       { // c
-         node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_gpu_c UID_stub_c UII_c UIIx_c UIIx_impl_c
+         node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_gpu_c UID_stub_c UII_c UIIx_c UIIx_impl_c UID_gpu_driver
       }
       { // weak
          node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_c UIIx_weak_c
@@ -309,16 +311,16 @@ The following graph illustrates the drawing of an image:
 
       // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-      UII_h [label="[ui_image.h]\nUI_IMAGE_drawXXX();"]
-      UII_c [label="[ui_image.c]\nUI_IMAGE_drawXXX();"]
+      UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_drawXXX();"]
+      UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_drawXXX();"]
       UII_cond [label="standard image?"]
-      UIIx_c [label="[ui_image.c]\ntable[x] = UI_IMAGE_drawCustom_x()"]
-      UIIx_weak_c [label="[ui_image.c]\nweak UI_IMAGE_drawCustom_x();"]
+      UIIx_c [label="[ui_image_drawing.c]\ntable[x] = UI_IMAGE_DRAWING_draw_customX()"]
+      UIIx_weak_c [label="[ui_image_drawing.c]\nweak UI_IMAGE_DRAWING_draw_customX();"]
       UIIx_cond [label="implemented?"]
-      UIIx_impl_c [label="[ui_image_x.c]\nUI_IMAGE_drawCustom_x()"]
+      UIIx_impl_c [label="[ui_image_x.c]\nUI_IMAGE_DRAWING_draw_customX()"]
       UIIx_impl_d [label="[custom drawing]"]
 
-      UID_h2 [label="[ui_drawing.h]\n@see Simple Flow With GPU;"]
+      UID_h2 [label="[ui_drawing.h]\n@see Simple Flow (chapter Drawings)"]
 
       // --- FLOW -- //
 
@@ -433,11 +435,12 @@ The default implementation is able to draw images with a standard format.
 
 The following graph illustrates the drawing of an image:
 
-.. graphviz::
+.. graphviz:: :align: center
 
    digraph {
       ratio="auto"
       splines="true";
+      bgcolor="transparent"
       node [style="filled,rounded" fontname="courier new" fontsize="10"]
 
       { //in/out
@@ -519,11 +522,12 @@ Once created, the ``UIImageDrawing`` implementation needs to be registered as a 
 
 The following graph illustrates the drawing of an image:
 
-.. graphviz::
+.. graphviz:: :align: center
 
    digraph {
       ratio="auto"
       splines="true";
+      bgcolor="transparent"
       node [style="filled,rounded" fontname="courier new" fontsize="10"]
 
       { //in/out
@@ -569,7 +573,7 @@ The following graph illustrates the drawing of an image:
       UIIx_impl_c [label="[VEE Port Fp]\nCustomImageDrawing.draw()"]
       UIIx_impl_d [label="[custom drawing]"]
 
-      UID_h2 [label="[FrontPanel]\ngetUIDrawer().drawXXX();\n@see Simple Flow With GPU;"]
+      UID_h2 [label="[FrontPanel]\ngetUIDrawer().drawXXX();\n@see Simple Flow (chapter Drawings)"]
 
       // --- FLOW -- //
 

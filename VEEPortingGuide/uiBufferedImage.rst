@@ -265,21 +265,22 @@ For the images whose format is not the display format (index ``1`` and ``2``), t
 
 The following graph illustrates the drawing of a shape (not an image, see :ref:`section_buffered_image_c_drawit`):
 
-.. graphviz::
+.. graphviz:: :align: center
     
   digraph {
     ratio="auto"
     splines="true";
+    bgcolor="transparent"
     node [style="filled,rounded" fontname="courier new" fontsize="10"]
     
     { //in/out
-        node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_driver UID_gpu_hard UID_1_d stub
+        node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_hard UID_1_d stub
     }
     { // h
         node [shape="box" color="#00aec7" fontcolor="white"] LLUI_h UID_h UID_soft_h UID_stub_h
     }
     { // c
-        node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_c UID_c0 UID_c1 UID_gpu_0_c UID_1_c UID_stub_c
+        node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_c UID_c0 UID_c1 UID_gpu_0_c UID_1_c UID_stub_c UID_gpu_driver
     }
     { // weak
         node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_0_c UID_weak_1_c
@@ -473,21 +474,22 @@ By consequence, the drawer has to check the image format **and** the destination
 The following graph illustrates the drawing of an image (draw, rotate or scale) in another image or in display buffer (to draw a shape, see :ref:`section_buffered_image_c_drawinto`).
 This graph gathers the both graphs :ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`.
 
-.. graphviz::
+.. graphviz:: :align: center
 
   digraph {
     ratio="auto"
     splines="true";
+    bgcolor="transparent"
     node [style="filled,rounded" fontname="courier new" fontsize="10"]
     
     { //in/out
-        node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_driver UID_gpu_hard UID_1_d stub UIIx_impl_d
+        node [shape="ellipse" color="#e5e9eb" fontcolor="black"] mui UID_soft_c UID_gpu_hard UID_1_d stub UIIx_impl_d
     }
     { // h
         node [shape="box" color="#00aec7" fontcolor="white"] LLUI_h UID_h UID_soft_h UID_stub_h UII_h UID_h2
     }
     { // c
-        node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_c UID_c0 UID_c1 UID_gpu_0_c UID_1_c UID_stub_c UII_c UIIx_c UIIx_impl_c
+        node [shape="box" color="#ee502e" fontcolor="white"] LLUI_c UID_c UID_c0 UID_c1 UID_gpu_0_c UID_1_c UID_stub_c UII_c UIIx_c UIIx_impl_c UID_gpu_driver
     }
     { // weak
         node [shape="box" style="dashed,rounded" color="#ee502e"] UID_weak_0_c UID_weak_1_c UIIx_weak_c
@@ -532,14 +534,14 @@ This graph gathers the both graphs :ref:`draw in a custom image <section_buffere
 
     // --- MULTIPLE IMAGES FLOW ELEMENTS -- //
 
-    UII_h [label="[ui_image.h]\nUI_IMAGE_drawXXX();"]
-    UII_c [label="[ui_image.c]\nUI_IMAGE_drawXXX();"]
+    UII_h [label="[ui_image_drawing.h]\nUI_IMAGE_DRAWING_drawXXX();"]
+    UII_c [label="[ui_image_drawing.c]\nUI_IMAGE_DRAWING_drawXXX();"]
     UII_cond [label="standard image?"]
     UII_gc [label="GC format?"]
-    UIIx_c [label="[ui_image.c]\ntable[x] = UI_IMAGE_drawCustom_x()"]
-    UIIx_weak_c [label="[ui_image.c]\nweak UI_IMAGE_drawCustom_x();"]
+    UIIx_c [label="[ui_image_drawing.c]\ntable[x] = UI_IMAGE_DRAWING_draw_customX()"]
+    UIIx_weak_c [label="[ui_image_drawing.c]\nweak UI_IMAGE_DRAWING_draw_customX();"]
     UIIx_cond [label="implemented?"]
-    UIIx_impl_c [label="[ui_image_x.c]\nUI_IMAGE_drawCustom_x()"]
+    UIIx_impl_c [label="[ui_image_x.c]\nUI_IMAGE_DRAWING_draw_customX()"]
     UIIx_impl_d [label="[custom drawing]"]
     UIIx_gc [label="gc compatible?"]
     UIIx_shape [label="can draw shapes?"]
@@ -737,11 +739,12 @@ Draw into the Image: Non-Display Format
 
 The following graph illustrates the drawing of a shape (not an image, see :ref:`section_buffered_image_fp_drawit`):
 
-.. graphviz::
+.. graphviz:: :align: center
 
   digraph {
     ratio="auto"
     splines="true";
+    bgcolor="transparent"
     node [style="filled,rounded" fontname="courier new" fontsize="10"]
 
     { //in/out
@@ -902,11 +905,12 @@ Draw the Image: Multiple Formats Implementation
 The following graph illustrates the drawing of an image (draw, rotate or scale) in another image or in display buffer (to draw a shape, see :ref:`section_buffered_image_fp_drawinto`).
 This graph gathers the both graphs :ref:`draw in a custom image <section_buffered_image_fp_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom_fp>`.
 
-.. graphviz::
+.. graphviz:: :align: center
 
   digraph {
     ratio="auto"
     splines="true";
+    bgcolor="transparent"
     node [style="filled,rounded" fontname="courier new" fontsize="10"]
 
     { //in/out
