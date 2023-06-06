@@ -926,8 +926,8 @@ Option(checkbox): Enable Feature Portability Control
 
 *Default value*: ``false``
 
-Option(list): Kernel Metadata Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Option(browse): Kernel Metadata File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Option Name*:
 ``com.microej.soar.kernel.featureportabilitycontrol.metadata.path``
@@ -936,8 +936,7 @@ Option(list): Kernel Metadata Files
 
 *Description*:
 
-Specifies the list of Kernel metadata files for Feature Portability Control.
-Features built on these Kernels can be installed on this Kernel.
+Specifies the path to the Kernel metadata file for Feature Portability Control.
 
 Category: Watchdog
 ^^^^^^^^^^^^^^^^^^
