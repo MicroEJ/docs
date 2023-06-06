@@ -4,6 +4,24 @@
 Changelog
 =========
 
+[13.5.1] (Unreleased)
+=====================
+
+MicroUI
+"""""""
+
+**Fixed**
+
+- Fix the compatibility with MicroEJ Architecture 8 (SOAR error with internal MicroUI system properties file).
+
+FrontPanel
+""""""""""
+
+**Fixed**
+
+- Fix consecutive calls to ``LLUIDisplay.newMicroUIImage()`` throwing an exception.
+- Allow to override the display drawer with a service or in a front panel widget.
+
 [13.5.0] (2023-05-03)
 =====================
 

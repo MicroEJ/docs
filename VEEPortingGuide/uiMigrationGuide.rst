@@ -12,11 +12,11 @@ From 13.4.x to 13.5.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the UI Pack 13.5.0:
+* Set the explicit dependency to the UI Pack 13.5.1:
 
   .. code-block:: xml
 
-		<dependency org="com.microej.pack.ui" name="ui-pack" rev="13.5.0">
+		<dependency org="com.microej.pack.ui" name="ui-pack" rev="13.5.1">
 			<artifact name="frontpanel" type="jar"/>
 		</dependency>
 
@@ -33,7 +33,7 @@ BSP without GPU
 
 * *[VEE Port configuration project]*
 
-  	* Fetch UI Pack 13.5.0 and CCO MicroUI 3.0.0.
+  	* Fetch UI Pack 13.5.1 and CCO MicroUI 3.0.0.
 
 * *[BSP project]*
 
@@ -69,7 +69,7 @@ BSP with VG-Lite
 * Follow the migration steps of "BSP without GPU".
 * *[VEE Port configuration project]*
 
-	* Fetch CCO MicroUI-VGLite 6.0.0.
+	* Fetch CCO MicroUI-VGLite 6.0.1.
   
 * *[BSP project]*
 	
