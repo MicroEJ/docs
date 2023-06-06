@@ -92,7 +92,7 @@ This set of classes and interfaces is available in the module `com.microej.pack.
 It offers the same capacity to override some built-in drawing algorithms (internal Graphics Engine drawing algorithms), to add some custom drawing algorithms, to manipulate the MicroUI concepts (GraphicsContext, Image, etc.) in the Front Panel project, etc.
 
 * The interface ``ej.microui.display.LLUIDisplay`` represents the MicroUI Graphics Engine (MicroUI framework).
-  It provides some methods to map MicroUI byte arrays in MicroUI Graphics Context objects, manipulate MicroUI colors, clip, etc.
+  It provides methods to map MicroUI byte arrays in MicroUI Graphics Context objects, manipulate MicroUI colors, clip, etc.
   An instance of this framework is available via the field ``Instance``. 
 * The interface ``ej.microui.display.LLUIDisplayImpl`` all methods required by MicroUI implementation to be compatible with the MicroUI Display class implementation.
   See :ref:`section_ui_simulation_display`.

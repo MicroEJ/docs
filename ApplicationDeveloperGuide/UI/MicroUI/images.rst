@@ -408,11 +408,11 @@ Mutable images can be created with a call to constructor `ej.microui.display.Buf
 Display Format
 ~~~~~~~~~~~~~~
 
-By default, the output format of a `BufferedImage`_ matches the pixel organization (layout, depth, etc.) of the display.
-The algorithms used to draw in such an image are the same as those used to draw on the display (for footprint purposes). 
-Since the display buffer is opaque, the algorithms cannot draw transparent pixels.
+By default, the output format of a `BufferedImage`_ matches the display's pixel organization (layout, depth, etc.).
+The algorithms used to draw in such an image are the same as those used on the display (for footprint purposes). 
+The algorithm cannot draw transparent pixels since the display buffer is opaque.
 
-In addition, `GraphicsContext.setColor()`_ does not take the alpha channel into account and only accepts RGB values. 
+In addition, `GraphicsContext.setColor()`_ does not consider the alpha channel and only accepts RGB values. 
 The given color value is interpreted as a 24-bit RGB color, where the high-order byte is ignored, and the remaining bytes contain the red, green, and blue channels, respectively.
 
 .. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html
@@ -421,7 +421,7 @@ The given color value is interpreted as a 24-bit RGB color, where the high-order
 Other Formats
 ~~~~~~~~~~~~~
 
-It is also possible to create a buffered image with another format by using the `constructor with the format parameter_`.
+It is also possible to create a buffered image with another format using the `constructor with the format parameter_`.
 
 The other formats than the display one are not supported by MicroUI.
 But a VEE port can manage one or more formats (see XXX).

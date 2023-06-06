@@ -20,7 +20,7 @@ FrontPanel
 **Fixed**
 
 - Fix consecutive calls to ``LLUIDisplay.newMicroUIImage()`` throwing an exception.
-- Allow to override the display drawer with a service or in a front panel widget.
+- Allow overriding the display drawer with a service or in a front panel widget.
 
 [13.5.0] (2023-05-03)
 =====================
@@ -32,7 +32,7 @@ MicroUI Implementation
 
 **Changed**
 
-- Implement MicroUI 3.2 (multi mutable image formats, drawing log flags, etc.).
+- Implement MicroUI 3.2 (multi-mutable image formats, drawing log flags, etc.).
 
 **Fixed**
 
@@ -90,7 +90,7 @@ ImageGenerator
 
 **Added**
 
-* Add the compatibility with the Architecture 8.
+* Add compatibility with Architecture 8.
 
 [13.4.1] (2023-02-06)
 =====================

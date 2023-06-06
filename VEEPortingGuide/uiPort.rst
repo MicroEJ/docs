@@ -5,7 +5,7 @@ UI Port
 =======
 
 This chapter summarizes all the steps to port the UI Pack: from the VEE Port Configuration project to more advanced features like using a GPU.
-This chapter only introduces the concepts and makes numerous references to the following chapters.
+This chapter only introduces the concepts and references the following chapters.
 The concepts are overviewed and incomplete (only the typical case is described).
 
 It is recommended to follow the steps in this order:

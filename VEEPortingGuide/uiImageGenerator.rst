@@ -199,19 +199,19 @@ A custom image can only be created at runtime, see :ref:`section_buffered_image`
 VEE Port Binary Format
 ======================
 
-The Image Generator is able to generate a :ref:`binary file <section_image_binary_raw>` compatible with the VEE Port (and not compatible with the Image Renderer). 
-This is very useful when a VEE Port features a foundation library that offsers the possibility to use other kinds of images than MicroUI library. 
-The binary file can be encoded according to the options the user gives in the images list file.
+The Image Generator can generate a :ref:`binary file <section_image_binary_raw>` compatible with the VEE Port (and not with the Image Renderer). 
+This is very useful when a VEE Port features a foundation library that can use other kinds of images than the MicroUI library. 
+The binary file can be encoded according to the user's options in the images list file.
 
 1. Open image generator extension project.
 2. Create an implementation of the interface ``com.microej.tool.ui.generator.ImageConverter``.
 3. Create the file ``META-INF/services/com.microej.tool.ui.generator.ImageConverter`` and open it.
-4. Note down the name of created class, with its package and classname.
-5. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
+4. Note the name of the created class, with its package and class name.
+5. Rebuild the image generator extension, copy it into the VEE Port configuration project, and rebuild the platform (see above).
 
-The binary file can have two kind of formats (see the API ``OutputFileType getType()``):
+The binary file can have two kinds of formats (see the API ``OutputFileType getType()``):
 
-* A simple resource: the output binary file is embedded as a resource; the application (or the library) can retrieve the file by using an API like ``getResourceAsStream()``.
+* A simple resource: the binary output file is embedded as a resource; the application (or the library) can retrieve the file by using an API like ``getResourceAsStream()``.
 * An immutable file: the output file contains one or several :ref:`immutable objects <section.classpath.elements.immutables>`; the application (or the library) can retrieve the objects by using the :ref:`runtime_bon` library.
 
 .. _section_image_generator_conffile:
