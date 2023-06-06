@@ -19,6 +19,8 @@ Therefore, it does not support all the features of the SDK 5, especially:
 - build of the Virtual Device of an Application.
 - build of the Feature file (.fo) of an Application.
 - resolve dependencies in the IDE.
+- launch of MicroEJ tools, such as the Stack Trace Reader.
+- Font Designer, Memory Map Analyzer, Heap Analyzer and Front Panel Designer.
 
 If you need these features, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
 
