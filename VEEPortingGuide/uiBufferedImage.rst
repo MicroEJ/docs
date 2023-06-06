@@ -178,7 +178,7 @@ Single Format Implementation
 The MicroUI C module implements the four LLAPI to create only MicroUI BufferedImages with the *display* format.
 
 * ``LLUI_DISPLAY_IMPL_getDrawerIdentifier()``: the C module checks if the image format is the *display* format.
-  If yes, it returns the index ``0``indicating the Graphics Engine to use the default drawer.
+  If yes, it returns the index ``0`` indicating the Graphics Engine to use the default drawer.
   If not, it returns a negative index: the image creation is refused.
 * It redirects the three last LLAPI to some ``ui_drawing.h`` functions.
   These ``ui_drawing.h`` functions are already implemented as ``weak`` functions, which allows the VEE Port to implement only the required functions:
@@ -708,7 +708,7 @@ This interface contains one method for each drawing primitive.
 Only the necessary methods can be implemented.
 Each non-implemented method will result in calling the stub implementation.
 
-The method ``handledFormat()``must be implemented and returns the managed format.
+The method ``handledFormat()`` must be implemented and returns the managed format.
 
 Once created, the ``UIDrawing`` implementation must be registered as a service.
 
@@ -728,7 +728,7 @@ This method needs to be implemented to create the custom image.
 It must return an object representing the image.
 This object will be available in the drawing methods (:ref:`section_buffered_image_fp_drawer`).
 
-The method ``handledFormat()``must be implemented and returns the managed format.
+The method ``handledFormat()`` must be implemented and returns the managed format.
 
 Once created, the ``BufferedImageProvider`` implementation must be registered as a service.
 
