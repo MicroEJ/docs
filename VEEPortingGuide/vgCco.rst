@@ -8,7 +8,7 @@ Principle
 =========
 
 Several C modules implement the VG Pack's Abstraction Layer APIs.
-Some are generic, and some are platform dependent (more precisely: GPU dependent).
+Some are generic, and some are VEE Port dependent (more precisely: GPU dependent).
 The generic modules provide header files to be extended by the specific modules. 
 The generic C modules are available on the :ref:`central_repository` and the specific C modules on the :ref:`developer_repository`.
 
@@ -51,7 +51,7 @@ The header files are described in the dedicated chapters: :ref:`Matrix module <s
 
 The VG Pack is an extension of the UI Pack.
 The VG Pack's header files require the UI Pack's header files to manipulate the MicroUI concepts.
-Consequently, the VG Pack must be installed on a platform that fetches a UI Pack.
+Consequently, the VG Pack must be installed on a VEE Port that fetches a UI Pack.
 
 The VG Pack and its header files are available on the :ref:`central_repository`: `com.microej.pack.vg#vg-pack`_.
 
@@ -83,7 +83,7 @@ Dependencies
 
 This generic C module requires some specific modules:
 
-* Path and Gradient require a C module specific to a platform (to a GPU format).
+* Path and Gradient require a C module specific to a VEE Port (to a GPU format).
 * Font requires the Freetype library and optionally the Harfbuzz library to manage the :ref:`complex layout <section_vg_font_complex>`.
 
 Configuration

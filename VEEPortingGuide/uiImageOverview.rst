@@ -29,7 +29,7 @@ Functional Description
 
 The Image Engine is composed of:
 
-* An "Image Generator" module, for converting images into a MicroEJ format (known by the Image Engine Renderer) or into a platform binary format (cannot be used by the Image Engine Renderer), before runtime (pre-generated images).
+* An "Image Generator" module, for converting images into a MicroEJ format (known by the Image Engine Renderer) or into a VEE Port binary format (cannot be used by the Image Engine Renderer), before runtime (pre-generated images).
 * The "Image Loader" module, for loading, converting and closing the images. 
 * A set of "Image Decoder" modules, for converting standard image formats into a MicroEJ format (known by the Image Renderer) at runtime. Each Image Decoder is an additional module of the main module "Image Loader".
 * The "Image Renderer" module, for reading and drawing the images in MicroEJ format.
@@ -143,7 +143,7 @@ The Image Engine is composed of:
    * ``png``: symbolizes all standard image input formats (PNG, JPG, etc.).
    * ``xxx``: symbolizes a non-standard input format.
    * ``mej``: symbolizes the MicroEJ output format (:ref:`section_image_standard_raw`).
-   * ``bin``: symbolizes a platform binary format (:ref:`section_image_binary_raw`).
+   * ``bin``: symbolizes a VEE Port binary format (:ref:`section_image_binary_raw`).
 
 Process overview:
 

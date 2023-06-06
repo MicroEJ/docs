@@ -41,7 +41,7 @@ The Abstraction Layer APIs to implement are listed in the header file ``LLUI_LED
 
    Led Abstraction Layer API
 
-When there is no LED on the board, a *stub* implementation of C library is available. This C library must be linked by the third-party C IDE when the MicroUI module is installed in the MicroEJ Platform. This stub library does not provide any Abstraction Layer API files.
+When there is no LED on the board, a *stub* implementation of C library is available. This C library must be linked by the third-party C IDE when the MicroUI module is installed in the VEE Port. This stub library does not provide any Abstraction Layer API files.
 
 Typical Implementation
 ======================
@@ -99,10 +99,10 @@ Dependencies
 Installation
 ============
 
-LEDs is a sub-part of MicroUI library. When the MicroUI module is installed, the LED module must be installed in order to be able to connect physical LEDs with MicroEJ Platform. If not installed, the
+LEDs is a sub-part of MicroUI library. When the MicroUI module is installed, the LED module must be installed in order to be able to connect physical LEDs with VEE Port. If not installed, the
 *stub* module will be used.
 
-In the platform configuration file, check :guilabel:`UI` > :guilabel:`LEDs` to install LEDs.
+In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`LEDs` to install LEDs.
 
 Use
 ===

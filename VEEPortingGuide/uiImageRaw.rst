@@ -275,7 +275,7 @@ It can be used by MicroUI addon libraries which provide their image management p
 
 Advantages:
 
-* Encoding is known by platform.
+* Encoding is known by VEE Port.
 * Compression is inherent to the format itself.
 
 Disadvantages:
@@ -316,9 +316,9 @@ The following table lists the original formats that can be decoded at run-time a
    +-----------------------------------------+-------------------+-----------------------------+----------------------------+
 
 .. [#note_disabledformat] The formats are disabled by default; see:ref:`fp_ui_decoder`.
-.. [#note_png] The PNG format is supported when the module ``PNG`` is selected in the platform configuration file (see :ref:`image_runtime_decoder`).
-.. [#note_bmp] The Monochrome BMP is supported when the module ``BMPM`` is selected in the platform configuration file (see :ref:`image_runtime_decoder`); the `colored` BMP format is only supported by the Front Panel (disabled by default, see :ref:`fp_ui_decoder`).
-.. [#note_webp] Install the tool ``com.microej.tool#imageio-webp-1.0.1`` from the :ref:`developer_repository` in the platform to support the WEBP format (see :ref:`section_image_generator_imageio` and :ref:`fp_ui_decoder`).
+.. [#note_png] The PNG format is supported when the module ``PNG`` is selected in the VEE Port configuration file (see :ref:`image_runtime_decoder`).
+.. [#note_bmp] The Monochrome BMP is supported when the module ``BMPM`` is selected in the VEE Port configuration file (see :ref:`image_runtime_decoder`); the `colored` BMP format is only supported by the Front Panel (disabled by default, see :ref:`fp_ui_decoder`).
+.. [#note_webp] Install the tool ``com.microej.tool#imageio-webp-1.0.1`` from the :ref:`developer_repository` in the VEE Port to support the WEBP format (see :ref:`section_image_generator_imageio` and :ref:`fp_ui_decoder`).
 .. [#note_webpruntime] Install the C component ``com.microej.clibrary.thirdparty#libwebp-1.0.1`` in the BSP to support the WEBP format at runtime.
 .. [#note_runtimedecoder] The UI-pack does not provide some runtime decoders for these formats, but a BSP can add its decoders (see :ref:`image_runtime_decoder`).
 
@@ -332,8 +332,8 @@ It can be extended by one or several restrictions on the pixels array:
 
 * Its start address has to be aligned on a higher value than the number of bits-per-pixels. 
 * A padding has to be added after each line (row stride).
-* The MicroEJ format can hold a platform-dependent header between the MicroEJ format header (start of file) and the pixel array.
-  The MicroEJ format is designed to let the platform encode and decode this additional header.
+* The MicroEJ format can hold a VEE Port-dependent header between the MicroEJ format header (start of file) and the pixel array.
+  The MicroEJ format is designed to let the VEE Port encode and decode this additional header.
   This header is unnecessary and never used for Image Engine software algorithms.
 
 .. note:: From the Image Engine point of view, the format stays a MicroEJ format, readable by the Image Engine Renderer.

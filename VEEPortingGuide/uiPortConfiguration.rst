@@ -36,7 +36,7 @@ UI Pack Modules
 The following sections describe each module that comes with the UI Pack (purpose and configuration).
 
 The modules provided by the UI Pack are **not installed** by default.
-When a module is required, it has to be enabled and configured using the Platform Editor.
+When a module is required, it has to be enabled and configured using the VEE Port Editor.
 
 .. figure:: images/ui_modules.*
    :alt: UI Pack Modules

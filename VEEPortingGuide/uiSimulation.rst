@@ -10,7 +10,7 @@ Simulation
 Principle
 =========
 
-The graphical user interface uses the Front Panel mock (see :ref:`section_frontpanel`) and some extensions (widgets) to simulate the user interactions. It is the equivalent of the three embedded modules (Display, Input and LED) of the MicroEJ Platform (see :ref:`section_microui`).
+The graphical user interface uses the Front Panel mock (see :ref:`section_frontpanel`) and some extensions (widgets) to simulate the user interactions. It is the equivalent of the three embedded modules (Display, Input and LED) of the VEE Port (see :ref:`section_microui`).
 
 The Front Panel enhances the development environment by allowing User Interface  applications to be designed and tested on the computer rather than on the target device (which may not yet be built). The mock interacts with the user's computer in two ways: 
 
@@ -31,7 +31,7 @@ The Front Panel project is a regular MicroEJ Module project. Its module.ivy file
 
       <configurations defaultconfmapping="default->default;provided->provided">
          <conf name="default" visibility="public" description="Runtime dependencies to other artifacts"/>
-         <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the platform"/>
+         <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the VEE Port"/>
       </configurations>
 
       <dependencies>
@@ -58,7 +58,7 @@ To be compatible with Display module's Graphics Engine, the project must depend 
       </dependency>
    </dependencies>
 
-.. warning:: This extension is built for each UI pack version. By consequence, a Front Panel project is done for a platform built with the same UI pack. When the UI pack mismatch, some errors may occur during the Front Panel project export step, during the platform build, and/or during the application runtime. The current pack version is |UIPACKVERSION|.
+.. warning:: This extension is built for each UI pack version. By consequence, a Front Panel project is done for a VEE Port built with the same UI pack. When the UI pack mismatch, some errors may occur during the Front Panel project export step, during the VEE Port build, and/or during the application runtime. The current pack version is |UIPACKVERSION|.
 
 The Front Panel extension does not provide any widgets. Some compatible widgets are available in a third library. The life cycle of this library is different than the UI pack's one. New widgets can be added to simulate new kind of displays, input devices, etc. This extension fetches by transitivity the Front Panel extension, so this extension dependency does not need to be specified explicitly: 
 
@@ -147,7 +147,7 @@ A zero or negative value disables the feature.
 
 .. note:: This feature is only available when double buffering mode is enabled.
    
-The application can substitute the platform's value by setting the property ``-Dej.fp.widget.display.refreshRate=xxx`` in the application launcher.
+The application can substitute the VEE Port's value by setting the property ``-Dej.fp.widget.display.refreshRate=xxx`` in the application launcher.
 
 .. _section_ui_simulation_flushtime:
 
@@ -165,7 +165,7 @@ A zero or negative value disables the feature.
 
 .. note:: This feature is only available when double buffering mode is enabled.
    
-The application can substitute the platform's value by setting the property ``-Dej.fp.widget.display.flushTime=xxx`` in the application launcher.
+The application can substitute the VEE Port's value by setting the property ``-Dej.fp.widget.display.flushTime=xxx`` in the application launcher.
 
 .. _section_ui_simulation_nonrectangulardisplay:
 
@@ -223,7 +223,7 @@ Graphics Engine is using two dedicated heaps: for the images (see :ref:`section_
 Image Decoders
 ==============
 
-Front Panel uses its own internal image decoders when the associated modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Some additional decoders can be added like the C-side for the embedded platform (see :ref:`external image decoders<image_external_decoder>`).  Front Panel uses the Java AWT `ImageIO`_ API to load the encoded images. 
+Front Panel uses its own internal image decoders when the associated modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Some additional decoders can be added like the C-side for the embedded VEE Port (see :ref:`external image decoders<image_external_decoder>`).  Front Panel uses the Java AWT `ImageIO`_ API to load the encoded images. 
 
 .. _ImageIO: https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html
 
@@ -263,7 +263,7 @@ Since UI Pack 13.2.0, Front Panel automatically includes new image decoders (new
 
 1. The JAR contains the service declaration ``/META-INF/services/javax.imageio.spi.ImageReaderSpi``,
 2. The JAR filename's prefix is `imageio-`,
-3. The JAR location is the platform configuration project's ``dropins/tools/`` directory.
+3. The JAR location is the VEE Port configuration project's ``dropins/tools/`` directory.
 
 .. note:: The same JAR is used by the Front Panel and by the :ref:`Image Generator <section_image_generator_imageio>`.
 
@@ -286,13 +286,13 @@ Classpath
 =========
 
 A standard mock is running on the same JVM than the HIL Engine (see :ref:`mock` chapter). It shares the same classpath.
-When the application is not using the MicroUI library (i.e., it is not an UI application, whether the platform holds the MicroEJ Graphics Engine or not), the Front Panel mock runs a standard mock.
+When the application is not using the MicroUI library (i.e., it is not an UI application, whether the VEE Port holds the MicroEJ Graphics Engine or not), the Front Panel mock runs a standard mock.
 When the application is using the MicroUI library, the Front Panel UI mock runs on the same JVM than the MicroEJ Simulator. 
 In this case, the other mocks don't share the same classpath than the Front Panel mock.
 As a consequence, an other mock than the Front Panel mock can not send input events to MicroUI, the object created in the standard mocks's class loader are not available in the Front Panel UI's class loader (and vice versa), etc.
 
 Since the UI Pack 13.2.0, it is possible to force to run the Front Panel UI mock in the same classpath than the HIL Engine by adding the property ``-Dej.fp.hil=true`` in the application JRE tab. 
-Note that this option only works when the version of the MicroEJ Architecture used to build the Platform is 7.17.0 or higher.     
+Note that this option only works when the version of the MicroEJ Architecture used to build the VEE Port is 7.17.0 or higher.     
 
 
 

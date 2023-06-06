@@ -19,8 +19,8 @@ Functional Description
 ======================
 
 The Path module implements the framework of the MicroVG `Path`_. 
-It provides Abstraction Layer APIs that create and merge some paths in a platform-specific format. 
-After the path creation and encoding, the path data should not change when the application draws it: the encoded format should be used by the platform-specific implementation (generally GPU).
+It provides Abstraction Layer APIs that create and merge some paths in a VEE Port-specific format. 
+After the path creation and encoding, the path data should not change when the application draws it: the encoded format should be used by the VEE Port-specific implementation (generally GPU).
 
 A path is a succession of commands.
 The command encoding is implementation specific; however, the ``float`` format is recommended.
@@ -66,7 +66,7 @@ There are two separate Abstraction Layer API header files (see :ref:`LLVG-PATH-A
 * This C module also provides an implementation of ``LLVG_PAINTER_impl.c`` that synchronizes the drawing with the MicroUI Graphics Engine and redirects the drawing itself to a third-party drawer.
 * A C module dedicated to a GPU provides an implementation of this drawer and ``microvg_path.h``: it encodes the path commands and implements the drawings over the GPU library.
 * The drawer also manages the :ref:`section_vg_gradient`.
-* These files are automatically copied in the BSP project when fetching the C modules during the platform build.
+* These files are automatically copied in the BSP project when fetching the C modules during the VEE Port build.
 
 .. _VectorGraphicsPainter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html
 

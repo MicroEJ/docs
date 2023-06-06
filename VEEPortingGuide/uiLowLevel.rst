@@ -8,11 +8,11 @@ Abstraction Layer API
 Principle
 =========
 
-The MicroUI implementation for MicroEJ requires an Abstraction Layer implementation. This Abstraction Layer implementation finalizes the MicroUI implementation started with the static initialization step (see :ref:`section_static_init`) for a given MicroEJ Platform.
+The MicroUI implementation for MicroEJ requires an Abstraction Layer implementation. This Abstraction Layer implementation finalizes the MicroUI implementation started with the static initialization step (see :ref:`section_static_init`) for a given VEE Port.
 
 The Abstraction Layer implementation consists of a set of headers files to implement in C to target the hardware drivers. Some functions are mandatory, others are not. Some other headers files are also available to call UI engines internal functions.
 
-For the simulator, some Front Panel interfaces and classes allow to specify the simulated platform characteristics. 
+For the simulator, some Front Panel interfaces and classes allow to specify the simulated VEE Port characteristics. 
 
 Embedded VEE Port
 =================
@@ -40,7 +40,7 @@ There are some exceptions :
 The :ref:`MicroUI C module <section_ui_cco>` provides a default implementation of the UI Pack Abstraction Layer API:
 
 - ``LLUI_PAINTER_impl.c`` and ``LLDW_PAINTER_impl.c`` manage the synchronization with the Graphics Engine and redirect all drawings to ``ui_drawing.h`` and ``ui_image_drawing.h``.
-- ``ui_drawing.h`` and ``ui_image_drawing.h`` list all drawing methods the platform can implement.
+- ``ui_drawing.h`` and ``ui_image_drawing.h`` list all drawing methods the VEE Port can implement.
 - ``ui_drawing.c`` and ``ui_image_drawing.c`` are the default implementation of ``ui_drawing.h`` and ``ui_image_drawing.h`` that redirects all drawings to ``ui_drawing_soft.h`` and ``dw_drawing_soft.h``.
 
 The BSP has to implement ``LLUI_xxx`` header files and optionally ``ui_drawing.h`` and ``ui_image_drawing.h`` (to draw using a GPU and/or to draw in a :ref:`custom BufferedImage <section_buffered_image>`).
@@ -57,20 +57,20 @@ Simulator
 
    MicroUI Simulator Abstraction Layer API
 
-In the simulator the three UI engines are grouped in a mock called Front Panel. The Front Panel comes with a set of classes and interfaces which are the equivalent of headers file (``*.h``) of Embedded Platform.
+In the simulator the three UI engines are grouped in a mock called Front Panel. The Front Panel comes with a set of classes and interfaces which are the equivalent of headers file (``*.h``) of Embedded VEE Port.
 
 The specification of class names is:
 
 - Package are the same than the MicroUI library (`ej.microui.display`_, `ej.microui.event`_, `ej.microui.led`_).
 - Name start with ``LLUI``.
 - Second part name refers the UI engine: ``Display``, ``Input``, ``Led``.
-- Files whose name ends with  ``Impl`` list methods to implement like embedded platform.
+- Files whose name ends with  ``Impl`` list methods to implement like embedded VEE Port.
 - Files whose name has no suffix list internal UI engines functions.
 
 There are some exceptions :
 
 - ``LLUIPainter.java`` and ``LLDWPainter.java`` list a subpart of UI Graphics Engine functions (all MicroUI native drawing methods).
-- ``UIDrawing.java`` and ``DWDrawing.java`` list all drawing methods the platform can implement (and already implemented by the Graphics Engine).
+- ``UIDrawing.java`` and ``DWDrawing.java`` list all drawing methods the VEE Port can implement (and already implemented by the Graphics Engine).
 - ``EventXXX`` list methods to create input events compatible with MicroUI implementation.
 
 All files and their aims are described in :ref:`section_ui_simulation`. 

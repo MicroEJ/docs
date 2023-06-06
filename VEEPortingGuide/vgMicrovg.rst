@@ -33,13 +33,13 @@ Installation
 ============
 
 The `MicroVG library`_ is an additional module. 
-In the platform configuration's :ref:`module description file <mmm_module_description>`, add the VG Pack dependency:
+In the VEE Port configuration's :ref:`module description file <mmm_module_description>`, add the VG Pack dependency:
 
 .. code-block:: XML
 
    <dependency org="com.microej.pack.vg" name="vg-pack" rev="1.2.1" conf="default->default"/>
 
-The VG Pack will be automatically available after a platform rebuild.
+The VG Pack will be automatically available after a VEE Port rebuild.
 
 .. _MicroVG library: https://repository.microej.com/modules/com/microej/pack/vg/vg-pack/
 
