@@ -366,6 +366,41 @@ Then the symlink has to be mapped in the Docker container by adding the followin
 
 The ``/dev/microej_dongle`` symlink can be mapped to any device path as long as it is in ``/dev/bus/usb``.
 
+USB Dongle with WSL
+~~~~~~~~~~~~~~~~~~~
+
+.. note::
+   The following steps have been tested on WSL2 with Ubuntu 22.04.2 LTS.
+
+To use a USB dongle with WSL, you first need to install `usbipd` follonwing the steps described in `Microsoft WSL documentation <https://learn.microsoft.com/fr-fr/windows/wsl/connect-usb#install-the-usbipd-win-project>`__:
+
+You first need to install usbipd-win on Windows from `usbipd-win Github repository <https://github.com/dorssel/usbipd-win/releases>`__.
+
+Then, install usbipd and update hardware database inside you WSL installation:
+
+   ::
+
+      sudo apt install linux-tools-generic hwdata
+      sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20
+
+Add the udev rule described in :ref:`production_license_linux`, and reload the udev rules in WSL:
+
+   ::
+
+      sudo udevadm control --reload-rules
+
+You then need to unplug and plug your dongle again before attaching the dongle to WSL from powershell:
+
+  ::
+
+      usbipd.exe wsl attach --busid <BUSID>
+
+The <BUSID> can be obtainted with the following powershell command:
+
+  ::
+
+      usbipd wsl list
+
 .. _production_license_troubleshooting:
 
 Troubleshooting
