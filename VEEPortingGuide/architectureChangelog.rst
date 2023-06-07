@@ -96,6 +96,9 @@ Foundation Libraries
 - [Multi] Fixed exception thrown when calling `Kernel.removeConverter()`_.
 - [Multi] Fixed an unexpected ``NullPointerException`` thrown by ``ej.kf.Kernel.<clinit>`` method in some cases.
 - [Multi] Fixed KF watchdogs not triggered correctly when several expire at the same time.
+- Fixed NullPointerException in the skip method of an InputStream returned by the external resource loader.
+- Fixed the behavior of the available, read, skip, mark, reset and close method when one of these methods is called after the input stream has been closed.
+- Fixed the javadoc of the LLEXT_RES_read native function (the buffer passed cannot be null).
 
 .. _Module.getAllocatedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#getAllocatedMemory--
 .. _Kernel.setReservedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#setReservedMemory-long-
@@ -134,6 +137,7 @@ Simulator
 - Fixed load of the Mock classes in the classpath order (left-to-right).
 - Fixed the missing error check when loading an immutable file referencing an external object id (the ``importObject`` directive is required).
 - [Multi] Fixed the computation of object sizes. The 4-byte KF header was missing.
+- Added support for mark/reset on the input stream returned by Class.getResourceAsStream
 
 SOAR
 ~~~~
