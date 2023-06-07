@@ -40,6 +40,9 @@ specific configuration:
 [8.0.0] - 2023-MM-DD
 --------------------
 
+.. note::
+   This Architecture requires SDK version ``5.7.0`` or higher (see :ref:`get_sdk_version`).
+
 This major Architecture version update introduces the following main features:
 
 - Added compatibility with dynamic linkers enabling Address Space Layout Randomization (ASLR).
