@@ -10,11 +10,19 @@ Launch Output Folder
 
 Using a :ref:`MicroEJ Application Launch <concepts-microejlaunches>`, the files are generated in a folder which is named like the main type and which is located in the output folder specified in the run configuration.
 
-.. figure:: images/build-output-files.png
-   :alt: Build Output Files from MicroEJ Application Launch
-   :align: center
+.. tabs::
 
-   Build Output Files from MicroEJ Application Launch
+   .. tab:: Build Output Files from MicroEJ Application Launch (Architecture ``8.x``)
+
+      .. figure:: images/build-output-files_arch8.png
+         :alt: Build Output Files from MicroEJ Application Launch
+         :align: center
+
+   .. tab:: Build Output Files from MicroEJ Application Launchs (Architecture ``7.x``)   
+
+      .. figure:: images/build-output-files.png
+         :alt: Build Output Files from MicroEJ Application Launch
+         :align: center
 
 Published Module Files
 ~~~~~~~~~~~~~~~~~~~~~~
