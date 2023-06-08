@@ -820,13 +820,6 @@ Category: Kernel
    :scale: 100%
    :align: center
 
-Option(checkbox): Check APIs allowed by Kernel
-""""""""""""""""""""""""""""""""""""""""""""""
-
-*Option Name*: ``apis.check.enable``
-
-*Default value*: ``true``
-
 Group: Threads
 """"""""""""""
 
@@ -841,47 +834,6 @@ Option(text):
 
 Specifies the maximum number of threads a Feature is allowed to use at the same
 time.
-
-.. _architecture_options_group_installed_features:
-
-Group: Static Features
-""""""""""""""""""""""
-
-Option(text):
-~~~~~~~~~~~~~~
-
-*Option Name*: ``core.memory.installed.features.max``
-
-*Default value*: ``0``
-
-*Description*:
-
-Specifies the maximum number of Features that can be statically installed to
-this Kernel using Firmware Linker tool.
-
-Option(text):
-~~~~~~~~~~~~~~
-
-*Option Name*: ``core.memory.installed.features.text.size``
-
-*Default value*: ``0``
-
-*Description*:
-
-Specifies the size in bytes reserved for statically installed Features code and
-resources.
-
-Option(text):
-~~~~~~~~~~~~~~
-
-*Option Name*: ``core.memory.installed.features.bss.size``
-
-*Default value*: ``0``
-
-*Description*:
-
-Specifies the size in bytes reserved for statically installed Features
-runtime memory.
 
 Group: Dynamic Features
 """""""""""""""""""""""
@@ -1124,7 +1076,6 @@ Option(browse): Kernel
 *Option Name*: ``kernel.filename``
 
 *Default value*: ``(empty)``
-
 
 
 ..

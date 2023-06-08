@@ -56,38 +56,6 @@ so that it can be stored to a non byte-addressable memory.
 
 .. _InputStream: https://repository.microej.com/javadoc/microej_5.x/apis/java/io/InputStream.html
 
-.. _firmware_linker:
-
-Firmware Linker
----------------
-
-Firmware Linker is a tool that links a Feature within a Multi-Sandboxed Firmware.
-
-It takes as input the Firmware executable (``.out`` file) and the Feature binary
-code (``.fo`` file) into which to be linked. It outputs a new executable application
-file, including the Installed Feature. This tool can be used to append
-multiple Features, by using as input file of each link pass the output file of the
-previous pass. Features linked this way are then called Installed Features. 
-
-The Kernel should have been linked for dimensioning the maximum size (code,
-data) for such Installed Features. See :ref:`Installed Features options <architecture_options_group_installed_features>`.
-
-The Firmware Linker tool is automatically called when declaring :ref:`System Applications <system_application_input_ways>` to a Multi-Sandbox module description.
-It is also available as a :ref:`MicroEJ Tool <MicroEJToolsSection>` named :guilabel:`Firmware Linker`.
-
-.. figure:: png/build_flow_zoom_workspace_firmware_linker_only.png
-   :alt: Firmware Linker using MicroEJ Launch
-   :align: center
-   :scale: 80%
-
-   Firmware Linker using MicroEJ Launch
-   
-.. warning::
-
-   Features linked using the Firmware Linker tool cannot be dynamically uninstalled using `Kernel.uninstall(Feature)`_ method.
-
-.. _Kernel.uninstall(Feature): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#uninstall-ej.kf.Feature-
-
 .. _feature_portability_control:
 
 Feature Portability Control
