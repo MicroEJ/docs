@@ -139,6 +139,8 @@ Simulator
 - Fixed stop of the HIL Engine if Simulator was terminated before the connection is established.
 - Fixed load of the Mock classes in the classpath order (left-to-right).
 - Fixed the missing error check when loading an immutable file referencing an external object id (the ``importObject`` directive is required).
+- Fixed initialization of transparent images in the Front Panel when the initial color is not fully opaque.
+   (introduced in version :ref:`7.11.0 <changelog-7.11.0>`)
 - [Multi] Fixed the computation of object sizes. The 4-byte KF header was missing.
 - Added support for mark/reset on the input stream returned by Class.getResourceAsStream
 
