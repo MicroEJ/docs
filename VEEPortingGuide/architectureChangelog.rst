@@ -86,6 +86,9 @@ Foundation Libraries
 - Removed Foundation Libraries API Jars and Javadoc.
 - Fixed :ref:`option_embed_utf8` defaults to ``true`` when building a Standalone Application using MMM.
 - Fixed ``KF`` to call the registered `Thread.UncaughtExceptionHandler`_ when an exception is thrown in `FeatureEntryPoint.stop()`_.
+- Fixed unexpected `java.lang.NullPointerException`_ thrown by the ``skip`` method of an InputStream returned by `Class.getResourceAsStream()`_. This error only occurs with a resource loaded by the External Resource Loader.
+- Fixed the behavior of ``available``, ``read``, ``skip``, ``mark``, ``reset`` and ``close`` methods of an InputStream returned by `Class.getResourceAsStream()`_ and previously closed.
+- Fixed the ``LLEXT_RES_read()`` Low Level API specification (the buffer passed cannot be ``null``).
 - Removed `Unknown product - Unknown version` comment in auto-generated Low Level API header files.
 - Removed the ``Serial Communication`` modules group, including the Foundation Libraries ``ECOM`` and ``ECOM-COMM``. See :ref:`architecture7_migration_ecom`.
 - Removed the deprecated ``Device Information`` module group, including the Foundation Library ``Device``. See :ref:`architecture7_migration_device`.
@@ -94,9 +97,6 @@ Foundation Libraries
 - [Multi] Fixed exception thrown when calling `Kernel.removeConverter()`_.
 - [Multi] Fixed an unexpected ``NullPointerException`` thrown by ``ej.kf.Kernel.<clinit>`` method in some cases.
 - [Multi] Fixed KF watchdogs not triggered correctly when several expire at the same time.
-- Fixed NullPointerException in the skip method of an InputStream returned by the external resource loader.
-- Fixed the behavior of the available, read, skip, mark, reset and close method when one of these methods is called after the input stream has been closed.
-- Fixed the javadoc of the LLEXT_RES_read native function (the buffer passed cannot be null).
 
 .. _Module.getAllocatedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#getAllocatedMemory--
 .. _Kernel.setReservedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#setReservedMemory-long-
@@ -129,13 +129,13 @@ Simulator
 - Added HIL Engine debug logs when verbose option is enabled.
 - Added log of the Mock classpath when verbose option is enabled.
 - Added log of Mock resolution errors (class or method not found).
+- Added support for mark/reset on an InputStream returned by `Class.getResourceAsStream()`_.
 - Fixed configuration of the Java heap size using :ref:`option_java_heap`. The legacy ``core.memory.javaheapsum.size`` option is not more supported.
 - Fixed :ref:`option_immortal_heap` default value when running a Standalone Application using MMM.
 - Fixed stop of the HIL Engine if Simulator was terminated before the connection is established.
 - Fixed load of the Mock classes in the classpath order (left-to-right).
 - Fixed the missing error check when loading an immutable file referencing an external object id (the ``importObject`` directive is required).
 - [Multi] Fixed the computation of object sizes. The 4-byte KF header was missing.
-- Added support for mark/reset on the input stream returned by Class.getResourceAsStream
 
 SOAR
 ~~~~
