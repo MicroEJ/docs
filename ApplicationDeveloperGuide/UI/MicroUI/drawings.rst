@@ -6,7 +6,7 @@ Drawing Logs
 When performing drawing operations, the VEE port may report incidents that occurred during a drawing to the application.
 Graphics contexts enable this by holding flags that can be set by the VEE port and read by the application.
 
-Usage overview
+Usage Overview
 --------------
 
 When the VEE port needs to report an incident, it will set *drawing log flags* in the graphics context describing its nature.
@@ -26,7 +26,7 @@ Incidents are split into two categories:
 Any incident may be either a warning or an error, depending on how the VEE port reported it.
 The distinction is made through the value of the flag ``DRAWING_LOG_ERROR``.
 
-Default behavior
+Default Behavior
 ----------------
 
 When the VEE port reports an incident, it sets drawing log flags in the graphics context.
@@ -46,7 +46,7 @@ Afterward, the flags will be reset.
 
 If an exception is thrown, the application developer should use the flag values to find the cause of the error and fix it accordingly.
 
-Explicit checks
+Explicit Checks
 ---------------
 
 MicroUI only checks the drawing log flags automatically during a display flush.
@@ -99,7 +99,7 @@ It will also not clear the drawing log flags when the display is flushed.
 Disabling this check can be done by setting the :ref:`constant <section.classpath.elements.constants>` ``com.microej.library.microui.impl.check-drawing-errors-on-flush`` to ``false`` when building the application.
 If it is not set, it defaults to ``true``.
 
-Available constants
+Available Constants
 -------------------
 
 MicroUI provides a set of constants to describe reported incidents.

@@ -712,13 +712,13 @@ This implementation has to follow the same rules as the custom MicroUI drawings 
 
 .. _section.veeport.ui.drawings.drawing_logs:
 
-Drawing logs
+Drawing Logs
 ============
 
 When performing drawing operations, the program may fail or encounter an incident of some kind.
 MicroUI offers a mechanism allowing the VEE Port to report such incidents to the application through the use of flags.
 
-Usage overview
+Usage Overview
 --------------
 
 When an incident occurs, the VEE Port can report it to the application by setting the *drawing log flags* stored in the graphics context.
@@ -749,7 +749,7 @@ Incidents are split into two categories:
    Any incident may be either a *warning* or an *error*.
    They are differentiated with the special flag ``DRAWING_LOG_ERROR``.
 
-Available constants
+Available Constants
 -------------------
 
 MicroUI offers a set of flag constants to report incidents.
@@ -795,7 +795,7 @@ Also, their actual values may change, and the developer should not rely on them.
    In such cases, the VEE Port may report the incident with multiple flags by combining them with the bitwise OR operator (``|``), just like any other flags.
    For example, an out-of-memory incident occurring in an underlying drawing library may be reported with the value ``DRAWING_LIBRARY_INCIDENT | DRAWING_OUT_OF_MEMORY``.
 
-Embedded targets
+Embedded Targets
 ----------------
 
 MicroUI exposes two functions to be used in the VEE Port.
