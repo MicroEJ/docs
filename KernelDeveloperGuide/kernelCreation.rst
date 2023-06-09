@@ -18,28 +18,24 @@ A new project is generated into the workspace:
    :width: 334px
    :height: 353px
 
-Configure a Platform
+Configure a VEE Port
 --------------------
 
-Before building the firmware, a target platform must be configured. The
-easiest way to do it is to copy a platform file into the
-:guilabel:`myfirmware` > :guilabel:`dropins` folder. Such file usually ends with ``.jpf``.
-For other ways to setup the input platform to build a firmware see
+Before building the Kernel, a target VEE Port must be configured. See
 :ref:`platform_selection`.
 
-Build the Firmware and Virtual Device
--------------------------------------
+Build the Executable and Virtual Device
+---------------------------------------
 
 In the Package Explorer, right-click on the project and select
-:guilabel:`Build Module`. The build of the Firmware and Virtual
+:guilabel:`Build Module`. The build of the Executable and Virtual
 Device may take several minutes. Once the build has succeeded, the folder
 :guilabel:`myfirmware` > :guilabel:`target~` > :guilabel:`artifacts` contains the firmware output artifacts
 (see :ref:`in_out_artifacts`) :
 
--  ``mymodule.out``: The Firmware Binary to be programmed on device.
+-  ``mymodule.out``: The Executable to be programmed on device.
 
--  ``mymodule.kpk``: The Firmware Package to be imported in a MicroEJ
-   Forge instance.
+-  ``mymodule.kpk``: The Kernel package to be imported in a MicroEJ Forge instance.
 
 -  ``mymodule.vde``: The Virtual Device to be imported in the SDK.
 
@@ -54,7 +50,7 @@ Device may take several minutes. Once the build has succeeded, the folder
 
 .. _define_apis:
 
-Define APIs
+Expose APIs
 -----------
 
 A Kernel must define the set of classes, methods and static fields all applications are allowed to use.
@@ -79,121 +75,50 @@ A Kernel API or a Runtime Environment module is added as a dependency with the c
 
 .. _system_application_input_ways:
 
-Add System Applications
------------------------
+Add Pre-installed Applications
+------------------------------
 
-A MicroEJ Sandboxed Application can be dynamically installed using 
-`Kernel.install()`_ 
-or can be directly linked into the Firmware binary at built-time. 
-In this case, it is called a System Application.
-
-The user can specify the System Applications in two different ways:
-
--  Set the property ``build-systemapps.dropins.dir`` to a folder which
-   contains System Applications (``.wpk`` files).
-
--  Add a new dependency for each System Application with the configuration ``systemapp->application``:
-
-   .. code:: xml
-
-      <dependency org="com.mycompany" name="myapp" rev="0.1.0" conf="systemapp->application"/>
-
-All System Applications are also included to the Virtual Device.
-If a System Application must only be linked to the Firmware,
-declare the dependency with the configuration ``systemapp-fw`` instead of ``systemapp``:
+Your device may come with pre-installed applications.
+To mimic this behavior on a Virtual Device, add a new dependency with the configuration ``systemapp-vd->application``.
 
 .. code:: xml
 
-   <dependency org="com.mycompany" name="myapp" rev="0.1.0" conf="systemapp-fw->application"/>
+   <dependency org="com.mycompany" name="myapp" rev="0.1.0" conf="systemapp-vd->application"/>
 
 
 .. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
 
-Build Firmware using Meta Build
--------------------------------
-
-A :ref:`Meta build project <module_natures.meta_build>` can be useful to automatically build Sandboxed Applications 
-that will be linked as System Application in the Firmware.
-
-
-The following figure shows the overall build flow (Sandboxed Application build prior to the Firmware build):
-
-.. _build_flow_buildtype:
-.. figure:: png/build_flow_zoom_buildtype.png
-   :alt: Firmware Build Flow using MicroEJ Module Manager
-   :align: center
-   :scale: 80%
-
-   Firmware Build Flow using MicroEJ Module Manager
-
-
-Build Firmware using MicroEJ Launches
+Build the Executable in the Workspace
 -------------------------------------
 
-It is still possible to build the Firmware using :ref:`concepts-microejlaunches` rather than the regular module build.
+It is possible to build the Executable using :ref:`concepts-microejlaunches` rather than the regular module build.
 This speeds-up the build time thanks to MicroEJ Module Manager workspace resolution and Eclipse incremental compilation.
 
-- Import the Firmware project and all System Application projects in the same workspace,
-- Prepare a MicroEJ Application for the Kernel as a regular :ref:`standalone_application`,
-- Prepare a MicroEJ Application launch for each System Application using `Build Dynamic Feature` settings,
-- Prepare a MicroEJ Tool launch for each System Application using the `Firmware Linker` settings.
+- Import the Kernel project and all Sandboxed Application projects in the same workspace,
+- Prepare a MicroEJ Application launch for the Kernel as a regular :ref:`standalone_application`,
+- Prepare a MicroEJ Application launch for each Sandboxed Application using `Build Dynamic Feature` settings.
 
 The following figure shows the overall build flow:
 
 .. _build_flow_workspace:
 .. figure:: png/build_flow_zoom_workspace.png
-   :alt: Firmware Build Flow using MicroEJ Launches
+   :alt: Kernel Build Flow using MicroEJ Launches
    :align: center
    :scale: 80%
 
-   Firmware Build Flow using MicroEJ Launches
+   Kernel Build Flow using MicroEJ Launches
 
-Advanced
---------
+Kernel Application Configuration
+--------------------------------
 
-MicroEJ Firmware ``module.ivy``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _kernel_module_configuration:
 
-The following section describes :ref:`module description file <mmm_module_description>` (``module.ivy``) generated by the ``build-firmware-multiapp`` skeleton.
+Module Configuration
+~~~~~~~~~~~~~~~~~~~~
 
-Ivy info
-^^^^^^^^
-
-.. code:: xml
-
-   <info organisation="org" module="module" status="integration" 
-   revision="1.0.0">
-       <ea:build organisation="com.is2t.easyant.buildtypes" module="build-firmware-multiapp" revision="2.+"/>
-       <ea:property name="application.main.class" value="org.Main" />
-   </info>
-               
-
-The property ``application.main.class`` is set to the fully qualified
-name of the main java class. The firmware generated from the skeleton 
-defines its own runtime environment by using ivy dependencies
-on several ``kernel API`` instead of relying on a runtime environment
-module.
-
-.. _ivy_confs:
-
-Ivy Configurations
-^^^^^^^^^^^^^^^^^^
-
-The ``build-firmware-multiapp`` build type requires the following
+The ``build-firmware-multiapp`` build type defines additional
 configurations, used to specify the different kind of firmware inputs
-(see :ref:`in_out_artifacts`) as Ivy dependencies.
-
-.. code:: xml
-
-   <configurations defaultconfmapping="default->default;provided->provided">
-       <conf name="default" visibility="public"/>
-       <conf name="provided" visibility="public"/>
-       <conf name="platform" visibility="public"/>
-       <conf name="vdruntime" visibility="public"/>
-       <conf name="kernelapi" visibility="private"/>
-       <conf name="systemapp" visibility="private"/>
-       <conf name="systemapp-fw" visibility="private"/>
-   </configurations>            
+(see :ref:`in_out_artifacts`) as dependencies.
 
 The following table lists the different configuration mapping usage
 where a dependency line is declared:
@@ -208,59 +133,37 @@ where a dependency line is declared:
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | Configuration Mapping         | Dependency Kind               | Usage                                                                                                                                                                           |
    +===============================+===============================+=================================================================================================================================================================================+
-   | ``provided->provided``        | Foundation Library (``JAR``)  | Expected to be provided by the platform. (e.g. ``ej.api.*`` module)                                                                                                             |
+   | ``vdruntime->default``        | Add-On Library (``JAR``)      | Embedded in the Virtual Device only, not in the Executable                                                                                                                      |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``default->default``          | Add-On Library (``JAR``)      | Embedded in the firmware only, not in the Virtual Device                                                                                                                        |
-   +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``vdruntime->default``        | Add-On Library (``JAR``)      | Embedded in the Virtual Device only, not in the firmware                                                                                                                        |
-   +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``default->default;``         | Add-On Library (``JAR``)      | Embedded in both the firmware and the Virtual Device                                                                                                                            |
+   | ``default->default;``         | Add-On Library (``JAR``)      | Embedded in both the Executable and the Virtual Device                                                                                                                          |
    | ``vdruntime->default``        |                               |                                                                                                                                                                                 |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``platform->platformDev``     | Platform (``JPF``)            | Platform dependency used to build the firmware and the Virtual Device. There are other ways to select the platform (see :ref:`platform_selection`)                              |
+   | ``platform->default``         | VEE Port                      | VEE Port dependency used to build the Executable and the Virtual Device. There are other ways to select the VEE Port (see :ref:`platform_selection`)                            |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | ``kernelapi->default``        | Runtime Environment (``JAR``) | See :ref:`runtime_environment`                                                                                                                                                  |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``systemapp->application``    | Application (``WPK``)         | Linked into both the firmware and the Virtual Device as System Application. There are other ways to select System Applications (see :ref:`system_application_input_ways`)       |
-   +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ``systemapp-fw->application`` | Application (``WPK``)         | Linked into the firmware only as System Application.                                                                                                                            |
+   | ``systemapp-vd->application`` | Application (``WPK``)         | Included to the Virtual Device as pre-installed Application.                                                                                                                    |
    +-------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 **Example of minimal firmware dependencies.**
 
-The following example firmware defines an API that contains all EDC types, methods, and fields and KF APIs for writing Features:
+The following example defines a Kernel that exposes all APIs of ``EDC`` library.
 
 .. code:: xml
 
    <dependencies>
        <dependency org="ej.api" name="edc" rev="1.2.0" conf="provided" />
-       <dependency org="ej.api" name="kf" rev="1.4.0" conf="provided" />
-
        <!-- Runtime API (set of Kernel API files) -->
        <dependency org="com.microej.kernelapi" name="edc" rev="1.0.0" conf="kernelapi->default"/>
-       <dependency org="com.microej.kernelapi" name="kf" rev="2.0.0" conf="kernelapi->default"/>
    </dependencies>
-                           
-Build only a Firmware
-~~~~~~~~~~~~~~~~~~~~~
 
-Set the property ``skip.build.virtual.device``
+Build Options
+~~~~~~~~~~~~~~
 
-.. code:: xml
+The :ref:`Kernel Application module nature <module_natures.kernel_application>` section describes all options available for building a Kernel module.
 
-   <ea:property name="skip.build.virtual.device" value="SET" />
-
-Build only a Virtual Device
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Set the property ``virtual.device.sim.only``
-
-.. code:: xml
-
-   <ea:property name="virtual.device.sim.only" value="SET" />
-
-Build only a Virtual Device with a pre-existing Firmware
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Build only a Virtual Device with a pre-existing Kernel
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Copy/Paste the ``.kpk`` file into the folder ``dropins``
 

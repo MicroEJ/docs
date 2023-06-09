@@ -567,12 +567,6 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             | ``.text.__icetea__*``          | Core Engine                 | RX          | ISA        |
             |                                | generated code              |             | Specific   |
             +--------------------------------+-----------------------------+-------------+------------+
-            | ``.bss.microej.features``      | System Applications         | RW          | 4          |
-            |                                | static fields               |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.rodata.microej.features``   | System Applications code    | RO          | 4          |
-            |                                | and resources               |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
 
         .. note::
             
@@ -607,12 +601,6 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
             +-----------------------------+-----------------------------+-------------+------------+
             | ``.text.__icetea__*``       | Core Engine                 | RX          | ISA        |
             |                             | generated code              |             | Specific   |
-            +-----------------------------+-----------------------------+-------------+------------+
-            | ``.bss.features.installed`` | System Applications         | RW          | 4          |
-            |                             | static fields               |             |            |
-            +-----------------------------+-----------------------------+-------------+------------+
-            | ``.rodata.soar.features``   | System Applications code    | RO          | 4          |
-            |                             | and resources               |             |            |
             +-----------------------------+-----------------------------+-------------+------------+
 
         .. note::

@@ -80,10 +80,10 @@ You can find below what are the different APIs included in the Runtime Environme
 What is a MicroEJ Demo Flavor?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A MicroEJ Demo Flavor is a composition of a set of runtime services, System Applications and a given MicroEJ Runtime Environment. Any flavor can be customized with MicroEJ SDK for a specific product.
+A MicroEJ Demo Flavor is a composition of a set of runtime services, pre-installed Applications and a given MicroEJ Runtime Environment. Any flavor can be customized with MicroEJ SDK for a specific product.
 
 +---------------------+-----------------------------+----------------------------------------------------------------+---------------------------------+
-| MicroEJ Demo Flavor | MicroEJ Runtime Environment | Services System Apps                                           | UI System Apps                  |
+| MicroEJ Demo Flavor | MicroEJ Runtime Environment | Services Pre-installed Apps                                    | UI Pre-installed Apps           |
 +---------------------+-----------------------------+------------+----------------------+----------------------+-----+-------+---------+---------------+
 |                                                   | Management | App-Metadata-Storage | CommandServer-Socket | NTP | About | AppList | Forge Connect |
 +=====================+=============================+============+======================+======================+=====+=======+=========+===============+
@@ -98,10 +98,10 @@ A MicroEJ Demo Flavor is a composition of a set of runtime services, System Appl
 | :fwbla:`Black`      | MicroEJ-BLE                 | |x|        | |x|                  | |x|                  | |x| |       |         | |x|           |
 +---------------------+-----------------------------+------------+----------------------+----------------------+-----+-------+---------+---------------+
 
-You can find below what are the different System Apps included in the Flavor:
+You can find below what are the different pre-installed Applications included in the Flavor:
 
 +------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
-| System Apps                  | Purpose                                                                                                                                  |
+| Application                  | Purpose                                                                                                                                  |
 +==============================+==========================================================================================================================================+
 | Management                   | Contains the implementation of Application lifecycle and services.                                                                       |
 +------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
