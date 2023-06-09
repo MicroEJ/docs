@@ -129,6 +129,9 @@ following usages:
 
 -  to retrieve its fully qualified name (with a call to
    `Class.getName()`_).
+   
+-  when :ref:`tinysandbox` capability is enabled, to retrieve its package (with a call to
+   `Class.getPackage()`_).
 
 A type that is not declared as a *Required type* may not have its fully
 qualified name (FQN) embedded. Its FQN can be retrieved using the stack
@@ -147,6 +150,7 @@ listing the fully qualified name of a type. Example:
 
 .. _Class.forName(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#forName-java.lang.String-
 .. _Class.getName(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getName--
+.. _Class.getPackage(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getPackage--
 
 .. _section.classpath.elements.raw_resources:
 
