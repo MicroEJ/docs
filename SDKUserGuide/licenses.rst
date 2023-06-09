@@ -374,9 +374,11 @@ USB Dongle with WSL
 
 To use a USB dongle with WSL, you first need to install `usbipd` following the steps described in `Microsoft WSL documentation <https://learn.microsoft.com/fr-fr/windows/wsl/connect-usb#install-the-usbipd-win-project>`__:
 
-You first need to install usbipd-win on Windows from `usbipd-win Github repository <https://github.com/dorssel/usbipd-win/releases>`__.
+First, check that WSL2 is installed on your system. If not, install it or update it following `Microsoft Documentation <https://learn.microsoft.com/fr-fr/windows/wsl/install>`__
 
-Then, install usbipd and update hardware database inside you WSL installation:
+Then, you need install usbipd-win on Windows from `usbipd-win Github repository <https://github.com/dorssel/usbipd-win/releases>`__.
+
+And then, install usbipd and update hardware database inside you WSL installation:
 
    .. code-block:: console
 
