@@ -3,18 +3,18 @@
 Drawing Logs
 ============
 
-When performing drawing operations, it may happen that the VEE port reports incidents that occurred during a drawing to the application.
-To do so, graphics contexts hold flags that can be set by the VEE port and read by the application.
+When performing drawing operations, the VEE port may report incidents that occurred during a drawing to the application.
+Graphics contexts enable this by holding flags that can be set by the VEE port and read by the application.
 
 Usage overview
 --------------
 
 When the VEE port needs to report an incident, it will set *drawing log flags* in the graphics context describing its nature.
 The application will then be able to read the flag values to know if an incident occurred.
-This is meant to help the developer to debug the application if it does not display what is expected.
+This mechanism is meant to help the developer to debug the application if it does not display what is expected.
 See :ref:`section.veeport.ui.drawings.drawing_logs` for more information on setting drawing log flags in the VEE port.
 
-Incidents are split in two categories:
+Incidents are split into two categories:
 
 * *Warnings* are *non-critical* incidents that the application developer may ignore.
   When such an incident is reported, the flags are set in the graphics context so that the application can read them.
@@ -34,14 +34,14 @@ Additionally, if the incident was an error, it sets the special flag ``DRAWING_L
 
 Every time the display is flushed, the flags contained in its graphics context will be checked.
 If the flag ``DRAWING_LOG_ERROR`` is set --- which means an error has been reported --- the ``flush`` function will throw a ``MicroUIException`` with the code ``DRAWING_ERROR``, and the values of the drawing log flags in its message.
-Afterwards, the flags will be reset.
+Afterward, the flags will be reset.
 
 .. warning::
 
    This behavior can be disabled at build time.
-   In this case, the flags will keep their values after the display is flushed, and no exception will be thrown.
+   In this case, the flags will keep their values after the display is flushed, and no exceptions will be thrown.
 
-   Therefore, the developer should **not** rely on the drawing log flags in the workflow of the application.
+   Therefore, the developer should **not** rely on the drawing log flags in the application workflow.
    They are meant to be used as a **debugging hint**.
 
 If an exception is thrown, the application developer should use the flag values to find the cause of the error and fix it accordingly.
@@ -55,9 +55,9 @@ Two functions are provided to do so:
 
 * ``GraphicsContext.getAndClearDrawingLogFlags`` will return the current values of the flags and reset them.
 * ``GraphicsContext.checkDrawingLogFlags`` behaves like ``GraphicsContext.getAndClearDrawingLogFlags``.
-  However, it will also throw an exception if the flag ``DRAWING_LOG_ERROR`` is set, like is done when the display is flushed.
+  However, it will also throw an exception if the flag ``DRAWING_LOG_ERROR`` is set, like it is done when the display is flushed.
 
-For example, if a VEE port that has no implementation to draw circles reports an error with the flag ``DRAWING_LOG_NOT_IMPLEMENTED``, the application would then behave as below.
+For example, if a VEE port with no implementation to draw circles reports an error with the flag ``DRAWING_LOG_NOT_IMPLEMENTED``, the application would behave as below.
 
 .. code:: java
 
@@ -93,10 +93,10 @@ Configuration
 -------------
 
 When releasing an application, the developer should disable the automatic check of drawing log flags performed when the display is flushed.
-This will prevent exceptions from being thrown which would cause an unexpected crash.
+Doing so will prevent exceptions from being thrown, which would cause an unexpected crash.
 It will also not clear the drawing log flags when the display is flushed.
 
-This can be done by setting the :ref:`constant <section.classpath.elements.constants>` ``com.microej.library.microui.impl.check-drawing-errors-on-flush`` to ``false`` when building the application.
+Disabling this check can be done by setting the :ref:`constant <section.classpath.elements.constants>` ``com.microej.library.microui.impl.check-drawing-errors-on-flush`` to ``false`` when building the application.
 If it is not set, it defaults to ``true``.
 
 Available constants
@@ -134,10 +134,10 @@ They are defined and documented in the class ``GraphicsContext``.
      - ``1 << 31``
      - Special flag denoting critical incidents.
 
-The special value ``DRAWING_SUCCESS`` (defined as ``0``) represents a state where no drawing log flags are set, so encountering this value means that no incident was reported.
+The special value ``DRAWING_SUCCESS`` (defined as ``0``) represents a state where no drawing log flags are set, so encountering this value means no incident was reported.
 
 New flag constants may be added in future versions of MicroUI.
-Also, their actual values may change and the developer should not rely on them.
+Also, their actual values may change, and the developer should not rely on them.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
