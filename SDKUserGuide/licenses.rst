@@ -478,6 +478,8 @@ In you WSL console, the dongle must also be recognized. Ckeck by using ``lsusb``
 
 This might not be sufficient. If you're still facing license issues, restart udev, abd attach your dongle to WSL once again.
 
+.. note::
+   Hibernation may have unattached your dongle. Reload udev, unplug/plug your dongle and attach it from powershell.
 
 Remote USB Dongle Connection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
