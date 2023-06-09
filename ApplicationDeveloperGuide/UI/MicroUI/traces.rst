@@ -3,7 +3,10 @@
 Debug Traces
 =============
 
-MicroUI logs several actions when traces are enabled. This chapter explains the traces identifiers.
+MicroUI logs several actions when traces are enabled. 
+This chapter explains the traces identifiers.
+
+.. note:: Most of the logs are only available on the Embedded VEE Port (not on the Simulator).
 
 Trace format
 ------------
