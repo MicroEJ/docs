@@ -9,6 +9,7 @@ How-to Guides
    gradleJavaHome
    gradleSystemProperty
    gradleSkipTask
+   resolveInIDE
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
