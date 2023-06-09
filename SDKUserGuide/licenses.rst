@@ -378,28 +378,31 @@ You first need to install usbipd-win on Windows from `usbipd-win Github reposito
 
 Then, install usbipd and update hardware database inside you WSL installation:
 
-   ::
+   .. code-block:: console
 
       sudo apt install linux-tools-generic hwdata
       sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20
 
-Add the udev rule described in :ref:`production_license_linux`, and reload the udev rules in WSL:
+Add the udev rule described in :ref:`production_license_linux`, and restart udev:
 
-   ::
+   .. code-block:: console
 
-      sudo udevadm control --reload-rules
+      /etc/init.d/udev restart
 
 You then need to unplug and plug your dongle again before attaching the dongle to WSL from powershell:
 
-  ::
+  .. code-block:: console
 
       usbipd.exe wsl attach --busid <BUSID>
 
-The <BUSID> can be obtainted with the following powershell command:
+The ``<BUSID>`` can be obtainted with the following powershell command:
 
-  ::
+  .. code-block:: console
 
       usbipd wsl list
+
+.. note::
+      You'll need to fllow these steps each time you system is rebooted or the dongle is plugged/unplugged.
 
 .. _production_license_troubleshooting:
 
@@ -442,6 +445,39 @@ Make sure to enable the USB dongle by clicking on it in the VirtualBox menu :gui
 
 To make this setting persistent, go to :guilabel:`Devices` > :guilabel:`USB` > :guilabel:`USB Settings...`
 and add the USB dongle in the :guilabel:`USB Devices Filters` list.
+
+WSL Troubleshooting
+"""""""""""""""""""
+
+Check that your dongle is attached to WSL from Powershell:
+
+  .. code-block:: console
+
+      usbipd wsl list
+
+You should have a  line saying ``Attached - Ubuntu``:
+
+  .. code-block:: console
+
+      PS C:\Users\sdkuser> usbipd.exe wsl list
+      BUSID  VID:PID    DEVICE                                                        STATE
+      2-1    096e:0006  USB Input Device                                              Attached - Ubuntu
+      2-6    0c45:6a10  Integrated Webcam                                             Not attached
+      2-10   8087:0026  Intel(R) Wireless Bluetooth(R)                                Not attached
+      3-1    045e:0823  USB Input Device                                              Not attached
+      3-4    046d:c31c  USB Input Device                                              Not attached
+
+In you WSL console, the dongle must also be recognized. Ckeck by using ``lsusb```:
+
+   .. code-block:: console
+
+      skduser@host:~/workspaces/docs$ lsusb
+      Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+      Bus 001 Device 003: ID 096e:0006 Feitian Technologies, Inc. HID Dongle (for OEMs - manufacturer string is "OEM")
+      Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+This might not be sufficient. If you're still facing license issues, restart udev, abd attach your dongle to WSL once again.
+
 
 Remote USB Dongle Connection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
