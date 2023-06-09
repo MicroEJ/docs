@@ -8,7 +8,7 @@ Principle
 =========
 
 Several C modules implement the UI Pack's Abstraction Layer APIs.
-Some are generic, and some are platform dependent (more precisely: GPU-dependent).
+Some are generic, and some are VEE Port dependent (more precisely: GPU-dependent).
 The generic modules provide header files to be extended by the specific modules. 
 The generic C modules are available on the :ref:`central_repository` and the specific C modules on the :ref:`developer_repository`.
 
