@@ -141,10 +141,65 @@ The supported blending modes are:
 - ``SRC_OVER``: The source pixels are drawn over the destination pixels.
 - ``DST_OVER``: The source pixels are drawn behind the destination pixels.
 - ``SRC_IN``: Keeps the source pixels that cover the destination pixels, discards the remaining source and destination pixels.
+- ``DST_IN``: Keeps the destination pixels that cover source pixels, discards the remaining source and destination pixels.
+- ``DST_OUT``: Keeps the destination pixels that are not covered by source pixels. Discards destination pixels that are covered by source pixels. Discards all source pixels.
+- ``PLUS``: Adds the source pixels to the destination pixels and saturates the result.
+- ``SCREEN``: Adds the source and destination pixels, then subtracts the source pixels multiplied by the destination.
+- ``MULTIPLY``: Multiplies the source and destination pixels.
 
-.. figure:: images/fillPathBlendMode.png
-   :width: 300px
-   :align: center
+.. figure:: images/blendmode-src.png
+   :figwidth: 15%
+   :align: left
+
+   ``SRC``
+
+.. figure:: images/blendmode-srcover.png
+   :figwidth: 15%
+   :align: left
+
+   ``SRC_OVER``
+
+.. figure:: images/blendmode-dstover.png
+   :figwidth: 15%
+   :align: left
+
+   ``DST_OVER``
+
+.. figure:: images/blendmode-srcin.png
+   :figwidth: 15%
+   :align: left
+
+   ``SRC_IN``
+
+.. figure:: images/blendmode-dstin.png
+   :figwidth: 15%
+   :align: left
+
+   ``DST_IN``
+
+.. figure:: images/blendmode-dstout.png
+   :figwidth: 15%
+   :align: left
+
+   ``DST_OUT``
+
+.. figure:: images/blendmode-plus.png
+   :figwidth: 15%
+   :align: left
+
+   ``PLUS``
+
+.. figure:: images/blendmode-screen.png
+   :figwidth: 15%
+   :align: left
+
+   ``SCREEN``
+
+.. figure:: images/blendmode-multiply.png
+   :figwidth: 15%
+   :align: left
+
+   ``MULTIPLY``
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
