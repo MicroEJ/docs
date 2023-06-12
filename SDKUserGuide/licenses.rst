@@ -329,7 +329,7 @@ Please create a ``/etc/udev/rules.d/91-usbdongle.rules`` file with the following
        
        LABEL="usbdongle_end"
 
-Then, restart udev: ``/etc/init.d/udev restart``
+Then, restart udev: ``sudo /etc/init.d/udev restart``
 
 You can check that the device is recognized by running the ``lsusb`` command.
 The output of the command should contain a line similar to the one below for each dongle:
