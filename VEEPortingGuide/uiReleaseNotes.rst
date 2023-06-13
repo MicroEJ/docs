@@ -293,6 +293,18 @@ The following table describes the version compatibility between the C module and
 | 1.0.0          | 3.0.4_rev2 and 3.0.4_rev4 |
 +----------------+---------------------------+
 
+**Think Silicon NemaGFX**
+
+The :ref:`NemaGFX C module <section_ui_c_module_microui_nemagfx>` targets the CPU that provides the NemaGFX accelerator. 
+
+The following table describes the version compatibility between the C module and the MicroEJ UI Packs:
+
++----------------+-----------------+
+| C Module Range | UI Pack Range   |
++================+=================+
+| 1.0.0          | [13.5.0-13.5.1] |
++----------------+-----------------+
+
 ..
    | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
