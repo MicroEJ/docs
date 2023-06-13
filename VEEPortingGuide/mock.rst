@@ -289,7 +289,7 @@ Once the module is built, the mock can be installed in a Platform in one of the 
 - by adding the mock module as a regular Platform :ref:`module dependency <mmm_module_dependencies>` (if your Platform configuration project contains a ``module.ivy`` file), 
 - or by manually copying the JAR file ``[mock_project]\target~\rip\mocks\[mock_name].jar`` to the :ref:`Platform configuration <platform_configuration_creation>` mock dropins folder ``dropins/mocks/dropins/``.
 
-During development, enable :ref:`resolve_foundation_libraries_in_workspace` to use the mock without having to install it after each modification.
+Make sure the optional :ref:`resolve_foundation_libraries_in_workspace` is enabled to use the mock without having to install it after each modification during development.
 
 Use
 ===
