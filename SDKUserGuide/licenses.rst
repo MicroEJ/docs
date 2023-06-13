@@ -267,7 +267,7 @@ You can then proceed to the USB dongle update:
 - Unzip the ``Activation Key`` file to a local directory 
 - Enter the directory just created by your ZIP extraction tool.
 - Launch the executable program.
-- Accept running the unsigned software if requested (Windows 10)
+- Accept running the unsigned software if requested (Windows 10/11)
   
   .. figure:: images/dongle/updateWarningUnknownPublisher.png
      :scale: 80%    

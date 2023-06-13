@@ -79,7 +79,7 @@ Prerequisites
   downloaded from https://repository.microej.com/packages/SDK (tested on 
   `MicroEJ SDK distribution 20.10
   <https://repository.microej.com/packages/SDK/20.10/MicroEJ-SDK-Installer-Win64-20.10.exe>`_)
-* Windows 10 with Windows Subsystem for Linux (WSL). See the
+* Windows 10 or higher with Windows Subsystem for Linux (WSL). See the
   `installation guide
   <https://learn.microsoft.com/en-us/windows/wsl/install>`_.
 * A Linux distribution installed on WSL (Tested on Ubuntu 19.10 eoan
