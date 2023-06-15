@@ -65,6 +65,27 @@ This plugin adds the following tasks to your project:
 .. graphviz:: graphApplicationModule.dot
 
 
+.. _sdk6_module_natures.std_java_lib:
+
+Standard Java Library
+---------------------
+
+**Plugin Name**: ``com.microej.gradle.std-java-library``
+
+**Tasks**:
+
+This plugin adds the following tasks to your project:
+
+- tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
+- :ref:`sdk6_module_natures.tasks.checkModule`
+
+.. graphviz:: graphStdJavaLibraryModule.dot
+
+**Configuration**:
+
+This module nature inherits from the configuration of all its tasks.
+
+
 .. _sdk6_module_natures.tasks:
 
 Tasks
