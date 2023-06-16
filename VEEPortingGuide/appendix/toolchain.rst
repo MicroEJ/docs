@@ -297,6 +297,79 @@ By default the GNU linker does not search unresolved symbols in previously loade
 To solve this issue, either change the load order of libraries (put ``microejapp.o`` first) or guard the libraries with the
 options ``--start-group`` and ``--end-group``.
 
+ARM Linker Specific Options
+===========================
+
+ARM linker (``armlink``) is the linker included in ARM Compiler and Keil MDK-ARM development tools.
+
+Fix Unexpected Undefined Symbol
+-------------------------------
+
+The ARM linker requires to resolve all symbols before detecting some that are not transitively required for linking the Executable. 
+This typically happen when linking ELF object files containing dead code or debug functions that are compiled but not intended to be linked.
+If such functions refer to unresolved symbols, you may need to define a fake symbol to make the linker happy.
+You can declare it in your BSP project or directly in your VEE Port as following:
+
+- Create a file ``link/armlink-weak.lscf`` in the :ref:`dropins <platformCustomization>` directory of your VEE Port configuration project.
+- Edit the file and declare as many symbols as required. See also the :ref:`microej_linker` chapter for more details on the MicroEJ linker file syntax.
+  
+  .. code-block:: xml
+
+    <lscFragment>
+      <defSymbol name="[symbolName]" value="0" rootSymbol="true" weak="true"/>
+    </lscFragment>
+
+The weak symbol(s) will be directly defined in the application object file (``microejapp.o``).
+
+Link the SOAR Debug Section
+---------------------------
+
+When building an Application, the :ref:`SOAR <soar>` generates a dedicated ELF debug section named ``.debug.soar`` in the application object file (``microejapp.o``).
+This section is used by debug tools such as the :ref:`Stack Trace Reader <stack_trace_reader>` or the :ref:`Heap Dumper <heapdumper>`.
+It is also used by the SOAR itself for :ref:`building Features <build_feature_off_board>` on a Kernel.
+
+Unfortunately, the ARM linker does not link this section in the output ELF executable, even with debug mode enabled.
+If you try to load the raw executable produced by the ARM linker, the tools will fail with a `no debug section` error.
+Here is an example with the :ref:`stack_trace_reader`:
+
+.. code-block:: console
+
+  =============== [ MicroEJ Core Engine Trace ] ===============
+  [INFO] Paste the MicroEJ core engine stack trace here.
+  1 : PROXY ERROR
+    [M8] - The file XXX is not a valid image file or has no debug informations (can't read file: XXX (no debug section)).
+
+To be able to use debug tools, the debug section must be manually linked and injected in the Executable.
+This is done using the `SOAR debug infos post-linker` :ref:`tool <MicroEJToolsSection>`.
+
+.. figure:: ../images/soarDebugInfosPostLinker-tabExecution.png
+   :align: center
+   :scale: 100%
+
+   SOAR debug infos post-linker tool Selection
+
+This tool takes two file options:
+
+- ``soar.object.file``: the internal object file produced by the SOAR when building the Application. It can be found in the :ref:`Launch Output Folder <application_output_folder>` at ``soar/[application_main_class].o``.
+- ``output.executable.file``: the Executable file produced by the ARM linker that includes the linked Application.
+
+.. figure:: ../images/soarDebugInfosPostLinker-tabConfiguration.png
+   :align: center
+   :scale: 100%
+
+   SOAR debug infos post-linker tool Configuration
+
+Once executed, it produces a new Executable file beside the original one with the ``.microej`` extension suffix
+
+.. code-block:: console
+
+    =============== [ SOARDebugInfosPostLinker ] ===============
+    Successfully generated c:\myExecutable.axf.microej.
+
+    SUCCESS
+
+This file now contains the linked ``.debug.soar`` section so that it can be used by the debug tools.
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

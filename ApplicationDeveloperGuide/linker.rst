@@ -1,3 +1,6 @@
+
+.. _microej_linker:
+
 ==============
 MicroEJ Linker
 ==============
