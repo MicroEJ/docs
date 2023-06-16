@@ -14,13 +14,13 @@ Using a :ref:`MicroEJ Application Launch <concepts-microejlaunches>`, the files 
 
    .. tab:: Build Output Files from MicroEJ Application Launch (Architecture ``8.x``)
 
-      .. figure:: images/build-output-files_arch8.png
+      .. figure:: images/build-output-files.png
          :alt: Build Output Files from MicroEJ Application Launch
          :align: center
 
    .. tab:: Build Output Files from MicroEJ Application Launchs (Architecture ``7.x``)   
 
-      .. figure:: images/build-output-files.png
+      .. figure:: images/build-output-files_arch7.png
          :alt: Build Output Files from MicroEJ Application Launch
          :align: center
 
