@@ -50,14 +50,8 @@ Build Descriptor File
 ---------------------
 
 The ``module.ivy`` file of the MMM project must be replaced by a ``build.gradle.kts`` file and a ``settings.gradle.kts`` file.
-The ``settings.gradle.kts`` file must contain the name of the project::
-
-   rootProject.name = "myProject"
-
-This name is used as the module name for the publication, 
-so it should be set to the value of the ``module`` attribute of the ``info`` tag of the ``module.ivy`` file.
-
-The ``build.gradle.kts`` file will contain all the other information of the ``module.ivy`` file.
+The ``settings.gradle.kts`` contains the name of the project, 
+whereas the ``build.gradle.kts`` file contains all the other information (module type, group, version, ...).
 
 Build Type
 ~~~~~~~~~~
@@ -86,11 +80,16 @@ The mapping between MMM build types and Gradle plugins is:
 Module Information
 ~~~~~~~~~~~~~~~~~~
 
-The module information defined by the ``info`` tag in the ``module.ivy`` file are replaced by:
+The module information defined by the ``info`` tag in the ``module.ivy`` file are split in the 2 following descriptor files:
 
-- the project property ``group`` in the ``build.gradle.kts`` file for the ``organisation`` attribute.
-- the property ``rootProject.name`` in the ``settings.gradle.kts`` file for the ``module`` attribute.
-- the project property ``version`` in the ``build.gradle.kts`` file for the ``revision`` attribute.
+- ``settings.gradle.kts``
+
+   - the property ``rootProject.name`` replaces the ``module`` attribute.
+
+- ``build.gradle.kts``
+
+   - the property ``group`` replaces the ``organisation`` attribute.
+   - the property ``version`` replaces the ``revision`` attribute.
 
 So for example, the following ``info`` tag::
 
