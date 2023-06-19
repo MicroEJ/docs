@@ -14,7 +14,7 @@ The SDK requires a JDK 11, so when a JDK 8 is used, the following kind of errors
 	> Could not resolve all files for configuration ':classpath'.
 	> Could not resolve com.microej.gradle.plugins:plugins:0.3.0.
 		Required by:
-			project : > com.microej.gradle.library:com.microej.gradle.library.gradle.plugin:0.3.0:20221118.151454-1
+			project : > com.microej.gradle.addon-library:com.microej.gradle.addon-library.gradle.plugin:0.3.0:20221118.151454-1
 		> No matching variant of com.microej.gradle.plugins:plugins:0.3.0:20221118.151454-1 was found. The consumer was configured to find a runtime of a library compatible with Java 8, packaged as a jar, and its dependencies declared externally, as well as attribute 'org.gradle.plugin.api-version' with value '7.4' but:
 			- Variant 'apiElements' capability com.microej.gradle.plugins:plugins:0.3.0 declares a library, packaged as a jar, and its dependencies declared externally:
 				- Incompatible because this component declares an API of a component compatible with Java 11 and the consumer needed a runtime of a component compatible with Java 8
