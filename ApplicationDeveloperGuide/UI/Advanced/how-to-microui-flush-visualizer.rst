@@ -1,13 +1,12 @@
 .. _microuiflushvisualizer:
 
 MicroUI Flush Visualizer
-==============================================================================================================
-Visualize the pixel surface drawn between 2 flushes to identify performance bottlenecks in your UI application
---------------------------------------------------------------------------------------------------------------
+========================
 
 Building smooth and visually appealing UI applications require a keen focus on performance.
 To achieve efficient UI rendering, minimizing unnecessary work that consumes valuable CPU time is essential.
-This article introduces the MicroUI Flush Visualizer, a tool designed to investigate potential bottlenecks in UI applications running on the Simulator.
+
+This article introduces the MicroUI Flush Visualizer, a tool designed to investigate potential performance bottlenecks in UI applications running on the Simulator by showing the pixel surface drawn between 2 MicroUI frame buffer flushes.
 
 - Requirements: VEE Port with Pack UI 13.0.0 or higher.
 - Installation procedure: `MicroUI Flush Visualizer <https://github.com/MicroEJ/How-To/tree/master/MicroUI-Flush-Visualizer>`__
