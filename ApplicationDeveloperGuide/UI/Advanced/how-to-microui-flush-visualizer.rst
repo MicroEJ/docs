@@ -19,7 +19,8 @@ One key element to successful smooth UI applications is performance.
 An efficient UI application must only draw what is necessary to achieve the visual effects desired.
 For example, assuming the application targets 60 FPS to perform a transition between two screens, that means the application has 1/60s ~= 16ms in total to execute the *Rendering Pipeline*.
 
-The *Rendering Pipeline* of a UI application consists of three main phases: Layout, Rendering, and Flush.
+The *Rendering Pipeline* of an UI application consists of three main phases: Layout, Rendering, and Flush.
+
 
 1. *Layout*: This phase determines which widgets should be displayed on the screen and their respective positions.
    It is typically triggered when widgets are added or removed from the widget hierarchy.
@@ -29,12 +30,14 @@ The *Rendering Pipeline* of a UI application consists of three main phases: Layo
    It is crucial for widgets to render only what is necessary and minimize overlapping with other widgets to ensure optimal performance.
 
 3. *Flush*: This phase involves copying the UI working buffer to the screen buffer.
-   This operation is performed by the VEE Port, and it is the responsibility of the Firmware developer to optimize this process, for example, by utilizing DMA2D.
+   This operation is performed by the VEE Port, and it is the responsibility of the Firmware developer to optimize this process, for example, by utilizing a GPU.
+
 
 The MicroUI Flush Visualizer is a tool designed to visualize the drawing operations requested by widgets during the *Rendering* phase between each flush.
 
 
-The MicroUIUI Flush Visualizer provides the following information:
+The MicroUI Flush Visualizer provides the following information:
+
 
 - A screenshot of the result of the Rendering Pipeline (what was shown on the screen).
 - A list of drawing operations that were performed during the *Rendering* phase.
