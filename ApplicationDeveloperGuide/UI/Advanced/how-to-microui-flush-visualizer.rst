@@ -9,7 +9,7 @@ Building smooth and visually appealing UI applications require a keen focus on p
 To achieve efficient UI rendering, minimizing unnecessary work that consumes valuable CPU time is essential.
 This article introduces the MicroUI Flush Visualizer, a tool designed to investigate potential bottlenecks in UI applications running on the Simulator.
 
-- Requirements: VEE Port with MICROUI 3.
+- Requirements: VEE Port with Pack UI 13.0.0 or higher.
 - Installation procedure: `MicroUI Flush Visualizer <https://github.com/MicroEJ/How-To/tree/master/MicroUI-Flush-Visualizer>`__
 
 Understanding the Rendering Pipeline
@@ -63,11 +63,3 @@ Use :ref:`systemview` to identify the bottlenecks in your application on the emb
 A total area drawn over 200% is inefficient, but your application may have bigger bottlenecks.
 Confirm it by measuring the time spent drawing vs. the time spent elsewhere between flushes.
 
-Known limitations:
-
-- Do not take into account the clip of the GraphicsContext.
-  Regardless of the clip, the complete area of the drawing is accounted for.
-- Do not take into account Vector Graphics (VG) operations.
-  VG drawings are not accounted for in the total of area drawn.
-- Do not take into account drawing that are done outside of the screen (even partially).
-  Such drawing are accounted as if they were done on the screen.
