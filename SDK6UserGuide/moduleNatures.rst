@@ -15,7 +15,7 @@ This page describes the most common module natures as follows:
 Add-On Library
 --------------
 
-**Plugin Name**: ``com.microej.gradle.library``
+**Plugin Name**: ``com.microej.gradle.addon-library``
 
 **Documentation**: :ref:`libraries`
 
@@ -65,12 +65,12 @@ This plugin adds the following tasks to your project:
 .. graphviz:: graphApplicationModule.dot
 
 
-.. _sdk6_module_natures.std_java_lib:
+.. _sdk6_module_natures.j2se_lib:
 
-Standard Java Library
----------------------
+J2SE Library
+------------
 
-**Plugin Name**: ``com.microej.gradle.std-java-library``
+**Plugin Name**: ``com.microej.gradle.j2se-library``
 
 **Tasks**:
 
@@ -79,7 +79,7 @@ This plugin adds the following tasks to your project:
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.checkModule`
 
-.. graphviz:: graphStdJavaLibraryModule.dot
+.. graphviz:: graphJ2seLibraryModule.dot
 
 **Configuration**:
 
