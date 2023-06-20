@@ -16,8 +16,8 @@ Eclipse
 
 In order to import an existing Gradle project in Eclipse, follow these steps:
 
-- click on ``File`` > ``Import...``.
-- select the project type ``Gradle > Existing Gradle Project`` and click on the ``Next`` button.
+- Click on ``File`` > ``Import...``.
+- Select the project type ``Gradle > Existing Gradle Project`` and click on the ``Next`` button.
 
 .. figure:: images/eclipse-import-gradle-project-01.png
    :alt: Project Type Selection in Eclipse
@@ -26,7 +26,7 @@ In order to import an existing Gradle project in Eclipse, follow these steps:
 
    Project Type Selection in Eclipse
 
-- select the root directory of the project.
+- Select the root directory of the project.
 
 .. figure:: images/eclipse-import-gradle-project-02.png
    :alt: Project root folder in Eclipse
@@ -35,7 +35,7 @@ In order to import an existing Gradle project in Eclipse, follow these steps:
 
    Project root folder in Eclipse
 
-- click on the ``Next`` button and finally on the ``Finish`` button.
+- Click on the ``Next`` button and finally on the ``Finish`` button.
 
 The Gradle project should now be imported in Eclipse.
 
@@ -46,9 +46,9 @@ IntelliJ IDEA
 
 In order to import an existing Gradle project in IntelliJ IDEA, follow the following steps:
 
-- click on ``File`` > ``New`` > ``Project From Existing Sources...``.
-- select the root directory of the project and click on the ``OK`` button.
-- select ``Import project from external model`` and choose ``Gradle``. 
+- Click on ``File`` > ``New`` > ``Project From Existing Sources...``.
+- Select the root directory of the project and click on the ``OK`` button.
+- Select ``Import project from external model`` and choose ``Gradle``. 
 
 .. figure:: images/intellij-import-gradle-project-01.png
    :alt: Project Import in IntelliJ IDEA
@@ -57,7 +57,7 @@ In order to import an existing Gradle project in IntelliJ IDEA, follow the follo
 
    Project Import in IntelliJ IDEA
 
-- click on the ``Create`` button.
+- Click on the ``Create`` button.
 
 The Gradle project should now be imported in IntelliJ IDEA.
 

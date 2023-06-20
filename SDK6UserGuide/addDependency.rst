@@ -56,8 +56,8 @@ Version
 
 The version declared in the dependencies of a build file are explicit:
 
-- release version: to depend on a released version of a module, the exact fixed version must be used (e.g., ``1.0.0``).
-- snapshot version: to depend on a snapshot version (``-RC``) of a module, the version must be declared explicitly with the ``-RC+`` suffix (e.g., ``1.0.0-RC+``).
+- Release version: to depend on a released version of a module, the exact fixed version must be used (e.g., ``1.0.0``).
+- Snapshot version: to depend on a snapshot version (``-RC``) of a module, the version must be declared explicitly with the ``-RC+`` suffix (e.g., ``1.0.0-RC+``).
 
 .. note::
    This is an important change compared to the SDK 5.

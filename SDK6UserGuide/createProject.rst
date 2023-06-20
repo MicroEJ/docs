@@ -22,21 +22,21 @@ Refer to `the official documentation <https://docs.gradle.org/current/userguide/
 
 In order to create a MicroEJ project, the best way is to use the ``application`` template:
 
-- in a new empty directory, execute the command ``gradle init``.
-- select the ``application`` project type.
-- select the ``Java`` implementation language.
-- for the step ``Split functionality across multiple subprojects?``, select ``no``.
-- select build script DSL ``Kotlin``.
+- In a new empty directory, execute the command ``gradle init``.
+- Select the ``application`` project type.
+- Select the ``Java`` implementation language.
+- For the step ``Split functionality across multiple subprojects?``, select ``no``.
+- Select build script DSL ``Kotlin``.
 
 .. note::
   MicroEJ uses Kotlin as the default Gradle build script DSL. 
   The use of the Groovy build script DSL is still possible but not officially supported.
 
-- decide if you want to use Gradle new APIs and behavior in your build script.
+- Decide if you want to use Gradle new APIs and behavior in your build script.
   If you are new to Gradle, choose ``no``.
-- for the test framework, select ``JUnit 4``.
-- choose the name of the project (defaults to the name of the parent directory).
-- choose the package name for the source files.
+- For the test framework, select ``JUnit 4``.
+- Choose the name of the project (defaults to the name of the parent directory).
+- Choose the package name for the source files.
 
 .. note::
   These steps are the ones proposed when creating a project with Gradle ``8.0.2``, which is the minimum version required by the SDK. 
@@ -46,10 +46,10 @@ The created project is a multi-project build containing a root project and a sin
 The ``app`` subproject is a standard Java Application project (Gradle ``java`` plugin),
 so it must be updated to be a MicroEJ project:
 
-- open the project in your favorite editor.
-- open the ``app/build.gradle.kts`` file.
-- erase its whole content.
-- add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
+- Open the project in your favorite editor.
+- Open the ``app/build.gradle.kts`` file.
+- Erase its whole content.
+- Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
 
     plugins {
         id("com.microej.gradle.library") version "0.6.0"
@@ -66,13 +66,13 @@ so it must be updated to be a MicroEJ project:
 
   Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
-- declare the dependencies required by your project in the ``dependencies`` block. For example::
+- Declare the dependencies required by your project in the ``dependencies`` block. For example::
 
       dependencies {
           implementation("ej.api:edc:1.3.5")
       }
 
-- delete the test class in the folder ``app/src/test/java``.
+- Delete the test class in the folder ``app/src/test/java``.
 
 Eclipse
 -------
@@ -84,8 +84,8 @@ Eclipse
 ..
   The creation of a project with Eclipse is done as follows:
 
-  - click on ``File`` > ``New`` > ``Project...``.
-  - select the project type ``Gradle > Gradle Project`` and click on the ``Next`` button.
+  - Click on ``File`` > ``New`` > ``Project...``.
+  - Select the project type ``Gradle > Gradle Project`` and click on the ``Next`` button.
 
   .. figure:: images/eclipse-create-gradle-project-01.png
     :alt: Project Type Selection in Eclipse
@@ -94,7 +94,7 @@ Eclipse
 
     Project Type Selection in Eclipse
 
-  - fill the name of the project in the ``Name`` field and click on the ``Next`` button.
+  - Fill the name of the project in the ``Name`` field and click on the ``Next`` button.
 
   .. figure:: images/eclipse-create-gradle-project-02.png
     :alt: Project root folder in Eclipse
@@ -103,8 +103,8 @@ Eclipse
 
     Project root folder in Eclipse
 
-  - in the ``Options`` screen, leave the default values and click on the ``Next`` button.
-  - click on the ``Next`` button and finally on the ``Finish`` button.
+  - In the ``Options`` screen, leave the default values and click on the ``Next`` button.
+  - Click on the ``Next`` button and finally on the ``Finish`` button.
 
     
 
@@ -128,19 +128,19 @@ IntelliJ IDEA
 
 The creation of a project with IntelliJ IDEA is done as follows:
 
-- click on ``File`` > ``New`` > ``Project...``.
-- fill the name of the project in the ``Name`` field.
-- select the location of the project in the ``Location`` field.
-- select the language ``Java`` in the ``Language`` field.
-- select ``Gradle`` for the ``Build system`` field.
-- select build script DSL ``Kotlin``.
+- Click on ``File`` > ``New`` > ``Project...``.
+- Fill the name of the project in the ``Name`` field.
+- Select the location of the project in the ``Location`` field.
+- Select the language ``Java`` in the ``Language`` field.
+- Select ``Gradle`` for the ``Build system`` field.
+- Select build script DSL ``Kotlin``.
 
 .. note::
   MicroEJ uses Kotlin as the default Gradle build script DSL. 
   The use of the Groovy build script DSL is still possible but not officially supported.
 
-- check the ``Add sample code`` checkbox.
-- click on ``Create`` button.
+- Check the ``Add sample code`` checkbox.
+- Click on ``Create`` button.
 
 .. figure:: images/intellij-create-gradle-project.png
    :alt: Project Creation in IntelliJ IDEA
@@ -152,8 +152,8 @@ The creation of a project with IntelliJ IDEA is done as follows:
 The project created by IntelliJ IDEA is a standard Java project (Gradle ``java`` plugin). 
 The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensure that the project uses the right version :
 
-- open the ``gradle/wrapper/gradle-wrapper.properties`` file.
-- update the Gradle version if it is needed:
+- Open the ``gradle/wrapper/gradle-wrapper.properties`` file.
+- Update the Gradle version if it is needed:
 
    .. code-block::
     
@@ -164,9 +164,9 @@ If you want to know more about the Gradle Wrapper, go to the :ref:`sdk_6_create_
 
 The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
 
-- open the ``build.gradle.kts`` file.
-- erase its whole content.
-- add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
+- Open the ``build.gradle.kts`` file.
+- Erase its whole content.
+- Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
 
     plugins {
         id("com.microej.gradle.library") version "0.6.0"
@@ -183,7 +183,7 @@ The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
 
   Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
-- declare the dependencies required by your project in the ``dependencies`` block. For example::
+- Declare the dependencies required by your project in the ``dependencies`` block. For example::
 
       dependencies {
           implementation("ej.api:edc:1.3.5")

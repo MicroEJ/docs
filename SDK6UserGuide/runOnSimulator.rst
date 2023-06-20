@@ -6,14 +6,14 @@ Run on Simulator
 In order to execute an Application on the Simulator, the SDK provides the Gradle ``runOnSimulator`` task.
 The prerequisites of this task are:
 
-- the property ``applicationMainClass`` must be defined in the ``microej`` configuration block of the Gradle build file of the project.
+- The property ``applicationMainClass`` must be defined in the ``microej`` configuration block of the Gradle build file of the project.
   It must be set to the Full Qualified Name of the Application main class, for example::
 
    microej {
      applicationMainClass = "com.mycompany.Main"
    }
 
-- the target VEE Port must be defined.
+- The target VEE Port must be defined.
   Refer to the :ref:`sdk_6_select_veeport` page to know the different ways to provide a VEE Port for a module project.
 
 Once these prerequisites are fulfilled, the Application can be started with the Simulator with the command line interface::
@@ -77,25 +77,25 @@ Once started, the Simulator waits for the connection of a debugger.
 
 If you want to connect the Eclipse debugger:
 
-- add a breakpoint in your Application code.
-- click on ``Run > Debug Configurations...``.
-- select ``Remote Java Application``.
-- click on the ``New launch configuration`` button.
-- give a name to the launcher in the ``Name`` field.
-- set the debug host and port.
-- click on the ``Debug`` button.
+- Add a breakpoint in your Application code.
+- Click on ``Run > Debug Configurations...``.
+- Select ``Remote Java Application``.
+- Click on the ``New launch configuration`` button.
+- Give a name to the launcher in the ``Name`` field.
+- Set the debug host and port.
+- Click on the ``Debug`` button.
 
 
 ..
    If you want to connect the IntelliJ IDEA debugger:
 
-   - add a breakpoint in your Application code.
-   - click on ``Run > Debug...``.
-   - click on ``Edit Configurations...``.
-   - click on the ``+`` button in the top bar and select ``Remote JVM Debug``.
-   - give a name to the launcher in the ``Name`` field.
-   - set the debug host and port.
-   - click on the ``Debug`` button.
+   - Add a breakpoint in your Application code.
+   - Click on ``Run > Debug...``.
+   - Click on ``Edit Configurations...``.
+   - Click on the ``+`` button in the top bar and select ``Remote JVM Debug``.
+   - Give a name to the launcher in the ``Name`` field.
+   - Set the debug host and port.
+   - Click on the ``Debug`` button.
 
 The debugger should connect to the Simulator and you should be able to debug your Application.
 
@@ -120,9 +120,9 @@ the ``runOnSimulator`` task::
 
 If you want to add the property in IntelliJ IDEA : 
 
-- Go to ``Run`` > ``Edit Configurations...``
-- Click on the ``+`` button and select ``Gradle``
-- Choose a name for the new configuration in the ``Name`` input field
+- Go to ``Run`` > ``Edit Configurations...``.
+- Click on the ``+`` button and select ``Gradle``.
+- Choose a name for the new configuration in the ``Name`` input field.
 - Add the task name with the ``veePort`` property in the ``Run`` dialog : ``runOnSimulator -PveePort="veePortName"``:
 
   .. figure:: images/intellij-runOnSimulator-run-configuration.png
@@ -132,7 +132,7 @@ If you want to add the property in IntelliJ IDEA :
 
      IntelliJ runOnSimulator Run Configuration Window
 
-- Click on ``OK``
+- Click on ``OK``.
 - Run the task by double clicking on the newly created Run Configuration in the Gradle view:
 
   .. figure:: images/intellij-runOnSimulator-run-configuration-gradle-view.png
@@ -142,12 +142,12 @@ If you want to add the property in IntelliJ IDEA :
 
      IntelliJ runOnSimulator Run Configuration in Gradle view
 
-If you want to add the property in Eclipse : 
+If you want to add the property in Eclipse: 
 
-- Go to ``Run`` > ``Run Configurations...``
-- Create a new Gradle Configuration
-- Choose a name for the new configuration in the ``Name`` input field
-- In the ``Gradle Tasks``, add the ``runOnSimulator`` task :
+- Go to ``Run`` > ``Run Configurations...``.
+- Create a new Gradle Configuration.
+- Choose a name for the new configuration in the ``Name`` input field.
+- In the ``Gradle Tasks``, add the ``runOnSimulator`` task:
 
   .. figure:: images/eclipse-runOnSimulator-gradle-tasks.png
      :alt: Eclipse runOnSimulator task Gradle Tasks tab
@@ -156,10 +156,10 @@ If you want to add the property in Eclipse :
      
      Eclipse runOnSimulator task Gradle Tasks tab
 
-- Go to the ``Project Settings`` tab
-- Check ``Override project settings``
-- Select ``Gradle Wrapper``
-- Add the property as a Program Argument :
+- Go to the ``Project Settings`` tab.
+- Check ``Override project settings``.
+- Select ``Gradle Wrapper``.
+- Add the property as a Program Argument:
 
   .. figure:: images/eclipse-runOnSimulator-project-settings.png
      :alt: Eclipse runOnSimulator task Project Settings tab
@@ -168,7 +168,7 @@ If you want to add the property in Eclipse :
      
      Eclipse runOnSimulator task Project Settings tab
 
-- Click on ``Run``
+- Click on ``Run``.
   
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

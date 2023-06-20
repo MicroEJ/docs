@@ -8,9 +8,9 @@ It relies on the standard `JUnit`_ API.
 
 There are different types of tests:
 
-- test on the Simulator
-- test on a device
-- test on a J2SE VM
+- Test on the Simulator
+- Test on a device
+- Test on a J2SE VM
 
 Each type of test is detailed in the next sections.
 
@@ -34,9 +34,9 @@ Gradle Integration
 Tests are configured and launched by Gradle. 
 Gradle provides 2 ways to configure tests in a project:
 
-- by using the built-in ``Test`` task, 
+- By using the built-in ``Test`` task, 
   as described in `Testing in Java & JVM projects <https://docs.gradle.org/current/userguide/java_testing.html>`__.
-- by using the new ``JVM Test Suite`` plugin, 
+- By using the new ``JVM Test Suite`` plugin, 
   as described in `The JVM Test Suite Plugin <https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html>`__.
 
 The ``JVM Test Suite`` plugin provides an enhanced model to declare multiple groups of automated testsuites, 
@@ -172,8 +172,8 @@ Filter the Tests
 Gradle automatically executes all the tests located in the test source folder.
 If you want to execute only a subset of these tests, Gradle provides 2 solutions:
 
-- filtering configuration in the build script file
-- filtering option in the command line
+- Filtering configuration in the build script file.
+- Filtering option in the command line.
 
 The tests filtering configuration must be done in the ``filter`` block of the test task:
 
@@ -221,10 +221,10 @@ Test on Device
 The SDK allows to execute a testsuite on a device.
 This requires to:
 
-- have a VEE Port which implements the :ref:`BSP Connection <bsp_connection>`.
-- have a device connected to your workstation both for programming the Executable and getting the output traces. 
+- Have a VEE Port which implements the :ref:`BSP Connection <bsp_connection>`.
+- Have a device connected to your workstation both for programming the Executable and getting the output traces. 
   Consult your VEE Port specific documentation for setup.
-- start the :ref:`tool_serial_to_socket` tool if the VEE Port does not redirect execution traces.
+- Start the :ref:`tool_serial_to_socket` tool if the VEE Port does not redirect execution traces.
 
 The configuration is similar to the one used to execute a testsuite on the Simulator.
 Therefore, the first step is to follow the instructions to :ref:`setup a testsuite on the Simulator <sdk_6_testsuite_on_sim>`.
@@ -359,9 +359,9 @@ the only point to take care is related to the tests source location, because:
 
 Therefore:
 
-- it is recommended to use the built-in ``test`` testsuite for either the tests on the Simulator or the tests on device.
+- It is recommended to use the built-in ``test`` testsuite for either the tests on the Simulator or the tests on device.
   This avoids extra configuration to change the location of the tests source folder.
-- the tests source folder of the other testsuite must be changed to use the ``src/test/java`` folder as well:
+- The tests source folder of the other testsuite must be changed to use the ``src/test/java`` folder as well:
 
 .. code-block::
 
@@ -502,11 +502,11 @@ it must be prefixed by ``microej.testsuite.properties.`` and passed as a System 
 either in the command line or in the build script file.
 For example to inject the property ``core.memory.immortal.size``:
 
-- in the command line with ``-D``::
+- In the command line with ``-D``::
 
    ./gradlew test -Dmicroej.testsuite.properties.core.memory.immortal.size=8192
 
-- in the build script file:
+- In the build script file:
 
    .. code-block::
 
@@ -556,9 +556,9 @@ to the :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port in the co
 
 If you want to add the property from IntelliJ IDEA : 
 
-- Go to ``Run`` > ``Edit Configurations...``
-- Click on the ``+`` button and select ``Gradle``
-- Choose a name for the new Configuration
+- Go to ``Run`` > ``Edit Configurations...``.
+- Click on the ``+`` button and select ``Gradle``.
+- Choose a name for the new Configuration.
 - Add the command line with the ``veePort`` property in the Run dialog : ``test -PveePort="veePortName"``:
 
   .. figure:: images/intellij-test-run-configuration.png
@@ -568,7 +568,7 @@ If you want to add the property from IntelliJ IDEA :
 
      IntelliJ test Run Configuration Window
 
-- Click on ``OK``
+- Click on ``OK``.
 - Run the task by double clicking on the newly created Run Configuration in the Gradle task view:
 
   .. figure:: images/intellij-test-run-configuration-gradle-view.png
@@ -578,11 +578,11 @@ If you want to add the property from IntelliJ IDEA :
 
      IntelliJ test Run Configuration in Gradle tasks view
 
-If you want to add the property from Eclipse : 
+If you want to add the property from Eclipse: 
 
-- Go to ``Run`` > ``Run Configurations...``
-- Create a new Gradle Configuration
-- In the ``Gradle Tasks``, add the ``test`` task :
+- Go to ``Run`` > ``Run Configurations...``.
+- Create a new Gradle Configuration.
+- In the ``Gradle Tasks``, add the ``test`` task:
 
   .. figure:: images/eclipse-test-gradle-tasks.png
      :alt: Eclipse test task Gradle Tasks tab
@@ -591,10 +591,10 @@ If you want to add the property from Eclipse :
      
      Eclipse test task Gradle Tasks tab
 
-- Go to the ``Project Settings`` tab
-- Check ``Override project settings``
-- Select ``Gradle Wrapper``
-- Add the property as a Program Argument :
+- Go to the ``Project Settings`` tab.
+- Check ``Override project settings``.
+- Select ``Gradle Wrapper``.
+- Add the property as a Program Argument:
 
   .. figure:: images/eclipse-test-project-settings.png
      :alt: Eclipse test task Project Settings tab
@@ -603,7 +603,7 @@ If you want to add the property from Eclipse :
      
      Eclipse test task Project Settings tab
 
-- Click on ``Run``
+- Click on ``Run``.
   
 The name of each VEE Port can be found by executing the tests with the verbose mode enabled::
 

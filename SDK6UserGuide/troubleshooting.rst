@@ -8,7 +8,7 @@ Java Compiler Version Issue
 
 The SDK requires a JDK 11, so when a JDK 8 is used, the following kind of errors are raised:
 
-- when fetching the MicroEJ Gradle plugin::
+- When fetching the MicroEJ Gradle plugin::
 
 	A problem occurred configuring root project 'myProject'.
 	> Could not resolve all files for configuration ':classpath'.
@@ -37,13 +37,13 @@ The SDK requires a JDK 11, so when a JDK 8 is used, the following kind of errors
 					- Doesn't say anything about its elements (required them packaged as a jar)
 					- Doesn't say anything about org.gradle.plugin.api-version (required '7.4')
 
-- when using the MicroEJ Gradle plugin::
+- When using the MicroEJ Gradle plugin::
 
 	Cause: com/microej/gradle/plugins/MicroejApplicationGradlePlugin has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
 
 The solution is to use a JDK 11 to fix this error:
 
-- for the command line interface, make sure that a JDK 11 is defined in the ``PATH`` environment.
+- For the command line interface, make sure that a JDK 11 is defined in the ``PATH`` environment.
   To check, run ``java -version``. You should see something like this::
 
     $ java -version
@@ -53,7 +53,7 @@ The solution is to use a JDK 11 to fix this error:
 
   Alternatively, you can set the ``JAVA_HOME`` environment variable to point to the installation directory of the JDK 11.
 
-- for IntelliJ IDEA, go to ``File`` > ``Settings...`` > ``Build, Execution, Deployment`` > ``Build Tools`` > ``Gradle``,
+- For IntelliJ IDEA, go to ``File`` > ``Settings...`` > ``Build, Execution, Deployment`` > ``Build Tools`` > ``Gradle``,
   and make sure the selected ``Gradle JVM`` is a JDK 11:
 
 	.. figure:: images/intellij-project-jdk.png
