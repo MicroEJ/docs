@@ -165,6 +165,9 @@ For example, with the following ``.nls.list`` file, the messages in ``Labels`` w
    # Missing translations for Content will fall back to ja_JP
    com.mycompany.myapp.Content:ja_JP
 
+In the case of message with plural forms in PO files, this works much the same way, using the messages and forms in the fallback locale if available.
+If no fallback locale is specified or if the requested message is not specified in it, then the ``msgid`` will be used for a count value of 1 and the ``msgid_plural`` will be used for any other value, as gettext would function.
+
 
 .. _ej.nls.NLS.getMessage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#getMessage-int-
 
