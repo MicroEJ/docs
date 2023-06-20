@@ -6,7 +6,7 @@ Build an Executable
 In order to build the Executable of an Application, the SDK provides the Gradle ``buildExecutable`` task.
 The prerequisites to use this task are:
 
-- the property ``applicationMainClass`` must be defined in the ``microej`` configuration block of the Gradle build file of the project.
+- The property ``applicationMainClass`` must be defined in the ``microej`` configuration block of the Gradle build file of the project.
   It must be set to the Full Qualified Name of the Application main class, for example::
 
    microej {
@@ -56,9 +56,9 @@ when calling the ``buildExecutable`` task::
 
 If you want to add the property in IntelliJ IDEA : 
 
-- Go to ``Run`` > ``Edit Configurations...``
-- Click on the ``+`` button and select ``Gradle``
-- Choose a name for the new Configuration
+- Go to ``Run`` > ``Edit Configurations...``.
+- Click on the ``+`` button and select ``Gradle``.
+- Choose a name for the new Configuration.
 - Add the task name with the ``veePort`` property in the Run dialog:
 
   .. figure:: images/intellij-buildExecutable-configuration.png
@@ -68,7 +68,7 @@ If you want to add the property in IntelliJ IDEA :
 
      IntelliJ buildExecutable Configuration Window
 
-- Click on ``OK``
+- Click on ``OK``.
 - Run the task by double clicking on the newly created Run Configuration in the Gradle task view:
 
   .. figure:: images/intellij-buildExecutable-configuration-gradle-view.png
@@ -78,12 +78,12 @@ If you want to add the property in IntelliJ IDEA :
 
      IntelliJ buildExecutable Configuration in Gradle tasks view
 
-If you want to add the property in Eclipse : 
+If you want to add the property in Eclipse: 
 
-- Go to ``Run`` > ``Run Configurations...``
-- Create a new Gradle Configuration
-- Choose a name for the new configuration in the ``Name`` input field
-- In the ``Gradle Tasks`` tab, add the ``buildExecutable`` task :
+- Go to ``Run`` > ``Run Configurations...``.
+- Create a new Gradle Configuration.
+- Choose a name for the new configuration in the ``Name`` input field.
+- In the ``Gradle Tasks`` tab, add the ``buildExecutable`` task:
 
   .. figure:: images/eclipse-buildExecutable-gradle-tasks.png
      :alt: Eclipse buildExecutable task Gradle Tasks tab
@@ -92,10 +92,10 @@ If you want to add the property in Eclipse :
      
      Eclipse buildExecutable task Gradle Tasks tab
 
-- Go to the ``Project Settings`` tab
-- Check ``Override project settings``
-- Select ``Gradle Wrapper``
-- Add the property as a Program Argument :
+- Go to the ``Project Settings`` tab.
+- Check ``Override project settings``.
+- Select ``Gradle Wrapper``.
+- Add the property as a Program Argument:
 
   .. figure:: images/eclipse-buildExecutable-project-settings.png
      :alt: Eclipse buildExecutable task Project Settings tab
@@ -104,7 +104,7 @@ If you want to add the property in Eclipse :
      
      Eclipse buildExecutable task Project Settings tab
 
-- Click on ``Run``
+- Click on ``Run``.
   
 The name of each VEE Port can be found by executing the ``buildExecutable`` task with the verbose mode enabled::
 

@@ -7,18 +7,18 @@ Publishing is the process by which the built artifacts of a module is made avail
 
 The requirements to publish a module are:
 
-- defining the ``name`` of the module. It is set by default to the name of the module folder,
+- Defining the ``name`` of the module. It is set by default to the name of the module folder,
   and can be changed in the ``settings.gradle.kts`` file located at the root of the module, thanks to the property ``rootProject.name``::
     
     rootProject.name = "myModule"
 
-- defining the ``group`` and ``version`` properties.
+- Defining the ``group`` and ``version`` properties.
   They can be set in the ``build.gradle.kts`` file::
 
     group = "com.mycompany"
     version = "1.0.0"
 
-- declaring a ``maven`` publication repository.
+- Declaring a ``maven`` publication repository.
   This can be done in the build file for example, with::
 
     publishing {
@@ -38,13 +38,13 @@ Then the publication of a module to a repository is achieved by executing the ``
 
 The following artifacts are automatically published:
 
-- the main artifact, which is the JAR file for Application and Add-On Library natures.
-- the README.md file.
-- the CHANGELOG.md file.
-- the LICENSE.txt file.
-- the Gradle module descriptor file.
-- the Ivy descriptor file (to allow SDK 5 project to fetch it).
-- the WPK file, if the project is an Application.
+- The main artifact, which is the JAR file for Application and Add-On Library natures.
+- The README.md file.
+- The CHANGELOG.md file.
+- The LICENSE.txt file.
+- The Gradle module descriptor file.
+- The Ivy descriptor file (to allow SDK 5 project to fetch it).
+- The WPK file, if the project is an Application.
 
 To publish the Executable file of an Application, the ``buildExecutable`` task must be explicitly called::
 
