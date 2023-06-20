@@ -6,9 +6,9 @@ Migrate an MMM Project
 This page explains how to migrate a project created with the SDK 5 or lower to the SDK 6.
 It covers the following items:
 
-- project structure
-- build descriptor file
-- build scripts
+- Project structure
+- Build descriptor file
+- Build scripts
 
 .. _sdk_6_migrate_project_structure:
 
@@ -18,9 +18,9 @@ Project structure
 The structure of an SDK 6 Gradle project is similar to an MMM project.
 The differences are:
 
-- the ``module.ivy`` file is replaced by a ``build.gradle.kts`` file and a ``settings.gradle.kts`` file (see :ref:`sdk_6_migrate_build_file`).
-- the ``module.ant`` and ``override.module.ant`` files are removed (see :ref:`sdk_6_migrate_build_scripts`).
-- the ``build`` folder located at the root of the project and containing the Application configuration properties is replaced by the ``configuration`` folder.
+- The ``module.ivy`` file is replaced by a ``build.gradle.kts`` file and a ``settings.gradle.kts`` file (see :ref:`sdk_6_migrate_build_file`).
+- The ``module.ant`` and ``override.module.ant`` files are removed (see :ref:`sdk_6_migrate_build_scripts`).
+- The ``build`` folder located at the root of the project and containing the Application configuration properties is replaced by the ``configuration`` folder.
   This change is required since Gradle uses the ``build`` folder to store the generated files and artifacts (equivalent of the MMM ``target~`` folder).
 
 Therefore, here are the 2 project structures side by side: 
@@ -84,12 +84,12 @@ The module information defined by the ``info`` tag in the ``module.ivy`` file ar
 
 - ``settings.gradle.kts``
 
-   - the property ``rootProject.name`` replaces the ``module`` attribute.
+   - The property ``rootProject.name`` replaces the ``module`` attribute.
 
 - ``build.gradle.kts``
 
-   - the property ``group`` replaces the ``organisation`` attribute.
-   - the property ``version`` replaces the ``revision`` attribute.
+   - The property ``group`` replaces the ``organisation`` attribute.
+   - The property ``version`` replaces the ``revision`` attribute.
 
 So for example, the following ``info`` tag::
 
