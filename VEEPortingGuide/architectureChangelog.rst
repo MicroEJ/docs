@@ -225,59 +225,6 @@ Tools
 
 - Removed dependency on GNU ``ar`` program to create ``microejruntime.a`` archive file.
 
-
-.. _changelog-8.0.0:
-
-[8.0.0] - 2023-MM-DD
---------------------
-
-This major Architecture version update introduces the following main features:
-
-- Added compatibility with dynamic linkers enabling Address Space Layout Randomization (ASLR).
-- Added :ref:`Feature build on device <build_feature_on_device>`. For that, the SOAR has been deeply redesigned and split into multiple phases.
-  The most noticeable change is about the :ref:`SOAR Information File <soar_info_file>` that is now composed of 3 files.
-- Added Feature portability. The same ``.fo`` file can now be installed:    
-  
-  - On any Executable built from the same Kernel Application (``microejapp.o``). 
-    The VEE Port C code can be modified and relinked without requiring to rebuild the ``.fo`` file anymore.
-  
-  - On different Kernel Applications provided some conditions are met. 
-    Basically, a ``.fo`` built on Kernel 1 can be installed on Kernel 2 if the exposed Kernel APIs are left unchanged.
-    See :ref:`feature_portability_control` for more details.
-
-If you plan to migrate a VEE Port from Architecture ``7.x`` to Architecture ``8.x``, consider the :ref:`architecture7_migration` chapter.
-
-Core Engine
-~~~~~~~~~~~
-
-- Renamed :ref:`Core Engine sections <core_engine_link>` to fully respect the ELF standard naming convention. 
-- Removed check when passing a non-immortal array in SNI if VEE Port option ``core.sni.nonimmortal.access`` was set to ``false``.
-- Removed ``LLBSP_isInReadOnlyMemory`` in Core Engine Abstraction Layer (``LLBSP.h`` file).
-
-Foundation Libraries
-~~~~~~~~~~~~~~~~~~~~
-
-- Removed Foundation Libraries API Jars and Javadoc.
-
-Integration
-~~~~~~~~~~~
-
-
-Simulator
-~~~~~~~~~
-
-- Added missing default values for the properties ``s3.slow``, ``console.logs.period``, and ``s3.hil.timeout`` when launching the Simulator from the command line.
-
-SOAR
-~~~~
-
-Tools
-~~~~~
-
-- Removed :ref:`Test Suite Engine <testsuite_engine>`. If needed, the Test Suite Engine is available in the :ref:`Build Kit <mmm_build_kit>`.
-- Removed Immutables NLS library. Use :ref:`Binary NLS <chapter.nls>` add-on library instead. 
-
-
 .. _changelog-7.18.1:
 
 [7.18.1] - 2022-10-26
