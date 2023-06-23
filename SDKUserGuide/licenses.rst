@@ -489,7 +489,7 @@ Remote USB Dongle Connection
 When the dongle cannot be physically plugged to the machine running the SDK (cloud builds, virtualization, missing permissions, ...),
 it can be configured using USB redirection over IP network. 
 
-There are many hardware and software solutions available on the market. Among others, this has been tested with https://www.net-usb.com/.
+There are many hardware and software solutions available on the market. Among others, this has been tested with https://www.net-usb.com/ and https://www.virtualhere.com/.
 Please contact :ref:`our support team <get_support>` for more details.
 
 ..
