@@ -160,7 +160,7 @@ The following example defines a Kernel that exposes all APIs of ``EDC`` library.
 Build Options
 ~~~~~~~~~~~~~~
 
-The :ref:`Kernel Application module nature <module_natures.kernel_application>` section describes all options available for building a Kernel module.
+The :ref:`Kernel Application module nature <module_natures.kernel_application>` section describes all the options available for building a Kernel module.
 
 Build only a Virtual Device with a pre-existing Kernel
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
