@@ -60,7 +60,7 @@ The MMM build type defined in the ``module.ivy`` file with the ``ea:build`` tag 
 For example, here is the block to add at the beginning of the file to migrate a ``microej-javalib`` MMM module::
 
    plugins {
-       id("com.microej.gradle.addon-library") version "0.6.0"
+       id("com.microej.gradle.addon-library") version "0.7.0"
    }
 
 The mapping between MMM build types and Gradle plugins is:
@@ -228,7 +228,7 @@ This section gives an example of migration from a ``module.ivy`` file to a ``bui
    :caption: build.gradle.kts
 
    plugins {
-       id("com.microej.gradle.application") version "0.6.0"
+       id("com.microej.gradle.application") version "0.7.0"
    }
 
    group = "com.mycompany"
