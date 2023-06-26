@@ -6,7 +6,7 @@ Introduction
 
 The Kernel Developer's Guide describes how to create a Kernel Application. 
 A Kernel Application is a :ref:`Standalone Application <standalone_application>`
-that can be extended (statically or dynamically) to install, run and control the execution of new
+that can be extended (statically or dynamically) to install, run, and control the execution of new
 applications called :ref:`Sandboxed Applications <sandboxed_application>`.
 
 The intended audience of this document are Java developers and system
