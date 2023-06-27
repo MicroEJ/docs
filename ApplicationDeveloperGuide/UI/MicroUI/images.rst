@@ -421,14 +421,14 @@ The given color value is interpreted as a 24-bit RGB color, where the high-order
 Other Formats
 ~~~~~~~~~~~~~
 
-It is also possible to create a buffered image with another format using the `constructor with the format parameter_`.
+It is also possible to create a buffered image with another format using the `constructor with the format parameter`_.
 
 The other formats than the display one are not supported by MicroUI.
-But a VEE port can manage one or more formats (see XXX).
+But a VEE port can manage one or more formats (see :ref:`section_drawings_destination_format`).
 
 Depending on the format, the transparency may be supported.
 
-.. _constructor with the format parameter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#BufferedImage-int-int-Format
+.. _constructor with the format parameter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#BufferedImage-int-int-ej.microui.display.Format-
 
 .. _images_heap:
 

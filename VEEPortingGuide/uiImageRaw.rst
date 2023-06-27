@@ -21,7 +21,7 @@ The output format can be:
 
 The Image Renderer manages only the MicroEJ formats (:ref:`section_image_standard_raw`, :ref:`section_image_display_raw`, and :ref:`section_image_custom_raw`).
 
-The following table list all the formats and their usage.
+The following table lists all the formats and their usage.
 
 +-----------+---------+---------+----------------------------+
 | Format    | Input   | Output  | BufferedImage              |
@@ -81,7 +81,7 @@ The required memory also depends on the number of bits per pixel of the MicroEJ 
 
       required_memory = header + (image_width * image_height) * bpp / 8;
 
-The pixels array is stored after the MicroEJ image file header. A padding between the header and the pixels array is added to force to start the pixels array at a memory address aligned on the number of bits-per-pixels.
+The pixel array is stored after the MicroEJ image file header. A padding between the header and the pixel array is added to force to start the pixel array at a memory address aligned on the number of bits-per-pixels.
 
 .. figure:: images/uiFormat01.*
    :width: 50.0%
@@ -260,10 +260,10 @@ This format is identified by a specific format value between 0 and 7: see `custo
 Images with a custom format can be used as any other image.
 For that, it requires some support at different levels depending on their usage:
 
-* To convert an image to this format at compile-time and embed it, an extension of the image generator is necessary; see:ref:`section_imagegenerator_custom_format`.
-* To create a new one at runtime, some native extension is necessary; see:ref:`section_buffered_image`.
-* To use it as a source (to draw the image in another buffer), some native extension is necessary; see:ref:`section_buffered_image_drawer_custom`.
-* To use it as a destination (to draw into the image), some native extension is necessary; see:ref:`section_buffered_image`.
+* To convert an image to this format at compile-time and embed it, an extension of the image generator is necessary; see :ref:`section_imagegenerator_custom_format`.
+* To create a new one at runtime, some native extension is necessary; see :ref:`section_buffered_image`.
+* To use it as a source (to draw the image in another buffer), some native extension is necessary; see :ref:`section_buffered_image_drawer_custom`.
+* To use it as a destination (to draw into the image), some native extension is necessary; see :ref:`section_buffered_image`.
 
 .. _section_image_binary_raw:
 
@@ -367,9 +367,7 @@ The required memory becomes:
 
 .. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#
 .. _ImageIO: https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html
-
-.. XXX TODO XXX to replace by https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Format.html#CUSTOM_0
-.. _custom formats: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html
+.. _custom formats: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Format.html#CUSTOM_0
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

@@ -14,14 +14,16 @@ MicroVG Implementation
 
 **Changed**
 
-* Compatible with MicroVG API 1.3. 
+* Compatible with `MicroVG API 1.3`_.
+
+.. _MicroVG API 1.3: https://repository.microej.com/modules/ej/api/microvg/1.3.0/
 
 Front Panel
 """""""""""
 
 **Fixed**
 
-* Simplify pixels data conversion after drawing.
+* Simplify pixel data conversion after drawing.
 
 [1.2.1] - 2023-02-06
 ====================

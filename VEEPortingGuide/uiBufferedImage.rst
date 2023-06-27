@@ -49,7 +49,7 @@ A MicroUI ``BufferedImage`` can be created specifying a :ref:`section_image_stan
 
 .. note:: 
 
-  When the display format is the same as the standard format used to create the buffered image, the rules to create the image, to draw into and to draw it are the same as the Display format.
+  When the display format is the same as the standard format used to create the buffered image, the rules to create the image, to draw into it and to draw it are the same as the Display format.
   This chapter describes the use case when the format differs from the *display* format.
 
 Unlike the display format, the VEE Port must feature a :ref:`drawer <section_buffered_image_drawer>` for each standard format.
@@ -111,11 +111,11 @@ The MicroUI C module uses some tables to redirect the image management to the ex
 There is one table per Abstraction Layer API not to embed all algorithms (a table and its functions are only embedded in the final binary file if and only if the MicroUI drawing method is called).
 The tables size is dimensioned according to the define value. 
 
-To manipulate the tables, the C module uses 0-based index whose value is different than the image format value.
+To manipulate the tables, the C module uses 0-based index whose value is different from the image format value.
 For instance, according to the VEE Port capabilities, the support image format ARGB8888 can have the index ``1`` for a given VEE Port and ``2`` for another one.
 This differentiation reduces the size of the tables: when the VEE Port does not support a format, no extra size in the tables is used (no empty cell).
 
-.. note:: The index ``0`` is reserved to the *display* format. 
+.. note:: The index ``0`` is reserved for the *display* format.
 
 A table holds a list of functions for a given algorithm.
 For instance, the following table allows redirecting the drawing ``writePixel`` to the drawers ``0`` to ``2``:
@@ -364,7 +364,7 @@ See :ref:`section_drawings_cco`.
   };
 
   DRAWING_Status UI_DRAWING_drawLine(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY){
-    // table redirection according to the drawer index
+    // Table redirection according to the drawer index
     return (*UI_DRAWER_drawLine[gc->drawer])(gc, startX, startY, endX, endY);
   }
 
@@ -388,7 +388,7 @@ The behavior after this function is similar to :ref:`section_drawings_cco_custom
   
    // use the preprocessor 'weak'
   __weak DRAWING_Status UI_DRAWING_drawLine_1(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY){
-      // default behavior: call the stub implementation
+      // Default behavior: call the stub implementation
     return UI_DRAWING_STUB_drawLine(gc, startX, startY, endX, endY);
   }
 
@@ -399,7 +399,7 @@ The implementation of the weak function only consists in calling the stub implem
 .. code-block:: c
 
   DRAWING_Status UI_DRAWING_STUB_drawLine(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY){
-    // set  the drawing log flag "not implemented"
+    // Set the drawing log flag "not implemented"
     LLUI_DISPLAY_reportError(gc, DRAWING_LOG_NOT_IMPLEMENTED);
     return DRAWING_DONE;
   }
@@ -439,19 +439,19 @@ This function (actually ``UI_DRAWING_is_drawer_1`` thanks to the define, see abo
 
   DRAWING_Status UI_DRAWING_A8_drawLine(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY){
 
-    // retrieve the destination buffer address
+    // Retrieve the destination buffer address
     uint8_t* destination_address = LLUI_DISPLAY_getBufferAddress(&gc->image);
     
-    // update the next "flush"'s dirty area
+    // Update the next "flush"'s dirty area
     LLUI_DISPLAY_setDrawingLimits(startX, startY, endX, endY);
 
-    // configure the GPU clip
+    // Configure the GPU clip
     THIRD_PARTY_DRAWER_set_clip(startX, startY, endX, endY);
 
-    // draw the line
-    THIRD_PARTY_DRAWER_draw_line(destination_address, startX, startY, endX, endY, (gc->foreground_color & 0xff) /* use the blue component as opacity level */),
+    // Draw the line
+    THIRD_PARTY_DRAWER_draw_line(destination_address, startX, startY, endX, endY, (gc->foreground_color & 0xff) /* Use the blue component as opacity level */),
 
-    // here, consider the drawing as done (not asynchronous drawing)
+    // Here, consider the drawing as done (not an asynchronous drawing).
     return DRAWING_DONE;
   }
 
@@ -472,7 +472,7 @@ Unlike the Single Format Implementation, the destination may be another format t
 Consequently, the drawer must check the image format **and** the destination format.
 
 The following graph illustrates the drawing of an image (draw, rotate, or scale) in another image or display buffer (to draw a shape, see :ref:`section_buffered_image_c_drawinto`).
-This graph gathers both:ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`.
+This graph gathers both :ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`.
 
 .. graphviz:: :align: center
 
@@ -605,16 +605,16 @@ It only describes the *final* use-case: draw a custom image in an unknown destin
 
 .. code-block:: c
 
-  // this image drawer manages the custom format 4
+  // This image drawer manages the custom format 4
   #define UI_IMAGE_IDENTIFIER_CMD_FORMAT 4
   #define UI_IMAGE_DRAWING_CMD_draw CONCAT(UI_IMAGE_DRAWING_draw_custom_, UI_IMAGE_IDENTIFIER_CMD_FORMAT)
 
-  // macro to map a custom struct "cmd_image_t*" on the MicroUI Image buffer
+  // Macro to map a custom struct "cmd_image_t*" on the MicroUI Image buffer
   #define MAP_CMD_ON_IMAGE(image) ((cmd_image_t*) LLUI_DISPLAY_getBufferAddress(image))
   
   DRAWING_Status UI_IMAGE_DRAWING_CMD_draw(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha){
     
-    // retrieve the commands list
+    // Retrieve the commands list
     cmd_image_t* cmd = MAP_CMD_ON_IMAGE(img);
 
     for(int i = 0; i < cmd->size; i++) {
@@ -622,21 +622,21 @@ It only describes the *final* use-case: draw a custom image in an unknown destin
 
         case COMMAND_LINE: {
 
-          // change the graphics context color
+          // Change the graphics context color
           gc->foreground_color = cmd->list[i].color;
 
-          // draw a line as usual
+          // Draw a line as usual
           UI_DRAWING_drawLine(gc, x + cmd->list[i].args[0], y + cmd->list[i].args[1], x + cmd->list[i].args[2], y + cmd->list[i].args[3]);
 
           break;
         }
 
-        // all others commands
+        // All others commands
         // [...] 
       }
     }
     
-    // restore the original color
+    // Restore the original color
     gc->foreground_color = original_color;
 
     return DRAWING_DONE;
@@ -653,7 +653,7 @@ Thanks to the define ``UI_IMAGE_IDENTIFIER_CMD_FORMAT``, this drawer uses the cu
 
 .. code-block:: c
 
-  // this image drawer manages the custom format 6
+  // This image drawer manages the custom format 6
   #define UI_IMAGE_IDENTIFIER_PROPRIETARY_FORMAT 6
   #define UI_IMAGE_DRAWING_PROPRIETARY_draw CONCAT(UI_IMAGE_DRAWING_draw_custom_, UI_IMAGE_IDENTIFIER_PROPRIETARY_FORMAT)
 
@@ -661,14 +661,14 @@ Thanks to the define ``UI_IMAGE_IDENTIFIER_CMD_FORMAT``, this drawer uses the cu
     
     DRAWING_Status ret;
 
-    // can only draw in an image with the same format as display 
+    // Can only draw in an image with the same format as display
     if (LLUI_DISPLAY_isDisplayFormat(gc->image.format)) {
-      // call a third-party library
+      // Call a third-party library
       THIRD_PARTY_LIB_draw_image([...]);
       ret = DRAWING_DONE; // or DRAWING_RUNNING
     }
     else {
-      // cannot draw the image: call stub implementation
+      // Cannot draw the image: call stub implementation
       ret = UI_DRAWING_STUB_drawImage(gc, img, regionX, regionY, width, height, x, y, alpha);
     }
 
@@ -705,14 +705,14 @@ Drawer
 It is possible to draw in images with a format different than the display one by implementing the ``UIDrawing`` interface.
 
 This interface contains one method for each drawing primitive.
-Only the necessary methods can be implemented.
+Only the necessary methods need be implemented.
 Each non-implemented method will result in calling the stub implementation.
 
 The method ``handledFormat()`` must be implemented and returns the managed format.
 
 Once created, the ``UIDrawing`` implementation must be registered as a service.
 
-Creating an image with a standard format (different than the display one) is supported in the Front Panel as long as a ``UIDrawing`` is defined for this format.
+Creating an image with a standard format (different from the display one) is supported in the Front Panel as long as a ``UIDrawing`` is defined for this format.
 
 Creating an image with a custom format also requires implementing the :ref:`image creation<section_buffered_image_fp_creation>` in the VEE Port.
 

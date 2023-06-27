@@ -17,8 +17,8 @@ This module is composed of several elements:
 Compile-time Image
 ==================
 
-The Image module implements the MicroVG `VectorImage`_ framework. 
-It provides an offline tool that consists of opening and decoding an image file and some Abstraction Layer APIs that manipulate the image at runtime. 
+The Image module implements the MicroVG `VectorImage`_ framework.
+It provides an offline tool that consists in opening and decoding an image file and some Abstraction Layer APIs that manipulate the image at runtime.
 
 A compile-time image file:
 
@@ -26,7 +26,7 @@ A compile-time image file:
 * is identified by the resource name,
 * is encoded in a binary format compatible with the :ref:`image renderer <section_vg_image_engine>`,
 * can be stored as an internal resource or an external one (see :ref:`chapter.microej.applicationResources`, but only in a byte-addressable memory),
-* is an immutable image: the application cannot draw into.
+* is an immutable image: the application cannot draw into it.
 
 .. _section_vg_image_generator:
 
@@ -42,7 +42,7 @@ The tool converts :
 * The Scalable Vector Graphics (SVG): this kind of image is partially supported: linear gradients but no animations. It is advised to convert the SVG files into AVD files before using the Image Converter tool.
 
 The tool generates a binary (RAW) file compatible with the :ref:`section_vg_image_engine`.
-The RAW file consists of a series of vector paths and animations.
+The RAW file consists in a series of vector paths and animations.
 
 To list the images to convert, the tool uses the application list files whose extension is ``.vectorimage.list``. 
 The generator provides an option to encode the path data (the path's points): it can be stored on signed 8, 16, 32-bit words or in ``float`` format.
@@ -52,11 +52,11 @@ This is an example of ``.vectorimage.list`` files:
 
 .. code-block::
 
-   # convert an AVD in float format
+   # Convert an AVD in float format
    /avd_image_1.xml:VGF
-   # convert an AVD in signed 16-bit format
+   # Convert an AVD in signed 16-bit format
    /path/to/avd_image_2.xml:VG16
-   # convert an SVG in signed 8-bit format
+   # Convert an SVG in signed 8-bit format
    /svg_image.svg:VG8
 
 MicroVG Library
@@ -96,7 +96,7 @@ Buffered Vector Image
 This image is a `ResourceVectorImage`_ that the application can draw into.
 More specifically, the drawings are not *performed* but *stored*.
 
-The concept consists in storing the compatible MicroUI drawings [#note_uibvi]_ and all MicroVG drawings into a commands list.
+The concept consists in storing the compatible MicroUI drawings [#note_uibvi]_ and all MicroVG drawings into a command list.
 The application can then play this list of commands applying (or not) a global transformation.
 
 .. note:: The implementation uses the concept of MicroUI :ref:`custom <section_image_custom_raw>` format (the custom ``Format.CUSTOM_7``).
@@ -124,9 +124,9 @@ The :ref:`Vector Image Generator <section_vg_image_generator>` can generate a co
 
 .. code-block::
 
-   # convert an AVD into a compatible AVD format
+   # Convert an AVD into a compatible AVD format
    /avd_image.xml:AVD
-   # convert an SVG in a compatible AVD format
+   # Convert an SVG into a compatible AVD format
    /svg_image.svg:AVD
 
 .. _section_vg_image_engine:
@@ -135,7 +135,7 @@ Rendering Engine
 ================
 
 The Vector Image Rendering Engine has the responsibility of drawing the vector images.
-The destination is the display buffer, a MicroUI BufferedImage or a MicroVG BufferedVectorImage.
+The destination is the display buffer, a MicroUI :ref:`BufferedImage<section_buffered_image>` or a MicroVG BufferedVectorImage.
 
 Three transformations can be applied when drawing a vector image:
 

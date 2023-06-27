@@ -10,7 +10,7 @@ Principle
 
 The MicroUI implementation for MicroEJ requires an Abstraction Layer implementation. This Abstraction Layer implementation finalizes the MicroUI implementation started with the static initialization step (see :ref:`section_static_init`) for a given VEE Port.
 
-The Abstraction Layer implementation consists of a set of headers files to implement in C to target the hardware drivers. Some functions are mandatory, others are not. Some other headers files are also available to call UI engines internal functions.
+The Abstraction Layer implementation consists in a set of headers files to implement in C to target the hardware drivers. Some functions are mandatory, others are not. Some other headers files are also available to call UI engines internal functions.
 
 For the simulator, some Front Panel interfaces and classes allow to specify the simulated VEE Port characteristics. 
 
@@ -63,9 +63,9 @@ The specification of class names is:
 
 - Package are the same than the MicroUI library (`ej.microui.display`_, `ej.microui.event`_, `ej.microui.led`_).
 - Name start with ``LLUI``.
-- Second part name refers the UI engine: ``Display``, ``Input``, ``Led``.
-- Files whose name ends with  ``Impl`` list methods to implement like embedded VEE Port.
-- Files whose name has no suffix list internal UI engines functions.
+- The second part of the name refers the UI engine: ``Display``, ``Input``, ``Led``.
+- Files whose name ends with ``Impl`` list methods to implement like in the embedded VEE Port.
+- Files whose name has no suffix list internal UI engine functions.
 
 There are some exceptions :
 

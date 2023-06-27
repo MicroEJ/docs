@@ -22,7 +22,7 @@ Furthermore, the BSP can override an Abstraction Layer API for a specific MicroE
 Destination Format
 ==================
 
-Since MicroUI 3.2, the destination buffer of the drawings can be different than the display buffer format (see :ref:`section_image_display_raw`).
+Since MicroUI 3.2, the destination buffer of the drawings can be different from the display buffer format (see :ref:`section_image_display_raw`).
 This destination buffer format can be a :ref:`standard format <section_image_standard_raw>` (ARGB8888, A8, etc.) or a :ref:`custom format <section_image_custom_raw>`. 
 
 See :ref:`section_buffered_image` for more information about how to create buffered images with another format than the display format and how to draw in them.
@@ -61,7 +61,7 @@ This extension can consist in:
 
 To draw the custom images, the Image Renderer introduces the notion of *custom image drawer*.
 This drawer is an engine that has the responsibility to draw the image.
-Each custom image format (``0`` to ``7``) has its image drawer.
+Each custom image format (``0`` to ``7``) has its own image drawer.
 
 Each drawing of a custom image is redirected to the associated image drawer.
 
@@ -177,10 +177,10 @@ Similar to ``LLUI_PAINTER_IMPL_drawLine``, see :ref:`section_drawings_cco`.
 
 .. code-block:: c
 
-   // available in MicroUI C Module
+   // Available in MicroUI C Module
    #define UI_DRAWING_DEFAULT_drawImage UI_DRAWING_drawImage
 
-   // to write in the BSP (optional)
+   // To write in the BSP (optional)
    #define UI_DRAWING_GPU_drawImage UI_DRAWING_drawImage
 
 The function names are set thanks to some ``define``.
@@ -192,18 +192,18 @@ Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but le
 
 .. code-block:: c
 
-   // unlike the MicroUI C Module, this function is not "weak"
+   // Unlike the MicroUI C Module, this function is not "weak".
    DRAWING_Status UI_DRAWING_GPU_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha) {
       
       DRAWING_Status status;
 
       if (is_gpu_compatible(xxx)) {
          
-         // see chapter "Drawings"
+         // See chapter "Drawings"
          // [...]
       }
       else {
-         // let the image drawer manages the image  (available in the C module)
+         // Let the image drawer manages the image (available in the C module)
          status = UI_IMAGE_DRAWING_draw(gc, img, regionX, regionY, width, height, x, y, alpha);
       }
       return status;
@@ -213,7 +213,7 @@ Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but le
 
 .. code-block:: c
 
-   // use the preprocessor 'weak'
+   // Use the preprocessor 'weak'
    __weak DRAWING_Status UI_DRAWING_DEFAULT_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha) {
    #if !defined(LLUI_IMAGE_CUSTOM_FORMATS)
       return UI_DRAWING_SOFT_drawImage(gc, img, regionX, regionY, width, height, x, y, alpha);
@@ -222,7 +222,7 @@ Similar to ``UI_DRAWING_GPU_drawLine`` (see :ref:`section_drawings_cco`), but le
    #endif
    }
 
-The define ``LLUI_IMAGE_CUSTOM_FORMATS`` is not set, so the implementation of the weak function only consists in calling the Graphics Engine' software algorithm.
+The define ``LLUI_IMAGE_CUSTOM_FORMATS`` is not set, so the implementation of the weak function only consists in calling the Graphics Engine's software algorithm.
 
 .. _section_buffered_image_drawer_custom:
 
@@ -354,7 +354,7 @@ Take the same example as the *Standard Formats Only* implementation (draw an ima
 
 .. code-block:: c
 
-   // use the preprocessor 'weak'
+   // Use the preprocessor 'weak'
    __weak DRAWING_Status UI_DRAWING_DEFAULT_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha) {
    #if !defined(LLUI_IMAGE_CUSTOM_FORMATS)
       return UI_DRAWING_SOFT_drawImage(gc, img, regionX, regionY, width, height, x, y, alpha);
@@ -397,7 +397,7 @@ The drawer is retrieved thanks to its format (function ``_get_table_index()``):
 
 .. code-block:: c
 
-   // use the preprocessor 'weak'
+   // Use the preprocessor 'weak'
    __weak DRAWING_Status UI_IMAGE_DRAWING_draw_custom0(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha){
       return UI_DRAWING_STUB_drawImage(gc, img, regionX, regionY, width, height, x, y, alpha);
    }
@@ -409,12 +409,12 @@ The default implementation of ``UI_IMAGE_DRAWING_draw_custom0`` (same behavior f
 .. code-block:: c
 
   DRAWING_Status UI_DRAWING_STUB_drawImage(MICROUI_GraphicsContext* gc, MICROUI_Image* img, jint regionX, jint regionY, jint width, jint height, jint x, jint y, jint alpha){
-    // set the drawing log flag "not implemented"
+    // Set the drawing log flag "not implemented"
     LLUI_DISPLAY_reportError(gc, DRAWING_LOG_NOT_IMPLEMENTED);
     return DRAWING_DONE;
   }
 
-The implementation only consists in setting the :ref:`Drawing log <section.veeport.ui.drawings.drawing_logs>`  ``DRAWING_LOG_NOT_IMPLEMENTED`` to notify the application that the drawing has not been performed.
+The implementation only consists in setting the :ref:`Drawing log flag <section.veeport.ui.drawings.drawing_logs>` ``DRAWING_LOG_NOT_IMPLEMENTED`` to notify the application that the drawing has not been performed.
 
 .. _section_image_renderer_sim:
 
@@ -641,7 +641,7 @@ Dependencies
 Installation
 ============
 
-The image Renderer module is part of the MicroUI module and Display module. Install them to be able to use some images.
+The Image Renderer module is part of the MicroUI module and Display module. Install them to be able to use some images.
 
 Use
 ===

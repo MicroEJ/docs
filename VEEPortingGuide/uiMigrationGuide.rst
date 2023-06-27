@@ -101,7 +101,7 @@ BSP
 
 * The signatures of ``LLUI_DISPLAY_IMPL_decodeImage`` and ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes`` have changed: 
  
-	* use ``jbyte`` in functions signatures.
+	* use ``jbyte`` in function signatures.
 	* add a cast to ``MICROUI_Image`` in implementation.
 
 * Use the MicroUI C module 2.0.1.

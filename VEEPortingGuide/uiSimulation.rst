@@ -100,7 +100,7 @@ It offers the same capacity to override some built-in drawing algorithms (intern
   It defines some interfaces and classes to manipulate the MicroUI concepts (GraphicsContext, Image, etc.) in the Front Panel project.
   Like the embedded side, this class manages the synchronization with the Graphics Engine and delegates the drawing to the interface ``ej.microui.display.UIDrawing``. 
 * The interface ``ej.microui.display.UIDrawing`` defines all the drawing methods available in MicroUI.
-  The default implementation of the methods involving images calls the matching method in the ``ej.microui.display.UIImageDrawing``.
+  The default implementation of the methods involving images calls the matching method in ``ej.microui.display.UIImageDrawing``.
   The default implementation of the other methods reports the error that the drawing is not done.
 * The interface ``ej.microui.display.UIImageDrawing`` defines all the methods that draw an image.
   The default implementation of the methods reports the error that the drawing is not done.
@@ -280,7 +280,7 @@ Front Panel is designed to add the support of :ref:`custom images <section_image
 Buffered Image
 ==============
 
-Front Panel is designed to add the support of :ref:`MicroUI BufferedImage <section_bufferedimage_sim>` with a format different than the display format. 
+Front Panel is designed to add the support of :ref:`MicroUI BufferedImage <section_bufferedimage_sim>` with a format different from the display format.
 
 Classpath
 =========

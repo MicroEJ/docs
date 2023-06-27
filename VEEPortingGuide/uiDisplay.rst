@@ -403,7 +403,7 @@ Standard
 
 When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the Display module considers the pixels representation as **standard**. 
 All standard representations are internally managed by the Display module, by the :ref:`Front Panel<section_ui_simulation>` and by the :ref:`Image Generator<section_image_generator>`. 
-No specific support is required as soon as a VEE Port is using a standard representation. It can:
+No specific support is required as long as a VEE Port is using a standard representation. It can:
 
 * generate at compile-time RAW images in the same format than display pixel format,
 * convert at runtime MicroUI 32-bit colors in display pixel format,
@@ -698,7 +698,7 @@ The binary semaphores must be configured in a state such that the semaphore must
 Required Abstraction Layer API
 ------------------------------
 
-Some four Abstraction Layer APIs are required to connect the Graphics Engine on the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``. 
+Four Abstraction Layer APIs are required to connect the Graphics Engine to the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``.
 
 * ``LLUI_DISPLAY_IMPL_initialize``: The initialization function is called when the application is calling `MicroUI.start()`_. Before this call, the display is useless and don't need to be initialized. This function consists in initializing the LCD driver and in filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on the two binary semaphores, the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels (``lcd_width`` and ``lcd_height``) and optionally the display *physical* size in pixels (``memory_width`` and ``memory_height``). 
 
@@ -737,7 +737,7 @@ Typical Implementations
 This chapter helps to write some basic ``LLUI_DISPLAY_impl.h`` implementations according the display buffer mode (see :ref:`section_display_modes`).
 The pseudo-code calls external function such as ``LCD_DRIVER_xxx`` or ``DMA_DRIVER_xxx`` to symbolize the use of external drivers.
 
-.. note:: The pseudo code don't use the dirty area bounds (xmin, ymax, etc.) to simplify the reading.
+.. note:: The pseudo code does not use the dirty area bounds (xmin, ymax, etc.) to simplify the reading.
 
 Common Functions
 ----------------
@@ -1373,7 +1373,7 @@ In this example, the drawing time is 7ms, the time between the end of drawing an
 .. figure:: images/uiDisplaySync05.*
    :width: 100%
 
-As mentioned above, the idea is to use two back buffers. First, UI task is drawing in back buffer ``A``. Just after the call to `Display.flush()`_, the flush can start. At same moment, the content of back buffer ``A`` is copied in back buffer ``B`` (use a DMA, copy time is 1ms). During the flush time (copy of back buffer ``A`` to display buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When the drawings in back buffer ``B`` are done (and after call to `Display.flush()`_), the DMA copy of back buffer ``B`` to back buffer ``A`` cannot start: the copy can only start when the flush is fully done because the flush is using the back buffer ``A``. As soon as the flush is done, a new flush (and DMA copy) can start. The rendering frequency is cadenced on flush time, ie 12ms (83.3Hz).
+As mentioned above, the idea is to use two back buffers. First, UI task is drawing in back buffer ``A``. Just after the call to `Display.flush()`_, the flush can start. At the same moment, the content of back buffer ``A`` is copied in back buffer ``B`` (use a DMA, copy time is 1ms). During the flush time (copy of back buffer ``A`` to display buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When the drawings in back buffer ``B`` are done (and after the call to `Display.flush()`_), the DMA copy of back buffer ``B`` to back buffer ``A`` cannot start: the copy can only start when the flush is fully done because the flush is using the back buffer ``A``. As soon as the flush is done, a new flush (and DMA copy) can start. The rendering frequency is cadenced on flush time, i.e. 12ms (83.3Hz).
 
 .. figure:: images/uiDisplaySync06.*
    :width: 100%
@@ -1668,7 +1668,7 @@ The properties file must / can contain the following properties:
 
 -  ``imageBuffer.memoryAlignment`` [optional, default value is "4"]: Defines the image memory alignment to respect when creating an image. This notion is useful when images drawings are performed by a third party hardware accelerator (GPU): it can require some constraints on the image to draw. This value is used by the Graphics Engine when creating a dynamic image and by the image generator to encode a RAW image. See :ref:`section_image_gpu_raw` and :ref:`section_image_custom_format`. Allowed values are 1, 2, 4, 8, 16, 32, 64, 128 and 256.
 
--  ``imageHeap.size`` [optional, default value is "not set"]: Defines the images heap size. Useful to fix a VEE Port heap size when building a firmware in command line. When using a MicroEJ launcher, the size set in this launcher is priority to the VEE Port value.
+-  ``imageHeap.size`` [optional, default value is "not set"]: Defines the images heap size. Useful to fix a VEE Port heap size when building a firmware in command line. When using a MicroEJ launcher, the size set in this launcher has priority over the VEE Port value.
 
 
 Use

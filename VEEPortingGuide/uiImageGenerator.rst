@@ -124,7 +124,9 @@ This feature is useful for locally testing certain changes in the Image Generato
 
    -Dej.imagegenerator.extension.project=${project_loc:myimagegeneratorextension}
 
-.. warning:: This feature only works if the VEE Port has been built with the Image Generator module enabled and the VEE Port does not contain the changes until a new VEE Port is built: the VEE Port dropins folder must be updated after any changes to the Image Generator Extension project. 
+.. warning:: This feature only works if the VEE Port has been built with the Image Generator module enabled.
+
+   The VEE Port will not actually contain the changes until a new VEE Port is built: the VEE Port dropins folder must be updated after any changes to the Image Generator Extension project.
 
 .. _section_image_generator_imageio:
 

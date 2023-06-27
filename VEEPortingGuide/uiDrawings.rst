@@ -9,19 +9,21 @@ Abstraction Layer
 
 All MicroUI drawings (available in the `Painter`_ class) call a native function. 
 These native functions are already implemented (in the :ref:`section_drawings_cco` for the Embedded VEE Port and in the :ref:`Front Panel <section_drawings_sim>` for the Simulator).
-These implementations use the Graphics Engine' software algorithms to perform the drawings.
+These implementations use the Graphics Engine's software algorithms to perform the drawings.
 
 Each drawing can be overwritten independently in the VEE Port:
 
 - to use another software algorithm (custom algorithm, no third-party library, etc.),
 - to use a GPU to perform the operation,
-- to target a destination whose format is different than the display buffer format,
+- to target a destination whose format is different from the display buffer format,
 - etc.
  
-The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h`` (for the `Drawing`_ library) for the Embedded VEE Port and, respectively, ``LUIPainter.java`` and ``LLDWPainter.java`` for the Simulation VEE Port. 
+The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h`` (for the `Drawing`_ library) for the Embedded VEE Port and, respectively, ``LUIPainter.java`` and ``LLDWPainter.java`` for the Simulation VEE Port.
 
 The implementation must handle many constraints: synchronization between drawings, Graphics Engine notification, MicroUI `GraphicsContext`_ clip and colors, dirty flush area, etc. 
-The principle of implementing a MicroUI drawing function is described in the chapter :ref:`section_drawings_custom`. 
+The principle of implementing a MicroUI drawing function is described in the chapter :ref:`section_drawings_custom`.
+
+.. _section_drawings_destination_format:
 
 Destination Format
 ==================
@@ -58,10 +60,10 @@ Principle
 ---------
 
 An implementation of ``LLUI_PAINTER_impl.h`` is already available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`. 
-This implementation respects the synchronization between drawings, and the Graphics Engine notification, reduces (when possible) the MicroUI `GraphicsContext`_ clip constraints, and updates (when possible) the dirty flush area. 
+This implementation respects the synchronization between drawings and the Graphics Engine notification, reduces (when possible) the MicroUI `GraphicsContext`_ clip constraints, and updates (when possible) the dirty flush area.
 
 This implementation does not perform the drawings; it only calls the equivalent of drawing available in ``ui_drawing.h``. 
-This allows simplifying how to use a GPU (or a third-party library) to perform a drawing: the ``ui_drawing.h`` implementation has just to take into consideration the MicroUI `GraphicsContext`_ clip and colors and `Display.flush()`_ dirty area. 
+This allows simplifying how to use a GPU (or a third-party library) to perform a drawing: the ``ui_drawing.h`` implementation just has to take into consideration the MicroUI `GraphicsContext`_ clip and colors and `Display.flush()`_ dirty area.
 Synchronization with the Graphics Engine is already performed.
 
 In addition to the implementation of ``LLUI_PAINTER_impl.h``, an implementation of ``ui_drawing.h`` is already available in :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` (in *weak* mode). 
@@ -136,11 +138,11 @@ The following graph illustrates the steps to perform a shape drawing (not an ima
 .. code-block:: c
 
    void LLUI_PAINTER_IMPL_drawLine(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY) {
-      // synchronize the native function of MicroUI Painter.drawLine() with the Graphics Engine
+      // Synchronize the native function of MicroUI Painter.drawLine() with the Graphics Engine
       if (LLUI_DISPLAY_requestDrawing(gc, (SNI_callback)&LLUI_PAINTER_IMPL_drawLine)) {
-         // call ui_drawing.h function
+         // Call ui_drawing.h function
          DRAWING_Status status = UI_DRAWING_drawLine(gc, startX, startY, endX, endY);
-         // update the status of the Graphics Engine 
+         // Update the status of the Graphics Engine
          LLUI_DISPLAY_setDrawingStatus(status);
       }
    }
@@ -163,13 +165,13 @@ This name redirection is useful when the VEE Port features multiple destination 
 
 .. code-block:: c
 
-   // use the preprocessor 'weak'
+   // Use the preprocessor 'weak'
    __weak DRAWING_Status UI_DRAWING_DEFAULT_drawLine(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY) {
-      // default behavior: call the Graphics Engine' software algorithm
+      // Default behavior: call the Graphics Engine's software algorithm
       return UI_DRAWING_SOFT_drawLine(gc, startX, startY, endX, endY);
    }
 
-Implementing the weak function only consists of calling the Graphics Engine' software algorithm.
+Implementing the weak function only consists in calling the Graphics Engine's software algorithm.
 This software algorithm will respect the `GraphicsContext`_ color and clip and update the `Display.flush()`_ dirty area.
 
 .. _section_drawings_cco_custom:
@@ -252,7 +254,7 @@ The following graph illustrates the steps to perform a shape drawing (not an ima
 
 |
 
-Take the same example as the default implementation (draw a line): the BSP has just to overwrite the weak function ``UI_DRAWING_drawLine`` :
+Take the same example as the default implementation (draw a line): the BSP just has to overwrite the weak function ``UI_DRAWING_drawLine`` :
 
 **UI_DRAWING_drawLine** (to write in the BSP)
 
@@ -267,31 +269,31 @@ This name redirection is useful when the VEE Port features multiple destination 
 
 .. code-block:: c
 
-   // contrary to the MicroUI C Module, this function is not "weak"
+   // Contrary to the MicroUI C Module, this function is not "weak"
    DRAWING_Status UI_DRAWING_GPU_drawLine(MICROUI_GraphicsContext* gc, jint startX, jint startY, jint endX, jint endY) {
       
       DRAWING_Status status;
 
       if (is_gpu_compatible(xxx)) {
-         // can use the GPU to draw the line
+         // Can use the GPU to draw the line
 
-         // retrieve the destination buffer address
+         // Retrieve the destination buffer address
          uint8_t* destination_address = LLUI_DISPLAY_getBufferAddress(&gc->image);
 
-         // update the next "flush"'s dirty area
+         // Update the next "flush"'s dirty area
       	LLUI_DISPLAY_setDrawingLimits(startX, startY, endX, endY);
 
-         // configure the GPU clip
+         // Configure the GPU clip
          gpu_set_clip(startX, startY, endX, endY);
 
-         // draw the line
+         // Draw the line
          gpu_draw_line(destination_address, startX, startY, endX, endY, gc->foreground_color);
 
          // GPU is running: set the right status for the Graphics Engine
          status = DRAWING_RUNNING;
       }
       else {
-         // default behavior: call the Graphics Engine' software algorithm (like "weak" function)
+         // Default behavior: call the Graphics Engine's software algorithm (like "weak" function)
          status = UI_DRAWING_SOFT_drawLine(gc, startX, startY, endX, endY);
       }
       return status;
@@ -313,7 +315,7 @@ See ``LLUI_DISPLAY_isClipEnabled()``.
 .. note:: Several clip functions are available in ``LLUI_DISPLAY.h`` to check if a drawing fits the clip.
 
 Finally, after the drawing, the drawing function has to return the drawing status.
-Most of the time, the GPU performs *asynchronous* drawings: the drawing is started by not completed.
+Most of the time, the GPU performs *asynchronous* drawings: the drawing is started but not completed.
 To notify the Graphics Engine, the status to return is ``DRAWING_RUNNING``.
 In case of the drawing is done after the call to ``gpu_draw_line()``, the status to return is ``DRAWING_DONE``.
 
@@ -362,7 +364,7 @@ It considers that:
 The :ref:`UI Pack extension <section_ui_simulation>` is designed to simplify the UI VEE Port:
 
 * Simply add the dependency to the UI Pack extension in the VEE Port Front Panel project.
-* Functions indirections are limited (the software drawing algorithm is called as fast as possible).
+* Function indirections are limited (the software drawing algorithm is called as fast as possible).
 
 The following graph illustrates the steps to perform a shape drawing (not an image):
 
@@ -411,22 +413,22 @@ The following graph illustrates the steps to perform a shape drawing (not an ima
 
    public static void drawLine(byte[] target, int x1, int y1, int x2, int y2) {
 
-      // retrieve the Graphics Engine instance
+      // Retrieve the Graphics Engine instance
       LLUIDisplay graphicalEngine = LLUIDisplay.Instance;
 
-      // synchronize the native function of MicroUI Painter.drawLine() with the Graphics Engine
+      // Synchronize the native function of MicroUI Painter.drawLine() with the Graphics Engine
       synchronized (graphicalEngine) {
 
-         // retrieve the Front Panel instance of the MicroUI GraphicsContext (the destination)
+         // Retrieve the Front Panel instance of the MicroUI GraphicsContext (the destination)
          MicroUIGraphicsContext gc = graphicalEngine.mapMicroUIGraphicsContext(target);
 
-         // ask to the Graphics Engine if a drawing can be performed on the target
+         // Ask to the Graphics Engine if a drawing can be performed on the target
          if (gc.requestDrawing()) {
 
-            // retrieve the drawer for the GraphicsContext (by default: DisplayDrawer)
+            // Retrieve the drawer for the GraphicsContext (by default: DisplayDrawer)
             UIDrawing drawer = getUIDrawer(gc);
 
-            // call UIDrawing function
+            // Call UIDrawing function
             drawer.drawLine(gc, x1, y1, x2, y2);
          }
       }
@@ -436,7 +438,7 @@ The Graphics Engine requires synchronization between the drawings.
 To do that, the drawing is synchronized on the instance of the Graphics Engine itself.
 
 The target (the Front Panel object that maps the MicroUI `GraphicsContext`_) is retrieved in the native drawing method by asking the Graphics Engine to map the byte array (returned by ``GraphicsContext.getSNIContext()``).
-Like the embedded side, this object holds a clip, and the drawer cannot perform a drawing outside this clip (otherwise, the behavior is unknown). 
+Like the embedded side, this object holds a clip, and the drawer cannot perform a drawing outside of this clip (otherwise, the behavior is unknown).
 
 **DisplayDrawer.drawLine** (available in UI Pack extension)
 
@@ -467,7 +469,7 @@ The :ref:`UI Pack extension <section_ui_simulation>` is designed to simplify the
 * Create a subclass of ``DisplayDrawer`` (implementation of the interface ``UIDrawing``).
 * Overwrite only the desired drawing(s).
    * Each drawing implementation must comply with the clip and color (synchronization with the Graphics Engine already done).
-   * Functions indirections are limited (the drawing algorithm is called as fast as possible).
+   * Function indirections are limited (the drawing algorithm is called as fast as possible).
 * Register this drawer in place of the default display drawer.
 
 The following graph illustrates the steps to perform a shape drawing (not an image):
@@ -539,20 +541,20 @@ Let's use the same example as the previous section (draw line function): the Fro
       public void drawLine(MicroUIGraphicsContext gc, int x1, int y1, int x2, int y2) {
 
          if (isCompatible(xxx)) {
-            // can use the GPU to draw the line on the embedded side: can use another algorithm than the software algorithm
+            // Can use the GPU to draw the line on the embedded side: can use another algorithm than the software algorithm
 
-            // retrieve the AWT Graphics2D
+            // Retrieve the AWT Graphics2D
             Graphics2D src = (Graphics2D)((BufferedImage)gc.getImage().getRAWImage()).getGraphics();
 
-            // draw the line using AWT (have to respect clip & color)
+            // Draw the line using AWT (have to respect clip & color)
             src.setColor(new Color(gc.getRenderingColor()));
             src.drawLine(x1, y1, x2, x2);
 
-            // update the next "flush"'s dirty area
+            // Update the next "flush"'s dirty area
             gc.setDrawingLimits(x1, y1, x2, x2);
          }
          else {
-            // default behavior: call the Graphics Engine' software algorithm
+            // Default behavior: call the Graphics Engine's software algorithm
             super.drawLine(gc, x1, y1, x2, y2);
          }
       }
@@ -575,7 +577,7 @@ There are two possible ways to register it:
 - Declare it as a UIDrawing service.
 - Declare it programmatically.
 
-**Service UIDrawing**
+**UIDrawing Service**
 
 - Create a new file in the resources of the Front Panel project named ``META-INF/services/ej.microui.display.UIDrawing`` and write the fully qualified name of the previously created drawer:
 
@@ -598,7 +600,7 @@ There are two possible ways to register it:
       }
    }
    
-- Invokes this widget in the .fp file:
+- Invoke this widget in the .fp file:
 
 .. code-block:: java
 
@@ -617,7 +619,7 @@ Custom Drawing
 Principle
 ---------
 
-MicroUI allows adding some custom drawings (== a drawing not listed in the MicroUI Painter classes).
+MicroUI allows adding some custom drawings (drawings not listed in the MicroUI Painter classes).
 A custom drawing has to respect the same rules as the MicroUI drawings to avoid corrupting the MicroUI execution (flickering, memory corruption, unknown behavior, etc.). 
 
 As explained above, MicroUI implementation provides an Abstraction Layer that lists all MicroUI Painter drawing native functions and their implementations (:ref:`section_drawings_cco` and :ref:`section_drawings_sim`).
@@ -628,22 +630,22 @@ Application Method
 
 .. code-block:: java
 
-   // application drawing method
+   // Application drawing method
    protected void render(GraphicsContext gc) {
 
       // [...]
 
-      // set the GraphicsContext color
+      // Set the GraphicsContext color
       gc.setColor(Colors.RED);
-      // draw a red line
+      // Draw a red line
       Painter.drawLine(gc, 0, 0, 10, 10);
-      // draw a red custom drawing
+      // Draw a red custom drawing
       drawCustom(gc.getSNIContext(), 5, 5);
 
       // [...]
    }
 
-   // custom drawing native method
+   // Custom drawing native method
    private static native void drawCustom(byte[] graphicsContext, int x, int y);
 
 All native functions must have a MicroUI `GraphicsContext`_ as a parameter (often the first parameter) that identifies the destination target. 
@@ -659,17 +661,17 @@ The native drawing function implementation pattern is:
 
    void Java_com_mycompany_MyPainterClass_drawCustom(MICROUI_GraphicsContext* gc, jint x, jint y) {
 
-      // tell the Graphics Engine if the drawing can be performed
+      // Tell the Graphics Engine if the drawing can be performed
       if (LLUI_DISPLAY_requestDrawing(gc, (SNI_callback)&Java_com_mycompany_MyPainterClass_drawCustom)) {
          DRAWING_Status status;
 
-         // perform the drawing (respecting clip if not disabled)
+         // Perform the drawing (respecting clip if not disabled)
          status = custom_drawing(LLUI_DISPLAY_getBufferAddress(&gc->image), x, y);
 
-         // set drawing status
+         // Set drawing status
          LLUI_DISPLAY_setDrawingStatus(status);
       }
-      // else: refused drawing
+      // Else: refused drawing
    }
 
 The target (the MicroUI `GraphicsContext`_) is retrieved in the native drawing function by mapping the ``MICROUI_GraphicsContext`` structure in MicroUI native drawing function declaration.
@@ -687,22 +689,22 @@ The native drawing function implementation pattern is as follows (see below for 
 
    public static void drawCustom(byte[] target, int x, int y) {
    
-      // retrieve the Graphics Engine instance
+      // Retrieve the Graphics Engine instance
       LLUIDisplay graphicalEngine = LLUIDisplay.Instance;
 
-      // synchronize the native function with the Graphics Engine
+      // Synchronize the native function with the Graphics Engine
       synchronized (graphicalEngine) {
 
-         // retrieve the Front Panel instance of the MicroUI GraphicsContext (the destination)
+         // Retrieve the Front Panel instance of the MicroUI GraphicsContext (the destination)
          MicroUIGraphicsContext gc = graphicalEngine.mapMicroUIGraphicsContext(target);
 
-         // ask to the Graphics Engine if a drawing can be performed on the target
+         // Ask to the Graphics Engine if a drawing can be performed on the target
          if (gc.requestDrawing()) {
 
-            // retrieve the drawer for the GraphicsContext (by default: DisplayDrawer)
+            // Retrieve the drawer for the GraphicsContext (by default: DisplayDrawer)
             UIDrawing drawer = getUIDrawer(gc);
 
-            // call UIDrawing function
+            // Call UIDrawing function
             MyDrawer.Instance.drawSomething(gc, x, y);
          }
       }
@@ -867,4 +869,4 @@ The front panel version of the previous example that reported an out-of-memory e
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
-   copyrights are the property of their respective owners. 
+   copyrights are the property of their respective owners.

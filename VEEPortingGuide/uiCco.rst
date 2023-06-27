@@ -42,7 +42,9 @@ This C module is **mandatory** and provides default implementations for:
 * ``LLUI_INPUT_IMPL_log_queue_xxx()``: see :ref:`section_inputs_eventbuffer`.
 
 See :ref:`UI Pack <section_display_llapi>` chapter to have more information.
-This C module is available on the Central Repository: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/.
+This C module is available on the :ref:`central_repository`: `com.microej.clibrary.llimpl#microui`_.
+
+.. _com.microej.clibrary.llimpl#microui: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/
 
 .. _section_ui_c_module_microui_dma2d:
 
