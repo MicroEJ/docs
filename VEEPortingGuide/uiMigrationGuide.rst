@@ -20,7 +20,7 @@ Front Panel
 			<artifact name="frontpanel" type="jar"/>
 		</dependency>
 
-* Replace any calls to ``LLUIPainter.setDrawer()`` and ``LLDWPainter.setDrawer()`` to ``LLUIPainter.Instance.registerUIDrawer()``.
+* Replace any calls to ``LLUIPainter.setDrawer()`` and ``LLDWPainter.setDrawer()`` to ``LLUIDisplay.Instance.registerUIDrawer()``.
 * Replace any calls to ``LLUIPainter.getDrawer()`` and ``LLDWPainter.getDrawer()`` to  ``LLUIDisplay.Instance.getUIDrawer()``.
 * Replace any calls to ``LLUIDisplay.getDWDrawerSoftware()`` to  ``LLUIDisplay.Instance.getUIDrawerSoftware()``.
 * Implementation of the interface ``UIDrawingDefault``: implement the interface ``UIDrawing`` instead.
