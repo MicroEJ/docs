@@ -3,15 +3,19 @@
 Overview
 ========
 
-MicroEJ provides a set of tools and libraries to run applications powered by MicroEJ on Android and Wear OS.
-This allows for the same application to be developed, simulated, tested, and run on Android and MicroEJ VEE alike.
+The MicroEJ Android Compatibility Kit is composed of two main components:
 
-Having the same code ready for both Android and MicroEJ VEE opens up a wide range of use cases, including but not limited to:
+* A runtime: applications developed on MicroEJ can run on the Android platform thanks to the Android-based implementation of the MicroEJ Foundation libraries and dedicated support libraries.
+* A developer kit: the SDK 6 and a Gradle plugin enable support for developing applications in Android Studio with Gradle.
 
-* develop derivative products based on small MCUs or low-cost MPUs that cannot support Android due to their constrained resources.
-* dramatically reduce energy consumption by enabling two processors to coexist to distribute tasks between a very powerful processor powered by Android and a low-power processor powered by MicroEJ.
+Workflow
+--------
 
-Typical examples of these
+
+
+.. image:: images/general-workflow.png
+    :alt: General workflow
+    :align: center
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
