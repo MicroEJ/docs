@@ -2,6 +2,18 @@
 SDK Distribution Changelog
 --------------------------
 
+[23.07] - 2023-07-03
+~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+   
+   This release requires a JDK 11 and therefore an Architecture ``7.17.0`` or higher.
+   Please refer to :ref:`system-requirements` for more details.
+
+- Included :ref:`SDK 5.8.0 <changelog-5.8.0>`.
+- Downgraded to Eclipse version ``2022-03`` to fix incompatibilities of components with JDK 11.
+- Fixed no JDK found error when launching the installer in the case the JDK path has not been set in the Windows registry.
+
 [23.02] - 2022-02-28
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -152,6 +164,36 @@ SDK Distribution Changelog
 -------------
 SDK Changelog
 -------------
+
+.. _changelog-5.8.0:
+
+[5.8.0] - 2023-07-03
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+- Added improvements in Outline view and Instance Browser view (new Owner column, new filters) of the Heap Viewer.
+- Enabled on/off tags in the MicroEJ Java format profile.
+- Updated Code template for Widget.handleEvent to use MWT 3 API.
+- Fixed default Ivy settings file not created at startup.
+- Fixed topogical order in Application classpath.
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+General
+^^^^^^^
+
+Build Types
+^^^^^^^^^^^
+
+- Added Gradle dependency line in the generated Javadoc of an artifact repository (``build-artifact-repository`` build type).
+
+Skeletons
+^^^^^^^^^
+
+- Removed META-INF folder from ``firmware-multiapp`` skeleton.
 
 .. _changelog-5.7.0:
 
