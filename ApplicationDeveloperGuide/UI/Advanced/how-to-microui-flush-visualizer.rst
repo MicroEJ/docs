@@ -88,14 +88,8 @@ Usage
 .. image:: images/MicroUIFlushVisualizerApplicationOutputFolder.png
 
 
-Known Limitations
------------------
+Limitations
+-----------
 
-- Do not take into account the clip of the GraphicsContext.
-  Regardless of the clip, the complete area of the drawing is accounted for.
-- Do not take into account Vector Graphics (VG) operations.
-  VG drawings are not accounted for in the total of area drawn.
-- Do not take into account drawing that are done outside of the screen (even partially).
-  Such drawing are accounted as if they were done on the screen.
-- Do not take into account drawing of thick shapes and rendering with transformations from `ej.drawing <https://repository.microej.com/modules/ej/api/drawing/>`__ package. 
+Please refer to the javadoc of the `frontpanel widget module <https://repository.microej.com/modules/ej/tool/frontpanel/widget/>`__.
 
