@@ -48,7 +48,7 @@ The MicroUI Flush Visualizer provides the following information:
 - A screenshot of the result of the Rendering Pipeline (what was shown on the screen).
 - A list of drawing operations that were performed during the *Rendering* phase.
 - The total area covered by the sum of the area drawn by the drawing operations as percentage.
-  A value of 100% indicates that the entire display was drawn once; a value of 200% indicates that the entire display was drawn twice; etc.
+  A value of 100% indicates that the area drawn is equivalent to the surface of the entire display; a value of 200% indicates the area drawn is equivalent to twice the surface of the entire display.
 
 .. image:: images/demo-ui-flush-visualizer-demo-wearable-annotated.png
 
