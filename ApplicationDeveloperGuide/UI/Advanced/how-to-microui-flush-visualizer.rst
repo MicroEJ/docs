@@ -68,15 +68,13 @@ Installation
 
 1. Open the Front Panel file ``.fp``.
 
-2. Replace the ``ej.fp.widget.Display`` widget by ``ej.fp.widget.FlushVisualizerDisplay``
-
-3. Set the shape of the display to either ``RECTANGLE`` or ``CIRCLE``:
+2. Replace the ``ej.fp.widget.Display`` widget by ``ej.fp.widget.FlushVisualizerDisplay``.
 
 For example:
 
 .. code-block:: xml
 
-   <ej.fp.widget.FlushVisualizerDisplay x="10" y="10" width="200" height="200" filter="f.png" shape="CIRCLE" />
+   <ej.fp.widget.FlushVisualizerDisplay x="10" y="10" width="200" height="200" filter="f.png" />
 
 Usage
 -----
