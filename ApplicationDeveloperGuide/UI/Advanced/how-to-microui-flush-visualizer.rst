@@ -10,6 +10,14 @@ This article introduces the MicroUI Flush Visualizer, a tool designed to investi
 
 - Requirements: VEE Port with UI Pack 13.0.0 or higher.
 
+Here are examples of the MicroUI Flush Visualizer in action:
+
++----------------------------------------------------------------+--------------------------------------------------------------------+
+|Simple GFX                                                      | Demo Wearable                                                      |
++================================================================+====================================================================+
+| .. image:: images/small-demo-ui-flush-visualizer-simpleGFX.png | .. image:: images/small-demo-ui-flush-visualizer-demo-wearable.png |
++----------------------------------------------------------------+--------------------------------------------------------------------+
+
 Understanding the Rendering Pipeline
 ------------------------------------
 
@@ -42,13 +50,7 @@ The MicroUI Flush Visualizer provides the following information:
 - The total area covered by the sum of the area drawn by the drawing operations as percentage.
   A value of 100% indicates that the entire display was drawn once; a value of 200% indicates that the entire display was drawn twice; etc.
 
-Here are examples of the MicroUI Flush Visualizer in action:
-
-+----------------------------------------------------------------+--------------------------------------------------------------------+
-|Simple GFX                                                      | Demo Wearable                                                      |
-+================================================================+====================================================================+
-| .. image:: images/small-demo-ui-flush-visualizer-simpleGFX.png | .. image:: images/small-demo-ui-flush-visualizer-demo-wearable.png |
-+----------------------------------------------------------------+--------------------------------------------------------------------+
+.. image:: images/demo-ui-flush-visualizer-demo-wearable-annotated.png
 
 This tool is helpful to identify potential bottlenecks in the application's rendering by looking for flushes that exceed 200% of the display area.
 
