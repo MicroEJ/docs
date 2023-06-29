@@ -10,8 +10,6 @@ This article introduces the MicroUI Flush Visualizer, a tool designed to investi
 
 - Requirements: VEE Port with UI Pack 13.0.0 or higher.
 
-- Installation procedure: `MicroUI Flush Visualizer <https://github.com/MicroEJ/How-To/tree/master/MicroUI-Flush-Visualizer>`__
-
 Understanding the Rendering Pipeline
 ------------------------------------
 
@@ -62,4 +60,40 @@ As always, when conducting a performance study, measure.
 Use :ref:`systemview` to identify the bottlenecks in your application on the embedded target.
 A total area drawn over 200% is inefficient, but your application may have bigger bottlenecks.
 Confirm it by measuring the time spent drawing vs. the time spent elsewhere between flushes.
+
+Installation
+------------
+
+1. Open the Front Panel file ``.fp``.
+
+2. Replace the ``ej.fp.widget.Display`` widget by ``ej.fp.widget.FlushVisualizerDisplay``
+
+3. Set the shape of the display to either ``RECTANGLE`` or ``CIRCLE``:
+
+For example:
+
+.. code-block:: xml
+
+   <ej.fp.widget.FlushVisualizerDisplay x="10" y="10" width="200" height="200" filter="f.png" shape="CIRCLE" />
+
+Usage
+-----
+
+1. Run the application in the Simulator.
+
+2. Open the file ``MicroUIFlushVisualizer/MicroUIFlushVisualizer.html`` that was generated in the :ref:`application output folder <outputfiles>`.
+
+.. image:: images/MicroUIFlushVisualizerApplicationOutputFolder.png
+
+
+Known Limitations
+-----------------
+
+- Do not take into account the clip of the GraphicsContext.
+  Regardless of the clip, the complete area of the drawing is accounted for.
+- Do not take into account Vector Graphics (VG) operations.
+  VG drawings are not accounted for in the total of area drawn.
+- Do not take into account drawing that are done outside of the screen (even partially).
+  Such drawing are accounted as if they were done on the screen.
+- Do not take into account drawing of thick shapes and rendering with transformations from `ej.drawing <https://repository.microej.com/modules/ej/api/drawing/>`__ package. 
 
