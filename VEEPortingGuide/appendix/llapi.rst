@@ -492,6 +492,7 @@ Principle
 ---------
 
 The :ref:`Path module <section_vg_path>` provides Low Level APIs for creating paths in platform specific format. The file ``LLVG_PATH_impl.h``, which comes with the Path module, defines the API headers to be implemented.
+The file ``LLVG_PAINTER_impl.h`` defines the API headers to be implemented to draw the paths (with a color or a gradient).
 
 Naming Convention
 -----------------
@@ -532,26 +533,16 @@ List of operations:
 A path is automatically closed by the MicroVG implementation (by adding the command ``LLVG_PATH_CMD_CLOSE``).
 A path can be reopened (function ``LLVG_PATH_IMPL_reopenPath``), that consists in removing the last added command (``LLVG_PATH_CMD_CLOSE`` command) from the buffer.
 
-Merging
--------
-
-The function ``LLVG_PATH_IMPL_mergePaths`` allows to merge two paths in a third one.
-The two paths must have the same list of commands.
-The resulting path's points are calculated based on the source paths points coordinates and a ratio.
-
-* If ratio = 0, resulting point will equal the first path point.
-* If ratio = 1, resulting point will equal the second path point.
-
 Drawing
 -------
 
-The header file ``LLVG_PATH_PAINTER_impl.h`` provides the functions called by the application via VectorGraphicsPainter to draw a path.
+The header file ``LLVG_PAINTER_impl.h`` provides the functions called by the application via VectorGraphicsPainter to draw a path.
 
-- A path can be drawn with a 32-bit color (ARGB8888): ``LLVG_PATH_PAINTER_IMPL_drawPath``.
-- A path can be drawn with a :ref:`linear gradient <section_vg_gradient>`: ``LLVG_PATH_PAINTER_IMPL_drawGradient``.
+- A path can be drawn with a 32-bit color (ARGB8888): ``LLVG_PAINTER_IMPL_drawPath``.
+- A path can be drawn with a :ref:`linear gradient <section_vg_gradient>`: ``LLVG_PAINTER_IMPL_drawGradient``.
 
 The drawing destination is symbolized by a MicroUI GraphicsContext: a pointer to a ``MICROUI_GraphicsContext`` instance. 
-Like MicroUI Painter natives, the implementation has to :ref:`synchronize the drawings <display_drawing_native>`  with the MicroUI Graphics Engine.
+Like MicroUI Painter natives, the implementation has to :ref:`synchronize the drawings <section_drawings_custom>`  with the MicroUI Graphics Engine.
 
 .. _LLVG-GRADIENT-API-SECTION:
 
@@ -586,7 +577,7 @@ LLVG_FONT: Vector Font
 Principle
 ---------
 
-The :ref:`Font module <section_vg_font>` provides Low Level APIs for decoding fonts (``LLVG_FONT_impl.h``) and rendering texts (``LLVG_FONT_PAINTER_impl.h``). Both header files, which come with the Font module, define the API headers to be implemented.
+The :ref:`Font module <section_vg_font>` provides Low Level APIs for decoding fonts (``LLVG_FONT_impl.h``) and rendering texts (``LLVG_PAINTER_impl.h``). Both header files, which come with the Font module, define the API headers to be implemented.
 
 Naming Convention
 -----------------
@@ -612,21 +603,21 @@ The font's data are disposed by a call to ``LLVG_FONT_IMPL_dispose``.
 Font Characteristics
 --------------------
 
-The other functions in ``LLVG_FONT_PAINTER_impl.h`` consist in retrieving some font characteristics according a text and a font size: string width, string height, baseline, etc.
+The other functions in ``LLVG_FONT_impl.h`` consist in retrieving some font characteristics according a text and a font size: string width, string height, baseline, etc.
 
 See `VectorFont`_ for more information.
 
 Drawing
 -------
 
-The header file ``LLVG_FONT_PAINTER_impl.h`` provides the functions called by the application via VectorGraphicsPainter to draw a path.
+The header file ``LLVG_PAINTER_impl.h`` provides the functions called by the application via VectorGraphicsPainter to draw a path.
 
-- A string can be drawn with a 32-bit color (ARGB8888): ``LLVG_FONT_PAINTER_IMPL_draw_string``.
-- A string can be drawn with a :ref:`linear gradient <section_vg_gradient>`: ``LLVG_FONT_PAINTER_IMPL_draw_string_gradient``.
-- A string can be draw on a circle: ``LLVG_FONT_PAINTER_IMPL_draw_string_on_circle`` and ``LLVG_FONT_PAINTER_IMPL_draw_string_on_circle_gradient``.
+- A string can be drawn with a 32-bit color (ARGB8888): ``LLVG_PAINTER_IMPL_drawString``.
+- A string can be drawn with a :ref:`linear gradient <section_vg_gradient>`: ``LLVG_PAINTER_IMPL_drawStringGradient``.
+- A string can be draw on a circle: ``LLVG_PAINTER_IMPL_drawStringOnCircle`` and ``LLVG_FONT_PAINTER_IMPL_drawStringOnCircleGradient``.
 
 The drawing destination is symbolized by a MicroUI GraphicsContext: a pointer to a ``MICROUI_GraphicsContext`` instance. 
-Like MicroUI Painter natives, the implementation has to :ref:`synchronize the drawings <display_drawing_native>`  with the MicroUI Graphics Engine.
+Like MicroUI Painter natives, the implementation has to :ref:`synchronize the drawings <section_drawings_custom>`  with the MicroUI Graphics Engine.
 
 .. _LLNET-API-SECTION:
 

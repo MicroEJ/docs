@@ -15,16 +15,18 @@ Graphical User Interface
     :maxdepth: 2
 
     uiIntroduction
+    uiPort
     uiMicroui
     uiStaticInit
     uiLowLevel
     uiLed
     uiInput
     uiDisplay
+    uiDrawings
     uiImage
     uiFont
+    uiCco
     uiSimulation
-    uiPort
     uiReleaseNotes
     uiChangeLog
     uiMigrationGuide

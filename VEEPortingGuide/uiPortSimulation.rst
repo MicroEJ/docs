@@ -80,7 +80,7 @@ Widget Button Code
 
       /**
        * Gets the MicroUI Buttons events generator tag. This generator has to match the generator set during the
-       * MicroEJ platform build in <code>microui/microui.xml</code>
+       * VEE Port build in <code>microui/microui.xml</code>
        *
        * @return a MicroUI Buttons events generator tag
        */

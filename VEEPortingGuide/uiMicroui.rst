@@ -29,9 +29,9 @@ First, MicroUI requires a configuration step in order to create these internal o
 
 .. note::
 
-   This configuration step is the same for both embedded and simulated Platforms.
+   This configuration step is the same for both embedded and simulated VEE Ports.
 
-The embedded platform requires some additional C libraries to drive the I/O devices. Each C library is dedicated to a specific kind of I/O device. A specific chapter is available to explain each kind of I/O device.
+The embedded VEE Port requires some additional C libraries to drive the I/O devices. Each C library is dedicated to a specific kind of I/O device. A specific chapter is available to explain each kind of I/O device.
 
 .. table:: MicroUI C libraries
 
@@ -46,7 +46,7 @@ The embedded platform requires some additional C libraries to drive the I/O devi
    | LEDs                                      | LED             | :ref:`section_leds`        |
    +-------------------------------------------+-----------------+----------------------------+
 
-The simulation platform uses a mock which simulates all I/O devices.
+The simulation VEE Port uses a mock which simulates all I/O devices.
 Refer to the chapter :ref:`section_ui_simulation`.
 
 .. _Display.getDisplay(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#getDisplay--
@@ -166,10 +166,10 @@ is defined during the pre-generation of a font (see
 Installation
 ============
 
-The MicroUI library is an additional module. In the platform
+The MicroUI library is an additional module. In the VEE Port
 configuration file, check :guilabel:`UI` > :guilabel:`MicroUI` to install the library.
 When checked, the XML file ``microui/microui.xml`` is required
-during platform creation in order to configure the module. This
+during VEE Port creation in order to configure the module. This
 configuration step is used to extend the MicroUI library. Refer to the
 chapter :ref:`section_static_init` for more information about the
 MicroUI Initialization step.

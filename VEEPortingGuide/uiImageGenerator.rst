@@ -9,7 +9,7 @@ Principle
 
 The Image Generator module is an off-board tool that generates image data that is ready to be displayed without needing additional runtime memory. The two main advantages of this module are:
 
-* A pre-generated image is already encoded in the format known by the Image Renderer (MicroEJ format) or by the platform (custom binary format). The time to create an image is very fast and does not require any RAM (Image Loader is not used).
+* A pre-generated image is already encoded in the format known by the Image Renderer (MicroEJ format) or by the VEE Port (custom binary format). The time to create an image is very fast and does not require any RAM (Image Loader is not used).
 * No extra support is needed (no runtime Image Decoder).
 
 Functional Description
@@ -35,13 +35,13 @@ Process overview (see too :ref:`section_image_core_process`)
    the FLASH memory is used: no copy of the image data is sent to the
    RAM first.
 5. When the MicroUI Image is no longer needed, it is garbage-collected
-   by the platform, which just deletes the useless link to the FLASH
+   by the VEE Port, which just deletes the useless link to the FLASH
    memory.
 
 The image generator can run in two modes: 
 
-* Standalone mode: the image to convert (input files) are standard (PNG, JPEG, etc.), the generated binary files are in MicroEJ format and do not depend on platform characteristics or restrictions (see :ref:`section_image_standard_raw`).
-* Extended mode: the image to convert (input files) may be custom, the generated binary files can be encoded in customized MicroEJ format (can depend on several platform characteristics and restrictions, see :ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`) or the generated files are encoded in another format than MicroEJ format (binary format, see :ref:`section_image_binary_raw`).
+* Standalone mode: the image to convert (input files) are standard (PNG, JPEG, etc.), the generated binary files are in MicroEJ format and do not depend on VEE Port characteristics or restrictions (see :ref:`section_image_standard_raw`).
+* Extended mode: the image to convert (input files) may be custom, the generated binary files can be encoded in customized MicroEJ format (can depend on several VEE Port characteristics and restrictions, see :ref:`section_image_display_raw`, :ref:`section_image_gpu_raw` and :ref:`section_image_custom_raw`) or the generated files are encoded in another format than MicroEJ format (binary format, see :ref:`section_image_binary_raw`).
 
 Structure
 =========
@@ -56,33 +56,33 @@ The Image Generator module is constituted from several parts, the core part and 
 Standalone Mode
 ===============
 
-The standalone Image Generator embeds all parts described above. By consequence, once installed in a platform, the standalone image generator does not need any extended module to generate MicroEJ files from standard images files. 
+The standalone Image Generator embeds all parts described above. By consequence, once installed in a VEE Port, the standalone image generator does not need any extended module to generate MicroEJ files from standard images files. 
 
 .. _section_image_generator_extended:
 
 Extended Mode
 =============
 
-To increase the capabilities of Image Generator, the extension must be built and added in the platform. As described above this extension will be able to:
+To increase the capabilities of Image Generator, the extension must be built and added in the VEE Port. As described above this extension will be able to:
 
 * read more input image file formats,
-* extend the MicroEJ format with platform characteristics,
+* extend the MicroEJ format with VEE Port characteristics,
 * encode images in a third-party binary format.
 
-To do that the Image Generator provides some services to implement. This chapter explain how to create and include this extension in the platform. Next chapters explain the aim of each service.
+To do that the Image Generator provides some services to implement. This chapter explain how to create and include this extension in the VEE Port. Next chapters explain the aim of each service.
 
 1. Create a ``std-javalib`` project. The module name must start with the prefix ``imageGenerator`` (for instance ``imageGeneratorMyPlatform``).
 2. Add the dependency:
 
-   :: 
+   .. code-block:: xml
 
       <dependency org="com.microej.pack.ui" name="ui-pack" rev="x.y.z">
          <artifact name="imageGenerator" type="jar"/>
       </dependency>
 
-   Where ``x.y.z`` is the UI pack version used to build the platform (minimum ``13.0.0``). The ``module.ivy`` should look like:
+   Where ``x.y.z`` is the UI pack version used to build the VEE Port (minimum ``13.0.0``). The ``module.ivy`` should look like:
 
-   ::
+   .. code-block:: xml
 
       <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:m="http://www.easyant.org/ivy/maven" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
 
@@ -92,7 +92,7 @@ To do that the Image Generator provides some services to implement. This chapter
          
          <configurations defaultconfmapping="default->default;provided->provided">
             <conf name="default" visibility="public" description="Runtime dependencies to other artifacts"/>
-            <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the platform"/>
+            <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the VEE Port"/>
             <conf name="documentation" visibility="public" description="Documentation related to the artifact (javadoc, PDF)"/>
             <conf name="source" visibility="public" description="Source code"/>
             <conf name="dist" visibility="public" description="Contains extra files like README.md, licenses"/>
@@ -110,21 +110,23 @@ To do that the Image Generator provides some services to implement. This chapter
 
 3. Create the folder ``META-INF/services`` in source folder ``src/main/resources`` (this folder will be filled in later).
 4. When a service is added (see next chapters), build the easyant project.
-5. Copy the generated jar: ``target~/artifacts/imageGeneratorMyPlatform.jar`` in the platform configuration project folder: ``MyPlatform-configuration/dropins/tools/``
+5. Copy the generated jar: ``target~/artifacts/imageGeneratorMyPlatform.jar`` in the VEE Port configuration project folder: ``MyPlatform-configuration/dropins/tools/``
 6. Rebuild the platform.
 
 Advanced: Test the Extension Project
 ------------------------------------
 
-To quickly test an extension project without rebuilding the Platform or manually exporting the project, add the :ref:`Application Option <application_options>` ``ej.imagegenerator.extension.project`` to the absolute path of an Image Generator Extension project (e.g. ``c:\mycompany\myimagegeneratorextension``). 
-The Image Generator will use the specified Image Generator Extension project instead of the one included in the Platform.
+To quickly test an extension project without rebuilding the VEE Port or manually exporting the project, add the :ref:`Application Option <application_options>` ``ej.imagegenerator.extension.project`` to the absolute path of an Image Generator Extension project (e.g. ``c:\mycompany\myimagegeneratorextension``). 
+The Image Generator will use the specified Image Generator Extension project instead of the one included in the VEE Port.
 This feature is useful for locally testing certain changes in the Image Generator Extension project. 
 
 .. code-block:: console
 
    -Dej.imagegenerator.extension.project=${project_loc:myimagegeneratorextension}
 
-.. warning:: This feature only works if the Platform has been built with the Image Generator module enabled and the Platform does not contain the changes until a new Platform is built: the Platform dropins folder must be updated after any changes to the Image Generator Extension project. 
+.. warning:: This feature only works if the VEE Port has been built with the Image Generator module enabled.
+
+   The VEE Port will not actually contain the changes until a new VEE Port is built: the VEE Port dropins folder must be updated after any changes to the Image Generator Extension project.
 
 .. _section_image_generator_imageio:
 
@@ -143,7 +145,7 @@ This service allows to add a custom image reader.
 2. Create an implementation of interface ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension``.
 3. Create the file ``META-INF/services/com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` and open it.
 4. Note down the name of created class, with its package and classname.
-5. Rebuild the image generator extension, copy it in platform configuration project (``dropins/tools/``) and rebuild the platform (see above).
+5. Rebuild the image generator extension, copy it in VEE Port configuration project (``dropins/tools/``) and rebuild the VEE Port (see above).
 
 .. note:: The class ``com.microej.tool.ui.generator.BufferedImageLoader`` already implements the interface. This implementation is used to load standard images. It can be sub-classed to add some behavior.
 
@@ -158,7 +160,7 @@ Since UI Pack 13.2.0, the Image Generator automatically includes new image decod
 
 1. The JAR contains the service declaration ``/META-INF/services/javax.imageio.spi.ImageReaderSpi``,
 2. The JAR filename's prefix is `imageio-`,
-3. The JAR location is the platform configuration project's ``dropins/tools/`` directory.
+3. The JAR location is the VEE Port configuration project's ``dropins/tools/`` directory.
 
 .. note:: The same JAR is used by the Image Generator and by the :ref:`Front Panel <fp_ui_decoder>`.
 
@@ -166,38 +168,53 @@ Since UI Pack 13.2.0, the Image Generator automatically includes new image decod
 
 .. _section_image_custom_format:
 
-Custom MicroEJ Format
-=====================
+Customize MicroEJ Standard Format
+=================================
 
-As mentionned above (:ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`), the MicroEJ format can be extended by notions specific to the platform (and often to the GPU the platform is using). The generated file stays a MicroEJ file format, usable by the Image Renderer. Additionally, the file becomes compatible with the platform constraints. 
+As mentioned above (:ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`), the MicroEJ format can be extended by notions specific to the VEE Port (and often to the GPU the VEE Port is using). The generated file stays a MicroEJ file format, usable by the Image Renderer. Additionally, the file becomes compatible with the VEE Port constraints. 
 
 1. Open image generator extension project.
 2. Create a subclass of ``com.microej.tool.ui.generator.BufferedImageLoader`` (to be able to load standard images) or create an implementation of interface ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` (to load custom images).
-3. Override method ``convertARGBColorToDisplayColor(int)`` if the platform's display pixel encoding is not standard (see :ref:`display_pixel_structure`).
+3. Override method ``convertARGBColorToDisplayColor(int)`` if the VEE Port's display pixel encoding is not standard (see :ref:`display_pixel_structure`).
 4. Override method ``getStride(int)`` if a padding must be added after each line.
 5. Override method ``getOptionalHeader()`` if an additional header must be added between the MicroEJ file header and pixels array. The header size is also used to align image memory address (custom header is aligned on its size).
 6. Create the file ``META-INF/services/com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` and open it.
 7. Note down the name of created class, with its package and classname.
-8. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
+8. Rebuild the image generator extension, copy it in VEE Port configuration project and rebuild the VEE Port (see above).
 
 If the only constraint is the pixels array alignment, the Image Generator extension is not useful:
 
-1. Open platform configuration file ``display/display.properties``.
+1. Open VEE Port configuration file ``display/display.properties``.
 2. Add the property ``imageBuffer.memoryAlignment``.
-3. Build again the platform.
+3. Build again the VEE Port.
 
 This alignment will be used by the Image Generator and also by the Image Loader.
 
-Platform Binary Format
+.. _section_imagegenerator_custom_format:
+
+VEE Port MicroEJ Custom Format
+==============================
+
+The Image Generator does not yet provide a service for generating the :ref:`section_image_custom_raw`.
+A custom image can only be created at runtime, see :ref:`section_buffered_image`.
+
+VEE Port Binary Format
 ======================
 
-As mentionned above (:ref:`section_image_binary_raw`), the Image Generator is able to generate a binary file compatible with platform (and not compatible with Image Renderer). This is very useful when a platform library offers the possibility to use other kinds of images than MicroUI library. The binary file can be encoded according to the options the user gives in the images list file.
+The Image Generator can generate a :ref:`binary file <section_image_binary_raw>` compatible with the VEE Port (and not with the Image Renderer). 
+This is very useful when a VEE Port features a foundation library that can use other kinds of images than the MicroUI library. 
+The binary file can be encoded according to the user's options in the images list file.
 
 1. Open image generator extension project.
 2. Create an implementation of the interface ``com.microej.tool.ui.generator.ImageConverter``.
 3. Create the file ``META-INF/services/com.microej.tool.ui.generator.ImageConverter`` and open it.
-4. Note down the name of created class, with its package and classname.
-5. Rebuild the image generator extension, copy it in platform configuration project and rebuild the platform (see above).
+4. Note the name of the created class, with its package and class name.
+5. Rebuild the image generator extension, copy it into the VEE Port configuration project, and rebuild the VEE Port (see above).
+
+The binary file can have two kinds of formats (see the API ``OutputFileType getType()``):
+
+* A simple resource: the binary output file is embedded as a resource; the application (or the library) can retrieve the file by using an API like ``getResourceAsStream()``.
+* An immutable file: the output file contains one or several :ref:`immutable objects <section.classpath.elements.immutables>`; the application (or the library) can retrieve the objects by using the :ref:`runtime_bon` library.
 
 .. _section_image_generator_conffile:
 
@@ -257,7 +274,7 @@ Each line can add optional parameters (separated by a ':') which define and/or d
 
       image1
 
-* Binary format: to encode the image in a format only known by the platform, refer to the platform documentation to know which format are available.
+* Binary format: to encode the image in a format only known by the VEE Port, refer to the VEE Port documentation to know which format are available.
 
    .. code-block::
       :caption: Binary Output Format Example
@@ -303,7 +320,7 @@ The Image Generator is an additional module for the MicroUI library.
 When the MicroUI module is installed, also install this module in order
 to be able to target pre-generated images.
 
-In the platform configuration file, check :guilabel:`UI` > :guilabel:`Image Generator`
+In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Image Generator`
 to install the Image Generator module. When checked, the properties file
 ``imageGenerator/imageGenerator.properties`` is required to specify the Image Generator extension project. When no extension is required (standalone mode only), this property is useless.
 

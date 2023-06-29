@@ -11,7 +11,7 @@ Images
     uiImageGenerator
     uiImageLoader
     uiImageCore
-
+    uiBufferedImage
 
 
 
