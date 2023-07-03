@@ -243,6 +243,28 @@ the following content:
 
 	#endif //TRACE_H
 
+.. _architecture7_migration_legacy_system_properties:
+
+Migrate Legacy System Properties Files
+--------------------------------------
+
+Legacy System Properties files (``*.system.properties``) are no more supported by Architecture ``8.0.0``. 
+These files must be renamed to ``*.properties.list`` files (see :ref:`system_properties` for more details).
+
+To facilitate the migration, legacy System Properties files are detected by SOAR and the following error is thrown:
+
+.. code-block:: console
+
+   1 : SOAR-L ERROR :
+   [M78] - System properties file [properties/xxx.system.properties] in classpath entry [...] must be renamed to [properties/xxx.properties.list].
+
+
+The following modules declare legacy System Properties files in older versions. 
+Make sure to update the module to the specified version or a newer release in your projects.
+
+- Pack ``NET`` version ``9.4.2``.
+- Add-On library ``eclasspath-logging`` version ``1.2.1``.
+- Testsuite ``FS`` version ``3.0.7``.
 
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
