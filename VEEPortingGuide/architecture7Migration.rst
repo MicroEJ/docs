@@ -110,6 +110,8 @@ There are two options:
 
 Contact `our support team <https://www.microej.com/contact/#form_2>`_ to get the best migration strategy and detailed instructions. 
 
+.. _architecture7_migration_llkernel:
+
 Migrate Your LLKERNEL Implementation
 ------------------------------------
 
@@ -172,6 +174,7 @@ Your code logic for managing allocated blocks does not need to be changed.
       return 0;
    }
 
+.. _architecture7_migration_trace_library:
 
 Migrate Trace C Library Usage
 -----------------------------
