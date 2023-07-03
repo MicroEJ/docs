@@ -21,8 +21,6 @@ Here is a non-exhaustive list of the activities to be done by Kernel Developers:
 -  Managing lifecycles of applications (deciding when to install, start,
    stop and uninstall them)
 
--  Integrating pre-installed applications
-
 -  Defining and applying permissions on system resources (rules &
    policies)
 
@@ -89,7 +87,7 @@ The Virtual Device builder performs the following steps:
 
 -  Remove the embedded part of the VEE Port (including MEJ32).
 
--  Append Add-On Libraries and pre-installed Applications into the runtime
+-  Append Add-On Libraries and :ref:`pre-installed Applications <pre_installed_application_vd>` into the runtime
    classpath. See :ref:`Kernel Module Configuration <kernel_module_configuration>` section for specifying the
    dependencies.
 
