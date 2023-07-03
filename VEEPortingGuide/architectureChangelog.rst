@@ -70,12 +70,12 @@ Core Engine
 - Removed ``LLBSP_isInReadOnlyMemory`` in Core Engine Abstraction Layer (``LLBSP.h`` file).
 - Clarified ``LLMJVM_IMPL_getCurrentTime`` API contract in Core Engine Abstraction Layer (``LLMJVM_impl.h`` file).
 - Fixed potential crash when Core Engine is restarted after a call to `System.exit(int)`_.
-- Updated ``Trace`` C library from version ``1.0.0`` to ``2.0.0``:
+- Updated ``Trace`` C library from version ``1.0.0`` to ``2.0.0``. See :ref:`architecture7_migration_trace_library`.
 
   - Renamed header file ``trace.h`` into ``LLTRACE.h`` to avoid filename conflicts.
   
   - Renamed C functions ``TRACE_xxx`` into ``LLTRACE_xxx``.
-
+  
 - [Multi] - Added option :ref:`com.microej.runtime.kernel.dynamicfeatures.max <option_maximum_number_of_dynamic_features>` to configure the maximum number of Features that can be dynamically installed.
 - [Multi] - Added option :ref:`com.microej.runtime.kf.waitstop.delay <option_feature_stop_timeout>` to configure the maximum time allowed for a Feature to stop.
 - [Multi] - Fixed missing release of allocated Feature buffers after Core Engine exits (:ref:`In-Place Installation <feature_inplace_installation>` mode).
@@ -87,7 +87,7 @@ Foundation Libraries
   
    -  Added heap memory control: `Module.getAllocatedMemory()`_, `Kernel.setReservedMemory()`_ and `Feature.setMemoryLimit()`_ methods.
    -  Added load of a Feature resource (`Feature.getResourceAsStream()`_ method).
-- Updated ``KF`` dynamic loader to support :ref:`Feature Custom Installation <feature_custom_installation>` mode.
+- Updated ``KF`` dynamic loader to support :ref:`Feature Custom Installation <feature_custom_installation>` mode. See :ref:`architecture7_migration_llkernel`.
 - Removed Foundation Libraries API Jars and Javadoc.
 - Fixed :ref:`option_embed_utf8` defaults to ``true`` when building a Standalone Application using MMM.
 - Fixed ``KF`` to call the registered `Thread.UncaughtExceptionHandler`_ when an exception is thrown in `FeatureEntryPoint.stop()`_.
@@ -141,7 +141,7 @@ Simulator
 - Fixed load of the Mock classes in the classpath order (left-to-right).
 - Fixed the missing error check when loading an immutable file referencing an external object id (the ``importObject`` directive is required).
 - Fixed initialization of transparent images in the Front Panel when the initial color is not fully opaque.
-   (introduced in version :ref:`7.11.0 <changelog-7.11.0>`)
+  (introduced in version :ref:`7.11.0 <changelog-7.11.0>`)
 - [Multi] Fixed the computation of object sizes. The 4-byte KF header was missing.
 
 SOAR
