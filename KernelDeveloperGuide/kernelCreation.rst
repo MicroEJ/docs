@@ -73,12 +73,14 @@ A Kernel API or a Runtime Environment module is added as a dependency with the c
 
    <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6" conf="kernelapi->default"/>
 
-.. _system_application_input_ways:
+.. _pre_installed_application_vd:
 
 Add Pre-installed Applications
 ------------------------------
 
-Your device may come with pre-installed applications.
+Your device may come with pre-installed applications, also known as applications that are already available when the Kernel starts.
+These applications are installed during the manufacturing process, such as in ROM alongside the Kernel executable.
+
 To mimic this behavior on a Virtual Device, add a new dependency with the configuration ``systemapp-vd->application``.
 
 .. code:: xml
