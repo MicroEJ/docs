@@ -196,6 +196,8 @@ The custom uninstallation flow is described in the following sequence diagram:
    Custom Feature Uninstallation Flow   
 
 
+.. _feature_persistency:
+
 Feature Persistency
 -------------------
 
