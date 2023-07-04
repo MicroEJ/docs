@@ -6,7 +6,7 @@ Install Portable SDK Distribution
 The portable package allows you to install the SDK Distribution when the use of the SDK Distribution installer is not possible or not desired, for example:
 
 - you do not have administrator privileges on your workstation;
-- you want to install SDK Distribution ``23.02`` but JDK 11 is not your default JDK version;
+- you want to install SDK Distribution ``23.07`` but JDK 11 is not your default JDK version;
 - you want to install SDK Distribution up to ``21.11`` but JDK 8 is not your default JDK version.
 
 Perform the following steps:
@@ -22,6 +22,12 @@ Perform the following steps:
      - **Linux**
      - **macOS x86_64 (Intel chip)**
      - **macOS aarch64 (M1 chip)** [#warning_architecture_7_18_0]_
+   * - ``23.07``
+     - ``11``
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.07/zip/microej-sdk-23.07-win_x86_64.zip>`__
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.07/zip/microej-sdk-23.07-linux_x86_64.zip>`__
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.07/zip/microej-sdk-23.07-macosx_x86_64.zip>`__
+     - `Portable  (.zip) <https://repository.microej.com/packages/SDK/23.07/zip/microej-sdk-23.07-macosx_aarch64.zip>`__
    * - ``23.02``
      - ``11``
      - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.02/zip/microej-sdk-23.02-win_x86_64.zip>`__
