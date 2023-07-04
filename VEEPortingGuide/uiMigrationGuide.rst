@@ -6,6 +6,80 @@
 Migration Guide
 ===============
 
+From 13.4.x to 13.5.x
+=====================
+
+Front Panel
+"""""""""""
+
+* Set the explicit dependency to the UI Pack 13.5.1:
+
+  .. code-block:: xml
+
+		<dependency org="com.microej.pack.ui" name="ui-pack" rev="13.5.1">
+			<artifact name="frontpanel" type="jar"/>
+		</dependency>
+
+* Replace any calls to ``LLUIPainter.setDrawer()`` and ``LLDWPainter.setDrawer()`` to ``LLUIDisplay.Instance.registerUIDrawer()``.
+* Replace any calls to ``LLUIPainter.getDrawer()`` and ``LLDWPainter.getDrawer()`` to  ``LLUIDisplay.Instance.getUIDrawer()``.
+* Replace any calls to ``LLUIDisplay.getDWDrawerSoftware()`` to  ``LLUIDisplay.Instance.getUIDrawerSoftware()``.
+* Implementation of the interface ``UIDrawingDefault``: implement the interface ``UIDrawing`` instead.
+* Implementation of the interfaces ``DWDrawing`` and ``DWDrawingDefault``: implement the interface ``UIDrawing`` instead.
+* Implementation of the service ``BufferedImageProvider``: implement ``handledFormat()`` and remove the parameter ``format`` from ``newBufferedImage()``.
+* Replace any occurrences of ``MICROUI_IMAGE_FORMAT_LCD`` by ``MICROUI_IMAGE_FORMAT_DISPLAY``.
+
+BSP without GPU
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+  	* Fetch UI Pack 13.5.1 and CCO MicroUI 3.0.0.
+
+* *[BSP project]*
+
+	* Delete the VEE Port ``include`` folder (often ``/platform/inc``).
+	* Delete the properties file ``cco_microui.properties``.
+	* In the C project configuration, include the new C files ``ui_drawing.c``, ``ui_image_drawing.c`` and ``ui_drawing_stub.c``.
+
+* Build the VEE Port and the BSP.
+
+BSP with DMA2D
+""""""""""""""
+
+* Follow the migration steps of "BSP without GPU".
+* *[VEE Port configuration project]*
+
+	* Fetch CCO Display-DMA2D 4.0.0.
+
+* *[BSP project]*
+
+	* Delete the properties file ``cco_display-dma2d.properties``.
+	* Delete the C files ``drawing_dma2d.h`` and  ``drawing_dma2d.c`` and remove them from the C project configuration.
+	* In the C project configuration, include the new C file ``ui_drawing_dma2d.c``.
+	* Replace the import ``drawing_dma2d.h`` by ``ui_drawing_dma2d.h``.
+	* Replace the calls to functions ``DRAWING_DMA2D_xxx()`` by ``UI_DRAWING_DMA2D_xxx()``.
+
+* Build the VEE Port and the BSP.
+
+.. _section_ui_migrationguide_13.5_vglite:
+
+BSP with VG-Lite
+""""""""""""""""
+
+* Follow the migration steps of "BSP without GPU".
+* *[VEE Port configuration project]*
+
+	* Fetch CCO MicroUI-VGLite 6.0.1.
+  
+* *[BSP project]*
+	
+	* Delete the properties file ``cco_microui-vglite.properties``.
+	* Delete the C files ``vg_drawer.h`` and  ``vg_drawer.c`` and remove them from the C project configuration.
+	* Verify the options in ``display_configuration.h``. 
+	* In the C project configuration, include the new C file ``ui_drawing_vglite.c``.
+
+* Build the VEE Port and the BSP.
+
 From 13.3.x to 13.4.x
 =====================
 
@@ -25,9 +99,11 @@ Front Panel
 BSP
 """
 
-* The signatures of `LLUI_DISPLAY_IMPL_decodeImage` and `LLUI_DISPLAY_IMPL_getNewImageStrideInBytes` have changed: 
-   * use `jbyte` in functions signatures.
-   * add a cast to `MICROUI_Image` in implementation.
+* The signatures of ``LLUI_DISPLAY_IMPL_decodeImage`` and ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes`` have changed: 
+ 
+	* use ``jbyte`` in function signatures.
+	* add a cast to ``MICROUI_Image`` in implementation.
+
 * Use the MicroUI C module 2.0.1.
 
 From 13.2.x to 13.3.x
@@ -99,7 +175,7 @@ BSP
 From 12.x to 13.x
 =================
 
-Platform Configuration Project
+VEE Port Configuration Project
 """"""""""""""""""""""""""""""
 
 * Update Architecture version: 7.16.0 or higher.
@@ -273,7 +349,7 @@ Image Generator
 This chapter resumes the changes to perform.
 The available changes in Image Generator API are described in :ref:`next chapter<section_ui_migration_imagegeneratorapi_13x>`.
 
-This chapter only concerns platform with a custom display. In this case a dedicated image generator extension project is available. This project must be updated.
+This chapter only concerns VEE Port with a custom display. In this case a dedicated image generator extension project is available. This project must be updated.
 
 * Reorganize project to use source folders ``src/main/java`` and ``src/main/resources``
 * Add new ``module.ivy`` file:
@@ -288,7 +364,7 @@ This chapter only concerns platform with a custom display. In this case a dedica
          
          <configurations defaultconfmapping="default->default;provided->provided">
             <conf name="default" visibility="public" description="Runtime dependencies to other artifacts"/>
-            <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the platform"/>
+            <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the VEE Port"/>
             <conf name="documentation" visibility="public" description="Documentation related to the artifact (javadoc, PDF)"/>
             <conf name="source" visibility="public" description="Source code"/>
             <conf name="dist" visibility="public" description="Contains extra files like README.md, licenses"/>
@@ -315,8 +391,8 @@ The artifact name prefix must be ``imageGenerator-``.
       com.microej.generator.MyImageGeneratoExtension
 
 * Build the easyant project
-* Copy the jar in the platform :guilabel:`-configuration` project > :guilabel:`dropins` folder
-* Rebuild the platform after any changes
+* Copy the jar in the VEE Port :guilabel:`-configuration` project > :guilabel:`dropins` folder
+* Rebuild the VEE Port after any changes
 
 .. _section_ui_migration_imagegeneratorapi_13x:
 
@@ -364,7 +440,7 @@ BSP
 This chapter resumes the changes to perform.
 The available changes in LLAPI are described in :ref:`next chapter<section_ui_migration_llapi_13x>`.
 
-* Delete all platform header files (folder should be set in :guilabel:`-configuration` project > :guilabel:`bsp` > :guilabel:`bsp.properties` > property ``output.dir``)
+* Delete all VEE Port header files (folder should be set in :guilabel:`-configuration` project > :guilabel:`bsp` > :guilabel:`bsp.properties` > property ``output.dir``)
 * If not possible to delete this folder, delete all UI headers files:
 
     * ``intern/LLDISPLAY*``
@@ -401,7 +477,7 @@ LLAPI
 
 * ``dw_drawing.h``
 
-	* [Added] List of ``ej.api.drawing`` library's drawing functions to optionally implement in platform.
+	* [Added] List of ``ej.api.drawing`` library's drawing functions to optionally implement in VEE Port.
 
 * ``LLDISPLAY.h`` and ``intern/LLDISPLAY.h``
 
@@ -532,7 +608,7 @@ LLAPI
 
 * ``ui_drawing.h``
 
-	* [Added] List of ``ej.api.microui`` library's drawing functions to optionally implement in platform.
+	* [Added] List of ``ej.api.microui`` library's drawing functions to optionally implement in VEE Port.
 
 Custom Native Drawing Functions
 """""""""""""""""""""""""""""""
@@ -552,7 +628,7 @@ Application
 From 11.x to 12.x
 =================
 
-Platform Configuration Project
+VEE Port Configuration Project
 """"""""""""""""""""""""""""""
 
 * Update Architecture version: 7.11.0 or higher.
@@ -706,7 +782,7 @@ Application
 From 10.x to 11.x
 =================
 
-Platform Configuration Project
+VEE Port Configuration Project
 """"""""""""""""""""""""""""""
 
 * Update Architecture version: 7.0.0 or higher.
@@ -714,13 +790,13 @@ Platform Configuration Project
 From 9.x to 10.x
 ================
 
-Platform Configuration Project
+VEE Port Configuration Project
 """"""""""""""""""""""""""""""
 
 * Update Architecture version: 6.13.0 or higher.
 * Edit ``display/display.properties``
-* Add property ``imagesHeap.size=xxx``; this value fixes the images heap size when using the platform in command line (to build a firmware)
-* In platform linker file (standalone mode with MicroEJ linker): remove the image heap reserved section and put the section ``.bss.microui.display.imagesHeap`` instead.
+* Add property ``imagesHeap.size=xxx``; this value fixes the images heap size when using the VEE Port in command line (to build a firmware)
+* In VEE Port linker file (standalone mode with MicroEJ linker): remove the image heap reserved section and put the section ``.bss.microui.display.imagesHeap`` instead.
 
 BSP
 """
@@ -744,7 +820,7 @@ Application
 From 7.x to 8.x
 ===============
 
-Platform Configuration Project
+VEE Port Configuration Project
 """"""""""""""""""""""""""""""
 
 * Update Architecture version: 6.4.0 or higher.
@@ -777,10 +853,10 @@ BSP
 * Replace all functions ``LLDISPLAY_SWITCH_IMPL_xxx``, ``LLDISPLAY_COPY_IMPL_xxx`` and ``LLDISPLAY_DIRECT_IMPL_xxx`` by ``LLDISPLAY_IMPL_xxx``
 * Remove the argument ``int32_t type`` from ``getWidth`` and ``getHeight``
 
-STM32 Platforms with DMA2D only
+STM32 VEE Ports with DMA2D only
 """""""""""""""""""""""""""""""
 
-* In platform configuration project, edit ``display/display.properties``
+* In VEE Port configuration project, edit ``display/display.properties``
 * Add property ``hardwareAccelerator=dma2d``
 * In BSP project, edit ``LLDISPLAY*.c``
 * simplify following functions (see STM32F7Discovery board implementation)

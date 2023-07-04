@@ -7,14 +7,14 @@ Simulation
 Principle
 =========
 
-The VG Pack embeds an extension of :ref:`UI Pack's Front Panel mock <section_ui_simulation>` to implement the equivalent of the four embedded modules (Matrix, Path, Gradient, and Font).
+The VG Pack embeds an extension of :ref:`UI Pack's Front Panel mock <section_ui_simulation>` to implement the equivalent of the five embedded modules (Matrix, Path, Gradient, Image and Font).
 
 The implementation simulates the same characteristics and limitations as the embedded modules. 
 
 Installation
 ============
 
-No action is required in the Platform's Front Panel project: the MicroVG simulation part is automatically used when an application uses MicroVG APIs on the simulator.
+No action is required in the VEE Port's Front Panel project: the MicroVG simulation part is automatically used when an application uses MicroVG APIs on the simulator.
 
 Use
 ===

@@ -329,7 +329,7 @@ Please create a ``/etc/udev/rules.d/91-usbdongle.rules`` file with the following
        
        LABEL="usbdongle_end"
 
-Then, restart udev: ``/etc/init.d/udev restart``
+Then, restart udev: ``sudo /etc/init.d/udev restart``
 
 You can check that the device is recognized by running the ``lsusb`` command.
 The output of the command should contain a line similar to the one below for each dongle:
@@ -365,6 +365,46 @@ Then the symlink has to be mapped in the Docker container by adding the followin
    --device /dev/microej_dongle:/dev/bus/usb/999/microej_dongle
 
 The ``/dev/microej_dongle`` symlink can be mapped to any device path as long as it is in ``/dev/bus/usb``.
+
+USB Dongle with WSL
+~~~~~~~~~~~~~~~~~~~
+
+.. note::
+   The following steps have been tested on WSL2 with Ubuntu 22.04.2 LTS.
+
+To use a USB dongle with WSL, you first need to install `usbipd` following the steps described in `Microsoft WSL documentation <https://learn.microsoft.com/fr-fr/windows/wsl/connect-usb#install-the-usbipd-win-project>`__:
+
+First, check that WSL2 is installed on your system. If not, install it or update it following `Microsoft Documentation <https://learn.microsoft.com/fr-fr/windows/wsl/install>`__
+
+Then, you need install usbipd-win on Windows from `usbipd-win Github repository <https://github.com/dorssel/usbipd-win/releases>`__.
+
+And then, install usbipd and update hardware database inside you WSL installation:
+
+   .. code-block:: console
+
+      sudo apt install linux-tools-generic hwdata
+      sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20
+
+Add the udev rule described in :ref:`production_license_linux`, and restart udev:
+
+   .. code-block:: console
+
+      /etc/init.d/udev restart
+
+You then need to unplug and plug your dongle again before attaching the dongle to WSL from powershell:
+
+  .. code-block:: console
+
+      usbipd.exe wsl attach --busid <BUSID>
+
+The ``<BUSID>`` can be obtainted with the following powershell command:
+
+  .. code-block:: console
+
+      usbipd wsl list
+
+.. note::
+      You'll need to follow these steps each time you system is rebooted or the dongle is plugged/unplugged.
 
 .. _production_license_troubleshooting:
 
@@ -408,13 +448,48 @@ Make sure to enable the USB dongle by clicking on it in the VirtualBox menu :gui
 To make this setting persistent, go to :guilabel:`Devices` > :guilabel:`USB` > :guilabel:`USB Settings...`
 and add the USB dongle in the :guilabel:`USB Devices Filters` list.
 
+WSL Troubleshooting
+"""""""""""""""""""
+
+Check that your dongle is attached to WSL from Powershell:
+
+  .. code-block:: console
+
+      usbipd wsl list
+
+You should have a  line saying ``Attached - Ubuntu``:
+
+  .. code-block:: console
+
+      PS C:\Users\sdkuser> usbipd.exe wsl list
+      BUSID  VID:PID    DEVICE                                                        STATE
+      2-1    096e:0006  USB Input Device                                              Attached - Ubuntu
+      2-6    0c45:6a10  Integrated Webcam                                             Not attached
+      2-10   8087:0026  Intel(R) Wireless Bluetooth(R)                                Not attached
+      3-1    045e:0823  USB Input Device                                              Not attached
+      3-4    046d:c31c  USB Input Device                                              Not attached
+
+In you WSL console, the dongle must also be recognized. Ckeck by using ``lsusb```:
+
+   .. code-block:: console
+
+      skduser@host:~/workspaces/docs$ lsusb
+      Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+      Bus 001 Device 003: ID 096e:0006 Feitian Technologies, Inc. HID Dongle (for OEMs - manufacturer string is "OEM")
+      Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+This might not be sufficient. If you're still facing license issues, restart udev, abd attach your dongle to WSL once again.
+
+.. note::
+   Hibernation may have unattached your dongle. Reload udev, unplug/plug your dongle and attach it from powershell.
+
 Remote USB Dongle Connection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When the dongle cannot be physically plugged to the machine running the SDK (cloud builds, virtualization, missing permissions, ...),
 it can be configured using USB redirection over IP network. 
 
-There are many hardware and software solutions available on the market. Among others, this has been tested with https://www.net-usb.com/.
+There are many hardware and software solutions available on the market. Among others, this has been tested with https://www.net-usb.com/ and https://www.virtualhere.com/.
 Please contact :ref:`our support team <get_support>` for more details.
 
 ..

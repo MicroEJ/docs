@@ -10,7 +10,7 @@ Simulation
 Principle
 =========
 
-The graphical user interface uses the Front Panel mock (see :ref:`section_frontpanel`) and some extensions (widgets) to simulate the user interactions. It is the equivalent of the three embedded modules (Display, Input and LED) of the MicroEJ Platform (see :ref:`section_microui`).
+The graphical user interface uses the Front Panel mock (see :ref:`section_frontpanel`) and some extensions (widgets) to simulate the user interactions. It is the equivalent of the three embedded modules (Display, Input and LED) of the VEE Port (see :ref:`section_microui`).
 
 The Front Panel enhances the development environment by allowing User Interface  applications to be designed and tested on the computer rather than on the target device (which may not yet be built). The mock interacts with the user's computer in two ways: 
 
@@ -24,14 +24,14 @@ Module Dependencies
 
 The Front Panel project is a regular MicroEJ Module project. Its module.ivy file should look like this example:
 
-::
+.. code-block:: xml
 
    <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:ej="https://developer.microej.com" ej:version="2.0.0"> 
    <info organisation="com.mycompany" module="examplePanel" status="integration" revision="1.0.0"/>      
 
       <configurations defaultconfmapping="default->default;provided->provided">
          <conf name="default" visibility="public" description="Runtime dependencies to other artifacts"/>
-         <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the platform"/>
+         <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the VEE Port"/>
       </configurations>
 
       <dependencies>
@@ -42,15 +42,15 @@ The Front Panel project is a regular MicroEJ Module project. Its module.ivy file
 
 It depends at least on the Front Panel framework. This framework contains the Front Panel core classes. The dependencies can be reduced to:
 
-::
+.. code-block:: xml
 
    <dependencies>
       <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.0"/>
    </dependencies>
 
-To be compatible with Display module's Graphics Engine, the project must depend on an extension of Front Panel framework. This extension provides some interfaces and classes the Front Panel is using to target simulated display and input devices. The extension does not provide any widgets. It is the equivalent of the embedded Low Level API. It fetches by transitivity the Front Panel framework, so the Front Panel framework dependency does not need to be specified explicitly: 
+To be compatible with Display module's Graphics Engine, the project must depend on an extension of Front Panel framework. This extension provides some interfaces and classes the Front Panel is using to target simulated display and input devices. The extension does not provide any widgets. It is the equivalent of the embedded Abstraction Layer APIs. It fetches by transitivity the Front Panel framework, so the Front Panel framework dependency does not need to be specified explicitly: 
 
-::
+.. code-block:: xml
 
    <dependencies>
       <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
@@ -58,11 +58,11 @@ To be compatible with Display module's Graphics Engine, the project must depend 
       </dependency>
    </dependencies>
 
-.. warning:: This extension is built for each UI pack version. By consequence, a Front Panel project is done for a platform built with the same UI pack. When the UI pack mismatch, some errors may occur during the Front Panel project export step, during the platform build, and/or during the application runtime. The current pack version is |UIPACKVERSION|.
+.. warning:: This extension is built for each UI pack version. By consequence, a Front Panel project is done for a VEE Port built with the same UI pack. When the UI pack mismatch, some errors may occur during the Front Panel project export step, during the VEE Port build, and/or during the application runtime. The current pack version is |UIPACKVERSION|.
 
 The Front Panel extension does not provide any widgets. Some compatible widgets are available in a third library. The life cycle of this library is different than the UI pack's one. New widgets can be added to simulate new kind of displays, input devices, etc. This extension fetches by transitivity the Front Panel extension, so this extension dependency does not need to be specified explicitly: 
 
-::
+.. code-block:: xml
 
    <dependencies>
       <dependency org="ej.tool.frontpanel" name="widget" rev="2.0.0"/>
@@ -84,17 +84,27 @@ MicroUI Implementation
 As described :ref:`here<section_ui_low_level>`, the Front Panel uses an equivalent of embedded side's header files that implement MicroUI native methods.
 
 .. figure:: images/ui_llapi_sim.*
-   :alt: MicroUI Low Level
+   :alt: MicroUI Abstraction Layer
    :width: 100.0%
    :align: center
 
 This set of classes and interfaces is available in the module `com.microej.pack.ui#ui-pack`_.
 It offers the same capacity to override some built-in drawing algorithms (internal Graphics Engine drawing algorithms), to add some custom drawing algorithms, to manipulate the MicroUI concepts (GraphicsContext, Image, etc.) in the Front Panel project, etc.
 
-* The interface ``ej.microui.display.LLUIDisplay`` represents the MicroUI Graphics Engine (MicroUI framework). It provides some methods to map MicroUI byte arrays in MicroUI Graphics Context objects, manipulate MicroUI colors, etc. An instance of this framework is available via the field ``Instance``. 
-* The interface ``ej.microui.display.LLUIDisplayImpl`` all methods required by MicroUI implementation to be compatible with the MicroUI Display class implementation. See :ref:`section_ui_simulation_display`.
-* The class ``ej.microui.display.LLUIPainter`` implements all MicroUI drawing natives. It defines some interfaces and classes to manipulate the MicroUI concepts (GraphicsContext, Image, etc.) in the Front Panel project. Like the embedded side, this class manages the synchronization with the Graphics Engine and delegates the drawing to the interface ``ej.microui.display.UIDrawing``. 
-* Like the embedded side, the default implementation of the interface ``ej.microui.display.UIDrawing``: ``ej.microui.display.UIDrawing.UIDrawingDefault`` calls the internal Graphics Engine algorithms (software algorithms). Each algorithm can be overridden independently. 
+* The interface ``ej.microui.display.LLUIDisplay`` represents the MicroUI Graphics Engine (MicroUI framework).
+  It provides methods to map MicroUI byte arrays in MicroUI Graphics Context objects, manipulate MicroUI colors, clip, etc.
+  An instance of this framework is available via the field ``Instance``. 
+* The interface ``ej.microui.display.LLUIDisplayImpl`` all methods required by MicroUI implementation to be compatible with the MicroUI Display class implementation.
+  See :ref:`section_ui_simulation_display`.
+* The class ``ej.microui.display.LLUIPainter`` implements all MicroUI drawing natives.
+  It defines some interfaces and classes to manipulate the MicroUI concepts (GraphicsContext, Image, etc.) in the Front Panel project.
+  Like the embedded side, this class manages the synchronization with the Graphics Engine and delegates the drawing to the interface ``ej.microui.display.UIDrawing``. 
+* The interface ``ej.microui.display.UIDrawing`` defines all the drawing methods available in MicroUI.
+  The default implementation of the methods involving images calls the matching method in ``ej.microui.display.UIImageDrawing``.
+  The default implementation of the other methods reports the error that the drawing is not done.
+* The interface ``ej.microui.display.UIImageDrawing`` defines all the methods that draw an image.
+  The default implementation of the methods reports the error that the drawing is not done.
+* The class ``ej.microui.display.DisplayDrawer`` implements ``ej.microui.display.UIDrawing`` that draws using the Graphics Engine software algorithms.
 * The classes in the package ``ej.drawing`` implement the native of the MicroUI extended library: `Drawing`_
 * The classes in the package ``ej.microui.event`` manage the input events, see :ref:`section_ui_simulation_input`.
 * The classes in the package ``ej.microui.led`` manage the LEDs.
@@ -137,7 +147,7 @@ A zero or negative value disables the feature.
 
 .. note:: This feature is only available when double buffering mode is enabled.
    
-The application can substitute the platform's value by setting the property ``-Dej.fp.widget.display.refreshRate=xxx`` in the application launcher.
+The application can substitute the VEE Port's value by setting the property ``-Dej.fp.widget.display.refreshRate=xxx`` in the application launcher.
 
 .. _section_ui_simulation_flushtime:
 
@@ -155,7 +165,7 @@ A zero or negative value disables the feature.
 
 .. note:: This feature is only available when double buffering mode is enabled.
    
-The application can substitute the platform's value by setting the property ``-Dej.fp.widget.display.flushTime=xxx`` in the application launcher.
+The application can substitute the VEE Port's value by setting the property ``-Dej.fp.widget.display.flushTime=xxx`` in the application launcher.
 
 .. _section_ui_simulation_nonrectangulardisplay:
 
@@ -175,137 +185,6 @@ Example of non-rectangular display and touch:
 
    <ej.fp.widget.Display x="41" y="33" width="392" height="392" filter="mask_392.png" />
    <ej.fp.widget.Pointer x="41" y="33" width="392" height="392" filter="mask_392.png" touch="true"/>
-
-.. _section_ui_simulation_customdrawing:
-
-Custom Drawings
-===============
-   
-Custom algorithms like the embedded side can replace the Graphics Engine drawing algorithms.
-This chapter describes how to override the method ``fillRectangle()``.
-
-1. Create an implementation of the interface ``ej.microui.display.UIDrawing.UiDrawingDefault``: ``MyDrawer``. 
-2. Create an :ref:`empty widget<section_frontpanel_emptywidget>` to invoke the new implementation:
-
-.. code-block:: java
-
-   @WidgetDescription(attributes = { })
-   public class Init extends Widget{
-      @Override
-      public void start() {
-         super.start();
-         LLUIPainter.setDrawer(new MyDrawer());
-      }
-   }
-
-3. Invokes this widget in the ``.fp`` file:
-
-.. code-block:: xml
-
-   <frontpanel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://developer.microej.com"  xsi:schemaLocation="https://developer.microej.com .widget.xsd">
-      <device name="STM32429IEVAL" skin="Board-480-272.png">
-         <com.is2t.microej.fp.Init/>
-         [...]
-      </device>
-   </frontpanel>
-
-4. Implements the ``fillRectangle`` method like this:
-
-.. code-block:: java
-
-   @Override
-   public void fillRectangle(MicroUIGraphicsContext gc, int x1, int y1, int x2, int y2) {
-
-      // manage the clip
-      if (gc.isClipEnabled() && !gc.isRectangleInClip(x1, y1, x2, y2)) {
-         x1 = Math.max(x1, gc.getClipX1());
-         x2 = Math.min(x2, gc.getClipX2());
-         y1 = Math.max(y1, gc.getClipY1());
-         y2 = Math.min(y2, gc.getClipY2());
-
-         if (x2 < x1 || y2 < y1) {
-            // nothing to render
-            return;
-         }
-      }
-      // clip disabled, or rectangle entirely fits the clip
-
-      // get/create AWT objects
-      Graphics2D src = (Graphics2D) ((BufferedImage) gc.getImage().getRAWImage()).getGraphics();
-      Color color = new Color(gc.getRenderingColor());
-
-      // fill rectangle
-      src.setColor(color);
-      src.fillRect(x1, y1, x2 - x1 + 1, y2 - y1 + 1);
-
-      // update Graphics Engine's dirty area
-      gc.setDrawingLimits(x1, y1, x2, y2);
-   }
-
-Explanations:
-
-* The Front Panel framework is running over AWT. 
-* The method ``gc.getImage()`` returns a ``ej.fp.Image``. It is the representation of a MicroUI Image in the Front Panel framework. The method ``gc.getImage().getRAWImage()`` returns the implementation of the Front Panel image on the J2SE framework: a `AWT BufferedImage`_. From this image, retrieve the AWT graphics.
-* The MicroUI color (``gc.getRenderingColor()``) is converted in an AWT color.
-* Before drawing, the MicroUI clip is checked (the MicroUI drawing can be outside the clip and/or the image itself).
-* After drawing, the implementation updates the Graphics Engine dirty area by calling ``gc.setDrawingLimits()``.
-
-.. note:: More details are available in LLUIPainter, UIDrawing, LLUIDisplay, and LLUIDisplayImpl classes.
-
-.. _AWT BufferedImage: https://docs.oracle.com/javase/7/docs/api/java/awt/image/BufferedImage.html
-
-New Drawings
-============
-
-The Front Panel framework allows the addition of custom drawing algorithms.
-This chapter describes how to implement the method ``drawSomething()``.
-
-.. note:: To add a custom drawing algorithm, it is strongly recommended to follow the same rules as the MicroUI drawings: a class that synchronizes the drawings with the Graphics Engine and another class that performs the drawing itself (like :ref:`section_ui_simulation_customdrawing`).
-
-1. In the application, write the new native: 
-
-.. code-block:: java
-
-   private static void drawSomething(byte[] gc, int x, int y);
-   
-2. Call this function from a ``render`` method:
-
-.. code-block:: java
-
-   @Override
-   public void render(GraphicsContext gc) {
-      [...]
-      drawSomething(gc.getSNIContext(), 15, 36);
-      [...]
-   }
-
-3. In the Front Panel project, write the equivalent of ``LLUIPainter`` class:
-
-.. code-block:: java
-
-   public static void drawSomething(byte[] target, int x, int y) {
-      LLUIDisplay graphicalEngine = LLUIDisplay.Instance;
-      synchronized (graphicalEngine) {
-         MicroUIGraphicsContext gc = graphicalEngine.mapMicroUIGraphicsContext(target);
-         if (gc.requestDrawing()) {
-            MyDrawer.Instance.drawSomething(gc, x, y);
-         }
-      }
-   }
-
-4.  In the Front Panel project, write the equivalent of ``UIDrawing`` interface, see :ref:`section_ui_simulation_customdrawing`:
-
-.. code-block:: java
-
-   public static void drawSomething(MicroUIGraphicsContext gc, int x, int y) {
-      // 1- manage clip
-      // 2- draw
-      // 3- update Graphics Engine's dirty area
-   }
-
-   
-.. note:: More details are available in LLUIPainter, UIDrawing, LLUIDisplay, and LLUIDisplayImpl classes.
-
 
 .. _section_ui_simulation_input:
 
@@ -344,7 +223,7 @@ Graphics Engine is using two dedicated heaps: for the images (see :ref:`section_
 Image Decoders
 ==============
 
-Front Panel uses its own internal image decoders when the associated modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Some additional decoders can be added like the C-side for the embedded platform (see :ref:`external image decoders<image_external_decoder>`).  Front Panel uses the Java AWT `ImageIO`_ API to load the encoded images. 
+Front Panel uses its own internal image decoders when the associated modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Some additional decoders can be added like the C-side for the embedded VEE Port (see :ref:`external image decoders<image_external_decoder>`).  Front Panel uses the Java AWT `ImageIO`_ API to load the encoded images. 
 
 .. _ImageIO: https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html
 
@@ -384,21 +263,36 @@ Since UI Pack 13.2.0, Front Panel automatically includes new image decoders (new
 
 1. The JAR contains the service declaration ``/META-INF/services/javax.imageio.spi.ImageReaderSpi``,
 2. The JAR filename's prefix is `imageio-`,
-3. The JAR location is the platform configuration project's ``dropins/tools/`` directory.
+3. The JAR location is the VEE Port configuration project's ``dropins/tools/`` directory.
 
 .. note:: The same JAR is used by the Front Panel and by the :ref:`Image Generator <section_image_generator_imageio>`.
 
+Drawings
+========
+
+Front Panel is designed to modify the default behavior for performing :ref:`drawings <section_drawings_sim>`.
+
+Image Rendering
+===============
+
+Front Panel is designed to add the support of :ref:`custom images <section_image_renderer_sim>`.
+
+Buffered Image
+==============
+
+Front Panel is designed to add the support of :ref:`MicroUI BufferedImage <section_bufferedimage_sim>` with a format different from the display format.
+
 Classpath
----------
+=========
 
 A standard mock is running on the same JVM than the HIL Engine (see :ref:`mock` chapter). It shares the same classpath.
-When the application is not using the MicroUI library (i.e., it is not an UI application, whether the platform holds the MicroEJ Graphics Engine or not), the Front Panel mock runs a standard mock.
-When the application is using the MicroUI library, the Front Panel _UI_ mock runs on the same JVM than the MicroEJ Simulator. 
+When the application is not using the MicroUI library (i.e., it is not an UI application, whether the VEE Port holds the MicroEJ Graphics Engine or not), the Front Panel mock runs a standard mock.
+When the application is using the MicroUI library, the Front Panel UI mock runs on the same JVM than the MicroEJ Simulator. 
 In this case, the other mocks don't share the same classpath than the Front Panel mock.
-As a consequence, an other mock than the Front Panel mock can not send input events to MicroUI, the object created in the standard mocks's class loader are not available in the Front Panel _UI_'s class loader (and vice versa), etc.
+As a consequence, an other mock than the Front Panel mock can not send input events to MicroUI, the object created in the standard mocks's class loader are not available in the Front Panel UI's class loader (and vice versa), etc.
 
-Since the UI Pack 13.2.0, it is possible to force to run the Front Panel _UI_ mock in the same classpath than the HIL Engine by adding the property ``-Dej.fp.hil=true`` in the application JRE tab. 
-Note that this option only works when the version of the MicroEJ Architecture used to build the Platform is 7.17.0 or higher.     
+Since the UI Pack 13.2.0, it is possible to force to run the Front Panel UI mock in the same classpath than the HIL Engine by adding the property ``-Dej.fp.hil=true`` in the application JRE tab. 
+Note that this option only works when the version of the MicroEJ Architecture used to build the VEE Port is 7.17.0 or higher.     
 
 
 

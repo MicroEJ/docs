@@ -11,7 +11,7 @@ The MicroUI implementation for MicroEJ requires a configuration step (also calle
 
 This XML file (also called the initialization file) defines:
 
--  The MicroUI event generators that will exist in the application in relation to Low Level drivers that provide data to these event generators (see :ref:`section_input`).
+-  The MicroUI event generators that will exist in the application in relation to low-level drivers that provide data to these event generators (see :ref:`section_input`).
 -  Whether the application has a display; and if so, it provides its logical name.
 -  Which fonts will be provided to the application.
 
@@ -20,7 +20,7 @@ The next chapters describe succinctly the XML file. For more information about g
 Functional Description
 ======================
 
-The Static MicroUI Initializer tool takes as entry point the initialization file which describes the MicroUI library extension. This tool is automatically launched during the MicroEJ Platform build (see :ref:`section_microui_installation` ). 
+The Static MicroUI Initializer tool takes as entry point the initialization file which describes the MicroUI library extension. This tool is automatically launched during the VEE Port build (see :ref:`section_microui_installation` ). 
 
 The Static MicroUI Initializer tool is able to generate two files:
 
@@ -32,7 +32,7 @@ The Static MicroUI Initializer tool is able to generate two files:
    used to make a link between an input device (buttons, touch) and its
    MicroUI event generator (see :ref:`section_input`).
 
-.. note:: The Front Panel project does not need a configuration file (like C header file for embedded platform).
+.. note:: The Front Panel project does not need a configuration file (like C header file for embedded VEE Port).
 
 .. figure:: images/static_init_process.*
    :alt: Static MicroUI Initializer Process
@@ -47,7 +47,7 @@ The Static MicroUI Initializer tool is able to generate two files:
 XML File
 ========
 
-The XML file must be created in platform configuration project, in folder ``microui`` and called ``microui.xml``.
+The XML file must be created in VEE Port configuration project, in folder ``microui`` and called ``microui.xml``.
 
 .. figure:: images/static_xml.*
    :alt: Static MicroUI Initializer XML File
@@ -58,7 +58,7 @@ The XML file grammar is detailed :ref:`here<muiStaticInit>`. The following list 
 
 * Root element: The initialization file root element is ``<microui>`` and contains component-specific elements.
 
-    ::
+    .. code-block:: xml
 
         <microui>
             [ component specific elements ]
@@ -67,7 +67,7 @@ The XML file grammar is detailed :ref:`here<muiStaticInit>`. The following list 
 
 * Display element: The ``display`` element augments the initialization file with the configuration of the display. The following snippet is an example of ``display`` element:
 
-    ::
+    .. code-block:: xml
 
         <display name="DISPLAY"/>
 
@@ -77,7 +77,7 @@ The XML file grammar is detailed :ref:`here<muiStaticInit>`. The following list 
 
     The following snippet is an example of ``fonts`` element:
 
-    ::
+    .. code-block:: xml
 
         <fonts>
             <font file="resources\fonts\myfont.ejf">
@@ -96,7 +96,7 @@ The XML file grammar is detailed :ref:`here<muiStaticInit>`. The following list 
 
     The following snippet is an example of ``eventgenerators`` element:
 
-    ::
+    .. code-block:: xml
 
         <eventgenerators>
             <!-- Generic Event Generators -->
@@ -150,7 +150,7 @@ This common MicroUI initialization file initializes MicroUI with:
 
 -  a `Font`_ whose path is relative to this file.
 
-::
+.. code-block:: xml
 
    <microui>
 
@@ -191,7 +191,7 @@ Use
 ===
 
 The Static MicroUI Initializer tool is automatically launched during the
-MicroEJ Platform build.
+VEE Port build.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

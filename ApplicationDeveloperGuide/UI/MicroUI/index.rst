@@ -7,6 +7,7 @@ MicroUI
    :maxdepth: 2
 
    introduction
+   drawings
    images
    fonts
    fontDesigner
