@@ -56,7 +56,7 @@ The next step is to create a MicroEJ Platform configuration project:
 
    .. note::
       
-      The version of installed Platform Configuration Additions is indicated in the `CHANGELOG <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/content/build/CHANGELOG.md>`_ file. 
+      The version of installed Platform Configuration Additions is indicated in the `CHANGELOG <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/content-sdk-5/build/CHANGELOG.md>`_ file. 
 
 - Edit the :ref:`mmm_module_description` ``module.ivy`` to declare the MicroEJ Architecture dependency:
 
