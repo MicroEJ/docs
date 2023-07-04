@@ -3,9 +3,9 @@
 Install Latest SDK Distribution
 ===============================
 
-This section will guide you through the installation process of the latest SDK Distribution ``23.02`` using the step-by-step executable installer.
+This section will guide you through the installation process of the latest SDK Distribution ``23.07`` using the step-by-step executable installer.
 
-The SDK Distribution ``23.02`` requires a JDK 11 and thus can only work with an :ref:`Architecture 7.17.0 <changelog-7.17.0>` or higher.
+The SDK Distribution ``23.07`` requires a JDK 11 and thus can only work with an :ref:`Architecture 7.17.0 <changelog-7.17.0>` or higher.
 In all other cases, please jump to :ref:`sdk_installation_21_11` section.
 See also the :ref:`system-requirements` page for more information on the list of supported environments.
 
@@ -17,12 +17,12 @@ See also the :ref:`system-requirements` page for more information on the list of
 Download SDK Distribution
 -------------------------
 
-Download the SDK Distribution ``23.02`` installer for your operating system:
+Download the SDK Distribution ``23.07`` installer for your operating system:
 
-- `Windows (.exe) <https://repository.microej.com/packages/SDK/23.02/MicroEJ-SDK-Installer-Win64-23.02.exe>`__
-- `Linux  (.zip) <https://repository.microej.com/packages/SDK/23.02/MicroEJ-SDK-Installer-Linux64-23.02.zip>`__
-- `macOS x86_64 - Intel chip (.zip) <https://repository.microej.com/packages/SDK/23.02/MicroEJ-SDK-Installer-MacOS-23.02.zip>`__
-- `macOS aarch64 - M1 chip (.zip) <https://repository.microej.com/packages/SDK/23.02/MicroEJ-SDK-Installer-MacOS-A64-23.02.zip>`__ (requires :ref:`Architecture 7.18.0 or higher <changelog-7.18.0>`)
+- `Windows (.exe) <https://repository.microej.com/packages/SDK/23.07/MicroEJ-SDK-Installer-Win64-23.07.exe>`__
+- `Linux  (.zip) <https://repository.microej.com/packages/SDK/23.07/MicroEJ-SDK-Installer-Linux64-23.07.zip>`__
+- `macOS x86_64 - Intel chip (.zip) <https://repository.microej.com/packages/SDK/23.07/MicroEJ-SDK-Installer-MacOS-23.07.zip>`__
+- `macOS aarch64 - M1 chip (.zip) <https://repository.microej.com/packages/SDK/23.07/MicroEJ-SDK-Installer-MacOS-A64-23.07.zip>`__ (requires :ref:`Architecture 7.18.0 or higher <changelog-7.18.0>`)
 
 Check JDK Version
 -----------------
@@ -48,9 +48,9 @@ Install SDK Distribution
 
 - Launch the installer executable
   
-  - On Windows, start ``MicroEJ-SDK-Installer-Win64-23.02.exe``.
-  - On Linux, unzip ``MicroEJ-SDK-Installer-Linux64-23.02.zip`` and start ``MicroEJ-SDK-Installer-Linux64-1.1.0.sh``.
-  - On macOS, unzip ``MicroEJ-SDK-Installer-Linux64-23.02.zip`` and start ``MicroEJ-SDK-Installer-MacOS-1.1.0.app``. 
+  - On Windows, start ``MicroEJ-SDK-Installer-Win64-23.07.exe``.
+  - On Linux, unzip ``MicroEJ-SDK-Installer-Linux64-23.07.zip`` and start ``MicroEJ-SDK-Installer-Linux64-1.2.0.sh``.
+  - On macOS, unzip ``MicroEJ-SDK-Installer-Linux64-23.07.zip`` and start ``MicroEJ-SDK-Installer-MacOS-1.2.0.app``. 
     In case of error, check your app has not been put in quarantine (see :ref:`macOS troubleshooting <sdk_install_troubleshooting_macos>` section)
 
 .. figure:: images/installation_process/SDK22_06/welcome_screen.png
@@ -69,7 +69,7 @@ Install SDK Distribution
 
    Accept the terms of this license agreement
 
-- Select the installation path of your SDK. By default it is ``C:\Program Files\MicroEJ\MicroEJ-SDK-23.02`` for Windows. Then click on the :guilabel:`Next` button.
+- Select the installation path of your SDK. By default it is ``C:\Program Files\MicroEJ\MicroEJ-SDK-23.07`` for Windows. Then click on the :guilabel:`Next` button.
 
 .. figure:: images/installation_process/SDK22_06/installation_path_screen.png
    :alt: Installation path screen
