@@ -3,8 +3,8 @@
 Virtual Device
 ==============
 
-The Virtual Device includes the same custom MicroEJ Core, libraries and
-System Applications as the real device. The Virtual Device allows
+The Virtual Device includes the same custom MicroEJ Core, libraries, and
+pre-installed Applications as the real device. The Virtual Device allows
 developers to run their applications either on the Simulator, or
 directly on the real device through local deployment.
 

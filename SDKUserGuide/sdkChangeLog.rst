@@ -362,11 +362,11 @@ MicroEJ Module Manager
 -  Updated ``firmware-multiapp`` to allow Virtual Devices for automatically launching a Sandboxed Application project in the SDK.
 -  Updated ``firmware-multiapp`` to automatically configure the Virtual Device Kernel UID when a Firmware is built.
 -  Fixed ``firmware-multiapp`` skeleton default dependencies with only modules available in MicroEJ Central Repository.
--  Fixed ``firmware-multiapp`` unexpected build error when no declared System Application.
+-  Fixed ``firmware-multiapp`` unexpected build error when no declared pre-installed Application.
 -  Fixed ``firmware-multiapp`` build which may fail an unexpected ``Unresolved Dependencies`` error the first time,
    for Kernel APIs module dependencies (configuration ``kernelapi``) or Virtual Device specific modules dependencies (configuration ``default-vd``).
 -  Fixed ``firmware-multiapp`` unexpected build error when no Application (``.wpk`` file) found in the dropins folder.
--  Fixed ``firmware-multiapp`` unexpected build error when no declared System Application.
+-  Fixed ``firmware-multiapp`` unexpected build error when no declared pre-installed Application.
 -  Fixed ``firmware-singleapp`` and ``firmware-multiapp`` skeletons wrong package name generation for the default Main class.
 -  Fixed ``artifact-repository`` changelog check for modules with a snapshot version.
 
@@ -824,7 +824,7 @@ General
    -  :guilabel:`New Front Panel Project` wizard now generates a project skeleton for this new Front Panel engine, based on MMM
    -  Legacy Front Panel projects for UI Pack ``v11.1.0`` or higher are still valid
 -  Updated Virtual Device builder to speed-up Virtual Device
-   boot time (System Applications are now extracted at build time)
+   boot time (pre-installed Applications are now extracted at build time)
 -  Fixed inability to select a ``Platform in workspace`` in a
    MicroEJ Tool launch configuration
 -  Fixed broken title in MicroEJ export menu (Platform Export)
@@ -891,7 +891,7 @@ Build Types
 -  Added a new build nature for building platform options
    pages (``microej-extension``)
 -  Updated Virtual Device builder to speed-up Virtual Device
-   boot time (System Applications are now extracted at build time)
+   boot time (pre-installed Applications are now extracted at build time)
 -  Fixed Virtual Device Player builder (dependencies were not
    exported into the zip file) and updated ``firmware-singleapp``
    skeleton with missing configurations
@@ -983,7 +983,7 @@ Build Types
 -  Updated Virtual Device Builder to generate with ``.vde``
    extension
 -  Updated Multi-app Firmware Builder to embed (Sim/Emb)
-   specific modules (Add-On libraries and System Applications)
+   specific modules (Add-On libraries and pre-installed Applications)
 -  Fixed ``build-microej-ri`` v1.2.1 missing dependencies
    (embedded in SDK 4.1.5)
 

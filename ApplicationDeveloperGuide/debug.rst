@@ -3,25 +3,63 @@
 Debug an Application
 ====================
 
+Debug on Simulator
+------------------
+
 To debug an application on Simulator, select it in the left panel then right-click
 and select :guilabel:`Debug As` > :guilabel:`MicroEJ Application`.
 
 .. figure:: images/debug1.png
-   :alt: MicroEJ Development Tools Overview of the Debugger
+   :alt: MicroEJ Development Tools Overview of the Debugger on Simulator
    :align: center
 
-   MicroEJ Development Tools Overview of the Debugger
+   MicroEJ Development Tools Overview of the Debugger on Simulator
+
+
+.. _debug_on_device:
+
+Debug on Device
+---------------
+
+To debug an application on device, first run the :ref:`MicroEJ debugger proxy <debugger_proxy>`, and run a Remote Java Application launch:
+
+- Go to :guilabel:`Run` > :guilabel:`Debug Configurations` > :guilabel:`Remote Java Application`
+  
+- Set the informations about the project to debug, the proxy connections properties, etc.
+  
+- Click on :guilabel:`Debug`
+
+.. figure:: images/debug2.png
+   :alt: MicroEJ Development Tools Overview of the Remote Java Application Launch
+   :align: center
+   :scale: 80%
+
+   MicroEJ Development Tools Overview of the Remote Java Application
+
+
+In the SDK, open the Debug perspective (:guilabel:`Window` > :guilabel:`Perspective` > :guilabel:`Open Perspective` > :guilabel:`Other...` > :guilabel:`Debug`) to show the current debugging process.
+
+
+.. figure:: images/debug3.png
+   :alt: MicroEJ Development Tools Overview of the Debugger on Board
+   :align: center
+
+   MicroEJ Development Tools Overview of the Debugger on Board
 
 It makes use of Eclipse Java debugger client.
 If you are unfamiliar with Java debugging or Eclipse IDE, see `Debugging the Eclipse IDE for Java Developers`_ to get started.
 
 .. _Debugging the Eclipse IDE for Java Developers:  https://www.eclipse.org/community/eclipse_newsletter/2017/june/article1.php
 
+
+Get Library Sources
+-------------------
+
 All libraries included in MicroEJ SDK are provided with their source code and resources.
 The way the sources are retrieved depends on the kind of library (Add-On Library or Foundation Library).
 
 Add-On Library Sources
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 Add-On Library sources are packaged in a dedicated file named ``[module_name]-source.jar`` available in the module directory:
 
@@ -53,7 +91,7 @@ Then the implementation class is open in read-only mode.
 .. _foundation_library_sources:
 
 Foundation Library Sources
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Foundation Library sources are directly included in the implementation file (JAR file) provided by the Platform.
 
