@@ -80,7 +80,7 @@ You can find below what are the different APIs included in the Runtime Environme
 What is a MicroEJ Demo Flavor?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A MicroEJ Demo Flavor is a composition of a set of runtime services, pre-installed Applications and a given MicroEJ Runtime Environment. Any flavor can be customized with MicroEJ SDK for a specific product.
+A MicroEJ Demo Flavor is a composition of a set of runtime services, pre-installed Applications, and a given MicroEJ Runtime Environment. Any flavor can be customized with MicroEJ SDK for a specific product.
 
 +---------------------+-----------------------------+----------------------------------------------------------------+---------------------------------+
 | MicroEJ Demo Flavor | MicroEJ Runtime Environment | Services Pre-installed Apps                                    | UI Pre-installed Apps           |

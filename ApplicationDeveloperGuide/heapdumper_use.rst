@@ -22,7 +22,7 @@ Option(browse): Executable file
 Specify the full path of a full linked ELF file.
 
 Option(list): Feature files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+'''''''''''''''''''''''''''
 
 *Option Name*: ``additional.application.filenames``
 
@@ -30,7 +30,7 @@ Option(list): Feature files
 
 *Description*:
 
-Specify the full path of Feature files (``.fodbg`` files).
+Specify the full path of Feature files with debug information (``.fodbg`` files).
 
 Group: Memory
 ^^^^^^^^^^^^^
@@ -55,7 +55,7 @@ Option(list): Memory files
 
 *Description*:
 
-Specify the full path of additional memory files (Installed Feature areas,
+Specify the full path of additional memory files in Intel Hex format (Installed Feature areas,
 Dynamic Features table, ...).
 
 Group: Output
