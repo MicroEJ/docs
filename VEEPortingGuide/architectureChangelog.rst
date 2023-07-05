@@ -37,7 +37,7 @@ specific configuration:
 
 .. _changelog-8.0.0:
 
-[8.0.0] - 2023-MM-DD
+[8.0.0] - 2023-06-27
 --------------------
 
 .. note::
@@ -71,13 +71,13 @@ Core Engine
 - Removed check when passing a non-immortal array in SNI if VEE Port option ``core.sni.nonimmortal.access`` was set to ``false``.
 - Removed ``LLBSP_isInReadOnlyMemory`` in Core Engine Abstraction Layer (``LLBSP.h`` file).
 - Clarified ``LLMJVM_IMPL_getCurrentTime`` API contract in Core Engine Abstraction Layer (``LLMJVM_impl.h`` file).
-- Fixed potential crash when Core Engine is restarted after a call to `System.exit(int)`_.
 - Updated ``Trace`` C library from version ``1.0.0`` to ``2.0.0``. See :ref:`architecture7_migration_trace_library`.
 
   - Renamed header file ``trace.h`` into ``LLTRACE.h`` to avoid filename conflicts.
   
   - Renamed C functions ``TRACE_xxx`` into ``LLTRACE_xxx``.
   
+- Fixed potential crash when Core Engine is restarted after a call to `System.exit(int)`_.
 - [Multi] - Added option :ref:`com.microej.runtime.kernel.dynamicfeatures.max <option_maximum_number_of_dynamic_features>` to configure the maximum number of Features that can be dynamically installed.
 - [Multi] - Added option :ref:`com.microej.runtime.kf.waitstop.delay <option_feature_stop_timeout>` to configure the maximum time allowed for a Feature to stop.
 - [Multi] - Fixed missing release of allocated Feature buffers after Core Engine exits (:ref:`In-Place Installation <feature_inplace_installation>` mode).
@@ -91,14 +91,14 @@ Foundation Libraries
    -  Added load of a Feature resource (`Feature.getResourceAsStream()`_ method).
 - Updated ``KF`` dynamic loader to support :ref:`Feature Custom Installation <feature_custom_installation>` mode. See :ref:`architecture7_migration_llkernel`.
 - Removed Foundation Libraries API Jars and Javadoc.
+- Removed `Unknown product - Unknown version` comment in auto-generated Low Level API header files.
+- Removed the ``Serial Communication`` modules group, including the Foundation Libraries ``ECOM`` and ``ECOM-COMM``. See :ref:`architecture7_migration_ecom`.
+- Removed the deprecated ``Device Information`` module group, including the Foundation Library ``Device``. See :ref:`architecture7_migration_device`.
 - Fixed :ref:`option_embed_utf8` defaults to ``true`` when building a Standalone Application using MMM.
 - Fixed ``KF`` to call the registered `Thread.UncaughtExceptionHandler`_ when an exception is thrown in `FeatureEntryPoint.stop()`_.
 - Fixed unexpected `java.lang.NullPointerException`_ thrown by the ``skip`` method of an InputStream returned by `Class.getResourceAsStream()`_. This error only occurs with a resource loaded by the External Resource Loader.
 - Fixed the behavior of ``available``, ``read``, ``skip``, ``mark``, ``reset`` and ``close`` methods of an InputStream returned by `Class.getResourceAsStream()`_ and previously closed.
 - Fixed the ``LLEXT_RES_read()`` Low Level API specification (the buffer passed cannot be ``null``).
-- Removed `Unknown product - Unknown version` comment in auto-generated Low Level API header files.
-- Removed the ``Serial Communication`` modules group, including the Foundation Libraries ``ECOM`` and ``ECOM-COMM``. See :ref:`architecture7_migration_ecom`.
-- Removed the deprecated ``Device Information`` module group, including the Foundation Library ``Device``. See :ref:`architecture7_migration_device`.
 - [Single] Fixed an unexpected ``FeatureFinalizer`` exception or infinite loop when a Standalone Application touches a ``KF`` API in some cases.
 - [Tiny] Fixed an unexpected SOAR error when a Standalone Application touches a ``KF`` API.
 - [Multi] Fixed exception thrown when calling `Kernel.removeConverter()`_.
@@ -131,12 +131,12 @@ Simulator
 - Added :ref:`Mock debug <option_mock_debug>` mode.
 - Added missing default values for the properties ``s3.slow``, ``console.logs.period``, and ``s3.hil.timeout`` when launching the Simulator from the command line.
 - Added a check for unsupported access to the Class instance of a primitive type (e.g. ``byte.class``).
-- Fixed "Internal limits" error in HIL engine when too many array arguments are used at the same time by one or several native methods.
-- Fixed slow reading with an array of bytes of the input stream returned by `Class.getResourceAsStream(String)`_.
 - Added HIL Engine debug logs when verbose option is enabled.
 - Added log of the Mock classpath when verbose option is enabled.
 - Added log of Mock resolution errors (class or method not found).
 - Added support for mark/reset on an InputStream returned by `Class.getResourceAsStream()`_.
+- Fixed "Internal limits" error in HIL engine when too many array arguments are used at the same time by one or several native methods.
+- Fixed slow reading with an array of bytes of the input stream returned by `Class.getResourceAsStream(String)`_.
 - Fixed configuration of the Java heap size using :ref:`option_java_heap`. The legacy ``core.memory.javaheapsum.size`` option is not more supported.
 - Fixed :ref:`option_immortal_heap` default value when running a Standalone Application using MMM.
 - Fixed stop of the HIL Engine if Simulator was terminated before the connection is established.
