@@ -37,7 +37,7 @@ The following figure depicts an example for the FS Pack:
 MicroEJ provides a set of tools and pre-defined projects aimed at
 simplifying the steps for validating Platforms in the form of the
 `Platform Qualification Tools (PQT)
-<https://github.com/MicroEJ/PlatformQualificationTools>`__.
+<https://github.com/MicroEJ/VEEPortQualificationTools>`__.
 
 .. _pqt_overview:
 
@@ -74,7 +74,7 @@ The Platform Qualification Tools provide the following components:
     :ref:`tutorial_run_test_suite_on_device`).
 
 Please refer to the `Platform Qualification Tools README
-<https://github.com/MicroEJ/PlatformQualificationTools>`__ for more
+<https://github.com/MicroEJ/VEEPortQualificationTools>`__ for more
 details and the location of the components.
 
 .. _platform_testsuite:
@@ -132,7 +132,7 @@ Core Engine
    * - Architecture
      - Test Suite
    * - 7.0.0 or higher
-     - `Core Engine Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`__
+     - `Core Engine Test Suite <https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/tests/core>`__
 
 .. _Test Suite FS module 3.0.3: https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/
 .. _FS Pack 5.1.2: https://repository.microej.com/modules/com/microej/pack/fs/5.1.2/
@@ -148,9 +148,9 @@ UI Pack
    * - UI Pack
      - C Test Suite
    * - 13.0.0 or higher (UI3)
-     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/tests/ui/ui3>`__
+     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/tests/ui/ui3>`__
    * - [6.0.0-12.1.5] (UI2)
-     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/tests/ui/ui2>`__
+     - `Graphical User Interface Test Suite <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/tests/ui/ui2>`__
 
 .. _test_suite_versioning_fs:
 

@@ -91,7 +91,7 @@ Prerequisites
 
 A code editor such as Visual Studio Code is also recommended to edit BSP files.
 
-.. _Platform Qualification Tools (PQT): https://github.com/microej/PlatformQualificationTools
+.. _Platform Qualification Tools (PQT): https://github.com/microej/VEEPortQualificationTools
 
 Overview
 --------
@@ -482,7 +482,7 @@ This step describes how to configure the MicroEJ Platform previously created.
 For more information on this topic, please refer to :ref:`platform_configuration_creation`.
 
 The `Platform Configuration Additions
-<https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform>`_
+<https://github.com/MicroEJ/VEEPortQualificationTools/tree/2.6.0/framework/platform>`_
 provide a flexible way to configure the :ref:`BSP connection
 <bsp_connection>` between the MicroEJ Platform and MicroEJ Application
 to the BSP. In this tutorial, the Partial BSP connection is used. That
@@ -496,7 +496,7 @@ invoking ``make`` in the FreeRTOS BSP.
 
 #. Install the Platform Configuration Additions by copying all the
    files within the ``content``
-   `folder <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/content>`_
+   `folder <https://github.com/MicroEJ/VEEPortQualificationTools/tree/2.6.0/framework/platform/content>`_
    in the MicroEJ Platform folder.
 
    .. image:: images/tuto_microej_fw_from_scratch_add_platform_configuration_additions.PNG
@@ -512,7 +512,8 @@ invoking ``make`` in the FreeRTOS BSP.
 
      .. code-block:: console
 
-       svn export --force https://github.com/MicroEJ/PlatformQualificationTools/trunk/framework/platform/content [path_to_platform_configuration_directory]
+       svn export --force https://github.com/MicroEJ/VEEPortQualificationTools/tags/2.6.0/framework/platform/content [path_to_platform_configuration_directory]
+
 
 #. Edit the file ``bsp/bsp.properties`` as follow:
 
@@ -1289,7 +1290,7 @@ The next steps recommended are:
 * Complete the implementation of the Low Level APIs (implement all
   functions in ``LLMJVM_impl.h``).
 * Validate the implementation with the `PQT Core
-  <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`_.
+  <https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/tests/core>`_.
 * Follow the :ref:`tutorial_create_platform_build_and_run_scripts` tutorial to get this MicroEJ Platform fully automated for build and execution. 
 
 ..
