@@ -38,7 +38,7 @@ When building a Sandboxed Application to a Feature, SOAR processing is divided i
 
    Sandboxed Application Build Flow
 
-The Feature ``.fo`` file can be deployed on Device using `Kernel.install()`_ method.
+The Feature ``.fo`` file can be deployed to the Device using `Kernel.install()`_ method.
 
 .. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
 

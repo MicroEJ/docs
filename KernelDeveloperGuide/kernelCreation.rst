@@ -93,7 +93,7 @@ To mimic this behavior on a Virtual Device, add a new dependency with the config
 Build the Executable in the Workspace
 -------------------------------------
 
-It is possible to build the Executable using :ref:`concepts-microejlaunches` rather than the regular module build.
+It is possible to build the Executable using a :ref:`concepts-microejlaunches` rather than the regular module build.
 This speeds-up the build time thanks to MicroEJ Module Manager workspace resolution and Eclipse incremental compilation.
 
 - Import the Kernel project and all Sandboxed Application projects in the same workspace,
