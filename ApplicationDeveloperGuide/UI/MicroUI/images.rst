@@ -313,6 +313,28 @@ Usage Advice
    - `A8` may be necessary for pictograms with long gradients,
    - for a smaller footprint if the image matches the RLE rule, `A8_RLE` is best.
 
+Caching Generated Images
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Images converted using the image generator tool can be cached so that they are not rebuilt every time the application is launched.
+Doing so can significantly speed up the application build phase.
+
+The cache may be enabled or disabled through an option in the run configuration.
+TODO How to enable/disable the cache
+
+The image generator tool obeys several rules when choosing whether an image should be converted.
+
+- If the cache is disabled, all images are generated every time the application is launched.
+- All images will be regenerated if the application is launched using another VEE port and the new VEE port uses a different image generator tool.
+- If the generated image does not exist, it will be generated.
+- If the source image has been modified since the last time it was converted, the image will be regenerated.
+- The image will be regenerated if the destination format has been modified in the `images.list` file.
+
+Cached images are stored in ``TODO PATH .cache/images``.
+You may delete this directory to force the generation of all images in your application.
+You may also delete a single image in this directory so that this specific image is regenerated.
+An image that was previously generated but is no longer listed in the `images.list` files when the application is launched will be deleted from the cache directory.
+
 Image Generator Error Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
