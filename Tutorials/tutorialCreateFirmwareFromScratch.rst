@@ -496,7 +496,7 @@ invoking ``make`` in the FreeRTOS BSP.
 
 #. Install the Platform Configuration Additions by copying all the
    files within the ``content``
-   `folder <https://github.com/MicroEJ/VEEPortQualificationTools/tags/2.6.0/framework/platform/content>`_
+   `folder <https://github.com/MicroEJ/VEEPortQualificationTools/tree/2.6.0/framework/platform/content>`_
    in the MicroEJ Platform folder.
 
    .. image:: images/tuto_microej_fw_from_scratch_add_platform_configuration_additions.PNG
