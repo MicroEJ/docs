@@ -482,7 +482,7 @@ This step describes how to configure the MicroEJ Platform previously created.
 For more information on this topic, please refer to :ref:`platform_configuration_creation`.
 
 The `Platform Configuration Additions
-<https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/framework/platform>`_
+<https://github.com/MicroEJ/VEEPortQualificationTools/tree/2.6.0/framework/platform>`_
 provide a flexible way to configure the :ref:`BSP connection
 <bsp_connection>` between the MicroEJ Platform and MicroEJ Application
 to the BSP. In this tutorial, the Partial BSP connection is used. That
@@ -495,8 +495,8 @@ For this tutorial, that means that the final binary is produced by
 invoking ``make`` in the FreeRTOS BSP.
 
 #. Install the Platform Configuration Additions by copying all the
-   files within the ``content-sdk-5``
-   `folder <https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/framework/platform/content-sdk-5>`_ and ``content-architecture-7`` `folder <https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/framework/platform/content-architecture-7>`_
+   files within the ``content``
+   `folder <https://github.com/MicroEJ/VEEPortQualificationTools/tags/2.6.0/framework/platform/content>`_
    in the MicroEJ Platform folder.
 
    .. image:: images/tuto_microej_fw_from_scratch_add_platform_configuration_additions.PNG
@@ -512,8 +512,7 @@ invoking ``make`` in the FreeRTOS BSP.
 
      .. code-block:: console
 
-       svn export --force https://github.com/MicroEJ/VEEPortQualificationTools/trunk/framework/platform/content-sdk-5 [path_to_platform_configuration_directory]
-       svn export --force https://github.com/MicroEJ/VEEPortQualificationTools/trunk/framework/platform/content-architecture-7 [path_to_platform_configuration_directory]
+       svn export --force https://github.com/MicroEJ/VEEPortQualificationTools/tags/2.6.0/framework/platform/content [path_to_platform_configuration_directory]
 
 
 #. Edit the file ``bsp/bsp.properties`` as follow:
