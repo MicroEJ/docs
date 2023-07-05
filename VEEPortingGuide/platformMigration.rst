@@ -27,7 +27,7 @@ The migration steps are:
 
 #. Create a :ref:`Module Repository <module_repository>` to store the :ref:`MicroEJ Architecture <architecture_overview>`
    and :ref:`MicroEJ Packs <pack_overview>` used by the Platform.
-#. Import the `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/>`_ into the Platform
+#. Import the `Platform Configuration Additions <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/>`_ into the Platform
    Configuration project.
 #. Update the Front Panel project configuration.
 #. Configure the :ref:`BSP Connection <bsp_connection>`.
@@ -176,8 +176,8 @@ Install the Platform Configuration Additions
 
 - Rename the file ``bsp.properties`` located in the Platform Configuration Project to ``bsp2.properties`` (save it
   for later).
-- Install `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/>`_, 
-  by following instructions described at https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/README.rst.
+- Install `Platform Configuration Additions <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/>`_, 
+  by following instructions described at https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/README.rst.
   Files within the ``content`` folder have to be copied to the ``-configuration`` project
   (e.g. ``STM32F746GDISCO-Full-CM7_ARMCC-FreeRTOS-configuration``).
 - Edit the ``module.properties`` file and set
@@ -341,7 +341,7 @@ onto the device.
 
 The `Platform Qualification Tools`_ provides examples of Build Script
 and Run Script for various C TOOLCHAIN `here
-<https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`__. 
+<https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/framework/platform/scripts>`__. 
 :ref:`This tutorial <tutorial_create_platform_build_and_run_scripts>` also describes the steps to create 
 and use these scripts.
 
@@ -395,7 +395,7 @@ the Java Test Suites provided by the `Platform Qualification Tools`_.
 See :ref:`tutorial_run_test_suite_on_device` for a step by step
 explanation on how to do so.
 
-.. _Platform Qualification Tools: https://github.com/MicroEJ/PlatformQualificationTools
+.. _Platform Qualification Tools: https://github.com/MicroEJ/VEEPortQualificationTools
 
 ..
    | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
