@@ -93,9 +93,7 @@ SDK Distribution Changelog
 
    Starting with this release, only 64bits JRE are supported
    because 32bits JRE support has been removed since Eclipse version
-   ``2018-12``. See `this
-   link <https://www.eclipse.org/eclipse/news/4.10/platform.php#java32-removal>`__
-   for more details.
+   ``2018-12``.
 
 .. _known-issues-20.10:
 
