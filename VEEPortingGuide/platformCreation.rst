@@ -42,10 +42,15 @@ The next step is to create a MicroEJ Platform configuration project:
 
 -  Click on :guilabel:`Finish` button. A new empty project is created,
 
--  Install the latest `Platform Configuration Additions <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/>`_. 
-   Files within the ``content`` folder have to be copied to the configuration project folder,
-   by following instructions described at https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/README.rst.
+-  Install the latest `Platform Configuration Additions <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/>`_
+   by following instructions described at https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/README.rst.
    
+   - Files within the ``content-sdk-5`` folder must be copied to the configuration project folder.
+
+   - Files within the ``content-architecture-7`` must be copied to the configuration project folder only if you are using an Architecture version ``7.x``.
+     If you are using an Architecture version ``8.x``, the files are already included and **must not** be copied.
+   
+
    You should get a MicroEJ Platform configuration project that looks like:
 
    .. figure:: images/platformConfigurationSkeleton.png
@@ -56,7 +61,7 @@ The next step is to create a MicroEJ Platform configuration project:
 
    .. note::
       
-      The version of installed Platform Configuration Additions is indicated in the `CHANGELOG <https://github.com/MicroEJ/PlatformQualificationTools/blob/master/framework/platform/content/build/CHANGELOG.md>`_ file. 
+      The version of installed Platform Configuration Additions is indicated in the `CHANGELOG <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/content-sdk-5/build/CHANGELOG.md>`_ file. 
 
 - Edit the :ref:`mmm_module_description` ``module.ivy`` to declare the MicroEJ Architecture dependency:
 
@@ -605,7 +610,7 @@ The build script must comply with the following specification:
   - The script must end with zero exit code.
 
 Many build script templates are available for most commonly used C toolchains in the 
-`Platform Qualification Tools repository <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts>`_.
+`Platform Qualification Tools repository <https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/framework/platform/scripts>`_.
 
 .. note::
 

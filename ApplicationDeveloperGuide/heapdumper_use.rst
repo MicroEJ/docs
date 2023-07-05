@@ -3,9 +3,8 @@ Category: Heap Dumper
 
 
 .. figure:: images/heapdumper_options/img1.png
+   :scale: 100%
    :align: center
-   :width: 1054px
-   :height: 551px
 
 Group: Application
 ^^^^^^^^^^^^^^^^^^
@@ -22,8 +21,8 @@ Option(browse): Executable file
 
 Specify the full path of a full linked ELF file.
 
-Option(list): Resident application files
-''''''''''''''''''''''''''''''''''''''''
+Option(list): Feature files
+'''''''''''''''''''''''''''
 
 *Option Name*: ``additional.application.filenames``
 
@@ -31,8 +30,7 @@ Option(list): Resident application files
 
 *Description*:
 
-Specify the full path of System Applications ``.out`` files linked by the
-Firmware Linker.
+Specify the full path of Feature files with debug information (``.fodbg`` files).
 
 Group: Memory
 ^^^^^^^^^^^^^
@@ -47,6 +45,18 @@ Option(browse): Heap memory file
 *Description*:
 
 Specify the full path of heap memory dump, in Intel Hex format.
+
+Option(list): Memory files
+''''''''''''''''''''''''''
+
+*Option Name*: ``additional.memory.filenames``
+
+*Default value*: ``(empty)``
+
+*Description*:
+
+Specify the full path of additional memory files in Intel Hex format (Installed Feature areas,
+Dynamic Features table, ...).
 
 Group: Output
 ^^^^^^^^^^^^^

@@ -44,7 +44,7 @@ It is also a good idea to run basic hardware tests like:
 * EEMBC Coremark benchmark to verify the CPU/buses/memory/compiler configuration
 * See the `Platform Qualification Tools`_ used to qualify MicroEJ Platforms.
 
-.. _Platform Qualification Tools: https://github.com/MicroEJ/PlatformQualificationTools
+.. _Platform Qualification Tools: https://github.com/MicroEJ/VEEPortQualificationTools
 
 A MicroEJ Platform Project is already available for the same MCU/RTOS/C Compiler
 --------------------------------------------------------------------------------

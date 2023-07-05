@@ -47,6 +47,19 @@ MicroEJ Sphinx extension
     outputs independent HTML/PDF documentation sets. The module is located at
     ``microej.py`` and includes documentation on each of the pieces.
 
+
+HowTo
+~~~~~
+
+Build memraid
+-------------
+
+- Go to https://mermaid.live
+- Paste your mermaid graph description
+- Click on Action
+- Click on PNG to download the png file.
+
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

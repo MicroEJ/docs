@@ -6,7 +6,7 @@ Run a Test Suite on a Device
 This tutorial describes all the steps to configure and run a
 :ref:`platform_testsuite` on a device using the `Platform
 Qualification Tools
-<https://github.com/MicroEJ/PlatformQualificationTools>`_.
+<https://github.com/MicroEJ/VEEPortQualificationTools>`_.
 
 In this tutorial, the target device is the Espressif ESP32-WROVER-KIT
 V4.1 board and the Filesystem Test Suite for :ref:`FS <pack_fs>`
@@ -89,10 +89,10 @@ Import the Test Suite
 
 Follow these steps to import the Filesystem Test Suite into the
 workspace from the `Platform Qualification Tools
-<https://github.com/MicroEJ/PlatformQualificationTools/blob/2.3.0/tests/fs>`__:
+<https://github.com/MicroEJ/VEEPortQualificationTools/blob/2.3.0/tests/fs>`__:
 
 - Clone or download the `Platform Qualitification Tools project 2.3.0
-  <https://github.com/MicroEJ/PlatformQualificationTools/releases/tag/2.3.0>`__.
+  <https://github.com/MicroEJ/VEEPortQualificationTools/releases/tag/2.3.0>`__.
 - Select :guilabel:`File` > :guilabel:`Import...`.
 - Select :guilabel:`Existing Projects into Workspace`.
 - Set :guilabel:`Select the root directory` to the directory
@@ -135,7 +135,7 @@ For a MicroEJ Application, these properties are set using the launcher
 of the application.  For a Test Suite, the properties are defined in a
 file named ``config.properties`` in the root folder of the Test Suite.
 For example, see this example of `config.properties
-<https://github.com/MicroEJ/PlatformQualificationTools/blob/2.3.0/tests/fs/java/java-testsuite-fs/config.properties.tpl>`__
+<https://github.com/MicroEJ/VEEPortQualificationTools/blob/2.3.0/tests/fs/java/java-testsuite-fs/config.properties.tpl>`__
 file.
 
 See :ref:`bsp_connection` for an explanation of the properties.  See
@@ -211,7 +211,7 @@ Configure the Test Suite Specific Options
 Depending on the Test Suite and the specificities of the device,
 various properties may be required and adjusted.  See the file
 ``validation/microej-testsuite-common.properties`` (for example
-https://github.com/MicroEJ/PlatformQualificationTools/blob/2.3.0/tests/fs/java/java-testsuite-fs/validation/microej-testsuite-common.properties)
+https://github.com/MicroEJ/VEEPortQualificationTools/blob/2.3.0/tests/fs/java/java-testsuite-fs/validation/microej-testsuite-common.properties)
 and the README of the Test Suite for a description of each property.
 
 On the WROVER Platform, the configuration files ``config.properties``
