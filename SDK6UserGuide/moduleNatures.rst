@@ -62,6 +62,9 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.buildExecutable`
 - :ref:`sdk6_module_natures.tasks.buildWPK`
 - :ref:`sdk6_module_natures.tasks.buildVirtualDevice`
+- :ref:`sdk6_module_natures.tasks.loadKernel`
+- :ref:`sdk6_module_natures.tasks.loadFeatureConfiguration`
+- :ref:`sdk6_module_natures.tasks.buildFeature`
 
 .. graphviz:: graphApplicationModule.dot
 
@@ -310,6 +313,68 @@ buildVirtualDevice
 ^^^^^^^^^^^^^^^^^^
 
 **Description**: Build the Virtual Device of an Application.
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
+
+.. _sdk6_module_natures.tasks.loadKernel:
+
+loadKernel
+^^^^^^^^^^
+
+**Description**: Loads the Kernel.
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
+
+**Configuration**:
+
+This task provides the following property that can be defined in the ``microej`` extension:
+
+.. list-table:: 
+   :widths: 25 65 15
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default    
+   * - ``kernelFiles``
+     - Path of the Kernel to use in the build. 
+     - Not set
+
+For example:
+
+.. code::
+
+  microej {
+    kernelFiles = listOf("C:\\path\\to\\my\\kernel")
+  }
+
+.. _sdk6_module_natures.tasks.loadFeatureConfiguration:
+
+loadFeatureConfiguration
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Loads the configuration to build the Feature file of an Application.
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
+
+.. _sdk6_module_natures.tasks.buildFeature:
+
+buildFeature
+^^^^^^^^^^^^
+
+**Description**: Build the Feature file of an Application.
 
 **Module Natures**:
 
