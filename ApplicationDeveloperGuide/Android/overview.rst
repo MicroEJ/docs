@@ -19,9 +19,9 @@ Below is a general overview of the workflow when developing a product that targe
 
     General Workflow
 
+
 Software Architecture
 ---------------------
-
 
 Applications designed to run in MicroEJ VEE can also run on Android, thanks to a specific implementation of MicroEJ Foundation libraries based on Android libraries.
 
@@ -32,7 +32,29 @@ Applications designed to run in MicroEJ VEE can also run on Android, thanks to a
     Software Architecture
 
 
+Available APIs and Features
+---------------------------
 
+* Foundation Libraries
+
+  * EDC
+  * BON
+  * SNI
+  * MICROUI
+  * MICROVG
+  * TRACE
+* All compatible Add-on Libraries
+* Supported Resources
+
+  * Images
+  * Fonts (EJF, TTF, OTF)
+  * Android Vector Drawables (AVD)
+  * SVG
+  * NLS (including Android XML and PO formats)
+  * Constants
+  * Properties
+
+* Custom native APIs can be implemented over Android libraries to make them executable on Android devices.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
