@@ -19,6 +19,7 @@ digraph mygraph {
     "runOnSimulator" [fillcolor = "#f76241"]
     "buildWPK" [fillcolor = "#f76241"]
     "buildExecutable" [fillcolor = "#f76241"]
+    "buildVirtualDevice" [fillcolor = "#f76241"]
     "build" -> "check"
     "check" -> "test"
     "test" -> "classes"
@@ -48,6 +49,8 @@ digraph mygraph {
     "buildExecutable" -> "test"
     "buildExecutable" -> "loadExecutableConfiguration"
     "loadExecutableConfiguration" -> "loadVeePort"
+    "buildVirtualDevice" -> "loadVeePort"
+    "buildVirtualDevice" -> "buildWPK"
 
     subgraph cluster_legend {
         label="Legend";
