@@ -13,7 +13,7 @@ The following table describes the compatibility ranges between VG and UI Packs.
 +---------------+-----------------+----------------------------------+
 | VG Pack Range | UI Pack Range   | Comment                          |
 +===============+=================+==================================+
-| 1.3.0         | [13.5.0-14.0.0[ | BufferedImage with custom format |
+| [1.3.0-1.4.0] | [13.5.0-14.0.0[ | BufferedImage with custom format |
 +---------------+-----------------+----------------------------------+
 | [1.1.0-1.2.1] | [13.3.0-14.0.0[ | Internal feature                 |
 +---------------+-----------------+----------------------------------+
@@ -33,12 +33,14 @@ The following table describes Foundation Libraries API versions implemented in M
 
    * - VG Pack Range
      - MicroVG
+   * - 1.4.0
+     - `1.4.0 <https://repository.microej.com/modules/ej/api/microvg/1.4.0/>`_
    * - 1.3.0
-     - 1.3.0
+     - `1.3.0 <https://repository.microej.com/modules/ej/api/microvg/1.3.0/>`_
    * - 1.2.1
-     - 1.2.0
+     - `1.2.0 <https://repository.microej.com/modules/ej/api/microvg/1.2.0/>`_
    * - 1.1.0
-     - 1.1.0
+     - `1.1.0 <https://repository.microej.com/modules/ej/api/microvg/1.1.0/>`_
    * - [1.0.0-1.0.1]
      - 1.0.0
 
@@ -59,6 +61,8 @@ The following table describes the compatibility ranges between the VG Packs and 
 +---------------+---------+----------+----------+----------------+----------------+
 | VG Pack       | MicroVG | Freetype | Harfbuzz | MicroUI-VGLite | MicroVG-VGLite |
 +===============+=========+==========+==========+================+================+
+| 1.4.0         | 3.0.1   | 2.0.2    | 1.0.2    | 7.0.0          | 6.0.0          |
++---------------+---------+----------+----------+----------------+----------------+
 | 1.3.0         | 3.0.0   | 2.0.2    | 1.0.2    | 6.0.1          | 5.0.1          |
 +---------------+---------+----------+----------+----------------+----------------+
 | 1.2.1         | 2.1.0   | 2.0.2    | 1.0.2    | 5.0.1          | 4.0.3          |

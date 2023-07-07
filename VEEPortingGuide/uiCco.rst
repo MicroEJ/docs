@@ -153,8 +153,8 @@ The following table describes the accelerated features:
 
 This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microui-vglite`_.
 
-Compatibility With MCU i.MX RT595 MCU
--------------------------------------
+Compatibility With MCU i.MX RT595
+---------------------------------
 
 The previous versions of the C Module Over VGLite included an implementation of the Low-Level API ``LLUI_DISPLAY_impl.h``.
 This support has been extracted in a dedicated C Module since the version ``7.0.0``.

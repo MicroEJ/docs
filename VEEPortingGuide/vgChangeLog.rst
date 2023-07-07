@@ -4,6 +4,22 @@
 Changelog
 =========
 
+[1.4.0] - (Unreleased)
+======================
+
+XXX TODO XXX
+
+* Compatible with UI Pack 13.5.0 or higher.
+
+MicroVG Implementation
+""""""""""""""""""""""
+
+**Changed**
+
+* Compatible with `MicroVG API 1.4`_.
+
+.. _MicroVG API 1.4: https://repository.microej.com/modules/ej/api/microvg/1.4.0/
+
 [1.3.0] - 2023-05-10
 ====================
 

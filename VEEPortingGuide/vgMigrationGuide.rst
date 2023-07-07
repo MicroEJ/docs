@@ -5,6 +5,24 @@
 Migration Guide
 ===============
 
+From 1.3.x to 1.4.x
+===================
+
+BSP with VG-Lite
+""""""""""""""""
+
+* Follow the migration steps of :ref:`CCO MicroUI-VGLite 7.0.0 <section_ui_migrationguide_13.6_vglite>`.
+* *[VEE Port configuration project]*
+
+	* Fetch VG Pack 1.4.0, CCO MicroVG 3.0.1 and CCO MicroVG-VGLite 6.0.0.
+	* Delete the content of ``dropins/include`` folder.
+
+* *[BSP project]*
+
+	* Delete the properties files ``cco_microvg.properties`` and ``cco_microvg-vglite.properties``.
+  
+* Build the VEE Port, the Freetype library (in case of a dedicated project), and the BSP.
+	
 From 1.2.x to 1.3.x
 ===================
 
