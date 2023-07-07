@@ -177,7 +177,7 @@ General
 - Enabled on/off tags in the MicroEJ Java format profile.
 - Updated Code template for Widget.handleEvent to use MWT 3 API.
 - Fixed default Ivy settings file not created at startup.
-- Fixed topogical order in Application classpath.
+- Fixed topological order in Application classpath.
 
 MicroEJ Module Manager
 """"""""""""""""""""""
