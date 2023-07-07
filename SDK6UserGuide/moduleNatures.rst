@@ -61,6 +61,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.loadExecutableConfiguration`
 - :ref:`sdk6_module_natures.tasks.buildExecutable`
 - :ref:`sdk6_module_natures.tasks.buildWPK`
+- :ref:`sdk6_module_natures.tasks.buildVirtualDevice`
 
 .. graphviz:: graphApplicationModule.dot
 
@@ -303,6 +304,18 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.application`
 
+.. _sdk6_module_natures.tasks.buildVirtualDevice:
+
+buildVirtualDevice
+^^^^^^^^^^^^^^^^^^
+
+**Description**: Build the Virtual Device of an Application.
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
 
 .. _gradle_global_build_options:
 
