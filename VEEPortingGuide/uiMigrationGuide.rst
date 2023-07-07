@@ -6,6 +6,87 @@
 Migration Guide
 ===============
 
+From 13.5.x to 13.6.x
+=====================
+
+Front Panel
+"""""""""""
+
+* Set the explicit dependency to the `UI Pack 13.6.0`_: 
+
+  .. code-block:: xml
+
+	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.6.0">
+		<artifact name="frontpanel" type="jar"/>
+	 </dependency>
+
+.. _UI Pack 13.6.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.6.0/
+
+.. _section_ui_migrationguide_13.6_vglite:
+
+BSP with VG-Lite
+""""""""""""""""
+
+These steps are for a VEE Port that manages its own implementation of ``LLUI_DISPLAY_impl.h`` (that did not use the old implementation which was available in this CCO):
+
+* *[VEE Port configuration project]*
+
+	* Fetch CCO MicroUI-VGLite 7.0.0.
+	* (optional) Fetch CCO MicroUI-Mimxrt595-EVK 7.0.0.
+  
+* *[BSP project]*
+
+	* Delete the properties file ``cco_microui-vglite.properties``.
+	* Delete the following files from the file-system and from the C project configuration: 
+	
+          - ``inc/display_utils.h``
+          - ``inc/display_vglite.h``
+          - ``inc/drawing_vglite.h``
+          - ``inc/vglite_path.h``
+          - ``src/display_stub.c``
+          - ``src/display_utils.c``
+          - ``src/display_vglite.c``
+          - ``src/drawing_vglite.c``
+          - ``src/vglite_path.c``
+
+	* Add the new files to the C project configuration:		
+  
+          - ``src/ui_drawing_vglite_path.c``
+          - ``src/ui_drawing_vglite_process.c``
+          - ``src/ui_vglite.c``
+ 
+	* Review all imports of the removed header files.
+	* In the implementation of ``LLUI_DISPLAY_impl.h``, call ``UI_VGLITE_init()`` during the initialization step.
+	* In the GPU interrupt rountine, call ``UI_VGLITE_IRQHandler()``.
+	* Review all options of ``ui_vglite_configuration.h``.
+	* Implement ``UI_VGLITE_IMPL_notify_gpu_xxx()`` instead of ``DISPLAY_IMPL_notify_gpu_xxx()``.
+	* Implement ``UI_VGLITE_IMPL_error()`` instead of ``DISPLAY_IMPL_error()``.
+	* Change all calls to ``DISPLAY_VGLITE_xxx()`` functions to ``UI_VGLITE_xxx()`` functions.
+	* Change all calls to ``DRAWING_VGLITE_xxx()`` functions to ``UI_DRAWING_VGLITE_PROCESS_xxx()`` functions.
+	* Change all calls to ``VGLITE_PATH_xxx()`` functions to ``UI_DRAWING_VGLITE_PATH_xxx()`` functions.
+	* Change all calls to ``DISPLAY_UTILS_xxx()`` functions to ``UI_VGLITE_xxx()`` functions.
+
+* Build the VEE Port and the BSP.
+
+.. _section_ui_migrationguide_13.6_mimxrt595evk:
+
+BSP With MCU i.MX RT595
+"""""""""""""""""""""""
+
+These steps are for a VEE Port that uses the implementation of ``LLUI_DISPLAY_impl.h`` which was available in the CCO :ref:`VGLite<section_ui_c_module_microui_vglite>`:
+
+* *[VEE Port configuration project]*
+
+	* Fetch CCO MicroUI-VGLite 7.0.0.
+	* Fetch CCO MicroUI-Mimxrt595-EVK 7.0.0.
+  
+* *[BSP project]*
+
+	* Follow the steps of :ref:`section_ui_migrationguide_13.6_vglite` (described above) except the calls to ``UI_VGLITE_init()`` and ``UI_VGLITE_IRQHandler()``.
+	* Implement ``DISPLAY_DMA_IMPL_notify_dma_xxx()`` instead of ``DISPLAY_IMPL_notify_dma_xxx()``.
+
+* Build the VEE Port and the BSP.
+
 From 13.4.x to 13.5.x
 =====================
 

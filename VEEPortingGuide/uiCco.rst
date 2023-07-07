@@ -163,7 +163,7 @@ The dedicated C Module is available on the :ref:`developer_repository`: `com.mic
 Only the C Module `com.microej.clibrary.llimpl#microui-vglite`_ is useful to target the Vivante VG-Lite GPU to perform the MicroUI and MicroVG drawings.
 The C Module `com.microej.clibrary.llimpl#microui-mimxrt595-evk`_ only gives an example of implementation compatible with the MCU i.MX RT595 MCU.
 
-.. note:: For more information, see the migration notes available in the two CCOs (in the change logs files).
+.. note:: For more information, see the :ref:`migration notes<section_ui_migrationguide_13.6_mimxrt595evk>`.
 
 .. _com.microej.clibrary.llimpl#microui-vglite: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite
 .. _com.microej.clibrary.llimpl#microui-mimxrt595-evk: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-mimxrt595-evk
