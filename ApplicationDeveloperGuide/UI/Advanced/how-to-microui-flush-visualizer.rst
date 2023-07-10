@@ -25,18 +25,18 @@ One key element to successful smooth UI applications is performance.
 An efficient UI application must only draw what is necessary to achieve the visual effects desired.
 For example, assuming the application targets 60 FPS to perform a transition between two screens, that means the application has 1/60s ~= 16ms in total to execute the *Rendering Pipeline*.
 
-The *Rendering Pipeline* of an UI application consists of three main phases: Layout, Rendering, and Flush.
+The *Rendering Pipeline* of a UI application consists of three main phases: Layout, Rendering, and Flush.
 
 
-1. *Layout*: This phase determines which widgets should be displayed on the screen and their respective positions.
+1. *Layout*: This phase determines which widgets should be displayed on the screen and the positions of the widgets.
    It is typically triggered when widgets are added or removed from the widget hierarchy.
-   To ensure efficiency, an application should only modify the widget hierarchy when necessary and avoid doing so during animations.
+   An application should only modify the widget hierarchy when necessary and avoid doing so during animation to ensure efficiency.
 
 2. *Rendering*: During this phase, each widget executes its rendering code to perform the necessary drawing operations.
-   It is crucial for widgets to render only what is necessary and minimize overlapping with other widgets to ensure optimal performance.
+   The widgets must render only what is needed and minimize overlapping with other widgets to ensure optimal performance.
 
 3. *Flush*: This phase involves copying the UI working buffer to the screen buffer.
-   This operation is performed by the VEE Port, and it is the responsibility of the Firmware developer to optimize this process, for example, by utilizing a GPU.
+   The VEE Port performs this operation, and it is the responsibility of the Firmware developer to optimize this process, for example, by utilizing a GPU.
 
 
 The MicroUI Flush Visualizer is a tool designed to visualize the drawing operations requested by widgets during the *Rendering* phase between each flush.
@@ -47,15 +47,15 @@ The MicroUI Flush Visualizer provides the following information:
 
 - A screenshot of the result of the Rendering Pipeline (what was shown on the screen).
 - A list of drawing operations that were performed during the *Rendering* phase.
-- The total area covered by the sum of the area drawn by the drawing operations as percentage.
+- The total area covered by the sum of the area drawn by the drawing operations as a percentage.
   A value of 100% indicates that the area drawn is equivalent to the surface of the entire display; a value of 200% indicates the area drawn is equivalent to twice the surface of the entire display.
 
 .. image:: images/demo-ui-flush-visualizer-demo-wearable-annotated.png
 
-This tool is helpful to identify potential bottlenecks in the application's rendering by looking for flushes that exceed 200% of the display area.
+This tool helps identify potential bottlenecks in the application's rendering by looking for flushes that exceed 200% of the display area.
 
 A perfect application has 100% of its display area drawn.
-In practice, a total area drawn between 100% to 200% is the norm because widgets often overlap.
+A total area drawn between 100% to 200% is the norm in practice because widgets often overlap.
 However, if the total area drawn is bigger than 200%, that means that the total surface of the display was drawn more than twice, meaning that a lot of time could be spent drawing things that are never shown.
 
 As always, when conducting a performance study, measure.
