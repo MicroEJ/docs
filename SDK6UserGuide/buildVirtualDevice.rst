@@ -4,10 +4,12 @@ Build a Virtual Device
 ======================
 
 In order to build the Virtual Device of an Application, the SDK provides the Gradle ``buildVirtualDevice`` task.
-The prerequisites to use this task are:
+Refer to the :ref:`section.virtual.device` page for more information about the Virtual Device.
+
+The prerequisites to use the ``buildVirtualDevice`` task are:
 
 - The property ``applicationMainClass`` must be defined in the ``microej`` configuration block of the Gradle build file of the project.
-  It must be set to the Full Qualified Name of the Application main class, for example::
+  It must be set to the fully qualified name of the Application main class, for example::
 
    microej {
      applicationMainClass = "com.mycompany.Main"
@@ -39,7 +41,7 @@ or from Eclipse and IntelliJ IDEA, by double-clicking on the ``buildVirtualDevic
 
 .. _sdk_6_buildVirtualDevice_with_multiple_vee_ports:
 
-Build a Virtual Device with multiple VEE Ports
+Build a Virtual Device with Multiple VEE Ports
 ----------------------------------------------
 
 Only one VEE Port can be used to build the Virtual Device of an Application.
@@ -56,7 +58,7 @@ the ``buildVirtualDevice`` task::
 
    ./gradlew buildVirtualDevice -PveePort="veePortName"
 
-If you want to add the property in IntelliJ IDEA : 
+If you want to add the property in IntelliJ IDEA: 
 
 - Go to ``Run`` > ``Edit Configurations...``.
 - Click on the ``+`` button and select ``Gradle``.
