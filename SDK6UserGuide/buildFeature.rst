@@ -3,14 +3,14 @@
 Build a Feature file
 ====================
 
-In order to build the Feature file (``.fo``) of an Application, the SDK provides the Gradle ``buildFeature`` task.
+To build the Feature file (``.fo``) of an Application, the SDK provides the Gradle ``buildFeature`` task.
 The prerequisites to use this task are:
 
 - A target VEE Port that uses an Architecture version ``7.17`` minimum must be defined.
-  Refer to the :ref:`sdk_6_select_veeport` page to know the different ways to provide a VEE Port for a module project.
+  Refer to the :ref:`sdk_6_select_veeport` page to learn how to provide a VEE Port for a module project.
 
 - A Kernel must be defined.
-  Refer to the :ref:`sdk_6_select_kernel` page to know the different ways to provide a Kernel for a module project.
+  Refer to the :ref:`sdk_6_select_kernel` page to learn how to provide a Kernel for a module project.
 
 Once these prerequisites are fulfilled, the Feature file can be built with the command::
 
