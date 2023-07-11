@@ -21,7 +21,7 @@ There are 4 different ways to provide a VEE Port in the build file of the projec
 The ``veePortFiles`` property is defined as a list in order to provide multiple VEE Port files if it is needed.
 See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
 
-- Set the build property ``veePortDirs`` in the ``microej`` configuration block to the path of the ``source`` folder of an already imported :ref:`Source VEE Port <source_platform_import>`::
+- Set the build property ``veePortDirs`` in the ``microej`` configuration block to the path of the ``source`` folder of a VEE Port::
 
    microej {
      veePortDirs = listOf("C:\\path\\to\\my\\veePort\\directory")
