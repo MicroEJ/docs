@@ -87,11 +87,11 @@ It is created and initialized with the C function ``SNI_createVM``.
 Then it is started and executed in the current RTOS task by calling ``SNI_startVM``.
 The function ``SNI_startVM`` returns when the Application exits or if
 an error occurs (see section :ref:`core_engine_error_codes`).
-The function ``SNI_destroyVM`` handles the VEE termination 
+The function ``SNI_destroyVM`` handles the Core Engine termination 
 and must be called after the return of the function ``SNI_startVM``.
 
 Only one instance of the Core Engine can be created in the system, 
-and both ``SNI_startVM`` and ``SNI_destroyVM`` should only be called once. 
+and both ``SNI_createVM`` and ``SNI_destroyVM`` should only be called once. 
 When restarting the Core Engine, don't call ``SNI_createVM`` or ``SNI_destroyVM`` 
 before calling ``SNI_startVM`` again.
 For more information, refer to the :ref:`core_engine_restart` section.
