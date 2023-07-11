@@ -87,7 +87,14 @@ It is created and initialized with the C function ``SNI_createVM``.
 Then it is started and executed in the current RTOS task by calling ``SNI_startVM``.
 The function ``SNI_startVM`` returns when the Application exits or if
 an error occurs (see section :ref:`core_engine_error_codes`).
-The function ``SNI_destroyVM`` handles the platform termination.
+The function ``SNI_destroyVM`` handles the Core Engine termination 
+and must be called after the return of the function ``SNI_startVM``.
+
+Only one instance of the Core Engine can be created in the system, 
+and both ``SNI_createVM`` and ``SNI_destroyVM`` should only be called once. 
+When restarting the Core Engine, don't call ``SNI_createVM`` or ``SNI_destroyVM`` 
+before calling ``SNI_startVM`` again.
+For more information, refer to the :ref:`core_engine_restart` section.
 
 The file ``LLMJVM_impl.h`` that comes with the platform defines the API
 to be implemented. See section :ref:`LLMJVM-API-SECTION`.
@@ -291,65 +298,100 @@ from a dedicated RTOS task.
 
 .. code:: c
 
-   #include <stdio.h>
-   #include "microej_main.h"
-   #include "LLMJVM.h"
-   #include "sni.h"
+	#include <stdio.h>
+	#include "microej_main.h"
+	#include "LLMJVM.h"
+	#include "sni.h"
 
-   #ifdef __cplusplus
-       extern "C" {
-   #endif
+	#ifdef __cplusplus
+	   extern "C" {
+	#endif
 
-   /**
-    * @brief Creates and starts a MicroEJ instance. This function returns when the MicroEJ execution ends.
-    */
-   void microej_main(int argc, char **argv)
-   {
-       void* vm;
-       int32_t err;
-       int32_t exitcode;
-       
-       // create VM
-       vm = SNI_createVM();
+	/**
+	 * @brief Creates and starts a MicroEJ instance. This function returns when the MicroEJ execution ends.
+	 * @param argc arguments count
+	 * @param argv arguments vector
+	 * @param app_exit_code_ptr pointer where this function stores the application exit code or 0 in case of error in the MicroEJ Core Engine. May be null.
+	 * @return the MicroEJ Core Engine error code in case of error, or 0 if the execution ends without error.
+	 */
+	int microej_main(int argc, char **argv, int* app_exit_code_ptr) {
+		void* vm;
+		int core_engine_error_code = -1;
+		int32_t app_exit_code = 0;
+		// create Core Engine
+		vm = SNI_createVM();
 
-       if(vm == NULL)
-       {
-           printf("MicroEJ initialization error.\n");
-       }
-       else
-       {
-           printf("MicroEJ START\n");
-		   
-		   // Error codes documentation is available in LLMJVM.h
-           err = SNI_startVM(vm, argc, argv);
+		if (vm == NULL) {
+			printf("MicroEJ initialization error.\n");
+		} else {
+			printf("MicroEJ START\n");
 
-           if(err < 0)
-           {
-               // Error occurred
-               if(err == LLMJVM_E_EVAL_LIMIT)
-               {
-                   printf("Evaluation limits reached.\n");
-               }
-               else
-               {
-                   printf("MicroEJ execution error (err = %d).\n", err);
-               }
-           }
-           else
-           {
-               // VM execution ends normally
-               exitcode = SNI_getExitCode(vm);
-               printf("MicroEJ END (exit code = %d)\n", exitcode);
-           }
+			// Error codes documentation is available in LLMJVM.h
+			core_engine_error_code = (int)SNI_startVM(vm, argc, argv);
 
-           // delete VM
-           SNI_destroyVM(vm);
-       }
-   }
+			if (core_engine_error_code < 0) {
+				// Error occurred
+				if (core_engine_error_code == LLMJVM_E_EVAL_LIMIT) {
+					printf("Evaluation limits reached.\n");
+				} else {
+					printf("MicroEJ execution error (err = %d).\n", (int) core_engine_error_code);
+				}
+			} else {
+				// Core Engine execution ends normally
+				app_exit_code = SNI_getExitCode(vm);
+				printf("MicroEJ END (exit code = %d)\n", (int) app_exit_code);
+			}
+
+			// delete Core Engine
+			SNI_destroyVM(vm);
+		}
+
+		if(app_exit_code_ptr != NULL){
+			*app_exit_code_ptr = (int)app_exit_code;
+		}
+
+		return core_engine_error_code;
+	}
+
+	#ifdef __cplusplus
+	   }
+	#endif
    
-   #ifdef __cplusplus
-       }
-   #endif
+.. _core_engine_restart:
+
+Restart the Core Engine
+-----------------------  
+
+The Core Engine supports the restart of the MicroEJ Application after the end of its execution. 
+The application stops when all non-daemon threads are terminated or when ``System.exit(exitCode)`` is called. 
+When the application ends, the C function ``SNI_startVM`` returns.
+
+To restart the application, call again the ``SNI_startVM`` function (see the following pattern).
+
+.. code:: c
+	
+	// create Core Engine (called only once)
+	vm = SNI_createVM();
+	...
+	// start a new execution of the MicroEJ Application at each iteration of the loop
+	while(...){
+		...
+		core_engine_error_code = SNI_startVM(vm, argc, argv);
+		...
+		// Get exit status passed to System.exit() 
+		app_exit_code = SNI_getExitCode(vm);
+		...
+	}
+	... 
+	// delete Core Engine (called before stopping the whole system)
+	SNI_destroyVM(vm);
+
+
+.. note::
+
+   Please note that while the Core Engine supports restart, :ref:`MicroUI <section_microui>` does not. 
+   Attempting to restart the MicroEJ Application on a VEE Port with UI support may result in undefined behavior.
+     
 
 .. _vm_dump:
 
