@@ -124,7 +124,7 @@ Each of these files can be opened with an XML editor. The following table descri
            - ``soar/<main class>.selectormap``
          * - Class instance size (in bytes)
            - ``types>type[instanceSize]``
-           - ``soar/<main class>.loadermap``
+           - ``soar/<main class>.optimizermap``
          * - Type :ref:`embeds its name <section.classpath.elements.types>`
            - ``types>type[hasRuntimeName = true]``
            - ``soar/<main class>.selectormap``
@@ -133,16 +133,16 @@ Each of these files can be opened with an XML editor. The following table descri
            - ``soar/<main class>.selectormap``
          * - Number of reference fields in a class
            -  ``types>type[nbReferenceFields]``
-           - ``soar/<main class>.loadermap``
+           - ``soar/<main class>.optimizermap``
          * - Methods
            - ``methods``
            - ``soar/<main class>.selectormap``
          * - Method code size (in bytes)
            - ``methods>method[codesize]``
-           - ``soar/<main class>.loadermap``
+           - ``soar/<main class>.optimizermap``
          * - Method :ref:`is inlined <soar_method_inlining>`
            - ``methods>method[inlined=true]``
-           - ``soar/<main class>.loadermap``
+           - ``soar/<main class>.optimizermap``
          * - Method :ref:`is exposed as Kernel API <kernel.api>`
            - ``methods>method[api=true]``
            - ``soar/<main class>.selectormap``
