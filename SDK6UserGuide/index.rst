@@ -50,6 +50,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    buildProject
    runOnSimulator
    buildExecutable
+   buildVirtualDevice
    addDependency
    selectVeePort
    testProject
@@ -60,6 +61,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    moduleNatures
    troubleshooting
    howtos/index
+   appendix/index
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
