@@ -110,6 +110,182 @@ A Platform Test Suite contains one or more tests.  For each test, the Test Suite
 
    Platform Test Suite on Device Overview
 
+.. _create_junit_platform_testsuite:
+
+Create a JUnit Platform Testsuite
+=================================
+
+Requirements
+------------
+
+Use MICROEJ SDK ``5.6.0`` or higher.
+
+Follow the instructions of the :ref:`sdk_installation_latest` page to install the latest SDK Distribution compatible with your needs.
+
+Create the Test Suite Module
+----------------------------
+
+The Test Suite module implements the tests of the module to be tested.
+
+Create the Test Suite Skeleton
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A new Test Suite module can be created using the ``microej-javaimpl`` Skeleton (see :ref:`module_natures.foundation_lib_impl`).
+
+To create the Test Suite module, click on: ``File > New > Module Project``
+
+Fill up the following fields of the form:
+
+- Project name
+- Organization
+- Module
+- Revision (version of your Test Suite module)
+- Select the Skeleton: ``microej-javaimpl``
+
+Then, create two test source folders, right-click on your project and click on: ``New > Source Folder``.
+
+Fill up the ``Folder name`` field of the form with: ``src/test/java`` and for the second folder: ``src/test/resources`` 
+
+Your skeleton project is created and ready to be setup.
+
+Configure the Test Suite Module Project
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Open the ``module.ivy`` file and follow steps below:
+
+- Edit the module ``ivy-module > info > build`` node to add the ``testsuite`` keyword to ``microej.lib.name`` and ``rip.printableName``, for example:
+  
+  .. code-block:: XML
+  
+          <ea:build organisation="com.is2t.easyant.buildtypes" module="build-microej-javaimpl" revision="5.1.+" microej.lib.name="myLib-testsuite-1.0" rip.printableName="myLib-testsuite Impl">``
+  
+- Add the following properties in the ``ivy-module > info`` node:
+  
+  .. code-block:: XML
+
+        <ea:property name="skip.test" value="set"/>
+        <ea:property name="target.main.classes" value="${basedir}/target~/test/classes"/>
+        <ea:property name="addon-processor.src.test.java.path.ref.name" value="src.java.path"/>
+  
+- Update the JUnit dependency to: 
+  ``<dependency org="ej.library.test" name="junit" rev="1.7.1" conf="default;test->*"/>``
+
+Add a ``module.ant`` file at the root of the Test Suite project with the following content:
+
+.. code-block:: XML
+
+        <project>
+                <target name="BuildTestTarget" extensionOf="abstract-compile:compile-ready" depends="resources-std:copy-test-resources">
+                        <augment id="src.java.path">
+                                <path location="${basedir}/src/test/java" />
+                                <path location="${target}/adpgenerated/src-adpgenerated/junit/java"/>
+                        </augment>
+                </target>
+        </project>
+
+
+Create a New Test Case
+~~~~~~~~~~~~~~~~~~~~~~
+
+You can implement a test class in ``src/test/java`` with a basic test as in the following example:
+
+.. code-block:: java
+
+        import org.junit.Assert;
+        import org.junit.Test;
+
+        public class MyTest {
+
+        	@Test
+                public static void Test() {
+        		Assert.assertTrue(true);
+                }
+        }
+
+The console output for this test should be:
+
+:: 
+
+        =============== [ Initialization Stage ] ===============
+        =============== [ Launching on Simulator ] ===============
+        OK: Test
+        PASSED: 1
+        =============== [ Completed Successfully ] ===============
+
+        SUCCESS
+
+Test the Test Suite Module Generation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Right-click on the project and select ``Build module``
+- Check the content of the generated archive ``target~\test-rips\javaLibs\myLib-testsuite-X.X.jar``
+- If it worked, you can see ``.class`` files inside the archive
+
+Create the Test Suite Runner Project
+------------------------------------
+
+The Test Suite runner project is responsible for running tests of a Test Suite module.
+
+Create the Test Suite Runner Skeleton
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- To create the Test Suite runner project, click on: ``File > New > Other...> MicroEJ > Module Project``.
+
+- Fill up the following fields of the form:
+
+  - Project name
+  - Organization
+  - Module
+  - Revision (version of your Testsuite Module)
+  - Select the Skeleton: ``microej-testsuite``
+
+- Inside ``module.ivy`` file, add the Test Suite dependency to the Test Suite runner project:
+  
+  .. code-block:: XML
+        
+        <dependency org="com.mycompany" name="myLib-testsuite" rev="0.1.0" conf="test->default;provided->provided"/>
+
+- Add the following target to the ``module.ant`` at the root of the Test Suite project with the following content:
+  
+  .. code-block:: XML
+
+        <target name="tracefile:init" extensionOf="abstract-test:test-ready">
+        	<!-- Set the launch.test.trace.file when the testsuite.trace.ip properties is not set -->
+        	<condition property="microej.testsuite.properties.launch.test.trace.file">
+        		<not>
+        			<isset property="microej.testsuite.properties.testsuite.trace.ip" />
+        		</not>
+        	</condition>
+        </target>
+
+- Create a ``override.module.ant`` file at the root of the project. Add the following content:
+  
+  .. code-block:: XML
+  
+        <project name="mylib.testsuite.override" xmlns:ac="antlib:net.sf.antcontrib">
+                <!-- Load options from 'local.properties' beside this file -->
+                <ac:if>
+                        <available file="local.properties" type="file"/>
+                        <ac:then>
+                                <property file="local.properties"/>
+                        </ac:then>
+                </ac:if>
+                <!-- Load options from 'config.properties' beside this file -->
+                <property file="config.properties"/>
+        </project>
+
+
+- Create the following ``.properties`` files:
+
+  - ``{PROJECT_LOC}/validation/microej-testsuite-common.properties``: see `microej-testsuite-common.properties template <https://github.com/MicroEJ/VEEPortQualificationTools/blob/2.9.0/tests/core/java-testsuite-runner-core/validation/microej-testsuite-common.properties>`_.
+  - ``{PROJECT_LOC}/config.properties``: see `config.properties template <https://github.com/MicroEJ/VEEPortQualificationTools/blob/2.9.0/tests/core/java-testsuite-runner-core/config.properties.tpl>`_.
+
+Configure and Run the Test Suite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Follow these steps to configure the property files and run the Test Suite using the Test Suite runner project:
+  https://docs.microej.com/en/latest/Tutorials/tutorialRunATestSuiteOnDevice.html
+
 .. _test_suite_versioning:
 
 Test Suite Versioning
