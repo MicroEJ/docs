@@ -157,11 +157,11 @@ Compatibility With MCU i.MX RT595
 ---------------------------------
 
 The previous versions of the C Module Over VGLite included an implementation of the Low-Level API ``LLUI_DISPLAY_impl.h``.
-This support has been extracted in a dedicated C Module since the version ``7.0.0``.
+This support has been extracted into a dedicated C Module since the version ``7.0.0``.
 The dedicated C Module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microui-mimxrt595-evk`_.
 
 Only the C Module `com.microej.clibrary.llimpl#microui-vglite`_ is useful to target the Vivante VG-Lite GPU to perform the MicroUI and MicroVG drawings.
-The C Module `com.microej.clibrary.llimpl#microui-mimxrt595-evk`_ only gives an example of implementation compatible with the MCU i.MX RT595 MCU.
+The C Module `com.microej.clibrary.llimpl#microui-mimxrt595-evk`_ only gives an example of an implementation compatible with the MCU i.MX RT595 MCU.
 
 .. note:: For more information, see the :ref:`migration notes<section_ui_migrationguide_13.6_mimxrt595evk>`.
 
@@ -180,10 +180,10 @@ Implementation
 --------------
 
 The MicroUI Graphics Engine waits the end of the asynchronous drawings (performed by the GPU).
-The VEE Port must unlock this waiting by using one of these both solutions:
+The VEE Port must unlock this waiting by using one of these two solutions:
 
 * Mode `interrupt`: the GPU interrupt routine has to call the function ``UI_DRAWING_NEMA_post_operation()`` (the GPU interrupt routine is often written in the same file than the implementation of ``nema_sys_init()``).
-* Mode `task`: the VEE Port has to add a dedicated task that will wait the end of drawing. 
+* Mode `task`: the VEE Port has to add a dedicated task that will wait the end of the drawings.
 
 The mode `interrupt` is enabled by default. 
 To use the mode `task`, comment the define ``NEMA_INTERRUPT_MODE`` in ``ui_drawing_nema_configuration.h``
@@ -196,8 +196,8 @@ Options
 This C module provides some drawing algorithms that are disabled by default. 
 
 * The rendering time of a simple shape with the GPU (time in the NemaGFX library + GPU setup time + rendering time) is longer than with software rendering. To enable the hardware rendering for simple shapes, uncomment the definition of ``ENABLE_SIMPLE_LINES``  in ``ui_drawing_nema_configuration.h``.
-* To draw a shape, the GPU uses the commands list. For rectangular shapes (draw/fill rectangles and images), the maximum list size is fixed (around 300 bytes). For the other shapes (circle, etc.) the list increases according the shape' size (dynamic shape): several blocks of 1024 bytes and 40 bytes are allocated and never freed. By default the dynamic shapes are disabled and the software algorithms are used instead. To enable the hardware rendering for dynamic shapes, uncomment the definition of ``ENABLE_DYNAMIC_SHAPES``  in ``ui_drawing_nema_configuration.h``.
-* Some GPU might not able to render the images in specific memories. Comment the define ``ENABLE_IMAGE_ROTATION`` in ``ui_drawing_nema_configuration.h`` to not use the GPU to render the rotated images.
+* To draw a shape, the GPU uses the commands list. For rectangular shapes (draw/fill rectangles and images), the maximum list size is fixed (around 300 bytes). For the other shapes (circle, etc.) the list increases according the shape size (dynamic shape): several blocks of 1024 bytes and 40 bytes are allocated and never freed. By default, the dynamic shapes are disabled and the software algorithms are used instead. To enable the hardware rendering for dynamic shapes, uncomment the definition of ``ENABLE_DYNAMIC_SHAPES``  in ``ui_drawing_nema_configuration.h``.
+* Some GPU might not be able to render the images in specific memories. Comment the define ``ENABLE_IMAGE_ROTATION`` in ``ui_drawing_nema_configuration.h`` to not use the GPU to render the rotated images.
 
 Accelerated Drawings
 --------------------
