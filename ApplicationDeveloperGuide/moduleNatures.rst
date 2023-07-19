@@ -408,6 +408,21 @@ This module nature defines the following dedicated build options:
 
 .. [#require_sdk_5_5] Require SDK version ``5.5.0`` or higher.
 
+Studio Rebranding
+-----------------
+
+**Skeleton Name**: ``microej-studio-rebrand``
+
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-izpack``
+
+**Configuration**:
+
+The skeleton template contains all the necessary files for a Studio that is ready to build. The main elements are:
+
+- :guilabel:`HOWTO.md`: This file describes the minimum configuration required to build the Studio template as it is.
+- :guilabel:`module.ivy`: This file describes all available build options and dependencies.
+- :guilabel:`branding-resources`: This folder contains default resources that can be replaced with your own to customize the Studio. These resources include names, images, icons, and license files.
+
 .. _module_natures.plugins:
 
 Natures Plugins
