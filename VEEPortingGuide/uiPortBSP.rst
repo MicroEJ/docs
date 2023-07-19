@@ -149,13 +149,13 @@ The test suite is constituted of two blocks:
 The test suite does not check all UI Port features.
 However, some example projects are available in MicroEJ GitHub:
 
-- LED: refer to the application https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/com.microej.example.foundation.microui.led.
-- Input: refer to the application https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/com.microej.example.foundation.microui.input
+- LED: refer to the application https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/microui.led.
+- Input: refer to the application https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/microui.input
 
 Some other example projects are also available in MicroEJ GitHub and can be used to check if the UI Port is valid:
 
-- Hello World: https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/com.microej.example.foundation.microui.helloworld
-- Use of images: https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/com.microej.example.foundation.microui.image
+- Hello World: https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/microui.helloworld
+- Use of images: https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/microui.image
 
 
 ..
