@@ -8,7 +8,7 @@ This chapter requires a minimum understanding of :ref:`mmm` and :ref:`module_nat
 Create a new Project
 --------------------
 
-First create a new :ref:`module project <mmm_module_skeleton>` using the ``build-firmware-multiapp`` skeleton.
+First create a new :ref:`Kernel Application <module_natures.kernel_application>`.
 
 A new project is generated into the workspace:
 
