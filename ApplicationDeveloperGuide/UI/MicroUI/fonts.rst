@@ -589,23 +589,22 @@ This character must have the first character index (index ``0`` is allowed).
 Caching Generated Fonts
 -----------------------
 
-Fonts converted using the font generator tool can be cached so that they are not rebuilt every time the application is launched.
+Fonts converted using the Font Generator can be cached so that they are not rebuilt every time the application is launched.
 Doing so can significantly speed up the application build phase.
 
-The cache may be enabled or disabled through an option in the run configuration.
-TODO How to enable/disable the cache
+The cache is enabled by default.
+It may be disabled by adding the option ``-Dej.microui.fontConverter.disableCache=true`` to the run configuration.
 
-The font generator tool obeys several rules when choosing whether a font should be converted.
+The Font Generator obeys several rules when choosing whether a font should be converted.
 
 - If the cache is disabled, all fonts are generated every time the application is launched.
-- All fonts will be regenerated if the application is launched using another VEE port and the new VEE port uses a different font generator tool.
+- All fonts will be regenerated if the application is launched using another VEE port and the new VEE port uses a different Font Generator.
 - If the generated font does not exist, it will be generated.
 - If the source font has been modified since the last time it was converted, the font will be regenerated.
 - The font will be regenerated if the destination format or the range has been modified in the `fonts.list` file.
 
-Cached fonts are stored in ``TODO PATH .cache/fonts``.
+Cached fonts are stored in ``.cache/fonts``, which is located in the application output folder defined in the run configuration.
 You may delete this directory to force the generation of all fonts in your application.
-You may also delete a single font in this directory so that this specific font is regenerated.
 A font that was previously generated but is no longer listed in the `fonts.list` files when the application is launched will be deleted from the cache directory.
 
 ..
