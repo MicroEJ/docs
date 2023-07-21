@@ -113,6 +113,8 @@ To do that the Image Generator provides some services to implement. This chapter
 5. Copy the generated jar: ``target~/artifacts/imageGeneratorMyPlatform.jar`` in the VEE Port configuration project folder: ``MyPlatform-configuration/dropins/tools/``
 6. Rebuild the platform.
 
+.. _section_image_generator_test_extension_project:
+
 Advanced: Test the Extension Project
 ------------------------------------
 
@@ -127,6 +129,8 @@ This feature is useful for locally testing certain changes in the Image Generato
 .. warning:: This feature only works if the VEE Port has been built with the Image Generator module enabled.
 
    The VEE Port will not actually contain the changes until a new VEE Port is built: the VEE Port dropins folder must be updated after any changes to the Image Generator Extension project.
+
+.. warning:: Using this feature automatically disables the :ref:`image cache<section_caching_generated_images>`.
 
 .. _section_image_generator_imageio:
 
