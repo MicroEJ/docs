@@ -16,7 +16,7 @@ There are 4 different ways to provide a VEE Port in the build file of the projec
 .. note::
 
    The legacy ``JPF`` format of a VEE Port is not supported anymore in the SDK 6. 
-   If you want to import a VEE Port ``.jpf`` file, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
+   If you want to use a VEE Port ``.jpf`` file, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
 
 The ``veePortFiles`` property is defined as a list in order to provide multiple VEE Port files if it is needed.
 See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
