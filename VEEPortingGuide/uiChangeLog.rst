@@ -4,6 +4,16 @@
 Changelog
 =========
 
+[13.6.1] (2023-07-26)
+=====================
+
+MicroUI
+"""""""
+
+**Fixed**
+
+- Fix creating a BufferedImage when traces are enabled.
+
 [13.6.0] (2023-07-17)
 =====================
 

@@ -12,15 +12,15 @@ From 13.5.x to 13.6.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the `UI Pack 13.6.0`_: 
+* Set the explicit dependency to the `UI Pack 13.6.1`_:
 
   .. code-block:: xml
 
-	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.6.0">
+	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.6.1">
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
 
-.. _UI Pack 13.6.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.6.0/
+.. _UI Pack 13.6.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.6.1/
 
 .. _section_ui_migrationguide_13.6_vglite:
 
@@ -93,7 +93,7 @@ From 13.4.x to 13.5.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the UI Pack 13.5.1:
+* Set the explicit dependency to the `UI Pack 13.5.1`_:
 
   .. code-block:: xml
 
@@ -108,6 +108,8 @@ Front Panel
 * Implementation of the interfaces ``DWDrawing`` and ``DWDrawingDefault``: implement the interface ``UIDrawing`` instead.
 * Implementation of the service ``BufferedImageProvider``: implement ``handledFormat()`` and remove the parameter ``format`` from ``newBufferedImage()``.
 * Replace any occurrences of ``MICROUI_IMAGE_FORMAT_LCD`` by ``MICROUI_IMAGE_FORMAT_DISPLAY``.
+
+.. _UI Pack 13.5.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.5.1/
 
 BSP without GPU
 """""""""""""""
