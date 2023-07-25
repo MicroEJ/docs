@@ -45,6 +45,20 @@ If you don't have a JDK 11 installed,
 you can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`_ or `Oracle <https://www.oracle.com/fr/java/technologies/downloads/>`_.
 
 
+Install the MicroEJ Plugin
+--------------------------
+
+Follow these steps to install the latest stable version of the MicroEJ plugin for Android Studio:
+
+- In Android Studio, open the Settings window (menu ``File > Settings...`` on Windows and Linux, 
+  menu ``Android Studio > Preferences...`` on macOS).
+- Go to ``Plugins`` menu.
+- In the search field, type ``MicroEJ``.
+- Click on the ``Install`` button.
+- Click on the ``Restart IDE`` button.
+
+
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
