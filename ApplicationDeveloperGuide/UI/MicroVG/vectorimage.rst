@@ -239,6 +239,8 @@ The SVG format also supports the animation of vector graphics objects, but this 
 
 SVG files that need to be animated should be converted to Android Vector Drawable format with the Android Vector Asset tool and then animated manually or with a tool like `Shapeshifter <https://shapeshifter.design/>`_.
 
+.. warning:: A flaw in Eclipse Temurin™ JDK 8 causes animated vector images to render incorrectly on the Simulator. You should upgrade to Eclipse Temurin™ JDK 11 or use the JDK from Oracle instead.
+
 .. _ej.microvg.VectorGraphicsPainter.drawAnimatedImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawAnimatedImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-float-float-long-
 .. _ej.microvg.VectorGraphicsPainter.drawFilteredAnimatedImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawFilteredAnimatedImage-ej.microui.display.GraphicsContext-ej.microvg.VectorImage-ej.microvg.Matrix-long-float:A-
 .. _ej.microvg.VectorImage.getDuration(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorImage.html#getDuration--
