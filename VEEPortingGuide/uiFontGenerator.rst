@@ -191,7 +191,7 @@ embed a new font with his/her application. He/she will be only
 able to use the system fonts specified during the MicroUI initialization
 step (see :ref:`section_static_init`).
 
-In the platform configuration file, check :guilabel:`UI` > :guilabel:`Font Generator` to
+In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Font Generator` to
 install the Font Generator module.
 
 

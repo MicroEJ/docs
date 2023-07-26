@@ -31,17 +31,17 @@ What is a MicroEJ Demo Runtime Environment?
 
 A MicroEJ Runtime Environment defines a set of MicroEJ APIs exposed to a MicroEJ Sandboxed Application. Here are the default runtimes provided for evaluation by MicroEJ. Any runtime can be customized with MicroEJ SDK for a specific product.
 
-+----------------------------------+-------------+--------------+-------------+--------------+-----------------+-----+-----+-----------+
-| MicroEJ Demo Runtime Environment | EDC/B-ON/KF | COMP/WADAPPS | MICROUI/MWT | LEDS/BUTTONS | NET/CONNECT/SSL | BLE | HAL | ECOM/COMM |
-+==================================+=============+==============+=============+==============+=================+=====+=====+===========+
-| MicroEJ-Developer                | |x|         | |x|          | |x|         | |x|          | |x|             |     | |x| | |x|       |
-+----------------------------------+-------------+--------------+-------------+--------------+-----------------+-----+-----+-----------+
-| MicroEJ-UI                       | |x|         | |x|          | |x|         | |x|          |                 |     | |x| | |x|       |
-+----------------------------------+-------------+--------------+-------------+--------------+-----------------+-----+-----+-----------+
-| MicroEJ-Headless                 | |x|         | |x|          |             | |x|          | |x|             |     | |x| | |x|       |
-+----------------------------------+-------------+--------------+-------------+--------------+-----------------+-----+-----+-----------+
-| MicroEJ-BLE                      | |x|         | |x|          | |x|         | |x|          | |x|             | |x| | |x| | |x|       |
-+----------------------------------+-------------+--------------+-------------+--------------+-----------------+-----+-----+-----------+								
++----------------------------------+-------------+-------------+--------------+-----------------+-----+-----+-----------+
+| MicroEJ Demo Runtime Environment | EDC/B-ON/KF | MICROUI/MWT | LEDS/BUTTONS | NET/CONNECT/SSL | BLE | HAL | ECOM/COMM |
++==================================+=============+=============+==============+=================+=====+=====+===========+
+| MicroEJ-Developer                | |x|         | |x|         | |x|          | |x|             |     | |x| | |x|       |
++----------------------------------+-------------+-------------+--------------+-----------------+-----+-----+-----------+
+| MicroEJ-UI                       | |x|         | |x|         | |x|          |                 |     | |x| | |x|       |
++----------------------------------+-------------+-------------+--------------+-----------------+-----+-----+-----------+
+| MicroEJ-Headless                 | |x|         |             | |x|          | |x|             |     | |x| | |x|       |
++----------------------------------+-------------+-------------+--------------+-----------------+-----+-----+-----------+
+| MicroEJ-BLE                      | |x|         | |x|         | |x|          | |x|             | |x| | |x| | |x|       |
++----------------------------------+-------------+-------------+--------------+-----------------+-----+-----+-----------+								
 
 You can find below what are the different APIs included in the Runtime Environment:
 
@@ -55,8 +55,6 @@ You can find below what are the different APIs included in the Runtime Environme
 | KF                         | Required by the implementation of Shared Interfaces, an inter-application communication process. |
 +----------------------------+--------------------------------------------------------------------------------------------------+
 | COMP or COMPONENTS         | Lightweight Services Framework.                                                                  |
-+----------------------------+--------------------------------------------------------------------------------------------------+
-| WADAPPS                    | Wadapps Application Framework.                                                                   |
 +----------------------------+--------------------------------------------------------------------------------------------------+
 | MICROUI/MWT                | Main UI library for MicroEJ and the Widgets framework based on MicroUI.                          |
 +----------------------------+--------------------------------------------------------------------------------------------------+
@@ -82,10 +80,10 @@ You can find below what are the different APIs included in the Runtime Environme
 What is a MicroEJ Demo Flavor?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A MicroEJ Demo Flavor is a composition of a set of runtime services, System Applications and a given MicroEJ Runtime Environment. Any flavor can be customized with MicroEJ SDK for a specific product.
+A MicroEJ Demo Flavor is a composition of a set of runtime services, pre-installed Applications, and a given MicroEJ Runtime Environment. Any flavor can be customized with MicroEJ SDK for a specific product.
 
 +---------------------+-----------------------------+----------------------------------------------------------------+---------------------------------+
-| MicroEJ Demo Flavor | MicroEJ Runtime Environment | Services System Apps                                           | UI System Apps                  |
+| MicroEJ Demo Flavor | MicroEJ Runtime Environment | Services Pre-installed Apps                                    | UI Pre-installed Apps           |
 +---------------------+-----------------------------+------------+----------------------+----------------------+-----+-------+---------+---------------+
 |                                                   | Management | App-Metadata-Storage | CommandServer-Socket | NTP | About | AppList | Forge Connect |
 +=====================+=============================+============+======================+======================+=====+=======+=========+===============+
@@ -100,12 +98,12 @@ A MicroEJ Demo Flavor is a composition of a set of runtime services, System Appl
 | :fwbla:`Black`      | MicroEJ-BLE                 | |x|        | |x|                  | |x|                  | |x| |       |         | |x|           |
 +---------------------+-----------------------------+------------+----------------------+----------------------+-----+-------+---------+---------------+
 
-You can find below what are the different System Apps included in the Flavor:
+You can find below what are the different pre-installed Applications included in the Flavor:
 
 +------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
-| System Apps                  | Purpose                                                                                                                                  |
+| Application                  | Purpose                                                                                                                                  |
 +==============================+==========================================================================================================================================+
-| Management                   | Contains the implementation of Wadapps framework services, required by all VEE.                                                          |
+| Management                   | Contains the implementation of Application lifecycle and services.                                                                       |
 +------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
 | App-Metadata-Storage         | Stores some Applications Metadata (icons, descriptions) so that it can be locally used by a MicroEJ Companion.                           |
 +------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+

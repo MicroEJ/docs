@@ -81,6 +81,10 @@ by MicroEJ Architectures.
    +-----------------+------------------------+-------------+-------------+--------------+
    | ARM Cortex-M7   | Keil uVision           | YES         | NO          | YES          |
    +-----------------+------------------------+-------------+-------------+--------------+
+   | ARMv7A   	     | GCC                    | YES         | YES         | YES          |
+   +-----------------+------------------------+-------------+-------------+--------------+
+   | ARMv7VE  	     | GCC                    | YES         | YES         | YES          |
+   +-----------------+------------------------+-------------+-------------+--------------+
    | ESP32           | ESP-IDF                | YES         | NO          | YES          |
    +-----------------+------------------------+-------------+-------------+--------------+
 
@@ -161,6 +165,42 @@ ARM Cortex-M7
      - ``--cpu Cortex-M7 --fpu VFPv5_sp``
      - `flopi7I36 <https://repository.microej.com/modules/com/microej/architecture/CM7/CM7hardfp_IAR83/flopi7I36/>`__
 
+ARMv7A (ARMv7-A without integer division extension: Cortex-A5/Cortex-A8/Cortex-A9)
+================================================================================================
+
+.. list-table:: ARMv7A Compilers
+   :widths: 10 10 30 50 10
+   :header-rows: 1
+
+   * - Compiler
+     - Build Version
+     - Known Compatible Versions
+     - Flags and Options
+     - Module
+   * - GCC
+     - 10.3
+     - 4.x, 5.x, 6.x, 7.x, 8.x, 9.x, 10.x
+     - ``-mabi=aapcs-linux -march=armv7-a -mlittle-endian -mfpu=vfp -mfloat-abi=hard -mthumb``
+     - ``oliveARMv7A_2``
+
+ARMv7VE (ARMv7-A with integer division extension: Cortex-A7/Cortex-A15)
+=====================================================================================
+
+.. list-table:: ARMv7VE Compilers
+   :widths: 10 10 30 50 10
+   :header-rows: 1
+
+   * - Compiler
+     - Build Version
+     - Known Compatible Versions
+     - Flags and Options
+     - Module
+   * - GCC
+     - 10.3
+     - 4.x, 5.x, 6.x, 7.x, 8.x, 9.x, 10.x
+     - ``-mabi=aapcs-linux -march=armv7ve -mlittle-endian -mfpu=vfp -mfloat-abi=hard -mthumb``
+     - ``oliveARMv7VE_1``
+
 ESP32
 =====
 
@@ -206,8 +246,13 @@ ESP32
    * - GCC (ESP-IDF)
      - 8.4.0 (crosstool-NG esp-2021r1)
      - ``-mlongcalls -mfix-esp32-psram-cache-issue -mfix-esp32-psram-cache-strategy=memw``
-     - ``simikou6``
+     - `simikou6 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv84_xtensa-esp32-psram/simikou6/>`__
      - ``7.16.1`` or higher
+   * - GCC (ESP-IDF)
+     - 11.2.0 (crosstool-NG esp-2022r1)
+     - ``-mlongcalls``
+     - `simikou7 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv112_xtensa-esp32s3/simikou7/>`__
+     - ``7.20.1`` or higher
      
 
 IAR Linker Specific Options

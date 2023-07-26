@@ -27,7 +27,7 @@ As an example, the module dependency to add for a Cortex-M4 and GCC toolchain wo
 
    <dependencies>
        <!-- MicroEJ Architecture Specific Pack -->
-       <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="13.4.1"/>
+       <dependency org="com.microej.architecture.CM4.CM4hardfp_GCC48" name="flopi4G25-ui-pack" rev="13.5.1"/>
    </dependencies>
 
 UI Pack Modules
@@ -36,7 +36,7 @@ UI Pack Modules
 The following sections describe each module that comes with the UI Pack (purpose and configuration).
 
 The modules provided by the UI Pack are **not installed** by default.
-When a module is required, it has to be enabled and configured using the Platform Editor.
+When a module is required, it has to be enabled and configured using the VEE Port Editor.
 
 .. figure:: images/ui_modules.*
    :alt: UI Pack Modules
@@ -92,7 +92,7 @@ This module adds an internal image decoder: it allows the application to embed a
 Both decoders (PNG and BMP Monochrom) are optional and can be selected (or not) independently.
 Refer to the chapter :ref:`image_runtime_decoder` to have more information.
 
-This module is optional: when no image decoder is embedded, the Graphics Engine relies on the UI Port (thanks to Low-level API) to decode the images.
+This module is optional: when no image decoder is embedded, the Graphics Engine relies on the UI Port (thanks to Abstraction Layer API) to decode the images.
 
 Module Image Generator
 ======================

@@ -10,13 +10,15 @@ UI Pack Compatibility Version
 The current VG Pack version is 1.2.0.
 The following table describes the compatibility ranges between VG and UI Packs. 
 
-+---------------+-----------------+------------------+
-| VG Pack Range | UI Pack Range   | Comment          |
-+===============+=================+==================+
-| [1.1.0-1.2.1] | [13.3.0-14.0.0[ | Internal feature |
-+---------------+-----------------+------------------+
-| [1.0.0-1.0.1] | [13.2.0-14.0.0[ |                  |
-+---------------+-----------------+------------------+
++---------------+-----------------+----------------------------------+
+| VG Pack Range | UI Pack Range   | Comment                          |
++===============+=================+==================================+
+| 1.3.0         | [13.5.0-14.0.0[ | BufferedImage with custom format |
++---------------+-----------------+----------------------------------+
+| [1.1.0-1.2.1] | [13.3.0-14.0.0[ | Internal feature                 |
++---------------+-----------------+----------------------------------+
+| [1.0.0-1.0.1] | [13.2.0-14.0.0[ |                                  |
++---------------+-----------------+----------------------------------+
 
 .. _section_vg_api:
 
@@ -31,6 +33,8 @@ The following table describes Foundation Libraries API versions implemented in M
 
    * - VG Pack Range
      - MicroVG
+   * - 1.3.0
+     - 1.3.0
    * - 1.2.1
      - 1.2.0
    * - 1.1.0
@@ -48,13 +52,15 @@ In addition to generic C modules, the specific implementation of the VG Pack ove
 
 * the UI Pack (see upper),
 * the UI Pack C module: see :ref:`UI Pack <section_display_llapi>`,
-* and by consequence, the specific C module MicroUI over VGLite: see :ref:`section_vg_c_module_microui_vglite`.
+* and by consequence, the specific C module MicroUI over VGLite: see :ref:`section_ui_c_module_microui_vglite`.
 
 The following table describes the compatibility ranges between the VG Packs and the C modules (generic and specific):
 
 +---------------+---------+----------+----------+----------------+----------------+
 | VG Pack       | MicroVG | Freetype | Harfbuzz | MicroUI-VGLite | MicroVG-VGLite |
 +===============+=========+==========+==========+================+================+
+| 1.3.0         | 3.0.0   | 2.0.2    | 1.0.2    | 6.0.1          | 5.0.1          |
++---------------+---------+----------+----------+----------------+----------------+
 | 1.2.1         | 2.1.0   | 2.0.2    | 1.0.2    | 5.0.1          | 4.0.3          |
 +---------------+---------+----------+----------+----------------+----------------+
 | 1.1.0         | 2.0.0   | 2.0.2    | 1.0.2    | 3.0.0          | 3.0.2          |
@@ -62,7 +68,7 @@ The following table describes the compatibility ranges between the VG Packs and 
 | [1.0.0-1.1.0[ | n/a     | n/a      | n/a      | n/a            | n/a            |
 +---------------+---------+----------+----------+----------------+----------------+
 
-.. note:: The C module ``MicroVG over VGLite`` fetches automatically by transitivity to the other C modules. No need to fetch explicitly the different modules (except the C module ``Harfbuzz``). An update of this C module updates (if necessary) the other C modules.
+.. note:: The C module ``MicroVG over VGLite`` fetches automatically by transitivity the other C modules. No need to fetch explicitly the different modules (except the C module ``Harfbuzz``). An update of this C module also updates (if necessary) the other C modules.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

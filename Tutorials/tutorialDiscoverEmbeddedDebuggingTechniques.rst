@@ -229,7 +229,7 @@ Platform Qualification
 The Platform Qualification Tools (PQT) project provides the tools required to validate each component of a MicroEJ Platform.
 After porting or adding a feature to a MicroEJ Platform, it is necessary to validate its integration.
 
-The project is available on GitHub: https://github.com/MicroEJ/PlatformQualificationTools
+The project is available on GitHub: https://github.com/MicroEJ/VEEPortQualificationTools
 
 .. figure:: ../VEEPortingGuide/images/overview-platform-qualification.png
    :align: center

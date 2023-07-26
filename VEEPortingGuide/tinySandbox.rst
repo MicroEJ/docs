@@ -39,6 +39,8 @@ In addition to general :ref:`limitations`:
    Only the fully qualified names of types marked as required types are
    embedded.
 
+-  Incompatible with dynamic linkers enabling Address Space Layout Randomization (ASLR).
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

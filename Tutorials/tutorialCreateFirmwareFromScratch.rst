@@ -79,7 +79,7 @@ Prerequisites
   downloaded from https://repository.microej.com/packages/SDK (tested on 
   `MicroEJ SDK distribution 20.10
   <https://repository.microej.com/packages/SDK/20.10/MicroEJ-SDK-Installer-Win64-20.10.exe>`_)
-* Windows 10 with Windows Subsystem for Linux (WSL). See the
+* Windows 10 or higher with Windows Subsystem for Linux (WSL). See the
   `installation guide
   <https://learn.microsoft.com/en-us/windows/wsl/install>`_.
 * A Linux distribution installed on WSL (Tested on Ubuntu 19.10 eoan
@@ -91,7 +91,7 @@ Prerequisites
 
 A code editor such as Visual Studio Code is also recommended to edit BSP files.
 
-.. _Platform Qualification Tools (PQT): https://github.com/microej/PlatformQualificationTools
+.. _Platform Qualification Tools (PQT): https://github.com/microej/VEEPortQualificationTools
 
 Overview
 --------
@@ -482,7 +482,7 @@ This step describes how to configure the MicroEJ Platform previously created.
 For more information on this topic, please refer to :ref:`platform_configuration_creation`.
 
 The `Platform Configuration Additions
-<https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform>`_
+<https://github.com/MicroEJ/VEEPortQualificationTools/tree/2.6.0/framework/platform>`_
 provide a flexible way to configure the :ref:`BSP connection
 <bsp_connection>` between the MicroEJ Platform and MicroEJ Application
 to the BSP. In this tutorial, the Partial BSP connection is used. That
@@ -496,7 +496,7 @@ invoking ``make`` in the FreeRTOS BSP.
 
 #. Install the Platform Configuration Additions by copying all the
    files within the ``content``
-   `folder <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/content>`_
+   `folder <https://github.com/MicroEJ/VEEPortQualificationTools/tree/2.6.0/framework/platform/content>`_
    in the MicroEJ Platform folder.
 
    .. image:: images/tuto_microej_fw_from_scratch_add_platform_configuration_additions.PNG
@@ -512,7 +512,8 @@ invoking ``make`` in the FreeRTOS BSP.
 
      .. code-block:: console
 
-       svn export --force https://github.com/MicroEJ/PlatformQualificationTools/trunk/framework/platform/content [path_to_platform_configuration_directory]
+       svn export --force https://github.com/MicroEJ/VEEPortQualificationTools/tags/2.6.0/framework/platform/content [path_to_platform_configuration_directory]
+
 
 #. Edit the file ``bsp/bsp.properties`` as follow:
 
@@ -551,9 +552,9 @@ invoking ``make`` in the FreeRTOS BSP.
 
 #. The following message appears in the console:
 
-.. code-block:: none
+   .. code-block:: none
 
-	module-platform:report:
+	 module-platform:report:
 		 [echo]     ============================================================================================================
 		 [echo]     Platform has been built in this directory 'C:\Users\user\src\tuto-from-scratch\workspace/lm3s811evb-Platform-CM0_GCC48-0.0.1'.
 		 [echo]     To import this project in your MicroEJ SDK workspace (if not already available):
@@ -561,7 +562,7 @@ invoking ``make`` in the FreeRTOS BSP.
 		 [echo]      - Check 'Select root directory' and browse 'C:\Users\user\src\tuto-from-scratch\workspace/lm3s811evb-Platform-CM0_GCC48-0.0.1' > 'Finish'
 		 [echo]     ============================================================================================================
 
-	BUILD SUCCESSFUL
+	 BUILD SUCCESSFUL
 
 #. Follow the instructions to import the generated platform in the workspace: 
 
@@ -604,7 +605,7 @@ how to build the MicroEJ Application that will run on the target
 device.
 
 For a MicroEJ Application, the BSP connection is configured in the
-``PROJECT-NAME/build/common.properties`` file.
+``PROJECT-NAME/build/emb.properties`` file.
 
 #. Create a file ``HelloWorld/build/emb.properties`` with the
    following content:
@@ -1150,7 +1151,7 @@ the ``libnosys.a`` which provides stub implementation for various
 functions.
 
 .. code-block:: diff
-  :caption: https://github.com/MicroEJ/FreeRTOS/commit/a202f43948c41b848ebfbc8c53610028c454b66f
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/eb208d846f52c0695c06456b540e412ba96e640a
 
   diff --git a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs b/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
   --- a/FreeRTOS/Demo/CORTEX_LM3S6965_GCC/makedefs
@@ -1289,7 +1290,7 @@ The next steps recommended are:
 * Complete the implementation of the Low Level APIs (implement all
   functions in ``LLMJVM_impl.h``).
 * Validate the implementation with the `PQT Core
-  <https://github.com/MicroEJ/PlatformQualificationTools/tree/master/tests/core>`_.
+  <https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/tests/core>`_.
 * Follow the :ref:`tutorial_create_platform_build_and_run_scripts` tutorial to get this MicroEJ Platform fully automated for build and execution. 
 
 ..

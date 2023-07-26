@@ -90,9 +90,8 @@ Heap Dumper
 
 When the Heap Dumper option is activated, the garbage collector process
 ends by performing a dump file that represents a snapshot of the heap at
-this moment. Thus, to generate such dump files, you must explicitly call
-the System.gc() method in your code, or wait long enough for garbage
-collector activation.
+this moment. To generate such dump files, you must explicitly call
+the ``System.gc()`` method in your code.
 
 The heap dump file contains the list of all instances of both class and
 array types that exist in the heap. For each instance, it records:

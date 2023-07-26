@@ -12,13 +12,13 @@ The Input module contains the C part of the MicroUI implementation which manages
 
 -  the C part of MicroUI input API (a built-in C archive) called Input Engine,
 
--  an implementation of a Low Level APIs for the input devices
+-  an implementation of Abstraction Layer APIs for the input devices
    that must be provided by the BSP (see :ref:`LLINPUT-API-SECTION`).
 
 Functional Description
 ======================
 
-The Input module implements the MicroUI ``int``-based event generators' framework. ``LLUI_INPUT`` specifies the Low Level APIs that send events to the Java world.
+The Input module implements the MicroUI ``int``-based event generators' framework. ``LLUI_INPUT`` specifies the Abstraction Layer APIs that send events to the Java world.
 
 Drivers for input devices must generate events that are sent, via a MicroUI `Event Generator`_, to the application. An event generator accepts notifications from devices, and generates an event in a standard format that can be handled by the application. Depending on the MicroUI configuration, there can be several different types of event generator in the system, and one or more instances of each type. 
 
@@ -102,7 +102,7 @@ MicroUI provides an abstract class `GenericEventGenerator`_ (package ``ej.microu
 
 On the application side, a subclass must be implemented by clients who want to define their own event generators.  Two abstract methods must be implemented by subclasses:
 
--  ``eventReceived``: The event generator received an event from a C driver through the Low Level APIs ``sendEvent`` function.
+-  ``eventReceived``: The event generator received an event from a C driver through the Abstraction Layer API ``sendEvent`` function.
 
 -  ``eventsReceived``: The event generator received an event made of several ``int``\ s.
 
@@ -114,26 +114,26 @@ If the event generator is not available in the application classpath, a warning 
 
 .. _section_input_llapi:
 
-Low Level API
-=============
+Abstraction Layer API
+=====================
 
-The implementation of the MicroUI ``Event Generator`` APIs provides some Low Level APIs. The BSP has to implement these Low Level APIs, making the link between the MicroUI C library ``inputs`` and the BSP input devices
+The implementation of the MicroUI ``Event Generator`` APIs provides some Abstraction Layer APIs. The BSP has to implement these Abstraction Layer APIs, making the link between the MicroUI C library ``inputs`` and the BSP input devices
 drivers.
 
-The Low Level APIs to implement are listed in the header file ``LLUI_INPUT_impl.h``. It allows events to be sent to the MicroUI implementation. The input drivers are allowed to add events directly using the event generator's
+The Abstraction Layer APIs to implement are listed in the header file ``LLUI_INPUT_impl.h``. It allows events to be sent to the MicroUI implementation. The input drivers are allowed to add events directly using the event generator's
 unique ID (see :ref:`section_static_init`). The drivers are fully dependent on the MicroEJ framework (a driver or a driver listener cannot be developed without MicroEJ because it uses the header file generated during the MicroUI initialization step).
 
 To send an event to the application, the driver (or its listener) has to call one of the event engine function, listed in ``LLUI_INPUT.h``. 
 These functions take as parameter the MicroUI EventGenerator to target and the data. The event generator is represented by a unique ID. The data depends on the type of the event. To run correctly, the event engine requires an implementation of functions listed in ``LLUI_INPUT_impl.h``. When an event is added, the event engine notifies MicroUI library.
 
 .. figure:: images/ui_llapi_input2.*
-   :alt: MicroUI Input Low Level
+   :alt: MicroUI Input Abstraction Layer
    :width: 500px
    :align: center
 
-   Input Low Level API
+   Input Abstraction Layer API
 
-When there is no input device on the board, a *stub* implementation of C library is available. This C library must be linked by the third-party C IDE when the MicroUI module is installed in the MicroEJ Platform. This stub library does not provide any Low Level API files.
+When there is no input device on the board, a *stub* implementation of C library is available. This C library must be linked by the third-party C IDE when the MicroUI module is installed in the VEE Port. This stub library does not provide any Abstraction Layer API files.
 
 Typical Implementation
 ======================
@@ -417,7 +417,7 @@ event_generator.c
 This file aims to convert the events (received by ``LLUI_INPUT_impl.c`` and then filtered by ``xxx_helper.c``) to the application through the Input Engine.
 
 This C file should be the only C file to include the header file ``microui_constants.h``.
-This header file has been generated during the Platform build (see :ref:`section_static_init`).
+This header file has been generated during the VEE Port build (see :ref:`section_static_init`).
 It holds some defines that describe the available list of MicroUI Event Generators.
 Each MicroUI Event Generator has its identifier: 0 to *n-1*.
 
@@ -480,7 +480,7 @@ Event Buffer
 ============
 
 MicroUI is using a circular buffer to manage the input events. 
-As soon as an event is added, removed, or replaced in the queue, the event engine calls the associated Low-Level API (LLAPI) ``LLUI_INPUT_IMPL_log_queue_xxx()``.
+As soon as an event is added, removed, or replaced in the queue, the event engine calls the associated Abstraction Layer API (LLAPI) ``LLUI_INPUT_IMPL_log_queue_xxx()``.
 This LLAPI allows the BSP to log this event to dump it later thanks to a call to ``LLUI_INPUT_dump()``.
 
 .. note:: When the functions ``LLUI_INPUT_IMPL_log_queue_xxx()`` are not implemented, a call to ``LLUI_INPUT_dump()`` has no effect (there is no default logger).
@@ -557,7 +557,7 @@ Notes:
 * An object is ``null`` when the memory slot has been used during the application execution but freed at the dump time.
 * The object array' size is the maximum of non-null objects reached during application execution.
 * The indices of old events are out-of-date: the memory slot is now null or reused by a newer event.
-* The event ``25`` targets the event generator ``3``; the identifier is available in ``microui_constants.h`` (created during the MicroEJ Platform build, see :ref:`section_inputs_static_init`). 
+* The event ``25`` targets the event generator ``3``; the identifier is available in ``microui_constants.h`` (created during the VEE Port build, see :ref:`section_inputs_static_init`). 
 * The events ``27`` to ``99`` cannot be identified (no metadata or partial event content due to circular queue management).
 * Refers to the implementation on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` to have more information about the format of the event; this implementation is always up-to-date with the MicroUI implementation.
 

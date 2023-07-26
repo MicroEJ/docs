@@ -121,7 +121,7 @@ The resulting vector image can then be drawn on the display:
 
 .. note::
 
-   The image must be provided as a raw resource of the application, either :ref:`internal or external <chapter.microej.applicationResources>`. For external resource loading, the BSP must implement the proper Low Level API (LLAPI), see :ref:`section_externalresourceloader` for more information on the implementation.
+   The image must be provided as a raw resource of the application, either :ref:`internal or external <chapter.microej.applicationResources>`. For external resource loading, the BSP must implement the proper Abstraction Layer API (LLAPI), see :ref:`section_externalresourceloader` for more information on the implementation.
 
 .. warning::
    The new image is a ``ResourceVectorImage``. In the current implementation, an image loaded with the ``AvdImageLoader`` is allocated in the Java heap. To release memory, the application must close the image and remove any references to it.

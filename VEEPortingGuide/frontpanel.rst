@@ -197,7 +197,11 @@ position, and insert a template for the selected element.
 Multiple Front Panel Files
 --------------------------
 
-A Front Panel project can contain multiple ``.fp`` files. All ``fp`` files are compiled when exporting the Front Panel project in a Platform (or during Platform build). It is useful to have two or more representation of a board (size, devices layout, display size, etc.). By default the Simulator will chooses the default ``.fp`` file declared by the Platform, or will defaults to a random one. To choose a specific one, set the :ref:`Application Option <application_options>` ``frontpanel.file`` to a Front Panel simple file name included in the Platform (e.g. ``mycompany.fp``).
+A Front Panel project can contain multiple ``.fp`` files. All those files are compiled when exporting the Front Panel project to a
+VEE Port (or during VEE Port build). It may be useful to have two or more representations of a board (skin, device layout, display
+size, etc…). When running the simulator, by default, the ``.fp`` file declared by the :ref:`VEE Port configuration <fp_installation>`,
+is used (or a random one if no default is configured). To pick a specific one, set the :ref:`Application Option <application_options>`
+``frontpanel.file`` to a Front Panel simple file name included in the VEE Port (e.g. ``myproduct.fp``).
 
 .. _section_frontpanel_widget:
 

@@ -67,6 +67,8 @@ Kernel API Files
 
 Kernel API file definition is explained here: :ref:`Kernel API <kernel.api.def>`.
 
+.. _kf-access-error-codes:
+
 Access Error Codes
 ------------------
 

@@ -408,6 +408,21 @@ This module nature defines the following dedicated build options:
 
 .. [#require_sdk_5_5] Require SDK version ``5.5.0`` or higher.
 
+Studio Rebranding
+-----------------
+
+**Skeleton Name**: ``microej-studio-rebrand``
+
+**Build Type Name**: ``com.is2t.easyant.buildtypes#build-izpack``
+
+**Configuration**:
+
+The skeleton template contains all the necessary files for a Studio that is ready to build. The main elements are:
+
+- :guilabel:`HOWTO.md`: This file describes the minimum configuration required to build the Studio template as it is.
+- :guilabel:`module.ivy`: This file describes all available build options and dependencies.
+- :guilabel:`branding-resources`: This folder contains default resources that can be replaced with your own to customize the Studio. These resources include names, images, icons, and license files.
+
 .. _module_natures.plugins:
 
 Natures Plugins
@@ -617,6 +632,9 @@ This plugin defines the following build options:
    * - microej.testsuite.properties.testsuite.trace.port
      - The TCP/IP port to connect for retrieving test execution traces. This property is required if your :ref:`VEE Port Run script <bsp_connection_run_script>` does not redirect execution traces.
      - Not set
+   * - microej.testsuite.properties.testsuite.trace.timeout
+     - The time in seconds without activity on the standard output before the trace analysis is stopped.
+     - ``75``    
    * - cc.src.folders
      - Path to the folders containing the Java sources used for code coverage analysis.
      - Java source folder (``src/main/java``) and Add-On Processor generated source folders (``src-adpgenerated/*``) [#warning_check_sdk_5_5]_

@@ -4,7 +4,7 @@ Starting MicroUI
 ================
 
 #. To get started, first we need to add `MicroUI`_, a Foundation Library
-   that provides an abstraction layer to access the low-level UI inputs
+   that provides an Abstraction Layer to access the low-level UI inputs
    and outputs.
 #. Look for ``module.ivy``, and replace dependencies with the following:
 

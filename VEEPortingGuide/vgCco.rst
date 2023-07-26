@@ -7,8 +7,8 @@ C Modules
 Principle
 =========
 
-Several C modules implement the VG Pack's Low-Level APIs.
-Some are generic, and some are platform dependent (more precisely: GPU dependent).
+Several C modules implement the VG Pack's Abstraction Layer APIs.
+Some are generic, and some are VEE Port dependent (more precisely: GPU dependent).
 The generic modules provide header files to be extended by the specific modules. 
 The generic C modules are available on the :ref:`central_repository` and the specific C modules on the :ref:`developer_repository`.
 
@@ -29,36 +29,11 @@ The following chapters explain the aim and relations of each C module.
 
    MicroVG C Modules
 
-UI Pack
-=======
+UI Pack & MicroUI C Modules
+===========================
 
 The UI Pack provides a header file to implement the MicroUI drawings: ``LLUI_PAINTER_impl.h``.
-See :ref:`UI Pack <section_display_llapi>` chapter to have more information.
-
-The UI Pack and its header files are available on the Central Repository: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/. 
-
-C Module: MicroUI
-=================
-
-This generic C module provides an implementation of all MicroUI drawings (``LLUI_PAINTER_impl.c``).
-It manages the synchronization with the Graphics Engine and redirects all drawings to an implementation of ``ui_drawing.h``.
-See :ref:`UI Pack <section_display_llapi>` chapter to have more information.
-
-This C module is available on the Central Repository: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/.
-
-.. _section_vg_c_module_microui_vglite:
-
-C Module: MicroUI Over VGLite
-=============================
-
-This C module is a specific implementation of the C module MicroUI over Vivante VGLite.
-It implements a set of drawings over the official Vivante VGLite library (that targets some GPU with vector graphics acceleration): ``drawing_vglite.c``.
-
-This C module also provides a set of header files (and their implementations) to manipulate some MicroUI concepts over the VGLite library: image management, path format, etc.: ``display_vglite.h`` and ``vglite_path.h``.
-
-This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microui-vglite`_.
-
-.. _com.microej.clibrary.llimpl#microui-vglite: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite
+See :ref:`section_ui_cco` chapter to have more information.
 
 Library: Vivante VGLite
 =======================
@@ -72,11 +47,11 @@ VG Pack
 =======
 
 The VG Pack provides a set of header files to implement the MicroVG concepts.
-The header files are described in the dedicated chapters: :ref:`Matrix module <section_vg_matrix>`, :ref:`Path module <section_vg_path>`, :ref:`Gradient module <section_vg_gradient>` and :ref:`Font module <section_vg_font>`.
+The header files are described in the dedicated chapters: :ref:`Matrix module <section_vg_matrix>`, :ref:`Path module <section_vg_path>`, :ref:`Gradient module <section_vg_gradient>`, :ref:`Image module <section_vg_image>` and :ref:`Font module <section_vg_font>`.
 
 The VG Pack is an extension of the UI Pack.
 The VG Pack's header files require the UI Pack's header files to manipulate the MicroUI concepts.
-Consequently, the VG Pack must be installed on a platform that fetches a UI Pack.
+Consequently, the VG Pack must be installed on a VEE Port that fetches a UI Pack.
 
 The VG Pack and its header files are available on the :ref:`central_repository`: `com.microej.pack.vg#vg-pack`_.
 
@@ -96,6 +71,8 @@ This generic C module provides an implementation of MicroVG concepts: matrix, pa
 * Path (see Path module's :ref:`section_vg_path_llapi`): a generic implementation that manages the command buffer's life cycle and dispatches the command encoding to a 3rd-party header file ``microvg_path.h``.
 * Gradient (see Gradient module's :ref:`section_vg_gradient_llapi`): a generic implementation that manages the gradient buffer's life cycle and dispatches the gradient encoding to a 3rd-party header file ``microvg_gradient.h``.
 * Font (see Font module's :ref:`section_vg_font_llapi`): an implementation of vector font over Freetype: open font file and retrieve font's characteristics.
+* The MicroVG painter native functions are implemented in ``LLVG_PAINTER_impl.c`` and the drawings are redirected to ``vg_drawing.h``.
+* Image management is too specific to the GPU and is not implemented in this C module.
 
 This C module is available on the :ref:`central_repository`: `com.microej.clibrary.llimpl#microvg`_.
 
@@ -106,7 +83,7 @@ Dependencies
 
 This generic C module requires some specific modules:
 
-* Path and Gradient require a C module specific to a platform (to a GPU format).
+* Path and Gradient require a C module specific to a VEE Port (to a GPU format).
 * Font requires the Freetype library and optionally the Harfbuzz library to manage the :ref:`complex layout <section_vg_font_complex>`.
 
 Configuration
@@ -165,8 +142,12 @@ Freetype and Harfbuzz libraries are not sharing the same heap, but this could ea
 C Module: MicroVG Over VGLite
 =============================
 
-This C module is a specific implementation of the VG Pack drawing LLAPIs: ``LLVG_PAINTER_PATH_impl.h`` and ``LLVG_PAINTER_FONT_impl.h``.
-It implements a set of drawings over the official Vivante VGLite library (that targets some GPU with vector graphics acceleration): ``LLVG_PAINTER_PATH_vglite.c`` and ``LLVG_PAINTER_FONT_freetype_vglite.c``.
+This C module is a specific implementation of the VG Pack drawings over the official Vivante VGLite library (that targets some GPU with vector graphics acceleration):
+
+* It implements the MicroVG API ``vg_drawing.h`` in ``vg_drawing_vglite.c`` and ``LLVG_PAINTER_FONT_freetype_vglite.c``.
+* It implements the MicroVG Image management (draw a compile-time image, create a BufferedVectorImage, etc.): ``LLVG_RAW_impl.c``. 
+* It provides an implementation of MicroVG drawings to the MicroVG BufferedVectorImage: ``vg_drawing_bvi.c``.
+* It also implements MicroUI drawings to the MicroVG BufferedVectorImage: ``ui_drawing_bvi.c``.
 
 The implementation requires:
 

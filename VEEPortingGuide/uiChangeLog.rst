@@ -4,8 +4,96 @@
 Changelog
 =========
 
-13.4.1 (2023-02-06)
-===================
+[13.5.1] (2023-06-08)
+=====================
+
+MicroUI
+"""""""
+
+**Fixed**
+
+- Fix the compatibility with MicroEJ Architecture 8 (SOAR error with internal MicroUI system properties file).
+
+FrontPanel
+""""""""""
+
+**Fixed**
+
+- Fix consecutive calls to ``LLUIDisplay.newMicroUIImage()`` throwing an exception.
+- Allow overriding the display drawer with a service or in a front panel widget.
+
+[13.5.0] (2023-05-03)
+=====================
+
+* Compatible with Architecture 7.13.0 or higher.
+
+MicroUI Implementation
+""""""""""""""""""""""
+
+**Changed**
+
+- Implement MicroUI 3.2 (multi-mutable image formats, drawing log flags, etc.).
+
+**Fixed**
+
+- Fix ellipse fading.
+
+Drawing Implementation
+""""""""""""""""""""""
+
+**Fixed**
+
+- Fix the position of arc caps.
+
+LLAPIs
+""""""
+	
+**Added**
+
+* Add some functions in `LLUI_DISPLAY.h` to manage the MicroUI Drawing Log flags.
+* Add some functions in `LLUI_DISPLAY.h` to change the MicroUI clip and colors.
+* Add the notion of "drawer" to identify the available drawer for a given MicroUI Image format.
+
+**Changed**
+
+* Change the MicroUI image format `MICROUI_IMAGE_FORMAT_LCD` by `MICROUI_IMAGE_FORMAT_DISPLAY`.
+* Change the signature of `xx_drawing_soft.h`: all functions return a drawing status. 
+
+**Removed**
+
+* Remove `ui_drawing.h` and `dw_drawing.h` (move them in MicroUI CCO).
+
+FrontPanel
+""""""""""
+	
+**Added**
+
+* Add a service to decode immutable images with a custom format. 
+* Add a service to create mutable images with a custom format. 
+* Add a service to draw into mutable images with a format different than the display format. 
+* Add some methods to manage the MicroUI Drawing Log flags.
+* Add some methods to change the MicroUI clip and colors.
+
+**Changed**
+
+* Merge `DWDrawing` in `UIDrawing`.
+* Turn `UIDrawing` as a service to handle drawings for a specific format.
+* Change the mechanism to get the software drawer.
+* Change the MicroUI image format `MICROUI_IMAGE_FORMAT_LCD` by `MICROUI_IMAGE_FORMAT_DISPLAY`.
+
+**Removed**
+
+* Remove the interfaces `UIDrawingDefault` and `DWDrawingDefault` (implement the interface `UIDrawing` instead).
+
+ImageGenerator
+""""""""""""""
+
+**Added**
+
+* Add compatibility with Architecture 8.
+
+[13.4.1] (2023-02-06)
+=====================
 	
 Drawing Implementation
 """"""""""""""""""""""
@@ -29,8 +117,8 @@ ImageGenerator
 
 * Fix the VEE Port's memory alignment constraint.
 
-13.4.0 - 2022-12-13
-===================
+[13.4.0] - 2022-12-13
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -75,8 +163,8 @@ FontGenerator
 
 * Fix the external fonts output folder for the features.
 
-13.3.1 - 2022-09-09
-===================
+[13.3.1] - 2022-09-09
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
  
@@ -98,8 +186,8 @@ Image Generator
 * Fix the duplicate generation (as internal and external resources) of the custom ``.list`` file images (consider only custom ``.list`` file images as external resources when the prefix of the list file extension starts with ``extern``).
 * Fix the internal limit error when converting images with BPP lower than 8 bits (for platforms that define a rule for the image stride through an Image Generator Extension project). 
 
-13.3.0 - 2022-09-02
-===================
+[13.3.0] - 2022-09-02
+=====================
 
 * Compatible with Architecture 7.13.0 or higher.
 
@@ -146,8 +234,8 @@ LLAPIs
 
 * Remove the MicroUI's native functions declaration with macros *(not backward compatible)*.
 
-13.2.0 - 2022-05-05
-===================
+[13.2.0] - 2022-05-05
+=====================
 
 * Compatible with Architecture 7.16.0 or higher.
 

@@ -6,7 +6,7 @@ Application Options
 Introduction
 ============
 
-To run a MicroEJ Standalone Application on a MicroEJ Platform, a set of options
+To run a Standalone Application on a VEE Port, a set of options
 must be defined. Options can be of different types:
 
 - Memory Allocation options (e.g set the Java Heap size). These options are usually called link-time options.
@@ -14,23 +14,22 @@ must be defined. Options can be of different types:
 - Deployment options (e.g. copy ``microejapp.o`` to a suitable BSP location).
 - Foundation Library specific options (e.g. embed UTF-8 encoding).
 
-The following section describes options provided by MicroEJ Architecture.
-Please consult the appropriate MicroEJ Pack documentation for options related to other Foundation Libraries (MicroUI, NET, SSL, FS, ...) integrated to the Platform.
+The following section describes options provided by the latest Architecture version.
+Please consult the appropriate Pack(s) documentation for options related to other Foundation Libraries (MicroUI, NET, SSL, FS, ...) integrated to your VEE Port.
 
-Notice that some options may not be available, in the following cases:
+Notice that some options may not be supported by your VEE Port, in the following cases:
 
-- Option is specific to the MicroEJ Core Engine capability (*tiny*/*single*/*multi*) which is integrated in the targeted Platform.
-- Option is specific to the target (MicroEJ Core Engine on Device or Simulator).
-- Option has been introduced in a newer version of the MicroEJ Architecture which is integrated in the targeted Platform.
-- Options related to :ref:`Board Support Package (BSP) connection <bsp_connection_application_options>`.
+- Option is specific to the Core Engine capability (*tiny*/*single*/*multi*).
+- Option is specific to the target (Core Engine or Simulator).
+- Option has been introduced in a newer Architecture version.
 
 .. _define_option:
 
 Defining an Option
 ==================
 
-A MicroEJ Standalone Application option can be defined either from a launcher or from a properties file.
-It is also possible to use both together. Each MicroEJ Architecture and MicroEJ Pack option comes with a default value, which is used if the option has not been set by the user.
+A Standalone Application option can be defined either from a launcher or from a properties file.
+It is also possible to use both together. Each Architecture and Pack option comes with a default value, which is used if the option has not been set by the user.
 
 .. _define_option_in_launcher:
 
@@ -59,7 +58,7 @@ Using a Properties File
 
 Options can be also be defined in properties files.
 
-When a MicroEJ Standalone Application is built using the ``firmware-singleapp`` :ref:`skeleton <mmm_module_skeleton>`, 
+When a Standalone Application is built using the ``firmware-singleapp`` :ref:`skeleton <mmm_module_skeleton>`, 
 options are loaded from properties files located in the ``build`` folder at the root of the project. 
 
 The properties files are loaded in the following order:

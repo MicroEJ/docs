@@ -72,10 +72,15 @@ Example
    }
 
 To implement the native method ``getSensorValue(int sensorID)``, you
-need to create a MicroEJ standard project containing the same ``Sensor``
-class on the same ``example`` package. To do so, open the Eclipse menu
-:guilabel:`File` > :guilabel:`New` > :guilabel:`Project...` > :guilabel:`Java` > :guilabel:`Java Project` in order to create a
-MicroEJ standard project.
+need to create a MicroEJ mock project containing the same ``Sensor``
+class on the same ``example`` package.
+
+To create a new MicroEJ mock project:
+
+- Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Module Project`,
+- Fill the module information (project name, module organization, name and revision),
+- Select the :guilabel:`microej-mock` skeleton,
+- Click on :guilabel:`Finish`.
 
 The following code is the required ``Sensor`` class of the created Mock
 project:
@@ -283,6 +288,8 @@ Once the module is built, the mock can be installed in a Platform in one of the 
 
 - by adding the mock module as a regular Platform :ref:`module dependency <mmm_module_dependencies>` (if your Platform configuration project contains a ``module.ivy`` file), 
 - or by manually copying the JAR file ``[mock_project]\target~\rip\mocks\[mock_name].jar`` to the :ref:`Platform configuration <platform_configuration_creation>` mock dropins folder ``dropins/mocks/dropins/``.
+
+Make sure the option :ref:`resolve_foundation_libraries_in_workspace` is enabled to use the mock without having to install it after each modification during development.
 
 Use
 ===

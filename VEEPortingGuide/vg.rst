@@ -19,12 +19,13 @@ Vector Graphics
     vgMatrix
     vgPath
     vgGradient
+    vgImage
     vgFont
     vgCco
     vgSimulation
     vgReleaseNotes
     vgChangeLog
-
+    vgMigrationGuide
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

@@ -1,7 +1,7 @@
 .. _architecture_changelog:
 
-MicroEJ Architectures Changelog
-===============================
+Architectures Changelog
+========================
 
 Notation
 --------
@@ -32,6 +32,137 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
    -  ``Clang``: Clang
+
+
+
+.. _changelog-8.0.0:
+
+[8.0.0] - 2023-06-27
+--------------------
+
+.. note::
+   This Architecture requires SDK version ``5.7.0`` or higher (see :ref:`get_sdk_version`).
+
+This major Architecture version update introduces the following main features:
+
+- Added compatibility with dynamic linkers enabling Address Space Layout Randomization (ASLR).
+- Added :ref:`Feature build on device <build_feature_on_device>`. For that, the SOAR has been deeply redesigned and split into multiple phases.
+  The most noticeable change is about the :ref:`SOAR Information File <soar_info_file>` that is now composed of 3 files.
+- Added Feature portability. The same ``.fo`` file can now be installed:    
+  
+  - On any Executable built from the same Kernel Application (``microejapp.o``). 
+    The VEE Port C code can be modified and relinked without requiring to rebuild the ``.fo`` file anymore.
+  
+  - On different Kernel Applications provided some conditions are met. 
+    Basically, a ``.fo`` built on Kernel 1 can be installed on Kernel 2 if the exposed Kernel APIs are left unchanged.
+    See :ref:`feature_portability_control` for more details.
+- Redesigned Feature installation flow. A Feature can now be installed in any byte-addressable memory, including ROM.
+  For that, ``LLKERNEL`` Low Level APIs have been fully rewritten. See :ref:`Feature installation <feature_memory_installation>` for more details.
+  Former Feature installation in RAM is preserved and is now called :ref:`In-Place Installation <feature_inplace_installation>`.
+  Former static Feature installed by the SDK (using the Firmware Linker tool) is removed in favor of :ref:`Feature persistency <feature_persistency>` at boot.
+  
+
+If you plan to migrate a VEE Port from Architecture ``7.x`` to Architecture ``8.x``, consider the :ref:`architecture7_migration` chapter.
+
+Core Engine
+~~~~~~~~~~~
+
+- Renamed :ref:`Core Engine sections <core_engine_link>` to fully respect the ELF standard naming convention. 
+- Removed check when passing a non-immortal array in SNI if VEE Port option ``core.sni.nonimmortal.access`` was set to ``false``.
+- Removed ``LLBSP_isInReadOnlyMemory`` in Core Engine Abstraction Layer (``LLBSP.h`` file).
+- Clarified ``LLMJVM_IMPL_getCurrentTime`` API contract in Core Engine Abstraction Layer (``LLMJVM_impl.h`` file).
+- Updated ``Trace`` C library from version ``1.0.0`` to ``2.0.0``. See :ref:`architecture7_migration_trace_library`.
+
+  - Renamed header file ``trace.h`` into ``LLTRACE.h`` to avoid filename conflicts.
+  
+  - Renamed C functions ``TRACE_xxx`` into ``LLTRACE_xxx``.
+  
+- Fixed potential crash when Core Engine is restarted after a call to `System.exit(int)`_.
+- [Multi] - Added option :ref:`com.microej.runtime.kernel.dynamicfeatures.max <option_maximum_number_of_dynamic_features>` to configure the maximum number of Features that can be dynamically installed.
+- [Multi] - Added option :ref:`com.microej.runtime.kf.waitstop.delay <option_feature_stop_timeout>` to configure the maximum time allowed for a Feature to stop.
+- [Multi] - Fixed missing release of allocated Feature buffers after Core Engine exits (:ref:`In-Place Installation <feature_inplace_installation>` mode).
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+-  Updated ``KF`` to version ``1.7``:
+  
+   -  Added heap memory control: `Module.getAllocatedMemory()`_, `Kernel.setReservedMemory()`_ and `Feature.setMemoryLimit()`_ methods.
+   -  Added load of a Feature resource (`Feature.getResourceAsStream()`_ method).
+- Updated ``KF`` dynamic loader to support :ref:`Feature Custom Installation <feature_custom_installation>` mode. See :ref:`architecture7_migration_llkernel`.
+- Removed Foundation Libraries API Jars and Javadoc.
+- Removed `Unknown product - Unknown version` comment in auto-generated Low Level API header files.
+- Removed the ``Serial Communication`` modules group, including the Foundation Libraries ``ECOM`` and ``ECOM-COMM``. See :ref:`architecture7_migration_ecom`.
+- Removed the deprecated ``Device Information`` module group, including the Foundation Library ``Device``. See :ref:`architecture7_migration_device`.
+- Fixed :ref:`option_embed_utf8` defaults to ``true`` when building a Standalone Application using MMM.
+- Fixed ``KF`` to call the registered `Thread.UncaughtExceptionHandler`_ when an exception is thrown in `FeatureEntryPoint.stop()`_.
+- Fixed unexpected `java.lang.NullPointerException`_ thrown by the ``skip`` method of an InputStream returned by `Class.getResourceAsStream()`_. This error only occurs with a resource loaded by the External Resource Loader.
+- Fixed the behavior of ``available``, ``read``, ``skip``, ``mark``, ``reset`` and ``close`` methods of an InputStream returned by `Class.getResourceAsStream()`_ and previously closed.
+- Fixed the ``LLEXT_RES_read()`` Low Level API specification (the buffer passed cannot be ``null``).
+- [Single] Fixed an unexpected ``FeatureFinalizer`` exception or infinite loop when a Standalone Application touches a ``KF`` API in some cases.
+- [Tiny] Fixed an unexpected SOAR error when a Standalone Application touches a ``KF`` API.
+- [Multi] Fixed exception thrown when calling `Kernel.removeConverter()`_.
+- [Multi] Fixed an unexpected ``NullPointerException`` thrown by ``ej.kf.Kernel.<clinit>`` method in some cases.
+- [Multi] Fixed KF watchdogs not triggered correctly when several expire at the same time.
+
+.. _Module.getAllocatedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Module.html#getAllocatedMemory--
+.. _Kernel.setReservedMemory(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#setReservedMemory-long-
+.. _Feature.setMemoryLimit(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#setMemoryLimit-long-
+.. _Feature.getResourceAsStream(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Feature.html#getResourceAsStream-java.lang.String-
+.. _FeatureEntryPoint.stop(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html#stop--
+.. _Kernel.removeConverter(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#removeConverter-ej.kf.Converter-
+
+Integration
+~~~~~~~~~~~
+
+- Added support for resolving :ref:`Front Panel in Workspace <resolve_foundation_libraries_in_workspace>` before the included Front Panel.
+- Added Memory Map Scripts for Eclasspath ``Math``, ``Formatter`` and ``DateFormat``.
+- Updated default value of VEE Port configuration option ``vendorURL``.
+- Updated Memory Map Scripts for ``MicroVG`` library.
+- Updated Memory Map Scripts for Eclasspath ``Executor`` library.
+- Updated output Map file location to ``soar/[application_main_class].map`` (formerly named ``SOAR.map``).
+- Removed unused ``SOAR.o`` file. It is available at ``bsp/microejapp.o``.
+- Renamed MicroEJ launch :guilabel:`Build dynamic Feature` to :guilabel:`Build Feature`.
+- [Multi] Fixed the SOAR output files from being deleted when the :guilabel:`Clean intermediate files` option is enabled.
+
+Simulator
+~~~~~~~~~
+
+- Added :ref:`Mock debug <option_mock_debug>` mode.
+- Added missing default values for the properties ``s3.slow``, ``console.logs.period``, and ``s3.hil.timeout`` when launching the Simulator from the command line.
+- Added a check for unsupported access to the Class instance of a primitive type (e.g. ``byte.class``).
+- Added HIL Engine debug logs when verbose option is enabled.
+- Added log of the Mock classpath when verbose option is enabled.
+- Added log of Mock resolution errors (class or method not found).
+- Added support for mark/reset on an InputStream returned by `Class.getResourceAsStream()`_.
+- Fixed "Internal limits" error in HIL engine when too many array arguments are used at the same time by one or several native methods.
+- Fixed slow reading with an array of bytes of the input stream returned by `Class.getResourceAsStream(String)`_.
+- Fixed configuration of the Java heap size using :ref:`option_java_heap`. The legacy ``core.memory.javaheapsum.size`` option is not more supported.
+- Fixed :ref:`option_immortal_heap` default value when running a Standalone Application using MMM.
+- Fixed stop of the HIL Engine if Simulator was terminated before the connection is established.
+- Fixed load of the Mock classes in the classpath order (left-to-right).
+- Fixed the missing error check when loading an immutable file referencing an external object id (the ``importObject`` directive is required).
+- Fixed initialization of transparent images in the Front Panel when the initial color is not fully opaque.
+  (introduced in version :ref:`7.11.0 <changelog-7.11.0>`)
+- [Multi] Fixed the computation of object sizes. The 4-byte KF header was missing.
+
+SOAR
+~~~~
+
+ - Added support for :ref:`Resource <section.classpath.elements.raw_resources>` alignment constraint.
+ - Added a check for legacy ``.system.properties`` files in the :ref:`Application Classpath <chapter.microej.classpath>`.
+   The build process is stopped and an error is reported. See :ref:`architecture7_migration_legacy_system_properties`.
+ - Added a check for unsupported access to the Class instance of a primitive type (e.g. ``byte.class``).
+
+Tools
+~~~~~
+
+- Updated the serial PC connector to JSSC ``2.9.4``, including support for macOS aarch64 (M1 chip).
+- Removed :ref:`Test Suite Engine <testsuite_engine>`. If needed, the Test Suite Engine is available in the :ref:`Build Kit <mmm_build_kit>`.
+- Removed Immutables NLS library. Use :ref:`Binary NLS <chapter.nls>` add-on library instead. 
+- Fixed an incorrect generation of a debug file beside the memory file when launching the Heap Dumper.
+- [Multi] Added Heap Dumper support for dynamically installed Features.
+
 
 .. _changelog-7.20.1:
 
@@ -70,6 +201,10 @@ Foundation Libraries
 
 - Fixed uninitialized pointer access in the :ref:`External Resources Loader<section_externalresourceloader>`, which can cause a system crash when reading data from a resource.
 
+.. _Class.getResourceAsStream(String): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Class.html#getResourceAsStream-java.lang.String-
+.. _System.exit(int): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#exit-int-
+
+
 .. _changelog-7.19.0:
 
 [7.19.0] - 2023-02-16
@@ -91,7 +226,6 @@ Tools
 ~~~~~
 
 - Removed dependency on GNU ``ar`` program to create ``microejruntime.a`` archive file.
-
 
 .. _changelog-7.18.1:
 
@@ -133,8 +267,8 @@ Core Engine
 -  Added new functions to Low Level API ``LLMJVM_MONITOR_impl.h`` (see :ref:`Advanced-Event-Tracing`):
 
   
-   -  ``void LLMJVM_MONITOR_IMPL_on_invoke_method(void* method)``: called by the MicroEJ Core Engine when an method is invoked.
-   -  ``void LLMJVM_MONITOR_IMPL_on_return_method(void* method)``: called by the MicroEJ Core Engine when a method returns.
+   -  ``void LLMJVM_MONITOR_IMPL_on_invoke_method(void* method)``: called by the Core Engine when an method is invoked.
+   -  ``void LLMJVM_MONITOR_IMPL_on_return_method(void* method)``: called by the Core Engine when a method returns.
 
 -  [Cortex-M] - Added support for MCU configuration with unaligned access traps enabled (``UNALIGN_TRP`` bit set in ``CCR`` register).
 
@@ -167,7 +301,7 @@ Simulator
 -  Fixed potential "Internal limits reached" error when an `OutOfMemoryError`_ is thrown. 
 -  Fixed error "Cannot pin objects anymore" when passing repeatedly immutable objects to a native method.
 -  Fixed properties not passed correctly to the mocks when the Virtual Device is executed from a path that contains spaces.
--  [Multi] - Fixed unexpected error when ``kernel.kf`` file is missing and KF library is used: "Please specify a 'kernel.kf' file to enable Kernel & Features semantics."
+-  [Multi] - Fixed an unexpected error when ``kernel.kf`` file is missing and KF library is used: "Please specify a 'kernel.kf' file to enable Kernel & Features semantics."
 -  [Multi] - Fixed type ``double[]`` not recognized in ``kernel.api`` file.
 
 .. _UnsatisfiedLinkError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/UnsatisfiedLinkError.html
@@ -213,9 +347,9 @@ Known Issues
 Notes
 ~~~~~
 
-The ``Device`` module provided by the MicroEJ Architecture is deprecated
+The ``Device`` module provided by the Architecture is deprecated
 and will be removed in a future version. It has been moved to the
-`Device Pack`_. Please update your Platforms.
+`Device Pack`_. Please update your VEE Ports.
 
 .. _Device Pack: https://repository.microej.com/modules/com/microej/pack/device/device-pack/
 
@@ -275,7 +409,7 @@ Integration
          
          <addSection file="${executable.file}" sectionFile="${section.file}" sectionName="${section.name}" sectionAlignment="${section.alignment}" outputDir="${output.dir}" outputName="${output.name}" />
 -  Updated Architecture End User License Agreement to version ``SDK 3.0-C``
--  Updated copyright notice of Low Level APIs header files to latest MicroEJ SDK default license
+-  Updated copyright notice of Low Level APIs header files to latest SDK default license
 -  Updated Architecture module with required files and configurations for correct publication in a module repository (``README.md``,
    ``LICENSE.txt``, and ``CHANGELOG.md``)
 
@@ -330,7 +464,7 @@ Tools
    -  Automatically configure ``src/main/java`` source directory
       beside a ``/bin`` directory if available
    -  Added an option (``cc.src.folders``) to specify the source directory
-      (require MicroEJ SDK ``5.4.1`` or higher)
+      (require SDK ``5.4.1`` or higher)
    -  Removed the analysis of generated code for ``synchronized``
       statements
    -  Fixed crash when loading source code with annotations
@@ -429,7 +563,7 @@ as ``BON`` constants:
 -  ``com.microej.architecture.toolchain=[toolchain_uid]``
 -  ``com.microej.architecture.version=7.14.0``
 
-The following set of Platform properties (customer defined) are
+The following set of VEE Port properties (customer defined) are
 automatically provided as ``BON`` constants:
 
 -  ``com.microej.platform.hardwarePartNumber``
@@ -496,7 +630,7 @@ SOAR
 Tools
 ~~~~~
 
--  Updated serial PC connector to JSSC ``2.9.2`` (COM port could not be
+-  Updated the serial PC connector to JSSC ``2.9.2`` (COM port could not be
    open on Windows 10 using a JRE ``8u261`` or higher)
 
 .. _section-4:
@@ -549,7 +683,7 @@ Core Engine
 Tools
 ~~~~~
 
--  Fixed Feature build script for MicroEJ SDK 5.x (introduced in version
+-  Fixed Feature build script for SDK 5.x (introduced in version
    :ref:`7.13.0 <changelog-7.13.0>`)
 -  Updated Memory Map Scripts for MicroUI 3 and Service libraries
 
@@ -597,7 +731,7 @@ Core Engine
       behavior
 
 -  Added a message to `IllegalArgumentException`_ thrown in an SNI call
-   when passing a non-immortal array in SNI (only in case the Platform
+   when passing a non-immortal array in SNI (only in case the VEE Port
    is configured to disallow the use of non-immortal arrays in SNI
    native calls)
 -  Added function ``LLMJVM_CheckIntegrity()`` to ``LLMJVM.h`` Low Level
@@ -618,7 +752,7 @@ Core Engine
       object address, last scanned object class)
    -  ``LLMJVM`` schedule request (global and per thread)
 
--  Updated non-immortal object access from SNI default behavior (now
+-  Updated non-immortal array access from SNI default behavior (now
    allowed by default)
 -  Fixed thread state displayed by ``LLMJVM_dump`` for threads in
    ``SLEEP`` state
@@ -693,7 +827,7 @@ Integration
 Simulator
 ~~~~~~~~~
 
--  Added ``SNI-1.4`` support, with the following new HIL APIs:
+-  Added ``SNI-1.4`` support, with the following new HIL engine APIs:
 
    -  Added methods ``NativeInterface.suspendStart()`` and
       ``NativeInterface.suspendStop()`` to notify the simulator that a
@@ -705,10 +839,10 @@ Simulator
    options in ``Simulator`` > ``Kernel`` > ``Kernel UID``)
 -  Added object size in generated ``.heap`` dump files
 -  Optimized file accesses from the Application
--  Fixed crash in debug mode when paused on a breakpoint in MicroEJ SDK
+-  Fixed crash in debug mode when paused on a breakpoint in SDK
    and hovering a Java variable with the mouse
 -  Fixed potential crash in debug mode when putting a breakpoint in
-   MicroEJ SDK on a line of code declared in an inner class
+   the SDK on a line of code declared in an inner class
 -  Fixed potential crash in debug mode
    (`java.lang.NullPointerException`_) when a breakpoint set on a field
    access is hit
@@ -761,15 +895,15 @@ SOAR
 Tools
 ~~~~~
 
--  Added ``SNI-1.4`` support to HIL Engine
+-  Added ``SNI-1.4`` support to HIL engine
 -  Updated Heap Dumper to verbose information about the memory section
    when an overlap is detected in the HEX file
 -  Updated Memory Map Scripts (Security, DTLS, Device)
 -  Fixed License Manager (Evaluation) random crash on Windows 10 when a
-   Platform is built using ``Build Module`` button
+   VEE Port is built using ``Build Module`` button
 -  Fixed License Manager (Evaluation) wrong UID computation after reboot
    when Windows 10 Hyper-V feature is enabled
--  Fixed HIL Engine to exit as soon as the Simulator is disconnected
+-  Fixed HIL engine to exit as soon as the Simulator is disconnected
    (avoid remaining detached processes)
 -  Fixed ELF to Map generating symbol addresses different from the ELF
    symbol addresses (introduced in version :ref:`7.11.0 <changelog-7.11.0>`)
@@ -903,7 +1037,7 @@ Important Notes
    option described below (likely the case when building a Multi-Sandbox
    Firmware and its associated Virtual Device).
 -  Front Panel framework is now provided by the Architecture instead of
-   the UI Pack. This allow to build a Platform with a Front Panel
+   the UI Pack. This allow to build a VEE Port with a Front Panel
    (splash screen, basic I/O, …), even if it does not provide a MicroUI
    port. Moreover, the Front Panel framework API has been redesigned and
    is now distributed using the ``ej.tool.frontpanel.framework`` module
@@ -1069,30 +1203,30 @@ Tools
 -  Updated License Manager (Production) to debug dongle recognition
    issues. (usage is
    ``java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerUsbDongle.jar``
-   in an Architecture or Platform folder)
+   in an Architecture or VEE Port folder)
 -  Updated License Manager (Production) to support dongle recognition
    on macOS ``10.14`` (Mojave)
 -  Fixed ELF To Map to produce correct sizes from an executable
    generated by IAR Embedded Workbench for ARM
 -  Fixed Firmware Linker ``.ARM.exidx`` section generation (missing
    section link content)
--  Updated deployment files policy for Platforms in Worskpace, in order
+-  Updated deployment files policy for VEE Ports in Workspace, in order
    to be more flexible depending on the C project layout. This also
    allows to deploy to the same C project different Applications built
-   with different Platforms
+   with different VEE Ports
 
-   -  Platform configuration: in ``bsp/bsp.properties``, a new option
+   -  VEE Port configuration: in ``bsp/bsp.properties``, a new option
       ``output.dir`` indicates where the files are deployed by default
 
-      -  Application (``microejapp.o``) and Platform library
+      -  Application (``microejapp.o``) and Runtime library
          (``microejruntime.a``) are deployed to ``${output.dir}/lib``.
-         Platform header files (``*.h``) are deployed to
+         Architecture header files (``*.h``) are deployed to
          ``${output.dir}/inc/``
       -  When this option is not set, the legacy behavior is left
          unchanged (``project.file`` option in collaboration with
          ``augmentCProject`` scripts)
 
-   -  Launch configuration: ``Device > Deploy`` options allow to override the default Platform configuration in order to deploy each MicroEJ file into a separate folder.
+   -  Launch configuration: ``Device > Deploy`` options allow to override the default VEE Port configuration in order to deploy each file into a separate folder.
 
 -  Fixed wrong ELF file generation when a section included in a LOAD
    segment was generated before one of the sections included in a LOAD
@@ -1155,8 +1289,8 @@ Integration
 ~~~~~~~~~~~
 
 -  Added generation of ``architecture.properties`` file when building a
-   Platform. (Used by SDK ``5.x`` when manipulating
-   Platforms & Virtual Devices)
+   VEE Port. (Used by SDK ``5.x`` when manipulating
+   VEE Ports & Virtual Devices)
 
 .. _simulator-5:
 
@@ -1402,7 +1536,7 @@ Simulator
 ~~~~~~~~~
 
 -  Added a hook in the mockup that is automatically called during the
-   HIL Engine startup
+   HIL engine startup
 -  Added dump of loaded classes when ``verbose`` option is enabled
 -  Fixed `Runtime.freeMemory()`_ 
    call freeze when ``Emb Characteristics`` option is enabled
@@ -1411,7 +1545,7 @@ Simulator
 -  Fixed crash ``Access to a wrong reference`` in some cases
 -  Fixed `java.lang.NullPointerException`_
    when interrupting a thread that has not been started
--  Fixed crash when closing an HIL connection in some cases
+-  Fixed crash when closing an HIL engine connection in some cases
 -  [Multi] - Fixed KF & Watchdog library link when
    ``Emb Characteristics`` option is enabled
 -  [Multi] - Fixed XML Parsing error when ``Emb Characteristics`` option
@@ -1706,7 +1840,7 @@ Tools
 ~~~~~
 
 -  Added property ``skip.mergeLibraries`` for Platform Builder.
--  Updated serial PC connector to ``JSSC v2.8.0``
+-  Updated the serial PC connector to JSSC ``2.8.0``.
 
 .. _simulator-12:
 
@@ -1791,7 +1925,7 @@ SOAR
 [6.9.0] - 2017-03-15
 --------------------
 
-*Base version, included into MicroEJ SDK 4.1.*
+*Base version, included into SDK 4.1.*
 
 
 ..

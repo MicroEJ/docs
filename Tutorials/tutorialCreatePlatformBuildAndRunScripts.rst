@@ -383,7 +383,7 @@ Going Further
 - Perform the :ref:`tutorial_run_test_suite_on_device` tutorial to learn how to run an automated testsuite
 - Perform the :ref:`tutorial_setup_automated_build_using_jenkins_and_artifactory` tutorial to learn how to automate the build of a MicroEJ Platform module
 
-.. _Platform Qualification Tools: https://github.com/MicroEJ/PlatformQualificationTools/tree/master/framework/platform/scripts
+.. _Platform Qualification Tools: https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/framework/platform/scripts
 
 ..
    | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 

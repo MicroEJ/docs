@@ -38,13 +38,7 @@ When building a Sandboxed Application to a Feature, SOAR processing is divided i
 
    Sandboxed Application Build Flow
 
-The Feature ``.fo`` file can be deployed in the following ways:
-
--  Downloaded and installed on Device by software. Refer to the :ref:`[KF]
-   specification <kf_specification>` for `Kernel.install()`_ method.
-
--  Installed at build-time into the Multi-Sandboxed Firmware using the :ref:`firmware_linker` tool.
-
+The Feature ``.fo`` file can be deployed to the Device using `Kernel.install()`_ method.
 
 .. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
 
@@ -207,6 +201,7 @@ A ``.fso`` file can be linked on any Kernel providing all the following conditio
 - its Architecture version is compatible [#compatible_def]_ with the Architecture version on which the ``.fso`` file has been produced,
 - it provides the required APIs according to the JVM specification [1]_.
 
+A current limitation is that if the Sandboxed Application declares an immutable object, SOAR Optimizer will resolve fields within the same class rather than considering the entire class hierarchy.
 
 .. [1]
    Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
