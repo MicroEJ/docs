@@ -803,7 +803,7 @@ Naming Convention
 
 The Low Level Event Queue API (LLEVENT), relies on functions that need to
 be implemented by engineers in a driver. The names of these functions
-match the ``LLEVENT_IMPL_*`` pattern.
+match the ``LLEVENT_IMPL_*`` or ``LLEVENT_*`` pattern.
 
 Header Files
 ------------
@@ -814,7 +814,7 @@ Two header files are provided:
 
    Defines the set of functions that the BSP must implement to manage, offer/handle events from the Event Queue.
 
--  microej_event.h
+-  LLEVENT.h
 
    Defines the set of functions that the BSP must implement to use the Event Queue from the native side.
 
