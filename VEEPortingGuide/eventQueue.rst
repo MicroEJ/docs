@@ -85,6 +85,8 @@ Format explanation:
 - `Data` (24 bits): non-extended event's data (for non-extended events only).
 - `Extended data` (``Length`` bytes): extended event's data (for extended events only).
 
+.. _event_listener:
+
 Event listener
 --------------
 
@@ -112,20 +114,20 @@ For example:
 
 .. code-block:: java
 
-   public static int myEventType;
+   public static int eventType;
 
    public static void main(String[] args) throws InterruptedException {
       EventQueue eventQueue = EventQueue.getInstance();
 
       // Get the unique type to register your listener.
-      // myEventType must be stored if you want to offer an event from the Java API.
-      myEventType = eventQueue.getNewType();
+      // eventType must be stored if you want to offer an event from the Java API.
+      eventType = eventQueue.getNewType();
 
       // Create and register a listener.
-      eventQueue.registerListener(new ExampleListener(), myEventType);
+      eventQueue.registerListener(new ExampleListener(), eventType);
 
-      // Send myEventType to the C world.
-      passTypeToCWorld(myEventType);
+      // Send eventType to the C world.
+      passTypeToCWorld(eventType);
    }
 
    /**
@@ -196,6 +198,8 @@ Handle the event
 
 To handle a non-extended event, you must implement your listener's ``handleEvent(int type, int data)`` method. 
 You can process the data received by the Event Queue on this method. 
+
+First, you have to register your listener as explained :ref:`Event listener <event_listener>` in section.
 
 For example: 
 
@@ -327,6 +331,8 @@ To handle an extended event, you must implement your listener's ``handleExtended
 You can process the data received by the Event Queue on this method. 
 
 It provides an EventDataReader that contains the methods needed to read the data of an extended event. 
+
+First, you have to register your listener as explained :ref:`Event listener <event_listener>` in section.
 
 For example: 
 
