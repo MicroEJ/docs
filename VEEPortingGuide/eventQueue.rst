@@ -247,13 +247,13 @@ With ``EventDataReader`` API, there are two ways to read an event:
 
 - Read the data with ``read(byte[] b, int off, int len)`` or ``readFully(byte[] b)`` methods. 
 
-   - You will get the data in a byte array and can process it in your ``handleExtendedEvent`` method.
-   - You can **choose your own alignment** when sending extended events through the Event Queue. 
+   - You will get the data in a byte array and can process it on your own in your ``handleExtendedEvent`` method.
 
 - Read the data with the methods related to the primitive types such as ``readBoolean()`` or ``readByte()``. 
 
-   - It is the easiest way to process your data because you don't have to handle the byte arrays. 
-   - Your **must use the following data alignment** when sending extended event through the Event Queue: 
+   - It is the easiest way to process your data because you don't have to handle the byte arrays.
+   - This is useful when the extended data you send through the Event Queue is a C structure with multiple fields.
+   - To use the methods, **your fields must follow this alignment:**
 
       - A **boolean** (1 byte) will be 1-byte aligned.
       - A **byte** (1 byte) will be 1-byte aligned.
