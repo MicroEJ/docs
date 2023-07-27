@@ -18,7 +18,7 @@ Functional Description
 Overview
 --------
 
-The Event Queue Foundation Library allows users to send events from the native world to the Java world. It is composed of a Java API that provides mechanisms to register specific event notifications and a native API that allows someone to send events in the queue.
+The Event Queue Foundation Library allows users to send events from the native world to the Java world. It is composed of a Java API that provides mechanisms to register specific event notifications and a C API that allows someone to send events in the queue.
 
 .. figure:: images/event-queue-overview.png
    :alt: Event Queue Overview
@@ -27,11 +27,11 @@ The Event Queue Foundation Library allows users to send events from the native w
 
    Event Queue Overview
 
-A FIFO mechanism is implemented on the native side and is system specific. The user can offer events to this FIFO by using the native or the Java API. 
+A FIFO mechanism is implemented on the native side and is system specific. The user can offer events to this FIFO by using the C or the Java API. 
 
-Event notifications are handled using event listeners (Observer design pattern). The application code has to register event listeners to the event handler (provided by the Foundation Library) to be notified when new events are coming.
+Event notifications are handled using event listeners (Observer design pattern). The application code has to register event listeners to the event handler to be notified when new events are coming.
 
-Then the queue retrieves new events pushed in the FIFO and notifies the application and the event listeners. 
+Then the queue automatically retrieves new events pushed in the FIFO and notifies the application via the event listeners. 
 
 Architecture
 ------------
@@ -58,15 +58,19 @@ Events reading operations are done using the SNI mechanism. Event Queue Java thr
 
 Event format
 ------------
-Only integers (4 bytes) are sent through the FIFO, so there are two kinds of events that can be sent over the Event Queue:
+An event is composed of a type and some data. The type identifies the listener that will handle the event. 
+The data is application specific and passed to the listener.
 
-- Non-extended event: an event that fits on 4 bytes.
-- Extended event: an event that does not fit on 4 bytes. 
+The items stored in the FIFO buffer are integers (4 bytes). There are two kinds of events that can be sent over the Event Queue:
+
+- Non-extended event: an event with data that fits on 24 bits. The event is stored in the FIFO as a single 4 bytes item.
+- Extended event: an event with data that does not fit on 24 bits. The event is stored in the FIFO as multiple 4 bytes items.
+
 
 .. code-block:: java
 
     +--------------+----------+---------------------------------------------------+
-    | Extended (1) | Type (7) | Data (if Extended=0), Length (if Extended=1) (24) |
+    | Extended (1) | Type (7) | Data (if Extended==0), Length (if Extended==1) (24) |
     +--------------+----------+---------------------------------------------------+
     ...
     +-----------------------------------------------------------------------------+
@@ -75,35 +79,35 @@ Only integers (4 bytes) are sent through the FIFO, so there are two kinds of eve
 
 Format explanation:
 
-- `Extended`: extended event flag, give the kind of event sent. (1 bit) 
-- `Type`: event type that allows to find the corresponding event listener. (7 bits)
-- `Length`: length of the data in bytes, only if it is an extended event. (24 bits)
-- `Data`: data for non-extended events. (24 bits)
-- `Extended data`: data for extended events. (Length bytes)
+- `Extended` (1 bit): event's kind flag (0 for non-extended event, 1 for extended event).
+- `Type` (7 bits): event's type, which allows to find the corresponding event listener.
+- `Length` (24 bits): length of the data in bytes (for extended events only).
+- `Data` (24 bits): non-extended event's data (for non-extended events only).
+- `Extended data` (``Length`` bytes): extended event's data (for extended events only).
 
 Event listener
 --------------
 
 The user can register some listeners to the Event Queue. 
 Each listener is registered with an event type.
-A listener can be registered for several event types, but each event type can only have one listener. 
+The same listener can be registered for several event types, but each event type can only have one listener. 
 When the queue receives an event from the FIFO, it will get the event type and check if it is an extended event. 
 Then it will check if a listener is registered for this event type.
 If so, it will call its handle method depending on the extended event flag. 
 It will call the default listener if no listener corresponds to the event type. 
 
-You can create your Event listener by implementing the EventListener interface. 
+You can create your Event listener by implementing the ``EventListener`` interface.
 It contains two methods that are used to handle non-extended and extended events. 
 
-Before registering your listener, you must get a valid type using the ``getNewType()`` method from EventQueue API. 
-Then you can register your listener using the ``registerListener(EventListener listener, int type)`` method from the EventQueue API. 
+Before registering your listener, you must get a valid unique type using the ``getNewType()`` method from the ``EventQueue`` class.
+Then you can register your listener using the ``registerListener(EventListener listener, int type)`` method from the ``EventQueue`` class.
 
-To set the defaultListener, you must use ``setDefaultListener(EventListener listener)`` from the EventQueue API. 
+To set the defaultListener, you must use ``setDefaultListener(EventListener listener)`` from the ``EventQueue`` class.
 
 Non-extended event
 ------------------
 
-Non-extended events are events that can stand on 32 bits.
+Non-extended events are events with data that can be stored on 24 bits.
 
 .. code-block:: java
 
@@ -113,20 +117,20 @@ Non-extended events are events that can stand on 32 bits.
 
 The first bit equals 0, saying that this is a non-extended event.
 
-Then there is the event type that stands on 7 bits. 
+Then there is the event type stored on 7 bits.
 
 To finish, there is the data that you want to send through the Event Queue. 
-It stands on 24 bits. 
+It is stored on 24 bits. 
 
 Offer the event
 ^^^^^^^^^^^^^^^
 
-There are two ways to send a non-extended event through the Event Queue: from the native API or the Java API. 
+There are two ways to send a non-extended event through the Event Queue: from the C API or the Java API. 
 
 From C API
 """"""""""
 
-To send a non-extended event through the Event Queue using the native API, you must use the ``LLEVENT_offerEvent(int32_t type, int32_t data)`` method from LLEVENT.h.
+To send a non-extended event through the Event Queue using the C API, you must use the ``LLEVENT_offerEvent(int32_t type, int32_t data)`` method from ``LLEVENT.h``.
 
 For example: 
 
@@ -141,7 +145,7 @@ For example:
 From Java API
 """""""""""""
 
-To send a non-extended event through the Event Queue using the Java API, you must use the ``offerEvent(int type, int data)`` method from the EventQueue API.
+To send a non-extended event through the Event Queue using the Java API, you must use the ``offerEvent(int type, int data)`` method from the ``EventQueue`` class.
 
 For example: 
 
@@ -176,7 +180,7 @@ For example:
 Extended event
 --------------
 
-Extended events are events that can not stand on 32 bits.
+Extended events are events with data that can not be stored on 24 bits.
 
 .. code-block:: java
 
@@ -191,8 +195,8 @@ Extended events are events that can not stand on 32 bits.
 On the first 32 bits of the events, you will have: 
 
 - First bit is equal to 1, saying that this is an extended event,
-- The event type that stands on 7 bits,
-- The length of the data in bytes stands on 24 bits.
+- The event type stored on 7 bits,
+- The length of the data in bytes stored on 24 bits.
 
 Then you will have the data. 
 The number of bytes of the data depends on the length. 
@@ -200,10 +204,10 @@ The number of bytes of the data depends on the length.
 Data Alignment
 ^^^^^^^^^^^^^^
 
-To process the data from an extended event, you will use the EventDataReader API.
+To process the data from an extended event, you will use an ``EventDataReader`` object.
 You will see it more in detail in the :ref:`Handle the event <handle_extended_event_section>` section.
 
-With EventDataReader API, there is two way to read an event:
+With ``EventDataReader`` API, there are two ways to read an event:
 
 - Read the data with ``read(byte[] b, int off, int len)`` or ``readFully(byte[] b)`` methods. 
 
