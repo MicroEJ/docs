@@ -91,6 +91,7 @@ Event listener
 The user can register some listeners to the Event Queue. 
 Each listener is registered with an event type.
 The same listener can be registered for several event types, but each event type can only have one listener. 
+
 When the queue receives an event from the FIFO, it will get the event type and check if it is an extended event. 
 Then it will check if a listener is registered for this event type.
 If so, it will call its handle method depending on the extended event flag. 
@@ -102,7 +103,36 @@ It contains two methods that are used to handle non-extended and extended events
 Before registering your listener, you must get a valid unique type using the ``getNewType()`` method from the ``EventQueue`` class.
 Then you can register your listener using the ``registerListener(EventListener listener, int type)`` method from the ``EventQueue`` class.
 
+The unique type your listener uses must be stored on the Java world and passed/stored to the C world.
+One way to do it is to make a native method that sends the event type to the C world, then store it in your BSP.
+
 To set the defaultListener, you must use ``setDefaultListener(EventListener listener)`` from the ``EventQueue`` class.
+
+For example: 
+
+.. code-block:: java
+
+   public static int myEventType;
+
+   public static void main(String[] args) throws InterruptedException {
+      EventQueue eventQueue = EventQueue.getInstance();
+
+      // Get the unique type to register your listener.
+      // myEventType must be stored if you want to offer an event from the Java API.
+      myEventType = eventQueue.getNewType();
+
+      // Create and register a listener.
+      eventQueue.registerListener(new ExampleListener(), myEventType);
+
+      // Send myEventType to the C world.
+      passTypeToCWorld(myEventType);
+   }
+
+   /**
+   * This native method will take the event type as entry and store it in the C world. 
+   */ 
+   public static native void passTypeToCWorld(int type);
+
 
 Non-extended event
 ------------------
@@ -136,7 +166,8 @@ For example:
 
 .. code-block:: c
 
-   int type = 1;
+   // Assuming that event_type has been passed from the Java world through a native method after registering your listener.
+   int type = event_type;
    int data = 12;
 
    LLEVENT_offerEvent(type, data);
@@ -153,7 +184,8 @@ For example:
 
    EventQueue eventQueue = EventQueue.getInstance();
 
-   int type = 1;
+   // Assuming that eventType has been stored in the Java world when you registered the listener.
+   int type = eventType;
    int data = 12;
 
    eventQueue.offerEvent(type, data);
@@ -250,7 +282,8 @@ For example:
       int z;
    }
 
-   int type = 1;
+   // Assuming that event_type has been passed from the Java world through a native method after registering your listener.
+   int type = event_type;
 
    struct accelerometer_data data;
    data.x = 42;
@@ -271,7 +304,8 @@ For example:
 
    EventQueue eventQueue = EventQueue.getInstance();
 
-   int type = 1;
+   // Assuming that eventType has been stored in the Java world when you registered the listener.
+   int type = eventType;
 
    // Array of 3 integers. Each integer is stored in 4 bytes.
    byte[] accelerometerData = new byte[3*4];
