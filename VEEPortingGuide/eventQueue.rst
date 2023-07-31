@@ -80,15 +80,15 @@ The items stored in the FIFO buffer are integers (4 bytes). There are two kinds 
 Format explanation:
 
 - `Extended` (1 bit): event's kind flag (0 for non-extended event, 1 for extended event).
-- `Type` (7 bits): event's type, which allows to find the corresponding event listener.
+- `Type` (7 bits): event's type, which allows to find the corresponding event queue listener.
 - `Length` (24 bits): length of the data in bytes (for extended events only).
 - `Data` (24 bits): non-extended event's data (for non-extended events only).
 - `Extended data` (``Length`` bytes): extended event's data (for extended events only).
 
-.. _event_listener:
+.. _event_queue_listener:
 
-Event listener
---------------
+Event Queue listener
+--------------------
 
 The user can register some listeners to the Event Queue. 
 Each listener is registered with an event type.
@@ -99,16 +99,16 @@ Then it will check if a listener is registered for this event type.
 If so, it will call its handle method depending on the extended event flag. 
 It will call the default listener if no listener corresponds to the event type. 
 
-You can create your Event listener by implementing the ``EventListener`` interface.
+You can create your Event Queue listener by implementing the ``EventQueueListener`` interface.
 It contains two methods that are used to handle non-extended and extended events. 
 
 Before registering your listener, you must get a valid unique type using the ``getNewType()`` method from the ``EventQueue`` class.
-Then you can register your listener using the ``registerListener(EventListener listener, int type)`` method from the ``EventQueue`` class.
+Then you can register your listener using the ``registerListener(EventQueueListener listener, int type)`` method from the ``EventQueue`` class.
 
 The unique type your listener uses must be stored on the Java world and passed/stored to the C world.
 One way to do it is to make a native method that sends the event type to the C world, then store it in your BSP.
 
-To set the defaultListener, you must use ``setDefaultListener(EventListener listener)`` from the ``EventQueue`` class.
+To set the defaultListener, you must use ``setDefaultListener(EventQueueListener listener)`` from the ``EventQueue`` class.
 
 For example: 
 
@@ -199,13 +199,13 @@ Handle the event
 To handle a non-extended event, you must implement your listener's ``handleEvent(int type, int data)`` method. 
 You can process the data received by the Event Queue on this method. 
 
-First, you have to register your listener as explained :ref:`Event listener <event_listener>` in section.
+First, you have to register your listener as explained :ref:`Event Queue listener <event_queue_listener>` in section.
 
 For example: 
 
 .. code-block:: java
 
-   public class MyListener implements EventListener{
+   public class MyListener implements EventQueueListener{
       @Override
       public void handleEvent(int type, int data) {
          System.out.println("My data is equal to: " + data);
@@ -274,7 +274,7 @@ There are two ways to send an extended event through the Event Queue: from the n
 From C API
 """"""""""
 
-To send an extended event through the Event Queue using the native API, you have to use the ``LLEVENT_offerExtendedEvent(int32_t type, void* data, int32_t data_length)`` method from LLEVENT.h.
+To send an extended event through the Event Queue using the native API, you have to use the ``LLEVENT_offerExtendedEvent(int32_t type, void* data, int32_t data_length)`` method from ``LLEVENT.h``.
 
 For example: 
 
@@ -332,13 +332,13 @@ You can process the data received by the Event Queue on this method.
 
 It provides an EventDataReader that contains the methods needed to read the data of an extended event. 
 
-First, you have to register your listener as explained :ref:`Event listener <event_listener>` in section.
+First, you have to register your listener as explained :ref:`Event Queue listener <event_queue_listener>` in section.
 
 For example: 
 
 .. code-block:: java
 
-   public class MyListener implements EventListener{
+   public class MyListener implements EventQueueListener{
       @Override
       public void handleExtendedEvent(int type, EventDataReader eventDataReader) {
          int x = 0;
