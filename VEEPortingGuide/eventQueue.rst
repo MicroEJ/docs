@@ -131,7 +131,7 @@ For example:
    }
 
    /**
-   * This native method will take the event type as entry and store it in the C world. 
+   * This native method will take the event type as an entry and store it in the C world. 
    */ 
    public static native void passTypeToCWorld(int type);
 
@@ -199,7 +199,7 @@ Handle the event
 To handle a non-extended event, you must implement your listener's ``handleEvent(int type, int data)`` method. 
 You can process the data received by the Event Queue on this method. 
 
-First, you have to register your listener as explained :ref:`Event Queue listener <event_queue_listener>` in section.
+First, you must register your listener as explained :ref:`Event Queue listener <event_queue_listener>` in section.
 
 For example: 
 
@@ -357,6 +357,35 @@ For example:
       }
    }
 
+Mock the Event Queue
+--------------------
+
+If you are sending events through the C API in your BSP, you will need to send the same events in one of your :ref:`Mock <mock>`.
+You will have to use the Event Queue Mock API to do so. 
+This API is the equivalent of the C API in the Simulator.
+
+
+The Event Queue Mock API must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+Mock project.
+
+.. code-block:: xml
+
+   <dependency org="com.microej.pack.event" name="event-pack" rev="2.0.0" conf="provided->mockAPI"/>
+
+It provides two methods: 
+
+- ``EventQueueMock.offerEvent(int type, int data)`` is the equivalent of ``LLEVENT_offerEvent(int32_t type, int32_t data)`` method from ``LLEVENT.h``.
+- ``EventQueueMock.offerExtendedEvent(int type, byte[] data, int dataLength)`` is the equivalent of ``LLEVENT_offerExtendedEvent(int32_t type, void* data, int32_t data_length)`` method from ``LLEVENT.h``.
+
+Example of use:
+
+.. code-block:: java
+
+   // Assuming that event_type has been passed from your Application through a native method after registering your listener.
+   int type = event_type;
+   int data = 12;
+
+   EventQueueMock.offerEvent(type, data);
 
 Dependencies
 ============
