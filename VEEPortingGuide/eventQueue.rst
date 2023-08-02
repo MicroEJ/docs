@@ -8,7 +8,7 @@ Event Queue
 Principle
 =========
 
-The Event Queue module provides an asynchronous communication interface between the native world and the Java world based on events.
+The Event Queue Foundation Library provides an asynchronous communication interface between the native world and the Java world based on events.
 
 
 Functional Description
@@ -29,9 +29,9 @@ The Event Queue Foundation Library allows users to send events from the native w
 
 A FIFO mechanism is implemented on the native side and is system specific. The user can offer events to this FIFO by using the C or the Java API. 
 
-Event notifications are handled using event listeners (Observer design pattern). The application code has to register event listeners to the event handler to be notified when new events are coming.
+Event notifications are handled using event listeners (Observer design pattern). The application code has to register event listeners to be notified when new events are coming.
 
-Then the queue automatically retrieves new events pushed in the FIFO and notifies the application via the event listeners. 
+Then the Event Queue thread automatically retrieves new events pushed in the FIFO and notifies the event listeners. 
 
 Architecture
 ------------
@@ -46,7 +46,7 @@ The Event Queue Foundation Library uses a dedicated Java thread to forward and p
    Event Queue Architecture
 
 
-Events reading operations are done using the SNI mechanism. Event Queue Java thread is suspended if an event read is called and the events FIFO is empty. Event Queue Java thread resume is done by the native part when a new event is sent if the events FIFO was previously empty.
+Events reading operations are done using the SNI mechanism. Event Queue Java thread is suspended when the events FIFO is empty and resumed when a new event is sent.
 
 .. figure:: images/event-queue-synchronization.png
    :alt: Event Queue Task Synchronization
@@ -58,12 +58,12 @@ Events reading operations are done using the SNI mechanism. Event Queue Java thr
 
 Event format
 ------------
-An event is composed of a type and some data. The type identifies the listener that will handle the event. 
-The data is application specific and passed to the listener.
+An event is composed of a type and, optionally, data. The type identifies the listener that will handle the event. 
+The data is application specific and passed to the listener as a raw byte array.
 
 The items stored in the FIFO buffer are integers (4 bytes). There are two kinds of events that can be sent over the Event Queue:
 
-- Non-extended event: an event with data that fits on 24 bits. The event is stored in the FIFO as a single 4 bytes item.
+- Standard event: an event with data that fits on 24 bits. The event is stored in the FIFO as a single 4 bytes item.
 - Extended event: an event with data that does not fit on 24 bits. The event is stored in the FIFO as multiple 4 bytes items.
 
 
@@ -74,25 +74,25 @@ The items stored in the FIFO buffer are integers (4 bytes). There are two kinds 
     +--------------+----------+---------------------------------------------------+
     ...
     +-----------------------------------------------------------------------------+
-    |                  Extended Data for extended events (32)                     | (x integers)
+    |                  Extended Data for extended events (32)                     | (Length bytes)
     +-----------------------------------------------------------------------------+
 
 Format explanation:
 
-- `Extended` (1 bit): event's kind flag (0 for non-extended event, 1 for extended event).
-- `Type` (7 bits): event's type, which allows to find the corresponding event queue listener.
+- `Extended` (1 bit): event kind flag (0 for standard event, 1 for extended event).
+- `Type` (7 bits): event type, which allows to find the corresponding event queue listener.
 - `Length` (24 bits): length of the data in bytes (for extended events only).
-- `Data` (24 bits): non-extended event's data (for non-extended events only).
-- `Extended data` (``Length`` bytes): extended event's data (for extended events only).
+- `Data` (24 bits): standard event data (for standard events only).
+- `Extended data` (``Length`` bytes): extended event data (for extended events only).
 
 .. _event_queue_listener:
 
 Event Queue listener
 --------------------
 
-The user can register some listeners to the Event Queue. 
-Each listener is registered with an event type.
-The same listener can be registered for several event types, but each event type can only have one listener. 
+An application can register listeners to the Event Queue. 
+Each listener is registered for a specific event type.
+The same listener can be registered several times for different event types, but each event type can only have one listener. 
 
 When the queue receives an event from the FIFO, it will get the event type and check if it is an extended event. 
 Then it will check if a listener is registered for this event type.
@@ -100,15 +100,15 @@ If so, it will call its handle method depending on the extended event flag.
 It will call the default listener if no listener corresponds to the event type. 
 
 You can create your Event Queue listener by implementing the ``EventQueueListener`` interface.
-It contains two methods that are used to handle non-extended and extended events. 
+It contains two methods that are used to handle standard and extended events. 
 
 Before registering your listener, you must get a valid unique type using the ``getNewType()`` method from the ``EventQueue`` class.
 Then you can register your listener using the ``registerListener(EventQueueListener listener, int type)`` method from the ``EventQueue`` class.
 
-The unique type your listener uses must be stored on the Java world and passed/stored to the C world.
-One way to do it is to make a native method that sends the event type to the C world, then store it in your BSP.
+The unique type your listener uses could be stored on the Java world and passed/stored to the C world.
+One way to do it is to create a native method that sends the event type to the C world during the initialization phase.
 
-To set the defaultListener, you must use ``setDefaultListener(EventQueueListener listener)`` from the ``EventQueue`` class.
+To set the default listener, you must use ``EventQueue.setDefaultListener(EventQueueListener listener)``.
 
 For example: 
 
@@ -127,19 +127,19 @@ For example:
       eventQueue.registerListener(new ExampleListener(), eventType);
 
       // Send eventType to the C world.
-      passTypeToCWorld(eventType);
+      initialize(eventType);
    }
 
    /**
    * This native method will take the event type as an entry and store it in the C world. 
    */ 
-   public static native void passTypeToCWorld(int type);
+   public static native void initialize(int type);
 
 
-Non-extended event
-------------------
+Standard event
+--------------
 
-Non-extended events are events with data that can be stored on 24 bits.
+Standard events are events with data that can be stored on 24 bits.
 
 .. code-block:: java
 
@@ -147,22 +147,22 @@ Non-extended events are events with data that can be stored on 24 bits.
     | 0 (1) | Type (7) | Data (24) |
     +-------+----------+-----------+
 
-The first bit equals 0, saying that this is a non-extended event.
+The first bit equals 0, indicating that this is a standard event.
 
 Then there is the event type stored on 7 bits.
 
-To finish, there is the data that you want to send through the Event Queue. 
+To finish, there is the data that you want to send to the application event listener. 
 It is stored on 24 bits. 
 
 Offer the event
 ^^^^^^^^^^^^^^^
 
-There are two ways to send a non-extended event through the Event Queue: from the C API or the Java API. 
+There are two ways to send a standard event through the Event Queue: from the C API or the Java API. 
 
 From C API
 """"""""""
 
-To send a non-extended event through the Event Queue using the C API, you must use the ``LLEVENT_offerEvent(int32_t type, int32_t data)`` method from ``LLEVENT.h``.
+To send a standard event through the Event Queue using the C API, you must use the ``LLEVENT_offerEvent(int32_t type, int32_t data)`` method from ``LLEVENT.h``.
 
 For example: 
 
@@ -178,7 +178,7 @@ For example:
 From Java API
 """""""""""""
 
-To send a non-extended event through the Event Queue using the Java API, you must use the ``offerEvent(int type, int data)`` method from the ``EventQueue`` class.
+To send a standard event through the Event Queue using the Java API, you must use the ``offerEvent(int type, int data)`` method from the ``EventQueue`` class.
 
 For example: 
 
@@ -196,21 +196,28 @@ For example:
 Handle the event
 ^^^^^^^^^^^^^^^^
 
-To handle a non-extended event, you must implement your listener's ``handleEvent(int type, int data)`` method. 
-You can process the data received by the Event Queue on this method. 
+To handle a standard event, you must implement your listener ``handleEvent(int type, int data)`` method. 
+You can process the data received by the Event Queue in this method. 
 
-First, you must register your listener as explained :ref:`Event Queue listener <event_queue_listener>` in section.
+First, you have to register your listener as explained :ref:`Event Queue listener <event_queue_listener>` in section.
 
 For example: 
 
 .. code-block:: java
 
-   public class MyListener implements EventQueueListener{
+   EventQueue queue = EventQueue.getInstance();
+   int type = queue.getNewType();
+   initialize(type);
+   queue.registerListener(type, new EventQueueListener() {
       @Override
       public void handleEvent(int type, int data) {
          System.out.println("My data is equal to: " + data);
       }
-   }
+      @Override
+      public void handleExtendedEvent(int type, EventDataReader eventDataReader) {
+         throw new RuntimeException();
+      }
+   });
 
 
 Extended event
@@ -225,14 +232,14 @@ Extended events are events with data that can not be stored on 24 bits.
     +-------+----------+-------------+
     ...
     +--------------------------------+
-    |       Extended Data  (32)      | (x integers)
+    |       Extended Data  (32)      | (Length bytes)
     +--------------------------------+
 
 On the first 32 bits of the events, you will have: 
 
 - First bit is equal to 1, saying that this is an extended event,
 - The event type stored on 7 bits,
-- The length of the data in bytes stored on 24 bits.
+- The length of the data following the header in bytes stored on 24 bits.
 
 Then you will have the data. 
 The number of bytes of the data depends on the length. 
@@ -247,12 +254,11 @@ With ``EventDataReader`` API, there are two ways to read an event:
 
 - Read the data with ``read(byte[] b, int off, int len)`` or ``readFully(byte[] b)`` methods. 
 
-   - You will get the data in a byte array and can process it on your own in your ``handleExtendedEvent`` method.
+   - You will get the data in a byte array and can process it on your own in your ``handleExtendedEvent(int type, EventDataReader eventDataReader)`` method.
 
 - Read the data with the methods related to the primitive types such as ``readBoolean()`` or ``readByte()``. 
 
-   - It is the easiest way to process your data because you don't have to handle the byte arrays.
-   - This is useful when the extended data you send through the Event Queue is a C structure with multiple fields.
+   - This is designed for when the extended data you send through the Event Queue is a C structure with multiple fields.
    - To use the methods, **your fields must follow this alignment:**
 
       - A **boolean** (1 byte) will be 1-byte aligned.
@@ -269,12 +275,12 @@ With ``EventDataReader`` API, there are two ways to read an event:
 Offer the event
 ^^^^^^^^^^^^^^^
 
-There are two ways to send an extended event through the Event Queue: from the native API or the Java API. 
+There are two ways to send an extended event through the Event Queue: from the C API or the Java API. 
 
 From C API
 """"""""""
 
-To send an extended event through the Event Queue using the native API, you have to use the ``LLEVENT_offerExtendedEvent(int32_t type, void* data, int32_t data_length)`` method from ``LLEVENT.h``.
+To send an extended event through the Event Queue using the C API, you have to use the ``LLEVENT_offerExtendedEvent(int32_t type, void* data, int32_t data_length)`` method from ``LLEVENT.h``.
 
 For example: 
 
@@ -338,13 +344,19 @@ For example:
 
 .. code-block:: java
 
-   public class MyListener implements EventQueueListener{
+   EventQueue queue = EventQueue.getInstance();
+   int type = queue.getNewType();
+   initialize(type);
+   queue.registerListener(type, new EventQueueListener() {
+      @Override
+      public void handleEvent(int type, int data) {
+         throw new RuntimeException();
+      }
       @Override
       public void handleExtendedEvent(int type, EventDataReader eventDataReader) {
          int x = 0;
          int y = 0;
          int z = 0;
-
          try {
             x = eventDataReader.readInt();
             y = eventDataReader.readInt();
@@ -352,21 +364,16 @@ For example:
          } catch (IOException e) {
             System.out.println("IOException while reading accelerometer values from the EventDataReader.");
          }
-
          System.out.println("Accelerometer values: X = " + x + ", Y = " + y + ", Z = " + z + ".");
       }
-   }
+   });
 
 Mock the Event Queue
 --------------------
 
-If you are sending events through the C API in your BSP, you will need to send the same events in one of your :ref:`Mock <mock>`.
-You will have to use the Event Queue Mock API to do so. 
-This API is the equivalent of the C API in the Simulator.
+To simulate event that are normally sent through through the C API, use the Event Queue Mock API from your mock.
 
-
-The Event Queue Mock API must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
-Mock project.
+The Event Queue Mock API dependency must be added to the :ref:`module.ivy <mmm_module_description>` of your MicroEJ Mock project.
 
 .. code-block:: xml
 
@@ -400,14 +407,12 @@ Installation
 
 The Event Queue :ref:`Pack <pack_overview>` module must be installed in your VEE Port.
 
-In the Platform configuration project, (``-configuration`` suffix), add
-the following dependency to the :ref:`module.ivy <mmm_module_description>` file:
+In the VEE Port configuration project, add the following dependency to the :ref:`module.ivy <mmm_module_description>` file:
 
 ::
 
    <dependency org="com.microej.pack.event" name="event-pack" rev="1.0.0" transitive="false"/>
 
-The Platform project must be rebuilt (:ref:`platform_build`).
 
 Use
 ===

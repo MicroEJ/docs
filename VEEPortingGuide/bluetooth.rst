@@ -8,7 +8,7 @@ Bluetooth
 Principle
 =========
 
-The Bluetooth module defines a low-level Bluetooth framework for embedded
+The Bluetooth Foundation Library defines a low-level Bluetooth framework for embedded
 devices. It allows you to manage abstract Bluetooth connections without
 worrying about the native underlying Bluetooth kind.
 
