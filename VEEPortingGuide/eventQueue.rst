@@ -31,7 +31,7 @@ A FIFO mechanism is implemented on the native side and is system specific. The u
 
 Event notifications are handled using event listeners (Observer design pattern). The application code has to register event listeners to be notified when new events are coming.
 
-Then the Event Queue thread automatically retrieves new events pushed in the FIFO and notifies the event listeners. 
+Then the Event Pump automatically retrieves new events pushed in the FIFO and notifies the event listeners. 
 
 Architecture
 ------------
@@ -47,14 +47,6 @@ The Event Queue Foundation Library uses a dedicated Java thread to forward and p
 
 
 Events reading operations are done using the SNI mechanism. Event Queue Java thread is suspended when the events FIFO is empty and resumed when a new event is sent.
-
-.. figure:: images/event-queue-synchronization.png
-   :alt: Event Queue Task Synchronization
-   :align: center
-   :scale: 65%
-
-   Event Queue Task Synchronization
-
 
 Event format
 ------------
