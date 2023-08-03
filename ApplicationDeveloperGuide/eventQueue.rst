@@ -1,4 +1,4 @@
-.. _pack_event:
+.. _event_queue:
 
 ===========
 Event Queue
@@ -386,26 +386,6 @@ Example of use:
 
    EventQueueMock.offerEvent(type, data);
 
-Dependencies
-============
-
--  ``LLEVENT_impl.h`` and ``LLEVENT.h`` implementations (see
-   :ref:`LLEVENT-API-SECTION`).
-
-.. _pack_event_installation:
-
-Installation
-============
-
-The Event Queue :ref:`Pack <pack_overview>` module must be installed in your VEE Port.
-
-In the VEE Port configuration project, add the following dependency to the :ref:`module.ivy <mmm_module_description>` file:
-
-::
-
-   <dependency org="com.microej.pack.event" name="event-pack" rev="1.0.0" transitive="false"/>
-
-
 Use
 ===
 
@@ -415,6 +395,8 @@ Application project to use the Event Queue Foundation Library.
 .. code-block:: xml
 
    <dependency org="ej.api" name="event" rev="1.0.0"/>
+
+To add it to your VEE Port, please follow :ref:`Event Queue <pack_event>` instructions.
 
 .. _Event Queue API Module: https://repository.microej.com/modules/ej/api/
 ..
