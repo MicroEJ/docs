@@ -4,6 +4,45 @@
 Changelog
 =========
 
+[13.6.1] (2023-07-26)
+=====================
+
+MicroUI
+"""""""
+
+**Fixed**
+
+- Fix creating a BufferedImage when traces are enabled.
+
+[13.6.0] (2023-07-17)
+=====================
+
+MicroUI
+"""""""
+
+**Added**
+
+- Add a flag stating that an undefined character was drawn.
+
+**Fixed**
+
+- Fix the Java compiler version used to build the MicroUI extension class to be compatible with the JDK 11.
+- Fix the drawing of faded arcs and ellipses.
+
+Image Generator
+"""""""""""""""
+
+**Changed**
+
+- Use a cache to avoid generating images for each launch.
+
+Font Generator
+""""""""""""""
+
+**Changed**
+
+- Use a cache to avoid generating fonts for each launch.
+
 [13.5.1] (2023-06-08)
 =====================
 
