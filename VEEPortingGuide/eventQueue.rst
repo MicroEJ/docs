@@ -250,7 +250,7 @@ With ``EventDataReader`` API, there are two ways to read an event:
 
 - Read the data with the methods related to the primitive types such as ``readBoolean()`` or ``readByte()``. 
 
-   - This is designed for when the extended data you send through the Event Queue is a C structure with multiple fields.
+   - The reader is designed to parse C-struct data.
    - To use the methods, **your fields must follow this alignment:**
 
       - A **boolean** (1 byte) will be 1-byte aligned.
@@ -363,7 +363,7 @@ For example:
 Mock the Event Queue
 --------------------
 
-To simulate event that are normally sent through through the C API, use the Event Queue Mock API from your mock.
+To simulate event that are normally sent through the C API, use the Event Queue Mock API from your mock.
 
 The Event Queue Mock API dependency must be added to the :ref:`module.ivy <mmm_module_description>` of your MicroEJ Mock project.
 
