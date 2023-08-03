@@ -396,7 +396,8 @@ Application project to use the Event Queue Foundation Library.
 
    <dependency org="ej.api" name="event" rev="1.0.0"/>
 
-To add it to your VEE Port, please follow :ref:`Event Queue <pack_event>` instructions.
+To use this API, your VEE Port must implement a compatible version. 
+Please refer to the :ref:`VEE Porting Guide <pack_event>` to port the Event Queue for your project.
 
 .. _Event Queue API Module: https://repository.microej.com/modules/ej/api/
 ..
