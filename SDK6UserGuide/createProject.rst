@@ -25,21 +25,22 @@ In order to create a MicroEJ project, the best way is to use the ``application``
 - In a new empty directory, execute the command ``gradle init``.
 - Select the ``application`` project type.
 - Select the ``Java`` implementation language.
-- For the step ``Split functionality across multiple subprojects?``, select ``no``.
+- For the step ``Generate multiple subprojects for application?``, select ``no``.
 - Select build script DSL ``Kotlin``.
 
 .. note::
   MicroEJ uses Kotlin as the default Gradle build script DSL. 
   The use of the Groovy build script DSL is still possible but not officially supported.
 
-- Decide if you want to use Gradle new APIs and behavior in your build script.
-  If you are new to Gradle, choose ``no``.
 - For the test framework, select ``JUnit 4``.
 - Choose the name of the project (defaults to the name of the parent directory).
 - Choose the package name for the source files.
+- For the target version of Java, select ``7``.
+- Decide if you want to use Gradle new APIs and behavior in your build script.
+  If you are new to Gradle, choose ``no``.
 
 .. note::
-  These steps are the ones proposed when creating a project with Gradle ``8.0.2``, which is the minimum version required by the SDK. 
+  These steps are the ones proposed when creating a project with Gradle ``8.2.1``. 
   Depending on the Gradle version used, the steps to create a project can be slightly different.
 
 The created project is a multi-project build containing a root project and a single subproject (named ``app``).
