@@ -99,10 +99,6 @@ The two following IDEs are supported:
 
 Follow their respective documentation to install one of them.
 
-.. warning::
-   Only the IntelliJ IDEA IDE is fully supported for the moment.
-   The support of Eclipse will come soon. 
-
 These 2 IDEs come with the Gradle plugin installed by default.
 
 Install the IDE Plugin
@@ -168,7 +164,52 @@ If you want to test the version under development, the latest snapshot version o
 Eclipse
 ~~~~~~~
 
-The MicroEJ plugin for Eclipse is not available yet, so it is recommended to use IntelliJ IDEA for the moment.
+Follow these steps to install the latest stable version of the MicroEJ plugin for Eclipse:
+
+- In Eclipse, go to ``Help > Install New Software...``.
+- Click on the ``Add...`` button.
+- In the ``Name`` field, type ``MicroEJ``.
+- In the ``Location`` field, type ``https://repository.microej.com/p2/eclipse/``.
+
+.. figure:: images/eclipse-install-plugin-add-repository.png
+   :alt: Eclipse Plugin Installation - Add Repository
+   :align: center
+   :scale: 70%
+
+   Eclipse Plugin Installation - Add Repository
+
+- Click on the ``Add`` button.
+- In the ``Work with:`` list, select the ``MicroEJ`` entry.
+- Check the ``MicroEJ`` item that appears in the panel below.
+
+.. figure:: images/eclipse-install-plugin.png
+   :alt: Eclipse Plugin Installation
+   :align: center
+   :scale: 70%
+
+   Eclipse Plugin Installation
+
+- Click on the ``Next`` button.
+- Accept the license agreement and click on the ``Finish`` button.
+- In the upcoming ``Trust Authorities`` window, check the ``https://repository.microej.com`` item and click on the ``Trust Selected`` button.
+
+.. figure:: images/eclipse-install-plugin-trust-01.png
+   :alt: Eclipse Plugin Installation - Trust Authorities
+   :align: center
+   :scale: 70%
+
+   Eclipse Plugin Installation - Trust Authorities
+
+- In the upcoming ``Trust Artifacts`` window, check the ``Unsigned`` item and click on ``Trust Selected`` button.
+
+.. figure:: images/eclipse-install-plugin-trust-02.png
+   :alt: Eclipse Plugin Installation - Trust Artifacts
+   :align: center
+   :scale: 70%
+
+   Eclipse Plugin Installation - Trust Artifacts
+
+- In the upcoming window, click on the ``Restart Now`` button.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free
