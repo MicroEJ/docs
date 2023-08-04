@@ -62,50 +62,96 @@ so it must be updated to be a MicroEJ project:
 Eclipse
 -------
 
-.. warning::
-   Only the IntelliJ IDEA IDE is fully supported for the moment, so it is recommend to use it instead of Eclipse.
-   The support of Eclipse will come soon. 
 
-..
-  The creation of a project with Eclipse is done as follows:
+The creation of a project with Eclipse is done as follows:
 
-  - Click on ``File`` > ``New`` > ``Project...``.
-  - Select the project type ``Gradle > Gradle Project`` and click on the ``Next`` button.
+- Click on ``File`` > ``New`` > ``Project...``.
+- Select the project type ``Gradle > Gradle Project`` and click on the ``Next`` button.
 
-  .. figure:: images/eclipse-create-gradle-project-01.png
-    :alt: Project Type Selection in Eclipse
-    :align: center
-    :scale: 70%
+.. figure:: images/eclipse-create-gradle-project-01.png
+  :alt: Project Type Selection in Eclipse
+  :align: center
+  :scale: 70%
 
-    Project Type Selection in Eclipse
+  Project Type Selection in Eclipse
 
-  - Fill the name of the project in the ``Name`` field and click on the ``Next`` button.
+- Fill the name of the project in the ``Name`` field, for example ``myProject``, and click on the ``Next`` button.
 
-  .. figure:: images/eclipse-create-gradle-project-02.png
-    :alt: Project root folder in Eclipse
-    :align: center
-    :scale: 70%
+.. figure:: images/eclipse-create-gradle-project-02.png
+  :alt: Project root folder in Eclipse
+  :align: center
+  :scale: 70%
 
-    Project root folder in Eclipse
+  Project root folder in Eclipse
 
-  - In the ``Options`` screen, leave the default values and click on the ``Next`` button.
-  - Click on the ``Next`` button and finally on the ``Finish`` button.
+- In the ``Options`` screen, leave the default values and click on the ``Next`` button.
+- Click on the ``Next`` button and finally on the ``Finish`` button.
 
+The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensure that the project uses the right version :
+
+- Open the ``myProject/gradle/wrapper/gradle-wrapper.properties`` file.
+- Update the Gradle version if it is needed:
+
+   .. code-block::
     
+      distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
 
-  The project created by Eclipse is a multi-project build containing a root project and a single subproject (named ``lib``).
-  The ``lib`` subproject is a standard Java Library project (Gradle ``java-library`` plugin).
-  The ``build.gradle.kts`` file of the ``lib`` subproject has to be updated to make it a MicroEJ project:
+If you want to know more about the Gradle Wrapper, go to the :ref:`sdk_6_create_project_gradle_wrapper` section.
 
-  ...
+The project created by Eclipse is a standard Java Library project (Gradle ``java-library`` plugin). 
+The ``build.gradle`` file has to be renamed and updated to make it a MicroEJ project:
 
-  **OR**
+- Rename the ``build.gradle`` file to ``build.gradle.kts`` and open it.
+- Erase its whole content.
+- Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
 
-The Eclipse creation wizard for Gradle Project is quite limited, 
-and produces a multi-project build with a Java Library subproject (Gradle ``java-library`` plugin).
-It requires several modifications to make it a MicroEJ project.
-Therefore, the recommended way to create a project is to use the :ref:`Gradle CLI <sdk_6_create_project_cli>`,
-then to :ref:`import the project in Eclipse <sdk_6_import_project_eclipse>`.
+    plugins {
+        id("com.microej.gradle.addon-library") version "0.8.0"
+    }
+
+  or for an Application::
+
+    plugins {
+        id("com.microej.gradle.application") version "0.8.0"
+    }
+
+  .. note::
+    The ``java-library`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
+
+  Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+
+- Declare the dependencies required by your project in the ``dependencies`` block. For example::
+
+    dependencies {
+        implementation("ej.api:edc:1.3.5")
+    }
+
+- Delete the test class in the folder ``lib/src/test/java``.
+
+The ``settings.gradle`` file has to be renamed and updated as well:
+
+- Rename the ``settings.gradle`` file to ``settings.gradle.kts`` and open it.
+- Erase its whole content.
+- Add the following content::
+
+    rootProject.name = "myProject"
+    include("lib")
+
+.. note::
+   By default, Eclipse requires the user to explicitly trigger the reload of a Gradle project when its content has changed.
+   Therefore, when the content of a Gradle project has been updated, 
+   you have to right-click on the project, then click on ``Gradle`` and ``Refresh Gradle Project``:
+
+   .. figure:: images/eclipse-reload-gradle-project.png
+      :alt: Gradle Project reload in Eclipse
+      :align: center
+      :scale: 70%
+
+      Gradle Project reload in Eclipse
+
+When the Gradle project has been reloaded, it should compile successfully, without any error.
+You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
+or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
 
 
 IntelliJ IDEA
@@ -134,7 +180,6 @@ The creation of a project with IntelliJ IDEA is done as follows:
 
    Project Creation in IntelliJ IDEA
 
-The project created by IntelliJ IDEA is a standard Java project (Gradle ``java`` plugin). 
 The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensure that the project uses the right version :
 
 - Open the ``gradle/wrapper/gradle-wrapper.properties`` file.
@@ -146,7 +191,7 @@ The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensur
 
 If you want to know more about the Gradle Wrapper, go to the :ref:`sdk_6_create_project_gradle_wrapper` section.
   
-
+The project created by IntelliJ IDEA is a standard Java project (Gradle ``java`` plugin). 
 The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
 
 - Open the ``build.gradle.kts`` file.
