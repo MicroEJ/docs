@@ -38,6 +38,8 @@ or from Eclipse and IntelliJ IDEA, by double-clicking on the ``buildVirtualDevic
          :width: 30%
          :align: center
 
+When the build is completed, the Virtual Device is available in the ``build/virtualDevice`` folder of the project.
+It can then be used to :ref:`run an Application on the Simulator <sdk_6_run_on_simulator>` for example.
 
 .. _sdk_6_buildVirtualDevice_with_multiple_vee_ports:
 
