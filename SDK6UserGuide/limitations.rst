@@ -12,12 +12,12 @@ The SDK 6 allows to:
 - Load the VEE Port from its archive file path, its folder path, a dependency or from the ``dropins`` folder.
 - Build the Executable of an Application.
 - Build the WPK of an Application.
+- Build the Feature file (.fo) of an Application.
+- Build the Virtual Device of an Application.
 
 Therefore, it does not support all the features of the SDK 5, especially:
 
 - Build of Foundation Libraries, Mocks, VEE Ports or any other component type except Applications and Add-On Libraries.
-- Build of the Virtual Device of an Application.
-- Build of the Feature file (.fo) of an Application.
 - Resolve dependencies in the IDE.
 - Launch of MicroEJ tools, such as the Stack Trace Reader.
 - Font Designer, Memory Map Analyzer, Heap Analyzer and Front Panel Designer.
