@@ -6,15 +6,11 @@ Run on Simulator
 In order to execute an Application on the Simulator, the SDK provides the Gradle ``runOnSimulator`` task.
 The prerequisites of this task are:
 
-- The property ``applicationMainClass`` must be defined in the ``microej`` configuration block of the Gradle build file of the project.
-  It must be set to the Full Qualified Name of the Application main class, for example::
+- The Application main class or Feature class must be configured, as described in :ref:`sdk_6_create_project_configure_project`.
 
-   microej {
-     applicationMainClass = "com.mycompany.Main"
-   }
-
-- The target VEE Port must be defined.
-  Refer to the :ref:`sdk_6_select_veeport` page to know the different ways to provide a VEE Port for a module project.
+- The target VEE Port or Virtual Device must be defined.
+  Refer to the :ref:`sdk_6_select_veeport` page to know the different ways to provide a VEE Port or a Virtual Device for a module project.
+  It is important to note that if the Application has a Feature class (and not a main class), it can only be run on a :ref:`Virtual Device <sdk_6_build_virtual_device>`.
 
 Once these prerequisites are fulfilled, the Application can be started with the Simulator with the command line interface::
 
