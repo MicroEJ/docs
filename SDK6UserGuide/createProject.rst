@@ -50,23 +50,7 @@ so it must be updated to be a MicroEJ project:
 - Open the project in your favorite editor.
 - Open the ``app/build.gradle.kts`` file.
 - Erase its whole content.
-- Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
-
-    plugins {
-        id("com.microej.gradle.addon-library") version "0.8.0"
-    }
-
-  or for an Application::
-
-    plugins {
-        id("com.microej.gradle.application") version "0.8.0"
-    }
-
-  .. note::
-    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
-
-  Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
-
+- :ref:`Configure the project <sdk_6_create_project_configure_project>` depending on the module nature you want to build.
 - Declare the dependencies required by your project in the ``dependencies`` block. For example::
 
       dependencies {
@@ -167,23 +151,7 @@ The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
 
 - Open the ``build.gradle.kts`` file.
 - Erase its whole content.
-- Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
-
-    plugins {
-        id("com.microej.gradle.addon-library") version "0.8.0"
-    }
-
-  or for an Application::
-
-    plugins {
-        id("com.microej.gradle.application") version "0.8.0"
-    }
-
-  .. note::
-    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
-
-  Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
-
+- :ref:`Configure the project <sdk_6_create_project_configure_project>` depending on the module nature you want to build.
 - Declare the dependencies required by your project in the ``dependencies`` block. For example::
 
       dependencies {
@@ -219,6 +187,69 @@ or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of
 
       Project JDK message in IntelliJ IDEA
 
+.. _sdk_6_create_project_configure_project:
+
+Configure a Project
+-------------------
+
+The MicroEJ SDK allows to build several types of modules.
+Each type has its own Gradle plugin and configuration options.
+Refer to the module type you want to build to configure your project:
+
+- :ref:`Application <sdk_6_create_project_configure_application>`
+- :ref:`Add-on Library <sdk_6_create_project_configure_addon_library>`
+
+
+.. _sdk_6_create_project_configure_application:
+
+Application Project
+~~~~~~~~~~~~~~~~~~~
+
+- Add the ``com.microej.gradle.application`` plugin in the ``build.gradle.kts`` file::
+
+    plugins {
+        id("com.microej.gradle.application") version "0.8.0"
+    }
+
+  .. note::
+    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
+
+- If your Application has its own main class:
+
+  - Create the Java main class in the ``src/main/java`` folder.
+  - Define the property ``applicationMainClass`` in the ``microej`` configuration block of the ``build.gradle.kts`` file.
+    It must be set to the Full Qualified Name of the Application main class, for example::
+
+      microej {
+        applicationMainClass = "com.mycompany.Main"
+      }
+
+- If your Application has a Feature Entry Point class:
+
+  - Create the Java class of the Feature in the ``src/main/java`` folder.
+  - Create a file with the extension ``.kf`` in the ``src/main/resources`` folder, for example ``myFeature.kf``.
+    This file must at least contains the property ``entryPoint`` set to the Full Qualified Name of the Application Feature class, for example::
+
+      entryPoint=com.microej.MyFeature
+
+Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+
+.. _sdk_6_create_project_configure_addon_library:
+
+Add-On Library Project
+~~~~~~~~~~~~~~~~~~~~~~
+
+- Add the ``com.microej.gradle.addon-library`` plugin in the build script::
+
+    plugins {
+        id("com.microej.gradle.addon-library") version "0.8.0"
+    }
+
+  .. note::
+    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
+
+Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+
 .. _sdk_6_create_project_gradle_wrapper:
 
 Gradle Wrapper
@@ -253,6 +284,7 @@ To use the Wrapper during a build, use ``gradlew`` or ``./gradlew`` depending on
 In the following chapters of the documentation, the Linux command ``./gradlew`` is used in all examples to execute a build.
 
 Refer to `the official Gradle documentation <https://docs.gradle.org/current/userguide/gradle_wrapper.html>`__ for more information about the Wrapper.
+
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
