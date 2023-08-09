@@ -40,6 +40,7 @@ digraph mygraph {
     "classes" -> "processResources"
     "build" -> "assemble"
     "assemble" -> "jar"
+    "assemble" -> "buildWPK"
     "uploadArchives" -> "jar"
     "jar" -> "classes"
     "runOnSimulator" -> "classes"
