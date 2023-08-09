@@ -34,19 +34,24 @@ The basic schema:
 
 .. _section.shared.interfaces.element:
 
-Shared Interface Creation
+Shared Interface Usage
 -------------------------
 
-Creation of a Shared Interface follows three steps:
+Usage of a Shared Interface follows these steps:
 
--  Interface definition,
+#. Define the Shared Interface
+   #. Define the Java interface
+   #. Implement the proxy for the interface
+   #. Register the interface as a Shared Interface
+#. From the provider application,
+   #. Create an instance of this Shared Interface
+   #. Register the instance to a KF service registry
+#. From the consumer application,
+   #. Retrieve a proxy of the instance from the KF service registry
+   #. Call methods of the instance proxy.
 
--  Proxy implementation,
-
--  Interface registration.
-
-Interface Definition
-~~~~~~~~~~~~~~~~~~~~
+Shared Interface Definition
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The definition of a Shared Interface starts by defining a standard Java
 interface.
@@ -54,7 +59,7 @@ interface.
 .. code:: java
 
    package mypackage;
-   public interface MyInterface{ 
+   public interface MyInterface {
        void foo();
    }
 
@@ -69,16 +74,15 @@ following format:
        <sharedInterface name="mypackage.MyInterface"/>
    </sharedInterfaces>
 
-Shared Interface identification files must be placed at the root of a
-path of the application classpath. For a MicroEJ Sandboxed Application
-project, it is typically placed in ``src/main/resources`` folder.
+Shared Interface identification files must be placed at the root of the
+application classpath, typically it is defined in the
+``src/main/resources`` folder.
 
 Some restrictions apply to Shared Interfaces compared to standard java
 interfaces:
 
--  Types for parameters and return values must be transferable types;
-
--  Thrown exceptions must be classes owned by the MicroEJ Firmware.
+* Types for parameters and return values must be transferable types;
+* Thrown exceptions must be classes owned by the MicroEJ Kernel.
 
 .. _section.transferable.types:
 
@@ -96,8 +100,8 @@ and forth between application boundaries.
 
    Shared Interface Parameters Transfer
 
-:ref:`table.si.transfer.rules` describes the rules applied depending on the
-element to be transferred.
+:ref:`table.si.transfer.rules` describes the rules applied depending on
+the element to be transferred.
 
 .. _table.si.transfer.rules:
 
@@ -162,10 +166,13 @@ element to be transferred.
       - Application
       - Forbidden
 
-Objects created by a Sandboxed Application which type is owned by the Kernel 
-can be transferred to another Sandboxed Application provided this has been authorized by the Kernel. 
-The list of Kernel types that can be transferred is Kernel specific, so you have to consult your Kernel specification.
-When an argument transfer is forbidden, the call is abruptly stopped and a `java.lang.IllegalAccessError`_ is thrown by the :ref:`Core Engine <core_engine>`.
+Objects created by an Application which type is owned by the Kernel
+can be transferred to another Application provided this has been
+authorized by the Kernel. The list of Kernel types that can be
+transferred is Kernel specific, so you have to consult your Kernel
+specification. When an argument transfer is forbidden, the call is
+abruptly stopped and an `java.lang.IllegalAccessError`_ is thrown by the
+:ref:`Core Engine <core_engine>`.
 
 .. _java.lang.IllegalAccessError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalAccessError.html
 
@@ -175,9 +182,9 @@ When an argument transfer is forbidden, the call is abruptly stopped and a `java
    the Kernel.
 
 The table below lists typical Kernel types allowed to be transferred through a Shared Interface
-call on Evaluation Firmware distributed by MicroEJ Corp.
+call on `Evaluation Kernels <https://repository.microej.com/old_index.php?resource=FIRM>` distributed by MicroEJ Corp.
 
-.. list-table:: MicroEJ Evaluation Firmware Example of Transfer Types
+.. list-table:: MicroEJ Evaluation Kernels Rules for Transferable Types
    :header-rows: 1
 
    -  - Type
@@ -215,18 +222,17 @@ Proxy Class Implementation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Shared Interface mechanism is based on automatic proxy objects
-created by the underlying MicroEJ Core Engine, so that each application
-can still be dynamically stopped and uninstalled. This offers a reliable
-way for users and providers to handle the relationship in case of a
-broken link.
+created by the underlying MicroEJ Core Engine. This offers a reliable
+way for users to handle broken links in case the provider application
+has been stopped or uninstalled.
 
-Once a Java interface has been declared as Shared Interface, a dedicated
-implementation is required (called the Proxy class implementation). Its
-main goal is to perform the remote invocation and provide a reliable
-implementation regarding the interface contract even if the remote
-application fails to fulfill its contract (unexpected exceptions,
-application killed...). The MicroEJ Core Engine will allocate instances
-of this class when an implementation owned by another application is
+Applications with a Shared Interface must provide a dedicated
+implementation (called the Proxy class implementation). Its main goal is
+to perform the remote invocation and provide a reliable implementation
+regarding the interface contract even if the remote application fails to
+fulfill its contract (unexpected exceptions, application killed, …). The
+MicroEJ Core Engine will allocate instances of this Proxy class when an
+implementation (of the Shared Interface) owned by another application is
 being transferred to this application.
 
 .. figure:: images/SI_4.png
@@ -245,7 +251,6 @@ following pattern:
    package mypackage;
 
    public class MyInterfaceProxy extends Proxy<MyInterface> implements MyInterface {
-
        @Override
        public void foo(){
            try {
