@@ -177,8 +177,9 @@ example:
    };
 
 To share it with other applications, it must pass the instance to some
-registry owned by the Kernel. For example, using Wadapps
-`SharedServiceRegistry`:
+registry owned by the Kernel (see
+:ref:`Kernel service registry <kernel_service_registry>`). For example,
+using Wadapps' ``SharedServiceRegistry``:
 
 .. code:: java
 
@@ -188,7 +189,7 @@ Consumer application
 ^^^^^^^^^^^^^^^^^^^^
 
 The consumer application can then retrieve the instance from the Kernel
-registry. For example, using Wadapps `SharedServiceRegistry`:
+registry. For example, using Wadapps' ``SharedServiceRegistry``:
 
 .. code:: java
 
