@@ -10,6 +10,36 @@ Native Language Support (NLS) allows the application to facilitate international
 It provides support to manipulate messages and translate them in different languages.
 Each message to be internationalized is referenced by a key, which can be used in the application code instead of using the message directly.
 
+Principle
+---------
+
+NLS is distributed as an add-on library containing a single Java interface: `NLS`_.
+
+In addition to that, the binary-nls library provides a factory for implementations of this interface:
+it uses an :ref:`add-on processor <module_natures.addon_processor>` which processes, offboard, the
+Localization Source Files into one `BON resource buffer`_ file for compactness.
+
+During the :ref:`clinit <soar_clinit>` phase, this resource file is opened and the list of locales is parsed.
+After that, the resource remains opened for the rest of the Application execution and is directly used to
+retrieve messages translations for the supported locales.
+
+Note that this implies that the binary-nls implementation does not support:
+
+* to dynamicly add a new locale
+* to dynamicly modify messages translations
+
+even when the resource is external (see :ref:`External resource loader <section_externalresourceloader>`).
+Note that binary-nls does not protect against dynamic update of the resource which may lead to invalid
+messages translations even if the updated resource is a valid binary-nls buffer.
+
+For any addition / modification, the Application must be restarted.
+Also, typically, the full resource buffer must be updated (not only the part of the added/modified locale).
+
+Usage of this binary-nls implementation is documented below.
+
+.. _NLS: https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html
+.. _BON resource buffer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html
+
 Localization Source Files
 -------------------------
 
@@ -192,10 +222,10 @@ The resource is loaded as soon as the BinaryNLS instance is created (i.e. in the
 
 .. _chapter.microej.nlsExternalLoader:
 
-NLS External Loader
--------------------
+NLS External Loader Tool
+------------------------
 
-The `NLS External Loader`_ allows to update the PO files of an application executed on a Virtual Device without rebuilding it.
+The `NLS External Loader`_ tool allows to update the PO files of an application executed on a Virtual Device without rebuilding it.
 PO files can be dropped in a given location in the Virtual Device folders to dynamically replace the language strings packaged in the application.
 
 This is typically useful when testing or translating an application in order to have a quick feedback when changing the PO files.
