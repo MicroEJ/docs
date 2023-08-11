@@ -37,9 +37,9 @@ To avoid those pitfalls:
 - Calibrate the memories (Java heap, Images heap, etc).
 - Uses Memory debugging tools:
 
-    - :ref:`Optimize Memory Footprint<tutorial_optimize_memory_footprint>` tutorial.
-    - :ref:`Memory inspection tools<tutorial_discover_embedded_debugging_techniques.tools.memory_inspection>`.
-    - :ref:`Heap Analyzer<heapdumper>`.
+  - :ref:`Optimize Memory Footprint<tutorial_optimize_memory_footprint>` tutorial.
+  - :ref:`Memory inspection tools<tutorial_discover_embedded_debugging_techniques.tools.memory_inspection>`.
+  - :ref:`Heap Analyzer<heapdumper>`.
 
 Causes of UI bad performances
 -----------------------------
@@ -48,8 +48,8 @@ The process to render a frame of the UI consists of several parts:
 
 - Drawing of the UI
 
-    - MWT processing (layout of widgets and widget rendering process)
-    - Drawing of the UI (MicroUI drawing method execution)
+  - MWT processing (layout of widgets and widget rendering process)
+  - Drawing of the UI (MicroUI drawing method execution)
 
 - Display flush
 - (depends on the UI port) Backbuffer copy, see :ref:`Display Buffer Modes<section_display_modes>`. 
