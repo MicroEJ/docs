@@ -14,9 +14,10 @@ Documents and tools to improve application code quality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is a list of documents or tools that help improving the quality of application code:
+
 - The :ref:`Improve the Quality of Java Code<improve_code_quality>` tutorial explains how to improve the Quality of Java Code.
 - The :ref:`Get Started With GUI<tutorial_get_started_with_gui>` tutorial provides guidelines to start developping an efficient GUI.
-- The [SonarQube™](https://github.com/MicroEJ/ExampleTool-Sonar) source code quality analyzer allows to analyze an Application or Library code quality.
+- The `SonarQube™<https://github.com/MicroEJ/ExampleTool-Sonar>`_ source code quality analyzer allows to analyze an Application or Library code quality.
 
 Using recent version of UI libraries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -29,11 +30,13 @@ Memory management
 **// -- This section will be reworked**
 
 The Java management of memory may affect UI performances. Two pitfalls can decrease performances:
+
 - Too much memory allocation/deallocation for UI resources (Images, Fonts).
 - Too much objects intanciation will lead to a big Java heap size. In some usecases the garbage collection may lead to the UI slowing down.
     - For example the use of weak references is discouraged as it may lead to the garbage collection of a lot of objects at the same time.
 
 To avoid those pitfalls:
+
 - Calibrate the memories (Java heap, Images heap, etc).
 - Uses Memory debugging tools:
     - https://docs.microej.com/en/latest/Tutorials/tutorialOptimizeMemoryFootprint.html
@@ -46,6 +49,7 @@ Causes of UI bad performances
 -----------------------------
 
 The process to render a frame of the UI consists of several parts:
+
 - Drawing of the UI
     - MWT processing (layout of widgets and widget rendering process)
     - Drawing of the UI (MicroUI drawing method execution)
@@ -78,13 +82,13 @@ Here are tools that allow to detect issues with the widgets hierarchy:
 Bad use of requestRender and requestLayout
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `requestRender` method requests a render of the widget on the display.
+The ``requestRender`` method requests a render of the widget on the display.
 
-The `requestLayout` method requests a lay out of all the widgets in the sub hierarchy of this widget. It will compute the size and position of the widgets as setting their styles. `requestLayout` will trigger a render request after the layout.
+The ``requestLayout`` method requests a lay out of all the widgets in the sub hierarchy of this widget. It will compute the size and position of the widgets as setting their styles. ``requestLayout`` will trigger a render request after the layout.
 
-A common mistake is to call `requestRender` just after a `requestLayout`. This will trigger two renders and thus affect the UI performances.
+A common mistake is to call ``requestRender`` just after a ``requestLayout``. This will trigger two renders and thus affect the UI performances.
 
-Another common issue is to request a layout where a render request would have been enough. If the size, position or style of the widgets didn't change `requestRender` is enough, `requestLayout` would have a longer processing time. This is especially true for animation where we want each frame to be processed as fast as possible.
+Another common issue is to request a layout where a render request would have been enough. If the size, position or style of the widgets didn't change ``requestRender`` is enough, ``requestLayout`` would have a longer processing time. This is especially true for animation where we want each frame to be processed as fast as possible.
 
 Documentation about rendering and layout is available :ref:`here<mwt_concepts>`.
 
@@ -96,7 +100,7 @@ There are a few implementations possible for animations with MicroEJ. The way wi
 Animator
 ++++++++
 
-The MWT's [Animator](https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animator.html) allows to execute animations as fast as possible, it waits for the low level screen flush to be done and directly triggers a new render. Thus the Animator will give the best framerate possible but will also consume a lot of CPU processing time.
+The MWT's `Animator<https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animator.html>`_ allows to execute animations as fast as possible, it waits for the low level screen flush to be done and directly triggers a new render. Thus the Animator will give the best framerate possible but will also consume a lot of CPU processing time.
 
 TimerTask
 +++++++++
