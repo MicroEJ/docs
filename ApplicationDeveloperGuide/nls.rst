@@ -25,19 +25,7 @@ During the :ref:`clinit <soar_clinit>` phase, this resource file is opened and t
 After that, the resource remains opened for the rest of the Application execution and is directly used to
 retrieve messages translations for the supported locales.
 
-Note that this implies that the binary-nls implementation does not support:
-
-* to dynamicly add a new locale
-* to dynamicly modify messages translations
-
-even when the resource is external (see :ref:`External resource loader <section_externalresourceloader>`).
-Note that binary-nls does not protect against dynamic update of the resource which may lead to invalid
-messages translations even if the updated resource is a valid binary-nls buffer.
-
-For any addition / modification, the Application must be restarted.
-Also, typically, the full resource buffer must be updated (not only the part of the added/modified locale).
-
-Usage of this binary-nls implementation is documented below.
+Usage of this binary-nls implementation is documented below (see current :ref:`limitations <section.nls.limitations>`).
 
 .. _NLS: https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html
 .. _BON resource buffer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html
@@ -221,6 +209,26 @@ Since the generated resource is referenced by the ``.resources.list`` generated 
 Unless it is also referenced by an ``.externresources.list`` in which case the SOAR will output the resource in the :ref:`External Resources Folder<external_resources_folder>` instead.
 
 This resource is loaded as soon as the BinaryNLS instance is created, in the clinit of the generated NLS interface (see :ref:`Principle <section.nls.principle>`).
+
+.. _section.nls.limitations:
+
+Limitations
+-----------
+
+The latest BinaryNLS implementation does not support:
+
+* to dynamicly add a new locale
+* to dynamicly modify messages translations
+
+even when the resource is external (see :ref:`External resource loader <section_externalresourceloader>`).
+Note that binary-nls does not protect against dynamic update of the resource which may lead to invalid
+messages translations even if the updated resource is a valid binary-nls buffer.
+
+For any addition / modification, the Application must be restarted and, typically, the full resource buffer
+must be updated (not only the part of the added/modified locale).
+
+Also, there is no API to close the resource buffer. If it is external, the Application must be stopped to
+close this resource, before it can potentially be modified depending on the external resource loader.
 
 .. _chapter.microej.nlsExternalLoader:
 
