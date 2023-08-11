@@ -27,23 +27,19 @@ Using the latest UI libraries (MicroUI, MWT, Widget, etc) available may solve so
 Memory management
 ~~~~~~~~~~~~~~~~~
 
-**// -- This section will be reworked**
-
-The Java management of memory may affect UI performances. Two pitfalls can decrease performances:
+The Java management of memory may affect UI performances:
 
 - Too much memory allocation/deallocation for UI resources (Images, Fonts).
 - Too much objects intanciation will lead to a big Java heap size. In some usecases the garbage collection may lead to the UI slowing down.
-    - For example the use of weak references is discouraged as it may lead to the garbage collection of a lot of objects at the same time.
 
 To avoid those pitfalls:
 
 - Calibrate the memories (Java heap, Images heap, etc).
 - Uses Memory debugging tools:
-    - https://docs.microej.com/en/latest/Tutorials/tutorialOptimizeMemoryFootprint.html
-    - https://docs.microej.com/en/latest/Tutorials/tutorialDiscoverEmbeddedDebuggingTechniques.html#memory-inspection
-    - https://docs.microej.com/en/latest/ApplicationDeveloperGuide/heapAnalyzer.html
 
-**-- //**
+    - :ref:`Optimize Memory Footprint<tutorial_optimize_memory_footprint>` tutorial.
+    - :ref:`Memory inspection tools<tutorial_discover_embedded_debugging_techniques.tools.memory_inspection>`.
+    - :ref:`Heap Analyzer<heapdumper>`.
 
 Causes of UI bad performances
 -----------------------------
@@ -51,8 +47,10 @@ Causes of UI bad performances
 The process to render a frame of the UI consists of several parts:
 
 - Drawing of the UI
+
     - MWT processing (layout of widgets and widget rendering process)
     - Drawing of the UI (MicroUI drawing method execution)
+
 - Display flush
 - (depends on the UI port) Backbuffer copy, see :ref:`Display Buffer Modes<section_display_modes>`. 
 
@@ -76,6 +74,7 @@ Widget hierarchy and layout
 Keeping the widget hierarchy as simple as possible will help reducing the "MWT processing" part time. Improving the widgets hierarchy design may help reducing the number of widgets or the number of them that are rendered when a certain part of the UI is updated.
 
 Here are tools that allow to detect issues with the widgets hierarchy:
+
 - :ref:`Widget debug utilities<widget_library_debug_utilities>` provides tools to visualize the widget tree, count the numbers of widgets or see their bounds.
 - :ref:`MWT bounds highlighting<mwt_how_to_debug>` allows to visualize the bounds of the widgets, it is useful to detect overlapping widgets.
 
