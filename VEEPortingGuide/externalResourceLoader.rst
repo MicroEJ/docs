@@ -36,6 +36,10 @@ source base directory). For example, when the resource is located here:
 ``com.mycompany.myapplication.resource.MyResource.txt``, the given path
 is: ``com/mycompany/myapplication/resource/MyResource.txt``.
 
+The external resources loader implementation should, when possible,
+lock the resource when it is opened. Any modification of an opened
+resource may not be properly handled by the application.
+
 Resource Identifier
 -------------------
 

@@ -221,8 +221,6 @@ The latest BinaryNLS implementation does not support:
 * to dynamicly modify messages translations
 
 even when the resource is external (see :ref:`External resource loader <section_externalresourceloader>`).
-Note that binary-nls does not protect against dynamic update of the resource which may lead to invalid
-messages translations even if the updated resource is a valid binary-nls buffer.
 
 For any addition / modification, the Application must be restarted and, typically, the full resource buffer
 must be updated (not only the part of the added/modified locale).
