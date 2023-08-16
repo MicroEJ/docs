@@ -605,7 +605,7 @@ The Font Generator obeys several rules when choosing whether a font should be co
 
 Cached fonts are stored in ``.cache/fonts``, which is located in the :ref:`application output folder <application_output_folder>`.
 You may delete this directory to force the generation of all fonts in your application.
-A font that was previously generated but is no longer listed in the `fonts.list` files when the application is launched will be deleted from the cache directory.
+A font that was previously generated but is no longer listed in the ``*.fonts.list`` files when the application is launched will be deleted from the cache directory.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
