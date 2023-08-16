@@ -593,7 +593,7 @@ Fonts converted using the Font Generator can be cached so that they are not rebu
 Doing so can significantly speed up the application build phase.
 
 The cache is enabled by default.
-It may be disabled by adding the option ``-Dej.microui.fontConverter.disableCache=true`` to the run configuration.
+It may be disabled by setting the :ref:`Application option <application_options>` ``ej.microui.fontConverter.disableCache`` to ``true``.
 
 The Font Generator obeys several rules when choosing whether a font should be converted.
 

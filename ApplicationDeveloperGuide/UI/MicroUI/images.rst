@@ -322,7 +322,7 @@ Images converted using the Image Generator can be cached so that they are not re
 Doing so can significantly speed up the application build phase.
 
 The cache is enabled by default.
-It may be disabled by adding the option ``-Dej.microui.imageConverter.disableCache=true`` to the run configuration.
+It may be disabled by setting the :ref:`Application option <application_options>` ``ej.microui.imageConverter.disableCache`` to ``true``.
 
 The Image Generator obeys several rules when choosing whether an image should be converted.
 
