@@ -603,7 +603,7 @@ The Font Generator obeys several rules when choosing whether a font should be co
 - If the source font has been modified since the last time it was converted, the font will be regenerated.
 - The font will be regenerated if the destination format or the range has been modified in the `fonts.list` file.
 
-Cached fonts are stored in ``.cache/fonts``, which is located in the application output folder defined in the run configuration.
+Cached fonts are stored in ``.cache/fonts``, which is located in the :ref:`application output folder <application_output_folder>`.
 You may delete this directory to force the generation of all fonts in your application.
 A font that was previously generated but is no longer listed in the `fonts.list` files when the application is launched will be deleted from the cache directory.
 

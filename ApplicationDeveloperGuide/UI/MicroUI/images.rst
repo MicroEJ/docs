@@ -332,7 +332,7 @@ The Image Generator obeys several rules when choosing whether an image should be
 - If the source image has been modified since the last time it was converted, the image will be regenerated.
 - The image will be regenerated if the destination format has been modified in the `images.list` file.
 
-Cached images are stored in ``.cache/images``, which is located in the application output folder defined in the run configuration.
+Cached images are stored in ``.cache/images``, which is located in the :ref:`application output folder <application_output_folder>`.
 You may delete this directory to force the generation of all images in your application.
 An image that was previously generated but is no longer listed in the `images.list` files when the application is launched will be deleted from the cache directory.
 
