@@ -38,7 +38,7 @@ If these prerequisites are fulfilled:
 - rename the duplicated Run Configuration, for example by prefixing by ``(Local)``,
 - in the :guilabel:`Execution` tab, modify the :guilabel:`Execution` mode to :guilabel:`Execute on Device`,
 
-  .. note:: The selected :guilabel:`Platform` must be a VEE Port, not a Virtual Device (VDE).
+  .. note:: The selected :guilabel:`Platform` must be a Virtual Device (VDE) including the Local Deployment capability, not a VEE Port.
 
 - select the option :guilabel:`Local Deployment (Socket)` in the :guilabel:`Settings` list.
   Note that depending on the device capability, the virtual device may implement a local deployment over a Comm Port.
