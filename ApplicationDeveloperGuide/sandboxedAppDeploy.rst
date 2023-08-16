@@ -18,7 +18,7 @@ for Multi-Sandbox demo Firmware available for popular hardware evaluation kits.
 Local Deployment
 ----------------
 
-Deploying a Application on a device locally is the easiest way to test it since it only requires:
+Deploying an Application on a device locally is the easiest way to test it since it only requires:
 
 - the Application project sources imported in the SDK,
 - the device programmed with a Multi-Sandbox Executable that provides the Local Deployment capability (you can browse the `Resources Repository`_
@@ -37,6 +37,9 @@ If these prerequisites are fulfilled:
 
 - rename the duplicated Run Configuration, for example by prefixing by ``(Local)``,
 - in the :guilabel:`Execution` tab, modify the :guilabel:`Execution` mode to :guilabel:`Execute on Device`,
+
+  .. note:: The selected :guilabel:`Platform` must be a Virtual Device (VDE) including the Local Deployment capability, not a VEE Port.
+
 - select the option :guilabel:`Local Deployment (Socket)` in the :guilabel:`Settings` list.
   Note that depending on the device capability, the virtual device may implement a local deployment over a Comm Port.
 
@@ -75,7 +78,7 @@ You can use a Serial terminal to get the traces of the Application::
 Remote Deployment
 -----------------
 
-Remote Deployment requires to build and publish the Sandboxed Application module.
+Remote Deployment requires building and publishing the Sandboxed Application module.
 To do so, in the SDK, right-click on the Sandboxed Application project and click on :guilabel:`Build Module`.
 
 The build process will display messages in the console, ending up the following message:
