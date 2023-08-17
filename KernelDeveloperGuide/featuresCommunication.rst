@@ -8,7 +8,7 @@ This mechanism is described in :ref:`chapter.shared.interfaces` section.
 
 For Applications to use the Shared Interface mechanism, a Kernel must provide:
 
-* an API for a first Application to register its Share Interface, and for a second Application to get a proxy on it
+* an API for a first Application to register its Shared Interface, and for a second Application to get a proxy on it
 * a set of registered Kernel types converters
 .. _kernel_service_registry:
 

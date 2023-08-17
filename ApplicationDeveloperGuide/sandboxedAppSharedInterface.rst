@@ -78,7 +78,7 @@ Usage of a Shared Interface follows these steps:
    #. Retrieve a proxy of the instance from the KF service registry
    #. Call methods of the instance proxy.
 
-Shared Interface Definition
+Define the Shared Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Define the Java Interface
@@ -101,7 +101,7 @@ interfaces:
 * Thrown exceptions must be classes owned by the Kernel.
 
 Implement the Proxy Class
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A proxy class is implemented and executed on the client side, each
 method of the implemented interface must be defined according to the
@@ -130,8 +130,8 @@ to the interface method specification (contract).
 The :ref:`Proxy class implementation <section.proxy.implementation>`
 section documents how to perform the remote invocation.
 
-Shared Interface identification file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Register the Shared Interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To declare an interface as a Shared Interface, it must be registered in
 a Shared Interfaces identification file. A Shared Interface
@@ -148,8 +148,8 @@ Shared Interface identification files must be placed at the root of the
 application classpath, typically it is defined in the
 ``src/main/resources`` folder.
 
-Shared Interface Runtime
-~~~~~~~~~~~~~~~~~~~~~~~~
+Use the Shared Interface at Runtime
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Projects structure
 ^^^^^^^^^^^^^^^^^^
@@ -161,8 +161,8 @@ in order to be able to use the shared interface.
 Typically, the 3 files can be defined in an add-on library that both
 application projects depend on.
 
-Provider application
-^^^^^^^^^^^^^^^^^^^^
+Create and Share an instance of a Shared Interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The provider application can instantiate the Java interface. For
 example:
@@ -185,8 +185,8 @@ using Wadapps' ``SharedServiceRegistry``:
 
    SharedServiceFactory.getSharedServiceRegistry().register(MyInterface.class, myInstance);
 
-Consumer application
-^^^^^^^^^^^^^^^^^^^^
+Retrieve and Use a proxy of a Shared Interface instance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The consumer application can then retrieve the instance from the Kernel
 registry. For example, using Wadapps' ``SharedServiceRegistry``:
@@ -336,8 +336,8 @@ call on `Evaluation Kernels <https://repository.microej.com/old_index.php?resour
 
 .. _section.proxy.implementation:
 
-Proxy Class Implementation
---------------------------
+Implementing the Proxy Class
+----------------------------
 
 Remote invocation methods are defined in the super class `ej.kf.Proxy`_
 and are named ``invokeXXX()`` where ``XXX`` is the kind of return type.
