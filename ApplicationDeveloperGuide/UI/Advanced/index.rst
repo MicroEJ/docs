@@ -7,6 +7,8 @@ Advanced
    :maxdepth: 2
 
    how-to-text-overflow
+   how-to-microui-flush-visualizer
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
