@@ -11,7 +11,7 @@ Principle
 The Shared Interface mechanism provided by MicroEJ Core Engine is an
 object communication bus based on plain Java interfaces where method
 calls are allowed to cross MicroEJ Sandboxed Applications boundaries
-without relying heavily on the Kernel APIs.
+without relying on Kernel APIs.
 
 The Shared Interface mechanism is the cornerstone for designing reliable
 Service Oriented Architectures on top of MicroEJ. Communication is based
@@ -94,13 +94,13 @@ interface. For example:
        void foo();
    }
 
-Some restrictions apply to Shared Interfaces compared to standard java
+Some restrictions apply to Shared Interfaces compared to standard Java
 interfaces:
 
 * Types for parameters and return values must be :ref:`transferable types <section.transferable.types>`;
-* Thrown exceptions must be classes owned by the MicroEJ Kernel.
+* Thrown exceptions must be classes owned by the Kernel.
 
-Implement the interface proxy
+Implement the Proxy Class
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A proxy class is implemented and executed on the client side, each
@@ -381,11 +381,11 @@ and are named ``invokeXXX()`` where ``XXX`` is the kind of return type.
 .. _invokeDouble(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeDouble--
 .. _invokeFloat(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeFloat--
 
-As this class is part of the application, the application developer has
+As this class is part of the Application, the developer has
 the full control on the Proxy implementation and is free to insert
 additional code such as logging calls and errors for example. It is also
-possible to have different proxy implementations for the same shared
-interface in different applications.
+possible to have different proxy implementations for the same Shared
+Interface in different applications.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

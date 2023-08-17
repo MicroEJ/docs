@@ -8,12 +8,11 @@ This mechanism is described in :ref:`chapter.shared.interfaces` section.
 
 For Applications to use the Shared Interface mechanism, a Kernel must provide:
 
-* a KF service registry
-* a list of Kernel types converters
-
+* an API for a first Application to register its Share Interface, and for a second Application to get a proxy on it
+* a set of registered Kernel types converters
 .. _kernel_service_registry:
 
-Kernel service registry
+Kernel Service Registry
 -----------------------
 
 Although an Application can use another Application instance of a
