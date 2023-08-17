@@ -3,10 +3,10 @@
 MicroUI Flush Visualizer
 ========================
 
-Building smooth and visually appealing UI applications require a keen focus on performance.
+Building smooth and visually appealing UI applications requires a keen focus on performance.
 To achieve efficient UI rendering, minimizing unnecessary work that consumes valuable CPU time is essential.
 
-This article introduces the MicroUI Flush Visualizer, a tool designed to investigate potential performance bottlenecks in UI applications running on the Simulator by showing the pixel surface drawn between 2 MicroUI frame buffer flushes.
+This article introduces the MicroUI Flush Visualizer, a tool designed to investigate potential performance bottlenecks in UI applications running on the Simulator by showing the pixel surface drawn between two MicroUI frame buffer flushes.
 
 - Requirements: VEE Port with UI Pack 13.0.0 or higher.
 
