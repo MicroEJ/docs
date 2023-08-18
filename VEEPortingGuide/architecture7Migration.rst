@@ -118,7 +118,7 @@ Migrate Your LLKERNEL Implementation
 The following code is a ``LLKERNEL_impl.c`` template for migrating your current implementation of Feature installation in RAM.
 This is now called :ref:`In-Place Installation <feature_inplace_installation>`. 
 Your code logic for managing allocated blocks does not need to be changed.
-:ref:`Custom Installation <feature_custom_installation>` is disabled, so most of the new functions do not need to be implemented.
+As there is no installation in ROM, most of the new functions do not need to be implemented.
 
 .. code-block:: c
 

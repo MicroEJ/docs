@@ -38,11 +38,17 @@ specific configuration:
 [8.1.0] - 2023-MM-DD
 --------------------
 
+This Architecture version update introduces the following main features:
+
+- Updated :ref:`Feature installation <feature_memory_installation>` flow to support Code chunks. 
+  A Feature can now be installed to ROM without the need of the Code size in RAM.
+If you plan to migrate a VEE Port from Architecture ``8.0.0`` to Architecture ``8.1.0``, consider the :ref:`architecture8_migration` chapter.
+
 Core Engine
 ~~~~~~~~~~~
 
 - Updated :ref:`Feature installation boot sequence <feature_persistency>`: all Feature handles are now retrieved prior to initializing them.
-
+- Removed Feature installation in RAM (legacy :ref:`In-Place Installation mode <feature_inplace_installation>`). See :ref:`architecture8_migration_llkernel`.
 
 .. _changelog-8.0.0:
 
