@@ -12,21 +12,27 @@ The prerequisites of this task are:
   Refer to the :ref:`sdk_6_select_veeport` page to know the different ways to provide a VEE Port or a Virtual Device for a module project.
   It is important to note that if the Application has a Feature class (and not a main class), it can only be run on a :ref:`Virtual Device <sdk_6_build_virtual_device>`.
 
-Once these prerequisites are fulfilled, the Application can be started with the Simulator with the command line interface::
-
-    $ ./gradlew runOnSimulator
-
-or from Eclipse and IntelliJ IDEA, by double-clicking on the ``runOnSimulator`` task in the Gradle tasks view:
+Once these prerequisites are fulfilled, the Application can be started with the Simulator:
 
 .. tabs::
 
+   .. tab:: CLI
+
+      From the command line interface::
+      
+          $ ./gradlew runOnSimulator
+
    .. tab:: Eclipse
+
+      By double-clicking on the ``runOnSimulator`` task in the Gradle tasks view:
 
       .. image:: images/eclipse-run-gradle-project.png
          :width: 50%
          :align: center
 
    .. tab:: IntelliJ IDEA
+
+      By double-clicking on the ``runOnSimulator`` task in the Gradle tasks view:
 
       .. image:: images/intellij-run-gradle-project.png
          :width: 30%
@@ -110,61 +116,71 @@ If multiple VEE Ports are defined, the task fails with a message listing all the
  
 To run or debug an Application, you must select the VEE Port to use by setting the ``veePort`` property to the 
 :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port when calling 
-the ``runOnSimulator`` task::
+the ``runOnSimulator`` task:
 
-   ./gradlew runOnSimulator -PveePort="veePortName"
+.. tabs::
 
-If you want to add the property in IntelliJ IDEA : 
+   .. tab:: CLI
 
-- Go to ``Run`` > ``Edit Configurations...``.
-- Click on the ``+`` button and select ``Gradle``.
-- Choose a name for the new configuration in the ``Name`` input field.
-- Add the task name with the ``veePort`` property in the ``Run`` dialog : ``runOnSimulator -PveePort="veePortName"``:
+      To add the property from the command line interface::
 
-  .. figure:: images/intellij-runOnSimulator-run-configuration.png
-     :alt: IntelliJ runOnSimulator Run Configuration Window
-     :align: center
-     :scale: 100%
+         ./gradlew runOnSimulator -PveePort="veePortName"
 
-     IntelliJ runOnSimulator Run Configuration Window
+   .. tab:: IntelliJ IDEA
 
-- Click on ``OK``.
-- Run the task by double clicking on the newly created Run Configuration in the Gradle view:
+      To add the property in IntelliJ IDEA : 
+      
+      - Go to ``Run`` > ``Edit Configurations...``.
+      - Click on the ``+`` button and select ``Gradle``.
+      - Choose a name for the new configuration in the ``Name`` input field.
+      - Add the task name with the ``veePort`` property in the ``Run`` dialog : ``runOnSimulator -PveePort="veePortName"``:
+      
+        .. figure:: images/intellij-runOnSimulator-run-configuration.png
+           :alt: IntelliJ runOnSimulator Run Configuration Window
+           :align: center
+           :scale: 100%
+      
+           IntelliJ runOnSimulator Run Configuration Window
+      
+      - Click on ``OK``.
+      - Run the task by double clicking on the newly created Run Configuration in the Gradle view:
+      
+        .. figure:: images/intellij-runOnSimulator-run-configuration-gradle-view.png
+           :alt: IntelliJ runOnSimulator Run Configuration in Gradle view
+           :align: center
+           :scale: 100%
+      
+           IntelliJ runOnSimulator Run Configuration in Gradle view
 
-  .. figure:: images/intellij-runOnSimulator-run-configuration-gradle-view.png
-     :alt: IntelliJ runOnSimulator Run Configuration in Gradle view
-     :align: center
-     :scale: 100%
+   .. tab:: Eclipse
 
-     IntelliJ runOnSimulator Run Configuration in Gradle view
-
-If you want to add the property in Eclipse: 
-
-- Go to ``Run`` > ``Run Configurations...``.
-- Create a new Gradle Configuration.
-- Choose a name for the new configuration in the ``Name`` input field.
-- In the ``Gradle Tasks``, add the ``runOnSimulator`` task:
-
-  .. figure:: images/eclipse-runOnSimulator-gradle-tasks.png
-     :alt: Eclipse runOnSimulator task Gradle Tasks tab
-     :align: center
-     :scale: 100%
-     
-     Eclipse runOnSimulator task Gradle Tasks tab
-
-- Go to the ``Project Settings`` tab.
-- Check ``Override project settings``.
-- Select ``Gradle Wrapper``.
-- Add the property as a Program Argument:
-
-  .. figure:: images/eclipse-runOnSimulator-project-settings.png
-     :alt: Eclipse runOnSimulator task Project Settings tab
-     :align: center
-     :scale: 100%
-     
-     Eclipse runOnSimulator task Project Settings tab
-
-- Click on ``Run``.
+      To add the property in Eclipse: 
+      
+      - Go to ``Run`` > ``Run Configurations...``.
+      - Create a new Gradle Configuration.
+      - Choose a name for the new configuration in the ``Name`` input field.
+      - In the ``Gradle Tasks``, add the ``runOnSimulator`` task:
+      
+        .. figure:: images/eclipse-runOnSimulator-gradle-tasks.png
+           :alt: Eclipse runOnSimulator task Gradle Tasks tab
+           :align: center
+           :scale: 100%
+           
+           Eclipse runOnSimulator task Gradle Tasks tab
+      
+      - Go to the ``Project Settings`` tab.
+      - Check ``Override project settings``.
+      - Select ``Gradle Wrapper``.
+      - Add the property as a Program Argument:
+      
+        .. figure:: images/eclipse-runOnSimulator-project-settings.png
+           :alt: Eclipse runOnSimulator task Project Settings tab
+           :align: center
+           :scale: 100%
+           
+           Eclipse runOnSimulator task Project Settings tab
+      
+      - Click on ``Run``.
   
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
