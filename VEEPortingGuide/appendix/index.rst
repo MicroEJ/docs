@@ -9,6 +9,7 @@ Appendices
     tools/index
     toolchain
     ../platformMigration
+    ../architecture8Migration
     ../architecture7Migration
 
 ..
