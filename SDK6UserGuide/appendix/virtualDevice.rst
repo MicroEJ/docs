@@ -21,7 +21,7 @@ A Virtual Device is structured as follows:
    |   |- main-application
    |   |- mocks
    |   |- options
-   |   |   |- application.properties 
+   |   |   |- target.properties 
    |   |- resources
    |   |- S3
    |   |- scripts
@@ -64,7 +64,7 @@ The following elements are also embedded in the Virtual Device:
    System Applications can only be embedded in a Multi-Sandboxed Virtual Device.
    In case of a Mono-Sandboxed Virtual Device, the ``installed-applications/`` folder is always empty.
 
-- the ``options/application.properties``, that contains the Application properties and the properties of the VEE Port used to build the Virtual Device
+- the ``options/target.properties``, that contains the properties of the VEE Port used to build the Virtual Device
 
 - the ``scripts/init-vd/vd-init.xml`` script, that allows to enable or not the Virtual Device. If the Virtual Device is not enabled, the Application main class specified by the user is launched on the VEE Port
 
