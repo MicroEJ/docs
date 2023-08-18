@@ -147,6 +147,7 @@ The detailed uninstallation flow is described in the following sequence diagram:
 
    Feature Uninstallation Flow   
 
+.. _feature_persistency:
 
 Feature Persistency
 -------------------
