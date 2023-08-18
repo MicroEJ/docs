@@ -105,7 +105,7 @@ Foundation Libraries
   
    -  Added heap memory control: `Module.getAllocatedMemory()`_, `Kernel.setReservedMemory()`_ and `Feature.setMemoryLimit()`_ methods.
    -  Added load of a Feature resource (`Feature.getResourceAsStream()`_ method).
-- Updated ``KF`` dynamic loader to support :ref:`Feature Custom Installation <feature_custom_installation>` mode. See :ref:`architecture7_migration_llkernel`.
+- Updated ``KF`` dynamic loader to support the new :ref:`Feature installation <feature_memory_installation>` flow.
 - Removed Foundation Libraries API Jars and Javadoc.
 - Removed `Unknown product - Unknown version` comment in auto-generated Low Level API header files.
 - Removed the ``Serial Communication`` modules group, including the Foundation Libraries ``ECOM`` and ``ECOM-COMM``. See :ref:`architecture7_migration_ecom`.
