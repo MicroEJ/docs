@@ -42,6 +42,7 @@ This Architecture version update introduces the following main features:
 
 - Updated :ref:`Feature installation <feature_memory_installation>` flow to support Code chunks. 
   A Feature can now be installed to ROM without the need of the Code size in RAM.
+
 If you plan to migrate a VEE Port from Architecture ``8.0.0`` to Architecture ``8.1.0``, consider the :ref:`architecture8_migration` chapter.
 
 Core Engine
