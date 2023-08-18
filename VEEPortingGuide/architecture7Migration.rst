@@ -27,7 +27,7 @@ Your VEE Port must be updated to remove files that are now included in Architect
 - Download the latest ``content-sdk-5`` directory. Your local files must be overridden.
 - Edit your `module.ivy` and put back your module `name`, `version`, `organisation` and `<dependencies>` content.
 - Edit your `module.properties` and put back your options (if they have changed from default ones).
-- Delete the following files from your `[name]-configuration/dropins` directory:
+- Delete the following files from your ``[name]-configuration/dropins`` directory:
   
   - ``scripts/init-bsp/*``
   - ``scripts/init-license-checker/*``
