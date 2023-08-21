@@ -44,14 +44,14 @@ Using a Local VEE Port Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When your VEE Port has been built locally and is therefore available in a local directory, 
-you can use it by setting the ``veePortDirs`` property in the ``microej`` configuration block of the ``build.gradle.kts`` file. 
+you can use it by setting the ``veePortPaths`` property in the ``microej`` configuration block of the ``build.gradle.kts`` file. 
 Specify the path to the ``source`` folder of the VEE Port::
 
    microej {
-     veePortDirs = listOf("C:\\path\\to\\my\\veePort\\source")
+     veePortPaths = listOf("C:\\path\\to\\my\\veePort\\source")
    }
 
-The ``veePortDirs`` property is defined as a list in order to provide multiple VEE Port ``source`` folders if it is needed.
+The ``veePortPaths`` property is defined as a list in order to provide multiple VEE Port ``source`` folders if it is needed.
 See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
 
 .. note::
@@ -64,11 +64,11 @@ Using a Local VEE Port Archive
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When your VEE Port is available locally as an archive,
-you can use it by setting the ``veePortFiles`` property in the ``microej`` configuration block of the ``build.gradle.kts`` file. 
+you can use it by setting the ``veePortPaths`` property in the ``microej`` configuration block of the ``build.gradle.kts`` file. 
 Specify the path to a VEE Port file (``.zip`` or ``.vde``)::
 
    microej {
-     veePortFiles = listOf("C:\\path\\to\\my\\veePort\\file.zip")
+     veePortPaths = listOf("C:\\path\\to\\my\\veePort\\file.zip")
    }
 
 .. note::
@@ -76,7 +76,7 @@ Specify the path to a VEE Port file (``.zip`` or ``.vde``)::
    The legacy ``JPF`` format of a VEE Port is not supported anymore in the SDK 6. 
    If you want to use a VEE Port ``.jpf`` file, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
 
-The ``veePortFiles`` property is defined as a list in order to provide multiple VEE Port files if it is needed.
+The ``veePortPaths`` property is defined as a list in order to provide multiple VEE Port files if it is needed.
 See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
 
 Using the Dropins Folder
@@ -95,14 +95,14 @@ Select multiple VEE Ports
 -------------------------
 
 If multiple :ref:`VEE Ports are defined <sdk_6_select_veeport>` for a project, they are all used.
-For example, you can set the ``veePortDirs`` to the path of a ``source`` folder of a VEE Port, 
+For example, you can set the ``veePortPaths`` property to the path of a ``source`` folder of a VEE Port, 
 declare 2 dependencies with the ``microejVeePort`` configuration and copy an archive file to the ``dropins`` folder.
 
-To add several VEE Ports using the ``veePortFiles`` or the ``veePortDirs`` property, the paths must be separated by a comma. 
+To add several VEE Ports using the ``veePortPaths`` property, the paths must be separated by a comma. 
 For example::
 
    microej {
-     veePortFiles = listOf("C:\\path\\to\\my\\veePort1\\file.zip","C:\\path\\to\\my\\veePort2\\file.zip")
+     veePortPaths = listOf("C:\\path\\to\\my\\veePort1\\file.zip","C:\\path\\to\\my\\veePort2\\source")
    } 
 
 .. _sdk_6_vee_port_unique_name:
