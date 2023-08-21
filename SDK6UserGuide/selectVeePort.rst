@@ -5,9 +5,14 @@ Select a VEE Port
 
 Building or running an Application or a Test Suite with the SDK requires a VEE Port.
 
-There are 3 different ways to provide a VEE Port in the build file of the project:
+There are 3 different ways to provide a VEE Port in the build file of the project.
 
-- Set the build property ``veePortPaths`` in the ``microej`` configuration block to the path of a VEE Port file (``.zip`` or ``.vde``) or the ``source`` folder of a VEE Port::
+At least one of these is required to build an Application with a VEE Port.
+
+Build property veePortPaths
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Set the build property ``veePortPaths`` in the ``microej`` configuration block to the path of a VEE Port file (``.zip`` or ``.vde``) or the ``source`` folder of a VEE Port::
 
    microej {
      veePortPaths = listOf("C:\\path\\to\\my\\veePort")
@@ -19,6 +24,7 @@ There are 3 different ways to provide a VEE Port in the build file of the projec
    If you want to use a VEE Port ``.jpf`` file, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
 
 The ``veePortPaths`` property is defined as a list in order to provide multiple VEE Ports if it is needed.
+
 See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
 
 .. note::
@@ -27,7 +33,10 @@ See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` secti
    the OS path	must use the UNIX path convention (path separator is ``/``). 
    The Windows paths must have been converted manually replacing ``\`` by ``/`` or by ``\\``.
 
-- Declare a module dependency with the conf ``microejVeePort``:
+Module dependency microejVeePort
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Declare a module dependency with the conf ``microejVeePort``:
 
    .. code:: java
 
@@ -53,13 +62,14 @@ See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` secti
       Refer to `the Gradle documentation <https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html>`__ 
       to learn all the options to select dependencies.
 
-- Copy a VEE port archive file to the ``dropins`` folder. The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the build property ``dropinsDir``::
+Dropins folder
+^^^^^^^^^^^^^^
+
+Copy a VEE port archive file to the ``dropins`` folder. The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the build property ``dropinsDir``::
 
    microej {
       dropinsDir = "C:\\path\\to\\dropins"
    }
-
-At least 1 of these 3 ways is required to build an Application with a VEE Port.
 
 .. _sdk_6_select_multiple_vee_ports:
 
