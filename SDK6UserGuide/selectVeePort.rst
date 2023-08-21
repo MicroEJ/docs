@@ -5,12 +5,12 @@ Select a VEE Port
 
 Building or running an Application or a Test Suite with the SDK requires a VEE Port.
 
-There are 4 different ways to provide a VEE Port in the build file of the project:
+There are 3 different ways to provide a VEE Port in the build file of the project:
 
-- Set the build property ``veePortFiles`` in the ``microej`` configuration block to the path of a VEE Port file (``.zip`` or ``.vde``)::
+- Set the build property ``veePortPaths`` in the ``microej`` configuration block to the path of a VEE Port file (``.zip`` or ``.vde``) or the ``source`` folder of a VEE Port::
 
    microej {
-     veePortFiles = listOf("C:\\path\\to\\my\\veePort\\file.zip")
+     veePortPaths = listOf("C:\\path\\to\\my\\veePort")
    }
 
 .. note::
@@ -18,16 +18,7 @@ There are 4 different ways to provide a VEE Port in the build file of the projec
    The legacy ``JPF`` format of a VEE Port is not supported anymore in the SDK 6. 
    If you want to use a VEE Port ``.jpf`` file, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
 
-The ``veePortFiles`` property is defined as a list in order to provide multiple VEE Port files if it is needed.
-See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
-
-- Set the build property ``veePortDirs`` in the ``microej`` configuration block to the path of the ``source`` folder of a VEE Port::
-
-   microej {
-     veePortDirs = listOf("C:\\path\\to\\my\\veePort\\directory")
-   }
-
-The ``veePortDirs`` property is defined as a list in order to provide multiple VEE Port ``source`` folders if it is needed.
+The ``veePortPaths`` property is defined as a list in order to provide multiple VEE Ports if it is needed.
 See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
 
 .. note::
@@ -68,7 +59,7 @@ See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` secti
       dropinsDir = "C:\\path\\to\\dropins"
    }
 
-At least 1 of these 4 ways is required to build an Application with a VEE Port.
+At least 1 of these 3 ways is required to build an Application with a VEE Port.
 
 .. _sdk_6_select_multiple_vee_ports:
 
@@ -76,14 +67,14 @@ Select multiple VEE Ports
 -------------------------
 
 If multiple :ref:`VEE Ports are defined <sdk_6_select_veeport>` for a project, they are all used.
-For example, you can set the ``veePortDirs`` to the path of a ``source`` folder of a VEE Port, 
+For example, you can set the ``veePortPaths`` property to the path of a ``source`` folder of a VEE Port, 
 declare 2 dependencies with the ``microejVeePort`` configuration and copy an archive file to the ``dropins`` folder.
 
-To add several VEE Ports using the ``veePortFiles`` or the ``veePortDirs`` property, the paths must be separated by a comma. 
+To add several VEE Ports using the ``veePortPaths`` property, the paths must be separated by a comma. 
 For example::
 
    microej {
-     veePortFiles = listOf("C:\\path\\to\\my\\veePort1\\file.zip","C:\\path\\to\\my\\veePort2\\file.zip")
+     veePortPaths = listOf("C:\\path\\to\\my\\veePort1\\file.zip","C:\\path\\to\\my\\veePort2\\source\\folder")
    } 
 
 .. _sdk_6_vee_port_unique_name:
