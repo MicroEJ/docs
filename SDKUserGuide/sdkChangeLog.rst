@@ -190,6 +190,11 @@ Build Types
 
 - Added Gradle dependency line in the generated Javadoc of an artifact repository (``build-artifact-repository`` build type).
 
+- New build types added:
+
+  - build-artifact-repository#3.4.0
+  - build-izpack#3.3.0
+
 Skeletons
 ^^^^^^^^^
 
@@ -237,6 +242,26 @@ Build Types
 - Fixed ``build-std-javalib`` compilation with JDK 11.
 - Fixed Artifact Checker's execution on ``build-std-javalib``.
 - Fixed ``build-artifact-repository`` build type which couldn't find the previous release of the repository to merge it.
+- New build types added:
+
+  - build-addon-processor#2.2.0
+  - build-application#9.2.0
+  - build-artifact-repository#3.3.0
+  - build-custom#2.2.0
+  - build-firmware-customizer#3.2.0
+  - build-firmware-multiapp#8.1.0
+  - build-firmware-singleapp#2.2.0
+  - build-izpack#3.2.0
+  - build-microej-extension#2.2.0
+  - build-microej-javaapi#5.2.0
+  - build-microej-javaimpl#5.2.0
+  - build-microej-javalib#6.2.0
+  - build-microej-mock#2.2.0
+  - build-microej-ri#3.2.0
+  - build-microej-testsuite#4.2.0
+  - build-product-java#2.2.0
+  - build-runtime-api#4.1.0
+  - build-std-javalib#3.2.0
 
 Skeletons
 ^^^^^^^^^
@@ -313,6 +338,26 @@ Build Types
 
 -  Added support for Kernel Runtime Environments (``build-firmware-multiapp``, ``build-runtime-api`` and ``build-application``).
 -  Added option ``javadoc.modules.excludes`` to exclude modules from Javadoc generation when building a module repository.
+- New build types added:
+
+  - build-addon-processor#2.1.0
+  - build-application#9.1.0
+  - build-artifact-repository#3.2.0
+  - build-custom#2.1.0
+  - build-firmware-customizer#3.1.0
+  - build-firmware-multiapp#8.0.0
+  - build-firmware-singleapp#2.1.0
+  - build-izpack#3.1.0
+  - build-microej-extension#2.1.0
+  - build-microej-javaapi#5.1.0
+  - build-microej-javaimpl#5.1.0
+  - build-microej-javalib#6.1.0
+  - build-microej-mock#2.1.0
+  - build-microej-ri#3.1.0
+  - build-microej-testsuite#4.1.0
+  - build-product-java#2.1.0
+  - build-runtime-api#4.0.0
+  - build-std-javalib#3.1.0
 
 Build Plugins
 ^^^^^^^^^^^^^
@@ -411,6 +456,27 @@ MicroEJ Module Manager
 -  Fixed ``firmware-multiapp`` unexpected build error when no declared pre-installed Application.
 -  Fixed ``firmware-singleapp`` and ``firmware-multiapp`` skeletons wrong package name generation for the default Main class.
 -  Fixed ``artifact-repository`` changelog check for modules with a snapshot version.
+- New build types added:
+
+  - build-addon-processor#2.0.0
+  - build-application#9.0.0
+  - build-artifact-repository#3.0.0
+  - build-custom#2.0.0
+  - build-firmware-customizer#3.0.0
+  - build-firmware-multiapp#7.0.0
+  - build-firmware-singleapp#2.0.0
+  - build-izpack#3.0.0
+  - build-microej-extension#2.0.0
+  - build-microej-javaapi#5.0.0
+  - build-microej-javaimpl#5.0.0
+  - build-microej-javalib#6.0.0
+  - build-microej-mock#2.0.0
+  - build-microej-ri#3.0.0
+  - build-microej-testsuite#4.0.0
+  - build-product-java#2.0.0
+  - build-runtime-api#3.0.0
+  - build-std-javalib#3.0.0
+  - microej-meta-build#3.0.0
 
 .. _changelog-5.4.1:
 
@@ -438,6 +504,9 @@ MicroEJ Module Manager
 -  Fixed code coverage analysis on source code (besides on
    bytecode) thanks to the property ``cc.src.folders`` (only for
    architectures in version 7.16.0 and beyond)
+- New build types added:
+
+  - microej-meta-build#2.0.1
 
 .. _changelog-5.4.0:
 
@@ -514,6 +583,15 @@ Build Types
    ``NoClassDefFoundError: ej/tool/addon/util/Message`` depending on the
    resolution order
 -  Removed javadoc generation for ``microej-extension``
+- New build types added:
+
+  - build-application#8.0.0
+  - build-artifact-repository#2.3.0
+  - build-firmware-singleapp#1.4.0
+  - build-microej-extension#1.4.0
+  - build-microej-javaimpl#4.0.0
+  - build-microej-javalib#5.0.0
+  - build-microej-testsuite#3.0.0
 
 Build Plugins
 ^^^^^^^^^^^^^
@@ -661,6 +739,12 @@ Build Types
 -  Deprecated ``build-microej-ri`` and disabled documentation
    generation (useless docbook toolchains have been removed to reduce
    the bundle size: ``-150MB``)
+- New build types added:
+
+  - build-artifact-repository#2.0.1
+  - build-custom#1.2.0
+  - build-firmware-singleapp#1.2.10
+  - build-microej-ri#2.4.0
 
 Skeletons
 ^^^^^^^^^
@@ -1037,6 +1121,208 @@ Skeletons
    Module Manager semantic)
 -  Added the latest HIL Engine API to mock-up skeleton (Start
    and Stop listeners hooks)
+
+-------------------
+Build Types per SDK
+-------------------
+
+- SDK 5.8.0
+
+  - build-addon-processor#2.2.0
+  - build-application#9.2.0
+  - build-artifact-repository#3.4.0
+  - build-custom#2.2.0
+  - build-firmware-customizer#3.2.0
+  - build-firmware-multiapp#8.1.0
+  - build-firmware-singleapp#2.2.0
+  - build-izpack#3.3.0
+  - build-microej-extension#2.2.0
+  - build-microej-javaapi#5.2.0
+  - build-microej-javaimpl#5.2.0
+  - build-microej-javalib#6.2.0
+  - build-microej-mock#2.2.0
+  - build-microej-ri#3.2.0
+  - build-microej-testsuite#4.2.0
+  - build-product-java#2.2.0
+  - build-runtime-api#4.1.0
+  - build-std-javalib#3.2.0
+  - microej-meta-build#3.0.0
+- SDK 5.7.0
+
+  - build-addon-processor#2.2.0
+  - build-application#9.2.0
+  - build-artifact-repository#3.3.0
+  - build-custom#2.2.0
+  - build-firmware-customizer#3.2.0
+  - build-firmware-multiapp#8.1.0
+  - build-firmware-singleapp#2.2.0
+  - build-izpack#3.2.0
+  - build-microej-extension#2.2.0
+  - build-microej-javaapi#5.2.0
+  - build-microej-javaimpl#5.2.0
+  - build-microej-javalib#6.2.0
+  - build-microej-mock#2.2.0
+  - build-microej-ri#3.2.0
+  - build-microej-testsuite#4.2.0
+  - build-product-java#2.2.0
+  - build-runtime-api#4.1.0
+  - build-std-javalib#3.2.0
+  - microej-meta-build#3.0.0
+
+- SDK 5.6.2, 5.6.1 and SDK 5.6.0
+
+  - build-addon-processor#2.1.0
+  - build-application#9.1.0
+  - build-artifact-repository#3.2.0
+  - build-custom#2.1.0
+  - build-firmware-customizer#3.1.0
+  - build-firmware-multiapp#8.0.0
+  - build-firmware-singleapp#2.1.0
+  - build-izpack#3.1.0
+  - build-microej-extension#2.1.0
+  - build-microej-javaapi#5.1.0
+  - build-microej-javaimpl#5.1.0
+  - build-microej-javalib#6.1.0
+  - build-microej-mock#2.1.0
+  - build-microej-ri#3.1.0
+  - build-microej-testsuite#4.1.0
+  - build-product-java#2.1.0
+  - build-runtime-api#4.0.0
+  - build-std-javalib#3.1.0
+  - microej-meta-build#3.0.0
+
+- SDK 5.5.3, SDK 5.5.2, SDK 5.5.1 and SDK 5.5.0
+
+  - build-addon-processor#2.0.0
+  - build-application#9.0.0
+  - build-artifact-repository#3.0.0
+  - build-custom#2.0.0
+  - build-firmware-customizer#3.0.0
+  - build-firmware-multiapp#7.0.0
+  - build-firmware-singleapp#2.0.0
+  - build-izpack#3.0.0
+  - build-microej-extension#2.0.0
+  - build-microej-javaapi#5.0.0
+  - build-microej-javaimpl#5.0.0
+  - build-microej-javalib#6.0.0
+  - build-microej-mock#2.0.0
+  - build-microej-ri#3.0.0
+  - build-microej-testsuite#4.0.0
+  - build-product-java#2.0.0
+  - build-runtime-api#3.0.0
+  - build-std-javalib#3.0.0
+  - microej-meta-build#3.0.0
+
+- SDK 5.4.1
+
+  - build-addon-processor#1.0.3
+  - build-application#8.0.0
+  - build-artifact-repository#2.3.0
+  - build-custom#1.2.0
+  - build-firmware-customizer#2.0.1
+  - build-firmware-multiapp#5.1.2
+  - build-firmware-singleapp#1.4.0
+  - build-izpack#2.0.1
+  - build-microej-extension#1.4.0
+  - build-microej-javaapi#4.0.4
+  - build-microej-javaimpl#4.0.0
+  - build-microej-javalib#5.0.0
+  - build-microej-mock#1.0.3
+  - build-microej-ri#2.4.0
+  - build-microej-testsuite#3.0.0
+  - build-product-java#1.2.4
+  - build-runtime-api#2.0.2
+  - build-std-javalib#2.0.1
+  - microej-meta-build#2.0.1
+
+- SDK 5.4.0
+
+  - build-addon-processor#1.0.3
+  - build-application#8.0.0
+  - build-artifact-repository#2.3.0
+  - build-custom#1.2.0
+  - build-firmware-customizer#2.0.1
+  - build-firmware-multiapp#5.1.2
+  - build-firmware-singleapp#1.4.0
+  - build-izpack#2.0.1
+  - build-microej-extension#1.4.0
+  - build-microej-javaapi#4.0.4
+  - build-microej-javaimpl#4.0.0
+  - build-microej-javalib#5.0.0
+  - build-microej-mock#1.0.3
+  - build-microej-ri#2.4.0
+  - build-microej-testsuite#3.0.0
+  - build-product-java#1.2.4
+  - build-runtime-api#2.0.2
+  - build-std-javalib#2.0.1
+  - microej-meta-build#2.0.0
+
+- SDK 5.3.1 and SDK 5.3.0
+
+  - build-addon-processor#1.0.3
+  - build-application#7.0.2
+  - build-artifact-repository#2.0.1
+  - build-custom#1.2.0
+  - build-firmware-customizer#2.0.1
+  - build-firmware-multiapp#5.1.2
+  - build-firmware-singleapp#1.2.10
+  - build-izpack#2.0.1
+  - build-microej-extension#1.3.2
+  - build-microej-javaapi#4.0.4
+  - build-microej-javaimpl#3.2.2
+  - build-microej-javalib#4.1.1
+  - build-microej-mock#1.0.3
+  - build-microej-ri#2.4.0
+  - build-microej-testsuite#2.2.2
+  - build-product-java#1.2.4
+  - build-runtime-api#2.0.2
+  - build-std-javalib#2.0.1
+  - microej-meta-build#2.0.0
+
+- SDK 5.2.0
+
+  - build-addon-processor#1.0.3
+  - build-application#7.0.2
+  - build-artifact-repository#1.6.2
+  - build-custom#1.1.3
+  - build-firmware-customizer#2.0.1
+  - build-firmware-multiapp#5.1.2
+  - build-firmware-singleapp#1.2.9
+  - build-izpack#2.0.1
+  - build-microej-extension#1.3.2
+  - build-microej-javaapi#4.0.4
+  - build-microej-javaimpl#3.2.2
+  - build-microej-javalib#4.1.1
+  - build-microej-mock#1.0.3
+  - build-microej-ri#2.3.1
+  - build-microej-testsuite#2.2.2
+  - build-product-java#1.2.4
+  - build-runtime-api#2.0.2
+  - build-std-javalib#2.0.1
+  - microej-meta-build#2.0.0
+
+- SDK 5.1.2, SDK 5.1.1 and SDK 5.1.0
+
+  - build-addon-processor#1.0.3
+  - build-application#7.0.2
+  - build-artifact-repository#1.6.0
+  - build-custom#1.1.3
+  - build-firmware-customizer#2.0.1
+  - build-firmware-multiapp#5.1.2
+  - build-firmware-singleapp#1.2.9
+  - build-izpack#2.0.1
+  - build-microej-extension#1.3.2
+  - build-microej-javaapi#4.0.4
+  - build-microej-javaimpl#3.2.2
+  - build-microej-javalib#4.1.1
+  - build-microej-mock#1.0.3
+  - build-microej-ri#2.3.1
+  - build-microej-testsuite#2.2.2
+  - build-product-java#1.2.4
+  - build-runtime-api#2.0.2
+  - build-std-javalib#2.0.1
+  - microej-meta-build#2.0.0
+
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
