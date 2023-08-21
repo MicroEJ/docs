@@ -4,6 +4,32 @@
 Changelog
 =========
 
+[1.4.0] - 2023-07-21
+====================
+
+**Fixed**
+
+* Fix the UI Pack minimal compatible version (13.5.0).
+
+MicroVG Implementation
+""""""""""""""""""""""
+
+**Added**
+
+* Add SystemView event logs (feature available with `CCO MicroVG 3.0.1`_).
+
+.. _CCO MicroVG 3.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microvg/3.0.1/
+
+**Changed**
+
+* Compatible with `MicroVG API 1.4`_.
+
+.. _MicroVG API 1.4: https://repository.microej.com/modules/ej/api/microvg/1.4.0/
+
+**Fixed**
+
+* Fix path bounds computation.
+
 [1.3.0] - 2023-05-10
 ====================
 

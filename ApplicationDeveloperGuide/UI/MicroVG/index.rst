@@ -12,6 +12,7 @@ MicroVG
    gradient
    vectorfont
    vectorimage
+   traces
    avdLoader
 
 
