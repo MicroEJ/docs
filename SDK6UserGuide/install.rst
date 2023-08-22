@@ -108,7 +108,7 @@ Once your favorite IDE is installed, the MicroEJ plugin must be installed.
 
 .. tabs::
 
-   .. tab:: IntelliJ IDEA Stable Version
+   .. tab:: IntelliJ IDEA
 
       Follow these steps to install the latest stable version of the MicroEJ plugin for IntelliJ IDEA:
       
@@ -126,38 +126,9 @@ Once your favorite IDE is installed, the MicroEJ plugin must be installed.
       
       - Click on the ``Install`` button.
       - Click on the ``Restart IDE`` button.
-      
-   .. tab:: IntelliJ IDEA Snapshot Version
 
-      If you want to test the version under development, the latest snapshot version of the plugin can be installed:
+      To install the snapshot version of the MicroEJ plugin, please refer to :ref:`sdk_6_install_plugin_snapshot`.
       
-      - In IntelliJ IDEA, go to ``File > Settings...``.
-      - Go to ``Plugins`` menu.
-      - Click on the icon at the right of the ``Installed`` tab, then click on ``Manage Plugin Repositories``.
-      
-      .. figure:: images/intellij-add-plugin-repository.png
-         :alt: IntelliJ IDEA Plugin Repository
-         :align: center
-         :scale: 70%
-      
-         IntelliJ IDEA Plugin Repository
-      
-      - Click on the ``+`` icon.
-      - Set the URL ``https://repository.microej.com/intellij-plugins/snapshots/updatePlugins.xml``.
-      - Click on the ``OK`` button.
-      - Click on the ``Marketplace`` tab.
-      - In the search field, type ``MicroEJ``:
-      
-      .. figure:: images/intellij-install-plugin.png
-         :alt: IntelliJ IDEA Snapshot Plugin Installation
-         :align: center
-         :scale: 70%
-      
-         IntelliJ IDEA Snapshot Plugin Installation
-      
-      - Click on the ``Install`` button.
-      - Click on the ``Restart IDE`` button.
-
    .. tab:: Eclipse
 
       Follow these steps to install the latest stable version of the MicroEJ plugin for Eclipse:
