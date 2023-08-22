@@ -8,21 +8,26 @@ Depending on the nature of the project, the build can include other specific pha
 Refer to the :ref:`sdk6_module_natures` page for a complete description of the build phases.
 
 The build of a project is done by executing the Gradle ``build`` task.
-It can be executed with the command line interface::
-
-    $ ./gradlew build
-
-or from Eclipse and IntelliJ IDEA, by double-clicking on the ``build`` task in the Gradle tasks view:
 
 .. tabs::
 
+   .. tab:: CLI
+
+      It can be executed with the command line interface::
+      
+          $ ./gradlew build
+      
    .. tab:: Eclipse
+
+      It can be executed from Eclipse by double-clicking on the ``build`` task in the Gradle tasks view:
 
       .. image:: images/eclipse-build-gradle-project.png
          :width: 50%
          :align: center
 
    .. tab:: IntelliJ IDEA
+
+      It can be executed from IntelliJ IDEA by double-clicking on the ``build`` task in the Gradle tasks view:
 
       .. image:: images/intellij-build-gradle-project.png
          :width: 30%
