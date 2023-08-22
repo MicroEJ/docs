@@ -61,6 +61,17 @@ SystemView
 
 The SystemView tool can be used to trace the UI actions (drawings, flush, etc) and detect which ones are the more time consuming. The documentation of SystemView is available :ref:`here<systemview>`. The MicroUI traces should be configured in SystemView in order to see the UI actions performed, it can be done by following :ref:`this documentation<microui_traces>`. Custom traces can be added and logged from the Java application to record specific actions.
 
+MicroUI Flush Visualizer
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+A perfect application has 100% of its display area drawn. This is the total area covered by the sum of the area drawn by the drawing operations. A value of 200% indicates the area drawn is equivalent to twice the surface of the entire display. A total area drawn between 100% to 200% is the norm in practice because widgets often overlap. However, if the total area drawn is bigger than 200%, that means that the total surface of the display was drawn more than twice, meaning that a lot of time could be spent drawing things that are never shown.
+
+The MicroUI Flush Visualizer tool can be used to investigate potential performance bottlenecks in UI applications running on the Simulator by showing the pixel surface drawn between two MicroUI frame buffer flushes.
+
+The documentation of MicroUI Flush Visualizer is available :ref:`here<microuiflushvisualizer>`.
+
+
+
 Format of UI resources
 ~~~~~~~~~~~~~~~~~~~~~~
 
