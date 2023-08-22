@@ -227,46 +227,47 @@ This requires to:
 - Start the :ref:`tool_serial_to_socket` tool if the VEE Port does not redirect execution traces.
 
 The configuration is similar to the one used to execute a testsuite on the Simulator.
-Therefore, the first step is to follow the instructions to :ref:`setup a testsuite on the Simulator <sdk_6_testsuite_on_sim>`.
 
-Then, in the build script file, replace the line::
+1. Follow the instructions to :ref:`setup a testsuite on the Simulator <sdk_6_testsuite_on_sim>`.
 
-   microej.useMicroejTestEngine(this)
+2. In the build script file, replace the line::
 
-by::
+      microej.useMicroejTestEngine(this)
 
-   microej.useMicroejTestEngine(this, TestTarget.EMB)
+   by::
 
-And add the ``import`` statement at the beginning of the file::
+      microej.useMicroejTestEngine(this, TestTarget.EMB)
 
-   import com.microej.gradle.plugins.TestTarget
+3. Add the ``import`` statement at the beginning of the file::
 
-Finally, add the required properties as follows:
+      import com.microej.gradle.plugins.TestTarget
 
-.. code-block::
+4. Add the required properties as follows:
 
-      val test by getting(JvmTestSuite::class) {
-         microej.useMicroejTestEngine(this, TestTarget.EMB)
-
-         targets {
-            all {
-               testTask.configure {
-                  doFirst {
-                        systemProperties = mapOf(
-                           // Enable the build of the Executable
-                           "microej.testsuite.properties.deploy.bsp.microejscript" to "true",
-                           "microej.testsuite.properties.microejtool.deploy.name" to "deployToolBSPRun",
-                           // Tell the testsuite engine that the VEE Port Run script redirects execution traces
-                           "microej.testsuite.properties.launch.test.trace.file" to "true",
-                           // Configure the TCP/IP address and port if the VEE Port Run script does not redirect execution traces
-                           "microej.testsuite.properties.testsuite.trace.ip" to "localhost",
-                           "microej.testsuite.properties.testsuite.trace.port" to "5555"
-                        )
+   .. code-block::
+   
+         val test by getting(JvmTestSuite::class) {
+            microej.useMicroejTestEngine(this, TestTarget.EMB)
+   
+            targets {
+               all {
+                  testTask.configure {
+                     doFirst {
+                           systemProperties = mapOf(
+                              // Enable the build of the Executable
+                              "microej.testsuite.properties.deploy.bsp.microejscript" to "true",
+                              "microej.testsuite.properties.microejtool.deploy.name" to "deployToolBSPRun",
+                              // Tell the testsuite engine that the VEE Port Run script redirects execution traces
+                              "microej.testsuite.properties.launch.test.trace.file" to "true",
+                              // Configure the TCP/IP address and port if the VEE Port Run script does not redirect execution traces
+                              "microej.testsuite.properties.testsuite.trace.ip" to "localhost",
+                              "microej.testsuite.properties.testsuite.trace.port" to "5555"
+                           )
+                     }
                   }
                }
             }
          }
-      }
 
 The properties are:
 
@@ -550,60 +551,71 @@ Test a Project with multiple VEE Ports
 
 If multiple VEE Ports are defined, the tests are executed on each VEE Port sequentially.
 If you want to execute the tests on only one VEE Port, you must select it by setting the ``veePort`` property 
-to the :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port in the command line::
+to the :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port:
 
-   ./gradlew test -PveePort="veePortName"
+.. tabs::
 
-If you want to add the property from IntelliJ IDEA : 
+   .. tab:: CLI
 
-- Go to ``Run`` > ``Edit Configurations...``.
-- Click on the ``+`` button and select ``Gradle``.
-- Choose a name for the new Configuration.
-- Add the command line with the ``veePort`` property in the Run dialog : ``test -PveePort="veePortName"``:
+      To add the property from the command line interface::
 
-  .. figure:: images/intellij-test-run-configuration.png
-     :alt: IntelliJ test Run Configuration Window
-     :align: center
-     :scale: 100%
+         ./gradlew test -PveePort="veePortName"
+      
+   .. tab:: IntelliJ IDEA
 
-     IntelliJ test Run Configuration Window
+      To add the property in IntelliJ IDEA : 
+      
 
-- Click on ``OK``.
-- Run the task by double clicking on the newly created Run Configuration in the Gradle task view:
+      - Go to ``Run`` > ``Edit Configurations...``.
+      - Click on the ``+`` button and select ``Gradle``.
+      - Choose a name for the new Configuration.
+      - Add the command line with the ``veePort`` property in the Run dialog : ``test -PveePort="veePortName"``:
+      
+        .. figure:: images/intellij-test-run-configuration.png
+           :alt: IntelliJ test Run Configuration Window
+           :align: center
+           :scale: 100%
+      
+           IntelliJ test Run Configuration Window
+      
+      - Click on ``OK``.
+      - Run the task by double clicking on the newly created Run Configuration in the Gradle task view:
+      
+        .. figure:: images/intellij-test-run-configuration-gradle-view.png
+           :alt: IntelliJ test Run Configuration in Gradle tasks view
+           :align: center
+           :scale: 100%
+      
+           IntelliJ test Run Configuration in Gradle tasks view
 
-  .. figure:: images/intellij-test-run-configuration-gradle-view.png
-     :alt: IntelliJ test Run Configuration in Gradle tasks view
-     :align: center
-     :scale: 100%
+   .. tab:: Eclipse
 
-     IntelliJ test Run Configuration in Gradle tasks view
-
-If you want to add the property from Eclipse: 
-
-- Go to ``Run`` > ``Run Configurations...``.
-- Create a new Gradle Configuration.
-- In the ``Gradle Tasks``, add the ``test`` task:
-
-  .. figure:: images/eclipse-test-gradle-tasks.png
-     :alt: Eclipse test task Gradle Tasks tab
-     :align: center
-     :scale: 100%
-     
-     Eclipse test task Gradle Tasks tab
-
-- Go to the ``Project Settings`` tab.
-- Check ``Override project settings``.
-- Select ``Gradle Wrapper``.
-- Add the property as a Program Argument:
-
-  .. figure:: images/eclipse-test-project-settings.png
-     :alt: Eclipse test task Project Settings tab
-     :align: center
-     :scale: 100%
-     
-     Eclipse test task Project Settings tab
-
-- Click on ``Run``.
+      To add the property in Eclipse: 
+      
+      - Go to ``Run`` > ``Run Configurations...``.
+      - Create a new Gradle Configuration.
+      - In the ``Gradle Tasks``, add the ``test`` task:
+      
+        .. figure:: images/eclipse-test-gradle-tasks.png
+           :alt: Eclipse test task Gradle Tasks tab
+           :align: center
+           :scale: 100%
+           
+           Eclipse test task Gradle Tasks tab
+      
+      - Go to the ``Project Settings`` tab.
+      - Check ``Override project settings``.
+      - Select ``Gradle Wrapper``.
+      - Add the property as a Program Argument:
+      
+        .. figure:: images/eclipse-test-project-settings.png
+           :alt: Eclipse test task Project Settings tab
+           :align: center
+           :scale: 100%
+           
+           Eclipse test task Project Settings tab
+      
+      - Click on ``Run``.
   
 The name of each VEE Port can be found by executing the tests with the verbose mode enabled::
 
