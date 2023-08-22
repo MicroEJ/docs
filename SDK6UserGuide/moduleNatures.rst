@@ -134,7 +134,7 @@ This task is used by the following module natures:
 
 **Configuration**:
 
-This task provides the following property that can be defined in the ``microej`` extension:
+This task provides the following properties that can be defined in the ``microej`` extension:
 
 .. list-table:: 
    :widths: 25 65 15
@@ -143,8 +143,11 @@ This task provides the following property that can be defined in the ``microej``
    * - Name
      - Description
      - Default    
-   * - ``veePortPaths``
-     - Path of the VEE Port file or the root folder of the VEE Port to use in the build.
+   * - ``veePortDirs``
+     - Path of the root folder of the VEE Port to use in the build.
+     - Not set
+   * - ``veePortFiles``
+     - Path of the VEE Port file to use in the build. 
      - Not set
 
 For example:
@@ -152,7 +155,7 @@ For example:
 .. code::
 
   microej {
-    veePortPaths = listOf("C:\\path\\to\\my\\veePort\\directory")
+    veePortDirs = listOf("C:\\path\\to\\my\\veePort\\directory")
   }
 
 .. _sdk6_module_natures.tasks.loadApplicationConfiguration:
