@@ -1,7 +1,7 @@
 .. _sdk_6_install_plugin_snapshot:
 
-Install MicroEJ Plugin Snapshot Version on IntelliJ IDEA
-========================================================
+How to Install MicroEJ Plugin Snapshot Version on IntelliJ IDEA
+===============================================================
 
 If you want to test the version under development, the latest snapshot version of the plugin can be installed:
 
