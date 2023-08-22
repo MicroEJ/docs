@@ -24,11 +24,11 @@ Since the MicroEJ Gradle plugins extend the Gradle Java and Java Library plugins
 but they also adds their own configurations.
 Let's have a look at the mostly used configurations:
 
-- **implementation** (from Gradle Java plugin) - Dependencies used by the project at compile time and runtime.
-- **api**  (from Gradle Java Library plugin) - Same as the **implementation** configuration, except that the dependency is also exposed to the consumers of your project.
-- **testImplementation** (from Gradle Java plugin) - Dependencies used by the test classes of the project.
+- **implementation** (from Gradle Java plugin) : Dependencies used by the project at compile time and runtime.
+- **api**  (from Gradle Java Library plugin) : Same as the **implementation** configuration, except that the dependency is also exposed to the consumers of your project.
+- **testImplementation** (from Gradle Java plugin) : Dependencies used by the test classes of the project.
   This configuration extends the **implementation** configuration, so it inherits from all the dependencies declared with the **implementation** configuration.
-- **microejVeePort** - VEE Port used by the project for build and test.
+- **microejVeePort** : VEE Port used by the project for build and test.
 
 Here is an example of dependencies declaration for a project::
 

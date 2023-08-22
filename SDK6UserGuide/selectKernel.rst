@@ -5,9 +5,14 @@ Select a Kernel
 
 Building the Feature file of an Application with the SDK requires a Kernel.
 
-There are 3 different ways to provide a Kernel in the build file of the project:
+There are 3 different ways to provide a Kernel in the build file of the project.
 
-- Set the build property ``kernelFiles`` in the ``microej`` configuration block to the path of a Kernel (``.out``)::
+At least one of these is required to :ref:`build the Feature file <sdk_6_build_feature>` of an Application.
+
+Build property kernelFiles
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Set the build property ``kernelFiles`` in the ``microej`` configuration block to the path of a Kernel (``.out``)::
 
    microej {
      kernelFiles = listOf("C:\\path\\to\\my\\kernel.out")
@@ -16,7 +21,9 @@ There are 3 different ways to provide a Kernel in the build file of the project:
 The ``kernelFiles`` property is defined as a list in order to provide multiple Kernels if it is needed.
 See the :ref:`Select multiple Kernels <sdk_6_select_multiple_kernels>` section for more information.
 
-- Declare a module dependency with the conf ``microejKernel``:
+Module dependency microejKernel
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Declare a module dependency with the conf ``microejKernel``:
 
    .. code:: java
 
@@ -42,14 +49,15 @@ See the :ref:`Select multiple Kernels <sdk_6_select_multiple_kernels>` section f
       Refer to `the Gradle documentation <https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html>`__ 
       to learn all the options to select dependencies.
 
-- Copy a Kernel to the ``dropins`` folder. The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the build property ``dropinsDir``::
+Dropins folder
+^^^^^^^^^^^^^^
+
+Copy a Kernel to the ``dropins`` folder. The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the build property ``dropinsDir``::
 
    microej {
       dropinsDir = "C:\\path\\to\\dropins"
    }
 
-
-At least 1 of these 3 ways is required to :ref:`build the Feature file <sdk_6_build_feature>` of an Application.
 
 .. _sdk_6_select_multiple_kernels:
 
