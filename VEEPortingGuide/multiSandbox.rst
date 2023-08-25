@@ -126,7 +126,7 @@ A minimum amount of RAM is required:
 
 The Abstraction Layer implementation is responsible for providing the following elements:
 
-- the address location where the Feature will be installed,
+- the location where the Feature will be installed,
 - the implementation to copy a chunk of bytes to the target location.
 
 The detailed installation flow is described in the following sequence diagram:
