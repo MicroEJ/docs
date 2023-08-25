@@ -58,7 +58,7 @@ The code logic based on a ``malloc/free`` implementation does not need to be cha
 
    int32_t LLKERNEL_IMPL_getFeatureHandle(int32_t allocation_index) {
       // No persistency support
-      while(1);
+      KERNEL_ASSERT_FAIL();
    }
 
    void* LLKERNEL_IMPL_getFeatureAddressRAM(int32_t handle) {
