@@ -64,6 +64,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    troubleshooting
    howtos/index
    appendix/index
+   sdk6ChangeLog
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
