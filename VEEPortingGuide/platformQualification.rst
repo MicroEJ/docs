@@ -142,7 +142,7 @@ Fill up the following fields of the form:
 - Revision (version of your Test Suite module)
 - Select the Skeleton: ``microej-javaimpl``
 
-Then, create two test source folders, right-click on your project and click on: ``New > Source Folder``.
+Then, create two test source folders, right-click on your project and click on: :guilabel:`New` > :guilabel:`Source Folder`.
 
 Fill up the ``Folder name`` field of the form with: ``src/test/java`` and for the second folder: ``src/test/resources`` 
 
