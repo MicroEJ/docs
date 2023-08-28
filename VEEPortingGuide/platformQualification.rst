@@ -213,7 +213,7 @@ You can implement a test class in ``src/test/java`` with a basic test as in the 
                 }
         }
 
-The console output for this test should be:
+The console output on VEE Port simulator for this test should be:
 
 :: 
 
