@@ -165,11 +165,7 @@ Open the ``module.ivy`` file and follow steps below:
   
   .. code-block:: XML
   
-<<<<<<< HEAD
 		<ea:build organisation="com.is2t.easyant.buildtypes" module="build-microej-javaimpl" microej.lib.name="myFoundationLib-testsuite-1.0" rip.printableName="myFoundationLib Test Suite Impl" revision="5.2.+">
-=======
-          <ea:build organisation="com.is2t.easyant.buildtypes" module="build-microej-javaimpl" revision="5.1.+" microej.lib.name="myLib-testsuite-1.0" rip.printableName="myLib-testsuite Impl">
->>>>>>> a414eeb1 (Fix VEEPortingGuide/platformQualification.rst typo)
   
 - Add the following properties in the ``ivy-module > info`` node:
   
@@ -180,13 +176,6 @@ Open the ``module.ivy`` file and follow steps below:
 		<ea:property name="addon-processor.src.test.java.path.ref.name" value="src.java.path"/>
   
 - Update the JUnit dependency to: 
-<<<<<<< HEAD
-=======
-
-.. code-block:: XML
-
-      <dependency org="ej.library.test" name="junit" rev="1.7.1" conf="default;test->*"/>
->>>>>>> fd7d0b5c (Fix VEEPortingGuide/platformQualification.rst visualizer issue)
 
   .. code-block:: XML
 
