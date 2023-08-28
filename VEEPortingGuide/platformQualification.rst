@@ -176,7 +176,10 @@ Open the ``module.ivy`` file and follow steps below:
         <ea:property name="addon-processor.src.test.java.path.ref.name" value="src.java.path"/>
   
 - Update the JUnit dependency to: 
-  ``<dependency org="ej.library.test" name="junit" rev="1.7.1" conf="default;test->*"/>``
+
+.. code-block:: XML
+
+      <dependency org="ej.library.test" name="junit" rev="1.7.1" conf="default;test->*"/>
 
 Add a ``module.ant`` file at the root of the Test Suite project with the following content:
 
