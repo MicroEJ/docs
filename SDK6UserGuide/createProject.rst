@@ -35,7 +35,7 @@ This chapter explains the different ways to create a new project.
       - Select :guilabel:`Kotlin` for the :guilabel:`Build configuration language` field.
       
       .. note::
-        MicroEJ uses Kotlin as the default Gradle build script DSL. 
+        The SDK uses Kotlin as the default Gradle build script DSL. 
         The use of the Groovy build script DSL is still possible but not officially supported.
       
       - Click on :guilabel:`Finish` button.
@@ -289,7 +289,7 @@ This chapter explains the different ways to create a new project.
       - Select build script DSL ``Kotlin``.
       
       .. note::
-        MicroEJ uses Kotlin as the default Gradle build script DSL. 
+        The SDK uses Kotlin as the default Gradle build script DSL. 
         The use of the Groovy build script DSL is still possible but not officially supported.
       
       - For the test framework, select ``JUnit 4``.
@@ -324,7 +324,7 @@ This chapter explains the different ways to create a new project.
 Configure a Project
 -------------------
 
-The MicroEJ SDK allows to build several types of modules.
+The SDK allows to build several types of modules.
 Each type has its own Gradle plugin and configuration options.
 Refer to the module type you want to build to configure your project:
 
