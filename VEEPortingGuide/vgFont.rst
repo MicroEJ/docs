@@ -95,7 +95,7 @@ The following steps describe how to open an external resource from the applicati
 9. Freetype (:ref:`section_vg_cco`) recognizes this resource as external resource; it configures itself to manage this resource differently than an internal resource.
 10. The application can use the font.
 
-.. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``.externresources.list`` files are copied in the external resources folder, and this folder is added to the simulator's classpath. 
+.. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``*.externresources.list`` files are copied in the external resources folder, and this folder is added to the simulator's classpath. 
 
 Use
 ===

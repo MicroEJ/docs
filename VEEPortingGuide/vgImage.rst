@@ -48,7 +48,7 @@ To list the images to convert, the tool uses the application list files whose ex
 The generator provides an option to encode the path data (the path's points): it can be stored on signed 8, 16, 32-bit words or in ``float`` format.
 Respectively, the options are ``VG8``, ``VG16``, ``VG32`` and ``VGF``.
 
-This is an example of ``.vectorimage.list`` files:
+This is an example of a ``vectorimage.list`` file:
 
 .. code-block::
 
@@ -122,7 +122,7 @@ The following steps describe how to open an external resource from the applicati
 11. The application can use the image.
 12. The application closes the image: the image is removed from the image heap.
 
-.. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``.externvectorimages.list`` files are generated in the external resources folder, and this folder is added to the simulator's classpath. 
+.. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``*.externvectorimages.list`` files are generated in the external resources folder, and this folder is added to the simulator's classpath. 
 
 Buffered Vector Image
 =====================
