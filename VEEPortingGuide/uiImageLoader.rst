@@ -80,7 +80,7 @@ This chapter describes the steps to open an external resource from the applicati
 12. The application can use the image.
 13. The application closes the image: the image is removed from the image heap.
 
-.. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``.imagesext.list`` files are generated in the external resources folder, and this folder is added to the simulator's classpath. 
+.. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``*.imagesext.list`` files are generated in the external resources folder, and this folder is added to the simulator's classpath. 
 
 .. _ResourceImage.loadImage(String): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String-
 

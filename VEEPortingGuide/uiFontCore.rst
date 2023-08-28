@@ -51,7 +51,7 @@ This chapter describes the steps to open an external resource from the applicati
 11. The application can use the font.
 12. The external resource is never closed: the font's bytes are copied in RAM on demand (drawString, etc.).
 
-.. note:: The simulator (Front Panel) does not manage the external resources. All fonts listed in ``.fontsext.list`` files are generated in the external resources folder, and this folder is added to the simulator's classpath. 
+.. note:: The simulator (Front Panel) does not manage the external resources. All fonts listed in ``*.fontsext.list`` files are generated in the external resources folder, and this folder is added to the simulator's classpath. 
 
 .. _Font.getFont(String): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getFont-java.lang.String-
 
