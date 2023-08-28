@@ -146,6 +146,14 @@ Then, create two test source folders, right-click on your project and click on: 
 
 Fill up the ``Folder name`` field of the form with: ``src/test/java`` and for the second folder: ``src/test/resources`` 
 
+You should get a MicroEJ Foundation Library Test Suite project that looks like:
+
+   .. figure:: images/foundation-library-testsuite-skeleton.png
+      :alt: MicroEJ Foundation Library Test Suite Project Skeleton
+      :align: center
+
+      MicroEJ Foundation Library Test Suite Project Skeleton
+      
 Your skeleton project is created and ready to be setup.
 
 Configure the Test Suite Module Project
