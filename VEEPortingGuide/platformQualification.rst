@@ -171,28 +171,28 @@ Open the ``module.ivy`` file and follow steps below:
   
   .. code-block:: XML
 
-        <ea:property name="skip.test" value="set"/>
-        <ea:property name="target.main.classes" value="${basedir}/target~/test/classes"/>
-        <ea:property name="addon-processor.src.test.java.path.ref.name" value="src.java.path"/>
+		<ea:property name="skip.test" value="set"/>
+		<ea:property name="target.main.classes" value="${basedir}/target~/test/classes"/>
+		<ea:property name="addon-processor.src.test.java.path.ref.name" value="src.java.path"/>
   
 - Update the JUnit dependency to: 
 
-.. code-block:: XML
+  .. code-block:: XML
 
-      <dependency org="ej.library.test" name="junit" rev="1.7.1" conf="default;test->*"/>
+		<dependency org="ej.library.test" name="junit" rev="1.7.1" conf="default;test->*"/>
 
 Add a ``module.ant`` file at the root of the Test Suite project with the following content:
 
-.. code-block:: XML
+  .. code-block:: XML
 
-        <project>
-                <target name="BuildTestTarget" extensionOf="abstract-compile:compile-ready" depends="resources-std:copy-test-resources">
-                        <augment id="src.java.path">
-                                <path location="${basedir}/src/test/java" />
-                                <path location="${target}/adpgenerated/src-adpgenerated/junit/java"/>
-                        </augment>
-                </target>
-        </project>
+	<project>
+		<target name="BuildTestTarget" extensionOf="abstract-compile:compile-ready" depends="resources-std:copy-test-resources">
+			<augment id="src.java.path">
+				<path location="${basedir}/src/test/java" />
+				<path location="${target}/adpgenerated/src-adpgenerated/junit/java"/>
+			</augment>
+		</target>
+	</project>
 
 
 Create a New Test Case
