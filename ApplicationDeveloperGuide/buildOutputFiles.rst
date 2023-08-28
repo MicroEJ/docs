@@ -5,6 +5,8 @@ Build Output Files
 
 When building a Standalone Application, multiple files are generated next to the ELF executable file.
 
+.. _application_output_folder:
+
 Launch Output Folder
 ~~~~~~~~~~~~~~~~~~~~
 

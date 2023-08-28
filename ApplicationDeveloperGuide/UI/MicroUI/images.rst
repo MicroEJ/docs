@@ -322,7 +322,7 @@ Images converted using the Image Generator can be cached so that they are not re
 Doing so can significantly speed up the application build phase.
 
 The cache is enabled by default.
-It may be disabled by adding the option ``-Dej.microui.imageConverter.disableCache=true`` to the run configuration.
+It may be disabled by setting the :ref:`Application option <application_options>` ``ej.microui.imageConverter.disableCache`` to ``true``.
 
 The Image Generator obeys several rules when choosing whether an image should be converted.
 
@@ -332,9 +332,9 @@ The Image Generator obeys several rules when choosing whether an image should be
 - If the source image has been modified since the last time it was converted, the image will be regenerated.
 - The image will be regenerated if the destination format has been modified in the `images.list` file.
 
-Cached images are stored in ``.cache/images``, which is located in the application output folder defined in the run configuration.
+Cached images are stored in ``.cache/images``, which is located in the :ref:`application output folder <application_output_folder>`.
 You may delete this directory to force the generation of all images in your application.
-An image that was previously generated but is no longer listed in the `images.list` files when the application is launched will be deleted from the cache directory.
+An image that was previously generated but is no longer listed in the ``*.images.list`` files when the application is launched will be deleted from the cache directory.
 
 .. warning:: When :ref:`testing an Image Generator extension project<section_image_generator_test_extension_project>`, the image cache is automatically disabled.
 
