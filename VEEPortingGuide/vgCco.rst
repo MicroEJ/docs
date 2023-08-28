@@ -99,7 +99,7 @@ This file (a header file with some C defines) enables (or disables) and configur
 * ``VG_FEATURE_FREETYPE_OTF``: set this define to enable the support of OTF font files in Freetype.
 * ``VG_FEATURE_FREETYPE_COLORED_EMOJI``: set this define to enable the support of colored emoji in Freetype.
 * ``VG_FEATURE_FONT_COMPLEX_LAYOUT``:  set this define to enable the support of :ref:`complex layout<section_vg_font_complex>`. This option is managed by the C module ``Harfbuzz`` (see upper).
-* ``VG_FEATURE_FONT_EXTERNAL``: set this define to allow loading of external font files (outside the application classpath). See :ref:`chapter.microej.applicationResources`.
+* ``VG_FEATURE_FONT_EXTERNAL``: set this define to allow loading of external font files (outside the application classpath). See :ref:`vectorfont_external`.
 * ``VG_FEATURE_FREETYPE_HEAP_SIZE``: specify the Freetype engine's heap size.
 * ``VG_FEATURE_FONT_COMPLEX_LAYOUT_HEAP_SIZE``: specify the Harfbuzz engine's heap size.
 
