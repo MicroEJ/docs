@@ -11,7 +11,7 @@ The Image Loader module is an on-board engine that
 
 * retrieves image data that is ready to be displayed without needing additional runtime memory, 
 * retrieves image data that is required to be converted into the format known by the Image Renderer (MicroEJ format),
-* retrieves image in external memories (external memory loader),
+* retrieves image in external memories (:ref:`section_image_external_memory` loader),
 * converts images in MicroEJ format, 
 * creates a runtime buffer to manage MicroUI :ref:`section_buffered_image`,
 * manages dynamic images life cycle.
@@ -27,8 +27,8 @@ Functional Description
 
 .. _section_image_loader_memory:
 
-Memory
-======
+Images Heap
+===========
 
 There are several ways to create a MicroUI Image. Except few specific cases, the Image Loader requires some RAM memory to store the image content in MicroEJ format. This format requires a small header as explained here: :ref:`section_image_standard_raw`.  It can be GPU compatible as explained here: :ref:`section_image_gpu_raw`. 
 
@@ -89,16 +89,16 @@ Image in MicroEJ Format
 
 An image may be pre-processed (:ref:`section_image_generator`) and so already in the format compatible with Image Renderer: MicroEJ format. 
 
-* When application is loading an image which is in such format and without specifiying another output format, the Image Loader has just to make a link between the MicroUI Image object and the resource location. No more runtime decoder or converter is required, and so no more RAM memory.
+* When application is loading an image which is in such format and without specifying another output format, the Image Loader has just to make a link between the MicroUI Image object and the resource location. No more runtime decoder or converter is required, and so no more RAM memory.
 * When application specifies another output format than MicroEJ format encoded in the image, Image Loader has to allocate a buffer in RAM. It will convert the image in the expected MicroEJ format.
-* When application is loading an image in MicroEJ format located in external memory, the Image Loader has to copy the image into RAM memory to be usable by Image Renderer.
+* When application is loading an image in MicroEJ format stored as :ref:`section_image_external_memory`, the Image Loader has to copy the image into RAM memory to be usable by Image Renderer.
 
 .. _image_runtime_decoder:
 
 Encoded Image
 =============
 
-An image can be encoded (PNG, JPEG, etc.). In this case Image Loader asks to its Image Decoders module if a decoder is able to decode the image. The source image is not copied in RAM (expect for images located in an external memory). Image Decoder allocates the decoded image buffer in RAM first and then inflates the image. The image is encoded in MicroEJ format specified by the application, when specified. When not specified, the image in encoded in the default MicroEJ format specified by the Image Decoder itself.
+An image can be encoded (PNG, JPEG, etc.). In this case Image Loader asks to its Image Decoders module if a decoder is able to decode the image. The source image is not copied in RAM (expect for images stored as :ref:`section_image_external_memory`). Image Decoder allocates the decoded image buffer in RAM first and then inflates the image. The image is encoded in MicroEJ format specified by the application, when specified. When not specified, the image in encoded in the default MicroEJ format specified by the Image Decoder itself.
 
 .. _image_internal_decoder:
 
