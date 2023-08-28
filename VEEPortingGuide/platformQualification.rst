@@ -226,6 +226,9 @@ The console output on VEE Port simulator for this test should be:
 
         SUCCESS
 
+.. note:: See next sections to get more details on how to package and launch the Test Suite on a VEE Port.
+
+
 Test the Test Suite Module Generation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -233,22 +236,23 @@ Test the Test Suite Module Generation
 - Check the content of the generated archive ``target~\test-rips\javaLibs\myFoundationLib-testsuite-X.X.jar``
 - If it worked, you can see ``.class`` files inside the archive
 
-Create the Test Suite Runner Project
-------------------------------------
+
+Create and Use the Test Suite Runner Project
+--------------------------------------------
 
 The Test Suite runner project is responsible for running tests of a Test Suite module.
 
 Create the Test Suite Runner Skeleton
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- To create the Test Suite runner project, click on: ``File > New > Other...> MicroEJ > Module Project``.
+- To create the Test Suite runner project, click on: :guilabel:`File` > :guilabel:`New` > :guilabel:`Other...` > :guilabel:`MicroEJ` > :guilabel:`Module Project`.
 
 - Fill up the following fields of the form:
 
   - Project name
   - Organization
   - Module
-  - Revision (version of your Testsuite Module)
+  - Revision (version of your Test Suite Module)
   - Select the Skeleton: ``microej-testsuite``
 
 - Inside ``module.ivy`` file, add the Test Suite dependency to the Test Suite runner project:
@@ -303,7 +307,7 @@ Configure and Run the Test Suite
 Test Suite Versioning
 =====================
 
-Foundation Libraries are integrated in a MicroEJ Platform by MicroEJ Packs (see :ref:`pack_import`).
+Foundation Libraries are integrated in a MicroEJ VEE Port by MicroEJ Packs (see :ref:`pack_import`).
 Use the Test Suite version compliant with the API version provided by the Foundation Library to validate the Abstraction Layer implementation.
 For example, the `Test Suite FS module 3.0.3`_ should be used to validate the Abstraction Layer implementation of the :ref:`Low Level API FS <LLFS-API-SECTION>` provided by the `FS Pack 5.1.2`_.
 
