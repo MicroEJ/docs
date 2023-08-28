@@ -179,7 +179,7 @@ example:
 To share it with other applications, it must pass the instance to some
 registry owned by the Kernel (see
 :ref:`Kernel service registry <kernel_service_registry>`). For example,
-using Wadapps' ``SharedServiceRegistry``:
+using the ``SharedServiceRegistry``:
 
 .. code:: java
 
@@ -189,7 +189,7 @@ Retrieve and Use a Proxy of a Shared Interface Instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The consumer application can then retrieve the instance from the Kernel
-registry. For example, using Wadapps' ``SharedServiceRegistry``:
+registry. For example, using the ``SharedServiceRegistry``:
 
 .. code:: java
 
