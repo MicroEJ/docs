@@ -132,7 +132,7 @@ Create the Test Suite Skeleton
 
 A new Test Suite module can be created using the ``microej-javaimpl`` Skeleton (see :ref:`module_natures.foundation_lib_impl`).
 
-To create the Test Suite module, click on: ``File > New > Module Project``
+To create the Test Suite module, click on: :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...` then select :guilabel:`MicroEJ` > :guilabel:`Module Project`
 
 Fill up the following fields of the form:
 
