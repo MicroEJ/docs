@@ -7,7 +7,7 @@ Overview
 --------
 
 Fonts are graphical resources that can be accessed with a call to `ej.microui.display.Font.getFont()`_.
-Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (**or** in ``*.fontsext.list`` for an external resource, see :ref:`chapter.microej.applicationResources`).
+Fonts are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.fonts.list`` files (**or** in ``*.fontsext.list`` for an external resource, see :ref:`section_external_fonts`).
 
 .. graphviz::
 
@@ -490,6 +490,15 @@ Examples:
    transparency
 
 -  ``myfont::2``: Embed all characters with 4 levels of transparency
+
+.. _section_external_fonts:
+
+External Fonts
+--------------
+
+A font can be stored in an :ref:`external memory<chapter.microej.applicationResources>`. 
+The management of this kind of font may be different than the internal fonts and require a dedicated heap.
+For more details about the external font management, refers to the VEE Port Guide chapter :ref:`section_font_loader_memory`.
 
 Font Generator Error Messages
 -----------------------------

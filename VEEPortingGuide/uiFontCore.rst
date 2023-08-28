@@ -1,57 +1,16 @@
 .. _section_font_core:
 
-=============
-Font Renderer
-=============
-
+===========
+Font Loader
+===========
 
 Principle
 =========
 
-The Font Renderer is included in the MicroUI module (see :ref:`section_microui`) for the application side; and is included in the Display module (see :ref:`section_display`) for the C side.
+The Font Loader module is an on-board engine that 
 
-Functional Description
-======================
-
-The Graphics Engine redirects all MicroUI font drawings to the internal software algorithms. There is no indirection to a set of Abstraction Layer API. 
-
-.. graphviz::
-
-   digraph {
-      
-      graph [
-         overlap=false
-         splines=true
-         nodesep=0.5
-         ranksep=0.5
-         bgcolor="transparent"
-         center=1
-      ];
-         
-      node [
-         fixedsize=true,
-         fontname="Ubuntu"
-         fontsize=14
-         fontcolor=dimgray
-         height=0.5
-         width=2.5
-         shape=box
-         fillcolor=aliceblue
-         color="lightblue"
-         style="filled,setlinewidth(3)",
-      ];
-            
-      edge [
-         arrowsize=0.8
-      ];
-      
-      app [label="Painter API"]
-      stack [label="Graphics Engine"]
-      algo [label="Software Algorithms"]
-      hard  [label="hardware"]
-      
-      app -> stack -> algo -> hard
-   }
+* retrieves font data that is ready to be displayed without needing additional runtime memory, 
+* retrieves font in external memories (:ref:`section_font_loader_memory` loader).
 
 .. _section_font_loader_memory:
 
@@ -107,12 +66,6 @@ As explained :ref:`here<section.tool.fontdesigner.styles>`, the notion of ``Dyna
 .. _Font.isBold(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#isBold--
 .. _Font.isItalic(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#isItalic--
 
-Dependencies
-============
-
--  MicroUI module (see :ref:`section_microui`),
-
--  Display module (see :ref:`section_display`).
 
 
 Installation

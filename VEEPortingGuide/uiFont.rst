@@ -10,6 +10,7 @@ Fonts
     uiFontFormat
     uiFontGenerator
     uiFontCore
+    uiFontRenderer
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

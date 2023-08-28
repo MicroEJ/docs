@@ -172,12 +172,8 @@ convert and store in the External Resource Loader output directory. It
 is the BSP's responsibility to load the converted fonts into an external
 memory.
 
-
-Dependencies
-============
-
--  Font Renderer module (see :ref:`section_font_core`)
-
+* Refer to the chapter :ref:`section.ui.Fonts` to have more details how to use this kind of resources.
+* Refer to the chapter :ref:`section_font_loader_memory` to have more details how the Font Engine manages this kind of resources.
 
 Installation
 ============

@@ -51,6 +51,12 @@ Process overview:
    the FLASH memory is used: no copy of the font data is sent to RAM
    memory first.
 
+Dependencies
+============
+
+-  MicroUI module (see :ref:`section_microui`),
+-  Display module (see :ref:`section_display`).
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
