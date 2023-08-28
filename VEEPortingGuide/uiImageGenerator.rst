@@ -305,7 +305,9 @@ convert and store in the External Resource Loader output directory. It
 is the BSP's responsibility to load the converted images into an
 external memory.
 
-
+* Refer to the chapter :ref:`section.ui.Images` to have more details how to use this kind of resources.
+* Refer to the chapter :ref:`section_image_external_memory` to have more details how the Image Engine manages this kind of resources.
+  
 Dependencies
 ============
 
