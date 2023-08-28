@@ -198,7 +198,8 @@ Add a ``module.ant`` file at the root of the Test Suite project with the followi
 Create a New Test Case
 ~~~~~~~~~~~~~~~~~~~~~~
 
-You can implement a test class in ``src/test/java`` with a basic test as in the following example:
+Right click on ``src/test/java``, then click on :guilabel:`New` > :guilabel:`Class`. Fill ``Name:`` with the ``MyTest`` 
+and then click on ``Finish``. Copy/paste the following example in ``MyTest.java`` file:
 
 .. code-block:: java
 
