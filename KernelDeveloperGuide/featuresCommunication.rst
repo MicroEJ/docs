@@ -6,6 +6,35 @@ Communication between Features
 Features can communicate together through the use of Shared Interfaces.
 This mechanism is described in :ref:`chapter.shared.interfaces` section.
 
+For Applications to use the Shared Interface mechanism, a Kernel must provide:
+
+* an API for a first Application to register its Shared Interface, and for a second Application to get a proxy on it
+* a set of registered Kernel types converters
+
+.. _kernel_service_registry:
+
+Kernel Service Registry
+-----------------------
+
+Although an Application can use another Application instance of a
+Shared Interface, it must, first, be provided a reference (a proxy of
+the other Application instance).
+
+For that, a Kernel must provide an API for Applications to register and
+retrieve instances of shared interface: a KF service registry.
+Such registry can be implemented using the `Kernel.bind()`_ KF API to
+create a proxy for the requesting consumer Application.
+
+.. _Kernel.bind(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#bind-T-java.lang.Class-ej.kf.Feature-
+
+Note that this can also be used for an Application instance of a Kernel
+type. In this case, a :ref:`Converter <kernel_type_converter>` must be
+defined and the converted instance is returned instead of creating a
+proxy.
+
+An implementation of such KF service registry is provided by the
+`Wadapps multisandbox implementation <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/library/wadapps/wadapps-multisandbox/>`_.
+
 .. _kernel_type_converter:
 
 Kernel Types Converter
