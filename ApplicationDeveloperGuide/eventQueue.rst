@@ -48,6 +48,10 @@ The Event Queue Foundation Library uses a dedicated Java thread to forward and p
 
 Events reading operations are done using the SNI mechanism. Event Queue Java thread is suspended when the events FIFO is empty and resumed when a new event is sent.
 
+.. note:: 
+
+   Events can not be sent from an interrupt unless the VEE Port implementation allows it.
+
 Event format
 ------------
 An event is composed of a type and, optionally, data. The type identifies the listener that will handle the event. 
