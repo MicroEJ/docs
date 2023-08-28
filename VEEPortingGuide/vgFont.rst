@@ -25,7 +25,7 @@ A font file:
 
 * is either a TTF or an OTF,
 * is identified by the resource name,
-* can be stored as internal resource or external (see :ref:`chapter.microej.applicationResources`).
+* can be stored as internal resource or external (see :ref:`vectorfont_external`).
 
 No data is stored in the Java heap. 
 The implementation is responsible for the font's cycle life: allocation and release.
@@ -61,10 +61,48 @@ There are two separate Abstraction Layer API header files (see :ref:`LLVG-FONT-A
 
 .. _VectorGraphicsPainter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html
 
+.. _section_vg_font_external:
+
+External Memory
+===============
+
+Principle
+~~~~~~~~~
+
+MicroVG does not provide some API to make the distinction between a font loaded from different kind of memories (internal or external, byte-addressable or not).
+The implementation must adjust itself how to load an read a font. The :ref:`CCO MicroVG and Freetype<section_vg_cco>` feature an option to enable the font management from an external memory which is not byte-addressable.
+This option requires an implementation of the :ref:`section_externalresourceloader`.
+
+Configuration File
+~~~~~~~~~~~~~~~~~~
+
+A Vector Font file is a *simple* resource.
+To specify this resource as an external resource, the font file path must be listed in a ``.externresources.list`` file in addition with the ``.resources.list`` file (see :ref:`chapter.microej.applicationResources`).
+
+Process
+~~~~~~~
+
+The following steps describe how to open an external resource from the application:
+
+1. Add the font in the application project (usually in the source folder ``src/main/resources`` and in the package ``fonts``).
+2. Create / open the configuration files (usually ``application.resources.list`` and ``application.externresources.list``).
+3. Add the relative path of the font in both file.
+4. Launch the application: the external resources are copied into the external resources folder (``[application_output_folder]/externalResources``).
+5. Deploy the external resources in the external memory (SDCard, flash, etc.).
+6. (optional) Update the implementation of the :ref:`section_externalresourceloader`.
+7. Build and link the application with the BSP.
+8. The application loads the external resource using `ej.microvg.VectorFont.loadFont()`_.
+9. Freetype (:ref:`section_vg_cco`) recognizes this resource as external resource; it configures itself to manage this resource differently than an internal resource.
+10. The application can use the font.
+
+.. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``.externresources.list`` files are copied in the external resources folder, and this folder is added to the simulator's classpath. 
+
 Use
 ===
 
 The MicroVG Font APIs are available in the class ``ej.microvg.`` `VectorFont`_.
+
+.. _ej.microvg.VectorFont.loadFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#loadFont-java.lang.String-
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
