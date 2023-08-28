@@ -8,13 +8,13 @@ Shared Interfaces
 Principle
 ---------
 
-The Shared Interface mechanism provided by MicroEJ Core Engine is an
+The Shared Interface mechanism provided by the Core Engine is an
 object communication bus based on plain Java interfaces where method
-calls are allowed to cross MicroEJ Sandboxed Applications boundaries
+calls are allowed to cross Sandboxed Applications boundaries
 without relying on Kernel APIs.
 
 The Shared Interface mechanism is the cornerstone for designing reliable
-Service Oriented Architectures on top of MicroEJ. Communication is based
+Service Oriented Architectures. Communication is based
 on the sharing of interfaces defining APIs (Contract Oriented
 Programming).
 
@@ -35,7 +35,7 @@ The basic schema:
    Shared Interface Call Mechanism
 
 The Shared Interface mechanism is based on automatic proxy objects
-created by the underlying MicroEJ Core Engine. This offers a reliable
+created by the Core Engine. This offers a reliable
 way for users to handle broken links in case the provider application
 has been stopped or uninstalled.
 
@@ -44,7 +44,7 @@ implementation (called the Proxy class implementation). Its main goal is
 to perform the remote invocation and provide a reliable implementation
 regarding the interface contract even if the remote application fails to
 fulfill its contract (unexpected exceptions, application killed, …). The
-MicroEJ Core Engine will allocate instances of this Proxy class when an
+Core Engine will allocate instances of this Proxy class when an
 implementation (of the Shared Interface) owned by another application is
 being transferred to this application.
 
@@ -151,14 +151,14 @@ application classpath, typically it is defined in the
 Use the Shared Interface at Runtime
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Projects structure
+Projects Structure
 ^^^^^^^^^^^^^^^^^^
 
 Both the consumer and the provider applications must have the Java
 interface, the proxy class and the identification file on the classpath
-in order to be able to use the shared interface.
+in order to be able to use the Shared Interface.
 
-Typically, the 3 files can be defined in an add-on library that both
+Typically, the 3 files can be defined in an Add-On Library that both
 application projects depend on.
 
 Create and Share an instance of a Shared Interface
@@ -185,7 +185,7 @@ using Wadapps' ``SharedServiceRegistry``:
 
    SharedServiceFactory.getSharedServiceRegistry().register(MyInterface.class, myInstance);
 
-Retrieve and Use a proxy of a Shared Interface instance
+Retrieve and Use a Proxy of a Shared Interface Instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The consumer application can then retrieve the instance from the Kernel
