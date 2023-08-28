@@ -329,7 +329,7 @@ Each type has its own Gradle plugin and configuration options.
 Refer to the module type you want to build to configure your project:
 
 - :ref:`Application <sdk_6_create_project_configure_application>`
-- :ref:`Add-on Library <sdk_6_create_project_configure_addon_library>`
+- :ref:`Add-On Library <sdk_6_create_project_configure_addon_library>`
 - :ref:`J2SE Library <sdk_6_create_project_configure_j2se_library>`
 
 
