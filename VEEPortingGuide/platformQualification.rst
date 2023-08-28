@@ -278,7 +278,7 @@ Create the Test Suite Runner Skeleton
   
   .. code-block:: XML
   
-        <project name="mylib.testsuite.override" xmlns:ac="antlib:net.sf.antcontrib">
+        <project name="myFoundationlib.testsuite.override" xmlns:ac="antlib:net.sf.antcontrib">
                 <!-- Load options from 'local.properties' beside this file -->
                 <ac:if>
                         <available file="local.properties" type="file"/>
