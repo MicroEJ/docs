@@ -847,6 +847,16 @@ A `ResourceVectorImage`_ image can be stored in an :ref:`external memory<chapter
 The management of this kind of image may be different than the compile-time images and can require some allocations in the MicroUI :ref:`images_heap`.
 For more details about the external image management, refers to the VEE Port Guide chapter :ref:`section_vg_image_external`.
 
+Caching Generated Images
+------------------------
+
+Images converted using the Image Generator can be cached so that they are not rebuilt every time the application is launched.
+Doing so can significantly speed up the application build phase.
+
+See :ref:`section_caching_generated_images` to have more details.
+
+.. note:: The cache is available from version 13.6 of the UI Pack.
+
 .. _vectorimage_limitations:
 
 Limitations / Supported Features
