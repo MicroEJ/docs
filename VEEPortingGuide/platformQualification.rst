@@ -136,9 +136,9 @@ To create the Test Suite module, click on: :guilabel:`File` > :guilabel:`New` > 
 
 Fill up the following fields of the form:
 
-- Project name
-- Organization
-- Module
+- Project name (e.g: ``myFoundationLib-testsuite``)
+- Organization (e.g: ``com.mycompany``)
+- Module (e.g: ``myFoundationLib-testsuite``)
 - Revision (version of your Test Suite module)
 - Select the Skeleton: ``microej-javaimpl``
 
@@ -165,7 +165,7 @@ Open the ``module.ivy`` file and follow steps below:
   
   .. code-block:: XML
   
-          <ea:build organisation="com.is2t.easyant.buildtypes" module="build-microej-javaimpl" revision="5.1.+" microej.lib.name="myLib-testsuite-1.0" rip.printableName="myLib-testsuite Impl">
+		<ea:build organisation="com.is2t.easyant.buildtypes" module="build-microej-javaimpl" microej.lib.name="myFoundationLib-testsuite-1.0" rip.printableName="myFoundationLib Test Suite Impl" revision="5.2.+">
   
 - Add the following properties in the ``ivy-module > info`` node:
   
@@ -229,7 +229,7 @@ Test the Test Suite Module Generation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Right-click on the project and select ``Build module``
-- Check the content of the generated archive ``target~\test-rips\javaLibs\myLib-testsuite-X.X.jar``
+- Check the content of the generated archive ``target~\test-rips\javaLibs\myFoundationLib-testsuite-X.X.jar``
 - If it worked, you can see ``.class`` files inside the archive
 
 Create the Test Suite Runner Project
@@ -254,7 +254,7 @@ Create the Test Suite Runner Skeleton
   
   .. code-block:: XML
         
-        <dependency org="com.mycompany" name="myLib-testsuite" rev="0.1.0" conf="test->default;provided->provided"/>
+        <dependency org="com.mycompany" name="myFoundationLib-testsuite" rev="0.1.0" conf="test->default;provided->provided"/>
 
 - Add the following target to the ``module.ant`` at the root of the Test Suite project with the following content:
   
