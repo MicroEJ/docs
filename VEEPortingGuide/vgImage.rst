@@ -25,7 +25,7 @@ A compile-time image file:
 * is either an AVD (Android Vector Drawable) or a Scalable Vector Graphics (SVG), 
 * is identified by the resource name,
 * is encoded in a binary format compatible with the :ref:`image renderer <section_vg_image_engine>`,
-* can be stored as an internal resource or an external one (see :ref:`chapter.microej.applicationResources`, but only in a byte-addressable memory),
+* can be stored as an internal resource or an external one (see :ref:`section_vg_image_external`),
 * is an immutable image: the application cannot draw into it.
 
 .. _section_vg_image_generator:
@@ -73,22 +73,56 @@ Resource Vector Image
 
 The Image module implements the MicroVG `ResourceVectorImage`_ framework. 
 
-External Memory
----------------
-
-MicroVG provides the API `ResourceVectorImage.loadImage()`_.
-This is an extension of the compile-time images (the concepts are exactly the same), but it allows a load of a RAW image stored in an external memory that is not byte-addressable.
-
-However, the RAW image data must be copied into a byte-addressable memory to use it. 
-No data is stored in the Java heap: the image data should be copied into the MicroUI image heap.
-The implementation is responsible for the image's lifecycle: allocation and release (already implemented in the :ref:`section_vg_cco`).
-
 Filtered Image
 --------------
 
 MicroVG provides the API `VectorImage.filterImage()`_ to decline an image in another image using a 4x5 color matrix.
-The resulting image is a copy of the original (plus color transformation) stored in the MicroUI images heap.
+The resulting image is a copy of the original (plus color transformation) stored in the MicroUI :ref:`images_heap`.
 The implementation is responsible for the image's lifecycle: allocation and release (already implemented in the :ref:`section_vg_cco`).
+
+.. _section_vg_image_external:
+
+External Memory
+---------------
+
+Principle
+~~~~~~~~~
+
+MicroVG provides the API `ResourceVectorImage.loadImage()`_.
+This is an extension of the compile-time images (the concepts are exactly the same), but it allows a load of a RAW image stored in an external memory that is not byte-addressable.
+
+When the image is stored in an external byte-addressable memory, the image cycle-life is identical as the compile-time image.
+However, when the image is stored the in an external memory which is not byte-addressable, the RAW image data must be copied into a byte-addressable memory to use it. 
+No data is stored in the Java heap: the image data should be copied into the MicroUI :ref:`images_heap`.
+The implementation is responsible for the image's lifecycle: allocation and release (already implemented in the :ref:`section_vg_cco`).
+
+Configuration File
+~~~~~~~~~~~~~~~~~~
+
+Like compile-time images, the :ref:`section_vg_image_generator` uses a list file whose extension is ``.externvectorimages.list``. 
+The rules are exactly the sames than the compile-time images.
+
+Process
+~~~~~~~
+
+The process to open a Vector Image from an external memory is exactly the same than the loading of :ref:`an external MicroUI Image<section_image_external_memory>` . 
+
+The following steps describe how to open an external resource from the application:
+
+1. Add the image in the application project (usually in the source folder ``src/main/resources`` and in the package ``images``).
+2. Create / open the configuration file (usually ``application.externvectorimages.list``).
+3. Add the relative path of the image: see :ref:`section_vg_image_generator`.
+4. Launch the application: the Image Generator converts the image in RAW format in the external resources folder (``[application_output_folder]/externalResources``).
+5. Deploy the external resources in the external memory (SDCard, flash, etc.).
+6. (optional) Update the implementation of the :ref:`section_externalresourceloader`.
+7. Build and link the application with the BSP.
+8. The application loads the external resource using `ResourceVectorImage.loadImage()`_.
+9. The image loader looks for the image and copies it in the :ref:`images heap<section_image_loader_memory>` (no copy if the external memory is byte-addressable).
+10. The external resource is immediately closed: the image's bytes have been copied in the images heap, or the image's bytes are always available (byte-addressable memory).
+11. The application can use the image.
+12. The application closes the image: the image is removed from the image heap.
+
+.. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``.externvectorimages.list`` files are generated in the external resources folder, and this folder is added to the simulator's classpath. 
 
 Buffered Vector Image
 =====================
