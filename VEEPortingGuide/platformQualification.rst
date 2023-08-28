@@ -181,18 +181,18 @@ Open the ``module.ivy`` file and follow steps below:
 
 		<dependency org="ej.library.test" name="junit" rev="1.7.1" conf="default;test->*"/>
 
-Add a ``module.ant`` file at the root of the Test Suite project with the following content:
+- Add a ``module.ant`` file at the root of the Test Suite project with the following content:
 
   .. code-block:: XML
 
-	<project>
-		<target name="BuildTestTarget" extensionOf="abstract-compile:compile-ready" depends="resources-std:copy-test-resources">
-			<augment id="src.java.path">
-				<path location="${basedir}/src/test/java" />
-				<path location="${target}/adpgenerated/src-adpgenerated/junit/java"/>
-			</augment>
-		</target>
-	</project>
+		<project>
+			<target name="BuildTestTarget" extensionOf="abstract-compile:compile-ready" depends="resources-std:copy-test-resources">
+				<augment id="src.java.path">
+					<path location="${basedir}/src/test/java" />
+					<path location="${target}/adpgenerated/src-adpgenerated/junit/java"/>
+				</augment>
+			</target>
+		</project>
 
 
 Create a New Test Case
