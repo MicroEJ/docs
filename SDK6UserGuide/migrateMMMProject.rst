@@ -57,7 +57,7 @@ Build Type
 ~~~~~~~~~~
 
 The MMM build type defined in the ``module.ivy`` file with the ``ea:build`` tag is replaced by a plugin in the ``build.gradle.kts`` file.
-For example, here is the block to add at the beginning of the file to migrate a ``microej-javalib`` MMM module::
+For example, here is the block to add at the beginning of the file to migrate a ``build-microej-javalib`` MMM module::
 
    plugins {
        id("com.microej.gradle.addon-library") version "0.8.0"
@@ -70,12 +70,14 @@ The mapping between MMM build types and Gradle plugins is:
 
    * - **MMM Build Type**
      - **Gradle Plugin**
-   * - ``microej-javalib``
+   * - ``build-microej-javalib``
      - ``com.microej.gradle.addon-library``
-   * - ``microej-application``
+   * - ``build-application``
      - ``com.microej.gradle.application``
-   * - ``microej-firmware-singleapp``
+   * - ``build-firmware-singleapp``
      - ``com.microej.gradle.application``
+   * - ``build-std-javalib``
+     - ``com.microej.gradle.j2se-library``
 
 Module Information
 ~~~~~~~~~~~~~~~~~~
