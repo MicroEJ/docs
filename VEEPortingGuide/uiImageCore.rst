@@ -632,12 +632,6 @@ It is also possible to declare it programmatically (see where a drawer is regist
 
    LLUIDisplay.Instance.registerUIImageDrawer(new MyCustomImageDrawer());
 
-Dependencies
-============
-
--  MicroUI module (see :ref:`section_microui`),
--  Display module (see :ref:`section_display`).
-
 Installation
 ============
 

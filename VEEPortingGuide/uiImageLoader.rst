@@ -131,13 +131,6 @@ Some additional decoders can be added. Implement the function ``LLUI_DISPLAY_IMP
 
 -  Waiting the end of decoding step before returning.
 
-
-Dependencies
-============
-
--  Image Renderer module (see :ref:`section_image_core`)
-
-
 .. _section_decoder_installation:
 
 Installation
