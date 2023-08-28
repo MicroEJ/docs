@@ -128,6 +128,43 @@ the ``buildVirtualDevice`` task:
       
       - Click on ``Run``.
 
+
+.. _sdk_6_buildVirtualDevice_add_application:
+
+Add a Pre-Installed Application in a Virtual Device
+---------------------------------------------------
+
+When building a Virtual Device for a Kernel, Applications can be pre-installed inside.
+These Applications can be loaded and started when the Kernel starts for example.
+
+To install an Application in a Virtual Device for a Kernel, 
+you must declare the Application as a dependency of the project in the build file, with the ``microejApplication`` configuration::
+
+   dependencies {
+      microejApplication("com.mycompany:myapp:1.0.0")
+   }
+
+.. warning::
+   - Only modules with the :ref:`Application Module Nature <sdk6_module_natures.application>` can be declared this 
+     way (modules built with the ``com.microej.gradle.application`` plugin).
+     Declaring a module with another Module Nature would make the build fail.
+   - The VEE Port used to create the Virtual Device has to be a Multi-Sandbox VEE Port to support the load of these 
+     pre-installed Applications.
+
+
+.. _sdk_6_buildVirtualDevice_add_kernel_api:
+
+Add a Kernel API in a Virtual Device
+------------------------------------
+
+When building a Virtual Device for a Kernel, the Kernel must define the set of classes, methods and static fields all 
+applications are allowed to use.
+This can be done by declaring :ref:`Kernel APIs <kernel.api>` as a dependency in the build file::
+
+   dependencies {
+      implementation("com.microej.kernelapi:edc:1.2.0")
+   }
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
