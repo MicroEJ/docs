@@ -308,15 +308,6 @@ external memory.
 * Refer to the chapter :ref:`section.ui.Images` to have more details how to use this kind of resources.
 * Refer to the chapter :ref:`section_image_external_memory` to have more details how the Image Engine manages this kind of resources.
   
-Dependencies
-============
-
--  Image Renderer module (see :ref:`section_image_core`).
-
--  Display module (see :ref:`section_display`): This module gives
-   the characteristics of the graphical display that are useful to configure the Image Generator.
-
-
 .. _section_imagen_installation:
 
 Installation
