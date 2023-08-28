@@ -50,7 +50,7 @@ Events reading operations are done using the SNI mechanism. Event Queue Java thr
 
 .. note:: 
 
-   Events can not be sent from an interrupt unless the VEE Port implementation allows it.
+   Events can not be sent from the Interrupt Handler unless the VEE Port implementation allows it.
 
 Event format
 ------------
