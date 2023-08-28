@@ -258,7 +258,7 @@ Create the Test Suite Runner Skeleton
         	</condition>
         </target>
 
-- Create a ``override.module.ant`` file at the root of the project. Add the following content:
+- Create the file ``override.module.ant`` at the root of the project. Add the following content:
   
   .. code-block:: XML
   
