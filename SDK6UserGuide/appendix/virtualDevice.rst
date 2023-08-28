@@ -57,12 +57,12 @@ The following elements are also embedded in the Virtual Device:
 
 - a Kernel Application, whose WPK file is extracted in the ``main-application`` folder of the Virtual Device
 
-- the WPK files of System Applications that are extracted in their own folder, in the ``installed-applications/`` folder that is empty by default
+- the WPK files of pre-installed Applications that are extracted in their own folder, in the ``installed-applications/`` folder that is empty by default
 
 .. note::
 
-   System Applications can only be embedded in a Multi-Sandboxed Virtual Device.
-   In case of a Mono-Sandboxed Virtual Device, the ``installed-applications/`` folder is always empty.
+   Applications can only be pre-installed in a Multi-Sandbox Virtual Device.
+   In case of a Mono-Sandbox Virtual Device, the ``installed-applications/`` folder is always empty.
 
 - the ``options/target.properties``, that contains the properties of the VEE Port used to build the Virtual Device
 
