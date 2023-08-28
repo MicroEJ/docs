@@ -165,7 +165,7 @@ Open the ``module.ivy`` file and follow steps below:
   
   .. code-block:: XML
   
-          <ea:build organisation="com.is2t.easyant.buildtypes" module="build-microej-javaimpl" revision="5.1.+" microej.lib.name="myLib-testsuite-1.0" rip.printableName="myLib-testsuite Impl">``
+          <ea:build organisation="com.is2t.easyant.buildtypes" module="build-microej-javaimpl" revision="5.1.+" microej.lib.name="myLib-testsuite-1.0" rip.printableName="myLib-testsuite Impl">
   
 - Add the following properties in the ``ivy-module > info`` node:
   
