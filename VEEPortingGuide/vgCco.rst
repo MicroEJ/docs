@@ -108,17 +108,50 @@ This file (a header file with some C defines) enables (or disables) and configur
 Library: Freetype
 =================
 
+Description
+-----------
+
 The Freetype library compatible with MicroEJ is packaged in a C module on the :ref:`developer_repository`: `com.microej.clibrary.thirdparty#freetype`_.
 
 .. _com.microej.clibrary.thirdparty#freetype: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/freetype/
 
 This C module provides a fork of Freetype 2.11.0.
 
+Memory Heap Configuration
+-------------------------
+
 The Freetype library requires a memory Heap for Freetype internal objects allocated when a font file is loaded (see https://freetype.org/freetype2/docs/design/design-4.html). 
 The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves. 
 This size is defined by ``VG_FEATURE_FREETYPE_HEAP_SIZE_HEAP`` in ``microvg_configuration.h``.
 
 All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``microvg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the Freetype heap evolution.
+
+Principle
+---------
+
+#. The Application loads a font with `VectorFont.loadFont()`.
+
+   * If the resource is external, it is opened.
+   * If the external resource is not from byte-addressable memory, the Freetype library is configured to read from that memory when needed.
+   * At this point, the font resources are allocated and the font generic data (including baseline & height metrics) is loaded on the FreeType dedicated heap.
+
+#. The Application requests metrics.
+
+   * For font generic metric, already loaded data is directly used.
+   * For text-dependent metrics: computed by loading metrics of every glyph required by the input string (the glyphs bitmaps are not actually loaded here).
+
+#. The Application requests drawings.
+
+   * For every character to draw:
+
+     * the associated glyph is loaded,
+     * the bitmap is rendered for the given font size and
+     * the character is drawn in the given graphic context.
+
+#. The Application unloads the font with `VectorFont.close()`.
+
+   * Any resource associated with the font is released.
+   * At this point, any attempt to use the font will result in an exception.
 
 Library: Harfbuzz
 =================
