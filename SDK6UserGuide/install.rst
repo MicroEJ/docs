@@ -112,9 +112,9 @@ Once your favorite IDE is installed, the MicroEJ plugin must be installed.
 
       Follow these steps to install the latest stable version of the MicroEJ plugin for IntelliJ IDEA:
       
-      - In IntelliJ IDEA, open the Settings window (menu ``File > Settings...`` on Windows and Linux, 
-        menu ``IntelliJ IDEA > Preferences...`` on macOS).
-      - Go to ``Plugins`` menu.
+      - In IntelliJ IDEA, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, 
+        menu :guilabel:`IntelliJ IDEA` > :guilabel:`Preferences...` on macOS).
+      - Go to :guilabel:`Plugins` menu.
       - In the search field, type ``MicroEJ``:
       
       .. figure:: images/intellij-install-plugin.png
@@ -124,59 +124,46 @@ Once your favorite IDE is installed, the MicroEJ plugin must be installed.
       
          IntelliJ IDEA Plugin Installation
       
-      - Click on the ``Install`` button.
-      - Click on the ``Restart IDE`` button.
+      - Click on the :guilabel:`Install` button.
+      - Click on the :guilabel:`Restart IDE` button.
 
       To install the snapshot version of the MicroEJ plugin, please refer to :ref:`sdk_6_install_plugin_snapshot`.
       
    .. tab:: Eclipse
 
       Follow these steps to install the latest stable version of the MicroEJ plugin for Eclipse:
-      
-      - In Eclipse, go to ``Help > Install New Software...``.
-      - Click on the ``Add...`` button.
-      - In the ``Name`` field, type ``MicroEJ``.
-      - In the ``Location`` field, type ``https://repository.microej.com/p2/eclipse/``.
-      
-      .. figure:: images/eclipse-install-plugin-add-repository.png
-         :alt: Eclipse Plugin Installation - Add Repository
-         :align: center
-         :scale: 70%
-      
-         Eclipse Plugin Installation - Add Repository
-      
-      - Click on the ``Add`` button.
-      - In the ``Work with:`` list, select the ``MicroEJ`` entry.
-      - Check the ``MicroEJ`` item that appears in the panel below.
-      
-      .. figure:: images/eclipse-install-plugin.png
-         :alt: Eclipse Plugin Installation
-         :align: center
-         :scale: 70%
-      
-         Eclipse Plugin Installation
-      
-      - Click on the ``Next`` button.
-      - Accept the license agreement and click on the ``Finish`` button.
-      - In the upcoming ``Trust Authorities`` window, check the ``https://repository.microej.com`` item and click on the ``Trust Selected`` button.
-      
-      .. figure:: images/eclipse-install-plugin-trust-01.png
-         :alt: Eclipse Plugin Installation - Trust Authorities
-         :align: center
-         :scale: 70%
-      
-         Eclipse Plugin Installation - Trust Authorities
-      
-      - In the upcoming ``Trust Artifacts`` window, check the ``Unsigned`` item and click on ``Trust Selected`` button.
-      
-      .. figure:: images/eclipse-install-plugin-trust-02.png
-         :alt: Eclipse Plugin Installation - Trust Artifacts
-         :align: center
-         :scale: 70%
-      
-         Eclipse Plugin Installation - Trust Artifacts
-      
-      - In the upcoming window, click on the ``Restart Now`` button.
+            
+         - In Eclipse, go to :guilabel:`Help` > :guilabel:`Eclipse Marketplace...`.
+         - In the search field, type ``MicroEJ`` and press Enter:
+            
+         .. figure:: images/eclipse-install-plugin-marketplace.png
+            :alt: Eclipse Plugin Installation - Marketplace
+            :align: center
+            :scale: 70%
+         
+            Eclipse Plugin Installation - Marketplace
+            
+         - Click on the :guilabel:`Install` button.
+         - Accept the license agreement and click on the :guilabel:`Finish` button.
+         - In the upcoming :guilabel:`Trust Authorities` window, check the ``https://repository.microej.com`` item and click on the :guilabel:`Trust Selected` button.
+            
+         .. figure:: images/eclipse-install-plugin-trust-01.png
+            :alt: Eclipse Plugin Installation - Trust Authorities
+            :align: center
+            :scale: 70%
+         
+            Eclipse Plugin Installation - Trust Authorities
+            
+         - In the upcoming :guilabel:`Trust Artifacts` window, check the :guilabel:`Unsigned` item and click on :guilabel:`Trust Selected` button.
+            
+         .. figure:: images/eclipse-install-plugin-trust-02.png
+            :alt: Eclipse Plugin Installation - Trust Artifacts
+            :align: center
+            :scale: 70%
+         
+            Eclipse Plugin Installation - Trust Artifacts
+            
+         - In the upcoming window, click on the :guilabel:`Restart Now` button.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free
