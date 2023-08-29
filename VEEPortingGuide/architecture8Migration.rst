@@ -32,22 +32,33 @@ The code logic based on a ``malloc/free`` implementation does not need to be cha
    // Your implementation of 'ASSERT(0)'
    #define KERNEL_ASSERT_FAIL() while(1)
 
+   // Utility macros for allocating RAM and ROM areas with required alignment constraints
+   #define KERNEL_AREA_GET_MAX_SIZE(size, alignment) (size+(alignment-1))
+   #define KERNEL_AREA_GET_START_ADDRESS(addr, alignment) ((void*)((((int32_t)addr)+alignment-1)&~(alignment-1)))
+
    struct installed_feature{
       void* ROM_area;
       void* RAM_area;
    };
 
    int32_t LLKERNEL_IMPL_allocateFeature(int32_t size_ROM, int32_t size_RAM) {
-      struct installed_feature* f = (struct installed_feature*)KERNEL_MALLOC(sizeof(struct installed_feature));
-      f->ROM_area = KERNEL_MALLOC(size_ROM);
-      f->RAM_area = KERNEL_MALLOC(size_RAM);
+      int total_size = sizeof(struct installed_feature);
+      total_size += KERNEL_AREA_GET_MAX_SIZE(size_ROM, LLKERNEL_ROM_AREA_ALIGNMENT);
+      total_size += KERNEL_AREA_GET_MAX_SIZE(size_RAM, LLKERNEL_RAM_AREA_ALIGNMENT);
+
+      void* total_area = KERNEL_MALLOC(total_size);
+      if(total_area == 0){
+         // Out of memory
+         return 0;
+      }
+
+      struct installed_feature* f = (struct installed_feature*)total_area;
+      f->ROM_area = KERNEL_AREA_GET_START_ADDRESS(f+sizeof(struct installed_feature), LLKERNEL_ROM_AREA_ALIGNMENT);
+      f->RAM_area = KERNEL_AREA_GET_START_ADDRESS(f->ROM_area+size_ROM, LLKERNEL_RAM_AREA_ALIGNMENT);
       return (int32_t)f;
    }
 
    void LLKERNEL_IMPL_freeFeature(int32_t handle) {
-      struct installed_feature* f = (struct installed_feature*)handle;
-      KERNEL_FREE(f->ROM_area);
-      KERNEL_FREE(f->RAM_area);
       KERNEL_FREE(handle);
    }
 
@@ -62,13 +73,11 @@ The code logic based on a ``malloc/free`` implementation does not need to be cha
    }
 
    void* LLKERNEL_IMPL_getFeatureAddressRAM(int32_t handle) {
-      struct installed_feature* f = (struct installed_feature*)handle;
-      return f->RAM_area;
+      return ((struct installed_feature*)handle)->RAM_area;
    }
 
    void* LLKERNEL_IMPL_getFeatureAddressROM(int32_t handle) {
-      struct installed_feature* f = (struct installed_feature*)handle;
-      return f->ROM_area;
+      return ((struct installed_feature*)handle)->ROM_area;
    }
 
    int32_t LLKERNEL_IMPL_copyToROM(void* dest_address_ROM, void* src_address, int32_t size) {
