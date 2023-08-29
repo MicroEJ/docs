@@ -13,7 +13,10 @@ Migrate Your LLKERNEL Implementation
 ------------------------------------
 
 This section only applies if your LLKERNEL was based on legacy :ref:`In-Place Installation mode <feature_inplace_installation>`. 
-The following code is a ``LLKERNEL_impl.c`` template for migrating your current implementation using the new APIs.
+The Kernel Working Buffer no longer exists. The functions ``LLKERNEL_IMPL_allocateWorkingBuffer()`` and ``LLKERNEL_IMPL_freeWorkingBuffer()`` have been removed.
+
+Memory allocation for the Features will now use the function ``LLKERNEL_IMPL_allocateFeature()``. 
+The following code is a ``LLKERNEL_impl.c`` template for migrating your current implementation using this API.
 The code logic based on a ``malloc/free`` implementation does not need to be changed.
 
 .. code-block:: c
