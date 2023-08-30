@@ -582,34 +582,38 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
     .. tab:: Linker Sections (Architecture ``8.x``)
 
         .. table:: 
+            :widths: 15 30 5 5
         
-            +--------------------------------+-----------------------------+-------------+------------+
-            | Section name                   | Aim                         | Location    | Alignment  |
-            |                                |                             |             | (in bytes) |
-            +================================+=============================+=============+============+
-            | ``.bss.microej.heap``          | Application heap            | RW          | 4          |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.bss.microej.immortals``     | Application immortal heap   | RW          | 4          |
-            |                                |                             |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.bss.microej.stacks``        | Application threads stack   | RW [1]_     | 8          |
-            |                                | blocks                      |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.bss.microej.statics``       | Application static fields   | RW          | 8          |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.rodata.microej.resource.*`` | Application resources       | RO          | 16         |
-            |                                | (one section per resource)  |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.rodata.microej.soar``       | Application and library     | RO          | 16         |
-            |                                | code                        |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.bss.microej.runtime``       | Core Engine                 | RW [1]_     | 8          |
-            |                                | internal structures         |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.text.__icetea__*``          | Core Engine                 | RX          | ISA        |
-            |                                | generated code              |             | Specific   |
-            +--------------------------------+-----------------------------+-------------+------------+
-
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | Section name                   | Aim                               | Location    | Alignment  |
+            |                                |                                   |             | (in bytes) |
+            +================================+===================================+=============+============+
+            | ``.bss.microej.heap``          | Application heap                  | RW          | 4          |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.bss.microej.immortals``     | Application immortal heap         | RW          | 4          |
+            |                                |                                   |             |            |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.bss.microej.stacks``        | Application threads stack         | RW [1]_     | 8          |
+            |                                | blocks                            |             |            |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.bss.microej.statics``       | Application static fields         | RW          | 8          |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.rodata.microej.resource.*`` | Application resources             | RO          | 16         |
+            |                                | (one section per resource)        |             |            |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.rodata.microej.soar``       | Application and library           | RO          | 16         |
+            |                                | code                              |             |            |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.bss.microej.runtime``       | Core Engine                       | RW [1]_     | 8          |
+            |                                | internal structures               |             |            |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.text.__icetea__*``          | Core Engine                       | RX          | ISA        |
+            |                                | generated code                    |             | Specific   |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.bss.microej.kernel``        | Core Engine Multi-Sandbox section |             |            |
+            |                                | (Feature code chunk)              | RW          | 4          |
+            +--------------------------------+-----------------------------------+-------------+------------+
+   
         .. note::
             
             During its startup, the Core Engine automatically zero-initializes the sections ``.bss.microej.runtime``, ``.bss.microej.heap``, and ``.bss.microej.immortals``. 
@@ -617,6 +621,7 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
     .. tab:: Linker Sections (Architecture ``7.x``)
 
         .. table:: 
+            :widths: 15 30 5 5
                 
             +-----------------------------+-----------------------------+-------------+------------+
             | Section name                | Aim                         | Location    | Alignment  |
