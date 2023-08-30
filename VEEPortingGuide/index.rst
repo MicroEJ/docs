@@ -26,6 +26,7 @@ VEE Porting Guide
    microai
    packEventQueue
    fs
+   gnss
    hal
    device
    security
