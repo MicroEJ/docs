@@ -60,6 +60,19 @@ This chapter explains the different ways to create a new project.
 
    .. tab:: Eclipse
 
+      .. warning::
+         
+         Before creating a project, make sure that the JDK used by the Gradle plugin is correctly configured.
+         The latest versions of Eclipse comes with a JRE 17 installed by default.
+         If the Gradle plugin configuration is not updated, Gradle will use this JRE 17 to execute the builds,
+         which will make the build fail since the MicroEJ plugins only support JDK 11.
+         To configure the Gradle plugin:
+         
+         - Go to :guilabel:`Window` > :guilabel:`Preferences`.
+         - Click on :guilabel:`Gradle`.
+         - In the :guilabel:`Java home` field, set the full path of your JDK 11 installation.
+         - Click on :guilabel:`Apply and Close` button.
+
       The creation of a project with Eclipse is done as follows:
       
       - Click on ``File`` > ``New`` > ``Project...``.

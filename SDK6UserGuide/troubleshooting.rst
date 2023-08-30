@@ -63,6 +63,21 @@ The solution is to use a JDK 11 to fix this error:
 
 		Project JDK in IntelliJ IDEA
 
+Wrong JDK version used by the Eclipse Gradle plugin
+---------------------------------------------------
+
+In Eclipse, if the error ``Invalid JDK version. The plugin requires a JDK 11, whereas a JDK 17 is used.`` is raised, 
+make sure that the JDK used by the Gradle plugin is correctly configured.
+The latest versions of Eclipse comes with a JRE 17 installed by default.
+If the Gradle plugin configuration is not updated, Gradle will use this JRE 17 to execute the builds,
+which will make the build fail since the MicroEJ plugins only support JDK 11.
+To configure the Gradle plugin:
+
+- Go to :guilabel:`Window` > :guilabel:`Preferences`.
+- Click on :guilabel:`Gradle`.
+- In the :guilabel:`Java home` field, set the full path of your JDK 11 installation.
+- Click on :guilabel:`Apply and Close` button.
+
 Failing Resolution in ``adp`` Task
 ----------------------------------
 
