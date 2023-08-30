@@ -55,7 +55,7 @@ the following dependency to the :ref:`module.ivy <mmm_module_description>` file:
 
 ::
 
-	<dependency org="com.microej.pack.gnss" name="gnss-pack" rev="1.1.1" />
+	<dependency org="com.microej.pack.gnss" name="gnss-pack" rev="2.0.0" />
 
 The Platform project must be rebuilt (:ref:`platform_build`).
 
@@ -67,7 +67,7 @@ Application project to use the GNSS library.
 
 .. code-block:: xml
 
-   <dependency org="ej.api" name="gnss" rev="1.1.0"/>
+   <dependency org="ej.api" name="gnss" rev="2.0.0"/>
 
 .. _GNSS API Module: https://repository.microej.com/modules/ej/api/gnss/
 
