@@ -188,6 +188,19 @@ FS Pack
      - `2.0.6 <https://repository.microej.com/modules/ej/api/fs/2.0.6/>`__
      - On demand [1]_
 
+GNSS Pack
+---------
+
+.. list-table:: GNSS API Implementation and Validation
+   :widths: 20 10 10
+
+   * - GNSS Pack
+     - GNSS API
+     - Java Test Suite
+   * - 2.0.0
+     - `2.0.0 <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/gnss/2.0.0/>`__
+     - `2.0.0 <https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/pack/gnss/gnss-testsuite/2.0.0/>`__
+
 .. _test_suite_versioning_bluetooth:
 
 Bluetooth Pack

@@ -962,6 +962,27 @@ Two C header files are provided:
    Defines a set of functions that the BSP must implement to do some I/O
    operations on files (open, read, write, close, etc.).
 
+.. _LLGNSS-API-SECTION:
+
+LLGNSS: GNSS
+============
+
+Naming Convention
+-----------------
+
+The Low Level GNSS API (LLGNSS), relies on functions that need to
+be implemented by engineers in a driver. The names of these functions
+match the ``LLGNSS_IMPL_*`` pattern.
+
+Header Files
+------------
+
+One header file is provided:
+
+-  LLGNSS_impl.h
+
+   Defines the set of functions that the BSP must implement to manage and configure
+   GNSS engine.
 
 .. _LLHAL-API-SECTION:
 
