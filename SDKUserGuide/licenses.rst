@@ -28,11 +28,11 @@ Architectures are distributed in two different versions:
 - Evaluation Architectures, associated with a software license key. They can be downloaded at `<https://repository.microej.com/modules/com/microej/architecture/>`_.
 - Production Architectures, associated with a hardware license key stored on a USB dongle. They can be requested to :ref:`our support team <get_support>`.
 
-The license manager is provided with Architectures and then integrated into Platforms, consequently:
+The license manager is provided with Architectures and then integrated into VEE Ports, consequently:
 
-- Evaluation licenses will be shown only if at least one Evaluation Architecture or Platform built from an Evaluation Architecture 
+- Evaluation licenses will be shown only if at least one Evaluation Architecture or VEE Port built from an Evaluation Architecture 
   has been imported in the SDK.
-- Production licenses will be shown only if at least one Production Architecture or Platform built from a Production Architecture 
+- Production licenses will be shown only if at least one Production Architecture or VEE Port built from a Production Architecture 
   has been imported in the SDK.
 
 The list of installed licenses is available in the SDK preferences dialog page in :guilabel:`Window`
@@ -79,10 +79,10 @@ to activate an Evaluation license on the MicroEJ Licenses Server. The machine UI
 Get your Machine UID
 ~~~~~~~~~~~~~~~~~~~~
 
-Retrieving the machine UID depends on the kind of MicroEJ Platform being evaluated.
+Retrieving the machine UID depends on the kind of VEE Port being evaluated.
 
-If your MicroEJ Platform is already :ref:`imported in Package Explorer <source_platform_import>` and built with :ref:`mmm`, the Architecture has been automatically imported.
-The machine UID will be displayed when building a :ref:`MicroEJ Standalone Application on device <device_build>`.
+If your VEE Port is already :ref:`imported in Package Explorer <source_platform_import>` and built with :ref:`mmm`, the Architecture has been automatically imported.
+The machine UID will be displayed when building a :ref:`Standalone Application on device <device_build>`.
 
 .. code-block:: console
    :emphasize-lines: 1
@@ -90,17 +90,17 @@ The machine UID will be displayed when building a :ref:`MicroEJ Standalone Appli
    [INFO ] Launching in Evaluation mode. Your UID is XXXXXXXXXXXXXXXX.
    [ERROR] Invalid license check (No license found).
 
-Otherwise, an Architecture or Platform should have been manually imported from the SDK preferences page. 
+Otherwise, an Architecture or VEE Port should have been manually imported from the SDK preferences page. 
 The machine UID can be retrieved as follows:
 
 - Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ`,
-- Select either :guilabel:`Architectures` or :guilabel:`Platforms`, 
-- Click on one of the available Architectures or Platforms,
+- Select either :guilabel:`Architectures`, :guilabel:`Platforms in workspace` or :guilabel:`Platforms`, 
+- Click on one of the available items,
 - Press the :guilabel:`Get UID` button to get the machine UID.
 
 .. note:: 
 
-   To access this :guilabel:`Get UID` option, at least one Evaluation Architecture or Platform must have been imported before (see :ref:`license_manager`).
+   To access this :guilabel:`Get UID` option, at least one Evaluation Architecture or VEE Port must have been imported before (see :ref:`license_manager`).
 
 Copy the UID. It will be needed when requesting a license.
 
@@ -128,7 +128,7 @@ Request your Activation Key
 Install the License Key
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-If your MicroEJ Platform is already :ref:`imported in Package Explorer <source_platform_import>` and built with :ref:`mmm`, 
+If your VEE Port is already :ref:`imported in Package Explorer <source_platform_import>` and built with :ref:`mmm`, 
 the license key zip file must be simply dropped to the ``~/.microej/licenses/`` directory (create it if it doesn't exist).
 
 .. figure:: images/user_license_folder.png
@@ -139,7 +139,7 @@ the license key zip file must be simply dropped to the ``~/.microej/licenses/`` 
 
 .. note::
   
-   The SDK Preferences page will be automatically refreshed when building a :ref:`MicroEJ Standalone Application on device <device_build>`.
+   The SDK Preferences page will be automatically refreshed when building a :ref:`Standalone Application on device <device_build>`.
 
 Otherwise, the license key must be installed as follows:
 
@@ -294,19 +294,19 @@ Check Activation on SDK
 
 .. note::
 
-   Production licenses will be shown only if at least one Production Architecture or Platform has been imported before (see :ref:`license_manager`).
+   Production licenses will be shown only if at least one Production Architecture or VEE Port has been imported before (see :ref:`license_manager`).
 
 - Go back to the SDK,
 - Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ`,
-- Go to :guilabel:`Architectures` or :guilabel:`Platforms` sub-menu and check that all Production Architectures or Platforms are now activated (green check).
+- Go to :guilabel:`Architectures`, :guilabel:`Platforms in workspace` or :guilabel:`Platforms` sub-menu and check that all items are now activated (green check).
 
 .. figure:: images/dongle/platformLicenseDetails.png
-   :alt: Platform License Status OK
+   :alt: License Status OK
    :align: center
    :width: 926px
    :height: 324px
 
-   Platform License Status OK
+   License Status OK
 
 .. _production_license_linux:
 
@@ -340,7 +340,7 @@ The output of the command should contain a line similar to the one below for eac
 USB Dongle with Docker on Linux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you use the `SDK Docker image <https://hub.docker.com/r/microej/sdk>`__ on a Linux host to build a Firmware, 
+If you use the `SDK Docker image <https://hub.docker.com/r/microej/sdk>`__ on a Linux host to build an Executable, 
 the dongle must be mapped to the Docker container.
 First, it requires to add a symlink on the dongle by following the instructions of the :ref:`production_license_linux` section but
 with this ``/etc/udev/rules.d/91-usbdongle.rules`` file:
@@ -433,7 +433,7 @@ Windows Troubleshooting
 
   .. figure:: images/dongle/runAsAdministrator.png
 
-- If the following error message is thrown when building a MicroEJ Firmware, either the dongle plugged is a verbatim dongle or it has not been successfully :ref:`activated <production_license_activate>`:
+- If the following error message is thrown when building an Executable, either the dongle plugged is a verbatim dongle or it has not been successfully :ref:`activated <production_license_activate>`:
 
   .. code-block:: console
 
