@@ -160,6 +160,9 @@ Principles:
 - Loggers rely on the `MessageBuilder`_ type for message creation. 
   The messages built by the `BasicMessageBuilder`_ follow this pattern: ``[category]:[LEVEL]=[id]``. 
   The builder appends the specified `Object`_ arguments (if any) separated by spaces, then the full stack trace of the `Throwable`_ argument (if any).
+- The `FilterMessageLogger`_ allows to filter messages actually logged based on a threshold level (defaults to ``INFO``).
+  The threshold level can be modified dynamically with `FilterMessageLogger.setLevel()`_.
+  Use the system ``FilterMessageLogger.INSTANCE`` or create a new logger to configure the level of logged messages per instance.
 
 Here is a short example of how to use this library to log the entry/exit of the ``switchState()`` method:
 
@@ -182,7 +185,7 @@ Here is a short example of how to use this library to log the entry/exit of the 
          previousState = currentState;
          currentState = newState;
 
-         BasicMessageLogger.INSTANCE.log(Level.INFO, LOG_CATEGORY, LOG_ID, previousState, currentState);
+         FilterMessageLogger.INSTANCE.log(Level.INFO, LOG_CATEGORY, LOG_ID, previousState, currentState);
       }     
 
 This produces the following output:
@@ -193,6 +196,8 @@ This produces the following output:
 
 .. _MessageLogger: https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/MessageLogger.html
 .. _MessageLogger.log(...): https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/MessageLogger.html#log-char-java.lang.String-int-java.lang.Throwable-java.lang.Object...-
+.. _FilterMessageLogger: https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/basic/FilterMessageLogger.html
+.. _FilterMessageLogger.setLevel(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/basic/FilterMessageLogger.html#setLevel-char-
 .. _Throwable: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html
 .. _ej.util.message.Level: https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/Level.html
 .. _MessageBuilder: https://repository.microej.com/javadoc/microej_5.x/apis/ej/util/message/MessageBuilder.html
