@@ -181,7 +181,7 @@ The Code chunk size can be configured with the following option:
 
 **Option Name**: ``com.microej.soar.kernel.featurecodechunk.size``
 
-**Default Value**: ``262144`` (bytes)
+**Default Value**: ``65536`` (bytes)
 
 A small number will reduce the RAM consumption but will increase the ``.fo`` size and will affect the installation time. 
 
