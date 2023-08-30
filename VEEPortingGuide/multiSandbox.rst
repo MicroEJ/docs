@@ -152,7 +152,10 @@ The detailed uninstallation flow is described in the following sequence diagram:
 Feature Persistency
 -------------------
 
-If the Abstraction Layer implementation installs a Feature in a Read-Only memory, it will be available after the Core Engine or the device restarts.
+Feature Persistency is the ability of the Core Engine to gather installed Features from prior executions of the Kernel upon start up.
+This means that the Kernel will boot with a set of available Features that were already installed.
+To ensure that the Features remain available even after the device restarts, you will have to implement an Abstraction Layer that stores the Features into a Read-Only memory.
+
 
 .. figure:: images/multisandbox-link-boot-flow.png
    :alt: Feature Installation Boot Flow
