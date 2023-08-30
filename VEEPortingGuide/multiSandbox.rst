@@ -164,6 +164,11 @@ To ensure that the Features remain available even after the device restarts, you
 
    Feature Installation Boot Flow
 
+.. note::
+
+   Features are available in the :ref:`INSTALLED <kernel_application_lifecycle>` state.
+   It is the responsibility of the Kernel to manually start the desired Features.
+
 
 Advanced Options
 ----------------
