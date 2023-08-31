@@ -296,6 +296,8 @@ Create the Test Suite Runner Skeleton
   - ``{PROJECT_LOC}/validation/microej-testsuite-common.properties``: see `microej-testsuite-common.properties template <https://github.com/MicroEJ/VEEPortQualificationTools/blob/2.9.0/tests/core/java-testsuite-runner-core/validation/microej-testsuite-common.properties>`_.
   - ``{PROJECT_LOC}/config.properties``: see `config.properties template <https://github.com/MicroEJ/VEEPortQualificationTools/blob/2.9.0/tests/core/java-testsuite-runner-core/config.properties.tpl>`_.
 
+.. note:: ``{PROJECT_LOC}`` refers here to the location of your Test Suite runner project.
+
 Configure and Run the Test Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
