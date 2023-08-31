@@ -33,7 +33,15 @@ specific configuration:
    -  ``QNX70``: BlackBerry QNX 7.0
    -  ``Clang``: Clang
 
+.. _changelog-8.1.0:
 
+[8.1.0] - 2023-MM-DD
+--------------------
+
+Tools
+~~~~
+
+ - Debugging support for ASLR executables
 
 .. _changelog-8.0.0:
 
