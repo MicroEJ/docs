@@ -36,7 +36,7 @@ Open a shell terminal on the device and enter the following commands:
     # Start GDB
     gdb ./application.out
 
-The following GDB script could be use to generate a core dump file:
+
 - when the signal ``SIGUSR1`` is received
 - or when an out of memory error occurs 
 - or when an explicit garbage collection (GC) is done.
