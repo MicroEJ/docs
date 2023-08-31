@@ -89,19 +89,10 @@ Run the program:
 
 A core dump file will be generated once the Executable reach one of the breaking conditions described previously.
 
-You can also suspend the process and generate the core dump file by yourself:
-
-- Press `Ctrl+C` key to suspend the process 
-- Enter the following GDB script in the GDB console to generate the core dump file
-  
-.. code-block:: sh
-
-    # generate core dump file
-    # the argument `file` is optional. It specifies the destination file where the core dump is saved
-    generate-core-file [file]
-
 .. warning::
-    This function must only be called from the MicroJvm virtual machine thread context and only from a native function or callback.
+    
+    The core dump should only be called when the Core Engine task is stopped on one of the specified callbacks or in a native function. 
+    Otherwise, the Core Engine dump is not guarranted to be consistent, which may cause the VEE debugger to crash abruptly.
 
 Start the Proxy
 ===============
