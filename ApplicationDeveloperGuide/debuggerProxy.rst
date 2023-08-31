@@ -88,7 +88,7 @@ A core dump file will be generated once the Executable reach one of the breaking
 
 .. warning::
     
-    The core dump should only be called when the Core Engine task is stopped on one of the specified callbacks or in a native function. 
+    The core dump should only be called when the Core Engine task is stopped on one of the specified callbacks (`LLMJVM_on_OutOfMemoryError_thrown()`, `LLMJVM_on_Runtime_gc_done()` etc.) or in a native function. 
     Otherwise, the Core Engine dump is not guarranted to be consistent, which may cause the VEE debugger to crash abruptly.
 
 Start the Proxy
