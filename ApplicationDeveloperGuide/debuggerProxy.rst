@@ -46,36 +46,33 @@ You can run the script directly in the GDB console.
 
 .. code-block:: sh
 
+   ## From GBD documentation:
+   ## generate-core-file [file]
+   ##   Produce a core dump of the inferior process.
+   ##   The optional argument file specifies the file name where to put the core dump.
+   ##   If not specified, the file name defaults to 'core.pid', where pid is the inferior process ID.
+
    ## Generate a core dump when the signal SIGUSR1 is received
-   # catch the SIGUSR1 signal 
    catch signal SIGUSR1
    commands 
    silent
-   # generate core dump file
-   # the argument `file` is optional. It specifies the destination file where the core dump is saved
-   generate-core-file [file] 
+   generate-core-file
    cont
    end
 
    ## Generate a core dump when an out of memory error occurs
-   # break in the LLMJVM_on_OutOfMemoryError_thrown, this function is called when an out of memory error occurs
    break LLMJVM_on_OutOfMemoryError_thrown
    commands 
    silent
-   # generate core dump file
-   # the argument `file` is optional. It specifies the destination file where the core dump is saved
-   generate-core-file [file]
+   generate-core-file
    cont
    end
 
    ## Generate a core dump when an explicit garbage collection (GC) is done
-   # break in the LLMJVM_on_Runtime_gc_done function
    break LLMJVM_on_Runtime_gc_done
    commands 
    silent
-   # generate core dump file
-   # the argument `file` is optional. It specifies the destination file where the core dump is saved
-   generate-core-file [file]
+   generate-core-file
    cont
    end
 
