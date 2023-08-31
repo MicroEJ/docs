@@ -229,21 +229,21 @@ The console output on VEE Port simulator for this test should be:
 .. note:: See next sections to get more details on how to package and launch the Test Suite on a VEE Port.
 
 
-Test the Test Suite Module Generation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Generate Test Suite Module
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Right-click on the project and select ``Build module``
 - Check the content of the generated archive ``target~\test-rips\javaLibs\myFoundationLib-testsuite-X.X.jar``
 - If it worked, you can see ``.class`` files inside the archive
 
 
-Create and Use the Test Suite Runner Project
---------------------------------------------
+Test Suite Runner Project
+-------------------------
 
 The Test Suite runner project is responsible for running tests of a Test Suite module.
 
-Create the Test Suite Runner Skeleton
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Create the Test Suite Runner Project
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - To create the Test Suite runner project, click on: :guilabel:`File` > :guilabel:`New` > :guilabel:`Other...` > :guilabel:`MicroEJ` > :guilabel:`Module Project`.
 
