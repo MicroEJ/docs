@@ -161,7 +161,7 @@ Configure the Test Suite Module Project
 
 Open the ``module.ivy`` file and follow steps below:
 
-- Edit the module ``ivy-module > info > build`` node to add the ``testsuite`` keyword to ``microej.lib.name`` and ``rip.printableName``, for example:
+- Edit the module ``ivy-module > info > ea:build`` node to update ``rip.printableName``:
   
   .. code-block:: XML
   
