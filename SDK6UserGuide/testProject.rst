@@ -487,7 +487,82 @@ since it avoids adding confguration to change the tests sources folder.
 With this configuration, tests on the Simulator are located in the ``src/test/java`` folder, 
 and tests on a J2SE VM are located in the ``src/testOnJ2SE/java`` folder.
 
-.. _sdk_6_testsuite_options:
+.. _sdk_6_testsuite_engine_options:
+
+Configure the Testsuite Engine
+------------------------------
+
+The engine used to execute the testsuite provides a set of configuration parameters that can be defined with System Properties.
+For example, to set the timeout of the tests:
+
+- In the command line with ``-D``::
+
+   ./gradlew test -Dmicroej.testsuite.timeout=120
+
+- In the build script file:
+
+   .. code-block::
+
+      testing {
+         suites {
+            val test by getting(JvmTestSuite::class) {
+               ...
+
+               targets {
+                  all {
+                     testTask.configure {
+                        ...
+
+                        doFirst {
+                           systemProperties = mapOf(
+                              "microej.testsuite.timeout" to "120"
+                           )
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+The following configuration parameters are available:
+
+.. list-table:: 
+   :widths: 25 55 25
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Default
+   * - ``microej.testsuite.timeout``
+     - The time in seconds before a test is considered as failed. Set it to ``0`` to disable the timeout.
+     - ``60``
+   * - ``microej.testsuite.jvmArgs``
+     - The arguments to pass to the Java VM started for each test.
+     - Not set
+   * - ``microej.testsuite.lockPort``
+     - The localhost port used by the framework to synchronize its execution with other frameworks on same computer.
+       Synchronization is not performed when this port is ``0`` or negative.
+     - ``0``
+   * - ``microej.testsuite.retry.count``
+     - A test execution may not be able to produce the success trace for an external reason,
+       for example an unreliable harness script that may lose some trace characters or crop the end of the trace.
+       For all these unlikely reasons, it is possible to configure the number of retries before a test is considered to have failed.
+     - ``0``
+   * - ``microej.testsuite.retry.if``
+     - Regular expression checked against the test output to retry the test. 
+       If the regular expression is found in the test output, the test is retried (up to the value of ``microej.testsuite.retry.count``).
+     - Not set
+   * - ``microej.testsuite.retry.unless``
+     - Regular expression checked against the test output to retry the test. 
+       If the regular expression is not found in the test output, the test is retried (up to the value of ``microej.testsuite.retry.count``).
+     - Not set
+   * - ``microej.testsuite.verbose.level``
+     - Verbose level of the testsuite output. Available values are ``error``, ``warning``, ``info``, ``verbose`` and ``debug``.
+     - ``info``
+
+
+.. _sdk_6_testsuite_application_options:
 
 Inject Application Options
 --------------------------
@@ -501,7 +576,7 @@ Inject Application Options Globally
 In order to define an Application Option globally, 
 it must be prefixed by ``microej.testsuite.properties.`` and passed as a System Property,
 either in the command line or in the build script file.
-For example to inject the property ``core.memory.immortal.size``:
+For example, to inject the property ``core.memory.immortal.size``:
 
 - In the command line with ``-D``::
 
