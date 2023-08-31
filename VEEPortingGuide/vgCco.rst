@@ -122,9 +122,12 @@ Memory Heap Configuration
 
 The Freetype library requires a memory Heap for Freetype internal objects allocated when a font file is loaded (see https://freetype.org/freetype2/docs/design/design-4.html). 
 The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves. 
-This size is defined by ``VG_FEATURE_FREETYPE_HEAP_SIZE_HEAP`` in ``microvg_configuration.h``.
+This size is defined by ``VG_FEATURE_FREETYPE_HEAP_SIZE`` in ``microvg_configuration.h``.
 
-All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``microvg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the Freetype heap evolution.
+All fonts do not require the same heap size. FreeType heap usage can be monitored using the following configurations:
+
+* ``MICROVG_MONITOR_HEAP`` defined in ``microvg_helper.h``
+* ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defined in ``mej_log.h``
 
 Principle
 ---------
