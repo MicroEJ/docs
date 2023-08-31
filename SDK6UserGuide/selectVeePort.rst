@@ -5,49 +5,13 @@ Select a VEE Port
 
 Building or running an Application or a Test Suite with the SDK requires a VEE Port.
 
-There are 4 different ways to provide a VEE Port in the build file of the project:
-
+There are 4 different ways to provide a VEE Port in the build file of the project. 
 At least one of these is required to build an Application with a VEE Port.
 
-Build property veePortFiles
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**By a Module Dependency**
 
-Set the build property ``veePortFiles`` in the ``microej`` configuration block to the path of a VEE Port file (``.zip`` or ``.vde``)::
-
-   microej {
-     veePortFiles = listOf("C:\\path\\to\\my\\veePort\\file.zip")
-   }
-
-.. note::
-
-   The legacy ``JPF`` format of a VEE Port is not supported anymore in the SDK 6. 
-   If you want to use a VEE Port ``.jpf`` file, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
-
-The ``veePortFiles`` property is defined as a list in order to provide multiple VEE Port files if it is needed.
-See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
-
-Build property veePortDirs
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-- Set the build property ``veePortDirs`` in the ``microej`` configuration block to the path of the ``source`` folder of a VEE Port::
-
-   microej {
-     veePortDirs = listOf("C:\\path\\to\\my\\veePort\\directory")
-   }
-
-The ``veePortDirs`` property is defined as a list in order to provide multiple VEE Port ``source`` folders if it is needed.
-See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
-
-.. note::
-
-   This file, as well as other Gradle configuration files, respects the Java properties file convention: 
-   the OS path	must use the UNIX path convention (path separator is ``/``). 
-   The Windows paths must have been converted manually replacing ``\`` by ``/`` or by ``\\``.
-
-Module dependency microejVeePort
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Declare a module dependency with the conf ``microejVeePort``:
+When your VEE Port is published in an artifact repository, 
+you can define the VEE Port by declaring a module dependency in the ``build.gradle.kts`` file, with the ``microejVeePort`` configuration:
 
    .. code:: java
 
@@ -73,10 +37,47 @@ Declare a module dependency with the conf ``microejVeePort``:
       Refer to `the Gradle documentation <https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html>`__ 
       to learn all the options to select dependencies.
 
-Dropins folder
-^^^^^^^^^^^^^^
+**By a Local VEE Port Directory**
 
-Copy a VEE port archive file to the ``dropins`` folder. The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the build property ``dropinsDir``::
+When your VEE Port has been built locally and is therefore available in a local directory, 
+you can use it by setting the ``veePortDirs`` property in the ``microej`` configuration block of the ``build.gradle.kts`` file 
+to the path of the ``source`` folder of a VEE Port::
+
+   microej {
+     veePortDirs = listOf("C:\\path\\to\\my\\veePort\\directory")
+   }
+
+The ``veePortDirs`` property is defined as a list in order to provide multiple VEE Port ``source`` folders if it is needed.
+See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
+
+.. note::
+
+   This file, as well as other Gradle configuration files, respects the Java properties file convention: 
+   the OS path	must use the UNIX path convention (path separator is ``/``). 
+   The Windows paths must have been converted manually replacing ``\`` by ``/`` or by ``\\``.
+
+**By a Local VEE Port Archive**
+
+When your VEE Port is available locally as an archive,
+you can use it by setting the ``veePortFiles`` property in the ``microej`` configuration block of the ``build.gradle.kts`` file 
+to the path of a VEE Port file (``.zip`` or ``.vde``)::
+
+   microej {
+     veePortFiles = listOf("C:\\path\\to\\my\\veePort\\file.zip")
+   }
+
+.. note::
+
+   The legacy ``JPF`` format of a VEE Port is not supported anymore in the SDK 6. 
+   If you want to use a VEE Port ``.jpf`` file, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
+
+The ``veePortFiles`` property is defined as a list in order to provide multiple VEE Port files if it is needed.
+See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
+
+**By the Dropins Folder**
+
+When your VEE Port is available as an archive file, you can use it by copying it to the ``dropins`` folder. 
+The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the build property ``dropinsDir``::
 
    microej {
       dropinsDir = "C:\\path\\to\\dropins"
