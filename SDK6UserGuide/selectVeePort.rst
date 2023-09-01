@@ -3,12 +3,15 @@
 Select a VEE Port
 =================
 
+Select one VEE Port
+-------------------
+
 Building or running an Application or a Test Suite with the SDK requires a VEE Port.
 
-There are 4 different ways to provide a VEE Port in the build file of the project. 
-At least one of these is required to build an Application with a VEE Port.
+Use one of the following available options to provide it to your project. 
 
-**By a Module Dependency**
+Using a Module Dependency
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When your VEE Port is published in an artifact repository, 
 you can define the VEE Port by declaring a module dependency in the ``build.gradle.kts`` file, with the ``microejVeePort`` configuration:
@@ -37,14 +40,15 @@ you can define the VEE Port by declaring a module dependency in the ``build.grad
       Refer to `the Gradle documentation <https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html>`__ 
       to learn all the options to select dependencies.
 
-**By a Local VEE Port Directory**
+Using a Local VEE Port Directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When your VEE Port has been built locally and is therefore available in a local directory, 
-you can use it by setting the ``veePortDirs`` property in the ``microej`` configuration block of the ``build.gradle.kts`` file 
-to the path of the ``source`` folder of a VEE Port::
+you can use it by setting the ``veePortDirs`` property in the ``microej`` configuration block of the ``build.gradle.kts`` file. 
+Specify the path to the ``source`` folder of the VEE Port::
 
    microej {
-     veePortDirs = listOf("C:\\path\\to\\my\\veePort\\directory")
+     veePortDirs = listOf("C:\\path\\to\\my\\veePort\\source")
    }
 
 The ``veePortDirs`` property is defined as a list in order to provide multiple VEE Port ``source`` folders if it is needed.
@@ -56,11 +60,12 @@ See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` secti
    the OS path	must use the UNIX path convention (path separator is ``/``). 
    The Windows paths must have been converted manually replacing ``\`` by ``/`` or by ``\\``.
 
-**By a Local VEE Port Archive**
+Using a Local VEE Port Archive
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When your VEE Port is available locally as an archive,
-you can use it by setting the ``veePortFiles`` property in the ``microej`` configuration block of the ``build.gradle.kts`` file 
-to the path of a VEE Port file (``.zip`` or ``.vde``)::
+you can use it by setting the ``veePortFiles`` property in the ``microej`` configuration block of the ``build.gradle.kts`` file. 
+Specify the path to a VEE Port file (``.zip`` or ``.vde``)::
 
    microej {
      veePortFiles = listOf("C:\\path\\to\\my\\veePort\\file.zip")
@@ -74,7 +79,8 @@ to the path of a VEE Port file (``.zip`` or ``.vde``)::
 The ``veePortFiles`` property is defined as a list in order to provide multiple VEE Port files if it is needed.
 See the :ref:`Select multiple VEE Ports <sdk_6_select_multiple_vee_ports>` section for more information.
 
-**By the Dropins Folder**
+Using the Dropins Folder
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 When your VEE Port is available as an archive file, you can use it by copying it to the ``dropins`` folder. 
 The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the build property ``dropinsDir``::
