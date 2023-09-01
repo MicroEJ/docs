@@ -17,10 +17,10 @@ Here is a list of documents or tools that help to improve the quality of applica
 
 - The :ref:`Improve the Quality of Java Code<improve_code_quality>` tutorial explains how to improve the Quality of Java Code.
 - The :ref:`Get Started With GUI<tutorial_get_started_with_gui>` tutorial provides guidelines to start developing an efficient GUI.
-- The `SonarQube™<https://github.com/MicroEJ/ExampleTool-Sonar>`_ source code quality analyzer allows to analyze an Application or Library code quality.
+- The `SonarQube™ <https://github.com/MicroEJ/ExampleTool-Sonar>`_ source code quality analyzer allows to analyze an Application or Library code quality.
 
 Using recent versions of UI libraries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Using the latest UI libraries (MicroUI, MWT, Widget, etc.) available may solve some performance issues. The most recent UI libraries fix some bugs that may affect performance and they provide tools/libraries that allow to implement more performant UIs.
 
@@ -55,20 +55,6 @@ The process of rendering a frame of the UI consists of several parts:
 - (depends on the UI port) Backbuffer copy, see :ref:`Display Buffer Modes<section_display_modes>`. 
 
 This tutorial focuses on reducing processing time for the "Drawing of the UI" parts. To get more information about the other parts, please see the VEE Porting Guide :ref:`Graphical User Interface<pack_gui>` section.
-
-SystemView
-~~~~~~~~~~
-
-The SystemView tool can be used to trace the UI actions (drawings, flush, etc.) and detect which ones are the most time-consuming. The documentation of SystemView is available :ref:`here<systemview>`. The MicroUI traces should be configured in SystemView in order to see the UI actions performed, it can be done by following :ref:`this documentation<microui_traces>`. Custom traces can be added and logged from the Java application to record specific actions.
-
-MicroUI Flush Visualizer
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-A perfect application has 100% of its display area drawn. This is the total area covered by the sum of the area drawn by the drawing operations. A value of 200% indicates the area drawn is equivalent to twice the surface of the entire display. A total area drawn between 100% to 200% is the norm in practice because widgets often overlap. However, if the total area drawn is bigger than 200%, that means that the total surface of the display was drawn more than twice, meaning that a lot of time could be spent drawing things that are never shown.
-
-The MicroUI Flush Visualizer tool can be used to investigate potential performance bottlenecks in UI applications running on the Simulator by showing the pixel surface drawn between two MicroUI frame buffer flushes.
-
-The documentation of MicroUI Flush Visualizer is available :ref:`here<microuiflushvisualizer>`.
 
 Format of UI resources
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -108,7 +94,7 @@ There are a few implementations possible for animations with MicroEJ. The way wi
 Animator
 ++++++++
 
-The MWT's `Animator<https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animator.html>`_ allows to execute animations as fast as possible, it waits for the low-level screen flush to be done and directly triggers a new render. Thus the Animator will give the best framerate possible but will also consume a lot of CPU processing time.
+The MWT's `Animator <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animator.html>`_ allows to execute animations as fast as possible, it waits for the low-level screen flush to be done and directly triggers a new render. Thus the Animator will give the best framerate possible but will also consume a lot of CPU processing time.
 
 TimerTask
 +++++++++
@@ -121,6 +107,32 @@ Animator and TimerTask mix
 ++++++++++++++++++++++++++
 
 A mix of the Animator and TimeTask approaches could be implemented in order to set a fixed framerate but also to rely on the screen flush.
+
+
+Tools to analyze the GUI execution
+----------------------------------
+
+SystemView
+~~~~~~~~~~
+
+The SystemView tool can be used to trace the UI actions (drawings, flush, etc.) and detect which ones are the most time-consuming. The documentation of SystemView is available :ref:`here<systemview>`. The MicroUI traces should be configured in SystemView in order to see the UI actions performed, it can be done by following :ref:`this documentation<microui_traces>`. Custom traces can be added and logged from the Java application to record specific actions.
+
+MicroUI Flush Visualizer
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+A perfect application has 100% of its display area drawn. This is the total area covered by the sum of the area drawn by the drawing operations. A value of 200% indicates the area drawn is equivalent to twice the surface of the entire display. A total area drawn between 100% to 200% is the norm in practice because widgets often overlap. However, if the total area drawn is bigger than 200%, that means that the total surface of the display was drawn more than twice, meaning that a lot of time could be spent drawing things that are never shown.
+
+The MicroUI Flush Visualizer tool can be used to investigate potential performance bottlenecks in UI applications running on the Simulator by showing the pixel surface drawn between two MicroUI frame buffer flushes.
+
+The documentation of MicroUI Flush Visualizer is available :ref:`here<microuiflushvisualizer>`.
+
+
+Hardware and low-level investigation tips
+-----------------------------------------
+
+Regardless the GUI application in development, it may be possible that the rootcause of low performances of the GUI is located at the low-level of the system.
+This section provides insights of main spots to check regarding the low-level and the hardware. 
+
 
 
 ..
