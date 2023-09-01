@@ -106,6 +106,39 @@ The following method code patterns are inlined:
    Method inlining is performed after :ref:`method devirtualization <soar_method_devirtualization>`, so a virtual method call will be inlined 
    if there is a unique embedded implementation method that matches one of the inlined method code patterns.
 
+.. _soar_bytecode_verifier:
+
+Bytecode Verifier
+-----------------
+
+.. figure:: images/bytecode_verifier.png
+   :alt: Bytecode Verifier
+   :align: center
+   :scale: 80%
+
+   Application Build Flow
+
+Bytecode Verifier is a piece of software that scrutinize the bytecode instructions for adherence to strict rules and constraints.
+This process is crucial for preventing runtime errors, security vulnerabilities, and unexpected behavior.
+The verifier performs tasks including:
+
+- Type Checking: Verifying that variables and operands are used in a manner consistent with their declared data types, preventing type-related errors at runtime.
+
+- Bytecode Structure: Ensuring the bytecode is well-formed and follows the structure required by the JVM, which helps prevent memory corruption and crashes.
+
+- Stack Management: Checking that the operand stack used for calculations and evaluations is properly managed to prevent stack overflows or underflows.
+
+- Access Control: Verifying that class access and method invocations adhere to Java's access control rules, ensuring data encapsulation and security.
+
+- Exception Handling: Validating that exception handlers are correctly defined and that exceptions are caught and handled appropriately.
+
+- Control Flow: Analyzing the flow of control within bytecode to detect anomalies in loops, branches, and jumps that could lead to program instability.
+
+.. note:: 
+
+   Bytecode Verifier is disabled by default.
+   It can be enabled during application build by setting :ref:`option_enable_bytecode_verifier`.
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
