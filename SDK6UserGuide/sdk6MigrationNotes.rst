@@ -18,13 +18,13 @@ To define a local VEE Port, set the build property ``veePortPaths`` in the ``mic
 to the path of the VEE Port file (``.zip`` or ``.vde``) or to the source folder of the VEE Port::
 
    microej {
-     veePortPaths = listOf("C:\\path\\to\\my\\veePort\\source\\folder")
+     veePortPaths = listOf("C:\\path\\to\\my\\veePort\\source")
    }
 
 The ``veePortPaths`` property is defined as a list in order to provide multiple VEE Port files or source folders if it is needed::
 
    microej {
-     veePortPaths = listOf("C:\\path\\to\\my\\veePort1\\source\\folder", "C:\\path\\to\\my\\veePort2\\file.zip")
+     veePortPaths = listOf("C:\\path\\to\\my\\veePort1\\source", "C:\\path\\to\\my\\veePort2\\file.zip")
    }
 
 ..
