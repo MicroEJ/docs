@@ -125,6 +125,15 @@ Once your favorite IDE is installed, the MicroEJ plugin must be installed.
          IntelliJ IDEA Plugin Installation
       
       - Click on the :guilabel:`Install` button.
+      - In the upcoming :guilabel:`Third-Party Plugins Notice` window, click on the :guilabel:`Accept` button.
+            
+         .. figure:: images/intellij-install-plugin-warning.png
+            :alt: IntelliJ IDEA Plugin Installation - Third-Party Plugins Notice
+            :align: center
+            :scale: 70%
+         
+            IntelliJ IDEA Plugin Installation - Third-Party Plugins Notice
+
       - Click on the :guilabel:`Restart IDE` button.
 
       To install the snapshot version of the MicroEJ plugin, please refer to :ref:`sdk_6_install_plugin_snapshot`.
