@@ -91,7 +91,7 @@ The default dropins folder location is ``[module_project_dir]/dropins``. It can 
 
 .. _sdk_6_select_multiple_vee_ports:
 
-Select multiple VEE Ports
+Select Multiple VEE Ports
 -------------------------
 
 If multiple :ref:`VEE Ports are defined <sdk_6_select_veeport>` for a project, they are all used.
@@ -107,7 +107,7 @@ For example::
 
 .. _sdk_6_vee_port_unique_name:
 
-VEE Port unique name
+VEE Port Unique Name
 --------------------
 
 VEE Ports are referenced by a unique name following the pattern ``{name}-{toolchain}-{version}``, 
