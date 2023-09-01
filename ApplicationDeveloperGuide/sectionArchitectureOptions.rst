@@ -805,12 +805,18 @@ Specify the initial size (in bytes) of the Java Heap.
 Group: SOAR
 ^^^^^^^^^^^
 
+.. _option_enable_bytecode_verifier:
+
 Option(checkbox): Enable Bytecode Verifier
 """"""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``soar.bytecode.verifier``
 
 *Default value*: ``false``
+
+*Description*:
+
+Enables :ref:`soar_bytecode_verifier` during application build.
 
 Category: Kernel
 ^^^^^^^^^^^^^^^^
