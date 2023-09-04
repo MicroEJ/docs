@@ -194,6 +194,7 @@ Open the ``module.ivy`` file and follow steps below:
 			</target>
 		</project>
 
+.. note:: An error on ``module.ant`` file can occurred with message ``Target resources-std:copy-test-resources does not exist in this project``. Please ignore it. 
 
 Create a New Test Case
 ~~~~~~~~~~~~~~~~~~~~~~
