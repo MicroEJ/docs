@@ -496,8 +496,8 @@ Examples:
 External Fonts
 --------------
 
-A font can be stored in an :ref:`external memory<chapter.microej.applicationResources>`. 
-The management of this kind of font may be different than the internal fonts and require a dedicated heap.
+To fetch fonts from non-byte addressable external memory, the application must pre-register the :ref:`external Font resources<chapter.microej.applicationResources>`.
+The management of this kind of font may be different than the internal fonts and may require a dedicated heap.
 For more details about the external font management, refers to the VEE Port Guide chapter :ref:`section_font_loader_memory`.
 
 Font Generator Error Messages
@@ -590,7 +590,6 @@ For example, the first available character for a font where the range matches th
 The characters of a font are referenced by their Unicode value.
 For a given :ref:`font range <fonts_range>`, the default character is the first character of the first range.
 Consequently, the default character may not be the same for two given fonts of an application: it depends on the specified character range for each font.
-
 
 To help developers identify quickly why a string is rendered with unexpected characters, it is recommended that the font maker sets a default character that is easy to recognize (a symbol, for example, a rectangle).
 This character must have the first character index (index ``0`` is allowed).

@@ -843,8 +843,8 @@ Following examples show the behavior of some of the interpolators for a simple t
 External Images
 ---------------
 
-A `ResourceVectorImage`_ image can be stored in an :ref:`external memory<chapter.microej.applicationResources>`. 
-The management of this kind of image may be different than the compile-time images and can require some allocations in the MicroUI :ref:`images_heap`.
+To fetch images from external memory, the application must pre-register the :ref:`external Image resources<chapter.microej.applicationResources>`.
+The management of this kind of image may be different than the compile-time images and may require some allocations in the MicroUI :ref:`images_heap`.
 For more details about the external image management, refers to the VEE Port Guide chapter :ref:`section_vg_image_external`.
 
 Caching Generated Images
