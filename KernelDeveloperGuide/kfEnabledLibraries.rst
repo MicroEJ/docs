@@ -157,7 +157,7 @@ The following code is the typical code that must be written at the beginning of 
             // Here, the Kernel has registered a Security Manager
 
             // Create a Permission with relevant parameters for the Security Manager to render the permission
-            MyResourcePermission = new MyResourcePermission();
+            MyResourcePermission p = new MyResourcePermission();
 
             // Request the permission check. 
             // If the Kernel rejects the permission, it will throw a SecurityException
