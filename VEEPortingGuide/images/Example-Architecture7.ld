@@ -17,7 +17,6 @@ SECTIONS
     *(.rodata*)
     *(.text.soar)
     *(.rodata.resources)
-    *(.text.features.installed)
   } >ROM
   
   /* readwrite region initializers (mandatory) */
@@ -39,6 +38,5 @@ SECTIONS
     *(ICETEA_HEAP)
     *(_java_heap)
     *(_java_immortals)
-    *(.bss.features.installed)
   } >RAM
 }
