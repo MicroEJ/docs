@@ -69,9 +69,8 @@ External Memory
 Principle
 ~~~~~~~~~
 
-MicroVG does not provide some API to make the distinction between a font loaded from different kind of memories (internal or external, byte-addressable or not).
-The implementation must adjust itself how to load an read a font. The :ref:`CCO MicroVG and Freetype<section_vg_cco>` feature an option to enable the font management from an external memory which is not byte-addressable.
-This option requires an implementation of the :ref:`section_externalresourceloader`.
+MicroVG does not provide some Low Level API to make the distinction between a font loaded from different kind of memories (internal or external, byte-addressable or not).
+The Low Level implementation (:ref:`C Modules MicroVG and Freetype<section_vg_cco>`) features the font management from an external memory which is not byte-addressable when the VEE Port provides an implementation of the :ref:`section_externalresourceloader`.
 
 Configuration File
 ~~~~~~~~~~~~~~~~~~
@@ -82,20 +81,24 @@ To specify this resource as an external resource, the font file path must be lis
 Process
 ~~~~~~~
 
-The following steps describe how to open an external resource from the application:
+The following steps describe how to setup the loading of an external resource from the application:
 
-1. Add the font in the application project (usually in the source folder ``src/main/resources`` and in the package ``fonts``).
-2. Create / open the configuration files (usually ``application.resources.list`` and ``application.externresources.list``).
-3. Add the relative path of the font in both file.
-4. Launch the application: the external resources are copied into the external resources folder (``[application_output_folder]/externalResources``).
-5. Deploy the external resources in the external memory (SDCard, flash, etc.).
-6. (optional) Update the implementation of the :ref:`section_externalresourceloader`.
-7. Build and link the application with the BSP.
+1. Add the font to the application project resources (typically in the source folder ``src/main/resources`` and in the package ``fonts``).
+2. Create / open the configuration files (e.g. ``application.resources.list`` and ``application.externresources.list``).
+3. In both files, add the relative path of the font (e.g. ``/fonts/myFont.ttf``).
+4. Build the application: the processed external resources are copied into the external resources folder (``[application_output_folder]/externalResources``).
+5. Deploy the external resources to the external memory (SDCard, flash, etc.) of the device.
+6. (optional) Configure the :ref:`section_externalresourceloader` to load from this source.
+7. Build the application and run it on the device.
 8. The application loads the external resource using `ej.microvg.VectorFont.loadFont()`_.
-9. Freetype (:ref:`section_vg_cco`) recognizes this resource as external resource; it configures itself to manage this resource differently than an internal resource.
+9. Freetype (:ref:`section_vg_cco`) recognizes this resource as external resource; it configures itself to manage this resource differently than an internal resource (see :ref:`section_vg_c_module_freetype` to have more details).
 10. The application can use the font.
 
-.. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``*.externresources.list`` files are copied in the external resources folder, and this folder is added to the simulator's classpath. 
+Simulation
+~~~~~~~~~~
+
+The Simulator automatically manages the external resources like internal resources.
+All images listed in ``*.externresources.list`` files are copied in the external resources folder, and this folder is added to the Simulator's classpath.
 
 Use
 ===

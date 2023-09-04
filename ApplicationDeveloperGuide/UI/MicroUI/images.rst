@@ -344,8 +344,8 @@ An image that was previously generated but is no longer listed in the ``*.images
 External Images
 ~~~~~~~~~~~~~~~
 
-An immutable image can be stored in an :ref:`external memory<chapter.microej.applicationResources>`. 
-The management of this kind of image may be different than the internal images and can require some allocations in the :ref:`images_heap`.
+To fetch immutable images from external memory, the application must pre-register the :ref:`external Image resources<chapter.microej.applicationResources>`.
+The management of this kind of image may be different than the internal images and may require some allocations in the :ref:`images_heap`.
 For more details about the external image management, refers to the VEE Port Guide chapter :ref:`section_image_external_memory`.
 
 Image Generator Error Messages

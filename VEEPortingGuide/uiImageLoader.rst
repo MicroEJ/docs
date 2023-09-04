@@ -7,7 +7,7 @@ Image Loader
 Principle
 =========
 
-The Image Loader module is an on-board engine that 
+The Image Loader is a module of the MicroUI runtime that:
 
 * retrieves image data that is ready to be displayed without needing additional runtime memory, 
 * retrieves image data that is required to be converted into the format known by the Image Renderer (MicroEJ format),
@@ -64,15 +64,15 @@ Like internal resources, the Image Generator uses a :ref:`configuration file <se
 Process
 -------
 
-This chapter describes the steps to open an external resource from the application:
+This chapter describes the steps to setup the loading of an external resource from the application:
 
-1. Add the image in the application project (usually in the source folder ``src/main/resources`` and in the package ``images``).
-2. Create / open the configuration file (usually ``application.imagesext.list``).
-3. Add the relative path of the image: see :ref:`section.ui.Images`.
-4. Launch the application: the Image Generator converts the image in RAW format in the external resources folder (``[application_output_folder]/externalResources``).
-5. Deploy the external resources in the external memory (SDCard, flash, etc.).
-6. (optional) Update the implementation of the :ref:`section_externalresourceloader`.
-7. Build and link the application with the BSP.
+1. Add the image to the application project resources (typically in the source folder ``src/main/resources`` and in the package ``images``).
+2. Create / open the configuration file (e.g. ``application.imagesext.list``).
+3. Add the relative path of the image and its output format (e.g. ``/images/myImage.png:RGB565`` see :ref:`section.ui.Images`).
+4. Build the application: the Image Generator converts the image in RAW format in the external resources folder (``[application_output_folder]/externalResources``).
+5. Deploy the external resources to the external memory (SDCard, flash, etc.) of the device.
+6. (optional) Configure the :ref:`section_externalresourceloader` to load from this source.
+7. Build the application and run it on the device.
 8. The application loads the external resource using `ResourceImage.loadImage(String)`_.
 9. The image loader looks for the image and copies it in the :ref:`images heap<section_image_loader_memory>` (no copy if the external memory is byte-addressable).
 10. (optional) The image may be decoded (for instance: PNG), and the source image is removed from the images heap.
@@ -80,7 +80,11 @@ This chapter describes the steps to open an external resource from the applicati
 12. The application can use the image.
 13. The application closes the image: the image is removed from the image heap.
 
-.. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``*.imagesext.list`` files are generated in the external resources folder, and this folder is added to the simulator's classpath. 
+Simulation
+----------
+
+The Simulator automatically manages the external resources like internal resources.
+All images listed in ``*.imagesext.list`` files are copied in the external resources folder, and this folder is added to the Simulator's classpath.
 
 .. _ResourceImage.loadImage(String): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String-
 

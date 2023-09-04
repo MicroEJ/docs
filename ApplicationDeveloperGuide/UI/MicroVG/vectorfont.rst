@@ -388,8 +388,8 @@ The letterSpacing feature is not supported by the simulator implementation. Text
 External Fonts
 --------------
 
-A `VectorFont`_ font can be stored in an :ref:`external memory<chapter.microej.applicationResources>`. 
-The management of this kind of font may be different than the *internal* images and can require some allocations in runtime memory.
+To fetch fonts from external memory, the application must pre-register the :ref:`external Font resources<chapter.microej.applicationResources>`.
+The management of this kind of font may be different than the *internal* images and may require some allocations in the runtime memory.
 For more details about the external font management, refers to the VEE Port Guide chapter :ref:`section_vg_font_external`.
 
 

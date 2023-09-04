@@ -8,7 +8,7 @@ Font Renderer
 Principle
 =========
 
-The Font Renderer is included in the MicroUI module (see :ref:`section_microui`) for the application side; and is included in the Display module (see :ref:`section_display`) for the C side.
+The Font Renderer is a module of the MicroUI runtime that reads and draws the fonts.
 
 Functional Description
 ======================

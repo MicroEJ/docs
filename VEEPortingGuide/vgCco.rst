@@ -105,6 +105,8 @@ This file (a header file with some C defines) enables (or disables) and configur
 
 .. note:: This options list is not exhaustive. Please consult the C module's readme file for more information.
 
+.. _section_vg_c_module_freetype:
+
 Library: Freetype
 =================
 
