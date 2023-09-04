@@ -134,9 +134,9 @@ All fonts do not require the same heap size. FreeType heap usage can be monitore
 Principle
 ---------
 
-#. The Application loads a font with `VectorFont.loadFont()`.
+#. The Application loads a font with `ej.microvg.VectorFont.loadFont()`_.
 
-   * If the resource is external, it is opened.
+   * If the resource is internal, it is opened.
    * If the external resource is not from byte-addressable memory, the Freetype library is configured to read from that memory when needed.
    * At this point, the font resources are allocated and the font generic data (including baseline & height metrics) is loaded on the FreeType dedicated heap.
 
@@ -153,7 +153,7 @@ Principle
      * the bitmap is rendered for the given font size and
      * the character is drawn in the given graphic context.
 
-#. The Application unloads the font with `VectorFont.close()`.
+#. The Application unloads the font with `ej.microvg.VectorFont.close()`_.
 
    * Any resource associated with the font is released.
    * At this point, any attempt to use the font will result in an exception.
@@ -202,6 +202,10 @@ Compatibility
 =============
 
 The compatibility between the components (Packs, C modules, and Libraries) is described in the :ref:`section_vg_releasenotes`.
+
+
+.. _ej.microvg.VectorFont.loadFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#loadFont-java.lang.String-
+.. _ej.microvg.VectorFont.close(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#close--
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
