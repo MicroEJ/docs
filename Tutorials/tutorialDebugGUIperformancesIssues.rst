@@ -130,7 +130,7 @@ The documentation of MicroUI Flush Visualizer is available :ref:`here<microuiflu
 Hardware and low-level investigation tips
 -----------------------------------------
 
-Regardless the GUI application in development, it may be possible that the rootcause of low performances of the GUI is located at the low-level of the system.
+Regardless the GUI application in development, it may be possible that the root cause of low performance of the GUI is located at the low-level of the system.
 This section provides insights of main spots to check regarding the low-level and the hardware. 
 
 At project level
@@ -139,7 +139,7 @@ At project level
 Compiling optimization options
 ++++++++++++++++++++++++++++++
 
-Ensure that your project is configured to bring the best performances with compiling optimization options correctly setup.
+Ensure that your project is configured to bring the best performances with compiling optimization options correctly set up.
 
 
 RTOS tasks environment
@@ -147,7 +147,7 @@ RTOS tasks environment
 
 Please check that the priority of the UI task is high enough to avoid too many preemptions that may induce bad UI performances.
 
-Another point to watch in this field is the amount of other tasks that are running in the same time than the UI task.
+Another point to watch in this field is the amount of other tasks that are running in the same time as the UI task.
 Indeed, it may be possible that the total workload is too high for the CPU, therefore, the UI task cannot get access to the required amount of computing power.
 
 
@@ -157,12 +157,12 @@ At hardware level
 Hardware capabilities
 +++++++++++++++++++++
 
-MCUs and SoCs may have access to various hardware IPs to speedup the UI. Be sure your UI port exploit all of them.
+MCUs and SoCs may have access to various hardware IPs to speedup the UI. Be sure your UI port exploits all of them.
 First of all, check that your system has a GPU and use it if it's the case.
 Then, driving a display implies an intensive memory usage, verify that you use a DMA whenever it's possible.
 
-For example, during the back copy if the flush policy is switch or during your flush if your display is driven through SPI (if there is a DMA dedicated to the SPI port).
-For more information about flush policy, please read our documentation about :ref:`section_display`.
+For example, during the back copy if the flush policy is in switch mode or during your flush if your display is driven through SPI (if there is a DMA dedicated to the SPI port).
+For more information about the flush policy, please read our documentation about :ref:`section_display`.
 
 
 Hardware configuration
@@ -178,8 +178,8 @@ Buffers location in memory
 ++++++++++++++++++++++++++
 
 An important step during the development of the UI integration is the memory location of the buffers that will use the GUI to draw to the display.
-In a MCU, you may have the choice between different types of RAM that have different properties in terms of quantity and speed.
-Please always prefer the fastest RAM whenever its size allow it.
+In an MCU, you may have the choice between different types of RAM that have different properties in terms of quantity and speed.
+Please always prefer the fastest RAM whenever its size allows it.
 
 
 At flush level
@@ -189,13 +189,13 @@ Flush policy
 ++++++++++++
 
 As described in the :ref:`section_display` page, there are several flush policies that can be implemented.
-Check that the flush policy selected is the best according your hardware capabilities. Generally, the best flush policy is the switch mode.
+Check that the flush policy selected is the best according to your hardware capabilities. Generally, the best flush policy is the switch mode.
 If your flush policy is different, verify why in order to confirm that you are in the best mode.
 
 Flush optimizations
 +++++++++++++++++++
 
-According the connection with the display, it may happen that the flush to the display must be implemented during the project.
+According to the connection with the display, it may happen that the flush to the display must be implemented during the project.
 If you are in this case, you must be sure that your flush implementation is the fastest.
 
 For example, consider a display driven by SPI with a DMA dedicated to this communication port.
