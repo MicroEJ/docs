@@ -41,8 +41,8 @@ To avoid those pitfalls:
   - :ref:`Memory inspection tools<tutorial_discover_embedded_debugging_techniques.tools.memory_inspection>`.
   - :ref:`Heap Analyzer<heapdumper>`.
 
-Causes of UI bad performances
------------------------------
+Identifying the causes of bad performances
+------------------------------------------
 
 The process of rendering a frame of the UI consists of several parts:
 
@@ -52,9 +52,28 @@ The process of rendering a frame of the UI consists of several parts:
   - Drawing of the UI (MicroUI drawing method execution).
 
 - Display flush.
-- (depends on the UI port) Backbuffer copy, see :ref:`Display Buffer Modes<section_display_modes>`. 
+- (depends on the UI port) Backbuffer copy, see :ref:`Display Buffer Modes<section_display_modes>`.
 
-This tutorial focuses on reducing processing time for the "Drawing of the UI" parts. To get more information about the other parts, please see the VEE Porting Guide :ref:`Graphical User Interface<pack_gui>` section.
+Some tools are available to identify which part of this process affect the most the GUI performance.
+
+SystemView
+~~~~~~~~~~
+
+The SystemView tool can be used to trace the UI actions (drawings, flush, etc.) and detect which ones are the most time-consuming. The documentation of SystemView is available :ref:`here<systemview>`. The MicroUI traces should be configured in SystemView in order to see the UI actions performed, it can be done by following :ref:`this documentation<microui_traces>`. Custom traces can be added and logged from the Java application to record specific actions.
+
+MicroUI Flush Visualizer
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+A perfect application has 100% of its display area drawn. This is the total area covered by the sum of the area drawn by the drawing operations. A value of 200% indicates the area drawn is equivalent to twice the surface of the entire display. A total area drawn between 100% to 200% is the norm in practice because widgets often overlap. However, if the total area drawn is bigger than 200%, that means that the total surface of the display was drawn more than twice, meaning that a lot of time could be spent drawing things that are never shown.
+
+The MicroUI Flush Visualizer tool can be used to investigate potential performance bottlenecks in UI applications running on the Simulator by showing the pixel surface drawn between two MicroUI frame buffer flushes.
+
+The documentation of MicroUI Flush Visualizer is available :ref:`here<microuiflushvisualizer>`.
+
+High-level debugging and optimizations
+--------------------------------------
+
+This section provides insights into common issues affecting performances on the high-level side. The following advices will help reduce the MWT processing and drawing time.
 
 Format of UI resources
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -108,30 +127,10 @@ Animator and TimerTask mix
 
 A mix of the Animator and TimeTask approaches could be implemented in order to set a fixed framerate but also to rely on the screen flush.
 
+Hardware and low-level debugging and optimizations
+--------------------------------------------------
 
-Tools to analyze the GUI execution
-----------------------------------
-
-SystemView
-~~~~~~~~~~
-
-The SystemView tool can be used to trace the UI actions (drawings, flush, etc.) and detect which ones are the most time-consuming. The documentation of SystemView is available :ref:`here<systemview>`. The MicroUI traces should be configured in SystemView in order to see the UI actions performed, it can be done by following :ref:`this documentation<microui_traces>`. Custom traces can be added and logged from the Java application to record specific actions.
-
-MicroUI Flush Visualizer
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-A perfect application has 100% of its display area drawn. This is the total area covered by the sum of the area drawn by the drawing operations. A value of 200% indicates the area drawn is equivalent to twice the surface of the entire display. A total area drawn between 100% to 200% is the norm in practice because widgets often overlap. However, if the total area drawn is bigger than 200%, that means that the total surface of the display was drawn more than twice, meaning that a lot of time could be spent drawing things that are never shown.
-
-The MicroUI Flush Visualizer tool can be used to investigate potential performance bottlenecks in UI applications running on the Simulator by showing the pixel surface drawn between two MicroUI frame buffer flushes.
-
-The documentation of MicroUI Flush Visualizer is available :ref:`here<microuiflushvisualizer>`.
-
-
-Hardware and low-level investigation tips
------------------------------------------
-
-Regardless the GUI application in development, it may be possible that the root cause of low performance of the GUI is located at the low-level of the system.
-This section provides insights of main spots to check regarding the low-level and the hardware. 
+This section provides insights into the main spots to check regarding the low-level and the hardware. 
 
 At project level
 ~~~~~~~~~~~~~~~~
@@ -139,17 +138,15 @@ At project level
 Compiling optimization options
 ++++++++++++++++++++++++++++++
 
-Ensure that your project is configured to bring the best performances with compiling optimization options correctly set up.
-
+The project should be configured to bring the best performances with compiling optimization options correctly set up.
 
 RTOS tasks environment
 ++++++++++++++++++++++
 
-Please check that the priority of the UI task is high enough to avoid too many preemptions that may induce bad UI performances.
+The priority of the UI task should be set high enough to avoid too many preemptions that may induce bad UI performances.
 
-Another point to watch in this field is the amount of other tasks that are running in the same time as the UI task.
+Another point to watch in this field is the amount of other tasks that are running at the same time as the UI task.
 Indeed, it may be possible that the total workload is too high for the CPU, therefore, the UI task cannot get access to the required amount of computing power.
-
 
 At hardware level
 ~~~~~~~~~~~~~~~~~
@@ -157,13 +154,12 @@ At hardware level
 Hardware capabilities
 +++++++++++++++++++++
 
-MCUs and SoCs may have access to various hardware IPs to speedup the UI. Be sure your UI port exploits all of them.
-First of all, check that your system has a GPU and use it if it's the case.
-Then, driving a display implies an intensive memory usage, verify that you use a DMA whenever it's possible.
+MCUs and SoCs may have access to various hardware IPs to speed up the UI. Be sure your UI port exploits all of them.
+First of all, check that your system has a GPU and use it if that's the case.
+Then, driving a display implies intensive memory usage, verify that you use a DMA whenever it's possible.
 
 For example, during the back copy if the flush policy is in switch mode or during your flush if your display is driven through SPI (if there is a DMA dedicated to the SPI port).
 For more information about the flush policy, please read our documentation about :ref:`section_display`.
-
 
 Hardware configuration
 ++++++++++++++++++++++
@@ -171,7 +167,7 @@ Hardware configuration
 Each of your hardware components such as SPI, DMA or LCD controller must be configured to bring the best performances achievable.
 This implies to read carefully the datasheet of the MCU and the display and determine for example the best frequency, communication mode possible.
 
-Another example of configuration with DMAs, a DMA has often a burst mode to transfer data, ensure that you use this mode to maximize performances.
+Another example of configuration with DMAs, a DMA has often a burst mode to transfer data, ensure that you use this mode to maximize performance.
 
 
 Buffers location in memory
@@ -180,7 +176,6 @@ Buffers location in memory
 An important step during the development of the UI integration is the memory location of the buffers that will use the GUI to draw to the display.
 In an MCU, you may have the choice between different types of RAM that have different properties in terms of quantity and speed.
 Please always prefer the fastest RAM whenever its size allows it.
-
 
 At flush level
 ~~~~~~~~~~~~~~
@@ -203,7 +198,6 @@ For example, consider a display driven by SPI with a DMA dedicated to this commu
 Firstly, be sure you use the SPI DMA during flush transfers.
 
 Secondly, ensure that you exploit the SPI DMA to its maximum by doing DMA transfers to the maximum size whenever it's possible.
-
 
 
 ..
