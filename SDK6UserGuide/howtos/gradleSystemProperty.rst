@@ -14,18 +14,18 @@ Gradle allows to define System Properties with the command line thanks to the ``
 
 and use them with the API ``providers.systemProperty("myPropertyName").get()``.
 
-For example when the VEE Port of an Application is defined with the ``veePortDir`` variable,
+For example when the VEE Port of an Application is defined with the ``veePortPaths`` variable,
 the project can be configured with::
 
    microej {
-      veePortDir = providers.systemProperty("myVeePortDir").get()
+      veePortPaths = listOf(providers.systemProperty("myVeePortPath").get())
    }
 
 and built with:
 
 .. code:: console
 
-   $ ./gradlew build -DmyVeePortDir="C:\\path\\to\\my\\veePort\\directory"
+   $ ./gradlew build -DmyVeePortPath="C:\\path\\to\\my\\veePort\\directory"
 
 The ``providers.systemProperty("myPropertyName")`` API returns a ``org.gradle.api.provider.Provider`` object, which provides other capabilities like:
 
