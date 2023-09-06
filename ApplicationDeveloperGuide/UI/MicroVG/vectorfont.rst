@@ -28,9 +28,9 @@ Loading a Font File
 A Vector Font has to be loaded in a `VectorFont`_ object with a call to `ej.microvg.VectorFont.loadFont()`_. 
 This `VectorFont`_ object can then be used to draw text strings.
 
-The fonts are decoded at compile-time.
-They don't need to be processed by a generator tool.
-Font files must be declared as resources in a ``.resources.list`` file available in the classpath (:ref:`chapter.microej.applicationResources`). 
+The fonts are decoded at runtime.
+They don't need to be pre-processed by some generator tool like :ref:`MicroUI Fonts<section.ui.Fonts>`
+Vector Font files must be declared as resources in a ``.resources.list`` file available in the classpath (:ref:`chapter.microej.applicationResources`). 
 To declare them as :ref:`external resources<vectorfont_external>`, the font files must be declared too in a ``.externresources.list`` file.
 
 Text String Drawing

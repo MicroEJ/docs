@@ -485,7 +485,7 @@ The size of the images heap can be configured with the ``ej.microui.memory.image
 
 .. warning:: A `ResourceImage`_  allocated on the images heap must be closed manually by the application (`ResourceImage.close()`_); otherwise, a memory leak will occur on the images heap.
 
-For more detail about the images heap implementation, refers to :ref:`this chapter<section_image_loader_memory>` in the VEE Port Guide. 
+For more details about the images heap implementation, refers to :ref:`this chapter<section_image_loader_memory>` in the VEE Port Guide. 
 
 .. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html
 .. _ResourceImage.close(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#close--
