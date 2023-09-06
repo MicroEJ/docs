@@ -403,7 +403,7 @@ Application project to use the Event Queue Foundation Library.
 To use this API, your VEE Port must implement a compatible version. 
 Please refer to the :ref:`VEE Porting Guide <pack_event>` to port the Event Queue for your project.
 
-.. _Event Queue API Module: https://repository.microej.com/modules/ej/api/
+.. _Event Queue API Module: https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/event/
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
