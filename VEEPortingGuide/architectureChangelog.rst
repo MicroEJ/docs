@@ -1201,9 +1201,7 @@ Tools
 ~~~~~
 
 -  Updated License Manager (Production) to debug dongle recognition
-   issues. (usage is
-   ``java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerUsbDongle.jar``
-   in an Architecture or VEE Port folder)
+   issues from command line (see :ref:`production_license_check_cli`).
 -  Updated License Manager (Production) to support dongle recognition
    on macOS ``10.14`` (Mojave)
 -  Fixed ELF To Map to produce correct sizes from an executable

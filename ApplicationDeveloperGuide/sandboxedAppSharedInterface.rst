@@ -8,11 +8,13 @@ Shared Interfaces
 Principle
 ---------
 
-The Shared Interface mechanism provided by MicroEJ Core Engine is an
+The Shared Interface mechanism provided by the Core Engine is an
 object communication bus based on plain Java interfaces where method
-calls are allowed to cross MicroEJ Sandboxed Applications boundaries.
+calls are allowed to cross Sandboxed Applications boundaries
+without relying on Kernel APIs.
+
 The Shared Interface mechanism is the cornerstone for designing reliable
-Service Oriented Architectures on top of MicroEJ. Communication is based
+Service Oriented Architectures. Communication is based
 on the sharing of interfaces defining APIs (Contract Oriented
 Programming).
 
@@ -32,36 +34,109 @@ The basic schema:
 
    Shared Interface Call Mechanism
 
+The Shared Interface mechanism is based on automatic proxy objects
+created by the Core Engine. This offers a reliable
+way for users to handle broken links in case the provider application
+has been stopped or uninstalled.
+
+Applications with a Shared Interface must provide a dedicated
+implementation (called the Proxy class implementation). Its main goal is
+to perform the remote invocation and provide a reliable implementation
+regarding the interface contract even if the remote application fails to
+fulfill its contract (unexpected exceptions, application killed, …). The
+Core Engine will allocate instances of this Proxy class when an
+implementation (of the Shared Interface) owned by another application is
+being transferred to this application.
+
+.. figure:: images/SI_4.png
+   :alt: Shared Interfaces Proxy Overview
+   :align: center
+   :scale: 75%
+
+   Shared Interfaces Proxy Overview
+
+This mecanism is formally specified in the :ref:`[KF] specification <kf_specification>`.
+
 .. _section.shared.interfaces.element:
 
-Shared Interface Creation
--------------------------
+Shared Interface Usage
+----------------------
 
-Creation of a Shared Interface follows three steps:
+Usage of a Shared Interface follows these steps:
 
--  Interface definition,
+#. Define the Shared Interface:
 
--  Proxy implementation,
+   #. Define the Java interface
+   #. Implement the proxy for the interface
+   #. Register the interface as a Shared Interface
+#. From the provider application,
 
--  Interface registration.
+   #. Create an instance of this Shared Interface
+   #. Register the instance to a KF service registry
+#. From the consumer application,
 
-Interface Definition
-~~~~~~~~~~~~~~~~~~~~
+   #. Retrieve a proxy of the instance from the KF service registry
+   #. Call methods of the instance proxy.
+
+Define the Shared Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Define the Java Interface
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The definition of a Shared Interface starts by defining a standard Java
-interface.
+interface. For example:
 
 .. code:: java
 
    package mypackage;
-   public interface MyInterface{ 
+   public interface MyInterface {
        void foo();
    }
 
+Some restrictions apply to Shared Interfaces compared to standard Java
+interfaces:
+
+* Types for parameters and return values must be :ref:`transferable types <section.transferable.types>`;
+* Thrown exceptions must be classes owned by the Kernel.
+
+Implement the Proxy Class
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A proxy class is implemented and executed on the client side, each
+method of the implemented interface must be defined according to the
+following pattern:
+
+.. code:: java
+
+   package mypackage;
+
+   public class MyInterfaceProxy extends Proxy<MyInterface> implements MyInterface {
+       @Override
+       public void foo(){
+           try {
+               invoke(); // perform remote invocation
+           } catch (Throwable e) {
+               e.printStackTrace(); // handle errors
+           }
+       }
+   }
+
+Each implemented method of the proxy class is responsible for performing
+the remote call and catching all errors from the server side and to
+provide an appropriate answer to the client application call according
+to the interface method specification (contract).
+
+The :ref:`Proxy class implementation <section.proxy.implementation>`
+section documents how to perform the remote invocation.
+
+Register the Shared Interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 To declare an interface as a Shared Interface, it must be registered in
 a Shared Interfaces identification file. A Shared Interface
-identification file is an XML file with the ``.si`` suffix with the
-following format:
+identification file is an XML file with the ``.si`` filename extension
+and the following format:
 
 ::
 
@@ -69,21 +144,68 @@ following format:
        <sharedInterface name="mypackage.MyInterface"/>
    </sharedInterfaces>
 
-Shared Interface identification files must be placed at the root of a
-path of the application classpath. For a MicroEJ Sandboxed Application
-project, it is typically placed in ``src/main/resources`` folder.
+Shared Interface identification files must be placed at the root of the
+application classpath, typically it is defined in the
+``src/main/resources`` folder.
 
-Some restrictions apply to Shared Interfaces compared to standard java
-interfaces:
+Use the Shared Interface at Runtime
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--  Types for parameters and return values must be transferable types;
+Projects Structure
+^^^^^^^^^^^^^^^^^^
 
--  Thrown exceptions must be classes owned by the MicroEJ Firmware.
+Both the consumer and the provider applications must have the Java
+interface, the proxy class and the identification file on the classpath
+in order to be able to use the Shared Interface.
+
+Typically, the 3 files can be defined in an Add-On Library that both
+application projects depend on.
+
+Create and Share an instance of a Shared Interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The provider application can instantiate the Java interface. For
+example:
+
+.. code:: java
+
+   MyInterface myInstance = new MyInterface() {
+       @Override
+       public void foo() {
+           System.out.println("Hello world!");
+       }
+   };
+
+To share it with other applications, it must pass the instance to some
+registry owned by the Kernel (see
+:ref:`Kernel service registry <kernel_service_registry>`). For example,
+using the ``SharedServiceRegistry``:
+
+.. code:: java
+
+   SharedServiceFactory.getSharedServiceRegistry().register(MyInterface.class, myInstance);
+
+Retrieve and Use a Proxy of a Shared Interface Instance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The consumer application can then retrieve the instance from the Kernel
+registry. For example, using the ``SharedServiceRegistry``:
+
+.. code:: java
+
+   MyInterface otherAppInstance = SharedServiceFactory.getSharedServiceRegistry().getService(MyInterface.class);
+   // otherAppInstance is actually an instance of the proxy class owned by the consumer application
+
+And it can call the interface methods transparently. For example:
+
+.. code:: java
+
+   otherAppInstance.foo(); // remote invocation through the proxy
 
 .. _section.transferable.types:
 
 Transferable Types
-~~~~~~~~~~~~~~~~~~
+------------------
 
 In the process of a cross-application method call, parameters and return
 value of methods declared in a Shared Interface must be transferred back
@@ -96,8 +218,8 @@ and forth between application boundaries.
 
    Shared Interface Parameters Transfer
 
-:ref:`table.si.transfer.rules` describes the rules applied depending on the
-element to be transferred.
+The following table describes the rules applied depending on the element
+to be transferred.
 
 .. _table.si.transfer.rules:
 
@@ -162,10 +284,13 @@ element to be transferred.
       - Application
       - Forbidden
 
-Objects created by a Sandboxed Application which type is owned by the Kernel 
-can be transferred to another Sandboxed Application provided this has been authorized by the Kernel. 
-The list of Kernel types that can be transferred is Kernel specific, so you have to consult your Kernel specification.
-When an argument transfer is forbidden, the call is abruptly stopped and a `java.lang.IllegalAccessError`_ is thrown by the :ref:`Core Engine <core_engine>`.
+Objects created by an Application which type is owned by the Kernel
+can be transferred to another Application provided this has been
+authorized by the Kernel. The list of Kernel types that can be
+transferred is Kernel specific, so you have to consult your Kernel
+specification. When an argument transfer is forbidden, the call is
+abruptly stopped and an `java.lang.IllegalAccessError`_ is thrown by the
+:ref:`Core Engine <core_engine>`.
 
 .. _java.lang.IllegalAccessError: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/IllegalAccessError.html
 
@@ -175,9 +300,9 @@ When an argument transfer is forbidden, the call is abruptly stopped and a `java
    the Kernel.
 
 The table below lists typical Kernel types allowed to be transferred through a Shared Interface
-call on Evaluation Firmware distributed by MicroEJ Corp.
+call on `Evaluation Kernels <https://repository.microej.com/old_index.php?resource=FIRM>` distributed by MicroEJ Corp.
 
-.. list-table:: MicroEJ Evaluation Firmware Example of Transfer Types
+.. list-table:: MicroEJ Evaluation Kernels Rules for Transferable Types
    :header-rows: 1
 
    -  - Type
@@ -211,60 +336,11 @@ call on Evaluation Firmware distributed by MicroEJ Corp.
 
 .. _section.proxy.implementation:
 
-Proxy Class Implementation
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Implementing the Proxy Class
+----------------------------
 
-The Shared Interface mechanism is based on automatic proxy objects
-created by the underlying MicroEJ Core Engine, so that each application
-can still be dynamically stopped and uninstalled. This offers a reliable
-way for users and providers to handle the relationship in case of a
-broken link.
-
-Once a Java interface has been declared as Shared Interface, a dedicated
-implementation is required (called the Proxy class implementation). Its
-main goal is to perform the remote invocation and provide a reliable
-implementation regarding the interface contract even if the remote
-application fails to fulfill its contract (unexpected exceptions,
-application killed...). The MicroEJ Core Engine will allocate instances
-of this class when an implementation owned by another application is
-being transferred to this application.
-
-.. figure:: images/SI_4.png
-   :alt: Shared Interfaces Proxy Overview
-   :align: center
-   :scale: 75%
-
-   Shared Interfaces Proxy Overview
-
-A proxy class is implemented and executed on the client side, each
-method of the implemented interface must be defined according to the
-following pattern:
-
-.. code:: java
-
-   package mypackage;
-
-   public class MyInterfaceProxy extends Proxy<MyInterface> implements MyInterface {
-
-       @Override
-       public void foo(){
-           try {
-               invoke(); // perform remote invocation
-           } catch (Throwable e) {
-               e.printStackTrace();
-           }
-       }
-   }
-
-Each implemented method of the proxy class is responsible for performing
-the remote call and catching all errors from the server side and to
-provide an appropriate answer to the client application call according
-to the interface method specification (contract). Remote invocation
-methods are defined in the super class `ej.kf.Proxy`_ and are named
-``invokeXXX()`` where ``XXX`` is the kind of return type. As this class
-is part of the application, the application developer has the full
-control on the Proxy implementation and is free to insert additional
-code such as logging calls and errors for example.
+Remote invocation methods are defined in the super class `ej.kf.Proxy`_
+and are named ``invokeXXX()`` where ``XXX`` is the kind of return type.
 
 .. _ej.kf.Proxy: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html
 
@@ -304,6 +380,12 @@ code such as logging calls and errors for example.
 .. _invokeLong(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeLong--
 .. _invokeDouble(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeDouble--
 .. _invokeFloat(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html#invokeFloat--
+
+As this class is part of the Application, the developer has
+the full control on the Proxy implementation and is free to insert
+additional code such as logging calls and errors for example. It is also
+possible to have different proxy implementations for the same Shared
+Interface in different applications.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
