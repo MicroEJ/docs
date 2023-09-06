@@ -23,6 +23,7 @@ VEE Porting Guide
    vg
    net
    bluetooth
+   packEventQueue
    fs
    hal
    device
