@@ -22,7 +22,7 @@ Here is a list of documents or tools that help to improve the quality of applica
 Using recent versions of UI libraries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Using the latest UI libraries (MicroUI, MWT, Widget, etc.) available may solve some performance issues. The most recent UI libraries fix some bugs that may affect performance and they provide tools/libraries that allow to implement more performant UIs.
+Using the latest UI libraries (MicroUI, MWT, Widget, etc.) available may solve some performance issues. The most recent UI libraries fix some bugs that may affect performance and they provide tools and libraries that allow to implement more performant UIs.
 
 Memory management
 ~~~~~~~~~~~~~~~~~
@@ -130,7 +130,9 @@ A mix of the Animator and TimeTask approaches could be implemented in order to s
 Hardware and low-level debugging and optimizations
 --------------------------------------------------
 
-This section provides insights into the main spots to check regarding the low-level and the hardware. 
+This section provides insights into the main spots to check regarding the low-level and the hardware.
+
+Please see the VEE Porting Guide :ref:`Graphical User Interface<pack_gui>` documentation for more information about the UI port.
 
 At project level
 ~~~~~~~~~~~~~~~~
@@ -145,8 +147,8 @@ RTOS tasks environment
 
 The priority of the UI task should be set high enough to avoid too many preemptions that may induce bad UI performances.
 
-Another point to watch in this field is the amount of other tasks that are running at the same time as the UI task.
-Indeed, it may be possible that the total workload is too high for the CPU, therefore, the UI task cannot get access to the required amount of computing power.
+Another point that should be taken into consideration is the amount of other tasks that are running at the same time as the UI task.
+The total workload may be too high for the CPU, therefore, the UI task cannot get access to the required amount of computing power.
 
 At hardware level
 ~~~~~~~~~~~~~~~~~
@@ -154,9 +156,9 @@ At hardware level
 Hardware capabilities
 +++++++++++++++++++++
 
-MCUs and SoCs may have access to various hardware IPs to speed up the UI. Be sure your UI port exploits all of them.
-First of all, check that your system has a GPU and use it if that's the case.
-Then, driving a display implies intensive memory usage, verify that you use a DMA whenever it's possible.
+MCUs and SoCs may have access to various hardware IPs to speed up the UI. The UI port should exploit all of them to get the best performance.
+First of all, the GPU should be used if it is available on the system.
+Then, driving a display implies intensive memory usage, a DMA should be used whenever it's possible.
 
 For example, during the back copy if the flush policy is in switch mode or during your flush if your display is driven through SPI (if there is a DMA dedicated to the SPI port).
 For more information about the flush policy, please read our documentation about :ref:`section_display`.
@@ -164,40 +166,23 @@ For more information about the flush policy, please read our documentation about
 Hardware configuration
 ++++++++++++++++++++++
 
-Each of your hardware components such as SPI, DMA or LCD controller must be configured to bring the best performances achievable.
-This implies to read carefully the datasheet of the MCU and the display and determine for example the best frequency, communication mode possible.
+Each of the hardware components such as SPI, DMA or LCD controller must be configured to bring the best performances achievable.
+This implies to read carefully the datasheet of the MCU and the display and determine for example the best frequency and communication mode possible.
 
-Another example of configuration with DMAs, a DMA has often a burst mode to transfer data, ensure that you use this mode to maximize performance.
-
+Another example of configuration with DMAs, a DMA has often a burst mode to transfer data, the UI port should use this mode to maximize performance.
 
 Buffers location in memory
 ++++++++++++++++++++++++++
 
 An important step during the development of the UI integration is the memory location of the buffers that will use the GUI to draw to the display.
-In an MCU, you may have the choice between different types of RAM that have different properties in terms of quantity and speed.
-Please always prefer the fastest RAM whenever its size allows it.
-
-At flush level
-~~~~~~~~~~~~~~
+In an MCU, there may be different types of RAM available that have different properties in terms of quantity and speed.
+The fastest RAM should be chosen for the buffers if its size allows it.
 
 Flush policy
-++++++++++++
+~~~~~~~~~~~~
 
 As described in the :ref:`section_display` page, there are several flush policies that can be implemented.
-Check that the flush policy selected is the best according to your hardware capabilities. Generally, the best flush policy is the switch mode.
-If your flush policy is different, verify why in order to confirm that you are in the best mode.
-
-Flush optimizations
-+++++++++++++++++++
-
-According to the connection with the display, it may happen that the flush to the display must be implemented during the project.
-If you are in this case, you must be sure that your flush implementation is the fastest.
-
-For example, consider a display driven by SPI with a DMA dedicated to this communication port.
-
-Firstly, be sure you use the SPI DMA during flush transfers.
-
-Secondly, ensure that you exploit the SPI DMA to its maximum by doing DMA transfers to the maximum size whenever it's possible.
+The best flush policy should be selected according to the hardware capabilities. Generally, the best flush policy is the switch mode.
 
 
 ..
