@@ -169,8 +169,7 @@ Dependencies
 ============
 
 -  MicroUI module (see :ref:`section_microui`),
--  Display module (see :ref:`section_display`): This module gives
-   the characteristics of the Graphical Engine that are useful to configure the :ref:`section_image_generator`.
+-  Display module (see :ref:`section_display`): the characteristics of the target display are used to configure the :ref:`section_image_generator`.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
