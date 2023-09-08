@@ -142,8 +142,8 @@ Principle
 
 #. The Application requests metrics.
 
-   * For font generic metric, already loaded data is directly used.
-   * For text-dependent metrics: computed by loading metrics of every glyph required by the input string (the glyphs bitmaps are not actually loaded here).
+   * For generic metrics, already loaded data is directly used (and scaled to the font size used).
+   * For text-dependent metrics: computed by loading metrics of every glyph required by the input string (the glyphs bitmaps are not actually rendered here).
 
 #. The Application requests drawings.
 
