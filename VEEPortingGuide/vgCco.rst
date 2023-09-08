@@ -136,8 +136,8 @@ Principle
 
 #. The Application loads a font with `ej.microvg.VectorFont.loadFont()`_.
 
-   * If the resource is internal, it is opened.
-   * If the external resource is not from byte-addressable memory, the FreeType library is configured to read from that memory when needed.
+   * If the resource is internal or external from byte-addressable memory, the FreeType library is configured to read directly from that resource memory section.
+   * Else, if the resource is external from non-byte-addressable memory, the FreeType library is configured to use the external loader to read from that memory.
    * At this point, the font resources are allocated and the font generic data (including baseline & height metrics) is loaded on the FreeType dedicated heap.
 
 #. The Application requests metrics.
