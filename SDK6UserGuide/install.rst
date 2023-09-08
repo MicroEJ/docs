@@ -94,7 +94,7 @@ Install the IDE
 Using an IDE is highly recommended for developing MicroEJ projects, making the development more comfortable and increasing productivity.
 The two following IDEs are supported: 
 
-- `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ - Minimum supported version is ``2021.2``.
+- `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ (Community or Ultimate edition) - Minimum supported version is ``2021.2``.
 - `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/release/2022-09/r/eclipse-ide-java-developers>`__ - Minimum supported version is ``2022-03``.
 
 Follow their respective documentation to install one of them.
