@@ -93,6 +93,40 @@ Here is an example of a ``xxx.constants.list`` file with the result in an applic
 	Screenshot after click
 
 .. note:: Available since MWT 3.5.0 & Widget 5.0.0.
+
+.. _section_monitoring_animators:
+
+Monitoring the Animators
+------------------------
+
+Since an animator ticks its animations as often as possible, the animator may take 100% CPU usage if none of its animations requests a render.
+
+MWT provides a way to inject a monitor to be notified when none of the animations has requested a render during an animator tick.
+
+Setting the ``ej.mwt.debug.animator.enabled`` constant to ``true`` will enable animator monitoring.
+For more information about constants, see the :ref:`section.classpath.elements.constants` section.
+
+The Widget library provides a default monitor implementation which logs warning messages.
+The logs produced also contain information about the animations running on the animator.
+The Animation instances are logged using their ``toString()`` method, so it can be a good idea to override this method
+in the Animation subclasses to be able to identify them.
+
+To use a different implementation (and if Widget is not in the classpath), set the ``ej.mwt.debug.animator.monitor`` constant
+to the FQN of the monitor implementation class.
+
+Here is an example of a ``xxx.constants.list`` file with the result in an application:
+
+.. code-block::
+
+	ej.mwt.debug.animator.enabled=true
+
+.. code-block::
+	:caption: Application logs when the watchface update animation is started but it doesn't request a render
+
+	animatormonitor WARNING: No render requested during animator tick. Animations list: [Watchface update animation]
+
+.. note:: Available since MWT 3.5.0 & Widget 5.0.0.
+
 ..
    | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
