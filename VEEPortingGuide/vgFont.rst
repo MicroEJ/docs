@@ -52,7 +52,7 @@ There are two separate Abstraction Layer API header files (see :ref:`LLVG-FONT-A
    Font Abstraction Layer API
 
 * MicroVG library calls the BSP functions through the header files ``LLVG_FONT_impl.h`` and ``LLVG_PAINTER_impl.h``.
-* The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_FONT_impl.h`` over Freetype.
+* The :ref:`C module MicroVG <section_vg_c_module_microvg>` provides a default implementation of ``LLVG_FONT_impl.h`` over FreeType.
 * This C module also provides an implementation of ``LLVG_PAINTER_impl.c`` that synchronizes the drawing with the MicroUI Graphics Engine and redirects the drawing itself to a third-party drawer.
 * A C module dedicated to a GPU provides an implementation of this drawer. It also redirects the :ref:`complex layout <section_vg_font_complex>` to a third party C module. 
 * The drawer also manages the :ref:`section_vg_gradient`.
@@ -70,7 +70,7 @@ Principle
 ~~~~~~~~~
 
 MicroVG does not provide some Low Level API to make the distinction between a font loaded from different kind of memories (internal or external, byte-addressable or not).
-The Low Level implementation (:ref:`C Modules MicroVG and Freetype<section_vg_cco>`) features the font management from an external memory which is not byte-addressable when the VEE Port provides an implementation of the :ref:`section_externalresourceloader`.
+The Low Level implementation (:ref:`C Modules MicroVG and FreeType<section_vg_cco>`) features the font management from an external memory which is not byte-addressable when the VEE Port provides an implementation of the :ref:`section_externalresourceloader`.
 
 Configuration File
 ~~~~~~~~~~~~~~~~~~
@@ -91,7 +91,7 @@ The following steps describe how to setup the loading of an external resource fr
 6. (optional) Configure the :ref:`section_externalresourceloader` to load from this source.
 7. Build the application and run it on the device.
 8. The application loads the external resource using `ej.microvg.VectorFont.loadFont()`_.
-9. Freetype (:ref:`section_vg_cco`) recognizes this resource as external resource; it configures itself to manage this resource differently than an internal resource (see :ref:`section_vg_c_module_freetype` to have more details).
+9. FreeType (:ref:`section_vg_cco`) recognizes this resource as external resource; it configures itself to manage this resource differently than an internal resource (see :ref:`section_vg_c_module_freetype` to have more details).
 10. The application can use the font.
 
 Simulation
