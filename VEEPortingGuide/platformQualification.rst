@@ -163,6 +163,9 @@ FS Pack
    * - FS Pack
      - FS API
      - Java Test Suite
+   * - [6.0.0-6.1.0[
+     - `2.1.1 <https://repository.microej.com/modules/ej/api/fs/2.1.1/>`__
+     - `3.0.8 <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.8/>`__
    * - [5.1.2-5.2.0[
      - `2.0.6 <https://repository.microej.com/modules/ej/api/fs/2.0.6/>`__
      - `3.0.3 <https://repository.microej.com/modules/com/microej/pack/fs/fs-testsuite/3.0.3/>`__
