@@ -113,7 +113,7 @@ Once your favorite IDE is installed, the MicroEJ plugin must be installed.
       Follow these steps to install the latest stable version of the MicroEJ plugin for IntelliJ IDEA:
       
       - In IntelliJ IDEA, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, 
-        menu :guilabel:`IntelliJ IDEA` > :guilabel:`Preferences...` on macOS).
+        menu :guilabel:`IntelliJ IDEA` > :guilabel:`Settings...` on macOS).
       - Go to :guilabel:`Plugins` menu.
       - In the search field, type ``MicroEJ``:
       
