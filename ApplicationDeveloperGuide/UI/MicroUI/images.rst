@@ -18,7 +18,7 @@ The conversion can either be done:
 - At build-time, using the Image Generator.
 - At run-time, using the relevant decoder library.
 
-Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.images.list`` files (**or** in ``*.imagesext.list`` for an external resource, see :ref:`chapter.microej.applicationResources`).
+Immutable images are declared in :ref:`Classpath<chapter.microej.classpath>` ``*.images.list`` files (**or** in ``*.imagesext.list`` for an external resource, see :ref:`section_external_images`).
 
 .. graphviz::
 
@@ -338,6 +338,16 @@ An image that was previously generated but is no longer listed in the ``*.images
 
 .. warning:: When :ref:`testing an Image Generator extension project<section_image_generator_test_extension_project>`, the image cache is automatically disabled.
 
+
+.. _section_external_images:
+
+External Images
+~~~~~~~~~~~~~~~
+
+To fetch immutable images from external memory, the application must pre-register the :ref:`external Image resources<chapter.microej.applicationResources>`.
+The management of this kind of image may be different than the internal images and may require some allocations in the :ref:`images_heap`.
+For more details about the external image management, refers to the VEE Port Guide chapter :ref:`section_image_external_memory`.
+
 Image Generator Error Messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -474,6 +484,8 @@ In other words, every image which cannot be retrieved using `ej.microui.display.
 The size of the images heap can be configured with the ``ej.microui.memory.imagesheap.size`` property.
 
 .. warning:: A `ResourceImage`_  allocated on the images heap must be closed manually by the application (`ResourceImage.close()`_); otherwise, a memory leak will occur on the images heap.
+
+For more details about the images heap implementation, refers to :ref:`this chapter<section_image_loader_memory>` in the VEE Port Guide. 
 
 .. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html
 .. _ResourceImage.close(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#close--

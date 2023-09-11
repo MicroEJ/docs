@@ -25,12 +25,13 @@ It also provides metrics measurement methods to correctly place the text within 
 Loading a Font File
 -------------------
 
-Font files must be declared as ressources in a `.resources.list` file available in the classpath(:ref:`chapter.microej.applicationResources`).
+A Vector Font has to be loaded in a `VectorFont`_ object with a call to `ej.microvg.VectorFont.loadFont()`_. 
+This `VectorFont`_ object can then be used to draw text strings.
 
-Then the font has to be loaded in a `VectorFont`_ object with a call to `ej.microvg.VectorFont.loadFont()`_. This `VectorFont`_ object can then be used to draw text strings.
-
-.. _VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/
-.. _ej.microvg.VectorFont.loadFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#loadFont-java.lang.String-
+The fonts are decoded at runtime.
+They don't need to be pre-processed by some generator tool like :ref:`MicroUI Fonts<section.ui.Fonts>`
+Vector Font files must be declared as resources in a ``.resources.list`` file available in the classpath (:ref:`chapter.microej.applicationResources`). 
+To declare them as :ref:`external resources<vectorfont_external>`, the font files must be declared too in a ``.externresources.list`` file.
 
 Text String Drawing
 -------------------
@@ -381,6 +382,19 @@ Limitations
 The simulator rendering of complex layout mode for :ref:`drawOnCircle` feature is done with many approximations. This rendering can still be used to have an overview of the text positionning on the display.
 
 The letterSpacing feature is not supported by the simulator implementation. Texts will be displayed with a letterspacing value of 0.
+
+.. _vectorfont_external:
+
+External Fonts
+--------------
+
+To fetch fonts from external memory, the application must pre-register the :ref:`external Font resources<chapter.microej.applicationResources>`.
+The management of this kind of font may be different than the *internal* images and may require some allocations in the runtime memory.
+For more details about the external font management, refers to the VEE Port Guide chapter :ref:`section_vg_font_external`.
+
+
+.. _VectorFont: https://repository.microej.com/javadoc/microej_5.x/apis/
+.. _ej.microvg.VectorFont.loadFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#loadFont-java.lang.String-
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

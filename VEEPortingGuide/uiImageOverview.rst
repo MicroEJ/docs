@@ -165,6 +165,12 @@ Process overview:
 
 5. When the MicroUI Image is no longer needed, it must be closed explicitly by the application. The Image Engine Core asks the right sub Image Engine module (see :ref:`section_image_generator` and :ref:`image_runtime_decoder`) to free the image working area.
 
+Dependencies
+============
+
+-  MicroUI module (see :ref:`section_microui`),
+-  Display module (see :ref:`section_display`): the characteristics of the target display are used to configure the :ref:`section_image_generator`.
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

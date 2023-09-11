@@ -14,7 +14,7 @@ The generic C modules are available on the :ref:`central_repository` and the spe
 
 The following picture illustrates the available C modules and their relations for an implementation that uses:
 
-* Freetype library for the font renderer and the font layouter in simple layout mode.
+* FreeType library for the font renderer and the font layouter in simple layout mode.
 * Harfbuzz library for the font layouter in complex layout mode.
 * Vivante VGLite library for the drawing of vector paths
 
@@ -70,7 +70,7 @@ This generic C module provides an implementation of MicroVG concepts: matrix, pa
 * Matrix (see Matrix module's :ref:`section_vg_matrix_llapi`): a basic software implementation.
 * Path (see Path module's :ref:`section_vg_path_llapi`): a generic implementation that manages the command buffer's life cycle and dispatches the command encoding to a 3rd-party header file ``microvg_path.h``.
 * Gradient (see Gradient module's :ref:`section_vg_gradient_llapi`): a generic implementation that manages the gradient buffer's life cycle and dispatches the gradient encoding to a 3rd-party header file ``microvg_gradient.h``.
-* Font (see Font module's :ref:`section_vg_font_llapi`): an implementation of vector font over Freetype: open font file and retrieve font's characteristics.
+* Font (see Font module's :ref:`section_vg_font_llapi`): an implementation of vector font over FreeType: open font file and retrieve font's characteristics.
 * The MicroVG painter native functions are implemented in ``LLVG_PAINTER_impl.c`` and the drawings are redirected to ``vg_drawing.h``.
 * Image management is too specific to the GPU and is not implemented in this C module.
 
@@ -84,7 +84,7 @@ Dependencies
 This generic C module requires some specific modules:
 
 * Path and Gradient require a C module specific to a VEE Port (to a GPU format).
-* Font requires the Freetype library and optionally the Harfbuzz library to manage the :ref:`complex layout <section_vg_font_complex>`.
+* Font requires the FreeType library and optionally the Harfbuzz library to manage the :ref:`complex layout <section_vg_font_complex>`.
 
 Configuration
 -------------
@@ -94,33 +94,35 @@ This file (a header file with some C defines) enables (or disables) and configur
 
 * ``VG_FEATURE_PATH``: set this define to embed the full implementation of ``Path`` feature. Otherwise, a stub implementation is used, and all ``Path`` drawings are dropped.
 * ``VG_FEATURE_GRADIENT``: configure this define to embed the full implementation of ``LinearGradient`` or a stub implementation that only manages one color (linear gradient's first color). The respective options are ``VG_FEATURE_GRADIENT_FULL`` and ``VG_FEATURE_GRADIENT_FIRST_COLOR``.
-* ``VG_FEATURE_FONT``: configure this define to specify the Font Engine and the Font Engine's backend. Two options are currently available: the Freetype engine with a vectorial backend and the Freetype engine with a bitmap backend. The respective options are ``VG_FEATURE_FONT_FREETYPE_VECTOR`` and ``VG_FEATURE_FONT_FREETYPE_BITMAP``.
-* ``VG_FEATURE_FREETYPE_TTF``: set this define to enable the support of TTF font files in Freetype.
-* ``VG_FEATURE_FREETYPE_OTF``: set this define to enable the support of OTF font files in Freetype.
-* ``VG_FEATURE_FREETYPE_COLORED_EMOJI``: set this define to enable the support of colored emoji in Freetype.
+* ``VG_FEATURE_FONT``: configure this define to specify the Font Engine and the Font Engine's backend. Two options are currently available: the FreeType engine with a vectorial backend and the FreeType engine with a bitmap backend. The respective options are ``VG_FEATURE_FONT_FREETYPE_VECTOR`` and ``VG_FEATURE_FONT_FREETYPE_BITMAP``.
+* ``VG_FEATURE_FREETYPE_TTF``: set this define to enable the support of TTF font files in FreeType.
+* ``VG_FEATURE_FREETYPE_OTF``: set this define to enable the support of OTF font files in FreeType.
+* ``VG_FEATURE_FREETYPE_COLORED_EMOJI``: set this define to enable the support of colored emoji in FreeType.
 * ``VG_FEATURE_FONT_COMPLEX_LAYOUT``:  set this define to enable the support of :ref:`complex layout<section_vg_font_complex>`. This option is managed by the C module ``Harfbuzz`` (see upper).
-* ``VG_FEATURE_FONT_EXTERNAL``: set this define to allow loading of external font files (outside the application classpath). See :ref:`chapter.microej.applicationResources`.
-* ``VG_FEATURE_FREETYPE_HEAP_SIZE``: specify the Freetype engine's heap size.
+* ``VG_FEATURE_FONT_EXTERNAL``: set this define to allow loading of external font files (outside the application classpath). See :ref:`vectorfont_external`.
+* ``VG_FEATURE_FREETYPE_HEAP_SIZE``: specify the FreeType engine's heap size.
 * ``VG_FEATURE_FONT_COMPLEX_LAYOUT_HEAP_SIZE``: specify the Harfbuzz engine's heap size.
 
 .. note:: This options list is not exhaustive. Please consult the C module's readme file for more information.
 
-Library: Freetype
+.. _section_vg_c_module_freetype:
+
+Library: FreeType
 =================
 
 Description
 -----------
 
-The Freetype library compatible with MicroEJ is packaged in a C module on the :ref:`developer_repository`: `com.microej.clibrary.thirdparty#freetype`_.
+The FreeType library compatible with MicroEJ is packaged in a C module on the :ref:`developer_repository`: `com.microej.clibrary.thirdparty#freetype`_.
 
 .. _com.microej.clibrary.thirdparty#freetype: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/thirdparty/freetype/
 
-This C module provides a fork of Freetype 2.11.0.
+This C module provides a fork of FreeType 2.11.0.
 
 Memory Heap Configuration
 -------------------------
 
-The Freetype library requires a memory Heap for Freetype internal objects allocated when a font file is loaded (see https://freetype.org/freetype2/docs/design/design-4.html). 
+The FreeType library requires a memory Heap for FreeType internal objects allocated when a font file is loaded (see https://freetype.org/freetype2/docs/design/design-4.html).
 The size of this heap depends on the number of fonts loaded in parallel and on the fonts themselves. 
 This size is defined by ``VG_FEATURE_FREETYPE_HEAP_SIZE`` in ``microvg_configuration.h``.
 
@@ -132,16 +134,16 @@ All fonts do not require the same heap size. FreeType heap usage can be monitore
 Principle
 ---------
 
-#. The Application loads a font with `VectorFont.loadFont()`.
+#. The Application loads a font with `ej.microvg.VectorFont.loadFont()`_.
 
-   * If the resource is external, it is opened.
-   * If the external resource is not from byte-addressable memory, the Freetype library is configured to read from that memory when needed.
+   * If the resource is internal or external from byte-addressable memory, the FreeType library is configured to read directly from that resource memory section.
+   * Else, if the resource is external from non-byte-addressable memory, the FreeType library is configured to use the :ref:`external loader<section_externalresourceloader>` to read from that memory.
    * At this point, the font resources are allocated and the font generic data (including baseline & height metrics) is loaded on the FreeType dedicated heap.
 
 #. The Application requests metrics.
 
-   * For font generic metric, already loaded data is directly used.
-   * For text-dependent metrics: computed by loading metrics of every glyph required by the input string (the glyphs bitmaps are not actually loaded here).
+   * For generic metrics, already loaded data is directly used (and scaled to the font size used).
+   * For text-dependent metrics: computed by loading metrics of every glyph required by the input string (the glyphs bitmaps are not actually rendered here).
 
 #. The Application requests drawings.
 
@@ -151,7 +153,7 @@ Principle
      * the bitmap is rendered for the given font size and
      * the character is drawn in the given graphic context.
 
-#. The Application unloads the font with `VectorFont.close()`.
+#. The Application unloads the font with `ej.microvg.VectorFont.close()`_.
 
    * Any resource associated with the font is released.
    * At this point, any attempt to use the font will result in an exception.
@@ -171,7 +173,7 @@ This size is defined by ``VG_FEATURE_HARFBUZZ_HEAP_SIZE_HEAP`` in ``microvg_conf
 
 All fonts do not require the same heap size. The ``MICROVG_MONITOR_HEAP`` define in ``microvg_helper.h`` and ``MEJ_LOG_MICROVG`` and ``MEJ_LOG_INFO_LEVEL`` defines in ``mej_log.h`` can be used to monitor the Harfbuzz heap evolution.
 
-Freetype and Harfbuzz libraries are not sharing the same heap, but this could easilly be done by updating ``ft_system.c`` and ``hb-alloc.c`` files.
+FreeType and Harfbuzz libraries are not sharing the same heap, but this could easilly be done by updating ``ft_system.c`` and ``hb-alloc.c`` files.
 
 .. _section_vg_c_module_microvg_vglite:
 
@@ -189,7 +191,7 @@ The implementation requires:
 
 * the concepts of the C module MicroVG,
 * the concepts of the C module MicroUI over VGLite,
-* the Freetype library,
+* the FreeType library,
 * the Vivante VGLite library.
 
 This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microvg-vglite`_.
@@ -200,6 +202,10 @@ Compatibility
 =============
 
 The compatibility between the components (Packs, C modules, and Libraries) is described in the :ref:`section_vg_releasenotes`.
+
+
+.. _ej.microvg.VectorFont.loadFont(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#loadFont-java.lang.String-
+.. _ej.microvg.VectorFont.close(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorFont.html#close--
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
