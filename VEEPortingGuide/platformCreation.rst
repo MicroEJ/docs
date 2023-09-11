@@ -652,6 +652,19 @@ such as :ref:`tool_serial_to_socket`.
   testsuite.trace.ip=localhost
   testsuite.trace.port=5555
 
+Platform API Documentation Build
+================================
+
+The Platform API HTML documentation can be generated using the following steps:
+
+- Create a new module repository following :ref:`module_repository`.
+- Enable module repository javadoc generation (see :ref:`module_repository_generate_javadoc`).
+- Go to your Platform build directory then extract all modules name with versions (``<module_name>-<major>.<minor>``) inside ``source/javaLibs`` and ``source/MICROJVM/javaLibs`` directories.
+- Include the related API modules in the module repository.
+- Build the module repository. 
+
+The Platform API documentation is available in ``<module_repository_project>/target~/artifacts/<module_repository_name>-javadoc.zip``.    
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
