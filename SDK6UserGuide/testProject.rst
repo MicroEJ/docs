@@ -205,7 +205,7 @@ documentation for the complete list of available filtering methods.
 
 As mentionned earlier, Gradle allows to filter the tests from the command line directly, thanks to the ``--tests`` option::
 
-   ./gradlew check --tests MyTestClass
+   ./gradlew test --tests MyTestClass
 
 This can be convenient to quickly execute one test for example, without requiring a change in the build script file.
 
