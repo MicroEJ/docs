@@ -73,7 +73,7 @@ This major Architecture version update introduces the following main features:
   - On different Kernel Applications provided some conditions are met. 
     Basically, a ``.fo`` built on Kernel 1 can be installed on Kernel 2 if the exposed Kernel APIs are left unchanged.
     See :ref:`feature_portability_control` for more details.
-- Redesigned Feature installation flow. A Feature can now be installed in any any byte-addressable memory mapped to the CPU's address space, including ROM.
+- Redesigned Feature installation flow. A Feature can now be installed in any byte-addressable memory mapped to the CPU's address space, including ROM.
   For that, ``LLKERNEL`` Low Level APIs have been fully rewritten. See :ref:`Feature installation <feature_memory_installation>` for more details.
   Former Feature installation in RAM is preserved and is now called :ref:`In-Place Installation <feature_inplace_installation>`.
   Former static Feature installed by the SDK (using the Firmware Linker tool) is removed in favor of :ref:`Feature persistency <feature_persistency>` at boot.
