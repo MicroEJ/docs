@@ -9,19 +9,6 @@ This chapter explains how to import a project in an IDE.
 
    .. tab:: Eclipse
 
-      .. warning::
-         
-         Before importing a project, make sure that the JDK used by the Gradle plugin is correctly configured.
-         The latest versions of Eclipse comes with a JRE 17 installed by default.
-         If the Gradle plugin configuration is not updated, Gradle will use this JRE 17 to execute the builds,
-         which will make the build fail since the MicroEJ plugins only support JDK 11.
-         To configure the Gradle plugin:
-         
-         - Go to :guilabel:`Window` > :guilabel:`Preferences`.
-         - Click on :guilabel:`Gradle`.
-         - In the :guilabel:`Java home` field, set the full path of your JDK 11 installation.
-         - Click on :guilabel:`Apply and Close` button.
-
       In order to import an existing Gradle project in Eclipse, follow these steps:
       
       - Click on ``File`` > ``Import...``.
