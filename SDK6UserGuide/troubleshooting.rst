@@ -41,9 +41,9 @@ The SDK requires a JDK 11, so when a JDK 8 is used, the following kind of errors
 
 	Cause: com/microej/gradle/plugins/MicroejApplicationGradlePlugin has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
 
-The solution is to use a JDK 11 to fix this error:
+The solution is to use a JDK 11 or a higher LTS version (``11``, ``17`` or ``21``) to fix this error:
 
-- For the command line interface, make sure that a JDK 11 is defined in the ``PATH`` environment.
+- For the command line interface, make sure that a supported JDK version is defined in the ``PATH`` environment.
   To check, run ``java -version``. You should see something like this::
 
     $ java -version
@@ -51,10 +51,10 @@ The solution is to use a JDK 11 to fix this error:
     OpenJDK Runtime Environment Temurin-11.0.14.1+1 (build 11.0.14.1+1)
     OpenJDK 64-Bit Server VM Temurin-11.0.14.1+1 (build 11.0.14.1+1, mixed mode)
 
-  Alternatively, you can set the ``JAVA_HOME`` environment variable to point to the installation directory of the JDK 11.
+  Alternatively, you can set the ``JAVA_HOME`` environment variable to point to the installation directory of the JDK.
 
 - For IntelliJ IDEA, go to ``File`` > ``Settings...`` > ``Build, Execution, Deployment`` > ``Build Tools`` > ``Gradle``,
-  and make sure the selected ``Gradle JVM`` is a JDK 11:
+  and make sure the selected ``Gradle JVM`` is a supported JDK version:
 
 	.. figure:: images/intellij-project-jdk.png
 		:alt: Project JDK in IntelliJ IDEA
@@ -62,21 +62,6 @@ The solution is to use a JDK 11 to fix this error:
 		:scale: 70%
 
 		Project JDK in IntelliJ IDEA
-
-Wrong JDK version used by the Eclipse Gradle plugin
----------------------------------------------------
-
-In Eclipse, if the error ``Invalid JDK version. The plugin requires a JDK 11, whereas a JDK 17 is used.`` is raised, 
-make sure that the JDK used by the Gradle plugin is correctly configured.
-The latest versions of Eclipse comes with a JRE 17 installed by default.
-If the Gradle plugin configuration is not updated, Gradle will use this JRE 17 to execute the builds,
-which will make the build fail since the MicroEJ plugins only support JDK 11.
-To configure the Gradle plugin:
-
-- Go to :guilabel:`Window` > :guilabel:`Preferences`.
-- Click on :guilabel:`Gradle`.
-- In the :guilabel:`Java home` field, set the full path of your JDK 11 installation.
-- Click on :guilabel:`Apply and Close` button.
 
 Failing Resolution in ``adp`` Task
 ----------------------------------
