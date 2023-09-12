@@ -33,6 +33,15 @@ specific configuration:
    -  ``QNX70``: BlackBerry QNX 7.0
    -  ``Clang``: Clang
 
+.. _changelog-8.1.0:
+
+[8.1.0] - 2023-MM-DD
+--------------------
+
+Core Engine
+~~~~~~~~~~~
+
+- Updated :ref:`Feature installation boot sequence <feature_persistency>`: all Feature handles are now retrieved prior to initializing them.
 
 
 .. _changelog-8.0.0:
