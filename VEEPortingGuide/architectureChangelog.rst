@@ -38,11 +38,19 @@ specific configuration:
 [8.1.0] - 2023-MM-DD
 --------------------
 
+This Architecture version update introduces the following main features:
+
+- Updated :ref:`Feature installation <feature_memory_installation>` flow to support Code chunks. 
+  A Feature can now be installed to ROM without the need of the Code size in RAM.
+
+If you plan to migrate a VEE Port from Architecture ``8.0.0`` to Architecture ``8.1.0``, consider the :ref:`architecture8_migration` chapter.
+
 Core Engine
 ~~~~~~~~~~~
 
 - Updated :ref:`Feature installation boot sequence <feature_persistency>`: all Feature handles are now retrieved prior to initializing them.
-
+- Removed Feature installation in RAM (legacy :ref:`In-Place Installation mode <feature_inplace_installation>`). See :ref:`architecture8_migration_llkernel`.
+- Updated check of :ref:`Kernel UID <kernel_uid>` at the beginning of `Kernel.install(java.io.InputStream)`_, before allocating Feature sections.
 
 .. _changelog-8.0.0:
 
@@ -65,7 +73,7 @@ This major Architecture version update introduces the following main features:
   - On different Kernel Applications provided some conditions are met. 
     Basically, a ``.fo`` built on Kernel 1 can be installed on Kernel 2 if the exposed Kernel APIs are left unchanged.
     See :ref:`feature_portability_control` for more details.
-- Redesigned Feature installation flow. A Feature can now be installed in any byte-addressable memory, including ROM.
+- Redesigned Feature installation flow. A Feature can now be installed in any byte-addressable memory mapped to the CPU's address space, including ROM.
   For that, ``LLKERNEL`` Low Level APIs have been fully rewritten. See :ref:`Feature installation <feature_memory_installation>` for more details.
   Former Feature installation in RAM is preserved and is now called :ref:`In-Place Installation <feature_inplace_installation>`.
   Former static Feature installed by the SDK (using the Firmware Linker tool) is removed in favor of :ref:`Feature persistency <feature_persistency>` at boot.
@@ -98,7 +106,7 @@ Foundation Libraries
   
    -  Added heap memory control: `Module.getAllocatedMemory()`_, `Kernel.setReservedMemory()`_ and `Feature.setMemoryLimit()`_ methods.
    -  Added load of a Feature resource (`Feature.getResourceAsStream()`_ method).
-- Updated ``KF`` dynamic loader to support :ref:`Feature Custom Installation <feature_custom_installation>` mode. See :ref:`architecture7_migration_llkernel`.
+- Updated ``KF`` dynamic loader to support the new :ref:`Feature installation <feature_memory_installation>` flow.
 - Removed Foundation Libraries API Jars and Javadoc.
 - Removed `Unknown product - Unknown version` comment in auto-generated Low Level API header files.
 - Removed the ``Serial Communication`` modules group, including the Foundation Libraries ``ECOM`` and ``ECOM-COMM``. See :ref:`architecture7_migration_ecom`.

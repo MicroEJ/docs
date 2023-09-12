@@ -8,16 +8,13 @@ Multi-Sandbox
 Principle
 =========
 
-The Multi-Sandbox capability of the MicroEJ Core Engine allows a
+The Multi-Sandbox capability of the Core Engine allows a
 main application (called Standalone Application) to install and execute
 at runtime additional applications (called Sandboxed Applications).
 
-The MicroEJ Core Engine implements the :ref:`[KF] specification <kf_specification>`. A Kernel is a
+The Core Engine implements the :ref:`[KF] specification <kf_specification>`. A Kernel is a
 Standalone Application generated on a Multi-Sandbox-enabled
-platform. A Feature is a Sandboxed Application generated against a specific Kernel.
-
-A Sandboxed Application may be dynamically downloaded at runtime or
-integrated at build-time within the executable application.
+VEE Port. A Feature is a Sandboxed Application generated against a specific Kernel.
 
 Functional Description
 ======================
@@ -33,10 +30,8 @@ The Multi-Sandbox process extends the overall process described in
    Multi-Sandbox Process
 
 Once a Kernel has been generated, additional Sandboxed Application code
-(Feature) can be built against the Kernel . 
-The binary application file produced (``application.fo``) is compatible only
-for the Kernel on which it was generated. Generating a new Kernel
-requires that you generate the Features again on this Kernel.
+(Feature) can be built against the Kernel. 
+The binary file produced (the ``.fo`` file) can be installed on the Kernel on which it was generated.
 
 For more details on the build flow, please refer to :ref:`Multi-Sandbox Kernel link <kernel_link>` and :ref:`Sandboxed Application link <application_link>` sections.
 
@@ -58,14 +53,14 @@ Installation
 
 Multi-Sandbox capability is an additional Core Engine module, disabled by default.
 
-To enable the Multi-Sandbox capability of the MicroEJ Core Engine, in the platform
+To enable the Multi-Sandbox capability of the Core Engine, in the platform
 configuration file, check :guilabel:`Multi Applications`.
 
 
 Use
 ===
 
-The `KF API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `KF API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the 
 Application project to use :ref:`[KF] <kf_specification>` library.
 
 ::
@@ -106,102 +101,62 @@ A Feature ``.fo`` file is composed of the following elements:
 
    Feature ``.fo`` File Content
 
-The ``LLKERNEL_impl.h`` Abstraction Layer interface provides Low Level APIs for allocating and transferring Feature content in different memory areas.
+Feature installation flow allows to install Features in any byte-addressable memory mapped to the CPU's address space.
+The Feature content is read chunk-by-chunk from the InputStream and progressively transferred to the target memory.
+Only a small amount of RAM is required.
+The ``LLKERNEL_impl.h`` Abstraction Layer interface provides Low Level APIs for allocating and transferring Feature content in different memory areas, including ROM.
 
-There are two kinds of installation:
+Installation Flow
+-----------------
 
-- In-place installation: The Feature content is allocated in RAM.
-- Custom installation: The Feature content is copied to any byte-addressable memory, including ROM.
+The RO Data (Application Resources) is directly transferred to the target location.
+The Code is divided into chunks. Each chunk is temporarily copied to RAM to be relocated. Then it is transferred to the target location.
 
-Installation kinds are not exclusive. It is possible to link a Feature using In-place installation and another one using Custom installation. 
-In all cases, a certain amount of RAM is required:
+A minimum amount of RAM is required:
 
+- A temporary buffer is allocated in the Java heap for reading bytes from the InputStream,
 - Metadata is allocated in the Java heap,
-- Code is first allocated in a memory area called the Kernel Working Buffer (see more details below).
+- Code chunk is temporarily copied in a memory area to be relocated (see more details below).
 
-.. _feature_inplace_installation:
-
-In-Place Installation
----------------------
-
-This is the fastest way to go with Feature installation since it only requires connecting a ``malloc/free`` implementation.
-
-Feature content is installed in RAM. The required memory is allocated in the Kernel Working Buffer. 
-This includes code, resources, static fields, and internal structures.
-When the Feature is uninstalled, allocated memory is reclaimed. 
-When the Core Engine or the device restarts, the Kernel Working Buffer is reset; thus there is no persistent Feature. 
-
-.. figure:: images/multisandbox-link-inplace-overview.png
-   :alt: In-Place Feature Installation Overview
+.. figure:: images/multisandbox-link-overview.png
+   :alt: Feature Installation Steps
    :align: center
    :scale: 70%
 
-   In-Place Feature Installation Overview
-
-The In-Place installation flow is described in the following sequence diagram:
-
-.. figure:: images/multisandbox-link-inplace-installation-flow.png
-   :alt: In-Place Feature Installation Flow
-   :align: center
-   :scale: 100%
-
-   In-Place Feature Installation Flow
-
-The In-Place uninstallation flow is described in the following sequence diagram:
-
-.. figure:: images/multisandbox-link-inplace-uninstallation-flow.png
-   :alt: In-Place Feature Uninstallation Flow
-   :align: center
-   :scale: 100%
-
-   In-Place Feature Uninstallation Flow
-
-.. _feature_custom_installation:
-
-Custom Installation
--------------------
-
-Custom Feature Installation allows to install a Feature in any byte-addressable memory, including ROM. 
-The Code is temporarily allocated to the Kernel Working Buffer before being linked. Then it is transferred to the target location.
-RO Data (Application Resources) is directly transferred to the target location.
-
-.. figure:: images/multisandbox-link-custom-overview.png
-   :alt: Custom Feature Installation Overview
-   :align: center
-   :scale: 70%
-
-   Custom Feature Installation Steps
+   Feature Installation Steps
 
 The Abstraction Layer implementation is responsible for providing the following elements:
 
-- the address location where the Feature will be installed,
+- the location where the Feature will be installed,
 - the implementation to copy a chunk of bytes to the target location.
 
-The custom installation flow is described in the following sequence diagram:
+The detailed installation flow is described in the following sequence diagram:
 
-.. figure:: images/multisandbox-link-custom-installation-flow.png
-   :alt: Custom Feature Installation Overview
+.. figure:: images/multisandbox-link-installation-flow.png
+   :alt: Feature Installation Flow
    :align: center
    :scale: 100%
 
-   Custom Feature Installation Flow
+   Feature Installation Flow
 
-The custom uninstallation flow is described in the following sequence diagram:
+The detailed uninstallation flow is described in the following sequence diagram:
 
-.. figure:: images/multisandbox-link-custom-uninstallation-flow.png
-   :alt: Custom Feature Uninstallation Flow
+.. figure:: images/multisandbox-link-uninstallation-flow.png
+   :alt: Feature Uninstallation Flow
    :align: center
    :scale: 100%
 
-   Custom Feature Uninstallation Flow   
-
+   Feature Uninstallation Flow   
 
 .. _feature_persistency:
 
 Feature Persistency
 -------------------
 
-If the Abstraction Layer implementation installs a Feature in a Read-Only memory, it will be available after the Core Engine or the device restarts.
+Feature Persistency is the ability of the Core Engine to gather installed Features from prior executions of the Kernel upon start up.
+This means that the Kernel will boot with a set of available Features that were already installed.
+To ensure that the Features remain available even after the device restarts, you will have to implement an Abstraction Layer that stores the Features into a Read-Only memory.
+
 
 .. figure:: images/multisandbox-link-boot-flow.png
    :alt: Feature Installation Boot Flow
@@ -210,9 +165,26 @@ If the Abstraction Layer implementation installs a Feature in a Read-Only memory
 
    Feature Installation Boot Flow
 
+.. note::
+
+   Features are available in the :ref:`INSTALLED <kernel_application_lifecycle>` state.
+   It is the responsibility of the Kernel to manually start the desired Features.
+
 
 Advanced Options
 ----------------
+
+Code Chunk Size
+~~~~~~~~~~~~~~~
+
+Feature ``.fo`` Code section is divided into chunks that are temporary copied to RAM to be relocated. 
+The Code chunk size can be configured with the following option:
+
+**Option Name**: ``com.microej.soar.kernel.featurecodechunk.size``
+
+**Default Value**: ``65536`` (bytes)
+
+A small number will reduce the RAM consumption but will increase the ``.fo`` size and will affect the installation time. 
 
 InputStream Buffer Size
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -293,14 +265,55 @@ The following table summarizes the sections and their content:
      - None
      - Features ROM area
    * - ``.rodata``
-     - Code
-     - Kernel Working Buffer
+     - Code chunk
+     - RAM
      - Features ROM area
    * - ``.shstrtab``
      - Metadata
      - Java Heap
      - None
 
+.. _feature_inplace_installation:
+
+In-Place Installation
+---------------------
+
+.. note:: 
+
+   This section describes the legacy Feature installation flow, based on a ``malloc/free`` implementation in RAM.
+   It is deprecated and available up to :ref:`Architecture 8.0.0 <changelog-8.0.0>`.  
+   
+   See :ref:`architecture8_migration_llkernel` for migrating to the latest installation flow.
+
+Feature content is installed in RAM. The required memory is allocated in the Kernel Working Buffer. 
+This includes code, resources, static fields, and internal structures.
+When the Feature is uninstalled, allocated memory is reclaimed. 
+When the Core Engine or the device restarts, the Kernel Working Buffer is reset; thus there is no persistent Feature. 
+
+.. figure:: images/multisandbox-link-inplace-overview.png
+   :alt: In-Place Feature Installation Overview
+   :align: center
+   :scale: 70%
+
+   In-Place Feature Installation Overview
+
+The In-Place installation flow is described in the following sequence diagram:
+
+.. figure:: images/multisandbox-link-inplace-installation-flow.png
+   :alt: In-Place Feature Installation Flow
+   :align: center
+   :scale: 100%
+
+   In-Place Feature Installation Flow
+
+The In-Place uninstallation flow is described in the following sequence diagram:
+
+.. figure:: images/multisandbox-link-inplace-uninstallation-flow.png
+   :alt: In-Place Feature Uninstallation Flow
+   :align: center
+   :scale: 100%
+
+   In-Place Feature Uninstallation Flow
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
