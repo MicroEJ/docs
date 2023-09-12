@@ -21,22 +21,22 @@ System Requirements
    - macOS aarch64 with M1 chip
 
 - **Java Runtime Environment**
-    - JDK 11 - Eclipse Temurin or Oracle Distributions
+    - JDK 11 or higher LTS version (``11``, ``17`` or ``21``) - Eclipse Temurin or Oracle Distributions
 
 Check your JDK version
 ----------------------
 
-The SDK requires a JDK 11 to be installed and:
+The SDK requires a JDK 11 or a higher LTS version to be installed and:
 
-- The ``JAVA_HOME`` environment variable set to the path of a JDK 11.
+- The ``JAVA_HOME`` environment variable set to the path of a JDK.
 
 OR
 
-- The ``java`` executable of a JDK 11 available in the ``PATH``.
+- The ``java`` executable of a JDK available in the ``PATH``.
 
-If the ``JAVA_HOME`` is set to a JDK, make sure that it is a JDK 11.
+If the ``JAVA_HOME`` is set to a JDK, make sure that it is a JDK 11 or a higher LTS version.
 
-If the ``JAVA_HOME`` is not set, make sure a JDK 11 executable is available in the ``PATH`` environment variable.
+If the ``JAVA_HOME`` is not set, make sure a JDK executable is available in the ``PATH`` environment variable.
 To check, run ``java -version`` in a terminal::
 
    $ java -version
@@ -44,7 +44,7 @@ To check, run ``java -version`` in a terminal::
    OpenJDK Runtime Environment Temurin-11.0.15+10 (build 11.0.15+10)
    OpenJDK 64-Bit Server VM Temurin-11.0.15+10 (build 11.0.15+10, mixed mode)
 
-If you don't have a JDK 11 installed, 
+If you don't have a JDK installed, 
 you can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`__ or `Oracle <https://www.oracle.com/fr/java/technologies/downloads/>`__.
 
 Install Gradle
