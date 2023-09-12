@@ -101,8 +101,9 @@ A Feature ``.fo`` file is composed of the following elements:
 
    Feature ``.fo`` File Content
 
-Feature installation flow allows to install Features in any byte-addressable memory (including ROM) with a minimum amount of required RAM. 
-The Feature content is read chunk-by-chunk from the InputStream and copied to any byte-addressable memory.
+Feature installation flow allows to install Features in any byte-addressable memory mapped to the CPU's address space.
+The Feature content is read chunk-by-chunk from the InputStream and progressively transferred to the target memory.
+Only a small amount of RAM is required.
 The ``LLKERNEL_impl.h`` Abstraction Layer interface provides Low Level APIs for allocating and transferring Feature content in different memory areas, including ROM.
 
 Installation Flow
