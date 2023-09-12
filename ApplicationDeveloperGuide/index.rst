@@ -56,6 +56,7 @@ A :ref:`Sandboxed Application <sandboxed_application>` is an Application that is
    modulesRepositories
    libraries
    tools
+   gnss
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
