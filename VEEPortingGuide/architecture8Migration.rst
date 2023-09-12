@@ -36,8 +36,8 @@ The code logic based on a ``malloc/free`` implementation does not need to be cha
    #define KERNEL_ASSERT_FAIL() while(1)
 
    // Utility macros for allocating RAM and ROM areas with required alignment constraints
-   #define KERNEL_AREA_GET_MAX_SIZE(size, alignment) (size+(alignment-1))
-   #define KERNEL_AREA_GET_START_ADDRESS(addr, alignment) ((void*)((((int32_t)addr)+alignment-1)&~(alignment-1)))
+   #define KERNEL_AREA_GET_MAX_SIZE(size, alignment) ((size)+((alignment)-1))
+   #define KERNEL_AREA_GET_START_ADDRESS(addr, alignment) ((void*)((((int32_t)(addr))+(alignment)-1)&~((alignment)-1)))
 
    struct installed_feature{
       void* ROM_area;
