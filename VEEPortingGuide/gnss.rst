@@ -20,19 +20,6 @@ GnssManager abstraction. The GNSS implementation made for each MicroEJ
 Platform is responsible for surfacing the native File System specific
 behavior.
 
-Interaction with the GNSS API goes through a GNSS manager. This manager works around a state machine. 
-To perform read operations to retrieve GNSS data, the machine must be in a STARTED state. 
-Transitions between the states are controlled by the user.
-:ref:`The following graph <fig_gnss-state-machine>`: details the different states, their function and transitions.
-
-.. _fig_gnss-state-machine:
-.. figure:: images/gnss-state-machine.*
-   :alt: GNSS state machine.
-   :align: center
-   :scale: 75%
-
-   GNSS State Machine
-
 GNSS Mock
 =========
 
@@ -67,7 +54,7 @@ Application project to use the GNSS library.
 
 .. code-block:: xml
 
-   <dependency org="ej.api" name="gnss" rev="2.0.0"/>
+   <dependency org="com.microej.pack.gnss" name="gnss-pack" rev="2.0.0"/>
 
 .. _GNSS API Module: https://repository.microej.com/modules/ej/api/gnss/
 
