@@ -174,6 +174,8 @@ To ensure that the Features remain available even after the device restarts, you
 Advanced Options
 ----------------
 
+.. _feature_code_chunk_size:
+
 Code Chunk Size
 ~~~~~~~~~~~~~~~
 

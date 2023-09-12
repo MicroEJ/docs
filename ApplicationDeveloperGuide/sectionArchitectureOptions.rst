@@ -835,8 +835,8 @@ Option(text):
 Specifies the maximum number of threads a Feature is allowed to use at the same
 time.
 
-Group: Dynamic Features
-"""""""""""""""""""""""
+Group: Features Installation
+""""""""""""""""""""""""""""
 
 .. _option_maximum_number_of_dynamic_features:
 
@@ -849,10 +849,21 @@ Option(text):
 
 *Description*:
 
-Specifies the maximum number of Features that can be dynamically installed to
+Specifies the maximum number of Features that can be installed to
 this Kernel (see `Kernel.install()`_ method).
 
 .. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
+
+Option(text):
+~~~~~~~~~~~~~~
+
+*Option Name*: ``com.microej.soar.kernel.featurecodechunk.size``
+
+*Default value*: ``65536``
+
+*Description*:
+
+Specifies the size in bytes of the code chunk in RAM. See :ref:`feature_code_chunk_size` section for more details.
 
 .. _option_feature_stop_timeout:
 
