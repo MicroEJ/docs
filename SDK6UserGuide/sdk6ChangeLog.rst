@@ -3,6 +3,23 @@
 Changelog
 ---------
 
+.. _changelog-0.10.0:
+
+[0.10.0] - 2023-09-13
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Add a task ``runOnDevice`` to run the Executable on a Device.
+- Support all JDK LTS versions higher or equals to version 11.
+
+Fixed
+"""""
+
+- Allow to build a Feature file of an Application with a Virtual Device.
+- Fix javadoc failure when the project contains a JDK class.
+
 .. _changelog-0.9.0:
 
 [0.9.0] - 2023-09-01
