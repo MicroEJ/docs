@@ -139,8 +139,8 @@ The verifier performs tasks including:
 - Control Flow: Analyzing the flow of control within bytecode to detect anomalies in loops, branches, and jumps that could lead to program instability.
 
 
-Starting from :ref:`Architecture 8.1.0 <changelog-8.1.0>`, a default Bytecode Verifier implementation, derived from the Apache BCEL Project <https://commons.apache.org/proper/commons-bcel/>, is now included.
-If you wish to integrate an alternative (commercial) implementation, contact `our support team <https://www.microej.com/contact/#form_2>`_  for access to the SOAR interface API and integration instructions."
+Starting from :ref:`Architecture 8.1.0 <changelog-8.1.0>`, a default Bytecode Verifier implementation, derived from the `Apache BCEL Project <https://commons.apache.org/proper/commons-bcel/>`_, is now included.
+If you wish to integrate an alternative (commercial) implementation, contact `our support team <https://www.microej.com/contact/#form_2>`_  for access to the SOAR interface API and integration instructions.
 
  
 .. note:: 
