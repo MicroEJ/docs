@@ -11,8 +11,17 @@ Standalone Application
    buildAndRunApplication
    launches
 
-A Standalone Application is a Java Application that is directly linked to the C code to produce a Firmware.
+A Standalone Application is a Java Application that is directly linked to the C code to produce an Executable.
 Such application must define a main entry point, i.e. a class containing a ``public static void main(String[])`` method.
+
+The following figure shows the general process of building a Standalone Application to an Executable.
+
+.. figure:: images/link_executable.png
+   :alt: Standalone Application Link Flow
+   :align: center
+   :scale: 80%
+
+   Standalone Application Link Flow
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
