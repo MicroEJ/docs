@@ -812,11 +812,15 @@ Option(checkbox): Enable Bytecode Verifier
 
 *Option Name*: ``soar.bytecode.verifier``
 
-*Default value*: ``false``
+*Default value*: Standalone Application: ``false``, Sandboxed Application: ``true``
 
 *Description*:
 
 Enables :ref:`soar_bytecode_verifier` during application build.
+
+In the context of building a Standalone Application, the bytecode verifier is, by default, disabled to prioritize performance. In this case, the code is considered trusted.
+Conversely, when building a Sandboxed Application, the bytecode verifier is automatically enabled by default. This is particularly important when dealing with untrusted third-party code.
+
 
 Category: Kernel
 ^^^^^^^^^^^^^^^^
