@@ -216,7 +216,7 @@ Feature Portability
 
 By default, a ``.fo`` file can only be installed on the Kernel on which it has been linked. 
 
-Starting from Architecture version ``8.0.0``, the same Feature file can be installed on different Kernels. This is called `Feature Portability`.
+Starting from :ref:`Architecture 8.0.0 <changelog-8.0.0>`, the same Feature file can be installed on different Kernels. This is called `Feature Portability`.
 Thus it is not required to rebuild the ``.fo`` file in the following cases:
 
 - Relinking the executable (memory layout changes),
