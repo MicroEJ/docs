@@ -4,7 +4,6 @@ Tools Options and Error Codes
 .. toctree::
     :maxdepth: 2
 
-    soar
     bon
     sni
     sp
