@@ -588,7 +588,7 @@ Several sections are defined by the Core Engine. Each section must be linked by 
 Read-Only (RO) sections can be placed in writable memories. 
 In such cases, it is the responsibility of the BSP to prevent these sections from being written.
 
-Starting from Architecture ``8.x``, sections have been renamed to follow the standard ELF naming convention.
+Starting from :ref:`Architecture 8.0.0 <changelog-8.0.0>`, sections have been renamed to follow the standard ELF naming convention.
 
 .. tabs::
 
