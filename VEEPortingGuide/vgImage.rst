@@ -223,7 +223,7 @@ The MicroVG Font APIs are available in the class ``ej.microvg.`` `VectorImage`_.
 .. _ResourceVectorImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/ResourceVectorImage.html
 .. _ResourceVectorImage.loadImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/ResourceVectorImage.html#loadImage-java.lang.String-
 .. _VectorGraphicsPainter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html
-.. _VectorImageLoader: https://forge.microej.com/artifactory/microej-developer-repository-release/ej/library/ui/vectorimage-loader
+.. _VectorImageLoader: 
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
