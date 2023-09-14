@@ -401,7 +401,7 @@ Advanced: Test the Front Panel Project
 
 .. note::
 
-   Starting from SDK 5.7.0 and Architecture 8.0, the Front Panel projects are automatically resolved in the workspace,
+   Starting from SDK 5.7.0 and :ref:`Architecture 8.0.0 <changelog-8.0.0>`, the Front Panel projects are automatically resolved in the workspace,
    so this section and the property ``ej.fp.project`` are obsolete since. 
    See :ref:`resolve_foundation_libraries_in_workspace` for more details.
 

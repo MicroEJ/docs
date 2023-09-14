@@ -575,7 +575,7 @@ Link
 
 Several sections are defined by the Core Engine. Each section
 must be linked by the third-party linker.
-Starting from Architecture ``8.x``, sections have been renamed to follow the standard ELF naming convention.
+Starting from :ref:`Architecture 8.0.0 <changelog-8.0.0>`, sections have been renamed to follow the standard ELF naming convention.
 
 .. tabs::
 
