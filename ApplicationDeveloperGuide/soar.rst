@@ -145,8 +145,8 @@ If you wish to integrate an alternative (commercial) implementation, contact `ou
  
 .. note:: 
 
-   Bytecode Verifier is disabled by default.
-   It can be enabled during application build by setting :ref:`option_enable_bytecode_verifier`.
+   Bytecode Verifier is enabled by default when building a Sandboxed Application, and disabled by default when building a Standalone Application.
+   See :ref:`option_enable_bytecode_verifier` for more details.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
