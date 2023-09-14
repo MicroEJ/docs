@@ -18,6 +18,16 @@ Typical use cases for a Sandboxed Application are:
 - over the air provisioning: the Application is dynamically installed or updated on a fleet of heterogenous devices.
 - modularization: a monolithic application is split into multiple Sandboxed Applications; each of them can be started or stopped separately.
 
+The following figure shows the general process of building a Sandboxed Application.
+
+.. figure:: images/link_application_simple.png
+   :alt: Sandboxed Application Link Flow
+   :align: center
+   :scale: 80%
+
+   Sandboxed Application Link Flow
+
+
 Please refer to the :ref:`kernel-developer-guide` to learn more on writing Kernel Applications and building Multi-Sandbox Executable and Virtual Devices.
 
 ..
