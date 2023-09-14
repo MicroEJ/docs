@@ -12,7 +12,7 @@ Such additional information is called the Kernel Metadata.
 Link Flow
 ---------
 
-The following figure shows the general process of linking a Firmware, applied to a Kernel Application.
+The following figure shows the general process of linking an Executable, applied to a Kernel Application.
 
 .. figure:: png/link_kernel.png
    :alt: Kernel Link Flow

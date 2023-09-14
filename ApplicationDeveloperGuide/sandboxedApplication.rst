@@ -21,6 +21,16 @@ Typical use cases for a Sandboxed Application are:
 - over the air provisioning: the Application is dynamically installed or updated on a fleet of heterogenous devices.
 - modularization: a monolithic application is split into multiple Sandboxed Applications; each of them can be started or stopped separately.
 
+The following figure shows the general process of building a Sandboxed Application.
+
+.. figure:: images/link_application_simple.png
+   :alt: Sandboxed Application Link Flow
+   :align: center
+   :scale: 80%
+
+   Sandboxed Application Link Flow
+
+
 The Application development flow requires the following elements:
 
 - a Virtual Device, a software package including the resources and tools required for building and testing an application for a specific device.
