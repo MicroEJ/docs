@@ -165,8 +165,8 @@ The C Module `com.microej.clibrary.llimpl#microui-mimxrt595-evk`_ only gives an 
 
 .. note:: For more information, see the :ref:`migration notes<section_ui_migrationguide_13.6_mimxrt595evk>`.
 
-.. _com.microej.clibrary.llimpl#microui-vglite: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite
-.. _com.microej.clibrary.llimpl#microui-mimxrt595-evk: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-mimxrt595-evk
+.. _com.microej.clibrary.llimpl#microui-vglite: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/
+.. _com.microej.clibrary.llimpl#microui-mimxrt595-evk: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-mimxrt595-evk/
 
 .. _section_ui_c_module_microui_nemagfx:
 
@@ -242,7 +242,7 @@ The following table describes the accelerated features:
 
 This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microui-nemagfx`_.
 
-.. _com.microej.clibrary.llimpl#microui-nemagfx: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx
+.. _com.microej.clibrary.llimpl#microui-nemagfx: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/
 
 Compatibility
 =============
