@@ -140,7 +140,7 @@ The verifier performs tasks including:
 
 
 Starting from :ref:`Architecture 8.1.0 <changelog-8.1.0>`, a default Bytecode Verifier implementation, derived from the `Apache BCEL Project <https://commons.apache.org/proper/commons-bcel/>`_, is now included.
-If you wish to integrate an alternative (commercial) implementation, contact `our support team <https://www.microej.com/contact/#form_2>`_  for access to the SOAR interface API and integration instructions.
+If you wish to integrate an alternative implementation, contact `our support team <https://www.microej.com/contact/#form_2>`_  for access to the SOAR interface API and integration instructions.
 
  
 .. note:: 
