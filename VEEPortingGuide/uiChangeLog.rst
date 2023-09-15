@@ -100,7 +100,7 @@ LLAPIs
 
 **Removed**
 
-* Remove `ui_drawing.h` and `dw_drawing.h` (move them in MicroUI CCO).
+* Remove `ui_drawing.h` and `dw_drawing.h` (move them in MicroUI C Module).
 
 FrontPanel
 """"""""""
