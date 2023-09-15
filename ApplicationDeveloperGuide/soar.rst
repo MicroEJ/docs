@@ -132,7 +132,7 @@ The verifier performs tasks including:
 
 - Stack Management: Checking that the operand stack used for calculations and evaluations is properly managed to prevent stack overflows or underflows.
 
-- Access Control: Verifying that class access and method invocations adhere to Java's access control rules, ensuring data encapsulation and security.
+- Access Control: Verifying that class accesses and method invocations adhere to Java's access control rules, ensuring data encapsulation and security.
 
 - Exception Handling: Validating that exception handlers are correctly defined and that exceptions are caught and handled appropriately.
 
