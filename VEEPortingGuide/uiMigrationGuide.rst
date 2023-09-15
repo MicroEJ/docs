@@ -27,12 +27,12 @@ Front Panel
 BSP with VG-Lite
 """"""""""""""""
 
-These steps are for a VEE Port that manages its own implementation of ``LLUI_DISPLAY_impl.h`` (that did not use the old implementation which was available in this CCO):
+These steps are for a VEE Port that manages its own implementation of ``LLUI_DISPLAY_impl.h`` (that did not use the old implementation which was available in this C Module):
 
 * *[VEE Port configuration project]*
 
-	* Fetch CCO MicroUI-VGLite 7.0.0.
-	* (optional) Fetch CCO MicroUI-Mimxrt595-EVK 7.0.0.
+	* Fetch C Module MicroUI-VGLite 7.0.0.
+	* (optional) Fetch C Module MicroUI-Mimxrt595-EVK 7.0.0.
   
 * *[BSP project]*
 
@@ -73,12 +73,12 @@ These steps are for a VEE Port that manages its own implementation of ``LLUI_DIS
 BSP With MCU i.MX RT595
 """""""""""""""""""""""
 
-These steps are for a VEE Port that uses the implementation of ``LLUI_DISPLAY_impl.h`` which was available in the CCO :ref:`VGLite<section_ui_c_module_microui_vglite>`:
+These steps are for a VEE Port that uses the implementation of ``LLUI_DISPLAY_impl.h`` which was available in the C Module :ref:`VGLite<section_ui_c_module_microui_vglite>`:
 
 * *[VEE Port configuration project]*
 
-	* Fetch CCO MicroUI-VGLite 7.0.0.
-	* Fetch CCO MicroUI-Mimxrt595-EVK 7.0.0.
+	* Fetch C Module MicroUI-VGLite 7.0.0.
+	* Fetch C Module MicroUI-Mimxrt595-EVK 7.0.0.
   
 * *[BSP project]*
 
@@ -116,7 +116,7 @@ BSP without GPU
 
 * *[VEE Port configuration project]*
 
-  	* Fetch UI Pack 13.5.1 and CCO MicroUI 3.0.0.
+  	* Fetch UI Pack 13.5.1 and C Module MicroUI 3.0.0.
 
 * *[BSP project]*
 
@@ -132,7 +132,7 @@ BSP with DMA2D
 * Follow the migration steps of "BSP without GPU".
 * *[VEE Port configuration project]*
 
-	* Fetch CCO Display-DMA2D 4.0.0.
+	* Fetch C Module Display-DMA2D 4.0.0.
 
 * *[BSP project]*
 
@@ -152,7 +152,7 @@ BSP with VG-Lite
 * Follow the migration steps of "BSP without GPU".
 * *[VEE Port configuration project]*
 
-	* Fetch CCO MicroUI-VGLite 6.0.1.
+	* Fetch C Module MicroUI-VGLite 6.0.1.
   
 * *[BSP project]*
 	
