@@ -133,13 +133,26 @@ whereas it is defined by the ``applicationMainClass`` property of the ``microej`
 
 As a second example, the pattern of the executed tests is defined in MMM with the property ``test.run.includes.pattern``::
 
-   <ea:property name="test.run.includes.pattern" value="**/_AllTests_*.class"/>
+   <ea:property name="test.run.includes.pattern" value="**/_AllTests_MyTest.class"/>
 
 whereas it is defined by the ``filter`` object of the ``test`` task in Gradle::
 
-   tasks.test {
-      filter {
-         includeTestsMatching("*_AllTests_*")
+   testing {
+      suites {
+        val test by getting(JvmTestSuite::class) {
+
+            ...
+
+            targets {
+                all {
+                    testTask.configure {
+                        filter {
+                            includeTestsMatching("MyTest")
+                        }
+                    }
+                }
+            }
+        }
       }
    }
 

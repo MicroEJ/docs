@@ -212,6 +212,11 @@ This can be convenient to quickly execute one test for example, without requirin
 Refer to the Gradle `Test filtering <https://docs.gradle.org/current/userguide/java_testing.html#test_filtering>`__
 documentation for more details on how to filter the tests and on the available patterns.
 
+.. warning::
+
+   At the moment, only class-level filtering is supported. 
+   This means that, for instance, it is not possible to run a single test method within a test class.
+
 
 .. _sdk_6_testsuite_on_device:
 
