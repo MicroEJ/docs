@@ -111,7 +111,7 @@ The following method code patterns are inlined:
 Bytecode Verifier
 -----------------
 
-Bytecode Verifier is the tool that scrutinize the bytecode instructions for adherence to strict rules and constraints.
+Bytecode Verifier is the tool that scrutinizes the bytecode instructions for adherence to strict rules and constraints.
 This process is crucial for preventing runtime errors, security vulnerabilities, and unexpected behavior.
 It ensures that code loaded by the SOAR is in a consistent state before being linked.
 Consequently, this guarantees the safe execution of the code by the Core Engine.
