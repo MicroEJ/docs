@@ -20,12 +20,13 @@ Once these prerequisites are fulfilled, the Executable can be built:
 
 .. tabs::
 
-   .. tab:: CLI
+   .. tab:: Android Studio / IntelliJ IDEA
 
-      From the command line interface::
+      By double-clicking on the ``buildExecutable`` task in the Gradle tasks view:
 
-
-          $ ./gradlew buildExecutable
+      .. image:: images/intellij-buildExecutable-gradle-project.png
+         :width: 30%
+         :align: center
 
    .. tab:: Eclipse
 
@@ -35,13 +36,11 @@ Once these prerequisites are fulfilled, the Executable can be built:
          :width: 50%
          :align: center
 
-   .. tab:: IntelliJ IDEA
+   .. tab:: CLI
 
-      By double-clicking on the ``buildExecutable`` task in the Gradle tasks view:
+      From the command line interface::
 
-      .. image:: images/intellij-buildExecutable-gradle-project.png
-         :width: 30%
-         :align: center
+          $ ./gradlew buildExecutable
 
 In case of :ref:`Full BSP Connection <bsp_connection>`, the Executable file is generated in the ``build/output/application/veePortName`` folder of the project,
 where ``veePortName`` is the :ref:`unique name <sdk_6_vee_port_unique_name>` of the target VEE Port.
@@ -60,16 +59,10 @@ To build the Executable for only one VEE Port, you must select it by setting the
 when calling the ``buildExecutable`` task:
 
 .. tabs::
-
-   .. tab:: CLI
-
-      To add the property from the command line interface::
-
-         ./gradlew buildExecutable -PveePort="veePortName"
       
-   .. tab:: IntelliJ IDEA
+   .. tab:: Android Studio / IntelliJ IDEA
 
-      To add the property in IntelliJ IDEA : 
+      To add the property in Android Studio or IntelliJ IDEA : 
 
       - Go to ``Run`` > ``Edit Configurations...``.
       - Click on the ``+`` button and select ``Gradle``.
@@ -77,21 +70,21 @@ when calling the ``buildExecutable`` task:
       - Add the task name with the ``veePort`` property in the Run dialog:
       
         .. figure:: images/intellij-buildExecutable-configuration.png
-           :alt: IntelliJ buildExecutable Configuration Window
+           :alt: Android Studio and IntelliJ buildExecutable Configuration Window
            :align: center
            :scale: 100%
       
-           IntelliJ buildExecutable Configuration Window
+           Android Studio and IntelliJ buildExecutable Configuration Window
       
       - Click on ``OK``.
       - Run the task by double clicking on the newly created Run Configuration in the Gradle task view:
       
         .. figure:: images/intellij-buildExecutable-configuration-gradle-view.png
-           :alt: IntelliJ buildExecutable Configuration in Gradle tasks view
+           :alt: Android Studio and IntelliJ buildExecutable Configuration in Gradle tasks view
            :align: center
            :scale: 100%
       
-           IntelliJ buildExecutable Configuration in Gradle tasks view
+           Android Studio and IntelliJ buildExecutable Configuration in Gradle tasks view
 
    .. tab:: Eclipse
 
@@ -122,7 +115,13 @@ when calling the ``buildExecutable`` task:
            Eclipse buildExecutable task Project Settings tab
       
       - Click on ``Run``.
-  
+
+   .. tab:: CLI
+
+      To add the property from the command line interface::
+
+         ./gradlew buildExecutable -PveePort="veePortName"
+
 The name of each VEE Port can be found by executing the ``buildExecutable`` task with the verbose mode enabled::
 
    ./gradlew buildExecutable --info

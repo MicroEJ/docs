@@ -11,11 +11,13 @@ The build of a project is done by executing the Gradle ``build`` task.
 
 .. tabs::
 
-   .. tab:: CLI
+   .. tab:: Android Studio / IntelliJ IDEA
 
-      It can be executed with the command line interface::
-      
-          $ ./gradlew build
+      It can be executed from Android Studio or IntelliJ IDEA by double-clicking on the ``build`` task in the Gradle tasks view:
+
+      .. image:: images/intellij-build-gradle-project.png
+         :width: 30%
+         :align: center
       
    .. tab:: Eclipse
 
@@ -25,13 +27,11 @@ The build of a project is done by executing the Gradle ``build`` task.
          :width: 50%
          :align: center
 
-   .. tab:: IntelliJ IDEA
+   .. tab:: CLI
 
-      It can be executed from IntelliJ IDEA by double-clicking on the ``build`` task in the Gradle tasks view:
-
-      .. image:: images/intellij-build-gradle-project.png
-         :width: 30%
-         :align: center
+      It can be executed with the command line interface::
+      
+          $ ./gradlew build
 
 Gradle stores the artifacts produced by the build in the ``build/libs`` folder.
 

@@ -19,11 +19,13 @@ Once these prerequisites are fulfilled, the Application can be deployed on the D
 
 .. tabs::
 
-   .. tab:: CLI
+   .. tab:: Android Studio / IntelliJ IDEA
 
-      From the command line interface::
-      
-          $ ./gradlew runOnDevice
+      By double-clicking on the ``runOnDevice`` task in the Gradle tasks view:
+
+      .. image:: images/intellij-runOnDevice-gradle-project.png
+         :width: 30%
+         :align: center
 
    .. tab:: Eclipse
 
@@ -33,13 +35,11 @@ Once these prerequisites are fulfilled, the Application can be deployed on the D
          :width: 50%
          :align: center
 
-   .. tab:: IntelliJ IDEA
+   .. tab:: CLI
 
-      By double-clicking on the ``runOnDevice`` task in the Gradle tasks view:
-
-      .. image:: images/intellij-runOnDevice-gradle-project.png
-         :width: 30%
-         :align: center
+      From the command line interface::
+      
+          $ ./gradlew runOnDevice
 
 The build should be successful and the output should end with::
 
