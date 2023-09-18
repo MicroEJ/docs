@@ -16,12 +16,14 @@ Once these prerequisites are fulfilled, the Feature file can be built:
 
 .. tabs::
 
-   .. tab:: CLI
+   .. tab:: Android Studio / IntelliJ IDEA
 
-      From the command line interface::
+      By double-clicking on the ``buildFeature`` task in the Gradle tasks view:
 
-          $ ./gradlew buildFeature
-      
+      .. image:: images/intellij-buildFeature-gradle-project.png
+         :width: 30%
+         :align: center
+
    .. tab:: Eclipse
 
       By double-clicking on the ``buildFeature`` task in the Gradle tasks view:
@@ -30,14 +32,11 @@ Once these prerequisites are fulfilled, the Feature file can be built:
          :width: 50%
          :align: center
 
-   .. tab:: IntelliJ IDEA
+   .. tab:: CLI
 
-      By double-clicking on the ``buildFeature`` task in the Gradle tasks view:
+      From the command line interface::
 
-      .. image:: images/intellij-buildFeature-gradle-project.png
-         :width: 30%
-         :align: center
-
+          $ ./gradlew buildFeature
 
 .. note::
 
@@ -61,16 +60,10 @@ To build the Feature file, you must select the VEE Port to use by setting the ``
 the ``buildFeature`` task:
 
 .. tabs::
-
-   .. tab:: CLI
-
-      To add the property from the command line interface::
-
-         ./gradlew buildFeature -PveePort="veePortName"
       
-   .. tab:: IntelliJ IDEA
+   .. tab:: Android Studio / IntelliJ IDEA
 
-      To add the property in IntelliJ IDEA : 
+      To add the property in Android Studio or IntelliJ IDEA : 
 
       - Go to ``Run`` > ``Edit Configurations...``.
       - Click on the ``+`` button and select ``Gradle``.
@@ -78,21 +71,21 @@ the ``buildFeature`` task:
       - Add the task name with the ``veePort`` property in the ``Run`` dialog : ``buildFeature -PveePort="veePortName"``:
       
         .. figure:: images/intellij-buildFeature-run-configuration.png
-           :alt: IntelliJ buildFeature Run Configuration Window
+           :alt: Android Studio and IntelliJ buildFeature Run Configuration Window
            :align: center
            :scale: 100%
       
-           IntelliJ buildFeature Run Configuration Window
+           Android Studio and IntelliJ buildFeature Run Configuration Window
       
       - Click on ``OK``.
       - Run the task by double clicking on the newly created Run Configuration in the Gradle view:
       
         .. figure:: images/intellij-buildFeature-run-configuration-gradle-view.png
-           :alt: IntelliJ buildFeature Run Configuration in Gradle view
+           :alt: Android Studio and IntelliJ buildFeature Run Configuration in Gradle view
            :align: center
            :scale: 100%
       
-           IntelliJ buildFeature Run Configuration in Gradle view
+           Android Studio and IntelliJ buildFeature Run Configuration in Gradle view
 
    .. tab:: Eclipse
 
@@ -123,6 +116,12 @@ the ``buildFeature`` task:
            Eclipse buildFeature task Project Settings tab
       
       - Click on ``Run``.
+
+   .. tab:: CLI
+
+      To add the property from the command line interface::
+
+         ./gradlew buildFeature -PveePort="veePortName"
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

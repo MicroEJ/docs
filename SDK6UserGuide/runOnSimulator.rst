@@ -16,11 +16,13 @@ Once these prerequisites are fulfilled, the Application can be started with the 
 
 .. tabs::
 
-   .. tab:: CLI
+   .. tab:: Android Studio / IntelliJ IDEA
 
-      From the command line interface::
-      
-          $ ./gradlew runOnSimulator
+      By double-clicking on the ``runOnSimulator`` task in the Gradle tasks view:
+
+      .. image:: images/intellij-run-gradle-project.png
+         :width: 30%
+         :align: center
 
    .. tab:: Eclipse
 
@@ -30,13 +32,12 @@ Once these prerequisites are fulfilled, the Application can be started with the 
          :width: 50%
          :align: center
 
-   .. tab:: IntelliJ IDEA
+   .. tab:: CLI
 
-      By double-clicking on the ``runOnSimulator`` task in the Gradle tasks view:
+      From the command line interface::
+      
+          $ ./gradlew runOnSimulator
 
-      .. image:: images/intellij-run-gradle-project.png
-         :width: 30%
-         :align: center
 
 With a simple Hello World Application, the output should be::
 
@@ -63,7 +64,7 @@ Debug on Simulator
 ------------------
 
 .. warning::
-   IntelliJ IDEA cannot be used as the debugger client for the moment, use Eclipse instead.
+   Android Studio and IntelliJ IDEA cannot be used as the debugger client for the moment, use Eclipse instead.
 
 The SDK allows to run an Application with the Simulator in debug mode by setting the System property ``debug.mode`` to ``true`` 
 when executing the runOnSimulator task::
@@ -120,15 +121,9 @@ the ``runOnSimulator`` task:
 
 .. tabs::
 
-   .. tab:: CLI
+   .. tab:: Android Studio / IntelliJ IDEA
 
-      To add the property from the command line interface::
-
-         ./gradlew runOnSimulator -PveePort="veePortName"
-
-   .. tab:: IntelliJ IDEA
-
-      To add the property in IntelliJ IDEA : 
+      To add the property in Android Studio or IntelliJ IDEA : 
       
       - Go to ``Run`` > ``Edit Configurations...``.
       - Click on the ``+`` button and select ``Gradle``.
@@ -136,21 +131,21 @@ the ``runOnSimulator`` task:
       - Add the task name with the ``veePort`` property in the ``Run`` dialog : ``runOnSimulator -PveePort="veePortName"``:
       
         .. figure:: images/intellij-runOnSimulator-run-configuration.png
-           :alt: IntelliJ runOnSimulator Run Configuration Window
+           :alt: Android Studio and IntelliJ runOnSimulator Run Configuration Window
            :align: center
            :scale: 100%
       
-           IntelliJ runOnSimulator Run Configuration Window
+           Android Studio and IntelliJ runOnSimulator Run Configuration Window
       
       - Click on ``OK``.
       - Run the task by double clicking on the newly created Run Configuration in the Gradle view:
       
         .. figure:: images/intellij-runOnSimulator-run-configuration-gradle-view.png
-           :alt: IntelliJ runOnSimulator Run Configuration in Gradle view
+           :alt: Android Studio and IntelliJ runOnSimulator Run Configuration in Gradle view
            :align: center
            :scale: 100%
       
-           IntelliJ runOnSimulator Run Configuration in Gradle view
+           Android Studio and IntelliJ runOnSimulator Run Configuration in Gradle view
 
    .. tab:: Eclipse
 
@@ -181,7 +176,13 @@ the ``runOnSimulator`` task:
            Eclipse runOnSimulator task Project Settings tab
       
       - Click on ``Run``.
-  
+
+   .. tab:: CLI
+
+      To add the property from the command line interface::
+
+         ./gradlew runOnSimulator -PveePort="veePortName"
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
