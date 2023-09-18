@@ -7,32 +7,14 @@ This chapter explains how to import a project in an IDE.
 
 .. tabs::
 
-   .. tab:: Eclipse
+   .. tab:: Android Studio
 
-      In order to import an existing Gradle project in Eclipse, follow these steps:
+      In order to import an existing Gradle project in Android Studio, follow the following steps:
       
-      - Click on ``File`` > ``Import...``.
-      - Select the project type ``Gradle > Existing Gradle Project`` and click on the ``Next`` button.
+      - Click on ``File`` > ``New`` > ``Import Project...``.
+      - Select the root directory of the project and click on the ``OK`` button.
       
-      .. figure:: images/eclipse-import-gradle-project-01.png
-         :alt: Project Type Selection in Eclipse
-         :align: center
-         :scale: 70%
-      
-         Project Type Selection in Eclipse
-      
-      - Select the root directory of the project.
-      
-      .. figure:: images/eclipse-import-gradle-project-02.png
-         :alt: Project root folder in Eclipse
-         :align: center
-         :scale: 70%
-      
-         Project root folder in Eclipse
-      
-      - Click on the ``Next`` button and finally on the ``Finish`` button.
-      
-      The Gradle project should now be imported in Eclipse.
+      The Gradle project should now be imported in Android Studio.
 
    .. tab:: IntelliJ IDEA
 
@@ -64,6 +46,33 @@ This chapter explains how to import a project in an IDE.
             :scale: 70%
       
             Project JDK message in IntelliJ IDEA
+
+   .. tab:: Eclipse
+
+      In order to import an existing Gradle project in Eclipse, follow these steps:
+      
+      - Click on ``File`` > ``Import...``.
+      - Select the project type ``Gradle > Existing Gradle Project`` and click on the ``Next`` button.
+      
+      .. figure:: images/eclipse-import-gradle-project-01.png
+         :alt: Project Type Selection in Eclipse
+         :align: center
+         :scale: 70%
+      
+         Project Type Selection in Eclipse
+      
+      - Select the root directory of the project.
+      
+      .. figure:: images/eclipse-import-gradle-project-02.png
+         :alt: Project root folder in Eclipse
+         :align: center
+         :scale: 70%
+      
+         Project root folder in Eclipse
+      
+      - Click on the ``Next`` button and finally on the ``Finish`` button.
+      
+      The Gradle project should now be imported in Eclipse.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
