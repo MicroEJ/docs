@@ -11,10 +11,10 @@ From 1.3.x to 1.4.x
 BSP with VG-Lite
 """"""""""""""""
 
-* Follow the migration steps of :ref:`CCO MicroUI-VGLite 7.0.0 <section_ui_migrationguide_13.6_vglite>`.
+* Follow the migration steps of :ref:`C Module MicroUI-VGLite 7.0.0 <section_ui_migrationguide_13.6_vglite>`.
 * *[VEE Port configuration project]*
 
-	* Fetch VG Pack 1.4.0, CCO MicroVG 3.0.1 and CCO MicroVG-VGLite 6.0.0.
+	* Fetch VG Pack 1.4.0, C Modules MicroVG 3.0.1 and MicroVG-VGLite 6.0.0.
 	* Delete the content of ``dropins/include`` folder.
 
 * *[BSP project]*
@@ -29,10 +29,10 @@ From 1.2.x to 1.3.x
 BSP with VG-Lite
 """"""""""""""""
 
-* Follow the migration steps of :ref:`CCO MicroUI-VGLite 6.0.1 <section_ui_migrationguide_13.5_vglite>`.
+* Follow the migration steps of :ref:`C Module MicroUI-VGLite 6.0.1 <section_ui_migrationguide_13.5_vglite>`.
 * *[VEE Port configuration project]*
 
-	* Fetch VG Pack 1.3.0, CCO MicroVG 3.0.0 and CCO MicroVG-VGLite 5.0.1.
+	* Fetch VG Pack 1.3.0, C Modules MicroVG 3.0.0 and MicroVG-VGLite 5.0.1.
 	* Delete the content of ``dropins/include`` folder.
 
 * *[BSP project]*
