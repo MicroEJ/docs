@@ -92,14 +92,15 @@ Install the IDE
 ---------------
 
 Using an IDE is highly recommended for developing MicroEJ projects, making the development more comfortable and increasing productivity.
-The two following IDEs are supported: 
+The three following IDEs are supported: 
 
+- `Android Studio <https://developer.android.com/studio>`__ - Minimum supported version is ``Bumblebee - 2021.1.1``.
 - `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ (Community or Ultimate edition) - Minimum supported version is ``2021.2``.
 - `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/release/2022-09/r/eclipse-ide-java-developers>`__ - Minimum supported version is ``2022-03``.
 
 Follow their respective documentation to install one of them.
 
-These 2 IDEs come with the Gradle plugin installed by default.
+These 3 IDEs come with the Gradle plugin installed by default.
 
 Install the IDE Plugin
 ----------------------
@@ -108,31 +109,31 @@ Once your favorite IDE is installed, the MicroEJ plugin must be installed.
 
 .. tabs::
 
-   .. tab:: IntelliJ IDEA
+   .. tab:: Android Studio / IntelliJ IDEA
 
-      Follow these steps to install the latest stable version of the MicroEJ plugin for IntelliJ IDEA:
+      Follow these steps to install the latest stable version of the MicroEJ plugin for Android Studio or IntelliJ IDEA:
       
-      - In IntelliJ IDEA, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, 
-        menu :guilabel:`IntelliJ IDEA` > :guilabel:`Settings...` on macOS).
+      - In Android Studio or IntelliJ IDEA, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, 
+        menu :guilabel:`IntelliJ IDEA` / :guilabel:`Android Studio` > :guilabel:`Settings...` on macOS).
       - Go to :guilabel:`Plugins` menu.
       - In the search field, type ``MicroEJ``:
       
       .. figure:: images/intellij-install-plugin.png
-         :alt: IntelliJ IDEA Plugin Installation
+         :alt: Android Studio and IntelliJ IDEA Plugin Installation
          :align: center
          :scale: 70%
       
-         IntelliJ IDEA Plugin Installation
+         Android Studio and IntelliJ IDEA Plugin Installation
       
       - Click on the :guilabel:`Install` button.
       - In the upcoming :guilabel:`Third-Party Plugins Notice` window, click on the :guilabel:`Accept` button.
             
          .. figure:: images/intellij-install-plugin-warning.png
-            :alt: IntelliJ IDEA Plugin Installation - Third-Party Plugins Notice
+            :alt: Android Studio and IntelliJ IDEA Plugin Installation - Third-Party Plugins Notice
             :align: center
             :scale: 70%
          
-            IntelliJ IDEA Plugin Installation - Third-Party Plugins Notice
+            Android Studio and IntelliJ IDEA Plugin Installation - Third-Party Plugins Notice
 
       - Click on the :guilabel:`Restart IDE` button.
 
