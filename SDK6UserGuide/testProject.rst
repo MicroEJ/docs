@@ -116,15 +116,15 @@ This can be done manually or with IDE menu:
   
 .. tabs::
 
+   .. tab:: Android Studio / IntelliJ IDEA
+
+      - right-click on the ``src/test/java`` folder.
+      - select :guilabel:`New` > :guilabel:`Java Class`, then press ``Alt`` + ``Insert`` and select ``Test Method``.
+
    .. tab:: Eclipse
 
       - right-click on the ``src/test/java`` folder.
       - select :guilabel:`New` > :guilabel:`Other…` > :guilabel:`Java` > :guilabel:`JUnit` > :guilabel:`New JUnit Test Case`.
-
-   .. tab:: IntelliJ IDEA
-
-      - right-click on the ``src/test/java`` folder.
-      - select :guilabel:`New` > :guilabel:`Java Class`, then press ``Alt`` + ``Insert`` and select ``Test Method``.
 
 .. note::
 
@@ -149,20 +149,20 @@ Once the testsuite is configured, it can be run thanks to the ``test`` Gradle ta
 This task is bound to the ``check`` and the ``build`` Gradle lifecycle tasks,
 which means that the tests are also executed when launching one of these tasks.
    
-In order to execute the testsuite from Eclipse and IntelliJ IDEA, double-click on the task in the Gradle tasks view:
+In order to execute the testsuite from Android Studio, IntelliJ IDEA or Eclipse, double-click on the task in the Gradle tasks view:
 
 .. tabs::
+
+   .. tab:: Android Studio / IntelliJ IDEA
+
+      .. image:: images/intellij-test-gradle-project.png
+         :width: 30%
+         :align: center
 
    .. tab:: Eclipse
 
       .. image:: images/eclipse-test-gradle-project.png
          :width: 50%
-         :align: center
-
-   .. tab:: IntelliJ IDEA
-
-      .. image:: images/intellij-test-gradle-project.png
-         :width: 30%
          :align: center
 
 
@@ -629,16 +629,10 @@ If you want to execute the tests on only one VEE Port, you must select it by set
 to the :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port:
 
 .. tabs::
-
-   .. tab:: CLI
-
-      To add the property from the command line interface::
-
-         ./gradlew test -PveePort="veePortName"
       
-   .. tab:: IntelliJ IDEA
+   .. tab:: Android Studio / IntelliJ IDEA
 
-      To add the property in IntelliJ IDEA : 
+      To add the property in Android Studio or IntelliJ IDEA : 
       
 
       - Go to ``Run`` > ``Edit Configurations...``.
@@ -647,21 +641,21 @@ to the :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port:
       - Add the command line with the ``veePort`` property in the Run dialog : ``test -PveePort="veePortName"``:
       
         .. figure:: images/intellij-test-run-configuration.png
-           :alt: IntelliJ test Run Configuration Window
+           :alt: Android Studio and IntelliJ test Run Configuration Window
            :align: center
            :scale: 100%
       
-           IntelliJ test Run Configuration Window
+           Android Studio and IntelliJ test Run Configuration Window
       
       - Click on ``OK``.
       - Run the task by double clicking on the newly created Run Configuration in the Gradle task view:
       
         .. figure:: images/intellij-test-run-configuration-gradle-view.png
-           :alt: IntelliJ test Run Configuration in Gradle tasks view
+           :alt: Android Studio and IntelliJ test Run Configuration in Gradle tasks view
            :align: center
            :scale: 100%
       
-           IntelliJ test Run Configuration in Gradle tasks view
+           Android Studio and IntelliJ test Run Configuration in Gradle tasks view
 
    .. tab:: Eclipse
 
@@ -691,7 +685,14 @@ to the :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port:
            Eclipse test task Project Settings tab
       
       - Click on ``Run``.
-  
+
+   .. tab:: CLI
+
+      To add the property from the command line interface::
+
+         ./gradlew test -PveePort="veePortName"
+
+
 The name of each VEE Port can be found by executing the tests with the verbose mode enabled::
 
    ./gradlew test --info
