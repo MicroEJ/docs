@@ -53,15 +53,15 @@ The solution is to use a JDK 11 or a higher LTS version (``11``, ``17`` or ``21`
 
   Alternatively, you can set the ``JAVA_HOME`` environment variable to point to the installation directory of the JDK.
 
-- For IntelliJ IDEA, go to ``File`` > ``Settings...`` > ``Build, Execution, Deployment`` > ``Build Tools`` > ``Gradle``,
+- For Android Studio and IntelliJ IDEA, go to ``File`` > ``Settings...`` > ``Build, Execution, Deployment`` > ``Build Tools`` > ``Gradle``,
   and make sure the selected ``Gradle JVM`` is a supported JDK version:
 
 	.. figure:: images/intellij-project-jdk.png
-		:alt: Project JDK in IntelliJ IDEA
+		:alt: Project JDK in Android Studio and IntelliJ IDEA
 		:align: center
 		:scale: 70%
 
-		Project JDK in IntelliJ IDEA
+		Project JDK in Android Studio and IntelliJ IDEA
 
 Failing Resolution in ``adp`` Task
 ----------------------------------

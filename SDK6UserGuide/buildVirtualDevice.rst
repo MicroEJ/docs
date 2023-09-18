@@ -22,11 +22,13 @@ Once these prerequisites are fulfilled, the Virtual Device can be built:
 
 .. tabs::
 
-   .. tab:: CLI
+   .. tab:: Android Studio / IntelliJ IDEA
 
-      From the command line interface::
-      
-          $ ./gradlew buildVirtualDevice
+      By double-clicking on the ``buildVirtualDevice`` task in the Gradle tasks view:
+
+      .. image:: images/intellij-buildVirtualDevice-gradle-project.png
+         :width: 30%
+         :align: center
       
    .. tab:: Eclipse
 
@@ -36,13 +38,11 @@ Once these prerequisites are fulfilled, the Virtual Device can be built:
          :width: 50%
          :align: center
 
-   .. tab:: IntelliJ IDEA
+   .. tab:: CLI
 
-      By double-clicking on the ``buildVirtualDevice`` task in the Gradle tasks view:
-
-      .. image:: images/intellij-buildVirtualDevice-gradle-project.png
-         :width: 30%
-         :align: center
+      From the command line interface::
+      
+          $ ./gradlew buildVirtualDevice
 
 When the build is completed, the Virtual Device is available in the ``build/virtualDevice`` folder of the project.
 It can then be used to :ref:`run an Application on the Simulator <sdk_6_run_on_simulator>` for example.
@@ -65,16 +65,10 @@ To build a Virtual Device, you must select the VEE Port to use by setting the ``
 the ``buildVirtualDevice`` task:
 
 .. tabs::
-
-   .. tab:: CLI
-
-      To add the property from the command line interface::
-
-         ./gradlew buildVirtualDevice -PveePort="veePortName"
       
-   .. tab:: IntelliJ IDEA
+   .. tab:: Android Studio / IntelliJ IDEA
 
-      To add the property in IntelliJ IDEA : 
+      To add the property in Android Studio or IntelliJ IDEA : 
 
       - Go to ``Run`` > ``Edit Configurations...``.
       - Click on the ``+`` button and select ``Gradle``.
@@ -82,21 +76,21 @@ the ``buildVirtualDevice`` task:
       - Add the task name with the ``veePort`` property in the ``Run`` dialog : ``buildVirtualDevice -PveePort="veePortName"``:
       
         .. figure:: images/intellij-buildVirtualDevice-run-configuration.png
-           :alt: IntelliJ buildVirtualDevice Run Configuration Window
+           :alt: Android Studio and IntelliJ buildVirtualDevice Run Configuration Window
            :align: center
            :scale: 100%
       
-           IntelliJ buildVirtualDevice Run Configuration Window
+           Android Studio and IntelliJ buildVirtualDevice Run Configuration Window
       
       - Click on ``OK``.
       - Run the task by double clicking on the newly created Run Configuration in the Gradle view:
       
         .. figure:: images/intellij-buildVirtualDevice-run-configuration-gradle-view.png
-           :alt: IntelliJ buildVirtualDevice Run Configuration in Gradle view
+           :alt: Android Studio and IntelliJ buildVirtualDevice Run Configuration in Gradle view
            :align: center
            :scale: 100%
       
-           IntelliJ buildVirtualDevice Run Configuration in Gradle view
+           Android Studio and IntelliJ buildVirtualDevice Run Configuration in Gradle view
 
    .. tab:: Eclipse
 
@@ -128,6 +122,11 @@ the ``buildVirtualDevice`` task:
       
       - Click on ``Run``.
 
+   .. tab:: CLI
+
+      To add the property from the command line interface::
+
+         ./gradlew buildVirtualDevice -PveePort="veePortName"
 
 .. _sdk_6_buildVirtualDevice_add_application:
 
