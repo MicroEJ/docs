@@ -25,7 +25,7 @@ A compile-time image file:
 * is either an AVD (Android Vector Drawable) or a Scalable Vector Graphics (SVG), 
 * is identified by the resource name,
 * is encoded in a binary format compatible with the :ref:`image renderer <section_vg_image_engine>`,
-* can be stored as an internal resource or an external one (see :ref:`chapter.microej.applicationResources`, but only in a byte-addressable memory),
+* can be stored as an internal resource or an external one (see :ref:`section_vg_image_external`),
 * is an immutable image: the application cannot draw into it.
 
 .. _section_vg_image_generator:
@@ -48,7 +48,7 @@ To list the images to convert, the tool uses the application list files whose ex
 The generator provides an option to encode the path data (the path's points): it can be stored on signed 8, 16, 32-bit words or in ``float`` format.
 Respectively, the options are ``VG8``, ``VG16``, ``VG32`` and ``VGF``.
 
-This is an example of ``.vectorimage.list`` files:
+This is an example of a ``vectorimage.list`` file:
 
 .. code-block::
 
@@ -73,22 +73,61 @@ Resource Vector Image
 
 The Image module implements the MicroVG `ResourceVectorImage`_ framework. 
 
+Filtered Image
+--------------
+
+MicroVG `VectorImage.filterImage()`_ API allows to transform an image using a 4x5 color matrix.
+The result of the image transformation is stored in the MicroUI :ref:`images_heap`.
+MicroVG ports for dedicated GPU (Low Level implementation) are responsible of the deallocation of this generated image.
+An implementation is available for :ref:`MicroVG Over VGLite<section_vg_c_module_microvg_vglite>`.
+
+.. _section_vg_image_external:
+
 External Memory
 ---------------
+
+Principle
+~~~~~~~~~
 
 MicroVG provides the API `ResourceVectorImage.loadImage()`_.
 This is an extension of the compile-time images (the concepts are exactly the same), but it allows a load of a RAW image stored in an external memory that is not byte-addressable.
 
-However, the RAW image data must be copied into a byte-addressable memory to use it. 
-No data is stored in the Java heap: the image data should be copied into the MicroUI image heap.
+An external image loaded from byte-addressable memory is processed the same way than any compile-time image.
+For an image loaded from an external memory which is not byte-addressable, its data must be copied into byte-addressable memory before the image can be used for drawings.
+By default (see :ref:`section_vg_cco`), the image data is copied into MicroUI :ref:`images_heap`.
 The implementation is responsible for the image's lifecycle: allocation and release (already implemented in the :ref:`section_vg_cco`).
 
-Filtered Image
---------------
+Configuration File
+~~~~~~~~~~~~~~~~~~
 
-MicroVG provides the API `VectorImage.filterImage()`_ to decline an image in another image using a 4x5 color matrix.
-The resulting image is a copy of the original (plus color transformation) stored in the MicroUI images heap.
-The implementation is responsible for the image's lifecycle: allocation and release (already implemented in the :ref:`section_vg_cco`).
+Like compile-time images, the :ref:`section_vg_image_generator` uses a list file whose extension is ``.externvectorimages.list``. 
+The rules are exactly the sames than the compile-time images.
+
+Process
+~~~~~~~
+
+The process to open a Vector Image from an external memory is exactly the same than the loading of :ref:`an external MicroUI Image<section_image_external_memory>` . 
+
+The following steps describe how to setup the loading of an external resource from the application:
+
+1. Add the image to the application project resources (typically in the source folder ``src/main/resources`` and in the package ``images``).
+2. Create / open the configuration file (e.g. ``application.externvectorimages.list``).
+3. Add the relative path of the image and its output format (e.g. ``/images/myImage.avd:VGF`` see :ref:`section_vg_image_generator`).
+4. Build the application: the Image Generator converts the image in RAW format in the external resources folder (``[application_output_folder]/externalResources``).
+5. Deploy the external resources to the external memory (SDCard, flash, etc.) of the device.
+6. (optional) Configure the :ref:`section_externalresourceloader` to load from this source.
+7. Build the application and run it on the device.
+8. The application loads the external resource using `ResourceVectorImage.loadImage()`_.
+9. The image loader looks for the image and copies it in the :ref:`images heap<section_image_loader_memory>` (no copy if the external memory is byte-addressable).
+10. The external resource is immediately closed: the image's bytes have been copied in the images heap, or the image's bytes are always available (byte-addressable memory).
+11. The application can use the image.
+12. The application closes the image: the image is removed from the image heap.
+
+Simulation
+~~~~~~~~~~
+
+The Simulator automatically manages the external resources like internal resources.
+All images listed in ``*.externvectorimages.list`` files are copied in the external resources folder, and this folder is added to the Simulator's classpath.
 
 Buffered Vector Image
 =====================
@@ -184,7 +223,7 @@ The MicroVG Font APIs are available in the class ``ej.microvg.`` `VectorImage`_.
 .. _ResourceVectorImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/ResourceVectorImage.html
 .. _ResourceVectorImage.loadImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/ResourceVectorImage.html#loadImage-java.lang.String-
 .. _VectorGraphicsPainter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html
-.. _VectorImageLoader: https://forge.microej.com/artifactory/microej-developer-repository-release/ej/library/ui/vectorimage-loader
+.. _VectorImageLoader: 
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

@@ -59,7 +59,7 @@ In addition to generic C modules, the specific implementation of the VG Pack ove
 The following table describes the compatibility ranges between the VG Packs and the C modules (generic and specific):
 
 +---------------+---------+----------+----------+----------------+----------------+
-| VG Pack       | MicroVG | Freetype | Harfbuzz | MicroUI-VGLite | MicroVG-VGLite |
+| VG Pack       | MicroVG | FreeType | Harfbuzz | MicroUI-VGLite | MicroVG-VGLite |
 +===============+=========+==========+==========+================+================+
 | 1.4.0         | 3.0.1   | 2.0.2    | 1.0.2    | 7.0.0          | 6.0.0          |
 +---------------+---------+----------+----------+----------------+----------------+

@@ -24,6 +24,7 @@ Application Developer Guide
    UI/ui
    js/index
    networking
+   eventQueue
    characterEncoding
    limitations
 

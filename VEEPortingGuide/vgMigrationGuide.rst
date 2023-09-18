@@ -21,7 +21,7 @@ BSP with VG-Lite
 
 	* Delete the properties files ``cco_microvg.properties`` and ``cco_microvg-vglite.properties``.
   
-* Build the VEE Port, the Freetype library (in case of a dedicated project), and the BSP.
+* Build the VEE Port, the FreeType library (in case of a dedicated project), and the BSP.
 	
 From 1.2.x to 1.3.x
 ===================
@@ -43,7 +43,7 @@ BSP with VG-Lite
 	* In the C project configuration, set the define ``LLUI_GC_SUPPORTED_FORMATS=2`` to enable the BufferedVectorImage support.
 	* Verify the options in ``microvg_configuration.h``. 
   
-* Build the VEE Port, the Freetype library (in case of a dedicated project), and the BSP.
+* Build the VEE Port, the FreeType library (in case of a dedicated project), and the BSP.
 
 ..
    | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
