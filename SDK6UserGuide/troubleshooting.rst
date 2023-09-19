@@ -144,6 +144,23 @@ It is possible to avoid this issue by disabling the Gradle Daemon with the ``--n
 
 	gradle runOnSimulator --no-daemon
 
+
+Slow Build because of File System Watching
+------------------------------------------
+
+In some cases, Gradle may take a lot of time to execute its build.
+One of the possible reasons is the file system watching feature which allows Gradle to track any change on the file system.
+Depending on your environment, this feature can impact the build execution time significantly.
+For example, when network drives are mapped and the network connection experiences instability.
+
+This feature can be disabled for a build by passing the ``--no-watch-fs`` option in the command line, for example::
+
+	./gradlew build --no-watch-fs
+
+or for all builds by setting the following property in the ``$USER_HOME/.gradle/gradle.properties`` file::
+	
+	org.gradle.vfs.watch=false
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
