@@ -3,9 +3,6 @@
 Select a VEE Port
 =================
 
-Select one VEE Port
--------------------
-
 Building or running an Application or a Test Suite with the SDK requires a VEE Port.
 
 Use one of the following available options to provide it to your project. 
