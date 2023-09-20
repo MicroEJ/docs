@@ -7,7 +7,7 @@ This chapter explains the different ways to create a new project.
 
 .. note::
   The different project creation systems do not produce exactly the same project content and structure.
-  Especially, the IntelliJ IDEA wizard produces a simple project whereas the Android Studio, CLI and Eclipse wizards create multi-projects builds.
+  Especially, the IntelliJ IDEA wizard produces a simple project whereas the Android Studio, Command Line Interface and Eclipse wizards create multi-projects builds.
   Both structures (single and multi projects) can be used, the recommended one depends on the context (components, size of the project, ...).
   Refer to `the official Gradle documentation <https://docs.gradle.org/current/userguide/multi_project_builds.html>`__ for more information.
 
