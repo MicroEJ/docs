@@ -35,7 +35,7 @@ Once these prerequisites are fulfilled, the Application can be deployed on the D
          :width: 50%
          :align: center
 
-   .. tab:: CLI
+   .. tab:: Command Line Interface
 
       From the command line interface::
       
