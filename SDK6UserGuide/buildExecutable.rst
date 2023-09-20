@@ -36,7 +36,7 @@ Once these prerequisites are fulfilled, the Executable can be built:
          :width: 50%
          :align: center
 
-   .. tab:: CLI
+   .. tab:: Command Line Interface
 
       From the command line interface::
 
@@ -116,7 +116,7 @@ when calling the ``buildExecutable`` task:
       
       - Click on ``Run``.
 
-   .. tab:: CLI
+   .. tab:: Command Line Interface
 
       To add the property from the command line interface::
 
