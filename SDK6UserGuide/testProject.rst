@@ -142,18 +142,15 @@ If several VEE Ports are defined, the testsuite is executed on each of them.
 Execute the Tests
 ~~~~~~~~~~~~~~~~~
 
-Once the testsuite is configured, it can be run thanks to the ``test`` Gradle task::
-
-   ./gradlew test
-
+Once the testsuite is configured, it can be run thanks to the ``test`` Gradle task.
 This task is bound to the ``check`` and the ``build`` Gradle lifecycle tasks,
 which means that the tests are also executed when launching one of these tasks.
-   
-In order to execute the testsuite from Android Studio, IntelliJ IDEA or Eclipse, double-click on the task in the Gradle tasks view:
 
 .. tabs::
 
    .. tab:: Android Studio / IntelliJ IDEA
+
+      In order to execute the testsuite from Android Studio or IntelliJ IDEA, double-click on the task in the Gradle tasks view:
 
       .. image:: images/intellij-test-gradle-project.png
          :width: 30%
@@ -161,10 +158,17 @@ In order to execute the testsuite from Android Studio, IntelliJ IDEA or Eclipse,
 
    .. tab:: Eclipse
 
+      In order to execute the testsuite from Eclipse, double-click on the task in the Gradle tasks view:
+
       .. image:: images/eclipse-test-gradle-project.png
          :width: 50%
          :align: center
 
+   .. tab:: Command Line Interface
+
+      In order to execute the testsuite from the Command Line Interface, execute this command::
+
+         $ ./gradlew test
 
 Filter the Tests
 ~~~~~~~~~~~~~~~~
