@@ -194,8 +194,6 @@ BLUETOOTH Pack
 NET Pack
 --------
 
-On demand [1]_.
-
 .. list-table:: NET, SSL and SECURITY APIs Implementations and Validations
    :widths: 15 10 10 10 15 15 15
 
