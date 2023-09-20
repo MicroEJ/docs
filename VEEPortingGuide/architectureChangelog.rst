@@ -56,7 +56,7 @@ Core Engine
 SOAR
 ~~~~
 
- - Added support for :ref:`Bytecode verifier <soar_bytecode_verifier>`.
+ - Added integration of the :ref:`bytecode verifier <soar_binary_code_verifier>`.
 
 .. _changelog-8.0.0:
 
