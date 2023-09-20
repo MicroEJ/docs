@@ -27,7 +27,7 @@ The build of a project is done by executing the Gradle ``build`` task.
          :width: 50%
          :align: center
 
-   .. tab:: CLI
+   .. tab:: Command Line Interface
 
       It can be executed with the command line interface::
       
