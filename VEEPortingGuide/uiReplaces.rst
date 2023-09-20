@@ -1,6 +1,6 @@
 
 
-.. |UIPACKVERSION| replace:: 13.6.1
+.. |UIPACKVERSION| replace:: 13.6.2
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
