@@ -4,6 +4,23 @@
 Changelog
 =========
 
+13.6.2 (2023-09-20)
+===================
+
+Image Generator
+"""""""""""""""
+	
+**Fixed**
+
+- Fix handling zip/jar file entries in the cache.
+
+Font Generator
+""""""""""""""
+	
+**Fixed**
+
+- Fix handling zip/jar file entries in the cache.
+
 [13.6.1] (2023-07-26)
 =====================
 

@@ -12,15 +12,15 @@ From 13.5.x to 13.6.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the `UI Pack 13.6.1`_:
+* Set the explicit dependency to the `UI Pack 13.6.2`_:
 
   .. code-block:: xml
 
-	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.6.1">
+	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.6.2">
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
 
-.. _UI Pack 13.6.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.6.1/
+.. _UI Pack 13.6.2: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.6.2/
 
 .. _section_ui_migrationguide_13.6_vglite:
 
@@ -31,7 +31,7 @@ These steps are for a VEE Port that manages its own implementation of ``LLUI_DIS
 
 * *[VEE Port configuration project]*
 
-	* Fetch C Module MicroUI-VGLite 7.0.0.
+	* Fetch C Module MicroUI-VGLite 7.1.0.
 	* (optional) Fetch C Module MicroUI-Mimxrt595-EVK 7.0.0.
   
 * *[BSP project]*
@@ -77,7 +77,7 @@ These steps are for a VEE Port that uses the implementation of ``LLUI_DISPLAY_im
 
 * *[VEE Port configuration project]*
 
-	* Fetch C Module MicroUI-VGLite 7.0.0.
+	* Fetch C Module MicroUI-VGLite 7.1.0.
 	* Fetch C Module MicroUI-Mimxrt595-EVK 7.0.0.
   
 * *[BSP project]*
