@@ -82,6 +82,8 @@ Choosing the best resource format will reduce memory consumption and drawing tim
 
 :ref:`This documentation<section_image_display_output>` explains the different image formats.
 
+Storing UI resources in the fastest memory (internal flash or RAM) will also affect greatly performances.
+
 Widget hierarchy and layout
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
