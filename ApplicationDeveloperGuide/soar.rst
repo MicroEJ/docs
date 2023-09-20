@@ -106,25 +106,25 @@ The following method code patterns are inlined:
    Method inlining is performed after :ref:`method devirtualization <soar_method_devirtualization>`, so a virtual method call will be inlined 
    if there is a unique embedded implementation method that matches one of the inlined method code patterns.
 
-.. _soar_bytecode_verifier:
+.. _soar_binary_code_verifier:
 
-Bytecode Verifier
------------------
+Binary Code Verifier
+--------------------
 
-Bytecode Verifier is the tool that scrutinizes the bytecode instructions for adherence to strict rules and constraints.
+The Binary Code Verifier is the tool that scrutinizes the bytecode instructions for adherence to strict rules and constraints.
 This process is crucial for preventing runtime errors, security vulnerabilities, and unexpected behavior.
 It ensures that code loaded by the SOAR is in a consistent state before being linked.
 Consequently, this guarantees the safe execution of the code by the Core Engine.
 
-.. figure:: images/bytecode_verifier.png
-   :alt: Application Build Flow with Bytecode Verifier
+.. figure:: images/binary_code_verifier.png
+   :alt: Application Build Flow with Binary Code Verifier
    :align: center
    :scale: 80%
 
-   Application Build Flow with Bytecode Verifier
+   Application Build Flow with Binary Code Verifier
 
 
-The verifier performs tasks including:
+The Binary Code Verifier performs tasks including:
 
 - Type Checking: Verifying that variables and operands are used in a manner consistent with their declared data types, preventing type-related errors at runtime.
 
@@ -139,13 +139,13 @@ The verifier performs tasks including:
 - Control Flow: Analyzing the flow of control within bytecode to detect anomalies in loops, branches, and jumps that could lead to program instability.
 
 
-Starting from :ref:`Architecture 8.1.0 <changelog-8.1.0>`, a default Bytecode Verifier implementation, derived from the `Apache BCEL Project <https://commons.apache.org/proper/commons-bcel/>`_, is now included.
+Starting from :ref:`Architecture 8.1.0 <changelog-8.1.0>`, an implementation, derived from the `Apache BCEL Project <https://commons.apache.org/proper/commons-bcel/>`_, is now included.
 If you wish to integrate an alternative implementation, contact `our support team <https://www.microej.com/contact/#form_2>`_  for access to the SOAR interface API and integration instructions.
 
  
 .. note:: 
 
-   Bytecode Verifier is enabled by default when building a Sandboxed Application, and disabled by default when building a Standalone Application.
+   The Binary Code Verifier is enabled by default when building a Sandboxed Application, and disabled by default when building a Standalone Application.
    See :ref:`option_enable_bytecode_verifier` for more details.
 
 ..
