@@ -63,9 +63,6 @@ the verbose mode can be enabled by using the ``--info`` Gradle option::
 Debug on Simulator
 ------------------
 
-.. warning::
-   Android Studio and IntelliJ IDEA cannot be used as the debugger client for the moment, use Eclipse instead.
-
 The SDK allows to run an Application with the Simulator in debug mode by setting the System property ``debug.mode`` to ``true`` 
 when executing the runOnSimulator task::
 
@@ -76,29 +73,33 @@ The port can be changed by using the System Property ``debug.port``::
 
    ./gradlew runOnSimulator -P"debug.mode"=true -P"debug.port"=8000
 
+
 Once started, the Simulator waits for the connection of a debugger.
 
-If you want to connect the Eclipse debugger:
+If you want to connect the IDE debugger:
 
-- Add a breakpoint in your Application code.
-- Click on ``Run > Debug Configurations...``.
-- Select ``Remote Java Application``.
-- Click on the ``New launch configuration`` button.
-- Give a name to the launcher in the ``Name`` field.
-- Set the debug host and port.
-- Click on the ``Debug`` button.
+.. tabs::
 
+   .. tab:: Android Studio / IntelliJ IDEA
 
-..
-   If you want to connect the IntelliJ IDEA debugger:
+      - Add a breakpoint in your Application code.
+      - Click on ``Run > Edit Configurations...``.
+      - Click on ``+`` button (``Add New Configuration``).
+      - Select ``Remote JVM Debug``.
+      - Click on the ``New launch configuration`` button.
+      - Give a name to the launcher in the ``Name`` field.
+      - Set the debug host and port.
+      - Click on the ``Debug`` button.
 
-   - Add a breakpoint in your Application code.
-   - Click on ``Run > Debug...``.
-   - Click on ``Edit Configurations...``.
-   - Click on the ``+`` button in the top bar and select ``Remote JVM Debug``.
-   - Give a name to the launcher in the ``Name`` field.
-   - Set the debug host and port.
-   - Click on the ``Debug`` button.
+   .. tab:: Eclipse
+
+      - Add a breakpoint in your Application code.
+      - Click on ``Run > Debug Configurations...``.
+      - Select ``Remote Java Application``.
+      - Click on the ``New launch configuration`` button.
+      - Give a name to the launcher in the ``Name`` field.
+      - Set the debug host and port.
+      - Click on the ``Debug`` button.
 
 The debugger should connect to the Simulator and you should be able to debug your Application.
 
