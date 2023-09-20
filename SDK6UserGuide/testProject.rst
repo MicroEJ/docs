@@ -686,7 +686,7 @@ to the :ref:`unique name <sdk_6_vee_port_unique_name>` of the VEE Port:
       
       - Click on ``Run``.
 
-   .. tab:: CLI
+   .. tab:: Command Line Interface
 
       To add the property from the command line interface::
 

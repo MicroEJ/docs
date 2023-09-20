@@ -32,7 +32,7 @@ Once these prerequisites are fulfilled, the Application can be started with the 
          :width: 50%
          :align: center
 
-   .. tab:: CLI
+   .. tab:: Command Line Interface
 
       From the command line interface::
       
@@ -177,7 +177,7 @@ the ``runOnSimulator`` task:
       
       - Click on ``Run``.
 
-   .. tab:: CLI
+   .. tab:: Command Line Interface
 
       To add the property from the command line interface::
 
