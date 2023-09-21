@@ -82,6 +82,9 @@ If you want to connect the IDE debugger:
 
    .. tab:: Android Studio / IntelliJ IDEA
 
+      .. warning::
+         Android Studio and IntelliJ IDEA need an Architecture 8.1 or higher for debug mode.
+
       - Add a breakpoint in your Application code.
       - Click on ``Run > Edit Configurations...``.
       - Click on ``+`` button (``Add New Configuration``).
