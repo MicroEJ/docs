@@ -14,7 +14,7 @@ BSP with VG-Lite
 * Follow the migration steps of :ref:`C Module MicroUI-VGLite 7.1.0 <section_ui_migrationguide_13.6_vglite>`.
 * *[VEE Port configuration project]*
 
-	* Fetch VG Pack 1.4.0, C Modules MicroVG 3.0.1 and MicroVG-VGLite 6.0.0.
+	* Fetch VG Pack 1.4.1, C Modules MicroVG 3.0.1 and MicroVG-VGLite 6.1.0.
 	* Delete the content of ``dropins/include`` folder.
 
 * *[BSP project]*
