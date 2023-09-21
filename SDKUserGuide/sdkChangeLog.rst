@@ -1158,7 +1158,7 @@ Skeletons
 Build Types per SDK
 -------------------
 
-- SDK 5.8.0
+- SDK 5.8.0 and SDK 5.8.1
 
   - build-addon-processor#2.2.0
   - build-application#9.2.0
