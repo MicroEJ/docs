@@ -56,7 +56,7 @@ Core Engine
 SOAR
 ~~~~
 
- - Added integration of the :ref:`bytecode verifier <soar_binary_code_verifier>`.
+ - Fixed integration of the :ref:`bytecode verifier <soar_binary_code_verifier>` in Feature mode.
 
 .. _changelog-8.0.0:
 
