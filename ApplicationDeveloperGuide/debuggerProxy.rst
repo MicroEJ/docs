@@ -117,12 +117,12 @@ Debugging Executable for MCU target
 ===================================
 
 The VEE Debugger Proxy for MCU target requires a memory dump of the running Executable in Intel hex format.
-It provides a tool to generate a script for IAR or GDB debugger which contain the needed commands to dump the required memory regions in Intel hex format.
+It provides a tool to generate a script for IAR (IAR8 or IAR9) or GDB debugger, that contains the needed commands to dump the required memory regions in Intel hex format.
 
 .. _generate_vee_memory_dump_script:
 
-Generate VEE memory dump script for IAR or GDB debugger
--------------------------------------------------------
+Generate VEE memory dump script for IAR (IAR8 or IAR9) or GDB debugger
+----------------------------------------------------------------------
 
 Open a shell terminal on your workstation and run the following command
 
@@ -131,10 +131,8 @@ Open a shell terminal on your workstation and run the following command
     java -DveePortDir=<path to VEE Port directory> \
         -Ddebugger.out.path=<path to the Executable file (``application.out``)> \
         -cp microej-debugger-proxy.jar com.microej.jdwp.VeeDebuggerCli \
-        --debugger=IAR|GDB \
-        --output=<Output folder where the script file will be generated> \
-        -jar microej-debugger-proxy.jar
-
+        --debugger=IAR8|IAR9|GDB \
+        --output=<Output folder where the script file will be generated>
 
 A script file named ``vee-memory-dump.mac`` (for IAR) or ``vee-memory-dump.gdb`` (for GDB) is generated into the specified output folder.
 
@@ -146,26 +144,40 @@ Dump the memory of the running Executable
 With IAR Debugger
 ~~~~~~~~~~~~~~~~~
 
+.. note::
+    You must use a version of IAR Workbench for which the ``vee-memory-dump.mac`` script file is generated.
+
+    A script file generated for IAR8 will not work on IAR Workbench 9.x.x and vice versa.
+  
 In IAR Embedded Workbench:
 
-- Register the generated ``vee-memory-dump.mac`` file in the debugger project option
+- Register the generated ``vee-memory-dump.mac`` script file in the debugger project option:
+  
+   #. Open the Debugger Project option window by clicking on ``Project > Options... > Debugger > Setup``
+   #. Check the option ``Use macro file(s)`` and browse to the generated ``vee-memory-dump.mac`` file.
+   #. Click on ``OK`` to confirm.
+    
+   .. figure:: images/iar-cspy1.png
+      :alt: IAR Embedded Workbench Debugger Project Option
+      :align: center
 
-.. figure:: images/iar-cspy1.png
-   :alt: IAR Embedded Workbench Debugger Project Option
-   :align: center
-
-   IAR Debugger Project Option
+      IAR Debugger Project Option
 
 - Add the macro ``dumpMemories()`` as an action expression to a code breakpoint:
 
-.. figure:: images/iar-cspy2.png
-   :alt: IAR Breakpoint editor
-   :align: center
+   #. Open IAR Breakpoints window by clicking on ``View > Breakpoints``
+   #. Right click on IAR Breakpoints window and select ``New Breakpoint > Code``
+   #. In the ``Expression`` text field, enter  ``dumpMemories()`` and click on ``OK``
 
-   IAR Breakpoint editor
+   .. figure:: images/iar-cspy2.png
+      :alt: IAR Breakpoint editor
+      :align: center
+
+      IAR Breakpoint editor
 
 When the IAR Debugger hits the specified breakpoint, the ``dumpMemories()`` macro function is executed and the memory is dumped into ``*.ihex`` files.
-Note that the ``*.ihex`` files are generated in the same folder as the ``vee-memory-dump.mac`` file.
+
+The ``*.ihex`` files are generated in the same folder as the ``vee-memory-dump.mac`` file.
 
 With GNU Debugger (GDB)
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -213,6 +225,12 @@ VEE Debugger Proxy Options Summary
 * **debugger.out.coredump.path**: Path to the core dump file (conflict with **debugger.out.ihex.path** option)
 * **debugger.out.ihex.path**: Path to the memory dump files in Intel hex format (conflict with **debugger.out.coredump.path** option)
   This option value must be a comma-separated list of the memory dump files, such as ``[/path/to]/java_heap.ihex,[/path/to]/java_stacks.ihex,[/path/to]/vm_instance.ihex``
+
+Troubleshooting
+===============
+
+You may encounter some command line issues if you try to run the proxy on Windows Powershell. 
+On Windows workstation, use CMD instead.
 
 ..
    | Copyright 2022-2023, MicroEJ Corp. Content in this space is free 

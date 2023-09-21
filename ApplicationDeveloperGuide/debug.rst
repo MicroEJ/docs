@@ -51,6 +51,9 @@ If you are unfamiliar with Java debugging or Eclipse IDE, see `Debugging the Ecl
 
 .. _Debugging the Eclipse IDE for Java Developers:  https://www.eclipse.org/community/eclipse_newsletter/2017/june/article1.php
 
+You can also debug with IntelliJ IDEA. For more information on IntelliJ IDEA Remote debug process, see `IntelliJ IDEA Remote debug`_
+
+.. _IntelliJ IDEA Remote debug: https://www.jetbrains.com/help/idea/tutorial-remote-debug.html
 
 Get Library Sources
 -------------------
