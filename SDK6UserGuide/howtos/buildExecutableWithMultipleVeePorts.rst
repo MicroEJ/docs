@@ -1,4 +1,4 @@
-.. _sdk_6_howto_build_Executable_with_multiple_vee_ports:
+.. _sdk_6_howto_build_executable_with_multiple_vee_ports:
 
 How To Build an Executable With Multiple VEE Ports
 ==================================================
