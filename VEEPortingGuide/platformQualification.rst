@@ -130,7 +130,7 @@ A VEE Port Test Suite is composed of two projects:
 Create the Test Suite Module
 ----------------------------
 
-The Test Suite module implements the tests of the module to be tested.
+The Test Suite module contains the tests of the Foundation Library to be qualified.
 
 Create the Test Suite Module Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -159,7 +159,7 @@ You should get a Foundation Library Test Suite project that looks like:
 
       Foundation Library Test Suite Project Skeleton
       
-Your skeleton project is created and ready to be setup.
+Your Test Suite module project is created and ready to be setup.
 
 Configure the Test Suite Module Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -246,7 +246,7 @@ Generate Test Suite Module
 Create the Test Suite Runner
 ----------------------------
 
-The Test Suite runner project is responsible for running tests of a Test Suite module.
+The Test Suite runner project contains configuration files for running a Test Suite module on a Device using a VEE Port.
 
 Create the Test Suite Runner Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
