@@ -135,21 +135,23 @@ The Test Suite module contains the tests of the Foundation Library to be qualifi
 Create the Test Suite Module Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A new Test Suite module can be created using the ``microej-javaimpl`` Skeleton (see :ref:`module_natures.foundation_lib_impl`).
+A new Test Suite module is created using the ``microej-javaimpl`` Skeleton (see :ref:`module_natures.foundation_lib_impl`).
 
 To create the Test Suite module, click on: :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...` then select :guilabel:`MicroEJ` > :guilabel:`Module Project`
 
 Fill up the following fields of the form:
 
-- Project name (e.g: ``myFoundationLib-testsuite``)
-- Organization (e.g: ``com.mycompany``)
-- Module (e.g: ``myFoundationLib-testsuite``)
-- Revision (version of your Test Suite module)
-- Select the Skeleton: ``microej-javaimpl``
+- Project name (e.g: ``myFoundationLib-testsuite``).
+- Organization (e.g: ``com.mycompany``).
+- Module (e.g: ``myFoundationLib-testsuite``).
+- Revision (version of your Test Suite module).
+- Select the Skeleton: ``microej-javaimpl``.
 
-Then, create two test source folders, right-click on your project and click on: :guilabel:`New` > :guilabel:`Source Folder`.
+Then, create two test source folders: 
 
-Fill up the ``Folder name`` field of the form with: ``src/test/java`` and for the second folder: ``src/test/resources`` 
+- Right-click on your project.
+- Click on: :guilabel:`New` > :guilabel:`Source Folder`.
+- Fill up the ``Folder name`` field of the form with: ``src/test/java`` and for the second folder: ``src/test/resources``.
 
 You should get a Foundation Library Test Suite project that looks like:
 
@@ -220,7 +222,7 @@ and then click on ``Finish``. Copy/paste the following example in ``MyTest.java`
                 }
         }
 
-The console output on VEE Port simulator for this test should be:
+The console output on the Simulator for this test should be:
 
 :: 
 
