@@ -1,19 +1,18 @@
 Getting Started
 ===============
 
-Online Getting Started
-----------------------
+MicroEJ provides a ready-to-use Kernel template called `Kernel GREEN` to get familiar with Kernel development.
 
-To get familiar with Kernel development, MicroEJ provides several ways of evaluating Kernel capabilities.
+This Kernel is used in two forms:
 
-As a first approach, MicroEJ does provide a Ready-to-use Multi-Sandbox evaluation Kernel called Kernel-GREEN on the STM32F7508-DK board available on the `MicroEJ Developer Website <https://developer.microej.com/stm32f7508-dk-discovery-kit-get-started-multi-sandbox/>`_.
+- in binary form: pre-built Executables and Virtual Devices for evaluation boards available at https://repository.microej.com/packages/green/.
+  It allows the Application developer to write its first Sandboxed Application quickly and then dynamically deploy it through a TCP/IP connection. 
+  See the `Get Started with Multi-Sandbox for STM32F7508-DK Discovery Kit <https://developer.microej.com/stm32f7508-dk-discovery-kit-get-started-multi-sandbox/>`_.
 
-This Getting Started allows an application developer to easily develop and deploy applications over a Multi-Sandbox executable.
-
-As a Kernel Developer, MicroEJ also provides the GREEN Kernel sources in a `GitHub repository <https://github.com/MicroEJ/Kernel-GREEN>`_ allowing the user to update the Kernel itself to fit its needs.
-
-The `README <https://github.com/MicroEJ/Kernel-GREEN/blob/master/README.md>`_ file from the repository contains a step by step guide to build the Kernel on an evaluation Device on which new applications can then be dynamically deployed through a TCP/IP connection.
-
+- in source form: the Kernel GREEN repository is available at https://github.com/MicroEJ/Kernel-GREEN.
+  It allows the Kernel developer to explore Multi-Sandboxing capabilities and start to adapt them to its needs.
+  See the `README <https://github.com/MicroEJ/Kernel-GREEN/blob/master/README.md>`_ file from the repository. 
+  It contains a step-by-step guide to build the Kernel GREEN on any compatible VEE Port.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
