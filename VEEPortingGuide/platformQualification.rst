@@ -1,67 +1,67 @@
-.. _platform_qualification:
+.. _veeport_qualification:
 
 ======================
-Platform Qualification
+VEE Port Qualification
 ======================
 
 Introduction
 ============
 
-A MicroEJ Platform integrates one or more Foundation Libraries with their
+A VEE Port integrates one or more Foundation Libraries with their
 respective Abstraction Layers.
 
-Platform Qualification is the process of validating the conformance of the Abstraction
+VEE Port Qualification is the process of validating the conformance of the Abstraction
 Layer that implements the :ref:`Low Level APIs <low_level_api>` of a Foundation Library.
 
-.. figure:: images/overview-platform-qualification.png
+.. figure:: images/qualification-overview.png
    :align: center
    :scale: 80%
 
-   Platform Qualification Overwiew
+   VEE Port Qualification Overwiew
 
 For each Low Level API, an Abstraction Layer implementation is
 required.  The validation of the Abstraction Layer implementation is
 performed by running tests at two-levels:
 
 - In C, by calling Low Level APIs (usually manually).
-- In Java, by calling Foundation Library APIs (usually automatically using :ref:`platform_testsuite`).
+- In Java, by calling Foundation Library APIs (usually automatically using :ref:`vee_port_testsuite`).
 
 The following figure depicts an example for the FS Pack:
 
-.. figure:: images/overview-platform-qualification-test-suite-fs.png
+.. figure:: images/qualification-test-suite-fs.png
    :align: center
    :scale: 80%
 
-   Platform Qualification Example for FS Pack
+   VEE Port Qualification Example for FS Pack
 
 MicroEJ provides a set of tools and pre-defined projects aimed at
-simplifying the steps for validating Platforms in the form of the
-`Platform Qualification Tools (PQT)
+simplifying the steps for validating VEE Ports in the form of the
+`VEE Port Qualification Tools (PQT)
 <https://github.com/MicroEJ/VEEPortQualificationTools>`__.
 
 .. _pqt_overview:
 
-Platform Qualification Tools Overview
+VEE Port Qualification Tools Overview
 =====================================
 
-The Platform Qualification Tools provide the following components:
+The VEE Port Qualification Tools provide the following components:
 
 - Platform Configuration Additions (PCA):
 
   - Used to:
 
-    - Manage MicroEJ Architecture, MicroEJ Packs and the Platform
+    - Manage Architecture, Packs dependencies and the VEE Port
       build with the MicroEJ Module Manager.
     - Configure the BSP connection to call the build and run scripts.
 
-  - Added when creating a Platform (see :ref:`new_platform_creation`
+  - Added when creating a VEE Port (see :ref:`new_platform_creation`
     or check the tutorial :ref:`tutorial_create_firmware_from_scratch`).
 
 - Build and Run Scripts examples:
 
-  - Used to generate and deploy a MicroEJ Firmware on a device by
+  - Used to generate and deploy an Executable on a device by
     invoking a third-party toolchain for the BSP.
-  - Added when integrating the BSP to the Platform (see
+  - Added when integrating the BSP to the VEE Port (see
     :ref:`bsp_connection_build_script` and
     :ref:`bsp_connection_run_script` or check the tutorial :ref:`tutorial_create_platform_build_and_run_scripts`).
 
@@ -70,19 +70,19 @@ The Platform Qualification Tools provide the following components:
   - Used to validate the Low Level APIs implementations.
   - Validated during the BSP development and whenever an Abstraction
     Layer implementation is added or changed (see
-    :ref:`platform_testsuite` or check the tutorial
+    :ref:`vee_port_testsuite` or check the tutorial
     :ref:`tutorial_run_test_suite_on_device`).
 
-Please refer to the `Platform Qualification Tools README
+Please refer to the `VEE Port Qualification Tools README
 <https://github.com/MicroEJ/VEEPortQualificationTools>`__ for more
 details and the location of the components.
 
-.. _platform_testsuite:
+.. _vee_port_testsuite:
 
-Platform Test Suite
+VEE Port Test Suite
 ===================
 
-The purpose of a MicroEJ Platform Test Suite is to validate the
+The purpose of a VEE Port Test Suite is to validate the
 Abstraction Layer that implements the :ref:`Low Level APIs
 <low_level_api>` of a Foundation Libraries by automatically running
 Java tests on the device.
@@ -90,11 +90,11 @@ Java tests on the device.
 The :ref:`testsuite_engine` is used for building,
 running a Test Suite, and providing a report.
 
-A Platform Test Suite contains one or more tests.  For each test, the Test Suite Engine will:
+A Test Suite contains one or more tests. For each test, the Test Suite Engine will:
 
-1. Build a MicroEJ Firmware for the test.
+1. Build an Executable for the test.
 
-2. Program the MicroEJ Firmware onto the device.
+2. Run the Executable onto the device.
 
 3. Retrieve the execution traces.
 
@@ -105,14 +105,14 @@ A Platform Test Suite contains one or more tests.  For each test, the Test Suite
 6. Repeat until all tests of the Test Suite have been executed.
 
 .. figure:: images/testsuite-engine-overview.png
-   :alt: Platform Test Suite on Device Overview
+   :alt: VEE Port Test Suite on Device Overview
    :align: center
 
-   Platform Test Suite on Device Overview
+   VEE Port Test Suite on Device Overview
 
-.. _create_junit_platform_testsuite:
+.. _create_junit_vee_port_testsuite:
 
-Create a JUnit Platform Testsuite
+Create a JUnit VEE Port Testsuite
 =================================
 
 Requirements
@@ -146,13 +146,13 @@ Then, create two test source folders, right-click on your project and click on: 
 
 Fill up the ``Folder name`` field of the form with: ``src/test/java`` and for the second folder: ``src/test/resources`` 
 
-You should get a MicroEJ Foundation Library Test Suite project that looks like:
+You should get a Foundation Library Test Suite project that looks like:
 
    .. figure:: images/foundation-library-testsuite-skeleton.png
-      :alt: MicroEJ Foundation Library Test Suite Project Skeleton
+      :alt: Foundation Library Test Suite Project Skeleton
       :align: center
 
-      MicroEJ Foundation Library Test Suite Project Skeleton
+      Foundation Library Test Suite Project Skeleton
       
 Your skeleton project is created and ready to be setup.
 
@@ -310,11 +310,11 @@ Configure and Run the Test Suite
 Test Suite Versioning
 =====================
 
-Foundation Libraries are integrated in a MicroEJ VEE Port by MicroEJ Packs (see :ref:`pack_import`).
+Foundation Libraries are integrated in a VEE Port using Packs (see :ref:`pack_import`).
 Use the Test Suite version compliant with the API version provided by the Foundation Library to validate the Abstraction Layer implementation.
 For example, the `Test Suite FS module 3.0.3`_ should be used to validate the Abstraction Layer implementation of the :ref:`Low Level API FS <LLFS-API-SECTION>` provided by the `FS Pack 5.1.2`_.
 
-.. note:: A MicroEJ Pack can provide several Foundation Libraries.
+.. note:: A Pack can provide several Foundation Libraries.
 
 .. _test_suite_versioning_core:
 

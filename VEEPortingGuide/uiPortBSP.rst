@@ -136,7 +136,7 @@ These three functions are only helpful for compatibility with a GPU; see :ref:`u
 Test Suite
 ==========
 
-The Port Qualification Toolkit (PQT) provides a UI test suite to validate the UI Port (see :ref:`platform_testsuite` to have more information).
+The Port Qualification Toolkit (PQT) provides a UI test suite to validate the UI Port (see :ref:`vee_port_testsuite` to have more information).
 This test suite **must** be executed to validate the UI Port and after each modification on this UI Port (for instance, after changes to improve performances).
 
 The UI Port test suite is available here: https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/tests/ui/ui3.
