@@ -112,8 +112,8 @@ A Test Suite contains one or more tests. For each test, the Test Suite Engine wi
 
 .. _create_junit_vee_port_testsuite:
 
-Create a JUnit VEE Port Testsuite
-=================================
+Create a VEE Port Test Suite
+============================
 
 Requirements
 ------------
@@ -238,8 +238,8 @@ Generate Test Suite Module
 - If it worked, you can see ``.class`` files inside the archive
 
 
-Test Suite Runner Project
--------------------------
+Create the Test Suite Runner
+----------------------------
 
 The Test Suite runner project is responsible for running tests of a Test Suite module.
 
