@@ -115,12 +115,17 @@ A Test Suite contains one or more tests. For each test, the Test Suite Engine wi
 Create a VEE Port Test Suite
 ============================
 
-Requirements
-------------
+A VEE Port Test Suite is composed of two projects:
 
-Use MICROEJ SDK ``5.6.0`` or higher.
+- the Test Suite module: the project that contains test cases. Test cases are written in :ref:`Junit <application_testsuite>`.
+  When this project is built, it produces a versionned library. See :ref:`test_suite_versioning` for available Test Suite modules for the most common Packs provided by MicroEJ Corp.
+- the Test Suite runner: the project that contains the configuration for its execution on a VEE Port. 
+  When this project is built, it runs the Test Suite on a Device and generates the Test Suite report.
 
-Follow the instructions of the :ref:`sdk_installation_latest` page to install the latest SDK Distribution compatible with your needs.
+.. note:: 
+  
+   Creating a VEE Port Test Suite requires SDK ``5.6.0`` or higher.
+
 
 Create the Test Suite Module
 ----------------------------
