@@ -132,8 +132,8 @@ Create the Test Suite Module
 
 The Test Suite module implements the tests of the module to be tested.
 
-Create the Test Suite Skeleton
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Create the Test Suite Module Project
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A new Test Suite module can be created using the ``microej-javaimpl`` Skeleton (see :ref:`module_natures.foundation_lib_impl`).
 
