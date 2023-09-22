@@ -234,16 +234,12 @@ The console output on the Simulator for this test should be:
 
         SUCCESS
 
-.. note:: See next sections to get more details on how to package and launch the Test Suite on a VEE Port.
+Build the Test Suite Module
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-Generate Test Suite Module
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- Right-click on the project and select ``Build module``
-- Check the content of the generated archive ``target~\test-rips\javaLibs\myFoundationLib-testsuite-X.X.jar``
-- If it worked, you can see ``.class`` files inside the archive
-
+Once the test cases are implemented, you can :ref:`build the module <mmm_module_build>`.
+The next step is to create a Test Suite Runner.
+The Test Suite Runner will fetch the Test Suite Module dependency.
 
 Create the Test Suite Runner
 ----------------------------
@@ -263,7 +259,7 @@ Create the Test Suite Runner Project
   - Revision (version of your Test Suite Module)
   - Select the Skeleton: ``microej-testsuite``
 
-- Inside ``module.ivy`` file, add the Test Suite dependency to the Test Suite runner project:
+- Inside ``module.ivy`` file, add the dependency to the Test Suite module as following:
   
   .. code-block:: XML
         
