@@ -54,11 +54,12 @@ Core Engine
 - [Multi] - Removed Feature installation in RAM (legacy :ref:`In-Place Installation mode <feature_inplace_installation>`). See :ref:`architecture8_migration_llkernel`.
 - [Multi] - Updated :ref:`Feature installation boot sequence <feature_persistency>`: all Feature handles are now retrieved prior to initializing them.
 - [Multi] - Updated check of :ref:`Kernel UID <kernel_uid>` at the beginning of `Kernel.install(java.io.InputStream)`_, before allocating Feature sections.
+- [Multi] - Add RAM Control capabitlity to the Kernel (disabled by default). See :ref:`multisandbox_ram_control`.
 
 SOAR
 ~~~~
 
- - Fixed integration of the :ref:`bytecode verifier <soar_binary_code_verifier>` in Feature mode.
+- [Multi] - Fixed integration of the :ref:`bytecode verifier <soar_binary_code_verifier>` in Feature mode.
 
 Tools
 ~~~~~

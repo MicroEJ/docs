@@ -317,6 +317,27 @@ The In-Place uninstallation flow is described in the following sequence diagram:
 
    In-Place Feature Uninstallation Flow
 
+.. _multisandbox_ram_control:
+
+RAM Control
+===========
+
+.. note::
+
+   This feature requires Architecture :ref:`8.1.0 <changelog-8.1.0>` or higher.
+
+In a Multi-Sandbox environment, RAM Control automatically stops less critical Features when a more critical Feature cannot allocate new objects. 
+See the "RAM Control: Feature Criticality" section of the :ref:`kf_specification` for more details.
+
+By default, RAM Control is disabled in the Core Engine. 
+To enable it, set the property ``com.microej.runtime.kf.ramcontrol.enabled`` to ``true`` when building the VEE Port. 
+This can be done by defining this property in the file ``mjvm/mjvm.properties`` of your VEE Port configuration project:
+
+``com.microej.runtime.kf.ramcontrol.enabled=true``
+
+To ensure proper RAM Control execution, all foundation libraries must use SNI to declare native resources to free when a feature is terminated (see ``sni.h`` header file).
+The deprecated class ``ej.lang.ResourceManager`` cannot be used in such a context.
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
