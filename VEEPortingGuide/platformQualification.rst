@@ -309,8 +309,7 @@ Create the Test Suite Runner Project
 Configure and Run the Test Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Follow these steps to configure the property files and run the Test Suite using the Test Suite runner project:
-  https://docs.microej.com/en/latest/Tutorials/tutorialRunATestSuiteOnDevice.html
+Follow the :ref:`tutorial_run_test_suite_on_device` tutorial to configure your VEE Port and run the Test Suite on your Device.
 
 .. _test_suite_versioning:
 
