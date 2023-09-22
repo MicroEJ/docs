@@ -3,6 +3,26 @@
 Changelog
 ---------
 
+.. _changelog-0.11.1:
+
+[0.11.1] - 2023-09-22
+~~~~~~~~~~~~~~~~~~~~~
+
+Fixed
+"""""
+
+- Fix usage of a SNAPSHOT version of the junit-test-engine dependency.
+
+.. _changelog-0.11.0:
+
+[0.11.0] - 2023-09-22
+~~~~~~~~~~~~~~~~~~~~~
+
+Changed
+"""""""
+
+- Use Gradle standard mechanism to support Multi-VEEPort instead of relying on an in-house feature.
+
 .. _changelog-0.10.0:
 
 [0.10.0] - 2023-09-13
