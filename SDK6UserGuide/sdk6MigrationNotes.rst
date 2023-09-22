@@ -3,6 +3,32 @@
 Migration Notes
 ---------------
 
+---------------------
+From 0.10.0 to 0.11.0
+---------------------
+
+This section applies if MicroEJ SDK 6 ``0.11.0`` is used on a project that was created using MicroEJ SDK 6 ``0.10.0`` 
+or lower.
+
+Gradle mechanism usage for Multiple VEE Ports Support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using multiple VEE Ports in a project uses Gradle mechanism now instead of relying on in-house feature.
+This implies:
+- the ``veePortPaths`` property has been renamed to ``veePortPath`` and accepts a String value::
+
+   microej {
+      veePortPath = "C:\\path\\to\\my\\veePort\\source"
+   }
+
+- the ``kernelFiles`` property has been renamed to ``kernelFile`` and accepts a String value::
+
+   microej {
+      kernelFile = "C:\\path\\to\\my\\kernel\\file"
+   }
+
+Refer to the :ref:`sdk_6_howto_build_executable_with_multiple_vee_ports` section to learn how to support multiple VEE Ports using the Gradle mechanisms.
+
 -------------------
 From 0.8.0 to 0.9.0
 -------------------
