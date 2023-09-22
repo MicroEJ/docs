@@ -256,16 +256,16 @@ Create the Test Suite Runner Project
   - Project name
   - Organization
   - Module
-  - Revision (version of your Test Suite Module)
+  - Revision (version of your Test Suite module)
   - Select the Skeleton: ``microej-testsuite``
 
-- Inside ``module.ivy`` file, add the dependency to the Test Suite module as following:
+- Inside the ``module.ivy`` file, add the dependency to the Test Suite module as following:
   
   .. code-block:: XML
         
         <dependency org="com.mycompany" name="myFoundationLib-testsuite" rev="0.1.0" conf="test->default;provided->provided"/>
 
-- Add the following target to the ``module.ant`` at the root of the Test Suite project with the following content:
+- Inside the ``module.ant``, add the following ANT target to configure trace redirection options :
   
   .. code-block:: XML
 
@@ -278,7 +278,7 @@ Create the Test Suite Runner Project
         	</condition>
         </target>
 
-- Create the file ``override.module.ant`` at the root of the project. Add the following content:
+- Create the file ``override.module.ant`` at the root of the project. Add the following content to configure the load of testsuite options:
   
   .. code-block:: XML
   
