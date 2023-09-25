@@ -56,6 +56,7 @@ Available APIs and Features
 
 * Custom native APIs can be implemented over Android libraries to make them executable on Android devices.
 
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
