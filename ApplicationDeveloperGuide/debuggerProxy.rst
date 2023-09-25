@@ -100,13 +100,13 @@ A core dump file will be generated once the Executable reach one of the breaking
 Run the VEE Debugger Proxy
 --------------------------
 
-Open a shell terminal on your workstation and run the following command
+Open a shell terminal on your workstation and run the following command:
 
 .. code-block:: sh
 
     java -DveePortDir=<path to VEE Port directory> \
         -Ddebugger.port=<8000> \
-        -Ddebugger.out.path=<path to the Executable file (``application.out``)> \
+        -Ddebugger.out.path=<path to the Executable file (application.out)> \
         -Ddebugger.out.coredump.path=<path to the core dump file> \
         -jar microej-debugger-proxy.jar
 
@@ -124,17 +124,17 @@ It provides a tool to generate a script for IAR (IAR8 or IAR9) or GDB debugger, 
 Generate VEE memory dump script for IAR (IAR8 or IAR9) or GDB debugger
 ----------------------------------------------------------------------
 
-Open a shell terminal on your workstation and run the following command
+Open a shell terminal on your workstation and run the following command:
 
 .. code-block:: sh
 
     java -DveePortDir=<path to VEE Port directory> \
-        -Ddebugger.out.path=<path to the Executable file (``application.out``)> \
+        -Ddebugger.out.path=<path to the Executable file (application.out)> \
         -cp microej-debugger-proxy.jar com.microej.jdwp.VeeDebuggerCli \
         --debugger=IAR8|IAR9|GDB \
-        --output=<Output folder where the script file will be generated>
+        --output=<Output directory where the script file will be generated>
 
-A script file named ``vee-memory-dump.mac`` (for IAR) or ``vee-memory-dump.gdb`` (for GDB) is generated into the specified output folder.
+A script file named ``vee-memory-dump.mac`` (for IAR) or ``vee-memory-dump.gdb`` (for GDB) is generated into the specified output directory.
 
 You can now use this script to dump the memory of the running Executable.
 
@@ -177,7 +177,7 @@ In IAR Embedded Workbench:
 
 When the IAR Debugger hits the specified breakpoint, the ``dumpMemories()`` macro function is executed and the memory is dumped into ``*.ihex`` files.
 
-The ``*.ihex`` files are generated in the same folder as the ``vee-memory-dump.mac`` file.
+The ``*.ihex`` files are generated in the same directory as the ``vee-memory-dump.mac`` file.
 
 With GNU Debugger (GDB)
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -199,38 +199,63 @@ In your GDB console:
     # E.g. Run the GDB memory dump script
     source [/path/to]/vee-memory-dump.gdb
 
-The memory is dumped into ``*.ihex`` files in the same folder as the ``vee-memory-dump.gdb`` file.
+The memory is dumped into ``*.ihex`` files in the same directory as the ``vee-memory-dump.gdb`` file.
 
 Start the VEE Debugger Proxy
 ----------------------------
 
-Open a shell terminal on your workstation and run the following command
+Open a shell terminal on your workstation and run the following command:
 
 .. code-block:: sh
 
     java -DveePortDir=<path to VEE Port directory> \
         -Ddebugger.port=<8000> \
-        -Ddebugger.out.path=<path to the Executable file (``application.out``)> \
-        -Ddebugger.out.ihex.path=<comma-separated list of the memory dump files in Intel hex format> \
+        -Ddebugger.out.path=<path to the Executable file (application.out)> \
+        -Ddebugger.out.ihex.path=<comma-separated list of the memory dump files in Intel hex format or a single file containg all the dumped memory> \
         -jar microej-debugger-proxy.jar
 
 Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` to debug your code.
 
+.. note:: 
+
+    If you have multiple  ``*.ihex`` files generated in the previous step, you can if you want merge them into a single ``*.ihex`` file.
+
+    It will be easier to use a single ``*.ihex`` file than multiple files in the Debugger Proxy command line.
+
+    You can run the following shell commands to merge all the ``*.ihex`` files into a single file called ``all.ihex`` for example:
+
+    - On Windows workstation:
+  
+    .. code-block:: sh
+
+       cd [path/to/output/ihex/directory]
+       copy *.ihex all.ihex
+
+    - On Linux workstation:
+  
+    .. code-block:: sh
+
+       cd [path/to/output/ihex/directory]
+       cat *.ihex all.ihex
+
+    Now, use this single ``all.ihex`` file as value to the Debugger Proxy option ``-Ddebugger.out.ihex.path``
+
 VEE Debugger Proxy Options Summary
 ==================================
 
-* **veePortDir**: The path to the VEE Port directory (must point to the `source` folder of the VEE Port.)
-* **debugger.port**: TCP server port, defaults to ``8000``.
-* **debugger.out.path**: Path to the Executable file (``application.out``)
-* **debugger.out.coredump.path**: Path to the core dump file (conflict with **debugger.out.ihex.path** option)
-* **debugger.out.ihex.path**: Path to the memory dump files in Intel hex format (conflict with **debugger.out.coredump.path** option)
-  This option value must be a comma-separated list of the memory dump files, such as ``[/path/to]/java_heap.ihex,[/path/to]/java_stacks.ihex,[/path/to]/vm_instance.ihex``
+* **veePortDir**: The path to the VEE Port directory (must point to the `source` folder of the VEE Port.).
+* **debugger.port**: The TCP server port, defaults to ``8000``.
+* **debugger.out.path**: The Path to the Executable file (``application.out``).
+* **debugger.out.coredump.path**: The Path to the core dump file (conflict with **debugger.out.ihex.path** option).
+* **debugger.out.ihex.path**: The Path to the memory dump files in Intel hex format (conflict with **debugger.out.coredump.path** option).
+  If you have multiple Intel hex files, you can either merge them into a single file or list them with a comma separator, such as ``[/path/to]/java_heap.ihex,[/path/to]/java_stacks.ihex,[/path/to]/vm_instance.ihex``.
 
 Troubleshooting
 ===============
 
 You may encounter some command line issues if you try to run the proxy on Windows Powershell. 
-On Windows workstation, use CMD instead.
+
+On Windows workstation, we recommend using ``CMD`` Command Prompt instead.
 
 ..
    | Copyright 2022-2023, MicroEJ Corp. Content in this space is free 
