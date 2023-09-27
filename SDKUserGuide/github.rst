@@ -14,7 +14,7 @@ This section explains the steps to import a Github repository in MicroEJ SDK, il
 
 .. note::
 
-   MicroEJ SDK Distribution includes the `Eclipse plugin for Git <https://www.eclipse.org/egit/>`_.
+   MicroEJ SDK Distribution includes the `Eclipse plugin for Git <https://projects.eclipse.org/projects/technology.egit/>`_.
 
 First, from the GitHub page, copy the repository URI (HTTP address) from the dedicated field in the right menu (highlighted in red):
 
