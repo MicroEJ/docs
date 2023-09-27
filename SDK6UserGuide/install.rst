@@ -6,6 +6,8 @@ Installation
 This chapter will guide you through the installation process of the SDK on your workstation.
 First check the System Requirements before proceeding.
 
+.. _sdk_6_system_requirements:
+
 System Requirements
 -------------------
 
@@ -22,6 +24,8 @@ System Requirements
 
 - **Java Runtime Environment**
     - JDK 11 or higher LTS version (``11``, ``17`` or ``21``) - Eclipse Temurin or Oracle Distributions
+
+.. _sdk_6_java_version:
 
 Check your JDK version
 ----------------------
