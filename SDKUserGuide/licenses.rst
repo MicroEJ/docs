@@ -112,6 +112,9 @@ Copy the UID. It will be needed when requesting a license.
 
    Machine UID for Evaluation License
 
+
+.. _evaluation_license_request_activation_key:
+
 Request your Activation Key
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -124,6 +127,8 @@ Request your Activation Key
 - Click on :guilabel:`Activate`.
 - The license is being activated. You should receive your activation by email in less than 5 minutes. If not, please contact :ref:`our support team <get_support>`.
 - Once received by email, save the attached zip file that contains your activation key.
+
+.. _evaluation_license_install_license_key:
 
 Install the License Key
 ~~~~~~~~~~~~~~~~~~~~~~~
