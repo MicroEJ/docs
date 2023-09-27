@@ -63,7 +63,7 @@ Simulator
 - Added compatibility with IntelliJ IDEA IDE to debug applications. 
 - Added message when waiting for a connection in debug mode.
 - Fixed debugger verbose mode.
-- Remove bootstrap thread from the debugger vision.
+- Removed bootstrap thread from the debugger vision.
 - Fixed debugger suspend count on threads handling.
 - Fixed stop issue on static method entry breakpoint.
 
