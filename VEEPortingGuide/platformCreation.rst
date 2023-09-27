@@ -623,6 +623,10 @@ Many build script templates are available for most commonly used C toolchains in
        ~$ file application.out
        ELF 32-bit LSB executable
 
+.. note:: The Platform Configuration Additions allow to launch BSP build script during :ref:`platform_build` using the option ``com.microej.platformbuilder.bsp.build.enabled``. Edit the file 
+			``module.properties`` to add this property and set the property to ``true`` to enable BSP build during Platform build or ``false`` otherwise (default value). This option is take 
+			into account only if Platform publication is enabled (see :ref:`platform_publication`). This option is helpful to validate Platform BSP consistency at Platform build time. 
+
 .. _bsp_connection_run_script:
 
 Run Script File
