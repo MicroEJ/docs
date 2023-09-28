@@ -305,7 +305,7 @@ For example,
 
 
 However, the user can define a custom default provider for loading time zone rules.
-To do so, set the constant ``java.time.zone.DefaultZoneRulesProvider`` to be the fully qualified of the custom provider class.
+To do so, set the constant ``java.time.zone.DefaultZoneRulesProvider`` to be the fully qualified name of the custom provider class.
 
 Here is an example of a ``xxx.constants.list`` file with the constant in an application:
 
@@ -418,7 +418,7 @@ Here are the items where the backport differs from its Java 8 counterpart:
 - Static methods in interfaces are not supported and were removed or moved (see below).
 - Default methods in interfaces are not supported and were removed (pulled down in concrete types).
 - Removed static methods ``TemporalAdjusters.ofDateAdjuster(UnaryOperator<LocalDate> dateBasedAdjuster)`` and ``WeekFields.of(Locale locale)``.
-- No overflow checks on calculations and related ``throws ArithmeticException``. Excessively checking for overflow in all calculations can impact performance negatively.
+- No overflow checks on calculations (removed ``throws ArithmeticException`` when relevant). Excessively checking for overflow in all calculations can impact performance negatively.
 - No null checks on method arguments. Developers are encouraged to use the :ref:`Null Analysis <null_analysis>` tool to detect null access and adhere to the API javadoc specifications.
 
 .. note::
