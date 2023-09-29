@@ -3,59 +3,11 @@
 Installation
 ============
 
-This chapter will guide you through the installation process of the SDK using Android Studio as the integrated development environment (IDE).
-Before proceeding with the installation, please make sure your workstation meets the system requirements.
+To develop applications compatible with both Android and MicroEJ VEE, it is required to use MicroEJ SDK 6.
+The SDK provides Gradle plugins that allow for seamless integration in Android Studio IDE.
 
-System Requirements
--------------------
-
-* **Hardware**
-   * x86_64 CPU architecture, ARM-based chips, 2nd generation Intel Core or newer, or AMD processor with support for AMD Virtualization (AMD-V) and SSSE3
-   * 8 GB RAM or more
-   * 8 GB of available disk space minimum (IDE + Android SDK + Android Emulator)
-   * 1280 x 800 minimum screen resolution
-
-* **Operating Systems**
-   * 64-bit Microsoft® Windows® 8/10
-   * Any 64-bit Linux distribution that supports Gnome, KDE, or Unity DE; GNU C Library (glibc) 2.31 or later.
-   * MacOS® 10.14 (Mojave) or higher
-
-* **Java Runtime Environment**
-    * JDK 11 - Eclipse Temurin or Oracle Distributions
-
-
-Download Android Studio
------------------------
-
-Download and install Android Studio Dolphin 2021.3.1 released on September 15, 2022, from the `Android Developer Archive <https://developer.android.com/studio/archive>`_.
-
-For more information about Android Studio (installation, release notes or system requirements), please refer to the `Android Developer site <https://developer.android.com/studio>`_.
-
-
-JDK Version
------------
-
-The latest versions of Android Studio bundle a copy of the OpenJDK. To check that version 11 of the JDK is used:
-
-1. In Android Studio, ``File`` > ``Settings`` (on macOS, ``Android Studio`` > ``Preferences``).
-2. In the settings pane, navigate to ``Build, Execution, Deployment`` > ``Build Tools`` > ``Gradle``.
-3. Under Gradle JDK, check that the version of the JDK being used is 11.
-
-If you don't have a JDK 11 installed, 
-you can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`_ or `Oracle <https://www.oracle.com/fr/java/technologies/downloads/>`_.
-
-
-Install the MicroEJ Plugin
---------------------------
-
-Follow these steps to install the latest stable version of the MicroEJ plugin for Android Studio:
-
-- In Android Studio, open the Settings window (menu ``File > Settings...`` on Windows and Linux, 
-  menu ``Android Studio > Preferences...`` on macOS).
-- Go to ``Plugins`` menu.
-- In the search field, type ``MicroEJ``.
-- Click on the ``Install`` button.
-- Click on the ``Restart IDE`` button.
+For comprehensive installation instructions, please refer to the :ref:`SDK 6 Installation <sdk_6_install>` section.
+Simply follow the steps related to Android Studio IDE when relevant.
 
 
 
