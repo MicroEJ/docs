@@ -56,7 +56,9 @@ This file can be modified to fit your system configuration:
    * Update ``SYSVIEW_APP_NAME``, ``SYSVIEW_DEVICE_NAME``, and ``SYSVIEW_RAM_BASE`` defines to fit your system information.
    * To add MicroEJ Java threads management in SystemView tasks initialization:
   
-      * Add these includes ``#include "LLMJVM_MONITOR_SYSVIEW.h"`` and ``#include "LLTRACE_SYSVIEW_configuration.h"``.
+      * Add these includes ``#include "task.h"``, ``#include "LLMJVM_MONITOR_SYSVIEW.h"``, ``#include "LLTRACE_SYSVIEW_configuration.h"``
+        and the include that declares the external variable ``pvMicrojvmCreatedTask``. ``pvMicrojvmCreatedTask`` must be the FreeRTOS task handle
+        used to create the MicroEJ Core Engine task.
       * In function ``_cbSendSystemDesc(void)``, add this instruction: ``SEGGER_SYSVIEW_SendSysDesc("N="SYSVIEW_APP_NAME",D="SYSVIEW_DEVICE_NAME",O=FreeRTOS");`` before ``SEGGER_SYSVIEW_SendSysDesc("I#15=SysTick");``.
       * Replace the ``Global function`` section with this code:
 
@@ -76,13 +78,23 @@ This file can be modified to fit your system configuration:
             LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();
          }
          
-         void SEGGER_SYSVIEW_Conf(void) {
-            SYSVIEW_MICROEJ_X_OS_TraceAPI.pfGetTime = SYSVIEW_X_OS_TraceAPI.pfGetTime;
-            SYSVIEW_MICROEJ_X_OS_TraceAPI.pfSendTaskList = SYSVIEW_MICROEJ_X_OS_SendTaskList;
-            
-            SEGGER_SYSVIEW_Init(SYSVIEW_TIMESTAMP_FREQ, SYSVIEW_CPU_FREQ,
-                                 &SYSVIEW_MICROEJ_X_OS_TraceAPI, _cbSendSystemDesc);
-            SEGGER_SYSVIEW_SetRAMBase(SYSVIEW_RAM_BASE);
+         static void SYSVIEW_MICROEJ_X_OS_SendTaskList(void){
+            TaskHandle_t xHandle;
+            TaskStatus_t xTaskDetails;
+
+            SYSVIEW_X_OS_TraceAPI.pfSendTaskList();
+
+            /* Obtain the handle of the current task. */
+            xHandle = xTaskGetCurrentTaskHandle();
+            configASSERT( xHandle ); // Check the handle is not NULL.
+
+            // Check if the current task handle is the Microjvm task handle. pvMicrojvmCreatedTask is an external variable.
+            if( xHandle == pvMicrojvmCreatedTask){
+               // Launched by the JVM, we execute LLMJVM_MONITOR_SYSTEMVIEW_send_task_list()
+               LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();
+            }else{
+               // Not launched by the JVM, we do nothing.
+            }
          }
 
 5. Add in your BSP the MicroEJ C module files for SystemView: `com.microej.clibrary.thirdparty#systemview`_ (or check the differences between pre-installed SystemView and C files provided by this module)
