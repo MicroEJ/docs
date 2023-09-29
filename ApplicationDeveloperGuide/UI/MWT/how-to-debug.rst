@@ -92,7 +92,7 @@ Here is an example of a ``xxx.constants.list`` file with the result in an applic
 
 	Screenshot after click
 
-.. note:: Available since MWT 3.5.0 & Widget 4.3.0.
+.. note:: Available since MWT 3.5.0 & Widget 5.0.0.
 ..
    | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
