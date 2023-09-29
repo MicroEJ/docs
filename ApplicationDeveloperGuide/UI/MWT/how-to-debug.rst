@@ -49,10 +49,12 @@ MWT provides a way to inject a monitor for the following render operations:
 * Successive render executions triggered by the ``RenderPolicy``
 
 Setting the ``ej.mwt.debug.render.enabled`` constant to ``true`` will enable the monitoring of above render operations.
+For more information about the monitoring mechanism, see `RenderPolicy Javadoc <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/render/RenderPolicy.html>`_.
 For more information about constants, see the :ref:`section.classpath.elements.constants` section.
 
 The Widget library provides a default monitor implementation that prints the operations on the standard output.
 The logs produced also contain information about what is rendered (widget and area) and what code requested the rendering.
+For more information about this monitor implementation, see `RenderMonitor Javadoc <https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/RenderMonitor.html>`_.
 
 To use a different implementation (and if Widget is not in the classpath), set the ``ej.mwt.debug.render.monitor`` constant
 to the FQN of the monitor implementation class.
