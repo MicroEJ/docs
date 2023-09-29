@@ -23,7 +23,6 @@ Application Developer Guide
    advanced
    UI/ui
    js/index
-   Android/android
    networking
    eventQueue
    characterEncoding

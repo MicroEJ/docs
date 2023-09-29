@@ -1,9 +1,12 @@
-.. _create_android_impl:
+.. _vee-wear:
 
+VEE Wear
+========
 
+.. toctree::
+   :maxdepth: 2
 
-Create Android Implementation
-=============================
+   Android/index
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

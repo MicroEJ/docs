@@ -28,6 +28,7 @@ Browse the following chapters to familiarize yourself and understand the princip
    ApplicationDeveloperGuide/index
    VEEPortingGuide/index
    KernelDeveloperGuide/index
+   VEEWear/index
    Tutorials/index
    support
    about

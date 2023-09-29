@@ -1,7 +1,7 @@
 .. _runnning_on_android:
 
-Running on Android
-==================
+Android Compatibility
+=====================
 
 MicroEJ provides a set of tools and libraries to run applications powered by MicroEJ on Android and Wear OS.
 This allows for the same application to be developed, simulated, tested, and run on MicroEJ VEE and Android alike.
@@ -24,8 +24,7 @@ Below are some examples from the wearables segment that illustrate these use cas
    overview
    installation
    createProject
-   createAndroidImpl
-   knownIssues
+   veePort
    sample
 
 ..
