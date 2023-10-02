@@ -7,11 +7,11 @@ Image Loader
 Principle
 =========
 
-The Image Loader module is an on-board engine that 
+The Image Loader is a module of the MicroUI runtime that:
 
 * retrieves image data that is ready to be displayed without needing additional runtime memory, 
 * retrieves image data that is required to be converted into the format known by the Image Renderer (MicroEJ format),
-* retrieves image in external memories (external memory loader),
+* retrieves image in external memories (:ref:`section_image_external_memory` loader),
 * converts images in MicroEJ format, 
 * creates a runtime buffer to manage MicroUI :ref:`section_buffered_image`,
 * manages dynamic images life cycle.
@@ -27,8 +27,8 @@ Functional Description
 
 .. _section_image_loader_memory:
 
-Memory
-======
+Images Heap
+===========
 
 There are several ways to create a MicroUI Image. Except few specific cases, the Image Loader requires some RAM memory to store the image content in MicroEJ format. This format requires a small header as explained here: :ref:`section_image_standard_raw`.  It can be GPU compatible as explained here: :ref:`section_image_gpu_raw`. 
 
@@ -64,15 +64,15 @@ Like internal resources, the Image Generator uses a :ref:`configuration file <se
 Process
 -------
 
-This chapter describes the steps to open an external resource from the application:
+This chapter describes the steps to setup the loading of an external resource from the application:
 
-1. Add the image in the application project (usually in the source folder ``src/main/resources`` and in the package ``images``).
-2. Create / open the configuration file (usually ``application.imagesext.list``).
-3. Add the relative path of the image: see :ref:`section.ui.Images`.
-4. Launch the application: the Image Generator converts the image in RAW format in the external resources folder (``[application_output_folder]/externalResources``).
-5. Deploy the external resources in the external memory (SDCard, flash, etc.).
-6. (optional) Update the implementation of the :ref:`section_externalresourceloader`.
-7. Build and link the application with the BSP.
+1. Add the image to the application project resources (typically in the source folder ``src/main/resources`` and in the package ``images``).
+2. Create / open the configuration file (e.g. ``application.imagesext.list``).
+3. Add the relative path of the image and its output format (e.g. ``/images/myImage.png:RGB565`` see :ref:`section.ui.Images`).
+4. Build the application: the Image Generator converts the image in RAW format in the external resources folder (``[application_output_folder]/externalResources``).
+5. Deploy the external resources to the external memory (SDCard, flash, etc.) of the device.
+6. (optional) Configure the :ref:`section_externalresourceloader` to load from this source.
+7. Build the application and run it on the device.
 8. The application loads the external resource using `ResourceImage.loadImage(String)`_.
 9. The image loader looks for the image and copies it in the :ref:`images heap<section_image_loader_memory>` (no copy if the external memory is byte-addressable).
 10. (optional) The image may be decoded (for instance: PNG), and the source image is removed from the images heap.
@@ -80,7 +80,11 @@ This chapter describes the steps to open an external resource from the applicati
 12. The application can use the image.
 13. The application closes the image: the image is removed from the image heap.
 
-.. note:: The simulator (Front Panel) does not manage the external resources. All images listed in ``.imagesext.list`` files are generated in the external resources folder, and this folder is added to the simulator's classpath. 
+Simulation
+----------
+
+The Simulator automatically manages the external resources like internal resources.
+All images listed in ``*.imagesext.list`` files are copied in the external resources folder, and this folder is added to the Simulator's classpath.
 
 .. _ResourceImage.loadImage(String): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#loadImage-java.lang.String-
 
@@ -89,16 +93,16 @@ Image in MicroEJ Format
 
 An image may be pre-processed (:ref:`section_image_generator`) and so already in the format compatible with Image Renderer: MicroEJ format. 
 
-* When application is loading an image which is in such format and without specifiying another output format, the Image Loader has just to make a link between the MicroUI Image object and the resource location. No more runtime decoder or converter is required, and so no more RAM memory.
+* When application is loading an image which is in such format and without specifying another output format, the Image Loader has just to make a link between the MicroUI Image object and the resource location. No more runtime decoder or converter is required, and so no more RAM memory.
 * When application specifies another output format than MicroEJ format encoded in the image, Image Loader has to allocate a buffer in RAM. It will convert the image in the expected MicroEJ format.
-* When application is loading an image in MicroEJ format located in external memory, the Image Loader has to copy the image into RAM memory to be usable by Image Renderer.
+* When application is loading an image in MicroEJ format stored as :ref:`section_image_external_memory`, the Image Loader has to copy the image into RAM memory to be usable by Image Renderer.
 
 .. _image_runtime_decoder:
 
 Encoded Image
 =============
 
-An image can be encoded (PNG, JPEG, etc.). In this case Image Loader asks to its Image Decoders module if a decoder is able to decode the image. The source image is not copied in RAM (expect for images located in an external memory). Image Decoder allocates the decoded image buffer in RAM first and then inflates the image. The image is encoded in MicroEJ format specified by the application, when specified. When not specified, the image in encoded in the default MicroEJ format specified by the Image Decoder itself.
+An image can be encoded (PNG, JPEG, etc.). In this case Image Loader asks to its Image Decoders module if a decoder is able to decode the image. The source image is not copied in RAM (expect for images stored as :ref:`section_image_external_memory`). Image Decoder allocates the decoded image buffer in RAM first and then inflates the image. The image is encoded in MicroEJ format specified by the application, when specified. When not specified, the image in encoded in the default MicroEJ format specified by the Image Decoder itself.
 
 .. _image_internal_decoder:
 
@@ -130,13 +134,6 @@ Some additional decoders can be added. Implement the function ``LLUI_DISPLAY_IMP
 -  Decodes the image in the allocated buffer.
 
 -  Waiting the end of decoding step before returning.
-
-
-Dependencies
-============
-
--  Image Renderer module (see :ref:`section_image_core`)
-
 
 .. _section_decoder_installation:
 

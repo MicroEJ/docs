@@ -165,6 +165,38 @@ SDK Distribution Changelog
 SDK Changelog
 -------------
 
+.. _changelog-5.8.1:
+
+[5.8.1] - 2023-09-19
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+- Fixed unreadable tooltip because of black text on black background for the VEE Ports and Architectures views.
+- Fixed wrong value for the example in the StackOverflow error message in the Memory Map Analyzer plugin.
+- Fixed Configuration tab content disappearing when navigating in Run Configurations.
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+General
+^^^^^^^
+
+- Remove legacy configuration fields for application project wizard (Application ID, Printable Name and Description).
+
+Build Types
+^^^^^^^^^^^
+
+- New build types added:
+
+  - None
+
+Skeletons
+^^^^^^^^^
+
+- Add section in README of the ``build-addon-processor`` skeleton to document how to override a generated source file.
+
 .. _changelog-5.8.0:
 
 [5.8.0] - 2023-07-03
@@ -1126,7 +1158,7 @@ Skeletons
 Build Types per SDK
 -------------------
 
-- SDK 5.8.0
+- SDK 5.8.0 and SDK 5.8.1
 
   - build-addon-processor#2.2.0
   - build-application#9.2.0

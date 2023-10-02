@@ -16,9 +16,9 @@ MicroVG Implementation
 
 **Added**
 
-* Add SystemView event logs (feature available with `CCO MicroVG 3.0.1`_).
+* Add SystemView event logs (feature available with `C Module MicroVG 3.0.1`_).
 
-.. _CCO MicroVG 3.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microvg/3.0.1/
+.. _C Module MicroVG 3.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microvg/3.0.1/
 
 **Changed**
 

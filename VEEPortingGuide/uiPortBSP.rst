@@ -41,7 +41,7 @@ Before all, install the MicroUI C Module:
    - ``LLUI_DISPLAY_HEAP_impl.c``: to use another image heap allocator,
    - ``LLUI_INPUT_LOG_impl.c`` and ``microui_event_decoder.c``: to decode the MicroUI event (input events and MicroUI internal events).
 
-5. Add the CCO's include folder to the BSP project's include directories list.
+5. Add the C Module's include folder to the BSP project's include directories list.
 
 LEDs
 ====

@@ -7,7 +7,7 @@ Image Renderer
 Principle
 =========
 
-The Image Renderer is an on-board engine that reads and draws the images (see :ref:`section_image_raw`).
+The Image Renderer is a module of the MicroUI runtime that reads and draws the images (see :ref:`section_image_raw`).
 It calls Abstraction Layer APIs to draw and transform the images (rotation, scaling, deformation, etc.).
 It also includes software algorithms to perform the rendering.
 
@@ -631,12 +631,6 @@ It is also possible to declare it programmatically (see where a drawer is regist
 .. code-block:: java
 
    LLUIDisplay.Instance.registerUIImageDrawer(new MyCustomImageDrawer());
-
-Dependencies
-============
-
--  MicroUI module (see :ref:`section_microui`),
--  Display module (see :ref:`section_display`).
 
 Installation
 ============
