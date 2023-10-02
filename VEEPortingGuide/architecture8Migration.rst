@@ -28,10 +28,10 @@ The code logic based on a ``malloc/free`` implementation does not need to be cha
    #include "LLKERNEL_impl.h"
 
    // Your implementation of malloc()
-   #define KERNEL_MALLOC(size) malloc((size_t)size)
+   #define KERNEL_MALLOC(size) malloc((size_t)(size))
 
    // Your implementation of free()
-   #define KERNEL_FREE(addr) free((void*)addr)
+   #define KERNEL_FREE(addr) free((void*)(addr))
 
    // Your implementation of 'ASSERT(0)'
    #define KERNEL_ASSERT_FAIL() while(1)
@@ -46,20 +46,20 @@ The code logic based on a ``malloc/free`` implementation does not need to be cha
    };
 
    int32_t LLKERNEL_IMPL_allocateFeature(int32_t size_ROM, int32_t size_RAM) {
+      int32_t ret = 0;
       int total_size = sizeof(struct installed_feature);
       total_size += KERNEL_AREA_GET_MAX_SIZE(size_ROM, LLKERNEL_ROM_AREA_ALIGNMENT);
       total_size += KERNEL_AREA_GET_MAX_SIZE(size_RAM, LLKERNEL_RAM_AREA_ALIGNMENT);
 
       void* total_area = KERNEL_MALLOC(total_size);
-      if(total_area == 0){
-         // Out of memory
-         return 0;
-      }
+      if(NULL != total_area){
+         struct installed_feature* f = (struct installed_feature*)total_area;
+         f->ROM_area = KERNEL_AREA_GET_START_ADDRESS((void*)(((int32_t)f)+((int32_t)sizeof(installed_feature_t))), LLKERNEL_ROM_AREA_ALIGNMENT);
+         f->RAM_area = KERNEL_AREA_GET_START_ADDRESS((void*)(((int32_t)f->ROM_area)+size_ROM), LLKERNEL_RAM_AREA_ALIGNMENT);
+         ret = (int32_t)f;
+      } // else out of memory
 
-      struct installed_feature* f = (struct installed_feature*)total_area;
-      f->ROM_area = KERNEL_AREA_GET_START_ADDRESS(f+sizeof(struct installed_feature), LLKERNEL_ROM_AREA_ALIGNMENT);
-      f->RAM_area = KERNEL_AREA_GET_START_ADDRESS(f->ROM_area+size_ROM, LLKERNEL_RAM_AREA_ALIGNMENT);
-      return (int32_t)f;
+      return ret
    }
 
    void LLKERNEL_IMPL_freeFeature(int32_t handle) {
@@ -73,6 +73,7 @@ The code logic based on a ``malloc/free`` implementation does not need to be cha
 
    int32_t LLKERNEL_IMPL_getFeatureHandle(int32_t allocation_index) {
       // No persistency support
+      (void)allocation_index; // parameter not used by this implementation
       KERNEL_ASSERT_FAIL();
    }
 
@@ -95,6 +96,8 @@ The code logic based on a ``malloc/free`` implementation does not need to be cha
 
    int32_t LLKERNEL_IMPL_onFeatureInitializationError(int32_t handle, int32_t error_code) {
       // No persistency support
+      (void)handle; // parameter not used by this implementation
+      (void)error_code; // parameter not used by this implementation
       KERNEL_ASSERT_FAIL();
       return 0;
    }
