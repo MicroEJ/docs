@@ -17,7 +17,7 @@ This chapter explains the different ways to create a new project.
 
       The creation of a project with Android Studio is done as follows:
       
-      - Click on ``File`` > ``New`` > ``Project...``.
+      - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
       - Select a simple project type, for example :guilabel:`Wear OS` > :guilabel:`No Activity`.
 
       .. figure:: images/android-studio-create-project-01.png
@@ -27,18 +27,18 @@ This chapter explains the different ways to create a new project.
       
          Project Creation in Android Studio
 
-      - Click on the ``Next`` button.
-      - Fill the name of the project in the ``Name`` field.
-      - Fill the package name of the project in the ``Package name`` field.
-      - Select the location of the project in the ``Save location`` field.
-      - Select the language ``Java`` in the ``Language`` field.
-      - Select ``Kotlin`` for the ``Build configuration language`` field.
+      - Click on the :guilabel:`Next` button.
+      - Fill the name of the project in the :guilabel:`Name` field.
+      - Fill the package name of the project in the :guilabel:`Package name` field.
+      - Select the location of the project in the :guilabel:`Save location` field.
+      - Select the language :guilabel:`Java` in the :guilabel:`Language` field.
+      - Select :guilabel:`Kotlin` for the :guilabel:`Build configuration language` field.
       
       .. note::
         MicroEJ uses Kotlin as the default Gradle build script DSL. 
         The use of the Groovy build script DSL is still possible but not officially supported.
       
-      - Click on ``Finish`` button.
+      - Click on :guilabel:`Finish` button.
       
       .. figure:: images/android-studio-create-project-02.png
          :alt: Project Creation in Android Studio
@@ -74,7 +74,7 @@ This chapter explains the different ways to create a new project.
          By default, Android Studio automatically save any file change, 
          but requires the user to explicitly trigger the reload of a Gradle project when its configuration has changed.
          Therefore, when the configuration of a Gradle project has been updated, 
-         you have to click on the ``Sync Now`` action which appears on the top-right of the editor:
+         you have to click on the :guilabel:`Sync Now` action which appears on the top-right of the editor:
 
          .. figure:: images/android-studio-reload-gradle-project.png
             :alt: Gradle Project reload in Android Studio
@@ -91,19 +91,19 @@ This chapter explains the different ways to create a new project.
 
       The creation of a project with IntelliJ IDEA is done as follows:
       
-      - Click on ``File`` > ``New`` > ``Project...``.
-      - Fill the name of the project in the ``Name`` field.
-      - Select the location of the project in the ``Location`` field.
-      - Select the language ``Java`` in the ``Language`` field.
-      - Select ``Gradle`` for the ``Build system`` field.
-      - Select build script DSL ``Kotlin``.
+      - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
+      - Fill the name of the project in the :guilabel:`Name` field.
+      - Select the location of the project in the :guilabel:`Location` field.
+      - Select the language :guilabel:`Java` in the :guilabel:`Language` field.
+      - Select :guilabel:`Gradle` for the :guilabel:`Build system` field.
+      - Select build script DSL :guilabel:`Kotlin`.
       
       .. note::
         MicroEJ uses Kotlin as the default Gradle build script DSL. 
         The use of the Groovy build script DSL is still possible but not officially supported.
       
-      - Check the ``Add sample code`` checkbox.
-      - Click on ``Create`` button.
+      - Check the :guilabel:`Add sample code` checkbox.
+      - Click on :guilabel:`Create` button.
       
       .. figure:: images/intellij-create-gradle-project.png
          :alt: Project Creation in IntelliJ IDEA
@@ -169,8 +169,8 @@ This chapter explains the different ways to create a new project.
 
       The creation of a project with Eclipse is done as follows:
       
-      - Click on ``File`` > ``New`` > ``Project...``.
-      - Select the project type ``Gradle > Gradle Project`` and click on the ``Next`` button.
+      - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
+      - Select the project type :guilabel:`Gradle` > :guilabel:`Gradle Project` and click on the :guilabel:`Next` button.
       
       .. figure:: images/eclipse-create-gradle-project-01.png
         :alt: Project Type Selection in Eclipse
@@ -179,7 +179,7 @@ This chapter explains the different ways to create a new project.
       
         Project Type Selection in Eclipse
       
-      - Fill the name of the project in the ``Name`` field, for example ``myProject``, and click on the ``Next`` button.
+      - Fill the name of the project in the :guilabel:`Name` field, for example ``myProject``, and click on the :guilabel:`Next` button.
       
       .. figure:: images/eclipse-create-gradle-project-02.png
         :alt: Project root folder in Eclipse
@@ -188,8 +188,8 @@ This chapter explains the different ways to create a new project.
       
         Project root folder in Eclipse
       
-      - In the ``Options`` screen, leave the default values and click on the ``Next`` button.
-      - Click on the ``Next`` button and finally on the ``Finish`` button.
+      - In the :guilabel:`Options` screen, leave the default values and click on the :guilabel:`Next` button.
+      - Click on the :guilabel:`Next` button and finally on the :guilabel:`Finish` button.
       
       The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensure that the project uses the right version :
       
@@ -244,7 +244,7 @@ This chapter explains the different ways to create a new project.
       .. note::
          By default, Eclipse requires the user to explicitly trigger the reload of a Gradle project when its content has changed.
          Therefore, when the content of a Gradle project has been updated, 
-         you have to right-click on the project, then click on ``Gradle`` and ``Refresh Gradle Project``:
+         you have to right-click on the project, then click on :guilabel:`Gradle` and :guilabel:`Refresh Gradle Project`:
       
          .. figure:: images/eclipse-reload-gradle-project.png
             :alt: Gradle Project reload in Eclipse
