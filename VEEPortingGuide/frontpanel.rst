@@ -98,20 +98,48 @@ The Front Panel project is a regular MicroEJ Module project. Its ``module.ivy`` 
       </configurations>
 
       <dependencies>
-         <dependency org="ej.tool.frontpanel" name="widget" rev="1.0.0"/>
+         
+            <!-- 
+            
+               Fetch the dependencies according to the VEE Port configuration. Choose one of these 
+               options:
+               
+               - VEE Port without UI extension (MicroEJ Architecture only, no UI Pack): fetch only 
+               the Front Panel Framwork to create your own widgets:
+               
+                  <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
+                  
+               - VEE Port with UI extension (UI Pack): fetch only the UI widgets (the Front Panel
+               Framework is fetched by transitivity) to use the widgets compatible with the UI
+               Pack (refer to the documentation for the latest version of widgets and the relationship 
+               between the widget version and the UI Pack version):
+               
+                  <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
+               
+               - VEE Port with UI extension (UI Pack) and interactions with the UI Pack (use the 
+               UI Pack Low-Level APU (LLAPI) to implement some custom drawings): fetch the UI
+               widgets (the Front Panel Framework is fetched by transitivity) and the UI Pack
+               LLAPI extension. Use the same UI Pack version than the UI Pack fectched in the
+               VEE Port configuration project. Refer to the documentation for the relationship 
+               between the widget versions and the UI Pack version:
+               
+                  <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
+                  <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
+                     <artifact name="frontpanel" type="jar"/>
+                  </dependency>
+            
+            -->
+        		
+    	   <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
+
       </dependencies>
+
    </ivy-module>
 
-The dependency `ej.tool.frontpanel#widget`_ is only useful for MicroUI application (see :ref:`section_ui_simulation`). The dependencies block must be manually updated to depend only on the `Front Panel framework`_. This framework contains the Front Panel core classes:
+The `Front Panel framework`_ contains the Front Panel core classes and does not provide any widgets. 
+Widgets have to be added to simulate user interactions. 
 
-.. code-block:: xml
-   :emphasize-lines: 2
-
-   <dependencies>
-      <dependency org="ej.tool.frontpanel" name="framework" rev="1.0.0"/>
-   </dependencies>
-
-The `Front Panel framework`_ does not provide any widgets. Widgets have to be added to simulate user interactions. 
+.. note:: The dependency `ej.tool.frontpanel#widget`_ is only useful for MicroUI application (see :ref:`section_ui_simulation`).
 
 .. _ej.tool.frontpanel#widget: https://repository.microej.com/modules/ej/tool/frontpanel/widget/
 .. _Front Panel framework: https://repository.microej.com/modules/ej/tool/frontpanel/framework/

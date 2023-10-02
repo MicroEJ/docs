@@ -35,20 +35,49 @@ The Front Panel project is a regular MicroEJ Module project. Its module.ivy file
       </configurations>
 
       <dependencies>
-         <dependency org="ej.tool.frontpanel" name="widget" rev="1.0.0"/>
+         
+            <!-- 
+            
+               Fetch the dependencies according to the VEE Port configuration. Choose one of these 
+               options:
+               
+               - VEE Port without UI extension (MicroEJ Architecture only, no UI Pack): fetch only 
+               the Front Panel Framwork to create your own widgets:
+               
+                  <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
+                  
+               - VEE Port with UI extension (UI Pack): fetch only the UI widgets (the Front Panel
+               Framework is fetched by transitivity) to use the widgets compatible with the UI
+               Pack (refer to the documentation for the latest version of widgets and the relationship 
+               between the widget version and the UI Pack version):
+               
+                  <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
+               
+               - VEE Port with UI extension (UI Pack) and interactions with the UI Pack (use the 
+               UI Pack Low-Level APU (LLAPI) to implement some custom drawings): fetch the UI
+               widgets (the Front Panel Framework is fetched by transitivity) and the UI Pack
+               LLAPI extension. Use the same UI Pack version than the UI Pack fectched in the
+               VEE Port configuration project. Refer to the documentation for the relationship 
+               between the widget versions and the UI Pack version:
+               
+                  <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
+                  <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
+                     <artifact name="frontpanel" type="jar"/>
+                  </dependency>
+            
+            -->
+        		
+    	   <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
+
       </dependencies>
    </ivy-module>
 
 
-It depends at least on the Front Panel framework. This framework contains the Front Panel core classes. The dependencies can be reduced to:
+By default, the project depends on the Front Panel framework which only contains the Front Panel core classes. 
 
-.. code-block:: xml
-
-   <dependencies>
-      <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.0"/>
-   </dependencies>
-
-To be compatible with Display module's Graphics Engine, the project must depend on an extension of Front Panel framework. This extension provides some interfaces and classes the Front Panel is using to target simulated display and input devices. The extension does not provide any widgets. It is the equivalent of the embedded Abstraction Layer APIs. It fetches by transitivity the Front Panel framework, so the Front Panel framework dependency does not need to be specified explicitly: 
+To be compatible with Display module's Graphics Engine, the project must depend on an extension of Front Panel framework. 
+This extension provides some interfaces and classes the Front Panel is using to target simulated display and input devices (yt is the equivalent of the embedded Abstraction Layer APIs). 
+It fetches by transitivity the Front Panel framework, so the Front Panel framework dependency does not need to be specified explicitly: 
 
 .. code-block:: xml
 
@@ -60,15 +89,19 @@ To be compatible with Display module's Graphics Engine, the project must depend 
 
 .. warning:: This extension is built for each UI pack version. By consequence, a Front Panel project is done for a VEE Port built with the same UI pack. When the UI pack mismatch, some errors may occur during the Front Panel project export step, during the VEE Port build, and/or during the application runtime. The current pack version is |UIPACKVERSION|.
 
-The Front Panel extension does not provide any widgets. Some compatible widgets are available in a third library. The life cycle of this library is different than the UI pack's one. New widgets can be added to simulate new kind of displays, input devices, etc. This extension fetches by transitivity the Front Panel extension, so this extension dependency does not need to be specified explicitly: 
+The Front Panel extension does not provide any widgets. 
+Some widgets compatible with the Graphics Engine are available in a third library. 
+The life cycle of this library is different than the UI pack's one, see :ref:`section_ui_releasenotes_frontpanel`. 
+New widgets can be added to simulate new kind of displays, input devices, etc. 
 
 .. code-block:: xml
 
    <dependencies>
-      <dependency org="ej.tool.frontpanel" name="widget" rev="2.0.0"/>
+      <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
+         <artifact name="frontpanel" type="jar"/>
+      </dependency>
+      <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
    </dependencies>
-
-.. warning:: The minimal version ``2.0.0`` is required to be compatible with UI pack 13.0.0 and higher. By default, when creating a new Front Panel project, the widget dependency version is ``1.0.0``.
 
 Source code for widgets is available by expanding the library from the project view.
 
@@ -77,6 +110,16 @@ Source code for widgets is available by expanding the library from the project v
    :align: center
 
    Front Panel Widgets
+
+The widget module fetches by transitivity the Front Panel extension, so this extension dependency does not need to be specified explicitly if the Front Panel project does not require explicitly the LLAPI of the latest UI Pack.
+In this case, the dependencies can be simplified:
+
+.. code-block:: xml
+
+   <dependencies>
+      <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
+   </dependencies>
+
 
 MicroUI Implementation
 ======================
