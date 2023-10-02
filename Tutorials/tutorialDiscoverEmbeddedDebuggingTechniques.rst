@@ -30,7 +30,7 @@ Please refer to the developer guides for the complete reference (:ref:`applicati
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.events_tracing_and_logging`
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.runtime_state_dump`
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.memory_inspection`
-- :ref:`tutorial_discover_embedded_debugging_techniques.tools.platform_qualification`
+- :ref:`tutorial_discover_embedded_debugging_techniques.tools.veeport_qualification`
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.simulator_debugger`
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.static_analysis_tools`
 - :ref:`tutorial_discover_embedded_debugging_techniques.tools.gui_debugging_tools`
@@ -221,7 +221,7 @@ Memory issues such as memory corruption and memory leaks can be hard to troubles
       :align: center
       :scale: 75
 
-.. _tutorial_discover_embedded_debugging_techniques.tools.platform_qualification:
+.. _tutorial_discover_embedded_debugging_techniques.tools.veeport_qualification:
 
 Platform Qualification
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -231,13 +231,13 @@ After porting or adding a feature to a MicroEJ Platform, it is necessary to vali
 
 The project is available on GitHub: https://github.com/MicroEJ/VEEPortQualificationTools
 
-.. figure:: ../VEEPortingGuide/images/overview-platform-qualification.png
+.. figure:: ../VEEPortingGuide/images/qualification-overview.png
    :align: center
    :scale: 80%
 
    Platform Qualification Overview
 
-Please refer to the :ref:`platform_qualification` documentation for more information.
+Please refer to the :ref:`veeport_qualification` documentation for more information.
 
 
 .. _tutorial_discover_embedded_debugging_techniques.tools.simulator_debugger:

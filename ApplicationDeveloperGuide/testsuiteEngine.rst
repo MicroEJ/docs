@@ -26,7 +26,7 @@ test suites on a MicroEJ Platform (either on Simulator or on Device).
 - For Application and Libraries, refer to :ref:`application_testsuite`
   section.
 - For Foundation Libraries Test Suites, refer to
-  :ref:`platform_testsuite` section.
+  :ref:`vee_port_testsuite` section.
 
 Using the MicroEJ Test Suite Ant Tasks
 --------------------------------------
