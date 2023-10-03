@@ -45,8 +45,8 @@ Or simply because of the ``RenderPolicy`` used.
 
 MWT provides a way to inject a monitor for the following render operations:
 
-* Render requests done by the Application
-* Successive render executions triggered by the ``RenderPolicy``
+* Render requests done by the Application.
+* Successive render executions triggered by the ``RenderPolicy``.
 
 Setting the ``ej.mwt.debug.render.enabled`` constant to ``true`` will enable the monitoring of above render operations.
 For more information about the monitoring mechanism, see `RenderPolicy Javadoc <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/render/RenderPolicy.html>`_.
