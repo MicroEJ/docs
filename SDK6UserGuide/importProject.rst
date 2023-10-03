@@ -20,16 +20,29 @@ This chapter explains how to import a project in an IDE.
 
       In order to import an existing Gradle project in IntelliJ IDEA, follow the following steps:
       
-      - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
+      - If you are in the Welcome Screen, click on the :guilabel:`Open` button. 
+        Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
       - Select the root directory of the project and click on the :guilabel:`OK` button.
-      - Select :guilabel:`Import project from external model` and choose :guilabel:`Gradle`. 
+      - If you are asked to choose a project model, select :guilabel:`Gradle`. 
+
+      .. list-table:: 
+         :width: 100%
+
+         * - .. figure:: images/intellij-import-gradle-project-01.png
+                :alt: Project Model Selection when Opening in IntelliJ IDEA
+                :align: center
+                :scale: 70%
+
+                Fig 1. Project Model Selection when Opening in IntelliJ IDEA
+
+           - .. figure:: images/intellij-import-gradle-project-02.png
+                :alt: Project Model Selection when Importing in IntelliJ IDEA 
+                :align: center
+                :scale: 50%
+
+                Fig 2. Project Model Selection when Importing in IntelliJ IDEA
+
       
-      .. figure:: images/intellij-import-gradle-project-01.png
-         :alt: Project Import in IntelliJ IDEA
-         :align: center
-         :scale: 70%
-      
-         Project Import in IntelliJ IDEA
       
       - Click on the :guilabel:`Create` button.
       
