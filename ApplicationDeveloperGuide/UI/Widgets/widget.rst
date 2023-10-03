@@ -71,9 +71,9 @@ The `LightHelper`_ proposes several primitives concerning the luminance of the c
 The luminance of a color is computed from the luminance and the quantity of each of its components.
 The green being the brighter, then the red and finally the blue.
 
-.. _ColorHelper: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/color/ColorHelper.html
-.. _GradientHelper: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/color/GradientHelper.html
-.. _LightHelper: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/color/LightHelper.html
+.. _ColorHelper: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/color/ColorHelper.html
+.. _GradientHelper: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/color/GradientHelper.html
+.. _LightHelper: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/color/LightHelper.html
 
 .. _widget_library_debug_utilities:
 
@@ -102,7 +102,7 @@ For example:
     |  |  +--Label
     |  +--Label
 
-.. _HierarchyInspector.hierarchyToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#hierarchyToString-ej.mwt.Widget-
+.. _HierarchyInspector.hierarchyToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#hierarchyToString-ej.mwt.Widget-
   
 Print the Path to a Widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -115,8 +115,8 @@ It may be used to identify a widget in a trace.
 It is also possible to choose the separator by using `HierarchyInspector.pathToWidgetToString(Widget, char)`_ method.
 For example: ``Desktop ; Scroll ; ScrollableList ; Label``.
 
-.. _HierarchyInspector.pathToWidgetToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#pathToWidgetToString-ej.mwt.Widget-
-.. _HierarchyInspector.pathToWidgetToString(Widget, char): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#pathToWidgetToString-ej.mwt.Widget-char-
+.. _HierarchyInspector.pathToWidgetToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#pathToWidgetToString-ej.mwt.Widget-
+.. _HierarchyInspector.pathToWidgetToString(Widget, char): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#pathToWidgetToString-ej.mwt.Widget-char-
 
 Count the Number of Widgets or Containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -125,8 +125,8 @@ The methods `HierarchyInspector.countNumberOfWidgets(Widget)`_ and `HierarchyIns
 
 It may be used to evaluate the complexity of a hierarchy of widgets.
 
-.. _HierarchyInspector.countNumberOfWidgets(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#countNumberOfWidgets-ej.mwt.Widget-
-.. _HierarchyInspector.countNumberOfContainers(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#countNumberOfContainers-ej.mwt.Widget-
+.. _HierarchyInspector.countNumberOfWidgets(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#countNumberOfWidgets-ej.mwt.Widget-
+.. _HierarchyInspector.countNumberOfContainers(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#countNumberOfContainers-ej.mwt.Widget-
 
 Count the Maximum Depth of a Hierarchy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -136,7 +136,7 @@ In other words, the depth of the widget with the biggest number of parents recur
 
 It may be used to evaluate the complexity of a hierarchy of widgets.
 
-.. _HierarchyInspector.countMaxDepth(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/HierarchyInspector.html#countMaxDepth-ej.mwt.Widget-
+.. _HierarchyInspector.countMaxDepth(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/HierarchyInspector.html#countMaxDepth-ej.mwt.Widget-
 
 Print the Bounds of a Widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -151,7 +151,7 @@ The returned String contains:
 
 For example: ``Label: 0,0 7x25 (absolute: 75,75)``
 
-.. _BoundsInspector.boundsToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/BoundsInspector.html#boundsToString-ej.mwt.Widget-
+.. _BoundsInspector.boundsToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/BoundsInspector.html#boundsToString-ej.mwt.Widget-
 
 Print the bounds of all the widgets in a hierarchy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -171,7 +171,7 @@ For example:
     |  +--Label: 0,100 480x50 (absolute: 0,100)
   
 
-.. _BoundsInspector.boundsRecursiveToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/util/debug/BoundsInspector.html#boundsRecursiveToString-ej.mwt.Widget-
+.. _BoundsInspector.boundsRecursiveToString(Widget): https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/debug/BoundsInspector.html#boundsRecursiveToString-ej.mwt.Widget-
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
