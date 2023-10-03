@@ -58,7 +58,7 @@ This chapter explains the different ways to create a new project.
       
       If you want to know more about the Gradle Wrapper, go to the :ref:`sdk_6_create_project_gradle_wrapper` section.
         
-      The project created by Android Studio is a standard Java project (Gradle ``java`` plugin). 
+      The project created by Android Studio is an Android project (Gradle ``com.android.application`` plugin). 
       The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
       
       - Open the ``build.gradle.kts`` file.
