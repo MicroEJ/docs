@@ -64,7 +64,7 @@ Here is an example of a ``xxx.constants.list`` file with the result in an applic
 .. code-block::
 
 	ej.mwt.debug.render.enabled=true
-
+	ej.mwt.debug.render.monitor=ej.widget.debug.RenderMonitor
 
 .. figure:: images/renderWidgetBefore.png
 	:alt: Demo-Widget's Radio Button page with "Money" selected
