@@ -197,7 +197,9 @@ its associated stack is reclaimed, freeing the corresponding RAM memory.
 
 	This protocol raises the priority of a thread that is holding a monitor needed by a higher-priority thread,
 	to the priority of that higher-priority thread (until exiting the monitor).
-	
+
+.. _runtime_gc: 
+
 Garbage Collector
 -----------------
 
@@ -206,6 +208,8 @@ system, the Garbage Collector (GC). It manages a bounded piece of RAM
 memory, devoted to the Java world. The GC automatically frees dead Java
 objects, and defragments the memory in order to optimize RAM usage. This
 is done transparently while the Application keep running.
+
+See also :ref:`Garbage Collector options <options_gc>` for more details.
 
 .. _java_limitations:
 
