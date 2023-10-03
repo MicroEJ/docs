@@ -65,6 +65,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.loadKernel`
 - :ref:`sdk6_module_natures.tasks.loadFeatureConfiguration`
 - :ref:`sdk6_module_natures.tasks.buildFeature`
+- :ref:`sdk6_module_natures.tasks.runOnDevice`
 
 .. graphviz:: graphApplicationModule.dot
 
@@ -143,7 +144,7 @@ This task provides the following property that can be defined in the ``microej``
    * - Name
      - Description
      - Default    
-   * - ``veePortPaths``
+   * - ``veePortPath``
      - Path of the VEE Port file or the root folder of the VEE Port to use in the build.
      - Not set
 
@@ -152,7 +153,7 @@ For example:
 .. code::
 
   microej {
-    veePortPaths = listOf("C:\\path\\to\\my\\veePort\\source")
+    veePortPath = "C:\\path\\to\\my\\veePort\\source"
   }
 
 .. _sdk6_module_natures.tasks.loadApplicationConfiguration:
@@ -341,7 +342,7 @@ This task provides the following property that can be defined in the ``microej``
    * - Name
      - Description
      - Default    
-   * - ``kernelFiles``
+   * - ``kernelFile``
      - Path of the Kernel to use in the build. 
      - Not set
 
@@ -350,7 +351,7 @@ For example:
 .. code::
 
   microej {
-    kernelFiles = listOf("C:\\path\\to\\my\\kernel")
+    kernelFile = "C:\\path\\to\\my\\kernel"
   }
 
 .. _sdk6_module_natures.tasks.loadFeatureConfiguration:
@@ -372,6 +373,19 @@ buildFeature
 ^^^^^^^^^^^^
 
 **Description**: Build the Feature file of an Application.
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
+
+.. _sdk6_module_natures.tasks.runOnDevice:
+
+runOnDevice
+^^^^^^^^^^^^
+
+**Description**: Runs the Executable on a Device.
 
 **Module Natures**:
 
