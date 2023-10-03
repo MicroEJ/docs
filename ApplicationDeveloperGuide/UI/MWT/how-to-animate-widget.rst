@@ -50,7 +50,7 @@ Performing an animation step
 ----------------------------
 
 The `tick()`_ method is called by the animator in order to update the widget. It is called in the UI thread once the display has been flushed.
-This method should not render the widget but should update its state and request a new render if necessary.
+This method should not render the widget but should update its state and request a new render.
 The `tick()`_ method should return whether or not the animation should continue after this increment.
 
 For example, the following snippet updates the state of the widget when it is ticked, requests a new render and keeps the animation going until 5 seconds have passed:
@@ -80,6 +80,8 @@ For example, the following snippet renders the current state of the widget by di
 		g.setColor(style.getColor());
 		Painter.drawString(g, Long.toString(this.elapsedTime), style.getFont(), 0, 0);
 	}
+
+.. note:: Since an animator ticks its animations as often as possible, the animator may take 100% CPU usage if none of its animations requests a render. For more information on how to debug animators, see the :ref:`How to Debug Animators <section_monitoring_animators>` section.
 
 .. _tick(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animation.html#tick-long-
 .. _renderContent(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#renderContent-ej.microui.display.GraphicsContext-int-int-
