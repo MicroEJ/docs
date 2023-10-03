@@ -175,9 +175,9 @@ In IAR Embedded Workbench:
 
       IAR Breakpoint editor
 
-When the IAR Debugger hits the specified breakpoint, the ``dumpMemories()`` macro function is executed and the memory is dumped into ``*.ihex`` files.
+When the IAR Debugger hits the specified breakpoint, the ``dumpMemories()`` macro function is executed and the memory is dumped into ``*.hex`` files.
 
-The ``*.ihex`` files are generated in the same directory as the ``vee-memory-dump.mac`` file.
+The hex files are generated in the same directory as the ``vee-memory-dump.mac`` file.
 
 With GNU Debugger (GDB)
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -199,7 +199,7 @@ In your GDB console:
     # E.g. Run the GDB memory dump script
     source [/path/to]/vee-memory-dump.gdb
 
-The memory is dumped into ``*.ihex`` files in the same directory as the ``vee-memory-dump.gdb`` file.
+The memory is dumped into ``*.hex`` files in the same directory as the ``vee-memory-dump.gdb`` file.
 
 Start the VEE Debugger Proxy
 ----------------------------
@@ -218,27 +218,35 @@ Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` t
 
 .. note:: 
 
-    If you have multiple  ``*.ihex`` files generated in the previous step, you can if you want merge them into a single ``*.ihex`` file.
+    If you have multiple hex files generated in the previous step, you can if you want merge them into a single hex file.
 
-    It will be easier to use a single ``*.ihex`` file than multiple files in the Debugger Proxy command line.
+    It will be easier to use a single hex file than multiple files in the Debugger Proxy command line.
 
-    You can run the following shell commands to merge all the ``*.ihex`` files into a single file called ``all.ihex`` for example:
+    You can run the following shell script to merge all the hex files into a single file called ``all.hex`` for example.
 
-    - On Windows workstation:
+    Make sure to move to the directory where hex files are generated before running the script.
+
+    - On Windows workstation
   
-    .. code-block:: sh
+    .. code-block:: batch
+        set ALL_HEX="all.hex"
+        rem delete all.hex file if it exists
+        if exist "%ALL_HEX%" (del /f %ALL_HEX%)
+        rem merge all the *.hex files
+        copy /b *.hex %ALL_HEX%
 
-       cd [path/to/output/ihex/directory]
-       copy *.ihex all.ihex
-
-    - On Linux workstation:
+    - On Linux workstation
   
-    .. code-block:: sh
+    .. code-block:: bash
 
-       cd [path/to/output/ihex/directory]
-       cat *.ihex all.ihex
+        #!/usr/bin/bash
+        ALL_HEX="all.hex"
+        #delete all.hex file if it exists
+        test -f $ALL_HEX && rm $ALL_HEX
+        #merge all the *.hex files
+        cat *.hex > $ALL_HEX
 
-    Now, use this single ``all.ihex`` file as value to the Debugger Proxy option ``-Ddebugger.out.ihex.path``
+    Now, use this single ``all.hex`` file as value to the Debugger Proxy option ``-Ddebugger.out.ihex.path``
 
 VEE Debugger Proxy Options Summary
 ==================================
@@ -248,7 +256,7 @@ VEE Debugger Proxy Options Summary
 * **debugger.out.path**: The Path to the Executable file (``application.out``).
 * **debugger.out.coredump.path**: The Path to the core dump file (conflict with **debugger.out.ihex.path** option).
 * **debugger.out.ihex.path**: The Path to the memory dump files in Intel hex format (conflict with **debugger.out.coredump.path** option).
-  If you have multiple Intel hex files, you can either merge them into a single file or list them with a comma separator, such as ``[/path/to]/java_heap.ihex,[/path/to]/java_stacks.ihex,[/path/to]/vm_instance.ihex``.
+  If you have multiple Intel hex files, you can either merge them into a single file or list them with a comma separator, such as ``[/path/to]/java_heap.hex,[/path/to]/java_stacks.hex,[/path/to]/vm_instance.hex``.
 
 Troubleshooting
 ===============
