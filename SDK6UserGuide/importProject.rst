@@ -11,10 +11,18 @@ This chapter explains how to import a project in an IDE.
 
       In order to import an existing Gradle project in Android Studio, follow the following steps:
       
-      - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Import Project...`.
+      - If you are in the Welcome Screen, click on the :guilabel:`Open` button. 
+        Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`Import Project...`.
       - Select the root directory of the project and click on the :guilabel:`OK` button.
+
+      .. figure:: images/android-studio-import-project.png
+         :alt: Project Import in Android Studio
+         :align: center
+         :scale: 70%
       
-      The Gradle project should now be imported in Android Studio.
+         Project Import in Android Studio
+      
+      The Gradle project should now be opened in Android Studio.
 
    .. tab:: IntelliJ IDEA
 
@@ -23,6 +31,14 @@ This chapter explains how to import a project in an IDE.
       - If you are in the Welcome Screen, click on the :guilabel:`Open` button. 
         Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
       - Select the root directory of the project and click on the :guilabel:`OK` button.
+
+      .. figure:: images/intellij-import-project.png
+         :alt: Project Import in IntelliJ IDEA
+         :align: center
+         :scale: 70%
+      
+         Project Import in IntelliJ IDEA
+
       - If you are asked to choose a project model, select :guilabel:`Gradle`. 
 
       .. raw:: html
@@ -53,7 +69,7 @@ This chapter explains how to import a project in an IDE.
 
       - Click on the :guilabel:`Create` button.
 
-      The Gradle project should now be imported in IntelliJ IDEA.
+      The Gradle project should now be opened in IntelliJ IDEA.
       
       .. note::
          A message ``Project JDK is not defined`` is displayed at the top of the editor.
@@ -92,7 +108,7 @@ This chapter explains how to import a project in an IDE.
       
       - Click on the :guilabel:`Next` button and finally on the :guilabel:`Finish` button.
       
-      The Gradle project should now be imported in Eclipse.
+      The Gradle project should now be opened in Eclipse.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
