@@ -918,10 +918,11 @@ Platform and/or Application options can be passed to Platform BSP through link t
 
 - Create a Platform init script folder inside your :ref:`platformCustomization` part (e.g: ``[platform]-configuration/dropins/scripts/init-[my_option]``)
 - Create a Platform init script file and put it inside (e.g: ``[platform]-configuration/dropins/scripts/init-[my_option]/init-[my_option].xml`` file). 
-	Here is a Platform init script file template: 
+  Here is a Platform init script file template: 
 
   .. code-block:: xml
-	<project name="[my_option]-init">
+	
+   <project name="[my_option]-init">
 		<target name="init/execution/[my_option]" extensionOf="init/execution" if="onBoard">
 			<!-- Set option default value -->
 			<property name="[my_option].value" value="0"/>
@@ -953,8 +954,8 @@ Platform and/or Application options can be passed to Platform BSP through link t
  	
   .. code-block:: c
   
-  extern int _[my_option]_config;
-  const volatile uint32_t [my_option]_value = ((uint32_t)(&_[my_option]_value));
+   extern int _[my_option]_config;
+   const volatile uint32_t [my_option]_value = ((uint32_t)(&_[my_option]_value));
   
 .. note:: ``[my_option]`` has to be replaced by the name of your choice with alphanumeric characters and without spaces. 
 
