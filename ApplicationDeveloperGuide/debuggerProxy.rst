@@ -24,7 +24,7 @@ The debugger proxy allows a postmortem debug from a snapshot of the memory (core
     Otherwise, the Core Engine memory dump is not guarranted to be consistent, which may cause the VEE Debugger to crash abruptly. 
 
 .. note::
-    This feature requires Architecture version ``8.1.0`` or higher and only works for Mono-Sandbox Executable.
+    This feature requires Architecture version ``8.1.0`` or higher and works for both Mono-Sandbox and Multi-Sandbox Executables.
     
     Please contact :ref:`our support team <get_support>` to get the VEE Debugger Proxy tool ``microej-debugger-proxy.jar`` compatible with your Architecture version.
 
@@ -107,6 +107,7 @@ Open a shell terminal on your workstation and run the following command:
     java -DveePortDir=<path to VEE Port directory> \
         -Ddebugger.port=<8000> \
         -Ddebugger.out.path=<path to the Executable file (application.out)> \
+        -Ddebugger.features.out.path=<comma-separated list of the Feature files with debug information (*.fodbg files). To be used if you want to debug an installed Sandboxed Application> \
         -Ddebugger.out.coredump.path=<path to the core dump file> \
         -jar microej-debugger-proxy.jar
 
@@ -211,6 +212,7 @@ Open a shell terminal on your workstation and run the following command:
     java -DveePortDir=<path to VEE Port directory> \
         -Ddebugger.port=<8000> \
         -Ddebugger.out.path=<path to the Executable file (application.out)> \
+        -Ddebugger.features.out.path=<comma-separated list of the Feature files with debug information (*.fodbg files). To be used if you want to debug an installed Sandboxed Application> \
         -Ddebugger.out.ihex.path=<comma-separated list of the memory dump files in Intel hex format or a single file containg all the dumped memory> \
         -jar microej-debugger-proxy.jar
 
@@ -253,7 +255,8 @@ VEE Debugger Proxy Options Summary
 
 * **veePortDir**: The path to the VEE Port directory (must point to the `source` folder of the VEE Port.).
 * **debugger.port**: The TCP server port, defaults to ``8000``.
-* **debugger.out.path**: The Path to the Executable file (``application.out``).
+* **debugger.out.path**: The Path to the Executable file to debug (``application.out``).
+* **debugger.features.out.path**: comma-separated list of the Feature files with debug information (``*.fodbg files``). This option must be used if you want to debug an installed Sandboxed Application. In this case, note that the specified Executable in ``debugger.out.path`` option must be the Multi-Sandbox Executable.
 * **debugger.out.coredump.path**: The Path to the core dump file (conflict with **debugger.out.ihex.path** option).
 * **debugger.out.ihex.path**: The Path to the memory dump files in Intel hex format (conflict with **debugger.out.coredump.path** option).
   If you have multiple Intel hex files, you can either merge them into a single file or list them with a comma separator, such as ``[/path/to]/java_heap.hex,[/path/to]/java_stacks.hex,[/path/to]/vm_instance.hex``.
