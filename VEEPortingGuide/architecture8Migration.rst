@@ -73,7 +73,6 @@ The code logic based on a ``malloc/free`` implementation does not need to be cha
 
    int32_t LLKERNEL_IMPL_getFeatureHandle(int32_t allocation_index) {
       // No persistency support
-      (void)allocation_index; // parameter not used by this implementation
       KERNEL_ASSERT_FAIL();
    }
 
@@ -96,8 +95,6 @@ The code logic based on a ``malloc/free`` implementation does not need to be cha
 
    int32_t LLKERNEL_IMPL_onFeatureInitializationError(int32_t handle, int32_t error_code) {
       // No persistency support
-      (void)handle; // parameter not used by this implementation
-      (void)error_code; // parameter not used by this implementation
       KERNEL_ASSERT_FAIL();
       return 0;
    }
