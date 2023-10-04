@@ -25,27 +25,34 @@ This chapter explains how to import a project in an IDE.
       - Select the root directory of the project and click on the :guilabel:`OK` button.
       - If you are asked to choose a project model, select :guilabel:`Gradle`. 
 
-      .. list-table:: 
-         :width: 100%
+      .. raw:: html
 
-         * - .. figure:: images/intellij-import-gradle-project-01.png
-                :alt: Project Model Selection when Opening in IntelliJ IDEA
-                :align: center
-                :scale: 70%
+         <div style="display:block;margin-bottom:24px;">
+            <table>
+               <tr>
+                  <td style="width:50%;text-align:center;vertical-align:middle;" alt="Project Model Selection when Opening in IntelliJ IDEA">
+                     <img src="../_images/intellij-import-gradle-project-01.png">
+                  </td>
+                  <td style="width:50%;text-align:center;vertical-align:middle;" alt="Project Model Selection when Importing in IntelliJ IDEA">
+                     <img src="../_images/intellij-import-gradle-project-02.png">
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
+                     Fig 1. Project Model Selection when Opening in IntelliJ IDEA
+                  </td>
+                  <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
+                     Fig 2. Project Model Selection when Importing in IntelliJ IDEA
+                  </td>
+               </tr>
+            </table>
+         </div>
 
-                Fig 1. Project Model Selection when Opening in IntelliJ IDEA
+      .. |image1| image:: images/intellij-import-gradle-project-01.png
+      .. |image2| image:: images/intellij-import-gradle-project-02.png
 
-           - .. figure:: images/intellij-import-gradle-project-02.png
-                :alt: Project Model Selection when Importing in IntelliJ IDEA 
-                :align: center
-                :scale: 50%
-
-                Fig 2. Project Model Selection when Importing in IntelliJ IDEA
-
-      
-      
       - Click on the :guilabel:`Create` button.
-      
+
       The Gradle project should now be imported in IntelliJ IDEA.
       
       .. note::
