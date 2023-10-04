@@ -6,6 +6,29 @@
 Migration Guide
 ===============
 
+From 13.6.x to 13.7.x
+=====================
+
+Front Panel
+"""""""""""
+
+* Set the explicit dependency to the `UI Pack 13.7.0`_:
+
+  .. code-block:: xml
+
+	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.7.0">
+		<artifact name="frontpanel" type="jar"/>
+	 </dependency>
+
+.. _UI Pack 13.7.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.7.0/
+
+BSP with VG-Lite
+""""""""""""""""
+
+* *[VEE Port configuration project]*
+
+	* Fetch C Module MicroUI-VGLite 6.1.1.
+
 From 13.5.x to 13.6.x
 =====================
 
