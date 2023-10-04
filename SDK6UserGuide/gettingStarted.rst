@@ -3,7 +3,7 @@
 Getting Started with MicroEJ SDK 6 on i.MX RT595 EVK
 ====================================================
 
-**TODO: Explain the goal of the getting started.**
+During this Getting Started, you will learn to run an application in the Virtual Device and on the Device using the MicroEJ SDK 6.
 
 Requirements
 ------------
