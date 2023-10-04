@@ -342,8 +342,8 @@ This task provides the following property that can be defined in the ``microej``
    * - Name
      - Description
      - Default    
-   * - ``kernelFile``
-     - Path of the Kernel to use in the build. 
+   * - ``kernelExecutableFile``
+     - Path of the Kernel Executable file to use in the build. 
      - Not set
 
 For example:
@@ -351,7 +351,7 @@ For example:
 .. code::
 
   microej {
-    kernelFile = "C:\\path\\to\\my\\kernel"
+    kernelExecutableFile = "C:\\path\\to\\my\\kernel"
   }
 
 .. _sdk6_module_natures.tasks.loadFeatureConfiguration:

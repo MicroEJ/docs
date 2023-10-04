@@ -4,6 +4,23 @@ Migration Notes
 ---------------
 
 ---------------------
+From 0.11.1 to 0.12.0
+---------------------
+
+This section applies if MicroEJ SDK 6 ``0.12.0`` is used on a project that was created using MicroEJ SDK 6 ``0.11.1`` 
+or lower.
+
+The kernelFile property has been renamed to kernelExecutableFile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The build property ``kernelFile`` has been renamed to ``kernelExecutableFile``.
+This property can be used to set the path of a Kernel Executable file to :ref:`build the Feature file <sdk_6_build_feature>` of an Application::
+
+   microej {
+      kernelExecutableFile = "C:\\path\\to\\my\\kernel\\executable\\file.out"
+   }
+
+---------------------
 From 0.10.0 to 0.11.0
 ---------------------
 

@@ -9,13 +9,13 @@ There are 2 different ways to provide a Kernel in the build file of the project.
 
 At least one of these is required to :ref:`build the Feature file <sdk_6_build_feature>` of an Application.
 
-Build property kernelFile
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Build property kernelExecutableFile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Set the build property ``kernelFile`` in the ``microej`` configuration block to the path of a Kernel (``.out``)::
+Set the build property ``kernelExecutableFile`` in the ``microej`` configuration block to the path of a Kernel (``.out``)::
 
    microej {
-     kernelFile = "C:\\path\\to\\my\\kernel.out"
+     kernelExecutableFile = "C:\\path\\to\\my\\kernel.out"
    }
 
 Dropins folder
