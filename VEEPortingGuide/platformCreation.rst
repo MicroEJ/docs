@@ -392,7 +392,7 @@ and the ``build.bat`` or ``build.sh`` file is executed to produce the Executable
    BSP connection configuration is only required in the following cases:
 
    - Use the SDK to produce the Executable of a Mono-Sandbox Application (recommended).
-   - Use the SDK to run a :ref:`MicroEJ Test Suite <platform_testsuite>` on device.
+   - Use the SDK to run a :ref:`MicroEJ Test Suite <vee_port_testsuite>` on device.
    - Build a the Executable of a Multi-Sandbox Application.
 
 .. _bsp_connection_cases:
@@ -628,7 +628,7 @@ Many build script templates are available for most commonly used C toolchains in
 Run Script File
 ---------------
 
-This script is required only for Platforms intended to run a :ref:`MicroEJ Testsuite <platform_testsuite>` on device.
+This script is required only for Platforms intended to run a :ref:`MicroEJ Testsuite <vee_port_testsuite>` on device.
 
 The BSP run script is used to invoke a third-party tool to upload and start the Executable on device.
 

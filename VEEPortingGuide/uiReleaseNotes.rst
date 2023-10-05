@@ -18,7 +18,7 @@ Standard Versions
 +-----------------+--------------------+---------------------------------------------------------+
 | UI Pack Range   | Architecture Range | Comment                                                 |
 +=================+====================+=========================================================+
-| [13.5.0-13.6.1] | [7.13.0-9.0.0[     | Compatibility with Architecture 8                       |
+| [13.5.0-13.6.2] | [7.13.0-9.0.0[     | Compatibility with Architecture 8                       |
 +-----------------+--------------------+---------------------------------------------------------+
 | [13.0.0-13.4.1] | [7.13.0-8.0.0[     | SNI 1.3                                                 |
 +-----------------+--------------------+---------------------------------------------------------+
@@ -60,7 +60,7 @@ The following table describes Foundation Libraries API versions implemented in M
    * - UI Pack Range
      - MicroUI
      - Drawing
-   * - [13.6.0-13.6.1]
+   * - [13.6.0-13.6.2]
      - `3.3.0 <https://repository.microej.com/modules/ej/api/microui/3.3.0/>`_
      - `1.0.4 <https://repository.microej.com/modules/ej/api/drawing/1.0.4/>`_
    * - [13.5.0-13.5.1]
@@ -118,7 +118,7 @@ Display
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-13.6.1] | *UI3* format: implement ``LLUI_DISPLAY_impl.h``:                 |
+| [13.0.0-13.6.2] | *UI3* format: implement ``LLUI_DISPLAY_impl.h``:                 |
 |                 |                                                                  |
 |                 | * ``void LLUI_DISPLAY_IMPL_initialize([...]);``                  |
 |                 | * ``void LLUI_DISPLAY_IMPL_binarySemaphoreTake([...]);``         |
@@ -149,7 +149,7 @@ Input
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-13.6.1] | *UI3* format: implement ``LLUI_INPUT_impl.h``:                   |
+| [13.0.0-13.6.2] | *UI3* format: implement ``LLUI_INPUT_impl.h``:                   |
 |                 |                                                                  |
 |                 | * ``void LLUI_INPUT_IMPL_initialize([...]);``                    |
 |                 | * ``jint LLUI_INPUT_IMPL_getInitialStateValue([...]);``          |
@@ -170,7 +170,7 @@ LED
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-13.6.1] | *UI3* format: implement ``LLUI_LED_impl.h``:                     |
+| [13.0.0-13.6.2] | *UI3* format: implement ``LLUI_LED_impl.h``:                     |
 |                 |                                                                  |
 |                 | * ``jint LLUI_LED_IMPL_initialize([...]);``                      |
 |                 | * ``jint LLUI_LED_IMPL_getIntensity([...]);``                    |
@@ -188,20 +188,50 @@ LED
 Front Panel API
 ===============
 
-Since MicroEJ UI Pack ``13.0.0``, the Front Panel project must depend on module `com.microej.pack.ui.ui-pack(frontpanel)`_. 
-The module version is the MicroEJ Generic UI Pack version, that is always aligned with the MicroEJ UI Packs specific for MCUs.
+The Front Panel project must fetch the widgets compatible with the MicroEJ UI Pack fetched in the VEE Port configuration project:
 
-+-----------------+---------------------------------------------+-------------------+
-| UI Pack Range   | Module                                      | Version           |
-+=================+=============================================+===================+
-| [13.0.0-13.6.1] | `com.microej.pack.ui.ui-pack(frontpanel)`_  | |UIPACKVERSION|   |
-+-----------------+---------------------------------------------+-------------------+
-| [12.0.0-12.1.5] | ``ej.tool.frontpanel.widget-microui``       | 1.0.0             |
-+-----------------+---------------------------------------------+-------------------+
+* Before MicroEJ UI Pack ``12.0.0``, the Front Panel project must depend on the classpath variable ``FRONTPANEL_WIDGETS_HOME``.
+* For the UI Packs ``12.x.x``, the Front Panel project must fetch the module `ej.tool.frontpanel.widget-microui`_.
+* Since MicroEJ UI Pack ``13.0.0``, the Front Panel project must depend on the module `com.microej.pack.ui.ui-pack(frontpanel)`_ (the module version is the MicroEJ Generic UI Pack version, that is always aligned with the MicroEJ UI Packs specific for MCUs).
 
-.. note:: Before MicroEJ UI Pack ``12.0.0``, the Front Panel project must depend on classpath variable ``FRONTPANEL_WIDGETS_HOME``.
++-----------------+--------------------------------------------+-----------------+
+| UI Pack Range   | Module                                     | Version         |
++=================+============================================+=================+
+| [13.0.0-13.6.2] | `com.microej.pack.ui.ui-pack(frontpanel)`_ | [13.0.0-13.6.2] |
++-----------------+--------------------------------------------+-----------------+
+| [12.0.0-12.1.5] | `ej.tool.frontpanel.widget-microui`_       | 1.0.0           |
++-----------------+--------------------------------------------+-----------------+
+| [6.0.0-11.2.0]  | n/a                                        | n/a             |
++-----------------+--------------------------------------------+-----------------+
+
+The widget module `ej.tool.frontpanel#widget`_ provides some widgets compatible with the Graphics Engine.
+This module fetches by transitivity the module `com.microej.pack.ui.ui-pack(frontpanel)`_. 
+When the Front Panel project does not require/use the latest Front Panel UI API, it can only fetch the widget module.
+
+.. note:: This module has been moved from the MicroEJ `Central`_ Repository to the MicroEJ `Developer`_ Repository.   
+
++---------------------+-----------------------------+--------------+
+| Widget Module Range | UI Pack Compatibility Range | Repository   |
++=====================+=============================+==============+
+| 3.0.0               | [13.5.1-10-13.6.2]          | `Developer`_ |
++---------------------+-----------------------------+--------------+
+| 2.2.0               | [13.1.0-13.6.2]             | `Developer`_ |
++---------------------+-----------------------------+--------------+
+| [2.1.0-2.1.1]       | [13.1.0-13.6.2]             | `Central`_   |
++---------------------+-----------------------------+--------------+
+| 2.0.0               | [13.0.0-13.6.2]             | `Central`_   |
++---------------------+-----------------------------+--------------+
+| 1.0.1               | [12.0.0-12.1.5]             | `Developer`_ |
++---------------------+-----------------------------+--------------+
+
+To use the latest functionalities provided by the UI Pack ``13.0.0`` and higher, the Front Panel project must depend on the same version of the UI Pack as the VEE Port configuration project.
+However, if the Front Panel project does not require/use the latest Front Panel UI API, it can fetch a version of the UI Pack older than the version fetched in the VEE Port configuration project.
 
 .. _com.microej.pack.ui.ui-pack(frontpanel): https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/
+.. _ej.tool.frontpanel.widget-microui: https://forge.microej.com/ui/native/microej-developer-repository-release/ej/tool/frontpanel/widget-microui/
+.. _ej.tool.frontpanel#widget: https://forge.microej.com/ui/native/microej-developer-repository-release/ej/tool/frontpanel/widget/
+.. _Central: https://repository.microej.com/modules/ej/tool/frontpanel/widget/
+.. _Developer: https://forge.microej.com/ui/native/microej-developer-repository-release/ej/tool/frontpanel/widget/
 
 Image Generator API
 ===================
@@ -212,7 +242,7 @@ The module version is the MicroEJ Generic UI Pack version, that is always aligne
 +-----------------+-------------------------------------------------+-------------------+
 | UI Pack Range   | Module                                          | Version           |
 +=================+=================================================+===================+
-| [13.0.0-13.6.1] | `com.microej.pack.ui.ui-pack(imagegenerator)`_  | |UIPACKVERSION|   |
+| [13.0.0-13.6.2] | `com.microej.pack.ui.ui-pack(imagegenerator)`_  | |UIPACKVERSION|   |
 +-----------------+-------------------------------------------------+-------------------+
 
 .. note:: Before MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on classpath variable ``IMAGE-GENERATOR-x.x``.
@@ -233,7 +263,7 @@ The following table describes the compatibility versions between the C modules a
 +----------------+-----------------+
 | C Module Range | UI Pack Range   |
 +================+=================+
-| 3.0.0          | [13.5.0-13.6.1] |
+| 3.0.0          | [13.5.0-13.6.2] |
 +----------------+-----------------+
 | [2.0.0-2.0.1]  | [13.3.0-13.4.1] |
 +----------------+-----------------+
@@ -261,7 +291,7 @@ The following table describes the version compatibility between the C module and
 +----------------+-----------------+
 | C Module Range | UI Pack Range   |
 +================+=================+
-| 4.0.0          | [13.5.0-13.6.1] |
+| 4.0.0          | [13.5.0-13.6.2] |
 +----------------+-----------------+
 | [3.0.0-3.0.2]  | [13.3.0-13.4.1] |
 +----------------+-----------------+
@@ -279,7 +309,7 @@ The following table describes the version compatibility between the C module and
 +----------------+-----------------+
 | C Module Range | UI Pack Range   |
 +================+=================+
-| [6.0.0-7.0.0]  | [13.5.0-13.6.1] |
+| [6.0.0-7.1.0]  | [13.5.0-13.6.2] |
 +----------------+-----------------+
 | [3.0.0-5.0.1]  | [13.3.0-13.4.1] |
 +----------------+-----------------+
@@ -288,15 +318,17 @@ The following table describes the version compatibility between the C module and
 
 The following table describes the version compatibility between the C module and the VG-Lite libraries (officially supported):
 
-+----------------+---------------------------+
-| C Module Range | VG-Lite Libraries Range   |
-+================+===========================+
-| [4.0.0-7.0.0]  | 3.0.15_rev4               |
-+----------------+---------------------------+
-| [2.0.0-3.0.0]  | 3.0.11_rev3               |
-+----------------+---------------------------+
-| 1.0.0          | 3.0.4_rev2 and 3.0.4_rev4 |
-+----------------+---------------------------+
++----------------+-----------------------------+
+| C Module Range | VG-Lite Libraries Range     |
++================+=============================+
+| 7.1.0          | 3.0.15_rev4 and 3.0.15_rev7 |
++----------------+-----------------------------+
+| [4.0.0-7.0.0]  | 3.0.15_rev4                 |
++----------------+-----------------------------+
+| [2.0.0-3.0.0]  | 3.0.11_rev3                 |
++----------------+-----------------------------+
+| 1.0.0          | 3.0.4_rev2 and 3.0.4_rev4   |
++----------------+-----------------------------+
 
 **Think Silicon NemaGFX**
 
@@ -307,7 +339,7 @@ The following table describes the version compatibility between the C module and
 +----------------+-----------------+
 | C Module Range | UI Pack Range   |
 +================+=================+
-| 1.0.0          | [13.5.0-13.6.1] |
+| 1.0.0          | [13.5.0-13.6.2] |
 +----------------+-----------------+
 
 ..

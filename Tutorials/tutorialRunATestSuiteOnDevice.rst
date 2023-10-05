@@ -4,7 +4,7 @@ Run a Test Suite on a Device
 ============================
 
 This tutorial describes all the steps to configure and run a
-:ref:`platform_testsuite` on a device using the `Platform
+:ref:`vee_port_testsuite` on a device using the `Platform
 Qualification Tools
 <https://github.com/MicroEJ/VEEPortQualificationTools>`_.
 
@@ -63,7 +63,7 @@ MicroEJ Platform providing:
 Introduction
 ------------
 
-This tutorial presents a local setup of the :ref:`platform_testsuite`
+This tutorial presents a local setup of the :ref:`vee_port_testsuite`
 for the :ref:`FS <pack_fs>` Foundation Library on a concrete
 device (not on Simulator).
 

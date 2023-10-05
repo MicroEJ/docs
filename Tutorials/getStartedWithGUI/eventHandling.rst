@@ -36,16 +36,7 @@ The handleEvent Method
 	}
 
 - It's important to note that only widgets that are "enabled" will receive input events. One can enable a widget by calling `setEnabled(true)`_.
-- In the `Button`_ class, the click triggers an action defined by the registered `OnClickListener`_. The `handleClick`_ method is where the listener is called:
-
-  .. code:: java
- 
-    public void handleClick() {
-        OnClickListener listener = this.onClickListener;
-        if (listener != null) {
-            listener.onClick();
-        }
-    }
+- In the `Button`_ class, the click triggers an action defined by the registered `OnClickListener`_.
 
 
 Using Events with Buttons
@@ -82,7 +73,6 @@ When running the modified sample, this is shown in the console:
 .. _Button: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Button.html
 .. _setEnabled(true): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#setEnabled-boolean-
 .. _OnClickListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/OnClickListener.html
-.. _handleClick: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Button.html#handleClick--
 
 **Next step:** :ref:`ui-fonts`
 
