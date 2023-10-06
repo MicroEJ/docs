@@ -338,6 +338,9 @@ This can be done by defining this property in the file ``mjvm/mjvm.properties`` 
   com.microej.runtime.kf.ramcontrol.enabled=true
 
 When RAM Control is enabled, all Foundation Libraries must declare their native resources using SNI (see ``sni.h`` header file).
+This is necessary for the automatic release of native resources when the Core Engine abruptly stops a Feature to recover heap memory.
+Foundation Libraries can no longer register native resources using the deprecated class ``ej.lang.ResourceManager``. 
+Attempting to do so will result in an exception being thrown.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
