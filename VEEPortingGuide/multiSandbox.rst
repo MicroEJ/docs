@@ -333,10 +333,11 @@ By default, RAM Control is disabled in the Core Engine.
 To enable it, set the property ``com.microej.runtime.kf.ramcontrol.enabled`` to ``true`` when building the VEE Port. 
 This can be done by defining this property in the file ``mjvm/mjvm.properties`` of your VEE Port configuration project:
 
-``com.microej.runtime.kf.ramcontrol.enabled=true``
+.. code-block::
 
-To ensure proper RAM Control execution, all foundation libraries must use SNI to declare native resources to free when a feature is terminated (see ``sni.h`` header file).
-The deprecated class ``ej.lang.ResourceManager`` cannot be used in such a context.
+  com.microej.runtime.kf.ramcontrol.enabled=true
+
+When RAM Control is enabled, all Foundation Libraries must declare their native resources using SNI (see ``sni.h`` header file).
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
