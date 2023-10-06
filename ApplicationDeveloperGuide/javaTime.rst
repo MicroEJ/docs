@@ -99,7 +99,6 @@ Instant
 ~~~~~~~
 
 The `Instant`_ class is the closest equivalent of `Date`_. It represents a specific instant in time.
-The following snippet shows how to create an instant from the factory methods and perform basic operations on instants.
 
 .. code-block:: java
 
