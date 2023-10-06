@@ -9,7 +9,7 @@ Principle
 The VEE debugger proxy is an implementation of the Java Debug Wire protocol (JDWP) for debugging Applications executed by MICROEJ VEE.
 It consists of a TCP server implementing the JDWP protocol and acting as a proxy between the IDE (debugger) and the Executable (debuggee) running on the device.
 
-The debugger proxy allows a postmortem debug from a snapshot of the memory (core dump file for Linux/QNX targets and Intel hex file for MCU targets) of a running Executable binary.
+The debugger proxy allows a postmortem debug from a snapshot of the memory (core dump file for Linux/QNX targets and Intel Hex file for MCU targets) of a running Executable binary.
 
 .. figure:: images/debugger_proxy1.png
    :alt: Debugger Proxy Principle
@@ -20,7 +20,7 @@ The debugger proxy allows a postmortem debug from a snapshot of the memory (core
 
 .. warning::
     
-    The snapshot of the memory (core dump or Intel hex files) should only be generated when the Core Engine task is stopped on one of the Core Engine hooks (``LLMJVM_on_OutOfMemoryError_thrown``, ``LLMJVM_on_Runtime_gc_done`` etc.) or in a native function. 
+    The snapshot of the memory (core dump or Intel Hex files) should only be generated when the Core Engine task is stopped on one of the Core Engine hooks (``LLMJVM_on_OutOfMemoryError_thrown``, ``LLMJVM_on_Runtime_gc_done`` etc.) or in a native function. 
     Otherwise, the Core Engine memory dump is not guarranted to be consistent, which may cause the VEE Debugger to crash abruptly. 
 
 .. note::
@@ -117,8 +117,8 @@ Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` t
 Debugging Executable for MCU target
 ===================================
 
-The VEE Debugger Proxy for MCU target requires a memory dump of the running Executable in Intel hex format.
-It provides a tool to generate a script for IAR (IAR8 or IAR9) or GDB debugger, that contains the needed commands to dump the required memory regions in Intel hex format.
+The VEE Debugger Proxy for MCU target requires a memory dump of the running Executable in Intel Hex format.
+It provides a tool to generate a script for IAR (IAR8 or IAR9) or GDB debugger, that contains the needed commands to dump the required memory regions in Intel Hex format.
 
 .. _generate_vee_memory_dump_script:
 
@@ -178,7 +178,7 @@ In IAR Embedded Workbench:
 
 When the IAR Debugger hits the specified breakpoint, the ``dumpMemories()`` macro function is executed and the memory is dumped into ``*.hex`` files.
 
-The hex files are generated in the same directory as the ``vee-memory-dump.mac`` file.
+The ``*.hex`` files are generated in the same directory as the ``vee-memory-dump.mac`` file.
 
 With GNU Debugger (GDB)
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -213,20 +213,20 @@ Open a shell terminal on your workstation and run the following command:
         -Ddebugger.port=<8000> \
         -Ddebugger.out.path=<path to the Executable file (application.out)> \
         -Ddebugger.features.out.path=<comma-separated list of the Feature files with debug information (*.fodbg files). To be used if you want to debug an installed Sandboxed Application> \
-        -Ddebugger.out.ihex.path=<comma-separated list of the memory dump files in Intel hex format or a single file containg all the dumped memory> \
+        -Ddebugger.out.hex.path=<comma-separated list of the memory dump files in Intel Hex format or a single file containg all the dumped memory> \
         -jar microej-debugger-proxy.jar
 
 Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` to debug your code.
 
 .. note:: 
 
-    If you have multiple hex files generated in the previous step, you can if you want merge them into a single hex file.
+    If you have multiple ``*.hex`` files generated in the previous step, you can if you want merge them into a single ``*.hex`` file.
 
-    It will be easier to use a single hex file than multiple files in the Debugger Proxy command line.
+    It will be easier to use a single ``*.hex`` file than multiple files in the Debugger Proxy command line.
 
-    You can run the following shell script to merge all the hex files into a single file called ``all.hex`` for example.
+    You can run the following shell script to merge all the ``*.hex`` files into a single file called ``all.hex`` for example.
 
-    Make sure to move to the directory where hex files are generated before running the script.
+    Make sure to move to the directory where ``*.hex`` files are generated before running the script.
 
     - On Windows workstation
   
@@ -248,7 +248,7 @@ Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` t
         #merge all the *.hex files
         cat *.hex > $ALL_HEX
 
-    Now, use this single ``all.hex`` file as value to the Debugger Proxy option ``-Ddebugger.out.ihex.path``
+    Now, use this single ``all.hex`` file as value to the Debugger Proxy option ``-Ddebugger.out.hex.path``
 
 VEE Debugger Proxy Options Summary
 ==================================
@@ -257,9 +257,9 @@ VEE Debugger Proxy Options Summary
 * **debugger.port**: The TCP server port, defaults to ``8000``.
 * **debugger.out.path**: The Path to the Executable file to debug (``application.out``).
 * **debugger.features.out.path**: comma-separated list of the Feature files with debug information (``*.fodbg files``). This option must be used if you want to debug an installed Sandboxed Application. In this case, note that the specified Executable in ``debugger.out.path`` option must be the Multi-Sandbox Executable.
-* **debugger.out.coredump.path**: The Path to the core dump file (conflict with **debugger.out.ihex.path** option).
-* **debugger.out.ihex.path**: The Path to the memory dump files in Intel hex format (conflict with **debugger.out.coredump.path** option).
-  If you have multiple Intel hex files, you can either merge them into a single file or list them with a comma separator, such as ``[/path/to]/java_heap.hex,[/path/to]/java_stacks.hex,[/path/to]/vm_instance.hex``.
+* **debugger.out.coredump.path**: The Path to the core dump file (conflict with **debugger.out.hex.path** option).
+* **debugger.out.hex.path**: The Path to the memory dump files in Intel Hex format (conflict with **debugger.out.coredump.path** option).
+  If you have multiple Intel Hex files, you can either merge them into a single file or list them with a comma separator, such as ``[/path/to]/java_heap.hex,[/path/to]/java_stacks.hex,[/path/to]/vm_instance.hex``.
 
 Troubleshooting
 ===============
