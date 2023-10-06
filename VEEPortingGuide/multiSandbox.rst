@@ -327,7 +327,7 @@ RAM Control
    This feature requires Architecture :ref:`8.1.0 <changelog-8.1.0>` or higher.
 
 In a Multi-Sandbox environment, RAM Control automatically stops less critical Features when a more critical Feature cannot allocate new objects. 
-See the "RAM Control: Feature Criticality" section of the :ref:`kf_specification` for more details.
+See the `RAM Control: Feature Criticality` section of the :ref:`kf_specification` for more details.
 
 By default, RAM Control is disabled in the Core Engine. 
 To enable it, set the property ``com.microej.runtime.kf.ramcontrol.enabled`` to ``true`` when building the VEE Port. 
