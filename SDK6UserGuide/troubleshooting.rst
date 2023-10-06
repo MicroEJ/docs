@@ -161,6 +161,31 @@ or for all builds by setting the following property in the ``$USER_HOME/.gradle/
 	
 	org.gradle.vfs.watch=false
 
+Missing Tasks in the Gradle view of Android Studio
+--------------------------------------------------
+
+In some cases, Android Studio may not build all the Gradle tasks, the ``Task list not built...`` message is displayed:
+
+	.. figure:: images/android-studio-gradle-tasks.png
+		:alt: Incomplete Gradle tasks list in Android Studio
+		:align: center
+		:scale: 70%
+
+To build all the Gradle tasks in Android Studio:
+
+- Go to ``File`` > ``Settings`` > ``Experimental``,
+- Enable the option: ``Configure all Gradle tasks during Gradle Sync (...)``.
+
+Back in the Gradle task view:
+
+- Right-click on the project name,
+- Select ``Reload Gradle Project``.
+
+	.. figure:: images/android-studio-reload-gradle-project.png
+		:alt: Reload the Gradle Project in Android Studio
+		:align: center
+		:scale: 70%
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
