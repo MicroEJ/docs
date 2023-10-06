@@ -52,7 +52,7 @@ While this may seem like a lot of classes, most applications can start with only
 - `Period`_: a duration of time in terms of years, months, and days.
 
 .. note::
-    Working with a time zone, like ``America/Los_Angeles`` can make calculations more complex. In many cases, the application can only work with `LocalDate`_, `LocalTime`_, and `Instant`_, and then add the time zone at the user interface (UI) level.
+    Working with a time zone can make calculations more complex. In many cases, the application can only work with `LocalDate`_, `LocalTime`_, and `Instant`_, and then add the time zone at the user interface (UI) level.
 
 
 The API has many methods, but it remains easy to handle because it sticks to consistent method prefixes:
@@ -319,7 +319,6 @@ Java SE 8 and higher have a default provider that delivers zone rules for the ti
 The ``time`` library does not use this provider as the default (see :ref:`Restrictions <time_restrictions>`).
 Instead, the library comes with a default provider which is very lightweight and designed to handle only the time zone rules for the "GMT" (Greenwich Mean Time) zone.
 This is suitable for operations on dates and times that do not depend on time zone considerations.
-
 Any attempt to use another zone ID will throw a `ZoneRulesException`_ because the ID is unknown.
 For example,
 
