@@ -231,6 +231,7 @@ Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` t
     - On Windows workstation
   
     .. code-block:: batch
+        
         set ALL_HEX="all.hex"
         rem delete all.hex file if it exists
         if exist "%ALL_HEX%" (del /f %ALL_HEX%)
