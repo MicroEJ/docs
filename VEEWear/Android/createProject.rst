@@ -70,6 +70,9 @@ Assuming that a Gradle project with an Android application is opened in Android 
    id("com.microej.gradle.application") version "0.11.1" apply false
    id("com.microej.android.gradle.plugins.android") version "0.3.1" apply false
 
+
+Next is to add the module that contains the MicroEJ application to the project.
+
 .. _ack_create_microej_app_:
 
 Create or Import a MicroEJ Application
@@ -106,7 +109,8 @@ Create or Import a MicroEJ Application
                microejConflictResolut0ionRulesEnabled = false
             }
 
-      where the property ``applicationMainClass`` is set to the Full Qualified Name of the main class of the application. 
+      where the property ``applicationMainClass`` is set to the Full Qualified Name of the main class of the application.
+      This class defines a ``main()`` method and is the entry point of the application.
       
       .. note::
          The MicroEJ Gradle plugin comes with additional conflict resolution rules compared to Gradle's default behavior.
@@ -148,11 +152,10 @@ Create or Import a MicroEJ Application
       When the Gradle project has been reloaded, it should compile successfully, without any error.
 
 
+Configure the Android Application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Configure the Android Application to Run the MicroEJ Application
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The next steps show how to configure the Android application to declare and use the code written for MicroEJ VEE.
+The next steps show how to configure the Android application to declare the MicroEJ application.
 
 .. tabs::
 
@@ -164,6 +167,7 @@ The next steps show how to configure the Android application to declare and use 
          plugins {
             id("com.android.application")
             id("com.microej.android.gradle.plugins.android")
+            ...
          }
       - Add a dependency to the MicroEJ support library ``microej-application``::
 
@@ -181,7 +185,7 @@ The next steps show how to configure the Android application to declare and use 
             ...
          }
 
-      where ``microej-app`` is the name of the subproject that contains the MicroEJ application.
+      where ``microej-app`` is the name of the subproject that contains your MicroEJ application.
 
       - Add a dependency to a VEE Port, for example::
 
@@ -190,10 +194,70 @@ The next steps show how to configure the Android application to declare and use 
             ...
          }
       
-      The VEE Port holds the Android runtime implementation for native APIs (e.g., MicroEJ Foundation libraries).
-      Read :ref:`Select a VEE Port <sdk_6_select_veeport>` to explore the available options for providing a VEE Port in your project.
-      
+      There are multiple options for providing a VEE Port in your project. Read :ref:`Select a VEE Port <sdk_6_select_veeport>` to explore the available options.
+
+      .. note::
+         It is required to select a VEE Port that holds an Android runtime implementation for native APIs (e.g., MicroEJ Foundation libraries).
+         Read XXX to learn how to configure your VEE Port for Android.
+   
+      - Select :guilabel:`Sync Now` from the notification bar to synchronize your project files.
            
+
+   .. tab:: Wear OS
+
+      - Open the ``build.gradle.kts`` file of the Wear OS application.
+      - Add the ``com.microej.android.gradle.plugins.android`` plugin::
+
+         plugins {
+            id("com.android.application")
+            id("com.microej.android.gradle.plugins.android")
+            ...
+         }
+      - Add a dependency to the MicroEJ support library ``microej-wearos``::
+
+         dependencies {
+            implementation("com.microej.android.support:microej-wearos:2.0.0")
+            ...
+         }
+
+      The support library allows running a MicroEJ Application on Wear OS using the MicroEJ support engine.
+
+      - Add a dependency to the MicroEJ application::
+
+         dependencies {
+            microejApp(project(":microej-app")) 
+            ...
+         }
+
+      where ``microej-app`` is the name of the subproject that contains your MicroEJ application.
+
+      - Add a dependency to a VEE Port, for example::
+
+         dependencies {
+            microejVeePort("com.mycompany:veeport:1.0.0")
+            ...
+         }
+      
+      There are multiple options for providing a VEE Port in your project. Read :ref:`Select a VEE Port <sdk_6_select_veeport>` to explore the available options.
+
+      .. note::
+         It is required to select a VEE Port that holds an Android runtime implementation for native APIs (e.g., MicroEJ Foundation libraries).
+         Read XXX to learn how to configure your VEE Port for Android.
+
+      - Select :guilabel:`Sync Now` from the notification bar to synchronize your project files.
+
+
+Run the MicroEJ Application Code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The final step consists of running the MicroEJ application code from the Android application.
+
+.. tabs::
+
+   .. tab:: Android
+
+      
+
 
    .. tab:: Wear OS
 
