@@ -3,14 +3,15 @@
 VEE Port
 ========
 
-This section explains how to configure the VEE Port so that it provides the capability to build a MicroEJ Application on Android.
+This section explains how to configure a VEE Port so that it provides the capability to build a MicroEJ Application for Android.
 
-Once it is configured, the VEE Port can thus be used to build a MicroEJ Application for Android, to build a MicroEJ Application for an Embedded Device and to run a MicroEJ Application on MicroEJ Simulator.
+Once it is configured, the VEE Port can thus be used to build a MicroEJ Application for Android,
+in addition to standard features such as building a MicroEJ Application for an Embedded Device and running it on the Simulator.
 
 VEE Port Configuration
 ----------------------
 
-To provide the capability to build a MicroEJ Application on Android, the VEE Port must include build scripts and implementations of Foundation Libraries which are specific to Android.
+The configuration steps ensure that the VEE Port provides build scripts and implementations of Foundation Libraries which are specific to Android.
 
 These files are gathered in Android Packs. Each Android Pack provides support for one or multiple Foundation Libraries.
 The Core Android Pack is absolutely necessary to be able to build any MicroEJ Application for Android. Additional Android Packs should be included depending on the Foundation Libraries provided by the VEE Port.
@@ -60,25 +61,26 @@ For more information on the usage and limitations of each Android Pack, refer to
 Custom Android Packs
 --------------------
 
-A MicroEJ Application may call native methods, which require a dedicated implementation on each execution target (embedded device, Simulator or Android).
-Therefore if an Application is executed on Android, the VEE Port should provide a dedicated implementation of these native methods for Android.
-This dedicated implementation is called an Android mock. An Android mock can be dropped into the VEE Port directly, but it is recommended to package it into an Android Pack.
+A MicroEJ Application may call native methods, which require a different implementation on each execution target (embedded device, Simulator or Android).
+Therefore if an Application is executed on Android, the VEE Port should provide an implementation of these native methods for Android.
+This dedicated implementation is called an Android mock, and it is usually packaged in an Android Pack.
 This section explains how to develop a custom Android Pack including an Android mock.
 
 .. note::
 
-	Currently, VEE Ports and their components can only be developed in MicroEJ SDK 5. This means that Android Packs must be developed with SDK 5 and MMM, and cannot be developed with Android Studio and Gradle.
+	Currently, VEE Ports and their components can not be developed in :ref:`MicroEJ SDK 6 <sdk_6_limitations>`.
+	This means that Android Packs must be developed with :ref:`SDK 5 <sdk_user_guide>` and MMM, and cannot be developed with Android Studio and Gradle.
 
 Setting Android SDK Environment Variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since the Android mock will be compiled using Android SDK, you should have Android Studio and Android SDK installed.
+Since the Android mock will be compiled using Android SDK, you should have `Android Studio and Android SDK installed <https://developer.android.com/studio/install>`_.
 If it is not set already on your system, you should set the `ANDROID_HOME <https://developer.android.com/tools/variables#android_home>`_ environment variable.
 
 You can follow these steps to find the Android SDK location on your system:
 
-- In Android Studio, click ``File`` and select ``Settings...``.
-- In the settings dialog, find ``Android SDK`` and copy the path set as ``Android SDK Location``.
+- In Android Studio, select :guilabel:`File` > :guilabel:`Settings...`.
+- In the settings dialog, find :guilabel:`Android SDK` and copy the path set as :guilabel:`Android SDK Location`.
 
 On Windows, this path is typically ``C:\Users\[USER]\AppData\Local\Android\Sdk``.
 
@@ -89,11 +91,11 @@ Creating the Android Pack Module
 
 The first step is to create the ``custom-android-pack`` project:
 
-- In MicroEJ SDK, click ``File``, select ``New`` and select ``Other...``.
-- In the wizard dialog, select ``Module Project`` and click ``Next >``.
-- In the new module dialog, type ``custom-android-pack`` as ``Project Name`` and as ``Module``, choose the ``Organization`` and ``Revision`` of your choice, select ``product-java`` as ``Skeleton`` and click ``Finish``.
+- In MicroEJ SDK, select :guilabel:`File`> :guilabel:`New` > :guilabel:`Project...`.
+- In the wizard dialog, select :guilabel:`MicroEJ` > :guilabel:`Module Project` and click on :guilabel:`Next >`.
+- In the new module dialog, type ``custom-android-pack`` as :guilabel:`Project Name` and as :guilabel:`Module`, choose the :guilabel:`Organization` and :guilabel:`Revision` of your choice, select ``product-java`` as :guilabel:`Skeleton` and click on :guilabel:`Finish`.
 
-By default, the library built by the module is not packaged as an Android mock. To make sure the library is added to the list of Android mocks,
+By default, the library built by the module is not packaged as an Android mock. To make sure that the library is added to the list of Android mocks,
 edit the ``module.ivy`` file of the project and add the following lines within the ``<ea:build>`` element:
 
 .. code-block:: xml
@@ -103,21 +105,21 @@ edit the ``module.ivy`` file of the project and add the following lines within t
 Compiling against Android SDK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, the library is compiled against the JRE. We must configure both the Eclipse project and the MMM build to compile against Android SDK rather than the JRE.
+By default, the library is compiled against the JRE. Both the Eclipse project and the MMM build must be configured to compile against Android SDK rather than the JRE.
 
 First, the JRE must be replaced by Android SDK in the build path of the Eclipse project:
 
-- Right-click on the project, select ``Build Path`` and select ``Configure Build Path...``.
-- In the properties dialog, open the ``Libraries`` tab, select ``JRE System Library``, click ``Remove`` and select ``Add Variable...``.
-- In the classpath entry dialog, click ``Configure Variables...``.
-- In the variables dialog, click ``New...``.
-- In the new variable dialog, type ``ANDROID_HOME`` as ``Name``, type the Android SDK location as ``Path`` and press ``OK``.
-- Back to the variables dialog, click ``Apply and Close``.
-- Back to the classpath entry dialog, select the ``ANDROID_HOME`` variable and select ``Extend...``.
-- In the variable extension dialog, browse the ``platforms/android-[VERSION]/android.jar`` file and select ``OK``.
-- Back to the properties dialog, click ``Apply and Close``.
+- Right-click on the project, select :guilabel:`Build Path` > :guilabel:`Configure Build Path...`.
+- In the properties dialog, open the :guilabel:`Libraries` tab, select :guilabel:`JRE System Library`, click on :guilabel:`Remove` and click on :guilabel:`Add Variable...`.
+- In the classpath entry dialog, click on :guilabel:`Configure Variables...`.
+- In the variables dialog, click on :guilabel:`New...`.
+- In the new variable dialog, type ``ANDROID_HOME`` as :guilabel:`Name`, type the Android SDK location as :guilabel:`Path` and click on :guilabel:`OK`.
+- Back to the variables dialog, click on :guilabel:`Apply and Close`.
+- Back to the classpath entry dialog, select the ``ANDROID_HOME`` variable and click on :guilabel:`Extend...`.
+- In the variable extension dialog, browse the ``platforms/android-[VERSION]/android.jar`` file and click on :guilabel:`OK`.
+- Back to the properties dialog, click on :guilabel:`Apply and Close`.
 
-Finally, the JRE must be replaced by Android SDK in the build path of the MMM project:
+Finally, the JRE must be replaced by Android SDK in the build path of the MMM module:
 
 - Edit the ``module.ivy`` file and add the following lines within the ``<ea:build>`` element:
 
@@ -152,9 +154,9 @@ The recommended practice is to replace only the classes which include native met
 Using the Android Pack in the VEE Port
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To build the Android Pack, right-click on the project and select ``Build Module``.
+To build the Android Pack, right-click on the project and select :guilabel:`Build Module`.
 
-The Android Pack can be embedded in a VEE Port by declaring a dependency in the ``module.ivy`` of the VEE Port as explained in the first subsection:
+The Android Pack can be included in a VEE Port by declaring a dependency in the ``module.ivy`` of the VEE Port as explained in the first subsection:
 
 	.. code-block:: xml
 
