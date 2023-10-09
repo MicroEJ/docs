@@ -19,7 +19,8 @@ To follow this Getting Started, all you need is:
 Install MicroEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
 
-Install the MicroEJ SDK 6 plugin on your IDE by following :ref:`sdk_6_install` instructions.
+Install the MicroEJ SDK 6 plugin on your IDE by following :ref:`sdk_6_install` instructions. 
+IntelliJ IDEA is used on this Getting Started but feel free to use your favorite one.
 
 Install the C toolchain
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -247,6 +248,13 @@ In order to flash the ``Demo-Wearable-VG`` Application on i.MX RT595 EVK, the ap
          :scale: 70%
 
 Once the firmware is flashed, you should see the ``Demo-Wearable-VG`` running on your board.
+
+      .. figure:: images/getting-started-termite-application-output.png
+         :alt: Termite Application Output
+         :align: center
+         :scale: 70%
+      
+         Application logs on Termite
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
