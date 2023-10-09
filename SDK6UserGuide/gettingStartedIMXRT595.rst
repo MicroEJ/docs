@@ -1,4 +1,4 @@
-.. _sdk_6_getting_started:
+.. _sdk_6_getting_started_imxrt595:
 
 Getting Started with MicroEJ SDK 6 on i.MX RT595 EVK
 ====================================================
