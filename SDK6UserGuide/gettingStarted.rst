@@ -3,7 +3,7 @@
 Getting Started with MicroEJ SDK 6 on i.MX RT595 EVK
 ====================================================
 
-During this Getting Started, you will learn to run an application in the Virtual Device and on the Device using the MicroEJ SDK 6.
+During this Getting Started, you will learn to run an application on the Virtual Device and on the Device using the MicroEJ SDK 6.
 
 Requirements
 ------------
@@ -24,12 +24,14 @@ Install the MicroEJ SDK 6 plugin on your IDE by following :ref:`sdk_6_install` i
 Install the C toolchain
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+The C toolchain must be installed, it is composed of the GNU ARM Embedded Toolchain, CMake and Make.
+
 .. note::
   
    This Getting Started has been tested with the following configuration:
 
    - GNU ARM Embedded Toolchain version ``10.3 2021.10``.
-   - CMake version ``3.26.4``.
+   - CMake version ``3.26.5``.
    - Make version ``3.81``.
 
    Later versions may or may not work, and may need modification to the Getting Started steps.
@@ -51,7 +53,7 @@ Once installed, ``ARMGCC_DIR`` must be set as an environment variable and point 
 Install CMake
 """""""""""""
 
-`Cmake <https://cmake.org/>`__ is the application used by the build system to generate the firmware.
+`Cmake <https://cmake.org/download/>`__ is the application used by the build system to generate the firmware.
 
 Install Make
 """"""""""""
@@ -79,7 +81,7 @@ Once installed, ``LinkServer_xxx/binaries`` folder must be set on your Path. To 
 Get Demo-Wearable-VG MicroEJ Application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For this Getting Started, the Demo-Wearable-VG MicroEJ Application will be use. You can download it using the following command::
+For this Getting Started, the ``Demo-Wearable-VG`` MicroEJ Application will be use. You can download it using the following command::
    
    git clone xxxxx
 
@@ -89,7 +91,7 @@ Set up the MicroEJ Application on your IDE
 Import the project
 ^^^^^^^^^^^^^^^^^^
 
-The first step is to import the Demo-Wearable-VG MicroEJ Application into your IDE: 
+The first step is to import the ``Demo-Wearable-VG`` MicroEJ Application into your IDE: 
 
 .. note::
   
@@ -123,20 +125,20 @@ The Gradle project should now be imported in IntelliJ IDEA, your workspace conta
 Run an application on the Virtual Device
 ----------------------------------------
 
-In order to execute the Demo-Wearable-VG Application on the Virtual Device, the SDK provides the Gradle ``runOnSimulator`` task. 
+In order to execute the ``Demo-Wearable-VG`` Application on the Virtual Device, the SDK provides the Gradle ``runOnSimulator`` task. 
 
 .. note::
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_simulator` section.
 
-* Double-click on the ``runOnSimulator`` task in the Gradle tasks view.
+* Double-click on the ``runOnSimulator`` task in the Gradle tasks view. It may takes few seconds.
 
       .. figure:: images/getting-started-runOnSimulator.png
          :alt: runOnSimulator task
          :align: center
          :scale: 70%
 
-The Virtual Device starts and executes the Demo-Wearable-VG application.
+The Virtual Device starts and executes the ``Demo-Wearable-VG`` application.
 
       .. figure:: images/getting-started-virtual-device.png
          :alt: Virtual Device
@@ -145,13 +147,13 @@ The Virtual Device starts and executes the Demo-Wearable-VG application.
 
 .. note::
   
-   If you want to know more about the use of the Demo-Wearable-VG, please have a look at its `Readme <https://github.com/MicroEJ/Demo-Wearable-VG/blob/master/watch-vg/README.md>`__
+   If you want to know more about the use of the ``Demo-Wearable-VG``, please have a look at its `Readme <https://github.com/MicroEJ/Demo-Wearable-VG/blob/master/watch-vg/README.md>`__.
 
 
 Run an application on i.MX RT595 EVK
 ------------------------------------
 
-To deploy Demo-Wearable-VG application on your board, you will have to:
+To deploy ``Demo-Wearable-VG`` application on your board, you will have to:
 
 * Get an Evaluation License
 * Build the Executable
@@ -160,7 +162,7 @@ To deploy Demo-Wearable-VG application on your board, you will have to:
 Build the Executable for i.MX RT595 EVK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to build the Executable of the Demo-Wearable-VG Application, the SDK provides the Gradle ``buildExecutable`` task.
+In order to build the Executable of the ``Demo-Wearable-VG`` Application, the SDK provides the Gradle ``buildExecutable`` task.
 
 .. note::
   
@@ -188,7 +190,7 @@ Now your Evaluation license is installed, you can relaunch your application buil
 
 The gradle task deploys the MicroEJ application in the BSP and then builds the BSP using Make.
 
-The Demo-Wearable-VG application is built and ready to be flashed on i.MX RT595 EVK once the hardware setup is completed.
+The ``Demo-Wearable-VG`` application is built and ready to be flashed on i.MX RT595 EVK once the hardware setup is completed.
 
 Hardware Setup
 ^^^^^^^^^^^^^^
@@ -228,10 +230,10 @@ The COM port uses the following parameters:
 
 You can have a look at your application logs with an RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
 
-Flash the application on i.MX RT595 EVK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Flash the application on the i.MX RT595 EVK board
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order flash the Demo-Wearable-VG Application on i.MX RT595 EVK, the application provides the Gradle ``runOnDevice`` task.
+In order to flash the ``Demo-Wearable-VG`` Application on i.MX RT595 EVK, the application provides the Gradle ``runOnDevice`` task.
 
 .. note::
   
@@ -244,4 +246,4 @@ In order flash the Demo-Wearable-VG Application on i.MX RT595 EVK, the applicati
          :align: center
          :scale: 70%
 
-Once the firmware is flashed, you should see the Demo-Wearable-VG running on your board.
+Once the firmware is flashed, you should see the ``Demo-Wearable-VG`` running on your board.
