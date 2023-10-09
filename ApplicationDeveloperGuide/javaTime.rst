@@ -34,7 +34,9 @@ There are many benefits of moving to the new API:
 * Precision: it provides more precise representations for date and time values, including support for nanoseconds, which is important for applications requiring high precision.
 * Comprehensive time model: it introduces new classes that deal with different concepts of time such as date without a time or time without a date, durations or periods.
 
-
+In general, it's a good practice to use the Java Time API when dealing with date, time, and time zone-related operations because of its convenient features and extensive capabilities.
+Yet, for straightforward timestamp handling or lightweight applications, ``System.currentTimeMillis()`` can be adequate. 
+One aspect to keep in mind is that the Time API offers better readability and advanced operations, which might be missing when using timestamp manipulation or older APIs.
 
 
 Overview
@@ -72,7 +74,7 @@ Usage
 
 The Date and Time API is provided as an Add-on Library.
 
-To use the `time <https://repository.microej.com/modules/ej/library/eclasspath/uri/>`_ library, add the following to the project build file:
+To use the `time <https://repository.microej.com/modules/ej/library/eclasspath/time/>`_ library, add the following to the project build file:
 
 .. tabs::
 
@@ -338,7 +340,7 @@ For example,
 
 
 However, you can define a custom default provider for loading time zone rules.
-First, create a class that extends ``ZoneRulesProvider`` and defines custom zone rules like in the example after:
+First, create a class that extends `ZoneRulesProvider`_ and defines custom zone rules like in the example after:
 
 .. code-block:: java
 
@@ -477,26 +479,26 @@ Calculating the Day of the Week
    .. tab:: Legacy Time API
 
       .. code-block:: java
-
+        
         // Create a Calendar instance
-		Calendar calendar = Calendar.getInstance();
-
-		// Set a date (e.g., October 15, 2023)
-		calendar.set(2023, Calendar.OCTOBER, 15);
-
-		// Get the day of the week as an integer (1 = Sunday, 2 = Monday, ..., 7 = Saturday)
-		int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        Calendar calendar = Calendar.getInstance();
+        
+        // Set a date (e.g., October 15, 2023)
+        calendar.set(2023, Calendar.OCTOBER, 15);
+        
+        // Get the day of the week as an integer (1 = Sunday, 2 = Monday, ..., 7 = Saturday)
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
 
    .. tab:: New Time API
 
       .. code-block:: java
-
+        
         // Create a LocalDate instance for a specific date (October 15, 2023)
-		LocalDate date = LocalDate.of(2023, 10, 15);
-
-		// Get the day of the week as an enum value (DayOfWeek)
-		DayOfWeek dayOfWeek = date.getDayOfWeek();
+        LocalDate date = LocalDate.of(2023, 10, 15);
+        
+        // Get the day of the week as an enum value (DayOfWeek)
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
 
 
 
