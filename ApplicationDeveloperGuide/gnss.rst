@@ -12,7 +12,7 @@ The GNSS Foundation Library.
 Functional Description
 ======================
 
-Interaction with the GNSS API goes through a GNSS manager. This manager works around a state machine. 
+Interactions with the GNSS API goes through a GNSS manager. This manager works around a state machine. 
 To perform read operations to retrieve GNSS data, the machine must be in a STARTED state. 
 Transitions between the states are controlled by the user.
 :ref:`The following graph <fig_gnss-state-machine>`: details the different states, their function and transitions.
@@ -25,10 +25,10 @@ Transitions between the states are controlled by the user.
 
    GNSS State Machine.
 
+After each operations, the method `getState()` can be called on the GNSS manager instance to check weither or not the state has been successfully changed.
+
 Turning the GNSS Engine ON
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-After each calls, the method `getState()` can be called on the GNSS manager instance to check weither or not the state has been successfully changed.
 
 .. code-block:: java
     
