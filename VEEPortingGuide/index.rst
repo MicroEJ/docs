@@ -25,6 +25,7 @@ VEE Porting Guide
    bluetooth
    packEventQueue
    fs
+   gnss
    hal
    device
    watchdog-timer

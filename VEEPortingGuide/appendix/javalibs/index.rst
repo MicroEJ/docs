@@ -10,6 +10,7 @@ MicroEJ Foundation Libraries
     ecom
     ecom-comm
     fs
+    gnss
     net
     ssl
 
