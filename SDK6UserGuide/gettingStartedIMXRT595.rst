@@ -247,3 +247,10 @@ In order to flash the ``Demo-Wearable-VG`` Application on i.MX RT595 EVK, the ap
          :scale: 70%
 
 Once the firmware is flashed, you should see the ``Demo-Wearable-VG`` running on your board.
+
+..
+   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
