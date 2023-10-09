@@ -57,6 +57,16 @@ Core Engine
 - [Multi] - Updated check of :ref:`Kernel UID <kernel_uid>` at the beginning of `Kernel.install(java.io.InputStream)`_, before allocating Feature sections.
 - [Multi] - Added an option to enable :ref:`RAM Control <multisandbox_ram_control>` at VEE Port build (disabled by default).
 
+Simulator
+~~~~~~~~~
+
+- Added compatibility with IntelliJ IDEA IDE to debug applications. 
+- Added message when waiting for a connection in debug mode.
+- Fixed debugger verbose mode.
+- Removed bootstrap thread from the debugger vision.
+- Fixed debugger suspend count on threads handling.
+- Fixed stop issue on static method entry breakpoint.
+
 SOAR
 ~~~~
 
