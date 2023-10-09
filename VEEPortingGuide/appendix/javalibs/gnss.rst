@@ -23,7 +23,7 @@ is issued, where ``<messageId>`` meaning is defined in the next table:
    | -3          | Read data is invalid.                                  |
    +-------------+--------------------------------------------------------+
    | -4          | An operation needing the GNSS engine to be started was |
-   |             | attemted with the engine off.                          |
+   |             | attemtped with the engine off.                         |
    +-------------+--------------------------------------------------------+
 
 ..
