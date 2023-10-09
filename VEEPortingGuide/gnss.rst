@@ -56,7 +56,7 @@ Application project to use the GNSS library.
 
    <dependency org="com.microej.pack.gnss" name="gnss-pack" rev="2.0.0"/>
 
-.. _GNSS API Module: https://repository.microej.com/modules/ej/api/gnss/
+.. _GNSS API Module: https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/gnss/
 
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
