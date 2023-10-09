@@ -53,8 +53,8 @@ The solution is to use a JDK 11 or a higher LTS version (``11``, ``17`` or ``21`
 
   Alternatively, you can set the ``JAVA_HOME`` environment variable to point to the installation directory of the JDK.
 
-- For Android Studio and IntelliJ IDEA, go to ``File`` > ``Settings...`` > ``Build, Execution, Deployment`` > ``Build Tools`` > ``Gradle``,
-  and make sure the selected ``Gradle JVM`` is a supported JDK version:
+- For Android Studio and IntelliJ IDEA, go to :guilabel:`File` > :guilabel:`Settings...` > :guilabel:`Build, Execution, Deployment` > :guilabel:`Build Tools` > :guilabel:`Gradle`,
+  and make sure the selected :guilabel:`Gradle JVM` is a supported JDK version:
 
 	.. figure:: images/intellij-project-jdk.png
 		:alt: Project JDK in Android Studio and IntelliJ IDEA
@@ -97,7 +97,7 @@ If the following message is displayed when publishing a module::
 
 	The project version must be defined.
 
-it means the ``version`` property is missing and should be defined in the module build file.
+It means the ``version`` property is missing and should be defined in the module build file.
 See :ref:`sdk_6_publish_project` for more information.
 
 Fail to load a VEE Port as dependency
@@ -164,7 +164,7 @@ or for all builds by setting the following property in the ``$USER_HOME/.gradle/
 Missing Tasks in the Gradle view of Android Studio
 --------------------------------------------------
 
-In some cases, Android Studio may not build all the Gradle tasks, the ``Task list not built...`` message is displayed:
+In some cases, Android Studio may not build all the Gradle tasks, the :guilabel:`Task list not built...` message is displayed:
 
 	.. figure:: images/android-studio-gradle-tasks.png
 		:alt: Incomplete Gradle tasks list in Android Studio
@@ -173,13 +173,13 @@ In some cases, Android Studio may not build all the Gradle tasks, the ``Task lis
 
 To build all the Gradle tasks in Android Studio:
 
-- Go to ``File`` > ``Settings`` > ``Experimental``,
-- Enable the option: ``Configure all Gradle tasks during Gradle Sync (...)``.
+- Go to :guilabel:`File` > :guilabel:`Settings` > :guilabel:`Experimental`,
+- Enable the option: :guilabel:`Configure all Gradle tasks during Gradle Sync (...)`.
 
 Back in the Gradle task view:
 
 - Right-click on the project name,
-- Select ``Reload Gradle Project``.
+- Select :guilabel:`Reload Gradle Project`.
 
 	.. figure:: images/android-studio-reload-gradle-project.png
 		:alt: Reload the Gradle Project in Android Studio
