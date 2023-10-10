@@ -82,11 +82,40 @@ This section provides insights into common issues affecting performances on the 
 Format of UI Resources
 **********************
 
-Choosing the best resource format will reduce memory consumption and drawing time.
+One crucial aspect of optimizing an application is choosing the right image formats. Images play a significant role in an app and may take up a lot of memory. Therefore, selecting the best image format is essential. It helps reduce memory usage, speed up the app, and improve its overall performance. 
 
-:ref:`This documentation<section_image_display_output>` explains the different image formats.
+There are a few aspects to take into account when dealing with images formats: 
 
-Storing UI resources in the fastest memory (internal flash or RAM) will also affect greatly performances.
+Decoding Immutable Images
++++++++++++++++++++++++++
+
+Immutable images are graphical resources that cannot be altered. These images can be converted for display either during the build-time process, using the Image Generator, or at run-time, utilizing the appropriate decoder library.
+
+The decision between these two approaches depends on the project's specific requirements. **Decoding at run-time** is a good choice when storage space is limited and offers greater flexibility. However, it may require more processing power and result in slower performance. Conversely, **decoding at build time** reduces the computational workload during run-time and is well-suited for devices with stringent performance demands, though it may sacrifice some flexibility in the process.
+
+There are multiple output formats that can be used to convert the images, you can find all of them here: `Output Formats <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MicroUI/images.html#display-output-format>`_
+
+Cached Images
++++++++++++++
+
+Caching images in your application can greatly enhance its performance and memory efficiency. It enables your app to load images quickly, resulting in a smoother user experience, and speeds up the development process by eliminating the need to regenerate images with every launch.
+
+The cache is enabled by default. It may be disabled by setting the `Application option <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/applicationOptions.html#application-options>`_ `ej.microui.imageConverter.disableCache` to `true`.
+
+Disabling caching may be useful during development when images are frequently changed, ensuring that the latest versions are always used. The decision to enable or disable caching should align with your specific application's requirements and development workflow. 
+
+Please go to the `Cached Images <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MicroUI/images.html#caching-generated-images>`_ Section for more info. 
+
+Images Heap
++++++++++++
+
+The images heap stores not only the actual pictures but also some temporary stuff needed when decoding images, like puzzle pieces needed to put the picture together. Once the picture is complete, these puzzle pieces are thrown away to free up space.
+
+If an image can't be grabbed directly using a specific method, it's saved in the images heap. The size of this heap can be adjusted to fit the needs of your app using a property called `ej.microui.memory.imagesheap.size`.
+
+In simple terms, the images heap is like a storage closet for your app's images, and managing its size can help your app run smoothly and efficiently.
+
+Please go to the `Images Heap section <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MicroUI/images.html#images-heap>`_ for more info. 
 
 Widget Hierarchy and Layout
 ***************************
