@@ -156,7 +156,7 @@ Run an application on i.MX RT595 EVK
 
 To deploy ``Demo-Wearable-VG`` application on your board, you will have to:
 
-* Get an Evaluation License
+* Get an :ref:`Evaluation License <sdk_eula>`
 * Build the Executable
 * Flash the board
 
