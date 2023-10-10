@@ -59,7 +59,7 @@ Scrollable List
    :align: center
 
 - The list can be optimized for the scroll (to exclude the items that are outside the visible area).
-  A scrollable list is available at `Widget Demo <https://github.com/MicroEJ/Demo-Widget/tree/master/com.microej.demo.widget/src/main/java/com/microej/demo/widget/scrollablelist/widget>`__.
+  A scrollable list is available at `Widget Demo <https://github.com/MicroEJ/Demo-Widget/blob/master/com.microej.demo.widget/src/main/java/com/microej/demo/widget/common/scroll/ScrollableList.java>`__.
 - It can be copied in the project and replace the list:
 
   .. code:: java 
