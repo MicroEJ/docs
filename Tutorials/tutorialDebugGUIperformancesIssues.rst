@@ -93,18 +93,18 @@ Immutable images are graphical resources that cannot be altered. These images ca
 
 The decision between these two approaches depends on the project's specific requirements. **Decoding at run-time** is a good choice when storage space is limited and offers greater flexibility. However, it may require more processing power and result in slower performance. Conversely, **decoding at build time** reduces the computational workload during run-time and is well-suited for devices with stringent performance demands, though it may sacrifice some flexibility in the process.
 
-There are multiple output formats that can be used to convert the images, you can find all of them here: `Output Formats <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MicroUI/images.html#display-output-format>`_
+There are multiple output formats that can be used to convert the images, you can find all of them here: :ref:`Output Formats<section_image_display_output>` .
 
 Cached Images
 +++++++++++++
 
 Caching images in your application can greatly enhance its performance and memory efficiency. It enables your app to load images quickly, resulting in a smoother user experience, and speeds up the development process by eliminating the need to regenerate images with every launch.
 
-The cache is enabled by default. It may be disabled by setting the `Application option <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/applicationOptions.html#application-options>`_ `ej.microui.imageConverter.disableCache` to `true`.
+The cache is enabled by default. It may be disabled by setting the :ref:`Application option<microui_application_options>` `ej.microui.imageConverter.disableCache` to `true`.
 
 Disabling caching may be useful during development when images are frequently changed, ensuring that the latest versions are always used. The decision to enable or disable caching should align with your specific application's requirements and development workflow. 
 
-Please go to the `Cached Images <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MicroUI/images.html#caching-generated-images>`_ Section for more info. 
+Please go to the :ref:`Cached Images<section_caching_generated_images>` Section for more info. 
 
 Images Heap
 +++++++++++
@@ -115,7 +115,7 @@ If an image can't be grabbed directly using a specific method, it's saved in the
 
 In simple terms, the images heap is like a storage closet for your app's images, and managing its size can help your app run smoothly and efficiently.
 
-Please go to the `Images Heap section <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MicroUI/images.html#images-heap>`_ for more info. 
+Please go to the :ref:`Images Heap section<images_heap>` for more info. 
 
 Widget Hierarchy and Layout
 ***************************
