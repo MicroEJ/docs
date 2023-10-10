@@ -275,6 +275,74 @@ Copy the commands into a function and call it from the main application at the s
 
 Here is an example of a simple ``Robot``.
 
+    .. code-block:: java
+
+        public class DemoRobot {
+            public static void runDemo1() {
+            System.out.println("DemoRobot.runDemo1() -- START");
+            final Robot robot = new Robot();
+
+            robot.press(33, 130);
+            robot.pause(82);
+            robot.release(33, 130);
+            robot.pause(1972);
+            robot.press(401, 248);
+            robot.pause(78);
+            robot.release(401, 248);
+            robot.pause(1047);
+            robot.press(419, 249);
+            robot.pause(43);
+            robot.release(419, 249);
+            robot.pause(1035);
+            robot.press(407, 245);
+            robot.pause(39);
+            robot.release(407, 245);
+            robot.pause(1012);
+            robot.press(425, 250);
+            robot.pause(20);
+            robot.release(425, 250);
+            robot.pause(918);
+            robot.press(407, 249);
+            robot.pause(58);
+            robot.release(407, 249);
+            robot.pause(1000);
+            robot.press(302, 250);
+            robot.pause(39);
+            robot.release(302, 250);
+            robot.pause(918);
+            robot.press(307, 243);
+            robot.pause(59);
+            robot.move(304, 232);
+            robot.pause(19);
+            robot.release(304, 232);
+            robot.pause(922);
+            System.out.println("DemoRobot.runDemo1() -- END");
+          }
+        }      
+
+And now we plug it into our main application.
+
+    .. code-block:: java
+
+        public class MainApp {
+            public static void main(String[] args) {
+                // initialization
+                // ...
+
+                // Start the robot.
+                DemoRobot.runDemo1();
+            }
+        }
+
+This new application can run on both the simulator and on the board.
+
+And that’s it! We now have the basics to create and to play software robots to
+test our applications.
+
+Note that because we act at the UI level, whenever our application’s appearance
+changes, in particular if UI elements are moved around, we will need to update a
+new version of our robots to match the new UI.
+
 Going Further
 -------------
 
