@@ -253,14 +253,31 @@ In order to flash the ``Demo-Wearable-VG`` Application on i.MX RT595 EVK, the ap
          :align: center
          :scale: 70%
 
-Once the firmware is flashed, you should see the ``Demo-Wearable-VG`` running on your board.
+Once the firmware is flashed, you should see the ``Demo-Wearable-VG`` running on your board.      
 
-      .. figure:: images/getting-started-termite-application-output.png
-         :alt: Termite Application Output
-         :align: center
-         :scale: 70%
-      
-         Application logs on Termite
+.. raw:: html
+
+   <div style="display:block;margin-bottom:24px;">
+      <table>
+         <tr>
+            <td style="width:50%;text-align:center;vertical-align:middle;" alt="Application running on i.MXRT595-EVK">
+               <img src="../_images/getting-started-hardware-demo-running.png">
+            </td>
+            <td style="width:50%;text-align:center;vertical-align:middle;" alt="Termite Application Output">
+               <img src="../_images/getting-started-termite-application-output.png">
+            </td>
+         </tr>
+         <tr>
+            <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
+               Fig 1. Application running on i.MXRT595-EVK
+            </td>
+            <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
+               Fig 2. Application logs on Termite
+            </td>
+         </tr>
+      </table>
+   </div>
+
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
