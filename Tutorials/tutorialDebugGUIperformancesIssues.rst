@@ -1,12 +1,12 @@
 .. _tutorials_debug_gui_performances:
 
-How to Debug GUI Performance Issues
-===================================
+How to validate GUIs
+====================
 
 This document explains how to debug Graphical User Interface performance issues. It describes common pitfalls that can affect GUI performances, provides tools that allow to detect performance issues causes and how to solve them.
 
-General good coding practices
------------------------------
+Implementing GUIs effciently
+----------------------------
 
 Before using more advanced UI debugging techniques, the global application code quality should be reviewed. An overall good code quality will help to get good UI performances. It will help to get more efficient code and allow easier debugging and maintenance.
 
@@ -41,8 +41,8 @@ To avoid those pitfalls:
   - :ref:`Memory inspection tools<tutorial_discover_embedded_debugging_techniques.tools.memory_inspection>`.
   - :ref:`Heap Analyzer<heapdumper>`.
 
-Identifying the causes of bad performances
-------------------------------------------
+Benchmarking GUIs
+-----------------
 
 The process of rendering a frame of the UI consists of several parts:
 
@@ -70,13 +70,17 @@ The MicroUI Flush Visualizer tool can be used to investigate potential performan
 
 The documentation of MicroUI Flush Visualizer is available :ref:`here<microuiflushvisualizer>`.
 
+
+Debugging GUIs
+--------------
+
 High-level debugging and optimizations
---------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This section provides insights into common issues affecting performances on the high-level side. The following advices will help reduce the MWT processing and drawing time.
 
 Format of UI resources
-~~~~~~~~~~~~~~~~~~~~~~
+**********************
 
 Choosing the best resource format will reduce memory consumption and drawing time.
 
@@ -85,7 +89,7 @@ Choosing the best resource format will reduce memory consumption and drawing tim
 Storing UI resources in the fastest memory (internal flash or RAM) will also affect greatly performances.
 
 Widget hierarchy and layout
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+***************************
 
 Keeping the widget hierarchy as simple as possible will help to reduce the "MWT processing" part time. Improving the widget hierarchy design may help reduce the number of widgets or the number of them that are rendered when a certain part of the UI is updated.
 
@@ -95,7 +99,7 @@ Here are tools that allow to detect issues with the widget hierarchy:
 - :ref:`MWT bounds highlighting<mwt_how_to_debug>` allows to visualize the bounds of the widgets, it is useful to detect overlapping widgets.
 
 Bad use of requestRender and requestLayout
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+******************************************
 
 The ``requestRender`` method requests a render of the widget on the display.
 
@@ -108,7 +112,7 @@ Another common issue is to request a layout where a render request would have be
 Documentation about rendering and layout is available :ref:`here<mwt_concepts>`.
 
 Animations implementation
-~~~~~~~~~~~~~~~~~~~~~~~~~
+*************************
 
 There are a few implementations possible for animations with MicroEJ. The way widgets are animated should be chosen according to the use case and the limitation of the hardware.
 
@@ -130,14 +134,14 @@ Animator and TimerTask mix
 A mix of the Animator and TimeTask approaches could be implemented in order to set a fixed framerate but also to rely on the screen flush.
 
 Hardware and low-level debugging and optimizations
---------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This section provides insights into the main spots to check regarding the low-level and the hardware.
 
 Please see the VEE Porting Guide :ref:`Graphical User Interface<pack_gui>` documentation for more information about the UI port.
 
 At project level
-~~~~~~~~~~~~~~~~
+****************
 
 Compiling optimization options
 ++++++++++++++++++++++++++++++
@@ -153,7 +157,7 @@ Another point that should be taken into consideration is the amount of other tas
 The total workload may be too high for the CPU, therefore, the UI task cannot get access to the required amount of computing power.
 
 At hardware level
-~~~~~~~~~~~~~~~~~
+*****************
 
 Hardware capabilities
 +++++++++++++++++++++
@@ -181,7 +185,7 @@ In an MCU, there may be different types of RAM available that have different pro
 The fastest RAM should be chosen for the buffers if its size allows it.
 
 Flush policy
-~~~~~~~~~~~~
+************
 
 As described in the :ref:`section_display` page, there are several flush policies that can be implemented.
 The best flush policy should be selected according to the hardware capabilities. Generally, the best flush policy is the switch mode.
