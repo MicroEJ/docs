@@ -9,7 +9,7 @@ The SDK provides Gradle plugins that allow for seamless integration in Android S
 For comprehensive installation instructions, please refer to the :ref:`SDK 6 Installation <sdk_6_install>` section.
 Simply follow the steps related to Android Studio IDE when relevant.
 
-
+TODO: use JDK 11 + provide init script for Android
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

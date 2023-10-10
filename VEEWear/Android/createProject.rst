@@ -230,7 +230,7 @@ The next steps show how to configure the Android or Wear OS application to decla
 
         .. note::
             It is required to select a VEE Port that holds an Android runtime implementation for native APIs (e.g., MicroEJ Foundation libraries).
-            Read XXX to learn how to configure your VEE Port for Android.
+            Read :ref:`VEE Port <XXX>` to learn how to configure your VEE Port for Android.
    
       - Select :guilabel:`Sync Now` from the notification bar to synchronize your project files.
 
