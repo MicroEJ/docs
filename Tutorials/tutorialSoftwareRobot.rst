@@ -1,0 +1,286 @@
+.. _tutorials_software_robot:
+
+How to test a GUI application with a (software) robot
+=====================================================
+
+This documents presents how to test a GUI application with a software robot for robotic process automation (RPA).
+
+Robot tests and traditional unit tests are different but both are useful.
+Traditional unit tests validate the systems through calls to the API (internal or external). Robot tests validate the systems by mimicking the human user behavior directly in the GUI.
+The robot implementation proposed here targets the following errors detection:
+
+* OutOfMemory
+* StackOverflow
+* MEJ32 and platform librairies error
+* Widget sequence validation
+
+The following document covers:
+
+* Recording human touch events on the simulator or on the embedded platform
+* Running recorded events on the simulator or on the embedded platform
+
+The following document does not cover:
+
+* The display rendering validation
+* Integration of the robot into an automatic JUnit test suite
+
+We will now present the basic architecture and code required to create and to run a robot within a MicroEJ application on the simulator and embedded platform.
+
+In the following sections, we assume:
+
+* The MicroEJ Java application is based in MicroUI 2.x, MWT 2.x and Widget 2.x
+* The MicroEJ platform has a display interface and a touch controller (using the MicroUI EventGenerator for Pointer)
+ 
+Overview
+--------
+
+The robot creation process is twofold. First, we have to record and store the human user events.
+Second, we have to play them back with the robot.
+
+To record the events we will develop a custom EventHandler and we will inject
+it into the EventGenerator of Pointer events. The handler will record the
+events and generate the Java code to play them back.
+
+Then, we will inject this code into our main application and run it.
+
+NB: In the next sections, we show code that is mostly functional. To use it in our project, we have to put it in our MicroEJ SDK/Studio workspace and add the proper imports.
+
+
+Record the Robot input events
+-----------------------------
+
+We will now look at how to record the events.
+
+Record events with WatchPointerEventHandler
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here is the custom ``EventHandler`` named ``WatchPointerEventHandler``.
+
+   .. code-block:: java
+
+      private class WatchPointerEventHandler implements EventHandler {
+        private final EventHandler initialEventHandler;
+        private long lastTimeEvent;
+
+        public WatchPointerEventHandler(final EventHandler eventHandler) {
+          this.initialEventHandler = eventHandler;
+          this.lastTimeEvent = System.currentTimeMillis();
+        }
+
+        @Override
+        public boolean handleEvent(int event) {
+          // Forward events to the initial EventHandler.
+          final boolean ret = this.initialEventHandler.handleEvent(event);
+
+          if (Event.POINTER == Event.getType(event)) {
+            Pointer pointer = (Pointer) Event.getGenerator(event);
+            final int action = Buttons.getAction(event);
+            onAction(action);
+          }
+          return ret;
+        }
+
+          private void onAction(int action) {
+              String command;
+              boolean isCommand = true;
+              switch (action) {
+              case Buttons.PRESSED:
+                  command = "robot.press(" + pointer.getX() + ", " + pointer.getY() + ");";
+                  break;
+              case Pointer.MOVED:
+              case Pointer.DRAGGED:
+                  command = "robot.move(" + pointer.getX() + ", " + pointer.getY() + ");";
+                  break;
+              case Buttons.RELEASED:
+                  command = "robot.release(" + pointer.getX() + ", " + pointer.getY() + ");";
+                  break;
+              default:
+                  isCommand = false;
+              }
+
+              if (isCommand) {
+                  final long delta = System.currentTimeMillis() - this.lastTimeEvent;
+                  this.lastTimeEvent = System.currentTimeMillis();
+                  System.out.println("robot.pause(" + delta + ");");
+                  System.out.println(command);
+              }
+          }
+      }
+
+This EventHandler does two things.
+
+\(1) It records all pressed, moved, dragged
+and released events as well as the time between each event (we want to play our robot at the same speed as the human).
+
+(2) It forwards all events to the
+initial EventHandler. Without that, our handler would hijack the initial handler and our UI would be unresponsive because it would receive no event.
+
+Note that ``WatchPointerEventHandler`` outputs the commands on the standard
+output. More on this a bit later.
+
+Replace default EventHandler with WatchPointerEventHandler 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Next, we setup the handler:
+
+    .. code-block:: java
+
+        public class WatchPointer {
+          final Pointer pointer;
+          final EventHandler initialEventHandler;
+
+          private class WatchPointerEventHandler implements EventHandler {
+            // snip
+          }
+
+          public WatchPointer() {
+            // (1)
+            this.pointer = EventGenerator.get(Pointer.class, 0);
+            this.initialEventHandler = this.pointer.getEventHandler();
+          }
+
+          /**
+          * Starts monitoring activity by setting up a new EventHandler.
+          */
+          public void start() {
+            // (2)
+            this.pointer.setEventHandler(new WatchPointerEventHandler(this.initialEventHandler));
+          }
+
+          /**
+          * Stops monitoring activity by restoring the initial EventHandler.
+          */
+          public void stop() {
+            // (3)
+            this.pointer.setEventHandler(this.initialEventHandler);
+          }
+        }
+
+This code (1) saves the default ``EventHandler`` of the ``Pointer`` to pass it to the
+``WatchPointerEventHandler`` so that it can forward the events. We start (2) the
+recording by replacing the ``EventHandler`` and we stop (3) it by restoring the
+initial ``EventHandler``.
+
+Use WatchPointer in our main application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The API of our ``WatchPointer`` is straightforward, just ``start()`` and ``stop()``
+the recording of events. A good place to start the recording is after the
+initialization of your GUI.
+
+    .. code-block:: java
+
+        public class MainApp {
+            public static void main(String[] args) {
+                // Initialization.
+                // ...
+
+                // Start recording events.
+                new WatchPointer().start();
+            }
+        }
+
+And that’s it!
+
+The easiest way to record our robots is to run it on the platform simulator.
+The events will be outputted in the MicroEJ SDK console.
+
+The robot can also be run on board with the ``WatchPointer`` enabled. The events will be outputted on the trace output (typically a UART).
+
+We will now see how to run our robot with the recorded events.
+
+Run a Robot
+-----------
+
+Play the Robot
+~~~~~~~~~~~~~~
+
+Playing a robot is easy. We just need to send the recorded events. Here is our
+Robot class.
+
+    .. code-block:: java
+
+        public class Robot {
+
+          private final Pointer pointer;
+
+          /**
+          * Creates a Robot.
+          */
+          public Robot() {
+            this.pointer = EventGenerator.get(Pointer.class, 0);
+          }
+
+          /**
+          * Pauses for n milliseconds.
+          *
+          * @param delay
+          *            the delay to pause.
+          */
+          public void pause(long delay) {
+            try {
+              Thread.sleep(delay);
+            } catch (InterruptedException e) {
+              e.printStackTrace();
+            }
+          }
+
+          /**
+          * Sends press event at the given coordinate.
+          *
+          * @param x
+          *            the x
+          * @param y
+          *            the y
+          */
+          public void press(int x, int y) {
+            this.pointer.move(x, y);
+            this.pointer.send(Pointer.PRESSED, 0);
+          }
+
+          /**
+          * Sends move event at the given coordinate.
+          *
+          * @param x
+          *            the x
+          * @param y
+          *            the y
+          */
+          public void move(int x, int y) {
+            this.pointer.move(x, y);
+          }
+
+          /**
+          * Sends release event at the given coordinate.
+          *
+          * @param x
+          *            the x
+          * @param y
+          *            the y
+          */
+          public void release(int x, int y) {
+            this.pointer.move(x, y);
+            this.pointer.send(Pointer.RELEASED, 0);
+          }
+        }
+
+The Robot API implements the commands that were generated in the ``WatchPointerEventHandler``. Through the basic
+operations ``press()``, ``move()`` and ``release()`` the click and drag actions are simulated. With the ``pause()`` we ensure we do it exactly at the same speed as the human who
+recorded it.
+
+Use Robot in our main application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Copy the commands into a function and call it from the main application at the same place where ``WatchPointer`` was called.
+
+Here is an example of a simple ``Robot``.
+
+
+
+..
+   | Copyright 2023, MicroEJ Corp. Content in this space is free 
+   for read and redistribute. Except if otherwise stated, modification 
+   is subject to MicroEJ Corp prior approval.
+   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
+   copyrights are the property of their respective owners.
+
