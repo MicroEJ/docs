@@ -275,7 +275,290 @@ Copy the commands into a function and call it from the main application at the s
 
 Here is an example of a simple ``Robot``.
 
+Going Further
+-------------
 
+Split the Robot into Actions and Build Complex Scenario
+-------------------------------------------------------
+
+As we create more and more complex robots it is a good idea to put the various
+behaviors into separate functions so that we can create complex scenarios out of
+simple action blocks.
+
+Here is an example.
+
+  .. code-block:: java
+
+      public class DemoRobot {
+          final Robot robot;
+
+          /**
+          * Instantiates our Demo.
+          */
+          public void DemoRobot() {
+              this.robot = new Robot();
+          }
+
+          public void login() {
+              this.robot.press(33, 130);
+              this.robot.pause(82);
+              this.robot.release(33, 130);
+              this.robot.pause(1972);
+              this.robot.press(401, 248);
+              this.robot.pause(78);
+              this.robot.release(401, 248);
+              this.robot.pause(1047);
+          }
+
+          public void openMenuConfiguration() {
+              this.robot.press(425, 250);
+              this.robot.pause(20);
+              this.robot.release(425, 250);
+              this.robot.pause(918);
+              this.robot.press(407, 249);
+              this.robot.pause(58);
+              this.robot.release(407, 249);
+              this.robot.pause(1000);
+          }
+
+          public void closeMenuConfiguration() {
+              this.robot.press(307, 243);
+              this.robot.pause(59);
+              this.robot.move(304, 232);
+              this.robot.pause(19);
+              this.robot.release(304, 232);
+              this.robot.pause(922);
+          }
+
+          public void selectOption1() {
+              this.robot.press(407, 245);
+              this.robot.pause(39);
+              this.robot.release(407, 245);
+              this.robot.pause(1012);
+          }
+
+          public void selectOption2() {
+              this.robot.press(419, 249);
+              this.robot.pause(43);
+              this.robot.release(419, 249);
+              this.robot.pause(1035);
+          }
+
+          public void goToLogin() {
+              this.robot.press(302, 250);
+              this.robot.pause(39);
+              this.robot.release(302, 250);
+              this.robot.pause(918);
+          }
+
+          // Logins and tests open/close of configuration menu.
+          public void scenario1() {
+              try {
+                  login();
+                  openMenuConfiguration();
+                  closeMenuConfiguration();
+                  goToLogin();
+              } catch (Exception ex) {
+                  ex.printStackTrace();
+              }
+          }
+
+          // Logins and selects option 1 in configuration menu.
+          public void scenario2() {
+              try {
+                  login();
+                  openMenuConfiguration();
+                  selectOption1();
+                  goToLogin();
+              } catch (Exception ex) {
+                  ex.printStackTrace();
+              }
+          }
+
+          // Logins and selects option 2 in configuration menu.
+          public void scenario3() {
+              try {
+                  login();
+                  openMenuConfiguration();
+                  selectOption2();
+                  goToLogin();
+              } catch (Exception ex) {
+                  ex.printStackTrace();
+              }
+          }
+
+          // Endless loop with all three scenarios in random order.
+          public void scenarioLoop() {
+              Rand rand = new Random();
+              try {
+                  while (true) {
+                      switch (rand.nextInt(3)) {
+                      case 0:
+                          scenario1();
+                          break;
+                      case 1:
+                          scenario2();
+                          break;
+                      case 2:
+                          scenario3();
+                          break;
+                      }
+                  }
+              } catch (Exception ex) {
+                  ex.printStackTrace();
+              }
+          }
+      }
+
+Here we have the following basic actions:
+
+#. Logging.
+#. Opening the configuration menu.
+#. Closing the configuration menu.
+#. Selecting option 1.
+#. Selecting option 2.
+#. Going back to the login.
+
+From those actions we build 3 scenarios:
+
+#. Test the opening/closing of the configuration menu.
+#. Select the option 1 in the configuration menu.
+#. Select the option 2 in the configuration menu.
+
+And finally, we also have a “stress” scenario that endlessly go through the 3
+previous scenarios in random order.
+
+We can call each of those scenarios from our main application to test whatever we
+want to.
+
+Validate the Widget
+-------------------
+
+So far our Robot is pretty simple and can catch all raised exceptions and runtime errors.
+
+Depending on your application architecture, you most likely have some kind of
+central class that manages which is the main ``Widget`` currently displayed. For
+example you may use a ``TransitionContainer``. What we need, is a way to retrieve
+the ``Widget`` currently displayed.
+
+The idea is:
+(1) to record the ``Widget`` displayed before recording an action in
+our ``WatchPointerEventHandler`` and
+(2) to check that the ``Widget`` is displayed before playing an action in our ``Robot``.
+
+Let’s assume that we have a ``Main.getCurrentWidget()`` method that returns the
+current ``Widget``. We update ``WatchPointerEventHandler`` like this:
+
+  .. code-block:: java
+
+    private class WatchPointerEventHandler implements EventHandler {
+      private final EventHandler initialEventHandler;
+      private long lastTimeEvent;
+
+      public WatchPointerEventHandler(final EventHandler eventHandler) {
+        this.initialEventHandler = eventHandler;
+        this.lastTimeEvent = System.currentTimeMillis();
+      }
+
+      @Override
+      public boolean handleEvent(int event) {
+        // Forward events to the initial EventHandler.
+        final boolean ret = this.initialEventHandler.handleEvent(event);
+
+        if (Event.POINTER == Event.getType(event)) {
+          Pointer pointer = (Pointer) Event.getGenerator(event);
+          final int action = Buttons.getAction(event);
+          onAction(action);
+        }
+        return ret;
+      }
+
+        private void onAction(int action) {
+            String command;
+            boolean isCommand = true;
+            Widget currentWidget = Main.getCurrentWidget();
+
+            switch (action) {
+            case Buttons.PRESSED:
+                command = "robot.checkWidget(\"" + currentWidget.getClass().getName() + "\");\n"
+                    + "robot.press(" + pointer.getX() + ", " + pointer.getY() + ");";
+                break;
+            case Pointer.MOVED:
+            case Pointer.DRAGGED:
+                command = "robot.move(" + pointer.getX() + ", " + pointer.getY() + ");";
+                break;
+            case Buttons.RELEASED:
+                command = "robot.release(" + pointer.getX() + ", " + pointer.getY() + ");";
+                break;
+            default:
+                isCommand = false;
+            }
+
+            if (isCommand) {
+                final long delta = System.currentTimeMillis() - this.lastTimeEvent;
+                this.lastTimeEvent = System.currentTimeMillis();
+                System.out.println("robot.pause(" + delta + ");");
+                System.out.println(command);
+            }
+        }
+    }
+
+Conversely, we update Robot to add the ``checkWidget()`` method.
+
+  .. code-block:: java
+
+    public class Robot {
+        // snip
+
+      /**
+      * Ensures that the given Widget is displayed before proceeding to the next action.
+      *
+      * @param className
+      *            the class name of the Widget that is expected to be displayed.
+      *
+      * @throws InterruptedException
+      *             when the current Widget is different from the given Widget.
+      */
+      public void checkWidget(String className) throws InterruptedException {
+        final Widget lastShown = Main.getCurrentWidget();
+        final String lastShownName = lastShown.getClass().getName();
+        if (!className.equals(lastShownName)) {
+          throw new InterruptedException("Expected " + className + " got " + lastShownName);
+        }
+      }
+    }
+
+When we record new robots, we will record the current ``Widget`` before a press
+action is executed. And when we play the robots, we will ensure that the same
+``Widget`` is displayed before sending the press event. If the ``Widget`` is not the
+one recorded, ``checkWidget`` will raise an exception, otherwise, we proceed as before.
+
+JUnit
+~~~~~
+
+It is possible to integrate the robot into a JUnit test suite if we use ``assertEquals`` instead of raising an ``Exception``.
+
+Note: check https://github.com/MicroEJ/Example-Sandboxed-JUnit 3 for more information on the JUnit use.
+
+Add More Checks
+~~~~~~~~~~~~~~~
+
+We can also use our application’s API and check the various states of our
+application. For example, once we have activated some buttons, a motor should
+start or some other actions should be taken.
+
+We can use whatever we want to have a rock solid application!
+
+Performance Regression Framework
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``checkWidget()`` method can also be used as a performance regression
+framework. If a ``Widget`` display time becomes much slower because of a
+regression, assuming the robot was recorded by a “not too slow” human, our robot
+will fail with an ``Exception``.
+
+We can even lower manually (or automatically) the timings to make sure our UI is
+responsive.
 
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
