@@ -71,7 +71,7 @@ This chapter explains the different ways to create a new project.
             }
       
       .. note::
-         By default, Android Studio automatically save any file change, 
+         By default, Android Studio automatically saves any file change, 
          but requires the user to explicitly trigger the reload of a Gradle project when its configuration has changed.
          Therefore, when the configuration of a Gradle project has been updated, 
          you have to click on the :guilabel:`Sync Now` action which appears on the top-right of the editor:
