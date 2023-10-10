@@ -56,7 +56,9 @@ This file can be modified to fit your system configuration:
    * Update ``SYSVIEW_APP_NAME``, ``SYSVIEW_DEVICE_NAME``, and ``SYSVIEW_RAM_BASE`` defines to fit your system information.
    * To add MicroEJ Java threads management in SystemView tasks initialization:
   
-      * Add these includes ``#include "LLMJVM_MONITOR_SYSVIEW.h"`` and ``#include "LLTRACE_SYSVIEW_configuration.h"``.
+      * Add these includes ``#include "task.h"``, ``#include "LLMJVM_MONITOR_SYSVIEW.h"``, ``#include "LLTRACE_SYSVIEW_configuration.h"``, ``#include "SEGGER_SYSVIEW_configuration.h"``
+        and the include that declares the external variable ``pvMEJCoreEngineTask``. ``pvMEJCoreEngineTask`` must be the FreeRTOS task handle
+        used to create the MicroEJ Core Engine task. Initializes this variable at ``NULL`` before the call of the FreeRTOS scheduler.
       * In function ``_cbSendSystemDesc(void)``, add this instruction: ``SEGGER_SYSVIEW_SendSysDesc("N="SYSVIEW_APP_NAME",D="SYSVIEW_DEVICE_NAME",O=FreeRTOS");`` before ``SEGGER_SYSVIEW_SendSysDesc("I#15=SysTick");``.
       * Replace the ``Global function`` section with this code:
 
@@ -73,17 +75,52 @@ This file can be modified to fit your system configuration:
 
          static void SYSVIEW_MICROEJ_X_OS_SendTaskList(void){
             SYSVIEW_X_OS_TraceAPI.pfSendTaskList();
-            LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();
+
+         // The strategy to send tasks info is different in post mortem and live analysis.
+         #if (1 == SEGGER_SYSVIEW_POST_MORTEM_MODE)
+            /**
+            * POST MORTEM analysis
+            *
+            * Using the post mortem analysis, FreeRTOS tasks regularly call the SYSVIEW_MICROEJ_X_OS_SendTaskList() function when
+            * a packet (systemview event) is sent to the SEGGER circular buffer. It is necessary because the information of tasks
+            * must be regularly uploaded in the circular buffer in order to provide a valid analysis at any moment.
+            * Consequently, we only allow to call LLMJVM_MONITOR_SYSTEMVIEW_send_task_list() when the current task is the MicroEJ Core Engine.
+            */
+
+            /* Obtain the handle of the current task. */
+            TaskHandle_t xHandle = xTaskGetCurrentTaskHandle();
+            configASSERT( xHandle ); // Check the handle is not NULL.
+
+            // Check if the current task handle is the MicroEJ Core Engine task handle. pvMEJCoreEngineTask is an external variable.
+            if( xHandle == pvMEJCoreEngineTask){
+               // Launched by the MicroEJ Core Engine, we execute LLMJVM_MONITOR_SYSTEMVIEW_send_task_list()
+               LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();
+            }
+         #else
+            /**
+            * LIVE analysis
+            *
+            * Using the live analysis, the call of SYSVIEW_MICROEJ_X_OS_SendTaskList() is triggered by
+            * the SystemView Software through the J-Link probe. Consequently, the MicroEJ Core Engine task will never call
+            * the function LLMJVM_MONITOR_SYSTEMVIEW_send_task_list(). However, if the MicroEJ Core Engine task is created,
+            * the function must be called LLMJVM_MONITOR_SYSTEMVIEW_send_task_list().
+            */
+            // Check if the MicroEJ Core Engine task handle is not NULL. pvMEJCoreEngineTask is an external variable.
+            if( NULL != pvMEJCoreEngineTask){
+               // The MicroEJ Core Engine task is running, we execute LLMJVM_MONITOR_SYSTEMVIEW_send_task_list()
+               LLMJVM_MONITOR_SYSTEMVIEW_send_task_list();
+            }
+         #endif
          }
-         
+
          void SEGGER_SYSVIEW_Conf(void) {
             SYSVIEW_MICROEJ_X_OS_TraceAPI.pfGetTime = SYSVIEW_X_OS_TraceAPI.pfGetTime;
             SYSVIEW_MICROEJ_X_OS_TraceAPI.pfSendTaskList = SYSVIEW_MICROEJ_X_OS_SendTaskList;
-            
-            SEGGER_SYSVIEW_Init(SYSVIEW_TIMESTAMP_FREQ, SYSVIEW_CPU_FREQ,
-                                 &SYSVIEW_MICROEJ_X_OS_TraceAPI, _cbSendSystemDesc);
+
+            SEGGER_SYSVIEW_Init(SYSVIEW_TIMESTAMP_FREQ, SYSVIEW_CPU_FREQ, &SYSVIEW_MICROEJ_X_OS_TraceAPI, _cbSendSystemDesc);
             SEGGER_SYSVIEW_SetRAMBase(SYSVIEW_RAM_BASE);
          }
+
 
 5. Add in your BSP the MicroEJ C module files for SystemView: `com.microej.clibrary.thirdparty#systemview`_ (or check the differences between pre-installed SystemView and C files provided by this module)
 6. Add in your BSP the MicroEJ C module files for SystemView FreeRTOS support (or check the differences between pre-installed SystemView and C files provided by this module)
