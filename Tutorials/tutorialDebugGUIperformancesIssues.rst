@@ -191,6 +191,50 @@ As described in the :ref:`section_display` page, there are several flush policie
 The best flush policy should be selected according to the hardware capabilities. Generally, the best flush policy is the switch mode.
 
 
+Testing GUIs
+------------
+
+Before applying UI debugging or optimization techniques, the application behaviour should be tested. There are different ways of doing this.
+
+Test a GUI application with a Software Robot
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+It is possible to test the GUI of an application via robotic process automation (RPA).
+Robot tests mimick the human user behaviour in the GUI and can help detect various errors by
+automating behaviour which otherwise would cost too much effort and/or time to execute manually. 
+
+Here are the steps required to use a robot in the MicroEJ environment:
+
+- Record the robot input events
+    - For this, you need a simple EventHandler which intercepts incoming events, for example from a Pointer, then passes them on to the real event handler
+- Start the usage of the new 'Watcher' logic after the UI has started
+    - With this, the watching of the Pointer envents is initiated for the whole application.   
+- Create a Robot
+    - The robot is a simple class which uses its own Pointer to move and press at the coordinates it has been instructed.  
+    - The robot should have a method which starts a series of instructions to move the Pointer.
+- Execute the Robot method containing the instructions
+    - The intercepting Event Handling will record and for example log the input.   
+
+This simple way of automating GUI actions can be used to carry out real use cases and evaluate the results.
+
+For a complete example including working classes see here:  
+`Software Robot <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animator.html>`_ .
+
+
+Test a GUI application with the Test Automation Tool
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+To execute regression tests automatically and monitor minor changes th a GUI you can use the `Test Automation <https://github.com/MicroEJ/Tool-UITestAutomation>`_ Tool.
+The Tool provides an automated tool for UI testing.
+It is used to record a scenario of events on the classes Pointer, Button, LongButton and Joystick and replay the scenario. 
+While replaying a scenario, this tool can also compare the screen with screenshots captured while recording scenario.
+
+Scenarios can be stored in a custom path or a default path specified in application properties.
+
+The tool comparison functionality can be integrated with JUnit tests.
+
+For detailed information about the tool usage please 
+check the `README <https://github.com/MicroEJ/Tool-UITestAutomation/blob/master/TestAutomationTool/README.md>`_ in the repository.
+
+
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
