@@ -6,6 +6,9 @@ Installation
 This chapter will guide you through the installation process of the SDK on your workstation.
 First check the System Requirements before proceeding.
 
+
+.. _sdk_6_system_requirements:
+
 System Requirements
 -------------------
 
@@ -22,6 +25,9 @@ System Requirements
 
 - **Java Runtime Environment**
     - JDK 11 or higher LTS version (``11``, ``17`` or ``21``) - Eclipse Temurin or Oracle Distributions
+
+
+.. _sdk_6_check_jdk:
 
 Check your JDK version
 ----------------------
@@ -46,6 +52,9 @@ To check, run ``java -version`` in a terminal::
 
 If you don't have a JDK installed, 
 you can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`__ or `Oracle <https://www.oracle.com/fr/java/technologies/downloads/>`__.
+
+
+.. _sdk_6_install_gradle:
 
 Install Gradle
 --------------
@@ -73,6 +82,8 @@ It should display, amongst other information, the Gradle and the JVM versions:
   OS:           Windows 10 10.0 amd64
 
 
+.. _sdk_6_configure_repositories:
+
 Configure Repositories
 ----------------------
 
@@ -88,6 +99,9 @@ At this stage, you can already build a project from the command line,
 for example, by executing the command ``gradle build`` at the root of the project.
 But let's continue the installation process to have a complete development environment.
 
+
+.. _sdk_6_install_ide:
+
 Install the IDE
 ---------------
 
@@ -101,6 +115,9 @@ The three following IDEs are supported:
 Follow their respective documentation to install one of them.
 
 These 3 IDEs come with the Gradle plugin installed by default.
+
+
+.. _sdk_6_install_ide_plugin:
 
 Install the IDE Plugin
 ----------------------
