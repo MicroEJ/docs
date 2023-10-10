@@ -1,16 +1,16 @@
 .. _tutorials_debug_gui_performances:
 
-How to validate GUIs
+How to Validate GUIs
 ====================
 
 This document explains how to debug Graphical User Interface performance issues. It describes common pitfalls that can affect GUI performances, provides tools that allow to detect performance issues causes and how to solve them.
 
-Implementing GUIs effciently
-----------------------------
+Implementing GUIs Efficiently
+------------------------------
 
 Before using more advanced UI debugging techniques, the global application code quality should be reviewed. An overall good code quality will help to get good UI performances. It will help to get more efficient code and allow easier debugging and maintenance.
 
-Documents and tools to improve application code quality
+Documents and Tools to Improve Application Code Quality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is a list of documents or tools that help to improve the quality of application code:
@@ -19,12 +19,12 @@ Here is a list of documents or tools that help to improve the quality of applica
 - The :ref:`Get Started With GUI<tutorial_get_started_with_gui>` tutorial provides guidelines to start developing an efficient GUI.
 - The `SonarQube™ <https://github.com/MicroEJ/ExampleTool-Sonar>`_ source code quality analyzer allows to analyze an Application or Library code quality.
 
-Using recent versions of UI libraries
+Using Recent Versions of UI Libraries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Using the latest UI libraries (MicroUI, MWT, Widget, etc.) available may solve some performance issues. The most recent UI libraries fix some bugs that may affect performance and they provide tools and libraries that allow to implement more performant UIs.
 
-Memory management
+Memory Management
 ~~~~~~~~~~~~~~~~~
 
 The Java management of memory may affect UI performances:
@@ -74,12 +74,12 @@ The documentation of MicroUI Flush Visualizer is available :ref:`here<microuiflu
 Debugging GUIs
 --------------
 
-High-level debugging and optimizations
+High-level Debugging and Optimizations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This section provides insights into common issues affecting performances on the high-level side. The following advices will help reduce the MWT processing and drawing time.
 
-Format of UI resources
+Format of UI Resources
 **********************
 
 Choosing the best resource format will reduce memory consumption and drawing time.
@@ -88,7 +88,7 @@ Choosing the best resource format will reduce memory consumption and drawing tim
 
 Storing UI resources in the fastest memory (internal flash or RAM) will also affect greatly performances.
 
-Widget hierarchy and layout
+Widget Hierarchy and Layout
 ***************************
 
 Keeping the widget hierarchy as simple as possible will help to reduce the "MWT processing" part time. Improving the widget hierarchy design may help reduce the number of widgets or the number of them that are rendered when a certain part of the UI is updated.
@@ -98,7 +98,7 @@ Here are tools that allow to detect issues with the widget hierarchy:
 - :ref:`Widget debug utilities<widget_library_debug_utilities>` provides tools to visualize the widget tree, count the numbers of widgets or see their bounds.
 - :ref:`MWT bounds highlighting<mwt_how_to_debug>` allows to visualize the bounds of the widgets, it is useful to detect overlapping widgets.
 
-Bad use of requestRender and requestLayout
+Bad Use of requestRender and requestLayout
 ******************************************
 
 The ``requestRender`` method requests a render of the widget on the display.
@@ -111,7 +111,7 @@ Another common issue is to request a layout where a render request would have be
 
 Documentation about rendering and layout is available :ref:`here<mwt_concepts>`.
 
-Animations implementation
+Animations Implementation
 *************************
 
 There are a few implementations possible for animations with MicroEJ. The way widgets are animated should be chosen according to the use case and the limitation of the hardware.
@@ -133,22 +133,22 @@ Animator and TimerTask mix
 
 A mix of the Animator and TimeTask approaches could be implemented in order to set a fixed framerate but also to rely on the screen flush.
 
-Hardware and low-level debugging and optimizations
+Hardware and Low-level Debugging and Optimizations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This section provides insights into the main spots to check regarding the low-level and the hardware.
 
 Please see the VEE Porting Guide :ref:`Graphical User Interface<pack_gui>` documentation for more information about the UI port.
 
-At project level
+At Project Level
 ****************
 
-Compiling optimization options
+Compiling Optimization Options
 ++++++++++++++++++++++++++++++
 
 The project should be configured to bring the best performances with compiling optimization options correctly set up.
 
-RTOS tasks environment
+RTOS Tasks Environment
 ++++++++++++++++++++++
 
 The priority of the UI task should be set high enough to avoid too many preemptions that may induce bad UI performances.
@@ -156,10 +156,10 @@ The priority of the UI task should be set high enough to avoid too many preempti
 Another point that should be taken into consideration is the amount of other tasks that are running at the same time as the UI task.
 The total workload may be too high for the CPU, therefore, the UI task cannot get access to the required amount of computing power.
 
-At hardware level
+At Hardware Level
 *****************
 
-Hardware capabilities
+Hardware Capabilities
 +++++++++++++++++++++
 
 MCUs and SoCs may have access to various hardware IPs to speed up the UI. The UI port should exploit all of them to get the best performance.
@@ -169,7 +169,7 @@ Then, driving a display implies intensive memory usage, a DMA should be used whe
 For example, during the back copy if the flush policy is in switch mode or during your flush if your display is driven through SPI (if there is a DMA dedicated to the SPI port).
 For more information about the flush policy, please read our documentation about :ref:`section_display`.
 
-Hardware configuration
+Hardware Configuration
 ++++++++++++++++++++++
 
 Each of the hardware components such as SPI, DMA or LCD controller must be configured to bring the best performances achievable.
@@ -177,14 +177,14 @@ This implies to read carefully the datasheet of the MCU and the display and dete
 
 Another example of configuration with DMAs, a DMA has often a burst mode to transfer data, the UI port should use this mode to maximize performance.
 
-Buffers location in memory
+Buffers Location in Memory
 ++++++++++++++++++++++++++
 
 An important step during the development of the UI integration is the memory location of the buffers that will use the GUI to draw to the display.
 In an MCU, there may be different types of RAM available that have different properties in terms of quantity and speed.
 The fastest RAM should be chosen for the buffers if its size allows it.
 
-Flush policy
+Flush Policy
 ************
 
 As described in the :ref:`section_display` page, there are several flush policies that can be implemented.
@@ -196,7 +196,7 @@ Testing GUIs
 
 Before applying UI debugging or optimization techniques, the application behaviour should be tested. There are different ways of doing this.
 
-Test a GUI application with a Software Robot
+Test a GUI Application with a Software Robot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 It is possible to test the GUI of an application via robotic process automation (RPA).
 Robot tests mimick the human user behaviour in the GUI and can help detect various errors by
@@ -220,7 +220,7 @@ For a complete example including working classes see here:
 `Software Robot <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animator.html>`_ .
 
 
-Test a GUI application with the Test Automation Tool
+Test a GUI Application with the Test Automation Tool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To execute regression tests automatically and monitor minor changes th a GUI you can use the `Test Automation <https://github.com/MicroEJ/Tool-UITestAutomation>`_ Tool.
 The Tool provides an automated tool for UI testing.
