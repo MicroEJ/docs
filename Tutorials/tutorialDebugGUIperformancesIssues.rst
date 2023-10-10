@@ -3,7 +3,9 @@
 How to Validate GUIs
 ====================
 
-This document explains how to debug Graphical User Interface performance issues. It describes common pitfalls that can affect GUI performances, provides tools that allow to detect performance issues causes and how to solve them.
+This document explains how to validate Graphical User Interfaces. 
+It describes common pitfalls that can affect GUI performances, provides tools that allow to detect performance issues and how to solve them, 
+and finally offers ways to test GUIs automatically.
 
 Implementing GUIs Efficiently
 ------------------------------
