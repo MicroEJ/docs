@@ -1,7 +1,7 @@
 .. _tutorials_debug_gui_performances:
 
-How to debug GUI performance issue
-==================================
+How to Debug GUI Performance Issues
+===================================
 
 This document explains how to debug Graphical User Interface performance issues. It describes common pitfalls that can affect GUI performances, provides tools that allow to detect performance issues causes and how to solve them.
 
