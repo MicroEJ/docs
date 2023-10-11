@@ -4,16 +4,16 @@ Offloading
 ==========
 
 Many modern smartwatches rely on a high-power microprocessor (such as a Qualcomm Snapdragon) running Android.
-Integrating an additional low-power microcontroller to the hardware of the watch allows to offload a part of the work of the high-power microprocessor and thus increase the battery life.
-Keeping a high-power microprocessor on the hardware allows to keep the ability to show high-performance animations and to provide access to the Android ecosystem.
+Integrating an extra low-power microcontroller into the watch's hardware enables the delegation of specific tasks from the main microprocessor, resulting in an increased battery life.
+Keeping a powerful microprocessor on the hardware ensures the ability to display high-performance animations and access the Android ecosystem.
 
 Solution
 --------
 
-VEE Wear offers a comprehensive solution to develop the software on this dual architecture:
+VEE Wear offers a comprehensive solution  for software development on this dual architecture:
 
-- VEE allows to run an application programmed with high-level code and virtualization on the microcontroller
-- the :ref:`Android Compatibility Kit <runnning_on_android>` allows to execute the same application on the microprocessor without programming it a second time
+- MicroEJ VEE enables the execution of applications written in high-level code through virtualization on the microcontroller.
+- the :ref:`Android Compatibility Kit <runnning_on_android>` allows the execution of the same application on the microprocessor without the need for re-implementation.
 - the Offloading Framework allows to switch between the two processors depending on their capabilities and on the watch design
 
 One Code, Two Targets
