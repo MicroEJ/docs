@@ -821,6 +821,35 @@ Enables :ref:`soar_binary_code_verifier` during application build.
 In the context of building a Standalone Application, the bytecode verifier is, by default, disabled to prioritize performance. In this case, the code is considered trusted.
 Conversely, when building a Sandboxed Application, the bytecode verifier is automatically enabled by default. This is particularly important when dealing with untrusted third-party code.
 
+.. _options_gc:
+
+Group: Garbage Collector
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _option_gc_stack_size:
+
+Option(text): GC mark stack size
+""""""""""""""""""""""""""""""""
+
+*Option Name*: ``com.microej.runtime.core.gc.markstack.levels.max``
+
+*Default value*: ``32``
+
+*Description*:
+
+Indicates the quantity of items in the :ref:`Garbage Collector <runtime_gc>`'s mark stack.
+The mark stack is used by the Garbage Collector for identifying live objects within the heap through a depth-first search approach.
+Once the mark stack reaches its capacity, the Garbage Collector proceeds to inspect heap memory,
+which may slow down garbage collection performance.
+
+You can receive a notification when the mark stack limit is reached by implementing the following hook:
+
+.. code-block:: c
+
+   void LLMJVM_on_GC_MarkStackOverflow_reached(void) {
+      // When entering here, the GC mark stack is undersized, which may affect GC performance.
+      // It is recommended to either increase the GC mark stack size or reduce the object graph depth.
+   }
 
 Category: Kernel
 ^^^^^^^^^^^^^^^^
