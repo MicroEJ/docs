@@ -6,10 +6,6 @@ Installation
 This chapter will guide you through the installation process of the SDK on your workstation.
 First check the System Requirements before proceeding.
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a9fb610b (M0306SP-5 Add Getting Started SDK 6 and RT595)
 .. _sdk_6_system_requirements:
 
 System Requirements
@@ -29,12 +25,8 @@ System Requirements
 - **Java Runtime Environment**
     - JDK 11 or 17 - Eclipse Temurin or Oracle Distributions
 
-<<<<<<< HEAD
 
 .. _sdk_6_check_jdk:
-=======
-.. _sdk_6_java_version:
->>>>>>> a9fb610b (M0306SP-5 Add Getting Started SDK 6 and RT595)
 
 Check your JDK version
 ----------------------
