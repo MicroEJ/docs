@@ -43,6 +43,7 @@ Read `Create a Project <https://developer.android.com/studio/projects/create-pro
    The project template in Android Studio defines a default ``repositories`` configuration in the ``settings.gradle.kts`` file of the project like below:
 
    .. code-block:: kotlin
+      
       pluginManagement {
          repositories {
             google()
