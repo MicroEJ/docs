@@ -77,7 +77,8 @@ Assuming that a Gradle project with an Android application is now opened in Andr
       However, the MicroEJ SDK 6 is not yet fully compatible with JDK 17 so it is required to use AGP 7.4.2 and JDK 11.
       We recommend using the following configuration in the root build file:
       
-      .. parsed-literal::
+      .. code-block:: kotlin
+         
          id("com.android.application") version "7.4.2" apply false
          id("org.jetbrains.kotlin.android") version "1.8.10" apply false
 
