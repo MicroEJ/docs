@@ -13,7 +13,7 @@ The recommended project structure to get started is to have a basic multi-projec
 and one subproject for the MicroEJ Application.
 The MicroEJ Application defines code that will run on both MicroEJ VEE and Android, while the Android application includes wrapper code and logic specific to Android.
 
-What follows is the directory and file structure of a standard project:
+What follows is the directory and file structure of a typical project:
 
 .. code-block:: text
 
@@ -207,7 +207,7 @@ The next steps show how to configure the Android or Wear OS application to decla
             ...
          }
 
-      The support library ``microej-application`` allows running a MicroEJ Application on Android using the MicroEJ support engine.
+      The support library ``microej-application`` allows running a MicroEJ Application in an Android Activity using the MicroEJ support engine.
 
    .. tab:: Wear OS
 
@@ -218,7 +218,7 @@ The next steps show how to configure the Android or Wear OS application to decla
             ...
          }
 
-      The support library ``microej-wearos`` allows running a MicroEJ Application on Wear OS using the MicroEJ support engine.
+      The support library ``microej-wearos`` allows running a MicroEJ Application in a Wear OS WatchFaceService using the MicroEJ support engine.
 
 - Add a dependency to the MicroEJ Application using the ``microejApp`` configuration, for example:
 
