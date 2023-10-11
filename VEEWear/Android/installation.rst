@@ -11,7 +11,7 @@ Simply follow the steps related to Android Studio when relevant.
 
 In addition to installing MicroEJ SDK 6, make sure to comply with the requirements listed in the next sections.
 
-JDK version
+JDK Version
 -----------
 
 Not all features of MicroEJ SDK 6 are compatible with JDK 15 and higher.

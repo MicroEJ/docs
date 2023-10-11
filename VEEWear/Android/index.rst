@@ -1,5 +1,6 @@
 .. _runnning_on_android:
 
+
 Android Compatibility
 =====================
 
@@ -25,8 +26,6 @@ Below are some examples from the wearables segment that illustrate these use cas
    installation
    createProject
    veePort
-   troubleshooting
-   sample
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
