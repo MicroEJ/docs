@@ -7,6 +7,7 @@ VEE Wear
    :maxdepth: 2
 
    Android/index
+   ick
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

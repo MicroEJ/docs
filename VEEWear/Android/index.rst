@@ -1,10 +1,10 @@
 .. _runnning_on_android:
 
-Android Compatibility
-=====================
+Android Compatibility Kit
+=========================
 
 MicroEJ provides a set of tools and libraries to run applications powered by MicroEJ on Android and Wear OS.
-This allows for the same application to be developed, simulated, tested, and run on MicroEJ VEE and Android alike.
+This allows for the same application to be developed, simulated, tested, and executed on MicroEJ VEE and Android alike.
 
 Having the same code ready for both Android and MicroEJ VEE opens up a wide range of use cases, including but not limited to:
 
