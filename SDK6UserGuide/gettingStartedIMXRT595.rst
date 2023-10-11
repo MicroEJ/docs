@@ -123,12 +123,33 @@ The first step is to import the ``Demo-Wearable-VG`` MicroEJ Application into yo
 
 * If you are asked to choose a project model, select :guilabel:`Gradle`. 
 
-      .. figure:: images/intellij-import-gradle-project-01.png
-         :alt: Import demo application
-         :align: center
-         :scale: 70%
+      .. raw:: html
 
-* Click on the ``Create`` button.
+         <div style="display:block;margin-bottom:24px;">
+            <table>
+               <tr>
+                  <td style="width:50%;text-align:center;vertical-align:middle;" alt="Project Model Selection when Opening in IntelliJ IDEA">
+                     <img src="../_images/intellij-import-gradle-project-01.png">
+                  </td>
+                  <td style="width:50%;text-align:center;vertical-align:middle;" alt="Project Model Selection when Importing in IntelliJ IDEA">
+                     <img src="../_images/intellij-import-gradle-project-02.png">
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
+                     Fig 1. Project Model Selection when Opening in IntelliJ IDEA
+                  </td>
+                  <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
+                     Fig 2. Project Model Selection when Importing in IntelliJ IDEA
+                  </td>
+               </tr>
+            </table>
+         </div>
+
+      .. |image1| image:: images/intellij-import-gradle-project-01.png
+      .. |image2| image:: images/intellij-import-gradle-project-02.png
+
+* Click on the :guilabel:`Create` button.
 
 The Gradle project should now be imported in IntelliJ IDEA, your workspace contains the following projects: 
 
@@ -286,8 +307,8 @@ Once the firmware is flashed, you should see the ``Demo-Wearable-VG`` running on
       </table>
    </div>
 
-.. |image1| image:: images/getting-started-hardware-demo-running.png
-.. |image2| image:: images/getting-started-termite-application-output.png
+.. |image3| image:: images/getting-started-hardware-demo-running.png
+.. |image4| image:: images/getting-started-termite-application-output.png
 
 
 ..
