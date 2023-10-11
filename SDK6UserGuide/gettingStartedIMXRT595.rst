@@ -10,7 +10,7 @@ Requirements
 
 To follow this Getting Started, all you need is: 
 
-* MicroEJ SDK 6 installed (check the :ref:`System Requirements <sdk_6_system_requirements>` and your :ref:`JDK Version <sdk_6_java_version>`).
+* MicroEJ SDK 6 installed (check the :ref:`System Requirements <sdk_6_system_requirements>` and your :ref:`JDK Version <sdk_6_check_jdk>`).
 * i.MX RT595 EVK board, available `here <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt595-evaluation-kit:MIMXRT595-EVK>`__.
 * G1120B0MIPI display panel, available `here <https://www.nxp.com/part/G1120B0MIPI>`__.
 * A `GNU ARM Embedded Toolchain <https://developer.arm.com/downloads/-/gnu-rm>`__, `Cmake <https://cmake.org/>`__ and `Make <https://gnuwin32.sourceforge.net/packages/make.htm>`__ are needed to build the BSP.
@@ -285,6 +285,9 @@ Once the firmware is flashed, you should see the ``Demo-Wearable-VG`` running on
          </tr>
       </table>
    </div>
+
+.. |image1| image:: images/getting-started-hardware-demo-running.png
+.. |image2| image:: images/getting-started-termite-application-output.png
 
 
 ..
