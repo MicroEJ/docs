@@ -42,6 +42,13 @@ Install GNU ARM Embedded Toolchain
 
 The toolchain is the `GNU ARM Embedded Toolchain <https://developer.arm.com/downloads/-/gnu-rm>`__. 
 
+At the end of the installation, it will ask you to complete the Setup of the wizard, choose the following options: 
+
+      .. figure:: images/getting-started-arm-gcc-installation.png
+         :alt: Import demo application
+         :align: center
+         :scale: 70%
+
 Once installed, ``ARMGCC_DIR`` must be set as an environment variable and point to the toolchain directory. To do so: 
 
 * Open the ``Edit the system environment variables`` application on Windows.
