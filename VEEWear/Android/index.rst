@@ -24,7 +24,7 @@ Below are some examples from the wearables segment that illustrate these use cas
 
    overview
    installation
-   createProject
+   projectSetup
    veePort
 
 ..
