@@ -5,14 +5,26 @@ i.MX RT595 EVK
 
 During this Getting Started, you will learn to run an application on the Virtual Device and on the Device using the MicroEJ SDK 6.
 
-Requirements
-------------
+.. note::
+  
+   This Getting Started has been tested on Windows.
+
+Prerequisites
+-------------
 
 To follow this Getting Started, all you need is: 
 
-* MicroEJ SDK 6 installed (check the :ref:`System Requirements <sdk_6_system_requirements>` and your :ref:`JDK Version <sdk_6_check_jdk>`).
+* An Internet connection to access Github repositories & MicroEJ Central Repository.
 * i.MX RT595 EVK board, available `here <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt595-evaluation-kit:MIMXRT595-EVK>`__.
 * G1120B0MIPI display panel, available `here <https://www.nxp.com/part/G1120B0MIPI>`__.
+* `Git <https://git-scm.com/>`__.
+
+Environment Setup
+-----------------
+
+To follow this Getting Started, you need to install: 
+
+* MicroEJ SDK 6 (check the :ref:`System Requirements <sdk_6_system_requirements>` and your :ref:`JDK Version <sdk_6_check_jdk>`).
 * A `GNU ARM Embedded Toolchain <https://developer.arm.com/downloads/-/gnu-rm>`__, `Cmake <https://cmake.org/>`__ and `Make <https://gnuwin32.sourceforge.net/packages/make.htm>`__ are needed to build the BSP.
 * `LinkServer <https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER>`__ tool to flash the board
 
