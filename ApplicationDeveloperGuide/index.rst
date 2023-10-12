@@ -7,26 +7,20 @@ Application Developer Guide
    :maxdepth: 2
 
    introduction
-   standaloneApplication
-   sandboxedApplication
-   libraries
-   virtualDevice
    runtime
-   moduleNatures
-   repository
+   soar
+   buildOutputFiles
+   virtualDevice
    classpath
    applicationResources
-   nls
-   debug
-   platformSelection
-   tools
-   advanced
-   UI/ui
-   js/index
-   networking
-   eventQueue
+   applicationOptions
+   sandboxedApplication
    characterEncoding
    limitations
+   github
+   modulesRepositories
+   libraries
+   tools
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
