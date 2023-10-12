@@ -5,12 +5,12 @@ i.MX RT595 EVK
 
 During this Getting Started, you will learn to run an application on the Virtual Device and on the Device using the MicroEJ SDK 6.
 
-.. note::
-  
-   This Getting Started has been tested on Windows.
-
 Prerequisites
 -------------
+
+.. note::
+  
+   This Getting Started has been tested on Windows 10 & 11.
 
 To follow this Getting Started, all you need is: 
 
@@ -24,15 +24,15 @@ Environment Setup
 
 To follow this Getting Started, you need to install: 
 
-* MicroEJ SDK 6 (check the :ref:`System Requirements <sdk_6_system_requirements>` and your :ref:`JDK Version <sdk_6_check_jdk>`).
-* A `GNU ARM Embedded Toolchain <https://developer.arm.com/downloads/-/gnu-rm>`__, `Cmake <https://cmake.org/>`__ and `Make <https://gnuwin32.sourceforge.net/packages/make.htm>`__ are needed to build the BSP.
-* `LinkServer <https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER>`__ tool to flash the board
+* MicroEJ SDK 6.
+* A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP.
+* LinkServer tool to flash the board.
 
 Install MicroEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
 
-Install the MicroEJ SDK 6 plugin on your IDE by following :ref:`sdk_6_install` instructions. 
-IntelliJ IDEA is used on this Getting Started but feel free to use your favorite one.
+Install MicroEJ SDK 6 by following :ref:`sdk_6_install` instructions. 
+IntelliJ IDEA is used on this Getting Started but feel free to use your favorite IDE.
 
 Install the C toolchain
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -170,6 +170,8 @@ The Gradle project should now be imported in IntelliJ IDEA, your workspace conta
          :align: center
          :scale: 70%
 
+.. _sdk_6_getting_started_run_virtual_device:
+
 Run an application on the Virtual Device
 ----------------------------------------
 
@@ -234,7 +236,7 @@ Request your Evaluation License:
 
 * When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
 
-Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view
+Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may takes some time.
 
 The gradle task deploys the MicroEJ application in the BSP and then builds the BSP using Make.
 
@@ -287,7 +289,7 @@ In order to flash the :guilabel:`Demo-Wearable-VG` Application on i.MX RT595 EVK
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_device` section.
 
-* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view.
+* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may takes some time.
 
       .. figure:: images/getting-started-runOnDevice.png
          :alt: runOnDevice task
