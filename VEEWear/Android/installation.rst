@@ -35,7 +35,7 @@ Configure Repositories
 The :ref:`SDK 6 repositories configuration <sdk_6_configure_repositories>` references the MicroEJ module repositories which are required for resolving the SDK Gradle plugins and modules.
 Working with Android plugins and modules involves extending this configuration to include additional repositories that are essential for Android development.
 
-- download and copy :download:`this file <resources/microej.android.init.gradle.kts>` in ``<user.home>/.gradle/init.d/``.
+- download and copy :download:`this file <resources/microej.wear.init.gradle.kts>` in ``<user.home>/.gradle/init.d/``.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
