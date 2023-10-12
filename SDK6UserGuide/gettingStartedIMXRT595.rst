@@ -324,6 +324,34 @@ Once the firmware is flashed, you should see the :guilabel:`Demo-Wearable-VG` ru
 .. |image3| image:: images/getting-started-hardware-demo-running.png
 .. |image4| image:: images/getting-started-termite-application-output.png
 
+Modify the Java application
+---------------------------
+
+With MicroEJ, it is easy to modify and test your Java application on the Virtual Device.
+
+For example, we could modify the color of the date on the Flower Watchface that is shown at the startup of the application.
+
+* Open :guilabel:`FlowerWatchface.java` file located in the :guilabel:`watchface-flower/src/main/java/com/microej/demo/watch/watchface/flower` folder.
+* On the :guilabel:`renderDate` method, replace the following line:
+
+.. code:: 
+
+   g.setColor(style.getColor());
+
+by
+
+.. code:: 
+
+   g.setColor(Colors.GREEN);
+
+* Follow :ref:`sdk_6_getting_started_run_virtual_device` instructions to launch the modified application on the Virtual Device.
+
+Here is the modified application running in simulation: 
+
+      .. figure:: images/getting-started-virtual-device-modified.png
+         :alt: Virtual Device
+         :align: center
+         :scale: 70%
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
