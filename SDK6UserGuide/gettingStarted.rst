@@ -1,7 +1,7 @@
 .. _sdk_6_getting_started:
 
-Getting Started SDK 6
-=====================
+Getting Started
+===============
 
 .. toctree::
    :maxdepth: 1
