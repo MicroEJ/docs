@@ -186,6 +186,13 @@ Back in the Gradle task view:
 		:align: center
 		:scale: 70%
 
+
+.. note::
+
+  By default, all supported IDEs require the user to explicitly trigger the reload of a Gradle project when its configuration has changed.
+  However you can configure your IDE to automatically reload your project. 
+  Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
