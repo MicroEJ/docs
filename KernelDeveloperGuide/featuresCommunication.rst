@@ -132,7 +132,7 @@ This way, the service instance is exposed in the Shared Registry.
 
 .. note::
     To allow the usage of Kernel APIs by features, you must make sure that the Kernel registers the necessary Kernel APIs.
-    Learn more about Kernel API `here <https://docs.microej.com/en/latest/KernelDeveloperGuide/kernelAPI.html>`_.
+    Learn more about `Kernel API <https://docs.microej.com/en/latest/KernelDeveloperGuide/kernelAPI.html>`_.
     The usage of extra APIs from ServiceRegistryKF to specify the registry is reserved for Kernel
     and will thrown an exception if used from a feature context.
 
@@ -150,7 +150,7 @@ When getting a service instance from the Kernel, the KF implementation tries to 
 - In the Shared Registry, check for an instance registered by the Kernel.
 - In the Shared Registry, check for an instance registered as Shared Interface by an other Feature.
 
-If none of the above is found, it will try to create a new instance of the provided Type assuming it has been specified by the Kernel, learn more about types `here <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
+If none of the above is found, it will try to create a new instance of the provided Type assuming it has been specified by the Kernel, learn more about `type <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
 
 
 .. note::
