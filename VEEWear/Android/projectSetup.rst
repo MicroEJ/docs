@@ -217,6 +217,8 @@ The next steps show how to configure the Android or Wear OS application to decla
 
          dependencies {
             implementation("com.microej.android.support:microej-wearos:|SUPPORT_LIB_VERSION|")
+            implementation("androidx.wear.watchface:watchface:1.1.1")
+            implementation("androidx.wear.watchface:watchface-guava:1.1.1")
             ...
          }
 
