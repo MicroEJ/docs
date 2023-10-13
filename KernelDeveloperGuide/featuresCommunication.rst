@@ -27,8 +27,9 @@ Finally, A unique shared service registry contains all registered shared service
 
 Security policies can also be implemented to restrict the usage of certain service by certain feature.
 
-.. note::
-    Following sections are based on the existing KF implementation of the ej.Service library available in the `KF-Util module <https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/library/util/kf-util/>`_ , you can also implement your own system depending on your needs.
+   .. note::
+
+      Following sections are based on the existing KF implementation of the ej.Service library available in the `KF-Util module <https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/library/util/kf-util/>`_ , you can also implement your own system depending on your needs.
 
 
 Communication between Features
@@ -79,11 +80,11 @@ When getting a service instance from a feature, the KF implementation tries to r
 - In the Shared Registry, check for an instance registered as Shared Interface by an other Feature.
 
 If none of the above is found, it will try to create a new instance of the provided Type assuming it has been specified by the Kernel, learn more about types `here <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
-.. note::
-    In a Multi-Sandbox context, the only module capable of declaring Types is the Kernel therefore a type belonging to a Feature can't be instantiated this way.
-    To ensure that every type is indeed embedded, make sure that the property ``soar.generate.classnames`` is set to ``true``
 
+   .. note::
 
+      In a Multi-Sandbox context, the only module capable of declaring Types is the Kernel therefore a type belonging to a Feature can't be instantiated this way.
+      To ensure that every type is indeed embedded, make sure that the property ``soar.generate.classnames`` is set to ``true``
 
 .. _kernel_service_registry:
 
@@ -127,6 +128,8 @@ serviceRegistryKF.register(MyInterface.class,myInterface, false); //accessible b
 ``
 
 This way, the service instance is exposed in the Shared Registry.
+
+
 .. note::
     To allow the usage of Kernel APIs by features, you must make sure that the Kernel registers the necessary Kernel APIs.
     Learn more about Kernel API `here <https://docs.microej.com/en/latest/KernelDeveloperGuide/kernelAPI.html>`_.
@@ -148,6 +151,8 @@ When getting a service instance from the Kernel, the KF implementation tries to 
 - In the Shared Registry, check for an instance registered as Shared Interface by an other Feature.
 
 If none of the above is found, it will try to create a new instance of the provided Type assuming it has been specified by the Kernel, learn more about types `here <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
+
+
 .. note::
     In a Multi-Sandbox context, the only module capable of declaring Types is the Kernel therefore a type belonging to a Feature can't be instantiated this way.
     To ensure that every type is indeed embedded, make sure that the property ``soar.generate.classnames`` is set to ``true``
