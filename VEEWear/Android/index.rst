@@ -23,9 +23,8 @@ Below are some examples from the wearables segment that illustrate these use cas
 
    overview
    installation
-   createProject
+   projectSetup
    veePort
-   sample
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

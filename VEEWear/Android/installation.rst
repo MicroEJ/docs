@@ -3,61 +3,39 @@
 Installation
 ============
 
-This chapter will guide you through the installation process of the SDK using Android Studio as the integrated development environment (IDE).
-Before proceeding with the installation, please make sure your workstation meets the system requirements.
+To develop applications compatible with both Android and MicroEJ VEE, it is required to use :ref:`MicroEJ SDK 6 <sdk_6_user_guide>`.
+The MicroEJ SDK provides Gradle plugins that allow for seamless integration in Android Studio.
 
-System Requirements
--------------------
+For comprehensive installation instructions, read the :ref:`SDK 6 Installation Guide <sdk_6_install>`.
+Simply follow the steps related to Android Studio when relevant.
 
-* **Hardware**
-   * x86_64 CPU architecture, ARM-based chips, 2nd generation Intel Core or newer, or AMD processor with support for AMD Virtualization (AMD-V) and SSSE3
-   * 8 GB RAM or more
-   * 8 GB of available disk space minimum (IDE + Android SDK + Android Emulator)
-   * 1280 x 800 minimum screen resolution
-
-* **Operating Systems**
-   * 64-bit Microsoft® Windows® 8/10
-   * Any 64-bit Linux distribution that supports Gnome, KDE, or Unity DE; GNU C Library (glibc) 2.31 or later.
-   * MacOS® 10.14 (Mojave) or higher
-
-* **Java Runtime Environment**
-    * JDK 11 - Eclipse Temurin or Oracle Distributions
-
-
-Download Android Studio
------------------------
-
-Download and install Android Studio Dolphin 2021.3.1 released on September 15, 2022, from the `Android Developer Archive <https://developer.android.com/studio/archive>`_.
-
-For more information about Android Studio (installation, release notes or system requirements), please refer to the `Android Developer site <https://developer.android.com/studio>`_.
-
+In addition to installing MicroEJ SDK 6, make sure to comply with the requirements listed in the next sections.
 
 JDK Version
 -----------
 
-The latest versions of Android Studio bundle a copy of the OpenJDK. To check that version 11 of the JDK is used:
+Not all features of MicroEJ SDK 6 are compatible with JDK 15 and higher.
+As a consequence, using the Android Compatibility Kit requires the use of JDK 11.
 
-1. In Android Studio, ``File`` > ``Settings`` (on macOS, ``Android Studio`` > ``Preferences``).
-2. In the settings pane, navigate to ``Build, Execution, Deployment`` > ``Build Tools`` > ``Gradle``.
-3. Under Gradle JDK, check that the version of the JDK being used is 11.
+As stated in the :ref:`SDK 6 Installation Guide <sdk_6_check_jdk>`, make sure to set either the ``JAVA_HOME`` or ``PATH`` variables to reference a JDK 11 installation.
 
-If you don't have a JDK 11 installed, 
-you can download and install one from `Adoptium <https://adoptium.net/temurin/releases/>`_ or `Oracle <https://www.oracle.com/fr/java/technologies/downloads/>`_.
+.. note:: 
+   The latest versions of Android Studio bundle and use a JDK version higher than 11 by default.
+   Make sure that Gradle uses a JDK 11 in the Android Studio settings.
 
+   - Go to :guilabel:`File` > :guilabel:`Settings...` > :guilabel:`Build, Execution, Deployment` > :guilabel:`Build Tools` > :guilabel:`Gradle`.
+   - For :guilabel:`Gradle SDK`, select a JDK 11 installation in the list.
 
-Install the MicroEJ Plugin
---------------------------
-
-Follow these steps to install the latest stable version of the MicroEJ plugin for Android Studio:
-
-- In Android Studio, open the Settings window (menu ``File > Settings...`` on Windows and Linux, 
-  menu ``Android Studio > Preferences...`` on macOS).
-- Go to ``Plugins`` menu.
-- In the search field, type ``MicroEJ``.
-- Click on the ``Install`` button.
-- Click on the ``Restart IDE`` button.
+The primary implication of using a JDK 11 is that the maximum version of the Android Gradle Plugin that can be used is ``7.4.2``.
 
 
+Configure Repositories
+----------------------
+
+The :ref:`SDK 6 repositories configuration <sdk_6_configure_repositories>` references the MicroEJ module repositories which are required for resolving the SDK Gradle plugins and modules.
+Working with Android plugins and modules involves extending this configuration to include additional repositories that are essential for Android development.
+
+- download and copy :download:`this file <resources/microej.wear.init.gradle.kts>` in ``<user.home>/.gradle/init.d/``.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
