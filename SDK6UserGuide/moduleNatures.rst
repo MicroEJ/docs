@@ -62,7 +62,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.buildExecutable`
 - :ref:`sdk6_module_natures.tasks.buildWPK`
 - :ref:`sdk6_module_natures.tasks.buildVirtualDevice`
-- :ref:`sdk6_module_natures.tasks.loadKernel`
+- :ref:`sdk6_module_natures.tasks.loadKernelExecutable`
 - :ref:`sdk6_module_natures.tasks.loadFeatureConfiguration`
 - :ref:`sdk6_module_natures.tasks.buildFeature`
 - :ref:`sdk6_module_natures.tasks.runOnDevice`
@@ -116,9 +116,6 @@ This task is used by the following module natures:
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
 
-**Configuration**:
-
-
 .. _sdk6_module_natures.tasks.loadVeePort:
 
 loadVeePort
@@ -132,29 +129,6 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
-
-**Configuration**:
-
-This task provides the following property that can be defined in the ``microej`` extension:
-
-.. list-table:: 
-   :widths: 25 65 15
-   :header-rows: 1
-
-   * - Name
-     - Description
-     - Default    
-   * - ``veePortPath``
-     - Path of the VEE Port file or the root folder of the VEE Port to use in the build.
-     - Not set
-
-For example:
-
-.. code::
-
-  microej {
-    veePortPath = "C:\\path\\to\\my\\veePort\\source"
-  }
 
 .. _sdk6_module_natures.tasks.loadApplicationConfiguration:
 
@@ -318,41 +292,18 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.application`
 
-.. _sdk6_module_natures.tasks.loadKernel:
+.. _sdk6_module_natures.tasks.loadKernelExecutable:
 
-loadKernel
-^^^^^^^^^^
+loadKernelExecutable
+^^^^^^^^^^^^^^^^^^^^
 
-**Description**: Loads the Kernel.
+**Description**: Loads the Kernel Executable file.
 
 **Module Natures**:
 
 This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.application`
-
-**Configuration**:
-
-This task provides the following property that can be defined in the ``microej`` extension:
-
-.. list-table:: 
-   :widths: 25 65 15
-   :header-rows: 1
-
-   * - Name
-     - Description
-     - Default    
-   * - ``kernelFile``
-     - Path of the Kernel to use in the build. 
-     - Not set
-
-For example:
-
-.. code::
-
-  microej {
-    kernelFile = "C:\\path\\to\\my\\kernel"
-  }
 
 .. _sdk6_module_natures.tasks.loadFeatureConfiguration:
 
