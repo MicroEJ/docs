@@ -7,7 +7,7 @@ Release Notes
 UI Pack Compatibility Version
 =============================
 
-The current VG Pack version is 1.2.0.
+The current VG Pack version is 1.4.1.
 The following table describes the compatibility ranges between VG and UI Packs. 
 
 +---------------+-----------------+----------------------------------+

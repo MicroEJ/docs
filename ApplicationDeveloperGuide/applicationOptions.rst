@@ -1,7 +1,7 @@
 .. _application_options:
 
-Application Options
-###################
+Standalone Application Options
+##############################
 
 Introduction
 ============

@@ -1,7 +1,7 @@
 .. _outputfiles:
 
-Build Output Files
-==================
+SOAR Output Files
+=================
 
 When building a Standalone Application, multiple files are generated next to the ELF executable file.
 
