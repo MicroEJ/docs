@@ -5,6 +5,7 @@ Appendices
     :maxdepth: 2
 
     virtualDevice
+    dependenciesManagement
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
