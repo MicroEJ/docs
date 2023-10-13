@@ -109,6 +109,14 @@ adp
 
 **Description**: Executes the Addon Processors.
 
+**Inputs**:
+
+- The project directory
+
+**Outputs**:
+
+- The directory for each ADP output type (``build/adp/all/main/java``, ``build/adp/all/main/resources``, ``build/adp/all/test/java``, ``build/adp/all/test/resources``)
+
 **Module Natures**:
 
 This task is used by the following module natures:
@@ -119,9 +127,17 @@ This task is used by the following module natures:
 .. _sdk6_module_natures.tasks.loadVeePort:
 
 loadVeePort
-^^^^^^^^^^^^
+^^^^^^^^^^^
 
 **Description**: Loads the VEE Port.
+
+**Inputs**:
+
+- The list of VEE Port archive files or folders.
+
+**Outputs**:
+
+- The directory where the VEE Port is copied/extracted (``build/veePort``)
 
 **Module Natures**:
 
@@ -136,6 +152,20 @@ loadApplicationConfiguration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Description**: Loads the configuration for the Application to execute.
+
+**Inputs**:
+
+- The extracted VEE Port folder
+- The project classpath which contains the MicroEJ dependent application classes and resources
+- The Full Qualified Name of the Application main class
+- The folder containing the application configuration (``configuration``)
+- The System properties
+- The debug mode
+- The debug port
+
+**Outputs**:
+
+- The configuration file with all the properties set to launch the application (``build/properties/target.properties``)
 
 **Module Natures**:
 
@@ -174,6 +204,11 @@ runOnSimulator
 
 **Description**: Executes the Application with the Simulator.
 
+**Inputs**:
+
+- The extracted VEE Port folder
+- The configuration file with all the properties set to launch the application (``build/properties/target.properties``)
+
 **Module Natures**:
 
 This task is used by the following module natures:
@@ -188,6 +223,14 @@ loadTestApplicationConfiguration
 
 **Description**: Loads the configuration for the Test Application to execute.
 
+**Inputs**:
+
+- The extracted VEE Port folder
+
+**Outputs**:
+
+- The directory containing the configuration file with all the properties set to launch the test application (``build/testsuite/properties/``)
+
 **Module Natures**:
 
 This task is used by the following module natures:
@@ -201,6 +244,11 @@ checkModule
 ^^^^^^^^^^^
 
 **Description**: Checks the compliance of the module.
+
+**Inputs**:
+
+- The list of the checkers to execute, separated by comas. If not set, all the checkers are executed.
+- The list of the checkers to skip, separated by comas.
 
 **Module Natures**:
 
@@ -247,6 +295,17 @@ loadExecutableConfiguration
 
 **Description**: Loads the configuration to build the Executable of an Application.
 
+**Inputs**:
+
+- The extracted VEE Port folder
+- The project classpath which contains the MicroEJ dependent application classes and resources
+- The Full Qualified Name of the Application main class
+- The folder containing the application configuration (``configuration``)
+
+**Outputs**:
+
+- The configuration file with all the properties set to launch the build of the Executable (``build/properties/target.properties``)
+
 **Module Natures**:
 
 This task is used by the following module natures:
@@ -258,7 +317,18 @@ This task is used by the following module natures:
 buildExecutable
 ^^^^^^^^^^^^^^^
 
-**Description**: Build the Executable of an Application.
+**Description**: Builds the Executable of an Application.
+
+**Inputs**:
+
+- The extracted VEE Port folder
+- The configuration file with all the properties set to launch the build of the Executable (``build/properties/target.properties``)
+- The project build classpath
+
+**Outputs**:
+
+- The directory in which the Executable file and the build files are generated (``build/executable/application``)
+- The Zip file containing the generated build files (``build/executable/buildFiles.zip``)
 
 **Module Natures**:
 
@@ -273,6 +343,20 @@ buildWPK
 
 **Description**: Builds the WPK of the Application.
 
+**Inputs**:
+
+- The Application name
+- The Application version
+- The Full Qualified Name of the Application main class
+- The Application JAR file
+- The Application Javadoc
+- The Jar files of the Application classpath
+- The folder containing the application configuration (``configuration``)
+
+**Outputs**:
+
+- The WPK of the Application (``build/libs/<application_name>.wpk``)
+
 **Module Natures**:
 
 This task is used by the following module natures:
@@ -283,6 +367,17 @@ This task is used by the following module natures:
 
 buildVirtualDevice
 ^^^^^^^^^^^^^^^^^^
+
+**Inputs**:
+
+- The extracted VEE Port folder
+- The WPK of the Application
+- The project build classpath
+- The WPK of the Applications that must be pre-installed in the Virtual Device
+
+**Outputs**:
+
+- The Zip file of the Virtual Device (``build/libs/<application_name>-virtualDevice.zip``)
 
 **Description**: Build the Virtual Device of an Application.
 
@@ -299,6 +394,14 @@ loadKernelExecutable
 
 **Description**: Loads the Kernel Executable file.
 
+**Inputs**:
+
+- The list of Kernel Executable files.
+
+**Outputs**:
+
+- The directory where the Kernel Executable file is copied (``build/kernelExecutable``)
+
 **Module Natures**:
 
 This task is used by the following module natures:
@@ -311,6 +414,17 @@ loadFeatureConfiguration
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Description**: Loads the configuration to build the Feature file of an Application.
+
+**Inputs**:
+
+- The Kernel Virtual Device 
+- The folder containing the Kernel Executable file (``build/kernelExecutable``)
+- The project classpath
+- The path of the folder where the Feature file must be generated (``build/feature``)
+
+**Outputs**:
+
+- The configuration file with all the properties set to launch the build of the Feature file (``build/properties/target.properties``)
 
 **Module Natures**:
 
@@ -325,6 +439,17 @@ buildFeature
 
 **Description**: Build the Feature file of an Application.
 
+**Inputs**:
+
+- The Kernel Virtual Device 
+- The folder containing the Kernel Executable file (``build/kernelExecutable``)
+- The project classpath
+
+**Outputs**:
+
+- The folder in which the Feature file is generated (``build/feature``)
+
+
 **Module Natures**:
 
 This task is used by the following module natures:
@@ -337,6 +462,12 @@ runOnDevice
 ^^^^^^^^^^^^
 
 **Description**: Runs the Executable on a Device.
+
+**Inputs**:
+
+- The extracted VEE Port folder
+- The folder containing the Executable file (``build/executable/application``)
+- The configuration file with all the properties set to launch the build of the Executable (``build/properties/target.properties``)
 
 **Module Natures**:
 
