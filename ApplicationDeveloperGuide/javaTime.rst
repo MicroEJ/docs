@@ -23,7 +23,7 @@ Introduction
 ------------
 
 Java developers have long used the `Date`_, `Calendar`_ and `TimeZone`_ classes for handling date and time. 
-With JSR310, Java 8 introduced a more advanced and comprehensive Date and Time API that goes beyond simply replacing `Date`_ or `Calendar`_. 
+Java 8 introduced a more advanced and comprehensive Date and Time API that goes beyond simply replacing `Date`_ or `Calendar`_. 
 It provides a complete time model for applications.
 
 There are many benefits of moving to the new API:
