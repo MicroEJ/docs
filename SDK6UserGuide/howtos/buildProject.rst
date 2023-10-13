@@ -1,7 +1,7 @@
 .. _sdk_6_build_project:
 
-Build a Project
-===============
+How To Build a Project
+======================
 
 Generally speaking, building a project means compiling the source files, executing the tests and generating the module artifact.
 Depending on the nature of the project, the build can include other specific phases.

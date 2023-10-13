@@ -12,6 +12,7 @@ How-to Guides
    gradleAutoreloading
    resolveInIDE
    installSnapshotPlugins
+   buildProject
    buildExecutableWithMultipleVeePorts
 
 ..
