@@ -3,6 +3,42 @@
 Changelog
 ---------
 
+.. _changelog-0.12.0:
+
+[0.12.0] - 2023-10-13
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Allow to publish the Virtual Device of an Application.
+- Allow to fetch a Virtual Device and an Executable with the ``microejKernel`` configuration.
+
+Changed
+"""""""
+
+- Add README, CHANGELOG and License files as publication artifacts in the generated ivy.xml file.
+- Publish test report in Jenkins job.
+- Set ``deploy.bsp.microejscript`` property to ``true`` by default to build the executable.
+- Publish the Executable file as a variant.
+- Rename the ``kernelFile`` property to ``kernelExecutableFile``.
+- Use File dependency instead of the ``veePortPath`` property to load a local VEE Port.
+- Use File dependency instead of the ``kernelExecutableFile`` property to load a local Kernel Executable.
+
+Fixed
+"""""
+
+- Fix unexpected fetch of the transitive dependencies of a VEE Port dependency (``microejVeePort`` configuration).
+- Fix System properties defined in ``gradle.properties`` are ignored.
+- Fix VEE Port launcher: temporary configuration file could prevent to launch a second time.
+- Remove usage of deprecated API Project.getBuildDir().
+- Fix the message when no executable are found by the ``runOnDevice`` task.
+- Fix Executable not updated after a project change and a call to the ``buildExecutable`` task.
+- Fix wrong order of tests classes and resources folder in the test classpath.
+- Call VEE Port Ant script from a separate temporary directory to satisfy MicroEJ Architecture. This fixes spurious HIL timeouts when calling the ``runOnSimulator`` task.
+- Fix Java process still running when Simulator is interrupted.
+- Fix missing Nashorn dependencies when running a testsuite and when launching the launcher scripts to make it work with JDK 17 and higher.
+
 .. _changelog-0.11.1:
 
 [0.11.1] - 2023-09-22
