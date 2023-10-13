@@ -82,6 +82,9 @@ This chapter explains the different ways to create a new project.
             :scale: 70%
       
             Gradle Project reload in Android Studio
+        
+         You can also configure Android Studio to automatically reload a Gradle project after a change.
+         Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
       
       When the Gradle project has been reloaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
@@ -147,7 +150,10 @@ This chapter explains the different ways to create a new project.
             :scale: 70%
       
             Gradle Project reload in IntelliJ IDEA
-      
+        
+         You can also configure IntelliJ IDEA to automatically reload a Gradle project after a change.
+         Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
+
       When the Gradle project has been reloaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
       or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
@@ -252,6 +258,9 @@ This chapter explains the different ways to create a new project.
             :scale: 70%
       
             Gradle Project reload in Eclipse
+        
+         You can also configure Eclipse to automatically reload a Gradle project after a change.
+         Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
       
       When the Gradle project has been reloaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
