@@ -41,11 +41,10 @@ Using a Local VEE Port Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When your VEE Port has been built locally and is therefore available in a local directory, 
-you can use it by setting the ``veePortPath`` property in the ``microej`` configuration block of the ``build.gradle.kts`` file. 
-Specify the path to the ``source`` folder of the VEE Port::
+you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVeePort`` configuration::
 
-   microej {
-     veePortPath = "C:\\path\\to\\my\\veePort\\source"
+   dependencies {
+      microejVeePort(files("C:\\path\\to\\my\\veePort\\source"))
    }
 
 .. note::
@@ -57,12 +56,11 @@ Specify the path to the ``source`` folder of the VEE Port::
 Using a Local VEE Port Archive
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When your VEE Port is available locally as an archive,
-you can use it by setting the ``veePortPath`` property in the ``microej`` configuration block of the ``build.gradle.kts`` file. 
-Specify the path to a VEE Port file (``.zip`` or ``.vde``)::
+When your VEE Port is available locally as an archive file (``.zip`` or ``.vde``),
+you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVeePort`` configuration::
 
-   microej {
-     veePortPath = "C:\\path\\to\\my\\veePort\\file.zip"
+   dependencies {
+      microejVeePort(files("C:\\path\\to\\my\\veePort\\file.zip"))
    }
 
 .. note::
