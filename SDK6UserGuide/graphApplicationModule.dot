@@ -12,7 +12,7 @@ digraph mygraph {
     edge [fontname="Helvetica,Arial,sans-serif"]
     "adp" [fillcolor = "#f76241"]
     "checkModule" [fillcolor = "#f76241"]
-    "loadKernel" [fillcolor = "#f76241"]
+    "loadKernelExecutable" [fillcolor = "#f76241"]
     "loadVeePort" [fillcolor = "#f76241"]
     "loadApplicationConfiguration" [fillcolor = "#f76241"]
     "loadExecutableConfiguration" [fillcolor = "#f76241"] 
@@ -57,7 +57,7 @@ digraph mygraph {
     "buildVirtualDevice" -> "loadVeePort"
     "buildVirtualDevice" -> "buildWPK"
     "buildFeature" -> "loadFeatureConfiguration"
-    "loadFeatureConfiguration" -> "loadKernel"
+    "loadFeatureConfiguration" -> "loadKernelExecutable"
     "loadFeatureConfiguration" -> "loadVeePort"
     "runOnDevice" -> "buildExecutable"
 
