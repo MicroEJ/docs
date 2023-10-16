@@ -6,8 +6,8 @@ Kernel and Features Communication
 Feature and Kernel can communicate between each other in various ways such as sharing interface implementation instances at runtime.
 
 In this section you will learn:
-- How can two (or more) feature communicate with each other.
-- How can the Kernel communicate with a Feature.
+* How can two (or more) feature communicate with each other.
+* How can the Kernel communicate with a Feature.
 
 
 Shared Service
@@ -122,10 +122,10 @@ First you can use the generic ej.Service API, this will automatically register t
 To specify in which Registry the Kernel should register its service you can use the following code, it uses
 the ServiceRegistryKF from the KF-Util module such as:
 
-``
-ServiceRegistryKF serviceRegistryKF = (ServiceRegistryKF) ServiceFactory.getServiceRegistry();
-serviceRegistryKF.register(MyInterface.class,myInterface, false); //accessible by any feature
-``
+.. ::
+    ServiceRegistryKF serviceRegistryKF = (ServiceRegistryKF) ServiceFactory.getServiceRegistry();
+    serviceRegistryKF.register(MyInterface.class,myInterface, false); //accessible by any feature
+
 
 This way, the service instance is exposed in the Shared Registry.
 
