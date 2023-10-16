@@ -34,7 +34,7 @@ Functional Description
 4. Creates images to animate the operation of the controls (for example
    button down image).
 
-5. Creates *Widgets* that  make the link between the application and the user interactions.
+5. Creates Front Panel *Widgets* that make the link between the application and the user interactions.
 
 6. Previews the Front Panel to check the layout of controls and the
    events they create, etc.
@@ -76,11 +76,13 @@ Project Contents
 
 A Front Panel project has the following structure and contents:
 
-* The ``src/main/java`` folder is provided for the definition of ``Widgets``. It is initially empty. The creation of these classes will be explained later.
+* The ``src/main/java`` folder is provided for the definition of Front Panel ``Widgets``. It is initially empty. The creation of these classes will be explained later.
 * The ``src/main/resources`` folder holds the file or files that define the contents and layout of the Front Panel, with a ``.fp`` extension (the fp file or files), plus images used to create the Front Panel. A newly created project will have a single fp file with the same name as the project, as shown above. The contents of fp files are detailed later in this  document.
 * The ``JRE System Library`` is referenced, because a Front Panel  project needs to support the writing of Java for the ``Listeners`` (and ``DisplayExtensions``).
 * The ``Modules Dependencies`` contains the libraries for the Front Panel simulation, the widgets it supports and the types needed to implement ``Listeners`` (and ``DisplayExtensions``).
 * The ``lib`` contains a local copy of ``Modules Dependencies``. 
+
+.. _section_frontpanel_dependencies:
 
 Module Dependencies
 ===================
@@ -88,61 +90,26 @@ Module Dependencies
 The Front Panel project is a regular MicroEJ Module project. Its ``module.ivy`` file should look like this example:
 
 .. code-block:: xml
-
-   <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:ej="https://developer.microej.com" ej:version="2.0.0"> 
-   <info organisation="com.mycompany" module="examplePanel" status="integration" revision="1.0.0"/>      
+   
+   <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:ej="https://developer.microej.com" ej:version="2.0.0">
+      <info organisation="com.mycompany" module="examplePanel" status="integration" revision="1.0.0"/>
 
       <configurations defaultconfmapping="default->default;provided->provided">
          <conf name="default" visibility="public" description="Runtime dependencies to other artifacts"/>
-         <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the Platform"/>
+         <conf name="provided" visibility="public" description="Compile-time dependencies to APIs provided by the platform"/>
       </configurations>
-
+      
       <dependencies>
-         
-            <!-- 
-            
-               Fetch the dependencies according to the VEE Port configuration. Choose one of these 
-               options:
-               
-               - VEE Port without UI extension (MicroEJ Architecture only, no UI Pack): fetch only 
-               the Front Panel Framwork to create your own widgets:
-               
-                  <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
-                  
-               - VEE Port with UI extension (UI Pack): fetch only the UI widgets (the Front Panel
-               Framework is fetched by transitivity) to use the widgets compatible with the UI
-               Pack (refer to the documentation for the latest version of widgets and the relationship 
-               between the widget version and the UI Pack version):
-               
-                  <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
-               
-               - VEE Port with UI extension (UI Pack) and interactions with the UI Pack (use the 
-               UI Pack Low-Level APU (LLAPI) to implement some custom drawings): fetch the UI
-               widgets (the Front Panel Framework is fetched by transitivity) and the UI Pack
-               LLAPI extension. Use the same UI Pack version than the UI Pack fectched in the
-               VEE Port configuration project. Refer to the documentation for the relationship 
-               between the widget versions and the UI Pack version:
-               
-                  <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
-                  <dependency org="com.microej.pack.ui" name="ui-pack" rev="[UI Pack version]">
-                     <artifact name="frontpanel" type="jar"/>
-                  </dependency>
-            
-            -->
-        		
     	   <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
-
       </dependencies>
-
    </ivy-module>
 
-The `Front Panel framework`_ contains the Front Panel core classes and does not provide any widgets. 
-Widgets have to be added to simulate user interactions. 
+The `Front Panel Framework`_ contains the Front Panel core classes, mainly the ability to create your own Front Panel :ref:`section_frontpanel_widget` to simulate user interactions.
 
-.. note:: The dependency `ej.tool.frontpanel#widget`_ is only useful for MicroUI application (see :ref:`section_ui_simulation`).
+.. note:: Some Front Panel Widgets are available to interact with the MicroUI devices (display, input devices, etc.), see :ref:`section_ui_simulation`.
 
 .. _ej.tool.frontpanel#widget: https://repository.microej.com/modules/ej/tool/frontpanel/widget/
-.. _Front Panel framework: https://repository.microej.com/modules/ej/tool/frontpanel/framework/
+.. _Front Panel Framework: https://repository.microej.com/modules/ej/tool/frontpanel/framework/
 
 Front Panel File
 ================
@@ -239,7 +206,7 @@ Widget
 Description
 -----------
 
-A widget is a subclass of Front Panel framework class ``ej.fp.Widget``. The library ``ej.tool.frontpanel#widget`` provides a set of widgets which are Graphics Engine compatible (see :ref:`section_ui_simulation`). To create a new widget (or a subclass of an existing widget), have a look on available widgets in this library.
+A widget is a subclass of Front Panel Framework class ``ej.fp.Widget``. The library ``ej.tool.frontpanel#widget`` provides a set of widgets which are Graphics Engine compatible (see :ref:`section_ui_simulation`). To create a new widget (or a subclass of an existing widget), have a look on available widgets in this library.
 
 .. figure:: images/fpwidgets.png
    :alt: Front Panel Widgets
