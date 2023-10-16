@@ -3,6 +3,16 @@
 Changelog
 ---------
 
+.. _changelog-0.12.1:
+
+[0.12.1] - 2023-10-16
+~~~~~~~~~~~~~~~~~~~~~
+
+Fixed
+"""""
+
+- Fix the issue with the ``microejKernel`` configuration that prevented IDEs from loading a project.
+
 .. _changelog-0.12.0:
 
 [0.12.0] - 2023-10-13
