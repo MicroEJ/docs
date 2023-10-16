@@ -216,13 +216,13 @@ This chapter explains the different ways to create a new project.
       - Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
       
           plugins {
-              id("com.microej.gradle.addon-library") version "0.12.0"
+              id("com.microej.gradle.addon-library") version "0.12.1"
           }
       
         or for an Application::
       
           plugins {
-              id("com.microej.gradle.application") version "0.12.0"
+              id("com.microej.gradle.application") version "0.12.1"
           }
       
         .. note::
@@ -333,7 +333,7 @@ Application Project
 - Add the ``com.microej.gradle.application`` plugin in the ``build.gradle.kts`` file::
 
     plugins {
-        id("com.microej.gradle.application") version "0.12.0"
+        id("com.microej.gradle.application") version "0.12.1"
     }
 
   .. note::
@@ -384,7 +384,7 @@ Add-On Library Project
 - Add the ``com.microej.gradle.addon-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.addon-library") version "0.12.0"
+        id("com.microej.gradle.addon-library") version "0.12.1"
     }
 
   .. note::
@@ -400,7 +400,7 @@ J2SE Library Project
 - Add the ``com.microej.gradle.j2se-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.j2se-library") version "0.12.0"
+        id("com.microej.gradle.j2se-library") version "0.12.1"
     }
 
   .. note::
