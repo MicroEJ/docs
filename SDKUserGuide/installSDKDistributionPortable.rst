@@ -28,12 +28,6 @@ Perform the following steps:
      - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.07/zip/microej-sdk-23.07-linux_x86_64.zip>`__
      - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.07/zip/microej-sdk-23.07-macosx_x86_64.zip>`__
      - `Portable  (.zip) <https://repository.microej.com/packages/SDK/23.07/zip/microej-sdk-23.07-macosx_aarch64.zip>`__
-   * - ``23.02``
-     - ``11``
-     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.02/zip/microej-sdk-23.02-win_x86_64.zip>`__
-     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.02/zip/microej-sdk-23.02-linux_x86_64.zip>`__
-     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.02/zip/microej-sdk-23.02-macosx_x86_64.zip>`__
-     - `Portable  (.zip) <https://repository.microej.com/packages/SDK/23.02/zip/microej-sdk-23.02-macosx_aarch64.zip>`__
    * - ``21.11``
      - ``8``
      - `Portable (.zip) <https://repository.microej.com/packages/SDK/21.11/zip/microej-sdk-21.11-win_x86_64.zip>`__
