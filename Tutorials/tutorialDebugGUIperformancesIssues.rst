@@ -253,7 +253,7 @@ Scenarios can be stored in a custom path or a default path specified in the appl
 
 The tool comparison functionality can be integrated with JUnit tests.
 
-For detailed information about the tool usage please 
+For detailed information about the tool usage, please 
 check the `README <https://github.com/MicroEJ/Tool-UITestAutomation/blob/master/TestAutomationTool/README.md>`_ in the repository.
 
 
