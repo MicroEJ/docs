@@ -47,14 +47,24 @@ Dependencies
 
 -  ``LLKERNEL_impl.h`` implementation (see :ref:`feature_memory_installation` section).
 
+.. _multisandbox_installation:
 
 Installation
 ============
 
-Multi-Sandbox capability is an additional Core Engine module, disabled by default.
+Multi-Sandbox is an option disabled by default. 
+To enable the Multi-Sandbox capability of the MicroEJ Core Engine, set the property ``com.microej.runtime.capability`` to ``multi`` in ``mjvm/mjvm.properties`` file.
+See the example below:
 
-To enable the Multi-Sandbox capability of the Core Engine, in the platform
-configuration file, check :guilabel:`Multi Applications`.
+.. code-block::
+
+  com.microej.runtime.capability=multi
+
+
+.. note::
+
+   Before :ref:`Architecture 8.1.0 <changelog-8.1.0>`, to enable the Multi-Sandbox capability of the Core Engine,
+   select the :guilabel:`Multi Applications` module in the platform configuration file.
 
 
 Use

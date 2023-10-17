@@ -12,7 +12,7 @@ specific configuration:
 
 -  Core Engine Capability
 
-   -  ``Single``: Mono-Sandbox (default)
+   -  ``Mono``: Mono-Sandbox (default)
    -  ``Tiny``: Tiny-Sandbox
    -  ``Multi``: Multi-Sandbox
 
@@ -45,6 +45,11 @@ This Architecture version update introduces the following main features:
 - Support for debugging ASLR Executables
 - Support for debugging MCU targets
 - Support for debugging Multi-Sandbox Executables
+- Updated the options to select the :ref:`Core Engine capability <core_engine_capabilities>`.  See :ref:`architecture8_migration_capability`.
+
+    - Added the VEE Port option ``com.microej.runtime.capability``
+    - Removed the ``Multi Applications`` module from the platform configuration file
+    - Value of the ``BON`` constant ``com.microej.architecture.capability`` is now ``mono`` instead of ``single`` when the Core Engine capability is Mono-Sandbox.
   
 If you plan to migrate a VEE Port from Architecture ``8.0.0`` to Architecture ``8.1.0``, consider the :ref:`architecture8_migration` chapter.
 
@@ -146,7 +151,7 @@ Foundation Libraries
 - Fixed unexpected `java.lang.NullPointerException`_ thrown by the ``skip`` method of an InputStream returned by `Class.getResourceAsStream()`_. This error only occurs with a resource loaded by the External Resource Loader.
 - Fixed the behavior of ``available``, ``read``, ``skip``, ``mark``, ``reset`` and ``close`` methods of an InputStream returned by `Class.getResourceAsStream()`_ and previously closed.
 - Fixed the ``LLEXT_RES_read()`` Low Level API specification (the buffer passed cannot be ``null``).
-- [Single] Fixed an unexpected ``FeatureFinalizer`` exception or infinite loop when a Standalone Application touches a ``KF`` API in some cases.
+- [Mono] Fixed an unexpected ``FeatureFinalizer`` exception or infinite loop when a Standalone Application touches a ``KF`` API in some cases.
 - [Tiny] Fixed an unexpected SOAR error when a Standalone Application touches a ``KF`` API.
 - [Multi] Fixed exception thrown when calling `Kernel.removeConverter()`_.
 - [Multi] Fixed an unexpected ``NullPointerException`` thrown by ``ej.kf.Kernel.<clinit>`` method in some cases.
@@ -609,6 +614,11 @@ as ``BON`` constants:
 -  ``com.microej.architecture.level=[eval|prod]``
 -  ``com.microej.architecture.toolchain=[toolchain_uid]``
 -  ``com.microej.architecture.version=7.14.0``
+
+.. note::
+
+   Starting from :ref:`Architecture 8.1.0 <changelog-8.1.0>`, ``com.microej.architecture.capability``
+   constant is set to ``mono`` instead of ``single`` when the Core Engine capability is Mono-Sandbox.
 
 The following set of VEE Port properties (customer defined) are
 automatically provided as ``BON`` constants:
