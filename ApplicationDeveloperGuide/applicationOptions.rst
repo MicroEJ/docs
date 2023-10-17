@@ -19,7 +19,7 @@ Please consult the appropriate Pack(s) documentation for options related to othe
 
 Notice that some options may not be supported by your VEE Port, in the following cases:
 
-- Option is specific to the Core Engine capability (*tiny*/*single*/*multi*).
+- Option is specific to the Core Engine capability (*tiny*/*mono*/*multi*).
 - Option is specific to the target (Core Engine or Simulator).
 - Option has been introduced in a newer Architecture version.
 
