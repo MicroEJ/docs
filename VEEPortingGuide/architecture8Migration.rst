@@ -7,6 +7,38 @@ This chapter describes the steps to migrate a VEE Port from Architecture ``8.0.0
 
 As a reminder, refer to the :ref:`Architecture 8.1.0 Changelog <changelog-8.1.0>` section for the complete list of changes and updates.
 
+.. _architecture8_migration_capability:
+
+Migrate Core Engine Capability Configuration
+--------------------------------------------
+
+The selection of the :ref:`Core Engine capability <core_engine_capabilities>` is now done via the property ``com.microej.runtime.capability``. 
+Refer to one of the sections below depending on your desired capability.
+
+If you use the `Platform Configuration Additions <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/>`_, update to the version ``2.1.0`` or higher.
+In your VEE Port, delete the property ``com.microej.platformbuilder.module.multi.enabled`` and use the property ``com.microej.runtime.capability``.
+
+Mono-Sandbox
+````````````
+
+Mono-Sandbox remains the default capability and no changes are required to your VEE Port configuration.
+
+Multi-Sandbox
+`````````````
+
+In the Platform Editor, the ``Multi Applications`` (``kf``) module now appears in gray:
+
+.. figure:: images/architecture8_removed_modules.png
+   :scale: 75%
+
+Unselect the ``kf`` module and follow the instructions from the :ref:`Multi-Sandbox installation <multisandbox_installation>` section.
+
+Tiny-Sandbox
+````````````
+
+The property ``mjvm.standalone.configuration`` used to select the Tiny-Sandbox capability is now deprecated.
+It is recommended to remove the definition of this property from the ``configuration.xml`` file and follow the instructions from the :ref:`Tiny-Sandbox installation <tinysandbox_installation>` section.
+
 .. _architecture8_migration_llkernel:
 
 Migrate Your LLKERNEL Implementation
