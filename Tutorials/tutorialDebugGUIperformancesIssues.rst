@@ -98,17 +98,6 @@ The decision between these two approaches depends on the project's specific requ
 
 There are multiple output formats that can be used to convert the images, you can find all of them here: :ref:`Output Formats<section_image_display_output>` .
 
-Cached Images
-+++++++++++++
-
-Caching images in your application can greatly enhance its performance and memory efficiency. It enables your app to load images quickly, resulting in a smoother user experience, and speeds up the development process by eliminating the need to regenerate images with every launch.
-
-The cache is enabled by default. It may be disabled by setting the :ref:`Application option<microui_application_options>` `ej.microui.imageConverter.disableCache` to `true`.
-
-Disabling caching may be useful during development when images are frequently changed, ensuring that the latest versions are always used. The decision to enable or disable caching should align with your specific application's requirements and development workflow. 
-
-Please go to the :ref:`Cached Images<section_caching_generated_images>` Section for more info. 
-
 Images Heap
 +++++++++++
 
