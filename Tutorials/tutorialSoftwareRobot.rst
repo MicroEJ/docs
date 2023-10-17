@@ -3,7 +3,7 @@
 How to test a GUI application with a (software) robot
 =====================================================
 
-This documents presents how to test a GUI application with a software robot for robotic process automation (RPA).
+This document presents how to test a GUI application with a software robot for robotic process automation (RPA).
 
 Robot tests and traditional unit tests are different but both are useful.
 Traditional unit tests validate the systems through calls to the API (internal or external). Robot tests validate the systems by mimicking the human user behavior directly in the GUI.
@@ -11,7 +11,7 @@ The robot implementation proposed here targets the following errors detection:
 
 * OutOfMemory
 * StackOverflow
-* MEJ32 and platform librairies error
+* MEJ32 and platform libraries error
 * Widget sequence validation
 
 The following document covers:
@@ -121,7 +121,7 @@ output. More on this a bit later.
 Replace default EventHandler with WatchPointerEventHandler 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Next, we setup the handler:
+Next, we set up the handler:
 
     .. code-block:: java
 
@@ -182,7 +182,7 @@ initialization of your GUI.
 
 And that’s it!
 
-The easiest way to record our robots is to run it on the platform simulator.
+The easiest way to record our robot is to run it on the platform simulator.
 The events will be outputted in the MicroEJ SDK console.
 
 The robot can also be run on board with the ``WatchPointer`` enabled. The events will be outputted on the trace output (typically a UART).

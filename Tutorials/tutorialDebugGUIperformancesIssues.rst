@@ -84,7 +84,8 @@ This section provides insights into common issues affecting performances on the 
 Format of UI Resources
 **********************
 
-One crucial aspect of optimizing an application is choosing the right image formats. Images can have a significant impact on an app performance and memory usage. Therefore, selecting the best image format is essential. It helps reduce memory usage, speed up the app, and improve its overall performance. 
+One crucial aspect of optimizing an application is choosing the right image formats. Images can have a significant impact on an app's performance and memory usage. Therefore, selecting the best image format is essential. It helps reduce memory usage, speed up the app, and improve its overall performance. 
+
 
 
 There are a few aspects to take into account when dealing with images formats: 
@@ -226,7 +227,8 @@ automating behaviour which otherwise would cost too much effort and/or time to e
 Here are the steps required to use a robot in the MicroEJ environment:
 
 - Record the robot input events
-    - For this, you need a simple EventHandler which intercepts incoming events, for example from a Pointer, then passes them on to the real event handler
+
+    - For this, you need a simple EventHandler which intercepts incoming events, for example from a Pointer, then passes them on to the real event handler.
 - Start the usage of the new 'Watcher' logic after the UI has started
     - With this, the watching of the Pointer envents is initiated for the whole application.   
 - Create a Robot
