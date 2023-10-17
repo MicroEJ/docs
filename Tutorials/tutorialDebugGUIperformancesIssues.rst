@@ -222,7 +222,7 @@ Test a GUI Application with a Software Robot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 It is possible to test the GUI of an application via robotic process automation (RPA).
 Robot tests mimic the human user behavior in the GUI and can help detect various errors by
-automating behaviour which otherwise would cost too much effort and/or time to execute manually. 
+automating behavior which otherwise would cost too much effort and/or time to execute manually. 
 
 Here are the steps required to use a robot in the MicroEJ environment:
 
