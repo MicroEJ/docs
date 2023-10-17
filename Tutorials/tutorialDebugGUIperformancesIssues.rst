@@ -84,7 +84,8 @@ This section provides insights into common issues affecting performances on the 
 Format of UI Resources
 **********************
 
-One crucial aspect of optimizing an application is choosing the right image formats. Images can have a significant impact on an app performance and memory usage. Therefore, selecting the best image format is essential. It helps reduce memory usage, speed up the app, and improve its overall performance. 
+One crucial aspect of optimizing an application is choosing the right image formats. Images can have a significant impact on an app's performance and memory usage. Therefore, selecting the best image format is essential. It helps reduce memory usage, speed up the app, and improve its overall performance. 
+
 
 
 There are a few aspects to take into account when dealing with images formats: 
