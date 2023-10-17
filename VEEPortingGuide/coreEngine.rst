@@ -57,6 +57,8 @@ The activity of the Core Engine is defined by the Application. When
 the Application is blocked (i.e., when all the MicroEJ threads
 sleep), the RTOS task running the Core Engine sleeps.
 
+.. _core_engine_capabilities:
+
 Capabilities
 ============
 
@@ -76,6 +78,18 @@ All the Core Engine capabilities may not be available on all
 architectures. Refer to section :ref:`appendix_matrixcapabilities`
 for more details.
 
+To select the Core Engine capability, create the property file ``mjvm/mjvm.properties``
+in the Platform configuration project and define the property ``com.microej.runtime.capability`` 
+with one of the following values:
+
+- ``mono`` for Mono-Sandbox (default value)
+
+- ``multi`` for Multi-Sandbox
+
+- ``tiny`` for Tiny-Sandbox
+
+If the property ``com.microej.runtime.capability`` is not defined,
+the Mono-Sandbox Core Engine capability is used.
 
 .. _core_engine_implementation:
 
@@ -668,10 +682,8 @@ information.
 Installation
 ============
 
-The Core Engine and its components are mandatory. In the
-platform configuration file, check :guilabel:`Multi Applications` to install the
-Core Engine in "Multi-Sandbox" mode. Otherwise, the "Single
-application" mode is installed.
+The Core Engine and its components are mandatory.
+They are automatically installed.
 
 Abstraction Layer
 =================
