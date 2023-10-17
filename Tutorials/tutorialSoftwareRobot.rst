@@ -121,7 +121,7 @@ output. More on this a bit later.
 Replace default EventHandler with WatchPointerEventHandler 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Next, we setup the handler:
+Next, we set up the handler:
 
     .. code-block:: java
 
