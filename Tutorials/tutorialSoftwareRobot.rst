@@ -11,7 +11,7 @@ The robot implementation proposed here targets the following errors detection:
 
 * OutOfMemory
 * StackOverflow
-* MEJ32 and platform librairies error
+* MEJ32 and platform libraries error
 * Widget sequence validation
 
 The following document covers:
