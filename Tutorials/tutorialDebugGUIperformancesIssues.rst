@@ -221,8 +221,8 @@ Before applying UI debugging or optimization techniques, the application behavio
 Test a GUI Application with a Software Robot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 It is possible to test the GUI of an application via robotic process automation (RPA).
-Robot tests mimick the human user behaviour in the GUI and can help detect various errors by
-automating behaviour which otherwise would cost too much effort and/or time to execute manually. 
+Robot tests mimic the human user behavior in the GUI and can help detect various errors by
+automating behavior which otherwise would cost too much effort and/or time to execute manually. 
 
 Here are the steps required to use a robot in the MicroEJ environment:
 
@@ -244,7 +244,7 @@ The :ref:`How to test a GUI application with a (software) robot<_tutorials_softw
 
 Test a GUI Application with the Test Automation Tool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To execute regression tests automatically and monitor minor changes th a GUI you can use the `Test Automation <https://github.com/MicroEJ/Tool-UITestAutomation>`_ Tool.
+To execute regression tests automatically and monitor minor changes in a GUI, you can use the `Test Automation <https://github.com/MicroEJ/Tool-UITestAutomation>`_ Tool.
 The Test Automation Tool allows to automatically test UIs.
 It is able to to record a scenario of events on the classes Pointer, Button, LongButton and Joystick and later replay the scenario. 
 While replaying a scenario, the tool can also compare the screen with screenshots captured while recording the scenario.
@@ -253,7 +253,7 @@ Scenarios can be stored in a custom path or a default path specified in the appl
 
 The tool comparison functionality can be integrated with JUnit tests.
 
-For detailed information about the tool usage please 
+For detailed information about the tool usage, please 
 check the `README <https://github.com/MicroEJ/Tool-UITestAutomation/blob/master/TestAutomationTool/README.md>`_ in the repository.
 
 
