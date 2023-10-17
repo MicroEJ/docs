@@ -340,7 +340,7 @@ And that’s it! We now have the basics to create and to play software robots to
 test our applications.
 
 Note that because we act at the UI level, whenever our application’s appearance
-changes, in particular if UI elements are moved around, we will need to update a
+changes, especially if UI elements are moved around, we will need to update a
 new version of our robots to match the new UI.
 
 Going Further
