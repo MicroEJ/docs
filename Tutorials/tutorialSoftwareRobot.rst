@@ -1,6 +1,6 @@
 .. _tutorials_software_robot:
 
-How to test a GUI application with a (software) robot
+How to Test a GUI Application with a (Software) Robot
 =====================================================
 
 This document presents how to test a GUI application with a software robot for robotic process automation (RPA).
@@ -46,12 +46,12 @@ Then, we will inject this code into our main application and run it.
 NB: In the next sections, we show code that is mostly functional. To use it in our project, we have to put it in our MicroEJ SDK/Studio workspace and add the proper imports.
 
 
-Record the Robot input events
+Record the Robot Input Events
 -----------------------------
 
 We will now look at how to record the events.
 
-Record events with WatchPointerEventHandler
+Record Events with WatchPointerEventHandler
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is the custom ``EventHandler`` named ``WatchPointerEventHandler``.
@@ -161,7 +161,7 @@ This code (1) saves the default ``EventHandler`` of the ``Pointer`` to pass it t
 recording by replacing the ``EventHandler`` and we stop (3) it by restoring the
 initial ``EventHandler``.
 
-Use WatchPointer in our main application
+Use WatchPointer in our Main Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The API of our ``WatchPointer`` is straightforward, just ``start()`` and ``stop()``
@@ -268,7 +268,7 @@ The Robot API implements the commands that were generated in the ``WatchPointerE
 operations ``press()``, ``move()`` and ``release()`` the click and drag actions are simulated. With the ``pause()`` we ensure we do it exactly at the same speed as the human who
 recorded it.
 
-Use Robot in our main application
+Use Robot in our Main Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Copy the commands into a function and call it from the main application at the same place where ``WatchPointer`` was called.
