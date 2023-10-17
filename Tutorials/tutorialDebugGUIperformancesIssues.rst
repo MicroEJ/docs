@@ -244,7 +244,7 @@ The :ref:`How to test a GUI application with a (software) robot<_tutorials_softw
 
 Test a GUI Application with the Test Automation Tool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To execute regression tests automatically and monitor minor changes th a GUI you can use the `Test Automation <https://github.com/MicroEJ/Tool-UITestAutomation>`_ Tool.
+To execute regression tests automatically and monitor minor changes in a GUI, you can use the `Test Automation <https://github.com/MicroEJ/Tool-UITestAutomation>`_ Tool.
 The Test Automation Tool allows to automatically test UIs.
 It is able to to record a scenario of events on the classes Pointer, Button, LongButton and Joystick and later replay the scenario. 
 While replaying a scenario, the tool can also compare the screen with screenshots captured while recording the scenario.
