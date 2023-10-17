@@ -237,7 +237,8 @@ automating behaviour which otherwise would cost too much effort and/or time to e
 Here are the steps required to use a robot in the MicroEJ environment:
 
 - Record the robot input events
-    - For this, you need a simple EventHandler which intercepts incoming events, for example from a Pointer, then passes them on to the real event handler
+
+    - For this, you need a simple EventHandler which intercepts incoming events, for example from a Pointer, then passes them on to the real event handler.
 - Start the usage of the new 'Watcher' logic after the UI has started
     - With this, the watching of the Pointer envents is initiated for the whole application.   
 - Create a Robot
