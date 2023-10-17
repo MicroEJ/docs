@@ -23,10 +23,10 @@ Introduction
 ------------
 
 Java developers have long used the `Date`_, `Calendar`_ and `TimeZone`_ classes for handling date and time. 
-Java 8 introduced a more advanced and comprehensive Date and Time API that goes beyond simply replacing `Date`_ or `Calendar`_. 
+Java SE 8 introduced a more advanced and comprehensive Date and Time API that goes beyond simply replacing `Date`_ or `Calendar`_. 
 It provides a complete time model for applications.
 
-There are many benefits of moving to the new API:
+There are many benefits of using the latest:
 
 * Immutability: types are immutable, making thread-safe code easier to write and less prone to bugs (due to no mutable state).
 * Improved API design: it offers an intuitive and developer-friendly design that better addresses the challenges of date and time manipulation. Application code is also easier to read and understand.
@@ -34,7 +34,7 @@ There are many benefits of moving to the new API:
 * Precision: it provides more precise representations for date and time values, including support for nanoseconds, which is important for applications requiring high precision.
 * Comprehensive time model: it introduces new classes that deal with different concepts of time such as date without a time or time without a date, durations or periods.
 
-In general, it's a good practice to use the Java Time API when dealing with date, time, and time zone-related operations because of its convenient features and extensive capabilities.
+In general, it's a good practice to use the ``Java Time API`` when dealing with date, time, and time zone-related operations because of its convenient features and extensive capabilities.
 Yet, for straightforward timestamp handling or lightweight applications, ``System.currentTimeMillis()`` can be adequate. 
 One aspect to keep in mind is that the Time API offers better readability and advanced operations, which might be missing when using timestamp manipulation or older APIs.
 
