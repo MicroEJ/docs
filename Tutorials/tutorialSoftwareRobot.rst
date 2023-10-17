@@ -182,7 +182,7 @@ initialization of your GUI.
 
 And that’s it!
 
-The easiest way to record our robots is to run it on the platform simulator.
+The easiest way to record our robot is to run it on the platform simulator.
 The events will be outputted in the MicroEJ SDK console.
 
 The robot can also be run on board with the ``WatchPointer`` enabled. The events will be outputted on the trace output (typically a UART).
