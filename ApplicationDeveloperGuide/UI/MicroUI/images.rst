@@ -264,11 +264,11 @@ The following table summarizes the usage of the different formats and the actual
    +--------------+------------------------------------+-------------------------------------+
    | ARGB1555     | .. image:: images/transparent.png  | .. image:: images/argb1555.png      |
    +--------------+------------------------------------+-------------------------------------+
-   | ARGB1555_PRE | .. image:: images/transparent.png  | .. image:: images/argb1555.png      |
-   +--------------+------------------------------------+-------------------------------------+
    | ARGB8888_PRE | .. image:: images/transparent.png  | .. image:: images/argb8888.png      |
    +--------------+------------------------------------+-------------------------------------+
    | ARGB4444_PRE | .. image:: images/transparent.png  | .. image:: images/argb4444.png      |
+   +--------------+------------------------------------+-------------------------------------+
+   | ARGB1555_PRE | .. image:: images/transparent.png  | .. image:: images/argb1555.png      |
    +--------------+------------------------------------+-------------------------------------+
    | RGB888       | .. image:: images/opaque.png       | .. image:: images/rgb888_o.png      |
    |              +------------------------------------+-------------------------------------+
