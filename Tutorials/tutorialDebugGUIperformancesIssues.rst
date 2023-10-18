@@ -12,35 +12,6 @@ Implementing GUIs Efficiently
 
 Before using more advanced UI debugging techniques, the global application code quality should be reviewed. An overall good code quality will help to get good UI performances. It will help to get more efficient code and allow easier debugging and maintenance.
 
-Format of UI Resources
-~~~~~~~~~~~~~~~~~~~~~~
-
-One crucial aspect of optimizing an application is choosing the right image formats. Images can have a significant impact on an app's performance and memory usage. Therefore, selecting the best image format is essential. It helps reduce memory usage, speed up the app, and improve its overall performance. 
-
-
-There are a few aspects to take into account when dealing with images formats: 
-
-Decoding Immutable Images
-*************************
-
-Immutable images are graphical resources that cannot be altered. These images can be converted for display either during the build-time process, using the Image Generator, or at run-time, utilizing the appropriate decoder library.
-
-The decision between these two approaches depends on the project's specific requirements. **Decoding at run-time** is a good choice when storage space is limited and offers greater flexibility. However, it may require more processing power and result in slower performance. Conversely, **decoding at build time** reduces the computational workload during run-time and is well-suited for devices with stringent performance demands, though it may sacrifice some flexibility in the process.
-
-There are multiple output formats that can be used to convert the images, you can find all of them here: :ref:`Output Formats<section_image_display_output>` .
-
-Images Heap
-***********
-
-The images heap stores not only the actual pictures but also some temporary stuff needed when decoding images, like puzzle pieces needed to put the picture together. Once the picture is complete, these puzzle pieces are thrown away to free up space.
-
-If an image can't be grabbed directly using a specific method, it's saved in the images heap. The size of this heap can be adjusted to fit the needs of your app using a property called `ej.microui.memory.imagesheap.size`.
-
-In simple terms, the images heap is like a storage closet for your app's images, and managing its size can help your app run smoothly and efficiently.
-
-Please go to the :ref:`Images Heap section<images_heap>` for more info. 
-
-
 Documents and Tools to Improve Application Code Quality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -71,6 +42,35 @@ To avoid those pitfalls:
   - :ref:`Optimize Memory Footprint<tutorial_optimize_memory_footprint>` tutorial.
   - :ref:`Memory inspection tools<tutorial_discover_embedded_debugging_techniques.tools.memory_inspection>`.
   - :ref:`Heap Analyzer<heapdumper>`.
+
+Format of UI Resources
+~~~~~~~~~~~~~~~~~~~~~~
+
+There are multiple output formats that can be used to convert the images, you can find all of them here: :ref:`Output Formats<section_image_display_output>` .
+
+One crucial aspect of optimizing an application is choosing the right image formats. Images can have a significant impact on an app's performance and memory usage. Therefore, selecting the best image format is essential. It helps reduce memory usage, speed up the app, and improve its overall performance. 
+
+There are a few aspects to take into account when dealing with images formats: 
+
+Decoding Immutable Images
+*************************
+
+Immutable images are graphical resources that cannot be altered. These images can be converted for display either during the build-time process, using the Image Generator, or at run-time, utilizing the appropriate decoder library.
+
+The decision between these two approaches depends on the project's specific requirements. **Decoding at run-time** is a good choice when storage space is limited and offers greater flexibility. However, it may require more processing power and result in slower performance. Conversely, **decoding at build time** reduces the computational workload during run-time and is well-suited for devices with stringent performance demands, though it may sacrifice some flexibility in the process.
+
+
+Images Heap
+***********
+
+The images heap stores not only the actual pictures but also some temporary stuff needed when decoding images, like puzzle pieces needed to put the picture together. Once the picture is complete, these puzzle pieces are thrown away to free up space.
+
+If an image can't be grabbed directly using a specific method, it's saved in the images heap. The size of this heap can be adjusted to fit the needs of your app using a property called `ej.microui.memory.imagesheap.size`.
+
+In simple terms, the images heap is like a storage closet for your app's images, and managing its size can help your app run smoothly and efficiently.
+
+Please go to the :ref:`Images Heap section<images_heap>` for more info. 
+
 
 Benchmarking GUIs
 -----------------
