@@ -239,6 +239,9 @@ Here is the list of the compressed formats:
    image2:RLE1 # Deprecated
    image3:A8_RLE
 
+
+.. _section_image_expected_result:
+
 Expected Result
 ~~~~~~~~~~~~~~~
 

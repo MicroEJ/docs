@@ -46,7 +46,7 @@ To avoid those pitfalls:
 Format of UI Resources
 ~~~~~~~~~~~~~~~~~~~~~~
 
-There are multiple output formats that can be used to convert the images, you can find all of them here: :ref:`Output Formats<section_image_display_output>` .
+There are multiple output formats that can be used to convert the images, you can find all of them here: :ref:`Output Formats<section_image_expected_result>` .
 
 One crucial aspect of optimizing an application is choosing the right image formats. Images can have a significant impact on an app's performance and memory usage. Therefore, selecting the best image format is essential. It helps reduce memory usage, speed up the app, and improve its overall performance. 
 
