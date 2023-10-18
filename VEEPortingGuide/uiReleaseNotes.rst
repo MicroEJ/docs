@@ -245,7 +245,7 @@ The module version is the MicroEJ Generic UI Pack version, that is always aligne
 +-----------------+-------------------------------------------------+-------------------+
 | UI Pack Range   | Module                                          | Version           |
 +=================+=================================================+===================+
-| [13.0.0-13.7.0] | `com.microej.pack.ui.ui-pack(imagegenerator)`_  | |UIPACKVERSION|   |
+| [13.0.0-13.7.0] | `com.microej.pack.ui.ui-pack(imagegenerator)`_  | [13.0.0-13.7.0]   |
 +-----------------+-------------------------------------------------+-------------------+
 
 .. note:: Before MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on classpath variable ``IMAGE-GENERATOR-x.x``.
