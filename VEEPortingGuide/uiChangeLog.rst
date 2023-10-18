@@ -418,7 +418,7 @@ LLAPIs
 
 * Add ``LLUI_DISPLAY_convertDisplayColorToARGBColor()``.
 * Add LLAPI to manage the :ref:`MicroUI Image heap<section_image_loader_memory>`.
-* Add LLAPI to dump the :ref:`MicroUI Image queue<section_inputs_eventbuffer>`.
+* Add LLAPI to dump the :ref:`MicroUI Events queue<section_inputs_eventbuffer>`.
 
 **Changed**	
 

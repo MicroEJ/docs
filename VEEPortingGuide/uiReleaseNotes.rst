@@ -261,19 +261,19 @@ MicroUI C Module
 """"""""""""""""
 
 The MicroUI C module `com.microej.clibrary.llimpl(microui)`_ is available on MicroEJ Central Repository, see :ref:`section_ui_cco`.
-The following table describes the compatibility versions between the C modules and the MicroEJ UI Packs:
+The following table describes the compatibility versions between the  MicroEJ UI Packs and the C modules:
 
-+----------------+-----------------+
-| C Module Range | UI Pack Range   |
-+================+=================+
-| [3.0.0-3.0.1]  | [13.5.0-13.7.0] |
-+----------------+-----------------+
-| [2.0.0-2.0.1]  | [13.3.0-13.4.1] |
-+----------------+-----------------+
-| [1.1.0-1.1.1]  | [13.1.0-13.2.0] |
-+----------------+-----------------+
-| [1.0.0-1.0.3]  | [13.0.0-13.1.0] |
-+----------------+-----------------+
++-----------------+----------------+------------------------------------------+
+| UI Pack Range   | C Module Range | Comment                                  |
++=================+================+==========================================+
+| [13.5.0-13.7.0] | [3.0.0-3.0.1]  | multiple Graphics Context output formats |
++-----------------+----------------+------------------------------------------+
+| [13.3.0-13.4.1] | [2.0.0-2.0.1]  | copy and draw image                      |
++-----------------+----------------+------------------------------------------+
+| [13.1.0-13.2.0] | [1.1.0-1.1.1]  | image heap, events queue, drawing limits |
++-----------------+----------------+------------------------------------------+
+| [13.0.0-13.1.0] | [1.0.0-1.0.3]  |                                          |
++-----------------+----------------+------------------------------------------+
 
 .. _com.microej.clibrary.llimpl(microui): https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/
 
@@ -289,37 +289,37 @@ The default implementations use the Graphics Engine software algorithms.
 
 The :ref:`DMA2D C module <section_ui_c_module_microui_dma2d>` targets the STM32 CPU that provides the Chrom-ART accelerator. 
 
-The following table describes the version compatibility between the C module and the MicroEJ UI Packs:
+The following table describes the version compatibility between the MicroEJ UI Packs and the C modules:
 
-+----------------+-----------------+
-| C Module Range | UI Pack Range   |
-+================+=================+
-| [4.0.0-4.0.1]  | [13.5.0-13.7.0] |
-+----------------+-----------------+
-| [3.0.0-3.0.2]  | [13.3.0-13.4.1] |
-+----------------+-----------------+
-| [2.0.0-2.1.0]  | [13.1.0-13.2.0] |
-+----------------+-----------------+
-| [1.0.6-1.0.8]  | [13.0.0-13.0.7] |
-+----------------+-----------------+
++-----------------+----------------+------------------------------------------+
+| UI Pack Range   | C Module Range | Comment                                  |
++=================+================+==========================================+
+| [13.5.0-13.7.0] | [4.0.0-4.0.1]  | multiple Graphics Context output formats |
++-----------------+----------------+------------------------------------------+
+| [13.3.0-13.4.1] | [3.0.0-3.0.2]  | copy and draw image                      |
++-----------------+----------------+------------------------------------------+
+| [13.1.0-13.2.0] | [2.0.0-2.1.0]  | drawing limits                           |
++-----------------+----------------+------------------------------------------+
+| [13.0.0-13.0.7] | [1.0.6-1.0.8]  |                                          |
++-----------------+----------------+------------------------------------------+
 
 **Vivante VG-Lite**
 
 The :ref:`VG-Lite C module <section_ui_c_module_microui_vglite>` targets the NXP CPU that provides the Vivante VG-Lite accelerator. 
 
-The following table describes the version compatibility between the C module and the MicroEJ UI Packs:
+The following table describes the version compatibility between the MicroEJ UI Packs and the C modules:
 
-+----------------+-----------------+
-| C Module Range | UI Pack Range   |
-+================+=================+
-| 7.2.0          | 13.7.0          |
-+----------------+-----------------+
-| [6.0.0-7.1.0]  | [13.5.0-13.6.2] |
-+----------------+-----------------+
-| [3.0.0-5.0.1]  | [13.3.0-13.4.1] |
-+----------------+-----------------+
-| [1.0.0-2.0.0]  | [13.1.0-13.2.0] |
-+----------------+-----------------+
++-----------------+----------------+------------------------------------------+
+| UI Pack Range   | C module Range | Comment                                  |
++=================+================+==========================================+
+| 13.7.0          | 7.2.0          |                                          |
++-----------------+----------------+------------------------------------------+
+| [13.5.0-13.7.0] | [6.0.0-7.1.0]  | multiple Graphics Context output formats |
++-----------------+----------------+------------------------------------------+
+| [13.3.0-13.4.1] | [3.0.0-5.0.1]  | copy and draw image                      |
++-----------------+----------------+------------------------------------------+
+| [13.1.0-13.2.0] | [1.0.0-2.0.0]  |                                          |
++-----------------+----------------+------------------------------------------+
 
 The following table describes the version compatibility between the C module and the VG-Lite libraries (officially supported):
 
@@ -339,13 +339,13 @@ The following table describes the version compatibility between the C module and
 
 The :ref:`NemaGFX C module <section_ui_c_module_microui_nemagfx>` targets the CPU that provides the NemaGFX accelerator. 
 
-The following table describes the version compatibility between the C module and the MicroEJ UI Packs:
+The following table describes the version compatibility between the MicroEJ UI Packs and the C modules:
 
-+----------------+-----------------+
-| C Module Range | UI Pack Range   |
-+================+=================+
-| [1.0.0-1.0.1]  | [13.5.0-13.7.0] |
-+----------------+-----------------+
++-----------------+----------------+---------+
+| UI Pack Range   | C module Range | Comment |
++=================+================+=========+
+| [13.5.0-13.7.0] | [1.0.0-1.0.1]  |         |
++-----------------+----------------+---------+
 
 ..
    | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
