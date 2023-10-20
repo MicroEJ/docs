@@ -12,7 +12,7 @@ In this section you will learn:
 
 MicroEJ provides a mechanism called Shared Services, this is option provide a way to easily share Java object instances within a Multi-Sandbox execution context.
 
-The Communication between Features is based upon the `Shared Interface <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/sandboxedAppSharedInterface.html#`_ mechanim.
+The Communication between Features is based upon the `Shared Interface <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/sandboxedAppSharedInterface.html#>`_ mechanim.
 
 Therefore a good understanding of this notion is required to properly work with the upcoming sections
 
@@ -45,7 +45,7 @@ the other Application instance) to comply with the specificiation.
 Features can then communicate together through the use of Shared Interfaces.
 This mechanism is described in :ref:`chapter.shared.interfaces` section.
 
-To sum up, `Shared Interface` and `Shared Services` are two complementary notions, basically, the Shared Interfaces mechanism is responsible for setting up the capability of
+To sum up, ``Shared Interface`` and ``Shared Services`` are two complementary notions, basically, the Shared Interfaces mechanism is responsible for setting up the capability of
 sharing an instance between Features whereas the Shared Services offers a way to get, store and retrieve these instances once correctly set up.
 
 Register a Service
@@ -91,7 +91,7 @@ Learn more about types `here <https://docs.microej.com/en/latest/ApplicationDeve
    .. note::
 
       In a Multi-Sandbox context, the only module capable of declaring Types is the Kernel therefore a type belonging to a Feature can't be instantiated this way.
-      An alternative way to embed Type names not referenced into the Kernel is the usage of the property `soar.generate.classnames <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/applicationOptions.html#group-types`_, note that it can have an impact on the footprint of the Kernel as it will embed all Types.
+      An alternative way to embed Type names not referenced into the Kernel is the usage of the property `soar.generate.classnames <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/applicationOptions.html#group-types>`_, note that it can have an impact on the footprint of the Kernel as it will embed all Types.
 
 .. _kernel_service_registry:
 
