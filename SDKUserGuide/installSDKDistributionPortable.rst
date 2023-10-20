@@ -24,21 +24,15 @@ Perform the following steps:
      - **macOS aarch64 (M1 chip)** [#warning_architecture_7_18_0]_
    * - ``23.07``
      - ``11``
-     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.07/zip/microej-sdk-23.07-win_x86_64.zip>`__
-     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.07/zip/microej-sdk-23.07-linux_x86_64.zip>`__
-     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.07/zip/microej-sdk-23.07-macosx_x86_64.zip>`__
-     - `Portable  (.zip) <https://repository.microej.com/packages/SDK/23.07/zip/microej-sdk-23.07-macosx_aarch64.zip>`__
-   * - ``23.02``
-     - ``11``
-     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.02/zip/microej-sdk-23.02-win_x86_64.zip>`__
-     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.02/zip/microej-sdk-23.02-linux_x86_64.zip>`__
-     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.02/zip/microej-sdk-23.02-macosx_x86_64.zip>`__
-     - `Portable  (.zip) <https://repository.microej.com/packages/SDK/23.02/zip/microej-sdk-23.02-macosx_aarch64.zip>`__
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.07/zip>`__
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.07/zip>`__
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.07/zip>`__
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.07/zip>`__
    * - ``21.11``
      - ``8``
-     - `Portable (.zip) <https://repository.microej.com/packages/SDK/21.11/zip/microej-sdk-21.11-win_x86_64.zip>`__
-     - `Portable (.zip) <https://repository.microej.com/packages/SDK/21.11/zip/microej-sdk-21.11-linux_x86_64.zip>`__
-     - `Portable (.zip) <https://repository.microej.com/packages/SDK/21.11/zip/microej-sdk-21.11-macosx_x86_64.zip>`__
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/21.11/zip>`__
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/21.11/zip>`__
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/21.11/zip>`__
      - `N/A`
 
 - Once downloaded, extract the zip file in a local directory of your choice
