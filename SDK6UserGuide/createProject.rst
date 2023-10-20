@@ -47,6 +47,16 @@ This chapter explains the different ways to create a new project.
       
          Project Creation in Android Studio
       
+      - Change the view from :guilabel:`Android` to :guilabel:`Project` in the selectbox at the top of the project's files tree:
+      
+      .. figure:: images/android-studio-create-project-03.png
+         :alt: Project View in Android Studio
+         :align: center
+         :scale: 70%
+      
+         Project View in Android Studio
+      
+
       The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensure that the project uses the right version :
       
       - Open the ``gradle/wrapper/gradle-wrapper.properties`` file.
@@ -57,11 +67,12 @@ This chapter explains the different ways to create a new project.
             distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
       
       If you want to know more about the Gradle Wrapper, go to the :ref:`sdk_6_create_project_gradle_wrapper` section.
-        
-      The project created by Android Studio is an Android project (Gradle ``com.android.application`` plugin). 
-      The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
+
+      The project created by Android Studio is a multi-project with a single subproject (named ``app``).
+      This subproject is an Android application (Gradle ``com.android.application`` plugin). 
+      The ``build.gradle.kts`` and the ``settings.gradle.kts`` files have to be updated to make it a MicroEJ project:
       
-      - Open the ``build.gradle.kts`` file.
+      - Open the ``app/build.gradle.kts`` file.
       - Erase its whole content.
       - :ref:`Configure the project <sdk_6_create_project_configure_project>` depending on the module nature you want to build.
       - Declare the dependencies required by your project in the ``dependencies`` block. For example::
@@ -70,6 +81,21 @@ This chapter explains the different ways to create a new project.
                 implementation("ej.api:edc:1.3.5")
             }
       
+      - Open the ``settings.gradle.kts`` file.
+      - Remove everything except these 2 lines::
+
+            rootProject.name = "My Application"
+            include(":app")
+
+      - Delete the following files since they are not required for a MicroEJ project:
+
+        - ``build.gradle.kts``
+        - ``gradle.properties``
+        - ``app/libs``
+        - ``app/src/main/res``
+        - ``app/src/main/AndroidManifest.xml``
+        - ``app/src/proguard-rules.pro``
+
       .. note::
          By default, Android Studio automatically saves any file change, 
          but requires the user to explicitly trigger the reload of a Gradle project when its configuration has changed.
