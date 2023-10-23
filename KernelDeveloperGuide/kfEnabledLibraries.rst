@@ -137,6 +137,8 @@ Among them, we can cite the following:
 
 Please contact :ref:`our support team <get_support>` for more details on usage.
 
+.. _securitymanager_permission_check:
+
 Implement a Security Manager Permission Check
 ---------------------------------------------
 

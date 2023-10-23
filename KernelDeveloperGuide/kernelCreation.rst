@@ -81,6 +81,11 @@ Implement a Security Policy
 The Kernel can restrict sensitive or possibly unsafe operations performed by Sandboxed Applications, thus defining a security policy.
 Implementing a security policy is achieved by enabling support for Security Management system-wide and by registering to the Kernel a custom `SecurityManager`_ that will handle the `Permission`_ checks.
 
+.. note::
+
+   An API controlled by the Security Manager must be guarded by a :ref:`Permission check <securitymanager_permission_check>`.
+   The usual API documentation convention is to declare to throw a `SecurityException`_ with details about the requested Permission.
+
 Enable the Security Management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -99,6 +104,7 @@ Implementation of a Security Policy is demonstrated in the `Kernel-GREEN`_ proje
 .. _SecurityManager.checkPermission(Permission): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html#checkPermission-java.security.Permission-
 .. _System.setSecurityManager(SecurityManager): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#setSecurityManager-java.lang.SecurityManager-
 .. _Kernel-GREEN: https://github.com/MicroEJ/Kernel-GREEN
+.. _SecurityException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityException.html
 .. _Permission: https://repository.microej.com/javadoc/microej_5.x/apis/java/security/Permission.html
 
 .. _pre_installed_application_vd:
