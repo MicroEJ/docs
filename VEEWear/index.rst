@@ -3,11 +3,14 @@
 VEE Wear
 ========
 
+VEE Wear is MicroEJ's solution for Wearable development.
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    Android/index
    ick
+   offloading
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
