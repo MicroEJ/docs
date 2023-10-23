@@ -78,19 +78,23 @@ A Kernel API or a Runtime Environment module is added as a dependency with the c
 Implement a Security Policy
 ---------------------------
 
-The Kernel may further restrict sensitive or possibly unsafe operations performed by applications, thus defining a Security Policy. Implementing such a policy may be achieved by enabling support for Security Management system-wide and by registering to the Kernel a custom `SecurityManager`_ that will handle the actual security checks.
+The Kernel may further restrict sensitive or possibly unsafe operations performed by applications, thus defining a Security Policy.
+Implementing such a policy may be achieved by enabling support for Security Management system-wide and by registering to the Kernel a custom `SecurityManager`_ that will handle the actual security checks.
 
 Enabling Security Management support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For the sake of ROM footprint optimization support for Security Management is disabled by default. In order to activate this feature the :ref:`option_enable_security_manager` option must be set. Please refer to :ref:`define_option` to get help with setting an option.
+For the sake of ROM footprint optimization support for Security Management is disabled by default.
+In order to activate this feature the :ref:`option_enable_security_manager` option must be set.
+Please refer to :ref:`define_option` to get help with setting an option.
 
 Implementing security checks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Security Policy can be enforced by defining a custom security manager and registering it to the Kernel.
 
-This can be achieved by subclassing the base `SecurityManager`_ class, overriding its `SecurityManager.checkPermission(Permission)`_ method, and registering an instance of this class to the Kernel by a call to `System.setSecurityManager(SecurityManager)`_.
+This can be achieved by subclassing the base `SecurityManager`_ class, overriding its `SecurityManager.checkPermission(Permission)`_ method,
+and registering an instance of this class to the Kernel by a call to `System.setSecurityManager(SecurityManager)`_.
 
 Implementation of a Security Policy is demonstrated in the `Kernel-GREEN`_ project available on GitHub.
 
