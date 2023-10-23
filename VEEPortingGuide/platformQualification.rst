@@ -450,7 +450,7 @@ EVENT QUEUE Pack
      - Java Test Suite
    * - 2.0.1
      - `2.0.0 <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/event/2.0.0/>`__
-     - `2.0.0 <hhttps://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/pack/event/event-testsuite/2.0.0/>`__
+     - `2.0.0 <https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/pack/event/event-testsuite/2.0.0/>`__
 
 .. [1] Test Suite available on demand, please contact :ref:`MicroEJ Support<get_support>`.
 
