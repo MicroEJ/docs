@@ -16,7 +16,6 @@ Application Developer Guide
    applicationOptions
    sandboxedApplication
    characterEncoding
-   javaTime
    limitations
    github
    modulesRepositories
