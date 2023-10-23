@@ -178,6 +178,7 @@ The following code is the typical code that must be written at the beginning of 
    By default, this option is disabled, so the SOAR automatically removes the code.
    This allows you to use your library in a Mono-Sandbox environment where ROM footprint matters.
    Your Kernel shall enable this option to trigger the Security Manager checks.
+   See :ref:`implement_security_policy` for more details.
 
 .. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
 
