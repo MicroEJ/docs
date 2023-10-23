@@ -98,12 +98,28 @@ Implement your Security Policy
 This can be achieved by subclassing the base `SecurityManager`_ class, overriding its `SecurityManager.checkPermission(Permission)`_ method,
 and registering an instance of this class to the Kernel by a call to `System.setSecurityManager(SecurityManager)`_.
 
-Implementation of a Security Policy is demonstrated in the `Kernel-GREEN`_ project available on GitHub.
+.. code-block:: java
+
+      // create a new Security Manager
+      SecurityManager sm = new SecurityManager() {
+         @Override
+         public void checkPermission(java.security.Permission perm) {
+            // here implement your Kernel Security Policy
+         };
+      };
+      // register the Security Manager
+      System.setSecurityManager(sm);
+
+Then you have to implement your own Security Policy.
+
+Implementation of a Security Policy is demonstrated in the `Kernel-GREEN`_ project.
+It shows the log of Permission requests, using the utility class `KernelSecurityManager`_ that helps to dispatch the Permission checks.
 
 .. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
 .. _SecurityManager.checkPermission(Permission): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html#checkPermission-java.security.Permission-
 .. _System.setSecurityManager(SecurityManager): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#setSecurityManager-java.lang.SecurityManager-
 .. _Kernel-GREEN: https://github.com/MicroEJ/Kernel-GREEN
+.. _KernelSecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/KernelSecurityManager.html
 .. _SecurityException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityException.html
 .. _Permission: https://repository.microej.com/javadoc/microej_5.x/apis/java/security/Permission.html
 
