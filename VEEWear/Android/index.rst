@@ -11,10 +11,10 @@ Having the same code ready for both Android and MicroEJ VEE opens up a wide rang
 * Develop derivative products based on small MCUs or low-cost MPUs with limited resources where Android cannot be used as it is inherently resource-intensive.
 * Reduce energy consumption by enabling two processors to coexist to distribute tasks between a very powerful processor powered by Android and a low-power processor powered by MicroEJ.
 
-Below are some examples from the wearables segment that illustrate these use cases:
+Below are some examples from the wearable segment that illustrate these use cases:
 
 * Watch faces can be developed once and deployed on both a smartwatch (MicroEJ VEE) and its companion smartphone app (Android), enabling consistent functionality and appearance across both devices. This provides a good user experience for the user while minimizing code duplication and maintenance for the developer.
-* Power efficiency is a significant concern with wearables as sophisticated features often come at a high cost in terms of power consumption. An :ref:`offloading <offloading>` framework can reduce power usage by executing the same application alternately on a low-consumption MCU and a powerful MPU. Operating in standby mode as much as possible on the MCU is one of the strategies to achieve energy efficiency.
+* Power efficiency is a significant concern with wearable as sophisticated features often come at a high cost in terms of power consumption. An :ref:`offloading <offloading>` framework can reduce power usage by executing the same application alternately on a low-consumption MCU and a powerful MPU. Operating in standby mode as much as possible on the MCU is one of the strategies to achieve energy efficiency.
 
 
 
@@ -23,9 +23,8 @@ Below are some examples from the wearables segment that illustrate these use cas
 
    overview
    installation
-   createProject
+   projectSetup
    veePort
-   sample
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
