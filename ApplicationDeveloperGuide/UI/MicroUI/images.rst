@@ -330,10 +330,10 @@ Usage Advice
 
 - For BSP with a GPU, choose a format compatible with the GPU (all formats may not be available),
 
-   - `ARGB` formats: choose between non-premultiplied formats and premultiplied formats (suffix `_PRE`),
-   - `Ax` formats (pictogram): all bits-per-pixel may not be available.
+   - `ARGB` formats: choose between non-premultiplied formats and premultiplied formats (suffixed with `_PRE`),
+   - `Ax` formats (pictogram): all bits-per-pixel values may not be available.
    - be careful about the color components position (`A-R-G-B` versus `R-G-B-A` for instance),
-   - avoid formats `Cx`, `ACxx` and `xxx_RLE`: not compatible with the GPU.
+   - avoid formats `Cx`, `ACxx` and `xxx_RLE`, which are not compatible with a GPU.
 
 .. _section_caching_generated_images:
 

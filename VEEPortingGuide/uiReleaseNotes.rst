@@ -261,7 +261,7 @@ MicroUI C Module
 """"""""""""""""
 
 The MicroUI C module `com.microej.clibrary.llimpl(microui)`_ is available on MicroEJ Central Repository, see :ref:`section_ui_cco`.
-The following table describes the compatibility versions between the  MicroEJ UI Packs and the C modules:
+The following table describes the compatibility versions between the MicroEJ UI Packs and the C modules:
 
 +-----------------+----------------+------------------------------------------+
 | UI Pack Range   | C Module Range | Comment                                  |
