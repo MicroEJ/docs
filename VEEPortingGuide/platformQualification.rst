@@ -427,7 +427,14 @@ NET Pack
      - `2.2.3 <https://repository.microej.com/modules/ej/api/ssl/2.2.3/>`__
      - `1.4.2 <https://repository.microej.com/modules/ej/api/security/1.4.2/>`__
      - `4.1.1 <https://repository.microej.com/modules/com/microej/pack/net/net-1_1-testsuite/4.1.1/>`__
-     - `4.0.1 <https://repository.microej.com/modules/com/microej/pack/net/net-ssl-2_2-testsuite/4.0.1//>`__
+     - `4.0.1 <https://repository.microej.com/modules/com/microej/pack/net/net-ssl-2_2-testsuite/4.0.1/>`__
+     - `1.3.1 <https://repository.microej.com/modules/com/microej/pack/security/security-1_4-testsuite/1.3.1/>`__
+   * - [11.0.1-11.0.2]
+     - `1.1.4 <https://repository.microej.com/modules/ej/api/net/1.1.4/>`__
+     - `2.2.3 <https://repository.microej.com/modules/ej/api/ssl/2.2.3/>`__
+     - `1.4.2 <https://repository.microej.com/modules/ej/api/security/1.4.2/>`__
+     - `4.1.1 <https://repository.microej.com/modules/com/microej/pack/net/net-1_1-testsuite/4.1.1/>`__
+     - `4.0.2 <https://repository.microej.com/modules/com/microej/pack/net/net-ssl-2_2-testsuite/4.0.2/>`__
      - `1.3.1 <https://repository.microej.com/modules/com/microej/pack/security/security-1_4-testsuite/1.3.1/>`__
 
 .. [1] Test Suite available on demand, please contact :ref:`MicroEJ Support<get_support>`.
