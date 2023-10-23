@@ -171,7 +171,7 @@ This section provides a non-exhaustive list of tips to make the best use of the 
 
       $ convert figma.png -crop 480x480+45+45 figma-cropped.png
 
-  Then, if the MicroUI bpp setting is not ``RGB888``, the image can be filtered to match the supported colors.
+  Then, if the :ref:`MicroUI bpp setting <display_pixel_structure_driver>` is not ``RGB888``, the image can be filtered to match the supported colors.
   For example, for ``bpp=RGB565``, apply the following filter:
 
    .. code-block:: console
