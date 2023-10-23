@@ -137,8 +137,8 @@ Among them, we can cite the following:
 
 Please contact :ref:`our support team <get_support>` for more details on usage.
 
-Implement a Security Manager Check
-----------------------------------
+Implement a Security Manager Permission Check
+---------------------------------------------
 
 A Multi-Sandbox enabled Foundation Library should protect Feature from accessing native resources.
 This is done by requesting a check to the current `SecurityManager`_ defined by the Kernel.
