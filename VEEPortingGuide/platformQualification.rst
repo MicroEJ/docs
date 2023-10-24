@@ -437,6 +437,21 @@ NET Pack
      - `4.0.2 <https://repository.microej.com/modules/com/microej/pack/net/net-ssl-2_2-testsuite/4.0.2/>`__
      - `1.3.1 <https://repository.microej.com/modules/com/microej/pack/security/security-1_4-testsuite/1.3.1/>`__
 
+.. _test_suite_versioning_event_queue:
+
+EVENT QUEUE Pack
+----------------
+
+.. list-table:: EVENT QUEUE API Implementation and Validation
+   :widths: 20 10 10
+
+   * - EVENT QUEUE Pack
+     - EVENT QUEUE API
+     - Java Test Suite
+   * - 2.0.1
+     - `2.0.0 <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/api/event/2.0.0/>`__
+     - `2.0.0 <https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/pack/event/event-testsuite/2.0.0/>`__
+
 .. [1] Test Suite available on demand, please contact :ref:`MicroEJ Support<get_support>`.
 
 ..
