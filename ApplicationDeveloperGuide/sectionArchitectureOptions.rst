@@ -759,8 +759,8 @@ Group: Memory
 
 .. _option_maximum_number_of_monitors_per_thread:
 
-Option(text):
-""""""""""""""
+Option(text): Maximum number of monitors per thread
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``core.memory.thread.max.nb.monitors``
 
@@ -770,8 +770,8 @@ Option(text):
 
 Specifies the maximum number of monitors a thread can own at the same time.
 
-Option(text):
-""""""""""""""
+Option(text): Maximum number of frames dumpers on OutOfMemoryError
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``core.memory.oome.nb.frames``
 
@@ -791,8 +791,8 @@ Option(checkbox): Enable Java heap usage monitoring
 
 *Default value*: ``false``
 
-Option(text):
-""""""""""""""
+Option(text): Java heap initial size
+""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``com.microej.runtime.debug.heap.monitoring.init.size``
 
@@ -862,8 +862,8 @@ Category: Kernel
 Group: Threads
 """"""""""""""
 
-Option(text):
-~~~~~~~~~~~~~~
+Option(text): Maximum number of threads per Feature
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Option Name*: ``core.memory.feature.max.threads``
 
@@ -874,13 +874,28 @@ Option(text):
 Specifies the maximum number of threads a Feature is allowed to use at the same
 time.
 
+.. _option_feature_stop_timeout:
+
+Option(text): Feature stop timeout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Option Name*: ``com.microej.runtime.kf.waitstop.delay``
+
+*Default value*: ``2000``
+
+*Description*:
+
+Specifies the maximum time allowed for the `FeatureEntryPoint.stop()`_ method to return (value in milliseconds).
+
+.. _FeatureEntryPoint.stop(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html#stop--
+
 Group: Features Installation
 """"""""""""""""""""""""""""
 
 .. _option_maximum_number_of_dynamic_features:
 
-Option(text):
-~~~~~~~~~~~~~~
+Option(text): Maximum number of installed Features
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Option Name*: ``com.microej.runtime.kernel.dynamicfeatures.max``
 
@@ -893,8 +908,8 @@ this Kernel (see `Kernel.install()`_ method).
 
 .. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
 
-Option(text):
-~~~~~~~~~~~~~~
+Option(text): Code chunk size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Option Name*: ``com.microej.soar.kernel.featurecodechunk.size``
 
@@ -904,21 +919,23 @@ Option(text):
 
 Specifies the size in bytes of the code chunk in RAM. See :ref:`feature_code_chunk_size` section for more details.
 
-.. _option_feature_stop_timeout:
+Option(text): InputStream transfer buffer size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Option(text):
-~~~~~~~~~~~~~~
+*Option Name*: ``com.microej.runtime.kf.link.transferbuffer.size``
 
-*Option Name*: ``com.microej.runtime.kf.waitstop.delay``
-
-*Default value*: ``2000``
+*Default value*: ``512``
 
 *Description*:
 
-Specifies the maximum time allowed for the `FeatureEntryPoint.stop()`_ method to return (value in milliseconds).
+Specifies the size in bytes of the temporary byte array for reading in the Feature InputStream. See :ref:`inputstream_transfer_buffer_size` section for more details.
 
-.. _FeatureEntryPoint.stop(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html#stop--
+Option(text): Maximum number of relocations applied simultaneously
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+*Option Name*: ``com.microej.runtime.kf.link.chunk.relocations.count``
+
+*Default value*: ``128``
 
 Group: Feature Portability Control
 """"""""""""""""""""""""""""""""""
