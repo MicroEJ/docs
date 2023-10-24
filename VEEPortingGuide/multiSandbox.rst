@@ -188,11 +188,13 @@ The Code chunk size can be configured with the following option:
 
 A small number will reduce the RAM consumption but will increase the ``.fo`` size and will affect the installation time. 
 
-InputStream Buffer Size
-~~~~~~~~~~~~~~~~~~~~~~~
+.. _inputstream_transfer_buffer_size:
 
-Feature ``.fo`` InputStream is read in a temporary byte array allocated in the Java Heap. 
-The buffer size can be configured with the following option:
+InputStream Transfer Buffer Size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When calling the `Kernel.install(InputStream)`_ method, the Feature ``.fo`` bytes are read from the InputStream using a temporary byte array allocated in the Java Heap. 
+The size of this array can be configured with the following option:
 
 **Option Name**: ``com.microej.runtime.kf.link.transferbuffer.size``
 
