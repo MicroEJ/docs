@@ -473,6 +473,11 @@ Windows Troubleshooting
 
      Invalid license check (Dongle found is not compatible).
 
+- If the USB dongle is plugged and activated but not visible in the menu ``Window > Preferences > MicroEJ``, please check that you have an active VEE Port in ``Window > Preferences > MicroEJ > Platforms in workspace``.
+  Then, ensure that the VEE Port's field ``com.microej.platformbuilder.architecture.usage`` is configured to ``prod`` mode in the file ``module.properties``.
+  If no VEE Port are visible in your current workspace, please build a VEE Port configured to the ``prod`` mode and this should fix the issue.
+
+
 VirtualBox Troubleshooting
 """"""""""""""""""""""""""
 
