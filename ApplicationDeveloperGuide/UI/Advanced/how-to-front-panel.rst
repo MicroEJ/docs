@@ -177,3 +177,6 @@ This section provides a non-exhaustive list of tips to make the best use of the 
    .. code-block:: console
 
       $ convert figma.png -channel red,blue -evaluate AND 63743 -channel green -evaluate AND 64767 figma-rgb565.png
+
+* To keep the front panel visible while developing the application, use multiple displays and/or use tools like Microsoft PowerToys'
+  `Always on Top <https://learn.microsoft.com/en-us/windows/powertoys/always-on-top>`_ utility.
