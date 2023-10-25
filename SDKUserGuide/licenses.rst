@@ -517,6 +517,16 @@ This might not be sufficient. If you're still facing license issues, restart ude
 .. note::
    Hibernation may have unattached your dongle. Reload udev, unplug/plug your dongle and attach it from powershell.
 
+Dongle not detected in the licenses screen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If the USB dongle is plugged and activated but not visible in the menu :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ`,
+please check that you have an active VEE Port in :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms in workspace`.
+
+Then, ensure that the VEE Port has been built in ``prod`` configuration, this can be checked with the architecture dependency inside the file ``module.ivy``.
+If no VEE Ports are visible in your current workspace, please build a VEE Port configured to the ``prod`` mode and this should fix the issue.
+
+
 Remote USB Dongle Connection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
