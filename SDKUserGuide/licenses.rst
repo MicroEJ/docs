@@ -547,6 +547,59 @@ Sentinel License Overview
 Install Runtime Environment (RTE)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Sentinel LDK Run-time Environment is required on the end user's computer to enable your protected software to run by communicating with Sentinel protection keys. 
+
+- Get Sentinel_RTE_Installation.zip installers here: xxxxx. It contains installer for Windows, Mac and Linux.
+
+Installation for Windows 
+""""""""""""""""""""""""
+
+- Get haspdinst_37102.exe file.
+- Type haspdinst_37102.exe -i in the command line. The installation or upgrade process is performed automatically. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully installed.
+- To uninstall RTE type haspdinst_37102.exe -r in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
+
+Installation for Linux 
+""""""""""""""""""""""
+
+- Get aksusbd_37102-9.14.1.tar.gz file.
+- As root, enter the following command:
+    - For RedHat, SUSE, or CentOS 64-bit ARM systems: ``rpm -i aksusbd-9.14-1.aarch64.rpm``
+    - For RedHat, SUSE, or CentOS 64-bit Intel systems: ``rpm -i aksusbd-9.14-1.x86_64.rpm``
+    - For Ubuntu or Debian 32-bit ARM systems: ``dpkg -i aksusbd_9.14-1_armhf.deb``
+    - For Ubuntu or Debian 64-bit ARM systems: ``dpkg -i aksusbd_9.14-1_arm64.deb``
+    - For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_9.14-1_amd64.deb``
+NOTE: All install/uninstall commands must be executed with root rights. In Ubuntu, prefix the commands with the sudo command; in other distributions, use the su utility to become root in the terminal window.
+
+Installation for MAC
+""""""""""""""""""""
+
+- Get Sentinel_Runtime_37102.tar file.
+- In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on Sentinel_Runtime.dmg.
+- Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched.
+- Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, hasplmd creates configuration files in /private/etc/hasplm/.
+
+Activate your product 
+~~~~~~~~~~~~~~~~~~~~~
+
+Install Vendor Libraries
+""""""""""""""""""""""""
+
+- Unzip MicroEJ_library.zip file in the following location:
+    - For Windows x64: ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\``
+    - For Windows x86: ``%CommonProgramFiles%\Aladdin Shared\HASP\``
+    - For Mac: ``/var/hasplm`` (By default, the /var path is hidden. You may need to modify the operating system View option to display all files and folders in order to access this path.)
+    - For Linux: ``/var/hasplm``
+
+Activate your license
+"""""""""""""""""""""
+
+- On the product computer go to http://localhost:1947 (Sentinel Admin Control Center)
+- Go to `Sentinel key` and click on `fingerprint` for Local key to download the C2V file.
+- Send this file to MicroEJ, MicroEJ will send you a V2C file
+- Go back to Sentinel Admin Control Center
+- Click on `Update/Attach` and upload the V2C file
+- Apply it with `Apply` button
+
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
