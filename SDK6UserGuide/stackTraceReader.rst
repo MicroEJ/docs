@@ -125,8 +125,8 @@ The output of the Stack Trace Reader is the following:
              at java.lang.Thread.callWrapper(Thread.java:449)
 
 
-Stack Trace Reader Options
-==========================
+Options
+=======
 
 Option: Executable file
 ^^^^^^^^^^^^^^^^^^^^^^^
