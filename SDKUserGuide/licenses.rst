@@ -544,6 +544,8 @@ Please contact :ref:`our support team <get_support>` for more details.
 Sentinel License Overview
 -------------------------
 
+Install Runtime Environment (RTE)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
