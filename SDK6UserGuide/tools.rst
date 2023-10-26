@@ -23,6 +23,7 @@ The next sections describe the tools and their options.
    :maxdepth: 1
 
    stackTraceReader
+   codeCoverageAnalyzer
 
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
