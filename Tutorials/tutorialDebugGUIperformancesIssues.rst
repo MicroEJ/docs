@@ -46,31 +46,38 @@ To avoid those pitfalls:
 Format of UI Resources
 ~~~~~~~~~~~~~~~~~~~~~~
 
-There are multiple output formats that can be used to convert the images, you can find all of them here: :ref:`Output Formats<section_image_expected_result>` .
-
 One crucial aspect of optimizing an application is choosing the right image formats. Images can have a significant impact on an app's performance and memory usage. Therefore, selecting the best image format is essential. It helps reduce memory usage, speed up the app, and improve its overall performance. 
 
-There are a few aspects to take into account when dealing with images formats: 
+MicroUI manages two kind of images, mutable and immutable images.
+
+Mutable images are graphical resources that can be created and modified at runtime. The application can draw into such images. More information about mutable images can be found :ref:`here<section_mutable_images>`.
+
+As their name suggests, immutable images can not be modified. They are the most commonly used kind of images, this section will focus on them.
 
 Decoding Immutable Images
 *************************
 
-Immutable images are graphical resources that cannot be altered. These images can be converted for display either during the build-time process, using the Image Generator, or at run-time, utilizing the appropriate decoder library.
+Immutable images can be converted for display either during the build-time process, using the Image Generator, or at run-time, utilizing the appropriate decoder library.
 
-The decision between these two approaches depends on the project's specific requirements. **Decoding at run-time** is a good choice when storage space is limited and offers greater flexibility. However, it may require more processing power and result in slower performance. Conversely, **decoding at build time** reduces the computational workload during run-time and is well-suited for devices with stringent performance demands, though it may sacrifice some flexibility in the process.
+The decision between these two approaches depends on the project's specific requirements. **Decoding at run-time** is a good choice when storage space is limited and offers greater flexibility. However, it may require more processing power and result in slower performance. Conversely, **decoding at build time** reduces the computational workload during run-time and is well-suited for devices with stringent performance demands, though it usually require more storage and it may sacrifice some flexibility in the process.
 
+Format of Immutable Images
+**************************
+
+There are multiple output formats that can be used to convert the images, you can find them here: :ref:`Output Formats<section_image_standard_output>`.
+
+Choosing the right output format is important to get the best performance:
+
+- For opaque images, choose a format that has no transparency, RGB565 is usually sufficient.
+- For a pictogram to colorize A4 is usually sufficient. The image can be colorized at runtime.
+- The image format can be compressed, see :ref:`Compressed Output Formats<section_image_rle_output>`
+
+The expected result of each format can be seen here: :ref:`Formats expected result<section_image_expected_result>`
 
 Images Heap
 ***********
 
-The images heap stores not only the actual pictures but also some temporary stuff needed when decoding images, like puzzle pieces needed to put the picture together. Once the picture is complete, these puzzle pieces are thrown away to free up space.
-
-If an image can't be grabbed directly using a specific method, it's saved in the images heap. The size of this heap can be adjusted to fit the needs of your app using a property called `ej.microui.memory.imagesheap.size`.
-
-In simple terms, the images heap is like a storage closet for your app's images, and managing its size can help your app run smoothly and efficiently.
-
-Please go to the :ref:`Images Heap section<images_heap>` for more info. 
-
+Mutable images and immutable images decoded at runtime require some memory to be used. Please go to the :ref:`Images Heap<images_heap>` section for more information. 
 
 Benchmarking GUIs
 -----------------
@@ -220,6 +227,7 @@ Before applying UI debugging or optimization techniques, the application behavio
 
 Test a GUI Application with a Software Robot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 It is possible to test the GUI of an application via robotic process automation (RPA).
 Robot tests mimic the human user behavior in the GUI and can help detect various errors by
 automating behavior which otherwise would cost too much effort and/or time to execute manually. 
@@ -241,9 +249,9 @@ This simple way of automating GUI actions can be used to carry out real use case
 
 The :ref:`How to test a GUI application with a (software) robot<_tutorials_software_robot>` tutorial provides detailed insight into this topic. 
 
-
 Test a GUI Application with the Test Automation Tool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 To execute regression tests automatically and monitor minor changes in a GUI, you can use the `Test Automation <https://github.com/MicroEJ/Tool-UITestAutomation>`_ Tool.
 The Test Automation Tool allows to automatically test UIs.
 

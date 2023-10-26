@@ -420,6 +420,8 @@ These errors can occur while preprocessing images.
    +--------+---------+-----------------------------------------------------+
 
 
+.. _section_mutable_images:
+
 Mutable Images
 --------------
 
