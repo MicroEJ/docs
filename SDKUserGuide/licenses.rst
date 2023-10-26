@@ -545,6 +545,9 @@ Please contact :ref:`our support team <get_support>` for more details.
 Sentinel License Overview
 -------------------------
 
+Install Runtime Environment (RTE)
+"""""""""""""""""""""""""""""""""
+
 Sentinel LDK Run-time Environment is required on the end user's computer to enable your protected software to run by communicating with Sentinel protection keys. 
 
 - Get Sentinel_RTE_Installation.zip installers here: xxxxx. It contains installer for Windows, Mac and Linux.
@@ -575,6 +578,29 @@ Installation for MAC
 2. In `SentinelRuntimeInstaller.framework/Versions/A/Resources/` double-click on Sentinel_Runtime.dmg.
 3. Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched.
 4. Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, hasplmd creates configuration files in /private/etc/hasplm/.
+
+Activate your product 
+"""""""""""""""""""""
+
+Install Vendor Libraries
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Unzip MicroEJ_library.zip file in the following location:
+    - For Windows x64: %CommonProgramFiles(x86)%\Aladdin Shared\HASP\
+    - For Windows x86: %CommonProgramFiles%\Aladdin Shared\HASP\
+    - For Mac: /var/hasplm (By default, the /var path is hidden. You may need to modify the operating system View option to display all files and folders in order to access this path.)
+    - For Linux: /var/hasplm
+
+Activate your license
+~~~~~~~~~~~~~~~~~~~~~
+
+- On the product computer go to http://localhost:1947 (Sentinel Admin Control Center)
+- Go to `Sentinel key` and click on `fingerprint` for Local key to download the C2V file.
+- Send this file to MicroEJ, MicroEJ will send you a V2C file
+- Go back to Sentinel Admin Control Center
+- Click on `Update/Attach` and upload the V2C file
+- Apply it with `Apply` button
+
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
