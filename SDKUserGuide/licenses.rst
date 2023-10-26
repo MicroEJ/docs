@@ -564,20 +564,20 @@ Installation for Linux
 
 - Get aksusbd_37102-9.14.1.tar.gz file.
 - As root, enter the following command:
-    - For RedHat, SUSE, or CentOS 64-bit ARM systems: `rpm -i aksusbd-9.14-1.aarch64.rpm`
-    - For RedHat, SUSE, or CentOS 64-bit Intel systems: `rpm -i aksusbd-9.14-1.x86_64.rpm`
-    - For Ubuntu or Debian 32-bit ARM systems: `dpkg -i aksusbd_9.14-1_armhf.deb`
-    - For Ubuntu or Debian 64-bit ARM systems: `dpkg -i aksusbd_9.14-1_arm64.deb`
-    - For Ubuntu or Debian 64-bit Intel systems: `dpkg -i aksusbd_9.14-1_amd64.deb`
+    - For RedHat, SUSE, or CentOS 64-bit ARM systems: ``rpm -i aksusbd-9.14-1.aarch64.rpm``
+    - For RedHat, SUSE, or CentOS 64-bit Intel systems: ``rpm -i aksusbd-9.14-1.x86_64.rpm``
+    - For Ubuntu or Debian 32-bit ARM systems: ``dpkg -i aksusbd_9.14-1_armhf.deb``
+    - For Ubuntu or Debian 64-bit ARM systems: ``dpkg -i aksusbd_9.14-1_arm64.deb``
+    - For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_9.14-1_amd64.deb``
 NOTE: All install/uninstall commands must be executed with root rights. In Ubuntu, prefix the commands with the sudo command; in other distributions, use the su utility to become root in the terminal window.
 
 Installation for MAC
 ~~~~~~~~~~~~~~~~~~~~
 
-1. Get Sentinel_Runtime_37102.tar file.
-2. In `SentinelRuntimeInstaller.framework/Versions/A/Resources/` double-click on Sentinel_Runtime.dmg.
-3. Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched.
-4. Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, hasplmd creates configuration files in /private/etc/hasplm/.
+- Get Sentinel_Runtime_37102.tar file.
+- In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on Sentinel_Runtime.dmg.
+- Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched.
+- Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, hasplmd creates configuration files in /private/etc/hasplm/.
 
 Activate your product 
 """""""""""""""""""""
@@ -586,10 +586,10 @@ Install Vendor Libraries
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Unzip MicroEJ_library.zip file in the following location:
-    - For Windows x64: %CommonProgramFiles(x86)%\Aladdin Shared\HASP\
-    - For Windows x86: %CommonProgramFiles%\Aladdin Shared\HASP\
-    - For Mac: /var/hasplm (By default, the /var path is hidden. You may need to modify the operating system View option to display all files and folders in order to access this path.)
-    - For Linux: /var/hasplm
+    - For Windows x64: ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\``
+    - For Windows x86: ``%CommonProgramFiles%\Aladdin Shared\HASP\``
+    - For Mac: ``/var/hasplm`` (By default, the /var path is hidden. You may need to modify the operating system View option to display all files and folders in order to access this path.)
+    - For Linux: ``/var/hasplm``
 
 Activate your license
 ~~~~~~~~~~~~~~~~~~~~~
