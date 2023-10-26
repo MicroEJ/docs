@@ -18,7 +18,7 @@ Installation
 ============
 
 Tiny-Sandbox is an option disabled by default. 
-To enable the Tiny-Sandbox capability of the MicroEJ Core Engine, set the property ``com.microej.runtime.capability`` to ``tiny`` in ``mjvm/mjvm.properties`` file.
+To enable the Tiny-Sandbox capability of the Core Engine, set the property ``com.microej.runtime.capability`` to ``tiny`` in ``mjvm/mjvm.properties`` file.
 See the example below:
 
 .. code-block::
