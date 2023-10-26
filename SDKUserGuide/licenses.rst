@@ -551,16 +551,6 @@ Sentinel LDK Run-time Environment is required on the end user's computer to enab
 
 - Get Sentinel_RTE_Installation.zip installers here: xxxxx. It contains installer for Windows, Mac and Linux.
 
-Installation for Windows 
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-- Get haspdinst_37102.exe file.
-- Type haspdinst_37102.exe -i in the command line. The installation or upgrade process is performed automatically. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully installed.
-- To uninstall RTE type haspdinst_37102.exe -r in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
-
-Installation for Linux 
-~~~~~~~~~~~~~~~~~~~~~~
-
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
