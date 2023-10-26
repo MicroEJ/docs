@@ -108,7 +108,32 @@ If you want to connect the IDE debugger:
       - Click on the ``Debug`` button.
 
 The debugger should connect to the Simulator and you should be able to debug your Application.
-  
+
+.. _sdk_6_generate_code_coverage:
+
+Generate Code Coverage
+----------------------
+
+To generate the Code Coverage files (``.cc``), invoke the ``:runOnSimulator`` task as follow:
+
+::
+
+   gradle :runOnSimulator -Ds3.cc.thread.period=15 -Ds3.cc.activated=true
+
+*Option Name*: ``s3.cc.thread.period``
+
+*Description*:
+
+It specifies the period between the generation of .cc files.
+
+.. note:: If the application is abruptly ended (for example with ``Ctrl-C``) before the the first period, no ``.cc`` files are generated.
+
+*Option Name*: ``s3.cc.activated``
+
+*Description*
+
+Set to ``true`` to enable the generation of Code Coverage files, don't define the property to disable the generation.
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
