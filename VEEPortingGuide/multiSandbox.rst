@@ -53,7 +53,7 @@ Installation
 ============
 
 Multi-Sandbox is an option disabled by default. 
-To enable the Multi-Sandbox capability of the MicroEJ Core Engine, set the property ``com.microej.runtime.capability`` to ``multi`` in ``mjvm/mjvm.properties`` file.
+To enable the Multi-Sandbox capability of the Core Engine, set the property ``com.microej.runtime.capability`` to ``multi`` in ``mjvm/mjvm.properties`` file.
 See the example below:
 
 .. code-block::
