@@ -21,15 +21,12 @@ The following document covers:
 
 The following document does not cover:
 
-* The display rendering validation
+* The display rendering validation (this can be done using the `Test Automation <https://github.com/MicroEJ/Tool-UITestAutomation>`_ Tool)
 * Integration of the robot into an automatic JUnit test suite
 
 We will now present the basic architecture and code required to create and to run a robot within a MicroEJ application on the simulator and embedded platform.
 
-In the following sections, we assume:
-
-* The MicroEJ Java application is based in MicroUI 2.x, MWT 2.x and Widget 2.x
-* The MicroEJ platform has a display interface and a touch controller (using the MicroUI EventGenerator for Pointer)
+In the following sections, we assume the MicroEJ VEE Port has a display interface and a touch controller.
  
 Overview
 --------
@@ -37,601 +34,289 @@ Overview
 The robot creation process is twofold. First, we have to record and store the human user events.
 Second, we have to play them back with the robot.
 
-To record the events we will develop a custom EventHandler and we will inject
-it into the EventGenerator of Pointer events. The handler will record the
-events and generate the Java code to play them back.
-
-Then, we will inject this code into our main application and run it.
-
-NB: In the next sections, we show code that is mostly functional. To use it in our project, we have to put it in our MicroEJ SDK/Studio workspace and add the proper imports.
-
-
-Record the Robot Input Events
------------------------------
-
-We will now look at how to record the events.
-
-Record Events with WatchPointerEventHandler
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Here is the custom ``EventHandler`` named ``WatchPointerEventHandler``.
-
-   .. code-block:: java
-
-      private class WatchPointerEventHandler implements EventHandler {
-        private final EventHandler initialEventHandler;
-        private long lastTimeEvent;
-
-        public WatchPointerEventHandler(final EventHandler eventHandler) {
-          this.initialEventHandler = eventHandler;
-          this.lastTimeEvent = System.currentTimeMillis();
-        }
-
-        @Override
-        public boolean handleEvent(int event) {
-          // Forward events to the initial EventHandler.
-          final boolean ret = this.initialEventHandler.handleEvent(event);
-
-          if (Event.POINTER == Event.getType(event)) {
-            Pointer pointer = (Pointer) Event.getGenerator(event);
-            final int action = Buttons.getAction(event);
-            onAction(action);
-          }
-          return ret;
-        }
-
-          private void onAction(int action) {
-              String command;
-              boolean isCommand = true;
-              switch (action) {
-              case Buttons.PRESSED:
-                  command = "robot.press(" + pointer.getX() + ", " + pointer.getY() + ");";
-                  break;
-              case Pointer.MOVED:
-              case Pointer.DRAGGED:
-                  command = "robot.move(" + pointer.getX() + ", " + pointer.getY() + ");";
-                  break;
-              case Buttons.RELEASED:
-                  command = "robot.release(" + pointer.getX() + ", " + pointer.getY() + ");";
-                  break;
-              default:
-                  isCommand = false;
-              }
-
-              if (isCommand) {
-                  final long delta = System.currentTimeMillis() - this.lastTimeEvent;
-                  this.lastTimeEvent = System.currentTimeMillis();
-                  System.out.println("robot.pause(" + delta + ");");
-                  System.out.println(command);
-              }
-          }
-      }
-
-This EventHandler does two things.
-
-\(1) It records all pressed, moved, dragged
-and released events as well as the time between each event (we want to play our robot at the same speed as the human).
-
-(2) It forwards all events to the
-initial EventHandler. Without that, our handler would hijack the initial handler and our UI would be unresponsive because it would receive no event.
-
-Note that ``WatchPointerEventHandler`` outputs the commands on the standard
-output. More on this a bit later.
-
-Replace default EventHandler with WatchPointerEventHandler 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Next, we set up the handler:
-
-    .. code-block:: java
-
-        public class WatchPointer {
-          final Pointer pointer;
-          final EventHandler initialEventHandler;
-
-          private class WatchPointerEventHandler implements EventHandler {
-            // snip
-          }
-
-          public WatchPointer() {
-            // (1)
-            this.pointer = EventGenerator.get(Pointer.class, 0);
-            this.initialEventHandler = this.pointer.getEventHandler();
-          }
-
-          /**
-          * Starts monitoring activity by setting up a new EventHandler.
-          */
-          public void start() {
-            // (2)
-            this.pointer.setEventHandler(new WatchPointerEventHandler(this.initialEventHandler));
-          }
-
-          /**
-          * Stops monitoring activity by restoring the initial EventHandler.
-          */
-          public void stop() {
-            // (3)
-            this.pointer.setEventHandler(this.initialEventHandler);
-          }
-        }
-
-This code (1) saves the default ``EventHandler`` of the ``Pointer`` to pass it to the
-``WatchPointerEventHandler`` so that it can forward the events. We start (2) the
-recording by replacing the ``EventHandler`` and we stop (3) it by restoring the
-initial ``EventHandler``.
-
-Use WatchPointer in our Main Application
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The API of our ``WatchPointer`` is straightforward, just ``start()`` and ``stop()``
-the recording of events. A good place to start the recording is after the
-initialization of your GUI.
-
-    .. code-block:: java
-
-        public class MainApp {
-            public static void main(String[] args) {
-                // Initialization.
-                // ...
-
-                // Start recording events.
-                new WatchPointer().start();
-            }
-        }
-
-And that’s it!
-
-The easiest way to record our robot is to run it on the platform simulator.
-The events will be outputted in the MicroEJ SDK console.
-
-The robot can also be run on board with the ``WatchPointer`` enabled. The events will be outputted on the trace output (typically a UART).
-
-We will now see how to run our robot with the recorded events.
-
-Run a Robot
------------
-
-Play the Robot
-~~~~~~~~~~~~~~
-
-Playing a robot is easy. We just need to send the recorded events. Here is our
-Robot class.
-
-    .. code-block:: java
-
-        public class Robot {
-
-          private final Pointer pointer;
-
-          /**
-          * Creates a Robot.
-          */
-          public Robot() {
-            this.pointer = EventGenerator.get(Pointer.class, 0);
-          }
-
-          /**
-          * Pauses for n milliseconds.
-          *
-          * @param delay
-          *            the delay to pause.
-          */
-          public void pause(long delay) {
-            try {
-              Thread.sleep(delay);
-            } catch (InterruptedException e) {
-              e.printStackTrace();
-            }
-          }
-
-          /**
-          * Sends press event at the given coordinate.
-          *
-          * @param x
-          *            the x
-          * @param y
-          *            the y
-          */
-          public void press(int x, int y) {
-            this.pointer.move(x, y);
-            this.pointer.send(Pointer.PRESSED, 0);
-          }
-
-          /**
-          * Sends move event at the given coordinate.
-          *
-          * @param x
-          *            the x
-          * @param y
-          *            the y
-          */
-          public void move(int x, int y) {
-            this.pointer.move(x, y);
-          }
-
-          /**
-          * Sends release event at the given coordinate.
-          *
-          * @param x
-          *            the x
-          * @param y
-          *            the y
-          */
-          public void release(int x, int y) {
-            this.pointer.move(x, y);
-            this.pointer.send(Pointer.RELEASED, 0);
-          }
-        }
-
-The Robot API implements the commands that were generated in the ``WatchPointerEventHandler``. Through the basic
-operations ``press()``, ``move()`` and ``release()`` the click and drag actions are simulated. With the ``pause()`` we ensure we do it exactly at the same speed as the human who
-recorded it.
-
-Use Robot in our Main Application
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Copy the commands into a function and call it from the main application at the same place where ``WatchPointer`` was called.
-
-Here is an example of a simple ``Robot``.
-
-    .. code-block:: java
-
-        public class DemoRobot {
-            public static void runDemo1() {
-            System.out.println("DemoRobot.runDemo1() -- START");
-            final Robot robot = new Robot();
-
-            robot.press(33, 130);
-            robot.pause(82);
-            robot.release(33, 130);
-            robot.pause(1972);
-            robot.press(401, 248);
-            robot.pause(78);
-            robot.release(401, 248);
-            robot.pause(1047);
-            robot.press(419, 249);
-            robot.pause(43);
-            robot.release(419, 249);
-            robot.pause(1035);
-            robot.press(407, 245);
-            robot.pause(39);
-            robot.release(407, 245);
-            robot.pause(1012);
-            robot.press(425, 250);
-            robot.pause(20);
-            robot.release(425, 250);
-            robot.pause(918);
-            robot.press(407, 249);
-            robot.pause(58);
-            robot.release(407, 249);
-            robot.pause(1000);
-            robot.press(302, 250);
-            robot.pause(39);
-            robot.release(302, 250);
-            robot.pause(918);
-            robot.press(307, 243);
-            robot.pause(59);
-            robot.move(304, 232);
-            robot.pause(19);
-            robot.release(304, 232);
-            robot.pause(922);
-            System.out.println("DemoRobot.runDemo1() -- END");
-          }
-        }      
-
-And now we plug it into our main application.
-
-    .. code-block:: java
-
-        public class MainApp {
-            public static void main(String[] args) {
-                // initialization
-                // ...
-
-                // Start the robot.
-                DemoRobot.runDemo1();
-            }
-        }
-
-This new application can run on both the simulator and on the board.
-
-And that’s it! We now have the basics to create and to play software robots to
-test our applications.
-
-Note that because we act at the UI level, whenever our application’s appearance
-changes, especially if UI elements are moved around, we will need to update a
-new version of our robots to match the new UI.
-
-Going Further
--------------
-
-Split the Robot into Actions and Build Complex Scenario
--------------------------------------------------------
-
-As we create more and more complex robots it is a good idea to put the various
-behaviors into separate functions so that we can create complex scenarios out of
-simple action blocks.
-
-Here is an example.
-
-  .. code-block:: java
-
-      public class DemoRobot {
-          final Robot robot;
-
-          /**
-          * Instantiates our Demo.
-          */
-          public void DemoRobot() {
-              this.robot = new Robot();
-          }
-
-          public void login() {
-              this.robot.press(33, 130);
-              this.robot.pause(82);
-              this.robot.release(33, 130);
-              this.robot.pause(1972);
-              this.robot.press(401, 248);
-              this.robot.pause(78);
-              this.robot.release(401, 248);
-              this.robot.pause(1047);
-          }
-
-          public void openMenuConfiguration() {
-              this.robot.press(425, 250);
-              this.robot.pause(20);
-              this.robot.release(425, 250);
-              this.robot.pause(918);
-              this.robot.press(407, 249);
-              this.robot.pause(58);
-              this.robot.release(407, 249);
-              this.robot.pause(1000);
-          }
-
-          public void closeMenuConfiguration() {
-              this.robot.press(307, 243);
-              this.robot.pause(59);
-              this.robot.move(304, 232);
-              this.robot.pause(19);
-              this.robot.release(304, 232);
-              this.robot.pause(922);
-          }
-
-          public void selectOption1() {
-              this.robot.press(407, 245);
-              this.robot.pause(39);
-              this.robot.release(407, 245);
-              this.robot.pause(1012);
-          }
-
-          public void selectOption2() {
-              this.robot.press(419, 249);
-              this.robot.pause(43);
-              this.robot.release(419, 249);
-              this.robot.pause(1035);
-          }
-
-          public void goToLogin() {
-              this.robot.press(302, 250);
-              this.robot.pause(39);
-              this.robot.release(302, 250);
-              this.robot.pause(918);
-          }
-
-          // Logins and tests open/close of configuration menu.
-          public void scenario1() {
-              try {
-                  login();
-                  openMenuConfiguration();
-                  closeMenuConfiguration();
-                  goToLogin();
-              } catch (Exception ex) {
-                  ex.printStackTrace();
-              }
-          }
-
-          // Logins and selects option 1 in configuration menu.
-          public void scenario2() {
-              try {
-                  login();
-                  openMenuConfiguration();
-                  selectOption1();
-                  goToLogin();
-              } catch (Exception ex) {
-                  ex.printStackTrace();
-              }
-          }
-
-          // Logins and selects option 2 in configuration menu.
-          public void scenario3() {
-              try {
-                  login();
-                  openMenuConfiguration();
-                  selectOption2();
-                  goToLogin();
-              } catch (Exception ex) {
-                  ex.printStackTrace();
-              }
-          }
-
-          // Endless loop with all three scenarios in random order.
-          public void scenarioLoop() {
-              Rand rand = new Random();
-              try {
-                  while (true) {
-                      switch (rand.nextInt(3)) {
-                      case 0:
-                          scenario1();
-                          break;
-                      case 1:
-                          scenario2();
-                          break;
-                      case 2:
-                          scenario3();
-                          break;
-                      }
-                  }
-              } catch (Exception ex) {
-                  ex.printStackTrace();
-              }
-          }
-      }
-
-Here we have the following basic actions:
-
-#. Logging.
-#. Opening the configuration menu.
-#. Closing the configuration menu.
-#. Selecting option 1.
-#. Selecting option 2.
-#. Going back to the login.
-
-From those actions we build 3 scenarios:
-
-#. Test the opening/closing of the configuration menu.
-#. Select the option 1 in the configuration menu.
-#. Select the option 2 in the configuration menu.
-
-And finally, we also have a “stress” scenario that endlessly go through the 3
-previous scenarios in random order.
-
-We can call each of those scenarios from our main application to test whatever we
-want to.
-
-Validate the Widget
+Record the Scenario
 -------------------
 
-So far our Robot is pretty simple and can catch all raised exceptions and runtime errors.
+The first step is to record the human user events and store them as a scenario.
 
-Depending on your application architecture, you most likely have some kind of
-central class that manages which is the main ``Widget`` currently displayed. For
-example you may use a ``TransitionContainer``. What we need, is a way to retrieve
-the ``Widget`` currently displayed.
+Here is the code of the ``EventRecorder`` class that should be added to our application's project:
 
-The idea is:
-(1) to record the ``Widget`` displayed before recording an action in
-our ``WatchPointerEventHandler`` and
-(2) to check that the ``Widget`` is displayed before playing an action in our ``Robot``.
+.. code-block:: java
 
-Let’s assume that we have a ``Main.getCurrentWidget()`` method that returns the
-current ``Widget``. We update ``WatchPointerEventHandler`` like this:
-
-  .. code-block:: java
-
-    private class WatchPointerEventHandler implements EventHandler {
-      private final EventHandler initialEventHandler;
-      private long lastTimeEvent;
-
-      public WatchPointerEventHandler(final EventHandler eventHandler) {
-        this.initialEventHandler = eventHandler;
-        this.lastTimeEvent = System.currentTimeMillis();
-      }
-
-      @Override
-      public boolean handleEvent(int event) {
-        // Forward events to the initial EventHandler.
-        final boolean ret = this.initialEventHandler.handleEvent(event);
-
-        if (Event.POINTER == Event.getType(event)) {
-          Pointer pointer = (Pointer) Event.getGenerator(event);
-          final int action = Buttons.getAction(event);
-          onAction(action);
-        }
-        return ret;
-      }
-
-        private void onAction(int action) {
-            String command;
-            boolean isCommand = true;
-            Widget currentWidget = Main.getCurrentWidget();
-
-            switch (action) {
-            case Buttons.PRESSED:
-                command = "robot.checkWidget(\"" + currentWidget.getClass().getName() + "\");\n"
-                    + "robot.press(" + pointer.getX() + ", " + pointer.getY() + ");";
-                break;
-            case Pointer.MOVED:
-            case Pointer.DRAGGED:
-                command = "robot.move(" + pointer.getX() + ", " + pointer.getY() + ");";
-                break;
-            case Buttons.RELEASED:
-                command = "robot.release(" + pointer.getX() + ", " + pointer.getY() + ");";
-                break;
-            default:
-                isCommand = false;
-            }
-
-            if (isCommand) {
-                final long delta = System.currentTimeMillis() - this.lastTimeEvent;
-                this.lastTimeEvent = System.currentTimeMillis();
-                System.out.println("robot.pause(" + delta + ");");
-                System.out.println(command);
-            }
-        }
-    }
-
-Conversely, we update Robot to add the ``checkWidget()`` method.
-
-  .. code-block:: java
-
-    public class Robot {
-        // snip
+      import ej.annotation.Nullable;
+      import ej.microui.event.Event;
+      import ej.microui.event.generator.Buttons;
+      import ej.microui.event.generator.Pointer;
 
       /**
-      * Ensures that the given Widget is displayed before proceeding to the next action.
-      *
-      * @param className
-      *            the class name of the Widget that is expected to be displayed.
-      *
-      * @throws InterruptedException
-      *             when the current Widget is different from the given Widget.
+      * Records events.
       */
-      public void checkWidget(String className) throws InterruptedException {
-        final Widget lastShown = Main.getCurrentWidget();
-        final String lastShownName = lastShown.getClass().getName();
-        if (!className.equals(lastShownName)) {
-          throw new InterruptedException("Expected " + className + " got " + lastShownName);
+      public class EventRecorder {
+
+        private long lastEventTime;
+
+        /**
+        * Creates an event recorder.
+        */
+        public EventRecorder() {
+          this.lastEventTime = -1;
+        }
+
+        /**
+        * Records an event.
+        *
+        * @param event
+        *            the event to record.
+        */
+        public void recordEvent(int event) {
+          String command = getEventCommand(event);
+          if (command != null) {
+            long currentTime = System.currentTimeMillis();
+            if (this.lastEventTime == -1) {
+              this.lastEventTime = currentTime;
+            }
+
+            long delta = currentTime - this.lastEventTime;
+            if (delta > 0) {
+              System.out.println(getPauseCommand(delta));
+            }
+
+            System.out.println(command);
+
+            this.lastEventTime = currentTime;
+          }
+        }
+
+        @SuppressWarnings("nls")
+        private static @Nullable String getEventCommand(int event) {
+          if (Event.getType(event) == Pointer.EVENT_TYPE) {
+            Pointer pointer = (Pointer) Event.getGenerator(event);
+            switch (Pointer.getAction(event)) {
+            case Pointer.PRESSED:
+              return "robot.press(" + pointer.getX() + ", " + pointer.getY() + ");";
+            case Pointer.MOVED:
+            case Pointer.DRAGGED:
+              return "robot.move(" + pointer.getX() + ", " + pointer.getY() + ");";
+            case Buttons.RELEASED:
+              return "robot.release(" + pointer.getX() + ", " + pointer.getY() + ");";
+            default:
+              return null;
+            }
+          } else if (Event.getType(event) == Buttons.EVENT_TYPE) {
+            if (Buttons.getAction(event) == Buttons.RELEASED) {
+              return "robot.button();";
+            } else {
+              return null;
+            }
+          } else {
+            return null;
+          }
+        }
+
+        @SuppressWarnings("nls")
+        private static @Nullable String getPauseCommand(long delay) {
+          return "robot.pause(" + delay + ");";
         }
       }
-    }
 
-When we record new robots, we will record the current ``Widget`` before a press
-action is executed. And when we play the robots, we will ensure that the same
-``Widget`` is displayed before sending the press event. If the ``Widget`` is not the
-one recorded, ``checkWidget`` will raise an exception, otherwise, we proceed as before.
+This code records all pressed, moved, dragged and released events as well as the time between each event (we want to play our robot at the same speed as the human). ``EventRecorder`` outputs the commands on the standard output. More on this a bit later.
 
-JUnit
-~~~~~
+Set up the event recorder
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It is possible to integrate the robot into a JUnit test suite if we use ``assertEquals`` instead of raising an ``Exception``.
+The events have to be recorded from the application's desktop's ``EventDispatcher``, here is how to override it:
 
-Note: check https://github.com/MicroEJ/Example-Sandboxed-JUnit 3 for more information on the JUnit use.
+.. code-block:: java
 
-Add More Checks
-~~~~~~~~~~~~~~~
+      final EventRecorder eventRecorder = new EventRecorder();
 
-We can also use our application’s API and check the various states of our
-application. For example, once we have activated some buttons, a motor should
-start or some other actions should be taken.
+      Desktop desktop = new Desktop() {
 
-We can use whatever we want to have a rock solid application!
+        @Override
+        protected EventDispatcher createEventDispatcher() {
+          return new PointerEventDispatcher(this) {
 
-Performance Regression Framework
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            @Override
+            public boolean dispatchEvent(int event) {
+              eventRecorder.recordEvent(event);
 
-The ``checkWidget()`` method can also be used as a performance regression
-framework. If a ``Widget`` display time becomes much slower because of a
-regression, assuming the robot was recorded by a “not too slow” human, our robot
-will fail with an ``Exception``.
+              return super.dispatchEvent(event);
+            }
+          };
+        }
+      };
 
-We can even lower manually (or automatically) the timings to make sure our UI is
-responsive.
+When runnnig the application, the ``EventDispatcher`` will now record the events and then redirect them to its parent ``dispatchEvent`` so they can be managed normally by the application.
 
-..
-   | Copyright 2023, MicroEJ Corp. Content in this space is free 
-   for read and redistribute. Except if otherwise stated, modification 
-   is subject to MicroEJ Corp prior approval.
-   | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
-   copyrights are the property of their respective owners.
+Store the events into a scenario
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+The ``EventRecorder`` events output have to be stored into a scenario in order to be played later. Here is how to do:
+
+.. code-block:: java
+
+      /**
+      * Robot scenario which reproduces the recorded human user events .
+      */
+      public class NavigationScenario extends EventPlayer implements Runnable {
+
+        @Override
+        public void run() {
+          press(344, 177);
+          pause(885);
+          release(344, 177);
+          pause(359);
+          press(184, 192);
+          pause(34);
+          move(185, 192);
+          pause(24);
+          move(188, 192);
+          pause(23);
+          move(191, 192);
+          pause(24);
+          move(196, 192);
+          pause(21);
+          move(206, 191);
+
+        }
+      }
+
+The ``run`` method from the code above already contains the recorded events, you will have to replace it by the output you get when creating the scenario.
+
+Run the Scenario
+----------------
+
+As we now have recorded our scenario we have to play it. For that we have to add the ``EventPlayer`` to our project:
+
+.. code-block:: java
+
+      /**
+      * Plays events.
+      */
+      public class EventPlayer {
+
+        private final Pointer pointer;
+        private final Buttons buttons;
+
+        /**
+        * Creates a robot.
+        */
+        public EventPlayer() {
+          this.pointer = EventGenerator.get(Pointer.class, 0);
+          this.buttons = EventGenerator.get(Buttons.class, 1);
+        }
+
+        /**
+        * Pauses before the next action.
+        *
+        * @param delay
+        *            the delay to pause.
+        */
+        public void pause(long delay) {
+          ThreadUtils.sleep(delay);
+        }
+
+        /**
+        * Generates a press event.
+        *
+        * @param x
+        *            the x coordinate of the pointer.
+        * @param y
+        *            the y coordinate of the pointer.
+        */
+        public void press(int x, int y) {
+          this.pointer.reset(x, y);
+          this.pointer.send(Pointer.PRESSED, 0);
+        }
+
+        /**
+        * Generates a move event.
+        *
+        * @param x
+        *            the x coordinate of the pointer.
+        * @param y
+        *            the y coordinate of the pointer.
+        */
+        public void move(int x, int y) {
+          this.pointer.move(x, y);
+        }
+
+        /**
+        * Generates a release event.
+        *
+        * @param x
+        *            the x coordinate of the pointer.
+        * @param y
+        *            the y coordinate of the pointer.
+        */
+        public void release(int x, int y) {
+          this.pointer.reset(x, y);
+          this.pointer.send(Pointer.RELEASED, 0);
+        }
+
+        /**
+        * Generates a button event.
+        */
+        public void button() {
+          this.buttons.send(Buttons.RELEASED, 0);
+        }
+      }
+
+The ``EventPlayer`` will play the event recorded in the ``NavigationScenario`` using the ``EventGenerator``.
+
+We will now create a task that will run the scenario:
+
+.. code-block:: java
+
+        /**
+      * A robot task is able to run a given scenario.
+      */
+      public class RobotTask {
+
+        private boolean running;
+
+        /**
+        * Creates a demo robot.
+        */
+        public RobotTask() {
+          this.running = false;
+        }
+
+        /**
+        * Starts the given scenario.
+        *
+        * @param scenario
+        *            the scenario to run.
+        */
+        public void startScenario(final Runnable scenario) {
+          if (!this.running) {
+            this.running = true;
+
+            new Thread() {
+              @Override
+              public void run() {
+                scenario.run();
+                RobotTask.this.running = false;
+              }
+            }.start();
+          }
+        }
+
+        /**
+        * Returns whether the robot is currently running.
+        *
+        * @return <code>true</code> if the robot is running, false otherwise</code>.
+        */
+        public boolean isRunning() {
+          return this.running;
+        }
+      }
+
+You can now start the ``RobotTask`` in your application:
+
+.. code-block:: java
+
+      RobotTask robot = new RobotTask();
+			robot.startScenario(new NavigationScenario());
+
+Then, launch your application: the recorded scenario is now re-played, well done!
