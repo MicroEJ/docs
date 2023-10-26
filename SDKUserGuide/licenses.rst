@@ -570,15 +570,6 @@ Installation for Linux
     - For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_9.14-1_amd64.deb``
 NOTE: All install/uninstall commands must be executed with root rights. In Ubuntu, prefix the commands with the sudo command; in other distributions, use the su utility to become root in the terminal window.
 
-Installation for MAC
-~~~~~~~~~~~~~~~~~~~~
-
-- Get Sentinel_Runtime_37102.tar file.
-- In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on Sentinel_Runtime.dmg.
-- Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched.
-- Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, hasplmd creates configuration files in /private/etc/hasplm/.
-
-
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
