@@ -20,7 +20,7 @@ In addition, the tool's options can be defined in ``configuration/tools/TOOL_NAM
 The next sections describe the tools and their options.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    stackTraceReader
 
