@@ -37,7 +37,7 @@ Second, we have to play them back with the robot.
 Record the Scenario
 -------------------
 
-The first step is to record the human user events and store them as a scenario.
+The first step is to record the human user events.
 
 Here is the code of the ``EventRecorder`` class that should be added to our application's project:
 
