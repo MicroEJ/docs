@@ -1,7 +1,7 @@
 
 .. _ack_create_project_:
-.. |ACK_PLUGIN_VERSION| replace:: 0.3.2
-.. |SDK_VERSION| replace:: 0.11.1
+.. |ACK_PLUGIN_VERSION| replace:: 0.3.4
+.. |SDK_VERSION| replace:: 0.13.0
 .. |SUPPORT_LIB_VERSION| replace:: 2.0.0
 
 Project Setup
@@ -72,15 +72,6 @@ Assuming that a Gradle project with an Android application is now opened in Andr
       id("com.microej.gradle.application") version "|SDK_VERSION|" apply false
       id("com.microej.android.gradle.plugins.android") version "|ACK_PLUGIN_VERSION|" apply false
 
-  .. note::
-      The Android Gradle Plugin 8.0 (and higher) requires JDK 17 to run Gradle.
-      However, the MicroEJ SDK 6 is not yet fully compatible with JDK 17 so it is required to use AGP 7.4.2 and JDK 11.
-      We recommend using the following configuration in the root build file:
-      
-      .. code-block:: kotlin
-         
-         id("com.android.application") version "7.4.2" apply false
-         id("org.jetbrains.kotlin.android") version "1.8.10" apply false
 
 
 .. _ack_create_microej_app_:
