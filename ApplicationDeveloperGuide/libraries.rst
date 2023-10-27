@@ -1,7 +1,7 @@
 .. _libraries:
 
-MicroEJ Libraries
-=================
+Libraries
+=========
 
 A MicroEJ Foundation Library is a MicroEJ Core library that provides
 core runtime APIs or hardware-dependent functionality. A Foundation
@@ -32,6 +32,17 @@ application developer as module dependencies (see :ref:`mmm`).
 
 MicroEJ Corp. provides a large number of libraries through the :ref:`MicroEJ Central Repository <central_repository>`.
 To consult its libraries APIs documentation, please visit `<https://developer.microej.com/microej-apis/>`_.
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   UI/ui
+   nls
+   networking
+   javaTime
+   eventQueue
+   js/index
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

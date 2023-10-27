@@ -47,6 +47,16 @@ This chapter explains the different ways to create a new project.
       
          Project Creation in Android Studio
       
+      - Change the view from :guilabel:`Android` to :guilabel:`Project` in the selectbox at the top of the project's files tree:
+      
+      .. figure:: images/android-studio-create-project-03.png
+         :alt: Project View in Android Studio
+         :align: center
+         :scale: 70%
+      
+         Project View in Android Studio
+      
+
       The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensure that the project uses the right version :
       
       - Open the ``gradle/wrapper/gradle-wrapper.properties`` file.
@@ -57,11 +67,12 @@ This chapter explains the different ways to create a new project.
             distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
       
       If you want to know more about the Gradle Wrapper, go to the :ref:`sdk_6_create_project_gradle_wrapper` section.
-        
-      The project created by Android Studio is an Android project (Gradle ``com.android.application`` plugin). 
-      The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
+
+      The project created by Android Studio is a multi-project with a single subproject (named ``app``).
+      This subproject is an Android application (Gradle ``com.android.application`` plugin). 
+      The ``build.gradle.kts`` and the ``settings.gradle.kts`` files have to be updated to make it a MicroEJ project:
       
-      - Open the ``build.gradle.kts`` file.
+      - Open the ``app/build.gradle.kts`` file.
       - Erase its whole content.
       - :ref:`Configure the project <sdk_6_create_project_configure_project>` depending on the module nature you want to build.
       - Declare the dependencies required by your project in the ``dependencies`` block. For example::
@@ -70,6 +81,21 @@ This chapter explains the different ways to create a new project.
                 implementation("ej.api:edc:1.3.5")
             }
       
+      - Open the ``settings.gradle.kts`` file.
+      - Remove everything except these 2 lines::
+
+            rootProject.name = "My Application"
+            include(":app")
+
+      - Delete the following files since they are not required for a MicroEJ project:
+
+        - ``build.gradle.kts``
+        - ``gradle.properties``
+        - ``app/libs``
+        - ``app/src/main/res``
+        - ``app/src/main/AndroidManifest.xml``
+        - ``app/src/proguard-rules.pro``
+
       .. note::
          By default, Android Studio automatically saves any file change, 
          but requires the user to explicitly trigger the reload of a Gradle project when its configuration has changed.
@@ -82,6 +108,9 @@ This chapter explains the different ways to create a new project.
             :scale: 70%
       
             Gradle Project reload in Android Studio
+        
+         You can also configure Android Studio to automatically reload a Gradle project after a change.
+         Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
       
       When the Gradle project has been reloaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
@@ -147,7 +176,10 @@ This chapter explains the different ways to create a new project.
             :scale: 70%
       
             Gradle Project reload in IntelliJ IDEA
-      
+        
+         You can also configure IntelliJ IDEA to automatically reload a Gradle project after a change.
+         Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
+
       When the Gradle project has been reloaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
       or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
@@ -210,13 +242,13 @@ This chapter explains the different ways to create a new project.
       - Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
       
           plugins {
-              id("com.microej.gradle.addon-library") version "0.11.1"
+              id("com.microej.gradle.addon-library") version "0.12.1"
           }
       
         or for an Application::
       
           plugins {
-              id("com.microej.gradle.application") version "0.11.1"
+              id("com.microej.gradle.application") version "0.12.1"
           }
       
         .. note::
@@ -252,6 +284,9 @@ This chapter explains the different ways to create a new project.
             :scale: 70%
       
             Gradle Project reload in Eclipse
+        
+         You can also configure Eclipse to automatically reload a Gradle project after a change.
+         Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
       
       When the Gradle project has been reloaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
@@ -324,7 +359,7 @@ Application Project
 - Add the ``com.microej.gradle.application`` plugin in the ``build.gradle.kts`` file::
 
     plugins {
-        id("com.microej.gradle.application") version "0.11.1"
+        id("com.microej.gradle.application") version "0.12.1"
     }
 
   .. note::
@@ -375,7 +410,7 @@ Add-On Library Project
 - Add the ``com.microej.gradle.addon-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.addon-library") version "0.11.1"
+        id("com.microej.gradle.addon-library") version "0.12.1"
     }
 
   .. note::
@@ -391,7 +426,7 @@ J2SE Library Project
 - Add the ``com.microej.gradle.j2se-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.j2se-library") version "0.11.1"
+        id("com.microej.gradle.j2se-library") version "0.12.1"
     }
 
   .. note::

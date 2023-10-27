@@ -111,10 +111,10 @@ Runtime State Dump
 
   |fig1| |fig2|
 
-.. |fig1| image:: ../ApplicationDeveloperGuide/images/trace1.png
+.. |fig1| image:: ../SDKUserGuide/images/trace1.png
    :alt: Code to Dump a Stack Trace
 
-.. |fig2| image:: ../ApplicationDeveloperGuide/images/STR_trace-read.png
+.. |fig2| image:: ../SDKUserGuide/images/STR_trace-read.png
    :alt: Stack Trace Reader Console
 
 - The :ref:`Core Engine VM dump<vm_dump>` is a low-level API to display the state of the MicroEJ Runtime and the MicroEJ threads (name, priority, stack trace, etc. )
@@ -247,7 +247,7 @@ Simulator Debugger
 
 * :ref:`Debug an Application <application_debugger>` on Simulator, add breakpoints, inspect stack frame, use step-by-step, etc.
 
-   .. figure:: ../ApplicationDeveloperGuide/images/debug1.png
+   .. figure:: ../SDKUserGuide/images/debug1.png
       :alt: MicroEJ Development Tools Overview of the Debugger
       :align: center
 
@@ -263,7 +263,7 @@ Static analysis tools are helpful allies to prevent several classes of bugs.
 * :ref:`SonarQube™<sonar_code_analysis>` provides reports on duplicated code, coding standards, unit tests, code coverage, code complexity, potential bugs, comments, and architecture.
 * Use the :ref:`Null Analysis tool<null_analysis>` to detect and prevent `NullPointerException`_, one of the most common causes of runtime failure of Java programs.
 
-   .. figure:: ../ApplicationDeveloperGuide/images/null_analysis_example.png
+   .. figure:: ../SDKUserGuide/images/null_analysis_example.png
       :alt: Example of Null Analysis Detection
 
 .. _NullPointerException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html

@@ -9,8 +9,10 @@ How-to Guides
    gradleJavaHome
    gradleSystemProperty
    gradleSkipTask
+   gradleAutoreloading
    resolveInIDE
    installSnapshotPlugins
+   buildProject
    buildExecutableWithMultipleVeePorts
 
 ..

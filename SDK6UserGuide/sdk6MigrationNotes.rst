@@ -4,6 +4,36 @@ Migration Notes
 ---------------
 
 ---------------------
+From 0.11.1 to 0.12.0
+---------------------
+
+This section applies if MicroEJ SDK 6 ``0.12.0`` is used on a project that was created using MicroEJ SDK 6 ``0.11.1`` 
+or lower.
+
+Use of File Dependencies to Define a Local VEE Port or a Kernel Executable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``veePortPath`` and the ``kernelFile`` properties have been replaced by file dependencies.
+
+- To use a VEE Port archive available locally, declare a file dependency in the ``build.gradle.kts`` file, with the ``microejVeePort`` configuration::
+
+   dependencies {
+      microejVeePort(files("C:\\path\\to\\my\\veePort\\file.zip"))
+   }
+
+- To use a VEE Port directory available locally, declare a file dependency in the ``build.gradle.kts`` file, with the ``microejVeePort`` configuration::
+
+   dependencies {
+      microejVeePort(files("C:\\path\\to\\my\\veePort\\source"))
+   }
+
+- To use a kernel Virtual Device and Executable available locally, declare a file dependency in the ``build.gradle.kts`` file, with the ``microejKernel`` configuration::
+
+   dependencies {
+      microejKernel(files("C:\\path\\to\\my\\kernel\\executable.out", "C:\\path\\to\\my\\kernel\\virtual\\device"))
+   }
+
+---------------------
 From 0.10.0 to 0.11.0
 ---------------------
 

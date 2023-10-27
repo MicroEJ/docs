@@ -9,10 +9,7 @@ Standalone Application
 
    platform
    buildAndRunApplication
-   buildOutputFiles
    launches
-   applicationOptions
-   soar
 
 A Standalone Application is a Java Application that is directly linked to the C code to produce a Firmware.
 Such application must define a main entry point, i.e. a class containing a ``public static void main(String[])`` method.
