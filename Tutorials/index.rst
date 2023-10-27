@@ -20,7 +20,7 @@ Tutorials
    getStartedWithGUI/index
    tutorialDiscoverEmbeddedDebuggingTechniques
    tutorialAppendEmojisToVectorFont
-   tutorialDebugGUIperformancesIssues
+   tutorialValidateGUIs
    tutorialSoftwareRobot
 
 ..

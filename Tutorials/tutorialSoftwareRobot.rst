@@ -121,10 +121,10 @@ Here is the code of the ``EventRecorder`` class that should be added to our appl
 
 This code records all pressed, moved, dragged and released events as well as the time between each event (we want to play our robot at the same speed as the human). ``EventRecorder`` outputs the commands on the standard output. More on this a bit later.
 
-Set up the event recorder
+Set Up the Event Recorder
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The events have to be recorded from the application's desktop's ``EventDispatcher``, here is how to override it:
+The events have to be recorded from the application's desktop's ``EventDispatcher``. Here is how to override it:
 
 .. code-block:: java
 
@@ -146,44 +146,9 @@ The events have to be recorded from the application's desktop's ``EventDispatche
         }
       };
 
-When runnnig the application, the ``EventDispatcher`` will now record the events and then redirect them to its parent ``dispatchEvent`` so they can be managed normally by the application.
+When runnning the application, the ``EventDispatcher`` will now record the events and then redirect them to its parent ``dispatchEvent`` so they can be managed normally by the application.
 
-Store the events into a scenario
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The ``EventRecorder`` events output have to be stored into a scenario in order to be played later. Here is how to do:
-
-.. code-block:: java
-
-      /**
-      * Robot scenario which reproduces the recorded human user events .
-      */
-      public class NavigationScenario extends EventPlayer implements Runnable {
-
-        @Override
-        public void run() {
-          press(344, 177);
-          pause(885);
-          release(344, 177);
-          pause(359);
-          press(184, 192);
-          pause(34);
-          move(185, 192);
-          pause(24);
-          move(188, 192);
-          pause(23);
-          move(191, 192);
-          pause(24);
-          move(196, 192);
-          pause(21);
-          move(206, 191);
-
-        }
-      }
-
-The ``run`` method from the code above already contains the recorded events, you will have to replace it by the output you get when creating the scenario.
-
-Run the Scenario
+Set Up the Scenario Player
 ----------------
 
 As we now have recorded our scenario we have to play it. For that we have to add the ``EventPlayer`` to our project:
@@ -191,11 +156,13 @@ As we now have recorded our scenario we have to play it. For that we have to add
 .. code-block:: java
 
       /**
-      * Plays events.
-      */
+       * Plays events.
+       */
       public class EventPlayer {
 
+        @Nullable
         private final Pointer pointer;
+        @Nullable
         private final Buttons buttons;
 
         /**
@@ -225,8 +192,12 @@ As we now have recorded our scenario we have to play it. For that we have to add
         *            the y coordinate of the pointer.
         */
         public void press(int x, int y) {
-          this.pointer.reset(x, y);
-          this.pointer.send(Pointer.PRESSED, 0);
+          if (null != this.pointer) {
+            this.pointer.reset(x, y);
+          }
+          if (null != this.pointer) {
+            this.pointer.send(Pointer.PRESSED, 0);
+          }
         }
 
         /**
@@ -238,7 +209,9 @@ As we now have recorded our scenario we have to play it. For that we have to add
         *            the y coordinate of the pointer.
         */
         public void move(int x, int y) {
-          this.pointer.move(x, y);
+          if (null != this.pointer) {
+            this.pointer.move(x, y);
+          }
         }
 
         /**
@@ -250,19 +223,60 @@ As we now have recorded our scenario we have to play it. For that we have to add
         *            the y coordinate of the pointer.
         */
         public void release(int x, int y) {
-          this.pointer.reset(x, y);
-          this.pointer.send(Pointer.RELEASED, 0);
+          if (null != this.pointer) {
+            this.pointer.reset(x, y);
+          }
+          if (null != this.pointer) {
+            this.pointer.send(Pointer.RELEASED, 0);
+          }
         }
 
         /**
         * Generates a button event.
         */
         public void button() {
-          this.buttons.send(Buttons.RELEASED, 0);
+          if (null != this.buttons) {
+            this.buttons.send(Buttons.RELEASED, 0);
+          }
         }
       }
 
-The ``EventPlayer`` will play the event recorded in the ``NavigationScenario`` using the ``EventGenerator``.
+``EventPlayer`` will play events using the ``EventGenerator``.
+
+We will now extend ``EventPlayer`` in order to play a specific scenario:
+
+.. code-block:: java
+
+      /**
+      * Robot scenario which reproduces the recorded human user events .
+      */
+      public class NavigationScenario extends EventPlayer implements Runnable {
+
+        @Override
+        public void run() {
+          press(344, 177);
+          pause(885);
+          release(344, 177);
+          pause(359);
+          press(184, 192);
+          pause(34);
+          move(185, 192);
+          pause(24);
+          move(188, 192);
+          pause(23);
+          move(191, 192);
+          pause(24);
+          move(196, 192);
+          pause(21);
+          move(206, 191);
+
+        }
+      }
+
+The ``run`` method from the code above already contains recorded events, you will have to replace it by the ``EventRecorder`` output you get when recording the events.
+
+Run the Scenario
+----------------
 
 We will now create a task that will run the scenario:
 
