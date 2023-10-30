@@ -28,7 +28,7 @@ In the VEE Port configuration project, add the following dependency to the :ref:
 
 ::
 
-   <dependency org="com.microej.pack.event" name="event-pack" rev="1.0.0" transitive="false"/>
+   <dependency org="com.microej.pack.event" name="event-pack" rev="2.0.1" transitive="false"/>
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
