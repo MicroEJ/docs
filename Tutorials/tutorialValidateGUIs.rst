@@ -253,7 +253,7 @@ Here are the steps required to use a robot in the MicroEJ environment:
 
 This simple way of automating GUI actions can be used to carry out real use cases and evaluate the results.
 
-The :ref:`How to test a GUI application with a (software) robot<_tutorials_software_robot>` tutorial provides detailed insight into this topic. 
+The :ref:`How to test a GUI application with a (software) robot<tutorials_software_robot>` tutorial provides detailed insight into this topic. 
 
 Test a GUI Application with the Test Automation Tool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

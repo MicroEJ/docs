@@ -149,7 +149,7 @@ The events have to be recorded from the application's desktop's ``EventDispatche
 When runnning the application, the ``EventDispatcher`` will now record the events and then redirect them to its parent ``dispatchEvent`` so they can be managed normally by the application.
 
 Set Up the Scenario Player
-----------------
+--------------------------
 
 As we now have recorded our scenario we have to play it. For that we have to add the ``EventPlayer`` to our project:
 
