@@ -329,23 +329,34 @@ To get more details on connected USB dongle(s), run the debug tool as following:
 #. Open a terminal.
 #. Change directory to a Production VEE Port.
 #. Execute the command:
+
+.. tabs::
+
+    .. tab:: Linker Sections (Architecture ``8.0.x``)
    
-   .. code:: console
+        .. code:: console
 
-      java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerUsbDongle.jar
+           java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerUsbDongle.jar
 
-   with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (M1 chip).
+        with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (M1 chip).
+
+    .. tab:: Linker Sections (Architecture ``8.1.x`` and higher)
+   
+        .. code:: console
+
+           java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerProduct.jar
+
+        with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (M1 chip).
 
 If your USB dongle has been properly activated, you should get the following output:
    
-   .. code:: console
+.. code:: console
 
-      [DEBUG] ===== MicroEJ Dongle Debug Tool =====
-      [DEBUG] => Detected dongle UID: XXXXXXXX.
-      [DEBUG] => Dongle UID has valid MicroEJ data: XXXXXXXX (only the first one is listed).
-      [DEBUG] => Detected MicroEJ License XXXXX-XXXXX-XXXXX-XXXXX - valid until YYYY-MM-DD.
-      [DEBUG] ===== SUCCESS =====
-
+   [DEBUG] ===== MicroEJ Dongle Debug Tool =====
+   [DEBUG] => Detected dongle UID: XXXXXXXX.
+   [DEBUG] => Dongle UID has valid MicroEJ data: XXXXXXXX (only the first one is listed).
+   [DEBUG] => Detected MicroEJ License XXXXX-XXXXX-XXXXX-XXXXX - valid until YYYY-MM-DD.
+   [DEBUG] ===== SUCCESS =====
 
 .. _production_license_linux:
 
@@ -601,6 +612,30 @@ Activate your license
 - Go back to Sentinel Admin Control Center
 - Click on `Update/Attach` and upload the V2C file
 - Apply it with `Apply` button
+
+Check Activation with the Command Line Tool
+"""""""""""""""""""""""""""""""""""""""""""
+
+To get more details on Sentinel license, run the debug tool as following:
+
+#. Open a terminal.
+#. Change directory to a Production VEE Port.
+#. Execute the command:
+   
+    .. code:: console
+
+       java -Djava.library.path=resources/os/[OS_NAME] -jar licenseManager/licenseManagerProduct.jar
+
+    with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (M1 chip).
+
+If your Sentinel license has been properly activated, you should get the following output:
+   
+.. code:: console
+
+   [DEBUG] ===== MicroEJ Sentinel Debug Tool =====
+   [DEBUG] => Detected Sentinel License Key ID: XXXXXXXX.
+   [DEBUG] => Detected MicroEJ License valid until YYYY-MM-DD.
+   [DEBUG] ===== SUCCESS =====
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
