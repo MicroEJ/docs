@@ -15,8 +15,8 @@ Migrate Core Engine Capability Configuration
 The selection of the :ref:`Core Engine capability <core_engine_capabilities>` is now done via the property ``com.microej.runtime.capability``. 
 Refer to one of the sections below depending on your desired capability.
 
-If you use the `Platform Configuration Additions <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/>`_, update to the version ``2.1.0`` or higher.
-In your VEE Port, delete the property ``com.microej.platformbuilder.module.multi.enabled`` and use the property ``com.microej.runtime.capability``.
+If you use the property ``com.microej.platformbuilder.module.multi.enabled``, update your `Platform Configuration Additions <https://github.com/MicroEJ/VEEPortQualificationTools/blob/master/framework/platform/>`_ to the version ``2.1.0`` or higher.
+It is also recommended to delete the property ``com.microej.platformbuilder.module.multi.enabled`` and to use the property ``com.microej.runtime.capability`` instead.
 
 Mono-Sandbox
 ````````````
