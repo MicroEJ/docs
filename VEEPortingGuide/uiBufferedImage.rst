@@ -217,6 +217,37 @@ For the :ref:`custom <section_image_custom_raw>` images, the implementation of t
 * ``adjustNewImageCharacteristics`` has to set the image buffer size (the default value is ``0``, which is an invalid size); the Graphics Engine will use this value to allocate the image buffer. 
 * ``initializeNewImage`` must initialize the custom image buffer.
 
+Image Closing
+-------------
+
+The BSP has the responsibility to free the third-party resources associated to an image.
+Most of time, the resources are allocated and initialized in the implementation of ``LLUI_DISPLAY_IMPL_initializeNewImage()`` (see above).
+When the Graphics Engine closes an image, it calls the function ``LLUI_DISPLAY_IMPL_freeImageResources()``. 
+According to the support of multiple drawers, the C module redirects or not this LLAPI to some ``ui_drawing.h`` functions.
+
+Single Format Implementation
+""""""""""""""""""""""""""""
+
+The MicroUI C module implements the LLAPI to stub the closing of non-existent third-party resources.
+The implementation of ``LLUI_DISPLAY_IMPL_freeImageResources()`` calls the weak function ``UI_DRAWING_freeImageResources()`` that does nothing.
+
+In case of the function ``UI_DRAWING_initializeNewImage()`` has been implemented in the BSP, the function ``UI_DRAWING_freeImageResources()`` should be implemented too.
+
+Multiple Formats Implementation
+"""""""""""""""""""""""""""""""
+
+The MicroUI C module implements the LLAPI to let each image manager closes the image resources.
+The implementation of ``LLUI_DISPLAY_IMPL_freeImageResources()`` calls the functions of the table ``UI_DRAWER_freeImageResources[]``, the weak function does nothing.
+
+Display and Standard Image
+""""""""""""""""""""""""""
+
+For this kind of image, the implementation of the function ``freeImageResources`` is optional: it mainly depend on the :ref:`GPU support <section_image_gpu_raw>`.
+
+Custom Image
+"""""""""""""
+
+For the :ref:`custom <section_image_custom_raw>` images, the implementation of the function ``freeImageResources`` is optional by default but often mandatory to free the third-party resources.
 
 .. _section_buffered_image_c_drawintodisplay:
 
