@@ -607,7 +607,7 @@ Activate your license
 """""""""""""""""""""
 
 - On the product computer open a web navigator and go to localhost port 1947 (Sentinel Admin Control Center)
-- Go to `Sentinel key` and click on `fingerprint` for Local key to download the C2V file.
+- Go to ``Sentinel key`` and click on ``fingerprint`` for Local key to download the C2V file.
 - Send this file to MicroEJ, MicroEJ will send you a V2C file
 - Go back to Sentinel Admin Control Center
 - Click on `Update/Attach` and upload the V2C file
