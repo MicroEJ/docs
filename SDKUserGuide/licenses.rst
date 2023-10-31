@@ -567,7 +567,7 @@ Installation for Windows
 
 - Get ``haspdinst_37102.exe`` file.
 - Type ``haspdinst_37102.exe -i`` in the command line. The installation or upgrade process is performed automatically. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully installed.
-- To uninstall RTE type haspdinst_37102.exe -r in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
+- To uninstall RTE type ``haspdinst_37102.exe -r`` in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
 
 Installation for Linux 
 """"""""""""""""""""""
