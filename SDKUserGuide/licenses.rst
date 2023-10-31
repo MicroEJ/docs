@@ -596,7 +596,7 @@ Activate your product
 Install Vendor Libraries
 """"""""""""""""""""""""
 
-Unzip MicroEJ_library.zip file in the following location:
+Unzip ``MicroEJ_library.zip`` file in the following location:
 
 - For Windows x64: ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\``
 - For Windows x86: ``%CommonProgramFiles%\Aladdin Shared\HASP\``
