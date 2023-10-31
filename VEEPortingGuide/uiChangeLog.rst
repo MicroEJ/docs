@@ -14,12 +14,6 @@ MicroUI
 - Add the possibility to free third-party resources associated with images.
 - Add some traces when debugging the SNI resources.
 
-LLAPIs
-""""""
-
-FrontPanel
-""""""""""
-
 Image Generator
 """""""""""""""
 
