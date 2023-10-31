@@ -4,10 +4,47 @@
 Changelog
 =========
 
-[13.7.0] (Unreleased)
-=====================
+13.7.0 (2023-10-23)
+===================
 
-XXX copy/paste from UI Pack
+MicroUI
+"""""""
+
+- Add the pre-multiplied image formats `ARGB8888_PRE`, `ARGB1555_PRE` and `ARGB4444_PRE`.
+- Add the possibility to free third-party resources associated with images.
+- Add some traces when debugging the SNI resources.
+
+LLAPIs
+""""""
+
+FrontPanel
+""""""""""
+
+Image Generator
+"""""""""""""""
+
+**Changed**
+
+- Do not enable the cache when generating external resources.
+
+**Fixed**
+
+- Do not use cached images when there is no `.images.list` file.
+- Do not use cached images when a VEE Port property has changed.
+- Fix the handling of backslashes in list files.
+- Remove debug log in script.
+
+Font Generator
+""""""""""""""
+
+**Changed**
+
+- Do not enable the cache when generating external resources.
+
+**Fixed**
+
+- Do not use cached fonts when a VEE Port property has changed.
+- Fix the handling of backslashes in list files.
 
 [13.6.2] (2023-09-20)
 =====================
