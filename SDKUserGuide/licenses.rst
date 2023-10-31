@@ -610,7 +610,7 @@ Activate your license
 - Go to ``Sentinel key`` and click on ``fingerprint`` for Local key to download the C2V file.
 - Send this file to MicroEJ, MicroEJ will send you a V2C file
 - Go back to Sentinel Admin Control Center
-- Click on `Update/Attach` and upload the V2C file
+- Click on ``Update/Attach`` and upload the V2C file
 - Apply it with `Apply` button
 
 Check Activation with the Command Line Tool
