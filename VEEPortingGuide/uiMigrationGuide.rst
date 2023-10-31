@@ -9,6 +9,12 @@ Migration Guide
 From 13.6.x to 13.7.x
 =====================
 
+VEE Port Configuration Project
+""""""""""""""""""""""""""""""
+
+* Fetch C Module MicroUI 3.1.0.
+	* Optionally, implement ``UI_DRAWING_freeImageResources(MICROUI_Image* image)`` to free the resources associated to a custom buffered image when it is closed.
+
 Front Panel
 """""""""""
 
@@ -27,7 +33,7 @@ BSP with VG-Lite
 
 * *[VEE Port configuration project]*
 
-	* Fetch C Module MicroUI-VGLite 6.1.1.
+	* Fetch C Module MicroUI-VGLite 7.2.0.
 
 From 13.5.x to 13.6.x
 =====================
