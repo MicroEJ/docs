@@ -572,7 +572,7 @@ Installation for Windows
 Installation for Linux 
 """"""""""""""""""""""
 
-Get aksusbd_37102-9.14.1.tar.gz file and as root, enter the following command:
+Get ``aksusbd_37102-9.14.1.tar.gz`` file and as root, enter the following command:
 
 - For RedHat, SUSE, or CentOS 64-bit ARM systems: ``rpm -i aksusbd-9.14-1.aarch64.rpm``
 - For RedHat, SUSE, or CentOS 64-bit Intel systems: ``rpm -i aksusbd-9.14-1.x86_64.rpm``
