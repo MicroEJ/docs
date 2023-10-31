@@ -9,12 +9,6 @@ Migration Guide
 From 13.6.x to 13.7.x
 =====================
 
-VEE Port Configuration Project
-""""""""""""""""""""""""""""""
-
-* Fetch C Module MicroUI 3.1.0.
-	* Optionally, implement ``UI_DRAWING_freeImageResources(MICROUI_Image* image)`` to free the resources associated to a custom buffered image when it is closed.
-
 Front Panel
 """""""""""
 
@@ -28,12 +22,37 @@ Front Panel
 
 .. _UI Pack 13.7.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.7.0/
 
+BSP
+"""
+
+* *[VEE Port configuration project]*
+
+  * Fetch C Module MicroUI 3.1.0.
+
+* *[BSP project]*
+   
+	* Optionally, implement ``UI_DRAWING_freeImageResources(MICROUI_Image* image)`` (single output buffered image format) or ``UI_DRAWING_freeImageResources_X(MICROUI_Image* image)`` (mulitple output buffered image formats; where `X` is the image identifier) to free the resources associated to a buffered image when it is closed.
+
+BSP with DMA2D
+""""""""""""""
+
+* *[VEE Port configuration project]*
+
+	* Fetch C Module Display-DMA2D 4.1.0.
+
 BSP with VG-Lite
 """"""""""""""""
 
 * *[VEE Port configuration project]*
 
 	* Fetch C Module MicroUI-VGLite 7.2.0.
+
+BSP with NemaGFX
+""""""""""""""""
+
+* *[VEE Port configuration project]*
+
+	* Fetch C Module MicroUI-VGLite 1.1.0.
 
 From 13.5.x to 13.6.x
 =====================
