@@ -152,6 +152,12 @@ Here is the list of the standard formats:
    - ARGB4444: 16-bit format, 4 bits for transparency, 4 per color,
    - ARGB1555: 16-bit format, 1 bit for transparency, 5 per color.
 
+- Transparent images with premultiplied alpha (RGB and alpha are linked)
+
+   - ARGB8888_PRE: 32-bit format, 8 bits for transparency, 8 per color,
+   - ARGB4444_PRE: 16-bit format, 4 bits for transparency, 4 per color,
+   - ARGB1555_PRE: 16-bit format, 1 bit for transparency, 5 per color.
+
 - Opaque images:
 
    - RGB888: 24-bit format, 8 per color,
@@ -258,6 +264,12 @@ The following table summarizes the usage of the different formats and the actual
    +--------------+------------------------------------+-------------------------------------+
    | ARGB1555     | .. image:: images/transparent.png  | .. image:: images/argb1555.png      |
    +--------------+------------------------------------+-------------------------------------+
+   | ARGB8888_PRE | .. image:: images/transparent.png  | .. image:: images/argb8888.png      |
+   +--------------+------------------------------------+-------------------------------------+
+   | ARGB4444_PRE | .. image:: images/transparent.png  | .. image:: images/argb4444.png      |
+   +--------------+------------------------------------+-------------------------------------+
+   | ARGB1555_PRE | .. image:: images/transparent.png  | .. image:: images/argb1555.png      |
+   +--------------+------------------------------------+-------------------------------------+
    | RGB888       | .. image:: images/opaque.png       | .. image:: images/rgb888_o.png      |
    |              +------------------------------------+-------------------------------------+
    |              | .. image:: images/transparent.png  | .. image:: images/rgb888_t.png      |
@@ -315,6 +327,13 @@ Usage Advice
    - `A4` is usually sufficient,
    - `A8` may be necessary for pictograms with long gradients,
    - for a smaller footprint if the image matches the RLE rule, `A8_RLE` is best.
+
+- For BSP with a GPU, choose a format compatible with the GPU (all formats may not be available),
+
+   - `ARGB` formats: choose between non-premultiplied formats and premultiplied formats (suffixed with `_PRE`),
+   - `Ax` formats (pictogram): all bits-per-pixel values may not be available.
+   - be careful about the color components position (`A-R-G-B` versus `R-G-B-A` for instance),
+   - avoid formats `Cx`, `ACxx` and `xxx_RLE`, which are not compatible with a GPU.
 
 .. _section_caching_generated_images:
 
