@@ -580,7 +580,7 @@ Get ``aksusbd_37102-9.14.1.tar.gz`` file and as root, enter the following comman
 - For Ubuntu or Debian 64-bit ARM systems: ``dpkg -i aksusbd_9.14-1_arm64.deb``
 - For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_9.14-1_amd64.deb``
 
-NOTE: All install/uninstall commands must be executed with root rights. In Ubuntu, prefix the commands with the sudo command; in other distributions, use the su utility to become root in the terminal window.
+NOTE: All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
 
 Installation for MAC
 """"""""""""""""""""
