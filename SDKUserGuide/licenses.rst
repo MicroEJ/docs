@@ -586,7 +586,7 @@ Installation for MAC
 """"""""""""""""""""
 
 - Get ``Sentinel_Runtime_37102.tar`` file.
-- In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on Sentinel_Runtime.dmg.
+- In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on ``Sentinel_Runtime.dmg``.
 - Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched.
 - Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, ``hasplmd`` creates configuration files in ``/private/etc/hasplm/``.
 
