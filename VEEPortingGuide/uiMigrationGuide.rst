@@ -31,7 +31,7 @@ BSP
 
 * *[BSP project]*
    
-	* Optionally, implement ``UI_DRAWING_freeImageResources(MICROUI_Image* image)`` (single output buffered image format) or ``UI_DRAWING_freeImageResources_X(MICROUI_Image* image)`` (mulitple output buffered image formats; where `X` is the image identifier) to free the resources associated to a buffered image when it is closed.
+	* Optionally, implement ``UI_DRAWING_freeImageResources(MICROUI_Image* image)`` (single-output buffered image format) or ``UI_DRAWING_freeImageResources_X(MICROUI_Image* image)`` (mulitple-output buffered image formats, where `X` is the image format identifier) to free the resources associated with a buffered image when it is closed.
 
 BSP with DMA2D
 """"""""""""""

@@ -210,7 +210,7 @@ Display and Standard Image
 For this kind of image, the implementation of the functions ``getNewImageStrideInBytes``, ``adjustNewImageCharacteristics`` and ``initializeNewImage`` is optional: it mainly depend on the :ref:`GPU support <section_image_gpu_raw>`.
 
 Custom Image
-"""""""""""""
+""""""""""""
 
 For the :ref:`custom <section_image_custom_raw>` images, the implementation of the function ``getNewImageStrideInBytes`` is optional but the implementation of the functions ``adjustNewImageCharacteristics`` and ``initializeNewImage`` is mandatory:
 
@@ -220,34 +220,35 @@ For the :ref:`custom <section_image_custom_raw>` images, the implementation of t
 Image Closing
 -------------
 
-The BSP has the responsibility to free the third-party resources associated to an image.
-Most of time, the resources are allocated and initialized in the implementation of ``LLUI_DISPLAY_IMPL_initializeNewImage()`` (see above).
-When the Graphics Engine closes an image, it calls the function ``LLUI_DISPLAY_IMPL_freeImageResources()``. 
-According to the support of multiple drawers, the C module redirects or not this LLAPI to some ``ui_drawing.h`` functions.
+The BSP has the responsibility to free the third-party resources associated with an image.
+Most of the time, the resources are allocated and initialized in the implementation of ``LLUI_DISPLAY_IMPL_initializeNewImage()`` (see above).
+When the Graphics Engine closes an image, it calls the function ``LLUI_DISPLAY_IMPL_freeImageResources()``.
+Depending on whether multiple drawers are supported, the C module may redirect this LLAPI to some ``ui_drawing.h`` functions.
 
 Single Format Implementation
 """"""""""""""""""""""""""""
 
-The MicroUI C module implements the LLAPI to stub the closing of non-existent third-party resources.
-The implementation of ``LLUI_DISPLAY_IMPL_freeImageResources()`` calls the weak function ``UI_DRAWING_freeImageResources()`` that does nothing.
+The MicroUI C module provides an implementation of the LLAPI.
+By default, no third-party resources are associated with buffered images.
+Therefore, ``LLUI_DISPLAY_IMPL_freeImageResources()`` calls the weak function ``UI_DRAWING_freeImageResources()`` that does nothing.
 
-In case of the function ``UI_DRAWING_initializeNewImage()`` has been implemented in the BSP, the function ``UI_DRAWING_freeImageResources()`` should be implemented too.
+If the function ``UI_DRAWING_initializeNewImage()`` has been implemented in the BSP, the function ``UI_DRAWING_freeImageResources()`` should be implemented too.
 
 Multiple Formats Implementation
 """""""""""""""""""""""""""""""
 
-The MicroUI C module implements the LLAPI to let each image manager closes the image resources.
-The implementation of ``LLUI_DISPLAY_IMPL_freeImageResources()`` calls the functions of the table ``UI_DRAWER_freeImageResources[]``, the weak function does nothing.
+The MicroUI C module implements the LLAPI to let each image manager close the image resources.
+The implementation of ``LLUI_DISPLAY_IMPL_freeImageResources()`` calls the functions of the table ``UI_DRAWER_freeImageResources[]``, which have default weak implementations that do nothing.
 
 Display and Standard Image
 """"""""""""""""""""""""""
 
-For this kind of image, the implementation of the function ``freeImageResources`` is optional: it mainly depend on the :ref:`GPU support <section_image_gpu_raw>`.
+For this kind of image, implementing the function ``freeImageResources`` is optional: it mainly depends on the :ref:`GPU support <section_image_gpu_raw>`.
 
 Custom Image
 """""""""""""
 
-For the :ref:`custom <section_image_custom_raw>` images, the implementation of the function ``freeImageResources`` is optional by default but often mandatory to free the third-party resources.
+For the :ref:`custom <section_image_custom_raw>` images, the implementation of the function ``freeImageResources`` is optional, but often required to free the third-party resources.
 
 .. _section_buffered_image_c_drawintodisplay:
 
