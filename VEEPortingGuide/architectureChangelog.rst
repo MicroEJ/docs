@@ -62,6 +62,7 @@ Core Engine
 - [Multi] - Removed Feature installation in RAM (legacy :ref:`In-Place Installation mode <feature_inplace_installation>`). See :ref:`architecture8_migration_llkernel`.
 - [Multi] - Updated :ref:`Feature installation boot sequence <feature_persistency>`: all Feature handles are now retrieved prior to initializing them.
 - [Multi] - Updated check of :ref:`Kernel UID <kernel_uid>` at the beginning of `Kernel.install(java.io.InputStream)`_, before allocating Feature sections.
+- [Multi] - Updated the specification for ``LLKERNEL_IMPL_allocateFeature()`` function to return the handle ``0`` if the Feature could not be allocated.
 - [Multi] - Updated the specification for ``LLKERNEL_IMPL_getAllocatedFeaturesCount()`` function to ensure that it returns a valid result at any time, even if it is only called by the Core Engine during startup.
 - [Multi] - Updated the specifications for ``LLKERNEL_IMPL_getFeatureAddressRAM()`` and ``LLKERNEL_IMPL_getFeatureAddressROM()`` functions to return ``NULL`` when an incorrect index is provided.
   This change is only for ``LLKERNEL`` TCK purposes, as the Core Engine only invokes these methods with valid indices.
