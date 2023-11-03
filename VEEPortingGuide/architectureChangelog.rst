@@ -92,7 +92,7 @@ Tools
     -  Added an API to relink the SOAR Model objects, i.e. change their associated addresses (used by the VEE Debugger Proxy to support ASLR Executables debug)
     -  Added new APIs to load Kernel and Features SOAR Model objects (used by the VEE Debugger Proxy to support Multi-Sandbox Executable debug)
 
--  [ARMCC5] - Fixed ``SOAR Debug Infos Post Linker`` tool to throw a dedicated error when the SOAR object file does not contain the debug section.
+-  [ARMCC5] - Fixed :ref:`SOAR Debug Infos Post Linker <soar_debug_infos_post_linker>` tool to throw a dedicated error when the SOAR object file does not contain the debug section.
 
 
 .. _changelog-8.0.0:
@@ -1452,7 +1452,7 @@ SOAR
 Tools
 ~~~~~
 
--  [ARMCC5] - Updated ``SOAR Debug Infos Post Linker`` tool to generate
+-  [ARMCC5] - Updated :ref:`SOAR Debug Infos Post Linker <soar_debug_infos_post_linker>` tool to generate
    the full ELF executable file
 
 .. _section-15:
