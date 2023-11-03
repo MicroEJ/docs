@@ -321,6 +321,8 @@ You can declare it in your BSP project or directly in your VEE Port as following
 
 The weak symbol(s) will be directly defined in the application object file (``microejapp.o``).
 
+.. _soar_debug_infos_post_linker:
+
 Link the SOAR Debug Section
 ---------------------------
 
