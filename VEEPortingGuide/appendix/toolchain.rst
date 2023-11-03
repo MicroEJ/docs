@@ -254,6 +254,7 @@ ESP32
      - `simikou7 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv112_xtensa-esp32s3/simikou7/>`__
      - ``7.20.1`` or higher
      
+.. _toolchain_iar:
 
 IAR Linker Specific Options
 ===========================
@@ -287,6 +288,8 @@ as illegal code by IAR linker, causing the following error:
 The option ``--diag_suppress=Lp029`` tells IAR linker to ignore
 instructions validation errors.
 
+.. _toolchain_gcc:
+
 GNU LD Specific Options
 =======================
 
@@ -296,6 +299,8 @@ GNU LD Specific Options
 By default the GNU linker does not search unresolved symbols in previously loaded files and can cause undefined reference errors.
 To solve this issue, either change the load order of libraries (put ``microejapp.o`` first) or guard the libraries with the
 options ``--start-group`` and ``--end-group``.
+
+.. _toolchain_armcc:
 
 ARM Linker Specific Options
 ===========================
