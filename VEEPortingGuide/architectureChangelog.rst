@@ -25,13 +25,14 @@ specific configuration:
    -  ``RX``: Renesas RX
    -  ``x86``: Intel x86
 
--  C Compiler
+-  C Compilation Toolchain
 
-   -  ``ARMCC5``: Keil ARMCC uVision v5
-   -  ``IAR74``: IAR Embedded Workbench for ARM v7.4
+   -  ``ARMCC5``: Keil ARMCC uVision v5. See also :ref:`toolchain_armcc`.
+   -  ``Clang``: Clang
+   -  ``GCC63``: GNU GCC Compiler v6.3. See also :ref:`toolchain_gcc`.
+   -  ``IAR74``: IAR Embedded Workbench for ARM v7.4. See also :ref:`toolchain_iar`.
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
-   -  ``Clang``: Clang
 
 .. _changelog-8.1.0:
 
@@ -1550,7 +1551,7 @@ Simulator
 SOAR
 ~~~~
 
--  [GCC] - Fixed ``microejapp.o`` link with GCC 6.3
+-  [GCC63] - Fixed ``microejapp.o`` link with GCC 6.3
 
 .. _tools-12:
 
