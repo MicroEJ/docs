@@ -25,13 +25,14 @@ specific configuration:
    -  ``RX``: Renesas RX
    -  ``x86``: Intel x86
 
--  C Compiler
+-  C Compilation Toolchain
 
-   -  ``ARMCC5``: Keil ARMCC uVision v5
-   -  ``IAR74``: IAR Embedded Workbench for ARM v7.4
+   -  ``ARMCC5``: Keil ARMCC uVision v5. See also :ref:`toolchain_armcc`.
+   -  ``Clang``: Clang
+   -  ``GCC63``: GNU GCC Compiler v6.3. See also :ref:`toolchain_gcc`.
+   -  ``IAR74``: IAR Embedded Workbench for ARM v7.4. See also :ref:`toolchain_iar`.
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
-   -  ``Clang``: Clang
 
 .. _changelog-8.1.0:
 
@@ -91,6 +92,9 @@ Tools
     -  Added support to retrieve the Core Engine memory regions (used by the VEE Debugger Proxy to generate a memory dump script (see :ref:`Generate VEE memory dump script <generate_vee_memory_dump_script>`))
     -  Added an API to relink the SOAR Model objects, i.e. change their associated addresses (used by the VEE Debugger Proxy to support ASLR Executables debug)
     -  Added new APIs to load Kernel and Features SOAR Model objects (used by the VEE Debugger Proxy to support Multi-Sandbox Executable debug)
+
+-  [ARMCC5] - Fixed :ref:`SOAR Debug Infos Post Linker <soar_debug_infos_post_linker>` tool to throw a dedicated error when the SOAR object file does not contain the debug section.
+
 
 .. _changelog-8.0.0:
 
@@ -1449,7 +1453,7 @@ SOAR
 Tools
 ~~~~~
 
--  [ARMCC5] - Updated ``SOAR Debug Infos Post Linker`` tool to generate
+-  [ARMCC5] - Updated :ref:`SOAR Debug Infos Post Linker <soar_debug_infos_post_linker>` tool to generate
    the full ELF executable file
 
 .. _section-15:
@@ -1547,7 +1551,7 @@ Simulator
 SOAR
 ~~~~
 
--  [GCC] - Fixed ``microejapp.o`` link with GCC 6.3
+-  [GCC63] - Fixed ``microejapp.o`` link with GCC 6.3
 
 .. _tools-12:
 
