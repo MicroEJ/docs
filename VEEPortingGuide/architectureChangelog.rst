@@ -92,6 +92,9 @@ Tools
     -  Added an API to relink the SOAR Model objects, i.e. change their associated addresses (used by the VEE Debugger Proxy to support ASLR Executables debug)
     -  Added new APIs to load Kernel and Features SOAR Model objects (used by the VEE Debugger Proxy to support Multi-Sandbox Executable debug)
 
+-  [ARMCC5] - Fixed ``SOAR Debug Infos Post Linker`` tool to throw a dedicated error when the SOAR object file does not contain the debug section.
+
+
 .. _changelog-8.0.0:
 
 [8.0.0] - 2023-06-27
