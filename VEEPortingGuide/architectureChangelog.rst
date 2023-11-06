@@ -74,7 +74,7 @@ Foundation Libraries
 
 - Fixed, in ``BON``, `ResourceBuffer.readString()`_ which does not increment correctly the position in the buffer.
 - Fixed, in ``BON``, ``-1`` returned by `ResourceBuffer.available()`_ instead of ``0`` when the end of the buffer is reached.
-- Fixed, in ``BON``, invalid valued returned by `ResourceBuffer.available()`_ on the Simulator.
+- Fixed, in ``BON``, invalid value returned by `ResourceBuffer.available()`_ on the Simulator.
 
 .. _ResourceBuffer.readString(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html#readString--
 .. _ResourceBuffer.available(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html#available--
