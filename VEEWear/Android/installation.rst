@@ -9,25 +9,7 @@ The MicroEJ SDK provides Gradle plugins that allow for seamless integration in A
 For comprehensive installation instructions, read the :ref:`SDK 6 Installation Guide <sdk_6_install>`.
 Simply follow the steps related to Android Studio when relevant.
 
-In addition to installing MicroEJ SDK 6, make sure to comply with the requirements listed in the next sections.
-
-JDK Version
------------
-
-Not all features of MicroEJ SDK 6 are compatible with JDK 15 and higher.
-As a consequence, using the Android Compatibility Kit requires the use of JDK 11.
-
-As stated in the :ref:`SDK 6 Installation Guide <sdk_6_check_jdk>`, make sure to set either the ``JAVA_HOME`` or ``PATH`` variables to reference a JDK 11 installation.
-
-.. note:: 
-   The latest versions of Android Studio bundle and use a JDK version higher than 11 by default.
-   Make sure that Gradle uses a JDK 11 in the Android Studio settings.
-
-   - Go to :guilabel:`File` > :guilabel:`Settings...` > :guilabel:`Build, Execution, Deployment` > :guilabel:`Build Tools` > :guilabel:`Gradle`.
-   - For :guilabel:`Gradle SDK`, select a JDK 11 installation in the list.
-
-The primary implication of using a JDK 11 is that the maximum version of the Android Gradle Plugin that can be used is ``7.4.2``.
-
+In addition to installing MicroEJ SDK 6, make sure to comply with the requirements listed below.
 
 Configure Repositories
 ----------------------
