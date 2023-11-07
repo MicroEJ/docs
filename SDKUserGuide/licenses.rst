@@ -590,7 +590,7 @@ Installation for MAC
 - In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on ``Sentinel_Runtime.dmg``.
 - Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched.
 - Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, ``hasplmd`` creates configuration files in ``/private/etc/hasplm/``.
-- Finally set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=/var/hasplm:$DYLD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using .bashrc file) to ensure that OS is properly configured to run a MicroEJ SDK or MicroEJ Architecture using Sentinel license manager.
+- Finally set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=/var/hasplm:$DYLD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured to run a MicroEJ SDK or MicroEJ Architecture using Sentinel license manager.
 
 
 Activate your product 
