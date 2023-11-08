@@ -58,6 +58,7 @@ Provided Examples
 |midTable|
    
 This example shows how to customize the style of widgets using attribute selectors, similar to CSS Attribute Selectors.
+
 It provides several types of attribute selectors, any of which can be used in a stylesheet to select widgets based on custom attributes.
 In this case, the background color of a label switches depending on the value of an attribute of the label.
 
@@ -74,6 +75,7 @@ In this case, the background color of a label switches depending on the value of
 |midTable|
    
 This example shows how to use a pool of `BufferedImages <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html>`_ to share them across an application.
+
 In this demo, there is one image in the pool, which is shared between the histogram widget and the transition container.
 
 |endTable|
@@ -89,6 +91,7 @@ In this demo, there is one image in the pool, which is shared between the histog
 |midTable|
    
 This example shows a smartwatch application that looks different depending on whether the user is wearing the device on the left arm or on the right arm.
+
 It demonstrates how a container can adapt to the context by changing how its children are laid out: in this case, depending on the wrist mode, 
 the widgets are displayed on either the left or right side. 
 For demonstration purposes, the example displays a virtual watch to simulate the device flip.
@@ -138,6 +141,7 @@ When the joystick directions (up, down, left, right) are pressed, the focus chan
 |midTable|
 
 This example shows how to create and use an immutable stylesheet.
+
 The immutable stylesheet resolves the style for a widget with the same algorithm as the `cascading stylesheet <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html>`_.
 The difference is that the immutable stylesheet is described in an immutable file instead of Java code. Therefore, the style objects are allocated in flash instead of the Java heap.
 
@@ -155,6 +159,7 @@ The difference is that the immutable stylesheet is described in an immutable fil
 |midTable|
 
 This example shows how to create and use a "lazy" stylesheet. 
+
 The lazy stylesheet resolves the style for a widget with the same algorithm as the `cascading stylesheet <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html>`_.
 The difference is that the lazy stylesheet associates style factories with selectors (rather than style instances).
 As a result, the style elements are allocated "on demand" when a rule's selector applies to a widget.
@@ -172,6 +177,7 @@ As a result, the style elements are allocated "on demand" when a rule's selector
 |midTable|
 
 This example shows how to mask a widget temporarily.
+
 The grid is a custom container (``MaskingGrid``) that exposes an API to change the visibility of its children (visible or invisible).
 When requested to render, the grid only renders the children marked as visible.
 
@@ -188,6 +194,7 @@ When requested to render, the grid only renders the children marked as visible.
 |midTable|
 
 This example shows how to create and use an MVC design pattern (Model, View, Controller).
+
 The value of the model can be changed by clicking on the physical button.
 
 It is also possible to resize all the widgets at once.
@@ -222,6 +229,7 @@ The information popup can be dismissed by clicking outside of its bounds. The ac
 |midTable|
 
 This example shows how to add and remove widgets in a widget hierarchy.
+
 The layout adapts automatically to the number of items because ``requestLayout()`` is called for each addition/deletion on the container.
 
 |endTable|
@@ -237,6 +245,7 @@ The layout adapts automatically to the number of items because ``requestLayout()
 |midTable|
 
 This example shows a slide container. This is a container that shows only its last child.
+
 An animation is done when adding/removing a child by translating the widgets from/to the right.
 
 |endTable|
@@ -252,6 +261,7 @@ An animation is done when adding/removing a child by translating the widgets fro
 |midTable|
 
 This example shows a stack container. This is a container that stacks its children on top of each other.
+
 An animation is done when adding/removing a child by translating the widget from/to the right.
 
 |endTable|
@@ -274,6 +284,44 @@ When requested to render, the grid only renders the children marked as visible.
 
 |endTable|
 
+`Theming and Branding <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/theming-and-branding>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|startTable| 
+
+.. image:: images/theming-and-branding.gif
+   :align: center
+
+|midTable|
+
+This example shows how to create theming and branding for your project.
+
+The application contains only one page.
+
+There are two different types of theming shown:
+
+1. Changing from normal to condensed by passing a `Theme` when building the stylesheet.
+2. Changing the styling (including padding, margin, background, etc.) itself with a `StyleTheme`.
+
+|endTable|
+
+`Transition <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/transition>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|startTable| 
+
+.. image:: images/transition.gif
+   :align: center
+
+|midTable|
+
+This example shows a container that triggers effects during page transitions.
+
+The effect applied to the transition container can be changed dynamically.
+New effects can be developed easily.
+
+|endTable|
+
 `Virtual Watch <https://github.com/MicroEJ/ExampleJava-MWT/tree/master/virtual-watch>`_
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -285,6 +333,7 @@ When requested to render, the grid only renders the children marked as visible.
 |midTable|
 
 This example shows how to simulate the skin and inputs of a device with a different device (e.g., an evaluation board).
+
 This can be a convenient option when the target hardware is not yet available.
 
 Here, it simulates a watch with a round screen and 3 buttons.
