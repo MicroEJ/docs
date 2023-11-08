@@ -42,11 +42,13 @@ The following artifacts are automatically published:
 - The README.md file.
 - The CHANGELOG.md file.
 - The LICENSE.txt file.
+- The ASSEMBLY_EXCEPTION.txt file.
 - The Gradle module descriptor file.
 - The Ivy descriptor file (to allow SDK 5 project to fetch it).
 - The WPK file, if the project is an Application.
-- The Virtual Device, if the project is an Application.
-- The Executable file, if the project is an Application.
+- The Virtual Device, if the project is an Application containing a Java main class.
+- The Executable file, if the project is an Application containing a Java main class.
+- The Feature file, if the project is an Application containing a Java class that implements the ``ej.kf.FeatureEntryPoint`` interface.
 
 
 ..
