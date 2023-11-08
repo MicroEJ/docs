@@ -609,7 +609,7 @@ Unzip ``MicroEJ_library.zip`` file in the following location:
 Activate your license
 """""""""""""""""""""
 
-- On the product computer open a web navigator and go to localhost port 1947 (Sentinel Admin Control Center)
+- On the product computer open a web navigator and go to http://localhost:1947 (Sentinel Admin Control Center)
 - Go to ``Sentinel key`` and click on ``fingerprint`` for Local key to download the C2V file.
 - Send this file to MicroEJ, MicroEJ will send you a V2C file
 - Go back to Sentinel Admin Control Center
