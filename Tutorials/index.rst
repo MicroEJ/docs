@@ -20,7 +20,8 @@ Tutorials
    getStartedWithGUI/index
    tutorialDiscoverEmbeddedDebuggingTechniques
    tutorialAppendEmojisToVectorFont
-   tutorialDebugGUIperformancesIssues
+   tutorialValidateGUIs
+   tutorialSoftwareRobot
 
 ..
    | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
