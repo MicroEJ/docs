@@ -400,7 +400,7 @@ loadKernelExecutable
 
 **Outputs**:
 
-- The directory where the Kernel Executable file is copied (``build/kernelExecutable``)
+- The loaded Kernel Executable file is copied (``build/kernelExecutable/kernel.out``)
 
 **Module Natures**:
 
