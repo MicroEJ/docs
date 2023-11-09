@@ -596,6 +596,8 @@ Installation for MAC
 Activate your product 
 ~~~~~~~~~~~~~~~~~~~~~
 
+.. _sentinel_install_vendor_libraries:
+
 Install Vendor Libraries
 """"""""""""""""""""""""
 
@@ -609,6 +611,8 @@ Unzip ``MicroEJ_library.zip`` file in the following location:
 	
 	For Windows 64-bit, please put ``hasp_windows_x64_37102.dll`` file in the system folder (``%SystemRoot%\system32``) if you have administrator rights on your machine. 
 	Otherwise drop the ``hasp_windows_x64_37102.dll`` file beside ``java.exe`` executable of the Java Development Kit (JDK) used to launch the MICROEJ SDK.
+
+.. _sentinel_activate_license:
 
 Activate your license
 """""""""""""""""""""
@@ -643,6 +647,20 @@ If your Sentinel license has been properly activated, you should get the followi
    [DEBUG] => Detected Sentinel License Key ID: XXXXXXXX.
    [DEBUG] => Detected MicroEJ License valid until YYYY-MM-DD.
    [DEBUG] ===== SUCCESS =====
+
+Troubleshooting
+~~~~~~~~~~~~~~~
+
+Sentinel API dynamic library not found (code 400)
+"""""""""""""""""""""""""""""""""""""""""""""""""
+
+The following error occurred when the library ``hasp_[os]_37102.[ext]`` has not been found. Please refer to :ref:`sentinel_install_vendor_libraries`. 
+
+Sentinel key not found (code 7)
+"""""""""""""""""""""""""""""""
+
+The following error occurred when there is no Sentinel license available. Please check your Sentinel licenses at http://localhost:1947/int/devices.html or refer 
+:ref:`sentinel_activate_license`.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
