@@ -601,10 +601,9 @@ Install Vendor Libraries
 
 Unzip ``MicroEJ_library.zip`` file in the following location:
 
-- For Windows x64: ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\``
-- For Windows x86: ``%CommonProgramFiles%\Aladdin Shared\HASP\``
+- For Windows 64-bit: ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\``
 - For Mac: ``/var/hasplm`` (By default, the ``/var`` path is hidden. You may need to modify the operating system View option to display all files and folders in order to access this path.)
-- For Linux: ``/var/hasplm``
+- For Linux 64-bit: ``/var/hasplm``
 
 Activate your license
 """""""""""""""""""""
