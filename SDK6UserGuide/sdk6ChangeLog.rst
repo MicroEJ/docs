@@ -3,6 +3,27 @@
 Changelog
 ---------
 
+.. _changelog-0.13.0:
+
+[0.13.0] - 2023-11-10
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Add a check on EULA acceptation when using the MicroEJ Gradle plugin.
+- Automatically publish the ASSEMBLY_EXCEPTION.txt file if it exists at the root of the project.
+- Allow to publish the Feature file of an Application.
+- Add `:execTool` task to execute Stack Trace Reader and Code Coverage Analyzer Tools provided by the selected VEE Port or Kernel.
+
+Fixed
+"""""
+
+- Fix warning during compilation because of non-existing file or folder (``incorrect classpath: C:\\Users\\user\\...\myProject\\build\\resources\\main``).
+- Fix warning in SOAR when building an Executable with Architecture 8.0.0 (``[M59] - Classpath file [C:\Users\user\...\myProject\build\resources\main] does not exist``).
+- Enable Ant verbose mode for VEE Port scripts when Gradle debug log level is enabled.
+- Fix the build of a Feature when the provided Virtual Device does not contain the `dynamicFeatureLink.microejLaunch` build script (Virtual Device built with SDK 5).
+
 .. _changelog-0.12.1:
 
 [0.12.1] - 2023-10-16
