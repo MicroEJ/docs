@@ -43,6 +43,7 @@ To consult its libraries APIs documentation, please visit `<https://developer.mi
    javaTime
    eventQueue
    js/index
+   managedc/index
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
