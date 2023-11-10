@@ -48,6 +48,7 @@ To consult its libraries APIs documentation, please visit `<https://developer.mi
    eventQueue
    gnss
    js/index
+   managedc/index
 
 ..
    | Copyright 2008-2025, MicroEJ Corp. Content in this space is free 
