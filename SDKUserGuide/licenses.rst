@@ -574,7 +574,6 @@ Installation for Linux
 
 Get ``aksusbd_37102-9.14.1.tar.gz`` file and as root, enter the following command:
 
-- For RedHat, SUSE, or CentOS 64-bit ARM systems: ``rpm -i aksusbd-9.14-1.aarch64.rpm``
 - For RedHat, SUSE, or CentOS 64-bit Intel systems: ``rpm -i aksusbd-9.14-1.x86_64.rpm``
 - For Ubuntu or Debian 32-bit ARM systems: ``dpkg -i aksusbd_9.14-1_armhf.deb``
 - For Ubuntu or Debian 64-bit ARM systems: ``dpkg -i aksusbd_9.14-1_arm64.deb``
