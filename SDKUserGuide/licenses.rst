@@ -576,7 +576,7 @@ Get ``aksusbd_37102-9.14.1.tar.gz`` file and as root, enter the following comman
 
 - For RedHat, SUSE, or CentOS 64-bit Intel systems: ``rpm -i aksusbd-9.14-1.x86_64.rpm``
 - For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_9.14-1_amd64.deb``
-- Finally set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=/var/hasplm:$LD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured to run a MicroEJ SDK or MicroEJ Architecture using Sentinel license manager.
+- Finally set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=/var/hasplm:$LD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
 
 .. note::
 	All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
@@ -588,10 +588,10 @@ Installation for macOS
 - In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on ``Sentinel_Runtime.dmg``.
 - Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched.
 - Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, ``hasplmd`` creates configuration files in ``/private/etc/hasplm/``.
-- Finally set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=/var/hasplm:$DYLD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured to run a MicroEJ SDK or MicroEJ Architecture using Sentinel license manager.
+- Finally set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=/var/hasplm:$DYLD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
 
 
-Activate your product 
+Activate Your Product 
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. _sentinel_install_vendor_libraries:
@@ -607,10 +607,10 @@ Unzip ``MicroEJ_library.zip`` file in the following location:
 
 .. _sentinel_activate_license:
 
-Activate your license
+Activate Your License
 """""""""""""""""""""
 
-- On the product computer open a web navigator and go to http://localhost:1947 (Sentinel Admin Control Center)
+- On the workstation, open a web navigator and go to http://localhost:1947 (Sentinel Admin Control Center)
 - Go to ``Sentinel key`` and click on ``fingerprint`` for Local key to download the C2V file.
 - Send this file to MicroEJ, MicroEJ will send you a V2C file
 - Go back to Sentinel Admin Control Center
@@ -637,7 +637,7 @@ If your Sentinel license has been properly activated, you should get the followi
 .. code:: console
 
    [DEBUG] ===== MicroEJ Sentinel Debug Tool =====
-   [DEBUG] => Detected Sentinel License Key ID: XXXXXXXX.
+   [DEBUG] => Detected Sentinel License Key ID: XXXXXXXXXXXXXXXX.
    [DEBUG] => Detected MicroEJ License valid until YYYY-MM-DD.
    [DEBUG] ===== SUCCESS =====
 
