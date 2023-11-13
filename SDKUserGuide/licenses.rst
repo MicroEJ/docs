@@ -553,7 +553,7 @@ There are many hardware and software solutions available on the market. Among ot
 Please contact :ref:`our support team <get_support>` for more details.
 
 Sentinel License Management
--------------------------
+---------------------------
 
 Install Runtime Environment (RTE)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -583,7 +583,7 @@ Get ``aksusbd_37102-9.14.1.tar.gz`` file and as root, enter the following comman
 NOTE: All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
 
 Installation for macOS
-""""""""""""""""""""
+""""""""""""""""""""""
 
 - Get ``Sentinel_Runtime_37102.tar`` file.
 - In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on ``Sentinel_Runtime.dmg``.
