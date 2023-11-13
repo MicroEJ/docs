@@ -580,7 +580,8 @@ Get ``aksusbd_37102-9.14.1.tar.gz`` file and as root, enter the following comman
 - For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_9.14-1_amd64.deb``
 - Finally set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=/var/hasplm:$LD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured to run a MicroEJ SDK or MicroEJ Architecture using Sentinel license manager.
 
-NOTE: All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
+.. note::
+	All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
 
 Installation for macOS
 """"""""""""""""""""""
