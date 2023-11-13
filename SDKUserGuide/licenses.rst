@@ -565,15 +565,15 @@ Install Runtime Environment (RTE)
 
 `Sentinel LDK Run-time Environment <https://docs.sentinel.thalesgroup.com/ldk/rte.htm>`__ is required on the end user's computer to enable your protected software to run by communicating with Sentinel protection keys. 
 
-- Get ``Sentinel_RTE_Installation-1.0.0.zip`` installers here: xxxxx. It contains installer for Windows, macOS and Linux.
+Get ``Sentinel_RTE_Installation-1.0.0.zip`` installers here: xxxxx. It contains installer for Windows, macOS and Linux.
 
 Installation for Windows 
 """"""""""""""""""""""""
 
-- Get ``haspdinst_37102.exe`` file.
-- Type ``haspdinst_37102.exe -i`` in the command line. The installation or upgrade process is performed automatically. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully installed.
-- Get ``MicroEJ_library.zip`` file and unzip it in ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\``.
-- Put ``MicroEJ_library\hasp_windows_x64_37102.dll`` file in the system folder (``%SystemRoot%\system32``) if you have administrator rights on your machine. Otherwise drop the ``hasp_windows_x64_37102.dll`` file beside ``java.exe`` executable of the Java Development Kit (JDK) used to launch the MICROEJ SDK.
+- Get ``haspdinst_37102.exe`` file
+- Type ``haspdinst_37102.exe -i`` in the command line. The installation or upgrade process is performed automatically. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully installed
+- Get ``MicroEJ_library.zip`` file and unzip it in ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\``
+- Put ``MicroEJ_library\hasp_windows_x64_37102.dll`` file in the system folder (``%SystemRoot%\system32``) if you have administrator rights on your machine. Otherwise drop the ``hasp_windows_x64_37102.dll`` file beside ``java.exe`` executable of the Java Development Kit (JDK) used to launch the MICROEJ SDK
 
 .. note::
 	To uninstall Sentinel RTE, type ``haspdinst_37102.exe -r`` in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
@@ -585,7 +585,7 @@ Get ``aksusbd_37102-9.14.1.tar.gz`` file and as root, enter the following comman
 
 - For RedHat, SUSE, or CentOS 64-bit Intel systems: ``rpm -i aksusbd-9.14-1.x86_64.rpm``
 - For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_9.14-1_amd64.deb``
-- Set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=/var/hasplm:$LD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
+- Set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=/var/hasplm:$LD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK
 - Get ``MicroEJ_library.zip`` file and unzip it in ``/var/hasplm`` directory
 
 .. note::
@@ -594,7 +594,7 @@ Get ``aksusbd_37102-9.14.1.tar.gz`` file and as root, enter the following comman
 Installation for macOS
 """"""""""""""""""""""
 
-- Get ``Sentinel_Runtime_37102.tar`` file.
+- Get ``Sentinel_Runtime_37102.tar`` file
 - In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on ``Sentinel_Runtime.dmg``
 - Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched
 - Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, ``hasplmd`` creates configuration files in ``/private/etc/hasplm/``
@@ -610,7 +610,7 @@ Activate Your License
 """""""""""""""""""""
 
 - On the workstation, open a web navigator and go to http://localhost:1947 (Sentinel Admin Control Center)
-- Go to ``Sentinel key`` and click on ``fingerprint`` for Local key to download the C2V file.
+- Go to ``Sentinel key`` and click on ``fingerprint`` for Local key to download the C2V file
 - Send this file to MicroEJ, MicroEJ will send you a V2C file
 - Go back to Sentinel Admin Control Center
 - Click on ``Update/Attach`` and upload the V2C file
@@ -621,8 +621,8 @@ Check Activation with the Command Line Tool
 
 To verify access to the Sentinel license on the workstation where the SDK executes, run the debug tool as following:
 
-#. Open a terminal.
-#. Change directory to a Production VEE Port.
+#. Open a terminal
+#. Change directory to a Production VEE Port
 #. Execute the command:
    
     .. code:: console
