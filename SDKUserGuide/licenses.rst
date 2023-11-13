@@ -555,6 +555,9 @@ Please contact :ref:`our support team <get_support>` for more details.
 Sentinel License Management
 ---------------------------
 
+.. note::
+	Require a MicroEJ Architecture 8.1.0 or higher (Production only).
+
 Install Runtime Environment (RTE)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
