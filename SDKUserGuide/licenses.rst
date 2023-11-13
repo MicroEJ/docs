@@ -626,7 +626,7 @@ Activate your license
 Check Activation with the Command Line Tool
 """""""""""""""""""""""""""""""""""""""""""
 
-To get more details on Sentinel license, run the debug tool as following:
+To verify access to the Sentinel license on the workstation where the SDK executes, run the debug tool as following:
 
 #. Open a terminal.
 #. Change directory to a Production VEE Port.
