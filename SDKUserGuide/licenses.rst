@@ -555,6 +555,8 @@ Please contact :ref:`our support team <get_support>` for more details.
 Sentinel License Management
 ---------------------------
 
+This section contains instructions that will allow you to setup Sentinel environment and activate your license.
+
 .. note::
 	Require a MicroEJ Architecture 8.1.0 or higher (Production only).
 
