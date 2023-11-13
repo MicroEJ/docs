@@ -332,7 +332,7 @@ To get more details on connected USB dongle(s), run the debug tool as following:
 
 .. tabs::
 
-    .. tab:: Linker Sections (Architecture ``8.0.x``)
+    .. tab:: Architecture ``8.0.x`` and lower
    
         .. code:: console
 
