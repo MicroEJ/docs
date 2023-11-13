@@ -600,14 +600,9 @@ Install Vendor Libraries
 
 Unzip ``MicroEJ_library.zip`` file in the following location:
 
-- For Windows 64-bit: ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\``
+- For Windows 64-bit: ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\``. Put ``hasp_windows_x64_37102.dll`` file in the system folder (``%SystemRoot%\system32``) if you have administrator rights on your machine. Otherwise drop the ``hasp_windows_x64_37102.dll`` file beside ``java.exe`` executable of the Java Development Kit (JDK) used to launch the MICROEJ SDK.
 - For macOS: ``/var/hasplm`` (By default, the ``/var`` path is hidden. You may need to modify the operating system View option to display all files and folders in order to access this path.)
 - For Linux 64-bit: ``/var/hasplm``
-
-.. note: 
-	
-	For Windows 64-bit, please put ``hasp_windows_x64_37102.dll`` file in the system folder (``%SystemRoot%\system32``) if you have administrator rights on your machine. 
-	Otherwise drop the ``hasp_windows_x64_37102.dll`` file beside ``java.exe`` executable of the Java Development Kit (JDK) used to launch the MICROEJ SDK.
 
 .. _sentinel_activate_license:
 
