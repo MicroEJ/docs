@@ -642,7 +642,7 @@ If your Sentinel license has been properly activated, you should get the followi
 .. code:: console
 
    [DEBUG] ===== MicroEJ Sentinel Debug Tool =====
-   [DEBUG] => Detected Sentinel License Key ID: XXXXXXXX.
+   [DEBUG] => Detected Sentinel License Key ID: XXXXXXXXXXXXXXXX.
    [DEBUG] => Detected MicroEJ License valid until YYYY-MM-DD.
    [DEBUG] ===== SUCCESS =====
 
