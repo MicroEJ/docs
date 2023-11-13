@@ -653,8 +653,14 @@ The following error occurred when the library ``hasp_[os]_37102.[ext]`` has not 
 Sentinel key not found (code 7)
 """""""""""""""""""""""""""""""
 
-The following error occurred when there is no Sentinel license available. Please check your Sentinel licenses at http://localhost:1947/int/devices.html or refer 
-:ref:`sentinel_activate_license`.
+The following error occurred when there is no Sentinel license available. Please check your Sentinel licenses at http://localhost:1947/int/devices.html 
+
+.. figure:: images/sentinel_rte_installed_license_view.png
+   :alt: Sentinel Installed License(s) View
+   :align: center
+   :scale: 75%
+
+Otherwise, refer to :ref:`sentinel_activate_license`.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
