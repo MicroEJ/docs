@@ -10,6 +10,15 @@ For comprehensive installation instructions, read the :ref:`SDK 6 Installation G
 
 In addition to installing MicroEJ SDK 6, make sure to comply with the requirements listed below.
 
+JDK Version
+-----------
+
+The Android Compatibility Kit, like MicroEJ SDK 6, is compatible with a JDK 11 or higher LTS version.
+The JDK version to use will depend on the Android Gradle Plugin (AGP) being used. 
+Starting from version 8, AGP requires a minimum JDK 17.
+If you intend to use JDK 11, you will need to specify a compatible version of AGP (e.g., 7.4.2).
+Refer to the `Android Gradle plugin release notes <https://developer.android.com/build/releases/gradle-plugin>`_ for more information. 
+
 Configure Repositories
 ----------------------
 
