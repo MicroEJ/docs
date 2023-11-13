@@ -340,7 +340,7 @@ To get more details on connected USB dongle(s), run the debug tool as following:
 
         with ``OS_NAME`` set to ``Windows64`` for Windows OS, ``Linux64`` for Linux OS, ``Mac`` for macOS x86_64 (Intel chip) or ``MacA64`` for macOS aarch64 (M1 chip).
 
-    .. tab:: Linker Sections (Architecture ``8.1.x`` and higher)
+    .. tab:: Architecture ``8.1.x`` and higher
    
         .. code:: console
 
