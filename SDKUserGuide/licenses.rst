@@ -568,7 +568,7 @@ Install Runtime Environment (RTE)
 `Sentinel LDK Run-time Environment <https://docs.sentinel.thalesgroup.com/ldk/rte.htm>`__ is required on the end user's computer to enable your protected software to run by communicating with Sentinel protection keys. 
 
 .. note:: 
-	Installation steps are not required if floating license are used on workstation. 
+	Sentinel LDK RTE installation requires administrator privileges but is not necessary to be installed on the developer workstation in case of floating licenses. (see this `documentation <https://docs.sentinel.thalesgroup.com/ldk/LDKdocs/SPNL/LDK_SLnP_Guide/Distributing/Distributing_LDK/RTE_when_required.htm>`__ for more details). 
 
 First, get ``Sentinel_RTE_Installation-1.0.0.zip`` file here: xxxxx. It contains installer for Windows, macOS and Linux.
 
