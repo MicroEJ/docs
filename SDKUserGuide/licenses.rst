@@ -552,7 +552,7 @@ it can be configured using USB redirection over IP network.
 There are many hardware and software solutions available on the market. Among others, this has been tested with https://www.net-usb.com/ and https://www.virtualhere.com/.
 Please contact :ref:`our support team <get_support>` for more details.
 
-Sentinel License Overview
+Sentinel License Management
 -------------------------
 
 Install Runtime Environment (RTE)
