@@ -596,7 +596,7 @@ Installation for macOS
 - Finally set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=/var/hasplm:$DYLD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK.
 
 
-Activate your product 
+Activate Your Product 
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. _sentinel_install_vendor_libraries:
