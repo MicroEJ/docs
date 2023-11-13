@@ -249,10 +249,10 @@ The next steps show how to configure the Android or Wear OS application to decla
 - Select :guilabel:`Sync Now` from the notification bar to synchronize your project files.
 
 
-Run the MicroEJ Application Code
---------------------------------
+Start the MicroEJ Application
+-----------------------------
 
-The final step involves launching the MicroEJ Application from within the Android or Wear OS application.
+The final step involves calling the entry point of the MicroEJ Application from within the Android or Wear OS application.
 
 .. tabs::
 
@@ -326,7 +326,20 @@ The final step involves launching the MicroEJ Application from within the Androi
                } 
 
          When the watch face service is created, it instantiates the main class of the MicroEJ Application and invokes its ``main()`` method.
+   
+Select :guilabel:`Sync Now` from the notification bar to synchronize your project files.
 
+Run on MicroEJ VEE and Android
+------------------------------
+
+The application can now be deployed to both MicroEJ VEE and Android environments.
+
+The deployment of an application designed to use the Android Compatibility Kit has nothing specific compared to other MicroEJ or Android applications.
+This means that you can refer to the dedicated documentation for this matter:
+
+- for MicroEJ VEE: refer to sections :ref:`Run On Simulator <sdk_6_run_on_simulator>`, :ref:`Build Executable <sdk_6_build_executable>` and :ref:`Run On Device <sdk_6_run_on_device>`.
+- for Android: refer to the official `Android documentation <https://developer.android.com/studio/run>`_.
+- for Wear OS: refer to the official `Wear OS documentation <https://developer.android.com/training/wearables/get-started/creating#run-emulator>`_.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
