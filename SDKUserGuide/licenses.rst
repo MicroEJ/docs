@@ -612,7 +612,7 @@ Unzip ``MicroEJ_library.zip`` file in the following location:
 
 .. _sentinel_activate_license:
 
-Activate your license
+Activate Your License
 """""""""""""""""""""
 
 - On the product computer open a web navigator and go to http://localhost:1947 (Sentinel Admin Control Center)
