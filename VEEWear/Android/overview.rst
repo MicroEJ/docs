@@ -8,6 +8,18 @@ The MicroEJ Android Compatibility Kit is composed of two main components:
 * A runtime: applications developed on MicroEJ can run on the Android platform thanks to the Android-based implementation of the MicroEJ Foundation libraries and dedicated support libraries.
 * A developer kit: the MicroEJ SDK 6 and a Gradle plugin provide the necessary support for developing applications in Android Studio using Gradle.
 
+Workflow
+--------
+
+Below is a general overview of the workflow when developing a product that targets both MicroEJ and Android-powered devices.
+
+.. figure:: images/workflow-diagram.png
+    :alt: Workflow Diagram
+    :align: center
+    :scale: 80%
+
+    Workflow Diagram
+
 
 Software Architecture
 ---------------------
