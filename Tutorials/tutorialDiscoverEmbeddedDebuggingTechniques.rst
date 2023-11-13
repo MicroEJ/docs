@@ -202,7 +202,7 @@ Runtime State Dump
       --------------------------------------------------------------------------------
       ================================================================================
 
-- The :ref:`Core Engine check integrity<check-internal-structure-integrity>` is a low-level API to check the internal structure integrity of the Core Engine and returns its checksum.
+- The :ref:`Core Engine check integrity<core_engine.check_integrity>` is a low-level API to check the internal structure integrity of the Core Engine and returns its checksum.
 
 .. _System.out: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#out
 
