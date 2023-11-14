@@ -3,9 +3,9 @@
 Test Suite with JUnit
 =====================
 
-MicroEJ allows to run unit tests using the standard `JUnit`_ API during
-the build process of a MicroEJ library or a MicroEJ Application. The
-:ref:`testsuite_engine` runs tests on a target Platform and outputs a
+The SDK allows to run unit tests using the standard `JUnit`_ API during
+the build process of a Library or an Application. The
+:ref:`testsuite_engine` runs tests on a VEE Port and outputs a
 JUnit XML report.
 
 .. _JUnit: https://repository.microej.com/modules/ej/library/test/junit/
@@ -133,6 +133,37 @@ Once a test suite is completed, the following test suite reports are generated:
 If executed on device, the Firmware binary produced for each test
 is available in module project location ``target~/test/xml/<TIMESTAMP>/bin/<FULLY-QUALIFIED-CLASSNAME>/application.out``.
 
+.. _testsuite_on_device:
+
+Configure the Execution on your Device
+--------------------------------------
+
+By default, the Test Suite is configured to execute tests on the Simulator using Mocks declared by the VEE Port.
+You can switch the default configuration to execute tests on your Device. For that, your VEE Port must implement the :ref:`BSP Connection <bsp_connection>`. 
+
+Also, a device must be connected to your workstation both for programming the Executable and getting output traces. Consult your VEE Port specific documentation for setup.
+
+Here is a summary of the options to add (see :ref:`Testsuite Options <testsuite_options>` and :ref:`BSP Connection Options <bsp_connection>` for more details).
+
+.. code-block:: xml
+   
+   <!-- Execute tests on Device -->
+   <ea:property name="target.vm.name" value="MICROJVM"/>
+   
+   <!-- Enable Executable built using the SDK -->
+   <ea:property name="microej.testsuite.properties.deploy.bsp.microejscript" value="true"/>
+   <ea:property name="microej.testsuite.properties.microejtool.deploy.name" value="deployToolBSPRun"/>
+   
+   <!-- Tell the testsuite engine that your VEE Port Run script redirects execution traces -->
+   <ea:property name="microej.testsuite.properties.launch.test.trace.file" value="true"/>
+   <!-- Configure TCP/IP address and port if your VEE Port Run script does not redirect execution traces -->
+   <ea:property name="microej.testsuite.properties.testsuite.trace.ip" value="127.0.0.1"/>
+   <ea:property name="microej.testsuite.properties.testsuite.trace.port" value="5555"/>
+
+
+.. warning::
+
+   If your VEE Port Run script does not redirect execution traces, the :ref:`tool_serial_to_socket` tool must have been started before running the Test Suite.
 
 Advanced Configurations
 -----------------------
@@ -233,26 +264,7 @@ The :ref:`testsuite_engine` can be configured with specific options
 which can be added to the ``module.ivy`` file of the project running the test suite, 
 within the ``<ea:build>`` XML element.
 
-- Application Option Injection
-  
-  It is possible to inject an :ref:`Application Option <application_options>` for all the tests, 
-  by adding to the original option the ``microej.testsuite.properties.`` prefix:
-
-  .. code-block:: xml 
-  
-     <ea:property name="microej.testsuite.properties.[application_option_name]" value="[application_option_value]"/> 
-      
-- Retry Mechanism
-  
-  A test execution may not be able to produce the success trace for an external reason,
-  for example an unreliable harness script that may lose some trace characters or crop the end of the trace.
-  For all these unlikely reasons, it is possible to configure the number of retries before a test is considered to have failed:
-
-  .. code-block:: xml
-
-     <ea:property name="microej.testsuite.retry.count" value="[nb_of_retries]"/> 
-      
-  By default, when a test has failed, it is not executed again (option value is set to ``0``).
+Test Suite options are described in the :ref:`Test Suite Module Nature <module_natures.plugins.testsuite>` section.
 
 Test Specific Options
 ~~~~~~~~~~~~~~~~~~~~~
