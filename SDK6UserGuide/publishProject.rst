@@ -47,9 +47,21 @@ The following artifacts are automatically published:
 - The Ivy descriptor file (to allow SDK 5 project to fetch it).
 - The WPK file, if the project is an Application.
 - The Virtual Device, if the project is an Application containing a Java main class.
-- The Executable file, if the project is an Application containing a Java main class.
-- The Feature file, if the project is an Application containing a Java class that implements the ``ej.kf.FeatureEntryPoint`` interface.
 
+If the project is an Application containing a Java main class, the Executable can be published by 
+calling the ``produceExecutableDuringBuild()`` method in the ``microej`` configuration block of the Gradle build file of the project::
+
+   microej {
+     produceExecutableDuringBuild()
+   }
+
+If the project is an Application containing a Java class that implements the ``ej.kf.FeatureEntryPoint`` interface, 
+the Feature can be published by calling the ``produceFeatureDuringBuild()`` method in the ``microej`` configuration block of the Gradle build file 
+of the project::
+
+   microej {
+     produceFeatureDuringBuild()
+   }
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
