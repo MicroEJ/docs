@@ -577,8 +577,6 @@ Installation for Windows
 
 - Get ``haspdinst_37102.exe`` file
 - Type ``haspdinst_37102.exe -i`` in the command line. The installation or upgrade process is performed automatically. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully installed
-- Get ``MicroEJ_library.zip`` file and unzip it in ``%CommonProgramFiles(x86)%\Aladdin Shared\HASP\``
-- Put ``MicroEJ_library\hasp_windows_x64_37102.dll`` file in the system folder (``%SystemRoot%\system32``) if you have administrator rights on your machine. Otherwise drop the ``hasp_windows_x64_37102.dll`` file beside ``java.exe`` executable of the Java Development Kit (JDK) used to launch the MICROEJ SDK
 
 .. note::
 	To uninstall Sentinel RTE, type ``haspdinst_37102.exe -r`` in the command line. A message is displayed informing you that the Sentinel LDK Run-time Environment was successfully removed.
@@ -586,12 +584,11 @@ Installation for Windows
 Installation for Linux 
 """"""""""""""""""""""
 
-Get ``aksusbd_37102-9.14.1.tar.gz`` file and as root, enter the following command:
+Get ``aksusbd_37102-9.14.1.tar.gz`` file and extract it. The installation packages are in the directory ``pkg``, as root enter the following command:
 
 - For RedHat, SUSE, or CentOS 64-bit Intel systems: ``rpm -i aksusbd-9.14-1.x86_64.rpm``
 - For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_9.14-1_amd64.deb``
-- Set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=/var/hasplm:$LD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK
-- Get ``MicroEJ_library.zip`` file and unzip it in ``/var/hasplm`` directory
+- Copy ``aksusbd-9.14.1/haspvlib_37102.so`` and ``aksusbd-9.14.1/haspvlib_x86_64_37102.so`` to /var/hasplm directory
 
 .. note::
 	All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
@@ -603,11 +600,23 @@ Installation for macOS
 - In ``SentinelRuntimeInstaller.framework/Versions/A/Resources/`` double-click on ``Sentinel_Runtime.dmg``
 - Double-click the Install Sentinel Runtime Environment disk image icon. The installer wizard is launched
 - Follow the instructions of the installer wizard until the installation is complete. The first time that you run Admin Control Center and submit configuration changes, ``hasplmd`` creates configuration files in ``/private/etc/hasplm/``
-- Set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=/var/hasplm:$DYLD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK
-- Get ``MicroEJ_library.zip`` file and unzip it in ``/var/hasplm`` (By default, the ``/var`` path is hidden. You may need to modify the operating system View option to display all files and folders in order to access this path)
 
 Activate Your Product 
 ~~~~~~~~~~~~~~~~~~~~~
+
+Set up environment
+""""""""""""""""""
+
+**Windows**
+- Put ``MicroEJ_library\hasp_windows_x64_37102.dll`` file in the system folder (``%SystemRoot%\system32``) if you have administrator rights on your machine. Otherwise drop the ``hasp_windows_x64_37102.dll`` file beside ``java.exe`` executable of the Java Development Kit (JDK) used to launch the MICROEJ SDK
+
+**Linux**
+- Get ``MicroEJ_library\libhasp_linux_x86_64_37102.so`` file and copy it in a directory of your choice
+- Set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=<your_directory>:$LD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK
+
+**Mac**
+- Get ``MicroEJ_library\hasp_darwin_37102.dylib`` file and copy it in a directory of your choice
+- Set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=<your_directory>:$DYLD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK
 
 .. _sentinel_activate_license:
 
