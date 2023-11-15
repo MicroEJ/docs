@@ -41,7 +41,7 @@ The SDK requires a JDK 11, so when a JDK 8 is used, the following kind of errors
 
 	Cause: com/microej/gradle/plugins/MicroejApplicationGradlePlugin has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
 
-The solution is to use a JDK 11 or a higher LTS version (``11``, ``17`` or ``21``) to fix this error:
+The solution is to use a JDK 11 or 17 to fix this error:
 
 - For the command line interface, make sure that a supported JDK version is defined in the ``PATH`` environment.
   To check, run ``java -version``. You should see something like this::
