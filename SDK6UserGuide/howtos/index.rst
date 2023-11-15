@@ -10,6 +10,7 @@ How-to Guides
    gradleSystemProperty
    gradleSkipTask
    gradleAutoreloading
+   gradleAddRepository
    resolveInIDE
    installSnapshotPlugins
    buildProject
