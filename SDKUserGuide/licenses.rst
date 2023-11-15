@@ -608,13 +608,16 @@ Set up environment
 """"""""""""""""""
 
 **Windows**
+
 - Put ``MicroEJ_library\hasp_windows_x64_37102.dll`` file in the system folder (``%SystemRoot%\system32``) if you have administrator rights on your machine. Otherwise drop the ``hasp_windows_x64_37102.dll`` file beside ``java.exe`` executable of the Java Development Kit (JDK) used to launch the MICROEJ SDK
 
 **Linux**
+
 - Get ``MicroEJ_library\libhasp_linux_x86_64_37102.so`` file and copy it in a directory of your choice
 - Set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=<your_directory>:$LD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK
 
 **Mac**
+
 - Get ``MicroEJ_library\hasp_darwin_37102.dylib`` file and copy it in a directory of your choice
 - Set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=<your_directory>:$DYLD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK
 
