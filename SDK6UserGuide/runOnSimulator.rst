@@ -134,6 +134,8 @@ It specifies the period between the generation of .cc files.
 
 Set to ``true`` to enable the generation of Code Coverage files, don't define the property to disable the generation.
 
+.. _sdk_6_generate_heap_dump:
+
 Generate Heap Dump
 ------------------
 
