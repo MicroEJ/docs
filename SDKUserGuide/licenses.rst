@@ -604,7 +604,7 @@ Installation for macOS
 Activate Your Product 
 ~~~~~~~~~~~~~~~~~~~~~
 
-Set up environment
+Setup Your Environment
 """"""""""""""""""
 
 **Windows**
