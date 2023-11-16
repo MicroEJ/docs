@@ -588,7 +588,7 @@ Get ``aksusbd_37102-9.14.1.tar.gz`` file and extract it. The installation packag
 
 - For RedHat, SUSE, or CentOS 64-bit Intel systems: ``rpm -i aksusbd-9.14-1.x86_64.rpm``
 - For Ubuntu or Debian 64-bit Intel systems: ``dpkg -i aksusbd_9.14-1_amd64.deb``
-- Copy ``aksusbd-9.14.1/haspvlib_37102.so`` and ``aksusbd-9.14.1/haspvlib_x86_64_37102.so`` to /var/hasplm directory
+- Copy ``aksusbd-9.14.1/haspvlib_37102.so`` and ``aksusbd-9.14.1/haspvlib_x86_64_37102.so`` to ``/var/hasplm`` directory
 
 .. note::
 	All install/uninstall commands must be executed with root rights. On Ubuntu, prefix the commands with the ``sudo`` command. On other Linux distributions, use the ``su`` utility to become root in the terminal window.
