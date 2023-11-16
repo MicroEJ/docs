@@ -20,7 +20,7 @@ To declare an Android Pack dependency, edit the ``module.ivy`` file of the VEE P
 
 	.. code-block:: xml
 
-		<dependency org="com.microej.android.pack.[NAME]" name="[NAME]-android-pack" rev="[VERSION]"/>
+		<dependency org="com.microej.android.pack" name="[NAME]-android-pack" rev="[VERSION]"/>
 
 MicroEJ Android Packs
 ---------------------
