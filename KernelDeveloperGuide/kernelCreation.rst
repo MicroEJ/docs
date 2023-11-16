@@ -89,7 +89,7 @@ Implementing a security policy is achieved by enabling support for Security Mana
 Enable the Security Management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For the sake of ROM footprint optimization support, calls of Permission checks are disabled by default.
+For the sake of ROM footprint optimization, calls to Permission checks are disabled by default.
 In order to activate this feature the :ref:`option_enable_security_manager` option must be set.
 
 Implement your Security Policy
@@ -112,14 +112,13 @@ and registering an instance of this class to the Kernel by a call to `System.set
 
 Then you have to implement your own Security Policy.
 
-Implementation of a Security Policy is demonstrated in the `Kernel-GREEN`_ project.
-It shows the log of Permission requests, using the utility class `KernelSecurityManager`_ that helps to dispatch the Permission checks.
+Implementation of a Security Policy is demonstrated in the `Kernel-GREEN`_ project. This Kernel implements a logging-only Security Policy using the utility class `FeaturePermissionCheckDelegate`_ that helps in implementing Permission checks in a Multi-Sandbox environment.
 
 .. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
 .. _SecurityManager.checkPermission(Permission): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html#checkPermission-java.security.Permission-
 .. _System.setSecurityManager(SecurityManager): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#setSecurityManager-java.lang.SecurityManager-
 .. _Kernel-GREEN: https://github.com/MicroEJ/Kernel-GREEN
-.. _KernelSecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/KernelSecurityManager.html
+.. _FeaturePermissionCheckDelegate: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/FeaturePermissionCheckDelegate.html
 .. _SecurityException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityException.html
 .. _Permission: https://repository.microej.com/javadoc/microej_5.x/apis/java/security/Permission.html
 
