@@ -30,7 +30,7 @@ To use Managed C in your MicroEJ application, follow these steps:
 
 3. **Add the Managed C Function Annotation:**
 
-   Add the ``ManagedCFunction`` annotation in your Java code:
+   Add the following ``ManagedCFunction`` Java annotation in the folder ``src/main/java``:
 
    .. code:: java
 
