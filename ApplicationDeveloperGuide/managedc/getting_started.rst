@@ -4,6 +4,16 @@
 Getting Started
 ===============
 
+.. _managedc_getting_started_prerequisites:
+
+Prerequisites
+-------------
+
+- A pre-built VEE Port using a MicroEJ Architecture v8.2.0 or higher available on the machine
+
+Steps
+-----
+
 To use Managed C in your MicroEJ application, follow these steps:
 
 1. **Install the MMM CLI (Command Line Interface):** Follow the instructions in the :ref:`MMM CLI (Command Line Interface) <mmm_build_kit>`.
@@ -80,9 +90,14 @@ To use Managed C in your MicroEJ application, follow these steps:
 
    .. code:: console
 
-        mmm build
+        mmm build -Dplatform-loader.target.platform.dir=<prebuilt_veeport_path>/source
+        
+.. note::
+	
+		Replace ``<prebuilt_veeport_path>`` by the location of the root directory of your prebuilt VEE Port (see :ref:`managedc_getting_started_prerequisites`).       
 
-   You should see the following message at the end of the build:
+
+You should see the following message at the end of the build:
 
    .. code:: console
 
