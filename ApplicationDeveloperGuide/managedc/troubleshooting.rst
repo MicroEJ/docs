@@ -7,11 +7,11 @@ Troubleshooting
 SOAR-L ERROR "Unknown classpath entry ...."
 -----------------------------------------------------------------
 
-When using the ManagedCFunction annotation on a Java native methods, ensure there's a corresponding WebAssembly file in the classpath. 
+When using the ``ManagedCFunction`` annotation on a Java native methods, ensure there's a corresponding WebAssembly file in the classpath. 
 
 An error in SOAR-L might occur if the WebAssembly file is missing. 
 
-For instance, having a `factorial` Java native method requires a `factorial.wasm` file at the root of your classpath. 
+For instance, having a ``factorial`` Java native method requires a ``factorial.wasm`` file at the root of your classpath. 
 
 Failure to do so may result in the following error:
 
