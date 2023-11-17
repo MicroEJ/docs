@@ -54,7 +54,7 @@ To use Managed C in your MicroEJ application, follow these steps:
 
 5. **Call the Managed C function:**
 
-   Add the following lines in your application's main method:
+   Add the following lines in your application's ``main`` method:
 
    .. code:: java
 
