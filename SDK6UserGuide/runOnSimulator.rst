@@ -134,6 +134,18 @@ It specifies the period between the generation of .cc files.
 
 Set to ``true`` to enable the generation of Code Coverage files, don't define the property to disable the generation.
 
+Generate Heap Dump
+------------------
+
+*Option Name*: ``s3.inspect.heap``
+
+*Description*:
+
+Set to ``true`` to enable a dump of the heap each time the ``System.gc()`` method is called by the MicroEJ Application.
+The ``.heap`` files are generated in ``build/output/application/heapDump/``.
+
+Use the :ref:`Heap Viewer<heapviewer>` to visualize the ``.heap`` files.
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
