@@ -50,7 +50,7 @@ To use Managed C in your MicroEJ application, follow these steps:
    .. code:: java
 
         @ManagedCFunction
-        public static final native int factorial(int n);
+        public static native int factorial(int n);
 
 5. **Call the Managed C function:**
 
