@@ -13,9 +13,9 @@ In this section you will learn:
 Below are defined several terms that will be used throughout this page:
 
 - :ref:`Shared Interface <chapter.shared.interfaces>` is a mechanism specific to MicroEJ Multi-Sandbox that allows exchanging object instances between Features.
-- ``Service`` represents an object instance (i.e an interface implementation)
+- Service represents an object instance (i.e an interface implementation)
 - `Shared Services <https://repository.microej.com/javadoc/microej_5.x/apis/ej/service/package-summary.html>`_ is a MicroEJ helper module that eases sharing services within a Multi-Sandbox context; it provides generic APIs that can be re-implemented as needed.
-- ``Registry`` or ``Service Registry`` represents the actual implementation of Shared Services APIs. MicroEJ provides such registries for KF but custom registries can be implemented as needed.
+- Registry or Service Registry represents the actual implementation of Shared Services APIs. MicroEJ provides such registries for KF but custom registries can be implemented as needed.
 
 Shared Services
 ---------------
@@ -34,24 +34,26 @@ Security policies can be implemented to restrict the usage of certain services b
 
 .. note::
 
-   The following sections relate to the existing KF implementation of the ``ej.Service`` library available in the `KF-Util module <https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/library/util/kf-util/>`_ ; you can however do your own custom implementation depending as needed.
+   The following sections relate to the existing KF implementation of the `ej.Service library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/service/package-summary.html>`_ available in the `KF-Util module <https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/library/util/kf-util/>`_ ; you can however do your own custom implementation depending as needed.
 
 Communication between Features
 ------------------------------
 
 The KF specification does not allow Features to access object instances from other Features directly: access can only be done by means of a proxy of the target object instance.
 
-This is made possible through the ``Shared Interfaces`` mechanism.
+This is made possible through the Shared Interfaces mechanism.
 More information about proxies can be found in the :ref:`chapter.shared.interfaces` section.
 
-In a nutshell ``Shared Interfaces`` and ``Shared Services`` are two complementary notions: the Shared Interfaces mechanism is responsible for setting up the capability of sharing an instance between Features whereas Shared Services offer a way to get, store and retrieve these instances once correctly set up.
+In a nutshell Shared Interfaces and Shared Services are two complementary notions: the Shared Interfaces mechanism is responsible for setting up the capability of sharing an instance between Features whereas Shared Services offer a way to get, store and retrieve these instances once correctly set up.
 
 Register a Service
 ~~~~~~~~~~~~~~~~~~
 
 The following line of code allows you to easily register a Service instance.
 
-``ServiceFactory.register(MyInterface.class,myInterface)``
+.. code-block:: java
+
+   ServiceFactory.register(MyInterface.class,myInterface)
 
 When registering a service from a Feature there are two possible options:
 
@@ -61,7 +63,7 @@ When registering a service from a Feature there are two possible options:
 
 For Features to use the Shared Interfaces mechanism, a Kernel must provide:
 
-* an API for a first Feature to register its Shared Interface, and for a second Feature to get a proxy on it (by means of the ``ej.Service`` library)
+* an API for a first Feature to register its Shared Interface, and for a second Feature to get a proxy on it (by means of the `ej.Service library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/service/package-summary.html>`_)
 * a set of registered Kernel types converters (see below)
 
 Get a Service
@@ -69,7 +71,9 @@ Get a Service
 
 The following line of code allows you to easily get a Service instance.
 
-``MyInterface myInterface = ServiceFactory.getService(MyInterface.class)``
+.. code-block:: java
+
+   MyInterface myInterface = ServiceFactory.getService(MyInterface.class)
 
 When getting a service instance from a Feature, the service instance is searched in the following order:
 
@@ -78,15 +82,15 @@ When getting a service instance from a Feature, the service instance is searched
 #. In the Shared Registry, check for an instance registered (publicly) by the Kernel.
 #. In the Shared Registry, check for an instance registered as a Shared Interface by an other Feature.
 
-If no instance was found an attempt is made to create a new instance of the provided Type, assuming it is embedded in the Kernel.
-By default only directly referenced Type names in the code are embedded in the Kernel, to explicitely tell the Kernel to embed a Type name, a resources file ``types.list`` can be used.
+If no instance was found an attempt is made to create a new instance of the provided type, assuming it is embedded in the Kernel.
+By default only directly referenced type names in the code are embedded in the Kernel, to explicitely tell the Kernel to embed a type name, a resources file ``types.list`` can be used.
 Learn more about types `here <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
 
 .. note::
 
-   In a Multi-Sandbox context, the only module capable of declaring Types is the Kernel therefore a type belonging to a Feature cannot be instantiated this way.
-   An alternative way to embed Type names not referenced by the Kernel is to set property `soar.generate.classnames <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/applicationOptions.html#group-types>`_.
-   Note that it can have an impact on the footprint of the Kernel as all Types will be embedded.
+   In a Multi-Sandbox context, the only module capable of declaring types is the Kernel therefore a type belonging to a Feature cannot be instantiated this way.
+   An alternative way to embed type names not referenced by the Kernel is to set property `soar.generate.classnames <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/applicationOptions.html#group-types>`_.
+   Note that it can have an impact on the footprint of the Kernel as all types will be embedded.
 
 .. _kernel_service_registry:
 
@@ -100,11 +104,13 @@ Register a Service
 
 From the Kernel side two distinct APIs may be used to register a Service, depending on whether the service must be registered locally or not.
 
-You can use the generic ``ej.Service`` API that will automatically register the service instance in the **local** Kernel service registry.
+You can use the generic `ej.Service API <https://repository.microej.com/javadoc/microej_5.x/apis/ej/service/package-summary.html>`_ that will automatically register the service instance in the **local** Kernel service registry.
 
-``ServiceFactory.register(MyInterface.class,myInterface) //accessible within the Kernel context only``
+.. code-block:: java
 
-Or you can specify in which registry the Kernel should register the service by using the ``ServiceRegistryKF`` API from the ``KF-Util`` as depitcted below.
+   ServiceFactory.register(MyInterface.class,myInterface) //accessible within the Kernel context only
+
+Or you can specify in which registry the Kernel should register the service by using the ``ServiceRegistryKF`` API from the ``KF-Util`` as depicted below.
 
 .. ::
     ServiceRegistryKF serviceRegistryKF = (ServiceRegistryKF) ServiceFactory.getServiceRegistry();
@@ -125,7 +131,9 @@ Get a Service
 
 The following line of code allows you to easily get a Service instance.
 
-``MyInterface myInterface = ServiceFactory.getService(MyInterface.class)``
+.. code-block:: java
+
+   MyInterface myInterface = ServiceFactory.getService(MyInterface.class)
 
 When getting a service instance from the Kernel, the service instance is searched in the following order:
 
@@ -133,19 +141,17 @@ When getting a service instance from the Kernel, the service instance is searche
 #. In the Shared Registry, check for an instance registered by the Kernel.
 #. In the Shared Registry, check for an instance registered as Shared Interface by an other Feature.
 
-If no instance was found an attempt is made to create a new instance of the provided Type, assuming it is embedded in the Kernel.
-By default only directly referenced Type names in the code are embedded in the Kernel, to explicitely tell the Kernel to embed a Type name, a resources file ``types.list`` can be used.
+If no instance was found an attempt is made to create a new instance of the provided type, assuming it is embedded in the Kernel.
+By default only directly referenced type names in the code are embedded in the Kernel, to explicitely tell the Kernel to embed a type name, a resources file ``types.list`` can be used.
 Learn more about types `here <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
 
 .. note::
 
-   In a Multi-Sandbox context, the only module capable of declaring Types is the Kernel therefore a type belonging to a Feature cannot be instantiated this way.
-   An alternative way to embed Type names not referenced by the Kernel is to set property `soar.generate.classnames <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/applicationOptions.html#group-types>`_.
-   Note that it can have an impact on the footprint of the Kernel as all Types will be embedded.
+   In a Multi-Sandbox context, the only module capable of declaring types is the Kernel therefore a type belonging to a Feature cannot be instantiated this way.
+   An alternative way to embed type names not referenced by the Kernel is to set property `soar.generate.classnames <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/applicationOptions.html#group-types>`_.
+   Note that it can have an impact on the footprint of the Kernel as all types will be embedded.
 
-.. _kernel_type_converter:
-
-Implement a registry
+Implement a Registry
 --------------------
 
 In case the existing KF implementation of Shared Services does not fit your needs, you can implement your own registry system classes.
@@ -156,6 +162,8 @@ Such a registry can be implemented using the `Kernel.bind()`_ KF API to create a
 
 Note that this can also be used for an Application instance of a Kernel type.
 In this case, a :ref:`Converter <kernel_type_converter>` must be defined and the converted instance is returned instead of creating a proxy.
+
+.. _kernel_type_converter:
 
 Kernel Types Converter
 ----------------------
