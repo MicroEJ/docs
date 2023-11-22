@@ -99,7 +99,7 @@ allows:
    * - Java APIs
      - https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/package-summary.html
    * - Specification
-     - http://e-s-r.net/download/specification/ESR-SPE-0001-BON-1.2-F.pdf
+     - https://repository.microej.com/packages/ESR/ESR-SPE-0001-BON-1.2-G.pdf
    * - Module
      - https://repository.microej.com/modules/ej/api/bon/
  
@@ -142,7 +142,7 @@ SNI also provides some Java APIs to manipulate some data arrays between Java and
    * - Java APIs
      - https://repository.microej.com/javadoc/microej_5.x/apis/ej/sni/package-summary.html
    * - Specification
-     - http://e-s-r.net/download/specification/ESR-SPE-0012-SNI_GT-1.2-H.pdf
+     - https://repository.microej.com/packages/ESR/ESR-SPE-0012-SNI_GT-1.2-I.pdf
    * - Module
      - https://repository.microej.com/modules/ej/api/sni/
 
