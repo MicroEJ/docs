@@ -6,7 +6,14 @@ MicroEJ Runtime
 Language
 --------
 
-MicroEJ allows to develop Applications in the `Java® Language Specification version 7 <https://docs.oracle.com/javase/specs/jls/se7/jls7.pdf>`_ with :ref:`some limitations <java_limitations>`, and supports code extensions written in :ref:`JavaScript <javascript>`.
+MicroEJ allows to develop Applications in the `Java® Language Specification version 7 <https://docs.oracle.com/javase/specs/jls/se7/jls7.pdf>`_ with :ref:`some limitations <java_limitations>`, and supports code extensions written in :ref:`JavaScript <javascript>`, and in :ref:`C <managedc>`.
+
+.. figure:: images/runtime.png
+   :alt: MicroEJ Runtime Overview
+   :scale: 75%
+   :align: center
+
+   MicroEJ Runtime Overview 
 
 Basically, Java source code is compiled by the Java compiler [1]_ into the binary format specified in the JVM specification [2]_. 
 This binary code is linked by a tool named :ref:`SOAR <soar>` before execution: ``.class`` files and some other application-related files (see :ref:`Classpath <chapter.microej.classpath>` chapter) are linked to produce the final binary file that the :ref:`Core Engine <core_engine>` will execute.
@@ -18,6 +25,8 @@ This binary code is linked by a tool named :ref:`SOAR <soar>` before execution: 
 
 .. [2]
    Tim Lindholm & Frank Yellin, The Java™ Virtual Machine Specification, Second Edition, 1999
+
+
 
 .. _runtime_core_libraries:
 
