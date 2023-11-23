@@ -152,11 +152,11 @@ By default only types referenced directly in the code are embedded in the Kernel
 Implement a Registry
 --------------------
 
-In case the existing KF implementation of Shared Services does not fit your needs, you can implement your own registry system classes.
+In case the existing KF implementation of Shared Services does not fit your needs, you can implement your own registry system classes using the `Kernel.bind()`_ KF API.
 
-Such a registry can be implemented using the `Kernel.bind()`_ KF API to create a proxy for the requesting consumer Application.
+This API allows a consumer Feature for remote use of an instance which type is owned by another Feature or the Kernel. In case the type is owned by another Feature, the returned instance is a `Proxy <https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Proxy.html>`_ of the shared instance. In case the type is owned by the Kernel, the returned instance is the conversion result of the shared instance to the Kernel type; for this to happen a suitable :ref:`Converter <kernel_type_converter>` must be registered.
 
-The steps below describe how to implement a generic Shared Interface service that relies on the `Kernel.bind()`_ API.
+As an example the steps below describe how to implement a generic Shared Interface service that relies on the `Kernel.bind()`_ API.
 
 #. Declare the following class in your Kernel
 
@@ -247,9 +247,6 @@ The steps below describe how to implement a generic Shared Interface service tha
    service.use();
 
 .. _Kernel.bind(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#bind-T-java.lang.Class-ej.kf.Feature-
-
-Note that this can also be used for an Application instance of a Kernel type.
-In this case, a :ref:`Converter <kernel_type_converter>` must be defined and the converted instance is returned instead of creating a proxy.
 
 .. _kernel_type_converter:
 
