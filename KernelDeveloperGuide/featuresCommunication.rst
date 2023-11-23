@@ -82,9 +82,8 @@ When getting a service instance from a Feature, the service instance is searched
 #. In the Shared Registry, check for an instance registered (publicly) by the Kernel.
 #. In the Shared Registry, check for an instance registered as a Shared Interface by an other Feature.
 
-If no instance was found an attempt is made to create a new instance of the provided type, assuming it is embedded in the Kernel.
-By default only directly referenced type names in the code are embedded in the Kernel, to explicitely tell the Kernel to embed a type name, a resources file ``types.list`` can be used.
-Learn more about types `here <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
+If no instance was found, an attempt is made to create a new one of the provided type, assuming the type is embedded in the Kernel.
+By default only types referenced directly in the code are embedded in the Kernel. Non-referenced types may be declared as `Required Types <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_ to be embedded in the Kernel.
 
 .. note::
 
@@ -141,9 +140,8 @@ When getting a service instance from the Kernel, the service instance is searche
 #. In the Shared Registry, check for an instance registered by the Kernel.
 #. In the Shared Registry, check for an instance registered as Shared Interface by an other Feature.
 
-If no instance was found an attempt is made to create a new instance of the provided type, assuming it is embedded in the Kernel.
-By default only directly referenced type names in the code are embedded in the Kernel, to explicitely tell the Kernel to embed a type name, a resources file ``types.list`` can be used.
-Learn more about types `here <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
+If no instance was found, an attempt is made to create a new one of the provided type, assuming the type is embedded in the Kernel.
+By default only types referenced directly in the code are embedded in the Kernel. Non-referenced types may be declared as `Required Types <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_ to be embedded in the Kernel.
 
 .. note::
 
