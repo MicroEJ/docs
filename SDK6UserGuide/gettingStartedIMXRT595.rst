@@ -14,6 +14,9 @@ Prerequisites
 
 To follow this Getting Started, all you need is: 
 
+* :guilabel:`Demo-Wearable-VG` MicroEJ Application will be used in this Getting Started. 
+  Please contact `support@microej.com <mailto:support@microej.com?subject=Getting%20Started%20SDK%206%20for%20i.MX%20RT595%20EVK%3A%20Demo-Wearable-VG%20Application&body=Hello%20support%2C%20%0A%0AI%20would%20like%20to%20follow%20the%20SDK%206%20Getting%20Started%20for%20the%20i.MX%20RT595%20EVK.%20%0A%0ACould%20you%20send%20me%20the%20Demo-Wearable-VG%20Application%20code%3F%0A%0ARegards%2C%0A>`__ to get the code for this demo. 
+  It will soon be released publicly.
 * An Internet connection to access Github repositories & MicroEJ Central Repository.
 * i.MX RT595 EVK board, available `here <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt595-evaluation-kit:MIMXRT595-EVK>`__.
 * G1120B0MIPI display panel, available `here <https://www.nxp.com/part/G1120B0MIPI>`__.
@@ -27,13 +30,6 @@ To follow this Getting Started, you need to install:
 * MicroEJ SDK 6.
 * A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP.
 * LinkServer tool to flash the board.
-
-Get Demo-Wearable-VG MicroEJ Application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For this Getting Started, the :guilabel:`Demo-Wearable-VG` MicroEJ Application will be use. 
-Please contact `support@microej.com <support@microej.com>`__ to get the code for this demo.
-It will soon be released publicly.
 
 Install MicroEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
