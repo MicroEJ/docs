@@ -156,6 +156,96 @@ In case the existing KF implementation of Shared Services does not fit your need
 
 Such a registry can be implemented using the `Kernel.bind()`_ KF API to create a proxy for the requesting consumer Application.
 
+The steps below describe how to implement a generic Shared Interface service that relies on the `Kernel.bind()`_ API.
+
+#. Declare the following class in your Kernel
+
+.. code-block:: java
+
+   package com.microej.example;
+
+   import ej.kf.Feature;
+   import ej.kf.Feature.State;
+   import ej.kf.FeatureStateListener;
+   import ej.kf.Kernel;
+   import ej.kf.Module;
+
+   /**
+   * Example of Kernel APIs for registering a generic Shared Interface service.
+   */
+   public class GlobalService {
+
+      private static Object GLOBAL_SERVICE;
+      static {
+         // automatically unregister the global service when the Feature is stopped.
+         Kernel.addFeatureStateListener(new FeatureStateListener() {
+
+            @Override
+            public void stateChanged(Feature feature, State previousState) {
+               synchronized (GlobalService.class) {
+                  if (GLOBAL_SERVICE != null && Kernel.getOwner(GLOBAL_SERVICE) == feature
+                        && previousState == State.STARTED) {
+                     GLOBAL_SERVICE = null;
+                  }
+               }
+            }
+         });
+      }
+
+      /**
+      * Basic API to register a Feature service. <br>
+      * The service is automatically unregistered when the Feature is stopped.
+      *
+      * @param service
+      *            the service being registered. It must implement a shared interface.
+      */
+      public synchronized static void registerService(Object service) {
+         Kernel.enter();
+         GLOBAL_SERVICE = service;
+      }
+
+      /**
+      * Basic API to retrieve a Feature service. <br>
+      *
+      * @param <T>
+      *            the interface type
+      *
+      * @param serviceClass
+      *            the interface of the service being retrieved. It must implement a shared interface.
+      * @return the binded service or <code>null</code> if no registered service
+      */
+      @SuppressWarnings("unchecked")
+      public synchronized static <T> T getService(Class<T> serviceClass) {
+         Module contextOwner = Kernel.getContextOwner();
+         Kernel.enter();
+         if (GLOBAL_SERVICE == null) {
+            return null;
+         }
+         return Kernel.bind((T) GLOBAL_SERVICE, serviceClass, (Feature) contextOwner);
+      }
+   }
+
+#. Declare the following exposed APIs in your ``kernel.api`` file (refer to `Kernel API Definition <https://docs.microej.com/en/latest/KernelDeveloperGuide/kernelAPI.html#kernel-api-definition>`_ for details)
+
+.. code-block:: xml
+
+   <method name="com.microej.example.GlobalService.registerService(java.lang.Object)void" />
+   <method name="com.microej.example.GlobalService.getService(java.lang.Class)java.lang.Object" />
+
+#. Your App1 is ready to register a Shared Interface as a service
+
+.. code-block:: java
+
+   MySharedInterface service = new MySharedInterface();
+   GlobalService.registerService(service);
+
+#. Your App2 is ready to retrieve a Shared Interface as a service
+
+.. code-block:: java
+
+   MySharedInterface service = GlobalService.getService(MySharedInterface.class))
+   service.use();
+
 .. _Kernel.bind(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#bind-T-java.lang.Class-ej.kf.Feature-
 
 Note that this can also be used for an Application instance of a Kernel type.
