@@ -33,7 +33,7 @@ Get Demo-Wearable-VG MicroEJ Application
 
 For this Getting Started, the :guilabel:`Demo-Wearable-VG` MicroEJ Application will be use. 
 Please contact `support@microej.com <support@microej.com>`__ to get the code for this demo.
-It will soon be release publicly.
+It will soon be released publicly.
 
 Install MicroEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
