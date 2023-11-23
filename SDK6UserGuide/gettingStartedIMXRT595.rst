@@ -28,6 +28,13 @@ To follow this Getting Started, you need to install:
 * A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP.
 * LinkServer tool to flash the board.
 
+Get Demo-Wearable-VG MicroEJ Application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For this Getting Started, the :guilabel:`Demo-Wearable-VG` MicroEJ Application will be use. 
+Please contact `support@microej.com <support@microej.com>`__ to get the code for this demo.
+It will soon be release publicly.
+
 Install MicroEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -104,13 +111,6 @@ Once installed, ``LinkServer_xxx/binaries`` folder must be set on your Path. To 
 * Click on the :guilabel:`Environment Variables...` button.
 * Select :guilabel:`Path` variable under the :guilabel:`User variables` section and edit it.
 * Click on :guilabel:`New` and point to the ``binaries`` folder located where you installed LinkServer (e.g. ``nxp/LinkServer_1.2.45/binaries``).
-
-Get Demo-Wearable-VG MicroEJ Application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For this Getting Started, the :guilabel:`Demo-Wearable-VG` MicroEJ Application will be use. You can download it using the following command::
-   
-   git clone xxxxx
 
 Set up the MicroEJ Application on your IDE
 ------------------------------------------
