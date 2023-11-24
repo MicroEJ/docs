@@ -103,6 +103,7 @@ SOAR
 ~~~~
 
 - [Multi] - Fixed integration of the :ref:`bytecode verifier <soar_binary_code_verifier>` in Feature mode.
+- Fixed trimming of leading or trailing spaces in immutable strings
 
 Tools
 ~~~~~
