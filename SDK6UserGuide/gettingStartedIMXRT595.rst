@@ -20,7 +20,6 @@ To follow this Getting Started, all you need is:
 * An Internet connection to access Github repositories & MicroEJ Central Repository.
 * i.MX RT595 EVK board, available `here <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt595-evaluation-kit:MIMXRT595-EVK>`__.
 * G1120B0MIPI display panel, available `here <https://www.nxp.com/part/G1120B0MIPI>`__.
-* `Git <https://git-scm.com/>`__.
 
 Environment Setup
 -----------------
@@ -122,7 +121,7 @@ The first step is to import the :guilabel:`Demo-Wearable-VG` MicroEJ Application
 
 
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
-* Select the ``Demo-Wearable-VG`` directory located where you clone the git repository and click on the :guilabel:`OK` button.
+* Select the ``Demo-Wearable-VG`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
       .. figure:: images/getting-started-import-demo-application.png
          :alt: Import demo application
