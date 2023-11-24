@@ -6,7 +6,6 @@ Installation
 This chapter will guide you through the installation process of the SDK on your workstation.
 First check the System Requirements before proceeding.
 
-
 .. _sdk_6_system_requirements:
 
 System Requirements
