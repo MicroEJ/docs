@@ -51,7 +51,9 @@ This Architecture version update introduces the following main features:
     - Added the VEE Port option ``com.microej.runtime.capability``
     - Removed the ``Multi Applications`` module from the platform configuration file
     - Value of the ``BON`` constant ``com.microej.architecture.capability`` is now ``mono`` instead of ``single`` when the Core Engine capability is Mono-Sandbox.
-  
+
+- Support of THALES Sentinel License Manager
+ 
 If you plan to migrate a VEE Port from Architecture ``8.0.0`` to Architecture ``8.1.0``, consider the :ref:`architecture8_migration` chapter.
 
 Core Engine
