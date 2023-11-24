@@ -70,6 +70,7 @@ Core Engine
 - [Multi] - Updated the specifications for ``LLKERNEL_IMPL_getFeatureAddressRAM()`` and ``LLKERNEL_IMPL_getFeatureAddressROM()`` functions to return ``NULL`` when an incorrect index is provided.
   This change is only for ``LLKERNEL`` TCK purposes, as the Core Engine only invokes these methods with valid indices.
 - [Multi] - Added an option to enable :ref:`RAM Control <multisandbox_ram_control>` at VEE Port build (disabled by default).
+- Fixed missing default initialization of the options :ref:`core.memory.javaheap.size <option_java_heap>` and :ref:`core.memory.immortal.size <option_immortal_heap>`.
 
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
