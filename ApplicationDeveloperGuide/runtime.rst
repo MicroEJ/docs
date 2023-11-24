@@ -61,13 +61,22 @@ It defines all default API packages:
 
 **Use**
 
-The `EDC API Module`_ must 
-be added to the :ref:`module.ivy <mmm_module_description>` of the Application 
-Project:
+The `EDC API Module`_ must be added to the project build file of the Application Project:
 
-::
+.. tabs::
 
-   <dependency org="ej.api" name="edc" rev="1.3.5"/>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("ej.api:edc:1.3.5")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="edc" rev="1.3.5"/>
+
 
 .. _EDC API Module: https://repository.microej.com/modules/ej/api/edc/
 
@@ -105,12 +114,23 @@ allows:
  
 **Use**
 
-Add the following dependency to the :ref:`module.ivy <mmm_module_description>` of the Application 
+Add the following dependency to the project build file of the Application 
 Project to use the `BON API Module`_:
 
-::
+.. tabs::
 
-   <dependency org="ej.api" name="bon" rev="1.4.2"/>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("ej.api:edc:1.3.5")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="edc" rev="1.3.5"/>
+
 
 .. _BON API Module: https://repository.microej.com/modules/ej/api/bon/
 
