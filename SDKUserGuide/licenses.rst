@@ -600,7 +600,7 @@ Activate Your Product
 ~~~~~~~~~~~~~~~~~~~~~
 
 Setup Your Environment
-""""""""""""""""""
+""""""""""""""""""""""
 
 **Windows**
 
