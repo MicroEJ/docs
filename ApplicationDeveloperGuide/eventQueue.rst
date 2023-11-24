@@ -369,7 +369,7 @@ Mock the Event Queue
 
 To simulate event that are normally sent through the C API, use the Event Queue Mock API from your mock.
 
-The Event Queue Mock API dependency must be added to the :ref:`module.ivy <mmm_module_description>` of your MicroEJ Mock project.
+The Event Queue Mock API dependency must be added to the project build file of your MicroEJ Mock project.
 
 .. code-block:: xml
 
@@ -393,12 +393,22 @@ Example of use:
 Use
 ===
 
-The `Event Queue API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ 
+The `Event Queue API Module`_ must be added to the project build file of the MicroEJ 
 Application project to use the Event Queue Foundation Library.
 
-.. code-block:: xml
+.. tabs::
 
-   <dependency org="ej.api" name="event" rev="2.0.0"/>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.library.eclasspath:event:2.0.0")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.library.eclasspath" name="event" rev="2.0.0"/>
 
 To use this API, your VEE Port must implement a compatible version. 
 Please refer to the :ref:`VEE Porting Guide <pack_event>` to port the Event Queue for your project.
