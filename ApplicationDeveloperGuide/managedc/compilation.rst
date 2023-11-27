@@ -27,11 +27,11 @@ For a comprehensive understanding of command line options, please consult the of
 
 Here are some useful options:
 
-* **-nostdlib**: Omits the standard library.
-* **-Wl,--no-entry**: Specifies no entry point for the WebAssembly module.
-* **-Wl,--export=foo**: Exports a symbol named 'foo'.
-* **-Wl,--global-base=n**: Sets the global base to 'n'.
-* **-z stack-size=n**: Adjusts the stack size to 'n'.
+* ``-nostdlib``: Omits the standard library.
+* ``-Wl,--no-entry``: Specifies no entry point for the WebAssembly module.
+* ``-Wl,--export=foo``: Exports a symbol named 'foo'.
+* ``-Wl,--global-base=n``: Sets the global base to 'n'.
+* ``-z stack-size=n``: Adjusts the stack size to 'n'.
 
 
 ..
