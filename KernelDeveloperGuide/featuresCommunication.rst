@@ -34,7 +34,7 @@ Security policies can be implemented to restrict the usage of certain services b
 
 .. note::
 
-   The following sections relate to the existing KF implementation of the `ej.Service library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/service/package-summary.html>`_ available in the `KF-Util module <https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/library/util/kf-util/>`_ ; you can however do your own custom implementation depending as needed.
+   The following sections relate to the existing `KF implementation <https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/service/ServiceRegistryKF.html>`_ of the `ej.Service library <https://repository.microej.com/javadoc/microej_5.x/apis/ej/service/package-summary.html>`_ available in the `KF-Util module <https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/package-summary.html>`_ ; you can however do your own custom implementation depending as needed.
 
 Communication between Features
 ------------------------------
@@ -109,7 +109,7 @@ You can use the generic `ej.Service API <https://repository.microej.com/javadoc/
 
    ServiceFactory.register(MyInterface.class,myInterface) //accessible within the Kernel context only
 
-Or you can specify in which registry the Kernel should register the service by using the ``ServiceRegistryKF`` API from the ``KF-Util`` as depicted below.
+Or you can specify in which registry the Kernel should register the service by using the `ServiceRegistryKF <https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/service/ServiceRegistryKF.html>` API from the `KF-Util module <https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/package-summary.html>`_ as depicted below.
 
 .. ::
     ServiceRegistryKF serviceRegistryKF = (ServiceRegistryKF) ServiceFactory.getServiceRegistry();

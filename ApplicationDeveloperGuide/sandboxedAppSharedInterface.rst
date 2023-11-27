@@ -176,7 +176,7 @@ example:
        }
    };
 
-In order to share the instance with other applications, the provider application must register the instance with some registry owned by the Kernel (see :ref:`Communication between Kernel and Feature <kernel_service_registry>` for details). For example, using the ``ServiceRegistry``:
+In order to share the instance with other applications, the provider application must register the instance with some registry owned by the Kernel (see :ref:`Communication between Kernel and Feature <kernel_service_registry>` for details) like so:
 
 .. code:: java
 
@@ -185,15 +185,14 @@ In order to share the instance with other applications, the provider application
 Retrieve and Use a Proxy of a Shared Interface Instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The consumer application can then retrieve the instance from the Kernel
-registry. For example, using the ``ServiceRegistry``:
+The consumer application can then retrieve the instance from the Kernel registry like so:
 
 .. code:: java
 
    MyInterface otherAppInstance = ServiceFactory.getServiceRegistry().getService(MyInterface.class);
    // otherAppInstance is actually an instance of the proxy class owned by the consumer application
 
-And it can call the interface methods transparently. For example:
+Then it can call the interface methods transparently:
 
 .. code:: java
 
