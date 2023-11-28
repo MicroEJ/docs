@@ -71,6 +71,7 @@ Core Engine
   This change is only for ``LLKERNEL`` TCK purposes, as the Core Engine only invokes these methods with valid indices.
 - [Multi] - Added an option to enable :ref:`RAM Control <multisandbox_ram_control>` at VEE Port build (disabled by default).
 - Fixed missing default initialization of the options :ref:`core.memory.javaheap.size <option_java_heap>` and :ref:`core.memory.immortal.size <option_immortal_heap>`.
+- [Multi] - Fixed missing default initialization of the option :ref:`com.microej.runtime.kf.waitstop.delay <option_feature_stop_timeout>` when using KF in a Mono-Sandbox environment.
 
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
