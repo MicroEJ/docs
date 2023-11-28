@@ -8,7 +8,7 @@ Principle
 =========
 
 When the Executable of an Application is built, a Memory Map file is generated. 
-This file can be visualized with the The Memory Map Analyzer, an Eclipse IDE plug-in. 
+This file can be visualized with the Memory Map Analyzer, an Eclipse IDE plug-in. 
 It displays the memory consumption of different features in the RAM and ROM.
 
 .. figure:: images/mma_process.png

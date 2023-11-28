@@ -37,28 +37,10 @@ Eclipse IDE tools are graphical tools which are available as Eclipse plugins: Me
 Follow these steps to install the latest stable version of these tools:
             
          - Install `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/release/2022-09/r/eclipse-ide-java-developers>`__ - Minimum supported version is ``2022-03``.
-         - In Eclipse, go to :guilabel:`Help` > :guilabel:`Install New Software...`.
-         - Click on the :guilabel:`Add...` button.
-         - Type ``MicroEJ Tools`` in the :guilabel:`Name` field and ``https://repository.microej.com/p2/sdk/`` in the :guilabel:`Location` field:
-
-         .. figure:: images/eclipse-add-microej-tools-site.png
-            :alt: Eclipse MicroEJ Tools Plugin Installation - Add Update Site
-            :align: center
-            :scale: 70%
-         
-            Eclipse MicroEJ Tools Plugin Installation - Add Update Site
-
-         - Click on the :guilabel:`Add` button.
-         - Check the ``MicroEJ SDK`` item and click on the :guilabel:`Next` button:
-
-         .. figure:: images/eclipse-select-microej-tools-plugin.png
-            :alt: Eclipse MicroEJ Tools Plugin Installation - Select Plugin
-            :align: center
-            :scale: 70%     
-
-            Eclipse MicroEJ Tools Plugin Installation - Select Plugin
-            
-         - Click on the :guilabel:`Finish` button.
+         - In Eclipse, go to :guilabel:`Help` > :guilabel:`Eclipse Marketplace...`.
+         - In the :guilabel:`Find` field, type ``MicroEJ Tools``, then press ``Enter``.
+         - Click on the :guilabel:`Install` button of the ``MicroEJ Tools`` plugin.
+         - Accept the license, then click on the :guilabel:`Finish` button.
          - In the upcoming :guilabel:`Trust Artifacts` window, check the :guilabel:`Unsigned` item and click on :guilabel:`Trust Selected` button.
             
          .. figure:: images/eclipse-trust-microej-tools-plugin.png

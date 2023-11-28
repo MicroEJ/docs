@@ -103,10 +103,39 @@ In order to generate a Heap dump of an Application running on a device:
 
 When the Application is executed on the device and the ``System.gc()`` method is called, 
 a Heap dump is performed and stored in the device memory.
-You must then extract it:
+You then have to:
 
-- Retrieve the ``.hex`` from the device.
-- Run the ``execTool`` Gradle task with the tool name ``heapDumperPlatform`` to extract the Heap dump from the ``.hex`` file:
+- :ref:`Retrieve the hex file from the device <sdk6_heapdumper_get_hex>`
+- :ref:`Extract the Heap dump from the hex file <sdk6_heapdumper_extract_heap>`
+
+.. _sdk6_heapdumper_get_hex:
+
+Retrieve the ``.hex`` file from the device
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Retrieving the ``.hex`` file from the device can be done with Eclipse CDT and GDB:
+
+- Run your debug configuration.
+- Open the ``Disassembly`` view.
+- Type ``LLMJVM_on_Runtime_gc_done`` in location field.
+- Add a breakpoint by double-clicking on the first line.
+- Resume execution until the debugger stops on the breakpoint.
+- Open your debug configuration and copy the host name and the port in the `Debugger` tab.
+- Run a GDB console.
+- Connect to the GDB server, for example: ``target remote localhost:2331``.
+- Dump the memory of the Java heap section by executing the following command line::
+   
+   dump ihex memory heap.hex &_java_heap_start &_java_heap_end
+
+You now have the ``.hex`` file and need to extract the Heap dump.
+
+.. _sdk6_heapdumper_extract_heap:
+
+Extract the Heap dump from the ``.hex`` file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to extract the Heap dump from an ``.hex`` file,
+run the ``execTool`` Gradle task with the tool name ``heapDumperPlatform``:
 
 .. code:: console
 
@@ -116,58 +145,31 @@ You must then extract it:
       --toolProperty="additional.application.files=" \
       --console plain
 
-You can find the list of available options below.
+You can find the list of available options below:
 
-Option: Executable file
-~~~~~~~~~~~~~~~~~~~~~~~
+.. list-table::
+   :widths: 1 5 3
+   :header-rows: 1
 
-*Option Name*: ``application.file``
-
-*Description*:
-
-Specify the full path of a full linked ELF file.
-
-Option: Feature files
-~~~~~~~~~~~~~~~~~~~~~
-
-*Option Name*: ``additional.application.filenames``
-
-*Default value*: ``(empty)``
-
-*Description*:
-
-Specify the full path of Feature files with debug information (``.fodbg`` files).
-
-Option: Heap memory file
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-*Option Name*: ``heap.filename``
-
-*Default value*: ``(empty)``
-
-*Description*:
-
-Specify the full path of heap memory dump, in Intel Hex format.
-
-Option: Memory files
-~~~~~~~~~~~~~~~~~~~~
-
-*Option Name*: ``additional.memory.filenames``
-
-*Default value*: ``(empty)``
-
-*Description*:
-
-Specify the full path of additional memory files in Intel Hex format (Installed Feature areas,
-Dynamic Features table, ...).
-
-Option: Heap file name
-~~~~~~~~~~~~~~~~~~~~~~
-
-*Option Name*: ``output.name``
-
-*Default value*: ``application.heap``
-
+   * - Name
+     - Description
+     - Default
+   * - ``application.file``
+     - Specify the full path of the Executable file, a full linked ELF file.
+     - Not set
+   * - ``additional.application.filenames``
+     - Specify the full path of Feature files with debug information (``.fodbg`` files).
+     - Not set
+   * - ``heap.filename``
+     - Specify the full path of heap memory dump, in Intel Hex format.
+     - Not set
+   * - ``additional.memory.filenames``
+     - Specify the full path of additional memory files in Intel Hex format (Installed Feature areas,
+       Dynamic Features table, ...).
+     - Not set
+   * - ``output.name``
+     - Name of the extracted Heap dump file.
+     - ``application.heap``
 
 Heap Viewer
 -----------
