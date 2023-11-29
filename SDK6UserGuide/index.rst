@@ -65,6 +65,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk6_
    migrateMMMProject
    moduleNatures
    troubleshooting
+   tutorials/index
    howtos/index
    appendix/index
    sdk6ChangeLog
