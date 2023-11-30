@@ -121,81 +121,48 @@ This chapter explains the different ways to create a new project.
       The creation of a project with IntelliJ IDEA is done as follows:
       
       - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
+      - Select :guilabel:`MicroEJ` in :guilabel:`Generators` list on the left panel.
       - Fill the name of the project in the :guilabel:`Name` field.
       - Select the location of the project in the :guilabel:`Location` field.
-      - Select the language :guilabel:`Java` in the :guilabel:`Language` field.
-      - Select :guilabel:`Gradle` for the :guilabel:`Build system` field.
-      - Select build script DSL :guilabel:`Kotlin`.
-      
-      .. note::
-        MicroEJ uses Kotlin as the default Gradle build script DSL. 
-        The use of the Groovy build script DSL is still possible but not officially supported.
-      
+      - Select the module type among :guilabel:`Application`, :guilabel:`Addon-Library` and :guilabel:`J2SE Library` buttons.
+      - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
+      - Fill the version of the artifact to publish in the :guilabel:`Version` field.
+      - Fill the group of the artifact to publish in the :guilabel:`Group` field.
+      - Fill the name of the artifact to publish in the :guilabel:`Artifact` field.
+      - Select the JVM used by Gradle in the :guilabel:`JDK` combobox.
       - Check the :guilabel:`Add sample code` checkbox.
       - Click on :guilabel:`Create` button.
       
-      .. figure:: images/intellij-create-gradle-project.png
+      .. figure:: images/intellij-create-microej-project.png
          :alt: Project Creation in IntelliJ IDEA
          :align: center
          :scale: 70%
       
          Project Creation in IntelliJ IDEA
-      
-      The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensure that the project uses the right version :
-      
-      - Open the ``gradle/wrapper/gradle-wrapper.properties`` file.
-      - Update the Gradle version if it is needed:
-      
-         .. code-block::
-          
-            distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
-      
-      If you want to know more about the Gradle Wrapper, go to the :ref:`sdk_6_create_project_gradle_wrapper` section.
-        
-      The project created by IntelliJ IDEA is a standard Java project (Gradle ``java`` plugin). 
-      The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
-      
-      - Open the ``build.gradle.kts`` file.
-      - Erase its whole content.
-      - :ref:`Configure the project <sdk_6_create_project_configure_project>` depending on the module nature you want to build.
-      - Declare the dependencies required by your project in the ``dependencies`` block. For example::
-      
-            dependencies {
-                implementation("ej.api:edc:1.3.5")
-            }
-      
+
+      .. note::
+         The Gradle project created by the wizard uses Gradle Wrapper with Gradle version ``8.5``.
+         Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
+
       .. note::
          By default, IntelliJ IDEA automatically saves any file change, 
          but requires the user to explicitly trigger the reload of a Gradle project when its configuration has changed.
          Therefore, when the configuration of a Gradle project has been updated, 
          you have to click on the reload icon button which appears on the right of the editor:
-      
+
          .. figure:: images/intellij-reload-gradle-project.png
             :alt: Gradle Project reload in IntelliJ IDEA
             :align: center
             :scale: 70%
-      
+
             Gradle Project reload in IntelliJ IDEA
-        
+
          You can also configure IntelliJ IDEA to automatically reload a Gradle project after a change.
          Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
 
-      When the Gradle project has been reloaded, it should compile successfully, without any error.
+      When the Gradle project is loaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
       or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
-      
-      .. note::
-         A message ``Project JDK is not defined`` is displayed at the top of the editor.
-         This message can be ignored.
-         It warns that the project does not have a JDK defined, which is expected since a MicroEJ project does not rely on a standard JDK.
-      
-         .. figure:: images/intellij-project-sdk-message.png
-            :alt: Project JDK message in IntelliJ IDEA
-            :align: center
-            :scale: 70%
-      
-            Project JDK message in IntelliJ IDEA
-
 
    .. tab:: Eclipse
 
