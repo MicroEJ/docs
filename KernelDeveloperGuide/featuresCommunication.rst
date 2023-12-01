@@ -82,14 +82,19 @@ When getting a service instance from a Feature, the service instance is searched
 #. In the Shared Registry, check for an instance registered (publicly) by the Kernel.
 #. In the Shared Registry, check for an instance registered as a Shared Interface by an other Feature.
 
-If no instance was found, an attempt is made to create a new one of the provided type (possibly specified through properties), assuming the type is embedded in the Kernel.
-By default only types referenced directly in the code are embedded in the Kernel. Non-referenced types may be declared as `Required Types <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_ to be embedded in the Kernel.
+If no instance was found, an attempt is made to create a new instance of the provided type from a :ref:`System Property <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#system-properties>`.
+
+This property binds the service type (the property key) to the actual service implementation type (the property value) that will be used for instantiation.
+
+For example, in order to allow an instance of the ``ej.bon.Timer`` service to be created automatically if not present, the following property must be set:
+
+.. code-block:: properties
+
+ej.bon.Timer=ej.bon.Timer
 
 .. note::
 
-   In a Multi-Sandbox context, the only module capable of declaring types is the Kernel therefore a type belonging to a Feature cannot be instantiated this way.
-   An alternative way to embed type names not referenced by the Kernel is to set property `soar.generate.classnames <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/applicationOptions.html#group-types>`_.
-   Note that it can have an impact on the footprint of the Kernel as all types will be embedded.
+   Both the service type and the implementation type must be accessible to the Kernel. Therefore these types shall be either types directly referenced by the Kernel or types be declared as `Required Types <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
 
 .. _kernel_service_registry:
 
@@ -140,14 +145,19 @@ When getting a service instance from the Kernel, the service instance is searche
 #. In the Shared Registry, check for an instance registered by the Kernel.
 #. In the Shared Registry, check for an instance registered as Shared Interface by an other Feature.
 
-If no instance was found, an attempt is made to create a new one of the provided type (possibly specified through properties), assuming the type is embedded in the Kernel.
-By default only types referenced directly in the code are embedded in the Kernel. Non-referenced types may be declared as `Required Types <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_ to be embedded in the Kernel.
+If no instance was found, an attempt is made to create a new instance of the provided type from a :ref:`System Property <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#system-properties>`.
+
+This property binds the service type (the property key) to the actual service implementation type (the property value) that will be used for instantiation.
+
+For example, in order to allow an instance of the ``ej.bon.Timer`` service to be created automatically if not present, the following property must be set:
+
+.. code-block:: properties
+
+ej.bon.Timer=ej.bon.Timer
 
 .. note::
 
-   In a Multi-Sandbox context, the only module capable of declaring types is the Kernel therefore a type belonging to a Feature cannot be instantiated this way.
-   An alternative way to embed type names not referenced by the Kernel is to set property `soar.generate.classnames <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/applicationOptions.html#group-types>`_.
-   Note that it can have an impact on the footprint of the Kernel as all types will be embedded.
+   Both the service type and the implementation type must be accessible to the Kernel. Therefore these types shall be either types directly referenced by the Kernel or types be declared as `Required Types <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
 
 Implement a Registry
 --------------------
