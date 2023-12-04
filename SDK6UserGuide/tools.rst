@@ -36,7 +36,7 @@ Eclipse IDE tools are graphical tools which are available as Eclipse plugins: Me
 
 Follow these steps to install the latest stable version of these tools:
             
-         - Install `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/release/2022-09/r/eclipse-ide-java-developers>`__ - Minimum supported version is ``2022-03``.
+         - Install `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/>`__ - Minimum supported version is ``2022-03``.
          - In Eclipse, go to :guilabel:`Help` > :guilabel:`Eclipse Marketplace...`.
          - In the :guilabel:`Find` field, type ``MicroEJ Tools``, then press ``Enter``.
          - Click on the :guilabel:`Install` button of the ``MicroEJ Tools`` plugin.

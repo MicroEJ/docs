@@ -41,7 +41,49 @@ This can be configured by adding the following line in the ``settings.gradle.kts
 
 The path given to the ``includeBuild`` method is the relative path of the project to include.
 
+.. warning::
+   The ``includeBuild`` method should be used to declare a dependency between two autonomous projects.
+   To declare a dependency between two subprojects of a multi-project, a `Project dependency <https://docs.gradle.org/current/userguide/declaring_dependencies.html#sub:project_dependencies>`__ must be used.
+   Refer to the :ref:`sdk6_multiproject_dependencies` section for more information.
+
 Refer to the `Official Gradle documentation on the Composite Build feature <https://docs.gradle.org/current/userguide/composite_builds.html>`__ for more details.
+
+.. _sdk6_multiproject_dependencies:
+
+Dependencies Between Subprojects of a Multi-Project
+---------------------------------------------------
+
+Gradle allows to declare dependencies between subprojects of a `multi-project build <https://docs.gradle.org/current/userguide/multi_project_builds.html>`__ 
+by declaring a `Project dependency <https://docs.gradle.org/current/userguide/declaring_dependencies.html#sub:project_dependencies>`__.
+
+For example, if you have a multi-project named ``myProject`` composed of two subprojects ``myApplication`` and ``myLibrary``:
+
+.. code-block::
+
+   |- myProject
+   |   |- myApplication
+   |   |   |- src
+   |   |   |- build.gradle.kts
+   |   |   |- settings.gradle.kts
+   |   |- myLibrary
+   |   |   |- src
+   |   |   |- build.gradle.kts
+   |   |   |- settings.gradle.kts
+   |   |- settings.gradle.kts
+
+You can declare a Project dependency in the ``build.gradle.kts`` file of the ``myApplication`` subproject to 
+make it depend on the ``myLibrary`` subproject::
+
+   dependencies {
+      implementation(project(":myLibrary"))
+   }
+
+When building the ``myApplication`` subproject, the ``myLibrary`` subproject is also rebuilt if it has been changed,
+so contrary to a Module dependency (e.g. ``implementation("com.mycompany:myLibrary:1.0.0")``), 
+you don't have to manually build and publish it, and then refresh dependencies on the ``myApplication`` project to get the update.
+
+Refer to the `Official Gradle documentation about the different kinds of dependencies <https://docs.gradle.org/current/userguide/declaring_dependencies.html#sec:dependency-types>`__ 
+for more details.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
