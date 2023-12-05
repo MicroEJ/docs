@@ -1,18 +1,35 @@
-.. _application_options:
+.. _standalone_application:
 
-Standalone Application Options
-##############################
+Standalone Application
+######################
 
 Introduction
 ============
 
+A Standalone Application is a Java Application directly linked to the C code to produce an Executable.
+Such an application must define a main entry point (i.e., a class containing a ``public static void main(String[])`` method).
+
+The following figure shows the general process of building a Standalone Application to an Executable.
+
+.. figure:: images/link_executable.png
+   :alt: Standalone Application Link Flow
+   :align: center
+   :scale: 80%
+
+   Standalone Application Link Flow
+
+.. _application_options:
+
+Standalone Application Options
+==============================
+
 To run a Standalone Application on a VEE Port, a set of options
 must be defined. Options can be of different types:
 
-- Memory Allocation options (e.g set the Java Heap size). These options are usually called link-time options.
-- Simulator & Debug options (e.g. enable periodic Java Heap dump).
-- Deployment options (e.g. copy ``microejapp.o`` to a suitable BSP location).
-- Foundation Library specific options (e.g. embed UTF-8 encoding).
+- Memory Allocation options (e.g., set the Java Heap size). These options are usually called link-time options.
+- Simulator & Debug options (e.g., enable periodic Java Heap dump).
+- Deployment options (e.g., copy ``microejapp.o`` to a suitable BSP location).
+- Foundation Library specific options (e.g., embed UTF-8 encoding).
 
 The following section describes options provided by the latest Architecture version.
 Please consult the appropriate Pack(s) documentation for options related to other Foundation Libraries (MicroUI, NET, SSL, FS, ...) integrated to your VEE Port.
