@@ -19,7 +19,7 @@ The Application development flow requires the following elements:
   A Virtual Device will simulate all capabilities of the corresponding hardware board:
 
   - Computation and Memory
-  - Communication channels (e.g. Network, USB ...)
+  - Communication channels (e.g., Network, USB ...)
   - Display
   - User interaction
 
