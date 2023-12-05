@@ -109,7 +109,7 @@ The three following IDEs are supported:
 
 - `Android Studio <https://developer.android.com/studio>`__ - Minimum supported version is ``Bumblebee - 2021.1.1``.
 - `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ (Community or Ultimate edition) - Minimum supported version is ``2021.2``.
-- `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/release/2022-09/r/eclipse-ide-java-developers>`__ - Minimum supported version is ``2022-03``.
+- `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/>`__ - Minimum supported version is ``2022-03``.
 
 Follow their respective documentation to install one of them.
 
