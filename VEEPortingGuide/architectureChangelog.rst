@@ -58,6 +58,7 @@ Core Engine
 ~~~~~~~~~~~
 
 - Added option :ref:`com.microej.runtime.core.gc.markstack.levels.max <option_gc_stack_size>` to configure the maximum number of elements of the Garbage Collector's mark stack.
+- In ``sni.h``, clarified the behavior of ``SNI_createVM()``, ``SNI_startVM()``, and ``SNI_destroyVM()`` when restarting the Core Engine. See also the :ref:`Core Engine implementation <core_engine_implementation>` section.
 - [Multi] - Added a check when ``LLKERNEL_IMPL_getFeatureHandle()`` returns ``0``. Corresponding error code is ``LLKERNEL_FEATURE_INIT_ERROR_NULL_HANDLE``.
 - [Multi] - Removed Feature installation in RAM (legacy :ref:`In-Place Installation mode <feature_inplace_installation>`). See :ref:`architecture8_migration_llkernel`.
 - [Multi] - Updated :ref:`Feature installation boot sequence <feature_persistency>`: all Feature handles are now retrieved prior to initializing them.
