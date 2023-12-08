@@ -95,7 +95,7 @@ Here is an example:
       package com.microej.managedc;
 
       import com.microej.managedc.ManagedCFunction;
-      import com.microej.managedc.ManagedCMemory;
+      import com.microej.managedc.ManagedCModule;
 
       @ManagedCModule("my_app.mc")
       public class ManagedCUtil {
