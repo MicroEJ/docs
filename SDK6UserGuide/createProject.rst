@@ -112,6 +112,11 @@ This chapter explains the different ways to create a new project.
          You can also configure Android Studio to automatically reload a Gradle project after a change.
          Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
       
+      .. warning::
+       When reloading your Gradle project, the build can fail if the SDK EULA has not been accepted.
+       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES`` and
+       restart Android Studio. For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
+
       When the Gradle project has been reloaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
       or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
@@ -159,6 +164,11 @@ This chapter explains the different ways to create a new project.
 
          You can also configure IntelliJ IDEA to automatically reload a Gradle project after a change.
          Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
+      
+      .. warning::
+       When reloading your Gradle project, the build can fail if the SDK EULA has not been accepted.
+       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES`` and
+       restart IntelliJ IDEA. For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
 
       When the Gradle project is loaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
@@ -254,6 +264,11 @@ This chapter explains the different ways to create a new project.
         
          You can also configure Eclipse to automatically reload a Gradle project after a change.
          Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
+      
+      .. warning::
+       When reloading your Gradle project, the build can fail if the SDK EULA has not been accepted.
+       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES`` and
+       restart Eclipse. For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
       
       When the Gradle project has been reloaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
@@ -400,7 +415,6 @@ J2SE Library Project
     The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
 
 Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
-
 
 .. _sdk_6_create_project_gradle_wrapper:
 

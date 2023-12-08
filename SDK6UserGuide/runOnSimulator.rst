@@ -41,7 +41,6 @@ Once these prerequisites are fulfilled, the Application can be started with the 
       
           $ ./gradlew runOnSimulator
 
-
 With a simple Hello World Application, the output should be::
 
    =============== [ Initialization Stage ] ===============
@@ -52,6 +51,13 @@ With a simple Hello World Application, the output should be::
    =============== [ Completed Successfully ] ===============
    
    SUCCESS
+
+.. warning::
+   The execution of the ``runOnSimulator`` task can fail if the SDK EULA has not been accepted.
+   In that case, you can set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES`` and
+   restart your IDE or you can define the ``accept-microej-sdk-eula-v3-1b`` System property 
+   by creating a :ref:`custom configuration <sdk_6_howto_create_custom_configuration_in_ide>`. 
+   For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
 
 Verbose Mode
 ------------
