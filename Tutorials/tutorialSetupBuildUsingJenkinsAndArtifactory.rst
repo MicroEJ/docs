@@ -258,7 +258,7 @@ Upload to your Git repository
 #. Open last directoy and copy this file at root:
 
 .. literalinclude:: resources/Jenkinsfile
-    :language: json
+    :language: groovy
 
 #. Create a directory named ``ivy`` and copy this file inside: 
 
