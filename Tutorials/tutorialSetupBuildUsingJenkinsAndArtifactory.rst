@@ -49,7 +49,7 @@ Prerequisites
 
 *  `MicroEJ SDK 5 <https://docs.microej.com/en/latest/SDKUserGuide/>`_ ``5.8.1`` or higher.
 *  `Docker and Docker Compose V2 <https://docs.docker.com/>`_ on Linux, Windows or Mac
-*  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://git-for-windows.github.io/>`_).
+*  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://gitforwindows.org/>`_).
 
 This tutorial was tested with Jenkins ``2.426.1``, Artifactory ``7.71.5`` and Gitea ``1.21.1``.
 
