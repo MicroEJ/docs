@@ -85,10 +85,8 @@ to activate an Evaluation license on the MicroEJ Licenses Server. The machine UI
 Get your Machine UID
 ~~~~~~~~~~~~~~~~~~~~
 
-Retrieving the machine UID depends on the kind of VEE Port being evaluated.
-
 If your VEE Port is :ref:`defined <sdk_6_select_veeport>` in the ``build.gradle.kts`` of your project,
-the machine UID will be displayed when building an :ref:`Application containing a Java main class on device <sdk_6_run_on_device>`.
+the machine UID will be displayed when building an :ref:`Executable <sdk_6_build_executable>`.
 
 .. code-block:: console
    :emphasize-lines: 1
