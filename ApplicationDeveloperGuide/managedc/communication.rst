@@ -69,8 +69,9 @@ C compiler option (see :ref:`managedc.compilation.command_line_options` ). No ne
 in that case. Java type resolution will look at the ``@ManagedCModule`` declarations in Java source code to find the Java class 
 containing the Java static method. A SOAR error will be triggered if no Java method found.
 
+.. _managedc.communication.managedc_to_java:
 
-Calling C from Managed Java
+Calling Managed C from Java
 ---------------------------
 
 The MicroEJ Core Engine allows to expose C functions to Java. C functions has to be declared as global function (intern C function 
