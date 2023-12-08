@@ -64,7 +64,6 @@ The next sections describe step by step how to setup the build environment and b
 The steps to follow are:
 
 #. Run and setup Jenkins, Artifactory and Gitea
-#. Create a Jenkins job template for MMM builds
 #. Create a simple MicroEJ module (Hello World)
 #. Create a new Jenkins job for the Hello World module
 #. Build the module
@@ -83,7 +82,7 @@ Prepare your Docker environment
 
 This section assumes the prerequisites have been properly installed.
 
-#. In a directory copy these two files: 
+#. In a new directory copy these two files: 
 
 .. literalinclude:: resources/docker-compose.yaml
     :language: yaml
