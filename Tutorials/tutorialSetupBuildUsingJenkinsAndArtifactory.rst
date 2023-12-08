@@ -294,7 +294,7 @@ This file configures MicroEJ Module Manager to import and publish modules from t
       git checkout -b main
       git add *
       git commit -m "Add Hello World application"
-      git remote add origin http://127.0.0.1:3000/<admin_user>/helloworld.git
+      git remote add origin http://localhost:3000/<admin_user>/helloworld.git
       git push -u origin main
 
 Create a New Jenkins Job
