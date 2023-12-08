@@ -46,7 +46,7 @@ Only a limited set of `WebAssembly instructions <https://www.w3.org/TR/wasm-core
 * local.tee
 * loop
 * return
-
+* call
 
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
