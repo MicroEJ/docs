@@ -20,9 +20,7 @@ WebAssembly stack memory manipulations are currently unsupported.
 Unsupported WebAssembly Functionalities
 ---------------------------------------
 
-- Only one function per WebAssembly module is supported.
-- C functions are only permitted to call themselves (recursive functions are supported).
-- WebAssembly globals, memory, tables, and elements are currently unsupported.
+- WebAssembly globals, tables, and elements are currently unsupported.
 
 Supported WebAssembly Instructions
 ------------------------------------
