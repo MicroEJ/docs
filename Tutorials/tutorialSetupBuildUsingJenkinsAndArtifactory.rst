@@ -182,7 +182,7 @@ Install Gitea
 #. Follow the installation wizard, the first created user become the administrator.
 
 Configure Gitea
------------
+---------------
 
 #. At the top right click on the arrow then :guilabel:`New Repository`
 #. As :guilabel:`Repository Name` set ``helloworld``, leave the other options as default.
