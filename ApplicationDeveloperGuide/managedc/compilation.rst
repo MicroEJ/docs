@@ -12,13 +12,13 @@ Please download the `wasi-sdk 20 or higher <https://github.com/WebAssembly/wasi-
 Compile a simple C file
 -----------------------
 
-Let's assume we have a file named ``factorial.c`` in the folder ``src/main/c``.
+Let's assume we have a file named ``my_app.c`` in the folder ``src/main/c``.
 
 In the terminal, navigate to the ``src/main/c`` directory and execute the following command:
 
 .. code:: console
 
-    clang -Wl,--no-entry -Wl,--export=factorial -Wl,--export=__heap_base -Wl,--export=__data_end -Wl,--global-base=0 -z stack-size=2048 -nostdlib -O3 factorial.c -o factorial.wasm
+    clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -nostdlib -O3 my_app.c -o my_app.wasm
 
 Command Line Options
 --------------------
@@ -30,6 +30,8 @@ Here are some useful options:
 * ``-nostdlib``: Omits the standard library.
 * ``-Wl,--no-entry``: Specifies no entry point for the WebAssembly module.
 * ``-Wl,--export=foo``: Exports a symbol named 'foo'.
+* ``-Wl,--export-all``: Exports all symbols.
+* ``-Wl,--allow-undefined``: Allow undefined symbols.
 * ``-Wl,--global-base=n``: Sets the global base to 'n'.
 * ``-z stack-size=n``: Adjusts the stack size to 'n'.
 
