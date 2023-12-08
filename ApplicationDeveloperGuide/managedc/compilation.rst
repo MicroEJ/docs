@@ -20,6 +20,8 @@ In the terminal, navigate to the ``src/main/c`` directory and execute the follow
 
     clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -nostdlib -O3 my_app.c -o my_app.wasm
 
+.. _managedc.compilation.command_line_options:
+
 Command Line Options
 --------------------
 
