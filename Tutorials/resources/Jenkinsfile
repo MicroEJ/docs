@@ -1,0 +1,15 @@
+pipeline {
+    agent {
+        docker { 
+            image 'microej/sdk:5.8.1' 
+            args '-e ACCEPT_MICROEJ_SDK_EULA_V3_1B=YES'
+        }
+    }
+    stages {
+        stage('Publish') {
+            steps {
+                sh 'mmm publish shared -r ivy/ivysettings-artifactory.xml'
+            }
+        }
+    }
+}
