@@ -3,7 +3,7 @@
 Communication Between Java and Managed C
 ========================================
 
-The MicroEJ Core Engine allows to communicate between Java and Managed C: Java static methods can be used from Managed C code and vice-versa.
+The MicroEJ Core Engine allows to communicate between Java and Managed C. Java static methods can be used from Managed C code and vice-versa.
 
 .. _managedc.communication.java_to_managedc:
 
