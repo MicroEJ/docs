@@ -28,6 +28,7 @@ You can start exploring this functionality by following the instructions provide
 
    getting_started
    compilation
+   communication
    limitations
    troubleshooting
 ..
