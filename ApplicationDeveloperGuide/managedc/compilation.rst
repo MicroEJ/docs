@@ -36,6 +36,7 @@ Here are some useful options:
 * ``-Wl,--allow-undefined``: Allow undefined symbols.
 * ``-Wl,--global-base=n``: Sets the global base to 'n'.
 * ``-z stack-size=n``: Adjusts the stack size to 'n'.
+* ``-mcpu=mvp``: Restrict generation to WebAssembly MVP specification.
 
 
 ..
