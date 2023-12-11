@@ -254,6 +254,12 @@ You should see the following output when launching the Java application:
       Managed C Memory values from 1024 to 1034:
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
+Multi-Sandboxed Context
+-----------------------
+
+Managed C modules and functions can be called in a Multi-Sandboxed context. Use of ``static native`` Java declaration is 
+allowed in that case.
+
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
