@@ -273,8 +273,8 @@ Upload to your Git repository
 This file configures MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this tutorial. Please refer to :ref:`mmm_settings_file` section for more details.
 
     .. note::
-    At this point, the content of the directory ``com.example.hello-world`` should look like the following:
-    ::
+       At this point, the content of the directory ``com.example.hello-world`` should look like the following:
+       ::
     
         com.example.hello-world
         ├── bin
