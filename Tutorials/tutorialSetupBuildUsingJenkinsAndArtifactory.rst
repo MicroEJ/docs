@@ -272,24 +272,24 @@ Upload to your Git repository
 
 This file configures MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this tutorial. Please refer to :ref:`mmm_settings_file` section for more details.
 
-.. note::
-   At this point, the content of the directory ``com.example.hello-world`` should look like the following:
-   ::
+    .. note::
+        At this point, the content of the directory ``com.example.hello-world`` should look like the following:
+        ::
     
-    com.example.hello-world
-    ├── bin
-    │   └── ...
-    ├── ivy
-    │   └── ivysettings-artifactory.xml
-    ├── src
-    │   └── ...
-    ├── src-adpgenerated/
-    │   └── ...
-    ├── CHANGELOG.md
-    ├── Jenkinsfile
-    ├── LICENSE.txt
-    ├── README.md
-    └── module.ivy
+        com.example.hello-world
+        ├── bin
+        │   └── ...
+        ├── ivy
+        │   └── ivysettings-artifactory.xml
+        ├── src
+        │   └── ...
+        ├── src-adpgenerated/
+        │   └── ...
+        ├── CHANGELOG.md
+        ├── Jenkinsfile
+        ├── LICENSE.txt
+        ├── README.md
+        └── module.ivy
     
 #. Open a terminal from the directory ``com.example.hello-world`` and type the following commands:
 
@@ -327,7 +327,7 @@ Build the "Hello World" Application
 
 Let's run the job!
 
-In Jenkins' ``Hello World`` dashboard, click on :guilabel:`main` branch, then click on :guilabel:`Build Now`. 
+In Jenkins ``Hello World`` dashboard, click on :guilabel:`main` branch, then click on :guilabel:`Build Now`. 
 
 .. note::
    You can check the build progress by clicking on the build progress bar and showing the :guilabel:`Console Output`.
