@@ -573,8 +573,10 @@ stream. See below for how to configure the destination of these streams.
 Link
 ====
 
-Several sections are defined by the Core Engine. Each section
-must be linked by the third-party linker.
+Several sections are defined by the Core Engine. Each section must be linked by the third-party linker.
+Read-Only (RO) sections can be placed in writable memories. 
+In such cases, it is the responsibility of the BSP to prevent these sections from being written.
+
 Starting from Architecture ``8.x``, sections have been renamed to follow the standard ELF naming convention.
 
 .. tabs::
