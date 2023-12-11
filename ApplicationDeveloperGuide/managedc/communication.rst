@@ -48,7 +48,7 @@ Link between Managed C function declaration and Java static methods can be done 
       | double (64 bit)        | double (64 bit) |
       +------------------------+-----------------+
 
-   Type matching has to be exactly 
+   A SOAR error will be triggered in case of Managed C function parameter(s) and return types do not matched excatly the same Java method parameter(s) and return types.  
 
 Here is an example:
 
