@@ -82,13 +82,15 @@ Prepare your Docker environment
 
 This section assumes the prerequisites have been properly installed.
 
-#. In a new directory copy these two files: 
+#. Create a new directory, inside create a file name ``docker-compose.yaml`` and copy this content: 
 
-.. literalinclude:: resources/docker-compose.yaml
-    :language: yaml
+    .. literalinclude:: resources/docker-compose.yaml
+        :language: yaml
 
-.. literalinclude:: resources/Dockerfile
-    :language: dockerfile
+#. Create an other file name ``Dockerfile`` and copy this content: 
+
+    .. literalinclude:: resources/Dockerfile
+        :language: dockerfile
 
 #. In this directory launch the command ``docker compose up -d``. After a few moment you must have three running containers (named jenkins, gitea and artifactory). 
 Using ``docker compose ps`` will show if containers started properly. Logs can be viewed with ``docker compose logs``.
@@ -255,15 +257,18 @@ In this example, we will create a very simple module using the Sandbox Applicati
 Upload to your Git repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. note::
+   We need IP of the Docker Bridge Network, here we consider that it's ``172.17.0.1`` but you can check with the command ``ip addr show docker0`` on the docker host.
+
 #. Open last directoy and copy this file at root:
 
-.. literalinclude:: resources/Jenkinsfile
-    :language: groovy
+    .. literalinclude:: resources/Jenkinsfile
+        :language: groovy
 
 #. Create a directory named ``ivy`` and copy this file inside: 
 
-.. literalinclude:: resources/ivysettings-artifactory.xml
-    :language: xml
+    .. literalinclude:: resources/ivysettings-artifactory.xml
+        :language: xml
 
 This file configures MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this tutorial. Please refer to :ref:`mmm_settings_file` section for more details.
 
