@@ -25,11 +25,19 @@ Link between Managed C function declaration and Java static methods can be done 
    #define __IMPORT(class, method) \
     __attribute__((__import_module__(#class), __import_name__(#method)))
 
-* ``class``: Java `fully qualified name <https://docs.oracle.com/javase/specs/jls/se11/html/jls-6.html#jls-6.7>`__ of the class containing the Java static method (e.g: ``com.mycompany.MyApp``).
-* ``method``: Java static method name.
+* ``class``: 
+
+  * Java `fully qualified name <https://docs.oracle.com/javase/specs/jls/se11/html/jls-6.html#jls-6.7>`__ of the class containing the Java static method (e.g: ``com.mycompany.MyApp``).
+  * An empty string (``""``) or ``"env"``. In that case, Java static method is searched in the current annotated ``@ManagedCModule`` Java class.
+
+* ``method``: Java static method name. Empty string XXX??XXX
 
 .. note:: 
    
+   A SOAR error will be triggered if no Java class or method found.
+
+.. note:: 
+
    Java static methods called by Managed C can only use Java base types ``int``, ``long``, ``float``, ``double`` as parameters and return types. Here is a matching table:
    
    .. tabularcolumns:: |p{2.5cm}|p{4cm}|p{2.7cm}|p{2.5cm}|p{2.7cm}|
@@ -50,7 +58,7 @@ Link between Managed C function declaration and Java static methods can be done 
 
    A SOAR error will be triggered in case of Managed C function parameter(s) and return types do not matched excatly the same Java method parameter(s) and return types.  
 
-Here is an example:
+Here is an example showing how to write Java and C source code when C macro parameters ``class`` and ``method`` are specified:
 
 - Java source code (``MyApp.java``):
 
@@ -82,9 +90,39 @@ Here is an example:
 
 .. note:: 
 
-   ``class`` C macro parameter can be set as empty string (``""``). In that case, Java type resolution will look at the 
-   ``@ManagedCModule`` declarations in Java source code to find the Java class containing the Java static method. 
-   A SOAR error will be triggered if no Java class or method found.
+   Java annotation ``@ManagedCModule("my_app.mc")`` can be put on the Java class but is useless for this example.
+
+Here is an example showing how to write Java and C source code when the C macro parameter ``class`` is an empty string:
+
+- Java source code (``MyApp.java``): same as previous example
+
+   .. code:: java
+
+      package com.mycompany;
+
+      @ManagedCModule("my_app.mc")
+      public class MyApp {
+
+         public static void delay(int ms) {
+            try {
+               Thread.sleep(ms);
+            } catch (InterruptedException e) {
+               e.printStackTrace();
+            }
+         }
+
+      }
+
+- C source code (``my_app.c``):
+
+   .. code:: c
+
+      #define __IMPORT(class, method) \
+      __attribute__((__import_module__(class), __import_name__(method)))
+
+      /* Extern functions implemented in Java -----*/
+      extern void delay(int ms) __IMPORT("" ,"delay");
+
 
 Link between Managed C function declaration and Java static methods can also be done dynamically using ``-Wl,--allow-undefined`` 
 C compiler option (see :ref:`managedc.compilation.command_line_options` ). No need to declare and use ``__IMPORT(class, method)`` C macro 
