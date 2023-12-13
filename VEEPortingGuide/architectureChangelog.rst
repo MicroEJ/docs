@@ -86,7 +86,8 @@ Foundation Libraries
 Integration
 ~~~~~~~~~~~
 
--  Updated Architecture End User License Agreement to version ``SDK 3.1-B``.
+- Updated Architecture End User License Agreement to version ``SDK 3.1-B``.
+- Removed warning messages related to missing KF options when running the SOAR or the S3 in Mono-Sandbox.
 
 Simulator
 ~~~~~~~~~
