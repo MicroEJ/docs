@@ -124,7 +124,7 @@ Here is an example showing how to write Java and C source code when the C macro 
       extern void delay(int ms) __IMPORT("" ,"delay");
 
 
-Link between Managed C function declaration and Java static methods can also be done dynamically using ``-Wl,--allow-undefined`` 
+Link between Managed C function declaration and Java static methods can also be done implicitly using ``-Wl,--allow-undefined`` 
 C compiler option (see :ref:`managedc.compilation.command_line_options` ). No need to declare and use ``__IMPORT(class, method)`` C macro 
 in that case. Java type resolution will look at the ``@ManagedCModule`` declarations in Java source code to find the Java class 
 containing the Java static method. A SOAR error will be triggered if no Java method found.
