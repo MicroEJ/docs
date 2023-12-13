@@ -374,13 +374,34 @@ Application Project
       version=1.0.0
       name=MY-KERNEL
 
-- If your Application is a Sandboxed Application:
+- If your Application is a :ref:`Sandboxed Application <sandboxed_application>`:
 
-  - Create the Java class of the Feature Entry Point in the ``src/main/java`` folder.
-  - Create a file with the extension ``.kf`` in the ``src/main/resources`` folder, for example ``myFeature.kf``.
+  - Create the Java class of the Feature Entry Point in the ``src/main/java`` folder, for example:
+
+    .. code:: java
+            
+      package com.mycompany;
+      
+      import ej.kf.FeatureEntryPoint;
+      
+      public class MyApplication implements FeatureEntryPoint {
+    
+        @Override
+        public void start() {
+          System.out.println("Feature MyApplication started!");
+        }
+    
+        @Override
+        public void stop() {
+          System.out.println("Feature MyApplication stopped!");
+        }
+      }
+
+  - Create a file with the extension ``.kf`` in the ``src/main/resources`` folder, for example ``MyApplication.kf``.
     This file must at least contains the property ``entryPoint`` set to the Full Qualified Name of the Application Feature class, for example::
 
-      entryPoint=com.microej.MyFeature
+      entryPoint=com.mycompany.MyApplication
+      version=0.1.0
 
 Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
