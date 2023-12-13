@@ -700,7 +700,7 @@ Link-Time Option
 ================
 
 It is possible to define custom :ref:`Application options <application_options>` that can be passed to the BSP through an ELF symbol defined at link-time, hence the term `link-time option`.
-This allows the Platform to provide configuration options to the Application developer without the need to rebuild the BSP source code.
+This allows to provide configuration options to the Application developer without the need to rebuild the BSP source code.
 
 To define a link-time option, first choose an option name with only alphanumeric characters (``[a-zA-Z][a-zA-Z0-9]*`` without spaces). 
 
@@ -737,7 +737,7 @@ Proceed with the following steps by replacing ``[my_option]`` with your option n
       </target>
     </project>
 
-- In your BSP source code, define an ELF symbol ``[my_option]`` can then be used inside C files in your Platform BSP with:
+- In your BSP source code, define an ELF symbol ``[my_option]`` can then be used inside C files in your BSP with:
  	
   .. code-block:: c
   
