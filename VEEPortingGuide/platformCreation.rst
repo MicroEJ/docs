@@ -652,6 +652,47 @@ such as :ref:`tool_serial_to_socket`.
   testsuite.trace.ip=localhost
   testsuite.trace.port=5555
 
+Platform API Documentation
+==========================
+
+The Platform API documentation provides a comprehensive HTML Javadoc that combines all the Foundation Library APIs.
+
+It can be built using the following steps:
+
+- Create a new :ref:`module repository project <module_repository>`.
+- Enable module repository javadoc generation (see :ref:`module_repository_generate_javadoc`).
+- Go to your Platform build directory and browse ``source/javaLibs`` and ``source/MICROJVM/javaLibs`` directories. 
+  You will find Foundation Libraries implementations JAR files in the following pattern: ``<module_name>-<major>.<minor>.jar``.
+  
+  Example: ``EDC-1.3.jar``: ``module_name`` = ``edc``, ``major`` = ``1``, ``minor`` = ``3``.
+- For each Foundation Library your want to include,
+
+  - Retrieve its api module in either the :ref:`central_repository`, :ref:`developer_repository` or your custom repository. 
+    Most of the Foundation Library APIs provided by MicroEJ are available under the ``ej.api`` organization.
+    
+    Example: EDC is on the Central Repository (https://repository.microej.com/modules/ej/api/edc/)
+  - Get the latest available patch version corresponding to your ``<major>.<minor>`` version. 
+    This allows to benefit from the latest javadoc fixes and updates for the corresponding version.
+    
+    Example: ``ej.api#edc#1.3.5``: ``patch``=``5``
+  - Declare a dependency line in the module repository. 
+    
+    .. code-block:: xml
+
+      <dependency conf="artifacts->*"  transitive="false" org="<org>" name="<module_name>" rev="<major>.<minor>.<patch>" />
+  
+    Example: 
+  
+    .. code-block:: xml
+
+      <dependency conf="artifacts->*"  transitive="false" org="ej.api" name="edc" rev="1.3.5" />
+
+- Build the module repository. 
+
+
+
+The Platform API documentation is available in ``<module_repository_project>/target~/artifacts/<module_repository_name>-javadoc.zip``.    
+
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
