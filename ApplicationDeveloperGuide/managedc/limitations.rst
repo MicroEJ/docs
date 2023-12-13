@@ -20,7 +20,6 @@ Unsupported WebAssembly Functionalities
 
 - WebAssembly globals, tables, and elements are currently unsupported.
 - WebAssembly memory load/store instructions are currently unsupported.
-- WebAssembly memory load/store instructions are currently unsupported.
 
 Supported WebAssembly Instructions
 ------------------------------------
