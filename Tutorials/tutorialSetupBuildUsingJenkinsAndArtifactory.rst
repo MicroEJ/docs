@@ -93,7 +93,8 @@ This section assumes the prerequisites have been properly installed.
         :language: dockerfile
 
 #. In this directory launch the command ``docker compose up -d``. After a few moment you must have three running containers (named jenkins, gitea and artifactory). 
-Using ``docker compose ps`` will show if containers started properly. Logs can be viewed with ``docker compose logs``.
+Using ``docker compose ps`` will show if containers started properly. Logs can be viewed with ``docker compose logs``. 
+
 
 .. _get_microej_module_repository:
 
@@ -115,22 +116,13 @@ Next step is to download a local copy of this repository:
 Setup Artifactory
 -----------------
 
-Install and Start Artifactory
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#. Once Artifactory container is started, go to ``http://localhost:8082/``.
-#. Login to Artifactory for the first time using the default ``admin`` account (Username: ``admin``, Password: ``password``).
-#. On the :guilabel:`Welcome` wizard, set the administrator password, then click :guilabel:`Next`,
-#. Configure proxy server (if any) then click :guilabel:`Next`, or click :guilabel:`Skip`.
-#. Click on :guilabel:`Finish`. 
-
-Artifactory is up and running.
-
 Configure Artifactory
 ~~~~~~~~~~~~~~~~~~~~~
 
 For demonstration purposes we will allow anonymous users to deploy modules in the repositories:
 
+#. Once Artifactory container is started, go to ``http://localhost:8082/``.
+#. Login to Artifactory for the first time using the default ``admin`` account (Username: ``admin``, Password: ``password``).
 #. Go to :guilabel:`Administration` > :guilabel:`User Management` > :guilabel:`Settings`.
 #. In the :guilabel:`User Security Configuration` section, check :guilabel:`Allow Anonymous Access`.
 #. Click on :guilabel:`Save`.
@@ -141,7 +133,7 @@ For demonstration purposes we will allow anonymous users to deploy modules in th
 
 Next steps will involve uploading large files, so we have to augment the file upload maximum size accordingly:
 
-#. Go to :guilabel:`Administration` > :guilabel:`Artifactory`.
+#. Go to :guilabel:`Administration` > :guilabel:`Artifactory` > :guilabel:`General` > :guilabel:`Settings`.
 #. In the :guilabel:`General Settings` section, change the value of :guilabel:`File Upload In UI Max Size (MB)` to ``1024`` then click on :guilabel:`Save`.
 
 
@@ -181,7 +173,8 @@ Setup Gitea
 Install Gitea
 ~~~~~~~~~~~~~
 #. Once Gitea container is started, go to ``http://localhost:3000/``.
-#. Follow the installation wizard, the first created user become the administrator.
+#. Don't change anything on the ``Initial Configuration``, click on :guilabel:`Install Gitea`
+#. Click on :guilabel:`Register account` and create one. The first created user become the administrator.
 
 Configure Gitea
 ---------------
@@ -238,7 +231,8 @@ In this example, we will create a very simple module using the Sandbox Applicati
 
 #. Click :guilabel:`Finish`. This will create the project files and structure.
 #. Right-click on source folder ``src/main/java`` and select :guilabel:`New` > :guilabel:`Package`. Set a name to the package and click :guilabel:`Finish`.
-#. Right-click on the new package and select :guilabel:`New` > :guilabel:`Class`. Set a name to the class and check ``public static void main(String[] args)``, then click :guilabel:`Finish`.
+#. Right-click on the new package and select :guilabel:`New` > :guilabel:`Class`. Set ``Main`` as name for the class and check ``public static void main(String[] args)``, then click :guilabel:`Finish`.
+#. Add the line ``System.out.println("Hello World!");`` to the function and save it.
 
     .. image:: images/tuto_microej_cli_module_files.PNG
         :align: center
@@ -260,12 +254,12 @@ Upload to your Git repository
 .. note::
    We need IP of the Docker Bridge Network, here we consider that it's ``172.17.0.1`` but you can check with the command ``ip addr show docker0`` on the docker host.
 
-#. Open last directoy and copy this file at root:
+#. Open the project directory, create a file name ``Jenkinsfile`` and copy this content inside:
 
     .. literalinclude:: resources/Jenkinsfile
         :language: groovy
 
-#. Create a directory named ``ivy`` and copy this file inside: 
+#. Create a directory named ``ivy``, create a file name ``ivysettings-artifactory.xml`` and copy this content inside: 
 
     .. literalinclude:: resources/ivysettings-artifactory.xml
         :language: xml
