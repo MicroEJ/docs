@@ -50,14 +50,14 @@ beside the SOAR object file. It describes for each clinit dependency:
 
 .. _soar_clinit_explicit_dependencies:
 
-In case of complex clinit code with too many runtime dependencies, the statically computed clinit order may be wrong.
+In case of complex clinit dependencies graph, the SOAR may detect static cycles (circular dependencies) and fail with an error.
+In such case, you have to manually cut-off the cycles, by providing the explicit clinit dependencies.
 
-It is then possible to help SOAR by manually declaring explicit clinit dependencies.
-Such dependencies are declared in XML files with the ``.clinitdesc`` extension in the application classpath. 
+Explicit clinit dependencies are declared in XML files ending with the ``.clinitdesc`` extension, at the root of a library or application classpath. 
 
 The file has the following format:
 
-::
+.. code-block:: xml
 
    <?xml version='1.0' encoding='UTF-8'?>
    <clinit>
@@ -65,7 +65,7 @@ The file has the following format:
    </clinit>
 
 where ``T1`` and ``T2`` are fully qualified names on the form ``a.b.C``.
-This explicitly forces SOAR to create a dependency from ``T1`` to
+This explicitly forces the SOAR to create a dependency from ``T1`` to
 ``T2``, and therefore cuts a potentially detected dependency from ``T2``
 to ``T1``.
 

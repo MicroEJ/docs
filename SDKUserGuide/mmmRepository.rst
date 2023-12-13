@@ -153,6 +153,8 @@ configuration:
       <!-- ... other dependencies ... -->
    </dependencies>
 
+.. _module_repository_generate_javadoc:
+
 Generate Javadoc
 ----------------
 
