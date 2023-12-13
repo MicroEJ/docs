@@ -742,7 +742,8 @@ Proceed with the following steps by replacing ``[my_option]`` with your option n
   .. code-block:: c
   
     // Declare the symbol as an extern global
-    extern int [my_option]    
+    extern int [my_option];
+        
     void my_func(void){
        // Get the symbol value
        int [my_option]_value = ((int)(&[my_option]));
