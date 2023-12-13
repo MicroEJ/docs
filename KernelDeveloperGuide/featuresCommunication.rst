@@ -82,20 +82,6 @@ When getting a service instance from a Feature, the service instance is searched
 #. In the Shared Registry, check for an instance registered (publicly) by the Kernel.
 #. In the Shared Registry, check for an instance registered as a Shared Interface by an other Feature.
 
-If no instance was found, an attempt is made to create a new instance of the provided type from a :ref:`System Property <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#system-properties>`.
-
-This property binds the service type (the property key) to the actual service implementation type (the property value) that will be used for instantiation.
-
-For example, in order to allow an instance of the ``ej.bon.Timer`` service to be created automatically if not present, the following property must be set:
-
-.. code-block:: properties
-
-ej.bon.Timer=ej.bon.Timer
-
-.. note::
-
-   Both the service type and the implementation type must be accessible to the Kernel. Therefore these types shall be either types directly referenced by the Kernel or types be declared as `Required Types <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
-
 .. _kernel_service_registry:
 
 Communication between Kernel and Feature
@@ -157,7 +143,7 @@ ej.bon.Timer=ej.bon.Timer
 
 .. note::
 
-   Both the service type and the implementation type must be accessible to the Kernel. Therefore these types shall be either types directly referenced by the Kernel or types be declared as `Required Types <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
+   Since the service type and the implementation type are dynamically bound using class reflection, both types must be declared as `Required Types <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
 
 Implement a Registry
 --------------------
