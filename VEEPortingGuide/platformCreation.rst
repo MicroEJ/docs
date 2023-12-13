@@ -745,7 +745,7 @@ Proceed with the following steps by replacing ``[my_option]`` with your option n
     extern int [my_option]    
     void my_func(void){
        // Get the symbol value
-       uint32_t [my_option]_value = ((uint32_t)(&[my_option]));
+       int [my_option]_value = ((int)(&[my_option]));
      
        // Get the symbol value
        if([my_option]_value == 1){
