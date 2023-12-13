@@ -100,7 +100,7 @@ You can use the generic `ej.Service API <https://repository.microej.com/javadoc/
 
    ServiceFactory.register(MyInterface.class,myInterface) //accessible within the Kernel context only
 
-Or you can specify in which registry the Kernel should register the service by using the `ServiceRegistryKF <https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/service/ServiceRegistryKF.html>` API from the `KF-Util module <https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/package-summary.html>`_ as depicted below.
+Or you can specify in which registry the Kernel should register the service by using the `ServiceRegistryKF <https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/service/ServiceRegistryKF.html>`_ API from the `KF-Util module <https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/package-summary.html>`_ as depicted below.
 
 .. ::
     ServiceRegistryKF serviceRegistryKF = (ServiceRegistryKF) ServiceFactory.getServiceRegistry();
@@ -131,7 +131,7 @@ When getting a service instance from the Kernel, the service instance is searche
 #. In the Shared Registry, check for an instance registered by the Kernel.
 #. In the Shared Registry, check for an instance registered as Shared Interface by an other Feature.
 
-If no instance was found, an attempt is made to create a new instance of the provided type from a :ref:`System Property <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#system-properties>`.
+If no instance was found, an attempt is made to create a new instance of the provided type from :ref:`system_properties`.
 
 This property binds the service type (the property key) to the actual service implementation type (the property value) that will be used for instantiation.
 
@@ -139,11 +139,11 @@ For example, in order to allow an instance of the ``ej.bon.Timer`` service to be
 
 .. code-block:: properties
 
-ej.bon.Timer=ej.bon.Timer
+   ej.bon.Timer=ej.bon.Timer
 
 .. note::
 
-   Since the service type and the implementation type are dynamically bound using class reflection, both types must be declared as `Required Types <https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#types>`_.
+   Since the service type and the implementation type are dynamically bound using class reflection, both types must be declared as :ref:`Required Types <section.classpath.elements.types>`.
 
 Implement a Registry
 --------------------
