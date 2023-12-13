@@ -680,7 +680,7 @@ Option(checkbox): Enable SecurityManager checks
 
 *Description*:
 
-Enable the security manager runtime checks.
+Enable the security manager Permission checks.
 
 Category: Shielded Plug
 -----------------------
