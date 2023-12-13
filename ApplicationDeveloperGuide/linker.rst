@@ -910,57 +910,6 @@ Commands:
    Execute the given commandFile. The path may be absolute or relative
    from the current command file.
 
-
-Link Time Options
-=================
-
-Platform and/or Application options can be passed to Platform BSP through link time options. To do it:
-
-- Create a Platform init script folder inside your :ref:`platformCustomization` part (e.g: ``[platform]-configuration/dropins/scripts/init-[my_option]``)
-- Create a Platform init script file and put it inside (e.g: ``[platform]-configuration/dropins/scripts/init-[my_option]/init-[my_option].xml`` file). 
-  Here is a Platform init script file template: 
-
-  .. code-block:: xml
-	
-   <project name="[my_option]-init">
-		<target name="init/execution/[my_option]" extensionOf="init/execution" if="onBoard">
-			<!-- Set option default value -->
-			<property name="[my_option].value" value="0"/>
-			
-			<!-- Create tmp dir -->
-			<local name="link.files.dir"/>
-			<microejtempfile deleteonexit="true" prefix="link[my_option]" property="link.files.dir"/>
-			<mkdir dir="${link.files.dir}"/>
-	
-			<!-- Get tmp link file name -->
-			<local name="link.[my_option]"/>
-			<property name="link.[my_option]" value="${link.files.dir}/[my_option].lscf" />
-	
-			<echoxml file="${link.[my_option]}" append="false">
-				<lscFragment>
-					<defSymbol name="_[my_option]_value" value="${[my_option].value}" rootSymbol="true"/>
-				</lscFragment>
-			</echoxml>
-	
-			<!-- Add link file in linker's link files path -->
-			<augment id="partialLink.lscf.path">
-				<path location="${link.files.dir}"/>
-				<path location="${jpf.dir}/link"/>
-			</augment>
-		</target>
-	</project>
-
-- ELF symbol ``_[my_option]_value`` can then be used inside C files in your Platform BSP with:
- 	
-  .. code-block:: c
-  
-   extern int _[my_option]_config;
-   const volatile uint32_t [my_option]_value = ((uint32_t)(&_[my_option]_value));
-  
-.. note:: ``[my_option]`` has to be replaced by the name of your choice with alphanumeric characters and without spaces. 
-
-.. note:: Platform/Application option ``[my_option].value`` value can be set using :ref:`application_options` (see :ref:`define_option`).
-
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
