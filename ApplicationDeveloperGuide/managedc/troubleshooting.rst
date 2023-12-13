@@ -66,6 +66,20 @@ Failure to do so may result in the following error:
       [soar2-r] [M81] - ManagedC error cannot find an exported function for com.mycompany.MyApp.factorial(int)int method
 
 -----------------------------------------------------------------
+SOAR-L ERROR "'...' is not a byte array"
+-----------------------------------------------------------------
+
+When using the ``@ManagedCMemory`` annotation on a Java static field, ensure that corresponding type is a Java byte array (`byte[]`).
+
+Failure to do so may result in the following error:
+
+.. code:: console
+
+    soar2-r/do:
+      [soar2-r] 1 : SOAR-L ERROR :
+      [soar2-r] [M81] - ManagedC error 'com/mycompany/MyApp.Memory' is not a byte array
+
+-----------------------------------------------------------------
 S3 ERROR "Inconsistent Mock implementation:  ...."
 -----------------------------------------------------------------
 
