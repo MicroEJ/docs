@@ -30,7 +30,7 @@ Link between Managed C function declaration and Java static methods can be done 
   * Java `fully qualified name <https://docs.oracle.com/javase/specs/jls/se11/html/jls-6.html#jls-6.7>`__ of the class containing the Java static method (e.g: ``com.mycompany.MyApp``).
   * An empty string (``""``) or ``"env"``. In that case, Java static method is searched in the current annotated ``@ManagedCModule`` Java class.
 
-* ``method``: Java static method name. Empty string XXX??XXX
+* ``method``: Java static method name.
 
 .. note:: 
    
