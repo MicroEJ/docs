@@ -34,7 +34,7 @@ Link between Managed C function declaration and Java static methods can be done 
 
 .. note:: 
    
-   A SOAR error will be triggered if no Java class or method found.
+   A SOAR error will be triggered if no Java class or method found (see :ref:`managedc.troubleshooting`).
 
 .. note:: 
 
@@ -183,7 +183,7 @@ Here is an example:
 
 .. note:: 
 
-   A SOAR error will be triggered if no Java method or Managed C function found.
+   A SOAR error will be triggered if no Java method or Managed C function found (see :ref:`managedc.troubleshooting`).
 
 You should see the following output when launching the Java application:
 
