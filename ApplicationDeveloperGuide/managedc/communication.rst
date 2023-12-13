@@ -90,7 +90,7 @@ Here is an example showing how to write Java and C source code when C macro para
 
 .. note:: 
 
-   Java annotation ``@ManagedCModule("my_app.mc")`` can be put on the Java class but is useless for this example.
+   Java annotation ``@ManagedCModule("my_app.mc")`` should be put some where, in this class or in another class.
 
 Here is an example showing how to write Java and C source code when the C macro parameter ``class`` is an empty string:
 
