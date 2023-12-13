@@ -18,7 +18,7 @@ In the terminal, navigate to the ``src/main/c`` directory and execute the follow
 
 .. code:: console
 
-    clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -nostdlib -O3 my_app.c -o my_app.mc
+    clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -nostdlib -mcpu=mvp -O3 my_app.c -o my_app.mc
 
 .. _managedc.compilation.command_line_options:
 
