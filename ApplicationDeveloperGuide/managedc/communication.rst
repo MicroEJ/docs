@@ -203,7 +203,7 @@ according to C source code and C compiler options. On Java side, Managed C modul
 using ``@ManagedCMemory`` annotation on a Java static byte array field declaration. 
 
 .. note:: 
-   A SOAR error will occurred if ``@ManagedCMemory`` is not strictly followed by a Java static byte array declaration.
+   A SOAR error will occurred if ``@ManagedCMemory`` is not strictly followed by a Java static byte array declaration (see :ref:`managedc.troubleshooting`).
 
 Here is a Java example:
 
