@@ -18,7 +18,7 @@ source code. Here is a C source code example:
    /* Extern functions implemented in Java -----*/
    extern void delay(int ms);
 
-Link between Managed C function declaration and Java static methods can be done statically using the following C macro definition:
+Link between Managed C function declaration and Java static methods can be done explicitly using the following C macro definition:
 
 .. code:: c
 
