@@ -295,8 +295,7 @@ You should see the following output when launching the Java application:
 Multi-Sandboxed Context
 -----------------------
 
-Managed C modules and functions can be called in a Multi-Sandboxed context. Use of ``static native`` Java declaration is 
-allowed in that case.
+Managed C modules and functions can be called in a Multi-Sandboxed context. Use of ``static native`` Java declaration is allowed in that case.
 
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
