@@ -346,8 +346,8 @@ Platform Publication
 ====================
 
 The publication of the built Platform to a :ref:`module repository <module_repository>` is disabled by default.
-It can be enabled by setting the ``skip.publish`` property defined in the file ``module.properties`` of 
-the Platform configuration project to ``false``.
+It can be enabled by setting the ``skip.publish`` property to ``false`` in the ``module.properties`` file of 
+the Platform configuration project .
 
 The publication is kept disabled by default in the project sources because developers usually use the locally built platform in the workspace.
 However, the publication is required in a Continuous Integration environment. 
@@ -357,6 +357,11 @@ and by overwriting it in the command launched by the Continuous Integration envi
 .. code-block:: sh
 
   mmm publish shared -Dskip.publish=false
+
+If the Platform is configured with :ref:`Full BSP connection <bsp_connection>`, the build script can be launched 
+to validate that the BSP successfully compiles and links before the Platform is published. 
+It can be enabled by setting the ``com.microej.platformbuilder.bsp.build.enabled`` property to ``true`` 
+in the ``module.properties`` file of the Platform configuration project (defaults to ``false`` if not set).
 
 .. _bsp_connection:
 
@@ -612,6 +617,8 @@ The build script must comply with the following specification:
 Many build script templates are available for most commonly used C toolchains in the 
 `Platform Qualification Tools repository <https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/framework/platform/scripts>`_.
 
+The build script can also be launched before the Platform publication, see :ref:`platform_publication` for more details.
+
 .. note::
 
     The Executable must be an ELF executable file.  On
@@ -622,7 +629,7 @@ Many build script templates are available for most commonly used C toolchains in
 
        ~$ file application.out
        ELF 32-bit LSB executable
-
+    
 .. _bsp_connection_run_script:
 
 Run Script File
