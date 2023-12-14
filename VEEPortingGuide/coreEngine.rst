@@ -21,8 +21,8 @@ Functional Description
 ======================
 
 :ref:`The following diagram <fig_mjvm_flow2>` shows the overall process. The first two
-steps are performed within the MicroEJ Workbench. The remaining steps
-are performed within the C IDE.
+steps are performed within the SDK. The remaining steps
+are performed within the C third-party IDE.
 
 .. _fig_mjvm_flow2:
 .. figure:: images/mjvm_flow2.*
@@ -33,7 +33,7 @@ are performed within the C IDE.
    Core Engine Flow
 
 1. Step 1 consists in writing an Application against a set of
-   Foundation Libraries available in the platform.
+   Foundation Libraries available in the VEE Port.
 
 2. Step 2 consists in compiling the Application code and the
    required libraries in an ELF library, using the SOAR.
@@ -65,19 +65,22 @@ The activity of the Core Engine is defined by the Application. When
 the Application is blocked (i.e., when all the MicroEJ threads
 sleep), the RTOS task running the Core Engine sleeps.
 
+
+.. _core_engine_capabilities:
+
 Capabilities
 ============
 
 The Core Engine defines 3 exclusive capabilities:
 
--  Mono-Sandbox: capability to produce a monolithic firmware
+-  Mono-Sandbox: capability to produce a monolithic Executable
    (default one).
 
--  Multi-Sandbox: capability to produce a extensible firmware on
+-  Multi-Sandbox: capability to produce a extensible Executable on
    which new applications can be dynamically installed. See section
    :ref:`multisandbox`.
 
--  Tiny-Sandbox: capability to produce a compacted firmware
+-  Tiny-Sandbox: capability to produce a compacted Executable
    (optimized for size). See section :ref:`tinysandbox`.
 
 All the Core Engine capabilities may not be available on all
@@ -104,34 +107,34 @@ When restarting the Core Engine, don't call ``SNI_createVM`` or ``SNI_destroyVM`
 before calling ``SNI_startVM`` again.
 For more information, refer to the :ref:`core_engine_restart` section.
 
-The file ``LLMJVM_impl.h`` that comes with the platform defines the API
+The file ``LLMJVM_impl.h`` that comes with the Architecture defines the API
 to be implemented. See section :ref:`LLMJVM-API-SECTION`.
 
 Initialization
 --------------
 
 The Low Level Core Engine API deals with two objects: the
-structure that represents the platform, and the RTOS task that runs the
-platform. Two callbacks allow engineers to interact with the
+structure that represents the Core Engine, and the RTOS task that runs the
+Core Engine. Two callbacks allow engineers to interact with the
 initialization of both objects:
 
 -  ``LLMJVM_IMPL_initialize``: Called once the structure representing
-   the platform is initialized.
+   the Core Engine is initialized.
 
--  ``LLMJVM_IMPL_vmTaskStarted``: Called when the platform starts its
+-  ``LLMJVM_IMPL_vmTaskStarted``: Called when the Core Engine starts its
    execution. This function is called within the RTOS task of the
-   platform.
+   Core Engine.
 
 Scheduling
 ----------
 
-To support the green thread round-robin policy, the platform assumes
+To support the green thread round-robin policy, the Core Engine assumes
 there is an RTOS timer or some other mechanism that counts (down) and
-fires a call-back when it reaches a specified value. The platform
+fires a call-back when it reaches a specified value. The Core Engine
 initializes the timer using the ``LLMJVM_IMPL_scheduleRequest`` function
 with one argument: the absolute time at which the timer should fire.
 When the timer fires, it must call the ``LLMJVM_schedule`` function,
-which tells the platform to execute a green thread context switch (which
+which tells the Core Engine to execute a green thread context switch (which
 gives another MicroEJ thread a chance to run).
 
 When several MicroEJ threads with the same priority are eligible for execution,
@@ -140,10 +143,10 @@ called the `time slice`.
 The time slice is expressed in milliseconds, and its default value is ``20`` ms. 
 It can be configured at link time with the symbol
 ``_java_round_robin_period``, defined in the :ref:`linker configuration file <linker_lscf>` 
-``linkVMConfiguration.lscf`` located in the Platform folder ``/MICROJVM/link/``.
-To override the content of this file, create, in the Platform configuration project,
+``linkVMConfiguration.lscf`` located in the VEE Port folder ``/MICROJVM/link/``.
+To override the content of this file, create, in the VEE Port configuration project,
 a folder named ``/dropins/MICROJVM/link/``, and copy into this folder the file
-``linkVMConfiguration.lscf`` retrieved from an existing Platform.
+``linkVMConfiguration.lscf`` retrieved from an existing VEE Port.
 Since a symbol cannot be null, the actual time slice value in milliseconds is
 ``_java_round_robin_period - 1``. Set the symbol to 1 (i.e., time slice to 0) 
 to disable the round-robin scheduling.
@@ -163,17 +166,17 @@ to disable the round-robin scheduling.
 Idle Mode
 ---------
 
-When the platform has no activity to execute, it calls the
-``LLMJVM_IMPL_idleVM`` function, which is assumed to put the RTOS task
-of the platform into a sleep state. ``LLMJVM_IMPL_wakeupVM`` is called
-to wake up the platform task. When the platform task really starts to
+When the Core Engine has no activity to execute, it calls the
+``LLMJVM_IMPL_idleVM`` function, which is assumed to put the Core Engine RTOS task
+into a sleep state. ``LLMJVM_IMPL_wakeupVM`` is called
+to wake up the Core Engine RTOS task. When the Core Engine RTOS task really starts to
 execute again, it calls the ``LLMJVM_IMPL_ackWakeup`` function to
 acknowledge the restart of its activity.
 
 Time
 ----
 
-The platform defines two times:
+The Core Engine defines two times:
 
 -  the application time: the difference, measured in milliseconds,
    between the current time and midnight, January 1, 1970, UTC.
@@ -183,14 +186,14 @@ The platform defines two times:
    It can be implemented by returning the running time since the start of 
    the device.
 
-The platform relies on the following C functions to provide those times
+The Core Engine relies on the following C functions to provide those times
 to the Application:
 
 -  ``LLMJVM_IMPL_getCurrentTime``: must return the monotonic time in 
    milliseconds if the given parameter is ``1``, otherwise must return the 
    application time in milliseconds. 
    This function is called by the method `java.lang.System.currentTimeMillis()`_
-   It is also used by the platform
+   It is also used by the Core Engine 
    scheduler, and should be implemented efficiently.
 
 -  ``LLMJVM_IMPL_getTimeNanos``: must return a monotonic time in
@@ -211,7 +214,7 @@ Error Codes
 
 The C function ``SNI_createVM`` returns a negative value if an error 
 occurred during the Core Engine initialization or execution.
-The file ``LLMJVM.h`` defines the platform-specific error code constants.
+The file ``LLMJVM.h`` defines the Core Engine error code constants.
 The following table describes these error codes.
 
 .. table:: Core Engine Error Codes
@@ -230,7 +233,7 @@ The following table describes these error codes.
    |             | Architecture.                                               |
    +-------------+-------------------------------------------------------------+
    | -2          | Internal error. Invalid link configuration in the           |
-   |             | Architecture or the Platform.                               |
+   |             | Architecture or the VEE Port.                               |
    +-------------+-------------------------------------------------------------+
    | -3          | Evaluation version limitations reached: termination of      |
    |             | the application. See section :ref:`limitations`.            |
@@ -275,7 +278,7 @@ The following table describes these error codes.
    |             | configuration. Verify ``.bss.soar`` section location.       |
    +-------------+-------------------------------------------------------------+
    | -20         | KF configuration internal error. Invalid link               |
-   |             | configuration in the Architecture or the Platform.          |
+   |             | configuration in the Architecture or the VEE Port.          |
    +-------------+-------------------------------------------------------------+
    | -21         | Number of monitors per thread limitation reached.           |
    |             | See sections :ref:`limitations` and                         |
@@ -672,15 +675,14 @@ information.
 Installation
 ============
 
-The Core Engine and its components are mandatory. In the
-platform configuration file, check :guilabel:`Multi Applications` to install the
-Core Engine in "Multi-Sandbox" mode. Otherwise, the "Single
-application" mode is installed.
+The Core Engine and its components are mandatory. 
+By default, it is configured with Mono-Sandbox capability.
+See the :ref:`core_engine_capabilities` section to update the Core Engine with Multi-Sandbox or Tiny-Sandbox capability.
 
 Abstraction Layer
 =================
 
-MicroEJ Core Engine Abstraction Layer implementation can be found on `MicroEJ Github`_ for several RTOS.
+Core Engine Abstraction Layer implementations can be found on `MicroEJ Github`_ for several RTOS.
 
 .. _MicroEJ Github: https://github.com/orgs/MicroEJ/repositories?q=AbstractionLayer-Core&type=all&language=&sort=
 
