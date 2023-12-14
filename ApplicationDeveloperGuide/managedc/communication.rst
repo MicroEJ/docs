@@ -126,7 +126,7 @@ Here is an example showing how to write Java and C source code when the C macro 
 
 Link between Managed C function declaration and Java static methods can also be done implicitly using ``-Wl,--allow-undefined`` 
 C compiler option (see :ref:`managedc.compilation.command_line_options` ). No need to declare and use ``__IMPORT(class, method)`` C macro 
-in that case.  Java static method is searched in the Java class which refers to the current Managed C module.
+in that case.  Java static method is searched in the Java class which refers to the current Managed C module
 containing the Java static method. A SOAR error will be triggered if no Java method found.
 
 .. _managedc.communication.managedc_to_java:
@@ -183,7 +183,7 @@ Here is an example:
 
 .. note:: 
 
-   A SOAR error will be triggered if no Java method or Managed C function found (see :ref:`managedc.troubleshooting`).
+   A SOAR error will be triggered if no Java method or Managed C function is found (see :ref:`managedc.troubleshooting`).
 
 You should see the following output when launching the Java application:
 
