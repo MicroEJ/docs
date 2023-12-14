@@ -29,8 +29,8 @@ specific configuration:
 
    -  ``ARMCC5``: Keil ARMCC uVision v5. See also :ref:`toolchain_armcc`.
    -  ``Clang``: Clang
-   -  ``GCC63``: GNU GCC Compiler v6.3. See also :ref:`toolchain_gcc`.
-   -  ``IAR74``: IAR Embedded Workbench for ARM v7.4. See also :ref:`toolchain_iar`.
+   -  ``GCC``: GNU GCC Compiler. See also :ref:`toolchain_gcc`.
+   -  ``IAR``: IAR Embedded Workbench for ARM. See also :ref:`toolchain_iar`.
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
@@ -396,6 +396,34 @@ SOAR
 -  [Multi] - Raise a warning instead of an error when duplicated ``.kf`` files are detected in the Kernel classpath. Usual classpath resolution order is used to load the file (see :ref:`chapter.microej.classpath`).
 -  [Multi] - Fixed SOAR error when building a Feature that uses an array of basetypes that is not explicitly declared in the ``kernel.api`` file of the Kernel.
 -  [Multi] - Optimized "Build Dynamic Feature" scripts speed by removing unnecessary steps.
+
+
+[7.16.3] - 2022-04-06
+---------------------
+
+Core Engine
+~~~~~~~~~~~
+
+-  [Cortex-M/IAR] Fix unaligned stack pointer when calling SNI native functions in ARM IAR architectures.
+
+
+[7.16.2] - 2021-11-10
+---------------------
+
+Core Engine
+~~~~~~~~~~~
+
+-  [Cortex-M/GCC/ARMCC5] Fix unaligned stack pointer when calling SNI native functions in ARM GCC and ARMCC architectures with non-ASM Core Engines.
+
+
+[7.16.1] - 2021-07-16
+---------------------
+
+Core Engine
+~~~~~~~~~~~
+
+-  [GCC] Fixed wrong inlined extern symbol access (affects only some GCC architectures until version ``6.x``). 
+   This produces an unexpected ``java.lang.OutOfMemoryError: Stacks space`` exception at boot time.
 
 
 [7.16.0] - 2021-06-24
@@ -1570,7 +1598,7 @@ Simulator
 SOAR
 ~~~~
 
--  [GCC63] - Fixed ``microejapp.o`` link with GCC 6.3
+-  [GCC] - Fixed ``microejapp.o`` link with GCC 6.3
 
 .. _tools-12:
 
@@ -1611,7 +1639,7 @@ Core Engine
 
 -  [Multi] - Enabled quantum counter computation only when Feature quota
    is set
--  [Cortex-M/IAR74] - Updated compilation flags to ``-Oh``
+-  [Cortex-M/IAR] - Updated compilation flags to ``-Oh``
 
 .. _simulator-8:
 
@@ -1658,7 +1686,7 @@ Core Engine
 
 -  [Multi] - Enabled quantum counter computation only when Feature quota
    is set
--  [Cortex-M/IAR74] - Updated compilation flags to ``-Oh``
+-  [Cortex-M/IAR] - Updated compilation flags to ``-Oh``
 
 .. _simulator-9:
 
