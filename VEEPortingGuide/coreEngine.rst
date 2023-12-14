@@ -1,12 +1,12 @@
 .. _core_engine:
 
-===================
-MicroEJ Core Engine
-===================
+===========
+Core Engine
+===========
 
 
-The MicroEJ Core Engine and its components represent the core of the Architecture.
-It is used to compile and execute at runtime the MicroEJ Application code.
+The Core Engine is the core component of the Architecture.
+It executes at runtime the Application code.
 
 Block Diagram
 =============
@@ -26,13 +26,13 @@ are performed within the C IDE.
 
 .. _fig_mjvm_flow2:
 .. figure:: images/mjvm_flow2.*
-   :alt: MicroEJ Core Engine Flow
+   :alt: Core Engine Flow
    :align: center
    :scale: 80%
 
-   MicroEJ Core Engine Flow
+   Core Engine Flow
 
-1. Step 1 consists in writing a MicroEJ Application against a set of
+1. Step 1 consists in writing an Application against a set of
    Foundation Libraries available in the platform.
 
 2. Step 2 consists in compiling the Application code and the
@@ -184,7 +184,7 @@ The platform defines two times:
    the device.
 
 The platform relies on the following C functions to provide those times
-to the MicroEJ world:
+to the Application:
 
 -  ``LLMJVM_IMPL_getCurrentTime``: must return the monotonic time in 
    milliseconds if the given parameter is ``1``, otherwise must return the 
@@ -214,23 +214,23 @@ occurred during the Core Engine initialization or execution.
 The file ``LLMJVM.h`` defines the platform-specific error code constants.
 The following table describes these error codes.
 
-.. table:: MicroEJ Core Engine Error Codes
+.. table:: Core Engine Error Codes
 
    +-------------+-------------------------------------------------------------+
    | Error Code  | Meaning                                                     |
    +=============+=============================================================+
-   | 0           | The MicroEJ Application ended normally (i.e., all the       |
+   | 0           | The Application ended normally (i.e., all the               |
    |             | non-daemon threads are terminated or                        |
    |             | ``System.exit(exitCode)`` has been called).                 |
    |             | See section :ref:`edc_exit_codes`.                          |
    +-------------+-------------------------------------------------------------+
    | -1          | The ``microejapp.o`` produced by SOAR is not compatible     |
-   |             | with the MicroEJ Core Engine (``microejruntime.a``).        |
+   |             | with the Core Engine (``microejruntime.a``).                |
    |             | The object file has been built from another                 |
-   |             | MicroEJ Platform.                                           |
+   |             | Architecture.                                               |
    +-------------+-------------------------------------------------------------+
    | -2          | Internal error. Invalid link configuration in the           |
-   |             | MicroEJ Architecture or the MicroEJ Platform.               |
+   |             | Architecture or the Platform.                               |
    +-------------+-------------------------------------------------------------+
    | -3          | Evaluation version limitations reached: termination of      |
    |             | the application. See section :ref:`limitations`.            |
@@ -242,41 +242,40 @@ The following table describes these error codes.
    | -12         | Number of threads limitation reached. See sections          |
    |             | :ref:`limitations` and :ref:`option_number_of_threads`.     |
    +-------------+-------------------------------------------------------------+
-   | -13         | Fail to start the MicroEJ Application because the           |
-   |             | specified MicroEJ heap is too large or too small.           |
+   | -13         | Fail to start the Application because the                   |
+   |             | specified managed heap is too large or too small.           |
    |             | See section :ref:`option_java_heap`.                        |
    +-------------+-------------------------------------------------------------+
-   | -14         | Invalid MicroEJ Application stack configuration. The        |
+   | -14         | Invalid Application stack configuration. The                |
    |             | stack start or end is not eight-byte aligned, or stack      |
    |             | block size is too small. See section                        |
    |             | :ref:`option_number_of_stack_blocks`.                       |
    +-------------+-------------------------------------------------------------+
-   | -16         | The MicroEJ Core Engine cannot be restarted.                |
+   | -16         | The Core Engine cannot be restarted.                        |
    +-------------+-------------------------------------------------------------+
-   | -17         | The MicroEJ Core Engine is not in a valid state because     |
+   | -17         | The Core Engine is not in a valid state because             |
    |             | of one of the following situations:                         |
    |             |                                                             |
    |             | - ``SNI_startVM`` called before ``SNI_createVM``.           |
    |             |                                                             |
-   |             | - ``SNI_startVM`` called while the MicroEJ                  |
+   |             | - ``SNI_startVM`` called while the                          |
    |             |   Appplication is running.                                  |
    |             |                                                             |
    |             | - ``SNI_createVM`` called several times.                    |
    +-------------+-------------------------------------------------------------+
-   | -18         | The memory used for the MicroEJ heap or immortal heap       |
+   | -18         | The memory used for the managed heap or immortal heap       |
    |             | does not work properly. Read/Write memory checks            |
    |             | failed. This may be caused by an invalid external RAM       |
    |             | configuration. Verify ``_java_heap`` and                    |
    |             | ``_java_immortals`` sections locations.                     |
    +-------------+-------------------------------------------------------------+
-   | -19         | The memory used for the MicroEJ Application static          |
+   | -19         | The memory used for the  Application static                 |
    |             | fields does not work properly. Read/Write memory checks     |
    |             | failed. This may be caused by an invalid external RAM       |
    |             | configuration. Verify ``.bss.soar`` section location.       |
    +-------------+-------------------------------------------------------------+
    | -20         | KF configuration internal error. Invalid link               |
-   |             | configuration in the MicroEJ Architecture or the            |
-   |             | MicroEJ Platform.                                           |
+   |             | configuration in the Architecture or the Platform.          |
    +-------------+-------------------------------------------------------------+
    | -21         | Number of monitors per thread limitation reached.           |
    |             | See sections :ref:`limitations` and                         |
@@ -284,7 +283,7 @@ The following table describes these error codes.
    |             | .                                                           |
    +-------------+-------------------------------------------------------------+
    | -22         | Internal error. Invalid FPU configuration in the            |
-   |             | MicroEJ Architecture.                                       |
+   |             | Architecture.                                               |
    +-------------+-------------------------------------------------------------+
    | -23         | The function ``LLMJVM_IMPL_initialize`` defined in the      |
    |             | Abstraction Layer implementation returns an error.          |
@@ -319,8 +318,8 @@ from a dedicated RTOS task.
 	 * @brief Creates and starts a MicroEJ instance. This function returns when the MicroEJ execution ends.
 	 * @param argc arguments count
 	 * @param argv arguments vector
-	 * @param app_exit_code_ptr pointer where this function stores the application exit code or 0 in case of error in the MicroEJ Core Engine. May be null.
-	 * @return the MicroEJ Core Engine error code in case of error, or 0 if the execution ends without error.
+	 * @param app_exit_code_ptr pointer where this function stores the application exit code or 0 in case of error in the Core Engine. May be null.
+	 * @return the Core Engine error code in case of error, or 0 if the execution ends without error.
 	 */
 	int microej_main(int argc, char **argv, int* app_exit_code_ptr) {
 		void* vm;
@@ -370,7 +369,7 @@ from a dedicated RTOS task.
 Restart the Core Engine
 -----------------------  
 
-The Core Engine supports the restart of the MicroEJ Application after the end of its execution. 
+The Core Engine supports the restart of the Application after the end of its execution. 
 The application stops when all non-daemon threads are terminated or when ``System.exit(exitCode)`` is called. 
 When the application ends, the C function ``SNI_startVM`` returns.
 
@@ -381,7 +380,7 @@ To restart the application, call again the ``SNI_startVM`` function (see the fol
 	// create Core Engine (called only once)
 	vm = SNI_createVM();
 	...
-	// start a new execution of the MicroEJ Application at each iteration of the loop
+	// start a new execution of the Application at each iteration of the loop
 	while(...){
 		...
 		core_engine_error_code = SNI_startVM(vm, argc, argv);
@@ -398,7 +397,7 @@ To restart the application, call again the ``SNI_startVM`` function (see the fol
 .. note::
 
    Please note that while the Core Engine supports restart, :ref:`MicroUI <section_microui>` does not. 
-   Attempting to restart the MicroEJ Application on a VEE Port with UI support may result in undefined behavior.
+   Attempting to restart the Application on a VEE Port with UI support may result in undefined behavior.
      
 
 .. _vm_dump:
