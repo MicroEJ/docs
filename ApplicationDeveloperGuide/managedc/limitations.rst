@@ -13,7 +13,7 @@ Managed C code is not supported in simulation.
 WebAssembly Module Memory
 -------------------------
 
-WebAssembly memory instance used page size of 8KB to fit embedded footprint concerns (not 64KB as specified `here <https://www.w3.org/TR/wasm-core-1/#memory-instances%E2%91%A0>`__ ).
+WebAssembly memory instance uses a page size of 8KB to fit embedded footprint concerns (not 64KB as specified `here <https://www.w3.org/TR/wasm-core-1/#memory-instances%E2%91%A0>`__ ).
 
 Unsupported WebAssembly Functionalities
 ---------------------------------------
