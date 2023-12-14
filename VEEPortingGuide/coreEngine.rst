@@ -17,12 +17,12 @@ Block Diagram
 
    Core Engine Block Diagram
 
-Functional Description
-======================
+Link Flow
+=========
 
-:ref:`The following diagram <fig_mjvm_flow2>` shows the overall process. The first two
-steps are performed within the SDK. The remaining steps
-are performed within the C third-party IDE.
+:ref:`The following diagram <fig_mjvm_flow2>` shows the overall process. 
+Application development is performed within MICROEJ SDK.
+The remaining steps are performed within the C third-party IDE.
 
 .. _fig_mjvm_flow2:
 .. figure:: images/mjvm_flow2.*
@@ -40,7 +40,7 @@ are performed within the C third-party IDE.
 
 3. Step 3 consists in linking the previous ELF file with the 
    Core Engine library and a third-party BSP (OS, drivers, etc.). This
-   step may require a third-party linker provided by a C toolchain.
+   step requires a third-party linker provided by a C toolchain.
 
 
 Architecture
