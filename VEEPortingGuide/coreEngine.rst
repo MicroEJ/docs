@@ -8,6 +8,14 @@ MicroEJ Core Engine
 The MicroEJ Core Engine and its components represent the core of the Architecture.
 It is used to compile and execute at runtime the MicroEJ Application code.
 
+Block Diagram
+=============
+
+.. figure:: images/mjvm_block-diagram.png
+   :alt: Core Engine Block Diagram
+   :align: center
+
+   Core Engine Block Diagram
 
 Functional Description
 ======================
