@@ -14,8 +14,6 @@ Prerequisites
 
 To follow this Getting Started, all you need is: 
 
-* :guilabel:`Demo-Wearable-VG` MicroEJ Application will be used in this Getting Started. 
-  Please contact :ref:`our support team <get_support>` to get the code for this demo. It will soon be released publicly.
 * An Internet connection to access Github repositories & MicroEJ Central Repository.
 * i.MX RT595 EVK board, available `here <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt595-evaluation-kit:MIMXRT595-EVK>`__.
 * G1120B0MIPI display panel, available `here <https://www.nxp.com/part/G1120B0MIPI>`__.
@@ -105,6 +103,18 @@ Once installed, ``LinkServer_xxx/binaries`` folder must be set on your Path. To 
 * Click on the :guilabel:`Environment Variables...` button.
 * Select :guilabel:`Path` variable under the :guilabel:`User variables` section and edit it.
 * Click on :guilabel:`New` and point to the ``binaries`` folder located where you installed LinkServer (e.g. ``nxp/LinkServer_1.2.45/binaries``).
+
+Get Demo-Wearable-VG MicroEJ Application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For this Getting Started, the :guilabel:`Demo-Wearable-VG` MicroEJ Application will be use. You can download it using the following command::
+   
+   git clone -b 2.0.0 https://github.com/MicroEJ/Demo-Wearable-VG.git
+
+.. note::
+  
+   If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/Demo-Wearable-VG/tree/2.0.0>`__. 
+   Then you can click on ::guilabel:`Code > Download ZIP`.
 
 Set up the MicroEJ Application on your IDE
 ------------------------------------------
