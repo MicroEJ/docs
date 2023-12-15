@@ -10,12 +10,16 @@ Simulation
 
 Managed C code is not supported in simulation.
 
+WebAssembly Module Memory
+-------------------------
+
+WebAssembly memory instance uses a page size of 8KB to fit embedded footprint concerns (not 64KB as specified `here <https://www.w3.org/TR/wasm-core-1/#memory-instances%E2%91%A0>`__ ).
+
 Unsupported WebAssembly Functionalities
 ---------------------------------------
 
-- Only one function per WebAssembly module is supported.
-- C functions are only permitted to call themselves (recursive functions are supported).
-- WebAssembly globals, memory, tables, and elements are currently unsupported.
+- WebAssembly globals, tables, and elements are currently unsupported.
+- WebAssembly memory load/store instructions are currently unsupported.
 
 Supported WebAssembly Instructions
 ------------------------------------
@@ -46,7 +50,7 @@ Only a limited set of `WebAssembly instructions <https://www.w3.org/TR/wasm-core
 * local.tee
 * loop
 * return
-
+* call
 
 ..
    | Copyright 2023, MicroEJ Corp. Content in this space is free 
