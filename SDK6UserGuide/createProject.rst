@@ -398,7 +398,7 @@ Application Project
       }
 
   - Create a file with the extension ``.kf`` in the ``src/main/resources`` folder, for example ``MyApplication.kf``.
-    This file must at least contains the property ``entryPoint`` set to the Full Qualified Name of the Application Feature class, for example::
+    This file must at least contain the property ``entryPoint`` set to the Full Qualified Name of the Application Feature class, for example::
 
       entryPoint=com.mycompany.MyApplication
       version=0.1.0
