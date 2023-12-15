@@ -107,6 +107,7 @@ SOAR
 
 - [Multi] - Fixed integration of the :ref:`bytecode verifier <soar_binary_code_verifier>` in Feature mode.
 - Fixed trimming of leading or trailing spaces in immutable strings
+- [Multi] Improved the error message thrown when no Feature definition file is found and displayed the classpath to better guide developers in identifying potential causes.
 
 Tools
 ~~~~~
