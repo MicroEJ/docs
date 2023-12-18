@@ -172,7 +172,7 @@ Setup Gitea
 
 Install Gitea
 ~~~~~~~~~~~~~
-#. Once Gitea container is started, go to ``http://localhost:3000/``.
+#. Once the Gitea container is started, go to ``http://localhost:3000/``.
 #. Don't change anything on the ``Initial Configuration``, click on :guilabel:`Install Gitea`
 #. Click on :guilabel:`Register account` and create one. The first created user become the administrator.
 
