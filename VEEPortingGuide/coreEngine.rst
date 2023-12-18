@@ -14,6 +14,7 @@ Block Diagram
 .. figure:: images/mjvm_block-diagram.png
    :alt: Core Engine Block Diagram
    :align: center
+   :scale: 80%
 
    Core Engine Block Diagram
 
