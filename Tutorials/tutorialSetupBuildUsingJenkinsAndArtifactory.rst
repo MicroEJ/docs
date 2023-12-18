@@ -110,7 +110,7 @@ It bundles Foundation Library APIs and numerous Add-On Libraries.
 Next step is to download a local copy of this repository:
 
 #. Visit the `Central Repository <https://developer.microej.com/central-repository/>`_ on the MicroEJ Developer website.
-#. Navigate to the :guilabel:`Working Offline` section.
+#. Navigate to the :guilabel:`Production Setup` section.
 #. Click on the :guilabel:`offline repository` link. This will download the Central Repository as a ZIP file.
 
 Setup Artifactory
@@ -158,7 +158,7 @@ In this section, we will import MicroEJ repositories into Artifactory repositori
 #. Go to :guilabel:`Administration` > :guilabel:`Artifactory` > :guilabel:`Import & Export` > :guilabel:`Repositories`.
 #. Scroll to the :guilabel:`Import Repository from Zip` section.
 #. As :guilabel:`Target Local Repository`, select ``microej-module-repository`` in the list.
-#. Click on :guilabel:`Select file` and select the MicroEJ module repository zip file (``microej-[MicroEJ version]-[version].zip``) that you downloaded earlier (please refer to section :ref:`get_microej_module_repository`).
+#. Click on :guilabel:`Select file` and select the MicroEJ module repository zip file (``central-repository-[version].zip``) that you downloaded earlier (please refer to section :ref:`get_microej_module_repository`).
 #. Click :guilabel:`Upload`. At the end of upload, click on :guilabel:`Import`. Upload and import may take some time.
 
 Artifactory is now hosting all required MicroEJ modules. 
