@@ -4,11 +4,30 @@
 Changelog
 =========
 
+13.7.2 (2023-12-21)
+===================
+
+MicroUI
+"""""""
+
+**Fixed**
+
+- Fix the drawing of thick faded circle arcs.
+
+Simulator
+"""""""""
+
+**Fixed**
+
+- Fix the management of KF feature's fonts.
+
 13.7.0 (2023-10-23)
 ===================
 
 MicroUI
 """""""
+
+**Added**
 
 - Add the pre-multiplied image formats `ARGB8888_PRE`, `ARGB1555_PRE` and `ARGB4444_PRE`.
 - Add the possibility to free third-party resources associated with images.
