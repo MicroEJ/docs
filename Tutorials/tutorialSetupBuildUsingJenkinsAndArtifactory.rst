@@ -87,7 +87,7 @@ This section assumes the prerequisites have been properly installed.
     .. literalinclude:: resources/docker-compose.yaml
         :language: yaml
 
-#. Create an other file name ``Dockerfile`` and copy this content: 
+#. Create another file named ``Dockerfile`` and copy this content: 
 
     .. literalinclude:: resources/Dockerfile
         :language: dockerfile
