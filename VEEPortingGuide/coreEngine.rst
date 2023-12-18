@@ -20,7 +20,7 @@ Block Diagram
 Link Flow
 =========
 
-:ref:`The following diagram <fig_mjvm_flow2>` shows the overall process. 
+:ref:`The following diagram <fig_mjvm_flow2>` shows the overall build flow. 
 Application development is performed within MICROEJ SDK.
 The remaining steps are performed within the C third-party IDE.
 
