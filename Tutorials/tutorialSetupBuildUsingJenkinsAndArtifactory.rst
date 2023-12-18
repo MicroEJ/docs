@@ -82,7 +82,7 @@ Prepare your Docker environment
 
 This section assumes the prerequisites have been properly installed.
 
-#. Create a new directory, inside create a file name ``docker-compose.yaml`` and copy this content: 
+#. Create a new directory, inside create a file named ``docker-compose.yaml`` and copy this content: 
 
     .. literalinclude:: resources/docker-compose.yaml
         :language: yaml
