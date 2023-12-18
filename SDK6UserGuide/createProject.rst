@@ -18,7 +18,7 @@ This chapter explains the different ways to create a new project.
       The creation of a project with Android Studio is done as follows:
       
       - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
-      - Select a simple project type, for example :guilabel:`Wear OS` > :guilabel:`No Activity`.
+      - Select :guilabel:`Generic` > :guilabel:`New MicroEJ project`.
 
       .. figure:: images/android-studio-create-project-01.png
          :alt: Project Creation in Android Studio
@@ -31,16 +31,27 @@ This chapter explains the different ways to create a new project.
       - Fill the name of the project in the :guilabel:`Name` field.
       - Fill the package name of the project in the :guilabel:`Package name` field.
       - Select the location of the project in the :guilabel:`Save location` field.
-      - Select the language :guilabel:`Java` in the :guilabel:`Language` field.
       - Select :guilabel:`Kotlin` for the :guilabel:`Build configuration language` field.
       
       .. note::
         The SDK uses Kotlin as the default Gradle build script DSL. 
         The use of the Groovy build script DSL is still possible but not officially supported.
+            
+      .. figure:: images/android-studio-create-project-02.png
+         :alt: Project Creation in Android Studio
+         :align: center
+         :scale: 70%
       
+         Project Creation in Android Studio
+      
+      - Click on :guilabel:`Next` button.
+      - Fill the group of the artifact to publish in the :guilabel:`Group` field.
+      - Fill the version of the artifact to publish in the :guilabel:`Version` field.
+      - Select the module type among :guilabel:`Application` and :guilabel:`Addon-Library` in the drop-down list.
+      - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
       - Click on :guilabel:`Finish` button.
       
-      .. figure:: images/android-studio-create-project-02.png
+      .. figure:: images/android-studio-create-project-03.png
          :alt: Project Creation in Android Studio
          :align: center
          :scale: 70%
@@ -49,52 +60,19 @@ This chapter explains the different ways to create a new project.
       
       - Change the view from :guilabel:`Android` to :guilabel:`Project` in the selectbox at the top of the project's files tree:
       
-      .. figure:: images/android-studio-create-project-03.png
+      .. figure:: images/android-studio-create-project-04.png
          :alt: Project View in Android Studio
          :align: center
          :scale: 70%
       
          Project View in Android Studio
-      
 
-      The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensure that the project uses the right version :
-      
-      - Open the ``gradle/wrapper/gradle-wrapper.properties`` file.
-      - Update the Gradle version if it is needed:
-      
-         .. code-block::
-          
-            distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
-      
-      If you want to know more about the Gradle Wrapper, go to the :ref:`sdk_6_create_project_gradle_wrapper` section.
+      .. note::
+         The newly created Gradle project uses Gradle Wrapper with Gradle version ``8.2``.
+         Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
 
-      The project created by Android Studio is a multi-project with a single subproject (named ``app``).
-      This subproject is an Android application (Gradle ``com.android.application`` plugin). 
-      The ``build.gradle.kts`` and the ``settings.gradle.kts`` files have to be updated to make it a MicroEJ project:
-      
-      - Open the ``app/build.gradle.kts`` file.
-      - Erase its whole content.
-      - :ref:`Configure the project <sdk_6_create_project_configure_project>` depending on the module nature you want to build.
-      - Declare the dependencies required by your project in the ``dependencies`` block. For example::
-      
-            dependencies {
-                implementation("ej.api:edc:1.3.5")
-            }
-      
-      - Open the ``settings.gradle.kts`` file.
-      - Remove everything except these 2 lines::
-
-            rootProject.name = "My Application"
-            include(":app")
-
-      - Delete the following files since they are not required for a MicroEJ project:
-
-        - ``build.gradle.kts``
-        - ``gradle.properties``
-        - ``app/libs``
-        - ``app/src/main/res``
-        - ``app/src/main/AndroidManifest.xml``
-        - ``app/src/proguard-rules.pro``
+      The project created by the wizard is a multi-project with a single subproject (named ``app``).
+      This subproject is a MicroEJ Application or Add-On Library, depending on the module type that has been chosen.
 
       .. note::
          By default, Android Studio automatically saves any file change, 
