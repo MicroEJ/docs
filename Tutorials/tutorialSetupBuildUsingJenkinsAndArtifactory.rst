@@ -232,7 +232,7 @@ In this example, we will create a very simple module using the Sandbox Applicati
 #. Click :guilabel:`Finish`. This will create the project files and structure.
 #. Right-click on source folder ``src/main/java`` and select :guilabel:`New` > :guilabel:`Package`. Set a name to the package and click :guilabel:`Finish`.
 #. Right-click on the new package and select :guilabel:`New` > :guilabel:`Class`. Set ``Main`` as name for the class and check ``public static void main(String[] args)``, then click :guilabel:`Finish`.
-#. Add the line ``System.out.println("Hello World!");`` to the function and save it.
+#. Add the line ``System.out.println("Hello World!");`` to the method and save it.
 
     .. image:: images/tuto_microej_cli_module_files.PNG
         :align: center
