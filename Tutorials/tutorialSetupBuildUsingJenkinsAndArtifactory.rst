@@ -254,7 +254,7 @@ Upload to your Git repository
 .. note::
    We need the IP address of the Docker Bridge Network, here we consider that it's ``172.17.0.1`` but you can check with the command ``ip addr show docker0`` on the Docker host.
 
-#. Open the project directory, create a file name ``Jenkinsfile`` and copy this content inside:
+#. Open the project directory, create a file named ``Jenkinsfile`` and copy this content inside:
 
     .. literalinclude:: resources/Jenkinsfile
         :language: groovy
