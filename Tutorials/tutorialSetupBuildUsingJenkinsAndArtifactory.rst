@@ -259,7 +259,7 @@ Upload to your Git repository
     .. literalinclude:: resources/Jenkinsfile
         :language: groovy
 
-#. Create a directory named ``ivy``, create a file name ``ivysettings-artifactory.xml`` and copy this content inside: 
+#. Create a directory named ``ivy``, create a file named ``ivysettings-artifactory.xml`` and copy this content inside: 
 
     .. literalinclude:: resources/ivysettings-artifactory.xml
         :language: xml
