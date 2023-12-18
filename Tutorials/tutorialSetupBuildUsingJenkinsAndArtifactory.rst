@@ -264,7 +264,7 @@ Upload to your Git repository
     .. literalinclude:: resources/ivysettings-artifactory.xml
         :language: xml
 
-This file configures MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this tutorial. Please refer to :ref:`mmm_settings_file` section for more details.
+This file configures the MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this tutorial. Please refer to the :ref:`mmm_settings_file` section for more details.
 
     .. note::
        At this point, the content of the directory ``com.example.hello-world`` should look like the following:
