@@ -176,7 +176,7 @@ acknowledge the restart of its activity.
 Time
 ----
 
-The Core Engine defines two times:
+The Core Engine defines two different times:
 
 -  the application time: the difference, measured in milliseconds,
    between the current time and midnight, January 1, 1970, UTC.
