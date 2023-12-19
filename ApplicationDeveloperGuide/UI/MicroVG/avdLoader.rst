@@ -6,7 +6,7 @@ Android Vector Drawable Loader
 Overview
 --------
 
-The AVD Loader is an Add-on Library that can load vector images from Android Vector Drawable XML files.
+The AVD Loader is an Add-On Library that can load vector images from Android Vector Drawable XML files.
 Unlike the vector images that are loaded using a raw output file format (see :ref:`Vector Images <vectorimage_overview>`), the XML parsing and interpreting is done at runtime.
 This is useful for loading a vector image as an external resource, especially when the resource has to be loaded dynamically (i.e., not known at build-time).
 
