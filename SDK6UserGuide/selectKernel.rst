@@ -11,20 +11,20 @@ Using a Module Dependency
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When your Kernel is published in an artifact repository, 
-you can define the Kernel by declaring a module dependency in the ``build.gradle.kts`` file, with the ``microejKernel`` configuration::
+you can define the Kernel by declaring a module dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration::
    
    dependencies {
-      microejKernel("com.mycompany:mykernel:1.0.0")
+      microejVee("com.mycompany:mykernel:1.0.0")
    }
  
 Using a Local Kernel
 ~~~~~~~~~~~~~~~~~~~~
 
 When your Kernel has been built locally, 
-you can use its Virtual Device and its Executable by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejKernel`` configuration::
+you can use its Virtual Device and its Executable by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration::
 
    dependencies {
-      microejKernel(files("C:\\path\\to\\my\\kernel\\virtual\\device", "C:\\path\\to\\my\\kernel\\executable.out"))
+      microejVee(files("C:\\path\\to\\my\\kernel\\virtual\\device", "C:\\path\\to\\my\\kernel\\executable.out"))
    }
 
 .. note::

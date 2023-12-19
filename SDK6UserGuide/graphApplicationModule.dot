@@ -13,7 +13,7 @@ digraph mygraph {
     "adp" [fillcolor = "#f76241"]
     "checkModule" [fillcolor = "#f76241"]
     "loadKernelExecutable" [fillcolor = "#f76241"]
-    "loadVeePort" [fillcolor = "#f76241"]
+    "loadVee" [fillcolor = "#f76241"]
     "loadApplicationConfiguration" [fillcolor = "#f76241"]
     "loadExecutableConfiguration" [fillcolor = "#f76241"] 
     "loadFeatureConfiguration" [fillcolor = "#f76241"]
@@ -31,7 +31,7 @@ digraph mygraph {
     "test" -> "loadTestApplicationConfiguration"
     "testClasses" -> "compileTestJava"
     "testClasses" -> "processTestResources"
-    "loadTestApplicationConfiguration" -> "loadVeePort"
+    "loadTestApplicationConfiguration" -> "loadVee"
     "processResources" -> "adp"
     "processTestResources" -> "adp"
     "processTestResources" -> "classes"
@@ -46,19 +46,19 @@ digraph mygraph {
     "jar" -> "classes"
     "runOnSimulator" -> "classes"
     "runOnSimulator" -> "loadApplicationConfiguration"
-    "loadApplicationConfiguration" -> "loadVeePort"
+    "loadApplicationConfiguration" -> "loadVee"
     "checkModule" -> "assemble"
     "check" -> "checkModule"
     "buildWPK" -> "jar"
     "buildWPK" -> "javadoc"
     "buildExecutable" -> "test"
     "buildExecutable" -> "loadExecutableConfiguration"
-    "loadExecutableConfiguration" -> "loadVeePort"
-    "buildVirtualDevice" -> "loadVeePort"
+    "loadExecutableConfiguration" -> "loadVee"
+    "buildVirtualDevice" -> "loadVee"
     "buildVirtualDevice" -> "buildWPK"
     "buildFeature" -> "loadFeatureConfiguration"
     "loadFeatureConfiguration" -> "loadKernelExecutable"
-    "loadFeatureConfiguration" -> "loadVeePort"
+    "loadFeatureConfiguration" -> "loadVee"
     "runOnDevice" -> "buildExecutable"
 
     subgraph cluster_legend {
