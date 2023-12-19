@@ -10,21 +10,19 @@ digraph mygraph {
         fontname="Helvetica,Arial,sans-serif"
     ]
     edge [fontname="Helvetica,Arial,sans-serif"]
-    "microejVeePort" [fillcolor = "#41f753"]
-    "microejKernel" [fillcolor = "#41f753"]
+    "microejVee" [fillcolor = "#41f753"]
     "microejApplication" [fillcolor = "#41f753"]
     "microejApplicationClasspath" [fillcolor = "#b0d6d3"]
-    "microejVeePortClasspath" [fillcolor = "#b0d6d3"]
+    "microejVeeClasspath" [fillcolor = "#b0d6d3"]
     "microejKernelExecutableClasspath" [fillcolor = "#b0d6d3"]
     "virtualDeviceToolClasspath" [fillcolor = "#b0d6d3"]
     "addonProcessorClasspath" [fillcolor = "#b0d6d3"]
     "jdtCompilerClasspath" [fillcolor = "#b0d6d3"]
 
-    "loadVeePort" -> "microejVeePortClasspath" [ label="uses" ]
-    "microejVeePortClasspath" -> "microejVeePort"
-    "microejVeePortClasspath" -> "microejKernel"
+    "loadVee" -> "microejVeeClasspath" [ label="uses" ]
+    "microejVeeClasspath" -> "microejVee"
     "loadKernelExecutable" -> "microejKernelExecutableClasspath" [ label="uses" ]
-    "microejKernelExecutableClasspath" -> "microejKernel"
+    "microejKernelExecutableClasspath" -> "microejVee"
     "buildVirtualDevice" -> "microejApplicationClasspath" [ label="uses" ]
     "buildVirtualDevice" -> "virtualDeviceToolClasspath" [ label="uses" ]
     "microejApplicationClasspath" -> "microejApplication"

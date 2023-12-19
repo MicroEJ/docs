@@ -257,7 +257,7 @@ This section gives an example of migration from a ``module.ivy`` file to a ``bui
 
       testImplementation("ej.library.test:junit:1.7.1")
 
-      microejVeePort("com.microej.platform.esp32.esp-wrover-kit-v41:HDAHT:1.8.2")
+      microejVee("com.microej.platform.esp32.esp-wrover-kit-v41:HDAHT:1.8.2")
    }
 
 .. _sdk_6_migrate_build_scripts:
