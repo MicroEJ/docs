@@ -62,6 +62,7 @@ Core Engine
 
 - Added option :ref:`com.microej.runtime.core.gc.markstack.levels.max <option_gc_stack_size>` to configure the maximum number of elements of the Garbage Collector's mark stack.
 - In ``sni.h``, clarified the behavior of ``SNI_createVM()``, ``SNI_startVM()``, and ``SNI_destroyVM()`` when restarting the Core Engine. See also the :ref:`Core Engine implementation <core_engine_implementation>` section.
+- Fixed missing default initialization of the options :ref:`core.memory.javaheap.size <option_java_heap>` and :ref:`core.memory.immortal.size <option_immortal_heap>`.
 - [Multi] - Added a check when ``LLKERNEL_IMPL_getFeatureHandle()`` returns ``0``. Corresponding error code is ``LLKERNEL_FEATURE_INIT_ERROR_NULL_HANDLE``.
 - [Multi] - Removed Feature installation in RAM (legacy :ref:`In-Place Installation mode <feature_inplace_installation>`). See :ref:`architecture8_migration_llkernel`.
 - [Multi] - Updated :ref:`Feature installation boot sequence <feature_persistency>`: all Feature handles are now retrieved prior to initializing them.
@@ -71,8 +72,6 @@ Core Engine
 - [Multi] - Updated the specifications for ``LLKERNEL_IMPL_getFeatureAddressRAM()`` and ``LLKERNEL_IMPL_getFeatureAddressROM()`` functions to return ``NULL`` when an incorrect index is provided.
   This change is only for ``LLKERNEL`` TCK purposes, as the Core Engine only invokes these methods with valid indices.
 - [Multi] - Added an option to enable :ref:`RAM Control <multisandbox_ram_control>` at VEE Port build (disabled by default).
-- Fixed missing default initialization of the options :ref:`core.memory.javaheap.size <option_java_heap>` and :ref:`core.memory.immortal.size <option_immortal_heap>`.
-- [Multi] - Fixed missing default initialization of the option :ref:`com.microej.runtime.kf.waitstop.delay <option_feature_stop_timeout>` when using KF in a Mono-Sandbox environment.
 
 Foundation Libraries
 ~~~~~~~~~~~~~~~~~~~~
@@ -105,9 +104,9 @@ Simulator
 SOAR
 ~~~~
 
-- [Multi] - Fixed integration of the :ref:`bytecode verifier <soar_binary_code_verifier>` in Feature mode.
 - Fixed trimming of leading or trailing spaces in immutable strings
-- [Multi] Improved the error message thrown when no Feature definition file is found and displayed the classpath to better guide developers in identifying potential causes.
+- [Multi] - Fixed integration of the :ref:`bytecode verifier <soar_binary_code_verifier>` in Feature mode.
+- [Multi] - Improved the error message thrown when no Feature definition file is found and displayed the classpath to better guide developers in identifying potential causes.
 
 Tools
 ~~~~~
