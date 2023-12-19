@@ -53,7 +53,7 @@ This Architecture version update introduces the following main features:
     - Value of the ``BON`` constant ``com.microej.architecture.capability`` is now ``mono`` instead of ``single`` when the Core Engine capability is Mono-Sandbox.
 
 - Support of THALES Sentinel License Manager 
-- Added a default MicroEJ application ``microejapp.o`` that can be used for BSP test whitout SDK license
+- Added a default application for early-stage VEE Port integration without the need of a SDK license.
 
 If you plan to migrate a VEE Port from Architecture ``8.0.0`` to Architecture ``8.1.0``, consider the :ref:`architecture8_migration` chapter.
 
