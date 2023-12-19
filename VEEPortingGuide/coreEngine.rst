@@ -692,10 +692,9 @@ information.
 Installation
 ============
 
-The Core Engine and its components are mandatory. In the
-platform configuration file, check :guilabel:`Multi Applications` to install the
-Core Engine in "Multi-Sandbox" mode. Otherwise, the "Single
-application" mode is installed.
+The Core Engine and its components are mandatory.  
+By default, it is configured with Mono-Sandbox capability.
+See the :ref:`core_engine_capabilities` section to update the Core Engine with Multi-Sandbox or Tiny-Sandbox capability.
 
 Abstraction Layer
 =================
