@@ -87,7 +87,7 @@ Integration
 ~~~~~~~~~~~
 
 - Updated Architecture End User License Agreement to version ``SDK 3.1-B``.
-- Removed warning messages related to missing KF options when running the SOAR or the S3 in Mono-Sandbox.
+- Removed warning messages related to missing KF options when running the SOAR or the Simulator in Mono-Sandbox.
 
 Simulator
 ~~~~~~~~~
@@ -1255,7 +1255,7 @@ Simulator
    ``.constants.list`` resources)
 -  Added ``BON-1.4`` support for `ej.bon.Util.newArray()`_
 -  Added Front Panel framework
--  Updated error message when reaching S3 simulator limits
+-  Updated error message when reaching Simulator limits
 -  Removed the ``Bootstrapping a Smart Software Simulator`` message when
    verbose mode in enabled
 -  Fixed `Object.clone()`_ on an immutable object to return a new
