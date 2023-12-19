@@ -131,7 +131,7 @@ For demonstration purposes we will allow anonymous users to deploy modules in th
 #. Click on :guilabel:`anonymous` and check :guilabel:`Deploy/Cache` permission in the :guilabel:`Selected Users Repositories` category.
 #. Click on :guilabel:`Save`.
 
-Next steps will involve uploading large files, so we have to augment the file upload maximum size accordingly:
+Next steps will involve uploading large files, so we have to increase the file upload maximum size accordingly:
 
 #. Go to :guilabel:`Administration` > :guilabel:`Artifactory` > :guilabel:`General` > :guilabel:`Settings`.
 #. In the :guilabel:`General Settings` section, change the value of :guilabel:`File Upload In UI Max Size (MB)` to ``1024`` then click on :guilabel:`Save`.
