@@ -11,12 +11,12 @@ Using a Module Dependency
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When your VEE Port is published in an artifact repository, 
-you can define the VEE Port by declaring a module dependency in the ``build.gradle.kts`` file, with the ``microejVeePort`` configuration:
+you can define the VEE Port by declaring a module dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration:
 
    .. code:: java
 
       dependencies {
-         microejVeePort("com.mycompany:myveeport:1.0.0")
+         microejVee("com.mycompany:myveeport:1.0.0")
       }
    
    .. note::
@@ -25,7 +25,7 @@ you can define the VEE Port by declaring a module dependency in the ``build.grad
       If several artifacts are published with this configuration, the build will fail because it doesn't know which artifact to choose.
       You can select the right artifact by adding information on the one to fetch in the ``artifact`` block, for example::
 
-         microejVeePort("com.mycompany:myveeport:1.0.0") {
+         microejVee("com.mycompany:myveeport:1.0.0") {
             artifact {
                name = "artifact-name"
                type = "zip"
@@ -41,10 +41,10 @@ Using a Local VEE Port Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When your VEE Port has been built locally and is therefore available in a local directory, 
-you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVeePort`` configuration::
+you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration::
 
    dependencies {
-      microejVeePort(files("C:\\path\\to\\my\\veePort\\source"))
+      microejVee(files("C:\\path\\to\\my\\veePort\\source"))
    }
 
 .. note::
@@ -57,10 +57,10 @@ Using a Local VEE Port Archive
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When your VEE Port is available locally as an archive file (``.zip`` or ``.vde``),
-you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVeePort`` configuration::
+you can use it by declaring a file dependency in the ``build.gradle.kts`` file, with the ``microejVee`` configuration::
 
    dependencies {
-      microejVeePort(files("C:\\path\\to\\my\\veePort\\file.zip"))
+      microejVee(files("C:\\path\\to\\my\\veePort\\file.zip"))
    }
 
 .. note::

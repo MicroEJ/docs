@@ -218,7 +218,7 @@ If the dependency is a valid VEE Port, this error probably means that several ar
 with the ``default`` Ivy configuration.
 To fix this issue, you can select the right artifact by adding information on the one to fetch in the ``artifact`` block, for example::
 
-	microejVeePort("com.mycompany:myveeport:1.0.0") {
+	microejVee("com.mycompany:myveeport:1.0.0") {
 		artifact {
 			name = "artifact-name"
 			type = "zip"

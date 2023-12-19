@@ -17,7 +17,7 @@ and use them with the API ``providers.systemProperty("myPropertyName").get()``.
 For example to define a local VEE Port directory, the project can be configured with::
 
    dependencies {
-      microejVeePort(files(providers.systemProperty("myVeePortPath").get()))
+      microejVee(files(providers.systemProperty("myVeePortPath").get()))
    }
 
 and built with:

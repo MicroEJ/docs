@@ -4,6 +4,43 @@ Migration Notes
 ---------------
 
 ---------------------
+From 0.14.0 to 0.15.0
+---------------------
+
+This section applies if MicroEJ SDK 6 ``0.15.0`` is used on a project that was created using MicroEJ SDK 6 ``0.14.0`` 
+or lower.
+
+Unification of VEE dependency declaration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``microejVeePort`` configuration, used to define a VEE Port, and the ``microejKernel`` configuration, used to define a Kernel,
+have been unified into the ``microejVee`` configuration.
+
+- To use a VEE Port or a Kernel published in an artifact repository, declare a Module dependency in the ``build.gradle.kts`` file::
+
+   dependencies {
+      microejVee("com.mycompany:myVee:1.0.0")
+   }
+
+- To use a VEE Port directory available locally, declare a file dependency in the ``build.gradle.kts`` file::
+
+   dependencies {
+      microejVee(files("C:\\path\\to\\my\\veePort\\source"))
+   }
+
+- To use a VEE Port archive available locally, declare a file dependency in the ``build.gradle.kts`` file::
+
+   dependencies {
+      microejVee(files("C:\\path\\to\\my\\veePort\\file.zip"))
+   }
+
+- To use a Kernel Virtual Device and Executable available locally, declare a file dependency in the ``build.gradle.kts``::
+
+   dependencies {
+      microejVee(files("C:\\path\\to\\my\\kernel\\executable.out", "C:\\path\\to\\my\\kernel\\virtual\\device"))
+   }
+
+---------------------
 From 0.11.1 to 0.12.0
 ---------------------
 
