@@ -1,7 +1,7 @@
-.. _sdk_6_getting_started_imxrt595:
+.. _sdk_6_getting_started_imxrt1170:
 
-i.MX RT595 EVK
-==============
+i.MX RT1170 EVK
+===============
 
 During this Getting Started, you will learn to run an application on the Virtual Device and on the Device using the MicroEJ SDK 6.
 
@@ -14,9 +14,12 @@ Prerequisites
 
 To follow this Getting Started, all you need is: 
 
+
+* :guilabel:`AnimatedMascot` MicroEJ Application will be used in this Getting Started. 
+  Please contact :ref:`our support team <get_support>` to get the code for this demo. It will soon be released publicly.
 * An Internet connection to access Github repositories & MicroEJ Central Repository.
-* i.MX RT595 EVK board, available `here <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt595-evaluation-kit:MIMXRT595-EVK>`__.
-* G1120B0MIPI display panel, available `here <https://www.nxp.com/part/G1120B0MIPI>`__.
+* i.MX RT1170 EVK board, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVK>`__.
+* RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0#/>`__.
 
 Environment Setup
 -----------------
@@ -104,25 +107,13 @@ Once installed, ``LinkServer_xxx/binaries`` folder must be set on your Path. To 
 * Select :guilabel:`Path` variable under the :guilabel:`User variables` section and edit it.
 * Click on :guilabel:`New` and point to the ``binaries`` folder located where you installed LinkServer (e.g. ``nxp/LinkServer_1.2.45/binaries``).
 
-Get Demo-Wearable-VG MicroEJ Application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For this Getting Started, the :guilabel:`Demo-Wearable-VG` MicroEJ Application will be use. You can download it using the following command::
-   
-   git clone -b 2.0.0 https://github.com/MicroEJ/Demo-Wearable-VG.git
-
-.. note::
-  
-   If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/Demo-Wearable-VG/tree/2.0.0>`__. 
-   Then you can click on ::guilabel:`Code > Download ZIP`.
-
 Set up the MicroEJ Application on your IDE
 ------------------------------------------
 
 Import the project
 ^^^^^^^^^^^^^^^^^^
 
-The first step is to import the :guilabel:`Demo-Wearable-VG` MicroEJ Application into your IDE: 
+The first step is to import the :guilabel:`AnimatedMascot` MicroEJ Application into your IDE: 
 
 .. note::
   
@@ -130,7 +121,7 @@ The first step is to import the :guilabel:`Demo-Wearable-VG` MicroEJ Application
 
 
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
-* Select the ``Demo-Wearable-VG`` directory located where you downloaded it and click on the :guilabel:`OK` button.
+* Select the ``AnimatedMascot`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
       .. figure:: images/getting-started-import-demo-application.png
          :alt: Import demo application
@@ -174,12 +165,12 @@ The Gradle project should now be imported in IntelliJ IDEA, your workspace conta
          :align: center
          :scale: 70%
 
-.. _sdk_6_getting_started_rt595_run_virtual_device:
+.. _sdk_6_getting_started_rt1170_run_virtual_device:
 
 Run an application on the Virtual Device
 ----------------------------------------
 
-In order to execute the :guilabel:`Demo-Wearable-VG` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
+In order to execute the :guilabel:`AnimatedMascot` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
 
 .. note::
   
@@ -192,7 +183,7 @@ In order to execute the :guilabel:`Demo-Wearable-VG` Application on the Virtual 
          :align: center
          :scale: 70%
 
-The Virtual Device starts and executes the :guilabel:`Demo-Wearable-VG` application.
+The Virtual Device starts and executes the :guilabel:`AnimatedMascot` application.
 
       .. figure:: images/getting-started-virtual-device.png
          :alt: Virtual Device
@@ -201,22 +192,22 @@ The Virtual Device starts and executes the :guilabel:`Demo-Wearable-VG` applicat
 
 .. note::
   
-   If you want to know more about the use of the :guilabel:`Demo-Wearable-VG`, please have a look at its `Readme <https://github.com/MicroEJ/Demo-Wearable-VG/blob/master/watch-vg/README.md>`__.
+   If you want to know more about the use of the :guilabel:`AnimatedMascot`, please have a look at its Readme.
 
 
-Run an application on i.MX RT595 EVK
-------------------------------------
+Run an application on i.MX RT1170 EVK
+-------------------------------------
 
-To deploy :guilabel:`Demo-Wearable-VG` application on your board, you will have to:
+To deploy :guilabel:`AnimatedMascot` application on your board, you will have to:
 
 * Get an :ref:`Evaluation License <sdk_eula>`
 * Build the Executable
 * Flash the board
 
-Build the Executable for i.MX RT595 EVK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Build the Executable for i.MX RT1170 EVK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to build the Executable of the :guilabel:`Demo-Wearable-VG` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
+In order to build the Executable of the :guilabel:`AnimatedMascot` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
 
 .. note::
   
@@ -244,7 +235,7 @@ Now your Evaluation license is installed, you can relaunch your application buil
 
 The gradle task deploys the MicroEJ application in the BSP and then builds the BSP using Make.
 
-The :guilabel:`Demo-Wearable-VG` application is built and ready to be flashed on i.MX RT595 EVK once the hardware setup is completed.
+The :guilabel:`AnimatedMascot` application is built and ready to be flashed on i.MX RT1170 EVK once the hardware setup is completed.
 
 Hardware Setup
 ^^^^^^^^^^^^^^
@@ -284,10 +275,10 @@ The COM port uses the following parameters:
 
 You can have a look at your application logs with an RS232 Terminal (e.g. `Termite <https://www.compuphase.com/software_termite.htm>`__).
 
-Flash the application on the i.MX RT595 EVK board
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Flash the application on the i.MX RT1170 EVK board
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to flash the :guilabel:`Demo-Wearable-VG` Application on i.MX RT595 EVK, the application provides the Gradle :guilabel:`runOnDevice` task.
+In order to flash the :guilabel:`AnimatedMascot` Application on i.MX RT1170 EVK, the application provides the Gradle :guilabel:`runOnDevice` task.
 
 .. note::
   
@@ -300,7 +291,7 @@ In order to flash the :guilabel:`Demo-Wearable-VG` Application on i.MX RT595 EVK
          :align: center
          :scale: 70%
 
-Once the firmware is flashed, you should see the :guilabel:`Demo-Wearable-VG` running on your board.      
+Once the firmware is flashed, you should see the :guilabel:`AnimatedMascot` running on your board.      
 
 .. raw:: html
 
@@ -316,7 +307,7 @@ Once the firmware is flashed, you should see the :guilabel:`Demo-Wearable-VG` ru
          </tr>
          <tr>
             <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
-               Fig 1. Application running on i.MXRT595-EVK
+               Fig 1. Application running on i.MXRT1170-EVK
             </td>
             <td style="width:50%;text-align:center;font-size:18px;font-style:italic;">
                Fig 2. Application logs on Termite
@@ -348,7 +339,7 @@ by
 
    g.setColor(Colors.GREEN);
 
-* Follow :ref:`sdk_6_getting_started_rt595_run_virtual_device` instructions to launch the modified application on the Virtual Device.
+* Follow :ref:`sdk_6_getting_started_rt1170_run_virtual_device` instructions to launch the modified application on the Virtual Device.
 
 Here is the modified application running in simulation: 
 
