@@ -93,6 +93,7 @@ This section assumes the prerequisites have been properly installed.
         :language: dockerfile
 
 #. In this directory, launch the command ``docker compose up -d``. After a few moments you should have three running containers (named jenkins, gitea and artifactory). 
+
 Using ``docker compose ps`` will show if containers started properly. Logs can be viewed with ``docker compose logs``. 
 
 
