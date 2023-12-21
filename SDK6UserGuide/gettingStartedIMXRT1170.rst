@@ -245,16 +245,16 @@ Hardware Setup
          :align: center
          :scale: 70%
 
-Setup the i.MX RT595 EVK:
+Setup the i.MX RT1170 EVK
 
-* Check that the dip switches (SW7) are set to OFF, OFF and ON (ISP0, ISP1, ISP2).
-* Ensure jumpers JP18 and JP19 are closed.
-* Remove jumper JP4.
-* Connect the micro-USB cable to J40 to power the board.
+* Check that the dip switches (SW1) are set to OFF, OFF, ON and OFF.
+* Ensure jumpers J6 and J7 are closed.
+* Connect the micro-USB cable to J11 to power the board.
+* You can connect 5 V power supply to J43 if you need to use the display
 
-The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger, and as a power input for the board.
+The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger and as a power input for the board.
 
-A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
+MicroEJ VEE Port uses the virtual UART from the i.MX RT1170 EVK USB port. A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
 
 The COM port uses the following parameters:
 
