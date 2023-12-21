@@ -266,7 +266,7 @@ by the SOAR.
 ---------------------------
 
 MicroEJ SOAR generates ELF absolute symbols to define some
-link-time options (0 based values). By default, IAR linker allocates a 1
+:ref:`link_time_option` (0 based values). By default, IAR linker allocates a 1
 byte section on the fly, which may cause silent sections placement side
 effects or a section overlap error when multiple symbols are generated
 with the same absolute value:

@@ -1,38 +1,47 @@
 .. _core_engine:
 
-===================
-MicroEJ Core Engine
-===================
+===========
+Core Engine
+===========
 
 
-The MicroEJ Core Engine and its components represent the core of the Architecture.
-It is used to compile and execute at runtime the MicroEJ Application code.
+The Core Engine is the core component of the Architecture.
+It executes at runtime the Application code.
 
+Block Diagram
+=============
 
-Functional Description
-======================
-
-:ref:`The following diagram <fig_mjvm_flow2>` shows the overall process. The first two
-steps are performed within the MicroEJ Workbench. The remaining steps
-are performed within the C IDE.
-
-.. _fig_mjvm_flow2:
-.. figure:: images/mjvm_flow2.*
-   :alt: MicroEJ Core Engine Flow
+.. figure:: images/mjvm_block-diagram.png
+   :alt: Core Engine Block Diagram
    :align: center
    :scale: 80%
 
-   MicroEJ Core Engine Flow
+   Core Engine Block Diagram
 
-1. Step 1 consists in writing a MicroEJ Application against a set of
-   Foundation Libraries available in the platform.
+Link Flow
+=========
+
+:ref:`The following diagram <fig_mjvm_flow2>` shows the overall build flow. 
+Application development is performed within MICROEJ SDK.
+The remaining steps are performed within the C third-party IDE.
+
+.. _fig_mjvm_flow2:
+.. figure:: images/mjvm_flow2.*
+   :alt: Core Engine Flow
+   :align: center
+   :scale: 80%
+
+   Core Engine Flow
+
+1. Step 1 consists in writing an Application against a set of
+   Foundation Libraries available in the VEE Port.
 
 2. Step 2 consists in compiling the Application code and the
    required libraries in an ELF library, using the SOAR.
 
 3. Step 3 consists in linking the previous ELF file with the 
    Core Engine library and a third-party BSP (OS, drivers, etc.). This
-   step may require a third-party linker provided by a C toolchain.
+   step requires a third-party linker provided by a C toolchain.
 
 
 Architecture
@@ -57,19 +66,22 @@ The activity of the Core Engine is defined by the Application. When
 the Application is blocked (i.e., when all the MicroEJ threads
 sleep), the RTOS task running the Core Engine sleeps.
 
+
+.. _core_engine_capabilities:
+
 Capabilities
 ============
 
 The Core Engine defines 3 exclusive capabilities:
 
--  Mono-Sandbox: capability to produce a monolithic firmware
+-  Mono-Sandbox: capability to produce a monolithic Executable
    (default one).
 
--  Multi-Sandbox: capability to produce a extensible firmware on
+-  Multi-Sandbox: capability to produce a extensible Executable on
    which new applications can be dynamically installed. See section
    :ref:`multisandbox`.
 
--  Tiny-Sandbox: capability to produce a compacted firmware
+-  Tiny-Sandbox: capability to produce a compacted Executable
    (optimized for size). See section :ref:`tinysandbox`.
 
 All the Core Engine capabilities may not be available on all
@@ -96,34 +108,34 @@ When restarting the Core Engine, don't call ``SNI_createVM`` or ``SNI_destroyVM`
 before calling ``SNI_startVM`` again.
 For more information, refer to the :ref:`core_engine_restart` section.
 
-The file ``LLMJVM_impl.h`` that comes with the platform defines the API
+The file ``LLMJVM_impl.h`` that comes with the Architecture defines the API
 to be implemented. See section :ref:`LLMJVM-API-SECTION`.
 
 Initialization
 --------------
 
 The Low Level Core Engine API deals with two objects: the
-structure that represents the platform, and the RTOS task that runs the
-platform. Two callbacks allow engineers to interact with the
+structure that represents the Core Engine, and the RTOS task that runs the
+Core Engine. Two callbacks allow engineers to interact with the
 initialization of both objects:
 
 -  ``LLMJVM_IMPL_initialize``: Called once the structure representing
-   the platform is initialized.
+   the Core Engine is initialized.
 
--  ``LLMJVM_IMPL_vmTaskStarted``: Called when the platform starts its
+-  ``LLMJVM_IMPL_vmTaskStarted``: Called when the Core Engine starts its
    execution. This function is called within the RTOS task of the
-   platform.
+   Core Engine.
 
 Scheduling
 ----------
 
-To support the green thread round-robin policy, the platform assumes
+To support the green thread round-robin policy, the Core Engine assumes
 there is an RTOS timer or some other mechanism that counts (down) and
-fires a call-back when it reaches a specified value. The platform
+fires a call-back when it reaches a specified value. The Core Engine
 initializes the timer using the ``LLMJVM_IMPL_scheduleRequest`` function
 with one argument: the absolute time at which the timer should fire.
 When the timer fires, it must call the ``LLMJVM_schedule`` function,
-which tells the platform to execute a green thread context switch (which
+which tells the Core Engine to execute a green thread context switch (which
 gives another MicroEJ thread a chance to run).
 
 When several MicroEJ threads with the same priority are eligible for execution,
@@ -132,10 +144,10 @@ called the `time slice`.
 The time slice is expressed in milliseconds, and its default value is ``20`` ms. 
 It can be configured at link time with the symbol
 ``_java_round_robin_period``, defined in the :ref:`linker configuration file <linker_lscf>` 
-``linkVMConfiguration.lscf`` located in the Platform folder ``/MICROJVM/link/``.
-To override the content of this file, create, in the Platform configuration project,
+``linkVMConfiguration.lscf`` located in the VEE Port folder ``/MICROJVM/link/``.
+To override the content of this file, create, in the VEE Port configuration project,
 a folder named ``/dropins/MICROJVM/link/``, and copy into this folder the file
-``linkVMConfiguration.lscf`` retrieved from an existing Platform.
+``linkVMConfiguration.lscf`` retrieved from an existing VEE Port.
 Since a symbol cannot be null, the actual time slice value in milliseconds is
 ``_java_round_robin_period - 1``. Set the symbol to 1 (i.e., time slice to 0) 
 to disable the round-robin scheduling.
@@ -155,17 +167,17 @@ to disable the round-robin scheduling.
 Idle Mode
 ---------
 
-When the platform has no activity to execute, it calls the
-``LLMJVM_IMPL_idleVM`` function, which is assumed to put the RTOS task
-of the platform into a sleep state. ``LLMJVM_IMPL_wakeupVM`` is called
-to wake up the platform task. When the platform task really starts to
+When the Core Engine has no activity to execute, it calls the
+``LLMJVM_IMPL_idleVM`` function, which is assumed to put the Core Engine RTOS task
+into a sleep state. ``LLMJVM_IMPL_wakeupVM`` is called
+to wake up the Core Engine RTOS task. When the Core Engine RTOS task really starts to
 execute again, it calls the ``LLMJVM_IMPL_ackWakeup`` function to
 acknowledge the restart of its activity.
 
 Time
 ----
 
-The platform defines two times:
+The Core Engine defines two different times:
 
 -  the application time: the difference, measured in milliseconds,
    between the current time and midnight, January 1, 1970, UTC.
@@ -175,14 +187,14 @@ The platform defines two times:
    It can be implemented by returning the running time since the start of 
    the device.
 
-The platform relies on the following C functions to provide those times
-to the MicroEJ world:
+The Core Engine relies on the following C functions to provide those times
+to the Application:
 
 -  ``LLMJVM_IMPL_getCurrentTime``: must return the monotonic time in 
    milliseconds if the given parameter is ``1``, otherwise must return the 
    application time in milliseconds. 
    This function is called by the method `java.lang.System.currentTimeMillis()`_
-   It is also used by the platform
+   It is also used by the Core Engine 
    scheduler, and should be implemented efficiently.
 
 -  ``LLMJVM_IMPL_getTimeNanos``: must return a monotonic time in
@@ -203,26 +215,26 @@ Error Codes
 
 The C function ``SNI_createVM`` returns a negative value if an error 
 occurred during the Core Engine initialization or execution.
-The file ``LLMJVM.h`` defines the platform-specific error code constants.
+The file ``LLMJVM.h`` defines the Core Engine error code constants.
 The following table describes these error codes.
 
-.. table:: MicroEJ Core Engine Error Codes
+.. table:: Core Engine Error Codes
 
    +-------------+-------------------------------------------------------------+
    | Error Code  | Meaning                                                     |
    +=============+=============================================================+
-   | 0           | The MicroEJ Application ended normally (i.e., all the       |
+   | 0           | The Application ended normally (i.e., all the               |
    |             | non-daemon threads are terminated or                        |
    |             | ``System.exit(exitCode)`` has been called).                 |
    |             | See section :ref:`edc_exit_codes`.                          |
    +-------------+-------------------------------------------------------------+
    | -1          | The ``microejapp.o`` produced by SOAR is not compatible     |
-   |             | with the MicroEJ Core Engine (``microejruntime.a``).        |
+   |             | with the Core Engine (``microejruntime.a``).                |
    |             | The object file has been built from another                 |
-   |             | MicroEJ Platform.                                           |
+   |             | Architecture.                                               |
    +-------------+-------------------------------------------------------------+
    | -2          | Internal error. Invalid link configuration in the           |
-   |             | MicroEJ Architecture or the MicroEJ Platform.               |
+   |             | Architecture or the VEE Port.                               |
    +-------------+-------------------------------------------------------------+
    | -3          | Evaluation version limitations reached: termination of      |
    |             | the application. See section :ref:`limitations`.            |
@@ -234,41 +246,40 @@ The following table describes these error codes.
    | -12         | Number of threads limitation reached. See sections          |
    |             | :ref:`limitations` and :ref:`option_number_of_threads`.     |
    +-------------+-------------------------------------------------------------+
-   | -13         | Fail to start the MicroEJ Application because the           |
-   |             | specified MicroEJ heap is too large or too small.           |
+   | -13         | Fail to start the Application because the                   |
+   |             | specified managed heap is too large or too small.           |
    |             | See section :ref:`option_java_heap`.                        |
    +-------------+-------------------------------------------------------------+
-   | -14         | Invalid MicroEJ Application stack configuration. The        |
+   | -14         | Invalid Application stack configuration. The                |
    |             | stack start or end is not eight-byte aligned, or stack      |
    |             | block size is too small. See section                        |
    |             | :ref:`option_number_of_stack_blocks`.                       |
    +-------------+-------------------------------------------------------------+
-   | -16         | The MicroEJ Core Engine cannot be restarted.                |
+   | -16         | The Core Engine cannot be restarted.                        |
    +-------------+-------------------------------------------------------------+
-   | -17         | The MicroEJ Core Engine is not in a valid state because     |
+   | -17         | The Core Engine is not in a valid state because             |
    |             | of one of the following situations:                         |
    |             |                                                             |
    |             | - ``SNI_startVM`` called before ``SNI_createVM``.           |
    |             |                                                             |
-   |             | - ``SNI_startVM`` called while the MicroEJ                  |
+   |             | - ``SNI_startVM`` called while the                          |
    |             |   Appplication is running.                                  |
    |             |                                                             |
    |             | - ``SNI_createVM`` called several times.                    |
    +-------------+-------------------------------------------------------------+
-   | -18         | The memory used for the MicroEJ heap or immortal heap       |
+   | -18         | The memory used for the managed heap or immortal heap       |
    |             | does not work properly. Read/Write memory checks            |
    |             | failed. This may be caused by an invalid external RAM       |
    |             | configuration. Verify ``_java_heap`` and                    |
    |             | ``_java_immortals`` sections locations.                     |
    +-------------+-------------------------------------------------------------+
-   | -19         | The memory used for the MicroEJ Application static          |
+   | -19         | The memory used for the  Application static                 |
    |             | fields does not work properly. Read/Write memory checks     |
    |             | failed. This may be caused by an invalid external RAM       |
    |             | configuration. Verify ``.bss.soar`` section location.       |
    +-------------+-------------------------------------------------------------+
    | -20         | KF configuration internal error. Invalid link               |
-   |             | configuration in the MicroEJ Architecture or the            |
-   |             | MicroEJ Platform.                                           |
+   |             | configuration in the Architecture or the VEE Port.          |
    +-------------+-------------------------------------------------------------+
    | -21         | Number of monitors per thread limitation reached.           |
    |             | See sections :ref:`limitations` and                         |
@@ -276,7 +287,7 @@ The following table describes these error codes.
    |             | .                                                           |
    +-------------+-------------------------------------------------------------+
    | -22         | Internal error. Invalid FPU configuration in the            |
-   |             | MicroEJ Architecture.                                       |
+   |             | Architecture.                                               |
    +-------------+-------------------------------------------------------------+
    | -23         | The function ``LLMJVM_IMPL_initialize`` defined in the      |
    |             | Abstraction Layer implementation returns an error.          |
@@ -311,8 +322,8 @@ from a dedicated RTOS task.
 	 * @brief Creates and starts a MicroEJ instance. This function returns when the MicroEJ execution ends.
 	 * @param argc arguments count
 	 * @param argv arguments vector
-	 * @param app_exit_code_ptr pointer where this function stores the application exit code or 0 in case of error in the MicroEJ Core Engine. May be null.
-	 * @return the MicroEJ Core Engine error code in case of error, or 0 if the execution ends without error.
+	 * @param app_exit_code_ptr pointer where this function stores the application exit code or 0 in case of error in the Core Engine. May be null.
+	 * @return the Core Engine error code in case of error, or 0 if the execution ends without error.
 	 */
 	int microej_main(int argc, char **argv, int* app_exit_code_ptr) {
 		void* vm;
@@ -362,7 +373,7 @@ from a dedicated RTOS task.
 Restart the Core Engine
 -----------------------  
 
-The Core Engine supports the restart of the MicroEJ Application after the end of its execution. 
+The Core Engine supports the restart of the Application after the end of its execution. 
 The application stops when all non-daemon threads are terminated or when ``System.exit(exitCode)`` is called. 
 When the application ends, the C function ``SNI_startVM`` returns.
 
@@ -373,7 +384,7 @@ To restart the application, call again the ``SNI_startVM`` function (see the fol
 	// create Core Engine (called only once)
 	vm = SNI_createVM();
 	...
-	// start a new execution of the MicroEJ Application at each iteration of the loop
+	// start a new execution of the Application at each iteration of the loop
 	while(...){
 		...
 		core_engine_error_code = SNI_startVM(vm, argc, argv);
@@ -390,7 +401,7 @@ To restart the application, call again the ``SNI_startVM`` function (see the fol
 .. note::
 
    Please note that while the Core Engine supports restart, :ref:`MicroUI <section_microui>` does not. 
-   Attempting to restart the MicroEJ Application on a VEE Port with UI support may result in undefined behavior.
+   Attempting to restart the Application on a VEE Port with UI support may result in undefined behavior.
      
 
 .. _vm_dump:
@@ -665,15 +676,14 @@ information.
 Installation
 ============
 
-The Core Engine and its components are mandatory. In the
-platform configuration file, check :guilabel:`Multi Applications` to install the
-Core Engine in "Multi-Sandbox" mode. Otherwise, the "Single
-application" mode is installed.
+The Core Engine and its components are mandatory. 
+By default, it is configured with Mono-Sandbox capability.
+See the :ref:`core_engine_capabilities` section to update the Core Engine with Multi-Sandbox or Tiny-Sandbox capability.
 
 Abstraction Layer
 =================
 
-MicroEJ Core Engine Abstraction Layer implementation can be found on `MicroEJ Github`_ for several RTOS.
+Core Engine Abstraction Layer implementations can be found on `MicroEJ Github`_ for several RTOS.
 
 .. _MicroEJ Github: https://github.com/orgs/MicroEJ/repositories?q=AbstractionLayer-Core&type=all&language=&sort=
 

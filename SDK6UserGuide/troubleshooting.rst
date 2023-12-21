@@ -63,6 +63,112 @@ The solution is to use a JDK 11 or 17 to fix this error:
 
 		Project JDK in Android Studio and IntelliJ IDEA
 
+
+Unresolved Dependency
+---------------------
+
+If this kind of message appears when resolving plugins or modules dependencies:
+
+.. code:: console
+
+   * What went wrong:
+   Plugin [id: 'com.microej.gradle.application', version: '0.13.0'] was not found in any of the following sources:
+
+or this kind:
+
+.. code:: console
+
+   * What went wrong:
+   Execution failed for task ':compileJava'.
+   > Could not resolve all files for configuration ':compileClasspath'.
+     > Could not find com.mycompany:mymodule:M.m.p.
+        Searched in the following locations:
+          - https://my-company-first-repository/com/mycompany/mymodule/M.m.p/kf-M.m.p.pom
+          - https://my-company-first-repository/com/mycompany/mymodule/M.m.p/ivy-M.m.p.xml
+          - https://my-company-second-repository/com/mycompany/mymodule/M.m.p/kf-M.m.p.pom
+          - https://my-company-second-repository/com/mycompany/mymodule/M.m.p/ivy-M.m.p.xml
+        Required by:
+            project :
+
+
+First, check that either the requested plugin or module exists in your repository.
+
+- If the plugin or module does not exist, 
+  
+  - if it is declared as a :ref:`direct dependency <sdk_6_add_dependency>`, the module repository is not compatible with your source code. 
+    You can either check if another module version is available in the repository or add the missing module to the repository.
+  - otherwise, this is likely a missing transitive module dependency. The module repository is not consistent.
+    Check the module repository and make sure all the transitive dependencies exist.
+
+- If the module exists, this may be due to a missing repository in the configuration.
+  Check that your repository appears in the list of URLs below the error line:
+
+  .. code:: console
+
+     Searched in the following locations:
+  
+  If the URL of your repository is not listed, add it to :ref:`the list of the repositories <sdk_6_configure_repositories>`.
+
+- If the repository is correctly configured, this may be a network connection error. 
+  We can check in the debug logs, by adding the ``--debug`` arguments in the Gradle command line.
+
+Otherwise, if your module repository is an URL, check for an :ref:`sdk_6_troubleshooting_invalid_certificate` issue.
+
+
+.. _sdk_6_troubleshooting_invalid_certificate:
+
+Invalid SSL Certificate
+-----------------------
+         
+If a dependency cannot be retrieved from a remote repository, this may be due to a missing or incorrect SSL certificate.
+It can be checked in the debug logs, by adding the ``--debug`` and ``-Djavax.net.debug=all`` arguments in the Gradle command line, for example::
+
+  ./gradlew build --debug -Djavax.net.debug=all
+
+If the SSL certificate is missing or incorrect, the following line should appear:
+
+  .. code:: console
+
+	PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+
+This can be raised in several cases, such as:
+
+- an artifact repository configured in the MicroEJ Module Manager settings using a self-signed SSL certificate or a SSL certificate not trusted by the JDK.
+- the requests to an artifact repository configured in the MicroEJ Module Manager settings are redirected to a proxy server using a SSL certificate not trusted by the JDK.
+
+In all cases, the SSL certificate (used by the artifact repository server or the proxy) must be added to the JDK trust store that is running Gradle.
+Ask your System Administrator, or retrieve the SSL certificate and add it to the JDK trust store:
+
+- on Windows
+
+  #. Install `Keystore Explorer <http://keystore-explorer.org/downloads.html>`_.
+  #. Start Keystore Explorer, and open file ``[JRE_HOME]/lib/security/cacerts`` or ``[JDK_HOME]/jre/lib/security/cacerts`` with the password ``changeit``.
+     You may not have the right to modify this file. Edit rights if needed before opening it or open Keystore Explorer with admin rights.
+  #. Click on :guilabel:`Tools`, then :guilabel:`Import Trusted Certificate`.
+  #. Select your certificate.
+  #. Save the ``cacerts`` file.
+
+- on Linux/macOS
+
+  #. Open a terminal.
+  #. Make sure the JDK's ``bin`` folder is in the ``PATH`` environment variable.
+  #. Execute the following command::
+
+      keytool -importcert -v -noprompt -trustcacerts -alias myAlias -file /path/to/the/certificate.pem -keystore /path/to/the/truststore -storepass changeit
+
+
+If the problem still occurs, there should be a trace which indicates the beggining of the handshake phase of the SSL negotiation::
+
+	 2023-12-15T17:32:47.442+0100 [DEBUG] [org.apache.http.conn.ssl.SSLConnectionSocketFactory] Starting handshake
+
+The error very probably occurs during this phase.
+There should be the following trace before the error::
+
+   Consuming server Certificate handshake message
+
+The traces below this one indicates the SSL certificate (or the SSL certificates chain) presented by the server.
+This certificate or one of the root or intermediate certificates must be added in the JDK truststore as explained previously.
+
 Failing Resolution in ``adp`` Task
 ----------------------------------
 

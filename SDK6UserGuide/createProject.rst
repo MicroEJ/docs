@@ -35,7 +35,7 @@ This chapter explains the different ways to create a new project.
       - Select :guilabel:`Kotlin` for the :guilabel:`Build configuration language` field.
       
       .. note::
-        MicroEJ uses Kotlin as the default Gradle build script DSL. 
+        The SDK uses Kotlin as the default Gradle build script DSL. 
         The use of the Groovy build script DSL is still possible but not officially supported.
       
       - Click on :guilabel:`Finish` button.
@@ -289,7 +289,7 @@ This chapter explains the different ways to create a new project.
       - Select build script DSL ``Kotlin``.
       
       .. note::
-        MicroEJ uses Kotlin as the default Gradle build script DSL. 
+        The SDK uses Kotlin as the default Gradle build script DSL. 
         The use of the Groovy build script DSL is still possible but not officially supported.
       
       - For the test framework, select ``JUnit 4``.
@@ -324,12 +324,12 @@ This chapter explains the different ways to create a new project.
 Configure a Project
 -------------------
 
-The MicroEJ SDK allows to build several types of modules.
+The SDK allows to build several types of modules.
 Each type has its own Gradle plugin and configuration options.
 Refer to the module type you want to build to configure your project:
 
 - :ref:`Application <sdk_6_create_project_configure_application>`
-- :ref:`Add-on Library <sdk_6_create_project_configure_addon_library>`
+- :ref:`Add-On Library <sdk_6_create_project_configure_addon_library>`
 - :ref:`J2SE Library <sdk_6_create_project_configure_j2se_library>`
 
 
@@ -374,13 +374,34 @@ Application Project
       version=1.0.0
       name=MY-KERNEL
 
-- If your Application is a Sandboxed Application:
+- If your Application is a :ref:`Sandboxed Application <sandboxed_application>`:
 
-  - Create the Java class of the Feature Entry Point in the ``src/main/java`` folder.
-  - Create a file with the extension ``.kf`` in the ``src/main/resources`` folder, for example ``myFeature.kf``.
-    This file must at least contains the property ``entryPoint`` set to the Full Qualified Name of the Application Feature class, for example::
+  - Create the Java class of the Feature Entry Point in the ``src/main/java`` folder, for example:
 
-      entryPoint=com.microej.MyFeature
+    .. code:: java
+            
+      package com.mycompany;
+      
+      import ej.kf.FeatureEntryPoint;
+      
+      public class MyApplication implements FeatureEntryPoint {
+    
+        @Override
+        public void start() {
+          System.out.println("Feature MyApplication started!");
+        }
+    
+        @Override
+        public void stop() {
+          System.out.println("Feature MyApplication stopped!");
+        }
+      }
+
+  - Create a file with the extension ``.kf`` in the ``src/main/resources`` folder, for example ``MyApplication.kf``.
+    This file must at least contain the property ``entryPoint`` set to the Full Qualified Name of the Application Feature class, for example::
+
+      entryPoint=com.mycompany.MyApplication
+      version=0.1.0
 
 Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 

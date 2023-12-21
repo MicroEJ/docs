@@ -346,8 +346,8 @@ Platform Publication
 ====================
 
 The publication of the built Platform to a :ref:`module repository <module_repository>` is disabled by default.
-It can be enabled by setting the ``skip.publish`` property defined in the file ``module.properties`` of 
-the Platform configuration project to ``false``.
+It can be enabled by setting the ``skip.publish`` property to ``false`` in the ``module.properties`` file of 
+the Platform configuration project .
 
 The publication is kept disabled by default in the project sources because developers usually use the locally built platform in the workspace.
 However, the publication is required in a Continuous Integration environment. 
@@ -357,6 +357,11 @@ and by overwriting it in the command launched by the Continuous Integration envi
 .. code-block:: sh
 
   mmm publish shared -Dskip.publish=false
+
+If the Platform is configured with :ref:`Full BSP connection <bsp_connection>`, the build script can be launched 
+to validate that the BSP successfully compiles and links before the Platform is published. 
+It can be enabled by setting the ``com.microej.platformbuilder.bsp.build.enabled`` property to ``true`` 
+in the ``module.properties`` file of the Platform configuration project (defaults to ``false`` if not set).
 
 .. _bsp_connection:
 
@@ -612,6 +617,8 @@ The build script must comply with the following specification:
 Many build script templates are available for most commonly used C toolchains in the 
 `Platform Qualification Tools repository <https://github.com/MicroEJ/VEEPortQualificationTools/tree/master/framework/platform/scripts>`_.
 
+The build script can also be launched before the Platform publication, see :ref:`platform_publication` for more details.
+
 .. note::
 
     The Executable must be an ELF executable file.  On
@@ -622,7 +629,7 @@ Many build script templates are available for most commonly used C toolchains in
 
        ~$ file application.out
        ELF 32-bit LSB executable
-
+    
 .. _bsp_connection_run_script:
 
 Run Script File
@@ -692,6 +699,75 @@ It can be built using the following steps:
 
 
 The Platform API documentation is available in ``<module_repository_project>/target~/artifacts/<module_repository_name>-javadoc.zip``.    
+
+
+.. _link_time_option:
+
+Link-Time Option
+================
+
+It is possible to define custom :ref:`Application options <application_options>` that can be passed to the BSP through an ELF symbol defined at link-time, hence the term `link-time option`.
+This allows to provide configuration options to the Application developer without the need to rebuild the BSP source code.
+
+To define a link-time option, first choose an option name with only alphanumeric characters (``[a-zA-Z][a-zA-Z0-9]*`` without spaces). 
+
+Proceed with the following steps by replacing ``[my_option]`` with your option name everywhere:
+
+- Create a folder inside your :ref:`platformCustomization` part (e.g: ``[platform]-configuration/dropins/scripts/init-[my_option]``)
+- Create an init script file and put it inside (e.g: ``[platform]-configuration/dropins/scripts/init-[my_option]/init-[my_option].xml`` file). 
+  Here is the init script file template content: 
+
+  .. code-block:: xml
+	
+    <project name="[my_option]-init">
+      <target name="init/execution/[my_option]" extensionOf="init/execution" if="onBoard">
+        <!-- Set option default value -->
+        <property name="[my_option]" value="0"/>
+
+        <!-- Create tmp dir -->
+        <local name="link.files.dir"/>
+        <microejtempfile deleteonexit="true" prefix="link[my_option]" property="link.files.dir"/>
+        <mkdir dir="${link.files.dir}"/>
+        <!-- Get tmp link file name -->
+        <local name="link.[my_option]"/>
+        <property name="link.[my_option]" value="${link.files.dir}/[my_option].lscf" />
+        <echoxml file="${link.[my_option]}" append="false">
+          <lscFragment>
+            <defSymbol name="[my_option]" value="${[my_option]}" rootSymbol="true"/>
+          </lscFragment>
+        </echoxml>
+        <!-- Add link file in linker's link files path -->
+        <augment id="partialLink.lscf.path">
+          <path location="${link.files.dir}"/>
+          <path location="${jpf.dir}/link"/>
+        </augment>
+      </target>
+    </project>
+
+- In your BSP source code, define an ELF symbol ``[my_option]`` can then be used inside C files in your BSP with:
+ 	
+  .. code-block:: c
+  
+    // Declare the symbol as an extern global
+    extern int [my_option];
+        
+    void my_func(void){
+       // Get the symbol value
+       int [my_option]_value = ((int)(&[my_option]));
+     
+       // Get the symbol value
+       if([my_option]_value == 1){
+         ...
+       }
+       else{
+         ...
+       }
+    }
+
+.. warning::
+
+    A Link-time option should avoid to be set to ``0``. 
+    Some third-party linkers consider such symbols as undefined, even if they are declared.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
