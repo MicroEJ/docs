@@ -326,14 +326,14 @@ Modify the Java application
 
 With MicroEJ, it is easy to modify and test your Java application on the Virtual Device.
 
-For example, we could modify the color of the date on the Flower Watchface that is shown at the startup of the application.
+For example, we could modify the color of the background that is shown behind the MicroEJ mascot.
 
-* Open :guilabel:`FlowerWatchface.java` file located in the :guilabel:`watchface-flower/src/main/java/com/microej/demo/watch/watchface/flower` folder.
-* On the :guilabel:`renderDate` method, replace the following line:
+* Open :guilabel:`AnimatedMascot.java` file located in the :guilabel:`src/main/java/com/microej/demo/animatedMascot` folder.
+* Background color is set line 84, replace the following line:
 
 .. code:: 
 
-   g.setColor(style.getColor());
+   g.setColor(Colors.WHITE);
 
 by
 
