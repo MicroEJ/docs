@@ -1,0 +1,61 @@
+version: '3'
+services:
+  artifactory:
+    image: releases-docker.jfrog.io/jfrog/artifactory-oss:7.71.5
+    container_name: artifactory
+    environment:
+      - JF_ROUTER_ENTRYPOINTS_EXTERNALPORT=8082
+    ports:
+      - 8082:8082 # for router communication
+      - 8081:8081 # for artifactory communication
+      - 8085:8085 # for artifactory federation communication
+    volumes:
+      - artifactory:/var/opt/jfrog/artifactory
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "10"
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 32000
+        hard: 40000
+
+  gitea:
+    image: gitea/gitea:1.21.1
+    container_name: gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    restart: always
+    volumes:
+      - gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "3000:3000"
+      - "222:22"
+
+  jenkins:
+    image: jenkins_master
+    container_name: jenkins
+    build:
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 50000:50000
+      - 8080:8080
+    volumes:
+      - jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    links:
+      - gitea
+      - artifactory
+
+volumes:
+  gitea:
+  artifactory:
+  jenkins:
