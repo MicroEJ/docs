@@ -301,10 +301,10 @@ Once the firmware is flashed, you should see the :guilabel:`AnimatedMascot` runn
       <table>
          <tr>
             <td style="width:50%;text-align:center;vertical-align:middle;" alt="Application running on i.MXRT1170-EVK">
-               <img src="../_images/getting-started-hardware-demo-running.png">
+               <img src="../_images/getting-started-rt1170-hardware-demo-running.png">
             </td>
             <td style="width:50%;text-align:center;vertical-align:middle;" alt="Termite Application Output">
-               <img src="../_images/getting-started-termite-application-output.png">
+               <img src="../_images/getting-started-rt1170-termite-application-output.png">
             </td>
          </tr>
          <tr>
@@ -318,8 +318,8 @@ Once the firmware is flashed, you should see the :guilabel:`AnimatedMascot` runn
       </table>
    </div>
 
-.. |image3| image:: images/gettingStarted/iMXRT1170/getting-started-hardware-demo-running.png
-.. |image4| image:: images/gettingStarted/iMXRT1170/getting-started-termite-application-output.png
+.. |image3| image:: images/gettingStarted/iMXRT1170/getting-started-rt1170-hardware-demo-running.png
+.. |image4| image:: images/gettingStarted/iMXRT1170/getting-started-rt1170-termite-application-output.png
 
 Modify the Java application
 ---------------------------

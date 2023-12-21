@@ -308,10 +308,10 @@ Once the firmware is flashed, you should see the :guilabel:`Demo-Wearable-VG` ru
       <table>
          <tr>
             <td style="width:50%;text-align:center;vertical-align:middle;" alt="Application running on i.MXRT595-EVK">
-               <img src="../_images/getting-started-hardware-demo-running.png">
+               <img src="../_images/getting-started-rt595-hardware-demo-running.png">
             </td>
             <td style="width:50%;text-align:center;vertical-align:middle;" alt="Termite Application Output">
-               <img src="../_images/getting-started-termite-application-output.png">
+               <img src="../_images/getting-started-rt595-termite-application-output.png">
             </td>
          </tr>
          <tr>
@@ -325,8 +325,8 @@ Once the firmware is flashed, you should see the :guilabel:`Demo-Wearable-VG` ru
       </table>
    </div>
 
-.. |image3| image:: images/gettingStarted/iMXRT595/getting-started-hardware-demo-running.png
-.. |image4| image:: images/gettingStarted/iMXRT595/getting-started-termite-application-output.png
+.. |image3| image:: images/gettingStarted/iMXRT595/getting-started-rt595-hardware-demo-running.png
+.. |image4| image:: images/gettingStarted/iMXRT595/getting-started-rt595-termite-application-output.png
 
 Modify the Java application
 ---------------------------
