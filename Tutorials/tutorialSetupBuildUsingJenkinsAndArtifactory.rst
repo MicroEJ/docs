@@ -123,6 +123,7 @@ For demonstration purposes we will allow anonymous users to deploy modules in th
 
 #. Once Artifactory container is started, go to ``http://localhost:8082/``.
 #. Login to Artifactory for the first time using the default ``admin`` account (Username: ``admin``, Password: ``password``).
+#. Skip the installation wizard if it appears.
 #. Go to :guilabel:`Administration` > :guilabel:`User Management` > :guilabel:`Settings`.
 #. In the :guilabel:`User Security Configuration` section, check :guilabel:`Allow Anonymous Access`.
 #. Click on :guilabel:`Save`.
