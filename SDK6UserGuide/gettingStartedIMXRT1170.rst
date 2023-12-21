@@ -19,7 +19,7 @@ To follow this Getting Started, all you need is:
   Please contact :ref:`our support team <get_support>` to get the code for this demo. It will soon be released publicly.
 * An Internet connection to access Github repositories & MicroEJ Central Repository.
 * i.MX RT1170 EVK board, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVK>`__.
-* RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0#/>`__.
+* RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
 
 Environment Setup
 -----------------
