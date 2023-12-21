@@ -88,8 +88,8 @@ pygments_style = 'microej.MicroEJStyle'
 # Ignore some links:
 #   - local index links flagged as broken by linkcheck. Hopefully temporary solution 
 #     until https://github.com/sphinx-doc/sphinx/issues/9383 is resolved.
-#   - unstable URLs which make the link check fail, such as www.gnu.org or www.oracle.com
+#   - unstable URLs which make the link check fail, such as www.gnu.org, www.oracle.com or hub.docker.com
 #   - https://forum.segger.com does not provide its CA certificates
-linkcheck_ignore = [r'^((?!:\/\/|#|@).)*$|^https://www\.gnu\.org/software/gettext/manual/.*$|^http://localhost.*$|^http://172.17.0.1.*$|^https://www.oracle.com/.*$|^https://forum.segger.com/.*$']
+linkcheck_ignore = [r'^((?!:\/\/|#|@).)*$|^https://www\.gnu\.org/software/gettext/manual/.*$|^http://localhost.*$|^http://172.17.0.1.*$|^https://www.oracle.com/.*$|^https://forum.segger.com/.*$|^https://hub.docker.com/r/microej/sdk.*$']
 
 linkcheck_timeout = 20
