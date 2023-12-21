@@ -58,7 +58,7 @@ The toolchain is the `GNU ARM Embedded Toolchain <https://developer.arm.com/down
 
 At the end of the installation, it will ask you to complete the Setup of the wizard, choose the following options: 
 
-      .. figure:: images/getting-started-arm-gcc-installation.png
+      .. figure:: images/gettingStarted/iMXRT1170/getting-started-arm-gcc-installation.png
          :alt: Import demo application
          :align: center
          :scale: 70%
@@ -123,7 +123,7 @@ The first step is to import the :guilabel:`AnimatedMascot` MicroEJ Application i
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
 * Select the ``AnimatedMascot`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
-      .. figure:: images/getting-started-import-demo-application.png
+      .. figure:: images/gettingStarted/iMXRT1170/getting-started-import-demo-application.png
          :alt: Import demo application
          :align: center
          :scale: 70%
@@ -160,7 +160,7 @@ The first step is to import the :guilabel:`AnimatedMascot` MicroEJ Application i
 
 The Gradle project should now be imported in IntelliJ IDEA, your workspace contains the following projects: 
 
-      .. figure:: images/getting-started-workspace-view.png
+      .. figure:: images/gettingStarted/iMXRT1170/getting-started-workspace-view.png
          :alt: Workspace view
          :align: center
          :scale: 70%
@@ -178,14 +178,14 @@ In order to execute the :guilabel:`AnimatedMascot` Application on the Virtual De
 
 * Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may takes few seconds.
 
-      .. figure:: images/getting-started-runOnSimulator.png
+      .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnSimulator.png
          :alt: runOnSimulator task
          :align: center
          :scale: 70%
 
 The Virtual Device starts and executes the :guilabel:`AnimatedMascot` application.
 
-      .. figure:: images/getting-started-virtual-device.png
+      .. figure:: images/gettingStarted/iMXRT1170/getting-started-virtual-device.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
@@ -218,7 +218,7 @@ In order to build the Executable of the :guilabel:`AnimatedMascot` Application, 
 * The build stops with a failure.
 * Go to the top project in the console view and scroll up to get the following error message:
 
-      .. figure:: images/getting-started-console-output-license-uid.png
+      .. figure:: images/gettingStarted/iMXRT1170/getting-started-console-output-license-uid.png
          :alt: Console Output License UID
          :align: center
          :scale: 70%
@@ -240,7 +240,7 @@ The :guilabel:`AnimatedMascot` application is built and ready to be flashed on i
 Hardware Setup
 ^^^^^^^^^^^^^^
 
-      .. figure:: images/getting-started-hardware-setup.png
+      .. figure:: images/gettingStarted/iMXRT1170/getting-started-hardware-setup.png
          :alt: Hardware Setup
          :align: center
          :scale: 70%
@@ -286,7 +286,7 @@ In order to flash the :guilabel:`AnimatedMascot` Application on i.MX RT1170 EVK,
 
 * Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may takes some time.
 
-      .. figure:: images/getting-started-runOnDevice.png
+      .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnDevice.png
          :alt: runOnDevice task
          :align: center
          :scale: 70%
@@ -298,7 +298,7 @@ Once the firmware is flashed, you should see the :guilabel:`AnimatedMascot` runn
    <div style="display:block;margin-bottom:24px;">
       <table>
          <tr>
-            <td style="width:50%;text-align:center;vertical-align:middle;" alt="Application running on i.MXRT595-EVK">
+            <td style="width:50%;text-align:center;vertical-align:middle;" alt="Application running on i.MXRT1170-EVK">
                <img src="../_images/getting-started-hardware-demo-running.png">
             </td>
             <td style="width:50%;text-align:center;vertical-align:middle;" alt="Termite Application Output">
@@ -316,8 +316,8 @@ Once the firmware is flashed, you should see the :guilabel:`AnimatedMascot` runn
       </table>
    </div>
 
-.. |image3| image:: images/getting-started-hardware-demo-running.png
-.. |image4| image:: images/getting-started-termite-application-output.png
+.. |image3| image:: images/gettingStarted/iMXRT1170/getting-started-hardware-demo-running.png
+.. |image4| image:: images/gettingStarted/iMXRT1170/getting-started-termite-application-output.png
 
 Modify the Java application
 ---------------------------
@@ -343,7 +343,7 @@ by
 
 Here is the modified application running in simulation: 
 
-      .. figure:: images/getting-started-virtual-device-modified.png
+      .. figure:: images/gettingStarted/iMXRT1170/getting-started-virtual-device-modified.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
