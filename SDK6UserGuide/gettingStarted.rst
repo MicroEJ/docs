@@ -3,10 +3,14 @@
 Getting Started
 ===============
 
+NXP
+---
+
 .. toctree::
    :maxdepth: 1
 
    gettingStartedIMXRT595
+   gettingStartedIMXRT1170
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
