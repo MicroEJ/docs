@@ -36,7 +36,7 @@ specific configuration:
 
 .. _changelog-8.1.0:
 
-[8.1.0] - 2023-MM-DD
+[8.1.0] - 2023-12-22
 --------------------
 
 This Architecture version update introduces the following main features:
