@@ -66,7 +66,6 @@ The activity of the Core Engine is defined by the Application. When
 the Application is blocked (i.e., when all the MicroEJ threads
 sleep), the RTOS task running the Core Engine sleeps.
 
-
 .. _core_engine_capabilities:
 
 Capabilities
@@ -88,6 +87,18 @@ All the Core Engine capabilities may not be available on all
 architectures. Refer to section :ref:`appendix_matrixcapabilities`
 for more details.
 
+To select the Core Engine capability, create the property file ``mjvm/mjvm.properties``
+in the Platform configuration project and define the property ``com.microej.runtime.capability`` 
+with one of the following values:
+
+- ``mono`` for Mono-Sandbox (default value)
+
+- ``multi`` for Multi-Sandbox
+
+- ``tiny`` for Tiny-Sandbox
+
+If the property ``com.microej.runtime.capability`` is not defined,
+the Mono-Sandbox Core Engine capability is used.
 
 .. _core_engine_implementation:
 
@@ -588,41 +599,45 @@ Several sections are defined by the Core Engine. Each section must be linked by 
 Read-Only (RO) sections can be placed in writable memories. 
 In such cases, it is the responsibility of the BSP to prevent these sections from being written.
 
-Starting from Architecture ``8.x``, sections have been renamed to follow the standard ELF naming convention.
+Starting from :ref:`Architecture 8.0.0 <changelog-8.0.0>`, sections have been renamed to follow the standard ELF naming convention.
 
 .. tabs::
 
     .. tab:: Linker Sections (Architecture ``8.x``)
 
         .. table:: 
+            :widths: 15 30 5 5
         
-            +--------------------------------+-----------------------------+-------------+------------+
-            | Section name                   | Aim                         | Location    | Alignment  |
-            |                                |                             |             | (in bytes) |
-            +================================+=============================+=============+============+
-            | ``.bss.microej.heap``          | Application heap            | RW          | 4          |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.bss.microej.immortals``     | Application immortal heap   | RW          | 4          |
-            |                                |                             |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.bss.microej.stacks``        | Application threads stack   | RW [1]_     | 8          |
-            |                                | blocks                      |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.bss.microej.statics``       | Application static fields   | RW          | 8          |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.rodata.microej.resource.*`` | Application resources       | RO          | 16         |
-            |                                | (one section per resource)  |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.rodata.microej.soar``       | Application and library     | RO          | 16         |
-            |                                | code                        |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.bss.microej.runtime``       | Core Engine                 | RW [1]_     | 8          |
-            |                                | internal structures         |             |            |
-            +--------------------------------+-----------------------------+-------------+------------+
-            | ``.text.__icetea__*``          | Core Engine                 | RX          | ISA        |
-            |                                | generated code              |             | Specific   |
-            +--------------------------------+-----------------------------+-------------+------------+
-
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | Section name                   | Aim                               | Location    | Alignment  |
+            |                                |                                   |             | (in bytes) |
+            +================================+===================================+=============+============+
+            | ``.bss.microej.heap``          | Application heap                  | RW          | 4          |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.bss.microej.immortals``     | Application immortal heap         | RW          | 4          |
+            |                                |                                   |             |            |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.bss.microej.stacks``        | Application threads stack         | RW [1]_     | 8          |
+            |                                | blocks                            |             |            |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.bss.microej.statics``       | Application static fields         | RW          | 8          |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.rodata.microej.resource.*`` | Application resources             | RO          | 16         |
+            |                                | (one section per resource)        |             |            |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.rodata.microej.soar``       | Application and library           | RO          | 16         |
+            |                                | code                              |             |            |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.bss.microej.runtime``       | Core Engine                       | RW [1]_     | 8          |
+            |                                | internal structures               |             |            |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.text.__icetea__*``          | Core Engine                       | RX          | ISA        |
+            |                                | generated code                    |             | Specific   |
+            +--------------------------------+-----------------------------------+-------------+------------+
+            | ``.bss.microej.kernel``        | Core Engine Multi-Sandbox section |             |            |
+            |                                | (Feature code chunk)              | RW          | 4          |
+            +--------------------------------+-----------------------------------+-------------+------------+
+   
         .. note::
             
             During its startup, the Core Engine automatically zero-initializes the sections ``.bss.microej.runtime``, ``.bss.microej.heap``, and ``.bss.microej.immortals``. 
@@ -630,6 +645,7 @@ Starting from Architecture ``8.x``, sections have been renamed to follow the sta
     .. tab:: Linker Sections (Architecture ``7.x``)
 
         .. table:: 
+            :widths: 15 30 5 5
                 
             +-----------------------------+-----------------------------+-------------+------------+
             | Section name                | Aim                         | Location    | Alignment  |
@@ -676,7 +692,7 @@ information.
 Installation
 ============
 
-The Core Engine and its components are mandatory. 
+The Core Engine and its components are mandatory.  
 By default, it is configured with Mono-Sandbox capability.
 See the :ref:`core_engine_capabilities` section to update the Core Engine with Multi-Sandbox or Tiny-Sandbox capability.
 

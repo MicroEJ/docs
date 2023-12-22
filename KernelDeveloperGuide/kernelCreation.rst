@@ -21,8 +21,11 @@ A new project is generated into the workspace:
 Configure a VEE Port
 --------------------
 
-Before building the Kernel, a target VEE Port must be configured. See
-:ref:`platform_selection`.
+Before building the Kernel, you need to build a VEE Port with Multi-Sandbox capability.
+To enable the Multi-Sandbox capability in your VEE Port configuration, follow the instructions from the :ref:`multisandbox` section.
+
+Once the VEE Port is built, configure the target VEE Port in your Kernel project. 
+See :ref:`platform_selection`.
 
 Build the Executable and Virtual Device
 ---------------------------------------
