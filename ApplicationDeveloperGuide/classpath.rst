@@ -192,7 +192,7 @@ resource. Example:
    com/mycompany/MyResource.txt
 
 A resource is 4-bytes aligned in memory by default.
-As of Architecture :ref:`8.0.0 <changelog-8.0.0>`, it is possible to modify the alignment constraint.
+Starting from :ref:`Architecture 8.0.0 <changelog-8.0.0>`, it is possible to modify the alignment constraint.
 Example:
 
 ::
