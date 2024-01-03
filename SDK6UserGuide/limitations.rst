@@ -14,18 +14,20 @@ The SDK 6 allows to:
 - Build the WPK of an Application.
 - Build the Feature file (.fo) of an Application.
 - Build the Virtual Device of an Application.
+- Use the Stack Trace Reader.
+- Use the Code Coverage Analyzer.
+- Use the Font Designer, Memory Map Analyzer, Heap Analyzer and Front Panel Designer tools.
 
 Therefore, it does not support all the features of the SDK 5, especially:
 
 - Build of Foundation Libraries, Mocks, VEE Ports or any other component type except Applications and Add-On Libraries.
-- Resolve dependencies in the IDE.
-- Launch of MicroEJ tools, such as the Stack Trace Reader.
-- Font Designer, Memory Map Analyzer, Heap Analyzer and Front Panel Designer.
+- Launch of some MicroEJ tools, such as the Local Deploy, the Serial to Socket Transmitter or the Kernel Metadata Generator.
+
 
 If you need these features, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
