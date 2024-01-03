@@ -31,7 +31,7 @@ MicroEJ defines its own annotations:
 
 MicroEJ recommends to annotate the Java code as follows:
 
-- In each Java package, create a ``package-info.java`` file and annotate the Java package with ``@NonNullByDefault`` in you use Eclipse 
+- In each Java package, create a ``package-info.java`` file and annotate the Java package with ``@NonNullByDefault`` if you use Eclipse 
   or with your custom annotation if you use Android Studio or IntelliJ IDEA (see next section on IDEs configuration).
   This is a common good practice to deal with non ``null`` elements by default to avoid undesired `NullPointerException`_.
   It enforces the behavior which is already widely outlined in Java coding rules.
