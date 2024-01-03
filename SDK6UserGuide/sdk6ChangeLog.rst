@@ -3,6 +3,43 @@
 Changelog
 ---------
 
+.. _changelog-0.14.0:
+
+[0.14.0] - 2024-01-03
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Add Jenkinsfile files to build and test with a JDK 17 and a JDK 21 (LTS versions).
+
+Changed
+"""""""
+
+- Do not build/publish an Executable or a Feature by default and add the ``produceExecutableDuringBuild()``
+  and ``produceFeatureDuringBuild()`` methods to build them if needed.
+- Set group and version for all projects, including the root project, in order to generate correctly the release tag.
+- Use version 2.1.0 of the microej-licenses library to check with the new SDK EULA 3.1-B.
+
+Fixed
+"""""
+
+- Fix the override behavior of the Application main class that was not consistent when ``-Dapplication.main.class`` is
+  used.
+- Fix the Custom Ant Logger to display build errors without having to enable the verbose mode.
+- Follow Gradle recommendation on resolvable and consumable configurations.
+- Move the Custom Logger to a dedicated module and use its jar instead of fetching the plugin when
+  executing VEE Port scripts to fix the tests failure during a release.
+- Set Java Compiler encoding to UTF-8.
+- Set Java Compliance level to 1.7 in JavaPluginExtension to fix the ``Cannot find the class file for java.lang.invoke.MethodHandles``
+  error when opening a Gradle project in Eclipse.
+- Fix wrong generated Virtual Device of an Application when the VEE Port changed.
+- Bump source level for javadoc task to 1.8 to support JDK 21.
+- Fix classpaths when using a Virtual Device to remove warnings about kf files not found.
+- Make sure to close all opened streams.
+- Fix ``Wrong java/lang/Object`` error when running an Application on the Simulator with a local repository.
+- Fix ``No .kf file found for this feature classpath`` error message in logs when running VD with launcher script.
+
 .. _changelog-0.13.0:
 
 [0.13.0] - 2023-11-10
@@ -14,7 +51,7 @@ Added
 - Add a check on EULA acceptation when using the MicroEJ Gradle plugin.
 - Automatically publish the ASSEMBLY_EXCEPTION.txt file if it exists at the root of the project.
 - Allow to publish the Feature file of an Application.
-- Add `:execTool` task to execute Stack Trace Reader and Code Coverage Analyzer Tools provided by the selected VEE Port or Kernel.
+- Add ``:execTool`` task to execute Stack Trace Reader and Code Coverage Analyzer Tools provided by the selected VEE Port or Kernel.
 
 Fixed
 """""
@@ -22,7 +59,7 @@ Fixed
 - Fix warning during compilation because of non-existing file or folder (``incorrect classpath: C:\\Users\\user\\...\myProject\\build\\resources\\main``).
 - Fix warning in SOAR when building an Executable with Architecture 8.0.0 (``[M59] - Classpath file [C:\Users\user\...\myProject\build\resources\main] does not exist``).
 - Enable Ant verbose mode for VEE Port scripts when Gradle debug log level is enabled.
-- Fix the build of a Feature when the provided Virtual Device does not contain the `dynamicFeatureLink.microejLaunch` build script (Virtual Device built with SDK 5).
+- Fix the build of a Feature when the provided Virtual Device does not contain the ``dynamicFeatureLink.microejLaunch`` build script (Virtual Device built with SDK 5).
 
 .. _changelog-0.12.1:
 
