@@ -128,10 +128,6 @@ Project configuration
         compileOnly("com.google.code.findbugs:jsr305:3.0.2")
 
     - add the ``@NonNull`` annotation explicitly on each field, method return value or parameter.
-    - use the ``@javax.annotation.ParametersAreNonnullByDefault`` annotation. It is supported by Android Studio and IntelliJ IDEA.
-      This requires to add the following dependency in your project::
-        
-        compileOnly("com.google.code.findbugs:jsr305:3.0.2")
     
 
    .. tab:: Eclipse
