@@ -68,18 +68,8 @@ you can use it by declaring a file dependency in the ``build.gradle.kts`` file, 
    The legacy ``JPF`` format of a VEE Port is not supported anymore in the SDK 6. 
    If you want to use a VEE Port ``.jpf`` file, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
 
-Using the Dropins Folder
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-When your VEE Port is available as an archive file, you can use it by copying it to the ``dropins`` folder. 
-The default dropins folder location is ``[module_project_dir]/dropins``. It can be changed using the build property ``dropinsDir``::
-
-   microej {
-      dropinsDir = "C:\\path\\to\\dropins"
-   }
-
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
