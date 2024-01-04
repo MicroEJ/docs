@@ -1,0 +1,33 @@
+digraph mygraph {
+    rankdir="BT";
+    bgcolor="transparent"
+    fontname="Helvetica,Arial,sans-serif"
+    node [
+        shape = box
+        width = 1.5
+        color = "#7dc5dc"
+        style = filled
+        fontname="Helvetica,Arial,sans-serif"
+    ]
+    edge [fontname="Helvetica,Arial,sans-serif"]
+    "microejVeePort" [fillcolor = "#41f753"]
+    "microejKernel" [fillcolor = "#41f753"]
+    "microejApplication" [fillcolor = "#41f753"]
+    "microejApplicationClasspath" [fillcolor = "#b0d6d3"]
+    "microejVeePortClasspath" [fillcolor = "#b0d6d3"]
+    "microejKernelExecutableClasspath" [fillcolor = "#b0d6d3"]
+    "virtualDeviceToolClasspath" [fillcolor = "#b0d6d3"]
+    "addonProcessorClasspath" [fillcolor = "#b0d6d3"]
+    "jdtCompilerClasspath" [fillcolor = "#b0d6d3"]
+
+    "loadVeePort" -> "microejVeePortClasspath" [ label="uses" ]
+    "microejVeePortClasspath" -> "microejVeePort"
+    "microejVeePortClasspath" -> "microejKernel"
+    "loadKernelExecutable" -> "microejKernelExecutableClasspath" [ label="uses" ]
+    "microejKernelExecutableClasspath" -> "microejKernel"
+    "buildVirtualDevice" -> "microejApplicationClasspath" [ label="uses" ]
+    "buildVirtualDevice" -> "virtualDeviceToolClasspath" [ label="uses" ]
+    "microejApplicationClasspath" -> "microejApplication"
+    "adp" -> "addonProcessorClasspath" [ label="uses" ]
+    "com.microej.gradle.java plugins" -> "jdtCompilerClasspath" [ label="uses" ]
+}
