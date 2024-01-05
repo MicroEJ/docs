@@ -35,13 +35,13 @@ MicroEJ provides Android Packs for some Foundation Libraries:
      - Module
      - Implemented Libraries
    * - Core Android Pack
-     - `com.microej.android.pack#core-android-pack <https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/android/pack/core-android-pack/>`_
+     - ``com.microej.android.pack#core-android-pack``
      - `EDC`_, `BON`_, `SNI`_, `Trace`_
    * - UI Android Pack
-     - `com.microej.android.pack#ui-android-pack <https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/android/pack/ui-android-pack/>`_
+     - ``com.microej.android.pack#ui-android-pack``
      - `MicroUI`_, `Drawing`_
    * - VG Android Pack
-     - `com.microej.android.pack#vg-android-pack <https://forge.microej.com/ui/native/microej-developer-repository-release/com/microej/android/pack/vg-android-pack/>`_
+     - ``com.microej.android.pack#vg-android-pack``
      - `MicroVG`_
 
 .. note::

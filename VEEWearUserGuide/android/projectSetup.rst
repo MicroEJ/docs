@@ -2,7 +2,7 @@
 .. _ack_create_project_:
 .. |ACK_PLUGIN_VERSION| replace:: 0.3.4
 .. |SDK_VERSION| replace:: 0.13.0
-.. |SUPPORT_LIB_VERSION| replace:: 2.0.0
+.. |SUPPORT_LIB_VERSION| replace:: 2.0.1
 
 Project Setup
 =============
@@ -79,7 +79,7 @@ Assuming that a Gradle project with an Android application is now opened in Andr
 Create or Import a MicroEJ Application
 --------------------------------------
 
-The next step is adding the module that contains the MicroEJ Application into the Gradle project.
+The next step is adding the module that contains the MicroEJ Application to the Gradle project.
 
 .. tabs::
 

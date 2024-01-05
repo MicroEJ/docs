@@ -3,17 +3,18 @@
 Installation
 ============
 
-To develop applications compatible with both Android and MicroEJ VEE, it is required to use :ref:`MicroEJ SDK 6 <sdk_6_user_guide>`.
-The MicroEJ SDK provides Gradle plugins that allow for seamless integration in Android Studio.
+To develop applications compatible with both Android and MicroEJ VEE, it is required to use :ref:`MICROEJ SDK 6 <sdk_6_user_guide>`.
+The MICROEJ SDK provides Gradle plugins that allow for seamless integration in Android Studio.
 
-For comprehensive installation instructions, read the :ref:`SDK 6 Installation Guide <sdk_6_install>` (follow the steps related to Android Studio when relevant).
+For comprehensive installation instructions, read the :ref:`SDK 6 Installation Guide <sdk_6_install>`.
+Follow the steps related to Android Studio when relevant.
 
-In addition to installing MicroEJ SDK 6, make sure to comply with the requirements listed below.
+In addition to installing MICROEJ SDK 6, make sure to comply with the requirements listed below.
 
 JDK Version
 -----------
 
-The Android Compatibility Kit, like MicroEJ SDK 6, is compatible with a JDK 11 or higher LTS version.
+The Android Compatibility Kit, like MICROEJ SDK 6, is compatible with a JDK 11 or higher LTS version.
 The JDK version to use will depend on the Android Gradle Plugin (AGP) being used by your Android project. 
 Starting from version 8, AGP requires a minimum JDK 17.
 If you intend to use JDK 11, you will need to specify a compatible version of AGP (e.g., 7.4.2).
