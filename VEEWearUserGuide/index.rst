@@ -11,7 +11,7 @@ VEE Wear includes all graphical features from MicroEJ runtime, including:
 * A thread-safe 2D graphics engine
 * A widget framework
 * Vector drawing support
-* And more. Refer to https://developer.microej.com/embedded-gui/ for more info
+* And more. Refer to the :ref:`Graphical User Interface <pack_gui>` section for more info
 
 |
 
