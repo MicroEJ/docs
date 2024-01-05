@@ -31,11 +31,12 @@ This chapter explains the different ways to create a new project.
       - Fill the name of the project in the :guilabel:`Name` field.
       - Fill the package name of the project in the :guilabel:`Package name` field.
       - Select the location of the project in the :guilabel:`Save location` field.
+      - Keep the default Android SDK in the :guilabel:`Minimum SDK` field.
       - Select :guilabel:`Kotlin` for the :guilabel:`Build configuration language` field.
       
       .. note::
-        The SDK uses Kotlin as the default Gradle build script DSL. 
-        The use of the Groovy build script DSL is still possible but not officially supported.
+        Groovy build script DSL is not officially supported by the SDK, so the project created by the Wizard uses Kotlin regardless
+        of the language selected by the user.
             
       .. figure:: images/android-studio-create-project-02.png
          :alt: Project Creation in Android Studio
@@ -107,7 +108,7 @@ This chapter explains the different ways to create a new project.
       - Select :guilabel:`MicroEJ` in :guilabel:`Generators` list on the left panel.
       - Fill the name of the project in the :guilabel:`Name` field.
       - Select the location of the project in the :guilabel:`Location` field.
-      - Select the module type among :guilabel:`Application`, :guilabel:`Addon-Library` and :guilabel:`J2SE Library` buttons.
+      - Select the module type among :guilabel:`Application` and :guilabel:`Addon-Library` buttons.
       - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
       - Fill the version of the artifact to publish in the :guilabel:`Version` field.
       - Fill the group of the artifact to publish in the :guilabel:`Group` field.
@@ -415,6 +416,151 @@ J2SE Library Project
 
 Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
+.. _sdk_6_create_subproject_in_existing_project:
+
+Create a subproject in an existing project
+------------------------------------------
+
+This section explains the different ways to add a module to an existing project.
+
+.. warning::
+   If you want to add a MicroEJ module to a non MicroEJ project, for example an Android project, 
+   you must :ref:`configure the repositories <sdk_6_configure_repositories>` before creating the module.
+   If the repositories used by your project are `centralized <https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:centralized-repository-declaration>`__ 
+   in the :guilabel:`settings.gradle.kts` file of the project, the MicroEJ repositories defined in 
+   :download:`this file <resources/microej.init.gradle.kts>` must be added to your :guilabel:`settings.gradle.kts` file.
+
+.. tabs::
+
+   .. tab:: Android Studio
+
+      The creation of a module with Android Studio is done as follows:
+      
+      - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`New Module...`.
+      - Select :guilabel:`MicroEJ Module` in :guilabel:`Templates` list on the left panel.
+      - Fill the name of the module in the :guilabel:`Name` field.
+      - Fill the group of the artifact to publish in the :guilabel:`Group` field.
+      - Fill the version of the artifact to publish in the :guilabel:`Version` field.
+      - Select the module type among :guilabel:`Application` and :guilabel:`Addon-Library` buttons.
+      - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
+      - Click on :guilabel:`Finish` button.
+
+      .. figure:: images/android-studio-create-microej-module.png
+         :alt: Module Creation in Android Studio
+         :align: center
+         :scale: 70%
+      
+         Module Creation in Android Studio
+
+   .. tab:: IntelliJ IDEA
+
+      The creation of a module with IntelliJ IDEA is done as follows:
+      
+      - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Module...`.
+      - Select :guilabel:`MicroEJ` in :guilabel:`Generators` list on the left panel.
+      - Fill the name of the module in the :guilabel:`Name` field.
+      - Select the location of the module in the :guilabel:`Location` field.
+      - Select the module type among :guilabel:`Application` and :guilabel:`Addon-Library` buttons.
+      - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
+      - Fill the version of the artifact to publish in the :guilabel:`Version` field.
+      - Fill the group of the artifact to publish in the :guilabel:`Group` field.
+      - Fill the name of the artifact to publish in the :guilabel:`Artifact` field.
+      - Select the JVM used by Gradle in the :guilabel:`JDK` combobox.
+      - Check the :guilabel:`Add sample code` checkbox.
+      - Click on :guilabel:`Create` button.
+      
+      .. figure:: images/intellij-create-microej-module.png
+         :alt: Module Creation in IntelliJ IDEA
+         :align: center
+         :scale: 70%
+      
+         Module Creation in IntelliJ IDEA
+
+      - Include the module to your project by adding the following line to the :guilabel:`settings.gradle.kts` file of the project::
+      
+            include("<module_name>")
+      
+      - Right-click on the module name in the Gradle tasks view and click on :guilabel:`Unlink Gradle Project`.
+      - Reload of a Gradle project by clicking on the reload icon button which appears on the right of the editor:
+
+         .. figure:: images/intellij-reload-gradle-project.png
+            :alt: Gradle Project reload in IntelliJ IDEA
+            :align: center
+            :scale: 70%
+
+            Gradle Project reload in IntelliJ IDEA
+
+   .. tab:: Eclipse
+
+      The creation of a module with Eclipse is done as follows:
+      
+      - Right-click on your project and click on :guilabel:`New` > :guilabel:`Folder`.
+      - Select your project as parent folder.
+      - Fill the name of the module in the :guilabel:`Folder name` field.
+      - Click on :guilabel:`Finish` button.
+      
+      .. figure:: images/eclipse-create-microej-module.png
+         :alt: Module Creation in Eclipse
+         :align: center
+         :scale: 70%
+      
+         Module Creation in Eclipse
+
+      - Right-click on your newly created folder and click on :guilabel:`New` > :guilabel:`File`.
+      - Enter ``build.gradle.kts`` in the :guilabel:`File name` field.
+      - Click on :guilabel:`Finish` button and open the ``build.gradle.kts`` file.
+      - Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
+      
+          plugins {
+              id("com.microej.gradle.addon-library") version "0.14.0"
+          }
+      
+        or for an Application::
+      
+          plugins {
+              id("com.microej.gradle.application") version "0.14.0"
+          }
+      
+        Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+      
+      - Declare the dependencies required by your project in the ``dependencies`` block. For example::
+      
+          dependencies {
+              implementation("ej.api:edc:1.3.5")
+          }
+            
+      - Open the ``settings.gradle.kts`` file of your project and add the following content::
+      
+          include("<module_name>")
+      
+      .. note::
+         By default, Eclipse requires the user to explicitly trigger the reload of a Gradle project when its content has changed.
+         Therefore, when the content of a Gradle project has been updated, 
+         you have to right-click on the project, then click on :guilabel:`Gradle` and :guilabel:`Refresh Gradle Project`:
+      
+         .. figure:: images/eclipse-reload-gradle-project.png
+            :alt: Gradle Project reload in Eclipse
+            :align: center
+            :scale: 70%
+      
+            Gradle Project reload in Eclipse
+        
+         You can also configure Eclipse to automatically reload a Gradle project after a change.
+         Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
+      
+      - Right-click on the newly created module and click on :guilabel:`New` > :guilabel:`Source Folder`.
+      - Enter ``src/main/java`` in the :guilabel:`Folder name` field.
+      - Click on :guilabel:`Finish` button.
+      
+      .. figure:: images/eclipse-create-source-folder.png
+         :alt: Source Folder Creation in Eclipse
+         :align: center
+         :scale: 70%
+      
+         Source Folder Creation in Eclipse
+
+      - Follow the same steps to create the ``src/main/resources``, ``src/test/java`` and ``src/test/resources`` folders.
+
 .. _sdk_6_create_project_gradle_wrapper:
 
 Gradle Wrapper
@@ -452,7 +598,7 @@ Refer to `the official Gradle documentation <https://docs.gradle.org/current/use
 
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
