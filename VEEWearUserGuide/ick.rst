@@ -1,3 +1,5 @@
+.. _ios_compatibility_kit:
+
 iOS Compatibility Kit
 =====================
 

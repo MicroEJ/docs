@@ -13,7 +13,7 @@ Solution
 VEE Wear offers a comprehensive solution for software development on this dual architecture:
 
 - MicroEJ VEE enables the execution of applications written in high-level code through virtualization on the microcontroller.
-- the :ref:`Android Compatibility Kit <runnning_on_android>` allows the execution of the same application on the microprocessor without the need for re-implementation.
+- the :ref:`Android Compatibility Kit <android_compatibility_kit>` allows the execution of the same application on the microprocessor without the need for re-implementation.
 - the Offloading Framework provides the ability to switch the application context between the two processors depending on their capabilities and on the application flow.
 
 One Code, Two Targets
@@ -21,7 +21,7 @@ One Code, Two Targets
 
 MicroEJ Application development shares the same programming language as Android Application development.
 Thanks to this similarity, any MicroEJ Application code is compatible with the Android runtime environment.
-The :ref:`Android Compatibility Kit <runnning_on_android>` provides the tools and libraries to execute a MicroEJ Application on Android.
+The :ref:`Android Compatibility Kit <android_compatibility_kit>` provides the tools and libraries to execute a MicroEJ Application on Android.
 
 Using this solution, the application code can be programmed once and executed both on the low-power microcontroller and the high-power microprocessor.
 
@@ -45,7 +45,7 @@ to hand over the control of the display, to put the processor to sleep, etc.
 Evaluation
 ----------
 
-The Android Compatibility Kit can be evaluated by following :ref:`its documentation <runnning_on_android>`.
+The Android Compatibility Kit can be evaluated by following :ref:`its documentation <android_compatibility_kit>`.
 
 An demonstration with a sample offloading framework is available on demand. You can contact :ref:`MicroEJ Support<get_support>` to test this demonstration.
 

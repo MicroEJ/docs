@@ -1,4 +1,4 @@
-.. _runnning_on_android:
+.. _android_compatibility_kit:
 
 Android Compatibility Kit
 =========================
