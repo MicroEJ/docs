@@ -21,8 +21,11 @@ A new project is generated into the workspace:
 Configure a VEE Port
 --------------------
 
-Before building the Kernel, a target VEE Port must be configured. See
-:ref:`platform_selection`.
+Before building the Kernel, you need to build a VEE Port with Multi-Sandbox capability.
+To enable the Multi-Sandbox capability in your VEE Port configuration, follow the instructions from the :ref:`multisandbox` section.
+
+Once the VEE Port is built, configure the target VEE Port in your Kernel project. 
+See :ref:`platform_selection`.
 
 Build the Executable and Virtual Device
 ---------------------------------------
@@ -72,6 +75,55 @@ A Kernel API or a Runtime Environment module is added as a dependency with the c
 .. code:: xml
 
    <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6" conf="kernelapi->default"/>
+
+.. _implement_security_policy:
+
+Implement a Security Policy
+---------------------------
+
+The Kernel can restrict sensitive or possibly unsafe operations performed by Sandboxed Applications, thus defining a security policy.
+Implementing a security policy is achieved by enabling support for Security Management system-wide and by registering to the Kernel a custom `SecurityManager`_ that will handle the `Permission`_ checks.
+
+.. note::
+
+   An API controlled by the Security Manager must be guarded by a :ref:`Permission check <securitymanager_permission_check>`.
+   The usual API documentation convention is to declare to throw a `SecurityException`_ with details about the requested Permission.
+
+Enable the Security Management
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For the sake of ROM footprint optimization, calls to Permission checks are disabled by default.
+In order to activate this feature the :ref:`option_enable_security_manager` option must be set.
+
+Implement your Security Policy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This can be achieved by subclassing the base `SecurityManager`_ class, overriding its `SecurityManager.checkPermission(Permission)`_ method,
+and registering an instance of this class to the Kernel by a call to `System.setSecurityManager(SecurityManager)`_.
+
+.. code-block:: java
+
+      // create a new Security Manager
+      SecurityManager sm = new SecurityManager() {
+         @Override
+         public void checkPermission(java.security.Permission perm) {
+            // here implement your Kernel Security Policy
+         };
+      };
+      // register the Security Manager
+      System.setSecurityManager(sm);
+
+Then you have to implement your own Security Policy.
+
+Implementation of a Security Policy is demonstrated in the `Kernel-GREEN`_ project. This Kernel implements a logging-only Security Policy using the utility class `FeaturePermissionCheckDelegate`_ that helps in implementing Permission checks in a Multi-Sandbox environment.
+
+.. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
+.. _SecurityManager.checkPermission(Permission): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html#checkPermission-java.security.Permission-
+.. _System.setSecurityManager(SecurityManager): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#setSecurityManager-java.lang.SecurityManager-
+.. _Kernel-GREEN: https://github.com/MicroEJ/Kernel-GREEN
+.. _FeaturePermissionCheckDelegate: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/FeaturePermissionCheckDelegate.html
+.. _SecurityException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityException.html
+.. _Permission: https://repository.microej.com/javadoc/microej_5.x/apis/java/security/Permission.html
 
 .. _pre_installed_application_vd:
 

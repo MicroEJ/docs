@@ -680,7 +680,7 @@ Option(checkbox): Enable SecurityManager checks
 
 *Description*:
 
-Enable the security manager runtime checks.
+Enable the security manager Permission checks.
 
 Category: Shielded Plug
 -----------------------
@@ -759,8 +759,8 @@ Group: Memory
 
 .. _option_maximum_number_of_monitors_per_thread:
 
-Option(text):
-""""""""""""""
+Option(text): Maximum number of monitors per thread
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``core.memory.thread.max.nb.monitors``
 
@@ -770,8 +770,8 @@ Option(text):
 
 Specifies the maximum number of monitors a thread can own at the same time.
 
-Option(text):
-""""""""""""""
+Option(text): Maximum number of frames dumpers on OutOfMemoryError
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``core.memory.oome.nb.frames``
 
@@ -791,8 +791,8 @@ Option(checkbox): Enable Java heap usage monitoring
 
 *Default value*: ``false``
 
-Option(text):
-""""""""""""""
+Option(text): Java heap initial size
+""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``com.microej.runtime.debug.heap.monitoring.init.size``
 
@@ -805,12 +805,51 @@ Specify the initial size (in bytes) of the Java Heap.
 Group: SOAR
 ^^^^^^^^^^^
 
+.. _option_enable_bytecode_verifier:
+
 Option(checkbox): Enable Bytecode Verifier
 """"""""""""""""""""""""""""""""""""""""""
 
 *Option Name*: ``soar.bytecode.verifier``
 
-*Default value*: ``false``
+*Default value*: Standalone Application: ``false``, Sandboxed Application: ``true``
+
+*Description*:
+
+Enables :ref:`soar_binary_code_verifier` during application build.
+
+In the context of building a Standalone Application, the bytecode verifier is, by default, disabled to prioritize performance. In this case, the code is considered trusted.
+Conversely, when building a Sandboxed Application, the bytecode verifier is automatically enabled by default. This is particularly important when dealing with untrusted third-party code.
+
+.. _options_gc:
+
+Group: Garbage Collector
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _option_gc_stack_size:
+
+Option(text): GC mark stack size
+""""""""""""""""""""""""""""""""
+
+*Option Name*: ``com.microej.runtime.core.gc.markstack.levels.max``
+
+*Default value*: ``32``
+
+*Description*:
+
+Indicates the quantity of items in the :ref:`Garbage Collector <runtime_gc>`'s mark stack.
+The mark stack is used by the Garbage Collector for identifying live objects within the heap through a depth-first search approach.
+Once the mark stack reaches its capacity, the Garbage Collector proceeds to inspect heap memory,
+which may slow down garbage collection performance.
+
+You can receive a notification when the mark stack limit is reached by implementing the following hook:
+
+.. code-block:: c
+
+   void LLMJVM_on_GC_MarkStackOverflow_reached(void) {
+      // When entering here, the GC mark stack is undersized, which may affect GC performance.
+      // It is recommended to either increase the GC mark stack size or reduce the object graph depth.
+   }
 
 Category: Kernel
 ^^^^^^^^^^^^^^^^
@@ -823,8 +862,8 @@ Category: Kernel
 Group: Threads
 """"""""""""""
 
-Option(text):
-~~~~~~~~~~~~~~
+Option(text): Maximum number of threads per Feature
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Option Name*: ``core.memory.feature.max.threads``
 
@@ -835,29 +874,10 @@ Option(text):
 Specifies the maximum number of threads a Feature is allowed to use at the same
 time.
 
-Group: Dynamic Features
-"""""""""""""""""""""""
-
-.. _option_maximum_number_of_dynamic_features:
-
-Option(text):
-~~~~~~~~~~~~~~
-
-*Option Name*: ``com.microej.runtime.kernel.dynamicfeatures.max``
-
-*Default value*: ``16``
-
-*Description*:
-
-Specifies the maximum number of Features that can be dynamically installed to
-this Kernel (see `Kernel.install()`_ method).
-
-.. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
-
 .. _option_feature_stop_timeout:
 
-Option(text):
-~~~~~~~~~~~~~~
+Option(text): Feature stop timeout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Option Name*: ``com.microej.runtime.kf.waitstop.delay``
 
@@ -869,6 +889,53 @@ Specifies the maximum time allowed for the `FeatureEntryPoint.stop()`_ method to
 
 .. _FeatureEntryPoint.stop(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/FeatureEntryPoint.html#stop--
 
+Group: Features Installation
+""""""""""""""""""""""""""""
+
+.. _option_maximum_number_of_dynamic_features:
+
+Option(text): Maximum number of installed Features
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Option Name*: ``com.microej.runtime.kernel.dynamicfeatures.max``
+
+*Default value*: ``16``
+
+*Description*:
+
+Specifies the maximum number of Features that can be installed to
+this Kernel (see `Kernel.install()`_ method).
+
+.. _Kernel.install(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/Kernel.html#install-java.io.InputStream-
+
+Option(text): Code chunk size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Option Name*: ``com.microej.soar.kernel.featurecodechunk.size``
+
+*Default value*: ``65536``
+
+*Description*:
+
+Specifies the size in bytes of the code chunk in RAM. See :ref:`feature_code_chunk_size` section for more details.
+
+Option(text): InputStream transfer buffer size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Option Name*: ``com.microej.runtime.kf.link.transferbuffer.size``
+
+*Default value*: ``512``
+
+*Description*:
+
+Specifies the size in bytes of the temporary byte array for reading in the Feature InputStream. See :ref:`inputstream_transfer_buffer_size` section for more details.
+
+Option(text): Maximum number of relocations applied simultaneously
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Option Name*: ``com.microej.runtime.kf.link.chunk.relocations.count``
+
+*Default value*: ``128``
 
 Group: Feature Portability Control
 """"""""""""""""""""""""""""""""""

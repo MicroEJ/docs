@@ -4,8 +4,7 @@
 Setup an Automated Build using Jenkins and Artifactory
 ======================================================
 
-This tutorial explains how to setup an environment for automating :ref:`MicroEJ Module build <mmm>` and deployment using `Jenkins <https://www.jenkins.io/>`_
-and `JFrog Artifactory <https://jfrog.com/artifactory/>`_.
+This tutorial explains how to setup an environment for automating :ref:`MicroEJ Module build <mmm>` and deployment using `Jenkins <https://www.jenkins.io/>`_, `JFrog Artifactory <https://jfrog.com/artifactory/>`_ and a `Git plateform <https://about.gitea.com/>`_ (you can also use Gitlab or Github for example).
 
 Such environment setup facilitates continuous integration (CI) and continuous delivery (CD), which improves productivity across your development ecosystem,
 by automatically:
@@ -15,7 +14,7 @@ by automatically:
 * reproducing builds
 * archiving binary modules
 
-The tutorial should take 2 hours to complete.
+The tutorial should take 1 hour to complete.
 
 
 Intended Audience
@@ -48,11 +47,11 @@ The overall build and deployment flow of a module can be summarized as follows:
 Prerequisites
 -------------
 
-*  `MicroEJ SDK <https://developer.microej.com/get-started/>`_ ``5.4.0`` or higher.
-*  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://git-for-windows.github.io/>`_).
-*  Java Development Kit (JDK) ``1.8.x``.
+*  `MicroEJ SDK 5 <https://docs.microej.com/en/latest/SDKUserGuide/>`_ ``5.8.1`` or higher.
+*  `Docker and Docker Compose V2 <https://docs.docker.com/>`_ on Linux, Windows or Mac
+*  Git ``2.x`` installed, with Git executable in path. We recommend installing Git Bash if your operating system is Windows (`<https://gitforwindows.org/>`_).
 
-This tutorial was tested with Jenkins ``2.277.4`` and Artifactory ``7.24.3``.
+This tutorial was tested with Jenkins ``2.426.1``, Artifactory ``7.71.5`` and Gitea ``1.21.1``.
 
 .. note::
     For SDK versions before 5.4.0, please refer to this `MicroEJ Documentation Archive <https://docs.microej.com/_/downloads/en/20201009/pdf/>`_.
@@ -64,8 +63,7 @@ The next sections describe step by step how to setup the build environment and b
 
 The steps to follow are:
 
-#. Install and setup MicroEJ build tools, Jenkins and Artifactory
-#. Create a Jenkins job template for MMM builds
+#. Run and setup Jenkins, Artifactory and Gitea
 #. Create a simple MicroEJ module (Hello World)
 #. Create a new Jenkins job for the Hello World module
 #. Build the module
@@ -79,43 +77,25 @@ Artifactory will host MicroEJ modules in 3 repositories:
 - ``custom-modules-release``: repository where custom release modules will be published
 
 
-Install the Build Tools
------------------------
+Prepare your Docker environment
+-------------------------------
 
 This section assumes the prerequisites have been properly installed.
 
-#. Locate your JDK installation directory (typically something like ``C:\Program Files\Java\jdk1.8.0_[version]`` on Windows).
-#. Set the environment variable ``JAVA_HOME`` to point to this directory.
-#. Set the environment variable ``JRE_HOME`` to point to the ``jre`` directory (for example ``C:\Program Files\Java\jdk1.8.0_[version]\jre``).
-#. Create a directory named ``buildKit``.
-#. Export the MicroEJ build kit from your MicroEJ SDK version to the ``buildKit`` directory, by following the steps described :ref:`here <mmm_build_kit>`.
-#. Edit the file ``buildKit/microej-module-repository/ivysettings.xml`` and replace its content by:
+#. Create a new directory, inside create a file named ``docker-compose.yaml`` and copy this content: 
 
-.. literalinclude:: resources/ivysettings-artifactory.xml
-    :language: xml
+    .. literalinclude:: resources/docker-compose.yaml
+        :language: yaml
 
-This file configures MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this tutorial. Please refer to :ref:`mmm_settings_file` section for more details.
+#. Create another file named ``Dockerfile`` and copy this content: 
 
-.. note::
-   At this point, the content of the directory ``buildKit`` should look like the following:
-   ::
-    
-    buildKit
-    ├── bin
-    │   ├── mmm
-    │   └── mmm.bat
-    ├── conf
-    │   └── easyant-conf.xml
-    ├── lib
-    │   ├── ant.jar
-    │   └── ...
-    ├── microej-build-repository
-    │   ├── ant-contrib
-    │   ├── be
-    │   └── ...
-    ├── microej-module-repository
-    │   └── ivysettings.xml
-    └── release.properties
+    .. literalinclude:: resources/Dockerfile
+        :language: dockerfile
+
+#. In this directory, launch the command ``docker compose up -d``. After a few moments you should have three running containers (named jenkins, gitea and artifactory). 
+
+Using ``docker compose ps`` will show if containers started properly. Logs can be viewed with ``docker compose logs``. 
+
 
 .. _get_microej_module_repository:
 
@@ -131,43 +111,31 @@ It bundles Foundation Library APIs and numerous Add-On Libraries.
 Next step is to download a local copy of this repository:
 
 #. Visit the `Central Repository <https://developer.microej.com/central-repository/>`_ on the MicroEJ Developer website.
-#. Navigate to the :guilabel:`Working Offline` section.
+#. Navigate to the :guilabel:`Production Setup` section.
 #. Click on the :guilabel:`offline repository` link. This will download the Central Repository as a ZIP file.
 
 Setup Artifactory
 -----------------
-
-Install and Start Artifactory
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#. Download Artifactory here: `<https://jfrog.com/fr/open-source/>`_ and select the appropriate package for your operating system.
-#. Unzip downloaded archive, then navigate to ``app/bin`` directory (by default
-   ``artifactory-oss-[version]/app/bin``).
-#. Run ``artifactory.bat`` or ``artifactory.sh`` depending on your operating system.
-#. Once Artifactory is started, go to ``http://localhost:8081/``.
-#. Login to Artifactory for the first time using the default ``admin`` account (Username: ``admin``, Password: ``password``).
-#. On the :guilabel:`Welcome` wizard, set the administrator password, then click :guilabel:`Next`,
-#. Configure proxy server (if any) then click :guilabel:`Next`, or click :guilabel:`Skip`.
-#. Click on :guilabel:`Finish`. 
-
-Artifactory is up and running.
 
 Configure Artifactory
 ~~~~~~~~~~~~~~~~~~~~~
 
 For demonstration purposes we will allow anonymous users to deploy modules in the repositories:
 
-#. Go to :guilabel:`Administration` > :guilabel:`Security` > :guilabel:`Settings`.
-#. In the :guilabel:`General Security Settings` section, check :guilabel:`Allow Anonymous Access`.
+#. Once Artifactory container is started, go to ``http://localhost:8082/``.
+#. Login to Artifactory for the first time using the default ``admin`` account (Username: ``admin``, Password: ``password``).
+#. Skip the installation wizard if it appears.
+#. Go to :guilabel:`Administration` > :guilabel:`User Management` > :guilabel:`Settings`.
+#. In the :guilabel:`User Security Configuration` section, check :guilabel:`Allow Anonymous Access`.
 #. Click on :guilabel:`Save`.
-#. Go to :guilabel:`Administration` > :guilabel:`Identity and Access` > :guilabel:`Permissions`.
+#. Go to :guilabel:`Administration` > :guilabel:`User Management` > :guilabel:`Permissions`.
 #. Click on :guilabel:`Anything` entry (do not check the line), then go to :guilabel:`Users` tab
-#. Click on :guilabel:`anonymous` and check :guilabel:`Deploy/Cache` permission in the :guilabel:`Repositories` category.
-#. Click on :guilabel:`Save and finish`.
+#. Click on :guilabel:`anonymous` and check :guilabel:`Deploy/Cache` permission in the :guilabel:`Selected Users Repositories` category.
+#. Click on :guilabel:`Save`.
 
-Next steps will involve uploading large files, so we have to augment the file upload maximum size accordingly:
+Next steps will involve uploading large files, so we have to increase the file upload maximum size accordingly:
 
-#. Go to :guilabel:`Administration` > :guilabel:`Artifactory`.
+#. Go to :guilabel:`Administration` > :guilabel:`Artifactory` > :guilabel:`General` > :guilabel:`Settings`.
 #. In the :guilabel:`General Settings` section, change the value of :guilabel:`File Upload In UI Max Size (MB)` to ``1024`` then click on :guilabel:`Save`.
 
 
@@ -179,7 +147,7 @@ We will now create and configure the repositories. Let's start with the reposito
 #. Go to :guilabel:`Administration` > :guilabel:`Repositories` > :guilabel:`Repositories` in the left menu.
 #. Click on :guilabel:`Add Repositories` > :guilabel:`Local Repository`
 #. Select :guilabel:`Maven`.
-#. Set :guilabel:`Repository Key` field to ``custom-modules-snapshot`` and click on :guilabel:`Save and Finish`.
+#. Set :guilabel:`Repository Key` field to ``custom-modules-snapshot`` and click on :guilabel:`Create Local Repository`.
 
 Repeat the same steps for the other repositories with the :guilabel:`Repository Key` field set to ``custom-modules-release`` and ``microej-module-repository``.
 
@@ -192,26 +160,40 @@ In this section, we will import MicroEJ repositories into Artifactory repositori
 #. Go to :guilabel:`Administration` > :guilabel:`Artifactory` > :guilabel:`Import & Export` > :guilabel:`Repositories`.
 #. Scroll to the :guilabel:`Import Repository from Zip` section.
 #. As :guilabel:`Target Local Repository`, select ``microej-module-repository`` in the list.
-#. Click on :guilabel:`Select file` and select the MicroEJ module repository zip file (``microej-[MicroEJ version]-[version].zip``) that you downloaded earlier (please refer to section :ref:`get_microej_module_repository`).
+#. Click on :guilabel:`Select file` and select the MicroEJ module repository zip file (``central-repository-[version].zip``) that you downloaded earlier (please refer to section :ref:`get_microej_module_repository`).
 #. Click :guilabel:`Upload`. At the end of upload, click on :guilabel:`Import`. Upload and import may take some time.
 
 Artifactory is now hosting all required MicroEJ modules. 
-Go to :guilabel:`Administration` > :guilabel:`Artifactory` > :guilabel:`Artifacts` and check that the repository ``microej-module-repository`` does contain modules as shown in the figure below.
+Go to :guilabel:`Application` > :guilabel:`Artifactory` > :guilabel:`Artifacts` and check that the repository ``microej-module-repository`` does contain modules as shown in the figure below.
 
 .. image:: images/tuto_microej_cli_artifactory_module_preview.PNG
     :align: center
-      
+
+Setup Gitea
+-----------
+
+Install Gitea
+~~~~~~~~~~~~~
+#. Once the Gitea container is started, go to ``http://localhost:3000/``.
+#. Don't change anything on the ``Initial Configuration``, click on :guilabel:`Install Gitea`
+#. Click on :guilabel:`Register account` and create one. The first created user become the administrator.
+
+Configure Gitea
+---------------
+
+#. At the top right click on the arrow then :guilabel:`New Repository`
+#. As :guilabel:`Repository Name` set ``helloworld``, leave the other options as default.
+#. Click :guilabel:`Create Repository`. 
+
+
 Setup Jenkins
 -------------
 
 Install Jenkins
 ~~~~~~~~~~~~~~~
 
-#. Download Jenkins here: `<https://www.jenkins.io/download/>`_. In this tutorial we will use the WAR (Web Archive), but you can use any other installation package (Docker, Ubuntu/Debian, ...).
-#. Open a terminal and type the following command: ``java -jar [path/to/downloaded/jenkinswar]/jenkins.war``. 
-   After initialization, the terminal will print out :guilabel:`Jenkins is fully up and running`.
-#. Go to ``http://localhost:8080/``.
-#. To unlock Jenkins, copy/paste the generated password that has been written in the terminal log. Click on :guilabel:`Continue`.
+#. Once Jenkins container is started, go to ``http://localhost:8080/``.
+#. To unlock Jenkins, copy/paste the generated password that has been written in the container log. Click on :guilabel:`Continue`.
 #. Select option :guilabel:`Install suggested plugins` and wait for plugins
    installation.
 #. Fill in the :guilabel:`Create First Admin User` form. Click :guilabel:`Save and continue`.
@@ -220,66 +202,12 @@ Install Jenkins
 Configure Jenkins
 ~~~~~~~~~~~~~~~~~
 
-First step is to configure the JDK and MMM paths:
+#. Go to :guilabel:`Manage Jenkins` > :guilabel:`Plugins`.
+#. Add Docker Pipeline plugin:
+    #. Go to :guilabel:`Available plugins` section.
+    #. Search `Docker Pipeline`.
+    #. Install it and restart Jenkins
 
-#. Go to :guilabel:`Manage Jenkins` > :guilabel:`Global Tool Configuration`.
-#. Add JDK installation:
-    #. Scroll to :guilabel:`JDK` section.
-    #. Click on :guilabel:`Add JDK`.
-    #. Set :guilabel:`Name` to ``JDK [jdk_version]`` (for example ``JDK 1.8``).
-    #. Uncheck :guilabel:`Install automatically`.
-    #. Set :guilabel:`JAVA_HOME` to the absolute path of your JDK installation (for example ``C:\Program Files\Java\jdk1.8.0_[version]`` on Windows).
-#. Click on :guilabel:`Save`.
-#. Go to :guilabel:`Manage Jenkins` > :guilabel:`Configure System`.
-    #. Scroll to :guilabel:`Global properties` section.
-    #. Check :guilabel:`Environment variables`.
-    #. Click on :guilabel:`Add`.
-    #. Set :guilabel:`Name` to ``MICROEJ_BUILD_KIT_HOME``.
-    #. Set :guilabel:`Value` to the absolute path of the ``buildKit`` folder.
-#. Click on :guilabel:`Save`.
-
-
-Create a Job Template
-~~~~~~~~~~~~~~~~~~~~~
-
-#. Go to Jenkins dashboard.
-#. Click on :guilabel:`New item` to create a job template.
-#. Set item name to ``Template - MMM from Git``.
-#. Select :guilabel:`Freestyle project`.
-#. Click on :guilabel:`Ok`. 
-
-In :guilabel:`General` tab:
-
-#. Check :guilabel:`This project is parameterized` and add :guilabel:`String parameter` named ``easyant.module.dir`` with default value to ``$WORKSPACE/TO_REPLACE``. This will later point to the module sources.
-
-In :guilabel:`Source Code Management` tab:
-
-#. Select :guilabel:`Git` source control:
-#. Set :guilabel:`Repository URL` value to ``TO_REPLACE``,
-#. Set :guilabel:`Branch Specifier` value to ``origin/master``,
-#. In :guilabel:`Additional Behaviours`, click on :guilabel:`Add`, select :guilabel:`Advanced sub-modules behaviors`, then check :guilabel:`Recursively update submodules`.
-
-In :guilabel:`Build` tab:
-
-* For Windows, add build step :guilabel:`Execute Windows batch command`:
-
-    * In :guilabel:`Command`, set the following content:
-
-    ::
-
-     cd "%easyant.module.dir%"
-     "%MICROEJ_BUILD_KIT_HOME%\\bin\\mmm.bat" publish shared"
-
-* For Linux, add build step :guilabel:`Execute shell`:
-
-    * In :guilabel:`Command`, set the following content:
-
-    ::
-
-     cd "${easyant.module.dir}"
-     "${MICROEJ_BUILD_KIT_HOME}/bin/mmm" publish shared"
-
-Finally, click on :guilabel:`Save`.
 
 Build a new Module using Jenkins
 --------------------------------
@@ -305,7 +233,8 @@ In this example, we will create a very simple module using the Sandbox Applicati
 
 #. Click :guilabel:`Finish`. This will create the project files and structure.
 #. Right-click on source folder ``src/main/java`` and select :guilabel:`New` > :guilabel:`Package`. Set a name to the package and click :guilabel:`Finish`.
-#. Right-click on the new package and select :guilabel:`New` > :guilabel:`Class`. Set a name to the class and check ``public static void main(String[] args)``, then click :guilabel:`Finish`.
+#. Right-click on the new package and select :guilabel:`New` > :guilabel:`Class`. Set ``Main`` as name for the class and check ``public static void main(String[] args)``, then click :guilabel:`Finish`.
+#. Add the line ``System.out.println("Hello World!");`` to the method and save it.
 
     .. image:: images/tuto_microej_cli_module_files.PNG
         :align: center
@@ -318,45 +247,73 @@ In this example, we will create a very simple module using the Sandbox Applicati
     .. image:: images/tuto_microej_cli_module_location.PNG
         :align: center
 
-#. Open a terminal from this directory and type the following commands:
-
-   .. code-block:: sh
-   
-      git init --bare ~/hello_world.git
-      git init
-      git remote add origin ~/hello_world.git
-      git add com.example.hello-world
-      git commit -m "Add Hello World application"
-      git push --set-upstream origin master
-
-
 .. note::
    For more details about MicroEJ Applications development, refer to the :ref:`Application Developer Guide <application-developer-guide>`.
 
+Upload to your Git repository
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+   We need the IP address of the Docker Bridge Network, here we consider that it's ``172.17.0.1`` but you can check with the command ``ip addr show docker0`` on the Docker host.
+
+#. Open the project directory, create a file named ``Jenkinsfile`` and copy this content inside:
+
+    .. literalinclude:: resources/Jenkinsfile
+        :language: groovy
+
+#. Create a directory named ``ivy``, create a file named ``ivysettings-artifactory.xml`` and copy this content inside: 
+
+    .. literalinclude:: resources/ivysettings-artifactory.xml
+        :language: xml
+
+This file configures the MicroEJ Module Manager to import and publish modules from the Artifactory repositories described in this tutorial. Please refer to the :ref:`mmm_settings_file` section for more details.
+
+    .. note::
+       At this point, the content of the directory ``com.example.hello-world`` should look like the following:
+       ::
+    
+        com.example.hello-world
+        ├── bin
+        │   └── ...
+        ├── ivy
+        │   └── ivysettings-artifactory.xml
+        ├── src
+        │   └── ...
+        ├── src-adpgenerated/
+        │   └── ...
+        ├── CHANGELOG.md
+        ├── Jenkinsfile
+        ├── LICENSE.txt
+        ├── README.md
+        └── module.ivy
+    
+#. Open a terminal from the directory ``com.example.hello-world`` and type the following commands:
+
+   .. code-block:: sh
+   
+      git init
+      git checkout -b main
+      git add *
+      git commit -m "Add Hello World application"
+      git remote add origin http://localhost:3000/<admin_user>/helloworld.git
+      git push -u origin main
 
 Create a New Jenkins Job
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Start by creating a new job, from the job template, for building our application.
+Start by creating a new job for building our application.
 
 #. Go to Jenkins dashboard.
 #. Click on :guilabel:`New Item`.
 #. Set item name to ``Hello World``.
-#. In :guilabel:`Copy from` field, type ``Template - MMM from Git`` (autocomplete enabled).
+#. Select :guilabel:`Multibranch Pipeline`.
 #. Validate with :guilabel:`Ok` button.
-
-The job configuration page opens, let's replace all the ``TO_REPLACE`` placeholders from the job template with correct values:
-
-#. In :guilabel:`General` tab, set ``easyant.module.dir`` to value ``$WORKSPACE/com.example.hello-world``.
-
-    .. image:: images/tuto_microej_cli_jenkins_parameter.PNG
-        :align: center
-
-#. In :guilabel:`Source Code Management`, edit :guilabel:`Repository URL` to ``~/hello_world.git``.
+#. In :guilabel:`General` tab set :guilabel:`Display Name` to ``Hello World``
+#. In :guilabel:`Branch Sources`, click on :guilabel:`Add Source` > :guilabel:`Git`.
+#. Add :guilabel:`Project Repository` http://172.17.0.1:3000/<admin_user>/helloworld.git
 
     .. image:: images/tuto_microej_cli_jenkins_git_hello.PNG
         :align: center
-
 
 #. Click on :guilabel:`Save`.
 
@@ -366,12 +323,12 @@ Build the "Hello World" Application
 
 Let's run the job!
 
-In Jenkins' ``Hello World`` dashboard, click on :guilabel:`Build with Parameters`, then click on :guilabel:`Build`. 
+In Jenkins ``Hello World`` dashboard, click on :guilabel:`main` branch, then click on :guilabel:`Build Now`. 
 
 .. note::
    You can check the build progress by clicking on the build progress bar and showing the :guilabel:`Console Output`.
 
-At the end of the build, the module is published to ``http://localhost:8081/artifactory/list/custom-modules-snapshot/com/example/hello-world/``.
+At the end of the build, the module is published to ``http://localhost:8082/artifactory/list/custom-modules-snapshot/com/example/hello-world/``.
 
 
 Congratulations!

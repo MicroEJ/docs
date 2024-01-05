@@ -6,7 +6,6 @@ Installation
 This chapter will guide you through the installation process of the SDK on your workstation.
 First check the System Requirements before proceeding.
 
-
 .. _sdk_6_system_requirements:
 
 System Requirements
@@ -24,7 +23,7 @@ System Requirements
    - macOS aarch64 with M1 chip
 
 - **Java Runtime Environment**
-    - JDK 11 or higher LTS version (``11``, ``17`` or ``21``) - Eclipse Temurin or Oracle Distributions
+    - JDK 11 or 17 - Eclipse Temurin or Oracle Distributions
 
 
 .. _sdk_6_check_jdk:
@@ -110,7 +109,7 @@ The three following IDEs are supported:
 
 - `Android Studio <https://developer.android.com/studio>`__ - Minimum supported version is ``Bumblebee - 2021.1.1``.
 - `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ (Community or Ultimate edition) - Minimum supported version is ``2021.2``.
-- `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/release/2022-09/r/eclipse-ide-java-developers>`__ - Minimum supported version is ``2022-03``.
+- `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/>`__ - Minimum supported version is ``2022-03``.
 
 Follow their respective documentation to install one of them.
 
@@ -126,36 +125,68 @@ Once your favorite IDE is installed, the MicroEJ plugin must be installed.
 
 .. tabs::
 
-   .. tab:: Android Studio / IntelliJ IDEA
+   .. tab:: Android Studio
 
-      Follow these steps to install the latest stable version of the MicroEJ plugin for Android Studio or IntelliJ IDEA:
+      Follow these steps to install the latest stable version of the MicroEJ plugin for Android Studio:
       
-      - In Android Studio or IntelliJ IDEA, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, 
-        menu :guilabel:`IntelliJ IDEA` / :guilabel:`Android Studio` > :guilabel:`Settings...` on macOS).
+      - In Android Studio, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, 
+        menu :guilabel:`Android Studio` > :guilabel:`Settings...` on macOS).
       - Go to :guilabel:`Plugins` menu.
-      - In the search field, type ``MicroEJ``:
+      - In the search field, type ``MicroEJ for Android Studio``:
       
-      .. figure:: images/intellij-install-plugin.png
-         :alt: Android Studio and IntelliJ IDEA Plugin Installation
+      .. figure:: images/android-studio-install-plugin.png
+         :alt: Android Studio Installation
          :align: center
          :scale: 70%
       
-         Android Studio and IntelliJ IDEA Plugin Installation
+         Android Studio Plugin Installation
       
       - Click on the :guilabel:`Install` button.
       - In the upcoming :guilabel:`Third-Party Plugins Notice` window, click on the :guilabel:`Accept` button.
             
          .. figure:: images/intellij-install-plugin-warning.png
-            :alt: Android Studio and IntelliJ IDEA Plugin Installation - Third-Party Plugins Notice
+            :alt: Android Studio Plugin Installation - Third-Party Plugins Notice
             :align: center
             :scale: 70%
          
-            Android Studio and IntelliJ IDEA Plugin Installation - Third-Party Plugins Notice
+            Android Studio Plugin Installation - Third-Party Plugins Notice
+
+      - Click on the :guilabel:`Restart IDE` button.
+      
+      .. warning::
+       There used to be a unique plugin for both Android Studio and IntelliJ IDEA. Each IDE now has its own dedicated plugin,
+       so if the IntelliJ IDEA ``MicroEJ`` plugin has been previously installed, you should uninstall it and install ``MicroEJ for Android Studio`` instead.
+
+   .. tab:: IntelliJ IDEA
+
+      Follow these steps to install the latest stable version of the MicroEJ plugin for IntelliJ IDEA:
+      
+      - In IntelliJ IDEA, open the Settings window (menu :guilabel:`File` > :guilabel:`Settings...` on Windows and Linux, 
+        menu :guilabel:`IntelliJ IDEA` > :guilabel:`Settings...` on macOS).
+      - Go to :guilabel:`Plugins` menu.
+      - In the search field, type ``MicroEJ``:
+      
+      .. figure:: images/intellij-install-plugin.png
+         :alt: IntelliJ IDEA Plugin Installation
+         :align: center
+         :scale: 70%
+      
+         IntelliJ IDEA Plugin Installation
+      
+      - Click on the :guilabel:`Install` button.
+      - In the upcoming :guilabel:`Third-Party Plugins Notice` window, click on the :guilabel:`Accept` button.
+            
+         .. figure:: images/intellij-install-plugin-warning.png
+            :alt: IntelliJ IDEA Plugin Installation - Third-Party Plugins Notice
+            :align: center
+            :scale: 70%
+         
+            IntelliJ IDEA Plugin Installation - Third-Party Plugins Notice
 
       - Click on the :guilabel:`Restart IDE` button.
 
       To install the snapshot version of the MicroEJ plugin, please refer to :ref:`sdk_6_install_plugin_snapshot`.
-      
+            
    .. tab:: Eclipse
 
       Follow these steps to install the latest stable version of the MicroEJ plugin for Eclipse:

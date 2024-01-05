@@ -19,7 +19,7 @@ Used with your favorite IDE (Eclipse or IntelliJ IDEA), it provides a complete d
    MicroEJ Application Development Overview
 
 .. note::
-  The SDK 6 is limited to the build, test and simulation of Applications and Add-on Libraries (see :ref:`sdk_6_limitations` for more information).
+  The SDK 6 is limited to the build, test and simulation of Applications and Add-On Libraries (see :ref:`sdk_6_limitations` for more information).
   If you need other features, such as creating a VEE Port, you have to use :ref:`the SDK 5 <sdk_user_guide>`.
 
 The SDK is composed of the following main elements:
@@ -30,7 +30,7 @@ The SDK is composed of the following main elements:
 - **Architecture**, the software package that includes the MEJ32 port to a target instruction set and a C compiler, SOAR, core libraries and Simulator.
   See :ref:`architecture_overview` section for more details.
 
-The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_eula>`. The following figure shows a detailed view of the elements.
+The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk6_eula>`. The following figure shows a detailed view of the elements.
 
 .. figure:: images/sdk_6_content.png
    :alt: SDK Detailed View
@@ -43,7 +43,9 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    :hidden:
    :maxdepth: 1
 
+   gettingStarted
    install
+   licenses
    limitations
    createProject
    importProject
@@ -63,6 +65,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
    migrateMMMProject
    moduleNatures
    troubleshooting
+   tutorials/index
    howtos/index
    appendix/index
    sdk6ChangeLog

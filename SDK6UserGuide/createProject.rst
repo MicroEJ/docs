@@ -18,7 +18,7 @@ This chapter explains the different ways to create a new project.
       The creation of a project with Android Studio is done as follows:
       
       - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
-      - Select a simple project type, for example :guilabel:`Wear OS` > :guilabel:`No Activity`.
+      - Select :guilabel:`Generic` > :guilabel:`New MicroEJ project`.
 
       .. figure:: images/android-studio-create-project-01.png
          :alt: Project Creation in Android Studio
@@ -31,16 +31,27 @@ This chapter explains the different ways to create a new project.
       - Fill the name of the project in the :guilabel:`Name` field.
       - Fill the package name of the project in the :guilabel:`Package name` field.
       - Select the location of the project in the :guilabel:`Save location` field.
-      - Select the language :guilabel:`Java` in the :guilabel:`Language` field.
       - Select :guilabel:`Kotlin` for the :guilabel:`Build configuration language` field.
       
       .. note::
-        MicroEJ uses Kotlin as the default Gradle build script DSL. 
+        The SDK uses Kotlin as the default Gradle build script DSL. 
         The use of the Groovy build script DSL is still possible but not officially supported.
+            
+      .. figure:: images/android-studio-create-project-02.png
+         :alt: Project Creation in Android Studio
+         :align: center
+         :scale: 70%
       
+         Project Creation in Android Studio
+      
+      - Click on :guilabel:`Next` button.
+      - Fill the group of the artifact to publish in the :guilabel:`Group` field.
+      - Fill the version of the artifact to publish in the :guilabel:`Version` field.
+      - Select the module type among :guilabel:`Application` and :guilabel:`Addon-Library` in the drop-down list.
+      - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
       - Click on :guilabel:`Finish` button.
       
-      .. figure:: images/android-studio-create-project-02.png
+      .. figure:: images/android-studio-create-project-03.png
          :alt: Project Creation in Android Studio
          :align: center
          :scale: 70%
@@ -49,52 +60,19 @@ This chapter explains the different ways to create a new project.
       
       - Change the view from :guilabel:`Android` to :guilabel:`Project` in the selectbox at the top of the project's files tree:
       
-      .. figure:: images/android-studio-create-project-03.png
+      .. figure:: images/android-studio-create-project-04.png
          :alt: Project View in Android Studio
          :align: center
          :scale: 70%
       
          Project View in Android Studio
-      
 
-      The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensure that the project uses the right version :
-      
-      - Open the ``gradle/wrapper/gradle-wrapper.properties`` file.
-      - Update the Gradle version if it is needed:
-      
-         .. code-block::
-          
-            distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
-      
-      If you want to know more about the Gradle Wrapper, go to the :ref:`sdk_6_create_project_gradle_wrapper` section.
+      .. note::
+         The newly created Gradle project uses Gradle Wrapper with Gradle version ``8.2``.
+         Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
 
-      The project created by Android Studio is a multi-project with a single subproject (named ``app``).
-      This subproject is an Android application (Gradle ``com.android.application`` plugin). 
-      The ``build.gradle.kts`` and the ``settings.gradle.kts`` files have to be updated to make it a MicroEJ project:
-      
-      - Open the ``app/build.gradle.kts`` file.
-      - Erase its whole content.
-      - :ref:`Configure the project <sdk_6_create_project_configure_project>` depending on the module nature you want to build.
-      - Declare the dependencies required by your project in the ``dependencies`` block. For example::
-      
-            dependencies {
-                implementation("ej.api:edc:1.3.5")
-            }
-      
-      - Open the ``settings.gradle.kts`` file.
-      - Remove everything except these 2 lines::
-
-            rootProject.name = "My Application"
-            include(":app")
-
-      - Delete the following files since they are not required for a MicroEJ project:
-
-        - ``build.gradle.kts``
-        - ``gradle.properties``
-        - ``app/libs``
-        - ``app/src/main/res``
-        - ``app/src/main/AndroidManifest.xml``
-        - ``app/src/proguard-rules.pro``
+      The project created by the wizard is a multi-project with a single subproject (named ``app``).
+      This subproject is a MicroEJ Application or Add-On Library, depending on the module type that has been chosen.
 
       .. note::
          By default, Android Studio automatically saves any file change, 
@@ -112,6 +90,11 @@ This chapter explains the different ways to create a new project.
          You can also configure Android Studio to automatically reload a Gradle project after a change.
          Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
       
+      .. warning::
+       When reloading your Gradle project, the build can fail if the SDK EULA has not been accepted.
+       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES`` and
+       restart Android Studio. For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
+
       When the Gradle project has been reloaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
       or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
@@ -121,81 +104,53 @@ This chapter explains the different ways to create a new project.
       The creation of a project with IntelliJ IDEA is done as follows:
       
       - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
+      - Select :guilabel:`MicroEJ` in :guilabel:`Generators` list on the left panel.
       - Fill the name of the project in the :guilabel:`Name` field.
       - Select the location of the project in the :guilabel:`Location` field.
-      - Select the language :guilabel:`Java` in the :guilabel:`Language` field.
-      - Select :guilabel:`Gradle` for the :guilabel:`Build system` field.
-      - Select build script DSL :guilabel:`Kotlin`.
-      
-      .. note::
-        MicroEJ uses Kotlin as the default Gradle build script DSL. 
-        The use of the Groovy build script DSL is still possible but not officially supported.
-      
+      - Select the module type among :guilabel:`Application`, :guilabel:`Addon-Library` and :guilabel:`J2SE Library` buttons.
+      - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
+      - Fill the version of the artifact to publish in the :guilabel:`Version` field.
+      - Fill the group of the artifact to publish in the :guilabel:`Group` field.
+      - Fill the name of the artifact to publish in the :guilabel:`Artifact` field.
+      - Select the JVM used by Gradle in the :guilabel:`JDK` combobox.
       - Check the :guilabel:`Add sample code` checkbox.
       - Click on :guilabel:`Create` button.
       
-      .. figure:: images/intellij-create-gradle-project.png
+      .. figure:: images/intellij-create-microej-project.png
          :alt: Project Creation in IntelliJ IDEA
          :align: center
          :scale: 70%
       
          Project Creation in IntelliJ IDEA
-      
-      The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensure that the project uses the right version :
-      
-      - Open the ``gradle/wrapper/gradle-wrapper.properties`` file.
-      - Update the Gradle version if it is needed:
-      
-         .. code-block::
-          
-            distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
-      
-      If you want to know more about the Gradle Wrapper, go to the :ref:`sdk_6_create_project_gradle_wrapper` section.
-        
-      The project created by IntelliJ IDEA is a standard Java project (Gradle ``java`` plugin). 
-      The ``build.gradle.kts`` file has to be updated to make it a MicroEJ project:
-      
-      - Open the ``build.gradle.kts`` file.
-      - Erase its whole content.
-      - :ref:`Configure the project <sdk_6_create_project_configure_project>` depending on the module nature you want to build.
-      - Declare the dependencies required by your project in the ``dependencies`` block. For example::
-      
-            dependencies {
-                implementation("ej.api:edc:1.3.5")
-            }
-      
+
+      .. note::
+         The Gradle project created by the wizard uses Gradle Wrapper with Gradle version ``8.5``.
+         Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
+
       .. note::
          By default, IntelliJ IDEA automatically saves any file change, 
          but requires the user to explicitly trigger the reload of a Gradle project when its configuration has changed.
          Therefore, when the configuration of a Gradle project has been updated, 
          you have to click on the reload icon button which appears on the right of the editor:
-      
+
          .. figure:: images/intellij-reload-gradle-project.png
             :alt: Gradle Project reload in IntelliJ IDEA
             :align: center
             :scale: 70%
-      
+
             Gradle Project reload in IntelliJ IDEA
-        
+
          You can also configure IntelliJ IDEA to automatically reload a Gradle project after a change.
          Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
+      
+      .. warning::
+       When reloading your Gradle project, the build can fail if the SDK EULA has not been accepted.
+       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES`` and
+       restart IntelliJ IDEA. For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
 
-      When the Gradle project has been reloaded, it should compile successfully, without any error.
+      When the Gradle project is loaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
       or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
-      
-      .. note::
-         A message ``Project JDK is not defined`` is displayed at the top of the editor.
-         This message can be ignored.
-         It warns that the project does not have a JDK defined, which is expected since a MicroEJ project does not rely on a standard JDK.
-      
-         .. figure:: images/intellij-project-sdk-message.png
-            :alt: Project JDK message in IntelliJ IDEA
-            :align: center
-            :scale: 70%
-      
-            Project JDK message in IntelliJ IDEA
-
 
    .. tab:: Eclipse
 
@@ -242,13 +197,13 @@ This chapter explains the different ways to create a new project.
       - Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
       
           plugins {
-              id("com.microej.gradle.addon-library") version "0.13.0"
+              id("com.microej.gradle.addon-library") version "0.14.0"
           }
       
         or for an Application::
       
           plugins {
-              id("com.microej.gradle.application") version "0.13.0"
+              id("com.microej.gradle.application") version "0.14.0"
           }
       
         .. note::
@@ -288,6 +243,11 @@ This chapter explains the different ways to create a new project.
          You can also configure Eclipse to automatically reload a Gradle project after a change.
          Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
       
+      .. warning::
+       When reloading your Gradle project, the build can fail if the SDK EULA has not been accepted.
+       In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES`` and
+       restart Eclipse. For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
+      
       When the Gradle project has been reloaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
       or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
@@ -307,7 +267,7 @@ This chapter explains the different ways to create a new project.
       - Select build script DSL ``Kotlin``.
       
       .. note::
-        MicroEJ uses Kotlin as the default Gradle build script DSL. 
+        The SDK uses Kotlin as the default Gradle build script DSL. 
         The use of the Groovy build script DSL is still possible but not officially supported.
       
       - For the test framework, select ``JUnit 4``.
@@ -342,12 +302,12 @@ This chapter explains the different ways to create a new project.
 Configure a Project
 -------------------
 
-The MicroEJ SDK allows to build several types of modules.
+The SDK allows to build several types of modules.
 Each type has its own Gradle plugin and configuration options.
 Refer to the module type you want to build to configure your project:
 
 - :ref:`Application <sdk_6_create_project_configure_application>`
-- :ref:`Add-on Library <sdk_6_create_project_configure_addon_library>`
+- :ref:`Add-On Library <sdk_6_create_project_configure_addon_library>`
 - :ref:`J2SE Library <sdk_6_create_project_configure_j2se_library>`
 
 
@@ -359,7 +319,7 @@ Application Project
 - Add the ``com.microej.gradle.application`` plugin in the ``build.gradle.kts`` file::
 
     plugins {
-        id("com.microej.gradle.application") version "0.13.0"
+        id("com.microej.gradle.application") version "0.14.0"
     }
 
   .. note::
@@ -392,13 +352,34 @@ Application Project
       version=1.0.0
       name=MY-KERNEL
 
-- If your Application is a Sandboxed Application:
+- If your Application is a :ref:`Sandboxed Application <sandboxed_application>`:
 
-  - Create the Java class of the Feature Entry Point in the ``src/main/java`` folder.
-  - Create a file with the extension ``.kf`` in the ``src/main/resources`` folder, for example ``myFeature.kf``.
-    This file must at least contains the property ``entryPoint`` set to the Full Qualified Name of the Application Feature class, for example::
+  - Create the Java class of the Feature Entry Point in the ``src/main/java`` folder, for example:
 
-      entryPoint=com.microej.MyFeature
+    .. code:: java
+            
+      package com.mycompany;
+      
+      import ej.kf.FeatureEntryPoint;
+      
+      public class MyApplication implements FeatureEntryPoint {
+    
+        @Override
+        public void start() {
+          System.out.println("Feature MyApplication started!");
+        }
+    
+        @Override
+        public void stop() {
+          System.out.println("Feature MyApplication stopped!");
+        }
+      }
+
+  - Create a file with the extension ``.kf`` in the ``src/main/resources`` folder, for example ``MyApplication.kf``.
+    This file must at least contain the property ``entryPoint`` set to the Full Qualified Name of the Application Feature class, for example::
+
+      entryPoint=com.mycompany.MyApplication
+      version=0.1.0
 
 Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
@@ -410,7 +391,7 @@ Add-On Library Project
 - Add the ``com.microej.gradle.addon-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.addon-library") version "0.13.0"
+        id("com.microej.gradle.addon-library") version "0.14.0"
     }
 
   .. note::
@@ -426,14 +407,13 @@ J2SE Library Project
 - Add the ``com.microej.gradle.j2se-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.j2se-library") version "0.13.0"
+        id("com.microej.gradle.j2se-library") version "0.14.0"
     }
 
   .. note::
     The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
 
 Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
-
 
 .. _sdk_6_create_project_gradle_wrapper:
 

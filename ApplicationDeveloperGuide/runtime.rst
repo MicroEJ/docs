@@ -61,13 +61,22 @@ It defines all default API packages:
 
 **Use**
 
-The `EDC API Module`_ must 
-be added to the :ref:`module.ivy <mmm_module_description>` of the Application 
-Project:
+The `EDC API Module`_ must be added to the project build file of the Application Project:
 
-::
+.. tabs::
 
-   <dependency org="ej.api" name="edc" rev="1.3.5"/>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("ej.api:edc:1.3.5")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="edc" rev="1.3.5"/>
+
 
 .. _EDC API Module: https://repository.microej.com/modules/ej/api/edc/
 
@@ -99,18 +108,29 @@ allows:
    * - Java APIs
      - https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/package-summary.html
    * - Specification
-     - http://e-s-r.net/download/specification/ESR-SPE-0001-BON-1.2-F.pdf
+     - https://repository.microej.com/packages/ESR/ESR-SPE-0001-BON-1.2-G.pdf
    * - Module
      - https://repository.microej.com/modules/ej/api/bon/
  
 **Use**
 
-Add the following dependency to the :ref:`module.ivy <mmm_module_description>` of the Application 
+Add the following dependency to the project build file of the Application 
 Project to use the `BON API Module`_:
 
-::
+.. tabs::
 
-   <dependency org="ej.api" name="bon" rev="1.4.2"/>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("ej.api:edc:1.3.5")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="edc" rev="1.3.5"/>
+
 
 .. _BON API Module: https://repository.microej.com/modules/ej/api/bon/
 
@@ -142,7 +162,7 @@ SNI also provides some Java APIs to manipulate some data arrays between Java and
    * - Java APIs
      - https://repository.microej.com/javadoc/microej_5.x/apis/ej/sni/package-summary.html
    * - Specification
-     - http://e-s-r.net/download/specification/ESR-SPE-0012-SNI_GT-1.2-H.pdf
+     - https://repository.microej.com/packages/ESR/ESR-SPE-0012-SNI_GT-1.2-I.pdf
    * - Module
      - https://repository.microej.com/modules/ej/api/sni/
 
@@ -177,7 +197,9 @@ its associated stack is reclaimed, freeing the corresponding RAM memory.
 
 	This protocol raises the priority of a thread that is holding a monitor needed by a higher-priority thread,
 	to the priority of that higher-priority thread (until exiting the monitor).
-	
+
+.. _runtime_gc: 
+
 Garbage Collector
 -----------------
 
@@ -186,6 +208,8 @@ system, the Garbage Collector (GC). It manages a bounded piece of RAM
 memory, devoted to the Java world. The GC automatically frees dead Java
 objects, and defragments the memory in order to optimize RAM usage. This
 is done transparently while the Application keep running.
+
+See also :ref:`Garbage Collector options <options_gc>` for more details.
 
 .. _java_limitations:
 

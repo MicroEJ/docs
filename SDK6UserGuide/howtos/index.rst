@@ -10,10 +10,12 @@ How-to Guides
    gradleSystemProperty
    gradleSkipTask
    gradleAutoreloading
+   gradleAddRepository
    resolveInIDE
    installSnapshotPlugins
    buildProject
    buildExecutableWithMultipleVeePorts
+   createCustomConfigurationInIDE
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

@@ -41,7 +41,6 @@ Once these prerequisites are fulfilled, the Application can be started with the 
       
           $ ./gradlew runOnSimulator
 
-
 With a simple Hello World Application, the output should be::
 
    =============== [ Initialization Stage ] ===============
@@ -52,6 +51,13 @@ With a simple Hello World Application, the output should be::
    =============== [ Completed Successfully ] ===============
    
    SUCCESS
+
+.. warning::
+   The execution of the ``runOnSimulator`` task can fail if the SDK EULA has not been accepted.
+   In that case, you can set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES`` and
+   restart your IDE or you can define the ``accept-microej-sdk-eula-v3-1b`` System property 
+   by creating a :ref:`custom configuration <sdk_6_howto_create_custom_configuration_in_ide>`. 
+   For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
 
 Verbose Mode
 ------------
@@ -133,6 +139,20 @@ It specifies the period between the generation of .cc files.
 *Description*
 
 Set to ``true`` to enable the generation of Code Coverage files, don't define the property to disable the generation.
+
+.. _sdk_6_generate_heap_dump:
+
+Generate Heap Dump
+------------------
+
+*Option Name*: ``s3.inspect.heap``
+
+*Description*:
+
+Set to ``true`` to enable a dump of the heap each time the ``System.gc()`` method is called by the MicroEJ Application.
+The ``.heap`` files are generated in ``build/output/application/heapDump/``.
+
+Use the :ref:`Heap Viewer<heapviewer>` to visualize the ``.heap`` files.
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

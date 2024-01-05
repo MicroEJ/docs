@@ -12,7 +12,7 @@ specific configuration:
 
 -  Core Engine Capability
 
-   -  ``Single``: Mono-Sandbox (default)
+   -  ``Mono``: Mono-Sandbox (default)
    -  ``Tiny``: Tiny-Sandbox
    -  ``Multi``: Multi-Sandbox
 
@@ -25,15 +25,100 @@ specific configuration:
    -  ``RX``: Renesas RX
    -  ``x86``: Intel x86
 
--  C Compiler
+-  C Compilation Toolchain
 
-   -  ``ARMCC5``: Keil ARMCC uVision v5
-   -  ``IAR74``: IAR Embedded Workbench for ARM v7.4
+   -  ``ARMCC5``: Keil ARMCC uVision v5. See also :ref:`toolchain_armcc`.
+   -  ``Clang``: Clang
+   -  ``GCC``: GNU GCC Compiler. See also :ref:`toolchain_gcc`.
+   -  ``IAR``: IAR Embedded Workbench for ARM. See also :ref:`toolchain_iar`.
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
-   -  ``Clang``: Clang
 
+.. _changelog-8.1.0:
 
+[8.1.0] - 2023-12-22
+--------------------
+
+This Architecture version update introduces the following main features:
+
+- Updated :ref:`Feature installation <feature_memory_installation>` flow to support Code chunks. 
+  A Feature can now be installed to ROM without the need of the Code size in RAM.
+- Support for debugging ASLR Executables
+- Support for debugging MCU targets
+- Support for debugging Multi-Sandbox Executables
+- Updated the options to select the :ref:`Core Engine capability <core_engine_capabilities>`.  See :ref:`architecture8_migration_capability`.
+
+    - Added the VEE Port option ``com.microej.runtime.capability``
+    - Removed the ``Multi Applications`` module from the platform configuration file
+    - Value of the ``BON`` constant ``com.microej.architecture.capability`` is now ``mono`` instead of ``single`` when the Core Engine capability is Mono-Sandbox.
+
+- Support of THALES Sentinel License Manager 
+- Added a default application for early-stage VEE Port integration without the need of a SDK license.
+
+If you plan to migrate a VEE Port from Architecture ``8.0.0`` to Architecture ``8.1.0``, consider the :ref:`architecture8_migration` chapter.
+
+Core Engine
+~~~~~~~~~~~
+
+- Added option :ref:`com.microej.runtime.core.gc.markstack.levels.max <option_gc_stack_size>` to configure the maximum number of elements of the Garbage Collector's mark stack.
+- In ``sni.h``, clarified the behavior of ``SNI_createVM()``, ``SNI_startVM()``, and ``SNI_destroyVM()`` when restarting the Core Engine. See also the :ref:`Core Engine implementation <core_engine_implementation>` section.
+- Fixed missing default initialization of the options :ref:`core.memory.javaheap.size <option_java_heap>` and :ref:`core.memory.immortal.size <option_immortal_heap>`.
+- [Multi] - Added a check when ``LLKERNEL_IMPL_getFeatureHandle()`` returns ``0``. Corresponding error code is ``LLKERNEL_FEATURE_INIT_ERROR_NULL_HANDLE``.
+- [Multi] - Removed Feature installation in RAM (legacy :ref:`In-Place Installation mode <feature_inplace_installation>`). See :ref:`architecture8_migration_llkernel`.
+- [Multi] - Updated :ref:`Feature installation boot sequence <feature_persistency>`: all Feature handles are now retrieved prior to initializing them.
+- [Multi] - Updated check of :ref:`Kernel UID <kernel_uid>` at the beginning of `Kernel.install(java.io.InputStream)`_, before allocating Feature sections.
+- [Multi] - Updated the specification for ``LLKERNEL_IMPL_allocateFeature()`` function to return the handle ``0`` if the Feature could not be allocated.
+- [Multi] - Updated the specification for ``LLKERNEL_IMPL_getAllocatedFeaturesCount()`` function to ensure that it returns a valid result at any time, even if it is only called by the Core Engine during startup.
+- [Multi] - Updated the specifications for ``LLKERNEL_IMPL_getFeatureAddressRAM()`` and ``LLKERNEL_IMPL_getFeatureAddressROM()`` functions to return ``NULL`` when an incorrect index is provided.
+  This change is only for ``LLKERNEL`` TCK purposes, as the Core Engine only invokes these methods with valid indices.
+- [Multi] - Added an option to enable :ref:`RAM Control <multisandbox_ram_control>` at VEE Port build (disabled by default).
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+- Fixed, in ``BON``, `ResourceBuffer.readString()`_ which does not increment correctly the position in the buffer.
+- Fixed, in ``BON``, ``-1`` returned by `ResourceBuffer.available()`_ instead of ``0`` when the end of the buffer is reached.
+- Fixed, in ``BON``, invalid value returned by `ResourceBuffer.available()`_ on the Simulator.
+- Fixed, in ``BON``, potential crash when calling `ResourceBuffer.close()`_ several times on a ``ResourceBuffer`` loaded with the :ref:`External Resources Loader<section_externalresourceloader>`.
+
+.. _ResourceBuffer.readString(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html#readString--
+.. _ResourceBuffer.available(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html#available--
+.. _ResourceBuffer.close(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html#close--
+
+Integration
+~~~~~~~~~~~
+
+- Updated Architecture End User License Agreement to version ``SDK 3.1-B``.
+- Removed warning messages related to missing KF options when running the SOAR or the Simulator in Mono-Sandbox.
+
+Simulator
+~~~~~~~~~
+
+- Added compatibility with IntelliJ IDEA IDE to debug applications. 
+- Added message when waiting for a connection in debug mode.
+- Fixed debugger verbose mode.
+- Removed bootstrap thread from the debugger vision.
+- Fixed debugger suspend count on threads handling.
+- Fixed stop issue on static method entry breakpoint.
+
+SOAR
+~~~~
+
+- Fixed trimming of leading or trailing spaces in immutable strings
+- [Multi] - Fixed integration of the :ref:`bytecode verifier <soar_binary_code_verifier>` in Feature mode.
+- [Multi] - Improved the error message thrown when no Feature definition file is found and displayed the classpath to better guide developers in identifying potential causes.
+
+Tools
+~~~~~
+
+- Updated SOAR and VM Model Readers
+  
+    -  Added support to retrieve the Core Engine memory regions (used by the VEE Debugger Proxy to generate a memory dump script (see :ref:`Generate VEE memory dump script <generate_vee_memory_dump_script>`))
+    -  Added an API to relink the SOAR Model objects, i.e. change their associated addresses (used by the VEE Debugger Proxy to support ASLR Executables debug)
+    -  Added new APIs to load Kernel and Features SOAR Model objects (used by the VEE Debugger Proxy to support Multi-Sandbox Executable debug)
+
+- [ARMCC5] - Fixed :ref:`SOAR Debug Infos Post Linker <soar_debug_infos_post_linker>` tool to throw a dedicated error when the SOAR object file does not contain the debug section.
+- [Multi] - Fixed missing first null entry in the symbol table generated by the Firmware Stripper.
 
 .. _changelog-8.0.0:
 
@@ -56,7 +141,7 @@ This major Architecture version update introduces the following main features:
   - On different Kernel Applications provided some conditions are met. 
     Basically, a ``.fo`` built on Kernel 1 can be installed on Kernel 2 if the exposed Kernel APIs are left unchanged.
     See :ref:`feature_portability_control` for more details.
-- Redesigned Feature installation flow. A Feature can now be installed in any byte-addressable memory, including ROM.
+- Redesigned Feature installation flow. A Feature can now be installed in any byte-addressable memory mapped to the CPU's address space, including ROM.
   For that, ``LLKERNEL`` Low Level APIs have been fully rewritten. See :ref:`Feature installation <feature_memory_installation>` for more details.
   Former Feature installation in RAM is preserved and is now called :ref:`In-Place Installation <feature_inplace_installation>`.
   Former static Feature installed by the SDK (using the Firmware Linker tool) is removed in favor of :ref:`Feature persistency <feature_persistency>` at boot.
@@ -89,7 +174,7 @@ Foundation Libraries
   
    -  Added heap memory control: `Module.getAllocatedMemory()`_, `Kernel.setReservedMemory()`_ and `Feature.setMemoryLimit()`_ methods.
    -  Added load of a Feature resource (`Feature.getResourceAsStream()`_ method).
-- Updated ``KF`` dynamic loader to support :ref:`Feature Custom Installation <feature_custom_installation>` mode. See :ref:`architecture7_migration_llkernel`.
+- Updated ``KF`` dynamic loader to support the new :ref:`Feature installation <feature_memory_installation>` flow.
 - Removed Foundation Libraries API Jars and Javadoc.
 - Removed `Unknown product - Unknown version` comment in auto-generated Low Level API header files.
 - Removed the ``Serial Communication`` modules group, including the Foundation Libraries ``ECOM`` and ``ECOM-COMM``. See :ref:`architecture7_migration_ecom`.
@@ -99,7 +184,7 @@ Foundation Libraries
 - Fixed unexpected `java.lang.NullPointerException`_ thrown by the ``skip`` method of an InputStream returned by `Class.getResourceAsStream()`_. This error only occurs with a resource loaded by the External Resource Loader.
 - Fixed the behavior of ``available``, ``read``, ``skip``, ``mark``, ``reset`` and ``close`` methods of an InputStream returned by `Class.getResourceAsStream()`_ and previously closed.
 - Fixed the ``LLEXT_RES_read()`` Low Level API specification (the buffer passed cannot be ``null``).
-- [Single] Fixed an unexpected ``FeatureFinalizer`` exception or infinite loop when a Standalone Application touches a ``KF`` API in some cases.
+- [Mono] Fixed an unexpected ``FeatureFinalizer`` exception or infinite loop when a Standalone Application touches a ``KF`` API in some cases.
 - [Tiny] Fixed an unexpected SOAR error when a Standalone Application touches a ``KF`` API.
 - [Multi] Fixed exception thrown when calling `Kernel.removeConverter()`_.
 - [Multi] Fixed an unexpected ``NullPointerException`` thrown by ``ej.kf.Kernel.<clinit>`` method in some cases.
@@ -316,6 +401,34 @@ SOAR
 -  [Multi] - Raise a warning instead of an error when duplicated ``.kf`` files are detected in the Kernel classpath. Usual classpath resolution order is used to load the file (see :ref:`chapter.microej.classpath`).
 -  [Multi] - Fixed SOAR error when building a Feature that uses an array of basetypes that is not explicitly declared in the ``kernel.api`` file of the Kernel.
 -  [Multi] - Optimized "Build Dynamic Feature" scripts speed by removing unnecessary steps.
+
+
+[7.16.3] - 2022-04-06
+---------------------
+
+Core Engine
+~~~~~~~~~~~
+
+-  [Cortex-M/IAR] Fix unaligned stack pointer when calling SNI native functions in ARM IAR architectures.
+
+
+[7.16.2] - 2021-11-10
+---------------------
+
+Core Engine
+~~~~~~~~~~~
+
+-  [Cortex-M/GCC/ARMCC5] Fix unaligned stack pointer when calling SNI native functions in ARM GCC and ARMCC architectures with non-ASM Core Engines.
+
+
+[7.16.1] - 2021-07-16
+---------------------
+
+Core Engine
+~~~~~~~~~~~
+
+-  [GCC] Fixed wrong inlined extern symbol access (affects only some GCC architectures until version ``6.x``). 
+   This produces an unexpected ``java.lang.OutOfMemoryError: Stacks space`` exception at boot time.
 
 
 [7.16.0] - 2021-06-24
@@ -562,6 +675,11 @@ as ``BON`` constants:
 -  ``com.microej.architecture.level=[eval|prod]``
 -  ``com.microej.architecture.toolchain=[toolchain_uid]``
 -  ``com.microej.architecture.version=7.14.0``
+
+.. note::
+
+   Starting from :ref:`Architecture 8.1.0 <changelog-8.1.0>`, ``com.microej.architecture.capability``
+   constant is set to ``mono`` instead of ``single`` when the Core Engine capability is Mono-Sandbox.
 
 The following set of VEE Port properties (customer defined) are
 automatically provided as ``BON`` constants:
@@ -1141,7 +1259,7 @@ Simulator
    ``.constants.list`` resources)
 -  Added ``BON-1.4`` support for `ej.bon.Util.newArray()`_
 -  Added Front Panel framework
--  Updated error message when reaching S3 simulator limits
+-  Updated error message when reaching Simulator limits
 -  Removed the ``Bootstrapping a Smart Software Simulator`` message when
    verbose mode in enabled
 -  Fixed `Object.clone()`_ on an immutable object to return a new
@@ -1387,7 +1505,7 @@ SOAR
 Tools
 ~~~~~
 
--  [ARMCC5] - Updated ``SOAR Debug Infos Post Linker`` tool to generate
+-  [ARMCC5] - Updated :ref:`SOAR Debug Infos Post Linker <soar_debug_infos_post_linker>` tool to generate
    the full ELF executable file
 
 .. _section-15:
@@ -1526,7 +1644,7 @@ Core Engine
 
 -  [Multi] - Enabled quantum counter computation only when Feature quota
    is set
--  [Cortex-M/IAR74] - Updated compilation flags to ``-Oh``
+-  [Cortex-M/IAR] - Updated compilation flags to ``-Oh``
 
 .. _simulator-8:
 
@@ -1573,7 +1691,7 @@ Core Engine
 
 -  [Multi] - Enabled quantum counter computation only when Feature quota
    is set
--  [Cortex-M/IAR74] - Updated compilation flags to ``-Oh``
+-  [Cortex-M/IAR] - Updated compilation flags to ``-Oh``
 
 .. _simulator-9:
 
