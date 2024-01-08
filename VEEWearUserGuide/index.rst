@@ -51,7 +51,7 @@ The offloading framework encompasses an inter-processor communication framework 
 **Low Power Facer Engine**
 
 VEE Wear supports the `Facer <https://www.facer.io/>`_ Engine, expanding Facer's extensive watch face catalog of 500,000 faces across all smartwatches, including low-power RTOS watches, enriching the user experience for all users. 
-For further information about the MicroEJ and Facer partnership, please contact us.
+For further information about the MicroEJ and Facer partnership, please contact your `MicroEJ sales representative <https://www.microej.com/contact/#form_1>`_.
 
 
 
