@@ -1,7 +1,7 @@
 .. _sdk_6_brand_eclipse:
 
-How to Brand an Eclipse IDE
-===========================
+Branding an Eclipse IDE
+=======================
 
 Eclipse IDE allows to create custom versions of its distribution.
 This can be very convenient if you need to redistribute your own unique Eclise IDE version, customized to your brand.
