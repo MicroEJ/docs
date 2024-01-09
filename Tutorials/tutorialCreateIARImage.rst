@@ -12,7 +12,7 @@ Prerequisites
 
 * A recent version of IAR BXARM and its user licence.
 
-This tutorial was tested with MicroEJ SDK ``5.8.1-jdk11``, IAR ``9.30.1`` and Docker ``24.0.6``.
+This tutorial was tested with MicroEJ SDK ``5.8.1-jdk11``, IAR ``9.30.1``, and Docker ``24.0.6``.
 
 Create the Dockerfile
 ---------------------
