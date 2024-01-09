@@ -43,7 +43,7 @@ Here is our final Dockerfile. We will explain each specific step below.
 
      COPY ressources/$IAR_BXARM_PACKAGE /tmp/$IAR_BXARM_PACKAGE
 
-#. Install this package and any others required.
+#. Install this package along with any others required packages.
 
   .. code-block:: dockerfile
 
