@@ -22,7 +22,7 @@ Here is our final Dockerfile. We will explain each specific step below.
     .. literalinclude:: resources/IARDockerfile
         :language: dockerfile
 
-#. In a new directory create a file name Dockerfile.
+#. In a new directory create a file named ``Dockerfile``.
 #. We use MicroEJ SDK base image, they are available on `docker hub <https://hub.docker.com/r/microej/sdk>`_. In your Dockerfile add this code:
 
   .. code-block:: dockerfile
