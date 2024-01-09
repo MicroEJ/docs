@@ -30,7 +30,7 @@ Here is our final Dockerfile. We will explain each specific step below.
      FROM microej/sdk:5.8.1-jdk11
 
 #. Add IAR BXARM deb package in a directory named ``resources``.
-#. Add package info to your Dockerfile (change to the version you want to use):
+#. Add the package info to your Dockerfile (update the version with the one you want to use):
 
   .. code-block:: dockerfile
 
