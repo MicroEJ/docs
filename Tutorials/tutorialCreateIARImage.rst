@@ -57,7 +57,7 @@ Here is our final Dockerfile. We will explain each specific step below.
      ENV PATH="/opt/iarsystems/bxarm/arm/bin/:/opt/iarsystems/bxarm/common/bin/:$PATH"
      ENV IAR_LICENSE_SERVER=$IAR_LICENSE_SERVER_IP
 
-#. Finally we need a run.sh script containing this code:
+#. Finally create a ``run.sh`` script with the following content:
 
   .. code-block:: sh
     
