@@ -50,7 +50,7 @@ Here is our final Dockerfile. We will explain each specific step below.
       RUN apt-get update && apt-get install sudo libsqlite3-0 libxml2 tzdata dos2unix /tmp/$IAR_BXARM_PACKAGE -y && \
       apt-get clean autoclean autoremove && rm -rf /var/lib/apt/lists/* /tmp/*.deb
 
-#. Set IAR path and licence server
+#. Set IAR path and license server address:
 
   .. code-block:: dockerfile
 
