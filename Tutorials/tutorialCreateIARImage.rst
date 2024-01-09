@@ -25,41 +25,41 @@ Here is our final Dockerfile. We will explain each specific step below.
 #. In a new directory create a file named ``Dockerfile``.
 #. We use MicroEJ SDK base image, they are available on `docker hub <https://hub.docker.com/r/microej/sdk>`_. In your Dockerfile add this code:
 
-  .. code-block:: dockerfile
+    .. code-block:: dockerfile
 
-     FROM microej/sdk:5.8.1-jdk11
+      FROM microej/sdk:5.8.1-jdk11
 
 #. Add IAR BXARM deb package in a directory named ``resources``.
 #. Add the package info to your Dockerfile (update the version with the one you want to use):
 
-  .. code-block:: dockerfile
+    .. code-block:: dockerfile
 
-     ARG IAR_BXARM_VERSION=9.30.1
-     ARG IAR_BXARM_PACKAGE="bxarm-$IAR_BXARM_VERSION.deb"
+      ARG IAR_BXARM_VERSION=9.30.1
+      ARG IAR_BXARM_PACKAGE="bxarm-$IAR_BXARM_VERSION.deb"
 
 #. Copy the package to a temporary directory.
 
-  .. code-block:: dockerfile
+    .. code-block:: dockerfile
 
-     COPY ressources/$IAR_BXARM_PACKAGE /tmp/$IAR_BXARM_PACKAGE
+      COPY ressources/$IAR_BXARM_PACKAGE /tmp/$IAR_BXARM_PACKAGE
 
 #. Install this package along with any others required packages.
 
-  .. code-block:: dockerfile
+    .. code-block:: dockerfile
 
       RUN apt-get update && apt-get install sudo libsqlite3-0 libxml2 tzdata dos2unix /tmp/$IAR_BXARM_PACKAGE -y && \
       apt-get clean autoclean autoremove && rm -rf /var/lib/apt/lists/* /tmp/*.deb
 
 #. Set IAR path and license server address:
 
-  .. code-block:: dockerfile
+    .. code-block:: dockerfile
 
-     ENV PATH="/opt/iarsystems/bxarm/arm/bin/:/opt/iarsystems/bxarm/common/bin/:$PATH"
-     ENV IAR_LICENSE_SERVER=$IAR_LICENSE_SERVER_IP
+      ENV PATH="/opt/iarsystems/bxarm/arm/bin/:/opt/iarsystems/bxarm/common/bin/:$PATH"
+      ENV IAR_LICENSE_SERVER=$IAR_LICENSE_SERVER_IP
 
 #. Finally create a ``run.sh`` script with the following content:
 
-  .. code-block:: sh
+    .. code-block:: sh
     
-     lightlicensemanager setup -s license.iar.public
-     exec "$@"
+      lightlicensemanager setup -s license.iar.public
+      exec "$@"
