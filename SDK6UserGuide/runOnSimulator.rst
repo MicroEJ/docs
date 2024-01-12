@@ -124,7 +124,7 @@ To generate the Code Coverage files (``.cc``), invoke the ``:runOnSimulator`` ta
 
 ::
 
-   gradle :runOnSimulator -Ds3.cc.thread.period=15 -Ds3.cc.activated=true
+   gradle :runOnSimulator -D"s3.cc.thread.period=15" -D"s3.cc.activated=true"
 
 *Option Name*: ``s3.cc.thread.period``
 
