@@ -17,7 +17,7 @@ When an exception is thrown by the implementation of the MicroUI API, the except
    * - -1
      - MicroUI is not started; call MicroUI.start() before using a MicroUI API.
    * - -2
-     - Unknown event generator class name.
+     - [Warning] Event generator specified during :ref:`MicroUI static initialization step<section_static_init>` is not available in the application classpath.
    * - -3
      - Deadlock. Cannot wait for an event in the same thread that runs events. `Display.waitFlushCompleted()`_ must not be called in the MicroUI thread (for example in ``render`` method).
    * - -4
