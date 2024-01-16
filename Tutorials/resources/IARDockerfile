@@ -1,0 +1,25 @@
+FROM microej/sdk:5.8.1-jdk11
+
+USER root
+SHELL ["/bin/bash", "-c"]
+
+ARG IAR_BXARM_VERSION=9.30.1
+ARG IAR_BXARM_PACKAGE="bxarm-$IAR_BXARM_VERSION.deb"
+
+COPY ressources/$IAR_BXARM_PACKAGE /tmp/$IAR_BXARM_PACKAGE
+RUN apt-get update && apt-get install sudo libsqlite3-0 libxml2 tzdata dos2unix /tmp/$IAR_BXARM_PACKAGE -y && \
+    apt-get clean autoclean autoremove && rm -rf /var/lib/apt/lists/* /tmp/*.deb
+
+ENV PATH="/opt/iarsystems/bxarm/arm/bin/:/opt/iarsystems/bxarm/common/bin/:$PATH"
+ENV IAR_LICENSE_SERVER=$IAR_LICENSE_SERVER_IP
+
+# Set workdir
+WORKDIR ${HOME}
+
+ADD run.sh /run.sh
+RUN chmod a+x /run.sh
+
+# Good practice, switch back to user.
+USER ${user}
+
+ENTRYPOINT ["/run.sh"]
