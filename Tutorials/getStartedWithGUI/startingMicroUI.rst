@@ -11,7 +11,7 @@ Starting MicroUI
    .. code:: xml
 
       <dependencies>
-         <dependency org="ej.api" name="microui" rev="3.0.3"/>
+         <dependency org="ej.api" name="microui" rev="3.4.1"/>
       </dependencies>
 
    .. note::
@@ -53,7 +53,7 @@ Widgets
    .. code:: xml
 
       <dependencies>
-         <dependency org="ej.library.ui" name="widget" rev="4.0.0" />
+         <dependency org="ej.library.ui" name="widget" rev="5.0.0" />
       </dependencies>
 
    .. note::
@@ -113,7 +113,7 @@ Displaying a Label
 **Next step:** :ref:`ui-basic-drawing-on-screen`
 
 ..
-   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

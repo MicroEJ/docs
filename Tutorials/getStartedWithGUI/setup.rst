@@ -34,7 +34,7 @@ Prepare Platform Sources
 ------------------------
 
 #. Download and unzip the platform sources for STM32F7508-DK by clicking on :guilabel:`Download` > :guilabel:`Download ZIP`: 
-   `Go to the Github repository <https://github.com/MicroEJ/Platform-STMicroelectronics-STM32F7508-DK/tree/1.3.2>`__.
+   `Go to the Github repository <https://github.com/MicroEJ/Platform-STMicroelectronics-STM32F7508-DK/tree/2.2.0>`__.
 #. Follow the README to import the platform sources, activate your license and build your platform, in the Platform Setup section.
 #. Once all the steps of the platform setup are done, a new Java project can be created.
 
@@ -64,7 +64,7 @@ You can have a look at the widget demo project, which contains multiple samples 
 **Next step:** :ref:`ui-starting-microui`
 
 ..
-   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
