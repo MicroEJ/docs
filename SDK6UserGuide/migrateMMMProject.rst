@@ -127,10 +127,10 @@ As a first example, the main class is defined in MMM with the property ``applica
 
    <ea:property name="application.main.class" value="com.mycompany.Main"/>
 
-whereas it is defined by the ``applicationMainClass`` property of the ``microej`` block in Gradle::
+whereas it is defined by the ``applicationEntryPoint`` property of the ``microej`` block in Gradle::
 
    microej {
-      applicationMainClass = "com.mycompany.Main"
+      applicationEntryPoint = "com.mycompany.Main"
    }
 
 As a second example, the pattern of the executed tests is defined in MMM with the property ``test.run.includes.pattern``::

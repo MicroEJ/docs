@@ -25,6 +25,7 @@ digraph mygraph {
     "buildFeature" [fillcolor = "#f76241"]
     "runOnDevice" [fillcolor = "#f76241"]
     "execTool" [fillcolor = "#f76241"]
+    "wrapApplication" [fillcolor = "#f76241"]
     "build" -> "check"
     "check" -> "test"
     "test" -> "classes"
@@ -63,7 +64,9 @@ digraph mygraph {
     "runOnDevice" -> "buildExecutable"
     "execTool" -> "loadApplicationConfiguration"
     "execTool" -> "loadVee"
-
+    "processResources" -> "wrapApplication"
+    "wrapApplication" -> "compileJava"
+    
     subgraph cluster_legend {
         label="Legend";
         microej [fillcolor="#f76241" label="MicroEJ task"];
