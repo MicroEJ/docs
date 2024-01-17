@@ -48,8 +48,7 @@ The following artifacts are automatically published:
 - The WPK file, if the project is an Application.
 - The Virtual Device, if the project is an Application containing a Java main class.
 
-If the project is an Application containing a Java main class, the Executable is not built and published by default 
-(when launching a ``./gradlew build`` or a ``./gradlew publish`` for example).
+The Executable is not built and published by default (when launching a ``./gradlew build`` or a ``./gradlew publish`` for example).
 This default behavior can be changed by adding the ``produceExecutableDuringBuild()`` method in the ``microej`` configuration block of the 
 Gradle build file of the project::
 
@@ -57,8 +56,7 @@ Gradle build file of the project::
      produceExecutableDuringBuild()
    }
 
-If the project is an Application containing a Java class that implements the ``ej.kf.FeatureEntryPoint`` interface, 
-the Feature is not built and published by default (when launching a ``./gradlew build`` or a ``./gradlew publish`` for example).
+The Feature is not built and published by default (when launching a ``./gradlew build`` or a ``./gradlew publish`` for example).
 This default behavior can be changed by adding the ``produceFeatureDuringBuild()`` method in the ``microej`` configuration block of the 
 Gradle build file of the project::
 

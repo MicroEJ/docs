@@ -6,7 +6,7 @@ Run on Device
 The SDK allows to deploy an Application on a Device thanks to the Gradle ``runOnDevice`` task.
 The prerequisites of this task are:
 
-- The Application main class or Feature class must be configured, as described in :ref:`sdk_6_create_project_configure_project`.
+- The Application EntryPoint must be configured, as described in :ref:`sdk_6_create_project_configure_project`.
 
 - The target VEE Port must be defined.
   Refer to the :ref:`sdk_6_select_veeport` page to know the different ways to provide a VEE Port for a module project.
