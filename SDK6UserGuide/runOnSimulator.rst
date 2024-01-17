@@ -6,14 +6,12 @@ Run on Simulator
 In order to execute an Application on the Simulator, the SDK provides the Gradle ``runOnSimulator`` task.
 The prerequisites of this task are:
 
-- The Application main class or Feature class must be configured, as described in :ref:`sdk_6_create_project_configure_project`.
+- The Application EntryPoint must be configured, as described in :ref:`sdk_6_create_project_configure_project`.
 
-- If the Application has a main class, the target VEE Port must be defined.
-  Refer to the :ref:`sdk_6_select_veeport` page to know the different ways to provide a VEE Port for a module project.
+- The target VEE must be defined:
 
-- If the Application has a Feature class and a ``.kf`` file containing the property ``entryPoint`` set 
-  to the Full Qualified Name of the Feature class in the ``src/main/resources`` folder , the target Kernel must be defined.
-  Refer to the :ref:`sdk_6_select_kernel` page to know the different ways to provide a Kernel for a module project.
+  - If your VEE is a VEE Port, refer to the :ref:`sdk_6_select_veeport` page to know the different ways to provide a VEE Port for a module project.
+  - If your VEE is a Kernel, refer to the :ref:`sdk_6_select_kernel` page to know the different ways to provide a Kernel for a module project.
 
 Once these prerequisites are fulfilled, the Application can be started with the Simulator:
 

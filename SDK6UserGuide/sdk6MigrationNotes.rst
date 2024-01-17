@@ -4,6 +4,58 @@ Migration Notes
 ---------------
 
 ---------------------
+From 0.15.0 to 0.16.0
+---------------------
+
+This section applies if MicroEJ SDK 6 ``0.16.0`` is used on a project that was created using MicroEJ SDK 6 ``0.15.0`` 
+or lower.
+
+Unification of Application EntryPoint
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The creation of a Sandboxed Application and a Standalone Application have been unified.
+To create an Application, the following steps must be done:
+
+- Create the Java main class in the ``src/main/java`` folder.
+- Define the property ``applicationEntryPoint`` in the ``microej`` configuration block of the ``build.gradle.kts`` file.
+  It must be set to the Full Qualified Name of the Application main class::
+
+   microej {
+      applicationEntryPoint = "com.mycompany.Main"
+   }   
+
+- Define a VEE (VEE Port or Kernel) by declaring a dependency in the ``build.gradle.kts`` file::
+
+   dependencies {
+      microejVee("com.mycompany:myVee:1.0.0")
+   }
+
+If your Application requires the use of advanced features, you must create a Feature class, for example::
+            
+    package com.mycompany;
+      
+    import ej.kf.FeatureEntryPoint;
+      
+    public class MyFeature implements FeatureEntryPoint {
+    
+      @Override
+      public void start() {
+        System.out.println("Feature MyFeature started!");
+      }
+    
+      @Override
+      public void stop() {
+        System.out.println("Feature MyFeature stopped!");
+      }
+    }
+
+and set the property ``applicationEntryPoint`` to the Full Qualified Name of the Feature class::
+
+   microej {
+      applicationEntryPoint = "com.mycompany.MyFeature"
+   }   
+
+---------------------
 From 0.14.0 to 0.15.0
 ---------------------
 
