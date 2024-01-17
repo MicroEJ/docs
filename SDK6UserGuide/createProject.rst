@@ -267,61 +267,19 @@ Application Project
   .. note::
     The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
 
-- If your Application is a Standalone Application:
+- Create the Java main class in the ``src/main/java`` folder.
+- Define the property ``applicationEntryPoint`` in the ``microej`` configuration block of the ``build.gradle.kts`` file.
+  It must be set to the Full Qualified Name of the Application main class, for example::
 
-  - Create the Java main class in the ``src/main/java`` folder.
-  - Define the property ``applicationMainClass`` in the ``microej`` configuration block of the ``build.gradle.kts`` file.
-    It must be set to the Full Qualified Name of the Application main class, for example::
+   microej {
+     applicationEntryPoint = "com.mycompany.Main"
+   }
 
-      microej {
-        applicationMainClass = "com.mycompany.Main"
-      }
+- If your Application is a Kernel Application, create a file named ``kernel.kf`` in the ``src/main/resources`` folder.
+  This file is a property file which must contain at least the ``version`` property, and optionally the ``name`` property (defaults to ``KERNEL``), for example::
 
-- If your Application is a Kernel Application:
-
-  - Create the Java main class in the ``src/main/java`` folder.
-  - Define the property ``applicationMainClass`` in the ``microej`` configuration block of the ``build.gradle.kts`` file.
-    It must be set to the Full Qualified Name of the Application main class, for example::
-
-      microej {
-        applicationMainClass = "com.mycompany.Main"
-      }
-
-  - Create a file named ``kernel.kf`` in the ``src/main/resources`` folder.
-    This file is a property file which must contain at least the ``version`` property, 
-    and optionally the ``name`` property (defaults to ``KERNEL``), for example::
-
-      version=1.0.0
-      name=MY-KERNEL
-
-- If your Application is a :ref:`Sandboxed Application <sandboxed_application>`:
-
-  - Create the Java class of the Feature Entry Point in the ``src/main/java`` folder, for example:
-
-    .. code:: java
-            
-      package com.mycompany;
-      
-      import ej.kf.FeatureEntryPoint;
-      
-      public class MyApplication implements FeatureEntryPoint {
-    
-        @Override
-        public void start() {
-          System.out.println("Feature MyApplication started!");
-        }
-    
-        @Override
-        public void stop() {
-          System.out.println("Feature MyApplication stopped!");
-        }
-      }
-
-  - Create a file with the extension ``.kf`` in the ``src/main/resources`` folder, for example ``MyApplication.kf``.
-    This file must at least contain the property ``entryPoint`` set to the Full Qualified Name of the Application Feature class, for example::
-
-      entryPoint=com.mycompany.MyApplication
-      version=0.1.0
+   version=1.0.0
+   name=MY-KERNEL
 
 Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 

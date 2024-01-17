@@ -8,13 +8,7 @@ Refer to the :ref:`section.virtual.device` page for more information about the V
 
 The prerequisites to use the ``buildVirtualDevice`` task are:
 
-- The property ``applicationMainClass`` must be defined in the ``microej`` configuration block of the Gradle build file of the project.
-  It must be set to the fully qualified name of the Application main class, for example::
-
-   microej {
-     applicationMainClass = "com.mycompany.Main"
-   }
-
+- The Application EntryPoint must be configured, as described in :ref:`sdk_6_create_project_configure_project`.
 - A target VEE Port that uses an Architecture version ``7.17`` minimum must be defined.
   Refer to the :ref:`sdk_6_select_veeport` page to know the different ways to provide a VEE Port for a module project.
 

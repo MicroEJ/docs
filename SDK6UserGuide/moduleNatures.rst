@@ -66,6 +66,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.loadFeatureConfiguration`
 - :ref:`sdk6_module_natures.tasks.buildFeature`
 - :ref:`sdk6_module_natures.tasks.runOnDevice`
+- :ref:`sdk6_module_natures.tasks.wrapApplication`
 
 .. graphviz:: graphApplicationModule.dot
 
@@ -157,7 +158,7 @@ loadApplicationConfiguration
 
 - The extracted VEE Port folder
 - The project classpath which contains the MicroEJ dependent application classes and resources
-- The Full Qualified Name of the Application main class
+- The Full Qualified Name of the Application main class or Feature class
 - The folder containing the application configuration (``configuration``)
 - The System properties
 - The debug mode
@@ -185,8 +186,8 @@ This task provides the following properties that can be defined in the ``microej
    * - Name
      - Description
      - Default    
-   * - ``applicationMainClass``
-     - Full Qualified Name of the main class of the application. This option is required.
+   * - ``applicationEntryPoint``
+     - Full Qualified Name of the main class or the Feature class of the application. This option is required.
      - Not set
 
 For example:
@@ -194,7 +195,7 @@ For example:
 .. code::
 
   microej {
-    applicationMainClass = "com.company.Main"
+    applicationEntryPoint = "com.company.Main"
   }
 
 .. _sdk6_module_natures.tasks.runOnSimulator:
@@ -347,7 +348,7 @@ buildWPK
 
 - The Application name
 - The Application version
-- The Full Qualified Name of the Application main class
+- The Full Qualified Name of the Application main class or Feature class
 - The Application JAR file
 - The Application Javadoc
 - The Jar files of the Application classpath
@@ -468,6 +469,31 @@ runOnDevice
 - The extracted VEE Port folder
 - The folder containing the Executable file (``build/executable/application``)
 - The configuration file with all the properties set to launch the build of the Executable (``build/properties/target.properties``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
+
+.. _sdk6_module_natures.tasks.wrapApplication:
+
+wrapApplication
+^^^^^^^^^^^^^^^
+
+**Description**: Wraps the Application class to be able to run the Application on a VEE Port and a Kernel.
+
+**Inputs**:
+
+- The project classpath which contains the MicroEJ dependent application classes and resources
+- The Full Qualified Name of the Application EntryPoint
+- The folder containing the application configuration (``configuration``)
+- The System properties
+
+**Outputs**:
+
+- The directory in which the compiled wrapper class is generated (``build/generated/microej-app-wrapper/classes``)
+- The directory in which the feature.kf and feature.cert files are generated (``build/generated/microej-app-wrapper/resources``)
 
 **Module Natures**:
 
