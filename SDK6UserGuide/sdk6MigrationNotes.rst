@@ -7,7 +7,7 @@ Migration Notes
 From 0.11.1 to 0.12.0
 ---------------------
 
-This section applies if MicroEJ SDK 6 ``0.12.0`` is used on a project that was created using MicroEJ SDK 6 ``0.11.1`` 
+This section applies if SDK 6 ``0.12.0`` is used on a project that was created using SDK 6 ``0.11.1`` 
 or lower.
 
 Use of File Dependencies to Define a Local VEE Port or a Kernel Executable
@@ -37,7 +37,7 @@ The ``veePortPath`` and the ``kernelFile`` properties have been replaced by file
 From 0.10.0 to 0.11.0
 ---------------------
 
-This section applies if MicroEJ SDK 6 ``0.11.0`` is used on a project that was created using MicroEJ SDK 6 ``0.10.0`` 
+This section applies if SDK 6 ``0.11.0`` is used on a project that was created using SDK 6 ``0.10.0`` 
 or lower.
 
 Gradle mechanism usage for Multiple VEE Ports Support
@@ -63,7 +63,7 @@ Refer to the :ref:`sdk_6_howto_build_executable_with_multiple_vee_ports` section
 From 0.8.0 to 0.9.0
 -------------------
 
-This section applies if MicroEJ SDK 6 ``0.9.0`` is used on a project that was created using MicroEJ SDK 6 ``0.8.0`` 
+This section applies if SDK 6 ``0.9.0`` is used on a project that was created using SDK 6 ``0.8.0`` 
 or lower.
 
 Merge of the veePortDirs and veePortFiles properties

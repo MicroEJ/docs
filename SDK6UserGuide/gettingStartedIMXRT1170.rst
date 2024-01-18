@@ -3,7 +3,7 @@
 i.MX RT1170 EVK
 ===============
 
-During this Getting Started, you will learn to run an application on the Virtual Device and on the Device using the MicroEJ SDK 6.
+During this Getting Started, you will learn to run an application on the Virtual Device and on the Device using the SDK 6.
 
 Prerequisites
 -------------
@@ -15,9 +15,9 @@ Prerequisites
 To follow this Getting Started, all you need is: 
 
 
-* :guilabel:`AnimatedMascot` MicroEJ Application will be used in this Getting Started. 
+* :guilabel:`AnimatedMascot` Application will be used in this Getting Started. 
   Please contact :ref:`our support team <get_support>` to get the code for this demo. It will soon be released publicly.
-* An Internet connection to access Github repositories & MicroEJ Central Repository.
+* An Internet connection to access Github repositories & :ref:`Module Repositories <module_repositories>`.
 * i.MX RT1170 EVK board, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVK>`__.
 * RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
 
@@ -26,14 +26,14 @@ Environment Setup
 
 To follow this Getting Started, you need to install: 
 
-* MicroEJ SDK 6.
+* MICROEJ SDK 6.
 * A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP.
 * LinkServer tool to flash the board.
 
-Install MicroEJ SDK 6
+Install MICROEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
 
-Install MicroEJ SDK 6 by following :ref:`sdk_6_install` instructions. 
+Install MICROEJ SDK 6 by following :ref:`sdk_6_install` instructions. 
 IntelliJ IDEA is used on this Getting Started but feel free to use your favorite IDE.
 
 Install the C toolchain
@@ -107,13 +107,13 @@ Once installed, ``LinkServer_xxx/binaries`` folder must be set on your Path. To 
 * Select :guilabel:`Path` variable under the :guilabel:`User variables` section and edit it.
 * Click on :guilabel:`New` and point to the ``binaries`` folder located where you installed LinkServer (e.g. ``nxp/LinkServer_1.2.45/binaries``).
 
-Set up the MicroEJ Application on your IDE
-------------------------------------------
+Set up the Application on your IDE
+----------------------------------
 
 Import the project
 ^^^^^^^^^^^^^^^^^^
 
-The first step is to import the :guilabel:`AnimatedMascot` MicroEJ Application into your IDE: 
+The first step is to import the :guilabel:`AnimatedMascot` Application into your IDE: 
 
 .. note::
   
@@ -235,7 +235,7 @@ Request your Evaluation License:
 
 Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may takes some time.
 
-The gradle task deploys the MicroEJ application in the BSP and then builds the BSP using Make.
+The gradle task deploys the Application in the BSP and then builds the BSP using Make.
 
 The :guilabel:`AnimatedMascot` application is built and ready to be flashed on i.MX RT1170 EVK once the hardware setup is completed.
 
@@ -256,7 +256,7 @@ Setup the i.MX RT1170 EVK
 
 The USB connection is used as a serial console for the SoC, as a CMSIS-DAP debugger and as a power input for the board.
 
-MicroEJ VEE Port uses the virtual UART from the i.MX RT1170 EVK USB port. A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
+The VEE Port uses the virtual UART from the i.MX RT1170 EVK USB port. A COM port is automatically mounted when the board is plugged into a computer using a USB cable. All board logs are available through this COM port.
 
 The COM port uses the following parameters:
 

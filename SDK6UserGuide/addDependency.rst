@@ -69,8 +69,8 @@ Dependencies Repositories
 -------------------------
 
 Gradle needs to know in which repositories the modules must be fetched and published.
-The :ref:`SDK 6 installation process <sdk_6_install>` provides a Gradle Init Script to declare all the MicroEJ public repositories.
-Of course you can declare other repositories, either in the same Gradle Init Script and in any other location supported by Gradle.
+The :ref:`SDK 6 installation process <sdk_6_install>` provides a Gradle Init Script to declare the :ref:`MicroEJ public repositories <module_repositories>`.
+You can declare other repositories, either in the same Gradle Init Script and in any other location supported by Gradle.
 Refer to `the official documentation <https://docs.gradle.org/current/userguide/declaring_repositories.html>`__ for 
 more information on repositories configuration.
 

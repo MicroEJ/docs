@@ -175,7 +175,7 @@ Project configuration
 
       .. warning::
 
-        You may lose information if your target module project already has custom parameterization or if it was created with another MicroEJ SDK version. 
+        You may lose information if your target module project already has custom parameterization or if it was created with another SDK version. 
         In case of any doubt, please configure the options manually or merge with a text file comparator.
 
 
