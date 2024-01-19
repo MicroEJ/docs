@@ -118,7 +118,7 @@ Vector Image Converter
 
 * Add "fill alpha" animations to gradient elements.
 
-[1.1.0] - 2022-09-05
+[1.1.1] - 2022-09-05
 ====================
 
 * Compatible with UI Pack 13.3.0 or higher.
