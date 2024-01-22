@@ -41,9 +41,23 @@ Dependencies
 Installation
 ============
 
-SSL is an additional module. In the platform configuration file, check
-``SSL`` to install the module.
+The Net Pack bundles several libraries: Net, SSL & Security.
 
+Refer to the chapter :ref:`pack_import` to integrate a specific version of the Net Pack:
+
+.. code-block:: xml
+   :emphasize-lines: 2
+
+   <dependencies>
+       <dependency org="com.microej.pack.net" name="net-pack" rev="11.0.2"/>
+   </dependencies>
+
+Then, using the VEE Port Editor (see :ref:`platform_module_configuration`), enable the SSL library (API, Impl & Mock):
+
+.. figure:: images/net-ssl_modules.*
+   :alt: Net Pack Modules
+
+   Net Pack Modules
 
 Use
 ===
@@ -53,12 +67,12 @@ Application project to use the SSL library.
 
 ::
 
-  <dependency org="ej.api" name="ssl" rev="2.2.0"/>
+  <dependency org="ej.api" name="ssl" rev="2.2.3"/>
 
 .. _SSL API: https://repository.microej.com/modules/ej/api/ssl/
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
