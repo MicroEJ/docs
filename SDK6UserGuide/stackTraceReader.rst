@@ -8,7 +8,7 @@ Principle
 =========
 
 Stack Trace Reader is a MicroEJ tool that reads and decodes the MicroEJ
-stack traces. When an exception occurs, the Core Engine prints
+stack traces. When an exception occurs, the :ref:`Core Engine <core_engine>` prints
 the stack trace on the standard output ``System.out``. The class names,
 non-required types names(see :ref:`section.classpath.elements.types`),
 and method names obtained are encoded with a MicroEJ internal format.
