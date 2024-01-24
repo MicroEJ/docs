@@ -402,13 +402,13 @@ Application project to use the Event Queue Foundation Library.
 
       .. code-block:: kotlin
 
-         implementation("ej.library.eclasspath:event:2.0.0")
+         implementation("ej.api:event:2.0.0")
 
    .. tab:: MMM (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="ej.library.eclasspath" name="event" rev="2.0.0"/>
+         <dependency org="ej.api" name="event" rev="2.0.0"/>
 
 To use this API, your VEE Port must implement a compatible version. 
 Please refer to the :ref:`VEE Porting Guide <pack_event>` to port the Event Queue for your project.
