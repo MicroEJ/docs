@@ -4,6 +4,27 @@
 Changelog
 =========
 
+14.0.0 (Unreleased)
+===================
+
+* Compatible with Architecture 7.13.0 or higher.
+
+MicroUI
+"""""""
+
+* Implement `MicroUI API 3.5.0`_ (XXX_TODO wrong link).
+
+**Changed**
+
+- Change the semantic of the content of the drawing buffer after a flush: the *past* is not systematically restored.
+
+**Fixed**
+
+* Fix the drawing of thick faded circle arcs.
+* Fix some linker issues on some Architectures.
+
+.. _MicroUI API 3.5.0: https://repository.microej.com/modules/ej/api/microui/3.4.0/
+
 13.7.2 (2023-12-21)
 ===================
 
@@ -27,11 +48,15 @@ Simulator
 MicroUI
 """""""
 
+* Implement `MicroUI API 3.4.0`_.
+
 **Added**
 
 - Add the pre-multiplied image formats `ARGB8888_PRE`, `ARGB1555_PRE` and `ARGB4444_PRE`.
 - Add the possibility to free third-party resources associated with images.
 - Add some traces when debugging the SNI resources.
+
+.. _MicroUI API 3.4.0: https://repository.microej.com/modules/ej/api/microui/3.4.0/
 
 Image Generator
 """""""""""""""
@@ -92,6 +117,8 @@ MicroUI
 MicroUI
 """""""
 
+* Implement `MicroUI API 3.3.0`_.
+
 **Added**
 
 - Add a flag stating that an undefined character was drawn.
@@ -100,6 +127,8 @@ MicroUI
 
 - Fix the Java compiler version used to build the MicroUI extension class to be compatible with the JDK 11.
 - Fix the drawing of faded arcs and ellipses.
+
+.. _MicroUI API 3.3.0: https://repository.microej.com/modules/ej/api/microui/3.3.0/
 
 Image Generator
 """""""""""""""
@@ -138,19 +167,25 @@ FrontPanel
 
 * Compatible with Architecture 7.13.0 or higher.
 
-MicroUI Implementation
-""""""""""""""""""""""
+MicroUI
+"""""""
 
-**Changed**
+* Implement `MicroUI API 3.2.0`_.
 
-- Implement MicroUI 3.2 (multi-mutable image formats, drawing log flags, etc.).
+**Added**
+
+- Add multi BufferedImage image formats management.
+- Add custom RAM Image image formats management.
+- Add drawing logs flags management.
 
 **Fixed**
 
 - Fix ellipse fading.
 
-Drawing Implementation
-""""""""""""""""""""""
+.. _MicroUI API 3.2.0: https://repository.microej.com/modules/ej/api/microui/3.2.0/
+
+Drawing
+"""""""
 
 **Fixed**
 
@@ -206,8 +241,8 @@ ImageGenerator
 [13.4.1] (2023-02-06)
 =====================
 	
-Drawing Implementation
-""""""""""""""""""""""
+Drawing
+"""""""
 
 **Fixed**
 
@@ -233,8 +268,8 @@ ImageGenerator
 
 * Compatible with Architecture 7.13.0 or higher.
 
-MicroUI Implementation
-""""""""""""""""""""""
+MicroUI
+"""""""
 	
 **Fixed**
 
@@ -302,8 +337,8 @@ Image Generator
 
 * Compatible with Architecture 7.13.0 or higher.
 
-MicroUI Implementation
-""""""""""""""""""""""
+MicroUI
+"""""""
 	
 **Fixed**
 
@@ -357,8 +392,10 @@ Integration
 
 * Update to the latest SDK license notice.
 	
-MicroUI Implementation
-""""""""""""""""""""""
+MicroUI
+"""""""
+
+* Implement `MicroUI API 3.1.1`_.
 	
 **Changed**	
 	
@@ -376,6 +413,15 @@ MicroUI Implementation
 
 .. _GraphicsContext.readPixels(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#readPixel-int-int-
 .. _Image.readPixels(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#readPixel-int-int-
+.. _MicroUI API 3.1.1: https://repository.microej.com/modules/ej/api/microui/3.1.1/
+
+Drawing
+"""""""
+
+* Compatible with `Drawing API 1.0.4`_.
+
+.. _Drawing API 1.0.4: https://repository.microej.com/modules/ej/api/drawing/1.0.4/
+
 
 Front Panel
 """""""""""
@@ -434,9 +480,10 @@ MicroUI API
 MicroUI Implementation
 """"""""""""""""""""""
 
+* Implement `MicroUI API 3.1.0`_.
+
 **Changed**
 
-* Compatible with `MicroUI API 3.1.0`_.
 * Check Immortals heap minimal size required by MicroUI implementation.
 * Change the EventGenerator Pointer event format.
 * Do no systematically use the GPU to draw intermediate steps of a shape.  
@@ -454,8 +501,6 @@ MicroUI Implementation
 
 Drawing Implementation
 """"""""""""""""""""""
-
-**Changed**
 
 * Compatible with `Drawing API 1.0.3`_.
 
