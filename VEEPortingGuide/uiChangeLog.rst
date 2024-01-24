@@ -205,24 +205,6 @@ Drawing
 
 - Fix the position of arc caps.
 
-LLAPIs
-""""""
-	
-**Added**
-
-* Add some functions in `LLUI_DISPLAY.h` to manage the MicroUI Drawing Log flags.
-* Add some functions in `LLUI_DISPLAY.h` to change the MicroUI clip and colors.
-* Add the notion of "drawer" to identify the available drawer for a given MicroUI Image format.
-
-**Changed**
-
-* Change the MicroUI image format `MICROUI_IMAGE_FORMAT_LCD` by `MICROUI_IMAGE_FORMAT_DISPLAY`.
-* Change the signature of `xx_drawing_soft.h`: all functions return a drawing status. 
-
-**Removed**
-
-* Remove `ui_drawing.h` and `dw_drawing.h` (move them in MicroUI C Module).
-
 Front Panel
 """""""""""
 	
@@ -251,6 +233,24 @@ Image Generator
 **Added**
 
 * Add compatibility with Architecture 8.
+
+LLAPIs
+""""""
+	
+**Added**
+
+* Add some functions in `LLUI_DISPLAY.h` to manage the MicroUI Drawing Log flags.
+* Add some functions in `LLUI_DISPLAY.h` to change the MicroUI clip and colors.
+* Add the notion of "drawer" to identify the available drawer for a given MicroUI Image format.
+
+**Changed**
+
+* Change the MicroUI image format `MICROUI_IMAGE_FORMAT_LCD` by `MICROUI_IMAGE_FORMAT_DISPLAY`.
+* Change the signature of `xx_drawing_soft.h`: all functions return a drawing status. 
+
+**Removed**
+
+* Remove `ui_drawing.h` and `dw_drawing.h` (move them in MicroUI C Module).
 
 [13.4.1] (2023-02-06)
 =====================
@@ -436,7 +436,6 @@ Drawing
 
 .. _Drawing API 1.0.4: https://repository.microej.com/modules/ej/api/drawing/1.0.4/
 
-
 Front Panel
 """""""""""
 
@@ -520,19 +519,6 @@ Drawing Implementation
 
 .. _Drawing API 1.0.3: https://repository.microej.com/modules/ej/api/drawing/1.0.3/
 
-LLAPIs
-""""""
-	
-**Added**
-
-* Add ``LLUI_DISPLAY_convertDisplayColorToARGBColor()``.
-* Add LLAPI to manage the :ref:`MicroUI Image heap<section_image_loader_memory>`.
-* Add LLAPI to dump the :ref:`MicroUI Events queue<section_inputs_eventbuffer>`.
-
-**Changed**	
-
-* Change signature of ``LLUI_DISPLAY_setDrawingLimits()``: remove ``MICROUI_GraphicsContext*`` to be able to call this function from GPU callback method. 
-
 Front Panel
 """""""""""
 
@@ -551,6 +537,19 @@ Front Panel
 * Fix OutputFormat A8 when loading an image (path or stream) or converting a RAW image.
 * Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images. 
 * Simulates the image data alignment.
+
+LLAPIs
+""""""
+	
+**Added**
+
+* Add ``LLUI_DISPLAY_convertDisplayColorToARGBColor()``.
+* Add LLAPI to manage the :ref:`MicroUI Image heap<section_image_loader_memory>`.
+* Add LLAPI to dump the :ref:`MicroUI Events queue<section_inputs_eventbuffer>`.
+
+**Changed**	
+
+* Change signature of ``LLUI_DISPLAY_setDrawingLimits()``: remove ``MICROUI_GraphicsContext*`` to be able to call this function from GPU callback method. 
 
 [13.0.7] - 2021-07-30
 =====================
@@ -737,13 +736,6 @@ MicroUI Implementation
 .. _FillRoundedRectangle: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html#fillRoundedRectangle-ej.microui.display.GraphicsContext-int-int-int-int-int-int-
 .. _FillRectangle: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html#fillRectangle-ej.microui.display.GraphicsContext-int-int-int-int-
 
-LLAPIs
-""""""
-
-**Fixed**
-
-* Missing a LLAPI to check the overlapping between source and destination areas.
-
 Front Panel
 """""""""""
 
@@ -758,6 +750,13 @@ Image Generator
 **Fixed**
 
 * Cannot build a platform with Image Generator and without Front Panel.
+
+LLAPIs
+""""""
+
+**Fixed**
+
+* Missing a LLAPI to check the overlapping between source and destination areas.
 
 [13.0.0] - 2020-07-30
 =====================
@@ -802,24 +801,6 @@ MicroUI Implementation
 **Known issue**
 
 * Render of draw/fill arc/circle/ellipse with an even diameter/edge is one pixel too high (center is 1/2 pixel too high).
-
-LLAPIs
-""""""
-
-**Added**
-
-* Some new functions are mandatory: see header files list, tag *mandatory*.
-* Some new functions are optional: see header files list, tag *optional*.
-* Some header files list the libraries ``ej.api.microui`` and ``ej.api.drawing`` natives. Provided by Abstraction Layer implementation module `com.microej.clibrary.llimpl#microui`_.
-* Some header files list the drawing algorithms the platform can implement; all algorithms are optional.
-* Some header files list the internal Graphics Engine software algorithms the platform can call.
-	
-**Changed**
-
-* All old header files and functions have been renamed or shared.
-* See :ref:`Migration notes<section_ui_migration_llapi_13x>` that describe the available changes in LLAPI.
-
-.. _com.microej.clibrary.llimpl#microui: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui
 
 Front Panel
 """""""""""
@@ -867,6 +848,24 @@ Font Generator
 **Changed**
 
 * Used a dedicated ``bss`` section to load characters from an external font instead of using the java heap.
+
+LLAPIs
+""""""
+
+**Added**
+
+* Some new functions are mandatory: see header files list, tag *mandatory*.
+* Some new functions are optional: see header files list, tag *optional*.
+* Some header files list the libraries ``ej.api.microui`` and ``ej.api.drawing`` natives. Provided by Abstraction Layer implementation module `com.microej.clibrary.llimpl#microui`_.
+* Some header files list the drawing algorithms the platform can implement; all algorithms are optional.
+* Some header files list the internal Graphics Engine software algorithms the platform can call.
+	
+**Changed**
+
+* All old header files and functions have been renamed or shared.
+* See :ref:`Migration notes<section_ui_migration_llapi_13x>` that describe the available changes in LLAPI.
+
+.. _com.microej.clibrary.llimpl#microui: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui
 
 [12.1.5] - 2020-10-02
 =====================
