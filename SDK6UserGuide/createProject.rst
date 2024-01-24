@@ -73,7 +73,7 @@ This chapter explains the different ways to create a new project.
          Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
 
       The project created by the wizard is a multi-project with a single subproject (named ``app``).
-      This subproject is a MicroEJ Application or Add-On Library, depending on the module type that has been chosen.
+      This subproject is either an Application or an Add-On Library, depending on the module type that has been chosen.
 
       .. note::
          By default, Android Studio automatically saves any file change, 

@@ -84,7 +84,7 @@ This piece of configuration is the minimum configuration required to define a te
 
 - ``(1)``: configures all the testsuites of the project.
 - ``(2)``: configures the built-in ``test`` suite provided by Gradle. Use this testsuite to configure the tests on the Simulator.
-- ``(3)``: declares that this testsuite uses the MicroEJ Test Engine. By default, the MicroEJ Test Engine executes the tests on the
+- ``(3)``: declares that this testsuite uses the MicroEJ Testsuite Engine. By default, the MicroEJ Testsuite Engine executes the tests on the
   Simulator.
 - ``(4)``: adds the dependencies required by the tests. The first line declares a dependency to the code of the project.
   The second line declares a dependency on the ``edc`` Library. The third line declares a dependency to the JUnit API used 

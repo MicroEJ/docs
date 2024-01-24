@@ -8,7 +8,7 @@ Principle
 =========
 
 Stack Trace Reader is a MicroEJ tool that reads and decodes the MicroEJ
-stack traces. When an exception occurs, the MicroEJ Core Engine prints
+stack traces. When an exception occurs, the :ref:`Core Engine <core_engine>` prints
 the stack trace on the standard output ``System.out``. The class names,
 non-required types names(see :ref:`section.classpath.elements.types`),
 and method names obtained are encoded with a MicroEJ internal format.
@@ -16,21 +16,21 @@ This internal format prevents embedding all class names and
 method names in the executable image to save some memory space. The Stack
 Trace Reader tool allows you to decode the stack traces by replacing the
 internal class names and method names with their real names. It also
-retrieves the line numbers in the MicroEJ Application.
+retrieves the line numbers in the Application.
 
 Functional Description
 ======================
 
 The Stack Trace Reader reads the debug information from the fully linked ELF
-file (the ELF file that contains the MicroEJ Core Engine, the other
-libraries, the BSP, the OS, and the compiled MicroEJ Application). It
+file (the ELF file that contains the Core Engine, the other
+libraries, the BSP, the OS, and the compiled Application). It
 prints the decoded stack trace.
 
 When :ref:`Multi-Sandbox capability <multisandbox>` is enabled, 
 the stack trace reader can simultaneously decode heterogeneous stack
-traces with lines owned by different MicroEJ Sandboxed Applications and the firmware.
-Lines owned by the firmware can be decoded with the firmware debug information file
-(optionally made available by your firmware provider).
+traces with lines owned by different Sandboxed Applications and the Kernel.
+Lines owned by the Kernel can be decoded with the Executable debug information file
+(optionally made available by your Kernel provider).
 
 
 Dependencies

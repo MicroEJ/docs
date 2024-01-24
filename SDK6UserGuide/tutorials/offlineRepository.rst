@@ -78,7 +78,7 @@ Download an existing online repository
 ######################################
 
 A quick way to get an Offline Repository for the modules is to download an existing online repository.
-MicroEJ provides several repositories, the main one being the :ref:`Central Repository <central_repository>`.
+MicroEJ provides several :ref:`module repositories <module_repositories>`, the main one being the :ref:`Central Repository <central_repository>`.
 
 If this online repository, or another one, contains all the module required for your project, download it. 
 For example for the Central Repository, go to `its location <https://forge.microej.com/ui/repos/tree/General/microej-central-repository-release>`__ 
