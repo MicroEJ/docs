@@ -52,11 +52,18 @@ MicroUI
 
 **Added**
 
-- Add the pre-multiplied image formats `ARGB8888_PRE`, `ARGB1555_PRE` and `ARGB4444_PRE`.
+- Add the pre-multiplied image formats ``ARGB8888_PRE``, ``ARGB1555_PRE`` and ``ARGB4444_PRE``.
 - Add the possibility to free third-party resources associated with images.
 - Add some traces when debugging the SNI resources.
 
 .. _MicroUI API 3.4.0: https://repository.microej.com/modules/ej/api/microui/3.4.0/
+
+Front Panel
+"""""""""""
+
+**Added**
+
+- Add the pre-multiplied image formats ``ARGB8888_PRE``, ``ARGB1555_PRE`` and ``ARGB4444_PRE``.
 
 Image Generator
 """""""""""""""
@@ -130,6 +137,13 @@ MicroUI
 
 .. _MicroUI API 3.3.0: https://repository.microej.com/modules/ej/api/microui/3.3.0/
 
+Front Panel
+"""""""""""
+
+**Added**
+
+- Add the drawing log flag ``DRAWING_LOG_MISSING_CHARACTER``, stating that an undefined character was drawn.
+
 Image Generator
 """""""""""""""
 
@@ -154,13 +168,13 @@ MicroUI
 
 - Fix the compatibility with MicroEJ Architecture 8 (SOAR error with internal MicroUI system properties file).
 
-FrontPanel
-""""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
 - Fix consecutive calls to ``LLUIDisplay.newMicroUIImage()`` throwing an exception.
-- Allow overriding the display drawer with a service or in a front panel widget.
+- Allow overriding the display drawer with a service or in a Front Panel widget.
 
 [13.5.0] (2023-05-03)
 =====================
@@ -209,8 +223,8 @@ LLAPIs
 
 * Remove `ui_drawing.h` and `dw_drawing.h` (move them in MicroUI C Module).
 
-FrontPanel
-""""""""""
+Front Panel
+"""""""""""
 	
 **Added**
 
@@ -231,8 +245,8 @@ FrontPanel
 
 * Remove the interfaces `UIDrawingDefault` and `DWDrawingDefault` (implement the interface `UIDrawing` instead).
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Added**
 
@@ -249,15 +263,15 @@ Drawing
 * Fix thick lines drawing (when thickness is larger than length).
 * Fix circle and ellipse drawing (when the diameter/axis has an even length).
 
-FrontPanel
-""""""""""
+Front Panel
+"""""""""""
 
 **Changed**
 
 * Increase the speed of RAW image decoding step.
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Fixed**
 
@@ -276,8 +290,8 @@ MicroUI
 * Fix the unexpected resuming of the pump Java thread when a new event is added to the queue if it is an other component than the MicroUI queue that has suspended the pump Java thread.
 * Fix the flush bounds of drawCircleArc and drawEllipseArc.   
 
-FrontPanel
-""""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
@@ -287,8 +301,8 @@ FrontPanel
 
 * Fix the Front Panel representation of a BufferedImage: it is always opaque. 
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Added**
 
@@ -302,8 +316,8 @@ ImageGenerator
 
 * Fix the non-generation of external images for the features.
 
-FontGenerator
-"""""""""""""
+Font Generator
+""""""""""""""
 
 **Fixed**
 
@@ -428,7 +442,7 @@ Front Panel
 
 **Added**
 
-* Add the property ``-Dej.fp.hil=true`` in the application launcher to force to run the FrontPanel with the Graphics Engine as a standard HIL mock (requires MicroEJ Architecture 7.17.0 or higher).
+* Add the property ``-Dej.fp.hil=true`` in the application launcher to force to run the Front Panel with the Graphics Engine as a standard HIL mock (requires MicroEJ Architecture 7.17.0 or higher).
 * Add ``LLUIDisplayImpl.decode()``: the Front Panel project is able to read encoded image like the embedded side.
 * Include automatically the AWT ImageIO services.
 * Add ``MicroUIImage.readPixel()`` to read an image's pixel color.
@@ -494,7 +508,7 @@ MicroUI Implementation
 * Fill rounded rectangle: fix rendering when corner radius is higher than rectangle height.
 * An external image is closed twice when the application only checks if the image is available.
 * RLE1 image rendering when platform requires image pixels address alignment. 
-* Manage the system fonts when the font generator is not embedded in the platform.
+* Manage the system fonts when the Font Generator is not embedded in the platform.
 * Have to wait the end of current drawing before closing an image.
 
 .. _MicroUI API 3.1.0: https://repository.microej.com/modules/ej/api/microui/3.1.0/
@@ -519,13 +533,14 @@ LLAPIs
 
 * Change signature of ``LLUI_DISPLAY_setDrawingLimits()``: remove ``MICROUI_GraphicsContext*`` to be able to call this function from GPU callback method. 
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
 * Add ``MicroUIImage.getImage(int)``: apply a rendering color on Ax images.  
 * Add ``LLUIDisplay.convertRegion()``: convert a region according image format restrictions.   
+* Add ``LLUIDisplayImpl.waitFlush()``: can manage an asynchronous flush.
 
 **Changed**	
 
@@ -597,12 +612,12 @@ MicroUI Implementation
 .. _NullPointerException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html
 .. _DeadFeatureException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/DeadFeatureException.html
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
-* Front panel memory management: reduce simulation time.
+* Front Panel memory management: reduce simulation time.
 
 [13.0.4] - 2021-01-15
 =====================
@@ -641,8 +656,8 @@ Drawing Implementation
 
 * Draw deformed image is not rendered.
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Changed**
 
@@ -729,20 +744,20 @@ LLAPIs
 
 * Missing a LLAPI to check the overlapping between source and destination areas.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
-* Cannot use an external image decoder on front panel.
+* Cannot use an external image decoder on Front Panel.
 * Missing an API to check the overlapping between source and destination areas.
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Fixed**
 
-* Cannot build a platform with image generator and without front panel.
+* Cannot build a platform with Image Generator and without Front Panel.
 
 [13.0.0] - 2020-07-30
 =====================
@@ -806,8 +821,8 @@ LLAPIs
 
 .. _com.microej.clibrary.llimpl#microui: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
@@ -824,20 +839,20 @@ Simulator
 
 .. _com.microej.pack.ui#ui-pack(frontpanel)#13.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/
  
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Added**
 
-* Redirects source image reading to the image generator extension project in order to increase the number of supported image formats in input.
-* Redirects destination image generation to the image generator extension project in order to be able to encode an image in a custom RAW format.
+* Redirects source image reading to the Image Generator extension project in order to increase the number of supported image formats in input.
+* Redirects destination image generation to the Image Generator extension project in order to be able to encode an image in a custom RAW format.
 * Generates a linker file in order to always link the resources in same order between two launches.
 	
 **Changed**
 
 * Compatible with `com.microej.pack.ui#ui-pack(imageGenerator)#13.0.0`_.
 * See :ref:`Migration notes<section_ui_migration_imagegeneratorapi_13x>` that describe the available changes in Image Generator API.
-* Uses a service loader to loads the image generator extension classes.
+* Uses a service loader to loads the Image Generator extension classes.
 * Manages image data (pixels) address alignment.
 	
 **Removed**
@@ -846,8 +861,8 @@ ImageGenerator
 
 .. _com.microej.pack.ui#ui-pack(imageGenerator)#13.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/
 
-FontGenerator
-"""""""""""""
+Font Generator
+""""""""""""""
 
 **Changed**
 
@@ -985,8 +1000,8 @@ MicroUI Implementation
 
 * Physical size is not taken in consideration.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
@@ -1032,8 +1047,8 @@ MicroUI Implementation
 
 .. _getDisplayColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#getDisplayColor-int-
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
@@ -1043,12 +1058,12 @@ Simulator
 
 * A pixel read on an image is always truncated.
 
-FrontPanel Plugin
-"""""""""""""""""
+Front Panel Plugin
+""""""""""""""""""
 
 **Removed**
 
-* FrontPanel version 5: Move front panel from MicroEJ UI Pack to Architecture *(not backward compatible)*; Architecture contains now Front Panel version 6.
+* Front Panel version 5: Move Front Panel from MicroEJ UI Pack to Architecture *(not backward compatible)*; Architecture contains now Front Panel version 6.
 
 [11.2.0] - 2019-02-01
 =====================
@@ -1192,8 +1207,8 @@ MicroUI Implementation
 * Subsequent renderings may not be correctly flushed.
 * Rendering of display on display was not optimized.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Changed**
 
@@ -1211,12 +1226,12 @@ Misc
 
 * Compatible with Architecture 6.12.0 or higher.
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Fixed**
 
-* Missing some files in image generator module.
+* Missing some files in Image Generator module.
 
 [9.4.0] - 2017-11-23
 ====================
@@ -1266,8 +1281,8 @@ MicroUI Implementation
 
 * Ellipsis must not drawn when text anchor is a "manual" ``TOP-RIGHT``.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
@@ -1279,8 +1294,8 @@ Simulator
 
 * Compatible with Architecture 6.12.0 or higher.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
@@ -1328,8 +1343,8 @@ MicroUI Implementation
 
 .. _Display.flush(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush--
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Fixed**
 
@@ -1344,7 +1359,7 @@ Misc
 
 **Fixed**
 
-* RI build: reduce frontpanel dependency.
+* RI build: reduce Front Panel dependency.
 
 [9.0.2] - 2017-04-21
 ====================
@@ -1359,8 +1374,8 @@ MicroUI Implementation
 
 * Rendering of a RAW image on grayscale display is wrong.
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Fixed**
 
@@ -1403,8 +1418,8 @@ MicroUI Implementation
 
 .. _getHeight(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getHeight--
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Fixed**
 
@@ -1427,15 +1442,15 @@ MicroUI Implementation
 * RZ hardware accelerator: RAW images have to respect an aligned size.
 * Use the classpath when invoking the fonts and images generators.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
 * Wrong rendering of A8 images.
 
-FrontPanel Plugin
-"""""""""""""""""
+Front Panel Plugin
+""""""""""""""""""
 
 **Fixed**
 
@@ -1486,15 +1501,15 @@ MicroUI Implementation
 * Exception when flipping an image out of display bounds.
 * Flipped image is translated when clip is modified.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
 * Wrong rendering of A8 images.
 
-FrontPanel Plugin
-"""""""""""""""""
+Front Panel Plugin
+""""""""""""""""""
 
 **Fixed**
 
@@ -1537,8 +1552,8 @@ MWT
 
 * Remove MWT from MicroEJ UI Pack *(not backward compatible)*.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 	
 **Added**
 
@@ -1553,8 +1568,8 @@ Tools
 
 **Changed**
 
-* FrontPanel plugin: Update icons.
-* FontDesigner plugin: Update icons.
+* Front Panel plugin: Update icons.
+* Font Designer plugin: Update icons.
 * Font Designer and Generator: use Unicode 9.0.0 specification.
 
 Misc
@@ -1562,7 +1577,7 @@ Misc
 
 **Fixed**
 
-* Remove obsolete documentations from FrontPanel And FontDesigner plugins.
+* Remove obsolete documentations from Front Panel And Font Designer plugins.
 
 [8.1.0] - 2016-12-24
 ====================
@@ -1586,8 +1601,8 @@ MWT
 * Widget show notify method is called before the panel is set.
 * Widget still linked to panel when ``lostFocus()`` is called.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
@@ -1628,8 +1643,8 @@ MWT
 
 * possible to create an inconsistent hierarchy.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
@@ -1653,8 +1668,8 @@ MicroUI Implementation
 * A bold font is not flagged as bold font.
 * Wrong A4 image rendering.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
@@ -1696,8 +1711,8 @@ MicroUI Implementation
 
 * image A1's width is sometimes invalid.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
