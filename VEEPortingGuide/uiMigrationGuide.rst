@@ -9,7 +9,17 @@ Migration Guide
 From 13.7.x to 14.0.x
 =====================
 
-XXX_TODO
+Front Panel
+"""""""""""
+
+* Fetch `Front Panel Widgets 4.0.0`_  XXX_TODO wrong link (it fetches by transitivity the `UI Pack 14.0.0`_ XXX_TODO wrong link):
+
+  .. code-block:: xml
+  
+     <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
+
+.. _Front Panel Widgets 4.0.0: https://forge.microej.com/ui/native/microej-developer-repository-release/ej/tool/frontpanel/widget/3.0.0/
+.. _UI Pack 14.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.7.2/
 
 From 13.6.x to 13.7.x
 =====================
@@ -17,7 +27,7 @@ From 13.6.x to 13.7.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the `UI Pack 13.7.2`_:
+* (optional) Fetch explicitly the `UI Pack 13.7.2`_ to use the new API of the UI Pack:
 
   .. code-block:: xml
 
@@ -65,7 +75,13 @@ From 13.5.x to 13.6.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the `UI Pack 13.6.2`_:
+* (optional) Fetch `Front Panel Widgets 3.0.0`_ to use the new features of the Front Panel Widget library:
+
+  .. code-block:: xml
+  
+     <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
+
+* (optional) Fetch explicitly the `UI Pack 13.6.2`_ to use the new API of the UI Pack:
 
   .. code-block:: xml
 
@@ -73,6 +89,7 @@ Front Panel
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
 
+.. _Front Panel Widgets 3.0.0: https://forge.microej.com/ui/native/microej-developer-repository-release/ej/tool/frontpanel/widget/3.0.0/
 .. _UI Pack 13.6.2: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.6.2/
 
 .. _section_ui_migrationguide_13.6_vglite:
@@ -146,7 +163,7 @@ From 13.4.x to 13.5.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the `UI Pack 13.5.1`_:
+* (optional) Fetch explicitly the `UI Pack 13.5.1`_ to use the new API of the UI Pack:
 
   .. code-block:: xml
 
@@ -219,19 +236,6 @@ BSP with VG-Lite
 From 13.3.x to 13.4.x
 =====================
 
-Front Panel
-"""""""""""
-
-* Set the explicit dependency to the `UI Pack 13.4.1`_: 
-
-  .. code-block:: xml
-
-	 <dependency org="com.microej.pack.ui" name="ui-pack" rev="13.4.1">
-		<artifact name="frontpanel" type="jar"/>
-	 </dependency>
-
-.. _UI Pack 13.4.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.4.1/
-
 BSP
 """
 
@@ -248,7 +252,7 @@ From 13.2.x to 13.3.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the `UI Pack 13.3.1`_: 
+* (optional) Fetch explicitly the `UI Pack 13.3.1`_ to use the new API of the UI Pack:
 
   .. code-block:: xml
 
@@ -274,7 +278,7 @@ From 13.1.x to 13.2.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the `UI Pack 13.2.0`_: 
+* (optional) Fetch explicitly the `UI Pack 13.2.0`_ to use the new API of the UI Pack:
 
   .. code-block:: xml
 
@@ -290,7 +294,13 @@ From 13.0.x to 13.1.x
 Front Panel
 """""""""""
 
-* Set the explicit dependency to the `UI Pack 13.1.0`_: 
+* (optional) Fetch `Front Panel Widgets 2.1.0`_ to use the new features of the Front Panel Widget library (it fetches by transitivity the `UI Pack 13.1.0`_):
+
+  .. code-block:: xml
+  
+     <dependency org="ej.tool.frontpanel" name="widget" rev="2.1.0"/>
+
+* (optional) Or fetch explicitly the `UI Pack 13.1.0`_ to use the new API of the UI Pack:
 
   .. code-block:: xml
 
@@ -298,6 +308,7 @@ Front Panel
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
 
+.. _Front Panel Widgets 2.1.0: https://repository.microej.com/modules/ej/tool/frontpanel/widget/2.1.0/
 .. _UI Pack 13.1.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.1.0/
 
 BSP
@@ -331,7 +342,7 @@ Hardware Accelerator
   
   .. code-block:: xml
   
-     <dependency org="com.microej.clibrary.llimpl" name="display-dma2d" rev="1.0.6"/>``
+     <dependency org="com.microej.clibrary.llimpl" name="display-dma2d" rev="1.0.6"/>
 
 * For the hardware accelerator DMA2D, please consult STM32F7Discovery board updates. Add the file ``lldisplay_dma2d.c``, the global defines ``DRAWING_DMA2D_BPP=16`` (or another value) and ``STM32F4XX`` or ``STM32F7XX``
 * For the others hardware accelerators, please contact MicroEJ support.
@@ -342,10 +353,15 @@ Front Panel
 This chapter resumes the changes to perform.
 The available changes in Front Panel API are described in :ref:`next chapter<section_ui_migration_frontpanelapi_13x>`.
 
-* If not already done, follow the Front Panel version 6 migration procedure detailled in chapter :ref:`section_ui_migration_12x`.
-* Update the fp project dependency: ``<dependency org="ej.tool.frontpanel" name="widget" rev="2.0.0"/>``
+* If not already done, follow the Front Panel version 6 migration procedure detailed in chapter :ref:`section_ui_migration_12x`.
+* Fetch the new Front Panel Widget library:
+
+  .. code-block:: xml
+  
+     <dependency org="ej.tool.frontpanel" name="widget" rev="2.0.0"/>
+
 * ``ej.fp.event.MicroUIButtons`` has been renamed in ``ej.microui.event.EventButton``, and all others ``ej.fp.event.MicroUIxxx`` in ``ej.microui.event.Eventxxx``
-* Display abstract class ``AbstractDisplayExtension`` (class to extend widget Display when targetting a custom display) has been converted on the interface ``DisplayExtension``. Some methods names have changed and now take in parameter the display widget.
+* Display abstract class ``AbstractDisplayExtension`` (class to extend widget Display when targeting a custom display) has been converted on the interface ``DisplayExtension``. Some methods names have changed and now take in parameter the display widget.
 
 .. _section_ui_migration_frontpanelapi_13x:
 
