@@ -86,7 +86,7 @@ The code logic based on a ``malloc/free`` implementation does not need to be cha
       void* total_area = KERNEL_MALLOC(total_size);
       if(NULL != total_area){
          struct installed_feature* f = (struct installed_feature*)total_area;
-         f->ROM_area = KERNEL_AREA_GET_START_ADDRESS((void*)(((int32_t)f)+((int32_t)sizeof(installed_feature_t))), LLKERNEL_ROM_AREA_ALIGNMENT);
+         f->ROM_area = KERNEL_AREA_GET_START_ADDRESS((void*)(((int32_t)f)+((int32_t)sizeof(struct installed_feature))), LLKERNEL_ROM_AREA_ALIGNMENT);
          f->RAM_area = KERNEL_AREA_GET_START_ADDRESS((void*)(((int32_t)f->ROM_area)+size_ROM), LLKERNEL_RAM_AREA_ALIGNMENT);
          ret = (int32_t)f;
       } // else out of memory
