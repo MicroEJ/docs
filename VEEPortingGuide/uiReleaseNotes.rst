@@ -243,10 +243,10 @@ To use the latest functionalities provided by the UI Pack ``13.0.0`` and higher,
 However, if the Front Panel project does not require/use the latest Front Panel UI API, it can fetch a version of the UI Pack older than the version fetched in the VEE Port configuration project.
 
 .. _com.microej.pack.ui.ui-pack(frontpanel): https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/
-.. _ej.tool.frontpanel.widget-microui: https://forge.microej.com/ui/native/microej-developer-repository-release/ej/tool/frontpanel/widget-microui/
-.. _ej.tool.frontpanel#widget: https://forge.microej.com/ui/native/microej-developer-repository-release/ej/tool/frontpanel/widget/
+.. _ej.tool.frontpanel.widget-microui: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget-microui/
+.. _ej.tool.frontpanel#widget: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/
 .. _Central: https://repository.microej.com/modules/ej/tool/frontpanel/widget/
-.. _Developer: https://forge.microej.com/ui/native/microej-developer-repository-release/ej/tool/frontpanel/widget/
+.. _Developer: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/
 
 Image Generator API
 ===================
