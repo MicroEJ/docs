@@ -97,11 +97,6 @@ BSP with NemaGFX
 	* Follow the migration steps of "BSP without GPU".
 	* Review all options of ``ui_drawing_nema_configuration.h`` (version ``2``).
 
-.. _C Module MicroUI 3.1.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.1.1/
-.. _C Module DMA2D 4.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/4.1.0/
-.. _C Module VGLite 7.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/7.2.0/
-.. _C Module NemaGFX 1.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.2.0/
-
 From 13.5.x to 13.6.x
 =====================
 
@@ -199,10 +194,6 @@ BSP with NemaGFX
 	* Configure the C project to include the ``inc`` folder.
 	* Read the comments of ``ui_drawing_nema_configuration.h`` and configures the C module.
 
-.. _C Module VGLite 7.1.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/7.1.0/
-.. _C Module RT500 7.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-mimxrt595-evk/7.0.0
-.. _C Module NemaGFX 1.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.0.0/
-
 From 13.4.x to 13.5.x
 =====================
 
@@ -264,8 +255,7 @@ BSP with VG-Lite
 """"""""""""""""
 
 .. note:: 
-	* The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
-	* The compatible VG-Lite library version is **3.0.15_rev4**. 
+	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
 
 * Follow the migration steps of "BSP without GPU".
 * *[VEE Port configuration project]*
@@ -278,10 +268,6 @@ BSP with VG-Lite
 	* Delete the C files ``vg_drawer.h`` and  ``vg_drawer.c`` and remove them from the C project configuration.
 	* Verify the options in ``display_configuration.h``. 
 	* In the C project configuration, include the new C file ``ui_drawing_vglite.c``.
-
-.. _C Module MicroUI 3.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.0.0/
-.. _C Module DMA2D 4.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/4.0.0/
-.. _C Module VGLite 6.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/6.0.1/
 
 From 13.3.x to 13.4.x
 =====================
@@ -313,8 +299,7 @@ BSP with VG-Lite
 """"""""""""""""
 
 .. note:: 
-	* The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
-	* The compatible VG-Lite library version is **3.0.15_rev4**. 
+	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
 
 * Follow the migration steps of "BSP without GPU".
 * *[VEE Port configuration project]*
@@ -323,12 +308,8 @@ BSP with VG-Lite
 
 * *[BSP project]*
 
-  	* Migrate VG-Lite library to the version 3.0.15_rev4.
-  	* Modify the VG-Lite library 3.0.15_rev4 by applying the patch ``3.0.15_rev4.patch`` (see README.md near patch file for more information).
-
-.. _C Module MicroUI 2.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/2.0.1/
-.. _C Module DMA2D 3.0.2: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.0.2/
-.. _C Module VGLite 5.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/5.0.1/
+  	* Migrate VG-Lite library to the version **3.0.15_rev4**.
+  	* Modify the VG-Lite library **3.0.15_rev4** by applying the patch ``3.0.15_rev4.patch`` (see README.md near patch file for more information).
 
 From 13.2.x to 13.3.x
 =====================
@@ -371,8 +352,7 @@ BSP with VG-Lite
 """"""""""""""""
 
 .. note:: 
-	* The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`).
-	* The compatible VG-Lite library version is **3.0.11_rev3**. 
+	The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`).
 
 * Follow the migration steps of "BSP without GPU".
 * *[VEE Port configuration project]*
@@ -384,7 +364,7 @@ BSP with VG-Lite
 	* Read the comments of ``display_configuration.h`` and configures the C module.
 	* Add all C files available in ``src`` folder.
 	* Configure the C project to include the ``inc`` folder.
- 	* Modify the VG-Lite library 3.0.11_rev3 by applying the patch ``3.0.11_rev3.patch`` (see README.md near patch file for more information).
+ 	* Modify the VG-Lite library **3.0.11_rev3** by applying the patch ``3.0.11_rev3.patch`` (see README.md near patch file for more information).
 
 .. _section_cmodule_vglite_custom:
 
@@ -393,10 +373,6 @@ BSP with VG-Lite
 	* Modify or remove the C files ``display_dma.c``, ``display_frambuffer.c``, ``LLUI_DISPLAY_impl.c``, ``display_dma.c``, ``vglite_support.c`` and ``vglite_window.c``.
 
 .. _UI Pack 13.3.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.3.1/
-.. _C Module MicroUI 2.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/2.0.0/
-.. _C Module DMA2D 3.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.0.0/
-.. _C Module VGLite 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/3.0.0/
-.. _NXP i.MX RT500: https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/i-mx-rt-crossover-mcus/i-mx-rt500-crossover-mcu-with-arm-cortex-m33-dsp-and-gpu-cores:i.MX-RT500
 
 From 13.1.x to 13.2.x
 =====================
@@ -464,8 +440,6 @@ BSP with DMA2D
 
 .. _Front Panel Widgets 2.1.0: https://repository.microej.com/modules/ej/tool/frontpanel/widget/2.1.0/
 .. _UI Pack 13.1.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.1.0/
-.. _C Module MicroUI 1.1.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.1.1/
-.. _C Module DMA2D 2.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/2.1.0/
 
 From 12.x to 13.x
 =================
