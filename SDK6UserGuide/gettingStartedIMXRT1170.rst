@@ -136,7 +136,7 @@ The Virtual Device starts and executes the :guilabel:`AnimatedMascot` applicatio
   
    The Front Panel may be too big for your screen, that is because of the RK055HDMIPI4MA0 display resolution. You can scroll down to see the bottom of the display.
 
-   If you want to know more about the use of the :guilabel:`AnimatedMascot` usage, please have a look at its Readme.
+   If you want to know more about the use of the :guilabel:`AnimatedMascot` usage, please have a look at its ``README.md`` file.
 
 
 .. figure:: images/gettingStarted/well-done-mascot.png

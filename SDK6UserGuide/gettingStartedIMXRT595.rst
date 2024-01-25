@@ -144,7 +144,7 @@ The Virtual Device starts and executes the :guilabel:`Demo-Wearable-VG` applicat
 
 .. note::
   
-   If you want to know more about the use of the :guilabel:`Demo-Wearable-VG`, please have a look at its `Readme <https://github.com/MicroEJ/Demo-Wearable-VG/blob/master/watch-vg/README.md>`__.
+   If you want to know more about the use of the :guilabel:`Demo-Wearable-VG`, please have a look at its `README.md <https://github.com/MicroEJ/Demo-Wearable-VG/blob/master/watch-vg/README.md>`__ file.
 
 .. figure:: images/gettingStarted/well-done-mascot.png
    :alt: Well Done
