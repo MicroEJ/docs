@@ -52,7 +52,7 @@ IntelliJ IDEA is used on this Getting Started but feel free to use your favorite
 Set up the Application on your IDE
 ----------------------------------
 
-Import the project
+Import the Project
 ^^^^^^^^^^^^^^^^^^
 
 The first step is to import the :guilabel:`AnimatedMascot` Application into your IDE: 
@@ -173,7 +173,7 @@ This chapter takes approximately one hour and will take you through the steps to
 
 To complete this section, you may request a 30 days Evaluation License and install an activation key.
 
-Install the C toolchain
+Install the C Toolchain
 """""""""""""""""""""""
 
 The C toolchain must be installed, it is composed of the GNU ARM Embedded Toolchain, CMake and Make.
@@ -226,7 +226,7 @@ Under :guilabel:`Download` section, you can select the Setup program for the com
 By default, it will automatically add Make to your path.
 If not, you can manually add ``GnuWin32\bin`` folder to your path.
 
-Install the flashing tool
+Install the Flashing Tool
 """""""""""""""""""""""""
 
 .. note::
@@ -317,7 +317,7 @@ The gradle task deploys the Application in the BSP and then builds the BSP using
 
 The :guilabel:`AnimatedMascot` application is built and ready to be flashed on i.MX RT1170 Evaluation Kit once the hardware setup is completed.
 
-Flash the application on the i.MX RT1170 Evaluation Kit
+Flash the Application on the i.MX RT1170 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to flash the :guilabel:`AnimatedMascot` Application on i.MX RT1170 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.

@@ -62,7 +62,7 @@ For this Getting Started, the :guilabel:`Demo-Wearable-VG` Application will be u
 Set up the Application on your IDE
 ----------------------------------
 
-Import the project
+Import the Project
 ^^^^^^^^^^^^^^^^^^
 
 The first step is to import the :guilabel:`Demo-Wearable-VG` Application into your IDE: 
@@ -180,7 +180,7 @@ This chapter takes approximately one hour and will take you through the steps to
 
 To complete this section, you may request a 30 days Evaluation License and install an activation key.
 
-Install the C toolchain
+Install the C Toolchain
 """""""""""""""""""""""
 
 The C toolchain must be installed, it is composed of the GNU ARM Embedded Toolchain, CMake and Make.
@@ -233,7 +233,7 @@ Under :guilabel:`Download` section, you can select the Setup program for the com
 By default, it will automatically add Make to your path.
 If not, you can manually add ``GnuWin32\bin`` folder to your path.
 
-Install the flashing tool
+Install the Flashing Tool
 """""""""""""""""""""""""
 
 .. note::
