@@ -46,7 +46,7 @@ BSP without GPU
 
 * *[BSP project]*
 
-	* Optionally, implement ``UI_DRAWING_freeImageResources(MICROUI_Image* image)`` (single-output buffered image format) or ``UI_DRAWING_freeImageResources_X(MICROUI_Image* image)`` (mulitple-output buffered image formats, where `X` is the image format identifier) to free the resources associated with a buffered image when it is closed.
+	* Optionally, implement ``UI_DRAWING_freeImageResources(MICROUI_Image* image)`` (single-output buffered image format) or ``UI_DRAWING_freeImageResources_X(MICROUI_Image* image)`` (mulitple-output buffered image formats, where ``X`` is the image format identifier) to free the resources associated with a buffered image when it is closed.
 
 BSP with DMA2D
 """"""""""""""
@@ -180,7 +180,7 @@ BSP with NemaGFX
   
 * *[BSP project]*
 
-    * Add all C files available in ``src`` folder.
+	* Add all C files available in ``src`` folder.
 	* Configure the C project to include the ``inc`` folder.
 	* Read the comments of ``ui_drawing_nema_configuration.h`` and configures the C module.
 
@@ -309,7 +309,7 @@ BSP with VG-Lite
 * *[BSP project]*
 
   	* Migrate VG-Lite library to the version 3.0.15_rev4.
-  	* Modify the VG-Lite library 3.0.15_rev4 by applying the patch `3.0.15_rev4.patch` (see README.md near patch file for more information).
+  	* Modify the VG-Lite library 3.0.15_rev4 by applying the patch ``3.0.15_rev4.patch`` (see README.md near patch file for more information).
 
 .. _C Module MicroUI 2.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/2.0.1/
 .. _C Module DMA2D 3.0.2: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.0.2/
@@ -369,7 +369,7 @@ BSP with VG-Lite
 	* Read the comments of ``display_configuration.h`` and configures the C module.
 	* Add all C files available in ``src`` folder.
 	* Configure the C project to include the ``inc`` folder.
- 	* Modify the VG-Lite library 3.0.11_rev3 by applying the patch `3.0.11_rev3.patch` (see README.md near patch file for more information).
+ 	* Modify the VG-Lite library 3.0.11_rev3 by applying the patch ``3.0.11_rev3.patch`` (see README.md near patch file for more information).
 
 .. _section_cmodule_vglite_custom:
 
@@ -1041,7 +1041,7 @@ Front Panel
 	
     * *(a)* ``press`` methods are sending some MicroUI Command events ``UP``, ``DOWN``, ``LEFT``, ``RIGHT`` and ``SELECT``.
     * *(b)* ``repeat`` methods are sending same MicroUI Command events ``UP``, ``DOWN``, ``LEFT``, ``RIGHT`` and ``SELECT``.
-    * *(c )* ``release`` methods are sending nothing.
+    * *(c)* ``release`` methods are sending nothing.
     * *(d)* The MicroUI Command event generator name is ``JOYSTICK``.
 
     If only *(d)* is different: 
