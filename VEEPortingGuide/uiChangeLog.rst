@@ -25,18 +25,38 @@ MicroUI
 
 .. _MicroUI API 3.5.0: https://repository.microej.com/modules/ej/api/microui/3.4.0/
 
-13.7.2 (2023-12-21)
-===================
+Front Panel
+"""""""""""
 
-MicroUI
-"""""""
+**Added**
+
+* Add new APIs to manage several display buffer policies and refresh strategies (BRS):
+
+  * Add ``LLUIDisplay.getSource()``.
+  * Add ``LLUIDisplayImpl.notifyDirtyRegion()``.
+  * Add ``LLUIDisplayImpl.notifyDrawingRegion()``.
+  * Add ``LLUIDisplayImpl.getCurrentDrawingBuffer()``.
+  * Add ``MicroUIImage.requestReading()``
+
+**Changed**
+
+* Remove ``force`` parameter in ``LLUIDisplay.requestFlush()``
+* Remove all parameters in ``LLUIDisplayImpl.flush()`` and ``LLUIDisplayImpl.waitFlush()``
+* Extract ``MicroUIImageFormat`` and ``MicroUIImage`` and ``MicroUIGraphicsContext`` from ``LLUIPainter``.
 
 **Fixed**
 
 * Fix clip and drawn area computing in flush visualizer.
 
-Simulator
-"""""""""
+**Removed**
+
+* Remove ``MicroUIGraphicsContext.setDrawingLimits()``.
+
+13.7.2 (2023-12-21)
+===================
+
+MicroUI
+"""""""
 
 **Fixed**
 
