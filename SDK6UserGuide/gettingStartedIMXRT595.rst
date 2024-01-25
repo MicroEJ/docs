@@ -168,10 +168,10 @@ Run an Application on i.MX RT595 Evaluation Kit
 
 To deploy :guilabel:`Demo-Wearable-VG` application on your board, you will have to:
 
-* Setup your Environment (Toolchain, flashing-tool, hardware setup)
-* Get an :ref:`Evaluation License <sdk_eula>`
-* Build the Executable
-* Flash the board
+* Setup your Environment (Toolchain, flashing-tool, hardware setup).
+* Get an :ref:`Evaluation License <sdk_eula>`.
+* Build the Executable.
+* Flash the board.
 
 Environment Setup
 ^^^^^^^^^^^^^^^^^
