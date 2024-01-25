@@ -1,3 +1,5 @@
+.. include:: uiReplaces.rst
+
 .. _section_ui_changelog:
 
 =========
@@ -131,11 +133,6 @@ C Module NemaGFX
 
 XXX_TODO wrong links
 
-.. _C Module MicroUI 4.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.0.0/
-.. _C Module DMA2D 5.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/4.0.0/
-.. _C Module VGLite 8.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/6.0.0/
-.. _C Module NemaGFX 2.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.2.0/
-
 13.7.2 (2023-12-21)
 ===================
 
@@ -159,8 +156,6 @@ C Module NemaGFX
 **Fixed**
 
 * Fix the drawing status when a thick line is out-of-clip (results in an infinite loop).
-
-.. _C Module NemaGFX 1.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.2.0/
 
 13.7.0 (2023-10-23)
 ===================
@@ -253,11 +248,6 @@ C Module NemaGFX
 
 * Add the compatibility with UI Pack 13.7.
 
-.. _C Module MicroUI 3.1.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.1.1/
-.. _C Module DMA2D 4.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/4.1.0/
-.. _C Module VGLite 7.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/7.2.0/
-.. _C Module NemaGFX 1.1.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.1.0/
-
 [13.6.2] (2023-09-20)
 =====================
 
@@ -290,8 +280,6 @@ C Module VGLite
 * Fix the use of the define ``VG_BLIT_WORKAROUND`` (useless).
 * Fix the GPU deactivation when a drawing is not performed for any reason.
 * VG-Lite ``3.0.15_rev4``: Fix the bounding box of the ``vg_lite_blit()`` given to the MicroEJ Graphics Engine when the define ``VG_BLIT_WORKAROUND`` is set (the function ``vg_lite_blit()`` is not used by default).
-
-.. _C Module VGLite 7.1.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/7.1.0/
 
 [13.6.1] (2023-07-26)
 =====================
@@ -360,11 +348,6 @@ C Module NemaGFX
 * New C Module: `C Module NemaGFX 1.0.0`_.
 * Compatible with UI Pack 13.5.x and 13.6.0.
 
-.. _C Module VGLite 7.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/7.0.0/
-.. _C Module NemaGFX 1.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.0.0/
-.. _C Module RT500 7.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-mimxrt595-evk/7.0.0
-.. _NXP i.MX RT500: https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/i-mx-rt-crossover-mcus/i-mx-rt500-crossover-mcu-with-arm-cortex-m33-dsp-and-gpu-cores:i.MX-RT500
-
 [13.5.1] (2023-06-08)
 =====================
 
@@ -392,8 +375,6 @@ C Module VGLite
 **Fixed**
 
 * Fix performing drawings when the clip is disabled.
-
-.. _C Module VGLite 6.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/6.0.1/
 
 [13.5.0] (2023-05-03)
 =====================
@@ -518,11 +499,6 @@ C Module VGLite
 
 * Remove the notion of ``vg_drawer`` and the define ``VGLITE_USE_MULTIPLE_DRAWERS`` (replaced by multiple Graphics Context output formats).
 
-.. _C Module MicroUI 3.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.0.0/
-.. _C Module DMA2D 3.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.1.0/
-.. _C Module DMA2D 4.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/4.0.0/
-.. _C Module VGLite 6.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/6.0.0/
-
 [13.4.1] (2023-02-06)
 =====================
 	
@@ -554,9 +530,6 @@ C Module VGLite
 * New version: `C Module VGLite 5.0.1`_.
 * Compatible with VG-Lite library ``3.0.15_rev4``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 5.0.1`_ changelog for more information.
-
-.. _C Module DMA2D 3.0.2: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.0.2/
-.. _C Module VGLite 5.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/5.0.1/
 
 [13.4.0] - 2022-12-13
 =====================
@@ -628,10 +601,6 @@ C Module VGLite
 * New version: `C Module VGLite 4.0.0`_.
 * Compatible with VG-Lite library ``3.0.15_rev4``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 4.0.0`_ changelog for more information.
-
-.. _C Module MicroUI 2.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/2.0.1/
-.. _C Module DMA2D 3.0.2: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.0.2/
-.. _C Module VGLite 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/4.0.0/
 
 [13.3.1] - 2022-09-09
 =====================
@@ -752,11 +721,6 @@ C Module VGLite
 * Compatible with VG-Lite library ``3.0.11_rev3``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 3.0.0`_ changelog for more information.
 
-.. _C Module MicroUI 2.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/2.0.0/
-.. _C Module DMA2D 2.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/2.1.0/
-.. _C Module DMA2D 3.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.0.0/
-.. _C Module VGLite 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/3.0.0/
-
 [13.2.0] - 2022-05-05
 =====================
 
@@ -855,9 +819,6 @@ C Module VGLite
 
 * Provides the :ref:`VGLite C module <section_ui_cco>` 2.0.0 to target the NXP CPU that provides the Vivante VG-Lite accelerator.
 
-.. _C Module DMA2D 1.0.8: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.8/
-.. _C Module DMA2D 2.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/2.0.0/
-
 BSP
 """
 	
@@ -952,8 +913,6 @@ C Module MicroUI
 
 * Fix comments in ``LLUI_PAINTER_impl.c`` and ``LLDW_PAINTER_impl.c``.
 * Ignore a drawing when at least one scaling factor is equal to zero.
-
-.. _C Module MicroUI 1.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.1.0/
 
 [13.0.7] - 2021-07-30
 =====================
@@ -1109,9 +1068,6 @@ C Module DMA2D
 """"""""""""""
 
 * New version: `C Module DMA2D 1.0.6`_.
-
-.. _C Module MicroUI 1.0.3: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.0.3/
-.. _C Module DMA2D 1.0.6: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.6/
 
 [13.0.2] - 2020-10-02
 =====================
