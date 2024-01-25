@@ -16,7 +16,7 @@ MicroUI
 
 **Changed**
 
-- Change the semantic of the content of the drawing buffer after a flush: the *past* is not systematically restored.
+* Change the semantic of the content of the drawing buffer after a flush: the *past* is not systematically restored.
 
 **Fixed**
 
@@ -33,14 +33,14 @@ MicroUI
 
 **Fixed**
 
-- Fix the drawing of thick faded circle arcs.
+* Fix clip and drawn area computing in flush visualizer.
 
 Simulator
 """""""""
 
 **Fixed**
 
-- Fix the management of KF feature's fonts.
+* Fix the drawing of thick faded circle arcs.
 
 C Module NemaGFX
 """"""""""""""""
@@ -68,9 +68,9 @@ MicroUI
 
 **Added**
 
-- Add the pre-multiplied image formats ``ARGB8888_PRE``, ``ARGB1555_PRE`` and ``ARGB4444_PRE``.
-- Add the possibility to free third-party resources associated with images.
-- Add some traces when debugging the SNI resources.
+* Add the pre-multiplied image formats ``ARGB8888_PRE``, ``ARGB1555_PRE`` and ``ARGB4444_PRE``.
+* Add the possibility to free third-party resources associated with images.
+* Add some traces when debugging the SNI resources.
 
 .. _MicroUI API 3.4.0: https://repository.microej.com/modules/ej/api/microui/3.4.0/
 
@@ -79,33 +79,33 @@ Front Panel
 
 **Added**
 
-- Add the pre-multiplied image formats ``ARGB8888_PRE``, ``ARGB1555_PRE`` and ``ARGB4444_PRE``.
+* Add the pre-multiplied image formats ``ARGB8888_PRE``, ``ARGB1555_PRE`` and ``ARGB4444_PRE``.
 
 Image Generator
 """""""""""""""
 
 **Changed**
 
-- Do not enable the cache when generating external resources.
+* Do not enable the cache when generating external resources.
 
 **Fixed**
 
-- Do not use cached images when there is no `.images.list` file.
-- Do not use cached images when a VEE Port property has changed.
-- Fix the handling of backslashes in list files.
-- Remove debug log in script.
+* Do not use cached images when there is no ``.images.list`` file.
+* Do not use cached images when a VEE Port property has changed.
+* Fix the handling of backslashes in list files.
+* Remove debug log in script.
 
 Font Generator
 """"""""""""""
 
 **Changed**
 
-- Do not enable the cache when generating external resources.
+* Do not enable the cache when generating external resources.
 
 **Fixed**
 
-- Do not use cached fonts when a VEE Port property has changed.
-- Fix the handling of backslashes in list files.
+* Do not use cached fonts when a VEE Port property has changed.
+* Fix the handling of backslashes in list files.
 
 C Module MicroUI
 """"""""""""""""
@@ -161,14 +161,14 @@ Image Generator
 	
 **Fixed**
 
-- Fix handling zip/jar file entries in the cache.
+* Fix handling zip/jar file entries in the cache.
 
 Font Generator
 """"""""""""""
 	
 **Fixed**
 
-- Fix handling zip/jar file entries in the cache.
+* Fix handling zip/jar file entries in the cache.
 
 C Module VGLite
 """""""""""""""
@@ -177,13 +177,13 @@ C Module VGLite
 
 **Added**
 
-* Add the compatibility with VG-Lite `3.0.15_rev7` (add a .patch file).
+* Add the compatibility with VG-Lite ``3.0.15_rev7`` (add a .patch file).
 
 **Fixed**
 
-- Fix the use of the define ``VG_BLIT_WORKAROUND`` (useless).
-- Fix the GPU deactivation when a drawing is not performed for any reason.
-- VG-Lite `3.0.15_rev4`: Fix the bounding box of the ``vg_lite_blit()`` given to the MicroEJ Graphics Engine when the define ``VG_BLIT_WORKAROUND`` is set (the function ``vg_lite_blit()`` is not used by default).
+* Fix the use of the define ``VG_BLIT_WORKAROUND`` (useless).
+* Fix the GPU deactivation when a drawing is not performed for any reason.
+* VG-Lite ``3.0.15_rev4``: Fix the bounding box of the ``vg_lite_blit()`` given to the MicroEJ Graphics Engine when the define ``VG_BLIT_WORKAROUND`` is set (the function ``vg_lite_blit()`` is not used by default).
 
 .. _C Module VGLite 7.1.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/7.1.0/
 
@@ -195,7 +195,7 @@ MicroUI
 
 **Fixed**
 
-- Fix creating a BufferedImage when traces are enabled.
+* Fix creating a BufferedImage when traces are enabled.
 
 [13.6.0] (2023-07-17)
 =====================
@@ -207,12 +207,12 @@ MicroUI
 
 **Added**
 
-- Add a flag stating that an undefined character was drawn.
+* Add a flag stating that an undefined character was drawn.
 
 **Fixed**
 
-- Fix the Java compiler version used to build the MicroUI extension class to be compatible with the JDK 11.
-- Fix the drawing of faded arcs and ellipses.
+* Fix the Java compiler version used to build the MicroUI extension class to be compatible with the JDK 11.
+* Fix the drawing of faded arcs and ellipses.
 
 .. _MicroUI API 3.3.0: https://repository.microej.com/modules/ej/api/microui/3.3.0/
 
@@ -221,21 +221,21 @@ Front Panel
 
 **Added**
 
-- Add the drawing log flag ``DRAWING_LOG_MISSING_CHARACTER``, stating that an undefined character was drawn.
+* Add the drawing log flag ``DRAWING_LOG_MISSING_CHARACTER``, stating that an undefined character was drawn.
 
 Image Generator
 """""""""""""""
 
 **Changed**
 
-- Use a cache to avoid generating images for each launch.
+* Use a cache to avoid generating images for each launch.
 
 Font Generator
 """"""""""""""
 
 **Changed**
 
-- Use a cache to avoid generating fonts for each launch.
+* Use a cache to avoid generating fonts for each launch.
 
 C Module VGLite
 """""""""""""""
@@ -266,15 +266,15 @@ MicroUI
 
 **Fixed**
 
-- Fix the compatibility with MicroEJ Architecture 8 (SOAR error with internal MicroUI system properties file).
+* Fix the compatibility with MicroEJ Architecture 8 (SOAR error with internal MicroUI system properties file).
 
 Front Panel
 """""""""""
 
 **Fixed**
 
-- Fix consecutive calls to ``LLUIDisplay.newMicroUIImage()`` throwing an exception.
-- Allow overriding the display drawer with a service or in a Front Panel widget.
+* Fix consecutive calls to ``LLUIDisplay.newMicroUIImage()`` throwing an exception.
+* Allow overriding the display drawer with a service or in a Front Panel widget.
 
 C Module VGLite
 """""""""""""""
@@ -299,13 +299,13 @@ MicroUI
 
 **Added**
 
-- Add multi BufferedImage image formats management.
-- Add custom RAM Image image formats management.
-- Add drawing logs flags management.
+* Add multi BufferedImage image formats management.
+* Add custom RAM Image image formats management.
+* Add drawing logs flags management.
 
 **Fixed**
 
-- Fix ellipse fading.
+* Fix ellipse fading.
 
 .. _MicroUI API 3.2.0: https://repository.microej.com/modules/ej/api/microui/3.2.0/
 
@@ -314,7 +314,7 @@ Drawing
 
 **Fixed**
 
-- Fix the position of arc caps.
+* Fix the position of arc caps.
 
 Front Panel
 """""""""""
@@ -329,14 +329,14 @@ Front Panel
 
 **Changed**
 
-* Merge `DWDrawing` in `UIDrawing`.
-* Turn `UIDrawing` as a service to handle drawings for a specific format.
+* Merge ``DWDrawing`` in ``UIDrawing``.
+* Turn ``UIDrawing`` as a service to handle drawings for a specific format.
 * Change the mechanism to get the software drawer.
-* Change the MicroUI image format `MICROUI_IMAGE_FORMAT_LCD` by `MICROUI_IMAGE_FORMAT_DISPLAY`.
+* Change the MicroUI image format ``MICROUI_IMAGE_FORMAT_LCD`` by ``MICROUI_IMAGE_FORMAT_DISPLAY``.
 
 **Removed**
 
-* Remove the interfaces `UIDrawingDefault` and `DWDrawingDefault` (implement the interface `UIDrawing` instead).
+* Remove the interfaces ``UIDrawingDefault`` and ``DWDrawingDefault`` (implement the interface ``UIDrawing`` instead).
 
 Image Generator
 """""""""""""""
@@ -350,18 +350,18 @@ LLAPIs
 	
 **Added**
 
-* Add some functions in `LLUI_DISPLAY.h` to manage the MicroUI Drawing Log flags.
-* Add some functions in `LLUI_DISPLAY.h` to change the MicroUI clip and colors.
+* Add some functions in ``LLUI_DISPLAY.h`` to manage the MicroUI Drawing Log flags.
+* Add some functions in ``LLUI_DISPLAY.h`` to change the MicroUI clip and colors.
 * Add the notion of "drawer" to identify the available drawer for a given MicroUI Image format.
 
 **Changed**
 
-* Change the MicroUI image format `MICROUI_IMAGE_FORMAT_LCD` by `MICROUI_IMAGE_FORMAT_DISPLAY`.
-* Change the signature of `xx_drawing_soft.h`: all functions return a drawing status. 
+* Change the MicroUI image format ``MICROUI_IMAGE_FORMAT_LCD`` by ``MICROUI_IMAGE_FORMAT_DISPLAY``.
+* Change the signature of ``xx_drawing_soft.h``: all functions return a drawing status. 
 
 **Removed**
 
-* Remove `ui_drawing.h` and `dw_drawing.h` (move them in MicroUI C Module).
+* Remove ``ui_drawing.h`` and ``dw_drawing.h`` (move them in MicroUI C Module).
 
 C Module MicroUI
 """"""""""""""""
@@ -397,7 +397,7 @@ C Module VGLite
 **Added**
 
 * Add the compatibility with multiple Graphics Context output formats.
-* Add (or move) some utility functions in `display_vglite`.
+* Add (or move) some utility functions in ``display_vglite``.
 * Add incident reporting with drawing log flags.
 
 **Fixed**
@@ -407,7 +407,7 @@ C Module VGLite
   
 **Removed**
 
-* Remove the notion of `vg_drawer` and the define `VGLITE_USE_MULTIPLE_DRAWERS` (replaced by multiple Graphics Context output formats).
+* Remove the notion of ``vg_drawer`` and the define ``VGLITE_USE_MULTIPLE_DRAWERS`` (replaced by multiple Graphics Context output formats).
 
 .. _C Module MicroUI 3.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.0.0/
 .. _C Module DMA2D 3.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.1.0/
@@ -600,8 +600,8 @@ C Module MicroUI
 
 **Changed**
 
-* Improve `drawImage`: identify faster use cases (copy an image and draw a region with overlap).
-* Use new UI Pack LLAPI: `UI_DRAWING_copyImage` and `UI_DRAWING_drawRegion`. 
+* Improve ``drawImage``: identify faster use cases (copy an image and draw a region with overlap).
+* Use new UI Pack LLAPI: ``UI_DRAWING_copyImage`` and ``UI_DRAWING_drawRegion``. 
 * Use new MicroUI's native functions declaration (not backward compatible).
 
 C Module DMA2D for UI Pack 13.2.0 (maintenance)
@@ -628,7 +628,7 @@ C Module DMA2D for UI Pack 13.3.0
 
 **Added**
 
-* Add the implementation of `UI_DRAWING_drawRegion`.
+* Add the implementation of ``UI_DRAWING_drawRegion``.
 
 **Removed**
 
@@ -837,7 +837,7 @@ C Module MicroUI
 
 **Fixed**
 
-* Fix comments in `LLUI_PAINTER_impl.c` and `LLDW_PAINTER_impl.c`.
+* Fix comments in ``LLUI_PAINTER_impl.c`` and ``LLDW_PAINTER_impl.c``.
 * Ignore a drawing when at least one scaling factor is equal to zero.
 
 .. _C Module MicroUI 1.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.1.0/
