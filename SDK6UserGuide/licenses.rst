@@ -56,7 +56,7 @@ The table below summarizes where the license is checked.
 SDK EULA Acceptation
 --------------------
 
-The use of MicroEJ SDK 6 requires to accept the :ref:`sdk6_eula`.
+The use of MICROEJ SDK 6 requires to accept the :ref:`sdk6_eula`.
 If the license is not accepted, the following message is displayed when executing a Gradle task::
 
   > The MICROEJ SDK End-User License Agreement (EULA) must be accepted before it can start.
