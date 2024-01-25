@@ -36,6 +36,125 @@ Front Panel
 .. _Front Panel Widgets 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/3.0.0/
 .. _UI Pack 14.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.7.2/
 
+
+BSP Without GPU
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+	* Fetch the `C Module MicroUI 4.0.0`_.
+
+* *[BSP project]*
+
+	* Delete the VEE Port ``include`` folder (often ``/platform/inc``).
+	* Delete the properties file ``cco_microui.properties``.
+	* In the C project configuration, include the new C files ``ui_display_brs.c``, ``ui_display_brs_legacy.c``, ``ui_display_brs_predraw.c``, ``ui_display_brs_single.c`` and ``ui_rect_util.c``.
+	* Read the documentation about the display buffer refresh strategy (BRS) XXX_TODO link to BRS chapter; then configure the C module by setting the right configuration in ``ui_display_brs_configuration.h``.
+   	* Comment the line ``#error "This header must [...]"``.
+	* The following table XXX_TODO describes the next step according to the display connection with the MCU.
+	* XXX_TODO laius vers les autres chapters
+
+* *[Display "Copy"]*
+
+	* Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_SINGLE``.
+	* Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``1``.
+	* Uncomment the define ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE``.
+	* Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
+		
+		* Store (in a static field) the rectangle to flush (the array contains only one rectangle).
+		* Store (in a static field) the flush identifier.
+		* Start the sending of back buffer data (immediately or wait the LCD tearing signal interrupt).
+		* Remove the returned value (the back buffer address).
+	
+	* In the 
+
+* *[Display "Swap double buffer"]*
+
+	* Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
+	* Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``2``.
+	* Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
+		
+		* Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
+		* Store (in a static field) the flush identifier.
+		* Enable the LCD *swap* interrupt and ask a swap of the frame and back buffers.
+		* Remove the static fields relative to ``ymin`` and ``ymax`` (now useless).
+		* Remove the returned value (the back buffer address).
+	
+	* Remove all code relative to the post-flush restoration:
+  
+        * Copy in software (``memcpy``): Remove the display copy task (and its associated static fields such as semaphores).
+        * Copy in hardware (DMA):  Remove the use of the DMA (and delete the DMA interrupt function).
+  
+	* Change the implementation of the LCD *swap* interrupt:
+
+    	* Remove all code relative to the post-flush restoration (the unlocking of the copy task or the launch of a DMA).
+    	* Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier.
+
+XXX stop here
+
+* *[Display "Swap triple buffer"]*
+
+	* Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
+	* Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``3``.
+
+* *[Display "Copy and Swap"]*
+
+	* Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
+	* Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``2``.
+	* Uncomment the define ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE``.
+
+		
+	
+	* Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
+		
+		* Store (in a static field) the rectangle to flush (the array contains only one rectangle).
+		* Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
+		* Store (in a static field) the flush identifier.
+		* Start the sending of back buffer data (LCD on a SPI bus) or enable the LCD VSYNC interrupt.
+		* Remove the returned value (the new back buffer address).
+	* Remove all code relative to the post-flush restoration.
+	* In the LCD post-flush interrupt or task, 
+		- Remove the call to the post-flush restoration (if any).
+		- Remove the call to ``LLUI_DISPLAY_flushDone()`` (if any).
+		- Call ``LLUI_DISPLAY_setDrawingBuffer()``: give the flush identifier saved in the implementation of ``LLUI_DISPLAY_IMPL_flush()`` and the new back buffer address.   
+
+
+BSP with DMA2D
+""""""""""""""
+
+* *[VEE Port configuration project]*
+
+	* Fetch the `C Module DMA2D 5.0.0`_.
+
+* *[BSP project]*
+
+	* Follow the migration steps of "BSP without GPU".
+
+BSP with VG-Lite
+""""""""""""""""
+
+* *[VEE Port configuration project]*
+
+	* Fetch the `C Module VGLite 8.0.0`_.
+
+* *[BSP project]*
+
+	* Follow the migration steps of "BSP without GPU".
+	* Migrate VG-Lite library to the version **3.0.15_rev7**.
+	* Modify the VG-Lite library **3.0.15_rev7** by applying the patch ``3.0.15_rev7.patch`` (see README.md near patch file for more information).
+
+BSP with NemaGFX
+""""""""""""""""
+
+* *[VEE Port configuration project]*
+
+	* Fetch the `C Module NemaGFX 2.0.0`_.
+
+* *[BSP project]*
+
+	* Follow the migration steps of "BSP without GPU".
+	* XXX Review all options of ``ui_drawing_nema_configuration.h`` (version ``2``).
+
 From 13.6.x to 13.7.x
 =====================
 

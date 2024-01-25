@@ -10,6 +10,7 @@
 .. _C Module MicroUI 3.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.0.0/
 .. _C Module MicroUI 2.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/2.0.1/
 .. _C Module MicroUI 2.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/2.0.0/
+.. _C Module MicroUI 1.1.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.1.1/
 .. _C Module MicroUI 1.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.1.0/
 .. _C Module MicroUI 1.0.3: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.0.3/
 
