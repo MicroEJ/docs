@@ -21,7 +21,12 @@ MicroUI
 **Fixed**
 
 * Fix the drawing of thick faded circle arcs.
-* Fix some linker issues on some Architectures.
+* Fix some linker issues on some Architectures:
+
+  * Fix invalid linker issues (when MicroUI is not used or if another allocator is used).
+  * Fix custom LCD format on VEE Port with ASLR mode (example: X86 with -pie option).
+  * Remove some absolute symbols.
+  * Replace sections ``.text`` by ``.rodata``.
 
 .. _MicroUI API 3.5.0: https://repository.microej.com/modules/ej/api/microui/3.4.0/
 
@@ -51,6 +56,85 @@ Front Panel
 **Removed**
 
 * Remove ``MicroUIGraphicsContext.setDrawingLimits()``.
+
+LLAPIs
+""""""
+	
+**Added**
+
+* Add the possibility to log external events in the MicroUI event group.
+* Add some functions in ``LLUI_DISPLAY.h`` and ``LLUI_DISPLAY_impl.h`` to manage the display buffer refresh strategy (BRS):
+
+  * ``LLUI_DISPLAY_get_source_image()``.
+  * ``LLUI_DISPLAY_getImageBPP()`` and ``LLUI_DISPLAY_getFormatBPP()``.
+  * ``LLUI_DISPLAY_IMPL_refresh()``. 
+  * ``LLUI_DISPLAY_IMPL_notify_drawing_region()``. 
+  * ``LLUI_DISPLAY_IMPL_notify_dirty_region()``. 
+  * ``LLUI_DISPLAY_setDrawingBuffer()``: it replaces ``LLUI_DISPLAY_flushDone()``.
+
+**Changed**
+
+* Change the signature of the function ``LLUI_DISPLAY_requestFlush()``: remove the boolean ``force`` (not backward compatible). 
+* Change the signature of the function ``LLUI_DISPLAY_IMPL_flush()``: give a list of rectangles and a flush identifier.
+
+**Removed**
+
+* Remove the function ``LLUI_DISPLAY_flushDone()``: replaced by ``LLUI_DISPLAY_setDrawingBuffer()``.
+* Remove the function  ``LLUI_DISPLAY_setDrawingLimits()``.
+* Remove the functions ``LLUI_DISPLAY_logDrawingStart()`` and ``LLUI_DISPLAY_logDrawingEnd()``: use standard logger instead.
+
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 4.0.0`_.
+
+**Added**
+
+* Add the possibility to log external events in the MicroUI event group.
+* Add the buffer refresh strategies (BRS) Legacy, Single and Predraw.
+* Add some utility functions to manipulate rectangles and collections of rectangles.
+
+C Module DMA2D
+""""""""""""""
+
+* New version: `C Module DMA2D 5.0.0`_.
+
+**Added**
+
+* Add the compatibility with UI Pack 14.0.
+* Add the function ``UI_DRAWING_DMA2D_memcpy_callback()`` to be notified about the end of the memory copy.
+* Add the support of the display Buffer Refresh Strategies (BRS) ``PREDRAW`` and ``SINGLE``.
+* Add a configuration version in ``ui_drawing_dma2d_configuration`` (``1``).
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 8.0.0`_.
+* Compatible with VG-Lite library ``3.0.15_rev7``.
+
+**Added**
+
+* Add the compatibility with UI Pack 14.0.
+  
+**Removed**
+
+* Remove the compatibility with the VG-Lite library ``3.0.15_rev4``.
+
+C Module NemaGFX
+""""""""""""""""
+
+* New version: `C Module NemaGFX 2.0.0`_.
+
+**Added**
+
+* Add the compatibility with UI Pack 14.0.
+
+XXX_TODO wrong links
+
+.. _C Module MicroUI 4.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.0.0/
+.. _C Module DMA2D 5.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/4.0.0/
+.. _C Module VGLite 8.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/6.0.0/
+.. _C Module NemaGFX 2.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.2.0/
 
 13.7.2 (2023-12-21)
 ===================
@@ -149,6 +233,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 7.2.0`_.
+* Compatible with VG-Lite libraries ``3.0.15_rev4`` and ``3.0.15_rev7``.
 
 **Added**
 
@@ -194,6 +279,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 7.1.0`_.
+* Compatible with VG-Lite libraries ``3.0.15_rev4`` and ``3.0.15_rev7``.
 
 **Added**
 
@@ -261,6 +347,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 7.0.0`_.
+* Compatible with VG-Lite library ``3.0.15_rev4``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 7.0.0`_ changelog for more information.
 * The C Module has been divided in two parts to extract the `NXP i.MX RT500`_ specific support from the generic C Module for VG-Lite: 
 
@@ -300,6 +387,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 6.0.1`_.
+* Compatible with VG-Lite library ``3.0.15_rev4``.
 
 **Fixed**
 
@@ -413,6 +501,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 6.0.0`_.
+* Compatible with VG-Lite library ``3.0.15_rev4``.
 
 **Added**
 
@@ -463,6 +552,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 5.0.1`_.
+* Compatible with VG-Lite library ``3.0.15_rev4``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 5.0.1`_ changelog for more information.
 
 .. _C Module DMA2D 3.0.2: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.0.2/
@@ -536,6 +626,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 4.0.0`_.
+* Compatible with VG-Lite library ``3.0.15_rev4``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 4.0.0`_ changelog for more information.
 
 .. _C Module MicroUI 2.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/2.0.1/
@@ -658,6 +749,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 3.0.0`_.
+* Compatible with VG-Lite library ``3.0.11_rev3``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 3.0.0`_ changelog for more information.
 
 .. _C Module MicroUI 2.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/2.0.0/
@@ -757,6 +849,7 @@ C Module VGLite
 """""""""""""""
 
 * New C Module: C Module VGLite 2.0.0.
+* Compatible with VG-Lite library ``3.0.11_rev3``.
 
 **Added**
 
