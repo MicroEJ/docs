@@ -34,7 +34,7 @@ Starting MicroUI
    
    .. note::
 
-    If you have several platforms you will be asked which to use.
+    If you have several VEE Ports you will be asked which to use.
 
    .. image:: images/simulator.png
     :align: center

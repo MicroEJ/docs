@@ -30,13 +30,19 @@ Start the IDE for the First Time
 
       If you are not familiar with MICROEJ repositories, select the default and press OK.
 
-Prepare Platform Sources
+Prepare VEE Port Sources
 ------------------------
 
-#. Download and unzip the platform sources for STM32F7508-DK by clicking on :guilabel:`Download` > :guilabel:`Download ZIP`: 
-   `Go to the Github repository <https://github.com/MicroEJ/Platform-STMicroelectronics-STM32F7508-DK/tree/2.2.0>`__.
-#. Follow the README to import the platform sources, activate your license and build your platform, in the Platform Setup section.
-#. Once all the steps of the platform setup are done, a new Java project can be created.
+1. Get the VEE Port sources from GitHub for STM32F7508-DK, open a terminal on your workstation and run the following commands:
+
+  .. code-block:: sh
+  
+     git clone --recursive https://github.com/MicroEJ/VEEPort-STMicroelectronics-STM32F7508-DK.git
+     cd VEEPort-STMicroelectronics-STM32F7508-DK
+     git checkout tags/2.2.0
+
+2. Follow the README to import the VEE Port sources, activate your license and build your VEE Port, in the VEE Port Setup section.
+3. Once all the steps of the VEE Port setup are done, a new Java project can be created.
 
 Create a New Project
 --------------------
