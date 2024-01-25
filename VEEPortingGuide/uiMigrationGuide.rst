@@ -18,7 +18,7 @@ Front Panel
   
      <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
 
-.. _Front Panel Widgets 4.0.0: https://forge.microej.com/ui/native/microej-developer-repository-release/ej/tool/frontpanel/widget/3.0.0/
+.. _Front Panel Widgets 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/3.0.0/
 .. _UI Pack 14.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.7.2/
 
 From 13.6.x to 13.7.x
@@ -37,15 +37,15 @@ Front Panel
 
 .. _UI Pack 13.7.2: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.7.2/
 
-BSP
-"""
+BSP without GPU
+"""""""""""""""
 
 * *[VEE Port configuration project]*
 
-  * Fetch C Module MicroUI 3.1.0.
+	* Fetch the `C Module MicroUI 3.1.1`_.
 
 * *[BSP project]*
-   
+
 	* Optionally, implement ``UI_DRAWING_freeImageResources(MICROUI_Image* image)`` (single-output buffered image format) or ``UI_DRAWING_freeImageResources_X(MICROUI_Image* image)`` (mulitple-output buffered image formats, where `X` is the image format identifier) to free the resources associated with a buffered image when it is closed.
 
 BSP with DMA2D
@@ -53,21 +53,39 @@ BSP with DMA2D
 
 * *[VEE Port configuration project]*
 
-	* Fetch C Module Display-DMA2D 4.1.0.
+	* Fetch the `C Module DMA2D 4.1.0`_.
+
+* *[BSP project]*
+
+	* Follow the migration steps of "BSP without GPU".
 
 BSP with VG-Lite
 """"""""""""""""
 
 * *[VEE Port configuration project]*
 
-	* Fetch C Module MicroUI-VGLite 7.2.0.
+	* Fetch the `C Module VGLite 7.2.0`_.
+
+* *[BSP project]*
+
+	* Follow the migration steps of "BSP without GPU".
 
 BSP with NemaGFX
 """"""""""""""""
 
 * *[VEE Port configuration project]*
 
-	* Fetch C Module MicroUI-VGLite 1.1.0.
+	* Fetch the `C Module NemaGFX 1.2.0`_.
+
+* *[BSP project]*
+
+	* Follow the migration steps of "BSP without GPU".
+	* Review all options of ``ui_drawing_nema_configuration.h`` (version ``2``).
+
+.. _C Module MicroUI 3.1.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.1.1/
+.. _C Module DMA2D 4.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/4.1.0/
+.. _C Module VGLite 7.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/7.2.0/
+.. _C Module NemaGFX 1.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.2.0/
 
 From 13.5.x to 13.6.x
 =====================
@@ -89,7 +107,7 @@ Front Panel
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
 
-.. _Front Panel Widgets 3.0.0: https://forge.microej.com/ui/native/microej-developer-repository-release/ej/tool/frontpanel/widget/3.0.0/
+.. _Front Panel Widgets 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/3.0.0/
 .. _UI Pack 13.6.2: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.6.2/
 
 .. _section_ui_migrationguide_13.6_vglite:
@@ -101,8 +119,8 @@ These steps are for a VEE Port that manages its own implementation of ``LLUI_DIS
 
 * *[VEE Port configuration project]*
 
-	* Fetch C Module MicroUI-VGLite 7.1.0.
-	* (optional) Fetch C Module MicroUI-Mimxrt595-EVK 7.0.0.
+	* Fetch the `C Module VGLite 7.1.0`_.
+	* (optional) Fetch `C Module RT500 7.0.0`_
   
 * *[BSP project]*
 
@@ -136,8 +154,6 @@ These steps are for a VEE Port that manages its own implementation of ``LLUI_DIS
 	* Change all calls to ``VGLITE_PATH_xxx()`` functions to ``UI_DRAWING_VGLITE_PATH_xxx()`` functions.
 	* Change all calls to ``DISPLAY_UTILS_xxx()`` functions to ``UI_VGLITE_xxx()`` functions.
 
-* Build the VEE Port and the BSP.
-
 .. _section_ui_migrationguide_13.6_mimxrt595evk:
 
 BSP With MCU i.MX RT595
@@ -147,15 +163,30 @@ These steps are for a VEE Port that uses the implementation of ``LLUI_DISPLAY_im
 
 * *[VEE Port configuration project]*
 
-	* Fetch C Module MicroUI-VGLite 7.1.0.
-	* Fetch C Module MicroUI-Mimxrt595-EVK 7.0.0.
+	* Fetch the `C Module VGLite 7.1.0`_.
+	* Fetch `C Module RT500 7.0.0`_
   
 * *[BSP project]*
 
 	* Follow the steps of :ref:`section_ui_migrationguide_13.6_vglite` (described above) except the calls to ``UI_VGLITE_init()`` and ``UI_VGLITE_IRQHandler()``.
 	* Implement ``DISPLAY_DMA_IMPL_notify_dma_xxx()`` instead of ``DISPLAY_IMPL_notify_dma_xxx()``.
 
-* Build the VEE Port and the BSP.
+BSP with NemaGFX
+""""""""""""""""
+
+* *[VEE Port configuration project]*
+
+	* Fetch the `C Module NemaGFX 1.0.0`_.
+  
+* *[BSP project]*
+
+    * Add all C files available in ``src`` folder.
+	* Configure the C project to include the ``inc`` folder.
+	* Read the comments of ``ui_drawing_nema_configuration.h`` and configures the C module.
+
+.. _C Module VGLite 7.1.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/7.1.0/
+.. _C Module RT500 7.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-mimxrt595-evk/7.0.0
+.. _C Module NemaGFX 1.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.0.0/
 
 From 13.4.x to 13.5.x
 =====================
@@ -186,7 +217,7 @@ BSP without GPU
 
 * *[VEE Port configuration project]*
 
-  	* Fetch UI Pack 13.5.1 and C Module MicroUI 3.0.0.
+	* Fetch the `C Module MicroUI 3.0.0`_.
 
 * *[BSP project]*
 
@@ -194,35 +225,37 @@ BSP without GPU
 	* Delete the properties file ``cco_microui.properties``.
 	* In the C project configuration, include the new C files ``ui_drawing.c``, ``ui_image_drawing.c`` and ``ui_drawing_stub.c``.
 
-* Build the VEE Port and the BSP.
-
 BSP with DMA2D
 """"""""""""""
 
 * Follow the migration steps of "BSP without GPU".
 * *[VEE Port configuration project]*
 
-	* Fetch C Module Display-DMA2D 4.0.0.
+	* Fetch the `C Module DMA2D 4.0.0`_.
 
 * *[BSP project]*
 
 	* Delete the properties file ``cco_display-dma2d.properties``.
+	* Read the comments about the cache in ``drawing_dma2d_configuration.h``.
+	* Uncomment the expected define ``DRAWING_DMA2D_CACHE_MANAGEMENT`` (enable or disable the cache management).
 	* Delete the C files ``drawing_dma2d.h`` and  ``drawing_dma2d.c`` and remove them from the C project configuration.
 	* In the C project configuration, include the new C file ``ui_drawing_dma2d.c``.
 	* Replace the import ``drawing_dma2d.h`` by ``ui_drawing_dma2d.h``.
 	* Replace the calls to functions ``DRAWING_DMA2D_xxx()`` by ``UI_DRAWING_DMA2D_xxx()``.
-
-* Build the VEE Port and the BSP.
 
 .. _section_ui_migrationguide_13.5_vglite:
 
 BSP with VG-Lite
 """"""""""""""""
 
+.. note:: 
+	* The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
+	* The compatible VG-Lite library version is **3.0.15_rev4**. 
+
 * Follow the migration steps of "BSP without GPU".
 * *[VEE Port configuration project]*
 
-	* Fetch C Module MicroUI-VGLite 6.0.1.
+	* Fetch the `C Module VGLite 6.0.1`_.
   
 * *[BSP project]*
 	
@@ -231,20 +264,56 @@ BSP with VG-Lite
 	* Verify the options in ``display_configuration.h``. 
 	* In the C project configuration, include the new C file ``ui_drawing_vglite.c``.
 
-* Build the VEE Port and the BSP.
+.. _C Module MicroUI 3.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.0.0/
+.. _C Module DMA2D 4.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/4.0.0/
+.. _C Module VGLite 6.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/6.0.1/
 
 From 13.3.x to 13.4.x
 =====================
 
-BSP
-"""
+BSP without GPU
+"""""""""""""""
 
-* The signatures of ``LLUI_DISPLAY_IMPL_decodeImage`` and ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes`` have changed: 
- 
-	* use ``jbyte`` in function signatures.
-	* add a cast to ``MICROUI_Image`` in implementation.
+* *[VEE Port configuration project]*
 
-* Use the MicroUI C module 2.0.1.
+	* Fetch the `C Module MicroUI 2.0.1`_.
+
+* *[BSP project]*
+
+	* Delete the properties file ``cco_microui.properties``.
+
+BSP with DMA2D
+""""""""""""""
+
+* Follow the migration steps of "BSP without GPU".
+* *[VEE Port configuration project]*
+
+	* Fetch the `C Module DMA2D 3.0.2`_.
+
+* *[BSP project]*
+
+	* Delete the properties file ``cco_display-dma2d.properties``.
+
+BSP with VG-Lite
+""""""""""""""""
+
+.. note:: 
+	* The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`)
+	* The compatible VG-Lite library version is **3.0.15_rev4**. 
+
+* Follow the migration steps of "BSP without GPU".
+* *[VEE Port configuration project]*
+
+	* Fetch the `C Module VGLite 5.0.1`_.
+
+* *[BSP project]*
+
+  	* Migrate VG-Lite library to the version 3.0.15_rev4.
+  	* Modify the VG-Lite library 3.0.15_rev4 by applying the patch `3.0.15_rev4.patch` (see README.md near patch file for more information).
+
+.. _C Module MicroUI 2.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/2.0.1/
+.. _C Module DMA2D 3.0.2: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.0.2/
+.. _C Module VGLite 5.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/5.0.1/
 
 From 13.2.x to 13.3.x
 =====================
@@ -260,17 +329,59 @@ Front Panel
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
 
+BSP without GPU
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+	* Fetch the `C Module MicroUI 2.0.0`_.
+
+* *[BSP project]*
+
+	* Delete the properties file ``cco_microui.properties``.
+
+BSP with DMA2D
+""""""""""""""
+
+* Follow the migration steps of "BSP without GPU".
+* *[VEE Port configuration project]*
+
+	* Fetch the `C Module DMA2D 3.0.0`_.
+
+* *[BSP project]*
+
+	* Delete the properties file ``cco_display-dma2d.properties``.
+
+BSP with VG-Lite
+""""""""""""""""
+
+.. note:: 
+	* The C Module is designed to target the `NXP i.MX RT500`_; however it can be locally customized for other boards (see :ref:`[Custom project]<section_cmodule_vglite_custom>`).
+	* The compatible VG-Lite library version is **3.0.11_rev3**. 
+
+* Follow the migration steps of "BSP without GPU".
+* *[VEE Port configuration project]*
+
+	* Fetch the `C Module VGLite 3.0.0`_.
+
+* *[BSP project]*
+
+	* Read the comments of ``display_configuration.h`` and configures the C module.
+	* Add all C files available in ``src`` folder.
+	* Configure the C project to include the ``inc`` folder.
+ 	* Modify the VG-Lite library 3.0.11_rev3 by applying the patch `3.0.11_rev3.patch` (see README.md near patch file for more information).
+
+.. _section_cmodule_vglite_custom:
+
+* *[Custom project]*
+
+	* Modify or remove the C files ``display_dma.c``, ``display_frambuffer.c``, ``LLUI_DISPLAY_impl.c``, ``display_dma.c``, ``vglite_support.c`` and ``vglite_window.c``.
+
 .. _UI Pack 13.3.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.3.1/
-
-BSP
-"""
-
-* Install the  :ref:`MicroUI C module 2.0.0 <section_ui_releasenotes_cmodule>`.
-* The signatures of ``LLUI_DISPLAY_IMPL_decodeImage`` and ``LLUI_DISPLAY_IMPL_getNewImageStrideInBytes`` have changed: 
- 
-	* use ``jbyte`` in functions signatures
-	* add a cast to ``MICROUI_Image`` in the implementation.
-  
+.. _C Module MicroUI 2.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/2.0.0/
+.. _C Module DMA2D 3.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.0.0/
+.. _C Module VGLite 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/3.0.0/
+.. _NXP i.MX RT500: https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/i-mx-rt-crossover-mcus/i-mx-rt500-crossover-mcu-with-arm-cortex-m33-dsp-and-gpu-cores:i.MX-RT500
 
 From 13.1.x to 13.2.x
 =====================
@@ -308,16 +419,38 @@ Front Panel
 		<artifact name="frontpanel" type="jar"/>
 	 </dependency>
 
+BSP without GPU
+"""""""""""""""
+
+* *[VEE Port configuration project]*
+
+	* Fetch the `C Module MicroUI 1.1.1`_.
+
+* *[BSP project]*
+
+	* Delete the properties file ``cco_microui.properties``.
+	* Add a cast when using ``MICROUI_Image*`` object: ``(MICROUI_ImageFormat)image->format`` .
+	* Remove parameter ``MICROUI_GraphicsContext*`` when calling ``LLUI_DISPLAY_setDrawingLimits()``. 
+	* Ensure to call ``LLUI_DISPLAY_setDrawingLimits()`` before calling ``LLUI_DISPLAY_setDrawingStatus()`` or ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``.
+	* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available in the :ref:`MicroUI C module<section_ui_cco>`. 
+	* (optional) Add the UI event logger available in the :ref:`MicroUI C module<section_ui_cco>`. 
+
+BSP with DMA2D
+""""""""""""""
+
+* Follow the migration steps of "BSP without GPU".
+* *[VEE Port configuration project]*
+
+	* Fetch the `C Module DMA2D 2.1.0`_.
+
+* *[BSP project]*
+
+	* Delete the properties file ``cco_display-dma2d.properties``.
+
 .. _Front Panel Widgets 2.1.0: https://repository.microej.com/modules/ej/tool/frontpanel/widget/2.1.0/
 .. _UI Pack 13.1.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.1.0/
-
-BSP
-"""
-
-* Add a cast when using ``MICROUI_Image*`` object: ``(MICROUI_ImageFormat)image->format`` .
-* Remove parameter ``MICROUI_GraphicsContext*`` when calling ``LLUI_DISPLAY_setDrawingLimits()``. 
-* Ensure to call ``LLUI_DISPLAY_setDrawingLimits()`` before calling ``LLUI_DISPLAY_setDrawingStatus()`` or ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``.
-* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`. 
+.. _C Module MicroUI 1.1.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.1.1/
+.. _C Module DMA2D 2.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/2.1.0/
 
 From 12.x to 13.x
 =================
@@ -338,11 +471,11 @@ Hardware Accelerator
 """"""""""""""""""""
 
 * Open :guilabel:`-configuration` project > :guilabel:`display` > :guilabel:`display.properties`
-* Remove optional property ``hardwareAccelerator``. If old value was ``dma2d``, add `the following module <https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.6/>`__ in the :ref:`module description file <mmm_module_description>`: 
+* Remove optional property ``hardwareAccelerator``. If old value was ``dma2d``, add `the following module <https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.8/>`__ in the :ref:`module description file <mmm_module_description>`: 
   
   .. code-block:: xml
   
-     <dependency org="com.microej.clibrary.llimpl" name="display-dma2d" rev="1.0.6"/>
+     <dependency org="com.microej.clibrary.llimpl" name="display-dma2d" rev="1.0.8"/>
 
 * For the hardware accelerator DMA2D, please consult STM32F7Discovery board updates. Add the file ``lldisplay_dma2d.c``, the global defines ``DRAWING_DMA2D_BPP=16`` (or another value) and ``STM32F4XX`` or ``STM32F7XX``
 * For the others hardware accelerators, please contact MicroEJ support.

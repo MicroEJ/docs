@@ -42,6 +42,22 @@ Simulator
 
 - Fix the management of KF feature's fonts.
 
+C Module NemaGFX
+""""""""""""""""
+
+* New version: `C Module NemaGFX 1.2.0`_.
+
+**Changed**
+
+* Disable the rendering of thick faded line with the GPU by default (see option ``ENABLE_FADED_LINES``).
+* Increase the version of the configuration file (2).
+
+**Fixed**
+
+* Fix the drawing status when a thick line is out-of-clip (results in an infinite loop).
+
+.. _C Module NemaGFX 1.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.2.0/
+
 13.7.0 (2023-10-23)
 ===================
 
@@ -91,6 +107,52 @@ Font Generator
 - Do not use cached fonts when a VEE Port property has changed.
 - Fix the handling of backslashes in list files.
 
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 3.1.1`_.
+
+**Added**
+
+* Add the compatibility with UI Pack 13.7.
+
+C Module DMA2D
+""""""""""""""
+
+* New version: `C Module DMA2D 4.1.0`_.
+
+**Added**
+
+* Add the compatibility with UI Pack 13.7.
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 7.2.0`_.
+
+**Added**
+
+* Add the pre-mulitplied image formats: ``ARGB8888_PRE``, ``ARGB4444_PRE`` and ``ARGB1555_PRE``.
+* Add ``UI_VGLITE_need_to_premultiply()`` to find out whether a color must be pre-multiplied according to the GPU's capabilities.
+
+**Fixed**
+
+* Fix the use of power quad when not available.
+
+C Module NemaGFX
+""""""""""""""""
+
+* New version: `C Module NemaGFX 1.1.0`_.
+
+**Added**
+
+* Add the compatibility with UI Pack 13.7.
+
+.. _C Module MicroUI 3.1.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.1.1/
+.. _C Module DMA2D 4.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/4.1.0/
+.. _C Module VGLite 7.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/7.2.0/
+.. _C Module NemaGFX 1.1.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.1.0/
+
 [13.6.2] (2023-09-20)
 =====================
 
@@ -107,6 +169,23 @@ Font Generator
 **Fixed**
 
 - Fix handling zip/jar file entries in the cache.
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 7.1.0`_.
+
+**Added**
+
+* Add the compatibility with VG-Lite `3.0.15_rev7` (add a .patch file).
+
+**Fixed**
+
+- Fix the use of the define ``VG_BLIT_WORKAROUND`` (useless).
+- Fix the GPU deactivation when a drawing is not performed for any reason.
+- VG-Lite `3.0.15_rev4`: Fix the bounding box of the ``vg_lite_blit()`` given to the MicroEJ Graphics Engine when the define ``VG_BLIT_WORKAROUND`` is set (the function ``vg_lite_blit()`` is not used by default).
+
+.. _C Module VGLite 7.1.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/7.1.0/
 
 [13.6.1] (2023-07-26)
 =====================
@@ -158,6 +237,27 @@ Font Generator
 
 - Use a cache to avoid generating fonts for each launch.
 
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 7.0.0`_.
+* Several additions, changes and fixes are available. Refer to the `C Module VGLite 7.0.0`_ changelog for more information.
+* The C Module has been divided in two parts to extract the `NXP i.MX RT500`_ specific support from the generic C Module for VG-Lite: 
+
+  * `NXP i.MX RT500`_ Display management: `C Module RT500 7.0.0`_
+  * Drawing over VG-Lite: `C Module VGLite 7.0.0`_
+
+C Module NemaGFX
+"""""""""""""""" 
+
+* New C Module: `C Module NemaGFX 1.0.0`_.
+* Compatible with UI Pack 13.5.x and 13.6.0.
+
+.. _C Module VGLite 7.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/7.0.0/
+.. _C Module NemaGFX 1.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.0.0/
+.. _C Module RT500 7.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-mimxrt595-evk/7.0.0
+.. _NXP i.MX RT500: https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/i-mx-rt-crossover-mcus/i-mx-rt500-crossover-mcu-with-arm-cortex-m33-dsp-and-gpu-cores:i.MX-RT500
+
 [13.5.1] (2023-06-08)
 =====================
 
@@ -175,6 +275,17 @@ Front Panel
 
 - Fix consecutive calls to ``LLUIDisplay.newMicroUIImage()`` throwing an exception.
 - Allow overriding the display drawer with a service or in a Front Panel widget.
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 6.0.1`_.
+
+**Fixed**
+
+* Fix performing drawings when the clip is disabled.
+
+.. _C Module VGLite 6.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/6.0.1/
 
 [13.5.0] (2023-05-03)
 =====================
@@ -252,6 +363,57 @@ LLAPIs
 
 * Remove `ui_drawing.h` and `dw_drawing.h` (move them in MicroUI C Module).
 
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 3.0.0`_.
+
+**Added**
+
+* Add support for multiple Graphics Context output formats.
+* Add support for multiple Image input formats.
+* Add stub implementations for all MicroUI and Drawing libraries algorithms.
+
+C Module DMA2D
+""""""""""""""
+
+* New version: `C Module DMA2D 4.0.0`_.
+
+**Added**
+
+* Add the configuration file ``drawing_dma2d_configuration.h`` to enable or not the cache management (cache invalidate and clean).
+* Add the compatibility with multiple Graphics Context output formats.
+
+**Fixed**
+
+* Fix the problems with reading memory back after a DMA2D transfer on cache-enabled CPUs.  
+* Fix an include directive for case-sensitive filesystems.
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 6.0.0`_.
+
+**Added**
+
+* Add the compatibility with multiple Graphics Context output formats.
+* Add (or move) some utility functions in `display_vglite`.
+* Add incident reporting with drawing log flags.
+
+**Fixed**
+
+* Set the appropriate format for the destination buffer.
+* Fix the drawing of horizontal lines.
+  
+**Removed**
+
+* Remove the notion of `vg_drawer` and the define `VGLITE_USE_MULTIPLE_DRAWERS` (replaced by multiple Graphics Context output formats).
+
+.. _C Module MicroUI 3.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/3.0.0/
+.. _C Module DMA2D 3.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.1.0/
+.. _C Module DMA2D 4.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/4.0.0/
+.. _C Module VGLite 6.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/6.0.0/
+
 [13.4.1] (2023-02-06)
 =====================
 	
@@ -276,6 +438,15 @@ Image Generator
 **Fixed**
 
 * Fix the VEE Port's memory alignment constraint.
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 5.0.1`_.
+* Several additions, changes and fixes are available. Refer to the `C Module VGLite 5.0.1`_ changelog for more information.
+
+.. _C Module DMA2D 3.0.2: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.0.2/
+.. _C Module VGLite 5.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/5.0.1/
 
 [13.4.0] - 2022-12-13
 =====================
@@ -322,6 +493,34 @@ Font Generator
 **Fixed**
 
 * Fix the external fonts output folder for the features.
+
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 2.0.1`_.
+
+**Changed**
+
+* Do not draw thick shapes when thickness and fade are equal to zero.
+
+C Module DMA2D
+""""""""""""""
+
+* New version: `C Module DMA2D 3.0.2`_.
+
+**Fixed**
+
+* Fix the flush bounds when drawing an image (must be set before calling ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``).
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 4.0.0`_.
+* Several additions, changes and fixes are available. Refer to the `C Module VGLite 4.0.0`_ changelog for more information.
+
+.. _C Module MicroUI 2.0.1: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/2.0.1/
+.. _C Module DMA2D 3.0.2: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.0.2/
+.. _C Module VGLite 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/4.0.0/
 
 [13.3.1] - 2022-09-09
 =====================
@@ -393,6 +592,58 @@ LLAPIs
 **Removed**
 
 * Remove the MicroUI's native functions declaration with macros *(not backward compatible)*.
+
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 2.0.0`_.
+
+**Changed**
+
+* Improve `drawImage`: identify faster use cases (copy an image and draw a region with overlap).
+* Use new UI Pack LLAPI: `UI_DRAWING_copyImage` and `UI_DRAWING_drawRegion`. 
+* Use new MicroUI's native functions declaration (not backward compatible).
+
+C Module DMA2D for UI Pack 13.2.0 (maintenance)
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+* New version: `C Module DMA2D 2.1.0`_.
+
+**Added**
+
+* Add the compatibility with the STM32H7 series.
+
+**Changed**
+
+* Manage the overlapping (draw an image on the same image).
+
+**Fixed**
+
+* Fix the limitation of UI Pack 13.x in checking the MicroUI GraphicsContext clip before filling a rectangle.
+
+C Module DMA2D for UI Pack 13.3.0
+"""""""""""""""""""""""""""""""""
+
+* New version: `C Module DMA2D 3.0.0`_.
+
+**Added**
+
+* Add the implementation of `UI_DRAWING_drawRegion`.
+
+**Removed**
+
+* Remove the software implementation of "image overlap" (already available in UI Pack 13.3.0).
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 3.0.0`_.
+* Several additions, changes and fixes are available. Refer to the `C Module VGLite 3.0.0`_ changelog for more information.
+
+.. _C Module MicroUI 2.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/2.0.0/
+.. _C Module DMA2D 2.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/2.1.0/
+.. _C Module DMA2D 3.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/3.0.0/
+.. _C Module VGLite 3.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/3.0.0/
 
 [13.2.0] - 2022-05-05
 =====================
@@ -470,6 +721,29 @@ LLAPIs
 **Added**
 
 * Add ``LLUI_DISPLAY_readPixel`` to read an image's pixel color. 
+
+C Module DMA2D
+""""""""""""""
+
+* New version: `C Module DMA2D 1.0.8`_ for UI Pack 13.0.x (maintenance).
+* New version: `C Module DMA2D 2.0.0`_ for UI Pack 13.1.0 and UI Pack 13.2.0.
+
+**Fixed**
+
+* Fix the use of returned code when drawing images with the DMA2D.
+* Clean cache before each DMA2D transfer (no-op on STM32 CPU without cache).
+
+C Module VGLite
+"""""""""""""""
+
+* New C Module: C Module VGLite 2.0.0.
+
+**Added**
+
+* Provides the :ref:`VGLite C module <section_ui_cco>` 2.0.0 to target the NXP CPU that provides the Vivante VG-Lite accelerator.
+
+.. _C Module DMA2D 1.0.8: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.8/
+.. _C Module DMA2D 2.0.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/2.0.0/
 
 BSP
 """
@@ -550,6 +824,23 @@ LLAPIs
 **Changed**	
 
 * Change signature of ``LLUI_DISPLAY_setDrawingLimits()``: remove ``MICROUI_GraphicsContext*`` to be able to call this function from GPU callback method. 
+
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 1.1.0`_.
+ 
+**Added**
+
+* Add a MicroUI events logger (optional).
+* Add a MicroUI images heap allocator (optional).
+
+**Fixed**
+
+* Fix comments in `LLUI_PAINTER_impl.c` and `LLDW_PAINTER_impl.c`.
+* Ignore a drawing when at least one scaling factor is equal to zero.
+
+.. _C Module MicroUI 1.1.0: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.1.0/
 
 [13.0.7] - 2021-07-30
 =====================
@@ -696,6 +987,19 @@ MicroUI Implementation
 .. _drawThickEllipse: https://repository.microej.com/javadoc/microej_5.x/apis/ej/drawing/ShapePainter.html#drawThickEllipse-ej.microui.display.GraphicsContext-int-int-int-int-int-
 .. _drawThickFadedEllipse: https://repository.microej.com/javadoc/microej_5.x/apis/ej/drawing/ShapePainter.html#drawThickFadedEllipse-ej.microui.display.GraphicsContext-int-int-int-int-int-int-
  
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 1.0.3`_.
+
+C Module DMA2D
+""""""""""""""
+
+* New version: `C Module DMA2D 1.0.6`_.
+
+.. _C Module MicroUI 1.0.3: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/1.0.3/
+.. _C Module DMA2D 1.0.6: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.6/
+
 [13.0.2] - 2020-10-02
 =====================
 
@@ -705,6 +1009,16 @@ MicroUI Implementation
 **Fixed**
 
 * [ESP32] - Potential ``PSRAM`` access faults by rebuilding using esp-idf v3.3.0 toolchain - ``simikou2``.
+
+C Module DMA2D
+""""""""""""""
+
+* New version: C Module DMA2D 1.0.5.
+ 
+**Changed**
+
+* De-init the DMA2D before re-initializing it, to reset the context at HAL level.
+* Manipulate the drawing limits after being sure the DMA2D job is finished.
 
 [13.0.1] - 2020-09-22
 =====================
@@ -757,6 +1071,29 @@ LLAPIs
 **Fixed**
 
 * Missing a LLAPI to check the overlapping between source and destination areas.
+
+C Module MicroUI
+""""""""""""""""
+
+* New version: C Module MicroUI 1.0.2.
+
+**Changed**
+
+* Change module organization.
+
+C Module DMA2D
+""""""""""""""
+
+* New version: C Module DMA2D 1.0.3.
+
+**Changed**
+
+* Remove/replace notion of ``LLDISPLAY``.
+* Change module organization.
+ 
+**Fixed**
+
+* Fix file names.
 
 [13.0.0] - 2020-07-30
 =====================
@@ -866,6 +1203,17 @@ LLAPIs
 * See :ref:`Migration notes<section_ui_migration_llapi_13x>` that describe the available changes in LLAPI.
 
 .. _com.microej.clibrary.llimpl#microui: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui
+
+C Modules
+"""""""""
+
+**Added**
+
+* Provides the C Module MicroUI 1.0.1 that extends the `UI Pack 13.0.0`_. 
+* Provides the C Module DMA2D 1.0.2 that targets the STM32 CPU that provides the Chrom-ART accelerator. 
+* See :ref:`MicroUI C module <section_ui_cco>`.
+
+.. _UI Pack 13.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/
 
 [12.1.5] - 2020-10-02
 =====================
