@@ -25,7 +25,7 @@ This plugin adds the following tasks to your project:
 
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.adp`
-- :ref:`sdk6_module_natures.tasks.loadVeePort`
+- :ref:`sdk6_module_natures.tasks.loadVee`
 - :ref:`sdk6_module_natures.tasks.loadApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.runOnSimulator`
 - :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
@@ -53,7 +53,7 @@ This plugin adds the following tasks to your project:
 
 - tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
 - :ref:`sdk6_module_natures.tasks.adp`
-- :ref:`sdk6_module_natures.tasks.loadVeePort`
+- :ref:`sdk6_module_natures.tasks.loadVee`
 - :ref:`sdk6_module_natures.tasks.loadApplicationConfiguration`
 - :ref:`sdk6_module_natures.tasks.runOnSimulator`
 - :ref:`sdk6_module_natures.tasks.loadTestApplicationConfiguration`
@@ -124,20 +124,20 @@ This task is used by the following module natures:
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
 
-.. _sdk6_module_natures.tasks.loadVeePort:
+.. _sdk6_module_natures.tasks.loadVee:
 
-loadVeePort
-^^^^^^^^^^^
+loadVee
+^^^^^^^
 
-**Description**: Loads the VEE Port.
+**Description**: Loads the VEE.
 
 **Inputs**:
 
-- The list of VEE Port archive files or folders.
+- The list of VEE archive files or folders.
 
 **Outputs**:
 
-- The directory where the VEE Port is copied/extracted (``build/veePort``)
+- The directory where the VEE is copied/extracted (``build/vee``)
 
 **Module Natures**:
 

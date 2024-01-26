@@ -40,7 +40,7 @@ microejExecutable
 ~~~~~~~~~~~~~~~~~
 
 This variant is used to publish the Executable of an Application, 
-that can be fetched by declaring a dependency with the ``microejKernel`` configuration.
+that can be fetched by declaring a dependency with the ``microejVee`` configuration.
 The ``LibraryElement`` attribute of the variant is set to ``microej-executable``.
 
 microejExecutableBuildFiles
@@ -53,7 +53,7 @@ microejVirtualDevice
 ~~~~~~~~~~~~~~~~~~~~
 
 This variant is used to publish the Virtual Device of an Application, 
-that can be fetched by declaring a dependency with the ``microejVeePort`` or the ``microejKernel`` configuration.
+that can be fetched by declaring a dependency with the ``microejVee`` configuration.
 The ``LibraryElement`` attribute of the variant is set to ``microej-vee-port``.
 
 ..

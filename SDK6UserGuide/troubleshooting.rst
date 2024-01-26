@@ -72,7 +72,7 @@ If this kind of message appears when resolving plugins or modules dependencies:
 .. code:: console
 
    * What went wrong:
-   Plugin [id: 'com.microej.gradle.application', version: '0.14.0'] was not found in any of the following sources:
+   Plugin [id: 'com.microej.gradle.application', version: '0.15.0'] was not found in any of the following sources:
 
 or this kind:
 
@@ -218,7 +218,7 @@ If the dependency is a valid VEE Port, this error probably means that several ar
 with the ``default`` Ivy configuration.
 To fix this issue, you can select the right artifact by adding information on the one to fetch in the ``artifact`` block, for example::
 
-	microejVeePort("com.mycompany:myveeport:1.0.0") {
+	microejVee("com.mycompany:myveeport:1.0.0") {
 		artifact {
 			name = "artifact-name"
 			type = "zip"
@@ -276,7 +276,7 @@ Back in the Gradle task view:
   Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

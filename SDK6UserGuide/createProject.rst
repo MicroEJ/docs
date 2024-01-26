@@ -158,98 +158,39 @@ This chapter explains the different ways to create a new project.
       The creation of a project with Eclipse is done as follows:
       
       - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
-      - Select the project type :guilabel:`Gradle` > :guilabel:`Gradle Project` and click on the :guilabel:`Next` button.
+      - Select the project type :guilabel:`MicroEJ` > :guilabel:`MicroEJ Application Project` or :guilabel:`MicroEJ Add-onLibrary Project` and click on the :guilabel:`Next` button.
       
-      .. figure:: images/eclipse-create-gradle-project-01.png
+      .. figure:: images/eclipse-create-microej-project-01.png
         :alt: Project Type Selection in Eclipse
         :align: center
         :scale: 70%
       
         Project Type Selection in Eclipse
       
-      - Fill the name of the project in the :guilabel:`Name` field, for example ``myProject``, and click on the :guilabel:`Next` button.
+      - Fill the name of the project in the :guilabel:`Name` field, for example ``My Project``.
+      - Fill the group of the artifact to publish in the :guilabel:`Organization` field.
+      - Fill the name of the artifact to publish in the :guilabel:`Module` field.
+      - Fill the version of the artifact to publish in the :guilabel:`Revision` field.
+      - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
+      - Click on :guilabel:`Finish` button.
       
-      .. figure:: images/eclipse-create-gradle-project-02.png
+      .. figure:: images/eclipse-create-microej-project-02.png
         :alt: Project root folder in Eclipse
         :align: center
         :scale: 70%
       
-        Project root folder in Eclipse
-      
-      - In the :guilabel:`Options` screen, leave the default values and click on the :guilabel:`Next` button.
-      - Click on the :guilabel:`Next` button and finally on the :guilabel:`Finish` button.
-      
-      The SDK is only compatible with the Gradle version ``8.0.2`` or higher, so ensure that the project uses the right version :
-      
-      - Open the ``myProject/gradle/wrapper/gradle-wrapper.properties`` file.
-      - Update the Gradle version if it is needed:
-      
-         .. code-block::
-          
-            distributionUrl=https\://services.gradle.org/distributions/gradle-8.0.2-bin.zip
-      
-      If you want to know more about the Gradle Wrapper, go to the :ref:`sdk_6_create_project_gradle_wrapper` section.
-      
-      The project created by Eclipse is a standard Java Library project (Gradle ``java-library`` plugin). 
-      The ``build.gradle`` file has to be renamed and updated to make it a MicroEJ project:
-      
-      - Rename the ``build.gradle`` file to ``build.gradle.kts`` and open it.
-      - Erase its whole content.
-      - Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
-      
-          plugins {
-              id("com.microej.gradle.addon-library") version "0.14.0"
-          }
-      
-        or for an Application::
-      
-          plugins {
-              id("com.microej.gradle.application") version "0.14.0"
-          }
-      
-        .. note::
-          The ``java-library`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
-      
-        Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
-      
-      - Declare the dependencies required by your project in the ``dependencies`` block. For example::
-      
-          dependencies {
-              implementation("ej.api:edc:1.3.5")
-          }
-      
-      - Delete the test class in the folder ``lib/src/test/java``.
-      
-      The ``settings.gradle`` file has to be renamed and updated as well:
-      
-      - Rename the ``settings.gradle`` file to ``settings.gradle.kts`` and open it.
-      - Erase its whole content.
-      - Add the following content::
-      
-          rootProject.name = "myProject"
-          include("lib")
+        Application Creation in Eclipse
       
       .. note::
-         By default, Eclipse requires the user to explicitly trigger the reload of a Gradle project when its content has changed.
-         Therefore, when the content of a Gradle project has been updated, 
-         you have to right-click on the project, then click on :guilabel:`Gradle` and :guilabel:`Refresh Gradle Project`:
-      
-         .. figure:: images/eclipse-reload-gradle-project.png
-            :alt: Gradle Project reload in Eclipse
-            :align: center
-            :scale: 70%
-      
-            Gradle Project reload in Eclipse
-        
-         You can also configure Eclipse to automatically reload a Gradle project after a change.
-         Refer to the :ref:`sdk_6_howto_gradle_autoreloading` section for more information.
-      
+         The Gradle project created by the wizard uses Gradle Wrapper with Gradle version ``8.5``.
+         Refer to the :ref:`sdk_6_create_project_gradle_wrapper` section for more information.
+
       .. warning::
        When reloading your Gradle project, the build can fail if the SDK EULA has not been accepted.
        In that case, you must set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES`` and
        restart Eclipse. For more information about SDK EULA, refer to the :ref:`sdk_6_licenses` chapter.
-      
-      When the Gradle project has been reloaded, it should compile successfully, without any error.
+
+      When the Gradle project is loaded, it should compile successfully, without any error.
       You can then learn :ref:`how to launch the build of the project <sdk_6_build_project>`, 
       or :ref:`how to run it on the Simulator <sdk_6_run_on_simulator>` in the case of an Application.
 
@@ -320,7 +261,7 @@ Application Project
 - Add the ``com.microej.gradle.application`` plugin in the ``build.gradle.kts`` file::
 
     plugins {
-        id("com.microej.gradle.application") version "0.14.0"
+        id("com.microej.gradle.application") version "0.15.0"
     }
 
   .. note::
@@ -392,7 +333,7 @@ Add-On Library Project
 - Add the ``com.microej.gradle.addon-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.addon-library") version "0.14.0"
+        id("com.microej.gradle.addon-library") version "0.15.0"
     }
 
   .. note::
@@ -408,7 +349,7 @@ J2SE Library Project
 - Add the ``com.microej.gradle.j2se-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.j2se-library") version "0.14.0"
+        id("com.microej.gradle.j2se-library") version "0.15.0"
     }
 
   .. note::
@@ -512,13 +453,13 @@ This section explains the different ways to add a module to an existing project.
       - Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
       
           plugins {
-              id("com.microej.gradle.addon-library") version "0.14.0"
+              id("com.microej.gradle.addon-library") version "0.15.0"
           }
       
         or for an Application::
       
           plugins {
-              id("com.microej.gradle.application") version "0.14.0"
+              id("com.microej.gradle.application") version "0.15.0"
           }
       
         Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
