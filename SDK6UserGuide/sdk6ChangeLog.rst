@@ -3,6 +3,39 @@
 Changelog
 ---------
 
+.. _changelog-0.15.0:
+
+[0.15.0] - 2024-01-26
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Unify ``microejVeePort`` and ``microejKernel`` configurations into `microejVee`.
+- Add verification of dependencies checksums during build.
+- Add the plugin ``com.microej.gradle.mock`` to build a Mock.
+- Mention the system property to accept SDK EULA in error message.
+
+Changed
+"""""""
+
+- Task ``:execTool`` looks for a script named after the argument NAME with the following patterns in that order: NAME, NAME.microejTool, NAME.microejLaunch.
+- Align the behavior of the ``:buildFeature`` task with the ``localDeploymentSocket.microejLaunch`` script.
+  - output files are derived after "application" instead of "feature" (for example "application.fo").
+  - the application.main.class is set to the entryPoint defined in the .kf of the application.
+
+Fixed
+"""""
+
+- Upgrade to junit-test-engine 0.2.2 to fix failing tests using fonts.
+- Handle Security Manager removal from JDK 18+ when executing MicroEJ VEE scripts.
+- Support all MicroEJ VEE (VEE Ports & Kernel) for the task ``:execTool``.
+
+Removed
+"""""""
+
+- Remove support of dropIns folder for MicroEJ VEE (VEE Port or Kernel) selection.
+
 .. _changelog-0.14.0:
 
 [0.14.0] - 2024-01-03
@@ -360,7 +393,7 @@ Fixed
 
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

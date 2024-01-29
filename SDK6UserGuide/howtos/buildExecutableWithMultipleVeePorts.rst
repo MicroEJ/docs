@@ -41,7 +41,7 @@ For example, if you want to build an Executable for two VEE Ports, you can creat
   for example::
     
     plugins {
-        id("com.microej.gradle.application") version "0.14.0" apply false
+        id("com.microej.gradle.application") version "0.15.0" apply false
     }
     
     subprojects {
@@ -75,7 +75,7 @@ All Executables can now be built by executing the ``buildAllExecutables`` task::
 For each VEE Port, the Executable is generated in the ``build/output/application`` folder of the corresponding subproject.
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -9,7 +9,7 @@ The SDK 6 allows to:
 - Execute the tests of a project with the Simulator and on a device.
 - Execute the Artifact Checker on a project.
 - Run an Application with the Simulator.
-- Load the VEE Port from its archive file path, its folder path, a dependency or from the ``dropins`` folder.
+- Load the VEE Port from its archive file path, its folder path or a dependency.
 - Build the Executable of an Application.
 - Build the WPK of an Application.
 - Build the Feature file (.fo) of an Application.
