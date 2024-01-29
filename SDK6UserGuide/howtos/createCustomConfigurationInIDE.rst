@@ -14,7 +14,7 @@ This chapter explains how to create a new Configuration in all the supported IDE
       - Click on :guilabel:`Run` > :guilabel:`Edit Configurations...`.
       - Click on :guilabel:`+` and Select :guilabel:`Gradle`.
       - Fill the name of the new Configuration in the :guilabel:`Name` field.
-      - Add a task and a property if needed in the ``Run`` dialog, for example ``runOnSimulator -P"debug.mode"=true``.
+      - Add a task and a property if needed in the ``Run`` dialog, for example ``runOnSimulator -Pdebug.mode=true``.
       
       .. figure:: images/intellij-run-configuration.png
          :alt: Configuration Creation in IntelliJ IDEA
@@ -60,7 +60,7 @@ This chapter explains how to create a new Configuration in all the supported IDE
     
       - Go to the ``Project Settings`` tab.
       - Check ``Override project settings``.
-      - Add a property as a Program Argument if needed, for example ``-P"debug.mode"=true``.
+      - Add a property as a Program Argument if needed, for example ``-Pdebug.mode=true``.
       
       .. figure:: images/eclipe-run-configuration-project-settings.png
          :alt: Configuration Project Settings tab in Eclipse
@@ -72,7 +72,7 @@ This chapter explains how to create a new Configuration in all the supported IDE
       - Click on :guilabel:`Run` to launch the Configuration.
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

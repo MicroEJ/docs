@@ -21,6 +21,7 @@ Changed
 
 - Task ``:execTool`` looks for a script named after the argument NAME with the following patterns in that order: NAME, NAME.microejTool, NAME.microejLaunch.
 - Align the behavior of the ``:buildFeature`` task with the ``localDeploymentSocket.microejLaunch`` script.
+
   - output files are derived after "application" instead of "feature" (for example "application.fo").
   - the application.main.class is set to the entryPoint defined in the .kf of the application.
 
