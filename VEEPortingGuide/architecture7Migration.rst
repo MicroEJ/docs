@@ -103,10 +103,13 @@ The following dependency must be added to the :ref:`module.ivy <mmm_module_descr
 Migrate ECOM-COMM Module
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are two options:
+The Foundation Library ``ECOM-COMM-1.1`` has been removed from :ref:`Architecture 8.0.0 <changelog-8.0.0>`.
+It is now replaced by ``ECOM-COMM-2.0`` which is distributed in its own Pack.
+
+There are two migration options:
   
-- either migrate to the latest ECOM-COMM Pack,
-- or integrate the legacy ECOM-COMM Pack files as-is into your VEE Port ``dropins`` directory.
+- either migrate to the latest ``ECOM-COMM-2.0`` Pack,
+- or integrate the legacy ``ECOM-COMM-1.1`` Pack files as-is into your VEE Port ``dropins`` directory.
 
 Contact `our support team <https://www.microej.com/contact/#form_2>`_ to get the best migration strategy and detailed instructions. 
 
