@@ -57,21 +57,35 @@ SDK EULA Acceptation
 --------------------
 
 The use of MICROEJ SDK 6 requires to accept the :ref:`sdk6_eula`.
-If the license is not accepted, the following message is displayed when executing a Gradle task::
+If the license is not accepted, the following message is displayed when executing a Gradle task:
+
+.. code:: text
 
   > The MICROEJ SDK End-User License Agreement (EULA) must be accepted before it can start.
     The license terms for this product can be downloaded from
     https://repository.microej.com/licenses/sdk/LAW-0011-LCS-MicroEJ_SDK-EULA-v3.1B.txt
     You can accept the EULA by specifying the -Daccept-microej-sdk-eula-v3-1b=YES command line option,
+    or setting the system property systemProp.accept-microej-sdk-eula-v3-1b=YES in a gradle.properties file,
     or setting the ACCEPT_MICROEJ_SDK_EULA_V3_1B=YES environment variable.
 
-To accept the SDK EULA, the ``accept-microej-sdk-eula-v3-1b`` System property can be used in the command line:
+As mentioned in the message, there are several ways to accept the EULA:
 
-.. code:: console
-   
-   $ ./gradlew build -Daccept-microej-sdk-eula-v3-1b=YES
+- define the ``accept-microej-sdk-eula-v3-1b`` system property in the command line:
 
-Otherwise, the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable must be set to ``YES``.
+   .. code:: console
+      
+      ./gradlew build -Daccept-microej-sdk-eula-v3-1b=YES
+
+- define the ``accept-microej-sdk-eula-v3-1b`` system property in a ``gradle.properties`` file with the ``systemProp.`` prefix:
+
+   .. code:: properties
+
+      systemProp.accept-microej-sdk-eula-v3-1b=YES
+
+  This can be in the ``gradle.properties`` of your Gradle User Home folder (located by default at ``$USER_HOME/.gradle/gradle.properties``),
+  or in the ``gradle.properties`` file at the root of your project for example.
+
+- set the ``ACCEPT_MICROEJ_SDK_EULA_V3_1B`` environment variable to ``YES``.
 
 .. _sdk6_evaluation_license:
 
@@ -440,7 +454,7 @@ There are many hardware and software solutions available on the market. Among ot
 Please contact :ref:`our support team <get_support>` for more details.
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
