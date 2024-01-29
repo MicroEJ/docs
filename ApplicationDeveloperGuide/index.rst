@@ -13,7 +13,7 @@ Application Developer Guide
    virtualDevice
    classpath
    applicationResources
-   applicationOptions
+   standaloneApplication
    sandboxedApplication
    characterEncoding
    limitations

@@ -254,6 +254,7 @@ ESP32
      - `simikou7 <https://repository.microej.com/architectures/com/microej/architecture/ESP32/GNUv112_xtensa-esp32s3/simikou7/>`__
      - ``7.20.1`` or higher
      
+.. _toolchain_iar:
 
 IAR Linker Specific Options
 ===========================
@@ -266,7 +267,7 @@ by the SOAR.
 ---------------------------
 
 MicroEJ SOAR generates ELF absolute symbols to define some
-link-time options (0 based values). By default, IAR linker allocates a 1
+:ref:`link_time_option` (0 based values). By default, IAR linker allocates a 1
 byte section on the fly, which may cause silent sections placement side
 effects or a section overlap error when multiple symbols are generated
 with the same absolute value:
@@ -287,6 +288,8 @@ as illegal code by IAR linker, causing the following error:
 The option ``--diag_suppress=Lp029`` tells IAR linker to ignore
 instructions validation errors.
 
+.. _toolchain_gcc:
+
 GNU LD Specific Options
 =======================
 
@@ -296,6 +299,8 @@ GNU LD Specific Options
 By default the GNU linker does not search unresolved symbols in previously loaded files and can cause undefined reference errors.
 To solve this issue, either change the load order of libraries (put ``microejapp.o`` first) or guard the libraries with the
 options ``--start-group`` and ``--end-group``.
+
+.. _toolchain_armcc:
 
 ARM Linker Specific Options
 ===========================
@@ -320,6 +325,8 @@ You can declare it in your BSP project or directly in your VEE Port as following
     </lscFragment>
 
 The weak symbol(s) will be directly defined in the application object file (``microejapp.o``).
+
+.. _soar_debug_infos_post_linker:
 
 Link the SOAR Debug Section
 ---------------------------

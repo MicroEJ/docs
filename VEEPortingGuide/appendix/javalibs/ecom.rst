@@ -1,6 +1,12 @@
 ECOM
 ====
 
+.. warning::
+
+    This chapter describes the Foundation Library ``ECOM-1.1``.
+
+    ``ECOM-1.1`` is discontinued since :ref:`Architecture 8.0.0 <changelog-8.0.0>`.
+
 Error Messages
 --------------
 

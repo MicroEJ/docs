@@ -27,7 +27,7 @@ Your VEE Port must be updated to remove files that are now included in Architect
 - Download the latest ``content-sdk-5`` directory. Your local files must be overridden.
 - Edit your `module.ivy` and put back your module `name`, `version`, `organisation` and `<dependencies>` content.
 - Edit your `module.properties` and put back your options (if they have changed from default ones).
-- Delete the following files from your `[name]-configuration/dropins` directory:
+- Delete the following files from your ``[name]-configuration/dropins`` directory:
   
   - ``scripts/init-bsp/*``
   - ``scripts/init-license-checker/*``
@@ -103,10 +103,13 @@ The following dependency must be added to the :ref:`module.ivy <mmm_module_descr
 Migrate ECOM-COMM Module
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are two options:
+The Foundation Library ``ECOM-COMM-1.1`` has been removed from :ref:`Architecture 8.0.0 <changelog-8.0.0>`.
+It is now replaced by ``ECOM-COMM-2.0`` which is distributed in its own Pack.
+
+There are two migration options:
   
-- either migrate to the latest ECOM-COMM Pack,
-- or integrate the legacy ECOM-COMM Pack files as-is into your VEE Port ``dropins`` directory.
+- either migrate to the latest ``ECOM-COMM-2.0`` Pack,
+- or integrate the legacy ``ECOM-COMM-1.1`` Pack files as-is into your VEE Port ``dropins`` directory.
 
 Contact `our support team <https://www.microej.com/contact/#form_2>`_ to get the best migration strategy and detailed instructions. 
 
@@ -118,7 +121,7 @@ Migrate Your LLKERNEL Implementation
 The following code is a ``LLKERNEL_impl.c`` template for migrating your current implementation of Feature installation in RAM.
 This is now called :ref:`In-Place Installation <feature_inplace_installation>`. 
 Your code logic for managing allocated blocks does not need to be changed.
-:ref:`Custom Installation <feature_custom_installation>` is disabled, so most of the new functions do not need to be implemented.
+As there is no installation in ROM, most of the new functions do not need to be implemented.
 
 .. code-block:: c
 

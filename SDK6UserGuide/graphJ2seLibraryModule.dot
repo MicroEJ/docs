@@ -1,0 +1,38 @@
+digraph mygraph {
+    rankdir="RL";
+    bgcolor="transparent"
+    fontname="Helvetica,Arial,sans-serif"
+    node [
+        shape = box
+        width = 1.5
+        color = "#7dc5dc"
+        style = filled
+        fontname="Helvetica,Arial,sans-serif"
+    ]
+    edge [fontname="Helvetica,Arial,sans-serif"]
+    "checkModule" [fillcolor = "#f76241"]
+    "build" -> "check"
+    "check" -> "test"
+    "test" -> "classes"
+    "test" -> "testClasses"
+    "testClasses" -> "compileTestJava"
+    "testClasses" -> "processTestResources"
+    "processTestResources" -> "classes"
+    "compileTestJava" -> "classes"
+    "javadoc" -> "classes"
+    "classes" -> "compileJava"
+    "classes" -> "processResources"
+    "build" -> "assemble"
+    "assemble" -> "jar"
+    "uploadArchives" -> "jar"
+    "jar" -> "classes"
+    "checkModule" -> "assemble"
+
+    subgraph cluster_legend {
+        label="Legend";
+        microej [fillcolor="#f76241" label="MicroEJ task"];
+        java [fillcolor="#7dc5dc" label="Java plugin or Base plugin task"];
+        microej -> java [style=invis];
+        java -> microej [style=invis];
+    }
+}

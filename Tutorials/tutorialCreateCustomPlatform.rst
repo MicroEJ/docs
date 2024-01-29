@@ -144,7 +144,7 @@ Use the `Platform Qualification Tools`_ to qualify the MicroEJ Platform built.
 Further Assistance Needed
 -------------------------
 
-Please note that porting MicroEJ to a new device is also something that is part of our engineering services. Consider contacting sales@microej.com to request a quote.
+Please note that porting MicroEJ to a new device is also something that is part of our engineering services. Consider contacting `our sales team <https://www.microej.com/contact/#form_1>`_ to request a quote.
 
 ..
    | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 

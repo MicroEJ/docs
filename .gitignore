@@ -5,6 +5,6 @@
 __pycache__/
 *.pyc
 /.project
-/.vscode/
+*.vscode/
 /_tools/wbe-gen/architecture/
 _tools/wbe-gen/jars/

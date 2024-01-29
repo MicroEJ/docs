@@ -4,6 +4,27 @@
 Changelog
 =========
 
+[1.4.2] - 2023-11-13
+====================
+
+MicroVG Implementation
+""""""""""""""""""""""
+
+**Added**
+
+* Add some traces when debugging the SNI resources.
+
+**Fixed**
+
+* Fix dynamic paths larger than 64 KB.
+
+Front Panel
+"""""""""""
+
+**Fixed**
+
+* Fix dynamic paths larger than 64 KB.
+
 [1.4.1] - 2023-09-21
 ====================
 
@@ -97,7 +118,7 @@ Vector Image Converter
 
 * Add "fill alpha" animations to gradient elements.
 
-[1.1.0] - 2022-09-05
+[1.1.1] - 2022-09-05
 ====================
 
 * Compatible with UI Pack 13.3.0 or higher.

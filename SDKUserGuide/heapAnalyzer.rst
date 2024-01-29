@@ -120,6 +120,7 @@ fields of the class.
 
 .. include:: heapdumper_use.rst
 
+.. _heapviewer:
 
 Heap Viewer
 -----------

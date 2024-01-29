@@ -10,7 +10,7 @@ Using PO Files
 - Documentation is available `here <https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files>`__.
 - In this example, let's create two PO files for two different languages(English and Portuguese) and add them to **resources/nls**.
 
-  ``Labels_en_us.po``:
+  ``Labels_en_US.po``:
 
   .. code:: po
 
@@ -27,7 +27,7 @@ Using PO Files
     msgid "Label2"
     msgstr "My label 2"
 
-  ``Labels_pt_br.po``:
+  ``Labels_pt_BR.po``:
 
   .. code:: po
 
@@ -54,8 +54,8 @@ Configuring NLS in MicroEJ
 
   .. code:: xml
 
-    <dependency org="ej.library.runtime" name="nls" rev="3.0.1"/> 
-    <dependency org="com.microej.library.runtime" name="binary-nls" rev="2.5.0"/>
+    <dependency org="ej.library.runtime" name="nls" rev="4.0.0"/> 
+    <dependency org="com.microej.library.runtime" name="binary-nls" rev="3.0.0"/>
 
 - Then, let's create a ``myapp.nls.list`` file, and put it in the **src/main/resources/list** folder. The file looks like this:
 
@@ -159,7 +159,7 @@ A simple implementation of the External Resources Loader is available on GitHub:
 `Example-ExternalResourceLoader <https://github.com/MicroEJ/Example-ExternalResourceLoader>`_.
 
 ..
-   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

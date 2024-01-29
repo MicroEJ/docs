@@ -21,11 +21,22 @@ Javascript is supported in the following :ref:`Module Natures page <module_natur
 - :ref:`module_natures.standalone_application`,
 - :ref:`module_natures.sandboxed_application`.
 
-- add the js dependency in the ``module.ivy`` file:
+- add the js dependency in the build file:
 
-.. code:: xml
+.. tabs::
 
-    <dependency org="com.microej.library.runtime" name="js" rev="0.13.0"/>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("com.microej.library.runtime:js:0.13.0")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="com.microej.library.runtime" name="js" rev="0.13.0"/>
+
 
 - add the following lines in your application main class:
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-settings>
   
-	<property name="artifactory.repository.url" value="http://localhost:8081/artifactory" override="false"/>
+	<property name="artifactory.repository.url" value="http://172.17.0.1:8082/artifactory" override="false"/>
 	<property name="local.repository.dir" value="${user.home}/.ivy2/repository/" override="false"/>
   
 	<!--

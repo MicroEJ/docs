@@ -40,6 +40,7 @@ For further information on Architecture installation and releases, you can check
 
    architectureNamingConvention
    architectureChangelog
+   architectureReleaseNotes
 
 ..
    | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 

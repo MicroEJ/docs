@@ -10,16 +10,12 @@ JUnit XML report.
 
 .. _JUnit: https://repository.microej.com/modules/ej/library/test/junit/
 
-The following sections will guide you to setup a JUnit Test Suite.
-By default, the Test Suite will be executed on Simulator. 
-Then you can configure it to execute on your Device (see :ref:`testsuite_on_device` section).
-
 Principle
 ---------
 
-`JUnit`_ testing can be enabled on any :ref:`Module Nature <module_natures>`
-that supports the :ref:`Test Suite plugin <module_natures.plugins.testsuite>`. 
-JUnit test cases processing is automatically enabled when
+`JUnit`_ testing can be enabled when using the ``microej-javalib`` (MicroEJ
+Add-On Library) or the ``microej-application`` (MicroEJ Applications)
+build type. JUnit test cases processing is automatically enabled when
 the following dependency is declared in the ``module.ivy`` file of the
 project.
 
@@ -35,7 +31,7 @@ files are automatically managed and must not be edited manually.
 JUnit Compliance
 ----------------
 
-MicroEJ JUnit is compliant with a subset of JUnit version 4. MicroEJ JUnit
+MicroEJ is compliant with a subset of JUnit version 4. MicroEJ JUnit
 processor supports the following annotations: ``@After``,
 ``@AfterClass``, ``@Before``, ``@BeforeClass``, ``@Ignore``, ``@Test``.
 
@@ -43,23 +39,23 @@ Each test case entry point must be declared using the ``org.junit.Test``
 annotation (``@Test`` before a method declaration). Please refer to
 JUnit documentation to get details on usage of other annotations.
 
-Setup a VEE Port for Tests
+Setup a Platform for Tests
 --------------------------
 
-Before running tests, a VEE Port must be configured.
+Before running tests, a target platform must be configured.
 
 Execution in SDK
 ~~~~~~~~~~~~~~~~
 
-In order to execute the Test Suite in the SDK, a VEE Port must be configured in the SDK workspace.
-The following steps assume that a VEE Port has been previously imported into the SDK Repository or available in the workspace:
+In order to execute the Test Suite in the SDK, a target platform must be configured in the MicroEJ workspace.
+The following steps assume that a platform has been previously imported into the MicroEJ Platform repository (or available in the Workspace):
 
 - Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`MicroEJ` > :guilabel:`Platforms` (or :guilabel:`Platforms in workspace`).
-- Select the desired VEE Port on which to run the tests.
+- Select the desired platform on which to run the tests.
 - Press :kbd:`F2` to expand the details.
-- Copy the :guilabel:`Path` value to the clipboard.
+- Select the the platform path and copy it to the clipboard.
 - Go to :guilabel:`Window` > :guilabel:`Preferences` > :guilabel:`Ant` > :guilabel:`Runtime` and select the :guilabel:`Properties` tab.
-- Click on :guilabel:`Add Property...` button and set a new property named ``target.platform.dir`` with the VEE Port path pasted from the clipboard.
+- Click on :guilabel:`Add Property...` button and set a new property named ``target.platform.dir`` with the platform path pasted from the clipboard.
 
 Execution during module build
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -71,7 +67,7 @@ Setup a Project with a JUnit Test Case
 --------------------------------------
 
 This section describes how to create a new JUnit Test Case starting from
-a new Add-On Library project.
+a new MicroEJ library project.
 
 - First create a new :ref:`module project <mmm_module_skeleton>` using the ``microej-javalib`` skeleton.
   A new project named ``mylibrary`` is created in the workspace.
@@ -101,7 +97,7 @@ with
    Assert.assertTrue(true);
 
 - Right-click again on the ``mylibrary`` project and select :guilabel:`Build Module`.
-  The test is now successfully executed on the target platform so the Add-On Library is fully built and published without errors.
+  The test is now successfully executed on the target platform so the MicroEJ Add-On Library is fully built and published without errors.
 - Double-click on the JUnit test suite report to see the test has been successfully executed.
 
 .. _testsuite_report:
@@ -115,23 +111,24 @@ Once a test suite is completed, the following test suite reports are generated:
   This report contains a summary and the execution trace of every executed test.
 
   .. figure:: images/testsuiteReportHTMLExample.png
-     :alt: Example of Test Suite HTML Report
+     :alt: Example of MicroEJ Test Suite HTML Report
      
-     Example of Test Suite HTML Report
+     Example of MicroEJ Test Suite HTML Report
 
 - JUnit XML report in the module project location ``target~/test/xml/TEST-test-report.xml``.
 
   .. figure:: images/testsuiteReportXMLExample.png
-     :alt: Example of Test Suite XML Report
+     :alt: Example of MicroEJ Test Suite XML Report
      
-     Example of Test Suite XML Report
+     Example of MicroEJ Test Suite XML Report
   
-  XML report file can also be open in the JUnit View. Right-click on the file > :guilabel:`Open With` >  :guilabel:`JUnit View`:
+  XML report file can also be opened in the JUnit View. 
+  Right-click on the file > :guilabel:`Open With` >  :guilabel:`JUnit View`:
 
   .. figure:: images/testsuiteReportXMLExampleJunitView.png
-     :alt: Example of Test Suite XML Report in JUnit View
+     :alt: Example of MicroEJ Test Suite XML Report in JUnit View
      
-     Example of Test Suite XML Report in JUnit View
+     Example of MicroEJ Test Suite XML Report in JUnit View
 
 If executed on device, the Firmware binary produced for each test
 is available in module project location ``target~/test/xml/<TIMESTAMP>/bin/<FULLY-QUALIFIED-CLASSNAME>/application.out``.
@@ -193,47 +190,75 @@ JUnit Test Case to MicroEJ Test Case
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The :ref:`testsuite_engine` allows to select the classes that will be
-executed, by setting the following property in the project
-``module.ivy`` file.
+executed, by adding the following configuration in the project build file:
 
-.. code-block:: xml
+.. tabs::
 
-   <ea:property name="test.run.includes.pattern" value="[MicroEJ Test Case Include Pattern]"/>
+   .. tab:: MMM (module.ivy)
 
-The following line consider all JUnit test methods of the same class as
+      .. code-block:: xml
+
+         <ea:property name="test.run.includes.pattern" value="[MicroEJ Test Case Include Pattern]"/>
+
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         tasks.test {
+            filter {
+               includeTestsMatching([MicroEJ Test Case Include Pattern])
+            }
+         }
+
+The following configuration considers all JUnit test methods of the same class as
 a single MicroEJ test case (default behavior). If at least one JUnit
 test method fails, the whole test case fails in the JUnit report.
 
-.. code-block:: xml
+.. tabs::
 
-   <ea:property name="test.run.includes.pattern" value="**/_AllTests_*.class"/>
+   .. tab:: MMM (module.ivy)
 
-The following line consider each JUnit test method as a dedicated
+      .. code-block:: xml
+
+         <ea:property name="test.run.includes.pattern" value="**/_AllTests_*.class"/>
+
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         tasks.test {
+            filter {
+               includeTestsMatching("*._AllTests_*")
+            }
+         }
+
+The following configuration considers each JUnit test method as a dedicated
 MicroEJ test case. Each test method is viewed independently in the JUnit
 report, but this may slow down the test suite execution because a new
 deployment is done for each test method.
 
-.. code-block:: xml
+.. tabs::
 
-   <ea:property name="test.run.includes.pattern" value="**/_SingleTest_*.class"/>
+   .. tab:: MMM (module.ivy)
 
-Run a Single Test Manually
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+      .. code-block:: xml
 
-Each test can be run independently as each class contains a main entry
-point.
+         <ea:property name="test.run.includes.pattern" value="**/_SingleTest_*.class"/>
 
-In the ``src-adpgenerated/junit/java`` folder, right-click on the desired
-autogenerated class (``_SingleTest_[TestCase]_[TestMethod].java``) and select
-:guilabel:`Run As` > :guilabel:`MicroEJ Application`.
+   .. tab:: Gradle (build.gradle.kts)
 
-The test is executed on the selected VEE Port and the output result is
-dumped into the console.
+      .. code-block:: java
+
+         tasks.test {
+            filter {
+               includeTestsMatching("*._SingleTest_*")
+            }
+         }
 
 .. _testsuite_options:
 
-Test Suite Options
-~~~~~~~~~~~~~~~~~~
+Test Suite Options (SDK 5 only)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The :ref:`testsuite_engine` can be configured with specific options 
 which can be added to the ``module.ivy`` file of the project running the test suite, 
@@ -253,7 +278,7 @@ test case file.
 
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2022, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

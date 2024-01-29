@@ -16,7 +16,7 @@ The following table provides links to the complete KF APIs & specification.
    * - Java APIs
      - https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/package-summary.html
    * - Specification
-     - http://www.e-s-r.net/download/specification/ESR-SPE-0020-KF-1.4-F.pdf
+     - https://repository.microej.com/packages/ESR/ESR-SPE-0020-KF-1.4-H.pdf
    * - Module
      - https://repository.microej.com/modules/ej/api/kf/
 

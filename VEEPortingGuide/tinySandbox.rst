@@ -12,18 +12,30 @@ The Tiny-Sandbox capability of the Core Engine allows to
 build a Standalone Application optimized for size. This capability is suitable
 for environments requiring a small memory footprint.
 
+.. _tinysandbox_installation:
 
 Installation
 ============
 
-Tiny-Sandbox is an option disabled by default. To enable Tiny-Sandbox of the MicroEJ Core Engine, set the property
-``mjvm.standalone.configuration`` in ``configuration.xml`` file as
-follows:
+Tiny-Sandbox is an option disabled by default. 
+To enable the Tiny-Sandbox capability of the Core Engine, set the property ``com.microej.runtime.capability`` to ``tiny`` in ``mjvm/mjvm.properties`` file.
+See the example below:
 
-``<property name="mjvm.standalone.configuration" value="tiny"/>``
+.. code-block::
 
-See section :ref:`platformCustomization` for more info on the
-``configuration.xml`` file.
+  com.microej.runtime.capability=tiny
+
+
+.. note::
+
+   Before :ref:`Architecture 8.1.0 <changelog-8.1.0>`, enabling the Tiny-Sandbox capability
+   was done by setting the property ``mjvm.standalone.configuration`` in the ``configuration.xml`` file as follows:
+
+   .. code-block::
+   
+      <property name="mjvm.standalone.configuration" value="tiny"/>
+
+   See section :ref:`platformCustomization` for more info on the ``configuration.xml`` file.
 
 
 Limitations

@@ -15,11 +15,22 @@ It can be a single event or a period of time with a start and an end.
 Event Tracing can be accessed from two APIs:
   
 - A Java API, provided by the `Trace API module`_.
-  The following dependency must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ Application project:
-      
-  .. code:: xml
-      
-     <dependency org="ej.api" name="trace" rev="1.1.0"/>
+  The following dependency must be added to the build file of the MicroEJ Application project:
+
+.. tabs::
+
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: java
+
+         implementation("ej.api:trace:1.1.0")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.api" name="trace" rev="1.1.0"/>
+     
   
 - A C API, provided by the Platform header file named ``LLTRACE_impl.h``.
 

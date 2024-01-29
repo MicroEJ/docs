@@ -21,11 +21,22 @@ The intended audience for this document is Java developers who are familiar with
 
 Getting Started
 ###############
-Create a new MicroEJ application and add the HOKA library ivy dependency to your MicroEJ application
+Create a new MicroEJ application and add the HOKA library dependency to your MicroEJ application
 
-.. code-block:: xml
+.. tabs::
 
-    <dependency org="ej.library.iot" name="hoka" rev="8.3.X"/>
+   .. tab:: Gradle (build.gradle.kts)
+
+      .. code-block:: kotlin
+
+         implementation("ej.library.iot:hoka:8.4.0")
+
+   .. tab:: MMM (module.ivy)
+
+      .. code-block:: xml
+
+         <dependency org="ej.library.iot" name="hoka" rev="8.4.0"/>
+
 
 .. code-block:: java
 

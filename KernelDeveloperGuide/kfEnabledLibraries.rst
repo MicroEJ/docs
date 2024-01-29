@@ -137,8 +137,10 @@ Among them, we can cite the following:
 
 Please contact :ref:`our support team <get_support>` for more details on usage.
 
-Implement a Security Manager Check
-----------------------------------
+.. _securitymanager_permission_check:
+
+Implement a Security Manager Permission Check
+---------------------------------------------
 
 A Multi-Sandbox enabled Foundation Library should protect Feature from accessing native resources.
 This is done by requesting a check to the current `SecurityManager`_ defined by the Kernel.
@@ -176,6 +178,7 @@ The following code is the typical code that must be written at the beginning of 
    By default, this option is disabled, so the SOAR automatically removes the code.
    This allows you to use your library in a Mono-Sandbox environment where ROM footprint matters.
    Your Kernel shall enable this option to trigger the Security Manager checks.
+   See :ref:`implement_security_policy` for more details.
 
 .. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
 

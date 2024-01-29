@@ -17,7 +17,6 @@ SECTIONS
     *(.rodata*)
     *(.rodata.microej.soar)
     *(.rodata.microej.resource.*)
-    *(.rodata.microej.features)
   } >ROM
   
   /* readwrite region initializers (mandatory) */
@@ -39,6 +38,5 @@ SECTIONS
     *(.bss.microej.runtime)
     *(.bss.microej.heap)
     *(.bss.microej.immortals)
-    *(.bss.microej.features)
   } >RAM
 }

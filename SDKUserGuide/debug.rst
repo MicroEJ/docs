@@ -3,6 +3,10 @@
 Debug an Application
 ====================
 
+.. note::
+   This page is releated to the version 5 and lower of the SDK. 
+   If you use the SDK 6, please refer to the page :ref:`sdk_6_debug_on_simulator`.
+
 Debug on Simulator
 ------------------
 
@@ -51,6 +55,9 @@ If you are unfamiliar with Java debugging or Eclipse IDE, see `Debugging the Ecl
 
 .. _Debugging the Eclipse IDE for Java Developers:  https://www.eclipse.org/community/eclipse_newsletter/2017/june/article1.php
 
+You can also debug with IntelliJ IDEA. For more information on IntelliJ IDEA Remote debug process, see `IntelliJ IDEA Remote debug`_
+
+.. _IntelliJ IDEA Remote debug: https://www.jetbrains.com/help/idea/tutorial-remote-debug.html
 
 Get Library Sources
 -------------------

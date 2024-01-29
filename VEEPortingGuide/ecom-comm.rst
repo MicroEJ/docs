@@ -4,6 +4,12 @@
 ECOM Comm
 =========
 
+.. warning::
+
+    This chapter describes the Foundation Library ``ECOM-COMM-1.1``.
+    
+    ``ECOM-COMM-1.1`` is deprecated in favor of ``ECOM-COMM-2.0`` and has been removed from :ref:`Architecture 8.0.0 <changelog-8.0.0>`.
+    See :ref:`architecture7_migration_ecom` for more details.
 
 Principle
 =========

@@ -77,10 +77,20 @@ class on the same ``example`` package.
 
 To create a new MicroEJ mock project:
 
-- Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Module Project`,
-- Fill the module information (project name, module organization, name and revision),
-- Select the :guilabel:`microej-mock` skeleton,
-- Click on :guilabel:`Finish`.
+.. tabs::
+
+   .. tab:: SDK 6
+
+      - :ref:`Create a J2SE Library project <sdk_6_create_project_configure_project>`,
+      - In the ``build.gradle.kts`` file, change the ``com.microej.gradle.j2se-library`` plugin to ``com.microej.gradle.mock``.
+
+   .. tab:: SDK 5
+
+      - Select :guilabel:`File` > :guilabel:`New` > :guilabel:`Module Project`,
+      - Fill the module information (project name, module organization, name and revision),
+      - Select the :guilabel:`microej-mock` skeleton,
+      - Click on :guilabel:`Finish`.
+
 
 The following code is the required ``Sensor`` class of the created Mock
 project:
@@ -123,7 +133,8 @@ project:
 
 .. note::
 
-   The visibility of the native method implemented in the mock must be ``public`` regardless of the visibility of the native method in the application.  Otherwise the following exception is raised: ``java.lang.UnsatisfiedLinkError: No such method in remote class``.
+   The visibility of the native method implemented in the mock must be ``public`` regardless of the visibility of the native method in the application.
+   Otherwise the following exception is raised: ``java.lang.UnsatisfiedLinkError: No such method in remote class``.
 
 
 Mocks Design Support
@@ -271,25 +282,54 @@ stop() method.
 Dependencies
 ============
 
-The HIL Engine API is automatically provided by the ``microej-mock`` project skeleton.
+.. tabs::
+
+   .. tab:: SDK 6
+
+      - Copy the ``HILEngine.jar`` from the VEE Port into a project folder, for example in ``libs``.
+      - Add a dependency to this local library in the ``build.gradle.kts`` file:
+
+         .. code-block:: kotlin
+
+            implementation(files("libs/HILEngine.jar"))
+
+   .. tab:: SDK 5
+
+      The HIL Engine API is automatically provided by the ``microej-mock`` project skeleton.
 
 Installation
 ============
 
-First create a new :ref:`module project <mmm_module_skeleton>` using the ``microej-mock`` skeleton.
+.. tabs::
 
-.. figure:: images/mock-skeleton.png
-   :alt: Mock Project Structure
-   :align: center
+   .. tab:: SDK 6
 
-Once implemented, right-click on the repository project and select ``Build Module``.
+      - :ref:`Create a J2SE Library project <sdk_6_create_project_configure_project>`,
+      - In the ``build.gradle.kts`` file, change the ``com.microej.gradle.j2se-library`` plugin to ``com.microej.gradle.mock``.
+      - Build and publish the Mock by executing the Gradle ``publish`` task.
 
-Once the module is built, the mock can be installed in a Platform in one of the two ways:
+      Once the module is built, the mock can be installed in a VEE Port in one of the two ways:
 
-- by adding the mock module as a regular Platform :ref:`module dependency <mmm_module_dependencies>` (if your Platform configuration project contains a ``module.ivy`` file), 
-- or by manually copying the JAR file ``[mock_project]\target~\rip\mocks\[mock_name].jar`` to the :ref:`Platform configuration <platform_configuration_creation>` mock dropins folder ``dropins/mocks/dropins/``.
+      - by adding the mock module as a regular VEE Port :ref:`module dependency <mmm_module_dependencies>` (if your VEE Port configuration project contains a ``module.ivy`` file), 
+      - or by manually copying the JAR file ``[mock_project]/build/libs/[mock_name]-[mock_version].jar`` to the :ref:`VEE Port configuration <platform_configuration_creation>` mock dropins folder ``dropins/mocks/dropins/``.
 
-Make sure the option :ref:`resolve_foundation_libraries_in_workspace` is enabled to use the mock without having to install it after each modification during development.
+   .. tab:: SDK 5
+
+      First create a new :ref:`module project <mmm_module_skeleton>` using the ``microej-mock`` skeleton.
+
+      .. figure:: images/mock-skeleton.png
+         :alt: Mock Project Structure
+         :align: center
+
+      Once implemented, right-click on the repository project and select ``Build Module``.
+
+      Once the module is built, the mock can be installed in a VEE Port in one of the two ways:
+
+      - by adding the mock module as a regular VEE Port :ref:`module dependency <mmm_module_dependencies>` (if your VEE Port configuration project contains a ``module.ivy`` file), 
+      - or by manually copying the JAR file ``[mock_project]/target~/rip/mocks/[mock_name].jar`` to the :ref:`VEE Port configuration <platform_configuration_creation>` mock dropins folder ``dropins/mocks/dropins/``.
+
+      Make sure the option :ref:`resolve_foundation_libraries_in_workspace` is enabled to use the mock without having to install it after each modification during development.
+
 
 Use
 ===
@@ -301,23 +341,24 @@ Mock.
 JavaFX
 =======
 
-`JavaFX <https://openjfx.io/>`_ is an open-source library for creating modern Java user interfaces that is highly portable. It can be used to quickly create graphical Mocks for your Platform.
+`JavaFX <https://openjfx.io/>`_ is an open-source library for creating modern Java user interfaces that is highly portable. It can be used to quickly create graphical Mocks for your VEE Port.
 
 - If your SDK is running on JDK 8, the Oracle JDK contains JavaFX, so this version allows you to use it right now in your project.
 
-- If your SDK is running on JDK 11, JavaFX must be added as an additional dependency to your Mock and Platform project. For that, MicroEJ Corp. provides a ready-to-use packaged module for all supported OS versions.
+- If your SDK is running on JDK 11, JavaFX must be added as an additional dependency to your Mock and VEE Port project. 
+  For that, MicroEJ Corp. provides a ready-to-use packaged module for all supported OS versions.
 
 ::
 
     <dependency org="com.microej.tool" name="javafx" rev="1.2.0" />
 
-The Module serves two purposes, depending on whether it is added to a Mock or a Platform project:
+The Module serves two purposes, depending on whether it is added to a Mock or a VEE Port project:
 
 - In a Mock project, JavaFX is added as a compile-time dependency, its content is not included in the Mock.
-- If your Platform contains at least one Mock, JavaFX must be added to the Platform project in order to embed its content in the Platform.  
+- If your VEE Port contains at least one Mock, JavaFX must be added to the VEE Port project in order to embed its content in the VEE Port.  
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

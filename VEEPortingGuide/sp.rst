@@ -28,7 +28,7 @@ blocks: chunks of RAM.
    * - Java APIs
      - https://repository.microej.com/javadoc/microej_5.x/apis/ej/sp/package-summary.html
    * - Specification
-     - http://e-s-r.net/download/specification/ESR-SPE-0014-SP-2.0-A.pdf
+     - https://repository.microej.com/packages/ESR/ESR-SPE-0014-SP-2.0-B.pdf
    * - Module
      - https://repository.microej.com/modules/ej/api/sp/
 
@@ -39,7 +39,7 @@ Functional Description
 The usage of the Shielded Plug (SP) starts with the definition of a
 database. The implementation uses an
 XML file description to describe the database; the syntax follows the
-one proposed by the `[SP] specification <http://e-s-r.net/download/specification/ESR-SPE-0014-SP-2.0-A.pdf>`_.
+one proposed by the `[SP] specification <https://repository.microej.com/packages/ESR/ESR-SPE-0014-SP-2.0-B.pdf>`_.
 
 Once this database is defined, it can be accessed within the MicroEJ
 Application or the C application. The ``SP`` Foundation Library is
