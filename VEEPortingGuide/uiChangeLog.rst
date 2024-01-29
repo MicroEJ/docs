@@ -19,6 +19,7 @@ MicroUI
 **Changed**
 
 * Change the semantic of the content of the drawing buffer after a flush: the *past* is not systematically restored.
+* Clarify the message when a generic event generator specified in the VEE Port is not available in the application classpath.
 
 **Fixed**
 
