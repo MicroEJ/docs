@@ -161,7 +161,7 @@ BSP with DMA2D
 
 	* Follow the migration steps of "BSP without GPU".
 	* Check the content of the configuration file ``ui_drawing_dma2d_configuration.h`` (a versioning has been added).
-	* Comment the line ``#error "This header must [...]"``.
+	* Comment the line ``#error [...]"``.
 	* According to the display Buffer Refresh Strategy (BRS) XXX_TODO link, unlock the MicroUI Graphics Engine in the LCD interrupt or in the DMA2D memcpy callback (see :ref:`section_ui_c_module_microui_dma2d`).
 
 BSP with VG-Lite
@@ -176,6 +176,13 @@ BSP with VG-Lite
 	* Follow the migration steps of "BSP without GPU".
 	* Migrate VG-Lite library to the version **3.0.15_rev7**.
 	* Modify the VG-Lite library **3.0.15_rev7** by applying the patch ``3.0.15_rev7.patch`` (see README.md near patch file for more information).
+	* In the file ``vglite_window.c``, add the function ``VGLITE_CancelSwapBuffers()`` and its prototype in ``vglite_window.h``:
+
+	.. code-block:: c
+
+			void VGLITE_CancelSwapBuffers(void) {   
+				fb_idx = fb_idx == 0 ? (APP_BUFFER_COUNT - 1) : (fb_idx ) - 1;
+			}
 
 BSP with NemaGFX
 """"""""""""""""
