@@ -664,6 +664,7 @@ Sentinel API dynamic library not found (code 400)
 """""""""""""""""""""""""""""""""""""""""""""""""
 
 The following error occurred when the library ``hasp_[os]_37102.[ext]`` has not been found. Please refer to :ref:`sentinel_rte_installation`. 
+Specifically, if you are on Linux, check the library is readable with the command ``file libhasp_linux_x86_64_37102.so``.
 
 Sentinel key not found (code 7)
 """""""""""""""""""""""""""""""
