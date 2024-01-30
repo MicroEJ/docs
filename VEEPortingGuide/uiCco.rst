@@ -111,7 +111,7 @@ Then it uses an implementation of ``microui_event_decoder.h`` to describe the ev
 Usage (to enable the events logger):
 
 	* Add all C files in the BSP project.
-	* Configures the options in ``microui_event_decoder_conf.h`` (by default the logger is disabled).
+	* Configure the options in ``microui_event_decoder_conf.h`` (by default the logger is disabled).
 
 Buffer Refresh Strategy
 -----------------------
@@ -124,10 +124,14 @@ This part provides three Buffer Refresh Strategies (BRS): ``predraw``, ``single`
 Refer to the chapter BRS XXX_TODO add link to have more information on these strategies.
 These strategies are optional; when no strategy is selected, the BSP must provide its own strategy.
 
+Some strategies require an implementation of ``UI_DISPLAY_BRS_restore()`` (see ``ui_display_brs.h``).
+A weak implementation is available; this implementation uses the function ``memcpy()``.
+
 Usage:
 
 	* Add all C files in the BSP project (whatever the strategy).
-	* Configures the options in ``ui_display_brs_configuration.h``.
+	* Configure the options in ``ui_display_brs_configuration.h``.
+	* (optional) Implement ``UI_DISPLAY_BRS_restore()`` (using a GPU for instance).  
 
 .. _com.microej.clibrary.llimpl#microui: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/
 
@@ -136,25 +140,197 @@ Usage:
 C Module: MicroUI Over DMA2D
 ============================
 
-This C module is a specific implementation of the C module MicroUI over STM32 DMA2D (Chrom-ART Graphics Accelerator).
-It implements a set of drawings over the official Chrom-ART Graphics Accelerator API: ``ui_drawing_dma2d.c``.
+* Implements some functions of ``ui_drawing.h`` (see above).
+* C file: ``ui_drawing_dma2d.c``.
+* Status: optional.
 
-Accelerated Drawings
---------------------
+This C module is a specific implementation of the C module MicroUI over STM32 DMA2D (Chrom-ART Graphics Accelerator):
 
-The following table describes the accelerated features:
-
-+----------------+------------------------------------------------------+
-| Feature        | Comment                                              |
-+================+======================================================+
-| Fill rectangle |                                                      |
-+----------------+------------------------------------------------------+
-| Draw image     | ARGB8888, RGB888, RGB565, ARGB1555, ARGB4444, A8, A4 |
-+----------------+------------------------------------------------------+
-| Flush (copy)   | Copy of data from back buffer to frame buffer        |
-+----------------+------------------------------------------------------+
+	* It implements a set of drawings over the official Chrom-ART Graphics Accelerator API.
+	* It is compatible with several STM32 MCU: ``STM32F4XX```, ``STM32F7XX``` and ``STM32H7XX```.
+	* It manages several configurations of memory cache.
+	* It is compatible with the :ref:`multiple destination formats <section_bufferedimage_cco>` (but it manages only one destination format).
 
 This C module is available on the :ref:`central_repository`: `com.microej.clibrary.llimpl#display-dma2d`_.
+
+Usage:
+
+	* Add the C file in the BSP project.
+	* Add the BSP global define ``DRAWING_DMA2D_BPP`` to specify the destination format: 16, 24 or 32 respectively ``DMA2D_RGB565``, ``DMA2D_RGB888`` and ``DMA2D_ARGB8888``.
+	* Call ``UI_DRAWING_DMA2D_initialize()`` from ``LLUI_DISPLAY_IMPL_initialize()``.
+
+Drawings
+--------
+
+The following table describes the accelerated drawings:
+
++----------------+-----------------------------------------------------------+
+| Feature        | Comment                                                   |
++================+===========================================================+
+| Fill rectangle |                                                           |
++----------------+-----------------------------------------------------------+
+| Draw image     | ARGB8888, RGB888, RGB565, ARGB1555, ARGB4444, A8, A4 [1]_ |
++----------------+-----------------------------------------------------------+
+
+.. [1] The first and last odd columns are drawn in software (GPU memory alignment constraints). 
+
+Cache
+-----
+
+Some STM32 MCU use a memory cache. 
+
+This cache must be cleared before using the DMA2D: 
+
+	* before the call to ``HAL_DMA2D_Start_IT()``.
+	* before the call to ``HAL_DMA2D_BlendingStart_IT()``.
+
+Usage:
+
+	* Check the configuration of the define ``DRAWING_DMA2D_CACHE_MANAGEMENT`` in ``ui_drawing_dma2d_configuration.h``.
+
+Buffer Refresh Strategy
+-----------------------
+
+This C Module is compatible with the Buffer Refresh Strategies (BRS) XXX_TODO link ``predraw``, ``single`` and ``legacy`` (switch).
+All strategies use the ``UI_DRAWING_DMA2D_xxx_memcpy()`` function.
+
+**BRS "PreDraw"**
+
+This strategy requires to copy some regions from the LCD frame buffer to the back buffer on demand (function ``UI_DISPLAY_BRS_restore()``, see above).
+To perform these copies, this CCO uses the ``UI_DRAWING_DMA2D_xxx_memcpy()`` functions.
+
+Usage:
+
+	* The function ``UI_DRAWING_DMA2D_IRQHandler()`` must be call from the DMA2D IRQ routine.
+	* The function ``UI_DRAWING_DMA2D_memcpy_callback()`` should not be implemented (useless).
+
+Example of implementation:
+
+.. code-block:: c
+
+      void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length) {
+         
+         // store the flush identifier
+         g_current_flush_identifier = flush_identifier;
+         
+         // change the LCD buffer address
+         HAL_LTDC_SetAddress(&hLtdcHandler, (uint32_t)LLUI_DISPLAY_getBufferAddress(&gc->image), LTDC_ACTIVE_LAYER);
+         
+         // ask an interrupt for next LCD tick
+         lcd_enable_interrupt();
+      }
+
+      void LTDC_IRQHandler(LTDC_HandleTypeDef *hltdc) {
+         // LTDC register reload
+         __HAL_LTDC_ENABLE_IT(hltdc, LTDC_IT_RR);
+         
+         // notify the MicroUI Graphics Engine 
+         uint8_t* buffer = (uint8_t*)(BACK_BUFFER == LTDC_Layer->CFBAR ? FRAME_BUFFER : BACK_BUFFER);
+         LLUI_DISPLAY_setDrawingBuffer(g_current_flush_identifier, buffer, from_isr);
+      }
+
+      void DMA2D_IRQHandler(void) {
+         // call CCO DMA2D function
+         UI_DRAWING_DMA2D_IRQHandler();
+      }
+
+**BRS "Single"**
+
+Usually, this strategy is used when the LCD frame buffer cannot be mapped dynamically: the same buffer is always used as back buffer.
+However, the LCD frame buffer can be mapped on a memory buffer that is in the CPU addresses range.
+In that case, the ``UI_DRAWING_DMA2D_xxx_memcpy()`` functions can be used to copy the content of the back buffer to the LCD frame buffer.
+
+Usage:
+
+	* The function ``UI_DRAWING_DMA2D_configure_memcpy()`` must be called from the implementation of ``LLUI_DISPLAY_IMPL_flush()``.
+	* The function ``UI_DRAWING_DMA2D_start_memcpy()`` must be call from the LCD controller IRQ routine.
+	* The function ``UI_DRAWING_DMA2D_IRQHandler()`` must be call from the DMA2D IRQ routine.
+	* The function ``UI_DRAWING_DMA2D_memcpy_callback()`` must be implemented to unlock the MicroUI Graphics Engine.
+
+Example of implementation:
+
+.. code-block:: c
+
+      void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length) {
+         
+         // store the flush identifier
+         g_current_flush_identifier = flush_identifier;
+         
+         // configure the copy to launch at next LCD tick
+         UI_DRAWING_DMA2D_configure_memcpy(LLUI_DISPLAY_getBufferAddress(&gc->image), (uint8_t*)LTDC_Layer->CFBAR, regions[0].x1, regions[0].y1, regions[0].x2, regions[0].y2, RK043FN48H_WIDTH, &dma2d_memcpy);
+         
+         // ask an interrupt for next LCD tick
+         lcd_enable_interrupt();
+      }
+
+      void LTDC_IRQHandler(LTDC_HandleTypeDef *hltdc) {
+         // clear interrupt flag
+         LTDC->ICR = LTDC_IER_FLAG;
+
+         // launch the copy from back buffer to frame buffer
+         UI_DRAWING_DMA2D_start_memcpy(&dma2d_memcpy);
+      }
+
+      void DMA2D_IRQHandler(void) {
+         // call CCO DMA2D function
+         UI_DRAWING_DMA2D_IRQHandler();
+      }
+
+      void UI_DRAWING_DMA2D_memcpy_callback(bool from_isr) {
+         // notify the MicroUI Graphics Engine 
+         LLUI_DISPLAY_setDrawingBuffer(g_current_flush_identifier, (uint8_t*)BACK_BUFFER, from_isr);
+      }
+
+**BRS "Legacy"**
+
+This strategy requires to copy the past (the previous drawings) from the LCD frame buffer to the back buffer before unlocking the MicroUI Graphics Engine.
+To perform this copy, this CCO uses the ``UI_DRAWING_DMA2D_xxx_memcpy()`` functions.
+At the end of the copy, the MicroUI Graphics Engine is unlocked: a new drawing can be performed in the new back buffer.
+
+Usage:
+
+	* The function ``UI_DRAWING_DMA2D_configure_memcpy()`` must be called from the implementation of ``LLUI_DISPLAY_IMPL_flush()``.
+	* The function ``UI_DRAWING_DMA2D_start_memcpy()`` must be call from the LCD controller IRQ routine.
+	* The function ``UI_DRAWING_DMA2D_IRQHandler()`` must be call from the DMA2D IRQ routine.
+	* The function ``UI_DRAWING_DMA2D_memcpy_callback()`` must be implemented to unlock the MicroUI Graphics Engine.
+
+Example of implementation:
+
+.. code-block:: c
+
+      void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length) {
+         
+         // store the flush identifier
+         g_current_flush_identifier = flush_identifier;
+         
+         // configure the copy to launch at next LCD tick
+         UI_DRAWING_DMA2D_configure_memcpy(LLUI_DISPLAY_getBufferAddress(&gc->image), (uint8_t*)LTDC_Layer->CFBAR, regions[0].x1, regions[0].y1, regions[0].x2, regions[0].y2, RK043FN48H_WIDTH, &dma2d_memcpy);
+         
+         // change the LCD buffer address
+         HAL_LTDC_SetAddress(&hLtdcHandler, (uint32_t)LLUI_DISPLAY_getBufferAddress(&gc->image), LTDC_ACTIVE_LAYER);
+         
+         // ask an interrupt for next LCD tick
+         lcd_enable_interrupt();
+      }
+
+      void HAL_LTDC_ReloadEventCallback(LTDC_HandleTypeDef *hltdc) {
+         // LTDC register reload
+         __HAL_LTDC_ENABLE_IT(hltdc, LTDC_IT_RR);
+
+         // launch the copy from new frame buffer to new back buffer
+         UI_DRAWING_DMA2D_start_memcpy(&dma2d_memcpy);
+      }
+
+      void DMA2D_IRQHandler(void) {
+         // call CCO DMA2D function
+         UI_DRAWING_DMA2D_IRQHandler();
+      }
+
+      void UI_DRAWING_DMA2D_memcpy_callback(bool from_isr) {
+         // notify the MicroUI Graphics Engine 
+         uint8_t* buffer = (uint8_t*)(BACK_BUFFER == LTDC_Layer->CFBAR ? FRAME_BUFFER : BACK_BUFFER);
+         LLUI_DISPLAY_setDrawingBuffer(g_current_flush_identifier, buffer, from_isr);
+      }
 
 .. _com.microej.clibrary.llimpl#display-dma2d: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/
 
