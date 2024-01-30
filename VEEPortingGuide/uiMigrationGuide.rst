@@ -160,6 +160,9 @@ BSP with DMA2D
 * *[BSP project]*
 
 	* Follow the migration steps of "BSP without GPU".
+	* Check the content of the configuration file ``ui_drawing_dma2d_configuration.h`` (a versioning has been added).
+	* Comment the line ``#error "This header must [...]"``.
+	* According to the display Buffer Refresh Strategy (BRS) XXX_TODO link, unlock the MicroUI Graphics Engine in the LCD interrupt or in the DMA2D memcpy callback (see :ref:`section_ui_c_module_microui_dma2d`).
 
 BSP with VG-Lite
 """"""""""""""""
