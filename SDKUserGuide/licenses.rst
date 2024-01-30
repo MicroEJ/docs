@@ -613,12 +613,12 @@ Setup Your Environment
 
 **Linux**
 
-- Get ``MicroEJ_library\libhasp_linux_x86_64_37102.so`` file and copy it in a directory of your choice
+- Get ``MicroEJ_library/libhasp_linux_x86_64_37102.so`` file and copy it in a directory of your choice
 - Set ``LD_LIBRARY_PATH`` variable with command ``export LD_LIBRARY_PATH=<your_directory>:$LD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK
 
 **Mac**
 
-- Get ``MicroEJ_library\hasp_darwin_37102.dylib`` file and copy it in a directory of your choice
+- Get ``MicroEJ_library/hasp_darwin_37102.dylib`` file and copy it in a directory of your choice
 - Set ``DYLD_LIBRARY_PATH`` variable with command ``export DYLD_LIBRARY_PATH=<your_directory>:$DYLD_LIBRARY_PATH``. This modification has to be setup at session startup  (e.g: using ``.bashrc`` file) to ensure that OS is properly configured before running the SDK
 
 .. _sentinel_activate_license:
