@@ -448,7 +448,9 @@ The following table describes the accelerated drawings:
 Compatibility With MCU i.MX RT595
 ---------------------------------
 
-The previous versions of the C Module Over VGLite included an implementation of the Low-Level API ``LLUI_DISPLAY_impl.h``.
+**UI Pack 13**
+
+The versions of the C Module Over VGLite (before ``7.0.0``) included an implementation of the Low-Level API ``LLUI_DISPLAY_impl.h``.
 This support has been extracted into a dedicated C Module since the version ``7.0.0``.
 The dedicated C Module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microui-mimxrt595-evk`_.
 
@@ -456,6 +458,10 @@ Only the C Module `com.microej.clibrary.llimpl#microui-vglite`_ is useful to tar
 The C Module `com.microej.clibrary.llimpl#microui-mimxrt595-evk`_ only gives an example of an implementation compatible with the MCU i.MX RT595 MCU.
 
 .. note:: For more information, see the :ref:`migration notes<section_ui_migrationguide_13.6_mimxrt595evk>`.
+
+**UI Pack 14**
+
+Since UI Pack 14, this C module is not compatible anymore and not maintained.
 
 .. _com.microej.clibrary.llimpl#microui-vglite: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/
 .. _com.microej.clibrary.llimpl#microui-mimxrt595-evk: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-mimxrt595-evk/
