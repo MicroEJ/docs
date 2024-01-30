@@ -34,15 +34,100 @@ The UI Pack and its header files are available on the Central Repository: https:
 C Module: MicroUI
 =================
 
-This generic C module provides an implementation of all MicroUI Abstraction Layer APIs.
-This C module is **mandatory** and provides default implementations for:
+This C module is divided in several parts and each part provides an implementation of some MicroUI Abstraction Layer APIs.
+This C module is **mandatory** (the C files must be compiled in the BSP) but some C files are optional.
 
-* ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``: see :ref:`section_display_llapi` (it manages the synchronization with the Graphics Engine and redirects all drawings to an implementation of ``ui_drawing.h``),
-* Images heap allocator: see :ref:`section_image_loader_memory`,
-* ``LLUI_INPUT_IMPL_log_queue_xxx()``: see :ref:`section_inputs_eventbuffer`.
-
-See :ref:`UI Pack <section_display_llapi>` chapter to have more information.
+See :ref:`UI Pack <section_display_llapi>` chapter to have more information on the MicroUI Abstraction Layer APIs.
 This C module is available on the :ref:`central_repository`: `com.microej.clibrary.llimpl#microui`_.
+
+Drawings
+--------
+
+* Implements: ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``.
+* C files: ``LLUI_PAINTER_impl.c``, ``LLDW_PAINTER_impl.c``, ``ui_drawing_stub.c``, ``ui_drawing.c`` and ``ui_image_drawing.c``.
+* Status: mandatory.
+
+The aim of this part is to facilitate the MicroUI Painter classes implementation:
+
+	1. It manages the synchronization with the Graphics Engine (see ``LLUI_DISPLAY_requestDrawing()``).
+	2. It checks the drawing parameters: clip, opacity, thickness, fade, image status, etc.
+	3. It logs the drawing	(see :ref:`microui_traces`).
+	4. It deports the rendering to ``ui_drawing.h``.
+
+The implementation of ``ui_drawing.h`` depends on several options:
+
+	* If the BSP provides or not a :ref:`renderer <section_drawings_cco>` (software and / or hardware as a GPU),
+	* If the BSP is configured to manage :ref:`several destination formats <section_bufferedimage_cco>`,
+	* If the BSP is configured to manage :ref:`custom image formats <section_renderer_cco>`.
+
+Usage:
+
+	* Add all C files in the BSP project.
+
+Images Heap
+-----------
+
+* Implements the functions of	``LLUI_DISPLAY_impl.h`` whose prefix is ``LLUI_DISPLAY_IMPL_image_heap_``.
+* C file: ``LLUI_DISPLAY_HEAP_impl.c``.
+* Status: optional.
+
+This part is optional: the MicroUI Graphics Engine already includes an :ref:`section_image_loader_memory` allocator. 
+Like MicroUI Graphics Engine's images heap allocator, the C module's images allocator is a best fit allocator. 
+This kind of allocator has the following constraints: 
+
+	* It requires a header at the beginning of heap section.
+	* It adds a header and a footer for each allocated block.
+	* It produces memory fragmentation: it may not not allow to allocate a block whose size is equal to the free memory size.
+
+Contrary to the Graphics Engine's allocator, the C module's allocator adds some utility functions to get information about the heap: 
+	 
+	 * total size
+	 * free size
+	 * number of allocated blocks.
+
+This allocator and the one in the Graphics Engine can be replaced by a third-party one.
+
+Usage:
+
+	 * To use the Graphics Engine's allocator, do not add the file ``LLUI_DISPLAY_HEAP_impl.c`` in the BSP project.
+	 * To use the C module's allocator, add the file ``LLUI_DISPLAY_HEAP_impl.c`` in the BSP project.
+	 * To use a third-party allocator, do not add the file ``LLUI_DISPLAY_HEAP_impl.c`` in the BSP project and implements the ``LLUI_DISPLAY_IMPL_image_heap_xxx`` functions.
+
+Events Logger
+-------------
+
+* Implements the functions of ``LLUI_INPUT_impl.h`` whose prefix is ``LLUI_INPUT_IMPL_log_``.
+* C files: ``LLUI_INPUT_LOG_impl.c`` and ``microui_event_decoder.c``.
+* Status: optional.
+
+This part is only mandatory when the BSP is calling ``LLUI_INPUT_dump()``, see :ref:`section_inputs_eventbuffer`.
+If not included, the call to ``LLUI_INPUT_dump()`` performs nothing. 
+Its aim is to log the MicroUI events and to provide an events dumper. 
+
+The logger adds some metadata to each MicroUI event in a dedicated array. 
+When the BSP is calling ``LLUI_INPUT_dump()``, the logger is using its data to decode the events. 
+Then it uses an implementation of ``microui_event_decoder.h`` to describe the events.
+
+Usage (to enable the events logger):
+
+	* Add all C files in the BSP project.
+	* Configures the options in ``microui_event_decoder_conf.h`` (by default the logger is disabled).
+
+Buffer Refresh Strategy
+-----------------------
+
+* Implements the functions of ``LLUI_DISPLAY_impl.h`` related to the BRS XXX_TODO add link: ``LLUI_DISPLAY_IMPL_refresh()``, ``LLUI_DISPLAY_IMPL_notify_drawing_region()`` and ``LLUI_DISPLAY_IMPL_notify_dirty_region()``.
+* C files: ``ui_display_brs_legacy.c``, ``ui_display_brs_predraw.c``, ``ui_display_brs_single.c``, ``ui_display_brs.c`` and ``ui_rect_util.c``.
+* Status: optional.
+
+This part provides three Buffer Refresh Strategies (BRS): ``predraw``, ``single`` and ``legacy``.
+Refer to the chapter BRS XXX_TODO add link to have more information on these strategies.
+These strategies are optional; when no strategy is selected, the BSP must provide its own strategy.
+
+Usage:
+
+	* Add all C files in the BSP project (whatever the strategy).
+	* Configures the options in ``ui_display_brs_configuration.h``.
 
 .. _com.microej.clibrary.llimpl#microui: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui/
 
