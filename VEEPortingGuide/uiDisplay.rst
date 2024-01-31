@@ -1418,24 +1418,6 @@ GPU Synchronization
 
 When a :ref:`GPU is used to perform a drawing<section_drawings_cco_custom>`, the caller (MicroUI painter native method) returns immediately. This allows the application to perform other operations during the GPU rendering. However, as soon as the application is trying to perform another drawing, the previous drawing made by the GPU must be done. The Graphics Engine is designed to be synchronized with the GPU asynchronous drawings by defining some points in the rendering timeline. It is not optional: MicroUI considers a drawing is fully done when it starts a new one. The end of GPU drawing must notify the Graphics Engine calling ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``.
 
-Antialiasing
-============
-
-Fonts
------
-
-The antialiasing mode for the fonts concerns only the fonts with more than 1 bit per pixel (see :ref:`section_fontgen`).
-
-Background Color
-----------------
-
-For each pixel to draw, the antialiasing process blends the foreground color with a background color. This background color can be specified or not by the application:
-
-- *specified*: The background color is fixed by the application  (`GraphicsContext.setBackgroundColor()`_).
--  *not specified*: The background color is the original color of the destination pixel (a "read pixel" operation is performed for each pixel).
-
-.. _GraphicsContext.setBackgroundColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setBackgroundColor-int-
-
 .. _display_lut:
 
 CLUT
