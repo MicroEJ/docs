@@ -1532,11 +1532,6 @@ How to get the file:
 
 The linker file holds five tables, one for each use case, respectively ``IMAGE_UTILS_TABLE_COPY``, ``IMAGE_UTILS_TABLE_COPY_WITH_ALPHA``, ``IMAGE_UTILS_TABLE_DRAW``, ``IMAGE_UTILS_TABLE_SET`` and ``IMAGE_UTILS_TABLE_READ``. For each table, a comment describes how to remove an option (when possible) or how to replace an option by a generic function (if available). 
 
-Library ej.api.Drawing
-======================
-
-This Foundation Library provides additional drawing APIs. This library is fully integrated in Display module. It requires an implementation of its Abstraction Layer API: ``LLDW_PAINTER_impl.h``. These functions are implemented in the Abstraction Layer implementation module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_. Like MicroUI painter's natives, the functions are redirected to ``dw_drawing.h``. A default implementation of these functions is available in Software Algorithms module (in weak). This allows the BSP to override one or several APIs.
-
 .. _section_display_implementation:
 
 Dependencies

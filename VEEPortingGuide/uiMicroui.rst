@@ -52,6 +52,14 @@ Refer to the chapter :ref:`section_ui_simulation`.
 .. _Display.getDisplay(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#getDisplay--
 .. _Leds.getNumberOfLeds(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/led/Leds.html#getNumberOfLeds--
 
+Library ej.api.Drawing
+======================
+
+This Foundation Library provides additional drawing APIs. 
+This library is fully integrated in :ref:`section_display` module. 
+
+.. It requires an implementation of its Abstraction Layer API: ``LLDW_PAINTER_impl.h``. These functions are implemented in the Abstraction Layer implementation module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_. Like MicroUI painter's natives, the functions are redirected to ``dw_drawing.h``. A default implementation of these functions is available in Software Algorithms module (in weak). This allows the BSP to override one or several APIs.
+
 Thread
 =======
 
