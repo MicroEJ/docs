@@ -323,7 +323,11 @@ In case of the drawing is done after the call to ``gpu_draw_line()``, the status
    
    * If the update of the dirty area is not performed, the next call to `Display.flush()`_ will not call the ``LLUI_DISPLAY_IMPL_flush()`` function.
    * If the drawing status is not set to the Graphics Engine, the global VEE execution is locked: the Graphics Engine waits indefinitely for the status and cannot perform the next drawing.
-   * In case of the drawing is *asynchronous*, the GPU interrupt routine (or an OS task) has to notify the Graphics Engine of the end of the drawing by calling ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd``.
+
+GPU Synchronization
+-------------------
+
+When a :ref:`GPU is used to perform a drawing<section_drawings_cco_custom>`, the caller (MicroUI painter native method) returns immediately. This allows the application to perform other operations during the GPU rendering. However, as soon as the application is trying to perform another drawing, the previous drawing made by the GPU must be done. The Graphics Engine is designed to be synchronized with the GPU asynchronous drawings by defining some points in the rendering timeline. It is not optional: MicroUI considers a drawing is fully done when it starts a new one. The end of GPU drawing must notify the Graphics Engine calling ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``.
 
 Extended C Modules
 ------------------
