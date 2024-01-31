@@ -8,15 +8,11 @@ Display
 Principle
 =========
 
-The Display module contains the C part of the MicroUI implementation which manages graphical displays. This module is composed of three elements:
+The Display module contains the C part of the MicroUI implementation which manages graphical displays. This module is composed of three elements:
 
 - the C part of MicroUI Display API (a built-in C archive) called Graphics Engine,
 - an implementation of Abstraction Layer APIs for the displays (LLUI_DISPLAY) that the BSP must provide (see :ref:`LLDISPLAY-API-SECTION`),
 - an implementation of Abstraction Layer APIs for MicroUI drawings.
-
-
-Functional Description
-======================
 
 The Display module implements the MicroUI graphics framework. This framework is constituted of several notions: the display characteristics (size, format, backlight, contrast, etc.), the drawing state machine (render, flush, wait flush completed), the images life cycle, the fonts and drawings. The main part of the Display module is provided by a built-in C archive called Graphics Engine. This library manages the drawing state machine mechanism, the images and fonts. The display characteristics and the drawings are managed by the ``LLUI_DISPLAY`` implementation.   
 
@@ -26,6 +22,18 @@ In this case, the BSP has to perform a very simple implementation (four function
 MicroUI library also gives the possibility to perform some additional drawings which are not available as API in MicroUI library. The Graphics Engine gives a set of functions to synchronize the drawings between them, to get the destination (and sometimes source) characteristics, to call internal software drawings, etc. 
 
 Front Panel (simulator Graphics Engine part) gives the same possibilities. Same constraints can be applied, same drawings can be overridden or added, same software drawing rendering is performed (down to the pixel).
+
+Chapters Organization
+=====================
+
+For more convenience, this chapter only describes how a display device works and how to connect it to the MicroUI Graphics Engine. 
+Dedicated chapters deal with related concepts:
+
+* :ref:`section_drawings`: how the drawings are performed, the use of a GPU, etc.
+* :ref:`section_image_menu`: how the images are generated and drawn.
+* :ref:`section_fonts`: how the fonts are generated and drawn.
+* :ref:`section_ui_cco`: how the BSP extends the Graphics Engine.
+* :ref:`section_ui_simulation`: how the Graphics Engine is simulated.
 
 .. _section_display_modes:
 
@@ -1445,69 +1453,6 @@ This solution requires several conditions:
 -  The CLUT must provide a set of blending ranges the application can use. Each range can have its own size (different number of colors between two colors). Each range is independent. For instance if the foreground color ``RED`` (``0xFFFF0000``) can be blended with two background colors ``WHITE`` (``0xFFFFFFFF``) and ``BLACK`` (``0xFF000000``), two ranges must be provided. Both the ranges have to contain the same index for the color ``RED``.
 -  Application can only use blending ranges provided by the CLUT. Otherwise the display driver is not able to find the range and the default color will be used to perform the blending.
 -  Rendering of dynamic images (images decoded at runtime) may be wrong because the ARGB colors may be out of CLUT range.
-
-.. _display_pixel_conversion:
-
-Image Pixel Conversion
-======================
-
-Overview
---------
-
-The Graphics Engine is built for a dedicated display pixel format (see :ref:`display_pixel_structure`). For this pixel format, the Graphics Engine must be able to draw images with or without alpha blending and with or without transformation. In addition, it must be able to read all image formats.
-
-The application may not use all MicroUI image drawings options and may not use all images formats. It is not possible to detect what the application needs, so no optimization can be performed at application compiletime. However, for a given application, the VEE Port can be built with a reduced set of pixel support. 
-
-All pixel format manipulations (read, write, copy) are using dedicated functions. It is possible to remove some functions or to use generic functions. The advantage is to reduce the memory footprint. The inconvenient is that some features are removed (the application should not use them) or some features are slower (generic functions are slower than the dedicated functions).
-
-Functions
----------
-
-There are five pixel *conversion* modes:
-
--  Draw an image without transformation and without global alpha blending: copy a pixel from a format to the destination format (display format).
--  Draw an image without transformation and with global alpha blending: copy a pixel with alpha blending from a format to the destination format (display format).
--  Draw an image with transformation and with or without alpha blending: draw an ARGB8888 pixel in destination format (display format).
--  Load a `ResourceImage`_ with an output format: convert an ARGB8888 pixel to the output format.
--  Read a pixel from an image (`Image.readPixel()`_ or to draw an image with transformation or to convert an image): read any pixel formats and convert it in ARGB8888.
-
-.. table:: Pixel Conversion
-
-   +------------------------------------------+-------------+-------------+-------------+
-   |                                          | Nb input    | Nb output   | Number of   |
-   |                                          | formats     | formats     | combinations|
-   +==========================================+=============+=============+=============+
-   | Draw image without global alpha          |     22      |      1      |     22      |
-   +------------------------------------------+-------------+-------------+-------------+
-   | Draw image with global alpha             |     22      |      1      |     22      |
-   +------------------------------------------+-------------+-------------+-------------+
-   | Draw image with transformation           |      2      |      1      |      2      |
-   +------------------------------------------+-------------+-------------+-------------+
-   | Load a  ``ResourceImage``                |      1      |      6      |      6      |
-   +------------------------------------------+-------------+-------------+-------------+
-   | Read an image                            |     22      |      1      |     22      |
-   +------------------------------------------+-------------+-------------+-------------+
-
-There are ``22x1 + 22x1 + 2x1 + 1x6 + 22x1 = 74`` functions. Each function takes between 50 and 200 bytes depending on its complexity and the C compiler. 
-
-.. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html
-.. _Image.readPixel(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#readPixel-int-int-
-
-Linker File
------------
-
-All pixel functions are listed in a VEE Port linker file. It is possible to edit this file to remove some features or to share some functions (using generic function).
-
-How to get the file:
-
-#. Build VEE Port as usual.
-#. Copy VEE Port file ``[platform]/source/link/display_image_x.lscf`` in VEE Port configuration project: ``[VEE Port configuration project]/dropins/link/``. ``x`` is a number which characterizes the display pixel format (see :ref:`display_pixel_structure`). See next warning.
-#. Perform some changes into the copied file (see after).
-#. Rebuild the VEE Port: the `dropins` file is copied in the VEE Port instead of the original one.
-
-.. warning:: When the display format in ``[VEE Port configuration project]/display/display.properties`` changes, the linker file suffix changes too. Perform again all operations in new file with new suffix.
-
-The linker file holds five tables, one for each use case, respectively ``IMAGE_UTILS_TABLE_COPY``, ``IMAGE_UTILS_TABLE_COPY_WITH_ALPHA``, ``IMAGE_UTILS_TABLE_DRAW``, ``IMAGE_UTILS_TABLE_SET`` and ``IMAGE_UTILS_TABLE_READ``. For each table, a comment describes how to remove an option (when possible) or how to replace an option by a generic function (if available). 
 
 .. _section_display_implementation:
 
