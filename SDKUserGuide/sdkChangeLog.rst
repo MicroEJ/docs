@@ -2,6 +2,18 @@
 SDK Distribution Changelog
 --------------------------
 
+[24.01] - 2024-01-31
+~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+   
+   This release requires a JDK 11 and therefore an Architecture ``7.17.0`` or higher.
+   Please refer to :ref:`system-requirements` for more details.
+
+- Included :ref:`SDK 5.8.2 <changelog-5.8.2>`.
+- Enabled the "Terminate and Relaunch while launching" launcher option by default when a new Workspace is created.
+
+
 [23.07] - 2023-07-03
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -164,6 +176,37 @@ SDK Distribution Changelog
 -------------
 SDK Changelog
 -------------
+
+.. _changelog-5.8.2:
+
+[5.8.2] - 2024-01-31
+~~~~~~~~~~~~~~~~~~~~
+
+General
+"""""""
+
+- Added the ``--keep-going`` option for the MMM Command Line Interface to continue the build of the meta-build when a subproject fails.
+
+MicroEJ Module Manager
+""""""""""""""""""""""
+
+General
+^^^^^^^
+
+- Upgraded Front Panel plugin to version 6.3.0 to use FP framework dependency only by default.
+
+Build Types
+^^^^^^^^^^^
+
+- Set default Java compile version to 1.8 for ``build-std-javalib`` build type.
+- Fixed hardcoded dependency line in generated javadoc of artifacts repositories.
+- Fixed incompatibility of the Artifact Checker with modules published with the SDK 6.
+
+- New build types added:
+
+  - build-firmware-multiapp#8.2.0
+  - build-firmware-singleapp#2.3.0
+  - build-std-javalib#3.3.0
 
 .. _changelog-5.8.1:
 
@@ -1158,6 +1201,28 @@ Skeletons
 Build Types per SDK
 -------------------
 
+- SDK 5.8.2
+
+  - build-addon-processor#2.2.0
+  - build-application#9.2.0
+  - build-artifact-repository#3.4.0
+  - build-custom#2.2.0
+  - build-firmware-customizer#3.2.0
+  - build-firmware-multiapp#8.2.0
+  - build-firmware-singleapp#2.3.0
+  - build-izpack#3.3.0
+  - build-microej-extension#2.2.0
+  - build-microej-javaapi#5.2.0
+  - build-microej-javaimpl#5.2.0
+  - build-microej-javalib#6.2.0
+  - build-microej-mock#2.2.0
+  - build-microej-ri#3.2.0
+  - build-microej-testsuite#4.2.0
+  - build-product-java#2.2.0
+  - build-runtime-api#4.1.0
+  - build-std-javalib#3.3.0
+  - microej-meta-build#3.0.0
+
 - SDK 5.8.0 and SDK 5.8.1
 
   - build-addon-processor#2.2.0
@@ -1179,6 +1244,7 @@ Build Types per SDK
   - build-runtime-api#4.1.0
   - build-std-javalib#3.2.0
   - microej-meta-build#3.0.0
+
 - SDK 5.7.0
 
   - build-addon-processor#2.2.0
