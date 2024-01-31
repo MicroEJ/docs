@@ -22,6 +22,12 @@ Perform the following steps:
      - **Linux**
      - **macOS x86_64 (Intel chip)**
      - **macOS aarch64 (M1 chip)** [#warning_architecture_7_18_0]_
+   * - ``24.01``
+     - ``11``
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/24.01/zip>`__
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/24.01/zip>`__
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/24.01/zip>`__
+     - `Portable (.zip) <https://repository.microej.com/packages/SDK/24.01/zip>`__
    * - ``23.07``
      - ``11``
      - `Portable (.zip) <https://repository.microej.com/packages/SDK/23.07/zip>`__

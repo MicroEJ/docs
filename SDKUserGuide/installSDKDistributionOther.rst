@@ -26,6 +26,18 @@ This section applies when the installation of the :ref:`latest SDK Distribution 
      - **macOS aarch64 (M1 chip)** [#warning_architecture_7_18_0]_
      - **SDK Version**
      - **Eclipse Version**
+   * - ``24.01``
+     - ``11``
+     - - `Installer (.exe) <https://repository.microej.com/packages/SDK/24.01/MicroEJ-SDK-Installer-Win64-24.01.exe>`__
+       - `Portable (.zip) <https://repository.microej.com/packages/SDK/24.01/zip>`__
+     - - `Installer (.zip) <https://repository.microej.com/packages/SDK/24.01/MicroEJ-SDK-Installer-Linux64-24.01.zip>`__
+       - `Portable (.zip) <https://repository.microej.com/packages/SDK/24.01/zip>`__
+     - - `Installer (.zip) <https://repository.microej.com/packages/SDK/24.01/MicroEJ-SDK-Installer-MacOS-24.01.zip>`__
+       - `Portable (.zip) <https://repository.microej.com/packages/SDK/24.01/zip>`__
+     - - `Installer (.zip) <https://repository.microej.com/packages/SDK/24.01/MicroEJ-SDK-Installer-MacOS-A64-24.01.zip>`__
+       - `Portable (.zip) <https://repository.microej.com/packages/SDK/24.01/zip>`__
+     - ``5.8.2``
+     - ``2022-03``
    * - ``23.07``
      - ``11``
      - - `Installer (.exe) <https://repository.microej.com/packages/SDK/23.07/MicroEJ-SDK-Installer-Win64-23.07.exe>`__
