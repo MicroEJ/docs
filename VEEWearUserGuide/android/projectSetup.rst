@@ -37,6 +37,7 @@ Create or Import an Android project
 
 The Android documentation covers the process of creating apps for diverse form factors, including smartphones and wearable devices.
 Read `Create a Project <https://developer.android.com/studio/projects/create-project>`_ and follow the guidelines before proceeding.
+If you are creating a project from scratch, we recommend using the ``Empty Activity`` template.
 
 .. note::
 
