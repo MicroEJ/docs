@@ -42,11 +42,61 @@ Display Configurations
 
 The Graphics Engine provides a number of different configurations. The appropriate configuration should be selected depending on the capabilities of the screen and other related hardware, such as display controllers.
 
-The modes can vary in three ways:
+The modes can vary in four ways:
 
--  the buffer mode: double-buffer, simple buffer (also known as *direct*),
+-  the display device connection to the Graphics Engine,
+-  the number of buffers: double-buffer, simple buffer (also known as *direct*),
 -  the memory layout of the pixels,
 -  pixel format or depth.
+
+Display Connection
+==================
+
+A display is always associated with a memory buffer whose size depends on the display panel size (width and height) and the number of bits per pixel.
+This memory buffer holds all the pixels the display panel has to show.
+The display panel continuously refreshes its content by reading the data from a memory buffer.
+This refreshing cannot be stopped; otherwise, the image fades away.
+Most of the time, a new frame often appears every 16.6ms (60Hz).
+
+.. figure:: images/ui_display_refresh.*
+   :alt: Display Continuous Refresh
+   :align: center
+
+   Display Continuous Refresh
+
+There are two types of connection with the MCU: Serial and Parallel.
+
+Serial
+------
+
+The MCU sends the data to show (the pixels) to the display module through a serial bus (SPI, DSI). 
+The display module holds its memory and fills it with the received data. 
+It continuously refreshes its content by reading the data from this memory. 
+This memory is often not *seen* by the MCU: the MCU can only write into it with the right macro (SPI or DSI). 
+This is the notion of **unmapped memory**.
+
+.. figure:: images/ui_display_serial.*
+   :alt: Display Connection Serial
+   :scale: 50%
+   :align: center
+
+   Display Connection Serial
+
+Parallel
+--------
+ 
+The MCU features an LCD controller that sends the content of an MCU's buffer to the display module. 
+The display module doesn't hold its memory. 
+The LCD controller continuously updates the display panel's content by reading the MCU memory data. 
+By definition, this memory is *seen* by the MCU: the MCU can write (and read) into it (the memory is in the MCU addresses range). 
+This is the notion of **mapped memory**.
+
+.. figure:: images/ui_display_parallel.*
+   :alt: Display Connection Parallel
+   :scale: 50%
+   :align: center
+
+   Display Connection Parallel
 
 Buffer Modes
 ============
