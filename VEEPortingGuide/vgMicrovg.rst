@@ -1,3 +1,5 @@
+.. include:: uiReplaces.rst
+
 .. _section_microvg:
 
 =======
@@ -37,7 +39,10 @@ In the VEE Port configuration's :ref:`module description file <mmm_module_descri
 
 .. code-block:: XML
 
-   <dependency org="com.microej.pack.vg" name="vg-pack" rev="1.2.1" conf="default->default"/>
+   <dependency org="com.microej.pack.vg" name="vg-pack" rev="[VG Pack version]" conf="default->default"/>
+
+
+.. note:: The latest current pack version is |VGPACKVERSION|.
 
 The VG Pack will be automatically available after a VEE Port rebuild.
 
