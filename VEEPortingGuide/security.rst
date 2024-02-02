@@ -4,34 +4,52 @@
 Security
 ========
 
-
 Principle
 =========
 
-The Security Foundation Library provides access to cryptographic algorithm operations such as SHA-1, SHA-256,
-random number generation, signatures, MAC algorithms and other features related to secured communication.
-
+The Security Foundation Library provides standard Java API (part of the Java Cryptography Architecture) for cryptographic operations:
+cipher, digest, MAC, signature, secure random & key/certificate management.
+It relies on a native crypto engine (such as Mbed TLS, OpenSSL or wolfSSL).
 
 Dependencies
 ============
 
-- The name of these files match the ``LLSEC_*.h`` pattern (see :ref:`LLSECURITY-API-SECTION`).
+- The ``LLSEC_*.h`` implementations (see :ref:`LLSECURITY-API-SECTION`).
 
 .. _security_installation:
 
 Installation
 ============
 
-The Security Foundation Library is included in the NET pack. You can add this Foundation Library to your VEE Port by
-adding the associated module dependency on the NET pack in the ``module.ivy`` file. Please refer to the section :ref:`Installation <network_core_installation>`
-of the Network Core Engine page.
+The Net Pack bundles several libraries: Net, SSL & Security.
 
-Then, update the VEE Port module configuration ``.platform`` file
-(see Platform :ref:`Creation <platform_module_configuration>`) 
-to add the Security component. A rebuild of the VEE Port is necessary to have an up to date VEE Port including the
-new Foundation Library.
+Refer to the chapter :ref:`pack_import` to integrate a specific version of the Net Pack:
 
+.. code-block:: xml
+   :emphasize-lines: 2
 
+   <dependencies>
+       <dependency org="com.microej.pack.net" name="net-pack" rev="11.0.2"/>
+   </dependencies>
+
+Then, using the VEE Port Editor (see :ref:`platform_module_configuration`), enable the Security library (API, Impl & Mock):
+
+.. figure:: images/net-ssl_modules.*
+   :alt: Net Pack Modules
+
+   Net Pack Modules
+
+Use
+===
+
+The `Security API`_ module must be added to the :ref:`module.ivy <mmm_module_description>` of the MicroEJ
+Application project to use the Security library.
+
+::
+
+  <dependency org="ej.api" name="security" rev="1.6.0"/>
+
+.. _Security API: https://repository.microej.com/modules/ej/api/security/
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
