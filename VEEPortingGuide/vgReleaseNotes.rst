@@ -1,3 +1,5 @@
+.. include:: uiReplaces.rst
+
 .. _section_vg_releasenotes:
 
 =============
@@ -7,7 +9,7 @@ Release Notes
 UI Pack Compatibility Version
 =============================
 
-The current VG Pack version is 1.4.2.
+The current VG Pack version is |VGPACKVERSION|.
 The following table describes the compatibility ranges between VG and UI Packs. 
 
 +---------------+-----------------+----------------------------------+
