@@ -810,7 +810,7 @@ The Graphics Engine is designed to be synchronized with the display refresh rate
 Captions definition:
 
 * UI: It is the UI task which performs the drawings in the back buffer. At the end of the drawings, the examples consider that the UI thread calls `Display.flush()`_ 1 millisecond after the end of the drawings. At this moment, a flush can start (the call to `Display.flush()`_ is symbolized by a simple `peak` in chronograms).
-* Flush: In :ref:`copy<section_display_single>` mode, it is the time to transfer the content of back buffer to display buffer. In :ref:`double<section_display_double>` or :ref:`triple<section_display_double>` mode, it is the time to swap back and display buffers (often instantaneous) and the time to recopy the content of new display buffer to new back buffer. During this time, the back buffer is `in use` and UI task has to wait the end of copy before starting a new drawing. 
+* Flush: In :ref:`single buffer<section_display_single>` mode, it is the time to transfer the content of the back buffer to the display buffer. In :ref:`double<section_display_double>` or :ref:`triple<section_display_double>` mode, it is the time to swap back and display buffers (the instruction is often instantaneous but the action is often performed at the beginning of the next display refresh rate). During this time, the back buffer is `in use` and UI task has to wait the end of swap before starting a new drawing. 
 * Tearing: The peaks show the tearing signals.
 * Rendering frequency: the frequency between the start of a drawing to the end of flush.
 
@@ -840,19 +840,19 @@ In this example, the times are identical to previous example. The tearing signal
 Additional Buffer 
 -----------------
 
-Some devices take a lot of time to send back buffer content to display buffer. The following examples demonstrate the consequence on rendering frequency. The use of an additional buffer optimizes this frequency, however it uses a lot of RAM memory.
+Some devices take a lot of time to send the back buffer content to the display buffer. The following examples demonstrate the consequence on rendering frequency. The use of an additional buffer optimizes this frequency, however it uses a lot of RAM memory.
 
 In this example, the drawing time is 7ms, the time between the end of drawing and the call to `Display.flush()`_ is 1ms and the flush time is 12ms. So the expected rendering frequency is 7 + 1 + 12 = 20ms (50Hz). Flush starts just after the call to `Display.flush()`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. The rendering frequency is cadenced on drawing time + flush time.
 
 .. figure:: images/uiDisplaySync05.*
    :width: 100%
 
-As mentioned above, the idea is to use two back buffers. First, UI task is drawing in back buffer ``A``. Just after the call to `Display.flush()`_, the flush can start. At the same moment, the content of back buffer ``A`` is copied in back buffer ``B`` (use a DMA, copy time is 1ms). During the flush time (copy of back buffer ``A`` to display buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When the drawings in back buffer ``B`` are done (and after the call to `Display.flush()`_), the DMA copy of back buffer ``B`` to back buffer ``A`` cannot start: the copy can only start when the flush is fully done because the flush is using the back buffer ``A``. As soon as the flush is done, a new flush (and DMA copy) can start. The rendering frequency is cadenced on flush time, i.e. 12ms (83.3Hz).
+As mentioned above, the idea is to use :ref:`two back buffers<section_display_double_copy>`. First, UI task is drawing in the back buffer ``A``. Just after the call to `Display.flush()`_, the flush can start. During the flush time (copy of the back buffer ``A`` to the display buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When the drawings in the back buffer ``B`` are done (and after the call to `Display.flush()`_), the application cannot start a third frame by drawing into the back buffer ``A`` because the flush is using it. As soon as the flush is done, a new flush (of the back buffer ``B``) can start. The rendering frequency is cadenced on flush time, i.e. 12ms (83.3Hz). 
 
 .. figure:: images/uiDisplaySync06.*
    :width: 100%
 
-The previous example doesn't take in consideration the display tearing signal. With tearing signal and only one back buffer, the frequency is cadenced on two tearing signals (see previous chapter). With two back buffers, the frequency is now cadenced on only one tearing signal, despite the long flush time. 
+The previous example doesn't take in consideration the display tearing signal. With tearing signal and only one back buffer, the frequency is cadenced on two tearing signals (see above). With two back buffers, the frequency is now cadenced on only one tearing signal, despite the long flush time. 
 
 .. figure:: images/uiDisplaySync07.*
    :width: 100%
@@ -866,27 +866,26 @@ The following table resumes the previous examples times:
 * *Drawing time* is the time let to the application to perform its drawings and call `Display.flush()`_. In our examples, the time between the last drawing and the call to `Display.flush()`_ is 1ms.
 * *FPS* and *CPU load* are calculated from examples times.
 * *Max drawing time* is the maximum time let to the application to perform its drawings, without overlapping next display tearing signal (when tearing is enabled). 
-
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|  Tearing |  Nb buffers |  Drawing time (ms) |  Flush time (ms) |  DMA copy time (ms) |  FPS (Hz) |  CPU load (%) |  Max drawing time (ms) |
-+==========+=============+====================+==================+=====================+===========+===============+========================+
-|     no   |       1     |         7+1        |         6        |                     |    71.4   |      57.1     |                        |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|    yes   |       1     |         7+1        |         6        |                     |    62.5   |       50      |            10          |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|     no   |       1     |         14+1       |         6        |                     |    47.6   |      71.4     |                        |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|    yes   |       1     |         14+1       |         6        |                     |    31.2   |      46.9     |            20          |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|     no   |       1     |         7+1        |         12       |                     |     50    |       40      |                        |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|    yes   |       1     |         7+1        |         12       |                     |    31.2   |       25      |            8           |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|     no   |       2     |         7+1        |         12       |           1         |    83.3   |      66.7     |                        |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|    yes   |       2     |         7+1        |         12       |           1         |    62.5   |       50      |            11          |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-
+  
++----------+-------------+--------------------+------------------+-----------+---------------+------------------------+
+|  Tearing |  Nb buffers |  Drawing time (ms) |  Flush time (ms) |  FPS (Hz) |  CPU load (%) |  Max drawing time (ms) |
++----------+-------------+--------------------+------------------+-----------+---------------+------------------------+
+|     no   |       1     |         7+1        |         6        |    71.4   |      57.1     |                        |
++----------+-------------+--------------------+------------------+-----------+---------------+------------------------+
+|    yes   |       1     |         7+1        |         6        |    62.5   |       50      |            10          |
++----------+-------------+--------------------+------------------+-----------+---------------+------------------------+
+|     no   |       1     |         14+1       |         6        |    47.6   |      71.4     |                        |
++----------+-------------+--------------------+------------------+-----------+---------------+------------------------+
+|    yes   |       1     |         14+1       |         6        |    31.2   |      46.9     |            20          |
++----------+-------------+--------------------+------------------+-----------+---------------+------------------------+
+|     no   |       1     |         7+1        |         12       |     50    |       40      |                        |
++----------+-------------+--------------------+------------------+-----------+---------------+------------------------+
+|    yes   |       1     |         7+1        |         12       |    31.2   |       25      |            8           |
++----------+-------------+--------------------+------------------+-----------+---------------+------------------------+
+|     no   |       2     |         7+1        |         12       |    83.3   |      66.7     |                        |
++----------+-------------+--------------------+------------------+-----------+---------------+------------------------+
+|    yes   |       2     |         7+1        |         12       |    62.5   |       50      |            16          |
++----------+-------------+--------------------+------------------+-----------+---------------+------------------------+
 
 .. _section_display_llapi:
 
