@@ -41,39 +41,23 @@ Dependencies
 Installation
 ============
 
-Network is an additional module. In the platform configuration file,
-check :guilabel:`NET` to install this module. When checked, the properties file
-``net/net.properties`` is required during platform creation to
-configure the module. This configuration step is used to customize the
-kind of TCP/IP native stack used and the Domain Name System (DNS)
-implementation.
+The Net Pack bundles several libraries: Net, SSL & Security.
 
-The properties file must / can contain the following properties:
+Refer to the chapter :ref:`pack_import` to integrate a specific version of the Net Pack:
 
--  ``stack`` [optional, default value is "custom"]: Defines the kind of
-   TCP/IP interface used in the C project.
+.. code-block:: xml
+   :emphasize-lines: 2
 
-   -  ``custom``: Select this configuration to make a "from scratch"
-      implementation glue between the C Network Core Engine and the C
-      project TCP/IP interface.
+   <dependencies>
+       <dependency org="com.microej.pack.net" name="net-pack" rev="11.0.2"/>
+   </dependencies>
 
-   -  ``bsd``: Select this configuration to use a BSD-like library
-      helper to implement the glue between the C Network Core Engine and
-      the C project TCP/IP interface. This property requires that the C
-      project provides a TCP/IP native stack with a Berkeley Sockets API
-      and a ``select`` mechanism.
+Then, using the VEE Port Editor (see :ref:`platform_module_configuration`), enable the Net library (API, Impl & Mock):
 
--  ``dns`` [optional, default value is "native"]: Defines the kind of
-   Domain Name System implementation used.
+.. figure:: images/net-ssl_modules.*
+   :alt: Net Pack Modules
 
-   -  ``native``: Select this configuration to implement the glue
-      between the C Network Core Engine DNS part and the C project
-      TCP/IP interface.
-
-   -  ``soft``: Select this configuration if you want a software
-      implementation of the DNS part. Only the IPs list of the DNS
-      server must be provided by the C Network Core Engine glue.
-
+   Net Pack Modules
 
 Use
 ===
@@ -83,7 +67,7 @@ Application project to use the Net library.
 
 ::
 
-   <dependency org="ej.api" name="net" rev="1.1.1"/>
+   <dependency org="ej.api" name="net" rev="1.1.4"/>
 
 This library provides a set of options. Refer to the chapter
 :ref:`application_options` which lists all available options.
@@ -91,7 +75,7 @@ This library provides a set of options. Refer to the chapter
 .. _Net API Module: https://repository.microej.com/modules/ej/api/net/
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
