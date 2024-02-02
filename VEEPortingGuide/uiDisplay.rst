@@ -37,8 +37,8 @@ Dedicated chapters deal with related concepts:
 
 .. _section_display_modes:
 
-Display Configurations
-======================
+Display Configuration
+=====================
 
 The Graphics Engine provides a number of different configurations. The appropriate configuration should be selected depending on the capabilities of the screen and other related hardware, such as display controllers.
 
@@ -46,8 +46,8 @@ The modes can vary in four ways:
 
 -  the display device connection to the Graphics Engine,
 -  the number of buffers: double-buffer, simple buffer (also known as *direct*),
--  the memory layout of the pixels,
--  pixel format or depth.
+-  pixel format or depth,
+-  the memory layout of the pixels.
 
 Display Connection
 ==================
@@ -305,9 +305,9 @@ However, when the RAM available on the device is very limited, a partial buffer 
 In that case, the buffer is smaller and can only store a part of the screen (one third for example).
 
 When this technique is used, the application draws in the partial buffer.
-To flush the drawings, the content of the partial buffer is copied to the display (to its :ref:`internal memory <section_display_serial>` or to a :ref:`complete buffer <section_display_parallel>` from which the display reads).
+To flush the drawings, the content of the partial buffer is copied to the display (to its :ref:`internal memory <section_display_single>` or to a :ref:`complete buffer <section_display_double_parallel_copy>` from which the display reads).
 
-If the display does not have its own internal memory and if the device does not have enough RAM to allocate a complete buffer, then it is not possible to use a partial buffer. In that case, only the *Direct* buffer mode can be used.
+If the display does not have its own internal memory and if the device does not have enough RAM to allocate a complete buffer, then it is not possible to use a partial buffer. In that case, only the :ref:`direct <section_display_direct>` buffer mode can be used.
 
 Workflow
 --------
@@ -356,145 +356,6 @@ Implementation Example
 
 The `partial buffer demo <https://github.com/MicroEJ/Demo-PartialBuffer>`__ provides an example of partial buffer implementation. This example explains how to implement partial buffer support in the BSP and how to use it in an application.
 
-.. _section_display_layout_byte:
-
-Byte Layout
-===========
-
-This chapter concerns only display with a number of bits-per-pixel (BPP) smaller than 8. For this kind of display, a byte contains several pixels and the Graphics Engine allows to customize how to organize the pixels in a
-byte.
-
-Two layouts are available:
-
--  line: The byte contains several consecutive pixels on same line. When the end of line is reached, a padding is added in order to start a new line with a new byte.
--  column: The byte contains several consecutive pixels on same column. When the end of column is reached, a padding is added in order to start a new column with a new byte.
-
-When installing the Display module, a property ``byteLayout`` is required to specify the kind of pixels representation (see :ref:`section_display_installation`).
-
-.. table:: Byte Layout: line
-
-   +-------+-------+-------+-------+-------+-------+-------+-------+-------+
-   | BPP   | MSB   |       |       |       |       |       |       | LSB   |
-   +=======+=======+=======+=======+=======+=======+=======+=======+=======+
-   | 4     | pixel                         | pixel                         |
-   |       | 1                             | 0                             |
-   +-------+---------------+---------------+---------------+---------------+
-   | 2     | pixel         | pixel         | pixel         | pixel         |
-   |       | 3             | 2             | 1             | 0             |
-   +-------+-------+-------+-------+-------+-------+-------+-------+-------+
-   | 1     | pixel | pixel | pixel | pixel | pixel | pixel | pixel | pixel |
-   |       | 7     | 6     | 5     | 4     | 3     | 2     | 1     | 0     |
-   +-------+-------+-------+-------+-------+-------+-------+-------+-------+
-
-.. table:: Byte Layout: column
-
-   +---------+-------------------+-------------------+-------------------+
-   | BPP     | 4                 | 2                 | 1                 |
-   +=========+===================+===================+===================+
-   | MSB     | pixel 1           | pixel 3           | pixel 7           |
-   +---------+                   |                   +-------------------+
-   |         |                   |                   | pixel 6           |
-   +---------+                   +-------------------+-------------------+
-   |         |                   | pixel 2           | pixel 5           |
-   +---------+                   |                   +-------------------+
-   |         |                   |                   | pixel 4           |
-   +---------+-------------------+-------------------+-------------------+
-   |         | pixel 0           | pixel 1           | pixel 3           |
-   +---------+                   |                   +-------------------+
-   |         |                   |                   | pixel 2           |
-   +---------+                   +-------------------+-------------------+
-   |         |                   | pixel 0           | pixel 1           |
-   +---------+                   |                   +-------------------+
-   | LSB     |                   |                   | pixel 0           |
-   +---------+-------------------+-------------------+-------------------+
-
-.. _section_display_layout_memory:
-
-Memory Layout
-=============
-
-For the display with a number of bits-per-pixel (BPP) higher or equal to 8, the Graphics Engine supports the line-by-line memory organization: pixels are laid out from left to right within a line, starting with the top
-line. For a display with 16 bits-per-pixel, the pixel at (0,0) is stored at memory address 0, the pixel at (1,0) is stored at address 2, the pixel at (2,0) is stored at address 4, and so on.
-
-.. table:: Memory Layout for BPP >= 8
-
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | BPP | @ + 0     | @ + 1     | @ + 2     | @ + 3     | @ + 4     |
-   +=====+===========+===========+===========+===========+===========+
-   | 32  | pixel 0   | pixel 0   | pixel 0   | pixel 0   | pixel 1   |
-   |     | [7:0]     | [15:8]    | [23:16]   | [31:24]   | [7:0]     |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | 24  | pixel 0   | pixel 0   | pixel 0   | pixel 1   | pixel 1   |
-   |     | [7:0]     | [15:8]    | [23:16]   | [7:0]     | [15:8]    |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | 16  | pixel 0   | pixel 0   | pixel 1   | pixel 1   | pixel 2   |
-   |     | [7:0]     | [15:8]    | [7:0]     | [15:8]    | [7:0]     |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | 8   | pixel 0   | pixel 1   | pixel 2   | pixel 3   | pixel 4   |
-   |     | [7:0]     | [7:0]     | [7:0]     | [7:0]     | [7:0]     |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-
-For the display with a number of bits-per-pixel (BPP) lower than 8, the Graphics Engine supports the both memory organizations: line by line (pixels are laid out from left to right within a line, starting with the top line) and column by column (pixels are laid out from top to bottom within a line, starting with the left line). These byte organizations concern until 8 consecutive pixels (see :ref:`section_display_layout_byte`). When installing the Display module, a property ``memoryLayout`` is required to specify the kind of pixels representation (see :ref:`section_display_installation`).
-
-.. table:: Memory Layout 'line' for BPP < 8 and byte layout 'line'
-
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | BPP | @ + 0     | @ + 1     | @ + 2     | @ + 3     | @ + 4     |
-   +=====+===========+===========+===========+===========+===========+
-   | 4   | (0,0) to  | (2,0) to  | (4,0) to  | (6,0) to  | (8,0) to  |
-   |     | (1,0)     | (3,0)     | (5,0)     | (7,0)     | (9,0)     |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | 2   | (0,0) to  | (4,0) to  | (8,0) to  | (12,0) to | (16,0) to |
-   |     | (3,0)     | (7,0)     | (11,0)    | (15,0)    | (19,0)    |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | 1   | (0,0) to  | (8,0) to  | (16,0) to | (24,0) to | (32,0) to |
-   |     | (7,0)     | (15,0)    | (23,0)    | (31,0)    | (39,0)    |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-
-.. table:: Memory Layout 'line' for BPP < 8 and byte layout 'column'
-
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | BPP | @ + 0     | @ + 1     | @ + 2     | @ + 3     | @ + 4     |
-   +=====+===========+===========+===========+===========+===========+
-   | 4   | (0,0) to  | (1,0) to  | (2,0) to  | (3,0) to  | (4,0) to  |
-   |     | (0,1)     | (1,1)     | (2,1)     | (3,1)     | (4,1)     |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | 2   | (0,0) to  | (1,0) to  | (2,0) to  | (3,0) to  | (4,0) to  |
-   |     | (0,3)     | (1,3)     | (2,3)     | (3,3)     | (4,3)     |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | 1   | (0,0) to  | (1,0) to  | (2,0) to  | (3,0) to  | (4,0) to  |
-   |     | (0,7)     | (1,7)     | (2,7)     | (3,7)     | (4,7)     |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-
-.. table:: Memory Layout 'column' for BPP < 8 and byte layout 'line'
-
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | BPP | @ + 0     | @ + 1     | @ + 2     | @ + 3     | @ + 4     |
-   +=====+===========+===========+===========+===========+===========+
-   | 4   | (0,0) to  | (0,1) to  | (0,2) to  | (0,3) to  | (0,4) to  |
-   |     | (1,0)     | (1,1)     | (1,2)     | (1,3)     | (1,4)     |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | 2   | (0,0) to  | (0,1) to  | (0,2) to  | (0,3) to  | (0,4) to  |
-   |     | (3,0)     | (3,1)     | (3,2)     | (3,3)     | (3,4)     |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | 1   | (0,0) to  | (0,1) to  | (0,2) to  | (0,3) to  | (0,4) to  |
-   |     | (7,0)     | (7,1)     | (7,2)     | (7,3)     | (7,4)     |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-
-.. table:: Memory Layout 'column' for BPP < 8 and byte layout 'column'
-
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | BPP | @ + 0     | @ + 1     | @ + 2     | @ + 3     | @ + 4     |
-   +=====+===========+===========+===========+===========+===========+
-   | 4   | (0,0) to  | (0,2) to  | (0,4) to  | (0,6) to  | (0,8) to  |
-   |     | (0,1)     | (0,3)     | (0,5)     | (0,7)     | (0,9)     |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | 2   | (0,0) to  | (0,4) to  | (0,8) to  | (0,12) to | (0,16) to |
-   |     | (0,3)     | (0,7)     | (0,11)    | (0,15)    | (0,19)    |
-   +-----+-----------+-----------+-----------+-----------+-----------+
-   | 1   | (0,0) to  | (0,8) to  | (0,16) to | (0,24) to | (0,32) to |
-   |     | (0,7)     | (0,15)    | (0,23)    | (0,31)    | (0,39)    |
-   +-----+-----------+-----------+-----------+-----------+-----------+
 
 .. _display_pixel_structure:
 
@@ -759,6 +620,273 @@ and blue[5]):
       {
         return ((color & 0x001f) << 19) | ((color & 0x7e00) << 5) | ((color & 0xf800) >> 8) | 0xff000000;
       }
+
+
+.. _display_lut:
+
+CLUT
+====
+
+The Display module allows to target display which uses a pixel indirection table (CLUT). This kind of display are considered as generic but not standard (see :ref:`display_pixel_structure`). It consists to store color indices in image memory buffer instead of colors themselves.
+
+Color Conversion
+----------------
+
+The driver must implement functions that convert MicroUI's standard 32-bit ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to display color representation. For each application ARGB8888 color, the display driver has to find the corresponding color in the table. The Graphics Engine will store the index of the color in the table instead of using the color itself.
+
+When an application color is not available in the display driver table (CLUT), the display driver can try to find the closest color or return a default color. First solution is often quite difficult to write and can cost a lot of time at runtime. That's why the second solution is preferred. However, a consequence is that the application has only to use a range of colors provided by the display driver.
+
+Alpha Blending
+--------------
+
+MicroUI and the Graphics Engine use blending when drawing some texts or anti-aliased shapes. For each pixel to draw, the display stack blends the current application foreground color with the targeted pixel current color or with the current application background color (when enabled). This blending *creates* some  intermediate colors which are managed by the display driver. 
+
+Most of time the intermediate colors do not match with the palette. The default color is so returned and the rendering becomes wrong. To prevent this use case, the Graphics Engine offers a specific Abstraction Layer API ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors(void* foreground, void* background)``. 
+
+This API is only used when a blending is required and when the background color is enabled. The Graphics Engine calls the API just before the blending and gives as parameter the pointers on the both ARGB colors. The display driver should replace the ARGB colors by the CLUT indices. Then the Graphics Engine will only use between both indices. 
+
+For instance, when the returned indices are ``20`` and ``27``, the display stack will use the indices ``20`` to ``27``, where all indices between ``20`` and ``27`` target some intermediate colors between both the original ARGB colors. 
+
+This solution requires several conditions:
+
+-  Background color is enabled and it is an available color in the CLUT.
+-  Application can only use foreground colors provided by the CLUT. The VEE Port designer should give to the application developer the available list of colors the CLUT manages.
+-  The CLUT must provide a set of blending ranges the application can use. Each range can have its own size (different number of colors between two colors). Each range is independent. For instance if the foreground color ``RED`` (``0xFFFF0000``) can be blended with two background colors ``WHITE`` (``0xFFFFFFFF``) and ``BLACK`` (``0xFF000000``), two ranges must be provided. Both the ranges have to contain the same index for the color ``RED``.
+-  Application can only use blending ranges provided by the CLUT. Otherwise the display driver is not able to find the range and the default color will be used to perform the blending.
+-  Rendering of dynamic images (images decoded at runtime) may be wrong because the ARGB colors may be out of CLUT range.
+
+.. _section_display_layout_memory:
+
+Memory Layout
+=============
+
+For the display with a number of bits-per-pixel (BPP) higher or equal to 8, the Graphics Engine supports the line-by-line memory organization: pixels are laid out from left to right within a line, starting with the top
+line. For a display with 16 bits-per-pixel, the pixel at (0,0) is stored at memory address 0, the pixel at (1,0) is stored at address 2, the pixel at (2,0) is stored at address 4, and so on.
+
+.. table:: Memory Layout for BPP >= 8
+
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | BPP | @ + 0     | @ + 1     | @ + 2     | @ + 3     | @ + 4     |
+   +=====+===========+===========+===========+===========+===========+
+   | 32  | pixel 0   | pixel 0   | pixel 0   | pixel 0   | pixel 1   |
+   |     | [7:0]     | [15:8]    | [23:16]   | [31:24]   | [7:0]     |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | 24  | pixel 0   | pixel 0   | pixel 0   | pixel 1   | pixel 1   |
+   |     | [7:0]     | [15:8]    | [23:16]   | [7:0]     | [15:8]    |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | 16  | pixel 0   | pixel 0   | pixel 1   | pixel 1   | pixel 2   |
+   |     | [7:0]     | [15:8]    | [7:0]     | [15:8]    | [7:0]     |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | 8   | pixel 0   | pixel 1   | pixel 2   | pixel 3   | pixel 4   |
+   |     | [7:0]     | [7:0]     | [7:0]     | [7:0]     | [7:0]     |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+
+For the display with a number of bits-per-pixel (BPP) lower than 8, the Graphics Engine supports the both memory organizations: line by line (pixels are laid out from left to right within a line, starting with the top line) and column by column (pixels are laid out from top to bottom within a line, starting with the left line). These byte organizations concern until 8 consecutive pixels (see :ref:`section_display_layout_byte`). When installing the Display module, a property ``memoryLayout`` is required to specify the kind of pixels representation (see :ref:`section_display_installation`).
+
+.. table:: Memory Layout 'line' for BPP < 8 and byte layout 'line'
+
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | BPP | @ + 0     | @ + 1     | @ + 2     | @ + 3     | @ + 4     |
+   +=====+===========+===========+===========+===========+===========+
+   | 4   | (0,0) to  | (2,0) to  | (4,0) to  | (6,0) to  | (8,0) to  |
+   |     | (1,0)     | (3,0)     | (5,0)     | (7,0)     | (9,0)     |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | 2   | (0,0) to  | (4,0) to  | (8,0) to  | (12,0) to | (16,0) to |
+   |     | (3,0)     | (7,0)     | (11,0)    | (15,0)    | (19,0)    |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | 1   | (0,0) to  | (8,0) to  | (16,0) to | (24,0) to | (32,0) to |
+   |     | (7,0)     | (15,0)    | (23,0)    | (31,0)    | (39,0)    |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+
+.. table:: Memory Layout 'line' for BPP < 8 and byte layout 'column'
+
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | BPP | @ + 0     | @ + 1     | @ + 2     | @ + 3     | @ + 4     |
+   +=====+===========+===========+===========+===========+===========+
+   | 4   | (0,0) to  | (1,0) to  | (2,0) to  | (3,0) to  | (4,0) to  |
+   |     | (0,1)     | (1,1)     | (2,1)     | (3,1)     | (4,1)     |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | 2   | (0,0) to  | (1,0) to  | (2,0) to  | (3,0) to  | (4,0) to  |
+   |     | (0,3)     | (1,3)     | (2,3)     | (3,3)     | (4,3)     |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | 1   | (0,0) to  | (1,0) to  | (2,0) to  | (3,0) to  | (4,0) to  |
+   |     | (0,7)     | (1,7)     | (2,7)     | (3,7)     | (4,7)     |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+
+.. table:: Memory Layout 'column' for BPP < 8 and byte layout 'line'
+
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | BPP | @ + 0     | @ + 1     | @ + 2     | @ + 3     | @ + 4     |
+   +=====+===========+===========+===========+===========+===========+
+   | 4   | (0,0) to  | (0,1) to  | (0,2) to  | (0,3) to  | (0,4) to  |
+   |     | (1,0)     | (1,1)     | (1,2)     | (1,3)     | (1,4)     |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | 2   | (0,0) to  | (0,1) to  | (0,2) to  | (0,3) to  | (0,4) to  |
+   |     | (3,0)     | (3,1)     | (3,2)     | (3,3)     | (3,4)     |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | 1   | (0,0) to  | (0,1) to  | (0,2) to  | (0,3) to  | (0,4) to  |
+   |     | (7,0)     | (7,1)     | (7,2)     | (7,3)     | (7,4)     |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+
+.. table:: Memory Layout 'column' for BPP < 8 and byte layout 'column'
+
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | BPP | @ + 0     | @ + 1     | @ + 2     | @ + 3     | @ + 4     |
+   +=====+===========+===========+===========+===========+===========+
+   | 4   | (0,0) to  | (0,2) to  | (0,4) to  | (0,6) to  | (0,8) to  |
+   |     | (0,1)     | (0,3)     | (0,5)     | (0,7)     | (0,9)     |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | 2   | (0,0) to  | (0,4) to  | (0,8) to  | (0,12) to | (0,16) to |
+   |     | (0,3)     | (0,7)     | (0,11)    | (0,15)    | (0,19)    |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+   | 1   | (0,0) to  | (0,8) to  | (0,16) to | (0,24) to | (0,32) to |
+   |     | (0,7)     | (0,15)    | (0,23)    | (0,31)    | (0,39)    |
+   +-----+-----------+-----------+-----------+-----------+-----------+
+
+
+.. _section_display_layout_byte:
+
+Byte Layout
+===========
+
+This chapter concerns only display with a number of bits-per-pixel (BPP) smaller than 8. For this kind of display, a byte contains several pixels and the Graphics Engine allows to customize how to organize the pixels in a
+byte.
+
+Two layouts are available:
+
+-  line: The byte contains several consecutive pixels on same line. When the end of line is reached, a padding is added in order to start a new line with a new byte.
+-  column: The byte contains several consecutive pixels on same column. When the end of column is reached, a padding is added in order to start a new column with a new byte.
+
+When installing the Display module, a property ``byteLayout`` is required to specify the kind of pixels representation (see :ref:`section_display_installation`).
+
+.. table:: Byte Layout: line
+
+   +-------+-------+-------+-------+-------+-------+-------+-------+-------+
+   | BPP   | MSB   |       |       |       |       |       |       | LSB   |
+   +=======+=======+=======+=======+=======+=======+=======+=======+=======+
+   | 4     | pixel                         | pixel                         |
+   |       | 1                             | 0                             |
+   +-------+---------------+---------------+---------------+---------------+
+   | 2     | pixel         | pixel         | pixel         | pixel         |
+   |       | 3             | 2             | 1             | 0             |
+   +-------+-------+-------+-------+-------+-------+-------+-------+-------+
+   | 1     | pixel | pixel | pixel | pixel | pixel | pixel | pixel | pixel |
+   |       | 7     | 6     | 5     | 4     | 3     | 2     | 1     | 0     |
+   +-------+-------+-------+-------+-------+-------+-------+-------+-------+
+
+.. table:: Byte Layout: column
+
+   +---------+-------------------+-------------------+-------------------+
+   | BPP     | 4                 | 2                 | 1                 |
+   +=========+===================+===================+===================+
+   | MSB     | pixel 1           | pixel 3           | pixel 7           |
+   +---------+                   |                   +-------------------+
+   |         |                   |                   | pixel 6           |
+   +---------+                   +-------------------+-------------------+
+   |         |                   | pixel 2           | pixel 5           |
+   +---------+                   |                   +-------------------+
+   |         |                   |                   | pixel 4           |
+   +---------+-------------------+-------------------+-------------------+
+   |         | pixel 0           | pixel 1           | pixel 3           |
+   +---------+                   |                   +-------------------+
+   |         |                   |                   | pixel 2           |
+   +---------+                   +-------------------+-------------------+
+   |         |                   | pixel 0           | pixel 1           |
+   +---------+                   |                   +-------------------+
+   | LSB     |                   |                   | pixel 0           |
+   +---------+-------------------+-------------------+-------------------+
+
+
+
+
+Display Synchronization
+=======================
+
+Overview
+--------
+
+The Graphics Engine is designed to be synchronized with the display refresh rate by defining some points in the rendering timeline. It is optional; however it is mainly recommended.  This chapter explains why to use display tearing signal and its consequences. Some chronograms describe several use cases: with and without display tearing signal, long drawings, long flush time, etc. Times are in milliseconds. To simplify chronograms views, the display refresh rate is every 16ms (62.5Hz). 
+
+Captions definition:
+
+* UI: It is the UI task which performs the drawings in the back buffer. At the end of the drawings, the examples consider that the UI thread calls `Display.flush()`_ 1 millisecond after the end of the drawings. At this moment, a flush can start (the call to `Display.flush()`_ is symbolized by a simple `peak` in chronograms).
+* Flush: In :ref:`copy<section_display_single>` mode, it is the time to transfer the content of back buffer to display buffer. In :ref:`double<section_display_double>` or :ref:`triple<section_display_double>` mode, it is the time to swap back and display buffers (often instantaneous) and the time to recopy the content of new display buffer to new back buffer. During this time, the back buffer is `in use` and UI task has to wait the end of copy before starting a new drawing. 
+* Tearing: The peaks show the tearing signals.
+* Rendering frequency: the frequency between the start of a drawing to the end of flush.
+
+Tearing Signal
+--------------
+
+In this example, the drawing time is 7ms, the time between the end of drawing and the call to `Display.flush()`_ is 1ms and the flush time is 6ms. So the expected rendering frequency is 7 + 1 + 6 = 14ms (71.4Hz). Flush starts just after the call to `Display.flush()`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. By consequence the display content is refreshed during the display refresh time. The content can be corrupted: flickering, glitches, etc. The rendering frequency is faster than display refresh rate.
+
+.. figure:: images/uiDisplaySync01.*
+   :width: 100%
+
+In this example, the times are identical to previous example. The tearing signal is used to start the flush in respecting the display refreshing time. The rendering frequency becomes smaller: it is cadenced on the tearing signal, every 16ms (62.5Hz). During 2ms, the CPU can schedule other tasks or goes in idle mode. The rendering frequency is equal to display refresh rate.
+
+.. figure:: images/uiDisplaySync02.*
+   :width: 100%
+
+In this example, the drawing time is 14ms, the time between the end of drawing and the call to `Display.flush()`_ is 1ms and the flush time is 6ms. So the expected rendering frequency is 14 + 1 + 6 = 21ms (47.6Hz). Flush starts just after the call to `Display.flush()`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. 
+
+.. figure:: images/uiDisplaySync03.*
+   :width: 100%
+ 
+In this example, the times are identical to previous example. The tearing signal is used to start the flush in respecting the display refreshing time. The drawing time + flush time is higher than display tearing signal period. So the flush cannot start at every tearing peak: it is cadenced on two tearing signals, every 32ms (31.2Hz). During 11ms, the CPU can schedule other tasks or goes in idle mode. The rendering frequency is equal to display refresh rate divided by two.
+
+.. figure:: images/uiDisplaySync04.*
+   :width: 100%
+
+Additional Buffer 
+-----------------
+
+Some devices take a lot of time to send back buffer content to display buffer. The following examples demonstrate the consequence on rendering frequency. The use of an additional buffer optimizes this frequency, however it uses a lot of RAM memory.
+
+In this example, the drawing time is 7ms, the time between the end of drawing and the call to `Display.flush()`_ is 1ms and the flush time is 12ms. So the expected rendering frequency is 7 + 1 + 12 = 20ms (50Hz). Flush starts just after the call to `Display.flush()`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. The rendering frequency is cadenced on drawing time + flush time.
+
+.. figure:: images/uiDisplaySync05.*
+   :width: 100%
+
+As mentioned above, the idea is to use two back buffers. First, UI task is drawing in back buffer ``A``. Just after the call to `Display.flush()`_, the flush can start. At the same moment, the content of back buffer ``A`` is copied in back buffer ``B`` (use a DMA, copy time is 1ms). During the flush time (copy of back buffer ``A`` to display buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When the drawings in back buffer ``B`` are done (and after the call to `Display.flush()`_), the DMA copy of back buffer ``B`` to back buffer ``A`` cannot start: the copy can only start when the flush is fully done because the flush is using the back buffer ``A``. As soon as the flush is done, a new flush (and DMA copy) can start. The rendering frequency is cadenced on flush time, i.e. 12ms (83.3Hz).
+
+.. figure:: images/uiDisplaySync06.*
+   :width: 100%
+
+The previous example doesn't take in consideration the display tearing signal. With tearing signal and only one back buffer, the frequency is cadenced on two tearing signals (see previous chapter). With two back buffers, the frequency is now cadenced on only one tearing signal, despite the long flush time. 
+
+.. figure:: images/uiDisplaySync07.*
+   :width: 100%
+
+Time Sum-up
+-----------
+
+The following table resumes the previous examples times:
+
+* It consider the display frequency is 62.5Hz (16ms). 
+* *Drawing time* is the time let to the application to perform its drawings and call `Display.flush()`_. In our examples, the time between the last drawing and the call to `Display.flush()`_ is 1ms.
+* *FPS* and *CPU load* are calculated from examples times.
+* *Max drawing time* is the maximum time let to the application to perform its drawings, without overlapping next display tearing signal (when tearing is enabled). 
+
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|  Tearing |  Nb buffers |  Drawing time (ms) |  Flush time (ms) |  DMA copy time (ms) |  FPS (Hz) |  CPU load (%) |  Max drawing time (ms) |
++==========+=============+====================+==================+=====================+===========+===============+========================+
+|     no   |       1     |         7+1        |         6        |                     |    71.4   |      57.1     |                        |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|    yes   |       1     |         7+1        |         6        |                     |    62.5   |       50      |            10          |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|     no   |       1     |         14+1       |         6        |                     |    47.6   |      71.4     |                        |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|    yes   |       1     |         14+1       |         6        |                     |    31.2   |      46.9     |            20          |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|     no   |       1     |         7+1        |         12       |                     |     50    |       40      |                        |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|    yes   |       1     |         7+1        |         12       |                     |    31.2   |       25      |            8           |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|     no   |       2     |         7+1        |         12       |           1         |    83.3   |      66.7     |                        |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+|    yes   |       2     |         7+1        |         12       |           1         |    62.5   |       50      |            11          |
++----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
+
 
 .. _section_display_llapi:
 
@@ -1433,126 +1561,6 @@ A dedicated OS task is required to perform this copy.
       LLUI_DISPLAY_IMPL_binarySemaphoreGive(_copy_task_semaphore, true);
    }
 
-Display Synchronization
-=======================
-
-Overview
---------
-
-The Graphics Engine is designed to be synchronized with the display refresh rate by defining some points in the rendering timeline. It is optional; however it is mainly recommended.  This chapter explains why to use display tearing signal and its consequences. Some chronograms describe several use cases: with and without display tearing signal, long drawings, long flush time, etc. Times are in milliseconds. To simplify chronograms views, the display refresh rate is every 16ms (62.5Hz). 
-
-Captions definition:
-
-* UI: It is the UI task which performs the drawings in the back buffer. At the end of the drawings, the examples consider that the UI thread calls `Display.flush()`_ 1 millisecond after the end of the drawings. At this moment, a flush can start (the call to `Display.flush()`_ is symbolized by a simple `peak` in chronograms).
-* Flush: In :ref:`copy<section_display_single>` mode, it is the time to transfer the content of back buffer to display buffer. In :ref:`double<section_display_double>` or :ref:`triple<section_display_double>` mode, it is the time to swap back and display buffers (often instantaneous) and the time to recopy the content of new display buffer to new back buffer. During this time, the back buffer is `in use` and UI task has to wait the end of copy before starting a new drawing. 
-* Tearing: The peaks show the tearing signals.
-* Rendering frequency: the frequency between the start of a drawing to the end of flush.
-
-Tearing Signal
---------------
-
-In this example, the drawing time is 7ms, the time between the end of drawing and the call to `Display.flush()`_ is 1ms and the flush time is 6ms. So the expected rendering frequency is 7 + 1 + 6 = 14ms (71.4Hz). Flush starts just after the call to `Display.flush()`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. By consequence the display content is refreshed during the display refresh time. The content can be corrupted: flickering, glitches, etc. The rendering frequency is faster than display refresh rate.
-
-.. figure:: images/uiDisplaySync01.*
-   :width: 100%
-
-In this example, the times are identical to previous example. The tearing signal is used to start the flush in respecting the display refreshing time. The rendering frequency becomes smaller: it is cadenced on the tearing signal, every 16ms (62.5Hz). During 2ms, the CPU can schedule other tasks or goes in idle mode. The rendering frequency is equal to display refresh rate.
-
-.. figure:: images/uiDisplaySync02.*
-   :width: 100%
-
-In this example, the drawing time is 14ms, the time between the end of drawing and the call to `Display.flush()`_ is 1ms and the flush time is 6ms. So the expected rendering frequency is 14 + 1 + 6 = 21ms (47.6Hz). Flush starts just after the call to `Display.flush()`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. 
-
-.. figure:: images/uiDisplaySync03.*
-   :width: 100%
- 
-In this example, the times are identical to previous example. The tearing signal is used to start the flush in respecting the display refreshing time. The drawing time + flush time is higher than display tearing signal period. So the flush cannot start at every tearing peak: it is cadenced on two tearing signals, every 32ms (31.2Hz). During 11ms, the CPU can schedule other tasks or goes in idle mode. The rendering frequency is equal to display refresh rate divided by two.
-
-.. figure:: images/uiDisplaySync04.*
-   :width: 100%
-
-Additional Buffer 
------------------
-
-Some devices take a lot of time to send back buffer content to display buffer. The following examples demonstrate the consequence on rendering frequency. The use of an additional buffer optimizes this frequency, however it uses a lot of RAM memory.
-
-In this example, the drawing time is 7ms, the time between the end of drawing and the call to `Display.flush()`_ is 1ms and the flush time is 12ms. So the expected rendering frequency is 7 + 1 + 12 = 20ms (50Hz). Flush starts just after the call to `Display.flush()`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. The rendering frequency is cadenced on drawing time + flush time.
-
-.. figure:: images/uiDisplaySync05.*
-   :width: 100%
-
-As mentioned above, the idea is to use two back buffers. First, UI task is drawing in back buffer ``A``. Just after the call to `Display.flush()`_, the flush can start. At the same moment, the content of back buffer ``A`` is copied in back buffer ``B`` (use a DMA, copy time is 1ms). During the flush time (copy of back buffer ``A`` to display buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When the drawings in back buffer ``B`` are done (and after the call to `Display.flush()`_), the DMA copy of back buffer ``B`` to back buffer ``A`` cannot start: the copy can only start when the flush is fully done because the flush is using the back buffer ``A``. As soon as the flush is done, a new flush (and DMA copy) can start. The rendering frequency is cadenced on flush time, i.e. 12ms (83.3Hz).
-
-.. figure:: images/uiDisplaySync06.*
-   :width: 100%
-
-The previous example doesn't take in consideration the display tearing signal. With tearing signal and only one back buffer, the frequency is cadenced on two tearing signals (see previous chapter). With two back buffers, the frequency is now cadenced on only one tearing signal, despite the long flush time. 
-
-.. figure:: images/uiDisplaySync07.*
-   :width: 100%
-
-Time Sum-up
------------
-
-The following table resumes the previous examples times:
-
-* It consider the display frequency is 62.5Hz (16ms). 
-* *Drawing time* is the time let to the application to perform its drawings and call `Display.flush()`_. In our examples, the time between the last drawing and the call to `Display.flush()`_ is 1ms.
-* *FPS* and *CPU load* are calculated from examples times.
-* *Max drawing time* is the maximum time let to the application to perform its drawings, without overlapping next display tearing signal (when tearing is enabled). 
-
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|  Tearing |  Nb buffers |  Drawing time (ms) |  Flush time (ms) |  DMA copy time (ms) |  FPS (Hz) |  CPU load (%) |  Max drawing time (ms) |
-+==========+=============+====================+==================+=====================+===========+===============+========================+
-|     no   |       1     |         7+1        |         6        |                     |    71.4   |      57.1     |                        |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|    yes   |       1     |         7+1        |         6        |                     |    62.5   |       50      |            10          |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|     no   |       1     |         14+1       |         6        |                     |    47.6   |      71.4     |                        |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|    yes   |       1     |         14+1       |         6        |                     |    31.2   |      46.9     |            20          |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|     no   |       1     |         7+1        |         12       |                     |     50    |       40      |                        |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|    yes   |       1     |         7+1        |         12       |                     |    31.2   |       25      |            8           |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|     no   |       2     |         7+1        |         12       |           1         |    83.3   |      66.7     |                        |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-|    yes   |       2     |         7+1        |         12       |           1         |    62.5   |       50      |            11          |
-+----------+-------------+--------------------+------------------+---------------------+-----------+---------------+------------------------+
-
-.. _display_lut:
-
-CLUT
-====
-
-The Display module allows to target display which uses a pixel indirection table (CLUT). This kind of display are considered as generic but not standard (see :ref:`display_pixel_structure`). It consists to store color indices in image memory buffer instead of colors themselves.
-
-Color Conversion
-----------------
-
-The driver must implement functions that convert MicroUI's standard 32-bit ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to display color representation. For each application ARGB8888 color, the display driver has to find the corresponding color in the table. The Graphics Engine will store the index of the color in the table instead of using the color itself.
-
-When an application color is not available in the display driver table (CLUT), the display driver can try to find the closest color or return a default color. First solution is often quite difficult to write and can cost a lot of time at runtime. That's why the second solution is preferred. However, a consequence is that the application has only to use a range of colors provided by the display driver.
-
-Alpha Blending
---------------
-
-MicroUI and the Graphics Engine use blending when drawing some texts or anti-aliased shapes. For each pixel to draw, the display stack blends the current application foreground color with the targeted pixel current color or with the current application background color (when enabled). This blending *creates* some  intermediate colors which are managed by the display driver. 
-
-Most of time the intermediate colors do not match with the palette. The default color is so returned and the rendering becomes wrong. To prevent this use case, the Graphics Engine offers a specific Abstraction Layer API ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors(void* foreground, void* background)``. 
-
-This API is only used when a blending is required and when the background color is enabled. The Graphics Engine calls the API just before the blending and gives as parameter the pointers on the both ARGB colors. The display driver should replace the ARGB colors by the CLUT indices. Then the Graphics Engine will only use between both indices. 
-
-For instance, when the returned indices are ``20`` and ``27``, the display stack will use the indices ``20`` to ``27``, where all indices between ``20`` and ``27`` target some intermediate colors between both the original ARGB colors. 
-
-This solution requires several conditions:
-
--  Background color is enabled and it is an available color in the CLUT.
--  Application can only use foreground colors provided by the CLUT. The VEE Port designer should give to the application developer the available list of colors the CLUT manages.
--  The CLUT must provide a set of blending ranges the application can use. Each range can have its own size (different number of colors between two colors). Each range is independent. For instance if the foreground color ``RED`` (``0xFFFF0000``) can be blended with two background colors ``WHITE`` (``0xFFFFFFFF``) and ``BLACK`` (``0xFF000000``), two ranges must be provided. Both the ranges have to contain the same index for the color ``RED``.
--  Application can only use blending ranges provided by the CLUT. Otherwise the display driver is not able to find the range and the default color will be used to perform the blending.
--  Rendering of dynamic images (images decoded at runtime) may be wrong because the ARGB colors may be out of CLUT range.
 
 .. _section_display_implementation:
 
