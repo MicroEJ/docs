@@ -1,7 +1,7 @@
 
 .. _ack_create_project_:
-.. |ACK_PLUGIN_VERSION| replace:: 0.3.4
-.. |SDK_VERSION| replace:: 0.13.0
+.. |ACK_PLUGIN_VERSION| replace:: 0.3.6
+.. |SDK_VERSION| replace:: 0.15.0
 .. |SUPPORT_LIB_VERSION| replace:: 2.0.1
 
 Project Setup
@@ -37,6 +37,7 @@ Create or Import an Android project
 
 The Android documentation covers the process of creating apps for diverse form factors, including smartphones and wearable devices.
 Read `Create a Project <https://developer.android.com/studio/projects/create-project>`_ and follow the guidelines before proceeding.
+If you are creating a project from scratch, we recommend using the ``Empty Activity`` template.
 
 .. note::
 
@@ -231,7 +232,7 @@ The next steps show how to configure the Android or Wear OS application to decla
   .. code-block:: kotlin
    
       dependencies {
-         microejVeePort("com.mycompany:veeport:1.0.0")
+         microejVee("com.mycompany:veeport:1.0.0")
          ...
       }
 
