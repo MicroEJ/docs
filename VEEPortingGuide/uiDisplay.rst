@@ -66,6 +66,8 @@ Most of the time, a new frame often appears every 16.6ms (60Hz).
 
 There are two types of connection with the MCU: Serial and Parallel.
 
+.. _section_display_serial:
+
 Serial
 ------
 
@@ -81,6 +83,8 @@ This is the notion of **unmapped memory**.
    :align: center
 
    Display Connection Serial
+
+.. _section_display_parallel:
 
 Parallel
 --------
@@ -98,14 +102,35 @@ This is the notion of **mapped memory**.
 
    Display Connection Parallel
 
-Buffer Modes
-============
+Buffer Mode
+===========
 
-The notion of buffer modes depends on the available number of buffers allocated in the MCU memory and on the display connection.
-The Graphics Engine manipulates these buffers in two steps:
+Overview
+--------
+
+The notion of buffer mode depends on the available number of buffers allocated in the MCU memory and on the display connection.
+The Graphics Engine does not depend on the type of buffer mode and it manipulates these buffers in two steps:
 
 1. It renders the application drawings into a MCU buffer.
 2. It *flushes* the buffer's content to the display panel.
+
+The implementation of `Display.flush()`_  calls the Abstraction Layer API ``LLUI_DISPLAY_IMPL_flush`` to let the BSP to update the display data. 
+
+Decision Tree
+-------------
+
+The following flow chart provides a handy guide to selecting the appropriate buffer mode according to the hardware configuration.
+
+* XXX_TODO review the decision tree
+* XXX_TODO how about the custom display ??
+* XXX_TODO partial buffer
+
+.. figure:: images/display_modes_nocustom.*
+   :alt: Buffer Modes
+   :scale: 50%
+   :align: center
+
+   Buffer Modes
 
 The following table redirects to the right chapter according to the display buffer mode:
 
@@ -123,38 +148,45 @@ The following table redirects to the right chapter according to the display buff
 | Serial     | 2              | :ref:`Double and Copy <section_display_double_copy>` |
 +------------+----------------+------------------------------------------------------+
 
+XXX_TODO add section_display_double_parallel_copy in the table
+
 .. _section_display_direct:
 
 Direct Buffer (parallel)
 ------------------------
 
-For the display connection *parallel*, the *flush* step has no meaning because there is only one buffer and the display panel continuously refreshes its content on this MCU buffer. 
-This is the notion of **direct buffer**.
+There is only one buffer and the display panel continuously refreshes its content on this MCU buffer. 
 Consequently, the display panel can show incomplete frames and partial drawings because the refresh cannot be stopped, instead of seeing the entire frame at once.
+This is the notion of **direct buffer**.
+For more static display-based applications, and/or to save memory, this buffer mode is recommended.
+
+In this mode, the *flush* step has no meaning (there is only one buffer). 
 
 .. figure:: images/ui_display_single_parallel.*
-   :alt: Display Direct Buffer
+   :alt: Direct Buffer
    :scale: 50%
    :align: center
 
-   Display Direct Buffer
+   Direct Buffer
+
 
 .. _section_display_single:
 
 Single Buffer (serial)
 ----------------------
 
-For the display connection *serial*, the *flush* step consists in sending the data through the right bus (SPI, DSI).
-There are two distinct buffers: the buffer where the drawings are rendered is often called **back buffer**, and the display module buffer **frame buffer** or **front buffer**.
+For the display connection *serial*, there are two distinct buffers: the buffer where the drawings are rendered is often called **back buffer**, and the display module buffer **frame buffer** or **front buffer**.
 As only the back buffer is stored in the MCU mapped memory (the frame buffer is stored in the display module unmapped memory), there is only one buffer to allocate.
 This is the notion of **single buffer**.
 
+The *flush* step consists in sending the data through the right bus (SPI, DSI).
+
 .. figure:: images/ui_display_single_serial.*
-   :alt: Display Single Buffer
+   :alt: Single Buffer
    :scale: 50%
    :align: center
 
-   Display Single Buffer
+   Single Buffer
 
 The display panel only shows complete frames; it cannot show partial drawings because the *flush* step is performed after all the drawings. 
 During the sending of data from the back buffer to the frame buffer, the application cannot draw again in the back buffer: the previous drawings must be fully sent before.
@@ -162,27 +194,29 @@ The time to send the data from the back buffer to the frame buffer may be long.
 During this time, no drawing can be anticipated and the global framerate is reduced.
 As soon as the is sending done, the application can draw again in the back buffer.
 
-
 .. _section_display_double:
 
-Double Buffer (parallel)
-------------------------
+Swap Double Buffer (parallel)
+-----------------------------
 
 To prevent the :ref:`invalid content of the display panel <section_display_direct>`, the BSP should provide another MCU buffer (the same size as the first buffer) where the drawings are performed.
 The first buffer, for its part, is dedicated to the refreshing of the display panel.
+Double buffering avoids flickering and inconsistent rendering: it is well suited to high quality animations.
 This is the notion of **double buffer**.
 This new buffer is often called **back buffer**, and the first buffer is often called **frame buffer** or **front buffer**.
+The two buffers in MCU memory alternately play the role of the back buffer and the frame buffer. 
+The display panel address is alternatively changed from one buffer to the other. 
 
 The *flush* step consists in switching (or swapping) the two buffers: the frame buffer becomes the back buffer and the back buffer the frame buffer.
 
 .. figure:: images/ui_display_double.*
-   :alt: Display Double Buffer
+   :alt: Swap Double Buffer
    :scale: 50%
    :align: center
 
-   Display Double Buffer
+   Swap Double Buffer
 
-This swap may not be atomic: the display panel often fully refreshes an entire frame before changing its buffer address.
+This swap may not be atomic and may be done asynchronously: the display panel often fully refreshes an entire frame before changing its buffer address.
 During this time, the frame buffer is used (the display panel refreshes itself on it), and the back buffer is locked (reserved for the next frame to show).
 Consequently, the application cannot draw again: the swapping must be performed before.
 As soon as the swap is done, the both buffers are inverted.
@@ -190,8 +224,8 @@ Now, the application can draw in the new back buffer (the old frame buffer).
 
 .. _section_display_triple:
 
-Triple Buffer (parallel)
-------------------------
+Swap Triple Buffer (parallel)
+-----------------------------
 
 When the display is large, it is possible to introduce a third mapped buffer.
 This third buffer allows to not :ref:`wait the end of the swapping <section_display_double>` before starting a new drawing.
@@ -205,11 +239,35 @@ The *flush* step consists in swapping two buffers and to *give* to the applicati
 * At the end of the drawings in the back buffer 3, the back buffer 3 takes the role of the next frame buffer, the back buffer 2 is the frame buffer and the back buffer 1 is free.
 
 .. figure:: images/ui_display_triple.*
-   :alt: Display Triple Buffer
+   :alt: Swap Triple Buffer
    :scale: 50%
    :align: center
 
-   Display Triple Buffer
+   Swap Triple Buffer
+
+.. _section_display_double_parallel_copy:
+
+Copy Double Buffer (parallel)
+-----------------------------
+
+When the :ref:`swap mode <section_display_double>` is not possible (the display panel is mapped on a fixed MCU memory address), the mode **copy double buffer** can be used.
+Like swap mode, this double buffering avoids flickering and inconsistent rendering: it is well suited to high quality animations.
+
+The *flush* step consists in copying the back buffer content to the frame buffer (often by using a DMA).
+
+.. figure:: images/ui_display_double_copy_parallel.*
+   :alt: Copy Double Buffer
+   :scale: 50%
+   :align: center
+
+   Copy Double Buffer
+
+When the :ref:`swap mode <section_display_double>` can be used, the *copy double* mode can be also used.
+However there some differences:
+
+* In *Swap* mode, the new frame buffer data is available instantly. As soon as the LCD controller has updated its frame buffer address, the data is ready to be sent to the LCD. In *Copy* mode, the process of copying the data to the display buffer occurs while the LCD controller is reading them. Therefore, the buffer copy has to be faster than the LCD controller reading. If this requirement is not met, the LCD controller will send a mix of new and old data (because the buffer copy is not completely finished).
+* In *Swap* mode, the synchronization with the LCD controller is more effortless. An interrupt is thrown as soon as the LCD controller has updated its frame buffer address. In *Copy* mode, the copy buffer process should be synchronized with the LCD tearing signal.
+* In *Copy* mode, during the copy, the destination buffer (the frame buffer) is used by the copy buffer process (DMA, memcopy, etc.) and by the LCD controller. Both masters are using the same RAM section. This same RAM section switches in *Write* mode (copy buffer process) and *Read* mode (LCD controller). 
 
 .. _section_display_double_copy:
 
@@ -235,162 +293,19 @@ The *flush* step consists in sending the back buffer data to the display module 
 
    Display Double Buffer And Copy
 
-Buffer Modes
-============
-
-Overview
---------
-
-When using the double buffering technique, the memory into which the application draws (called graphics buffer or back buffer) is not the memory used by the screen to refresh it (called frame buffer or display
-buffer). When everything has been drawn consistently from the application point of view, the back buffer contents are synchronized with the display buffer. Double buffering avoids flickering and inconsistent rendering: it is well suited to high quality animations.
-
-For more static display-based applications, and/or to save memory, an alternative configuration is to use only one buffer, shared by both the application and the screen.
-
-Displays addressed by one of the standard configurations are called *generic displays*. For these generic displays, there are three buffer modes: switch, copy and direct. The following flow chart provides a
-handy guide to selecting the appropriate buffer mode according to the hardware configuration.
-
-.. figure:: images/display_modes_nocustom.*
-   :alt: Buffer Modes
-   :scale: 50%
-   :align: center
-
-   Buffer Modes
-
-Implementation
---------------
-
-The Graphics Engine does not depend on the type of buffer mode. The implementation of `Display.flush()`_  calls the Abstraction Layer API ``LLUI_DISPLAY_IMPL_flush`` to let the BSP to update the display data. This function should be atomic and the implementation has to return the new graphics buffer address (back buffer address). In
-``direct`` and ``copy`` modes, this address never changes and the implementation has always to return the back buffer address. In ``switch`` mode, the implementation has to return the old display frame buffer address.
-
-The next sections describe the work to do for each mode.
-
-.. _switchBufferMode:
-
-Switch
-------
-
-The switch mode is a double-buffered mode where two buffers in RAM alternately play the role of the back buffer and the display buffer. The display source is alternatively changed from one buffer to the other. Switching the source address may be done asynchronously. The synchronize function is called before starting the next set of draw operations, and must wait until the driver has switched to the new buffer.
-
-Synchronization steps are described :ref:`below <switchModeSyncSteps>`.
-
-.. _switchModeSyncSteps :
-
-- | *Step 1:* Drawing
-  | MicroUI is drawing in buffer 0 (back buffer) and the display is reading its contents from buffer 1 (display buffer).
-
-.. figure:: images/switch-step1.*
-   :alt: Step 1: Drawing
-   :width: 400px
-   :align: center
-
-- | *Step 2:* Switch
-  | The drawing is done. Set that the next read will be done from buffer 0.
-  | Note that the display \"hardware component\" asynchronously continues to read data from buffer 1.
-
-.. figure:: images/switch-step2.*
-   :alt: Step 2: Switch
-   :width: 400px
-   :align: center
-
-- | *Step 3:* Copy
-  | A copy from the buffer 0 (new display buffer) to the buffer 1 (new back buffer) must be done to keep the contents of the current drawing. The copy routine must wait until the display has finished the switch, and start asynchronously by comparison with the MicroUI drawing routine (see next step). 
-  | This copy routine can be done in a dedicated RTOS task or in an interrupt routine. The copy should start after the display \"hardware component\" has finished a full buffer read to avoid flickering.
-  | Usually a tearing signal from the display at the end of the read of the previous buffer (buffer 1) or at the beginning of the read of the new buffer (buffer 0) throws an interrupt. The interrupt routine starts the copy using a DMA.
-  | If it is not possible to start an asynchronous copy, the copy must be performed in the MicroUI drawing routine, at the beginning of the next step.
-  | Note that the copy is partial: only the parts that have changed need to be copied, lowering the CPU load.
-
-.. figure:: images/switch-step3.*
-   :alt: Step 3: Copy
-   :width: 400px
-   :align: center
-
-- | *Step 4:* Synchronisation
-  | Waits until the copy routine has finished the full copy.
-  | If the copy has not been done asynchronously, the copy must start after the display has finished the switch. It is a blocking copy because the next drawing operation has to wait until this copy is done.
-
-- | *Step 5:* Next draw operation
-  | Same behavior as step 1 with buffers reversed.
-
-.. figure:: images/switch-step4.*
-   :alt: Step 5: Next draw operation
-   :width: 400px
-   :align: center
-
-
-.. _copyBufferMode:
-
-Copy
-----
-
-The copy mode is a double-buffered mode where the back buffer is in RAM and has a fixed address. To update the display, data is sent to the display buffer. This can be done either by a memory copy or by sending
-bytes using a bus, such as SPI or I2C.
-
-Synchronization steps are described :ref:`below <table_copyModeSyncSteps>`.
-
-.. _table_copyModeSyncSteps:
-
-- | *Step 1:* Drawing 
-  | MicroUI is drawing in the back buffer and the display is reading its content from the display buffer.
-
-.. image:: images/copy-step1.*
-   :width: 400px
-   :align: center
-
-- | *Step 2:* Copy 
-  | The drawing is done. A copy from the back buffer to the display buffer is triggered. 
-  | Note that the implementation of the copy operation may be done asynchronously – it is recommended to wait until the display "hardware component" has finished a full buffer read to avoid flickering. At the implementation level, the copy may be done by a DMA, a dedicated RTOS task, interrupt, etc.
-
-.. image:: images/copy-step2.*
-   :width: 400px
-   :align: center
-
-- | *Step 3:*  Synchronization
-  | The next drawing operation waits until the copy is complete.
-
-.. image:: images/copy-step3.*
-   :width: 400px
-   :align: center
-
-.. _directBufferMode:
-
-
-Switch VS Copy
---------------
-
-Where *Switch* mode is possible, *Copy* can also be used:
-
-- In *Switch* mode, the copy from the new frame buffer to the new back buffer consists of restoring the past: after this copy, the application retrieves its previous drawings in the back buffer.
-- In *Copy* mode, the copy from the back buffer to the frame buffer consists of copying the application drawings into the display buffer.
-
-However, when possible, the *Switch* mode should be implemented:
-
-- The new frame buffer data is available instantly. As soon as the LCD controller has updated its frame buffer address, the data is ready to be sent to the LCD. In *Copy* mode, the process of copying the data to the display buffer occurs while the LCD controller is reading them. Therefore, the buffer copy has to be faster than the LCD controller reading. If this requirement is not met, the LCD controller will send a mix of new and old data (because the buffer copy is not completely finished).
-- The synchronization with the LCD controller is more effortless. An interrupt is thrown as soon as the LCD controller has updated its frame buffer address. Then, the copy buffer process can start. In *Copy* mode, the copy buffer process should be synchronized with the LCD tearing signal.
-- During the copy, the same buffer is used as source by the copy buffer process (DMA, memcopy, etc.) and by the LCD controller. Both masters are using the same RAM section in *reading*. In *Copy* mode, the same RAM section switches in *Write* mode (copy buffer process) and *Read* mode (LCD controller). 
-
-Direct
-------
-
-The direct mode is a single-buffered mode where the same memory area is used for the back buffer and the display buffer (:ref:`See illustration below <fig_directMode>`). Use of the direct mode is likely to
-result in "noisy" rendering and flickering, but saves one buffer in runtime memory.
-
-.. _fig_directMode:
-.. figure:: images/direct.*
-   :alt: Display Direct Mode
-   :width: 270px
-   :align: center
-
 .. _section_display_partial_buffer:
 
 Partial Buffer
 ==============
 
-In the case where RAM usage is not a constraint, the graphics buffer is sized to store all the pixel data of the screen.
+XXX_TODO fixme: the chapter heading is not the same than other modes
+
+In the case where RAM usage is not a constraint, the back buffer is sized to store all the pixel data of the screen.
 However, when the RAM available on the device is very limited, a partial buffer can be used instead.
 In that case, the buffer is smaller and can only store a part of the screen (one third for example).
 
 When this technique is used, the application draws in the partial buffer.
-To flush the drawings, the content of the partial buffer is copied to the display (to its internal memory or to a complete buffer from which the display reads).
+To flush the drawings, the content of the partial buffer is copied to the display (to its :ref:`internal memory <section_display_serial>` or to a :ref:`complete buffer <section_display_parallel>` from which the display reads).
 
 If the display does not have its own internal memory and if the device does not have enough RAM to allocate a complete buffer, then it is not possible to use a partial buffer. In that case, only the *Direct* buffer mode can be used.
 
@@ -1005,7 +920,7 @@ This particular case is the easiest to write because the ``flush()`` stays empty
 Serial Display
 --------------
 
-A display connected to the CPU through a serial bus (I2C, SPI, etc.) requires the :ref:`copy<copyBufferMode>` mode: the application uses a buffer to perform its drawings and the buffer's content has to be sent to the display when the Graphics Engine is calling the ``flush()`` function.
+A display connected to the CPU through a serial bus (I2C, SPI, etc.) requires the :ref:`copy<section_display_single>` mode: the application uses a buffer to perform its drawings and the buffer's content has to be sent to the display when the Graphics Engine is calling the ``flush()`` function.
 
 The specification of the ``flush()`` function is to be **not** blocker (atomic). 
 Its aim is to prepare / configure the serial bus and data to send and then, to start the asynchronous copy (data sent).
@@ -1521,8 +1436,6 @@ A dedicated OS task is required to perform this copy.
 Display Synchronization
 =======================
 
-.. note:: This chapter is mainly helpful when the :ref:`copy<copyBufferMode>` mode is used: the aim consists of synchronizing the update of the LCD frame buffer with the LCD refresh rate.
-
 Overview
 --------
 
@@ -1531,7 +1444,7 @@ The Graphics Engine is designed to be synchronized with the display refresh rate
 Captions definition:
 
 * UI: It is the UI task which performs the drawings in the back buffer. At the end of the drawings, the examples consider that the UI thread calls `Display.flush()`_ 1 millisecond after the end of the drawings. At this moment, a flush can start (the call to `Display.flush()`_ is symbolized by a simple `peak` in chronograms).
-* Flush: In :ref:`copy<copyBufferMode>` mode, it is the time to transfer the content of back buffer to display buffer. In :ref:`switch<switchBufferMode>` mode, it is the time to swap back and display buffers (often instantaneous) and the time to recopy the content of new display buffer to new back buffer. During this time, the back buffer is `in use` and UI task has to wait the end of copy before starting a new drawing. 
+* Flush: In :ref:`copy<section_display_single>` mode, it is the time to transfer the content of back buffer to display buffer. In :ref:`double<section_display_double>` or :ref:`triple<section_display_double>` mode, it is the time to swap back and display buffers (often instantaneous) and the time to recopy the content of new display buffer to new back buffer. During this time, the back buffer is `in use` and UI task has to wait the end of copy before starting a new drawing. 
 * Tearing: The peaks show the tearing signals.
 * Rendering frequency: the frequency between the start of a drawing to the end of flush.
 
