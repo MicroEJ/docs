@@ -27,6 +27,7 @@ VEE Porting Guide
    fs
    hal
    device
+   security
    watchdog-timer
    systemView
    simulation

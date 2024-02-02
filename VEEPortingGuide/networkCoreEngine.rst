@@ -38,6 +38,8 @@ Dependencies
    (see :ref:`LLNET-API-SECTION`).
 
 
+.. _network_core_installation:
+
 Installation
 ============
 
