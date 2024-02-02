@@ -649,7 +649,7 @@ The following sections explain:
 Useful Resources
 ~~~~~~~~~~~~~~~~
 
-* IAR System: Debugging a HardFault on Cortex-M https://www.iar.com/support/tech-notes/debugger/debugging-a-hardfault-on-cortex-m/
+* IAR System: Debugging a HardFault on Cortex-M https://www.iar.com/knowledge/support/technical-notes/debugger/debugging-a-hardfault-on-cortex-m/
 * ESP-IDF Programming Guide: Fatal Errors https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/fatal-errors.html
 * Using Cortex-M3/M4/M7 Fault Exceptions MDK Tutorial http://www.keil.com/appnotes/files/apnt209.pdf
 
