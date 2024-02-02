@@ -129,7 +129,7 @@ Display
 |                 | * ``void LLUI_DISPLAY_IMPL_initialize([...]);``                  |
 |                 | * ``void LLUI_DISPLAY_IMPL_binarySemaphoreTake([...]);``         |
 |                 | * ``void LLUI_DISPLAY_IMPL_binarySemaphoreGive([...]);``         |
-|                 | * ``uint8_t* LLUI_DISPLAY_IMPL_flush([...]);``                   |
+|                 | * ``void LLUI_DISPLAY_IMPL_flush([...]);``                       |
 +-----------------+------------------------------------------------------------------+
 | [13.0.0-13.7.2] | *UI3* format: implement ``LLUI_DISPLAY_impl.h``:                 |
 |                 |                                                                  |
