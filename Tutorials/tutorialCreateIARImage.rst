@@ -3,7 +3,7 @@
 Add IAR to MicroEJ SDK Docker Image
 ===================================
 
-This document presents how to create a Dockerfile with `MicroEJ SDK version 5.x <https://docs.microej.com/en/latest/SDKUserGuide/>`_ and `Cross-platform Build Tools for Arm <https://www.iar.com/bxarm>`_ to build a MicroEJ application. 
+This document presents how to create a Dockerfile with `MicroEJ SDK version 5.x <https://docs.microej.com/en/latest/SDKUserGuide/>`_ and `Cross-platform Build Tools for Arm <https://www.iar.com/products/architectures/arm/iar-build-tools-for-arm/>`_ to build a MicroEJ application. 
 You can use this image in your automated CI.
 
 
