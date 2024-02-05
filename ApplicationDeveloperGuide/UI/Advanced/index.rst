@@ -8,6 +8,7 @@ Advanced
 
    how-to-text-overflow
    how-to-microui-flush-visualizer
+   how-to-front-panel
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
