@@ -101,7 +101,7 @@ Also, a Front Panel project can contain several Front Panel descriptor files.
 Refer to the :ref:`section_frontpanel_multiple_fp_files` section to know how to select the file you want to use.
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

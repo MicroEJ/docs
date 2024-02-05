@@ -270,7 +270,7 @@ You may encounter some command line issues if you try to run the proxy on Window
 On Windows workstation, we recommend using ``CMD`` Command Prompt instead.
 
 ..
-   | Copyright 2022-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2022-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

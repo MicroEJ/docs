@@ -616,7 +616,7 @@ You may delete this directory to force the generation of all fonts in your appli
 A font that was previously generated but is no longer listed in the ``*.fonts.list`` files when the application is launched will be deleted from the cache directory.
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

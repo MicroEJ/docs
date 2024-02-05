@@ -11,7 +11,7 @@ This section is intended to provide a set of examples to cover most of the use c
    examples/use_host_object
 
 ..
-   | Copyright 2021-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -279,7 +279,7 @@ Build
 Once the Front Panel project is created or modified, the VEE Port must be built again (the front panel is built simultaneously with the VEE Port; see :ref:`platform_build`).
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
