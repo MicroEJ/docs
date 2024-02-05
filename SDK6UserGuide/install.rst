@@ -107,7 +107,7 @@ Install the IDE
 Using an IDE is highly recommended for developing MicroEJ projects, making the development more comfortable and increasing productivity.
 The three following IDEs are supported: 
 
-- `Android Studio <https://developer.android.com/studio>`__ - Minimum supported version is ``Bumblebee - 2021.1.1``.
+- `Android Studio <https://developer.android.com/studio>`__ - Minimum supported version is ``Hedgehog - 2023.1.1``.
 - `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__ (Community or Ultimate edition) - Minimum supported version is ``2021.2``.
 - `Eclipse IDE for Java Developers <https://www.eclipse.org/downloads/packages/>`__ - Minimum supported version is ``2022-03``.
 
@@ -224,7 +224,7 @@ Once your favorite IDE is installed, the MicroEJ plugin must be installed.
          - In the upcoming window, click on the :guilabel:`Restart Now` button.
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
