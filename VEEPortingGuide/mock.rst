@@ -81,8 +81,7 @@ To create a new MicroEJ mock project:
 
    .. tab:: SDK 6
 
-      - :ref:`Create a J2SE Library project <sdk_6_create_project_configure_project>`,
-      - In the ``build.gradle.kts`` file, change the ``com.microej.gradle.j2se-library`` plugin to ``com.microej.gradle.mock``.
+      Follow the steps described in :ref:`SDK 6 User Guide - Create a Project <sdk_6_create_project>` depending on your IDE.
 
    .. tab:: SDK 5
 
