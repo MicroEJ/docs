@@ -43,7 +43,7 @@ Once these prerequisites are fulfilled, the Feature file can be built:
 The Feature file is generated in the ``build/binary`` folder of the project.
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

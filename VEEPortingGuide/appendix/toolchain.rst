@@ -378,7 +378,7 @@ Once executed, it produces a new Executable file beside the original one with th
 This file now contains the linked ``.debug.soar`` section so that it can be used by the debug tools.
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

@@ -71,7 +71,7 @@ The following elements are also embedded in the Virtual Device:
 You can refer to the :ref:`sdk_6_build_virtual_device` page to know how to build a Virtual Device.
 
 ..
-   | Copyright 2008-2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
