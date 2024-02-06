@@ -105,6 +105,8 @@ This is the notion of **mapped memory**.
 
    Display Connection Parallel
 
+.. _section_display_buffer_mode:
+
 Buffer Mode
 ===========
 
