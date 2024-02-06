@@ -29,6 +29,7 @@ Chapters Organization
 For more convenience, this chapter only describes how a display device works and how to connect it to the MicroUI Graphics Engine. 
 Dedicated chapters deal with related concepts:
 
+* :ref:`section_brs`: how the display buffer is refreshed,
 * :ref:`section_drawings`: how the drawings are performed, the use of a GPU, etc.
 * :ref:`section_image_menu`: how the images are generated and drawn.
 * :ref:`section_fonts`: how the fonts are generated and drawn.
@@ -45,9 +46,11 @@ The Graphics Engine provides a number of different configurations. The appropria
 The modes can vary in four ways:
 
 -  the display device connection to the Graphics Engine,
--  the number of buffers: double-buffer, simple buffer (also known as *direct*),
+-  the number of buffers,
 -  pixel format or depth,
 -  the memory layout of the pixels.
+
+.. _section_display_connection:
 
 Display Connection
 ==================
