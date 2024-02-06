@@ -132,6 +132,10 @@ C Module NemaGFX
 
 * Add the compatibility with UI Pack 14.0.
 
+**Fixed**
+
+* Fix ``nema_draw_line()`` ``y1`` argument.
+
 XXX_TODO wrong links
 
 13.7.2 (2023-12-21)
