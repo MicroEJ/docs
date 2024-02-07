@@ -250,6 +250,8 @@ The following chapters describe the strategies:
 Strategy: Single
 ================
 
+.. note:: This chapter uses the display connection *serial* to describe the flow but it is similar for the display connection *parallel* (*copy* instead of *send*).
+
 Principle
 ---------
 
@@ -429,10 +431,10 @@ Before the very first drawing after a flush, the content of the back buffer does
 By consequence, the first read action (``GraphicsContext.readPixel()``, ``Painter.drawDisplayRegion()``, etc.) cannot use the back buffer as source buffer. 
 The algorithm has to call ``LLUI_DISPLAY_get_source_image()`` to retrieve a pointer to the frame buffer address.
 
-Use (Double Buffer Mode)
+Use (Swap Double Buffer)
 ------------------------
 
-Here the steps around the strategy that describes how to use it in :ref:`double<section_display_double>` buffer mode (the two buffers have the same role alternatively: back buffer and frame buffer):
+Here the steps around the strategy that describes how to use it in :ref:`double<section_display_swap_double_parallel>` buffer mode (the two buffers have the same role alternatively: back buffer and frame buffer):
 
 1. Some drawings are performed in the back buffer.
 2. A ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
@@ -443,7 +445,7 @@ Here the steps around the strategy that describes how to use it in :ref:`double<
 7. Before the very first drawing, this strategy copies the regions to restore from the old back buffer to the new back buffer.
 8. A new drawing can start in the new back buffer.
 
-Use (Triple Buffer Mode)
+Use (Swap Triple Buffer)
 ------------------------
 
 Here the steps around the strategy that describes how to use it in :ref:`triple<section_display_triple>` buffer mode.
@@ -478,10 +480,12 @@ On startup, the LCD buffer is mapped on the buffer (C), the buffer (A) is the ba
 
 13. The buffer (C) will be now used for the next drawings. Go to step 5.
 
-Use (Double Copy Mode)
-----------------------
+Use (Copy and Swap Buffer)
+--------------------------
 
-Here the steps around the strategy that describes how to use it in :ref:`double and copy<section_display_double_copy>` buffer mode. 
+.. note:: This chapter uses the display connection *serial* to describe the flow but it is similar for the display connection *parallel* (*copy* instead of *send*).
+
+Here the steps around the strategy that describes how to use it in :ref:`copy and swap<section_display_copyswap>` buffer mode. 
 The two buffers have the same role alternatively: back buffer and sending buffer. 
 On startup, the sending buffer is not used yet.
 
@@ -751,7 +755,7 @@ The options (some defines) are shared between the strategies:
 
 * ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE`` (``ui_display_brs_configuration.h``): configures the number of rectangles the strategy gives to the implementation of ``LLUI_DISPLAY_IMPL_flush()``. If not set, the number or regions depends on the strategy. If set, only one region is given: the bounding box of all drawing regions. Used by:
 
-  * Predraw: the list of regions is often useless (the LCD driver has just to swap the back and frame buffers), however this list can be used for the buffer mode :ref:`section_display_double_copy`. Calculating the bounding box uses takes a bit of memory and time; if the bounding box is useless, it is recommended to not enable this option.
+  * Predraw: the list of regions is often useless (the LCD driver has just to swap the back and frame buffers), however this list can be used for the buffer mode :ref:`section_display_copyswap`. Calculating the bounding box uses takes a bit of memory and time; if the bounding box is useless, it is recommended to not enable this option.
   * Single: the list of regions can be useful to refresh small parts of the display panel.
   * Legacy: this option is never used and the bounding box of all drawing regions is given to the implementation of ``LLUI_DISPLAY_IMPL_flush()``.
 
