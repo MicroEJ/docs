@@ -126,11 +126,16 @@ Decision Tree
 
 The following flow chart provides a handy guide to selecting the appropriate buffer mode according to the hardware configuration.
 
-* XXX_TODO review the decision tree
-* XXX_TODO how about the custom display ??
-* XXX_TODO partial buffer
+XXX_TODO choose between both trees:
 
-.. figure:: images/display_modes_nocustom.*
+.. figure:: images/ui_display_tree_h.*
+   :alt: Buffer Modes
+   :scale: 50%
+   :align: center
+
+   Buffer Modes
+
+.. figure:: images/ui_display_tree_v.*
    :alt: Buffer Modes
    :scale: 50%
    :align: center
