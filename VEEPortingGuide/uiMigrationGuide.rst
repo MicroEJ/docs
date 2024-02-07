@@ -164,7 +164,7 @@ BSP with DMA2D
 	* Comment the line ``#error [...]"``.
 	* According to the display Buffer Refresh Strategy (BRS) XXX_TODO link, unlock the MicroUI Graphics Engine in the LCD interrupt or in the DMA2D memcpy callback (see :ref:`section_ui_c_module_microui_dma2d`).
 
-BSP with VG-Lite
+BSP with VGLite
 """"""""""""""""
 
 * *[VEE Port configuration project]*
@@ -174,8 +174,8 @@ BSP with VG-Lite
 * *[BSP project]*
 
 	* Follow the migration steps of "BSP without GPU".
-	* Migrate VG-Lite library to the version **3.0.15_rev7**.
-	* Modify the VG-Lite library **3.0.15_rev7** by applying the patch ``3.0.15_rev7.patch`` (see README.md near patch file for more information).
+	* Migrate VGLite library to the version **3.0.15_rev7**.
+	* Modify the VGLite library **3.0.15_rev7** by applying the patch ``3.0.15_rev7.patch`` (see README.md near patch file for more information).
 	* In the file ``vglite_window.c``, add the function ``VGLITE_CancelSwapBuffers()`` and its prototype in ``vglite_window.h``:
 
 	.. code-block:: c
@@ -234,7 +234,7 @@ BSP with DMA2D
 
 	* Follow the migration steps of "BSP without GPU".
 
-BSP with VG-Lite
+BSP with VGLite
 """"""""""""""""
 
 * *[VEE Port configuration project]*
@@ -282,7 +282,7 @@ Front Panel
 
 .. _section_ui_migrationguide_13.6_vglite:
 
-BSP with VG-Lite
+BSP with VGLite
 """"""""""""""""
 
 These steps are for a VEE Port that manages its own implementation of ``LLUI_DISPLAY_impl.h`` (that did not use the old implementation which was available in this C Module):
@@ -411,7 +411,7 @@ BSP with DMA2D
 
 .. _section_ui_migrationguide_13.5_vglite:
 
-BSP with VG-Lite
+BSP with VGLite
 """"""""""""""""
 
 .. note:: 
@@ -455,7 +455,7 @@ BSP with DMA2D
 
 	* Delete the properties file ``cco_display-dma2d.properties``.
 
-BSP with VG-Lite
+BSP with VGLite
 """"""""""""""""
 
 .. note:: 
@@ -468,8 +468,8 @@ BSP with VG-Lite
 
 * *[BSP project]*
 
-  	* Migrate VG-Lite library to the version **3.0.15_rev4**.
-  	* Modify the VG-Lite library **3.0.15_rev4** by applying the patch ``3.0.15_rev4.patch`` (see README.md near patch file for more information).
+  	* Migrate VGLite library to the version **3.0.15_rev4**.
+  	* Modify the VGLite library **3.0.15_rev4** by applying the patch ``3.0.15_rev4.patch`` (see README.md near patch file for more information).
 
 From 13.2.x to 13.3.x
 =====================
@@ -508,7 +508,7 @@ BSP with DMA2D
 
 	* Delete the properties file ``cco_display-dma2d.properties``.
 
-BSP with VG-Lite
+BSP with VGLite
 """"""""""""""""
 
 .. note:: 
@@ -524,7 +524,7 @@ BSP with VG-Lite
 	* Read the comments of ``display_configuration.h`` and configures the C module.
 	* Add all C files available in ``src`` folder.
 	* Configure the C project to include the ``inc`` folder.
- 	* Modify the VG-Lite library **3.0.11_rev3** by applying the patch ``3.0.11_rev3.patch`` (see README.md near patch file for more information).
+ 	* Modify the VGLite library **3.0.11_rev3** by applying the patch ``3.0.11_rev3.patch`` (see README.md near patch file for more information).
 
 .. _section_cmodule_vglite_custom:
 

@@ -113,7 +113,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 8.0.0`_.
-* Compatible with VG-Lite library ``3.0.15_rev7``.
+* Compatible with VGLite library ``3.0.15_rev7``.
 
 **Added**
 
@@ -121,7 +121,7 @@ C Module VGLite
   
 **Removed**
 
-* Remove the compatibility with the VG-Lite library ``3.0.15_rev4``.
+* Remove the compatibility with the VGLite library ``3.0.15_rev4``.
 
 C Module NemaGFX
 """"""""""""""""
@@ -233,7 +233,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 7.2.0`_.
-* Compatible with VG-Lite libraries ``3.0.15_rev4`` and ``3.0.15_rev7``.
+* Compatible with VGLite libraries ``3.0.15_rev4`` and ``3.0.15_rev7``.
 
 **Added**
 
@@ -274,17 +274,17 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 7.1.0`_.
-* Compatible with VG-Lite libraries ``3.0.15_rev4`` and ``3.0.15_rev7``.
+* Compatible with VGLite libraries ``3.0.15_rev4`` and ``3.0.15_rev7``.
 
 **Added**
 
-* Add the compatibility with VG-Lite ``3.0.15_rev7`` (add a .patch file).
+* Add the compatibility with VGLite ``3.0.15_rev7`` (add a .patch file).
 
 **Fixed**
 
 * Fix the use of the define ``VG_BLIT_WORKAROUND`` (useless).
 * Fix the GPU deactivation when a drawing is not performed for any reason.
-* VG-Lite ``3.0.15_rev4``: Fix the bounding box of the ``vg_lite_blit()`` given to the MicroEJ Graphics Engine when the define ``VG_BLIT_WORKAROUND`` is set (the function ``vg_lite_blit()`` is not used by default).
+* VGLite ``3.0.15_rev4``: Fix the bounding box of the ``vg_lite_blit()`` given to the MicroEJ Graphics Engine when the define ``VG_BLIT_WORKAROUND`` is set (the function ``vg_lite_blit()`` is not used by default).
 
 [13.6.1] (2023-07-26)
 =====================
@@ -340,12 +340,12 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 7.0.0`_.
-* Compatible with VG-Lite library ``3.0.15_rev4``.
+* Compatible with VGLite library ``3.0.15_rev4``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 7.0.0`_ changelog for more information.
-* The C Module has been divided in two parts to extract the `NXP i.MX RT500`_ specific support from the generic C Module for VG-Lite: 
+* The C Module has been divided in two parts to extract the `NXP i.MX RT500`_ specific support from the generic C Module for VGLite: 
 
   * `NXP i.MX RT500`_ Display management: `C Module RT500 7.0.0`_
-  * Drawing over VG-Lite: `C Module VGLite 7.0.0`_
+  * Drawing over VGLite: `C Module VGLite 7.0.0`_
 
 C Module NemaGFX
 """""""""""""""" 
@@ -375,7 +375,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 6.0.1`_.
-* Compatible with VG-Lite library ``3.0.15_rev4``.
+* Compatible with VGLite library ``3.0.15_rev4``.
 
 **Fixed**
 
@@ -487,7 +487,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 6.0.0`_.
-* Compatible with VG-Lite library ``3.0.15_rev4``.
+* Compatible with VGLite library ``3.0.15_rev4``.
 
 **Added**
 
@@ -533,7 +533,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 5.0.1`_.
-* Compatible with VG-Lite library ``3.0.15_rev4``.
+* Compatible with VGLite library ``3.0.15_rev4``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 5.0.1`_ changelog for more information.
 
 [13.4.0] - 2022-12-13
@@ -604,7 +604,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 4.0.0`_.
-* Compatible with VG-Lite library ``3.0.15_rev4``.
+* Compatible with VGLite library ``3.0.15_rev4``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 4.0.0`_ changelog for more information.
 
 [13.3.1] - 2022-09-09
@@ -723,7 +723,7 @@ C Module VGLite
 """""""""""""""
 
 * New version: `C Module VGLite 3.0.0`_.
-* Compatible with VG-Lite library ``3.0.11_rev3``.
+* Compatible with VGLite library ``3.0.11_rev3``.
 * Several additions, changes and fixes are available. Refer to the `C Module VGLite 3.0.0`_ changelog for more information.
 
 [13.2.0] - 2022-05-05
@@ -818,11 +818,11 @@ C Module VGLite
 """""""""""""""
 
 * New C Module: C Module VGLite 2.0.0.
-* Compatible with VG-Lite library ``3.0.11_rev3``.
+* Compatible with VGLite library ``3.0.11_rev3``.
 
 **Added**
 
-* Provides the :ref:`VGLite C module <section_ui_cco>` 2.0.0 to target the NXP CPU that provides the Vivante VG-Lite accelerator.
+* Provides the :ref:`VGLite C module <section_ui_cco>` 2.0.0 to target the NXP CPU that provides the Vivante VGLite accelerator.
 
 BSP
 """

@@ -323,9 +323,9 @@ The following table describes the version compatibility between the MicroEJ UI P
 | [13.0.0-13.0.7] | [1.0.6-1.0.8]  |                                          |
 +-----------------+----------------+------------------------------------------+
 
-**Vivante VG-Lite**
+**Vivante VGLite**
 
-The :ref:`VG-Lite C module <section_ui_c_module_microui_vglite>` targets the NXP CPU that provides the Vivante VG-Lite accelerator. 
+The :ref:`VGLite C module <section_ui_c_module_microui_vglite>` targets the NXP CPU that provides the Vivante VGLite accelerator. 
 
 The following table describes the version compatibility between the MicroEJ UI Packs and the C modules:
 
@@ -343,10 +343,10 @@ The following table describes the version compatibility between the MicroEJ UI P
 | [13.1.0-13.2.0] | [1.0.0-2.0.0]  |                                          |
 +-----------------+----------------+------------------------------------------+
 
-The following table describes the version compatibility between the C module and the VG-Lite libraries (officially supported):
+The following table describes the version compatibility between the C module and the VGLite libraries (officially supported):
 
 +----------------+-----------------------------+
-| C Module Range | VG-Lite Libraries Range     |
+| C Module Range | VGLite Libraries Range      |
 +================+=============================+
 | [7.1.0-7.2.0]  | 3.0.15_rev4 and 3.0.15_rev7 |
 +----------------+-----------------------------+
