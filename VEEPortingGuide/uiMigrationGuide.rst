@@ -19,13 +19,13 @@ Front Panel
      <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
 
 * Re-organize imports of all Java classes (classes ``MicroUIImageFormat``, ``MicroUIImage`` and ``MicroUIGraphicsContext`` have been extracted from ``LLUIPainter``).
-* (optional) Simulate the board's buffer policy by adding the attribute ``bufferPolicyClass`` in the ``Display`` widget  XXX_TODO add a link to the BRS sim chapter:
+* (optional) Simulate the board's buffer policy by adding the attribute ``bufferPolicyClass`` in the ``Display`` widget (see :ref:`Buffer Refresh Strategy on the Simulator<section_brs_sim>`):
 
   .. code-block:: xml
   
      <ej.fp.widget.Display x="0" y="0" width="480" height="272" bufferPolicyClass="ej.fp.widget.display.buffer.SwapDoubleBufferPolicy"/>
 
-* (optional) Simulate the board's buffer refresh strategy (BRS) by adding the attribute ``refreshStrategyClass`` in the ``Display`` widget XXX_TODO add a link to the BRS sim chapter:
+* (optional) Simulate the board's buffer refresh strategy (BRS) by adding the attribute ``refreshStrategyClass`` in the ``Display`` widget  (see :ref:`Buffer Refresh Strategy on the Simulator<section_brs_sim>`):
 
   .. code-block:: xml
   
@@ -49,7 +49,7 @@ BSP Without GPU
 	* Delete the VEE Port ``include`` folder (often ``/platform/inc``).
 	* Delete the properties file ``cco_microui.properties``.
 	* In the C project configuration, include the new C files ``ui_display_brs.c``, ``ui_display_brs_legacy.c``, ``ui_display_brs_predraw.c``, ``ui_display_brs_single.c`` and ``ui_rect_util.c``.
-	* Read the documentation about the display buffer refresh strategy (BRS) XXX_TODO link to BRS chapter; then configure the C module by setting the right configuration in ``ui_display_brs_configuration.h``.
+	* Read the documentation about the display :ref:`section_brs`; then configure the C module by setting the right configuration in ``ui_display_brs_configuration.h``.
    	* Comment the line ``#error "This header must [...]"``.
    	* The next actions depends on the available numbers of buffers allocated in the MCU memories and if the LCD frame buffer is mapped on a MCU's buffer (if not, that means the LCD device owns a buffer). The following table redirects the next steps according to the display connection with the MCU:
 
@@ -162,7 +162,7 @@ BSP with DMA2D
 	* Follow the migration steps of "BSP without GPU".
 	* Check the content of the configuration file ``ui_drawing_dma2d_configuration.h`` (a versioning has been added).
 	* Comment the line ``#error [...]"``.
-	* According to the display Buffer Refresh Strategy (BRS) XXX_TODO link, unlock the MicroUI Graphics Engine in the LCD interrupt or in the DMA2D memcpy callback (see :ref:`section_ui_c_module_microui_dma2d`).
+	* According to the display :ref:`section_brs`, unlock the MicroUI Graphics Engine in the LCD interrupt or in the DMA2D memcpy callback (see :ref:`section_ui_c_module_microui_dma2d`).
 
 BSP with VGLite
 """"""""""""""""

@@ -140,7 +140,7 @@ Overview
 """"""""
 
 This part provides three Buffer Refresh Strategies (BRS): ``predraw``, ``single`` and ``legacy``.
-Refer to the chapter BRS XXX_TODO add link to have more information on these strategies.
+Refer to the chapter :ref:`section_brs` to have more information on these strategies.
 These strategies are optional; when no strategy is selected, the BSP must provide its own strategy.
 
 Some strategies require an implementation of ``UI_DISPLAY_BRS_restore()`` (see ``ui_display_brs.h``).
@@ -149,7 +149,7 @@ A weak implementation is available; this implementation uses the function ``memc
 Files
 """""
 
-* Implements the functions of ``LLUI_DISPLAY_impl.h`` related to the BRS XXX_TODO add link: ``LLUI_DISPLAY_IMPL_refresh()``, ``LLUI_DISPLAY_IMPL_notify_drawing_region()`` and ``LLUI_DISPLAY_IMPL_notify_dirty_region()``.
+* Implements the functions of ``LLUI_DISPLAY_impl.h`` related to the :ref:`section_brs`: ``LLUI_DISPLAY_IMPL_refresh()``, ``LLUI_DISPLAY_IMPL_notify_drawing_region()`` and ``LLUI_DISPLAY_IMPL_notify_dirty_region()``.
 * C files: ``ui_display_brs_legacy.c``, ``ui_display_brs_predraw.c``, ``ui_display_brs_single.c``, ``ui_display_brs.c`` and ``ui_rect_util.c``.
 * Status: optional.
 
@@ -177,7 +177,7 @@ This C module is a specific implementation of the C module MicroUI over STM32 DM
 * It is compatible with several STM32 MCU: ``STM32F4XX```, ``STM32F7XX``` and ``STM32H7XX```.
 * It manages several configurations of memory cache.
 * It is compatible with the :ref:`multiple destination formats <section_bufferedimage_cco>` (but it manages only one destination format).
-* It is compatible with the Buffer Refresh Strategies (BRS) XXX_TODO link ``predraw``, ``single`` and ``legacy`` (switch).
+* It is compatible with the :ref:`Buffer Refresh Strategies (BRS)<section_brs>` ``predraw``, ``single`` and ``legacy`` (switch).
 
 This C module is available on the :ref:`central_repository`: `com.microej.clibrary.llimpl#display-dma2d`_.
 
