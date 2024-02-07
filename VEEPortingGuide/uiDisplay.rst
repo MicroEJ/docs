@@ -139,21 +139,28 @@ The following flow chart provides a handy guide to selecting the appropriate buf
 
 The following table redirects to the right chapter according to the display buffer mode:
 
-+------------+----------------+------------------------------------------------------+
-| Connection | Nb MCU Buffers | Chapters                                             |
-+============+================+======================================================+
-| Parallel   | 1              | :ref:`Direct <section_display_direct>`               |
-+------------+----------------+------------------------------------------------------+
-| Serial     | 1              | :ref:`Single <section_display_single>`               |
-+------------+----------------+------------------------------------------------------+
-| Parallel   | 2              | :ref:`Double <section_display_double>`               |
-+------------+----------------+------------------------------------------------------+
-| Parallel   | 3              | :ref:`Triple <section_display_triple>`               |
-+------------+----------------+------------------------------------------------------+
-| Serial     | 2              | :ref:`Double and Copy <section_display_double_copy>` |
-+------------+----------------+------------------------------------------------------+
+.. list-table:: Display Connections
+   :widths: 20 20 40
+   :header-rows: 1
 
-XXX_TODO add section_display_double_parallel_copy in the table
+   * - Connection
+     - Nb MCU Buffers
+     - Chapters
+   * - Parallel
+     - 1
+     - :ref:`Direct <section_display_direct>`
+   * - Serial
+     - 1
+     - :ref:`Single <section_display_single>`
+   * - Parallel
+     - 2
+     - :ref:`Swap Double <section_display_double>` or :ref:`Copy Double <section_display_double_parallel_copy>`
+   * - Parallel
+     - 3
+     - :ref:`Swap Triple <section_display_triple>`
+   * - Serial
+     - 2
+     - :ref:`Double and Copy <section_display_double_copy>`
 
 .. _section_display_direct:
 

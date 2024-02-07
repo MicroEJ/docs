@@ -124,7 +124,7 @@ Display
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| 14.0.0          | XXX_TODO                                                         |
+| 14.0.0          | Signature of ``LLUI_DISPLAY_IMPL_flush`` changed:                |
 |                 |                                                                  |
 |                 | * ``void LLUI_DISPLAY_IMPL_initialize([...]);``                  |
 |                 | * ``void LLUI_DISPLAY_IMPL_binarySemaphoreTake([...]);``         |

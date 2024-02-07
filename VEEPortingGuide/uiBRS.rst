@@ -773,6 +773,8 @@ Debug Traces
 
 The strategies log some events; see :ref:`microui_traces` (see *"[BRS]"* comments).
 
+.. _section_brs_sim:
+
 Simulation
 ==========
 
