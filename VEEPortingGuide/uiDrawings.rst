@@ -67,7 +67,7 @@ This allows to implement only the functions the GPU can perform.
 For a given drawing, the weak function implementation is calling the equivalent of the drawing available in 
 ``ui_drawing_soft.h`` (this file lists all drawing functions implemented by the Graphics Engine in software).
 
-.. note:: More details are available in ``LLUI_PAINTER_impl.h``, ``ui_drawing.h``, ``LLUI_Display.h``, and ``LLUI_Display_impl.h`` classes.
+.. note:: More details are available in ``LLUI_PAINTER_impl.h``, ``ui_drawing.h``, ``LLUI_Display.h``, and ``LLUI_Display_impl.h`` files.
 
 Default Implementation
 ----------------------
@@ -343,7 +343,7 @@ This is the same principle as :ref:`section_drawings_cco` for the Embedded side:
 
 These classes are available in the :ref:`UI Pack extension <section_ui_simulation>` of the Front Panel Mock.
 
-.. note:: More details are available in ``LLUIPainter``, ``UIDrawing``, ``LLUIDisplay``, and ``LLUIDisplayImpl`` classes.
+.. note:: More details are available in ``LLUIPainter``, ``UIDrawing``, ``LLUIDisplay``, and ``LLUIDisplayImpl`` files.
 
 Default Implementation
 ----------------------
