@@ -8,7 +8,7 @@ Migration Guide
 From 1.3.x to 1.4.x
 ===================
 
-BSP with VG-Lite
+BSP with VGLite
 """"""""""""""""
 
 * Follow the migration steps of :ref:`C Module MicroUI-VGLite 7.1.0 <section_ui_migrationguide_13.6_vglite>`.
@@ -26,7 +26,7 @@ BSP with VG-Lite
 From 1.2.x to 1.3.x
 ===================
 
-BSP with VG-Lite
+BSP with VGLite
 """"""""""""""""
 
 * Follow the migration steps of :ref:`C Module MicroUI-VGLite 6.0.1 <section_ui_migrationguide_13.5_vglite>`.

@@ -380,9 +380,9 @@ C Module: MicroUI Over VGLite
 Overview
 --------
 
-This C module is a specific implementation of the C module MicroUI over the VG-Lite library 3.0.15_rev7:
+This C module is a specific implementation of the C module MicroUI over the VGLite library 3.0.15_rev7:
 
-* It implements a set of drawings over the official VG-Lite library 3.0.15_rev7.
+* It implements a set of drawings over the official VGLite library 3.0.15_rev7.
 * It is compatible with the :ref:`multiple destination formats <section_bufferedimage_cco>`.
 
 This C module also provides a set of header files (and their implementations) to manipulate some MicroUI concepts over the VGLite library: image management, path format, etc.: ``ui_vglite.h`` and ``ui_drawing_vglite_path.h``.
@@ -404,8 +404,8 @@ Usage
 3. Configure the options in ``ui_vglite_configuration.h``.
 4. Comment the line ``#error [...]"``.
 5. Call ``UI_VGLITE_IRQHandler()`` during the GPU interrupt routine.
-6. Set the VG-Lite library's preprocessor define ``VG_DRIVER_SINGLE_THREAD``.
-7. VG-Lite library must be patched to be CCO compliant:
+6. Set the VGLite library's preprocessor define ``VG_DRIVER_SINGLE_THREAD``.
+7. VGLite library must be patched to be CCO compliant:
 
    .. code-block:: bash
 
@@ -425,9 +425,9 @@ Options
 
 This C module provides some drawing algorithms that are disabled by default. 
 
-* The rendering time of a simple shape with the GPU (time in the VG-Lite library + GPU setup time + rendering time) is longer than with software rendering. To enable the hardware rendering for simple shapes, uncomment the definition of ``VGLITE_USE_GPU_FOR_SIMPLE_DRAWINGS``  in ``ui_vglite_configuration.h``.
+* The rendering time of a simple shape with the GPU (time in the VGLite library + GPU setup time + rendering time) is longer than with software rendering. To enable the hardware rendering for simple shapes, uncomment the definition of ``VGLITE_USE_GPU_FOR_SIMPLE_DRAWINGS``  in ``ui_vglite_configuration.h``.
 * The rendering time of an RGB565 image into an RGB565 buffer without applying an opacity (alpha == 0xff) is longer than with software rendering (as this kind of drawing consists in performing a mere memory copy). To enable the hardware rendering for RGB565 images, uncomment the definition of ``VGLITE_USE_GPU_FOR_RGB565_IMAGES``  in ``ui_vglite_configuration.h``.
-* ARGB8888, ARGB1555, and ARGB4444 transparent images may not be compatible with some revisions of the VG-Lite GPU. Older GPU revisions do not render transparent images correctly because the pre-multiplication of the pixel opacity is not propagated to the pixel color components. To force the hardware rendering for non-premultiplied transparent images when the VG-Lite GPU is not compatible, uncomment the definition of ``VGLITE_USE_GPU_FOR_TRANSPARENT_IMAGES``  in ``ui_vglite_configuration.h``. Note that this limitation does not concern the VG-Lite GPU compatible with non-premultiplied transparent images and the A8/A4 formats.
+* ARGB8888, ARGB1555, and ARGB4444 transparent images may not be compatible with some revisions of the VGLite GPU. Older GPU revisions do not render transparent images correctly because the pre-multiplication of the pixel opacity is not propagated to the pixel color components. To force the hardware rendering for non-premultiplied transparent images when the VGLite GPU is not compatible, uncomment the definition of ``VGLITE_USE_GPU_FOR_TRANSPARENT_IMAGES``  in ``ui_vglite_configuration.h``. Note that this limitation does not concern the VGLite GPU compatible with non-premultiplied transparent images and the A8/A4 formats.
 
 Drawings
 --------
@@ -499,7 +499,7 @@ The versions of the C Module Over VGLite (before ``7.0.0``) included an implemen
 This support has been extracted into a dedicated C Module since the version ``7.0.0``.
 The dedicated C Module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microui-mimxrt595-evk`_.
 
-Only the C Module `com.microej.clibrary.llimpl#microui-vglite`_ is useful to target the Vivante VG-Lite GPU to perform the MicroUI and MicroVG drawings.
+Only the C Module `com.microej.clibrary.llimpl#microui-vglite`_ is useful to target the Vivante VGLite GPU to perform the MicroUI and MicroVG drawings.
 The C Module `com.microej.clibrary.llimpl#microui-mimxrt595-evk`_ only gives an example of an implementation compatible with the MCU i.MX RT595 MCU.
 
 .. note:: For more information, see the :ref:`migration notes<section_ui_migrationguide_13.6_mimxrt595evk>`.
