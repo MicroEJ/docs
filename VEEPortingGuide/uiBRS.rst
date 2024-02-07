@@ -727,9 +727,51 @@ Here the steps around the strategy that describes how to use it:
 MicroUI C Module
 ================
 
-* Defines
-* conf for each (table ?)
-* systemview
+Principle
+---------
+
+The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` features some Buffer Refresh Strategies.
+To select a strategy, configure the define ``UI_DISPLAY_BRS`` in the configuration file ``ui_display_brs_configuration.h``:
+
+   * Set ``UI_DISPLAY_BRS_SINGLE`` to select the strategy :ref:`Single<section_brs_single>`.
+   * Set ``UI_DISPLAY_BRS_PREDRAW`` to select the strategy :ref:`Predraw<section_brs_predraw>`.
+   * Set ``UI_DISPLAY_BRS_LEGACY`` to select the strategy :ref:`Legacy<section_brs_legacy>`.
+   * Unset the define ``UI_DISPLAY_BRS`` to select the strategy :ref:`Default<section_brs_default>` or to implement a :ref:`Custom<section_brs_custom>` strategy.
+
+Options
+-------
+
+Some strategies require some options to configure them.
+The options (some defines) are shared between the strategies:
+
+* ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT`` (``ui_display_brs_configuration.h``): configures the available number of drawing buffers. Used by:
+
+  * Predraw: allowed values are ``1``, ``2`` or ``3`` (``1`` is valid but this strategy is not optimized for this use case). See the comment of the define ``UI_DISPLAY_BRS_PREDRAW`` to increase this value.
+  * Single:  allowed value is ``1`` (sanity check).
+
+* ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE`` (``ui_display_brs_configuration.h``): configures the number of rectangles the strategy gives to the implementation of ``LLUI_DISPLAY_IMPL_flush()``. If not set, the number or regions depends on the strategy. If set, only one region is given: the bounding box of all drawing regions. Used by:
+
+  * Predraw: the list of regions is often useless (the LCD driver has just to swap the back and frame buffers), however this list can be used for the buffer mode :ref:`section_display_double_copy`. Calculating the bounding box uses takes a bit of memory and time; if the bounding box is useless, it is recommended to not enable this option.
+  * Single: the list of regions can be useful to refresh small parts of the display panel.
+  * Legacy: this option is never used and the bounding box of all drawing regions is given to the implementation of ``LLUI_DISPLAY_IMPL_flush()``.
+
+* ``UI_RECT_COLLECTION_MAX_LENGTH`` (``ui_rect_collection.h``): configures the size of the arrays that hold a list of regions (``ui_rect_collection_t``). Default value is ``8``, when the collection is full, the strategy replaces all regions by the bounding box of all regions. Used by:
+
+  * Predraw: number of regions to restore per back buffer. 
+  * Single: number of regions the LCD driver has to send to the display buffer. 
+
+Weak Functions
+--------------
+
+Some strategies use the function ``UI_DISPLAY_BRS_restore()`` to copy a region from a buffer to another buffer.
+A default implementation of this function is available in the C file ``ui_display_brs.c``.
+This implementation uses the standard ``memcpy``.
+Override this function to use a GPU (for instance).
+
+Debug Traces
+------------
+
+The strategies log some events; see :ref:`microui_traces` (see *"[BRS]"* comments).
 
 Simulation
 ==========
@@ -737,8 +779,6 @@ Simulation
 * explain buffer policy here ?
 * how to enable
 * default options
-
-
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
