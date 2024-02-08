@@ -149,7 +149,7 @@ A weak implementation is available; this implementation uses the function ``memc
 Files
 """""
 
-* Implements the functions of ``LLUI_DISPLAY_impl.h`` related to the :ref:`section_brs`: ``LLUI_DISPLAY_IMPL_refresh()``, ``LLUI_DISPLAY_IMPL_notify_drawing_region()`` and ``LLUI_DISPLAY_IMPL_notify_dirty_region()``.
+* Implements the functions of ``LLUI_DISPLAY_impl.h`` related to the :ref:`section_brs`: ``LLUI_DISPLAY_IMPL_refresh()`` and ``LLUI_DISPLAY_IMPL_new_drawing_region()``.
 * C files: ``ui_display_brs_legacy.c``, ``ui_display_brs_predraw.c``, ``ui_display_brs_single.c``, ``ui_display_brs.c`` and ``ui_rect_util.c``.
 * Status: optional.
 

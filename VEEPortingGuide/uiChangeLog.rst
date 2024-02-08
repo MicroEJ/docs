@@ -41,8 +41,7 @@ Front Panel
 * Add new APIs to manage several display buffer policies and refresh strategies (BRS):
 
   * Add ``LLUIDisplay.getSource()``.
-  * Add ``LLUIDisplayImpl.notifyDirtyRegion()``.
-  * Add ``LLUIDisplayImpl.notifyDrawingRegion()``.
+  * Add ``LLUIDisplayImpl.newDrawingRegion()``.
   * Add ``LLUIDisplayImpl.getCurrentDrawingBuffer()``.
   * Add ``MicroUIImage.requestReading()``
 
@@ -71,8 +70,7 @@ LLAPIs
   * ``LLUI_DISPLAY_get_source_image()``.
   * ``LLUI_DISPLAY_getImageBPP()`` and ``LLUI_DISPLAY_getFormatBPP()``.
   * ``LLUI_DISPLAY_IMPL_refresh()``. 
-  * ``LLUI_DISPLAY_IMPL_notify_drawing_region()``. 
-  * ``LLUI_DISPLAY_IMPL_notify_dirty_region()``. 
+  * ``LLUI_DISPLAY_IMPL_new_drawing_region()``.  
   * ``LLUI_DISPLAY_setDrawingBuffer()``: it replaces ``LLUI_DISPLAY_flushDone()``.
 
 **Changed**
