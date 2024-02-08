@@ -1,18 +1,10 @@
-MicroEJ Foundation Libraries
-============================
+MicroUI
+=======
 
-.. toctree::
-    :maxdepth: 2
+Error Messages
+--------------
 
-    edc
-    sni
-    kf
-    ecom
-    ecom-comm
-    microui
-    fs
-    net
-    ssl
+See :ref:`section_app_microui_errors`.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
