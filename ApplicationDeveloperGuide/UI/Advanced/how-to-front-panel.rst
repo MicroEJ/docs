@@ -211,3 +211,34 @@ Keep the Front Panel always on top
 
 To keep the front panel visible while developing the application, use multiple displays and/or use tools like Microsoft PowerToys'
 `Always on Top <https://learn.microsoft.com/en-us/windows/powertoys/always-on-top>`_ utility.
+
+Front Panel Options
+-------------------
+
+JRE tab / options
+
+.. list-table:: Front Panel Options
+   :widths: 20 20 60
+   :header-rows: 1
+
+   * - Options
+     - Chapter
+     - Aim
+   * - ``ej.fp.project``
+     - :ref:`fp_installation`
+     - XXX_TODO  
+   * - ``ej.fp.hil``
+     - :ref:`fp_ui_classpath`
+     - XXX_TODO 
+   * - ``ej.fp.display.flushVisualizer``
+     - XXX_TODO
+     - XXX_TODO 
+   * - ``ej.fp.brs.drawnColor``
+     - XXX_TODO
+     - XXX_TODO 
+   * - ``ej.fp.brs.restoredColor``
+     - XXX_TODO
+     - XXX_TODO 
+   * - ``ej.fp.brs.dirtyColor``
+     - XXX_TODO
+     - XXX_TODO 
