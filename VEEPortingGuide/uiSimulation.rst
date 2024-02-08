@@ -36,7 +36,7 @@ The Front Panel project is a regular MicroEJ Module project. Its module.ivy file
       
       <dependencies>
          <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
-         <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
+         <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
       </dependencies>
    </ivy-module>
 
@@ -46,7 +46,7 @@ To add interactive Front Panel Widgets (typically a simulated display and input 
 
 .. code-block:: xml
 
-   <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
+   <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
 
 .. note:: The life cycle of this library is different than the UI pack's one, see :ref:`section_ui_releasenotes_frontpanel`. 
 
@@ -108,6 +108,8 @@ It offers the same capacity to override some built-in drawing algorithms (intern
 
 Widget Display
 ==============
+
+XXX_TODO review the behavior and options
 
 The widget Display implements the interface ``ej.microui.display.LLUIDisplayImpl`` to be compatible with the implementation of the MicroUI class `Display`_.
 
@@ -273,6 +275,8 @@ Buffered Image
 ==============
 
 Front Panel is designed to add the support of :ref:`MicroUI BufferedImage <section_bufferedimage_sim>` with a format different from the display format.
+
+.. _fp_ui_classpath:
 
 Classpath
 =========

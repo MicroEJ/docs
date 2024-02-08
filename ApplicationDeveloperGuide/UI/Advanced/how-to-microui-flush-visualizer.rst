@@ -68,7 +68,7 @@ Installation
 
 1. Open the Front Panel file ``.fp``.
 
-2. Replace the ``ej.fp.widget.Display`` widget by ``ej.fp.widget.FlushVisualizerDisplay``.
+2. Replace the ``ej.fp.widget.Display`` widget by ``ej.fp.widget.FlushVisualizerDisplay``. XXX_TODO
 
 For example:
 
