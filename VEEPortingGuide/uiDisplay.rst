@@ -82,11 +82,11 @@ This memory is often not *seen* by the MCU: the MCU can only write into it with 
 This is the notion of **unmapped memory**.
 
 .. figure:: images/ui_display_serial.*
-   :alt: Display Connection Serial
+   :alt: Display Serial Connection
    :scale: 50%
    :align: center
 
-   Display Connection Serial
+   Display Serial Connection
 
 .. _section_display_parallel:
 
@@ -100,11 +100,11 @@ By definition, this memory is *seen* by the MCU: the MCU can write (and read) in
 This is the notion of **mapped memory**.
 
 .. figure:: images/ui_display_parallel.*
-   :alt: Display Connection Parallel
+   :alt: Display Parallel Connection
    :scale: 50%
    :align: center
 
-   Display Connection Parallel
+   Display Parallel Connection
 
 .. _section_display_buffer_mode:
 
@@ -253,7 +253,7 @@ Single Buffer
 
 .. _section_display_single_serial:
 
-Connection Serial
+Serial Connection
 """""""""""""""""
 
 For the display connection *serial*, there are two distinct buffers: the buffer where the drawings are rendered is often called **back buffer**, and the display module buffer **frame buffer** or **front buffer**.
@@ -277,7 +277,7 @@ As soon as the is sending done, the application can draw again in the back buffe
 
 .. _section_display_single_parallel:
 
-Connection Parallel
+Parallel Connection
 """""""""""""""""""
 
 When the :ref:`swap mode <section_display_swap_double_parallel>` is not possible (the display panel is mapped on a fixed MCU memory address), the mode **single buffer** can be used.
@@ -304,7 +304,7 @@ However there some differences:
 Copy and Swap Buffer
 --------------------
 
-Connection Serial
+Serial Connection
 """""""""""""""""
 
 When the time to send to the data from the back buffer to the frame buffer is :ref:`too long <section_display_single_serial>`, a second buffer can be allocated in the MCU memory.
@@ -326,7 +326,7 @@ The *flush* step consists in sending the back buffer data to the display module 
 
    Copy and Swap (serial)
 
-Connection Parallel
+Parallel Connection
 """""""""""""""""""
 
 When the time to copy the data from the back buffer to the frame buffer is :ref:`too long <section_display_single_parallel>`, a third buffer can be allocated in the MCU memory.
