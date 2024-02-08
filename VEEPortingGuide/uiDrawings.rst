@@ -744,42 +744,10 @@ Incidents are split into two categories:
 Available Constants
 -------------------
 
-MicroUI offers a set of flag constants to report incidents.
+MicroUI offers a set of flag constants to report incidents to the application.
 They are defined and documented in ``LLUI_PAINTER_impl.h`` (for embedded targets) and ``LLUIPainter`` (for front panels).
 
-.. list-table::
-   :header-rows: 1
-   :widths: 30 10 60
-
-   * - Constant
-     - Value
-     - Description
-   * - ``DRAWING_LOG_NOT_IMPLEMENTED``
-     - ``1 << 0``
-     - This function is not implemented.
-   * - ``DRAWING_LOG_FORBIDDEN``
-     - ``1 << 1``
-     - This function must not be called in this situation.
-   * - ``DRAWING_LOG_OUT_OF_MEMORY``
-     - ``1 << 2``
-     - The system ran out of memory.
-   * - ``DRAWING_LOG_CLIP_MODIFIED``
-     - ``1 << 3``
-     - The VEE Port modified clip values in the graphics context.
-   * - ``DRAWING_LOG_LIBRARY_INCIDENT``
-     - ``1 << 29``
-     - An incident occurred in an underlying library.
-   * - ``DRAWING_LOG_UNKNOWN_INCIDENT``
-     - ``1 << 30``
-     - An incident that does not match other flags occurred.
-   * - ``DRAWING_LOG_ERROR``
-     - ``1 << 31``
-     - Special flag denoting critical incidents.
-
-The special value ``DRAWING_SUCCESS`` (defined as ``0``) represents a state where no drawing log flags are set, so encountering this value means no incident was reported.
-
-New flag constants may be added in future versions of MicroUI.
-Also, their actual values may change, and the developer should not rely on them.
+Refer to the :ref:`application documentation<section.ui.drawing_logs_constants>` for the exhaustive list of drawing logs.
 
 .. hint::
 
