@@ -48,7 +48,7 @@ This chapter explains the different ways to create a new project.
       - Click on :guilabel:`Next` button.
       - Fill the group of the artifact to publish in the :guilabel:`Group` field.
       - Fill the version of the artifact to publish in the :guilabel:`Version` field.
-      - Select the module type among :guilabel:`Application` and :guilabel:`Addon-Library` in the drop-down list.
+      - Select the module type among :guilabel:`Application`, :guilabel:`Mock` and :guilabel:`Addon-Library` in the drop-down list.
       - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
       - Click on :guilabel:`Finish` button.
       
@@ -108,7 +108,7 @@ This chapter explains the different ways to create a new project.
       - Select :guilabel:`MicroEJ` in :guilabel:`Generators` list on the left panel.
       - Fill the name of the project in the :guilabel:`Name` field.
       - Select the location of the project in the :guilabel:`Location` field.
-      - Select the module type among :guilabel:`Application` and :guilabel:`Addon-Library` buttons.
+      - Select the module type among :guilabel:`Application`, :guilabel:`Mock` and :guilabel:`Addon-Library` buttons.
       - If you selected :guilabel:`Application` module type, you can check :guilabel:`This is a kernel application` checkbox if your Application is a Kernel.
       - Fill the version of the artifact to publish in the :guilabel:`Version` field.
       - Fill the group of the artifact to publish in the :guilabel:`Group` field.
@@ -158,7 +158,7 @@ This chapter explains the different ways to create a new project.
       The creation of a project with Eclipse is done as follows:
       
       - Click on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project...`.
-      - Select the project type :guilabel:`MicroEJ` > :guilabel:`MicroEJ Application Project` or :guilabel:`MicroEJ Add-onLibrary Project` and click on the :guilabel:`Next` button.
+      - Select the project type :guilabel:`MicroEJ` > :guilabel:`MicroEJ Application Project`, :guilabel:`MicroEJ Mock` or :guilabel:`MicroEJ Add-onLibrary Project` and click on the :guilabel:`Next` button.
       
       .. figure:: images/eclipse-create-microej-project-01.png
         :alt: Project Type Selection in Eclipse
@@ -250,6 +250,7 @@ Refer to the module type you want to build to configure your project:
 
 - :ref:`Application <sdk_6_create_project_configure_application>`
 - :ref:`Add-On Library <sdk_6_create_project_configure_addon_library>`
+- :ref:`Mock <sdk_6_create_project_configure_mock>`
 - :ref:`J2SE Library <sdk_6_create_project_configure_j2se_library>`
 
 
@@ -334,6 +335,22 @@ Add-On Library Project
 
     plugins {
         id("com.microej.gradle.addon-library") version "0.15.0"
+    }
+
+  .. note::
+    The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
+
+Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
+
+.. _sdk_6_create_project_configure_mock:
+
+Mock
+~~~~
+
+- Add the ``com.microej.gradle.mock`` plugin in the build script::
+
+    plugins {
+        id("com.microej.gradle.mock") version "0.15.0"
     }
 
   .. note::

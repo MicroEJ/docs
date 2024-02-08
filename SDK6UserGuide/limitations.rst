@@ -20,7 +20,7 @@ The SDK 6 allows to:
 
 Therefore, it does not support all the features of the SDK 5, especially:
 
-- Build of Foundation Libraries, Mocks, VEE Ports or any other component type except Applications and Add-On Libraries.
+- Build of Foundation Libraries, VEE Ports or any other component type except Applications, Add-On Libraries and Mocks.
 - Launch of some MicroEJ tools, such as the Local Deploy, the Serial to Socket Transmitter or the Kernel Metadata Generator.
 
 
