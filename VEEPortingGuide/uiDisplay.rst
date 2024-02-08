@@ -63,6 +63,7 @@ Most of the time, a new frame often appears every 16.6ms (60Hz).
 
 .. figure:: images/ui_display_refresh.*
    :alt: Display Continuous Refresh
+   :scale: 50%
    :align: center
 
    Display Continuous Refresh
