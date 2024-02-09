@@ -18,9 +18,9 @@ Standard Versions
 +-----------------+--------------------+---------------------------------------------------------+
 | UI Pack Range   | Architecture Range | Comment                                                 |
 +=================+====================+=========================================================+
-| [13.5.0-14.0.0] | [7.13.0-9.0.0[     | Compatibility with Architecture 8                       |
+| [13.5.0-14.0.0] | [7.16.0-9.0.0[     | Compatibility with Architecture 8                       |
 +-----------------+--------------------+---------------------------------------------------------+
-| [13.0.0-13.4.1] | [7.13.0-8.0.0[     | SNI 1.3                                                 |
+| [13.0.0-13.4.1] | [7.16.0-8.0.0[     | SNI 1.3                                                 |
 +-----------------+--------------------+---------------------------------------------------------+
 | [12.0.0-12.1.5] | [7.11.0-8.0.0[     | Move Front Panel in MicroEJ Architecture                |
 +-----------------+--------------------+---------------------------------------------------------+
@@ -124,12 +124,7 @@ Display
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| 14.0.0          | Signature of ``LLUI_DISPLAY_IMPL_flush`` changed:                |
-|                 |                                                                  |
-|                 | * ``void LLUI_DISPLAY_IMPL_initialize([...]);``                  |
-|                 | * ``void LLUI_DISPLAY_IMPL_binarySemaphoreTake([...]);``         |
-|                 | * ``void LLUI_DISPLAY_IMPL_binarySemaphoreGive([...]);``         |
-|                 | * ``void LLUI_DISPLAY_IMPL_flush([...]);``                       |
+| 14.0.0          | Signature of ``LLUI_DISPLAY_IMPL_flush()`` changed.              |
 +-----------------+------------------------------------------------------------------+
 | [13.0.0-13.7.2] | *UI3* format: implement ``LLUI_DISPLAY_impl.h``:                 |
 |                 |                                                                  |
@@ -217,7 +212,7 @@ The Front Panel project must fetch the widgets compatible with the MicroEJ UI Pa
 | [6.0.0-11.2.0]  | n/a                                        | n/a             |
 +-----------------+--------------------------------------------+-----------------+
 
-The widget module `ej.tool.frontpanel#widget`_ provides some widgets compatible with the Graphics Engine.
+The widget module `ej.tool.frontpanel.widget`_ provides some widgets compatible with the Graphics Engine.
 This module fetches by transitivity the module `com.microej.pack.ui.ui-pack(frontpanel)`_. 
 When the Front Panel project does not require/use the latest Front Panel UI API, it can only fetch the widget module.
 
@@ -244,7 +239,7 @@ However, if the Front Panel project does not require/use the latest Front Panel 
 
 .. _com.microej.pack.ui.ui-pack(frontpanel): https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/
 .. _ej.tool.frontpanel.widget-microui: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget-microui/
-.. _ej.tool.frontpanel#widget: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/
+.. _ej.tool.frontpanel.widget: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/
 .. _Central: https://repository.microej.com/modules/ej/tool/frontpanel/widget/
 .. _Developer: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/
 

@@ -15,7 +15,7 @@ When an exception is thrown by the implementation of the MicroUI API, the except
    * - 1
      - Another `EventGenerator`_ cannot be added into the system pool (max 254).
    * - 0
-     - [VEE Port issue] Result of :ref:`MicroUI static initialization step<section_static_init>` seems invalid: MicroUI cannot start. Fix :ref:`MicroUI static initialization step<section_static_init>` and rebuild the VEE Port.
+     - [VEE Port issue] Result of :ref:`MicroUI static initialization step<section_static_init>` seems invalid: MicroUI cannot start. Fix MicroUI static initialization step and rebuild the VEE Port.
    * - -1
      - MicroUI is not started; call MicroUI.start() before using a MicroUI API.
    * - -2

@@ -6,7 +6,7 @@
 Migration Guide
 ===============
 
-From 13.7.x to 14.0.x
+From 13.7.x to 14.0.0
 =====================
 
 Front Panel
@@ -31,7 +31,8 @@ Front Panel
   
      <ej.fp.widget.Display x="0" y="0" width="480" height="272" refreshStrategyClass="ej.fp.widget.display.brs.PredrawRefreshStrategy"/>
 
-* (optional) The ``FlushVisualizerDisplay`` widget has been merged with the ``Display`` widget. To use this functionality, use the ``Display`` widget instead of the ``FlushVisualizerDisplay`` widget in the Front Panel ``fp`` file and the option ``ej.fp.display.flushVisualizer=true`` in the options of the application launcher .
+* (optional) The ``FlushVisualizerDisplay`` widget has been merged with the ``Display`` widget.
+  To use this functionality, use the ``Display`` widget instead of the ``FlushVisualizerDisplay`` widget in the Front Panel ``.fp`` file and set the option ``ej.fp.display.flushVisualizer=true`` in the options of the application launcher.
 
 .. _Front Panel Widgets 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/3.0.0/
 .. _UI Pack 14.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.7.2/
@@ -51,7 +52,7 @@ BSP Without GPU
 	* In the C project configuration, include the new C files ``ui_display_brs.c``, ``ui_display_brs_legacy.c``, ``ui_display_brs_predraw.c``, ``ui_display_brs_single.c`` and ``ui_rect_util.c``.
 	* Read the documentation about the display :ref:`section_brs`; then configure the C module by setting the right configuration in ``ui_display_brs_configuration.h``.
    	* Comment the line ``#error "This header must [...]"``.
-   	* The next actions depends on the available numbers of buffers allocated in the MCU memories and if the LCD frame buffer is mapped on a MCU's buffer (if not, that means the LCD device owns a buffer). The following table redirects the next steps according to the display connection with the MCU:
+   	* The next actions depend on the available numbers of buffers allocated in the MCU memories and if the LCD frame buffer is mapped on a MCU's buffer (if not, that means the LCD device owns a buffer). The following table redirects the next steps according to the display connection with the MCU:
 
 		.. table:: Copy and / or Swap actions
 
@@ -90,19 +91,19 @@ BSP Without GPU
 		* Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
 		* Store (in a static field) the flush identifier.
 		* Unlock (immediately or wait the LCD tearing signal interrupt) the *swap task* (hardware of software) that will swap the back buffer and the LCD frame buffer.
-		* Remove the static fields relative to ``ymin`` and ``ymax`` (now useless).
+		* Remove the static fields ``ymin`` and ``ymax`` (now useless).
 		* Remove the returned value (the back buffer address).
 	
 	* Case of *hardware swap* (LCD *swap* interrupt): change the implementation of the LCD *swap* interrupt:
 
-    	* Remove all code relative to the post-flush restoration: remove the *copy task* or the use of a DMA. In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
+    	* Remove all the code concerning the post-flush restoration (remove the *copy task* or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
     	* Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier.
   
 	* Case of *software swap* (dedicated *swap task*): change the task actions:
 
 		* Swap back and frame buffers.
 		* Wait for the end of buffers swap: ensure the LCD driver does not use anymore the old LCD frame buffer.
-    	* Remove all code relative to the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
+    	* Remove all the code concerning the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
     	* Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier.
   
 * *[Display "Swap triple buffer"]*
@@ -114,13 +115,13 @@ BSP Without GPU
 		* Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
 		* Store (in a static field) the flush identifier.
 		* Unlock (immediately or wait the LCD tearing signal interrupt) the *swap task* that will swap the buffers.
-		* Remove the static fields relative to ``ymin`` and ``ymax`` (now useless).
+		* Remove the static fields ``ymin`` and ``ymax`` (now useless).
 		* Remove the returned value (the back buffer address).
 	  
 	* In the *swap task*:  change the task actions:
 
 		* Swap buffers.
-    	* Remove all code relative to the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
+    	* Remove all the code concerning the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
     	* Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier (the Graphics Engine can be unlocked immediately because a buffer is freed for sure).
     	* Wait for the end of buffers swap: ensure the LCD driver does not use anymore the old LCD frame buffer.
 
@@ -142,7 +143,7 @@ BSP Without GPU
 		* Start the sending of the current back buffer (called *buffer A*) data to the LCD frame buffer.
 		* Swap back *buffer A* and back *buffer B*.
 		* Wait for the end of back buffers swap: ensure the LCD driver is now using the *buffer A* as *sending* buffer.
-    	* Remove all code relative to the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
+    	* Remove all the code concerning to the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
     	* Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the back *buffer B* address and the flush identifier.
     	* Wait for the end of *sending*: ensure the LCD driver has finished to send the data.
     	* (optional) Unlock again the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the *buffer A* address and the flush identifier:
@@ -196,7 +197,7 @@ BSP with NemaGFX
 	* Follow the migration steps of "BSP without GPU".
 	* XXX Review all options of ``ui_drawing_nema_configuration.h`` (version ``2``).
 
-From 13.6.x to 13.7.x
+From 13.6.x to 13.7.2
 =====================
 
 Front Panel
@@ -257,7 +258,7 @@ BSP with NemaGFX
 	* Follow the migration steps of "BSP without GPU".
 	* Review all options of ``ui_drawing_nema_configuration.h`` (version ``2``).
 
-From 13.5.x to 13.6.x
+From 13.5.x to 13.6.2
 =====================
 
 Front Panel
@@ -350,11 +351,11 @@ BSP with NemaGFX
   
 * *[BSP project]*
 
-	* Add all C files available in ``src`` folder.
+	* Add all the C files available in ``src`` folder.
 	* Configure the C project to include the ``inc`` folder.
-	* Read the comments of ``ui_drawing_nema_configuration.h`` and configures the C module.
+	* Read the comments in ``ui_drawing_nema_configuration.h`` and configures the C module.
 
-From 13.4.x to 13.5.x
+From 13.4.x to 13.5.1
 =====================
 
 Front Panel
@@ -429,7 +430,7 @@ BSP with VGLite
 	* Verify the options in ``display_configuration.h``. 
 	* In the C project configuration, include the new C file ``ui_drawing_vglite.c``.
 
-From 13.3.x to 13.4.x
+From 13.3.x to 13.4.1
 =====================
 
 BSP without GPU
@@ -471,7 +472,7 @@ BSP with VGLite
   	* Migrate VGLite library to the version **3.0.15_rev4**.
   	* Modify the VGLite library **3.0.15_rev4** by applying the patch ``3.0.15_rev4.patch`` (see README.md near patch file for more information).
 
-From 13.2.x to 13.3.x
+From 13.2.x to 13.3.1
 =====================
 
 Front Panel
@@ -521,7 +522,7 @@ BSP with VGLite
 
 * *[BSP project]*
 
-	* Read the comments of ``display_configuration.h`` and configures the C module.
+	* Read the comments in ``display_configuration.h`` and configures the C module.
 	* Add all C files available in ``src`` folder.
 	* Configure the C project to include the ``inc`` folder.
  	* Modify the VGLite library **3.0.11_rev3** by applying the patch ``3.0.11_rev3.patch`` (see README.md near patch file for more information).
@@ -534,7 +535,7 @@ BSP with VGLite
 
 .. _UI Pack 13.3.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.3.1/
 
-From 13.1.x to 13.2.x
+From 13.1.x to 13.2.0
 =====================
 
 Front Panel
@@ -550,7 +551,7 @@ Front Panel
 
 .. _UI Pack 13.2.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.2.0/
 
-From 13.0.x to 13.1.x
+From 13.0.x to 13.1.0
 =====================
 
 Front Panel
@@ -601,8 +602,8 @@ BSP with DMA2D
 .. _Front Panel Widgets 2.1.0: https://repository.microej.com/modules/ej/tool/frontpanel/widget/2.1.0/
 .. _UI Pack 13.1.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.1.0/
 
-From 12.x to 13.x
-=================
+From 12.x to 13.0.7
+===================
 
 VEE Port Configuration Project
 """"""""""""""""""""""""""""""
@@ -1059,8 +1060,8 @@ Application
 
 .. _section_ui_migration_12x:
 
-From 11.x to 12.x
-=================
+From 11.x to 12.1.5
+===================
 
 VEE Port Configuration Project
 """"""""""""""""""""""""""""""
@@ -1213,16 +1214,16 @@ Application
 
 * See application :ref:`section_mui_migrationguide`.
  
-From 10.x to 11.x
-=================
+From 10.x to 11.2.0
+===================
 
 VEE Port Configuration Project
 """"""""""""""""""""""""""""""
 
 * Update Architecture version: 7.0.0 or higher.
  
-From 9.x to 10.x
-================
+From 9.x to 10.0.2
+==================
 
 VEE Port Configuration Project
 """"""""""""""""""""""""""""""
@@ -1243,16 +1244,21 @@ Application
 
 * See application :ref:`section_mui_migrationguide`.
 
-From 8.x to 9.x
-===============
+From 8.x to 9.4.1
+=================
+
+VEE Port Configuration Project
+""""""""""""""""""""""""""""""
+
+* Update Architecture version: 6.13.0 or higher.
 
 Application
 """""""""""
 
 * See application :ref:`section_mui_migrationguide`.
 
-From 7.x to 8.x
-===============
+From 7.x to 8.1.0
+=================
 
 VEE Port Configuration Project
 """"""""""""""""""""""""""""""

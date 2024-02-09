@@ -363,9 +363,13 @@ The section name is ``.bss.microui.display.externalFontsHeap``.
 Flush and Synchronization
 -------------------------
 
-The back buffer (graphics buffer) address set in Initialization function is the address for the very first drawing. The content of this buffer is flushed to the external display memory by the function ``LLUI_DISPLAY_flush``. The parameters define one or several rectangular areas of the content which has changed during the last drawing action, and which must be flushed to the display buffer (dirty area). This function should be atomic: the implementation has to start another task or a hardware device (often a DMA) to perform the copy.
+The back buffer (graphics buffer) address defined in the Initialization function is the address for the very first drawing.
+The content of this buffer is flushed to the external display memory by the function ``LLUI_DISPLAY_flush``.
+The parameters define one or several rectangular regions of the content that have changed during the last drawing actionand that must be flushed to the display buffer (dirty area).
+This function should be atomic: the implementation has to start another task or a hardware device (often a DMA) to perform the copy.
 
-As soon as the application performs a new drawing, the Graphics Engine locks the thread. It will automatically unlocked when the BSP will call ``LLUI_DISPLAY_setDrawingBuffer()`` at the end of the copy, 
+As soon as the application performs a new drawing, the Graphics Engine locks the thread.
+It will automatically be unlocked when the BSP will call ``LLUI_DISPLAY_setDrawingBuffer`` at the end of the copy.
 
 Display Characteristics
 -----------------------
