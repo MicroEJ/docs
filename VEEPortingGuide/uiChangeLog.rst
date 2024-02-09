@@ -6,10 +6,8 @@
 Changelog
 =========
 
-14.0.0 (Unreleased)
+14.0.0 (2024-02-14)
 ===================
-
-* Compatible with Architecture 7.13.0 or higher.
 
 MicroUI
 """""""
@@ -67,10 +65,10 @@ LLAPIs
 * Add the possibility to log external events in the MicroUI event group.
 * Add some functions in ``LLUI_DISPLAY.h`` and ``LLUI_DISPLAY_impl.h`` to manage the display buffer refresh strategy (BRS):
 
-  * ``LLUI_DISPLAY_get_source_image()``.
+  * ``LLUI_DISPLAY_getSourceImage()``.
   * ``LLUI_DISPLAY_getImageBPP()`` and ``LLUI_DISPLAY_getFormatBPP()``.
   * ``LLUI_DISPLAY_IMPL_refresh()``. 
-  * ``LLUI_DISPLAY_IMPL_new_drawing_region()``.  
+  * ``LLUI_DISPLAY_IMPL_newDrawingRegion()``.  
   * ``LLUI_DISPLAY_setDrawingBuffer()``: it replaces ``LLUI_DISPLAY_flushDone()``.
 
 **Changed**
@@ -382,8 +380,6 @@ C Module VGLite
 [13.5.0] (2023-05-03)
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
-
 MicroUI
 """""""
 
@@ -537,8 +533,6 @@ C Module VGLite
 [13.4.0] - 2022-12-13
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
-
 MicroUI
 """""""
 	
@@ -607,8 +601,6 @@ C Module VGLite
 
 [13.3.1] - 2022-09-09
 =====================
-
-* Compatible with Architecture 7.13.0 or higher.
  
 Image Generator
 """""""""""""""
@@ -630,8 +622,6 @@ Image Generator
 
 [13.3.0] - 2022-09-02
 =====================
-
-* Compatible with Architecture 7.13.0 or higher.
 
 MicroUI
 """""""
@@ -726,8 +716,6 @@ C Module VGLite
 
 [13.2.0] - 2022-05-05
 =====================
-
-* Compatible with Architecture 7.16.0 or higher.
 
 Integration
 """""""""""
@@ -832,8 +820,6 @@ BSP
 [13.1.0] - 2021-08-03
 =====================
 
-* Compatible with Architecture 7.16.0 or higher.
-
 MicroUI API
 """""""""""
 
@@ -920,8 +906,6 @@ C Module MicroUI
 [13.0.7] - 2021-07-30
 =====================
 
-* Compatible with Architecture 7.16.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -944,8 +928,6 @@ Misc
 [13.0.6] - 2021-03-29
 =====================
 
-* Compatible with Architecture 7.16.0 or higher.
-
 LLAPIs
 """"""
 
@@ -955,8 +937,6 @@ LLAPIs
 
 [13.0.5] - 2021-03-08
 =====================
-
-* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -986,8 +966,6 @@ Front Panel
 
 [13.0.4] - 2021-01-15
 =====================
-
-* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI API
 """""""""""
@@ -1037,8 +1015,6 @@ Image Generator
 
 [13.0.3] - 2020-12-03
 =====================
-
-* Compatible with Architecture 7.16.0 or higher.
  
 MicroUI API
 """""""""""
@@ -1075,7 +1051,6 @@ C Module DMA2D
 [13.0.2] - 2020-10-02
 =====================
 
-* Compatible with Architecture 7.16.0 or higher.
 * Use new naming convention: ``com.microej.architecture.[toolchain].[architecture]-ui-pack``.
 
 **Fixed**
@@ -1094,8 +1069,6 @@ C Module DMA2D
 
 [13.0.1] - 2020-09-22
 =====================
-
-* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI API
 """""""""""
@@ -1170,8 +1143,14 @@ C Module DMA2D
 [13.0.0] - 2020-07-30
 =====================
 
-* Compatible with Architecture 7.16.0 or higher.
 * Integrate SDK 3.0-B license.
+
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 7.16.0 or higher (SNI 1.3).
 
 MicroUI API
 """""""""""
@@ -1290,7 +1269,6 @@ C Modules
 [12.1.5] - 2020-10-02
 =====================
 
-* Compatible with Architecture 7.11.0 or higher.
 * Use new naming convention: ``com.microej.architecture.[toolchain].[architecture]-ui-pack``.
 
 **Fixed**
@@ -1299,8 +1277,6 @@ C Modules
 
 [12.1.4] - 2020-03-10
 =====================
-
-* Compatible with Architecture 7.11.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1312,8 +1288,6 @@ MicroUI Implementation
 [12.1.3] - 2020-02-24
 =====================
 
-* Compatible with Architecture 7.11.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -1323,8 +1297,6 @@ MicroUI Implementation
 
 [12.1.2] - 2019-12-09
 =====================
-
-* Compatible with Architecture 7.11.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1337,8 +1309,6 @@ MicroUI Implementation
 [12.1.1] - 2019-10-29
 =====================
 
-* Compatible with Architecture 7.11.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -1349,8 +1319,14 @@ MicroUI Implementation
 [(maint) 8.0.0] - 2019-10-18
 ============================
 
-* Compatible with Architecture 7.0.0 or higher.
-* Based on 7.4.7.
+* Based on UI Pack 7.4.7.
+
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 7.0.0 or higher (Use SNI callback feature).
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1361,9 +1337,6 @@ MicroUI Implementation
 
 [12.1.0] - 2019-10-16
 =====================
-
-* Compatible with Architecture 7.11.0 or higher.
-
 MicroUI API
 """""""""""
 
@@ -1392,8 +1365,6 @@ MicroUI Implementation
 [12.0.2] - 2019-09-23
 =====================
 
-* Compatible with Architecture 7.11.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -1409,8 +1380,6 @@ MicroUI Implementation
 
 [12.0.1] - 2019-07-25
 =====================
-
-* Compatible with Architecture 7.11.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1429,7 +1398,12 @@ Front Panel
 [12.0.0] - 2019-06-24
 =====================
 
-* Compatible with Architecture 7.11.0 or higher.
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 7.11.0 or higher (Move Front Panel in Architecture).
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1487,8 +1461,6 @@ Front Panel Plugin
 [11.2.0] - 2019-02-01
 =====================
 
-* Compatible with Architecture 7.0.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -1510,8 +1482,6 @@ Tools
 [11.1.2] - 2018-08-10
 =====================
 
-* Compatible with Architecture 7.0.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -1522,13 +1492,11 @@ MicroUI Implementation
 [11.1.1] - 2018-08-02
 =====================
 
-* Compatible with Architecture 7.0.0 or higher.
 * Internal release.
 
 [11.1.0] - 2018-07-27
 =====================
 
-* Compatible with Architecture 7.0.0 or higher.
 * Merge 10.0.2 and 11.0.1.
 
 MicroUI API
@@ -1555,8 +1523,7 @@ MicroUI Implementation
 [11.0.1] - 2018-06-05
 =====================
 
-* Compatible with Architecture 7.0.0 or higher.
-* Based on 11.0.0.
+* Based on UI Pack 11.0.0.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1571,8 +1538,7 @@ MicroUI Implementation
 [10.0.2] - 2018-02-15
 =====================
 
-* Compatible with Architecture 6.13.0 or higher.
-* Based on 10.0.1.
+* Based on UI Pack 10.0.1.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1587,8 +1553,14 @@ MicroUI Implementation
 [11.0.0] - 2018-02-02
 =====================
 
-* Compatible with Architecture 7.0.0 or higher.
-* Based on 10.0.1.
+* Based on UI Pack 10.0.1.
+
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 7.0.0 or higher (Use SNI callback feature).
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1600,8 +1572,6 @@ MicroUI Implementation
 [10.0.1] - 2018-01-03
 =====================
 
-* Compatible with Architecture 6.13.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -1612,7 +1582,12 @@ MicroUI Implementation
 [10.0.0] - 2017-12-22
 =====================
 
-* Compatible with Architecture 6.13.0 or higher.
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 6.13.0 or higher (``LLEXT`` link error with Architecture 6.13+ and UI Pack 9+).
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1643,8 +1618,6 @@ Misc
 [9.4.1] - 2017-11-24
 ====================
 
-* Compatible with Architecture 6.12.0 or higher.
-
 Image Generator
 """""""""""""""
 
@@ -1655,8 +1628,7 @@ Image Generator
 [9.4.0] - 2017-11-23
 ====================
 
-* Compatible with Architecture 6.12.0 or higher.
-* Deprecated: use 9.4.1 instead.
+* Deprecated: use UI Pack 9.4.1 instead.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1676,8 +1648,6 @@ MicroUI Implementation
   
 [9.3.1] - 2017-09-28
 ====================
-
-* Compatible with Architecture 6.12.0 or higher.
   
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1690,8 +1660,6 @@ MicroUI Implementation
   
 [9.3.0] - 2017-08-24
 ====================
-
-* Compatible with Architecture 6.12.0 or higher.
   
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1711,8 +1679,6 @@ Front Panel
 [9.2.1] - 2017-08-14
 ====================
 
-* Compatible with Architecture 6.12.0 or higher.
-
 Front Panel
 """""""""""
 
@@ -1728,8 +1694,14 @@ Front Panel
 [9.2.0] - 2017-07-21
 ====================
 
-* Compatible with Architecture 6.12.0 or higher.
-* Merge 9.1.2 and 9.0.2.
+* Merge UI Packs 9.1.2 and 9.0.2.
+
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 6.12.0 or higher (SOAR can exclude some resources).
 
 MicroUI API
 """""""""""
@@ -1783,8 +1755,7 @@ Misc
 [9.0.2] - 2017-04-21
 ====================
 
-* Compatible with Architecture 6.4.0 or higher.
-* Based on 9.0.1.
+*  Based on UI Pack 9.0.1.
   
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1803,8 +1774,7 @@ Image Generator
 [9.1.2] - 2017-03-16
 ====================
 
-* Compatible with Architecture 6.8.0 or higher.
-* Based on 9.1.1.
+*  Based on UI Pack 9.1.1.
   
 MicroUI API
 """""""""""
@@ -1848,8 +1818,7 @@ Image Generator
 [9.0.1] - 2017-03-13
 ====================
 
-* Compatible with Architecture 6.4.0 or higher.
-* Based on 9.0.0.
+*  Based on UI Pack 9.0.0.
   
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1880,8 +1849,7 @@ Front Panel Plugin
 [9.1.1] - 2017-02-14
 ====================
 
-* Compatible with Architecture 6.8.0 or higher.
-* Based on 9.1.0.
+*  Based on UI Pack 9.1.0.
 
 Misc
 """"
@@ -1893,8 +1861,14 @@ Misc
 [9.1.0] - 2017-02-13
 ====================
 
-* Compatible with Architecture 6.8.0 or higher.
-* Based on 9.0.0.
+* Based on UI Pack 9.0.0.
+
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 6.8.0 or higher (Internal scripts).
 
 MicroUI API
 """""""""""
@@ -1938,8 +1912,6 @@ Front Panel Plugin
 
 [9.0.0] - 2017-02-02
 ====================
-
-* Compatible with Architecture 6.4.0 or higher.
 
 MicroUI API
 """""""""""
@@ -2001,8 +1973,6 @@ Misc
 [8.1.0] - 2016-12-24
 ====================
 
-* Compatible with Architecture 6.4.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -2030,7 +2000,12 @@ Front Panel
 [8.0.0] - 2016-11-17
 ====================
 
-* Compatible with Architecture 6.4.0 or higher.
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 6.4.0 or higher (Manage external memories like byte addressable memories).
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -2076,8 +2051,6 @@ Front Panel
 [7.4.7] - 2016-06-14
 ====================
 
-* Compatible with Architecture 6.1.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -2097,8 +2070,6 @@ Front Panel
 [7.4.2] - 2016-05-25
 ====================
 
-* Compatible with Architecture 6.1.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -2109,8 +2080,6 @@ MicroUI Implementation
 [7.4.1] - 2016-05-10
 ====================
 
-* Compatible with Architecture 6.1.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -2120,8 +2089,6 @@ MicroUI Implementation
   
 [7.4.0] - 2016-04-29
 ====================
-
-* Compatible with Architecture 6.1.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -2140,8 +2107,6 @@ Front Panel
 [7.3.0] - 2016-04-25
 ====================
 
-* Compatible with Architecture 6.1.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -2151,8 +2116,6 @@ MicroUI Implementation
  
 [7.2.1] - 2016-04-18
 ====================
-
-* Compatible with Architecture 6.1.0 or higher.
 
 Misc
 """"
@@ -2164,8 +2127,6 @@ Misc
 [7.2.0] - 2016-04-05
 ====================
 
-* Compatible with Architecture 6.1.0 or higher.
-
 Tools
 """""
 
@@ -2176,8 +2137,6 @@ Tools
 [7.1.0] - 2016-03-02
 ====================
 
-* Compatible with Architecture 6.1.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -2187,8 +2146,6 @@ MicroUI Implementation
   
 [7.0.0] - 2016-01-20
 ====================
-
-* Compatible with Architecture 6.1.0 or higher.
 
 Misc
 """"
@@ -2209,6 +2166,8 @@ MicroUI Implementation
 
 [6.0.0] - 2015-11-12
 ====================
+
+* Compatible with Architecture 6.1.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""

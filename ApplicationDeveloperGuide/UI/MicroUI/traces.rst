@@ -367,7 +367,7 @@ The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and co
    3        UI_DisplayEvent    (MicroUI) Execute display event %UIEvent (event = %p)                           | (MicroUI) Display event %UIEvent done
    4        UI_UserEvent       (MicroUI) Execute user event %p                                                 | (MicroUI) User event %p done
    5        UI_OpenImage       (MicroUI) Create %UINewImage                                                    | (MicroUI) Image created, id = %p
-   6        UI_ImageData       (MicroUI) %UINewImage %UIImageData , id = %p, size = %d*%d
+   6        UI_ImageData       (MicroUI) %UINewImage %UIImageData, id = %p, size = %d*%d
 
    #
    # MicroUI Graphics Engine

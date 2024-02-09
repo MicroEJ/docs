@@ -29,7 +29,7 @@ Chapters Organization
 For more convenience, this chapter only describes how a display device works and how to connect it to the MicroUI Graphics Engine. 
 Dedicated chapters deal with related concepts:
 
-* :ref:`section_brs`: how the display buffer is refreshed,
+* :ref:`section_brs`: how the display buffer is refreshed.
 * :ref:`section_drawings`: how the drawings are performed, the use of a GPU, etc.
 * :ref:`section_image_menu`: how the images are generated and drawn.
 * :ref:`section_fonts`: how the fonts are generated and drawn.
@@ -55,7 +55,7 @@ The modes can vary in four ways:
 Display Connection
 ==================
 
-A display is always associated with a memory buffer whose size depends on the display panel size (width and height) and the number of bits per pixel.
+A display is always associated with a memory buffer which size depends on the display panel size (width and height) and the number of bits per pixel.
 This memory buffer holds all the pixels the display panel has to show.
 The display panel continuously refreshes its content by reading the data from a memory buffer.
 This refreshing cannot be stopped; otherwise, the image fades away.
@@ -75,10 +75,10 @@ There are two types of connection with the MCU: Serial and Parallel.
 Serial
 ------
 
-The MCU sends the data to show (the pixels) to the display module through a serial bus (SPI, DSI). 
-The display module holds its memory and fills it with the received data. 
-It continuously refreshes its content by reading the data from this memory. 
-This memory is often not *seen* by the MCU: the MCU can only write into it with the right macro (SPI or DSI). 
+The MCU sends the data to show (the pixels) to the display module through a serial bus (SPI, DSI).
+The display module holds its memory and fills it with the received data.
+It continuously refreshes its content by reading the data from this memory.
+This memory is usually not accessible to the MCU: the MCU can only write into it with the right macro (SPI or DSI).
 This is the notion of **unmapped memory**.
 
 .. figure:: images/ui_display_serial.*
@@ -96,7 +96,7 @@ Parallel
 The MCU features an LCD controller that sends the content of an MCU's buffer to the display module. 
 The display module doesn't hold its memory. 
 The LCD controller continuously updates the display panel's content by reading the MCU memory data. 
-By definition, this memory is *seen* by the MCU: the MCU can write (and read) into it (the memory is in the MCU addresses range). 
+By definition, this memory is addressed by the MCU: the MCU can write (and read) into it (the memory is in the MCU addresses range). 
 This is the notion of **mapped memory**.
 
 .. figure:: images/ui_display_parallel.*
@@ -125,7 +125,7 @@ The implementation of `Display.flush()`_  calls the Abstraction Layer API ``LLUI
 Decision Tree
 -------------
 
-The following flow chart provides a handy guide to selecting the appropriate buffer mode according to the hardware configuration.
+The following flow chart provides a handy guide to pick the buffer mode suited to the hardware configuration.
 
 XXX_TODO choose between both trees:
 
@@ -180,15 +180,15 @@ The following table redirects to the right chapter according to the display buff
 Swap Double Buffer (parallel)
 -----------------------------
 
-To prevent the :ref:`invalid content of the display panel <section_display_direct>`, the BSP should provide another MCU buffer (the same size as the first buffer) where the drawings are performed.
+To prevent :ref:`flickering in the display panel <section_display_direct>`, the BSP should provide another MCU buffer (the same size as the first buffer) where the drawings are performed.
 The first buffer, for its part, is dedicated to the refreshing of the display panel.
 Double buffering avoids flickering and inconsistent rendering: it is well suited to high quality animations.
 This is the notion of **double buffer**.
-This new buffer is often called **back buffer**, and the first buffer is often called **frame buffer** or **front buffer**.
+This new buffer is usually called **back buffer**, and the first buffer is usually called **frame buffer** or **front buffer**.
 The two buffers in MCU memory alternately play the role of the back buffer and the frame buffer. 
 The display panel address is alternatively changed from one buffer to the other. 
 
-The *flush* step consists in switching (or swapping) the two buffers: the frame buffer becomes the back buffer and the back buffer the frame buffer.
+The *flush* step consists in switching (or swapping) the two buffers: the frame buffer becomes the back buffer and the back buffer becomes the frame buffer.
 
 .. figure:: images/ui_display_double.*
    :alt: Swap Double Buffer
@@ -200,8 +200,8 @@ The *flush* step consists in switching (or swapping) the two buffers: the frame 
 This swap may not be atomic and may be done asynchronously: the display panel often fully refreshes an entire frame before changing its buffer address.
 During this time, the frame buffer is used (the display panel refreshes itself on it), and the back buffer is locked (reserved for the next frame to show).
 Consequently, the application cannot draw again: the swapping must be performed before.
-As soon as the swap is done, the both buffers are inverted.
-Now, the application can draw in the new back buffer (the old frame buffer).
+As soon as the swap is done, both buffers are switched.
+Now, the application can draw in the new back buffer (previously the frame buffer).
 
 .. _section_display_triple:
 
@@ -209,15 +209,15 @@ Swap Triple Buffer (parallel)
 -----------------------------
 
 When the display is large, it is possible to introduce a third mapped buffer.
-This third buffer allows to not :ref:`wait the end of the swapping <section_display_swap_double_parallel>` before starting a new drawing.
-The buffers are often called **back buffer 1**, **back buffer 2** and **back buffer 3**.
+This third buffer saves from :ref:`waiting the end of the swapping <section_display_swap_double_parallel>` before starting a new drawing.
+The buffers are usually called **back buffer 1**, **back buffer 2** and **back buffer 3**.
 
-The *flush* step consists in swapping two buffers and to *give* to the application the third buffer:
+The *flush* step consists in swapping two buffers and to let the application draw in the third buffer:
 
 * The back buffer 1 is the frame buffer: it is currently used by the LCD controller to refresh the display panel.
-* The back buffer 2 is the next frame buffer: the drawings have been done and a *flush* is asked.
+* The back buffer 2 is the next frame buffer: the drawings have been done and a *flush* is requested.
 * The back buffer 3 is not used: the application can immediately draw into it without waiting the swapping between the back buffers 1 & 2.
-* At the end of the drawings in the back buffer 3, the back buffer 3 takes the role of the next frame buffer, the back buffer 2 is the frame buffer and the back buffer 1 is free.
+* When the drawings are done in the back buffer 3, this buffer becomes the next frame buffer, the back buffer 2 is the frame buffer and the back buffer 1 is free.
 
 .. figure:: images/ui_display_triple.*
    :alt: Swap Triple Buffer
@@ -232,9 +232,9 @@ Direct Buffer (parallel)
 ------------------------
 
 There is only one buffer and the display panel continuously refreshes its content on this MCU buffer. 
-Consequently, the display panel can show incomplete frames and partial drawings because the refresh cannot be stopped, instead of seeing the entire frame at once.
+Consequently, the display panel can show incomplete frames and partial drawings since the drawings can be done during the refresh cycle of the display panel.
 This is the notion of **direct buffer**.
-For more static display-based applications, and/or to save memory, this buffer mode is recommended.
+This buffer mode is recommended for static display-based applications and/or to save memory.
 
 In this mode, the *flush* step has no meaning (there is only one buffer). 
 
@@ -256,8 +256,8 @@ Single Buffer
 Serial Connection
 """""""""""""""""
 
-For the display connection *serial*, there are two distinct buffers: the buffer where the drawings are rendered is often called **back buffer**, and the display module buffer **frame buffer** or **front buffer**.
-As only the back buffer is stored in the MCU mapped memory (the frame buffer is stored in the display module unmapped memory), there is only one buffer to allocate.
+For the display connection *serial*, there are two distinct buffers: the buffer where the drawings are rendered is usually called **back buffer**, and the display module buffer **frame buffer** or **front buffer**.
+As long as only the back buffer is stored in the MCU mapped memory (the frame buffer is stored in the display module unmapped memory), there is only one buffer to allocate.
 This is the notion of **single buffer**.
 
 The *flush* step consists in sending the data through the right bus (SPI, DSI).
@@ -269,11 +269,12 @@ The *flush* step consists in sending the data through the right bus (SPI, DSI).
 
    Single Buffer (serial)
 
-The display panel only shows complete frames; it cannot show partial drawings because the *flush* step is performed after all the drawings. 
-During the sending of data from the back buffer to the frame buffer, the application cannot draw again in the back buffer: the previous drawings must be fully sent before.
+The display panel only shows complete frames; it cannot show partial drawings because the *flush* step is performed after all the drawings.
+The application cannot draw in the back buffer while the data is sent to the frame buffer.
+As soon as the data is fully sent, the application can draw again in the back buffer.
+
 The time to send the data from the back buffer to the frame buffer may be long.
 During this time, no drawing can be anticipated and the global framerate is reduced.
-As soon as the is sending done, the application can draw again in the back buffer.
 
 .. _section_display_single_parallel:
 
@@ -293,9 +294,9 @@ The *flush* step consists in copying the back buffer content to the frame buffer
    Single Buffer (parallel)
 
 When the :ref:`swap mode <section_display_swap_double_parallel>` can be used, the *single buffer* mode can be also used.
-However there some differences:
+However there are some differences:
 
-* In *Swap Double* mode, the new frame buffer data is available instantly. As soon as the LCD controller has updated its frame buffer address, the data is ready to be sent to the LCD. In *Copy* mode, the process of copying the data to the display buffer occurs while the LCD controller is reading them. Therefore, the buffer copy has to be faster than the LCD controller reading. If this requirement is not met, the LCD controller will send a mix of new and old data (because the buffer copy is not completely finished).
+* In *Swap Double* mode, the new frame buffer data is available instantly. As soon as the LCD controller has updated its frame buffer address, the data is ready to be sent to the LCD. In *Copy* mode, the process of copying the data to the display buffer occurs while the LCD controller is reading it. Therefore, the buffer copy has to be faster than the LCD controller reading. If this requirement is not met, the LCD controller will send a mix of new and old data (because the buffer copy is not completely finished).
 * In *Swap Double* mode, the synchronization with the LCD controller is more effortless. An interrupt is thrown as soon as the LCD controller has updated its frame buffer address. In *Copy* mode, the copy buffer process should be synchronized with the LCD tearing signal.
 * In *Single* mode, during the copy, the destination buffer (the frame buffer) is used by the copy buffer process (DMA, memcopy, etc.) and by the LCD controller. Both masters are using the same RAM section. This same RAM section switches in *Write* mode (copy buffer process) and *Read* mode (LCD controller). 
 
@@ -308,15 +309,15 @@ Serial Connection
 """""""""""""""""
 
 When the time to send to the data from the back buffer to the frame buffer is :ref:`too long <section_display_single_serial>`, a second buffer can be allocated in the MCU memory.
-This buffer can be used by the application during the sending of the first buffer.
+This buffer can be used by the application while the first buffer is sent.
 This allows to anticipate the drawings even if the first drawings are not fully sent.
 This is the notion of **copy and swap buffer**.
-The buffers are often called **back buffer 1** and **back buffer 2** (the display module's buffer is the **frame buffer**).
+The buffers are usually called **back buffer 1** and **back buffer 2** (the display module's buffer is the **frame buffer**).
 
-The *flush* step consists in sending the back buffer data to the display module memory **and** swapping the both back buffers:
+The *flush* step consists in sending the back buffer data to the display module memory **and** swapping both back buffers:
 
 * The back buffer 1 is used as *sending* buffer.
-* The back buffer 2 is not used: the application can immediately draw into it without waiting the sending of the back buffer 1.
+* The back buffer 2 is not used: the application can immediately draw into it without waiting for the back buffer 1 to be sent.
 * At the end of the drawings in the back buffer 2, the back buffer 2 takes the role of the *sending* buffer and the back buffer 1 is free.
 
 .. figure:: images/ui_display_copyswap_serial.*
@@ -331,13 +332,13 @@ Parallel Connection
 
 When the time to copy the data from the back buffer to the frame buffer is :ref:`too long <section_display_single_parallel>`, a third buffer can be allocated in the MCU memory.
 This buffer can be used by the application during the copy of the first buffer.
-This allows to anticipate the drawings even if the first drawings are not fully sent.
+This allows to anticipate the drawings even if the first drawings are not fully copied.
 This is the notion of **copy and swap buffer**.
-The buffers are often called **back buffer 1** and **back buffer 2** (the third buffer in is the **frame buffer**).
-The *flush* step consists in copying the back buffer data to the frame buffer **and** swapping the both back buffers.
+The buffers are usually called **back buffer 1** and **back buffer 2** (the third buffer in is the **frame buffer**).
+The *flush* step consists in copying the back buffer data to the frame buffer **and** swapping both back buffers.
 
 * The back buffer 1 is used as *copying* buffer.
-* The back buffer 2 is not used: the application can immediately draw into it without waiting the end of the copy of the back buffer 1.
+* The back buffer 2 is not used: the application can immediately draw into it without waiting for the back buffer 1 to be copied.
 * At the end of the drawings in the back buffer 2, the back buffer 2 takes the role of the *copying* buffer and the back buffer 1 is free.
 
 .. figure:: images/ui_display_copyswap_parallel.*
@@ -353,8 +354,8 @@ The *flush* step consists in copying the back buffer data to the frame buffer **
 Partial Buffer
 --------------
 
-In the case where RAM usage is not a constraint, the back buffer is sized to store all the pixel data of the screen.
-However, when the RAM available on the device is very limited, a partial buffer can be used instead.
+When RAM usage is not a constraint, the back buffer is sized to store all the pixel data of the screen.
+But when the RAM available on the device is very limited, a partial buffer can be used instead.
 In that case, the buffer is smaller and can only store a part of the screen (one third for example).
 
 When this technique is used, the application draws in the partial buffer.
@@ -380,7 +381,7 @@ Dual Partial Buffer
 A second partial buffer can be used to avoid the synchronization delay before between two drawing cycles.
 While one of the two partial buffers is being copied to the display, the application can start drawing in the second partial buffer.
 
-This technique is interesting when the copy time is long. The downside is that it requires more RAM or to reduce the size of the partial buffers.
+This technique is interesting when the copy time is long. The downside is that it either requires more RAM or it requires to reduce the size of the partial buffers.
 
 Using a dual partial buffer has no impact on the application code.
 
@@ -680,7 +681,7 @@ and blue[5]):
 CLUT
 ====
 
-The Display module allows to target display which uses a pixel indirection table (CLUT). This kind of display are considered as generic but not standard (see :ref:`display_pixel_structure`). It consists to store color indices in image memory buffer instead of colors themselves.
+The Display module allows to target a display which uses a pixel indirection table (CLUT). This kind of display is considered as generic but not standard (see :ref:`display_pixel_structure`). It consists in storin color indices in image memory buffer instead of colors themselves.
 
 Color Conversion
 ----------------

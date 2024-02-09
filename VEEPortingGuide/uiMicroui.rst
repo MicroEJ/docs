@@ -117,7 +117,7 @@ For each pixel to draw, the antialiasing process blends the foreground color wit
 This background color can be specified or not by the application:
 
 - *specified*: The background color is fixed by the application  (`GraphicsContext.setBackgroundColor()`_).
--  *not specified*: The background color is the original color of the destination pixel (a "read pixel" operation is performed for each pixel).
+- *not specified*: The background color is the original color of the destination pixel (a "read pixel" operation is performed for each pixel).
 
 .. _GraphicsContext.setBackgroundColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setBackgroundColor-int-
 
