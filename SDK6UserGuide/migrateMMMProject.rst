@@ -183,6 +183,10 @@ will be converted to::
 
 Also note that this will not resolve snapshot builds. To resolve both snapshot and release versions, use ``[1.0.0-rc,1.0.0]`` instead of ``1.0.0``.
 
+.. note::
+   If the dependency relates to another module of the same project, you may use a multi-project structure instead (see
+   `Multi-Project Build Basics <https://docs.gradle.org/current/userguide/intro_multi_project_builds.html>`__).
+
 Refer to the :ref:`sdk_6_add_dependency` page to go further on the Gradle dependencies and configurations.
 
 Example
