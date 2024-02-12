@@ -4,10 +4,20 @@ settingsEvaluated {
 
    allprojects {
       repositories {
-         /* Local Repository */
+         /* Local Repository for Maven/Gradle modules */
          maven {
             name = "localRepository"
             url = uri("${userHome}/.microej/repository")
+         }
+         /* Local Repository for Ivy modules */
+         ivy {
+            name = "localRepositoryIvy"
+            url = uri("${userHome}/.microej/repository")
+            patternLayout {
+               artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
+               ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
+               setM2compatible(true)
+            }
          }
          /* MicroEJ Central repository for Maven/Gradle modules */
          maven {
