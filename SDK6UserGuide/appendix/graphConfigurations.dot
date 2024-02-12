@@ -29,5 +29,5 @@ digraph mygraph {
     "microejApplicationClasspath" -> "microejApplication"
     "adp" -> "addonProcessorClasspath" [ label="uses" ]
     "com.microej.gradle.java plugins" -> "jdtCompilerClasspath" [ label="uses" ]
-    "wrapApplication" -> "wrapperClasspath" [ label="uses" ]
+    "compileJava" -> "wrapperClasspath" [ label="uses" ]
 }

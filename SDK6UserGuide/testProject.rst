@@ -307,7 +307,7 @@ Test on J2SE VM
 ---------------
 
 The SDK allows to run tests on a J2SE VM.
-This can be useful when the usage of mock libraries like `Mockito <https://site.mockito.org/>`__ is needed.
+This can be useful when the usage of mock libraries like ``Mockito`` is needed.
 
 There is nothing specific related to MicroEJ to run tests on a J2SE VM.
 Follow the `Gradle documentation <https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html>`__ to setup such tests.
