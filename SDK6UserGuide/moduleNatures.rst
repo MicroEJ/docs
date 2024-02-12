@@ -66,7 +66,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.loadFeatureConfiguration`
 - :ref:`sdk6_module_natures.tasks.buildFeature`
 - :ref:`sdk6_module_natures.tasks.runOnDevice`
-- :ref:`sdk6_module_natures.tasks.wrapApplication`
+- :ref:`sdk6_module_natures.tasks.compileWrapperJava`
 
 .. graphviz:: graphApplicationModule.dot
 
@@ -476,24 +476,20 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.application`
 
-.. _sdk6_module_natures.tasks.wrapApplication:
+.. _sdk6_module_natures.tasks.compileWrapperJava:
 
-wrapApplication
-^^^^^^^^^^^^^^^
+compileWrapperJava
+^^^^^^^^^^^^^^^^^^
 
-**Description**: Wraps the Application class to be able to run the Application on a VEE Port and a Kernel.
+**Description**: Compiles Application wrapper class to be able to run the Application on a VEE Port and a Kernel.
 
 **Inputs**:
 
 - The project classpath which contains the MicroEJ dependent application classes and resources
-- The Full Qualified Name of the Application EntryPoint
-- The folder containing the application configuration (``configuration``)
-- The System properties
 
 **Outputs**:
 
 - The directory in which the compiled wrapper class is generated (``build/generated/microej-app-wrapper/classes``)
-- The directory in which the feature.kf and feature.cert files are generated (``build/generated/microej-app-wrapper/resources``)
 
 **Module Natures**:
 
