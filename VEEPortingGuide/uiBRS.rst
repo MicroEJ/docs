@@ -230,7 +230,7 @@ Strategies
 Several strategies are available according to different considerations:
 
   * the :ref:`display connection<section_display_connection>` (serial or parallel),
-  * the :ref:`buffer mode<section_display_buffer_mode>` (swap buffers, send or copy buffer),
+  * the :ref:`buffer policy<section_display_buffer_policy>` (swap buffers, send or copy buffer),
   * if the *past* has to be restored,
   * if the *past* is systematically restored,
   * when the *past* is restored,
@@ -238,8 +238,8 @@ Several strategies are available according to different considerations:
 
 The following chapters describe the strategies:
 
-   * For the single buffer mode, the restoration is useless; the recommended strategy is :ref:`section_brs_single`.
-   * For the multiple buffers mode, the recommended strategy is :ref:`section_brs_predraw`.
+   * For the single buffer policy, the restoration is useless; the recommended strategy is :ref:`section_brs_single`.
+   * For the multiple buffers policy, the recommended strategy is :ref:`section_brs_predraw`.
    * The strategies :ref:`section_brs_default`, :ref:`section_brs_custom` and :ref:`section_brs_legacy` can be used for other use-cases.
 
 .. _section_brs_single:
@@ -252,7 +252,7 @@ Strategy: Single
 Principle
 ---------
 
-This strategy considers that the drawings are always performed in the same back buffer (:ref:`single<section_display_single>` buffer mode).
+This strategy considers that the drawings are always performed in the same back buffer (:ref:`single<section_display_single>` buffer policy).
 In this case, the restoration is useless because the buffer always contains the past.
 
 The principle of this strategy is to cumulate the drawing regions.
@@ -431,7 +431,7 @@ The algorithm has to call ``LLUI_DISPLAY_getSourceImage()`` to retrieve a pointe
 Use (Swap Double Buffer)
 ------------------------
 
-Here are the steps around the strategy describing how to use it in :ref:`double<section_display_swap_double_parallel>` buffer mode (the two buffers have the same role alternatively, back buffer and frame buffer):
+Here are the steps around the strategy describing how to use it in :ref:`double<section_display_swap_double_parallel>` buffer policy (the two buffers have the same role alternatively, back buffer and frame buffer):
 
 1. Some drawings are performed in the back buffer.
 2. A ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
@@ -445,7 +445,7 @@ Here are the steps around the strategy describing how to use it in :ref:`double<
 Use (Swap Triple Buffer)
 ------------------------
 
-Here are the steps around the strategy describing how to use it in :ref:`triple<section_display_triple>` buffer mode.
+Here are the steps around the strategy describing how to use it in :ref:`triple<section_display_triple>` buffer policy.
 The three buffers have the same role alternatively: back buffers (A and B) and frame buffer (C). 
 On startup, the LCD buffer is mapped on the buffer (C), the buffer (A) is the back buffer and the buffer (B) is not used yet:
 
@@ -482,11 +482,11 @@ Use (Copy and Swap Buffer)
 
 .. note:: This chapter uses the display connection *serial* to describe the flow but it is similar for the display connection *parallel* (*copy* instead of *send*).
 
-Here are the steps around the strategy describing how to use it in :ref:`copy and swap<section_display_copyswap>` buffer mode. 
+Here are the steps around the strategy describing how to use it in :ref:`copy and swap<section_display_copyswap>` buffer policy. 
 The two buffers have the same role alternatively: back buffer and sending buffer. 
 On startup, the sending buffer is not used yet.
 
-In this mode, the implementation of ``LLUI_DISPLAY_IMPL_flush()`` consists in swapping the back buffers and to send the content of the back buffer to the display buffer (SPI, DSI, etc.). 
+In this policy, the implementation of ``LLUI_DISPLAY_IMPL_flush()`` consists in swapping the back buffers and to send the content of the back buffer to the display buffer (SPI, DSI, etc.). 
 This subtlety allows to reuse the same back buffer after the end of the sending: this prevents to restore the past.
 
 1. Some drawings are performed in the back buffer.
@@ -517,7 +517,7 @@ Principle
 
 This strategy is the default strategy used when no explicit strategy is selected.
 This strategy is implemented in the Graphics Engine and its behavior is minimalist.
-However, this strategy can be used for the :ref:`direct<section_display_direct>` buffer mode.
+However, this strategy can be used for the :ref:`direct<section_display_direct>` buffer policy.
 
 This strategy considers that the drawings are always performed in the same back buffer.
 In this case, the restoration is useless because the buffer always contains the past.
@@ -641,7 +641,7 @@ Strategy: Legacy
 Principle
 ---------
 
-This strategy is the strategy that mimics the behavior of the specification of the UI Pack 13.x, dedicated to the :ref:`multi-buffers<section_display_buffer_mode>` modes. 
+This strategy is the strategy that mimics the behavior of the specification of the UI Pack 13.x, dedicated to the :ref:`multi-buffers<section_display_buffer_policy>` policies. 
 
 The specification consisted in:
 
@@ -654,7 +654,7 @@ The strategy *Legacy* is useful to keep the behavior of the VEE Ports made for U
 This strategy merges all drawing regions to only one rectangle (that includes all drawing regions).
 This single rectangle is given to the function ``LLUI_DISPLAY_IMPL_flush()``. 
 
-.. note:: For the :ref:`single buffer mode<section_display_single>`, it is recommended to migrate to the  :ref:`strategy single<section_brs_single>`.
+.. note:: For the :ref:`single buffer policy<section_display_single>`, it is recommended to migrate to the  :ref:`strategy single<section_brs_single>`.
  
 Behavior
 --------
@@ -753,7 +753,7 @@ The options (some *defines*) are shared between the strategies:
 
 * ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE`` (``ui_display_brs_configuration.h``): configures the number of rectangles that the strategy gives to the implementation of ``LLUI_DISPLAY_IMPL_flush()``. If not set, the number or regions depends on the strategy. If set, only one region is given: the bounding box of all drawing regions. Used by:
 
-  * Predraw: the list of regions is often useless (the LCD driver has just to swap the back and frame buffers), however this list can be used for the buffer mode :ref:`section_display_copyswap`. Calculating the bounding box uses takes a bit of memory and time; if the bounding box is useless, it is recommended to not enable this option.
+  * Predraw: the list of regions is often useless (the LCD driver has just to swap the back and frame buffers), however this list can be used for the buffer policy :ref:`section_display_copyswap`. Calculating the bounding box uses takes a bit of memory and time; if the bounding box is useless, it is recommended to not enable this option.
   * Single: the list of regions can be useful to refresh small parts of the display panel.
   * Legacy: this option is never used and the bounding box of all drawing regions is given to the implementation of ``LLUI_DISPLAY_IMPL_flush()``.
 
@@ -784,21 +784,21 @@ Principle
 ---------
 
 The ``Display`` widget in the Front Panel is able to simulate the buffer refresh strategy.
-It also simulates the :ref:`section_display_buffer_mode`.
+It also simulates the :ref:`section_display_buffer_policy`.
 
 The default values are:
 
-- Swap Double Buffer for the buffer mode.
+- Swap Double Buffer for the buffer policy.
 - Predraw for the buffer refresh strategy.
 
 Usage
 -----
 
-The buffer mode and the refresh strategy can be configured by adding an attribute to the ``Display`` widget in the ``.fp`` file.
-The value of these attributes is the fully qualified name of the class implementing the buffer mode or the refresh strategy.
+The buffer policy and the refresh strategy can be configured by adding an attribute to the ``Display`` widget in the ``.fp`` file.
+The value of these attributes is the fully qualified name of the class implementing the buffer policy or the refresh strategy.
 The attributes are:
 
-- ``bufferPolicyClass`` to set the buffer mode.
+- ``bufferPolicyClass`` to set the buffer policy.
 - ``refreshStrategyClass`` to set the refresh strategy.
 
 Example:
@@ -814,7 +814,7 @@ Example:
 Available Implementations
 -------------------------
 
-The available buffer modes are:
+The available buffer policies are:
 
 - :ref:`Swap Double Buffer <section_display_swap_double_parallel>`: ``ej.fp.widget.display.buffer.SwapDoubleBufferPolicy``.
 - :ref:`Swap Triple Buffer <section_display_triple>`: ``ej.fp.widget.display.buffer.SwapTripleBufferPolicy``.
