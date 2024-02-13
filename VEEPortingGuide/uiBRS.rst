@@ -780,9 +780,84 @@ The strategies log some events; see :ref:`microui_traces` (see *"[BRS]"* comment
 Simulation
 ==========
 
-* explain buffer policy here ?
-* how to enable
-* default options
+Principle
+---------
+
+The ``Display`` widget in the Front Panel is able to simulate the buffer refresh strategy.
+It also simulates the :ref:`section_display_buffer_mode`.
+
+The default values are:
+
+- Swap Double Buffer for the buffer mode.
+- Predraw for the buffer refresh strategy.
+
+Usage
+-----
+
+The buffer mode and the refresh strategy can be configured by adding an attribute to the ``Display`` widget in the ``.fp`` file.
+The value of these attributes is the fully qualified name of the class implementing the buffer mode or the refresh strategy.
+The attributes are:
+
+- ``bufferPolicyClass`` to set the buffer mode.
+- ``refreshStrategyClass`` to set the refresh strategy.
+
+Example:
+
+   .. code-block:: xml
+
+		<ej.fp.widget.Display
+			x="0" y="0" width="480" height="272"
+			bufferPolicyClass="ej.fp.widget.display.buffer.SwapTripleBufferPolicy"
+      refreshStrategyClass="ej.fp.widget.display.brs.PredrawRefreshStrategy"
+		/>
+
+Available Implementations
+-------------------------
+
+The available buffer modes are:
+
+- :ref:`Swap Double Buffer <section_display_swap_double_parallel>`: ``ej.fp.widget.display.buffer.SwapDoubleBufferPolicy``.
+- :ref:`Swap Triple Buffer <section_display_triple>`: ``ej.fp.widget.display.buffer.SwapTripleBufferPolicy``.
+- :ref:`Direct Buffer <section_display_direct>`: ``ej.fp.widget.display.buffer.DirectBufferPolicy``.
+- :ref:`section_display_single`: ``ej.fp.widget.display.buffer.SingleBufferPolicy``.
+- :ref:`section_display_copyswap`: ``ej.fp.widget.display.buffer.CopySwapBufferPolicy``.
+
+The available refresh strategies are:
+
+- :ref:`Single <section_brs_single>`: ``ej.fp.widget.display.brs.SingleRefreshStrategy``.
+- :ref:`Predraw <section_brs_predraw>`: ``ej.fp.widget.display.brs.PredrawRefreshStrategy``.
+- :ref:`Legacy <section_brs_legacy>`: ``ej.fp.widget.display.brs.LegacyRefreshStrategy``.
+
+Custom Implementation
+---------------------
+
+It is possible to create a new buffer policy by implementing ``ej.fp.widget.display.buffer.DisplayBufferPolicy``.
+
+The buffer policy is responsible of:
+
+- Allocating the necessary buffers, usually in ``setDisplayProperties(Widget, int, int, int)``:
+
+  .. code-block:: java
+
+    FrontPanel.getFrontPanel().newImage(width, height, initialColor, false);
+
+- Giving access to the back buffer (the buffer used to draw) in ``getBackBuffer()``.
+- Giving access to the front buffer (the buffer displayed in the ``Display`` widget) in ``getFrontBuffer()``.
+- Flushing the set of modified rectangles from the drawing buffer to the display buffer in ``flush(DisplayBufferManager, Rectangle[])`` and requesting the display widget to be refreshed.
+
+  .. code-block:: java
+
+    this.displayWidget.repaint();
+
+It is possible to create a new refresh strategy by implementing ``ej.fp.widget.display.brs.BufferRefreshStrategy``.
+
+The refresh strategy is responsible of:
+
+- Restoring the past to ensure that the content of the display is correct by calling ``DisplayBufferManager.restore(Rectangle)``.
+- Refreshing the display with what has been modified by calling ``DisplayBufferManager.flush(Rectangle[])`` in ``refresh(DisplayBufferManager)``.
+
+It is notified of the modified regions in ``newDrawingRegion(DisplayBufferManager, Rectangle, boolean)``.
+
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
