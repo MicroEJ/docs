@@ -14,6 +14,11 @@ MicroUI
 
 * Implement `MicroUI API 3.5.0`_ (XXX_TODO wrong link).
 
+**Added**
+
+* Add ``GraphicsContext.notifyDrawingRegion()`` that allows the notification of a future altered region.
+* Add ``Format.getSNIContext()``  and ``OutputFormat.getSNIContext()`` to identify the format in the native world.
+
 **Changed**
 
 * Change the semantic of the content of the drawing buffer after a flush: the *past* is not systematically restored.
