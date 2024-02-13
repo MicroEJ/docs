@@ -36,14 +36,14 @@ Dedicated chapters deal with related concepts:
 * :ref:`section_ui_cco`: how the BSP extends the Graphics Engine.
 * :ref:`section_ui_simulation`: how the Graphics Engine is simulated.
 
-.. _section_display_modes:
+.. _section_display_policies:
 
 Display Configuration
 =====================
 
 The Graphics Engine provides a number of different configurations. The appropriate configuration should be selected depending on the capabilities of the screen and other related hardware, such as display controllers.
 
-The modes can vary in four ways:
+The policies can vary in four ways:
 
 -  the display device connection to the Graphics Engine,
 -  the number of buffers,
@@ -106,16 +106,16 @@ This is the notion of **mapped memory**.
 
    Display Parallel Connection
 
-.. _section_display_buffer_mode:
+.. _section_display_buffer_policy:
 
-Buffer Mode
-===========
+Buffer Policy
+=============
 
 Overview
 --------
 
-The notion of buffer mode depends on the available number of buffers allocated in the MCU memory and on the display connection.
-The Graphics Engine does not depend on the type of buffer mode and it manipulates these buffers in two steps:
+The notion of buffer policy depends on the available number of buffers allocated in the MCU memory and on the display connection.
+The Graphics Engine does not depend on the type of buffer policy and it manipulates these buffers in two steps:
 
 1. It renders the application drawings into a MCU buffer.
 2. It *flushes* the buffer's content to the display panel.
@@ -125,25 +125,25 @@ The implementation of `Display.flush()`_  calls the Abstraction Layer API ``LLUI
 Decision Tree
 -------------
 
-The following flow chart provides a handy guide to pick the buffer mode suited to the hardware configuration.
+The following flow chart provides a handy guide to pick the buffer policy suited to the hardware configuration.
 
 XXX_TODO choose between both trees:
 
 .. figure:: images/ui_display_tree_h.*
-   :alt: Buffer Modes
+   :alt: Buffer Policies
    :scale: 50%
    :align: center
 
-   Buffer Modes
+   Buffer Policies
 
 .. figure:: images/ui_display_tree_v.*
-   :alt: Buffer Modes
+   :alt: Buffer Policies
    :scale: 50%
    :align: center
 
-   Buffer Modes
+   Buffer Policies
 
-The following table redirects to the right chapter according to the display buffer mode:
+The following table redirects to the right chapter according to the display buffer policy:
 
 .. list-table:: Display Connections
    :widths: 20 20 40
@@ -234,9 +234,9 @@ Direct Buffer (parallel)
 There is only one buffer and the display panel continuously refreshes its content on this MCU buffer. 
 Consequently, the display panel can show incomplete frames and partial drawings since the drawings can be done during the refresh cycle of the display panel.
 This is the notion of **direct buffer**.
-This buffer mode is recommended for static display-based applications and/or to save memory.
+This buffer policy is recommended for static display-based applications and/or to save memory.
 
-In this mode, the *flush* step has no meaning (there is only one buffer). 
+In this policy, the *flush* step has no meaning (there is only one buffer). 
 
 .. figure:: images/ui_display_direct.*
    :alt: Direct Buffer
@@ -281,8 +281,8 @@ During this time, no drawing can be anticipated and the global framerate is redu
 Parallel Connection
 """""""""""""""""""
 
-When the :ref:`swap mode <section_display_swap_double_parallel>` is not possible (the display panel is mapped on a fixed MCU memory address), the mode **single buffer** can be used.
-Like swap mode, this double buffering avoids flickering and inconsistent rendering: it is well suited to high quality animations.
+When the :ref:`swap policy <section_display_swap_double_parallel>` is not possible (the display panel is mapped on a fixed MCU memory address), the policy **single buffer** can be used.
+Like swap policy, this double buffering avoids flickering and inconsistent rendering: it is well suited to high quality animations.
 
 The *flush* step consists in copying the back buffer content to the frame buffer (often by using a DMA).
 
@@ -293,12 +293,12 @@ The *flush* step consists in copying the back buffer content to the frame buffer
 
    Single Buffer (parallel)
 
-When the :ref:`swap mode <section_display_swap_double_parallel>` can be used, the *single buffer* mode can be also used.
+When the :ref:`swap policy <section_display_swap_double_parallel>` can be used, the *single buffer* policy can be also used.
 However there are some differences:
 
-* In *Swap Double* mode, the new frame buffer data is available instantly. As soon as the LCD controller has updated its frame buffer address, the data is ready to be sent to the LCD. In *Copy* mode, the process of copying the data to the display buffer occurs while the LCD controller is reading it. Therefore, the buffer copy has to be faster than the LCD controller reading. If this requirement is not met, the LCD controller will send a mix of new and old data (because the buffer copy is not completely finished).
-* In *Swap Double* mode, the synchronization with the LCD controller is more effortless. An interrupt is thrown as soon as the LCD controller has updated its frame buffer address. In *Copy* mode, the copy buffer process should be synchronized with the LCD tearing signal.
-* In *Single* mode, during the copy, the destination buffer (the frame buffer) is used by the copy buffer process (DMA, memcopy, etc.) and by the LCD controller. Both masters are using the same RAM section. This same RAM section switches in *Write* mode (copy buffer process) and *Read* mode (LCD controller). 
+* In *Swap Double* policy, the new frame buffer data is available instantly. As soon as the LCD controller has updated its frame buffer address, the data is ready to be sent to the LCD. In *Copy* policy, the process of copying the data to the display buffer occurs while the LCD controller is reading it. Therefore, the buffer copy has to be faster than the LCD controller reading. If this requirement is not met, the LCD controller will send a mix of new and old data (because the buffer copy is not completely finished).
+* In *Swap Double* policy, the synchronization with the LCD controller is more effortless. An interrupt is thrown as soon as the LCD controller has updated its frame buffer address. In *Copy* policy, the copy buffer process should be synchronized with the LCD tearing signal.
+* In *Single* policy, during the copy, the destination buffer (the frame buffer) is used by the copy buffer process (DMA, memcopy, etc.) and by the LCD controller. Both masters are using the same RAM section. This same RAM section switches in *Write* mode (copy buffer process) and *Read* mode (LCD controller). 
 
 .. _section_display_copyswap:
 
@@ -361,7 +361,7 @@ In that case, the buffer is smaller and can only store a part of the screen (one
 When this technique is used, the application draws in the partial buffer.
 To flush the drawings, the content of the partial buffer is copied to the display (to its :ref:`internal memory <section_display_single>` or to a :ref:`complete buffer <section_display_single_parallel>` from which the display reads).
 
-If the display does not have its own internal memory and if the device does not have enough RAM to allocate a complete buffer, then it is not possible to use a partial buffer. In that case, only the :ref:`direct <section_display_direct>` buffer mode can be used.
+If the display does not have its own internal memory and if the device does not have enough RAM to allocate a complete buffer, then it is not possible to use a partial buffer. In that case, only the :ref:`direct <section_display_direct>` buffer policy can be used.
 
 Workflow
 """"""""
@@ -392,10 +392,10 @@ Using a partial buffer rather than a complete buffer may require adapting the co
 
 Besides, the `GraphicsContext.readPixel()`_
 and the `GraphicsContext.readPixels()`_ APIs
-can not be used on the graphics context of the display in partial buffer mode.
+can not be used on the graphics context of the display in partial buffer policy.
 Indeed, we cannot rely on the current content of the back buffer as it doesn't contain what is seen on the screen.
 
-Likewise, the `Painter.drawDisplayRegion()`_ API can not be used in partial buffer mode.
+Likewise, the `Painter.drawDisplayRegion()`_ API can not be used in partial buffer policy.
 Indeed, this API reads the content of the back buffer in order to draw a region of the display.
 Instead of relying on the drawings which were performed previously, this API should be avoided and the drawings should be performed again.
 
@@ -864,7 +864,7 @@ The Graphics Engine is designed to be synchronized with the display refresh rate
 Captions definition:
 
 * UI: It is the UI task which performs the drawings in the back buffer. At the end of the drawings, the examples consider that the UI thread calls `Display.flush()`_ 1 millisecond after the end of the drawings. At this moment, a flush can start (the call to `Display.flush()`_ is symbolized by a simple `peak` in chronograms).
-* Flush: In :ref:`single buffer<section_display_single>` mode, it is the time to transfer the content of the back buffer to the display buffer. In :ref:`double<section_display_swap_double_parallel>` or :ref:`triple<section_display_triple>` mode, it is the time to swap back and display buffers (the instruction is often instantaneous but the action is often performed at the beginning of the next display refresh rate). During this time, the back buffer is `in use` and UI task has to wait the end of swap before starting a new drawing. 
+* Flush: In :ref:`single buffer<section_display_single>` policy, it is the time to transfer the content of the back buffer to the display buffer. In :ref:`double<section_display_swap_double_parallel>` or :ref:`triple<section_display_triple>` policy, it is the time to swap back and display buffers (the instruction is often instantaneous but the action is often performed at the beginning of the next display refresh rate). During this time, the back buffer is `in use` and UI task has to wait the end of swap before starting a new drawing. 
 * Tearing: The peaks show the tearing signals.
 * Rendering frequency: the frequency between the start of a drawing to the end of flush.
 
@@ -991,11 +991,11 @@ Required Abstraction Layer API
 
 Four Abstraction Layer APIs are required to connect the Graphics Engine to the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``.
 
-* ``LLUI_DISPLAY_IMPL_initialize``: The initialization function is called when the application is calling `MicroUI.start()`_. Before this call, the display is useless and don't need to be initialized. This function consists in initializing the LCD driver and in filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on the two binary semaphores, the back buffer address (see :ref:`section_display_modes`), the display *virtual* size in pixels (``lcd_width`` and ``lcd_height``) and optionally the display *physical* size in pixels (``memory_width`` and ``memory_height``). 
+* ``LLUI_DISPLAY_IMPL_initialize``: The initialization function is called when the application is calling `MicroUI.start()`_. Before this call, the display is useless and don't need to be initialized. This function consists in initializing the LCD driver and in filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on the two binary semaphores, the back buffer address (see :ref:`section_display_policies`), the display *virtual* size in pixels (``lcd_width`` and ``lcd_height``) and optionally the display *physical* size in pixels (``memory_width`` and ``memory_height``). 
 
 * ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: Two distinct functions have to be implemented to *take* and *give* a binary semaphore. 
 
-* ``LLUI_DISPLAY_IMPL_flush``: According the display buffer mode (see :ref:`section_display_modes`), the ``flush`` function has to be implemented. This function must not be blocking and not performing the copy directly. Another OS task or a dedicated hardware must be configured to perform the buffer copy. 
+* ``LLUI_DISPLAY_IMPL_flush``: According the display buffer policy (see :ref:`section_display_policies`), the ``flush`` function has to be implemented. This function must not be blocking and not performing the copy directly. Another OS task or a dedicated hardware must be configured to perform the buffer copy. 
 
 .. _MicroUI.start(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start--
 
@@ -1025,7 +1025,7 @@ The functions are available in ``LLUI_DISPLAY.h``.
 Typical Implementations
 =======================
 
-This chapter helps to write some basic ``LLUI_DISPLAY_impl.h`` implementations according the display buffer mode (see :ref:`section_display_modes`).
+This chapter helps to write some basic ``LLUI_DISPLAY_impl.h`` implementations according the display buffer policy (see :ref:`section_display_policies`).
 The pseudo-code calls external function such as ``LCD_DRIVER_xxx`` or ``DMA_DRIVER_xxx`` to symbolize the use of external drivers.
 
 .. note:: The pseudo code does not use the ``const ui_rect_t areas[]`` bounds to simplify the reading.
@@ -1074,10 +1074,10 @@ The following example shows an implementation over FreeRTOS.
       }
    }
 
-Direct Mode
------------
+Direct Policy
+-------------
 
-:ref:`This mode<section_display_direct>` considers the application and the LCD driver share the same buffer. 
+:ref:`This policy<section_display_direct>` considers the application and the LCD driver share the same buffer. 
 In other words, all drawings made by the application are immediately shown on the display.
 This particular case is the easiest to write because the ``flush()`` stays empty:
 
@@ -1101,7 +1101,7 @@ This particular case is the easiest to write because the ``flush()`` stays empty
 Serial Display
 --------------
 
-A display connected to the CPU through a serial bus (DSI, SPI, etc.) requires the :ref:`single buffer <section_display_single_serial>` mode: the application uses a buffer to perform its drawings and the buffer's content has to be sent to the display when the Graphics Engine is calling the ``flush()`` function.
+A display connected to the CPU through a serial bus (DSI, SPI, etc.) requires the :ref:`single buffer <section_display_single_serial>` policy: the application uses a buffer to perform its drawings and the buffer's content has to be sent to the display when the Graphics Engine is calling the ``flush()`` function.
 
 The specification of the ``flush()`` function is to be **not** blocker (atomic). 
 Its aim is to prepare / configure the serial bus and data to send and then, to start the asynchronous copy (data sent).
@@ -1204,12 +1204,12 @@ A dedicated OS task is required to perform this sent.
       LLUI_DISPLAY_IMPL_binarySemaphoreGive(_copy_task_semaphore, false);
    }
 
-Parallel Display: Copy Mode (Tearing Disabled)
-----------------------------------------------
+Parallel Display: Copy Policy (Tearing Disabled)
+------------------------------------------------
 
-.. note:: This mode should synchronize the copy buffer process with the LCD tearing signal. However,  this notion is sometimes not available. This chapter describes the copy buffer process without using the tearing signal (see :ref:`next chapter<section_lluidisplay_parallel_tearing>`).
+.. note:: This policy should synchronize the copy buffer process with the LCD tearing signal. However,  this notion is sometimes not available. This chapter describes the copy buffer process without using the tearing signal (see :ref:`next chapter<section_lluidisplay_parallel_tearing>`).
 
-:ref:`This buffer mode<section_display_single_parallel>` requires two buffers in RAM. 
+:ref:`This buffer policy<section_display_single_parallel>` requires two buffers in RAM. 
 The first buffer is used by the application (back buffer) and the second buffer is used by the LCD controller to send data to the display (frame buffer).
 The content of the frame buffer must be updated with the content of the back buffer when the Graphics Engine is calling the ``flush()`` function.
 
@@ -1329,10 +1329,10 @@ A dedicated OS task is required to perform this copy.
 
 .. _section_lluidisplay_parallel_tearing:
 
-Parallel Display: Copy Mode (Tearing Enabled)
-----------------------------------------------
+Parallel Display: Copy Policy (Tearing Enabled)
+-----------------------------------------------
 
-:ref:`This buffer mode<section_display_single_parallel>` is the same than previous chapter but it uses the LCD tearing signal to synchronize the LCD refresh rate with the copy buffer process.
+:ref:`This buffer policy<section_display_single_parallel>` is the same than previous chapter but it uses the LCD tearing signal to synchronize the LCD refresh rate with the copy buffer process.
 The copy buffer process should not start during the call of ``flush()`` but should wait the next tearing signal to start the copy.
 
 There are two use cases:
@@ -1471,10 +1471,10 @@ There are two use cases:
       }
    }  
 
-Parallel Display: Swap Mode
----------------------------
+Parallel Display: Swap Policy
+-----------------------------
 
-:ref:`This buffer mode<section_display_swap_double_parallel>`  requires two buffers in RAM. 
+:ref:`This buffer policy<section_display_swap_double_parallel>`  requires two buffers in RAM. 
 The first buffer is used by the application (buffer A) and the second buffer is used by the LCD controller to send data to the display (buffer B).
 The LCD controller is reconfigured to use the buffer A when the Graphics Engine is calling the ``flush()`` function.
 
