@@ -51,6 +51,8 @@ refer to the following official documentations:
 - `Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management>`__
 - `Java Library plugin <https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation>`__
 
+.. _sdk_6_add_dependency_version:
+
 Version
 -------
 
