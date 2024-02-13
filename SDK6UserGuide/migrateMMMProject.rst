@@ -181,7 +181,7 @@ will be converted to::
 
    testImplementation("ej.library.test:junit:1.7.1")
 
-Also note that this will not resolve snapshot builds. To resolve both snapshot and release versions, use ``[1.0.0-rc,1.0.0]`` instead of ``1.0.0``.
+Also note that this will not resolve snapshot builds since versions are explicit in SDK 6, see this chapter for more details. To resolve both snapshot and release versions, use ``[1.0.0-RC,1.0.0]`` instead of ``1.0.0``.
 
 .. note::
    If the dependency relates to another module of the same project, you may use a multi-project structure instead (see
