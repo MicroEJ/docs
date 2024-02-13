@@ -95,7 +95,7 @@ This allocator and the one in the Graphics Engine can be replaced by a third-par
 Files
 """""
 
-* Implements the functions of	``LLUI_DISPLAY_impl.h`` with ``LLUI_DISPLAY_IMPL_image_heap_`` prefix.
+* Implements the functions of	``LLUI_DISPLAY_impl.h`` with ``LLUI_DISPLAY_IMPL_imageHeap`` prefix.
 * C file: ``LLUI_DISPLAY_HEAP_impl.c``.
 * Status: optional.
 
@@ -104,7 +104,7 @@ Usage
 
 1. To use the Graphics Engine's allocator, do not add the file ``LLUI_DISPLAY_HEAP_impl.c`` in the BSP project.
 2. To use the C module's allocator, add the file ``LLUI_DISPLAY_HEAP_impl.c`` in the BSP project.
-3. To use a third-party allocator, do not add the file ``LLUI_DISPLAY_HEAP_impl.c`` in the BSP project and implement the ``LLUI_DISPLAY_IMPL_image_heap_xxx`` functions.
+3. To use a third-party allocator, do not add the file ``LLUI_DISPLAY_HEAP_impl.c`` in the BSP project and implement the ``LLUI_DISPLAY_IMPL_imageHeapXXX`` functions.
 
 Events Logger
 -------------
