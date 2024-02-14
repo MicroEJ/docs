@@ -12,7 +12,7 @@ settingsEvaluated {
          /* Local Repository for Ivy modules */
          ivy {
             name = "localRepositoryIvy"
-            url = uri("${userHome}/.microej/repository")
+            url = uri("${userHome}/.ivy2/repository")
             patternLayout {
                artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
                ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
