@@ -1,7 +1,7 @@
 .. _sdk_6_getting_started_stm32f7508:
 
 STM32F7508-DK Evaluation Kit
-==========================
+============================
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
