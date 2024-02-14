@@ -4,9 +4,9 @@ Getting Started
 ===============
 
 .. raw:: html
-        
+
         <div class="figure align-center">
-                <video width="960" height="540" poster="https://repository.microej.com/packages/videos/gettingStartedSDK6_v5.0.png" muted="off" controls="controls" >
+                <video width="960" height="540" poster="https://repository.microej.com/packages/videos/gettingStartedSDK6_v5.0.png" controls="controls" >
                         <source src="https://repository.microej.com/packages/videos/gettingStartedSDK6_v5.0.mp4" type="video/mp4">
                 </video>
         </div>
