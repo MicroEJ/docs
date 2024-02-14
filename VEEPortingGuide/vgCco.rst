@@ -86,24 +86,12 @@ This generic C module requires some specific modules:
 * Path and Gradient require a C module specific to a VEE Port (to a GPU format).
 * Font requires the FreeType library and optionally the Harfbuzz library to manage the :ref:`complex layout <section_vg_font_complex>`.
 
-Configuration
--------------
+Usage
+-----
 
-This C module uses a configuration file.
-This file (a header file with some C defines) enables (or disables) and configures some options:
-
-* ``VG_FEATURE_PATH``: set this define to embed the full implementation of ``Path`` feature. Otherwise, a stub implementation is used, and all ``Path`` drawings are dropped.
-* ``VG_FEATURE_GRADIENT``: configure this define to embed the full implementation of ``LinearGradient`` or a stub implementation that only manages one color (linear gradient's first color). The respective options are ``VG_FEATURE_GRADIENT_FULL`` and ``VG_FEATURE_GRADIENT_FIRST_COLOR``.
-* ``VG_FEATURE_FONT``: configure this define to specify the Font Engine and the Font Engine's backend. Two options are currently available: the FreeType engine with a vectorial backend and the FreeType engine with a bitmap backend. The respective options are ``VG_FEATURE_FONT_FREETYPE_VECTOR`` and ``VG_FEATURE_FONT_FREETYPE_BITMAP``.
-* ``VG_FEATURE_FREETYPE_TTF``: set this define to enable the support of TTF font files in FreeType.
-* ``VG_FEATURE_FREETYPE_OTF``: set this define to enable the support of OTF font files in FreeType.
-* ``VG_FEATURE_FREETYPE_COLORED_EMOJI``: set this define to enable the support of colored emoji in FreeType.
-* ``VG_FEATURE_FONT_COMPLEX_LAYOUT``:  set this define to enable the support of :ref:`complex layout<section_vg_font_complex>`. This option is managed by the C module ``Harfbuzz`` (see upper).
-* ``VG_FEATURE_FONT_EXTERNAL``: set this define to allow loading of external font files (outside the application classpath). See :ref:`vectorfont_external`.
-* ``VG_FEATURE_FREETYPE_HEAP_SIZE``: specify the FreeType engine's heap size.
-* ``VG_FEATURE_FONT_COMPLEX_LAYOUT_HEAP_SIZE``: specify the Harfbuzz engine's heap size.
-
-.. note:: This options list is not exhaustive. Please consult the C module's readme file for more information.
+1. This C module transitively fetches the :ref:`C Module for MicroUI<section_ui_cco>`, follow its implementation rules.
+2. Add all C files in the BSP project.
+3. Configure the option in the header file ``microvg_configuration.h``.
 
 .. _section_vg_c_module_freetype:
 
@@ -180,6 +168,9 @@ FreeType and Harfbuzz libraries are not sharing the same heap, but this could ea
 C Module: MicroVG Over VGLite
 =============================
 
+Overview
+--------
+
 This C module is a specific implementation of the VG Pack drawings over the official Vivante VGLite library (that targets some GPU with vector graphics acceleration):
 
 * It implements the MicroVG API ``vg_drawing.h`` in ``vg_drawing_vglite.c`` and ``LLVG_PAINTER_FONT_freetype_vglite.c``.
@@ -195,6 +186,12 @@ The implementation requires:
 * the Vivante VGLite library.
 
 This C module is available on the :ref:`developer_repository`: `com.microej.clibrary.llimpl#microvg-vglite`_.
+
+Usage
+-----
+
+1. This C module transitively fetches the :ref:`C Module for MicroUI for VGLite<section_ui_cco>`, follow its implementation rules.
+2. Add all C files in the BSP project.
 
 .. _com.microej.clibrary.llimpl#microvg-vglite: https://forge.microej.com/artifactory/microej-developer-repository-release/com/microej/clibrary/llimpl/microvg-vglite/
 

@@ -160,6 +160,8 @@ BSP with DMA2D
 	* Comment the line ``#error [...]"``.
 	* According to the display :ref:`section_brs`, unlock the MicroUI Graphics Engine in the LCD interrupt or in the DMA2D memcpy callback (see :ref:`section_ui_c_module_microui_dma2d`).
 
+.. _section_ui_migrationguide_14.0_vglite:
+
 BSP with VGLite
 """"""""""""""""
 

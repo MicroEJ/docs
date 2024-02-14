@@ -1,7 +1,7 @@
 
 .. |UIPACKVERSION| replace:: 14.0.0
    
-.. |VGPACKVERSION| replace:: 1.4.2
+.. |VGPACKVERSION| replace:: 1.5.0
 
 .. XXX_TODO wrong link
 
