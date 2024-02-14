@@ -4,6 +4,32 @@
 Changelog
 =========
 
+[1.5.0] - 2024-02-16
+====================
+
+UI Pack
+"""""""
+
+**Changed**
+
+* Compatible with UI Pack 14.0.0 (Major version).
+
+MicroVG Implementation
+""""""""""""""""""""""
+
+**Fixed**
+
+* Fix comment in header file ``LLVG_BVI_impl.h``.
+* Fix the exception when loading a font or an image with an empty path.
+* Fix the release of the BVI resources.
+
+Front Panel
+"""""""""""
+
+**Fixed**
+
+* Fix the memory leak on images (ResourceVectorImage and BufferedVectorImage).
+
 [1.4.2] - 2023-11-13
 ====================
 
@@ -61,7 +87,12 @@ MicroVG Implementation
 [1.3.0] - 2023-05-10
 ====================
 
-* Compatible with UI Pack 13.5.0 or higher.
+UI Pack
+"""""""
+
+**Changed**
+
+* Compatible with UI Pack 13.5.0 (``BufferedImage`` with custom format).
 
 MicroVG Implementation
 """"""""""""""""""""""
@@ -92,8 +123,6 @@ Front Panel
 [1.2.0] - 2022-12-30
 ====================
 
-* Compatible with UI Pack 13.3.0 or higher.
-
 MicroVG Implementation
 """"""""""""""""""""""
 
@@ -121,7 +150,12 @@ Vector Image Converter
 [1.1.1] - 2022-09-05
 ====================
 
-* Compatible with UI Pack 13.3.0 or higher.
+UI Pack
+"""""""
+
+**Changed**
+
+* Compatible with UI Pack 13.3.0 (Internal feature).
 
 MicroVG Implementation
 """"""""""""""""""""""
@@ -152,8 +186,6 @@ LLAPIs
 
 [1.0.1] - 2022-05-16
 ====================
-
-* Compatible with UI Pack 13.2.0 or higher.
 
 MicroVG Implementation
 """"""""""""""""""""""
