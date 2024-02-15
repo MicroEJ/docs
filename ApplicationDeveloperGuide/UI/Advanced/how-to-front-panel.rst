@@ -215,7 +215,8 @@ To keep the front panel visible while developing the application, use multiple d
 Front Panel Options
 -------------------
 
-JRE tab / options
+The following options are available in the Front Panel.
+Please refer to the dedicated sections (:ref:`SDK 6<sdk_6_define_option>` or :ref:`SDK 5<define_option>`) to know how to define options.
 
 .. list-table:: Front Panel Options
    :widths: 20 20 60
@@ -226,19 +227,19 @@ JRE tab / options
      - Aim
    * - ``ej.fp.project``
      - :ref:`fp_installation`
-     - XXX_TODO  
+     - Specify a local Front Panel project to avoid rebuilding VEE Port.
    * - ``ej.fp.hil``
      - :ref:`fp_ui_classpath`
-     - XXX_TODO 
+     - Run the Front Panel in the same VM as the standard mocks. 
    * - ``ej.fp.display.flushVisualizer``
-     - XXX_TODO
-     - XXX_TODO 
+     - :ref:`microuiflushvisualizer`
+     - Export all the frames drawn on the display and list the drawings done for each frame.
    * - ``ej.fp.brs.drawnColor``
-     - XXX_TODO
-     - XXX_TODO 
+     - N/A
+     - Identify the drawn regions for each frame.
    * - ``ej.fp.brs.restoredColor``
-     - XXX_TODO
-     - XXX_TODO 
+     - N/A
+     - Identify the restored regions for each frame.
    * - ``ej.fp.brs.dirtyColor``
-     - XXX_TODO
-     - XXX_TODO 
+     - N/A
+     - Identify the regions not fully filled by the drawings.
