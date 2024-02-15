@@ -39,7 +39,7 @@ Functional Description
 6. Previews the Front Panel to check the layout of controls and the
    events they create, etc.
 
-7. Exports the Front Panel project into a MicroEJ Platform project.
+7. Exports the Front Panel project into a MicroEJ VEE Port project.
 
 
 The Front Panel Project
@@ -154,7 +154,7 @@ may be other attributes depending on the type of the widget.
 The file and tags specifications are available in chapter
 :ref:`front_panel_file`.
 
-.. note:: The ``.fp`` file grammar has changed since the UI Pack version ``12.0.0`` (Front Panel core has been moved to MicroEJ Architecture starting from version ``7.11.0``). A quick migration guide is available: open Platform configuration file ``.Platform``, go to ``Content`` tab, click on module ``Front Panel``. The migration guide is available in ``Details`` box.
+.. note:: The ``.fp`` file grammar has changed since the UI Pack version ``12.0.0`` (Front Panel core has been moved to MicroEJ Architecture starting from version ``7.11.0``). A quick migration guide is available: open VEE Port configuration file ``.Platform``, go to ``Content`` tab, click on module ``Front Panel``. The migration guide is available in ``Details`` box.
 
 
 Editing Front Panel Files
@@ -376,16 +376,16 @@ active area.
 Installation
 ============
 
-In the :ref:`platform configuration <platform_module_configuration>` file, check :guilabel:`Front Panel` to
+In the :ref:`VEE Port configuration <platform_module_configuration>` file, check :guilabel:`Front Panel` to
 install the Front Panel module. When checked, the properties file
-``frontpanel/frontpanel.properties`` is required during platform creation to
+``frontpanel/frontpanel.properties`` is required during VEE Port creation to
 configure the module. This configuration step is used to identify and
 configure the Front Panel.
 
 The properties file must / can contain the following properties:
 
 -  ``project.name`` [mandatory]: Defines the name of the Front Panel
-   project (same workspace as the platform configuration project). If
+   project (same workspace as the VEE Port configuration project). If
    the project name does not exist, a new project will be created.
 
 -  ``fpFile.name`` [optional, default value is "" (*empty*)]: Defines
@@ -407,15 +407,15 @@ Advanced: Test the Front Panel Project
    - go to the ``Classpath`` tab.
    - check the ``Resolve dependencies in workspace`` option.
 
-To quickly test a Front Panel project without rebuilding the Platform or manually exporting the project, add the :ref:`Application Option <application_options>` ``ej.fp.project`` to the absolute path of a Front Panel project (e.g. ``c:\mycompany\myfrontpanel-fp``). 
-The Simulator will use the Front Panel project specified instead of the one included in the Platform. 
+To quickly test a Front Panel project without rebuilding the VEE Port or manually exporting the project, add the :ref:`Application Option <application_options>` ``ej.fp.project`` to the absolute path of a Front Panel project (e.g. ``c:\mycompany\myfrontpanel-fp``). 
+The Simulator will use the Front Panel project specified instead of the one included in the VEE Port. 
 This feature is useful for locally testing some changes in the Front Panel project. 
 
 .. code-block:: console
 
    -Dej.fp.project=${project_loc:myfrontpanel-fp}
 
-.. warning:: This feature only works if the Platform has been built with the Front Panel module enabled and the Platform does not contain the changes until a new Platform is built.
+.. warning:: This feature only works if the VEE Port has been built with the Front Panel module enabled and the VEE Port does not contain the changes until a new VEE Port is built.
 
 Use
 ===

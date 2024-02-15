@@ -66,17 +66,9 @@ Confirm it by measuring the time spent drawing vs. the time spent elsewhere betw
 Installation
 ------------
 
-1. Open the Front Panel file ``.fp``.
+Set the property ``ej.fp.display.flushVisualizer`` to ``true`` to enable the flush vizualizer.
 
-2. Replace the ``ej.fp.widget.Display`` widget by ``ej.fp.widget.FlushVisualizerDisplay``. XXX_TODO
-
-For example:
-
-.. code-block:: xml
-
-   <ej.fp.widget.FlushVisualizerDisplay x="10" y="10" width="200" height="200" filter="f.png" />
-
-The ``FlushVisualizerDisplay`` widget is available in the `frontpanel widget module <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/tool/frontpanel/widget/>`__ version 2.2.+ for UI Pack 13.4.0 or later and version 3.+ for UI Pack 13.5.1 or later.
+This option is available in the for the ``Display`` widget in `frontpanel widget module <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/tool/frontpanel/widget/>`__ version 4.+ for UI Pack 14.0.0 or later.
 
 Usage
 -----
@@ -91,7 +83,7 @@ Usage
 Limitations
 -----------
 
-Please refer to the javadoc of the ``FlushVisualizerDisplay`` widget.
+Please refer to the javadoc of the ``FlushVisualizer`` class alongside the ``Display`` widget.
 
 
 ..

@@ -19,19 +19,14 @@ Front Panel
      <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
 
 * Re-organize imports of all Java classes (classes ``MicroUIImageFormat``, ``MicroUIImage`` and ``MicroUIGraphicsContext`` have been extracted from ``LLUIPainter``).
-* (optional) Simulate the board's buffer policy by adding the attribute ``bufferPolicyClass`` in the ``Display`` widget (see :ref:`Buffer Refresh Strategy on the Simulator<section_brs_sim>`):
+* The ``doubleBufferFeature`` attribute has been removed from the ``Display`` widget.
+  It is replaced by the ``bufferPolicyClass`` (see :ref:`Buffer Refresh Strategy on the Simulator<section_brs_sim>`).
 
   .. code-block:: xml
   
      <ej.fp.widget.Display x="0" y="0" width="480" height="272" bufferPolicyClass="ej.fp.widget.display.buffer.SwapDoubleBufferPolicy"/>
 
-* (optional) Simulate the board's buffer refresh strategy (BRS) by adding the attribute ``refreshStrategyClass`` in the ``Display`` widget  (see :ref:`Buffer Refresh Strategy on the Simulator<section_brs_sim>`):
-
-  .. code-block:: xml
-  
-     <ej.fp.widget.Display x="0" y="0" width="480" height="272" refreshStrategyClass="ej.fp.widget.display.brs.PredrawRefreshStrategy"/>
-
-* (optional) The ``FlushVisualizerDisplay`` widget has been merged with the ``Display`` widget.
+* The ``FlushVisualizerDisplay`` widget has been merged with the ``Display`` widget.
   To use this functionality, use the ``Display`` widget instead of the ``FlushVisualizerDisplay`` widget in the Front Panel ``.fp`` file and set the option ``ej.fp.display.flushVisualizer=true`` in the options of the application launcher.
 
 .. _Front Panel Widgets 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/3.0.0/

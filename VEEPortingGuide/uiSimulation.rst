@@ -106,19 +106,17 @@ It offers the same capacity to override some built-in drawing algorithms (intern
 
 .. _section_ui_simulation_display:
 
-Widget Display
+Display Widget
 ==============
 
-XXX_TODO review the behavior and options
-
-The widget Display implements the interface ``ej.microui.display.LLUIDisplayImpl`` to be compatible with the implementation of the MicroUI class `Display`_.
+The ``Display`` widget implements the interface ``ej.microui.display.LLUIDisplayImpl`` to be compatible with the implementation of the MicroUI class `Display`_.
 
 .. _Display: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html
 
 Features
 --------
 
-* Simple or double buffering (default value): ``doubleBufferFeature=true|false``.
+* :ref:`Display buffer policy and buffer refresh strategy<section_brs_sim>`: simulates the display buffer policy and the buffer refresh strategy.
 * :ref:`LCD refresh rate<section_ui_simulation_refreshrate>`: simulates the time between two visible frames on the hardware device.
 * :ref:`LCD flush time<section_ui_simulation_flushtime>`: simulates the time to send the frame content to the hardware device.
 * Backlight (enabled by default): ``backlightFeature=true|false``.
@@ -138,8 +136,6 @@ It can be configured to reduce this time to simulate the hardware device.
 
 In the widget declaration, set the attribute ``refreshRate="xxx"`` with a value in Hertz.
 A zero or negative value disables the feature.
-
-.. note:: This feature is only available when double buffering mode is enabled.
    
 The application can substitute the VEE Port's value by setting the property ``-Dej.fp.widget.display.refreshRate=xxx`` in the application launcher.
 
@@ -156,8 +152,6 @@ It can be configured to reduce this time to simulate the hardware device.
 
 In the widget declaration, set the attribute ``flushTime="xxx"`` with a value in milliseconds.
 A zero or negative value disables the feature.
-
-.. note:: This feature is only available when double buffering mode is enabled.
    
 The application can substitute the VEE Port's value by setting the property ``-Dej.fp.widget.display.flushTime=xxx`` in the application launcher.
 
