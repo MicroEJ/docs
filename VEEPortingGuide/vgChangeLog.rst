@@ -14,12 +14,11 @@ UI Pack
 
 * Compatible with UI Pack 14.0.0 (Major version).
 
-MicroVG Implementation
-""""""""""""""""""""""
+MicroVG
+"""""""
 
 **Fixed**
 
-* Fix comment in header file ``LLVG_BVI_impl.h``.
 * Fix the exception when loading a font or an image with an empty path.
 * Fix the release of the BVI resources.
 
@@ -30,11 +29,18 @@ Front Panel
 
 * Fix the memory leak on images (ResourceVectorImage and BufferedVectorImage).
 
+LLAPIs
+""""""
+
+**Fixed**
+
+* Fix comment in header file ``LLVG_BVI_impl.h``.
+
 [1.4.2] - 2023-11-13
 ====================
 
-MicroVG Implementation
-""""""""""""""""""""""
+MicroVG
+"""""""
 
 **Added**
 
@@ -65,8 +71,8 @@ Front Panel
 
 * Fix the UI Pack minimal compatible version (13.5.0).
 
-MicroVG Implementation
-""""""""""""""""""""""
+MicroVG
+"""""""
 
 **Added**
 
@@ -94,8 +100,8 @@ UI Pack
 
 * Compatible with UI Pack 13.5.0 (``BufferedImage`` with custom format).
 
-MicroVG Implementation
-""""""""""""""""""""""
+MicroVG
+"""""""
 
 **Changed**
 
@@ -123,8 +129,8 @@ Front Panel
 [1.2.0] - 2022-12-30
 ====================
 
-MicroVG Implementation
-""""""""""""""""""""""
+MicroVG
+"""""""
 
 **Changed**
 
@@ -157,8 +163,8 @@ UI Pack
 
 * Compatible with UI Pack 13.3.0 (Internal feature).
 
-MicroVG Implementation
-""""""""""""""""""""""
+MicroVG
+"""""""
 
 **Changed**
 
@@ -187,8 +193,8 @@ LLAPIs
 [1.0.1] - 2022-05-16
 ====================
 
-MicroVG Implementation
-""""""""""""""""""""""
+MicroVG
+"""""""
 
 **Fixed**
 
@@ -198,7 +204,15 @@ MicroVG Implementation
 ====================
 
 * Initial release.
+
+UI Pack
+"""""""
+
 * Compatible with UI Pack 13.2.0 or higher.
+
+MicroVG
+"""""""
+
 * Compatible with MicroVG API 1.0.0.
 
 ..
