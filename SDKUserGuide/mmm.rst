@@ -494,7 +494,7 @@ In order to use the MMM CLI for your project:
 
   .. code-block:: console
 
-     mmm [OPTION]... [COMMAND]
+     mmm [COMMAND] [OPTION]...
 
 where ``COMMAND`` is the command to execute (for example ``mmm build``).
 The available commands are:
