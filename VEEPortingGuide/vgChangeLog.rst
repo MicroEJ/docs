@@ -4,7 +4,7 @@
 Changelog
 =========
 
-[1.5.0] - 2024-02-16
+[1.5.0] - 2024-02-15
 ====================
 
 UI Pack
@@ -36,6 +36,20 @@ LLAPIs
 
 * Fix comment in header file ``LLVG_BVI_impl.h``.
 
+C Module MicroVG
+""""""""""""""""
+
+**Added**
+
+* Add the API ``freeImageResources`` that allows to fix the release of the BVI resources.
+
+**Fixed**
+
+* Fix traces when debugging the SNI resources with external resource support.
+* Remove an unused include.
+* Do not define Freetype variables if ``VG_FEATURE_FONT`` is not defined.
+* Do not call ``MICROVG_PATH_initialize()`` if ``VG_FEATURE_PATH`` is not defined.
+
 [1.4.2] - 2023-11-13
 ====================
 
@@ -56,6 +70,18 @@ Front Panel
 **Fixed**
 
 * Fix dynamic paths larger than 64 KB.
+
+C Module MicroVG
+""""""""""""""""
+
+**Added**
+
+* Add some traces when debugging the SNI resources (external VectorFont).
+
+**Fixed**
+
+* Fix dynamic paths larger than 64 KB.
+* Fix some comments.
 
 [1.4.1] - 2023-09-21
 ====================
@@ -90,6 +116,15 @@ MicroVG
 
 * Fix path bounds computation.
 
+C Module MicroVG
+""""""""""""""""
+
+**Fixed**
+
+* Fix the SystemView log identifiers.
+* Fix the documentation of ``MICROVG_HELPER_get_utf()``.
+* Fix FreeType fonts closing twice.
+
 [1.3.0] - 2023-05-10
 ====================
 
@@ -115,6 +150,30 @@ Front Panel
 **Fixed**
 
 * Simplify pixel data conversion after drawing.
+
+C Module MicroVG
+""""""""""""""""
+
+**Added**
+
+* Add the compatibility with multiple Graphics Context output formats (UI Pack 13.5.0).
+* Add stub implementations for all MicroVG library algorithms.
+* Add ``LLVG_PAINTER_impl.c`` to implement all MicroVG drawings and dispatch them to ``vg_drawing.h`` (like MicroUI and ``LLUI_PAINTER_impl.c`` / ``ui_drawing.h``).
+* Add the MicroVG BufferedVectorImage definition (the functions to implement to draw into it).
+
+**Changed**
+
+* C Module MicroVG now depends on C Module MicroUI (to manage the support of multiple Graphics Context output formats).
+
+**Fixed**
+
+* Remove an extraneous file.
+* Fix issue when measuring string width in complex layout mode.
+
+**Removed**
+
+* Remove the useless implementation of `LLVG_PATH_IMPL_mergePaths` (useless since VG Pack 1.2).
+* Remove partial Freetype implementation that manipulates the font's glyphs as bitmaps (not compatible anymore with VG pack 1.3.0).  
 
 [1.2.1] - 2023-02-06
 ====================
@@ -153,6 +212,22 @@ Vector Image Converter
 
 * Add "fill alpha" animations to gradient elements.
 
+C Module MicroVG
+""""""""""""""""
+
+**Added**
+
+* Add ``LLVG_MATRIX_IMPL_multiply(c,a,b)`` (C = AxB): faster than ``setConcat`` when destination and source target the same matrix.  
+* Add an entry point to initialize the path engine on startup.
+
+**Changed**
+
+* Prevent a copy in a temp matrix when calling ``postXXX`` functions. 
+
+**Fixed**
+
+* Fix ``A.setConcat(B,A)``.
+
 [1.1.1] - 2022-09-05
 ====================
 
@@ -169,7 +244,6 @@ MicroVG
 **Changed**
 
 * Compatible with `MicroVG API 1.1`_.
-* Allow loading a VectorFont from external resources. 
 * Change color animation interpolation (match Android formula).
    
 **Fixed**
@@ -190,6 +264,20 @@ LLAPIs
 * Manage the font :ref:`complex layout <section_vg_font_complex>`.
 * Returns an error code when drawing something.
 
+C Module MicroVG
+""""""""""""""""
+
+**Added**
+
+* Add ``microvg_configuration.h`` versionning.
+* Add an option to load a VectorFont from the external resources. 
+* Add an option to select the text layouter between FreeType and Harfbuzz.
+* Add a function to apply an opacity on a color.
+
+**Changed**
+
+* Configure FreeType from ``microvg_configuration.h`` header file.
+  
 [1.0.1] - 2022-05-16
 ====================
 
