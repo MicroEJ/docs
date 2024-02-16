@@ -564,6 +564,7 @@ Options
 This C module provides some drawing algorithms that are disabled by default.
 
 * The rendering time of a simple shape with the GPU (time in the NemaGFX library + GPU setup time + rendering time) is longer than with software rendering. To enable the hardware rendering for simple shapes, uncomment the definition of ``ENABLE_SIMPLE_LINES``  in ``ui_drawing_nema_configuration.h``.
+* The rendering of thick faded lines with the GPU is disabled by default: the quality of the rendering is too random. To enable it, uncomment the definition of ``ENABLE_FADED_LINES``  in ``ui_drawing_nema_configuration.h``.
 * To draw a shape, the GPU uses the commands list. For rectangular shapes (draw/fill rectangles and images), the maximum list size is fixed (around 300 bytes). For the other shapes (circle, etc.) the list increases according to the shape size (dynamic shape): several blocks of 1024 bytes and 40 bytes are allocated and never freed. By default, the dynamic shapes are disabled and the software algorithms are used instead. To enable the hardware rendering for dynamic shapes, uncomment the definition of ``ENABLE_DYNAMIC_SHAPES``  in ``ui_drawing_nema_configuration.h``.
 * Some GPU might not be able to render the images in specific memories. Comment the define ``ENABLE_IMAGE_ROTATION`` in ``ui_drawing_nema_configuration.h`` to not use the GPU to render the rotated images.
 
@@ -599,7 +600,7 @@ The following table describes the accelerated drawings:
 +-------------------------+-----------------------------------------------------------------------------+
 | Draw thick faded circle | Only with fade <= 1, disabled by default (see above: ENABLE_DYNAMIC_SHAPES) |
 +-------------------------+-----------------------------------------------------------------------------+
-| Draw thick line         |                                                                             |
+| Draw thick line         | Disabled by default (see above: ENABLE_FADED_LINES)                         |
 +-------------------------+-----------------------------------------------------------------------------+
 | Draw thick circle       | Disabled by default (see above: ENABLE_DYNAMIC_SHAPES)                      |
 +-------------------------+-----------------------------------------------------------------------------+
