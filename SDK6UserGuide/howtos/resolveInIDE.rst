@@ -64,11 +64,9 @@ For example, if you have a multi-project named ``myProject`` composed of two sub
    |   |- myApplication
    |   |   |- src
    |   |   |- build.gradle.kts
-   |   |   |- settings.gradle.kts
    |   |- myLibrary
    |   |   |- src
    |   |   |- build.gradle.kts
-   |   |   |- settings.gradle.kts
    |   |- settings.gradle.kts
 
 You can declare a Project dependency in the ``build.gradle.kts`` file of the ``myApplication`` subproject to 
