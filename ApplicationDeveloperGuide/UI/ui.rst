@@ -25,6 +25,7 @@ The following schema shows the overall architecture and modules:
    MicroVG/index
    MWT/index
    Widgets/index
+   Simulation/index
    Advanced/index
 
 ..

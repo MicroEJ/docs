@@ -106,7 +106,7 @@ A perfect application has 100% of its display area drawn. This is the total area
 
 The MicroUI Flush Visualizer tool can be used to investigate potential performance bottlenecks in UI applications running on the Simulator by showing the pixel surface drawn between two MicroUI frame buffer flushes.
 
-The documentation of MicroUI Flush Visualizer is available :ref:`here<microuiflushvisualizer>`.
+The documentation of MicroUI Flush Visualizer is available :ref:`here<flush_visualizer>`.
 
 
 Debugging GUIs

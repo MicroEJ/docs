@@ -81,6 +81,23 @@ Once the position and size of a widget is set, the widget is notified by a call 
 .. _Desktop.onShown(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#onShown--
 .. _onLaidOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onLaidOut--
 
+.. _rendering_pipeline:
+
+Rendering Pipeline
+------------------
+
+The Rendering Pipeline of an MWT application consists of three main phases: Layout, Render, and Flush.
+
+1. *Layout*: This phase determines which widgets should be displayed on the screen and the positions of the widgets.
+   It is typically triggered when widgets are added or removed from the widget hierarchy.
+   An application should only modify the widget hierarchy when necessary and avoid doing so during animation to ensure efficiency.
+
+2. *Render*: During this phase, each widget executes its rendering code to perform the necessary drawing operations.
+   The widgets must render only what is needed and minimize overlapping with other widgets to ensure optimal performance.
+
+3. *Flush*: This phase involves copying the UI working buffer to the screen buffer.
+   The VEE Port performs this operation, and it is the responsibility of the VEE Port developer to optimize this process, for example, by utilizing a GPU.
+
 Event Dispatch
 --------------
 
