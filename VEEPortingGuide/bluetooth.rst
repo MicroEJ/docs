@@ -31,7 +31,11 @@ The Bluetooth Foundation Library provides a way to manage and configure Bluetoot
 Dependencies
 ============
 
+.. _Espressif ESP32-S3 VEE Port: https://github.com/MicroEJ/VEEPort-Espressif-ESP32-S3-DevKitC-1/blob/master/ESP32-S3-DevKitC1-Xtensa-FreeRTOS-bsp/projects/microej/bluetooth/src/LLBLUETOOTH_impl.c
+
 - ``LLBLUETOOTH_impl.h`` implementation (see :ref:`LLBLUETOOTH-API-SECTION`).
+
+  - A sample implementation based on the Bluedroid stack can be found in the `Espressif ESP32-S3 VEE Port`_.
 
 Installation
 ============
