@@ -75,11 +75,11 @@ The Heap Analyzer is an Eclipse IDE plugin that adds three tools to the MicroEJ 
 Heap Dumper
 -----------
 
-When the Heap Dumper option is enabled, 
-the garbage collector process ends by performing a dump that represents a snapshot of the heap at this moment. 
-To generate such dump, you must explicitly call the ``System.gc()`` method in your code.
+The Heap Dumper generates heap files either :
+- directly from the Java heap on simulator 
+- from .hex files that must be manually retrieved on device.
 
-This tool can be used with the Simulator and with a device.
+The heap dump should be performed after a call to ``System.gc()`` to exclude discardable objects.
 
 Simulator
 ^^^^^^^^^
@@ -88,7 +88,7 @@ In order to generate a Heap dump of an Application running on the Simulator:
 
 - Set the ``s3.inspect.heap`` Application properties to ``true``.
 - Update your Application code to call the ``System.gc()`` method where you need a Heap dump.
-- run the Application on the Simulator. 
+- run the Application on the Simulator.
 
 When the ``System.gc()`` method is called, 
 a ``.heap`` file is generated in the ``build/output/application/heapDump/`` folder of the Application project.
@@ -101,8 +101,17 @@ In order to generate a Heap dump of an Application running on a device:
 - Update your Application code to call the ``System.gc()`` method where you need a Heap dump.
 - Build the Executable and deploy it on the device.
 
-When the Application is executed on the device and the ``System.gc()`` method is called, 
-a Heap dump is performed and stored in the device memory.
+When the Application is executed on the device, the method ``System.gc()`` ends by calling ``LLMJVM_on_Runtime_gc_done`` callback.
+This method isn't always implemented as it is mostly used to perform a heap dump right after the garbage collection.
+If the symbol isn't embedded, add the following lines in any source file (ex:main.c):
+
+.. code:: c
+
+   void LLMJVM_on_OutOfMemoryError_thrown(){
+      //No need to add code to the function
+   }
+
+
 You then have to:
 
 - :ref:`Retrieve the hex file from the device <sdk6_heapdumper_get_hex>`
