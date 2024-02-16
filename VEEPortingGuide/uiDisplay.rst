@@ -127,21 +127,28 @@ Decision Tree
 
 The following flow chart provides a handy guide to pick the buffer policy suited to the hardware configuration.
 
-XXX_TODO choose between both trees:
+Serial Connection
+"""""""""""""""""
 
-.. figure:: images/ui_display_tree_h.*
-   :alt: Buffer Policies
+.. figure:: images/ui_display_tree_serial.*
+   :alt: Buffer Policies for Serial Connection
    :scale: 50%
    :align: center
 
-   Buffer Policies
+   Buffer Policies for Serial Connection
 
-.. figure:: images/ui_display_tree_v.*
-   :alt: Buffer Policies
+Parallel Connection
+"""""""""""""""""""
+
+.. figure:: images/ui_display_tree_parallel.*
+   :alt: Buffer Policies for Parallel Connection
    :scale: 50%
    :align: center
 
-   Buffer Policies
+   Buffer Policies for Parallel Connection
+
+Chapter Sum-up
+""""""""""""""
 
 The following table redirects to the right chapter according to the display buffer policy:
 
