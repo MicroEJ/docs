@@ -40,8 +40,8 @@ IoT Libraries
       -  `micropaho <https://repository.microej.com/modules/ej/library/iot/micropaho/1.0.0/>`_
       -  `MqttClient class <https://repository.microej.com/javadoc/microej_5.x/apis/org/eclipse/paho/client/mqttv3/MqttClient.html>`_
       -  - `MicroPaho README <https://repository.microej.com/modules/ej/library/iot/micropaho/1.0.0/README-1.0.0.md>`_
-         - `MQTT publish Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/mqtt.publisher>`_  
-         - `MQTT subscribe Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/ssl.mqtt.subscriber>`_
+         - `MQTT publish Example <https://github.com/MicroEJ/Example-IOT/tree/master/mqtt-publisher>`_  
+         - `MQTT subscribe Example <https://github.com/MicroEJ/Example-IOT/tree/master/ssl-mqtt-subscriber>`_
 
    *  -  ``REST Client``
       -  REpresentational State Tranfer (REST) client.
@@ -60,7 +60,7 @@ IoT Libraries
       -  `websocket <https://repository.microej.com/modules/ej/library/iot/websocket/>`_, `websocket-secure <https://repository.microej.com/modules/ej/library/iot/websocket-secure/>`_
       -  `WebSocket class <https://repository.microej.com/javadoc/microej_5.x/apis/index.html?ej/websocket/WebSocket.html>`_
       -  - `WebSocket client README <https://repository.microej.com/modules/ej/library/iot/websocket/2.0.0/README-2.0.0.md>`_
-         - `WebSocket client Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/ssl.websocket>`_  
+         - `WebSocket client Example <https://github.com/MicroEJ/Example-IOT/tree/master/ssl-websocket>`_  
 
 
 Data Serialization Libraries
