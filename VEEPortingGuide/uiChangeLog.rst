@@ -12,7 +12,7 @@ Changelog
 MicroUI
 """""""
 
-* Implement `MicroUI API 3.5.0`_ (XXX_TODO wrong link).
+* Implement `MicroUI API 3.5.0`_.
 
 **Added**
 
@@ -34,7 +34,7 @@ MicroUI
   * Remove some absolute symbols.
   * Replace sections ``.text`` by ``.rodata``.
 
-.. _MicroUI API 3.5.0: https://repository.microej.com/modules/ej/api/microui/3.4.0/
+.. _MicroUI API 3.5.0: https://repository.microej.com/modules/ej/api/microui/3.5.0/
 
 Front Panel
 """""""""""
@@ -136,8 +136,6 @@ C Module NemaGFX
 **Fixed**
 
 * Fix ``nema_draw_line()`` ``y1`` argument.
-
-XXX_TODO wrong links
 
 13.7.2 (2023-12-21)
 ===================

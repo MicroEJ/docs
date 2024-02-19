@@ -61,7 +61,7 @@ The following table describes Foundation Libraries API versions implemented in M
      - MicroUI
      - Drawing
    * - 14.0.0
-     - `3.5.0 <https://repository.microej.com/modules/ej/api/microui/3.4.0/>`_ XXX_TODO wrong link
+     - `3.5.0 <https://repository.microej.com/modules/ej/api/microui/3.5.0/>`_
      - `1.0.4 <https://repository.microej.com/modules/ej/api/drawing/1.0.4/>`_
    * - [13.7.0-13.7.2]
      - `3.4.0 <https://repository.microej.com/modules/ej/api/microui/3.4.0/>`_

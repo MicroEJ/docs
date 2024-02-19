@@ -12,7 +12,7 @@ From 13.7.x to 14.0.0
 Front Panel
 """""""""""
 
-* Fetch `Front Panel Widgets 4.0.0`_  XXX_TODO wrong link (it fetches by transitivity the `UI Pack 14.0.0`_ XXX_TODO wrong link):
+* Fetch `Front Panel Widgets 4.0.0`_ (it fetches by transitivity the `UI Pack 14.0.0`_):
 
   .. code-block:: xml
   
@@ -29,8 +29,8 @@ Front Panel
 * The ``FlushVisualizerDisplay`` widget has been merged with the ``Display`` widget.
   To use this functionality, use the ``Display`` widget instead of the ``FlushVisualizerDisplay`` widget in the Front Panel ``.fp`` file and set the option ``ej.fp.display.flushVisualizer=true`` in the options of the application launcher.
 
-.. _Front Panel Widgets 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/3.0.0/
-.. _UI Pack 14.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.7.2/
+.. _Front Panel Widgets 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/4.0.0/
+.. _UI Pack 14.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.0.0/
 
 
 BSP Without GPU
