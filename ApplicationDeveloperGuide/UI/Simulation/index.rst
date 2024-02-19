@@ -1,4 +1,4 @@
-.. _section_ui_simulation:
+.. _ui_simulation:
 
 Simulation
 ==========
