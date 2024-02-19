@@ -343,6 +343,22 @@ The goal is to be able to migrate the application on the target device without m
 
 |endTable|
 
+.. |startTable| raw:: html
+
+   <table width="100%" style="table-layout:fixed"><td style="vertical-align:top" width="100%">
+
+.. |midTable| raw:: html
+
+   </td><td width="15px"></td><td style="vertical-align:top" width="100%">
+
+.. |midTable600| raw:: html
+
+   </td><td style="vertical-align:top" width="600px">
+
+.. |endTable| raw:: html
+
+   </td></table>
+
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

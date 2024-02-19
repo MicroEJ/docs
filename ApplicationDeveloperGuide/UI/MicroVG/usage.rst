@@ -1,9 +1,7 @@
 .. include:: aliases.rst
 
-Introduction
-============
-
-MicroVG Foundation Library provides vector drawing capabilities.
+Usage
+=====
 
 To use the MicroVG Foundation Library, add `MicroVG API module`_ to the project build file:
 
