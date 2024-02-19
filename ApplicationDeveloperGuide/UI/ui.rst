@@ -26,7 +26,6 @@ The following schema shows the overall architecture and modules:
    MWT/index
    Widgets/index
    Simulation/index
-   Advanced/index
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

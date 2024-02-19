@@ -2,7 +2,10 @@ How to Detect Text Overflow
 ===========================
 
 
-Widgets that display a text may experience text overflow when the strings are too long to fit into the available area. It can be the case, for example, in applications that support multiple languages because widgets have to deal with texts of different lengths.
+Widgets that display a text may experience text overflow when the strings are too long to fit into the available area.
+It can be the case, for example, in applications that support multiple languages because widgets have to deal with texts of different lengths.
+
+This document presents a solution to detect such text overflows.
 
 
 Instrumenting the Widget
