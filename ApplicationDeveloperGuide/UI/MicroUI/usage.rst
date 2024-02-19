@@ -1,9 +1,5 @@
-Introduction
-============
-
-MicroUI Foundation Library provides access to a pixel-based display and inputs.
-
-The aim of this library is to enable the creation of user interface in Java by reifying hardware capabilities.
+Usage
+=====
 
 To use the MicroUI Foundation Library, add `MicroUI API module`_ to the project build file:
 

@@ -1,14 +1,20 @@
-.. _Widgets and Examples:
+.. _widget_library:
 
-Widgets and Examples
-====================
+Widgets
+=======
+
+The Widget library provides very common widgets with basic implementations.
+These simple widgets may not provide every desired feature, but they can easily be forked since their implementation is very simple.
+
 
 .. toctree::
    :maxdepth: 2
 
-   widget
+   usage
+   widgets-list
+   color-utilities
+   debug-utilities
    widget-demo
-   mwt-examples
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

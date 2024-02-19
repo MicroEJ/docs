@@ -3,10 +3,12 @@
 MicroVG
 =======
 
+MicroVG Foundation Library provides vector drawing capabilities.
+
 .. toctree::
    :maxdepth: 2
 
-   introduction
+   usage
    path
    matrix
    gradient

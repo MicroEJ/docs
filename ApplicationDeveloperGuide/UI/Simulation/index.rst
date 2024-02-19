@@ -1,5 +1,3 @@
-.. _ui_simulation:
-
 Simulation
 ==========
 
