@@ -90,7 +90,7 @@ The process of rendering a frame of the UI consists of several parts:
   - Drawing of the UI (MicroUI drawing method execution).
 
 - Display flush.
-- (depends on the UI port) Backbuffer copy, see :ref:`Display Buffer Modes<section_display_modes>`.
+- (depends on the UI port) Backbuffer copy, see :ref:`Display Buffer Modes<section_display_policies>`.
 
 Some tools are available to identify which part of this process affect the most the GUI performance.
 
@@ -106,7 +106,7 @@ A perfect application has 100% of its display area drawn. This is the total area
 
 The MicroUI Flush Visualizer tool can be used to investigate potential performance bottlenecks in UI applications running on the Simulator by showing the pixel surface drawn between two MicroUI frame buffer flushes.
 
-The documentation of MicroUI Flush Visualizer is available :ref:`here<microuiflushvisualizer>`.
+The documentation of MicroUI Flush Visualizer is available :ref:`here<flush_visualizer>`.
 
 
 Debugging GUIs

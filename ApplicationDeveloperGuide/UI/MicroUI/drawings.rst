@@ -99,6 +99,8 @@ It will also not clear the drawing log flags when the display is flushed.
 Disabling this check can be done by setting the :ref:`constant <section.classpath.elements.constants>` ``com.microej.library.microui.impl.check-drawing-errors-on-flush`` to ``false`` when building the application.
 If it is not set, it defaults to ``true``.
 
+.. _section.ui.drawing_logs_constants:
+
 Available Constants
 -------------------
 
@@ -123,6 +125,9 @@ They are defined and documented in the class ``GraphicsContext``.
      - The system ran out of memory.
    * - ``DRAWING_LOG_CLIP_MODIFIED``
      - ``1 << 3``
+     - An undefined character was drawn.
+   * - ``DRAWING_LOG_MISSING_CHARACTER``
+     - ``1 << 4``
      - The VEE port modified clip values in the graphics context.
    * - ``DRAWING_LOG_LIBRARY_INCIDENT``
      - ``1 << 29``

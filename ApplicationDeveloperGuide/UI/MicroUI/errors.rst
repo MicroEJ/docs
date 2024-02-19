@@ -1,3 +1,5 @@
+.. _section_app_microui_errors:
+
 Error Messages
 ==============
 
@@ -13,11 +15,11 @@ When an exception is thrown by the implementation of the MicroUI API, the except
    * - 1
      - Another `EventGenerator`_ cannot be added into the system pool (max 254).
    * - 0
-     - [platform issue] Result of MicroUI static initialization step seems invalid. MicroUI cannot start. Please fix MicroUI static initialization step (see :ref:`section_static_init`)  and rebuild the platform.
+     - [VEE Port issue] Result of :ref:`MicroUI static initialization step<section_static_init>` seems invalid: MicroUI cannot start. Fix MicroUI static initialization step and rebuild the VEE Port.
    * - -1
      - MicroUI is not started; call MicroUI.start() before using a MicroUI API.
    * - -2
-     - Unknown event generator class name.
+     - [Warning] Event generator specified during :ref:`MicroUI static initialization step<section_static_init>` is not available in the application classpath.
    * - -3
      - Deadlock. Cannot wait for an event in the same thread that runs events. `Display.waitFlushCompleted()`_ must not be called in the MicroUI thread (for example in ``render`` method).
    * - -4
@@ -29,16 +31,16 @@ When an exception is thrown by the implementation of the MicroUI API, the except
    * - -7
      - Out of memory. Not enough memory to allocate the `Image`_'s buffer. Try to close some useless images and retry opening the new image, or increase the size of the :ref:`MicroUI images heap<images_heap>`.
    * - -8
-     - The platform cannot decode this kind of image, because the required runtime image decoder is not available in the platform.
+     - The VEE Port cannot decode this kind of image (the required runtime image decoder is not available in the VEE Port).
    * - -9
      - | This exception is thrown when the FIFO of the internal MicroUI thread is full. In this case, no more event (such as ``requestRender``, input events, etc.) can be added into it.
        | Most of time this error occurs when:
        | -  There is a user thread which performs too many calls to the method ``requestRender`` without waiting for the end of the previous drawing.
        | -  Too many input events are pushed from an input driver to the MicroUI thread (for example some touch events).
    * - -10
-     - There is no display on the platform.
+     - There is no display on the VEE Port.
    * - -11
-     - There is no font (platform and application).
+     - There is no font (VEE Port and application).
    * - -12
      - The maximum number of event generators in the pool (254) has been reached.
 

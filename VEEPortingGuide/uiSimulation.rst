@@ -36,7 +36,7 @@ The Front Panel project is a regular MicroEJ Module project. Its module.ivy file
       
       <dependencies>
          <dependency org="ej.tool.frontpanel" name="framework" rev="1.1.1"/>
-         <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
+         <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
       </dependencies>
    </ivy-module>
 
@@ -46,7 +46,7 @@ To add interactive Front Panel Widgets (typically a simulated display and input 
 
 .. code-block:: xml
 
-   <dependency org="ej.tool.frontpanel" name="widget" rev="3.0.0"/>
+   <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
 
 .. note:: The life cycle of this library is different than the UI pack's one, see :ref:`section_ui_releasenotes_frontpanel`. 
 
@@ -106,17 +106,17 @@ It offers the same capacity to override some built-in drawing algorithms (intern
 
 .. _section_ui_simulation_display:
 
-Widget Display
+Display Widget
 ==============
 
-The widget Display implements the interface ``ej.microui.display.LLUIDisplayImpl`` to be compatible with the implementation of the MicroUI class `Display`_.
+The ``Display`` widget implements the interface ``ej.microui.display.LLUIDisplayImpl`` to be compatible with the implementation of the MicroUI class `Display`_.
 
 .. _Display: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html
 
 Features
 --------
 
-* Simple or double buffering (default value): ``doubleBufferFeature=true|false``.
+* :ref:`Display buffer policy and buffer refresh strategy<section_brs_sim>`: simulates the display buffer policy and the buffer refresh strategy.
 * :ref:`LCD refresh rate<section_ui_simulation_refreshrate>`: simulates the time between two visible frames on the hardware device.
 * :ref:`LCD flush time<section_ui_simulation_flushtime>`: simulates the time to send the frame content to the hardware device.
 * Backlight (enabled by default): ``backlightFeature=true|false``.
@@ -136,8 +136,6 @@ It can be configured to reduce this time to simulate the hardware device.
 
 In the widget declaration, set the attribute ``refreshRate="xxx"`` with a value in Hertz.
 A zero or negative value disables the feature.
-
-.. note:: This feature is only available when double buffering mode is enabled.
    
 The application can substitute the VEE Port's value by setting the property ``-Dej.fp.widget.display.refreshRate=xxx`` in the application launcher.
 
@@ -154,8 +152,6 @@ It can be configured to reduce this time to simulate the hardware device.
 
 In the widget declaration, set the attribute ``flushTime="xxx"`` with a value in milliseconds.
 A zero or negative value disables the feature.
-
-.. note:: This feature is only available when double buffering mode is enabled.
    
 The application can substitute the VEE Port's value by setting the property ``-Dej.fp.widget.display.flushTime=xxx`` in the application launcher.
 
@@ -273,6 +269,8 @@ Buffered Image
 ==============
 
 Front Panel is designed to add the support of :ref:`MicroUI BufferedImage <section_bufferedimage_sim>` with a format different from the display format.
+
+.. _fp_ui_classpath:
 
 Classpath
 =========

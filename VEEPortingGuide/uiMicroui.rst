@@ -52,6 +52,14 @@ Refer to the chapter :ref:`section_ui_simulation`.
 .. _Display.getDisplay(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#getDisplay--
 .. _Leds.getNumberOfLeds(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/led/Leds.html#getNumberOfLeds--
 
+Library ej.api.Drawing
+======================
+
+This Foundation Library provides additional drawing APIs. 
+This library is fully integrated in :ref:`section_display` module. 
+
+.. It requires an implementation of its Abstraction Layer API: ``LLDW_PAINTER_impl.h``. These functions are implemented in the Abstraction Layer implementation module `com.microej.clibrary.llimpl#microui <https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui>`_. Like MicroUI painter's natives, the functions are redirected to ``dw_drawing.h``. A default implementation of these functions is available in Software Algorithms module (in weak). This allows the BSP to override one or several APIs.
+
 Thread
 =======
 
@@ -100,10 +108,18 @@ The specification of the native methods is to perform the action as fast as poss
 
 However some actions have to wait the end of a previous parallel action. By consequence the caller thread is blocked until the previous action is done; in other words, until the previous parallel action has called its callback. In this case, only the current Java thread is locked (because it cannot continue its execution until both actions are performed). All other Java threads can run, even a thread with a lower priority than current thread. If no thread has to be run, MicroEJ Core Engine goes in sleep mode until the native callback is called.
 
-Transparency
+Antialiasing
 ============
 
-MicroUI provides several policies to use the transparency. These policies depend on several factors, including the kind of drawing and the display pixel rendering format. The main concept is that MicroUI does not allow you to draw something with a transparency level different from 255 (fully opaque). There are two exceptions: the images and the fonts.
+MicroUI provides several policies to use the antialiasing. These policies depend on several factors, including the kind of drawing and the display pixel rendering format. The main concept is that MicroUI does not allow you to draw something with a transparency level different from 255 (fully opaque). There are two exceptions: the images and the fonts.
+
+For each pixel to draw, the antialiasing process blends the foreground color with a background color. 
+This background color can be specified or not by the application:
+
+- *specified*: The background color is fixed by the application  (`GraphicsContext.setBackgroundColor()`_).
+- *not specified*: The background color is the original color of the destination pixel (a "read pixel" operation is performed for each pixel).
+
+.. _GraphicsContext.setBackgroundColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setBackgroundColor-int-
 
 Images
 ------
@@ -160,6 +176,8 @@ is defined during the pre-generation of a font (see
 
 -  ``8`` means 256 levels are managed: fully opaque, fully transparent
    and 254 intermediate levels.
+
+.. note:: The antialiasing mode for the fonts concerns only the fonts with more than 1 bit per pixel (see :ref:`section_fontgen`).
 
 .. _section_microui_installation:
 

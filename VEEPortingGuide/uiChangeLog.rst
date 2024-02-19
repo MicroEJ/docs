@@ -1,8 +1,141 @@
+.. include:: uiReplaces.rst
+
 .. _section_ui_changelog:
 
 =========
 Changelog
 =========
+
+14.0.0 (2024-02-14)
+===================
+
+MicroUI
+"""""""
+
+* Implement `MicroUI API 3.5.0`_.
+
+**Added**
+
+* Add ``GraphicsContext.notifyDrawingRegion()`` that allows the notification of a future altered region.
+* Add ``Format.getSNIContext()``  and ``OutputFormat.getSNIContext()`` to identify the format in the native world.
+
+**Changed**
+
+* Change the semantic of the content of the drawing buffer after a flush: the *past* is not systematically restored.
+* Clarify the message when a generic event generator specified in the VEE Port is not available in the application classpath.
+
+**Fixed**
+
+* Fix the drawing of thick faded circle arcs.
+* Fix some linker issues on some Architectures:
+
+  * Fix invalid linker issues (when MicroUI is not used or if another allocator is used).
+  * Fix custom LCD format on VEE Port with ASLR mode (example: X86 with -pie option).
+  * Remove some absolute symbols.
+  * Replace sections ``.text`` by ``.rodata``.
+
+.. _MicroUI API 3.5.0: https://repository.microej.com/modules/ej/api/microui/3.5.0/
+
+Front Panel
+"""""""""""
+
+**Added**
+
+* Add new APIs to manage several display buffer policies and refresh strategies (BRS):
+
+  * Add ``LLUIDisplay.getSource()``.
+  * Add ``LLUIDisplayImpl.newDrawingRegion()``.
+  * Add ``LLUIDisplayImpl.getCurrentDrawingBuffer()``.
+  * Add ``MicroUIImage.requestReading()``
+
+**Changed**
+
+* Remove ``force`` parameter in ``LLUIDisplay.requestFlush()``
+* Remove all parameters in ``LLUIDisplayImpl.flush()`` and ``LLUIDisplayImpl.waitFlush()``
+* Extract ``MicroUIImageFormat`` and ``MicroUIImage`` and ``MicroUIGraphicsContext`` from ``LLUIPainter``.
+
+**Fixed**
+
+* Fix clip and drawn area computing in flush visualizer.
+
+**Removed**
+
+* Remove ``MicroUIGraphicsContext.setDrawingLimits()``.
+
+LLAPIs
+""""""
+	
+**Added**
+
+* Add the possibility to log external events in the MicroUI event group.
+* Add some functions in ``LLUI_DISPLAY.h`` and ``LLUI_DISPLAY_impl.h`` to manage the display buffer refresh strategy (BRS):
+
+  * ``LLUI_DISPLAY_getSourceImage()``.
+  * ``LLUI_DISPLAY_getImageBPP()`` and ``LLUI_DISPLAY_getFormatBPP()``.
+  * ``LLUI_DISPLAY_IMPL_refresh()``. 
+  * ``LLUI_DISPLAY_IMPL_newDrawingRegion()``.  
+  * ``LLUI_DISPLAY_setDrawingBuffer()``: it replaces ``LLUI_DISPLAY_flushDone()``.
+
+**Changed**
+
+* Change the signature of the function ``LLUI_DISPLAY_requestFlush()``: remove the boolean ``force`` (not backward compatible). 
+* Change the signature of the function ``LLUI_DISPLAY_IMPL_flush()``: give a list of rectangles and a flush identifier.
+
+**Removed**
+
+* Remove the function ``LLUI_DISPLAY_flushDone()``: replaced by ``LLUI_DISPLAY_setDrawingBuffer()``.
+* Remove the function  ``LLUI_DISPLAY_setDrawingLimits()``.
+* Remove the functions ``LLUI_DISPLAY_logDrawingStart()`` and ``LLUI_DISPLAY_logDrawingEnd()``: use standard logger instead.
+
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 4.0.0`_.
+
+**Added**
+
+* Add the possibility to log external events in the MicroUI event group.
+* Add the buffer refresh strategies (BRS) Legacy, Single and Predraw.
+* Add some utility functions to manipulate rectangles and collections of rectangles.
+
+C Module DMA2D
+""""""""""""""
+
+* New version: `C Module DMA2D 5.0.0`_.
+
+**Added**
+
+* Add the compatibility with UI Pack 14.0.
+* Add the function ``UI_DRAWING_DMA2D_memcpy_callback()`` to be notified about the end of the memory copy.
+* Add the support of the display Buffer Refresh Strategies (BRS) ``PREDRAW`` and ``SINGLE``.
+* Add a configuration version in ``ui_drawing_dma2d_configuration`` (``1``).
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 8.0.0`_.
+* Compatible with VGLite library ``3.0.15_rev7``.
+
+**Added**
+
+* Add the compatibility with UI Pack 14.0.
+  
+**Removed**
+
+* Remove the compatibility with the VGLite library ``3.0.15_rev4``.
+
+C Module NemaGFX
+""""""""""""""""
+
+* New version: `C Module NemaGFX 2.0.0`_.
+
+**Added**
+
+* Add the compatibility with UI Pack 14.0.
+
+**Fixed**
+
+* Fix ``nema_draw_line()`` ``y1`` argument.
 
 13.7.2 (2023-12-21)
 ===================
@@ -12,14 +145,21 @@ MicroUI
 
 **Fixed**
 
-- Fix the drawing of thick faded circle arcs.
+* Fix the drawing of thick faded circle arcs.
 
-Simulator
-"""""""""
+C Module NemaGFX
+""""""""""""""""
+
+* New version: `C Module NemaGFX 1.2.0`_.
+
+**Changed**
+
+* Disable the rendering of thick faded line with the GPU by default (see option ``ENABLE_FADED_LINES``).
+* Increase the version of the configuration file (2).
 
 **Fixed**
 
-- Fix the management of KF feature's fonts.
+* Fix the drawing status when a thick line is out-of-clip (results in an infinite loop).
 
 13.7.0 (2023-10-23)
 ===================
@@ -27,37 +167,90 @@ Simulator
 MicroUI
 """""""
 
+* Implement `MicroUI API 3.4.0`_.
+
 **Added**
 
-- Add the pre-multiplied image formats `ARGB8888_PRE`, `ARGB1555_PRE` and `ARGB4444_PRE`.
-- Add the possibility to free third-party resources associated with images.
-- Add some traces when debugging the SNI resources.
+* Add the pre-multiplied image formats ``ARGB8888_PRE``, ``ARGB1555_PRE`` and ``ARGB4444_PRE``.
+* Add the possibility to free third-party resources associated with images.
+* Add some traces when debugging the SNI resources.
+
+.. _MicroUI API 3.4.0: https://repository.microej.com/modules/ej/api/microui/3.4.0/
+
+Front Panel
+"""""""""""
+
+**Added**
+
+* Add the pre-multiplied image formats ``ARGB8888_PRE``, ``ARGB1555_PRE`` and ``ARGB4444_PRE``.
 
 Image Generator
 """""""""""""""
 
 **Changed**
 
-- Do not enable the cache when generating external resources.
+* Do not enable the cache when generating external resources.
 
 **Fixed**
 
-- Do not use cached images when there is no `.images.list` file.
-- Do not use cached images when a VEE Port property has changed.
-- Fix the handling of backslashes in list files.
-- Remove debug log in script.
+* Do not use cached images when there is no ``.images.list`` file.
+* Do not use cached images when a VEE Port property has changed.
+* Fix the handling of backslashes in list files.
+* Remove debug log in script.
 
 Font Generator
 """"""""""""""
 
 **Changed**
 
-- Do not enable the cache when generating external resources.
+* Do not enable the cache when generating external resources.
 
 **Fixed**
 
-- Do not use cached fonts when a VEE Port property has changed.
-- Fix the handling of backslashes in list files.
+* Do not use cached fonts when a VEE Port property has changed.
+* Fix the handling of backslashes in list files.
+
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 3.1.1`_.
+
+**Added**
+
+* Add the compatibility with UI Pack 13.7.
+
+C Module DMA2D
+""""""""""""""
+
+* New version: `C Module DMA2D 4.1.0`_.
+
+**Added**
+
+* Add the compatibility with UI Pack 13.7.
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 7.2.0`_.
+* Compatible with VGLite libraries ``3.0.15_rev4`` and ``3.0.15_rev7``.
+
+**Added**
+
+* Add the pre-mulitplied image formats: ``ARGB8888_PRE``, ``ARGB4444_PRE`` and ``ARGB1555_PRE``.
+* Add ``UI_VGLITE_need_to_premultiply()`` to find out whether a color must be pre-multiplied according to the GPU's capabilities.
+
+**Fixed**
+
+* Fix the use of power quad when not available.
+
+C Module NemaGFX
+""""""""""""""""
+
+* New version: `C Module NemaGFX 1.1.0`_.
+
+**Added**
+
+* Add the compatibility with UI Pack 13.7.
 
 [13.6.2] (2023-09-20)
 =====================
@@ -67,14 +260,30 @@ Image Generator
 	
 **Fixed**
 
-- Fix handling zip/jar file entries in the cache.
+* Fix handling zip/jar file entries in the cache.
 
 Font Generator
 """"""""""""""
 	
 **Fixed**
 
-- Fix handling zip/jar file entries in the cache.
+* Fix handling zip/jar file entries in the cache.
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 7.1.0`_.
+* Compatible with VGLite libraries ``3.0.15_rev4`` and ``3.0.15_rev7``.
+
+**Added**
+
+* Add the compatibility with VGLite ``3.0.15_rev7`` (add a .patch file).
+
+**Fixed**
+
+* Fix the use of the define ``VG_BLIT_WORKAROUND`` (useless).
+* Fix the GPU deactivation when a drawing is not performed for any reason.
+* VGLite ``3.0.15_rev4``: Fix the bounding box of the ``vg_lite_blit()`` given to the MicroEJ Graphics Engine when the define ``VG_BLIT_WORKAROUND`` is set (the function ``vg_lite_blit()`` is not used by default).
 
 [13.6.1] (2023-07-26)
 =====================
@@ -84,7 +293,7 @@ MicroUI
 
 **Fixed**
 
-- Fix creating a BufferedImage when traces are enabled.
+* Fix creating a BufferedImage when traces are enabled.
 
 [13.6.0] (2023-07-17)
 =====================
@@ -92,28 +301,56 @@ MicroUI
 MicroUI
 """""""
 
+* Implement `MicroUI API 3.3.0`_.
+
 **Added**
 
-- Add a flag stating that an undefined character was drawn.
+* Add a flag stating that an undefined character was drawn.
 
 **Fixed**
 
-- Fix the Java compiler version used to build the MicroUI extension class to be compatible with the JDK 11.
-- Fix the drawing of faded arcs and ellipses.
+* Fix the Java compiler version used to build the MicroUI extension class to be compatible with the JDK 11.
+* Fix the drawing of faded arcs and ellipses.
+
+.. _MicroUI API 3.3.0: https://repository.microej.com/modules/ej/api/microui/3.3.0/
+
+Front Panel
+"""""""""""
+
+**Added**
+
+* Add the drawing log flag ``DRAWING_LOG_MISSING_CHARACTER``, stating that an undefined character was drawn.
 
 Image Generator
 """""""""""""""
 
 **Changed**
 
-- Use a cache to avoid generating images for each launch.
+* Use a cache to avoid generating images for each launch.
 
 Font Generator
 """"""""""""""
 
 **Changed**
 
-- Use a cache to avoid generating fonts for each launch.
+* Use a cache to avoid generating fonts for each launch.
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 7.0.0`_.
+* Compatible with VGLite library ``3.0.15_rev4``.
+* Several additions, changes and fixes are available. Refer to the `C Module VGLite 7.0.0`_ changelog for more information.
+* The C Module has been divided in two parts to extract the `NXP i.MX RT500`_ specific support from the generic C Module for VGLite: 
+
+  * `NXP i.MX RT500`_ Display management: `C Module RT500 7.0.0`_
+  * Drawing over VGLite: `C Module VGLite 7.0.0`_
+
+C Module NemaGFX
+"""""""""""""""" 
+
+* New C Module: `C Module NemaGFX 1.0.0`_.
+* Compatible with UI Pack 13.5.x and 13.6.0.
 
 [13.5.1] (2023-06-08)
 =====================
@@ -123,59 +360,55 @@ MicroUI
 
 **Fixed**
 
-- Fix the compatibility with MicroEJ Architecture 8 (SOAR error with internal MicroUI system properties file).
+* Fix the compatibility with MicroEJ Architecture 8 (SOAR error with internal MicroUI system properties file).
 
-FrontPanel
-""""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
-- Fix consecutive calls to ``LLUIDisplay.newMicroUIImage()`` throwing an exception.
-- Allow overriding the display drawer with a service or in a front panel widget.
+* Fix consecutive calls to ``LLUIDisplay.newMicroUIImage()`` throwing an exception.
+* Allow overriding the display drawer with a service or in a Front Panel widget.
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 6.0.1`_.
+* Compatible with VGLite library ``3.0.15_rev4``.
+
+**Fixed**
+
+* Fix performing drawings when the clip is disabled.
 
 [13.5.0] (2023-05-03)
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
+MicroUI
+"""""""
 
-MicroUI Implementation
-""""""""""""""""""""""
+* Implement `MicroUI API 3.2.0`_.
 
-**Changed**
-
-- Implement MicroUI 3.2 (multi-mutable image formats, drawing log flags, etc.).
-
-**Fixed**
-
-- Fix ellipse fading.
-
-Drawing Implementation
-""""""""""""""""""""""
-
-**Fixed**
-
-- Fix the position of arc caps.
-
-LLAPIs
-""""""
-	
 **Added**
 
-* Add some functions in `LLUI_DISPLAY.h` to manage the MicroUI Drawing Log flags.
-* Add some functions in `LLUI_DISPLAY.h` to change the MicroUI clip and colors.
-* Add the notion of "drawer" to identify the available drawer for a given MicroUI Image format.
+* Add multi BufferedImage image formats management.
+* Add custom RAM Image image formats management.
+* Add drawing logs flags management.
 
-**Changed**
+**Fixed**
 
-* Change the MicroUI image format `MICROUI_IMAGE_FORMAT_LCD` by `MICROUI_IMAGE_FORMAT_DISPLAY`.
-* Change the signature of `xx_drawing_soft.h`: all functions return a drawing status. 
+* Fix ellipse fading.
 
-**Removed**
+.. _MicroUI API 3.2.0: https://repository.microej.com/modules/ej/api/microui/3.2.0/
 
-* Remove `ui_drawing.h` and `dw_drawing.h` (move them in MicroUI C Module).
+Drawing
+"""""""
 
-FrontPanel
-""""""""""
+**Fixed**
+
+* Fix the position of arc caps.
+
+Front Panel
+"""""""""""
 	
 **Added**
 
@@ -187,62 +420,132 @@ FrontPanel
 
 **Changed**
 
-* Merge `DWDrawing` in `UIDrawing`.
-* Turn `UIDrawing` as a service to handle drawings for a specific format.
+* Merge ``DWDrawing`` in ``UIDrawing``.
+* Turn ``UIDrawing`` as a service to handle drawings for a specific format.
 * Change the mechanism to get the software drawer.
-* Change the MicroUI image format `MICROUI_IMAGE_FORMAT_LCD` by `MICROUI_IMAGE_FORMAT_DISPLAY`.
+* Change the MicroUI image format ``MICROUI_IMAGE_FORMAT_LCD`` by ``MICROUI_IMAGE_FORMAT_DISPLAY``.
 
 **Removed**
 
-* Remove the interfaces `UIDrawingDefault` and `DWDrawingDefault` (implement the interface `UIDrawing` instead).
+* Remove the interfaces ``UIDrawingDefault`` and ``DWDrawingDefault`` (implement the interface ``UIDrawing`` instead).
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Added**
 
 * Add compatibility with Architecture 8.
 
+LLAPIs
+""""""
+	
+**Added**
+
+* Add some functions in ``LLUI_DISPLAY.h`` to manage the MicroUI Drawing Log flags.
+* Add some functions in ``LLUI_DISPLAY.h`` to change the MicroUI clip and colors.
+* Add the notion of "drawer" to identify the available drawer for a given MicroUI Image format.
+
+**Changed**
+
+* Change the MicroUI image format ``MICROUI_IMAGE_FORMAT_LCD`` by ``MICROUI_IMAGE_FORMAT_DISPLAY``.
+* Change the signature of ``xx_drawing_soft.h``: all functions return a drawing status. 
+
+**Removed**
+
+* Remove ``ui_drawing.h`` and ``dw_drawing.h`` (move them in MicroUI C Module).
+
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 3.0.0`_.
+
+**Added**
+
+* Add support for multiple Graphics Context output formats.
+* Add support for multiple Image input formats.
+* Add stub implementations for all MicroUI and Drawing libraries algorithms.
+
+C Module DMA2D
+""""""""""""""
+
+* New version: `C Module DMA2D 4.0.0`_.
+
+**Added**
+
+* Add the configuration file ``drawing_dma2d_configuration.h`` to enable or not the cache management (cache invalidate and clean).
+* Add the compatibility with multiple Graphics Context output formats.
+
+**Fixed**
+
+* Fix the problems with reading memory back after a DMA2D transfer on cache-enabled CPUs.  
+* Fix an include directive for case-sensitive filesystems.
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 6.0.0`_.
+* Compatible with VGLite library ``3.0.15_rev4``.
+
+**Added**
+
+* Add the compatibility with multiple Graphics Context output formats.
+* Add (or move) some utility functions in ``display_vglite``.
+* Add incident reporting with drawing log flags.
+
+**Fixed**
+
+* Set the appropriate format for the destination buffer.
+* Fix the drawing of horizontal lines.
+  
+**Removed**
+
+* Remove the notion of ``vg_drawer`` and the define ``VGLITE_USE_MULTIPLE_DRAWERS`` (replaced by multiple Graphics Context output formats).
+
 [13.4.1] (2023-02-06)
 =====================
 	
-Drawing Implementation
-""""""""""""""""""""""
+Drawing
+"""""""
 
 **Fixed**
 
 * Fix thick lines drawing (when thickness is larger than length).
 * Fix circle and ellipse drawing (when the diameter/axis has an even length).
 
-FrontPanel
-""""""""""
+Front Panel
+"""""""""""
 
 **Changed**
 
 * Increase the speed of RAW image decoding step.
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Fixed**
 
 * Fix the VEE Port's memory alignment constraint.
 
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 5.0.1`_.
+* Compatible with VGLite library ``3.0.15_rev4``.
+* Several additions, changes and fixes are available. Refer to the `C Module VGLite 5.0.1`_ changelog for more information.
+
 [13.4.0] - 2022-12-13
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
-
-MicroUI Implementation
-""""""""""""""""""""""
+MicroUI
+"""""""
 	
 **Fixed**
 
 * Fix the unexpected resuming of the pump Java thread when a new event is added to the queue if it is an other component than the MicroUI queue that has suspended the pump Java thread.
 * Fix the flush bounds of drawCircleArc and drawEllipseArc.   
 
-FrontPanel
-""""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
@@ -252,8 +555,8 @@ FrontPanel
 
 * Fix the Front Panel representation of a BufferedImage: it is always opaque. 
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Added**
 
@@ -267,17 +570,40 @@ ImageGenerator
 
 * Fix the non-generation of external images for the features.
 
-FontGenerator
-"""""""""""""
+Font Generator
+""""""""""""""
 
 **Fixed**
 
 * Fix the external fonts output folder for the features.
 
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 2.0.1`_.
+
+**Changed**
+
+* Do not draw thick shapes when thickness and fade are equal to zero.
+
+C Module DMA2D
+""""""""""""""
+
+* New version: `C Module DMA2D 3.0.2`_.
+
+**Fixed**
+
+* Fix the flush bounds when drawing an image (must be set before calling ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``).
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 4.0.0`_.
+* Compatible with VGLite library ``3.0.15_rev4``.
+* Several additions, changes and fixes are available. Refer to the `C Module VGLite 4.0.0`_ changelog for more information.
+
 [13.3.1] - 2022-09-09
 =====================
-
-* Compatible with Architecture 7.13.0 or higher.
  
 Image Generator
 """""""""""""""
@@ -300,10 +626,8 @@ Image Generator
 [13.3.0] - 2022-09-02
 =====================
 
-* Compatible with Architecture 7.13.0 or higher.
-
-MicroUI Implementation
-""""""""""""""""""""""
+MicroUI
+"""""""
 	
 **Fixed**
 
@@ -345,10 +669,56 @@ LLAPIs
 
 * Remove the MicroUI's native functions declaration with macros *(not backward compatible)*.
 
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 2.0.0`_.
+
+**Changed**
+
+* Improve ``drawImage``: identify faster use cases (copy an image and draw a region with overlap).
+* Use new UI Pack LLAPI: ``UI_DRAWING_copyImage`` and ``UI_DRAWING_drawRegion``. 
+* Use new MicroUI's native functions declaration (not backward compatible).
+
+C Module DMA2D for UI Pack 13.2.0 (maintenance)
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+* New version: `C Module DMA2D 2.1.0`_.
+
+**Added**
+
+* Add the compatibility with the STM32H7 series.
+
+**Changed**
+
+* Manage the overlapping (draw an image on the same image).
+
+**Fixed**
+
+* Fix the limitation of UI Pack 13.x in checking the MicroUI GraphicsContext clip before filling a rectangle.
+
+C Module DMA2D for UI Pack 13.3.0
+"""""""""""""""""""""""""""""""""
+
+* New version: `C Module DMA2D 3.0.0`_.
+
+**Added**
+
+* Add the implementation of ``UI_DRAWING_drawRegion``.
+
+**Removed**
+
+* Remove the software implementation of "image overlap" (already available in UI Pack 13.3.0).
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 3.0.0`_.
+* Compatible with VGLite library ``3.0.11_rev3``.
+* Several additions, changes and fixes are available. Refer to the `C Module VGLite 3.0.0`_ changelog for more information.
+
 [13.2.0] - 2022-05-05
 =====================
-
-* Compatible with Architecture 7.16.0 or higher.
 
 Integration
 """""""""""
@@ -357,8 +727,10 @@ Integration
 
 * Update to the latest SDK license notice.
 	
-MicroUI Implementation
-""""""""""""""""""""""
+MicroUI
+"""""""
+
+* Implement `MicroUI API 3.1.1`_.
 	
 **Changed**	
 	
@@ -376,13 +748,21 @@ MicroUI Implementation
 
 .. _GraphicsContext.readPixels(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#readPixel-int-int-
 .. _Image.readPixels(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#readPixel-int-int-
+.. _MicroUI API 3.1.1: https://repository.microej.com/modules/ej/api/microui/3.1.1/
+
+Drawing
+"""""""
+
+* Compatible with `Drawing API 1.0.4`_.
+
+.. _Drawing API 1.0.4: https://repository.microej.com/modules/ej/api/drawing/1.0.4/
 
 Front Panel
 """""""""""
 
 **Added**
 
-* Add the property ``-Dej.fp.hil=true`` in the application launcher to force to run the FrontPanel with the Graphics Engine as a standard HIL mock (requires MicroEJ Architecture 7.17.0 or higher).
+* Add the property ``-Dej.fp.hil=true`` in the application launcher to force to run the Front Panel with the Graphics Engine as a standard HIL mock (requires MicroEJ Architecture 7.17.0 or higher).
 * Add ``LLUIDisplayImpl.decode()``: the Front Panel project is able to read encoded image like the embedded side.
 * Include automatically the AWT ImageIO services.
 * Add ``MicroUIImage.readPixel()`` to read an image's pixel color.
@@ -412,6 +792,27 @@ LLAPIs
 
 * Add ``LLUI_DISPLAY_readPixel`` to read an image's pixel color. 
 
+C Module DMA2D
+""""""""""""""
+
+* New version: `C Module DMA2D 1.0.8`_ for UI Pack 13.0.x (maintenance).
+* New version: `C Module DMA2D 2.0.0`_ for UI Pack 13.1.0 and UI Pack 13.2.0.
+
+**Fixed**
+
+* Fix the use of returned code when drawing images with the DMA2D.
+* Clean cache before each DMA2D transfer (no-op on STM32 CPU without cache).
+
+C Module VGLite
+"""""""""""""""
+
+* New C Module: C Module VGLite 2.0.0.
+* Compatible with VGLite library ``3.0.11_rev3``.
+
+**Added**
+
+* Provides the :ref:`VGLite C module <section_ui_cco>` 2.0.0 to target the NXP CPU that provides the Vivante VGLite accelerator.
+
 BSP
 """
 	
@@ -421,8 +822,6 @@ BSP
 
 [13.1.0] - 2021-08-03
 =====================
-
-* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI API
 """""""""""
@@ -434,9 +833,10 @@ MicroUI API
 MicroUI Implementation
 """"""""""""""""""""""
 
+* Implement `MicroUI API 3.1.0`_.
+
 **Changed**
 
-* Compatible with `MicroUI API 3.1.0`_.
 * Check Immortals heap minimal size required by MicroUI implementation.
 * Change the EventGenerator Pointer event format.
 * Do no systematically use the GPU to draw intermediate steps of a shape.  
@@ -447,7 +847,7 @@ MicroUI Implementation
 * Fill rounded rectangle: fix rendering when corner radius is higher than rectangle height.
 * An external image is closed twice when the application only checks if the image is available.
 * RLE1 image rendering when platform requires image pixels address alignment. 
-* Manage the system fonts when the font generator is not embedded in the platform.
+* Manage the system fonts when the Font Generator is not embedded in the platform.
 * Have to wait the end of current drawing before closing an image.
 
 .. _MicroUI API 3.1.0: https://repository.microej.com/modules/ej/api/microui/3.1.0/
@@ -455,11 +855,28 @@ MicroUI Implementation
 Drawing Implementation
 """"""""""""""""""""""
 
-**Changed**
-
 * Compatible with `Drawing API 1.0.3`_.
 
 .. _Drawing API 1.0.3: https://repository.microej.com/modules/ej/api/drawing/1.0.3/
+
+Front Panel
+"""""""""""
+
+**Added**
+
+* Add ``MicroUIImage.getImage(int)``: apply a rendering color on Ax images.  
+* Add ``LLUIDisplay.convertRegion()``: convert a region according image format restrictions.   
+* Add ``LLUIDisplayImpl.waitFlush()``: can manage an asynchronous flush.
+
+**Changed**	
+
+* Compatible with new EventGenerator Pointer event format.
+	
+**Fixed**
+
+* Fix OutputFormat A8 when loading an image (path or stream) or converting a RAW image.
+* Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images. 
+* Simulates the image data alignment.
 
 LLAPIs
 """"""
@@ -474,28 +891,23 @@ LLAPIs
 
 * Change signature of ``LLUI_DISPLAY_setDrawingLimits()``: remove ``MICROUI_GraphicsContext*`` to be able to call this function from GPU callback method. 
 
-Simulator
-"""""""""
+C Module MicroUI
+""""""""""""""""
 
+* New version: `C Module MicroUI 1.1.0`_.
+ 
 **Added**
 
-* Add ``MicroUIImage.getImage(int)``: apply a rendering color on Ax images.  
-* Add ``LLUIDisplay.convertRegion()``: convert a region according image format restrictions.   
+* Add a MicroUI events logger (optional).
+* Add a MicroUI images heap allocator (optional).
 
-**Changed**	
-
-* Compatible with new EventGenerator Pointer event format.
-	
 **Fixed**
 
-* Fix OutputFormat A8 when loading an image (path or stream) or converting a RAW image.
-* Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images. 
-* Simulates the image data alignment.
+* Fix comments in ``LLUI_PAINTER_impl.c`` and ``LLDW_PAINTER_impl.c``.
+* Ignore a drawing when at least one scaling factor is equal to zero.
 
 [13.0.7] - 2021-07-30
 =====================
-
-* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -519,8 +931,6 @@ Misc
 [13.0.6] - 2021-03-29
 =====================
 
-* Compatible with Architecture 7.16.0 or higher.
-
 LLAPIs
 """"""
 
@@ -530,8 +940,6 @@ LLAPIs
 
 [13.0.5] - 2021-03-08
 =====================
-
-* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -552,17 +960,15 @@ MicroUI Implementation
 .. _NullPointerException: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/NullPointerException.html
 .. _DeadFeatureException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/DeadFeatureException.html
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
-* Front panel memory management: reduce simulation time.
+* Front Panel memory management: reduce simulation time.
 
 [13.0.4] - 2021-01-15
 =====================
-
-* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI API
 """""""""""
@@ -596,8 +1002,8 @@ Drawing Implementation
 
 * Draw deformed image is not rendered.
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Changed**
 
@@ -612,8 +1018,6 @@ ImageGenerator
 
 [13.0.3] - 2020-12-03
 =====================
-
-* Compatible with Architecture 7.16.0 or higher.
  
 MicroUI API
 """""""""""
@@ -637,20 +1041,37 @@ MicroUI Implementation
 .. _drawThickEllipse: https://repository.microej.com/javadoc/microej_5.x/apis/ej/drawing/ShapePainter.html#drawThickEllipse-ej.microui.display.GraphicsContext-int-int-int-int-int-
 .. _drawThickFadedEllipse: https://repository.microej.com/javadoc/microej_5.x/apis/ej/drawing/ShapePainter.html#drawThickFadedEllipse-ej.microui.display.GraphicsContext-int-int-int-int-int-int-
  
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 1.0.3`_.
+
+C Module DMA2D
+""""""""""""""
+
+* New version: `C Module DMA2D 1.0.6`_.
+
 [13.0.2] - 2020-10-02
 =====================
 
-* Compatible with Architecture 7.16.0 or higher.
 * Use new naming convention: ``com.microej.architecture.[toolchain].[architecture]-ui-pack``.
 
 **Fixed**
 
 * [ESP32] - Potential ``PSRAM`` access faults by rebuilding using esp-idf v3.3.0 toolchain - ``simikou2``.
 
+C Module DMA2D
+""""""""""""""
+
+* New version: C Module DMA2D 1.0.5.
+ 
+**Changed**
+
+* De-init the DMA2D before re-initializing it, to reset the context at HAL level.
+* Manipulate the drawing limits after being sure the DMA2D job is finished.
+
 [13.0.1] - 2020-09-22
 =====================
-
-* Compatible with Architecture 7.16.0 or higher.
 
 MicroUI API
 """""""""""
@@ -677,6 +1098,21 @@ MicroUI Implementation
 .. _FillRoundedRectangle: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html#fillRoundedRectangle-ej.microui.display.GraphicsContext-int-int-int-int-int-int-
 .. _FillRectangle: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html#fillRectangle-ej.microui.display.GraphicsContext-int-int-int-int-
 
+Front Panel
+"""""""""""
+
+**Fixed**
+
+* Cannot use an external image decoder on Front Panel.
+* Missing an API to check the overlapping between source and destination areas.
+
+Image Generator
+"""""""""""""""
+
+**Fixed**
+
+* Cannot build a platform with Image Generator and without Front Panel.
+
 LLAPIs
 """"""
 
@@ -684,26 +1120,40 @@ LLAPIs
 
 * Missing a LLAPI to check the overlapping between source and destination areas.
 
-Simulator
-"""""""""
+C Module MicroUI
+""""""""""""""""
 
-**Fixed**
+* New version: C Module MicroUI 1.0.2.
 
-* Cannot use an external image decoder on front panel.
-* Missing an API to check the overlapping between source and destination areas.
+**Changed**
 
-ImageGenerator
+* Change module organization.
+
+C Module DMA2D
 """"""""""""""
 
+* New version: C Module DMA2D 1.0.3.
+
+**Changed**
+
+* Remove/replace notion of ``LLDISPLAY``.
+* Change module organization.
+ 
 **Fixed**
 
-* Cannot build a platform with image generator and without front panel.
+* Fix file names.
 
 [13.0.0] - 2020-07-30
 =====================
 
-* Compatible with Architecture 7.16.0 or higher.
 * Integrate SDK 3.0-B license.
+
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 7.16.0 or higher (SNI 1.3).
 
 MicroUI API
 """""""""""
@@ -743,6 +1193,53 @@ MicroUI Implementation
 
 * Render of draw/fill arc/circle/ellipse with an even diameter/edge is one pixel too high (center is 1/2 pixel too high).
 
+Front Panel
+"""""""""""
+
+**Added**
+
+* Able to override MicroUI drawings algorithms like embedded platform.
+	
+**Changed**
+
+* Compatible with `com.microej.pack.ui#ui-pack(frontpanel)#13.0.0`_.
+* See :ref:`Migration notes<section_ui_migration_frontpanelapi_13x>` that describe the available changes in Front Panel API.
+	
+**Removed**
+
+* ``ej.tool.frontpanel#widget-microui`` has been replaced by ``com.microej.pack.ui#ui-pack(frontpanel)``.
+
+.. _com.microej.pack.ui#ui-pack(frontpanel)#13.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/
+ 
+Image Generator
+"""""""""""""""
+
+**Added**
+
+* Redirects source image reading to the Image Generator extension project in order to increase the number of supported image formats in input.
+* Redirects destination image generation to the Image Generator extension project in order to be able to encode an image in a custom RAW format.
+* Generates a linker file in order to always link the resources in same order between two launches.
+	
+**Changed**
+
+* Compatible with `com.microej.pack.ui#ui-pack(imageGenerator)#13.0.0`_.
+* See :ref:`Migration notes<section_ui_migration_imagegeneratorapi_13x>` that describe the available changes in Image Generator API.
+* Uses a service loader to loads the Image Generator extension classes.
+* Manages image data (pixels) address alignment.
+	
+**Removed**
+
+* Classpath variable ``IMAGE-GENERATOR-x.x``: Image generator extension project has to use ivy dependency ``com.microej.pack.ui#ui-pack(imageGenerator)`` instead.
+
+.. _com.microej.pack.ui#ui-pack(imageGenerator)#13.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/
+
+Font Generator
+""""""""""""""
+
+**Changed**
+
+* Used a dedicated ``bss`` section to load characters from an external font instead of using the java heap.
+
 LLAPIs
 """"""
 
@@ -761,57 +1258,20 @@ LLAPIs
 
 .. _com.microej.clibrary.llimpl#microui: https://repository.microej.com/modules/com/microej/clibrary/llimpl/microui
 
-Simulator
+C Modules
 """""""""
 
 **Added**
 
-* Able to override MicroUI drawings algorithms like embedded platform.
-	
-**Changed**
+* Provides the C Module MicroUI 1.0.1 that extends the `UI Pack 13.0.0`_. 
+* Provides the C Module DMA2D 1.0.2 that targets the STM32 CPU that provides the Chrom-ART accelerator. 
+* See :ref:`MicroUI C module <section_ui_cco>`.
 
-* Compatible with `com.microej.pack.ui#ui-pack(frontpanel)#13.0.0`_.
-* See :ref:`Migration notes<section_ui_migration_frontpanelapi_13x>` that describe the available changes in Front Panel API.
-	
-**Removed**
-
-* ``ej.tool.frontpanel#widget-microui`` has been replaced by ``com.microej.pack.ui#ui-pack(frontpanel)``.
-
-.. _com.microej.pack.ui#ui-pack(frontpanel)#13.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/
- 
-ImageGenerator
-""""""""""""""
-
-**Added**
-
-* Redirects source image reading to the image generator extension project in order to increase the number of supported image formats in input.
-* Redirects destination image generation to the image generator extension project in order to be able to encode an image in a custom RAW format.
-* Generates a linker file in order to always link the resources in same order between two launches.
-	
-**Changed**
-
-* Compatible with `com.microej.pack.ui#ui-pack(imageGenerator)#13.0.0`_.
-* See :ref:`Migration notes<section_ui_migration_imagegeneratorapi_13x>` that describe the available changes in Image Generator API.
-* Uses a service loader to loads the image generator extension classes.
-* Manages image data (pixels) address alignment.
-	
-**Removed**
-
-* Classpath variable ``IMAGE-GENERATOR-x.x``: Image generator extension project has to use ivy dependency ``com.microej.pack.ui#ui-pack(imageGenerator)`` instead.
-
-.. _com.microej.pack.ui#ui-pack(imageGenerator)#13.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/
-
-FontGenerator
-"""""""""""""
-
-**Changed**
-
-* Used a dedicated ``bss`` section to load characters from an external font instead of using the java heap.
+.. _UI Pack 13.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/
 
 [12.1.5] - 2020-10-02
 =====================
 
-* Compatible with Architecture 7.11.0 or higher.
 * Use new naming convention: ``com.microej.architecture.[toolchain].[architecture]-ui-pack``.
 
 **Fixed**
@@ -820,8 +1280,6 @@ FontGenerator
 
 [12.1.4] - 2020-03-10
 =====================
-
-* Compatible with Architecture 7.11.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -833,8 +1291,6 @@ MicroUI Implementation
 [12.1.3] - 2020-02-24
 =====================
 
-* Compatible with Architecture 7.11.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -844,8 +1300,6 @@ MicroUI Implementation
 
 [12.1.2] - 2019-12-09
 =====================
-
-* Compatible with Architecture 7.11.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -858,8 +1312,6 @@ MicroUI Implementation
 [12.1.1] - 2019-10-29
 =====================
 
-* Compatible with Architecture 7.11.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -870,8 +1322,14 @@ MicroUI Implementation
 [(maint) 8.0.0] - 2019-10-18
 ============================
 
-* Compatible with Architecture 7.0.0 or higher.
-* Based on 7.4.7.
+* Based on UI Pack 7.4.7.
+
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 7.0.0 or higher (Use SNI callback feature).
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -882,9 +1340,6 @@ MicroUI Implementation
 
 [12.1.0] - 2019-10-16
 =====================
-
-* Compatible with Architecture 7.11.0 or higher.
-
 MicroUI API
 """""""""""
 
@@ -913,8 +1368,6 @@ MicroUI Implementation
 [12.0.2] - 2019-09-23
 =====================
 
-* Compatible with Architecture 7.11.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -931,8 +1384,6 @@ MicroUI Implementation
 [12.0.1] - 2019-07-25
 =====================
 
-* Compatible with Architecture 7.11.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -940,8 +1391,8 @@ MicroUI Implementation
 
 * Physical size is not taken in consideration.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
@@ -950,7 +1401,12 @@ Simulator
 [12.0.0] - 2019-06-24
 =====================
 
-* Compatible with Architecture 7.11.0 or higher.
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 7.11.0 or higher (Move Front Panel in Architecture).
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -987,8 +1443,8 @@ MicroUI Implementation
 
 .. _getDisplayColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#getDisplayColor-int-
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
@@ -998,17 +1454,15 @@ Simulator
 
 * A pixel read on an image is always truncated.
 
-FrontPanel Plugin
-"""""""""""""""""
+Front Panel Plugin
+""""""""""""""""""
 
 **Removed**
 
-* FrontPanel version 5: Move front panel from MicroEJ UI Pack to Architecture *(not backward compatible)*; Architecture contains now Front Panel version 6.
+* Front Panel version 5: Move Front Panel from MicroEJ UI Pack to Architecture *(not backward compatible)*; Architecture contains now Front Panel version 6.
 
 [11.2.0] - 2019-02-01
 =====================
-
-* Compatible with Architecture 7.0.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1031,8 +1485,6 @@ Tools
 [11.1.2] - 2018-08-10
 =====================
 
-* Compatible with Architecture 7.0.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -1043,13 +1495,11 @@ MicroUI Implementation
 [11.1.1] - 2018-08-02
 =====================
 
-* Compatible with Architecture 7.0.0 or higher.
 * Internal release.
 
 [11.1.0] - 2018-07-27
 =====================
 
-* Compatible with Architecture 7.0.0 or higher.
 * Merge 10.0.2 and 11.0.1.
 
 MicroUI API
@@ -1076,8 +1526,7 @@ MicroUI Implementation
 [11.0.1] - 2018-06-05
 =====================
 
-* Compatible with Architecture 7.0.0 or higher.
-* Based on 11.0.0.
+* Based on UI Pack 11.0.0.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1092,8 +1541,7 @@ MicroUI Implementation
 [10.0.2] - 2018-02-15
 =====================
 
-* Compatible with Architecture 6.13.0 or higher.
-* Based on 10.0.1.
+* Based on UI Pack 10.0.1.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1108,8 +1556,14 @@ MicroUI Implementation
 [11.0.0] - 2018-02-02
 =====================
 
-* Compatible with Architecture 7.0.0 or higher.
-* Based on 10.0.1.
+* Based on UI Pack 10.0.1.
+
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 7.0.0 or higher (Use SNI callback feature).
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1121,8 +1575,6 @@ MicroUI Implementation
 [10.0.1] - 2018-01-03
 =====================
 
-* Compatible with Architecture 6.13.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -1133,7 +1585,12 @@ MicroUI Implementation
 [10.0.0] - 2017-12-22
 =====================
 
-* Compatible with Architecture 6.13.0 or higher.
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 6.13.0 or higher (``LLEXT`` link error with Architecture 6.13+ and UI Pack 9+).
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1147,8 +1604,8 @@ MicroUI Implementation
 * Subsequent renderings may not be correctly flushed.
 * Rendering of display on display was not optimized.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Changed**
 
@@ -1164,20 +1621,17 @@ Misc
 [9.4.1] - 2017-11-24
 ====================
 
-* Compatible with Architecture 6.12.0 or higher.
-
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Fixed**
 
-* Missing some files in image generator module.
+* Missing some files in Image Generator module.
 
 [9.4.0] - 2017-11-23
 ====================
 
-* Compatible with Architecture 6.12.0 or higher.
-* Deprecated: use 9.4.1 instead.
+* Deprecated: use UI Pack 9.4.1 instead.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1197,8 +1651,6 @@ MicroUI Implementation
   
 [9.3.1] - 2017-09-28
 ====================
-
-* Compatible with Architecture 6.12.0 or higher.
   
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1211,8 +1663,6 @@ MicroUI Implementation
   
 [9.3.0] - 2017-08-24
 ====================
-
-* Compatible with Architecture 6.12.0 or higher.
   
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1221,8 +1671,8 @@ MicroUI Implementation
 
 * Ellipsis must not drawn when text anchor is a "manual" ``TOP-RIGHT``.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
@@ -1232,10 +1682,8 @@ Simulator
 [9.2.1] - 2017-08-14
 ====================
 
-* Compatible with Architecture 6.12.0 or higher.
-
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
@@ -1249,8 +1697,14 @@ Simulator
 [9.2.0] - 2017-07-21
 ====================
 
-* Compatible with Architecture 6.12.0 or higher.
-* Merge 9.1.2 and 9.0.2.
+* Merge UI Packs 9.1.2 and 9.0.2.
+
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 6.12.0 or higher (SOAR can exclude some resources).
 
 MicroUI API
 """""""""""
@@ -1283,8 +1737,8 @@ MicroUI Implementation
 
 .. _Display.flush(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Display.html#flush--
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Fixed**
 
@@ -1299,13 +1753,12 @@ Misc
 
 **Fixed**
 
-* RI build: reduce frontpanel dependency.
+* RI build: reduce Front Panel dependency.
 
 [9.0.2] - 2017-04-21
 ====================
 
-* Compatible with Architecture 6.4.0 or higher.
-* Based on 9.0.1.
+*  Based on UI Pack 9.0.1.
   
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1314,8 +1767,8 @@ MicroUI Implementation
 
 * Rendering of a RAW image on grayscale display is wrong.
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Fixed**
 
@@ -1324,8 +1777,7 @@ ImageGenerator
 [9.1.2] - 2017-03-16
 ====================
 
-* Compatible with Architecture 6.8.0 or higher.
-* Based on 9.1.1.
+*  Based on UI Pack 9.1.1.
   
 MicroUI API
 """""""""""
@@ -1358,8 +1810,8 @@ MicroUI Implementation
 
 .. _getHeight(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#getHeight--
 
-ImageGenerator
-""""""""""""""
+Image Generator
+"""""""""""""""
 
 **Fixed**
 
@@ -1369,8 +1821,7 @@ ImageGenerator
 [9.0.1] - 2017-03-13
 ====================
 
-* Compatible with Architecture 6.4.0 or higher.
-* Based on 9.0.0.
+*  Based on UI Pack 9.0.0.
   
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1382,15 +1833,15 @@ MicroUI Implementation
 * RZ hardware accelerator: RAW images have to respect an aligned size.
 * Use the classpath when invoking the fonts and images generators.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
 * Wrong rendering of A8 images.
 
-FrontPanel Plugin
-"""""""""""""""""
+Front Panel Plugin
+""""""""""""""""""
 
 **Fixed**
 
@@ -1401,8 +1852,7 @@ FrontPanel Plugin
 [9.1.1] - 2017-02-14
 ====================
 
-* Compatible with Architecture 6.8.0 or higher.
-* Based on 9.1.0.
+*  Based on UI Pack 9.1.0.
 
 Misc
 """"
@@ -1414,8 +1864,14 @@ Misc
 [9.1.0] - 2017-02-13
 ====================
 
-* Compatible with Architecture 6.8.0 or higher.
-* Based on 9.0.0.
+* Based on UI Pack 9.0.0.
+
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 6.8.0 or higher (Internal scripts).
 
 MicroUI API
 """""""""""
@@ -1441,15 +1897,15 @@ MicroUI Implementation
 * Exception when flipping an image out of display bounds.
 * Flipped image is translated when clip is modified.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
 * Wrong rendering of A8 images.
 
-FrontPanel Plugin
-"""""""""""""""""
+Front Panel Plugin
+""""""""""""""""""
 
 **Fixed**
 
@@ -1459,8 +1915,6 @@ FrontPanel Plugin
 
 [9.0.0] - 2017-02-02
 ====================
-
-* Compatible with Architecture 6.4.0 or higher.
 
 MicroUI API
 """""""""""
@@ -1492,8 +1946,8 @@ MWT
 
 * Remove MWT from MicroEJ UI Pack *(not backward compatible)*.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 	
 **Added**
 
@@ -1508,8 +1962,8 @@ Tools
 
 **Changed**
 
-* FrontPanel plugin: Update icons.
-* FontDesigner plugin: Update icons.
+* Front Panel plugin: Update icons.
+* Font Designer plugin: Update icons.
 * Font Designer and Generator: use Unicode 9.0.0 specification.
 
 Misc
@@ -1517,12 +1971,10 @@ Misc
 
 **Fixed**
 
-* Remove obsolete documentations from FrontPanel And FontDesigner plugins.
+* Remove obsolete documentations from Front Panel And Font Designer plugins.
 
 [8.1.0] - 2016-12-24
 ====================
-
-* Compatible with Architecture 6.4.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1541,8 +1993,8 @@ MWT
 * Widget show notify method is called before the panel is set.
 * Widget still linked to panel when ``lostFocus()`` is called.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
@@ -1551,7 +2003,12 @@ Simulator
 [8.0.0] - 2016-11-17
 ====================
 
-* Compatible with Architecture 6.4.0 or higher.
+Architecture
+""""""""""""
+
+**Changed**
+
+* Compatible with Architecture 6.4.0 or higher (Manage external memories like byte addressable memories).
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1583,8 +2040,8 @@ MWT
 
 * possible to create an inconsistent hierarchy.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
@@ -1597,8 +2054,6 @@ Simulator
 [7.4.7] - 2016-06-14
 ====================
 
-* Compatible with Architecture 6.1.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -1608,8 +2063,8 @@ MicroUI Implementation
 * A bold font is not flagged as bold font.
 * Wrong A4 image rendering.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Fixed**
 
@@ -1617,8 +2072,6 @@ Simulator
 
 [7.4.2] - 2016-05-25
 ====================
-
-* Compatible with Architecture 6.1.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1630,8 +2083,6 @@ MicroUI Implementation
 [7.4.1] - 2016-05-10
 ====================
 
-* Compatible with Architecture 6.1.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -1642,8 +2093,6 @@ MicroUI Implementation
 [7.4.0] - 2016-04-29
 ====================
 
-* Compatible with Architecture 6.1.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -1651,8 +2100,8 @@ MicroUI Implementation
 
 * image A1's width is sometimes invalid.
 
-Simulator
-"""""""""
+Front Panel
+"""""""""""
 
 **Added**
 
@@ -1660,8 +2109,6 @@ Simulator
   
 [7.3.0] - 2016-04-25
 ====================
-
-* Compatible with Architecture 6.1.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""
@@ -1673,8 +2120,6 @@ MicroUI Implementation
 [7.2.1] - 2016-04-18
 ====================
 
-* Compatible with Architecture 6.1.0 or higher.
-
 Misc
 """"
 
@@ -1684,8 +2129,6 @@ Misc
   
 [7.2.0] - 2016-04-05
 ====================
-
-* Compatible with Architecture 6.1.0 or higher.
 
 Tools
 """""
@@ -1697,8 +2140,6 @@ Tools
 [7.1.0] - 2016-03-02
 ====================
 
-* Compatible with Architecture 6.1.0 or higher.
-
 MicroUI Implementation
 """"""""""""""""""""""
 
@@ -1708,8 +2149,6 @@ MicroUI Implementation
   
 [7.0.0] - 2016-01-20
 ====================
-
-* Compatible with Architecture 6.1.0 or higher.
 
 Misc
 """"
@@ -1730,6 +2169,8 @@ MicroUI Implementation
 
 [6.0.0] - 2015-11-12
 ====================
+
+* Compatible with Architecture 6.1.0 or higher.
 
 MicroUI Implementation
 """"""""""""""""""""""

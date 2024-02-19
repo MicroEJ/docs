@@ -9,6 +9,7 @@ MicroEJ Foundation Libraries
     kf
     ecom
     ecom-comm
+    microui
     fs
     net
     ssl

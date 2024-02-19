@@ -632,6 +632,69 @@ It is also possible to declare it programmatically (see where a drawer is regist
 
    LLUIDisplay.Instance.registerUIImageDrawer(new MyCustomImageDrawer());
 
+.. _display_pixel_conversion:
+
+Image Pixel Conversion
+======================
+
+Overview
+--------
+
+The Graphics Engine is built for a dedicated display pixel format (see :ref:`display_pixel_structure`). For this pixel format, the Graphics Engine must be able to draw images with or without alpha blending and with or without transformation. In addition, it must be able to read all image formats.
+
+The application may not use all MicroUI image drawing options and may not use all images formats. It is not possible to detect what the application needs, so no optimization can be performed at application compiletime. However, for a given application, the VEE Port can be built with a reduced set of pixel support. 
+
+All pixel format manipulations (read, write, copy) are using dedicated functions. It is possible to remove some functions or to use generic functions. The advantage is to reduce the memory footprint. The inconvenient is that some features are removed (the application should not use them) or some features are slower (generic functions are slower than the dedicated functions).
+
+Functions
+---------
+
+There are five pixel *conversion* modes:
+
+-  Draw an image without transformation and without global alpha blending: copy a pixel from a format to the destination format (display format).
+-  Draw an image without transformation and with global alpha blending: copy a pixel with alpha blending from a format to the destination format (display format).
+-  Draw an image with transformation and with or without alpha blending: draw an ARGB8888 pixel in destination format (display format).
+-  Load a `ResourceImage`_ with an output format: convert an ARGB8888 pixel to the output format.
+-  Read a pixel from an image (`Image.readPixel()`_ or to draw an image with transformation or to convert an image): read any pixel format and convert it to ARGB8888.
+
+.. table:: Pixel Conversion
+
+   +------------------------------------------+-------------+-------------+-------------+
+   |                                          | Nb input    | Nb output   | Number of   |
+   |                                          | formats     | formats     | combinations|
+   +==========================================+=============+=============+=============+
+   | Draw image without global alpha          |     22      |      1      |     22      |
+   +------------------------------------------+-------------+-------------+-------------+
+   | Draw image with global alpha             |     22      |      1      |     22      |
+   +------------------------------------------+-------------+-------------+-------------+
+   | Draw image with transformation           |      2      |      1      |      2      |
+   +------------------------------------------+-------------+-------------+-------------+
+   | Load a  ``ResourceImage``                |      1      |      6      |      6      |
+   +------------------------------------------+-------------+-------------+-------------+
+   | Read an image                            |     22      |      1      |     22      |
+   +------------------------------------------+-------------+-------------+-------------+
+
+There are ``22x1 + 22x1 + 2x1 + 1x6 + 22x1 = 74`` functions. Each function takes between 50 and 200 bytes depending on its complexity and the C compiler. 
+
+.. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html
+.. _Image.readPixel(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#readPixel-int-int-
+
+Linker File
+-----------
+
+All pixel functions are listed in a VEE Port linker file. It is possible to edit this file to remove some features or to share some functions (using generic function).
+
+How to get the file:
+
+#. Build VEE Port as usual.
+#. Copy VEE Port file ``[platform]/source/link/display_image_x.lscf`` in the VEE Port configuration project: ``[VEE Port configuration project]/dropins/link/``. Where ``x`` is a number that characterizes the display pixel format (see :ref:`display_pixel_structure`). See next warning.
+#. Perform some changes into the copied file (see after).
+#. Rebuild the VEE Port: the file in the `dropins` folder is copied in the VEE Port instead of the original one.
+
+.. warning:: When the display format in ``[VEE Port configuration project]/display/display.properties`` changes, the linker file suffix changes too. Perform again all the operations in the new file with the new suffix.
+
+The linker file holds five tables, one for each use case, respectively ``IMAGE_UTILS_TABLE_COPY``, ``IMAGE_UTILS_TABLE_COPY_WITH_ALPHA``, ``IMAGE_UTILS_TABLE_DRAW``, ``IMAGE_UTILS_TABLE_SET`` and ``IMAGE_UTILS_TABLE_READ``. For each table, a comment describes how to remove an option (when possible) or how to replace an option by a generic function (if available). 
+
 Installation
 ============
 

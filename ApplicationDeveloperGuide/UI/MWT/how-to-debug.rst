@@ -36,7 +36,7 @@ Here is an example of a ``xxx.constants.list`` file with the result in an applic
 
 .. note:: Available since MWT 3.3.0.
 
-Monitoring the render operations
+Monitoring the Render Operations
 --------------------------------
 
 When developing a GUI application, it may not be obvious what/how exactly the UI is rendered.

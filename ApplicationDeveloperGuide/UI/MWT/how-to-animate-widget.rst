@@ -68,7 +68,7 @@ For example, the following snippet updates the state of the widget when it is ti
 	}
 
 The `renderContent()`_ method should render the widget by using its current state (saved in the fields of the widget).
-This method should not call methods such as `Util.platformTimeMillis()`_ because the widget could be rendered in multiple passes, for example if a :ref:`partial buffer <section_display_partial_buffer>` is used.
+This method should not call methods such as `Util.platformTimeMillis()`_ because the widget could be rendered in multiple passes, for example if a :ref:`partial buffer <section_display_partial>` is used.
 
 For example, the following snippet renders the current state of the widget by displaying the time elapsed since the start of the animation:
 

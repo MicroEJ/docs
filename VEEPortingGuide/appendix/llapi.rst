@@ -341,7 +341,7 @@ The display driver must reserve a runtime memory buffer for creating dynamic ima
 
 The section name is ``.bss.microui.display.imagesHeap``.
 
-Functions ``LLUI_DISPLAY_IMPL_image_heap_xxx`` allow to control the image buffers allocation in the image heap. 
+Functions ``LLUI_DISPLAY_IMPL_imageHeapXXX`` allow to control the image buffers allocation in the image heap. 
 Implementation of these LLAPIs is already available on the MicroEJ Central Repository (``LLUI_DISPLAY_HEAP_impl.c``). 
 This implementation is using a best fit allocator. 
 It can be updated to log the allocations, the remaining space, etc. 
@@ -363,9 +363,13 @@ The section name is ``.bss.microui.display.externalFontsHeap``.
 Flush and Synchronization
 -------------------------
 
-The back buffer (graphics buffer) address set in Initialization function is the address for the very first drawing. The content of this buffer is flushed to the external display memory by the function ``LLUI_DISPLAY_flush``. The parameters define the rectangular area of the content which has changed during the last drawing action, and which must be flushed to the display buffer (dirty area). This function should be atomic: the implementation has to start another task or a hardware device (often a DMA) to perform the copy.
+The back buffer (graphics buffer) address defined in the Initialization function is the address for the very first drawing.
+The content of this buffer is flushed to the external display memory by the function ``LLUI_DISPLAY_flush``.
+The parameters define one or several rectangular regions of the content that have changed during the last drawing actionand that must be flushed to the display buffer (dirty area).
+This function should be atomic: the implementation has to start another task or a hardware device (often a DMA) to perform the copy.
 
-As soon as the application performs a new drawing, the Graphics Engine locks the thread. It will automatically unlocked when the BSP will call ``LLUI_DISPLAY_flushDone`` at the end of the copy, 
+As soon as the application performs a new drawing, the Graphics Engine locks the thread.
+It will automatically be unlocked when the BSP will call ``LLUI_DISPLAY_setDrawingBuffer`` at the end of the copy.
 
 Display Characteristics
 -----------------------

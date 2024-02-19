@@ -39,11 +39,7 @@ Graphics Engine Software Algorithms
 ===================================
 
 The Graphics Engine features a software implementation for each MicroUI and Drawing libraries drawing.
-These software algorithms:
-
-* respect the MicroUI GraphicsContext clip,
-* use the current MicroUI GraphicsContext foreground color and optional background color,
-* update the next `Display.flush()`_ dirty area.
+These software algorithms respect the MicroUI GraphicsContext clip and use the current MicroUI GraphicsContext foreground color and optional background color.
 
 The Graphics Engine provides a header file ``ui_drawing_soft.h`` (emb), and an implementation instance of ``UIDrawing`` that can be retrieved with ``ej.microui.display.LLUIDisplay.getUIDrawerSoftware()`` (sim) to let the VEE Port use these algorithms.
 For instance, a GPU may be able to draw an image whose format is RGB565 but not ARGB1555.
@@ -60,10 +56,10 @@ Principle
 ---------
 
 An implementation of ``LLUI_PAINTER_impl.h`` is already available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`. 
-This implementation respects the synchronization between drawings and the Graphics Engine notification, reduces (when possible) the MicroUI `GraphicsContext`_ clip constraints, and updates (when possible) the dirty flush area.
+This implementation respects the synchronization between drawings and the Graphics Engine notification and reduces (when possible) the MicroUI `GraphicsContext`_ clip constraints.
 
 This implementation does not perform the drawings; it only calls the equivalent of drawing available in ``ui_drawing.h``. 
-This allows simplifying how to use a GPU (or a third-party library) to perform a drawing: the ``ui_drawing.h`` implementation just has to take into consideration the MicroUI `GraphicsContext`_ clip and colors and `Display.flush()`_ dirty area.
+This allows simplifying how to use a GPU (or a third-party library) to perform a drawing: the ``ui_drawing.h`` implementation just has to take into consideration the MicroUI `GraphicsContext`_ clip and colors.
 Synchronization with the Graphics Engine is already performed.
 
 In addition to the implementation of ``LLUI_PAINTER_impl.h``, an implementation of ``ui_drawing.h`` is already available in :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` (in *weak* mode). 
@@ -71,7 +67,7 @@ This allows to implement only the functions the GPU can perform.
 For a given drawing, the weak function implementation is calling the equivalent of the drawing available in 
 ``ui_drawing_soft.h`` (this file lists all drawing functions implemented by the Graphics Engine in software).
 
-.. note:: More details are available in ``LLUI_PAINTER_impl.h``, ``ui_drawing.h``, ``LLUI_Display.h``, and ``LLUI_Display_impl.h`` classes.
+.. note:: More details are available in ``LLUI_PAINTER_impl.h``, ``ui_drawing.h``, ``LLUI_Display.h``, and ``LLUI_Display_impl.h`` files.
 
 Default Implementation
 ----------------------
@@ -172,7 +168,7 @@ This name redirection is useful when the VEE Port features multiple destination 
    }
 
 Implementing the weak function only consists in calling the Graphics Engine's software algorithm.
-This software algorithm will respect the `GraphicsContext`_ color and clip and update the `Display.flush()`_ dirty area.
+This software algorithm will respect the `GraphicsContext`_ color and clip.
 
 .. _section_drawings_cco_custom:
 
@@ -280,9 +276,6 @@ This name redirection is useful when the VEE Port features multiple destination 
          // Retrieve the destination buffer address
          uint8_t* destination_address = LLUI_DISPLAY_getBufferAddress(&gc->image);
 
-         // Update the next "flush"'s dirty area
-      	LLUI_DISPLAY_setDrawingLimits(startX, startY, endX, endY);
-
          // Configure the GPU clip
          gpu_set_clip(startX, startY, endX, endY);
 
@@ -304,8 +297,6 @@ If not, the drawing function must perform the same thing as the default weak fun
 
 The GPU drawing function usually requires the destination buffer address: the drawing function calls ``LLUI_DISPLAY_getBufferAddress(&gc->image);``.
 
-The drawing function must update the next `Display.flush()`_ area (dirty area) by calling ``LLUI_DISPLAY_setDrawingLimits()``. 
-
 The drawing function has to respect the `GraphicsContext`_ clip
 The ``MICROUI_GraphicsContext`` structure holds the clip, and the drawer cannot perform a drawing outside this clip (otherwise, the behavior is unknown). 
 Note the bottom-right coordinates might be smaller than the top-left (in x and/or y) when the clip width and/or height is null. 
@@ -321,9 +312,17 @@ In case of the drawing is done after the call to ``gpu_draw_line()``, the status
 
 .. warning:: 
    
-   * If the update of the dirty area is not performed, the next call to `Display.flush()`_ will not call the ``LLUI_DISPLAY_IMPL_flush()`` function.
-   * If the drawing status is not set to the Graphics Engine, the global VEE execution is locked: the Graphics Engine waits indefinitely for the status and cannot perform the next drawing.
-   * In case of the drawing is *asynchronous*, the GPU interrupt routine (or an OS task) has to notify the Graphics Engine of the end of the drawing by calling ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd``.
+   If the drawing status is not set to the Graphics Engine, the global VEE execution is locked: the Graphics Engine waits indefinitely for the status and cannot perform the next drawing.
+
+GPU Synchronization
+-------------------
+
+When a :ref:`GPU is used to perform a drawing<section_drawings_cco_custom>`, the caller (MicroUI painter native method) returns immediately.
+This allows the application to perform other operations during the GPU rendering.
+However, as soon as the application is trying to perform another drawing, the previous drawing made by the GPU must be done.
+The Graphics Engine is designed to be synchronized with the GPU asynchronous drawings by defining some points in the rendering timeline.
+It is not optional: MicroUI assumes that a drawing is fully done when it starts a new one.
+The end of a GPU drawing must notify the Graphics Engine calling ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``.
 
 Extended C Modules
 ------------------
@@ -349,7 +348,7 @@ This is the same principle as :ref:`section_drawings_cco` for the Embedded side:
 
 These classes are available in the :ref:`UI Pack extension <section_ui_simulation>` of the Front Panel Mock.
 
-.. note:: More details are available in ``LLUIPainter``, ``UIDrawing``, ``LLUIDisplay``, and ``LLUIDisplayImpl`` classes.
+.. note:: More details are available in ``LLUIPainter``, ``UIDrawing``, ``LLUIDisplay``, and ``LLUIDisplayImpl`` files.
 
 Default Implementation
 ----------------------
@@ -450,7 +449,7 @@ Like the embedded side, this object holds a clip, and the drawer cannot perform 
 	}
 
 The implementation of ``DisplayDrawer`` simply calls the Graphics Engine's software algorithm. 
-This software algorithm will use the `GraphicsContext`_ color and clip and update the `Display.flush()`_ dirty area.
+This software algorithm will use the `GraphicsContext`_ color and clip.
 
 .. _section_drawings_sim_custom:
 
@@ -549,9 +548,6 @@ Let's use the same example as the previous section (draw line function): the Fro
             // Draw the line using AWT (have to respect clip & color)
             src.setColor(new Color(gc.getRenderingColor()));
             src.drawLine(x1, y1, x2, x2);
-
-            // Update the next "flush"'s dirty area
-            gc.setDrawingLimits(x1, y1, x2, x2);
          }
          else {
             // Default behavior: call the Graphics Engine's software algorithm
@@ -567,7 +563,6 @@ The method ``gc.getImage().getRAWImage()`` returns the implementation of the Fro
 The AWT graphics 2D can be retrieved from this buffered image.
 
 The MicroUI color (``gc.getRenderingColor()``) is converted to an AWT color.
-After the drawing, the implementation updates the Graphics Engine dirty area by calling ``gc.setDrawingLimits()``.
 
 The method behavior is exactly the same as the embedded side; see:ref:`section_drawings_cco_custom`.
 
@@ -754,42 +749,10 @@ Incidents are split into two categories:
 Available Constants
 -------------------
 
-MicroUI offers a set of flag constants to report incidents.
+MicroUI offers a set of flag constants to report incidents to the application.
 They are defined and documented in ``LLUI_PAINTER_impl.h`` (for embedded targets) and ``LLUIPainter`` (for front panels).
 
-.. list-table::
-   :header-rows: 1
-   :widths: 30 10 60
-
-   * - Constant
-     - Value
-     - Description
-   * - ``DRAWING_LOG_NOT_IMPLEMENTED``
-     - ``1 << 0``
-     - This function is not implemented.
-   * - ``DRAWING_LOG_FORBIDDEN``
-     - ``1 << 1``
-     - This function must not be called in this situation.
-   * - ``DRAWING_LOG_OUT_OF_MEMORY``
-     - ``1 << 2``
-     - The system ran out of memory.
-   * - ``DRAWING_LOG_CLIP_MODIFIED``
-     - ``1 << 3``
-     - The VEE Port modified clip values in the graphics context.
-   * - ``DRAWING_LOG_LIBRARY_INCIDENT``
-     - ``1 << 29``
-     - An incident occurred in an underlying library.
-   * - ``DRAWING_LOG_UNKNOWN_INCIDENT``
-     - ``1 << 30``
-     - An incident that does not match other flags occurred.
-   * - ``DRAWING_LOG_ERROR``
-     - ``1 << 31``
-     - Special flag denoting critical incidents.
-
-The special value ``DRAWING_SUCCESS`` (defined as ``0``) represents a state where no drawing log flags are set, so encountering this value means no incident was reported.
-
-New flag constants may be added in future versions of MicroUI.
-Also, their actual values may change, and the developer should not rely on them.
+Refer to the :ref:`application documentation<section.ui.drawing_logs_constants>` for the exhaustive list of drawing logs.
 
 .. hint::
 
