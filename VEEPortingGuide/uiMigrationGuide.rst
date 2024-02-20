@@ -192,7 +192,7 @@ BSP with NemaGFX
 * *[BSP project]*
 
 	* Follow the migration steps of "BSP without GPU".
-	* Check the content of the configuration file ``ui_drawing_nema_configuration.h``(new version ``2``).
+	* Check the content of the configuration file ``ui_drawing_nema_configuration.h`` (new version ``2``).
 
 From 13.6.x to 13.7.2
 =====================
