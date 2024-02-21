@@ -308,7 +308,7 @@ The following table illustrates how the strategy works:
      - .. image:: images/ui_brs2.png 
    * - Implicit region *C*
      - Store the region *C*
-     - .. image:: images/ui_brs2.png
+     - .. image:: images/ui_brs4.png
      - .. image:: images/ui_brs2.png 
    * -  Draw "C"
      - 
