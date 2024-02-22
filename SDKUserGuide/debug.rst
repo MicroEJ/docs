@@ -53,7 +53,7 @@ In the SDK, open the Debug perspective (:guilabel:`Window` > :guilabel:`Perspect
 It makes use of Eclipse Java debugger client.
 If you are unfamiliar with Java debugging or Eclipse IDE, see `Debugging the Eclipse IDE for Java Developers`_ to get started.
 
-.. _Debugging the Eclipse IDE for Java Developers:  https://www.eclipse.org/community/eclipse_newsletter/2017/june/article1.php
+.. _Debugging the Eclipse IDE for Java Developers:  https://help.eclipse.org/latest/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Fconcepts%2Fcremdbug.htm
 
 You can also debug with IntelliJ IDEA. For more information on IntelliJ IDEA Remote debug process, see `IntelliJ IDEA Remote debug`_
 
