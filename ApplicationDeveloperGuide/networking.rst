@@ -9,7 +9,6 @@ Networking
    
    networkingFoundationLibraries
    networkingAddonLibraries
-   bluetooth
    hokaWebserverUserGuide
 
 This section presents networking libraries.

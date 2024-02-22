@@ -12,12 +12,6 @@ Foundation Libraries
       -  Module Link
       -  API Link
       -  Use
-   
-   *  -  ``Bluetooth``
-      -  Bluetooth Low Energy (BLE) based on the Generic Attribute Profile (GATT).
-      -  `bluetooth <https://repository.microej.com/modules/ej/api/bluetooth/>`_
-      - `ej.bluetooth package <https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/package-summary.html>`_
-      -  - `Bluetooth utility Library <https://repository.microej.com/modules/ej/library/iot/bluetooth-util/>`_
 
    *  -  ``ECOM-Network``
       -  Network interfaces management and IP configurations.
