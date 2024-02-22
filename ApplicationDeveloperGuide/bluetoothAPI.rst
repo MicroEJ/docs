@@ -8,6 +8,8 @@ Introduction
 
 The Bluetooth API Library provides APIs to use BLE (Bluetooth Low Energy) in an Application.
 
+.. _bluetooth_api_usage:
+
 Usage
 -----
 
@@ -33,54 +35,6 @@ Building or running an Application which uses the Bluetooth API Library requires
 
 Basic Knowledge and APIs
 ------------------------
-
-.. _BluetoothAdapter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html
-.. _BluetoothAddress: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAddress.html
-.. _BluetoothAttribute: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAttribute.html
-.. _BluetoothCharacteristic: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothCharacteristic.html
-.. _BluetoothConnection: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html
-.. _BluetoothDataTypes: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothDataTypes.html
-.. _BluetoothDescriptor: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothDescriptor.html
-.. _BluetoothPermissions: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothPermissions.html
-.. _BluetoothProperties: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothProperties.html
-.. _BluetoothService: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothService.html
-.. _BluetoothServiceDefinition: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothServiceDefinition.html
-.. _BluetoothScanFilter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothScanFilter.html
-.. _BluetoothStatus: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothStatus.html
-.. _BluetoothUuid: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothUuid.html
-.. _ConnectionListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html
-.. _LocalServiceListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/LocalServiceListener.html
-.. _RemoteServiceListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/RemoteServiceListener.html
-.. _DefaultConnectionListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/impl/DefaultConnectionListener.html
-.. _DefaultLocalServiceListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/impl/DefaultLocalServiceListener.html
-.. _DefaultRemoteServiceListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/impl/DefaultRemoteServiceListener.html
-
-.. _BluetoothAdapter.addService(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#addService-ej.bluetooth.BluetoothServiceDefinition-
-.. _BluetoothAdapter.connect(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#connect-ej.bluetooth.BluetoothAddress-
-.. _BluetoothAdapter.enable(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#enable--
-.. _BluetoothAdapter.setConnectionListener(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#setConnectionListener-ej.bluetooth.listeners.ConnectionListener-
-.. _BluetoothAdapter.startAdvertising(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#startAdvertising-byte:A-
-.. _BluetoothAdapter.startScanning(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#startScanning-ej.bluetooth.BluetoothScanFilter-
-.. _BluetoothAdapter.stopAdvertising(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#stopAdvertising--
-.. _BluetoothAdapter.stopScanning(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#startScanning-ej.bluetooth.BluetoothScanFilter-
-.. _BluetoothConnection.discoverServices(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#discoverServices--
-.. _BluetoothConnection.sendNotification(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendNotification-ej.bluetooth.BluetoothCharacteristic-byte:A-boolean-
-.. _BluetoothConnection.sendPairRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendPairRequest--
-.. _BluetoothConnection.sendPairResponse(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendPairResponse-boolean-
-.. _BluetoothConnection.sendPasskeyResponse(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendPasskeyResponse-boolean-int-
-.. _BluetoothConnection.sendReadRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendReadRequest-ej.bluetooth.BluetoothAttribute-
-.. _BluetoothConnection.sendReadResponse(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendReadResponse-ej.bluetooth.BluetoothAttribute-byte-byte:A-
-.. _BluetoothConnection.sendWriteRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendWriteRequest-ej.bluetooth.BluetoothAttribute-byte:A-
-.. _ConnectionListener.onConnected(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onConnected-ej.bluetooth.BluetoothConnection-
-.. _ConnectionListener.onDiscoveryResult(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onDiscoveryResult-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothService-
-.. _ConnectionListener.onPairRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onPairRequest-ej.bluetooth.BluetoothConnection-
-.. _ConnectionListener.onPasskeyGenerated(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onPasskeyGenerated-ej.bluetooth.BluetoothConnection-int-
-.. _ConnectionListener.onPasskeyRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onPasskeyRequest-ej.bluetooth.BluetoothConnection-
-.. _ConnectionListener.onScanResult(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onScanResult-ej.bluetooth.BluetoothAddress-byte:A-int-
-.. _LocalServiceListener.onReadRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/LocalServiceListener.html#onReadRequest-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothAttribute-
-.. _LocalServiceListener.onWriteRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/LocalServiceListener.html#onWriteRequest-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothAttribute-byte:A-
-.. _RemoteServiceListener.onNotificationReceived(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/RemoteServiceListener.html#onNotificationReceived-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothCharacteristic-byte:A-
-.. _RemoteServiceListener.onReadCompleted(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/RemoteServiceListener.html#onReadCompleted-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothAttribute-byte-byte:A-
 
 BLE is very different from TCP/IP networking.
 Like Wi-Fi, Bluetooth uses UHF radio waves to communicate over a short range, but it introduces an entirely unique protocol stack.
@@ -118,7 +72,7 @@ Here are the steps of the pairing procedure:
 
 - Either device sends a pairing request or security request to the other device
 - Both devices share their I/O capabilities
-- If the I/O capabilities of the devices allow to create a connection with MITM , the Passkey Entry method is used:
+- If the I/O capabilities of the devices allow to create a connection with MITM protection, the Passkey Entry method is used:
 
   - The device with display capability displays a generated passkey on its user interface
   - The device with input capability reads the passkey from the user input and sends it to the device with display capability
@@ -198,6 +152,54 @@ Stateless and immutable classes:
 - `BluetoothPermissions`_: Permissions enumeration used when adding a local GATT attribute
 - `BluetoothServiceDefinition`_: GATT service model used when adding a local GATT service
 - `BluetoothStatus`_: Status code enumeration used when reading/writing a GATT attribute
+
+.. _BluetoothAdapter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html
+.. _BluetoothAddress: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAddress.html
+.. _BluetoothAttribute: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAttribute.html
+.. _BluetoothCharacteristic: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothCharacteristic.html
+.. _BluetoothConnection: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html
+.. _BluetoothDataTypes: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothDataTypes.html
+.. _BluetoothDescriptor: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothDescriptor.html
+.. _BluetoothPermissions: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothPermissions.html
+.. _BluetoothProperties: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothProperties.html
+.. _BluetoothService: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothService.html
+.. _BluetoothServiceDefinition: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothServiceDefinition.html
+.. _BluetoothScanFilter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothScanFilter.html
+.. _BluetoothStatus: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothStatus.html
+.. _BluetoothUuid: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothUuid.html
+.. _ConnectionListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html
+.. _LocalServiceListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/LocalServiceListener.html
+.. _RemoteServiceListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/RemoteServiceListener.html
+.. _DefaultConnectionListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/impl/DefaultConnectionListener.html
+.. _DefaultLocalServiceListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/impl/DefaultLocalServiceListener.html
+.. _DefaultRemoteServiceListener: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/impl/DefaultRemoteServiceListener.html
+
+.. _BluetoothAdapter.addService(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#addService-ej.bluetooth.BluetoothServiceDefinition-
+.. _BluetoothAdapter.connect(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#connect-ej.bluetooth.BluetoothAddress-
+.. _BluetoothAdapter.enable(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#enable--
+.. _BluetoothAdapter.setConnectionListener(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#setConnectionListener-ej.bluetooth.listeners.ConnectionListener-
+.. _BluetoothAdapter.startAdvertising(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#startAdvertising-byte:A-
+.. _BluetoothAdapter.startScanning(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#startScanning-ej.bluetooth.BluetoothScanFilter-
+.. _BluetoothAdapter.stopAdvertising(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#stopAdvertising--
+.. _BluetoothAdapter.stopScanning(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html#startScanning-ej.bluetooth.BluetoothScanFilter-
+.. _BluetoothConnection.discoverServices(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#discoverServices--
+.. _BluetoothConnection.sendNotification(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendNotification-ej.bluetooth.BluetoothCharacteristic-byte:A-boolean-
+.. _BluetoothConnection.sendPairRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendPairRequest--
+.. _BluetoothConnection.sendPairResponse(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendPairResponse-boolean-
+.. _BluetoothConnection.sendPasskeyResponse(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendPasskeyResponse-boolean-int-
+.. _BluetoothConnection.sendReadRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendReadRequest-ej.bluetooth.BluetoothAttribute-
+.. _BluetoothConnection.sendReadResponse(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendReadResponse-ej.bluetooth.BluetoothAttribute-byte-byte:A-
+.. _BluetoothConnection.sendWriteRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendWriteRequest-ej.bluetooth.BluetoothAttribute-byte:A-
+.. _ConnectionListener.onConnected(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onConnected-ej.bluetooth.BluetoothConnection-
+.. _ConnectionListener.onDiscoveryResult(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onDiscoveryResult-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothService-
+.. _ConnectionListener.onPairRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onPairRequest-ej.bluetooth.BluetoothConnection-
+.. _ConnectionListener.onPasskeyGenerated(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onPasskeyGenerated-ej.bluetooth.BluetoothConnection-int-
+.. _ConnectionListener.onPasskeyRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onPasskeyRequest-ej.bluetooth.BluetoothConnection-
+.. _ConnectionListener.onScanResult(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onScanResult-ej.bluetooth.BluetoothAddress-byte:A-int-
+.. _LocalServiceListener.onReadRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/LocalServiceListener.html#onReadRequest-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothAttribute-
+.. _LocalServiceListener.onWriteRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/LocalServiceListener.html#onWriteRequest-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothAttribute-byte:A-
+.. _RemoteServiceListener.onNotificationReceived(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/RemoteServiceListener.html#onNotificationReceived-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothCharacteristic-byte:A-
+.. _RemoteServiceListener.onReadCompleted(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/RemoteServiceListener.html#onReadCompleted-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothAttribute-byte-byte:A-
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 

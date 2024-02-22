@@ -29,16 +29,10 @@ To use the `Bluetooth Utility Library <https://repository.microej.com/modules/ej
 
          <dependency org="ej.library.iot" name="bluetooth-util" rev="1.1.0"/>
 
-Since this library is built on top of the :ref:`bluetooth_api`, it inherits its requirements.
+Since this library is built on top of the :ref:`bluetooth_api`, it inherits its :ref:`requirements <bluetooth_api_usage>`.
 
 Classes Summary
 ---------------
-
-.. _AdvertisementData: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/util/AdvertisementData.html
-.. _AdvertisementFlags: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/util/AdvertisementFlags.html
-.. _AttributeNotFoundException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/util/AttributeNotFoundException.html
-.. _DescriptorHelper: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/util/DescriptorHelper.html
-.. _ServiceHelper: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/util/ServiceHelper.html
 
 Main classes:
 
@@ -50,6 +44,12 @@ Stateless and immutable classes:
 
 - `AdvertisementFlags`_: Flags enumeration used in advertisement payloads
 - `AttributeNotFoundException`_: Exception thrown by `ServiceHelper`_ when a GATT attribute is not found
+
+.. _AdvertisementData: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/util/AdvertisementData.html
+.. _AdvertisementFlags: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/util/AdvertisementFlags.html
+.. _AttributeNotFoundException: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/util/AttributeNotFoundException.html
+.. _DescriptorHelper: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/util/DescriptorHelper.html
+.. _ServiceHelper: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/util/ServiceHelper.html
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
