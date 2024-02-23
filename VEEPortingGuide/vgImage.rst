@@ -174,7 +174,7 @@ Rendering Engine
 ================
 
 The Vector Image Rendering Engine has the responsibility of drawing the vector images.
-The destination is the display buffer, a MicroUI :ref:`BufferedImage<section_buffered_image>` or a MicroVG BufferedVectorImage.
+The destination is the display back buffer, a MicroUI :ref:`BufferedImage<section_buffered_image>` or a MicroVG BufferedVectorImage.
 
 Three transformations can be applied when drawing a vector image:
 

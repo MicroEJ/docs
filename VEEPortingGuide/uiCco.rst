@@ -228,7 +228,7 @@ Usage
 Buffer Refresh Strategy "Predraw"
 ---------------------------------
 
-This strategy requires to copy some regions from the LCD frame buffer to the back buffer on demand (function ``UI_DISPLAY_BRS_restore()``, see above).
+This strategy requires to copy some regions from the front buffer to the back buffer on demand (function ``UI_DISPLAY_BRS_restore()``, see above).
 To perform these copies, this CCO uses the ``UI_DRAWING_DMA2D_xxx_memcpy()`` functions.
 
 Usage
@@ -247,7 +247,7 @@ Example of Implementation
       // store the flush identifier
       g_current_flush_identifier = flush_identifier;
 
-      // change the LCD buffer address
+      // change the front buffer address
       HAL_LTDC_SetAddress(&hLtdcHandler, (uint32_t)LLUI_DISPLAY_getBufferAddress(&gc->image), LTDC_ACTIVE_LAYER);
 
       // ask an interrupt for next LCD tick
@@ -271,9 +271,9 @@ Example of Implementation
 Buffer Refresh Strategy "Single"
 --------------------------------
 
-Usually, this strategy is used when the LCD frame buffer cannot be mapped dynamically: the same buffer is always used as back buffer.
-However, the LCD frame buffer can be mapped on a memory buffer that is in the CPU address range.
-In that case, the ``UI_DRAWING_DMA2D_xxx_memcpy()`` functions can be used to copy the content of the back buffer to the LCD frame buffer.
+Usually, this strategy is used when the front buffer cannot be mapped dynamically: the same buffer is always used as back buffer.
+However, the front buffer can be mapped on a memory buffer that is in the CPU address range.
+In that case, the ``UI_DRAWING_DMA2D_xxx_memcpy()`` functions can be used to copy the content of the back buffer to the front buffer.
 
 Usage
 """""
@@ -303,7 +303,7 @@ Example of Implementation
       // clear interrupt flag
       LTDC->ICR = LTDC_IER_FLAG;
 
-      // launch the copy from back buffer to frame buffer
+      // launch the copy from back buffer to front buffer
       UI_DRAWING_DMA2D_start_memcpy(&dma2d_memcpy);
    }
 
@@ -320,7 +320,7 @@ Example of Implementation
 Buffer Refresh Strategy "Legacy"
 ---------------------------------
 
-This strategy requires to copy the previous drawings from the LCD frame buffer to the back buffer before unlocking the MicroUI Graphics Engine.
+This strategy requires to copy the previous drawings from the front buffer to the back buffer before unlocking the MicroUI Graphics Engine.
 To perform this copy, this CCO uses the ``UI_DRAWING_DMA2D_xxx_memcpy()`` functions.
 At the end of the copy, the MicroUI Graphics Engine is unlocked: a new drawing can be performed in the new back buffer.
 
@@ -344,7 +344,7 @@ Example of Implementation
       // configure the copy to launch at next LCD tick
       UI_DRAWING_DMA2D_configure_memcpy(LLUI_DISPLAY_getBufferAddress(&gc->image), (uint8_t*)LTDC_Layer->CFBAR, regions[0].x1, regions[0].y1, regions[0].x2, regions[0].y2, RK043FN48H_WIDTH, &dma2d_memcpy);
 
-      // change the LCD buffer address
+      // change the front buffer address
       HAL_LTDC_SetAddress(&hLtdcHandler, (uint32_t)LLUI_DISPLAY_getBufferAddress(&gc->image), LTDC_ACTIVE_LAYER);
 
       // ask an interrupt for next LCD tick
@@ -355,7 +355,7 @@ Example of Implementation
       // LTDC register reload
       __HAL_LTDC_ENABLE_IT(hltdc, LTDC_IT_RR);
 
-      // launch the copy from new frame buffer to new back buffer
+      // launch the copy from new front buffer to new back buffer
       UI_DRAWING_DMA2D_start_memcpy(&dma2d_memcpy);
    }
 

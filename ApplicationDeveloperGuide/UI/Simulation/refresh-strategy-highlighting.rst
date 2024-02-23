@@ -10,7 +10,7 @@ A buffer refresh strategy is responsible of making sure that what is shown on th
 The ones done since last flush *and* the past.
 To achieve that it detects the drawn regions and refresh the necessary data in the back buffer.
 
-These informations can also be used to understand what happens for each frame in terms of drawings and refreshes.
+These information can also be used to understand what happens for each frame in terms of drawings and refreshes.
 It may be very useful to identify performance issues.
 
 The drawn and restored regions can be very different depending on the selected strategy and the associated options.

@@ -15,7 +15,7 @@ Each drawing can be overwritten independently in the VEE Port:
 
 - to use another software algorithm (custom algorithm, no third-party library, etc.),
 - to use a GPU to perform the operation,
-- to target a destination whose format is different from the display buffer format,
+- to target a destination whose format is different from the display back buffer format,
 - etc.
  
 The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h`` (for the `Drawing`_ library) for the Embedded VEE Port and, respectively, ``LUIPainter.java`` and ``LLDWPainter.java`` for the Simulation VEE Port.
@@ -28,7 +28,7 @@ The principle of implementing a MicroUI drawing function is described in the cha
 Destination Format
 ==================
 
-Since MicroUI 3.2, the destination buffer of the drawings can be different than the display buffer format (see :ref:`section_image_display_raw`).
+Since MicroUI 3.2, the destination buffer of the drawings can be different than the display back buffer format (see :ref:`section_image_display_raw`).
 This destination buffer format can be a :ref:`standard format <section_image_standard_raw>` (ARGB8888, A8, etc.) or a :ref:`custom format <section_image_custom_raw>`. 
 
 See :ref:`section_buffered_image` for more information about how to create buffered images with another format than the display format and how to draw in them.
@@ -45,7 +45,7 @@ The Graphics Engine provides a header file ``ui_drawing_soft.h`` (emb), and an i
 For instance, a GPU may be able to draw an image whose format is RGB565 but not ARGB1555.
 For this image format, BSP implementation can call the ``UI_DRAWING_SOFT_drawImage`` function.
 
-.. warning:: These software algorithms only target buffers whose format is the display buffer format.
+.. warning:: These software algorithms only target buffers whose format is the display back buffer format.
 
 .. _section_drawings_cco:
 
@@ -75,7 +75,7 @@ Default Implementation
 The default implementation is the most used. 
 It takes into account:
 
-* there is only one destination format (the display buffer format),
+* there is only one destination format (the display back buffer format),
 * no drawing is overwritten in the BSP (no GPU, third-party library, etc.),
 * :ref:`non-standard images <section_image_custom_raw>` cannot be used as a source.
 
@@ -178,7 +178,7 @@ Custom Implementation
 The custom implementation helps connect a GPU or a third-party library.
 It takes into account:
 
-* there is only one destination format (the display buffer format),
+* there is only one destination format (the display back buffer format),
 * :ref:`non-standard images <section_image_custom_raw>` cannot be used as a source.
 
 The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to simplify the adding of third-party drawers:
@@ -344,7 +344,7 @@ This is the same principle as :ref:`section_drawings_cco` for the Embedded side:
 * The drawing primitive natives called the matching method in ``LLUIPainter``.
 * The ``LLUIPainter`` synchronizes the drawings with the Graphics Engine and dispatches the drawing itself to an implementation of the interface ``UIDrawing``.
 * The Front Panel provides a software implementation of ``UIDrawing`` available by calling ``ej.microui.display.LLUIDisplay.getUIDrawerSoftware()``.
-* The ``DisplayDrawer`` implements ``UIDrawing`` and is used to draw in the display buffer and the images with the same format.
+* The ``DisplayDrawer`` implements ``UIDrawing`` and is used to draw in the display back buffer and the images with the same format.
 
 These classes are available in the :ref:`UI Pack extension <section_ui_simulation>` of the Front Panel Mock.
 
@@ -356,7 +356,7 @@ Default Implementation
 The default implementation is the most used. 
 It considers that:
 
-* there is only one destination format (the display buffer format),
+* there is only one destination format (the display back buffer format),
 * no drawing is overwritten in the BSP (no third-party library),
 * :ref:`non-standard images <section_image_custom_raw>` cannot be used as a source.
 
@@ -459,7 +459,7 @@ Custom Implementation
 The custom implementation helps connect a third-party library or to simulate the same constraints as the embedded side (the same GPU constraints).
 It considers that:
 
-* there is only one destination format (the display buffer format),
+* there is only one destination format (the display back buffer format),
 * :ref:`non-standard images <section_image_custom_raw>` cannot be used as a source.
 
 The :ref:`UI Pack extension <section_ui_simulation>` is designed to simplify the adding of third-party drawers:

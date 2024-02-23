@@ -29,7 +29,7 @@ Chapters Organization
 For more convenience, this chapter only describes how a display device works and how to connect it to the MicroUI Graphics Engine. 
 Dedicated chapters deal with related concepts:
 
-* :ref:`section_brs`: how the display buffer is refreshed.
+* :ref:`section_brs`: how the front buffer is refreshed.
 * :ref:`section_drawings`: how the drawings are performed, the use of a GPU, etc.
 * :ref:`section_image_menu`: how the images are generated and drawn.
 * :ref:`section_fonts`: how the fonts are generated and drawn.
@@ -191,11 +191,11 @@ To prevent :ref:`flickering in the display panel <section_display_direct>`, the 
 The first buffer, for its part, is dedicated to the refreshing of the display panel.
 Double buffering avoids flickering and inconsistent rendering: it is well suited to high quality animations.
 This is the notion of **double buffer**.
-This new buffer is usually called **back buffer**, and the first buffer is usually called **frame buffer** or **front buffer**.
-The two buffers in MCU memory alternately play the role of the back buffer and the frame buffer. 
+This new buffer is usually called **back buffer**, and the first buffer is usually called **front buffer**.
+The two buffers in MCU memory alternately play the role of the back buffer and the front buffer. 
 The display panel address is alternatively changed from one buffer to the other. 
 
-The *flush* step consists in switching (or swapping) the two buffers: the frame buffer becomes the back buffer and the back buffer becomes the frame buffer.
+The *flush* step consists in switching (or swapping) the two buffers: the front buffer becomes the back buffer and the back buffer becomes the front buffer.
 
 .. figure:: images/ui_display_double.*
    :alt: Swap Double Buffer
@@ -205,10 +205,10 @@ The *flush* step consists in switching (or swapping) the two buffers: the frame 
    Swap Double Buffer
 
 This swap may not be atomic and may be done asynchronously: the display panel often fully refreshes an entire frame before changing its buffer address.
-During this time, the frame buffer is used (the display panel refreshes itself on it), and the back buffer is locked (reserved for the next frame to show).
+During this time, the front buffer is used (the display panel refreshes itself on it), and the back buffer is locked (reserved for the next frame to show).
 Consequently, the application cannot draw again: the swapping must be performed before.
 As soon as the swap is done, both buffers are switched.
-Now, the application can draw in the new back buffer (previously the frame buffer).
+Now, the application can draw in the new back buffer (previously the front buffer).
 
 .. _section_display_triple:
 
@@ -221,10 +221,10 @@ The buffers are usually called **back buffer 1**, **back buffer 2** and **back b
 
 The *flush* step consists in swapping two buffers and to let the application draw in the third buffer:
 
-* The back buffer 1 is the frame buffer: it is currently used by the LCD controller to refresh the display panel.
-* The back buffer 2 is the next frame buffer: the drawings have been done and a *flush* is requested.
+* The back buffer 1 is the front buffer: it is currently used by the LCD controller to refresh the display panel.
+* The back buffer 2 is the next front buffer: the drawings have been done and a *flush* is requested.
 * The back buffer 3 is not used: the application can immediately draw into it without waiting the swapping between the back buffers 1 & 2.
-* When the drawings are done in the back buffer 3, this buffer becomes the next frame buffer, the back buffer 2 is the frame buffer and the back buffer 1 is free.
+* When the drawings are done in the back buffer 3, this buffer becomes the next front buffer, the back buffer 2 is the front buffer and the back buffer 1 is free.
 
 .. figure:: images/ui_display_triple.*
    :alt: Swap Triple Buffer
@@ -263,8 +263,8 @@ Single Buffer
 Serial Connection
 """""""""""""""""
 
-For the display connection *serial*, there are two distinct buffers: the buffer where the drawings are rendered is usually called **back buffer**, and the display module buffer **frame buffer** or **front buffer**.
-As long as only the back buffer is stored in the MCU mapped memory (the frame buffer is stored in the display module unmapped memory), there is only one buffer to allocate.
+For the display connection *serial*, there are two distinct buffers: the buffer where the drawings are rendered is usually called **back buffer**, and the display module buffer **front buffer**.
+As long as only the back buffer is stored in the MCU mapped memory (the front buffer is stored in the display module unmapped memory), there is only one buffer to allocate.
 This is the notion of **single buffer**.
 
 The *flush* step consists in sending the data through the right bus (SPI, DSI).
@@ -277,10 +277,10 @@ The *flush* step consists in sending the data through the right bus (SPI, DSI).
    Single Buffer (serial)
 
 The display panel only shows complete frames; it cannot show partial drawings because the *flush* step is performed after all the drawings.
-The application cannot draw in the back buffer while the data is sent to the frame buffer.
+The application cannot draw in the back buffer while the data is sent to the front buffer.
 As soon as the data is fully sent, the application can draw again in the back buffer.
 
-The time to send the data from the back buffer to the frame buffer may be long.
+The time to send the data from the back buffer to the front buffer may be long.
 During this time, no drawing can be anticipated and the global framerate is reduced.
 
 .. _section_display_single_parallel:
@@ -291,7 +291,7 @@ Parallel Connection
 When the :ref:`swap policy <section_display_swap_double_parallel>` is not possible (the display panel is mapped on a fixed MCU memory address), the policy **single buffer** can be used.
 Like swap policy, this double buffering avoids flickering and inconsistent rendering: it is well suited to high quality animations.
 
-The *flush* step consists in copying the back buffer content to the frame buffer (often by using a DMA).
+The *flush* step consists in copying the back buffer content to the front buffer (often by using a DMA).
 
 .. figure:: images/ui_display_single_parallel.*
    :alt: Single Buffer (parallel)
@@ -303,9 +303,9 @@ The *flush* step consists in copying the back buffer content to the frame buffer
 When the :ref:`swap policy <section_display_swap_double_parallel>` can be used, the *single buffer* policy can be also used.
 However there are some differences:
 
-* In *Swap Double* policy, the new frame buffer data is available instantly. As soon as the LCD controller has updated its frame buffer address, the data is ready to be sent to the LCD. In *Copy* policy, the process of copying the data to the display buffer occurs while the LCD controller is reading it. Therefore, the buffer copy has to be faster than the LCD controller reading. If this requirement is not met, the LCD controller will send a mix of new and old data (because the buffer copy is not completely finished).
-* In *Swap Double* policy, the synchronization with the LCD controller is more effortless. An interrupt is thrown as soon as the LCD controller has updated its frame buffer address. In *Copy* policy, the copy buffer process should be synchronized with the LCD tearing signal.
-* In *Single* policy, during the copy, the destination buffer (the frame buffer) is used by the copy buffer process (DMA, memcopy, etc.) and by the LCD controller. Both masters are using the same RAM section. This same RAM section switches in *Write* mode (copy buffer process) and *Read* mode (LCD controller). 
+* In *Swap Double* policy, the new front buffer data is available instantly. As soon as the LCD controller has updated its front buffer address, the data is ready to be sent to the LCD. In *Copy* policy, the process of copying the data to the front buffer occurs while the LCD controller is reading it. Therefore, the buffer copy has to be faster than the LCD controller reading. If this requirement is not met, the LCD controller will send a mix of new and old data (because the buffer copy is not completely finished).
+* In *Swap Double* policy, the synchronization with the LCD controller is more effortless. An interrupt is thrown as soon as the LCD controller has updated its front buffer address. In *Copy* policy, the copy buffer process should be synchronized with the LCD tearing signal.
+* In *Single* policy, during the copy, the destination buffer (the front buffer) is used by the copy buffer process (DMA, memcopy, etc.) and by the LCD controller. Both masters are using the same RAM section. This same RAM section switches in *Write* mode (copy buffer process) and *Read* mode (LCD controller). 
 
 .. _section_display_copyswap:
 
@@ -315,11 +315,11 @@ Copy and Swap Buffer
 Serial Connection
 """""""""""""""""
 
-When the time to send to the data from the back buffer to the frame buffer is :ref:`too long <section_display_single_serial>`, a second buffer can be allocated in the MCU memory.
+When the time to send to the data from the back buffer to the front buffer is :ref:`too long <section_display_single_serial>`, a second buffer can be allocated in the MCU memory.
 This buffer can be used by the application while the first buffer is sent.
 This allows to anticipate the drawings even if the first drawings are not fully sent.
 This is the notion of **copy and swap buffer**.
-The buffers are usually called **back buffer 1** and **back buffer 2** (the display module's buffer is the **frame buffer**).
+The buffers are usually called **back buffer 1** and **back buffer 2** (the display module's buffer is the **front buffer**).
 
 The *flush* step consists in sending the back buffer data to the display module memory **and** swapping both back buffers:
 
@@ -337,12 +337,12 @@ The *flush* step consists in sending the back buffer data to the display module 
 Parallel Connection
 """""""""""""""""""
 
-When the time to copy the data from the back buffer to the frame buffer is :ref:`too long <section_display_single_parallel>`, a third buffer can be allocated in the MCU memory.
+When the time to copy the data from the back buffer to the front buffer is :ref:`too long <section_display_single_parallel>`, a third buffer can be allocated in the MCU memory.
 This buffer can be used by the application during the copy of the first buffer.
 This allows to anticipate the drawings even if the first drawings are not fully copied.
 This is the notion of **copy and swap buffer**.
-The buffers are usually called **back buffer 1** and **back buffer 2** (the third buffer in is the **frame buffer**).
-The *flush* step consists in copying the back buffer data to the frame buffer **and** swapping both back buffers.
+The buffers are usually called **back buffer 1** and **back buffer 2** (the third buffer in is the **front buffer**).
+The *flush* step consists in copying the back buffer data to the front buffer **and** swapping both back buffers.
 
 * The back buffer 1 is used as *copying* buffer.
 * The back buffer 2 is not used: the application can immediately draw into it without waiting for the back buffer 1 to be copied.
@@ -871,7 +871,7 @@ The Graphics Engine is designed to be synchronized with the display refresh rate
 Captions definition:
 
 * UI: It is the UI task which performs the drawings in the back buffer. At the end of the drawings, the examples consider that the UI thread calls `Display.flush()`_ 1 millisecond after the end of the drawings. At this moment, a flush can start (the call to `Display.flush()`_ is symbolized by a simple `peak` in chronograms).
-* Flush: In :ref:`single buffer<section_display_single>` policy, it is the time to transfer the content of the back buffer to the display buffer. In :ref:`double<section_display_swap_double_parallel>` or :ref:`triple<section_display_triple>` policy, it is the time to swap back and display buffers (the instruction is often instantaneous but the action is often performed at the beginning of the next display refresh rate). During this time, the back buffer is `in use` and UI task has to wait the end of swap before starting a new drawing. 
+* Flush: In :ref:`single buffer<section_display_single>` policy, it is the time to transfer the content of the back buffer to the front buffer. In :ref:`double<section_display_swap_double_parallel>` or :ref:`triple<section_display_triple>` policy, it is the time to swap back and front buffers (the instruction is often instantaneous but the action is often performed at the beginning of the next display refresh rate). During this time, the back buffer is `in use` and UI task has to wait the end of swap before starting a new drawing. 
 * Tearing: The peaks show the tearing signals.
 * Rendering frequency: the frequency between the start of a drawing to the end of flush.
 
@@ -901,14 +901,14 @@ In this example, the times are identical to previous example. The tearing signal
 Additional Buffer 
 -----------------
 
-Some devices take a lot of time to send the back buffer content to the display buffer. The following examples demonstrate the consequence on rendering frequency. The use of an additional buffer optimizes this frequency, however it uses a lot of RAM memory.
+Some devices take a lot of time to send the back buffer content to the front buffer. The following examples demonstrate the consequence on rendering frequency. The use of an additional buffer optimizes this frequency, however it uses a lot of RAM memory.
 
 In this example, the drawing time is 7ms, the time between the end of drawing and the call to `Display.flush()`_ is 1ms and the flush time is 12ms. So the expected rendering frequency is 7 + 1 + 12 = 20ms (50Hz). Flush starts just after the call to `Display.flush()`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. The rendering frequency is cadenced on drawing time + flush time.
 
 .. figure:: images/uiDisplaySync05.*
    :width: 100%
 
-As mentioned above, the idea is to use :ref:`two back buffers<section_display_copyswap>`. First, UI task is drawing in the back buffer ``A``. Just after the call to `Display.flush()`_, the flush can start. During the flush time (copy of the back buffer ``A`` to the display buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When the drawings in the back buffer ``B`` are done (and after the call to `Display.flush()`_), the application cannot start a third frame by drawing into the back buffer ``A`` because the flush is using it. As soon as the flush is done, a new flush (of the back buffer ``B``) can start. The rendering frequency is cadenced on flush time, i.e. 12ms (83.3Hz). 
+As mentioned above, the idea is to use :ref:`two back buffers<section_display_copyswap>`. First, UI task is drawing in the back buffer ``A``. Just after the call to `Display.flush()`_, the flush can start. During the flush time (copy of the back buffer ``A`` to the front buffer), the back buffer ``B`` can be used by UI task to continue the drawings. When the drawings in the back buffer ``B`` are done (and after the call to `Display.flush()`_), the application cannot start a third frame by drawing into the back buffer ``A`` because the flush is using it. As soon as the flush is done, a new flush (of the back buffer ``B``) can start. The rendering frequency is cadenced on flush time, i.e. 12ms (83.3Hz). 
 
 .. figure:: images/uiDisplaySync06.*
    :width: 100%
@@ -1217,8 +1217,8 @@ Parallel Display: Copy Policy (Tearing Disabled)
 .. note:: This policy should synchronize the copy buffer process with the LCD tearing signal. However,  this notion is sometimes not available. This chapter describes the copy buffer process without using the tearing signal (see :ref:`next chapter<section_lluidisplay_parallel_tearing>`).
 
 :ref:`This buffer policy<section_display_single_parallel>` requires two buffers in RAM. 
-The first buffer is used by the application (back buffer) and the second buffer is used by the LCD controller to send data to the display (frame buffer).
-The content of the frame buffer must be updated with the content of the back buffer when the Graphics Engine is calling the ``flush()`` function.
+The first buffer is used by the application (back buffer) and the second buffer is used by the LCD controller to send data to the display (front buffer).
+The content of the front buffer must be updated with the content of the back buffer when the Graphics Engine is calling the ``flush()`` function.
 
 The specification of the ``flush()`` function is to be **not** blocker (atomic, see above). 
 Its aim is to prepare / configure the copy buffer process and then, to start the asynchronous copy.

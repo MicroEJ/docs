@@ -50,7 +50,7 @@ The following sections list all the formats and their usage.
 MicroEJ Format: Display
 =======================
 
-The display buffer holds a pixel encoding which is:
+The display back buffer holds a pixel encoding which is:
 
 * standard: see :ref:`section_image_standard_output`,
 * grayscale: see :ref:`section_image_grayscale_output`,

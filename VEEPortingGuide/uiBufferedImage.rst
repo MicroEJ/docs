@@ -36,10 +36,10 @@ Display
 
 This is the format used by default when no format is specified when creating a MicroUI ``BufferedImage``.
 
-The image format is the same as the display buffer format; in other words, its number of bits-per-pixel and its pixel bits organization are the same (see chapter :ref:`section_image_display_raw`).
+The image format is the same as the front buffer format; in other words, its number of bits-per-pixel and its pixel bits organization are the same (see chapter :ref:`section_image_display_raw`).
 
 * Image creation: the Graphics Engine provides the capacity to create this kind of image; no specific support is required in the VEE Port.
-* Draw into the image: the rules to draw into this kind of buffered image are the same as in the display buffer; see:ref:`section_drawings`.
+* Draw into the image: the rules to draw into this kind of buffered image are the same as in the display back buffer; see:ref:`section_drawings`.
 * Draw the image: the rules to draw this kind of buffered image are described in the chapter :ref:`image renderer standard <section_buffered_image_drawer_standard>`.
 
 Standard
@@ -258,7 +258,7 @@ Draw into the Image: Display Format
 Overview
 """"""""
 
-To draw into a buffered image with the display format, the same concepts to draw in the display buffer are used: the MicroUI Abstraction Layer drawings are redirected to the ``ui_drawing.h`` functions (see :ref:`section_drawings` for more details).
+To draw into a buffered image with the display format, the same concepts to draw in the display back buffer are used: the MicroUI Abstraction Layer drawings are redirected to the ``ui_drawing.h`` functions (see :ref:`section_drawings` for more details).
 
 The MicroUI C module already implements all ``ui_drawing.h`` functions, and the drawings are redirected to the :ref:`section_drawings_soft`.
 However the function names are ``UI_DRAWING_DEFAULT_drawX()`` and not ``UI_DRAWING_drawX()``.
@@ -500,7 +500,7 @@ Draw the Image: Multiple Formats Implementation
 Unlike the Single Format Implementation, the destination may be another format than the display format.
 Consequently, the drawer must check the image format **and** the destination format.
 
-The following graph illustrates the drawing of an image (draw, rotate, or scale) in another image or display buffer (to draw a shape, see :ref:`section_buffered_image_c_drawinto`).
+The following graph illustrates the drawing of an image (draw, rotate, or scale) in another image or display back buffer (to draw a shape, see :ref:`section_buffered_image_c_drawinto`).
 This graph gathers both :ref:`draw in a custom image <section_buffered_image_c_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom>`.
 
 .. graphviz:: :align: center
@@ -931,7 +931,7 @@ It is also possible to declare it programmatically (see where a drawer is regist
 Draw the Image: Multiple Formats Implementation
 -----------------------------------------------
 
-The following graph illustrates the drawing of an image (draw, rotate, or scale) in another image or display buffer (to draw a shape, see :ref:`section_buffered_image_fp_drawinto`).
+The following graph illustrates the drawing of an image (draw, rotate, or scale) in another image or display back buffer (to draw a shape, see :ref:`section_buffered_image_fp_drawinto`).
 This graph gathers both graphs :ref:`draw in a custom image <section_buffered_image_fp_drawinto>` and :ref:`render a custom image <section_buffered_image_drawer_custom_fp>`.
 
 .. graphviz:: :align: center

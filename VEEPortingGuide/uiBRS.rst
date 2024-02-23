@@ -9,7 +9,7 @@ Buffer Refresh Strategy
 Overview
 ========
 
-The Buffer Refresh Strategy (BRS) ensures that the display buffer (front buffer) contains all the drawings before letting the display driver to flush this buffer to the display panel.
+The Buffer Refresh Strategy (BRS) ensures that the front buffer contains all the drawings before letting the display driver to flush this buffer to the display panel.
 The drawings are the drawings made since last *flush* **and** the *past*.
 The *past* symbolizes the drawings made before the last *flush*  and that has not been altered by the new drawings.
 
@@ -258,7 +258,7 @@ In this case, the restoration is useless because the buffer always contains the 
 The principle of this strategy is to cumulate the drawing regions.
 The refresh consists in sending these regions (a list of rectangles) that have been modified since the last flush (or a unique rectangle that encapsulates all the regions) to the LCD driver through the LLAPI ``LLUI_DISPLAY_IMPL_flush()``. 
 
-The implicit and explicit regions have the same meaning: a dirty region to send to the display buffer.
+The implicit and explicit regions have the same meaning: a dirty region to send to the front buffer.
 
 Behavior
 --------
@@ -330,7 +330,7 @@ Here are the steps around the strategy describing how to use it:
 1. Some drawings are performed in the back buffer.
 2. A ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
 3. The strategy calls ``LLUI_DISPLAY_IMPL_flush()``.
-4. The display driver has to implement ``LLUI_DISPLAY_IMPL_flush()`` that consists in sending the back buffer data to the display frame buffer.
+4. The display driver has to implement ``LLUI_DISPLAY_IMPL_flush()`` that consists in sending the back buffer data to the front buffer.
 5. As soon as the sent is performed, the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the same back buffer address (there is only one buffer).
 6. The Graphics Engine is now unlocked and a new drawing can start in the back buffer.
 
@@ -426,18 +426,18 @@ Read the Display
 
 Before the very first drawing after a flush, the content of the back buffer does not contain the past (the restoration has not been performed). 
 By consequence, the first read actions (``GraphicsContext.readPixel()``, ``Painter.drawDisplayRegion()``, etc.) cannot use the back buffer as source buffer. 
-The algorithm has to call ``LLUI_DISPLAY_getSourceImage()`` to retrieve a pointer to the frame buffer address.
+The algorithm has to call ``LLUI_DISPLAY_getSourceImage()`` to retrieve a pointer to the front buffer address.
 
 Use (Swap Double Buffer)
 ------------------------
 
-Here are the steps around the strategy describing how to use it in :ref:`double<section_display_swap_double_parallel>` buffer policy (the two buffers have the same role alternatively, back buffer and frame buffer):
+Here are the steps around the strategy describing how to use it in :ref:`double<section_display_swap_double_parallel>` buffer policy (the two buffers have the same role alternatively, back buffer and front buffer):
 
 1. Some drawings are performed in the back buffer.
 2. A ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
 3. The strategy calls ``LLUI_DISPLAY_IMPL_flush()``.
-4. The display driver has to implement ``LLUI_DISPLAY_IMPL_flush()`` that consists in swapping the drawing buffers (back and frame buffers).
-5. As soon as the display *uses* the new frame buffer (the new back buffer is now freed), the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address (== previous frame buffer).
+4. The display driver has to implement ``LLUI_DISPLAY_IMPL_flush()`` that consists in swapping the drawing buffers (back and front buffers).
+5. As soon as the display *uses* the new front buffer (the new back buffer is now freed), the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address (== previous front buffer).
 6. The Graphics Engine is now unlocked.
 7. Before the very first drawing, this strategy copies the regions to restore from the previous back buffer to the new back buffer.
 8. A new drawing can start in the new back buffer.
@@ -446,8 +446,8 @@ Use (Swap Triple Buffer)
 ------------------------
 
 Here are the steps around the strategy describing how to use it in :ref:`triple<section_display_triple>` buffer policy.
-The three buffers have the same role alternatively: back buffers (A and B) and frame buffer (C). 
-On startup, the LCD buffer is mapped on the buffer (C), the buffer (A) is the back buffer and the buffer (B) is not used yet:
+The three buffers have the same role alternatively: back buffers (A and B) and front buffer (C). 
+On startup, the front buffer is mapped on the buffer (C), the buffer (A) is the back buffer and the buffer (B) is not used yet:
 
    * buffer (A): the application's drawing buffer
    * buffer (B): free
@@ -486,7 +486,7 @@ Here are the steps around the strategy describing how to use it in :ref:`copy an
 The two buffers have the same role alternatively: back buffer and sending buffer. 
 On startup, the sending buffer is not used yet.
 
-In this policy, the implementation of ``LLUI_DISPLAY_IMPL_flush()`` consists in swapping the back buffers and to send the content of the back buffer to the display buffer (SPI, DSI, etc.). 
+In this policy, the implementation of ``LLUI_DISPLAY_IMPL_flush()`` consists in swapping the back buffers and to send the content of the back buffer to the front buffer (SPI, DSI, etc.). 
 This subtlety allows to reuse the same back buffer after the end of the sending: this prevents to restore the past.
 
 1. Some drawings are performed in the back buffer.
@@ -645,7 +645,7 @@ This strategy is the strategy that mimics the behavior of the specification of t
 
 The specification consisted in:
 
-   1. swapping the back buffer and the display frame buffer at flush time,
+   1. swapping the back buffer and the front buffer at flush time,
    2. letting the BSP restore itself the back buffer with the content of the previous drawings (the past) before unlocking the Graphics Engine after a flush. 
 
 By consequence, the past was always available before making the very first drawing after a flush.
@@ -718,8 +718,8 @@ Here are the steps around the strategy describing how to use it:
 1. Some drawings are performed in the buffer.
 2. A ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
 3. The strategy calls ``LLUI_DISPLAY_IMPL_flush()``.
-4. The display driver has to implement ``LLUI_DISPLAY_IMPL_flush()``: swap the back buffer and the frame buffer.
-5. As soon as the display *uses* the new display frame buffer (the new back buffer is now freed), the BSP has to launch a copy of the new frame buffer to the new back buffer (use the bounding box).
+4. The display driver has to implement ``LLUI_DISPLAY_IMPL_flush()``: swap the back buffer and the front buffer.
+5. As soon as the display *uses* the new front buffer (the new back buffer is now freed), the BSP has to launch a copy of the new front buffer to the new back buffer (use the bounding box).
 6. At soon as the copy is done (the copy may be asynchronous), the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address.
 7. The Graphics Engine is now unlocked.
 8. Some drawings are performed in the back buffer.
@@ -753,14 +753,14 @@ The options (some *defines*) are shared between the strategies:
 
 * ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE`` (``ui_display_brs_configuration.h``): configures the number of rectangles that the strategy gives to the implementation of ``LLUI_DISPLAY_IMPL_flush()``. If not set, the number or regions depends on the strategy. If set, only one region is given: the bounding box of all drawing regions. Used by:
 
-  * Predraw: the list of regions is often useless (the LCD driver has just to swap the back and frame buffers), however this list can be used for the buffer policy :ref:`section_display_copyswap`. Calculating the bounding box uses takes a bit of memory and time; if the bounding box is useless, it is recommended to not enable this option.
+  * Predraw: the list of regions is often useless (the LCD driver has just to swap the back and front buffers), however this list can be used for the buffer policy :ref:`section_display_copyswap`. Calculating the bounding box uses takes a bit of memory and time; if the bounding box is useless, it is recommended to not enable this option.
   * Single: the list of regions can be useful to refresh small parts of the display panel.
   * Legacy: this option is never used and the bounding box of all drawing regions is given to the implementation of ``LLUI_DISPLAY_IMPL_flush()``.
 
 * ``UI_RECT_COLLECTION_MAX_LENGTH`` (``ui_rect_collection.h``): configures the size of the arrays that hold a list of regions (``ui_rect_collection_t``). Default value is ``8``, when the collection is full, the strategy replaces all the regions by the bounding box of all regions. Used by:
 
   * Predraw: number of regions to restore per back buffer. 
-  * Single: number of regions that the LCD driver has to send to the display buffer. 
+  * Single: number of regions that the LCD driver has to send to the front buffer. 
 
 Weak Functions
 --------------
@@ -843,7 +843,7 @@ The buffer policy is responsible of:
 
 - Giving access to the back buffer (the buffer used to draw) in ``getBackBuffer()``.
 - Giving access to the front buffer (the buffer displayed in the ``Display`` widget) in ``getFrontBuffer()``.
-- Flushing the set of modified rectangles from the drawing buffer to the display buffer in ``flush(DisplayBufferManager, Rectangle[])`` and requesting the display widget to be refreshed.
+- Flushing the set of modified rectangles from the drawing buffer to the front buffer in ``flush(DisplayBufferManager, Rectangle[])`` and requesting the display widget to be refreshed.
 
   .. code-block:: java
 

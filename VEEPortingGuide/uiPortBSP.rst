@@ -93,7 +93,7 @@ Display: LCD Constraints
 According to the LCD constraints (see :ref:`ui_port_conf`), some additional LLAPI must be implemented:
 
 - ``LLUI_DISPLAY_IMPL_convertARGBColorToDisplayColor`` and ``LLUI_DISPLAY_IMPL_convertDisplayColorToARGBColor``: required when the pixel format is custom (not standard, see :ref:`section_display_implementation`).
-- ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors``: required when the display buffer is a LUT buffer, not a pixel buffer.
+- ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors``: required when the display back buffer is a LUT buffer, not a pixel buffer.
 - ``LLUI_DISPLAY_IMPL_isDoubleBuffered``: the default implementation returns always ``true``; only useful as information for the application.
 - ``LLUI_DISPLAY_IMPL_isColor``: the default implementation always returns ``true`` when the BPP is higher than 8; only useful as information for the application.
 - ``LLUI_DISPLAY_IMPL_getNumberOfColors``: the default implementation returns always ``1 << BPP``; only useful as information for the application.

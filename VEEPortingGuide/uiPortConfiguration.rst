@@ -161,7 +161,7 @@ The hardware constraints (display, bus, memory, etc.) may drive the configuratio
 
 - The pixel format: Some hardware cannot use another pixel format other than the one of the display. This format may be standard or custom. See :ref:`display_pixel_structure`.
 - The size of the buffers: The available memory may be limited. This limitation can drive the chosen pixel format.
-- Memory alignment: Some LCD controllers require a memory alignment on the display buffer (alignment on 64 bits, for instance).
+- Memory alignment: Some LCD controllers require a memory alignment on the display front buffer (alignment on 64 bits, for instance).
 - Buffer width alignment: Some LCD controllers also require an alignment for each line. The line size (in pixels) in memory may be larger than the display line size (width): this is the stride. The alignment constraint may be expressed in pixels or bytes. The required memory to allocate becomes: ``memory_size = stride (in pixels) x height x bpp / 8``.
 
 Configuration

@@ -47,7 +47,7 @@ BSP Without GPU
 	* In the C project configuration, include the new C files ``ui_display_brs.c``, ``ui_display_brs_legacy.c``, ``ui_display_brs_predraw.c``, ``ui_display_brs_single.c`` and ``ui_rect_util.c``.
 	* Read the documentation about the display :ref:`section_brs`; then configure the C module by setting the right configuration in ``ui_display_brs_configuration.h``.
    	* Comment the line ``#error "This header must [...]"``.
-   	* The next actions depend on the available numbers of buffers allocated in the MCU memories and if the LCD frame buffer is mapped on a MCU's buffer (if not, that means the LCD device owns a buffer). The following table redirects the next steps according to the display connection with the MCU:
+   	* The next actions depend on the available numbers of buffers allocated in the MCU memories and if the front buffer is mapped on a MCU's buffer (if not, that means the LCD device owns a buffer). The following table redirects the next steps according to the display connection with the MCU:
 
 		.. table:: Copy and / or Swap actions
 
@@ -72,7 +72,7 @@ BSP Without GPU
 		
 		* Store (in a static field) the rectangle to flush (the array contains only one rectangle).
 		* Store (in a static field) the flush identifier.
-		* Unlock (immediately or wait the LCD tearing signal interrupt) the *copy task* (hardware of software) that will send (or copy) the back buffer data to the LCD frame buffer.
+		* Unlock (immediately or wait the LCD tearing signal interrupt) the *copy task* (hardware of software) that will send (or copy) the back buffer data to the front buffer.
 		* Remove the returned value (the back buffer address).
 	
 	* At the end of the copy (in an interrupt or at the end of the software *copy task*), replace the call to ``LLUI_DISPLAY_flushDone()`` by ``LLUI_DISPLAY_setDrawingBuffer()``: it will unlock the Graphics Engine. Give the back buffer address (same address as at start-up) and the flush identifier.
@@ -85,7 +85,7 @@ BSP Without GPU
 		
 		* Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
 		* Store (in a static field) the flush identifier.
-		* Unlock (immediately or wait the LCD tearing signal interrupt) the *swap task* (hardware of software) that will swap the back buffer and the LCD frame buffer.
+		* Unlock (immediately or wait the LCD tearing signal interrupt) the *swap task* (hardware of software) that will swap the back buffer and the front buffer.
 		* Remove the static fields ``ymin`` and ``ymax`` (now useless).
 		* Remove the returned value (the back buffer address).
 	
@@ -96,8 +96,8 @@ BSP Without GPU
   
 	* Case of *software swap* (dedicated *swap task*): change the task actions:
 
-		* Swap back and frame buffers.
-		* Wait for the end of buffers swap: ensure the LCD driver does not use anymore the old LCD frame buffer.
+		* Swap back and front buffers.
+		* Wait for the end of buffers swap: ensure the LCD driver does not use anymore the old front buffer.
     	* Remove all the code concerning the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
     	* Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier.
   
@@ -118,7 +118,7 @@ BSP Without GPU
 		* Swap buffers.
     	* Remove all the code concerning the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
     	* Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier (the Graphics Engine can be unlocked immediately because a buffer is freed for sure).
-    	* Wait for the end of buffers swap: ensure the LCD driver does not use anymore the old LCD frame buffer.
+    	* Wait for the end of buffers swap: ensure the LCD driver does not use anymore the old front buffer.
 
 * *[Display "Copy and Swap"]*
 
@@ -130,12 +130,12 @@ BSP Without GPU
 		* Store (in a static field) the rectangle to flush (the array contains only one rectangle).
 		* Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
 		* Store (in a static field) the flush identifier.
-		* Unlock (immediately or wait the LCD tearing signal interrupt) the *copy & swap task* that will send (or copy) the current back buffer data to the LCD frame buffer and that will swap the back buffers.
+		* Unlock (immediately or wait the LCD tearing signal interrupt) the *copy & swap task* that will send (or copy) the current back buffer data to the front buffer and that will swap the back buffers.
 		* Remove the returned value (the back buffer address).
 	  
 	* In the *copy & swap task*: change the "copy & swap" actions:
 
-		* Start the sending of the current back buffer (called *buffer A*) data to the LCD frame buffer.
+		* Start the sending of the current back buffer (called *buffer A*) data to the front buffer.
 		* Swap back *buffer A* and back *buffer B*.
 		* Wait for the end of back buffers swap: ensure the LCD driver is now using the *buffer A* as *sending* buffer.
     	* Remove all the code concerning to the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
@@ -1271,7 +1271,7 @@ BSP
  
 	- Remove the function ``LLDISPLAY_SWITCH_IMPL_getDisplayBufferAddress()``
 	- Replace the function ``void LLDISPLAY_SWITCH_IMPL_getDisplayBufferAddress()`` by ``int32_t LLDISPLAY_IMPL_flush()``
-	- In this function, return the old LCD frame buffer address
+	- In this function, return the old front buffer address
 	- Replace the function ``LLDISPLAY_COPY_IMPL_getBackBufferAddress()`` by ``LLDISPLAY_IMPL_getGraphicsBufferAddress()``
 	
 * For LLDISPLAY ``COPY``

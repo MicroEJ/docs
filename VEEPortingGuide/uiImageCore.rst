@@ -22,7 +22,7 @@ Furthermore, the BSP can override an Abstraction Layer API for a specific MicroE
 Destination Format
 ==================
 
-Since MicroUI 3.2, the destination buffer of the drawings can be different from the display buffer format (see :ref:`section_image_display_raw`).
+Since MicroUI 3.2, the destination buffer of the drawings can be different from the display back buffer format (see :ref:`section_image_display_raw`).
 This destination buffer format can be a :ref:`standard format <section_image_standard_raw>` (ARGB8888, A8, etc.) or a :ref:`custom format <section_image_custom_raw>`. 
 
 See :ref:`section_buffered_image` for more information about how to create buffered images with another format than the display format and how to draw in them.
