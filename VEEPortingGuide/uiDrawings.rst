@@ -793,7 +793,7 @@ Simulator
 
 Similarly, MicroUI exposes two functions to set drawing log flags in the front panel implementation.
 Both functions are declared as methods of the interface ``MicroUIGraphicsContext`` and are documented there.
-The graphics engine provides an implementation for these methods.
+The Graphics Engine provides an implementation for these methods.
 
 * ``MicroUIGraphicsContext.reportWarning`` behaves like ``LLUI_DISPLAY_reportWarning`` and reports a warning to the application.
 * ``MicroUIGraphicsContext.reportError`` behaves like ``LLUI_DISPLAY_reportError`` and reports an error to the application.
