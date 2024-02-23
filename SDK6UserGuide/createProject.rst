@@ -276,12 +276,6 @@ Application Project
      applicationEntryPoint = "com.mycompany.Main"
    }
 
-- If your Application is a Kernel Application, create a file named ``kernel.kf`` in the ``src/main/resources`` folder.
-  This file is a property file which must contain at least the ``version`` property, and optionally the ``name`` property (defaults to ``KERNEL``), for example::
-
-   version=1.0.0
-   name=MY-KERNEL
-
 Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
 .. _sdk_6_create_project_configure_addon_library:
