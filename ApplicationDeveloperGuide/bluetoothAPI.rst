@@ -46,7 +46,7 @@ Connection APIs
 
 BLE introduces two roles of devices: the Central and Peripheral roles.
 A Central device scans nearby Peripheral devices and initiates the connection, while a Peripheral device advertises (broadcasts) and listens for connection requests.
-In this regard, a Peripheral device can be thought of as a Wi-Fi Access Point while a Peripheral device can be thought of as a Wi-Fi Station.
+In this regard, a Central device can be thought of as a Wi-Fi Station while a Peripheral device can be thought of as a Wi-Fi Access Point.
 
 The following sequence explains the typical connection flow between two devices:
 
@@ -72,12 +72,12 @@ Here are the steps of the pairing procedure:
 
 - Either device sends a pairing request or security request to the other device
 - Both devices share their I/O capabilities
-- If the I/O capabilities of the devices allow to create a connection with MITM protection, the Passkey Entry method is used:
+- If the I/O capabilities of the devices allow to create a connection with protection against MITM attacks, the Passkey Entry method is used:
 
   - The device with display capability displays a generated passkey on its user interface
   - The device with input capability reads the passkey from the user input and sends it to the device with display capability
   - The device with display capability checks that the passkey match
-- Otherwise, the Just Works method is used and the pairing is complete. This method does not prevent MITM attacks.
+- Otherwise, the "Just Works" method is used and the pairing is complete. This method does not prevent from MITM attacks.
 
 A device can call the `BluetoothConnection.sendPairRequest()`_ API to initiate pairing.
 The `ConnectionListener.onPairRequest()`_ hook is called when the device receives a pairing request.
@@ -102,7 +102,7 @@ A service provides characteristics, which can be thought of as data channels.
 A characteristic has property flags, which indicate to the other devices how the characteristic can be used (whether it can be written, whether it provides notifications, etc.).
 A characteristic may have descriptors, which allow to describe or configure the characteristic in a specific way.
 Every attribute (characteristic or descriptor) has permission flags, which control its access (read-only, read/write, requires authentication, etc.).
-Services and attributes are all identified by 16-bit UUID. If a service or attribute is standard, the relevant specification indicates its UUID.
+Services and attributes are all identified by a 16-bit UUID. If a service or attribute is standard, the relevant specification indicates its UUID.
 
 A device can call the getter APIs of `BluetoothService`_, `BluetoothCharacteristic`_, `BluetoothDescriptor`_ and `BluetoothAttribute`_ to browse the content of a service.
 
@@ -111,12 +111,12 @@ BLE devices use characteristics to transfer data. There are 3 main procedures:
 - A **read request** on a characteristic of a **discovered service** allows to **request data** from the device it belongs to.
   The device which discovered the service sends a read request and the device which owns the service sends back a read response with the data.
 - A **write request** on a characteristic of a **discovered service** allows to **send data** to the device it belongs to.
-  The device which discovered the service sends a write request with the data and the device which owns the service sends back a read response.
+  The device which discovered the service sends a write request with the data and the device which owns the service sends back a write response.
 - A **notification** on a characteristic of a **provided service** allows to **send data** to any connected device.
   The device which owns the service sends a notification with the data to the desired device.
   BLE provides a built-in way to subcribe to the notifications of a characteristic of a discovered service, by sending a write request on its CCC descriptor.
 
-For the read request procedure, a device can call the send `BluetoothConnection.sendReadRequest()`_ API to send a read request.
+For the read request procedure, a device can call the `BluetoothConnection.sendReadRequest()`_ API to send a read request.
 The `LocalServiceListener.onReadRequest()`_ hook is called when a device receives a read request.
 It can call the `BluetoothConnection.sendReadResponse()`_ API send a read response with the data.
 The `RemoteServiceListener.onReadCompleted()`_ hook is called with the data when a device receives a read response.
@@ -132,25 +132,25 @@ Classes Summary
 
 Main classes:
 
-- `BluetoothAdapter`_ (singleton): Performs operations not related to a specific device connection (scan, advertise, connect, manage local GATT services)
-- `BluetoothConnection`_: Performs operations related to a specific device connection (disconnect, pair, discover remote GATT services, send GATT requests)
-- `BluetoothService`_: Represents a local or remote GATT service
+- `BluetoothAdapter`_ (singleton): Performs operations not related to a specific device connection (scan, advertise, connect, provide GATT service)
+- `BluetoothConnection`_: Performs operations related to a specific device connection (disconnect, pair, discover GATT services, send GATT requests)
+- `BluetoothService`_: Represents a GATT service
 - `ConnectionListener`_ and `DefaultConnectionListener`_: Callbacks for all events not related to a specific GATT service
-- `LocalServiceListener`_ and `DefaultLocalServiceListener`_: Callbacks for events related to a specific local GATT service
-- `RemoteServiceListener`_ and `DefaultRemoteServiceListener`_: Callbacks for events related to a specific remote GATT service
+- `LocalServiceListener`_ and `DefaultLocalServiceListener`_: Callbacks for events related to a specific provided GATT service
+- `RemoteServiceListener`_ and `DefaultRemoteServiceListener`_: Callbacks for events related to a specific discovered GATT service
 
 Stateless and immutable classes:
 
 - `BluetoothAddress`_: Address (BD_ADDR) of a device
 - `BluetoothScanFilter`_: Scan result filter used when starting a scan
 - `BluetoothDataTypes`_: Data types enumeration used in advertisement payloads
-- `BluetoothCharacteristic`_: Represents a local or remote GATT characteristic
-- `BluetoothDescriptor`_: Represents a local or remote GATT descriptor
+- `BluetoothCharacteristic`_: Represents a GATT characteristic
+- `BluetoothDescriptor`_: Represents a GATT descriptor
 - `BluetoothAttribute`_: Abstract base class of BluetoothCharacteristic and BluetoothDescriptor
 - `BluetoothUuid`_: UUID of a GATT service or GATT attribute
 - `BluetoothProperties`_: Properties enumeration used in GATT characteristics
-- `BluetoothPermissions`_: Permissions enumeration used when adding a local GATT attribute
-- `BluetoothServiceDefinition`_: GATT service model used when adding a local GATT service
+- `BluetoothPermissions`_: Permissions enumeration used when defining a GATT attribute
+- `BluetoothServiceDefinition`_: Builder class used when adding a GATT service
 - `BluetoothStatus`_: Status code enumeration used when reading/writing a GATT attribute
 
 .. _BluetoothAdapter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html
