@@ -118,7 +118,7 @@ Features
 
 * :ref:`Display buffer policy and buffer refresh strategy<section_brs_sim>`: simulates the display buffer policy and the buffer refresh strategy.
 * :ref:`LCD refresh rate<section_ui_simulation_refreshrate>`: simulates the time between two visible frames on the hardware device.
-* :ref:`LCD flush time<section_ui_simulation_flushtime>`: simulates the time to send the frame content to the hardware device.
+* :ref:`LCD flush time<section_ui_simulation_flushtime>`: simulates the time to flush the frame content to the hardware device.
 * Backlight (enabled by default): ``backlightFeature=true|false``.
 * :ref:`Non-rectangular displays<section_ui_simulation_nonrectangulardisplay>`: ``filter="xxx.png"``. Some displays can have another appearance (for instance: circular).
 * :ref:`Standard<display_pixel_structure_standard>` pixel formats.
@@ -144,7 +144,7 @@ The application can substitute the VEE Port's value by setting the property ``-D
 Flush Time
 ----------
  
-On a hardware device, the time to send the frame data from the back buffer memory to the LCD is not null. 
+On a hardware device, the time to flush the frame data from the back buffer memory to the LCD is not null. 
 According to the hardware device technology, this time varies between 3-4 ms to 10-15ms. 
 In SPI mode, this time may be higher, around 50ms, even more.
 By default this widget copies the content of back buffer as faster as possible.

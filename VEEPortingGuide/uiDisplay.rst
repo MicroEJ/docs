@@ -75,7 +75,7 @@ There are two types of connection with the MCU: Serial and Parallel.
 Serial
 ------
 
-The MCU sends the data to show (the pixels) to the display module through a serial bus (SPI, DSI).
+The MCU transmits the data to show (the pixels) to the display module through a serial bus (SPI, DSI).
 The display module holds its memory and fills it with the received data.
 It continuously refreshes its content by reading the data from this memory.
 This memory is usually not accessible to the MCU: the MCU can only write into it with the right macro (SPI or DSI).
@@ -93,7 +93,7 @@ This is the notion of **unmapped memory**.
 Parallel
 --------
  
-The MCU features an LCD controller that sends the content of an MCU's buffer to the display module. 
+The MCU features an LCD controller that transmits the content of an MCU's buffer to the display module. 
 The display module doesn't hold its memory. 
 The LCD controller continuously updates the display panel's content by reading the MCU memory data. 
 By definition, this memory is addressed by the MCU: the MCU can write (and read) into it (the memory is in the MCU addresses range). 
@@ -125,7 +125,7 @@ The implementation of `Display.flush()`_  calls the Abstraction Layer API ``LLUI
 Decision Tree
 -------------
 
-The following flow chart provides a handy guide to pick the buffer policy suited to the hardware configuration.
+The following flow charts provide handy guides to pick the buffer policy suited to the hardware configuration.
 
 Serial Connection
 """""""""""""""""
@@ -267,7 +267,7 @@ For the display connection *serial*, there are two distinct buffers: the buffer 
 As long as only the back buffer is stored in the MCU mapped memory (the front buffer is stored in the display module unmapped memory), there is only one buffer to allocate.
 This is the notion of **single buffer**.
 
-The *flush* step consists in sending the data through the right bus (SPI, DSI).
+The *flush* step consists in transmitting the data through the right bus (SPI, DSI).
 
 .. figure:: images/ui_display_single_serial.*
    :alt: Single Buffer (serial)
@@ -277,10 +277,10 @@ The *flush* step consists in sending the data through the right bus (SPI, DSI).
    Single Buffer (serial)
 
 The display panel only shows complete frames; it cannot show partial drawings because the *flush* step is performed after all the drawings.
-The application cannot draw in the back buffer while the data is sent to the front buffer.
-As soon as the data is fully sent, the application can draw again in the back buffer.
+The application cannot draw in the back buffer while the data is transmitted to the front buffer.
+As soon as the data is fully transmitted, the application can draw again in the back buffer.
 
-The time to send the data from the back buffer to the front buffer may be long.
+The time to transmit the data from the back buffer to the front buffer may be long.
 During this time, no drawing can be anticipated and the global framerate is reduced.
 
 .. _section_display_single_parallel:
@@ -303,7 +303,7 @@ The *flush* step consists in copying the back buffer content to the front buffer
 When the :ref:`swap policy <section_display_swap_double_parallel>` can be used, the *single buffer* policy can be also used.
 However there are some differences:
 
-* In *Swap Double* policy, the new front buffer data is available instantly. As soon as the LCD controller has updated its front buffer address, the data is ready to be sent to the LCD. In *Copy* policy, the process of copying the data to the front buffer occurs while the LCD controller is reading it. Therefore, the buffer copy has to be faster than the LCD controller reading. If this requirement is not met, the LCD controller will send a mix of new and old data (because the buffer copy is not completely finished).
+* In *Swap Double* policy, the new front buffer data is available instantly. As soon as the LCD controller has updated its front buffer address, the data is ready to be read by the LCD controller. In *Copy* policy, the process of copying the data to the front buffer occurs while the LCD controller is reading it. Therefore, the buffer copy has to be faster than the LCD controller reading. If this requirement is not met, the LCD controller will read a mix of new and old data (because the buffer copy is not completely finished).
 * In *Swap Double* policy, the synchronization with the LCD controller is more effortless. An interrupt is thrown as soon as the LCD controller has updated its front buffer address. In *Copy* policy, the copy buffer process should be synchronized with the LCD tearing signal.
 * In *Single* policy, during the copy, the destination buffer (the front buffer) is used by the copy buffer process (DMA, memcopy, etc.) and by the LCD controller. Both masters are using the same RAM section. This same RAM section switches in *Write* mode (copy buffer process) and *Read* mode (LCD controller). 
 
@@ -315,17 +315,17 @@ Copy and Swap Buffer
 Serial Connection
 """""""""""""""""
 
-When the time to send to the data from the back buffer to the front buffer is :ref:`too long <section_display_single_serial>`, a second buffer can be allocated in the MCU memory.
-This buffer can be used by the application while the first buffer is sent.
-This allows to anticipate the drawings even if the first drawings are not fully sent.
+When the time to transmit to the data from the back buffer to the front buffer is :ref:`too long <section_display_single_serial>`, a second buffer can be allocated in the MCU memory.
+This buffer can be used by the application while the first buffer is transmitted.
+This allows to anticipate the drawings even if the first drawings are not fully transmitted.
 This is the notion of **copy and swap buffer**.
 The buffers are usually called **back buffer 1** and **back buffer 2** (the display module's buffer is the **front buffer**).
 
-The *flush* step consists in sending the back buffer data to the display module memory **and** swapping both back buffers:
+The *flush* step consists in transmitting the back buffer data to the display module memory **and** swapping both back buffers:
 
-* The back buffer 1 is used as *sending* buffer.
-* The back buffer 2 is not used: the application can immediately draw into it without waiting for the back buffer 1 to be sent.
-* At the end of the drawings in the back buffer 2, the back buffer 2 takes the role of the *sending* buffer and the back buffer 1 is free.
+* The back buffer 1 is used as *transmission* buffer.
+* The back buffer 2 is not used: the application can immediately draw into it without waiting for the back buffer 1 to be transmitted.
+* At the end of the drawings in the back buffer 2, the back buffer 2 takes the role of the *transmission* buffer and the back buffer 1 is free.
 
 .. figure:: images/ui_display_copyswap_serial.*
    :alt: Copy and Swap (serial)
@@ -379,7 +379,7 @@ If the display does not have its own internal memory, a complete buffer also has
 The implementation should follow these steps:
 
 1. First, the application draws in the partial buffer.
-2. Then, to flush the drawings on the screen, the data of the partial buffer is sent to the display (either copied to its internal memory or to the complete buffer in RAM).
+2. Then, to flush the drawings on the screen, the data of the partial buffer is flushed to the display (either copied to its internal memory or to the complete buffer in RAM).
 3. Finally, a synchronization is required before starting the next drawing operation.
 
 Dual Partial Buffer
@@ -871,7 +871,7 @@ The Graphics Engine is designed to be synchronized with the display refresh rate
 Captions definition:
 
 * UI: It is the UI task which performs the drawings in the back buffer. At the end of the drawings, the examples consider that the UI thread calls `Display.flush()`_ 1 millisecond after the end of the drawings. At this moment, a flush can start (the call to `Display.flush()`_ is symbolized by a simple `peak` in chronograms).
-* Flush: In :ref:`single buffer<section_display_single>` policy, it is the time to transfer the content of the back buffer to the front buffer. In :ref:`double<section_display_swap_double_parallel>` or :ref:`triple<section_display_triple>` policy, it is the time to swap back and front buffers (the instruction is often instantaneous but the action is often performed at the beginning of the next display refresh rate). During this time, the back buffer is `in use` and UI task has to wait the end of swap before starting a new drawing. 
+* Flush: In :ref:`single buffer<section_display_single>` policy, it is the time to flush the content of the back buffer to the front buffer. In :ref:`double<section_display_swap_double_parallel>` or :ref:`triple<section_display_triple>` policy, it is the time to swap back and front buffers (the instruction is often instantaneous but the action is often performed at the beginning of the next display refresh rate). During this time, the back buffer is `in use` and UI task has to wait the end of swap before starting a new drawing. 
 * Tearing: The peaks show the tearing signals.
 * Rendering frequency: the frequency between the start of a drawing to the end of flush.
 
@@ -901,7 +901,7 @@ In this example, the times are identical to previous example. The tearing signal
 Additional Buffer 
 -----------------
 
-Some devices take a lot of time to send the back buffer content to the front buffer. The following examples demonstrate the consequence on rendering frequency. The use of an additional buffer optimizes this frequency, however it uses a lot of RAM memory.
+Some devices take a lot of time to flush the back buffer content to the front buffer. The following examples demonstrate the consequence on rendering frequency. The use of an additional buffer optimizes this frequency, however it uses a lot of RAM memory.
 
 In this example, the drawing time is 7ms, the time between the end of drawing and the call to `Display.flush()`_ is 1ms and the flush time is 12ms. So the expected rendering frequency is 7 + 1 + 12 = 20ms (50Hz). Flush starts just after the call to `Display.flush()`_ and the next drawing starts just after the end of flush. Tearing signal is not taken in consideration. The rendering frequency is cadenced on drawing time + flush time.
 
@@ -1002,7 +1002,7 @@ Four Abstraction Layer APIs are required to connect the Graphics Engine to the d
 
 * ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: Two distinct functions have to be implemented to *take* and *give* a binary semaphore. 
 
-* ``LLUI_DISPLAY_IMPL_flush``: According the display buffer policy (see :ref:`section_display_policies`), the ``flush`` function has to be implemented. This function must not be blocking and not performing the copy directly. Another OS task or a dedicated hardware must be configured to perform the buffer copy. 
+* ``LLUI_DISPLAY_IMPL_flush``: According the display buffer policy (see :ref:`section_display_policies`), the ``flush`` function has to be implemented. This function must not be blocking and not performing the flush directly. Another OS task or a dedicated hardware must be configured to perform the flush. 
 
 .. _MicroUI.start(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start--
 
@@ -1101,28 +1101,28 @@ This particular case is the easiest to write because the ``flush()`` stays empty
 
    void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t areas[], size_t length)
    {
-      // nothing to send to the LCD, just have to unlock the Graphics Engine by giving the same buffer address
+      // nothing to flush to the LCD, just have to unlock the Graphics Engine by giving the same buffer address
       LLUI_DISPLAY_setDrawingBuffer(flush_identifier, LLUI_DISPLAY_getBufferAddress(&gc->image), false);
    }
 
 Serial Display
 --------------
 
-A display connected to the CPU through a serial bus (DSI, SPI, etc.) requires the :ref:`single buffer <section_display_single_serial>` policy: the application uses a buffer to perform its drawings and the buffer's content has to be sent to the display when the Graphics Engine is calling the ``flush()`` function.
+A display connected to the CPU through a serial bus (DSI, SPI, etc.) requires the :ref:`single buffer <section_display_single_serial>` policy: the application uses a buffer to perform its drawings and the buffer's content has to be transmitted to the display when the Graphics Engine is calling the ``flush()`` function.
 
 The specification of the ``flush()`` function is to be **not** blocker (atomic). 
-Its aim is to prepare / configure the serial bus and data to send and then, to start the asynchronous copy (data sent).
+Its aim is to prepare / configure the serial bus and data to transmit and then, to start the asynchronous transmission.
 The ``flush()`` function has to return as soon as possible.
 
-Before executing the next application drawing after a flush, the Graphics Engine automatically waits the end of the serial data sent: the back buffer (currently used by the serial device) is not updated until the end of data sent.
-The serial device driver has the responsibility to unlock the Graphics Engine by calling the function ``LLUI_DISPLAY_setDrawingBuffer()`` at the end of the copy.
+Before executing the next application drawing after a flush, the Graphics Engine automatically waits the end of the serial data transmission: the back buffer (currently used by the serial device) is not updated until the end of data transmission.
+The serial device driver has the responsibility to unlock the Graphics Engine by calling the function ``LLUI_DISPLAY_setDrawingBuffer()`` at the end of the transmission.
 
 There are two use cases:
 
 **Hardware**
 
-The serial data sent is performed in hardware. 
-In that case, the serial driver must configure an interrupt to be notified about the end of the copy.
+The serial data transmission is performed in hardware. 
+In that case, the serial driver must configure an interrupt to be notified about the end of the transmission.
 
 .. code:: c
 
@@ -1144,14 +1144,14 @@ In that case, the serial driver must configure an interrupt to be notified about
       // store the identifier of the flush used to unlock the Graphics Engine later
       _flush_identifier = flush_identifier;
 
-      // configure the serial device to send n bytes
+      // configure the serial device to transmit n bytes
       // srcAddr == back_buffer
       SERIAL_DRIVER_prepare_sent(srcAddr, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8);
 
-      // configure the "end of copy" interrupt
+      // configure the "end of transmission" interrupt
       SERIAL_DRIVER_enable_interrupt(END_OF_COPY);
 
-      // start the copy
+      // start the transmission
       SERIAL_DRIVER_start();
    }
 
@@ -1160,15 +1160,15 @@ In that case, the serial driver must configure an interrupt to be notified about
       SERIAL_DRIVER_clear_interrupt();
       SERIAL_DRIVER_disable_interrupt(END_OF_COPY);
 
-      // end of copy, unlock the Graphics Engine without changing the back buffer address
+      // end of transmission, unlock the Graphics Engine without changing the back buffer address
       LLUI_DISPLAY_setDrawingBuffer(_flush_identifier, back_buffer, true); // true: called under interrupt
    }
 
 **Software**
 
-The copy (serial data sent) cannot be performed in hardware or require a software loop to send all data.
-This sent must not be performed in the ``flush()`` function (see above). 
-A dedicated OS task is required to perform this sent.
+The serial data transmission cannot be performed in hardware or require a software loop to transmit all data.
+This transmission must not be performed in the ``flush()`` function (see above). 
+A dedicated OS task is required to perform this transmission.
 
 .. code:: c
 
@@ -1179,13 +1179,13 @@ A dedicated OS task is required to perform this sent.
    {
       while(1)
       {
-         // wait until the Graphics Engine gives the order to copy
+         // wait until the Graphics Engine gives the order to flush
          LLUI_DISPLAY_IMPL_binarySemaphoreTake(_copy_task_semaphore);
 
-         // send data
-         SERIAL_DRIVER_send_data(back_buffer, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8);
+         // transmit data
+         SERIAL_DRIVER_transmit_data(back_buffer, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8);
 
-         // end of copy, unlock the Graphics Engine without changing the back buffer address
+         // end of flush, unlock the Graphics Engine without changing the back buffer address
          LLUI_DISPLAY_setDrawingBuffer(_flush_identifier, back_buffer, false); // false: called outside interrupt
       }
    }
@@ -1207,7 +1207,7 @@ A dedicated OS task is required to perform this sent.
       // store the identifier of the flush used to unlock the Graphics Engine later
       _flush_identifier = flush_identifier;
 
-      // unlock the copy task
+      // unlock the flush task
       LLUI_DISPLAY_IMPL_binarySemaphoreGive(_copy_task_semaphore, false);
    }
 
@@ -1217,7 +1217,7 @@ Parallel Display: Copy Policy (Tearing Disabled)
 .. note:: This policy should synchronize the copy buffer process with the LCD tearing signal. However,  this notion is sometimes not available. This chapter describes the copy buffer process without using the tearing signal (see :ref:`next chapter<section_lluidisplay_parallel_tearing>`).
 
 :ref:`This buffer policy<section_display_single_parallel>` requires two buffers in RAM. 
-The first buffer is used by the application (back buffer) and the second buffer is used by the LCD controller to send data to the display (front buffer).
+The first buffer is used by the application (back buffer) and the second buffer is used by the LCD controller to update the display panel (front buffer).
 The content of the front buffer must be updated with the content of the back buffer when the Graphics Engine is calling the ``flush()`` function.
 
 The specification of the ``flush()`` function is to be **not** blocker (atomic, see above). 
@@ -1255,7 +1255,7 @@ In that case, the DMA driver must configure an interrupt to be notified about th
       // store the identifier of the flush used to unlock the Graphics Engine later
       _flush_identifier = flush_identifier;
       
-      // configure the DMA to send n bytes
+      // configure the DMA to copy n bytes
       // back_buffer == LLUI_DISPLAY_getBufferAddress(&gc->image)
       DMA_DRIVER_prepare_sent(frame_buffer, back_buffer, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8); // dest / src / size
 
@@ -1277,7 +1277,7 @@ In that case, the DMA driver must configure an interrupt to be notified about th
 
 **Software**
 
-The copy buffer process cannot be performed in hardware or require a software loop to send all data (DMA linked list).
+The copy buffer process cannot be performed in hardware or require a software loop to copy all data (DMA linked list).
 This copy buffer process must not be performed in the ``flush()`` function. 
 A dedicated OS task is required to perform this copy.
 
@@ -1301,7 +1301,7 @@ A dedicated OS task is required to perform this copy.
          while(size)
          {
             int32_t s = min(DMA_MAX_SIZE, size);
-            DMA_DRIVER_send_data(dest, src, s); // dest / src / size
+            DMA_DRIVER_copy_data(dest, src, s); // dest / src / size
             dest += s;
             src += s;
             size -= s;
@@ -1372,7 +1372,7 @@ There are two use cases:
       // store the identifier of the flush used to unlock the Graphics Engine later
       _flush_identifier = flush_identifier;
 
-      // configure the DMA to send n bytes
+      // configure the DMA to copy n bytes
       // back_buffer == LLUI_DISPLAY_getBufferAddress(&gc->image)
       DMA_DRIVER_prepare_sent(frame_buffer, back_buffer, LCD_WIDTH * LCD_HEIGHT * LCD_BPP / 8); // dest / src / size
 
@@ -1428,7 +1428,7 @@ There are two use cases:
          while(size)
          {
             int32_t s = min(DMA_MAX_SIZE, size);
-            DMA_DRIVER_send_data(dest, src, s); // dest / src / size
+            DMA_DRIVER_copy_data(dest, src, s); // dest / src / size
             dest += s;
             src += s;
             size -= s;
@@ -1482,10 +1482,10 @@ Parallel Display: Swap Policy
 -----------------------------
 
 :ref:`This buffer policy<section_display_swap_double_parallel>`  requires two buffers in RAM. 
-The first buffer is used by the application (buffer A) and the second buffer is used by the LCD controller to send data to the display (buffer B).
+The first buffer is used by the application (buffer A) and the second buffer is used by the LCD controller to update the display panel (buffer B).
 The LCD controller is reconfigured to use the buffer A when the Graphics Engine is calling the ``flush()`` function.
 
-Before executing the next application drawing after a flush, the Graphics Engine automatically waits the end of the copy buffer process: the buffer B (currently used by the LDC controller) is not updated until the end of the swap.
+Before executing the next application drawing after a flush, the Graphics Engine automatically waits the end of the flush buffer process: the buffer B (currently used by the LDC controller) is not updated until the end of the swap.
 The LCD driver has the responsibility to unlock the Graphics Engine by calling the function ``LLUI_DISPLAY_setDrawingBuffer()`` at the end of the swap.
 
 .. code:: c

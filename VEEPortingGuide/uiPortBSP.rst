@@ -82,7 +82,7 @@ The mandatory functions to implement are:
 - ``LLUI_DISPLAY_IMPL_initialize``: fill the given structure ``LLUI_DISPLAY_SInitData`` (display size, buffer address, etc.).
 - ``LLUI_DISPLAY_IMPL_binarySemaphoreTake``: *takes* the given semaphore.
 - ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: *gives* the given semaphore.
-- ``LLUI_DISPLAY_IMPL_flush``: copy/send the buffer content to the LCD.
+- ``LLUI_DISPLAY_IMPL_flush``: copy/transmit the buffer content to the LCD.
 
 Refer to :ref:`section_display_llapi` to have more information.
 Refer to the C-doc in the header file itself too.

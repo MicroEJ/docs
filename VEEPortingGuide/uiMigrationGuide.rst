@@ -72,10 +72,10 @@ BSP Without GPU
 		
 		* Store (in a static field) the rectangle to flush (the array contains only one rectangle).
 		* Store (in a static field) the flush identifier.
-		* Unlock (immediately or wait the LCD tearing signal interrupt) the *copy task* (hardware of software) that will send (or copy) the back buffer data to the front buffer.
+		* Unlock (immediately or wait the LCD tearing signal interrupt) the *flush task* (hardware of software) that will flush (copy or transmit) the back buffer data to the front buffer.
 		* Remove the returned value (the back buffer address).
 	
-	* At the end of the copy (in an interrupt or at the end of the software *copy task*), replace the call to ``LLUI_DISPLAY_flushDone()`` by ``LLUI_DISPLAY_setDrawingBuffer()``: it will unlock the Graphics Engine. Give the back buffer address (same address as at start-up) and the flush identifier.
+	* At the end of the flush (in an interrupt or at the end of the software *flush task*), replace the call to ``LLUI_DISPLAY_flushDone()`` by ``LLUI_DISPLAY_setDrawingBuffer()``: it will unlock the Graphics Engine. Give the back buffer address (same address as at start-up) and the flush identifier.
 
 * *[Display "Swap double buffer"]*
 
@@ -91,7 +91,7 @@ BSP Without GPU
 	
 	* Case of *hardware swap* (LCD *swap* interrupt): change the implementation of the LCD *swap* interrupt:
 
-    	* Remove all the code concerning the post-flush restoration (remove the *copy task* or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
+    	* Remove all the code concerning the post-flush restoration (remove the *flush task* or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
     	* Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier.
   
 	* Case of *software swap* (dedicated *swap task*): change the task actions:
@@ -130,17 +130,17 @@ BSP Without GPU
 		* Store (in a static field) the rectangle to flush (the array contains only one rectangle).
 		* Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
 		* Store (in a static field) the flush identifier.
-		* Unlock (immediately or wait the LCD tearing signal interrupt) the *copy & swap task* that will send (or copy) the current back buffer data to the front buffer and that will swap the back buffers.
+		* Unlock (immediately or wait the LCD tearing signal interrupt) the *copy & swap task* that will flush (copy or transmit) the current back buffer data to the front buffer and that will swap the back buffers.
 		* Remove the returned value (the back buffer address).
 	  
 	* In the *copy & swap task*: change the "copy & swap" actions:
 
-		* Start the sending of the current back buffer (called *buffer A*) data to the front buffer.
+		* Start the transmission of the current back buffer (called *buffer A*) data to the front buffer.
 		* Swap back *buffer A* and back *buffer B*.
-		* Wait for the end of back buffers swap: ensure the LCD driver is now using the *buffer A* as *sending* buffer.
+		* Wait for the end of back buffers swap: ensure the LCD driver is now using the *buffer A* as *transmission* buffer.
     	* Remove all the code concerning to the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
     	* Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the back *buffer B* address and the flush identifier.
-    	* Wait for the end of *sending*: ensure the LCD driver has finished to send the data.
+    	* Wait for the end of *transmission*: ensure the LCD driver has finished to flush the data.
     	* (optional) Unlock again the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the *buffer A* address and the flush identifier:
 
         	* The call to ``LLUI_DISPLAY_setDrawingBuffer()`` returns ``false``: that means at least one drawing has been performed in the *buffer B*; nothing else to do.

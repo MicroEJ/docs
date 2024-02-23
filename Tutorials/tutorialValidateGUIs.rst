@@ -195,7 +195,6 @@ MCUs and SoCs may have access to various hardware IPs to speed up the UI. The UI
 First of all, the GPU should be used if it is available on the system.
 Then, driving a display implies intensive memory usage, a DMA should be used whenever it's possible.
 
-For example, during the back copy if the flush policy is in switch mode or during your flush if your display is driven through SPI (if there is a DMA dedicated to the SPI port).
 For more information about the flush policy, please read our documentation about :ref:`section_display`.
 
 Hardware Configuration
