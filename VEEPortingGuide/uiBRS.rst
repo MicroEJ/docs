@@ -216,7 +216,7 @@ Declaring explicit regions is mainly useful when it is performed before the very
 Flush vs Refresh
 ----------------
 
-The Graphics Engine does not store the regions (implicit or explicit). The BRS has the responsibility to implements the LLAPI (the hooks, see above) and to manage these regions.
+The Graphics Engine does not store the regions (implicit or explicit). The BRS has the responsibility to implement the LLAPI (the hooks, see above) and to manage these regions.
 
 When the application calls ``Display.flush()``, the Graphics Engine immediately calls the LLAPI ``LLUI_DISPLAY_IMPL_refresh()``.
 This call allows the BRS: 
@@ -247,13 +247,33 @@ The following chapters describe the strategies:
 Strategy: Single
 ================
 
-.. note:: This chapter uses the display connection *serial* to describe the flow but it is similar for the display connection *parallel* (*copy* instead of *send*).
-
 Principle
 ---------
 
 This strategy considers that the drawings are always performed in the same back buffer (:ref:`single<section_display_single>` buffer policy).
-In this case, the restoration is useless because the buffer always contains the past.
+In this case, the restoration is useless because the back buffer always contains the past.
+
+.. tabs::
+
+   .. tab:: Serial Connection
+
+      .. figure:: images/ui_display_single_serial.*
+        :alt: Single Buffer (serial)
+        :scale: 50%
+        :align: center
+
+        Single Buffer (serial)
+
+   .. tab:: Parallel Connection
+
+      .. figure:: images/ui_display_single_parallel.*
+        :alt: Single Buffer (parallel)
+        :scale: 50%
+        :align: center
+
+        Single Buffer (parallel)
+
+.. note:: This chapter uses the display connection *serial* to describe the flow but it is similar for the display connection *parallel* (*copy* instead of *send*).
 
 The principle of this strategy is to cumulate the drawing regions.
 The refresh consists in sending these regions (a list of rectangles) that have been modified since the last flush (or a unique rectangle that encapsulates all the regions) to the LCD driver through the LLAPI ``LLUI_DISPLAY_IMPL_flush()``. 
@@ -271,8 +291,8 @@ The following table illustrates how the strategy works:
 
    * - Drawing Steps
      - Strategy Work
-     - Drawing Buffer  
-     - Display 
+     - Back Buffer  
+     - Front Buffer 
    * - Startup
      - 
      - .. image:: images/ui_brs0.png
@@ -431,7 +451,16 @@ The algorithm has to call ``LLUI_DISPLAY_getSourceImage()`` to retrieve a pointe
 Use (Swap Double Buffer)
 ------------------------
 
-Here are the steps around the strategy describing how to use it in :ref:`double<section_display_swap_double_parallel>` buffer policy (the two buffers have the same role alternatively, back buffer and front buffer):
+Here are the steps around the strategy describing how to use it in :ref:`double<section_display_swap_double_parallel>` buffer policy.
+
+.. figure:: images/ui_display_double.*
+   :alt: Swap Double Buffer
+   :scale: 50%
+   :align: center
+
+   Swap Double Buffer
+
+The two buffers have the same role alternatively, back buffer and front buffer:
 
 1. Some drawings are performed in the back buffer.
 2. A ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
@@ -446,6 +475,14 @@ Use (Swap Triple Buffer)
 ------------------------
 
 Here are the steps around the strategy describing how to use it in :ref:`triple<section_display_triple>` buffer policy.
+
+.. figure:: images/ui_display_triple.*
+   :alt: Swap Triple Buffer
+   :scale: 50%
+   :align: center
+
+   Swap Triple Buffer
+
 The three buffers have the same role alternatively: back buffers (A and B) and front buffer (C). 
 On startup, the front buffer is mapped on the buffer (C), the buffer (A) is the back buffer and the buffer (B) is not used yet:
 
@@ -480,9 +517,30 @@ On startup, the front buffer is mapped on the buffer (C), the buffer (A) is the 
 Use (Copy and Swap Buffer)
 --------------------------
 
+Here are the steps around the strategy describing how to use it in :ref:`copy and swap<section_display_copyswap>` buffer policy. 
+
+.. tabs::
+
+   .. tab:: Serial Connection
+
+      .. figure:: images/ui_display_copyswap_serial.*
+        :alt: Copy and Swap (serial)
+        :scale: 50%
+        :align: center
+
+        Copy and Swap (serial)
+
+   .. tab:: Parallel Connection
+
+      .. figure:: images/ui_display_copyswap_parallel.*
+        :alt: Copy and Swap (parallel)
+        :scale: 50%
+        :align: center
+
+        Copy and Swap (parallel)
+
 .. note:: This chapter uses the display connection *serial* to describe the flow but it is similar for the display connection *parallel* (*copy* instead of *send*).
 
-Here are the steps around the strategy describing how to use it in :ref:`copy and swap<section_display_copyswap>` buffer policy. 
 The two buffers have the same role alternatively: back buffer and sending buffer. 
 On startup, the sending buffer is not used yet.
 
@@ -519,6 +577,13 @@ This strategy is the default strategy used when no explicit strategy is selected
 This strategy is implemented in the Graphics Engine and its behavior is minimalist.
 However, this strategy can be used for the :ref:`direct<section_display_direct>` buffer policy.
 
+.. figure:: images/ui_display_direct.*
+   :alt: Direct Buffer
+   :scale: 50%
+   :align: center
+
+   Direct Buffer
+
 This strategy considers that the drawings are always performed in the same back buffer.
 In this case, the restoration is useless because the buffer always contains the past.
 Furthermore, as the LCD driver uses the same buffer to refresh the display panel, this strategy has nothing to do.
@@ -534,7 +599,7 @@ The following table illustrates how the strategy works:
 
    * - Drawing Steps
      - Strategy Work
-     - Display Buffer   
+     - Front Buffer   
    * - Startup
      - 
      - .. image:: images/ui_brs0.png
@@ -598,7 +663,7 @@ The following table illustrates how the strategy works:
 
    * - Drawing Steps
      - Strategy Work
-     - Drawing Buffer   
+     - Back Buffer   
    * - Startup
      - 
      - .. image:: images/ui_brs0.png
