@@ -74,7 +74,13 @@ In other words, it can cause glitches .
 To detect easily these regions, a rectangle can be filled with a color for each clip handled by the buffer refresh strategy.
 It is activated by setting the ``ej.fp.brs.dirtyColor`` option to any 32-bit ARGB color (opaque or semi-transparent).
 
-For example: ``ej.fp.brs.dirtyColor=0x880000ff``.
+For example: ``ej.fp.brs.dirtyColor=0x200000ff``:
+
+.. figure:: images/highlight_dirty_animation.png
+   :align: center
+
+   Dirty regions when animating with the clip not correctly set.
+
 
 Combining Highlightings
 -----------------------
@@ -88,6 +94,7 @@ For example:
 
    ej.fp.brs.drawnColor=0x00ff00
    ej.fp.brs.restoredColor=0xff00ff
+   ej.fp.brs.dirtyColor=0x200000ff
 
 .. figure:: images/highlight_drawn_restored_scroll.png
    :align: center
@@ -98,6 +105,11 @@ For example:
    :align: center
 
    Drawn and restored regions when selecting another radio button.
+
+.. figure:: images/highlight_dirty_drawn_animation.png
+   :align: center
+
+   Drawn and dirty regions when animating with the clip not correctly set.
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 

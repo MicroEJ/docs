@@ -95,7 +95,7 @@ The Rendering Pipeline of an MWT application consists of three main phases: Layo
 2. *Render*: During this phase, each widget executes its rendering code to perform the necessary drawing operations.
    The widgets must render only what is needed and minimize overlapping with other widgets to ensure optimal performance.
 
-3. *Flush*: This phase involves copying the UI working buffer to the screen buffer.
+3. *Flush*: This phase involves copying the back buffer to the front buffer.
    The VEE Port performs this operation, and it is the responsibility of the VEE Port developer to optimize this process, for example, by utilizing a GPU.
 
 Event Dispatch
