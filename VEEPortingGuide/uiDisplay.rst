@@ -117,8 +117,8 @@ Overview
 The notion of buffer policy depends on the available number of buffers allocated in the MCU memory and on the display connection.
 The Graphics Engine does not depend on the type of buffer policy and it manipulates these buffers in two steps:
 
-1. It renders the application drawings into a MCU buffer.
-2. It *flushes* the buffer's content to the display panel.
+1. It renders the application drawings into a MCU buffer; this buffer is called **back buffer**.
+2. It *flushes* the buffer's content to the display panel; this buffer is called **front buffer**.
 
 The implementation of `Display.flush()`_  calls the Abstraction Layer API ``LLUI_DISPLAY_IMPL_flush`` to let the BSP to update the display data. 
 
@@ -181,6 +181,25 @@ The following table redirects to the right chapter according to the display buff
      - 3
      - :ref:`Swap Triple <section_display_triple>` or :ref:`Copy and Swap <section_display_copyswap>`
 
+.. _section_display_direct:
+
+Direct Buffer (parallel)
+------------------------
+
+There is only one buffer and the display panel continuously refreshes its content on this MCU buffer. 
+This MCU buffer is at the same time the back and front buffer.
+Consequently, the display panel can show incomplete frames and partial drawings since the drawings can be done during the refresh cycle of the display panel.
+This is the notion of **direct buffer**.
+This buffer policy is recommended for static display-based applications and/or to save memory.
+
+In this policy, the *flush* step has no meaning (there is only one buffer). 
+
+.. figure:: images/ui_display_direct.*
+   :alt: Direct Buffer
+   :scale: 50%
+   :align: center
+
+   Direct Buffer
 
 .. _section_display_swap_double_parallel:
 
@@ -232,25 +251,6 @@ The *flush* step consists in swapping two buffers and to let the application dra
    :align: center
 
    Swap Triple Buffer
-
-.. _section_display_direct:
-
-Direct Buffer (parallel)
-------------------------
-
-There is only one buffer and the display panel continuously refreshes its content on this MCU buffer. 
-Consequently, the display panel can show incomplete frames and partial drawings since the drawings can be done during the refresh cycle of the display panel.
-This is the notion of **direct buffer**.
-This buffer policy is recommended for static display-based applications and/or to save memory.
-
-In this policy, the *flush* step has no meaning (there is only one buffer). 
-
-.. figure:: images/ui_display_direct.*
-   :alt: Direct Buffer
-   :scale: 50%
-   :align: center
-
-   Direct Buffer
 
 
 .. _section_display_single:
