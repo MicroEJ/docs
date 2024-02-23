@@ -139,7 +139,7 @@ run the ``execTool`` Gradle task with the tool name ``heapDumperPlatform``:
 
 .. code:: console
 
-    gradle :execTool --name=heapDumperPlatform \
+    ./gradlew execTool --name=heapDumperPlatform \
       --toolProperty="application.file=../../executable/application/application.out" \
       --toolProperty="heap.filename=/path/to/memory.hex" \
       --toolProperty="additional.application.files=" \
