@@ -819,7 +819,7 @@ The options (some *defines*) are shared between the strategies:
 * ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE`` (``ui_display_brs_configuration.h``): configures the number of rectangles that the strategy gives to the implementation of ``LLUI_DISPLAY_IMPL_flush()``. If not set, the number or regions depends on the strategy. If set, only one region is given: the bounding box of all drawing regions. Used by:
 
   * Predraw: the list of regions is often useless (the LCD driver has just to swap the back and front buffers), however this list can be used for the buffer policy :ref:`section_display_copyswap`. Calculating the bounding box uses takes a bit of memory and time; if the bounding box is useless, it is recommended to not enable this option.
-  * Single: the list of regions can be useful to refresh small parts of the display panel.
+  * Single: the list of regions can be useful to refresh small parts of the front buffer.
   * Legacy: this option is never used and the bounding box of all drawing regions is given to the implementation of ``LLUI_DISPLAY_IMPL_flush()``.
 
 * ``UI_RECT_COLLECTION_MAX_LENGTH`` (``ui_rect_collection.h``): configures the size of the arrays that hold a list of regions (``ui_rect_collection_t``). Default value is ``8``, when the collection is full, the strategy replaces all the regions by the bounding box of all regions. Used by:

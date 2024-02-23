@@ -212,7 +212,7 @@ Double buffering avoids flickering and inconsistent rendering: it is well suited
 This is the notion of **double buffer**.
 This new buffer is usually called **back buffer**, and the first buffer is usually called **front buffer**.
 The two buffers in MCU memory alternately play the role of the back buffer and the front buffer. 
-The display panel address is alternatively changed from one buffer to the other. 
+The front buffer address is alternatively changed from one buffer to the other. 
 
 The *flush* step consists in switching (or swapping) the two buffers: the front buffer becomes the back buffer and the back buffer becomes the front buffer.
 
@@ -288,7 +288,7 @@ During this time, no drawing can be anticipated and the global framerate is redu
 Parallel Connection
 """""""""""""""""""
 
-When the :ref:`swap policy <section_display_swap_double_parallel>` is not possible (the display panel is mapped on a fixed MCU memory address), the policy **single buffer** can be used.
+When the :ref:`swap policy <section_display_swap_double_parallel>` is not possible (the front buffer is mapped on a fixed MCU memory address), the policy **single buffer** can be used.
 Like swap policy, this double buffering avoids flickering and inconsistent rendering: it is well suited to high quality animations.
 
 The *flush* step consists in copying the back buffer content to the front buffer (often by using a DMA).
