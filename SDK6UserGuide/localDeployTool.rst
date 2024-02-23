@@ -19,7 +19,7 @@ Use
 
 .. code:: console
 
-    gradle :execTool --name=localDeploymentSocket \
+    ./gradlew execTool --name=localDeploymentSocket \
       --toolProperty="application.main.class=com.mycompany.MyFeature" \
       --toolProperty="board.server.host=10.0.0.171" \
       --toolProperty="board.server.port=4000" \
