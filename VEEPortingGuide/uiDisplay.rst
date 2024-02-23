@@ -1114,7 +1114,7 @@ The specification of the ``flush()`` function is to be **not** blocker (atomic).
 Its aim is to prepare / configure the serial bus and data to send and then, to start the asynchronous copy (data sent).
 The ``flush()`` function has to return as soon as possible.
 
-Before executing the next application drawing after a flush, the Graphics Engine automatically waits the end of the serial data sent: the drawing buffer (currently used by the serial device) is not updated until the end of data sent.
+Before executing the next application drawing after a flush, the Graphics Engine automatically waits the end of the serial data sent: the back buffer (currently used by the serial device) is not updated until the end of data sent.
 The serial device driver has the responsibility to unlock the Graphics Engine by calling the function ``LLUI_DISPLAY_setDrawingBuffer()`` at the end of the copy.
 
 There are two use cases:

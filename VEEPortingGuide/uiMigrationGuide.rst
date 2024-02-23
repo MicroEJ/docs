@@ -724,7 +724,7 @@ Front Panel API
 
 	* [Added] Equivalent of module `com.microej.clibrary.llimpl#microui`_ (``LLUI_PAINTER_impl.c``): implements all ``ej.api.microui`` natives and redirect them to the interface ``UIDrawing``.
 	* [Added] ``MicroUIGraphicsContext``: representation of a MicroUI `GraphicsContext`_ in front panel. This interface (implemented by the Graphics Engine) provides several function to get information on graphics context, clip, etc.
-	* [Added] ``MicroUIGraphicsContext#requestDrawing()``: allows to take the hand on the drawing buffer.
+	* [Added] ``MicroUIGraphicsContext#requestDrawing()``: allows to take the hand on the back buffer.
 	* [Added] ``MicroUIImage``: representation of a MicroUI `Image`_ in front panel. This interface (implemented by the Graphics Engine) provides several function to get information on image.
 	* [Added] ``setDrawer(UIDrawing)``: allows to configure the implementation of ``UIDrawing`` the ``LLUIPainter`` has to use. When no drawer is configured, ``LLUIPainter`` redirects all drawings to the internal Graphics Engine software algorithms.
 	* 
@@ -1017,7 +1017,7 @@ LLAPI
 	* [Added] ``LLUI_DISPLAY_requestFlush(bool)``: requests a call to ``LLUI_DISPLAY_IMPL_flush()``.
 	* [Added] ``LLUI_DISPLAY_requestRender(void)``: requests a call to ``Displayable.render()``.
 	* [Added] ``LLUI_DISPLAY_freeImageBuffer(MICROUI_Image*)``: frees an image previously allocated by ``LLUI_DISPLAY_allocateImageBuffer(MICROUI_Image*,uint8_t)``.
-	* [Added] ``LLUI_DISPLAY_requestDrawing(MICROUI_GraphicsContext*,SNI_callback)``: allows to take the hand on the shared drawing buffer.
+	* [Added] ``LLUI_DISPLAY_requestDrawing(MICROUI_GraphicsContext*,SNI_callback)``: allows to take the hand on the shared back buffer.
 	* [Added] ``LLUI_DISPLAY_setDrawingStatus(DRAWING_Status)``: specifies the drawing status to the Graphics Engine.
  
 * ``LLUI_DISPLAY_impl.h``
