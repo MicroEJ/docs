@@ -77,7 +77,7 @@ Heap Dumper
 
 The Heap Dumper generates heap files either :
 - directly from the Java heap on simulator 
-- from .hex files that must be manually retrieved on device.
+- from .hex files that must be manually retrieved from the device.
 
 The heap dump should be performed after a call to ``System.gc()`` to exclude discardable objects.
 
