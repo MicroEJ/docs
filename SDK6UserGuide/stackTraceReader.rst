@@ -71,11 +71,11 @@ the following trace is dumped on standard output.
          at @C:0x8070c00@.@M:0x8077b40:0x8077b4c@
          at @C:0x8070c00@.@M:0x80779b0:0x80779bb@
 
-To decode the trace, execute the ``:execTool`` task as followed:
+To decode the trace, execute the ``execTool`` task as followed:
 
 .. code:: console
 
-    gradle :execTool --name=stackTraceDecrypter \
+    ./gradlew execTool --name=stackTraceDecrypter \
       --toolProperty="proxy.connection.connection.type=console" \
       --toolProperty="application.file=../../executable/application/application.out" \
       --toolProperty="additional.application.files=" \

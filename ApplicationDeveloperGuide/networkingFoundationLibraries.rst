@@ -49,8 +49,8 @@ Foundation Libraries
       -  Client and Server secure sockets layer using Transport Layer Security (TLS) protocols.
       -  `ssl <https://repository.microej.com/modules/ej/api/ssl/>`_
       -  `java.net.ssl package <https://repository.microej.com/javadoc/microej_5.x/apis/javax/net/ssl/package-summary.html>`_
-      -  -  `SSL mutual client Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/ssl.mutual>`_
-         -  `SSL mutual server Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/ssl.mutual.server>`_
+      -  -  `SSL mutual client Example <https://github.com/MicroEJ/Example-IOT/tree/master/ssl-mutual>`_
+         -  `SSL mutual server Example <https://github.com/MicroEJ/Example-IOT/tree/master/ssl-mutual-server>`_
          -  `SSL utility Library <https://repository.microej.com/modules/ej/library/iot/ssl-util/>`_
 
 

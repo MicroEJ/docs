@@ -55,7 +55,7 @@ A render policy is a strategy that MWT uses in order to repaint the entire deskt
 
 The most naive render policy would be to render the whole hierarchy of the desktop whenever a widget has changed. However `DefaultRenderPolicy`_ is smarter than that: it only repaints the widget, and its ancestors if the widget is transparent. The result is correct only if there is no overlapping widget, in which case  `OverlapRenderPolicy`_ should be used instead. This policy repaints the widget (or its non-transparent ancestor), then it repaints all the widgets that overlap it.
 
-When using a :ref:`partial buffer <section_display_partial_buffer>`, these render policies can not be used because they render the entire screen in a single pass. Instead, a custom render policy which renders the screen in multiple passes has to be used. Refer to the `partial buffer demo`_ for more information on how to implement this render policy and how to use it.
+When using a :ref:`partial buffer <section_display_partial>`, these render policies can not be used because they render the entire screen in a single pass. Instead, a custom render policy which renders the screen in multiple passes has to be used. Refer to the `partial buffer demo`_ for more information on how to implement this render policy and how to use it.
 
 The render policy can be changed by overridding `Desktop.createRenderPolicy()`_.
 
@@ -80,6 +80,23 @@ Once the position and size of a widget is set, the widget is notified by a call 
 .. _Widget.requestLayOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#requestLayOut--
 .. _Desktop.onShown(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#onShown--
 .. _onLaidOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onLaidOut--
+
+.. _rendering_pipeline:
+
+Rendering Pipeline
+------------------
+
+The Rendering Pipeline of an MWT application consists of three main phases: Layout, Render, and Flush.
+
+1. *Layout*: This phase determines which widgets should be displayed on the screen and the positions of the widgets.
+   It is typically triggered when widgets are added or removed from the widget hierarchy.
+   An application should only modify the widget hierarchy when necessary and avoid doing so during animation to ensure efficiency.
+
+2. *Render*: During this phase, each widget executes its rendering code to perform the necessary drawing operations.
+   The widgets must render only what is needed and minimize overlapping with other widgets to ensure optimal performance.
+
+3. *Flush*: This phase involves copying the UI working buffer to the screen buffer.
+   The VEE Port performs this operation, and it is the responsibility of the VEE Port developer to optimize this process, for example, by utilizing a GPU.
 
 Event Dispatch
 --------------
@@ -253,7 +270,7 @@ See chapter :ref:`section_animate_widget` for more information on animating a wi
 Partial buffer considerations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Rendering a widget in :ref:`partial buffer mode <section_display_partial_buffer>` may require multiple cycles if the buffer is not big enough to hold all the pixels to update in a single shot.
+Rendering a widget in :ref:`partial buffer mode <section_display_partial>` may require multiple cycles if the buffer is not big enough to hold all the pixels to update in a single shot.
 This means that rendering is slower in partial buffer mode, and this may cause performance being significantly affected during animations.
 
 Besides, the whole screen is flushed in multiple times instead of a single one, which means that the user may see the display at a time where every part of the display has not been flushed yet.
