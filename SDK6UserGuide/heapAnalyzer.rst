@@ -173,7 +173,7 @@ run the ``execTool`` Gradle task with the tool name ``heapDumperPlatform``:
       --toolProperty="additional.application.filenames=" \
       --console plain
 
-If you have generated additional hex files, add them With
+If you have generated additional hex files, add them with:
 
 .. code:: console
 
