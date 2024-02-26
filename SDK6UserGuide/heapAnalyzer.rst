@@ -107,6 +107,15 @@ If the symbol isn't embedded, add the following lines in any source file (ex:mai
 
 .. code:: c
 
+   void LLMJVM_on_Runtime_gc_done(){
+      //No need to add code to the function
+   }
+
+Alternatively, if you are experiencing out of memory errors, you can directly add a breackpoint to the ``LLMJVM_on_OutOfMemoryError_thrown`` method.
+If the symbol isn't embedded, add the following lines in any source file (ex:main.c):
+
+.. code:: c
+
    void LLMJVM_on_OutOfMemoryError_thrown(){
       //No need to add code to the function
    }
@@ -138,6 +147,15 @@ Retrieving the ``.hex`` file from the device can be done with Eclipse CDT and GD
 
 You now have the ``.hex`` file and need to extract the Heap dump.
 
+When using the tool in a multi-application context, additionnal sections must be dumped:
+- The dynamic features table:
+
+   dump ihex memory java_features_dynamic_start java_features_dynamic_end
+
+- features related sections. These will change depending on the board, number of features and other parameters. It is possible to dump the entire memory and let the :ref:`heap extractor<_sdk6_heapdumper_extract_heap>` sort the requiered sections instead.
+
+   dump ihex memory <ram_start_adress> <ram_end_adress>
+
 .. _sdk6_heapdumper_extract_heap:
 
 Extract the Heap dump from the ``.hex`` file
@@ -148,10 +166,23 @@ run the ``execTool`` Gradle task with the tool name ``heapDumperPlatform``:
 
 .. code:: console
 
-    gradle :execTool --name=heapDumperPlatform \
-      --toolProperty="application.file=../../executable/application/application.out" \
+    gradle execTool --name=heapDumperPlatform \
+      --toolProperty="output.name=application.heap" \
+      --toolProperty="application.filename=../../executable/application/application.out" \
       --toolProperty="heap.filename=/path/to/memory.hex" \
-      --toolProperty="additional.application.files=" \
+      --toolProperty="additional.application.filenames=" \
+      --console plain
+
+If you have generated additional hex files, add them With
+
+.. code:: console
+
+    gradle execTool --name=heapDumperPlatform \
+      --toolProperty="output.name=application.heap" \
+      --toolProperty="application.filename=../../executable/application/application.out" \
+      --toolProperty="heap.filename=/path/to/memory.hex" \
+      --toolProperty="additional.application.filenames=/path/to/app1.fodbg;/path/to/app2.fodbg..." \
+      --toolProperty="additional.memory.filenames=/path/to/additonal1.hex;/path/to/additional2.hex..." \
       --console plain
 
 You can find the list of available options below:
@@ -163,7 +194,7 @@ You can find the list of available options below:
    * - Name
      - Description
      - Default
-   * - ``application.file``
+   * - ``application.filename``
      - Specify the full path of the Executable file, a full linked ELF file.
      - Not set
    * - ``additional.application.filenames``
