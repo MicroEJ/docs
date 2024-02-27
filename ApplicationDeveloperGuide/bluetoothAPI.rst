@@ -120,31 +120,36 @@ Services and attributes are all identified by a 16-bit UUID. If a service or att
 
 A device can call the getter APIs of `BluetoothService`_, `BluetoothCharacteristic`_, `BluetoothDescriptor`_ and `BluetoothAttribute`_ to browse the content of a service.
 
-BLE devices use characteristics to transfer data. There are 3 main procedures:
+BLE devices use characteristics to transfer data. There are 4 main procedures:
 
-- A **read request** on a characteristic of a **discovered service** allows to **request data** from the device it belongs to.
-  The device which discovered the service sends a read request and the device which owns the service sends back a read response with the data.
-- A **write request** on a characteristic of a **discovered service** allows to **send data** to the device it belongs to.
-  The device which discovered the service sends a write request with the data and the device which owns the service sends back a write response.
-- A **notification** on a characteristic of a **provided service** allows to **send data** to any connected device.
-  The device which owns the service sends a notification with the data to the desired device.
-  BLE provides a built-in way to subcribe to the notifications of a characteristic of a discovered service, by sending a write request on its CCC descriptor.
+- The **Read** procedure allows the device which **discovered** the service to **request data**.
+  The device sends a read request and the device which provides the service sends back a read response with the data.
+- The **Write** procedure allows the device which **discovered** the service to **send data** and to require an acknowledgment.
+  The device sends a write request with the data and the device which provides the service sends back a write response.
+- The **Write Without Response** procedure allows the device which **discovered** the service to **send data** without expecting an acknowledgment.
+  The device just sends a write request with the data.
+- The **Notify** procedure allows the device which **provides** the service to **send data**.
+  The device sends a notification with the data, and if it requires an acknowledgment, the device which discovered the service sends back an acknowledgment.
+  It is a common practice to send notifications only to devices which have subscribed to the characteristic (a device can subscribe to a characteristic by sending a write request on its CCC descriptor).
 
 .. figure:: images/bluetooth_data_transfer_procedures.png
    :alt: Data Transfer Procedures
    :align: center
    :scale: 50%
 
-For the read request procedure, a device can call the `BluetoothConnection.sendReadRequest()`_ API to send a read request.
+For the Read procedure, a device can call the `BluetoothConnection.sendReadRequest()`_ API to send a read request.
 The `LocalServiceListener.onReadRequest()`_ hook is called when a device receives a read request.
-It can call the `BluetoothConnection.sendReadResponse()`_ API send a read response with the data.
+It can call the `BluetoothConnection.sendReadResponse()`_ API to send a read response with the data.
 The `RemoteServiceListener.onReadCompleted()`_ hook is called with the data when a device receives a read response.
 
-For the write request procedure, a device can call the send `BluetoothConnection.sendWriteRequest()`_ API to send a write request with the data.
+For the Write Without Response and the Write procedures, a device can call the send `BluetoothConnection.sendWriteRequest()`_ API to send a write request with the data.
 The `LocalServiceListener.onWriteRequest()`_ hook is called with the data when a device receives a write request.
+It can call the `BluetoothConnection.sendWriteResponse()`_ API to send a write response (in case of the write procedure).
+The `RemoteServiceListener.onWriteCompleted()`_ hook is called when a write request is sent (or when it receives a write response, in case of the write procedure).
 
-For the notification procedure, a device can call the send `BluetoothConnection.sendNotification()`_ API to send a notification with the data.
+For the Notify procedure, a device can call the send `BluetoothConnection.sendNotification()`_ API to send a notification with the data.
 The `RemoteServiceListener.onNotificationReceived()`_ hook is called with the data when a device receives a notification.
+The `LocalServiceListener.onNotificationSent()`_ hook is called when a notification is sent (or when it receives the acknowledgment, if one is required).
 
 Classes Summary
 ~~~~~~~~~~~~~~~
@@ -171,6 +176,30 @@ Stateless and immutable classes:
 - `BluetoothPermissions`_: Permissions enumeration used when defining a GATT attribute
 - `BluetoothServiceDefinition`_: Builder class used when adding a GATT service
 - `BluetoothStatus`_: Status code enumeration used when reading/writing a GATT attribute
+
+Use-Cases
+---------
+
+Achieving Maximum Throughput
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In some use-cases, such as when sending a large file to another device, the throughput must be as high as possible to decrease the transfer time.
+
+Here are some guidelines to achieve the maximum throughput:
+
+- Change the MTU to the maximum value (512 bytes) instead of the default value (23 bytes)
+
+  - Once devices are connected, either device should send a MTU request with the maximum value
+  - When the other device receives the MTU request, it should send a MTU response with the maximum value
+  - Since there is no API for MTU exchange in the Bluetooth API Library, this step has to be performed in the native code
+- Use a data transfer procedure which does not require an acknowledgment
+
+  - If the service is provided by the device sending the data: use the Notify procedure without requesting an acknowledgment
+  - If the service is discovered by the device sending the data: use the Write Without Response procedure
+- Send the data chunks as fast as possible
+
+  - Do not wait for the previous chunk to be delivered before sending the next chunk
+  - If a chunk can not be delivered because the connection is congested, wait a bit and retry sending the chunk
 
 .. _BluetoothAdapter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html
 .. _BluetoothAddress: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAddress.html
@@ -209,16 +238,19 @@ Stateless and immutable classes:
 .. _BluetoothConnection.sendReadRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendReadRequest-ej.bluetooth.BluetoothAttribute-
 .. _BluetoothConnection.sendReadResponse(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendReadResponse-ej.bluetooth.BluetoothAttribute-byte-byte:A-
 .. _BluetoothConnection.sendWriteRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendWriteRequest-ej.bluetooth.BluetoothAttribute-byte:A-
+.. _BluetoothConnection.sendWriteResponse(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothConnection.html#sendWriteResponse-ej.bluetooth.BluetoothAttribute-byte-
 .. _ConnectionListener.onConnected(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onConnected-ej.bluetooth.BluetoothConnection-
 .. _ConnectionListener.onDiscoveryResult(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onDiscoveryResult-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothService-
 .. _ConnectionListener.onPairRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onPairRequest-ej.bluetooth.BluetoothConnection-
 .. _ConnectionListener.onPasskeyGenerated(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onPasskeyGenerated-ej.bluetooth.BluetoothConnection-int-
 .. _ConnectionListener.onPasskeyRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onPasskeyRequest-ej.bluetooth.BluetoothConnection-
 .. _ConnectionListener.onScanResult(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/ConnectionListener.html#onScanResult-ej.bluetooth.BluetoothAddress-byte:A-int-
+.. _LocalServiceListener.onNotificationSent(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/LocalServiceListener.html#onNotificationSent-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothCharacteristic-boolean-
 .. _LocalServiceListener.onReadRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/LocalServiceListener.html#onReadRequest-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothAttribute-
 .. _LocalServiceListener.onWriteRequest(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/LocalServiceListener.html#onWriteRequest-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothAttribute-byte:A-
 .. _RemoteServiceListener.onNotificationReceived(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/RemoteServiceListener.html#onNotificationReceived-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothCharacteristic-byte:A-
 .. _RemoteServiceListener.onReadCompleted(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/RemoteServiceListener.html#onReadCompleted-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothAttribute-byte-byte:A-
+.. _RemoteServiceListener.onWriteCompleted(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/listeners/RemoteServiceListener.html#onWriteCompleted-ej.bluetooth.BluetoothConnection-ej.bluetooth.BluetoothAttribute-byte-
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
