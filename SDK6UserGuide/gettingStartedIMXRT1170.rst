@@ -3,7 +3,7 @@
 i.MX RT1170 Evaluation Kit
 ==========================
 
-During this Getting Started, you will learn to run:
+During this Getting Started, you will learn to:
 
 * run an Application on the i.MX RT1170 Evaluation Kit Virtual Device,
 * run the same Application on your i.MX RT1170 Evaluation Kit.
