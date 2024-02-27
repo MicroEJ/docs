@@ -18,9 +18,9 @@ Standard Versions
 +-----------------+--------------------+---------------------------------------------------------+
 | UI Pack Range   | Architecture Range | Comment                                                 |
 +=================+====================+=========================================================+
-| [13.5.0-13.7.2] | [7.13.0-9.0.0[     | Compatibility with Architecture 8                       |
+| [13.5.0-14.0.0] | [7.16.0-9.0.0[     | Compatibility with Architecture 8                       |
 +-----------------+--------------------+---------------------------------------------------------+
-| [13.0.0-13.4.1] | [7.13.0-8.0.0[     | SNI 1.3                                                 |
+| [13.0.0-13.4.1] | [7.16.0-8.0.0[     | SNI 1.3                                                 |
 +-----------------+--------------------+---------------------------------------------------------+
 | [12.0.0-12.1.5] | [7.11.0-8.0.0[     | Move Front Panel in MicroEJ Architecture                |
 +-----------------+--------------------+---------------------------------------------------------+
@@ -60,6 +60,9 @@ The following table describes Foundation Libraries API versions implemented in M
    * - UI Pack Range
      - MicroUI
      - Drawing
+   * - 14.0.0
+     - `3.5.0 <https://repository.microej.com/modules/ej/api/microui/3.5.0/>`_
+     - `1.0.4 <https://repository.microej.com/modules/ej/api/drawing/1.0.4/>`_
    * - [13.7.0-13.7.2]
      - `3.4.0 <https://repository.microej.com/modules/ej/api/microui/3.4.0/>`_
      - `1.0.4 <https://repository.microej.com/modules/ej/api/drawing/1.0.4/>`_
@@ -121,6 +124,8 @@ Display
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
+| 14.0.0          | Signature of ``LLUI_DISPLAY_IMPL_flush()`` changed.              |
++-----------------+------------------------------------------------------------------+
 | [13.0.0-13.7.2] | *UI3* format: implement ``LLUI_DISPLAY_impl.h``:                 |
 |                 |                                                                  |
 |                 | * ``void LLUI_DISPLAY_IMPL_initialize([...]);``                  |
@@ -152,7 +157,7 @@ Input
 +-----------------+------------------------------------------------------------------+
 | UI Pack Range   | Changes                                                          |
 +=================+==================================================================+
-| [13.0.0-13.7.2] | *UI3* format: implement ``LLUI_INPUT_impl.h``:                   |
+| [13.0.0-14.0.0] | *UI3* format: implement ``LLUI_INPUT_impl.h``:                   |
 |                 |                                                                  |
 |                 | * ``void LLUI_INPUT_IMPL_initialize([...]);``                    |
 |                 | * ``jint LLUI_INPUT_IMPL_getInitialStateValue([...]);``          |
@@ -200,14 +205,14 @@ The Front Panel project must fetch the widgets compatible with the MicroEJ UI Pa
 +-----------------+--------------------------------------------+-----------------+
 | UI Pack Range   | Module                                     | Version         |
 +=================+============================================+=================+
-| [13.0.0-13.7.2] | `com.microej.pack.ui.ui-pack(frontpanel)`_ | [13.0.0-13.7.2] |
+| [13.0.0-14.0.0] | `com.microej.pack.ui.ui-pack(frontpanel)`_ | [13.0.0-14.0.0] |
 +-----------------+--------------------------------------------+-----------------+
 | [12.0.0-12.1.5] | `ej.tool.frontpanel.widget-microui`_       | 1.0.0           |
 +-----------------+--------------------------------------------+-----------------+
 | [6.0.0-11.2.0]  | n/a                                        | n/a             |
 +-----------------+--------------------------------------------+-----------------+
 
-The widget module `ej.tool.frontpanel#widget`_ provides some widgets compatible with the Graphics Engine.
+The widget module `ej.tool.frontpanel.widget`_ provides some widgets compatible with the Graphics Engine.
 This module fetches by transitivity the module `com.microej.pack.ui.ui-pack(frontpanel)`_. 
 When the Front Panel project does not require/use the latest Front Panel UI API, it can only fetch the widget module.
 
@@ -216,6 +221,8 @@ When the Front Panel project does not require/use the latest Front Panel UI API,
 +---------------------+-----------------------------+--------------+
 | Widget Module Range | UI Pack Compatibility Range | Repository   |
 +=====================+=============================+==============+
+| 4.0.0               | 14.0.0                      | `Developer`_ |
++---------------------+-----------------------------+--------------+
 | 3.0.0               | [13.5.1-10-13.7.2]          | `Developer`_ |
 +---------------------+-----------------------------+--------------+
 | 2.2.0               | [13.1.0-13.7.2]             | `Developer`_ |
@@ -231,10 +238,10 @@ To use the latest functionalities provided by the UI Pack ``13.0.0`` and higher,
 However, if the Front Panel project does not require/use the latest Front Panel UI API, it can fetch a version of the UI Pack older than the version fetched in the VEE Port configuration project.
 
 .. _com.microej.pack.ui.ui-pack(frontpanel): https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/
-.. _ej.tool.frontpanel.widget-microui: https://forge.microej.com/ui/native/microej-developer-repository-release/ej/tool/frontpanel/widget-microui/
-.. _ej.tool.frontpanel#widget: https://forge.microej.com/ui/native/microej-developer-repository-release/ej/tool/frontpanel/widget/
+.. _ej.tool.frontpanel.widget-microui: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget-microui/
+.. _ej.tool.frontpanel.widget: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/
 .. _Central: https://repository.microej.com/modules/ej/tool/frontpanel/widget/
-.. _Developer: https://forge.microej.com/ui/native/microej-developer-repository-release/ej/tool/frontpanel/widget/
+.. _Developer: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/
 
 Image Generator API
 ===================
@@ -245,7 +252,7 @@ The module version is the MicroEJ Generic UI Pack version, that is always aligne
 +-----------------+-------------------------------------------------+-------------------+
 | UI Pack Range   | Module                                          | Version           |
 +=================+=================================================+===================+
-| [13.0.0-13.7.2] | `com.microej.pack.ui.ui-pack(imagegenerator)`_  | [13.0.0-13.7.2]   |
+| [13.0.0-14.0.0] | `com.microej.pack.ui.ui-pack(imagegenerator)`_  | [13.0.0-14.0.0]   |
 +-----------------+-------------------------------------------------+-------------------+
 
 .. note:: Before MicroEJ UI Pack ``13.0.0``, the Image Generator extension project must depend on classpath variable ``IMAGE-GENERATOR-x.x``.
@@ -266,6 +273,8 @@ The following table describes the compatibility versions between the MicroEJ UI 
 +-----------------+----------------+------------------------------------------+
 | UI Pack Range   | C Module Range | Comment                                  |
 +=================+================+==========================================+
+| 14.0.0          | 4.0.0          | buffer refresh strategies                |
++-----------------+----------------+------------------------------------------+
 | [13.7.0-13.7.2] | 3.1.0          | free image resources                     |
 +-----------------+----------------+------------------------------------------+
 | [13.5.0-13.6.2] | 3.0.0          | multiple Graphics Context output formats |
@@ -296,6 +305,8 @@ The following table describes the version compatibility between the MicroEJ UI P
 +-----------------+----------------+------------------------------------------+
 | UI Pack Range   | C Module Range | Comment                                  |
 +=================+================+==========================================+
+| 14.0.0          | 5.0.0          | buffer refresh strategies                |
++-----------------+----------------+------------------------------------------+
 | [13.7.0-13.7.2] | 4.1.0          | free image resources                     |
 +-----------------+----------------+------------------------------------------+
 | [13.5.0-13.6.2] | 4.0.0          | multiple Graphics Context output formats |
@@ -307,15 +318,17 @@ The following table describes the version compatibility between the MicroEJ UI P
 | [13.0.0-13.0.7] | [1.0.6-1.0.8]  |                                          |
 +-----------------+----------------+------------------------------------------+
 
-**Vivante VG-Lite**
+**Vivante VGLite**
 
-The :ref:`VG-Lite C module <section_ui_c_module_microui_vglite>` targets the NXP CPU that provides the Vivante VG-Lite accelerator. 
+The :ref:`VGLite C module <section_ui_c_module_microui_vglite>` targets the NXP CPU that provides the Vivante VGLite accelerator. 
 
 The following table describes the version compatibility between the MicroEJ UI Packs and the C modules:
 
 +-----------------+----------------+------------------------------------------+
 | UI Pack Range   | C module Range | Comment                                  |
 +=================+================+==========================================+
+| 14.0.0          | 8.0.0          | buffer refresh strategies                |
++-----------------+----------------+------------------------------------------+
 | [13.7.0-13.7.2] | 7.2.0          | free image resources                     |
 +-----------------+----------------+------------------------------------------+
 | [13.5.0-13.6.2] | [6.0.0-7.1.0]  | multiple Graphics Context output formats |
@@ -325,10 +338,10 @@ The following table describes the version compatibility between the MicroEJ UI P
 | [13.1.0-13.2.0] | [1.0.0-2.0.0]  |                                          |
 +-----------------+----------------+------------------------------------------+
 
-The following table describes the version compatibility between the C module and the VG-Lite libraries (officially supported):
+The following table describes the version compatibility between the C module and the VGLite libraries (officially supported):
 
 +----------------+-----------------------------+
-| C Module Range | VG-Lite Libraries Range     |
+| C Module Range | VGLite Libraries Range      |
 +================+=============================+
 | [7.1.0-7.2.0]  | 3.0.15_rev4 and 3.0.15_rev7 |
 +----------------+-----------------------------+
@@ -345,13 +358,15 @@ The :ref:`NemaGFX C module <section_ui_c_module_microui_nemagfx>` targets the CP
 
 The following table describes the version compatibility between the MicroEJ UI Packs and the C modules:
 
-+-----------------+----------------+----------------------+
-| UI Pack Range   | C module Range | Comment              |
-+=================+================+======================+
-| [13.7.0-13.7.2] | [1.1.0-1.2.0]  | free image resources |
-+-----------------+----------------+----------------------+
-| [13.5.0-13.6.2] | 1.0.0          |                      |
-+-----------------+----------------+----------------------+
++-----------------+----------------+---------------------------+
+| UI Pack Range   | C module Range | Comment                   |
++=================+================+===========================+
+| 14.0.0          | 2.0.0          | buffer refresh strategies |
++-----------------+----------------+---------------------------+
+| [13.7.0-13.7.2] | [1.1.0-1.2.0]  | free image resources      |
++-----------------+----------------+---------------------------+
+| [13.5.0-13.6.2] | 1.0.0          |                           |
++-----------------+----------------+---------------------------+
 
 ..
    | Copyright 2021-2024, MicroEJ Corp. Content in this space is free 

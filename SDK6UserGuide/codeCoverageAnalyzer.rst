@@ -45,7 +45,7 @@ hyperlinks to navigate into the report and source / bytecode level code.
 
 ::
 
-   gradle :execTool --name=codeCoverageAnalyzer \
+   ./gradlew execTool --name=codeCoverageAnalyzer \
        --toolProperty="cc.dir=/MODULE_PATH/build/output/com.microej.Main/cc/" \
        --toolProperty="cc.includes=" \
        --toolProperty="cc.excludes=" \
@@ -126,7 +126,7 @@ Examples:
 ``packageA.packageB.className``
 
 ..
-   | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
+   | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 

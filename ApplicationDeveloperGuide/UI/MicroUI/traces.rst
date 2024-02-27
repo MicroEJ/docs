@@ -57,15 +57,7 @@ The following tables describe some events data.
    +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
    | 0x6 (6)     | New image characteristics ``%0%`` (see Image Type), identifier is ``%1%`` and memory size is ``%2%``.             |                                               |
    +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
-   | 0xa (10)    | Flush back buffer; position (``%0%``, ``%1%``) size (``%2%`` * ``%3%``).                                          |                                               |
-   +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
    | 0xb (11)    | Flush done.                                                                                                       |                                               |
-   +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
-   | 0xc (12)    | Start internal drawing operation ``%0%`` (see Drawing Type).                                                      | End of drawing ``%0%`` (see Drawing Type)     |
-   +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
-   | 0xd (13)    | Start drawing operation ``%0%`` (see Drawing Type).                                                               | End of drawing ``%0%`` (see Drawing Type)     |
-   +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
-   | 0xe (14)    | Unknown event.                                                                                                    |                                               |
    +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
    | 0xf (15)    | Asynchronous drawing operation done.                                                                              |                                               |
    +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
@@ -79,7 +71,23 @@ The following tables describe some events data.
    +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
    | 0x18 (24)   | Read event ``%0%`` at index ``%1%``.                                                                              |                                               |
    +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
-
+   | 0x40 (64)   | Start drawing operation ``%0%`` (see Drawing Type).                                                               | Drawing status ``%0%`` (see Drawing Status)   |
+   +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
+   | 0x50 (80)   | [BRS] New drawing region                                                                                          |                                               |
+   +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
+   | 0x51 (81)   | [BRS] Flush LCD (id = ``%0%`` buffer = ``%1%``) with a single region (``%2%``, ``%3%``) to (``%4%``, ``%5%``)     |                                               |
+   +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
+   | 0x52 (82)   | [BRS] Flush LCD (id = ``%0%`` buffer = ``%1%``) with several ``%2%`` regions                                      |                                               |
+   +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
+   | 0x53 (83)   | [BRS] Add a region (``%0%``, ``%1%``) to (``%2%``, ``%3%``)                                                       |                                               |
+   +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
+   | 0x54 (84)   | [BRS] Remove a region (``%0%``, ``%1%``) to (``%2%``, ``%3%``)                                                    |                                               |
+   +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
+   | 0x55 (85)   | [BRS] Restore a region (``%0%``, ``%1%``) to (``%2%``, ``%3%``)                                                   |                                               |
+   +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+ 
+   | 0x56 (86)   | [BRS] Clear the list of regions                                                                                   |                                               |
+   +-------------+-------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
+   
 .. table:: Event Type
 
    +-------------+----------------------------------------+
@@ -245,6 +253,16 @@ The following tables describe some events data.
    | 0xcc (204)  | Draw image with scalling (bilinear)        |
    +-------------+--------------------------------------------+
 
+.. table:: Drawing Status
+
+   +-------------+--------------------------------------------+
+   | Event ID    | Description                                |
+   +=============+============================================+
+   | 0x0 (0)     | Synchronous drawing done                   |
+   +-------------+--------------------------------------------+
+   | 0x1 (1)     | Asynchronous drawing runs                  |
+   +-------------+--------------------------------------------+
+
 SystemView Integration
 ----------------------
 
@@ -337,35 +355,49 @@ The following text can be copied in a file called ``SYSVIEW_MicroUI.txt`` and co
    NamedType GEDraw 203=DRAW_SCALEDIMAGENEARESTNEIGHBOR
    NamedType GEDraw 204=DRAW_SCALEDIMAGEBILINEAR
 
+   NamedType GEDrawAsync 0=done
+   NamedType GEDrawAsync 1=started
+
    #
    # MicroUI
    #
-   0        UI_EGEvent    		(MicroUI) Execute EventGenerator event %UIEvent (generatorID = %u, data = %p)   | (MicroUI) EventGenerator event %UIEvent done
-   1        UI_DROPEvent    	(MicroUI) Drop event %p
-   2        UI_InputEvent    	(MicroUI) Execute native input event %UIEvent (generatorID = %u, event = %p)    | (MicroUI) Native input event %UIEvent done
-   3        UI_DisplayEvent    (MicroUI) Execute display event %UIEvent (event = %p)                 			| (MicroUI) Display event %UIEvent done
-   4        UI_UserEvent    	(MicroUI) Execute user event %p				                        			| (MicroUI) User event %p done
-   5        UI_OpenImage       (MicroUI) Create %UINewImage                                        			| (MicroUI) Image created; id = %p
-   6        UI_ImageData       (MicroUI) %UINewImage ( %UIImageData ): id = %p; size = %d*%d
+   0        UI_EGEvent         (MicroUI) Execute EventGenerator event %UIEvent (generatorID = %u, data = %p)   | (MicroUI) EventGenerator event %UIEvent done
+   1        UI_DROPEvent       (MicroUI) Drop event %p
+   2        UI_InputEvent      (MicroUI) Execute native input event %UIEvent (generatorID = %u, event = %p)    | (MicroUI) Native input event %UIEvent done
+   3        UI_DisplayEvent    (MicroUI) Execute display event %UIEvent (event = %p)                           | (MicroUI) Display event %UIEvent done
+   4        UI_UserEvent       (MicroUI) Execute user event %p                                                 | (MicroUI) User event %p done
+   5        UI_OpenImage       (MicroUI) Create %UINewImage                                                    | (MicroUI) Image created, id = %p
+   6        UI_ImageData       (MicroUI) %UINewImage %UIImageData, id = %p, size = %d*%d
 
    #
    # MicroUI Graphics Engine
    #
-   10       GE_FlushStart      (MicroUI GraphicalEngine) Flush back buffer (%u,%u) (%u*%u)
-   11       GE_FlushDone       (MicroUI GraphicalEngine) Flush done
-   12       GE_DrawInternal    (MicroUI GraphicalEngine) Drawing operation %GEDraw                   | (MicroUI GraphicalEngine) Drawing operation %GEDraw done
-   13       GE_Draw            (MicroUI GraphicalEngine) Drawing operation %GEDraw                   | (MicroUI GraphicalEngine) Drawing operation %GEDraw done
-   14       GE_Unknown			(MicroUI GraphicalEngine) Unknown event	
-   15       GE_GPUDrawDone     (MicroUI GraphicalEngine) Asynchronous drawing operation done
+   11       GE_FlushDone       (MicroUI GraphicsEngine) Flush done
+   15       GE_GPUDrawDone     (MicroUI GraphicsEngine) Asynchronous drawing operation done
 
    #
-   # MicroUI Input Engine
+   # MicroUI Event Engine
    #
-   20       IE_InvalidEvent    (MicroUI Input Engine) Invalid event: %p
-   21       IE_QueueFull       (MicroUI Input Engine) Queue full, cannot add event %p
-   22       IE_AddEvent        (MicroUI Input Engine) Add event %p (index = %u / queue length = %u)
-   23       IE_ReplaceEvent    (MicroUI Input Engine) Replace event %p by %p (index = %u / queue length = %u)
-   24       IE_ReadEvent       (MicroUI Input Engine) Read event %p (index %u)
+   20       EE_InvalidEvent    (MicroUI Event Engine) Invalid event: %p
+   21       EE_QueueFull       (MicroUI Event Engine) Queue full, cannot add event %p
+   22       EE_AddEvent        (MicroUI Event Engine) Add event %p (index = %u / queue length = %u)
+   23       EE_ReplaceEvent    (MicroUI Event Engine) Replace event %p by %p (index = %u / queue length = %u)
+   24       EE_ReadEvent       (MicroUI Event Engine) Read event %p (index %u)
+
+   #
+   # MicroUI CCO
+   #
+   40       UI_Draw            (MicroUI) Drawing operation %GEDraw                   | (MicroUI) Drawing operation %GEDrawAsync
+
+   50       BRS_NewDrawing     (BRS) New drawing region (%u,%u) to (%u,%u)
+   51       BRS_FlushSingle    (BRS) Flush LCD (id=%u buffer=%p) single region (%u,%u) to (%u,%u)
+   52       BRS_FlushMulti     (BRS) Flush LCD (id=%u buffer=%p) %u regions
+   53       BRS_AddRegion      (BRS) Add region (%u,%u) to (%u,%u)
+   54       BRS_RemoveRegion   (BRS) Remove region (%u,%u) to (%u,%u)
+   55       BRS_RestoreRegion  (BRS) Restore region (%u,%u) to (%u,%u)
+   56       BRS_ClearList      (BRS) Clear the list of regions
+
+
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

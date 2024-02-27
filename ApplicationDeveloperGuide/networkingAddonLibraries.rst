@@ -20,7 +20,7 @@ IoT Libraries
       -  Network connection state and notifications.
       -  `android-connectivity <https://repository.microej.com/modules/ej/library/iot/android-connectivity/>`_
       -  `ConnectivityManager class <https://repository.microej.com/javadoc/microej_5.x/apis/android/net/ConnectivityManager.html>`_
-      -  - `Connectivity Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/androidconnectivity>`_
+      -  - `Connectivity Example <https://github.com/MicroEJ/Example-IOT/tree/master/androidconnectivity>`_
 
    *  -  ``HTTP Client``
       -  OpenJDK HTTP client.

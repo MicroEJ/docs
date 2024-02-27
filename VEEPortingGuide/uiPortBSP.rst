@@ -119,9 +119,9 @@ The BSP can add some runtime image decoders with the runtime decoders selected i
 By default, a best-fit allocator manages the image heap.
 To add another allocator, implement these functions:
 
-- ``LLUI_DISPLAY_IMPL_image_heap_initialize``: initialize the allocator.
-- ``LLUI_DISPLAY_IMPL_image_heap_allocate``: allocates the expected buffer.
-- ``LLUI_DISPLAY_IMPL_image_heap_free``: frees the given buffer.
+- ``LLUI_DISPLAY_IMPL_imageHeapInitialize``: initialize the allocator.
+- ``LLUI_DISPLAY_IMPL_imageHeapAllocate``: allocates the expected buffer.
+- ``LLUI_DISPLAY_IMPL_imageHeapFree``: frees the given buffer.
 
 **MicroUI Image Management**
 

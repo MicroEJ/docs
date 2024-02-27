@@ -181,6 +181,13 @@ will be converted to::
 
    testImplementation("ej.library.test:junit:1.7.1")
 
+Also note that this will not resolve snapshot builds since versions are explicit in SDK 6, see :ref:`this chapter <sdk_6_add_dependency_version>` for more details.
+To resolve both snapshot and release versions, use ``[1.0.0-RC,1.0.0]`` instead of ``1.0.0``.
+
+.. note::
+   If the dependency relates to another module of the same project, you may use a multi-project structure instead (see
+   `Multi-Project Build Basics <https://docs.gradle.org/current/userguide/intro_multi_project_builds.html>`__).
+
 Refer to the :ref:`sdk_6_add_dependency` page to go further on the Gradle dependencies and configurations.
 
 Example

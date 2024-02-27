@@ -473,9 +473,6 @@ This function (actually ``UI_DRAWING_is_drawer_1`` thanks to the define, see abo
 
     // Retrieve the destination buffer address
     uint8_t* destination_address = LLUI_DISPLAY_getBufferAddress(&gc->image);
-    
-    // Update the next "flush"'s dirty area
-    LLUI_DISPLAY_setDrawingLimits(startX, startY, endX, endY);
 
     // Configure the GPU clip
     THIRD_PARTY_DRAWER_set_clip(startX, startY, endX, endY);

@@ -1,3 +1,5 @@
+.. _section_image_menu:
+
 ======
 Images
 ======
