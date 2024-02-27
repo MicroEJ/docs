@@ -54,6 +54,13 @@ The following sequence explains the typical connection flow between two devices:
 - The Central device starts scanning
 - The Central device initiates a connection with the Peripheral device
 
+.. figure:: images/bluetooth_connection_procedure.png
+   :alt: Connection Procedure
+   :align: center
+   :scale: 50%
+
+   Connection Procedure
+
 A device must always enable its Bluetooth adapter using the `BluetoothAdapter.enable()`_ API before calling any other Bluetooth API.
 A Peripheral device can call the `BluetoothAdapter.startAdvertising()`_ API to start advertising.
 A Central device can call the `BluetoothAdapter.startScanning()`_ API to start scanning and the `BluetoothAdapter.connect()`_ API to initiate a connection.
@@ -104,6 +111,13 @@ A characteristic may have descriptors, which allow to describe or configure the 
 Every attribute (characteristic or descriptor) has permission flags, which control its access (read-only, read/write, requires authentication, etc.).
 Services and attributes are all identified by a 16-bit UUID. If a service or attribute is standard, the relevant specification indicates its UUID.
 
+.. figure:: images/bluetooth_service_structure.png
+   :alt: Service Structure
+   :align: center
+   :scale: 50%
+
+   Service Structure
+
 A device can call the getter APIs of `BluetoothService`_, `BluetoothCharacteristic`_, `BluetoothDescriptor`_ and `BluetoothAttribute`_ to browse the content of a service.
 
 BLE devices use characteristics to transfer data. There are 3 main procedures:
@@ -115,6 +129,11 @@ BLE devices use characteristics to transfer data. There are 3 main procedures:
 - A **notification** on a characteristic of a **provided service** allows to **send data** to any connected device.
   The device which owns the service sends a notification with the data to the desired device.
   BLE provides a built-in way to subcribe to the notifications of a characteristic of a discovered service, by sending a write request on its CCC descriptor.
+
+.. figure:: images/bluetooth_data_transfer_procedures.png
+   :alt: Data Transfer Procedures
+   :align: center
+   :scale: 50%
 
 For the read request procedure, a device can call the `BluetoothConnection.sendReadRequest()`_ API to send a read request.
 The `LocalServiceListener.onReadRequest()`_ hook is called when a device receives a read request.
