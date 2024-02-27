@@ -36,7 +36,7 @@ Foundation Libraries
       -  Client and Server raw TCP/IP sockets.
       -  `net <https://repository.microej.com/modules/ej/api/net/>`_
       - `java.net package <https://repository.microej.com/javadoc/microej_5.x/apis/java/net/package-summary.html>`_
-      -  -  `NET Example <https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/net.helloworld>`_
+      -  -  `NET Example <https://github.com/MicroEJ/Example-Foundation-Libraries/tree/master/net.helloworld>`_
          -  `NET utility Library <https://repository.microej.com/modules/ej/library/iot/net-util/>`_
 
    *  -  ``Security``
@@ -49,8 +49,8 @@ Foundation Libraries
       -  Client and Server secure sockets layer using Transport Layer Security (TLS) protocols.
       -  `ssl <https://repository.microej.com/modules/ej/api/ssl/>`_
       -  `java.net.ssl package <https://repository.microej.com/javadoc/microej_5.x/apis/javax/net/ssl/package-summary.html>`_
-      -  -  `SSL mutual client Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/ssl.mutual>`_
-         -  `SSL mutual server Example <https://github.com/MicroEJ/Example-Sandboxed-IOT/tree/master/ssl.mutual.server>`_
+      -  -  `SSL mutual client Example <https://github.com/MicroEJ/Example-IOT/tree/master/ssl-mutual>`_
+         -  `SSL mutual server Example <https://github.com/MicroEJ/Example-IOT/tree/master/ssl-mutual-server>`_
          -  `SSL utility Library <https://repository.microej.com/modules/ej/library/iot/ssl-util/>`_
 
 
