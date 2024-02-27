@@ -114,7 +114,7 @@ Well done !
 
 Now you know how to run an application on a Virtual Device.
 
-If you want to learn how to run an application on your STM32F7508-DK Evaluation Kit, you can continue this Getting Started: :ref:`Run an Application on STM32F7508-DK Evaluation Kit <sdk_6_getting_started_stm32f508dk_run_on_device>`.
+If you want to learn how to run an application on your STM32F7508-DK Evaluation Kit, you can continue this Getting Started: :ref:`Run an Application on STM32F7508-DK Evaluation Kit <sdk_6_getting_started_stm32f7508dk_run_on_device>`.
 
 Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started_stm32f7508dk_modify_java_application>`.
 
