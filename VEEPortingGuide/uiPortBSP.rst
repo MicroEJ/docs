@@ -85,7 +85,7 @@ The mandatory functions to implement are:
 - ``LLUI_DISPLAY_IMPL_flush``: copy/send the buffer content to the LCD.
 
 Refer to :ref:`section_display_llapi` to have more information.
-Refer too to the C-doc in the header file itself.
+Refer to the C-doc in the header file itself too.
 
 Display: LCD Constraints
 ========================
