@@ -28,7 +28,7 @@ The first part consists of running an MVC demo application on the Virtual Device
 The second part consists of running the same demo application on your device. For that you will need:
 
 * STM32F7508-DK Evaluation Kit, available `here <https://www.st.com/en/evaluation-tools/stm32f7508-dk.html>`__.
-* A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP. You will be guided on how to install toolchain later.
+* You will be guided on how to install STM32CubeIDE later.
 
 .. _sdk_6_getting_started_stm32f7508dk_environment_setup:
 
@@ -38,6 +38,7 @@ Environment Setup
 To follow this Getting Started, you need to install: 
 
 * MICROEJ SDK 6.
+* Get the Example-Foundation-Libraries from GitHub.
 
 Install MICROEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
