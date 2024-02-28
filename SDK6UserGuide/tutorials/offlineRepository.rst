@@ -36,32 +36,48 @@ The artifacts of the Gradle plugins are available in the SDK 6 Forge repository.
 Now that the Offline Repository of the Gradle plugins has been retrieved, you can configure your projects to use it:
 
 - Unzip the downloaded archive at the location of your choice, for example in the ``C:\sdk6-repository`` folder.
-- Add the following repositories declaration in :ref:`your repositories configuration script <sdk_6_configure_repositories>`, 
-  inside the ``pluginManagement > repositories`` block:
+- Add the following repository definition at the beginning of :ref:`your repositories configuration script <sdk_6_configure_repositories>`:
 
 .. code:: java
 
+  fun RepositoryHandler.offlineMicroEjSdk() {
+    val sdk6Uri = uri("C:\\sdk6-repository")
+
+    /* Offline MicroEJ SDK 6 repository for Maven/Gradle modules */
+    maven {
+      name = "offlineSDKRepositoryMaven"
+      url = sdk6Uri
+    }
+   
+    /* Offline MicroEJ SDK 6 repository for Ivy modules */
+    ivy {
+      name = "offlineSDKRepositoryMaven"
+      url = sdk6Uri
+      patternLayout {
+         artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
+         ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
+         setM2compatible(true)
+      }
+    }
+  }
+
+- Add the previously created repository declaration inside the `repositories` block of both `allprojects` and `pluginManagement` blocks:
+
+.. code:: java
+
+  allprojects {
+    repositories {
+      ...
+      offlineMicroEjSdk()
+      ...
+    }
+  }
+
   pluginManagement {
     repositories {
-  
       ...
-
-      maven {
-          name = "offlineSDKRepositoryMaven"
-          url = uri("C:\\sdk6-repository")
-      }
-      ivy {
-          name = "offlineSDKRepositoryIvy"
-          url = uri("C:\\sdk6-repository")
-          patternLayout {
-              artifact("[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier])(.[ext])")
-              ivy("[organisation]/[module]/[revision]/ivy-[revision].xml")
-              setM2compatible(true)
-          }
-      }
-
+      offlineMicroEjSdk()
       ...
-
     }
   }
 
