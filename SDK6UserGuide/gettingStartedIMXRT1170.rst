@@ -107,6 +107,13 @@ The Gradle project should now be imported in IntelliJ IDEA, your workspace conta
          :align: center
          :scale: 70%
 
+.. _sdk_6_getting_started_rt1170_eula:
+
+Accept the MICROEJ SDK EULA
+---------------------------
+
+You may have to accept the SDK EULA if you didn't already do, please have a look at :ref:`sdk_6_eula_acceptation`.
+
 .. _sdk_6_getting_started_rt1170_run_virtual_device:
 
 Run an Application on the Virtual Device
