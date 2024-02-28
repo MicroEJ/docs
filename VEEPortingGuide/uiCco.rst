@@ -141,7 +141,9 @@ Overview
 
 This part provides three Buffer Refresh Strategies (BRS): ``predraw``, ``single`` and ``legacy``.
 Refer to the chapter :ref:`section_brs` for more information about these strategies.
-These strategies are optional. When no strategy is selected, the BSP should provide its own strategy. If no strategy is specified or provided, a default strategy will be used; this is a minimal, naive strategy, which should only be used when using the :ref:`Direct Buffer mode <section_display_direct>`.
+These strategies are optional.
+When no strategy is selected, the BSP should provide its own strategy.
+If no strategy is specified or provided, a default strategy will be used; this is a minimal, naive strategy, which should only be used when using the :ref:`Direct Buffer mode <section_display_direct>`.
 
 Some strategies require an implementation of ``UI_DISPLAY_BRS_restore()`` (see ``ui_display_brs.h``).
 A weak implementation is available; this implementation uses the function ``memcpy()``.

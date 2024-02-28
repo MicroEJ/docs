@@ -19,18 +19,28 @@ External Resources
 Memory Management
 -----------------
 
-The Font Renderer is able to load some fonts located outside the CPU addresses' space range. It uses the External Resource Loader.
+The Font Renderer is able to load some fonts located outside the CPU addresses' space range.
+It uses the External Resource Loader.
 
-When a font is located in such memory, the Font Renderer copies a very short part of the resource (the font file) into a RAM memory (into CPU addresses space range): the font header. This header stays located in RAM until the application is using the font. As soon as the application uses another external font, new font replaces the old one. Then, on application demand, the Font Renderer loads some extra information from the font into the RAM memory (the font meta data, the font pixels, etc.). This extra information is automatically unloaded from RAM when the Font Renderer no longer needs them. 
+When a font is located in such memory, the Font Renderer copies a very short part of the resource (the font file) into a RAM memory (into CPU addresses space range): the font header.
+This header stays located in RAM until the application is using the font.
+As soon as the application uses another external font, new font replaces the old one.
+Then, on application demand, the Font Renderer loads some extra information from the font into the RAM memory (the font meta data, the font pixels, etc.).
+This extra information is automatically unloaded from RAM when the Font Renderer no longer needs them.
 
-This extra information is stored into a RAM section called ``.bss.microui.display.externalFontsHeap``. Its size is automatically calculated according to the external fonts used by the firmware. However it is possible to change this value by setting the application property ``ej.microui.memory.externalfontsheap.size``. This option is very useful when building a kernel: the kernel may anticipate the section size required by the features.
+This extra information is stored into a RAM section called ``.bss.microui.display.externalFontsHeap``.
+Its size is automatically calculated according to the external fonts used by the firmware.
+However it is possible to change this value by setting the application property ``ej.microui.memory.externalfontsheap.size``.
+This option is very useful when building a kernel: the kernel may anticipate the section size required by the features.
 
-.. warning:: When this size is smaller than the size required by an external font, some characters may be not drawn. 
+.. warning:: When this size is smaller than the size required by an external font, some characters may be not drawn.
 
 Configuration File
 ------------------
 
-Like internal resources, the Font Generator uses a :ref:`configuration file <section_fontgen_conffile>` (also called the "list file") for describing fonts that need to be processed. The list file must be specified in the application launcher (see :ref:`application_options`). However, all the files in the application classpath with the suffix ``.fontsext.list`` are automatically parsed by the Font Generator tool.
+Like internal resources, the Font Generator uses a :ref:`configuration file <section_fontgen_conffile>` (also called the "list file") for describing fonts that need to be processed.
+The list file must be specified in the application launcher (see :ref:`application_options`).
+However, all the files in the application classpath with the suffix ``.fontsext.list`` are automatically parsed by the Font Generator tool.
 
 Process
 -------
@@ -46,7 +56,7 @@ This chapter describes the steps to setup the loading of an external resource fr
 7. Build the application and run it on the device.
 8. The application loads the external resource using `Font.getFont(String)`_.
 9. The font loader looks for the font and only reads the font header.
-10. (optional) The external resource is closed if the external resource is inside the CPU addresses' space range. 
+10. (optional) The external resource is closed if the external resource is inside the CPU addresses' space range.
 11. The application can use the font.
 12. The external resource is never closed: the font's bytes are copied in RAM on demand (drawString, etc.).
 
@@ -61,10 +71,14 @@ All images listed in ``*.fontsext.list`` files are copied in the external resour
 Backward Compatibility
 ----------------------
 
-As explained :ref:`here<section.tool.fontdesigner.styles>`, the notion of ``Dynamic`` styles and the style ``UNDERLINED`` are not supported anymore by MicroUI 3. However, an external font may have been generated with an older version of the Font Generator; consequently, the generated file can hold the ``Dynamic`` style. The Font Renderer can load these old versions of fonts. However, there are some runtime limitations:
+As explained :ref:`here<section.tool.fontdesigner.styles>`, the notion of ``Dynamic`` styles and the style ``UNDERLINED`` are not supported anymore by MicroUI 3. However, an external font may have been generated with an older version of the Font Generator; consequently, the generated file can hold the ``Dynamic`` style.
+The Font Renderer can load these old versions of fonts.
+However, there are some runtime limitations:
 
-* The ``Dynamic`` styles are ignored. The font is drawn without any dynamic algorithm.
-* The font style (the style returned by `Font.isBold()`_ and `Font.isItalic()`_) is the ``Dynamic`` style. For instance, when a font holds the style `bold` as dynamic style and the style `italic` as built-in style, the font is considered as `bold` + `italic`; even if the style `bold` is not rendered.
+* The ``Dynamic`` styles are ignored.
+* The font is drawn without any dynamic algorithm.
+* The font style (the style returned by `Font.isBold()`_ and `Font.isItalic()`_) is the ``Dynamic`` style.
+* For instance, when a font holds the style `bold` as dynamic style and the style `italic` as built-in style, the font is considered as `bold` + `italic`; even if the style `bold` is not rendered.
 
 .. _Font.isBold(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#isBold--
 .. _Font.isItalic(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Font.html#isItalic--
@@ -74,7 +88,8 @@ As explained :ref:`here<section.tool.fontdesigner.styles>`, the notion of ``Dyna
 Installation
 ============
 
-The Font Renderer is part of the MicroUI module and Display module. You must install them in order to be able to use some fonts.
+The Font Renderer is part of the MicroUI module and Display module.
+You must install them in order to be able to use some fonts.
 
 
 Use

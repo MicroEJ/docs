@@ -23,7 +23,7 @@ The following chapters describe each group of Abstraction Layer APIs, except the
 MicroUI C Module
 ================
 
-The UI Pack **requires** the :ref:`MicroUI C module <section_ui_cco>`. 
+The UI Pack **requires** the :ref:`MicroUI C module <section_ui_cco>`.
 This C module 
 
 - implements some MicroUI native functions,

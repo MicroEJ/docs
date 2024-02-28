@@ -8,7 +8,8 @@ Input
 Principle
 =========
 
-The Input module contains the C part of the MicroUI implementation which manages input devices. This module is composed of two elements:
+The Input module contains the C part of the MicroUI implementation which manages input devices.
+This module is composed of two elements:
 
 -  the C part of MicroUI input API (a built-in C archive) called Input Engine,
 
@@ -18,9 +19,12 @@ The Input module contains the C part of the MicroUI implementation which manages
 Functional Description
 ======================
 
-The Input module implements the MicroUI ``int``-based event generators' framework. ``LLUI_INPUT`` specifies the Abstraction Layer APIs that send events to the Java world.
+The Input module implements the MicroUI ``int``-based event generators' framework.
+``LLUI_INPUT`` specifies the Abstraction Layer APIs that send events to the Java world.
 
-Drivers for input devices must generate events that are sent, via a MicroUI `Event Generator`_, to the application. An event generator accepts notifications from devices, and generates an event in a standard format that can be handled by the application. Depending on the MicroUI configuration, there can be several different types of event generator in the system, and one or more instances of each type. 
+Drivers for input devices must generate events that are sent, via a MicroUI `Event Generator`_, to the application.
+An event generator accepts notifications from devices, and generates an event in a standard format that can be handled by the application.
+Depending on the MicroUI configuration, there can be several different types of event generator in the system, and one or more instances of each type.
 
 Each MicroUI `Event Generator`_ represents one side of a pair of collaborative components that communicate using a shared buffer:
 
@@ -35,9 +39,12 @@ Each MicroUI `Event Generator`_ represents one side of a pair of collaborative c
 
    Drivers and MicroUI Event Generators Communication
 
-The ``LLUI_INPUT`` API allows multiple pairs of ``<driver - event generator>`` to use the same buffer, and associates drivers and event generators using an int ID. The ID used is the event generator ID held within the MicroUI global registry. Apart from sharing the ID used to "connect" one driver's data to its respective event generator, both entities are completely decoupled.
+The ``LLUI_INPUT`` API allows multiple pairs of ``<driver - event generator>`` to use the same buffer, and associates drivers and event generators using an int ID.
+The ID used is the event generator ID held within the MicroUI global registry.
+Apart from sharing the ID used to "connect" one driver's data to its respective event generator, both entities are completely decoupled.
 
-The `MicroUI`_ thread waits for data to be published by drivers into the "input buffer", and dispatches to the correct (according to the ID) event generator to read the received data. This "driver-specific-data" is then transformed into MicroUI events by event generators and sent to objects that listen for input activity.
+The `MicroUI`_ thread waits for data to be published by drivers into the "input buffer", and dispatches to the correct (according to the ID) event generator to read the received data.
+This "driver-specific-data" is then transformed into MicroUI events by event generators and sent to objects that listen for input activity.
 
 .. figure:: images/microui-events.png
    :alt: MicroUI Events Framework
@@ -55,8 +62,8 @@ The `MicroUI`_ thread waits for data to be published by drivers into the "input 
 Driver Listener
 ===============
 
-Drivers may either interface directly with event generators, or they can send their notifications to a *Listener*, also written in C, and the listener passes the notifications to the event generator. This
-decoupling has two major benefits:
+Drivers may either interface directly with event generators, or they can send their notifications to a *Listener*, also written in C, and the listener passes the notifications to the event generator.
+This decoupling has two major benefits:
 
 -  The drivers are isolated from the MicroEJ libraries – they can even
    be existing code.
@@ -69,9 +76,12 @@ decoupling has two major benefits:
 Static Initialization
 =====================
 
-The event generators available on MicroUI startup (after the call to `MicroUI.start()`_) are the event generators listed in the MicroUI description file (XML file). This file is a part of the MicroUI Static Initialization step (:ref:`section_static_init`). 
+The event generators available on MicroUI startup (after the call to `MicroUI.start()`_) are the event generators listed in the MicroUI description file (XML file).
+This file is a part of the MicroUI Static Initialization step (:ref:`section_static_init`).
 
-The order of event generators defines the unique identifier for each event generator. These identifiers are generated in a header file called ``microui_constants.h``. The input driver (or its listener) has to use these identifiers to target a specific event generator.
+The order of event generators defines the unique identifier for each event generator.
+These identifiers are generated in a header file called ``microui_constants.h``.
+The input driver (or its listener) has to use these identifiers to target a specific event generator.
 
 If an unknown identifier is used or if two identifiers are swapped, the associated event may be never received by the application or may be misinterpreted.
 
@@ -82,9 +92,15 @@ Standard Event Generators
 
 MicroUI provides a set of standard event generators: `Command`_, `Buttons`_, `Pointer`_ and `States`_. For each standard generator, the Input Engine proposes a set of functions to create and send an event to this generator.
 
-Static Initialization proposes an additional event generator: ``Touch``. A touch event generator is a `Pointer`_ event generator whose area size is the display size where the touch panel is placed. Furthermore, contrary to a pointer, a *press* action is required to be able to have a *move* action (and so a *drag* action). The Input Engine proposes a set of functions to target a touch event generator (equal to a pointer event generator but with some constraints). The touch event generator is identified as a standard `Pointer`_ event generator, by consequence the Java application has to use the `Pointer`_ API to deal with a touch event generator.
+Static Initialization proposes an additional event generator: ``Touch``.
+A touch event generator is a `Pointer`_ event generator whose area size is the display size where the touch panel is placed.
+Furthermore, contrary to a pointer, a *press* action is required to be able to have a *move* action (and so a *drag* action).
+The Input Engine proposes a set of functions to target a touch event generator (equal to a pointer event generator but with some constraints).
+The touch event generator is identified as a standard `Pointer`_ event generator, by consequence the Java application has to use the `Pointer`_ API to deal with a touch event generator.
 
-According to the event generator, one or several parameters are required. The parameter format is event generator dependant. For instance a ``Pointer`` X-coordinate is encoded on 16 bits (0-65535 pixels). 
+According to the event generator, one or several parameters are required.
+The parameter format is event generator dependant.
+For instance a ``Pointer`` X-coordinate is encoded on 16 bits (0-65535 pixels).
 
 .. note:: ``Pointer`` and ``Touch`` origin (point ``0,0``) is the top-left point.
 
@@ -98,17 +114,23 @@ According to the event generator, one or several parameters are required. The pa
 Generic Event Generators
 ========================
 
-MicroUI provides an abstract class `GenericEventGenerator`_ (package ``ej.microui.event``). The aim of a generic event generator is to be able to send custom events from native world to the application. These events may be constituted by only one 32-bit word or by several 32-bit words (maximum 255). 
+MicroUI provides an abstract class `GenericEventGenerator`_ (package ``ej.microui.event``).
+The aim of a generic event generator is to be able to send custom events from native world to the application.
+These events may be constituted by only one 32-bit word or by several 32-bit words (maximum 255).
 
-On the application side, a subclass must be implemented by clients who want to define their own event generators.  Two abstract methods must be implemented by subclasses:
+On the application side, a subclass must be implemented by clients who want to define their own event generators.
+Two abstract methods must be implemented by subclasses:
 
 -  ``eventReceived``: The event generator received an event from a C driver through the Abstraction Layer API ``sendEvent`` function.
 
 -  ``eventsReceived``: The event generator received an event made of several ``int``\ s.
 
-The event generator is responsible for converting incoming data into a MicroUI event and sending the event to its listener. It should be defined during MicroUI Static Initialization step (in the XML file, see :ref:`section_static_init`). This allows the MicroUI implementation to instantiate the event generator on startup. 
+The event generator is responsible for converting incoming data into a MicroUI event and sending the event to its listener.
+It should be defined during MicroUI Static Initialization step (in the XML file, see :ref:`section_static_init`).
+This allows the MicroUI implementation to instantiate the event generator on startup.
 
-If the event generator is not available in the application classpath, a warning is thrown (with a stack trace) and the application continues. In this case, all events sent by BSP to this event generator are ignored because no event generator is able to decode them.
+If the event generator is not available in the application classpath, a warning is thrown (with a stack trace) and the application continues.
+In this case, all events sent by BSP to this event generator are ignored because no event generator is able to decode them.
 
 .. _GenericEventGenerator: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/GenericEventGenerator.html
 
@@ -117,14 +139,22 @@ If the event generator is not available in the application classpath, a warning 
 Abstraction Layer API
 =====================
 
-The implementation of the MicroUI ``Event Generator`` APIs provides some Abstraction Layer APIs. The BSP has to implement these Abstraction Layer APIs, making the link between the MicroUI C library ``inputs`` and the BSP input devices
+The implementation of the MicroUI ``Event Generator`` APIs provides some Abstraction Layer APIs.
+The BSP has to implement these Abstraction Layer APIs, making the link between the MicroUI C library ``inputs`` and the BSP input devices
 drivers.
 
-The Abstraction Layer APIs to implement are listed in the header file ``LLUI_INPUT_impl.h``. It allows events to be sent to the MicroUI implementation. The input drivers are allowed to add events directly using the event generator's
-unique ID (see :ref:`section_static_init`). The drivers are fully dependent on the MicroEJ framework (a driver or a driver listener cannot be developed without MicroEJ because it uses the header file generated during the MicroUI initialization step).
+The Abstraction Layer APIs to implement are listed in the header file ``LLUI_INPUT_impl.h``.
+It allows events to be sent to the MicroUI implementation.
+The input drivers are allowed to add events directly using the event generator's
+unique ID (see :ref:`section_static_init`).
+The drivers are fully dependent on the MicroEJ framework (a driver or a driver listener cannot be developed without MicroEJ because it uses the header file generated during the MicroUI initialization step).
 
-To send an event to the application, the driver (or its listener) has to call one of the event engine function, listed in ``LLUI_INPUT.h``. 
-These functions take as parameter the MicroUI EventGenerator to target and the data. The event generator is represented by a unique ID. The data depends on the type of the event. To run correctly, the event engine requires an implementation of functions listed in ``LLUI_INPUT_impl.h``. When an event is added, the event engine notifies MicroUI library.
+To send an event to the application, the driver (or its listener) has to call one of the event engine function, listed in ``LLUI_INPUT.h``.
+These functions take as parameter the MicroUI EventGenerator to target and the data.
+The event generator is represented by a unique ID.
+The data depends on the type of the event.
+To run correctly, the event engine requires an implementation of functions listed in ``LLUI_INPUT_impl.h``.
+When an event is added, the event engine notifies MicroUI library.
 
 .. figure:: images/ui_llapi_input2.*
    :alt: MicroUI Input Abstraction Layer
@@ -133,7 +163,9 @@ These functions take as parameter the MicroUI EventGenerator to target and the d
 
    Input Abstraction Layer API
 
-When there is no input device on the board, a *stub* implementation of C library is available. This C library must be linked by the third-party C IDE when the MicroUI module is installed in the VEE Port. This stub library does not provide any Abstraction Layer API files.
+When there is no input device on the board, a *stub* implementation of C library is available.
+This C library must be linked by the third-party C IDE when the MicroUI module is installed in the VEE Port.
+This stub library does not provide any Abstraction Layer API files.
 
 Typical Implementation
 ======================
@@ -142,7 +174,8 @@ This chapter helps to write a basic ``LLUI_INPUT_impl.h`` implementation.
 This implementation should be divided into several files:
 
 - ``LLUI_INPUT_impl.c``: implements ``LLUI_INPUT_imp.h`` and *receives* the input devices interrupts / callbacks (button press, touch move, etc.).
-- ``xxx_helper.c``: one helper per kind of input device (group of buttons, touch, etc.). It links the input device hardware status and the software status (MicroUI event status). 
+- ``xxx_helper.c``: one helper per kind of input device (group of buttons, touch, etc.).
+- It links the input device hardware status and the software status (MicroUI event status).
 - ``event_generator.c``: converts the input device hardware events in MicroUI events.
 
 The pseudo-code calls external functions such as ``BUTTONS_DRIVER_xxx`` or ``TOUCH_DRIVER_xxx`` to symbolize the use of external drivers.
@@ -150,9 +183,9 @@ The pseudo-code calls external functions such as ``BUTTONS_DRIVER_xxx`` or ``TOU
 LLUI_INPUT_impl.c
 -----------------
 
-Its main aim is to synchronize the Input Engine with the input devices. 
+Its main aim is to synchronize the Input Engine with the input devices.
 The Input Engine holds a circular FIFO to store the input devices' events.
-The use of this FIFO must be performed under the critical section. 
+The use of this FIFO must be performed under the critical section.
 The concurrent actions "an input device adds a new event in the Input Engine" and "the Input Engine reads an event from the FIFO" must not be performed simultaneously.
 The implementation does not need to manage the concurrency: the Input Engine automatically calls the functions ``LLUI_INPUT_IMPL_enterCriticalSection`` and ``LLUI_INPUT_IMPL_leaveCriticalSection`` when an event is added or read.
 
@@ -421,7 +454,7 @@ This header file has been generated during the VEE Port build (see :ref:`section
 It holds some defines that describe the available list of MicroUI Event Generators.
 Each MicroUI Event Generator has its identifier: 0 to *n-1*.
 
-A button event is often converted in the MicroUI Command event. 
+A button event is often converted in the MicroUI Command event.
 That allows the application to be button-independent: the application is not waiting for button 0 or button 1 events but MicroUI Command ``ESC`` or ``LEFT`` for instance.
 The following pseudo-code converts the buttons events in MicroUI Command events.
 
@@ -479,7 +512,7 @@ The following pseudo-code converts the buttons events in MicroUI Command events.
 Event Buffer
 ============
 
-MicroUI is using a circular buffer to manage the input events. 
+MicroUI is using a circular buffer to manage the input events.
 As soon as an event is added, removed, or replaced in the queue, the event engine calls the associated Abstraction Layer API (LLAPI) ``LLUI_INPUT_IMPL_log_queue_xxx()``.
 This LLAPI allows the BSP to log this event to dump it later thanks to a call to ``LLUI_INPUT_dump()``.
 
@@ -502,9 +535,10 @@ The following steps describe how the dump is performed:
 
 .. warning:: The dump of MicroUI objects linked to the `future` events is only available with the MicroEJ Architectures 7.16 and higher. With older MicroEJ Architectures, nothing is dumped.
  
-An implementation is available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`. This logger is constituted with two files:
+An implementation is available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`.
+This logger is constituted with two files:
 
-* ``LLUI_INPUT_LOG_impl.c``: this file holds some metadata for each event. When the event engine calls ``LLUI_INPUT_IMPL_log_dump()``, the logger retrieves the event metadata and calls ``microui_event_decoder.c`` functions. To enable this logger, set the define ``MICROUIEVENTDECODER_ENABLED`` in ``microui_event_decoder_conf.h``. 
+* ``LLUI_INPUT_LOG_impl.c``: this file holds some metadata for each event. When the event engine calls ``LLUI_INPUT_IMPL_log_dump()``, the logger retrieves the event metadata and calls ``microui_event_decoder.c`` functions. To enable this logger, set the define ``MICROUIEVENTDECODER_ENABLED`` in ``microui_event_decoder_conf.h``.
 * ``microui_event_decoder.c``: this file describes the MicroUI events. It has to be customized with the MicroUI event generators identifiers. See ``microui_event_decoder_conf.h``.
 
 Example of a dump:
@@ -553,11 +587,11 @@ Example of a dump:
 
 Notes:
 
-* The event ``24`` holds an object in the events objects array (a ``Displayable``); its object index is ``0``. 
+* The event ``24`` holds an object in the events objects array (a ``Displayable``); its object index is ``0``.
 * An object is ``null`` when the memory slot has been used during the application execution but freed at the dump time.
 * The object array' size is the maximum of non-null objects reached during application execution.
 * The indices of old events are out-of-date: the memory slot is now null or reused by a newer event.
-* The event ``25`` targets the event generator ``3``; the identifier is available in ``microui_constants.h`` (created during the VEE Port build, see :ref:`section_inputs_static_init`). 
+* The event ``25`` targets the event generator ``3``; the identifier is available in ``microui_constants.h`` (created during the VEE Port build, see :ref:`section_inputs_static_init`).
 * The events ``27`` to ``99`` cannot be identified (no metadata or partial event content due to circular queue management).
 * Refers to the implementation on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` to have more information about the format of the event; this implementation is always up-to-date with the MicroUI implementation.
 
@@ -577,7 +611,8 @@ Dependencies
 Installation
 ============
 
-Input module is a sub-part of the MicroUI library. The Input module is installed at same time than MicroUI module. 
+Input module is a sub-part of the MicroUI library.
+The Input module is installed at same time than MicroUI module.
 
 Use
 ===

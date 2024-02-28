@@ -81,7 +81,8 @@ The required memory also depends on the number of bits per pixel of the MicroEJ 
 
       required_memory = header + (image_width * image_height) * bpp / 8;
 
-The pixel array is stored after the MicroEJ image file header. A padding between the header and the pixel array is added to force to start the pixel array at a memory address aligned on the number of bits-per-pixels.
+The pixel array is stored after the MicroEJ image file header.
+A padding between the header and the pixel array is added to force to start the pixel array at a memory address aligned on the number of bits-per-pixels.
 
 .. figure:: images/uiFormat01.*
    :width: 50.0%
@@ -249,7 +250,7 @@ See :ref:`section_image_rle_output`.
 MicroEJ Format: Custom
 ======================
 
-A custom format embeds a buffer whose data are VEE Port specific. 
+A custom format embeds a buffer whose data are VEE Port specific.
 This data may be:
 
 * a pixel buffer whose encoding is different than the formats proposed before,
@@ -297,7 +298,7 @@ The following table lists the original formats that can be decoded at run-time a
 
 * Image Generator: the off-board tool that converts an image into an output format. All AWT `ImageIO`_ default formats are supported and always enabled.
 * Front Panel: the decoders embedded by the simulator part. All AWT `ImageIO`_ default formats are supported but disabled by default.
-* Runtime Decoders: the decoders embedded by the embedded part. 
+* Runtime Decoders: the decoders embedded by the embedded part.
 
 .. table:: Original Image Formats
 
@@ -327,10 +328,10 @@ The following table lists the original formats that can be decoded at run-time a
 GPU Format Support
 ==================
 
-The MicroEJ formats :ref:`display <section_image_display_raw>`, :ref:`standard <section_image_standard_raw>` and :ref:`grayscale <section_image_grayscale_raw>` may be customized to be compatible with the hardware (usually GPU). 
+The MicroEJ formats :ref:`display <section_image_display_raw>`, :ref:`standard <section_image_standard_raw>` and :ref:`grayscale <section_image_grayscale_raw>` may be customized to be compatible with the hardware (usually GPU).
 It can be extended by one or several restrictions on the pixels array: 
 
-* Its start address has to be aligned on a higher value than the number of bits-per-pixels. 
+* Its start address has to be aligned on a higher value than the number of bits-per-pixels.
 * A padding has to be added after each line (row stride).
 * The MicroEJ format can hold a VEE Port-dependent header between the MicroEJ format header (start of file) and the pixel array.
   The MicroEJ format is designed to let the VEE Port encode and decode this additional header.
@@ -347,7 +348,7 @@ Advantages:
 Disadvantages:
 
 * No compression: the image size in bytes is proportional to the number of pixels.
-  The required memory is similar to :ref:`section_image_standard_raw` when no custom header exists. 
+  The required memory is similar to :ref:`section_image_standard_raw` when no custom header exists.
 
 When the MicroEJ format holds another header (called ``custom_header``), the required memory is:
 ::

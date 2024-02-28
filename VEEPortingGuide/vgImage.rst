@@ -106,7 +106,7 @@ The rules are exactly the sames than the compile-time images.
 Process
 ~~~~~~~
 
-The process to open a Vector Image from an external memory is exactly the same than the loading of :ref:`an external MicroUI Image<section_image_external_memory>` . 
+The process to open a Vector Image from an external memory is exactly the same than the loading of :ref:`an external MicroUI Image<section_image_external_memory>`.
 
 The following steps describe how to setup the loading of an external resource from the application:
 

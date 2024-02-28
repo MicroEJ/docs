@@ -8,25 +8,34 @@ Display
 Principle
 =========
 
-The Display module contains the C part of the MicroUI implementation, which manages graphical displays. This module is composed of three elements:
+The Display module contains the C part of the MicroUI implementation, which manages graphical displays.
+This module is composed of three elements:
 
 - the C part of MicroUI Display API (a built-in C archive) called Graphics Engine,
 - an implementation of Abstraction Layer APIs for the displays (LLUI_DISPLAY) that the BSP must provide (see :ref:`LLDISPLAY-API-SECTION`),
 - an implementation of Abstraction Layer APIs for MicroUI drawings.
 
-The Display module implements the MicroUI graphics framework. This framework is constituted of several notions: the display characteristics (size, format, backlight, contrast, etc.), the drawing state machine (render, flush, wait flush completed), the image life cycle, and the fonts and drawings. The main part of the Display module is provided by a built-in C archive called Graphics Engine. This library manages the drawing state machine mechanism, the images, and the fonts. The ``LLUI_DISPLAY`` implementation manages the display characteristics and the drawings.   
+The Display module implements the MicroUI graphics framework.
+This framework is constituted of several notions: the display characteristics (size, format, backlight, contrast, etc.), the drawing state machine (render, flush, wait flush completed), the image life cycle, and the fonts and drawings.
+The main part of the Display module is provided by a built-in C archive called Graphics Engine.
+This library manages the drawing state machine mechanism, the images, and the fonts.
+The ``LLUI_DISPLAY`` implementation manages the display characteristics and the drawings.
 
-The Graphics Engine is designed to let the BSP use an optional graphics processor unit (GPU) or an optional third-party drawing library. Each drawing can be implemented independently. If no extra framework is available, the Graphics Engine performs all drawings in software. 
+The Graphics Engine is designed to let the BSP use an optional graphics processor unit (GPU) or an optional third-party drawing library.
+Each drawing can be implemented independently.
+If no extra framework is available, the Graphics Engine performs all drawings in software.
 In this case, the BSP has to perform a straightforward implementation (four functions) of the Graphics Engine Abstraction Layer.
 
-MicroUI library also gives the possibility to perform some additional drawings that are not available as API in the MicroUI library. The Graphics Engine provides a set of functions to synchronize the drawings between them, to get the destination (and sometimes source) characteristics, to call internal software drawings, etc. 
+MicroUI library also gives the possibility to perform some additional drawings that are not available as API in the MicroUI library.
+The Graphics Engine provides a set of functions to synchronize the drawings between them, to get the destination (and sometimes source) characteristics, to call internal software drawings, etc.
 
-Front Panel (simulator Graphics Engine part) gives the same possibilities. The same constraints can be applied, the same drawings can be overridden or added, and the same software drawing rendering is performed (down to the pixel).
+Front Panel (simulator Graphics Engine part) gives the same possibilities.
+The same constraints can be applied, the same drawings can be overridden or added, and the same software drawing rendering is performed (down to the pixel).
 
 Chapters Organization
 =====================
 
-For more convenience, this chapter only describes how a display device works and how to connect it to the MicroUI Graphics Engine. 
+For more convenience, this chapter only describes how a display device works and how to connect it to the MicroUI Graphics Engine.
 Dedicated chapters deal with related concepts:
 
 * :ref:`section_brs`: how the front buffer is refreshed.
@@ -41,7 +50,8 @@ Dedicated chapters deal with related concepts:
 Display Configuration
 =====================
 
-The Graphics Engine provides a number of different configurations. The appropriate configuration should be selected depending on the capabilities of the screen and other related hardware, such as display controllers.
+The Graphics Engine provides a number of different configurations.
+The appropriate configuration should be selected depending on the capabilities of the screen and other related hardware, such as display controllers.
 
 The policies can vary in four ways:
 
@@ -93,10 +103,10 @@ This is the notion of **unmapped memory**.
 Parallel
 --------
  
-The MCU features an LCD controller that transmits the content of an MCU's buffer to the display module. 
-The display module doesn't hold its memory. 
-The LCD controller continuously updates the display panel's content by reading the MCU memory data. 
-By definition, this memory is addressed by the MCU: the MCU can write (and read) into it (the memory is in the MCU addresses range). 
+The MCU features an LCD controller that transmits the content of an MCU's buffer to the display module.
+The display module doesn't hold its memory.
+The LCD controller continuously updates the display panel's content by reading the MCU memory data.
+By definition, this memory is addressed by the MCU: the MCU can write (and read) into it (the memory is in the MCU addresses range).
 This is the notion of **mapped memory**.
 
 .. figure:: images/ui_display_parallel.*
@@ -120,7 +130,7 @@ The Graphics Engine does not depend on the type of buffer policy, and it manipul
 1. It renders the application drawings into an MCU buffer; this buffer is called **back buffer**.
 2. It *flushes* the buffer's content to the display panel; this buffer is called **front buffer**.
 
-The implementation of `Display.flush()`_  calls the Abstraction Layer API ``LLUI_DISPLAY_IMPL_flush`` to let the BSP update the display data. 
+The implementation of `Display.flush()`_  calls the Abstraction Layer API ``LLUI_DISPLAY_IMPL_flush`` to let the BSP update the display data.
 
 Decision Tree
 -------------
@@ -186,13 +196,13 @@ The following table redirects to the right chapter according to the display buff
 Direct Buffer (parallel)
 ------------------------
 
-There is only one buffer, and the display panel continuously refreshes its content on this MCU buffer. 
+There is only one buffer, and the display panel continuously refreshes its content on this MCU buffer.
 This MCU buffer is, at the same time, the back and front buffer.
 Consequently, the display panel can show incomplete frames and partial drawings since the drawings can be done during the refresh cycle of the display panel.
 This is the notion of **direct buffer**.
 This buffer policy is recommended for static display-based applications and/or to save memory.
 
-In this policy, the *flush* step has no meaning (there is only one buffer). 
+In this policy, the *flush* step has no meaning (there is only one buffer).
 
 .. figure:: images/ui_display_direct.*
    :alt: Direct Buffer
@@ -211,8 +221,8 @@ The first buffer, for its part, is dedicated to the refreshing of the display pa
 Double buffering avoids flickering and inconsistent rendering: it is well suited to high-quality animations.
 This is the notion of **double buffer**.
 This new buffer is usually called **back buffer**, and the first buffer is usually called **front buffer**.
-The two buffers in MCU memory alternately play the role of the back buffer and the front buffer. 
-The front buffer address is alternatively changed from one buffer to the other. 
+The two buffers in MCU memory alternately play the role of the back buffer and the front buffer.
+The front buffer address is alternatively changed from one buffer to the other.
 
 The *flush* step consists in switching (or swapping) the two buffers: the front buffer becomes the back buffer, and the back buffer becomes the front buffer.
 
@@ -305,7 +315,7 @@ However, there are some differences:
 
 * In the *Swap Double* policy, the new front buffer data is available instantly. As soon as the LCD controller has updated its front buffer address, the data is ready to be read by the LCD controller. In the *Single* policy, the process of copying the data to the front buffer occurs while the LCD controller is reading it. Therefore, the buffer copy has to be faster than the LCD controller reading. If this requirement is not met, the LCD controller will read a mix of new and old data (because the buffer copy is not entirely finished).
 * In the *Swap Double* policy, the synchronization with the LCD controller is more effortless. An interrupt is thrown as soon as the LCD controller has updated its front buffer address. In the *Single* policy, the copy buffer process should be synchronized with the LCD tearing signal.
-* In the *Single* policy, during the copy, the destination buffer (the front buffer) is used by the copy buffer process (DMA, memcopy, etc.) and by the LCD controller. Both masters are using the same RAM section. This same RAM section switches in *Write* mode (copy buffer process) and *Read* mode (LCD controller). 
+* In the *Single* policy, during the copy, the destination buffer (the front buffer) is used by the copy buffer process (DMA, memcopy, etc.) and by the LCD controller. Both masters are using the same RAM section. This same RAM section switches in *Write* mode (copy buffer process) and *Read* mode (LCD controller).
 
 .. _section_display_copyswap:
 
@@ -368,7 +378,8 @@ In that case, the buffer is smaller and can only store a part of the screen (one
 When this technique is used, the application draws in the partial buffer.
 To flush the drawings, the content of the partial buffer is copied to the display (to its :ref:`internal memory <section_display_single>` or to a :ref:`complete buffer <section_display_single_parallel>` from which the display reads).
 
-If the display does not have its own internal memory and if the device does not have enough RAM to allocate a complete buffer, then it is not possible to use a partial buffer. In that case, only the :ref:`direct <section_display_direct>` buffer policy can be used.
+If the display does not have its own internal memory and if the device does not have enough RAM to allocate a complete buffer, then it is not possible to use a partial buffer.
+In that case, only the :ref:`direct <section_display_direct>` buffer policy can be used.
 
 Workflow
 """"""""
@@ -388,14 +399,16 @@ Dual Partial Buffer
 A second partial buffer can be used to avoid the synchronization delay between two drawing cycles.
 While one of the two partial buffers is being copied to the display, the application can start drawing in the second partial buffer.
 
-This technique is interesting when the copy time is long. The downside is that it either requires more RAM or requires reducing the size of the partial buffers.
+This technique is interesting when the copy time is long.
+The downside is that it either requires more RAM or requires reducing the size of the partial buffers.
 
 Using a dual partial buffer has no impact on the application code.
 
 Application Limitations
 """""""""""""""""""""""
 
-Using a partial buffer rather than a complete buffer may require adapting the code of the application since rendering a graphical element may require multiple passes. If the application uses MWT, a :ref:`custom render policy <section_render_policy>` has to be used.
+Using a partial buffer rather than a complete buffer may require adapting the code of the application since rendering a graphical element may require multiple passes.
+If the application uses MWT, a :ref:`custom render policy <section_render_policy>` has to be used.
 
 Besides, the `GraphicsContext.readPixel()`_
 and the `GraphicsContext.readPixels()`_ APIs
@@ -406,7 +419,8 @@ Likewise, the `Painter.drawDisplayRegion()`_ API can not be used in partial buff
 Indeed, this API reads the content of the back buffer in order to draw a region of the display.
 Instead of relying on the drawings that were performed previously, this API should be avoided, and the drawings should be performed again.
 
-Using a partial buffer can have a significant impact on animation performance. Refer to :ref:`section_animations` for more information on the development of animations in an application.
+Using a partial buffer can have a significant impact on animation performance.
+Refer to :ref:`section_animations` for more information on the development of animations in an application.
 
 .. _GraphicsContext.readPixel(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#readPixel-int-int-
 .. _GraphicsContext.readPixels(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#readPixels-int:A-int-int-int-int-int-int-
@@ -415,7 +429,8 @@ Using a partial buffer can have a significant impact on animation performance. R
 Implementation Example
 """"""""""""""""""""""
 
-The `partial buffer demo <https://github.com/MicroEJ/Demo-PartialBuffer>`__ provides an example of partial buffer implementation. This example explains how to implement partial buffer support in the BSP and how to use it in an application.
+The `partial buffer demo <https://github.com/MicroEJ/Demo-PartialBuffer>`__ provides an example of partial buffer implementation.
+This example explains how to implement partial buffer support in the BSP and how to use it in an application.
 
 
 .. _display_pixel_structure:
@@ -426,16 +441,19 @@ Pixel Structure
 Principle
 ---------
 
-The Display module provides pre-built display configurations with a standard pixel memory layout. The layout of the bits within the pixel may be :ref:`standard<display_pixel_structure_standard>` or :ref:`driver-specific<display_pixel_structure_driver>`. When installing the Display module, a property ``bpp`` is required to specify the kind of pixel representation (see :ref:`section_display_installation`).
+The Display module provides pre-built display configurations with a standard pixel memory layout.
+The layout of the bits within the pixel may be :ref:`standard<display_pixel_structure_standard>` or :ref:`driver-specific<display_pixel_structure_driver>`.
+When installing the Display module, a property ``bpp`` is required to specify the kind of pixel representation (see :ref:`section_display_installation`).
 
 .. _display_pixel_structure_standard:
 
 Standard
 --------
 
-When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the Display module considers the pixels representation as **standard**. 
-All standard representations are internally managed by the Display module, by the :ref:`Front Panel<section_ui_simulation>` and by the :ref:`Image Generator<section_image_generator>`. 
-No specific support is required as long as a VEE Port is using a standard representation. It can:
+When the value is one among this list: ``ARGB8888 | RGB888 | RGB565 | ARGB1555 | ARGB4444 | C4 | C2 | C1``, the Display module considers the pixels representation as **standard**.
+All standard representations are internally managed by the Display module, by the :ref:`Front Panel<section_ui_simulation>` and by the :ref:`Image Generator<section_image_generator>`.
+No specific support is required as long as a VEE Port is using a standard representation.
+It can:
 
 * generate at compile-time RAW images in the same format as display pixel format,
 * convert at runtime MicroUI 32-bit colors in display pixel format,
@@ -587,13 +605,13 @@ According to the chosen format, some color data can be lost or cropped.
 Driver-Specific
 ---------------
 
-The Display module considers the pixel representation as **driver-specific** when the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``. 
-This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead. 
+The Display module considers the pixel representation as **driver-specific** when the value is one among this list: ``1 | 2 | 4 | 8 | 16 | 24 | 32``.
+This mode is often used when the pixel representation is not ``ARGB`` or ``RGB`` but ``BGRA`` or ``BGR`` instead.
 This mode can also be used when the number of bits for a color component (alpha, red, green, or blue) is not standard or when the value does not represent a color but an index in a :ref:`display_lut`.
 This mode requires some specific support in the VEE Port:
 
 * An extension of the image generator is mandatory: see :ref:`section_image_generator_extended` to convert MicroUI's standard 32-bit ARGB colors to display pixel format.
-* The Front Panel widget ``Display`` requires an extension to convert the MicroUI 32-bit colors in display pixel format and vice-versa, see :ref:`section_ui_simulation_display`.  
+* The Front Panel widget ``Display`` requires an extension to convert the MicroUI 32-bit colors in display pixel format and vice-versa, see :ref:`section_ui_simulation_display`.
 * The driver must implement functions that convert MicroUI's standard 32-bit ARGB colors to display pixel format and vice-versa: see :ref:`colorConversions`.
 
 The following example illustrates the use of specific format BGR565 (the pixel uses 16 bits-per-pixel (alpha[0], red[5], green[6]
@@ -688,25 +706,38 @@ and blue[5]):
 CLUT
 ====
 
-The Display module allows the targeting of a display that uses a pixel indirection table (CLUT). This kind of display is considered as generic but not standard (see :ref:`display_pixel_structure`). It consists in storing color indexes in the image memory buffer instead of colors themselves.
+The Display module allows the targeting of a display that uses a pixel indirection table (CLUT).
+This kind of display is considered as generic but not standard (see :ref:`display_pixel_structure`).
+It consists in storing color indexes in the image memory buffer instead of colors themselves.
 
 Color Conversion
 ----------------
 
-The driver must implement functions that convert MicroUI's standard 32-bit ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to display color representation. For each application ARGB8888 color, the display driver has to find the corresponding color in the table. The Graphics Engine will store the index of the color in the table instead of using the color itself.
+The driver must implement functions that convert MicroUI's standard 32-bit ARGB colors (see :ref:`LLDISPLAY-API-SECTION`) to display color representation.
+For each application ARGB8888 color, the display driver has to find the corresponding color in the table.
+The Graphics Engine will store the index of the color in the table instead of using the color itself.
 
-When an application color is not available in the display driver table (CLUT), the display driver can try to find the closest color or return a default color. The first solution is often quite tricky to write and can cost a lot of time at runtime. That's why the second solution is preferred. However, a consequence is that the application only uses a range of colors provided by the display driver.
+When an application color is not available in the display driver table (CLUT), the display driver can try to find the closest color or return a default color.
+The first solution is often quite tricky to write and can cost a lot of time at runtime.
+That's why the second solution is preferred.
+However, a consequence is that the application only uses a range of colors provided by the display driver.
 
 Alpha Blending
 --------------
 
-MicroUI and the Graphics Engine use blending when drawing some texts or anti-aliased shapes. For each pixel to draw, the display stack blends the current application foreground color with the targeted pixel's current color or with the current application background color (when enabled). This blending *creates* some  intermediate colors which the display driver manages. 
+MicroUI and the Graphics Engine use blending when drawing some texts or anti-aliased shapes.
+For each pixel to draw, the display stack blends the current application foreground color with the targeted pixel's current color or with the current application background color (when enabled).
+This blending *creates* some  intermediate colors which the display driver manages.
 
-Most of the time, the intermediate colors do not match with the palette. The default color is so returned, and the rendering becomes wrong. To prevent this use case, the Graphics Engine offers a specific Abstraction Layer API ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors(void* foreground, void* background)``. 
+Most of the time, the intermediate colors do not match with the palette.
+The default color is so returned, and the rendering becomes wrong.
+To prevent this use case, the Graphics Engine offers a specific Abstraction Layer API ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors(void* foreground, void* background)``.
 
-This API is only used when a blending is required and when the background color is enabled. The Graphics Engine calls the API just before the blending and gives as a parameter the pointers on both ARGB colors. The display driver should replace the ARGB colors with the CLUT indexes. Then, the Graphics Engine will only use between both indexes. 
+This API is only used when a blending is required and when the background color is enabled.
+The Graphics Engine calls the API just before the blending and gives as a parameter the pointers on both ARGB colors.The display driver should replace the ARGB colors with the CLUT indexes.
+Then, the Graphics Engine will only use between both indexes.
 
-For instance, when the returned indexes are ``20`` and ``27``, the display stack will use the indexes ``20`` to ``27``, where all indexes between ``20`` and ``27`` target some intermediate colors between both the original ARGB colors. 
+For instance, when the returned indexes are ``20`` and ``27``, the display stack will use the indexes ``20`` to ``27``, where all indexes between ``20`` and ``27`` target some intermediate colors between both the original ARGB colors.
 
 This solution requires several conditions:
 
@@ -722,7 +753,8 @@ Memory Layout
 =============
 
 For the display with a number of bits-per-pixel (BPP) higher or equal to 8, the Graphics Engine supports the line-by-line memory organization: pixels are laid out from left to right within a line, starting with the top
-line. For a display with 16 bits-per-pixel, the pixel at (0,0) is stored at memory address 0, the pixel at (1,0) is stored at address 2, the pixel at (2,0) is stored at address 4, and so on.
+line.
+For a display with 16 bits-per-pixel, the pixel at (0,0) is stored at memory address 0, the pixel at (1,0) is stored at address 2, the pixel at (2,0) is stored at address 4, and so on.
 
 .. table:: Memory Layout for BPP >= 8
 
@@ -742,7 +774,9 @@ line. For a display with 16 bits-per-pixel, the pixel at (0,0) is stored at memo
    |     | [7:0]     | [7:0]     | [7:0]     | [7:0]     | [7:0]     |
    +-----+-----------+-----------+-----------+-----------+-----------+
 
-For the display with a number of bits-per-pixel (BPP) lower than 8, the Graphics Engine supports both memory organizations: line by line (pixels are laid out from left to right within a line, starting with the top line) and column by column (pixels are laid out from top to bottom within a line, starting with the left line). These byte organizations concern until 8 consecutive pixels (see :ref:`section_display_layout_byte`). When installing the Display module, a property ``memoryLayout`` is required to specify the kind of pixel representation (see :ref:`section_display_installation`).
+For the display with a number of bits-per-pixel (BPP) lower than 8, the Graphics Engine supports both memory organizations: line by line (pixels are laid out from left to right within a line, starting with the top line) and column by column (pixels are laid out from top to bottom within a line, starting with the left line).
+These byte organizations concern until 8 consecutive pixels (see :ref:`section_display_layout_byte`).
+When installing the Display module, a property ``memoryLayout`` is required to specify the kind of pixel representation (see :ref:`section_display_installation`).
 
 .. table:: Memory Layout 'line' for BPP < 8 and byte layout 'line'
 
@@ -810,8 +844,8 @@ For the display with a number of bits-per-pixel (BPP) lower than 8, the Graphics
 Byte Layout
 ===========
 
-This chapter concerns only displays with a number of bits-per-pixel (BPP) smaller than 8. For this kind of display, a byte contains several pixels, and the Graphics Engine allows to customize how to organize the pixels in a
-byte.
+This chapter concerns only displays with a number of bits-per-pixel (BPP) smaller than 8.
+For this kind of display, a byte contains several pixels, and the Graphics Engine allows to customize how to organize the pixels in a byte.
 
 Two layouts are available:
 
@@ -866,34 +900,57 @@ Display Synchronization
 Overview
 --------
 
-The Graphics Engine is designed to be synchronized with the display refresh rate by defining some points in the rendering timeline. It is optional; however, it is mainly recommended.  This chapter explains why to use display tearing signal and its consequences. Some chronograms describe several use cases: with and without display tearing signal, long drawings, long flush time, etc. Times are in milliseconds. To simplify chronograms views, the display refresh rate is every 16ms (62.5Hz). 
+The Graphics Engine is designed to be synchronized with the display refresh rate by defining some points in the rendering timeline.
+It is optional; however, it is mainly recommended.
+This chapter explains why to use display tearing signal and its consequences.
+Some chronograms describe several use cases: with and without display tearing signal, long drawings, long flush time, etc.
+Times are in milliseconds.
+To simplify chronograms views, the display refresh rate is every 16ms (62.5Hz).
 
 Captions definition:
 
 * UI: It is the UI task that performs the drawings in the back buffer. At the end of the drawings, the examples consider that the UI thread calls `Display.flush()`_ 1 millisecond after the end of the drawings. At this moment, a flush can start (the call to `Display.flush()`_ is symbolized by a simple `peak` in chronograms).
-* Flush: In :ref:`single buffer<section_display_single>` policy, it is the time to flush the content of the back buffer to the front buffer. In :ref:`double<section_display_swap_double_parallel>` or :ref:`triple<section_display_triple>` policy, it is the time to swap back and front buffers (the instruction is often instantaneous but the action is usually performed at the beginning of the next display refresh rate). During this time, the back buffer is `in use`, and the UI task has to wait until the end of the swap before starting a new drawing. 
+* Flush: In :ref:`single buffer<section_display_single>` policy, it is the time to flush the content of the back buffer to the front buffer. In :ref:`double<section_display_swap_double_parallel>` or :ref:`triple<section_display_triple>` policy, it is the time to swap back and front buffers (the instruction is often instantaneous but the action is usually performed at the beginning of the next display refresh rate). During this time, the back buffer is `in use`, and the UI task has to wait until the end of the swap before starting a new drawing.
 * Tearing: The peaks show the tearing signals.
 * Rendering frequency: the frequency between the start of a drawing and the end of the flush.
 
 Tearing Signal
 --------------
 
-In this example, the drawing time is 7ms, the time between the end of the drawing and the call to `Display.flush()`_ is 1ms, and the flush time is 6ms. So the expected rendering frequency is 7 + 1 + 6 = 14ms (71.4Hz). Flush starts just after the call to `Display.flush()`_, and the next drawing starts just after the end of flush. Tearing signal is not taken into consideration. As a consequence, the display content is refreshed during the display refresh time. The content can be corrupted: flickering, glitches, etc. The rendering frequency is faster than the display refresh rate.
+In this example, the drawing time is 7ms, the time between the end of the drawing and the call to `Display.flush()`_ is 1ms, and the flush time is 6ms.
+So the expected rendering frequency is 7 + 1 + 6 = 14ms (71.4Hz).
+Flush starts just after the call to `Display.flush()`_, and the next drawing starts just after the end of flush.
+Tearing signal is not taken into consideration.
+As a consequence, the display content is refreshed during the display refresh time.
+The content can be corrupted: flickering, glitches, etc.
+The rendering frequency is faster than the display refresh rate.
 
 .. figure:: images/uiDisplaySync01.*
    :width: 100%
 
-In this example, the times are identical to the previous example. The tearing signal is used to start the flush to respect the display refreshing time. The rendering frequency becomes smaller: it is cadenced on the tearing signal every 16ms (62.5Hz). During 2ms, the CPU can schedule other tasks or go into idle mode. The rendering frequency is equal to the display refresh rate.
+In this example, the times are identical to the previous example.
+The tearing signal is used to start the flush to respect the display refreshing time.
+The rendering frequency becomes smaller: it is cadenced on the tearing signal every 16ms (62.5Hz).
+During 2ms, the CPU can schedule other tasks or go into idle mode.
+The rendering frequency is equal to the display refresh rate.
 
 .. figure:: images/uiDisplaySync02.*
    :width: 100%
 
-In this example, the drawing time is 14ms, the time between the end of the drawing and the call to `Display.flush()`_ is 1ms, and the flush time is 6ms. So the expected rendering frequency is 14 + 1 + 6 = 21ms (47.6Hz). Flush starts just after the call to `Display.flush()`_, and the next drawing starts just after the end of flush. Tearing signal is not taken into consideration. 
+In this example, the drawing time is 14ms, the time between the end of the drawing and the call to `Display.flush()`_ is 1ms, and the flush time is 6ms.
+So the expected rendering frequency is 14 + 1 + 6 = 21ms (47.6Hz).
+Flush starts just after the call to `Display.flush()`_, and the next drawing starts just after the end of flush.
+Tearing signal is not taken into consideration.
 
 .. figure:: images/uiDisplaySync03.*
    :width: 100%
  
-In this example, the times are identical to the previous example. The tearing signal is used to start the flush to respect the display refreshing time. The drawing time + flush time is higher than the display tearing signal period. So, the flush cannot start at every tearing peak: it is cadenced on two tearing signals every 32ms (31.2Hz). During 11ms, the CPU can schedule other tasks or go into idle mode. The rendering frequency is equal to the display refresh rate divided by two.
+In this example, the times are identical to the previous example.
+The tearing signal is used to start the flush to respect the display refreshing time.
+The drawing time + flush time is higher than the display tearing signal period.
+So, the flush cannot start at every tearing peak: it is cadenced on two tearing signals every 32ms (31.2Hz).
+During 11ms, the CPU can schedule other tasks or go into idle mode.
+The rendering frequency is equal to the display refresh rate divided by two.
 
 .. figure:: images/uiDisplaySync04.*
    :width: 100%
@@ -901,19 +958,33 @@ In this example, the times are identical to the previous example. The tearing si
 Additional Buffer 
 -----------------
 
-Some devices take a lot of time to flush the back buffer content to the front buffer. The following examples demonstrate the consequence of rendering frequency. The use of an additional buffer optimizes this frequency; however, it uses a lot of RAM.
+Some devices take a lot of time to flush the back buffer content to the front buffer.
+The following examples demonstrate the consequence of rendering frequency.
+The use of an additional buffer optimizes this frequency; however, it uses a lot of RAM.
 
-In this example, the drawing time is 7ms, the time between the end of the drawing and the call to `Display.flush()`_ is 1ms, and the flush time is 12ms. So the expected rendering frequency is 7 + 1 + 12 = 20ms (50Hz). Flush starts just after the call to `Display.flush()`_, and the next drawing starts just after the end of flush. Tearing signal is not taken into consideration. The rendering frequency is cadenced on drawing time + flush time.
+In this example, the drawing time is 7ms, the time between the end of the drawing and the call to `Display.flush()`_ is 1ms, and the flush time is 12ms.
+So the expected rendering frequency is 7 + 1 + 12 = 20ms (50Hz).
+Flush starts just after the call to `Display.flush()`_, and the next drawing starts just after the end of flush.
+Tearing signal is not taken into consideration.
+The rendering frequency is cadenced on drawing time + flush time.
 
 .. figure:: images/uiDisplaySync05.*
    :width: 100%
 
-As mentioned above, the idea is to use :ref:`two back buffers<section_display_copyswap>`. First, the UI task is drawing in the back buffer ``A``. Just after the call to `Display.flush()`_, the flush can start. During the flush time (copy of the back buffer ``A`` to the front buffer), the back buffer ``B`` can be used by the UI task to continue the drawings. When the drawings in the back buffer ``B`` are done (and after the call to `Display.flush()`_), the application cannot start a third frame by drawing into the back buffer ``A`` because the flush is using it. As soon as the flush is done, a new flush (of the back buffer ``B``) can start. The rendering frequency is cadenced on flush time, i.e., 12ms (83.3Hz). 
+As mentioned above, the idea is to use :ref:`two back buffers<section_display_copyswap>`.
+First, the UI task is drawing in the back buffer ``A``.
+Just after the call to `Display.flush()`_, the flush can start.
+During the flush time (copy of the back buffer ``A`` to the front buffer), the back buffer ``B`` can be used by the UI task to continue the drawings.
+When the drawings in the back buffer ``B`` are done (and after the call to `Display.flush()`_), the application cannot start a third frame by drawing into the back buffer ``A`` because the flush is using it.
+As soon as the flush is done, a new flush (of the back buffer ``B``) can start.
+The rendering frequency is cadenced on flush time, i.e., 12ms (83.3Hz).
 
 .. figure:: images/uiDisplaySync06.*
    :width: 100%
 
-The previous example doesn't take into consideration the display tearing signal. With a tearing signal and only one back buffer, the frequency is cadenced on two tearing signals (see above). With two back buffers, the frequency is now cadenced on only one tearing signal despite the long flush time. 
+The previous example doesn't take into consideration the display tearing signal.
+With a tearing signal and only one back buffer, the frequency is cadenced on two tearing signals (see above).
+With two back buffers, the frequency is now cadenced on only one tearing signal despite the long flush time.
 
 .. figure:: images/uiDisplaySync07.*
    :width: 100%
@@ -923,10 +994,10 @@ Time Sum-up
 
 The following table resumes the previous examples times:
 
-* It considers the display frequency is 62.5Hz (16ms). 
+* It considers the display frequency is 62.5Hz (16ms).
 * *Drawing time* is the time left for the application to perform its drawings and call `Display.flush()`_. In our examples, the time between the last drawing and the call to `Display.flush()`_ is 1 ms.
 * *FPS* and *CPU load* are calculated from examples times.
-* *Max drawing time* is the maximum time left for the application to perform its drawings without overlapping the next display tearing signal (when tearing is enabled). 
+* *Max drawing time* is the maximum time left for the application to perform its drawings without overlapping the next display tearing signal (when tearing is enabled).
   
 +----------+-------------+--------------------+------------------+-----------+---------------+------------------------+
 |  Tearing |  Nb buffers |  Drawing time (ms) |  Flush time (ms) |  FPS (Hz) |  CPU load (%) |  Max drawing time (ms) |
@@ -963,7 +1034,7 @@ Overview
 
    Display Abstraction Layer API
 
-* MicroUI library calls the BSP functions through the Graphics Engine and header file ``LLUI_DISPLAY_impl.h``. 
+* MicroUI library calls the BSP functions through the Graphics Engine and header file ``LLUI_DISPLAY_impl.h``.
 * Implementation of ``LLUI_DISPLAY_impl.h`` can call Graphics Engine functions through ``LLUI_DISPLAY.h``.
 * To perform some drawings, MicroUI uses ``LLUI_PAINTER_impl.h`` functions.
 * The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` provides a default implementation of the drawing native functions of ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h``: 
@@ -986,9 +1057,9 @@ The Abstraction Layer distinguishes between the display *virtual* size and the d
 Semaphores
 ----------
 
-The Graphics Engine requires two binary semaphores to synchronize its internal states. 
-These semaphores are reserved for the Graphics Engine. 
-The ``LLUI_DISPLAY_impl.h`` implementation is not allowed to use these semaphores to synchronize the function ``LLUI_DISPLAY_IMPL_flush()`` with the display driver (or for any other synchronization actions). 
+The Graphics Engine requires two binary semaphores to synchronize its internal states.
+These semaphores are reserved for the Graphics Engine.
+The ``LLUI_DISPLAY_impl.h`` implementation is not allowed to use these semaphores to synchronize the function ``LLUI_DISPLAY_IMPL_flush()`` with the display driver (or for any other synchronization actions).
 The implementation must create its semaphores in addition to these dedicated Graphics Engine's semaphores.
 
 The binary semaphores must be configured in a state such that the semaphore must first be *given* before it can be *taken* (this initialization must be performed in the ``LLUI_DISPLAY_IMPL_initialize`` function).
@@ -996,38 +1067,43 @@ The binary semaphores must be configured in a state such that the semaphore must
 Required Abstraction Layer API
 ------------------------------
 
-Four Abstraction Layer APIs are required to connect the Graphics Engine to the display driver. The functions are listed in ``LLUI_DISPLAY_impl.h``.
+Four Abstraction Layer APIs are required to connect the Graphics Engine to the display driver.
+The functions are listed in ``LLUI_DISPLAY_impl.h``.
 
-* ``LLUI_DISPLAY_IMPL_initialize``: The initialization function is called when the application is calling `MicroUI.start()`_. Before this call, the display is useless and doesn't need to be initialized. This function consists in initializing the LCD driver and filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on the two binary semaphores, the back buffer address (see :ref:`section_display_policies`), the display *virtual* size in pixels (``lcd_width`` and ``lcd_height``), and optionally the display *physical* size in pixels (``memory_width`` and ``memory_height``). 
+* ``LLUI_DISPLAY_IMPL_initialize``: The initialization function is called when the application is calling `MicroUI.start()`_. Before this call, the display is useless and doesn't need to be initialized. This function consists in initializing the LCD driver and filling the given structure ``LLUI_DISPLAY_SInitData``.  This structure has to contain pointers on the two binary semaphores, the back buffer address (see :ref:`section_display_policies`), the display *virtual* size in pixels (``lcd_width`` and ``lcd_height``), and optionally the display *physical* size in pixels (``memory_width`` and ``memory_height``).
 
-* ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: Two distinct functions have to be implemented to *take* and *give* a binary semaphore. 
+* ``LLUI_DISPLAY_IMPL_binarySemaphoreTake`` and ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: Two distinct functions have to be implemented to *take* and *give* a binary semaphore.
 
-* ``LLUI_DISPLAY_IMPL_flush``: According the display buffer policy (see :ref:`section_display_policies`), the ``flush`` function has to be implemented. This function must not block and not perform the flush directly. Another OS task or dedicated hardware must be configured to perform the flush. 
+* ``LLUI_DISPLAY_IMPL_flush``: According the display buffer policy (see :ref:`section_display_policies`), the ``flush`` function has to be implemented. This function must not block and not perform the flush directly. Another OS task or dedicated hardware must be configured to perform the flush.
 
 .. _MicroUI.start(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/MicroUI.html#start--
 
 Optional Abstraction Layer API
 ------------------------------
 
-Several optional Abstraction Layer APIs are available in ``LLUI_DISPLAY_impl.h``. They are already implemented as *weak* functions in the Graphics Engine and return no error. These optional features concern the display backlight and contrast, display characteristics (is colored display, double buffer), color conversions (see :ref:`display_pixel_structure` and :ref:`display_lut`), etc. Refer to each function comment to have more information about the default behavior.
+Several optional Abstraction Layer APIs are available in ``LLUI_DISPLAY_impl.h``.
+They are already implemented as *weak* functions in the Graphics Engine and return no error.
+These optional features concern the display backlight and contrast, display characteristics (is colored display, double buffer), color conversions (see :ref:`display_pixel_structure` and :ref:`display_lut`), etc.
+Refer to each function comment to have more information about the default behavior.
 
 .. _section_display_llapi_painter:
 
 Painter Abstraction Layer API
 -----------------------------
 
-All MicroUI drawings (available in the `Painter`_ class) call a native function. 
-The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h``. 
-The principle of implementing a MicroUI drawing function is described in the chapter :ref:`section_drawings`. 
+All MicroUI drawings (available in the `Painter`_ class) call a native function.
+The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h``.
+The principle of implementing a MicroUI drawing function is described in the chapter :ref:`section_drawings`.
 
 .. _Painter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html
 
 Graphics Engine API
 --------------------
 
-The Graphics Engine provides a set of functions to interact with the C archive. The functions allow the retrieval of some drawing characteristics, the synchronization of drawings between them, the notification of the end of flush and drawings, etc. 
+The Graphics Engine provides a set of functions to interact with the C archive.
+The functions allow the retrieval of some drawing characteristics, the synchronization of drawings between them, the notification of the end of flush and drawings, etc.
 
-The functions are available in ``LLUI_DISPLAY.h``. 
+The functions are available in ``LLUI_DISPLAY.h``.
 
 Typical Implementations
 =======================
@@ -1084,7 +1160,7 @@ The following example shows an implementation with FreeRTOS.
 Direct Policy
 -------------
 
-:ref:`This policy<section_display_direct>` considers the application and the LCD driver share the same buffer. 
+:ref:`This policy<section_display_direct>` considers the application and the LCD driver share the same buffer.
 In other words, all drawings made by the application are immediately shown on the display.
 This particular case is the easiest to write because the ``flush()`` stays empty:
 
@@ -1110,7 +1186,7 @@ Serial Display
 
 A display connected to the CPU through a serial bus (DSI, SPI, etc.) requires the :ref:`single buffer <section_display_single_serial>` policy: the application uses a buffer to perform its drawings, and the buffer's content has to be transmitted to the display when the Graphics Engine is calling the ``flush()`` function.
 
-The specification of the ``flush()`` function is to be **not** blocker (atomic). 
+The specification of the ``flush()`` function is to be **not** blocker (atomic).
 Its aim is to prepare / configure the serial bus and data to transmit and then to start the asynchronous transmission.
 The ``flush()`` function has to return as soon as possible.
 
@@ -1121,7 +1197,7 @@ There are two use cases:
 
 **Hardware**
 
-The serial data transmission is performed in hardware. 
+The serial data transmission is performed in hardware.
 In that case, the serial driver must configure an interrupt to be notified about the end of the transmission.
 
 .. code:: c
@@ -1167,7 +1243,7 @@ In that case, the serial driver must configure an interrupt to be notified about
 **Software**
 
 The serial data transmission cannot be performed in hardware or requires a software loop to transmit all data.
-This transmission must not be performed in the ``flush()`` function (see above). 
+This transmission must not be performed in the ``flush()`` function (see above).
 A dedicated OS task is required to perform this transmission.
 
 .. code:: c
@@ -1216,11 +1292,11 @@ Parallel Display: Copy Policy (Tearing Disabled)
 
 .. note:: This policy should synchronize the copy buffer process with the LCD tearing signal. However,  this notion is sometimes not available. This chapter describes the copy buffer process without using the tearing signal (see :ref:`next chapter<section_lluidisplay_parallel_tearing>`).
 
-:ref:`This buffer policy<section_display_single_parallel>` requires two buffers in RAM. 
+:ref:`This buffer policy<section_display_single_parallel>` requires two buffers in RAM.
 The first buffer is used by the application (back buffer), and the LCD controller uses the second buffer to update the display panel (front buffer).
 The content of the front buffer must be updated with the content of the back buffer when the Graphics Engine is calling the ``flush()`` function.
 
-The specification of the ``flush()`` function is to be **not** blocker (atomic, see above). 
+The specification of the ``flush()`` function is to be **not** blocker (atomic, see above).
 Its aim is to prepare / configure the copy buffer process and then start the asynchronous copy.
 The ``flush()`` function has to return as soon as possible.
 
@@ -1231,7 +1307,7 @@ There are two use cases:
 
 **Hardware**
 
-The copy buffer process is performed in hardware (DMA). 
+The copy buffer process is performed in hardware (DMA).
 In that case, the DMA driver must configure an interrupt to be notified about the end of the copy.
 
 .. code:: c
@@ -1278,7 +1354,7 @@ In that case, the DMA driver must configure an interrupt to be notified about th
 **Software**
 
 The copy buffer process cannot be performed in hardware or requires a software loop to copy all data (DMA linked list).
-This copy buffer process must not be performed in the ``flush()`` function. 
+This copy buffer process must not be performed in the ``flush()`` function.
 A dedicated OS task is required to perform this copy.
 
 .. code:: c
@@ -1481,7 +1557,7 @@ There are two use cases:
 Parallel Display: Swap Policy
 -----------------------------
 
-:ref:`This buffer policy<section_display_swap_double_parallel>`  requires two buffers in RAM. 
+:ref:`This buffer policy<section_display_swap_double_parallel>`  requires two buffers in RAM.
 The first buffer is used by the application (buffer A), and the LCD controller uses the second buffer to update the display panel (buffer B).
 The LCD controller is reconfigured to use buffer A when the Graphics Engine is calling the ``flush()`` function.
 
@@ -1541,16 +1617,13 @@ Dependencies
 Installation
 ============
 
-The Display module is a sub-part of the MicroUI library. When the MicroUI module is
-installed, the Display module must be installed in order to
-connect the physical display with the VEE Port. If not
-installed, the *stub* module will be used.
+The Display module is a sub-part of the MicroUI library.
+When the MicroUI module is installed, the Display module must be installed in order to connect the physical display with the VEE Port.
+If not installed, the *stub* module will be used.
 
-In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Display` to
-install the Display module. When checked, the properties file
-``display/display.properties`` is required during VEE Port creation to
-configure the module. This configuration step is used to choose the kind
-of implementation (see :ref:`section_display_implementation`).
+In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Display` to install the Display module.
+When checked, the properties file ``display/display.properties`` is required during VEE Port creation to configure the module.
+This configuration step is used to choose the kind of implementation (see :ref:`section_display_implementation`).
 
 The properties file must / can contain the following properties:
 

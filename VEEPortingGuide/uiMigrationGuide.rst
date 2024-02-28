@@ -424,7 +424,7 @@ BSP with VGLite
 	
 	* Delete the properties file ``cco_microui-vglite.properties``.
 	* Delete the C files ``vg_drawer.h`` and  ``vg_drawer.c`` and remove them from the C project configuration.
-	* Verify the options in ``display_configuration.h``. 
+	* Verify the options in ``display_configuration.h``.
 	* In the C project configuration, include the new C file ``ui_drawing_vglite.c``.
 
 From 13.3.x to 13.4.1
@@ -579,10 +579,10 @@ BSP without GPU
 
 	* Delete the properties file ``cco_microui.properties``.
 	* Add a cast when using ``MICROUI_Image*`` object: ``(MICROUI_ImageFormat)image->format`` .
-	* Remove parameter ``MICROUI_GraphicsContext*`` when calling ``LLUI_DISPLAY_setDrawingLimits()``. 
+	* Remove parameter ``MICROUI_GraphicsContext*`` when calling ``LLUI_DISPLAY_setDrawingLimits()``.
 	* Ensure to call ``LLUI_DISPLAY_setDrawingLimits()`` before calling ``LLUI_DISPLAY_setDrawingStatus()`` or ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``.
-	* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available in the :ref:`MicroUI C module<section_ui_cco>`. 
-	* (optional) Add the UI event logger available in the :ref:`MicroUI C module<section_ui_cco>`. 
+	* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available in the :ref:`MicroUI C module<section_ui_cco>`.
+	* (optional) Add the UI event logger available in the :ref:`MicroUI C module<section_ui_cco>`.
 
 BSP with DMA2D
 """"""""""""""
@@ -709,8 +709,8 @@ Front Panel API
 	* [Added] ``getDisplayPixelDepth()``: replaces ``MicroUIDisplay.getNbBitsPerPixel()``.
 	* [Added] ``getDWDrawerSoftware()``: gives the unique instance of Graphics Engine's internal software drawer (instance of ``DWDrawing``).
 	* [Added] ``getUIDrawerSoftware()``: gives the unique instance of Graphics Engine's internal software drawer (instance of ``UIDrawing``).
-	* [Added] ``mapMicroUIGraphicsContext(byte[])`` and ``newMicroUIGraphicsContext(byte[])``: maps the graphics context byte array (`GraphicsContext.getSNIContext()`_) on an object which represents the graphics context in front panel. 
-	* [Added] ``mapMicroUIImage(byte[])`` and ``newMicroUIImage(byte[])``: maps the image byte array (`Image.getSNIContext()`_) on an object which represents the image in front panel. 
+	* [Added] ``mapMicroUIGraphicsContext(byte[])`` and ``newMicroUIGraphicsContext(byte[])``: maps the graphics context byte array (`GraphicsContext.getSNIContext()`_) on an object which represents the graphics context in front panel.
+	* [Added] ``mapMicroUIImage(byte[])`` and ``newMicroUIImage(byte[])``: maps the image byte array (`Image.getSNIContext()`_) on an object which represents the image in front panel.
 	* [Added] ``requestFlush(boolean)``: requests a call to ``LLUIDisplayImpl.flush()``.
 	* [Added] ``requestRender(void)``: requests a call to ``Displayable.render()``.
 
@@ -781,7 +781,9 @@ Image Generator
 This chapter resumes the changes to perform.
 The available changes in Image Generator API are described in :ref:`next chapter<section_ui_migration_imagegeneratorapi_13x>`.
 
-This chapter only concerns VEE Port with a custom display. In this case a dedicated image generator extension project is available. This project must be updated.
+This chapter only concerns VEE Port with a custom display.
+In this case a dedicated image generator extension project is available.
+This project must be updated.
 
 * Reorganize project to use source folders ``src/main/java`` and ``src/main/resources``
 * Add new ``module.ivy`` file:
@@ -1204,7 +1206,8 @@ Front Panel
 
 * Others Widgets:
     
-    These widgets may have not been migrated. Check in ``ej.tool.frontpanel.widget`` library if some widgets are compatible or write your own widgets.
+    These widgets may have not been migrated.
+    Check in ``ej.tool.frontpanel.widget`` library if some widgets are compatible or write your own widgets.
 
 Application
 """""""""""
