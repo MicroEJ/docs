@@ -152,7 +152,7 @@ When using the tool in a multi-application context, additionnal sections must be
 
    dump ihex memory &java_features_dynamic_start &java_features_dynamic_end
 
-- features related sections. These will change depending on the board, number of features and other parameters. It is possible to dump the entire memory and let the :ref:`heap extractor<_sdk6_heapdumper_extract_heap>` sort the requiered sections instead.
+- features related sections. These will change depending on the board, number of features and other parameters. It is possible to dump the entire memory and let the :ref:`heap extractor<_sdk6_heapdumper_extract_heap>` extract the requiered sections instead.
 
    dump ihex memory <ram_start_adress> <ram_end_adress>
 
