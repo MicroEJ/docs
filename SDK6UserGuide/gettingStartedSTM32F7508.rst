@@ -206,7 +206,7 @@ Now your Evaluation license is installed, you can relaunch your application buil
 
 The gradle task deploys the Application in the BSP and then builds the BSP using Make.
 
-The :guilabel:`AnimatedMascot` application is built and ready to be flashed on STM32F7508-DK Evaluation Kit once the hardware setup is completed.
+The :guilabel:`microui.mvc` application is built and ready to be flashed on STM32F7508-DK Evaluation Kit once the hardware setup is completed.
 
 Flash the Application on the STM32F7508-DK Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
