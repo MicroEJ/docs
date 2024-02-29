@@ -36,7 +36,7 @@ Foundation Libraries
       -  Client and Server raw TCP/IP sockets.
       -  `net <https://repository.microej.com/modules/ej/api/net/>`_
       - `java.net package <https://repository.microej.com/javadoc/microej_5.x/apis/java/net/package-summary.html>`_
-      -  -  `NET Example <https://github.com/MicroEJ/Example-Standalone-Foundation-Libraries/tree/master/net.helloworld>`_
+      -  -  `NET Example <https://github.com/MicroEJ/Example-Foundation-Libraries/tree/master/net.helloworld>`_
          -  `NET utility Library <https://repository.microej.com/modules/ej/library/iot/net-util/>`_
 
    *  -  ``Security``
