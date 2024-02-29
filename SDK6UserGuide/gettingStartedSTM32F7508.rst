@@ -23,7 +23,7 @@ The first part consists of running an MVC demo application on the Virtual Device
 
 * An Internet connection to access Github repositories & :ref:`Module Repositories <module_repositories>`.
 * MICROEJ SDK 6 (installed during :ref:`Environment Setup <sdk_6_getting_started_stm32f7508dk_environment_setup>`).
-* The Example-Foundation-Libraries samples at GitHub. Download or clone the project `here <https://github.com/MicroEJ/Example-Foundation-Libraries>`__.
+* The Example-Foundation-Libraries samples at GitHub. Download or clone the project `here <https://github.com/MicroEJ/Example-Foundation-Libraries/tree/51.0.0>`__.
 
 The second part consists of running the same demo application on your device. For that you will need:
 
@@ -91,7 +91,7 @@ We will be using the :guilabel:`microui.mvc` Application as the sample to test t
   
    If you are using another IDE than Android Studio, please have a look at :ref:`sdk_6_run_on_simulator` section.
 
-* Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may takes few seconds.
+* Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may take few seconds.
 
       .. figure:: images/gettingStarted/STM32F7508DK/getting-started-runOnSimulator.png
          :alt: runOnSimulator task
