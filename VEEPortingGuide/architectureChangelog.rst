@@ -34,6 +34,23 @@ specific configuration:
    -  ``QNX65``: BlackBerry QNX 6.5
    -  ``QNX70``: BlackBerry QNX 7.0
 
+.. _changelog-8.1.1:
+
+[8.1.1] - 2024-03-xx
+--------------------
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+- Fixed unexpected `java.lang.NullPointerException`_ when a runtime exception or a native exception occurs in a try-with-resources block, and the method `AutoCloseable.close()`_ throws an exception.
+- Fixed `Throwable.getSuppressed()`_ which exposes a private mutable member.
+- Fixed `Throwable.printStackTrace()`_ which does not print suppressed exceptions.
+- Fixed `Throwable.printStackTrace()`_ which erroneously printed the thread name.
+
+.. _AutoCloseable.close(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/AutoCloseable.html#close--
+.. _Throwable.getSuppressed(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html#getSuppressed--
+.. _Throwable.printStackTrace(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html#printStackTrace--
+
 .. _changelog-8.1.0:
 
 [8.1.0] - 2023-12-22
