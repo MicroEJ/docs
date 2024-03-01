@@ -37,10 +37,10 @@ The second part consists of running the same demo application on your device. Fo
 Environment Setup
 -----------------
 
-To follow this Getting Started, you need to install: 
+To follow this Getting Started, you need to: 
 
-* MICROEJ SDK 6.
-* Get Demo-SmartThermostat.
+* Install MICROEJ SDK 6.
+* Get the Demo-SmartThermostat from Github.
 
 Install MICROEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^

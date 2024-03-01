@@ -36,10 +36,10 @@ The second part consists of running the same demo application on your device. Fo
 Environment Setup
 -----------------
 
-To follow this Getting Started, you need to install: 
+To follow this Getting Started, you need to: 
 
-* MICROEJ SDK 6.
-* Get Demo-Wearable-VG.
+* Install MICROEJ SDK 6.
+* Get the Demo-Wearable-VG from Github.
 
 Install MICROEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
