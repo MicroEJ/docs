@@ -1,24 +1,24 @@
 .. _blemock:
 
-Bluetooth LE Mock
-=================
+Bluetooth Mock
+==============
 
 Overview
 --------
 
-To run a MicroEJ Application that uses the Bluetooth LE Foundation Library (`ej.api.bluetooth`_) 
-on MicroEJ Simulator, a Bluetooth LE mock controller must be set up first:
+To run a MicroEJ Application that uses the :ref:`Bluetooth API Library <bluetooth_api>` 
+on MicroEJ Simulator, a Bluetooth Mock Controller must be set up first:
 
 .. image:: images/blemock-controller.png
    :align: center
 
-The Bluetooth LE mock controller is a hardware mock of the Bluetooth LE library. It
-means the Simulator uses a real Bluetooth LE device to scan other devices,
+The Bluetooth Mock Controller is a hardware mock of the Bluetooth library. It
+means the Simulator uses a real Bluetooth device to scan other devices,
 advertise, discover services, connect, pair, etc... This design enables
 testing of apps in a real-world environment.
 
-The Bluetooth LE mock controller implementation is provided for the `ESP32-S3-DevKitC-1
-board reference <https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html>`__.
+The Bluetooth Mock Controller implementation is provided for the `ESP32-S3-DevKitC-1
+board reference <https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html>`_.
 Other implementations or sources can be provided on request.
 
 .. _ej.api.bluetooth: https://repository.microej.com/modules/ej/api/bluetooth/
@@ -27,14 +27,13 @@ Requirements
 ------------
 
 - A ESP32-S3-DevKitC-1 board.
-- A Bluetooth LE mock controller firmware_ (this Bluetooth controller executable only works with Bluetooth pack v2).
-- A tool to flash the firmware like
-  ``https://www.espressif.com/en/support/download/other-tools``.
+- A Bluetooth Mock Controller firmware_ (this executable only works with versions ``[2.0.0;2.3.0[`` of the Bluetooth Pack).
+- An `Espressif tool <https://www.espressif.com/en/support/download/other-tools>`_ to flash the firmware.
 
 Usage
 -----
 
-To simulate a Bluetooth LE application, follow these three steps:
+To simulate a Bluetooth application, follow these three steps:
 
 - Set up the controller
 - Set up the network configuration
@@ -66,11 +65,11 @@ To set up the controller, follow these steps:
 With the flash download tool from Espressif, you should end with something similar to this :
 
 .. figure:: images/blemock-flash-download-tool.png
-   :alt: Bluetooth LE Flash Download Tool Configuration
+   :alt: Bluetooth Controller Flash Download Tool Configuration
    :align: center
    :scale: 80%
 
-   Bluetooth LE Flash Download Tool Configuration
+   Bluetooth Controller Flash Download Tool Configuration
 
 Network Setup
 ~~~~~~~~~~~~~
@@ -111,19 +110,19 @@ The IP address of the controller is available in the logs :
    :align: center
    :scale: 80%
 
-Before running your Bluetooth LE application on the Simulator, in the
+Before running your Bluetooth application on the Simulator, in the
 :ref:`Run configuration <concepts-microejlaunches>` panel, set the simulation mode
-to "Controller (over net)" and configure the Bluetooth LE mock settings.
+to "Controller (over net)" and configure the Bluetooth Mock settings.
 
 .. figure:: images/blemock-configuration.png
-   :alt: Bluetooth LE Mock Configuration
+   :alt: Bluetooth Mock Configuration
    :align: center
    :scale: 80%
 
-   Bluetooth LE Mock Configuration
+   Bluetooth Mock Configuration
 
 Launching the application on the Simulator will restore the controller to its
-initial state (the BLE adapter is disabled).
+initial state (the Bluetooth adapter is disabled).
 
 
 .. _blemock-troubleshooting:

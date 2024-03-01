@@ -3,6 +3,14 @@
 Getting Started
 ===============
 
+.. raw:: html
+
+        <div class="figure align-center">
+                <video width="960" height="540" poster="https://repository.microej.com/packages/videos/gettingStartedSDK6_v5.0.png" controls="controls" >
+                        <source src="https://repository.microej.com/packages/videos/gettingStartedSDK6_v5.0.mp4" type="video/mp4">
+                </video>
+        </div>
+
 NXP
 ---
 
@@ -11,6 +19,14 @@ NXP
 
    gettingStartedIMXRT595
    gettingStartedIMXRT1170
+
+STMicroelectronics
+------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   gettingStartedSTM32F7508
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

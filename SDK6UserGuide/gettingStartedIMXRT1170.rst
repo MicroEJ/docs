@@ -3,7 +3,7 @@
 i.MX RT1170 Evaluation Kit
 ==========================
 
-During this Getting Started, you will learn to run:
+During this Getting Started, you will learn to:
 
 * run an Application on the i.MX RT1170 Evaluation Kit Virtual Device,
 * run the same Application on your i.MX RT1170 Evaluation Kit.
@@ -31,7 +31,7 @@ The second part consists of running the same demo application on your device. Fo
 
 * i.MX RT1170 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt1170-evaluation-kit:MIMXRT1170-EVK>`__.
 * RK055HDMIPI4MA0 display panel, available `here <https://www.nxp.com/part/RK055HDMIPI4MA0>`__.
-* A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP. You will be guided on how to install toolchain later.
+* A GNU ARM Embedded Toolchain, Cmake and Make are needed to build the BSP. You will be guided on how to install the toolchain later.
 * LinkServer tool to flash the board. You will be guided on how to install this tool later.
 
 .. _sdk_6_getting_started_imxrt1170_environment_setup:
@@ -106,6 +106,13 @@ The Gradle project should now be imported in IntelliJ IDEA, your workspace conta
          :alt: Workspace view
          :align: center
          :scale: 70%
+
+.. _sdk_6_getting_started_rt1170_eula:
+
+Accept the MICROEJ SDK EULA
+---------------------------
+
+You may have to accept the SDK EULA if you didn't already do, please have a look at :ref:`sdk_6_eula_acceptation`.
 
 .. _sdk_6_getting_started_rt1170_run_virtual_device:
 

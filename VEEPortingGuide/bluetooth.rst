@@ -31,7 +31,11 @@ The Bluetooth Foundation Library provides a way to manage and configure Bluetoot
 Dependencies
 ============
 
+.. _Espressif ESP32-S3 VEE Port: https://github.com/MicroEJ/VEEPort-Espressif-ESP32-S3-DevKitC-1/blob/master/ESP32-S3-DevKitC1-Xtensa-FreeRTOS-bsp/projects/microej/bluetooth/src/LLBLUETOOTH_impl.c
+
 - ``LLBLUETOOTH_impl.h`` implementation (see :ref:`LLBLUETOOTH-API-SECTION`).
+
+  - A sample implementation based on the Bluedroid stack can be found in the `Espressif ESP32-S3 VEE Port`_.
 
 Installation
 ============
@@ -50,14 +54,7 @@ The Platform project must be rebuilt (:ref:`platform_build`).
 Use
 ===
 
-The `Bluetooth API Module`_ must be added to the :ref:`module.ivy <mmm_module_description>` file of the 
-Application project: 
-
-::
-
-	<dependency org="ej.api" name="bluetooth" rev="2.1.1"/>
-
-.. _Bluetooth API Module: https://repository.microej.com/modules/ej/api/bluetooth/
+See :ref:`Bluetooth API <bluetooth_api_usage>` chapter in Application Developer Guide.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
