@@ -93,18 +93,18 @@ Here is the code of the ``EventRecorder`` class that should be added to our appl
             Pointer pointer = (Pointer) Event.getGenerator(event);
             switch (Pointer.getAction(event)) {
             case Pointer.PRESSED:
-              return "robot.press(" + pointer.getX() + ", " + pointer.getY() + ");";
+              return "press(" + pointer.getX() + ", " + pointer.getY() + ");";
             case Pointer.MOVED:
             case Pointer.DRAGGED:
-              return "robot.move(" + pointer.getX() + ", " + pointer.getY() + ");";
+              return "move(" + pointer.getX() + ", " + pointer.getY() + ");";
             case Buttons.RELEASED:
-              return "robot.release(" + pointer.getX() + ", " + pointer.getY() + ");";
+              return "release(" + pointer.getX() + ", " + pointer.getY() + ");";
             default:
               return null;
             }
           } else if (Event.getType(event) == Buttons.EVENT_TYPE) {
             if (Buttons.getAction(event) == Buttons.RELEASED) {
-              return "robot.button();";
+              return "button();";
             } else {
               return null;
             }
@@ -115,7 +115,7 @@ Here is the code of the ``EventRecorder`` class that should be added to our appl
 
         @SuppressWarnings("nls")
         private static @Nullable String getPauseCommand(long delay) {
-          return "robot.pause(" + delay + ");";
+          return "pause(" + delay + ");";
         }
       }
 
