@@ -35,9 +35,9 @@ The second part consists of running the same demo application on your device. Fo
 Environment Setup
 -----------------
 
-To follow this Getting Started, you need to install: 
+To follow this Getting Started, you need to: 
 
-* MICROEJ SDK 6.
+* Install MICROEJ SDK 6.
 * Get the Example-Foundation-Libraries from GitHub.
 
 Install MICROEJ SDK 6
