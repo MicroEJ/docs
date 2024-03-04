@@ -25,8 +25,11 @@ The debugger proxy allows a postmortem debug from a snapshot of the memory (core
 
 .. note::
     This feature requires Architecture version ``8.1.0`` or higher and works for both Mono-Sandbox and Multi-Sandbox Executables.
-    
-    Please contact :ref:`our support team <get_support>` to get the VEE Debugger Proxy tool ``microej-debugger-proxy.jar`` compatible with your Architecture version.
+
+Installation
+============
+
+Download the VEE Debugger Proxy tool ``jdwp-server-[version].jar`` at https://forge.microej.com/artifactory/microej-sdk6-repository-release/com/microej/tool/jdwp-server/1.0.1/jdwp-server-1.0.1.jar .
 
 Debugging Executable for Linux or QNX target
 ============================================
@@ -109,7 +112,7 @@ Open a shell terminal on your workstation and run the following command:
         -Ddebugger.out.path=<path to the Executable file (application.out)> \
         -Ddebugger.features.out.path=<comma-separated list of the Feature files with debug information (*.fodbg files). To be used if you want to debug an installed Sandboxed Application> \
         -Ddebugger.out.coredump.path=<path to the core dump file> \
-        -jar microej-debugger-proxy.jar
+        -jar jdwp-server-[version].jar
 
 
 Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` to debug your code.
@@ -131,7 +134,7 @@ Open a shell terminal on your workstation and run the following command:
 
     java -DveePortDir=<path to VEE Port directory> \
         -Ddebugger.out.path=<path to the Executable file (application.out)> \
-        -cp microej-debugger-proxy.jar com.microej.jdwp.VeeDebuggerCli \
+        -cp jdwp-server-[version].jar com.microej.jdwp.VeeDebuggerCli \
         --debugger=IAR8|IAR9|GDB \
         --output=<Output directory where the script file will be generated>
 
