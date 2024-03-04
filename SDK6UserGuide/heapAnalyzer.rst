@@ -100,31 +100,30 @@ In order to generate a Heap dump of an Application running on a device:
 
 - Update your Application code to call the `System.gc()`_ method where you need a Heap dump.
 - Build the Executable and deploy it on the device.
+- Start a debug session.
+- Add a breakpoint to ``LLMJVM_on_Runtime_gc_done`` Core Engine hook. This function is called by the Core Engine when `System.gc()`_ method is done.
+  Alternatively, if you are experiencing out of memory errors, you can directly add a breakpoint to the ``LLMJVM_on_OutOfMemoryError_thrown`` Core Engine hook.
+- Resume the execution until the breakpoint is reached. You are now ready to dump the memory. Next steps are:
+  
+  - :ref:`Retrieve the hex file from the device <sdk6_heapdumper_get_hex>`
+  - :ref:`Extract the Heap dump from the hex file <sdk6_heapdumper_extract_heap>`
 
-When the Application is executed on the device, the method ``System.gc()`` ends by calling ``LLMJVM_on_Runtime_gc_done`` callback.
-This method isn't always implemented as it is mostly used to perform a heap dump right after the garbage collection.
-If the symbol isn't embedded, add the following lines in any source file (ex:main.c):
+.. note::
 
-.. code:: c
+   Core Engine hooks may have been inlined by the third-party linker. 
+   If the symbol is not accessible to the debugger, you must declare them in your VEE Port:
 
-   void LLMJVM_on_Runtime_gc_done(){
-      //No need to add code to the function
-   }
+   .. code:: c
 
-Alternatively, if you are experiencing out of memory errors, you can directly add a breackpoint to the ``LLMJVM_on_OutOfMemoryError_thrown`` method.
-If the symbol isn't embedded, add the following lines in any source file (ex:main.c):
+      void LLMJVM_on_Runtime_gc_done(){
+         //No need to add code to the function
+      }
 
-.. code:: c
-
-   void LLMJVM_on_OutOfMemoryError_thrown(){
-      //No need to add code to the function
-   }
+      void LLMJVM_on_OutOfMemoryError_thrown(){
+         //No need to add code to the function
+      }
 
 
-You then have to:
-
-- :ref:`Retrieve the hex file from the device <sdk6_heapdumper_get_hex>`
-- :ref:`Extract the Heap dump from the hex file <sdk6_heapdumper_extract_heap>`
 
 .. _sdk6_heapdumper_get_hex:
 
