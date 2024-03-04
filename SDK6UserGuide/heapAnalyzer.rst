@@ -171,7 +171,7 @@ run the ``execTool`` Gradle task with the tool name ``heapDumperPlatform``:
 
 .. code:: console
 
-    gradle execTool --name=heapDumperPlatform \
+    ./gradlew execTool --name=heapDumperPlatform \
       --toolProperty="output.name=application.heap" \
       --toolProperty="application.filename=../../executable/application/application.out" \
       --toolProperty="heap.filename=/path/to/memory.hex" \
@@ -182,7 +182,7 @@ If you are in a Multi-Sandbox context, you have to include the ``.fodbg`` files 
 
 .. code:: console
 
-    gradle execTool --name=heapDumperPlatform \
+    ./gradlew execTool --name=heapDumperPlatform \
       --toolProperty="output.name=application.heap" \
       --toolProperty="application.filename=../../executable/application/application.out" \
       --toolProperty="heap.filename=/path/to/memory.hex" \
