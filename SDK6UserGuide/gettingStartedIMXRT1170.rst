@@ -22,8 +22,6 @@ This Getting Started is separated in two main parts.
 The first part consists of running a demo application on the Virtual Device. All you need is:
 
 
-* :guilabel:`AnimatedMascot` Application will be used in this Getting Started. 
-  Please contact :ref:`our support team <get_support>` to get the code for this demo. It will soon be released publicly.
 * An Internet connection to access Github repositories & :ref:`Module Repositories <module_repositories>`.
 * MICROEJ SDK 6 (installed during :ref:`Environment Setup <sdk_6_getting_started_imxrt1170_environment_setup>`).
 
@@ -39,9 +37,10 @@ The second part consists of running the same demo application on your device. Fo
 Environment Setup
 -----------------
 
-To follow this Getting Started, you need to install: 
+To follow this Getting Started, you need to: 
 
-* MICROEJ SDK 6.
+* Install MICROEJ SDK 6.
+* Get the Demo-SmartThermostat from Github.
 
 Install MICROEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
@@ -49,13 +48,25 @@ Install MICROEJ SDK 6
 Install MICROEJ SDK 6 by following :ref:`sdk_6_install` instructions. 
 IntelliJ IDEA is used on this Getting Started but feel free to use your favorite IDE.
 
+Get Demo-SmartThermostat
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+For this Getting Started, the :guilabel:`Demo-SmartThermostat` Application will be use. You can download it using the following command::
+   
+   git clone -b 1.0.0 https://github.com/MicroEJ/Demo-SmartThermostat.git
+
+.. note::
+  
+   If you don’t have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/Demo-SmartThermostat/tree/1.0.0>`__. 
+   Then you can click on ::guilabel:`Code > Download ZIP`.
+
 Set up the Application on your IDE
 ----------------------------------
 
 Import the Project
 ^^^^^^^^^^^^^^^^^^
 
-The first step is to import the :guilabel:`AnimatedMascot` Application into your IDE: 
+The first step is to import the :guilabel:`Demo-SmartThermostat` Application into your IDE: 
 
 .. note::
   
@@ -63,7 +74,7 @@ The first step is to import the :guilabel:`AnimatedMascot` Application into your
 
 
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
-* Select the ``AnimatedMascot`` directory located where you downloaded it and click on the :guilabel:`OK` button.
+* Select the ``Demo-SmartThermostat`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
       .. figure:: images/gettingStarted/iMXRT1170/getting-started-import-demo-application.png
          :alt: Import demo application
@@ -119,7 +130,7 @@ You may have to accept the SDK EULA if you didn't already do, please have a look
 Run an Application on the Virtual Device
 ----------------------------------------
 
-In order to execute the :guilabel:`AnimatedMascot` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
+In order to execute the :guilabel:`Demo-SmartThermostat` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
 
 .. note::
   
@@ -132,7 +143,7 @@ In order to execute the :guilabel:`AnimatedMascot` Application on the Virtual De
          :align: center
          :scale: 70%
 
-The Virtual Device starts and executes the :guilabel:`AnimatedMascot` application.
+The Virtual Device starts and executes the :guilabel:`Demo-SmartThermostat` application.
 
       .. figure:: images/gettingStarted/iMXRT1170/getting-started-virtual-device.png
          :alt: Virtual Device
@@ -143,7 +154,7 @@ The Virtual Device starts and executes the :guilabel:`AnimatedMascot` applicatio
   
    The Front Panel may be too big for your screen, that is because of the RK055HDMIPI4MA0 display resolution. You can scroll down to see the bottom of the display.
 
-   If you want to know more about the use of the :guilabel:`AnimatedMascot` usage, please have a look at its ``README.md`` file.
+   If you want to know more about the use of the :guilabel:`Demo-SmartThermostat`, please have a look at its `README.md <https://github.com/MicroEJ/Demo-SmartThermostat/blob/1.0.0/smart-thermostat/README.md>`__ file.
 
 
 .. figure:: images/gettingStarted/well-done-mascot.png
@@ -166,7 +177,7 @@ Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started
 Run an Application on i.MX RT1170 Evaluation Kit
 ------------------------------------------------
 
-To deploy :guilabel:`AnimatedMascot` application on your board, you will have to:
+To deploy :guilabel:`Demo-SmartThermostat` application on your board, you will have to:
 
 * Setup your Environment (Toolchain, flashing-tool, hardware setup).
 * Request a 30 days :ref:`Evaluation License <sdk_eula>` and install an activation key.
@@ -292,7 +303,7 @@ Congratulations, you have finished the setup of your environment. You are now re
 Build the Executable for i.MX RT1170 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to build the Executable of the :guilabel:`AnimatedMascot` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
+In order to build the Executable of the :guilabel:`Demo-SmartThermostat` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
 
 .. note::
   
@@ -320,12 +331,12 @@ Now your Evaluation license is installed, you can relaunch your application buil
 
 The gradle task deploys the Application in the BSP and then builds the BSP using Make.
 
-The :guilabel:`AnimatedMascot` application is built and ready to be flashed on i.MX RT1170 Evaluation Kit once the hardware setup is completed.
+The :guilabel:`Demo-SmartThermostat` application is built and ready to be flashed on i.MX RT1170 Evaluation Kit once the hardware setup is completed.
 
 Flash the Application on the i.MX RT1170 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to flash the :guilabel:`AnimatedMascot` Application on i.MX RT1170 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
+In order to flash the :guilabel:`Demo-SmartThermostat` Application on i.MX RT1170 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
 
 .. note::
   
@@ -338,7 +349,7 @@ In order to flash the :guilabel:`AnimatedMascot` Application on i.MX RT1170 Eval
          :align: center
          :scale: 70%
 
-Once the firmware is flashed, you should see the :guilabel:`AnimatedMascot` running on your board.      
+Once the firmware is flashed, you should see the :guilabel:`Demo-SmartThermostat` running on your board.      
 
 .. raw:: html
 
@@ -346,7 +357,7 @@ Once the firmware is flashed, you should see the :guilabel:`AnimatedMascot` runn
       <table>
          <tr>
             <td style="width:50%;text-align:center;vertical-align:middle;" alt="Application running on i.MXRT1170 Evaluation Kit">
-               <img src="../_images/getting-started-rt1170-hardware-demo-running.png">
+               <img src="../_images/getting-started-rt1170-hardware-demo-running.jpg">
             </td>
             <td style="width:50%;text-align:center;vertical-align:middle;" alt="Termite Application Output">
                <img src="../_images/getting-started-rt1170-termite-application-output.png">
@@ -363,7 +374,7 @@ Once the firmware is flashed, you should see the :guilabel:`AnimatedMascot` runn
       </table>
    </div>
 
-.. |image3| image:: images/gettingStarted/iMXRT1170/getting-started-rt1170-hardware-demo-running.png
+.. |image3| image:: images/gettingStarted/iMXRT1170/getting-started-rt1170-hardware-demo-running.jpg
 .. |image4| image:: images/gettingStarted/iMXRT1170/getting-started-rt1170-termite-application-output.png
 
 .. _sdk_6_getting_started_rt1170_modify_java_application:
@@ -373,20 +384,20 @@ Modify the Java Application
 
 With MicroEJ, it is easy to modify and test your Java application on the Virtual Device.
 
-For example, we could modify the color of the background that is shown behind the MicroEJ mascot.
+For example, we could modify the color of the background that is shown on the inside part of the Home Screen.
 
-* Open :guilabel:`AnimatedMascot.java` file located in the :guilabel:`src/main/java/com/microej/demo/animatedMascot` folder.
-* Background color is set line 84, replace the following line:
+* Open :guilabel:`ThermoColors.java` file located in the :guilabel:`src/main/java/com/microej/demo/smart_thermostat/style` folder.
+* Background color is set line 31, replace the following line:
 
 .. code:: 
 
-   g.setColor(Colors.WHITE);
+   public static final int BG_INSIDE = 0xB6B1AB;
 
 by
 
 .. code:: 
 
-   g.setColor(Colors.GREEN);
+   public static final int BG_INSIDE = Colors.RED;
 
 * Follow :ref:`sdk_6_getting_started_rt1170_run_virtual_device` instructions to launch the modified application on the Virtual Device.
 

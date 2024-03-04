@@ -36,10 +36,10 @@ The second part consists of running the same demo application on your device. Fo
 Environment Setup
 -----------------
 
-To follow this Getting Started, you need to install: 
+To follow this Getting Started, you need to: 
 
-* MICROEJ SDK 6.
-* Get Demo-Wearable-VG.
+* Install MICROEJ SDK 6.
+* Get the Demo-Wearable-VG from Github.
 
 Install MICROEJ SDK 6
 ^^^^^^^^^^^^^^^^^^^^^
@@ -151,7 +151,7 @@ The Virtual Device starts and executes the :guilabel:`Demo-Wearable-VG` applicat
 
 .. note::
   
-   If you want to know more about the use of the :guilabel:`Demo-Wearable-VG`, please have a look at its `README.md <https://github.com/MicroEJ/Demo-Wearable-VG/blob/master/watch-vg/README.md>`__ file.
+   If you want to know more about the use of the :guilabel:`Demo-Wearable-VG`, please have a look at its `README.md <https://github.com/MicroEJ/Demo-Wearable-VG/blob/2.0.0/watch-vg/README.md>`__ file.
 
 .. figure:: images/gettingStarted/well-done-mascot.png
    :alt: Well Done
