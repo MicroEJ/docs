@@ -75,11 +75,11 @@ The Heap Analyzer is an Eclipse IDE plugin that adds three tools to the MicroEJ 
 Heap Dumper
 -----------
 
-The Heap Dumper generates heap files either :
-- directly from the Java heap on simulator 
-- from .hex files that must be manually retrieved from the device.
+The Heap Dumper generates ``.heap`` files. There are two implementations:
+- the one integrated to the Simulator: it directly dumps ``.heap`` files from the Java heap. 
+- the Heap Dumper tool: it generates ``.heap`` files from ``.hex`` files that must be manually retrieved from the device.
 
-The heap dump should be performed after a call to ``System.gc()`` to exclude discardable objects.
+The heap dump should be performed after a call to `System.gc()`_ to exclude discardable objects.
 
 Simulator
 ^^^^^^^^^
