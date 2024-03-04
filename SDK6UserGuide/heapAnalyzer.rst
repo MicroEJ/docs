@@ -75,11 +75,11 @@ The Heap Analyzer is an Eclipse IDE plugin that adds three tools to the MicroEJ 
 Heap Dumper
 -----------
 
-When the Heap Dumper option is enabled, 
-the garbage collector process ends by performing a dump that represents a snapshot of the heap at this moment. 
-To generate such dump, you must explicitly call the ``System.gc()`` method in your code.
+The Heap Dumper generates ``.heap`` files. There are two implementations:
+- the one integrated to the Simulator: it directly dumps ``.heap`` files from the Java heap. 
+- the Heap Dumper tool: it generates ``.heap`` files from ``.hex`` files that must be manually retrieved from the device.
 
-This tool can be used with the Simulator and with a device.
+The heap dump should be performed after a call to `System.gc()`_ to exclude discardable objects.
 
 Simulator
 ^^^^^^^^^
@@ -87,10 +87,10 @@ Simulator
 In order to generate a Heap dump of an Application running on the Simulator:
 
 - Set the ``s3.inspect.heap`` Application properties to ``true``.
-- Update your Application code to call the ``System.gc()`` method where you need a Heap dump.
-- run the Application on the Simulator. 
+- Update your Application code to call the `System.gc()`_ method where you need a Heap dump.
+- run the Application on the Simulator.
 
-When the ``System.gc()`` method is called, 
+When the `System.gc()`_ method is called, 
 a ``.heap`` file is generated in the ``build/output/application/heapDump/`` folder of the Application project.
 
 Device
@@ -98,36 +98,68 @@ Device
 
 In order to generate a Heap dump of an Application running on a device:
 
-- Update your Application code to call the ``System.gc()`` method where you need a Heap dump.
+- Update your Application code to call the `System.gc()`_ method where you need a Heap dump.
 - Build the Executable and deploy it on the device.
+- Start a debug session.
+- Add a breakpoint to ``LLMJVM_on_Runtime_gc_done`` Core Engine hook. This function is called by the Core Engine when `System.gc()`_ method is done.
+  Alternatively, if you are experiencing out of memory errors, you can directly add a breakpoint to the ``LLMJVM_on_OutOfMemoryError_thrown`` Core Engine hook.
+- Resume the execution until the breakpoint is reached. You are now ready to dump the memory. Next steps are:
+  
+  - :ref:`Retrieve the hex file from the device <sdk6_heapdumper_get_hex>`
+  - :ref:`Extract the Heap dump from the hex file <sdk6_heapdumper_extract_heap>`
 
-When the Application is executed on the device and the ``System.gc()`` method is called, 
-a Heap dump is performed and stored in the device memory.
-You then have to:
+.. note::
 
-- :ref:`Retrieve the hex file from the device <sdk6_heapdumper_get_hex>`
-- :ref:`Extract the Heap dump from the hex file <sdk6_heapdumper_extract_heap>`
+   Core Engine hooks may have been inlined by the third-party linker. 
+   If the symbol is not accessible to the debugger, you must declare them in your VEE Port:
+
+   .. code:: c
+
+      void LLMJVM_on_Runtime_gc_done(){
+         //No need to add code to the function
+      }
+
+      void LLMJVM_on_OutOfMemoryError_thrown(){
+         //No need to add code to the function
+      }
+
+
 
 .. _sdk6_heapdumper_get_hex:
 
 Retrieve the ``.hex`` file from the device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Retrieving the ``.hex`` file from the device can be done with Eclipse CDT and GDB:
-
-- Run your debug configuration.
-- Open the ``Disassembly`` view.
-- Type ``LLMJVM_on_Runtime_gc_done`` in location field.
-- Add a breakpoint by double-clicking on the first line.
-- Resume execution until the debugger stops on the breakpoint.
-- Open your debug configuration and copy the host name and the port in the `Debugger` tab.
-- Run a GDB console.
-- Connect to the GDB server, for example: ``target remote localhost:2331``.
-- Dump the memory of the Java heap section by executing the following command line::
-   
-   dump ihex memory heap.hex &_java_heap_start &_java_heap_end
+If you are in a Mono-Sandbox context, you only have to dump the Core Engine heap section.
+Here is an example of GDB commands:
+  
+  .. code-block:: console
+      
+      b LLMJVM_on_Runtime_gc_done
+      b LLMJVM_on_OutOfMemoryError_thrown
+      continue
+      dump ihex memory heap.hex &_java_heap_start &_java_heap_end
 
 You now have the ``.hex`` file and need to extract the Heap dump.
+
+If you are in a Multi-Sandbox context, the following sections must be dumped additionally:
+
+- the installed features table.
+  
+  .. code-block:: console
+   
+      dump ihex memory &java_features_dynamic_start &java_features_dynamic_end
+
+- the installed features sections. These are specific to your VEE Port, depending on the `LLKERNEL implementation <LLKF-API-SECTION>`.
+  
+  .. code-block:: console
+   
+      dump ihex memory <installed features_start_adress> <installed features_end_adress>
+
+  To simplify the dump commands, you can also consider the following options :
+
+  - either dump the entire memory where microej runtime and code sections are linked,
+  - or generate the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` which will dump all the required sections instead.
 
 .. _sdk6_heapdumper_extract_heap:
 
@@ -140,9 +172,22 @@ run the ``execTool`` Gradle task with the tool name ``heapDumperPlatform``:
 .. code:: console
 
     ./gradlew execTool --name=heapDumperPlatform \
-      --toolProperty="application.file=../../executable/application/application.out" \
+      --toolProperty="output.name=application.heap" \
+      --toolProperty="application.filename=../../executable/application/application.out" \
       --toolProperty="heap.filename=/path/to/memory.hex" \
-      --toolProperty="additional.application.files=" \
+      --toolProperty="additional.application.filenames=" \
+      --console plain
+
+If you are in a Multi-Sandbox context, you have to include the ``.fodbg`` files and additional hex files:
+
+.. code:: console
+
+    ./gradlew execTool --name=heapDumperPlatform \
+      --toolProperty="output.name=application.heap" \
+      --toolProperty="application.filename=../../executable/application/application.out" \
+      --toolProperty="heap.filename=/path/to/memory.hex" \
+      --toolProperty="additional.application.filenames=/path/to/app1.fodbg;/path/to/app2.fodbg..." \
+      --toolProperty="additional.memory.filenames=/path/to/additonal1.hex;/path/to/additional2.hex..." \
       --console plain
 
 You can find the list of available options below:
@@ -154,7 +199,7 @@ You can find the list of available options below:
    * - Name
      - Description
      - Default
-   * - ``application.file``
+   * - ``application.filename``
      - Specify the full path of the Executable file, a full linked ELF file.
      - Not set
    * - ``additional.application.filenames``
@@ -438,6 +483,7 @@ and new heap dumps, and highlights any differences between the values.
 
    Instance Fields Comparison view
 
+.. _System.gc(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#gc--
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
