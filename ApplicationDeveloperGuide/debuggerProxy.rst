@@ -125,8 +125,8 @@ It provides a tool to generate a script for IAR (IAR8 or IAR9) or GDB debugger, 
 
 .. _generate_vee_memory_dump_script:
 
-Generate VEE memory dump script for IAR (IAR8 or IAR9) or GDB debugger
-----------------------------------------------------------------------
+Generate VEE memory dump script
+-------------------------------
 
 Open a shell terminal on your workstation and run the following command:
 

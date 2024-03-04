@@ -131,30 +131,36 @@ You then have to:
 Retrieve the ``.hex`` file from the device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Retrieving the ``.hex`` file from the device can be done with Eclipse CDT and GDB:
-
-- Run your debug configuration.
-- Open the ``Disassembly`` view.
-- Type ``LLMJVM_on_Runtime_gc_done`` in location field.
-- Add a breakpoint by double-clicking on the first line.
-- Resume execution until the debugger stops on the breakpoint.
-- Open your debug configuration and copy the host name and the port in the `Debugger` tab.
-- Run a GDB console.
-- Connect to the GDB server, for example: ``target remote localhost:2331``.
-- Dump the memory of the Java heap section by executing the following command line::
-   
-   dump ihex memory heap.hex &_java_heap_start &_java_heap_end
+If you are in a Mono-Sandbox context, you only have to dump the Core Engine heap section.
+Here is an example of GDB commands:
+  
+  .. code-block:: console
+      
+      b LLMJVM_on_Runtime_gc_done
+      b LLMJVM_on_OutOfMemoryError_thrown
+      continue
+      dump ihex memory heap.hex &_java_heap_start &_java_heap_end
 
 You now have the ``.hex`` file and need to extract the Heap dump.
 
-When using the tool in a multi-application context, additionnal sections must be dumped:
-- The dynamic features table:
+If you are in a Multi-Sandbox context, the following sections must be dumped additionally:
 
-   dump ihex memory &java_features_dynamic_start &java_features_dynamic_end
+- the installed features table.
+  
+  .. code-block:: console
+   
+      dump ihex memory &java_features_dynamic_start &java_features_dynamic_end
 
-- features related sections. These will change depending on the board, number of features and other parameters. It is possible to dump the entire memory and let the :ref:`heap extractor<sdk6_heapdumper_extract_heap>` extract the requiered sections instead.
+- the installed features sections. These are specific to your VEE Port, depending on the `LLKERNEL implementation <LLKF-API-SECTION>`.
+  
+  .. code-block:: console
+   
+      dump ihex memory <installed features_start_adress> <installed features_end_adress>
 
-   dump ihex memory <ram_start_adress> <ram_end_adress>
+  To simplify the dump commands, you can also consider the following options :
+
+  - either dump the entire memory where microej runtime and code sections are linked,
+  - or generate the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` which will dump all the required sections instead.
 
 .. _sdk6_heapdumper_extract_heap:
 
@@ -173,7 +179,7 @@ run the ``execTool`` Gradle task with the tool name ``heapDumperPlatform``:
       --toolProperty="additional.application.filenames=" \
       --console plain
 
-If you have generated additional hex files, add them with:
+If you are in a Multi-Sandbox context, you have to include the ``.fodbg`` files and additional hex files:
 
 .. code:: console
 
