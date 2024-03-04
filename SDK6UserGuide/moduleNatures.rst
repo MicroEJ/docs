@@ -230,7 +230,7 @@ loadTestApplicationConfiguration
 
 **Outputs**:
 
-- The directory containing the configuration file with all the properties set to launch the test application (``build/testsuite/properties/``)
+- The configuration file with all the properties set to launch the test application (``build/testsuite/properties/microej-testsuite.properties``)
 
 **Module Natures**:
 
