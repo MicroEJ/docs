@@ -307,7 +307,8 @@ Test on J2SE VM
 ---------------
 
 The SDK allows to run tests on a J2SE VM.
-This can be useful when the usage of mock libraries like ``Mockito`` is needed.
+This can be useful, for example, when the usage of mock libraries like ``Mockito`` is 
+needed (this kind of library is not supported by the MicroEJ VM).
 
 There is nothing specific related to MicroEJ to run tests on a J2SE VM.
 Follow the `Gradle documentation <https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html>`__ to setup such tests.
@@ -319,10 +320,48 @@ As an example, here is a typical configuration to execute the tests located in t
       suites { 
          val test by getting(JvmTestSuite::class) { 
             useJUnitJupiter()
+
+            dependencies {
+               runtimeOnly("org.junit.platform:junit-platform-launcher:1.8.2")
+            }
          }
       }
    }
 
+If you want to use `Mockito <https://site.mockito.org/>`__, add it in the testsuite dependencies:
+
+.. code-block::
+
+   testing {
+      suites { 
+         val test by getting(JvmTestSuite::class) { 
+            useJUnitJupiter()
+
+            dependencies {
+               implementation("org.mockito:mockito-core:4.11.0")
+               runtimeOnly("org.junit.platform:junit-platform-launcher:1.8.2")
+            }
+         }
+      }
+   }
+
+Then you can use it in your test classes:
+
+.. code-block:: java
+
+   import org.junit.jupiter.api.Test;
+   import org.mockito.Mockito;
+
+   import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+   public class MyTest {
+      @Test
+      public void test() {
+         MyClass mock = Mockito.mock(MyClass.class);
+
+         assertNotNull(mock);
+      }
+   }
 
 Test Suite Reports
 ------------------
@@ -486,6 +525,11 @@ Defining tests on the Simulator and on a J2SE VM is only a matter of aggregating
 
          val testOnJ2SE by registering(JvmTestSuite::class) {
             useJUnitJupiter()
+
+            dependencies {
+               runtimeOnly("org.junit.platform:junit-platform-launcher:1.8.2")
+            }
+
             ...
          }
       }
