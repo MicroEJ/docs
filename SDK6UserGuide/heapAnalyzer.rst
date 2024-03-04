@@ -87,10 +87,10 @@ Simulator
 In order to generate a Heap dump of an Application running on the Simulator:
 
 - Set the ``s3.inspect.heap`` Application properties to ``true``.
-- Update your Application code to call the ``System.gc()`` method where you need a Heap dump.
+- Update your Application code to call the `System.gc()`_ method where you need a Heap dump.
 - run the Application on the Simulator.
 
-When the ``System.gc()`` method is called, 
+When the `System.gc()`_ method is called, 
 a ``.heap`` file is generated in the ``build/output/application/heapDump/`` folder of the Application project.
 
 Device
@@ -98,7 +98,7 @@ Device
 
 In order to generate a Heap dump of an Application running on a device:
 
-- Update your Application code to call the ``System.gc()`` method where you need a Heap dump.
+- Update your Application code to call the `System.gc()`_ method where you need a Heap dump.
 - Build the Executable and deploy it on the device.
 
 When the Application is executed on the device, the method ``System.gc()`` ends by calling ``LLMJVM_on_Runtime_gc_done`` callback.
@@ -484,6 +484,7 @@ and new heap dumps, and highlights any differences between the values.
 
    Instance Fields Comparison view
 
+.. _System.gc(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#gc--
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
