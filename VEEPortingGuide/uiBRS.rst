@@ -203,7 +203,7 @@ Declaring explicit regions is mainly useful when it is performed before the very
      - ``LLUI_PAINTER_IMPL_drawYY(...)``
    * - **5** [6]_
      - ``gc.notifyDrawingRegion(...)``
-     - ``LLUI_DISPLAY_IMPL_newDrawingRegion(..., true)``
+     - ``LLUI_DISPLAY_IMPL_newDrawingRegion(..., false)``
    * - **6** [7]_
      - ``Painter.drawZZ(...)``
      - ``LLUI_PAINTER_IMPL_drawZZ(...)``
