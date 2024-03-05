@@ -248,6 +248,19 @@ Tools
 - Fixed an incorrect generation of a debug file beside the memory file when launching the Heap Dumper.
 - [Multi] Added Heap Dumper support for dynamically installed Features.
 
+.. _changelog-7.20.3:
+
+[maintenance/7.20.3] - 2024-02-28
+---------------------------------
+
+Foundation Libraries
+~~~~~~~~~~~~~~~~~~~~
+
+- Fixed, in ``BON``, `ResourceBuffer.readString()`_ which does not increment correctly the position in the buffer.
+- Fixed, in ``BON``, ``-1`` returned by `ResourceBuffer.available()`_ instead of ``0`` when the end of the buffer is reached.
+- Fixed, in ``BON``, invalid value returned by `ResourceBuffer.available()`_ on the Simulator.
+- Fixed, in ``BON``, potential crash when calling `ResourceBuffer.close()`_ several times on a ``ResourceBuffer`` loaded with the :ref:`External Resources Loader<section_externalresourceloader>`.
+
 
 .. _changelog-7.20.1:
 
