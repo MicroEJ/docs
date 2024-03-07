@@ -12,35 +12,9 @@ Source
 
 To get the source code of these examples, clone the following GitHub repository: `<https://github.com/MicroEJ/ExampleJava-MWT>`_.
 
-The repository contains several projects (one project for each example).
-You can import the projects in MicroEJ SDK to browse the source code and run the examples.
-
-* Go to :guilabel:`File` > :guilabel:`Import...`.
-* In :guilabel:`General`, select :guilabel:`Existing Projects into Workspace`.
-* Check :guilabel:`Select root directory` and browse to the cloned MWT Examples repository.
-* Select the projects to import and click :guilabel:`Finish`.
+The repository contains several Gradle projects (one project for each example) that can be imported in your favorite IDE.
 
 For each project, please refer to its ``README.md`` file for more details about the example and its usage.
-
-
-Run the Examples
-----------------
-
-Make sure to have a valid VEE port in the workspace.
-The examples can be tested with the Platform `STM32F7508-DK <https://github.com/MicroEJ/Platform-STMicroelectronics-STM32F7508-DK/tree/1.5.0>`_.
-
-To run the examples in the simulator:
-
-* Right-click on a project.
-* Select :guilabel:`Run As` > :guilabel:`MicroEJ Application`.
-
-.. note::
-
-   Some of the examples may require extra configuration, please refer to their README for more details.
-
-
-To run the examples on a device, :ref:`adapt the Run Configuration <device_build>`, then refer to the VEE port documentation.
-
 
 Provided Examples
 -----------------
@@ -74,7 +48,7 @@ In this case, the background color of a label switches depending on the value of
    
 This example shows how to use a pool of `BufferedImages <https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html>`_ to share them across an application.
 
-In this demo, there is one image in the pool, which is shared between the histogram widget and the transition container.
+In this example, there is one image in the pool, which is shared between the histogram widget and the transition container.
 
 |endTable|
 
