@@ -137,6 +137,22 @@ This can be raised in several cases, such as:
 - the requests to an artifact repository configured in the MicroEJ Module Manager settings are redirected to a proxy server using a SSL certificate not trusted by the JDK.
 
 In all cases, the SSL certificate (used by the artifact repository server or the proxy) must be added to the JDK trust store that is running Gradle.
+
+Before updating the SSL certificate, it is recommended to exit all your IDE projects and `stop Gradle daemons <https://docs.gradle.org/current/userguide/gradle_daemon.html#sec:stopping_an_existing_daemon>`_ (all versions).
+One simple way is to list all Java processes and kill the ones named ``GradleDaemon``:
+
+.. code-block:: console
+   :emphasize-lines: 3,6
+
+	./jps
+	12768
+	17792 GradleDaemon
+	16920
+	4712 Jps
+	1820 GradleDaemon
+
+Also, if you don't know which JDK is running Gradle, you can first fix the JDK used by Gradle by following :ref:`sdk_6_howto_gradle_java_home`.
+
 Ask your System Administrator, or retrieve the SSL certificate and add it to the JDK trust store:
 
 - on Windows
