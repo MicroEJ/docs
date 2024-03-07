@@ -12,11 +12,21 @@ The Image Engine is designed to make the distinction between three kinds of Micr
 * the images which requires a loading step before being usable by the application: class `ResourceImage`_,
 * the buffered images where the application can draw into: class `BufferedImage`_.
 
-The first kind of image requires the Image Engine to be able to use (get, read and draw) an image referenced by its path without any loading step. The *open* step should be very fast: just have to find the image in the application resources list and create an `Image`_ object which targets the resource. No RAM memory to store the image pixels is required: the Image Engine directly uses the resource address (often in FLASH memory). And finally, *closing* step is useless because there is nothing to free (except `Image`_ object itself, via the garbage collector).
+The first kind of image requires the Image Engine to be able to use (get, read and draw) an image referenced by its path without any loading step.
+The *open* step should be very fast: just have to find the image in the application resources list and create an `Image`_ object which targets the resource.
+No RAM memory to store the image pixels is required: the Image Engine directly uses the resource address (often in FLASH memory).
+And finally, *closing* step is useless because there is nothing to free (except `Image`_ object itself, via the garbage collector).
 
-The second kind of image requires the Image Engine to be able to use (load, read and draw) an image referenced by its path with or without any loading step. When the image is understandable by the Image Engine without any loading step, the image is considered like the first kind of image (fast *open* step, no RAM memory, useless *closing* step). When a loading step is required (dynamic decoding, external resource loading, image format conversion), the *open* state becomes longer and a buffer in RAM is required to store the image pixels. By consequence a *closing* step is required to free the buffer when image becomes useless.
+The second kind of image requires the Image Engine to be able to use (load, read and draw) an image referenced by its path with or without any loading step.
+When the image is understandable by the Image Engine without any loading step, the image is considered like the first kind of image (fast *open* step, no RAM memory, useless *closing* step).
+When a loading step is required (dynamic decoding, external resource loading, image format conversion), the *open* state becomes longer and a buffer in RAM is required to store the image pixels.
+By consequence a *closing* step is required to free the buffer when image becomes useless.
 
-The third kind of image requires, by definition, a buffer to store the image data. Image Engine must be able to use (create, read and draw) this kind of image. The *open* state consists in creating a buffer. By consequence a *closing* step is required to free the buffer when the image becomes useless. Contrary to the other kinds of images, the application will be able to draw into this image.
+The third kind of image requires, by definition, a buffer to store the image data.
+Image Engine must be able to use (create, read and draw) this kind of image.
+The *open* state consists in creating a buffer.
+By consequence a *closing* step is required to free the buffer when the image becomes useless.
+Contrary to the other kinds of images, the application will be able to draw into this image.
 
 .. _Image: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#
 .. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html#
@@ -30,7 +40,7 @@ Functional Description
 The Image Engine is composed of:
 
 * An "Image Generator" module, for converting images into a MicroEJ format (known by the Image Engine Renderer) or into a VEE Port binary format (cannot be used by the Image Engine Renderer), before runtime (pre-generated images).
-* The "Image Loader" module, for loading, converting and closing the images. 
+* The "Image Loader" module, for loading, converting and closing the images.
 * A set of "Image Decoder" modules, for converting standard image formats into a MicroEJ format (known by the Image Renderer) at runtime. Each Image Decoder is an additional module of the main module "Image Loader".
 * The "Image Renderer" module, for reading and drawing the images in MicroEJ format.
 

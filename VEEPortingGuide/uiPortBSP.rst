@@ -23,7 +23,7 @@ The following chapters describe each group of Abstraction Layer APIs, except the
 MicroUI C Module
 ================
 
-The UI Pack **requires** the :ref:`MicroUI C module <section_ui_cco>`. 
+The UI Pack **requires** the :ref:`MicroUI C module <section_ui_cco>`.
 This C module 
 
 - implements some MicroUI native functions,
@@ -82,7 +82,7 @@ The mandatory functions to implement are:
 - ``LLUI_DISPLAY_IMPL_initialize``: fill the given structure ``LLUI_DISPLAY_SInitData`` (display size, buffer address, etc.).
 - ``LLUI_DISPLAY_IMPL_binarySemaphoreTake``: *takes* the given semaphore.
 - ``LLUI_DISPLAY_IMPL_binarySemaphoreGive``: *gives* the given semaphore.
-- ``LLUI_DISPLAY_IMPL_flush``: copy/send the buffer content to the LCD.
+- ``LLUI_DISPLAY_IMPL_flush``: copy/transmit the buffer content to the LCD.
 
 Refer to :ref:`section_display_llapi` to have more information.
 Refer to the C-doc in the header file itself too.
@@ -93,7 +93,7 @@ Display: LCD Constraints
 According to the LCD constraints (see :ref:`ui_port_conf`), some additional LLAPI must be implemented:
 
 - ``LLUI_DISPLAY_IMPL_convertARGBColorToDisplayColor`` and ``LLUI_DISPLAY_IMPL_convertDisplayColorToARGBColor``: required when the pixel format is custom (not standard, see :ref:`section_display_implementation`).
-- ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors``: required when the display buffer is a LUT buffer, not a pixel buffer.
+- ``LLUI_DISPLAY_IMPL_prepareBlendingOfIndexedColors``: required when the display back buffer is a LUT buffer, not a pixel buffer.
 - ``LLUI_DISPLAY_IMPL_isDoubleBuffered``: the default implementation returns always ``true``; only useful as information for the application.
 - ``LLUI_DISPLAY_IMPL_isColor``: the default implementation always returns ``true`` when the BPP is higher than 8; only useful as information for the application.
 - ``LLUI_DISPLAY_IMPL_getNumberOfColors``: the default implementation returns always ``1 << BPP``; only useful as information for the application.

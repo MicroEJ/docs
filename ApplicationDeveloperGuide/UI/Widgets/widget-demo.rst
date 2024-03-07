@@ -16,7 +16,7 @@ For example, the ``com.microej.demo.widget.checkbox`` package contains the ``Che
 Provided Widgets
 ----------------
 
-The showcased widgets are listed in the `README <https://github.com/MicroEJ/Demo-Widget/blob/master/com.microej.demo.widget/README.md>`_ of the project.
+The showcased widgets are listed in the `README <https://github.com/MicroEJ/Demo-Widget/blob/master/README.md>`_ of the project.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

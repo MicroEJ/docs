@@ -21,7 +21,7 @@ MicroUI
 
 **Changed**
 
-* Change the semantic of the content of the drawing buffer after a flush: the *past* is not systematically restored.
+* Change the semantic of the content of the back buffer after a flush: the *past* is not systematically restored.
 * Clarify the message when a generic event generator specified in the VEE Port is not available in the application classpath.
 
 **Fixed**
@@ -72,13 +72,13 @@ LLAPIs
 
   * ``LLUI_DISPLAY_getSourceImage()``.
   * ``LLUI_DISPLAY_getImageBPP()`` and ``LLUI_DISPLAY_getFormatBPP()``.
-  * ``LLUI_DISPLAY_IMPL_refresh()``. 
-  * ``LLUI_DISPLAY_IMPL_newDrawingRegion()``.  
+  * ``LLUI_DISPLAY_IMPL_refresh()``.
+  * ``LLUI_DISPLAY_IMPL_newDrawingRegion()``.
   * ``LLUI_DISPLAY_setDrawingBuffer()``: it replaces ``LLUI_DISPLAY_flushDone()``.
 
 **Changed**
 
-* Change the signature of the function ``LLUI_DISPLAY_requestFlush()``: remove the boolean ``force`` (not backward compatible). 
+* Change the signature of the function ``LLUI_DISPLAY_requestFlush()``: remove the boolean ``force`` (not backward compatible).
 * Change the signature of the function ``LLUI_DISPLAY_IMPL_flush()``: give a list of rectangles and a flush identifier.
 
 **Removed**
@@ -412,9 +412,9 @@ Front Panel
 	
 **Added**
 
-* Add a service to decode immutable images with a custom format. 
-* Add a service to create mutable images with a custom format. 
-* Add a service to draw into mutable images with a format different than the display format. 
+* Add a service to decode immutable images with a custom format.
+* Add a service to create mutable images with a custom format.
+* Add a service to draw into mutable images with a format different than the display format.
 * Add some methods to manage the MicroUI Drawing Log flags.
 * Add some methods to change the MicroUI clip and colors.
 
@@ -448,7 +448,7 @@ LLAPIs
 **Changed**
 
 * Change the MicroUI image format ``MICROUI_IMAGE_FORMAT_LCD`` by ``MICROUI_IMAGE_FORMAT_DISPLAY``.
-* Change the signature of ``xx_drawing_soft.h``: all functions return a drawing status. 
+* Change the signature of ``xx_drawing_soft.h``: all functions return a drawing status.
 
 **Removed**
 
@@ -477,7 +477,7 @@ C Module DMA2D
 
 **Fixed**
 
-* Fix the problems with reading memory back after a DMA2D transfer on cache-enabled CPUs.  
+* Fix the problems with reading memory back after a DMA2D transfer on cache-enabled CPUs.
 * Fix an include directive for case-sensitive filesystems.
 
 C Module VGLite
@@ -542,18 +542,18 @@ MicroUI
 **Fixed**
 
 * Fix the unexpected resuming of the pump Java thread when a new event is added to the queue if it is an other component than the MicroUI queue that has suspended the pump Java thread.
-* Fix the flush bounds of drawCircleArc and drawEllipseArc.   
+* Fix the flush bounds of drawCircleArc and drawEllipseArc.
 
 Front Panel
 """""""""""
 
 **Added**
 
-* Add some checks to not perform a drawing when it is unnecessary. 
+* Add some checks to not perform a drawing when it is unnecessary.
 
 **Fixed**
 
-* Fix the Front Panel representation of a BufferedImage: it is always opaque. 
+* Fix the Front Panel representation of a BufferedImage: it is always opaque.
 
 Image Generator
 """""""""""""""
@@ -614,14 +614,14 @@ Image Generator
 
 **Changed**
 
-* Increase logs when application verbosity is enabled. 
+* Increase logs when application verbosity is enabled.
 * Check the stride defined by the Image Generator Extension project (throw an error if the value is incompatible with the memory alignment).
 
 **Fixed**
 
-* Fix the external resource generation: they were no longer generated (UI pack 13.3.0 regression). 
+* Fix the external resource generation: they were no longer generated (UI pack 13.3.0 regression).
 * Fix the duplicate generation (as internal and external resources) of the custom ``.list`` file images (consider only custom ``.list`` file images as external resources when the prefix of the list file extension starts with ``extern``).
-* Fix the internal limit error when converting images with BPP lower than 8 bits (for platforms that define a rule for the image stride through an Image Generator Extension project). 
+* Fix the internal limit error when converting images with BPP lower than 8 bits (for platforms that define a rule for the image stride through an Image Generator Extension project).
 
 [13.3.0] - 2022-09-02
 =====================
@@ -631,7 +631,7 @@ MicroUI
 	
 **Fixed**
 
-* Fix the Cx (x == 1 | 2 | 4) Graphics Engine's when memory layout is "column". 
+* Fix the Cx (x == 1 | 2 | 4) Graphics Engine's when memory layout is "column".
 * Fix the consistency between `Image.getImage()`_ and `Font.getFont()`_ about starting MicroUI.
 
 .. _Image.getImage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#getImage-java.lang.String-
@@ -649,7 +649,7 @@ Image Generator
 
 **Fixed**
 
-* Fix the stride stored in the image when the Graphics Engine's memory layout is "column". 
+* Fix the stride stored in the image when the Graphics Engine's memory layout is "column".
 
 LLAPIs
 """"""
@@ -658,7 +658,7 @@ LLAPIs
 
 * Add custom image formats to prepare for future MicroUI functionality.
 * Add LLAPI to adjust new image characteristics (size and alignment).
-* Add API: ``UI_DRAWING_copyImage`` and ``UI_DRAWING_drawRegion``. 
+* Add API: ``UI_DRAWING_copyImage`` and ``UI_DRAWING_drawRegion``.
 * Add the LLUI version (== UI Pack version) in header files.
 
 **Changed**
@@ -677,7 +677,7 @@ C Module MicroUI
 **Changed**
 
 * Improve ``drawImage``: identify faster use cases (copy an image and draw a region with overlap).
-* Use new UI Pack LLAPI: ``UI_DRAWING_copyImage`` and ``UI_DRAWING_drawRegion``. 
+* Use new UI Pack LLAPI: ``UI_DRAWING_copyImage`` and ``UI_DRAWING_drawRegion``.
 * Use new MicroUI's native functions declaration (not backward compatible).
 
 C Module DMA2D for UI Pack 13.2.0 (maintenance)
@@ -739,8 +739,8 @@ MicroUI
 **Fixed**
 
 * Clean KF stale references when killing a feature without display context switch.
-* Make sure to wait the end of an asynchronous drawing before killing a KF feature. 
-* Redirect the events sent to the pump to the pump's handler instead of to the event generator's handler. 
+* Make sure to wait the end of an asynchronous drawing before killing a KF feature.
+* Redirect the events sent to the pump to the pump's handler instead of to the event generator's handler.
 * Fix the drawing of antialiased arc: caps are drawn over the arc itself (rendering issue when the GraphicsContext's background color is set).
 * Fix the drawing of antialiased arc: arc is not fully drawn when (int)startAngle == (int)((startAngle + arcAngle) % 360)).
 * Fix the input queue size when not already set by the application launcher.
@@ -769,8 +769,8 @@ Front Panel
  
 **Fixed**
 
-* Fix the "display context switch" and the loading of feature's font. 
-* Fix OOM (Java heap space) when opening/closing several hundreds of big RAW Images. 
+* Fix the "display context switch" and the loading of feature's font.
+* Fix OOM (Java heap space) when opening/closing several hundreds of big RAW Images.
 * Fix the synchronization with the Graphics Engine when calling `GraphicsContext.setColor()`_ or `GraphicsContext.enableEllipsis()`_.
 
 .. _GraphicsContext.setColor(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/GraphicsContext.html#setColor-int-
@@ -790,7 +790,7 @@ LLAPIs
 
 **Added**
 
-* Add ``LLUI_DISPLAY_readPixel`` to read an image's pixel color. 
+* Add ``LLUI_DISPLAY_readPixel`` to read an image's pixel color.
 
 C Module DMA2D
 """"""""""""""
@@ -839,14 +839,14 @@ MicroUI Implementation
 
 * Check Immortals heap minimal size required by MicroUI implementation.
 * Change the EventGenerator Pointer event format.
-* Do no systematically use the GPU to draw intermediate steps of a shape.  
+* Do no systematically use the GPU to draw intermediate steps of a shape.
 	
 **Fixed**
 
 * EventGenerator's event has not to be sent to the Display's handler when EventGenerator's handler is null.
 * Fill rounded rectangle: fix rendering when corner radius is higher than rectangle height.
 * An external image is closed twice when the application only checks if the image is available.
-* RLE1 image rendering when platform requires image pixels address alignment. 
+* RLE1 image rendering when platform requires image pixels address alignment.
 * Manage the system fonts when the Font Generator is not embedded in the platform.
 * Have to wait the end of current drawing before closing an image.
 
@@ -864,8 +864,8 @@ Front Panel
 
 **Added**
 
-* Add ``MicroUIImage.getImage(int)``: apply a rendering color on Ax images.  
-* Add ``LLUIDisplay.convertRegion()``: convert a region according image format restrictions.   
+* Add ``MicroUIImage.getImage(int)``: apply a rendering color on Ax images.
+* Add ``LLUIDisplay.convertRegion()``: convert a region according image format restrictions.
 * Add ``LLUIDisplayImpl.waitFlush()``: can manage an asynchronous flush.
 
 **Changed**	
@@ -875,7 +875,7 @@ Front Panel
 **Fixed**
 
 * Fix OutputFormat A8 when loading an image (path or stream) or converting a RAW image.
-* Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images. 
+* Fix OOM (Java heap space) when opening/closing several hundreds of MicroUI Images.
 * Simulates the image data alignment.
 
 LLAPIs
@@ -889,7 +889,7 @@ LLAPIs
 
 **Changed**	
 
-* Change signature of ``LLUI_DISPLAY_setDrawingLimits()``: remove ``MICROUI_GraphicsContext*`` to be able to call this function from GPU callback method. 
+* Change signature of ``LLUI_DISPLAY_setDrawingLimits()``: remove ``MICROUI_GraphicsContext*`` to be able to call this function from GPU callback method.
 
 C Module MicroUI
 """"""""""""""""
@@ -1264,7 +1264,7 @@ C Modules
 **Added**
 
 * Provides the C Module MicroUI 1.0.1 that extends the `UI Pack 13.0.0`_. 
-* Provides the C Module DMA2D 1.0.2 that targets the STM32 CPU that provides the Chrom-ART accelerator. 
+* Provides the C Module DMA2D 1.0.2 that targets the STM32 CPU that provides the Chrom-ART accelerator.
 * See :ref:`MicroUI C module <section_ui_cco>`.
 
 .. _UI Pack 13.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/13.0.0/

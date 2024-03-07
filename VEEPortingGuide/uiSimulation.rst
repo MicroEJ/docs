@@ -10,19 +10,22 @@ Simulation
 Principle
 =========
 
-The graphical user interface uses the Front Panel mock (see :ref:`section_frontpanel`) and some extensions (widgets) to simulate the user interactions. It is the equivalent of the three embedded modules (Display, Input and LED) of the VEE Port (see :ref:`section_microui`).
+The graphical user interface uses the Front Panel mock (see :ref:`section_frontpanel`) and some extensions (widgets) to simulate the user interactions.
+It is the equivalent of the three embedded modules (Display, Input and LED) of the VEE Port (see :ref:`section_microui`).
 
-The Front Panel enhances the development environment by allowing User Interface  applications to be designed and tested on the computer rather than on the target device (which may not yet be built). The mock interacts with the user's computer in two ways: 
+The Front Panel enhances the development environment by allowing User Interface  applications to be designed and tested on the computer rather than on the target device (which may not yet be built).
+The mock interacts with the user's computer in two ways: 
 
 -  output: LEDs, graphical displays
 -  input: buttons, joystick, touch, haptic sensors
 
-.. note:: This chapter completes the notions described in :ref:`section_frontpanel` chapter. 
+.. note:: This chapter completes the notions described in :ref:`section_frontpanel` chapter.
 
 Module Dependencies
 ===================
 
-The Front Panel project is a regular MicroEJ Module project. Its module.ivy file should look like this example:
+The Front Panel project is a regular MicroEJ Module project.
+Its module.ivy file should look like this example:
 
 .. code-block:: xml
 
@@ -41,14 +44,14 @@ The Front Panel project is a regular MicroEJ Module project. Its module.ivy file
    </ivy-module>
 
 
-By default, the project depends on the Front Panel Framework which only contains the Front Panel core classes and which does not provide any Front Panel Widgets (see :ref:`section_frontpanel_dependencies`). 
+By default, the project depends on the Front Panel Framework which only contains the Front Panel core classes and which does not provide any Front Panel Widgets (see :ref:`section_frontpanel_dependencies`).
 To add interactive Front Panel Widgets (typically a simulated display and input devices), add the library that provides compatible Front Panel Widgets with the Graphics Engine: 
 
 .. code-block:: xml
 
    <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
 
-.. note:: The life cycle of this library is different than the UI pack's one, see :ref:`section_ui_releasenotes_frontpanel`. 
+.. note:: The life cycle of this library is different than the UI pack's one, see :ref:`section_ui_releasenotes_frontpanel`.
 
 Source code for Front Panel Widgets is available by expanding the library from the project view.
 
@@ -85,12 +88,12 @@ It offers the same capacity to override some built-in drawing algorithms (intern
 
 * The interface ``ej.microui.display.LLUIDisplay`` represents the MicroUI Graphics Engine (MicroUI framework).
   It provides methods to map MicroUI byte arrays in MicroUI Graphics Context objects, manipulate MicroUI colors, clip, etc.
-  An instance of this framework is available via the field ``Instance``. 
+  An instance of this framework is available via the field ``Instance``.
 * The interface ``ej.microui.display.LLUIDisplayImpl`` all methods required by MicroUI implementation to be compatible with the MicroUI Display class implementation.
   See :ref:`section_ui_simulation_display`.
 * The class ``ej.microui.display.LLUIPainter`` implements all MicroUI drawing natives.
   It defines some interfaces and classes to manipulate the MicroUI concepts (GraphicsContext, Image, etc.) in the Front Panel project.
-  Like the embedded side, this class manages the synchronization with the Graphics Engine and delegates the drawing to the interface ``ej.microui.display.UIDrawing``. 
+  Like the embedded side, this class manages the synchronization with the Graphics Engine and delegates the drawing to the interface ``ej.microui.display.UIDrawing``.
 * The interface ``ej.microui.display.UIDrawing`` defines all the drawing methods available in MicroUI.
   The default implementation of the methods involving images calls the matching method in ``ej.microui.display.UIImageDrawing``.
   The default implementation of the other methods reports the error that the drawing is not done.
@@ -118,7 +121,7 @@ Features
 
 * :ref:`Display buffer policy and buffer refresh strategy<section_brs_sim>`: simulates the display buffer policy and the buffer refresh strategy.
 * :ref:`LCD refresh rate<section_ui_simulation_refreshrate>`: simulates the time between two visible frames on the hardware device.
-* :ref:`LCD flush time<section_ui_simulation_flushtime>`: simulates the time to send the frame content to the hardware device.
+* :ref:`LCD flush time<section_ui_simulation_flushtime>`: simulates the time to flush the frame content to the hardware device.
 * Backlight (enabled by default): ``backlightFeature=true|false``.
 * :ref:`Non-rectangular displays<section_ui_simulation_nonrectangulardisplay>`: ``filter="xxx.png"``. Some displays can have another appearance (for instance: circular).
 * :ref:`Standard<display_pixel_structure_standard>` pixel formats.
@@ -131,7 +134,7 @@ Refresh Rate
 
 Usually a LCD is cadenced around 50-60Hz.
 That means the LCD can display a new frame every 16-20ms.
-By default this widget displays a new frame as soon as possible. 
+By default this widget displays a new frame as soon as possible.
 It can be configured to reduce this time to simulate the hardware device.
 
 In the widget declaration, set the attribute ``refreshRate="xxx"`` with a value in Hertz.
@@ -144,8 +147,8 @@ The application can substitute the VEE Port's value by setting the property ``-D
 Flush Time
 ----------
  
-On a hardware device, the time to send the frame data from the back buffer memory to the LCD is not null. 
-According to the hardware device technology, this time varies between 3-4 ms to 10-15ms. 
+On a hardware device, the time to flush the frame data from the back buffer memory to the LCD is not null.
+According to the hardware device technology, this time varies between 3-4 ms to 10-15ms.
 In SPI mode, this time may be higher, around 50ms, even more.
 By default this widget copies the content of back buffer as faster as possible.
 It can be configured to reduce this time to simulate the hardware device.
@@ -160,12 +163,12 @@ The application can substitute the VEE Port's value by setting the property ``-D
 Non-rectangular Display
 -----------------------
 
-The Front Panel can simulate using a filter (see :ref:`section_frontpanel_widget`). 
-This filter defines the pixels inside and outside the whole display area. 
-The filter image must have the same size as the rectangular display area. 
+The Front Panel can simulate using a filter (see :ref:`section_frontpanel_widget`).
+This filter defines the pixels inside and outside the whole display area.
+The filter image must have the same size as the rectangular display area.
 A display pixel at a given position will not be rendered if the pixel at the same position in the mask is fully transparent.
 
-.. note:: Usually the touch panel over the display uses the same filter to reduce the touch panel area. 
+.. note:: Usually the touch panel over the display uses the same filter to reduce the touch panel area.
 
 Example of non-rectangular display and touch:
 
@@ -179,9 +182,12 @@ Example of non-rectangular display and touch:
 Inputs Extensions
 =================
 
-The input device widgets (button, joystick, touch, etc.) require a listener to know how to react on input events (press, release, move, etc.). The aim of this listener is to generate an event compatible with MicroUI `Event Generator`_. Thereby, a button press action can become a MicroUI `Buttons`_ press event or a `Command`_ event or anything else. 
+The input device widgets (button, joystick, touch, etc.) require a listener to know how to react on input events (press, release, move, etc.).The aim of this listener is to generate an event compatible with MicroUI `Event Generator`_.
+Thereby, a button press action can become a MicroUI `Buttons`_ press event or a `Command`_ event or anything else.
 
-A MicroUI `Event Generator`_ is known by its name. This name is fixed during the MicroUI static initialization (see :ref:`section_static_init`). To generate an event to a specific event generator, the widget has to use the event generator name as identifier. 
+A MicroUI `Event Generator`_ is known by its name.
+This name is fixed during the MicroUI static initialization (see :ref:`section_static_init`).
+To generate an event to a specific event generator, the widget has to use the event generator name as identifier.
 
 A Front Panel widget can:
 
@@ -189,7 +195,8 @@ A Front Panel widget can:
 * Propose a default behavior of an input action: contrary to first point, the Front Panel extension project is able to change the default behavior. For instance a joystick can simulate a MicroUI `Pointer`_.
 * Do nothing: the widget requires the Front Panel extension project to give a listener. This listener will receive all widgets action (press, release, etc.) and will have to react on it. The action should be converted on a MicroUI `Event Generator`_ event or might be dropped.
 
-This choice of behavior is widget dependant. Please refer to the widget documentation to have more information about the chosen behavior.
+This choice of behavior is widget dependant.
+Please refer to the widget documentation to have more information about the chosen behavior.
 
 .. _Event Generator: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/EventGenerator.html
 .. _Buttons: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/generator/Buttons.html
@@ -199,7 +206,8 @@ This choice of behavior is widget dependant. Please refer to the widget document
 Heap Simulation
 ===============
 
-Graphics Engine is using two dedicated heaps: for the images (see :ref:`section_image_loader_memory` ) and the external fonts (see :ref:`section_font_loader_memory`). Front Panel partly simulates the heaps usage.
+Graphics Engine is using two dedicated heaps: for the images (see :ref:`section_image_loader_memory` ) and the external fonts (see :ref:`section_font_loader_memory`).
+Front Panel partly simulates the heaps usage.
 
 * Images heap: Front Panel simulates the heap usage when the application is creating a `BufferedImage`_, when it loads and decodes an image (PNG, BMP, etc.) which is not a raw resource and when it converts an image in MicroEJ format in another MicroEJ format. However it does not simulate the external image copy in heap (see :ref:`section_image_external_memory`).
 * External fonts heap: Front Panel does not simulate this heap (see :ref:`section_font_loader_memory`). There is no rendering limitation when application is using a font which is located outside CPU addresses ranges.
@@ -211,7 +219,8 @@ Graphics Engine is using two dedicated heaps: for the images (see :ref:`section_
 Image Decoders
 ==============
 
-Front Panel uses its own internal image decoders when the associated modules have been selected (see :ref:`internal image decoders<image_external_decoder>`). Some additional decoders can be added like the C-side for the embedded VEE Port (see :ref:`external image decoders<image_external_decoder>`).  Front Panel uses the Java AWT `ImageIO`_ API to load the encoded images. 
+Front Panel uses its own internal image decoders when the associated modules have been selected (see :ref:`internal image decoders<image_external_decoder>`).
+Some additional decoders can be added like the C-side for the embedded VEE Port (see :ref:`external image decoders<image_external_decoder>`).Front Panel uses the Java AWT `ImageIO`_ API to load the encoded images.
 
 .. _ImageIO: https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html
 
@@ -236,7 +245,8 @@ To add an additional decoder, specify the property ``hardwareImageDecoders.list`
    | Windows bitmap (BMP)                                | bmp             |
    +-----------------------------------------------------+-----------------+
 
-The decoders list is comma (*,*) separated. Example:
+The decoders list is comma (*,*) separated.
+Example:
 
 ::
 
@@ -275,16 +285,15 @@ Front Panel is designed to add the support of :ref:`MicroUI BufferedImage <secti
 Classpath
 =========
 
-A standard mock is running on the same JVM than the HIL Engine (see :ref:`mock` chapter). It shares the same classpath.
+A standard mock is running on the same JVM than the HIL Engine (see :ref:`mock` chapter).
+It shares the same classpath.
 When the application is not using the MicroUI library (i.e., it is not an UI application, whether the VEE Port holds the MicroEJ Graphics Engine or not), the Front Panel mock runs a standard mock.
-When the application is using the MicroUI library, the Front Panel UI mock runs on the same JVM than the MicroEJ Simulator. 
+When the application is using the MicroUI library, the Front Panel UI mock runs on the same JVM than the MicroEJ Simulator.
 In this case, the other mocks don't share the same classpath than the Front Panel mock.
 As a consequence, an other mock than the Front Panel mock can not send input events to MicroUI, the object created in the standard mocks's class loader are not available in the Front Panel UI's class loader (and vice versa), etc.
 
-Since the UI Pack 13.2.0, it is possible to force to run the Front Panel UI mock in the same classpath than the HIL Engine by adding the property ``-Dej.fp.hil=true`` in the application JRE tab. 
-Note that this option only works when the version of the MicroEJ Architecture used to build the VEE Port is 7.17.0 or higher.     
-
-
+Since the UI Pack 13.2.0, it is possible to force to run the Front Panel UI mock in the same classpath than the HIL Engine by adding the property ``-Dej.fp.hil=true`` in the application JRE tab.
+Note that this option only works when the version of the MicroEJ Architecture used to build the VEE Port is 7.17.0 or higher.
 
 Dependencies
 ============
@@ -300,9 +309,9 @@ Dependencies
 Installation
 ============
 
-Front Panel is an additional module for MicroUI library. When the
-MicroUI module is installed, install this module in order to be able to
-simulate UI drawings on the Simulator. See :ref:`fp_installation` to install the module.
+Front Panel is an additional module for MicroUI library.
+When the MicroUI module is installed, install this module in order to be able to simulate UI drawings on the Simulator.
+See :ref:`fp_installation` to install the module.
 
 The properties file can additional properties:
    

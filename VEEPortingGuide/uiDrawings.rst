@@ -7,7 +7,7 @@ Drawings
 Abstraction Layer
 =================
 
-All MicroUI drawings (available in the `Painter`_ class) call a native function. 
+All MicroUI drawings (available in the `Painter`_ class) call a native function.
 These native functions are already implemented (in the :ref:`section_drawings_cco` for the Embedded VEE Port and in the :ref:`Front Panel <section_drawings_sim>` for the Simulator).
 These implementations use the Graphics Engine's software algorithms to perform the drawings.
 
@@ -15,12 +15,12 @@ Each drawing can be overwritten independently in the VEE Port:
 
 - to use another software algorithm (custom algorithm, no third-party library, etc.),
 - to use a GPU to perform the operation,
-- to target a destination whose format is different from the display buffer format,
+- to target a destination whose format is different from the display back buffer format,
 - etc.
  
 The MicroUI native drawing functions are listed in ``LLUI_PAINTER_impl.h`` and ``LLDW_PAINTER_impl.h`` (for the `Drawing`_ library) for the Embedded VEE Port and, respectively, ``LUIPainter.java`` and ``LLDWPainter.java`` for the Simulation VEE Port.
 
-The implementation must handle many constraints: synchronization between drawings, Graphics Engine notification, MicroUI `GraphicsContext`_ clip and colors, dirty flush area, etc. 
+The implementation must handle many constraints: synchronization between drawings, Graphics Engine notification, MicroUI `GraphicsContext`_ clip and colors, dirty flush area, etc.
 The principle of implementing a MicroUI drawing function is described in the chapter :ref:`section_drawings_custom`.
 
 .. _section_drawings_destination_format:
@@ -28,8 +28,8 @@ The principle of implementing a MicroUI drawing function is described in the cha
 Destination Format
 ==================
 
-Since MicroUI 3.2, the destination buffer of the drawings can be different than the display buffer format (see :ref:`section_image_display_raw`).
-This destination buffer format can be a :ref:`standard format <section_image_standard_raw>` (ARGB8888, A8, etc.) or a :ref:`custom format <section_image_custom_raw>`. 
+Since MicroUI 3.2, the destination buffer of the drawings can be different than the display back buffer format (see :ref:`section_image_display_raw`).
+This destination buffer format can be a :ref:`standard format <section_image_standard_raw>` (ARGB8888, A8, etc.) or a :ref:`custom format <section_image_custom_raw>`.
 
 See :ref:`section_buffered_image` for more information about how to create buffered images with another format than the display format and how to draw in them.
 
@@ -45,7 +45,7 @@ The Graphics Engine provides a header file ``ui_drawing_soft.h`` (emb), and an i
 For instance, a GPU may be able to draw an image whose format is RGB565 but not ARGB1555.
 For this image format, BSP implementation can call the ``UI_DRAWING_SOFT_drawImage`` function.
 
-.. warning:: These software algorithms only target buffers whose format is the display buffer format.
+.. warning:: These software algorithms only target buffers whose format is the display back buffer format.
 
 .. _section_drawings_cco:
 
@@ -55,15 +55,15 @@ MicroUI C Module
 Principle
 ---------
 
-An implementation of ``LLUI_PAINTER_impl.h`` is already available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`. 
+An implementation of ``LLUI_PAINTER_impl.h`` is already available on the :ref:`MicroUI C module<section_ui_releasenotes_cmodule>`.
 This implementation respects the synchronization between drawings and the Graphics Engine notification and reduces (when possible) the MicroUI `GraphicsContext`_ clip constraints.
 
-This implementation does not perform the drawings; it only calls the equivalent of drawing available in ``ui_drawing.h``. 
+This implementation does not perform the drawings; it only calls the equivalent of drawing available in ``ui_drawing.h``.
 This allows simplifying how to use a GPU (or a third-party library) to perform a drawing: the ``ui_drawing.h`` implementation just has to take into consideration the MicroUI `GraphicsContext`_ clip and colors.
 Synchronization with the Graphics Engine is already performed.
 
-In addition to the implementation of ``LLUI_PAINTER_impl.h``, an implementation of ``ui_drawing.h`` is already available in :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` (in *weak* mode). 
-This allows to implement only the functions the GPU can perform. 
+In addition to the implementation of ``LLUI_PAINTER_impl.h``, an implementation of ``ui_drawing.h`` is already available in :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` (in *weak* mode).
+This allows to implement only the functions the GPU can perform.
 For a given drawing, the weak function implementation is calling the equivalent of the drawing available in 
 ``ui_drawing_soft.h`` (this file lists all drawing functions implemented by the Graphics Engine in software).
 
@@ -72,10 +72,10 @@ For a given drawing, the weak function implementation is calling the equivalent 
 Default Implementation
 ----------------------
 
-The default implementation is the most used. 
+The default implementation is the most used.
 It takes into account:
 
-* there is only one destination format (the display buffer format),
+* there is only one destination format (the display back buffer format),
 * no drawing is overwritten in the BSP (no GPU, third-party library, etc.),
 * :ref:`non-standard images <section_image_custom_raw>` cannot be used as a source.
 
@@ -145,8 +145,8 @@ The following graph illustrates the steps to perform a shape drawing (not an ima
 
 The Graphics Engine requires synchronization between the drawings.
 Doing that requires a call to ``LLUI_DISPLAY_requestDrawing`` at the beginning of native function implementation.
-This function takes as a parameter the MicroUI `GraphicsContext`_ and the pointer on the native function itself. 
-This pointer must be cast in a ``SNI_callback``.  
+This function takes as a parameter the MicroUI `GraphicsContext`_ and the pointer on the native function itself.
+This pointer must be cast in a ``SNI_callback``.
 
 **UI_DRAWING_drawLine** (available in MicroUI C Module)
 
@@ -178,7 +178,7 @@ Custom Implementation
 The custom implementation helps connect a GPU or a third-party library.
 It takes into account:
 
-* there is only one destination format (the display buffer format),
+* there is only one destination format (the display back buffer format),
 * :ref:`non-standard images <section_image_custom_raw>` cannot be used as a source.
 
 The :ref:`MicroUI C module<section_ui_releasenotes_cmodule>` is designed to simplify the adding of third-party drawers:
@@ -298,9 +298,9 @@ If not, the drawing function must perform the same thing as the default weak fun
 The GPU drawing function usually requires the destination buffer address: the drawing function calls ``LLUI_DISPLAY_getBufferAddress(&gc->image);``.
 
 The drawing function has to respect the `GraphicsContext`_ clip
-The ``MICROUI_GraphicsContext`` structure holds the clip, and the drawer cannot perform a drawing outside this clip (otherwise, the behavior is unknown). 
-Note the bottom-right coordinates might be smaller than the top-left (in x and/or y) when the clip width and/or height is null. 
-The clip may be disabled (when the current drawing fits the clip); this allows to reduce runtime. 
+The ``MICROUI_GraphicsContext`` structure holds the clip, and the drawer cannot perform a drawing outside this clip (otherwise, the behavior is unknown).
+Note the bottom-right coordinates might be smaller than the top-left (in x and/or y) when the clip width and/or height is null.
+The clip may be disabled (when the current drawing fits the clip); this allows to reduce runtime.
 See ``LLUI_DISPLAY_isClipEnabled()``.
 
 .. note:: Several clip functions are available in ``LLUI_DISPLAY.h`` to check if a drawing fits the clip.
@@ -344,7 +344,7 @@ This is the same principle as :ref:`section_drawings_cco` for the Embedded side:
 * The drawing primitive natives called the matching method in ``LLUIPainter``.
 * The ``LLUIPainter`` synchronizes the drawings with the Graphics Engine and dispatches the drawing itself to an implementation of the interface ``UIDrawing``.
 * The Front Panel provides a software implementation of ``UIDrawing`` available by calling ``ej.microui.display.LLUIDisplay.getUIDrawerSoftware()``.
-* The ``DisplayDrawer`` implements ``UIDrawing`` and is used to draw in the display buffer and the images with the same format.
+* The ``DisplayDrawer`` implements ``UIDrawing`` and is used to draw in the display back buffer and the images with the same format.
 
 These classes are available in the :ref:`UI Pack extension <section_ui_simulation>` of the Front Panel Mock.
 
@@ -353,10 +353,10 @@ These classes are available in the :ref:`UI Pack extension <section_ui_simulatio
 Default Implementation
 ----------------------
 
-The default implementation is the most used. 
+The default implementation is the most used.
 It considers that:
 
-* there is only one destination format (the display buffer format),
+* there is only one destination format (the display back buffer format),
 * no drawing is overwritten in the BSP (no third-party library),
 * :ref:`non-standard images <section_image_custom_raw>` cannot be used as a source.
 
@@ -448,7 +448,7 @@ Like the embedded side, this object holds a clip, and the drawer cannot perform 
 		LLUIDisplay.Instance.getUIDrawerSoftware().drawLine(gc, x1, y1, x2, y2);
 	}
 
-The implementation of ``DisplayDrawer`` simply calls the Graphics Engine's software algorithm. 
+The implementation of ``DisplayDrawer`` simply calls the Graphics Engine's software algorithm.
 This software algorithm will use the `GraphicsContext`_ color and clip.
 
 .. _section_drawings_sim_custom:
@@ -459,7 +459,7 @@ Custom Implementation
 The custom implementation helps connect a third-party library or to simulate the same constraints as the embedded side (the same GPU constraints).
 It considers that:
 
-* there is only one destination format (the display buffer format),
+* there is only one destination format (the display back buffer format),
 * :ref:`non-standard images <section_image_custom_raw>` cannot be used as a source.
 
 The :ref:`UI Pack extension <section_ui_simulation>` is designed to simplify the adding of third-party drawers:
@@ -556,9 +556,9 @@ Let's use the same example as the previous section (draw line function): the Fro
       }
    }
 
-The Front Panel framework is running over AWT. 
-The method ``gc.getImage()`` returns a ``ej.fp.Image``. 
-It is the representation of a MicroUI Image in the Front Panel framework. 
+The Front Panel framework is running over AWT.
+The method ``gc.getImage()`` returns a ``ej.fp.Image``.
+It is the representation of a MicroUI Image in the Front Panel framework.
 The method ``gc.getImage().getRAWImage()`` returns the implementation of the Front Panel image on the J2SE framework: an `AWT BufferedImage`_. 
 The AWT graphics 2D can be retrieved from this buffered image.
 
@@ -615,7 +615,7 @@ Principle
 ---------
 
 MicroUI allows adding some custom drawings (drawings not listed in the MicroUI Painter classes).
-A custom drawing has to respect the same rules as the MicroUI drawings to avoid corrupting the MicroUI execution (flickering, memory corruption, unknown behavior, etc.). 
+A custom drawing has to respect the same rules as the MicroUI drawings to avoid corrupting the MicroUI execution (flickering, memory corruption, unknown behavior, etc.).
 
 As explained above, MicroUI implementation provides an Abstraction Layer that lists all MicroUI Painter drawing native functions and their implementations (:ref:`section_drawings_cco` and :ref:`section_drawings_sim`).
 The implementation of MicroUI Painter drawings should be used as a model to implement the custom drawings.
@@ -643,8 +643,8 @@ Application Method
    // Custom drawing native method
    private static native void drawCustom(byte[] graphicsContext, int x, int y);
 
-All native functions must have a MicroUI `GraphicsContext`_ as a parameter (often the first parameter) that identifies the destination target. 
-The application retrieves this target by calling the method ``GraphicsContext.getSNIContext()``. 
+All native functions must have a MicroUI `GraphicsContext`_ as a parameter (often the first parameter) that identifies the destination target.
+The application retrieves this target by calling the method ``GraphicsContext.getSNIContext()``.
 This method returns a byte array to give as-is to the drawing native method.
 
 BSP Implementation
@@ -793,7 +793,7 @@ Simulator
 
 Similarly, MicroUI exposes two functions to set drawing log flags in the front panel implementation.
 Both functions are declared as methods of the interface ``MicroUIGraphicsContext`` and are documented there.
-The graphics engine provides an implementation for these methods.
+The Graphics Engine provides an implementation for these methods.
 
 * ``MicroUIGraphicsContext.reportWarning`` behaves like ``LLUI_DISPLAY_reportWarning`` and reports a warning to the application.
 * ``MicroUIGraphicsContext.reportError`` behaves like ``LLUI_DISPLAY_reportError`` and reports an error to the application.

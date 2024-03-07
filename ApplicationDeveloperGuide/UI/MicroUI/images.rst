@@ -469,7 +469,7 @@ Display Format
 
 By default, the output format of a `BufferedImage`_ matches the display's pixel organization (layout, depth, etc.).
 The algorithms used to draw in such an image are the same as those used on the display (for footprint purposes). 
-The algorithm cannot draw transparent pixels since the display buffer is opaque.
+The algorithm cannot draw transparent pixels since the display back buffer is opaque.
 
 In addition, `GraphicsContext.setColor()`_ does not consider the alpha channel and only accepts RGB values. 
 The given color value is interpreted as a 24-bit RGB color, where the high-order byte is ignored, and the remaining bytes contain the red, green, and blue channels, respectively.

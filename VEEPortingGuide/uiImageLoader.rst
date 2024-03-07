@@ -30,14 +30,18 @@ Functional Description
 Images Heap
 ===========
 
-There are several ways to create a MicroUI Image. Except few specific cases, the Image Loader requires some RAM memory to store the image content in MicroEJ format. This format requires a small header as explained here: :ref:`section_image_standard_raw`.  It can be GPU compatible as explained here: :ref:`section_image_gpu_raw`. 
+There are several ways to create a MicroUI Image.
+Except few specific cases, the Image Loader requires some RAM memory to store the image content in MicroEJ format.
+This format requires a small header as explained here: :ref:`section_image_standard_raw`.
+It can be GPU compatible as explained here: :ref:`section_image_gpu_raw`.
 
-The heap size is application dependant. In the application launcher, set its size in :guilabel:`Libraries` > :guilabel:`MicroUI` > :guilabel:`Images heap size (in bytes)`.
+The heap size is application dependant.
+In the application launcher, set its size in :guilabel:`Libraries` > :guilabel:`MicroUI` > :guilabel:`Images heap size (in bytes)`.
 It will declare a section whose name is ``.bss.microui.display.imagesHeap``.
 
-By default, the Image Loader uses an internal best fit allocator to allocate the image buffers (internal Graphics Engine's allocator). 
-Some specific :ref:`Abstraction Layer API <LLDISPLAY-API-SECTION>` (LLAPI) are available to override this default implementation. 
-These LLAPIs may be helpful to control the buffers allocation, retrieve the remaining space, etc. 
+By default, the Image Loader uses an internal best fit allocator to allocate the image buffers (internal Graphics Engine's allocator).
+Some specific :ref:`Abstraction Layer API <LLDISPLAY-API-SECTION>` (LLAPI) are available to override this default implementation.
+These LLAPIs may be helpful to control the buffers allocation, retrieve the remaining space, etc.
 When not implemented by the BSP, the default internal Graphics Engine's allocator is used.
 
 .. _section_image_external_memory:
@@ -48,18 +52,27 @@ External Resource
 Principle
 ---------
 
-An image is retrieved by its path (except for `BufferedImage`_). The path describes a location in the application classpath. The resource may be generated at the same time as the application (internal resource) or be external (external resource). The Image Loader can load some images located outside the CPU addresses' space range. It uses the External Resource Loader.
+An image is retrieved by its path (except for `BufferedImage`_).
+The path describes a location in the application classpath.
+The resource may be generated at the same time as the application (internal resource) or be external (external resource).
+The Image Loader can load some images located outside the CPU addresses' space range.
+It uses the External Resource Loader.
 
-When an image is located in such memory, the Image Loader copies it into RAM (into the CPU addresses' space range). Then it considers the image as an internal resource: it can continue to load the image (see following chapters). The RAM section used to load the external image is automatically freed when the Image Loader does not need it again.
+When an image is located in such memory, the Image Loader copies it into RAM (into the CPU addresses' space range).
+Then it considers the image as an internal resource: it can continue to load the image (see following chapters).
+The RAM section used to load the external image is automatically freed when the Image Loader does not need it again.
 
-The image may be located in external memory but be available in CPU addresses' space ranges (byte-addressable). In this case, the Image Loader considers the image as `internal` and does not need to copy its content in RAM. 
+The image may be located in external memory but be available in CPU addresses' space ranges (byte-addressable).
+In this case, the Image Loader considers the image as `internal` and does not need to copy its content in RAM.
 
 .. _BufferedImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/BufferedImage.html#
 
 Configuration File
 ------------------
 
-Like internal resources, the Image Generator uses a :ref:`configuration file <section_image_generator_conffile>` (also called the "list file") for describing images that need to be processed. The list file must be specified in the application launcher (see :ref:`application_options`). However, all the files in the application classpath with the suffix ``.imagesext.list`` are automatically parsed by the Image Generator tool.
+Like internal resources, the Image Generator uses a :ref:`configuration file <section_image_generator_conffile>` (also called the "list file") for describing images that need to be processed.
+The list file must be specified in the application launcher (see :ref:`application_options`).
+However, all the files in the application classpath with the suffix ``.imagesext.list`` are automatically parsed by the Image Generator tool.
 
 Process
 -------
@@ -91,7 +104,7 @@ All images listed in ``*.imagesext.list`` files are copied in the external resou
 Image in MicroEJ Format
 =======================
 
-An image may be pre-processed (:ref:`section_image_generator`) and so already in the format compatible with Image Renderer: MicroEJ format. 
+An image may be pre-processed (:ref:`section_image_generator`) and so already in the format compatible with Image Renderer: MicroEJ format.
 
 * When application is loading an image which is in such format and without specifying another output format, the Image Loader has just to make a link between the MicroUI Image object and the resource location. No more runtime decoder or converter is required, and so no more RAM memory.
 * When application specifies another output format than MicroEJ format encoded in the image, Image Loader has to allocate a buffer in RAM. It will convert the image in the expected MicroEJ format.
@@ -102,18 +115,25 @@ An image may be pre-processed (:ref:`section_image_generator`) and so already in
 Encoded Image
 =============
 
-An image can be encoded (PNG, JPEG, etc.). In this case Image Loader asks to its Image Decoders module if a decoder is able to decode the image. The source image is not copied in RAM (expect for images stored as :ref:`section_image_external_memory`). Image Decoder allocates the decoded image buffer in RAM first and then inflates the image. The image is encoded in MicroEJ format specified by the application, when specified. When not specified, the image in encoded in the default MicroEJ format specified by the Image Decoder itself.
+An image can be encoded (PNG, JPEG, etc.).
+In this case Image Loader asks to its Image Decoders module if a decoder is able to decode the image.
+The source image is not copied in RAM (expect for images stored as :ref:`section_image_external_memory`).
+Image Decoder allocates the decoded image buffer in RAM first and then inflates the image.
+The image is encoded in MicroEJ format specified by the application, when specified.
+When not specified, the image in encoded in the default MicroEJ format specified by the Image Decoder itself.
 
 .. _image_internal_decoder:
 
 The UI extension provides two internal Image Decoders modules:
 
-* PNG Decoder: a full PNG decoder that implements the PNG format (``https://www.w3.org/Graphics/PNG`` ). Regular, interlaced, indexed (palette) compressions are handled. 
+* PNG Decoder: a full PNG decoder that implements the PNG format (``https://www.w3.org/Graphics/PNG`` ). Regular, interlaced, indexed (palette) compressions are handled.
 * BMP Monochrome Decoder: .bmp format files that embed only 1 bit per pixel can be decoded by this decoder.
 
 .. _image_external_decoder:
 
-Some additional decoders can be added. Implement the function ``LLUI_DISPLAY_IMPL_decodeImage`` to add a new decoder. The implementation must respect the following rules:
+Some additional decoders can be added.
+Implement the function ``LLUI_DISPLAY_IMPL_decodeImage`` to add a new decoder.
+The implementation must respect the following rules:
 
 -  Fills the ``MICROUI_Image`` structure with the image
    characteristics: width, height and format.
@@ -140,24 +160,17 @@ Some additional decoders can be added. Implement the function ``LLUI_DISPLAY_IMP
 Installation
 ============
 
-The Image Decoders modules are some additional modules to the Display
-module. The decoders belong to distinct modules, and either or several
-may be installed.
+The Image Decoders modules are some additional modules to the Display module.
+The decoders belong to distinct modules, and either or several may be installed.
 
-In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Image PNG Decoder`
-to install the runtime PNG decoder. Check :guilabel:`UI` >
-:guilabel:`Image BMP Monochrome Decoder` to install the runtime BMP monochrom
-decoder.
-
+In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Image PNG Decoder` to install the runtime PNG decoder.
+Check :guilabel:`UI` > :guilabel:`Image BMP Monochrome Decoder` to install the runtime BMP monochrom decoder.
 
 Use
 ===
 
-The MicroUI Image APIs are available in the class
-`ej.microui.display.Image`_. There is no specific API that uses a
-runtime image. When an image has not been pre-processed (see
-:ref:`section_image_generator`), the MicroUI Image APIs
-``createImage*`` will load this image.
+The MicroUI Image APIs are available in the class `ej.microui.display.Image`_. There is no specific API that uses a runtime image.
+When an image has not been pre-processed (see :ref:`section_image_generator`), the MicroUI Image APIs ``createImage*`` will load this image.
 
 .. _ej.microui.display.Image: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html
 

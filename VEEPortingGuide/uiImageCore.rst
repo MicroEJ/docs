@@ -22,8 +22,8 @@ Furthermore, the BSP can override an Abstraction Layer API for a specific MicroE
 Destination Format
 ==================
 
-Since MicroUI 3.2, the destination buffer of the drawings can be different from the display buffer format (see :ref:`section_image_display_raw`).
-This destination buffer format can be a :ref:`standard format <section_image_standard_raw>` (ARGB8888, A8, etc.) or a :ref:`custom format <section_image_custom_raw>`. 
+Since MicroUI 3.2, the destination buffer of the drawings can be different from the display back buffer format (see :ref:`section_image_display_raw`).
+This destination buffer format can be a :ref:`standard format <section_image_standard_raw>` (ARGB8888, A8, etc.) or a :ref:`custom format <section_image_custom_raw>`.
 
 See :ref:`section_buffered_image` for more information about how to create buffered images with another format than the display format and how to draw in them.
 
@@ -36,7 +36,7 @@ Standard
 The Image Renderer is by default able to draw all :ref:`standard formats <section_image_standard_raw>`.
 No extra support in the VEE Port is required to draw this kind of image.
 
-The image drawing resembles a :ref:`shape drawing <section_drawings>`. 
+The image drawing resembles a :ref:`shape drawing <section_drawings>`.
 The drawing is performed by default by the :ref:`section_drawings_soft` and can be overridden to use a third-party library or a GPU.
 
 .. _section_buffered_image_drawer_custom_format:
@@ -89,8 +89,8 @@ When this support is not used (when the VEE Port does not need to support *custo
 Standard Formats Only (Default)
 -------------------------------
 
-The default implementation can only draw images with a :ref:`standard format <section_image_standard_raw>`. 
-In other words, the application cannot draw a custom image. 
+The default implementation can only draw images with a :ref:`standard format <section_image_standard_raw>`.
+In other words, the application cannot draw a custom image.
 This is the most frequent use case, the only one available with MicroUI before version 3.2.
 
 .. hint:: To select this implementation (to disable the custom format support), the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be unset.
@@ -229,7 +229,7 @@ The define ``LLUI_IMAGE_CUSTOM_FORMATS`` is not set, so the implementation of th
 Custom Format Support 
 ---------------------
 
-In addition to the :ref:`standard formats <section_image_standard_raw>`, this implementation allows drawing images with a :ref:`custom format <section_image_custom_raw>`. 
+In addition to the :ref:`standard formats <section_image_standard_raw>`, this implementation allows drawing images with a :ref:`custom format <section_image_custom_raw>`.
 This advanced use case is available only with MicroUI 3.2 or higher.
 
 .. hint:: To select this implementation, the define ``LLUI_IMAGE_CUSTOM_FORMATS`` must be set (no specific value).
@@ -640,11 +640,18 @@ Image Pixel Conversion
 Overview
 --------
 
-The Graphics Engine is built for a dedicated display pixel format (see :ref:`display_pixel_structure`). For this pixel format, the Graphics Engine must be able to draw images with or without alpha blending and with or without transformation. In addition, it must be able to read all image formats.
+The Graphics Engine is built for a dedicated display pixel format (see :ref:`display_pixel_structure`).
+For this pixel format, the Graphics Engine must be able to draw images with or without alpha blending and with or without transformation.
+In addition, it must be able to read all image formats.
 
-The application may not use all MicroUI image drawing options and may not use all images formats. It is not possible to detect what the application needs, so no optimization can be performed at application compiletime. However, for a given application, the VEE Port can be built with a reduced set of pixel support. 
+The application may not use all MicroUI image drawing options and may not use all images formats.
+It is not possible to detect what the application needs, so no optimization can be performed at application compiletime.
+However, for a given application, the VEE Port can be built with a reduced set of pixel support.
 
-All pixel format manipulations (read, write, copy) are using dedicated functions. It is possible to remove some functions or to use generic functions. The advantage is to reduce the memory footprint. The inconvenient is that some features are removed (the application should not use them) or some features are slower (generic functions are slower than the dedicated functions).
+All pixel format manipulations (read, write, copy) are using dedicated functions.
+It is possible to remove some functions or to use generic functions.
+The advantage is to reduce the memory footprint.
+The inconvenient is that some features are removed (the application should not use them) or some features are slower (generic functions are slower than the dedicated functions).
 
 Functions
 ---------
@@ -674,7 +681,8 @@ There are five pixel *conversion* modes:
    | Read an image                            |     22      |      1      |     22      |
    +------------------------------------------+-------------+-------------+-------------+
 
-There are ``22x1 + 22x1 + 2x1 + 1x6 + 22x1 = 74`` functions. Each function takes between 50 and 200 bytes depending on its complexity and the C compiler. 
+There are ``22x1 + 22x1 + 2x1 + 1x6 + 22x1 = 74`` functions.
+Each function takes between 50 and 200 bytes depending on its complexity and the C compiler.
 
 .. _ResourceImage: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/ResourceImage.html
 .. _Image.readPixel(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Image.html#readPixel-int-int-
@@ -682,7 +690,8 @@ There are ``22x1 + 22x1 + 2x1 + 1x6 + 22x1 = 74`` functions. Each function takes
 Linker File
 -----------
 
-All pixel functions are listed in a VEE Port linker file. It is possible to edit this file to remove some features or to share some functions (using generic function).
+All pixel functions are listed in a VEE Port linker file.
+It is possible to edit this file to remove some features or to share some functions (using generic function).
 
 How to get the file:
 
@@ -693,12 +702,14 @@ How to get the file:
 
 .. warning:: When the display format in ``[VEE Port configuration project]/display/display.properties`` changes, the linker file suffix changes too. Perform again all the operations in the new file with the new suffix.
 
-The linker file holds five tables, one for each use case, respectively ``IMAGE_UTILS_TABLE_COPY``, ``IMAGE_UTILS_TABLE_COPY_WITH_ALPHA``, ``IMAGE_UTILS_TABLE_DRAW``, ``IMAGE_UTILS_TABLE_SET`` and ``IMAGE_UTILS_TABLE_READ``. For each table, a comment describes how to remove an option (when possible) or how to replace an option by a generic function (if available). 
+The linker file holds five tables, one for each use case, respectively ``IMAGE_UTILS_TABLE_COPY``, ``IMAGE_UTILS_TABLE_COPY_WITH_ALPHA``, ``IMAGE_UTILS_TABLE_DRAW``, ``IMAGE_UTILS_TABLE_SET`` and ``IMAGE_UTILS_TABLE_READ``.
+For each table, a comment describes how to remove an option (when possible) or how to replace an option by a generic function (if available).
 
 Installation
 ============
 
-The Image Renderer module is part of the MicroUI module and Display module. Install them to be able to use some images.
+The Image Renderer module is part of the MicroUI module and Display module.
+Install them to be able to use some images.
 
 Use
 ===
