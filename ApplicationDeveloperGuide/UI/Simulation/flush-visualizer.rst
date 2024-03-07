@@ -39,7 +39,7 @@ Installation
 
 Set the option ``ej.fp.display.flushVisualizer`` to ``true`` to enable the flush vizualizer.
 
-This option is available in the for the ``Display`` widget in `frontpanel widget module <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/tool/frontpanel/widget/>`__ version 4.+ for UI Pack 14.0.0 or later.
+This option is available for the ``Display`` widget in `frontpanel widget module <https://forge.microej.com/artifactory/microej-developer-repository-release/ej/tool/frontpanel/widget/>`__ version 4.+ for UI Pack 14.0.0 or later.
 
 Usage
 -----
