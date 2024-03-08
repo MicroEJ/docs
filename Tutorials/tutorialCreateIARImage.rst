@@ -61,7 +61,7 @@ Here is our final Dockerfile. We will explain each specific step below.
 
     .. code-block:: sh
     
-      lightlicensemanager setup -s license.iar.public
+      lightlicensemanager setup -s $IAR_LICENSE_SERVER
       exec "$@"
 
 ..
