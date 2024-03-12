@@ -17,15 +17,13 @@ Principle
 
 NLS is distributed as an add-on library containing a single Java interface: `NLS`_.
 
-In addition to that, the binary-nls library provides a factory for implementations of this interface:
+In addition to that, the `binary-nls`_ library provides a factory for implementations of this interface:
 it uses an :ref:`add-on processor <module_natures.addon_processor>` which processes, offboard, the
 Localization Source Files into one `BON resource buffer`_ file for compactness.
 
 During the :ref:`clinit <soar_clinit>` phase, this resource file is opened and the list of locales is parsed.
 After that, the resource remains opened for the rest of the Application execution and is directly used to
 retrieve messages translations for the supported locales.
-
-Usage of this binary-nls implementation is documented below (see current :ref:`limitations <section.nls.limitations>`).
 
 .. _NLS: https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html
 .. _BON resource buffer: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bon/ResourceBuffer.html
@@ -39,7 +37,7 @@ Localization source files can be either `PO files <https://www.gnu.org/software/
 
 Here is an example of a PO file:
 
-::
+.. code-block::
 
    msgid "Label1"
    msgstr "My label 1"
@@ -56,10 +54,9 @@ And here is an example of an Android String resource:
       <string name="Label2">My label 2</string>
    </resources>
 
-.. note::
+.. hint::
 
-   When using Android String resources, `string arrays <https://developer.android.com/guide/topics/resources/string-resource#StringArray>`_ are also supported.
-   However, `plurals <https://developer.android.com/guide/topics/resources/string-resource#Plurals>`_ are not supported.
+   The Android String resources `string arrays <https://developer.android.com/guide/topics/resources/string-resource#StringArray>`_ feature is also supported.
 
 NLS List Files
 --------------
@@ -93,7 +90,7 @@ Example:
 Usage
 -----
 
-The `binary-nls module`_ must be added to the Application project build file:
+The `binary-nls`_ module must be added to the Application project build file:
 
 .. tabs::
 
@@ -131,23 +128,28 @@ messages, for example:
 
    String label = Labels.NLS.getMessage(Labels.Label1);
 
+Locale
+------
+
 For the application to know which language to use among those made available and when, you can set it and change it at any point using the `setCurrentLocale(locale)`_ method. 
 If no locale has been set yet when getting a message, the translation for the first locale available in alphabetical order will be used by default. 
 However, you can also pick this locale to default to yourself, by adding a ``com.microej.binarynls.defaultLocale`` property followed by a locale name in a ``.properties.list`` file. 
 
-
-.. _binary-nls module: https://repository.microej.com/modules/com/microej/library/runtime/binary-nls
+.. _binary-nls: https://repository.microej.com/modules/com/microej/library/runtime/binary-nls
 .. _setCurrentLocale(locale): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#setCurrentLocale-java.lang.String-
 
 Plural Forms
-^^^^^^^^^^^^
+------------
 
-Starting with version 4.0.0 of the `NLS module`_ and version 3.0.0 of the `binary-nls module`_ is introduced support of GNU gettext's plural form feature in PO files.
+Starting with version 4.0.0 of the `NLS module`_ and version 3.0.0 of the `binary-nls`_ module is introduced the support of GNU gettext's plural form feature in PO files.
+
+.. warning:: This feature concerns only the PO files, not the Android String resources `quantity strings <https://developer.android.com/guide/topics/resources/string-resource#Plurals>`_ .
+
 This allows usage of ``Plural-Forms`` header entries and several ``msgstr`` 's per ``msgid`` (referred to as plural forms) `as specified by gettext`_; you can then retrieve the correct message in a locale for a given count of things by using the `ej.nls.NLS.getMessage()`_ methods that take in this count value as an argument.
 
 If a message for a given ``msgid`` has a ``msgid_plural`` and plural forms in a PO file for an interface declared in an NLS list file, it must also have plural forms in all other PO files for this interface.
 
-.. warning::
+.. note::
 
    Please note that one significant difference with gettext's implementation is that the expression described in the ``plural`` field of the ``Plural-Forms`` header must be a valid **Java** expression returning an ``int``, as opposed to a C expression. A usual case in which this makes a difference is for expressions that rely on boolean values being evaluated as zero or one in C, such as in: 
 
@@ -166,15 +168,15 @@ If a message for a given ``msgid`` has a ``msgid_plural`` and plural forms in a 
 .. _NLS module: https://repository.microej.com/modules/ej/library/runtime/nls/
 .. _as specified by gettext: https://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html
 
-Dealing With Missing Translations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Missing Translations
+--------------------
 
 By default, if a translation is missing for a given ``msgid`` in a PO file in a given language, the message returned by the `ej.nls.NLS.getMessage()`_ method with the locale set to this language will simply be the ``msgid`` itself. 
 In the case of an XML Android String resource, the ``name`` attribute of a missing ``string`` element will be returned. 
 However if returning this identifier is not a suitable solution, you might want to set a fallback locale parameter for an interface. 
 This parameter corresponds to a language to print the translation for a message in, in case it is not available in the current language.
 
-Starting with version 2.5.0 of the `binary-nls module`_, you can set this fallback locale by specifying a locale name in a ``.nls.list`` file, after the name of the interface you want this locale to be the fallback for, separated by a colon ``:``. 
+Starting with version 2.5.0 of the `binary-nls`_ module, you can set this fallback locale by specifying a locale name in a ``.nls.list`` file, after the name of the interface you want this locale to be the fallback for, separated by a colon ``:``. 
 For example, with the following ``.nls.list`` file, if a translation is missing in a language for a message in the ``Labels`` and ``Messages`` PO/XML files, the message will be translated to ``en_US`` instead of just returning its ``msgid``/``name``.
 
 .. code-block::
@@ -200,11 +202,10 @@ For example, with the following ``.nls.list`` file, the messages in ``Labels`` w
 In the case of a message with plural forms in PO files, this works much the same way, using the messages and forms in the fallback locale if available.
 If no fallback locale is specified or if the requested message is not specified in it, then the ``msgid`` will be used for a count value of 1, and the ``msgid_plural`` will be used for any other value, as gettext would function.
 
-
 .. _ej.nls.NLS.getMessage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#getMessage-int-
 
-BinaryNLS Resource Generation
------------------------------
+Resource Generation
+-------------------
 
 If the classpath of the Application contains ``.po``/``.xml`` files and ``.nls.list`` files, the ``binary-nls`` Add-On Processor will generate the following source files for each NLS interface:
 
@@ -225,12 +226,10 @@ This resource is loaded as soon as the BinaryNLS instance is created, in the cli
 Limitations
 -----------
 
-The latest BinaryNLS implementation does not support:
+The latest BinaryNLS implementation does not support (even when the resource is external; see :ref:`External resource loader <section_externalresourceloader>`):
 
-* to dynamicly add a new locale
-* to dynamicly modify messages translations
-
-even when the resource is external (see :ref:`External resource loader <section_externalresourceloader>`).
+* to dynamically add a new locale
+* to dynamically modify messages translations
 
 For any addition / modification, the Application must be restarted and, typically, the full resource buffer
 must be updated (not only the part of the added/modified locale).
