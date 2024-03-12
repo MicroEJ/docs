@@ -204,6 +204,205 @@ If no fallback locale is specified or if the requested message is not specified 
 
 .. _ej.nls.NLS.getMessage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#getMessage-int-
 
+Converter
+---------
+
+Problematic
+^^^^^^^^^^^
+
+Translated messages can be used directly for the following purposes:
+
+* EDC (in the console): `System.out.println()`_.
+* MicroUI: `ej.microui.display.Painter.drawString()`_.
+* MicroVG: `ej.microvg.VectorGraphicsPainter.drawString()`_.
+
+When displaying certain languages, such as Arabic, string analysis is necessary for character substitution and right-to-left (RTL) reading direction. 
+:ref:`Console encoding <set_console_encoding>` is required for proper display using EDC.
+
+.. tabs::
+
+   .. tab:: Without Console Encoding
+
+      .. code-block:: java
+
+         System.out.print("العربية");
+
+      .. code-block:: console
+
+         'D91(J)
+
+   .. tab:: With Console Encoding
+
+      .. code-block:: java
+
+         System.out.print("العربية");
+
+      .. code-block:: console
+
+         العربية
+
+In order to display correctly this such a message with MicroVG, the :ref:`complex layout <section_vg_font_complex>` must be used. 
+This means that the font must contain substitution tables that the rendering engine can read and apply. 
+If these conditions are not met, the display may be incorrect. 
+It is also important to note that using a complex font has a cost in terms of flash storage (due to the increased size of the TTF file and the addition of complex layout algorithms) as well as in runtime (due to the time required to apply the substitution tables).
+
+.. tabs::
+
+   .. tab:: Without Complex Layout
+
+      .. figure:: UI/NLS/images/microvg_not_converted_simple.png
+
+   .. tab:: With Complex Layout
+
+      .. figure:: UI/NLS/images/microvg_not_converted_complex.png
+
+
+It's not possible to display such a message with MicroUI: the Graphics Engine doesn't offer substitution table reading or bidirectional string management.
+The rendering is systematically wrong:
+
+.. figure:: UI/NLS/images/microui_not_converted.png
+
+.. _System.out.println(): https://repository.microej.com/javadoc/microej_5.x/apis/java/io/PrintStream.html#println--
+.. _ej.microui.display.Painter.drawString(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/Painter.html#drawString-ej.microui.display.GraphicsContext-java.lang.String-ej.microui.display.Font-int-int-
+.. _ej.microvg.VectorGraphicsPainter.drawString(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/microvg/VectorGraphicsPainter.html#drawString-ej.microui.display.GraphicsContext-java.lang.String-ej.microvg.VectorFont-float-float-float-
+
+Solution
+^^^^^^^^
+
+Since the version 3.1.0, `binary-nls`_ module features an offboard translation conversion.
+It means that the generated strings can be already substituted and rearranged.
+
+This conversion enables MicroUI's Graphics Engine to render complex strings correctly.
+
+.. warning:: This offboard conversion only concerns PO files.
+
+.. tabs::
+
+   .. tab:: Without Offboard Conversion
+
+      .. figure:: UI/NLS/images/microui_not_converted.png
+
+   .. tab:: With Offboard Conversion
+
+      .. figure:: UI/NLS/images/microui_converted.png
+
+This also avoids embedding substitution tables and the complex layout management when the message is displayed with MicroVG.
+
+Principle
+^^^^^^^^^
+
+Keep in mind that offboard conversion is only relevant to translation values. 
+It is important to note that all other fields, such as message identifiers and display names, are not converted as they are not intended to be displayed.
+
+.. code-block:: console
+
+   msgid "Arabic" // not converted
+   msgstr "العربية" // converted
+
+Offboard conversion is not a systematic process, so it is essential to mention it explicitly in the PO file. 
+To do so, add ``Language-converter: name_of_converter\n`` to the PO file's header, where ``name_of_converter`` is the name of the converter to be applied (see below for the available list of converters).
+
+.. code-block:: console
+
+   msgid ""
+   msgstr ""
+   "Language: br_BR\n"
+   "Language-Team: العربية\n"
+   "Language-Converter: Arabic\n"
+   "MIME-Version: 1.0\n"
+   "Content-Type: text/plain; charset=UTF-8\n"
+
+   msgid "Arabic"
+   msgstr "العربية"
+
+List of Converters
+^^^^^^^^^^^^^^^^^^
+
+Bidi
+""""
+
+This converter features details about the bidirectional reordering of text, which is necessary to correctly display Arabic or Hebrew text. 
+These languages are unique in that they are mixed-directional, meaning they order numbers from left to right while ordering most other text from right to left.
+
+* Example:  xxx_todo
+
+Arabic
+""""""
+
+This converter is dedicated to the Arabic language, which involves text-based shaping and bidirectional reordering of text. 
+Text-based shaping refers to the process of replacing certain character code points in the text with others depending on the context. 
+The purpose of this process is to transform one type of text into another. 
+
+Example: العربية
+
+* Unicodes: :guilabel:`U+627` :guilabel:`U+644` :guilabel:`U+639` :guilabel:`U+631` :guilabel:`U+628` :guilabel:`U+64a` :guilabel:`U+629`
+* Text shaping: :guilabel:`U+fe8d` :guilabel:`U+fedf` :guilabel:`U+fecc` :guilabel:`U+feae` :guilabel:`U+fe91` :guilabel:`U+fef4` :guilabel:`U+fe94`
+* Redirection: :guilabel:`U+fe94` :guilabel:`U+fef4` :guilabel:`U+fe91` :guilabel:`U+feae` :guilabel:`U+fecc` :guilabel:`U+fedf` :guilabel:`U+fe8d`
+
+Hebrew
+""""""
+
+This converter is dedicated to the Hebrew language, which involves bidirectional reordering of text. 
+
+* Example  xxx_todo
+
+Limitations
+^^^^^^^^^^^
+
+Conversion is a feature dedicated to graphic display (MicroUI or MicroVG).
+A message converted and displayed with :ref:`EDC <set_console_encoding>` may be displayed incorrectly, especially directionality.
+
+.. tabs::
+
+   .. tab:: Without Offboard Conversion
+
+      .. code-block:: java
+
+         System.out.print("العربية");
+
+      .. code-block:: console
+
+         العربية
+
+   .. tab:: With Offboard Conversion
+
+      .. code-block:: java
+
+         System.out.print("العربية");
+
+      .. code-block:: console
+
+         ﺔﻴﺑﺮﻌﻟﺍ
+
+Messages are usually displayed using a single type of output, either EDC or UI. 
+However, if a dual output is required, the PO file must be explicitly tagged as *to be converted* (see above) to ensure compatibility with the UI display. 
+But when displaying it with EDC print, the application needs to add the character :guilabel:`U+202D` before the message to force the message orientation.
+
+.. tabs::
+
+   .. tab:: Without :guilabel:`U+202D`
+
+      .. code-block:: java
+
+         System.out.print("العربية");
+
+      .. code-block:: console
+
+         ﺔﻴﺑﺮﻌﻟﺍ
+
+   .. tab:: With :guilabel:`U+202D`
+
+      .. code-block:: java
+
+         System.out.print("\u202D" + "العربية");
+
+      .. code-block:: console
+
+         العربية
+
+.. warning:: This tip works on the Simulator but may not work with the MicroVG complex layout manager.
+
+
 Resource Generation
 -------------------
 
