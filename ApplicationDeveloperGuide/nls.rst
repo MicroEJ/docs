@@ -324,7 +324,20 @@ Bidi
 This converter features details about the bidirectional reordering of text, which is necessary to correctly render Arabic or Hebrew text.
 These languages are unique in that they are mixed-directional, meaning they order numbers from left to right while ordering most other text from right to left.
 
-* Example:  xxx_todo
+* Example:
+
+.. code-block:: po
+
+   msgid ""
+   msgstr ""
+   "Language: bidi\n"
+   "Language-Team: Bidirectional\n"
+   "Language-Converter: Bidi\n"
+   "MIME-Version: 1.0\n"
+   "Content-Type: text/plain; charset=UTF-8\n"
+
+   msgid "Hello"
+   msgstr "‮Hello‬"
 
 Arabic
 """"""
@@ -342,9 +355,24 @@ Example: العربية
 Hebrew
 """"""
 
-This converter is dedicated to the Hebrew language, which involves bidirectional reordering of text. 
+This converter is dedicated to the Hebrew language, which involves bidirectional reordering of text.
 
-* Example  xxx_todo
+Niqqud is currently not supported.
+
+* Example:
+
+.. code-block:: po
+
+   msgid ""
+   msgstr ""
+   "Language: he\n"
+   "Language-Team: Hebrew\n"
+   "Language-Converter: Hebrew\n"
+   "MIME-Version: 1.0\n"
+   "Content-Type: text/plain; charset=UTF-8\n"
+
+   msgid "Hello"
+   msgstr "שלום"
 
 Limitations
 ^^^^^^^^^^^
