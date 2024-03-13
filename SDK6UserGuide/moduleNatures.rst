@@ -66,6 +66,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.loadFeatureConfiguration`
 - :ref:`sdk6_module_natures.tasks.buildFeature`
 - :ref:`sdk6_module_natures.tasks.runOnDevice`
+- :ref:`sdk6_module_natures.tasks.execTool`
 
 .. graphviz:: graphApplicationModule.dot
 
@@ -90,6 +91,27 @@ This plugin adds the following tasks to your project:
 
 This module nature inherits from the configuration of all its tasks.
 
+
+.. _sdk6_module_natures.mock:
+
+Mock
+----
+
+**Plugin Name**: ``com.microej.gradle.mock``
+
+**Tasks**:
+
+This plugin adds the following tasks to your project:
+
+- tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
+- :ref:`sdk6_module_natures.tasks.checkModule`
+- :ref:`sdk6_module_natures.tasks.buildMockRip`
+
+.. graphviz:: graphMockModule.dot
+
+**Configuration**:
+
+This module nature inherits from the configuration of all its tasks.
 
 .. _sdk6_module_natures.tasks:
 
@@ -468,6 +490,46 @@ runOnDevice
 - The extracted VEE Port folder
 - The folder containing the Executable file (``build/executable/application``)
 - The configuration file with all the properties set to launch the build of the Executable (``build/properties/target.properties``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
+
+.. _sdk6_module_natures.tasks.buildMockRip:
+
+buildMockRip
+^^^^^^^^^^^^
+
+**Description**: Builds the Mock RIP.
+
+**Inputs**:
+
+- The Mock JAR file
+
+**Outputs**:
+
+- the RIP file of the Mock (``build/libs/<projectName>-<projectVersion>.rip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.mock`
+
+.. _sdk6_module_natures.tasks.execTool:
+
+execTool
+^^^^^^^^
+
+**Description**: Runs the given MicroEJ Tool.
+
+**Inputs**:
+
+- The extracted VEE Port folder
+- The configuration file with all the properties set to launch the application (``build/properties/target.properties``)
+- The folder containing the application configuration (``configuration``)
 
 **Module Natures**:
 
