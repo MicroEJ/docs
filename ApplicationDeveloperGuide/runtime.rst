@@ -300,10 +300,6 @@ The following code prints the formatted Architecture characteristics on standard
       System.out.println("- Instruction Set Architecture: " + isaStr);
       System.out.println("- Compilation Toolchain:        " + toolchainName + " (" + toolchainFullName + ")");
 
-.. note::
-
-   As of :ref:`Architecture 8.1.0 <changelog-8.1.0>`, a default pre-built application embeds the previous code.
-
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
