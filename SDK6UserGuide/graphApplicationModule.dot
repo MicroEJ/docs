@@ -14,10 +14,6 @@ digraph mygraph {
     "checkModule" [fillcolor = "#f76241"]
     "loadKernelExecutable" [fillcolor = "#f76241"]
     "loadVee" [fillcolor = "#f76241"]
-    "loadApplicationConfiguration" [fillcolor = "#f76241"]
-    "loadExecutableConfiguration" [fillcolor = "#f76241"] 
-    "loadFeatureConfiguration" [fillcolor = "#f76241"]
-    "loadTestApplicationConfiguration" [fillcolor = "#f76241"]
     "runOnSimulator" [fillcolor = "#f76241"]
     "buildWPK" [fillcolor = "#f76241"]
     "buildExecutable" [fillcolor = "#f76241"]
@@ -30,10 +26,9 @@ digraph mygraph {
     "check" -> "test"
     "test" -> "classes"
     "test" -> "testClasses"
-    "test" -> "loadTestApplicationConfiguration"
+    "test" -> "loadVee"
     "testClasses" -> "compileTestJava"
     "testClasses" -> "processTestResources"
-    "loadTestApplicationConfiguration" -> "loadVee"
     "processResources" -> "adp"
     "processTestResources" -> "adp"
     "processTestResources" -> "classes"
@@ -47,22 +42,18 @@ digraph mygraph {
     "uploadArchives" -> "jar"
     "jar" -> "classes"
     "runOnSimulator" -> "classes"
-    "runOnSimulator" -> "loadApplicationConfiguration"
-    "loadApplicationConfiguration" -> "loadVee"
+    "runOnSimulator" -> "loadVee"
     "checkModule" -> "assemble"
     "check" -> "checkModule"
     "buildWPK" -> "jar"
     "buildWPK" -> "javadoc"
     "buildExecutable" -> "test"
-    "buildExecutable" -> "loadExecutableConfiguration"
-    "loadExecutableConfiguration" -> "loadVee"
+    "buildExecutable" -> "loadVee"
     "buildVirtualDevice" -> "loadVee"
     "buildVirtualDevice" -> "buildWPK"
-    "buildFeature" -> "loadFeatureConfiguration"
-    "loadFeatureConfiguration" -> "loadKernelExecutable"
-    "loadFeatureConfiguration" -> "loadVee"
+    "buildFeature" -> "loadVee"
+    "buildFeature" -> "loadKernelExecutable"
     "runOnDevice" -> "buildExecutable"
-    "execTool" -> "loadApplicationConfiguration"
     "execTool" -> "loadVee"
     "compileWrapperJava" -> "compileJava"
     
