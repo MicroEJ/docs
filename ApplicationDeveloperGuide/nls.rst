@@ -37,7 +37,7 @@ Localization source files can be either `PO files <https://www.gnu.org/software/
 
 Here is an example of a PO file:
 
-.. code-block::
+.. code-block:: po
 
    msgid "Label1"
    msgstr "My label 1"
@@ -141,7 +141,7 @@ However, you can also pick this locale to default to yourself, by adding a ``com
 Plural Forms
 ------------
 
-Starting with version 4.0.0 of the `NLS module`_ and version 3.0.0 of the `binary-nls`_ module is introduced the support of GNU gettext's plural form feature in PO files.
+Version 4.0.0 of the `NLS module`_ and version 3.0.0 of the `binary-nls`_ module introduce the support of GNU gettext's plural form feature in PO files.
 
 .. warning:: This feature concerns only the PO files, not the Android String resources `quantity strings <https://developer.android.com/guide/topics/resources/string-resource#Plurals>`_ .
 
@@ -241,10 +241,10 @@ When displaying certain languages, such as Arabic, string analysis is necessary 
 
          العربية
 
-In order to display correctly this such a message with MicroVG, the :ref:`complex layout <section_vg_font_complex>` must be used. 
-This means that the font must contain substitution tables that the rendering engine can read and apply. 
-If these conditions are not met, the display may be incorrect. 
-It is also important to note that using a complex font has a cost in terms of flash storage (due to the increased size of the TTF file and the addition of complex layout algorithms) as well as in runtime (due to the time required to apply the substitution tables).
+In order to render correctly such a message with MicroVG, the :ref:`complex layout <section_vg_font_complex>` must be used.
+This means that the font must contain substitution tables that the rendering engine can read and apply.
+If these conditions are not met, the rendering may be incorrect.
+It is also important to note that using a complex font has a cost in terms of flash storage (due to the increased size of the TTF file and the addition of complex layout algorithms) as well as in run time (due to the time required to apply the substitution tables).
 
 .. tabs::
 
@@ -257,7 +257,7 @@ It is also important to note that using a complex font has a cost in terms of fl
       .. figure:: UI/NLS/images/microvg_not_converted_complex.png
 
 
-It's not possible to display such a message with MicroUI: the Graphics Engine doesn't offer substitution table reading or bidirectional string management.
+It is not possible to render such a message with MicroUI: the Graphics Engine does not offer substitution table reading or bidirectional string management.
 The rendering is systematically wrong:
 
 .. figure:: UI/NLS/images/microui_not_converted.png
@@ -269,8 +269,8 @@ The rendering is systematically wrong:
 Solution
 ^^^^^^^^
 
-Since the version 3.1.0, `binary-nls`_ module features an offboard translation conversion.
-It means that the generated strings can be already substituted and rearranged.
+Since the version 3.1.0, the `binary-nls`_ module features an offboard translation conversion.
+It means that the generated strings can be substituted and rearranged before being embedded in the executable.
 
 This conversion enables MicroUI's Graphics Engine to render complex strings correctly.
 
@@ -286,12 +286,12 @@ This conversion enables MicroUI's Graphics Engine to render complex strings corr
 
       .. figure:: UI/NLS/images/microui_converted.png
 
-This also avoids embedding substitution tables and the complex layout management when the message is displayed with MicroVG.
+This also avoids embedding substitution tables and the complex layout management when the message is rendered with MicroVG.
 
 Principle
 ^^^^^^^^^
 
-Keep in mind that offboard conversion is only relevant to translation values. 
+Keep in mind that offboard conversion is only relevant to translated strings.
 It is important to note that all other fields, such as message identifiers and display names, are not converted as they are not intended to be displayed.
 
 .. code-block:: console
@@ -299,14 +299,14 @@ It is important to note that all other fields, such as message identifiers and d
    msgid "Arabic" // not converted
    msgstr "العربية" // converted
 
-Offboard conversion is not a systematic process, so it is essential to mention it explicitly in the PO file. 
+Offboard conversion is not a systematic process, so it is necessary to mention it explicitly in the PO file.
 To do so, add ``Language-converter: name_of_converter\n`` to the PO file's header, where ``name_of_converter`` is the name of the converter to be applied (see below for the available list of converters).
 
-.. code-block:: console
+.. code-block:: po
 
    msgid ""
    msgstr ""
-   "Language: br_BR\n"
+   "Language: ar_AR\n"
    "Language-Team: العربية\n"
    "Language-Converter: Arabic\n"
    "MIME-Version: 1.0\n"
@@ -321,7 +321,7 @@ List of Converters
 Bidi
 """"
 
-This converter features details about the bidirectional reordering of text, which is necessary to correctly display Arabic or Hebrew text. 
+This converter features details about the bidirectional reordering of text, which is necessary to correctly render Arabic or Hebrew text.
 These languages are unique in that they are mixed-directional, meaning they order numbers from left to right while ordering most other text from right to left.
 
 * Example:  xxx_todo
@@ -329,9 +329,9 @@ These languages are unique in that they are mixed-directional, meaning they orde
 Arabic
 """"""
 
-This converter is dedicated to the Arabic language, which involves text-based shaping and bidirectional reordering of text. 
-Text-based shaping refers to the process of replacing certain character code points in the text with others depending on the context. 
-The purpose of this process is to transform one type of text into another. 
+This converter is dedicated to the Arabic language, which involves text-based shaping and bidirectional reordering of text.
+Text-based shaping refers to the process of replacing certain character code points in the text with others depending on the context.
+The purpose of this process is to transform one type of text into another.
 
 Example: العربية
 
@@ -350,7 +350,7 @@ Limitations
 ^^^^^^^^^^^
 
 Conversion is a feature dedicated to graphic display (MicroUI or MicroVG).
-A message converted and displayed with :ref:`EDC <set_console_encoding>` may be displayed incorrectly, especially directionality.
+A message converted and displayed with :ref:`EDC <set_console_encoding>` may be shown incorrectly, especially regarding visual orientation.
 
 .. tabs::
 
@@ -374,9 +374,9 @@ A message converted and displayed with :ref:`EDC <set_console_encoding>` may be 
 
          ﺔﻴﺑﺮﻌﻟﺍ
 
-Messages are usually displayed using a single type of output, either EDC or UI. 
-However, if a dual output is required, the PO file must be explicitly tagged as *to be converted* (see above) to ensure compatibility with the UI display. 
-But when displaying it with EDC print, the application needs to add the character :guilabel:`U+202D` before the message to force the message orientation.
+Messages are usually displayed using a single type of output, either EDC or UI.
+To properly render the text on the UI display, the PO file must explicitly specify a converter (see above) to ensure compatibility.
+But when printing it with EDC, the application needs to add the character :guilabel:`U+202D` before the message to force the message orientation, and :guilabel:`U+202C` after it to restore the previous orientation.
 
 .. tabs::
 
@@ -394,7 +394,7 @@ But when displaying it with EDC print, the application needs to add the characte
 
       .. code-block:: java
 
-         System.out.print("\u202D" + "العربية");
+         System.out.print("\u202D" + "العربية" + "\u202C");
 
       .. code-block:: console
 
