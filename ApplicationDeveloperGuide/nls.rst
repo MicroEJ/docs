@@ -292,7 +292,7 @@ Principle
 ^^^^^^^^^
 
 Keep in mind that offboard conversion is only relevant to translated strings.
-It is important to note that all other fields, such as message identifiers and display names, are not converted as they are not intended to be displayed.
+It is important to note that all other fields, such as message identifiers and display names, are not converted as they are not intended to be rendered.
 
 .. code-block:: console
 
@@ -403,8 +403,9 @@ A message converted and displayed with :ref:`EDC <set_console_encoding>` may be 
          ﺔﻴﺑﺮﻌﻟﺍ
 
 Messages are usually displayed using a single type of output, either EDC or UI.
+When printing the text with EDC, it is correctly rendered without any pre-conversion (the terminal on the PC, that actually prints the text, performs the necessary reordering, substitutions, etc.)
 To properly render the text on the UI display, the PO file must explicitly specify a converter (see above) to ensure compatibility.
-But when printing it with EDC, the application needs to add the character :guilabel:`U+202D` before the message to force the message orientation, and :guilabel:`U+202C` after it to restore the previous orientation.
+But when printing a pre-converted text with EDC, the application needs to add the character :guilabel:`U+202D` before the message to force the message orientation, and :guilabel:`U+202C` after it to restore the previous orientation.
 
 .. tabs::
 
