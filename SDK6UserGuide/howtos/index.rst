@@ -11,6 +11,7 @@ How-to Guides
    gradleSkipTask
    gradleAutoreloading
    gradleAddRepository
+   gradleMultiRepositories
    resolveInIDE
    installSnapshotPlugins
    buildProject
