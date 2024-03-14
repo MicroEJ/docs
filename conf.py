@@ -77,6 +77,7 @@ latex_elements = {
 }
 latex_additional_files = ['microej.sty']
 latex_logo = '_themes/microej/static/mascot.pdf'
+latex_engine = 'xelatex'
 
 # This is defined in the theme, but the LaTeX builder does not honor the theme
 # setting for pygments. This is the same style class used by the HTML builder.
