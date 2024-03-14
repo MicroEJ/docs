@@ -151,7 +151,7 @@ Button to Command Event
 -----------------------
 
 A recommended approach is to favor Command events over Buttons events.
-MicroUI Command events are more generic because not they are not tied to a hardware component like a physical button.
+MicroUI Command events are more generic because they are not tied to a hardware component like a physical button.
 Command events make the application code more flexible to hardware changes.
 For instance, instead of reacting to Button event 0, the application will respond to Command event ``Enter`` or ``Up``.
 The application does not care about the source of the Command event: it may be the button 0, 1, 10, or any other input device.
