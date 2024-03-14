@@ -914,7 +914,7 @@ Application, the BSP port must be modified to:
 The following patch updates the BSP port ``Makefile`` to do it:
 
 .. code-block:: diff
-  :caption: https://github.com/FreeRTOS/FreeRTOS/commit/257d9e1d123be0342029e2930c0073dd5a4a2b2d
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/257d9e1d123be0342029e2930c0073dd5a4a2b2d
 	
   --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/Makefile
   +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/Makefile
