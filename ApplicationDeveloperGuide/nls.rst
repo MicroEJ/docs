@@ -355,9 +355,405 @@ Example: العربية
 Hebrew
 """"""
 
-This converter is dedicated to the Hebrew language, which involves bidirectional reordering of text.
+This converter is dedicated to the Hebrew language, which involves text-based shaping and bidirectional reordering of text.
+A substituted character is not available for each combination *vowel + letter*.
+The following table lists the supported combinations.
+For all others combinations (Niqqud), the vowel and the letter are rendered independently.
 
-Niqqud is currently not supported.
+
+.. list-table:: 
+   :widths: auto
+   :header-rows: 1
+
+   * - Vowel
+     - Representation
+     - Unicode
+     - Letter
+     - Representation
+     - Unicode
+     - Substitution
+     - Unicode
+   * - Sheva
+     - ◌ְ
+     - U+05B0
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - Hataf Segol
+     - ◌ֱ
+     - U+05B1
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - Hataf Patah
+     - ◌ֲ
+     - U+05B2
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - Hataf Qamats
+     - ◌ֳ
+     - U+05B3
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - Hiriq
+     - ◌ִ
+     - U+05B4
+     - Yod
+     - י
+     - U+05B4
+     - יִ
+     - U+FB1D
+   * - Tsere
+     - ◌ֵ
+     - U+05B5
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - Segol
+     - ◌ֶ
+     - U+05B6
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - Patah
+     - ◌ַ
+     - U+05B7
+     - Alef
+     - א
+     - U+05D0
+     - אַ
+     - U+FB2E
+   * - Qamats
+     - ◌ָ
+     - U+05B8
+     - Alef
+     - א
+     - U+05D0
+     - אָ
+     - U+FB2F
+   * - Holam
+     - ◌ֹ
+     - U+05B9
+     - Vav
+     - ו
+     - U+05D5
+     - וֹ
+     - U+FB4B
+   * - Holam Haser (for Vav U+05D5)
+     - ◌ֺ
+     - U+05BA
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - Qubuts
+     - ◌ֻ
+     - U+05BB
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - Mapiq
+     - ◌ּ
+     - U+05BC
+     - Alef
+     - א
+     - U+05D0
+     - אּ
+     - U+FB30
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Bet
+     - ב
+     - U+05D1
+     - בּ
+     - U+FB31
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Gimel
+     - ג
+     - U+05D2
+     - גּ
+     - U+FB32    
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Dalet
+     - ד
+     - U+05D3
+     - דּ
+     - U+FB33     
+   * - Mapiq
+     - ◌ּ
+     - U+05BC
+     - He
+     - ה
+     - U+05D4
+     - הּ
+     - U+FB34     
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Vav
+     - ו
+     - U+05D5
+     - וּ
+     - U+FB35    
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Zayin
+     - ז
+     - U+05D6
+     - זּ
+     - U+FB36     
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Tet
+     - ט
+     - U+05D8
+     - טּ
+     - U+FB38     
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Yod
+     - י
+     - U+05D9
+     - יּ
+     - U+FB39
+     
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Final Kaf
+     - ך
+     - U+05DA
+     - ךּ
+     - U+FB3A
+     
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Kaf
+     - כ
+     - U+05DB
+     - כּ
+     - U+FB3B
+     
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Lamed
+     - ל
+     - U+05DC
+     - לּ
+     - U+FB3C
+     
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Mem
+     - מ
+     - U+05DE
+     - מּ
+     - U+FB3E
+     
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Nun
+     - נ
+     - U+05E0
+     - נּ
+     - U+FB40
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Samekh
+     - ס
+     - U+05E1
+     - סּ
+     - U+FB41
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Final Pe
+     - ף
+     - U+05E3
+     - ףּ
+     - U+FB43
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Pe
+     - פ
+     - U+05E4
+     - פּ
+     - U+FB44
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Tsadi
+     - צ
+     - U+05E6
+     - צּ
+     - U+FB46
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Qof
+     - ק
+     - U+05E7
+     - קּ
+     - U+FB47
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Resh
+     - ר
+     - U+05E8
+     - רּ
+     - U+FB48
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Shin
+     - ש
+     - U+05E9
+     - שּ
+     - U+FB49
+   * - Dagesh
+     - ◌ּ
+     - U+05BC
+     - Tav
+     - ת
+     - U+05EA
+     - תּ
+     - U+FB4A
+   * - Meteg
+     - ◌ֽ
+     - U+05BD
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - Maqaf
+     - ־
+     - U+05BE
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - Rafe
+     - ◌ֿ
+     - U+05BF
+     - Bet
+     - ב
+     - U+05D1
+     - בֿ
+     - U+FB4C
+   * - Rafe
+     - ◌ֿ
+     - U+05BF
+     - Kaf 
+     - כ
+     - U+05DB
+     - כֿ
+     - U+FB4D
+   * - Rafe
+     - ◌ֿ
+     - U+05BF
+     - Pe 
+     - פ
+     - U+05E4
+     - פֿ
+     - U+FB4E
+   * - Paseq
+     - ׀
+     - U+05C0
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - Shin Dot
+     - ◌ׁ
+     - U+05C1
+     - Shin 
+     - ש
+     - U+05E9
+     - שׁ
+     - U+FB2A
+   * - Shin Dot
+     - ◌ׁ
+     - U+05C1
+     - Shin with Dagesh 
+     - שּ
+     - U+FB49
+     - שּׁ
+     - U+FB2C
+   * - Sin Dot
+     - ◌ׂ
+     - U+05C2
+     - Sin 
+     - ש
+     - U+05E9
+     - שׂ
+     - U+FB2B
+   * - Sin Dot
+     - ◌ׂ
+     - U+05C2
+     - Shin with Dagesh 
+     - שּ
+     - U+FB49
+     - שּׂ
+     - U+FB2D
+   * - Sof Pasuq
+     - ׃
+     - U+05C3
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - Upper Dot
+     - ◌ׄ
+     - U+05C4
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - Lower Dot
+     - ◌ׅ
+     - U+05C5
+     - 
+     - 
+     - 
+     - 
+     - 
 
 * Example:
 
@@ -372,7 +768,8 @@ Niqqud is currently not supported.
    "Content-Type: text/plain; charset=UTF-8\n"
 
    msgid "Hello"
-   msgstr "שלום"
+   msgstr "בוקר טוב"
+
 
 Limitations
 ^^^^^^^^^^^
