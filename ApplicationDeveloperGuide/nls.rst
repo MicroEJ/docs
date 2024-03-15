@@ -356,16 +356,16 @@ Hebrew
 """"""
 
 This converter is dedicated to the Hebrew language, which involves text-based shaping and bidirectional reordering of text.
-A substituted character is not available for each combination *vowel + letter*.
+A substituted character is not available for each combination *point + letter*.
 The following table lists the supported combinations.
-For all others combinations (Niqqud), the vowel and the letter are rendered independently.
+For all others combinations (Niqqud), the point and the letter are rendered independently.
 
 
 .. list-table:: 
    :widths: auto
    :header-rows: 1
 
-   * - Vowel
+   * - Point
      - Representation
      - Unicode
      - Letter
