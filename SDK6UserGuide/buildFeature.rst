@@ -43,6 +43,20 @@ Once these prerequisites are fulfilled, the Feature file can be built:
 
 The Feature file is generated in the ``build/binary`` folder of the project.
 
+.. _sdk_6_trigger_feature_build:
+
+Trigger Feature Build by Default
+--------------------------------
+
+The Feature of an Application is not built and published by default (when launching a ``./gradlew build`` or 
+a ``./gradlew publish`` for example).
+This default behavior can be changed by adding the ``produceFeatureDuringBuild()`` method 
+in the ``microej`` configuration block of the Gradle build file of the project::
+
+   microej {
+     produceFeatureDuringBuild()
+   }
+
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 

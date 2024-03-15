@@ -83,6 +83,19 @@ This can be done by declaring :ref:`Kernel APIs <kernel.api>` as a dependency in
       implementation("com.microej.kernelapi:edc:1.2.0")
    }
 
+.. _sdk_6_skip_virtual_device_build:
+
+Skip Virtual Device Build by Default
+------------------------------------
+
+The Virtual Device of an Application is part of the artifacts that are automatically :ref:`built and published <sdk_6_publish_project>`.
+If you don't want to build and publish the Virtual Device, the ``produceVirtualDeviceDuringBuild(false)`` method 
+can be added in the ``microej`` configuration block of the Gradle build file of the project::
+
+   microej {
+     produceVirtualDeviceDuringBuild(false)
+   }
+
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
