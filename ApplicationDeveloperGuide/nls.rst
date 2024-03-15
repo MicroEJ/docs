@@ -789,13 +789,14 @@ For all others combinations (Niqqud), the point and the letter are rendered inde
    "MIME-Version: 1.0\n"
    "Content-Type: text/plain; charset=UTF-8\n"
 
-   msgid "Hello"
-   msgstr "בוקר טוב"
+   msgid "Homme"
+   msgstr "אּישׁ"
 
 * Result: 
 
-  * Unicodes before conversion: :guilabel:`U+05D1` :guilabel:`U+05D5` :guilabel:`U+05E7` :guilabel:`U+05E8` :guilabel:`U+0020`:guilabel:`U+05D8` :guilabel:`U+05D5` :guilabel:`U+05D1` 
-  * Redirection: :guilabel:`U+05D1` :guilabel:`U+05D5` :guilabel:`U+05D8` :guilabel:`U+0020` :guilabel:`U+05E8` :guilabel:`U+05E7` :guilabel:`U+05D5` :guilabel:`U+05D1` 
+  * Unicodes before conversion: :guilabel:`U+05D0` :guilabel:`U+05BC` :guilabel:`U+05D9` :guilabel:`U+05E9` :guilabel:`U+05C1`
+  * Text shaping:  :guilabel:`U+FB30` :guilabel:`U+05D9` :guilabel:`U+FB2A`
+  * Redirection: :guilabel:`U+FB2A` :guilabel:`U+05D9` :guilabel:`U+FB30` 
 
 
 Limitations
