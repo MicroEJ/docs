@@ -326,7 +326,7 @@ Bidi
 This converter features details about the bidirectional reordering of text, which is necessary to correctly render Arabic or Hebrew text.
 These languages are unique in that they are mixed-directional, meaning they order numbers from left to right while ordering most other text from right to left.
 
-* Example:
+* Example of PO file:
 
 .. code-block:: po
 
@@ -341,6 +341,11 @@ These languages are unique in that they are mixed-directional, meaning they orde
    msgid "Hello"
    msgstr "‮Hello‬"
 
+* Result: 
+
+  * Unicodes before conversion: :guilabel:`U+006f` :guilabel:`U+006c` :guilabel:`U+006c` :guilabel:`U+0065` :guilabel:`U+0048`
+  * Redirection: :guilabel:`U+0048` :guilabel:`U+0065` :guilabel:`U+006c` :guilabel:`U+006c` :guilabel:`U+006f` 
+
 Arabic
 """"""
 
@@ -348,11 +353,26 @@ This converter is dedicated to the Arabic language, which involves text-based sh
 Text-based shaping refers to the process of replacing certain character code points in the text with others depending on the context.
 The purpose of this process is to transform one type of text into another.
 
-Example: العربية
+* Example of PO file:
 
-* Unicodes: :guilabel:`U+627` :guilabel:`U+644` :guilabel:`U+639` :guilabel:`U+631` :guilabel:`U+628` :guilabel:`U+64a` :guilabel:`U+629`
-* Text shaping: :guilabel:`U+fe8d` :guilabel:`U+fedf` :guilabel:`U+fecc` :guilabel:`U+feae` :guilabel:`U+fe91` :guilabel:`U+fef4` :guilabel:`U+fe94`
-* Redirection: :guilabel:`U+fe94` :guilabel:`U+fef4` :guilabel:`U+fe91` :guilabel:`U+feae` :guilabel:`U+fecc` :guilabel:`U+fedf` :guilabel:`U+fe8d`
+.. code-block:: po
+
+   msgid ""
+   msgstr ""
+   "Language: ar_AR\n"
+   "Language-Team: العربية\n"
+   "Language-Converter: Arabic\n"
+   "MIME-Version: 1.0\n"
+   "Content-Type: text/plain; charset=UTF-8\n"
+
+   msgid "Arabic"
+   msgstr "العربية"
+
+* Result: 
+
+  * Unicodes before conversion: :guilabel:`U+0627` :guilabel:`U+0644` :guilabel:`U+0639` :guilabel:`U+0631` :guilabel:`U+0628` :guilabel:`U+064a` :guilabel:`U+0629`
+  * Text shaping: :guilabel:`U+fe8d` :guilabel:`U+fedf` :guilabel:`U+fecc` :guilabel:`U+feae` :guilabel:`U+fe91` :guilabel:`U+fef4` :guilabel:`U+fe94`
+  * Redirection: :guilabel:`U+fe94` :guilabel:`U+fef4` :guilabel:`U+fe91` :guilabel:`U+feae` :guilabel:`U+fecc` :guilabel:`U+fedf` :guilabel:`U+fe8d`
 
 Hebrew
 """"""
@@ -757,7 +777,7 @@ For all others combinations (Niqqud), the point and the letter are rendered inde
      - 
      - 
 
-* Example:
+* Example of PO file:
 
 .. code-block:: po
 
@@ -771,6 +791,11 @@ For all others combinations (Niqqud), the point and the letter are rendered inde
 
    msgid "Hello"
    msgstr "בוקר טוב"
+
+* Result: 
+
+  * Unicodes before conversion: :guilabel:`U+05D1` :guilabel:`U+05D5` :guilabel:`U+05E7` :guilabel:`U+05E8` :guilabel:`U+0020`:guilabel:`U+05D8` :guilabel:`U+05D5` :guilabel:`U+05D1` 
+  * Redirection: :guilabel:`U+05D1` :guilabel:`U+05D5` :guilabel:`U+05D8` :guilabel:`U+0020` :guilabel:`U+05E8` :guilabel:`U+05E7` :guilabel:`U+05D5` :guilabel:`U+05D1` 
 
 
 Limitations
