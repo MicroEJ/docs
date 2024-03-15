@@ -304,7 +304,6 @@ Offboard conversion is not a systematic process, so it is necessary to mention i
 To do so, add ``Language-converter: name_of_converter\n`` to the PO file's header, where ``name_of_converter`` is the name of the converter to be applied (see below for the available list of converters).
 
 .. code-block:: po
-  :emphasize-lines: 5
 
    msgid ""
    msgstr ""
