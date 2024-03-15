@@ -286,7 +286,8 @@ This conversion enables MicroUI's Graphics Engine to render complex strings corr
 
       .. figure:: UI/NLS/images/microui_converted.png
 
-This also avoids embedding substitution tables and the complex layout management when the message is rendered with MicroVG.
+
+.. hint:: This also avoids embedding substitution tables and the complex layout management when the message is rendered with MicroVG.
 
 Principle
 ^^^^^^^^^
@@ -303,6 +304,7 @@ Offboard conversion is not a systematic process, so it is necessary to mention i
 To do so, add ``Language-converter: name_of_converter\n`` to the PO file's header, where ``name_of_converter`` is the name of the converter to be applied (see below for the available list of converters).
 
 .. code-block:: po
+  :emphasize-lines: 5
 
    msgid ""
    msgstr ""
