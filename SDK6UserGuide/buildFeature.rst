@@ -7,9 +7,10 @@ To build the Feature file (``.fo``) of an Application, the SDK provides the Grad
 The prerequisites to use this task are:
 
 - The Application must contain a Java class implementing the ``ej.kf.FeatureEntryPoint`` interface.
-- The Application must contain a ``.kf`` file in the ``src/main/resources`` folder containing at least the property ``entryPoint`` set to the Fully Qualified Name of the Application Feature class, for example::
+- The Application must contain a ``.kf`` file in the ``src/main/resources`` folder containing at least the property ``entryPoint`` set to the Fully Qualified Name of the Application Feature class and the version of the feature, for example::
 
       entryPoint=com.microej.MyFeature
+      version=1.0.0
 
 - A Multi-Sandbox Kernel must be defined.
   Refer to the :ref:`sdk_6_select_kernel` page to learn how to provide a Kernel for a module project.
