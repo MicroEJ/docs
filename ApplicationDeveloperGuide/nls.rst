@@ -204,6 +204,8 @@ If no fallback locale is specified or if the requested message is not specified 
 
 .. _ej.nls.NLS.getMessage(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/nls/NLS.html#getMessage-int-
 
+.. _nls_converter:
+
 Converter
 ---------
 

@@ -101,11 +101,11 @@ To render an Arabic text, the Font Renderer requires several points:
    this range, but the same characters (same representation) are
    available inside this range.
 
--  The application strings must use the UTF-8 encoding. Furthermore, in
+-  The application strings must use the UTF-16 encoding. Furthermore, in
    order to force the use of characters in the range ``0xfe70`` to
    ``0xfefc``, the string must be filled with the following syntax:
    '``\ufee2\ufedc\ufe91\u0020\ufe8e\ufe92\ufea3\ufeae\ufee3``'; where
-   ``\uxxxx`` is the UTF-8 character encoding.
+   ``\uxxxx`` is the UTF-16 character encoding.
 
 -  The application string and its rendering are always performed from
    left to right. However the string contents are managed by the
@@ -124,6 +124,8 @@ To render an Arabic text, the Font Renderer requires several points:
    rendering compatible with the character position. The character will
    be rendered by the Font Renderer as-is. No support is performed by the
    Font Renderer to obtain a *linear* text.
+
+.. hint:: Use the :ref:`Native Language Support <nls_converter>` to automatically convert the translation messages in the right format expected by the Font Engine.
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
