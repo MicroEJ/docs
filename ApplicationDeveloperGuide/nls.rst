@@ -345,7 +345,7 @@ These languages are unique in that they are mixed-directional, meaning they orde
 * Result: 
 
   * Unicodes before conversion: :guilabel:`U+006f` :guilabel:`U+006c` :guilabel:`U+006c` :guilabel:`U+0065` :guilabel:`U+0048`
-  * Redirection: :guilabel:`U+0048` :guilabel:`U+0065` :guilabel:`U+006c` :guilabel:`U+006c` :guilabel:`U+006f` 
+  * After reordering: :guilabel:`U+0048` :guilabel:`U+0065` :guilabel:`U+006c` :guilabel:`U+006c` :guilabel:`U+006f`
 
 Arabic
 """"""
@@ -372,14 +372,14 @@ The purpose of this process is to transform one type of text into another.
 * Result: 
 
   * Unicodes before conversion: :guilabel:`U+0627` :guilabel:`U+0644` :guilabel:`U+0639` :guilabel:`U+0631` :guilabel:`U+0628` :guilabel:`U+064a` :guilabel:`U+0629`
-  * Text shaping: :guilabel:`U+fe8d` :guilabel:`U+fedf` :guilabel:`U+fecc` :guilabel:`U+feae` :guilabel:`U+fe91` :guilabel:`U+fef4` :guilabel:`U+fe94`
-  * Redirection: :guilabel:`U+fe94` :guilabel:`U+fef4` :guilabel:`U+fe91` :guilabel:`U+feae` :guilabel:`U+fecc` :guilabel:`U+fedf` :guilabel:`U+fe8d`
+  * After text shaping: :guilabel:`U+fe8d` :guilabel:`U+fedf` :guilabel:`U+fecc` :guilabel:`U+feae` :guilabel:`U+fe91` :guilabel:`U+fef4` :guilabel:`U+fe94`
+  * After reordering: :guilabel:`U+fe94` :guilabel:`U+fef4` :guilabel:`U+fe91` :guilabel:`U+feae` :guilabel:`U+fecc` :guilabel:`U+fedf` :guilabel:`U+fe8d`
 
 Hebrew
 """"""
 
 This converter is dedicated to the Hebrew language, which involves text-based shaping and bidirectional reordering of text.
-A substituted character is not available for each combination *point + letter*.
+Not all point-letter combinations match a substituted Unicode character.
 The following table lists the supported combinations.
 For all others combinations (Niqqud), the point and the letter are rendered independently.
 
@@ -790,14 +790,14 @@ For all others combinations (Niqqud), the point and the letter are rendered inde
    "MIME-Version: 1.0\n"
    "Content-Type: text/plain; charset=UTF-8\n"
 
-   msgid "Homme"
+   msgid "Man"
    msgstr "אּישׁ"
 
 * Result: 
 
   * Unicodes before conversion: :guilabel:`U+05D0` :guilabel:`U+05BC` :guilabel:`U+05D9` :guilabel:`U+05E9` :guilabel:`U+05C1`
-  * Text shaping:  :guilabel:`U+FB30` :guilabel:`U+05D9` :guilabel:`U+FB2A`
-  * Redirection: :guilabel:`U+FB2A` :guilabel:`U+05D9` :guilabel:`U+FB30` 
+  * After text shaping:  :guilabel:`U+FB30` :guilabel:`U+05D9` :guilabel:`U+FB2A`
+  * After reordering: :guilabel:`U+FB2A` :guilabel:`U+05D9` :guilabel:`U+FB30`
 
 
 Limitations
