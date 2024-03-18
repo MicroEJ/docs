@@ -67,6 +67,37 @@ The version declared in the dependencies of a build file are explicit:
    or a snapshot version (e.g., ``1.0.0-RCxxx``) otherwise. 
    This is not the case anymore in the SDK 6.
 
+Version check
+^^^^^^^^^^^^^
+
+In order to reduce the risk of mistakes, a check is done during the resolution process on the declared dependencies versions.
+The dependencies versions must start with digits and be followed by a dot, otherwise the build fails.
+For example, when declaring a dependency on ``edc`` with a version ``x1.3.5`` instead of ``1.3.5``:
+
+.. code-block:: java
+
+  dependencies {
+    implementation("ej.api:edc:x1.3.5")
+  }
+
+the following error is raised:
+
+.. code-block:: none
+
+  * What went wrong:
+  Execution failed for task ':dependencies'.
+  > The version of the dependency "ej.api:edc" is not correct: "x1.3.5". It must start with digits, followed by a dot.
+
+It is possible to disable this check by setting the ``versionsCheckEnabled`` 
+property of the ``microej`` configuration block to ``false`` in the project build file:
+
+.. code-block:: java
+
+  microej {
+    versionsCheckEnabled = false
+  }
+
+
 Dependencies Repositories
 -------------------------
 

@@ -72,7 +72,7 @@ If this kind of message appears when resolving plugins or modules dependencies:
 .. code:: console
 
    * What went wrong:
-   Plugin [id: 'com.microej.gradle.application', version: '0.15.0'] was not found in any of the following sources:
+   Plugin [id: 'com.microej.gradle.application', version: '0.16.0'] was not found in any of the following sources:
 
 or this kind:
 

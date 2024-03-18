@@ -8,15 +8,11 @@ Refer to the :ref:`section.virtual.device` page for more information about the V
 
 The prerequisites to use the ``buildVirtualDevice`` task are:
 
-- The property ``applicationMainClass`` must be defined in the ``microej`` configuration block of the Gradle build file of the project.
-  It must be set to the fully qualified name of the Application main class, for example::
+- The Application EntryPoint must be configured, as described in :ref:`sdk_6_create_project_configure_project`.
+- A target VEE that uses an Architecture version ``7.17`` minimum must be defined:
 
-   microej {
-     applicationMainClass = "com.mycompany.Main"
-   }
-
-- A target VEE Port that uses an Architecture version ``7.17`` minimum must be defined.
-  Refer to the :ref:`sdk_6_select_veeport` page to know the different ways to provide a VEE Port for a module project.
+  - If your VEE is a VEE Port, refer to the :ref:`sdk_6_select_veeport` page to know the different ways to provide a VEE Port for a module project.
+  - If your VEE is a Kernel, refer to the :ref:`sdk_6_select_kernel` page to know the different ways to provide a Kernel for a module project.
 
 Once these prerequisites are fulfilled, the Virtual Device can be built:
 
@@ -45,7 +41,12 @@ Once these prerequisites are fulfilled, the Virtual Device can be built:
           $ ./gradlew buildVirtualDevice
 
 When the build is completed, the Virtual Device is available in the ``build/virtualDevice`` folder of the project.
-It can then be used to :ref:`run an Application on the Simulator <sdk_6_run_on_simulator>` for example.
+
+.. note::
+   If the provided VEE is a Kernel, the generated Virtual Device is an augmented version of the Kernel Virtual Device, 
+   in which the Application is set as a :ref:`Pre-Installed Application <sdk_6_buildVirtualDevice_add_application>`.
+
+The Virtual Device can then be used to :ref:`run an Application on the Simulator <sdk_6_run_on_simulator>` for example.
 
 .. _sdk_6_buildVirtualDevice_add_application:
 
