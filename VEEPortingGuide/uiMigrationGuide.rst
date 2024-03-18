@@ -61,7 +61,7 @@ BSP Without GPU
             +---------+--------+----------------------------------+
             |    3    |  yes   | *[Display "Swap triple buffer"]* |
             +---------+--------+----------------------------------+
-            | 3 (2+1) |   no   |   *[Display "Copy and Swap"]*    |
+            | 3 (2+1) |   no   | *[Display "Transmit and Swap"]*  |
             +---------+--------+----------------------------------+
 
 * *[Display "Copy"]*
@@ -73,7 +73,7 @@ BSP Without GPU
         
         * Store (in a static field) the rectangle to flush (the array contains only one rectangle).
         * Store (in a static field) the flush identifier.
-        * Unlock (immediately or wait for the LCD tearing signal interrupt) the *flush task* (hardware or software) that will flush (copy or transmit) the back buffer data to the front buffer.
+        * Unlock (immediately or wait for the LCD tearing signal interrupt) the *flush task* (hardware or software) that will transmit the back buffer data to the front buffer.
         * Remove the returned value (the back buffer address).
     
     * At the end of the flush (in an interrupt or at the end of the software *flush task*), replace the call to ``LLUI_DISPLAY_flushDone()`` with ``LLUI_DISPLAY_setBackBuffer()``: it will unlock the Graphics Engine. Give the back buffer address (same address as at start-up) and the flush identifier.
@@ -121,7 +121,7 @@ BSP Without GPU
         * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the new back buffer address and the flush identifier (the Graphics Engine can be unlocked immediately because a buffer is freed for sure).
         * Wait for the end of the buffers swap: ensure the LCD driver does not use the old front buffer anymore.
 
-* *[Display "Copy and Swap"]*
+* *[Display "Transmit and Swap"]*
 
     * Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
     * Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``2``.
@@ -131,10 +131,10 @@ BSP Without GPU
         * Store (in a static field) the rectangle to flush (the array contains only one rectangle).
         * Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
         * Store (in a static field) the flush identifier.
-        * Unlock (immediately or wait for the LCD tearing signal interrupt) the *copy & swap task* that will flush (copy or transmit) the current back buffer data to the front buffer, and that will swap the back buffers.
+        * Unlock (immediately or wait for the LCD tearing signal interrupt) the *transmit & swap task* that will transmit the current back buffer data to the front buffer, and that will swap the back buffers.
         * Remove the returned value (the back buffer address).
       
-    * In the *copy & swap task*: change the "copy & swap" actions:
+    * In the *transmit & swap task*: change the "transmit & swap" actions:
 
         * Start the transmission of the current back buffer (called *buffer A*) data to the front buffer.
         * Swap back *buffer A* and back *buffer B*.

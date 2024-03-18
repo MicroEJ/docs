@@ -276,8 +276,6 @@ In this case, the restoration is useless because the back buffer always contains
 
         Single Buffer (parallel)
 
-.. note:: This chapter uses the display connection *serial* to describe the flow, but it is similar to the display connection *parallel* (*copy* instead of *transmit*).
-
 The principle of this strategy is to cumulate the drawing regions.
 The refresh consists in transmitting these regions (a list of rectangles) that have been modified since the last flush (or a unique rectangle that encapsulates all the regions) to the LCD driver through the LLAPI ``LLUI_DISPLAY_IMPL_flush()``.
 
@@ -517,32 +515,30 @@ On startup, the front buffer is mapped on buffer (C), buffer (A) is the back buf
 
 13. The buffer (C) will now be used for the next drawings. Go to step 5.
 
-Use (Copy and Swap Buffer)
+Use (Transmit and Swap Buffer)
 --------------------------
 
-Here are the steps around the strategy describing how to use it in :ref:`copy and swap<section_display_copyswap>` buffer policy.
+Here are the steps around the strategy describing how to use it in :ref:`transmit and swap<section_display_copyswap>` buffer policy.
 
 .. tabs::
 
    .. tab:: Serial Connection
 
-      .. figure:: images/ui_display_copyswap_serial.*
-        :alt: Copy and Swap (serial)
+      .. figure:: images/ui_display_transmitswap_serial.*
+        :alt: Transmit and Swap (serial)
         :scale: 50%
         :align: center
 
-        Copy and Swap (serial)
+        Transmit and Swap (serial)
 
    .. tab:: Parallel Connection
 
-      .. figure:: images/ui_display_copyswap_parallel.*
-        :alt: Copy and Swap (parallel)
+      .. figure:: images/ui_display_transmitswap_parallel.*
+        :alt: Transmit and Swap (parallel)
         :scale: 50%
         :align: center
 
-        Copy and Swap (parallel)
-
-.. note:: This chapter uses the display connection *serial* to describe the flow, but it is similar to the display connection *parallel* (*copy* instead of *transmit*).
+        Transmit and Swap (parallel)
 
 The two buffers have the same role alternatively: back buffer and transmission buffer.
 On startup, the transmission buffer has yet to be used.
@@ -821,7 +817,7 @@ The options (some *defines*) are shared between the strategies:
 
 * ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE`` (``ui_display_brs_configuration.h``): configures the number of rectangles that the strategy gives to the implementation of ``LLUI_DISPLAY_IMPL_flush()``. If not set, the number of regions depends on the strategy. If set, only one region is given: the bounding box of all drawing regions. Used by:
 
-  * Predraw: The list of regions is often useless (the LCD driver just has to swap the back and front buffers); however, this list can be used for the buffer policy :ref:`section_display_copyswap`. Calculating the bounding box uses takes a bit of memory and time; if the bounding box is not used, it is recommended to refrain from enabling this option.
+  * Predraw: The list of regions is often useless (the LCD driver just has to swap the back and front buffers); however, this list can be used for the buffer policy :ref:`section_display_transmitswap`. Calculating the bounding box uses takes a bit of memory and time; if the bounding box is not used, it is recommended to refrain from enabling this option.
   * Single: The list of regions can be useful to refresh small parts of the front buffer.
   * Legacy: This option is never used, and the bounding box of all drawing regions is given to the implementation of ``LLUI_DISPLAY_IMPL_flush()``.
 
@@ -888,7 +884,7 @@ The available buffer policies are:
 - :ref:`Swap Triple Buffer <section_display_triple>`: ``ej.fp.widget.display.buffer.SwapTripleBufferPolicy``.
 - :ref:`Direct Buffer <section_display_direct>`: ``ej.fp.widget.display.buffer.DirectBufferPolicy``.
 - :ref:`section_display_single`: ``ej.fp.widget.display.buffer.SingleBufferPolicy``.
-- :ref:`section_display_copyswap`: ``ej.fp.widget.display.buffer.CopySwapBufferPolicy``.
+- :ref:`section_display_transmitswap`: ``ej.fp.widget.display.buffer.TransmitSwapBufferPolicy``.
 
 The available refresh strategies are:
 
