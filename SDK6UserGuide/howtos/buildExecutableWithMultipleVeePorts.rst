@@ -41,7 +41,7 @@ For example, if you want to build an Executable for two VEE Ports, you can creat
   for example::
     
     plugins {
-        id("com.microej.gradle.application") version "0.15.0" apply false
+        id("com.microej.gradle.application") version "0.16.0" apply false
     }
     
     subprojects {

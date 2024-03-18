@@ -3,6 +3,40 @@
 Changelog
 ---------
 
+.. _changelog-0.16.0:
+
+[0.16.0] - 2024-03-18
+~~~~~~~~~~~~~~~~~~~~~
+
+Added
+"""""
+
+- Unify Application entryPoints.
+- Allow to build a Virtual Device with a Kernel.
+- Make ``execTool`` task available in library projects.
+- Add a check on the dependencies versions format to reduce the risk of mistakes.
+- Generate the Feature Definition Files and Kernel Definition Files of an Application.
+
+Changed
+"""""""
+
+- Rename ``applicationMainClass`` property to ``applicationEntryPoint``.
+- Hide MicroEJ internal tasks.
+- Set the ``microej-testsuite.properties`` file as output of the ``loadTestApplicationConfiguration`` task 
+  instead of its parent folder.
+
+Fixed
+"""""
+
+- Load Kernel and Main Application properties when starting the Application on the Simulator.
+- Can run more than one simulator on the same Application on IntelliJ/Windows.
+- Fix Addon-Processor not reexecuted when dependencies are updated.
+- Do not execute tests when building the Executable of an Application.
+- MicroEJ Test Engine compatibility with Gradle 8.6.
+- Do not force the compilation of J2SE tests classes in Java 7.
+- Generate Jar file when building a project containing all MicroEJ artifacts.
+- Clean the working files before creating the WPK file to prevent failure if the task is not UP-TO-DATE.
+
 .. _changelog-0.15.0:
 
 [0.15.0] - 2024-01-26
