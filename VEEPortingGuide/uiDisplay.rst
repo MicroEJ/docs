@@ -177,7 +177,7 @@ The following table redirects to the right chapter according to the display buff
      - :ref:`Single <section_display_single_serial>`
    * - Serial
      - 2
-     - :ref:`Copy and Swap <section_display_copyswap>`
+     - :ref:`Transmit and Swap <section_display_transmitswap>`
    * - Parallel
      - 1
      - :ref:`Direct <section_display_direct>`
@@ -189,7 +189,7 @@ The following table redirects to the right chapter according to the display buff
      - :ref:`Swap Double <section_display_swap_double_parallel>` or :ref:`Single <section_display_single_parallel>`
    * - Parallel
      - 3
-     - :ref:`Swap Triple <section_display_triple>` or :ref:`Copy and Swap <section_display_copyswap>`
+     - :ref:`Swap Triple <section_display_triple>` or :ref:`Transmit and Swap <section_display_transmitswap>`
 
 .. _section_display_direct:
 
@@ -317,9 +317,9 @@ However, there are some differences:
 * In the *Swap Double* policy, the synchronization with the LCD controller is more effortless. An interrupt is thrown as soon as the LCD controller has updated its front buffer address. In the *Single* policy, the copy buffer process should be synchronized with the LCD tearing signal.
 * In the *Single* policy, during the copy, the destination buffer (the front buffer) is used by the copy buffer process (DMA, memcopy, etc.) and by the LCD controller. Both masters are using the same RAM section. This same RAM section switches in *Write* mode (copy buffer process) and *Read* mode (LCD controller).
 
-.. _section_display_copyswap:
+.. _section_display_transmitswap:
 
-Copy and Swap Buffer
+Transmit and Swap Buffer
 --------------------
 
 Serial Connection
@@ -328,7 +328,7 @@ Serial Connection
 When the time to transmit the data from the back buffer to the front buffer is :ref:`too long <section_display_single_serial>`, a second buffer can be allocated in the MCU memory.
 The application can use this buffer while the first buffer is transmitted.
 This allows to anticipate the drawings even if the first drawings are not fully transmitted.
-This is the notion of **copy and swap buffer**.
+This is the notion of **transmit and swap buffer**.
 The buffers are usually called **back buffer 1** and **back buffer 2** (the display module's buffer is the **front buffer**).
 
 The *flush* step consists in transmitting the back buffer data to the display module memory **and** swapping both back buffers:
@@ -337,12 +337,12 @@ The *flush* step consists in transmitting the back buffer data to the display mo
 * The back buffer 2 is not used: the application can immediately draw into it without waiting for the back buffer 1 to be transmitted.
 * At the end of the drawings in the back buffer 2, the back buffer 2 takes the role of the *transmission* buffer, and the back buffer 1 is free.
 
-.. figure:: images/ui_display_copyswap_serial.*
-   :alt: Copy and Swap (serial)
+.. figure:: images/ui_display_transmitswap_serial.*
+   :alt: Transmit and Swap (serial)
    :scale: 50%
    :align: center
 
-   Copy and Swap (serial)
+   Transmit and Swap (serial)
 
 Parallel Connection
 """""""""""""""""""
@@ -350,7 +350,7 @@ Parallel Connection
 When the time to copy the data from the back buffer to the front buffer is :ref:`too long <section_display_single_parallel>`, a third buffer can be allocated in the MCU memory.
 This buffer can be used by the application during the copy of the first buffer.
 This allows to anticipate the drawings even if the first drawings still need to be entirely copied.
-This is the notion of **copy and swap buffer**.
+This is the notion of **transmit and swap buffer**.
 The buffers are usually called **back buffer 1** and **back buffer 2** (the third buffer is the **front buffer**).
 The *flush* step consists in copying the back buffer data to the front buffer **and** swapping both back buffers.
 
@@ -358,12 +358,12 @@ The *flush* step consists in copying the back buffer data to the front buffer **
 * The back buffer 2 is not used: the application can immediately draw into it without waiting for the back buffer 1 to be copied.
 * At the end of the drawings in the back buffer 2, the back buffer 2 takes the role of the *copying* buffer, and the back buffer 1 is free.
 
-.. figure:: images/ui_display_copyswap_parallel.*
-   :alt: Copy and Swap (parallel)
+.. figure:: images/ui_display_transmitswap_parallel.*
+   :alt: Transmit and Swap (parallel)
    :scale: 50%
    :align: center
 
-   Copy and Swap (parallel)
+   Transmit and Swap (parallel)
 
 
 .. _section_display_partial:
@@ -971,7 +971,7 @@ The rendering frequency is cadenced on drawing time + flush time.
 .. figure:: images/uiDisplaySync05.*
    :width: 100%
 
-As mentioned above, the idea is to use :ref:`two back buffers<section_display_copyswap>`.
+As mentioned above, the idea is to use :ref:`two back buffers<section_display_transmitswap>`.
 First, the UI task is drawing in the back buffer ``A``.
 Just after the call to `Display.flush()`_, the flush can start.
 During the flush time (copy of the back buffer ``A`` to the front buffer), the back buffer ``B`` can be used by the UI task to continue the drawings.
