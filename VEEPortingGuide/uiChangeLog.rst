@@ -6,6 +6,16 @@
 Changelog
 =========
 
+14.0.1 (unreleased)
+===================
+
+LLAPIs
+""""""
+
+**Changed**
+
+* Homogenize the notions of back and front buffers.
+
 14.0.0 (2024-02-14)
 ===================
 
