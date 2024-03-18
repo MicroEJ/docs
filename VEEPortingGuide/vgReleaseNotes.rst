@@ -15,7 +15,7 @@ The following table describes the compatibility ranges between VG and UI Packs.
 +---------------+-----------------+----------------------------------+
 | VG Pack Range | UI Pack Range   | Comment                          |
 +===============+=================+==================================+
-| 1.5.0         | 14.0.0          | UI Pack major version            |
+| 1.5.0         | [14.0.0-15.0.0[ | UI Pack major version            |
 +---------------+-----------------+----------------------------------+
 | [1.3.0-1.4.2] | [13.5.0-14.0.0[ | BufferedImage with custom format |
 +---------------+-----------------+----------------------------------+

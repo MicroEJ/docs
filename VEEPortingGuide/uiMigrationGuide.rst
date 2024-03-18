@@ -6,17 +6,17 @@
 Migration Guide
 ===============
 
-From 13.7.x to 14.0.0
+From 13.7.x to 14.0.1
 =====================
 
 Front Panel
 """""""""""
 
-* Fetch `Front Panel Widgets 4.0.0`_ (it fetches by transitivity the `UI Pack 14.0.0`_):
+* Fetch `Front Panel Widgets 4.0.1`_ (it fetches by transitivity the `UI Pack 14.0.1`_):
 
   .. code-block:: xml
   
-     <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.0"/>
+     <dependency org="ej.tool.frontpanel" name="widget" rev="4.0.1"/>
 
 * Re-organize imports of all Java classes (classes ``MicroUIImageFormat``, ``MicroUIImage`` and ``MicroUIGraphicsContext`` have been extracted from ``LLUIPainter``).
 * The ``doubleBufferFeature`` attribute has been removed from the ``Display`` widget.
@@ -29,16 +29,17 @@ Front Panel
 * The ``FlushVisualizerDisplay`` widget has been merged with the ``Display`` widget.
   To use this functionality, use the ``Display`` widget instead of the ``FlushVisualizerDisplay`` widget in the Front Panel ``.fp`` file and set the option ``ej.fp.display.flushVisualizer=true`` in the options of the application launcher.
 
-.. _Front Panel Widgets 4.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/4.0.0/
-.. _UI Pack 14.0.0: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.0.0/
+XXX_TODO wrong links
 
+.. _Front Panel Widgets 4.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/ej/tool/frontpanel/widget/4.0.0/
+.. _UI Pack 14.0.1: https://repository.microej.com/modules/com/microej/pack/ui/ui-pack/14.0.0/
 
 BSP Without GPU
 """""""""""""""
 
 * *[VEE Port configuration project]*
 
-    * Fetch the `C Module MicroUI 4.0.0`_.
+    * Fetch the `C Module MicroUI 4.0.1`_.
 
 * *[BSP project]*
 
@@ -151,7 +152,7 @@ BSP with DMA2D
 
 * *[VEE Port configuration project]*
 
-    * Fetch the `C Module DMA2D 5.0.0`_.
+    * Fetch the `C Module DMA2D 5.0.1`_.
 
 * *[BSP project]*
 
@@ -187,7 +188,7 @@ BSP with NemaGFX
 
 * *[VEE Port configuration project]*
 
-    * Fetch the `C Module NemaGFX 2.0.0`_.
+    * Fetch the `C Module NemaGFX 2.0.1`_.
 
 * *[BSP project]*
 
