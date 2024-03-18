@@ -111,7 +111,7 @@ This illustration symbolizes the basic principle of the Graphics Engine's timeli
 
 * *drawing(s)* symbolizes one or several drawings in the back buffer.
 * *flush* symbolizes the call to the LLAPI ``LLUI_DISPLAY_IMPL_flush()`` that allows the display driver to update the display panel content according to the :ref:`display connection<section_display_connection>` (serial or parallel).
-* *post-flush* symbolizes the moment between the end of flush (end of swap, end of transmission, or end of copy) and the unlocking of the Graphics Engine (the call to ``LLUI_DISPLAY_setDrawingBuffer()``). Before this call, the Graphics Engine is not allowed to draw in the buffer.
+* *post-flush* symbolizes the moment between the end of flush (end of swap, end of transmission, or end of copy) and the unlocking of the Graphics Engine (the call to ``LLUI_DISPLAY_setBackBuffer()``). Before this call, the Graphics Engine is not allowed to draw in the buffer.
 
 .. note:: The time between the *post-flush* and *drawing(s)* depends on the application: the first drawing after a *flush* can occur immediately after the *post-flush* or later.
 
@@ -224,7 +224,7 @@ The BRS is responsible for implementing the LLAPI (the hooks, see above) and man
 When the application calls ``Display.flush()``, the Graphics Engine immediately calls the LLAPI ``LLUI_DISPLAY_IMPL_refresh()``.
 This call allows the BRS: 
 
-  * to finalize (if required) the back buffer (no drawing will be performed into the buffer until the next call to ``LLUI_DISPLAY_setDrawingBuffer()``),
+  * to finalize (if required) the back buffer (no drawing will be performed into the buffer until the next call to ``LLUI_DISPLAY_setBackBuffer()``),
   * **and** to call the LCD driver flush function ``LLUI_DISPLAY_IMPL_flush()`` by giving the region(s) to update on the display panel.
 
 Strategies
@@ -354,7 +354,7 @@ Here are the steps around the strategy describing how to use it:
 2. A ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
 3. The strategy calls ``LLUI_DISPLAY_IMPL_flush()``.
 4. The display driver has to implement ``LLUI_DISPLAY_IMPL_flush()``, which consists in transmitting the back buffer data to the front buffer.
-5. As soon as the transmission is performed, the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the same back buffer address (there is only one buffer).
+5. As soon as the transmission is performed, the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the same back buffer address (there is only one buffer).
 6. The Graphics Engine is now unlocked, and a new drawing can start in the back buffer.
 
 .. _section_brs_predraw:
@@ -469,7 +469,7 @@ The two buffers have the same role alternatively, back buffer and front buffer:
 2. A ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
 3. The strategy calls ``LLUI_DISPLAY_IMPL_flush()``.
 4. The display driver has to implement ``LLUI_DISPLAY_IMPL_flush()`` that consists in swapping the back and front buffers.
-5. As soon as the display *uses* the new front buffer (the new back buffer is now freed), the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address (== previous front buffer).
+5. As soon as the display *uses* the new front buffer (the new back buffer is now freed), the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the new back buffer address (== previous front buffer).
 6. The Graphics Engine is now unlocked.
 7. Before the very first drawing, this strategy copies the regions to restore from the previous back buffer to the new back buffer.
 8. A new drawing can start in the new back buffer.
@@ -502,7 +502,7 @@ On startup, the front buffer is mapped on buffer (C), buffer (A) is the back buf
    * buffer (B): new the application's back buffer
    * buffer (C): current LCD driver's buffer
 
-5. The buffer (B) is immediately available (free): the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the buffer (B)'s address.
+5. The buffer (B) is immediately available (free): the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the buffer (B)'s address.
 6. The Graphics Engine is now unlocked.
 7. Before the very first drawing, this strategy copies the regions to restore from the previous back buffer (A) to the new back buffer (B).
 8. Some drawings are performed in the back buffer (B).
@@ -554,19 +554,19 @@ This subtlety allows the reuse of the same back buffer after the end of the tran
 2. A ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
 3. The strategy calls ``LLUI_DISPLAY_IMPL_flush()``.
 4. The display driver has to implement ``LLUI_DISPLAY_IMPL_flush()`` which consists in starting the transmission of the back buffer content to the LCD device's buffer and swapping both buffers (back and transmission buffers).
-5. The new back buffer is immediately available (free); the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address (== previous transmission buffer).
+5. The new back buffer is immediately available (free); the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the new back buffer address (== previous transmission buffer).
 6. The Graphics Engine is now unlocked.
 7. Before the very first drawing, this strategy copies the regions to restore from the previous back buffer to the new back buffer.
 8. Some drawings are performed in the back buffer.
 9. A second ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
 10. The strategy calls ``LLUI_DISPLAY_IMPL_flush()``.
 11. The system is locked: the LCD driver still needs to finish transmitting the transmission buffer data to the LCD device's buffer.
-12. As soon as the transmission is done, the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address (== previous transmission buffer).
+12. As soon as the transmission is done, the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the new back buffer address (== previous transmission buffer).
 13. The application is sleeping (doesn't want to draw in the back buffer)
 
-   .. hint:: Optimization: As soon as the transmission to the LCD device's buffer is done, the BSP should call again ``LLUI_DISPLAY_setDrawingBuffer()`` by giving the transmission buffer (which is now free). If the drawing has yet to start in the back buffer, the Graphics Engine will reuse this transmission buffer as a new back buffer instead of using the other one; the restoration becomes useless.
+   .. hint:: Optimization: As soon as the transmission to the LCD device's buffer is done, the BSP should call again ``LLUI_DISPLAY_setBackBuffer()`` by giving the transmission buffer (which is now free). If the drawing has yet to start in the back buffer, the Graphics Engine will reuse this transmission buffer as a new back buffer instead of using the other one; the restoration becomes useless.
 
-14.  The BSP should notify the Graphics Engine again by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the transmission buffer address: the Graphics Engine will reuse this buffer for future drawings, and the strategy will not need to restore anything.
+14.  The BSP should notify the Graphics Engine again by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the transmission buffer address: the Graphics Engine will reuse this buffer for future drawings, and the strategy will not need to restore anything.
 
 .. _section_brs_default:
 
@@ -633,7 +633,7 @@ Here are the steps around the strategy describing how to use it:
 2. A ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
 3. The strategy calls ``LLUI_DISPLAY_IMPL_flush()``.
 4. The display driver has to implement ``LLUI_DISPLAY_IMPL_flush()``: at least enable the LCD refresh interrupt to wait until the end of the refresh (or use a software task).
-5. In the LCD refresh interrupt (here, the display panel shows the latest frame for sure), the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the same buffer address.
+5. In the LCD refresh interrupt (here, the display panel shows the latest frame for sure), the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the same buffer address.
 6. The Graphics Engine is now unlocked.
 7. Some drawings are performed in the back buffer.
 
@@ -697,7 +697,7 @@ Here are the steps around the strategy describing how to use it:
 2. A ``Display.flush()`` is asked, the Graphics Engine calls ``LLUI_DISPLAY_IMPL_refresh()``.
 3. The strategy has to implement ``LLUI_DISPLAY_IMPL_refresh()`` and call ``LLUI_DISPLAY_IMPL_flush()``.
 4. The display driver has to implement ``LLUI_DISPLAY_IMPL_flush()``.
-5. When the display panel shows the latest frame, the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the buffer address.
+5. When the display panel shows the latest frame, the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the buffer address.
 6. The Graphics Engine is now unlocked.
 7. Some drawings are performed in the buffer.
 
@@ -788,7 +788,7 @@ Here are the steps around the strategy describing how to use it:
 3. The strategy calls ``LLUI_DISPLAY_IMPL_flush()``.
 4. The display driver has to implement ``LLUI_DISPLAY_IMPL_flush()``: swap the back buffer and the front buffer.
 5. As soon as the display *uses* the new front buffer (the new back buffer is now freed), the BSP has to launch a copy of the new front buffer to the new back buffer (use the bounding box).
-6. As soon as the copy is done (the copy may be asynchronous), the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address.
+6. As soon as the copy is done (the copy may be asynchronous), the BSP has to notify the Graphics Engine by calling ``LLUI_DISPLAY_setBackBuffer()``, giving the new back buffer address.
 7. The Graphics Engine is now unlocked.
 8. Some drawings are performed in the back buffer.
 
