@@ -44,6 +44,20 @@ Once these prerequisites are fulfilled, the Executable can be built:
 
 In case of :ref:`Full BSP Connection <bsp_connection>`, the Executable file is generated in the ``build/output/application`` folder of the project.
 
+.. _sdk_6_trigger_executable_build:
+
+Trigger Executable Build by Default
+-----------------------------------
+
+The Executable of an Application is not built and published by default (when launching a ``./gradlew build`` or 
+a ``./gradlew publish`` for example).
+This default behavior can be changed by adding the ``produceExecutableDuringBuild()`` method 
+in the ``microej`` configuration block of the Gradle build file of the project::
+
+   microej {
+     produceExecutableDuringBuild()
+   }
+
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
