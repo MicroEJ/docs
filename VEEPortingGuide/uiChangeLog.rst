@@ -14,7 +14,7 @@ LLAPIs
 
 **Changed**
 
-* Homogenize the notions of back and front buffers.
+* Homogenize the notions of back and front buffers: ``LLUI_DISPLAY_setBackBuffer()`` replaces ``LLUI_DISPLAY_setDrawingBuffer()``.
 
 14.0.0 (2024-02-14)
 ===================
