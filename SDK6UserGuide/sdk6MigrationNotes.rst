@@ -3,6 +3,11 @@
 Migration Notes
 ---------------
 
+.. note::
+
+   When updating the plugin version, it is recommended to perform a ``clean`` on your project(s).
+   For multi-projects, run the ``clean`` command on the root project.
+
 ---------------------
 From 0.15.0 to 0.16.0
 ---------------------
