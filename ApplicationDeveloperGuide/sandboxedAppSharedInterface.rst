@@ -180,7 +180,7 @@ In order to share the instance with other applications, the provider application
 
 .. code:: java
 
-   ServiceFactory.getServiceRegistry().register(MyInterface.class, myInstance);
+   ServiceFactory.register(MyInterface.class, myInstance);
 
 Retrieve and Use a Proxy of a Shared Interface Instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -189,7 +189,7 @@ The consumer application can then retrieve the instance from the Kernel registry
 
 .. code:: java
 
-   MyInterface otherAppInstance = ServiceFactory.getServiceRegistry().getService(MyInterface.class);
+   MyInterface otherAppInstance = ServiceFactory.getService(MyInterface.class);
    // otherAppInstance is actually an instance of the proxy class owned by the consumer application
 
 Then it can call the interface methods transparently:
