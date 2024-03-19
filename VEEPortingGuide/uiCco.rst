@@ -262,7 +262,7 @@ Example of Implementation
 
       // notify the MicroUI Graphics Engine
       uint8_t* buffer = (uint8_t*)(BACK_BUFFER == LTDC_Layer->CFBAR ? FRAME_BUFFER : BACK_BUFFER);
-      LLUI_DISPLAY_setDrawingBuffer(g_current_flush_identifier, buffer, from_isr);
+      LLUI_DISPLAY_setBackBuffer(g_current_flush_identifier, buffer, from_isr);
    }
 
    void DMA2D_IRQHandler(void) {
@@ -316,7 +316,7 @@ Example of Implementation
 
    void UI_DRAWING_DMA2D_memcpy_callback(bool from_isr) {
       // notify the MicroUI Graphics Engine
-      LLUI_DISPLAY_setDrawingBuffer(g_current_flush_identifier, (uint8_t*)BACK_BUFFER, from_isr);
+      LLUI_DISPLAY_setBackBuffer(g_current_flush_identifier, (uint8_t*)BACK_BUFFER, from_isr);
    }
 
 Buffer Refresh Strategy "Legacy"
@@ -369,7 +369,7 @@ Example of Implementation
    void UI_DRAWING_DMA2D_memcpy_callback(bool from_isr) {
       // notify the MicroUI Graphics Engine
       uint8_t* buffer = (uint8_t*)(BACK_BUFFER == LTDC_Layer->CFBAR ? FRAME_BUFFER : BACK_BUFFER);
-      LLUI_DISPLAY_setDrawingBuffer(g_current_flush_identifier, buffer, from_isr);
+      LLUI_DISPLAY_setBackBuffer(g_current_flush_identifier, buffer, from_isr);
    }
 
 .. _com.microej.clibrary.llimpl#display-dma2d: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/
