@@ -51,6 +51,13 @@ Foundation Libraries
 .. _Throwable.getSuppressed(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html#getSuppressed--
 .. _Throwable.printStackTrace(): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/Throwable.html#printStackTrace--
 
+Simulator
+~~~~~~~~~
+
+- Fix breakpoint not taken into account when class not loaded at startup in IntelliJ.
+- Remove boostrap thread from debug thread list.
+- Fix debugger stuck when stepping over another breakpoint in Eclipse.
+
 .. _changelog-8.1.0:
 
 [8.1.0] - 2023-12-22
