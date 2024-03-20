@@ -38,10 +38,10 @@ Changelog
 The Central Repository content is versioned. The overall changelog is available at https://repository.microej.com/ and describes modules additions or removals.
 For module content changes, please consult the ``CHANGELOG.md`` file attached to each module.
 
-Javadoc
--------
+Java APIs (Javadoc)
+-------------------
 
-To consult the APIs documentation (Javadoc) of all :ref:`libraries <libraries>` available in the repository, please visit `<https://repository.microej.com/javadoc/microej_5.x/apis/>`_.
+To consult the Java APIs documentation (Javadoc) of all :ref:`libraries <libraries>` available in the repository, please visit `<https://repository.microej.com/javadoc/microej_5.x/apis/>`_.
 
 .. _developer_repository:
 
