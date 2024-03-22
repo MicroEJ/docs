@@ -12,7 +12,7 @@ Added
 """""
 
 - Unify Application entryPoints.
-- Allow to build a Virtual Device with a Kernel.
+- Allow to append an Application to a Virtual Device.
 - Make ``execTool`` task available in library projects.
 - Add a check on the dependencies versions format to reduce the risk of mistakes.
 - Generate the Feature Definition Files and Kernel Definition Files of an Application.
