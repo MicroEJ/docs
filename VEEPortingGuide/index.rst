@@ -11,7 +11,7 @@ VEE Porting Guide
    architecture
    pack
    platformCreation
-   platformQualification
+   veePortQualification
    coreEngine
    advanceTrace
    multiSandbox
