@@ -51,7 +51,7 @@ The Architecture is either provided from:
 Platform Sources
 ~~~~~~~~~~~~~~~~
 
-A :ref:`Platform <platform_overview>` includes development tools and a runtime environment:
+A Platform includes development tools and a runtime environment:
 
 * the Architecture and :ref:`pack_overview`,
 * the Abstraction Layers implementations,

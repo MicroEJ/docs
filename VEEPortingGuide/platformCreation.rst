@@ -383,7 +383,7 @@ The result of this compilation is a ``microejapp.o`` file.
 This file has to be linked with the MicroEJ Platform runtime file (``microejruntime.a``) 
 and a third-party C project, called the Board Support Package (BSP),
 to obtain the final binary file (the Executable).
-For more information, please consult the :ref:`MicroEJ build process overview <build_process_overview>`.
+For more information, please consult the :ref:`MicroEJ build process overview <fig_overall-process>`.
 
 The BSP connection can be configured by defining 4 folders where the following files are located:
 
