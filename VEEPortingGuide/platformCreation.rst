@@ -228,7 +228,13 @@ In case of any doubt, right-click on the Platform project and select :guilabel:`
 Platform Module Configuration
 =============================
 
-A Platform module is the minimal unit that can extend a MicroEJ Architecture with additional features such as:
+The primary mechanism for augmenting the capabilities of a Platform is to add modules to it.
+
+A MicroEJ module is a group of related files (Foundation Libraries,
+scripts, link files, C libraries, Simulator Mock, tools, etc.) that together
+provide all or part of a Platform capability. 
+
+A module can extend a Architecture with additional features such as:
 
 - Runtime Capability (e.g. :ref:`multisandbox`, :ref:`section_externalresourceloader`) , 
 - Foundation Library Implementation (e.g. :ref:`MicroUI <section_microui_installation>`, :ref:`NET <network_core>`),
