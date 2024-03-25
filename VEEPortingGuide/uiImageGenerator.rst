@@ -7,7 +7,8 @@ Image Generator
 Principle
 =========
 
-The Image Generator module is an off-board tool that generates image data that is ready to be displayed without needing additional runtime memory. The two main advantages of this module are:
+The Image Generator module is an off-board tool that generates image data that is ready to be displayed without needing additional runtime memory.
+The two main advantages of this module are:
 
 * A pre-generated image is already encoded in the format known by the Image Renderer (MicroEJ format) or by the VEE Port (custom binary format). The time to create an image is very fast and does not require any RAM (Image Loader is not used).
 * No extra support is needed (no runtime Image Decoder).
@@ -48,7 +49,7 @@ Structure
 
 The Image Generator module is constituted from several parts, the core part and services parts: 
 
-* "Core" part: it takes an images list file as entry point and generates a binary file (no specific format) for each file. To read a file, it redirects the reading to the available service loaders. To generate a binary file, it redirects the encoding to the available service encoders. 
+* "Core" part: it takes an images list file as entry point and generates a binary file (no specific format) for each file. To read a file, it redirects the reading to the available service loaders. To generate a binary file, it redirects the encoding to the available service encoders.
 * "Service API" part: it provides some APIs used by the core part to load input files and to encode binary files. It also provides some APIs to customize the MicroEJ format.
 * "Standard input format loader" part: this service loads standard image files (PNG, JPEG, etc.).
 * "MicroEJ format generator" part: this service encodes an image in MicroEJ format.
@@ -56,20 +57,24 @@ The Image Generator module is constituted from several parts, the core part and 
 Standalone Mode
 ===============
 
-The standalone Image Generator embeds all parts described above. By consequence, once installed in a VEE Port, the standalone image generator does not need any extended module to generate MicroEJ files from standard images files. 
+The standalone Image Generator embeds all parts described above.
+By consequence, once installed in a VEE Port, the standalone image generator does not need any extended module to generate MicroEJ files from standard images files.
 
 .. _section_image_generator_extended:
 
 Extended Mode
 =============
 
-To increase the capabilities of Image Generator, the extension must be built and added in the VEE Port. As described above this extension will be able to:
+To increase the capabilities of Image Generator, the extension must be built and added in the VEE Port.
+As described above this extension will be able to:
 
 * read more input image file formats,
 * extend the MicroEJ format with VEE Port characteristics,
 * encode images in a third-party binary format.
 
-To do that the Image Generator provides some services to implement. This chapter explain how to create and include this extension in the VEE Port. Next chapters explain the aim of each service.
+To do that the Image Generator provides some services to implement.
+This chapter explain how to create and include this extension in the VEE Port.
+Next chapters explain the aim of each service.
 
 1. Create a ``std-javalib`` project. The module name must start with the prefix ``imageGenerator`` (for instance ``imageGeneratorMyPlatform``).
 2. Add the dependency:
@@ -118,9 +123,9 @@ To do that the Image Generator provides some services to implement. This chapter
 Advanced: Test the Extension Project
 ------------------------------------
 
-To quickly test an extension project without rebuilding the VEE Port or manually exporting the project, add the :ref:`Application Option <application_options>` ``ej.imagegenerator.extension.project`` to the absolute path of an Image Generator Extension project (e.g. ``c:\mycompany\myimagegeneratorextension``). 
+To quickly test an extension project without rebuilding the VEE Port or manually exporting the project, add the :ref:`Application Option <application_options>` ``ej.imagegenerator.extension.project`` to the absolute path of an Image Generator Extension project (e.g. ``c:\mycompany\myimagegeneratorextension``).
 The Image Generator will use the specified Image Generator Extension project instead of the one included in the VEE Port.
-This feature is useful for locally testing certain changes in the Image Generator Extension project. 
+This feature is useful for locally testing certain changes in the Image Generator Extension project.
 
 .. code-block:: console
 
@@ -137,13 +142,14 @@ This feature is useful for locally testing certain changes in the Image Generato
 Service Image Loader
 ====================
 
-The standalone Image Generator is not able to load all images formats, for instance SVG format. The service loader can be used to add this feature in order to generate an image file in MicroEJ format. 
+The standalone Image Generator is not able to load all images formats, for instance SVG format.
+The service loader can be used to add this feature in order to generate an image file in MicroEJ format.
 There are two ways to populate the service loader: create a custom implementation of ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` or ``javax.imageio.spi.ImageReaderSpi``.
 
 MicroUIRawImageGeneratorExtension
 ---------------------------------
 
-This service allows to add a custom image reader. 
+This service allows to add a custom image reader.
 
 1. Open image generator extension project.
 2. Create an implementation of interface ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension``.
@@ -175,7 +181,9 @@ Since UI Pack 13.2.0, the Image Generator automatically includes new image decod
 Customize MicroEJ Standard Format
 =================================
 
-As mentioned above (:ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`), the MicroEJ format can be extended by notions specific to the VEE Port (and often to the GPU the VEE Port is using). The generated file stays a MicroEJ file format, usable by the Image Renderer. Additionally, the file becomes compatible with the VEE Port constraints. 
+As mentioned above (:ref:`section_image_display_raw` and :ref:`section_image_gpu_raw`), the MicroEJ format can be extended by notions specific to the VEE Port (and often to the GPU the VEE Port is using).
+The generated file stays a MicroEJ file format, usable by the Image Renderer.
+Additionally, the file becomes compatible with the VEE Port constraints.
 
 1. Open image generator extension project.
 2. Create a subclass of ``com.microej.tool.ui.generator.BufferedImageLoader`` (to be able to load standard images) or create an implementation of interface ``com.microej.tool.ui.generator.MicroUIRawImageGeneratorExtension`` (to load custom images).
@@ -205,8 +213,8 @@ A custom image can only be created at runtime, see :ref:`section_buffered_image`
 VEE Port Binary Format
 ======================
 
-The Image Generator can generate a :ref:`binary file <section_image_binary_raw>` compatible with the VEE Port (and not with the Image Renderer). 
-This is very useful when a VEE Port features a foundation library that can use other kinds of images than the MicroUI library. 
+The Image Generator can generate a :ref:`binary file <section_image_binary_raw>` compatible with the VEE Port (and not with the Image Renderer).
+This is very useful when a VEE Port features a foundation library that can use other kinds of images than the MicroUI library.
 The binary file can be encoded according to the user's options in the images list file.
 
 1. Open image generator extension project.
@@ -225,14 +233,16 @@ The binary file can have two kinds of formats (see the API ``OutputFileType getT
 Configuration File
 ==================
 
-The Image Generator uses a configuration file (also called the "list file") for describing images that need to be processed. The list file is a text file in which each line describes an image to convert. The image is described as a resource path, and should be available from the
-application classpath.
+The Image Generator uses a configuration file (also called the "list file") for describing images that need to be processed.
+The list file is a text file in which each line describes an image to convert.
+The image is described as a resource path, and should be available from the application classpath.
 
 .. note::
 
    The list file must be specified in the application launcher (see :ref:`application_options`). However, all the files in the application classpath with suffix ``.images.list`` are automatically parsed by the Image Generator tool.
 
-Each line can add optional parameters (separated by a ':') which define and/or describe the output file format (raw format). When no option is specified, the image is not converted and embedded as well.
+Each line can add optional parameters (separated by a ':') which define and/or describe the output file format (raw format).
+When no option is specified, the image is not converted and embedded as well.
 
 .. note::
 
@@ -288,7 +298,9 @@ Each line can add optional parameters (separated by a ':') which define and/or d
 Linker File
 ===========
 
-In addition to images binary files, the Image Generator module generates a linker file (``*.lscf``). This linker file declares an image section called ``.rodata.images``. This section follows the next rules:
+In addition to images binary files, the Image Generator module generates a linker file (``*.lscf``).
+This linker file declares an image section called ``.rodata.images``.
+This section follows the next rules:
 
 * The files are always listed in same order between two application builds.
 * The section is aligned on the value specified by the Display module property ``imageBuffer.memoryAlignment`` (32 bits by default).
@@ -297,13 +309,10 @@ In addition to images binary files, the Image Generator module generates a linke
 External Resources
 ==================
 
-The Image Generator manages two configuration files when the External
-Resources Loader is enabled. The first configuration file lists the
-images which will be stored as internal resources with the MicroEJ
-Application. The second file lists the images the Image Generator must
-convert and store in the External Resource Loader output directory. It
-is the BSP's responsibility to load the converted images into an
-external memory.
+The Image Generator manages two configuration files when the External Resources Loader is enabled.
+The first configuration file lists the images which will be stored as internal resources with the MicroEJ Application.
+The second file lists the images the Image Generator must convert and store in the External Resource Loader output directory.
+It is the BSP's responsibility to load the converted images into an external memory.
 
 * Refer to the chapter :ref:`section.ui.Images` to have more details how to use this kind of resources.
 * Refer to the chapter :ref:`section_image_external_memory` to have more details how the Image Engine manages this kind of resources.
@@ -317,17 +326,16 @@ The Image Generator is an additional module for the MicroUI library.
 When the MicroUI module is installed, also install this module in order
 to be able to target pre-generated images.
 
-In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Image Generator`
-to install the Image Generator module. When checked, the properties file
-``imageGenerator/imageGenerator.properties`` is required to specify the Image Generator extension project. When no extension is required (standalone mode only), this property is useless.
+In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Image Generator` to install the Image Generator module.
+When checked, the properties file ``imageGenerator/imageGenerator.properties`` is required to specify the Image Generator extension project.
+When no extension is required (standalone mode only), this property is useless.
 
 Use
 ===
 
-The MicroUI Image APIs are available in the class
-`ej.microui.display.Image`_ ant its subclasses. There are no specific APIs that use a
-pre-generated image. When an image has been pre-processed, the MicroUI
-Image APIs ``getImage`` and ``loadImage`` will get/load the images.
+The MicroUI Image APIs are available in the class `ej.microui.display.Image`_ ant its subclasses.
+There are no specific APIs that use a pre-generated image.
+When an image has been pre-processed, the MicroUI Image APIs ``getImage`` and ``loadImage`` will get/load the images.
 
 Refer to the chapter :ref:`application_options` (:guilabel:`Libraries` >
 :guilabel:`MicroUI` > :guilabel:`Image`) for more information about specifying the image

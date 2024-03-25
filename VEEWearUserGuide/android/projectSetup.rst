@@ -1,7 +1,7 @@
 
 .. _ack_create_project_:
 .. |ACK_PLUGIN_VERSION| replace:: 0.3.6
-.. |SDK_VERSION| replace:: 0.15.0
+.. |SDK_VERSION| replace:: 0.16.0
 .. |SUPPORT_LIB_VERSION| replace:: 2.0.1
 
 Project Setup
@@ -112,10 +112,10 @@ The next step is adding the module that contains the MicroEJ Application to the 
         .. code-block:: kotlin
 
             microej {
-               applicationMainClass = "com.mycompany.Main"
+               applicationEntryPoint = "com.mycompany.Main"
             }
 
-        where the property ``applicationMainClass`` is set to the Full Qualified Name of the main class of the application.
+        where the property ``applicationEntryPoint`` is set to the Full Qualified Name of the main class of the application.
         This class must define a ``main()`` method and is the entry point of the application.
       
       - Declare the dependencies required by your application in the ``dependencies`` block of the ``build.gradle.kts`` file. 

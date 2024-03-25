@@ -201,6 +201,14 @@ Here are some guidelines to achieve the maximum throughput:
   - Do not wait for the previous chunk to be delivered before sending the next chunk
   - If a chunk can not be delivered because the connection is congested, wait a bit and retry sending the chunk
 
+Examples
+--------
+
+MicroEJ provides two examples which show how to use the Bluetooth API. There is one example of Central device and one example of Peripheral device.
+
+These examples can be found on `GitHub <https://github.com/MicroEJ/Example-Foundation-Libraries>`_.
+Please refer to their own README for more information on these examples.
+
 .. _BluetoothAdapter: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAdapter.html
 .. _BluetoothAddress: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAddress.html
 .. _BluetoothAttribute: https://repository.microej.com/javadoc/microej_5.x/apis/ej/bluetooth/BluetoothAttribute.html

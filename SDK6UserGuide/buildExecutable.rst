@@ -6,13 +6,7 @@ Build an Executable
 In order to build the Executable of an Application, the SDK provides the Gradle ``buildExecutable`` task.
 The prerequisites to use this task are:
 
-- The property ``applicationMainClass`` must be defined in the ``microej`` configuration block of the Gradle build file of the project.
-  It must be set to the Full Qualified Name of the Application main class, for example::
-
-   microej {
-     applicationMainClass = "com.mycompany.Main"
-   }
-
+- The Application EntryPoint must be configured, as described in :ref:`sdk_6_create_project_configure_project`.
 - A target VEE Port that uses an Architecture version ``7.17`` minimum must be defined.
   Refer to the :ref:`sdk_6_select_veeport` page to know the different ways to provide a VEE Port for a module project.
 
@@ -43,6 +37,20 @@ Once these prerequisites are fulfilled, the Executable can be built:
           $ ./gradlew buildExecutable
 
 In case of :ref:`Full BSP Connection <bsp_connection>`, the Executable file is generated in the ``build/output/application`` folder of the project.
+
+.. _sdk_6_trigger_executable_build:
+
+Trigger Executable Build by Default
+-----------------------------------
+
+The Executable of an Application is not built and published by default (when launching a ``./gradlew build`` or 
+a ``./gradlew publish`` for example).
+This default behavior can be changed by adding the ``produceExecutableDuringBuild()`` method 
+in the ``microej`` configuration block of the Gradle build file of the project::
+
+   microej {
+     produceExecutableDuringBuild()
+   }
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

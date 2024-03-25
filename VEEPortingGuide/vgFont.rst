@@ -19,7 +19,7 @@ Functional Description
 ======================
 
 The Font module implements the MicroVG `VectorFont`_ framework. 
-It provides Abstraction Layer APIs that consist of opening and decoding a font file and getting the font's characteristics. 
+It provides Abstraction Layer APIs that consist in opening and decoding a font file and getting the font's characteristics. 
 
 A font file:
 

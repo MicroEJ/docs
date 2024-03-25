@@ -89,8 +89,8 @@ The process of rendering a frame of the UI consists of several parts:
   - MWT processing (layout of widgets and widget rendering process).
   - Drawing of the UI (MicroUI drawing method execution).
 
-- Display flush.
-- (depends on the UI port) Backbuffer copy, see :ref:`Display Buffer Modes<section_display_policies>`.
+- Display flush, see :ref:`section_display_buffer_policy`.
+- Buffer Refresh Strategy (BRS), see :ref:`section_brs`.
 
 Some tools are available to identify which part of this process affect the most the GUI performance.
 
@@ -104,7 +104,7 @@ MicroUI Flush Visualizer
 
 A perfect application has 100% of its display area drawn. This is the total area covered by the sum of the area drawn by the drawing operations. A value of 200% indicates the area drawn is equivalent to twice the surface of the entire display. A total area drawn between 100% to 200% is the norm in practice because widgets often overlap. However, if the total area drawn is bigger than 200%, that means that the total surface of the display was drawn more than twice, meaning that a lot of time could be spent drawing things that are never shown.
 
-The MicroUI Flush Visualizer tool can be used to investigate potential performance bottlenecks in UI applications running on the Simulator by showing the pixel surface drawn between two MicroUI frame buffer flushes.
+The MicroUI Flush Visualizer tool can be used to investigate potential performance bottlenecks in UI applications running on the Simulator by showing the pixel surface drawn between two MicroUI flushes.
 
 The documentation of MicroUI Flush Visualizer is available :ref:`here<flush_visualizer>`.
 
@@ -195,7 +195,6 @@ MCUs and SoCs may have access to various hardware IPs to speed up the UI. The UI
 First of all, the GPU should be used if it is available on the system.
 Then, driving a display implies intensive memory usage, a DMA should be used whenever it's possible.
 
-For example, during the back copy if the flush policy is in switch mode or during your flush if your display is driven through SPI (if there is a DMA dedicated to the SPI port).
 For more information about the flush policy, please read our documentation about :ref:`section_display`.
 
 Hardware Configuration

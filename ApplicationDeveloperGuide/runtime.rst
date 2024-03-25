@@ -243,6 +243,62 @@ On Architecture ``7.x`` you will get the following default error message:
     No such field TYPE at com/mycompany/MyClass.myMethod()V.
 
 
+.. _architecture_characteristics:
+
+Architecture Characteristics
+----------------------------
+
+The Application can retrieve some characteristics of the Architecture on which it is running.
+Architecture characteristics are automatically provided as :ref:`constants <section.classpath.elements.constants>`. Here are the most notable ones:
+
+-  ``com.microej.architecture.capability=[tiny|single|multi]``: :ref:`Core Engine Capability <core_engine_capabilities>`
+-  ``com.microej.architecture.name=[architecture_uid]``: Architecture name.
+-  ``com.microej.architecture.level=[eval|prod]``: Usage level (Evaluation or Production).
+-  ``com.microej.architecture.toolchain=[toolchain_uid]``: Toolchain name.
+-  ``com.microej.architecture.version=[M.m.p]``: Architecture version.
+
+See also :ref:`Architecture Naming Convention <architecture_naming_convention>` for more details.
+
+The following code prints the formatted Architecture characteristics on standard output. You can copy-paste and adapt it to your needs.
+
+.. code-block:: java
+      
+      String name = Constants.getString("com.microej.architecture.name");
+      String version = Constants.getString("com.microej.architecture.version");
+      String buildLabel = Constants.getString("com.microej.architecture.buildLabel");
+
+      String usage = Constants.getString("com.microej.architecture.level");
+      String usageStr;
+      if (usage.equals("prod") || usage.equals("dev")) {
+      	usageStr = "Production";
+      } else if (usage.equals("eval")) {
+      	usageStr = "Evaluation";
+      } else {
+      	usageStr = usage;
+      }
+
+      String capability = Constants.getString("com.microej.architecture.capability");
+      String capabilityStr;
+      if (capability.equals("multi")) {
+      	capabilityStr = "Multi";
+      } else if (capability.equals("tiny")) {
+      	capabilityStr = "Tiny";
+      } else if (capability.equals("single") || capability.equals("mono")) {
+      	capabilityStr = "Mono";
+      } else {
+      	capabilityStr = capability;
+      }
+
+      String isaStr = Constants.getString("com.microej.architecture.architecturePrintableName");
+      String toolchainName = Constants.getString("com.microej.architecture.toolchainPrintableName");
+      String toolchainFullName = Constants.getString("com.microej.architecture.toolchain");
+
+      System.out.println("- Name:                         " + name);
+      System.out.println("- Version:                      " + version + " (" + buildLabel + ")");
+      System.out.println("- Usage:                        " + usageStr);
+      System.out.println("- Core Engine Capability:       " + capabilityStr + "-Sandbox");
+      System.out.println("- Instruction Set Architecture: " + isaStr);
+      System.out.println("- Compilation Toolchain:        " + toolchainName + " (" + toolchainFullName + ")");
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

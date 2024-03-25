@@ -20,7 +20,7 @@ Front Panel
 
 * Re-organize imports of all Java classes (classes ``MicroUIImageFormat``, ``MicroUIImage`` and ``MicroUIGraphicsContext`` have been extracted from ``LLUIPainter``).
 * The ``doubleBufferFeature`` attribute has been removed from the ``Display`` widget.
-  It is replaced by the ``bufferPolicyClass`` (see :ref:`Buffer Refresh Strategy on the Simulator<section_brs_sim>`).
+  The ``bufferPolicyClass`` replaces it (see :ref:`Buffer Refresh Strategy on the Simulator<section_brs_sim>`).
 
   .. code-block:: xml
   
@@ -38,127 +38,127 @@ BSP Without GPU
 
 * *[VEE Port configuration project]*
 
-	* Fetch the `C Module MicroUI 4.0.0`_.
+    * Fetch the `C Module MicroUI 4.0.0`_.
 
 * *[BSP project]*
 
-	* Delete the VEE Port ``include`` folder (often ``/platform/inc``).
-	* Delete the properties file ``cco_microui.properties``.
-	* In the C project configuration, include the new C files ``ui_display_brs.c``, ``ui_display_brs_legacy.c``, ``ui_display_brs_predraw.c``, ``ui_display_brs_single.c`` and ``ui_rect_util.c``.
-	* Read the documentation about the display :ref:`section_brs`; then configure the C module by setting the right configuration in ``ui_display_brs_configuration.h``.
-   	* Comment the line ``#error "This header must [...]"``.
-   	* The next actions depend on the available numbers of buffers allocated in the MCU memories and if the LCD frame buffer is mapped on a MCU's buffer (if not, that means the LCD device owns a buffer). The following table redirects the next steps according to the display connection with the MCU:
+    * Delete the VEE Port ``include`` folder (often ``/platform/inc``).
+    * Delete the properties file ``cco_microui.properties``.
+    * In the C project configuration, include the new C files ``ui_display_brs.c``, ``ui_display_brs_legacy.c``, ``ui_display_brs_predraw.c``, ``ui_display_brs_single.c`` and ``ui_rect_util.c``.
+    * Read the documentation about the display :ref:`section_brs`; then configure the C module by setting the right configuration in ``ui_display_brs_configuration.h``.
+    * Comment the line ``#error "This header must [...]"``.
+    * The next actions depend on the available numbers of buffers allocated in the MCU memories and if the front buffer is mapped on an MCU's buffer (if not, that means the LCD device owns a buffer). The following table redirects the next steps according to the display connection with the MCU:
 
-		.. table:: Copy and / or Swap actions
+        .. table:: Copy and/or Swap actions
 
-			+---------+--------+----------------------------------+
-			| Buffers | Mapped |           Next Actions           |
-			+=========+========+==================================+
-			| 2 (1+1) |   no   |        *[Display "Copy"]*        |
-			+---------+--------+----------------------------------+
-			|    2    |  yes   | *[Display "Swap double buffer"]* |
-			+---------+--------+----------------------------------+
-			|    3    |  yes   | *[Display "Swap triple buffer"]* |
-			+---------+--------+----------------------------------+
-			| 3 (2+1) |   no   |   *[Display "Copy and Swap"]*    |
-			+---------+--------+----------------------------------+
+            +---------+--------+----------------------------------+
+            | Buffers | Mapped |           Next Actions           |
+            +=========+========+==================================+
+            | 2 (1+1) |   no   |        *[Display "Copy"]*        |
+            +---------+--------+----------------------------------+
+            |    2    |  yes   | *[Display "Swap double buffer"]* |
+            +---------+--------+----------------------------------+
+            |    3    |  yes   | *[Display "Swap triple buffer"]* |
+            +---------+--------+----------------------------------+
+            | 3 (2+1) |   no   |   *[Display "Copy and Swap"]*    |
+            +---------+--------+----------------------------------+
 
 * *[Display "Copy"]*
 
-	* Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_SINGLE``.
-	* Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``1``.
-	* Uncomment the define ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE``.
-	* Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
-		
-		* Store (in a static field) the rectangle to flush (the array contains only one rectangle).
-		* Store (in a static field) the flush identifier.
-		* Unlock (immediately or wait the LCD tearing signal interrupt) the *copy task* (hardware of software) that will send (or copy) the back buffer data to the LCD frame buffer.
-		* Remove the returned value (the back buffer address).
-	
-	* At the end of the copy (in an interrupt or at the end of the software *copy task*), replace the call to ``LLUI_DISPLAY_flushDone()`` by ``LLUI_DISPLAY_setDrawingBuffer()``: it will unlock the Graphics Engine. Give the back buffer address (same address as at start-up) and the flush identifier.
+    * Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_SINGLE``.
+    * Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``1``.
+    * Uncomment the define ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE``.
+    * Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
+        
+        * Store (in a static field) the rectangle to flush (the array contains only one rectangle).
+        * Store (in a static field) the flush identifier.
+        * Unlock (immediately or wait for the LCD tearing signal interrupt) the *flush task* (hardware or software) that will flush (copy or transmit) the back buffer data to the front buffer.
+        * Remove the returned value (the back buffer address).
+    
+    * At the end of the flush (in an interrupt or at the end of the software *flush task*), replace the call to ``LLUI_DISPLAY_flushDone()`` with ``LLUI_DISPLAY_setDrawingBuffer()``: it will unlock the Graphics Engine. Give the back buffer address (same address as at start-up) and the flush identifier.
 
 * *[Display "Swap double buffer"]*
 
-	* Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
-	* Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``2``.
-	* Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
-		
-		* Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
-		* Store (in a static field) the flush identifier.
-		* Unlock (immediately or wait the LCD tearing signal interrupt) the *swap task* (hardware of software) that will swap the back buffer and the LCD frame buffer.
-		* Remove the static fields ``ymin`` and ``ymax`` (now useless).
-		* Remove the returned value (the back buffer address).
-	
-	* Case of *hardware swap* (LCD *swap* interrupt): change the implementation of the LCD *swap* interrupt:
+    * Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
+    * Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``2``.
+    * Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
+        
+        * Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
+        * Store (in a static field) the flush identifier.
+        * Unlock (immediately or wait for the LCD tearing signal interrupt) the *swap task* (hardware or software) that will swap the back buffer and the front buffer.
+        * Remove the static fields ``ymin`` and ``ymax`` (now useless).
+        * Remove the returned value (the back buffer address).
+    
+    * Case of *hardware swap* (LCD *swap* interrupt): change the implementation of the LCD *swap* interrupt:
 
-    	* Remove all the code concerning the post-flush restoration (remove the *copy task* or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
-    	* Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier.
+        * Remove all the code concerning the post-flush restoration (remove the *flush task* or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
+        * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier.
   
-	* Case of *software swap* (dedicated *swap task*): change the task actions:
+    * Case of *software swap* (dedicated *swap task*): change the task actions:
 
-		* Swap back and frame buffers.
-		* Wait for the end of buffers swap: ensure the LCD driver does not use anymore the old LCD frame buffer.
-    	* Remove all the code concerning the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
-    	* Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier.
+        * Swap back and front buffers.
+        * Wait for the end of the buffers swap: ensure the LCD driver does not use the old front buffer anymore.
+        * Remove all the code concerning the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
+        * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier.
   
 * *[Display "Swap triple buffer"]*
 
-	* Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
-	* Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``3``.
-	* Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
-		
-		* Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
-		* Store (in a static field) the flush identifier.
-		* Unlock (immediately or wait the LCD tearing signal interrupt) the *swap task* that will swap the buffers.
-		* Remove the static fields ``ymin`` and ``ymax`` (now useless).
-		* Remove the returned value (the back buffer address).
-	  
-	* In the *swap task*:  change the task actions:
+    * Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
+    * Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``3``.
+    * Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
+        
+        * Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
+        * Store (in a static field) the flush identifier.
+        * Unlock (immediately or wait for the LCD tearing signal interrupt) the *swap task* that will swap the buffers.
+        * Remove the static fields ``ymin`` and ``ymax`` (now useless).
+        * Remove the returned value (the back buffer address).
+      
+    * In the *swap task*:  change the task actions:
 
-		* Swap buffers.
-    	* Remove all the code concerning the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
-    	* Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier (the Graphics Engine can be unlocked immediately because a buffer is freed for sure).
-    	* Wait for the end of buffers swap: ensure the LCD driver does not use anymore the old LCD frame buffer.
+        * Swap buffers.
+        * Remove all the code concerning the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
+        * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the new back buffer address and the flush identifier (the Graphics Engine can be unlocked immediately because a buffer is freed for sure).
+        * Wait for the end of the buffers swap: ensure the LCD driver does not use the old front buffer anymore.
 
 * *[Display "Copy and Swap"]*
 
-	* Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
-	* Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``2``.
-	* Uncomment the define ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE``.	
-	* Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
-		
-		* Store (in a static field) the rectangle to flush (the array contains only one rectangle).
-		* Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
-		* Store (in a static field) the flush identifier.
-		* Unlock (immediately or wait the LCD tearing signal interrupt) the *copy & swap task* that will send (or copy) the current back buffer data to the LCD frame buffer and that will swap the back buffers.
-		* Remove the returned value (the back buffer address).
-	  
-	* In the *copy & swap task*: change the "copy & swap" actions:
+    * Set the value of the define ``UI_DISPLAY_BRS``: ``UI_DISPLAY_BRS_PREDRAW``.
+    * Set the value of the define ``UI_DISPLAY_BRS_DRAWING_BUFFER_COUNT``: ``2``.
+    * Uncomment the define ``UI_DISPLAY_BRS_FLUSH_SINGLE_RECTANGLE``.   
+    * Change the signature and the implementation of the function flush: ``void LLUI_DISPLAY_IMPL_flush(MICROUI_GraphicsContext* gc, uint8_t flush_identifier, const ui_rect_t regions[], size_t length)``
+        
+        * Store (in a static field) the rectangle to flush (the array contains only one rectangle).
+        * Store (in a static field) the back buffer address (`LLUI_DISPLAY_getBufferAddress(&gc->image)`).
+        * Store (in a static field) the flush identifier.
+        * Unlock (immediately or wait for the LCD tearing signal interrupt) the *copy & swap task* that will flush (copy or transmit) the current back buffer data to the front buffer, and that will swap the back buffers.
+        * Remove the returned value (the back buffer address).
+      
+    * In the *copy & swap task*: change the "copy & swap" actions:
 
-		* Start the sending of the current back buffer (called *buffer A*) data to the LCD frame buffer.
-		* Swap back *buffer A* and back *buffer B*.
-		* Wait for the end of back buffers swap: ensure the LCD driver is now using the *buffer A* as *sending* buffer.
-    	* Remove all the code concerning to the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
-    	* Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the back *buffer B* address and the flush identifier.
-    	* Wait for the end of *sending*: ensure the LCD driver has finished to send the data.
-    	* (optional) Unlock again the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the *buffer A* address and the flush identifier:
+        * Start the transmission of the current back buffer (called *buffer A*) data to the front buffer.
+        * Swap back *buffer A* and back *buffer B*.
+        * Wait for the end of the back buffers swap: ensure the LCD driver is now using the *buffer A* as the *transmission* buffer.
+        * Remove all the code concerning to the post-flush restoration (the call to ``memcpy`` or the use of a DMA). In both cases, the call to ``LLUI_DISPLAY_flushDone()`` is removed.
+        * Unlock the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the back *buffer B* address and the flush identifier.
+        * Wait for the end of the *transmission*: ensure the LCD driver has finished to flush the data.
+        * (optional) Unlock again the Graphics Engine by calling ``LLUI_DISPLAY_setDrawingBuffer()``, giving the *buffer A* address and the flush identifier:
 
-        	* The call to ``LLUI_DISPLAY_setDrawingBuffer()`` returns ``false``: that means at least one drawing has been performed in the *buffer B*; nothing else to do.
-        	* The call to ``LLUI_DISPLAY_setDrawingBuffer()`` returns ``true``: that means no drawing has started yet in the *buffer B*. In that case, the Graphics Engine will reuse the *buffer A* as back buffer and the *restoration of the past* becomes useless. The back buffers swap is so cancelled, update the LCD driver status in consequence.
+            * The call to ``LLUI_DISPLAY_setDrawingBuffer()`` returns ``false``: that means at least one drawing has been performed in the *buffer B*; there is nothing else to do.
+            * The call to ``LLUI_DISPLAY_setDrawingBuffer()`` returns ``true``: that means no drawing has started yet in the *buffer B*. In that case, the Graphics Engine will reuse the *buffer A* as a back buffer, and the *restoration of the past* becomes useless. The back buffers swap is so canceled; update the LCD driver status in consequence.
   
 BSP with DMA2D
 """"""""""""""
 
 * *[VEE Port configuration project]*
 
-	* Fetch the `C Module DMA2D 5.0.0`_.
+    * Fetch the `C Module DMA2D 5.0.0`_.
 
 * *[BSP project]*
 
-	* Follow the migration steps of "BSP without GPU".
-	* Check the content of the configuration file ``ui_drawing_dma2d_configuration.h`` (a versioning has been added).
-	* Comment the line ``#error [...]"``.
-	* According to the display :ref:`section_brs`, unlock the MicroUI Graphics Engine in the LCD interrupt or in the DMA2D memcpy callback (see :ref:`section_ui_c_module_microui_dma2d`).
+    * Follow the migration steps of "BSP without GPU".
+    * Check the content of the configuration file ``ui_drawing_dma2d_configuration.h`` (a versioning has been added).
+    * Comment the line ``#error [...]"``.
+    * According to the display :ref:`section_brs`, unlock the MicroUI Graphics Engine in the LCD interrupt or the DMA2D memcpy callback (see :ref:`section_ui_c_module_microui_dma2d`).
 
 .. _section_ui_migrationguide_14.0_vglite:
 
@@ -167,32 +167,32 @@ BSP with VGLite
 
 * *[VEE Port configuration project]*
 
-	* Fetch the `C Module VGLite 8.0.0`_.
+    * Fetch the `C Module VGLite 8.0.0`_.
 
 * *[BSP project]*
 
-	* Follow the migration steps of "BSP without GPU".
-	* Migrate VGLite library to the version **3.0.15_rev7**.
-	* Modify the VGLite library **3.0.15_rev7** by applying the patch ``3.0.15_rev7.patch`` (see README.md near patch file for more information).
-	* In the file ``vglite_window.c``, add the function ``VGLITE_CancelSwapBuffers()`` and its prototype in ``vglite_window.h``:
+    * Follow the migration steps of "BSP without GPU".
+    * Migrate VGLite library to the version **3.0.15_rev7**.
+    * Modify the VGLite library **3.0.15_rev7** by applying the patch ``3.0.15_rev7.patch`` (see README.md near the patch file for more information).
+    * In the file ``vglite_window.c``, add the function ``VGLITE_CancelSwapBuffers()`` and its prototype in ``vglite_window.h``:
 
-	.. code-block:: c
+    .. code-block:: c
 
-			void VGLITE_CancelSwapBuffers(void) {   
-				fb_idx = fb_idx == 0 ? (APP_BUFFER_COUNT - 1) : (fb_idx ) - 1;
-			}
+            void VGLITE_CancelSwapBuffers(void) {   
+                fb_idx = fb_idx == 0 ? (APP_BUFFER_COUNT - 1) : (fb_idx ) - 1;
+            }
 
 BSP with NemaGFX
 """"""""""""""""
 
 * *[VEE Port configuration project]*
 
-	* Fetch the `C Module NemaGFX 2.0.0`_.
+    * Fetch the `C Module NemaGFX 2.0.0`_.
 
 * *[BSP project]*
 
-	* Follow the migration steps of "BSP without GPU".
-	* Check the content of the configuration file ``ui_drawing_nema_configuration.h`` (new version ``2``).
+    * Follow the migration steps of "BSP without GPU".
+    * Check the content of the configuration file ``ui_drawing_nema_configuration.h`` (new version ``2``).
 
 From 13.6.x to 13.7.2
 =====================
@@ -424,7 +424,7 @@ BSP with VGLite
 	
 	* Delete the properties file ``cco_microui-vglite.properties``.
 	* Delete the C files ``vg_drawer.h`` and  ``vg_drawer.c`` and remove them from the C project configuration.
-	* Verify the options in ``display_configuration.h``. 
+	* Verify the options in ``display_configuration.h``.
 	* In the C project configuration, include the new C file ``ui_drawing_vglite.c``.
 
 From 13.3.x to 13.4.1
@@ -579,10 +579,10 @@ BSP without GPU
 
 	* Delete the properties file ``cco_microui.properties``.
 	* Add a cast when using ``MICROUI_Image*`` object: ``(MICROUI_ImageFormat)image->format`` .
-	* Remove parameter ``MICROUI_GraphicsContext*`` when calling ``LLUI_DISPLAY_setDrawingLimits()``. 
+	* Remove parameter ``MICROUI_GraphicsContext*`` when calling ``LLUI_DISPLAY_setDrawingLimits()``.
 	* Ensure to call ``LLUI_DISPLAY_setDrawingLimits()`` before calling ``LLUI_DISPLAY_setDrawingStatus()`` or ``LLUI_DISPLAY_notifyAsynchronousDrawingEnd()``.
-	* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available in the :ref:`MicroUI C module<section_ui_cco>`. 
-	* (optional) Add the UI event logger available in the :ref:`MicroUI C module<section_ui_cco>`. 
+	* (optional) Add an implementation of ``LLUI_DISPLAY_IMPL_image_heap_xxx`` to control the :ref:`images heap allocation<section_image_loader_memory>`; by default the internal Graphics Engine's allocator is used. Another implementation is also available in the :ref:`MicroUI C module<section_ui_cco>`.
+	* (optional) Add the UI event logger available in the :ref:`MicroUI C module<section_ui_cco>`.
 
 BSP with DMA2D
 """"""""""""""
@@ -709,8 +709,8 @@ Front Panel API
 	* [Added] ``getDisplayPixelDepth()``: replaces ``MicroUIDisplay.getNbBitsPerPixel()``.
 	* [Added] ``getDWDrawerSoftware()``: gives the unique instance of Graphics Engine's internal software drawer (instance of ``DWDrawing``).
 	* [Added] ``getUIDrawerSoftware()``: gives the unique instance of Graphics Engine's internal software drawer (instance of ``UIDrawing``).
-	* [Added] ``mapMicroUIGraphicsContext(byte[])`` and ``newMicroUIGraphicsContext(byte[])``: maps the graphics context byte array (`GraphicsContext.getSNIContext()`_) on an object which represents the graphics context in front panel. 
-	* [Added] ``mapMicroUIImage(byte[])`` and ``newMicroUIImage(byte[])``: maps the image byte array (`Image.getSNIContext()`_) on an object which represents the image in front panel. 
+	* [Added] ``mapMicroUIGraphicsContext(byte[])`` and ``newMicroUIGraphicsContext(byte[])``: maps the graphics context byte array (`GraphicsContext.getSNIContext()`_) on an object which represents the graphics context in front panel.
+	* [Added] ``mapMicroUIImage(byte[])`` and ``newMicroUIImage(byte[])``: maps the image byte array (`Image.getSNIContext()`_) on an object which represents the image in front panel.
 	* [Added] ``requestFlush(boolean)``: requests a call to ``LLUIDisplayImpl.flush()``.
 	* [Added] ``requestRender(void)``: requests a call to ``Displayable.render()``.
 
@@ -724,7 +724,7 @@ Front Panel API
 
 	* [Added] Equivalent of module `com.microej.clibrary.llimpl#microui`_ (``LLUI_PAINTER_impl.c``): implements all ``ej.api.microui`` natives and redirect them to the interface ``UIDrawing``.
 	* [Added] ``MicroUIGraphicsContext``: representation of a MicroUI `GraphicsContext`_ in front panel. This interface (implemented by the Graphics Engine) provides several function to get information on graphics context, clip, etc.
-	* [Added] ``MicroUIGraphicsContext#requestDrawing()``: allows to take the hand on the drawing buffer.
+	* [Added] ``MicroUIGraphicsContext#requestDrawing()``: allows to take the hand on the back buffer.
 	* [Added] ``MicroUIImage``: representation of a MicroUI `Image`_ in front panel. This interface (implemented by the Graphics Engine) provides several function to get information on image.
 	* [Added] ``setDrawer(UIDrawing)``: allows to configure the implementation of ``UIDrawing`` the ``LLUIPainter`` has to use. When no drawer is configured, ``LLUIPainter`` redirects all drawings to the internal Graphics Engine software algorithms.
 	* 
@@ -781,7 +781,9 @@ Image Generator
 This chapter resumes the changes to perform.
 The available changes in Image Generator API are described in :ref:`next chapter<section_ui_migration_imagegeneratorapi_13x>`.
 
-This chapter only concerns VEE Port with a custom display. In this case a dedicated image generator extension project is available. This project must be updated.
+This chapter only concerns VEE Port with a custom display.
+In this case a dedicated image generator extension project is available.
+This project must be updated.
 
 * Reorganize project to use source folders ``src/main/java`` and ``src/main/resources``
 * Add new ``module.ivy`` file:
@@ -1017,7 +1019,7 @@ LLAPI
 	* [Added] ``LLUI_DISPLAY_requestFlush(bool)``: requests a call to ``LLUI_DISPLAY_IMPL_flush()``.
 	* [Added] ``LLUI_DISPLAY_requestRender(void)``: requests a call to ``Displayable.render()``.
 	* [Added] ``LLUI_DISPLAY_freeImageBuffer(MICROUI_Image*)``: frees an image previously allocated by ``LLUI_DISPLAY_allocateImageBuffer(MICROUI_Image*,uint8_t)``.
-	* [Added] ``LLUI_DISPLAY_requestDrawing(MICROUI_GraphicsContext*,SNI_callback)``: allows to take the hand on the shared drawing buffer.
+	* [Added] ``LLUI_DISPLAY_requestDrawing(MICROUI_GraphicsContext*,SNI_callback)``: allows to take the hand on the shared back buffer.
 	* [Added] ``LLUI_DISPLAY_setDrawingStatus(DRAWING_Status)``: specifies the drawing status to the Graphics Engine.
  
 * ``LLUI_DISPLAY_impl.h``
@@ -1204,7 +1206,8 @@ Front Panel
 
 * Others Widgets:
     
-    These widgets may have not been migrated. Check in ``ej.tool.frontpanel.widget`` library if some widgets are compatible or write your own widgets.
+    These widgets may have not been migrated.
+    Check in ``ej.tool.frontpanel.widget`` library if some widgets are compatible or write your own widgets.
 
 Application
 """""""""""
@@ -1271,7 +1274,7 @@ BSP
  
 	- Remove the function ``LLDISPLAY_SWITCH_IMPL_getDisplayBufferAddress()``
 	- Replace the function ``void LLDISPLAY_SWITCH_IMPL_getDisplayBufferAddress()`` by ``int32_t LLDISPLAY_IMPL_flush()``
-	- In this function, return the old LCD frame buffer address
+	- In this function, return the old front buffer address
 	- Replace the function ``LLDISPLAY_COPY_IMPL_getBackBufferAddress()`` by ``LLDISPLAY_IMPL_getGraphicsBufferAddress()``
 	
 * For LLDISPLAY ``COPY``

@@ -8,10 +8,8 @@ Font Generator
 Principle
 =========
 
-The Font Generator module is an off-board tool that generates fonts
-ready to be displayed without the need for additional runtime memory. It
-outputs a raw file for each converted font.
-
+The Font Generator module is an off-board tool that generates fonts ready to be displayed without the need for additional runtime memory.
+It outputs a raw file for each converted font.
 
 Functional Description
 ======================
@@ -40,18 +38,14 @@ Process overview:
 Pixel Transparency
 ==================
 
-As mentioned above, each pixel of each character in an ``.ejf`` file has
-one of 256 different gray-scale values. However RAW files can have 1, 2,
-4 or 8 bits-per-pixel (respectively 2, 4, 16 or 256 gray-scale values).
-The required pixel depth is defined in the configuration file (see next
-chapter). The Font Generator compresses the input pixels to the required
-depth.
+As mentioned above, each pixel of each character in an ``.ejf`` file has one of 256 different gray-scale values.
+However RAW files can have 1, 2, 4 or 8 bits-per-pixel (respectively 2, 4, 16 or 256 gray-scale values).
+The required pixel depth is defined in the configuration file (see next chapter).
+The Font Generator compresses the input pixels to the required depth.
 
-The following tables illustrates the conversion "grayscale to
-transparency level". The grayscale value '0x00' is black whereas value
-'0xff' is white. The transparency level '0x0' is fully transparent
-whereas level '0x1' (bpp == 1), '0x3' (bpp == 2) or '0xf' (bpp == 4) is
-fully opaque.
+The following tables illustrates the conversion "grayscale to transparency level".
+The grayscale value '0x00' is black whereas value '0xff' is white.
+The transparency level '0x0' is fully transparent whereas level '0x1' (bpp == 1), '0x3' (bpp == 2) or '0xf' (bpp == 4) is fully opaque.
 
 .. table:: Font 1-BPP RAW Conversion
 
@@ -123,32 +117,25 @@ For 8-BPP RAW font, a transparency level is equal to
 Configuration File
 ==================
 
-The Font Generator uses a configuration file (called the "list file")
-for describing fonts that must be processed. The list file is a basic
-text file where each line describes a font to convert. The font file is
-described as a resource path, and should be available from the
-application classpath.
+The Font Generator uses a configuration file (called the "list file") for describing fonts that must be processed.
+The list file is a basic text file where each line describes a font to convert.
+The font file is described as a resource path, and should be available from the application classpath.
 
 .. note::
 
-   The list file must be specified in the application launcher
-   (see :ref:`application_options`). However, all files in
-   application classpath with suffix ``.fonts.list`` are automatically
-   parsed by the Font Generator tool.
+   The list file must be specified in the application launcher (see :ref:`application_options`).
+   However, all files in application classpath with suffix ``.fonts.list`` are automatically parsed by the Font Generator tool.
 
-Each line can have optional parameters (separated by a ':') which define
-some ranges of characters to embed in the final raw file, and the
-required pixel depth. By default, all characters available in the input
-font file are embedded, and the pixel depth is 1 (i.e 1 bit-per-pixel).
+Each line can have optional parameters (separated by a ':') which define some ranges of characters to embed in the final raw file, and the required pixel depth.
+By default, all characters available in the input font file are embedded, and the pixel depth is 1 (i.e 1 bit-per-pixel).
 
 .. note::
 
    See :ref:`fonts_list_grammar` to understand the list file grammar.
 
-Selecting only a specific set of characters to embed reduces the memory
-footprint. There are two ways to specify a character range: the custom
-range and the known range. Several ranges can be specified, separated by
-";".
+Selecting only a specific set of characters to embed reduces the memory footprint.
+There are two ways to specify a character range: the custom range and the known range.
+Several ranges can be specified, separated by ";".
 
 Below is an example of a list file for the Font Generator:
 
@@ -164,13 +151,10 @@ Below is an example of a list file for the Font Generator:
 External Resources
 ==================
 
-The Font Generator manages two configuration files when the External
-Resources Loader is enabled. The first configuration file lists the
-fonts which will be stored as internal resources with the MicroEJ
-Application. The second file lists the fonts the Font Generator must
-convert and store in the External Resource Loader output directory. It
-is the BSP's responsibility to load the converted fonts into an external
-memory.
+The Font Generator manages two configuration files when the External Resources Loader is enabled.
+The first configuration file lists the fonts which will be stored as internal resources with the MicroEJ Application.
+The second file lists the fonts the Font Generator must convert and store in the External Resource Loader output directory.
+It is the BSP's responsibility to load the converted fonts into an external memory.
 
 * Refer to the chapter :ref:`section.ui.Fonts` to have more details how to use this kind of resources.
 * Refer to the chapter :ref:`section_font_loader_memory` to have more details how the Font Engine manages this kind of resources.
@@ -179,13 +163,10 @@ Installation
 ============
 
 The Font Generator module is an additional tool for MicroUI library.
-When the MicroUI module is installed, install this module in order to be
-able to embed some additional fonts with the application.
+When the MicroUI module is installed, install this module in order to be able to embed some additional fonts with the application.
 
-If the module is not installed, the platform user will not be able to
-embed a new font with his/her application. He/she will be only
-able to use the system fonts specified during the MicroUI initialization
-step (see :ref:`section_static_init`).
+If the module is not installed, the platform user will not be able to embed a new font with his/her application.
+He/she will be only able to use the system fonts specified during the MicroUI initialization step (see :ref:`section_static_init`).
 
 In the VEE Port configuration file, check :guilabel:`UI` > :guilabel:`Font Generator` to
 install the Font Generator module.

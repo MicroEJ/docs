@@ -7,7 +7,10 @@ Static Initialization
 Principle
 =========
 
-The MicroUI implementation for MicroEJ requires a configuration step (also called extension step) to customize itself before application startup (see :ref:`section_architecture`). This configuration step uses an XML file. In order to save both runtime execution time and flash memory, the file is processed by the Static MicroUI Initializer tool, avoiding the need to process the XML configuration file at runtime. The tool generates appropriate initialized objects directly within the MicroUI library, as well as Java and C constants files for sharing MicroUI event generator IDs.
+The MicroUI implementation for MicroEJ requires a configuration step (also called extension step) to customize itself before application startup (see :ref:`section_architecture`).
+This configuration step uses an XML file.
+In order to save both runtime execution time and flash memory, the file is processed by the Static MicroUI Initializer tool, avoiding the need to process the XML configuration file at runtime.
+The tool generates appropriate initialized objects directly within the MicroUI library, as well as Java and C constants files for sharing MicroUI event generator IDs.
 
 This XML file (also called the initialization file) defines:
 
@@ -15,12 +18,14 @@ This XML file (also called the initialization file) defines:
 -  Whether the application has a display; and if so, it provides its logical name.
 -  Which fonts will be provided to the application.
 
-The next chapters describe succinctly the XML file. For more information about grammar, please consult appendix :ref:`muiStaticInit`.
+The next chapters describe succinctly the XML file.
+For more information about grammar, please consult appendix :ref:`muiStaticInit`.
 
 Functional Description
 ======================
 
-The Static MicroUI Initializer tool takes as entry point the initialization file which describes the MicroUI library extension. This tool is automatically launched during the VEE Port build (see :ref:`section_microui_installation` ). 
+The Static MicroUI Initializer tool takes as entry point the initialization file which describes the MicroUI library extension.
+This tool is automatically launched during the VEE Port build (see :ref:`section_microui_installation` ).
 
 The Static MicroUI Initializer tool is able to generate two files:
 
@@ -54,7 +59,8 @@ The XML file must be created in VEE Port configuration project, in folder ``micr
 
    Static MicroUI Initializer XML File
 
-The XML file grammar is detailed :ref:`here<muiStaticInit>`. The following list gives a short description of each element:
+The XML file grammar is detailed :ref:`here<muiStaticInit>`.
+The following list gives a short description of each element:
 
 * Root element: The initialization file root element is ``<microui>`` and contains component-specific elements.
 
@@ -71,7 +77,7 @@ The XML file grammar is detailed :ref:`here<muiStaticInit>`. The following list 
 
         <display name="DISPLAY"/>
 
-* Fonts element: The ``fonts`` element augments the initialization file with the fonts that are implicitly embedded within the application (also called system fonts). Applications can also embed their own fonts. 
+* Fonts element: The ``fonts`` element augments the initialization file with the fonts that are implicitly embedded within the application (also called system fonts). Applications can also embed their own fonts.
    
     .. note:: The system fonts are optional, in which case application has to provide some fonts to be able to draw characters.
 
@@ -180,11 +186,8 @@ No dependency.
 Installation
 ============
 
-The Static Initialization tool is part of the MicroUI module (see
-:ref:`section_microui`). Install the MicroUI module to install the
-Static Initialization tool and fill all properties in MicroUI module
-configuration file (which must specify the name of the initialization
-file).
+The Static Initialization tool is part of the MicroUI module (see :ref:`section_microui`).
+Install the MicroUI module to install the Static Initialization tool and fill all properties in MicroUI module configuration file (which must specify the name of the initialization file).
 
 
 Use

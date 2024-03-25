@@ -18,6 +18,7 @@ digraph mygraph {
     "virtualDeviceToolClasspath" [fillcolor = "#b0d6d3"]
     "addonProcessorClasspath" [fillcolor = "#b0d6d3"]
     "jdtCompilerClasspath" [fillcolor = "#b0d6d3"]
+    "wrapperClasspath" [fillcolor = "#b0d6d3"]
 
     "loadVee" -> "microejVeeClasspath" [ label="uses" ]
     "microejVeeClasspath" -> "microejVee"
@@ -28,4 +29,5 @@ digraph mygraph {
     "microejApplicationClasspath" -> "microejApplication"
     "adp" -> "addonProcessorClasspath" [ label="uses" ]
     "com.microej.gradle.java plugins" -> "jdtCompilerClasspath" [ label="uses" ]
+    "compileJava" -> "wrapperClasspath" [ label="uses" ]
 }

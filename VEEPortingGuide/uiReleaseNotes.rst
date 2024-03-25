@@ -216,7 +216,7 @@ The widget module `ej.tool.frontpanel.widget`_ provides some widgets compatible 
 This module fetches by transitivity the module `com.microej.pack.ui.ui-pack(frontpanel)`_. 
 When the Front Panel project does not require/use the latest Front Panel UI API, it can only fetch the widget module.
 
-.. note:: This module has been moved from the MicroEJ `Central`_ Repository to the MicroEJ `Developer`_ Repository.   
+.. note:: This module has been moved from the MicroEJ `Central`_ Repository to the MicroEJ `Developer`_ Repository.
 
 +---------------------+-----------------------------+--------------+
 | Widget Module Range | UI Pack Compatibility Range | Repository   |
@@ -298,7 +298,7 @@ The default implementations use the Graphics Engine software algorithms.
 
 **STM32 Chrom-ART**
 
-The :ref:`DMA2D C module <section_ui_c_module_microui_dma2d>` targets the STM32 CPU that provides the Chrom-ART accelerator. 
+The :ref:`DMA2D C module <section_ui_c_module_microui_dma2d>` targets the STM32 CPU that provides the Chrom-ART accelerator.
 
 The following table describes the version compatibility between the MicroEJ UI Packs and the C modules:
 
@@ -320,7 +320,7 @@ The following table describes the version compatibility between the MicroEJ UI P
 
 **Vivante VGLite**
 
-The :ref:`VGLite C module <section_ui_c_module_microui_vglite>` targets the NXP CPU that provides the Vivante VGLite accelerator. 
+The :ref:`VGLite C module <section_ui_c_module_microui_vglite>` targets the NXP CPU that provides the Vivante VGLite accelerator.
 
 The following table describes the version compatibility between the MicroEJ UI Packs and the C modules:
 
@@ -354,7 +354,7 @@ The following table describes the version compatibility between the C module and
 
 **Think Silicon NemaGFX**
 
-The :ref:`NemaGFX C module <section_ui_c_module_microui_nemagfx>` targets the CPU that provides the NemaGFX accelerator. 
+The :ref:`NemaGFX C module <section_ui_c_module_microui_nemagfx>` targets the CPU that provides the NemaGFX accelerator.
 
 The following table describes the version compatibility between the MicroEJ UI Packs and the C modules:
 

@@ -106,7 +106,7 @@ The rules are exactly the sames than the compile-time images.
 Process
 ~~~~~~~
 
-The process to open a Vector Image from an external memory is exactly the same than the loading of :ref:`an external MicroUI Image<section_image_external_memory>` . 
+The process to open a Vector Image from an external memory is exactly the same than the loading of :ref:`an external MicroUI Image<section_image_external_memory>`.
 
 The following steps describe how to setup the loading of an external resource from the application:
 
@@ -174,7 +174,7 @@ Rendering Engine
 ================
 
 The Vector Image Rendering Engine has the responsibility of drawing the vector images.
-The destination is the display buffer, a MicroUI :ref:`BufferedImage<section_buffered_image>` or a MicroVG BufferedVectorImage.
+The destination is the display back buffer, a MicroUI :ref:`BufferedImage<section_buffered_image>` or a MicroVG BufferedVectorImage.
 
 Three transformations can be applied when drawing a vector image:
 

@@ -262,67 +262,19 @@ Application Project
 - Add the ``com.microej.gradle.application`` plugin in the ``build.gradle.kts`` file::
 
     plugins {
-        id("com.microej.gradle.application") version "0.15.0"
+        id("com.microej.gradle.application") version "0.16.0"
     }
 
   .. note::
     The ``java`` plugin must not be added since it is automatically applied by the MicroEJ plugin.
 
-- If your Application is a Standalone Application:
+- Create the Java main class in the ``src/main/java`` folder.
+- Define the property ``applicationEntryPoint`` in the ``microej`` configuration block of the ``build.gradle.kts`` file.
+  It must be set to the Full Qualified Name of the Application main class, for example::
 
-  - Create the Java main class in the ``src/main/java`` folder.
-  - Define the property ``applicationMainClass`` in the ``microej`` configuration block of the ``build.gradle.kts`` file.
-    It must be set to the Full Qualified Name of the Application main class, for example::
-
-      microej {
-        applicationMainClass = "com.mycompany.Main"
-      }
-
-- If your Application is a Kernel Application:
-
-  - Create the Java main class in the ``src/main/java`` folder.
-  - Define the property ``applicationMainClass`` in the ``microej`` configuration block of the ``build.gradle.kts`` file.
-    It must be set to the Full Qualified Name of the Application main class, for example::
-
-      microej {
-        applicationMainClass = "com.mycompany.Main"
-      }
-
-  - Create a file named ``kernel.kf`` in the ``src/main/resources`` folder.
-    This file is a property file which must contain at least the ``version`` property, 
-    and optionally the ``name`` property (defaults to ``KERNEL``), for example::
-
-      version=1.0.0
-      name=MY-KERNEL
-
-- If your Application is a :ref:`Sandboxed Application <sandboxed_application>`:
-
-  - Create the Java class of the Feature Entry Point in the ``src/main/java`` folder, for example:
-
-    .. code:: java
-            
-      package com.mycompany;
-      
-      import ej.kf.FeatureEntryPoint;
-      
-      public class MyApplication implements FeatureEntryPoint {
-    
-        @Override
-        public void start() {
-          System.out.println("Feature MyApplication started!");
-        }
-    
-        @Override
-        public void stop() {
-          System.out.println("Feature MyApplication stopped!");
-        }
-      }
-
-  - Create a file with the extension ``.kf`` in the ``src/main/resources`` folder, for example ``MyApplication.kf``.
-    This file must at least contain the property ``entryPoint`` set to the Full Qualified Name of the Application Feature class, for example::
-
-      entryPoint=com.mycompany.MyApplication
-      version=0.1.0
+   microej {
+     applicationEntryPoint = "com.mycompany.Main"
+   }
 
 Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.
 
@@ -334,7 +286,7 @@ Add-On Library Project
 - Add the ``com.microej.gradle.addon-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.addon-library") version "0.15.0"
+        id("com.microej.gradle.addon-library") version "0.16.0"
     }
 
   .. note::
@@ -350,7 +302,7 @@ Mock
 - Add the ``com.microej.gradle.mock`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.mock") version "0.15.0"
+        id("com.microej.gradle.mock") version "0.16.0"
     }
 
   .. note::
@@ -366,7 +318,7 @@ J2SE Library Project
 - Add the ``com.microej.gradle.j2se-library`` plugin in the build script::
 
     plugins {
-        id("com.microej.gradle.j2se-library") version "0.15.0"
+        id("com.microej.gradle.j2se-library") version "0.16.0"
     }
 
   .. note::
@@ -470,13 +422,13 @@ This section explains the different ways to add a module to an existing project.
       - Add the MicroEJ plugin, depending on the module nature you want to build, for example for an Add-On Library::
       
           plugins {
-              id("com.microej.gradle.addon-library") version "0.15.0"
+              id("com.microej.gradle.addon-library") version "0.16.0"
           }
       
         or for an Application::
       
           plugins {
-              id("com.microej.gradle.application") version "0.15.0"
+              id("com.microej.gradle.application") version "0.16.0"
           }
       
         Refer to the page :ref:`sdk6_module_natures` for a complete list of the available MicroEJ natures and their corresponding plugins.

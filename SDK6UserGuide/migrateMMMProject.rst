@@ -60,7 +60,7 @@ The MMM build type defined in the ``module.ivy`` file with the ``ea:build`` tag 
 For example, here is the block to add at the beginning of the file to migrate a ``build-microej-javalib`` MMM module::
 
    plugins {
-       id("com.microej.gradle.addon-library") version "0.15.0"
+       id("com.microej.gradle.addon-library") version "0.16.0"
    }
 
 The mapping between MMM build types and Gradle plugins is:
@@ -127,10 +127,10 @@ As a first example, the main class is defined in MMM with the property ``applica
 
    <ea:property name="application.main.class" value="com.mycompany.Main"/>
 
-whereas it is defined by the ``applicationMainClass`` property of the ``microej`` block in Gradle::
+whereas it is defined by the ``applicationEntryPoint`` property of the ``microej`` block in Gradle::
 
    microej {
-      applicationMainClass = "com.mycompany.Main"
+      applicationEntryPoint = "com.mycompany.Main"
    }
 
 As a second example, the pattern of the executed tests is defined in MMM with the property ``test.run.includes.pattern``::
@@ -252,7 +252,7 @@ This section gives an example of migration from a ``module.ivy`` file to a ``bui
    :caption: build.gradle.kts
 
    plugins {
-       id("com.microej.gradle.application") version "0.15.0"
+       id("com.microej.gradle.application") version "0.16.0"
    }
 
    group = "com.mycompany"

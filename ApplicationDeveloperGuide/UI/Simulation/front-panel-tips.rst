@@ -10,7 +10,7 @@ The following sections provides a non-exhaustive list of tips to make the best u
 Pixel Accurate Display: Window scaling
 --------------------------------------
 
-The Front Panel Display is designed for a pixel-accurate simulation of the GUI application. It uses MicroUI's graphics engine, not the system native engine.
+The Front Panel Display is designed for a pixel-accurate simulation of the GUI application. It uses MicroUI's Graphics Engine, not the system native engine.
 Therefore, the Front Panel does not support scaling of the window. For accurate graphics, the window must not be resized by the system or the application
 that launched the simulation (typically the IDE). Check your settings:
 

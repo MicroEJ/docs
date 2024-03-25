@@ -14,7 +14,7 @@ These simple widgets may not provide every desired feature, but they can easily 
    widgets-list
    color-utilities
    debug-utilities
-   widget-demo
+   widget-examples
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

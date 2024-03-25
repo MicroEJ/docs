@@ -67,7 +67,7 @@ Here is an example of a ``xxx.constants.list`` file with the result in an applic
 	ej.mwt.debug.render.monitor=ej.widget.debug.RenderMonitor
 
 .. figure:: images/renderWidgetBefore.png
-	:alt: Demo-Widget's Radio Button page with "Money" selected
+	:alt: Radio Button page in Widget examples with "Money" selected
 	:align: center
 
 	Screenshot before click
@@ -87,7 +87,7 @@ Here is an example of a ``xxx.constants.list`` file with the result in an applic
 	rendermonitor@ INFO: Render executed on  com.microej.demo.widget.common.PageHelper$2 > SimpleDock > OverlapContainer > ImageWidget at {133,-90 87x25} of {44,256 20x16}
 
 .. figure:: images/renderWidgetAfter.png
-	:alt: Demo-Widget's Radio Button page with "Energy" selected
+	:alt: Radio Button page in Widget examples with "Energy" selected
 	:align: center
 
 	Screenshot after click

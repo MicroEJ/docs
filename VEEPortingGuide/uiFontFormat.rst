@@ -8,7 +8,8 @@ Font Format
 ===========
 
 The Font Engine provides fonts that conform to the Unicode
-Standard. The ``.ejf`` files hold font properties:
+Standard.
+The ``.ejf`` files hold font properties:
 
 -  Identifiers: Fonts hold at least one identifier that can be one of
    the predefined Unicode scripts (see official Unicode website) or a user-specified identifier.
@@ -53,7 +54,7 @@ Standard. The ``.ejf`` files hold font properties:
    ITALIC, or is said to be PLAIN.
 
 -  When the selected font does not have a graphical representation of
-   the required character, the first character in font is drawn instead. 
+   the required character, the first character in font is drawn instead.
 
 Multiple filters may apply at the same time, combining their
 transformations on the displayed characters.
@@ -61,17 +62,13 @@ transformations on the displayed characters.
 Pixel Transparency
 ==================
 
-The Font Renderer renders the font according the the value stored for each
-pixel. If the value is 0, the pixel is not rendered. If the value is the
-maximum value (for example the value 3 for 2 bits-per-pixel), the pixel
-is rendered using the current foreground color, completely overwriting
-the current value of the destination pixel. For other values, the pixel
-is rendered by blending the selected foreground color with the current
-color of the destination.
+The Font Renderer renders the font according the the value stored for each pixel.
+If the value is 0, the pixel is not rendered.
+If the value is the maximum value (for example the value 3 for 2 bits-per-pixel), the pixel is rendered using the current foreground color, completely overwriting the current value of the destination pixel.
+For other values, the pixel is rendered by blending the selected foreground color with the current color of the destination.
 
-If n is the number of bits-per-pixel, then the maximum value of a pixel
-(pmax) is ``2^n – 1``. The value of each color component of the final pixel
-is equal to:
+If n is the number of bits-per-pixel, then the maximum value of a pixel (pmax) is ``2^n – 1``.
+The value of each color component of the final pixel is equal to:
 
 .. math::
 
@@ -83,12 +80,16 @@ Language
 Supported Languages
 -------------------
 
-The Font Renderer manages the Unicode basic multilingual languages, whose characters are encoded on 16-bit, i.e. Unicodes from 0x0000 to 0xFFFF. It allows to render left-to-right or right-to-left writing systems: Latin (English, etc.), Arabic, Chinese, etc. are some supported languages. Note that the rendering is always performed left-to-right, even if the string are written right-to-left. There is no support for top-to-bottom writing systems. Some languages require diacritics and contextual letters; the Font Renderer manages simple rules in order to combine several characters.
+The Font Renderer manages the Unicode basic multilingual languages, whose characters are encoded on 16-bit, i.e. Unicodes from 0x0000 to 0xFFFF.
+It allows to render left-to-right or right-to-left writing systems: Latin (English, etc.), Arabic, Chinese, etc. are some supported languages.
+Note that the rendering is always performed left-to-right, even if the string are written right-to-left.
+There is no support for top-to-bottom writing systems.
+Some languages require diacritics and contextual letters; the Font Renderer manages simple rules in order to combine several characters.
 
 Arabic Support
 --------------
 
-The Font Renderer manages the ARABIC font specificities: the diacritics and contextual letters. 
+The Font Renderer manages the ARABIC font specificities: the diacritics and contextual letters.
 
 To render an Arabic text, the Font Renderer requires several points:
 

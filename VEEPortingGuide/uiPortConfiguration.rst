@@ -8,7 +8,8 @@ Principle
 =========
 
 The first step is to update the :ref:`VEE Port Configuration project <platform_configuration_creation>` (often named ``xxx-configuration``): this project holds the :ref:`mmm_module_description` (``module.ivy``).
-This update is done in several steps, described in the sections below. Some steps are optional, depending on the capabilities of the hardware.
+This update is done in several steps, described in the sections below.
+Some steps are optional, depending on the capabilities of the hardware.
 
 .. warning:: This chapter assumes that a valid VEE Port has been created (as described in the chapter :ref:`new_platform_creation`).
 
@@ -19,7 +20,7 @@ The UI Pack bundles several modules, including the Graphics Engine.
 The Graphics Engine is a library already compiled for an MCU and a C compiler.
 The :ref:`MicroEJ Central Repository <central_repository>` provides UI Packs for a set of MCU/Compiler pairs (like for MicroEJ Architectures).
 
-Refer to the chapter :ref:`pack_import` to add the required UI Pack. 
+Refer to the chapter :ref:`pack_import` to add the required UI Pack.
 As an example, the module dependency to add for a Cortex-M4 and GCC toolchain would be:
 
 .. code-block:: xml
@@ -86,7 +87,7 @@ This module is optional: when not selected, a stub implementation is used, and t
 Modules Image Decoders
 ======================
 
-.. note:: This chapter only applies when the device has a display. 
+.. note:: This chapter only applies when the device has a display.
 
 This module adds an internal image decoder: it allows the application to embed an encoded image (e.g., PNG or BMP Monochrom) and let the Graphics Engine decode it at runtime.
 Both decoders (PNG and BMP Monochrom) are optional and can be selected (or not) independently.
@@ -97,7 +98,7 @@ This module is optional: when no image decoder is embedded, the Graphics Engine 
 Module Image Generator
 ======================
 
-.. note:: This chapter only applies when the device has a display. 
+.. note:: This chapter only applies when the device has a display.
 
 This module allows decoding the application's images at compile-time.
 The application's images are decoded and stored in a binary format compatible with the Graphics Engine.
@@ -109,7 +110,7 @@ This module is optional: when not selected, the application cannot embed generat
 Module Font Generator
 =====================
 
-.. note:: This chapter only applies when the device has a display. 
+.. note:: This chapter only applies when the device has a display.
 
 This module allows for embedding the MicroEJ bitmap fonts of the application.
 The application's fonts (EJF files) are decoded and stored in a binary format compatible with the Graphics Engine.
@@ -120,9 +121,9 @@ This module is optional: when not selected, the application cannot embed fonts c
 Module Display
 ==============
 
-.. note:: This chapter only applies when the device has a display. 
+.. note:: This chapter only applies when the device has a display.
 
-This chapter takes the concepts described in chapter :ref:`section_display`. 
+This chapter takes the concepts described in chapter :ref:`section_display`.
 The first step is determining the kind of display: size, pixel format, and constraints.
 This information will be used later by the UI Port configuration project, the Simulator extension project, and the BSP.
 
@@ -138,7 +139,7 @@ The display size is fixed for a display: retrieve this size in the board's datas
 Pixel Format
 ------------
 
-The display pixel format (or pixel structure) gives two notions: the number of bits-per-pixel and the organization of color components in these bits. 
+The display pixel format (or pixel structure) gives two notions: the number of bits-per-pixel and the organization of color components in these bits.
 
 The number of bits-per-pixel (bpp) is an integer value among this list: 1, 2, 4, 8, 16, 24, or 32.
 
@@ -148,8 +149,8 @@ This format also indicates the number of bits-per-pixel.
 For instance, the format RGB565 is a 16-BPP format, indicating that the five MSB bits are for the Red color component, the six next bits are for the Green component, and the five LSB bits are for the Blue component.
 This pixel format can be symbolized by ``RRRRRGGGGGGBBBBB`` or ``RRRR RGGG GGGB BBBB``.
 
-The display pixel format is often fixed by the display itself (its capabilities) and by the memory bus between the MCU and the LCD module. 
-However, the display pixel format is often configurable by the LCD controller. 
+The display pixel format is often fixed by the display itself (its capabilities) and by the memory bus between the MCU and the LCD module.
+However, the display pixel format is often configurable by the LCD controller.
 Note that the number of bits-per-pixel and the display size fix the required memory to allocate: ``memory_size = width x height x bpp / 8``.
 Consequently, the pixel format may be less precise than the display capabilities depending on the memory available on the device.
 For instance, the RGB565 format may be used whereas the display is a 24-bit display (RGB888).
@@ -161,7 +162,7 @@ The hardware constraints (display, bus, memory, etc.) may drive the configuratio
 
 - The pixel format: Some hardware cannot use another pixel format other than the one of the display. This format may be standard or custom. See :ref:`display_pixel_structure`.
 - The size of the buffers: The available memory may be limited. This limitation can drive the chosen pixel format.
-- Memory alignment: Some LCD controllers require a memory alignment on the display buffer (alignment on 64 bits, for instance).
+- Memory alignment: Some LCD controllers require a memory alignment on the display front buffer (alignment on 64 bits, for instance).
 - Buffer width alignment: Some LCD controllers also require an alignment for each line. The line size (in pixels) in memory may be larger than the display line size (width): this is the stride. The alignment constraint may be expressed in pixels or bytes. The required memory to allocate becomes: ``memory_size = stride (in pixels) x height x bpp / 8``.
 
 Configuration

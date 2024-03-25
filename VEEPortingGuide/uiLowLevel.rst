@@ -8,11 +8,14 @@ Abstraction Layer API
 Principle
 =========
 
-The MicroUI implementation for MicroEJ requires an Abstraction Layer implementation. This Abstraction Layer implementation finalizes the MicroUI implementation started with the static initialization step (see :ref:`section_static_init`) for a given VEE Port.
+The MicroUI implementation for MicroEJ requires an Abstraction Layer implementation.
+This Abstraction Layer implementation finalizes the MicroUI implementation started with the static initialization step (see :ref:`section_static_init`) for a given VEE Port.
 
-The Abstraction Layer implementation consists in a set of headers files to implement in C to target the hardware drivers. Some functions are mandatory, others are not. Some other headers files are also available to call UI engines internal functions.
+The Abstraction Layer implementation consists in a set of headers files to implement in C to target the hardware drivers.
+Some functions are mandatory, others are not.
+Some other headers files are also available to call UI engines internal functions.
 
-For the simulator, some Front Panel interfaces and classes allow to specify the simulated VEE Port characteristics. 
+For the simulator, some Front Panel interfaces and classes allow to specify the simulated VEE Port characteristics.
 
 Embedded VEE Port
 =================
@@ -57,7 +60,8 @@ Simulator
 
    MicroUI Simulator Abstraction Layer API
 
-In the simulator the three UI engines are grouped in a mock called Front Panel. The Front Panel comes with a set of classes and interfaces which are the equivalent of headers file (``*.h``) of Embedded VEE Port.
+In the simulator the three UI engines are grouped in a mock called Front Panel.
+The Front Panel comes with a set of classes and interfaces which are the equivalent of headers file (``*.h``) of Embedded VEE Port.
 
 The specification of class names is:
 
@@ -73,7 +77,7 @@ There are some exceptions :
 - ``UIDrawing.java`` and ``DWDrawing.java`` list all drawing methods the VEE Port can implement (and already implemented by the Graphics Engine).
 - ``EventXXX`` list methods to create input events compatible with MicroUI implementation.
 
-All files and their aims are described in :ref:`section_ui_simulation`. 
+All files and their aims are described in :ref:`section_ui_simulation`.
 
 .. _ej.microui.display: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/display/package-summary.html
 .. _ej.microui.event: https://repository.microej.com/javadoc/microej_5.x/apis/ej/microui/event/package-summary.html

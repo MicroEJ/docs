@@ -31,7 +31,7 @@ LEDs
 
 When the VEE Port Configuration project LEDs module is checked, the Front Panel project should add a widget ``LED`` for each led.
 
-1. With an image editor, create an image for the LED off and an image for the LED on. Both images must have the same size. 
+1. With an image editor, create an image for the LED off and an image for the LED on. Both images must have the same size.
 2. Create a couple of images for each LED.
 3. In the Front Panel description file, add this line for each LED:
 
@@ -47,7 +47,7 @@ Buttons
 
 The widget ``Button`` can simulate any hardware button.
 
-1. With an image editor, create an image for the button released and an image for the button pressed. Both images must have the same size. 
+1. With an image editor, create an image for the button released and an image for the button pressed. Both images must have the same size.
 2. Create a couple of images for each button.
 3. In the Front Panel description file, add this line for each button:
 
@@ -56,7 +56,7 @@ The widget ``Button`` can simulate any hardware button.
    <ej.fp.widget.Button label="0" x="316" y="769" skin="W-U-0.png" pushedSkin="W-U-1.png"/>
 
 The label must have an integer value from 0 to ``NUMBER_OF_BUTTONS - 1``.
-The label is used by the application to listen to the button. 
+The label is used by the application to listen to the button.
 
 By default, the widget sends a MicroUI Button event to the Buttons Event Generator whose name is ``BUTTONS`` and whose identifier is the button's label.
 To target another Buttons Event Generator, refer to the chapter :ref:`section_ui_simulation_input`.
@@ -150,10 +150,10 @@ Here is an example of a handler:
 Button to Command Event
 -----------------------
 
-A recommended approach is to favor Command events over Buttons events. 
-MicroUI Command events are more generic because not they are not tied to a hardware component like a physical button. 
+A recommended approach is to favor Command events over Buttons events.
+MicroUI Command events are more generic because they are not tied to a hardware component like a physical button.
 Command events make the application code more flexible to hardware changes.
-For instance, instead of reacting to Button event 0, the application will respond to Command event ``Enter`` or ``Up``. 
+For instance, instead of reacting to Button event 0, the application will respond to Command event ``Enter`` or ``Up``.
 The application does not care about the source of the Command event: it may be the button 0, 1, 10, or any other input device.
 
 To map a MicroUI Command on the widget Button:

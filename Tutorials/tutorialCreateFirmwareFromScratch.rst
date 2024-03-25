@@ -75,7 +75,7 @@ at https://github.com/MicroEJ/FreeRTOS/tree/tuto-microej-firmware-from-scratch.
 Prerequisites
 -------------
 
-* MicroEJ SDK version 5.3.0 or higher (distribution 20.10). Can be
+* MicroEJ SDK 5 from version 5.3.0 to latest (distribution 20.10). Can be
   downloaded from https://repository.microej.com/packages/SDK (tested on 
   `MicroEJ SDK distribution 20.10
   <https://repository.microej.com/packages/SDK/20.10/MicroEJ-SDK-Installer-Win64-20.10.exe>`_)
@@ -403,7 +403,7 @@ This step describes how to import a :ref:`MicroEJ Architecture
    select it.
 #. Keep the default MicroEJ Repository
 #. Download the latest MicroEJ Architecture for Arm® Cortex®-M0
-   instead: https://repository.microej.com/modules/com/microej/architecture/CM0/CM0_GCC48/flopi0G22/7.14.0/flopi0G22-7.14.0-eval.xpf
+   instead: https://repository.microej.com/modules/com/microej/architecture/CM0/CM0_GCC48/flopi0G22/maintenance/7.20.3/flopi0G22-7.20.3-eval.xpf
 #. Import the MicroEJ Architecture in MicroEJ SDK
 
    #. :guilabel:`File` > :guilabel:`Import` > :guilabel:`MicroEJ` >
@@ -531,17 +531,17 @@ invoking ``make`` in the FreeRTOS BSP.
      # This is a '/' separated directory relative to 'bsp.root.dir'.
      microejinc.relative.dir=microej/inc
 	 
-#. Edit the file ``modules.ivy`` and add the MicroEJ Architecture as a dependency:
+#. Edit the file ``module.ivy`` and add the MicroEJ Architecture as a dependency:
 
    .. code-block:: XML
 
 	 <dependencies>
-		<dependency org="com.microej.architecture.CM0.CM0_GCC48" name="flopi0G22" rev="7.14.0">
+		<dependency org="com.microej.architecture.CM0.CM0_GCC48" branch="maintenance" name="flopi0G22" rev="7.20.3">
 			<artifact name="flopi0G22" m:classifier="${com.microej.platformbuilder.architecture.usage}" ext="xpf"/>
 		</dependency>
 	 </dependencies>
 		 
-#. Edit the file ``modules.properties`` and set the MicroEJ platform filename:
+#. Edit the file ``module.properties`` and set the MicroEJ platform filename:
 
    .. code-block:: properties
 
@@ -914,7 +914,7 @@ Application, the BSP port must be modified to:
 The following patch updates the BSP port ``Makefile`` to do it:
 
 .. code-block:: diff
-  :caption: https://github.com/FreeRTOS/FreeRTOS/commit/257d9e1d123be0342029e2930c0073dd5a4a2b2d
+  :caption: https://github.com/MicroEJ/FreeRTOS/commit/257d9e1d123be0342029e2930c0073dd5a4a2b2d
 	
   --- a/FreeRTOS/Demo/CORTEX_LM3S811_GCC/Makefile
   +++ b/FreeRTOS/Demo/CORTEX_LM3S811_GCC/Makefile

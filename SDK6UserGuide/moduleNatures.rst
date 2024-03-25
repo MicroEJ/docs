@@ -66,6 +66,8 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.loadFeatureConfiguration`
 - :ref:`sdk6_module_natures.tasks.buildFeature`
 - :ref:`sdk6_module_natures.tasks.runOnDevice`
+- :ref:`sdk6_module_natures.tasks.execTool`
+- :ref:`sdk6_module_natures.tasks.compileWrapperJava`
 
 .. graphviz:: graphApplicationModule.dot
 
@@ -90,6 +92,27 @@ This plugin adds the following tasks to your project:
 
 This module nature inherits from the configuration of all its tasks.
 
+
+.. _sdk6_module_natures.mock:
+
+Mock
+----
+
+**Plugin Name**: ``com.microej.gradle.mock``
+
+**Tasks**:
+
+This plugin adds the following tasks to your project:
+
+- tasks of the `Gradle Java plugin <https://docs.gradle.org/current/userguide/java_plugin.html>`__
+- :ref:`sdk6_module_natures.tasks.checkModule`
+- :ref:`sdk6_module_natures.tasks.buildMockRip`
+
+.. graphviz:: graphMockModule.dot
+
+**Configuration**:
+
+This module nature inherits from the configuration of all its tasks.
 
 .. _sdk6_module_natures.tasks:
 
@@ -157,7 +180,7 @@ loadApplicationConfiguration
 
 - The extracted VEE Port folder
 - The project classpath which contains the MicroEJ dependent application classes and resources
-- The Full Qualified Name of the Application main class
+- The Full Qualified Name of the Application main class or Feature class
 - The folder containing the application configuration (``configuration``)
 - The System properties
 - The debug mode
@@ -185,8 +208,8 @@ This task provides the following properties that can be defined in the ``microej
    * - Name
      - Description
      - Default    
-   * - ``applicationMainClass``
-     - Full Qualified Name of the main class of the application. This option is required.
+   * - ``applicationEntryPoint``
+     - Full Qualified Name of the main class or the Feature class of the application. This option is required.
      - Not set
 
 For example:
@@ -194,7 +217,7 @@ For example:
 .. code::
 
   microej {
-    applicationMainClass = "com.company.Main"
+    applicationEntryPoint = "com.company.Main"
   }
 
 .. _sdk6_module_natures.tasks.runOnSimulator:
@@ -229,7 +252,7 @@ loadTestApplicationConfiguration
 
 **Outputs**:
 
-- The directory containing the configuration file with all the properties set to launch the test application (``build/testsuite/properties/``)
+- The configuration file with all the properties set to launch the test application (``build/testsuite/properties/microej-testsuite.properties``)
 
 **Module Natures**:
 
@@ -347,7 +370,7 @@ buildWPK
 
 - The Application name
 - The Application version
-- The Full Qualified Name of the Application main class
+- The Full Qualified Name of the Application main class or Feature class
 - The Application JAR file
 - The Application Javadoc
 - The Jar files of the Application classpath
@@ -468,6 +491,67 @@ runOnDevice
 - The extracted VEE Port folder
 - The folder containing the Executable file (``build/executable/application``)
 - The configuration file with all the properties set to launch the build of the Executable (``build/properties/target.properties``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
+
+.. _sdk6_module_natures.tasks.buildMockRip:
+
+buildMockRip
+^^^^^^^^^^^^
+
+**Description**: Builds the Mock RIP.
+
+**Inputs**:
+
+- The Mock JAR file
+
+**Outputs**:
+
+- the RIP file of the Mock (``build/libs/<projectName>-<projectVersion>.rip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.mock`
+
+.. _sdk6_module_natures.tasks.execTool:
+
+execTool
+^^^^^^^^
+
+**Description**: Runs the given MicroEJ Tool.
+
+**Inputs**:
+
+- The extracted VEE Port folder
+- The configuration file with all the properties set to launch the application (``build/properties/target.properties``)
+- The folder containing the application configuration (``configuration``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
+
+.. _sdk6_module_natures.tasks.compileWrapperJava:
+
+compileWrapperJava
+^^^^^^^^^^^^^^^^^^
+
+**Description**: Compiles Application wrapper class to be able to run the Application on a VEE Port and a Kernel.
+
+**Inputs**:
+
+- The project classpath which contains the MicroEJ dependent application classes and resources
+
+**Outputs**:
+
+- The directory in which the compiled wrapper class is generated (``build/generated/microej-app-wrapper/classes``)
 
 **Module Natures**:
 

@@ -6,11 +6,7 @@ Build a Feature file
 To build the Feature file (``.fo``) of an Application, the SDK provides the Gradle ``buildFeature`` task.
 The prerequisites to use this task are:
 
-- The Application must contain a Java class implementing the ``ej.kf.FeatureEntryPoint`` interface.
-- The Application must contain a ``.kf`` file in the ``src/main/resources`` folder containing at least the property ``entryPoint`` set to the Fully Qualified Name of the Application Feature class, for example::
-
-      entryPoint=com.microej.MyFeature
-
+- The Application EntryPoint must be configured, as described in :ref:`sdk_6_create_project_configure_project`.
 - A Multi-Sandbox Kernel must be defined.
   Refer to the :ref:`sdk_6_select_kernel` page to learn how to provide a Kernel for a module project.
 
@@ -41,6 +37,20 @@ Once these prerequisites are fulfilled, the Feature file can be built:
           $ ./gradlew buildFeature
 
 The Feature file is generated in the ``build/binary`` folder of the project.
+
+.. _sdk_6_trigger_feature_build:
+
+Trigger Feature Build by Default
+--------------------------------
+
+The Feature of an Application is not built and published by default (when launching a ``./gradlew build`` or 
+a ``./gradlew publish`` for example).
+This default behavior can be changed by adding the ``produceFeatureDuringBuild()`` method 
+in the ``microej`` configuration block of the Gradle build file of the project::
+
+   microej {
+     produceFeatureDuringBuild()
+   }
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 

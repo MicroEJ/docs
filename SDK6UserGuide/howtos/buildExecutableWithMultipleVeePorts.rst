@@ -21,10 +21,10 @@ For example, if you want to build an Executable for two VEE Ports, you can creat
    |   |- settings.gradle.kts
    |   |- build.gradle.kts
 
-- The ``myApplicationVeePort1`` subproject is the Application project in which the first VEE Port is defined and the ``applicationMainClass``
+- The ``myApplicationVeePort1`` subproject is the Application project in which the first VEE Port is defined and the ``applicationEntryPoint``
   property is set to the Fully Qualified Name of your main class.
 - The ``myApplicationVeePort2`` subproject is an Application project that only contains a ``build.gradle.kts`` file in which the second VEE Port is defined and
-  the ``applicationMainClass`` property is set to the Fully Qualified Name of your main class. To avoid having to duplicate the Source code of the Application,
+  the ``applicationEntryPoint`` property is set to the Fully Qualified Name of your main class. To avoid having to duplicate the Source code of the Application,
   a `SourceSet <https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html>`__ must be defined to use the Source code of 
   the ``myApplicationVeePort1`` subproject::
 
@@ -41,7 +41,7 @@ For example, if you want to build an Executable for two VEE Ports, you can creat
   for example::
     
     plugins {
-        id("com.microej.gradle.application") version "0.15.0" apply false
+        id("com.microej.gradle.application") version "0.16.0" apply false
     }
     
     subprojects {

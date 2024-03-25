@@ -10,7 +10,7 @@ A buffer refresh strategy is responsible of making sure that what is shown on th
 The ones done since last flush *and* the past.
 To achieve that it detects the drawn regions and refresh the necessary data in the back buffer.
 
-These informations can also be used to understand what happens for each frame in terms of drawings and refreshes.
+These information can also be used to understand what happens for each frame in terms of drawings and refreshes.
 It may be very useful to identify performance issues.
 
 The drawn and restored regions can be very different depending on the selected strategy and the associated options.
@@ -68,7 +68,7 @@ But the content of these pixels is undefined depending on what this buffer was u
 It can be a previous frame, one or several flush before depending on the number of buffers.
 It can also be random pixels if nothing has been drawn on the buffer yet.
 
-These regions are considered as "dirty" since they do not contain the current drawnings nor the state of the previous display panel.
+These regions are considered as "dirty" since they do not contain the current drawings nor the state of the previous display panel.
 In other words, it can cause glitches .
 
 To detect easily these regions, a rectangle can be filled with a color for each clip handled by the buffer refresh strategy.
