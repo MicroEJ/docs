@@ -3,10 +3,21 @@
 VEE Porting Guide
 =================
 
+This document explains how the core features are
+accessed, configured and used for creating a port of MICROEJ VEE (VEE Port) on your dedicated device.
+
+It also explains how an Application can interoperate with native code, and
+the details of the Architecture modules, including their APIs, error codes
+and options.
+
+Semantics of implemented Foundation Libraries are described in
+their respective chapters as well as the required Abstraction Layers APIs for porting them 
+to different targets. 
+
 .. toctree::
    :maxdepth: 3
 
-   introduction
+  
    platform
    architecture
    pack
