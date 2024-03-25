@@ -228,7 +228,13 @@ In case of any doubt, right-click on the Platform project and select :guilabel:`
 Platform Module Configuration
 =============================
 
-A Platform module is the minimal unit that can extend a MicroEJ Architecture with additional features such as:
+The primary mechanism for augmenting the capabilities of a Platform is to add modules to it.
+
+A MicroEJ module is a group of related files (Foundation Libraries,
+scripts, link files, C libraries, Simulator Mock, tools, etc.) that together
+provide all or part of a Platform capability. 
+
+A module can extend a Architecture with additional features such as:
 
 - Runtime Capability (e.g. :ref:`multisandbox`, :ref:`section_externalresourceloader`) , 
 - Foundation Library Implementation (e.g. :ref:`MicroUI <section_microui_installation>`, :ref:`NET <network_core>`),
@@ -377,7 +383,7 @@ The result of this compilation is a ``microejapp.o`` file.
 This file has to be linked with the MicroEJ Platform runtime file (``microejruntime.a``) 
 and a third-party C project, called the Board Support Package (BSP),
 to obtain the final binary file (the Executable).
-For more information, please consult the :ref:`MicroEJ build process overview <build_process_overview>`.
+For more information, please consult the :ref:`MicroEJ build process overview <fig_overall-process>`.
 
 The BSP connection can be configured by defining 4 folders where the following files are located:
 
