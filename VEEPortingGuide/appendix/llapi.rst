@@ -8,19 +8,85 @@ Low Level API
 This chapter describes succinctly the available Low Level API, module by
 module. The exhaustive documentation of each LLAPI function is available
 in the LLAPI header files themselves. The required header files to
-implement are automatically copied in the folder ``include`` of MicroEJ
-Platform at platform build time.
+implement are automatically copied in the folder ``include`` of the VEE Port at build time.
+
+
+.. _low_level_api:
+
+Low Level API Pattern
+=====================
+
+Principle
+---------
+
+Each time the user has to supply the C code that links a VEE Port component
+to the target hardware, a *Low Level API* is defined. There is a standard pattern
+for the definition and implementation of these APIs. Each interface has a name and is
+specified by two header files:
+
+-  ``[INTERFACE_NAME].h`` specifies the functions that make up the
+   public API of the implementation. In some cases the user code will
+   never act as a client of the API, and so will never use this file.
+
+-  ``[INTERFACE_NAME]_impl.h`` specifies the functions that must be
+   coded by the user in the implementation.
+
+The user creates *implementations* of the interfaces, each captured in a
+separate C source file. In the simplest form of this pattern, only one
+implementation is permitted, as shown in the illustration below.
+
+.. figure:: ../images/low-level-1c.*
+   :alt: Low Level API Pattern (single implementation)
+   :scale: 75 %
+   :align: center
+
+   Low Level API Pattern (single implementation)
+
+The following figure shows a concrete example of an LLAPI. The C world
+(the board support package) has to implement a ``send`` function and
+must notify the library using a ``receive`` function.
+
+.. figure:: ../images/low-level-3c.*
+   :alt: Low Level API Example
+   :scale: 75 %
+   :align: center
+
+   Low Level API Example
+
+Multiple Implementations and Instances
+--------------------------------------
+
+When a Low Level API allows multiple implementations, each
+implementation must have a unique name. At run-time there may be one or
+more instances of each implementation, and each instance is represented
+by a data structure that holds information about the instance. The
+address of this structure is the handle to the instance, and that
+address is passed as the first parameter of every call to the
+implementation.
+
+The illustration below shows this form of the pattern, but with only a
+single instance of a single implementation.
+
+.. figure:: ../images/low-level-2c.*
+   :alt: Low Level API Pattern (multiple implementations/instances)
+   :scale: 75 %
+   :align: center
+
+   Low Level API Pattern (multiple implementations/instances)
+
+The ``#define`` statement in ``MYIMPL.c`` specifies the name given to
+this implementation.
 
 
 .. _LLMJVM-API-SECTION:
 
-LLMJVM: MicroEJ Core Engine
-===========================
+LLMJVM: Core Engine
+===================
 
 Naming Convention
 -----------------
 
-The Low Level MicroEJ Core Engine API, the ``LLMJVM`` API, relies on
+The Low Level Core Engine API, the ``LLMJVM`` API, relies on
 functions that need to be implemented. The naming convention for such
 functions is that their names match the ``LLMJVM_IMPL_*`` pattern.
 
@@ -64,7 +130,7 @@ One C header file is provided:
 -  LLKERNEL_impl.h
 
    Defines the set of functions that the BSP must implement to manage
-   memory allocation of dynamically installed applications.
+   memory allocation of dynamically installed Applications.
 
 
 .. _LLSP-API-SECTION:
@@ -82,7 +148,7 @@ that their names match the ``LLSP_IMPL_*`` pattern.  
 Header Files
 ------------
 
-The implementation of the Shielded Plug for the Platform assumes some
+The implementation of the Shielded Plug assumes some
 support from the underlying RTOS. It is mainly related to provide some
 synchronization when reading / writing into Shielded Plug blocks.
 
@@ -110,11 +176,11 @@ Principle
 ---------
 
 This LLAPI allows to use the External Resource Loader. When installed,
-the External Resource Loader is notified when the MicroEJ Core Engine is
+the External Resource Loader is notified when the Core Engine is
 not able to find a resource (an image, a file etc.) in the resources
-area linked with the MicroEJ Core Engine.
+area linked with the Core Engine.
 
-When a resource is not available, the MicroEJ Core Engine invokes the
+When a resource is not available, the Core Engine invokes the
 External Resource Loader in order to load an unknown resource. The
 External Resource Loader uses the LLAPI EXT_RES to let the BSP loads or
 not the expected resource. The implementation has to be able to load
@@ -200,7 +266,7 @@ them to event generator IDs.
 ``LLUI_INPUT_IMPL_exitCriticalSection``  need to provide the Input Engine with a
 critical section mechanism for synchronizing devices when sending events
 to the internal event queue. The mechanism used to implement the
-synchronization will depend on the platform configuration (with or
+synchronization will depend on the VEE Port configuration (with or
 without RTOS), and whether or not events are sent from an interrupt
 context.
 
@@ -305,7 +371,7 @@ Event Buffer
 ------------
 
 Functions ``LLUI_INPUT_IMPL_log_xxx`` allow logging the use of event buffer.
-Implementation of these LLAPIs is already available on the MicroEJ Central Repository (``LLUI_INPUT_LOG_impl.c``). 
+Implementation of these LLAPIs is already available on the Central Repository (``LLUI_INPUT_LOG_impl.c``). 
 This implementation is using an array to add some metadata to each event. 
 This metadata is used when the BSP is calling ``LLUI_INPUT_dump()``.
 When no implementation is included in the BSP, the call to ``LLUI_INPUT_dump()`` has no effect (no available logger).
@@ -342,7 +408,7 @@ The display driver must reserve a runtime memory buffer for creating dynamic ima
 The section name is ``.bss.microui.display.imagesHeap``.
 
 Functions ``LLUI_DISPLAY_IMPL_imageHeapXXX`` allow to control the image buffers allocation in the image heap. 
-Implementation of these LLAPIs is already available on the MicroEJ Central Repository (``LLUI_DISPLAY_HEAP_impl.c``). 
+Implementation of these LLAPIs is already available on the Central Repository (``LLUI_DISPLAY_HEAP_impl.c``). 
 This implementation is using a best fit allocator. 
 It can be updated to log the allocations, the remaining space, etc. 
 When no implementation is included in the BSP, the default Graphics Engine'a allocator (a best fit allocator) is used.
@@ -368,7 +434,7 @@ The content of this buffer is flushed to the external display memory by the func
 The parameters define one or several rectangular regions of the content that have changed during the last drawing action and that must be flushed to the front buffer (dirty area).
 This function should be atomic: the implementation has to start another task or a hardware device (often a DMA) to perform the flush.
 
-As soon as the application performs a new drawing, the Graphics Engine locks the thread.
+As soon as the Application performs a new drawing, the Graphics Engine locks the thread.
 It will automatically be unlocked when the BSP calls ``LLUI_DISPLAY_setDrawingBuffer`` at the end of the flush.
 
 Display Characteristics
@@ -495,7 +561,7 @@ LLVG_PATH: Vector Path
 Principle
 ---------
 
-The :ref:`Path module <section_vg_path>` provides Low Level APIs for creating paths in platform specific format. The file ``LLVG_PATH_impl.h``, which comes with the Path module, defines the API headers to be implemented.
+The :ref:`Path module <section_vg_path>` provides Low Level APIs for creating paths in target specific format. The file ``LLVG_PATH_impl.h``, which comes with the Path module, defines the API headers to be implemented.
 The file ``LLVG_PAINTER_impl.h`` defines the API headers to be implemented to draw the paths (with a color or a gradient).
 
 Naming Convention
@@ -506,14 +572,14 @@ The Low Level APIs rely on functions that must be implemented. The naming conven
 Creation
 --------
 
-The header file ``LLVG_PATH_impl.h`` allows to convert a MicroVG library format path in a buffer that represents the same vectorial path in the platform specific format (generally GPU format).
+The header file ``LLVG_PATH_impl.h`` allows to convert a MicroVG library format path in a buffer that represents the same vectorial path in the target specific format (generally GPU format).
 
 The first function called is ``LLVG_PATH_IMPL_initializePath``, which allows the implementation to initialize the path buffer.
 The buffer is allocated in the Java heap and its size is fixed by the MicroVG implementation.
-When the buffer is too small for the platform specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
+When the buffer is too small for the target specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
 
 The next steps consist in appending some commands in the path buffer.
-The command encoding depends on the platform specific format.
+The command encoding depends on the target specific format.
 When the buffer is too small to add the new command, the implementation has to return a value that indicates the number of bytes the array must be enlarged with. 
 
 List of commands:
@@ -540,7 +606,7 @@ A path can be reopened (function ``LLVG_PATH_IMPL_reopenPath``), that consists i
 Drawing
 -------
 
-The header file ``LLVG_PAINTER_impl.h`` provides the functions called by the application via VectorGraphicsPainter to draw a path.
+The header file ``LLVG_PAINTER_impl.h`` provides the functions called by the Application via VectorGraphicsPainter to draw a path.
 
 - A path can be drawn with a 32-bit color (ARGB8888): ``LLVG_PAINTER_IMPL_drawPath``.
 - A path can be drawn with a :ref:`linear gradient <section_vg_gradient>`: ``LLVG_PAINTER_IMPL_drawGradient``.
@@ -556,7 +622,7 @@ LLVG_GRADIENT: Vector Linear Gradient
 Principle
 ---------
 
-The :ref:`Gradient module <section_vg_gradient>` provides Low Level APIs for creating linear gradients in platform specific format. The file ``LLVG_GRADIENT_impl.h``, which comes with the Gradient module, defines the API headers to be implemented.
+The :ref:`Gradient module <section_vg_gradient>` provides Low Level APIs for creating linear gradients in target specific format. The file ``LLVG_GRADIENT_impl.h``, which comes with the Gradient module, defines the API headers to be implemented.
 
 Naming Convention
 -----------------
@@ -567,11 +633,11 @@ Implementation
 --------------
 
 Only one function has to be implemented: ``LLVG_GRADIENT_IMPL_initializeGradient``.
-It consists in encoding the MicroVG LinearGradient in a buffer that represents the linear gradient in platform specific format (generally GPU format).  
+It consists in encoding the MicroVG LinearGradient in a buffer that represents the linear gradient in target specific format (generally GPU format).  
 
 This function allows the implementation to initialize the gradient buffer.
 The buffer is allocated in the Java heap and its size is fixed by the MicroVG implementation.
-When the buffer is too small for the platform specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
+When the buffer is too small for the target specific format, the implementation has to return the expected buffer size instead of the keyword ``LLVG_SUCCESS``.
 
 .. _LLVG-FONT-API-SECTION:
 
@@ -614,7 +680,7 @@ See `VectorFont`_ for more information.
 Drawing
 -------
 
-The header file ``LLVG_PAINTER_impl.h`` provides the functions called by the application via VectorGraphicsPainter to draw a path.
+The header file ``LLVG_PAINTER_impl.h`` provides the functions called by the Application via VectorGraphicsPainter to draw a path.
 
 - A string can be drawn with a 32-bit color (ARGB8888): ``LLVG_PAINTER_IMPL_drawString``.
 - A string can be drawn with a :ref:`linear gradient <section_vg_gradient>`: ``LLVG_PAINTER_IMPL_drawStringGradient``.
@@ -886,7 +952,7 @@ One C header file is provided:
 -  LLDEVICE_impl.h
 
    Defines a set of functions that the BSP must implement to get the
-   platform architecture name and unique device identifier.
+   Architecture name and unique device identifier.
 
 
 .. _LLWATCHDOG_TIMER-API-SECTION:
@@ -900,7 +966,7 @@ Naming Convention
 The Low Level Watchdog Timer API (LLWATCHDOG_TIMER), provides functions that allow the use of this API
 at the BSP level in C. The names of these functions match the ``LLWATCHDOG_TIMER_IMPL_*`` pattern.
 
-The Watchdog API is delivered with a Generic C implementation on which the platform must
+The Watchdog API is delivered with a Generic C implementation on which the VEE Port must
 depend. This implementation relies on functions that need to be implemented by engineers in a driver.
 The name of these functions match the ``LLWATCHDOG_TIMER_IMPL_*_action`` pattern.
 
@@ -917,7 +983,7 @@ This C header file contains functions to implement:
 
 -  watchdog_timer_helper.h
 
-   Defines a set of functions that the BSP must implement to link the platform watchdog timer
+   Defines a set of functions that the BSP must implement to link the VEE Port watchdog timer
    to the Watchdog Timer library.
 
 .. _LLSECURITY-API-SECTION:
