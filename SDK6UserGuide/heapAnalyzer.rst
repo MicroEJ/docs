@@ -165,6 +165,26 @@ If you are in a Multi-Sandbox context, the following sections must be dumped add
   - either dump the entire memory where microej runtime and code sections are linked,
   - or generate the :ref:`VEE memory dump script <generate_vee_memory_dump_script>` which will dump all the required sections instead.
 
+    .. note::
+
+       In a Mono-Sandbox context, use ``1_java_heap.hex``.
+
+       In a Multi-Sandbox context, merge (at least) ``1_java_heap.hex`` and ``9_installed_features.hex`` with:
+
+         .. tabs::
+
+            .. tab:: Command Prompt
+
+               .. code-block:: console
+
+                  copy /b 1_java_heap.hex + 9_installed_features.hex memory.hex
+
+            .. tab:: PowerShell
+
+               .. code-block:: powershell
+
+                  Get-Content 1_java_heap.hex, 9_installed_features.hex | Set-Content memory.hex
+
 .. _sdk6_heapdumper_extract_heap:
 
 Extract the Heap dump from the ``.hex`` file
