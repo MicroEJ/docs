@@ -464,7 +464,7 @@ specified by [JLS].
       - ``F``
       - ``F``
       - ``K``
-      - ``true`` if the type has been type has been exposed as an API type (§), ``false`` otherwise.
+      - ``true`` if the type has been exposed as an API type (§), ``false`` otherwise.
    - 
       - ``Fi``
       - ``Fi``
@@ -485,7 +485,7 @@ addition to [JLS] specification.
       - Context Owner
       - Code Owner
       - Class Owner
-      - New instance ownwer
+      - New instance owner
    - 
       - ``K``
       - ``K``
@@ -544,7 +544,7 @@ returned as specified by [JLS].
       - Context owner
       - Code owner
       - Resource owner
-      - Class.getResourceAsStream(String) allowed
+      - ``Class.getResourceAsStream(String)`` allowed
    - 
       - ``K``
       - ``K``
