@@ -10,9 +10,10 @@ The following table provides links to the complete KF APIs & specification.
 
 .. list-table::
    :widths: 10 30
+   :header-rows: 1
 
-   * - **Documentation**
-     - **Link**
+   * - Documentation
+     - Link
    * - Java APIs
      - https://repository.microej.com/javadoc/microej_5.x/apis/ej/kf/package-summary.html
    * - Specification
@@ -418,33 +419,55 @@ addition to [JLS] specification. If it is not allowed by this
 specification, a ``java.lang.ClassNotFoundException`` is thrown as
 specified by [JLS].
 
-+---------------+------------+------------+---------------------------+
-| Context Owner | Code Owner | Type Owner | ``Class.forName(Type)``   |
-|               |            |            | allowed                   |
-+===============+============+============+===========================+
-| ``K``         | ``K``      | ``K``      | ``true``                  |
-+---------------+------------+------------+---------------------------+
-| ``K``         | ``K``      | ``F``      | ``false``                 |
-+---------------+------------+------------+---------------------------+
-| ``K``         | ``F``      | ``K``      | ``N/A``                   |
-+---------------+------------+------------+---------------------------+
-| ``K``         | ``F``      | ``F``      | ``N/A``                   |
-+---------------+------------+------------+---------------------------+
-| ``F``         | ``K``      | ``K``      | ``true``                  |
-+---------------+------------+------------+---------------------------+
-| ``Fi``        | ``K``      | ``Fj``     | ``i==j``                  |
-+---------------+------------+------------+---------------------------+
-| ``F``         | ``F``      | ``K``      | ``true`` if the type      |
-|               |            |            | has been type has been    |
-|               |            |            | exposed as an API type    |
-|               |            |            | (§), ``false`` otherwise. |
-+---------------+------------+------------+---------------------------+
-| ``Fi``        | ``Fi``     | ``Fj``     | ``i==j``                  |
-+---------------+------------+------------+---------------------------+
+.. list-table:: Table 1: ``Class.forName(...)`` access rules
+   :header-rows: 1
+   :widths: 2 2 2 6
 
-.. container:: caption
-
-   Table 1: ``Class.forName(...)`` access rules
+   - 
+      - Context Owner
+      - Code Owner
+      - Type Owner
+      - ``Class.forName(Type)`` allowed
+   - 
+      - ``K``
+      - ``K``
+      - ``K``
+      - ``true``
+   - 
+      - ``K``
+      - ``K``
+      - ``F``
+      - ``false``
+   - 
+      - ``K``
+      - ``F``
+      - ``K``
+      - ``N/A``
+   - 
+      - ``K``
+      - ``F``
+      - ``F``
+      - ``N/A``
+   - 
+      - ``F``
+      - ``K``
+      - ``K``
+      - ``true``
+   - 
+      - ``Fi``
+      - ``K``
+      - ``Fj``
+      - ``i==j``
+   - 
+      - ``F``
+      - ``F``
+      - ``K``
+      - ``true`` if the type has been type has been exposed as an API type (§), ``false`` otherwise.
+   - 
+      - ``Fi``
+      - ``Fi``
+      - ``Fj``
+      - ``i==j``
 
 
 ``Class.newInstance``
@@ -453,21 +476,55 @@ specified by [JLS].
 defines the semantic rules for ``java.lang.Class.newInstance(Class)`` in
 addition to [JLS] specification.
 
-============= ========== =========== ===================
-Context Owner Code Owner Class Owner New instance ownwer
-*K*           *K*        *K*         *K*
-*K*           *K*        *F*         *F*
-*K*           *F*        *K*         *N/A*
-*K*           *F*        *F*         *N/A*
-*F*           *K*        *K*         *F*
-*F*           *K*        *F*         *F*
-*F*           *F*        *K*         *F*
-*F*           *F*        *F*         *F*
-============= ========== =========== ===================
+.. list-table:: Table 2: ``Class.newInstance(...)`` access rules
+   :header-rows: 1
 
-.. container:: caption
+   - 
+      - Context Owner
+      - Code Owner
+      - Class Owner
+      - New instance ownwer
+   - 
+      - ``K``
+      - ``K``
+      - ``K``
+      - ``K``
+   - 
+      - ``K``
+      - ``K``
+      - ``F``
+      - ``F``
+   - 
+      - ``K``
+      - ``F``
+      - ``K``
+      - ``N/A``
+   - 
+      - ``K``
+      - ``F``
+      - ``F``
+      - ``N/A``
+   - 
+      - ``F``
+      - ``K``
+      - ``K``
+      - ``F``
+   - 
+      - ``F``
+      - ``K``
+      - ``F``
+      - ``F``
+   - 
+      - ``F``
+      - ``F``
+      - ``K``
+      - ``F``
+   - 
+      - ``F``
+      - ``F``
+      - ``F``
+      - ``F``
 
-   Table 2: ``Class.newInstance(...)`` access rules
 
 ``Class.getResourceAsStream``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -477,36 +534,60 @@ defines the semantic rules for
 specification. If it is not allowed by this specification, ``null`` is
 returned as specified by [JLS].
 
-+---------------+------------+----------------+-----------------------------------+
-| Context owner | Code owner | Resource owner | Class.getResourceAsStream(String) |
-|               |            |                | allowed                           |
-+---------------+------------+----------------+-----------------------------------+
-| ``K``         | ``K``      | ``K``          | ``true``                          |
-+---------------+------------+----------------+-----------------------------------+
-| ``K``         | ``K``      | ``F``          | ``false``                         |
-+---------------+------------+----------------+-----------------------------------+
-| ``K``         | ``F``      | ``K``          | ``N/A``                           |
-+---------------+------------+----------------+-----------------------------------+
-| ``K``         | ``F``      | ``F``          | ``N/A``                           |
-+---------------+------------+----------------+-----------------------------------+
-| ``F``         | ``K``      | ``K``          | ``true``                          |
-+---------------+------------+----------------+-----------------------------------+
-| ``Fi``        | ``K``      | ``Fj``         | ``i==j``                          |
-|               |            |                |                                   |
-|               |            |                | If the same resource name is      |
-|               |            |                | declared by both the Kernel and   |
-|               |            |                | the Feature, the Feature resource |
-|               |            |                | takes precedence over the Kernel  |
-|               |            |                | resource.                         |
-+---------------+------------+----------------+-----------------------------------+
-| ``F``         | ``F``      | ``K``          | ``false``                         |
-+---------------+------------+----------------+-----------------------------------+
-| ``Fi``        | ``Fi``     | ``Fj``         | ``i==j``                          |
-+---------------+------------+----------------+-----------------------------------+
+.. list-table:: Table 3: ``Class.getResourceAsStream(...)`` access rules
+   :header-rows: 1
+   :widths: 2 2 2 6
 
-.. container:: caption
+   - 
+      - Context owner
+      - Code owner
+      - Resource owner
+      - Class.getResourceAsStream(String) allowed
+   - 
+      - ``K``
+      - ``K``
+      - ``K``
+      - ``true``
+   - 
+      - ``K``
+      - ``K``
+      - ``F``
+      - ``false``
+   - 
+      - ``K``
+      - ``F``
+      - ``K``
+      - ``N/A``
+   - 
+      - ``K``
+      - ``F``
+      - ``F``
+      - ``N/A``
+   - 
+      - ``F``
+      - ``K``
+      - ``K``
+      - ``true``
+   - 
+      - ``F\ i``
+      - ``K``
+      - ``F\ j``
+      - ``i==j``
 
-   Table 3: ``Class.getResourceAsStream(...)`` access rules
+        If the same resource name is declared by both the Kernel and
+        the Feature, the Feature resource takes precedence over the
+        Kernel resource.
+   - 
+      - ``F``
+      - ``F``
+      - ``K``
+      - ``false``
+   - 
+      - ``F\ i``
+      - ``F\ i``
+      - ``F\ j``
+      - ``i==j``
+
 
 ``Thread.currentThread``
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -865,74 +946,57 @@ A base type argument is directly passed without conversion (by copy).
 
 A reference argument is subject to conversion rules, according to .
 
-+------------------+---------+----------------+------------------+
-| Type             | Owner   | Instance Owner | Transfer Rule    |
-+==================+=========+================+==================+
-| Any Class, Array | Kernel  | Kernel         | Direct reference |
-| or Interface     |         |                | is passed to the |
-|                  |         |                | target Feature.  |
-+------------------+---------+----------------+------------------+
-| Any Class, Array | Kernel  | Feature        | Converted to the |
-| or Interface     |         |                | target Feature   |
-|                  |         |                | if Kernel has    |
-|                  |         |                | registered a     |
-|                  |         |                | Kernel type      |
-|                  |         |                | converter,       |
-|                  |         |                | otherwise        |
-|                  |         |                | Forbidden. See   |
-|                  |         |                | section          |
-|                  |         |                | `<#anchor-7>`__. |
-+------------------+---------+----------------+------------------+
-| Array of base    | Any     | Feature        | A new array is   |
-| types            |         |                | allocated in the |
-|                  |         |                | target Feature   |
-|                  |         |                | and elements are |
-|                  |         |                | copied into.     |
-+------------------+---------+----------------+------------------+
-| Array of         | Any     | Feature        | A new array is   |
-| references       |         |                | allocated in the |
-|                  |         |                | target Feature   |
-|                  |         |                | and for each     |
-|                  |         |                | element is       |
-|                  |         |                | applied these    |
-|                  |         |                | conversion       |
-|                  |         |                | rules.           |
-|                  |         |                | (recursively).   |
-+------------------+---------+----------------+------------------+
-| Shared Interface | Feature | Feature        | A Proxy to the   |
-|                  |         |                | original object  |
-|                  |         |                | is created and   |
-|                  |         |                | passed to the    |
-|                  |         |                | receiving        |
-|                  |         |                | Feature.         |
-|                  |         |                |                  |
-|                  |         |                | -  If argument   |
-|                  |         |                |    is already a  |
-|                  |         |                |    Proxy and the |
-|                  |         |                |    target owner  |
-|                  |         |                |    is the same   |
-|                  |         |                |    than the      |
-|                  |         |                |    target Shared |
-|                  |         |                |    Interface     |
-|                  |         |                |    owner, the    |
-|                  |         |                |    original      |
-|                  |         |                |    object is     |
-|                  |         |                |    passed.       |
-|                  |         |                |    (unwrapping)  |
-|                  |         |                | -  Otherwise a   |
-|                  |         |                |    new Proxy     |
-|                  |         |                |    wrapping on   |
-|                  |         |                |    the original  |
-|                  |         |                |    object is     |
-|                  |         |                |    passed.       |
-+------------------+---------+----------------+------------------+
-| Any Class, Array | Feature | Feature        | Forbidden.       |
-| or Interface     |         |                |                  |
-+------------------+---------+----------------+------------------+
+.. list-table:: Table 4 Shared Interface Argument Conversion Rules
+   :header-rows: 1
+   :widths: 3 2 2 8
 
-.. container:: caption
+   - 
+      - Type
+      - Owner
+      - Instance Owner
+      - Transfer Rule
+   - 
+      - Any Class, Array or Interface
+      - Kernel
+      - Kernel
+      - Direct reference is passed to the target Feature.
+   - 
+      - Any Class, Array or Interface
+      - Kernel
+      - Feature
+      - Converted to the target Feature if Kernel has registered a
+        Kernel type converter, otherwise Forbidden. See section
+        ` <#anchor-7>`__.
+   - 
+      - Array of base types
+      - Any
+      - Feature
+      - A new array is allocated in the target Feature and elements are
+        copied into.
+   - 
+      - Array of references
+      - Any
+      - Feature
+      - A new array is allocated in the target Feature and for each
+        element is applied these conversion rules. (recursively).
+   - 
+      - Shared Interface
+      - Feature
+      - Feature
+      - A Proxy to the original object is created and passed to the
+        receiving Feature.
 
-   Table 4 Shared Interface Argument Conversion Rules
+         -  If argument is already a Proxy and the target owner is the
+            same than the target Shared Interface owner, the original
+            object is passed. (unwrapping)
+         -  Otherwise a new Proxy wrapping on the original object is
+            passed.
+   - 
+      - Any Class, Array or Interface
+      - Feature
+      - Feature
+      - Forbidden.
+
 
 Kernel Type Converters
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -961,27 +1025,30 @@ KF Declaration file is a Properties file. It must appear at the root of
 any application classpath (directory or JAR file). Keys are described
 hereafter:
 
-+------------+---------------------------+-------------------------------+
-| Key        | Usage                     | Description                   |
-+============+===========================+===============================+
-| entryPoint | Mandatory for Feature     | The fully qualified name      |
-|            | only.                     | of the class that implements  |
-|            |                           | ``ej.kf.FeatureEntryPoint``   |
-+------------+---------------------------+-------------------------------+
-| name       | Optional                  | ``KERNEL`` by default for     |
-|            |                           | the Kernel, or the name       |
-|            |                           | of the file without the       |
-|            |                           | ``.kf`` extension for         |
-|            |                           | Features.                     |
-+------------+---------------------------+-------------------------------+
-| version    | Mandatory                 | String version, that can      |
-|            |                           | retrieved using               |
-|            |                           | ``ej.kf.Module.getVersion()`` |
-+------------+---------------------------+-------------------------------+
+.. list-table:: Illustration 10: KF Definition File Properties Specification
+   :header-rows: 1
+   :widths: 2 2 6
 
-.. container:: caption
+   - 
+      - Key
+      - Usage
+      - Description
+   - 
+      - entryPoint
+      - Mandatory for Feature only.
+      - The fully qualified name of the class that implements
+        ``ej.kf.FeatureEntryPoint``
+   - 
+      - name
+      - Optional
+      - ``KERNEL`` by default for the Kernel, or the name of the file
+        without the ``.kf`` extension for Features.
+   - 
+      - version
+      - Mandatory
+      - String version, that can retrieved using
+        ``ej.kf.Module.getVersion()``
 
-   Illustration 10: KF Definition File Properties Specification
 
 Kernel API Definition
 ~~~~~~~~~~~~~~~~~~~~~
@@ -1028,7 +1095,7 @@ file, with the following schema:
 
 
 .. list-table:: Illustration 12: Kernel API Tags Specification
-   :widths: 2 10 8
+   :widths: 2 8 8
    :header-rows: 1
 
    *  - Tag
