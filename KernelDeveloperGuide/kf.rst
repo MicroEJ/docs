@@ -335,6 +335,8 @@ owned by the Kernel if and only if the current execution context is in
 Kernel mode (:ref:`§ <kernelmode>`), otherwise a
 ``java.lang.IllegalAccessError`` is thrown at runtime.
 
+.. _contextlocalstorage:
+
 Context Local Static Field References
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -343,7 +345,7 @@ single memory slot in the context of the owner of the type that defines
 the field.
 
 The Kernel can declare a static field as a context local storage field
-in ``kernel.intern`` file (Section §\ ` <#anchor-2>`__ for full format
+in ``kernel.intern`` file (Section :ref:`§ <ctxtlocalstoragegrammar>` for full format
 specification). A memory slot is then allocated for the Kernel and
 duplicated for each Feature. As it is a static field, it is initialized
 to ``null``.
@@ -626,19 +628,17 @@ A Feature is in one of the following states:
 
 -  **STARTED**: Feature has been started and is running.
 
--  **STOPPED**: Feature has been stopped and all its owned threads and execution contexts are terminated. The memory and resources are not yet reclaimed. See (§\ ` <#anchor-3>`__) for the complete stop sequence.
+-  **STOPPED**: Feature has been stopped and all its owned threads and execution contexts are terminated. The memory and resources are not yet reclaimed. See (:ref:`§ <stopsequence>`) for the complete stop sequence.
 
 -  **UNINSTALLED**: Feature has been unlinked from the Kernel.
 
 `Illustration 5 <illustration-5>`_ describes the Feature state diagram and the methods that changes Feature's state.
 
 .. _illustration-5:
-.. image:: png/kf_spec/kf_lifecycle.png
+.. figure:: png/kf_spec/kf_lifecycle.png
   :align: center
   :width: 1177px
   :height: 655px
-
-.. container:: caption
 
   Illustration 5: Feature State Diagram
 
@@ -666,6 +666,8 @@ thread:
 -  Entrypoint is instanciated
 
 -  ``FeatureEntryPoint.start()`` is called
+
+.. _stopsequence:
 
 Stop
 ~~~~
@@ -742,7 +744,7 @@ Here is an example for exposing ``System.out.println(String)`` to a Feature:
   </require>
 
 
-Section ` <#anchor-4>`__ describes the Kernel API file format.
+Section :ref:`kernelapi` describes the Kernel API file format.
 
 Precedence Rules
 ~~~~~~~~~~~~~~~~
@@ -869,8 +871,7 @@ a shared interfaces file, as following:
   </sharedInterfaces>
 
 
-Section ` <#anchor-5>`__ describes the Shared Interface file format
-specification.
+Section :ref:`sharedinterfacefileformat` describes the Shared Interface file format specification.
 
 An interface declared as Shared Interface can extends Feature interfaces
 (which are not declared as Shared Interfaces) or Kernel interfaces.
@@ -878,7 +879,7 @@ An interface declared as Shared Interface can extends Feature interfaces
 A Shared Interface is composed of all methods declared by itself and its
 super types. Each method must comply with the following:
 
--  types declared for parameters and optional return value must be transferable types (see section ` <#anchor-6>`__)
+-  types declared for parameters and optional return value must be transferable types (see section :ref:`transferabletypes`)
 
 -  exceptions thrown must be owned by the Kernel
 
@@ -939,6 +940,8 @@ another Feature using the method ``ej.kf.Kernel.bind()``.
    ``ej.kf.Kernel.bind()\ multiple times`` with the same parameters
    returns the same object.
 
+.. _transferabletypes:
+
 Arguments Transfer
 ~~~~~~~~~~~~~~~~~~
 
@@ -965,8 +968,7 @@ A reference argument is subject to conversion rules, according to .
       - Kernel
       - Feature
       - Converted to the target Feature if Kernel has registered a
-        Kernel type converter, otherwise Forbidden. See section
-        ` <#anchor-7>`__.
+        Kernel type converter, otherwise Forbidden. See section :ref:`kernelconverter`.
    - 
       - Array of base types
       - Any
@@ -997,6 +999,7 @@ A reference argument is subject to conversion rules, according to .
       - Feature
       - Forbidden.
 
+.. _kernelconverter:
 
 Kernel Type Converters
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -1049,6 +1052,7 @@ hereafter:
       - String version, that can retrieved using
         ``ej.kf.Module.getVersion()``
 
+.. _kernelapi:
 
 Kernel API Definition
 ~~~~~~~~~~~~~~~~~~~~~
@@ -1155,6 +1159,8 @@ The certificate file must be configured as following:
    must be bounded at the beginning by ``-----BEGIN CERTIFICATE-----``,
    and must be bounded at the end by ``-----END CERTIFICATE-----``. 
 
+.. _sharedinterfacefileformat:
+
 Shared Interface Declaration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1190,7 +1196,7 @@ Kernel Advanced Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``The kernel.intern`` files is for Kernel advanced configurations such as
-declaring context local storage static fields (§\ ` <#anchor-8>`__). It
+declaring context local storage static fields (:ref:`§ <contextlocalstorage>`). It
 must appear at the root of any application classpath (directory or JAR
 file).
 
@@ -1212,6 +1218,8 @@ file).
 
 Context Local Storage Static Field Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _ctxtlocalstoragegrammar:
 
 XML Schema & Format
 ^^^^^^^^^^^^^^^^^^^
