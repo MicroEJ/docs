@@ -133,8 +133,10 @@ ARM Cortex-M4
      - ``--cpu Cortex-M4F --fpu VFPv4_sp``
      - `flopi4I35 <https://repository.microej.com/modules/com/microej/architecture/CM4/CM4hardfp_IAR83/flopi4I35/>`__
 
-Note: Since MicroEJ 4.0, Cortex-M4 architectures are compiled using
-``hardfp`` convention call.
+.. note::
+  
+  -  Cortex-M4 architectures are compiled using ``hardfp`` convention call.
+  -  Cortex-M4 architectures are compatible with Cortex-M33 core with DSP extension.
 
 
 ARM Cortex-M7

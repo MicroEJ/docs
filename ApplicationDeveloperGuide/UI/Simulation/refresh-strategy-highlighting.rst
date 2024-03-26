@@ -23,9 +23,9 @@ Drawn Region(s)
 
 The buffer refresh strategies registers the list of drawn regions between two flushes.
 These regions can be highlighted during the execution of an application.
-It is activated by setting the ``ej.fp.brs.drawnColor`` option to any 32-bit color (opaque or semi-transparent).
+It is activated by setting the ``ej.fp.brs.drawnColor`` option to any 24-bit RGB color.
 
-For example with ``ej.fp.brs.drawnColor=0xff00ff00``:
+For example with ``ej.fp.brs.drawnColor=0x00ff00``:
 
 .. figure:: images/highlight_drawn_scroll.png
    :align: center
@@ -43,9 +43,9 @@ Restored Region(s)
 ------------------
 
 It is also possible to track the regions restored by the buffer refresh strategies.
-The ``ej.fp.brs.restoredColor`` option can be set to any 32-bit color (opaque or semi-transparent) to highlight these regions.
+The ``ej.fp.brs.restoredColor`` option can be set to any 24-bit RGB color to highlight these regions.
 
-For example with ``ej.fp.brs.restoredColor=0xffff00ff``:
+For example with ``ej.fp.brs.restoredColor=0xff00ff``:
 
 .. figure:: images/highlight_restored_radio_full.png
    :align: center
@@ -72,9 +72,15 @@ These regions are considered as "dirty" since they do not contain the current dr
 In other words, it can cause glitches .
 
 To detect easily these regions, a rectangle can be filled with a color for each clip handled by the buffer refresh strategy.
-It is activated by setting the ``ej.fp.brs.dirtyColor`` option to any 32-bit color (opaque or semi-transparent).
+It is activated by setting the ``ej.fp.brs.dirtyColor`` option to any 32-bit ARGB color (opaque or semi-transparent).
 
-For example: ``ej.fp.brs.dirtyColor=0x880000ff``.
+For example: ``ej.fp.brs.dirtyColor=0x200000ff``:
+
+.. figure:: images/highlight_dirty_animation.png
+   :align: center
+
+   Dirty regions when animating with the clip not correctly set.
+
 
 Combining Highlightings
 -----------------------
@@ -86,8 +92,9 @@ For example:
 
 .. code-block:: properties
 
-   ej.fp.brs.drawnColor=0xff00ff00
-   ej.fp.brs.restoredColor=0xffff00ff
+   ej.fp.brs.drawnColor=0x00ff00
+   ej.fp.brs.restoredColor=0xff00ff
+   ej.fp.brs.dirtyColor=0x200000ff
 
 .. figure:: images/highlight_drawn_restored_scroll.png
    :align: center
@@ -98,6 +105,11 @@ For example:
    :align: center
 
    Drawn and restored regions when selecting another radio button.
+
+.. figure:: images/highlight_dirty_drawn_animation.png
+   :align: center
+
+   Drawn and dirty regions when animating with the clip not correctly set.
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 

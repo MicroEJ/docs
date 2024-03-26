@@ -20,7 +20,7 @@ Functional Description
 ======================
 
 The Multi-Sandbox process extends the overall process described in
-:ref:`the overview of the platform process <build_process_overview>`.
+:ref:`the overview of the platform process <fig_overall-process>`.
 
 .. figure:: images/process-multiapp-overview.*
    :alt: Multi-Sandbox Process

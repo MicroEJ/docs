@@ -11,7 +11,8 @@ The aim of this library is to enable the creation of user interface in Java by r
    :maxdepth: 2
 
    usage
-   drawings
+   rendering
+   drawingLogs
    images
    fonts
    fontDesigner

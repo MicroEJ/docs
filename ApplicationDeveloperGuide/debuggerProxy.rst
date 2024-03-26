@@ -217,7 +217,7 @@ Open a shell terminal on your workstation and run the following command:
         -Ddebugger.out.path=<path to the Executable file (application.out)> \
         -Ddebugger.features.out.path=<comma-separated list of the Feature files with debug information (*.fodbg files). To be used if you want to debug an installed Sandboxed Application> \
         -Ddebugger.out.hex.path=<comma-separated list of the memory dump files in Intel Hex format or a single file containg all the dumped memory> \
-        -jar microej-debugger-proxy.jar
+        -jar jdwp-server-[version].jar
 
 Open the SDK and run a :ref:`Remote Java Application Launch <debug_on_device>` to debug your code.
 
