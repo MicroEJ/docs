@@ -942,7 +942,7 @@ another Feature using the method ``ej.kf.Kernel.bind()``.
 -  When the target type is owned by the Feature, it must be a shared
    interface. In this case, a Proxy instance is returned. Object
    identity is preserved across Features: calling
-   ``ej.kf.Kernel.bind()\ multiple times`` with the same parameters
+   ``ej.kf.Kernel.bind()`` multiple times with the same parameters
    returns the same object.
 
 .. _transferabletypes:
