@@ -22,8 +22,6 @@ The following table provides links to the complete KF APIs & specification.
      - https://repository.microej.com/modules/ej/api/kf/
 
 
-
-
 Preface to KF Profile, ESR020
 -----------------------------
 
@@ -1301,41 +1299,6 @@ with the expected behavior.
 .. [7]
    :*CN (commonName), L (localityName), ST (stateOrProvinceName), O
    (organizationName), OU (organizationalUnitName), C (countryName).*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ..
