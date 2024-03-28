@@ -715,7 +715,14 @@ Class Spaces
 Overview
 ~~~~~~~~
 
-|Illustration 6: Kernel & Features Class Spaces Overview|
+.. _illustration-6:
+.. figure:: png/kf_spec/classloader.png
+  :align: center
+  :width: 1097px
+  :height: 776px
+
+  Illustration 6: Kernel & Features Class Spaces Overview
+
 
 Private Types
 ~~~~~~~~~~~~~
@@ -1248,13 +1255,26 @@ The following illustration describes the definition of a context local
 storage static field (``I``), which is duplicated in each context (Kernel
 and Features):
 
-|Illustration 15: Context Local Storage of Static Field Example|
+.. _illustration-15:
+.. figure:: png/kf_spec/context_local_storage_slots.png
+  :align: center
+  :width: 695px
+  :height: 660px
+
+  Illustration 15: Context Local Storage of Static Field Example
+
 
 The following illustration describes a detailed sequence of method calls
 with the expected behavior.
 
-|Illustration 16: Context Local Storage Example of Initialization
-Sequence|
+.. _illustration-16:
+.. figure:: png/kf_spec/context_local_storage_sequences.png
+  :align: center
+  :width: 957px
+  :height: 625px
+
+  Illustration 16: Context Local Storage Example of Initialization Sequence
+
 
 .. [1]
    A decent global timeout stop-time is 2,000ms.
@@ -1283,15 +1303,6 @@ Sequence|
    (organizationName), OU (organizationalUnitName), C (countryName).*
 
 
-.. |Illustration 6: Kernel & Features Class Spaces Overview| image:: ../classloader.png
-   :width: 6.1028in
-   :height: 4.3165in
-.. |Illustration 15: Context Local Storage of Static Field Example| image:: ../context_local_storage_slots.png
-   :width: 4.6335in
-   :height: 4.4in
-.. |Illustration 16: Context Local Storage Example of Initialization Sequence| image:: ../context_local_storage_sequences.png
-   :width: 6.1028in
-   :height: 3.9917in
 
 
 
