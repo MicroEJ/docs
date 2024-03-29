@@ -98,13 +98,13 @@ The `binary-nls`_ module must be added to the Application project build file:
 
       .. code-block:: java
 
-         implementation("com.microej.library.runtime:binary-nls:2.5.0")
+         implementation("com.microej.library.runtime:binary-nls:3.1.0")
 
    .. tab:: MMM (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="com.microej.library.runtime" name="binary-nls" rev="2.5.0"/>
+         <dependency org="com.microej.library.runtime" name="binary-nls" rev="3.1.0"/>
 
 This module includes an Add-On Processor which parses the localization source files.
 For each interface declared in the NLS list files, all the localization source files whose names start with the interface name are used to generate:
@@ -915,13 +915,13 @@ To enable the NLS External Loader in the Virtual Device, add the following depen
 
       .. code-block:: java
 
-         implementation("com.microej.tool:nls-po-external-loader:2.3.0")
+         implementation("com.microej.tool:nls-po-external-loader:3.0.0")
 
    .. tab:: MMM (module.ivy)
 
       .. code-block:: xml
 
-         <dependency org="com.microej.tool" name="nls-po-external-loader" rev="2.3.0" transitive="false"/>
+         <dependency org="com.microej.tool" name="nls-po-external-loader" rev="3.0.0" transitive="false"/>
 
 Then rebuild the Firmware project to produce the Virtual Device.
 
