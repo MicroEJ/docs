@@ -31,8 +31,7 @@ MicroEJ defines its own annotations:
 
 MicroEJ recommends to annotate the Java code as follows:
 
-- In each Java package, create a ``package-info.java`` file and annotate the Java package with ``@NonNullByDefault`` if you use Eclipse 
-  or with your custom annotation if you use Android Studio or IntelliJ IDEA (see next section on IDEs configuration).
+- In each Java package, create a ``package-info.java`` file and annotate the Java package with ``@NonNullByDefault``.
   This is a common good practice to deal with non ``null`` elements by default to avoid undesired `NullPointerException`_.
   It enforces the behavior which is already widely outlined in Java coding rules.
 
@@ -63,8 +62,8 @@ MicroEJ recommends to annotate the Java code as follows:
 .. _@NonNullByDefault: https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNullByDefault.html
 .. _@Nullable: https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/Nullable.html
 .. _@NonNull: https://repository.microej.com/javadoc/microej_5.x/apis/ej/annotation/NonNull.html
-.. _EDC-1.3.3: https://repository.microej.com/modules/ej/api/edc/1.3.3/
-.. _EDC 1.3.3 Changelog: https://repository.microej.com/modules/ej/api/edc/1.3.3/CHANGELOG-1.3.3.md
+.. _EDC-1.3.6: https://repository.microej.com/modules/ej/api/edc/1.3.6/
+.. _EDC 1.3.6 Changelog: https://repository.microej.com/modules/ej/api/edc/1.3.6/CHANGELOG-1.3.6.md
 
 IDE Configuration 
 -----------------
@@ -72,10 +71,10 @@ IDE Configuration
 Requirements
 ~~~~~~~~~~~~
 
-The project must depend at least on the version ``1.3.3`` of the ``ej.api:edc`` module::
+The project must depend at least on the version ``1.3.6`` of the ``ej.api:edc`` module::
 
   dependencies {
-    implementation("ej.api:edc:1.3.3")
+    implementation("ej.api:edc:1.3.6")
   }
 
 
@@ -86,49 +85,82 @@ Project configuration
 
    .. tab:: Android Studio / IntelliJ IDEA
 
-    To enable the Null Analysis tool in Android Studio and IntelliJ IDEA, refer to the official documentation on `Configure nullability annotations <https://www.jetbrains.com/help/idea/annotating-source-code.html#configure-nullability-annotations>`__.
+    Follow these steps to enable the Null Analysis tool in Android Studio and IntelliJ IDEA:
 
-    Both IDEs support custom annotations for ``Nullable`` and ``NotNull`` annotations, but not for ``NonNullByDefault``.
-    Here are the solutions to be able to define all fields, methods return values and parameters of a whole class or package as non null by default:
+    - Go to :guilabel:`File` > :guilabel:`Settings...`.
+    - Go to :guilabel:`Editor` > :guilabel:`Inspections`.
+    - Open the category :guilabel:`Java` > :guilabel:`Probable Bugs` > :guilabel:`Nullability problems` > :guilabel:`@NotNull/@Nullable problems`.
+    - In the :guilabel:`Options` panel, scroll down and click on the :guilabel:`Configure Annotations...` button.
 
-    - create a custom annotation in your project using the ``@TypeQualifierDefault`` annotation, for example ``NonNullByDefault``:
+        .. figure:: images/intellij-null-analysis.png
+           :alt: Null Analysis Checks Configuration in IntelliJ IDEA and Android
+           :align: center
+           :scale: 100%
 
-      .. code:: java
+    - In the :guilabel:`Nullable` tab, click on the :guilabel:`+` button.
+    - Type ``ej.annotation.Nullable`` and select the listed class.
 
-        import javax.annotation.Nonnull;
-        import javax.annotation.meta.TypeQualifierDefault;
-        import java.lang.annotation.Documented;
-        import java.lang.annotation.ElementType;
-        import java.lang.annotation.Retention;
-        import java.lang.annotation.RetentionPolicy;
+          .. figure:: images/intellij-null-analysis-nullabe-annotation.png
+           :alt: Nullable Annotation Configuration in IntelliJ IDEA and Android
+           :align: center
+           :scale: 100%
 
-        /**
-        * This annotation can be applied to a package, class or method to indicate that the class fields,
-        * method return types and parameters in that element are not null by default.
-        */
-        @Documented
-        @Nonnull
-        @TypeQualifierDefault(
-                {
-                        ElementType.ANNOTATION_TYPE,
-                        ElementType.CONSTRUCTOR,
-                        ElementType.FIELD,
-                        ElementType.LOCAL_VARIABLE,
-                        ElementType.METHOD,
-                        ElementType.PACKAGE,
-                        ElementType.PARAMETER,
-                        ElementType.TYPE
-                })
-        @Retention(RetentionPolicy.RUNTIME)
-        public @interface NonNullByDefault {
-        }
+    - Select ``ej.annotation.Nullable`` in the :guilabel:`Nullable annotations` list.
+    - Go to the :guilabel:`NotNull` tab and repeat the same steps with the ``ej.annotation.NonNull`` class.
+    - Click on the :guilabel:`OK` button.
+    - Change the :guilabel:`Severity` field to :guilabel:`Error`.
+    - Check the :guilabel:`Report @NotNull parameters overriding non-annotated` option.
 
-      This requires to add the following dependency in your project::
-        
-        compileOnly("com.google.code.findbugs:jsr305:3.0.2")
+          .. figure:: images/intellij-null-analysis-configuration-01.png
+           :alt: Nullable Annotation Configuration in IntelliJ IDEA and Android
+           :align: center
+           :scale: 100%
 
-    - add the ``@NonNull`` annotation explicitly on each field, method return value or parameter.
+    - Check and select the category :guilabel:`Java` > :guilabel:`Probable Bugs` > :guilabel:`Nullability problems` > :guilabel:`Return of 'null'`.
+    - Change the :guilabel:`Severity` field to :guilabel:`Error`.
+
+          .. figure:: images/intellij-null-analysis-configuration-02.png
+           :alt: Nullable Annotation Configuration in IntelliJ IDEA and Android
+           :align: center
+           :scale: 100%
     
+    - Select the category :guilabel:`Java` > :guilabel:`Probable Bugs` > :guilabel:`Nullability problems` > :guilabel:`Return value is outside of declared range`.
+    - Change the :guilabel:`Severity` field to :guilabel:`Error`.
+
+          .. figure:: images/intellij-null-analysis-configuration-03.png
+           :alt: Nullable Annotation Configuration in IntelliJ IDEA and Android
+           :align: center
+           :scale: 100%
+
+    
+    - Select the category :guilabel:`Java` > :guilabel:`Probable Bugs` > :guilabel:`Nullability and data flow problems`.
+    - Change the :guilabel:`Severity` field to :guilabel:`Error`.
+
+          .. figure:: images/intellij-null-analysis-configuration-04.png
+           :alt: Nullable Annotation Configuration in IntelliJ IDEA and Android
+           :align: center
+           :scale: 100%
+
+    - Check and select the category :guilabel:`Java` > :guilabel:`Probable Bugs` > :guilabel:`Nullability problems` > :guilabel:`@NotNull field is not initialized`.
+    - Change the :guilabel:`Severity` field to :guilabel:`Error`.
+    - Uncheck the :guilabel:`Ignore fields which could be initialized implicitly` option.
+    - Uncheck the :guilabel:`Ignore fields initialized in setUp() method` option.
+
+          .. figure:: images/intellij-null-analysis-configuration-05.png
+           :alt: Nullable Annotation Configuration in IntelliJ IDEA and Android
+           :align: center
+           :scale: 100%
+
+    - Check and select the category :guilabel:`Java` > :guilabel:`Javadoc` > :guilabel:`Missing'package-info.java'`.
+    - Change the :guilabel:`Severity` field to :guilabel:`Error`.
+
+          .. figure:: images/intellij-null-analysis-configuration-06.png
+           :alt: Nullable Annotation Configuration in IntelliJ IDEA and Android
+           :align: center
+           :scale: 100%
+
+    For more details, refer to the official documentation on `Configure nullability annotations <https://www.jetbrains.com/help/idea/annotating-source-code.html#configure-nullability-annotations>`__.
+
 
    .. tab:: Eclipse
 
@@ -177,6 +209,97 @@ Project configuration
 
         You may lose information if your target module project already has custom parameterization or if it was created with another SDK version. 
         In case of any doubt, please configure the options manually or merge with a text file comparator.
+
+Launching Null Analysis
+-----------------------
+
+While Eclipse automatically launches Null Analysis on the whole project and reports all the problems found, 
+IntelliJ IDEA and Android Studio launch the Null Analysis only on the currently open file.
+In order to launch an Analysis of the full project:
+
+- Go to :guilabel:`Code` > :guilabel:`Inspect Code`.
+- Check the :guilabel:`Whole project` option.
+- Uncheck the :guilabel:`Include test sources` option.
+- Click on :guilabel:`Analyze`.
+
+Disabling Analysis for Test Folder
+----------------------------------
+
+.. tabs::
+
+   .. tab:: Android Studio / IntelliJ IDEA
+
+    The Analysis of the test folder can be disabled by unchecking the option ``Include test sources`` when launching a Code Inspection:
+
+        .. figure:: images/intellij-null-analysis-code-inspection.png
+          :alt: Disabling Analysis in Test Folder
+          :align: center
+          :scale: 100%
+
+
+   .. tab:: Eclipse
+
+    The Null Analysis can be automatically disabled in test folder by using the ``eclipse-wtp`` Gradle plugin:
+
+    - In the ``build.gradle.kts`` plugin of the project, add the ``eclipse-wtp`` plugin:
+
+      .. code-block::
+
+        plugins {
+          ...
+          `eclipse-wtp`
+        }
+    
+    - Then add the following snippet of code:
+
+      .. code-block:: java
+
+        import org.gradle.plugins.ide.eclipse.model.AbstractClasspathEntry
+        import org.gradle.plugins.ide.eclipse.model.Classpath
+
+        eclipse.classpath.file {
+            whenMerged(Action<Classpath> {
+                entries.filter { entry ->
+                    (entry.kind == "src" && entry is AbstractClasspathEntry && entry.path == "src/test/java")
+                }.forEach { entry ->
+                    (entry as AbstractClasspathEntry).entryAttributes["ignore_optional_problems"] = "true"
+                }
+            })
+        }
+
+      Adapth the path of your test folder accordingly.
+
+
+Sharing Null Analysis IDE Configuration
+---------------------------------------
+
+.. tabs::
+
+   .. tab:: Android Studio / IntelliJ IDEA
+
+    The configuration related to Null Analysis is located in the ``.idea/misc.xml`` and ``.idea/inspectionProfiles/*`` files.
+    In order to share them, they must be committed in your project source reposiory.
+    For Git projects, if you decided to not commit the IDE configuration files, 
+    these files can be excluded with the following lines in the ``.gitignore`` file::
+
+      /.idea/*
+      !/.idea/misc.xml
+      !/.idea/inspectionProfiles/*
+
+      .. warning::
+
+        Android Studio and IntelliJ IDEA create a ``.gitignore`` file in the ``.idea`` folder.
+        You can remove it or adapt it to fit your needs.
+
+   .. tab:: Eclipse
+
+    The configuration related to Null Analysis is located in the ``.settings/org.eclipse.jdt.core.prefs`` file.
+    In order to share it, it must be committed in your project source reposiory.
+    For Git projects, if you decided to not commit the IDE configuration files, 
+    these files can be excluded with the following lines in the ``.gitignore`` file::
+
+      /.settings/*
+      !/.settings/org.eclipse.jdt.core.prefs
 
 
 MicroEJ Libraries
