@@ -169,7 +169,7 @@ Now you know how to run an application on a Virtual Device.
 
 If you want to learn how to run an application on your i.MX93 Evaluation Kit, you can continue this Getting Started: :ref:`Run an Application on i.MX93 Evaluation Kit <sdk_6_getting_started_imx93_run_on_device>`.
 
-.. Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started_imx93_modify_java_application>`.
+Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started_imx93_modify_java_application>`.
 
 .. _sdk_6_getting_started_imx93_run_on_device:
 
@@ -306,6 +306,15 @@ In order to run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evalua
          :scale: 70%
 
 Once the application is running, you should see the :guilabel:`Example-Java-Widget` on your board.      
+
+.. _sdk_6_getting_started_imx93_modify_java_application:
+
+Modify the Java Application
+---------------------------
+
+With MicroEJ, it is easy to modify and test your Java application on the Virtual Device.
+
+For example, we could modify the color of the background (TBD).
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
