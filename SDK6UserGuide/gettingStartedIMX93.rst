@@ -169,7 +169,7 @@ Now you know how to run an application on a Virtual Device.
 
 If you want to learn how to run an application on your i.MX93 Evaluation Kit, you can continue this Getting Started: :ref:`Run an Application on i.MX93 Evaluation Kit <sdk_6_getting_started_imx93_run_on_device>`.
 
-Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started_imx93_modify_java_application>`.
+.. Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started_imx93_modify_java_application>`.
 
 .. _sdk_6_getting_started_imx93_run_on_device:
 
@@ -245,12 +245,67 @@ To flash the image on Windows do the following:
 * Extract the ``.wic`` file from the archive ``lib32-core-image-microej-microej-imx93.wic.gz``.
 * Flash the ``.wic`` on the SD card with Rufus.
 
-Boot mode setup
-+++++++++++++++
+Running the IMX93 VEE Port
+""""""""""""""""""""""""""
 
 By default the i.MX93 evaluation kit will boot from the eMMC.
-
 To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0010``.
+
+Insert the flashed SD card and boot the device. After a few seconds the display will show the IMX93 Getting Started Welcome page.
+If no display is attached, information such as device IP address and documentation link will also be printed in the logs.
+
+Congratulations, you have finished the setup of your environment. You are now ready to discover how to build and run a MicroEJ application.
+
+Build the Executable for i.MX93 Evaluation Kit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In order to build the Executable of the :guilabel:`Example-Java-Widget` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
+
+.. note::
+  
+   If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_build_executable` section.
+   Come back on this page if you need to activate an Evaluation License.
+
+* Double-click on the :guilabel:`buildExecutable` task in the Gradle tasks view.
+* The build stops with a failure.
+* Go to the top project in the console view and scroll up to get the following error message:
+
+      .. figure:: images/gettingStarted/iMXRT1170/getting-started-console-output-license-uid.png
+         :alt: Console Output License UID
+         :align: center
+         :scale: 70%
+
+* Copy the UID. It will be required to activate your Evaluation license.
+
+Request your Evaluation License:
+
+* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID you just copied before.
+
+* When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
+
+Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may takes some time.
+
+The gradle task deploys the Application in the BSP and then builds the BSP using Make.
+
+The :guilabel:`Example-Java-Widget` application is built and ready to be flashed on i.MX93 Evaluation Kit once the hardware setup is completed.
+
+Run the Application on the i.MX93 Evaluation Kit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In order to run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
+
+.. note::
+  
+   If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_device` section.
+
+* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may takes some time.
+
+      .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnDevice.png
+         :alt: runOnDevice task
+         :align: center
+         :scale: 70%
+
+Once the application is running, you should see the :guilabel:`Example-Java-Widget` on your board.      
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
