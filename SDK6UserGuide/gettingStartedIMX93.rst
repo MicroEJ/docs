@@ -15,7 +15,7 @@ Prerequisites
 
 .. note::
   
-   This Getting Started has been tested on Windows 10 & 11.
+   This Getting Started has been tested on Windows 10 & 11 with a WSL distribution Ubuntu 22.04.
 
 This Getting Started is separated in two main parts.
 
@@ -170,6 +170,87 @@ Now you know how to run an application on a Virtual Device.
 If you want to learn how to run an application on your i.MX93 Evaluation Kit, you can continue this Getting Started: :ref:`Run an Application on i.MX93 Evaluation Kit <sdk_6_getting_started_imx93_run_on_device>`.
 
 Otherwise, learn how to :ref:`Modify the Java Application <sdk_6_getting_started_imx93_modify_java_application>`.
+
+.. _sdk_6_getting_started_imx93_run_on_device:
+
+Run an Application on i.MX93 Evaluation Kit
+-------------------------------------------
+
+To deploy :guilabel:`Example-Java-Widget` application on your board, you will have to:
+
+* Setup your environment (toolchain, hardware setup).
+* Request a 30 days :ref:`Evaluation License <sdk_eula>` and install an activation key.
+* Build the executable.
+* Run the executable on board.
+
+Environment Setup
+^^^^^^^^^^^^^^^^^
+
+This chapter takes approximately one hour and will take you through the steps to build a VEE executable and set up the evaluation kit.
+
+Install the Yocto SDK
+"""""""""""""""""""""
+
+The executable is built using a Yocto SDK, it contains the following:
+
+* The C toolchain.
+* The cross compiled librairies.
+* All the necessary headers (libc, but also the headers of the kernel and the librairies installed in the firmware rootfs).
+* An environment setup script (to set $CC, $LD, $SDKSYSROOT variables).
+
+A prebuilt version of the Yocto SDK is available here: (TBD)
+
+To install the Yocto SDK use the following commands in WSL or Linux:
+
+.. code-block::
+
+   $ chmod +x oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
+   $ ./oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
+   MicroEJ: 32-bit userspace + 64-bit kernel SDK installer version nodistro.0
+   ==========================================================================
+   Enter target directory for SDK (default: /usr/local/oecore-x86_64): 
+   You are about to install the SDK to "/usr/local/oecore-x86_64". Proceed [Y/n]? Y
+   [sudo] password for xxxxx:
+   Extracting SDK.................................................................................done
+   Setting it up...done
+   SDK has been successfully set up and is ready to be used.
+   Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
+   $ . /usr/local/oecore-x86_64/environment-setup-armv7at2hf-neon-vfpv4-oemllib32-linux-gnueabi
+   $ . /usr/local/oecore-x86_64/environment-setup-cortexa55-oe-linux
+
+The installation path can be then used to build the VEE executable.
+
+Flash the image on a SD card
+""""""""""""""""""""""""""""
+
+The Linux image is available here: (TBD)
+
+For this getting started we use a Linux image flashed on a SD card.
+
+Linux
++++++
+
+To flash the image on Linux use the following command:
+
+.. code-block::
+
+   bmaptool copy lib32-core-image-microej-microej-imx93.wic.gz /dev/mmcblk0
+
+Windows
++++++++
+
+To flash the image on Windows do the following:
+
+* Install Rufus: https://rufus.ie/en/.
+* Extract the ``.wic`` file from the archive ``lib32-core-image-microej-microej-imx93.wic.gz``.
+* Flash the ``.wic`` on the SD card with Rufus.
+
+Boot mode setup
++++++++++++++++
+
+By default the i.MX93 evaluation kit will boot from the eMMC.
+
+To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0010``.
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
