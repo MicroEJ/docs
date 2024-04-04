@@ -26,7 +26,9 @@ To use Managed C in your Application, follow these steps:
 
         mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=firmware-singleapp -Dskeleton.rev=2.2.0 -Dproject.org=com.mycompany -Dproject.module=myproject -Dproject.rev=1.0.0 -Dskeleton.target.dir=myproject
 
-   Adjust the property values according to your needs. For more details, refer to the :ref:`MMM CLI init command documentation <mmm_cli.commands.init>`.
+   .. note:: 
+      
+      The project property values can be adjusted according to your needs. For more details, refer to the :ref:`MMM CLI init command documentation <mmm_cli.commands.init>`.
 
 #. **Add the Annotations for Accessing Managed C in Java:**
 
@@ -121,7 +123,7 @@ To use Managed C in your Application, follow these steps:
             }
         }
 
-   .. warning:: Ensure that the Managed C function name and signature in the C file match the Java annotated native method.
+   .. note:: The Managed C function name and signature in the C file match the Java annotated native method.
 
 #. **Compilation and Build:**
 
