@@ -370,7 +370,7 @@ For example, we can modify the color of the items in the main page list.
 
 with
 
-.. code-block::SDK6UserGuide/images/gettingStarted/iMXRT1170/getting-started-virtual-device.png
+.. code-block::
 
    style.setBackground(new GoToBackground(Colors.CYAN));
 
