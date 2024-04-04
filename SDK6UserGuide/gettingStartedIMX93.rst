@@ -228,10 +228,24 @@ To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0010``.
 Insert the flashed SD card and boot the device. After a few seconds, the display will show the IMX93 Getting Started Welcome page.
 If no display is attached, information such as device IP address and documentation link will also be printed in the logs.
 
-LVDS support
-""""""""""""
+LVDS display support
+""""""""""""""""""""
 
-.. TODO: Add commands to change device tree.
+This Getting Started has been tested with an HDMI display with a 1280x720 resolution.
+If you want to use the official display instead (the `DY1212W-4856 <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/dy1212w-4856:DY1212W-4856>`_) 
+you will need to reconfigure the device tree:
+
+* Boot your i.MX93 Evaluation Kit.
+* Stop the booting process to access the U-boot menu by pressing a key on the serial console.
+* In the U-boot menu run the following commands:
+
+.. code-block ::
+
+   setenv fdtfile imx93-11x11-evk-boe-wxga-lvds-panel.dtb
+   saveenv
+   boot
+
+* After the boot has completed you can test the display with: ``modetest -M imx-drm -s 35@33:1280x800-60.03``.
 
 Install the Yocto SDK
 """""""""""""""""""""
