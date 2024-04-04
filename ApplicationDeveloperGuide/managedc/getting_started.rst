@@ -127,13 +127,18 @@ To use Managed C in your Application, follow these steps:
 
    .. note:: The Managed C function name and signature in the C file match the Java annotated native method.
 
-#. **Compilation and Build:**
+#. **Compile the C File to WebAssembly:**
 
-   Follow :ref:`these steps <managedc.compilation>` to compile your Managed C code.
+   In a terminal, navigate to the module directory containing the ``module.ivy`` file and run the following command to compile the C code to WebAssembly:
 
-#. **Copy the WebAssembly File:**
+   .. code:: console
+   
+      [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -nostdlib -mcpu=mvp -O3 src/main/c/factorial.c -o src/main/resources/factorial.wasm
 
-   Copy the WebAssembly file to the directory ``src/main/resources`` and name it ``factorial.wasm``.
+   .. note:: 
+         
+         The generated file name ``factorial.wasm`` matches the module name of the annotated Java class.
+         It is generated to the ``src/main/resources`` directory as a convenience to make it part of the Application classpath.
 
 #. **Build the Project:**
 
