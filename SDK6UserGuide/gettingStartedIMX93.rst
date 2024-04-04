@@ -158,7 +158,7 @@ To execute the :guilabel:`Example-Java-Widget` Application on the Virtual Device
 
 The Virtual Device starts and executes the :guilabel:`Example-Java-Widget` application.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-virtual-device.png
+      .. figure:: images/gettingStarted/iMX93/getting-started-virtual-device.png
          :alt: Virtual Device
          :align: center
          :scale: 70%
