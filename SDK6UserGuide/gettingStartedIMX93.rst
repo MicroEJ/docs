@@ -76,7 +76,7 @@ The first step is to import the :guilabel:`Example-Java-Widget` Application into
 * If you are in the Welcome Screen, click on the :guilabel:`Open` button. Otherwise, click either on :guilabel:`File` > :guilabel:`Open...` or on :guilabel:`File` > :guilabel:`New` > :guilabel:`Project From Existing Sources...`.
 * Select the ``Example-Java-Widget`` directory located where you downloaded it and click on the :guilabel:`OK` button.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-import-demo-application.png
+      .. figure:: images/gettingStarted/iMX93/getting-started-import-demo.png
          :alt: Import demo application
          :align: center
          :scale: 70%
@@ -113,7 +113,7 @@ The first step is to import the :guilabel:`Example-Java-Widget` Application into
 
 The Gradle project should now be imported into IntelliJ IDEA. Your workspace contains the following projects: 
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-workspace-view.png
+      .. figure:: images/gettingStarted/iMX93/getting-started-project-view.png
          :alt: Workspace view
          :align: center
          :scale: 70%
@@ -151,7 +151,7 @@ To execute the :guilabel:`Example-Java-Widget` Application on the Virtual Device
 
 * Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may take a few seconds.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnSimulator.png
+      .. figure:: images/gettingStarted/iMX93/getting-started-runOnSimulator.png
          :alt: runOnSimulator task
          :align: center
          :scale: 70%
@@ -370,13 +370,17 @@ For example, we can modify the color of the items in the main page list.
 
 with
 
-.. code-block::
+.. code-block::SDK6UserGuide/images/gettingStarted/iMXRT1170/getting-started-virtual-device.png
 
    style.setBackground(new GoToBackground(Colors.CYAN));
 
 * Follow :ref:`sdk_6_getting_started_imx93_run_virtual_device` instructions to launch the modified application on the Virtual Device.
 
-.. TODO: insert screenshot of the changed application.
+
+      .. figure:: images/gettingStarted/iMX93/getting-started-runOnSimulator-modified.png
+         :alt: runOnDevice task
+         :align: center
+         :scale: 70%
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
