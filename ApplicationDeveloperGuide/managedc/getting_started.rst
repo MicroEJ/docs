@@ -140,26 +140,26 @@ To use Managed C in your Application, follow these steps:
          The generated file name ``factorial.wasm`` matches the module name of the annotated Java class.
          It is generated to the ``src/main/resources`` directory as a convenience to make it part of the Application classpath.
 
-#. **Build the Project:**
+#. **Build the Application:**
 
-   In a terminal, navigate to the directory containing the ``module.ivy`` file and build the project:
+   In a terminal, navigate to the directory directory containing the ``module.ivy`` file and run the following command to build the Application:
 
    .. code:: console
 
         mmm build -Dplatform-loader.target.platform.dir=<prebuilt_veeport_path>/source
         
-.. note::
-	
-		Replace ``<prebuilt_veeport_path>`` by the location of the root directory of your prebuilt VEE Port (see :ref:`managedc_getting_started_prerequisites`).       
+   .. note::
+      
+         Replace ``<prebuilt_veeport_path>`` by the location of the root directory of your prebuilt VEE Port (see :ref:`managedc_getting_started_prerequisites`).       
 
 
-You should see the following message at the end of the build:
+   You should see the following message at the end of the build:
 
-   .. code:: console
+      .. code:: console
 
-        BUILD SUCCESSFUL
+         BUILD SUCCESSFUL
 
-        Total time: 20 seconds
+         Total time: 20 seconds
 
 #. **Run the Executable:**
 
