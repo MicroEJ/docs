@@ -303,13 +303,31 @@ The :guilabel:`Example-Java-Widget` application is built and ready to be flashed
 Run the Application on the i.MX93 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. TODO: Before runOnDevice -> Document environment variable
-
 To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
 
 .. note::
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_device` section.
+
+* Before using this task you will have to configure some environment variables that depend on the OS you are using.
+
+  * On Linux or WSL set the following:
+
+    * ``SSH_USER=root``
+    * ``SSH_HOSTNAME``: IP address of the i.MX93 Evaluation Kit.
+    * ``APP_SDK_INSTALL=/usr/local/oecore-x86_64``
+
+  * On Windows:
+
+    * ``SSH_USER=root``
+    * ``SSH_HOSTNAME``: IP address of the i.MX93 Evaluation Kit.
+    * ``APP_SDK_INSTALL=/usr/local/oecore-x86_64``
+    * ``WSL_DISTRIBUTION_NAME``: Name of the WSL distribution, for example: ``Ubuntu-22.04``.
+
+  * For convenience you can edit the ``runOnDevice`` task with these environment variables.
+
+    * To do so, right-click on ``runOnDevice`` then ``Modify Run Configuration...``.
+    * Fill in your variables in ``Environment variables``, each one separated by a semicolon.
 
 * Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
