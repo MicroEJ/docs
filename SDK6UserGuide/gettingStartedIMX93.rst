@@ -201,38 +201,6 @@ Environment Setup
 
 This chapter takes approximately one hour and will take you through the steps to build a VEE executable and set up the evaluation kit.
 
-Install the Yocto SDK
-"""""""""""""""""""""
-
-The executable is built using a Yocto SDK, it contains the following:
-
-* The C toolchain.
-* The cross compiled librairies.
-* All the necessary headers (libc, but also the headers of the kernel and the librairies installed in the firmware rootfs).
-* An environment setup script (to set $CC, $LD, $SDKSYSROOT variables).
-
-A prebuilt version of the Yocto SDK is available here: (TBD)
-
-To install the Yocto SDK use the following commands in WSL or Linux:
-
-.. code-block::
-
-   $ chmod +x oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
-   $ ./oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
-   MicroEJ: 32-bit userspace + 64-bit kernel SDK installer version nodistro.0
-   ==========================================================================
-   Enter target directory for SDK (default: /usr/local/oecore-x86_64): 
-   You are about to install the SDK to "/usr/local/oecore-x86_64". Proceed [Y/n]? Y
-   [sudo] password for xxxxx:
-   Extracting SDK.................................................................................done
-   Setting it up...done
-   SDK has been successfully set up and is ready to be used.
-   Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
-   $ . /usr/local/oecore-x86_64/environment-setup-armv7at2hf-neon-vfpv4-oemllib32-linux-gnueabi
-   $ . /usr/local/oecore-x86_64/environment-setup-cortexa55-oe-linux
-
-The installation path can be then used to build the VEE executable.
-
 Flash the image on a SD card
 """"""""""""""""""""""""""""
 
@@ -266,6 +234,38 @@ To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0010``.
 
 Insert the flashed SD card and boot the device. After a few seconds the display will show the IMX93 Getting Started Welcome page.
 If no display is attached, information such as device IP address and documentation link will also be printed in the logs.
+
+Install the Yocto SDK
+"""""""""""""""""""""
+
+The executable is built using a Yocto SDK, it contains the following:
+
+* The C toolchain.
+* The cross-compiled libraries.
+* All the necessary headers (libc, but also the headers of the kernel and the libraries installed in the firmware rootfs).
+* An environment setup script (to set $CC, $LD, $SDKSYSROOT variables).
+
+A prebuilt version of the Yocto SDK is available here: (TBD)
+
+To install the Yocto SDK use the following commands in WSL or Linux:
+
+.. code-block::
+
+   $ chmod +x oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
+   $ ./oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro.0.sh
+   MicroEJ: 32-bit userspace + 64-bit kernel SDK installer version nodistro.0
+   ==========================================================================
+   Enter target directory for SDK (default: /usr/local/oecore-x86_64): 
+   You are about to install the SDK to "/usr/local/oecore-x86_64". Proceed [Y/n]? Y
+   [sudo] password for xxxxx:
+   Extracting SDK.................................................................................done
+   Setting it up...done
+   SDK has been successfully set up and is ready to be used.
+   Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
+   $ . /usr/local/oecore-x86_64/environment-setup-armv7at2hf-neon-vfpv4-oemllib32-linux-gnueabi
+   $ . /usr/local/oecore-x86_64/environment-setup-cortexa55-oe-linux
+
+The installation path can be then used to build the VEE executable.
 
 Congratulations, you have finished the setup of your environment. You are now ready to discover how to build and run a MicroEJ application.
 
