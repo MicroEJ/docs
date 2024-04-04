@@ -9,12 +9,12 @@ Getting Started
 Prerequisites
 -------------
 
-- A pre-built VEE Port using a MicroEJ Architecture v8.2.0 or higher available on the machine
+- A pre-built VEE Port using an Architecture v8.2.0 or higher available on the machine
 
 Steps
 -----
 
-To use Managed C in your MicroEJ application, follow these steps:
+To use Managed C in your Application, follow these steps:
 
 #. **Install the MMM CLI (Command Line Interface):** Follow the instructions in the :ref:`MMM CLI (Command Line Interface) <mmm_build_kit>`.
 
@@ -109,7 +109,7 @@ To use Managed C in your MicroEJ application, follow these steps:
 
 #. **Create the C File:**
 
-   Create a file named ``factorial.c`` in the folder ``src/main/c``:
+   Create a file named ``factorial.c`` in the directory ``src/main/c``:
 
    .. code:: c
 
@@ -129,11 +129,11 @@ To use Managed C in your MicroEJ application, follow these steps:
 
 #. **Copy the WebAssembly File:**
 
-   Copy the WebAssembly file to the folder ``src/main/resources`` and name it ``factorial.wasm``.
+   Copy the WebAssembly file to the directory ``src/main/resources`` and name it ``factorial.wasm``.
 
 #. **Build the Project:**
 
-   In a terminal, navigate to the folder containing the ``module.ivy`` file and build the project:
+   In a terminal, navigate to the directory containing the ``module.ivy`` file and build the project:
 
    .. code:: console
 
