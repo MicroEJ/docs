@@ -22,7 +22,7 @@ To use Managed C in your Application, follow these steps:
 
 #. **Create a Standalone Application Project:**
 
-   Run the following command:
+   In a terminal, run the following command:
 
    .. code:: console
 
