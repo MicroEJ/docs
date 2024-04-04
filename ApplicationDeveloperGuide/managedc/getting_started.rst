@@ -163,12 +163,7 @@ To use Managed C in your Application, follow these steps:
 
 #. **Run the Executable:**
 
-    .. warning:: 
-    
-        Managed C is not currently supported in simulation.
-
-
-    Once the application is built, execute it on a real hardware. You should see the following output:
+    Once the Application is built, execute it on your device. You should get the following output:
 
     .. code:: console
 
