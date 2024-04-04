@@ -359,7 +359,24 @@ Modify the Java Application
 
 With MicroEJ, it is easy to modify and test your Java application on the Virtual Device.
 
-For example, we could modify the color of the background (TBD).
+For example, we can modify the color of the items in the main page list.
+
+* Open :guilabel:`MainPage.java` located in the :guilabel:`src/main/java/com/microej/demo/widget/main/MainPage.java` folder
+* Odd items background color is set line 74, replace the following line:
+
+.. code-block::
+
+   style.setBackground(new GoToBackground(GRAY));
+
+with
+
+.. code-block::
+
+   style.setBackground(new GoToBackground(Colors.CYAN));
+
+* Follow :ref:`sdk_6_getting_started_imx93_run_virtual_device` instructions to launch the modified application on the Virtual Device.
+
+.. TODO: insert screenshot of the changed application.
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free 
