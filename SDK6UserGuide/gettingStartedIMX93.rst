@@ -163,13 +163,6 @@ The Virtual Device starts and executes the :guilabel:`Example-Java-Widget` appli
          :align: center
          :scale: 70%
 
-.. note::
-  
-   The Front Panel may be too big for your screen, that is because of the RK055HDMIPI4MA0 display resolution. You can scroll down to see the bottom of the display.
-
-   If you want to know more about the use of the :guilabel:`Example-Java-Widget`, please have a look at its `README.md <https://github.com/MicroEJ/Example-Java-Widget/blob/1.0.0/smart-thermostat/README.md>`__ file.
-
-
 .. figure:: images/gettingStarted/well-done-mascot.png
    :alt: Well Done
    :align: center
