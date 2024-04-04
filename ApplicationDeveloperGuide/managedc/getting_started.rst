@@ -28,37 +28,76 @@ To use Managed C in your MicroEJ application, follow these steps:
 
    Adjust the property values according to your needs. For more details, refer to the :ref:`MMM CLI init command documentation <mmm_cli.commands.init>`.
 
-3. **Add the Managed C Function Annotation:**
+3. **Add the Managed C Annotations:**
 
-   Add the following ``ManagedCFunction`` Java annotation in the folder ``src/main/java``:
+   Add the following ``ManagedCModule`` and ``ManagedCFunction`` Java annotations in the folder ``src/main/java``:
 
    .. code:: java
 
-        package com.mycompany;
+		package com.microej.managedc;
+		
+		import java.lang.annotation.ElementType;
+		import java.lang.annotation.Retention;
+		import java.lang.annotation.RetentionPolicy;
+		import java.lang.annotation.Target;
+		
+		@Retention(RetentionPolicy.CLASS)
+		@Target(ElementType.TYPE)
+		public @interface ManagedCModule {
+			String value();
+		}
 
-        import java.lang.annotation.ElementType;
-        import java.lang.annotation.Target;
 
-        @Target(ElementType.METHOD)
-        public @interface ManagedCFunction {
-        }
+   .. code:: java
 
-4. **Define a Native Java Method:**
+		package com.microej.managedc;
+		
+		import java.lang.annotation.ElementType;
+		import java.lang.annotation.Target;
+		
+		@Target(ElementType.METHOD)
+		public @interface ManagedCFunction {
+		}
+
+
+4. **Declare the Managed C class and native Java Method:**
 
    Define a native Java method with the ``ManagedCFunction`` annotation in your main application class:
 
    .. code:: java
 
-        @ManagedCFunction
-        public static native int factorial(int n);
+		@ManagedCModule("factorial.wasm")
+		public class Main {
+			
+			...
+			
+			@ManagedCFunction
+			public static native int factorial(int n);
+		}
+
 
 5. **Call the Managed C function:**
 
    Add the following lines in your application's ``main`` method:
 
    .. code:: java
-
-        System.out.println("factorial(10) = " + factorial(10));
+        
+		@ManagedCModule("factorial.wasm")
+		public class Main {
+			
+			/**
+			 * Simple main.
+			 *
+			 * @param args
+			 *            command line arguments.
+			 */
+			public static void main(String[] args) {
+				System.out.println("factorial(10) = " + factorial(10));
+			}
+			
+			@ManagedCFunction
+			public static native int factorial(int n);
+		}
 
 6. **Create the C File:**
 
