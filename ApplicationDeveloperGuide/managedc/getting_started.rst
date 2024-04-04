@@ -16,9 +16,9 @@ Steps
 
 To use Managed C in your MicroEJ application, follow these steps:
 
-1. **Install the MMM CLI (Command Line Interface):** Follow the instructions in the :ref:`MMM CLI (Command Line Interface) <mmm_build_kit>`.
+#. **Install the MMM CLI (Command Line Interface):** Follow the instructions in the :ref:`MMM CLI (Command Line Interface) <mmm_build_kit>`.
 
-2. **Create a Standalone Application Project:**
+#. **Create a Standalone Application Project:**
 
    Run the following command:
 
@@ -28,7 +28,7 @@ To use Managed C in your MicroEJ application, follow these steps:
 
    Adjust the property values according to your needs. For more details, refer to the :ref:`MMM CLI init command documentation <mmm_cli.commands.init>`.
 
-3. **Add the Annotations for Accessing Managed C in Java:**
+#. **Add the Annotations for Accessing Managed C in Java:**
 
    Create a file named ``ManagedCModule.java`` in the directory ``src/main/java/com/microej/managedc``  with the following content:
 
@@ -61,7 +61,7 @@ To use Managed C in your MicroEJ application, follow these steps:
             }
 
 
-4. **Configure your Java class to call a Managed C Function:**
+#. **Configure your Java class to call a Managed C Function:**
 
    Add the ``ManagedCModule`` annotation to the ``Main`` class with the Wasm module name:   
 
@@ -107,7 +107,7 @@ To use Managed C in your MicroEJ application, follow these steps:
             public static native int factorial(int n);
          }
 
-5. **Create the C File:**
+#. **Create the C File:**
 
    Create a file named ``factorial.c`` in the folder ``src/main/c``:
 
@@ -123,15 +123,15 @@ To use Managed C in your MicroEJ application, follow these steps:
 
    .. warning:: Ensure that the Managed C function name and signature in the C file match the Java annotated native method.
 
-7. **Compilation and Build:**
+#. **Compilation and Build:**
 
    Follow :ref:`these steps <managedc.compilation>` to compile your Managed C code.
 
-8. **Copy the WebAssembly File:**
+#. **Copy the WebAssembly File:**
 
    Copy the WebAssembly file to the folder ``src/main/resources`` and name it ``factorial.wasm``.
 
-9. **Build the Project:**
+#. **Build the Project:**
 
    In a terminal, navigate to the folder containing the ``module.ivy`` file and build the project:
 
@@ -152,7 +152,7 @@ You should see the following message at the end of the build:
 
         Total time: 20 seconds
 
-10. **Run the Executable:**
+#. **Run the Executable:**
 
     .. warning:: 
     
