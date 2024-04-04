@@ -17,7 +17,7 @@ Prerequisites
   
    This Getting Started has been tested on Windows 10 & 11 with a WSL distribution Ubuntu 22.04.
 
-This Getting Started is separated in two main parts.
+This Getting Started is separated into two main parts.
 
 The first part consists of running a demo application on the Virtual Device. All you need is:
 
@@ -51,7 +51,7 @@ IntelliJ IDEA is used on this Getting Started but feel free to use your favorite
 Get Example-Java-Widget
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-For this Getting Started, the :guilabel:`Example-Java-Widget` Application will be use. You can download it using the following command::
+For this Getting Started, the :guilabel:`Example-Java-Widget` Application will be used. You can download it using the following command::
    
    git clone -b 8.0.0 https://github.com/MicroEJ/Example-Java-Widget.git
 
@@ -111,7 +111,7 @@ The first step is to import the :guilabel:`Example-Java-Widget` Application into
 
 * Click on the :guilabel:`Create` button.
 
-The Gradle project should now be imported in IntelliJ IDEA, your workspace contains the following projects: 
+The Gradle project should now be imported into IntelliJ IDEA, your workspace contains the following projects: 
 
       .. figure:: images/gettingStarted/iMXRT1170/getting-started-workspace-view.png
          :alt: Workspace view
@@ -136,20 +136,20 @@ For more information about how to select a VEE Port please refer to the followin
 Accept the MICROEJ SDK EULA
 ---------------------------
 
-You may have to accept the SDK EULA if you didn't already do, please have a look at :ref:`sdk_6_eula_acceptation`.
+You may have to accept the SDK EULA if you haven't already done so, please have a look at :ref:`sdk_6_eula_acceptation`.
 
 .. _sdk_6_getting_started_imx93_run_virtual_device:
 
 Run an Application on the Virtual Device
 ----------------------------------------
 
-In order to execute the :guilabel:`Example-Java-Widget` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
+To execute the :guilabel:`Example-Java-Widget` Application on the Virtual Device, the SDK provides the Gradle :guilabel:`runOnSimulator` task. 
 
 .. note::
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_simulator` section.
 
-* Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may takes few seconds.
+* Double-click on the :guilabel:`runOnSimulator` task in the Gradle tasks view. It may take a few seconds.
 
       .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnSimulator.png
          :alt: runOnSimulator task
@@ -175,8 +175,8 @@ The Virtual Device starts and executes the :guilabel:`Example-Java-Widget` appli
    :align: center
    :scale: 70%
 
-Well done !
------------
+Well done!
+----------
 
 Now you know how to run an application on a Virtual Device.
 
@@ -191,7 +191,7 @@ Run an Application on i.MX93 Evaluation Kit
 
 To deploy :guilabel:`Example-Java-Widget` application on your board, you will have to:
 
-* Setup your environment (toolchain, hardware setup).
+* Set up your environment (toolchain, hardware setup).
 * Request a 30 days :ref:`Evaluation License <sdk_eula>` and install an activation key.
 * Build the executable.
 * Run the executable on board.
@@ -201,8 +201,8 @@ Environment Setup
 
 This chapter takes approximately one hour and will take you through the steps to build a VEE executable and set up the evaluation kit.
 
-Flash the image on a SD card
-""""""""""""""""""""""""""""
+Flash the image on an SD card
+"""""""""""""""""""""""""""""
 
 The Linux image is available here: (TBD)
 
@@ -226,14 +226,19 @@ To flash the image on Windows do the following:
 * Extract the ``.wic`` file from the archive ``lib32-core-image-microej-microej-imx93.wic.gz``.
 * Flash the ``.wic`` on the SD card with Rufus.
 
-Running the IMX93 VEE Port
-""""""""""""""""""""""""""
+Configure boot
+""""""""""""""
 
 By default the i.MX93 evaluation kit will boot from the eMMC.
 To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0010``.
 
-Insert the flashed SD card and boot the device. After a few seconds the display will show the IMX93 Getting Started Welcome page.
+Insert the flashed SD card and boot the device. After a few seconds, the display will show the IMX93 Getting Started Welcome page.
 If no display is attached, information such as device IP address and documentation link will also be printed in the logs.
+
+LVDS support
+""""""""""""
+
+.. TODO: Add commands to change device tree.
 
 Install the Yocto SDK
 """""""""""""""""""""
@@ -272,12 +277,12 @@ Congratulations, you have finished the setup of your environment. You are now re
 Build the Executable for i.MX93 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to build the Executable of the :guilabel:`Example-Java-Widget` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
+To build the Executable of the :guilabel:`Example-Java-Widget` Application, the SDK provides the Gradle :guilabel:`buildExecutable` task.
 
 .. note::
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_build_executable` section.
-   Come back on this page if you need to activate an Evaluation License.
+   Come back to this page if you need to activate an Evaluation License.
 
 * Double-click on the :guilabel:`buildExecutable` task in the Gradle tasks view.
 * The build stops with a failure.
@@ -292,11 +297,11 @@ In order to build the Executable of the :guilabel:`Example-Java-Widget` Applicat
 
 Request your Evaluation License:
 
-* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill the machine UID you just copied before.
+* Request your Evaluation license by following the :ref:`evaluation_license_request_activation_key` instructions. You will be asked to fill in the machine UID you just copied before.
 
 * When you have received your activation key by email, drop it in the license directory by following the :ref:`evaluation_license_install_license_key` instructions (drop the license key zip file to the ``~/.microej/licenses/`` directory).
 
-Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may takes some time.
+Now your Evaluation license is installed, you can relaunch your application build by double-clicking on the :guilabel:`buildExecutable` task in the Gradle tasks view. It may take some time.
 
 The gradle task deploys the Application in the BSP and then builds the BSP using Make.
 
@@ -305,13 +310,15 @@ The :guilabel:`Example-Java-Widget` application is built and ready to be flashed
 Run the Application on the i.MX93 Evaluation Kit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
+.. TODO: Before runOnDevice -> Document environment variable
+
+To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit, the application provides the Gradle :guilabel:`runOnDevice` task.
 
 .. note::
   
    If you are using another IDE than IntelliJ IDEA, please have a look at :ref:`sdk_6_run_on_device` section.
 
-* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may takes some time.
+* Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
       .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnDevice.png
          :alt: runOnDevice task
