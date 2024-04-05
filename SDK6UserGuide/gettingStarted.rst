@@ -20,7 +20,6 @@ What you will do:
 - Watch the Get Started Tutorial
 - Get Started with MICROEJ VEE
 
-
 What you will learn:
 
 - How to run an app using a `Virtual Device <https://developer.microej.com/virtual-devices/>`_.
@@ -45,6 +44,17 @@ What you will learn:
      - :ref:`gettingStartedSTM32F7508`
    * - :ref:`gettingStartedIMXRT1170`
      - 
+
+ .. toctree::
+   :hidden:
+   :maxdepth: 1
+
+   gettingStartedIMXRT595
+   gettingStartedIMXRT1170
+   gettingStartedSTM32F7508
+
+  
+
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
