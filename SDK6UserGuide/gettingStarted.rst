@@ -3,7 +3,10 @@
 Getting Started
 ===============
 
-
+      .. figure:: images/gettingStarted/getting-started_DOC_1200x297.jpg
+         :alt: Getting Started Banner
+         :align: center
+         :scale: 100%
 
 Welcome! Follow this step-by-step instructional guide to get started with MICROEJ SDK (Software Development Kit) and MICROEJ VEE (Virtual Execution Environment). Learn how to create apps and build a VEE Port by taking advantage of interactive tutorials and extensive technical documentation.
 
@@ -32,22 +35,16 @@ What you will learn:
                 </video>
         </div>
 
-NXP
----
+.. list-table:: VEE Port Examples
+   :widths: 70 70
+   :header-rows: 1
 
-.. toctree::
-   :maxdepth: 1
-
-   gettingStartedIMXRT595
-   gettingStartedIMXRT1170
-
-STMicroelectronics
-------------------
-
-.. toctree::
-   :maxdepth: 1
-
-   gettingStartedSTM32F7508
+   * - NXP
+     - STMicroelectronics
+   * - :ref:`gettingStartedIMXRT595`
+     - :ref:`gettingStartedSTM32F7508`
+   * - :ref:`gettingStartedIMXRT1170`
+     - 
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
