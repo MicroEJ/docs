@@ -40,13 +40,13 @@ What you will learn:
 
    * - NXP
      - STMicroelectronics
-   * - :ref:`gettingStartedIMXRT595`
-     - :ref:`gettingStartedSTM32F7508`
-   * - :ref:`gettingStartedIMXRT1170`
+   * - :ref:`i.MX RT595 Evaluation Kit <gettingStartedIMXRT595>`
+     - :ref:`STM32F7508-DK Evaluation Kit <gettingStartedSTM32F7508>`
+   * - :ref:`i.MX RT1170 Evaluation Kit <gettingStartedIMXRT1170>`
      - 
 
- .. toctree::
-    :hidden:
+.. toctree::
+   :hidden:
 
    gettingStartedIMXRT595
    gettingStartedIMXRT1170
