@@ -46,8 +46,8 @@ What you will learn:
      - 
 
  .. toctree::
-   :hidden:
-   
+    :hidden:
+
    gettingStartedIMXRT595
    gettingStartedIMXRT1170
    gettingStartedSTM32F7508
