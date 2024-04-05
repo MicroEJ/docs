@@ -35,7 +35,7 @@ What you will learn:
         </div>
 
 .. list-table:: VEE Port Examples
-   :widths: 70 70
+   :widths: 50 50
    :header-rows: 1
 
    * - NXP
