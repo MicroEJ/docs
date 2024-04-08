@@ -291,6 +291,21 @@ To build the Executable of the :guilabel:`Example-Java-Widget` Application, the 
    If you are using an IDE other than IntelliJ IDEA, please have a look at the :ref:`sdk_6_build_executable` section.
    Come back to this page if you need to activate an Evaluation License.
 
+* Before using this task, you will have to configure some environment variables that depend on the OS you are using.
+
+  * For convenience, you can edit the ``buildExecutable`` task using these environment variables.
+
+    * To do so, right-click on ``buildExecutable`` then ``Modify Run Configuration...``.
+    * Fill in your variables in ``Environment variables``, each one separated by a semicolon.
+
+  * If you changed the Yocto SDK installation path, set the following environment variable
+
+    * ``APP_SDK_INSTALL=/usr/local/oecore-x86_64`` (replace it with your own path)
+
+  * When using Windows with WSL, set the WSL distribution name, which you can get with the command :guilabel:` wsl --list` in Windows terminal
+
+    * ``WSL_DISTRIBUTION_NAME``: Name of the WSL distribution, for example ``Ubuntu-22.04`` (default value).
+
 * Double-click on the :guilabel:`buildExecutable` task in the Gradle tasks view.
 * The build stops with a failure.
 * Go to the top project in the console view and scroll up to get the following error message:
@@ -323,25 +338,15 @@ To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit,
   
    If you are using another IDE than IntelliJ IDEA, please have a look at the :ref:`sdk_6_run_on_device` section.
 
-* Before using this task, you will have to configure some environment variables that depend on the OS you are using.
-
-  * On Linux or WSL, set the following:
-
-    * ``SSH_USER=root``
-    * ``SSH_HOSTNAME``: IP address of the i.MX93 Evaluation Kit.
-    * ``APP_SDK_INSTALL=/usr/local/oecore-x86_64``
-
-  * On Windows:
-
-    * ``SSH_USER=root``
-    * ``SSH_HOSTNAME``: IP address of the i.MX93 Evaluation Kit.
-    * ``APP_SDK_INSTALL=/usr/local/oecore-x86_64``
-    * ``WSL_DISTRIBUTION_NAME``: Name of the WSL distribution, for example ``Ubuntu-22.04``.
+* Before using this task, you will have to configure the device IP Address in the environment variables.
 
   * For convenience, you can edit the ``runOnDevice`` task using these environment variables.
 
     * To do so, right-click on ``runOnDevice`` then ``Modify Run Configuration...``.
     * Fill in your variables in ``Environment variables``, each one separated by a semicolon.
+
+    * ``SSH_USER=root``
+    * ``SSH_HOSTNAME``: IP address of the i.MX93 Evaluation Kit.
 
 * Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
