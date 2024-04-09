@@ -4,6 +4,24 @@
 Changelog
 =========
 
+[1.5.1] - 2024-04-11
+====================
+
+Front Panel
+"""""""""""
+
+**Fixed**
+
+* Fix the drawing of a BufferedVectorImage in a BufferedVectorImage with a clip.
+* Fix the drawing of a glyph with path overlap.
+
+C Module VGLite
+"""""""""""""""
+
+**Fixed**
+
+* Fix the drawing of a VG RAW image in a BufferedVectorImage with a clip.
+
 [1.5.0] - 2024-02-15
 ====================
 
