@@ -63,6 +63,7 @@ These VEE ports are provided as-is. They can include libraries that are not the 
      - |image_rt595|
        :ref:`i.MX RT595 Evaluation Kit <sdk_6_getting_started_imxrt595>`
 
+All VEE Port source code examples can be found at `GitHub <https://github.com/MicroEJ/?q=VEE&type=all&language=&sort=>`_.
 
 .. |logo_nxp| image:: images/gettingStarted/logo-nxp_100px.png
 
