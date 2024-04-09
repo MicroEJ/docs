@@ -90,9 +90,9 @@ Option: Includes
 
 *Description*:
 
-List packages and classes to include to code coverage report. If no
-package/class is specified, all classes found in the project classpath will
-be analyzed.
+List packages and classes to include to code coverage report (``;`` separated).
+If no package/class is specified, all classes found in the project classpath
+will be analyzed.
 
 Examples:
 
@@ -111,9 +111,9 @@ Option: Excludes
 
 *Description*:
 
-List packages and classes to exclude to code coverage report. If no
-package/class is specified, all classes found in the project classpath will
-be analyzed.
+List packages and classes to exclude to code coverage report (``;`` separated).
+If no package/class is specified, all classes found in the project classpath
+will be analyzed.
 
 Examples:
 
