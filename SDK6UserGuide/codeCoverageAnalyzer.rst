@@ -23,7 +23,7 @@ files.
 Dependencies
 ============
 
-In order to work properly, the Code Coverage Analyzer should input the ``.cc`` files (See :ref:`sdk_6_generate_code_coverage`).
+In order to work properly, the Code Coverage Analyzer should input the ``.cc`` files (See :ref:`sdk_6_test_generate_code_coverage`).
 The ``.cc`` files rely on the classpath used during the execution of the Simulator to the Code Coverage Analyzer.
 Therefore the classpath is considered to be a dependency of the Code Coverage Analyzer.
 
