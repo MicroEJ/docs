@@ -457,6 +457,10 @@ The ``mmm`` tool can run on any supported :ref:`Operating Systems <system-requir
 - on Windows, either in the command prompt using the Windows batch script ``mmm.bat`` or in `MinGW environments <https://en.wikipedia.org/wiki/MinGW>`_ such as `Git BASH <https://gitforwindows.org/>`_ using the bash script ``mmm``.
 - on macOS and Linux distributions using the bash script ``mmm``.
 
+.. warning::
+
+   When copying a build kit from one system to another, make sure to delete the cache of the buildtype repository (``/microej-build-repository/cache``) which may contain absolute paths.
+
 The build repository (``microej-build-repository`` directory) contains scripts and tools for building modules. It is specific to a SDK version and shall not be modified by default.
 
 The module repository (``microej-module-repository`` directory) contains a default :ref:`mmm_settings_file` for importing modules from :ref:`central_repository` and this local repository (modules that are locally built will be published to this directory).
