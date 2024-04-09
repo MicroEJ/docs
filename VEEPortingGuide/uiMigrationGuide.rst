@@ -168,7 +168,7 @@ BSP with VGLite
 
 * *[VEE Port configuration project]*
 
-    * Fetch the `C Module VGLite 8.0.0`_.
+    * Fetch the `C Module VGLite 8.0.1`_.
 
 * *[BSP project]*
 

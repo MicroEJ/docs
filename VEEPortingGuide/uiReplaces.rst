@@ -27,6 +27,7 @@ XXX_TODO wrong links
 .. _C Module DMA2D 1.0.8: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.8/
 .. _C Module DMA2D 1.0.6: https://repository.microej.com/modules/com/microej/clibrary/llimpl/display-dma2d/1.0.6/
 
+.. _C Module VGLite 8.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/8.0.0/
 .. _C Module VGLite 8.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/8.0.0/
 .. _C Module VGLite 7.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/7.2.0/
 .. _C Module VGLite 7.1.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-vglite/7.1.0/
@@ -39,7 +40,6 @@ XXX_TODO wrong links
 
 .. _C Module NemaGFX 2.0.1: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/2.0.0/
 .. _C Module NemaGFX 2.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/2.0.0/
-.. _C Module NemaGFX 1.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.2.0/
 .. _C Module NemaGFX 1.2.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.2.0/
 .. _C Module NemaGFX 1.1.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.1.0/
 .. _C Module NemaGFX 1.0.0: https://forge.microej.com/ui/repos/tree/General/microej-developer-repository-release/com/microej/clibrary/llimpl/microui-nemagfx/1.0.0/

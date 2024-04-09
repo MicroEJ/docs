@@ -320,7 +320,7 @@ However, there are some differences:
 .. _section_display_transmitswap:
 
 Transmit and Swap Buffer
---------------------
+------------------------
 
 Serial Connection
 """""""""""""""""

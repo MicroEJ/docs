@@ -516,9 +516,9 @@ On startup, the front buffer is mapped on buffer (C), buffer (A) is the back buf
 13. The buffer (C) will now be used for the next drawings. Go to step 5.
 
 Use (Transmit and Swap Buffer)
---------------------------
+------------------------------
 
-Here are the steps around the strategy describing how to use it in :ref:`transmit and swap<section_display_copyswap>` buffer policy.
+Here are the steps around the strategy describing how to use it in :ref:`transmit and swap<section_display_transmitswap>` buffer policy.
 
 .. tabs::
 

@@ -6,8 +6,30 @@
 Changelog
 =========
 
-14.0.1 (unreleased)
+14.0.1 (2024-04-09)
 ===================
+
+MicroUI
+"""""""
+
+* Implement `MicroUI API 3.5.0`_.
+
+**Fixed**
+
+* Fix the infinite waiting on a display event when killing a feature.
+* Fix the dump of the events queue when it is full.
+
+Front Panel
+"""""""""""
+
+**Added**
+
+* Add ``LLUIDisplayImpl.getCurrentBackBuffer()`` (replace ``LLUIDisplayImpl.getCurrentDrawingBuffer()``).
+
+**Changed**
+
+* Homogenize the notions of back and front buffers.
+* Set ``LLUIDisplayImpl.getCurrentDrawingBuffer()`` as deprecated: implement ``LLUIDisplayImpl.getCurrentBackBuffer()`` instead.
 
 LLAPIs
 """"""
@@ -15,6 +37,46 @@ LLAPIs
 **Changed**
 
 * Homogenize the notions of back and front buffers: ``LLUI_DISPLAY_setBackBuffer()`` replaces ``LLUI_DISPLAY_setDrawingBuffer()``.
+
+C Module MicroUI
+""""""""""""""""
+
+* New version: `C Module MicroUI 4.0.1`_.
+
+**Changed**
+
+* Homogenize the notions of back and front buffers.
+
+**Fixed**
+
+* Disable the clip before calling ``UI_DISPLAY_BRS_restore()``.
+
+C Module DMA2D
+""""""""""""""
+
+* New version: `C Module DMA2D 5.0.1`_.
+
+**Changed**
+
+* Homogenize the notions of back and front buffers.
+
+C Module VGLite
+"""""""""""""""
+
+* New version: `C Module VGLite 8.0.1`_.
+
+**Changed**
+
+* Homogenize the notions of back and front buffers.
+
+C Module NemaGFX
+""""""""""""""""
+
+* New version: `C Module NemaGFX 2.0.1`_.
+
+**Changed**
+
+* Homogenize the notions of back and front buffers.
 
 14.0.0 (2024-02-14)
 ===================
