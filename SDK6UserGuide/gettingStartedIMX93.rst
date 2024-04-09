@@ -293,18 +293,16 @@ To build the Executable of the :guilabel:`Example-Java-Widget` Application, the 
 
 * Before using this task, you will have to configure some environment variables that depend on the OS you are using.
 
-  * For convenience, you can edit the ``buildExecutable`` task using these environment variables.
+  * To do so, right-click on ``buildExecutable`` then ``Modify Run Configuration...``.
+  * Fill in your variables in ``Environment variables``, each one separated by a semicolon: 
 
-    * To do so, right-click on ``buildExecutable`` then ``Modify Run Configuration...``.
-    * Fill in your variables in ``Environment variables``, each one separated by a semicolon.
+    * If you changed the default Yocto SDK installation path, set the following environment variable
 
-  * If you changed the Yocto SDK installation path, set the following environment variable
+      * ``APP_SDK_INSTALL=/usr/local/oecore-x86_64`` (replace it with your own path)
 
-    * ``APP_SDK_INSTALL=/usr/local/oecore-x86_64`` (replace it with your own path)
+    * When using Windows with WSL, set the WSL distribution name, which you can get with the command :guilabel:` wsl --list` in Windows terminal
 
-  * When using Windows with WSL, set the WSL distribution name, which you can get with the command :guilabel:` wsl --list` in Windows terminal
-
-    * ``WSL_DISTRIBUTION_NAME``: Name of the WSL distribution, for example ``Ubuntu-22.04`` (default value).
+      * ``WSL_DISTRIBUTION_NAME=``: Name of the WSL distribution, for example ``Ubuntu-22.04`` (default value).
 
 * Double-click on the :guilabel:`buildExecutable` task in the Gradle tasks view.
 * The build stops with a failure.
@@ -340,10 +338,8 @@ To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit,
 
 * Before using this task, you will have to configure the device IP Address in the environment variables.
 
-  * For convenience, you can edit the ``runOnDevice`` task using these environment variables.
-
-    * To do so, right-click on ``runOnDevice`` then ``Modify Run Configuration...``.
-    * Fill in your variables in ``Environment variables``, each one separated by a semicolon.
+  * To do so, right-click on ``buildExecutable`` then ``Modify Run Configuration...``.
+  * Fill in your variables in ``Environment variables``, each one separated by a semicolon:
 
     * ``SSH_USER=root``
     * ``SSH_HOSTNAME``: IP address of the i.MX93 Evaluation Kit.
