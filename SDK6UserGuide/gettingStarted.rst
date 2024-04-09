@@ -34,8 +34,8 @@ What you will learn:
                 </video>
         </div>
 
-VEE Port Evaluation Examples
-----------------------------
+VEE Port for Evaluation
+-----------------------
 
 These VEE ports are ideal to evaluate MicroEJ's technology. They include with the latest software components.
 
