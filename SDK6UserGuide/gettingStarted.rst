@@ -34,15 +34,15 @@ What you will learn:
                 </video>
         </div>
 
-.. list-table:: VEE Port Examples
+.. list-table::
    :widths: 50 50
-   :header-rows: 1
+   :header-rows: 0
 
-   * - NXP
-     - STMicroelectronics
-   * - :ref:`i.MX RT595 Evaluation Kit <sdk_6_getting_started_imxrt595>`
+   * - image NXP
+     - :ref:`i.MX RT595 Evaluation Kit <sdk_6_getting_started_imxrt595>`
+     - :ref:`i.MX RT1170 Evaluation Kit <sdk_6_getting_started_imxrt1170>`
+   * - image ST
      - :ref:`STM32F7508-DK Evaluation Kit <sdk_6_getting_started_stm32f7508>`
-   * - :ref:`i.MX RT1170 Evaluation Kit <sdk_6_getting_started_imxrt1170>`
      - 
 
 .. toctree::
