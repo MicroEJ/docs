@@ -34,19 +34,35 @@ What you will learn:
                 </video>
         </div>
 
+VEE Port Evaluation Examples
+----------------------------
+
+These VEE ports are ideal to evaluate MicroEJ's technology. They include with the latest software components.
+
 .. list-table::
-   :widths: 33 33 33
+   :widths: 50 50
    :header-rows: 0
 
    * - |logo_nxp|
-     - |image_rt595|
-       :ref:`i.MX RT595 Evaluation Kit <sdk_6_getting_started_imxrt595>`
      - |image_rt1170|
        :ref:`i.MX RT1170 Evaluation Kit <sdk_6_getting_started_imxrt1170>`
    * - |logo_st|
      - |image_stm32f7508|
        :ref:`STM32F7508-DK Evaluation Kit <sdk_6_getting_started_stm32f7508>`
-     - 
+
+VEE Port Examples
+-----------------
+
+These VEE ports are provided as-is. They can include libraries that are not the latest version.
+
+.. list-table::
+   :widths: 50 50
+   :header-rows: 0
+
+   * - |logo_nxp|
+     - |image_rt595|
+       :ref:`i.MX RT595 Evaluation Kit <sdk_6_getting_started_imxrt595>`
+
 
 .. |logo_nxp| image:: images/gettingStarted/logo-nxp_100px.png
 
