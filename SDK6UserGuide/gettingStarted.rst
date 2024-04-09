@@ -38,13 +38,13 @@ What you will learn:
    :widths: 33 33 33
    :header-rows: 0
 
-   * - |logo_nxp|_
-     - |image_rt595|_
+   * - |logo_nxp|
+     - |image_rt595|
        :ref:`i.MX RT595 Evaluation Kit <sdk_6_getting_started_imxrt595>`
-     - |image_rt1170|_
+     - |image_rt1170|
        :ref:`i.MX RT1170 Evaluation Kit <sdk_6_getting_started_imxrt1170>`
-   * - |logo_st|_
-     - |image_stm32f7508|_
+   * - |logo_st|
+     - |image_stm32f7508|
        :ref:`STM32F7508-DK Evaluation Kit <sdk_6_getting_started_stm32f7508>`
      - 
 
@@ -52,9 +52,9 @@ What you will learn:
 
 .. |logo_st| image:: images/gettingStarted/logo-st_100px.png
 
-.. |image_rt595|_ image:: images/gettingStarted/Board-NXP_i.MX-RT595-EK_100px.png
-.. |image_rt1170|_ image:: images/gettingStarted/Board-NXP_i.MX-RT1170-EK_100px.png
-.. |image_stm32f7508|_ image:: images/gettingStarted/Board-ST_STM32F7508-DK_100px.png
+.. |image_rt595| image:: images/gettingStarted/Board-NXP_i.MX-RT595-EK_100px.png
+.. |image_rt1170| image:: images/gettingStarted/Board-NXP_i.MX-RT1170-EK_100px.png
+.. |image_stm32f7508| image:: images/gettingStarted/Board-ST_STM32F7508-DK_100px.png
 
 .. toctree::
    :hidden:
