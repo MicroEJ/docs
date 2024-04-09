@@ -64,9 +64,9 @@ These VEE ports are provided as-is. They can include libraries that are not the 
        :ref:`i.MX RT595 Evaluation Kit <sdk_6_getting_started_imxrt595>`
 
 
-.. |logo_nxp| centered:: image:: images/gettingStarted/logo-nxp_100px.png
+.. |logo_nxp| image:: images/gettingStarted/logo-nxp_100px.png
 
-.. |logo_st| centered:: image:: images/gettingStarted/logo-st_100px.png
+.. |logo_st| image:: images/gettingStarted/logo-st_100px.png
 
 .. |image_rt595| image:: images/gettingStarted/Board-NXP_i.MX-RT595-EK_100px.png
 .. |image_rt1170| image:: images/gettingStarted/Board-NXP_i.MX-RT1170-EK_100px.png
