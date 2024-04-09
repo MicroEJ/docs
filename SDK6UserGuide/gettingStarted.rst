@@ -35,7 +35,7 @@ What you will learn:
         </div>
 
 .. list-table::
-   :widths: 50 50
+   :widths: 33 33 33
    :header-rows: 0
 
    * - image NXP
