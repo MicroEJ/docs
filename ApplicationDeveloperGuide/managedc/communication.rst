@@ -90,7 +90,7 @@ Here is an example showing how to write Java and C source code when C macro para
 
 .. note:: 
 
-   Java annotation ``@ManagedCModule("my_app.mc")`` should be put some where, in this class or in another class.
+   Java annotation ``@ManagedCModule("my_app.wasm")`` should be put some where, in this class or in another class.
 
 Here is an example showing how to write Java and C source code when the C macro parameter ``class`` is an empty string:
 
@@ -100,7 +100,7 @@ Here is an example showing how to write Java and C source code when the C macro 
 
       package com.mycompany;
 
-      @ManagedCModule("my_app.mc")
+      @ManagedCModule("my_app.wasm")
       public class MyApp {
 
          public static void delay(int ms) {
@@ -166,7 +166,7 @@ Here is an example:
       import com.microej.managedc.ManagedCFunction;
       import com.microej.managedc.ManagedCModule;
 
-      @ManagedCModule("my_app.mc")
+      @ManagedCModule("my_app.wasm")
       public class MyApp {
 
          public static void main(String[] args) {
@@ -217,7 +217,7 @@ Here is a Java example:
    import com.microej.managedc.ManagedCFunction;
    import com.microej.managedc.ManagedCMemory;
 
-   @ManagedCModule("my_app.mc")
+   @ManagedCModule("my_app.wasm")
    public class ManagedCUtil {
 
       ...
@@ -256,7 +256,7 @@ Here is a full C/Java example manipulating Managed C module memory in Java:
       import com.microej.managedc.ManagedCMemory;
       import com.microej.managedc.ManagedCModule;
 
-      @ManagedCModule("my_app.mc")
+      @ManagedCModule("my_app.wasm")
       public class MyApp {
 
          public static void main(String[] args) {
