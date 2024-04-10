@@ -4,7 +4,7 @@ Troubleshooting
 ===============
 
 -----------------------------------------------------------------
-SOAR-L ERROR "Unknown classpath entry ...."
+SOAR-L ERROR "Unknown module ..."
 -----------------------------------------------------------------
 
 When using the ``@ManagedCModule`` annotation on a Java class, ensure there's a corresponding WebAssembly file in the classpath. 
@@ -16,12 +16,12 @@ Failure to do so may result in the following error:
 .. code:: console
 
     soar2-r/do:
-       [soar2-r] 1 : SOAR-L ERROR :
-       [soar2-r] [M74] - Unknown classpath entry 'factorial.mc' (managedc module).
-       [soar2-r]
+      [soar2-r] 1 : SOAR-L ERROR :
+      [soar2-r] [M403] - Unknown module 'my_module.wasm' (module is referenced by the annotation '@ManagedCModule' on the type 'com.mycompany.MyWebAssemblyModule').
+      [soar2-r]
 
 -----------------------------------------------------------------
-SOAR-L ERROR "Unsupported wasm instruction '...'  ...."
+SOAR-L ERROR "Unsupported WebAssembly instruction ..."
 -----------------------------------------------------------------
 
 Not all WebAssembly instructions are supported. 
@@ -31,9 +31,8 @@ If your WebAssembly file uses an unsupported instruction, you might encounter a 
 .. code:: console
 
     soar2-r/do:
-       [soar2-r] 1 : SOAR-L ERROR :
-     BUILD FAILED
-       [soar2-r] [M81] - ManagedC error Unsupported wasm instruction 'i32.lt_s' in 'factorial' function
+      [soar2-r] 1 : SOAR-L ERROR :
+      [soar2-r] [M401] - Unsupported WebAssembly instruction: '0xc0' (i32.lt_s) in function 'my_function' in module '/path/to/mymodule.wasm'.
 
 -----------------------------------------------------------------
 SOAR-L ERROR "Cannot resolved this import '...'"
