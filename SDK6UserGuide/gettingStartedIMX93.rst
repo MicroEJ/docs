@@ -204,7 +204,7 @@ For this getting started we use a Linux image flashed on an SD card.
 Linux
 +++++
 
-To flash the image on Linux, use the following command:
+To flash the image on Linux, use the following command (assuming the SDCard device is /dev/mmcblk0):
 
 .. code-block::
 
