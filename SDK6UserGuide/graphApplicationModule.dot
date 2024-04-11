@@ -21,6 +21,7 @@ digraph mygraph {
     "buildFeature" [fillcolor = "#f76241"]
     "runOnDevice" [fillcolor = "#f76241"]
     "execTool" [fillcolor = "#f76241"]
+    "generateApplicationWrapper" [fillcolor = "#f76241"]
     "compileWrapperJava" [fillcolor = "#f76241"]
     "build" -> "check"
     "check" -> "test"
@@ -55,7 +56,8 @@ digraph mygraph {
     "buildFeature" -> "loadKernelExecutable"
     "runOnDevice" -> "buildExecutable"
     "execTool" -> "loadVee"
-    "compileWrapperJava" -> "compileJava"
+    "generateApplicationWrapper" -> "compileJava"
+    "compileWrapperJava" -> "generateApplicationWrapper"
     
     subgraph cluster_legend {
         label="Legend";
