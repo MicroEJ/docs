@@ -19,7 +19,7 @@ Prerequisites
 
 This Getting Started is separated into two main parts.
 
-The first part consists of running a demo application on the Virtual Device. All you need is:
+The first part consists in running a demo application on the Virtual Device. All you need is:
 
 
 * An Internet connection to access Github repositories & :ref:`Module Repositories <module_repositories>`.
