@@ -29,8 +29,8 @@ The second part consists of running the same demo application on your device. Fo
 
 * An i.MX93 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-93-evaluation-kit:i.MX93EVK>`__.
 * (Optional) An HDMI display.
-* Linux image (TBD)
-* GCC Toolchain (TBD)
+* Yocto Linux image (TBD)
+* Yocto SDK (TBD)
 
 .. _sdk_6_getting_started_imx93_environment_setup:
 
