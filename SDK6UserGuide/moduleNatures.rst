@@ -62,6 +62,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.buildFeature`
 - :ref:`sdk6_module_natures.tasks.runOnDevice`
 - :ref:`sdk6_module_natures.tasks.execTool`
+- :ref:`sdk6_module_natures.tasks.generateApplicationWrapper`
 - :ref:`sdk6_module_natures.tasks.compileWrapperJava`
 
 .. graphviz:: graphApplicationModule.dot
@@ -163,6 +164,8 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
+
+The ``loadVee`` task is used internally by the SDK and it is not intended to be executed by the user.
 
 .. _sdk6_module_natures.tasks.runOnSimulator:
 
@@ -318,6 +321,8 @@ This task is used by the following module natures:
 buildVirtualDevice
 ^^^^^^^^^^^^^^^^^^
 
+**Description**: Builds the Virtual Device of an Application.
+
 **Inputs**:
 
 - The extracted VEE Port folder
@@ -328,8 +333,6 @@ buildVirtualDevice
 **Outputs**:
 
 - The Zip file of the Virtual Device (``build/libs/<application_name>-virtualDevice.zip``)
-
-**Description**: Build the Virtual Device of an Application.
 
 **Module Natures**:
 
@@ -358,12 +361,14 @@ This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.application`
 
+The ``loadKernelExecutable`` task is used internally by the SDK and it is not intended to be executed by the user.
+
 .. _sdk6_module_natures.tasks.buildFeature:
 
 buildFeature
 ^^^^^^^^^^^^
 
-**Description**: Build the Feature file of an Application.
+**Description**: Builds the Feature file of an Application.
 
 **Inputs**:
 
@@ -386,7 +391,7 @@ This task is used by the following module natures:
 .. _sdk6_module_natures.tasks.runOnDevice:
 
 runOnDevice
-^^^^^^^^^^^^
+^^^^^^^^^^^
 
 **Description**: Runs the Executable on a Device.
 
@@ -443,16 +448,42 @@ This task is used by the following module natures:
 - :ref:`sdk6_module_natures.addon_lib`
 - :ref:`sdk6_module_natures.application`
 
+.. _sdk6_module_natures.tasks.generateApplicationWrapper:
+
+generateApplicationWrapper
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Generates the Application Wrapper to be able to run the Application on a VEE Port and a Kernel.
+
+**Inputs**:
+
+- The Application EntryPoint
+- The configuration directory of the project
+- The project classpath which contains the MicroEJ dependent application classes and resources
+
+**Outputs**:
+
+- The directory in which the Wrapper Java class has been generated (``build/generated/microej-app-wrapper/java``)
+- The directory in which the Wrapper resources have been generated (``build/generated/microej-app-wrapper/resources``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
+
+The ``generateApplicationWrapper`` task is used internally by the SDK and it is not intended to be executed by the user.
+
 .. _sdk6_module_natures.tasks.compileWrapperJava:
 
 compileWrapperJava
 ^^^^^^^^^^^^^^^^^^
 
-**Description**: Compiles Application wrapper class to be able to run the Application on a VEE Port and a Kernel.
+**Description**: Compiles the Application Wrapper class.
 
 **Inputs**:
 
-- The project classpath which contains the MicroEJ dependent application classes and resources
+- The directory containing the Wrapper Java class (``build/generated/microej-app-wrapper/java``)
 
 **Outputs**:
 
@@ -463,6 +494,8 @@ compileWrapperJava
 This task is used by the following module natures:
 
 - :ref:`sdk6_module_natures.application`
+
+The ``compileWrapperJava`` task is used internally by the SDK and it is not intended to be executed by the user.
 
 .. _gradle_global_build_options:
 
