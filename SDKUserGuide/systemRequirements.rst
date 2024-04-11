@@ -14,7 +14,8 @@ System Requirements
 
      - As of SDK Distribution ``20.10`` (based on Eclipse 2020-06), Ubuntu 16.04 is not supported.
      - For headless installations, to build a Platform, the ``libwebkit2gtk-4.0-37`` package is required additionally.
-     - To build a Platform with MicroUI, the OpenJDK distribution from Ubuntu is not supported. The Eclipse Temurin distribution is recommended.
+     - For headless installations, the ``libwebkit2gtk-4.0-37`` package is required additionally.
+     - The OpenJDK distribution from Ubuntu is not supported. The Eclipse Temurin distribution is recommended.
 
    - macOS x86_64 with Intel chip (tested on version 10.13 High Sierra, 10.14 Mojave)
    - macOS aarch64 with M1 chip (tested on version 12.0.1 Monterey), from SDK Distribution ``22.06`` (requires :ref:`Architecture 7.18.0 or higher <changelog-7.18.0>`)
