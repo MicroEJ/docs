@@ -25,7 +25,7 @@ The first part consists of running a demo application on the Virtual Device. All
 * An Internet connection to access Github repositories & :ref:`Module Repositories <module_repositories>`.
 * MICROEJ SDK 6 (installed during :ref:`Environment Setup <sdk_6_getting_started_imx93_environment_setup>`).
 
-The second part consists of running the same demo application on your device. For that, you will need:
+The second part consists in running the same demo application on your device. For that, you will need:
 
 * An i.MX93 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-93-evaluation-kit:i.MX93EVK>`__.
 * (Optional) An HDMI display.
