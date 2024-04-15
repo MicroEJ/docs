@@ -9,6 +9,14 @@ To use such features, you must create a class implementing the ``ej.kf.FeatureEn
 The creation of a Feature class is done as follows:
 
 - Create a new Application project, as described in :ref:`sdk_6_create_project`.
+- Add the KF module in the ``dependencies`` block of the ``build.gradle.kts`` file of the project:
+
+.. code:: java
+
+   dependencies {
+     implementation("ej.api:kf:1.7.0")
+   }  
+
 - Create the Java class of the Feature EntryPoint in the ``src/main/java`` folder, for example:
 
 .. code:: java
