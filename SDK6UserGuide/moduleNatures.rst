@@ -453,7 +453,7 @@ This task is used by the following module natures:
 generateApplicationWrapper
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Description**: Generates the Application Wrapper to be able to run the Application on a VEE Port and a Kernel.
+**Description**: Generates the :ref:`gradle_application_wrapper_chapter` to be able to run the Application on a VEE Port and a Kernel.
 
 **Inputs**:
 
@@ -479,7 +479,7 @@ The ``generateApplicationWrapper`` task is used internally by the SDK and it is 
 compileWrapperJava
 ^^^^^^^^^^^^^^^^^^
 
-**Description**: Compiles the Application Wrapper class.
+**Description**: Compiles the :ref:`gradle_application_wrapper_chapter` to be able to run the Application on a VEE Port and a Kernel.
 
 **Inputs**:
 
