@@ -5,9 +5,12 @@ Compilation
 
 MicroEJ supports Managed C through WebAssembly, so Managed C code needs to be compiled to WebAssembly first. 
 
-You can use any toolchain that compiles C code to WebAssembly, but the main supported tool is ``wasi-sdk``.
+The supported toolchain for compiling C code to WebAssembly is `WASI SDK <https://github.com/WebAssembly/wasi-sdk/>`__.
 
-Please download the `wasi-sdk 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__ and extract it at a location of your choice on your machine. Add the ``bin`` directory of the previously extracted ``wasi-sdk`` to the ``PATH`` environment variable of your machine.
+Install the Toolchain
+---------------------
+
+Download the `WASI SDK version 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__ and extract it at a location of your choice on your machine, named ``[path_to_wasi_sdk]`` in the rest of the documentation.
 
 Compile a simple C file
 -----------------------
@@ -18,7 +21,7 @@ In the terminal, navigate to the ``src/main/c`` directory and execute the follow
 
 .. code:: console
 
-    clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -nostdlib -mcpu=mvp -O3 my_app.c -o my_app.wasm
+    [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -nostdlib -mcpu=mvp -O3 my_app.c -o my_app.wasm
 
 .. _managedc.compilation.command_line_options:
 
