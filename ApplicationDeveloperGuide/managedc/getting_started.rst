@@ -12,7 +12,7 @@ Prerequisites
 The following elements must be available on your workstation:
 
 - A pre-built VEE Port using an Architecture v8.2.0 or higher.
-- `WASI SDK 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__, for compiling your Managed C code to WebAssembly.
+- `WASI SDK 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__, for compiling your C code to WebAssembly.
 - :ref:`MMM CLI (Command Line Interface) <mmm_build_kit>`, for building the demo module from command line.
 
 Steps
