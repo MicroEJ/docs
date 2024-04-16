@@ -23,7 +23,7 @@ Link between Managed C function declaration and Java static methods can be done 
 .. code:: c
 
    #define __IMPORT(class, method) \
-    __attribute__((__import_module__(#class), __import_name__(#method)))
+    __attribute__((__import_module__(class), __import_name__(method)))
 
 * ``class``: 
 
