@@ -101,6 +101,28 @@ The parser contains two key words to allow more flexibility over the content of 
 - "*": the wildcard symbol represents ``everything`` it can be used for permission class name, permission name and permission actions.
 - "null": the ``null`` keyword represents a java ``null`` value, it can be used for permission name and permission actions.
 
+To simplify the file structure you can also choose to have empty object value for permissionClassName or permission actions such as show in the example above:
+
+.. code block:: JSON
+{
+  "permissions": {
+    "ej.microui.display.DisplayPermission":{
+      "*":[]
+    },
+    "ej.microui.display.FontPermission":{},
+    "java.lang.RuntimePermission":{
+      "exit":[]
+      }
+    }
+}
+
+This example:
+- allows the usage of any permission name and any actions for the ``ej.microui.display.DisplayPermission`` permission.
+- allows the usage of any permission name and any actions for the ``ej.microui.display.FontPermission`` permission.
+- allows the ``exit`` permission name and any actions for the ``java.lang.RuntimePermission`` permission.
+
+Describing ``anything`` either with an empty value or a ``*`` is left to the developer preference and should be processed in the exact same way by the security manager.
+
 .. warning::
     Make sure that your permission class name are embedded by declaring them as `requiredTypes`.
     Any permission check done on a permission class without embedded name will result in a `SecurityException`_.

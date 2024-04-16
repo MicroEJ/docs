@@ -76,6 +76,15 @@ A Kernel API or a Runtime Environment module is added as a dependency with the c
 
    <dependency org="com.microej.kernelapi" name="edc" rev="1.0.6" conf="kernelapi->default"/>
 
+.. _implement_security_policy:
+
+Implement a Security Policy
+---------------------------
+
+A complete section about how to setup a security policy is available in the `SecurityManagement`_ page.
+
+.. _SecurityManagement: https://docs.microej.com/en/latest/KernelDeveloperGuide/securityManagement.html#
+
 .. _pre_installed_application_vd:
 
 Add Pre-installed Applications
