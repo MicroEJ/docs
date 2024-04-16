@@ -9,24 +9,28 @@ Getting Started
 Prerequisites
 -------------
 
-- A pre-built VEE Port using an Architecture v8.2.0 or higher available on the machine
+The following elements must be available on your workstation:
+
+- A pre-built VEE Port using an Architecture v8.2.0 or higher.
+- `WASI SDK 20 or higher <https://github.com/WebAssembly/wasi-sdk/releases>`__, for compiling your C code to WebAssembly.
+- :ref:`MMM CLI (Command Line Interface) <mmm_build_kit>`, for building the demo module from command line.
 
 Steps
 -----
 
 To use Managed C in your Application, follow these steps:
 
-#. **Install the MMM CLI (Command Line Interface):** Follow the instructions in the :ref:`MMM CLI (Command Line Interface) <mmm_build_kit>`.
-
 #. **Create a Standalone Application Project:**
 
-   Run the following command:
+   In a terminal, run the following command:
 
    .. code:: console
 
         mmm init -Dskeleton.org=com.is2t.easyant.skeletons -Dskeleton.module=firmware-singleapp -Dskeleton.rev=2.2.0 -Dproject.org=com.mycompany -Dproject.module=myproject -Dproject.rev=1.0.0 -Dskeleton.target.dir=myproject
 
-   Adjust the property values according to your needs. For more details, refer to the :ref:`MMM CLI init command documentation <mmm_cli.commands.init>`.
+   .. note:: 
+      
+      The project property values can be adjusted according to your needs. For more details, refer to the :ref:`MMM CLI init command documentation <mmm_cli.commands.init>`.
 
 #. **Add the Annotations for Accessing Managed C in Java:**
 
@@ -121,45 +125,45 @@ To use Managed C in your Application, follow these steps:
             }
         }
 
-   .. warning:: Ensure that the Managed C function name and signature in the C file match the Java annotated native method.
+   .. note:: The Managed C function name and signature in the C file match the Java annotated native method.
 
-#. **Compilation and Build:**
+#. **Compile the C File to WebAssembly:**
 
-   Follow :ref:`these steps <managedc.compilation>` to compile your Managed C code.
+   In a terminal, navigate to the module directory containing the ``module.ivy`` file and run the following command to compile the C code to WebAssembly:
 
-#. **Copy the WebAssembly File:**
+   .. code:: console
+   
+      [path_to_wasi_sdk]/bin/clang -Wl,--no-entry -Wl,--export-all -Wl,--allow-undefined -nostdlib -mcpu=mvp -O3 src/main/c/factorial.c -o src/main/resources/factorial.wasm
 
-   Copy the WebAssembly file to the directory ``src/main/resources`` and name it ``factorial.wasm``.
+   .. note:: 
+         
+         The generated file name ``factorial.wasm`` matches the module name of the annotated Java class.
+         It is generated to the ``src/main/resources`` directory as a convenience to make it part of the Application classpath.
 
-#. **Build the Project:**
+#. **Build the Application:**
 
-   In a terminal, navigate to the directory containing the ``module.ivy`` file and build the project:
+   In a terminal, navigate to the directory containing the ``module.ivy`` file and run the following command to build the Application:
 
    .. code:: console
 
         mmm build -Dplatform-loader.target.platform.dir=<prebuilt_veeport_path>/source
         
-.. note::
-	
-		Replace ``<prebuilt_veeport_path>`` by the location of the root directory of your prebuilt VEE Port (see :ref:`managedc_getting_started_prerequisites`).       
+   .. note::
+      
+         Replace ``<prebuilt_veeport_path>`` by the location of the root directory of your prebuilt VEE Port (see :ref:`managedc_getting_started_prerequisites`).       
 
 
-You should see the following message at the end of the build:
+   You should see the following message at the end of the build:
 
-   .. code:: console
+      .. code:: console
 
-        BUILD SUCCESSFUL
+         BUILD SUCCESSFUL
 
-        Total time: 20 seconds
+         Total time: 20 seconds
 
 #. **Run the Executable:**
 
-    .. warning:: 
-    
-        Managed C is not currently supported in simulation.
-
-
-    Once the application is built, execute it on a real hardware. You should see the following output:
+    Once the Application is built, execute it on your device. You should get the following output:
 
     .. code:: console
 
@@ -172,7 +176,7 @@ For further details, refer to the following sub-sections:
 - :ref:`Troubleshooting <managedc.troubleshooting>`: Assistance for resolving common issues when working with Managed C.
 
 ..
-   | Copyright 2023, MicroEJ Corp. Content in this space is free 
+   | Copyright 2023-2024, MicroEJ Corp. Content in this space is free 
    for read and redistribute. Except if otherwise stated, modification 
    is subject to MicroEJ Corp prior approval.
    | MicroEJ is a trademark of MicroEJ Corp. All other trademarks and 
