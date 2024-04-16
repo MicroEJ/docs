@@ -142,7 +142,7 @@ To use Managed C in your Application, follow these steps:
 
 #. **Build the Application:**
 
-   In a terminal, navigate to the directory directory containing the ``module.ivy`` file and run the following command to build the Application:
+   In a terminal, navigate to the directory containing the ``module.ivy`` file and run the following command to build the Application:
 
    .. code:: console
 
