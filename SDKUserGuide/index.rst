@@ -56,6 +56,7 @@ The SDK is licensed under the :ref:`SDK End User License Agreement (EULA) <sdk_e
 
    install
    licenses
+   licenses_sentinel
    standaloneApplication
    sandboxedApplication
    mmmRepository
