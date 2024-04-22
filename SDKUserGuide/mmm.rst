@@ -962,7 +962,7 @@ systemmicroui.xml:47: Terminated with errors
 
 | Trying to build a VEE Port may lead to an "Internal limits reached" for which the log file contains this error.
 | This is caused by using an incompatible JDK distribution (such as ``openjdk-11-jdk`` Ubuntu distribution).
-| To fix this, change your JDK distribution. See `recommended JDK distributions <get_jdk>`__.
+| To fix this, change your JDK distribution. See :ref:`recommended JDK distributions <get_jdk>`.
 
 .. _mmm_former_sdk_5_2:
 
