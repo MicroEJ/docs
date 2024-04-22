@@ -13,7 +13,6 @@ System Requirements
    - Linux distributions (tested on Ubuntu 18.04, 20.04 and 22.04)
 
      - As of SDK Distribution ``20.10`` (based on Eclipse 2020-06), Ubuntu 16.04 is not supported.
-     - For headless installations, to build a Platform, the ``libwebkit2gtk-4.0-37`` package is required additionally.
      - For headless installations, the ``libwebkit2gtk-4.0-37`` package is required additionally.
      - The OpenJDK distribution from Ubuntu is not supported. The Eclipse Temurin distribution is recommended.
 
