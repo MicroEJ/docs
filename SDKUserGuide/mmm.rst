@@ -947,6 +947,23 @@ Make sure it is one of the following ones:
 - ``build-microej-javalib``, with version ``4.2.0`` or higher
 - ``build-firmware-singleapp``, with version ``1.3.0`` or higher
 
+Could not load SWT library
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| Trying to use MMM Build Kit on headless system may lead to this error when building a VEE Port.
+| To fix this on Ubuntu (tested on 22.04), install the ``libwebkit2gtk-4.0-37`` package.
+
+.. note::
+
+   Also see our full Docker image configuration: https://github.com/MicroEJ/Tool-SDK-Docker/blob/67a9f4397a9c1d5608a244e2778c0cfecc5c6113/5.8.2-jdk11/Dockerfile
+
+systemmicroui.xml:47: Terminated with errors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| Trying to build a VEE Port may lead to an "Internal limits reached" for which the log file contains this error.
+| This is caused by using an incompatible JDK distribution (such as ``openjdk-11-jdk`` Ubuntu distribution).
+| To fix this, change your JDK distribution. See `recommended JDK distributions <get_jdk>`__.
+
 .. _mmm_former_sdk_5_2:
 
 Former SDK Versions (lower than 5.2.0)
