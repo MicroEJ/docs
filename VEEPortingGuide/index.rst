@@ -68,6 +68,7 @@ The steps are as follow:
    systemView
    simulation
    appendix/index
+   sni_spec
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
