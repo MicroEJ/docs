@@ -285,6 +285,15 @@ To install the Yocto SDK, use the following commands in WSL or Linux:
 
 The installation path can then be used to build the VEE Executable.
 
+Install required packages
+"""""""""""""""""""""""""
+
+Finally some packages will be required in order to build an executable. Run the following command (either in Linux or WSL):
+
+.. code-block::
+
+   sudo apt-get update && sudo apt-get install dos2unix make
+
 Congratulations! You have finished the setup of your environment. You are now ready to discover how to build and run a MicroEJ application.
 
 Build the Executable for i.MX93 Evaluation Kit
