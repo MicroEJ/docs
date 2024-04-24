@@ -26,7 +26,7 @@ This section contains instructions for the System Administrator to setup the Sen
   Especially, you have to choose a host machine that is accessible through the network to all your developer workstations.
 - Install the :ref:`Sentinel LDK Run-time Environment (RTE) <sentinel_rte_installation>` on the host machine.
 - On the host machine, open a web browser.
-- Browse ``http://localhost:1947`` to open the Sentinel Admin Control Center.
+- Browse ``http://<server-ip-address>:1947`` to open the Sentinel Admin Control Center.
 - Go to :guilabel:`Sentinel Keys` tab and click on :guilabel:`Fingerprint` button to download the ``*.c2v`` file.
 
    .. figure:: images/sentinel_rte_server_get_fingerprint.png
