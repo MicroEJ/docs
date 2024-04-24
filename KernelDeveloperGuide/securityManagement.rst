@@ -3,12 +3,12 @@ Security Management
 
 The security management can be done in various ways, the most common way of declaring a security management policy is by the usage of the `SecurityManager`_ class.
 
-For the sake of ROM footprint optimization, calls to Permission checks are disabled by default.
+For the sake of ROM footprint optimization, permission checks calls are disabled by default to avoid extra code processing if the system owner does not want to use the Security Manager.
 In order to activate this feature the :ref:`option_enable_security_manager` option must be set.
 
 Once the security manager checks are enabled, you can then implement your own policy.
 
-This can be achieved by subclassing the base `SecurityManager`_ class, overriding its `SecurityManager.checkPermission(Permission)`_ method,
+This can be achieved by subclassing the base `SecurityManager`_ abstract class, overriding its `SecurityManager.checkPermission(Permission)`_ method,
 and registering an instance of this class to the Kernel by a call to `System.setSecurityManager(SecurityManager)`_.
 
 .. code-block:: java
@@ -36,14 +36,14 @@ Kernel Security Policy Manager
 
 This implementation is inspired from the `JavaPolicyFile`_ concept.
 Features come with a policy file that describes the permission they will need at runtime.
-This concept assumes that the system owner is able to verify the content of this file before the feature is deployed onto the Kernel (using forge connect for instance).
+By default the name of this file should be ``feature.policy.json`` you can override the default name using the property ``feature.policy.name`` to be added in the Kernel `properties`_.
+This concept assumes that the system owner is able to verify the content of this file before the feature is deployed onto the Kernel (using an application store system for instance).
 The file is then parsed on the feature installation and the permissions are stored in a map in the security manager.
-Finally, when a permission check is requested, the security manager will check if the feature has indeed specified this specific permision or not in which case it throws a `SecurityException`_.
+Finally, when a permission check is requested, the security manager will check if the feature has specified the requested permission or not in which case it throws a `SecurityException`_.
 Here is a schema to describe the entire flow of the Kernel Security Policy Manager from a feature install to a feature stop.
 
 .. image:: png/kernelSecurityPolicyManagerFlow.png
    :align: center
-
 
 This implementation requires a parsing of the feature policy file to create the correct list of `FeaturePolicyPermission`_ objects that will be handled by the security manager.
 the ``KF-Util`` module provides a JSON implementation as the default implementation.
@@ -101,7 +101,7 @@ The parser contains two key words to allow more flexibility over the content of 
 - "*": the wildcard symbol represents ``everything`` it can be used for permission class name, permission name and permission actions.
 - "null": the ``null`` keyword represents a java ``null`` value, it can be used for permission name and permission actions.
 
-To simplify the file structure you can also choose to have empty object value for permissionClassName or permission actions such as show in the example above:
+To simplify the file structure you can also choose to have an empty object value for permission className or/and permission actions such as shown in the example above:
 
 .. code block:: JSON
 {
@@ -124,7 +124,7 @@ This example:
 Describing ``anything`` either with an empty value or a ``*`` is left to the developer preference and should be processed in the exact same way by the security manager.
 
 .. warning::
-    Make sure that your permission class name are embedded by declaring them as `requiredTypes`.
+    Make sure that specified permission class names are embedded by declaring them as `requiredTypes`.
     Any permission check done on a permission class without embedded name will result in a `SecurityException`_.
 
 
@@ -148,6 +148,7 @@ This Kernel implements a logging-only security policy by default.
 .. _JavaPolicyFile: https://docs.oracle.com/javase/8/docs/technotes/guides/security/PolicyFiles.html
 .. _com.microej.library.util.kf-util: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/package-summary.html
 .. _requiredTypes: https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#section-classpath-elements-types
+.. _properties: https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#system-properties
 
 ..
    | Copyright 2024, MicroEJ Corp. Content in this space is free
