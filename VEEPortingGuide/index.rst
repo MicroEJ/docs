@@ -31,6 +31,7 @@ VEE Porting Guide
    systemView
    simulation
    appendix/index
+   sni_spec
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
