@@ -257,6 +257,7 @@ file ``sni.h`` defines the C types that represent exactly the Java types.
 .. list-table:: Table III-1: Java types to C types
    :header-rows: 1
    :widths: 4 6 5
+   :align: center
 
    - 
       - Java Type
@@ -347,6 +348,7 @@ following components (except if the method has no arguments):
 .. list-table:: Table III-2: SNI-GT Java types descriptors in arguments
    :header-rows: 1
    :widths: 1 1
+   :align: center
 
    - 
       - Java type
