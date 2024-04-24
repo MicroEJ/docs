@@ -300,7 +300,7 @@ To build the Executable of the :guilabel:`Example-Java-Widget` Application, the 
 * Before using this task, you will have to configure some environment variables that depend on the OS you are using.
 
   * To do so, right-click on ``buildExecutable`` then ``Modify Run Configuration...``.
-  * Fill in your variables in ``Environment variables``, each one separated by a semicolon: 
+  * Fill in your variables in ``Environment variables``, each one separated by a semicolon (see screenshot): 
 
     * If you changed the default Yocto SDK installation path, set the following environment variable
 
@@ -309,6 +309,11 @@ To build the Executable of the :guilabel:`Example-Java-Widget` Application, the 
     * When using Windows with WSL, set the WSL distribution name, which you can get with the command :guilabel:` wsl --list` in Windows terminal
 
       * ``WSL_DISTRIBUTION_NAME=``: Name of the WSL distribution, for example ``Ubuntu`` (default value).
+
+      .. figure:: images/gettingStarted/iMX93/getting-started-intellij-variables.png
+         :alt: IntelliJ variables
+         :align: center
+         :scale: 70%
 
 * Double-click on the :guilabel:`buildExecutable` task in the Gradle tasks view.
 * The build stops with a failure.
@@ -344,7 +349,7 @@ To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit,
 
 * Before using this task, you will have to configure the device IP Address in the environment variables.
 
-  * To do so, right-click on ``buildExecutable`` then ``Modify Run Configuration...``.
+  * To do so, right-click on ``runOnDevice`` then ``Modify Run Configuration...``.
   * Fill in your variables in ``Environment variables``, each one separated by a semicolon:
 
     * ``SSH_USER=root``
