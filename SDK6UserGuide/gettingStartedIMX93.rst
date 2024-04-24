@@ -217,7 +217,13 @@ To flash the image on Windows, do the following:
 
 * Install Rufus: https://rufus.ie/en/.
 * Extract the ``.wic`` file from the archive ``lib32-core-image-microej-microej-imx93.wic.gz``.
-* Flash the ``.wic`` on the SD card with Rufus.
+* Select your SD card device in the list at the top (see example of configuration below).
+* Select your ``.wic`` file by clicking on ``SELECT``
+* Finally click on ``START`` at the bottom and wait for the process to finish.
+
+      .. figure:: images/gettingStarted/iMX93/getting-started-rufus.png
+         :alt: Rufus
+         :align: center
 
 Configure boot
 """"""""""""""
@@ -302,7 +308,7 @@ To build the Executable of the :guilabel:`Example-Java-Widget` Application, the 
 
     * When using Windows with WSL, set the WSL distribution name, which you can get with the command :guilabel:` wsl --list` in Windows terminal
 
-      * ``WSL_DISTRIBUTION_NAME=``: Name of the WSL distribution, for example ``Ubuntu-22.04`` (default value).
+      * ``WSL_DISTRIBUTION_NAME=``: Name of the WSL distribution, for example ``Ubuntu`` (default value).
 
 * Double-click on the :guilabel:`buildExecutable` task in the Gradle tasks view.
 * The build stops with a failure.
@@ -343,6 +349,8 @@ To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit,
 
     * ``SSH_USER=root``
     * ``SSH_HOSTNAME``: IP address of the i.MX93 Evaluation Kit.
+    * ``APP_SDK_INSTALL``: Path to the Yocto SDK (by default ``/usr/local/oecore-x86_64/``).
+    * ``WSL_DISTRIBUTION_NAME``: Name of the WSL distribution if using Windows.
 
 * Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
