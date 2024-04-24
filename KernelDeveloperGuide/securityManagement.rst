@@ -104,17 +104,18 @@ The parser contains two key words to allow more flexibility over the content of 
 To simplify the file structure you can also choose to have an empty object value for permission className or/and permission actions such as shown in the example above:
 
 .. code block:: JSON
-{
-  "permissions": {
-    "ej.microui.display.DisplayPermission":{
-      "*":[]
-    },
-    "ej.microui.display.FontPermission":{},
-    "java.lang.RuntimePermission":{
-      "exit":[]
-      }
+    {
+      "permissions": {
+        "ej.microui.display.DisplayPermission":{
+          "*":[]
+        },
+        "ej.microui.display.FontPermission":{},
+        "java.lang.RuntimePermission":{
+          "exit":[]
+          }
+        }
     }
-}
+
 
 This example:
 - allows the usage of any permission name and any actions for the ``ej.microui.display.DisplayPermission`` permission.
