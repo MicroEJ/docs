@@ -86,20 +86,10 @@ All VEE Port source code examples can be found at `GitHub <https://github.com/Mi
 .. toctree::
    :hidden:
 
-   gettingStartedIMXRT595
-   gettingStartedIMXRT1170
    gettingStartedIMX93
-
-STMicroelectronics
-------------------
-
-.. toctree::
-   :maxdepth: 1
-
+   gettingStartedIMXRT1170
    gettingStartedSTM32F7508
-
-  
-
+   gettingStartedIMXRT595
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
