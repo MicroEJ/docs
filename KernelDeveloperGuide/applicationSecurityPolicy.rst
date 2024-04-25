@@ -56,7 +56,7 @@ Before going further we strongly advise to take a look to the `java.security.Per
 
 Here is an example of what a JSON file looks like with placeholders:
 
-.. code block:: JSON
+.. code-block:: JSON
     {
       "permissions": {
         "<permissionClassName1>":{
@@ -72,7 +72,7 @@ Here is an example of what a JSON file looks like with placeholders:
 
 Here is now an example of what a real JSON file can look like:
 
-.. code block:: JSON
+.. code-block:: JSON
     {
       "permissions": {
         "ej.microui.display.DisplayPermission":{
@@ -100,12 +100,12 @@ Here is now an example of what a real JSON file can look like:
     The permission ``name`` attribute is specific to the permission implementation therefore, each permission has its own definition of what a name is.
 
 The parser contains two key words to allow more flexibility over the content of the file:
-- "*": the wildcard symbol represents ``everything`` it can be used for permission class name, permission name and permission actions.
-- "null": the ``null`` keyword represents a java ``null`` value, it can be used for permission name and permission actions.
+* "*": the wildcard symbol represents ``everything`` it can be used for permission class name, permission name and permission actions.
+* "null": the ``null`` keyword represents a java ``null`` value, it can be used for permission name and permission actions.
 
 To simplify the file structure you can also choose to have an empty object value for permission className or/and permission actions such as shown in the example above:
 
-.. code block:: JSON
+.. code-block:: JSON
     {
       "permissions": {
         "ej.microui.display.DisplayPermission":{
@@ -120,9 +120,9 @@ To simplify the file structure you can also choose to have an empty object value
 
 
 This example:
-- allows the usage of any permission name and any actions for the ``ej.microui.display.DisplayPermission`` permission.
-- allows the usage of any permission name and any actions for the ``ej.microui.display.FontPermission`` permission.
-- allows the ``exit`` permission name and any actions for the ``java.lang.RuntimePermission`` permission.
+* allows the usage of any permission name and any actions for the ``ej.microui.display.DisplayPermission`` permission.
+* allows the usage of any permission name and any actions for the ``ej.microui.display.FontPermission`` permission.
+* allows the ``exit`` permission name and any actions for the ``java.lang.RuntimePermission`` permission.
 
 Using an empty value or the ``*`` wildcard is left to the developer preference and should be processed in the exact same way by the security policy resource loader.
 
