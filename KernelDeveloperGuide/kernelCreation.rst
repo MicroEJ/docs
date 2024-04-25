@@ -81,7 +81,7 @@ A Kernel API or a Runtime Environment module is added as a dependency with the c
 Implement a Security Policy
 ---------------------------
 
-A complete section about how to setup a security policy is available in the :ref:`applicationSecurityPolicy <Application security policy>` page.
+A complete section about how to setup a security policy is available in the :ref:`Application security policy <applicationSecurityPolicy>` page.
 
 .. _pre_installed_application_vd:
 

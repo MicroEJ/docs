@@ -38,7 +38,7 @@ Kernel Security Policy Manager
 
 This implementation is inspired from the `JavaPolicyFile`_ concept.
 Features come with a policy file that describes the permission they will need at runtime.
-By default the name of this file should be ``feature.policy.json`` you can override the default name using the property ``feature.policy.name`` to be added in the Kernel `properties`_.
+By default the name of this file should be ``feature.policy.json`` you can override the default name using the property ``feature.policy.name`` to be added in the Kernel :ref:`system properties <system_properties>`.
 This concept assumes that the system owner is able to verify the content of this file before the feature is deployed onto the Kernel (using an application store system for instance).
 The file is then parsed on the feature installation and the permissions are stored in a map in the security manager.
 Finally, when a permission check is requested, the security manager will check if the feature has specified the requested permission or not in which case it throws a `SecurityException`_.
@@ -127,8 +127,8 @@ This example:
 Using an empty value or the ``*`` wildcard is left to the developer preference and should be processed in the exact same way by the security policy resource loader.
 
 .. warning::
-    If the Kernel does not embed all class names (see :ref:`stripping-class-names-from-an-application`),
-    make sure that specified permission class names are embedded by declaring them as :ref:`Required Types <types>`.
+    If the Kernel does not embed all class names (see :ref:`Stripping Class Names from an Application <stripclassnames>`),
+    make sure that specified permission class names are embedded by declaring them as :ref:`Required Types <section.classpath.elements.types>`.
     Any permission check done on a permission class without embedded name will result in a `SecurityException`_.
 
 
@@ -153,10 +153,7 @@ The policy grants all applications the permission for a list of permission class
 .. _java.security.Permission: https://repository.microej.com/javadoc/microej_5.x/apis/java/security/Permission.html
 .. _JavaPolicyFile: https://docs.oracle.com/javase/8/docs/technotes/guides/security/PolicyFiles.html
 .. _com.microej.library.util.kf-util: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/package-summary.html
-.. _requiredTypes: https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#section-classpath-elements-types
-.. _properties: https://docs.microej.com/en/latest/ApplicationDeveloperGuide/classpath.html#system-properties
 
-..
    | Copyright 2024, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
