@@ -141,7 +141,6 @@ An example of this policy manager is used by the `Kernel-GREEN`_.
 The policy grants all applications the permission for a list of permission classes and logs all protected accesses by Applications.
 
 
-
 .. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
 .. _SecurityManager.checkPermission(Permission): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html#checkPermission-java.security.Permission-
 .. _System.setSecurityManager(SecurityManager): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/System.html#setSecurityManager-java.lang.SecurityManager-
@@ -154,6 +153,7 @@ The policy grants all applications the permission for a list of permission class
 .. _JavaPolicyFile: https://docs.oracle.com/javase/8/docs/technotes/guides/security/PolicyFiles.html
 .. _com.microej.library.util.kf-util: https://repository.microej.com/javadoc/microej_5.x/apis/com/microej/kf/util/security/package-summary.html
 
+..
    | Copyright 2024, MicroEJ Corp. Content in this space is free
    for read and redistribute. Except if otherwise stated, modification
    is subject to MicroEJ Corp prior approval.
