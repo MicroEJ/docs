@@ -55,6 +55,7 @@ This plugin adds the following tasks to your project:
 - :ref:`sdk6_module_natures.tasks.loadVee`
 - :ref:`sdk6_module_natures.tasks.runOnSimulator`
 - :ref:`sdk6_module_natures.tasks.checkModule`
+- :ref:`sdk6_module_natures.tasks.buildApplicationObjectFile`
 - :ref:`sdk6_module_natures.tasks.buildExecutable`
 - :ref:`sdk6_module_natures.tasks.buildWPK`
 - :ref:`sdk6_module_natures.tasks.buildVirtualDevice`
@@ -264,6 +265,33 @@ For example:
     checkers = "readme,license"
   }
 
+.. _sdk6_module_natures.tasks.buildApplicationObjectFile:
+
+buildApplicationObjectFile
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Description**: Build the object file of the Application.
+
+**Inputs**:
+
+- The extracted VEE Port folder
+- The project classpath which contains the MicroEJ dependent application classes and resources
+- The Full Qualified Name of the Application EntryPoint
+- The folder containing the application configuration (``configuration``)
+
+**Outputs**:
+
+- The object file (.o) of the Application and the archive of the build files (``build/application/object/bsp/lib/microejapp.o``)
+- The Zip file containing the generated build files (``build/application/applicationObjectBuildFiles.zip``)
+
+**Module Natures**:
+
+This task is used by the following module natures:
+
+- :ref:`sdk6_module_natures.application`
+
+The ``buildApplicationObjectFile`` task is used internally by the SDK and it is not intended to be executed by the user.
+
 .. _sdk6_module_natures.tasks.buildExecutable:
 
 buildExecutable
@@ -274,14 +302,12 @@ buildExecutable
 **Inputs**:
 
 - The extracted VEE Port folder
-- The project classpath which contains the MicroEJ dependent application classes and resources
-- The Full Qualified Name of the Application main class
 - The folder containing the application configuration (``configuration``)
+- The object file (.o) of the Application
 
 **Outputs**:
 
-- The directory in which the Executable file and the build files are generated (``build/executable/application``)
-- The Zip file containing the generated build files (``build/executable/buildFiles.zip``)
+- The directory in which the Executable file and the build files are generated (``build/application/executable``)
 
 **Module Natures**:
 
