@@ -36,13 +36,13 @@ A usage example of these implementations is available in the `Kernel-GREEN`_ Git
 Kernel Security Policy Manager
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This implementation is inspired from the `JavaPolicyFile`_ concept.
-Features come with a policy file that describes the permission they will need at runtime.
-By default the name of this file should be ``feature.policy.json`` you can override the default name using the property ``feature.policy.name`` to be added in the Kernel :ref:`system properties <system_properties>`.
-This concept assumes that the system owner is able to verify the content of this file before the feature is deployed onto the Kernel (using an application store system for instance).
-The file is then parsed on the feature installation and the permissions are stored in a map in the security manager.
-Finally, when a permission check is requested, the security manager will check if the feature has specified the requested permission or not in which case it throws a `SecurityException`_.
-Here is a schema to describe the entire flow of the Kernel Security Policy Manager from a feature install to a feature stop.
+| This implementation is inspired from the `JavaPolicyFile`_ concept.
+| Features come with a policy file that describes the permission they will need at runtime.
+| By default the name of this file should be ``feature.policy.json`` you can override the default name using the property ``feature.policy.name`` to be added in the Kernel :ref:`system properties <system_properties>`.
+| This concept assumes that the system owner is able to verify the content of this file before the feature is deployed onto the Kernel (using an application store system for instance).
+| The file is then parsed on the feature installation and the permissions are stored in a map in the security manager.
+| Finally, when a permission check is requested, the security manager will check if the feature has specified the requested permission or not in which case it throws a `SecurityException`_.
+| Here is a schema to describe the entire flow of the Kernel Security Policy Manager from a feature install to a feature stop.
 
 .. image:: png/kernelSecurityPolicyManagerFlow.png
    :align: center
