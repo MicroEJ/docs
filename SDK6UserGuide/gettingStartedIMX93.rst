@@ -28,8 +28,13 @@ The first part consists in running a demo application on the Virtual Device. All
 The second part consists in running the same demo application on your device. For that, you will need:
 
 * An i.MX93 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-93-evaluation-kit:i.MX93EVK>`__.
-* (Optional) An HDMI display.
+
+* An HDMI display with touchscreen connected with an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI#/>`__.
+
+   * This getting started has been tested with a `MageDok T080A <https://magedok.com/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
+
 * Yocto Linux image (TBD)
+
 * Yocto SDK (TBD)
 
 .. _sdk_6_getting_started_imx93_environment_setup:
@@ -288,11 +293,27 @@ The installation path can then be used to build the VEE Executable.
 Install required packages
 """""""""""""""""""""""""
 
-Finally some packages will be required in order to build an executable. Run the following command (either in Linux or WSL):
+Some additionnal packages will be required in order to build an executable. Run the following command (either in Linux or WSL):
 
 .. code-block::
 
    sudo apt-get update && sudo apt-get install dos2unix make
+
+Hardware Setup
+""""""""""""""
+
+To setup the hardware you will need to connect the following on the EVK:
+
+* A USB C cable for the power (provided with the EVK).
+* A USB C cable for the serial port.
+* A USB C cable for the touchscreen device.
+* A RJ45 cable to access the network.
+* An HDMI cable connected to the IMX-HDMI-MIPI adapter.
+
+      .. figure:: images/gettingStarted/iMX93/getting-started-setup.png
+         :alt: Setup
+         :align: center
+         :scale: 70%
 
 Congratulations! You have finished the setup of your environment. You are now ready to discover how to build and run a MicroEJ application.
 
