@@ -29,7 +29,7 @@ The second part consists in running the same demo application on your device. Fo
 
 * An i.MX93 Evaluation Kit, available `here <https://www.nxp.com/design/design-center/development-boards/i-mx-evaluation-and-development-boards/i-mx-93-evaluation-kit:i.MX93EVK>`__.
 
-* An HDMI display with touchscreen connected with an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI#/>`__.
+* An HDMI display with touchscreen connected with an `IMX-MIPI-HDMI adapter <https://www.nxp.com/part/IMX-MIPI-HDMI>`__.
 
    * This getting started has been tested with a `MageDok T080A <https://magedok.com/products/8-inch-1280-720-resolution-touch-monitor-t080a>`_.
 
