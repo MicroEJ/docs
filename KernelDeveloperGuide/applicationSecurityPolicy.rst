@@ -1,5 +1,7 @@
-Security Management
-===================
+.. _applicationSecurityPolicy:
+
+Application security policy
+===========================
 
 The security management can be done in various ways, the most common way of declaring a security management policy is by the usage of the `SecurityManager`_ class.
 
@@ -28,7 +30,7 @@ Then you have to implement your own Security Policy.
 Implementation examples
 -----------------------
 
-MicroEJ provides several security manager implementation examples in the `com.microej.library.util.kf-util`_ (2.8.0+) module.
+MicroEJ provides several security manager implementation examples in the ``security`` package of the `com.microej.library.util.kf-util`_ (2.8.0+) module.
 A usage example of these implementations is available in the `Kernel-GREEN`_ GitHub project.
 
 Kernel Security Policy Manager
@@ -122,20 +124,23 @@ This example:
 - allows the usage of any permission name and any actions for the ``ej.microui.display.FontPermission`` permission.
 - allows the ``exit`` permission name and any actions for the ``java.lang.RuntimePermission`` permission.
 
-Describing ``anything`` either with an empty value or a ``*`` is left to the developer preference and should be processed in the exact same way by the security manager.
+Using an empty value or the ``*`` wildcard is left to the developer preference and should be processed in the exact same way by the security policy resource loader.
 
 .. warning::
-    Make sure that specified permission class names are embedded by declaring them as `requiredTypes`.
+    If the Kernel does not embed all class names (see :ref:`stripping-class-names-from-an-application`),
+    make sure that specified permission class names are embedded by declaring them as :ref:`Required Types <types>`.
     Any permission check done on a permission class without embedded name will result in a `SecurityException`_.
 
 
 Kernel Security Manager
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This implementation is based on the creation of `FeaturePermissionCheckDelegate`_ to specify the behavior of the `SecurityManager.checkPermission(Permission)`_ for each permission.
-If a permission check is done and no delegate for this permission exist, a `SecurityException`_ is thrown.
-An usage example of this implementation and further explanations about how to implement your own delegates are demonstrated in the `Kernel-GREEN`_ project.
-This Kernel implements a logging-only security policy by default.
+This implementation is based on the creation of `FeaturePermissionCheckDelegate`_ to specify the behavior of the `SecurityManager.checkPermission(Permission)`_ for each permission class.
+If a permission check is done and no delegate for its permission is found, a `SecurityException`_ is thrown.
+An example of this policy manager is used by the `Kernel-GREEN`_.
+The policy grants all applications the permission for a list of permission classes and logs all protected accesses by Applications.
+
+
 
 .. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
 .. _SecurityManager.checkPermission(Permission): https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html#checkPermission-java.security.Permission-

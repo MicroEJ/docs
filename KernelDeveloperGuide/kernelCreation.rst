@@ -62,7 +62,7 @@ A Kernel must define the set of classes, methods and static fields all applicati
 
    According to the :ref:`Kernel and Features specification <kf_specification>`, no API is open by default to Sandboxed Applications.
 
-This can be done either by declaring :ref:`Kernel APIs <kernel.api>` or by definining a :ref:`Runtime Environment <runtime_environment>`.
+This can be done either by declaring :ref:`Kernel APIs <kernel.api>` or by defining a :ref:`Runtime Environment <runtime_environment>`.
 
 The main difference is from the Application development point of view. 
 In the first case, the Application project still declares standard module dependencies.
@@ -81,9 +81,7 @@ A Kernel API or a Runtime Environment module is added as a dependency with the c
 Implement a Security Policy
 ---------------------------
 
-A complete section about how to setup a security policy is available in the `SecurityManagement`_ page.
-
-.. _SecurityManagement: https://docs.microej.com/en/latest/KernelDeveloperGuide/securityManagement.html#
+A complete section about how to setup a security policy is available in the :ref:`applicationSecurityPolicy <Application security policy>` page.
 
 .. _pre_installed_application_vd:
 
