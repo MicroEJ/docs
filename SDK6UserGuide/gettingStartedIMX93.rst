@@ -334,11 +334,11 @@ To build the Executable of the :guilabel:`Example-Java-Widget` Application, the 
 
     * If you changed the default Yocto SDK installation path, set the following environment variable
 
-      * ``APP_SDK_INSTALL=/usr/local/oecore-x86_64`` (replace it with your own path)
+      * ``APP_SDK_INSTALL``: Path to the Yocto SDK (by default ``/usr/local/oecore-x86_64/``)
 
-    * When using Windows with WSL, set the WSL distribution name, which you can get with the command :guilabel:` wsl --list` in Windows terminal
+    * When using Windows with WSL, set the WSL distribution name, which you can get with the command :guilabel:`wsl --list` in Windows terminal
 
-      * ``WSL_DISTRIBUTION_NAME=``: Name of the WSL distribution, for example ``Ubuntu`` (default value).
+      * ``WSL_DISTRIBUTION_NAME``: Name of the WSL distribution if using Windows (by default ``Ubuntu``).
 
       .. figure:: images/gettingStarted/iMX93/getting-started-intellij-variables.png
          :alt: IntelliJ variables
@@ -385,7 +385,7 @@ To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit,
     * ``SSH_USER=root``
     * ``SSH_HOSTNAME``: IP address of the i.MX93 Evaluation Kit.
     * ``APP_SDK_INSTALL``: Path to the Yocto SDK (by default ``/usr/local/oecore-x86_64/``).
-    * ``WSL_DISTRIBUTION_NAME``: Name of the WSL distribution if using Windows.
+    * ``WSL_DISTRIBUTION_NAME``: Name of the WSL distribution if using Windows (by default ``Ubuntu``).
 
 * Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
