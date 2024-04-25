@@ -13,14 +13,13 @@ digraph mygraph {
     "microejVee" [fillcolor = "#41f753"]
     "microejApplication" [fillcolor = "#41f753"]
     "microejTool" [fillcolor = "#41f753"]
+    "microejRuntimeApi" [fillcolor = "#41f753"]
     "microejApplicationClasspath" [fillcolor = "#b0d6d3"]
     "microejVeeClasspath" [fillcolor = "#b0d6d3"]
     "microejKernelExecutableClasspath" [fillcolor = "#b0d6d3"]
     "virtualDeviceToolClasspath" [fillcolor = "#b0d6d3"]
-    "antScriptLauncherClasspath" [fillcolor = "#b0d6d3"]
-    "addonProcessorClasspath" [fillcolor = "#b0d6d3"]
-    "jdtCompilerClasspath" [fillcolor = "#b0d6d3"]
-    "wrapperClasspath" [fillcolor = "#b0d6d3"]
+    "microejRuntimeApiClasspath" [fillcolor = "#b0d6d3"]
+    "microejRuntimeApiKernelClasspath" [fillcolor = "#b0d6d3"]
 
     "loadVee" -> "microejVeeClasspath" [ label="uses" ]
     "microejVeeClasspath" -> "microejVee"
@@ -28,10 +27,12 @@ digraph mygraph {
     "microejKernelExecutableClasspath" -> "microejVee"
     "buildVirtualDevice" -> "microejApplicationClasspath" [ label="uses" ]
     "buildVirtualDevice" -> "virtualDeviceToolClasspath" [ label="uses" ]
-    "buildVirtualDevice" -> "antScriptLauncherClasspath" [ label="uses" ]
     "microejApplicationClasspath" -> "microejApplication"
-    "adp" -> "addonProcessorClasspath" [ label="uses" ]
-    "com.microej.gradle.java plugins" -> "jdtCompilerClasspath" [ label="uses" ]
-    "compileJava" -> "wrapperClasspath" [ label="uses" ]
     "virtualDeviceToolClasspath" -> "microejTool"
+    "microejRuntimeApiClasspath" -> "microejRuntimeApi"
+    "microejRuntimeApiKernelClasspath" -> "microejRuntimeApi"
+    "com.microej.gradle.application" -> "microejRuntimeApiClasspath" [ label="uses" ]
+    "buildWPK" -> "microejRuntimeApiKernelClasspath" [ label="uses" ]
+    "buildApplicationObjectFile" -> "microejRuntimeApiKernelClasspath" [ label="uses" ]
+    "buildFeature" -> "microejRuntimeApiKernelClasspath" [ label="uses" ]
 }

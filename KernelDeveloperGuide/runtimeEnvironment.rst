@@ -142,9 +142,17 @@ Here is a list of known libraries using an Add-On Processor:
 Use a Runtime Environment in an Application
 -------------------------------------------
 
-The Runtime Environment dependency must be declared in the Application project as following::
+The Runtime Environment dependency must be declared in the Application project as following:
 
-   <dependency org="com.mycompany" name="myruntimeapi" rev="1.0.0" conf="provided->runtimeapi"/>
+.. tabs::
+
+   .. tab:: SDK 6
+
+      microejRuntimeApi("com.mycompany:myruntimeapi:1.0.0")
+
+   .. tab:: SDK 5
+
+      <dependency org="com.mycompany" name="myruntimeapi" rev="1.0.0" conf="provided->runtimeapi"/>
 
 .. note::
 
