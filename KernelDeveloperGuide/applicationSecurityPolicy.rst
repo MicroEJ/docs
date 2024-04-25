@@ -56,7 +56,8 @@ Before going further we strongly advise to take a look to the `java.security.Per
 
 Here is an example of what a JSON file looks like with placeholders:
 
-.. code-block:: JSON
+.. code-block:: json
+
     {
       "permissions": {
         "<permissionClassName1>":{
@@ -72,7 +73,8 @@ Here is an example of what a JSON file looks like with placeholders:
 
 Here is now an example of what a real JSON file can look like:
 
-.. code-block:: JSON
+.. code-block:: json
+
     {
       "permissions": {
         "ej.microui.display.DisplayPermission":{
@@ -105,7 +107,8 @@ The parser contains two key words to allow more flexibility over the content of 
 
 To simplify the file structure you can also choose to have an empty object value for permission className or/and permission actions such as shown in the example above:
 
-.. code-block:: JSON
+.. code-block:: json
+
     {
       "permissions": {
         "ej.microui.display.DisplayPermission":{
