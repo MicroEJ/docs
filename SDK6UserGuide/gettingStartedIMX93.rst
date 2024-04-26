@@ -63,7 +63,7 @@ For this Getting Started, the :guilabel:`Example-Java-Widget` Application will b
 .. note::
   
    If you don't have Git installed, you can download the source code directly from our `GitHub repository <https://github.com/MicroEJ/Example-Java-Widget/tree/1.0.0>`__. 
-   Then you can click on::guilabel:` Code > Download ZIP`.
+   Then you can click on::guilabel:`Code > Download ZIP`.
 
 Set up the Application on your IDE
 ----------------------------------
