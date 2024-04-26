@@ -131,7 +131,7 @@ In the gradle build file ``build.gradle.kts``, replace the VEE dependency ``micr
 .. code-block::
 
    dependencies {
-      microejVee("com.microej.veeport.imx93:VEEPort:1.0.0")
+      microejVee("com.microej.veeport.imx93:VEEPort_eval:1.0.0")
    }
 
 For more information about how to select a VEE Port please refer to the following section: :ref:`sdk_6_select_veeport`.
