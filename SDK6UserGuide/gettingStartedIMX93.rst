@@ -408,7 +408,7 @@ To run the :guilabel:`Example-Java-Widget` Application on i.MX93 Evaluation Kit,
 
 * Double-click on the :guilabel:`runOnDevice` task in the Gradle tasks view. It may take some time.
 
-      .. figure:: images/gettingStarted/iMXRT1170/getting-started-runOnDevice.png
+      .. figure:: images/gettingStarted/iMX93/getting-started-runOnDevice.png
          :alt: runOnDevice task
          :align: center
          :scale: 70%
