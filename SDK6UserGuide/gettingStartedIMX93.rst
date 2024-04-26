@@ -199,65 +199,6 @@ Environment Setup
 
 This chapter takes approximately one hour and will take you through the steps to build a VEE Executable and set up the evaluation kit.
 
-Flash the image on an SD card
-"""""""""""""""""""""""""""""
-
-The Linux image is available here: (TBD)
-
-For this getting started we use a Linux image flashed on an SD card.
-
-Linux
-+++++
-
-To flash the image on Linux, use the following command (assuming the SDCard device is /dev/mmcblk0):
-
-.. code-block::
-
-   bmaptool copy lib32-core-image-microej-microej-imx93.wic.gz /dev/mmcblk0
-
-Windows
-+++++++
-
-To flash the image on Windows, do the following:
-
-* Install Rufus: https://rufus.ie/en/.
-* Extract the ``.wic`` file from the archive ``lib32-core-image-microej-microej-imx93.wic.gz``.
-* Select your SD card device in the list at the top (see example of configuration below).
-* Select your ``.wic`` file by clicking on ``SELECT``
-* Finally click on ``START`` at the bottom and wait for the process to finish.
-
-      .. figure:: images/gettingStarted/iMX93/getting-started-rufus.png
-         :alt: Rufus
-         :align: center
-
-Configure boot
-""""""""""""""
-
-By default, the i.MX93 evaluation kit will boot from the eMMC.
-To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0010``.
-
-Insert the flashed SD card and boot the device. After a few seconds, the display will show the IMX93 Getting Started Welcome page.
-If no display is attached, information such as device IP address and documentation link will also be printed in the logs.
-
-LVDS display support
-""""""""""""""""""""
-
-This Getting Started has been tested with an HDMI display with a 1280x720 resolution.
-If you want to use the official display instead (the `DY1212W-4856 <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/dy1212w-4856:DY1212W-4856>`_) 
-you will need to reconfigure the device tree:
-
-* Boot your i.MX93 Evaluation Kit.
-* Stop the booting process to access the U-boot menu by pressing a key on the serial console.
-* In the U-boot menu, run the following commands:
-
-.. code-block ::
-
-   setenv fdtfile imx93-11x11-evk-boe-wxga-lvds-panel.dtb
-   saveenv
-   boot
-
-* After the boot has completed you can test the display with: ``modetest -M imx-drm -s 35@33:1280x800-60.03``.
-
 Install the Yocto SDK
 """""""""""""""""""""
 
@@ -290,7 +231,7 @@ To install the Yocto SDK, use the following commands in WSL or Linux:
 
 The installation path can then be used to build the VEE Executable.
 
-Install required packages
+Install Required Packages
 """""""""""""""""""""""""
 
 Some additionnal packages will be required in order to build an executable. Run the following command (either in Linux or WSL):
@@ -299,8 +240,44 @@ Some additionnal packages will be required in order to build an executable. Run 
 
    sudo apt-get update && sudo apt-get install dos2unix make
 
+Flash the image on an SD card
+"""""""""""""""""""""""""""""
+
+The Linux image is available here: (TBD)
+
+For this getting started we use a Linux image flashed on an SD card.
+
+Linux
++++++
+
+To flash the image on Linux, use the following command (assuming the SDCard device is /dev/mmcblk0):
+
+.. code-block::
+
+   bmaptool copy lib32-core-image-microej-microej-imx93.wic.gz /dev/mmcblk0
+
+Windows
++++++++
+
+To flash the image on Windows, do the following:
+
+* Install Rufus: https://rufus.ie/en/.
+* Extract the ``.wic`` file from the archive ``lib32-core-image-microej-microej-imx93.wic.gz``.
+* Select your SD card device in the list at the top (see example of configuration below).
+* Select your ``.wic`` file by clicking on ``SELECT``
+* Finally click on ``START`` at the bottom and wait for the process to finish.
+
+      .. figure:: images/gettingStarted/iMX93/getting-started-rufus.png
+         :alt: Rufus
+         :align: center
+
 Hardware Setup
 """"""""""""""
+
+      .. figure:: images/gettingStarted/iMX93/getting-started-setup.png
+         :alt: Setup
+         :align: center
+         :scale: 70%
 
 To setup the hardware you will need to connect the following on the EVK:
 
@@ -310,10 +287,52 @@ To setup the hardware you will need to connect the following on the EVK:
 * A RJ45 cable to access the network.
 * An HDMI cable connected to the IMX-HDMI-MIPI adapter.
 
-      .. figure:: images/gettingStarted/iMX93/getting-started-setup.png
-         :alt: Setup
-         :align: center
-         :scale: 70%
+The serial port is used to connect to a shell, it uses the following parameters:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 10 10 10 10 10
+
+   * - Baudrate
+     - Data bits
+     - Parity bits
+     - Stop bits
+     - Flow control
+   * - 115200
+     - 8
+     - None
+     - 1
+     - XON/XOFF
+
+To connect to the shell enter the login ``root``.
+
+Configure boot
+++++++++++++++
+
+By default, the i.MX93 evaluation kit will boot from the eMMC.
+To change the boot mode to micro SD, set the DIP switch ``BMODE`` to ``0010``.
+
+Insert the flashed SD card and boot the device. After a few seconds, the display will show the IMX93 Getting Started Welcome page.
+If no display is attached, information such as device IP address and documentation link will also be printed in the logs.
+
+LVDS display support
+++++++++++++++++++++
+
+This Getting Started has been tested with an HDMI display with a 1280x720 resolution.
+If you want to use the official display instead (the `DY1212W-4856 <https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/dy1212w-4856:DY1212W-4856>`_) 
+you will need to reconfigure the device tree:
+
+* Boot your i.MX93 Evaluation Kit.
+* Stop the booting process to access the U-boot menu by pressing a key on the serial console.
+* In the U-boot menu, run the following commands:
+
+.. code-block ::
+
+   setenv fdtfile imx93-11x11-evk-boe-wxga-lvds-panel.dtb
+   saveenv
+   boot
+
+* After the boot has completed you can test the display with: ``modetest -M imx-drm -s 35@33:1280x800-60.03``.
 
 Congratulations! You have finished the setup of your environment. You are now ready to discover how to build and run a MicroEJ application.
 
