@@ -138,10 +138,10 @@ Using an empty value or the ``*`` wildcard is left to the developer preference a
 Kernel Security Manager
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This implementation is based on the creation of `FeaturePermissionCheckDelegate`_ to specify the behavior of the `SecurityManager.checkPermission(Permission)`_ for each permission class.
-If a permission check is done and no delegate for its permission is found, a `SecurityException`_ is thrown.
-An example of this policy manager is used by the `Kernel-GREEN`_.
-The policy grants all applications the permission for a list of permission classes and logs all protected accesses by Applications.
+| This implementation is based on the creation of `FeaturePermissionCheckDelegate`_ to specify the behavior of the `SecurityManager.checkPermission(Permission)`_ for each permission class.
+| If a permission check is done and no delegate for its permission is found, a `SecurityException`_ is thrown.
+| An example of this policy manager is used by the `Kernel-GREEN`_.
+| The policy grants all applications the permission for a list of permission classes and logs all protected accesses by Applications.
 
 
 .. _SecurityManager: https://repository.microej.com/javadoc/microej_5.x/apis/java/lang/SecurityManager.html
