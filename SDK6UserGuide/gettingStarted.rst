@@ -56,6 +56,7 @@ These VEE ports are ideal to evaluate MicroEJ's technology. They include the lat
 .. toctree::
    :hidden:
 
+   gettingStartedIMX93
    gettingStartedIMXRT1170
    gettingStartedSTM32F7508
    
@@ -86,9 +87,6 @@ All VEE Port source code examples can be found at `GitHub <https://github.com/Mi
 .. toctree::
    :hidden:
 
-   gettingStartedIMX93
-   gettingStartedIMXRT1170
-   gettingStartedSTM32F7508
    gettingStartedIMXRT595
 
 ..
