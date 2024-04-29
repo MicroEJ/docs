@@ -29,7 +29,7 @@ A wrapper class implementing the ``ej.kf.FeatureEntryPoint`` interface is create
    public class MyClassWrapper implements FeatureEntryPoint {
        @Override
        public void start() {
-         com.mycompany.MyClass.main(null);
+         com.mycompany.MyClass.main(new String[0]);
        }
 
        @Override
