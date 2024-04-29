@@ -66,54 +66,70 @@ The render policy can be changed by overridding `Desktop.createRenderPolicy()`_.
 
 .. _section_layout_process:
 
-Lay Out
--------
-
-All widgets are laid out at once during the lay out process. This process can be started by `Desktop.requestLayOut()`_, `Widget.requestLayOut()`_. The layout is also automatically done when the desktop is shown (`Desktop.onShown()`_). This process is composed of two steps, each step browses the hierarchy of widgets following a depth-first algorithm:
-
-- compute the optimal size for each widget and container (considering the constraints of the lay out),
-- set position and size for each widget.
-
-Once the position and size of a widget is set, the widget is notified by a call to `onLaidOut()`_.
-
-.. _Desktop.requestLayOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#requestLayOut--
-.. _Widget.requestLayOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#requestLayOut--
-.. _Desktop.onShown(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#onShown--
-.. _onLaidOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onLaidOut--
-
-Desktop and Widget States
--------------------------
+Widget Lifecycle
+----------------
 
 Desktop and widgets pass through different states. Once created, they can be attached, then they can be laid out, finally they can be shown.
 
 A desktop is attached automatically as soon as it is shown on the display and detached when hidden.
-It can also be attached manually by calling `Desktop.setAttached()`_ or detached by calling `Desktop.setDetached()`_. It could be used to render the desktop (and its widgets) on an image for example.
+It can also be attached manually by calling `Desktop.setAttached()`_ or detached by calling `Desktop.setDetached()`_.
+It is particularly useful to render the desktop (and its widgets) in a buffered image for example.
 
 A widget is considered as attached when it is contained by a desktop that is attached.
-
-In the same way, by default, a widget is shown when its desktop is shown. But for optimization purpose, a container can control when its children are shown or hidden. A typical use case is when the widgets are moved outside the display (in a scroll container for instance).
-
-Once a `widget is attached`_, it means that it is ready to be shown (for instance, the necessary resources are allocated). In other words, once attached a widget is ready to be rendered (on an image or on the display).
-
-After being attached, a `widget is laid out`_. That means that its bounds inside its parent are set. Beware that a widget can be laid out several times once attached (typically each time a `Desktop.requestLayOut()`_ or `Widget.requestLayOut()`_ is done).
-
-Once a `widget is shown`_, it means that it is intended to be rendered on the display. While shown, it may start a periodic refresh or an animation.
-
-A widget can finally be `hidden`_ and `detached`_. All that is started/allocated must be stopped/freed correctly to avoid memory leaks.
-
-.. figure:: images/desktopWidgetStates.png
-   :alt: Desktop and Widget States
-   :align: center
-
-The following sections will present several ways to customize and extend the framework to better fit your needs.
+In the same way, by default, a widget is shown when its desktop is shown.
+But for optimization purpose, a container can control when its children are shown or hidden.
+A typical use case is when the widgets are moved outside the display (in a scroll container for instance).
 
 .. _Desktop.setAttached(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#setAttached--
 .. _Desktop.setDetached(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#setDetached--
-.. _widget is attached: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onAttached--
-.. _widget is laid out: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onLaidOut--
-.. _widget is shown: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onShown--
-.. _hidden: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onHidden--
-.. _detached: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onDetached--
+
+Hooks
+~~~~~
+
+When attached, a widget is notified by a call to its `onAttached()`_ method.
+This notification can be useful to allocate some images or other resources for example.
+These resources can be used to compute the size of widget and to render it.
+In other words, after this call a widget is ready to be laid out.
+
+After being laid out, a widget is notified by a call to its `onLaidOut()`_ method.
+Being laid out means that its bounds inside its parent are set.
+During this call, the widget can prepare some stuff used later by the rendering.
+For example, it can split a string into several lines based on its width.
+Another idea could be to allocate a buffered image and draw the background to avoid repainting everything during the rendering.
+
+Beware that a widget can be laid out several times once attached (typically each time a `Desktop.requestLayOut()`_ or `Widget.requestLayOut()`_ is done).
+
+When a whole hierarchy is ready to be rendered, all the widgets are notified by a call to their `onShown()`_.
+This notification is particularly useful to start a periodic refresh or an animation.
+
+A widget can finally be `onHidden()`_ and `onDetached()`_.
+All that is started/allocated during the previous phases must be stopped/freed correctly to avoid memory leaks.
+
+.. _onAttached(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onAttached--
+.. _onLaidOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onLaidOut--
+.. _onShown(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onShown--
+.. _onHidden(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onHidden--
+.. _onDetached(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onDetached--
+
+Lay Out
+~~~~~~~
+
+All widgets are laid out at once during the lay out process.
+This process can be started by `Desktop.requestLayOut()`_ or `Widget.requestLayOut()`_.
+The layout is also automatically done when the desktop is shown (`Desktop.onShown()`_).
+
+This process is composed of two steps, each step browses the hierarchy of widgets following a depth-first algorithm:
+
+- compute the optimal size for each widget and container (considering the constraints of the lay out),
+- set position and size for each widget.
+
+.. _Desktop.requestLayOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#requestLayOut--
+.. _Widget.requestLayOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#requestLayOut--
+.. _Desktop.onShown(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#onShown--
+
+.. figure:: images/widgetLifecycle.png
+   :alt: Desktop and Widget Lifecycle
+   :align: center
 
 .. _rendering_pipeline:
 
@@ -256,7 +272,7 @@ Font
 
 The font is not used by framework itself, but it may be used in the ``renderContent()`` to select the font to use when drawing strings.
 
-Extra fields
+Extra Fields
 ~~~~~~~~~~~~
 
 Extra fields are not used by framework itself, but they may be used in the ``renderContent()`` to customize the behavior and the appearance of the widget.
@@ -301,7 +317,7 @@ See chapter :ref:`section_animate_widget` for more information on animating a wi
 
 .. _Animator: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/animation/Animator.html
 
-Partial buffer considerations
+Partial Buffer Considerations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Rendering a widget in :ref:`partial buffer mode <section_display_partial>` may require multiple cycles if the buffer is not big enough to hold all the pixels to update in a single shot.
