@@ -122,7 +122,7 @@ Listening to the life-cycle hooks
 - `onShown() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onShown-->`_
 - `onHidden() <https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onHidden-->`_
 
-For example, the ``onAttached()`` method may be overridden to load an image:
+The ``onAttached()`` method may be overridden to load an image:
 
 .. code-block:: Java
 
@@ -140,7 +140,18 @@ Likewise, the ``onDetached()`` method may be overridden to close the image:
 		this.image.close();
 	}
 
-For example, the ``onShown()`` method may be overridden to start an animation:
+The ``onLaidOut()`` method may be overridden to split a String into several lines based on the widget's width:
+
+.. code-block:: Java
+
+	@Override
+	protected void onLaidOut() {
+		Style style = getStyle();
+		Font font = style.getFont();
+		this.splittedText = TextHelper.wrap(getText(), font, getContentBounds().getWidth());
+	}
+
+The ``onShown()`` method may be overridden to start an animation:
 
 .. code-block:: Java
 

@@ -81,6 +81,40 @@ Once the position and size of a widget is set, the widget is notified by a call 
 .. _Desktop.onShown(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#onShown--
 .. _onLaidOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onLaidOut--
 
+Desktop and Widget States
+-------------------------
+
+Desktop and widgets pass through different states. Once created, they can be attached, then they can be laid out, finally they can be shown.
+
+A desktop is attached automatically as soon as it is shown on the display and detached when hidden.
+It can also be attached manually by calling `Desktop.setAttached()`_ or detached by calling `Desktop.setDetached()`_. It could be used to render the desktop (and its widgets) on an image for example.
+
+A widget is considered as attached when it is contained by a desktop that is attached.
+
+In the same way, by default, a widget is shown when its desktop is shown. But for optimization purpose, a container can control when its children are shown or hidden. A typical use case is when the widgets are moved outside the display (in a scroll container for instance).
+
+Once a `widget is attached`_, it means that it is ready to be shown (for instance, the necessary resources are allocated). In other words, once attached a widget is ready to be rendered (on an image or on the display).
+
+After being attached, a `widget is laid out`_. That means that its bounds inside its parent are set. Beware that a widget can be laid out several times once attached (typically each time a `Desktop.requestLayOut()`_ or `Widget.requestLayOut()`_ is done).
+
+Once a `widget is shown`_, it means that it is intended to be rendered on the display. While shown, it may start a periodic refresh or an animation.
+
+A widget can finally be `hidden`_ and `detached`_. All that is started/allocated must be stopped/freed correctly to avoid memory leaks.
+
+.. figure:: images/desktopWidgetStates.png
+   :alt: Desktop and Widget States
+   :align: center
+
+The following sections will present several ways to customize and extend the framework to better fit your needs.
+
+.. _Desktop.setAttached(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#setAttached--
+.. _Desktop.setDetached(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#setDetached--
+.. _widget is attached: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onAttached--
+.. _widget is laid out: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onLaidOut--
+.. _widget is shown: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onShown--
+.. _hidden: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onHidden--
+.. _detached: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#onDetached--
+
 .. _rendering_pipeline:
 
 Rendering Pipeline
@@ -279,30 +313,6 @@ Due to these limitations, it is not recommended to repaint big parts of the scre
 For example, a transition on a small part of the screen will look better than a transition affecting the whole screen.
 A transition will look perfect if the partial buffer can hold all the lines to repaint.
 Since the buffer holds a group of lines, a horizontal transition may not look the same as a vertical transition.
-
-Desktop and widget states
--------------------------
-
-Desktop and widgets pass through different states. Once created, they can be attached, then they can be shown.
-
-A desktop is attached automatically as soon as it is shown on the display.
-It can also be attached manually by calling `Desktop.setAttached()`_. It could be used to render the desktop (and its widgets) on an image for example.
-
-A widget is considered as attached when it is contained by a desktop that is attached.
-
-In the same way, by default, a widget is shown when its desktop is shown. But for optimization purpose, a container can control when its children are shown or hidden. A typical use case is when the widgets are moved outside the display.
-
-Once a widget is attached, it means that it is ready to be shown (for instance, the necessary resources are allocated). In other words, once attached a widget is ready to be rendered (on an image or on the display).
-
-Once a widget is shown, it means that it is intended to be rendered on the display. While shown, it may start a periodic refresh or an animation.
-
-.. figure:: images/showSequence.png
-   :alt: Show Sequence
-   :align: center
-
-The following sections will present several ways to customize and extend the framework to better fit your needs.
-
-.. _Desktop.setAttached(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#setAttached--
 
 ..
    | Copyright 2008-2024, MicroEJ Corp. Content in this space is free 
