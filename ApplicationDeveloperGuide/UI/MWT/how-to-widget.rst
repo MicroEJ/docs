@@ -13,6 +13,8 @@ Widget subclasses have to implement two methods and may override optional method
 Implementing the mandatory methods
 ----------------------------------
 
+.. _mwt_widget_optimalsize:
+
 Computing the optimal size of the widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -12,6 +12,8 @@ Implementing the mandatory methods
 
 This section explains how to implement the two mandatory methods of a container subclass.
 
+.. _mwt_container_optimalsize:
+
 Computing the optimal size of the container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -41,6 +43,8 @@ For example, the following snippet computes the optimal size of a simple wrapper
 .. _getWidth(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#getWidth--
 .. _getHeight(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#getHeight--
 .. _Widget.NO_CONSTRAINT: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#NO_CONSTRAINT
+
+.. _mwt_container_layout:
 
 Laying out the children of the container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

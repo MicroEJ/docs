@@ -120,12 +120,24 @@ The layout is also automatically done when the desktop is shown (`Desktop.onShow
 
 This process is composed of two steps, each step browses the hierarchy of widgets following a depth-first algorithm:
 
-- compute the optimal size for each widget and container (considering the constraints of the lay out),
-- set position and size for each widget.
+- Compute the optimal size for each widget and container (considering the constraints of the lay out).
+- Set position and size for each widget.
+
+A widget must implement its `Widget.computeContentOptimalSize()`_ method.
+It is explained in details in this section: :ref:`mwt_widget_optimalsize`.
+
+A container is responsible of layouting its children.
+For that it must implement its `Widget.computeContentOptimalSize()`_ method and call the `Container.computeChildOptimalSize()`_ method for each of its children.
+And it must implement its `Container.layOutChildren()`_ method and call the `Container.layOutChild()`_ method for each of its children.
+It is explained in details in these sections: :ref:`mwt_container_optimalsize` and :ref:`mwt_container_layout`.
 
 .. _Desktop.requestLayOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#requestLayOut--
 .. _Widget.requestLayOut(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#requestLayOut--
 .. _Desktop.onShown(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Desktop.html#onShown--
+.. _Widget.computeContentOptimalSize(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#computeContentOptimalSize-ej.mwt.util.Size-
+.. _Container.computeChildOptimalSize(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Container.html#computeChildOptimalSize-ej.mwt.Widget-int-int-
+.. _Container.layOutChildren(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Container.html#layOutChildren-int-int-
+.. _Container.layOutChild(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Container.html#layOutChild-ej.mwt.Widget-int-int-int-int-
 
 .. figure:: images/widgetLifecycle.png
    :alt: Desktop and Widget Lifecycle
