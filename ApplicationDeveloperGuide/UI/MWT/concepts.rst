@@ -317,6 +317,30 @@ For example, the following code customizes the style of every `Label`_ widget of
 .. _CascadingStylesheet: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/cascading/CascadingStylesheet.html
 .. _Label: https://repository.microej.com/javadoc/microej_5.x/apis/ej/widget/basic/Label.html
 
+Widget's Style
+--------------
+
+At any time, a widget has a style that can be retrieved using `Widget.getStyle()`_ method.
+
+When created, the widget's style contains the default value for each field.
+These default values are defined in the `DefaultStyle`_ class.
+
+Once it is attached to a desktop, the widget's style is computed from the stylesheet set to the desktop.
+This is done using the `Stylesheet.getStyle()`_ method.
+The style can then be used during the layouting and the rendering of the widget.
+
+At any time, the style of the widget can be recomputed by calling `Widget.updateStyle()`_.
+For example when its state change:
+
+- When a button is pressed or released.
+- When a checkbox is checked or unchecked.
+- etc.
+
+.. _Widget.getStyle(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#getStyle--
+.. _DefaultStyle: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/style/DefaultStyle.html
+.. _Stylesheet.getStyle(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/stylesheet/Stylesheet.html#getStyle-ej.mwt.Widget-
+.. _Widget.updateStyle(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Widget.html#updateStyle--
+
 .. _section_animations:
 
 Animations
