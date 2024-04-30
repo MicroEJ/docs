@@ -7,14 +7,14 @@ Container subclasses have to implement two methods and may override optional met
 
 .. _Container: https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Container.html
 
-Implementing the mandatory methods
+Implementing the Mandatory Methods
 ----------------------------------
 
 This section explains how to implement the two mandatory methods of a container subclass.
 
 .. _mwt_container_optimalsize:
 
-Computing the optimal size of the container
+Computing the Optimal Size of the Container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The `computeContentOptimalSize()`_ method is called by the MWT framework in order to know the optimal size of the container.
@@ -46,7 +46,7 @@ For example, the following snippet computes the optimal size of a simple wrapper
 
 .. _mwt_container_layout:
 
-Laying out the children of the container
+Laying out the Children of the Container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The `layOutChildren()`_ method is called by the MWT framework in order to lay out every child of the container, i.e. to set the position and size of the children.
@@ -71,7 +71,7 @@ For example, the following snippet lays out the children of a simple wrapper:
 .. _layOutChildren(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Container.html#layOutChildren-int-int-
 .. _layOutChild(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Container.html#layOutChild-ej.mwt.Widget-int-int-int-int-
 
-Managing the visibility of the children of the container
+Managing the Visibility of the Children of the Container
 --------------------------------------------------------
 
 By default, when a container is shown, each of its children is shown too.
@@ -87,7 +87,7 @@ When a container is hidden, each of its children is hidden too (unless it is alr
 .. _setHiddenChild(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Container.html#setHiddenChild-ej.mwt.Widget-
 .. _setHiddenChildren(): https://repository.microej.com/javadoc/microej_5.x/apis/ej/mwt/Container.html#setHiddenChildren--
 
-Providing APIs to change the children list of the container
+Providing APIs to Change the Children list of the Container
 -----------------------------------------------------------
 
 The `Container`_ class introduces ``protected`` APIs in order to manipulate the list of children of the container.
