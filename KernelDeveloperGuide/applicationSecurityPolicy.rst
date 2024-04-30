@@ -52,6 +52,9 @@ the ``KF-Util`` module provides a JSON implementation as the default implementat
 
 This can be done by creating a class that implements the `SecurityPolicyResourceLoader`_ interface.
 
+.. note::
+    Additional logs of requested and granted access can be shown by setting the logger level to ``fine`` in the Kernel system properties.
+
 Before going further we strongly advise to take a look to the `java.security.Permission`_ Javadoc to fully understand the way permissions work (name, action...).
 
 Here is an example of what a JSON file looks like with placeholders:
