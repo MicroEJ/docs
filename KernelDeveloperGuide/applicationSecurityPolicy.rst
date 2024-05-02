@@ -3,7 +3,7 @@
 Application security policy
 ===========================
 
-The security management can be done in various ways, the most common way of declaring a security management policy is by the usage of the `SecurityManager`_ class.
+Enforcing an Application Security Policy can be done in various ways, the most common way of declaring a security management policy is by the usage of the `SecurityManager`_ class.
 
 For the sake of ROM footprint optimization, permission checks calls are disabled by default to avoid extra code processing if the system owner does not want to use the Security Manager.
 In order to activate this feature the :ref:`option_enable_security_manager` option must be set.
@@ -53,7 +53,9 @@ the ``KF-Util`` module provides a JSON implementation as the default implementat
 This can be done by creating a class that implements the `SecurityPolicyResourceLoader`_ interface.
 
 .. note::
-    Additional logs of requested and granted access can be shown by setting the logger level to ``fine`` in the Kernel system properties.
+    To log every authorized access, change the logger level to ``FINE`` in the Kernel system properties such as
+    ``.level=FINE``.
+
 
 Before going further we strongly advise to take a look to the `java.security.Permission`_ Javadoc to fully understand the way permissions work (name, action...).
 
